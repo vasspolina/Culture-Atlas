@@ -100,3 +100,36 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - fridericianum-kassel: the website field points to a Monopol article; the real site is fridericianum.org.
 - frist-art-museum-nashville: building owned by the city housing agency MDHA, leased at $1 a year to 2097.
 - fondation-cartier: the record's /en/about source returns 404.
+
+## d008 (research notes, before its slop check)
+- Website fields pointing elsewhere: fundación-proa-buenos-aires (Tecpetrol; real site proa.org), fundação-bienal-de-são-paulo-são-paulo (a Times Brasil column; real site bienal.org.br).
+- Spam or dead: sindikadokolofondation.org redirects to a gambling site; museum.ge (Georgian National Museum) hides spam links in its footer; galeri-nasional.or.id does not resolve.
+- garage-museum-moscow: the 2024 FSB search and pro-war activists' visit are under Wider context (the Russian state neither funds nor runs Garage).
+- fundação-fernando-leite-couto-maputo: sponsors shown as logos only; Nedbank unconfirmed.
+
+## d009 (research notes, before its slop check)
+- getty-center-los-angeles: the researcher calls the Fossil fuels flag weak (Getty Oil shares sold to Texaco in 1984); under the editor's founder-fortune ruling the endowment built on Getty Oil still counts. The checker is told to keep it as a red flag.
+- glenbow-calgary: vice chair John R. Whelan is CEO of Imperial Oil and chairs the rebuild committee; ex-Suncor governor; oil executives Laut and Werklund among donors; Chevron Canada listed; 1988 Lubicon Lake Cree boycott of a Shell-sponsored show.
+- groninger-museum-groningen: 2025 report still lists GasTerra and Gasunie (sponsorship income €20,000); GasTerra closes end of 2026.
+- haifa-museum-of-art: sponsor Bank Mizrahi-Tefahot paid $195M under a 2019 US DPA (tax evasion) and is in the 2020 UN settlement database.
+- guggenheim-bilbao-bilbao: Petronor in the Trustees tier; the Urdaibai outpost was dropped on 16 December 2025 after protests.
+- Website fields wrong: golden-thread-gallery-belfast (GrantNav; real site goldenthreadgallery.co.uk), gwangju-biennale-gwangju (an ArtAsiaPacific article; real site gwangjubiennale.org).
+- Not confirmed: Golden Thread's 2016 Gulbenkian protest; Gwangju budget figures.
+
+## d007 slop check (95 fixes; every report changed)
+- fondazione-palazzo-strozzi: Enegan (Partner and electricity supplier since 2021) sells gas, but the 2025 report says the supply is 100% certified renewable; decide whether the Fossil fuels heading holds.
+- fabrica-de-arte-cubano: funding and both red flags rest on FAC's own statement and two critical or partisan outlets; the "campaign" is Unverified.
+- fire-station-artist-in-residence-doha: no budget or accounts; the Gulf state body flag rests on Qatar Museums' status.
+- fondation-louis-vuitton-paris: final cost given as 780M (English Wikipedia) and nearly 800M euros (French); the tax-break period is disputed; the staff-conditions point (Mediapart) was not read.
+- fondazione-prada: no accounts after 2019, no sponsor names, no art-press piece naming it.
+
+## d008 slop check (26 fixes; every report changed)
+- fundaci-joan-mir: fmirobcn.org blocks automated reads; the researcher read it in the browser, the checker could not. Sponsor tiers, 2025 transparency figures and the board line rest on that one read. Naturgy/Criteria figures and the Lubar resignation are verified.
+- gapar-aitiev-kyrgyz-national-museum-of-fine-arts-bishkek: Artnet unreadable; its quotes were cut and red flags rebuilt from 24.kg, ArtReview and the New East Digital Archive. The Artnet piece needs a human read.
+- garage-museum-moscow: some Novaya Gazeta Europe and Finestre sull'Arte details rest on fetch summaries.
+
+## Run status, 20 Oct 2026 (stopped at the weekly usage limit; resets 24 Oct, 4am New York)
+- In the atlas or in PRs: Zoma plus d000 to d008 (109 spaces, with #166 to #168 merged and d007 + d008 in the open PR).
+- d009: 12 reports written, slop check not finished; getty-center-los-angeles.txt was mid-edit when the limit hit.
+- d010: 7 of 12 reports written. d011: 5 of 12. d012: 1 of 12. The unwritten ids are the batch ids with no file in reports/.
+- To continue: resume each agent with SendMessage (ids in the session), or start new ones from data/details_prompt.md.

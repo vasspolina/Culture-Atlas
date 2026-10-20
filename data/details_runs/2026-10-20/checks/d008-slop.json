@@ -1,0 +1,370 @@
+[
+ {
+  "id": "fundaci-joan-mir",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'chosen partly for her record in raising sponsorship'"
+  ],
+  "before": "Worth watching: how the new director, chosen partly for her record in raising sponsorship, changes the sponsor list.",
+  "after": "Worth watching: whether the new director, Maribel López, who led the ARCO fair until 2026, changes the sponsor list.",
+  "sources": [
+   "https://www.que.es/2026/07/08/dimision-patrono-fundacio-miro/",
+   "https://en.ara.cat/culture/patron-of-the-joan-miro-foundation-resigns-over-the-appointment-of-maribel-lopez_25_5791981.html"
+  ],
+  "reason": "Neither Que.es nor Ara says anything about her sponsorship record; both mention only her ARCO post."
+ },
+ {
+  "id": "fundaci-joan-mir",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "overstated: 'noted views that she is too close to the commercial market'"
+  ],
+  "before": "and noted views that she is too close to the commercial market.",
+  "after": "and wrote that for some her profile is too tied to the commercial circuit.",
+  "sources": [
+   "https://www.que.es/2026/07/08/dimision-patrono-fundacio-miro/"
+  ],
+  "reason": "Que.es attributes the view to 'some' and does not tie it to Lubar."
+ },
+ {
+  "id": "fundación-proa-buenos-aires",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Bloomberg Philanthropies pays for' the guide"
+  ],
+  "before": "- Bloomberg Philanthropies pays for its Bloomberg Connects digital guide (stated by the space).",
+  "after": "- Proa offers a free Bloomberg Connects digital guide in 40 languages (stated by the space); the page does not say who pays for it.",
+  "sources": [
+   "https://proa.org/esp/information.php"
+  ],
+  "reason": "The visit page names the guide but not its funder."
+ },
+ {
+  "id": "fundación-proa-buenos-aires",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'late 19th-century'"
+  ],
+  "before": "- The first building was a late 19th-century Italianate house; the Milan studio",
+  "after": "- The first building was an Italianate-fronted house; the Milan studio",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Fundaci%C3%B3n_Proa",
+   "https://proa.org/eng/new-building-texts.php"
+  ],
+  "reason": "Neither page dates the original house; Wikipedia describes an 'italianizante' facade only."
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported date: '20 October 1951'"
+  ],
+  "before": "The first Bienal opened on 20 October 1951 under industrialist Ciccillo Matarazzo;",
+  "after": "The first Bienal opened in 1951 under industrialist Ciccillo Matarazzo;",
+  "sources": [
+   "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Art_Biennial"
+  ],
+  "reason": "No source opened gives the day; Wikipedia gives the year."
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "section": "Red flags: Vale and the Brumadinho dam collapse",
+  "problems": [
+   "misstated: prosecutors 'said ... would be charged'"
+  ],
+  "before": "IBAMA fined Vale R$250 million, and in January 2020 prosecutors said Vale and 16 people would be charged with intentional homicide and environmental crimes",
+  "after": "IBAMA fined Vale R$250 million a day later, and in January 2020 prosecutors charged Vale, the auditor TÜV SÜD and 16 individuals with intentional homicide and environmental crimes",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Brumadinho_dam_disaster"
+  ],
+  "reason": "Wikipedia says the charges were filed and names TÜV SÜD."
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "section": "Red flags: 2014 artists' letter",
+  "problems": [
+   "unsupported attribution: 'backed by its curators'; budget figure unattributed"
+  ],
+  "before": "61 artists of the 31st Bienal, backed by its curators, objected to Israeli consulate funding, about $40,000 of a $10.5 million budget;",
+  "after": "61 participating artists objected to Israeli consulate funding, about $40,000 of a $10.5 million budget according to Agence France-Presse; the curators issued a statement of support, and",
+  "sources": [
+   "https://hyperallergic.com/sao-paulo-biennial-removes-general-israeli-sponsorship"
+  ],
+  "reason": "Hyperallergic attributes the figure to AFP and says the curators' statement was unanimous, with one curator backing only the right to protest."
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "paraphrase stronger than source: 'cautious'; 'set aside its political moment'; 'curators' interests over artists''"
+  ],
+  "before": "Calls the curator's disclaimer ... cautious ... Argues the show set aside its political moment, addressed Gaza only indirectly, and put curators' interests over artists';",
+  "after": "Says the curator's disclaimer ... can look \"politically cautious, if not reactionary\" ... Argues the show \"too readily ignored its political moment\", addressed Gaza only indirectly, and emphasised curators' interests over those of artists;",
+  "sources": [
+   "https://www.e-flux.com/criticism/6782314/36th-bienal-de-s-o-paulo-not-all-travellers-walk-roads-of-humanity-as-practice"
+  ],
+  "reason": "Wording now follows McCormack's own phrases."
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported superlative: 'two largest corporate names'"
+  ],
+  "before": "The weak points are its two largest corporate names, Petrobras and Vale, both still current.",
+  "after": "The weak points are two of its corporate sponsors, Petrobras and Vale, both still current.",
+  "sources": [
+   "https://timesbrasil.com.br/colunas/felipe-machado/bienal-ibirapuera-participantes-apoio-empresas/",
+   "https://bienal.org.br/wp-content/uploads/2026/07/demonstracoes-financeiras-exercicio-2025.pdf"
+  ],
+  "reason": "No source ranks sponsors by size; the 2025 accounts give no per-sponsor amounts. All 2025 income figures were checked against the audited statements."
+ },
+ {
+  "id": "fundação-fernando-leite-couto-maputo",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Standard Bank Moçambique paid for three new titles'"
+  ],
+  "before": "Standard Bank Moçambique paid for three new titles in the \"Gosto de Ler\" series in 2025;",
+  "after": "In 2025 three new titles joined the \"Gosto de Ler\" series in partnership with Standard Bank Moçambique;",
+  "sources": [
+   "https://fflc.org.mz/wp-content/uploads/2026/07/Relatorio-de-Actividades-FFLC-2025-web.pdf"
+  ],
+  "reason": "The activity report says 'em parceria com o Standard Bank', not that the bank paid for the titles."
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "section": "OVERVIEW",
+  "problems": [
+   "claim stronger than source: Chokwe pieces 'returned ... in 2015'"
+  ],
+  "before": "three Chokwe pieces returned to the Dundo Museum in 2015",
+  "after": "in December 2015 it bought three Chokwe pieces from collectors in Belgium and France to return to the Dundo Museum",
+  "sources": [
+   "https://www.theartnewspaper.com/news/africa-s-top-collector-returns-ancestral-works-to-angola"
+  ],
+  "reason": "The 2015 article says the pieces 'will be returned'; no opened source confirms the handover."
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "section": "Red flags: founders' fortune",
+  "problems": [
+   "claim misattributed: accusation and 715,000-document figure credited to a page that does not carry them",
+   "filler: 'and more'"
+  ],
+  "before": "The ICIJ's Luanda Leaks, from more than 715,000 documents, accused dos Santos of making her $2.2bn fortune by exploiting Angola; she denies it (The Art Newspaper, January 2020). ... Dokolo's lawyers said he invested $115 million and more.",
+  "after": "The ICIJ-led Luanda Leaks investigation, based on more than 715,000 documents, accused dos Santos of building her $2.2bn fortune through exploiting Angola; she denies that it came from nepotism and corruption (The Art Newspaper). ... Dokolo's lawyers said he first invested $115 million and later much more.",
+  "sources": [
+   "https://www.theartnewspaper.com/news/isabel-dos-santos-angola",
+   "https://www.icij.org/investigations/luanda-leaks/court-ties-dos-santos-to-fraudulent-diamond-deal-as-portugal-further-freezes-out-billionaire/"
+  ],
+  "reason": "The January 2020 asset-freeze article carries neither the document count nor the accusation; the other Art Newspaper article does. ICIJ gives the $115 million wording."
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'most art-press coverage praised Dokolo's restitution work'",
+   "paraphrase stronger than source: Jaar 'without comment'"
+  ],
+  "before": "Overall: Little direct criticism; most art-press coverage praised Dokolo's restitution work, ... Faults Alfredo Jaar for showing in the 2007 African pavilion without comment",
+  "after": "Overall: Little direct criticism found in art media; ... Faults Alfredo Jaar for never publicly distancing himself from Dokolo after showing in the 2007 African pavilion the collection organised, and quotes Toguo in full",
+  "sources": [
+   "https://esferapublica.org/?p=17314"
+  ],
+  "reason": "No source shows that most coverage praised him; the essay faults Jaar for not distancing himself."
+ },
+ {
+  "id": "galeri-nasional-indonesia",
+  "section": "Red flags / BOTTOM LINE",
+  "problems": [
+   "hedge: 'said to depict' / 'said to show'"
+  ],
+  "before": "works said to depict former president Joko Widodo; ... paintings said to show Jokowi",
+  "after": "works that press reports link to former president Joko Widodo; ... paintings that press reports link to Jokowi",
+  "sources": [
+   "https://artasiapacific.com/news/indonesian-artist-s-exhibition-canceled-over-political-paintings"
+  ],
+  "reason": "ArtAsiaPacific itself says 'allegedly depicted'; the text now states only that press reports make the link."
+ },
+ {
+  "id": "galeri-nasional-indonesia",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "misquote: 'refuses to accept the present'"
+  ],
+  "before": "the gallery \"refuses to accept the present\"",
+  "after": "the gallery \"refused to live in the present\"",
+  "sources": [
+   "https://www.thejakartapost.com/opinion/2025/01/03/authoritarian-alarm"
+  ],
+  "reason": "The editorial's wording is 'refused to live in the present'."
+ },
+ {
+  "id": "galeri-nasional-indonesia",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'then the military after 1961'"
+  ],
+  "before": "then the military after 1961",
+  "after": "abolished in 1961; after 1965 it served as a student group's and then an army brigade's headquarters",
+  "sources": [
+   "https://en.wikipedia.org/wiki/National_Gallery_of_Indonesia"
+  ],
+  "reason": "Wikipedia dates the army use to after 1965; 1961 is when the school was abolished."
+ },
+ {
+  "id": "galeri-petronas",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Opened on 12 August 1992'"
+  ],
+  "before": "- Opened on 12 August 1992 at the Dayabumi Complex,",
+  "after": "- Established on 12 August 1992 at the Dayabumi Complex,",
+  "sources": [
+   "https://kualalumpurcity.my/?p=9662",
+   "https://asianews.network/?p=269589"
+  ],
+  "reason": "The city guide says 'established' on that date; The Star says only 1992."
+ },
+ {
+  "id": "galeri-petronas",
+  "section": "Red flags",
+  "problems": [
+   "Unverified allegation overstated: ECOS asked governments to investigate",
+   "'has not publicly responded' unattributed"
+  ],
+  "before": "from the European Coalition on Oil in Sudan's 2010 report \"Unpaid Debt\", an advocacy coalition; PETRONAS has not publicly responded (Wikipedia).",
+  "after": "from the European Coalition on Oil in Sudan's 2010 report \"Unpaid Debt\", an advocacy coalition, which asked Malaysia, Sweden and Austria to investigate; Wikipedia says PETRONAS has never publicly responded.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Petronas"
+  ],
+  "reason": "Wikipedia: the report called for investigations into whether PETRONAS may have been complicit."
+ },
+ {
+  "id": "galleria-nazionale-d-arte-moderna-e-contemporanea",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'no scientific committee'",
+   "unsupported: 'masterpieces went to Turin', 'galleries were half-empty'",
+   "unsupported: 'a 2023 Tolkien show the government wanted'",
+   "paraphrase stronger than source: 'no wall texts'; 'co-curator'"
+  ],
+  "before": "had no scientific committee ... masterpieces went to Turin and the galleries were half-empty ... Traces the politicisation back to a 2023 Tolkien show the government wanted. ... with no wall texts, translated audio guide or catalogue at opening.",
+  "after": "had no formally appointed scientific committee ... about 80 works from the collection went to the Musei Reali in Turin ... Cites a 2023 Tolkien exhibition as an earlier example of political influence over the museum's spaces. ... no didactic sheets, no audio guide in several languages and a catalogue not ready for the opening.",
+  "sources": [
+   "https://www.finestresullarte.info/en/opinions/the-other-side-of-the-futurism-exhibition-gnam-emptied-library-and-archives-closed",
+   "https://www.artribune.com/arti-visive/2024/12/dambruoso-polemiche-futurismo-mostra/"
+  ],
+  "reason": "Rewritten to the two articles' own claims; Bison says the damage to the Boccioni was 'reportedly' reported, so it is now credited to him."
+ },
+ {
+  "id": "gallerie-d-italia",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: '€3 over-65s'",
+   "wrong title: 'chairman emeritus'"
+  ],
+  "before": "€6 full, €3 over-65s, free for under-26s ... started by chairman emeritus Giovanni Bazoli",
+  "after": "€6 full, €3 reduced, free for under-26s ... conceived by Giovanni Bazoli, now honorary chairman,",
+  "sources": [
+   "https://gallerieditalia.com/it/milano/pianifica-la-tua-visita/",
+   "https://group.intesasanpaolo.com/it/newsroom/tutte-le-news/news/2024/gallerie-d-italia-750mila-visitatori"
+  ],
+  "reason": "The Milan page does not say who gets the €3 rate; Intesa's release says 'Honorary Chairman'."
+ },
+ {
+  "id": "gapar-aitiev-kyrgyz-national-museum-of-fine-arts-bishkek",
+  "section": "Red flags: Feminnale censorship",
+  "problems": [
+   "unsupported quotation: 'campaign with naked women under the flag of feminism'",
+   "claims credited to Artnet, which could not be opened"
+  ],
+  "before": "The minister called it a \"campaign with naked women under the flag of feminism\" and set up a special commission to review it (Artnet, citing 24.kg). ... including Zoya Falkova's punching-bag torso; Julie Savery was barred from repeating a performance (Artnet).",
+  "after": "On 2 December the minister said that \"under the flag of feminism, campaigns with a naked woman were held in Parliament and in a church\" and that a dedicated panel would review the exhibition (24.kg). ... Zoya Falkova's punching bag shaped like a female body (New East Digital Archive); Julie Savery's performance involving nudity was cancelled (ArtReview).",
+  "sources": [
+   "https://24.kg/english/136608__Feminnale_scandal_Minister_of_Culture_calls_exhibition_provocative/",
+   "https://www.new-east-archive.org/articles/show/11506/kyrgyzstan-feminnale-feminism-art-scandal-censorship",
+   "https://artreview.com/news-5-december-director-of-kyrgyz-museum-resigns-after-threats-over-feminist-exhibition"
+  ],
+  "reason": "24.kg does not use the quoted Artnet wording; the quote is replaced by 24.kg's own. The 25 November opening date and the Otunbayeva letter appear in no page I could open and were cut."
+ },
+ {
+  "id": "gapar-aitiev-kyrgyz-national-museum-of-fine-arts-bishkek",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "quotations from Artnet unverified (page blocked, 403): Kapalova quote, Dzhangaracheva quote"
+  ],
+  "before": "quotes curator Altyn Kapalova: \"This is violence against women... Art is uncensored.\" ... Quotes Dzhangaracheva that the campaign \"was initiated by people who never came to the museum\".",
+  "after": "Per excerpts, reports that officials removed works ... and that the culture minister said Dzhangaracheva had been relieved of her duties while she said she resigned. Only excerpts were read; the page blocked the check.",
+  "sources": [
+   "https://www.new-east-archive.org/articles/show/11506/kyrgyzstan-feminnale-feminism-art-scandal-censorship",
+   "https://artreview.com/news-5-december-director-of-kyrgyz-museum-resigns-after-threats-over-feminist-exhibition"
+  ],
+  "reason": "Neither quotation appears in the other pages opened (New East says 'Kapajeva' would need checking); Artnet item now marked excerpts only."
+ },
+ {
+  "id": "garage-museum-moscow",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: library 'more than 45,000 titles'",
+   "unsupported: 'Narkomfin Building'"
+  ],
+  "before": "a library of more than 45,000 titles, ... the Narkomfin Building and, since 2024, its own collection of Russian art from 1980 shown in open storage",
+  "after": "a library of more than 55,000 books and journals, ... and, from 2024, its own collection shown in open storage",
+  "sources": [
+   "https://garagemca.org/en/programs/library",
+   "https://garagemca.org/en/about"
+  ],
+  "reason": "The library page says over 55,000; the About page does not mention the Narkomfin Building."
+ },
+ {
+  "id": "garage-museum-moscow",
+  "section": "WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "hedge-like 'reported change of legal ownership'",
+   "unsupported: New Holland as 'sister project'",
+   "unsupported date: '26 February 2022'",
+   "unsupported: activists 'filmed'",
+   "superlative-like 'heads its endowment donor list'"
+  ],
+  "before": "the reported change of legal ownership at Garage's sister project New Holland in 2024 ... On 26 February 2022 ... pro-war activists filmed at the museum ... heads its endowment donor list",
+  "after": "New Holland in St Petersburg, which The Art Newspaper reports changed legal ownership in 2024 ... In February 2022 ... pro-war activists came to the museum ... is the first private donor listed on its endowment page for 2018 to 2023",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/07/14/amid-cracks-down-on-dissent-russias-beleaguered-private-museums-fight-to-survive",
+   "https://endowment.garagemca.org/en/donors",
+   "https://meduza.io/feature/2024/09/12/stoilo-garazhu-otkrytsya-posle-dvuhletney-pauzy-kak-tuda-prishli-z-aktivisty-i-vozmutilis-novoy-ekspozitsiey"
+  ],
+  "reason": "The Art Newspaper lists New Holland separately and says it 'is reported to have' changed ownership; Meduza and Finestre sull'Arte give no day or filming."
+ },
+ {
+  "id": "georgian-national-museum-tbilisi",
+  "section": "OVERVIEW",
+  "problems": [
+   "claim attributed to wrong source: presidential decree credited to Wikipedia",
+   "unsupported: 'runs research centres'; 'both built'"
+  ],
+  "before": "Created by presidential decree on 30 December 2004 (Wikipedia) ... It runs research centres, a conservation laboratory at the Simon Janashia Museum and an auditorium, both built with BP Georgia's support",
+  "after": "Formed on 30 December 2004 (Wikipedia); the museum says it was founded under a decree of Georgia's president in 2004 ... It has a conservation laboratory at the Simon Janashia Museum and an auditorium, both set up with BP Georgia's support",
+  "sources": [
+   "https://museum.ge/index.php?m=278",
+   "https://en.wikipedia.org/wiki/Georgian_National_Museum",
+   "https://museum.ge/files/G%20Gamyrelidze/PDF/BP&Archaeology_Gamkrelidze_G_small.pdf"
+  ],
+  "reason": "Wikipedia does not mention a decree; the museum's Georgian About page does. The BP volume lists the auditorium and laboratory only."
+ },
+ {
+  "id": "georgian-national-museum-tbilisi",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict word without named event: 'purge'"
+  ],
+  "before": "the ministry's 2022 purge of critical staff.",
+  "after": "the dismissal of about 40 staff in 2022, which the union tied to criticism of the government.",
+  "sources": [
+   "https://civil.ge/?p=492518",
+   "https://artreview.com/sackings-georgian-museum-staff/"
+  ],
+  "reason": "Civil.ge and ArtReview report the union's claim, not a finding."
+ }
+]
