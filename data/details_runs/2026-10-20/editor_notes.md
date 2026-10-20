@@ -53,3 +53,8 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - centre-pompidou: new, not in the record: the Hanwha partnership boycott (open letter, rally) and the Cour des comptes audit.
 - caixaforum-madrid: Naturgy gas dividends behind the la Caixa foundation budget (new red flag).
 - ch-teau-de-versailles: the Epstein item is venue only (2019 Pritzker ceremony); the slop check moves it out of Red flags under the map's Epstein rule.
+
+## d003 slop check (62 fixes; every report changed, mostly claims stronger than the source)
+- biennale-of-sydney-sydney: "Gulf state money" removed from Red flags (state money alone is not a flag); the 2026 opening-night and PwC withdrawal item is about a performer, not a funder: reconsider. 2024 annual report PDF too large to open; turnover and visitor figures are "stated by the space".
+- bukhara-biennial-bukhara: the Artforum column (Wetzler) is paywalled; only an opening excerpt is used. Read it in full.
+- british-museum-london: the Muriel Gray claim is now "Unverified", Hyperallergic the only outlet.
