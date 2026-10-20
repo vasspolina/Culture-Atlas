@@ -27,3 +27,8 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Flag headings to review under CHECKER.md: Aichi (racecourse owner and gas utilities as sponsors), African Artists' Foundation (Deutsche Bank read from logo file names), Belgazprombank (sanctions by Canada and Ukraine only, which the rules make a note, not a flag).
 - american-museum-of-natural-history-new-york: corporate patron list rests on one Hyperallergic line (amnh.org served a CAPTCHA).
 - american-folk-art-museum: Carnegie grant year unconfirmed (2005 or 2007).
+
+## d002 slop check (58 fixes; 11 of 12 changed, mostly detail beyond the source)
+- Flag headings to review: bak-utrecht (funding cut with no documented political motive under Red flags), asian-art-museum-san-francisco (PG&E as a fossil-fuel funder; it is a gas and electric utility), bard-college (Epstein and Leon Black as donor issues).
+- bangkok-art-and-culture-centre-bangkok: own site returns 403; current sponsors unchecked.
+- aspen-art-museum-aspen: Kanders' Whitney resignation dated 24 July (The Art Newspaper) and 25 July (Wikipedia).

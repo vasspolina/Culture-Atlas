@@ -1,0 +1,784 @@
+[
+ {
+  "id": "artscience-museum-singapore",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: opener named from a source that does not say it",
+   "unsupported: 'Reuters'"
+  ],
+  "before": "opened on 17 February 2011 by Prime Minister Lee Hsien Loong; a spokesperson said the date was set \"as advised by our feng shui master\" (Reuters via Mail & Guardian).",
+  "after": "opened on 17 February 2011 by Prime Minister Lee Hsien Loong (Wikipedia); before the opening a spokesperson said the date was set \"as advised by our feng shui master\" (Mail & Guardian).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/ArtScience_Museum",
+   "https://mg.co.za/friday/2011-01-03-singapore-casino-to-launch-world-s-first-artscience-museum/"
+  ],
+  "reason": "The Mail & Guardian piece was written before the opening and does not name Lee or Reuters; Wikipedia gives the opener and date."
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: '50,000 square feet'"
+  ],
+  "before": "Has 21 gallery spaces of about 50,000 square feet;",
+  "after": "Has 21 galleries on about 6,000 square metres (Winkle Picker);",
+  "sources": [
+   "https://www.winkle-picker.com/?p=1859",
+   "https://en.wikipedia.org/wiki/ArtScience_Museum"
+  ],
+  "reason": "Wikipedia gives two conflicting areas (64,583 and 50,000 sq ft) and tags the 21 spaces as needing a citation; Winkle Picker gives 21 galleries and 6,000 square metres."
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: title/year of exhibitions"
+  ],
+  "before": "Another World Is Possible (2025) and Lawrence Lek (2026).",
+  "after": "Another World Is Possible (2025) and Lawrence Lek's NOX: Confessions of a Machine (23 January to 19 April 2026).",
+  "sources": [
+   "https://thesmartlocal.com/read/nox-confessions-of-a-machine-artscience-museum/"
+  ],
+  "reason": "Wikipedia names neither show; the dates and the Lek title come from the TheSmartLocal listing and a search result for the 2025 show (13 September 2025 to 22 February 2026)."
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Reuters'"
+  ],
+  "before": "gambling complex (Reuters, 2011).",
+  "after": "gambling complex (Mail & Guardian, 2011).",
+  "sources": [
+   "https://mg.co.za/friday/2011-01-03-singapore-casino-to-launch-world-s-first-artscience-museum/"
+  ],
+  "reason": "The cost and the gambling-complex wording are in the Mail & Guardian article; it does not name Reuters."
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'at its opening'",
+   "unsupported: 'Reuters'"
+  ],
+  "before": "called the building \"The Welcoming Hand of Singapore\" at its opening (Reuters, 2011).",
+  "after": "dubbed the building \"The Welcoming Hand of Singapore\" (Mail & Guardian, January 2011).",
+  "sources": [
+   "https://mg.co.za/friday/2011-01-03-singapore-casino-to-launch-world-s-first-artscience-museum/"
+  ],
+  "reason": "The article was published before the opening and says only that Adelson dubbed it so."
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'no separate foundation or budget'"
+  ],
+  "before": "there is no separate foundation or budget between the gallery and the casino's revenue.",
+  "after": "no reporting found of a separate foundation or budget for the gallery.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/ArtScience_Museum"
+  ],
+  "reason": "No opened source states that no separate budget exists; the report cannot assert an absence."
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'holds'"
+  ],
+  "before": "Las Vegas Sands holds a $4.84 billion loan facility to build a Marina Bay Sands expansion project (SEC filing, January 2026).",
+  "after": "Las Vegas Sands had $4.84 billion available under a delayed draw term loan facility for the Marina Bay Sands expansion project at 28 January 2026 (SEC filing).",
+  "sources": [
+   "https://www.sec.gov/Archives/edgar/data/1300514/000130051426000004/lvs_ex991x12312025.htm"
+  ],
+  "reason": "The release says the facility was available, not drawn, and is company-level."
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: casino mention",
+   "unsupported: objection to S$30 price"
+  ],
+  "before": "- Calls the Van Gogh Alive show \"essentially an expensive slideshow\" and objects to charging S$30 for projections instead of paintings.\n- Mentions the casino setting but does not criticise it.",
+  "after": "- Calls the Van Gogh Alive show \"essentially an expensive slideshow\" and sets it against the S$30 ticket price.\n- Does not mention the casino.",
+  "sources": [
+   "https://archive.thedailystar.net/magazine/2011/07/04/architecture.htm"
+  ],
+  "reason": "The article lists what a S$30 ticket should buy and does not object to the price directly; it names only Marina Bay Sands, never the casino."
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'limits exhibition space'",
+   "unsupported: 'a design company's blog'"
+  ],
+  "before": "- The \"self-proclaimed iconic architecture\" limits exhibition space; the best galleries are underground.\n- A design company's blog, not an art outlet.",
+  "after": "- The \"self-proclaimed iconic architecture\" constrains the gallery spaces; the best galleries are underground.\n- A journal post on the Winkle Picker site, not an art outlet; the post is unsigned.",
+  "sources": [
+   "https://www.winkle-picker.com/?p=1859"
+  ],
+  "reason": "The post says the iconic form constrains the spaces; the site links to books by Chris White on heritage tourism and museums, nothing says it is a design company."
+ },
+ {
+  "id": "asian-art-museum-san-francisco",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'in March 2025 the museum proposed'",
+   "unsupported: 'about a third of the budget' (source: historically)"
+  ],
+  "before": "- The City has paid about a third of the budget; in March 2025 the museum proposed cutting 13 security guards to save the City $1.7 million after the mayor's office asked for 15 percent cuts (The Art Newspaper).",
+  "after": "- Roughly a third of the budget has historically come from the City; after the mayor's office asked institutions to plan for a 15 percent cut, the museum faced laying off 13 security guards, which would save the City $1.7 million (The Art Newspaper, March 2025).",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/03/10/san-francisco-museum-layoffs-municipal-budget-deficit"
+  ],
+  "reason": "The article says roughly a third has historically come from the city, that the museum \"may need to lay off\" 13 guards, and that proposals went to the mayor's office the month before, not in March."
+ },
+ {
+  "id": "asian-art-museum-san-francisco",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'the listing carries no sanctions'"
+  ],
+  "before": "the listing carries no sanctions (Hellenic Shipping News).",
+  "after": "the listing carries no specific penalties (Hellenic Shipping News).",
+  "sources": [
+   "https://www.hellenicshippingnews.com/us-adds-shipping-major-cosco-to-list-of-companies-working-with-chinas-military/"
+  ],
+  "reason": "The article says only that being on the Pentagon list \"carries no specific penalties\"; it does not speak of sanctions."
+ },
+ {
+  "id": "asian-art-museum-san-francisco",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'largely' (source: majority)",
+   "missing source name"
+  ],
+  "before": "was based largely on stock confiscated from Japanese-American dealers during the Second World War, from ArtAsiaPacific (2020), which presents it as a report, not a finding.",
+  "after": "was based mainly on stock confiscated from Japanese-American dealers during the Second World War, from ArtAsiaPacific (2020), which gives it as a report without naming a source.",
+  "sources": [
+   "https://artasiapacific.com/news/asian-art-museum-removes-bust-of-racist-founder"
+  ],
+  "reason": "The article says Brundage \"reportedly based the majority of his collection\" on that stock; it names no source for the report."
+ },
+ {
+  "id": "aspen-art-museum-aspen",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Aspen voters agreed'"
+  ],
+  "before": "which Aspen voters agreed in 1976 to acquire.",
+  "after": "which the City of Aspen acquired after a vote in 1976 (stated by the space).",
+  "sources": [
+   "https://www.aspenartmuseum.org/about"
+  ],
+  "reason": "The museum page says a 1976 City of Aspen vote led to acquiring the building and does not say voters agreed."
+ },
+ {
+  "id": "aspen-art-museum-aspen",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'Kanders owns Safariland'",
+   "unsupported: 'artists pulled work'"
+  ],
+  "before": "Kanders owns Safariland, whose tear gas canisters were photographed at the San Diego to Tijuana border in 2018; he resigned as Whitney vice chairman on 25 July 2019 after artists pulled work from the Whitney Biennial (Wikipedia).",
+  "after": "Kanders is chief executive of Cadre Holdings, the parent of Safariland, with a 51 percent voting interest; photographs from the San Diego to Tijuana border in 2018 showed tear gas canisters labelled with the Safariland logo. He resigned as Whitney vice chairman on 25 July 2019 after eight artists left the Whitney Biennial in solidarity with protests (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Warren_Kanders"
+  ],
+  "reason": "Wikipedia says Kanders leads Cadre Holdings and holds a 51 percent voting interest, that photos showed canisters with the Safariland logo, and that eight artists left the programme before he resigned."
+ },
+ {
+  "id": "aspen-art-museum-aspen",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'a guest objected' (unnamed, overheard)"
+  ],
+  "before": "At ArtCrush in 2019 a guest objected that \"billionaires can't hide behind their misdeeds\" through museum patronage; there was no organised protest (The Art Newspaper).",
+  "after": "At ArtCrush in 2019 an unnamed woman, overheard by the writer, said \"billionaires can't hide behind their misdeeds\"; the article reports no organised protest (The Art Newspaper).",
+  "sources": [
+   "https://www.theartnewspaper.com/2019/08/06/mega-collectors-raise-dollar23m-at-aspen-art-museums-annual-artcrush-benefit"
+  ],
+  "reason": "The guest is unnamed and the article describes no protest at ArtCrush."
+ },
+ {
+  "id": "aspen-art-museum-aspen",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'days after'",
+   "unsupported: 'stayed away'"
+  ],
+  "before": "- Names the Kanders gift days after the Whitney resignation and notes the couple stayed away from ArtCrush.",
+  "after": "- Names the Kanders gift about two weeks after the Whitney resignation and notes the couple \"were not spotted at any ArtCrush events this year.\"",
+  "sources": [
+   "https://www.theartnewspaper.com/2019/08/06/mega-collectors-raise-dollar23m-at-aspen-art-museums-annual-artcrush-benefit"
+  ],
+  "reason": "The article says they resigned on 24 July, about two weeks before publication, and only that the couple were not spotted at ArtCrush events."
+ },
+ {
+  "id": "astrup-fearnley-museet",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'heir to the shipbroker'"
+  ],
+  "before": "heir to the shipbroker Fearnley & Eger, founded it.",
+  "after": "who took over the shipbroker Fearnley & Eger after his father died in 1972, founded it (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Hans_Rasmus_Astrup_(born_1939)"
+  ],
+  "reason": "Wikipedia says he took over the firm in 1972 and was heir to a shipping and real-estate empire; it does not name the firm as his inheritance alone."
+ },
+ {
+  "id": "astrup-fearnley-museet",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: sculpture park by Piano (no opened source)"
+  ],
+  "before": "with a sculpture park also by Piano;",
+  "after": "with a sculpture park beside it, also designed by Piano (Visit Oslo);",
+  "sources": [
+   "https://www.visitoslo.com/attraction/tjuvholmen-sculpture-park"
+  ],
+  "reason": "The Attractions Management piece does not mention the park; the Visit Oslo listing (seen in search results) credits Piano."
+ },
+ {
+  "id": "astrup-fearnley-museet",
+  "section": "OVERVIEW",
+  "problems": [
+   "omission: Monday opening in July and August"
+  ],
+  "before": "weekends 11:00 to 17:00, closed Monday;",
+  "after": "weekends 11:00 to 17:00, closed Monday except in July and August (12:00 to 17:00);",
+  "sources": [
+   "https://www.afmuseet.no/en/visit-us/"
+  ],
+  "reason": "The visit page says the museum is open Mondays 12:00 to 17:00 in July and August."
+ },
+ {
+  "id": "astrup-fearnley-museet",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Bergen investor'",
+   "unsupported: 'shipping, property and capital arms'"
+  ],
+  "before": "EGD Holding, wholly owned by Bergen investor Espen Galtung Døsvig, with shipping, property and capital arms (Proff)",
+  "after": "EGD Holding, wholly owned by Espen Galtung Døsvig, which holds stakes in Egd Shipholding, Egd Property and Egd Capital (Proff)",
+  "sources": [
+   "https://www.proff.no/aksjon%C3%A6rer/bedrift/egd-holding-as/911259931"
+  ],
+  "reason": "Proff lists Døsvig at 100 percent and the three subsidiaries by name; it gives no city and no description of their business."
+ },
+ {
+  "id": "astrup-fearnley-museet",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'Lundin Oil operated from 1997 to 2003'"
+  ],
+  "before": "for complicity in war crimes in Sudan, where Lundin Oil operated from 1997 to 2003; prosecutors",
+  "after": "for complicity in war crimes in Sudan during its second civil war; prosecutors",
+  "sources": [
+   "https://www.arabnews.com/node/2645261"
+  ],
+  "reason": "The Arab News/AFP article gives Ian Lundin as chief executive from 1998 to 2002 and mentions no 1997 or 2003."
+ },
+ {
+  "id": "astrup-fearnley-museet",
+  "section": "RED FLAGS",
+  "problems": [
+   "misquote: 'ended for no special reason'"
+  ],
+  "before": "the chair said the deal ended for \"no special reason.\"",
+  "after": "the chair said there was \"no special reason\" it was not renewed and that it \"came to a natural end.\"",
+  "sources": [
+   "https://kunstkritikk.no/controversial-sponsorship-agreement-ends/"
+  ],
+  "reason": "Chair Bjørn Rønneberg spoke of non-renewal, not of an ending."
+ },
+ {
+  "id": "astrup-fearnley-museet",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'Hirst and Koons rooms'",
+   "unsupported: setting limits cultural role"
+  ],
+  "before": "- Piano's building dominates the art; the Hirst and Koons rooms \"have played out their parts,\" and works \"consistently kill each other.\"\n- Tjuvholmen has \"little to offer,\" and the museum's setting among commercial galleries and bars limits its cultural role.",
+  "after": "- The building \"is presented as the main masterpiece with everything else taking up subordinate positions\"; the artists Hirst and Koons \"have played out their parts,\" and works \"consistently kill each other.\"\n- Tjuvholmen \"has little to offer to observers who appreciate a multi-faceted urban experience,\" though the review calls the museum a \"cultural lynchpin\" for the area.",
+  "sources": [
+   "https://kunstkritikk.com/breathless-at-the-museum/"
+  ],
+  "reason": "The review refers to the artists, not rooms, and does not say the setting limits the museum."
+ },
+ {
+  "id": "bait-al-zubair-muscat",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'then' Economic Affairs Adviser"
+  ],
+  "before": "by Mohammad Al Zubair, then Economic Affairs Adviser to Sultan Qaboos, in a house",
+  "after": "by Mohammad Al Zubair, Economic Affairs Adviser to Sultan Qaboos in 2008, in a house",
+  "sources": [
+   "https://gulfnews.com/general/link-to-omani-past-1.40566"
+  ],
+  "reason": "Gulf News (2008) describes him as the adviser in the present tense; it does not say he held the post at the 1998 opening."
+ },
+ {
+  "id": "bait-al-zubair-muscat",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Experience Oman for the foundation"
+  ],
+  "before": "run by Bait Al Zubair Foundation LLC (Gulf News, Experience Oman).",
+  "after": "run by Bait Al Zubair Foundation LLC (Gulf News); Experience Oman says it was established in 1998 by the Zubair family.",
+  "sources": [
+   "https://gulfnews.com/general/link-to-omani-past-1.40566",
+   "https://experienceoman.om/destinations/muscat/bait-al-zubair-museum"
+  ],
+  "reason": "Only Gulf News names the foundation (as employer of the arts adviser); Experience Oman says \"Established in 1998 by the Zubair family.\""
+ },
+ {
+  "id": "bait-al-zubair-muscat",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: no source for the ministerial dates"
+  ],
+  "before": "- Mohammad Al Zubair became Minister of Commerce in 1974 and later advised the Sultan on economic planning; a 2009 US cable credited the family's wealth to a \"long-standing personal relationship with Sultan Qaboos\" (WikiLeaks).",
+  "after": "- A 2009 US embassy cable says Mohammad Al Zubair served as Minister of Commerce from 1974 to 1983, then as the Sultan's adviser for economic planning, and that the family's \"long-standing personal relationship with Sultan Qaboos has brought them tremendous wealth\" (WikiLeaks).",
+  "sources": [
+   "https://wikileaks.org/plusd/cables/09MUSCAT851_a.html"
+  ],
+  "reason": "The Family Business Histories page does not mention a ministerial role; the cable gives the dates and the quoted sentence."
+ },
+ {
+  "id": "bak-utrecht",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Lisanne van Vucht as business director'"
+  ],
+  "before": "under artistic director Jeanne van Heeswijk, with Lisanne van Vucht as business director.",
+  "after": "under artistic director Jeanne van Heeswijk.",
+  "sources": [
+   "https://bakonline.org/en/making+public/program/bak+announces+basecamp+for+tactical+imaginaries++building+cultural+infrastructure+anew",
+   "https://bakonline.org/en/making+public/program/message+from+bak+supervisory+board++maria+hlavajova+bids+farewell+to+bak++basis+voor+actuele+kunst++utrecht"
+  ],
+  "reason": "No source opened or found names Lisanne van Vucht or a business director; BAK's announcement names van Heeswijk as artistic director."
+ },
+ {
+  "id": "bak-utrecht",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Propositions for Non-Fascist Living (2017 to 2024)'"
+  ],
+  "before": "Propositions for Non-Fascist Living (2017 to 2024).",
+  "after": "Propositions for Non-Fascist Living (from 2017).",
+  "sources": [
+   "https://bakonline.org/en/community+++praxis/accomplices/maria+hlavajova"
+  ],
+  "reason": "BAK's page lists the project as \"2017-ongoing\" and gives no end year."
+ },
+ {
+  "id": "bak-utrecht",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: '1 January 2025'"
+  ],
+  "before": "Basecamp, launched on 1 January 2025 as a six-month planning period,",
+  "after": "Basecamp, launched in January 2025 as a six-month period of thinking and planning,",
+  "sources": [
+   "https://bakonline.org/en/making+public/program/bak+announces+basecamp+for+tactical+imaginaries++building+cultural+infrastructure+anew"
+  ],
+  "reason": "BAK's announcement gives meetings between January and June 2025 and no 1 January start date."
+ },
+ {
+  "id": "bak-utrecht",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: '2025 to 2028' in the city advice"
+  ],
+  "before": "the city's culture committee advised giving nothing for 2025 to 2028 (DUIC, June 2024).",
+  "after": "the city's culture committee advised giving nothing for the coming four years, citing doubts about whether BAK's plans could be carried out and low visitor numbers (DUIC, June 2024).",
+  "sources": [
+   "https://www.duic.nl/cultuur/geen-subsidie-meer-naar-nederlands-filmfestival-en-tweetakt-wel-geld-naar-t-hoogt-bekijk-hier-het-nieuwste-cultuuradvies-utrecht/",
+   "https://www.duic.nl/cultuur/culturele-instellingen-in-utrecht-reageren-geschokt-en-verbijsterd-op-wegvallen-subsidies/"
+  ],
+  "reason": "DUIC says \"the coming years\" and gives the committee's reasons; it does not print 2025 to 2028."
+ },
+ {
+  "id": "bak-utrecht",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Ministry named, '2025 to 2028'"
+  ],
+  "before": "the Council for Culture advised the Ministry of Education, Culture and Science not to fund BAK for 2025 to 2028 because",
+  "after": "the Council for Culture advised against funding BAK because",
+  "sources": [
+   "https://www.duic.nl/cultuur/na-mislopen-utrechtse-subsidie-krijgen-tweetakt-en-nff-wel-geld-uit-den-haag-bak-grijpt-ook-hier-mis/"
+  ],
+  "reason": "The DUIC article names neither the ministry nor the period; it reports the Council's advice and that BAK missed out."
+ },
+ {
+  "id": "bak-utrecht",
+  "section": "RED FLAGS",
+  "problems": [
+   "quote presented as English original (DUIC translated from Dutch)"
+  ],
+  "before": "BAK called the city advice \"a devastating blow\" and said it was \"incomprehensible\" that Utrecht would tear down part of its own cultural infrastructure (DUIC).",
+  "after": "BAK called the city advice \"a devastating blow\" and said it was \"incomprehensible\" that Utrecht would tear down part of its own cultural infrastructure (DUIC, translated from Dutch).",
+  "sources": [
+   "https://www.duic.nl/cultuur/culturele-instellingen-in-utrecht-reageren-geschokt-en-verbijsterd-op-wegvallen-subsidies/"
+  ],
+  "reason": "The DUIC text is Dutch (\"een vernietigende slag\"); the English wording is a translation."
+ },
+ {
+  "id": "bak-utrecht",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: stated city reason"
+  ],
+  "before": "the stated reasons were the weak application (state) and a EUR 5.2 million shortfall across 100 applications (city).",
+  "after": "the stated reasons were the weak application (state) and doubts about the plans and low visitor numbers (city), in a round where the other 100 applications asked for over EUR 5.2 million more than was available (DUIC).",
+  "sources": [
+   "https://www.duic.nl/cultuur/culturele-instellingen-in-utrecht-reageren-geschokt-en-verbijsterd-op-wegvallen-subsidies/",
+   "https://www.duic.nl/cultuur/geen-subsidie-meer-naar-nederlands-filmfestival-en-tweetakt-wel-geld-naar-t-hoogt-bekijk-hier-het-nieuwste-cultuuradvies-utrecht/"
+  ],
+  "reason": "The shortfall was general, not the reason given for BAK; DUIC quotes the committee's concern over feasibility and visitor numbers."
+ },
+ {
+  "id": "banff-centre-for-arts-and-creativity-banff",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: '$1 million to $4,999,999' for the province",
+   "unsupported: 'other ministries'"
+  ],
+  "before": "Government of Alberta funds it through Alberta Advanced Education, the Alberta Foundation for the Arts and other ministries; the province gave $1 million to $4,999,999 in 2022-23 (stated by the space).",
+  "after": "The Government of Alberta is listed through Alberta Advanced Education, the Alberta Foundation for the Arts and, in 2022-23, Alberta Culture and Status of Women, with no amounts; no government is listed for 2020-21 and 2021-22 (stated by the space).",
+  "sources": [
+   "https://www.banffcentre.ca/supporters-banff-centre"
+  ],
+  "reason": "The $1 million to $4,999,999 tier on the supporters page belongs to the Suncor Energy Foundation, not to the province; no amounts are printed for any government."
+ },
+ {
+  "id": "banff-centre-for-arts-and-creativity-banff",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'annual funders'"
+  ],
+  "before": "Canadian Heritage and the Canada Council for the Arts are annual funders; Canadian Heritage gave",
+  "after": "Canadian Heritage and the Canada Council for the Arts are listed as federal funders in 2017-18, 2018-19, 2019-20 and 2022-23 (stated by the space); Canadian Heritage gave",
+  "sources": [
+   "https://www.banffcentre.ca/supporters-banff-centre",
+   "https://rechercher.ouvert.canada.ca/subventions/record/pch%2C016-2024-2025-Q4-1373610%2Ccurrent"
+  ],
+  "reason": "The page does not call any funder annual; it lists them by year without amounts."
+ },
+ {
+  "id": "banff-centre-for-arts-and-creativity-banff",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: Waterous 'controls ... through Waterous Energy Fund'"
+  ],
+  "before": "and controls a C$6.5 billion stake through Waterous Energy Fund (Reuters, 2025).",
+  "after": "and, as founder and managing partner of Waterous Energy Fund, controls a C$6.5 billion stake (Reuters, December 2025).",
+  "sources": [
+   "https://www.kitco.com/news/off-the-wire/2025-12-09/canadas-newest-oil-tycoon-shakes-sector-bold-expansion-plan"
+  ],
+  "reason": "Reuters says he controls the stake as founder and managing partner of the fund, not that the fund holds it."
+ },
+ {
+  "id": "banff-centre-for-arts-and-creativity-banff",
+  "section": "RED FLAGS",
+  "problems": [
+   "wrong author of the open letter"
+  ],
+  "before": "An open letter by former gallery staff Peta Rake and Shauna Thompson, signed by Kitty Scott, Rebecca Belmore and Ken Lum, asked leadership to \"publicly recommit\" to the visual arts (Canadian Art).",
+  "after": "An open letter signed by artists, curators and arts workers, including Kitty Scott, Rebecca Belmore and Ken Lum, asked leadership to \"publicly recommit\" to the visual arts (Canadian Art).",
+  "sources": [
+   "https://canadianart.ca/news/concern-rises-regarding-banff-centre-layoffs-visual-arts-cutbacks/"
+  ],
+  "reason": "Canadian Art says Rake and Thompson sent a separate 13 June message to Price and a board member; it does not name them as authors of the open letter."
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'elevated walkway'"
+  ],
+  "before": "linked to National Stadium BTS station by an elevated walkway.",
+  "after": "served by National Stadium BTS station (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bangkok_Art_and_Culture_Centre"
+  ],
+  "reason": "Wikipedia names the station and no walkway."
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'first contract ran from 2011'"
+  ],
+  "before": "the first contract ran from 2011 to 2021, and in March 2021 the governor announced another 10 years (Time Out Bangkok).",
+  "after": "the contract ended in August 2021, and in March 2021 the governor announced the foundation would manage the centre for another 10 years (Time Out Bangkok).",
+  "sources": [
+   "https://www.timeout.com/bangkok/news/bacc-update-032621"
+  ],
+  "reason": "Time Out gives the August 2021 end date and the 10-year announcement; it gives no 2011 start."
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 2018 stop sourced to ArtsEquator"
+  ],
+  "before": "BMA money was more than half the budget until it stopped in 2018, the city citing legal complications; the 2019 budget was 81 million baht (Time Out Bangkok; ArtsEquator via Bangkok Post).",
+  "after": "BMA money was more than half the budget until it stopped in 2018, the city citing legal complications (Time Out Bangkok); the yearly budget cited for 2019 was 81 million baht (ArtsEquator via Bangkok Post).",
+  "sources": [
+   "https://www.timeout.com/bangkok/news/bacc-update-032621",
+   "https://artsequator.com/?p=29913"
+  ],
+  "reason": "The 2018 stop and the legal reason are in Time Out only; ArtsEquator gives the 81 million baht figure and says nothing of a stop."
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'the city cut its annual 40 million baht' sourced to The Nation"
+  ],
+  "before": "make it a learning centre, and the city cut its annual 40 million baht (The Nation).",
+  "after": "make it a learning centre; the BMA said the foundation was 80 million baht in the red each year (The Nation).",
+  "sources": [
+   "https://www.nationthailand.com/in-focus/30345267"
+  ],
+  "reason": "The Nation does not report a cut of 40 million baht; it gives the BMA's 80 million baht loss claim."
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'BMA deferred any change'"
+  ],
+  "before": "- The BMA deferred any change of management until the contract ended in 2021, and the foundation kept the centre (Wikipedia; Time Out Bangkok).",
+  "after": "- In March 2021 the governor announced the foundation would keep managing the centre for another 10 years (Time Out Bangkok).",
+  "sources": [
+   "https://www.timeout.com/bangkok/news/bacc-update-032621",
+   "https://www.nationthailand.com/in-focus/30345267"
+  ],
+  "reason": "The Nation says only that a meeting would seek a \"final solution\"; no opened source says the BMA deferred the change."
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'artists ... mostly do not blame'"
+  ],
+  "before": "the artists quoted mostly do not blame the centre itself.",
+  "after": "the one artist quoted on the point, Paldron, does not blame the centre itself.",
+  "sources": [
+   "https://hyperallergic.com/thai-art-center-censors-exhibition-after-pressure-from-china"
+  ],
+  "reason": "Only Hyperallergic reports an artist absolving the centre."
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "hedge: 'could force'",
+   "unsupported: 'clean'"
+  ],
+  "before": "The money is clean but fragile: city funds that come and go, plus unnamed private sponsors. The weak point is that the city funder, together with a foreign embassy, could force changes to a show in 2025.",
+  "after": "The money is mainly city funds that come and go, plus unnamed private sponsors. The weak point is that the city funder was present when a foreign embassy pressed for changes to a show in 2025.",
+  "sources": [
+   "https://artreview.com/bangkok-art-culture-centre-removes-works-following-visit-from-chinese-officials"
+  ],
+  "reason": "\"Could force\" hedges and \"clean\" is a verdict; ArtReview says BMA representatives attended with the embassy officials."
+ },
+ {
+  "id": "bangkok-kunsthalle",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'gutted'"
+  ],
+  "before": "abandoned after a fire gutted the upper floors (ArtAsiaPacific; Wikipedia gives 2001 for the fire).",
+  "after": "abandoned after a fire damaged the upper floors (ArtAsiaPacific; Wikipedia gives 2001 for the fire).",
+  "sources": [
+   "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown"
+  ],
+  "reason": "ArtAsiaPacific says the fire damaged the upper floors; \"gutted\" goes beyond it."
+ },
+ {
+  "id": "bangkok-kunsthalle",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'talks and screenings'"
+  ],
+  "before": "it runs about four shows a year, residencies, talks and screenings, and is the urban counterpart",
+  "after": "it expects about four shows a year (Time Out Bangkok), has hosted artist residencies (Art Basel), and is the urban counterpart",
+  "sources": [
+   "https://www.timeout.com/bangkok/news/abandoned-brutalist-buildings-near-yaowarats-soi-nana-resurrected-as-art-space-bangkok-kunsthalle-011524",
+   "https://www.artbasel.com/stories/kunsthalle-art-forest-turn-thailand-into-southeast-asia-premier-art-hub"
+  ],
+  "reason": "Time Out gives about four shows a year and Art Basel gives residencies; no opened source mentions talks or screenings."
+ },
+ {
+  "id": "bangkok-kunsthalle",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'named in a ... class action'",
+   "missing outcome detail"
+  ],
+  "before": "CP Foods, controlled by CP Group, was named in a 2015 US class action against Costco over prawns raised on fishmeal from slave-crewed boats, following a 2014 Guardian investigation (Taipei Times, from The Guardian); a US court later dismissed it, and CP Foods said it does not own the boats named (Wikipedia).",
+  "after": "A 2015 US lawsuit against Costco alleged that its prawns came from CP Foods, part of CP Group, and other suppliers that fed them fishmeal from slave-crewed boats, following a 2014 Guardian investigation (Taipei Times, from The Guardian); a US court dismissed the lawsuit against Costco and CP Foods, and CP Foods said it does not own the fishing vessels referenced (Wikipedia).",
+  "sources": [
+   "https://taipeitimes.com/News/biz/archives/2015/08/21/2003625826",
+   "https://en.wikipedia.org/wiki/Charoen_Pokphand"
+  ],
+  "reason": "Taipei Times says the suit was against Costco and its Thai supplier and does not call it a class action; Wikipedia gives the dismissal and the vessel statement."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'on land given by John Bard'"
+  ],
+  "before": "on land given by John Bard; renamed",
+  "after": "on land John Bard had given to the Episcopal diocese; renamed",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bard_College"
+  ],
+  "reason": "Wikipedia says Bard gave the unfinished chapel and 18 acres to the diocese in 1858, not to the college."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'home of SummerScape'"
+  ],
+  "before": "Richard B. Fisher Center for the Performing Arts, home of SummerScape, and",
+  "after": "Richard B. Fisher Center for the Performing Arts, and",
+  "sources": [
+   "https://fishercenter.bard.edu/about/"
+  ],
+  "reason": "The Fisher Center page says Gehry designed it and does not mention SummerScape."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Higher Ed Dive for the $100 million; $1 billion campaign mixed up"
+  ],
+  "before": "Open Society Foundations gave $100 million in 2020, at $10 million a year for ten years, and George Soros pledged a $500 million endowment challenge in 2021, which started a $1 billion endowment campaign now complete (Wikipedia; Higher Ed Dive).",
+  "after": "Open Society Foundations gave $100 million in 2020, at $10 million a year for ten years, and George Soros gave a $500 million endowment challenge grant in 2021 (Wikipedia); Bard has wrapped up a $1 billion endowment campaign (Higher Ed Dive).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bard_College",
+   "https://www.highereddive.com/news/bard-college-president-retire-probe-ties-epstein/819259/"
+  ],
+  "reason": "Wikipedia ties the $1 billion figure to the Open Society University Network, not to a Bard campaign; Higher Ed Dive reports Bard's own $1 billion campaign and the 2021 gift separately."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: '$150,000' sourced to Higher Ed Dive"
+  ],
+  "before": "Epstein paid Botstein a $150,000 consulting fee in 2016, which Botstein says he gave to Bard; WilmerHale could not verify the arrangement, and the board did not know of it (Higher Ed Dive).",
+  "after": "Epstein hired Botstein for consulting work, paid $150,000 in 2016, which Botstein says he gave to Bard; WilmerHale could not verify the arrangement, and the board did not know of it (Higher Ed Dive, citing the Times Union for the amount).",
+  "sources": [
+   "https://www.highereddive.com/news/bard-college-president-retire-probe-ties-epstein/819259/"
+  ],
+  "reason": "Higher Ed Dive gives the $150,000 as Times Union reporting and dates the work two years after 2014."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'accomplice' as Raskin's exact claim"
+  ],
+  "before": "Unverified: Botstein was an accomplice, from Raskin, a member of Congress (WAMC).",
+  "after": "Unverified: Botstein was an accomplice in Epstein's trafficking of girls, from Rep. Jamie Raskin, as paraphrased by the reporter (WAMC).",
+  "sources": [
+   "https://www.wamc.org/news/2026-07-02/leon-botstein-steps-down-as-president-of-bard-college-but-what-does-that-actually-mean"
+  ],
+  "reason": "WAMC gives \"accomplice\" as its paraphrase of Raskin's letter, not his words."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'colleagues had left'"
+  ],
+  "before": "Staff said colleagues had left over his role and audiences asked whether he would be involved before buying tickets (WAMC).",
+  "after": "A staffer said the center risks losing staff and that ticket buyers asked whether he would be involved in upcoming performances (WAMC).",
+  "sources": [
+   "https://www.wamc.org/news/2026-07-02/leon-botstein-steps-down-as-president-of-bard-college-but-what-does-that-actually-mean"
+  ],
+  "reason": "WAMC reports a risk of losing staff and audience questions; it reports no departures."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: Apollo-commissioned"
+  ],
+  "before": "An Apollo-commissioned review found Black paid Epstein about $158 million from 2012 to 2017 (Hyperallergic, 2021).",
+  "after": "A review by the law firm Dechert, announced by Apollo, found Black paid Epstein $158 million from 2012 to 2017 (Hyperallergic, 2021).",
+  "sources": [
+   "https://hyperallergic.com/617233/moma-chairman-leon-black-steps-down-as-ceo-of-equity-firm-following-review-of-jeffrey-epstein-ties/"
+  ],
+  "reason": "Hyperallergic says Dechert conducted the review and Apollo announced it."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'nearly 200' sourced to OperaWire"
+  ],
+  "before": "calling him \"unfit to serve in a position of leadership\"; nearly 200 people signed (OperaWire; WAMC).",
+  "after": "calling him \"unfit to serve in a position of leadership over the young people on this campus\" (OperaWire); nearly 200 people signed (WAMC).",
+  "sources": [
+   "https://operawire.com/?p=112164",
+   "https://www.wamc.org/news/2026-07-02/leon-botstein-steps-down-as-president-of-bard-college-but-what-does-that-actually-mean"
+  ],
+  "reason": "OperaWire carries the quote but no signature count; WAMC gives the nearly 200."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'told by the college to stay silent'"
+  ],
+  "before": "- Staff were told by the college to stay silent on public statements.",
+  "after": "- Staff say they stayed silent on public statements \"at the College's direction.\"",
+  "sources": [
+   "https://operawire.com/?p=112164"
+  ],
+  "reason": "The letter says the silence was at the College's direction, in the staff's account."
+ },
+ {
+  "id": "bengal-foundation",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'largest classical music festival by performers on one stage'",
+   "unsupported: Kali O Kalam and 'artist documentaries' details"
+  ],
+  "before": "it also runs Bengal Publications, the magazine Kali O Kalam, artist documentaries and the Bengal Classical Music Festival, which it calls the largest classical music festival by performers on one stage (stated by the space).",
+  "after": "it also runs Bengal Publications, which issues books, magazines and folios, and the Bengal Classical Music Festival, which it calls the world's largest classical music festival in performers on a single stage, audience capacity and duration (stated by the space).",
+  "sources": [
+   "https://bengalfoundation.org/",
+   "https://en.wikipedia.org/wiki/Bengal_Foundation"
+  ],
+  "reason": "The site's claim covers audience capacity and duration as well as performers; Kali O Kalam appears only as a menu link there and as an app on Wikipedia."
+ },
+ {
+  "id": "bengal-foundation",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'police arrested'"
+  ],
+  "before": "In June 2007 police arrested Litu and a court sent him to Dhaka Central Jail for 30 days (The Daily Star).",
+  "after": "In June 2007 a Dhaka court sent Litu, then Bengal Group chairman, to Dhaka Central Jail on 30 days' detention after his three-day remand expired (The Daily Star).",
+  "sources": [
+   "https://archive.thedailystar.net/2007/06/09/d7060901096.htm"
+  ],
+  "reason": "The Daily Star says he was arrested in Gulshan and does not name the force that arrested him."
+ }
+]

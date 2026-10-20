@@ -75,7 +75,11 @@ corrects or adds to it; it does not restate it.
 - No verdict adjective (controversial, problematic, troubling) without the named event, date and
   actor behind it. No moralising about a funder; state what the funder does and let it stand.
 - Every number, date, person and title must appear in a source you opened. If the text says more
-  than the source, cut it back.
+  than the source, cut it back. Write each point from the page in front of you, not from a search
+  snippet or memory: no added job title, start date, descriptor ("Bergen investor") or superlative
+  ("largest", "entirely") the page does not state. Credit a point to the outlet that states it, and
+  mark your own translation of a quotation as a translation. The checkers found these the most
+  common faults in the first batches.
 - Flag headings follow the map's rules: state money alone is never a red flag; a funder flag
   (fossil fuels, gambling, tobacco, arms, opioids) needs the funder to be current (about the last
   five years) or a documented objection; founder or family money from a flagged industry counts
