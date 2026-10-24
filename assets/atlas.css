@@ -1701,15 +1701,15 @@ div:has(>#topThemeBtn){column-gap:0}
 /* =====================================================================
    PHONE SYSTEM (≤767px) — one authoritative layer, built like a SwiftUI view.
    Supersedes the earlier phone fixes above. Keep phone changes here.
-   - Type: one 14pt size. Hierarchy comes from weight (.headline 600)
-     and colour (.secondary), as SwiftUI does at a single Dynamic Type step.
+   - Type: text 14px/20 (.body), titles 16px/22 semibold (.headline),
+     labels 14px in secondary colour (.secondary).
    - Spacing: 4 / 8 / 12 / 16 grid. Tap targets: 44pt (secondary 32pt).
    - Layout: NavigationStack bar on top, scrolling content, and a single
      .safeAreaInset(edge: .bottom) composer. Never two composers at once.
    ===================================================================== */
 @media (max-width:767px){
   :root{
-    --m-size:14px; --m-lh:20px;
+    --m-size:14px; --m-lh:20px; --m-title:16px; --m-title-lh:22px;
     --m-s1:4px; --m-s2:8px; --m-s3:12px; --m-s4:16px;
     --m-tap:44px; --m-tap-2:32px;
     --m-secondary:color-mix(in srgb,var(--ink) 62%,transparent);
@@ -1725,8 +1725,9 @@ div:has(>#topThemeBtn){column-gap:0}
   }
   :root:root body *:not(svg):not(svg *)::before,:root:root body *:not(svg):not(svg *)::after{font-size:var(--m-size)!important;line-height:var(--m-lh)!important}
   :root:root body #mobileTopBar #reset-state-btn,:root:root body #mobileTopBar button{font-size:var(--m-size)!important}
-  /* .headline — titles carry weight, not size. */
-  :root:root body :is(h1,h2,h3,.lede,.t-lead,.curator-section-hdr,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.curator-hero-title){font-weight:600!important;margin-top:0}
+  /* .headline — titles: 16px, semibold. */
+  :root:root body :is(h1,h2,h3,h4,.lede,.curator-section-hdr,.layers-title,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.curator-hero-title),
+  :root:root body #mobileTopBar #mobileTopBrandBtn span{font-size:var(--m-title)!important;line-height:var(--m-title-lh)!important;font-weight:600!important;margin-top:0}
   /* .secondary — labels and meta. */
   :root:root body :is(.meta,.kicker,strong.meta){color:var(--m-secondary)!important;font-weight:400!important}
 
