@@ -1,0 +1,309 @@
+[
+ {
+  "id": "kaesong-koryo-museum-kaesong",
+  "section": "FUNDING / RED FLAGS / BOTTOM LINE",
+  "problems": [
+   "unsupported flag: no opened source names the owner or funding body, so no sanctioned owner is shown",
+   "internal wording: \"the Atlas record classes it a North Korean state museum\""
+  ],
+  "before": "Kaesong Koryo Museum: no funder found; the Atlas record classes it a North Korean state museum, but no page opened states its owner or budget\n- No reporting found of a budget, accounts, donor list or board.\n\nRed flags: sanctions on the North Korean government\n- Executive Order 13722, signed by President Obama on 15 March 2016, blocks property of the Government of North Korea and the Workers' Party of Korea within US jurisdiction. It defines the Government of North Korea as including its \"agencies, instrumentalities, and controlled entities\" (Executive Order text, American Presidency Project).\n- No reporting found that the museum itself is named on a sanctions list.\n\n\nNo private funder is found behind the museum, and no page opened states who owns or pays for it. The weak point is that the Atlas classes it as a North Korean state museum, which brings the US sanctions order; there are no accounts to check.",
+  "after": "Kaesong Koryo Museum: owner and funder not named in any page opened\n- No reporting found of a budget, accounts, donor list or board.\n- No reporting found of which state body or other owner funds or runs the museum, so no sanctioned owner is documented.\n\n\nNo funder is found behind the museum, and no page opened names who owns or pays for it, so no sanctions listing can be tied to it. The weak point is that no ownership, budget or board is published.",
+  "sources": [
+   "https://www.presidency.ucsb.edu/documents/executive-order-13722-blocking-property-the-government-north-korea-and-the-workers-party",
+   "https://koryogroup.com/blog/north-korea-guide-kaesong-koryo-museum",
+   "https://en.wikipedia.org/wiki/Koryo_Songgyungwan"
+  ],
+  "reason": "Wikipedia and Koryo Tours, both opened, say nothing about who owns, funds or runs the museum, and the Seoul Shinmun and Ajunews pieces name no owner either. EO 13722 blocks the Government of North Korea and its agencies, but no source shows this museum belongs to such a body, so the Sanctions red flag was cut and the gap stated."
+ },
+ {
+  "id": "korean-art-gallery-pyongyang",
+  "section": "FUNDING / OVERVIEW / RED FLAGS / BOTTOM LINE",
+  "problems": [
+   "unsupported flag: no opened source names the owner or funding body",
+   "unsupported verdict \"state-run\"",
+   "source mismatch: copies claim credited to Koryo Tours, which does not say it",
+   "internal wording: \"the Atlas record\""
+  ],
+  "before": "some displayed works are copies because the originals are stored elsewhere (Koryo Tours, Koryo Studio)\nKorean Art Gallery: state-run: North Korean state, owner and budget not published in any page opened\n- The Atlas record gives the funder as the Workers' Party of Korea state budget; no page opened states this.\n- Wikipedia gives the Ministry of Culture of North Korea and the National Tourism Administration as its sources, not as owners.\nRed flags: sanctions on the North Korean government\n- Executive Order 13722, signed by President Obama on 15 March 2016, blocks property of the Government of North Korea and the Workers' Party of Korea within US jurisdiction. It defines the Government of North Korea as including its \"agencies, instrumentalities, and controlled entities\" (Executive Order text, American Presidency Project).\n- No reporting found that the gallery itself is named on a sanctions list.\n\n\nNo private funder is found behind the gallery; the Atlas classes it as a North Korean state museum, which brings the US sanctions order. Its owner, budget and board are unpublished.",
+  "after": "some displayed works are copies because the originals are stored elsewhere (Koryo Studio)\nKorean Art Gallery: owner and funder not named in any page opened\n- The atlas listed the funder as the Workers' Party of Korea state budget; no page opened states this.\n- Wikipedia's references cite the Ministry of Culture of North Korea and the National Tourism Administration, but the article does not say either owns, funds or runs the gallery.\n- No reporting found of which state body or other owner funds or runs the gallery, so no sanctioned owner is documented.\n\nNo funder is found behind the gallery, and no page opened names who owns or pays for it, so no sanctions listing can be tied to it. Its owner, budget and board are unpublished.",
+  "sources": [
+   "https://www.presidency.ucsb.edu/documents/executive-order-13722-blocking-property-the-government-north-korea-and-the-workers-party",
+   "https://koryostudio.com/blog/art-galleries-north-korea/",
+   "https://en.wikipedia.org/wiki/Korean_Art_Gallery"
+  ],
+  "reason": "Koryo Tours, Koryo Studio and Wikipedia, all opened, do not say who owns, funds or runs the gallery, so the sanctions flag has no named owner to rest on and was cut. The copies remark appears on Koryo Studio's page only; the Koryo Tours page does not state it."
+ },
+ {
+  "id": "korean-central-history-museum-pyongyang",
+  "section": "FUNDING / RED FLAGS / BOTTOM LINE / WEBSITE",
+  "problems": [
+   "unsupported flag: no opened source names the owner or funding body",
+   "unsupported verdict \"state-run\"",
+   "internal wording: \"the Atlas record\""
+  ],
+  "before": "(checked 2026-10-24; the Atlas record lists none, and\nKorean Central History Museum: state-run: North Korean state, budget not published\n- No page opened states who owns or pays for the museum; Wikipedia names Kim Il Sung as founder and cites state media.\nRed flags: sanctions on the North Korean government\n- Executive Order 13722, signed by President Obama on 15 March 2016, blocks property of the Government of North Korea and the Workers' Party of Korea within US jurisdiction. It defines the Government of North Korea as including its \"agencies, instrumentalities, and controlled entities\" (Executive Order text, American Presidency Project).\n- No reporting found that the museum itself is named on a sanctions list.\n\n\nNo private funder is found behind the museum; the Atlas classes it as a North Korean state museum, which brings the US sanctions order. The weak points",
+  "after": "(checked 2026-10-24; the atlas lists none, and\nKorean Central History Museum: owner and funder not named in any page opened\n- No page opened states who owns or pays for the museum; Wikipedia names Kim Il Sung as founder and cites state media.\n- No reporting found of which state body or other owner funds or runs the museum, so no sanctioned owner is documented.\n\nNo funder is found behind the museum, and no page opened names who owns or pays for it, so no sanctions listing can be tied to it. The weak points",
+  "sources": [
+   "https://www.presidency.ucsb.edu/documents/executive-order-13722-blocking-property-the-government-north-korea-and-the-workers-party",
+   "https://en.wikipedia.org/wiki/Korean_Central_History_Museum",
+   "https://koryogroup.com/blog/central-history-museum-north-korea-travel-guide"
+  ],
+  "reason": "Wikipedia and Koryo Tours, both opened, name Kim Il Sung as founder but no ministry or body as owner or funder, so the Sanctions red flag was cut and the gap stated."
+ },
+ {
+  "id": "kuindzhi-art-museum",
+  "section": "OVERVIEW / FUNDING / RED FLAGS / WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "unsupported: \"a couple of blocks\" (Bellingcat says a few blocks)",
+   "sanctions list not tied to a page: US listing now sourced to OFAC, EU and UK to Black Sea News; Canada is not one of the lists the atlas uses",
+   "unsupported: \"men in balaclavas and uniforms\" (Moscow Times names the men and the balaclavas only)",
+   "stale \"Unverified\" label: the EU Council made the same statement in 2023",
+   "unsupported: EU decision \"lists\" the transfer to the Donetsk museum (not on any page opened)",
+   "source mismatch: Hyperallergic does not name Kapustnikova",
+   "internal wording: \"the Atlas record\""
+  ],
+  "before": "Bellingcat places it a couple of blocks from the destroyed Drama Theatre\n(checked 2026-10-24; the Atlas record lists none, and\nKuindzhi Art Museum: state-run: a municipal branch museum until 2022, then under the DNR culture ministry\nRed flags: sanctions on the occupying body, DNR\n- The DNR is on the sanctions lists of the United States (under Executive Orders 13660 and 14065), the EU (Council Regulation 269/2014), the UK and Canada, all taking effect in July 2014 (Black Sea News sanctions database).\n- The Atlas record says the museum is run by the DNR culture ministry; the only source opened for that is the sign Bellingcat saw at the door in 2022.\n- Unverified: that Natalia Kapustnikova of the Museum of Local Lore handed the paintings to the occupiers, from Mariupol mayoral adviser Petro Andriushchenko, a Ukrainian official (Bellingcat, Hyperallergic). In June 2023 the EU sanctioned her for handing over the Kuindzhi museum's works (Justice Info); Kapustnikova told Izvestiya the paintings were safe (Bellingcat).\n- Reports footage of men in balaclavas and uniforms packing paintings in Mariupol and gives the Donetsk museum's own account of storing them.\n- The Kuindzhi museum's paintings are among the works the EU decision lists as transferred to the Local History Museum of Donetsk.\n- Reports the Mariupol City Council's claim, from its Telegram post, that Russian forces took over 2,000 works from three museums to Donetsk.\n- Reports no Russian response; the accusation about the museum director comes from a city official, not an independent source.\nnow stands, damaged, under a body the US, EU, UK and Canada sanction.\n(also in WIDER CONTEXT) - The Kuindzhi museum's paintings are among the works the EU decision lists as transferred to the Local History Museum of Donetsk.",
+  "after": "Bellingcat places it a few blocks from the Drama Theatre, destroyed in an airstrike on 16 March 2022\n(checked 2026-10-24; the atlas lists none, and\nKuindzhi Art Museum: state-run: a municipal branch museum until 2022, then, according to a sign at its door, under the culture ministry of the Donetsk People's Republic\nRed flags: sanctions on the occupying body, DNR\n- The Donetsk People's Republic (DNR) was added to the US Treasury's SDN list on 16 July 2014 (OFAC). It is also listed by the EU under Council Regulation 269/2014 and by the UK, both from 25 July 2014 (Black Sea News sanctions database).\n- The only source for the DNR running the museum is the handwritten sign at the door that Bellingcat saw in 2022, which placed it under the DNR \"Ministry of Culture\". No source opened shows that ministry on a list of its own, or gives the museum's budget.\n- On 27 April 2022 Petro Andriushchenko, an adviser to Mariupol's mayor, said on Telegram that Natalia Kapustnikova, director of the Museum of Local Lore, had handed the paintings to the occupiers; she told Izvestiya the paintings were safe (Bellingcat). In June 2023 the EU Council sanctioned her, saying she \"gave those works willingly over to the Russian authorities\" without the consent of Ukrainian authorities or the Kuindzhi museum's director (Justice Info).\n- Reports pro-Kremlin media footage of DNR culture minister Zheltyakov, the anchor Mozgovoi and men in balaclavas packing paintings in Mariupol, and gives the Donetsk museum's own account of storing them.\n- The Kuindzhi museum is one of the museums Justice Info says lost its collection; the EU Council's 2023 statement on Kapustnikova names the Kuindzhi museum's works.\n- Reports the Mariupol City Council's claim, from its Telegram post, that Russian forces took over 2,000 works from three museums to Donetsk.\n- Reports no Russian response; a city official alleges that the director of the Mariupol Museum of Local History handed over the three Kuindzhi paintings, without naming her, so the accusation is not independent.\nnow stands, damaged, under a body the US, EU and UK sanction, on the evidence of one handwritten sign.\n(also in WIDER CONTEXT) - The Kuindzhi museum is the museum whose works the EU Council's 2023 statement on Kapustnikova names, which connects it to these sanctions.",
+  "sources": [
+   "https://ofac.treasury.gov/recent-actions/20140716",
+   "https://sanctions.blackseanews.net/en/entry/1216",
+   "https://www.bellingcat.com/news/europe/2022/06/07/clues-to-the-fate-of-five-damaged-cultural-heritage-sites-in-ukraine/"
+  ],
+  "reason": "OFAC's 16 July 2014 notice lists the Donetsk People's Republic as an SDN, and Black Sea News gives the EU and UK listings, so the Sanctions point is kept with the named body and lists. The link between the museum and the DNR rests only on the sign Bellingcat saw, which the report now says. Other fixes: Bellingcat says a few blocks, the Moscow Times names the footage participants, Hyperallergic does not name Kapustnikova, and the Justice Info piece reports the EU Council statement rather than Donetsk wording."
+ },
+ {
+  "id": "karachi-biennale-trust-karachi",
+  "section": "OVERVIEW / FUNDING / RED FLAGS / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "unsupported flag: \"state censorship\" item (no source shows the Sindh government or a funder ordered the closure)",
+   "unsupported: editions, themes and curator credited to the Trust site (they come from APP and Global Voices)",
+   "unsupported: KB24 sponsors by company name (the page gives logo file names only; K-Electric is read from \"ke-logo\")",
+   "misattributed quote: Rizvi called the statement \"repulsive\"; \"craven\" was Reem Khurshid",
+   "unsupported: Nasir press conference \"at the venue\" (the live video was from the venue)",
+   "unsupported: Dawn \"dates the destruction to November 2019\" (it gives no date)",
+   "vague: \"and others\"",
+   "moralising/verdict wording in bottom line",
+   "unsupported: statement \"to Dawn\" in the Global Voices item"
+  ],
+  "before": "- Editions on the Trust's site: KB17, KB19 (theme \"Ecology and the Environment\"), KB22 (art and technology, curator Faisal Anwar, Pakistan's 75th anniversary) and KB24. The site calls KB27 the fifth edition and says the Trust cancelled it, citing \"the war conditions prevailing in the region\" (stated by the Trust).\n- No reporting found of an annual report or accounts.\n\nFUNDING\n- KB24 sponsors by tier on the Trust's site: Gold, Bank Alfalah, HBL and Neo Color; Bronze, JS Bank, Image, Ali & Associates, Saga Foundation, Jubilee, Munir and Maliha Bhimjee; Energy Partner, K-Electric; and single-partner roles for HUM News, Signify, TCS and others.\n- The cancelled KB27 page thanks National Foods, EBM, Bank Alfalah, JS Bank, Khaadi and others, with the Culture Department of the Government of Sindh, British Council, Goethe-Institut and Pro Helvetia as institutional supporters (stated by the Trust).\n- K-Electric: Energy Partner of KB24. Wikipedia lists its plants as steam, combined-cycle and gas-fired units at Bin Qasim and Korangi.\nRed flags: 2019 censorship at KB19\n- On 27 October 2019 plainclothes men ordered Adeela Suleman's \"Killing Fields of Karachi\", 444 tombstone-like sculptures for the victims of killings by former police officer Rao Anwar, closed; part was sealed and the rest vandalised (Global Voices).\n- The organisers said the work, \"despite the artist's perspective\", was not compatible with the ethos of KB19 and said they were against censorship (Dawn, 28 October 2019).\n- Unverified: that the men came from a Pakistani intelligence agency, as they said themselves (Global Voices); Dawn named no agency or person.\n\n\nlawyer Mohammad Jibran Nasir held a press conference at the venue;\n Gives no organiser response to the 2019 closure and dates the destruction to November 2019, which conflicts with Global Voices.\ncriticism of it from Aiman Rizvi and Reem Khurshid, who called it \"craven\". A news report.\nThe weak points are the 2019 censorship at KB19, where the organisers backed the closure, and two fossil-fuel sponsors: Engro (KB22) and K-Electric (KB24).\n(also) Reports that organisers backed the closure in a statement to Dawn, and records",
+  "after": "- The Trust's site names four editions: KB17, KB19, KB22 and KB24. KB19's theme was ecology and the environment (Global Voices); KB22 focused on art and technology, with curator Faisal Anwar, for Pakistan's 75th anniversary (APP). The site calls KB27 the fifth edition and says the Trust cancelled it \"on account of the war conditions prevailing in the region\" (stated by the Trust).\n- No reporting found of an annual report or accounts.\n- On 27 October 2019, at KB19, plainclothes men ordered Adeela Suleman's \"Killing Fields of Karachi\", 444 tombstones for the victims of killings of which former police officer Rao Anwar is accused, closed; part was sealed and the rest vandalised, and the organisers backed the closure (Global Voices, Dawn).\n- No source found names the men's agency or shows that the Sindh government or any funder gave the order; Dawn named no agency or person, and the men said they were from a Pakistani intelligence agency (Global Voices).\n\nFUNDING\n- KB24 sponsors by tier on the Trust's site, which shows logos and names no company in text (names here are read from the logo file names): Gold, Bank Alfalah, HBL and Neo Color; Bronze, Image, JS Bank, Ali Associates, Saga Foundation and Jubilee, with Munir and Maliha Bhimjee; Energy Partner, a logo file named \"ke-logo\", which the atlas reads as K-Electric; and single-partner roles for HUM News, Signify and TCS.\n- The cancelled KB27 page thanks National Foods, EBM, Bank Alfalah, JS Bank, Vertika, Greaves, Dalda and Khaadi, and lists the Culture Department of the Government of Sindh, Karachi Metropolitan Corporation, British Council, Goethe-Institut, Alliance Francaise Karachi, the French Embassy and Pro Helvetia as venue partners (stated by the Trust).\n- K-Electric: the atlas reads the \"Energy Partner\" logo (file \"ke-logo\") of KB24 as K-Electric's; the Trust's page does not spell out the name. Wikipedia lists K-Electric's plants as steam, combined-cycle and gas-fired units at Bin Qasim and Korangi.\n- The organisers said the work, \"despite the artist's perspective\", was not compatible with the ethos of KB19 and said they were against censorship (Dawn, 28 October 2019).\n\n\nlawyer Mohammad Jibran Nasir spoke in a live video from the venue and later held a press conference;\n Gives no organiser response to the 2019 closure.\ncriticism of it: Reem Khurshid called it a \"craven statement\" and Aiman Rizvi called it \"repulsive\". A news report.\nThe weak points are two fossil-fuel sponsors, Engro (KB22) and, on the reading of a logo, K-Electric (KB24), and the 2019 closure of an installation at KB19, which the organisers backed; no source shows a funder or the Sindh government ordered it.\n(also) Reports that organisers backed the closure in a statement, and records",
+  "sources": [
+   "https://globalvoices.org/2019/10/30/pakistan-shuts-art-installation-depicting-extrajudicial-killings/",
+   "https://www.dawn.com/news/1513412/sealed-exhibit-on-extrajudicial-killings-not-compatible-with-ethos-of-karachi-biennale-say-organisers",
+   "https://karachibiennale.org.pk/partners/"
+  ],
+  "reason": "Dawn names no agency or person for the closure and Global Voices only reports what the men said, so no source shows the Sindh government or any funder closed the installation; the state-censorship item was moved out of Red flags into the Overview with that gap stated. Other fixes: the partners page has logos only, so company names are read from file names (K-Electric from 'ke-logo'); APP and Global Voices, not the Trust site, give the KB19 and KB22 themes; Dawn quotes 'craven' from Reem Khurshid and 'repulsive' from Aiman Rizvi."
+ },
+ {
+  "id": "koorie-heritage-trust-melbourne",
+  "section": "OVERVIEW / FUNDING / RED FLAGS / BOTTOM LINE",
+  "problems": [
+   "unsupported descriptor: \"Aboriginal-run\" (Wikipedia says Indigenous not-for-profit; the report says only that over 50% of the board must be Indigenous)",
+   "unsupported verdict: \"mainly public\" (grant income $1.62m of about $5.3m total income; trading income $2.87m is larger)",
+   "unsupported figure: Vitol 29.9% (Wikipedia says just under 30%)"
+  ],
+  "before": "- Aboriginal-run arts and cultural organisation in the Yarra Building at Federation Square, Melbourne, with free entry (Viva Energy, 2018).\nKoorie Heritage Trust: mainly public: Victorian and federal grants, with sponsors, philanthropy and trading income\nVitol holds 29.9% (Wikipedia).\nThe Trust is Aboriginal-run and mainly publicly funded, with a long list of named sponsors.",
+  "after": "- Indigenous not-for-profit arts and cultural organisation in the Yarra Building at Federation Square, Melbourne, with free entry (Wikipedia, Viva Energy, 2018).\nKoorie Heritage Trust: mixed: Victorian and federal grants, trading income, sponsors and philanthropy\nVitol holds just under 30% (Wikipedia).\nThe Trust's board must be more than 50% Indigenous, and its income comes from grants, trading and a long list of named sponsors.",
+  "sources": [
+   "https://kht.org.au/wp-content/uploads/2024/05/22-23-AnnualReport.pdf",
+   "https://en.wikipedia.org/wiki/Koorie_Heritage_Trust",
+   "https://en.wikipedia.org/wiki/Viva_Energy"
+  ],
+  "reason": "The annual report confirms every figure and funder named, but its income statement shows grant income of $1,617,021 against trading income of $2,865,439, so 'mainly public' and 'Aboriginal-run' were not supported. The Protest flag line already reads 'No reporting found of a protest, open letter or boycott', as asked; it was left unchanged."
+ },
+ {
+  "id": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+  "section": "OVERVIEW / RED FLAGS / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "internal wording: \"not clean by the map's rules\"",
+   "internal wording: \"the Atlas treats Gulf state bodies as a flag\"",
+   "unsupported: Ithra Art Prize \"run with Art Dubai\" had no source in the list (now sourced to the Art Dubai release)",
+   "misattributed: Hyperallergic says the Met and Brooklyn Museum would self-finance, not MoMA; MoMA hosted the Misk Art Institute launch",
+   "stated as fact: $400 million cost (Hyperallergic gives it as a reported figure)",
+   "cable title: it covers the King Abdulaziz Center for Knowledge and Culture and mentions Ithra only once"
+  ],
+  "before": "A 2009 US consulate cable describes it as a King Abdullah initiative that the King gave to Aramco to build; groundbreaking was 20 May 2008 (WikiLeaks, US consulate Dhahran).\nInaugurated by King Salman on 1 December, which The Art Newspaper dates to 2017 and Wikipedia to 2016; the two sources do not agree.\n- Programmes include the Ithra Art Prize, run with Art Dubai; Arab News,\nRed flags: Gulf state body, Aramco\n- Aramco, which built, funds and runs Ithra, is owned 82.19% by the Saudi government (Wikipedia); the Atlas treats Gulf state bodies as a flag.\n- Names Ithra: US curators and art directors previewed it in December 2017 on an invitation-only trip and became members of the Arab Art Education Initiative; says Aramco backs Ithra, which cost $400 million to build.\n- Names the Met, MoMA and the Brooklyn Museum as institutions that planned related shows; the Met and Brooklyn Museum said they would self-finance their events after the murder.\nThe money behind Ithra is not clean by the map's rules: Aramco, a national oil company owned 82.19% by the Saudi state, built, funds and runs it. The weak points are that state ownership, Aramco's fossil-fuel business and the use of Ithra in Saudi cultural diplomacy that Hyperallergic criticised in 2018.",
+  "after": "A 2009 US consulate cable on the King Abdulaziz Center for Knowledge and Culture, which mentions Ithra's programmes once, calls it a King Abdullah initiative that the King gave to Aramco to build; groundbreaking was 20 May 2008 (WikiLeaks, US consulate Dhahran).\nInaugurated by King Salman on 1 December; Wikipedia gives 2016, while The Art Newspaper, writing in January 2018, gives no year; the two sources do not agree.\n- Programmes include the Ithra Art Prize, launched in 2017 as a joint initiative with Art Dubai (Art Dubai press release, 2019); Arab News,\nRed flags: Gulf state body, Aramco\n- Aramco, which built, funds and runs Ithra, is a Saudi state-controlled company: the Saudi government holds 82.19% and the Public Investment Fund 12% (Wikipedia).\n- Names Ithra: US curators and art directors previewed it in December 2017 on an invitation-only trip and became members of the Arab Art Education Initiative; says Aramco backed Ithra's new home, a $400 million project in the piece's figure.\n- After the Khashoggi murder the Met and the Brooklyn Museum said they would self-finance their events; the piece also notes that MoMA hosted the launch of the Misk Art Institute.\nSaudi Aramco, a national oil company owned 82.19% by the Saudi government, built, funds and runs Ithra, and no other funder was found. The weak points are that state ownership, Aramco's oil business and the place of Ithra in the Saudi cultural diplomacy that Hyperallergic criticised in 2018.",
+  "sources": [
+   "https://cdn.artdubai.ae/wp-content/uploads/2019/07/Press-release_Open-call-for-Ithra-Art-Prize_-July-9_EN.pdf",
+   "https://hyperallergic.com/saudi-arabia-and-us-art-institutions",
+   "https://en.wikipedia.org/wiki/Saudi_Aramco"
+  ],
+  "reason": "Rewrote the bottom line and the Gulf-state flag line as plain facts without 'the map' or 'the Atlas'. Hyperallergic does not say MoMA self-financed (only the Met and Brooklyn Museum did), and gives the $400 million as a reported figure. The Art Dubai press release, now added to the source list, confirms the Ithra Art Prize is a joint Ithra and Art Dubai initiative from 2017."
+ },
+ {
+  "id": "judd-foundation",
+  "section": "OVERVIEW / FUNDING / NOT RELATED / CRITICISM / WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "unsupported: \"Set up by Judd's estate ... two years after his death\" (ARTnews says only that it was established in 1996)",
+   "misattributed: will claim credited to Roberta Smith (only ARTnews says it)",
+   "unsupported estimate: \"an estimated $23 million\" (ARTnews gives $23 million)",
+   "unsupported descriptor: \"five family foundations and funds\" (the list has five foundations and funds, not all family ones)",
+   "unsupported descriptors: Glimcher \"founder of Pace Gallery\", Zwirner \"a dealer that works with the foundation\"",
+   "unsupported: Chinati \"set up\" by Judd as a museum; WGBH says Judd acquired the base with Dia's help and Chinati now runs it",
+   "verdict \"clean\" with no named event"
+  ],
+  "before": "- Set up by Judd's estate in 1996, two years after his death; his will asked that the New York and Marfa properties be kept as he had installed them (Roberta Smith, New York Times; ARTnews).\nARTnews put the cost of the overhaul at an estimated $23 million.\nRoberta Smith wrote that the money was to pay off debts, fund an endowment and maintain the 16 buildings the foundation owns; she gave the Christie's guarantee of about $20 million as a report, not a confirmed figure.\nThe New York Community Trust, and five family foundations and funds (supporters list).\nNot related: the Chinati Foundation, the museum Judd set up on a former Army base in Marfa with Dia's help. It runs that 400-acre site separately (WGBH) and is a different organisation from the Judd Foundation.\n- Arne Glimcher, founder of Pace Gallery, criticised the sale\n- Read as a reprint on the site of David Zwirner, a dealer that works with the foundation.\nthe essay was published with the Chinati Foundation.\nThe money behind the Judd Foundation is clean: an endowment from the sale of Judd's own work, private patrons and small public grants, with no flagged funder.",
+  "after": "- Established in 1996; Judd's will asked that the New York and Marfa properties be kept as he had installed them (ARTnews).\nARTnews gave the cost of the overhaul as $23 million.\nRoberta Smith wrote that the foundation needed the money to cover debts and set up an endowment, and that it maintains 16 buildings in New York and Marfa; she gave the Christie's guarantee of about $20 million as a report, not a confirmed figure.\nThe New York Community Trust, and five other foundations and funds (supporters list).\nNot related: the Chinati Foundation, which runs the 400-acre former Army base in Marfa that Judd acquired with Dia's help (WGBH). It is a different organisation from the Judd Foundation.\n- Arne Glimcher, of Pace Gallery, criticised the sale\n- Read as a reprint on the site of the David Zwirner gallery.\ne-flux Education filed the essay under the Chinati Foundation.\nThe Judd Foundation's money comes from an endowment built on the sale of Judd's own work, private patrons and small public grants, and no flagged funder was found.",
+  "sources": [
+   "https://juddfoundation.org/wp-content/uploads/2026/07/FY2025_Judd_Supporters.pdf",
+   "https://davidzwirner.com/news/2016/specific-objectives-the-complex-task-of-preserving-donald-judd-s-legacy",
+   "https://www.taipeitimes.com/News/feat/archives/2006/04/27/2003304881"
+  ],
+  "reason": "ARTnews gives the 1996 founding, the will, the 36 works and 25 sales, the Stockebrand resignation and the Glimcher quote, but not 'Judd's estate', 'two years after', 'estimated' or 'founder of Pace'. The supporters PDF lists five foundations and funds besides the named ones, not five family foundations. WGBH says only that Judd acquired the base with Dia's help and that Chinati now runs it. The ProPublica FY2023 figures and the visiting details were confirmed unchanged."
+ },
+ {
+  "id": "kemper-museum-kansas-city",
+  "section": "OVERVIEW / FUNDING / RED FLAGS / BOTTOM LINE",
+  "problems": [
+   "unsupported: \"and a restraining order\" (Hyperallergic says $130 million in damages)",
+   "misattributed: Wikipedia \"calls it\" first and largest (the museum calls itself that)",
+   "unsupported: protest \"kept\" the exhibitions (the statement says only that the Kemper opened them)",
+   "contradiction: bottom line says no reporting on the museum's response, but KCUR reports a museum statement",
+   "unsupported: \"local corporations\" (the honor roll lists one corporate donor, UMB Financial)",
+   "missing source: trustee is the founders' son (KCUR)"
+  ],
+  "before": "Wikipedia calls it Missouri's first and largest contemporary museum.\n The 2025 board names Jessica May as Executive Director.\nKemper Museum: private: Kemper family trusts and foundations, other foundations and local corporations\n- Wikipedia gives an annual budget of about $5 million and about 75,000 visitors a year.\n\nson of the museum's founders, was a Kemper Museum trustee in 2019 (Hyperallergic).\nsued the city of Central Falls, Rhode Island, and the Wyatt board chair for $130 million and a restraining order after\n- On 3 October 2019 the Charlotte Street Foundation said Latinx artists had demonstrated at the Kemper over the trustee's ties to the lawsuit; it kept its 2019 Visual Artist Award exhibitions at the museum (Charlotte Street Foundation).\nwhich drew artist protests, with no reporting found on how the museum responded.",
+  "after": "Wikipedia says the museum calls itself Missouri's first and largest contemporary museum.\n\nKemper Museum: private: Kemper family trusts and foundations, other foundations and UMB Financial\n- Wikipedia gives an annual budget of about $5 million.\n\nson of the museum's founders, was a Kemper Museum trustee in 2019 (Hyperallergic, KCUR).\nsued the city of Central Falls, Rhode Island, and the Wyatt board chair for $130 million in damages after\n- On 3 October 2019 the Charlotte Street Foundation said Latinx artists had demonstrated at the Kemper over the trustee's ties to the lawsuit; the Kemper opened the foundation's 2019 Visual Artist Award exhibitions that evening (Charlotte Street Foundation).\n- The museum's communications director said it had received fewer than a dozen calls, and its statement called the museum \"a think-tank\" (KCUR, 31 August 2019).\nwhich drew artist protests; the museum answered only with a short statement and reported no change.",
+  "sources": [
+   "https://hyperallergic.com/514677/wyatt-detention-center/",
+   "https://www.kcur.org/arts-life/2019-08-31/the-kemper-museum-of-contemporary-art-caught-up-in-national-immigration-debate",
+   "https://charlottestreet.org/2019/10/charlotte-street-foundation-releases-statement-regarding-visual-artist-award-exhibition-at-kemper-museum/"
+  ],
+  "reason": "The honor roll amounts, the 2025 leadership list and the Hyperallergic trustee names were confirmed. Hyperallergic gives $130 million in damages with no restraining order; the Charlotte Street statement says the Kemper opened the exhibitions that night but not that the protest changed anything; KCUR reports a museum statement, so the bottom line no longer says no response was found."
+ },
+ {
+  "id": "karachi-biennale-trust-karachi",
+  "section": "OVERVIEW / FUNDING / RED FLAGS / layout",
+  "problems": [
+   "over length: 898 words against the 800 limit",
+   "layout: the organisers' statement bullet was left outside any heading",
+   "off-topic for the flag: NEPRA electrocution fine is not a fossil-fuel point"
+  ],
+  "before": "The Trust's site names four editions: KB17, KB19, KB22 and KB24. KB19's theme was ecology and the environment (Global Voices); KB22 focused on art and technology, with curator Faisal Anwar, for Pakistan's 75th anniversary (APP). The site calls KB27 the fifth edition and says the Trust cancelled it \"on account of the war conditions prevailing in the region\" (stated by the Trust).\n- No reporting found of a permanent site or collection; the Trust's site lists only editions.\n\n(Managing Trustee) and Atteqa Malik (Chairperson); Niilofur Farrukh and Amin Gulgee are among them.\nclosed; part was sealed and the rest vandalised, and the organisers backed the closure (Global Voices, Dawn).\n- No source found names the men's agency or shows that the Sindh government or any funder gave the order; Dawn named no agency or person, and the men said they were from a Pakistani intelligence agency (Global Voices).\n- KB24 sponsors by tier on the Trust's site, which shows logos and names no company in text (names here are read from the logo file names): Gold, Bank Alfalah, HBL and Neo Color; Bronze, Image, JS Bank, Ali Associates, Saga Foundation and Jubilee, with Munir and Maliha Bhimjee; Energy Partner, a logo file named \"ke-logo\", which the atlas reads as K-Electric; and single-partner roles for HUM News, Signify and TCS.\n, and lists the Culture Department of the Government of Sindh, Karachi Metropolitan Corporation, British Council, Goethe-Institut, Alliance Francaise Karachi, the French Embassy and Pro Helvetia as venue partners (stated by the Trust).\n- Engro: lead partner of KB22 (Rs. 75 million). Wikipedia lists the Thar Engro plant as a 660 MW lignite plant owned by Engro Powergen Thar Ltd, fed by an open-cast mine run by Sindh Engro Coal Mining Company, a joint venture of the Sindh government and Engro Corporation.\n- K-Electric: the atlas reads the \"Energy Partner\" logo (file \"ke-logo\") of KB24 as K-Electric's; the Trust's page does not spell out the name. Wikipedia lists K-Electric's plants as steam, combined-cycle and gas-fired units at Bin Qasim and Korangi.\n- In 2019 Pakistan's regulator NEPRA held K-Electric responsible for 19 of 35 electrocution deaths during the July and August rains and fined it Rs 50 million (Wikipedia).\n\n- The organisers said the work, \"despite the artist's perspective\", was not compatible with the ethos of KB19 and said they were against censorship (Dawn, 28 October 2019).\n\n- Argues censorship in Pakistani art breeds self-censorship and says art institutions must stand up to oppressive systems.\n- Quotes Niilofur Farrukh, as Trust CEO, saying before KB19 that the Biennale's guidelines came from \"what the public wants\" and that inclusion, not censorship, was the issue. Gives no organiser response to the 2019 closure.",
+  "after": "The Trust's site names KB17, KB19, KB22 and KB24. KB19's theme was ecology and the environment (Global Voices); KB22 focused on art and technology, curated by Faisal Anwar, for Pakistan's 75th anniversary (APP). The Trust cancelled KB27 \"on account of the war conditions prevailing in the region\" (stated by the Trust).\n\n(Managing Trustee) and Atteqa Malik (Chairperson).\nclosed; part was sealed and the rest vandalised. The organisers said the work, \"despite the artist's perspective\", was \"not compatible with the ethos of KB19\" and that they were against censorship (Global Voices, Dawn).\n- No source found shows that the Sindh government or any funder gave the order: the men said they were from a Pakistani intelligence agency (Global Voices), and Dawn named no agency or person.\n- KB24 logos on the Trust's site, with no company named in text (names here are read from logo file names): Gold, Bank Alfalah, HBL and Neo Color; Bronze, Image, JS Bank, Ali Associates, Saga Foundation and Jubilee; Energy Partner, file \"ke-logo\", which the atlas reads as K-Electric.\n, and lists the Culture Department of the Government of Sindh, British Council, Goethe-Institut and Pro Helvetia as venue partners (stated by the Trust).\n- Engro: lead partner of KB22 (Rs. 75 million). Wikipedia lists the Thar Engro plant as a 660 MW lignite plant owned by Engro Powergen Thar Ltd, fed by a mine run by Sindh Engro Coal Mining Company, a joint venture of the Sindh government and Engro Corporation.\n- K-Electric: the Trust's page does not spell out the name of its KB24 Energy Partner. Wikipedia lists K-Electric's plants as steam, combined-cycle and gas-fired units at Bin Qasim and Korangi.\n\n- Argues censorship in Pakistani art breeds self-censorship and that art institutions must stand up to oppressive systems.\n- Quotes Niilofur Farrukh, as Trust CEO, saying before KB19 that the guidelines came from \"what the public wants\" and that inclusion, not censorship, was the issue.",
+  "sources": [
+   "https://globalvoices.org/2019/10/30/pakistan-shuts-art-installation-depicting-extrajudicial-killings/",
+   "https://www.dawn.com/news/1513412/sealed-exhibit-on-extrajudicial-killings-not-compatible-with-ethos-of-karachi-biennale-say-organisers",
+   "https://www.dawn.com/news/1563415/discourse-censorship-in-art"
+  ],
+  "reason": "Trimmed the report under the 800-word limit, put the organisers' statement back under the Overview (it had been left under no heading after the censorship item moved), and cut the NEPRA fine, which is not a fossil-fuel funding point."
+ },
+ {
+  "id": "kemper-museum-kansas-city",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length: 823 words against the 800 limit",
+   "unsupported: \"with a central atrium under a skylight\" (not in the Wikipedia text read)",
+   "unsupported: \"the seller refunded\" (Wikipedia says the $5 million purchase was refunded)"
+  ],
+  "before": " for $6.6 million, with a central atrium under a skylight (Wikipedia).\n; the opening show was 28 O'Keeffe watercolours whose authenticity was challenged in 1999, after which the seller refunded the museum's $5 million (Wikipedia).\n- Also on site: the restaurant Oil on Linen, opened November 2024, which shows Frederick J. Brown's 110-painting installation \"The History of Art\" (Wikipedia).",
+  "after": " for $6.6 million (Wikipedia).\n; the opening show of 28 O'Keeffe watercolours was challenged as inauthentic in 1999 and the museum's $5 million purchase was refunded (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Kemper_Museum_of_Contemporary_Art"
+  ],
+  "reason": "Cut to fit the 800-word limit and removed two details the Wikipedia text read does not support."
+ },
+ {
+  "id": "kiran-nadar-museum-of-art-new-delhi",
+  "section": "OVERVIEW / FUNDING / RED FLAGS / CRITICISM",
+  "problems": [
+   "unsupported: \"on the ground floor next to Select Citywalk Mall\" (no opened source)",
+   "unsupported: \"1 January 2010\" (Wikipedia says January 2010)",
+   "unsupported: \"Global Indian, 2022\"",
+   "false: \"The team page lists only one trustee\" (it names no trustees besides Nadar's Shiv Nadar Foundation role)",
+   "unsupported quote: \"clear endorsement\"",
+   "unsupported: \"patronage can become patronising\"",
+   "spelling: The Art Newspaper writes \"Jan Shakti\""
+  ],
+  "before": "at DLF South Court Mall, Saket, New Delhi, on the ground floor next to Select Citywalk Mall; a second branch is in Noida (KNMA site, Global Indian).\nit was established on 1 January 2010 and began as a gallery in HCL Technologies' premises in Noida.\n- Branches total about 34,000 square feet (Global Indian).\nover 100,000 visitors a year (Global Indian, 2022).\nThe Art Newspaper's headline says Rabaté left the Louvre Abu Dhabi to head it.\nKiran Nadar Museum of Art: private: the founder and the Shiv Nadar Foundation, amounts unpublished\n- The team page lists only one trustee, Kiran Nadar, and one adviser, Deepanjana D. Klein, Special Advisor to the Chairperson.\n\nNo reporting found of the FCRA statements named in the Atlas record, which could not be located on the pages opened.\ncriticising \"Jana Shakti: A Collective Power\", a state exhibition\nciting Nadar's \"clear endorsement\" of events tied to the government's propaganda (The Art Newspaper, Sabrang India).\nand that patronage can become patronising.\nreports no official statement from the museum, only a public defence",
+  "after": "in South Court Mall, Saket, New Delhi; a second branch is in Noida (Wikipedia, Global Indian).\nit opened in January 2010 as a gallery in HCL Technologies' premises in Noida.\n- The museum covers 34,000 square feet (Global Indian).\nover 100,000 visitors a year (Global Indian).\nAn Art Newspaper headline of 2 February 2026 says Rabaté left the Louvre Abu Dhabi to head it.\nKiran Nadar Museum of Art: private: supported by the Shiv Nadar Foundation, amounts unpublished\n- The team page names Nadar as Chairperson and Deepanjana D. Klein as Special Advisor to the Chairperson; it names no other trustees and says nothing on funding.\n\nNo reporting found of the FCRA statements the atlas had listed; none could be located on the pages opened.\ncriticising \"Jana Shakti: A Collective Power\" (spelled \"Jan Shakti\" by The Art Newspaper), a state exhibition\nin protest (The Art Newspaper). His letter objected to Nadar's role as adviser to that exhibition and to \"instruments of state-sponsored propaganda\" in Indian cultural institutions (Sabrang India).\n.\ncontains no statement from the museum, and notes a public defence",
+  "sources": [
+   "https://www.theartnewspaper.com/2023/08/02/controversy-kiran-nadar-museum-of-art-in-delhi-india-private-museums",
+   "https://sabrangindia.in/bangladeshi-dissenting-voice-shahidul-alam-withdraws-from-knma-event-noida",
+   "https://www.globalindian.com/givingback/kiran-nadar-gifted-india-its-first-private-philanthropic-museum/"
+  ],
+  "reason": "Checked against the three pages: the Art Newspaper piece (2 August 2023) gives the dismissal, the reinstatement campaign, Alam's withdrawal and Nagy's defence but no quoted 'clear endorsement' and no 'patronising' argument; Global Indian gives 34,000 sq ft, 7,000 works and Shiv Nadar Foundation support; the team page names no trustees besides Nadar's foundation role."
+ },
+ {
+  "id": "kochi-muziris-biennale-kochi",
+  "section": "OVERVIEW / CRITICISM",
+  "problems": [
+   "unsupported: \"12 December 2012\" (Wikipedia says December 2012)",
+   "unsupported: Financial Inspection Wing \"found irregularities in the Rs 5 crore grant\" (Open says the report flagged irregularities in how funds were disbursed; critics alleged misuse of the grant)",
+   "imprecise: \"budget was centrally approved\" (Open: Rs 73 crore budget approved by a committee that included Union and state officials)"
+  ],
+  "before": "the first edition opened on 12 December 2012 (Wikipedia).\n- Reports that the state froze payments and began a vigilance inquiry after its Financial Inspection Wing found irregularities in the Rs 5 crore grant; the government withdrew its representatives.\n- Names Krishnamachari and Komu; they answered that the budget was centrally approved and welcomed the inquiry.",
+  "after": "the first edition opened in December 2012 (Wikipedia).\n- Reports that the state froze further payments after a Financial Inspection Wing report flagged irregularities in how the funds were disbursed, and a vigilance inquiry opened; critics led by the sculptor Kanayi Kunhiraman alleged misuse of the Rs 5 crore grant, and the government withdrew its nominated representatives.\n- Names Krishnamachari and Komu; Krishnamachari said a committee including Union and state officials had approved the Rs 73 crore budget, and Komu welcomed the inquiry.",
+  "sources": [
+   "https://openthemagazine.com/art-culture/the-show-goes-on",
+   "https://en.wikipedia.org/wiki/Kochi-Muziris_Biennale",
+   "https://www.e-flux.com/announcements/6783901/sixth-edition-nbsp-for-the-time-being"
+  ],
+  "reason": "Confirmed against the opened pages: the e-flux letter (53 signatories, 23 December 2022), The News Minute and Scroll accounts, Madhyamam's CAG item and grant amounts, Onmanorama's resignation, the Biennale's Bajaj item and site (Kallat as President, Attia as seventh curator), The Week and e-flux (Chopra with HH Art Spaces, dates). Open's account is narrower than the report's wording on the inquiry, so it was corrected."
+ },
+ {
+  "id": "kunsten-museum-of-modern-art-aalborg-aalborg",
+  "section": "OVERVIEW / FUNDING / RED FLAGS / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "unsupported: 1958 competition, 1969 start, redwood/ash/copper/brass and 6,000/2,500 square metres (not on the museum page opened)",
+   "unsupported: \"a library\" on site; \"the board itself\" as a board source",
+   "false: \"No reporting found of accessibility details\" (the visit page gives them)",
+   "unsupported verdict: \"mainly public\" (2021 public grants were about 41% of operating income, non-public grants about 36%)",
+   "unsupported: the Obel foundation \"funded the acquisition\" (Kunstkritikk says it supported the settlement; AFP says it resolved the dispute)",
+   "unsupported: \"a board seat ... tied to the Obel family\" in the bottom line (the report finds no link for Christen Obel)",
+   "internal wording: \"the Atlas record\""
+  ],
+  "before": "(checked 2026-10-24; loads; the Atlas record lists a Kulturmonitor article as its website, which is a news page, not the museum's site)\n- The white marble building was designed by Alvar Aalto with Elissa Aalto and Jean-Jacques Baruël after a competition announced in 1958, built 1969 to 1972 in marble with redwood, ash, copper and brass; it covers about 6,000 square metres, about 2,500 of them exhibition space (museum site).\na shop, the Kreativitarium learning programme, a sculpture park and a library (museum site, Wikipedia).\nthe others come from Aalborg City Council, Erhverv Norddanmark, the board itself and the staff (museum site).\n No reporting found of accessibility details from a page opened.\nKunsten Museum of Modern Art Aalborg: mainly public: Aalborg municipality and the Ministry of Culture, with large foundation grants\ntotal operating income 51,717,173 kr.\nthe Obel Family Foundation funded the museum's May 2024 acquisition of the work and settled the dispute; the price was not disclosed (Kunstkritikk, AFP via Raw Story).\nsupport for the 2024 acquisition of Jens Haaning's \"Take the Money and Run\" (Kulturmonitor, museum annual report, Kunstkritikk).\nthe Atlas record's 14.5% could not be confirmed.\nKunsten is mainly publicly funded, with a board seat and long-running grants tied to the Obel family, whose foundation owns C.W. Obel, a more-than-10% shareholder in Scandinavian Tobacco Group.",
+  "after": "(checked 2026-10-24; loads; the atlas listed a Kulturmonitor article as its website, which is a news page, not the museum's site)\n- The white marble building was designed by Alvar Aalto with Elissa Aalto and Jean-Jacques Baruël and completed in 1972; the museum calls it the only museum building Aalto designed outside Finland.\na shop, the Kreativitarium learning programme and a sculpture park (museum site, Wikipedia).\nthe others come from Aalborg City Council, Erhverv Norddanmark and the staff (museum site).\n A wheelchair can be reserved, companion-card holders enter free and the museum is certified dementia-friendly.\nKunsten Museum of Modern Art Aalborg: mixed: public grants from Aalborg municipality and the state, and large foundation grants\ntotal operating income 51,717,173 kr, of which public grants were about 41% and non-public grants about 36%.\nthe Obel Family Foundation supported the May 2024 settlement, under which the museum acquires the work; the price was not disclosed (Kunstkritikk), and the director said the foundation \"has resolved the Gordian knot\" (AFP via Raw Story).\nsupport for the 2024 settlement with Jens Haaning over \"Take the Money and Run\" (Kulturmonitor, museum annual report, Kunstkritikk).\nthe atlas's earlier 14.5% could not be confirmed.\nKunsten is funded by public grants and foundation grants, including long-running grants from the Obel family foundation, which owns C.W. Obel, a more-than-10% shareholder in Scandinavian Tobacco Group.",
+  "sources": [
+   "https://www.kunsten.dk/sites/default/files/2025-09/aarsberetning_2021.pdf",
+   "https://kunstkritikk.dk/jens-haaning-reaches-settlement-with-danish-museum/",
+   "https://www.rawstory.com/danish-museum-settles-dispute-with-artist-over-missing-cash/"
+  ],
+  "reason": "The 2021 annual report confirms every grant figure and the thank-you list, but public grants are about 41% of operating income and non-public grants about 36%, so 'mainly public' was not supported. The museum site gives the 1972 completion and the board, not the 1958 competition, materials or areas. Kunstkritikk says the Obel foundation supported the settlement, and AFP quotes the director on it; neither says it paid for the acquisition."
+ },
+ {
+  "id": "kuindzhi-art-museum",
+  "section": "OVERVIEW / FUNDING / CRITICISM / WIDER CONTEXT",
+  "problems": [
+   "over length: 854 words against the 800 limit (repeated sign point, building history, replicas)",
+   "hedge: \"alleges\" (the claim is unverified and now labelled so)"
+  ],
+  "before": " Tatiana Buli is listed as director (Wikipedia).\n- Housed in a building put up in 1902 as a wedding gift for Valentina Gadzinova, wife of the founder of the Real School (Wikipedia).\n\n- Bellingcat saw a handwritten sign at the door placing the building under the \"Ministry of Culture\" of the self-proclaimed Donetsk People's Republic (DNR).\n\n- Occupation authorities set up an open-air exhibition in a central Mariupol park showing digital replicas of the stolen works (Justice Info, 2025).\n\n- Reports no Russian response; a city official alleges that the director of the Mariupol Museum of Local History handed over the three Kuindzhi paintings, without naming her, so the accusation is not independent.\nreports that over 2,000 artefacts were removed from the Kuindzhi museum within days to temporary storage in Donetsk, and that the EU sanctioned four museum directors in June 2023 for roles in transfers of Ukrainian collections.",
+  "after": "\n\n\n\n- Reports no Russian response. Unverified: that the director of the Mariupol Museum of Local History handed over the three Kuindzhi paintings, from a city official who is not named in the piece.\nreports that over 2,000 artefacts were removed from the Kuindzhi museum to temporary storage in Donetsk, and that the EU sanctioned four museum directors in June 2023 over transfers of Ukrainian collections.",
+  "sources": [
+   "https://hyperallergic.com/729290/ukraine-accuses-russia-looting-mariupol-melitopol-artworks/",
+   "https://www.justiceinfo.net/en/148452-art-of-war-ukraine.html",
+   "https://en.wikipedia.org/wiki/Kuindzhi_Art_Museum"
+  ],
+  "reason": "Cut to the 800-word limit by removing repeated or non-essential points; the Hyperallergic claim about the director is labelled Unverified because the piece names no source for it beyond a city official."
+ },
+ {
+  "id": "kochi-muziris-biennale-kochi",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "hedge: \"alleged\" (an unconfirmed claim takes the Unverified label)"
+  ],
+  "before": "; critics led by the sculptor Kanayi Kunhiraman alleged misuse of the Rs 5 crore grant, and the government withdrew its nominated representatives.",
+  "after": "; the government withdrew its nominated representatives.\n- Unverified: that the Rs 5 crore state grant was misused, from critics led by the sculptor Kanayi Kunhiraman (Open).",
+  "sources": [
+   "https://openthemagazine.com/art-culture/the-show-goes-on"
+  ],
+  "reason": "Open reports the misuse claim as one made by critics; it is now labelled Unverified with the claimants named, and the Financial Inspection Wing finding stays as the reported fact."
+ },
+ {
+  "id": "kemper-museum-kansas-city",
+  "section": "NOT RELATED / SOURCES",
+  "problems": [
+   "unsupported: \"its own tax ID (ProPublica)\" (the ProPublica record is for the Kansas City museum's operating foundation and never mentions the Saint Joseph museum)"
+  ],
+  "before": "a separate organisation with its own tax ID (ProPublica); no reporting found linking it to the Kansas City museum.\n- https://projects.propublica.org/nonprofits/api/v2/organizations/431715390.json",
+  "after": "a separate museum; Wikipedia says its name honours R. Crosby Kemper's patronage, and no source opened links it to this museum.\n- https://projects.propublica.org/nonprofits/api/v2/organizations/431715390.json\n- https://en.wikipedia.org/wiki/Albrecht-Kemper_Museum_of_Art",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Albrecht-Kemper_Museum_of_Art",
+   "https://projects.propublica.org/nonprofits/api/v2/organizations/431715390.json"
+  ],
+  "reason": "The ProPublica record is for the Kansas City museum's operating foundation and does not show the Saint Joseph museum has a different tax ID. Wikipedia places the Albrecht-Kemper in Saint Joseph and says it is named for R. Crosby Kemper's patronage, without linking it to the Kansas City museum."
+ }
+]

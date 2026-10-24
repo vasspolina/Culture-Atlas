@@ -35,6 +35,7 @@ PRESS_ITEM = re.compile(r'^(\d+)[.)]\s+(.+?)\s*$')
 URL = re.compile(r'https?://[^\s)>\]]+')
 HEDGES = re.compile(r'\b(may|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|believed to|likely|some say)\b')   # lower case: "May" is the month
 PROMO = re.compile(r'\b(vibrant|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|tapestry|testament to|nestled|boasts?|showcases?|fosters?|underscores?|delves?|ecosystem|plays a crucial role|it is worth noting|a diverse range of|among others|and more(?! than))\b')   # lower case: Foster is a name
+INTERNAL = re.compile(r"\b(the editor|the map|the map's|atlas record|the record says|the checker|slop check)\b", re.I)
 DASH = re.compile(r'\s[–—]\s|[–—]')
 
 
@@ -145,7 +146,7 @@ def lint(d):
         soft.append(f'{words} words (limit 800)')
     for t in texts:
         unq = re.sub(r'"[^"]*"|“[^”]*”', '', t)   # quoted source words are allowed
-        for rx, name in ((DASH, 'dash'), (HEDGES, 'hedge'), (PROMO, 'promo')):
+        for rx, name in ((DASH, 'dash'), (HEDGES, 'hedge'), (PROMO, 'promo'), (INTERNAL, 'internal wording')):
             m = rx.search(unq)
             if m:
                 soft.append(f'{name}: "{m.group(0).strip()}" in "{t[:80]}"')
