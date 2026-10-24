@@ -141,3 +141,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - he-art-museum-foshan: the old domain is dead (hem.org works); Midea factories in the Uyghur labour-transfer scheme (TBIJ 2025).
 - hasty-pudding-theatricals-cambridge: Epstein-linked charities gave at least $375,000 (2013 to 2019).
 - hammer-museum: no current Occidental money found.
+
+## d011 (research notes, before its slop check)
+- israel-museum: the 2025 register income split (21, 27, 39 percent) could not be checked; the register page was empty. State share 10 to 12 percent is from Wikipedia. The museum site fails its certificate check.
+- jewish-museum-and-tolerance-center-moscow: Kommersant (2014) names Gazprombank Asset Management only for the Hermitage and Peterhof, not this museum; no source names Rosneft as an exhibition partner.
+- john-f-kennedy-center-for-the-performing-arts: the record's $100M shortfall was not found; the Washington Post gives ticket income down 15 percent to September 2025 and a $48M pledge write-off. The site returned 403.
+- johannesburg-art-gallery-johannesburg: the record's website is the Heritage Foundation's page, a party to the dispute with the City.
+- jordan-national-gallery-of-fine-arts-amman: the gallery says over 3,000 works, Wikipedia over 2,000.
+- joslyn-art-museum-omaha: the Hawks Pavilion gift amount is not reported in any opened source.
+- istanbul-biennial-iksv: medyascope.tv returned 410.
