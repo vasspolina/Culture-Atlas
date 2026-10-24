@@ -559,3 +559,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - anadolu-kultur-depo-and-diyarbak-r-arts-center: the Sigrid Rausing Trust page still calls Kavala chair; Anadolu Kültür's own page lists Asena Günal as chair.
 - audain-art-museum: Polygon, Onni and Whistler Blackcomb Foundation money not confirmed.
 - ayala-museum: the museum's own pages give no hours or admission; the Ayala Foundation 2024 report was too large to open.
+
+## d030 slop check (21 entries; 11 reports checked, Zoma not imported or touched)
+- yerba-buena-center-for-the-arts-san-francisco: protest: action 15 Feb 2024, statement 21 Feb, open letters and boycott call 26 Feb, resignation letter 3 March (KQED), Ronen's remarks 5 March; Hyperallergic reports the organizers citing the Hewlett and Koret foundations; Variable West is advocacy, its funder claim Unverified.
+- yuz-museum-shanghai: the Gulf state body flag stays because Qatar Museums' own release says it organised "Watering the Desert" at Yuz (8 Nov 2023 to 3 March 2024); no page shows Qatar Museums funding Yuz; The Art Newspaper (4 Dec 2019): its role "will focus on exhibitions and not extend to the foundation".
+- zabludowicz-collection-london: BDZ founded 2014; 18 May 2021 (600+ signatories); 26 July 2021 (25 artists); arms and defence: a Tamares stake in Knafaim (Hyperallergic, 2021), Shlomo's Soltam business, a 2013 Bath report on BICOM funding; no page shows the stake after 2021 or that arms money funds the collection.
+- zacheta-national-gallery-of-art-warsaw: ORLEN named patron on the partners page and on ORLEN's own page, no start year or amount; Janowski's dismissal 22 Dec 2023, delivered by Wróblewska; ten-artist copyright protest.
+- zkm-center-for-art-and-media-karlsruhe: EnBW is "Partner" on the partners page and "Hauptsponsor" in the 28 March 2022 release; the red flag stays because EnBW's Wikipedia page documents coal and gas plants (Altbach, Heilbronn, Walheim; coal exit planned by 2028).
+- zotov-centre-for-constructivism-moscow: VTB: US Treasury 24 Feb 2022 (full blocking, E.O. 14024); the UK asset freeze announced the same day and the EU SWIFT ban (Regulation 2022/345, in force 12 March 2022) rest on law-firm alerts; the EU measure is a SWIFT ban, not an asset freeze.
+- amon-carter-museum: the support page also lists Eagle Energy Systems, LTD among corporate supporters; the page does not say what that company does.
+- 32-east-ugandan-arts-trust-kampala: Sigrid Rausing Trust amounts confirmed; DOEN, Segal and Open Society unconfirmed.
