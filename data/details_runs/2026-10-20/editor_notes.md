@@ -578,3 +578,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - barbados-museum-and-historical-society: the grant-cut and China-donation facts are not in the report (Nation News 403).
 - blak-dot-gallery-melbourne: the $363k federal grant and ACNC revenue figures seen only in search snippets are left out.
 - botswana-national-museum-and-art-gallery: no working official site found; P33m refurbishment still unfinished as of Dec 2022.
+
+## d032 slop check (15 entries; every report changed)
+- barbican-art-gallery-the-curve: Exhibit B: petition by Sara Myers, more than 8,000 signatures in two weeks (Artlyst, 24 Sept 2014); Unravel: lenders Leviste and Mayet removed the quilts on 29 Feb 2024 (Hyperallergic); Barbican Stories: a book of more than 100 accounts dating back to 2014 (The Art Newspaper, 10 Aug 2021), the City of London Corporation commissioned the Lewis Silkin LLP review; open letter: more than 170 signatories (ArtReview, 20 Feb 2026). The ArtReview source about the arts director's departure was not opened.
+- bienal-de-cuenca: El Mercurio, 25 Nov 2025: director Pacurucu reported "warnings"; one email was signed by DPOT, a movement the page does not define; no state body is named as a sender; the page does not say who funds or controls the biennial; the Fiscalía del Azuay only received the complaint: "not state censorship on the page". Only one article covers it.
+- bonnefanten: the Red flags section removed; VriendenLoterij is a plain Funding bullet.
+- benesse-art-site-naoshima: 3 March 2024: EFU Investments and a BPEA EQT fund completed the purchase of a 70.1% stake (Wikipedia; one reference gives 70.21%); the EQT release gives no ownership figure and does not mention EFU; the 2014 data leak (Gigazine, 9 July 2014) does not mention Naoshima.
+- bemis-center: sponsor-page listings are in the $10,000 to $19,999 tier, not the top tier.
+- bienal-de-artes-mediales-de-santiago: the Ministry funding is documented only on the CChV pages, which describe the CChV's funders, not the biennial's.
+- biennale-jogja: ArtReview gives no year for the 18th edition.
+- botswana-national-museum-and-art-gallery: Music in Africa profile dated 28 Oct 2015.
