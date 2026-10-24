@@ -1,62 +1,77 @@
 import { useCallback, useEffect, useState } from 'react';
 
 const API = (window.ATLAS_REPORT_API_URL || '').replace(/\/+$/, '');
+const VIEWS = [
+  ['PENDING', 'Waiting'],
+  ['APPROVED', 'On the atlas'],
+  ['REJECTED', 'Rejected']
+];
 
 export function AdminModerator() {
   const [token, setToken] = useState(() => {
     try { return sessionStorage.getItem('atlas-report-admin-token') || ''; } catch { return ''; }
   });
+  const [view, setView] = useState('PENDING');
   const [reports, setReports] = useState([]);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const loadPending = useCallback(async () => {
+  const request = useCallback(async (path, options = {}) => {
+    const response = await fetch(API + path, {
+      ...options,
+      headers: {
+        ...(options.body ? { 'Content-Type': 'application/json' } : {}),
+        Authorization: `Bearer ${token}`
+      }
+    });
+    const body = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(body.error || `Request failed (${response.status}).`);
+    return body;
+  }, [token]);
+
+  const load = useCallback(async () => {
     if (!API || !token) return;
     setLoading(true);
     setError('');
     try {
-      const response = await fetch(API + '/api/admin/reports/pending', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const body = await response.json();
-      if (!response.ok) throw new Error(body.error || `Request failed (${response.status}).`);
-      setReports(body);
+      setReports(await request(`/api/admin/reports?status=${view}`));
       try { sessionStorage.setItem('atlas-report-admin-token', token); } catch {}
     } catch (err) {
-      setError(err.message || 'Could not load reports.');
+      setError(err.message || 'Could not load notes.');
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  }, [request, token, view]);
 
-  useEffect(() => { loadPending(); }, [loadPending]);
+  useEffect(() => { load(); }, [load]);
 
-  async function handleDecision(id, status) {
+  async function act(id, run) {
     setBusy(id);
     setError('');
     try {
-      const response = await fetch(`${API}/api/admin/reports/${encodeURIComponent(id)}/status`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ status })
-      });
-      const body = await response.json();
-      if (!response.ok) throw new Error(body.error || `Request failed (${response.status}).`);
+      await run();
       setReports(current => current.filter(report => report.id !== id));
     } catch (err) {
-      setError(err.message || 'Could not update this report.');
+      setError(err.message || 'Could not update this note.');
     } finally {
       setBusy('');
     }
   }
 
+  const setStatus = (id, status) => act(id, () => request(`/api/admin/reports/${encodeURIComponent(id)}/status`, {
+    method: 'PATCH',
+    body: JSON.stringify({ status })
+  }));
+
+  const remove = id => {
+    if (!window.confirm('Delete this note for good? It cannot be brought back.')) return;
+    return act(id, () => request(`/api/admin/reports/${encodeURIComponent(id)}`, { method: 'DELETE' }));
+  };
+
   return (
     <main className="report-moderator">
-      <h1>Pending whistleblower reports</h1>
+      <h1>Whistleblower notes</h1>
       {!API && <p role="alert">Set ATLAS_REPORT_API_URL in assets/config.js to connect the report API.</p>}
       <label>
         Admin bearer token
@@ -67,33 +82,44 @@ export function AdminModerator() {
           onChange={event => setToken(event.target.value)}
         />
       </label>
-      <button type="button" onClick={loadPending} disabled={!API || !token || loading}>
-        {loading ? 'Loading…' : 'Refresh queue'}
+      <div role="group" aria-label="Show notes">
+        {VIEWS.map(([status, label]) => (
+          <button key={status} type="button" aria-pressed={view === status} onClick={() => setView(status)}>
+            {label}
+          </button>
+        ))}
+      </div>
+      <button type="button" onClick={load} disabled={!API || !token || loading}>
+        {loading ? 'Loading…' : 'Refresh'}
       </button>
       {error && <p role="alert">{error}</p>}
-      {!loading && reports.length === 0 && <p>No submissions are waiting for review.</p>}
+      {!loading && reports.length === 0 && <p>No notes here.</p>}
       <ul>
         {reports.map(report => (
           <li key={report.id}>
             <p>
-              <strong>{report.city}</strong>
-              {report.institution ? ` | ${report.institution}` : ''}
+              <strong>{report.institution || report.city}</strong>
+              {report.institution ? ` | ${report.city}` : ''}
               {' · '}{new Date(report.createdAt).toLocaleString()}
             </p>
-            <p>{report.content}</p>
-            <button
-              type="button"
-              disabled={busy === report.id}
-              onClick={() => handleDecision(report.id, 'APPROVED')}
-            >
-              Approve &amp; Post to Map
-            </button>
-            <button
-              type="button"
-              disabled={busy === report.id}
-              onClick={() => handleDecision(report.id, 'REJECTED')}
-            >
-              Reject
+            <p style={{ whiteSpace: 'pre-wrap' }}>{report.content}</p>
+            {report.status !== 'APPROVED' && (
+              <button type="button" disabled={busy === report.id} onClick={() => setStatus(report.id, 'APPROVED')}>
+                Approve
+              </button>
+            )}
+            {report.status === 'PENDING' && (
+              <button type="button" disabled={busy === report.id} onClick={() => setStatus(report.id, 'REJECTED')}>
+                Reject
+              </button>
+            )}
+            {report.status === 'APPROVED' && (
+              <button type="button" disabled={busy === report.id} onClick={() => setStatus(report.id, 'PENDING')}>
+                Take off the atlas
+              </button>
+            )}
+            <button type="button" disabled={busy === report.id} onClick={() => remove(report.id)}>
+              Delete
             </button>
           </li>
         ))}

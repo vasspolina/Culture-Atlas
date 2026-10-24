@@ -35,7 +35,7 @@ python3 -m http.server 8080
 
 Then open [http://localhost:8080](http://localhost:8080).
 
-To try Share information against a local backend, run the Worker with `npx wrangler dev` in `worker/` and set `window.ATLAS_SUBMIT_URL` in `assets/config.js` to `http://localhost:8787` (local addresses are always allowed). The separate Prisma-backed whistleblower API is documented below.
+To try Share information against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
 
 ---
 
@@ -53,15 +53,15 @@ Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a f
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
-## Share information: notes wait for approval
+## Share information: whistleblower notes wait for approval
 
-Share information sends a reader's note to a small backend, a Cloudflare Worker in `worker/` with one KV store. Every note is kept as waiting and shows nowhere until the editor approves it on `admin.html` (the review page, behind a password). There the text, the space it belongs to and a source link can be corrected before approving; a rejected note is deleted. An approved note appears on its space's record under "Shared by readers and approved by the editor", within a minute. No name, email or IP address is stored; the only trace of a sender is a salted hash of their address, kept for an hour to allow ten notes an hour.
+Share information opens the whistleblower note. It is the only note a reader can write: the page no longer has information or gossip notes, and it never saves a note in the reader's browser. A note is sent to the report API below, held as waiting, and shows on its institution's record only after the editor approves it on `reports-admin.html`. If it cannot be sent, the text stays in the box and nothing is kept.
 
-While `window.ATLAS_SUBMIT_URL` in `assets/config.js` is empty, information and gossip notes stay in the reader's browser. Whistleblower reports are never saved locally: configure `window.ATLAS_REPORT_API_URL` to enable their database-backed submission, or the page will tell the reader that report service is unavailable.
+The Cloudflare Worker in `worker/` predates this. The page no longer sends notes to it; if `window.ATLAS_SUBMIT_URL` is set, the page still shows information and gossip notes the editor approved there earlier. The Worker refuses whistleblower notes. Its setup is kept below for the chat proxy (`/chat`), which it also serves.
 
 ### Prisma-backed whistleblower reports
 
-The optional Express API stores whistleblower reports in SQLite with Prisma. Unlike the Worker note flow above, reports submitted through this API are not copied into browser storage. They remain private while pending, and approved reports are loaded into the matching institution record (or records in the same city when no institution was supplied).
+Whistleblower notes are held by an Express API with SQLite and Prisma. A note is stored as `PENDING` and is invisible to the public until the editor approves it on `reports-admin.html`. Approved notes then show on the institution's record as a review list in the style of Google Maps customer reviews: a count ("3 whistleblower notes"), then one entry per note with the reviewer line "Whistleblower", the date and the text, newest first. There are no stars, because a note is not a rating. A note about an institution shows on that institution's record; a note that names only a city shows on the records in that city. The map pin's hover card is drawn on the canvas and has no room for a list, so reviews appear on the record only. Notes are not posted to Google Maps.
 
 From the repository root:
 
@@ -77,7 +77,43 @@ npm run db:push
 npm start
 ```
 
-Set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to the API origin, for example `http://localhost:4000`. Whistleblower notes then use `POST /api/reports`; information and gossip notes keep using the existing Share information Worker/browser flow. The report moderation page is `reports-admin.html` and is linked from `admin.html`; it asks for the admin bearer token and does not embed a secret in the page. `admin/AdminModerator.jsx` provides the requested React moderation component for a React host. The API allows browser requests only from origins listed in `ALLOWED_ORIGINS`. The repository's GitHub Pages deployment serves static files only, so host this Node API separately and configure its public origin in `assets/config.js` before enabling submissions.
+Set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to the API origin, for example `http://localhost:4000`. The API reads `institutions.json` at start to check each note against the atlas; keep it in the repository root where the API runs, or set `INSTITUTIONS_FILE` to its path. The API allows browser requests only from origins listed in `ALLOWED_ORIGINS`. The repository's GitHub Pages deployment serves static files only, so host this Node API separately and configure its public origin in `assets/config.js` before enabling submissions.
+
+**Checks before anything is saved** (`server/validate.js`): the text is trimmed, HTML tags and control characters are removed, and the note must be 10 to 2000 characters once cleaned. It must name an institution that is on the atlas (matched by name, ignoring case) or, failing that, a city that is on the atlas; the stored city is taken from the matched record. Client-sent status, id and coordinates are ignored. Each sender may submit 5 notes an hour (`REPORTS_PER_HOUR`); behind a proxy set `TRUST_PROXY=1` so the limit sees the sender and not the proxy. The limit is counted in memory under a salted hash of the address that is never written to the database or a log and disappears on restart.
+
+**What is stored:** the text, the institution and city, the status and two timestamps. No IP address, user agent, name or any other identifying data. The reader is told to leave out their name and anything that identifies them, because the connection itself is not a secure channel.
+
+**Endpoints**
+
+| Route | Who | What |
+| --- | --- | --- |
+| `POST /api/reports` | anyone | Validates and stores a `PENDING` note |
+| `GET /api/map/approved-reports` | anyone | Approved notes only (`id`, `city`, `institution`, `content`, `createdAt`), newest first; optional `city` and `institution` filters |
+| `GET /api/admin/reports?status=PENDING\|APPROVED\|REJECTED` | admin | Notes in one state (`/api/admin/reports/pending` is kept) |
+| `PATCH /api/admin/reports/:id/status` | admin | Set `APPROVED`, `REJECTED` or `PENDING` (takes a note off the atlas) |
+| `DELETE /api/admin/reports/:id` | admin | Removes the note entirely |
+
+Admin routes need `Authorization: Bearer <ADMIN_SECRET_KEY>`. The moderation page `reports-admin.html` (linked from `admin.html`) asks for the token, keeps it in session storage only, and lists notes under Waiting, On the atlas and Rejected, each with Approve, Reject or Take off the atlas, and Delete. `admin/AdminModerator.jsx` is the same page as a React component for a React host.
+
+Tests: `npm test` (the API runs in-process against a throwaway SQLite file, so no port is opened). The Worker's tests are `node --test worker/test/*.test.mjs`.
+
+#### Hosting the report API on Fly.io
+
+The repository carries a `Dockerfile` and `fly.toml` for the API. The database is one SQLite file on a 1 GB Fly volume, so the app runs on a single machine. Once, from the repository root (install flyctl first: `brew install flyctl`, or see https://fly.io/docs/flyctl/install/):
+
+```bash
+fly auth signup            # or: fly auth login
+fly launch --no-deploy --copy-config --name <a-free-app-name>
+fly volumes create reports_data --size 1 --region ams
+fly secrets set ADMIN_SECRET_KEY="$(openssl rand -hex 32)"
+fly deploy --ha=false
+```
+
+`--ha=false` keeps the app on one machine, which SQLite needs. If the build stops at "Waiting for depot builder", stop it and run `fly deploy --ha=false --depot=false`. The live API is `https://culture-atlas-reports.fly.dev` (app `culture-atlas-reports`, region `ams`); its admin secret was generated into `~/culture-atlas-admin-secret.txt` on the editor's Mac. Later deploys after changing `server/`: `fly deploy` from the repository root.
+
+Keep the secret: it is the password for `reports-admin.html`, and `fly secrets set` is the only place it is stored (print it once with `openssl rand -hex 32` before setting it if you want to keep a copy elsewhere). The API is then at `https://<app-name>.fly.dev`; `https://<app-name>.fly.dev/healthz` answers `{"ok":true}`. `fly.toml` already sets `ALLOWED_ORIGINS=https://vasspolina.github.io`, `TRUST_PROXY=1` (so the rate limit sees each sender, not Fly's proxy) and the database path on the volume. If you rename the app, update `app` in `fly.toml` to match.
+
+Last step: set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to `https://<app-name>.fly.dev` (no trailing slash), bump the release as usual, and merge through a PR. Then moderate at https://vasspolina.github.io/Culture-Atlas/reports-admin.html with the secret as the bearer token. Back up the database with `fly ssh sftp get /data/reports.db`.
 
 Setting it up once (free Cloudflare plan), in the Cloudflare dashboard, no install needed:
 

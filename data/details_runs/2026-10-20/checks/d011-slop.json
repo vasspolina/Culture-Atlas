@@ -1,0 +1,750 @@
+[
+ {
+  "id": "interlochen-center-for-the-arts-interlochen",
+  "section": "RED FLAGS",
+  "problems": [
+   "misattributed source: tuition claim credited to NPR"
+  ],
+  "before": "Interlochen admitted him to its President's Club, whose members were expected to help identify prospective students. DOJ records show he directed that tuition for at least one student be paid from his donations (NPR, AP).",
+  "after": "Interlochen admitted him to its President's Club, whose members were expected to help identify prospective students (NPR). Correspondence in the Justice Department's release shows he directed that tuition for at least one student be paid out of his donations (AP).",
+  "sources": [
+   "https://wtop.com/national/2026/05/interlochen-center-for-the-arts-says-it-will-tear-down-lodge-formerly-named-for-jeffrey-epstein/",
+   "https://www.kunc.org/npr-news/2026-02-19/how-epstein-and-maxwell-used-an-elite-midwest-arts-school-to-prey-on-girls"
+  ],
+  "reason": "The NPR piece says only that one woman said Epstein paid her tuition; the claim that he directed tuition to be paid from his donations is AP's, from DOJ correspondence. Epstein money confirmed: more than $400,000 from 1990 to 2003, $200,000 for the lodge (AP, NPR, Fortune/AP), so the item stays under Red flags, not Wider context."
+ },
+ {
+  "id": "israel-museum",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'dug at Herodium and Jericho, both in the West Bank'"
+  ],
+  "before": "showed more than 250 artefacts dug at Herodium and Jericho, both in the West Bank (Al Jazeera, Jonathan Cook, 2013).",
+  "after": "showed more than 250 artefacts from Herodium, in the occupied West Bank, and from Herod's death site near Jericho (Al Jazeera, Jonathan Cook, March 2013).",
+  "sources": [
+   "https://www.aljazeera.com/indepth/features/2013/02/201322881122698399.html"
+  ],
+  "reason": "Al Jazeera says Herodium lies in the occupied West Bank and that the Jericho site is outside Israel's recognised borders; it does not say the objects were dug at Jericho itself."
+ },
+ {
+  "id": "israel-museum",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'denounced it as an assault on Palestinian heritage'",
+   "overstated: Hague Convention 'bars such digs'"
+  ],
+  "before": "Hamdan Taha, the Palestinian Authority official for antiquities, denounced it as an assault on Palestinian heritage; former Israel Antiquities Authority archaeologist Yonathan Mizrachi said the 1954 Hague Convention bars such digs. Director James Snyder said the objects were on loan and would return to the site (Al Jazeera).",
+  "after": "Hamdan Taha, a Palestinian Authority antiquities official, called it an Israeli policy of using archaeology to cement political claims; former Israel Antiquities Authority archaeologist Yonathan Mizrachi argued the 1954 Hague Convention bars digging in occupied areas except emergency rescue digs. Director James Snyder said the objects were on loan and would return to the site after the exhibition (Al Jazeera).",
+  "sources": [
+   "https://www.aljazeera.com/indepth/features/2013/02/201322881122698399.html"
+  ],
+  "reason": "Al Jazeera quotes Taha as calling it 'an Israeli policy to use archeology to cement its political claims' and has Mizrachi arguing the Convention allows only emergency excavations."
+ },
+ {
+  "id": "israel-museum",
+  "section": "NOT RELATED",
+  "problems": [
+   "wrong location",
+   "wrong year"
+  ],
+  "before": "a separate museum next door in Givat Ram, whose 2019 show of West Bank finds Hyperallergic criticised.",
+  "after": "a separate museum on Museum Hill, across from the Israel Museum, whose \"Finds Gone Astray\" show of West Bank finds Hyperallergic criticised in 2019.",
+  "sources": [
+   "https://hyperallergic.com/jerusalem-bible-lands-museum-finds-gone-astray"
+  ],
+  "reason": "Hyperallergic (Michael Press, 14 January 2019) places the Bible Lands Museum on Museum Hill across from the Israel Museum and does not say Givat Ram or 'next door'. The show opened in December 2018; the 2019 date is the review's."
+ },
+ {
+  "id": "israel-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "hedge in source not carried over: Art Newspaper says 'reportedly pulled'",
+   "claim stated as fact"
+  ],
+  "before": "In February 2016 the Tel Aviv Museum of Art pulled a planned show by Ai Weiwei and Miki Kratsman that was to include portraits of Palestinians; the museum cited scheduling (The Art Newspaper).",
+  "after": "Unverified: The Art Newspaper reports that in February 2016 the Tel Aviv Museum pulled an exhibition by Ai Weiwei and Miki Kratsman that had been due to include portraits of Palestinians, because of political pressures; the museum said there were problems scheduling the show.",
+  "sources": [
+   "https://www.theartnewspaper.com/2017/05/31/ai-weiwei-poses-as-drowned-syrian-refugee-toddler-once-again"
+  ],
+  "reason": "The Art Newspaper words the cancellation and its cause as a report and gives the museum's scheduling explanation separately, so the cause takes the Unverified label."
+ },
+ {
+  "id": "israel-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "imprecise date"
+  ],
+  "before": "The Israel Museum hosted Ai's 2017 show a year later;",
+  "after": "The Israel Museum hosted Ai's show in 2017;",
+  "sources": [
+   "https://www.timesofisrael.com/resisting-boycott-calls-to-have-voice-heard-ai-weiwei-unveils-jerusalem-exhibit/"
+  ],
+  "reason": "Times of Israel/AFP says the show opened 2 June 2017; 'a year later' after February 2016 is about sixteen months."
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'a defence vehicle maker' (Koç Holding page does not say it)"
+  ],
+  "before": "the group includes Otokar Otomotiv ve Savunma Sanayi, a defence vehicle maker (Wikipedia).",
+  "after": "its subsidiary Otokar is a bus and military vehicle maker (Wikipedia, Koç Holding and Otokar pages).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Otokar",
+   "https://en.wikipedia.org/wiki/Ko%C3%A7_Holding"
+  ],
+  "reason": "The Koç Holding page lists Otokar only by name; the Otokar page states it makes military vehicles and is a Koç Holding subsidiary."
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported superlative: 'largest business'",
+   "unsupported: 'sole named sponsor'"
+  ],
+  "before": "The Biennial's sole named sponsor through 2036 is a group whose largest business is oil refining (Tüpraş) and which builds military vehicles (Otokar) (Wikipedia, Biennial site).",
+  "after": "The Biennial site labels Koç Holding its \"2007-2036 Biennial Sponsor\". The group's refiner Tüpraş makes up almost half its revenue, and its subsidiary Otokar makes military vehicles (Wikipedia, Biennial site).",
+  "sources": [
+   "https://bienal.iksv.org/en",
+   "https://en.wikipedia.org/wiki/Ko%C3%A7_Holding",
+   "https://en.wikipedia.org/wiki/Otokar"
+  ],
+  "reason": "Wikipedia says Tüpraş makes up almost half of Koç's revenue, not that it is the largest business; the site labels only Koç as sponsor but shows other logos in its footer."
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: '(Resistanbul)'"
+  ],
+  "before": "the Direnal-Istanbul (Resistanbul) movement criticised",
+  "after": "the Direnal-Istanbul movement criticised",
+  "sources": [
+   "https://www.afterall.org/articles/13th-istanbul-biennial-a-retreat-to-the-institution/"
+  ],
+  "reason": "Afterall names Direnal-Istanbul; the Resistanbul gloss appears in no opened source."
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "section": "RED FLAGS",
+  "problems": [
+   "hedge: 'believe'",
+   "claim stated without 'Unverified:' label"
+  ],
+  "before": "Critics believe Ayas was judged too risky after her 2015 Venice pavilion catalogue, with an essay naming the \"Armenian genocide\", was withdrawn after a Turkish government complaint (The Art Newspaper).",
+  "after": "Unverified: unnamed critics, cited by The Art Newspaper, say İKSV judged Ayas too risky after the catalogue of her 2015 Venice pavilion was withdrawn following a Turkish government complaint about an essay referring to the \"Armenian genocide\".",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/01/19/iwona-blazwick-stands-down-as-istanbul-biennial-curatorevent-postponed-until-2025"
+  ],
+  "reason": "The Art Newspaper (Gareth Harris) reports this as the view of critics and names none; the catalogue withdrawal is reported as fact."
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported date: '16 August 2023'"
+  ],
+  "before": "resigned in protest on 16 August 2023 (Biennial Foundation).",
+  "after": "resigned in protest in August 2023 (Biennial Foundation).",
+  "sources": [
+   "https://biennialfoundation.org/2024/01/deepening-crisis-at-the-iksv/"
+  ],
+  "reason": "The Biennial Foundation timeline entry is dated 16 August 2023 but gives no resignation date; the Art Newspaper report it cites is dated 15 August."
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'for political reasons'"
+  ],
+  "before": "the suspicion that Ayas was passed over for political reasons.",
+  "after": "critics' view that Ayas was judged too risky.",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/01/19/iwona-blazwick-stands-down-as-istanbul-biennial-curatorevent-postponed-until-2025"
+  ],
+  "reason": "The piece says critics think the foundation considered Ayas too risky; 'political reasons' is not stated."
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported superlative: 'largest earner'"
+  ],
+  "before": "Koç's largest earner is oil refining, with a defence arm beside it.",
+  "after": "Koç's refiner Tüpraş makes up almost half its revenue, with a military vehicle maker beside it.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ko%C3%A7_Holding"
+  ],
+  "reason": "Matches the Wikipedia wording."
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "section": "OVERVIEW",
+  "problems": [
+   "missing citation for director dates"
+  ],
+  "before": "after Bige Örer (2008 to 2024). İKSV's board",
+  "after": "after Bige Örer (2008 to 2024) (İKSV 2024 report). İKSV's board",
+  "sources": [
+   "https://www.iksv.org/i/content/61_1_annual_report_2024.pdf"
+  ],
+  "reason": "The 2024 report states Örer served 2008 to 2024 and Güler took over. Its financial table also confirms TL 428,404,879 activity revenue, TL 212,108,961 sponsorship (50 percent) and TL 7,250,000 public contributions (2 percent)."
+ },
+ {
+  "id": "istanbul-modern",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'a commissioned work'"
+  ],
+  "before": "after the museum refused a commissioned work by Bubi Hayon;",
+  "after": "after the museum rejected Bubi Hayon's work for a charity auction;",
+  "sources": [
+   "https://hyperallergic.com/censorship-istanbul-modern-bubi-hayon/"
+  ],
+  "reason": "Hyperallergic (Hrag Vartanian, 29 December 2011) says Hayon's work was rejected during a charity auction; it does not say it was commissioned."
+ },
+ {
+  "id": "istanbul-modern",
+  "section": "RED FLAGS",
+  "problems": [
+   "wrong detail: 'weeks after the new building opened'"
+  ],
+  "before": "Chief curator Levent Çalıkoğlu left in 2023, weeks after the new building opened; Milliyet reported \"differences in principles concerning acquisitions\" and the museum has not given a reason (ArtReview).",
+  "after": "Chief curator Levent Çalıkoğlu left in 2023, with a museum-stated exit date of 30 September; the reason was not made public, and Milliyet's Çağdaş Ertuna reported \"differences in principles concerning acquisitions\" (ArtReview).",
+  "sources": [
+   "https://artreview.com/rumours-and-whispers-in-the-istanbul-art-scene/"
+  ],
+  "reason": "ArtReview (Kaya Genç, 16 January 2024) says he resigned in August 2023 with a 30 September exit date, months after the 4 May opening, not weeks."
+ },
+ {
+  "id": "istanbul-modern",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: Hayon 'called the refusal ... a censorship process'"
+  ],
+  "before": "Hayon called the refusal of his bedpan seat a censorship process;",
+  "after": "Hayon said his work, a large seat with a bedpan in the middle, was \"found contradictious and inconvenient\";",
+  "sources": [
+   "https://hyperallergic.com/censorship-istanbul-modern-bubi-hayon/"
+  ],
+  "reason": "That is the quotation Hyperallergic gives; the censorship wording comes from the protesting artists' banner."
+ },
+ {
+  "id": "istanbul-modern",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'which its main sponsor Doğuş developed'",
+   "unsupported: 'full control'"
+  ],
+  "before": "Istanbul Modern's building sits inside Galataport, which its main sponsor Doğuş developed; Oya Eczacıbaşı said the museum keeps full control of its programme (Hürriyet Daily News).",
+  "after": "Istanbul Modern's building sits inside Galataport, which Doğuş Holding, one of its main sponsors, won in the 2013 tender (Bianet); in 2018 Oya Eczacıbaşı said the museum's leadership would keep authority over its programming (Hürriyet Daily News).",
+  "sources": [
+   "https://bianet.org/haber/sahenk-borclarini-odeyemiyor-galataport-hisseleri-bankalara-gecti-302760",
+   "https://hurriyetdailynews.com/famed-istanbul-modern-art-museum-enters-new-era-129944"
+  ],
+  "reason": "Hürriyet does not say Doğuş developed Galataport; Bianet says Doğuş Holding won the tender. Hürriyet says leadership 'will retain authority' over programming."
+ },
+ {
+  "id": "istanbul-modern",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "claim stated as fact where Bianet cites later reports"
+  ],
+  "before": "after debt on a loan of about 1 billion euros rose to about 1.5 billion euros (Bianet).",
+  "after": "after, Bianet writes, citing later reports, debt on a loan of about 1 billion euros reached about 1.5 billion euros.",
+  "sources": [
+   "https://bianet.org/haber/sahenk-borclarini-odeyemiyor-galataport-hisseleri-bankalara-gecti-302760"
+  ],
+  "reason": "Bianet attributes the 1.5 billion euro figure to later reports."
+ },
+ {
+  "id": "ivam-institut-valencia-d-art-modern",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'saying she no longer had the government's support'"
+  ],
+  "before": "and saying she no longer had the government's support (Ara).",
+  "after": "and saying she resigned to avoid further harm to the museum (Ara).",
+  "sources": [
+   "https://es.ara.cat/cultura/arte/dimite-directora-ivam-nuria-enguita_1_4945508.amp.html"
+  ],
+  "reason": "Ara says she resigned to avoid more damage to the museum and that the department respected her decision; it does not report her saying she lost government support."
+ },
+ {
+  "id": "ivam-institut-valencia-d-art-modern",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'within a month'"
+  ],
+  "before": "and the case was closed within a month;",
+  "after": "and prosecutors closed the case in March 2024;",
+  "sources": [
+   "https://valenciaplaza.com/fiscalia-archiva-la-denuncia-por-la-donacion-de-unos-terrenos-de-la-exdirectora-del-ivam-a-todoli-citrus"
+  ],
+  "reason": "Valencia Plaza confirmed the closure on 20 March 2024; the exact filing date is not given."
+ },
+ {
+  "id": "iziko-south-african-national-gallery-cape-town",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Annexe 'houses the Art Library'"
+  ],
+  "before": "with an Annexe that houses the Art Library (Iziko).",
+  "after": "with an Annexe (Iziko).",
+  "sources": [
+   "https://www.iziko.org.za/about/"
+  ],
+  "reason": "Iziko's pages name the Annexe but the opened pages do not say what it houses."
+ },
+ {
+  "id": "iziko-south-african-national-gallery-cape-town",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'public programmes free'"
+  ],
+  "before": "Friends members free; public programmes free.",
+  "after": "Friends members free; free entry on commemorative days.",
+  "sources": [
+   "https://www.iziko.org.za/museums/south-african-national-gallery/"
+  ],
+  "reason": "The gallery page lists free entry for Friends members and on commemorative days; it does not mention free public programmes."
+ },
+ {
+  "id": "iziko-south-african-national-gallery-cape-town",
+  "section": "FUNDING",
+  "problems": [
+   "unclear, unsupported: labels of transfer lines"
+  ],
+  "before": "The report's five largest transfer lines include departmental transfers, local non-government sources and other transfers; the text extract does not give their labels with amounts reliably.",
+  "after": "No reporting found of which transfer lines make up the R235.8 million.",
+  "sources": [
+   "https://archive.treasury.gov.za/publications/guidelines/2025%20Public%20Entities%20Quarterly%20Reporting/Quarterly%20Reporting/Quarter%204/Sports,%20Arts%20and%20Culture/Iziko%20Museum.pdf"
+  ],
+  "reason": "The Treasury PDF shows approved transfers 235.8, received 233.7 (90.4 percent of receipts to date), sales 23.7 approved, interest and dividends 10.2, total 269.7; its top-5 transfer chart does not pair labels with amounts reliably."
+ },
+ {
+  "id": "iziko-south-african-national-gallery-cape-town",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'the late'"
+  ],
+  "before": "depictions of performances involving the late Nomsa Dlamini, Cohen's former domestic worker and collaborator (TimesLIVE).",
+  "after": "depictions of performances involving Nomsa Dlamini, who had been the family's domestic worker and later became Cohen's collaborator (TimesLIVE).",
+  "sources": [
+   "https://www.timeslive.co.za/news/business/2025-12-20-the-art-of-the-cover-up/"
+  ],
+  "reason": "TimesLIVE does not say she has died."
+ },
+ {
+  "id": "iziko-south-african-national-gallery-cape-town",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'after management demanded removal'; critic's own hedge dropped"
+  ],
+  "before": "Says installers cut cloths in haste after management demanded removal, and that the gallery had known the content for months.",
+  "after": "Says installers were cutting black cloths in haste during the press preview and that Buys and Cohen were told only the night before; reads the gallery as having known the content for months.",
+  "sources": [
+   "https://brooklynrail.org/2026/04/artseen/steven-cohen-long-life/"
+  ],
+  "reason": "Kleeblatt writes that the gallery 'appeared to have known' the content; the sentence now credits that reading to him."
+ },
+ {
+  "id": "iziko-south-african-national-gallery-cape-town",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "imprecise: 'approve of the censorship'"
+  ],
+  "before": "Notes some voices approve of the censorship.",
+  "after": "Notes that some voices support the gallery's decision.",
+  "sources": [
+   "https://brooklynrail.org/2026/04/artseen/steven-cohen-long-life/"
+  ],
+  "reason": "The Rail says some voices support the gallery's decision."
+ },
+ {
+  "id": "iziko-south-african-national-gallery-cape-town",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'Iziko publishes annual reports with donor sections'"
+  ],
+  "before": "Iziko publishes annual reports with donor sections; those were not opened for this report.",
+  "after": "Iziko's annual reports were not opened for this report.",
+  "sources": [
+   "https://www.iziko.org.za/about/"
+  ],
+  "reason": "No opened source says the reports have donor sections."
+ },
+ {
+  "id": "jehangir-art-gallery-mumbai",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'private trust'"
+  ],
+  "before": "private trust and committee: the Jehangir family's founding gift, with no sponsors named",
+  "after": "run by a committee: the Jehangir family's founding gift, with no sponsors named",
+  "sources": [
+   "https://jehangirartgallery.com/about"
+  ],
+  "reason": "The gallery site says management is undertaken by the committee and never calls it a trust."
+ },
+ {
+  "id": "jehangir-art-gallery-mumbai",
+  "section": "RED FLAGS",
+  "problems": [
+   "overstated: police and gallery 'told' the artist"
+  ],
+  "before": "Mumbai police and the gallery told artist Eleena Banik to take two goddess paintings out of public view after complaints;",
+  "after": "Mumbai police and the gallery asked artist Eleena Banik to take two goddess paintings out of public view after complaints;",
+  "sources": [
+   "https://www.thenationalnews.com/world/asia/indian-artist-forced-to-remove-goddess-paintings-1.291316"
+  ],
+  "reason": "AFP says police and the gallery asked her to remove the works."
+ },
+ {
+  "id": "jehangir-art-gallery-mumbai",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 2006 removal 'after complaints'"
+  ],
+  "before": "removing or covering work after complaints, in 2006 and 2013,",
+  "after": "removing or covering work in 2006 and 2013,",
+  "sources": [
+   "https://subirghosh.in/blog/jatin-das-exhibition-for-adults-only"
+  ],
+  "reason": "The 2006 source does not say complaints prompted the covering."
+ },
+ {
+  "id": "jewish-museum-and-tolerance-center-moscow",
+  "section": "FUNDING",
+  "problems": [
+   "confused label: 'Unverified' on a claim Wikipedia states plainly"
+  ],
+  "before": "Unverified: Putin donated one month of his salary, from Wikipedia, which words it as reported.",
+  "after": "Unverified: Putin donated one month of his salary toward construction, from Wikipedia, which cites a May 2014 Calvert Journal article by Alexis Zimberg that was not opened.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Jewish_Museum_and_Tolerance_Center"
+  ],
+  "reason": "Wikipedia states the donation plainly and cites Calvert Journal; no second source was opened, so the claim keeps the label with the correct attribution."
+ },
+ {
+  "id": "jewish-museum-and-tolerance-center-moscow",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: Wikipedia caption content"
+  ],
+  "before": "A 2018 photo caption in Wikipedia shows Putin at the entrance with Boroda, Lazar and Vekselberg.",
+  "after": "A 2018 photo in Wikipedia shows Putin and Netanyahu at the museum.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Jewish_Museum_and_Tolerance_Center"
+  ],
+  "reason": "The caption names Putin and Netanyahu; Boroda, Lazar and Vekselberg are not in it."
+ },
+ {
+  "id": "jewish-museum-and-tolerance-center-moscow",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported descriptor: 'a leading Chabad rabbi in Ukraine'",
+   "unsupported: critics 'faulted' the interview"
+  ],
+  "before": "After the 2022 invasion, critics abroad, including a leading Chabad rabbi in Ukraine, faulted Boroda's Interfax interview, in which he said the Federation was not pressured to support the war; Rabbi Misha Kapustin said Russian Chabad had not spoken out in any significant way (JTA).",
+  "after": "After the 2022 invasion, Boroda told Interfax that the Federation was not pressured to support the war; Rabbi Misha Kapustin said Russian Chabad had not spoken out against the war in any significant way (JTA).",
+  "sources": [
+   "https://www.jweekly.com/2022/03/31/ukraine-invasion-puts-chabad-of-russia-between-a-rock-and-a-hard-place/"
+  ],
+  "reason": "JTA gives Kapustin's view and Boroda's remark but no job title for Kapustin and does not say his criticism targeted the interview."
+ },
+ {
+  "id": "jewish-museum-and-tolerance-center-moscow",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "vague: 'several sanctioned individuals'"
+  ],
+  "before": "a board that includes several sanctioned individuals and a VTB head under US and EU sanctions,",
+  "after": "a board that includes Vekselberg and Vaino, both on sanctions lists, and Kostin, head of partner VTB and also a trustee, under US and EU sanctions,",
+  "sources": [
+   "https://www.jewish-museum.ru/en/board/",
+   "https://en.wikipedia.org/wiki/Andrey_Kostin"
+  ],
+  "reason": "Board page lists all three. Lists confirmed from Wikipedia: Vekselberg, US April 2018 (EO 13662) and UK, Poland, Australia March 2022; Kostin, US April 2018 and EU 23 February 2022; Vaino, EU February 2022 and OFAC 6 April 2022. Wikipedia gives no EU date for Vekselberg."
+ },
+ {
+  "id": "johannesburg-art-gallery-johannesburg",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: author name 'Naledi Mashishi'"
+  ],
+  "before": "(Daily Maverick, Naledi Mashishi)",
+  "after": "(Daily Maverick)",
+  "sources": [
+   "https://www.dailymaverick.co.za/article/2025-11-20-johannesburg-art-gallery-restoration-priceless-artworks-return-home"
+  ],
+  "reason": "The opened page did not show an author; the name could not be confirmed."
+ },
+ {
+  "id": "johannesburg-art-gallery-johannesburg",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: dispute 'over transparency and who runs the rescue'"
+  ],
+  "before": "a legal dispute with the heritage groups over transparency and who runs the rescue.",
+  "after": "a legal dispute with the heritage groups over the City's custodial duty.",
+  "sources": [
+   "https://joburgheritage.org.za/johannesburg-art-gallery-in-crisis-latest-updates/"
+  ],
+  "reason": "The groups' legal letter demands the City meet its custodial duty under the deed of donation."
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "section": "RED FLAGS",
+  "problems": [
+   "flag heading 'State censorship or punishment' not supported by the events listed"
+  ],
+  "before": "Red flags: State censorship or punishment, Trump takeover and firings, 2025 to 2026",
+  "after": "Red flags: Presidential takeover of the board, firings and renaming, 2025 to 2026",
+  "sources": [
+   "https://www.democracynow.org/2025/3/31/kennedy_center",
+   "https://en.wikipedia.org/wiki/John_F._Kennedy_Center_for_the_Performing_Arts"
+  ],
+  "reason": "No opened source describes censorship; the points are dated events: takeover, firings, renaming, court order."
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'interim president'",
+   "dates"
+  ],
+  "before": "Richard Grenell became interim president on 10 February 2025 (Democracy Now, Wikipedia).",
+  "after": "he named Richard Grenell interim executive director on 10 February 2025 (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/John_F._Kennedy_Center_for_the_Performing_Arts"
+  ],
+  "reason": "Democracy Now gives no title or date for Grenell; Wikipedia says interim executive director, named 10 February 2025. The ousting of Rubenstein and Rutter is Democracy Now's (31 March 2025)."
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "section": "RED FLAGS",
+  "problems": [
+   "missing dates"
+  ],
+  "before": "New leadership fired at least seven members of the Social Impact team, including vice president Marc Bamuthi Joseph (Democracy Now). Dozens of workers were fired, including the whole dance programming team (Hyperallergic, Emma Cieslik).",
+  "after": "In March 2025 new leadership fired at least seven members of the Social Impact team, including vice president Marc Bamuthi Joseph (Democracy Now). By November 2025 dozens had been fired since February, including the whole dance programming team (Hyperallergic, Emma Cieslik).",
+  "sources": [
+   "https://www.democracynow.org/2025/3/31/kennedy_center",
+   "https://hyperallergic.com/protest-dance-outside-kennedy-center-targets-trumps-attack-on-culture/"
+  ],
+  "reason": "Democracy Now (31 March 2025) says the firings were 'last week'; Hyperallergic (24 November 2025) says dozens had been fired since Grenell arrived in February."
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'for repairs'"
+  ],
+  "before": "the board voted to close the center immediately for repairs, hours after",
+  "after": "the board voted to close the center immediately, citing financial shortages and renovation needs, hours after",
+  "sources": [
+   "https://www.democracynow.org/2026/9/16/headlines/trump_s_board_of_trustees_votes_to_close_kennedy_center_for_the_performing_arts"
+  ],
+  "reason": "Democracy Now says the board cited dire financial shortages and the need for renovations, not only repairs."
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "section": "FUNDING",
+  "problems": [
+   "unattributed claim"
+  ],
+  "before": "Democracy Now cites $260 million from Congress \"this past fiscal year\", a figure it does not break down.",
+  "after": "Marc Bamuthi Joseph told Democracy Now the center received $260 million from Congress \"this past fiscal year\", a figure he did not break down.",
+  "sources": [
+   "https://www.democracynow.org/2026/6/16/kennedy_center_trump"
+  ],
+  "reason": "The figure is a guest's statement, not Democracy Now's."
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unclear: 'does not say who decided it'"
+  ],
+  "before": "Reports artists and activists condemned the removal; names no critic and does not say who decided it.",
+  "after": "Reports that the National Park Service dismantled the sculpture on 2 September 2026 and that artists and activists condemned it; names no critic and does not clearly say who ordered it.",
+  "sources": [
+   "https://hyperallergic.com/critics-slam-petty-removal-of-joel-shapiro-sculpture-from-kennedy-center/"
+  ],
+  "reason": "Adds the date and the actor the article does name."
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "vague: 'will not explain'"
+  ],
+  "before": "a revenue collapse the center will not explain.",
+  "after": "a revenue fall on which the center declined to answer the Post's questions.",
+  "sources": [
+   "https://www.adn.com/nation-world/2026/10/02/the-kennedy-center-was-solvent-when-trump-took-over-then-its-finances-collapsed/"
+  ],
+  "reason": "The Post says the center declined to answer questions about the figures."
+ },
+ {
+  "id": "jordan-national-gallery-of-fine-arts",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'president of the Society's board of trustees'"
+  ],
+  "before": "is president of the Society's board of trustees;",
+  "after": "heads the gallery's board of trustees;",
+  "sources": [
+   "https://nationalgallery.org/about/"
+  ],
+  "reason": "The gallery site says a Board of Trustees headed by HRH Princess Wijdan Al-Hashemi; it does not say it is the Society's board. The partners page names 'Ministry of Culture and Youth (United Arab Emirates)' in the Diamond tier and Barjeel Art Foundation in Platinum, and Wikipedia describes Barjeel as a non-profit based in Sharjah, so the Gulf state body flag rests on the ministry."
+ },
+ {
+  "id": "jordan-national-gallery-of-fine-arts",
+  "section": "RED FLAGS",
+  "problems": [
+   "imprecise: 'fined'"
+  ],
+  "before": "the OCC and FinCEN fined its New York branch $24 million",
+  "after": "the OCC and FinCEN assessed a $24 million penalty against its New York branch",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Arab_Bank"
+  ],
+  "reason": "Wikipedia uses 'penalty'."
+ },
+ {
+  "id": "joslyn-art-museum-omaha",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported superlative on the museum's page"
+  ],
+  "before": "Nebraska's largest art museum, at 2200 Dodge Street, Omaha (Joslyn, Wikipedia).",
+  "after": "Art museum at 2200 Dodge Street, Omaha; Wikipedia calls it the largest in Nebraska (Joslyn).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Joslyn_Art_Museum",
+   "https://joslyn.org"
+  ],
+  "reason": "Only Wikipedia states 'the largest in the state'; joslyn.org does not."
+ },
+ {
+  "id": "joslyn-art-museum-omaha",
+  "section": "FUNDING",
+  "problems": [
+   "funder not named"
+  ],
+  "before": "- The Phillip G. Schrager Collection",
+  "after": "- Free general admission is \"generously provided by the Holland Foundation\" (Joslyn).\n- The Phillip G. Schrager Collection",
+  "sources": [
+   "https://joslyn.org"
+  ],
+  "reason": "The home page names the Holland Foundation as the funder of free general admission; the report did not name it."
+ },
+ {
+  "id": "israel-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (word limit)",
+   "unconfirmed: Rockefeller Archaeological Museum and Ticho House"
+  ],
+  "before": "It holds about 500,000 objects and runs the Rockefeller Archaeological Museum and Ticho House off site.",
+  "after": "It holds about 500,000 objects.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Israel_Museum"
+  ],
+  "reason": "Report was over 800 words after fixes; the off-site museums were not confirmed in the page text read, so they were cut."
+ },
+ {
+  "id": "israel-museum",
+  "section": "FUNDING",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "a 2024 grant for the Bezalel gallery; ",
+  "after": "",
+  "sources": [
+   "https://www.mandelfoundation.org/grants/our-grantees/israel-museum"
+  ],
+  "reason": "Trimmed to keep the report under 800 words; the grant is real but minor."
+ },
+ {
+  "id": "israel-museum",
+  "section": "FUNDING",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "The Israeli register page for the museum (company 520028275) showed no figures when opened on 20 October 2026, so the 2025 income split in the record could not be checked.",
+  "after": "No reporting found of the 2025 income split: the Israeli register page showed no figures on 20 October 2026.",
+  "sources": [
+   "https://www.guidestar.org.il/organization/520028275/finances"
+  ],
+  "reason": "Same content, shorter; left as a 'No reporting found' line as instructed."
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: festivals, Design Biennial and Venice pavilion (no cited source)",
+   "over length (word limit)"
+  ],
+  "before": ", which also runs the city's film, music, jazz and theatre festivals, the Istanbul Design Biennial and Türkiye's pavilion in Venice.",
+  "after": ".",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Istanbul_Biennial"
+  ],
+  "reason": "No opened source supported the list; the line also had no citation."
+ },
+ {
+  "id": "istanbul-modern",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "; the building has a library and a cinema (Wikipedia).",
+  "after": " (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Istanbul_Modern"
+  ],
+  "reason": "Trimmed to keep the report under 800 words."
+ },
+ {
+  "id": "istanbul-modern",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "Mürüvvet Türkyılmaz, Ceren Öyküt, Gözde İlkin, Güneş Terkol, İnci Furni, Ekin Saçlıoğlu, Neriman Polat, Leyla Gediz and AtılKunst asked to pull their works.",
+  "after": "eight artists and the collective AtılKunst asked to pull their works.",
+  "sources": [
+   "https://hyperallergic.com/censorship-istanbul-modern-bubi-hayon/"
+  ],
+  "reason": "Names are in the Hyperallergic piece; trimmed for length."
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "- The Kennedy Center Honors have run since 1978 (Wikipedia).\n",
+  "after": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/John_F._Kennedy_Center_for_the_Performing_Arts"
+  ],
+  "reason": "Trimmed to keep the report under 800 words."
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "section": "FUNDING",
+  "problems": [
+   "unconfirmed names",
+   "over length (word limit)"
+  ],
+  "before": "the Kennedy family (about $500,000), J. Willard Marriott, Marjorie Merriweather Post, John D. Rockefeller III and Robert W. Woodruff;",
+  "after": "and the Kennedy family (about $500,000);",
+  "sources": [
+   "https://en.wikipedia.org/wiki/John_F._Kennedy_Center_for_the_Performing_Arts"
+  ],
+  "reason": "The page text read confirmed only the Ford Foundation and Kennedy family gifts; the other donor names were not confirmed and were cut."
+ }
+]

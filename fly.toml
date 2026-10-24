@@ -1,0 +1,36 @@
+# Fly.io settings for the report API. Change `app` to a name that is free on Fly (it becomes <app>.fly.dev).
+# Secrets (never in this file): fly secrets set ADMIN_SECRET_KEY=<long random string>
+app = "culture-atlas-reports"
+primary_region = "ams"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "4000"
+  DATABASE_URL = "file:/data/reports.db"
+  ALLOWED_ORIGINS = "https://vasspolina.github.io"
+  TRUST_PROXY = "1"
+
+# The SQLite file lives on a volume so notes survive restarts and deploys. SQLite takes one machine only.
+[mounts]
+  source = "reports_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 4000
+  force_https = true
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    method = "GET"
+    path = "/healthz"
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "20s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "512mb"

@@ -1,0 +1,842 @@
+[
+ {
+  "id": "getty-center-los-angeles",
+  "section": "Red flags: Getty Oil fortune behind the endowment (added at the editor's instruction)",
+  "problems": [
+   "missing section: endowment built on Getty Oil stock counts as Fossil fuels under the editor's founder-fortune ruling"
+  ],
+  "before": "(no section; the Getty Oil facts sat under FUNDING and the Bottom line said the endowment 'has not been tied to Getty Oil since the 1984 Texaco sale')",
+  "after": "Red flags: Getty Oil fortune behind the endowment\n- J. Paul Getty's will left the bulk of his estate, including $660 million in Getty Oil stock, to the Trust, which received the full bequest in 1982 (Getty timeline, Wikipedia).\n- In January 1984 the Getty Museum, which held 11.8% of Getty Oil, agreed to sell its shares to Texaco at $125 a share (Texaco v. Pennzoil case brief). The Christian Science Monitor reported in 1987 that the move to Texaco nearly doubled the endowment. No reporting found of a Getty Oil holding since.\n- The map counts the endowment as Fossil fuels money under the editor's founder-fortune ruling, although the shares were sold in 1984. It still pays for the Center through the 5% budget rule above.",
+  "sources": [
+   "https://www.getty.edu/press/pdfs/Getty_History_and_Timeline.pdf",
+   "https://www.lexplug.com/casebrief/texaco_inc_v_pennzoil_co__65a2e0043fc4374f9dad2c40",
+   "https://www.csmonitor.com/1987/0716/zget.html"
+  ],
+  "reason": "Added as instructed. How the endowment began (Getty's will, $660 million in Getty Oil stock, received 1982) is from Getty's own timeline and Wikipedia; the January 1984 agreement with Texaco at $125 a share and the Museum's 11.8% holding are from the case brief; the Christian Science Monitor (1987) says the stock moved to Texaco and nearly doubled the endowment. The 1984 sale is worded as 'agreed to sell' because the case brief describes the agreement, not the closing."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "conflict with the editor's ruling: said the endowment 'has not been tied to Getty Oil since' 1984"
+  ],
+  "before": "The money behind the Getty Center is the Getty Trust's own endowment, which began as Getty Oil stock but has not been tied to Getty Oil since the 1984 Texaco sale; outside gifts are small. The weak points are the 2006 Attorney General findings and the antiquities returns agreed in 2007.",
+  "after": "The money behind the Getty Center is the Getty Trust's own endowment, which began as Getty Oil stock; the map counts it as Fossil fuels money although the shares were sold in 1984. The other weak points are the 2006 Attorney General findings and the 2007 antiquities returns.",
+  "sources": [
+   "https://www.getty.edu/press/pdfs/Getty_History_and_Timeline.pdf",
+   "https://www.csmonitor.com/1987/0716/zget.html"
+  ],
+  "reason": "Brought in line with the editor's ruling that the endowment counts as Fossil fuels money; 'outside gifts are small' was a judgement and was cut for length."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'whose bequest created the Trust'"
+  ],
+  "before": "the oilman and collector whose bequest created the Trust (Getty).",
+  "after": "the oilman and collector whose bequest endowed the Trust (Getty).",
+  "sources": [
+   "https://www.getty.edu/about/history/",
+   "https://en.wikipedia.org/wiki/J._Paul_Getty_Trust"
+  ],
+  "reason": "The Trust was set up in 1953; the will of 1976 funded it. Getty's history page says the will left nearly $700 million to the Trust."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Italian travertine'; 'free wheelchair loans'; pavilion closures misstated"
+  ],
+  "before": "with about 1.2 million square feet of Italian travertine; the cost was later put at about $1.3 billion (Wikipedia, Getty).",
+  "after": "; the cost was later put at $1.3 billion (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Getty_Center"
+  ],
+  "reason": "Wikipedia gives 1,200,000 square feet of travertine without the word Italian. Same pass: wheelchair 'loans' became 'rental' (Getty accessibility page: 'free rental'); 'the North and South Pavilions are closed' became 'Galleries in the South, East and North Pavilions are closed' (Getty visit page: South Pavilion, East Pavilion plaza-level and North Pavilion galleries). Parking detail and some campus detail were cut for the word limit."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: '$10.4 million in donated art'; wrong credit '(Getty annual report)'"
+  ],
+  "before": "and $10.4 million in donated art (KPMG audit). ... (Getty annual report).",
+  "after": "expenses of $442.7 million and donor contributions of $11.1 million (KPMG audit). ... In May 2025 the Trust issued $500 million in taxable bonds for facilities work (audited statements).",
+  "sources": [
+   "https://media.getty.edu/Text/8c7dcf11-0b17-5cec-af08-36494da10f2c.pdf"
+  ],
+  "reason": "The audited statements list 'Contributions – non-financial assets' of 10,441 thousand dollars without saying it is art, so the figure was cut; the 500 million dollar bond (Series 2025A, 6 May 2025) is in the audited statements, not an annual report. Other figures (9.32 billion investments, 864.7 million investment income, 442.7 million expenses, 11.1 million contributions) match."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "FUNDING",
+  "problems": [
+   "wording moved to the new Red flags section"
+  ],
+  "before": "- Getty's will left the Trust nearly $700 million (stated by the space), which Wikipedia describes as nearly $660 million in Getty Oil stock, received in full in 1982.\n- In January 1984 the Getty Museum, which held 11.8% of Getty Oil, agreed to sell its shares to Texaco at $125 a share (case brief, Texaco v. Pennzoil). No reporting found of a Getty Oil holding since.",
+  "after": "- Getty's will left the Trust nearly $700 million (stated by the space).",
+  "sources": [
+   "https://www.getty.edu/about/history/",
+   "https://www.getty.edu/press/pdfs/Getty_History_and_Timeline.pdf"
+  ],
+  "reason": "The 'nearly $700 million' figure is on Getty's history page. The Getty Oil stock and 1984 facts now sit under Red flags: Getty Oil fortune behind the endowment."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "Red flags: 2006 Attorney General findings",
+  "problems": [
+   "unsupported: 'On 1 August 2007 the Getty agreed'; 'in October 2010'"
+  ],
+  "before": "an Italian court dismissed the remaining charges in October 2010 because the statute of limitations had expired (Wikipedia). / On 1 August 2007 the Getty agreed with the Italian government to return 40 objects Italy said were looted, keeping a statue of Aphrodite until 2010 (NPR).",
+  "after": "an Italian court dismissed the remaining charges in 2010 (Wikipedia). / NPR reported on 1 August 2007 that the Getty would return 40 objects Italy said were looted, keeping a statue of Aphrodite until 2010.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Marion_True",
+   "https://www.npr.org/transcripts/12428709"
+  ],
+  "reason": "Wikipedia gives only 2010 for the dismissal. NPR's piece dated 1 August 2007 says the Getty 'will return' the objects; Wikipedia dates the signed contract to 26 September 2007, so the agreement date was not stated as 1 August."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: what the NYRB piece argues"
+  ],
+  "before": "- The founder's bequest made the Trust \"the world's richest art institution\", and that wealth fed its troubles, which were self-inflicted.\n- Criticises spending on buildings over art, above all the Getty Center, \"the commission of the century\".\n- Argues True was made a scapegoat for the Trust's acquisition practices and that its \"severely compromised ethics\" weakened its defence.",
+  "after": "- Says the bequest made the Getty \"the world's richest art institution\" and calls its troubles of 2005 to 2006 an \"epic of hubris and retribution\".\n- Calls the sums museums squander on mediocre buildings \"scandalous\" and applies that to Meier's Getty Center.\n- Reports a widespread feeling in museum circles that True was made a scapegoat for the Trust's acquisition practices, and says its \"severely compromised ethics\" kept the Getty from defending her.",
+  "sources": [
+   "https://www.nybooks.com/articles/2006/11/16/the-getty-for-better-and-worse/"
+  ],
+  "reason": "Filler writes that the Getty Center is 'widely considered among architects' the 'commission of the century' (praise of the job, not criticism) and that the scapegoat view is a 'widespread feeling'. 'Self-inflicted' and 'buildings over art' are not in the piece; the 'squander ... scandalous' and 'epic of hubris and retribution' passages are."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "SOURCES",
+  "problems": [
+   "sources used but not listed"
+  ],
+  "before": "- https://www.getty.edu/about/building-gettys-future/",
+  "after": "- https://www.getty.edu/press/pdfs/Getty_History_and_Timeline.pdf\n- https://www.getty.edu/about/building-gettys-future/ ... - https://www.csmonitor.com/1987/0716/zget.html",
+  "sources": [
+   "https://www.getty.edu/press/pdfs/Getty_History_and_Timeline.pdf",
+   "https://www.csmonitor.com/1987/0716/zget.html"
+  ],
+  "reason": "Added the Getty timeline PDF and the 1987 Christian Science Monitor article, which the new section relies on."
+ },
+ {
+  "id": "glenbow-calgary",
+  "section": "Red flags: 1988 boycott",
+  "problems": [
+   "unsupported: heading says the boycott was over Shell sponsorship alone"
+  ],
+  "before": "Red flags: 1988 boycott over Shell sponsorship",
+  "after": "Red flags: 1988 Lubicon boycott of a Shell-sponsored exhibition",
+  "sources": [
+   "https://www.culturalsurvival.org/publications/cultural-survival-quarterly/canada-lubicon-lake-cree"
+  ],
+  "reason": "Cultural Survival Quarterly says the Lubicon boycotted the Olympics and the accompanying Glenbow exhibit, which Shell sponsored; Shell is one of the companies allowed to drill on Lubicon land. The heading now says what the source says."
+ },
+ {
+  "id": "glenbow-calgary",
+  "section": "Red flags: oil money from the founder, the board and donors",
+  "problems": [
+   "unsupported: 'land he leased ... at Leduc and Redwater in 1947 and 1948'"
+  ],
+  "before": "Harvie's fortune came from oil found on land he leased to Imperial Oil at Leduc and Redwater in 1947 and 1948 (Legal Archives Society of Alberta, Wikipedia).",
+  "after": "Harvie bought mineral rights near Edmonton and leased them to Imperial Oil, which drilled Leduc No. 1 in 1947; later strikes on his rights at Redwater added to his fortune (Wikipedia, Legal Archives Society of Alberta).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Glenbow_Museum",
+   "https://legalarchives.ca/eric-lafferty-harvie-o-c-1967-c-d-q-c-1892-1975/"
+  ],
+  "reason": "Wikipedia states the lease to Imperial Oil and the Leduc No. 1 discovery; Legal Archives dates Leduc 1947 and Redwater 1948 but does not say Harvie leased the Redwater land to Imperial."
+ },
+ {
+  "id": "glenbow-calgary",
+  "section": "Red flags: oil money from the founder, the board and donors",
+  "problems": [
+   "unsupported: 'crude oil processing and waste business'"
+  ],
+  "before": "a crude oil processing and waste business (Government of Alberta)",
+  "after": "a crude oil processing and waste management business (Government of Alberta)",
+  "sources": [
+   "https://www.alberta.ca/aoe-david-werklund"
+  ],
+  "reason": "The Alberta Order of Excellence page says 'crude oil processing and waste management business'."
+ },
+ {
+  "id": "glenbow-calgary",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'Shaw media money'"
+  ],
+  "before": "the largest private gift is Shaw media money.",
+  "after": "the largest private gift is the Shaw Family Foundation's $35 million.",
+  "sources": [
+   "https://www.glenbow.org/reopening/"
+  ],
+  "reason": "Glenbow's reopening page states the $35 million Shaw Family Foundation gift; no opened source describes it as 'media money'."
+ },
+ {
+  "id": "golden-thread-gallery-belfast",
+  "section": "FUNDING",
+  "problems": [
+   "misattributed: 'principal funders (stated by the space)'"
+  ],
+  "before": "The gallery names the Arts Council of Northern Ireland and Belfast City Council as its principal funders (stated by the space);",
+  "after": "Wikipedia names the Arts Council of Northern Ireland, the National Lottery and Belfast City Council as its principal funders;",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Golden_Thread_Gallery",
+   "https://goldenthreadgallery.co.uk/support/"
+  ],
+  "reason": "The gallery's support page names no funder in text; the principal-funder statement is on Wikipedia, so the credit was wrong."
+ },
+ {
+  "id": "golden-thread-gallery-belfast",
+  "section": "Red flags: Calouste Gulbenkian Foundation's oil endowment",
+  "problems": [
+   "unsupported: Partex owned 'until it signed a sale'"
+  ],
+  "before": "The Foundation owned the oil and gas company Partex until it signed a sale to a subsidiary of Thailand's PTTEP on 17 June 2019, for up to US$622 million (Gulbenkian Foundation).",
+  "after": "The Foundation owned the oil and gas company Partex until it sold it to a subsidiary of Thailand's PTTEP; the sale agreement of 17 June 2019 was for up to US$622 million, and the sale closed on 4 November 2019 (Gulbenkian Foundation).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Calouste_Gulbenkian_Foundation",
+   "https://gulbenkian.pt/en/news/the-calouste-gulbenkian-foundation-announces-the-sale-of-partex/"
+  ],
+  "reason": "The Foundation's own news item (read through search results; the page itself did not load from this machine) gives the 17 June 2019 signing, the US$622 million ceiling and the 4 November 2019 closing; Wikipedia says the Foundation owned Partex fully until it was sold."
+ },
+ {
+  "id": "golden-thread-gallery-belfast",
+  "section": "Red flags: Calouste Gulbenkian Foundation's oil endowment",
+  "problems": [
+   "unsupported: Climaximo archive page described as covering a Lisbon action"
+  ],
+  "before": "of the 2016 protest the record cites; a Climáximo archive page on a Lisbon action against Gulbenkian and Partex was down for maintenance when checked.",
+  "after": "of the 2016 protest the record cites.",
+  "sources": [
+   "https://arquivo.climaximo.pt/?p=1394"
+  ],
+  "reason": "The Climaximo page loads only a maintenance notice with no mention of Gulbenkian or Partex, so the description of its content had no support."
+ },
+ {
+  "id": "golden-thread-gallery-belfast",
+  "section": "SOURCES",
+  "problems": [
+   "source mentions neither the gallery nor Gulbenkian"
+  ],
+  "before": "- https://arquivo.climaximo.pt/?p=1394 (down for maintenance when checked)",
+  "after": "- https://goldenthreadgallery.co.uk/gtg-secures-funding-from-national-lottery-heritage-fund-for-wilmont-house-study/",
+  "sources": [
+   "https://arquivo.climaximo.pt/?p=1394",
+   "https://goldenthreadgallery.co.uk/gtg-secures-funding-from-national-lottery-heritage-fund-for-wilmont-house-study/"
+  ],
+  "reason": "Removed the Climaximo URL (maintenance page only) and added the gallery's own page confirming the 5 June 2025 Heritage Fund grant of 83,270 pounds."
+ },
+ {
+  "id": "goldsmiths-cca-london",
+  "section": "Red flags: 2024 occupation and boycott over donors Candida and Zak Gertler",
+  "problems": [
+   "unsupported: 'Connors's show closed early'; 'backed the occupiers' overstated"
+  ],
+  "before": "Artists Matt Connors and Mark Corfield-Moore backed the occupiers; Connors's show closed early, and Galli's exhibition, due on 20 June 2024, was postponed (The Art Newspaper, ArtReview).",
+  "after": "Two exhibiting artists, Matt Connors and Mark Corfield-Moore, sent Goldsmiths for Palestine messages of support; their Instagram post said an exhibition had closed earlier than scheduled. Galli's exhibition, due on 20 June 2024, was postponed (The Art Newspaper, ArtReview).",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/06/14/goldsmiths-cca-closes-until-autumn-amid-pro-palestine-protests",
+   "https://artreview.com/pro-palestinian-occupation-closes-goldsmiths-cca/"
+  ],
+  "reason": "The Art Newspaper says the group received messages of support from the two artists, who posted that 'my exhibition We Speak Chicken' had to close earlier; the page does not say which of the two is the author, so the claim about Connors's show was cut back. ArtReview gives the 20 June date for Galli."
+ },
+ {
+  "id": "goldsmiths-cca-london",
+  "section": "Red flags: 2024 occupation and boycott over donors Candida and Zak Gertler",
+  "problems": [
+   "misattributed: '27 days' credited to ArtReview"
+  ],
+  "before": "Goldsmiths for Palestine occupied the CCA from 30 May 2024 for 27 days and launched a boycott; the CCA closed until October, saying it could not meet its insurers' terms for keeping artworks safe (ArtReview, The Art Newspaper).",
+  "after": "Goldsmiths for Palestine occupied the CCA from 30 May 2024 for 27 days and launched a boycott; the CCA closed until October, saying it could not meet its insurers' terms for keeping artworks safe (ArtReview, The Art Newspaper, 14 June and 25 November 2024).",
+  "sources": [
+   "https://artreview.com/pro-palestinian-occupation-closes-goldsmiths-cca/",
+   "https://www.theartnewspaper.com/2024/11/25/pro-palestine-boycott-goldsmiths-cca-ends-after-gallery-cuts-ties-donors"
+  ],
+  "reason": "ArtReview (12 June) gives the 30 May start and the closure until October; the 27-day length and the boycott come from The Art Newspaper of 25 November. Credit now names both dated pieces."
+ },
+ {
+  "id": "goldsmiths-cca-london",
+  "section": "FUNDING",
+  "problems": [
+   "over length (word limit), repeats the Bottom line"
+  ],
+  "before": "- No reporting found of a separate CCA budget or accounts.\n",
+  "after": "",
+  "sources": [
+   "https://goldsmithscca.art/donors/"
+  ],
+  "reason": "Report was 811 words against the 800 limit; the same gap (no CCA budget or dated donor list) is stated in the Bottom line."
+ },
+ {
+  "id": "goldsmiths-cca-london",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "; a café sits at the rear (stated by the space).",
+  "after": " (stated by the space).",
+  "sources": [
+   "https://goldsmithscca.art/about/"
+  ],
+  "reason": "Report was at the 800-word limit; the cafe line is a visiting detail that does not bear on funding."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "Red flags: Todd Energy",
+  "problems": [
+   "unsupported: the architects' sponsor is implied to be Todd Energy"
+  ],
+  "before": "- The architects describe the sponsor that negotiated the building's energy system as \"a major international sustainable energy corporation\" (Pattersons).",
+  "after": "- The architects say the building's energy system was negotiated with the project's sponsors, \"a major international sustainable energy corporation\"; the page does not name the company (Pattersons).",
+  "sources": [
+   "https://pattersons.com/project/len-lye-centre/"
+  ],
+  "reason": "The Pattersons project page does not name Todd Energy; the report's wording made it read as if it did."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "Red flags: Todd Energy",
+  "problems": [
+   "unsupported: 'in December 2025'; award is for community partnership in Taranaki, not the gallery"
+  ],
+  "before": "Its partnership continues: the Foundation lists it as a perpetual partner, and in December 2025 Todd Energy received the first NP Partners Community Impact Award for two decades of partnership in Taranaki (Govett-Brewster Foundation, Todd Energy).",
+  "after": "Its partnership continues: the Foundation lists it as a perpetual partner. Separately, Todd Energy reported on 24 December 2025 that it had received the first NP Partners Community Impact Award for two decades of community partnership in Taranaki; its post does not mention the gallery (Govett-Brewster Foundation, Todd Energy).",
+  "sources": [
+   "https://govett-brewsterfoundation.com/partner-programme/",
+   "https://toddenergy.co.nz/"
+  ],
+  "reason": "Todd Energy's news item is dated 24.12.25 and says the award was given 'at a 2025...' event, so the month of the award is not stated; the item concerns Taranaki community partnership, not the gallery."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: what the Landfall piece argues"
+  ],
+  "before": "- Calls the $11.5 million centre \"mirror-finish, fingerprint-prone\" and notes visitors enter through the gift shop.\n- Argues that a \"Len Lye Industry\" of regional marketing has overshadowed the artist.",
+  "after": "- A review of the book Zizz! The life and art of Len Lye; it describes the centre in passing as the \"mirror-finish, fingerprint-prone\" $11.5 million building, entered through the gift shop.\n- Prefers Lye's own words to what Wood calls the \"bubbly 'Len Lye Industry'\" and its province-linked marketing campaigns.\n- Does not discuss the centre's funding or Todd Energy.",
+  "sources": [
+   "https://web.archive.org/web/20240714065847/https://landfallreview.com/kinetic-experience/"
+  ],
+  "reason": "Read through the Internet Archive copy (the site returned 403). The piece reviews a book; the centre is an aside and the 'industry' remark is about merchandise and marketing, not that it 'overshadowed' the artist."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "FUNDING",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "- Other partners listed without amounts: Creative New Zealand, the Ministry of Education, Toi Foundation, Ngā Taonga, Craigs Investment Partners, Clelands, Govett Quilliam, Baker Tilly Staples Rodway and Technix (stated by the space).",
+  "after": "- Other partners shown as logos, without amounts, include Creative New Zealand, the Ministry of Education, Toi Foundation and Craigs Investment Partners (stated by the space).",
+  "sources": [
+   "https://govettbrewster.com/support/partners"
+  ],
+  "reason": "Report was 843 words against the 800 limit. The partners page shows logos only; the names kept are confirmed by logo files on that page and the Foundation page."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "FUNDING",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "Todd Energy, a Todd Corporation company that calls itself New Zealand's leading natural gas provider, is \"Founding Corporate Partner\" and \"Perpetual Foundation Corporate Partner\", with the Todd Energy Foyer and the Todd Energy Learning Centre, 2015 to 2025",
+  "after": "Todd Energy, which calls itself New Zealand's leading natural gas provider, is \"Founding Corporate Partner\" and \"Perpetual Foundation Corporate Partner\", with the Todd Energy Foyer and Learning Centre, 2015 to 2025",
+  "sources": [
+   "https://govett-brewsterfoundation.com/partner-programme/",
+   "https://toddenergy.co.nz/"
+  ],
+  "reason": "Word limit; the shortened text keeps what the two pages state."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "- Open daily 10am to 5pm except 25 and 26 December and 1 January; $17 for visitors, $12 for over-65s and students, free for district residents and under-16s (stated by the space).",
+  "after": "- Open daily 10am to 5pm; $17 for visitors, $12 for over-65s and students, free for district residents and under-16s (stated by the space).",
+  "sources": [
+   "https://govettbrewster.com/visit"
+  ],
+  "reason": "Word limit."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "The gallery converted the city's Regent cinema; the Len Lye Centre, designed by Andrew Patterson of Pattersons in curved stainless steel and concrete, opened on 25 July 2015 (stated by the space, Wikipedia, Pattersons).",
+  "after": "The gallery converted the city's Regent cinema; the Len Lye Centre, designed by Andrew Patterson in curved stainless steel and concrete, opened on 25 July 2015 (Wikipedia, Pattersons).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Govett-Brewster_Art_Gallery",
+   "https://pattersons.com/project/len-lye-centre/"
+  ],
+  "reason": "Word limit."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "Bottom line",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": " The gallery now shows an artist's critique of that sponsorship; whether the partnership changes is worth watching.",
+  "after": " The gallery now shows an artist's critique of that sponsorship.",
+  "sources": [
+   "https://govettbrewster.com/exhibitions/2026/open-window-what-would-this-place-look-like-without-fossil-fuel-sponsorship"
+  ],
+  "reason": "Word limit."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": ", plus an arthouse cinema, a store and education programmes (stated by the space, NPDC).",
+  "after": ", plus an arthouse cinema (stated by the space, NPDC).",
+  "sources": [
+   "https://www.npdc.govt.nz/council/news/2026/august/new-exhibition-examines-new-zealand-s-changing-energy-story/"
+  ],
+  "reason": "Word limit; the cinema and store are confirmed by NPDC but are not funding facts."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "which Lye chose to place at the gallery shortly before his death in 1980, plus",
+  "after": "which Lye placed at the gallery before his death in 1980, plus",
+  "sources": [
+   "https://govettbrewster.com/the-gallery/history"
+  ],
+  "reason": "Word limit; the history page says he chose the gallery just months before his death in 1980."
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "section": "Bottom line",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "The gallery is council-owned and runs mainly on ratepayer money.",
+  "after": "The gallery is council-owned and mainly ratepayer-funded.",
+  "sources": [
+   "https://www.npdc.govt.nz/council/news/2026/august/new-exhibition-examines-new-zealand-s-changing-energy-story/"
+  ],
+  "reason": "Word limit."
+ },
+ {
+  "id": "grand-people-s-study-house-pyongyang",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "misquote: 'create total loyalty'"
+  ],
+  "before": "and found that propaganda is used to create total loyalty to the Supreme Leader (UN News).",
+  "after": "and found that the State uses propaganda to manufacture absolute obedience to the Supreme Leader (UN News).",
+  "sources": [
+   "https://news.un.org/en/node/462002"
+  ],
+  "reason": "UN News reports the Commission's words as 'manufacture absolute obedience to the Supreme Leader'; 'total loyalty' appears nowhere in the piece."
+ },
+ {
+  "id": "grand-people-s-study-house-pyongyang",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "filler/unsupported: 'showcase library'"
+  ],
+  "before": "- The Study House is the state's showcase library and Juche study centre; its reading-room computers reach only the domestic intranet, and readers must request items from staff (Wikipedia).",
+  "after": "- The Study House is the state's national library and Juche study centre; its computers reach only the domestic intranet, and readers must request items from staff (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Grand_People%27s_Study_House"
+  ],
+  "reason": "'Showcase' is promotional wording no opened source uses; Wikipedia says the library is the centre of Juche studies and that the computers give access to the North Korean intranet only."
+ },
+ {
+  "id": "grand-people-s-study-house-pyongyang",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: language list and 'Kwangmyong'"
+  ],
+  "before": "computer rooms on the domestic Kwangmyong intranet, lecture theatres, language classes in English, Chinese, Russian, German and Japanese, and a music room;",
+  "after": "computers that reach the domestic intranet, lecture theatres, language classes in English, Russian, German and Chinese, and a music room;",
+  "sources": [
+   "https://koryogroup.com/blog/north-korea-guide-grand-peoples-study-house",
+   "https://en.wikipedia.org/wiki/Grand_People%27s_Study_House"
+  ],
+  "reason": "Koryo Tours lists English, Russian, German and Chinese for the classes (Japanese appears on Wikipedia only for materials); neither opened page uses the name Kwangmyong."
+ },
+ {
+  "id": "grand-people-s-study-house-pyongyang",
+  "section": "Red flags: owned by a government under US sanctions",
+  "problems": [
+   "unsupported: 'funder and controller' stated as sourced"
+  ],
+  "before": "- The library is a state institution and the country's centre of Juche studies, so the sanctioned government is both its funder and its controller (Wikipedia).",
+  "after": "- The library is the country's centre of Juche studies (Wikipedia). No source found names a funder other than the North Korean state.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Grand_People%27s_Study_House"
+  ],
+  "reason": "Wikipedia does not say the state funds and controls the library; the report now states only what it says and notes that no other funder was found."
+ },
+ {
+  "id": "grand-people-s-study-house-pyongyang",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'entirely' state money (report itself records donated books)"
+  ],
+  "before": "The money is entirely North Korean state money, and the state is under US blocking sanctions.",
+  "after": "The funding is North Korean state money, and the state is under US blocking sanctions; the only outside support found is donated books.",
+  "sources": [
+   "https://crln.acrl.org/index.php/crlnews/article/view/17582/19384"
+  ],
+  "reason": "The College & Research Libraries News article says international organisations donated books, so 'entirely' contradicted the report."
+ },
+ {
+  "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Between 1982 and 2001 about 35,000 objects'; 'still holds about 100,000'"
+  ],
+  "before": "Between 1982 and 2001 about 35,000 objects came back from Denmark under the Utimut return process; Denmark still holds about 100,000 Greenlandic items (Cultural Property News, 2019).",
+  "after": "Between the start of the Utimut return process and 2001, about 35,000 objects went from Denmark to Greenland institutions; around 100,000 items remained in Denmark (Cultural Property News).",
+  "sources": [
+   "https://culturalpropertynews.org/successful-repatriation-the-utimut-process-in-denmark-greenland/"
+  ],
+  "reason": "The article dates the first return to 1982 (204 watercolours) and says about 35,000 objects were transferred between the start of the process and 2001; it says 100,000 items remain in Denmark without a present-tense claim. The page's own year was not confirmed, so '2019' was dropped."
+ },
+ {
+  "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
+  "section": "Red flags: tobacco foundation money (Augustinus Fonden)",
+  "problems": [
+   "unsupported: date and meaning of the 27.30% figure"
+  ],
+  "before": "- In November 2024 Chr. Augustinus Fabrikker took part on a 27.30% pro-rata basis in Scandinavian Tobacco Group's share buy-back (STG announcement via MFN).",
+  "after": "- Chr. Augustinus Fabrikker participates on a 27.30% pro-rata basis in Scandinavian Tobacco Group's share buy-back, under agreements from 10 November 2023 (STG company announcement via MFN).",
+  "sources": [
+   "https://mfn.se/all/a/scandinavian-tobacco-group/scandinavian-tobacco-group-a-s-transactions-in-connection-with-share-buy-back-programme-64fc4926"
+  ],
+  "reason": "The announcement says the company 'participates on a 27.30% pro-rata basis' in purchases under agreements 'as from 10 November 2023'; it does not say it took place in November 2024."
+ },
+ {
+  "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
+  "section": "Red flags: tobacco foundation money (Augustinus Fonden)",
+  "problems": [
+   "superlative: 'largest outside grant'"
+  ],
+  "before": "is the largest outside grant in the 2024 report and runs to 2027",
+  "after": "is the largest grant listed in the 2024 report and runs to 2027",
+  "sources": [
+   "https://da.nka.gl/fileadmin/user_upload/documents/aarsrapporter/DT._A__rsberetning_2024.pdf"
+  ],
+  "reason": "The report lists 4.5 million kroner as the biggest of the foundation grants it names; it makes no claim about all outside money."
+ },
+ {
+  "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "misstatement: 'took a 27.30% share of ... 2024 buy-back'"
+  ],
+  "before": "whose holding company took a 27.30% share of Scandinavian Tobacco Group's 2024 buy-back; the largest grant runs to 2027.",
+  "after": "whose holding company participates on a 27.30% pro-rata basis in Scandinavian Tobacco Group's share buy-back; the largest grant runs to 2027.",
+  "sources": [
+   "https://mfn.se/all/a/scandinavian-tobacco-group/scandinavian-tobacco-group-a-s-transactions-in-connection-with-share-buy-back-programme-64fc4926"
+  ],
+  "reason": "Matches the announcement's wording; the earlier phrase misread a pro-rata participation rate as a share of the buy-back."
+ },
+ {
+  "id": "groninger-museum-groningen",
+  "section": "Red flags: gas company sponsors Gasunie and GasTerra",
+  "problems": [
+   "imprecise number: write-off"
+  ],
+  "before": "Gasunie held 9% of Nord Stream and wrote the stake off in full, €508 million, in 2022 (NS Energy).",
+  "after": "Gasunie held 9% of Nord Stream, valued at €508 million before July 2022, and wrote the stake off in full in its 2022 accounts (NS Energy).",
+  "sources": [
+   "https://web.archive.org/web/20230324203614/https://www.nsenergybusiness.com/news/gasunie-writes-off-nord-stream-fully/"
+  ],
+  "reason": "NS Energy (read through the Internet Archive copy; the live page returned 403) says the book value was cut from €508 million to €240 million in July 2022 and the stake was then fully written off; '€508 million written off in 2022' compressed two steps."
+ },
+ {
+  "id": "groninger-museum-groningen",
+  "section": "Red flags: Fossil Free Culture NL protests, 2022 to 2025",
+  "problems": [
+   "unsupported: 'the last major Dutch cultural institution taking fossil gas sponsorship'"
+  ],
+  "before": "On 30 November 2025 it called the museum the last major Dutch cultural institution taking fossil gas sponsorship (Fossil Free Culture NL, advocacy source).",
+  "after": "On 30 November 2025 it said that nearly every major Dutch cultural institution had stepped away from fossil sponsorship and that the museum \"continues to stand alone\" (Fossil Free Culture NL, advocacy source).",
+  "sources": [
+   "https://fossilfreeculture.nl/portfolio/its-seriously-about-time/"
+  ],
+  "reason": "The group's page says 'nearly every major cultural institution in the Netherlands has stepped away from fossil sponsorship, the GM continues to stand alone'; the report's wording was stronger than the page."
+ },
+ {
+  "id": "groninger-museum-groningen",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "allegation without 'Unverified:' label"
+  ],
+  "before": "- Dutch Wikipedia states that Gasunie's ties to Gazprom through Nord Stream influenced the museum's programme and led to exhibitions of Russian art; no independent source found for that claim.",
+  "after": "- Unverified: Dutch Wikipedia states that Gasunie's ties to Gazprom through Nord Stream shaped the museum's artistic policy and led to some exhibitions of Russian art; no independent source found for that claim.",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Groninger_Museum"
+  ],
+  "reason": "The Dutch Wikipedia text (Controverse, Gazprom) carries no citation; it is an allegation and now takes the label and names who makes it."
+ },
+ {
+  "id": "groninger-museum-groningen",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "Nynke Stellingsma became interim general administrator after the business director left on 1 January 2026 (Dutch Wikipedia).",
+  "after": "Nynke Stellingsma has been interim general administrator since the business director left on 1 January 2026 (Dutch Wikipedia).",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Groninger_Museum"
+  ],
+  "reason": "Word limit."
+ },
+ {
+  "id": "groninger-museum-groningen",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "GasTerra closes at the end of 2026; whether Gasunie stays is worth watching.",
+  "after": "GasTerra closes at the end of 2026; Gasunie's role is worth watching.",
+  "sources": [
+   "https://www.gasterra.nl/en/groningen/sponsoring"
+  ],
+  "reason": "Word limit."
+ },
+ {
+  "id": "groninger-museum-groningen",
+  "section": "FUNDING",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": "- The culture ministry granted €313,390 a year for four years from 2025 (annual report 2025).\n",
+  "after": "",
+  "sources": [
+   "https://groninger-museum.files.prepr.io/48m9ffsxslm7/jaarverslag-groninger-museum-2025.pdf"
+  ],
+  "reason": "Word limit; the ministry grant is already counted in the 2025 income line (€475,000 from the culture ministry)."
+ },
+ {
+  "id": "guggenheim-abu-dhabi",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'at a critical point in talks on contract language'"
+  ],
+  "before": "- Reports the Guggenheim walking away at a critical point in talks on contract language for building the museum.",
+  "after": "- Reports the Guggenheim board's decision of 13 April 2016 to stop negotiating with Gulf Labor, which had asked to meet biweekly to develop the \"contractual language needed to build a museum in Abu Dhabi\".",
+  "sources": [
+   "https://hyperallergic.com/guggenheim-breaks-off-negotiations-with-gulf-labor-over-migrant-rights"
+  ],
+  "reason": "The Hyperallergic piece gives the 13 April decision and Gulf Labor's request for contractual language; 'critical point' is not in it."
+ },
+ {
+  "id": "guggenheim-abu-dhabi",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported framing: 'the end of a long contest'"
+  ],
+  "before": "- Frames the opening as the end of a long contest over migrant workers' treatment.",
+  "after": "- Reports the 11 December opening date after 20 years of delays and 16 years of Gulf Labor's campaign on migrant workers' treatment.",
+  "sources": [
+   "https://hyperallergic.com/long-contested-guggenheim-abu-dhabi-gets-opening-date/"
+  ],
+  "reason": "The article says 'After 20 years of delays, allegations, and recalibrations' and 'in the past 16 years' Gulf Labor has called attention to abuse allegations; it does not call the opening an end."
+ },
+ {
+  "id": "guggenheim-abu-dhabi",
+  "section": "Red flags: migrant labour abuse on Saadiyat Island",
+  "problems": [
+   "clipped quotation"
+  ],
+  "before": "- TDIC's chief executive Ali Al Hammadi called workers' rights \"an international matter\" (Architectural Record).",
+  "after": "- TDIC's chief executive Ali Al Hammadi wrote to HRW that workers' rights are \"not solely a TDIC challenge alone, but rather an international matter\" (Architectural Record).",
+  "sources": [
+   "https://www.architecturalrecord.com/articles/3321-human-rights-watch-report-documents-continued-migrant-abuse-on-saadiyat-island"
+  ],
+  "reason": "The cut-down quotation dropped the first half of Al Hammadi's sentence, which changes its force."
+ },
+ {
+  "id": "guggenheim-bilbao-bilbao",
+  "section": "Red flags: protests against the Urdaibai expansion",
+  "problems": [
+   "unsupported: 'Greenpeace sued' (target not stated)"
+  ],
+  "before": "called for the €128 million project to be dropped, and Greenpeace sued in October 2024 (The Art Newspaper).",
+  "after": "called for the €128 million project to be dropped; in October 2024 Greenpeace filed a lawsuit against the Spanish government over reduced coastal protection in the area (The Art Newspaper).",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/12/19/plans-for-128m-guggenheim-bilbao-expansion-scrapped"
+  ],
+  "reason": "The Art Newspaper says Greenpeace filed a lawsuit 'claiming that the Spanish government was breaking the law by reducing the protection of the public maritime-terrestrial domain'; it was not a suit against the museum."
+ },
+ {
+  "id": "gwangju-biennale-gwangju",
+  "section": "FUNDING",
+  "problems": [
+   "contradicted by a cited source: 'No reporting found ... of the public budget per edition or of the 2026 operating budget'"
+  ],
+  "before": "The Foundation and the city host the event (Wikipedia). No reporting found, among pages that could be opened, of the public budget per edition or of the 2026 operating budget the record cites.",
+  "after": "The Foundation and the city host the event (Wikipedia). The Korea Times reports more than 10 billion won in public funding and related spending committed to each edition, and a 2026 operating budget of about 14.3 billion won, excluding a separate 1 billion won for basic assets.",
+  "sources": [
+   "https://www.koreatimes.co.kr/lifestyle/arts-theater/20260912/taiwan-china-row-at-gwangju-biennale-could-have-been-avoided"
+  ],
+  "reason": "The Korea Times piece, already cited in this report, states both figures in its Key Facts box, so the 'no reporting found' line was wrong."
+ },
+ {
+  "id": "gwangju-biennale-gwangju",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "contradicted by a cited source: budget 'not published in a form that could be checked'"
+  ],
+  "before": "The biennale is a city-backed public foundation; its budget and sponsors are not published in a form that could be checked.",
+  "after": "The biennale is a city-backed public foundation; its sponsors and their amounts are not published.",
+  "sources": [
+   "https://www.koreatimes.co.kr/lifestyle/arts-theater/20260912/taiwan-china-row-at-gwangju-biennale-could-have-been-avoided",
+   "https://www.gwangjubiennale.org/gb/foundation/support.do"
+  ],
+  "reason": "The Korea Times gives the per-edition public spending and the 2026 operating budget; the sponsor page lists only tiers and past halls (Kia, Samsung, Kolon) with no amounts."
+ },
+ {
+  "id": "gwangju-biennale-gwangju",
+  "section": "Red flags: Park Seo-Bo Art Prize dropped after protest (2023)",
+  "problems": [
+   "unsupported: 'Before the 2023 edition opened'"
+  ],
+  "before": "- Before the 2023 edition opened, members of the public objected",
+  "after": "- At the 2023 edition, members of the public objected",
+  "sources": [
+   "https://www.artasiapacific.com/news/protests-at-gwangju-biennale-end-newly-established-park-seo-bo-art-prize/"
+  ],
+  "reason": "ArtAsiaPacific places the leaflets 'at exhibition grounds' and quotes Park saying the problem was raised on the day of the event; it does not say the objections came before the opening."
+ },
+ {
+  "id": "gwangju-biennale-gwangju",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong year: Bourriaud appointment"
+  ],
+  "before": "announced the end of the prize alongside Nicolas Bourriaud's appointment for 2024.",
+  "after": "announced the end of the prize alongside Nicolas Bourriaud's appointment as curator of the 2025 edition.",
+  "sources": [
+   "https://www.artasiapacific.com/news/protests-at-gwangju-biennale-end-newly-established-park-seo-bo-art-prize/"
+  ],
+  "reason": "ArtAsiaPacific says Bourriaud was appointed 'as curator for its 2025 edition'."
+ },
+ {
+  "id": "gwangju-biennale-gwangju",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported source of allegation; time reference"
+  ],
+  "before": "- Unverified: core staff number about 30, mostly on short-term contracts, and the pavilion department lost five of six contract workers in a year, from The Korea Times.",
+  "after": "- Unverified: a foundation employee, quoted by The Korea Times, said core staff number about 30 with the rest on short-term contracts; the paper adds that the pavilion department lost five of its six contract workers last year.",
+  "sources": [
+   "https://www.koreatimes.co.kr/lifestyle/arts-theater/20260912/taiwan-china-row-at-gwangju-biennale-could-have-been-avoided"
+  ],
+  "reason": "The Korea Times attributes the staffing figures to an unnamed foundation employee; the five-of-six figure is the paper's own, dated 'last year' in a September 2026 article."
+ },
+ {
+  "id": "haifa-museum-of-art",
+  "section": "Red flags: \"McJesus\" protests and removal (2019)",
+  "problems": [
+   "unsupported certainty: violence stated as fact; police account"
+  ],
+  "before": "- In January 2019 hundreds of Arab Christian protesters tried to storm the museum; stones and firebombs were thrown and three police officers were injured (NPR, Fox News).",
+  "after": "- In January 2019 hundreds of Christian protesters, from Israel's Arab Christian minority, tried to storm the museum; Haifa police said stones and firebombs were thrown, and three police officers were injured (NPR, Fox News).",
+  "sources": [
+   "https://www.npr.org/2019/01/17/686199231/mcjesus-sculpture-to-be-pulled-from-israeli-museum-after-violent-protests",
+   "https://www.foxnews.com/world/israeli-museum-to-remove-mcjesus-art-sculpture-after-violent-protests.amp"
+  ],
+  "reason": "NPR reports the stones and firebombs 'according to Haifa law enforcement' and calls the protesters Christians from Israel's Arab Christian minority; the report had stated the police account as fact."
+ },
+ {
+  "id": "haifa-museum-of-art",
+  "section": "Red flags: \"McJesus\" protests and removal (2019)",
+  "problems": [
+   "source not opened: Jewish News returned 403"
+  ],
+  "before": "(NPR, Jewish News).",
+  "after": "(NPR, quoting the Jerusalem Post).",
+  "sources": [
+   "https://www.npr.org/2019/01/17/686199231/mcjesus-sculpture-to-be-pulled-from-israeli-museum-after-violent-protests"
+  ],
+  "reason": "NPR itself carries Leinonen's statement that he joined the BDS movement and his request for removal; the Jewish News page could not be opened (403), so its credit and URL were dropped."
+ },
+ {
+  "id": "haifa-museum-of-art",
+  "section": "SOURCES",
+  "problems": [
+   "source URL could not be opened (403)"
+  ],
+  "before": "- https://www.jewishnews.co.uk/mcjesus-sculptor-asks-haifa-museum-to-remove-work-and-joins-bds-movement/\n",
+  "after": "",
+  "sources": [
+   "https://www.jewishnews.co.uk/mcjesus-sculptor-asks-haifa-museum-to-remove-work-and-joins-bds-movement/"
+  ],
+  "reason": "The page returned HTTP 403 to every request, so it could not be checked; NPR covers the same point."
+ },
+ {
+  "id": "haifa-museum-of-art",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "moralising / verdict wording: 'a free-expression issue worth remembering'"
+  ],
+  "before": "The 2019 removal of \"McJesus\" under protest and ministerial pressure is a free-expression issue worth remembering.",
+  "after": "The 2019 removal of \"McJesus\" followed violent protest and a threat by the culture minister to defund the museum.",
+  "sources": [
+   "https://www.foxnews.com/world/israeli-museum-to-remove-mcjesus-art-sculpture-after-violent-protests.amp",
+   "https://www.npr.org/2019/01/17/686199231/mcjesus-sculpture-to-be-pulled-from-israeli-museum-after-violent-protests"
+  ],
+  "reason": "The old sentence was a verdict with no named actor; the new one states the events from NPR and Fox News. 'Violent' is NPR's word for the protest."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "Red flags: 2006 Attorney General findings and the antiquities scandal",
+  "problems": [
+   "verdict noun 'scandal' in heading"
+  ],
+  "before": "Red flags: 2006 Attorney General findings and the antiquities scandal",
+  "after": "Red flags: 2006 Attorney General findings and the antiquities cases",
+  "sources": [
+   "https://www.philanthropy.com/news/calif-attorney-general-issues-critical-report-on-getty-trust/",
+   "https://en.wikipedia.org/wiki/Marion_True"
+  ],
+  "reason": "The section names the events (indictment of 1 April 2005, 2007 returns); 'scandal' was a label without an actor."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "critic's verdict adopted in the report's voice"
+  ],
+  "before": "scandalous and applies that to Meier's Getty Center.",
+  "after": "\"scandalous\" and applies that to Meier's Getty Center.",
+  "sources": [
+   "https://www.nybooks.com/articles/2006/11/16/the-getty-for-better-and-worse/"
+  ],
+  "reason": "The word is Filler's; it is now marked as a quotation."
+ },
+ {
+  "id": "getty-center-los-angeles",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "over length (word limit)"
+  ],
+  "before": " Outside gifts are small.",
+  "after": "",
+  "sources": [
+   "https://media.getty.edu/Text/8c7dcf11-0b17-5cec-af08-36494da10f2c.pdf"
+  ],
+  "reason": "Report reached 800 words after the Getty Oil section was added; the audited statements already show donor contributions of 11.1 million dollars against 864.7 million dollars of investment income."
+ }
+]
