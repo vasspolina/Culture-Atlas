@@ -150,3 +150,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - jordan-national-gallery-of-fine-arts-amman: the gallery says over 3,000 works, Wikipedia over 2,000.
 - joslyn-art-museum-omaha: the Hawks Pavilion gift amount is not reported in any opened source.
 - istanbul-biennial-iksv: medyascope.tv returned 410.
+
+## d009 slop check (63 fixes; every report changed)
+- getty-center-los-angeles: "Getty Oil fortune behind the endowment" added as a red flag per the founder-fortune ruling. No opened source gives the 1984 closing date or proceeds (worded "agreed to sell"); NYRB dates the Texaco takeover to 1983.
+- guggenheim-abu-dhabi: a "Red flags: Gulf state body" section added (the record carries the flag); the site is bot-blocked.
+- glenbow-calgary: the Imperial Oil $4M gift is confirmed only from search excerpts (CSRwire 403).
+- golden-thread-gallery-belfast: no reporting found on the 2016 Gulbenkian protest the record cites; Partex sale terms rest on excerpts and Wikipedia.
+- groninger-museum-groningen: the Dutch Wikipedia claim about Gazprom is uncited and marked Unverified.
+- Public wording: reports said "the map" and "the editor's ruling"; changed to "the atlas" or removed in 7 reports, and the prompt now forbids it.
