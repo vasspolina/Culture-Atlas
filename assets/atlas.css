@@ -59,7 +59,7 @@ h1.lede,h2.lede{font:600 32px/1 var(--display-xl);text-transform:uppercase;lette
 .custom-scrollbar,.no-scrollbar{scrollbar-width:thin;scrollbar-color:var(--ink) transparent}
 .no-scrollbar{scrollbar-width:none}.no-scrollbar::-webkit-scrollbar{display:none}
 .pt-safe{padding-top:var(--safe-t)}.pb-safe{padding-bottom:var(--safe-b)}
-.is-good{background:var(--cyan);color:#000}.is-warn{background:var(--mustard);color:#000}.is-bad{background:var(--orange);color:#000}
+.is-good{background:var(--cyan);color:#000}.is-warn{background:#c6c6c6;color:#000}.is-bad{background:var(--orange);color:#000}
 .is-off{opacity:.35}.is-open{transform:rotate(180deg)}
 .x-none{}
 

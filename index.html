@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=256">
-  <script src="assets/config.js?v=256"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=257">
+  <script src="assets/config.js?v=257"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9906,11 +9906,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v256';
+    const ATLAS_RELEASE = 'culture-atlas-v257';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=256').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=257').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11411,9 +11411,16 @@ return maplibregl$1;
     // clean result and does not count: "not an arms maker", "No flagged funder or protest found". "No longer" keeps a past tie.
     const WATCH_GOSSIP = /\b(names? to know|fines?d?|penalt\w*|sanction\w*|settle(?:d|ment)|sued|lawsuits?|court(?! of audit)|convict\w*|charged|indict\w*|guilty|brib\w*|kickbacks?|fraud\w*|launder\w*|corrupt\w*|dumping|violations?|scandals?|controvers\w*|protest(?! movement)\w*|boycott\w*|campaign(?!\s+(?:donors?|gifts?|goals?))\w*|petition\w*|appeal urged|strikes?|resign\w*|dismiss\w*|ousted|fired|withdrew|sacked|picket\w*|sit-ins?|pulled|dropped|drop it|under pressure|cancell?ed|apologi[sz]\w*|exclusions?|kanders|baillie gifford|bloomberg philanthropies|ruling[- ]family|walkouts?|alleg\w*|accus\w*|investigat\w*|probe|impeach\w*|complaints?|threat\w*|confiscat\w*|demanded|epstein|sackler|purdue|opioids?|oxycontin|arms (?:maker|manufacturer|dealer|firm|company|group|trade|exporter|industry)|weapons?|munitions?|missiles?|defen[cs]e (?:contractor|group|firm|company|maker)|fossil|oil (?:and gas|company|firm|group|major|money|giant|fortune|trader)|petro\w*|tobacco|cigarettes?|casinos?|gambling|betting|lottery|mining (?:company|firm|group|giant|disaster)|prisons?|detention|forced labou?r|slave\w*|exploit\w*|censor\w*|human rights|abuse\w*|harass\w*|misconduct|disputes?|disputed|backlash|critics?|removal|removed|criticis\w*|condemn\w*|divest\w*|oligarch\w*|bankrupt\w*|scrutiny|gulf state|aramco|bp|shell plc|exxon\w*|chevron|totalenergies|equinor|gazprom|rosneft|lukoil|glencore|rio tinto|bae systems|bae|lockheed|raytheon|rheinmetall|philip morris|altria|blackrock|vale)\b/i;
     const WATCH_CLEAN = /\b(?:not|no(?! longer)|nor|none|nothing|never|without)\b/i;
+    const watchClauses = (s) => String(s || '').split(/[.;]\s+|;\s*|,\s+(?=(?:but|though|although|while|yet|not)\b)|\s+but\s+/i).filter(c => c.trim());
     function watchIsGossip(s) {
-      return String(s || '').split(/[.;]\s+|;\s*|,\s+(?=(?:but|though|although|while|yet|not)\b)|\s+but\s+/i)
-        .some(c => !WATCH_CLEAN.test(c) && WATCH_GOSSIP.test(c));
+      return watchClauses(s).some(c => !WATCH_CLEAN.test(c) && WATCH_GOSSIP.test(c));
+    }
+    // A clean result: every clause opens by saying what was not found or what a funder is not ("No reporting found of a protest at
+    // ARoS", "not an arms maker"). A negation inside a claim ("the museum did not respond") does not make it one.
+    const CLEAN_RESULT = /^\W*(?:no|nothing|none)\b.*\b(?:found|turned up|recorded|reported|located|listed|identified|on (?:record|file)|category)\b|^\W*(?:not|nor) (?:an?|the)\b/i;
+    function isCleanResult(s) {
+      const c = watchClauses(s);
+      return c.length > 0 && c.every(x => CLEAN_RESULT.test(x));
     }
     // A space has gossip when the chat's gossip answer would print something for it. The globe asks every frame, so each space is asked once.
     function hasGossip(inst) {
@@ -12420,11 +12427,18 @@ return maplibregl$1;
       const own = (d.red_flags || []).filter(f => f && (f.points || []).length);
       // A flag with three or more points is a short run of paragraphs, each led by its own label ("Unity Park:"); fewer run on from the heading.
       own.forEach(f => {
-        if (f.points.length < 3) { out.push(g(`<p class="no-indent"><strong class="lead-in">${markFlag(proseEnd(f.heading))}</strong> ${escapeHtml(proseSay(f.points))}</p>`)); return; }
+        // A clean result among the points ("No reporting found of a protest") is information, not gossip: it follows unmarked.
+        const told = f.points.filter(pt => !isCleanResult(pt)), clean = f.points.filter(pt => isCleanResult(pt));
+        if (f.points.length < 3) {
+          out.push(g(`<p class="no-indent"><strong class="lead-in">${markFlag(proseEnd(f.heading))}</strong> ${escapeHtml(proseSay(told))}</p>`));
+          if (clean.length) out.push(proseP('', escapeHtml(proseSay(clean))));
+          return;
+        }
         out.push(g(`<p class="no-indent"><strong class="lead-in">${markFlag(proseEnd(f.heading))}</strong></p>`));
         f.points.forEach(pt => {
           const m = String(pt).match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s);
-          out.push(g(m ? proseP(`${m[1]}:`, escapeHtml(proseEnd(m[2]))) : proseP('', escapeHtml(proseEnd(pt)))));
+          const para = m ? proseP(`${m[1]}:`, escapeHtml(proseEnd(m[2]))) : proseP('', escapeHtml(proseEnd(pt)));
+          out.push(isCleanResult(pt) ? para : g(para));
         });
       });
       const more = (inst.flag_details || []).filter(x => x && x.text).map(x => x.text);
@@ -19327,9 +19341,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=256"></script>
-<script src="assets/layers.js?v=256"></script>
-<script src="assets/hq-detail.js?v=256"></script>
-<script src="assets/bubbles.js?v=256" defer></script>
+<script src="assets/typeset.js?v=257"></script>
+<script src="assets/layers.js?v=257"></script>
+<script src="assets/hq-detail.js?v=257"></script>
+<script src="assets/bubbles.js?v=257" defer></script>
 </body>
 </html>
