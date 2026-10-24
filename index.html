@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=249">
-  <script src="assets/config.js?v=249"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=251">
+  <script src="assets/config.js?v=251"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -790,7 +790,7 @@ return maplibregl$1;
                 <!-- Right Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Voice Toggle Button -->
-                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5" title="Auto-Voice: Speaks responses aloud (Click to mute)">
+                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5 is-on" title="Auto-Voice: Speaks responses aloud (Click to mute)">
                     <span id="curatorVoiceToggleIcon"></span>
                     <span id="curatorVoiceToggleLabel">Voice: ON</span>
                   </button>
@@ -9906,11 +9906,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v249';
+    const ATLAS_RELEASE = 'culture-atlas-v251';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=249').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=251').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -16413,7 +16413,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (curatorAutoVoiceEnabled) {
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '';
         if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: ON';
-        curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0';
+        curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0 is-on';
         curatorVoiceToggleBtn.title = 'Auto-Voice: Speaks responses aloud (Click to mute)';
         const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.textContent = 'Voice: On';
       } else {
@@ -19115,9 +19115,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=249"></script>
-<script src="assets/layers.js?v=249"></script>
-<script src="assets/hq-detail.js?v=249"></script>
-<script src="assets/bubbles.js?v=249" defer></script>
+<script src="assets/typeset.js?v=251"></script>
+<script src="assets/layers.js?v=251"></script>
+<script src="assets/hq-detail.js?v=251"></script>
+<script src="assets/bubbles.js?v=251" defer></script>
 </body>
 </html>

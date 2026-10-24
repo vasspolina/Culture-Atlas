@@ -1681,3 +1681,17 @@ body.chat-input-mode-active #workInput{padding:.75em}
 /* The chat follows the theme: white in light, black in dark. Green is only the note (whistleblower mode), in both themes, a darker green than release 240 used for the whole chat. */
 body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer){color-scheme:dark;--focus:#618cff;--ink:#fff;--paper:#0a1d14;--grey:#10291e;--block:#1a3a2b;--line:#fff;background:var(--paper);color:var(--ink)}
 :root body.chat-input-mode-active #workInputCard.is-mode #workInput::placeholder{color:var(--ink);opacity:.7}
+
+
+/* Every button in the chat is drawn like the Details and AI Chat tabs: square, 22px regular, ink on paper with a hairline, inverted on hover, cobalt while it is on (Voice). The send arrow is the same square with an arrow in it. */
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #workSendBtn,:root[data-theme] #chatNoteTopBar #chatBackBtn{background:var(--paper);color:var(--ink)!important;border:1px solid var(--line);border-radius:0;box-shadow:none;width:auto;height:auto;min-height:0;padding:8px 16px;display:inline-flex;align-items:center;justify-content:center;font:400 22px/1 var(--sans);text-transform:none;letter-spacing:0;text-decoration:none;white-space:nowrap}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover,:root[data-theme] #workInputCard #workSendBtn:hover,:root[data-theme] #chatNoteTopBar #chatBackBtn:hover{background:var(--ink);color:var(--paper)!important;text-decoration:none}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on{background:var(--cobalt);color:#fff!important;border-color:var(--cobalt)}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on:hover{background:var(--cobalt);color:#fff!important;filter:brightness(.85)}
+:root[data-theme] #workInputCard #workSendBtn svg{width:20px;height:20px;color:inherit}
+:root[data-theme] #workInputCard #curatorVoiceToggleLabel{font:inherit}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn,:root[data-theme] body.chat-input-mode-active #chatNoteTopBar #chatBackBtn{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn:hover,:root[data-theme] body.chat-input-mode-active #chatNoteTopBar #chatBackBtn:hover{background:var(--ink)!important;color:var(--paper)!important}
+
+/* The header's buttons run the full height of the bar, so their vertical lines meet the rules above and below with no gap (they were 44px tall in a 55px bar). */
+#topThemeBtn,#topGossipBtn{height:auto;align-self:stretch}
