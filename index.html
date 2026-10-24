@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=241">
-  <script src="assets/config.js?v=241"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=242">
+  <script src="assets/config.js?v=242"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9909,11 +9909,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v241';
+    const ATLAS_RELEASE = 'culture-atlas-v242';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=241').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=242').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17691,7 +17691,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const g = document.getElementById('curatorHeroGreeting');
       const box = document.getElementById('curatorStarterPrompts');
       if (!g || !box || g.classList.contains('hidden') || !g.clientHeight) return;
-      let guard = 1000;
+      if (g.scrollHeight <= g.clientHeight) return;
+      // The cloud holds about a thousand questions and a dozen fit. Taking them off one at a time re-laid the page out after
+      // every one (seconds on load). All the bottoms are read in one pass, the ones past the foot go together, and the
+      // one-at-a-time loop below only trims what rounding leaves.
+      const kids = [].slice.call(box.children);
+      if (kids.length) {
+        const gr = g.getBoundingClientRect();
+        const bottoms = kids.map(k => k.getBoundingClientRect().bottom - gr.top + g.scrollTop);
+        const room = g.clientHeight - (g.scrollHeight - bottoms[bottoms.length - 1]);
+        let cut = bottoms.findIndex(b => b > room + 0.5);
+        if (cut < 0) cut = kids.length;
+        for (let i = kids.length - 1; i >= cut; i--) kids[i].remove();
+        // The estimate can stop a question short of where the one-at-a-time loop stopped: put questions back while they fit.
+        for (let i = cut, back = 8; i < kids.length && back-- && g.scrollHeight <= g.clientHeight; i++) {
+          box.appendChild(kids[i]);
+          if (g.scrollHeight > g.clientHeight) { kids[i].remove(); break; }
+        }
+      }
+      let guard = 50;
       while (g.scrollHeight > g.clientHeight && box.lastElementChild && guard--) box.lastElementChild.remove();
     }
     // Each question on screen is checked, a few at a time between frames, to resolve to its record; one that does not
@@ -19095,9 +19113,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=241"></script>
-<script src="assets/layers.js?v=241"></script>
-<script src="assets/hq-detail.js?v=241"></script>
-<script src="assets/bubbles.js?v=241" defer></script>
+<script src="assets/typeset.js?v=242"></script>
+<script src="assets/layers.js?v=242"></script>
+<script src="assets/hq-detail.js?v=242"></script>
+<script src="assets/bubbles.js?v=242" defer></script>
 </body>
 </html>
