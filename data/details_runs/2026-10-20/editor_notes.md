@@ -421,3 +421,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - ny-carlsberg-glyptotek: Augustinus 2022, no amount; antiquities item as reported (ArtsJournal 2009, Chasing Aphrodite 2013 with July 2016 updates, The Local 27 Nov 2024).
 - nuuk-art-museum-nuuk-kunstmuseum-nuuk: Augustinus gift 2024, no amount found.
 - peggy-guggenheim-collection-venice: the Sackler red flag removed: no Sackler gift or name found at Venice; the parent's 2019 policy covers only the New York museum.
+
+## d025 (research notes, before its slop check)
+- smithsonian-air-and-space-washington: the record's "Koch hall kept" is at the National Museum of Natural History, not here; no Koch gift to Air and Space found (a "Not related" note).
+- sinchon-museum-of-american-war-atrocities-sinchon: the record's website kcnawatch.org is a state-media aggregator that does not mention the museum; the Sanctions flag is under US Executive Order 13722 with no named owner; historians' disputes of the museum's account are Wider context.
+- shanghai-biennale: the .org domain for the Power Station of Art serves gambling spam; the real site is powerstationofart.com.
+- slovak-national-gallery: the 2025 budget EUR 13.2M cut to 9.6M; open letter about 140 signatories (e-flux) or at least 360 (The Art Newspaper).
+- solomon-r-guggenheim-museum: 2024 revenue $88.2M, about 45% contributions; Lavazza and BMW partnerships not confirmed.
+- sfmoma-san-francisco: Epstein-linked: ComplexCity interest and a 2009 thank-you letter under Red flags; the Neri Oxman funding request under Wider context.
+- sonar-festival: owned via Superstruct by KKR; about EUR 550k a year in public grants.
+- songeun-seoul: songeun.or.kr/about returned 404.
