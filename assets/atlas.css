@@ -1726,3 +1726,11 @@ body.chat-input-mode-active #workInput{padding:.75em}
   .maplibregl-ctrl-group button.maplibregl-ctrl-zoom-out .maplibregl-ctrl-icon{--sign:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='M10 16h14v2h-14z'/%3E%3C/svg%3E")}
   .maplibregl-ctrl-group button.maplibregl-ctrl-compass .maplibregl-ctrl-icon{--sign:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='m12.5 15.5 4.500-9 4.500 9z'/%3E%3Cpath d='m13 20 4 7.500 4-7.500z' fill='none' stroke='black' stroke-width='1.500'/%3E%3C/svg%3E")}
 }
+
+/* The Details card as prose (24 Oct 2026): paragraphs run from a bold lead-in, half a line apart, with no boxes, pills or source chips.
+   The sources are links in the text or one Sources line; the caution on archive items is one small note, said once. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part>p:not(.account-note):not(.source-note){text-indent:0;font-size:18px;line-height:var(--lh)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p+p{margin-top:var(--H)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p.account-note,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p.source-note{margin-top:var(--H);text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part .lead-in{font-weight:600}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part a.domain{white-space:normal}
