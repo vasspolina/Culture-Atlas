@@ -1738,24 +1738,41 @@ div:has(>#topThemeBtn){column-gap:0}
 
   /* ---- Chat transcript: VStack(alignment:.leading, spacing:16) ---- */
   #curatorScrollArea{padding:var(--m-s3) var(--m-s4)!important}
-  #curatorMessages>.curator-message-wrap,
-  #curatorMessages>.justify-end{padding-left:0!important;margin:0 0 var(--m-s4)!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap,
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{padding-left:0!important;margin:0 0 var(--m-s4)!important}
   /* Role label sits on its own line above the message, like a list-row caption. */
-  #curatorMessages>.curator-message-wrap::before,
-  #curatorMessages>.justify-end::before{position:static!important;display:block;margin-bottom:var(--m-s1);font-weight:600!important;color:var(--m-secondary)!important}
-  #curatorMessages :is(p,li,div,.user-bubble){text-indent:0!important}
-  #curatorMessages>.curator-message-wrap p{margin:0 0 var(--m-s2)!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap::before,
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end::before{position:static!important;display:block;margin-bottom:var(--m-s1);font-weight:600!important;color:var(--m-secondary)!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,li,div,.user-bubble){text-indent:0!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap p{margin:0 0 var(--m-s2)!important}
   /* LabeledContent rows (hours, admission, address…) */
-  #curatorMessages .rule-t{padding-top:var(--m-s2)!important;padding-bottom:var(--m-s2)!important;margin-top:0!important}
-  #curatorMessages .space-y-1_5>*+*{margin-top:0!important}
-  #curatorMessages strong.meta.block{margin-bottom:2px}
-  #curatorMessages [class*="pl-"],#curatorMessages [class*="ml-"]{padding-left:0;margin-left:0}
+  :is(#curatorMessages,#curatorDrawerLiveStream) .rule-t{padding-top:var(--m-s2)!important;padding-bottom:var(--m-s2)!important;margin-top:0!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) .space-y-1_5>*+*{margin-top:0!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) strong.meta.block{margin-bottom:2px}
+  :is(#curatorMessages,#curatorDrawerLiveStream) [class*="pl-"],:is(#curatorMessages,#curatorDrawerLiveStream) [class*="ml-"]{padding-left:0;margin-left:0}
   /* Follow-up suggestions: a wrapping row of compact buttons (FlowLayout), not a stacked column. */
-  #curatorMessages div:has(>.curator-followup-pill){display:flex!important;flex-wrap:wrap;gap:var(--m-s2);flex-direction:row!important}
-  #curatorMessages div:has(>.curator-followup-pill)>*{margin:0!important}
-  #curatorMessages .curator-followups{margin-top:var(--m-s3)!important}
-  #curatorMessages a p{display:inline;margin:0!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) div:has(>.curator-followup-pill){display:flex!important;flex-wrap:wrap;gap:var(--m-s2);flex-direction:row!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) div:has(>.curator-followup-pill)>*{margin:0!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) .curator-followups{margin-top:var(--m-s3)!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) a p{display:inline;margin:0!important}
   .curator-followup-pill{display:inline-flex!important;align-items:center;min-height:var(--m-tap-2);padding:6px var(--m-s3)!important;margin:0!important}
+
+
+  /* ---- Phone chat drawer (Chat tab): same transcript rules as the chat column ---- */
+  #curator-chat-drawer>div:first-child{min-height:var(--m-tap);padding:0 var(--m-s4)!important}
+  #curator-chat-drawer>div:first-child>div:first-child::before{content:"Chat";font-weight:600;color:var(--ink)}
+  #curator-chat-drawer>div:first-child button{min-height:var(--m-tap);padding:0 0 0 var(--m-s3)!important;color:var(--m-secondary)!important}
+  #curatorDrawerChatBody{padding:var(--m-s3) var(--m-s4)!important}
+  #curatorDrawerChatBody>*+*{margin-top:var(--m-s3)!important}
+  #curatorDrawerGreeting:not(.hidden){margin-bottom:var(--m-s3)}
+  #chatRecordsInfoMobile{border-top:0!important;padding-top:0!important}
+  #chatRecordsInfoMobile>summary{min-height:var(--m-tap-2);display:flex;align-items:center;color:var(--m-secondary)}
+  /* The user's line reads like the chat column: green text, no white slab. */
+  :root:root body #curatorDrawerLiveStream>.justify-end{display:block!important}
+  :root:root body #curatorDrawerLiveStream>.justify-end>div,:root:root body #curatorDrawerLiveStream .user-bubble{background:none!important;padding:0!important;max-width:none!important;color:#1d7a3a!important;text-indent:0!important}
+  :root[data-theme="dark"] body #curatorDrawerLiveStream>.justify-end>div,:root[data-theme="dark"] body #curatorDrawerLiveStream .user-bubble{color:#8fe3a4!important}
+  /* Gossip balloon uses the full column instead of 80%, so the text is not a narrow ribbon. */
+  :root:root body :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{width:100%!important;max-width:100%!important;padding:var(--m-s3) var(--m-s4) var(--m-s4)!important;margin:0 0 var(--m-s4)!important}
 
   /* ---- Bottom composer: .safeAreaInset(edge:.bottom) ----
      Row 1: TextField | Send.  Row 2: Share · Voice …… How the records work. */
