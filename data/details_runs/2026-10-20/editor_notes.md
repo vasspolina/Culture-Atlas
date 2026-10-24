@@ -371,3 +371,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - palazzo-grassi-and-punta-della-dogana: the lease is 30 years (Art Newspaper 2007) or 33 (Wikipedia).
 - peggy-guggenheim-collection-venice: no Sackler gift or name found at the Venice museum; the 2019 policy is documented only for the parent foundation in New York.
 - ok16-cultural-hub-minsk: ok16.by now serves an unrelated travel blog; the Warsaw relaunch could not be confirmed (Zerkalo 403).
+
+## d024 (research notes, before its slop check)
+- riga-international-biennial-of-contemporary-art-riboca: riboca.com is parked (GoDaddy for-sale page); funding after 2022 from a US charity, Just A Moment.
+- ruarts-foundation-moscow: no source opened ties Rashid Sardarov's money to the foundation; the link is the founder's surname, which Transparency International Russia gives as his wife's name.
+- russian-pavilion-at-the-venice-biennale-venice: pavilionrus.com returned HTTP 500; Novatek named by one outlet (Unverified).
+- ruya-foundation-baghdad: KAR on the sponsor list; the page does not say "KAR Group"; no KAR payment is dated; the About page copyright is 2018.
+- rijksmuseum-amsterdam: the end of the Aramco sponsorship in 2017 is sourced only to Fossil Free Culture NL via the Museums Association; the museum did not respond.
+- seattle-art-museum-seattle: seattleartmuseum.org returned 403; the record's claims about Boeing, Bloomberg Philanthropies and Honeywell as partners are unconfirmed, not disproved.
+- royal-philharmonic-orchestra-london: no income figures (2025 accounts PDF unreadable; Charity Commission 403).
+- science-museum-london: BP, Adani Green; income from Civil Society for 2022-23.
