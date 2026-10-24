@@ -193,3 +193,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - mac-ccb-museu-de-arte-contemporanea-do-centro-cultural-de-belem: two Lusa reports give different 2024 visitor counts (588,643 and 179,890).
 - lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum: state censorship items (Burga removed Jan 2025, Palestinian film barred Oct 2026, 2023 closure).
 - lincoln-center: no Griffin or Citadel campaign found there; the Whitney claim was not researched.
+
+## d013 (research notes, before its slop check)
+- kunsthaus-zürich-zürich: a corporate partner "JTI" is listed in the 2024 annual report; no opened page names the company, so it is not called Japan Tobacco International. If confirmed, it is a tobacco funder to add.
+- kw-institute-for-contemporary-art: no BMW Group or Casa Camper support found on KW's own pages, though the record names both.
+- kunstinstituut-melly: no source for where Ammodo's money comes from.
+- kunsthalle-praha-prague: Nelson Anstalt gave the foundation CZK 90 million in 2023; its owner is not identified in any source. The record's website link is a news article; the real site is kunsthallepraha.org.
+- kunstmuseum-wolfsburg-wolfsburg: no budget figures or board list found; www.kunstmuseum.de redirects to a ticket shop saying the site is unavailable.
+- latvian-national-museum-of-art: Rietumu Banka fines (EUR 5.85M 2021, 1.5M 2017, an 80M French tax-evasion fine 2017); claimed 2022 and 2024 fine reductions not confirmed.
+- lacma-los-angeles: Steve Tisch's Epstein-file mention is under Wider context; the listed Sony emails do not mention Epstein.
