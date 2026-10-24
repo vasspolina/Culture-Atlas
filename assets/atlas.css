@@ -651,10 +651,6 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 #zoomControls button+button{border-top:1px solid #000}
 #zoomControls button:hover{background:#000;color:#fff}
 #zoomControls svg{width:14px;height:14px}
-/* Back to chat shows only while a note is being written. */
-#chatNoteTopBar{display:none}
-body.chat-input-mode-active #chatNoteTopBar{display:block}
-#chatNoteTopBar #chatBackBtn{font:400 15px/1 var(--sans);padding:8px 0}
 /* One set of zoom buttons at a time: on the street map the map's own square set stays, the round pair goes. */
 #globeViewport:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none}
 
@@ -1684,14 +1680,14 @@ body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer)
 
 
 /* Every button in the chat is drawn like the Details and AI Chat tabs: square, 22px regular, ink on paper with a hairline, inverted on hover, cobalt while it is on (Voice). The send arrow is the same square with an arrow in it. */
-:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #workSendBtn,:root[data-theme] #chatNoteTopBar #chatBackBtn{background:var(--paper);color:var(--ink)!important;border:1px solid var(--line);border-radius:0;box-shadow:none;width:auto;height:auto;min-height:0;padding:8px 16px;display:inline-flex;align-items:center;justify-content:center;font:400 22px/1 var(--sans);text-transform:none;letter-spacing:0;text-decoration:none;white-space:nowrap}
-:root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover,:root[data-theme] #workInputCard #workSendBtn:hover,:root[data-theme] #chatNoteTopBar #chatBackBtn:hover{background:var(--ink);color:var(--paper)!important;text-decoration:none}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #workSendBtn{background:var(--paper);color:var(--ink)!important;border:1px solid var(--line);border-radius:0;box-shadow:none;width:auto;height:auto;min-height:0;padding:8px 16px;display:inline-flex;align-items:center;justify-content:center;font:400 22px/1 var(--sans);text-transform:none;letter-spacing:0;text-decoration:none;white-space:nowrap}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover,:root[data-theme] #workInputCard #workSendBtn:hover{background:var(--ink);color:var(--paper)!important;text-decoration:none}
 :root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on{background:var(--cobalt);color:#fff!important;border-color:var(--cobalt)}
 :root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on:hover{background:var(--cobalt);color:#fff!important;filter:brightness(.85)}
 :root[data-theme] #workInputCard #workSendBtn svg{width:20px;height:20px;color:inherit}
 :root[data-theme] #workInputCard #curatorVoiceToggleLabel{font:inherit}
-:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn,:root[data-theme] body.chat-input-mode-active #chatNoteTopBar #chatBackBtn{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important}
-:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn:hover,:root[data-theme] body.chat-input-mode-active #chatNoteTopBar #chatBackBtn:hover{background:var(--ink)!important;color:var(--paper)!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn:hover{background:var(--ink)!important;color:var(--paper)!important}
 
 /* The header's buttons run the full height of the bar, so their vertical lines meet the rules above and below with no gap (they were 44px tall in a 55px bar). */
 #topThemeBtn,#topGossipBtn{height:auto;align-self:stretch}
@@ -1718,3 +1714,6 @@ div:has(>#topThemeBtn){column-gap:0}
 #noteTargetLine.is-flashed{animation:noteFlash .6s steps(2,jump-none) 2}
 @keyframes noteFlash{50%{text-decoration:underline}}
 @media (prefers-reduced-motion:reduce){#noteTargetLine.is-flashed{animation:none;text-decoration:underline}}
+/* Back to chat: a left arrow before the words, no outline */
+#workInputCard #chatShareBtn.is-on{gap:8px;outline:0}
+:root[data-theme] #workInputCard #chatShareBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn.is-on{border-color:transparent!important}
