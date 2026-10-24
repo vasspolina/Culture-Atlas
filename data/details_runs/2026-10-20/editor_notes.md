@@ -183,3 +183,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - kiran-nadar-museum-of-art-new-delhi: the record's FCRA statements could not be confirmed (knma.org pages unreachable).
 - kuindzhi-art-museum: under the sanctioned DNR culture ministry per a sign Bellingcat saw; no site.
 - king-abdulaziz-center-for-world-culture-ithra-dhahran: inauguration year 2016 (Wikipedia) or 2017 (The Art Newspaper).
+
+## d014 (research notes, before its slop check)
+- listasavn-føroya-national-gallery-of-the-faroe-islands-tórshavn: Augustinus Fonden funds the 2026 expansion (museum news page, 19 Mar 2026), so the tobacco link is current; STG stake above 25% as of 1 May 2025.
+- louisiana-museum-of-modern-art: the 2024 annual report is a scanned PDF; the record's state grant, DKK 36.1M, 716k visitors and donor list could not be repeated.
+- louvre-abu-dhabi-abu-dhabi: Abu Dhabi pays France 400M euro for the name and 190M for loans; the site returned 403.
+- m-hka-antwerp: new building cost is 130M euro (Art Newspaper) or 80M (ArtReview); the dissolution plan was revoked on 4 Feb 2026 (ArtReview).
+- m-hong-kong: Epstein-linked Morgan Stanley and UBS accounts placed under Wider context; HSBC 2012 DPA and UBS/Credit Suisse 2025 plea are red flags.
+- mac-ccb-museu-de-arte-contemporanea-do-centro-cultural-de-belem: two Lusa reports give different 2024 visitor counts (588,643 and 179,890).
+- lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum: state censorship items (Burga removed Jan 2025, Palestinian film barred Oct 2026, 2023 closure).
+- lincoln-center: no Griffin or Citadel campaign found there; the Whitney claim was not researched.
