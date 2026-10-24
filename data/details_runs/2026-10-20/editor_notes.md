@@ -526,3 +526,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - vincom-center-for-contemporary-art-hanoi: Vingroup announced on 8 Sept 2025 it was "pursuing civil lawsuits and reports to authorities" against 68 individuals and organisations (Viet Nam News, Tuoi Tre 9 Sept 2025); the opening show had 18 artists.
 - tselinny-center-of-contemporary-culture-almaty: Orda: conviction March 2023, 8 years cut to 6 in September 2023, released November; assets handed over 14 Sept 2023 (90 billion tenge); Phystech II oil-field shares passed to the State Property and Privatization Committee 4 Oct 2023; no court named; no oil and gas revenue share.
 - visual: no Red flags section; no reporting links VISUAL Carlow to Epstein.
+
+## d030 (research notes, before its slop check)
+- zoma-museum-addis-ababa: the d030 research agent overwrote the Zoma report file with its own version; the editor's own report was restored from data/details_runs/manual/ and the record was not changed (it still holds the editor's text). The agent also reported that some sources in the editor's Zoma research do not support what it says: The Reporter /10337/ and /39408/ do not mention Zoma or the audit and budget remark; The Art Newspaper piece does not mention UAE funding; The Reporter /34629/ and Sifter carry the funding-accountability quotes; Artforum and ARTnews were paywalled and unread; the Funambulist gave 403; the zomamuseum.org site serves gambling spam. These points have not been checked by a person; the Zoma text is unchanged.
+- yuz-museum-shanghai: The Art Newspaper (4 Dec 2019) says Qatar Museums' role is exhibitions only and does not extend to the collection foundation (the record says otherwise).
+- zkm-center-for-art-and-media-karlsruhe: the partners page calls EnBW "Partner", not "Main Partner"; the "more than 15 years" comes from a March 2022 joint EnBW and ZKM release.
+- 32-east-ugandan-arts-trust-kampala: the centre is in Kabalagala, off Ggaba Road; DOEN, Segal and Open Society as funders not confirmed.
+- zacheta-national-gallery-of-art-warsaw: the record's website is ORLEN's sponsorship page (real site zacheta.art.pl).
+- amon-carter-museum: the record's LinkedIn source (Eagle Energy Systems) is unrelated to the museum; Form 990 year to Sept 2025: $16.66M of $19.73M revenue (84.4%) contributions and grants.
+- zabludowicz-collection-london: the record's flag text is about the boycott; an arms and defence heading was added from Hyperallergic's report of the Knafaim and Soltam links.
