@@ -1,0 +1,548 @@
+[
+ {
+  "id": "museo-reina-sof-a",
+  "section": "RED FLAGS",
+  "problems": [
+   "undated claim: current funding and shareholding not both dated"
+  ],
+  "before": "- La Caixa is one of the museum's four corporate patrons and signed the €300,000 education sponsorship.",
+  "after": "- Current funding: the banking foundation «la Caixa» signed a sponsorship agreement with the museum on 23 December 2025: up to €300,000 for the public educational programme, for one year, extendable by up to four more (BOE, 10 January 2026). The museum also lists Fundación \"la Caixa\" as one of its four corporate patrons.",
+  "sources": [
+   "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-607",
+   "https://www.museoreinasofia.es/colabora/patrocinio-mecenazgo/",
+   "https://en.ara.cat/economy/criteria-regains-its-stake-in-naturgy-following-blackrock-s-departure_1_5595079.html"
+  ],
+  "reason": "The BOE page shows the 23 December 2025 agreement; Ara (17 December 2025) shows CriteriaCaixa as largest Naturgy shareholder at 25.9% after a 2% purchase for €485 million. The flag is kept because both are current and dated."
+ },
+ {
+  "id": "museo-reina-sof-a",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "hedge: \"alleged\"",
+   "unsupported: ABC \"accused him of political propaganda\" in the same article"
+  ],
+  "before": "ABC alleged the museum broke its own rules ... and accused him of \"political propaganda\".",
+  "after": "ABC said the museum broke its own rules ... and, in a separate article, accused him of overseeing \"political propaganda\" in exhibitions.",
+  "sources": [
+   "http://www.theartnewspaper.com/2023/02/06/extreme-right-attacks-resignation-madrid-reina-sofia-museum-director"
+  ],
+  "reason": "The Art Newspaper attributes the propaganda charge to a separate ABC article."
+ },
+ {
+  "id": "museo-reina-sof-a",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: collection from 1881; builder names; 8,000 m2 and EUR 92 million; Vaults Room not accessible"
+  ],
+  "before": "Its collection covers art from 1881 to the present ... designed by José de Hermosilla and built largely by Francisco Sabatini ... an 8,000 m² extension ... at a cost of €92 million ... the Vaults Room is not [accessible].",
+  "after": "Its collection is mainly Spanish art and houses Picasso's Guernica (Wikipedia). Housed in a former 18th-century hospital ... Jean Nouvel's extension opened in 2005 (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Museo_Reina_Sof%C3%ADa",
+   "https://www.museoreinasofia.es/en/visit"
+  ],
+  "reason": "None of the cut details appeared on pages opened. The Jacobin source (paywalled) was removed from the list."
+ },
+ {
+  "id": "museo-soumaya",
+  "section": "RED FLAGS",
+  "problems": [
+   "source mismatch: cited TelecomTV link is a 2017 resolution, not the 2014 ruling"
+  ],
+  "before": "- On 8 March 2017 the IFT issued a further resolution on the same units, ordering Telmex-Telnor to create a legally independent entity ... América Móvil said it would challenge it (TelecomTV).",
+  "after": "- A second source, TelecomTV, shows a 2017 IFT resolution, not the 2014 ruling: América Móvil's statement of 8 March 2017 describes a biennial review of the rules imposed on Telcel, Telmex and Telnor in March 2014, ordering Telmex-Telnor to create a legally independent entity ... América Móvil said the resolution would be challenged.",
+  "sources": [
+   "https://telecomtv.com/content/tracker/am-rica-m-vil-informs-about-a-resolution-of-the-instituto-federal-de-telecomunicaciones-25955"
+  ],
+  "reason": "The page is AMX's 2017 statement; it confirms the March 2014 rules but is not the 2014 ruling."
+ },
+ {
+  "id": "museo-soumaya",
+  "section": "RED FLAGS",
+  "problems": [
+   "detail missing: what the 2014 page shows"
+  ],
+  "before": "On 6 March 2014 the IFT ... determined that América Móvil's companies ... are the \"preponderant economic agent\" in telecommunications (Forbes México).",
+  "after": "... which Forbes México defines as a national share above 50%. The page summarises the ruling and does not reproduce its text.",
+  "sources": [
+   "https://forbes.com.mx/?p=335162"
+  ],
+  "reason": "Forbes México gives the 6 March 2014 date, IFT as authority and the three named units."
+ },
+ {
+  "id": "museo-soumaya",
+  "section": "RED FLAGS",
+  "problems": [
+   "missing authority and date for Metro Line 12 findings"
+  ],
+  "before": "A city-commissioned report by DNV ... Grupo Carso stated that CICSA \"did not cause and is not responsible for\" the collapse ... fund for victims (Bloomberg Línea).",
+  "after": "A report commissioned by the Mexico City government from DNV ... On 20 October 2021 Grupo Carso stated ... a supplementary compensation fund for victims announced by the Fiscalía. CICSA said it agreed with the city to resolve the legal procedures early (Bloomberg Línea). Collapse injured dozens as well as killing 26.",
+  "sources": [
+   "https://www.bloomberglinea.com/2021/10/21/cicsa-de-slim-se-deslinda-de-responsabilidades-por-el-colapso-de-la-linea-12/"
+  ],
+  "reason": "Dates and authorities added from the Bloomberg Línea page (statement dated 20 October 2021; page does not state the collapse year, taken from its date)."
+ },
+ {
+  "id": "museo-soumaya",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Expansión reports Slim buys and assembles the collection himself"
+  ],
+  "before": "- Expansión (2013) reports that Slim buys and assembles the collection himself.",
+  "after": "- Expansión (2013) quotes critics saying Slim buys pieces at auction as a single lot; the museum's director says Slim had national and international advisers.",
+  "sources": [
+   "https://expansion.mx/expansion/2013/11/22/arte-sin-medida"
+  ],
+  "reason": "The article carries critics' claim and the director's reply; it does not report the claim as fact. The page date reads 12 April 2013."
+ },
+ {
+  "id": "museo-soumaya",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: six storeys, hexagonal aluminium tiles, 66,000 works detail"
+  ],
+  "before": "six storeys clad in hexagonal aluminium tiles ... among them pre-Hispanic sculpture ... Rodin casts",
+  "after": "Designed by Fernando Romero, Slim's son-in-law, at a cost of about $70 million ... Holds more than 66,000 works (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Museo_Soumaya"
+  ],
+  "reason": "The Wikipedia fetch confirmed the cost, architect and count, not the cut details."
+ },
+ {
+  "id": "museo-soumaya",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "author: \"unsigned\" stated for pieces whose pages show no byline"
+  ],
+  "before": "Architectural Record: unsigned post / Expansión: unsigned",
+  "after": "Architectural Record: post with no byline / Expansión: no byline shown",
+  "sources": [
+   "https://www.architecturalrecord.com/blogs/1-off-the-record/post/1899-carlos-slim-s-soumaya-museum-dazzles-and-disappoints-in-mexico-city"
+  ],
+  "reason": "Wording only; the pages show no byline."
+ },
+ {
+  "id": "museo-tamayo",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "hedge: \"alleging\"",
+   "unlabelled allegation"
+  ],
+  "before": "... called for the ICA to cut ties with Bloomberg Philanthropies, alleging it supports initiatives in Israel and facilitates settlement infrastructure in the West Bank. Bloomberg did not respond ..., and the ICA called the claims untrue.",
+  "after": "... the sponsor of New Contemporaries. Unverified: the protest group said Bloomberg backs initiatives in Israel and helps build settlement infrastructure in the West Bank. Bloomberg did not respond to a request for comment. The ICA said it had received no Bloomberg funding since 2020 (The Art Newspaper, Gareth Harris, 16 January 2025).",
+  "sources": [
+   "http://www.theartnewspaper.com/2025/01/16/artists-at-ica-london-stage-mass-walkout-in-support-of-pro-palestine-protesters"
+  ],
+  "reason": "The ICA said the protest claims were untrue about staff redundancies and that it took no Bloomberg money since 2020; the report now says what the page shows. The Bloomberg campaign stays under Wider context."
+ },
+ {
+  "id": "museo-tamayo",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: \"flattening or tokenising marginalised voices\"",
+   "author: \"unsigned\""
+  ],
+  "before": "Reads the exhibition OTRXS MUNDXS as reinforcing Mexico City's centralism and as risking the flattening or tokenising of marginalised voices.",
+  "after": "Praises the inclusion of emerging artists in OTRXS MUNDXS but criticises the show for reinforcing Mexico City's centralism.",
+  "sources": [
+   "https://terremoto.mx/en/?p=44964"
+  ],
+  "reason": "Terremoto (6 February 2021) shows centralism and a \"global appetite for the exotic sur\", not tokenising."
+ },
+ {
+  "id": "museo-tamayo",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: sponsor list incomplete and undescribed"
+  ],
+  "before": "Corporate sponsors shown as undated logos ...: Casa Dragones, Bloomberg, Aeroméxico, AXA, FEMSA and Contramar.",
+  "after": "... names read from image filenames: Casa Dragones, Grupo Habita, Bloomberg, Aeroméxico, AXA, FEMSA, Contramar and others.",
+  "sources": [
+   "https://www.museotamayo.org/fundacion"
+  ],
+  "reason": "The page has no captions; names come from filenames."
+ },
+ {
+  "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: exhibition name",
+   "unsupported: museum response"
+  ],
+  "before": "at the opening of the Panorama exhibition ... The museum kept the show open and said the work had no erotic content and was a reading of Lygia Clark's \"Bicho\".",
+  "after": "at the opening of the exhibition \"Brasil em Multiplicação\" ... said the performance took place in a room labelled as artistic nudity, had no erotic content and reinterpreted Lygia Clark's \"Bicho\", and it did not cancel the exhibition (Global Voices).",
+  "sources": [
+   "https://globalvoices.org/2017/10/09/art-exhibitions-fall-into-the-crosshairs-of-brazilian-conservatives/"
+  ],
+  "reason": "Global Voices names the exhibition and gives the museum's statement."
+ },
+ {
+  "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: Ortellado paraphrase and summary of argument"
+  ],
+  "before": "Quotes Pablo Ortellado: these groups use concern about child abuse to advance a political agenda against the left.",
+  "after": "Quotes the University of São Paulo professor Pablo Ortellado, writing in Folha de S. Paulo: \"the right took advantage of the great disconnect of the public from fine art\" to recast the performance as an apology for paedophilia.",
+  "sources": [
+   "https://globalvoices.org/2017/10/09/art-exhibitions-fall-into-the-crosshairs-of-brazilian-conservatives/"
+  ],
+  "reason": "Replaced the paraphrase with what the page states."
+ },
+ {
+  "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+  "section": "RED FLAGS",
+  "problems": [
+   "stale tense: \"becomes its exclusive official sponsor in 2026\"",
+   "date missing for 2018 settlement",
+   "unsupported: bribery scheme \"let contractors obtain contracts\""
+  ],
+  "before": "Petrobras ... becomes its exclusive official sponsor in 2026 (MAM Rio). In September 2018 ... the conduct involved a bribery scheme that let contractors obtain contracts and funded payments to Brazilian politicians and parties (Holland & Knight).",
+  "after": "from 2026 is its official sponsor with an exclusive designation, through the Programa Petrobras Cultural (MAM Rio). On 27 September 2018 ... Petrobras admitted only accounting violations ... The Justice Department said executives facilitated bribes to Brazilian politicians and parties and concealed them in the company's books (Holland & Knight).",
+  "sources": [
+   "https://mam.rio/programacao/petrobras-patrocinadora-oficial-do-museu/",
+   "https://www.hklaw.com/en/insights/publications/2018/10/petrobras-agrees-to-pay-more-than-18-billion-for-f"
+  ],
+  "reason": "Sponsor page: \"a partir de 2026\", relationship since 1999, no amount. Settlement figures ($853.2m, $682.56m to Brazil, $933m SEC) match the Holland & Knight page."
+ },
+ {
+  "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: Ibram described as the Brazilian Institute of Museums",
+   "source overstated: conflict-of-interest source wording"
+  ],
+  "before": "Ibram, the Brazilian Institute of Museums, which asked for the sale to be suspended ... Some critics saw a conflict of interest ...",
+  "after": "Ibram, a federal heritage body, which asked for the sale to be suspended, although the Ministry of Culture endorsed the decision ... Critics noted a conflict of interest because the museum's president ... heads an institution that holds loaned works from his family's collection; several sources spoke off the record.",
+  "sources": [
+   "https://braziljournal.com/o-pollock-da-discordia/"
+  ],
+  "reason": "Brazil Journal (1 April 2018) describes Ibram as a federal heritage body and notes the ministry endorsed the sale."
+ },
+ {
+  "id": "museu-do-amanha",
+  "section": "RED FLAGS",
+  "problems": [
+   "no year for Shell sponsorship",
+   "undated sponsor page"
+  ],
+  "before": "- Shell is one of three named maintainers on the museum's supporters page and supports the 2025 Oceano exhibition (Folha do Leste).",
+  "after": "- Shell is a named maintainer on the supporters page (undated; footer 2026). Folha do Leste (12 December 2025) names Shell among the Oceano supporters, and ecycle (2 December 2021) names Shell Brasil as a maintainer.",
+  "sources": [
+   "https://museudoamanha.org.br/pt-br/apoiadores",
+   "https://folhadoleste.com.br/museu-do-amanha-10-anos-nova-exposicao/",
+   "https://www.ecycle.com.br/museu-do-amanha-anuncia-exposicao-temporaria-sobre-a-amazonia/"
+  ],
+  "reason": "Supporters page lists Shell, Instituto Cultural Vale and Motiva as Mantenedores with no year; the two dated articles supply years."
+ },
+ {
+  "id": "museu-do-amanha",
+  "section": "RED FLAGS",
+  "problems": [
+   "dates missing for Vale disasters",
+   "Vale link to the institute unsourced",
+   "unsupported: Vale denial wording"
+  ],
+  "before": "- The Instituto Cultural Vale is a named maintainer. Vale owned the Córrego do Feijão tailings dam at Brumadinho ... Vale denied wrongdoing and said the mine met the latest standards (Wikipedia).",
+  "after": "- The Instituto Cultural Vale, launched in September 2020 (Correio Braziliense), is a maintainer on the supporters page. It presented the exhibition \"Fruturos\" at the museum in 2021 (ecycle) ... Brumadinho 25 January 2019, 270 dead; January 2020 charges ... On 5 November 2015 the Fundão dam at Samarco near Mariana failed, killing 19; Vale and BHP each held 50% of Samarco and in October 2024 signed a settlement of nearly US$30 billion (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Brumadinho_dam_disaster",
+   "https://en.wikipedia.org/wiki/Mariana_dam_disaster",
+   "https://www.correiobraziliense.com.br/diversao-e-arte/2020/09/4877627-vale-cria-instituto-e-lanca-edital-de-rs-20-milhoes-para-area-cultural.html"
+  ],
+  "reason": "Wikipedia gives both dam disasters with dates. Correio Braziliense says the institute launched with a September 2020 call, not an exact creation date. No opened page states the institute is owned by Vale; the report says the institute was launched alongside Vale's cultural call and names Vale in the Folha list."
+ },
+ {
+  "id": "museu-do-amanha",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "internal wording: \"the atlas's fossil fuel and mining disaster flags\""
+  ],
+  "before": "two named maintainers, Shell and Vale, that fall under the atlas's fossil fuel and mining disaster flags.",
+  "after": "two named maintainers: Shell, a fossil fuel company, and the Instituto Cultural Vale, linked to the miner behind two dam disasters.",
+  "sources": [
+   "https://museudoamanha.org.br/pt-br/apoiadores"
+  ],
+  "reason": "Public wording rule."
+ },
+ {
+  "id": "museu-do-amanha",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: Paes, abandoned Guggenheim, school and public services, \"Africa's largest slave port\""
+  ],
+  "before": "... under Mayor Eduardo Paes, and compares it to the abandoned Guggenheim project that residents opposed because they wanted a school and public services. ... Africa's largest slave port",
+  "after": "Calls the museum a flagship of the Porto Maravilha port redevelopment and the successor to a Guggenheim project on the same site that resident opposition ended. ... the largest slave port in world history",
+  "sources": [
+   "https://rioonwatch.org/?p=25724"
+  ],
+  "reason": "RioOnWatch (17 December 2015) says Mayor Cesar Maia proposed the Guggenheim project and that opposition led to its suspension."
+ },
+ {
+  "id": "museum-folkwang-essen",
+  "section": "RED FLAGS",
+  "problems": [
+   "no date for E.ON support",
+   "no dated support for RWE",
+   "weak sourcing"
+  ],
+  "before": "- RWE ... and in 2018 was reported as Europe's largest carbon dioxide emitter. Protests have targeted its Hambach surface mine since 2012 ... E.ON ... announced in 2014 that it would exit fossil generation. (no sponsorship dates)",
+  "after": "- E.ON: on 13 November 2023 the museum and E.ON announced a three-year sponsorship to 2026 for two exhibitions ... (museum press release). - RWE: listed on the museum's sponsors page (undated). The only dated RWE support found is a Simon Starling exhibition, reported by taz on 2 May 2007.",
+  "sources": [
+   "https://www.museum-folkwang.de/sites/default/files/document/PI_MFolkwang_E.on%20dreij%C3%A4hrige%20Partnerschaft_2023_11_13.pdf",
+   "https://taz.de/!287313",
+   "https://www.museum-folkwang.de/en/sponsors"
+  ],
+  "reason": "Press release text extracted locally from the PDF. The sponsors page carries only an unattributed \"since 2018\". RWE support in 2026 is not dated by any page opened."
+ },
+ {
+  "id": "museum-folkwang-essen",
+  "section": "RED FLAGS",
+  "problems": [
+   "no dated source for Krupp wartime history",
+   "no statement of money flowing today"
+  ],
+  "before": "- The foundation was created from the fortune of Alfried Krupp, convicted at the 1947 to 1948 Krupp Trial of using forced labourers ... holds 20.93% of thyssenkrupp AG ...",
+  "after": "- The foundation began work on 1 January 1968 with Alfried Krupp's private fortune and the Fried. Krupp AG holdings. He had run Krupp's armament division from 1938 and became sole owner of the firm on 15 December 1943; he was sentenced ... the US High Commissioner commuted the sentence on 31 January 1951 ... Money today: the foundation still funds photography scholarships with the museum's collection (2026 awards). Its income comes mainly from dividends on its 20.93% of thyssenkrupp AG ...",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Alfried_Krupp_von_Bohlen_und_Halbach",
+   "https://en.wikipedia.org/wiki/Alfried_Krupp_von_Bohlen_und_Halbach_Foundation",
+   "https://www.krupp-stiftung.de/en/kultur/"
+  ],
+  "reason": "The foundation page says it paid free admission from 2015 to 2021, the museum chronicle says a 2020 agreement keeps it free; both are stated in Funding. The Wikipedia ThyssenKrupp page gives 21%, the foundation page 20.93%."
+ },
+ {
+  "id": "museum-folkwang-essen",
+  "section": "RED FLAGS",
+  "problems": [
+   "no dates for the Duplan section protest"
+  ],
+  "before": "- The museum cancelled the Afrofuturism section of \"We Is Future\", due to open on 24 November 2023 ... CIMAM ... published a statement on 15 January 2024 opposing the cancellation as part of wider censorship of artists who support Palestinians.",
+  "after": "- On 13 November 2023 the museum cancelled the Afrofuturism section ... (Hyperallergic; Jüdische Allgemeine, 16 November 2023). - Most artists in the section asked for their works back (Hyperallergic). No open letter or street protest was found; CIMAM ... published a statement on 15 January 2024 opposing the cancellation among others.",
+  "sources": [
+   "https://hyperallergic.com/856774/german-museum-cancels-afrofuturism-show-over-curators-pro-palestine-posts/",
+   "https://cimam.org/news-archive/cancellation-and-censorship-in-times-of-war/",
+   "https://www.juedische-allgemeine.de/politik/museum-folkwang-trennt-sich-von-bds-unterstuetzerin"
+  ],
+  "reason": "CIMAM gives 13 November 2023; Hyperallergic and Jüdische Allgemeine report no protest or letter. The heading stays because CIMAM and the artists' withdrawal are documented."
+ },
+ {
+  "id": "museum-folkwang-essen",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "source wording: \"disputed\" attribution; unnamed team member"
+  ],
+  "before": "Duplan said the museum had not started a real conversation ...",
+  "after": "Duplan called the museum's approach \"really repressive\" and said there had been no real dialogue.",
+  "sources": [
+   "https://hyperallergic.com/856774/german-museum-cancels-afrofuturism-show-over-curators-pro-palestine-posts/"
+  ],
+  "reason": "Quote kept as printed. The overview was shortened to meet the word limit."
+ },
+ {
+  "id": "museum-macan-jakarta",
+  "section": "RED FLAGS",
+  "problems": [
+   "owner relationship not stated",
+   "largest revenue line not shown",
+   "undated 2014 figures only"
+  ],
+  "before": "- AKR Corporindo is described as one of Indonesia's largest distributors of petroleum products and basic chemicals. In December 2013 ... 116 fuel stations in February 2014 (Petromindo, 10 March 2014).",
+  "after": "- Ownership: AKR's controlling shareholder, PT Arthakencana Rayatama, held 64.627% ... No page read names who owns Arthakencana ... - Revenue: AKR's trading and distribution segment, petroleum and basic chemicals together, made about 92% of first-quarter 2024 revenue ... The sources do not separate fuel from chemicals.",
+  "sources": [
+   "https://bcasekuritas.co.id/en/latest-news/news/arthakencana-tambah-kepemilikan-saham-akra",
+   "https://www.kbvalbury.com/article/akra-1q24-performance-pressured-by-a-softer-oil-prices",
+   "https://quartr.com/events/pt-akr-corporindo-tbk-akra-q2-2026_F9e5W922"
+  ],
+  "reason": "AKR's own pages returned 403. Haryanto heads AKR (The Art Newspaper, Smithsonian) and succeeded his father as president in 1992 (Wikipedia). The combined segment is the majority, but fuel alone is not separated, so the flag needs the editor."
+ },
+ {
+  "id": "museum-macan-jakarta",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: \"career details marked citation needed\" Wikipedia history"
+  ],
+  "before": "His father Soegiarto Adikoesoemo is listed as AKR's founder, which began in 1978 as PT Aneka Kimia Raya ... (Wikipedia, career details marked \"citation needed\").",
+  "after": "Wikipedia says he succeeded his father, AKR's founder Soegiarto Adikoesoemo, as president of AKR in 1992.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Haryanto_Adikoesoemo"
+  ],
+  "reason": "Dropped the 1978 detail that no opened page confirmed."
+ },
+ {
+  "id": "museum-of-art-photography-map",
+  "section": "RED FLAGS",
+  "problems": [
+   "wrong timing: \"summer of 2016\"",
+   "hedge-like: \"reportedly\""
+  ],
+  "before": "Artists formed the VAG Forum and held near-weekly actions over the summer of 2016 ... A Change.org petition against the deal had over 1,000 signatures (Hyperallergic).",
+  "after": "Artists formed the VAG Forum and held weekend actions in 2016 ...; an online petition against the deal had over 1,000 signatures (Hyperallergic, 20 April 2016).",
+  "sources": [
+   "https://hyperallergic.com/artists-protest-collectors-takeover-of-indian-museum/",
+   "https://www.thenewsminute.com/article/no-answer-sight-bengalurus-artists-keep-questions-vag-43129"
+  ],
+  "reason": "The article, dated 20 April 2016, says \"this summer\" but gives no dates; the petition platform is not named."
+ },
+ {
+  "id": "museum-of-art-photography-map",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unlabelled allegation",
+   "source mismatch: \"near-total control\" attributed to the piece"
+  ],
+  "before": "Artist Suresh Kumar attributes to Poddar a remark that Tasveer should have a say ...; this is the artists' account.",
+  "after": "Unverified: Suresh Kumar of the VAG Forum said Poddar remarked that Tasveer should have a say in what is shown since it invested money; Kumar said nothing is in writing.",
+  "sources": [
+   "https://www.thenewsminute.com/article/no-answer-sight-bengalurus-artists-keep-questions-vag-43129"
+  ],
+  "reason": "The News Minute (12 May 2016) puts the remark as Kumar's allegation."
+ },
+ {
+  "id": "museum-of-art-photography-map",
+  "section": "OVERVIEW",
+  "problems": [
+   "number conflict: 60,000 works"
+  ],
+  "before": "Holds some 60,000 works, most of them donated by Poddar (USA Art News).",
+  "after": "USA Art News (July 2022) gave about 60,000 works, mostly donated by Poddar; Wikipedia now says over 20,000.",
+  "sources": [
+   "https://usaartnews.com/news/south-indias-first-private-art-museum-to-open-in-december/",
+   "https://en.wikipedia.org/wiki/Museum_of_Art_%26_Photography"
+  ],
+  "reason": "Two opened sources disagree."
+ },
+ {
+  "id": "museum-of-contemporary-art-belgrade",
+  "section": "RED FLAGS",
+  "problems": [
+   "events undated",
+   "source mismatch: who made the appointment",
+   "resignation undated"
+  ],
+  "before": "On 30 January 2020 the government named Viktor Kiš acting director ... Prime Minister Ana Brnabić made the appointment ... Board chair Nikola Šuica resigned ...",
+  "after": "In January 2020 the acting director, Slobodan Nakarada, was removed \"without any explanation\", and on 30 January 2020 the government named Viktor Kiš acting director ... CIMAM says Prime Minister Ana Brnabić appointed him ... Board chair Nikola Šuica resigned in early February 2020 over the appointment ... (Danas, 3 February 2020).",
+  "sources": [
+   "https://www.danas.rs/kultura/nikola-suica-podneo-ostavku-na-mesto-predsednika-uo-muzeja-savremene-umetnosti/",
+   "https://www.cimam.org/museum-watch/museum-watch-actions/belgrade-leading-institution-damaged-local-politics/"
+  ],
+  "reason": "Danas gives the 30 January government session and the reasons for the resignation; CIMAM gives the removal of Nakarada and credits the Prime Minister. Danas does not date the resignation exactly, so \"early February\" follows Novosti (\"since early February 2020\")."
+ },
+ {
+  "id": "museum-of-contemporary-art-belgrade",
+  "section": "RED FLAGS",
+  "problems": [
+   "unlabelled allegation reported as unverified; mixed sources",
+   "undated protest"
+  ],
+  "before": "Unverified: NKSS says Kiš removed it to make room for a museum café (021.rs, 31 October 2020); ... On 11 December 2020 the government appointed Vladislav Šćepanović board president (Novosti).",
+  "after": "30 October 2020: nine curators led by Zoran Erić protested that Kiš had Toplina removed ... to make room for a museum café, without their consent; Kiš avoided answering questions about it (N1, republishing SEEcult). On 31 October 2020 NKSS demanded his removal ... (021.rs). Novosti reported on 11 December 2020 that the government had appointed Vladislav Šćepanović board president ...",
+  "sources": [
+   "https://n1info.rs/kultura/a666785-Kafic-i-vencanice-umesto-savremene-umetnosti-u-MSUB-kustosi-protiv/",
+   "https://www.021.rs/story/Info/Kultura-i-umetnost/257214/Nezavisna-kulturna-scena-Srbije-trazi-smenu-vd-direktora-Muzeja-savremene-umetnosti.html",
+   "https://novosti.rs/kultura/vesti/943954/pronaci-izlaz-krize-vladislav-scepanovic-novi-predsednik-upravnog-odbora-msu"
+  ],
+  "reason": "N1 states the café reason as the curators' account; 021.rs attributes it to NKSS. Novosti says the session was \"yesterday\", so the date is given as the report date."
+ },
+ {
+  "id": "museum-of-contemporary-art-belgrade",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "author: \"unsigned\"; unverified quote framing"
+  ],
+  "before": "N1: unsigned ... CIMAM: ... says an acting role \"always indicates a crisis, a temporary problem, or a weakness in management\".",
+  "after": "N1: SEEcult report republished by N1 ... Quotes CIMAM's \"deep concern about abandoning the good practice of competent museum management\".",
+  "sources": [
+   "https://n1info.rs/kultura/a666785-Kafic-i-vencanice-umesto-savremene-umetnosti-u-MSUB-kustosi-protiv/",
+   "https://cimam.org/news-archive/cimam-points-irregularities-regarding-appointment-viktor-kish-leading-position-museum-contemporary-art-belgrade/"
+  ],
+  "reason": "N1 names SEEcult as author. The acting-role quote was cut for length."
+ },
+ {
+  "id": "museum-of-contemporary-art-tokyo-tokyo",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported/unclear: withdrawal",
+   "source hedging: \"reportedly\""
+  ],
+  "before": "- No reporting found in the pieces read that the request was formally withdrawn.",
+  "after": "- Neither page says whether the request was withdrawn; no reporting found of a withdrawal, or of any budget consequence for the museum.",
+  "sources": [
+   "https://artscape.jp/artscape/eng/focus/1509_01.html",
+   "https://www.art-it.asia/?p=137781"
+  ],
+  "reason": "Artscape says the museum had not forced the change by late August; Sawaragi says the work was not removed and the exhibition closed without a catalogue. No page gives a budget figure or a withdrawal; the record's ¥1B budget and its \"withdrew the request\" are not stated."
+ },
+ {
+  "id": "museum-of-contemporary-art-tokyo-tokyo",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong title",
+   "unsupported: \"Hasegawa issued no comment\""
+  ],
+  "before": "Artscape: Lucy Birmingham, Focus series on the Aida Family installation (2015) / Notes the reason ... remains unclear and Hasegawa issued no comment.",
+  "after": "Artscape: Lucy Birmingham, \"Art Censorship: Whose Problem Is This?\" (2015, issue 1509) / Says the museum never fully explained the request ...",
+  "sources": [
+   "https://artscape.jp/artscape/eng/focus/1509_01.html",
+   "https://www.art-it.asia/?p=137781"
+  ],
+  "reason": "Titles and wording corrected from the pages."
+ },
+ {
+  "id": "museum-of-contemporary-art-tokyo-tokyo",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "hedge: \"alleging\"",
+   "unlabelled allegation"
+  ],
+  "before": "... alleging it supports initiatives in Israel and facilitates settlement infrastructure in the West Bank. The ICA called the claims untrue",
+  "after": "Unverified: the protest group said Bloomberg backs initiatives in Israel and helps build settlement infrastructure in the West Bank. The ICA said it had received no Bloomberg funding since 2020 ...",
+  "sources": [
+   "http://www.theartnewspaper.com/2025/01/16/artists-at-ica-london-stage-mass-walkout-in-support-of-pro-palestine-protesters"
+  ],
+  "reason": "Bloomberg campaign stays under Wider context; the Students Day support (10 to 12 October 2026) is under Funding."
+ },
+ {
+  "id": "museum-of-fine-arts-budapest-hungarian-national-gallery",
+  "section": "RED FLAGS",
+  "problems": [
+   "sponsor page year not tied to MVM",
+   "MVM business mix unsourced"
+  ],
+  "before": "- MVM Group is a Hungarian state company with 100% state ownership (Wikipedia). Its member companies include electricity and gas network operators ...",
+  "after": "- MVM Group is 100% owned by the Hungarian state (Wikipedia). Its sponsor-page listing is for 2026. ... Wikipedia says it entered the gas industry in 2011. No revenue split by business line found.",
+  "sources": [
+   "https://www.szepmuveszeti.hu/tamogatok/",
+   "https://mvm.hu/",
+   "https://en.wikipedia.org/wiki/MVM_Group"
+  ],
+  "reason": "Sponsor page: \"2026-ban ...\" with MVM csoport as key supporter of Vasarely 120. Szerencsejáték appears only as a listed Egyptian-exhibition supporter; no betting claim is made."
+ },
+ {
+  "id": "museum-of-fine-arts-budapest-hungarian-national-gallery",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "author: \"unsigned\"",
+   "unsupported: \"one-person vision with government backing\""
+  ],
+  "before": "USA Art News: unsigned ... Describes the project as largely Baán's one-person vision with government backing and no impact studies.",
+  "after": "USA Art News: Sarah Mitchell, \"Hungary Scraps New National Gallery Plans in City Park\" (8 September 2026, sourced from The Art Newspaper) ... Says Baán, the museum quarter's ministerial commissioner, drives the project and cites a payback of 10 to 15 years that no impact studies support.",
+  "sources": [
+   "https://usaartnews.com/news/hungary-scraps-new-national-gallery-plans-in-city-park/",
+   "https://hvg.hu/kultura/201345_ketsegek_a_muzeumi_negyed_otletpalyazata_ko"
+  ],
+  "reason": "Bylines and wording from the pages; the hvg page shows no date."
+ },
+ {
+  "id": "museum-of-fine-arts-budapest-hungarian-national-gallery",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "author count wrong: letter signatories"
+  ],
+  "before": "A letter from 13 Hungarian architects, planners and historians to UNESCO and ICOMOS argued ... \"irreversible damage\"",
+  "after": "A letter from 13 signatories to UNESCO and ICOMOS (undated; page metadata shows 2017) said Liget Budapest \"would cause irreversible damage to the World Heritage Site and its buffer zone\" ...",
+  "sources": [
+   "https://www.ovas.hu/english-francais/icomos-unesco-letter-concerning-the-liget-budapest-project/"
+  ],
+  "reason": "Signatories include an ecologist, a publicist and heads of environmental groups."
+ }
+]

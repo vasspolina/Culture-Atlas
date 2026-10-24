@@ -1,0 +1,740 @@
+[
+ {
+  "id": "madison-museum-of-contemporary-art-madison",
+  "section": "RED FLAGS",
+  "problems": [
+   "flag outside rules: public state lottery as gambling flag",
+   "over length"
+  ],
+  "before": "Red flags: gambling sponsors ... Wisconsin Lottery is a Gold sponsor of the same event (museum sponsorship page). No reporting found of an objection to either sponsor.",
+  "after": "Red flags: casino sponsor. Ho Chunk Gaming Madison, a casino owned and operated by the Ho-Chunk Nation on trust land inside Madison city limits (GGB magazine, 2019), is a Silver sponsor ... No reporting found of an objection to the sponsor.",
+  "sources": [
+   "https://www.mmoca.org/event/art-fair-on-the-square/sponsorship/",
+   "https://ggbmagazine.com/article/ho-chunk-expanding-madison-casino"
+  ],
+  "reason": "CHECKER.md: state lottery operators that sponsor directly are a name to know, not a Gambling flag. The Wisconsin Lottery point is kept in Funding only; the Bottom line was changed to match."
+ },
+ {
+  "id": "madison-museum-of-contemporary-art-madison",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'independent'",
+   "number stated without 'at least'",
+   "attribution of an allegation stated as fact"
+  ],
+  "before": "Eleven of 23 artists withdrew by 23 August ... a verbal attack on Gee by a staff member of the Overture Center, which shares the building but is independent (Hyperallergic).",
+  "after": "At least 11 of 23 artists withdrew by 23 August (Hyperallergic); the Daily Cardinal reported at least 16 before the show closed ... a verbal attack on Gee in March by a white Overture Center employee, as Gee describes it. The Overture Center shares the building (Hyperallergic).",
+  "sources": [
+   "https://hyperallergic.com/755393/citing-institutional-racist-violence-half-of-the-wisconsin-triennial-artists-withdraw-their-work/",
+   "https://dailycardinal.com/article/2022/10/mmoca-announces-truth-and-reconciliation-project-in-response-to-triennial-artist-concerns-distrust"
+  ],
+  "reason": "Hyperallergic says 'at least 11', gives the March incident as Gee's account and does not call the Overture Center independent."
+ },
+ {
+  "id": "madison-museum-of-contemporary-art-madison",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'nearly 6,000 objects'",
+   "unsupported: children's classroom, study center, 'Independent'",
+   "unsupported: Pelli also designed the Overture Center"
+  ],
+  "before": "the collection holds nearly 6,000 objects ... a children's classroom, a new-media gallery and a study center",
+  "after": "the collection holds over 6,000 art objects (museum website) ... galleries, a 230-seat lecture hall and a new-media gallery",
+  "sources": [
+   "https://www.mmoca.org/about-us/",
+   "https://en.wikipedia.org/wiki/Madison_Museum_of_Contemporary_Art"
+  ],
+  "reason": "The about page says over 6,000 objects; the other items were not on pages opened."
+ },
+ {
+  "id": "madison-museum-of-contemporary-art-madison",
+  "section": "FUNDING",
+  "problems": [
+   "vague number: 'about $2.0 million a year'"
+  ],
+  "before": "Revenue was about $2.0 million a year from FY2022 to FY2024, with deficits in each year.",
+  "after": "In the years to April 2022, 2023 and 2024 revenue was $2.30 million, $1.96 million and $2.02 million, and expenses exceeded revenue each year.",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/391133513"
+  ],
+  "reason": "ProPublica figures."
+ },
+ {
+  "id": "madison-museum-of-contemporary-art-madison",
+  "section": "WHOLE REPORT",
+  "problems": [
+   "over length: 852 words without SOURCES"
+  ],
+  "before": "852 words",
+  "after": "782 words",
+  "sources": [
+   "https://www.mmoca.org/visit/"
+  ],
+  "reason": "Trimmed to under 800; the unopened mmoca.org homepage was removed from SOURCES."
+ },
+ {
+  "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported date: OFAC '7 December 2016'",
+   "unsupported: '(a.k.a. Mansudae Art Studio)' quote from Federal Register",
+   "list not named from an opened primary page",
+   "non-sanctions item under a sanctions heading"
+  ],
+  "before": "7 December 2016: the US Treasury (OFAC) listed \"Mansudae Overseas Project Group of Companies (a.k.a. Mansudae Art Studio)\" ... (Federal Register). Gwangju Biennale 2018: Hyperallergic says ...",
+  "after": "US: on 2 December 2016 the Treasury (OFAC) designated Mansudae Overseas Project Group of Companies under Executive Order 13722 (US Treasury press release). UN listing 5 August 2017 (alias Mansudae Art Studio) and EU Regulation 2017/1457 of 10 August 2017 added. 'No reporting found of a designation naming the Beijing gallery or Ji Zhengtai.'",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jl0677",
+   "https://sanctions.lursoft.lv/person/mansudae-art-studio/un-6908625",
+   "https://www.legislation.gov.uk/eur/2017/1457/data.html"
+  ],
+  "reason": "The Treasury release is dated 2 December 2016 and names the company; the Federal Register PDF could not be read as text. The designations are of the studio/company, not of the gallery; the text now says plainly that no source documents a listing of the gallery or Ji Zhengtai. The Gwangju point already sits in Funding and Criticism."
+ },
+ {
+  "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'hard to call a complete success'",
+   "overstated source"
+  ],
+  "before": "Reviews the 22 North Korean works ... and finds it hard to call a complete success, because wall labels and catalogue give only titles, artists' names and dates.",
+  "after": "Covers the 22 North Korean works at the Biennale; wall labels and catalogue give only titles, artists' names and dates, leaving viewers little chance to understand them.",
+  "sources": [
+   "https://hyperallergic.com/imagined-borders-gwangju-biennale-2018"
+  ],
+  "reason": "Hyperallergic (Hayoung Chung, 12 October 2018) says the labels leave viewers little chance to understand; it does not give a verdict on success."
+ },
+ {
+  "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "verdict adjective 'disputed'",
+   "unsupported: 'sells work from the Mansudae Art Studio'",
+   "unsupported: 'its stock comes from'"
+  ],
+  "before": "privately run sales outlet for a sanctioned North Korean state studio; ownership and money flows disputed",
+  "after": "privately run sales outlet for North Korean studio art; whether money goes to North Korea is unconfirmed",
+  "sources": [
+   "https://www.cbsnews.com/amp/news/north-korea-the-art-of-surviving-sanctions-cbsn-originals",
+   "https://www.koreajoongangdaily.com/lifestyle/biennale-to-show-norths-artwork/11070279"
+  ],
+  "reason": "CBS says Ji dodged the question; a Biennale official called it the studio's Beijing museum (Yonhap)."
+ },
+ {
+  "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict: 'not clean'"
+  ],
+  "before": "The money behind this gallery is not clean: ...",
+  "after": "The gallery presents itself as the outlet of a studio the UN, EU and US have sanctioned. Its director says sanctions do not apply and did not say where the proceeds go. ...",
+  "sources": [
+   "https://sanctions.lursoft.lv/person/mansudae-art-studio/un-6908625",
+   "https://home.treasury.gov/news/press-releases/jl0677"
+  ],
+  "reason": "Verdict replaced by the documented facts."
+ },
+ {
+  "id": "mansudae-art-studio-pyongyang",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported date: OFAC '7 December 2016'",
+   "unsupported quote '(a.k.a. Mansudae Art Studio)'",
+   "unsupported: UPI says Resolution 2371 in November 2016",
+   "list not named"
+  ],
+  "before": "7 December 2016: US Treasury (OFAC) listed \"Mansudae Overseas Project Group of Companies (a.k.a. Mansudae Art Studio)\" ... (Federal Register).",
+  "after": "US: on 2 December 2016 the Treasury (OFAC) designated Mansudae Overseas Project Group of Companies under Executive Order 13722 ... 5 August 2017: UN Security Council listed the company, alias Mansudae Art Studio ... EU: Implementing Regulation 2017/1457 of 10 August 2017, designation date 5 August 2017.",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jl0677",
+   "https://sanctions.lursoft.lv/person/mansudae-art-studio/un-6908625",
+   "https://www.legislation.gov.uk/eur/2017/1457/data.html"
+  ],
+  "reason": "Studio and company are listed together (alias). Dates and lists now come from pages opened; the Gwangju loan moved out of Red flags (it is not a sanctions item and stays in Criticism and Bottom line)."
+ },
+ {
+  "id": "mansudae-art-studio-pyongyang",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported number: '18 African and Asian countries by 2014'",
+   "unsupported: 'Produces most of North Korea's public art'"
+  ],
+  "before": "had made monuments for 18 African and Asian countries by 2014",
+  "after": "has built monuments in African and Asian countries (Wikipedia)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mansudae_Overseas_Projects"
+  ],
+  "reason": "Wikipedia gives 17 or 18 countries inconsistently; the number was dropped. The 'most of public art' line was not on an opened page and was cut."
+ },
+ {
+  "id": "mansudae-art-studio-pyongyang",
+  "section": "FUNDING",
+  "problems": [
+   "misattributed: Yonhap calls it state-run",
+   "unsupported: foreign governments commission monuments",
+   "quote slightly altered"
+  ],
+  "before": "Cecioni told Vice the studio has \"perhaps unexpected economic autonomy\" ... Buyers: Italian dealers, Chinese galleries ... and foreign governments that commission monuments.",
+  "after": "\"a perhaps unexpected economic autonomy\" ... Buyers: Cecioni sells Mansudae works online and at fairs under what he calls an exclusive agreement; Dandong galleries sold paintings for up to $100,000 ... (Reuters via Taipei Times, 2017).",
+  "sources": [
+   "https://vice.com/en/article/behind-mansudae-the-most-prominent-art-institution-in-north-korea",
+   "https://taipeitimes.com/News/feat/archives/2017/10/09/2003679992"
+  ],
+  "reason": "The Taipei Times page does not say any foreign government buys the art."
+ },
+ {
+  "id": "mansudae-art-studio-pyongyang",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'hard to call a complete success'",
+   "overstated cause: 'because sanctions limit his imports'"
+  ],
+  "before": "Cecioni holds over 300 pieces in storage because sanctions limit his imports.",
+  "after": "Says UN sanctions have limited what Cecioni can import and that he still has over 300 pieces in storage.",
+  "sources": [
+   "https://hyperallergic.com/442425/pier-luigi-cecioni-mansudae-studio/",
+   "https://hyperallergic.com/imagined-borders-gwangju-biennale-2018"
+  ],
+  "reason": "Hyperallergic places the two facts side by side without saying one causes the other."
+ },
+ {
+  "id": "mansudae-art-studio-pyongyang",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict: 'not clean'",
+   "hedge-free but unsupported: 'disputed claims'"
+  ],
+  "before": "The money behind the studio is not clean: ...",
+  "after": "The studio is a state institution whose parent company is on UN, EU and US sanctions lists, and the UN says its overseas earnings go to the North Korean government or the Workers' Party. ...",
+  "sources": [
+   "https://sanctions.lursoft.lv/person/mansudae-art-studio/un-6908625",
+   "https://home.treasury.gov/news/press-releases/jl0677"
+  ],
+  "reason": "Verdict replaced by documented facts. Report trimmed from 830 to 782 words."
+ },
+ {
+  "id": "mansudae-overseas-project-group-of-companies-mansudae-overseas-projects-pyongyang",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported date: OFAC '7 December 2016'",
+   "OpenSanctions used for US/EU/UK dates",
+   "Australian listing outside US/EU/UK/UN",
+   "unsupported: Panel 'concluded ... violated sanctions'"
+  ],
+  "before": "5 August 2017: the group was listed by the UN Security Council; OpenSanctions also records US (OFAC), EU and UK listings with the same start date and an Australian listing dated 20 February 2026. ... Namibia: in February 2016 the UN Panel of Experts concluded that Namibia's dealings with Mansudae violated sanctions ...",
+  "after": "5 August 2017: UN Security Council listing (UN consolidated list via Lursoft). EU: Implementing Regulation 2017/1457 of 10 August 2017, designation date 5 August 2017. US: 2 December 2016, OFAC under E.O. 13722 (Treasury). Namibia: the Panel 'reported on Namibia's dealings with Mansudae: a munitions factory ...' (African Arguments, 2016).",
+  "sources": [
+   "https://sanctions.lursoft.lv/person/mansudae-art-studio/un-6908625",
+   "https://www.legislation.gov.uk/eur/2017/1457/data.html",
+   "https://home.treasury.gov/news/press-releases/jl0677"
+  ],
+  "reason": "US date was 2 December 2016, not the same as the UN date. The Australian listing and the unopened UK listing were cut. African Arguments says the Panel said the dealings may have violated sanctions; the text now states what the Panel cited, without the verdict."
+ },
+ {
+  "id": "mansudae-overseas-project-group-of-companies-mansudae-overseas-projects-pyongyang",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: Art Newspaper 'near-monopoly on large public monuments in sub-Saharan Africa'",
+   "unsupported: 'often honour African dictatorships'",
+   "'artist-author' descriptor"
+  ],
+  "before": "Calls the monuments \"overbearing, blingtastic\" and says North Korea has a near-monopoly on large public monuments in sub-Saharan Africa. ... the projects often honour African dictatorships, which raises suspicion of ties to North Korea's nuclear programme.",
+  "after": "Says the North Korean state has a \"near monopoly\" on \"overbearing, blingtastic public monuments\" ... some projects honour African dictatorships, which raises suspicion of hidden links between North Korea and Africa, a continent with key materials for nuclear development.",
+  "sources": [
+   "https://www.theartnewspaper.com/2015/05/11/north-koreas-dubious-gifts-to-african-public-art",
+   "https://post.moma.org/?p=3483"
+  ],
+  "reason": "The Art Newspaper's phrase is general, not about sub-Saharan Africa; the MoMA post says 'sometimes' and links the suspicion to Africa's nuclear-development materials."
+ },
+ {
+  "id": "mansudae-overseas-project-group-of-companies-mansudae-overseas-projects-pyongyang",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "quote attributed to wrong cable",
+   "unsupported: 'ties to a pariah state'",
+   "Bellingcat 'does not discuss the theatre' not applicable"
+  ],
+  "before": "US embassy cables from Dakar (2008, 2009) called President Wade's monument a \"white elephant\" with a non-transparent land arrangement and ties to a \"pariah state\".",
+  "after": "US embassy cables from Dakar call President Wade's monument \"a white elephant\" (June 2008) and the land deal behind it \"opaque\", and refer to \"relations with a pariah state\" (March 2009).",
+  "sources": [
+   "https://wikileaks.org/plusd/cables/08DAKAR649_a.html",
+   "https://wikileaks.org/plusd/cables/09DAKAR288_a.html"
+  ],
+  "reason": "'White elephant' is in the 5 June 2008 cable only; 'pariah state' and 'opaque' are in the 6 March 2009 cable only."
+ },
+ {
+  "id": "mansudae-overseas-project-group-of-companies-mansudae-overseas-projects-pyongyang",
+  "section": "FUNDING",
+  "problems": [
+   "verdict: 'state-owned ... paid by foreign governments'",
+   "wrong dates/numbers",
+   "word count"
+  ],
+  "before": "state-owned North Korean company paid by foreign governments and clients under contract",
+  "after": "North Korean state-run company earning foreign currency from monument and building contracts abroad. Cambodia: Mansudae Art Studio designed, built and financed the $24 million Angkor Panorama Museum ... (Al Jazeera, 2016).",
+  "sources": [
+   "https://www.aljazeera.com/features/2016/2/22/n-koreas-multimillion-dollar-museum-in-cambodia"
+  ],
+  "reason": "Al Jazeera attributes the Cambodia museum to Mansudae Art Studio and gives a 10-year, then 50-50, then reversion split. Report trimmed from 855 to 795 words; Namibia dates, Bottom line and sources adjusted."
+ },
+ {
+  "id": "mariupol-drama-theatre",
+  "section": "RED FLAGS",
+  "problems": [
+   "list not backed by a primary page",
+   "funder tie not documented",
+   "Canada listing outside US/EU/UK/UN"
+  ],
+  "before": "The theatre reopened under the so-called Donetsk People's Republic, which is on sanctions lists of the US (implemented 16 July 2014 ...), the EU and UK (25 July 2014) and Canada (24 July 2014) (Black Sea News sanctions database).",
+  "after": "The theatre's new name refers to the Donetsk People's Republic, and Denis Pushilin spoke at its reopening (RFE/RL). The Donetsk People's Republic is listed by the US (OFAC, 16 July 2014; added to RUSSIA-EO14065 on 28 June 2022), the EU (25 July 2014) and the UK (25 July 2014) (Black Sea News; Steamship Mutual for the EU and US dates). No reporting found that the Donetsk People's Republic paid for the rebuild.",
+  "sources": [
+   "https://sanctions.blackseanews.net/en/entry/1216",
+   "https://www.steamshipmutual.com/liabilities-and-claims/sanctions/ukraine-russia-2018/eu-regulation-810-811-072014",
+   "https://euromaidanpress.com/2025/12/29/russia-reopens-mariupol-theater-site-of-2022-mass-killing-as-statement-to-the-world/"
+  ],
+  "reason": "Black Sea News is an aggregator; Steamship Mutual confirms the EU listing on 25 July 2014 (Implementing Regulation 810/2014) and US effect from 16 July 2014. The Treasury page opened did not mention the 2014 listing. No opened page shows DPR money in the rebuild, so the text says so."
+ },
+ {
+  "id": "mariupol-drama-theatre",
+  "section": "RED FLAGS",
+  "problems": [
+   "Unverified item: source label",
+   "unsupported: 'no excavation has confirmed it'",
+   "Batozsky mislabelled and misquoted"
+  ],
+  "before": "Unverified: ... Source: Euromaidan Press, a Ukrainian outlet; no excavation has confirmed it. ... Konstantin Batozsky, founder of the Azov Development Agency, called it propaganda (RFE/RL).",
+  "after": "Unverified: ... Source: Euromaidan Press, a Ukrainian outlet whose page carries an advertorial label; it does not say whether remains were recovered. ... (Batozsky line cut)",
+  "sources": [
+   "https://euromaidanpress.com/2025/12/29/russia-reopens-mariupol-theater-site-of-2022-mass-killing-as-statement-to-the-world/",
+   "https://www.rferl.org/amp/russia-mariupol-theater-ukraine-bombing/33635456.html"
+  ],
+  "reason": "Euromaidan does not discuss excavation. RFE/RL calls Batozsky a political scientist and does not attribute the word propaganda to him."
+ },
+ {
+  "id": "mariupol-drama-theatre",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported date: '2 November 1960'",
+   "unsupported: 'names no architect'",
+   "Amnesty 'names'",
+   "unsupported: 'the day after the strike'",
+   "verdict: 'state-funded by the Russian occupation authorities and the city of St Petersburg'"
+  ],
+  "before": "opened 2 November 1960 ... Amnesty International confirmed at least 12 names ... Italy's Council of Ministers approved an offer ... the day after the strike",
+  "after": "built in 1960 ... Amnesty International confirmed at least 12 deaths ... approved an offer to help rebuild the theatre; rebuilt with Russian state money under the occupation authorities, with workers from St Petersburg",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mariupol_theatre",
+   "https://www.themoscowtimes.com/2025/12/29/mariupol-theater-destroyed-in-russian-siege-reopens-after-reconstruction-a91568"
+  ],
+  "reason": "Wikipedia gives 1960 only; Moscow Times says 12 deaths, not names; no page names the payer beyond a local government foundation."
+ },
+ {
+  "id": "mariupol-drama-theatre",
+  "section": "WIDER CONTEXT / OVERVIEW",
+  "problems": [
+   "claim contradicted by source: Bellingcat 'does not discuss the theatre'",
+   "unsupported: 'built on the sites of destroyed buildings'",
+   "unsupported: Kochubei paraphrase"
+  ],
+  "before": "Bellingcat ... are being built on the sites of destroyed Mariupol buildings ... It does not discuss the theatre.",
+  "after": "Bellingcat ... 23 housing complexes ... advertised to Russian citizens with preferential mortgages ... It mentions the theatre strike, not the rebuild. Kochubei: made of bricks covered with plaster, the original white stone from Crimea; all but one of the pediment sculptures were destroyed.",
+  "sources": [
+   "https://www.bellingcat.com/news/europe/2025/11/14/building-on-ruins-the-russification-of-mariupol-one-apartment-block-at-a-time/",
+   "https://www.rferl.org/amp/russia-mariupol-theater-ukraine-bombing/33635456.html"
+  ],
+  "reason": "Bellingcat mentions the strike; RFE/RL quotes Kochubei. The Meduza URL supported none of the report's claims and was removed from SOURCES."
+ },
+ {
+  "id": "masp-são-paulo",
+  "section": "RED FLAGS",
+  "problems": [
+   "fossil-fuel sponsor: page and year not stated",
+   "unsupported: Ultra identity"
+  ],
+  "before": "Ultra is a named Sponsor on the museum's current partner page. Ultrapar, known as the Ultra Group, owns the fuel distributor Ipiranga ...",
+  "after": "Ultra is listed under Sponsors on the museum's partner page (masp.org.br/en/support/parcerias, read on 24 October 2026). The page shows no year, only an annual-schedule link that reads 2025. ... The partner page does not say which company \"Ultra\" is.",
+  "sources": [
+   "https://www.masp.org.br/en/support/parcerias",
+   "https://en.wikipedia.org/wiki/Ultrapar"
+  ],
+  "reason": "The partner page has no visible year or date; a search for a dated MASP source naming Ultra as a 2024 or 2025 sponsor found none. The page names 'Ultra' only; Wikipedia gives Ultra Group (Ultrapar Participações S.A.) as owner of Ipiranga. NEEDS THE EDITOR: the identity of 'Ultra' and a dated sponsor document."
+ },
+ {
+  "id": "masp-são-paulo",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Metro Line 2 Trianon-Masp",
+   "unsupported: Metro Arquitetos Associados",
+   "unsupported: 'built from the late 1950s ... 1968'"
+  ],
+  "before": "reached by Metro Line 2 (Trianon-Masp station) ... designed by Metro Arquitetos Associados ... opened on 7 November 1968",
+  "after": "(cut) ... opened on 28 March 2025 ... Queen Elizabeth II inaugurated it on 7 November (Wikipedia)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_Museum_of_Art",
+   "https://www.poder360.com.br/poder-cultura/masp-abre-predio-com-5-exposicoes-e-controversia-urbanistica/"
+  ],
+  "reason": "None of these appeared on opened pages (Wikipedia gives '7 November' without a year in the text read)."
+ },
+ {
+  "id": "masp-são-paulo",
+  "section": "FUNDING",
+  "problems": [
+   "wrong attribution of donor names",
+   "vague 'state development bank'"
+  ],
+  "before": "funded entirely by private donors: collector Cleusa Garfinkel, ... Poder360 counts donations from more than 20 families.",
+  "after": "funded entirely by private donors, named by The Art Newspaper as Cleusa Garfinkel, ...",
+  "sources": [
+   "http://www.theartnewspaper.com/2025/03/25/sao-paulos-museu-de-arte-reaches-for-the-sky-to-smash-its-space-constraints",
+   "https://www.poder360.com.br/poder-cultura/masp-abre-predio-com-5-exposicoes-e-controversia-urbanistica/"
+  ],
+  "reason": "Poder360 does not name donors; The Art Newspaper does. 'State development bank' not on any opened page; the page says Financial Supporter BNDES."
+ },
+ {
+  "id": "masp-são-paulo",
+  "section": "WIDER CONTEXT / PRESS",
+  "problems": [
+   "wrong count/place: 'UK artists asked five London theatres'",
+   "unsupported: Menezes described as curator of the survey",
+   "'mostly admiring' unsupported"
+  ],
+  "before": "More than 260 UK artists asked five London theatres in May 2026 ...",
+  "after": "More than 260 British artists asked five UK theatres (the National Theatre, Royal Shakespeare Company, Young Vic, Royal Court and Almeida) ... calling it \"complicit in grave war crimes\" against Palestinians through its work with Israeli settlement leaders (The New Arab, 29 May 2026).",
+  "sources": [
+   "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg",
+   "https://artreview.com/censorship-row-engulfs-museum-of-art-sao-paulo/"
+  ],
+  "reason": "The Royal Shakespeare Company is in Stratford-upon-Avon, not London. ArtReview names Menezes as a curator at the Instituto Moreira Salles."
+ },
+ {
+  "id": "mass-moca",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported dates: strike '6 to 26 March'",
+   "source credit: WSWS for 58% / $16.25",
+   "quotation marks around a paraphrase"
+  ],
+  "before": "6 to 26 March 2024: about 120 members ... struck ... (Hyperallergic, WSWS). ... Edmunds called the deal a \"watershed moment\"; ... \"while managing financial risks\"",
+  "after": "From 6 March 2024, about 120 members of UAW Local 2110 struck for 19 days ... 58% of union staff earned $16.25 an hour (The Art Newspaper, Hyperallergic). ... called the agreement a watershed moment ... to manage financial risks (Hyperallergic).",
+  "sources": [
+   "https://hyperallergic.com/880592/after-19-day-strike-mass-moca-workers-secure-higher-wage/",
+   "http://www.theartnewspaper.com/2024/03/27/mass-moca-employees-end-three-week-strike-following-dispute-over-wages",
+   "https://www.wsws.org/en/articles/2024/04/29/imth-a29.html"
+  ],
+  "reason": "Hyperallergic gives a 19-day strike from 6 March; the Art Newspaper has the 58% and the August 2022 one-day strike. The quoted phrases are the reporter's paraphrase, not verbatim."
+ },
+ {
+  "id": "mass-moca",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "vague: 'a few thousand dollars below an estimated single-adult living cost'"
+  ],
+  "before": "Argues prior pay was too low: a few thousand dollars below an estimated single-adult living cost in Berkshire County.",
+  "after": "Says pay of $43,600 was \"a few thousand dollars below the calculated annual expenses for a single adult\" with no children in Berkshire County.",
+  "sources": [
+   "https://hyperallergic.com/880592/after-19-day-strike-mass-moca-workers-secure-higher-wage/"
+  ],
+  "reason": "Verbatim from Hyperallergic (Rhea Nayyar, 27 March 2024)."
+ },
+ {
+  "id": "mass-moca",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported date: Mellon 'from September 2023'",
+   "unsupported date: Barr 'about February 2024'",
+   "'50%'"
+  ],
+  "before": "$500,000 over 24 months from September 2023 ... (museum release, about February 2024) ... 50% of programme resources",
+  "after": "$500,000 over 24 months, awarded on 25 September 2023 ... (museum release, undated) ... about half of programme resources",
+  "sources": [
+   "https://www.mellon.org/grant-details/massachusetts-museum-of-contemporary-art-foundation-inc.-20454505",
+   "https://massmoca.org/about/"
+  ],
+  "reason": "Mellon page gives an award date of 25 September 2023; the Barr page carries no date; the about page says 'about half'. Report trimmed to 789 words."
+ },
+ {
+  "id": "mathaf-arab-museum-of-modern-art-doha",
+  "section": "RED FLAGS",
+  "problems": [
+   "heading not supported by dated events: labour conditions in Qatar",
+   "national context presented as a space flag"
+  ],
+  "before": "Red flags: labour conditions in Qatar - Amnesty International (2019) says Qatar has roughly two million migrant workers ... No reporting found of documented abuses on Mathaf's own conversion or operation.",
+  "after": "Moved to WIDER CONTEXT: Amnesty International (16 October 2019): Qatar hosts about two million migrant workers ... Connection: Mathaf belongs to Qatar Museums. No reporting found of labour abuses on Mathaf's own conversion or operation.",
+  "sources": [
+   "https://www.amnesty.org/en/latest/news/2019/10/qatar-pledge-to-end-abusive-kafala-system-must-truly-transform-workers-rights-2/"
+  ],
+  "reason": "No opened page documents a labour event tied to Mathaf; the Amnesty item is dated and kept as context."
+ },
+ {
+  "id": "mathaf-arab-museum-of-modern-art-doha",
+  "section": "RED FLAGS",
+  "problems": [
+   "Gulf state body: no dated event",
+   "state censorship: missing dates",
+   "'video' unsupported",
+   "Hyperallergic cited but not opened"
+  ],
+  "before": "Mathaf is part of Qatar Museums, a Qatari government entity chaired by Sheikha Al-Mayassa ... November 2024: İnci Eviner's video Harem (2009) was removed ... (openDemocracy, Hyperallergic).",
+  "after": "Mathaf opened on 30 December 2010 and is a member of Qatar Museums, a Qatari government entity founded in 2005 ... November 2024: Mathaf pulled İnci Eviner's work Harem (2009) ... from a show that opened on 3 November 2024 ... (The Art Newspaper, 11 December 2024). 2013: ... (openDemocracy, 16 October 2013).",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/12/11/work-removed-from-show-at-qatars-arab-museum-of-modern-art",
+   "https://www.opendemocracy.net/en/birth-pangs-of-qatars-art-scene/",
+   "https://en.wikipedia.org/wiki/Qatar_Museums"
+  ],
+  "reason": "The Art Newspaper gives no exact removal date, only the 3 November 2024 opening; the Hyperallergic piece was not opened and its credit removed."
+ },
+ {
+  "id": "mathaf-arab-museum-of-modern-art-doha",
+  "section": "FUNDING",
+  "problems": [
+   "misattributed: Qatar Museums 'describes itself' as private entity",
+   "Bloomberg estimate source",
+   "Mathaf director in 2020"
+  ],
+  "before": "Qatar Museums describes itself as a \"private entity for public good\" (openDemocracy, 2013).",
+  "after": "openDemocracy's Sarah El-Richani describes the Qatar Museums Authority as a \"private entity for public good\" (2013), moved to the Criticism item; Bloomberg's $1 billion estimate dated 23 October 2013 (Wikipedia citing Bloomberg).",
+  "sources": [
+   "https://www.opendemocracy.net/en/birth-pangs-of-qatars-art-scene/",
+   "https://en.wikipedia.org/wiki/Al-Mayassa_bint_Hamad_Al_Thani"
+  ],
+  "reason": "The phrase is the author's description. Qatar Museums' Wikipedia page calls it a government entity."
+ },
+ {
+  "id": "mathaf-arab-museum-of-modern-art-doha",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'No direct reply from Mathaf' stated as fact",
+   "paraphrase of e-flux",
+   "word count"
+  ],
+  "before": "The Palais said it works with a museum, not a state. No direct reply from Mathaf.",
+  "after": "The Palais said it partners with a museum, not the Qatari state. Contains no statement from Mathaf. ... e-flux: calls the show's curatorial concept \"somewhat flimsy\" and Qatar's sponsorship laws \"a euphemism for indentured servitude\".",
+  "sources": [
+   "https://www.theartnewspaper.com/2020/01/08/artists-criticise-palais-de-tokyo-partnership-with-qatari-museum-over-lgbtq-rights",
+   "https://www.e-flux.com/criticism/234065/pr-kingdom-press-debriefings-and-a-bit-of-art-in-doha-tea-with-nefertiti-at-mathaf"
+  ],
+  "reason": "Report trimmed from 875 to 793 words; the Bottom line no longer cites the migrant-labour system."
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "section": "RED FLAGS",
+  "problems": [
+   "former sponsor kept as flag without a documented protest or objection at the museum",
+   "dated protest missing"
+  ],
+  "before": "Red flags: former Shell sponsorship - The six-year Shell partnership ended in July 2018 ... Fossil Free Culture and other groups campaigned against Shell's ties to Dutch museums, calling them \"art-washing\" ...",
+  "after": "Heading removed; facts moved to FUNDING: Shell Nederland was a partner for six years until July 2018 ... Fossil Free Culture protested Shell's partnerships with the Mauritshuis and the Van Gogh Museum ... No dated protest at the Mauritshuis and no stated reason from the museum found.",
+  "sources": [
+   "https://www.theartnewspaper.com/news/shell-sponsorship",
+   "https://hyperallergic.com/458217/as-dutch-museums-stop-accepting-fossil-fuel-money-oil-companies-eye-uk-museums/",
+   "https://apollo-magazine.com/major-dutch-museums-drop-shell-sponsorship/"
+  ],
+  "reason": "Hyperallergic's only sentence on protests covers both museums without dates ('guerrilla demonstrations'); the 'Drop the Shell!' arrests and June 2018 protest were at the Van Gogh Museum. The Fossil Free Culture page was a 404. Funder ended in 2018, so the funder flag does not apply."
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "hedge: 'might' in paraphrase",
+   "misquote: 'poor example'",
+   "unsupported: museum tied the removal to the colonial slave trade debate"
+  ],
+  "before": "... said that if it distanced itself from its founder it should change its name; he later said the Mauritshuis was a poor example (DutchNews). The museum tied the removal to the growing debate about the Dutch role in the colonial slave trade ...",
+  "after": "suggested a name change if it wanted to distance itself from its founder. On 22 January he admitted the Mauritshuis was not a well-chosen example (DutchNews). Director Emilie Gordenker said the bust was unnecessary because the museum had created a gallery on Maurits, and rejected a name change (DutchNews).",
+  "sources": [
+   "https://www.dutchnews.nl/features/2018/01/not-black-or-white-deep-divisions-in-dutch-colonial-past-debate/",
+   "https://dutchnews.nl/2018/01/rutte-softens-mauritshuis-criticism-as-row-over-statues-to-slavery-rumbles-on"
+  ],
+  "reason": "The second DutchNews piece does not use 'poor example'; neither page ties the removal to the slave-trade debate in the words attributed."
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong date: director 'since April 2020'",
+   "unsupported: Pieter Post 'oversaw'"
+  ],
+  "before": "Martine Gosselink has been director since April 2020. ... Pieter Post oversaw much of the work.",
+  "after": "Martine Gosselink has been director since February 2020 (Wikipedia). ... Pieter Post completed the construction.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mauritshuis",
+   "https://nl.wikipedia.org/wiki/Mauritshuis"
+  ],
+  "reason": "English Wikipedia says February 2020; Dutch Wikipedia says Post completed the construction."
+ },
+ {
+  "id": "maxxi",
+  "section": "FUNDING",
+  "problems": [
+   "claim contradicted by the accounts: 'No Leonardo or Med-Or entry'"
+  ],
+  "before": "No Leonardo or Med-Or entry was found in the 2025 accounts text.",
+  "after": "No reporting found of a Leonardo entry in the 2025 accounts. They list a contribution from MED-OR Italian Foundation, with no separate amount, for the exhibition Mediterranea (17 May to 31 August 2025), made with Telespazio and e-GEOS (accounts 2025).",
+  "sources": [
+   "https://www.maxxi.art/wp-content/uploads/2026/07/Bilancio-consuntivo-2025.pdf"
+  ],
+  "reason": "I extracted the text of the accounts PDF. It contains no 'Leonardo'. It does name MED-OR Italian Foundation (and Telespazio, e-GEOS) in the Mediterranea entry and under 'contributi diversi per mostre'. NEEDS THE EDITOR: the brief expected no Med-Or entry."
+ },
+ {
+  "id": "maxxi",
+  "section": "RED FLAGS",
+  "problems": [
+   "dated events missing/misdated",
+   "unsupported: protests dated 17 May 2025",
+   "MAXXI response misreported"
+  ],
+  "before": "17 May 2025: protests followed the opening of \"Mediterranea\" ... No MAXXI response is reported in Hyperallergic, Nero Editions or Artribune.",
+  "after": "Mediterranea opened on 17 May 2025 ...; Artribune recalls protests over it, undated ... MAXXI did not answer Hyperallergic's inquiries; an editor's note says the article was later updated with a MAXXI comment, not reproduced in the text read.",
+  "sources": [
+   "https://hyperallergic.com/artists-call-to-boycott-maxxi-museum-over-alleged-israel-ties",
+   "https://www.artribune.com/?p=1182113",
+   "https://www.neroeditions.com/artists-pull-out/"
+  ],
+  "reason": "Artribune gives 17 May 2025 as the exhibition's opening, not the protest date. Hyperallergic's page (31 October 2025) carries an editor's note about a MAXXI comment."
+ },
+ {
+  "id": "maxxi",
+  "section": "FUNDING / RED FLAGS",
+  "problems": [
+   "number/date: Eni '€48,750' context incomplete",
+   "vague: 'Sponsorship exceeded €1 million'",
+   "wrong membership description"
+  ],
+  "before": "Sponsorship exceeded €1 million in 2025 ... Enel is a founding promoter member and Regione Lazio a promoter member; each designated a board member in 2026.",
+  "after": "Sponsorship was €1,096,735 in 2025 ... KME at €300,000 ... Bulgari at €60,000 ... Eni: 'Progetto Eni' €48,750, the centre has worked with Eni's archive since 2012; from November 2025 Nannucci's \"More than meets the eye\" shown on the Gazometro G3 in a MAXXI and Eni collaboration.",
+  "sources": [
+   "https://www.maxxi.art/wp-content/uploads/2026/07/Bilancio-consuntivo-2025.pdf"
+  ],
+  "reason": "All figures checked against the accounts text. Enel is called 'socio fondatore' and 'socio Promotore' in different places, so the text now says only 'members'."
+ },
+ {
+  "id": "maxxi",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "Nero Editions mislabelled as 'the artists' own statement'",
+   "Artribune title missing"
+  ],
+  "before": "The artists' own statement, not independent reporting: says MAXXI accepted funding from and worked with firms complicit in Gaza",
+  "after": "A boycott call signed by Italian groups, with the six artists' statement; not independent reporting. Argues that \"neutrality is complicity\" and names Leonardo, Eni, Med-Or, e-GEOS and Telespazio.",
+  "sources": [
+   "https://www.neroeditions.com/artists-pull-out/",
+   "https://www.artribune.com/?p=1182113"
+  ],
+  "reason": "Nero's page is a call signed by Galassia Antisionista, BDS Roma and others. Report trimmed from 803 words to 797."
+ },
+ {
+  "id": "memorial-acte",
+  "section": "RED FLAGS",
+  "problems": [
+   "translation of a quote not matching the French",
+   "unsupported: '21-page request found'",
+   "'termination payment' unspecified",
+   "dates/authorities: kept as dated factual item"
+  ],
+  "before": "6 October 2023: the Cour des comptes prosecutor's 21-page request found \"total disorganisation and flagrant disregard of administrative and financial rules\" (my translation). Jacques Martial received a €91,382.87 termination payment without board approval ...",
+  "after": "6 October 2023: the prosecutor general of the Cour des comptes sent a 21-page request ..., describing \"inorganisation totale et un non-respect flagrant des règles administratives et financières\" (total lack of organisation and flagrant non-compliance ...; my translation). Jacques Martial received €91,382.87 on leaving without board approval ...",
+  "sources": [
+   "https://lecourrierdeguadeloupe.com/lenquete-de-la-cour-des-comptes-sur-la-gestion-inappropriee-du-memorial-acte-rappelle-a-lordre-politiques-et-fonctionnaires/",
+   "https://rci.fm/guadeloupe/infos/Societe/Les-graves-derives-du-Memorial-ACTe-pointees-par-la-Chambre-Regionale-des-Comptes",
+   "https://rci.fm/guadeloupe/infos/Justice/MACTe-des-perquisitions-ont-eu-lieu-au-conseil-regional"
+  ],
+  "reason": "Dates, authorities and findings were all confirmed on pages opened (Courrier de Guadeloupe 5 Feb 2024; RCI 21 Nov 2023 for the 20 Nov 2023 report; RCI 25 Apr 2024 for the 22 Apr 2024 searches), so the item stays under Red flags as a dated factual item. The heading is not one of the atlas's flags."
+ },
+ {
+  "id": "memorial-acte",
+  "section": "RED FLAGS",
+  "problems": [
+   "Unverified item: figures not on opened page",
+   "'ticket sales reported at €330,000 but exceeded €750,000' and '€5 million' not in opened excerpt",
+   "hedge-free but unsupported: Chalus quote dated"
+  ],
+  "before": "Unverified: dismissed director Yssap-Rincon says ticket sales for late 2019 were reported at about €330,000 but exceeded €750,000, that €420,000 never returned, and, by her estimate, that about €5 million in ticket proceeds has gone missing since 2015.",
+  "after": "Unverified: dismissed director Laurella Yssap-Rincon says €420,000 from second-half 2019 ticket sales is unaccounted for. Board chair Georges Bredent accused her of authoritarianism; regional president Ary Chalus had called her claims an attempt to slander him (The Art Newspaper, 3 August 2021).",
+  "sources": [
+   "https://www.theartnewspaper.com/2021/08/03/director-of-slavery-memorial-in-guadeloupe-sacked-after-reporting-euro420000-missing-from-museums-budget"
+  ],
+  "reason": "The fetch confirmed the €420,000 and the €5 million estimate (a hedged estimate in the source) but not the €330,000 or €750,000 figures."
+ },
+ {
+  "id": "memorial-acte",
+  "section": "FUNDING",
+  "problems": [
+   "hedge: 'European funds alleged'",
+   "unsupported: 'event hire' income",
+   "unsupported: 'her statement' phrasing"
+  ],
+  "before": "public: mainly Région Guadeloupe, with European funds alleged ... Ticket sales and event hire add income",
+  "after": "public: mainly Région Guadeloupe ...",
+  "sources": [
+   "https://rci.fm/guadeloupe/infos/Justice/MACTe-des-perquisitions-ont-eu-lieu-au-conseil-regional",
+   "https://www.theartnewspaper.com/2021/08/03/director-of-slavery-memorial-in-guadeloupe-sacked-after-reporting-euro420000-missing-from-museums-budget"
+  ],
+  "reason": "RCI ties the EU funds to a 2014 household-waste platform, not to the museum's funding."
+ },
+ {
+  "id": "memorial-acte",
+  "section": "CRITICISM IN ART MEDIA / OVERVIEW",
+  "problems": [
+   "unsupported: Chalus and Bredent 'rejected her claims'",
+   "unsupported: 'my description' of Hoffmann",
+   "'1998' credited to RCI",
+   "word count"
+  ],
+  "before": "Names Chalus and Bredent, who rejected her claims or declined to comment.",
+  "after": "Names Bredent, who cited \"a certain opacity in management\", and Chalus, who declined to comment.",
+  "sources": [
+   "https://www.theartnewspaper.com/2021/08/03/director-of-slavery-memorial-in-guadeloupe-sacked-after-reporting-euro420000-missing-from-museums-budget",
+   "https://boasblogs.org/dcntr/re-colonizing-memory/",
+   "https://fr.wikipedia.org/wiki/M%C3%A9morial_ACTe"
+  ],
+  "reason": "Bottom line verdicts ('the problem is how it was spent') replaced by the documented facts. Report trimmed from 903 to 795 words."
+ },
+ {
+  "id": "menil-collection-houston",
+  "section": "OVERVIEW",
+  "problems": [
+   "conflicting number: 'more than 17,000 items'",
+   "unsupported: Lysi frescoes '13th-century' and 'returned in 2012'",
+   "unsupported: Schlumberger Overseas and Surenco"
+  ],
+  "before": "The collection grew to more than 17,000 items ... 13th-century frescoes ... returned to Cyprus in 2012 ... president of Schlumberger Overseas and Schlumberger Surenco",
+  "after": "more than 25,000 objects ... recovered from the illegal art trade in the 1980s; in September 2011 the museum announced they would return to Cyprus in February 2012 ... president of two regional branches of the company",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Menil_Collection",
+   "https://en.wikipedia.org/wiki/Dominique_de_Menil"
+  ],
+  "reason": "Wikipedia's article text says 25,000 (its fact box says 17,000); the other items follow the page wording."
+ },
+ {
+  "id": "menil-collection-houston",
+  "section": "RED FLAGS",
+  "problems": [
+   "current-sponsor year not shown"
+  ],
+  "before": "SLB, formerly Schlumberger, an oilfield services company, is a current sponsor at the $25,000+ tier (museum sponsor page; Wikipedia, Schlumberger).",
+  "after": "SLB, an oilfield services company that rebranded from Schlumberger in 2022, is listed at the $25,000+ tier on the museum's corporate support page, which shows \"© 2026\" and a \"Fiscal Year 2027 Corporate Committee\" (menil.org/corporate-support, read 24 October 2026; Wikipedia).",
+  "sources": [
+   "https://www.menil.org/corporate-support",
+   "https://en.wikipedia.org/wiki/Schlumberger"
+  ],
+  "reason": "Year taken from the page footer and committee label."
+ },
+ {
+  "id": "menil-collection-houston",
+  "section": "WIDER CONTEXT / PRESS",
+  "problems": [
+   "wrong count/place: 'UK artists asked five London theatres'",
+   "unsupported: 'smear'",
+   "unsupported: 'sited it insensitively'",
+   "'refused a public discussion' wording"
+  ],
+  "before": "More than 260 UK artists asked five London theatres ... Says the Art Guys' claim that the Menil had deaccessioned it was a smear.",
+  "after": "More than 260 British artists asked five UK theatres (the National Theatre, Royal Shakespeare Company, Young Vic, Royal Court and Almeida) ... Calls the Art Guys' deaccessioning scandal fake. ... acquired the work with little public attention in 2011, sited it near the Rothko Chapel and declined a public discussion.",
+  "sources": [
+   "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg",
+   "https://artsandculturetx.com/?p=4540"
+  ],
+  "reason": "The blog (Devon Britt-Darby, 24 January 2013) calls the scandal 'fake' in its title and says Helfenstein declined a public discussion."
+ }
+]
