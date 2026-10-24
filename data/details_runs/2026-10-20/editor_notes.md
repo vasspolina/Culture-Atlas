@@ -246,3 +246,178 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - lacma-los-angeles: Gores and Securus: artists' letter 16 Sept 2020, Worth Rises and Color of Change letter 9 Sept, resignation 8 Oct 2020. Wynn Resorts: $50M in 2016; no opened page says the gift came from casino income; whether it counts is the editor's call.
 - kw-institute-for-contemporary-art: KW's about page does list Casa Camper as a partner; BMW support for KW itself is not found (BMW's 2018 release names it a partner of the Berlin Biennale, which used KW as a venue); Volkswagen support is the KW Digital Program 2023 to 2024 and a 2021 book.
 - latvian-national-museum-of-art: Teboil/Lukoil comes only via Wikipedia citing Ilta-Sanomat, unopened.
+
+## d017 (research notes, before its slop check)
+- museo-de-arte-moderno-de-bogotá-bogotá: Fundación BAT is read from gala logo labels; its ownership by British American Tobacco is not confirmed on any opened page. "More than 170 signatories" is unconfirmed (sources say more than 140). The Viola dismissal is not state censorship (the museum is private).
+- museo-jumex: the record's "State censorship" flag is not supported; the 2015 Nitsch cancellation followed an animal-rights petition.
+- museo-de-la-solidaridad-salvador-allende: Serpat transfer of CLP 660,197,000 approved 4 Feb 2025; the funding report, management plan and 2024 annual report PDFs were unreadable.
+- mus-e-th-odore-monod-d-art-africain-ifan-dakar: Fondation TOTAL Sénégal on an undated partners page; ifan.ucad.sn returned 404.
+- museo-de-arte-de-lima: Camisea consortium and Pluspetrol fund free Thursdays 2022 to at least March 2025; the 2025 accounts PDF was unreadable.
+- museo-amparo-puebla: the FEMSA protest and the Colección FEMSA show are Wider context; no reporting that FEMSA funds the museum.
+- museo-nacional-de-arte-de-bolivia-la-paz: the foundation home page returned 522; the eju.tv 2015 item is Unverified.
+
+## d018 (research notes, before its slop check)
+- museo-soumaya: the IFT ruled América Móvil's units dominant on 6 March 2014 (Forbes México); the record's cited TelecomTV link is a 2017 resolution. The museum's about page returned 404.
+- museu-de-arte-moderna-de-são-paulo-são-paulo: Grupo Ultra (owner of Ipiranga) is a sponsor; protest over the 2017 La Bête performance.
+- museu-do-amanhã: Shell and Instituto Cultural Vale as maintainers.
+- museum-of-contemporary-art-tokyo-tokyo: the record's "then withdrew the request" and "budget about ¥1B" are not confirmed; no withdrawal found.
+- museum-of-art-photography-map: the outcome of the Venkatappa Art Gallery deal was not found.
+- museum-of-fine-arts-budapest-hungarian-national-gallery: MVM Group sponsor; Szerencsejáték's betting arm not sourced (left out).
+- museum-of-contemporary-art-belgrade: government replaced the acting director in January 2020; board chair resigned.
+- museo-reina-sof-a: la Caixa holding Criteria is Naturgy's largest shareholder; a 2026 parliamentary inventory demand.
+
+## d015 slop check (47 fixes; every report changed)
+- Mansudae: the UN Security Council listed "Mansudae Overseas Project Group of Companies", alias Mansudae Art Studio, on 5 August 2017; the EU lists it in Implementing Regulation 2017/1457 of 10 August 2017; US Treasury designated the company on 2 December 2016 under Executive Order 13722 (the record had 7 December). The UK listing rests only on OpenSanctions and was not used. For the Beijing gallery (mansudae-art-museum-mansudae-art-studio-gallery-798-beijing) the sanctions red flag was kept, but no source shows a listing of the gallery or its operator Ji Zhengtai: remove that heading if the flag should apply only where the entity itself is listed.
+- mariupol-drama-theatre: the named body is the Donetsk People's Republic (OFAC listing 16 July 2014, UK 25 July 2014, EU 25 July 2014); no opened page shows the DNR paid for the rebuild. Black Sea News is an aggregator; the UK listing has only that source.
+- memorial-acte: audit and Parquet national financier item stays: Cour des comptes request 6 Oct 2023, regional audit chamber report 20 Nov 2023, searches 22 April 2024.
+- mathaf-arab-museum-of-modern-art-doha: Gulf state body and state censorship kept (Eviner removal, show opened 3 Nov 2024, Art Newspaper 11 Dec 2024; the 2013 Abdessemed film); the labour heading moved to Wider context (no page ties a labour event to Mathaf).
+- mauritshuis-the-hague: the Shell item is no longer a red flag (the 2018 protest and arrests were at the Van Gogh Museum); facts moved to Funding. Site returned 403.
+- masp-são-paulo: "Ultra" on the partner page has no year and is not identified as Ultrapar; the Fossil fuels red flag is kept with those limits and needs a dated sponsor document.
+- maxxi: the 2025 accounts list a MED-OR Italian Foundation contribution for the exhibition Mediterranea (17 May to 31 August 2025), with Telespazio and e-GEOS; no Leonardo entry. No amount given.
+- madison-museum-of-contemporary-art-madison: a state lottery (Wisconsin Lottery) is not a Gambling flag; Ho-Chunk Gaming Madison remains.
+
+## d016 slop check (80 fixes; every report changed)
+- mk-gallery-milton-keynes: "Red flags: Getty family oil money" added: J. Paul Getty Jr. was the son of the Getty Oil founder and lived on income from a family trust; no opened page says where the J Paul Getty Jnr Charitable Trust's own money came from (Charity Commission pages 403). The support page gives no date or amount. Decide whether the flag stays. The Sackler item is verified (Gareth Harris, The Art Newspaper, 16 Nov 2019; Mortimer Sackler and Purdue; March 2019 pause).
+- mit-media-lab-cambridge: MIT's 10 Jan 2020 report: 10 gifts totalling $850,000 from 2002 to 2017, and $525,000 to the Lab in six gifts from 2013 to 2017. Three accounts of the "disqualified" coding (New Yorker via MIT Technology Review and the Globe; Signe Swenson; MIT). The Crimson's $7.5M figure has no named source. media.mit.edu certificate rejected.
+- moma-the-museum-of-modern-art: Black chaired 1 Jul 2018 to 1 Jul 2021 and is still a trustee; Dubin called a trustee in Hyperallergic pieces 2019, 2020, 2024, The Art Newspaper 2021, no page says whether he still serves. The payments were from Black to Epstein, not to MoMA.
+- migros-museum: the fuel item (Migrol about 4% of group sales) moved from Red flags to Funding (the atlas counts a conglomerate as Fossil fuels only when fuel is its main line). Admission is free per both museum pages; the Facts and Figures PDF (Dec 2021) is out of date.
+- muac-mexico-city: the page lists only "Bloomberg", so it is no longer tied to Bloomberg Philanthropies.
+- multimedia-art-museum-moscow-mamm-moscow: both dates right: 24 Feb 2022 (US restriction on new debt and equity) and 6 Apr 2022 (US full blocking of Alfa-Bank, Treasury); UK 24 Mar 2022; EU Feb 2023. Potanin sanctioned by the UK (Interfax, 29 Jun 2022) and the US (15 Dec 2022); the US notice did not mention Nornickel.
+- munch-oslo: INPEX Idemitsu: "more than 30 years", more than NOK 100M since 1991, five-year renewal 1 Feb 2023 (INPEX release 7 Feb 2023); the sponsor page omits Aker BP and Equinor; Equinor funds the Edvard Munch Award.
+- milwaukee-symphony-orchestra-milwaukee: Mahler was a resigning board member of a 35-member board (FOX6, 13 Feb 2026); Epstein hired him in March 2013; FOX6 does not say what Epstein paid.
+
+## d019 (research notes, before its slop check)
+- nam-june-paik-art-center-yongin: the record's KRW 600M Hyundai sponsorship was not found; the Gyeonggi province page lists adult admission at 4,000 won against the record's "free admission".
+- national-art-museum-belarus-minsk: the record's Sber Bank sponsorship of the Chagall show is not confirmed; artmuseum.by timed out twice.
+- mystetskyi-arsenal, nasjonalmuseet-national-museum-of-norway, national-art-gallery-of-namibia-windhoek, national-galleries-of-scotland: the record's income figures sit in annual-report PDFs too large to read; none confirmed.
+- national-art-gallery-of-namibia-windhoek: the 2014 Solari Bozzi withdrawal rests on search excerpts (ARTICLE 19 and NCAC pages returned 403).
+- museum-of-islamic-art-doha: www.mia.org.qa has a self-signed certificate error (mia.org.qa loads).
+- nafasi-art-space-dar-es-salaam: TotalEnergies as a sponsor; donors are the Swiss and Norwegian embassies.
+
+## d017 slop check (18 fixes; every report changed)
+- museo-de-arte-moderno-de-bogotá-bogotá: the Tobacco flag kept on a sponsored La República article (4 July 2025) tying "La Fundación BAT en Colombia" to BAT Group's sustainability strategy; no page says who owns the foundation or that it is the one on the gala list (a logo labelled "Fundacion BAT" under "Donación Privada"). Signatories "more than 140" (Las2orillas says 170). The museum is private, so the Viola dismissal is not state censorship. Revista Papel and Rolling Stone originals not opened.
+- museo-jumex: no State censorship flag; Hyperallergic reports Jumex staff denied the petition caused the cancellation (9 Feb 2015; show due 27 Feb 2015).
+- museo-de-arte-de-lima: free Thursdays funded by the Consorcio Camisea (operated by Pluspetrol): 25 Aug 2022 to March 2023 (Proactivo, 24 Aug 2022), extended to March 2025 (Correo, Proactivo, Aug 2024). No objection found; the flag stays on current funding.
+- mus-e-th-odore-monod-d-art-africain-ifan-dakar: the Red flags section was removed (undated partners page, no amount, no objection); the record's Fossil fuels flag has no dated source.
+- museo-de-arte-moderno-de-buenos-aires-buenos-aires: a TotalEnergies logo link on the "Support the Museum" page with no caption, year or amount.
+- museo-de-la-solidaridad-salvador-allende: 2025 state subsidy CLP 660,197,000 (75.1% staff) plus FONDART 21,785,143, Senate 15,500,000, University of Pennsylvania 1,111,203, Henry Moore Foundation 7,616,486; 2024 subsidy CLP 592,136,000 (79.9% staff), FfAI US$30,000, Italian Cultural Institute US$6,000. The 2025 table prints "$" with no currency name; read as pesos.
+- museo-de-arte-de-puerto-rico: two exhibition pages unopenable (404, 401); Mellon, Flamboyan, Frankenthaler and Tourism Company credits cut.
+
+## d018 slop check (38 fixes; every report changed)
+- museo-reina-sof-a: Fossil fuels flag kept: the banking foundation la Caixa signed up to EUR 300,000 for the education programme (BOE, 23 Dec 2025); Fundación "la Caixa" is on the museum's patron page; CriteriaCaixa is Naturgy's largest shareholder at 25.9% after a EUR 485m purchase (Ara, 17 Dec 2025). The May 2026 item rests on USA Art News, bylined only "Helen"; Jacobin was paywalled and removed.
+- museo-soumaya: IFT ruling 6 March 2014 (Forbes México, summary only); the TelecomTV page is América Móvil's 2017 statement. Metro Line 12: Grupo Carso statement 20 Oct 2021, the city-commissioned DNV report, the Fiscalía compensation fund. The Expansión article carries critics' claims that Slim buys the collection himself, plus the director's reply.
+- museu-do-amanha: Shell on the supporters page, no year (dated via Folha do Leste, 12 Dec 2025, and ecycle, 2 Dec 2021); Instituto Cultural Vale launched September 2020 (Correio Braziliense); nothing opened says it belongs to Vale. Brumadinho 25 Jan 2019 (270 dead), Mariana 5 Nov 2015 (19 dead, October 2024 settlement).
+- museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro: Petrobras page "a partir de 2026", relationship since 1999, no amount; 2018 settlement 27 Sept 2018: $853.2m criminal penalty, $682.56m to Brazil, $933m SEC (Holland & Knight).
+- museum-folkwang-essen: E.ON partnership to 2026 (press release 13 Nov 2023) covers the "We Is Future" show; no dated current RWE support; the Duplan section was cancelled 13 Nov 2023; no open letter found, a CIMAM statement 15 Jan 2024; Krupp foundation money today: thyssenkrupp dividends (20.93%) and photography scholarships.
+- museum-macan-jakarta: whether fuel is AKR's largest revenue line is not established (petroleum and basic chemicals combined: about 92% of Q1 2024 revenue, Rp28.03tn of Rp30.84tn in H1 2026; sources a broker note and an AI summary); the flag is kept with that caveat. AKR's controlling shareholder PT Arthakencana Rayatama held 64.627%; no page names its owner.
+- museum-of-contemporary-art-belgrade: Nakarada removed January 2020; Kiš named 30 Jan 2020 (Danas); Šuica resigned early Feb 2020; protests 30 to 31 Oct 2020.
+- museum-of-contemporary-art-tokyo-tokyo: neither Artscape nor Art-It states any withdrawal.
+- museum-of-fine-arts-budapest-hungarian-national-gallery: MVM Group is key supporter of "Vasarely 120" (2026 sponsor page); the UNESCO and ICOMOS letter has 13 signatories.
+
+## d020 (research notes, before its slop check)
+- national-museum-of-oman: new, not in the record: Mikhail Piotrovsky is on the museum's board, signed the September 2025 Hermitage Dhofar agreement, and is sanctioned by Canada (2023) and the EU (April 2026); the board page also still names a former minister.
+- national-museum-of-iraq: the record's "Italy equipped labs in 2015" and "France sponsored a show" are not confirmed; UNESCO says Japan and Italy paid for the lab and training.
+- national-gallery-singapore-singapore: no Citadel or Bloomberg campaign found at this gallery, only the Whitney protest over Citadel's Ken Griffin; the record's "campaigned name" is in Wider context.
+- national-gallery-of-modern-art-ngma: the 2019 Palekar episode took place at the Mumbai branch.
+- national-gallery-of-australia: nga.gov.au refused automated requests; the report uses the 2023-24 annual report PDF.
+- national-portrait-gallery-london: Blavatnik's oil money and Ukraine's 2023 sanction come from Wikipedia only.
+- national-museum-of-natural-history-smithsonian: David Koch is documented as an advisory board member, not a trustee.
+
+## d019 slop check (186 entries; every report changed)
+- mowaa: the donors' page is undated and names NNPC Seplat Energy, Lekoil Nigeria Limited and Azura Power West Africa Limited; no per-donor amounts or years. The Oba dispute dated: request two days before the preview, protest 9 Nov 2025, revocation 10 Nov (Museums Association) against a "social media scam" denial (Apollo), Assembly resolution 22 Dec 2025, committee report 20 Aug 2026; the Edo committee's figures are the committee's claims.
+- nam-june-paik-art-center-yongin: Hyundai: US Department of Labor fine 29 Sept 2022 and consent decree, Alabama Department of Labor fines, divestment announced 24 Feb 2023. The Hyundai Motor Group release says Hyundai runs the Translocal Series; Gyeonggi Ilbo reports four 2025 exhibitions "thanks to Hyundai Motor's sponsorship"; no reporting of the KRW 600M. Admission 4,000 won for adults (Gyeonggi page); free for under 6, over 66, disabled visitors.
+- nasjonalmuseet-national-museum-of-norway: the protest heading is not labelled Fossil fuels: McGowan in Klassekampen 12 March 2022, Kydland reply 18 March 2022, appeal 10 June 2022.
+- national-galleries-of-scotland: Baillie Gifford 2 July 2024 (book festival exit May 2024); BP: 2016 and 2018 protests, 11 Nov 2019 hosting ended "in its present form" (Hyperallergic).
+- nafasi-art-space-dar-es-salaam: TotalEnergies is not on the partners page; the VIA Creative page is undated except 13 Oct 2022; no reporting after 2022.
+- national-art-museum-belarus-minsk: Monich dismissal July 2020 (Current Time, 13 July 2020); no reporting of Sber Bank as a sponsor.
+- national-art-gallery-of-namibia-windhoek: the 2014 Solari Bozzi section rests on search excerpts of ARTICLE 19 and Censorpedia (403); no news report found.
+- musée-dorsay-paris: the Epstein item (listed 4 Feb 2026) rests on an ARTnews piece not read; the Slate item was 403.
+
+## d021 (research notes, before its slop check)
+- nederlands-fotomuseum-rotterdam: NOS (16 May 2019) reports an offer of about EUR 40M ("naar verluidt") from 2018 for Boijmans, not the record's EUR 80M in 2019.
+- new-holland-island-st-petersburg: the record's website is a Fontanka article; the real site is newhollandsp.ru; newhollandisland.com does not resolve.
+- new-mexico-museum-of-art-santa-fe: no Isleta Resort and Casino entry found on the Foundation's current business-members page; the record's FY2023 claim could not be verified.
+- noguchi-museum: the August 2024 walkout: 14 staff (The Art Newspaper) or 8 (ArtReview); the record's "Noguchi estate" funding claim could not be verified; noguchi.org returned 402.
+- new-york-academy-of-art-new-york: Epstein: board member 1987 to 1994, event payments in 2012 and 2014, $65,900 redirected in March 2026; the Hyperallergic article does not reconcile its itemised examples with the total.
+- new-orleans-museum-of-art-new-orleans: the Helis oil link rests on the October 2020 letter and the foundation's own description of its leader as an oil-company executive.
+- national-visual-arts-gallery: no Shell or Petronas sponsorship found.
+
+## d020 slop check (40 fixes; every report changed)
+- national-museum-of-oman: Piotrovsky moved from Red flags to Wider context (Canada 31 Aug 2023; EU 20th package 23 April 2026, The Art Newspaper); no source shows he funds or controls the museum. The Gulf state body flag stays.
+- national-gallery-london: Shell protests dated (Greenpeace banner 2012, theatre group 2014, choir Dec 2014, Reclaim the Power 2015), ended January 2018; Finmeccanica 30,000 pounds a year from 2006, "Disarm the National Gallery" action 31 March 2012, ended a year early (CAAT, 10 Oct 2012); HSBC listed as Benefactor Member, the 11 Dec 2012 DOJ deferred prosecution agreement $1.256bn, but no campaign against HSBC at the Gallery found. The 1985 Paul Getty endowment is under Funding only: no opened page shows it still paying today, so no Fossil fuels flag.
+- national-gallery-of-australia: Rinehart letter 17 May 2024 (a claim Rinehart herself petitioned is Unverified); Qantas 6 May 2024 agreement ($100M subject to court approval plus $20M remediation), August 2025 Federal Court fine $90M. The 2023-24 annual report text could not be extracted; the gallery site returns 403.
+- national-museum-of-natural-history-smithsonian: Koch was on the museum's advisory board (still there January 2016, Hyperallergic); the White House review attributed to three named signatories; the Arctic exhibit item is Unverified (Robert Sullivan, CBS, 21 May 2007; Samper's denial).
+- national-museum-of-american-history-smithsonian: label removal: Washington Post July 2025, Smithsonian's confirmation 1 Aug 2025; donor items 2000 to 2002 (Commonplace).
+- national-portrait-gallery-london: BP from 1990, not renewed after 2022; Sackler 1 million pound gift withdrawn, "jointly agreed not to proceed" (Museums Journal, 21 March 2019); Blavatnik 10 million pounds in 2022 (Art Newspaper, 15 Nov 2023); the Ukrainian sanction is "Wikipedia only" (no US, EU or UK listing named). No documented objection to Blavatnik found. Gallery site 403.
+- national-gallery-singapore-singapore: Marina Bay Sands a current patron; Keppel a Founding Partner; Keppel O&M DPA December 2017, penalty US$422,216,980 over Brazil bribes (about 2001 to 2014). The DOJ release pages were empty (rests on Keppel's own announcement via Maritime Professional and Compliance Week): confirm against the DOJ release.
+- national-gallery-alexandros-soutzos-museum: reopening 24 March 2021 (Wikipedia) or May 2021 (the gallery's page).
+
+## d023 (research notes, before its slop check)
+- phoenix-art-museum-phoenix: no source shows Desert Diamond Casino as a partner (the record's claim); the record's $11.9M expenses is superseded (ProPublica FY2025: $15.8M).
+- pinacoteca-de-s-o-paulo: no text source for Equinor or Ultra as sponsors (the record's claim); the 2026 sponsor panel is an image; the record's website field points to a news site (real site pinacoteca.org.br).
+- poetry-in-america-harvard-cambridge: the "Gratitude America" name is unconfirmed; sources say Epstein gave $110,000 to Verse Video Education, which ProPublica places in Brookline, MA.
+- pushkin-state-museum-of-fine-arts-moscow: the trustee page still lists Pronicheva as director (BFM, 14 Jan 2026, names her to the post).
+- perez-art-museum-miami: sources disagree on the gift ($35M or $40M) and the building cost ($131M or $220M).
+- raw-material-company-dakar: the space's own site was down on the check date.
+- pictanovo-tourcoing: Epstein-linked: ex-fund president Caroline Lang; Prytanee company; PNF preliminary probe 6 Feb 2026; she and her father deny wrongdoing.
+- pirelli-hangarbicocca: Rostec holds 25.005% of Pirelli Tyre Russia; the Grizzly allegation is unverified and Pirelli denies it.
+
+## d022 (research notes, before its slop check)
+- ny-carlsberg-glyptotek: no source for the record's "Augustinus Fonden gave DKK 1.53M in 2025 for a Gauguin purchase"; the only Augustinus gift documented is the 2022 "La neige à Copenhague" purchase (Ny Carlsbergfondet's own page).
+- nyu-tisch-school-of-the-arts-new-york: Steve Tisch's Epstein emails placed in Wider context (correspondence and introductions, no money or leadership in an Epstein vehicle).
+- onassis-stegi: the record says no flag for tankers; the report documents crude oil tanker income (Olympic Shipping and Management, controlled by the Onassis Foundation, ran 18 crude oil tankers in January 2023, per ITLN). The atlas counts tanker owners as oil-industry services, not Fossil fuels.
+- oakland-museum-of-california-oakland: the record's "City of Oakland subsidy" is out of date (Nonprofit Quarterly 2011: the foundation took over operations in 2011; final city payment due in 2022). The "Campaigned name" flag is not supported at this museum (Bloomberg campaign at London's ICA 2025 is Wider context).
+- ordrupgaard-charlottenlund: no source for the "Sponsor dropped under pressure" flag.
+- palazzo-grassi-and-punta-della-dogana: the lease is 30 years (Art Newspaper 2007) or 33 (Wikipedia).
+- peggy-guggenheim-collection-venice: no Sackler gift or name found at the Venice museum; the 2019 policy is documented only for the parent foundation in New York.
+- ok16-cultural-hub-minsk: ok16.by now serves an unrelated travel blog; the Warsaw relaunch could not be confirmed (Zerkalo 403).
+
+## d024 (research notes, before its slop check)
+- riga-international-biennial-of-contemporary-art-riboca: riboca.com is parked (GoDaddy for-sale page); funding after 2022 from a US charity, Just A Moment.
+- ruarts-foundation-moscow: no source opened ties Rashid Sardarov's money to the foundation; the link is the founder's surname, which Transparency International Russia gives as his wife's name.
+- russian-pavilion-at-the-venice-biennale-venice: pavilionrus.com returned HTTP 500; Novatek named by one outlet (Unverified).
+- ruya-foundation-baghdad: KAR on the sponsor list; the page does not say "KAR Group"; no KAR payment is dated; the About page copyright is 2018.
+- rijksmuseum-amsterdam: the end of the Aramco sponsorship in 2017 is sourced only to Fossil Free Culture NL via the Museums Association; the museum did not respond.
+- seattle-art-museum-seattle: seattleartmuseum.org returned 403; the record's claims about Boeing, Bloomberg Philanthropies and Honeywell as partners are unconfirmed, not disproved.
+- royal-philharmonic-orchestra-london: no income figures (2025 accounts PDF unreadable; Charity Commission 403).
+- science-museum-london: BP, Adani Green; income from Civil Society for 2022-23.
+
+## d021 slop check (173 changes, many word-limit trims; every report changed)
+- national-theatre-london: Shell: walk-out 20 Sept 2019, BP or not BP? and Culture Unstained (The Ecologist, 11 Oct 2019); every source gives only a future end date (June 2020); no later report confirms it. The 28 May 2026 Bloomberg letter names the National Theatre (Morning Star, The New Arab, The Stage), so the red flag stays; Bloomberg's own "participating organisations" listing, with a dispute over whether it is current.
+- national-visual-arts-gallery: removal of four works 4 Feb 2020 (The Edge); Osman's statement 10 Feb; collectors' petition 15 Feb; operator is the National Visual Art Development Board, a statutory body under the Ministry of Tourism, Art and Culture. The board-member instruction is Unverified.
+- neue-nationalgalerie-berlin: Goldin dispute: opening evening 22 Nov 2024; run 23 Nov 2024 to 6 April 2025; Goldin's email 3 Dec; museum statement 6 Dec; Hyperallergic 11 Dec. Goldin's funding-threat claim is Unverified, placed in her 3 Dec email.
+- nevada-museum-of-art-reno: the 2024 donor list has San Manuel Gaming and Hospitality Authority at $25,000+ (Wikipedia: runs the Palms Casino Resort, bought 2021, reopened 2022); Stacie and Charles Mathewson at $50,000+, Ann Mathewson at $10,000+; Charles led IGT and was first chairman of the American Gaming Association (Nevada Independent), but no page says his fortune came from IGT (he also founded Jefferies & Company). The July 2020 This Is Reno article returned 403.
+- new-holland-island-st-petersburg: Abramovich UK freeze and travel ban 10 March 2022 (gov.uk); EU listing 15 March 2022 (AP); the Fontanka asset-freeze link is Unverified.
+- new-mexico-museum-of-art-santa-fe: mural article 11 Feb 2021; protest 6 Feb 2021; Guzmán suit 8 March 2021 (exact day inferred); naming rights offered early 2018 for $4M; Casaus column 8 Oct 2022. The Foundation members page reads "Listing as of 9/10/26"; no Isleta entry.
+- new-orleans-museum-of-art-new-orleans: the foundation's own post of 8 March 2021 calls William George Helis an oil magnate and David Kerstein an "oil-company executive"; the letter's "philanthropic arm of Helis Oil & Gas" line is Unverified; letters 25 June and 12 Oct 2020; free Wednesdays since 3 March 2021; hire announced 29 June 2023.
+- new-york-academy-of-art-new-york: board 1987 to 1994; $25,000 tables in 2012 and 2014; $30,000 Portrait Scholarship 2014; $65,900 redirected March 2026; the examples sum to $80,000 and do not reconcile with $65,900; Hyperallergic carries no Guggenheim denial (it is in USA Art News).
+- nederlands-fotomuseum-rotterdam: NOS "naar verluidt" offer about EUR 40M (2018), attributed to unnamed city hall sources (16 May 2019); Eckenhaussen gives EUR 80M. The Cultureel Persbureau blog is partisan.
+- nicosia-municipal-arts-centre-nimac: Cizenel row 28 to 29 June 2026; Tattis's phone allegation Unverified.
+- noguchi-museum: The Art Newspaper: 14 staff walked out 21 Aug 2024, petition of about two thirds of 72 staff; ArtReview: 8 staff, petition of 54; dress code 14 Aug 2024; firings 4 Sept 2024 (Hyperallergic).
+- neue-galerie-new-york-new-york: Epstein contact (Daily Pennsylvanian, 11 Feb 2026) and the 12 Nov 2024 MoMA protest stay Wider context; the Met's press release returned 429.
+
+## d023 slop check (21 entries; every report changed)
+- pirelli-hangarbicocca: the Sanctions flag was removed: Rostec holds 25.005% of Pirelli Tyre Russia, a subsidiary (The Insider); no opened page shows Rostec controls Pirelli or the foundation. Kept as Funding facts: US Treasury designated Rostec 28 June 2022; Australia, Canada, EU, New Zealand, Switzerland and UK also sanction it. The Grizzly allegation is Unverified with Pirelli's 4 June 2026 denial.
+- phoenix-art-museum-phoenix: the Fossil fuels flag kept: APS burned coal at Cholla until March 2025 and plans a gas conversion; APS expects to exit coal at Four Corners "no later than 2038" (Albuquerque Journal, Aug 2025); APS is a Partner on the Spanish partner page, no amount. No objection aimed at the museum.
+- pictanovo-tourcoing: Epstein-linked flag kept; Lang's title is "le fonds régional Pictanovo" (L'Essentiel de l'éco); departure 4 Feb 2026 (Mediacités); PNF probe 6 Feb 2026 (Public Sénat). Jack Lang claims innocence; no opened page has Caroline Lang denying wrongdoing in terms (she says she received no funds and did not declare her stake). The will date differs: 2018 (Public Sénat) or two days before his death (L'Essentiel). Prytanee is placed in the British (Public Sénat) or US (L'Essentiel) Virgin Islands.
+- pro-arte-foundation-st-petersburg: Potanin sanctioned: UK 29 June 2022, US 15 Dec 2022, Canada April 2022, Australia; no opened page shows an EU listing.
+- pushkin-state-museum-of-fine-arts-moscow: VTB US SDN 24 Feb 2022; Gazprombank (a trustee) US SDN 21 Nov 2024; PSB: UK 22 Feb 2022; Ukraine's own listing 12 May 2023. EU and UK listing dates for VTB and Gazprombank not found.
+- poetry-in-america-harvard-cambridge: Epstein gave $110,000 to Verse Video Education (Crimson citing the Globe; Wikipedia); ProPublica places it in Brookline; no opened page names "Gratitude America"; the Leon Black gift was brokered by Epstein with no amount or date; $500,000 was discussed, not confirmed paid.
+- pritzker-architecture-prize-chicago: Pritzker leads the Hyatt Foundation (chairman and president per ArtReview; director and president per ProPublica; since stepped back but remains a director and vice president per Euronews, 12 March 2026); no page shows money between him and Epstein or Epstein in any role at the prize: Wider context.
+- perez-art-museum-miami-miami: renaming reported 2 Dec 2011 (Chronicle of Philanthropy), three resignations that day and four by 8 Dec; gift $35M (Chronicle) or $40M (Wikipedia); building $131M or $220M ($100M voter bonds).
+- qatar-museums-doha: Exxon (Gulf Times, 1 Dec 2021) and Shell (18 April 2022) sponsor a Dadu gallery; Marhaba.qa (20 Nov 2023) lists the Dadu Founding Family (QAR 3.65M or more) and ConocoPhillips, ENI, TotalEnergies. The qm.org.qa Dadu page returned 404.
+- pinchukartcentre: union Oct 2019; protest 25 Dec 2019; announcement 9 Feb 2020; 28 guides (Art Newspaper) or about 20 (Kyiv Post); Kryvorizhstal sold 2004 ($800M), taken back June 2005, Mittal bought it 24 Oct 2005 for over $4.8B.
+- raw-material-company-dakar: the 2024 list: Arts Collaboratory, Osiwa, Mellon, Foundation for Art Initiative, Little Sun and Porticus, Sharjah Art Foundation; no role or amount. The site refused connection on 24 Oct 2026.
+
+## d022 slop check (35 entries; every report changed)
+- ok16-cultural-hub-minsk: Sanctions flag kept: Gazprombank (49.8% owner) added to the UK asset-freeze list 24 March 2022 (Kelley Drye) and designated by the US Treasury 21 Nov 2024; Canada, Ukraine and the EU transaction ban of 24 Feb 2025 stated separately. The sale item is an Unverified Svetofor claim from Nasha Niva (6 Oct 2022). Zerkalo returned 403 (the $3M price, ArtCorporation tenant and auction claim were cut). Whether the state closure and prosecutions is a flag or Wider context is the editor's call (the bank was under National Bank temporary administration in 2020).
+- onassis-stegi: tanker income stated under Funding (no page shows the foundation's money comes from fossil fuel production); teachers' strike: three-hour stoppage 17 Feb 2025, To Vima 28 Jan and 15 Feb 2025.
+- oakland-museum-of-california-oakland: PG&E announced the plea 23 March 2020, pleaded guilty 16 June 2020 in Butte County Superior Court (Judge Michael Deems) to 84 counts of involuntary manslaughter; fine maximum $3.5M plus $500K investigation costs, no imprisonment; the sentence as pronounced is on no opened page.
+- ohara-museum-of-art-kurashiki: partner page dated 1 April 2026; Okayama Gas and Yokoyama Sekiyu in block 3, ENEOS Mizushima refinery and Japan Tobacco in block 4; no amounts.
+- palazzo-grassi-and-punta-della-dogana: Kering settlement with the Italian tax authorities announced 9 May 2019: EUR 1.25bn including EUR 897M additional taxes plus penalties and interest.
+- palais-de-tokyo: a Palais spokeswoman told The Art Newspaper (8 Jan 2020) the Qatari government has never donated; costs shared with Mathaf; La Poste protest 16 Aug 2018 (year inferred from a Carenews article 19 Nov 2018); Fondation Engie, no year on either museum page.
+- nyu-tisch-school-of-the-arts-new-york: tisch.nyu.edu returned a certificate error; the Google, Cohen Foundation and HFPA funding lines were cut; an Artnet 2020 tuition-refund piece (403) exists unread, so the Criticism section says none found. The giving page and that piece need a manual read.
+- palacio-libertad-buenos-aires: La Nación 11 Sept 2025, Perfil 22 March 2026, La Nación 7 May 2024 (Cifelli ordered a plaque covered); artists' protest 10 and 11 Sept 2025; palaciolibertad.gob.ar did not resolve.
+- ny-carlsberg-glyptotek: Augustinus 2022, no amount; antiquities item as reported (ArtsJournal 2009, Chasing Aphrodite 2013 with July 2016 updates, The Local 27 Nov 2024).
+- nuuk-art-museum-nuuk-kunstmuseum-nuuk: Augustinus gift 2024, no amount found.
+- peggy-guggenheim-collection-venice: the Sackler red flag removed: no Sackler gift or name found at Venice; the parent's 2019 policy covers only the New York museum.

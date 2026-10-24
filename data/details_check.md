@@ -19,7 +19,7 @@ For each report:
    for any number, date, name or title you doubt. Cut any claim no opened source supports. Fix a
    press item whose author, title, outlet or year is wrong. Remove a source URL that is dead,
    redirects to a homepage or does not mention the space, and say so.
-3. Keep the layout of `data/details_prompt.md` exactly: headings, "Red flags:" lines, numbered
+3. When you trim a report to get under the word limit, never drop a heading: FUNDING, BOTTOM LINE (two or three sentences) and SOURCES must always be present, and every Red flags heading keeps at least one point. Cut peripheral detail instead. Keep the layout of `data/details_prompt.md` exactly: headings, "Red flags:" lines, numbered
    press items with their "URL:" line. Never add facts from memory.
 
 Edit the .txt files in place. Write `<CHECKS FOLDER>/<batch>-slop.json`, a JSON list with one
