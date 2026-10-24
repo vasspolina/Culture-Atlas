@@ -468,3 +468,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - speed-art-museum-louisville: Churchill Downs on the live support page (undated, 24 Oct 2026); the only dated sponsorship 2019 to 2020.
 - sharjah-art-foundation-sharjah: Persekian was dismissed 6 April 2011 by the ruler (Call for Action and Jadaliyya); the Raad ban names no authority.
 - shanghai-biennale: powerstationofart.com shows only a title; the .org domain shows a gambling-promotion page; Albert's account 3 Sept 2012.
+
+## d027 (research notes, before its slop check)
+- the-kitchen: the record's ProPublica link (organizations/132887872) is The Drawing Center, not The Kitchen; the FY2025 figures match Haleakala Inc (EIN 13-2829756), the Kitchen's legal name.
+- towada-art-center-towada: the record says nuclear grants funding the museum is "not confirmed"; Japanese Wikipedia states that JPY 2.284bn, over 90% of the project cost, came from power-source subsidies tied to Rokkasho (citing a Kahoku Shimpo series, not opened); the Towada City FY2017 grant list shows JPY 5M of power-siting grant for museum operation.
+- the-rooms-st-johns: the record's Chevron $492k was not found; the 2024-25 annual report says Chevron paid $185,000 in the final year, the programme ended June 2025; Cenovus $20,000; a $30,000 proposal went to BP Canada in March 2025; a June 2026 Innu Pakassiun exhibit dispute is new.
+- telfair-museums-savannah: could not confirm Kinder Morgan, Georgia Power or Gulfstream as sponsors; no Red flags section.
+- the-bass-miami-beach: Citadel confirmed at the $20,000 to $49,999 tier on the donor page, dated 2025-2026 (not 2024-2025); no campaign aimed at Citadel at the Bass.
+- the-metropolitan-museum-of-art-the-met: the Epstein item is a $5,000 cheque to the Costume Institute Benefit in 2014 (ARTnews excerpt, NBC 2019); metmuseum.org returned 429 on every fetch.
+- triennale-milano: triennale.org returned 403; the Camera.it PDFs are encrypted; the record's 2022 revenue figures could not be checked.
