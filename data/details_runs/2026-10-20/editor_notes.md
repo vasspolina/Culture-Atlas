@@ -569,3 +569,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - zotov-centre-for-constructivism-moscow: VTB: US Treasury 24 Feb 2022 (full blocking, E.O. 14024); the UK asset freeze announced the same day and the EU SWIFT ban (Regulation 2022/345, in force 12 March 2022) rest on law-firm alerts; the EU measure is a SWIFT ban, not an asset freeze.
 - amon-carter-museum: the support page also lists Eagle Energy Systems, LTD among corporate supporters; the page does not say what that company does.
 - 32-east-ugandan-arts-trust-kampala: Sigrid Rausing Trust amounts confirmed; DOEN, Segal and Open Society unconfirmed.
+
+## d032 (research notes, before its slop check)
+- bonnefanten: the researcher labelled VriendenLoterij a red flag; the atlas treats charity lotteries (VriendenLoterij, DOEN, UK National Lottery) as ordinary public funders, so the checker moves it to Funding. The provincial grant is up to about EUR 6.4m for 2026 (the scanned letter garbles it).
+- bienal-de-cuenca: DPOT threats against Falconí's "Son de las Malvinas" (Nov 2025); the biennial's own site was not reached; the Cuenca municipality gives about $500k per edition.
+- barbican-art-gallery-the-curve: City of London Corporation about 40% of income; Arts Council England 753k pounds (2022/23); the protests and withdrawals (Exhibit B 2014, Unravel lenders 2024, Barbican Stories 2021, open letter 2026).
+- benesse-art-site-naoshima: EQT and EFU hold 70.1% since March 2024; the 2014 data leak is Wider context.
+- barbados-museum-and-historical-society: the grant-cut and China-donation facts are not in the report (Nation News 403).
+- blak-dot-gallery-melbourne: the $363k federal grant and ACNC revenue figures seen only in search snippets are left out.
+- botswana-national-museum-and-art-gallery: no working official site found; P33m refurbishment still unfinished as of Dec 2022.
