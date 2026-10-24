@@ -1840,6 +1840,29 @@ div:has(>#topThemeBtn){column-gap:0}
   #layersPanel label>:not(input){grid-column:2!important;text-align:left!important;white-space:normal!important}
   #layersPanel .layers-count{text-transform:none;letter-spacing:0!important;color:var(--row-dim)}
 
+  /* ---- Record sheet: SwiftUI half sheet ----
+     Medium detent ≈ 52% of the map, large fills it. One scroll container, so the title scrolls up with the record;
+     only the grabber row stays. Close is a 30pt circle in the top-trailing corner. */
+  #dossier-bottom-sheet{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;transition:max-height var(--dur,.2s) ease}
+  #dossier-bottom-sheet.is-large{max-height:calc(100% - var(--m-s2))!important}
+  #dossier-bottom-sheet>*{flex:none!important}
+  #dossier-bottom-sheet>#dossier-sheet-scrollable-body{flex:none!important;overflow:visible!important;min-height:auto!important}
+  #dossier-bottom-sheet .sheet-chrome{position:sticky;top:0;z-index:2;height:24px;padding:0!important;display:block;background:var(--grey)}
+  #dossier-bottom-sheet .sheet-grabber{position:absolute;left:50%;top:6px;width:36px;height:5px;margin-left:-18px;border-radius:3px;background:var(--m-secondary);opacity:.5}
+  #dossier-bottom-sheet .sheet-size{position:absolute;left:50%;top:0;width:88px;height:24px;margin-left:-44px;background:none!important;border:0!important;padding:0!important;min-height:0}
+  #dossier-bottom-sheet .sheet-close{position:absolute;right:var(--m-s3);top:6px;width:30px;height:30px;min-height:0;padding:0!important;border:0!important;border-radius:50%;background:color-mix(in srgb,var(--ink) 14%,transparent)!important;color:var(--m-secondary)!important;display:flex;align-items:center;justify-content:center}
+  #dossier-bottom-sheet .sheet-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+  /* Hit area stays 44pt around the 30pt circle. */
+  #dossier-bottom-sheet .sheet-close::after{content:"";position:absolute;inset:-7px}
+  #dossier-bottom-sheet .sheet-title-block{padding:var(--m-s1) 56px var(--m-s3) var(--m-s4);border-bottom:1px solid var(--line)}
+  #dossier-bottom-sheet .sheet-title-block #dossier-sheet-meta{margin-top:var(--m-s1);color:var(--m-secondary)!important}
+  #dossier-bottom-sheet>div:nth-child(2){border-bottom:1px solid var(--line)}
+  /* One 12px rhythm inside the record instead of stacked desktop paddings (the 60px gap above Funding). */
+  #dossier-sheet-verified-pane>*+*{margin-top:var(--m-s3)!important}
+  #dossier-sheet-verified-pane>*{padding-top:0!important}
+  #dossier-sheet-funding{padding-bottom:var(--m-s3)!important}
+  #dossier-bottom-sheet :is(.facts){padding-top:var(--m-s3)!important}
+
   /* ---- Record sheet / full record ---- */
   #dossier-sheet-scrollable-body,#detailBody{padding:var(--m-s3) var(--m-s4)!important}
   .record-action{min-height:36px;padding:0 var(--m-s3)!important;display:inline-flex;align-items:center}
