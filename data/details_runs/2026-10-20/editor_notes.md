@@ -133,3 +133,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - d009: 12 reports written, slop check not finished; getty-center-los-angeles.txt was mid-edit when the limit hit.
 - d010: 7 of 12 reports written. d011: 5 of 12. d012: 1 of 12. The unwritten ids are the batch ids with no file in reports/.
 - To continue: resume each agent with SendMessage (ids in the session), or start new ones from data/details_prompt.md.
+
+## d010 (research notes, before its slop check; limit reset 24 Oct, five reports written after it)
+- heart-herning-herning: the record's Tobacco flag is unverified (annual-report PDFs unreadable).
+- het-concertgebouw-amsterdam: the record's "debate" looks like written Tweede Kamer questions (12 May 2026 answer unreadable); no plenary debate found.
+- institut-du-monde-arabe-paris: the record's "jet and car" detail is not confirmed (Euronews says more than 600 mentions, Brut 673); patrons page 404.
+- he-art-museum-foshan: the old domain is dead (hem.org works); Midea factories in the Uyghur labour-transfer scheme (TBIJ 2025).
+- hasty-pudding-theatricals-cambridge: Epstein-linked charities gave at least $375,000 (2013 to 2019).
+- hammer-museum: no current Occidental money found.
