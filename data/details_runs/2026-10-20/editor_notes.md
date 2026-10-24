@@ -202,3 +202,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - kunstmuseum-wolfsburg-wolfsburg: no budget figures or board list found; www.kunstmuseum.de redirects to a ticket shop saying the site is unavailable.
 - latvian-national-museum-of-art: Rietumu Banka fines (EUR 5.85M 2021, 1.5M 2017, an 80M French tax-evasion fine 2017); claimed 2022 and 2024 fine reductions not confirmed.
 - lacma-los-angeles: Steve Tisch's Epstein-file mention is under Wider context; the listed Sony emails do not mention Epstein.
+
+## d012 slop check (17 fixes; every report changed)
+- kaesong-koryo-museum-kaesong, korean-art-gallery-pyongyang, korean-central-history-museum-pyongyang: no opened source names an owner or funding body, so the Sanctions red flag was cut from all three reports and the text says no owner is documented. The records still carry a Sanctions flag; it needs a source naming the state body, or removal.
+- kuindzhi-art-museum: Sanctions kept (OFAC 16 July 2014 lists the Donetsk People's Republic; EU and UK listings per Black Sea News). The only evidence the DNR runs the museum is a handwritten door sign Bellingcat saw. The director's handover is Unverified.
+- karachi-biennale-trust-karachi: the "state censorship" red flag was cut (Dawn names no agency; no source shows the Sindh government or a funder ordered the 2019 closure). K-Electric as KB24 Energy Partner rests on a logo file name; Engro Rs 75 million at KB22 is confirmed by the Associated Press of Pakistan.
+- koorie-heritage-trust-melbourne: grant income $1.62m is smaller than trading income $2.87m (2022-23 annual report); "mainly public" and "Aboriginal-run" were changed.
+- judd-foundation: the record notes Bloomberg Philanthropies is campaigned against elsewhere; the report does not mention it (no source).
+- kemper-museum-kansas-city: hours and admission missing (site returned only headings).
