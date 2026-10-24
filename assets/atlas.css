@@ -1717,3 +1717,8 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Back to chat: a left arrow before the words, no outline */
 #workInputCard #chatShareBtn.is-on{gap:8px;outline:0}
 :root[data-theme] #workInputCard #chatShareBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn.is-on{border-color:transparent!important}
+/* In the chat, Send is the main button: larger than the rest. Share information is a plain button until a note is open. */
+:root[data-theme] #workInputCard #workSendBtn:not(.is-on){min-width:48px;min-height:48px;padding:0}
+:root[data-theme] #workInputCard #workSendBtn:not(.is-on) svg{width:24px;height:24px}
+:root[data-theme] #workInputCard #chatShareBtn:not(.is-on){border-color:transparent;padding-left:0;padding-right:0;font-size:18px}
+:root[data-theme] #workInputCard #chatShareBtn:not(.is-on):hover{background:transparent;color:inherit;text-decoration:underline}
