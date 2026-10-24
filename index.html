@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=259">
-  <script src="assets/config.js?v=259"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=261">
+  <script src="assets/config.js?v=261"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -139,7 +139,7 @@ return maplibregl$1;
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
       <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Dark</button>
-      <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap">Gossip mode</button>
+      <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Gossip mode</button>
 
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
       <div class="hidden" style="display:none;" aria-hidden="true">
@@ -241,7 +241,7 @@ return maplibregl$1;
             <span>Reset view</span>
           </button>
           <button type="button" data-globe-control="spin" aria-pressed="true" onclick="if (typeof window.toggleGlobeAutoSpin === 'function') window.toggleGlobeAutoSpin();" class="flex items-center gap-1" title="Turn the globe's slow rotation on or off">
-            <span data-globe-label>Rotate: On</span>
+            <span data-globe-label>Rotate</span>
           </button>
           <button type="button" data-globe-control="expand" aria-pressed="false" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" class="flex items-center gap-1" title="Give the map more of the window">
             <span data-globe-label>Expand map</span>
@@ -253,7 +253,7 @@ return maplibregl$1;
       <section class="relative z-20 pt-2 px-3 flex md-hidden flex-col gap-1 pointer-events-auto" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
         <div class="flex gap-1">
         <button type="button" class="px-2 py-0_5" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();" title="Back to the whole world, with filters cleared">Reset view</button>
-        <button type="button" data-globe-control="spin" aria-pressed="true" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();" title="Turn the globe's slow rotation on or off"><span data-globe-label>Rotate: On</span></button>
+        <button type="button" data-globe-control="spin" aria-pressed="true" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();" title="Turn the globe's slow rotation on or off"><span data-globe-label>Rotate</span></button>
         <button type="button" data-globe-control="expand" aria-pressed="false" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" title="Give the map more of the window"><span data-globe-label>Expand map</span></button>
         </div>
       </section>
@@ -564,7 +564,7 @@ return maplibregl$1;
           <span>Reset view</span>
         </button>
         <button id="hudSpinBtn" data-globe-control="spin" aria-pressed="true" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Turn the globe's slow rotation on or off">
-          <span id="hudSpinText" data-globe-label>Rotate: On</span>
+          <span id="hudSpinText" data-globe-label>Rotate</span>
         </button>
         <button id="hudExpandBtn" data-globe-control="expand" aria-pressed="false" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Give the map more of the window">
           <span id="hudExpandText" data-globe-label>Expand map</span>
@@ -647,13 +647,6 @@ return maplibregl$1;
 
       <!--  DESKTOP DOSSIER COLUMN (Full 45% Context Panel Inspector) -->
       <section id="desktopDossierColumn" class="hidden md-flex w-full min-w-_350px shrink-0 flex-col h-full overflow-hidden z-10">
-        <!-- Sub-header: Collapse Dossier & Close -->
-        <div class="px-4 py-2_5 rule-b flex items-center justify-between shrink-0">
-          <button id="collapseDossierBtn" type="button" onclick="window.toggleDesktopDossier(false)" class="meta flex items-center gap-1_5" title="Collapse Dossier Column">
-            <span>Collapse Dossier</span>
-          </button>
-        </div>
-
         <!-- Scrollable Dossier Body -->
         <div id="desktopDossierBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4">
           <div id="desktopDossierRecordBody"></div>
@@ -780,15 +773,15 @@ return maplibregl$1;
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Share information -->
-                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap">Share information</button>
+                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" aria-pressed="false" title="Write a note about an institution">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Voice Toggle Button -->
-                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5 is-on" title="Auto-Voice: Speaks responses aloud (Click to mute)">
+                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5 is-on" aria-pressed="true" title="Auto-Voice: Speaks responses aloud (Click to mute)">
                     <span id="curatorVoiceToggleIcon"></span>
-                    <span id="curatorVoiceToggleLabel">Voice: ON</span>
+                    <span id="curatorVoiceToggleLabel">Voice</span>
                   </button>
 
                   <!-- Upward Arrow Send Button -->
@@ -877,7 +870,7 @@ return maplibregl$1;
     <!-- Micro Badges: Live Status + Voice Mode -->
     <div class="flex items-center justify-between px-1">
       <div class="flex items-center space-x-2">
-        <button id="mobileStickyVoiceBtn" type="button" class="px-2 py-0_5">Voice: On</button>
+        <button id="mobileStickyVoiceBtn" type="button" class="px-2 py-0_5" aria-pressed="true">Voice</button>
       </div>
     </div>
   </div>
@@ -7100,7 +7093,7 @@ return maplibregl$1;
     // Light and dark mode: one switch in the header, remembered, following the system until it is set.
     function syncThemeButtons() {
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-      ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = dark ? 'Light' : 'Dark'; b.setAttribute('aria-pressed', String(dark)); b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode'); } });
+      ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.setAttribute('aria-pressed', String(dark)); } });
       const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#121212' : '#ffffff');
     }
     function toggleTheme(force) {
@@ -7117,8 +7110,7 @@ return maplibregl$1;
     function toggleGossipMode(forceState) {
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
-      const label = isGossipModeActive ? 'Gossip mode: on' : 'Gossip mode';
-      ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
+      ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) b.setAttribute('aria-pressed', String(isGossipModeActive)); });
       if (typeof appendCuratorMessage === 'function') {
         appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
       }
@@ -9902,11 +9894,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v259';
+    const ATLAS_RELEASE = 'culture-atlas-v261';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=259').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=261').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11920,7 +11912,7 @@ return maplibregl$1;
         const on = b.dataset.globeControl === 'spin' ? isAutoSpinning : isGlobeExpanded;
         b.setAttribute('aria-pressed', on ? 'true' : 'false');
         const label = b.querySelector('[data-globe-label]');
-        if (label) label.textContent = b.dataset.globeControl === 'spin' ? (on ? 'Rotate: On' : 'Rotate: Off') : (on ? 'Shrink map' : 'Expand map');
+        if (label) label.textContent = b.dataset.globeControl === 'spin' ? 'Rotate' : (on ? 'Shrink map' : 'Expand map');
       });
     }
     function toggleGlobeAutoSpin() {
@@ -12531,7 +12523,7 @@ return maplibregl$1;
             ${inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : ''}
             ${isCommunity ? '' : gradeLineHtml(inst)}
             ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p>${escapeHtml(inst.watch)}</p>` : ''}
-            <div class="record-actions record-action-row" style="display:flex; flex-wrap:wrap; gap:4px 24px; padding-top:4px;">
+            <div class="record-actions record-action-row">
               <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
               ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
               ${(inst.lat && inst.lon && inst.address) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
@@ -15657,13 +15649,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           openGossipDossier(inst);
         }
       });
-      document.getElementById('collapseDossierBtn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (typeof window.toggleDesktopDossier === 'function') {
-          window.toggleDesktopDossier(false);
-        }
-      });
       document.getElementById('closeDesktopDossierBtn')?.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -16148,14 +16133,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       noteTargetTimer = setTimeout(() => syncNoteTarget(false), 120);
     });
 
-    // Share information is a toggle like the Details and AI Chat tabs: on while the note is open, when it reads Back to chat and pressing it returns to the chat.
+    // Share information is a switch like Dark, Gossip mode, Voice and Rotate: the label stays, the button is highlighted while the note is open, and pressing it again returns to the chat.
     function setChatShareOn(on) {
       const b = document.getElementById('chatShareBtn');
       if (!b) return;
       b.classList.toggle('is-on', on);
-      b.innerHTML = on
-        ? '<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg><span>Back to chat</span>'
-        : 'Share information';
+      b.setAttribute('aria-pressed', String(on));
+      b.title = on ? 'Leave the note and go back to the chat' : 'Write a note about an institution';
     }
     function toggleChatShare() {
       if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
@@ -16614,16 +16598,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!curatorVoiceToggleBtn) return;
       if (curatorAutoVoiceEnabled) {
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '';
-        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: ON';
+        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice';
         curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0 is-on';
+        curatorVoiceToggleBtn.setAttribute('aria-pressed', 'true');
         curatorVoiceToggleBtn.title = 'Auto-Voice: Speaks responses aloud (Click to mute)';
-        const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.textContent = 'Voice: On';
+        const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.setAttribute('aria-pressed', 'true');
       } else {
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '';
-        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: OFF';
+        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice';
         curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0';
+        curatorVoiceToggleBtn.setAttribute('aria-pressed', 'false');
         curatorVoiceToggleBtn.title = 'Auto-Voice: Muted (Click to turn ON)';
-        const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.textContent = 'Voice: Off';
+        const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.setAttribute('aria-pressed', 'false');
       }
     }
 
@@ -19317,9 +19303,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=259"></script>
-<script src="assets/layers.js?v=259"></script>
-<script src="assets/hq-detail.js?v=259"></script>
-<script src="assets/bubbles.js?v=259" defer></script>
+<script src="assets/typeset.js?v=261"></script>
+<script src="assets/layers.js?v=261"></script>
+<script src="assets/hq-detail.js?v=261"></script>
+<script src="assets/bubbles.js?v=261" defer></script>
 </body>
 </html>

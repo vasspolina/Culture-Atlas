@@ -164,8 +164,6 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 #desktopDossierColumn{background:var(--grey)}
 #desktopDossierColumn:has(#desktopDossierName:empty) #desktopDossierBody{display:none}
 #desktopDossierColumn:has(#desktopDossierName:empty)::after{content:"Select a space on the globe, or ask in the chat.";display:block;padding:16px;font:400 18px/1.25 var(--sans)}
-#desktopDossierColumn>div:first-child{border-bottom:1px solid var(--line);padding:0}
-#collapseDossierBtn{font:400 14px/1 var(--sans);padding:14px 16px}
 #desktopDossierBody{padding:0!important}
 #desktopDossierBody>*{margin:0}
 #desktopDossierName,#detailDrawer h2,#dossier-sheet-name{font:600 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
@@ -879,7 +877,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#cb9440}
 
 /* Every button answers the pointer: plain ones invert, the filled ones brighten. */
-#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#curatorVoiceToggleBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
+#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#curatorVoiceToggleBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
 [data-globe-control]:hover,.is-on:hover,[aria-pressed="true"]:hover{filter:brightness(.85)}
 button,summary{cursor:pointer}
 /* Question colours are the map's own: mustard, orange and cyan labels; darker equivalents on the light ground. Type 10% smaller. */
@@ -1714,11 +1712,18 @@ div:has(>#topThemeBtn){column-gap:0}
 #noteTargetLine.is-flashed{animation:noteFlash .6s steps(2,jump-none) 2}
 @keyframes noteFlash{50%{text-decoration:underline}}
 @media (prefers-reduced-motion:reduce){#noteTargetLine.is-flashed{animation:none;text-decoration:underline}}
-/* Back to chat: a left arrow before the words, no outline */
-#workInputCard #chatShareBtn.is-on{gap:8px;outline:0}
+/* Share information, on: no outline */
+#workInputCard #chatShareBtn.is-on{outline:0}
 :root[data-theme] #workInputCard #chatShareBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn.is-on{border-color:transparent!important}
 /* In the chat, Send is the main button: larger than the rest. Share information is a plain button until a note is open. */
 :root[data-theme] #workInputCard #workSendBtn:not(.is-on){min-width:48px;min-height:48px;padding:0}
 :root[data-theme] #workInputCard #workSendBtn:not(.is-on) svg{width:24px;height:24px}
 :root[data-theme] #workInputCard #chatShareBtn:not(.is-on){border-color:transparent;padding-left:0;padding-right:0;font-size:18px}
 :root[data-theme] #workInputCard #chatShareBtn:not(.is-on):hover{background:transparent;color:inherit;text-decoration:underline}
+/* One pattern for the switches: the label stays, the button is highlighted while on (aria-pressed). Gossip mode keeps its own colour. */
+:root[data-theme] #topThemeBtn[aria-pressed=true],:root[data-theme] #mobileThemeBtn[aria-pressed=true],:root[data-theme] #mobileStickyVoiceBtn[aria-pressed=true]{background:var(--cobalt);color:#fff}
+/* The record's actions are a table with lines, like the header buttons: one cell each, ruled on every side, no pills and no colours. */
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row{display:flex!important;flex-wrap:wrap;gap:0!important;padding-top:0!important;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{flex:1 1 132px;width:auto;height:auto;min-height:44px;padding:10px 14px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;background:transparent;color:var(--ink);font:400 17px/1.2 var(--sans);display:flex;align-items:center;justify-content:center;white-space:normal}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:var(--ink);color:var(--paper)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:focus-visible{outline-offset:-3px}
