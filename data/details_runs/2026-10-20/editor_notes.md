@@ -246,3 +246,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - lacma-los-angeles: Gores and Securus: artists' letter 16 Sept 2020, Worth Rises and Color of Change letter 9 Sept, resignation 8 Oct 2020. Wynn Resorts: $50M in 2016; no opened page says the gift came from casino income; whether it counts is the editor's call.
 - kw-institute-for-contemporary-art: KW's about page does list Casa Camper as a partner; BMW support for KW itself is not found (BMW's 2018 release names it a partner of the Berlin Biennale, which used KW as a venue); Volkswagen support is the KW Digital Program 2023 to 2024 and a 2021 book.
 - latvian-national-museum-of-art: Teboil/Lukoil comes only via Wikipedia citing Ilta-Sanomat, unopened.
+
+## d017 (research notes, before its slop check)
+- museo-de-arte-moderno-de-bogotá-bogotá: Fundación BAT is read from gala logo labels; its ownership by British American Tobacco is not confirmed on any opened page. "More than 170 signatories" is unconfirmed (sources say more than 140). The Viola dismissal is not state censorship (the museum is private).
+- museo-jumex: the record's "State censorship" flag is not supported; the 2015 Nitsch cancellation followed an animal-rights petition.
+- museo-de-la-solidaridad-salvador-allende: Serpat transfer of CLP 660,197,000 approved 4 Feb 2025; the funding report, management plan and 2024 annual report PDFs were unreadable.
+- mus-e-th-odore-monod-d-art-africain-ifan-dakar: Fondation TOTAL Sénégal on an undated partners page; ifan.ucad.sn returned 404.
+- museo-de-arte-de-lima: Camisea consortium and Pluspetrol fund free Thursdays 2022 to at least March 2025; the 2025 accounts PDF was unreadable.
+- museo-amparo-puebla: the FEMSA protest and the Colección FEMSA show are Wider context; no reporting that FEMSA funds the museum.
+- museo-nacional-de-arte-de-bolivia-la-paz: the foundation home page returned 522; the eju.tv 2015 item is Unverified.
