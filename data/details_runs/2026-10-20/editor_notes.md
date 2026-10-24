@@ -100,3 +100,78 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - fridericianum-kassel: the website field points to a Monopol article; the real site is fridericianum.org.
 - frist-art-museum-nashville: building owned by the city housing agency MDHA, leased at $1 a year to 2097.
 - fondation-cartier: the record's /en/about source returns 404.
+
+## d008 (research notes, before its slop check)
+- Website fields pointing elsewhere: fundación-proa-buenos-aires (Tecpetrol; real site proa.org), fundação-bienal-de-são-paulo-são-paulo (a Times Brasil column; real site bienal.org.br).
+- Spam or dead: sindikadokolofondation.org redirects to a gambling site; museum.ge (Georgian National Museum) hides spam links in its footer; galeri-nasional.or.id does not resolve.
+- garage-museum-moscow: the 2024 FSB search and pro-war activists' visit are under Wider context (the Russian state neither funds nor runs Garage).
+- fundação-fernando-leite-couto-maputo: sponsors shown as logos only; Nedbank unconfirmed.
+
+## d009 (research notes, before its slop check)
+- getty-center-los-angeles: the researcher calls the Fossil fuels flag weak (Getty Oil shares sold to Texaco in 1984); under the editor's founder-fortune ruling the endowment built on Getty Oil still counts. The checker is told to keep it as a red flag.
+- glenbow-calgary: vice chair John R. Whelan is CEO of Imperial Oil and chairs the rebuild committee; ex-Suncor governor; oil executives Laut and Werklund among donors; Chevron Canada listed; 1988 Lubicon Lake Cree boycott of a Shell-sponsored show.
+- groninger-museum-groningen: 2025 report still lists GasTerra and Gasunie (sponsorship income €20,000); GasTerra closes end of 2026.
+- haifa-museum-of-art: sponsor Bank Mizrahi-Tefahot paid $195M under a 2019 US DPA (tax evasion) and is in the 2020 UN settlement database.
+- guggenheim-bilbao-bilbao: Petronor in the Trustees tier; the Urdaibai outpost was dropped on 16 December 2025 after protests.
+- Website fields wrong: golden-thread-gallery-belfast (GrantNav; real site goldenthreadgallery.co.uk), gwangju-biennale-gwangju (an ArtAsiaPacific article; real site gwangjubiennale.org).
+- Not confirmed: Golden Thread's 2016 Gulbenkian protest; Gwangju budget figures.
+
+## d007 slop check (95 fixes; every report changed)
+- fondazione-palazzo-strozzi: Enegan (Partner and electricity supplier since 2021) sells gas, but the 2025 report says the supply is 100% certified renewable; decide whether the Fossil fuels heading holds.
+- fabrica-de-arte-cubano: funding and both red flags rest on FAC's own statement and two critical or partisan outlets; the "campaign" is Unverified.
+- fire-station-artist-in-residence-doha: no budget or accounts; the Gulf state body flag rests on Qatar Museums' status.
+- fondation-louis-vuitton-paris: final cost given as 780M (English Wikipedia) and nearly 800M euros (French); the tax-break period is disputed; the staff-conditions point (Mediapart) was not read.
+- fondazione-prada: no accounts after 2019, no sponsor names, no art-press piece naming it.
+
+## d008 slop check (26 fixes; every report changed)
+- fundaci-joan-mir: fmirobcn.org blocks automated reads; the researcher read it in the browser, the checker could not. Sponsor tiers, 2025 transparency figures and the board line rest on that one read. Naturgy/Criteria figures and the Lubar resignation are verified.
+- gapar-aitiev-kyrgyz-national-museum-of-fine-arts-bishkek: Artnet unreadable; its quotes were cut and red flags rebuilt from 24.kg, ArtReview and the New East Digital Archive. The Artnet piece needs a human read.
+- garage-museum-moscow: some Novaya Gazeta Europe and Finestre sull'Arte details rest on fetch summaries.
+
+## Run status, 20 Oct 2026 (stopped at the weekly usage limit; resets 24 Oct, 4am New York)
+- In the atlas or in PRs: Zoma plus d000 to d008 (109 spaces, with #166 to #168 merged and d007 + d008 in the open PR).
+- d009: 12 reports written, slop check not finished; getty-center-los-angeles.txt was mid-edit when the limit hit.
+- d010: 7 of 12 reports written. d011: 5 of 12. d012: 1 of 12. The unwritten ids are the batch ids with no file in reports/.
+- To continue: resume each agent with SendMessage (ids in the session), or start new ones from data/details_prompt.md.
+
+## d010 (research notes, before its slop check; limit reset 24 Oct, five reports written after it)
+- heart-herning-herning: the record's Tobacco flag is unverified (annual-report PDFs unreadable).
+- het-concertgebouw-amsterdam: the record's "debate" looks like written Tweede Kamer questions (12 May 2026 answer unreadable); no plenary debate found.
+- institut-du-monde-arabe-paris: the record's "jet and car" detail is not confirmed (Euronews says more than 600 mentions, Brut 673); patrons page 404.
+- he-art-museum-foshan: the old domain is dead (hem.org works); Midea factories in the Uyghur labour-transfer scheme (TBIJ 2025).
+- hasty-pudding-theatricals-cambridge: Epstein-linked charities gave at least $375,000 (2013 to 2019).
+- hammer-museum: no current Occidental money found.
+
+## d011 (research notes, before its slop check)
+- israel-museum: the 2025 register income split (21, 27, 39 percent) could not be checked; the register page was empty. State share 10 to 12 percent is from Wikipedia. The museum site fails its certificate check.
+- jewish-museum-and-tolerance-center-moscow: Kommersant (2014) names Gazprombank Asset Management only for the Hermitage and Peterhof, not this museum; no source names Rosneft as an exhibition partner.
+- john-f-kennedy-center-for-the-performing-arts: the record's $100M shortfall was not found; the Washington Post gives ticket income down 15 percent to September 2025 and a $48M pledge write-off. The site returned 403.
+- johannesburg-art-gallery-johannesburg: the record's website is the Heritage Foundation's page, a party to the dispute with the City.
+- jordan-national-gallery-of-fine-arts-amman: the gallery says over 3,000 works, Wikipedia over 2,000.
+- joslyn-art-museum-omaha: the Hawks Pavilion gift amount is not reported in any opened source.
+- istanbul-biennial-iksv: medyascope.tv returned 410.
+
+## d009 slop check (63 fixes; every report changed)
+- getty-center-los-angeles: "Getty Oil fortune behind the endowment" added as a red flag per the founder-fortune ruling. No opened source gives the 1984 closing date or proceeds (worded "agreed to sell"); NYRB dates the Texaco takeover to 1983.
+- guggenheim-abu-dhabi: a "Red flags: Gulf state body" section added (the record carries the flag); the site is bot-blocked.
+- glenbow-calgary: the Imperial Oil $4M gift is confirmed only from search excerpts (CSRwire 403).
+- golden-thread-gallery-belfast: no reporting found on the 2016 Gulbenkian protest the record cites; Partex sale terms rest on excerpts and Wikipedia.
+- groninger-museum-groningen: the Dutch Wikipedia claim about Gazprom is uncited and marked Unverified.
+- Public wording: reports said "the map" and "the editor's ruling"; changed to "the atlas" or removed in 7 reports, and the prompt now forbids it.
+
+## d011 slop check (56 fixes; every report changed)
+- interlochen-center-for-the-arts-interlochen: Epstein gave more than $400,000 from 1990 to 2003, including $200,000 for the lodge (NPR, AP, Fortune): a money link, kept as a red flag.
+- jewish-museum-and-tolerance-center-moscow: sanctions named and sourced: Vekselberg (US April 2018; UK, Poland, Australia March 2022), Kostin (US April 2018; EU 23 Feb 2022; heads VTB, a partner), Vaino (EU Feb 2022; OFAC 6 April 2022). The Putin salary claim rests on one unopened source (Wikipedia citing Calvert Journal 2014), marked Unverified.
+- john-f-kennedy-center-for-the-performing-arts: the "State censorship" heading was unsupported; renamed "Presidential takeover of the board, firings and renaming, 2025 to 2026" with dated events (takeover Feb 2025, renaming vote 18 Dec 2025, court order 29 May 2026, closure vote 15 Sep 2026). Site returned 403.
+- jordan-national-gallery-of-fine-arts-amman: the Gulf state body flag rests on the UAE Ministry of Culture and Youth in the Diamond tier; Arab Bank "assessed a $24 million penalty".
+- istanbul-modern: the sponsor panel is an image; sponsor roles unchecked. johannesburg-art-gallery: Daily Maverick author removed; no site of its own.
+- israel-museum: the 1968 Dayan purchase bullet sits under a "West Bank" heading but the source does not say where the items came from.
+
+## d010 slop check (20 fixes; every report changed)
+- hasty-pudding-theatricals-cambridge: red flag kept. The Crimson (2 Feb 2026): $75,000 in 2013 and $50,000 a year 2014 to 2019 (at least $375,000) from the Jeffrey Epstein Virgin Islands Foundation and Gratitude for America; chair Andrew Farkas solicited it (Globe/NYT, July 2026). hastypudding.org timed out; donor list is "stated by the space".
+- institut-du-monde-arabe-paris: red flag kept as a leadership link (Lang led it from 2013; Epstein exchanges 2012 to 2019; his daughter Caroline partnered with Epstein in 2016). No source says Epstein money reached the institute. The record's "jet and car" is unsupported and left out. Lang resigned on the Saturday, before the Sunday meeting with the minister. The patron page lists AFALULA and Design Space AlUla by logo; no Gulf state ruling made.
+- heart-herning-herning: Red flags section added for tobacco: Det Obelske Familiefond (C.W. Obel tobacco business) in the scanned 2023 funder list. Check this matches the record's Tobacco flag.
+- heard-museum-phoenix: Fossil fuels red flag for a former Peabody executive who is a trustee, no reported gift; may fall under the "former executive" rule.
+- haus-für-medienkunst-oldenburg-oldenburg: the "Nazi pasts" red flag heading is not one of the atlas's flags, and the record has none for it.
+- ica-miami: the Witkoff red flag rests on Wikipedia and Democracy Now; NPR, New Yorker, CBS and NYT pieces were not opened.
+- het-concertgebouw-amsterdam: the "about 4 percent municipal subsidy" is an MP's figure inside a question.
