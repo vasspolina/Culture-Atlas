@@ -599,3 +599,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - ashkal-alwan-beirut: founded 1994 (Wikipedia) or 1993 (Sigrid Rausing Trust).
 - ateneo-art-gallery-quezon-city: the web address no longer serves the gallery; "over 500 works" rests on Wikipedia alone.
 - audain-art-museum: the BCBusiness article does not link Polygon, Onni or Whistler Blackcomb Foundation to the museum; the endowment donors are not named.
+
+## d033 (research notes, before its slop check)
+- centre-art-contemporain-geneva: the Swiss Federal Office of Culture (OFC) listed in the record was not found as a funder on any opened page; the main sponsor Agora is Arab Bank Switzerland, sister company of Arab Bank plc (which lost the 2014 Linde terrorism-financing jury trial; the verdict was vacated in 2018).
+- cranbrook-art-museum: the record names the "Gilbert Family Foundation", but the Gilberts' $30M gift in 2021 was personal and went to the Academy, with an unspecified amount for museum projects; the casinos were sold in 2019 and 2021; the Hyperallergic 2023 piece is about the parent Academy and does not name the museum.
+- contemporary-calgary: former board chair and Leadership Circle donor Peter Tertzakian is a partner of ARC Financial, an energy firm; Rogers (2023) and National Bank (2020 to 2022) gala sponsorship not confirmed.
+- contemporary-art-gallery-cag: the staff page lists a "TD Assistant Curator of Programming"; no page says TD pays for the post; Connor, Clark & Lunn not confirmed.
+- contemporary-arts-museum-houston: the record's ProPublica ID 741164923 returns 404; the museum's is 741093771.
+- buku-larrnggay-mulka-centre-yirrkala: the $2.08M IVAIS value, the NT Government $2.5M and the $50,000 Rirratjingu stage grant were omitted (sources 403 or 404).
+- casco-art-institute: the EUR 225,000 figure is omitted (Mondriaan page 404).
+- centro-cultural-de-la-republica-el-cabildo: no working official site; the G. 1.88bn extension was funded by an external loan (Decree 4309).
