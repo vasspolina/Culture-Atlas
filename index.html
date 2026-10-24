@@ -204,7 +204,7 @@ return maplibregl$1;
             <div class="layers-key layers-tier-key">
               <span><i class="shape-dot" style="--marker-color:#9ae3e8"></i>Clean: a source is cited</span>
               <span><i class="shape-square" style="--marker-color:#e79a3a"></i>Flagged: a recorded reason</span>
-              <span><i class="shape-triangle" style="--marker-color:#c8b85a"></i>Unverified</span>
+              <span><i class="shape-triangle" style="--marker-color:#c6c6c6"></i>Unverified</span>
             </div>
           </section>
           <section class="layers-section">
@@ -10230,9 +10230,9 @@ return maplibregl$1;
       let cardY = py - cardH - 16;
       if (cardY < 14) cardY = py + 20;
 
-      // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode (yellow text there in gossip mode). Gossip mode never darkens it in light mode.
+      // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode. Gossip mode does not change it: yellow is for gossip alone.
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const cardInk = cardDark ? (isGossipModeActive ? '#e2f86c' : '#ffffff') : '#000000';
+      const cardInk = cardDark ? '#ffffff' : '#000000';
       ctx.fillStyle = cardDark ? '#2a2a2a' : '#ffffff';
       ctx.fillRect(cardX, cardY, cardW, cardH);
 
@@ -10322,7 +10322,7 @@ return maplibregl$1;
       const now = (typeof ts === 'number') ? ts : performance.now();
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#e2f86c' : '#f4f4f4'), G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#e2f86c' : '#ffffff'), G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'square', U: 'triangle' };
         const TIER_SHAPE_SIZE = { circle: 3, square: 2.7, triangle: 3.3 };
@@ -10460,7 +10460,7 @@ return maplibregl$1;
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = G_GROUND;
         ctx.fill();
-        ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+        ctx.strokeStyle = G_LINE;
         ctx.lineWidth = 0.8;
         ctx.stroke();
 
@@ -10518,7 +10518,7 @@ return maplibregl$1;
               }
               ctx.closePath();
               ctx.fill();
-              ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+              ctx.strokeStyle = G_LINE;
               ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
               ctx.stroke();
             } else {
@@ -10571,7 +10571,7 @@ return maplibregl$1;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+                ctx.strokeStyle = G_LINE;
                 ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
                 ctx.stroke();
               }
@@ -10590,11 +10590,11 @@ return maplibregl$1;
           ctx.fillText(text, x, y);
         };
         // City and museum names sit on a flat block. The block takes the colour of the spaces it names:
-        // cyan clean, orange flagged, mustard unverified (a city: the tier most of its spaces have).
-        // Yellow when hovered or selected (white on yellow in gossip mode).
+        // cyan clean, orange flagged, grey unverified (a city: the tier most of its spaces have).
+        // White when selected. Yellow is for gossip alone, so no label is yellow.
         const TIER_FILL = { A: '#9ae3e8', B: '#e79a3a' };
-        // Dark theme: Carbon's teal 60, orange 60 and yellow 60 with white type (5:1 or better), in place of the pale fills with black type.
-        const TIER_FILL_DARK = { A: '#007d79', B: '#ba4e00' }, UNVERIFIED_FILL_DARK = '#8e6a00';
+        // Dark theme: Carbon's teal 60, orange 60 and gray 60 with white type (5:1 or better), in place of the pale fills with black type.
+        const TIER_FILL_DARK = { A: '#007d79', B: '#ba4e00' }, UNVERIFIED_FILL_DARK = '#6f6f6f';
         const cityTierCache = {};
         const cityTier = (name) => {
           const k = (name || '').toLowerCase().trim();
@@ -10610,7 +10610,7 @@ return maplibregl$1;
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 28, h = 22;
           const darkLabel = !GLOBE_LIGHT && !active;
-          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffd600' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c8b85a')));
+          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = darkLabel ? '#ffffff' : '#000000';
           ctx.textAlign = 'center';
@@ -10754,7 +10754,7 @@ return maplibregl$1;
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+                ctx.strokeStyle = G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
@@ -10766,7 +10766,7 @@ return maplibregl$1;
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
                 if (isSelected) { ctx.fillStyle = '#e79a3a'; ctx.fill(); }
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+                ctx.strokeStyle = G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               }
@@ -10830,10 +10830,10 @@ return maplibregl$1;
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : (GLOBE_LIGHT ? '#007a78' : '#08bdba')) 
+                    ? (GLOBE_LIGHT ? '#007a78' : '#08bdba') 
                     : isHov
                     ? G_TEXT
-                    : ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_TEXT);
+                    : G_TEXT;
                   ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }
               }
@@ -10954,15 +10954,15 @@ return maplibregl$1;
           const pinShape = TIER_SHAPE[d.inst.tier] || 'triangle';
           if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1)); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR, 0, Math.PI * 2); }
           ctx.strokeStyle = isHov 
-            ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE)
+            ? G_LINE
             : (isVisualCritiqueOnly && hasVc)
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
-            ? (d.inst.gossip_data ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : (GLOBE_LIGHT ? '#713f12' : '#884c16'))
+            ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : (GLOBE_LIGHT ? '#713f12' : '#884c16'))
             : (d.inst.tier === 'A' ? (GLOBE_LIGHT ? '#0a8f68' : '#10b981') : d.inst.tier === 'B' ? (GLOBE_LIGHT ? '#7a52d6' : '#be95ff') : (GLOBE_LIGHT ? '#008a87' : '#08bdba'));
-          // Hollow rings, colored by tier; the selected one is filled.
+          // Hollow rings, colored by tier; the selected one is filled. In gossip mode a space with gossip is a filled yellow dot, and only it is yellow.
           ctx.lineWidth = 0.8;
-          if (isSel || (isGossipModeActive && d.inst.gossip_data)) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
+          if (isSel || (isGossipModeActive && hasGossip(d.inst))) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
           ctx.stroke();
           ctx.restore();
 
@@ -11093,9 +11093,9 @@ return maplibregl$1;
               }
               ctx.fillText(countTxt, cardX + 16, currentY);
 
-              // Action: a flat grey block with black text, yellow on hover.
+              // Action: a flat grey block with black text, white on hover.
               ctx.save();
-              ctx.fillStyle = isHoveringCityExploreLink ? (isGossipModeActive ? '#ffffff' : '#ffd600') : '#d9d9d9';
+              ctx.fillStyle = isHoveringCityExploreLink ? '#ffffff' : '#d9d9d9';
               ctx.fillRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
               ctx.font = ATLAS_CARD_MONO_FONT;
               ctx.fillStyle = '#000000';
@@ -11406,6 +11406,29 @@ return maplibregl$1;
     // A watch note goes into the Funding block when it is about money or a sponsor; otherwise it stays under the title.
     const MONEY_WORDS = /fund|sponsor|donor|grant|budget|money|[$€£¥]|\bM\b|million|fortune|foundation|trustee|board|gift|endow|subsid|revenue|income|tax|levy|corporate|bank|wealth|patron|financ|paid|pays|heir|family|partner|supporter|casino|oil|gas\b|energy|dropped|ended|removed|protest|boycott|campaign|sackler|\bBP\b/i;
     function watchIsAboutMoney(s) { return MONEY_WORDS.test(String(s || '')); }
+    // A watch line is gossip when it names a funder or person with a controversy, a penalty, a sanction, a protest or a flagged
+    // industry, past or present (notes/gossip-criteria.md). A clause that says what was not found, or what a funder is not, is a
+    // clean result and does not count: "not an arms maker", "No flagged funder or protest found". "No longer" keeps a past tie.
+    const WATCH_GOSSIP = /\b(names? to know|fines?d?|penalt\w*|sanction\w*|settle(?:d|ment)|sued|lawsuits?|court(?! of audit)|convict\w*|charged|indict\w*|guilty|brib\w*|kickbacks?|fraud\w*|launder\w*|corrupt\w*|dumping|violations?|scandals?|controvers\w*|protest(?! movement)\w*|boycott\w*|campaign(?!\s+(?:donors?|gifts?|goals?))\w*|petition\w*|appeal urged|strikes?|resign\w*|dismiss\w*|ousted|fired|withdrew|sacked|picket\w*|sit-ins?|pulled|dropped|drop it|under pressure|cancell?ed|apologi[sz]\w*|exclusions?|kanders|baillie gifford|bloomberg philanthropies|ruling[- ]family|walkouts?|alleg\w*|accus\w*|investigat\w*|probe|impeach\w*|complaints?|threat\w*|confiscat\w*|demanded|epstein|sackler|purdue|opioids?|oxycontin|arms (?:maker|manufacturer|dealer|firm|company|group|trade|exporter|industry)|weapons?|munitions?|missiles?|defen[cs]e (?:contractor|group|firm|company|maker)|fossil|oil (?:and gas|company|firm|group|major|money|giant|fortune|trader)|petro\w*|tobacco|cigarettes?|casinos?|gambling|betting|lottery|mining (?:company|firm|group|giant|disaster)|prisons?|detention|forced labou?r|slave\w*|exploit\w*|censor\w*|human rights|abuse\w*|harass\w*|misconduct|disputes?|disputed|backlash|critics?|removal|removed|criticis\w*|condemn\w*|divest\w*|oligarch\w*|bankrupt\w*|scrutiny|gulf state|aramco|bp|shell plc|exxon\w*|chevron|totalenergies|equinor|gazprom|rosneft|lukoil|glencore|rio tinto|bae systems|bae|lockheed|raytheon|rheinmetall|philip morris|altria|blackrock|vale)\b/i;
+    const WATCH_CLEAN = /\b(?:not|no(?! longer)|nor|none|nothing|never|without)\b/i;
+    const watchClauses = (s) => String(s || '').split(/[.;]\s+|;\s*|,\s+(?=(?:but|though|although|while|yet|not)\b)|\s+but\s+/i).filter(c => c.trim());
+    function watchIsGossip(s) {
+      return watchClauses(s).some(c => !WATCH_CLEAN.test(c) && WATCH_GOSSIP.test(c));
+    }
+    // A clean result: every clause opens by saying what was not found or what a funder is not ("No reporting found of a protest at
+    // ARoS", "not an arms maker"). A negation inside a claim ("the museum did not respond") does not make it one.
+    const CLEAN_RESULT = /^\W*(?:no|nothing|none)\b.*\b(?:found|turned up|recorded|reported|located|listed|identified|on (?:record|file)|category)\b|^\W*(?:not|nor) (?:an?|the)\b/i;
+    function isCleanResult(s) {
+      const c = watchClauses(s);
+      return c.length > 0 && c.every(x => CLEAN_RESULT.test(x));
+    }
+    // A space has gossip when the chat's gossip answer would print something for it. The globe asks every frame, so each space is asked once.
+    function hasGossip(inst) {
+      if (!inst) return false;
+      const cache = hasGossip.cache || (hasGossip.cache = new WeakMap());
+      if (!cache.has(inst)) { try { cache.set(inst, !!recordFact(inst, true)); } catch (e) { return false; } }
+      return cache.get(inst);
+    }
     // A block of facts set as a table (the user's reference, 19 Oct 2026): its name on a line, a rule, then one row per
     // fact, the label in the left column and the value in the right, all at the text size, and a rule to close it.
     // rows: [label, html] pairs; a row with no value is left out. Values are passed as HTML, already escaped.
@@ -11485,7 +11508,8 @@ return maplibregl$1;
         if (dt.funding_verdict) rows.push(`<p class="t-lead t-strong">${e(dt.funding_verdict)}</p>`);
         rows.push(detailsListHtml(dt.funding));
       } else if (inst.funding) rows.push(`<p class="t-lead">${e(inst.funding)}</p>`);
-      if (inst.watch && watchIsAboutMoney(inst.watch) && !inst.details) rows.push(`<p class="t-lead">${e(inst.watch)}</p>`);
+      // data-gossip: in Gossip mode a watch line that passes the gossip test is set in the gossip colour, and only it.
+      if (inst.watch && watchIsAboutMoney(inst.watch) && !inst.details) rows.push(`<p class="t-lead"${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${e(inst.watch)}</p>`);
       const seenHosts = new Set();
       const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).filter(u => { const h = host(u); if (seenHosts.has(h)) return false; seenHosts.add(h); return true; }).slice(0, 6);
       if (urls.length) rows.push(`<p class="t-lead no-indent source-note">Sources: ${urls.map(u => link(u, host(u)).replace('<a ', '<a class="domain" ').replace(' class=""', '')).join(', ')}.</p>`);
@@ -11884,7 +11908,9 @@ return maplibregl$1;
         sheetName.title = inst.name || '';
       }
       text('dossier-sheet-meta', [[inst.category, [inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(' · '), inst.architecture_status].filter(Boolean).join(' · '));
-      text('dossier-sheet-summary', [inst.highlight, inst.watch].filter(Boolean).join(' '));
+      // In Gossip mode a watch line that passes the gossip test is the reported item below, so it is not repeated here.
+      const reported = documentedRecordHtml(inst), watchReported = isGossipModeActive && !reported && watchIsGossip(inst.watch);
+      text('dossier-sheet-summary', [inst.highlight, watchReported ? '' : inst.watch].filter(Boolean).join(' '));
       // The phone sheet shows the same Funding block as the desktop record.
       const fBox = document.getElementById('dossier-sheet-funding');
       if (fBox) { const fh = fundingHtml(inst); fBox.className = fh ? '' : 'hidden'; fBox.innerHTML = fh; }
@@ -11902,7 +11928,7 @@ return maplibregl$1;
       if (srcBox) srcBox.innerHTML = sourcesHtml(inst, true) + (isGossipModeActive ? '' : researchContextHtml(inst));
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        record.innerHTML = documentedRecordHtml(inst) || (isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '');
+        record.innerHTML = reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '');
         record.classList.toggle('hidden', !record.innerHTML);
       }
       const webLink = document.getElementById('dossier-sheet-link-web');
@@ -12394,24 +12420,34 @@ return maplibregl$1;
       const d = inst.details || {};
       const out = [];
       const markFlag = (t) => /epstein/i.test(t) ? `<mark class="flag-epstein">${escapeHtml(t)}</mark>` : escapeHtml(t);
+      // A paragraph that is gossip (a flag, a reported item, a case note) carries data-gossip, so Gossip mode sets it, and only it, in the
+      // gossip colour; the press, the field, the wider context, the bottom line and the sources keep the normal ink.
+      const g = (html) => html ? html.replace(/^<p\b/, '<p data-gossip="item"') : html;
       // Flags: the report's headings, each with its points; or, for a record the research has not reached, the flags the archive holds.
       const own = (d.red_flags || []).filter(f => f && (f.points || []).length);
       // A flag with three or more points is a short run of paragraphs, each led by its own label ("Unity Park:"); fewer run on from the heading.
       own.forEach(f => {
-        if (f.points.length < 3) { out.push(`<p class="no-indent"><strong class="lead-in">${markFlag(proseEnd(f.heading))}</strong> ${escapeHtml(proseSay(f.points))}</p>`); return; }
-        out.push(`<p class="no-indent"><strong class="lead-in">${markFlag(proseEnd(f.heading))}</strong></p>`);
+        // A clean result among the points ("No reporting found of a protest") is information, not gossip: it follows unmarked.
+        const told = f.points.filter(pt => !isCleanResult(pt)), clean = f.points.filter(pt => isCleanResult(pt));
+        if (f.points.length < 3) {
+          out.push(g(`<p class="no-indent"><strong class="lead-in">${markFlag(proseEnd(f.heading))}</strong> ${escapeHtml(proseSay(told))}</p>`));
+          if (clean.length) out.push(proseP('', escapeHtml(proseSay(clean))));
+          return;
+        }
+        out.push(g(`<p class="no-indent"><strong class="lead-in">${markFlag(proseEnd(f.heading))}</strong></p>`));
         f.points.forEach(pt => {
           const m = String(pt).match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s);
-          out.push(m ? proseP(`${m[1]}:`, escapeHtml(proseEnd(m[2]))) : proseP('', escapeHtml(proseEnd(pt))));
+          const para = m ? proseP(`${m[1]}:`, escapeHtml(proseEnd(m[2]))) : proseP('', escapeHtml(proseEnd(pt)));
+          out.push(isCleanResult(pt) ? para : g(para));
         });
       });
       const more = (inst.flag_details || []).filter(x => x && x.text).map(x => x.text);
       const sameAsFunding = [inst.watch && watchIsAboutMoney(inst.watch) ? inst.watch : '', inst.funding].some(t => t && String(t).trim() === String(inst.why_flagged || '').trim());
       const why = !inst.why_flagged || sameAsFunding || sayAlreadyInDetails(inst, inst.why_flagged) ? '' : proseEnd(inst.why_flagged);
       if (!own.length && ((inst.flags || []).length || why)) {
-        out.push(`<p class="no-indent">${(inst.flags || []).length ? `<strong class="lead-in">Flagged:</strong> ${(inst.flags || []).map(markFlag).join(', ')}. ` : ''}${escapeHtml([why, proseSay(more)].filter(Boolean).join(' '))}</p>`);
+        out.push(g(`<p class="no-indent">${(inst.flags || []).length ? `<strong class="lead-in">Flagged:</strong> ${(inst.flags || []).map(markFlag).join(', ')}. ` : ''}${escapeHtml([why, proseSay(more)].filter(Boolean).join(' '))}</p>`));
       } else if (why || more.length) {
-        out.push(proseP('Also on record:', escapeHtml([why, proseSay(more)].filter(Boolean).join(' '))));
+        out.push(g(proseP('Also on record:', escapeHtml([why, proseSay(more)].filter(Boolean).join(' ')))));
       }
       if ((d.not_related || []).length) out.push(proseP('Not related:', escapeHtml(proseCap(proseSay(d.not_related)))));
       // Reported items from the archive that the report does not already carry. They are said once to be reported, not verified.
@@ -12444,7 +12480,7 @@ return maplibregl$1;
         const c = inst.case_study;
         items.push(proseP(`${c.title}${c.kick ? ' (' + c.kick + ')' : ''}.`, escapeHtml([proseSay(c.summary), proseSay(c.bullets), (c.timeline || []).map(t => `${t.date}: ${proseEnd(t.event)}`).join(' ')].filter(Boolean).join(' '))));
       }
-      if (items.some(Boolean)) out.push(`<p class="no-indent account-note">Reported, not independently verified. Each item names its sources.</p>`, ...items);
+      if (items.some(Boolean)) out.push(`<p class="no-indent account-note">Reported, not independently verified. Each item names its sources.</p>`, ...items.map(g));
       // The art press: the report's overview and one paragraph per piece, the outlet linked to the piece; then what the archive adds.
       const press = d.press || {};
       if (press.overall) out.push(proseP('In the art press:', escapeHtml(proseEnd(press.overall))));
@@ -12453,7 +12489,7 @@ return maplibregl$1;
         out.push(`<p class="no-indent">${o}${it.title ? ', ' + escapeHtml(proseEnd(it.title)) + ' ' : ': '}${escapeHtml(proseSay(it.points))}</p>`);
       });
       if (inst.critique_note) out.push(proseP('What the field says:', escapeHtml(proseEnd(inst.critique_note))));
-      (inst.case_notes || []).forEach(n => out.push(proseP(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3))));
+      (inst.case_notes || []).forEach(n => out.push(g(proseP(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3)))));
       proseChunks(d.wider_context, 460).forEach((t, k) => out.push(proseP(k ? '' : 'Wider context:', escapeHtml(t))));
       if (!isGossipModeActive) (inst.study_notes || []).forEach(s => out.push(proseP(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : ''))));
       if (d.bottom_line) out.push(proseP('Bottom line:', escapeHtml(proseEnd(d.bottom_line))));
@@ -12468,7 +12504,7 @@ return maplibregl$1;
       const srcLine = proseLinks(urls, 12);
       if (srcLine || regLinks.length) out.push(`<p class="no-indent source-note">${srcLine ? `Sources: ${srcLine}.` : ''}${srcLine && regLinks.length ? ' ' : ''}${regLinks.join(' · ')}</p>`);
       const body = out.filter(Boolean).join('');
-      return body ? `<div class="py-3 rule-b space-y-2 prose-part" role="region" aria-label="Reporting and context"${items.some(Boolean) ? ' data-gossip="items"' : ''}>${body}</div>` : '';
+      return body ? `<div class="py-3 rule-b space-y-2 prose-part" role="region" aria-label="Reporting and context">${body}</div>` : '';
     }
     // Accounts from review sites and Reddit, and what readers sent in: said in the same prose, the caution said once.
     function proseVoicesHtml(inst) {
@@ -12534,7 +12570,7 @@ return maplibregl$1;
             ${!isClean && inst.highlight ? `<p class="institution-summary">${escapeHtml(inst.highlight)}</p>` : ''}
             ${inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : ''}
             ${isCommunity ? '' : gradeLineHtml(inst)}
-            ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p>${escapeHtml(inst.watch)}</p>` : ''}
+            ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${escapeHtml(inst.watch)}</p>` : ''}
             <div class="record-actions record-action-row" style="display:flex; flex-wrap:wrap; gap:4px 24px; padding-top:4px;">
               <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
               ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
@@ -12691,7 +12727,6 @@ return maplibregl$1;
         return out;
       };
       const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.join(', ')}.` : ''; };
-      const flagged = inst.tier === 'B' || !!inst.why_flagged || (inst.flags || []).length > 0;
       if (gossip) {
         const c = ((inst.gossip_data || {}).real_cases || [])[0];
         if (c && (c.title || (c.facts || []).length)) return { text: firstSentence((c.facts || [])[0] || c.title), src: src(hosts((c.sources || []).map(x => x && x.url)), 1) };
@@ -12699,7 +12734,9 @@ return maplibregl$1;
         if (e && (e.summary || e.person)) return { text: firstSentence(e.summary ? `${e.person && !String(e.summary).startsWith(e.person) ? e.person + ': ' : ''}${e.summary}` : e.person), src: src(hosts(e.sources), 1) };
         const w = (inst.wikileaks_records || [])[0];
         if (w && w.what_shows) return { text: firstSentence(`${w.date ? w.date + ': ' : ''}${w.what_shows}`), src: src(hosts(w.sources), 1) };
-        if (flagged && inst.watch && !/\b(founded|opened|home to|known for|topped by|housed in)\b|\bnot (?:at|here)\b/i.test(inst.watch)) return { text: firstSentence(inst.watch), src: src(hosts(inst.sources), 2) };
+        // Flagged or not, a watch line is gossip by the shared test; a clean result is not. full: a past tie is stated with what
+        // the record says now ("No current gambling funding found"), so one space's answer prints a short line whole.
+        if (watchIsGossip(inst.watch)) return { text: firstSentence(inst.watch), full: inst.watch.length <= 280 ? inst.watch.trim() : '', src: src(hosts(inst.sources), 2) };
         const why = String(inst.why_flagged || '').split(/(?<=[.!?])\s+(?=[A-Z])/).filter(x => !/\bnot (?:at|here)\b/i.test(x)).join(' ');
         if (why) return { text: firstSentence(`${(inst.flags || []).length ? inst.flags.join(', ') + ': ' : ''}${why}`), src: src(hosts(inst.sources), 2) };
         const of = typeof inst.other_findings === 'string' ? inst.other_findings.split(' | ')[0] : '';
@@ -13681,6 +13718,7 @@ return maplibregl$1;
   Governance Classification: ${tierName(i)}
   Governance & Ethical Safeguard: ${i.governance_details || i.ethical_safeguard || 'not stated'}
   Recorded Watch / Flag: ${i.why_flagged || i.watch || 'not stated'}
+  Watch Line: ${i.watch ? `${i.watch} (Watch Line Is Gossip: ${watchIsGossip(i.watch) ? 'yes' : 'no, a clean result or a description'})` : 'none recorded'}
   Recorded Flags: ${(i.flags || []).join(', ') || 'none recorded'}
   Statutory Audit Dossier: ${i.audit_dossier_url || ''}
   Public Funding: ${i.funding || 'not stated'}
@@ -13965,6 +14003,8 @@ return maplibregl$1;
       return turns;
     }
 
+    // A request for gossip, by the words used: the chat then prints the gossip itself and nothing around it.
+    const GOSSIP_ASK = /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i;
     async function queryAI(userPrompt, webIntel = null) {
       const activeKey = aiApiKey || _SYS_KEY;
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
@@ -14041,13 +14081,12 @@ return maplibregl$1;
       }
 
       // 4. Assemble XML Structured User Prompt with Explicit Constraints and Investigative Journalism Directives
-      const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || 
-                           /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i.test(userPrompt);
+      const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || GOSSIP_ASK.test(userPrompt);
       const gossipDirective = isGossipMode
-        ? `\n\n<gossip_mode>\nGossip mode is on. Lead with what is reported: the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, label unverified platform accounts as unverified sentiment, and separate allegation from documented fact. If the supplied records hold nothing reported about a space, say that in one sentence and stop. Do not infer wrongdoing, pad with generalities, or force a fixed section template.\n</gossip_mode>`
+        ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself: what the supplied records report about the space, which is a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or the official URL. If the supplied records report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, say so once and direct the visitor to the official URL when available.\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a requested detail is absent, say so once and direct the visitor to the official URL when available.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -14242,7 +14281,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         queryAI.lastDuration = elapsedSec;
 
         if (rawText) {
-          return renderCuratorMarkdown(rawText);
+          // A gossip request answers with the gossip alone. NO_GOSSIP is the model's word for "the records report nothing", which the chat says in its own plain sentence.
+          if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing is reported for this space in the records.</p>', gossip: false, none: true };
+          return isGossipMode ? { html: renderCuratorMarkdown(rawText), gossip: true } : renderCuratorMarkdown(rawText);
         }
       } catch (err) {
         console.warn('Live AI query error, falling back to offline knowledge engine:', err);
@@ -15275,6 +15316,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             if (aiRes) {
               curatorTyping.classList.add('hidden');
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
+              if (aiRes.gossip || aiRes.none) {
+                // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
+                appendCuratorMessage(aiRes.none ? aiHtml : `<div class="space-y-3" data-gossip="ai">${aiHtml}<p class="no-indent ai-note">AI-written from archival records. Unverified.</p></div>`, []);
+                return true;
+              }
               let thinkingData = null;
               const thoughtText = (aiRes && aiRes.thinking) || (typeof queryAI !== 'undefined' && queryAI.lastThinking) || '';
               if (thoughtText) {
@@ -15306,7 +15352,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (asks(/\b(what (do )?(employees|staff|workers) (say|report|think)|employee (reviews?|accounts?)|staff (reviews?|accounts?)|glassdoor|kununu|working conditions|work(ing)? (there|here|at))\b/)) {
         const own = target ? ((target.gossip_data || {}).accounts || []).length : 0;
         const note = target ? `<p>${formatInstLink(target)} carries ${own ? `${own} such ${own === 1 ? 'account' : 'accounts'}, shown in Gossip mode` : 'no such account'}.</p>` : '';
-        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])]);
+        // The summary names spaces and reports conduct from review platforms, so it is gossip and gets the balloon.
+        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])], true);
         return;
       }
       // The critical frames (data/research_attach/institutional_critiques.json): quotations with author, title, publication and date, one frame per museum type.
@@ -15400,12 +15447,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
-        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:', true);
+        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i) || watchIsGossip(i.watch)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:', true);
         return;
       }
-      if (target && (isGossipModeActive || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
+      if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
         const reported = documentedRecordHtml(target);
+        // Asked for gossip: the reported items alone, no title line, rating or source list around them.
+        if (isGossipModeActive || GOSSIP_ASK.test(query)) {
+          // A record with no reported items can still carry a watch flag or a flagged funder: that line is its gossip.
+          const f = reported ? null : recordFact(target, true);
+          if (reported) answer(reported, [], true);
+          else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}</p>`, [], true);
+          else answer('<p>Nothing is reported for this space in the records.</p>', []);
+          return;
+        }
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing is reported for this space in the records.</p>'}${sourcesHtml(target)}`);
         return;
       }
@@ -17723,7 +17779,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     let cloudCache = { key: null, list: [] };
     function questionCloud() {
       const sel = typeof selectedInstitution !== 'undefined' ? selectedInstitution : null;
-      const key = sel ? String(sel.id || sel.name) : '';
+      const key = (sel ? String(sel.id || sel.name) : '') + (isGossipModeActive ? '|gossip' : '');
       if (cloudCache.key === key && cloudCache.list.length) return cloudCache.list;
       const registry = (typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []).filter(c => c && c.name);
       const registryName = (city) => { const c = city && registry.find(r => matchC(r.name, city)); return c ? c.name : ''; };
@@ -17753,8 +17809,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const staffQ = (i) => ((i.gossip_data || {}).accounts || []).length ? `What do employees report at ${i.name}?` : '';
       const criticQ = (i) => (i.visual_critiques || []).some(v => v.kind === 'theory') ? `What do critics say about ${i.name}?` : '';
       const epsteinQ = (i) => (i.epstein_records || []).length ? `What is ${i.name}’s Epstein link?` : '';
+      // Gossip questions (notes/gossip-criteria.md): one per space whose record reports something, a watch line that passes the
+      // gossip test included. Their answer is a balloon, so they take the gossip fill (tier G), as do the employee-account questions.
+      const gossipQ = (i) => hasGossip(i) ? `What is the gossip about ${i.name}?` : '';
       const pool = (test, n, make) => shuffledList(ALL_INSTITUTIONS.filter(test)).slice(0, n * 2).map(i => ({ q: make(i), tier: tierOf(i), inst: i })).filter(x => x.q && x.q.length <= 58).slice(0, n);
-      if (sel) [...askableFlags(sel).map(f => (i) => flagQFor(i, f)), funderQ, moneyQ, fundingQ, gradeQ, staffQ, criticQ, epsteinQ, reportedQ, wikileaksQ, watchQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, tierOf(sel), sel); });
+      if (sel) [gossipQ, staffQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, 'G', sel); });
+      // In Gossip mode the page asks only for gossip.
+      if (sel && !isGossipModeActive) [...askableFlags(sel).map(f => (i) => flagQFor(i, f)), funderQ, moneyQ, fundingQ, gradeQ, criticQ, epsteinQ, reportedQ, wikileaksQ, watchQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, tierOf(sel), sel); });
       // Places: cities by name in the city registry, countries by name in the country registry (the chat answers both).
       const countries = (typeof ALL_COUNTRIES_REGISTRY !== 'undefined' ? ALL_COUNTRIES_REGISTRY : []).filter(c => c && c.name).map(c => c.name);
       const countryName = (c) => countries.includes(c) ? c : '';
@@ -17772,7 +17833,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const funders = pool(i => i.funding && (i.funder_links || []).length && (i.tier === 'A' || i.tier === 'B'), 120, funderQ);
       const money = pool(i => hasMoney(i) && (i.tier === 'A' || i.tier === 'B'), 100, moneyQ);
       const grades = pool(i => i.grade && i.grade_basis && (i.tier === 'A' || i.tier === 'B'), 100, gradeQ);
-      const staff = pool(i => ((i.gossip_data || {}).accounts || []).length, 60, staffQ);
+      const staff = pool(i => ((i.gossip_data || {}).accounts || []).length, 60, staffQ).map(x => ({ ...x, tier: 'G' }));
+      const gossip = pool(hasGossip, isGossipModeActive ? 240 : 80, gossipQ).map(x => ({ ...x, tier: 'G' }));
       const critics = pool(i => (i.visual_critiques || []).some(v => v.kind === 'theory') && (i.tier === 'A' || i.tier === 'B'), 60, criticQ);
       const epstein = pool(i => (i.epstein_records || []).length, 16, epsteinQ);
       const funding = pool(i => i.funding && !hasMoney(i) && (i.tier === 'A' || i.tier === 'B'), 100, fundingQ);
@@ -17793,7 +17855,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const funderTier = (f) => { const n = { A: 0, B: 0, U: 0 }; linked[f].forEach(i => n[tierOf(i)]++); return n.A >= n.B && n.A >= n.U ? 'A' : n.B >= n.U ? 'B' : 'U'; };
       const sharedFunders = shuffledList(Object.keys(linked).filter(f => linked[f].length >= 3)).slice(0, 40).map(f => ({ q: `Which institutions does ${funderName(f)} fund?`, tier: funderTier(f), inst: null }));
       // Round-robin over the kinds so the colours and the kinds of question mix across the page.
-      const kinds = [flags, funders, flaggedCities, grades, staff, cleanest, critics, money, epstein, sharedFunders, funding, reported, worst, notes, flaggedCountries, wikileaks, cleanestCountries, epsteinCities];
+      const kinds = isGossipModeActive ? [gossip, staff] : [flags, gossip, funders, flaggedCities, grades, staff, cleanest, critics, money, epstein, sharedFunders, funding, reported, worst, notes, flaggedCountries, wikileaks, cleanestCountries, epsteinCities];
       for (let k = 0; kinds.some(a => a.length); k++) kinds.forEach(a => { const x = a.shift(); if (x) add(x.q, x.tier, x.inst); });
       cloudCache = { key, list: out };
       return out;
