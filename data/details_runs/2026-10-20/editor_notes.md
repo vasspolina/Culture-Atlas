@@ -609,3 +609,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - buku-larrnggay-mulka-centre-yirrkala: the $2.08M IVAIS value, the NT Government $2.5M and the $50,000 Rirratjingu stage grant were omitted (sources 403 or 404).
 - casco-art-institute: the EUR 225,000 figure is omitted (Mondriaan page 404).
 - centro-cultural-de-la-republica-el-cabildo: no working official site; the G. 1.88bn extension was funded by an external loan (Decree 4309).
+
+## d034 (research notes, before its slop check)
+- cubitt-london: the charity number is 1049653 on its own site, not 1049602 as the record has; the Charity Commission register returned 403.
+- de-la-warr-pavilion: "United Arab Emirates" is listed on the Pavilion's own funders page, with no year or amount found; Arts Council England 517,785 pounds a year, Rother council 477,000, Levelling Up 17M, Heritage Fund 7.9M.
+- dk-rozy-st-petersburg: Garage Museum (co-founded by Roman Abramovich) supported the House's research and bought the collective's archive in 2022; the House has been closed since 2022; rosas-house.org does not resolve.
+- espacio-cultural-patino: built on Patiño tin-mining wealth (Catavi mine conditions and the 1942 massacre); no foundation accounts found.
+- dr-bhau-daji-lad-mumbai-city-museum: the 2025 repair cost is Rs 2.8 crore (Wikipedia) or Rs 3 crore (ETV Bharat); bdlmuseum.org returned Access Denied.
+- foam-fotografiemuseum-amsterdam-amsterdam: Foam's own annual report discloses internal unrest; about 20% municipal subsidy.
+- fondation-vincent-van-gogh-arles: no annual report found; LUMA planning criticism is Wider context.
+- dar-jacir-for-art-and-research: the 2021 Israeli raid is Wider context; British Council 99,855 pounds.
