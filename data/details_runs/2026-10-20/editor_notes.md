@@ -444,3 +444,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - pictanovo and series-mania-lille: Séries Mania: PNF announcement 6 Feb 2026 (Public Sénat); Caroline Lang left the SPI post 2 Feb, left Séries Mania and Pictanovo 4 Feb 2026; denials and "no charge" added.
 - school-of-visual-arts-new-york: David Ross resigned effective 3 Feb 2026; he says he sought Epstein's funding but Epstein never gave it; no Epstein donation to the school found; sit-in 2 May 2024.
 - s-m-a-k: ENGIE has supported the youth workshops since 2012; museum news item 19 Dec 2021.
+
+## d026 (research notes, before its slop check)
+- tehran-museum-of-contemporary-art-tmoca: the Berlin show was cancelled by Berlin on 27 Dec 2016 over missing export permits; the minister said in Feb 2017 he had proposed cancelling (the record's "In 2017 the culture minister cancelled" is half right); the record's "16.5 billion toman" is the whole renovation cost (Etemad Online, Persian Wikipedia).
+- stills-edinburgh: the record's "Ended Baillie Gifford funding in June 2024" is not confirmed to June (Art Basel, Aug 2024, says Stills cut ties); the 25,000 pounds a search suggested belongs to Fruitmarket; stills.info is parked (real site stills.org).
+- state-tretyakov-gallery-moscow: the record's "Mikhelson and Usmanov" private patrons are not on the current partners page; the board there includes Vekselberg, Kostin, Tokarev, Fradkov, Mordashov and Akimov and the Defence Minister chairs it.
+- state-russian-museum-st-petersburg: the record's website (nn.media) is not the museum's; real site rusmuseum.ru.
+- storm-king-art-center: no source links "William G. Helis Sr." to the museum; the record's "$9.8M" is not repeated (no financial statements found).
+- tanoto-art-foundation-singapore: the record's website is an SCMP article (403).
+- tai-kwun-hong-kong: funded by the Hong Kong Jockey Club Charities Trust; opening hours and admission not read.
+- spike-island-bristol: the 1,300-signature petition figure rests on a search summary of Bristol 24/7 (403).
