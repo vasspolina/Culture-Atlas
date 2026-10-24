@@ -313,3 +313,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - museum-of-contemporary-art-belgrade: Nakarada removed January 2020; Kiš named 30 Jan 2020 (Danas); Šuica resigned early Feb 2020; protests 30 to 31 Oct 2020.
 - museum-of-contemporary-art-tokyo-tokyo: neither Artscape nor Art-It states any withdrawal.
 - museum-of-fine-arts-budapest-hungarian-national-gallery: MVM Group is key supporter of "Vasarely 120" (2026 sponsor page); the UNESCO and ICOMOS letter has 13 signatories.
+
+## d020 (research notes, before its slop check)
+- national-museum-of-oman: new, not in the record: Mikhail Piotrovsky is on the museum's board, signed the September 2025 Hermitage Dhofar agreement, and is sanctioned by Canada (2023) and the EU (April 2026); the board page also still names a former minister.
+- national-museum-of-iraq: the record's "Italy equipped labs in 2015" and "France sponsored a show" are not confirmed; UNESCO says Japan and Italy paid for the lab and training.
+- national-gallery-singapore-singapore: no Citadel or Bloomberg campaign found at this gallery, only the Whitney protest over Citadel's Ken Griffin; the record's "campaigned name" is in Wider context.
+- national-gallery-of-modern-art-ngma: the 2019 Palekar episode took place at the Mumbai branch.
+- national-gallery-of-australia: nga.gov.au refused automated requests; the report uses the 2023-24 annual report PDF.
+- national-portrait-gallery-london: Blavatnik's oil money and Ukraine's 2023 sanction come from Wikipedia only.
+- national-museum-of-natural-history-smithsonian: David Koch is documented as an advisory board member, not a trustee.
