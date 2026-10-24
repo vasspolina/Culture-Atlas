@@ -285,3 +285,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - multimedia-art-museum-moscow-mamm-moscow: both dates right: 24 Feb 2022 (US restriction on new debt and equity) and 6 Apr 2022 (US full blocking of Alfa-Bank, Treasury); UK 24 Mar 2022; EU Feb 2023. Potanin sanctioned by the UK (Interfax, 29 Jun 2022) and the US (15 Dec 2022); the US notice did not mention Nornickel.
 - munch-oslo: INPEX Idemitsu: "more than 30 years", more than NOK 100M since 1991, five-year renewal 1 Feb 2023 (INPEX release 7 Feb 2023); the sponsor page omits Aker BP and Equinor; Equinor funds the Edvard Munch Award.
 - milwaukee-symphony-orchestra-milwaukee: Mahler was a resigning board member of a 35-member board (FOX6, 13 Feb 2026); Epstein hired him in March 2013; FOX6 does not say what Epstein paid.
+
+## d019 (research notes, before its slop check)
+- nam-june-paik-art-center-yongin: the record's KRW 600M Hyundai sponsorship was not found; the Gyeonggi province page lists adult admission at 4,000 won against the record's "free admission".
+- national-art-museum-belarus-minsk: the record's Sber Bank sponsorship of the Chagall show is not confirmed; artmuseum.by timed out twice.
+- mystetskyi-arsenal, nasjonalmuseet-national-museum-of-norway, national-art-gallery-of-namibia-windhoek, national-galleries-of-scotland: the record's income figures sit in annual-report PDFs too large to read; none confirmed.
+- national-art-gallery-of-namibia-windhoek: the 2014 Solari Bozzi withdrawal rests on search excerpts (ARTICLE 19 and NCAC pages returned 403).
+- museum-of-islamic-art-doha: www.mia.org.qa has a self-signed certificate error (mia.org.qa loads).
+- nafasi-art-space-dar-es-salaam: TotalEnergies as a sponsor; donors are the Swiss and Norwegian embassies.
