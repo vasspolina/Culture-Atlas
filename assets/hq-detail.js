@@ -166,7 +166,7 @@
     b.addEventListener('click', () => hq().flyToSpace(s.rec));
     const li = h('li', null, b);
     // A person's tie to a space carries the record's own wording and how well it is documented; shown as written.
-    if (s.label) li.append(h('p', { class: 'hq-note', text: `${s.label}${s.status ? ' (' + s.status + ')' : ''}${s.text ? ': ' + s.text : ''}` }));
+    if (s.label) li.append(h('p', { class: 'hq-note', text: `${s.label.charAt(0).toUpperCase() + s.label.slice(1)}${s.status ? ' (' + s.status + ')' : ''}${s.text ? ': ' + s.text : ''}` }));
     return li;
   };
   const officeRow = (o, shared) => {

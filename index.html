@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=254">
-  <script src="assets/config.js?v=254"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=255">
+  <script src="assets/config.js?v=255"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9906,11 +9906,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v254';
+    const ATLAS_RELEASE = 'culture-atlas-v255';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=254').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=255').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11697,6 +11697,8 @@ return maplibregl$1;
       return { title, date: humanDate(date), summary, note, alsoAbout };
     }
     // Reported items. Each one carries the sources recorded for it. None is independently verified.
+    // The record's link and status are the dataset's own enum words; a reader gets the link in sentence case and the evidence level apart from it.
+    const cap1 = (t) => t ? t.charAt(0).toUpperCase() + t.slice(1) : '';
     function documentedRecordHtml(inst) {
       if (!inst) return '';
       const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'source'; } };
@@ -11737,7 +11739,7 @@ return maplibregl$1;
         blocks.push(item('Why it is flagged', { html: (inst.flags || []).map(f => /epstein/i.test(f) ? `<mark class="flag-epstein">${escapeHtml(f)}</mark>` : escapeHtml(f)).join(', ') }, (sameAsFunding || sayAlreadyInDetails(inst, inst.why_flagged) ? '' : p('', inst.why_flagged)) + more.map(d => p('', d.text)).join(''),
           [...new Set((inst.sources || []).concat(more.map(d => d.url)))]));
       }
-      (inst.epstein_records || []).forEach(e => blocks.push(item(e.person || 'Epstein-related record', [e.link, e.status].filter(Boolean).join(', '),
+      (inst.epstein_records || []).forEach(e => blocks.push(item(e.person || 'Epstein-related record', [cap1(e.link), cap1(e.status)].filter(Boolean).join(' \u00b7 '),
         p('', e.summary) + list(li('Tie: ', e.tie), li('Consequence: ', e.consequence)), e.sources)));
       const seenCables = new Set();
       (inst.wikileaks_records || []).forEach(w => {
@@ -12416,7 +12418,7 @@ return maplibregl$1;
       if ((d.not_related || []).length) out.push(proseP('Not related:', escapeHtml(proseCap(proseSay(d.not_related)))));
       // Reported items from the archive that the report does not already carry. They are said once to be reported, not verified.
       const items = [];
-      (inst.epstein_records || []).forEach(e => items.push(proseP(`${e.person || 'Epstein-related record'}${[e.link, e.status].filter(Boolean).length ? ' (' + [e.link, e.status].filter(Boolean).join(', ') + ')' : ''}.`,
+      (inst.epstein_records || []).forEach(e => items.push(proseP(`${e.person || 'Epstein-related record'}${e.link ? ', ' + e.link : ''}${e.status ? ' (' + e.status + ')' : ''}.`,
         escapeHtml([proseEnd(e.summary), e.tie ? 'Tie: ' + proseEnd(e.tie) : '', e.consequence ? 'Consequence: ' + proseEnd(e.consequence) : ''].filter(Boolean).join(' ')) + proseCite(e.sources, 3))));
       const seenCables = new Set();
       (inst.wikileaks_records || []).forEach(w => {
@@ -19279,9 +19281,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=254"></script>
-<script src="assets/layers.js?v=254"></script>
-<script src="assets/hq-detail.js?v=254"></script>
-<script src="assets/bubbles.js?v=254" defer></script>
+<script src="assets/typeset.js?v=255"></script>
+<script src="assets/layers.js?v=255"></script>
+<script src="assets/hq-detail.js?v=255"></script>
+<script src="assets/bubbles.js?v=255" defer></script>
 </body>
 </html>
