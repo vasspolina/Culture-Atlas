@@ -66,6 +66,9 @@ corrects or adds to it; it does not restate it.
 - No hedging words: may, might, reportedly, allegedly, appears to, seems, arguably, is said to,
   believed to, likely, some say. Where a claim is not confirmed, use the "Unverified:" label and
   name who claims it.
+- Write for a public reader. Do not mention the editor, the editor's rulings, "the map" or the
+  checkers in the report text; say "the atlas" where you need to name the project, and state facts,
+  not our internal rules.
 - No promotional or filler vocabulary: vibrant, rich, renowned, prestigious, world-class, iconic,
   landmark, cutting-edge, dynamic, thriving, esteemed, pivotal, tapestry, testament to, nestled,
   boasts, showcases, fosters, underscores, delve, landscape, ecosystem, legacy (unless a literal
