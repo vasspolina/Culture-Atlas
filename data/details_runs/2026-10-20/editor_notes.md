@@ -548,3 +548,14 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - whanki-museum-seoul: herbicide injection 22 April 2026; residents' events 23 and 26 May; apology 31 May; criminal complaint 29 June by 60 people and groups.
 - yarat-contemporary-art-space-baku: Öğüt's letter and YARAT's agreement to end the show 29 Oct 2020 (Hyperallergic) or 28 Oct (ArtReview); bp and SOCAR Midstream Gas Operations named beside YARAT in APA's 18 March 2026 report, no payment stated.
 - wuerttembergischer-kunstverein-stuttgart: the city's Cultural Office withdrew EUR 15,000 shortly before the 13 to 15 March 2026 symposium; both Stuttgarter Zeitung pieces paywalled.
+
+## d031 (research notes, before its slop check)
+- auto-italia-london: the record's charity number 1172824 is wrong; the organisation's own page gives 1151979; home is Bethnal Green, East London; the Calouste Gulbenkian Foundation is listed undated.
+- ateneo-art-gallery-quezon-city: the gallery's website (ateneoartgallery.com) redirects to an unrelated gambling-prediction domain, which was not opened.
+- bag-factory-johannesburg: the third founder is Sandra (Sandy) Burnett, not Ricky Burnett; National Arts Council and Triangle Network funding not confirmed (only an affiliation with the Triangle Arts Trust).
+- bangkok-art-biennale-bangkok: BEM, Ch. Karnchang and Generali were not found as Venice 2026 supporters; ThaiBev and One Bangkok are named.
+- bangladesh-shilpakala-academy: the academy's own site and portal fail with a TLS certificate error; the red flag concerns the Samdani Art Foundation.
+- ashkal-alwan-beirut: founding 1993 (Sigrid Rausing Trust) or 1994 (Wikipedia); Warhol Foundation $100,000 in 2018.
+- anadolu-kultur-depo-and-diyarbak-r-arts-center: the Sigrid Rausing Trust page still calls Kavala chair; Anadolu Kültür's own page lists Asena Günal as chair.
+- audain-art-museum: Polygon, Onni and Whistler Blackcomb Foundation money not confirmed.
+- ayala-museum: the museum's own pages give no hours or admission; the Ayala Foundation 2024 report was too large to open.
