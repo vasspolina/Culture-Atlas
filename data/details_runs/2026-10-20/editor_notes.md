@@ -619,3 +619,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - foam-fotografiemuseum-amsterdam-amsterdam: Foam's own annual report discloses internal unrest; about 20% municipal subsidy.
 - fondation-vincent-van-gogh-arles: no annual report found; LUMA planning criticism is Wider context.
 - dar-jacir-for-art-and-research: the 2021 Israeli raid is Wider context; British Council 99,855 pounds.
+
+## d033 slop check (93 changes; every report changed; no report now has a Red flags section)
+- centre-art-contemporain-geneva: the red flag removed: Arab Bank's own site says Arab Bank (Switzerland) Ltd. is a separate legal entity and a sister company of Arab Bank plc with identical shareholders (not a subsidiary); no opened page shows a penalty or objection against the Swiss bank or a parent; the Linde case (2014 jury trial, verdict vacated 2018; dates and amounts per Lawfare) moved to Wider context; the Federal Office of Culture is not found as a funder. centre.ch pages return only navigation text, so the report rests on archived 2016.centre.ch pages and Wikipedia; the renovation dates are inconsistent (works from Feb 2025, council vote Oct 2025). The record may still carry a flag for this.
+- cranbrook-art-museum: the Gambling red flag removed: Dan Gilbert's fortune is mortgage lending (Quicken Loans, now Rocket Mortgage); casinos sold 2019 (Greektown) and 2021 (Ohio); the $30M gift (2021) was personal and went to the Academy; the Gilbert Family Foundation is credited on four exhibition pages with no years or amounts; no page says where it gets its money. The record may still carry a Gambling flag.
+- contemporary-calgary: ARC Financial's own site lists energy transition funds and oil and gas funds; no page gives the Tertzakians' gift amounts, tier or dates.
+- contemporary-arts-museum-houston: Hyperallergic 16 Sept 2020; August to October 2018 timeline; ProPublica 741093771.
+- centro-cultural-de-la-republica-el-cabildo: Última Hora and La Nación disagree on whether a loan pays for the extension; English and Spanish Wikipedia disagree on the opening date; no official site reached.
+- contemporary-art-museum-of-the-kasbah: no site of its own; Journal des Arts paywalled.
+- christchurch-art-gallery: the council funding figure was not found.
