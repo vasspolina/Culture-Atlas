@@ -158,3 +158,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - golden-thread-gallery-belfast: no reporting found on the 2016 Gulbenkian protest the record cites; Partex sale terms rest on excerpts and Wikipedia.
 - groninger-museum-groningen: the Dutch Wikipedia claim about Gazprom is uncited and marked Unverified.
 - Public wording: reports said "the map" and "the editor's ruling"; changed to "the atlas" or removed in 7 reports, and the prompt now forbids it.
+
+## d011 slop check (56 fixes; every report changed)
+- interlochen-center-for-the-arts-interlochen: Epstein gave more than $400,000 from 1990 to 2003, including $200,000 for the lodge (NPR, AP, Fortune): a money link, kept as a red flag.
+- jewish-museum-and-tolerance-center-moscow: sanctions named and sourced: Vekselberg (US April 2018; UK, Poland, Australia March 2022), Kostin (US April 2018; EU 23 Feb 2022; heads VTB, a partner), Vaino (EU Feb 2022; OFAC 6 April 2022). The Putin salary claim rests on one unopened source (Wikipedia citing Calvert Journal 2014), marked Unverified.
+- john-f-kennedy-center-for-the-performing-arts: the "State censorship" heading was unsupported; renamed "Presidential takeover of the board, firings and renaming, 2025 to 2026" with dated events (takeover Feb 2025, renaming vote 18 Dec 2025, court order 29 May 2026, closure vote 15 Sep 2026). Site returned 403.
+- jordan-national-gallery-of-fine-arts-amman: the Gulf state body flag rests on the UAE Ministry of Culture and Youth in the Diamond tier; Arab Bank "assessed a $24 million penalty".
+- istanbul-modern: the sponsor panel is an image; sponsor roles unchecked. johannesburg-art-gallery: Daily Maverick author removed; no site of its own.
+- israel-museum: the 1968 Dayan purchase bullet sits under a "West Bank" heading but the source does not say where the items came from.
