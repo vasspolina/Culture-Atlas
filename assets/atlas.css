@@ -1711,3 +1711,10 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p.account-note,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p.source-note{margin-top:var(--H);text-indent:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part .lead-in{font-weight:600}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part a.domain{white-space:normal}
+
+/* Note field: which record the note goes to, and the dimmed send while none is found */
+#noteTargetLine{margin:8px 0 0}
+#workSendBtn[aria-disabled="true"]{opacity:.45;cursor:default}
+#noteTargetLine.is-flashed{animation:noteFlash .6s steps(2,jump-none) 2}
+@keyframes noteFlash{50%{text-decoration:underline}}
+@media (prefers-reduced-motion:reduce){#noteTargetLine.is-flashed{animation:none;text-decoration:underline}}

@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=255">
-  <script src="assets/config.js?v=255"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=256">
+  <script src="assets/config.js?v=256"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -778,6 +778,7 @@ return maplibregl$1;
             <!-- Input Area (Uncontained Flat Editorial) -->
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
               <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+              <p id="noteTargetLine" class="meta hidden" role="status" aria-live="polite"></p>
               
               <!-- Bottom Toolbar -->
               <div class="flex items-center justify-between pt-2">
@@ -9906,11 +9907,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v255';
+    const ATLAS_RELEASE = 'culture-atlas-v256';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=255').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=256').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12639,6 +12640,7 @@ return maplibregl$1;
     function openDossier(inst, shouldShowDrawer = true) {
       if (!inst) return;
       dossierInst = inst;
+      if (isChatInputMode) syncNoteTarget(false);
       const html = recordHtml(inst);
       const phoneBody = document.getElementById('detailBody');
       if (phoneBody) phoneBody.innerHTML = html;
@@ -16118,6 +16120,39 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         placeholder: 'The report service is not configured. Your report will not be saved.'
       };
 
+    // A note is kept only when it belongs to an institution on the atlas: the record that is open, or one named in the note.
+    const NOTE_NEEDS_INSTITUTION = 'Open the record of the institution this note is about, or name the institution in the note';
+    function noteTargetFor(text) {
+      const lower = (text || '').toLowerCase();
+      const named = ALL_INSTITUTIONS.find(i => i.name && i.name.length > 3 && lower.includes(i.name.toLowerCase()));
+      return dossierInst || named || null;
+    }
+    // The line under the box says which record the note will go to, or what is missing. Send stays dimmed until a record is found.
+    function syncNoteTarget(flash) {
+      const line = document.getElementById('noteTargetLine');
+      const sendBtn = document.getElementById('workSendBtn');
+      if (!line) return;
+      if (!isChatInputMode || !ATLAS_REPORT_API_URL) {
+        line.classList.add('hidden');
+        line.textContent = '';
+        if (sendBtn) sendBtn.removeAttribute('aria-disabled');
+        return;
+      }
+      const target = noteTargetFor(document.getElementById('workInput')?.value);
+      line.classList.remove('hidden');
+      line.textContent = target ? `Goes to the record of ${target.name}.` : `${NOTE_NEEDS_INSTITUTION}, then send it.`;
+      if (sendBtn) {
+        if (target) sendBtn.removeAttribute('aria-disabled'); else sendBtn.setAttribute('aria-disabled', 'true');
+      }
+      if (flash && !target) { line.classList.remove('is-flashed'); void line.offsetWidth; line.classList.add('is-flashed'); }
+    }
+    let noteTargetTimer = 0;
+    document.getElementById('workInput')?.addEventListener('input', () => {
+      if (!isChatInputMode) return;
+      clearTimeout(noteTargetTimer);
+      noteTargetTimer = setTimeout(() => syncNoteTarget(false), 120);
+    });
+
     // Share information is a toggle like the Details and AI Chat tabs: on while the note is open, when it reads Back to chat and pressing it returns to the chat.
     function setChatShareOn(on) {
       const b = document.getElementById('chatShareBtn');
@@ -16196,6 +16231,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (window.atlasSyncInert) window.atlasSyncInert();
         workInput.focus();
       }
+      syncNoteTarget(false);
 
       // 5. Hide redundant full-width input mode button if present
       const fwBtn = document.getElementById('fullWidthInputModeBtn');
@@ -16243,6 +16279,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     function exitChatInputMode() {
       isChatInputMode = false;
+      syncNoteTarget(false);
       setChatShareOn(false);
       document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
 
@@ -16370,9 +16407,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     async function processInChatWhistleblowerSubmission(text) {
       const q = (text || '').trim();
       if (!q) return;
-      const lower = q.toLowerCase();
-      const named = ALL_INSTITUTIONS.find(i => i.name && i.name.length > 3 && lower.includes(i.name.toLowerCase()));
-      const target = dossierInst || named;
+      const target = noteTargetFor(q);
       // Nothing is kept in this browser. If the note is not sent, it goes back into the box so it is not lost.
       const keepTyped = () => { const input = document.getElementById('workInput'); if (input) input.value = q; };
       let said;
@@ -16382,7 +16417,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       } else if (!target) {
         // The report service takes a note only when it names an institution on the atlas.
         keepTyped();
-        said = 'Open the record of the institution this note is about, or name the institution in the note, then send it again. The note was not sent.';
+        said = `${NOTE_NEEDS_INSTITUTION}, then send it again. The note was not sent.`;
       } else {
         try {
           const res = await fetch(ATLAS_REPORT_API_URL + '/api/reports', {
@@ -16477,6 +16512,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     async function handleWorkSend() {
       const text = (workInput?.value || '').trim();
       if (!text) return;
+      // A note with no institution is not sent: it stays in the box and the line under it says what to do.
+      if (isChatInputMode && ATLAS_REPORT_API_URL && !noteTargetFor(text)) {
+        syncNoteTarget(true);
+        workInput.focus();
+        return;
+      }
       workInput.value = '';
       if (window.innerWidth < 768 && currentMobileMode === 'map') {
         setMobileViewMode('split');
@@ -19279,9 +19320,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=255"></script>
-<script src="assets/layers.js?v=255"></script>
-<script src="assets/hq-detail.js?v=255"></script>
-<script src="assets/bubbles.js?v=255" defer></script>
+<script src="assets/typeset.js?v=256"></script>
+<script src="assets/layers.js?v=256"></script>
+<script src="assets/hq-detail.js?v=256"></script>
+<script src="assets/bubbles.js?v=256" defer></script>
 </body>
 </html>
