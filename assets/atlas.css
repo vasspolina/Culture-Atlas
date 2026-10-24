@@ -1611,13 +1611,13 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme="dark"] #workInputCard.is-mode ::placeholder{color:var(--ink);opacity:.7}
 :root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active){background:var(--mint)!important;color:#000!important}
 :root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active) *{color:#000!important}
-/* The balloon: dark fill, orange outline, light type. bubbles.js draws the fill and outline as SVG paint; a presentation rule outranks its attributes. */
+/* The balloon: dark fill, no outline, gossip yellow type (user's instruction, 24 Oct 2026). bubbles.js draws the fill and outline as SVG paint; a presentation rule outranks its attributes. */
 :root[data-theme="dark"] .bubble-svg .bubble-fill{fill:var(--grey)}
-:root[data-theme="dark"] .bubble-svg .bubble-line{stroke:var(--gossip)}
+:root[data-theme="dark"] .bubble-svg .bubble-line{stroke:none}
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
-:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
-:root[data-theme="dark"] body.gossip-mode-active .is-gossip .thinking{color:var(--ink)}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:#e2f86c!important}
+:root[data-theme="dark"] body.gossip-mode-active .is-gossip .thinking{color:#e2f86c}
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
 
 /* ---- release 239 ---- */

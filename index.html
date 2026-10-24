@@ -15214,6 +15214,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Follow-up chips only offer what the space in view has on record: funding, a flag, opening hours.
       const followFor = () => {
         const t = (typeof target !== 'undefined' && target) || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        // Gossip mode asks about what is reported (user's instruction, 24 Oct 2026); each is a question the offline answers answer.
+        if (isGossipModeActive) return t
+          ? ['What is reported about this space?', 'Who are its flagged funders?', t.city ? `Which spaces in ${t.city} are flagged?` : 'Which spaces are flagged?']
+          : ['Which spaces are flagged?', 'Which spaces are linked to Epstein?', 'What do employees report?'];
         if (!t) return freshChips(2);
         const out = [];
         if (t.funding || t.funder_links) out.push('Who funds this museum?');
