@@ -293,3 +293,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - national-art-gallery-of-namibia-windhoek: the 2014 Solari Bozzi withdrawal rests on search excerpts (ARTICLE 19 and NCAC pages returned 403).
 - museum-of-islamic-art-doha: www.mia.org.qa has a self-signed certificate error (mia.org.qa loads).
 - nafasi-art-space-dar-es-salaam: TotalEnergies as a sponsor; donors are the Swiss and Norwegian embassies.
+
+## d017 slop check (18 fixes; every report changed)
+- museo-de-arte-moderno-de-bogotá-bogotá: the Tobacco flag kept on a sponsored La República article (4 July 2025) tying "La Fundación BAT en Colombia" to BAT Group's sustainability strategy; no page says who owns the foundation or that it is the one on the gala list (a logo labelled "Fundacion BAT" under "Donación Privada"). Signatories "more than 140" (Las2orillas says 170). The museum is private, so the Viola dismissal is not state censorship. Revista Papel and Rolling Stone originals not opened.
+- museo-jumex: no State censorship flag; Hyperallergic reports Jumex staff denied the petition caused the cancellation (9 Feb 2015; show due 27 Feb 2015).
+- museo-de-arte-de-lima: free Thursdays funded by the Consorcio Camisea (operated by Pluspetrol): 25 Aug 2022 to March 2023 (Proactivo, 24 Aug 2022), extended to March 2025 (Correo, Proactivo, Aug 2024). No objection found; the flag stays on current funding.
+- mus-e-th-odore-monod-d-art-africain-ifan-dakar: the Red flags section was removed (undated partners page, no amount, no objection); the record's Fossil fuels flag has no dated source.
+- museo-de-arte-moderno-de-buenos-aires-buenos-aires: a TotalEnergies logo link on the "Support the Museum" page with no caption, year or amount.
+- museo-de-la-solidaridad-salvador-allende: 2025 state subsidy CLP 660,197,000 (75.1% staff) plus FONDART 21,785,143, Senate 15,500,000, University of Pennsylvania 1,111,203, Henry Moore Foundation 7,616,486; 2024 subsidy CLP 592,136,000 (79.9% staff), FfAI US$30,000, Italian Cultural Institute US$6,000. The 2025 table prints "$" with no currency name; read as pesos.
+- museo-de-arte-de-puerto-rico: two exhibition pages unopenable (404, 401); Mellon, Flamboyan, Frankenthaler and Tourism Company credits cut.
