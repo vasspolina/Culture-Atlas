@@ -628,3 +628,14 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - centro-cultural-de-la-republica-el-cabildo: Última Hora and La Nación disagree on whether a loan pays for the extension; English and Spanish Wikipedia disagree on the opening date; no official site reached.
 - contemporary-art-museum-of-the-kasbah: no site of its own; Journal des Arts paywalled.
 - christchurch-art-gallery: the council funding figure was not found.
+
+## d035 (research notes, before its slop check)
+- gallery-1957: the record's GHC 50,000 prize figure is not on the prize page, which now says $5,000 to each of two winners; the founder Marwan Zakhem's company does oil and gas engineering, procurement and construction contracts and built the Kempinski hotel that houses the gallery.
+- g-a-s-foundation-guest-artists-space: Founding Corporate Patron Still Earth Holdings lists Tirex Petroleum and Energy, a drilling contractor for TotalEnergies, as a subsidiary; Afreximbank confirmed only as a 2025 symposium sponsor; Pro Helvetia and British Council confirmed from its Thank You page.
+- gasworks: gasworks.org.uk refused the connection on every attempt; the supporters page was never opened; the record's 290k pounds Arts Council figure is unconfirmed (only a 2013 1M pledge cited); income 999,591 pounds for FY2026 (OpenCharities).
+- glenstone: the 2015 Senate inquiry into private museums' tax status; the 2024 staff union drive (the Teamsters' union-busting claim is Unverified and partisan).
+- grazer-kunstverein: patron AVL List is moving into defence (trend.at, October 2025).
+- franco-namibian-cultural-centre-fncc: the centre's own pages give two founding dates (30 Jan 1991 and 31 Jul 1991).
+- hek-haus-der-elektronischen-k-nste-basel: Göhner and Binding unconfirmed; the Christoph Merian Stiftung is confirmed only as the Dreispitz site developer.
+- gudskul-ruangrupa-jakarta: no DOEN money to Gudskul confirmed; DOEN is tied to ruangrupa through Arts Collaboratory only.
+- heide-museum-of-modern-art: the 2024 annual report PDF was unreadable, so the Tucker, Gordon Darling, Downer, Shine On, Melbourne Water and North East Link Community Fund names are unconfirmed.
