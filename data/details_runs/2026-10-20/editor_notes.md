@@ -588,3 +588,14 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - bienal-de-artes-mediales-de-santiago: the Ministry funding is documented only on the CChV pages, which describe the CChV's funders, not the biennial's.
 - biennale-jogja: ArtReview gives no year for the 18th edition.
 - botswana-national-museum-and-art-gallery: Music in Africa profile dated 28 Oct 2015.
+
+## d031 slop check (12 entries; every report changed)
+- auto-italia-london: the Gulbenkian Foundation sits in an undated supporters list ("the past 15 years"); Wikipedia: created by the will of oil magnate Calouste Gulbenkian, sold Partex in June 2019; no dated gift and no objection, so the Red flags section was removed and it is a Funding line. Charity number 1151979. The record still carries a Fossil fuels flag.
+- ayala-museum: the Daily Tribune (13 March 2026): banking (BPI) was the group's largest earnings contributor in 2025; core net income P48.3 billion, of which ACEN P6.3 billion; no page shows energy as the largest or majority line, so the Red flags content moved to Funding. The record still carries a Fossil fuels flag.
+- bangladesh-shilpakala-academy: the Samdani red flag kept, as Bonik Barta (24 Sept 2024) states: unpaid 2017 bonds (trustee says BDT 392.9 million owed), the securities-regulator inquiry, Department of Environment fine BDT 5.017 million (Feb 2024); the rights-issue redirection and the artwork theft are Unverified. The academy's own funding verdict is "state body", no budget found; its site fails TLS.
+- baltic-centre-for-contemporary-art: the BAE episode (Wider context): Museums Journal (Patrick Steel, 6 March 2018; withdrawal update 9 March 2018) and ArtReview (8 March 2018). No current Arts Council England amounts (Charity Commission 403).
+- bangkok-art-biennale-bangkok: ThaiBev is an alcohol and beverage group, in Funding; BEM, Ch. Karnchang and Generali not found.
+- anadolu-kultur-depo-and-diyarbak-r-arts-center: the Sigrid Rausing Trust says Kavala "remains Chair"; Anadolu Kültür's own page lists Asena Günal as chair.
+- ashkal-alwan-beirut: founded 1994 (Wikipedia) or 1993 (Sigrid Rausing Trust).
+- ateneo-art-gallery-quezon-city: the web address no longer serves the gallery; "over 500 works" rests on Wikipedia alone.
+- audain-art-museum: the BCBusiness article does not link Polygon, Onni or Whistler Blackcomb Foundation to the museum; the endowment donors are not named.
