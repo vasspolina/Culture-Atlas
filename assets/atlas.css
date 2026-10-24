@@ -1245,7 +1245,7 @@ body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note .abbr{color:inheri
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-bottom:2.2em}
 /* A grade named in the chat is set like the rating in the record (user's instruction, 20 Oct 2026): bold, in the grade's own
    colour. On white that colour is darkened until it clears 4.5:1 (gradeInk in index.html); on the dark theme it is the colour itself. */
-.grade-word{color:var(--grade-ink);font-weight:700;padding:0;border:0;background:transparent}
+.grade-word{color:var(--grade-ink);font-weight:400;padding:0;border:0;background:transparent}
 .grade-word-1{--grade-ink:#1f7f5c;--grade-col:#34d399}
 .grade-word-2{--grade-ink:#1b7f73;--grade-col:#2dd4bf}
 .grade-word-3{--grade-ink:#8c720c;--grade-col:#facc15}
@@ -1253,8 +1253,8 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 .grade-word-5{--grade-ink:#8f2929;--grade-col:#ef4444}
 :root[data-theme="dark"] .grade-word{color:var(--grade-col)}
 /* A grade is named in capitals, GRADE D (user's instruction, 20 Oct 2026), set like every capital in running text: one step
-   smaller and evenly spaced (Hochuli p.39-40), the trailing space pulled in so the word space after it stays even. */
-.grade-word,span.grade-mark{text-transform:uppercase;font-size:.92em;letter-spacing:.06em;margin-right:-.06em}
+   smaller and spaced 1pt apart, normal weight (user's instruction, 24 Oct 2026; Hochuli p.39-40), the trailing space pulled in so the word space after it stays even. */
+.grade-word,span.grade-mark{text-transform:uppercase;font-size:.92em;font-weight:400;letter-spacing:1pt;margin-right:-1pt}
 #curatorScrollArea,#workBottomDock,#workInputCard,#workInput{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),min-height var(--dur) var(--ease)}
 #curatorMessages>*{animation:msg-in var(--dur) var(--ease) both}
 @keyframes msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -1468,7 +1468,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,.t-lead,.kicker,.visit-rows>div>div:last-child){max-width:none}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading){white-space:normal;text-wrap:balance;overflow:visible;text-overflow:clip;overflow-wrap:break-word}
 #desktopDossierRecordBody>div{padding-left:18px;padding-right:18px}
-:root:root:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{display:inline;background:none;padding:0;border-radius:0;color:var(--grade-ink);font-weight:700}
+:root:root:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{display:inline;background:none;padding:0;border-radius:0;color:var(--grade-ink);font-weight:400}
 :root[data-theme="dark"]:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{color:var(--grade-col)}
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{padding:6px 13.5px;height:auto;min-height:0}
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action::after{inset:-6px -2px}
