@@ -237,3 +237,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - mk-gallery-milton-keynes: the J Paul Getty Jnr Charitable Trust is listed as an expansion donor; the checker is told to apply the founder-fortune ruling if a page ties it to Getty Oil money.
 - moca-cleveland-cleveland: the record's "State censorship or punishment" flag does not fit (the cancellation was the museum's own decision).
 - milwaukee-symphony-orchestra-milwaukee: Epstein item via former board member Peter Mahler (a paid staffing contractor for Epstein).
+
+## d013 slop check (45 fixes; 11 of 12 changed, Kunstinstituut Melly clean)
+- kunstmuseum-wolfsburg-wolfsburg: the record's "Fossil fuels" flag is not supported by anything opened (VW's 11 Jan 2017 plea is about diesel emissions); "Sponsor dropped under pressure" and "State censorship" rest on a dismissal whose cause two outlets call unclear, only the partisan WSWS claims a link. No budget or VW AG payment figures; the site serves only a ticket shop.
+- kunsthalle-praha-prague: the founder's coal stake was sold in 2010; whether the Pudil coal proceeds fund the foundation is undocumented; Nelson Anstalt's owner is not named in the foundation report. Aktuálně.cz: Respekt apologised and Pudil was never charged.
+- kunsthalle-bielefeld-bielefeld: Oetker in the Waffen-SS July 1941, October 2013 study, 1998 name dispute; Oetker ended his support in 1998.
+- kunsthaus-zürich-zürich: Bührle loan and the June 2024 Gross report; "JTI" is not called Japan Tobacco International (the 2024 report only lists "JTI" and thanks it for the Long Night event).
+- lacma-los-angeles: Gores and Securus: artists' letter 16 Sept 2020, Worth Rises and Color of Change letter 9 Sept, resignation 8 Oct 2020. Wynn Resorts: $50M in 2016; no opened page says the gift came from casino income; whether it counts is the editor's call.
+- kw-institute-for-contemporary-art: KW's about page does list Casa Camper as a partner; BMW support for KW itself is not found (BMW's 2018 release names it a partner of the Berlin Biennale, which used KW as a venue); Volkswagen support is the KW Digital Program 2023 to 2024 and a 2021 book.
+- latvian-national-museum-of-art: Teboil/Lukoil comes only via Wikipedia citing Ilta-Sanomat, unopened.
