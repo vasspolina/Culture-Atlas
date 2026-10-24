@@ -883,7 +883,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#cb9440}
 
 /* Every button answers the pointer: plain ones invert, the filled ones brighten. */
-#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#curatorVoiceToggleBtn:hover,#curatorListenBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
+#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#curatorVoiceToggleBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
 [data-globe-control]:hover,.is-on:hover,[aria-pressed="true"]:hover{filter:brightness(.85)}
 button,summary{cursor:pointer}
 /* Question colours are the map's own: mustard, orange and cyan labels; darker equivalents on the light ground. Type 10% smaller. */
@@ -1201,7 +1201,7 @@ body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #work
 body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #curatorScrollArea *,body.chat-input-mode-active #curatorScrollArea *::before,body.chat-input-mode-active #workBottomDock,body.chat-input-mode-active #workBottomDock *{color:#000!important;border-color:#000!important}
 body.chat-input-mode-active #curatorScrollArea a:hover,body.chat-input-mode-active #workBottomDock a:hover{background:#000;color:var(--gold)!important;text-decoration:none}
 /* Voice and Listen read chat answers aloud; they have nothing to do while a note is written. */
-body.chat-input-mode-active #curatorVoiceToggleBtn,body.chat-input-mode-active #curatorListenBtn{display:none!important}
+body.chat-input-mode-active #curatorVoiceToggleBtn{display:none!important}
 body.chat-input-mode-active #workBottomDock button:hover,body.chat-input-mode-active #curatorScrollArea button:hover{text-decoration:underline}
 /* Writing a note: the page behind is mint with black type forced on everything. A hovered button went black on black in light mode (the generic hover fill is ink), and in dark mode the blue focus ring measured 2.4:1 on the mint. */
 :root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(button,summary):is(:hover,:active){background:#000!important;color:var(--gold)!important}
@@ -1295,7 +1295,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 .curator-message-wrap .curator-bullet-list>li:has(>div:empty)::before,.curator-message-wrap .curator-num-list>li:has(>div:empty)>span:first-child{visibility:hidden}
 /* Controls are one size: 15px on the text face at .01em, in both themes. The globe controls were 14px beside a 15px Layers;
    the chat bar mixed 14px, 14px bold uppercase in the display face (light only) and 14px at .02em; the settings modal mixed 14 and 15. */
-#desktopGlobeTopControls button,#mobileFilterChipsSection button,#mobileStickySendBtn,#mobileStickyVoiceBtn,#curatorListenBtn,#curatorVoiceToggleBtn,#curatorVoiceToggleLabel,#testConnectionBtn,#toggleKeyVisibilityBtn,.provider-tab-btn,#curatorSettingsModal button,#curatorSettingsModal a{font:400 15px/1 var(--sans);letter-spacing:0;text-transform:none}
+#desktopGlobeTopControls button,#mobileFilterChipsSection button,#mobileStickySendBtn,#mobileStickyVoiceBtn,#curatorVoiceToggleBtn,#curatorVoiceToggleLabel,#testConnectionBtn,#toggleKeyVisibilityBtn,.provider-tab-btn,#curatorSettingsModal button,#curatorSettingsModal a{font:400 15px/1 var(--sans);letter-spacing:0;text-transform:none}
 /* The three globe controls fit a 320px screen: narrower padding, not a smaller size. (They ran 6px off the edge at 14px, too.) */
 @media (max-width:374px){#desktopGlobeTopControls button,#mobileFilterChipsSection button{padding-left:9px;padding-right:9px}}
 

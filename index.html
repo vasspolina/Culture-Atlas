@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=248">
-  <script src="assets/config.js?v=248"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=249">
+  <script src="assets/config.js?v=249"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -794,9 +794,6 @@ return maplibregl$1;
                     <span id="curatorVoiceToggleIcon"></span>
                     <span id="curatorVoiceToggleLabel">Voice: ON</span>
                   </button>
-
-                  <!-- Listen Button -->
-                  <button id="curatorListenBtn" type="button" onclick="if (typeof window.speakCuratorBriefing === 'function') window.speakCuratorBriefing();" class="" title="Listen to curator briefing">Listen</button>
 
                   <!-- Upward Arrow Send Button -->
                   <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message">
@@ -9909,11 +9906,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v248';
+    const ATLAS_RELEASE = 'culture-atlas-v249';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=248').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=249').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11940,15 +11937,6 @@ return maplibregl$1;
       }
     }
     window.toggleGlobeExpand = toggleGlobeExpand;
-
-    function speakCuratorBriefing() {
-      const hero = document.getElementById('curatorHeroGreeting');
-      const speech = hero ? hero.getAttribute('data-speech') : 'Welcome to Culture Atlas.';
-      if (typeof speakCuratorText === 'function') {
-        speakCuratorText(speech);
-      }
-    }
-    window.speakCuratorBriefing = speakCuratorBriefing;
 
     function deselectInstitution() {
       if (typeof window.atlasHqClose === 'function') window.atlasHqClose();   // a funder's record in the Details tab gives way to the space
@@ -19127,9 +19115,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=248"></script>
-<script src="assets/layers.js?v=248"></script>
-<script src="assets/hq-detail.js?v=248"></script>
-<script src="assets/bubbles.js?v=248" defer></script>
+<script src="assets/typeset.js?v=249"></script>
+<script src="assets/layers.js?v=249"></script>
+<script src="assets/hq-detail.js?v=249"></script>
+<script src="assets/bubbles.js?v=249" defer></script>
 </body>
 </html>
