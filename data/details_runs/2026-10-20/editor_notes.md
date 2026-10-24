@@ -431,3 +431,16 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - sfmoma-san-francisco: Epstein-linked: ComplexCity interest and a 2009 thank-you letter under Red flags; the Neri Oxman funding request under Wider context.
 - sonar-festival: owned via Superstruct by KKR; about EUR 550k a year in public grants.
 - songeun-seoul: songeun.or.kr/about returned 404.
+
+## d024 slop check (176 entries; every report changed)
+- russian-pavilion-at-the-venice-biennale-venice: US Treasury (6 April 2022) lists Vinokurova, Lavrov's daughter, under E.O. 14024; UK announced 8 April 2022 (Infobae); ArtReview adds Canada, Australia and Japan. No page opened places the commissioner Karneeva on a US, EU, UK or UN list; Ukraine listed her 10 April 2026 (Kyiv Post). Novatek paid for the 2021 renovation (IWM); the 2026 Mikhelson funding claim is Unverified (Interfax-Ukraine; the Ukrainian culture ministry only). EU grant cut April 2026, confirmed 21 July 2026; jury resignation 30 April 2026; blockade 6 May.
+- ruarts-foundation-moscow: the Red flags section removed; Transparency International Russia shows the founder's wife is named Marianna, the same name as the foundation; no source shows Sardarov's money funds it.
+- ruya-foundation-baghdad: KAR moved to Funding (an image labelled "KAR-LOGO" among undated sponsor logos; the page never says "KAR Group").
+- royal-philharmonic-orchestra-london: Prince Andrew moved to Wider context (a patron only, no money, no leadership post).
+- rijksmuseum-amsterdam: ING sponsor since 2005; Fossielvrij NL campaign and XR actions (16 Feb, 14 and 17 March, 17 May, 7 Sept 2024, 1 March 2025); Aramco item Unverified (Fossil Free Culture NL via the Museums Association, 18 Sept 2020; the museum did not respond); 2023 revenue EUR 123.3M, of which EUR 55.8M tickets and EUR 39M subsidies (NL Times quoting XR).
+- royal-ballet-and-opera-london: BP partnership would not extend beyond 22 Dec 2022 (WhatsOnStage); the 0.5% income figure is Culture Unstained's.
+- science-museum-london: BP nearly 25 years, ended 31 Aug 2026 (The Art Newspaper); Adani: announced 2021, opened March 2024, protest 23 March 2024; trustees Fry and Foster resigned 2021.
+- seattle-art-museum-seattle: the partner page returned 403; the Boeing exhibition claim and the Boeing red flag were removed (not on the SponsorPitch page); the boycott reported 13 Jan 2022; the Star contract was terminated after the 1 Sept 2021 incident.
+- pictanovo and series-mania-lille: Séries Mania: PNF announcement 6 Feb 2026 (Public Sénat); Caroline Lang left the SPI post 2 Feb, left Séries Mania and Pictanovo 4 Feb 2026; denials and "no charge" added.
+- school-of-visual-arts-new-york: David Ross resigned effective 3 Feb 2026; he says he sought Epstein's funding but Epstein never gave it; no Epstein donation to the school found; sit-in 2 May 2024.
+- s-m-a-k: ENGIE has supported the youth workshops since 2012; museum news item 19 Dec 2021.
