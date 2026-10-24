@@ -166,3 +166,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - jordan-national-gallery-of-fine-arts-amman: the Gulf state body flag rests on the UAE Ministry of Culture and Youth in the Diamond tier; Arab Bank "assessed a $24 million penalty".
 - istanbul-modern: the sponsor panel is an image; sponsor roles unchecked. johannesburg-art-gallery: Daily Maverick author removed; no site of its own.
 - israel-museum: the 1968 Dayan purchase bullet sits under a "West Bank" heading but the source does not say where the items came from.
+
+## d010 slop check (20 fixes; every report changed)
+- hasty-pudding-theatricals-cambridge: red flag kept. The Crimson (2 Feb 2026): $75,000 in 2013 and $50,000 a year 2014 to 2019 (at least $375,000) from the Jeffrey Epstein Virgin Islands Foundation and Gratitude for America; chair Andrew Farkas solicited it (Globe/NYT, July 2026). hastypudding.org timed out; donor list is "stated by the space".
+- institut-du-monde-arabe-paris: red flag kept as a leadership link (Lang led it from 2013; Epstein exchanges 2012 to 2019; his daughter Caroline partnered with Epstein in 2016). No source says Epstein money reached the institute. The record's "jet and car" is unsupported and left out. Lang resigned on the Saturday, before the Sunday meeting with the minister. The patron page lists AFALULA and Design Space AlUla by logo; no Gulf state ruling made.
+- heart-herning-herning: Red flags section added for tobacco: Det Obelske Familiefond (C.W. Obel tobacco business) in the scanned 2023 funder list. Check this matches the record's Tobacco flag.
+- heard-museum-phoenix: Fossil fuels red flag for a former Peabody executive who is a trustee, no reported gift; may fall under the "former executive" rule.
+- haus-für-medienkunst-oldenburg-oldenburg: the "Nazi pasts" red flag heading is not one of the atlas's flags, and the record has none for it.
+- ica-miami: the Witkoff red flag rests on Wikipedia and Democracy Now; NPR, New Yorker, CBS and NYT pieces were not opened.
+- het-concertgebouw-amsterdam: the "about 4 percent municipal subsidy" is an MP's figure inside a question.
