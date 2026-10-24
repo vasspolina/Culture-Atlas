@@ -322,3 +322,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - national-gallery-of-australia: nga.gov.au refused automated requests; the report uses the 2023-24 annual report PDF.
 - national-portrait-gallery-london: Blavatnik's oil money and Ukraine's 2023 sanction come from Wikipedia only.
 - national-museum-of-natural-history-smithsonian: David Koch is documented as an advisory board member, not a trustee.
+
+## d019 slop check (186 entries; every report changed)
+- mowaa: the donors' page is undated and names NNPC Seplat Energy, Lekoil Nigeria Limited and Azura Power West Africa Limited; no per-donor amounts or years. The Oba dispute dated: request two days before the preview, protest 9 Nov 2025, revocation 10 Nov (Museums Association) against a "social media scam" denial (Apollo), Assembly resolution 22 Dec 2025, committee report 20 Aug 2026; the Edo committee's figures are the committee's claims.
+- nam-june-paik-art-center-yongin: Hyundai: US Department of Labor fine 29 Sept 2022 and consent decree, Alabama Department of Labor fines, divestment announced 24 Feb 2023. The Hyundai Motor Group release says Hyundai runs the Translocal Series; Gyeonggi Ilbo reports four 2025 exhibitions "thanks to Hyundai Motor's sponsorship"; no reporting of the KRW 600M. Admission 4,000 won for adults (Gyeonggi page); free for under 6, over 66, disabled visitors.
+- nasjonalmuseet-national-museum-of-norway: the protest heading is not labelled Fossil fuels: McGowan in Klassekampen 12 March 2022, Kydland reply 18 March 2022, appeal 10 June 2022.
+- national-galleries-of-scotland: Baillie Gifford 2 July 2024 (book festival exit May 2024); BP: 2016 and 2018 protests, 11 Nov 2019 hosting ended "in its present form" (Hyperallergic).
+- nafasi-art-space-dar-es-salaam: TotalEnergies is not on the partners page; the VIA Creative page is undated except 13 Oct 2022; no reporting after 2022.
+- national-art-museum-belarus-minsk: Monich dismissal July 2020 (Current Time, 13 July 2020); no reporting of Sber Bank as a sponsor.
+- national-art-gallery-of-namibia-windhoek: the 2014 Solari Bozzi section rests on search excerpts of ARTICLE 19 and Censorpedia (403); no news report found.
+- musée-dorsay-paris: the Epstein item (listed 4 Feb 2026) rests on an ARTnews piece not read; the Slate item was 403.

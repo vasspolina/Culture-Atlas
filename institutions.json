@@ -4462,7 +4462,82 @@
         "funder": "Baillie Gifford",
         "institutions": 6
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Executive non-departmental public body that runs the Scottish National Gallery, the Scottish National Portrait Gallery and the Scottish National Gallery of Modern Art in Edinburgh, and two partner galleries, Duff House and Paxton House (Wikipedia).",
+        "The National Gallery opened on The Mound in 1859 and the Portrait Gallery in 1889; the modern art gallery was established in Inverleith House in 1959, moved to the former John Watson's Institution in 1984, and the Dean Gallery (now Modern Two) opened in 1999 (Wikipedia).",
+        "Governed under the National Galleries of Scotland Act 1906, as amended in 1985, by trustees appointed by Scottish Government ministers; registered charity, about 327 staff, Director-General Anne Lyden (Wikipedia).",
+        "New Scottish galleries opened at the National in September 2023 (The Art Newspaper, Rachel Ashcroft, 12 January 2024). No reporting found of opening hours, admission or accessibility details."
+      ],
+      "funding_verdict": "National Galleries of Scotland: mainly public: Scottish Government grant-in-aid, plus donations, membership and sponsors including Baillie Gifford",
+      "funding": [
+        "Scottish Government grant-in-aid; for 2024/25 about 95% goes on salaries, leaving 5% for running costs. A dossier by senior executives expects a deficit, and energy costs rose 72% in two years (The Art Newspaper, Rachel Ashcroft, 12 January 2024).",
+        "The galleries hope to cover running costs through visitor donations and membership (The Art Newspaper). No income totals could be confirmed: the 2023-24 accounts PDF could not be read.",
+        "Baillie Gifford, an Edinburgh asset manager: sponsor of the galleries; Baillie Gifford declined to discuss the value or length of the sponsorship (The Art Newspaper, Anny Shaw, 2 July 2024).",
+        "BP: the galleries hosted the BP Portrait Award, shown in London first and then touring to Edinburgh; they ended it \"in its present form\" after the 2019 show (Hyperallergic, 11 November 2019). No reporting found of a full donor list."
+      ],
+      "red_flags": [
+        {
+          "heading": "Protest against Baillie Gifford sponsorship",
+          "points": [
+            "2 July 2024: the galleries said they would keep Baillie Gifford as a sponsor after protests over its ties to fossil fuels and Israel. Director-General Anne Lyden said the galleries are \"confident that the funding we receive from Baillie Gifford meets our strong ethical standards\"; an ethics committee reviewed the relationship and leaders consulted the Scottish Government (The Art Newspaper, Anny Shaw).",
+            "Campaign: the Fossil Free Books campaign demanded that Baillie Gifford divest from fossil fuels and from companies involved in Israeli occupation; its statement had more than 800 signatories. In May 2024, after protests, Baillie Gifford ended its sponsorship of nine book festivals (The Art Newspaper). Baillie Gifford says 2% of client money is in fossil fuel companies against a market average of 11% (its own statement).",
+            "4 August 2026: Snack (Zo\u00eb White), interviewing Art Workers for Palestine Scotland, an openly partisan advocacy group whose campaign targets the Edinburgh International Festival, reports in its own words that \"many of the largest institutions including the National Galleries of Scotland still receive backing from the firm\"."
+          ]
+        },
+        {
+          "heading": "BP sponsorship dropped under pressure",
+          "points": [
+            "2016 and 2018: the Scottish branch of the activist group BP or Not BP? protested the BP Portrait Award at the Edinburgh gallery, in 2016 dressed as BP executives, in 2018 at the main entrance. 11 November 2019: the galleries announced they would no longer host the exhibition \"in its present form\" after the 2019 prize; trustees cited the \"climate emergency\" (Hyperallergic, Naomi Polonsky)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Criticism concerns sponsors, not the collection or buildings; art press coverage is mostly news reports of the campaigns and the galleries' replies.",
+        "items": [
+          {
+            "outlet": "The Art Newspaper",
+            "title": "Anny Shaw, \"National Galleries of Scotland will continue to take sponsorship from Baillie Gifford despite protests over ties with fossil fuel and Israel\" (2024)",
+            "url": "https://www.theartnewspaper.com/2024/07/02/national-galleries-of-scotland-will-continue-to-take-sponsorship-from-baillie-gifford-despite-protests-over-ties-with-fossil-fuel-and-israel",
+            "points": [
+              "Campaigners call on Baillie Gifford to divest; the galleries defend the sponsorship. It names no campaign aimed at the galleries alone; the protests it records led Baillie Gifford to end sponsorship of nine book festivals. A critic quoted says the decision is \"woefully out of tune\"."
+            ]
+          },
+          {
+            "outlet": "Hyperallergic",
+            "title": "Naomi Polonsky, \"Invoking 'Climate Emergency,' National Galleries of Scotland Will End Ties With British Petroleum\" (2019)",
+            "url": "https://hyperallergic.com/527725/invoking-climate-emergency-national-galleries-of-scotland-will-end-ties-with-british-petroleum/",
+            "points": [
+              "BP or Not BP? argues BP uses the prize to \"whitewash its reputation\"; the galleries ended the partnership \"in its present form\" after the 2019 prize."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "Most of the money is Scottish Government grant, of which 95% goes on salaries in 2024/25, so private income matters to the galleries. The weak points are the Baillie Gifford sponsorship, kept in 2024 after protests, and its undisclosed value. Worth watching: whether Baillie Gifford stays and whether the accounts disclose its gift.",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Galleries_of_Scotland"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/07/02/national-galleries-of-scotland-will-continue-to-take-sponsorship-from-baillie-gifford-despite-protests-over-ties-with-fossil-fuel-and-israel"
+        },
+        {
+          "url": "http://www.theartnewspaper.com/2024/01/12/national-galleries-of-scotland-facing-a-very-real-challenge-as-report-reveals-continuing-financial-strain"
+        },
+        {
+          "url": "https://hyperallergic.com/527725/invoking-climate-emergency-national-galleries-of-scotland-will-end-ties-with-british-petroleum/"
+        },
+        {
+          "url": "https://www.snackmag.co.uk/interview-art-workers-for-palestine-scotland-on-the-case-for-a-cultural-boycott",
+          "note": "advocacy source"
+        }
+      ],
+      "website": "https://www.nationalgalleries.org (checked 2026-10-24; returned HTTP 403 to automated requests, so its pages could not be read)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "Art Gallery of Alberta",
@@ -25944,7 +26019,70 @@
         "funder": "TotalEnergies",
         "institutions": 8
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Contemporary art centre in the Light Industrial Area of Mikocheni B, Eyasi Road, Dar es Salaam (Nafasi site).",
+        "Founded in 2008 by a small group of Tanzanian artists (Nafasi's about page). Artribune (2021) dates the idea to 2009.",
+        "Registered as an NGO under Tanzania's NGO Act (2002), number 00NGO/00003977 (Nafasi site). A board of volunteers oversees governance; the director is Lilian Mushi (Nafasi about page).",
+        "Built on an abandoned industrial plot; a large warehouse is the main exhibition space and holds six studios, a library and offices. Fifteen shipping containers from the port were later converted into studios, two galleries and a children's space (Artribune).",
+        "On site: \"over 20\" studios and workshop spaces on the about page, plus several galleries and performance platforms, a children's art space and an art library (Nafasi site). The 10-year anniversary page counts \"37 studios, exhibition and performance spaces\" together.",
+        "Programmes: Nafasi Academy for Contemporary Art, an artist residency (over 100 artists from more than 30 countries, per Artribune), and the FEEL FREE grant and incubation programme.",
+        "Visiting: no opening hours on the pages read; the site points to a \"Visit Us\" section."
+      ],
+      "funding_verdict": "Nafasi Art Space: donor-funded non-profit: European embassies and development funders, plus own income from commissions, rents and member contributions",
+      "funding": [
+        "Own income: commissions on works sold in its galleries, contributions from artists who use the space, and rent from its venues; also individual donations, crowdfunding and project grants (Artribune).",
+        "Embassy of Switzerland in Tanzania: Tanzania Cultural Programme Phase 1, 2022 to 2025; also 2020 to 2021 (partners and funders page). The page also lists Pro Helvetia and SDC in 2017.",
+        "Royal Norwegian Embassy: 2017 to 2018, 2018 to 2021 and 2022 to 2024 (partners and funders page).",
+        "Hivos Voice 2020 to 2021; The African Arts Trust 2017; Hivos 2013 to 2016; European Union 2012 to 2016; Danida (Embassy of Denmark) 2011 to 2014; CKU (Danish Centre for Culture and Development) 2014 to 2017; NMB Bank 2017 (partners and funders page).",
+        "With support from the Danish Embassy, a space was located and six studios were built (10-year anniversary page).",
+        "Under \"Friends of Nafasi\" the partners and funders page shows Coca-Cola and Pyramid Pharma as logos, with no years or amounts. The African Arts Trust is listed for 2015 as well as 2017.",
+        "No reporting found of amounts for any funder, and no accounts found."
+      ],
+      "red_flags": [
+        {
+          "heading": "TotalEnergies, a fossil fuel partner",
+          "points": [
+            "Nafasi's undated VIA Creative page announces its \"ongoing partnership with TotalEnergies Tanzania\". VIA is a road-safety programme of the TotalEnergies Foundation; Nafasi ran it in 51 public primary schools in Dar es Salaam, and a team of five students was to represent Tanzania in the international competition on 13 October 2022. No amount is stated.",
+            "TotalEnergies does not appear on Nafasi's partners and funders page. No reporting found of the partnership after 2022.",
+            "Documented objection to the funder: Human Rights Watch said in July 2023 that the East African Crude Oil Pipeline, in which TotalEnergies holds a 62% stake, left displaced people with delayed or inadequate compensation. TotalEnergies rejected the accusations (Al Jazeera). The pipeline runs through Tanzania to Tanga. No reporting found of a campaign aimed at Nafasi over this."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism found in art media.",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "Nafasi is funded mainly by European embassies and development funders, with its own income from commissions and rents. The weak point is the 2022 TotalEnergies partnership on VIA Creative, a fossil fuel company that holds 62% of the East African Crude Oil Pipeline, which Human Rights Watch criticised in 2023. Worth watching: whether the partnership continues and whether Nafasi publishes amounts and accounts.",
+      "sources": [
+        {
+          "url": "https://nafasiartspace.org"
+        },
+        {
+          "url": "https://www.nafasiartspace.org/about/"
+        },
+        {
+          "url": "https://www.nafasiartspace.org/partners-funders/"
+        },
+        {
+          "url": "https://www.nafasiartspace.org/sanaa-yetu-miaka-10-ya-nafasi/"
+        },
+        {
+          "url": "https://www.nafasiartspace.org/via-creative-awarding-ceremony/"
+        },
+        {
+          "url": "https://www.artribune.com/professioni-e-professionisti/who-is-who/2021/12/tanzania-nafasi-art-space-dar-es-salaam/"
+        },
+        {
+          "url": "https://www.aljazeera.com/news/2023/7/10/uganda-oil-pipeline-has-devastated-livelihoods-hrw"
+        }
+      ],
+      "website": "https://nafasiartspace.org (checked 2026-10-24; loads, with some unfinished placeholder content)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "id": "le-18-marrakech",
@@ -33472,7 +33610,79 @@
         "funder": "Hyundai",
         "institutions": 5
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Public art centre in Giheung-gu, Yongin, Gyeonggi Province, at 10 Paiknamjune-ro (Gyeonggi Province English site); Wikipedia names Giheung station as the nearest transit.",
+        "The basic plan was set with the artist Nam June Paik in November 2001; the building opened with a Nam June Paik Festival on 8 October 2008 (Gyeonggi Province English site). Paik died before he saw it (JoongAng Daily, Chung Jae-sook, 7 April 2010).",
+        "Named for Nam June Paik, the Korean American video artist; its permanent collection is of his work, with temporary exhibitions (Wikipedia).",
+        "Designed by Kirsten Schemel and Marina Stankovic of KSMS Schemel Stankovic Architects, Berlin, who won a 2003 international competition of 430 entries (centre site). Three storeys above ground and two below, about 5,600 square metres on a 30,983 square metre site, with a screen facade of layered reflective and partly printed glass.",
+        "Holds galleries, a video archive and multi-purpose spaces (centre site). It awards the Nam June Paik Art Center Prize, first given in 2009 (Wikipedia).",
+        "Visiting: Tuesday to Sunday 10am to 6pm (until 7pm in July and August), closed Mondays, 1 January and Thanksgiving. Adults 4,000 won; students and soldiers 2,000 won; under 6, over 66 and people with disabilities free (Gyeonggi Province English site, undated). The centre's own site lists sign language interpretation for exhibition guides. The Gyeonggi page shows a 25% discount for Gyeonggi Province residents and a 50% discount for adult groups of 20 or more. No page opened states that admission is free for all visitors; the centre's home pages opened give no fee. No reporting found of further accessibility details."
+      ],
+      "funding_verdict": "Nam June Paik Art Center: public: Gyeonggi Province through the Gyeonggi Cultural Foundation, with support from Hyundai Motor for its exhibitions",
+      "funding": [
+        "The centre is run by the Gyeonggi Cultural Foundation (centre site footer). The site states that individual donations and corporate and organisational sponsorship support its programmes.",
+        "Hyundai Motor money reaching the centre today: Hyundai Motor Group (23 June 2026) says it runs the Hyundai Translocal Series, launched in 2025, in which the centre and the Pinacoteca de Sao Paulo co-organise an exhibition opening in November 2026; the Herald (22 June 2026) describes Hyundai Motor as the series' organiser and does not say Hyundai sponsors the centre directly. The Gyeonggi Ilbo (June 2025) reports that the 2025 programme was set at four exhibitions \"thanks to Hyundai Motor's sponsorship\" (translation from the Korean), against an exhibition budget of 510 million won.",
+        "No reporting found of the amount or term of Hyundai's support. No reporting found of a KRW 600 million sponsorship from Hyundai. Hyundai's announcement gives no funding figure or duration.",
+        "No reporting found of the centre's own accounts; the foundation's PDF documents could not be read."
+      ],
+      "red_flags": [
+        {
+          "heading": "Hyundai and child labour at a subsidiary",
+          "points": [
+            "July 2022: Reuters reported that SMART, a Hyundai subsidiary in Luverne, Alabama, hired minors as young as 12; a former employee estimated about 50 (Wikipedia, summarising Reuters). SMART supplies parts to Hyundai's Montgomery plant. Hyundai said it does not tolerate illegal employment practices at any Hyundai entity.",
+            "Authorities: after an inspection on 9 August 2022, the US Department of Labor fined SL Alabama, another supplier, $30,076 on 29 September 2022 and a federal consent decree barred it from shipping goods made with underage labour. The Alabama Department of Labor fined SL Alabama and JK USA $17,800 each. Neither agency accused Hyundai or Kia of wrongdoing, and the article reports no fine against SMART itself (Wikipedia).",
+            "24 February 2023: Hyundai CEO Jae Hoon Chang told shareholders Hyundai would divest its controlling stake in SMART (Wikipedia).",
+            "Link to the centre: Hyundai Motor's support for the centre is described under FUNDING; no source opened connects the Alabama case to the centre."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism found in art media.",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The money is mainly Gyeonggi Province's public budget, with support from Hyundai Motor for its exhibitions. The weak points are the undisclosed size and term of the Hyundai support and Hyundai's 2022 child-labour case at its Alabama subsidiary, whose controlling stake it said in February 2023 it would divest. Worth watching: whether the foundation publishes sponsor amounts for the Translocal Series.",
+      "sources": [
+        {
+          "url": "https://njp.ggcf.kr/"
+        },
+        {
+          "url": "https://njpart.ggcf.kr/"
+        },
+        {
+          "url": "https://njpart.ggcf.kr/pages/architecture"
+        },
+        {
+          "url": "https://english.gg.go.kr/blog/daily-news/2956/"
+        },
+        {
+          "url": "https://english.gg.go.kr/nam-june-paik-art-center/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nam_June_Paik_Art_Center"
+        },
+        {
+          "url": "https://www.hyundaimotorgroup.com/en/news/hyundai-motor-announces-new-partner-institutions-for-hyundai-translocal-series"
+        },
+        {
+          "url": "https://www.heraldk.com/article/2026062215565978701"
+        },
+        {
+          "url": "https://www.kyeonggi.com/article/20250622580269"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hyundai_Alabama_child_labor_allegations"
+        },
+        {
+          "url": "https://www.koreajoongangdaily.com/opinion/viewpoint-the-testament-of-paik-namjune/11621639"
+        }
+      ],
+      "website": "https://njp.ggcf.kr/ (checked 2026-10-24; loads in Korean, with an English site at njpart.ggcf.kr)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "Colomboscope",
@@ -41054,7 +41264,84 @@
         "funder": "LVMH / Louis Vuitton",
         "institutions": 5
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "National museum of art in the former Gare d'Orsay railway station on the Left Bank of the Seine in Paris (Wikipedia).",
+        "The station was built from 1898 to 1900 for the Paris-Orleans railway and listed as a historic monument in 1978; the museum opened in December 1986, inaugurated by President Francois Mitterrand (Wikipedia).",
+        "Architects of the station: Lucien Magne, Emile Benard and Victor Laloux; the museum conversion was won by the ACT Architecture team in a 1978 competition, with interiors by Gae Aulenti (Wikipedia).",
+        "Since 2010 it shares a public body with the Musee de l'Orangerie, the Etablissement public du musee d'Orsay et du musee de l'Orangerie (French Wikipedia).",
+        "Visitors: 3,785,134 in 2025 (French Wikipedia).",
+        "Visiting: open Tuesday to Sunday 9:30 to 18:00, Thursday until 21:45; closed Monday, 1 May and 25 December. Entry ticket EUR 16 and same-day desk ticket EUR 14. Free for under-18s, EU and EEA visitors under 26, job seekers and disabled visitors with one companion, and for everyone on the first Sunday of each month. From 10 March 2026 until summer 2028 the guide says booking a time slot online is strongly recommended, not required. All galleries stay open during building work (artvisitguide.com, a third-party guide)."
+      ],
+      "funding_verdict": "Musee d'Orsay: mainly public: a French state museum, with private patronage for acquisitions and building projects",
+      "funding": [
+        "The museum is a national museum run by a state public body (French Wikipedia).",
+        "No reporting found of the museum's annual budget, state grant or own-income figures in sources that could be opened.",
+        "LVMH: funded the January 2023 acquisition of Gustave Caillebotte's \"La Partie de bateau\" (1877), priced at EUR 43 million against an acquisition budget of around EUR 3 million a year (The Conversation; LVMH announcement, 2 January 2023).",
+        "The Conversation's author states that the sponsorship carries a tax deduction of 90% of the cost of the painting, so \"precisely 90%\" of LVMH's communication campaign is paid by the taxpayer.",
+        "An anonymous US patron gave EUR 20 million toward the \"Orsay Grand Ouvert\" renovation, through the American Friends of the Musees d'Orsay et de l'Orangerie (Wikipedia).",
+        "Daniel Marchesseau gave EUR 5 million from the sale of 18 sculptures by Francois-Xavier and Claude Lalanne (French Wikipedia)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "Little criticism of the museum itself found in art media. The strongest critical pieces concern LVMH's patronage and its tax treatment, written by an academic and a general magazine rather than art press.",
+        "items": [
+          {
+            "outlet": "The Conversation",
+            "title": "Tanguy Gatay, \"The group Louis Vuitton (LVMH), a gift to the Musee d'Orsay and a huge tax incentive: business as usual?\" (2025)",
+            "url": "https://theconversation.com/the-group-louis-vuitton-lvmh-a-gift-to-the-musee-dorsay-and-a-huge-tax-incentive-business-as-usual-265403",
+            "points": [
+              "Argues the purchase is mainly public relations for LVMH at small cost to the company, while \"it is the taxpayer who is bankrolling LVMH's communication campaign\".",
+              "Argues donations can create a sense of indebtedness that gives the group diffuse influence over the museum.",
+              "Names Bernard Arnault and LVMH; reports no response from the museum. The author is a doctoral student in art history at Universite Paris Nanterre."
+            ]
+          },
+          {
+            "outlet": "Slate.fr",
+            "title": "\"Marche de l'art: LVMH fait-il du mecenat ou de l'optimisation fiscale ?\" (year not confirmed)",
+            "url": "https://www.slate.fr/culture/marche-art-lvmh-mecenat-optimisation-fiscale-tableau-partie-bateau-musee-orsay-caillebotte-influence-arnault",
+            "points": [
+              "Asks in its title whether the gift is patronage or tax optimisation. Page returned 403; only the search excerpt was read."
+            ]
+          }
+        ]
+      },
+      "wider_context": [
+        "Epstein visit: ARTnews carries the headline \"Jeffrey Epstein Apparently Got Private Access to the Musee d'Orsay with Woody Allen\" (listed as 4 February 2026 in a search result). The article is paywalled and was not opened, so the date of the visit and its circumstances are not confirmed here.",
+        "Leon Black loan: in 2014 the financier Leon Black lent Van Gogh's \"Quarry near Saint-Remy\" to the museum for \"Van Gogh/Artaud: Le Suicide de la Societe\" (The Art Newspaper, Martin Bailey, first published 13 February 2026). Epstein files released by the US Department of Justice in January show Epstein gave Black financial advice; Black has denied wrongdoing in his dealings with Epstein and says he was unaware of Epstein's crimes before 2019.",
+        "Neither item is a gift or funding link between Epstein and the museum."
+      ],
+      "bottom_line": "The museum's money is French state money plus patronage, and no source found shows a funder of the museum with a documented controversy. The weak points are the tax cost of the LVMH gift, which a critic says falls about 90% on the public, and the absence of any budget figures that could be checked. Worth watching: how future sponsored purchases are priced against public subsidy.",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mus%C3%A9e_d%27Orsay"
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Mus%C3%A9e_d%27Orsay"
+        },
+        {
+          "url": "https://theconversation.com/the-group-louis-vuitton-lvmh-a-gift-to-the-musee-dorsay-and-a-huge-tax-incentive-business-as-usual-265403"
+        },
+        {
+          "url": "https://www.slate.fr/culture/marche-art-lvmh-mecenat-optimisation-fiscale-tableau-partie-bateau-musee-orsay-caillebotte-influence-arnault",
+          "note": "excerpt only"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2026/02/13/epstein-papers-reveal-leon-black-as-key-collector-of-van-gogh-works"
+        },
+        {
+          "url": "https://www.artnews.com/art-news/news/jeffrey-epstein-musee-dorsay-woody-allen-visit-1234771983/",
+          "note": "paywalled"
+        },
+        {
+          "url": "https://www.artvisitguide.com/musee-orsay-opening-hours/"
+        }
+      ],
+      "website": "https://www.musee-orsay.fr/ (checked 2026-10-24; returned HTTP 403 to automated requests, so its pages could not be read)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "Kunsthalle Bielefeld",
@@ -50571,7 +50858,71 @@
       }
     ],
     "records_note": "The museum's site lists administration and documents but no annual report, accounts, sponsor list or governing board.",
-    "affiliations_note": "Runs three branch museums: the Vankovich House in Minsk, the Museum of Belarusian Folk Art and the Byalynitsky-Birulya museum in Mogilev."
+    "affiliations_note": "Runs three branch museums: the Vankovich House in Minsk, the Museum of Belarusian Folk Art and the Byalynitsky-Birulya museum in Mogilev.",
+    "details": {
+      "overview": [
+        "State art museum in Minsk, the largest art museum in Belarus, with more than 30,000 works in about 20 collections, mainly Belarusian art (Wikipedia).",
+        "Founded as the State Art Gallery on 24 January 1939 by resolution of the Council of People's Commissars of Belarus, in 15 halls of a former girls' gymnasium; nearly all of its roughly 2,711 early works were lost in the Second World War. Renamed the National Art Museum in 1993 (Wikipedia).",
+        "Early holdings came partly from the Vitebsk Museum of Modern Art (1919 to 1925) (Wikipedia).",
+        "Directors: Uladzimir Prakaptsou (1998 to 2023), then Ganna Konanava (2023 to present) (Wikipedia).",
+        "Nasha Niva (7 July 2026) reports that Marc Chagall's \"Stroll\" (\"Progulka\"), one panel of a triptych, was brought to the museum earlier and that its display was extended to October 2026 after talks between the Belarusian and Russian prime ministers. The article does not say who lent it.",
+        "No reporting found of the building's architect, opening hours, admission or accessibility in sources that could be opened."
+      ],
+      "funding_verdict": "National Art Museum of the Republic of Belarus: public: a state museum, with a past partnership with Belgazprombank",
+      "funding": [
+        "No reporting found of the museum's budget, accounts or a sponsor list.",
+        "Chagall exhibition: no source opened names a sponsor. The Nasha Niva article names no organiser or sponsor. No reporting found of Sber Bank as a sponsor of the museum or the Chagall exhibition.",
+        "Belgazprombank: its Art-Belarus project, which has a public-private partnership agreement with the Ministry of Culture signed on 17 June 2015, hosted \"Ten Centuries of Belarusian Art\" there from 27 March to 10 July 2014 (Art-Belarus site). On 24 July 2012 the bank gave the museum two Chagall prints, \"Vision of the Apocalypse\" and \"The Way of the Cross\" (myfin.by). The bank's \"Autumn Salon\" is a sales show for young artists run with the Belarusian Union of Artists (Art-Belarus site); a search result places recent editions at the Palace of Arts, not this museum.",
+        "Belgazprombank ownership in 2020: Gazprom and Gazprombank held 49.66% each (Prime Press, 20 June 2020)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Staff dismissed over a political poem, 2020",
+          "points": [
+            "July 2020: guide Nikita Monich was dismissed from the museum after writing a poem addressed to Lukashenko about the seizure of about 150 paintings from Belgazprombank's collection; the director asked him to remove it \"not to embarrass the museum in this pre-election time\" (translation), he refused and offered to be dismissed instead, and he was fired (Current Time, 13 July 2020). The museum is a state museum (Wikipedia: created by a resolution of the Council of People's Commissars of Belarus), so the dismissal was by a state-run employer.",
+            "Context: Current Time says the seizure of the paintings was part of the criminal case against Viktar Babaryka, a potential presidential candidate; Myfin (2012) calls him chairman of Belgazprombank's board. Prime Press (20 June 2020) dates his questioning by the financial investigations department to 18 June 2020."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism of the museum found in art media. The reporting found is from Belarusian news outlets.",
+        "items": [
+          {
+            "outlet": "Current Time",
+            "title": "\"Arrested for Telegram and Bicycles, Fired for Posts\" (13 July 2020; the outlet's Russian title, translated here)",
+            "url": "https://www.currenttime.tv/a/belarus-repressions-lukashenko/30723723.html",
+            "points": [
+              "Reports the Monich dismissal; does not name the museum director. News report from Current Time, not art press."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The money is Belarusian state money, and no source opened shows a sponsor for the current Chagall show. The weak points are the museum's place in a state where staff were dismissed for political speech in 2020, its earlier ties to Belgazprombank, which Gazprom and Gazprombank owned in 2020, and the lack of any published budget or sponsor list. Worth watching: who sponsors the Chagall show and whether the museum publishes accounts.",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Art_Museum_of_the_Republic_of_Belarus"
+        },
+        {
+          "url": "https://nashaniva.com/ru/399349"
+        },
+        {
+          "url": "https://artbelarus.by/ru/about.html"
+        },
+        {
+          "url": "https://myfin.by/article/events/354-podarok-muzeyu?app=true"
+        },
+        {
+          "url": "https://www.currenttime.tv/a/belarus-repressions-lukashenko/30723723.html"
+        },
+        {
+          "url": "http://primepress.by/news/ekonomika/belarus_prosecutor_general_sees_threat_to_national_security_behind_belgazprombank_case-21961/"
+        }
+      ],
+      "website": "https://artmuseum.by (checked 2026-10-24; timed out twice when fetched, so its pages could not be read)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "id": "sun-mu-studio-dmz",
@@ -56553,7 +56904,68 @@
     "grade": 3,
     "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "records_note": "NAGN posts annual reports for 2019/20 to 2024/25 with audited statements, names its seven trustees, and names its strategic partners in the latest report.",
-    "finances_note": "FY2024-25 income NAD 9.81M: about 90 percent Ministry of Education, Arts and Culture, 7 percent earned, 2 percent foundation and donor money (audited statements p. 56)."
+    "finances_note": "FY2024-25 income NAD 9.81M: about 90 percent Ministry of Education, Arts and Culture, 7 percent earned, 2 percent foundation and donor money (audited statements p. 56).",
+    "details": {
+      "overview": [
+        "State-owned art gallery in central Windhoek, at the corner of Robert Mugabe Avenue and John Meinert Street (NAGN site).",
+        "Founded in 1990 (Wikipedia). Its site calls it \"Namibia's premier institution for the collection, preservation, and promotion of visual arts and crafts\" (stated by the gallery).",
+        "Permanent exhibition of Namibian, African and European art, plus exhibitions by local artists (Wikipedia). No reporting found of the building's architect or earlier use.",
+        "Hosts the Bank Windhoek Triennial, \"Namibia's biggest visual art competition\" (NAGN's words); the 2025/2026 theme is \"Namibian Identity: The Linework of a Country's Contours and Wealth\", with a N$50,000 first prize and a solo exhibition at the gallery, a launch on 6 August 2026 and a submission deadline of 27 May 2026 (NAGN triennial page).",
+        "Leadership: Wikipedia lists Michelle Olga van Wyk as CEO, Snobia Kaputu as CEO from 2017 to 2022 and Hercules Viljoen as director from 2012 to 2017.",
+        "Visiting: Monday 14:00 to 17:00, Tuesday to Friday 08:00 to 17:00, Saturday 09:00 to 14:00, closed Sunday. No admission fee or accessibility information is listed on the pages read."
+      ],
+      "funding_verdict": "National Art Gallery of Namibia: public: a state-owned gallery, with Bank Windhoek as partner of its triennial",
+      "funding": [
+        "State-owned (NAGN site, Wikipedia). No reporting found of the size of the government grant: the 2023/24 and 2024/25 annual report PDFs exceeded the reading tool's size limit.",
+        "Bank Windhoek hosts the 2025/2026 Triennial in partnership with the gallery; the page states prizes of N$50,000, N$35,000 and N$25,000 but not who pays them or the bank's amount (NAGN triennial page).",
+        "No reporting found of other sponsors on the pages read. The annual reports for 2023/24 and 2024/25 could not be read."
+      ],
+      "red_flags": [
+        {
+          "heading": "2014 exhibition withdrawn over photographs of Himba girls",
+          "points": [
+            "March 2014: the gallery objected to photographs of what the excerpts call underage girls in Paolo Solari Bozzi's show based on his book \"Namibia Sun Pictures\", which was set to open on 3 March 2014. The gallery contended the girls were too young to consent to being photographed and tried to negotiate with him to withdraw those photographs; he withdrew the whole series instead. This account rests on search-result excerpts of ARTICLE 19 and the Censorpedia wiki of the National Coalition Against Censorship; both pages returned 403 when opened, and no news report of the episode was found.",
+            "The excerpts say the gallery denied that this was censorship, saying the decision to withdraw the whole series was the artist's (stated by the gallery), and that critics noted the arbitrary nature of its request. Both statements come from the same excerpts.",
+            "No reporting found of a boycott or protest aimed at the gallery."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "No criticism found in art media. The 2014 episode is recorded by free-expression groups, not by art press.",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The gallery's money is Namibian state funding with Bank Windhoek attached to the triennial; no funder with a documented controversy was found. The weak points are the 2014 withdrawal of a photography show, which the gallery says was the artist's choice and which is documented only in excerpts of two free-expression group pages, and the lack of readable income figures. Worth watching: the amount of the state grant and Bank Windhoek's share in the annual reports.",
+      "sources": [
+        {
+          "url": "https://nagn.org.na/"
+        },
+        {
+          "url": "https://nagn.org.na/projects/"
+        },
+        {
+          "url": "https://nagn.org.na/2025-2026-bank-windhoek-triennial-art-competition/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Art_Gallery_of_Namibia"
+        },
+        {
+          "url": "https://wiki.ncac.org/Namibia_Sun_Pictures_(exhibition",
+          "note": "(advocacy source; excerpt only"
+        },
+        {
+          "url": "https://article19.org/resources/artist-alert-march-2014",
+          "note": "advocacy source; excerpt only"
+        },
+        {
+          "url": "https://nagn.org.na/wp-content/uploads/2026/04/NAGN-AR-2024-2025_Final.pdf",
+          "note": "too large to read"
+        }
+      ],
+      "website": "https://nagn.org.na/ (checked 2026-10-24; loads)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "Kathmandu Triennale",
@@ -64001,7 +64413,96 @@
         "funder": "Qatar Museums",
         "institutions": 5
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Museum of Islamic art on an artificial peninsula about 60 metres off the Doha Corniche, in a park of roughly 290,000 square metres, linked to the mainland by two bridges (Wikipedia).",
+        "One of the first projects initiated by Qatar Museums (stated by the museum); the then-emir opened it on 22 November 2008 (Wikipedia) and it opened to the public on 1 December 2008 (Bidoun; Wikipedia gives 8 December).",
+        "Collection of Islamic art from the 7th to the 20th centuries, from Spain, Egypt, Iran, Iraq, Turkey, India and Central Asia.",
+        "Designed by I. M. Pei, inspired by the fountain of the Ibn Tulun Mosque in Cairo; limestone exterior, five floors, a central tower and dome; interiors by Wilmotte Associates; built by the Turkish firm Baytur.",
+        "On site: a library of more than 21,000 books on Islamic art, a cafe and a gift shop (Qatar Living), the IDAM restaurant (Wikipedia) and MIA Park.",
+        "Reopened on 5 October 2022 after a ten-month renovation (museum site); Wikipedia counts 18 renovated galleries.",
+        "Visiting: open Saturday to Tuesday 9am to 7pm, Thursday 9am to 9pm, Friday 1:30pm to 7pm, closed Wednesday (museum site). Qatar Living (June 2026) gives QAR 50 for non-resident adults, though its FAQ says typically around QAR 100; free for Qatar residents with ID and children aged 16 and under. The museum's page lists no prices. No reporting found of wheelchair access details."
+      ],
+      "funding_verdict": "Museum of Islamic Art: state-owned: owned by Qatar Museums, a Qatari government entity; no sponsor or donor named",
+      "funding": [
+        "Two unnamed people close to the situation said the museum's costs are ringfenced while budgets were cut elsewhere, after the emir approved cuts to culture and other budgets in early 2016. Qatar Museums declined to comment on the culture budget (The Art Newspaper, Georgina Adam, 10 March 2016).",
+        "No reporting found of a corporate sponsor, private donor, published accounts or an official construction cost for the museum."
+      ],
+      "red_flags": [
+        {
+          "heading": "Gulf state body",
+          "points": [
+            "Status: Qatar Museums is \"a Qatari government entity\", founded in 2005 and formerly the Qatar Museums Authority (Wikipedia). It operates under the patronage of the Amir, Sheikh Tamim bin Hamad Al Thani (Qatar Museums site).",
+            "Owner: the museum is owned by Qatar Museums (Wikipedia), which also runs Mathaf and the National Museum of Qatar and is chaired by Sheikha Al-Mayassa bint Hamad bin Khalifa Al Thani (Qatar Museums site).",
+            "10 March 2016: citing the Financial Times, The Art Newspaper reported that 240 Qatar Museums staff had been let go, leaving fewer than 800 of 1,200 two years earlier. Qatar Museums declined to confirm the figures."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Little criticism of the museum as an institution; the critical pieces found concern its displays and the state spending around it.",
+        "items": [
+          {
+            "outlet": "Bidoun",
+            "title": "Antonia Carver, \"Museum of Islamic Art\" (2009)",
+            "url": "https://bidoun.org/articles/museum-of-islamic-art",
+            "points": [
+              "The galleries are \"almost devoid of information\"; labels are minimal and audio guides \"offered some description\".",
+              "Objects are \"imbued with power and meaning more through the aesthetics of display than for their place in history\"; astrolabes sit on glass shelves \"as though it were an installation\".",
+              "Notes the museum's \"Bilbao-inspired brand-building potential\" and calls \"building bridges\" \"a hackneyed concept tacked on to nearly every cultural initiative in the Gulf\"."
+            ]
+          },
+          {
+            "outlet": "The Art Newspaper",
+            "title": "Georgina Adam, \"Football outscores culture as Qatar spending slumps\" (2016)",
+            "url": "https://www.theartnewspaper.com/2016/03/10/football-outscores-culture-as-qatar-spending-slumps",
+            "points": [
+              "News report on the 2016 cuts to Qatar Museums, not a critique of the museum; it relies on unnamed sources."
+            ]
+          },
+          {
+            "outlet": "openDemocracy",
+            "title": "Sarah El-Richani, \"The birth pangs of Qatar's art scene\" (2013)",
+            "url": "https://www.opendemocracy.net/en/birth-pangs-of-qatars-art-scene/",
+            "points": [
+              "Critics questioned how public money was used and where unannounced acquisitions ended up. It does not criticise the Museum of Islamic Art, which it cites as evidence that Qatar Museums cultivated local and regional culture."
+            ]
+          }
+        ]
+      },
+      "wider_context": [
+        "In 2013, social media users led by a Qatari journalist accused the Qatar Museums Authority of corruption, mismanagement and nepotism (openDemocracy, Sarah El-Richani).",
+        "The same article says some Qataris active on social media lamented Damien Hirst's sculptures, and gives two explanations for why Abdessemed's film \"Printemps\" was not shown at Mathaf: social media reports that Sheikha Mayassa intervened, and officials citing technical issues.",
+        "The museum is owned by Qatar Museums, the body these accusations name."
+      ],
+      "bottom_line": "The money behind the museum is Qatari state money channelled through Qatar Museums, with no private or corporate funder named in any source found. The weak points are the lack of published accounts or budget and the museum's place inside a state body. Worth watching: whether Qatar Museums publishes accounts or a sponsor list.",
+      "sources": [
+        {
+          "url": "https://mia.org.qa/en/about-us/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Museum_of_Islamic_Art,_Doha"
+        },
+        {
+          "url": "https://qm.org.qa/en/about-us/"
+        },
+        {
+          "url": "https://www.qatarliving.com/en/article/museum-of-islamic-art-doha-visitor-guide-highlights"
+        },
+        {
+          "url": "https://bidoun.org/articles/museum-of-islamic-art"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2016/03/10/football-outscores-culture-as-qatar-spending-slumps"
+        },
+        {
+          "url": "https://www.opendemocracy.net/en/birth-pangs-of-qatars-art-scene/"
+        }
+      ],
+      "website": "https://mia.org.qa (checked 2026-10-24; loads; www.mia.org.qa returned a self-signed certificate error)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "Victoria Gallery",
@@ -79772,7 +80273,90 @@
         "funder": "Mellon Foundation",
         "institutions": 17
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Museum and cultural campus in Benin City, within the ancient moats of the Benin Kingdom (The Art Newspaper, Catherine Hickley, 1 November 2024).",
+        "Designs by Adjaye Associates for the Edo Museum of West African Art were revealed in November 2020 (Wikipedia); \"Edo\" was dropped after a 2023 federal ruling that the Benin Bronzes belong to the Oba of Benin (Museums Association). Phillip Ihenacho is executive director and chair.",
+        "The first building is about 4,000 square metres of rammed earth, with an auditorium, conservation lab, library, exhibition space and amphitheatre (The Art Newspaper).",
+        "The public opening was planned for 11 November 2025 (Wikipedia). After the 9 November preview was disrupted, the museum closed to the public indefinitely and carried on with research and archaeology (Apollo, 15 December 2025).",
+        "Visiting: by appointment only (museum site)."
+      ],
+      "funding_verdict": "MOWAA: mixed: governments, foundations and Nigerian donors; ownership disputed",
+      "funding": [
+        "Founding partners (support page, undated): Edo State Government, Germany's Federal Foreign Office, Mellon Foundation, PI Trust, A. G. Leventis Foundation, British Museum.",
+        "About $20 million raised by November 2024 from the Edo state government, the German and Nigerian governments, Gerda Henkel Foundation, GIZ, Open Society Foundation and Ford Foundation, towards a campus expected to cost around $100 million; Mellon granted $3 million for training (The Art Newspaper). Apollo (15 December 2025) says MOWAA has attracted more than $25 million in total.",
+        "A committee chaired by Adams Oshiomhole, set up by Governor Okpebholo in November 2025, reported in August 2026 that the Obaseki administration spent N3.8 billion, and listed donations of \u20ac4 million from Germany and $1.5 million from Leventis (ThisDay, 22 August 2026); NAN says receipt is not confirmed. MOWAA management said it received more than $18 million for land and excavation; the Edo Accountant-General said the treasury knew of no international donor income, and the committee called the claim false (NAN, 11 September 2026).",
+        "No reporting found of audited accounts. Donors are named by tier without years."
+      ],
+      "red_flags": [
+        {
+          "heading": "Fossil fuel donors",
+          "points": [
+            "The museum's support page lists NNPC Seplat Energy, Lekoil Nigeria Limited and Azura Power West Africa Limited among its Leadership Circle donors. The page carries no date.",
+            "The page gives tier prices only (Leader $100,000, Senior Leader $500,000, or a quarter of each per year over four years) and does not say which tier any donor is in. No gift amounts or years found for these three."
+          ]
+        },
+        {
+          "heading": "Protest and dispute with the Oba of Benin",
+          "points": [
+            "Two days before the preview, the Oba asked Governor Monday Okpebholo to stop the opening, calling MOWAA \"fraught with greed, deceit, mischief and lack of transparency\". On 9 November 2025 some 40 protesters singing their allegiance to Oba Ewuare II stormed the complex during the preview (Apollo).",
+            "10 November 2025: Museums Association reports that Governor Okpebholo revoked the land's Certificate of Occupancy, citing \"overriding public interest\"; Apollo reports he later told Germany's ambassador this was a \"social media scam\" and nothing had been revoked.",
+            "22 December 2025: the Edo House of Assembly urged the state to take over ownership and control. 20 August 2026: the Oshiomhole committee recommended renaming the museum the Benin Royal Museum of African Art and returning it to the Oba to manage (NAN).",
+            "Unverified: a relative of the Oba said MOWAA \"deceived the Europeans\", from Apollo; he is on one side of the dispute. MOWAA denies any illegality in its land acquisition (Apollo) and says it never presented itself as the Benin Royal Museum to secure funding (Museums Association)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Coverage concerns the political and ownership row, not the art or architecture.",
+        "items": [
+          {
+            "outlet": "Apollo",
+            "title": "Barnaby Phillips, \"What has gone wrong at the Museum of West African Art?\" (15 December 2025)",
+            "url": "https://apollo-magazine.com/?p=1036066",
+            "points": [
+              "The crisis grew from a long rivalry between the Oba's circle and the museum's backers; an independent trust reassured European institutions but suggested to the Oba that he was losing control."
+            ]
+          },
+          {
+            "outlet": "Museums Association (Museums Journal)",
+            "title": "Geraldine Kendall Adams, \"Political row delays opening of Nigeria's Museum of West African Art\" (2025)",
+            "url": "https://www.museumsassociation.org/museums-journal/news/2025/11/political-row-delays-opening-of-nigerias-museum-of-west-african-art/",
+            "points": [
+              "News report: some of the public and Edo's traditional rulers felt a local project had been \"hijacked\" when it was rebranded."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The money is a mix of European and Nigerian state funds, foundations and named Nigerian donors, including three energy companies. The weak points are the disputed ownership and land, the Edo committee's figures against management's claim of more than $18 million received, and the lack of published accounts. Worth watching: the Edo white paper on the Oshiomhole report.",
+      "sources": [
+        {
+          "url": "https://wearemowaa.org/support"
+        },
+        {
+          "url": "https://apollo-magazine.com/?p=1036066"
+        },
+        {
+          "url": "https://nannews.ng/who-controls-benins-returned-treasures/"
+        },
+        {
+          "url": "https://www.museumsassociation.org/museums-journal/news/2025/11/political-row-delays-opening-of-nigerias-museum-of-west-african-art/"
+        },
+        {
+          "url": "http://www.theartnewspaper.com/2024/11/01/benin-city-museum-opens-first-part-of-planned-campus"
+        },
+        {
+          "url": "https://www.thisdaylive.com/2026/08/22/mowaa-panel-submits-probe-report-on-ownership-funding-indicts-past-govt/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Museum_of_West_African_Art"
+        }
+      ],
+      "website": "https://wearemowaa.org (checked 2026-10-24; loads)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "Mystetskyi Arsenal",
@@ -79799,7 +80383,97 @@
     "grade": 3,
     "grade_basis": "No flagged funder, but on record: protests or a boycott and state censorship.",
     "records_note": "It posts annual reports for 2017 to 2025 and audited statements for 2014 to 2019; the 2025 report names partners; no board is listed.",
-    "finances_note": "FY2025 income UAH 70.5M: about 54 percent state budget, 34 percent own revenue (tickets, services), 9 percent grants, sponsorship and other, 2 percent other income (annual report 2025, pp. 148-149)."
+    "finances_note": "FY2025 income UAH 70.5M: about 54 percent state budget, 34 percent own revenue (tickets, services), 9 percent grants, sponsorship and other, 2 percent other income (annual report 2025, pp. 148-149).",
+    "details": {
+      "overview": [
+        "Museum and exhibition complex at 28-30 Ivan Mazepa Street, Kyiv, in a former arsenal building within the Pechersk citadel, with about 60,000 square metres of exhibition area (museum site; Wikipedia).",
+        "Founded on President Viktor Yushchenko's initiative under a 2005 government order; the infobox gives 22 May 2006 as the establishment date (Wikipedia).",
+        "The building was a workshop for ammunition and cannons designed by Karl Johann Shpekle in 1798, built of yellow Kyiv brick with walls over 183 cm thick; excavations in 2005 to 2009 uncovered a necropolis of nuns' burials from an earlier monastic community (Wikipedia).",
+        "Has hosted the Book Arsenal fair, the GOGOLfest festival and the ARSENALE 2012 biennial (Wikipedia).",
+        "2023: 47,131 visitors to exhibitions and events, 1,013,683 online (museum site).",
+        "Visiting: prices listed for a July to August 2026 exhibition: UAH 200 full, UAH 100 for pensioners, students and displaced persons, UAH 450 family. Free for children under 12, people with disabilities and one companion, veterans, active military and families of fallen defenders. Operations pause during air raid alerts. No opening hours were listed. Wikipedia records a Russian drone attack on 15 June 2026; staff were unharmed."
+      ],
+      "funding_verdict": "Mystetskyi Arsenal: public: a Ukrainian state enterprise; no funder amounts could be confirmed for recent years",
+      "funding": [
+        "State enterprise (the museum site's footer gives its legal name as State Enterprise \"Mystetskyi Arsenal\" National Cultural and Art and Museum Complex); Wikipedia says the complex is under the control of the State Management of Affairs.",
+        "2018: income rose 17.8% to about UAH 42.3 million, net profit about UAH 617,000 (Mind.ua, 25 July 2019).",
+        "No reporting found for 2025 budget, own income or partner amounts; the 2024 and 2025 annual report PDFs could not be read, and the museum pages read name no partners or donors.",
+        "Guernica (Nikita Kadan, 2014) states that \"Great and Grand\" (2013) was part of a government celebration of the baptism of Kyivan Rus and partly funded by Orthodox clergy."
+      ],
+      "red_flags": [
+        {
+          "heading": "2013 censorship and boycott",
+          "points": [
+            "25 July 2013: director Natalia Zabolotna had Volodymyr Kuznetsov's 11 by 5 metre mural \"Koliivshchyna: Judgment Day\" painted black, on the night before President Yanukovych's visit and the opening of \"Great and Grand\", the exhibition marking the 1,025th anniversary of the baptism of Kyivan Rus (RFE/RL, 27 July 2013; Kyiv Post, 26 July 2013). Zabolotna denies censorship, saying the work did not fit the exhibition (Kyiv Post).",
+            "Vasyl Tsagolov's painting \"Molotov Cocktail\" was also removed (Art Workers' Self-defense Initiative; RFE/RL).",
+            "Zabolotna called her act a \"personal performance\" (Guernica, 3 February 2014). She later apologised, and the Culture Ministry denied involvement (RFE/RL).",
+            "Oleksandr Solovyov, called chief curator by Kyiv Post and deputy director by RFE/RL, resigned, saying \"This is not censorship but self-censorship\". Eight people were arrested at an unsanctioned protest outside on 26 July (RFE/RL).",
+            "In an open letter posted on 29 September 2013, the Art Workers' Self-defense Initiative declared a boycott of the Arsenal until it declared its principles, legalised relations with artists, publicly acknowledged the censorship of the two works and guaranteed it would not recur. Curators Boris Groys and Maria Lind declined to be ARSENALE 2014 curators after the letter (Guernica).",
+            "No reporting found that the demands were met."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Criticism dates from 2013 and 2014 and concerns one incident. It comes from an artists' initiative and a magazine; the news reports of the incident are cited under Red flags.",
+        "items": [
+          {
+            "outlet": "Guernica",
+            "title": "Larissa Babij with Nikita Kadan, \"Blacked Out in Ukraine\" (2014)",
+            "url": "https://guernicamag.com/blacked-out-in-ukraine",
+            "points": [
+              "Babij says the exhibition was \"being used in the service of a state ideology\"; Kadan says the director's supporters \"refuse to call their actions by their proper name: censorship\" and that the art community \"united against\" those who pointed it out.",
+              "Kadan argues the boycott holds the Arsenal to international standards, \"not home-grown ones\"; the authors criticise Groys for treating Ukraine's internal problems as irrelevant to the international art world."
+            ]
+          },
+          {
+            "outlet": "Art Workers' Self-defense Initiative",
+            "title": "\"Open Letter to Boris Groys and Maria Lind, Invited Curators of ARSENALE 2014\" (2013, advocacy source)",
+            "url": "https://art-leaks.org/2013/09/29/open-letter-to-boris-groys-and-maria-lind-invited-curators-of-arsenale-2014-kyiv-ukraine/",
+            "points": [
+              "Calls the Arsenal an ideologised, pro-regime institution; states that collaboration with it in its current state is impossible."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The money is Ukrainian state money; no partner or donor amounts were found, and no source opened names a funder with a documented controversy. The weak point is the 2013 censorship, carried out by the director the night before the president's visit. No reporting found of the institution acknowledging it as censorship. Worth watching: partner amounts in the 2024 and 2025 annual reports.",
+      "sources": [
+        {
+          "url": "https://artarsenal.in.ua/en/"
+        },
+        {
+          "url": "https://artarsenal.in.ua/en/about/"
+        },
+        {
+          "url": "https://artarsenal.in.ua/en/tickets/"
+        },
+        {
+          "url": "https://artarsenal.in.ua/en/povidomlennya/mystetskyi-arsenal-in-2023-annual-report/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mystetskyi_Arsenal"
+        },
+        {
+          "url": "https://mind.ua/news/20200172-misteckij-arsenal-otrimav-617-000-grn-chistogo-pributku-za-2018-rik"
+        },
+        {
+          "url": "https://guernicamag.com/blacked-out-in-ukraine"
+        },
+        {
+          "url": "https://art-leaks.org/2013/09/29/open-letter-to-boris-groys-and-maria-lind-invited-curators-of-arsenale-2014-kyiv-ukraine/",
+          "note": "advocacy source"
+        },
+        {
+          "url": "https://archive.kyivpost.com/article/content/ukraine-politics/arts-arsenal-director-destroys-painting-censorship-suspected-327576.html"
+        },
+        {
+          "url": "https://rferl.org/a/ukraine-art-destroyed-kuznetsov-kievan-rus-yanukovych/25058261.html"
+        }
+      ],
+      "website": "https://artarsenal.in.ua (checked 2026-10-24; loads; the 2025 annual report PDF was too large to open)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "National Art Museum of Ukraine",
@@ -79824,7 +80498,92 @@
     "watch": "In October 2012 staff sent an open letter demanding the removal of acting director Tatiana Mironova; art workers backed it with a statement and petition.",
     "grade": 3,
     "grade_basis": "No flagged funder, but on record: protests or a boycott.",
-    "records_note": "Its public information page holds a 2021 budget and utility compliance notes only; no annual report, accounts, donor list or board."
+    "records_note": "Its public information page holds a 2021 budget and utility compliance notes only; no annual report, accounts, donor list or board.",
+    "details": {
+      "overview": [
+        "State art museum at 6 Hrushevskoho Street, Kyiv, with a collection of more than 40,000 exhibits from the 12th century to the present (museum site).",
+        "First exhibition held in August 1899; officially opened in December 1904 as the Kyiv Art-Industrial and Scientific Museum of Emperor Nikolai Alexandrovich. Renamed many times (the museum says 12 times); the current name dates from 1994 (Wikipedia; museum site).",
+        "Building completed in 1898, designed by Moscow architect Petro Boitsov and reworked by the Polish architect Wladyslaw Horodecki, with sculptural decoration attributed to Emilio Sala. Construction cost 249,000 rubles, of which 100,000 came from the imperial government and 108,000 from the Tereshchenko family (Wikipedia).",
+        "First director: Mykola Biliashivsky. The current director listed is Yulia Lytvynets (Wikipedia).",
+        "The permanent exhibition was removed on 24 February 2022 for security reasons; the museum runs temporary exhibition projects, and events pause during air raid alerts (museum site). Wikipedia states a Russian air attack on 24 May 2026 destroyed its windows and damaged its skylights and plaster walls.",
+        "Visiting: Thursday to Sunday 12:00 to 18:00. Full ticket UAH 150; schoolchildren, students and pensioners UAH 100; military personnel free. The site has a text-size and contrast menu; no step-free access details were found."
+      ],
+      "funding_verdict": "National Art Museum of Ukraine: public: a state museum; private help is small and mostly unnamed",
+      "funding": [
+        "State museum under the Ministry of Culture; its income and spending plans must be agreed with the ministry (former director Mariia Zadorozhna, LB.ua interview, 2015).",
+        "23 September 2020: the Cabinet gave UAH 5.6 million from the state reserve fund for emergency repair after a facade collapse on 8 August: about UAH 1.983 million for the sculptural groups on the facade and roof and about UAH 3.617 million for the main facade and areaways (Ministry of Culture announcement).",
+        "2016: UAH 1 million from the state budget for project documentation; unnamed patrons paid for facade lighting and for repair of the second-floor halls; a crowdfunding appeal sought UAH 199,385.74 for parquet repair (LB.ua, 5 July 2016).",
+        "Donations go to its own charitable foundation, \"Charitable Foundation of National Art Museum of Ukraine\"; the support page names no donors or amounts (museum site).",
+        "Collector Stella Benyaminova, linked to the Stedley Art Foundation and the \"Friends of NAMU\" circle, supplied fire extinguishers during the Maidan (Zadorozhna interview, LB.ua).",
+        "No reporting found of a corporate sponsor list, annual report or accounts."
+      ],
+      "red_flags": [
+        {
+          "heading": "2012 staff protest over the director",
+          "points": [
+            "16 October 2012: museum staff issued an open letter demanding the removal of acting director Tatiana Mironova and that she be barred from the permanent post. The next day staff began an open protest with a sign in the entrance hall (Art Workers' Self-defense Initiative statement, ArtLeaks, 17 October 2012).",
+            "Mironova had been acting director since April 2012, after the Ministry of Culture removed long-time director Anatoliy Melnyk. She also owns the commercial Mironova gallery in Kyiv (ArtLeaks).",
+            "A petition from art workers asked for an open competitive hiring process (ArtLeaks). Zadorozhna says the competition commission selected no applicant and the museum council then recommended her candidacy (LB.ua).",
+            "The initiative is an advocacy group of art workers."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "The criticism found dates from 2012 and concerns the director's appointment and commercialisation, not the museum's funding.",
+        "items": [
+          {
+            "outlet": "ArtLeaks",
+            "title": "Art Workers' Self-defense Initiative, \"Open Statement Regarding the National Art Museum of Ukraine (NAMU)\" (2012)",
+            "url": "https://art-leaks.org/2012/10/17/art-workers-self-defense-initiative-open-statement-regarding-the-national-art-museum-of-ukraine-namu/",
+            "points": [
+              "Appointing Mironova over staff objections would halt the museum's development and push it towards commercialisation at the expense of art.",
+              "Asks for open, transparent, competitive hiring and a director with museum experience."
+            ]
+          },
+          {
+            "outlet": "ArtLeaks",
+            "title": "Mykola Ridnyi, \"Ukrainian Museums: Between Two Evils\" (2012)",
+            "url": "https://art-leaks.org/2012/10/17/ukrainian-museums-between-two-evils/",
+            "points": [
+              "Criticises Mironova's plan to make the museum \"a brand\", cites car sponsorship at the entrance as commercialisation, and calls her candidacy \"extremely problematic\" given her gallery.",
+              "Also criticises Soviet-style bureaucracy in other Ukrainian institutions."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The money is Ukrainian state money, with small unnamed private gifts and a foundation that names no donors. The weak points are the 2012 conflict over a director who ran a commercial gallery, ministry influence over appointments and finances, and the absence of published accounts. Worth watching: how the museum and its foundation report donations during the war.",
+      "sources": [
+        {
+          "url": "https://namu.ua/en/"
+        },
+        {
+          "url": "https://namu.ua/en/support-namu/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Art_Museum_of_Ukraine"
+        },
+        {
+          "url": "https://www.kmu.gov.ua/news/mkip-uryad-vidiliv-56-mln-grn-na-nevidkladnij-remont-nacionalnogo-hudozhnogo-muzeyu"
+        },
+        {
+          "url": "https://lb.ua/culture/2016/07/05/339424_natsionalniy_hudozhestvenniy_muzey.html"
+        },
+        {
+          "url": "https://lb.ua/culture/2015/12/18/323813_eksdirektor_nhmu_mariya_zadorozhna.html"
+        },
+        {
+          "url": "https://art-leaks.org/2012/10/17/art-workers-self-defense-initiative-open-statement-regarding-the-national-art-museum-of-ukraine-namu/",
+          "note": "advocacy source"
+        },
+        {
+          "url": "https://art-leaks.org/2012/10/17/ukrainian-museums-between-two-evils/"
+        }
+      ],
+      "website": "https://namu.ua (checked 2026-10-24; the English pages load)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "Museo de la Solidaridad Salvador Allende",
@@ -80071,7 +80830,73 @@
     "grade": 3,
     "grade_basis": "No flagged funder, but on record: state censorship.",
     "records_note": "No records of its own: parent National Museums of Kenya posts annual reports for 2015 to 2019 and names its board; no accounts or donors.",
-    "affiliations_note": "Part of National Museums of Kenya, alongside Nairobi Gallery, Karen Blixen Museum and Fort Jesus Museum, and initiated in 1910 by the East Africa and Uganda Natural History Society."
+    "affiliations_note": "Part of National Museums of Kenya, alongside Nairobi Gallery, Karen Blixen Museum and Fort Jesus Museum, and initiated in 1910 by the East Africa and Uganda Natural History Society.",
+    "details": {
+      "overview": [
+        "Kenya's main national museum on Museum Hill, Nairobi, run by National Museums of Kenya, a state corporation (Wikipedia).",
+        "Began in 1910 as a collection of the East African Natural History Society (now Nature Kenya); construction at the present site started in 1929 and it opened on 22 September 1930 as the Coryndon Museum, named for Sir Robert Coryndon (The Standard; museum site). Renamed after independence (The Standard says 1963; Wikipedia says 1964).",
+        "Closed on 15 October 2005 for its first major rebuilding since 1930; reopened on 14 July 2008, opened by President Mwai Kibaki (The Standard). Triad Architects Limited designed a visitors' centre as part of the master plan.",
+        "Permanent galleries: Cradle of Human Kind, Story of Mammals, History of Kenya, Cycles of Life and a numismatic exhibition (museum site). The grounds hold the Nairobi Snake Park, a botanic garden and a nature trail (Wikipedia).",
+        "Visiting: open daily 8:30am to 5:30pm, including weekends and public holidays; night tours for booked groups of 10 or more (museum site). From 7 May 2026: Kenyan and East African adults KSh 350, children KSh 200; rest of Africa $9 and $6; outside Africa $18 and $9 (The Star). No reporting found of accessibility information."
+      ],
+      "funding_verdict": "Nairobi National Museum: mainly public: Kenya's state corporation, with a European Union-funded rebuild and German project funding",
+      "funding": [
+        "Run by National Museums of Kenya, a state corporation (Wikipedia). No reporting found of its annual budget in sources opened.",
+        "2005 to 2008 renovation: Sh800 million from the European Union under the National Museums of Kenya Support Programme (The Standard, Wangeci Kanyeki, 2013).",
+        "Planet Africa, a travelling exhibition that opened in Nairobi on 29 November 2024 and ran until 31 May 2025 (blog post dated 29 January 2025): funded by the Deutsche Forschungsgemeinschaft and the German Foreign Office; no amounts stated (German Archaeological Institute blog). Partners: University of Ghana, Museum fur Vor- und Fruhgeschichte Berlin and the Staatliche Museen zu Berlin.",
+        "No reporting found of corporate sponsors or a donor list."
+      ],
+      "red_flags": [
+        {
+          "heading": "State censorship, May 2017",
+          "points": [
+            "May 2017: management of National Museums of Kenya, the state corporation that runs the museum, pulled works by Michael Soi, Patrick Mukabi and Bertiers Mbatia from an exhibition due to open on International Museum Day, whose theme was \"Speaking the Unspeakable in Museums\". Business Daily (Margaretta wa Gacheru, 18 May 2017) reports that the museum judged the art \"inappropriate\" for its main audience, school children, and that the artists were told the day before the opening.",
+            "Mukabi said the artists had been encouraged to make work in keeping with the theme. Curator Lydia Galavu said the art had been packed away (Business Daily).",
+            "No reporting found that the museum later reversed the decision."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "One critical report found, about the 2017 ban, in Kenyan press rather than the art press. No criticism of the building or the funders.",
+        "items": [
+          {
+            "outlet": "Business Daily (Nation Media Group)",
+            "title": "Margaretta wa Gacheru, \"Museum bans works by three of Kenya's finest artists\" (2017)",
+            "url": "https://www.businessdailyafrica.com/bd/lifestyle/art/museum-bans-works-by-three-of-kenya-s-finest-artists-2152656",
+            "points": [
+              "Calls the museum's position \"contradictory to say the least\" given the day's theme, and says the works were \"censored by the management of the National Museums of Kenya\"; on social media the decision was called \"hypocritical\".",
+              "Points to a breakdown in communication: the museum had asked all three artists to make work for the day.",
+              "Names National Museums of Kenya management; the museum's own response is limited to the child audience."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The money is Kenyan state funding, an EU-financed rebuild and German research and foreign office funds for one project, with no corporate sponsor named. The weak point is the 2017 removal of three artists' work on International Museum Day, with no reporting found of a reversal. Worth watching: whether National Museums of Kenya publishes recent accounts and a donor list.",
+      "sources": [
+        {
+          "url": "https://www.museums.or.ke/nairobi-national-museum/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nairobi_National_Museum"
+        },
+        {
+          "url": "https://www.standardmedia.co.ke/amp/business/real-estate/article/2000086317/museum-on-the-hill"
+        },
+        {
+          "url": "https://www.dainst.org/blogs/planet-africa-makes-stunning-debuts/8"
+        },
+        {
+          "url": "https://www.businessdailyafrica.com/bd/lifestyle/art/museum-bans-works-by-three-of-kenya-s-finest-artists-2152656"
+        },
+        {
+          "url": "https://www.the-star.co.ke/news/2026-05-07-new-museum-entry-fees-take-effect-who-pays-what"
+        }
+      ],
+      "website": "https://www.museums.or.ke/nairobi-national-museum/ (checked 2026-10-24; loads; the museum is a page of the National Museums of Kenya site)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "National Museum of Fine Arts of Chile (MNBA)",
@@ -81374,7 +82199,83 @@
     "grade_basis": "No flagged funder, but on record: a campaign against a funder's name and protests or a boycott.",
     "records_note": "Annual reports run from 2003 to 2025, accounts are filed in the Norwegian register, partners are named without a date, and the board is listed.",
     "finances_note": "FY2025 income NOK 1,084.7M: about 90 percent public grants (mostly Ministry of Culture), under 1 percent partner grants and gifts, 10 percent earned (tickets, shop, other) (accounts 2025, p. 2).",
-    "affiliations_note": "Holds the Fredriksen Family Collection on long-term loan, partners with the University of Oslo on doctoral fellowships, and runs the architecture museum and Villa Stenersen."
+    "affiliations_note": "Holds the Fredriksen Family Collection on long-term loan, partners with the University of Oslo on doctoral fellowships, and runs the architecture museum and Villa Stenersen.",
+    "details": {
+      "overview": [
+        "Norway's national museum of art, architecture and design, at Brynjulf Bulls plass 3 on the Vestbanen site in central Oslo (museum site; Wikipedia).",
+        "Created on 28 April 2003 by merging the National Gallery, the Museum of Contemporary Art, the Museum of Architecture and two design museums; it is state-owned and managed by the Ministry of Culture (Wikipedia).",
+        "The new building opened in June 2022. Kleihues + Schuwerk won the international architecture competition in November 2010; the government presented the project on 22 March 2013 at about NOK 5.3 billion (Wikipedia).",
+        "Holds over 400,000 works, including the first version of Edvard Munch's \"The Scream\" (1893) (Wikipedia).",
+        "Wikipedia says critics widely derided the building as resembling a prison, quoting the phrase \"national prison\". It also says the first director, Sune Nordgren, resigned in 2006 after a long period of professional criticism and staff conflicts.",
+        "The director is Ingrid R\u00f8ynesdal, appointed in 2023, after Karin Hindsbo (2017 to 2023) (Wikipedia).",
+        "Visiting: No reporting found of opening hours, admission prices or accessibility details; the museum's visit pages showed none to the reader used."
+      ],
+      "funding_verdict": "Nasjonalmuseet: mainly public: a state-owned foundation, with private partners including the Fredriksen family",
+      "funding": [
+        "State-owned and managed by the Ministry of Culture (Wikipedia). The 2024 annual report PDF exceeded the reading tool's size limit, so no income figures could be confirmed.",
+        "The museum lists six partners: AKO Foundation, the Fredriksen Family Collection, Lise M Stolt-Nielsen and family, Sparebankstiftelsen DNB, Stiftelsen Scheibler and Viking. The page states no amounts or years.",
+        "Fredriksen Family Art Company: lends the Fredriksen Family Collection on a long-term basis, initial term ten years, confirmed in 2017; funds a doctoral programme with four fellowships planned for 2023 to 2027, and a separate doctoral project on Frida Hansen. No financial figures are given (museum site). Cecilie and Kathrine Fredriksen, daughters of the shipping magnate John Fredriksen, announced the partnership in 2019 and have lent more than 100 works (Apollo, 2025)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Protest against the Fredriksen partnership",
+          "points": [
+            "12 March 2022: Jeremie McGowan, former director of Nordnorsk Kunstmuseum, wrote in Klassekampen that Seadrill, \"Fredriksen's drilling company\", entered a major agreement with Rosneft shortly before Russia annexed Crimea in 2014, and called the museum \"naive or complicit\". Ruben Steinum, chair of the Association of Norwegian Visual Artists, said the public needs to know how the museum assesses partners whose wealth was partly accumulated in areas of conflict and war (Kunstkritikk, Live Dr\u00f8nen, 18 March 2022).",
+            "18 March 2022: communications director Eirik Kydland told Kunstkritikk the museum had seen no new circumstances that call for review, that no Fredriksen company had been affected by sanctions, and that the money comes from legitimate business operations. Director Karin Hindsbo did not respond.",
+            "10 June 2022: artists Nikhil Vettukattil, Knut Asdam, Kajsa Dahlberg and Sille Storihle launched an appeal, \"A Gift we can Afford to Refuse\", calling for the agreement to be terminated; it had well over 100 signatures when Kunstkritikk reported it (Tiril Flom, 10 June 2022).",
+            "The appeal argues the deal gives one powerful family too much influence, calls it an attempt to improve a company's reputation through art sponsorship, and cites John Fredriksen's business dealings from Iran to Russia, including Russia's Order of Friendship awarded in 2015 (Kunstkritikk, Flom)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Two Kunstkritikk pieces from March and June 2022 criticise the Fredriksen deal; no criticism found of the other partners.",
+        "items": [
+          {
+            "outlet": "Kunstkritikk",
+            "title": "Live Dr\u00f8nen, \"The National Museum of Norway Linked to Russia\" (18 March 2022)",
+            "url": "https://kunstkritikk.com/the-national-museum-of-norway-linked-to-russia/",
+            "points": [
+              "The partnership needs fresh scrutiny after Russia's invasion of Ukraine, given the family's links to Russia.",
+              "Names McGowan, Seadrill, Rosneft and Fredriksen; director Karin Hindsbo did not respond, communications director Eirik Kydland did."
+            ]
+          },
+          {
+            "outlet": "Kunstkritikk",
+            "title": "Tiril Flom, \"Artists Fight Sponsorship Agreement\" (10 June 2022)",
+            "url": "https://kunstkritikk.com/artists-fight-the-fredriksen-collaboration",
+            "points": [
+              "Reports the appeal's question whether public trust and professional integrity should outweigh the financial benefit; \u00c5sdam is quoted as saying it \"kills the professional integrity of a national public institution\".",
+              "Cites as precedents that the Astrup Fearnley Museum cut ties with Lundin Oil and that the Met and the Serpentine ended Sackler sponsorship."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "Nasjonalmuseet is mostly state-funded, with a named private partner, the Fredriksen family, whose loan and doctoral funding come from a shipping and drilling fortune. The weak points are the artists' 2022 appeal, the Russia links raised by McGowan, and income figures that could not be confirmed from the 2024 report. Worth watching: whether the Fredriksen agreement is renewed when its ten-year term ends.",
+      "sources": [
+        {
+          "url": "https://www.nasjonalmuseet.no/en/about-the-national-museum/partnership/"
+        },
+        {
+          "url": "https://www.nasjonalmuseet.no/en/about-the-national-museum/partnership/the-fredriksen-collaboration"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/National_Museum_of_Norway"
+        },
+        {
+          "url": "https://kunstkritikk.com/the-national-museum-of-norway-linked-to-russia/"
+        },
+        {
+          "url": "https://kunstkritikk.com/artists-fight-the-fredriksen-collaboration"
+        },
+        {
+          "url": "https://apollo-magazine.com/?p=1035836"
+        }
+      ],
+      "website": "https://www.nasjonalmuseet.no (checked 2026-10-24; loads; the visit and ticket pages showed no hours or prices to the reader used)",
+      "retrieved": "2026-10-24"
+    }
   },
   {
     "name": "Istanbul Biennial (\u0130KSV)",
