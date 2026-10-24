@@ -175,3 +175,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - haus-für-medienkunst-oldenburg-oldenburg: the "Nazi pasts" red flag heading is not one of the atlas's flags, and the record has none for it.
 - ica-miami: the Witkoff red flag rests on Wikipedia and Democracy Now; NPR, New Yorker, CBS and NYT pieces were not opened.
 - het-concertgebouw-amsterdam: the "about 4 percent municipal subsidy" is an MP's figure inside a question.
+
+## d012 (research notes, before its slop check)
+- kaesong-koryo-museum-kaesong, korean-art-gallery-pyongyang, korean-central-history-museum-pyongyang: no opened page names an owner or budget (the record's "Workers' Party budget" is not in any page); the Sanctions flag is under US Executive Order 13722. The Korean Art Gallery's opening year conflicts (1954 Koryo Tours; 1948 Wikipedia and Koryo Studio); its listed site does not resolve.
+- koorie-heritage-trust-melbourne: no protest found for the record's "Protest or boycott" flag; Viva Energy is a sponsor.
+- kunsten-museum-of-modern-art-aalborg-aalborg: Det Obelske Familiefond gave DKK 10m for 2025 to 2030; the record's 14.5% Scandinavian Tobacco Group stake could not be confirmed (STG's investor page says C.W. Obel A/S holds more than 10%).
+- kiran-nadar-museum-of-art-new-delhi: the record's FCRA statements could not be confirmed (knma.org pages unreachable).
+- kuindzhi-art-museum: under the sanctioned DNR culture ministry per a sign Bellingcat saw; no site.
+- king-abdulaziz-center-for-world-culture-ithra-dhahran: inauguration year 2016 (Wikipedia) or 2017 (The Art Newspaper).
