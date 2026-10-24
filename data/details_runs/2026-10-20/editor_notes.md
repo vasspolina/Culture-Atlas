@@ -332,3 +332,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - national-art-museum-belarus-minsk: Monich dismissal July 2020 (Current Time, 13 July 2020); no reporting of Sber Bank as a sponsor.
 - national-art-gallery-of-namibia-windhoek: the 2014 Solari Bozzi section rests on search excerpts of ARTICLE 19 and Censorpedia (403); no news report found.
 - musée-dorsay-paris: the Epstein item (listed 4 Feb 2026) rests on an ARTnews piece not read; the Slate item was 403.
+
+## d021 (research notes, before its slop check)
+- nederlands-fotomuseum-rotterdam: NOS (16 May 2019) reports an offer of about EUR 40M ("naar verluidt") from 2018 for Boijmans, not the record's EUR 80M in 2019.
+- new-holland-island-st-petersburg: the record's website is a Fontanka article; the real site is newhollandsp.ru; newhollandisland.com does not resolve.
+- new-mexico-museum-of-art-santa-fe: no Isleta Resort and Casino entry found on the Foundation's current business-members page; the record's FY2023 claim could not be verified.
+- noguchi-museum: the August 2024 walkout: 14 staff (The Art Newspaper) or 8 (ArtReview); the record's "Noguchi estate" funding claim could not be verified; noguchi.org returned 402.
+- new-york-academy-of-art-new-york: Epstein: board member 1987 to 1994, event payments in 2012 and 2014, $65,900 redirected in March 2026; the Hyperallergic article does not reconcile its itemised examples with the total.
+- new-orleans-museum-of-art-new-orleans: the Helis oil link rests on the October 2020 letter and the foundation's own description of its leader as an oil-company executive.
+- national-visual-arts-gallery: no Shell or Petronas sponsorship found.
