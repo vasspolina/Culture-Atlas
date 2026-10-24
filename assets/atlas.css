@@ -1312,12 +1312,12 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 /* The id rule above outranks .hidden, so the cloud stayed in the flow after a question and pushed the answer below it. */
 #curatorDrawerChatBody>#curatorDrawerGreeting.hidden{display:none}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex;flex-direction:row;flex-wrap:wrap;gap:8px;align-items:flex-start;align-content:flex-start;justify-content:flex-start;width:100%;max-width:none;margin:0;padding:0;border:0}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:inline-block;width:auto;max-width:100%;min-height:0;height:22px;margin:0;padding:0 10px;border:0;border-radius:0;font:400 14px/22px var(--sans);text-transform:none;letter-spacing:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#000;background:var(--fill,#c8b85a);text-decoration:none;cursor:pointer}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:inline-block;width:auto;max-width:100%;min-height:0;height:22px;margin:0;padding:0 10px;border:0;border-radius:0;font:400 14px/22px var(--sans);text-transform:none;letter-spacing:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#000;background:var(--fill,#c6c6c6);text-decoration:none;cursor:pointer}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#9ae3e8}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#e79a3a}
 /* A gossip question (its answer is a balloon) is the one yellow label: yellow is for gossip alone. */
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#e2f86c}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c8b85a);color:#000;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c6c6c6);color:#000;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:14px;height:22px;line-height:22px}}
 
@@ -1362,7 +1362,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
    block to its right. The button itself is only the target: it carries no fill. */
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){background:transparent;padding:0;min-height:0;line-height:20px;text-align:left}
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;text-decoration:none}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{display:inline;padding:2px 8px;background:var(--fill,#c8b85a);color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{display:inline;padding:2px 8px;background:var(--fill,#c6c6c6);color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline-offset:3px}
 /* The chat column is centred in its panel and its width is the reader's (18 Oct 2026). Before this the column was pinned left
@@ -1679,8 +1679,8 @@ body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer)
 /* The header's buttons run the full height of the bar, so their vertical lines meet the rules above and below with no gap (they were 44px tall in a 55px bar). */
 #topThemeBtn,#topGossipBtn{height:auto;align-self:stretch}
 
-/* Dark theme: the labels (the question chips here, the city pills on the globe) take Carbon's teal 60 #007d79, orange 60 #ba4e00 and yellow 60 #8e6a00 with white type, in place of the pale fills with black type. */
-:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{--fill:#8e6a00}
+/* Dark theme: the labels (the question chips here, the city pills on the globe) take Carbon's teal 60 #007d79, orange 60 #ba4e00 and gray 60 #6f6f6f with white type, in place of the pale fills with black type. Unverified is grey in both themes: yellow is for gossip alone. */
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{--fill:#6f6f6f}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#007d79}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#ba4e00}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#e2f86c}

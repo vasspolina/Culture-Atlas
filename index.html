@@ -204,7 +204,7 @@ return maplibregl$1;
             <div class="layers-key layers-tier-key">
               <span><i class="shape-dot" style="--marker-color:#9ae3e8"></i>Clean: a source is cited</span>
               <span><i class="shape-square" style="--marker-color:#e79a3a"></i>Flagged: a recorded reason</span>
-              <span><i class="shape-triangle" style="--marker-color:#c8b85a"></i>Unverified</span>
+              <span><i class="shape-triangle" style="--marker-color:#c6c6c6"></i>Unverified</span>
             </div>
           </section>
           <section class="layers-section">
@@ -10590,11 +10590,11 @@ return maplibregl$1;
           ctx.fillText(text, x, y);
         };
         // City and museum names sit on a flat block. The block takes the colour of the spaces it names:
-        // cyan clean, orange flagged, mustard unverified (a city: the tier most of its spaces have).
-        // Yellow when hovered or selected (white on yellow in gossip mode).
+        // cyan clean, orange flagged, grey unverified (a city: the tier most of its spaces have).
+        // White when selected. Yellow is for gossip alone, so no label is yellow.
         const TIER_FILL = { A: '#9ae3e8', B: '#e79a3a' };
-        // Dark theme: Carbon's teal 60, orange 60 and yellow 60 with white type (5:1 or better), in place of the pale fills with black type.
-        const TIER_FILL_DARK = { A: '#007d79', B: '#ba4e00' }, UNVERIFIED_FILL_DARK = '#8e6a00';
+        // Dark theme: Carbon's teal 60, orange 60 and gray 60 with white type (5:1 or better), in place of the pale fills with black type.
+        const TIER_FILL_DARK = { A: '#007d79', B: '#ba4e00' }, UNVERIFIED_FILL_DARK = '#6f6f6f';
         const cityTierCache = {};
         const cityTier = (name) => {
           const k = (name || '').toLowerCase().trim();
@@ -10610,7 +10610,7 @@ return maplibregl$1;
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 28, h = 22;
           const darkLabel = !GLOBE_LIGHT && !active;
-          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c8b85a')));
+          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = darkLabel ? '#ffffff' : '#000000';
           ctx.textAlign = 'center';
