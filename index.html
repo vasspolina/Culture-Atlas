@@ -11893,7 +11893,9 @@ return maplibregl$1;
         sheetName.title = inst.name || '';
       }
       text('dossier-sheet-meta', [[inst.category, [inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(' · '), inst.architecture_status].filter(Boolean).join(' · '));
-      text('dossier-sheet-summary', [inst.highlight, inst.watch].filter(Boolean).join(' '));
+      // In Gossip mode a watch line that passes the gossip test is the reported item below, so it is not repeated here.
+      const reported = documentedRecordHtml(inst), watchReported = isGossipModeActive && !reported && watchIsGossip(inst.watch);
+      text('dossier-sheet-summary', [inst.highlight, watchReported ? '' : inst.watch].filter(Boolean).join(' '));
       // The phone sheet shows the same Funding block as the desktop record.
       const fBox = document.getElementById('dossier-sheet-funding');
       if (fBox) { const fh = fundingHtml(inst); fBox.className = fh ? '' : 'hidden'; fBox.innerHTML = fh; }
@@ -11911,7 +11913,7 @@ return maplibregl$1;
       if (srcBox) srcBox.innerHTML = sourcesHtml(inst, true) + (isGossipModeActive ? '' : researchContextHtml(inst));
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        record.innerHTML = documentedRecordHtml(inst) || (isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '');
+        record.innerHTML = reported || (watchReported ? `<p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '');
         record.classList.toggle('hidden', !record.innerHTML);
       }
       const webLink = document.getElementById('dossier-sheet-link-web');
@@ -15268,7 +15270,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
-        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:', true);
+        listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i) || watchIsGossip(i.watch)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:', true);
         return;
       }
       if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
