@@ -255,3 +255,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - museo-de-arte-de-lima: Camisea consortium and Pluspetrol fund free Thursdays 2022 to at least March 2025; the 2025 accounts PDF was unreadable.
 - museo-amparo-puebla: the FEMSA protest and the Colección FEMSA show are Wider context; no reporting that FEMSA funds the museum.
 - museo-nacional-de-arte-de-bolivia-la-paz: the foundation home page returned 522; the eju.tv 2015 item is Unverified.
+
+## d018 (research notes, before its slop check)
+- museo-soumaya: the IFT ruled América Móvil's units dominant on 6 March 2014 (Forbes México); the record's cited TelecomTV link is a 2017 resolution. The museum's about page returned 404.
+- museu-de-arte-moderna-de-são-paulo-são-paulo: Grupo Ultra (owner of Ipiranga) is a sponsor; protest over the 2017 La Bête performance.
+- museu-do-amanhã: Shell and Instituto Cultural Vale as maintainers.
+- museum-of-contemporary-art-tokyo-tokyo: the record's "then withdrew the request" and "budget about ¥1B" are not confirmed; no withdrawal found.
+- museum-of-art-photography-map: the outcome of the Venkatappa Art Gallery deal was not found.
+- museum-of-fine-arts-budapest-hungarian-national-gallery: MVM Group sponsor; Szerencsejáték's betting arm not sourced (left out).
+- museum-of-contemporary-art-belgrade: government replaced the acting director in January 2020; board chair resigned.
+- museo-reina-sof-a: la Caixa holding Criteria is Naturgy's largest shareholder; a 2026 parliamentary inventory demand.
