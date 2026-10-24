@@ -12334,6 +12334,169 @@ return maplibregl$1;
       if (selectedInstitution && typeof openDossier === 'function') openDossier(selectedInstitution);
     };
 
+    // The Details card as continuous prose (user, 24 Oct 2026: "more natural language, without too many badges, using both
+    // search and archive research fed in"). One account per space: the researched report (inst.details, from search) and what the
+    // archive holds (flags, cases, findings, accounts, notes) are set as paragraphs that open with a plain lead-in, in the order of
+    // the research brief: overview, funding, what is flagged, the art press, wider context, bottom line, sources. A line the report
+    // already says is not said again from the archive (sayAlreadyInDetails). No pills, no source chips: a source is a link in the
+    // text or a name in brackets, and archive items say once that they are reported, not verified.
+    const proseEnd = (t) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return !t ? '' : /[.!?…]["”’')\]]?$/.test(t) ? t : t + '.'; };
+    const proseCap = (t) => String(t || '').replace(/^\s*(\S)/, (m, c) => c.toUpperCase());
+    const proseSay = (items) => (items || []).map(proseEnd).filter(Boolean).join(' ');
+    // Sentences into paragraphs of about `limit` characters, so a long section is a few short paragraphs, not one block.
+    function proseChunks(sentences, limit) {
+      const out = [];
+      let cur = '';
+      (sentences || []).map(proseEnd).filter(Boolean).forEach(t => { if (cur && cur.length + t.length > limit) { out.push(cur); cur = t; } else cur = cur ? cur + ' ' + t : t; });
+      if (cur) out.push(cur);
+      return out;
+    }
+    const proseDates = (t) => String(t || '').replace(/\b\d{4}-\d{2}-\d{2}\b/g, humanDate);
+    const proseLead = (text) => `<strong class="lead-in">${escapeHtml(text)}</strong> `;
+    const proseP = (lead, html) => html ? `<p class="no-indent">${lead ? proseLead(lead) : ''}${html}</p>` : '';
+    function proseLinks(urls, max = 3) {
+      const seen = new Set(), out = [];
+      (urls || []).forEach(u => {
+        if (typeof u !== 'string' || !/^https?:\/\//.test(u)) return;
+        const h = hostOf(u);
+        if (h && !seen.has(h)) { seen.add(h); out.push(`<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(h)}</a>`); }
+      });
+      return out.slice(0, max).join(', ');
+    }
+    const proseCite = (urls, max) => { const l = proseLinks(urls, max); return l ? ` Sources: ${l}.` : ''; };
+    // The report's one-line verdict is "Name: kind: who pays". Set as a sentence: the kind, then who pays.
+    function proseVerdict(v) {
+      const s = String(v || '').trim();
+      const m = s.match(/^[^:]+?:\s+([^:]+?):\s+(.+)$/s);
+      if (m) return `${proseEnd(proseCap(m[1]))} ${proseEnd(proseCap(m[2]))}`;
+      const m2 = s.match(/^[^:]+?:\s+(.+)$/s);
+      return proseEnd(proseCap(m2 ? m2[1] : s));
+    }
+    // Overview and funding: what the space is, then who pays for it, from the report where there is one and from the archive otherwise.
+    function proseIntroHtml(inst) {
+      const d = inst.details || {};
+      const out = [];
+      proseChunks(d.overview, 340).forEach(t => out.push(proseP('', escapeHtml(t))));
+      const money = inst.watch && watchIsAboutMoney(inst.watch) && !inst.details ? inst.watch : '';
+      const archiveFunding = String(inst.funding || '').split(/\n+/).map(proseEnd).filter(Boolean).join(' ');
+      const funding = d.funding_verdict || (d.funding || []).length
+        ? [d.funding_verdict ? proseVerdict(d.funding_verdict) : ''].concat(d.funding || []).filter(Boolean)
+        : [archiveFunding, proseEnd(money)].filter(Boolean);
+      const shared = (inst.funder_links || []).filter(f => f && f.funder).map(f => `${f.funder} is listed at ${f.institutions} spaces in this atlas, including this one.`).join(' ');
+      proseChunks(funding.concat(shared || []), 460).forEach((t, k) => out.push(proseP(k ? '' : 'Funding:', escapeHtml(t))));
+      const note = (lead, t) => t ? proseP(lead, escapeHtml(proseEnd(t))) : '';
+      out.push(note('What it publishes:', inst.records_note), note('Its accounts:', inst.finances_note), note('Its affiliations:', inst.affiliations_note));
+      const body = out.filter(Boolean).join('');
+      return body ? `<div class="py-3 rule-b space-y-2 prose-part" role="region" aria-label="Overview and funding">${body}</div>` : '';
+    }
+    // What is flagged, the art press, wider context, the bottom line and the sources: the report's points with the archive's cases beside them.
+    function proseBodyHtml(inst) {
+      const d = inst.details || {};
+      const out = [];
+      const markFlag = (t) => /epstein/i.test(t) ? `<mark class="flag-epstein">${escapeHtml(t)}</mark>` : escapeHtml(t);
+      // Flags: the report's headings, each with its points; or, for a record the research has not reached, the flags the archive holds.
+      const own = (d.red_flags || []).filter(f => f && (f.points || []).length);
+      // A flag with three or more points is a short run of paragraphs, each led by its own label ("Unity Park:"); fewer run on from the heading.
+      own.forEach(f => {
+        if (f.points.length < 3) { out.push(`<p class="no-indent"><strong class="lead-in">${markFlag(proseEnd(f.heading))}</strong> ${escapeHtml(proseSay(f.points))}</p>`); return; }
+        out.push(`<p class="no-indent"><strong class="lead-in">${markFlag(proseEnd(f.heading))}</strong></p>`);
+        f.points.forEach(pt => {
+          const m = String(pt).match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s);
+          out.push(m ? proseP(`${m[1]}:`, escapeHtml(proseEnd(m[2]))) : proseP('', escapeHtml(proseEnd(pt))));
+        });
+      });
+      const more = (inst.flag_details || []).filter(x => x && x.text).map(x => x.text);
+      const sameAsFunding = [inst.watch && watchIsAboutMoney(inst.watch) ? inst.watch : '', inst.funding].some(t => t && String(t).trim() === String(inst.why_flagged || '').trim());
+      const why = !inst.why_flagged || sameAsFunding || sayAlreadyInDetails(inst, inst.why_flagged) ? '' : proseEnd(inst.why_flagged);
+      if (!own.length && ((inst.flags || []).length || why)) {
+        out.push(`<p class="no-indent">${(inst.flags || []).length ? `<strong class="lead-in">Flagged:</strong> ${(inst.flags || []).map(markFlag).join(', ')}. ` : ''}${escapeHtml([why, proseSay(more)].filter(Boolean).join(' '))}</p>`);
+      } else if (why || more.length) {
+        out.push(proseP('Also on record:', escapeHtml([why, proseSay(more)].filter(Boolean).join(' '))));
+      }
+      if ((d.not_related || []).length) out.push(proseP('Not related:', escapeHtml(proseCap(proseSay(d.not_related)))));
+      // Reported items from the archive that the report does not already carry. They are said once to be reported, not verified.
+      const items = [];
+      (inst.epstein_records || []).forEach(e => items.push(proseP(`${e.person || 'Epstein-related record'}${[e.link, e.status].filter(Boolean).length ? ' (' + [e.link, e.status].filter(Boolean).join(', ') + ')' : ''}.`,
+        escapeHtml([proseEnd(e.summary), e.tie ? 'Tie: ' + proseEnd(e.tie) : '', e.consequence ? 'Consequence: ' + proseEnd(e.consequence) : ''].filter(Boolean).join(' ')) + proseCite(e.sources, 3))));
+      const seenCables = new Set();
+      (inst.wikileaks_records || []).forEach(w => {
+        const key = (w.doc_id || '') + (w.what_shows || '');
+        if (seenCables.has(key)) return;
+        seenCables.add(key);
+        items.push(proseP(`${w.doc_id || 'WikiLeaks document'}${w.date ? ' (' + humanDate(w.date) + ')' : ''}.`, escapeHtml(proseEnd(w.what_shows)) + proseCite(w.sources, 3)));
+      });
+      ((inst.gossip_data || {}).real_cases || []).forEach(c => {
+        const meta = caseMeta(c);
+        const said = [proseSay(c.facts), (c.claims || []).length ? 'The claim: ' + proseSay(c.claims) : '', c.response ? 'The response: ' + proseEnd(c.response) : '', c.outcome ? 'The outcome: ' + proseEnd(c.outcome) : '', (c.limits || []).length ? 'Caveat: ' + proseSay(c.limits) : ''].filter(Boolean).join(' ');
+        items.push(proseP(`${c.title || 'Case'}${meta ? ' (' + meta + ')' : ''}.`, escapeHtml(said) + proseCite((c.sources || []).map(x => x && x.url), 4)));
+      });
+      const of = typeof inst.other_findings === 'string' ? inst.other_findings.trim() : '';
+      const lc = of.toLowerCase();
+      const repeated = (inst.epstein_records || []).some(e => e.person && lc.includes(e.person.toLowerCase()))
+        || (inst.wikileaks_records || []).some(w => w.doc_id && of.includes(w.doc_id))
+        || ((inst.gossip_data || {}).real_cases || []).some(c => c.title && lc.includes(c.title.toLowerCase()));
+      if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
+        const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
+        if (m) items.push(proseP(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}, ${m[3].toLowerCase()}.`, escapeHtml(proseEnd(m[4]))));
+        else items.push(proseP('', escapeHtml(proseEnd(part))));
+      });
+      if (inst.case_study) {
+        const c = inst.case_study;
+        items.push(proseP(`${c.title}${c.kick ? ' (' + c.kick + ')' : ''}.`, escapeHtml([proseSay(c.summary), proseSay(c.bullets), (c.timeline || []).map(t => `${t.date}: ${proseEnd(t.event)}`).join(' ')].filter(Boolean).join(' '))));
+      }
+      if (items.some(Boolean)) out.push(`<p class="no-indent account-note">Reported, not independently verified. Each item names its sources.</p>`, ...items);
+      // The art press: the report's overview and one paragraph per piece, the outlet linked to the piece; then what the archive adds.
+      const press = d.press || {};
+      if (press.overall) out.push(proseP('In the art press:', escapeHtml(proseEnd(press.overall))));
+      (press.items || []).forEach(it => {
+        const o = /^https?:\/\//.test(it.url || '') ? `<a href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(it.outlet)}</a>` : escapeHtml(it.outlet);
+        out.push(`<p class="no-indent">${o}${it.title ? ', ' + escapeHtml(proseEnd(it.title)) + ' ' : ': '}${escapeHtml(proseSay(it.points))}</p>`);
+      });
+      if (inst.critique_note) out.push(proseP('What the field says:', escapeHtml(proseEnd(inst.critique_note))));
+      (inst.case_notes || []).forEach(n => out.push(proseP(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3))));
+      proseChunks(d.wider_context, 460).forEach((t, k) => out.push(proseP(k ? '' : 'Wider context:', escapeHtml(t))));
+      if (!isGossipModeActive) (inst.study_notes || []).forEach(s => out.push(proseP(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : ''))));
+      if (d.bottom_line) out.push(proseP('Bottom line:', escapeHtml(proseEnd(d.bottom_line))));
+      if (d.retrieved) out.push(`<p class="no-indent account-note">Researched ${escapeHtml(humanDate(d.retrieved))}.</p>`);
+      // Sources: every source the report and the record name, one link per site, then the registry and the filings.
+      const urls = [].concat((d.sources || []).map(s => s && s.url), inst.sources || []);
+      const reg = inst.audit_dossier_url, fil = inst.statutory_filings_url;
+      const link = (u, label) => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+      const regLinks = [];
+      if (reg) regLinks.push(`Registry: ${link(reg, registryName(reg))}`);
+      if (fil && fil !== reg) regLinks.push(`Filings: ${link(fil, registryName(fil))}`);
+      const srcLine = proseLinks(urls, 12);
+      if (srcLine || regLinks.length) out.push(`<p class="no-indent source-note">${srcLine ? `Sources: ${srcLine}.` : ''}${srcLine && regLinks.length ? ' ' : ''}${regLinks.join(' · ')}</p>`);
+      const body = out.filter(Boolean).join('');
+      return body ? `<div class="py-3 rule-b space-y-2 prose-part" role="region" aria-label="Reporting and context"${items.some(Boolean) ? ' data-gossip="items"' : ''}>${body}</div>` : '';
+    }
+    // Accounts from review sites and Reddit, and what readers sent in: said in the same prose, the caution said once.
+    function proseVoicesHtml(inst) {
+      const out = [];
+      const accounts = (inst.gossip_data || {}).accounts || [];
+      if (accounts.length) {
+        out.push(proseP(`Personal accounts (${accounts.length}):`, 'posts by staff and visitors on review sites and Reddit. One person’s experience each, not verified findings about the institution.'));
+        accounts.forEach(a => {
+          const v = accountView(a, inst);
+          const urls = (a.sources || []).map(x => x && x.url);
+          const pc = /^Praises (.+?); criticises (.+?)\.?$/.exec((a.fields || []).find(f => f[0] === 'Account in brief')?.[1] || '');
+          const what = pc ? `Pros: ${proseEnd(pc[1])} Cons: ${proseEnd(pc[2])}` : proseEnd(v.summary);
+          const who = [v.title.replace(/\s·\s/g, ', '), /unknown/i.test(v.date) ? '' : v.date].filter(Boolean).join(', ');
+          out.push(proseP(`${who}.`, escapeHtml([what, v.note ? 'Context: ' + proseEnd(v.note) : '', v.alsoAbout.length ? 'Also about ' + v.alsoAbout.join(', ') + '.' : ''].filter(Boolean).join(' ')) + proseCite(urls, 1)));
+        });
+      }
+      const kindLabel = { information: 'Information', gossip: 'Gossip, unverified', whistleblower: 'Whistleblower note' };
+      const noted = readerNotesFor(inst);
+      const readers = noted.filter(n => n.kind !== 'whistleblower');
+      if (readers.length) {
+        out.push(proseP('Shared by readers and approved by the editor:', 'not checked against a source.'));
+        readers.forEach(n => out.push(proseP(`${kindLabel[n.kind] || 'Note'}${n.approvedAt ? ', ' + humanDate((n.approvedAt || '').slice(0, 10)) : ''}.`, escapeHtml(proseEnd(n.text)) + proseCite(n.sourceUrl ? [n.sourceUrl] : [], 1))));
+      }
+      const reviews = whistleblowerReviewsHtml(noted.filter(n => n.kind === 'whistleblower'));
+      const body = out.join('');
+      return (body ? `<div class="py-3 rule-b space-y-2 prose-part" role="region" aria-label="Accounts and notes" data-gossip="items">${body}</div>` : '') + (reviews ? `<div class="py-3 rule-b">${reviews}</div>` : '');
+    }
+
     // The record of one space. The Details page shows it, and so does the phone's record page.
     function recordHtml(inst) {
       const webUrl = getValidWebUrl(inst);
@@ -12366,8 +12529,7 @@ return maplibregl$1;
         <div class="space-y-3">
           <div class="space-y-1_5 pb-3 rule-b">
             <h2 class="dossier-main-heading break-words" style="--title-length:${Math.max((inst.name || '').length, 1)}" title="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</h2>
-            ${inst.category ? `<span class="institution-category-pill">${escapeHtml(inst.category)}</span>` : ''}
-            <p class="kicker no-indent">${escapeHtml([inst.location || inst.city, inst.year_founded ? 'founded ' + inst.year_founded : ''].filter(Boolean).join(', '))}</p>
+            <p class="kicker no-indent">${escapeHtml([inst.location || inst.city, inst.year_founded ? 'founded ' + inst.year_founded : '', inst.category].filter(Boolean).join(', '))}</p>
             ${inst.curatorial_focus ? `<p class="no-indent account-note">Programme: ${escapeHtml(inst.curatorial_focus)}</p>` : ''}
             ${!isClean && inst.highlight ? `<p class="institution-summary">${escapeHtml(inst.highlight)}</p>` : ''}
             ${inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : ''}
@@ -12387,16 +12549,15 @@ return maplibregl$1;
 
           <!--  3D BUILDING & ARCHITECTURAL FLOOR WORKSPACE INSPECTOR -->
           <!-- Overview, funding and visiting: only what the record states -->
-          ${detailsOverviewHtml(inst)}
-          ${fundingHtml(inst)}
+          ${proseIntroHtml(inst)}
           ${!isClean ? factsTableHtml('Visiting', [
             ['Opening hours', escapeHtml(inst.opening_hours || '')],
             ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')],
             ['Address', escapeHtml(inst.address || '')],
           ], ' role="region" aria-label="Visiting"') : ''}
 
-          <!-- The researched report: red flags, criticism in art media, wider context, bottom line. Art critique, cases and accounts follow it. -->
-          ${detailsReportHtml(inst)}
+          <!-- Flags, the art press, wider context, bottom line and sources, as prose from the report and the archive together. -->
+          ${proseBodyHtml(inst)}
 
           <!-- 3.  ARTISTIC CRITIQUES & INSTITUTIONAL HISTORY (Uncontained Rich Research Section) -->
           ${vcs.length > 0 && vc ? `
@@ -12453,8 +12614,8 @@ return maplibregl$1;
             </div>
           ` : ''}
 
-          ${documentedRecordHtml(inst)}
-          ${sourcesHtml(inst, true)}${isGossipModeActive ? '' : researchContextHtml(inst)}
+          ${proseVoicesHtml(inst)}
+          ${sourcesHtml(inst, true)}
 
 
           ${isClean && inst.highlight ? `<section class="facts" role="region" aria-label="Highlight"><h3 class="facts-title">Highlight</h3><p class="facts-text">${escapeHtml(inst.highlight)}</p></section>` : ''}

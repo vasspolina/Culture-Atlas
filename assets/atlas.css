@@ -1704,3 +1704,10 @@ body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer)
 
 /* The Dark and Gossip mode buttons sit edge to edge (they were 16px apart), so a hovered one fills right up to the vertical line between them. */
 div:has(>#topThemeBtn){column-gap:0}
+/* The Details card as prose (24 Oct 2026): paragraphs run from a bold lead-in, half a line apart, with no boxes, pills or source chips.
+   The sources are links in the text or one Sources line; the caution on archive items is one small note, said once. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part>p:not(.account-note):not(.source-note){text-indent:0;font-size:18px;line-height:var(--lh)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p+p{margin-top:var(--H)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p.account-note,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p.source-note{margin-top:var(--H);text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part .lead-in{font-weight:600}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part a.domain{white-space:normal}
