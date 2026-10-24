@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=243">
-  <script src="assets/config.js?v=243"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=244">
+  <script src="assets/config.js?v=244"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -784,7 +784,7 @@ return maplibregl$1;
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Share information -->
-                  <button id="chatShareBtn" type="button" aria-pressed="false" onclick="window.toggleChatShare()" class="whitespace-nowrap">Share information</button>
+                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
@@ -9909,11 +9909,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v243';
+    const ATLAS_RELEASE = 'culture-atlas-v244';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=243').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=244').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15966,12 +15966,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         placeholder: 'The report service is not configured. Your report will not be saved.'
       };
 
-    // Share information is a toggle like the Details and AI Chat tabs: on while the note is open, and pressing it again goes back to the chat.
+    // Share information is a toggle like the Details and AI Chat tabs: on while the note is open, when it reads Back to chat and pressing it returns to the chat.
     function setChatShareOn(on) {
       const b = document.getElementById('chatShareBtn');
       if (!b) return;
       b.classList.toggle('is-on', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.textContent = on ? 'Back to chat' : 'Share information';
     }
     function toggleChatShare() {
       if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
@@ -19127,9 +19127,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=243"></script>
-<script src="assets/layers.js?v=243"></script>
-<script src="assets/hq-detail.js?v=243"></script>
-<script src="assets/bubbles.js?v=243" defer></script>
+<script src="assets/typeset.js?v=244"></script>
+<script src="assets/layers.js?v=244"></script>
+<script src="assets/hq-detail.js?v=244"></script>
+<script src="assets/bubbles.js?v=244" defer></script>
 </body>
 </html>
