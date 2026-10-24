@@ -491,3 +491,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - spike-island-bristol: the Guardian, 1 May 2020: the new board told founding member Howard Silverman to leave his studio; Bristol 24/7 returned 403.
 - stills-edinburgh: Art Basel, 8 Aug 2024 (Tom Jeffreys): Stills cut ties with Baillie Gifford; no month, no amount.
 - tel-aviv-museum-of-art: 2021 pledge 1 June 2021 (ArtReview); letter September 2025; Flick review 13 July 2023 (no outcome reported).
+
+## d028 (research notes, before its slop check)
+- visual: the record's Epstein flag could not be supported: no reporting links VISUAL Carlow to Epstein.
+- van-gogh-museum-amsterdam: the record says Shell left "under pressure"; no source says so (Shell ended in 2018); the museum's site returns an empty template for partners.
+- uzbekistan-art-and-culture-development-foundation-tashkent: Bukhara Oil as a partner is unconfirmed; Saudi partners (Diriyah Biennale Foundation, ACWA Power, Vision Invest) on part of the 2025 biennial.
+- ucca-center-for-contemporary-art: owned by Chinese investors since 2017; the 2025 partners (Louis Vuitton, Dior, Bloomberg, Aranya) are unconfirmed.
+- venice-biennale: 2024 budget forecast EUR 33.095M public funds (not final accounts); 46 donors; the Helis Foundation is a donor.
+- villa-des-arts-de-casablanca-casablanca: founding date conflicts (1999 or 2009; building 1930 or 1934); Nareva co-owns the Safi coal plant; the 2014 tender-favouritism allegation is unverified and denied by the palace.
+- vyksa-festival-art-ovrag-vyksa: UK sanctions data was read via a Lursoft mirror; no source states OMK's oil and gas customers.
+- tselinny-center-of-contemporary-culture-almaty: founder Kairat Boranbayev; 2023 conviction and state asset handover.
