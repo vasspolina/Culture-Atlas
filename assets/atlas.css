@@ -776,6 +776,10 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-count{text-align:right;white-space:nowrap;color:var(--row-dim);font:400 11px/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase}
 #layersPanel .layers-count:empty{display:none}
 @media (max-width:640px){#layersPanel label{grid-template-columns:auto minmax(0,1fr) auto;row-gap:2px}#layersPanel .layer-name{white-space:normal}#layersPanel .layer-desc{grid-column:2/-1}}
+#layersPanel .layers-note{margin:0 0 8px;color:var(--row-dim);font:400 12px/1.4 var(--sans)}
+#layersPanel .layers-kinds{display:flex;flex-wrap:wrap;gap:4px}
+#layersPanel label.kind-chip{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;flex:1 1 150px}
+#layersPanel label.kind-chip i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
 #layersPanel .layers-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;color:var(--ink);font:400 12px/1.3 var(--sans)}
 #layersPanel .layers-key span{display:flex;align-items:center;gap:8px;min-width:0}
 #layersPanel .layers-key i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
