@@ -137,7 +137,7 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 #floatingCard{background:var(--cobalt);color:#fff;border:0;border-radius:0;padding:0;overflow-y:auto;container-type:inline-size}
 #floatingCard>div:first-child{border-bottom:1px solid rgba(255,255,255,.55);padding:12px 16px}
 #floatingCard a,#floatingCard span,#floatingCard div,#floatingCard p,#floatingCard button{color:inherit}
-#closeFloatingCardBtn{color:var(--yellow)!important;font:400 28px/1 var(--sans)}
+#closeFloatingCardBtn{color:#fff!important;font:400 28px/1 var(--sans)}
 #floatingCardTitle{font:600 28px/1 var(--display);text-transform:uppercase;text-decoration:none;letter-spacing:0;display:block;margin-top:6px}
 #floatingCardTitle{font-size:clamp(16px,calc(120cqw / var(--title-length,18)),28px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #floatingCardMeta{font:400 14px/1.3 var(--sans);margin-top:8px;white-space:normal}
@@ -194,7 +194,7 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
    are (p.44, fig 54), so it does not shout over the line. */
 .inst-link,.space-name,.inst-pin-label-name{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.02em}
 :is(.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#floatingCard) .inst-link,.record-popup-line .space-name{font-size:.94em;line-height:inherit}
-.inst-link:hover,.city-link:hover,.dossier-link:hover{background:var(--yellow)}
+.inst-link:hover,.city-link:hover,.dossier-link:hover{background:var(--peri)}
 
 /* ---- chat ---- */
 #curatorIntelligenceColumn{background:var(--paper)}
@@ -729,12 +729,7 @@ body.chat-input-mode-active #chatNoteTopBar{display:block}
 /* The map credit button is a white square on a white map, so it takes the same black rule. */
 .maplibregl-ctrl-attrib.maplibregl-compact{border:1px solid var(--ink)}
 
-/* Gossip mode: the menu bar turns yellow, its buttons sit on it without their white blocks, and the street map ground goes orange. */
-body.gossip-mode-active header{background:#e2f86c}
-/* The gossip header is yellow in both themes: the dark theme's pale blue ring was 2.2:1 on it. */
-body.gossip-mode-active header{--focus:var(--cobalt)}
-body.gossip-mode-active header button{background:transparent}
-body.gossip-mode-active header button:hover{background:#000;color:#fff}
+/* Gossip mode: the menu bar keeps its colours (yellow is for gossip alone); the Gossip mode button turns orange and the street map ground goes orange. */
 body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:#000}
 body.gossip-mode-active #topGossipBtn:hover,body.gossip-mode-active #mobileGossipBtn:hover{background:#000;color:#fff}
 body.gossip-mode-active #cityMapContainer{background:var(--gossip)}
@@ -807,9 +802,6 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 :root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-tip{border-top-color:#2a2a2a;border-bottom-color:#2a2a2a}
 :root[data-theme="dark"] .record-popup-category,:root[data-theme="dark"] .institution-category-pill,:root[data-theme="dark"] .critical-lens-label,:root[data-theme="dark"] .unverified-platform-tag{background:#252525;border-color:#555;color:#eee}
 :root[data-theme="dark"] .unverified-platform-tag{background:transparent}
-/* Gossip mode's yellow bar keeps black text in both modes */
-body.gossip-mode-active header,body.gossip-mode-active header button,body.gossip-mode-active header a{color:#000}
-body.gossip-mode-active header button:hover,body.gossip-mode-active header a:hover{color:#fff}
 /* Theme switch in the header */
 /* Colour that carries meaning keeps black text in both modes */
 #curatorHeroGreeting h1 .lbl,.curator-hero-title .lbl,.starter-prompt:nth-of-type(2),.starter-prompt:nth-of-type(3),.starter-prompt:nth-of-type(4),#chatContributeBtn,#hudContributeBtn,#mapFloatingContributeBtn{color:#000}
@@ -828,8 +820,6 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root:not([data-theme="dark"]) #zoomControls{border-color:#000}
 :root:not([data-theme="dark"]) #layersControl #layersBtn{background:#fff;color:#000;border-color:#000}
 /* Gossip mode: the globe pane is dark with yellow text, in either theme. */
-:root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button{color:#e2f86c;border-color:#e2f86c}
-:root[data-theme="dark"] body.gossip-mode-active #desktopGlobeTopControls button:hover,:root[data-theme="dark"] body.gossip-mode-active #mobileFilterChipsSection button:hover{background:#e2f86c;color:#000}
 /* What the building view finds follows the record as its last sections, with no heading and no second rule above it. */
 #desktopDossierInside{border-top:0!important;padding-top:0!important}
 
@@ -1096,15 +1086,14 @@ a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:u
 /* The person's turn carries its ME mark again; the input box does not. */
 :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end::before{content:"ME"}
 
-/* Gossip mode: only the gossip information is yellow (a deep gold on a white page, so it still reads): the reported items in the record. The chat keeps the normal ink. */
-body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body),
-body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,a,span,div){color:#6e5300}
-:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body),
-/* The action pills carry their own fill, so their label keeps the pill's own ink: yellow on the pink Website pill was 1.1:1. */
-:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,a,span,div):not(.record-action,.record-action *){color:#e2f86c}
-/* The marker highlights (green, blue) keep black text in gossip mode, in either theme: yellow on green is 1.5:1. */
-body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.is-good,.meta.t-strong,.is-good *,.meta.t-strong *),
-:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.is-good,.meta.t-strong,.is-good *,.meta.t-strong *){color:#000}
+/* Gossip mode: only the gossip is yellow (a deep gold on a white page, so it still reads): the reported items in the record, which carry
+   data-gossip. Everything else in the record, and the chat, keeps the normal ink. */
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip],
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:#6e5300}
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip],
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:#e2f86c}
+/* The marker highlights (green, blue) keep black text inside the reported items, in either theme: yellow on green is 1.5:1. */
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(.is-good,.meta.t-strong,.is-good *,.meta.t-strong *){color:#000}
 
 /* Landing: the title and the four questions share the height evenly and never scroll; the type shrinks to fit a short window. */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting){justify-content:space-evenly;gap:0;height:100%;min-height:0;overflow:hidden;box-sizing:border-box}
@@ -1125,16 +1114,10 @@ body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet
 #zoomControls button:hover{background:#000;color:#fff}
 :root[data-theme="dark"] #zoomControls button,:root[data-theme="dark"] #zoomControls #zoomInBtn,:root[data-theme="dark"] #zoomControls #zoomOutBtn{background:transparent;color:#f4f4f4;border:1px solid #f4f4f4;font:400 26px/1 var(--sans)}
 :root[data-theme="dark"] #zoomControls button:hover{background:#f4f4f4;color:#000}
-:root[data-theme="dark"] body.gossip-mode-active #zoomControls button{color:#e2f86c;border-color:#e2f86c}
-:root[data-theme="dark"] body.gossip-mode-active #zoomControls button:hover{background:#e2f86c;color:#000}
 
 /* One line between the map and the right column: the splitter's. */
 #workViewContainer{border-left:0}
 
-/* Gossip header is yellow in every theme, so its lines are black. */
-body.gossip-mode-active header,body.gossip-mode-active header *{border-color:#000!important}
-:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomInBtn,:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomOutBtn{color:#e2f86c;border-color:#e2f86c}
-:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomInBtn:hover,:root[data-theme="dark"] body.gossip-mode-active #zoomControls #zoomOutBtn:hover{background:#e2f86c;color:#000}
 
 /* The note above the individual accounts: regular weight, body size, no rule under it. */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .kicker.accounts-note{font:400 18px/var(--lh) var(--sans);letter-spacing:0;text-transform:none;text-decoration:none;border:0;margin:20px 0 8px;padding:0;max-width:66ch}
@@ -1332,6 +1315,8 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){display:inline-block;width:auto;max-width:100%;min-height:0;height:22px;margin:0;padding:0 10px;border:0;border-radius:0;font:400 14px/22px var(--sans);text-transform:none;letter-spacing:0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#000;background:var(--fill,#c8b85a);text-decoration:none;cursor:pointer}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#9ae3e8}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#e79a3a}
+/* A gossip question (its answer is a balloon) is the one yellow label: yellow is for gossip alone. */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#e2f86c}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c8b85a);color:#000;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:14px;height:22px;line-height:22px}}
@@ -1649,7 +1634,7 @@ body.chat-input-mode-active #workInput{padding:.75em}
 
 /* Street map zoom and compass: the globe's squares. MapLibre draws its plus, minus and compass as #333 background images, which stayed
    dark grey on the black ground in dark mode (about 1.5:1). Here the three signs are masks filled with the button's own colour, so the
-   sign is always the border's colour: light black on white, dark #f4f4f4 on the page, gossip in dark #e2f86c; hover inverts (all 7:1 or
+   sign is always the border's colour: light black on white, dark #f4f4f4 on the page; hover inverts (all 7:1 or
    better, as the globe's buttons). The compass is a solid north arrow over an outlined south one, told apart by shape and not by grey.
    Where the system forces colours (forced-colors) MapLibre's own system-colour icons stay. */
 @media (min-width:768px){.maplibregl-ctrl-top-right{top:66px}}
@@ -1660,8 +1645,6 @@ body.chat-input-mode-active #workInput{padding:.75em}
 .maplibregl-ctrl-group button:disabled .maplibregl-ctrl-icon{opacity:1}
 :root[data-theme="dark"] .maplibregl-ctrl-group button,:root[data-theme="dark"] .maplibregl-ctrl-group button:last-child,:root[data-theme="dark"] .maplibregl-ctrl-group button+button{background:var(--paper)!important;color:#f4f4f4;border-color:#f4f4f4!important}
 :root[data-theme="dark"] .maplibregl-ctrl-group button:not(:disabled):hover{background:#f4f4f4!important;color:#000}
-:root[data-theme="dark"] body.gossip-mode-active .maplibregl-ctrl-group button,:root[data-theme="dark"] body.gossip-mode-active .maplibregl-ctrl-group button:last-child,:root[data-theme="dark"] body.gossip-mode-active .maplibregl-ctrl-group button+button{color:#e2f86c;border-color:#e2f86c!important}
-:root[data-theme="dark"] body.gossip-mode-active .maplibregl-ctrl-group button:not(:disabled):hover{background:#e2f86c!important;color:#000}
 @media not (forced-colors:active){
   .maplibregl-ctrl-group button .maplibregl-ctrl-icon{background-image:none!important;background-color:currentColor;-webkit-mask:var(--sign) center/100% 100% no-repeat;mask:var(--sign) center/100% 100% no-repeat}
   .maplibregl-ctrl-group button.maplibregl-ctrl-zoom-in .maplibregl-ctrl-icon{--sign:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cpath d='M16 10h2v6h6v2h-6v6h-2v-6h-6v-2h6z'/%3E%3C/svg%3E")}
@@ -1700,7 +1683,10 @@ body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer)
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{--fill:#8e6a00}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#007d79}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#ba4e00}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#e2f86c}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{color:#fff}
 
 /* The Dark and Gossip mode buttons sit edge to edge (they were 16px apart), so a hovered one fills right up to the vertical line between them. */
 div:has(>#topThemeBtn){column-gap:0}
+/* The gossip question keeps black type on its yellow in the dark theme too (white on #e2f86c is 1.2:1). */
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"],:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"] .sp-text,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]:hover{color:#000}

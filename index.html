@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=254">
-  <script src="assets/config.js?v=254"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=255">
+  <script src="assets/config.js?v=255"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9906,11 +9906,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v254';
+    const ATLAS_RELEASE = 'culture-atlas-v255';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=254').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=255').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10230,9 +10230,9 @@ return maplibregl$1;
       let cardY = py - cardH - 16;
       if (cardY < 14) cardY = py + 20;
 
-      // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode (yellow text there in gossip mode). Gossip mode never darkens it in light mode.
+      // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode. Gossip mode does not change it: yellow is for gossip alone.
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const cardInk = cardDark ? (isGossipModeActive ? '#e2f86c' : '#ffffff') : '#000000';
+      const cardInk = cardDark ? '#ffffff' : '#000000';
       ctx.fillStyle = cardDark ? '#2a2a2a' : '#ffffff';
       ctx.fillRect(cardX, cardY, cardW, cardH);
 
@@ -10322,7 +10322,7 @@ return maplibregl$1;
       const now = (typeof ts === 'number') ? ts : performance.now();
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#e2f86c' : '#f4f4f4'), G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#e2f86c' : '#ffffff'), G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'square', U: 'triangle' };
         const TIER_SHAPE_SIZE = { circle: 3, square: 2.7, triangle: 3.3 };
@@ -10460,7 +10460,7 @@ return maplibregl$1;
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = G_GROUND;
         ctx.fill();
-        ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+        ctx.strokeStyle = G_LINE;
         ctx.lineWidth = 0.8;
         ctx.stroke();
 
@@ -10518,7 +10518,7 @@ return maplibregl$1;
               }
               ctx.closePath();
               ctx.fill();
-              ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+              ctx.strokeStyle = G_LINE;
               ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
               ctx.stroke();
             } else {
@@ -10571,7 +10571,7 @@ return maplibregl$1;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+                ctx.strokeStyle = G_LINE;
                 ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
                 ctx.stroke();
               }
@@ -10610,7 +10610,7 @@ return maplibregl$1;
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 28, h = 22;
           const darkLabel = !GLOBE_LIGHT && !active;
-          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffd600' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c8b85a')));
+          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c8b85a')));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
           ctx.fillStyle = darkLabel ? '#ffffff' : '#000000';
           ctx.textAlign = 'center';
@@ -10754,7 +10754,7 @@ return maplibregl$1;
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+                ctx.strokeStyle = G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
@@ -10766,7 +10766,7 @@ return maplibregl$1;
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
                 if (isSelected) { ctx.fillStyle = '#e79a3a'; ctx.fill(); }
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
+                ctx.strokeStyle = G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               }
@@ -10830,10 +10830,10 @@ return maplibregl$1;
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : (GLOBE_LIGHT ? '#007a78' : '#08bdba')) 
+                    ? (GLOBE_LIGHT ? '#007a78' : '#08bdba') 
                     : isHov
                     ? G_TEXT
-                    : ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_TEXT);
+                    : G_TEXT;
                   ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }
               }
@@ -10954,15 +10954,15 @@ return maplibregl$1;
           const pinShape = TIER_SHAPE[d.inst.tier] || 'triangle';
           if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1)); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR, 0, Math.PI * 2); }
           ctx.strokeStyle = isHov 
-            ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE)
+            ? G_LINE
             : (isVisualCritiqueOnly && hasVc)
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
-            ? (d.inst.gossip_data ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : (GLOBE_LIGHT ? '#713f12' : '#884c16'))
+            ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : (GLOBE_LIGHT ? '#713f12' : '#884c16'))
             : (d.inst.tier === 'A' ? (GLOBE_LIGHT ? '#0a8f68' : '#10b981') : d.inst.tier === 'B' ? (GLOBE_LIGHT ? '#7a52d6' : '#be95ff') : (GLOBE_LIGHT ? '#008a87' : '#08bdba'));
-          // Hollow rings, colored by tier; the selected one is filled.
+          // Hollow rings, colored by tier; the selected one is filled. In gossip mode a space with gossip is a filled yellow dot, and only it is yellow.
           ctx.lineWidth = 0.8;
-          if (isSel || (isGossipModeActive && d.inst.gossip_data)) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
+          if (isSel || (isGossipModeActive && hasGossip(d.inst))) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
           ctx.stroke();
           ctx.restore();
 
@@ -11093,9 +11093,9 @@ return maplibregl$1;
               }
               ctx.fillText(countTxt, cardX + 16, currentY);
 
-              // Action: a flat grey block with black text, yellow on hover.
+              // Action: a flat grey block with black text, white on hover.
               ctx.save();
-              ctx.fillStyle = isHoveringCityExploreLink ? (isGossipModeActive ? '#ffffff' : '#ffd600') : '#d9d9d9';
+              ctx.fillStyle = isHoveringCityExploreLink ? '#ffffff' : '#d9d9d9';
               ctx.fillRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
               ctx.font = ATLAS_CARD_MONO_FONT;
               ctx.fillStyle = '#000000';
@@ -11415,6 +11415,13 @@ return maplibregl$1;
       return String(s || '').split(/[.;]\s+|;\s*|,\s+(?=(?:but|though|although|while|yet|not)\b)|\s+but\s+/i)
         .some(c => !WATCH_CLEAN.test(c) && WATCH_GOSSIP.test(c));
     }
+    // A space has gossip when the chat's gossip answer would print something for it. The globe asks every frame, so each space is asked once.
+    function hasGossip(inst) {
+      if (!inst) return false;
+      const cache = hasGossip.cache || (hasGossip.cache = new WeakMap());
+      if (!cache.has(inst)) { try { cache.set(inst, !!recordFact(inst, true)); } catch (e) { return false; } }
+      return cache.get(inst);
+    }
     // A block of facts set as a table (the user's reference, 19 Oct 2026): its name on a line, a rule, then one row per
     // fact, the label in the left column and the value in the right, all at the text size, and a rule to close it.
     // rows: [label, html] pairs; a row with no value is left out. Values are passed as HTML, already escaped.
@@ -11494,7 +11501,8 @@ return maplibregl$1;
         if (dt.funding_verdict) rows.push(`<p class="t-lead t-strong">${e(dt.funding_verdict)}</p>`);
         rows.push(detailsListHtml(dt.funding));
       } else if (inst.funding) rows.push(`<p class="t-lead">${e(inst.funding)}</p>`);
-      if (inst.watch && watchIsAboutMoney(inst.watch) && !inst.details) rows.push(`<p class="t-lead">${e(inst.watch)}</p>`);
+      // data-gossip: in Gossip mode a watch line that passes the gossip test is set in the gossip colour, and only it.
+      if (inst.watch && watchIsAboutMoney(inst.watch) && !inst.details) rows.push(`<p class="t-lead"${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${e(inst.watch)}</p>`);
       const seenHosts = new Set();
       const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).filter(u => { const h = host(u); if (seenHosts.has(h)) return false; seenHosts.add(h); return true; }).slice(0, 6);
       if (urls.length) rows.push(`<p class="t-lead no-indent source-note">Sources: ${urls.map(u => link(u, host(u)).replace('<a ', '<a class="domain" ').replace(' class=""', '')).join(', ')}.</p>`);
@@ -11913,7 +11921,7 @@ return maplibregl$1;
       if (srcBox) srcBox.innerHTML = sourcesHtml(inst, true) + (isGossipModeActive ? '' : researchContextHtml(inst));
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        record.innerHTML = reported || (watchReported ? `<p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '');
+        record.innerHTML = reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '');
         record.classList.toggle('hidden', !record.innerHTML);
       }
       const webLink = document.getElementById('dossier-sheet-link-web');
@@ -12383,7 +12391,7 @@ return maplibregl$1;
             ${!isClean && inst.highlight ? `<p class="institution-summary">${escapeHtml(inst.highlight)}</p>` : ''}
             ${inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : ''}
             ${isCommunity ? '' : gradeLineHtml(inst)}
-            ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p>${escapeHtml(inst.watch)}</p>` : ''}
+            ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${escapeHtml(inst.watch)}</p>` : ''}
             <div class="record-actions record-action-row" style="display:flex; flex-wrap:wrap; gap:4px 24px; padding-top:4px;">
               <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
               ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
@@ -17593,7 +17601,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     let cloudCache = { key: null, list: [] };
     function questionCloud() {
       const sel = typeof selectedInstitution !== 'undefined' ? selectedInstitution : null;
-      const key = sel ? String(sel.id || sel.name) : '';
+      const key = (sel ? String(sel.id || sel.name) : '') + (isGossipModeActive ? '|gossip' : '');
       if (cloudCache.key === key && cloudCache.list.length) return cloudCache.list;
       const registry = (typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []).filter(c => c && c.name);
       const registryName = (city) => { const c = city && registry.find(r => matchC(r.name, city)); return c ? c.name : ''; };
@@ -17623,8 +17631,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const staffQ = (i) => ((i.gossip_data || {}).accounts || []).length ? `What do employees report at ${i.name}?` : '';
       const criticQ = (i) => (i.visual_critiques || []).some(v => v.kind === 'theory') ? `What do critics say about ${i.name}?` : '';
       const epsteinQ = (i) => (i.epstein_records || []).length ? `What is ${i.name}’s Epstein link?` : '';
+      // Gossip questions (notes/gossip-criteria.md): one per space whose record reports something, a watch line that passes the
+      // gossip test included. Their answer is a balloon, so they take the gossip fill (tier G), as do the employee-account questions.
+      const gossipQ = (i) => hasGossip(i) ? `What is the gossip about ${i.name}?` : '';
       const pool = (test, n, make) => shuffledList(ALL_INSTITUTIONS.filter(test)).slice(0, n * 2).map(i => ({ q: make(i), tier: tierOf(i), inst: i })).filter(x => x.q && x.q.length <= 58).slice(0, n);
-      if (sel) [...askableFlags(sel).map(f => (i) => flagQFor(i, f)), funderQ, moneyQ, fundingQ, gradeQ, staffQ, criticQ, epsteinQ, reportedQ, wikileaksQ, watchQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, tierOf(sel), sel); });
+      if (sel) [gossipQ, staffQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, 'G', sel); });
+      // In Gossip mode the page asks only for gossip.
+      if (sel && !isGossipModeActive) [...askableFlags(sel).map(f => (i) => flagQFor(i, f)), funderQ, moneyQ, fundingQ, gradeQ, criticQ, epsteinQ, reportedQ, wikileaksQ, watchQ].forEach(f => { const q = f(sel); if (q && resolvesTo(q, sel)) add(q, tierOf(sel), sel); });
       // Places: cities by name in the city registry, countries by name in the country registry (the chat answers both).
       const countries = (typeof ALL_COUNTRIES_REGISTRY !== 'undefined' ? ALL_COUNTRIES_REGISTRY : []).filter(c => c && c.name).map(c => c.name);
       const countryName = (c) => countries.includes(c) ? c : '';
@@ -17642,7 +17655,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const funders = pool(i => i.funding && (i.funder_links || []).length && (i.tier === 'A' || i.tier === 'B'), 120, funderQ);
       const money = pool(i => hasMoney(i) && (i.tier === 'A' || i.tier === 'B'), 100, moneyQ);
       const grades = pool(i => i.grade && i.grade_basis && (i.tier === 'A' || i.tier === 'B'), 100, gradeQ);
-      const staff = pool(i => ((i.gossip_data || {}).accounts || []).length, 60, staffQ);
+      const staff = pool(i => ((i.gossip_data || {}).accounts || []).length, 60, staffQ).map(x => ({ ...x, tier: 'G' }));
+      const gossip = pool(hasGossip, isGossipModeActive ? 240 : 80, gossipQ).map(x => ({ ...x, tier: 'G' }));
       const critics = pool(i => (i.visual_critiques || []).some(v => v.kind === 'theory') && (i.tier === 'A' || i.tier === 'B'), 60, criticQ);
       const epstein = pool(i => (i.epstein_records || []).length, 16, epsteinQ);
       const funding = pool(i => i.funding && !hasMoney(i) && (i.tier === 'A' || i.tier === 'B'), 100, fundingQ);
@@ -17663,7 +17677,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const funderTier = (f) => { const n = { A: 0, B: 0, U: 0 }; linked[f].forEach(i => n[tierOf(i)]++); return n.A >= n.B && n.A >= n.U ? 'A' : n.B >= n.U ? 'B' : 'U'; };
       const sharedFunders = shuffledList(Object.keys(linked).filter(f => linked[f].length >= 3)).slice(0, 40).map(f => ({ q: `Which institutions does ${funderName(f)} fund?`, tier: funderTier(f), inst: null }));
       // Round-robin over the kinds so the colours and the kinds of question mix across the page.
-      const kinds = [flags, funders, flaggedCities, grades, staff, cleanest, critics, money, epstein, sharedFunders, funding, reported, worst, notes, flaggedCountries, wikileaks, cleanestCountries, epsteinCities];
+      const kinds = isGossipModeActive ? [gossip, staff] : [flags, gossip, funders, flaggedCities, grades, staff, cleanest, critics, money, epstein, sharedFunders, funding, reported, worst, notes, flaggedCountries, wikileaks, cleanestCountries, epsteinCities];
       for (let k = 0; kinds.some(a => a.length); k++) kinds.forEach(a => { const x = a.shift(); if (x) add(x.q, x.tier, x.inst); });
       cloudCache = { key, list: out };
       return out;
@@ -19149,9 +19163,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=254"></script>
-<script src="assets/layers.js?v=254"></script>
-<script src="assets/hq-detail.js?v=254"></script>
-<script src="assets/bubbles.js?v=254" defer></script>
+<script src="assets/typeset.js?v=255"></script>
+<script src="assets/layers.js?v=255"></script>
+<script src="assets/hq-detail.js?v=255"></script>
+<script src="assets/bubbles.js?v=255" defer></script>
 </body>
 </html>
