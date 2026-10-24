@@ -652,7 +652,8 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 body.chat-input-mode-active #chatNoteTopBar{display:block}
 #chatNoteTopBar #chatBackBtn{font:400 15px/1 var(--sans);padding:8px 0}
 /* One set of zoom buttons at a time: on the street map the map's own square set stays, the round pair goes. */
-#globeViewport:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none}
+/* The street map brings its own zoom buttons; the globe pair is moved out of #globeViewport by script, so match from body. */
+body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 
 /* The Epstein flag is highlighted in purple */
 .flag-epstein{background:#be95ff;color:#000;padding:0 5px}
@@ -1786,7 +1787,13 @@ div:has(>#topThemeBtn){column-gap:0}
 
   /* ---- Map controls: compact capsules, 36pt ---- */
   #desktopGlobeTopControls button,#hudControlsBar button,#layersToggleBtn,#layersControl>button{min-height:36px!important;height:auto!important;padding:0 var(--m-s3)!important}
-  #zoomControls button{width:var(--m-tap)!important;height:var(--m-tap)!important}
+  /* Zoom: one pair on the globe, MapLibre's on the street map; same 44pt size. + and − are icons, not text, so they keep their own size. */
+  :root:root body #zoomControls button{width:var(--m-tap)!important;height:var(--m-tap)!important;font-size:30px!important;line-height:1!important;font-weight:300}
+  :root:root body .maplibregl-ctrl-group button{width:var(--m-tap)!important;height:var(--m-tap)!important}
+  :root:root body .maplibregl-ctrl-group{border:0!important}
+  /* The map credit opens beside Layers (bottom-left), never under it. */
+  #cityMapContainer .maplibregl-ctrl-bottom-right{max-width:calc(100% - 114px)}
+  #cityMapContainer .maplibregl-ctrl-attrib{margin:0 var(--m-s3) var(--m-s3) 0!important}
 
   /* ---- Record sheet / full record ---- */
   #dossier-sheet-scrollable-body,#detailBody{padding:var(--m-s3) var(--m-s4)!important}
