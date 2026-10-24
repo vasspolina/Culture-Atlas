@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=259">
-  <script src="assets/config.js?v=259"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=260">
+  <script src="assets/config.js?v=260"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9900,11 +9900,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v259';
+    const ATLAS_RELEASE = 'culture-atlas-v260';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=259').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=260').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15089,6 +15089,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         curatorContext.lastWebIntel = null;
       }
 
+      // In Gossip mode the follow-ups are gossip questions too: chips about money, grades or critics give way to
+      // questions about reported items and employee accounts at named spaces, drawn from the gossip pool (questionCloud).
+      if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && followUps && followUps.length) {
+        const isGossipChip = (q) => /\b(gossip|reported|report|employees|staff|workers|accounts|protests?|boycotts?|scandals?|rumou?rs?|unions?)\b/i.test(q);
+        const keep = followUps.filter(isGossipChip);
+        const want = Math.min(3, Math.max(2, followUps.length));
+        const fill = keep.length < want && typeof freshChips === 'function' ? freshChips(want - keep.length, keep) : [];
+        followUps = [...keep, ...fill].slice(0, want);
+      }
+
       let followUpHtml = '';
       if (followUps && followUps.length > 0) {
         followUpHtml = `
@@ -15347,7 +15357,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const own = target ? ((target.gossip_data || {}).accounts || []).length : 0;
         const note = target ? `<p>${formatInstLink(target)} carries ${own ? `${own} such ${own === 1 ? 'account' : 'accounts'}, shown in Gossip mode` : 'no such account'}.</p>` : '';
         // The summary names spaces and reports conduct from review platforms, so it is gossip and gets the balloon.
-        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])], true);
+        const staffChips = isGossipModeActive
+          ? [...(target && hasGossip(target) ? [`What is the gossip about ${target.name}?`] : []), ...freshChips(2)].slice(0, 3)
+          : ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])];
+        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, staffChips, true);
         return;
       }
       // The critical frames (data/research_attach/institutional_critiques.json): quotations with author, title, publication and date, one frame per museum type.
@@ -19338,9 +19351,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=259"></script>
-<script src="assets/layers.js?v=259"></script>
-<script src="assets/hq-detail.js?v=259"></script>
-<script src="assets/bubbles.js?v=259" defer></script>
+<script src="assets/typeset.js?v=260"></script>
+<script src="assets/layers.js?v=260"></script>
+<script src="assets/hq-detail.js?v=260"></script>
+<script src="assets/bubbles.js?v=260" defer></script>
 </body>
 </html>
