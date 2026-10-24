@@ -1624,11 +1624,11 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 /* The balloon: dark fill, orange outline, light type. bubbles.js draws the fill and outline as SVG paint; a presentation rule outranks its attributes. */
 :root[data-theme="dark"] .bubble-svg .bubble-fill{fill:var(--grey)}
 :root[data-theme="dark"] .bubble-svg .bubble-line{stroke:var(--gossip)}
-:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
-:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
-:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
-:root[data-theme="dark"] body.gossip-mode-active .is-gossip .thinking{color:var(--ink)}
-:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
+:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
+:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
+:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
+:root[data-theme="dark"] .is-gossip .thinking{color:var(--ink)}
+:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
 
 /* ---- release 239 ---- */
 /* The note box has an inner margin: its text no longer touches the box edge or the focus ring drawn inside it. Only while a note is written; the plain input line stays flush with its hairline. */
@@ -1674,7 +1674,7 @@ body.chat-input-mode-active #workInput{padding:.75em}
 :root:not([data-theme="dark"]) #workInputCard.is-mode #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none}
 :root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream) :is(.inst-link,.city-link,.dossier-link):hover,:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 :root:not([data-theme="dark"]) #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:#e8e8e8;border-color:#000}
+:root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:#e8e8e8;border-color:#000}
 :root:not([data-theme="dark"]) body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#cb9440}
 :root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream) .grade-word{color:var(--grade-col)}
 :root:not([data-theme="dark"]) #workInputCard #chatShareBtn,:root:not([data-theme="dark"]) #workInputCard.is-mode #chatShareBtn{font:400 15px/1 var(--sans);text-transform:none;letter-spacing:0}
@@ -1691,11 +1691,11 @@ body.chat-input-mode-active #workInput{padding:.75em}
 :root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active) *{color:#000!important}
 :root:not([data-theme="dark"]) .bubble-svg .bubble-fill{fill:var(--grey)}
 :root:not([data-theme="dark"]) .bubble-svg .bubble-line{stroke:var(--gossip)}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
-:root:not([data-theme="dark"]) body.gossip-mode-active .is-gossip .thinking{color:var(--ink)}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
+:root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
+:root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
+:root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
+:root:not([data-theme="dark"]) .is-gossip .thinking{color:var(--ink)}
+:root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
 /* In a note the Share information button is mint; hovered it is black on mint like the other buttons there (the mint rule outranked the hover's black and left mint on periwinkle, 1.5:1). */
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover *{background:var(--mint)!important;color:#000!important}
 
