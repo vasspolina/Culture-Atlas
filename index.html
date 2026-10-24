@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=260">
-  <script src="assets/config.js?v=260"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=261">
+  <script src="assets/config.js?v=261"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -388,20 +388,18 @@ return maplibregl$1;
       
       <!-- BEGIN: SpaceDetailCardBottomSheet (Mobile Sliding Sheet) -->
       <section class="relative z-30 hidden max-h-_52vh flex md-hidden flex-col rule-t" data-purpose="space-dossier-sheet" id="dossier-bottom-sheet">
-        <!-- Grab Handle & Header Bar -->
-        <div class="pt-2 pb-1 px-4 flex flex-col items-center" id="sheet-drag-handle">
-          <div class="w-10 h-0_5 mb-2"></div>
+        <!-- Sheet chrome, as a SwiftUI .medium/.large sheet: a grabber (drag or tap to switch height) and a close button
+             in the top-trailing corner. Only this row stays put; the title scrolls away with the record below it. -->
+        <div id="sheet-drag-handle" class="sheet-chrome">
+          <span class="sheet-grabber" aria-hidden="true"></span>
+          <button type="button" id="sheet-size-btn" class="sheet-size" aria-label="Expand space details" aria-expanded="false"></button>
+          <button type="button" aria-label="Close space details" class="sheet-close" id="close-sheet-btn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg>
+          </button>
         </div>
-        <div class="px-4 pb-2 flex flex-col items-start gap-1 rule-b shrink-0">
-          <div class="w-full flex items-center justify-end">
-            <button aria-label="Minimize space details" class="p-1" id="close-sheet-btn">
-              Close
-            </button>
-          </div>
-          <div class="w-full min-w-0">
-            <h2 class="lede break-words block" id="dossier-sheet-name"></h2>
-            <p class="kicker no-indent meta mt-0_5 block break-words" id="dossier-sheet-meta"></p>
-          </div>
+        <div class="sheet-title-block">
+          <h2 class="lede break-words block" id="dossier-sheet-name"></h2>
+          <p class="kicker no-indent meta mt-0_5 block break-words" id="dossier-sheet-meta"></p>
         </div>
         <!-- Scrollable Card Body Details -->
         <div class="flex-1 min-h-0 overflow-y-auto px-4 py-3 space-y-3 no-scrollbar pb-6" id="dossier-sheet-scrollable-body">
@@ -9900,11 +9898,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v260';
+    const ATLAS_RELEASE = 'culture-atlas-v261';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=260').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=261').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11523,9 +11521,11 @@ return maplibregl$1;
     function sourcesHtml(inst, fieldsOnly) {
       if (!inst) return '';
       const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).slice(0, 6);
+      // Each source reads as its site name, as everywhere else on the page. A path cut at 30 characters
+      // ("…/68-arrested-after-") read as a broken link; a second page on the same site keeps the site name.
       const links = urls.map(u => {
         let h = u;
-        try { const x = new URL(u); h = x.hostname.replace(/^www\./, '') + (x.pathname.length > 1 ? x.pathname.replace(/\/$/, '').slice(0, 30) : ''); } catch (e) { /* keep the url */ }
+        try { h = new URL(u).hostname.replace(/^www\./, ''); } catch (e) { /* keep the url */ }
         return `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(h)}</a>`;
       });
       const v = inst.verification;
@@ -15609,6 +15609,33 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         else if (name === 'chat') tabChat?.click();
       };
 
+      // Record sheet detents: medium (about half the map) and large. Tap the grabber, or drag it up or down 40px, to switch;
+      // dragging down from medium closes, like a SwiftUI sheet. Scrolling the record up from medium also opens it to large.
+      (function () {
+        const sheet = document.getElementById('dossier-bottom-sheet');
+        const chrome = document.getElementById('sheet-drag-handle');
+        const sizeBtn = document.getElementById('sheet-size-btn');
+        if (!sheet || !chrome) return;
+        const setLarge = (on) => {
+          sheet.classList.toggle('is-large', on);
+          if (sizeBtn) { sizeBtn.setAttribute('aria-expanded', String(on)); sizeBtn.setAttribute('aria-label', on ? 'Shrink space details' : 'Expand space details'); }
+        };
+        sizeBtn?.addEventListener('click', () => setLarge(!sheet.classList.contains('is-large')));
+        let y0 = null;
+        chrome.addEventListener('touchstart', (e) => { if (!e.target.closest('#close-sheet-btn')) y0 = e.touches[0].clientY; }, { passive: true });
+        chrome.addEventListener('touchend', (e) => {
+          if (y0 === null) return;
+          const dy = e.changedTouches[0].clientY - y0; y0 = null;
+          if (dy < -40) setLarge(true);
+          else if (dy > 40) { if (sheet.classList.contains('is-large')) setLarge(false); else document.getElementById('close-sheet-btn')?.click(); }
+        }, { passive: true });
+        sheet.addEventListener('scroll', () => { if (sheet.scrollTop > 24 && !sheet.classList.contains('is-large')) setLarge(true); }, { passive: true });
+        // A new record opens at medium, scrolled to its title.
+        new MutationObserver(() => { if (sheet.classList.contains('hidden')) { setLarge(false); sheet.scrollTop = 0; } }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+        const name = document.getElementById('dossier-sheet-name');
+        if (name) new MutationObserver(() => { sheet.scrollTop = 0; }).observe(name, { childList: true, characterData: true, subtree: true });
+      })();
+
       closeSheetBtn?.addEventListener('click', () => {
         bottomSheet?.classList.add('hidden');
         setActiveMobileTab(tabAtlas);
@@ -19351,9 +19378,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=260"></script>
-<script src="assets/layers.js?v=260"></script>
-<script src="assets/hq-detail.js?v=260"></script>
-<script src="assets/bubbles.js?v=260" defer></script>
+<script src="assets/typeset.js?v=261"></script>
+<script src="assets/layers.js?v=261"></script>
+<script src="assets/hq-detail.js?v=261"></script>
+<script src="assets/bubbles.js?v=261" defer></script>
 </body>
 </html>
