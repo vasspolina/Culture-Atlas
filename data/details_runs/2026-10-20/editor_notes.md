@@ -227,3 +227,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - mauritshuis-the-hague: mauritshuis.nl returns 403 to every automated fetch; Shell sponsorship ended 2018.
 - masp-são-paulo: the site redirects to masp.com.br; the 2015 to 2024 financial statement PDFs exceeded the size limit.
 - mariupol-drama-theatre: funded by Russian occupation authorities and St Petersburg (up to 13bn roubles per Bumaga); Euromaidan Press is partisan advertorial.
+
+## d016 (research notes, before its slop check)
+- migros-museum: the record's CHF 12 ticket is outdated; the museum's site says admission is free.
+- mit-media-lab-cambridge: MIT's own report says Epstein was never coded "disqualified"; the record repeats the New Yorker's claim. The report states both.
+- multimedia-art-museum-moscow-mamm-moscow: Wikipedia dates the US action on Alfa-Bank to 24 February 2022; the record says April 2022.
+- moma-the-museum-of-modern-art: Leon Black's payments to Epstein: at least $158M (The Art Newspaper) or $170M (CBS). MoMA's own support and visit pages refused automated access, so the record's corporate sponsors (Bloomberg, Hyundai Card, Cartier and others) are not in the report.
+- micas-malta-international-contemporary-art-space: MICAS says Sultana "stepped down"; The Shift says he was removed.
+- mk-gallery-milton-keynes: the J Paul Getty Jnr Charitable Trust is listed as an expansion donor; the checker is told to apply the founder-fortune ruling if a page ties it to Getty Oil money.
+- moca-cleveland-cleveland: the record's "State censorship or punishment" flag does not fit (the cancellation was the museum's own decision).
+- milwaukee-symphony-orchestra-milwaukee: Epstein item via former board member Peter Mahler (a paid staffing contractor for Epstein).
