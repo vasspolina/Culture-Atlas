@@ -1,5 +1,5 @@
-/* Chat motion: gossip speech bubbles drawn as SVG that fit their text, a typing reveal for new replies,
-   and the app's hairlines drawn in on load. No dependencies; every effect is skipped under reduced motion. */
+/* Chat motion: gossip speech bubbles drawn as SVG that fit their text, a typing reveal for new replies.
+   No dependencies; every effect is skipped under reduced motion. */
 (function () {
   'use strict';
   var NS = 'http://www.w3.org/2000/svg';
@@ -390,63 +390,7 @@
     scan();
   }
 
-  /* Hairlines on load: the app's main rules are covered by a copy that draws itself in, then handed back. */
-  function drawLines() {
-    if (reduce) return;
-    // A reload right after a draw (a tab left open across a release reloads itself) must not draw again.
-    try {
-      var last = +sessionStorage.getItem('atlas-lines') || 0;
-      if (Date.now() - last < 20000) return;
-      sessionStorage.setItem('atlas-lines', String(Date.now()));
-    } catch (e) {}
-    var root = document.documentElement;
-    var spec = [
-      ['header', 'bottom', 'x'],
-      ['#workspaceContextTabBar', 'bottom', 'x'],
-      ['#globeSplitter', 'left', 'y'],
-      ['#workInputCard', 'top', 'x'],
-      ['#mobileStickyComposer', 'top', 'x']
-    ];
-    var lines = [];
-    spec.forEach(function (s, i) {
-      var el = [].slice.call(document.querySelectorAll(s[0])).filter(function (e) { var b = e.getBoundingClientRect(); return b.width && b.height; })[0];
-      if (!el) return;
-      var r = el.getBoundingClientRect(), cs = getComputedStyle(el);
-      if (!r.width || !r.height) return;
-      var colour = cs['border' + s[1].charAt(0).toUpperCase() + s[1].slice(1) + 'Color'];
-      lines.push({ s: s, r: r, colour: colour, i: i });
-    });
-    if (!lines.length) return;
-    var layer = document.createElement('div');
-    layer.className = 'lines-layer';
-    lines.forEach(function (l) {
-      var d = document.createElement('i');
-      var r = l.r, horiz = l.s[2] === 'x';
-      d.style.cssText = 'position:fixed;background:' + l.colour + ';animation-delay:' + (l.i * 240) + 'ms;' +
-        (horiz ? 'left:' + r.left + 'px;width:' + r.width + 'px;height:1px;top:' + (l.s[1] === 'top' ? r.top : r.bottom - 1) + 'px;transform-origin:left;' + 'animation-name:line-x'
-               : 'top:' + r.top + 'px;height:' + r.height + 'px;width:1px;left:' + r.left + 'px;transform-origin:top;animation-name:line-y');
-      layer.appendChild(d);
-    });
-    root.classList.add('lines-drawing');
-    document.body.appendChild(layer);
-    setTimeout(function () { root.classList.remove('lines-drawing'); layer.remove(); }, 3200);
-  }
-
-  /* The rules are held back from the first paint (html.atlas-held, set in index.html's head and cleared once the page is final),
-     so they are drawn in once: not shown, hidden 1.5 s later and drawn again. The draw begins in the same task that clears the hold,
-     before anything is painted, so there is no frame with the real rules showing between the two. A page that is already
-     released when this runs has shown its rules, and draws nothing. */
-  function drawWhenReleased() {
-    var root = document.documentElement;
-    if (!root.classList.contains('atlas-held')) return;
-    var mo = new MutationObserver(function () {
-      if (root.classList.contains('atlas-held')) return;
-      mo.disconnect();
-      drawLines();
-    });
-    mo.observe(root, { attributes: true, attributeFilter: ['class'] });
-  }
-
-  function start() { observe(); drawWhenReleased(); }
+  /* The rules are simply there from the first paint: nothing draws them in on load. */
+  function start() { observe(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();

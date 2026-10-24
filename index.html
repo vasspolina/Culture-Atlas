@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=240">
-  <script src="assets/config.js?v=240"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=241">
+  <script src="assets/config.js?v=241"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9909,11 +9909,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v240';
+    const ATLAS_RELEASE = 'culture-atlas-v241';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=240').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=241').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11307,8 +11307,7 @@ return maplibregl$1;
         return fontReady;
       }).then((ready) => {
         if (ready === null) return;
-        // The deferred scripts (assets/bubbles.js draws the hairlines in) have run by DOMContentLoaded, and they look
-        // for the hold being cleared: release only once they are there to see it.
+        // Release after DOMContentLoaded, so the deferred scripts have run before the first frame is shown.
         if (domReady) atlasReleasePaint(); else document.addEventListener('DOMContentLoaded', atlasReleasePaint, { once: true });
       });
       setTimeout(atlasReleasePaint, 8000); // the waits above are capped; this is for an error in them
@@ -19095,9 +19094,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=240"></script>
-<script src="assets/layers.js?v=240"></script>
-<script src="assets/hq-detail.js?v=240"></script>
-<script src="assets/bubbles.js?v=240" defer></script>
+<script src="assets/typeset.js?v=241"></script>
+<script src="assets/layers.js?v=241"></script>
+<script src="assets/hq-detail.js?v=241"></script>
+<script src="assets/bubbles.js?v=241" defer></script>
 </body>
 </html>

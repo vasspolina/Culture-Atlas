@@ -88,8 +88,6 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #globeCanvas{cursor:grab;touch-action:none}
 /* Held until the page is final: the first frame is drawn, then shown (see settleBeforeFirstPaint in index.html). */
 html.atlas-held #globeCanvas{visibility:hidden}
-/* The same held state keeps the real hairlines off the first paint; assets/bubbles.js draws them in once the hold is cleared. */
-html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard,#mobileStickyComposer){border-color:transparent!important}
 #globeCanvas.dragging{cursor:grabbing}
 #cityMapContainer{background:var(--paper)}
 #globeSplitter{background:var(--paper);border-left:1px solid var(--line);width:6px}
@@ -1187,13 +1185,6 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.has-bubb
 @keyframes bubble-draw{to{stroke-dashoffset:0}}
 .is-typing .curator-suggest-chip{visibility:hidden}
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:#000!important;text-indent:0!important;text-align:left}
-
-/* Hairlines drawn in on load: the real rules step aside while their copies draw themselves. */
-html.lines-drawing :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard,#mobileStickyComposer){border-color:transparent!important}
-.lines-layer{position:fixed;inset:0;pointer-events:none;z-index:9999}
-.lines-layer i{transform:scale(0);animation-duration:1.7s;animation-timing-function:var(--ease);animation-fill-mode:forwards}
-@keyframes line-x{to{transform:scaleX(1)}}
-@keyframes line-y{to{transform:scaleY(1)}}
 @media (prefers-reduced-motion:reduce){.bubble-line{stroke-dashoffset:0}.bubble-svg.is-drawn .bubble-line{animation:none}}
 
 /* Street-view pins do not grow under the pointer: a target that moves as you reach for it is hard to hit. */
@@ -1634,76 +1625,11 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 /* The note box has an inner margin: its text no longer touches the box edge or the focus ring drawn inside it. Only while a note is written; the plain input line stays flush with its hairline. */
 body.chat-input-mode-active #workInput{padding:.75em}
 /* Share information, wherever it shows, is bold capitals. The text stays "Share information" in the markup. Jokker is a variable font, so 700 is a real cut. */
-/* (the rule itself is last in this file, after the chat's light-theme copies of the dark rules, which also set text-transform) */
-
-/* ---- release 240: the chat is dark green in both themes ----
-   The page's light/dark switch is untouched; the chat pane (the AI Chat column, the phone drawer and the chat settings) always takes the dark
-   palette, on a dark green ground (--paper #0f2a1d; the dark theme's own greys stay for the rest of the page). The dark variables are set on those three containers, so every rule that reads --ink, --paper, --grey, --block, --line or --focus
-   inside them goes dark; the rules below are the chat's own dark-theme rules above, repeated for the light theme (same specificity, later, so they win).
-   Measured in both themes. */
-:is(#curatorIntelligenceColumn,#curator-chat-drawer,#curatorSettingsModal){color-scheme:dark;--focus:#618cff;--ink:#fff;--paper:#0f2a1d;--grey:#17382a;--block:#25493a;--line:#fff;background:var(--paper);color:var(--ink)}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#5bc4ae}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#e8c040}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#f2b3d6}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#d9b783}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#3376bb}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#d73732}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#dcad81}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#d3d3d3}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#cb9440}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#8b827f}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#d3d3d3}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#cb9440}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:var(--mustard)}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:var(--orange)}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:var(--cyan)}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--mustard)}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:#16c7aa}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#f1c21b}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#ffafd2}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#e5b87d}
-:root:not([data-theme="dark"]) #workInputCard #chatShareBtn{color:#6fdc8c}
-:root:not([data-theme="dark"]) #workInputCard.is-mode #chatShareBtn{color:#000!important}
-:root:not([data-theme="dark"]) #curatorMessages>.justify-end::before,:root:not([data-theme="dark"]) #curatorMessages .user-bubble,:root:not([data-theme="dark"]) #curatorMessages>.justify-end>div,:root:not([data-theme="dark"]) #curatorMessages .user-bubble *{color:#8fe3a4}
-:root:not([data-theme="dark"]) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:var(--mustard)}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(1){--sp:var(--orange)}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:var(--cyan)}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:var(--mustard)}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--orange)}
-:root:not([data-theme="dark"]) #workInputCard #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none;letter-spacing:0}
-:root:not([data-theme="dark"]) #workInputCard.is-mode #chatShareBtn{font:400 14px/1 var(--sans);text-transform:none}
-:root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream) :is(.inst-link,.city-link,.dossier-link):hover,:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
-:root:not([data-theme="dark"]) #workInputCard #chatShareBtn:hover{background:var(--peri)!important;color:#000!important;text-decoration:none;box-shadow:-.4em 0 0 var(--peri),.4em 0 0 var(--peri)}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:#e8e8e8;border-color:#000}
-:root:not([data-theme="dark"]) body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#cb9440}
-:root:not([data-theme="dark"]) :is(#curatorMessages,#curatorDrawerLiveStream) .grade-word{color:var(--grade-col)}
-:root:not([data-theme="dark"]) #workInputCard #chatShareBtn,:root:not([data-theme="dark"]) #workInputCard.is-mode #chatShareBtn{font:400 15px/1 var(--sans);text-transform:none;letter-spacing:0}
-:root:not([data-theme="dark"]) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{color:var(--ink);width:auto;max-width:22ch}
-:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c8b85a);color:#000;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
-:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock){background:var(--paper)}
-:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#curatorScrollArea,#curatorScrollArea *,#curatorScrollArea *::before,#workBottomDock,#workBottomDock *,#workInputCard.is-mode,#workInputCard.is-mode *,#workInputCard.is-mode *::before,#workInputCard.is-mode *::after){color:var(--ink)!important;border-color:var(--mint)!important}
-:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn,:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn *{color:var(--mint)!important}
-:root:not([data-theme="dark"]) body.chat-input-mode-active #workInput.is-good{background:var(--grey);color:var(--ink)}
-:root:not([data-theme="dark"]) body.chat-input-mode-active #workInput:focus{outline:2px solid var(--focus);outline-offset:-2px}
-:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCard){--focus:#618cff}
-:root:not([data-theme="dark"]) #workInputCard.is-mode ::placeholder{color:var(--ink);opacity:.7}
-:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active){background:var(--mint)!important;color:#000!important}
-:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active) *{color:#000!important}
-:root:not([data-theme="dark"]) .bubble-svg .bubble-fill{fill:var(--grey)}
-:root:not([data-theme="dark"]) .bubble-svg .bubble-line{stroke:var(--gossip)}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
-:root:not([data-theme="dark"]) body.gossip-mode-active .is-gossip .thinking{color:var(--ink)}
-:root:not([data-theme="dark"]) body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
 /* In a note the Share information button is mint; hovered it is black on mint like the other buttons there (the mint rule outranked the hover's black and left mint on periwinkle, 1.5:1). */
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover *{background:var(--mint)!important;color:#000!important}
 
-/* Share information in bold capitals, in both themes; last so the dark rules copied above do not turn it back to sentence case. */
+/* Share information in bold capitals, in both themes. */
 :root[data-theme] #workInputCard #chatShareBtn,:root[data-theme] #workInputCard.is-mode #chatShareBtn,#hudContributeBtn,#mapFloatingContributeBtn{text-transform:uppercase;font-weight:700;letter-spacing:.04em}
-
-/* The footnote's gold on the chat's dark green: the dark theme's #cb9440 measures 5.7:1 there, this one 7.3:1. */
-:root[data-theme] body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#deab55}
 
 /* Street map zoom and compass: the globe's squares. MapLibre draws its plus, minus and compass as #333 background images, which stayed
    dark grey on the black ground in dark mode (about 1.5:1). Here the three signs are masks filled with the button's own colour, so the
