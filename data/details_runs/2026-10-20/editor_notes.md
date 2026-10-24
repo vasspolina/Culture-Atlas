@@ -454,3 +454,17 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - tanoto-art-foundation-singapore: the record's website is an SCMP article (403).
 - tai-kwun-hong-kong: funded by the Hong Kong Jockey Club Charities Trust; opening hours and admission not read.
 - spike-island-bristol: the 1,300-signature petition figure rests on a search summary of Bristol 24/7 (403).
+
+## d025 slop check (25 entries; every report changed)
+- sinchon-museum-of-american-war-atrocities-sinchon: the Sanctions flag was cut: no opened page names an owner or funder, and Executive Order 13722 names no museum. The record still carries a Sanctions flag.
+- songeun-seoul: the Fossil fuels flag was cut: the pages show Samtan in Indonesian coal (about 65% of Korea's bituminous coal business per Energy Economy Newspaper, 2011) but no revenue by line and no objection. The record still carries a Fossil fuels flag.
+- sfmoma-san-francisco: the Epstein flag section was moved to Wider context: The Standard shows only a 20% artwork interest and a generic 2009 thank-you letter, no payment and no leadership role. The record still carries an Epstein-linked flag.
+- slovak-national-gallery: dismissal 7 Aug 2024 (Drlička 6 Aug); the earlier "about 140 signatories on e-flux" is on neither e-flux page; ArtReview gives over 230 as of 13 Aug, The Art Newspaper at least 360 by 16 Aug.
+- serendipity-arts-festival: on 18 Dec 2019 the festival organisers closed the two works (ETV Bharat); no state order is reported; Goa police arrested the four Dastaan Live musicians the same day (The Leaflet); the Bombay High Court quashed the FIR on 9 April 2021.
+- serralves-foundation-porto: Galp 2021 to 2024, Tabaqueira (a Philip Morris International subsidiary) 2021 and 2022 only, on the Patron Founders page; Mapplethorpe dispute: Ribas resigned 21 Sept 2018; open letter 24 Sept; Parliament's culture committee 16 Oct; no ministry or state order named.
+- smithsonian-air-and-space-washington: donors Boeing, Lockheed Martin, RTX, Northrop Grumman Foundation, BAE Systems, Gulfstream, Aerojet Rocketdyne; the donor pages give no years; only dated gifts: Boeing $30M (3 April 2014) and the Lockheed theater naming (2003).
+- solomon-r-guggenheim-museum: Sackler statement 25 March 2019 (no contributions since 2015; center renamed 2022); Abu Dhabi release 28 July 2026, agreement signed 8 July 2006, 2008 Guggenheim statement that TDIC will own it.
+- sonar-festival: 34 artist withdrawals by 4 June 2025 (six confirmed 3 June); culture minister's statement 17 May 2025; KKR accusations are Unverified, attributed to BDS-aligned activist groups.
+- speed-art-museum-louisville: Churchill Downs on the live support page (undated, 24 Oct 2026); the only dated sponsorship 2019 to 2020.
+- sharjah-art-foundation-sharjah: Persekian was dismissed 6 April 2011 by the ruler (Call for Action and Jadaliyya); the Raad ban names no authority.
+- shanghai-biennale: powerstationofart.com shows only a title; the .org domain shows a gambling-promotion page; Albert's account 3 Sept 2012.
