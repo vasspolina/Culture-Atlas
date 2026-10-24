@@ -361,3 +361,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - raw-material-company-dakar: the space's own site was down on the check date.
 - pictanovo-tourcoing: Epstein-linked: ex-fund president Caroline Lang; Prytanee company; PNF preliminary probe 6 Feb 2026; she and her father deny wrongdoing.
 - pirelli-hangarbicocca: Rostec holds 25.005% of Pirelli Tyre Russia; the Grizzly allegation is unverified and Pirelli denies it.
+
+## d022 (research notes, before its slop check)
+- ny-carlsberg-glyptotek: no source for the record's "Augustinus Fonden gave DKK 1.53M in 2025 for a Gauguin purchase"; the only Augustinus gift documented is the 2022 "La neige à Copenhague" purchase (Ny Carlsbergfondet's own page).
+- nyu-tisch-school-of-the-arts-new-york: Steve Tisch's Epstein emails placed in Wider context (correspondence and introductions, no money or leadership in an Epstein vehicle).
+- onassis-stegi: the record says no flag for tankers; the report documents crude oil tanker income (Olympic Shipping and Management, controlled by the Onassis Foundation, ran 18 crude oil tankers in January 2023, per ITLN). The atlas counts tanker owners as oil-industry services, not Fossil fuels.
+- oakland-museum-of-california-oakland: the record's "City of Oakland subsidy" is out of date (Nonprofit Quarterly 2011: the foundation took over operations in 2011; final city payment due in 2022). The "Campaigned name" flag is not supported at this museum (Bloomberg campaign at London's ICA 2025 is Wider context).
+- ordrupgaard-charlottenlund: no source for the "Sponsor dropped under pressure" flag.
+- palazzo-grassi-and-punta-della-dogana: the lease is 30 years (Art Newspaper 2007) or 33 (Wikipedia).
+- peggy-guggenheim-collection-venice: no Sackler gift or name found at the Venice museum; the 2019 policy is documented only for the parent foundation in New York.
+- ok16-cultural-hub-minsk: ok16.by now serves an unrelated travel blog; the Warsaw relaunch could not be confirmed (Zerkalo 403).
