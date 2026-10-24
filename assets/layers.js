@@ -421,7 +421,7 @@
         const N = Math.min(nodes.length, focus ? 10 : 6), R = (focus ? 64 : 36) * zoomK;
         for (let i = 0; i < N; i++) {
           const n = nodes[i], a = -Math.PI / 2 + (i * 2 * Math.PI) / N, x = d.x + R * Math.cos(a), y = d.y + R * Math.sin(a);
-          const col = gossip ? '#e2f86c' : COL[n[1]];
+          const col = COL[n[1]];
           ctx.globalAlpha = focus ? 1 : 0.7;
           ctx.strokeStyle = lineCol(col); ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
           // The outline says the kind (square public funding, hexagon company, triangle foundation); the colour repeats it.
