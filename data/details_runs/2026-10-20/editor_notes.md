@@ -210,3 +210,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - koorie-heritage-trust-melbourne: grant income $1.62m is smaller than trading income $2.87m (2022-23 annual report); "mainly public" and "Aboriginal-run" were changed.
 - judd-foundation: the record notes Bloomberg Philanthropies is campaigned against elsewhere; the report does not mention it (no source).
 - kemper-museum-kansas-city: hours and admission missing (site returned only headings).
+
+## d014 slop check (52 fixes; every report changed)
+- m-hong-kong: HSBC 5-year DPA 11 Dec 2012 (US Justice Department, EDNY; $1.256bn forfeiture, $665m civil penalties); Credit Suisse Services AG plea 5 May 2025 (more than $4bn hidden from the IRS in at least 475 accounts, fine over $510m; UBS says it was not involved). M+ corporate page names UBS and Morgan Stanley but not HSBC (HSBC became Lead Partner in 2022 per M+ press release). Epstein-linked bank accounts stay in Wider context.
+- louvre-paris: Sackler and Total flags kept. TotalEnergies is not on the 2025 patron page; the Louvre says no direct partnership with the Fondation TotalEnergies since 2018.
+- lincoln-center-for-the-performing-arts: Koch pledged $100M in July 2008; name guaranteed at least 50 years.
+- louisiana-museum-of-modern-art: the scanned 2024 report was read by eye: state grant DKK 36.125M, turnover DKK 100.1M, 716,000 visitors, 19-name donor list. The donor list includes the A.P. Møller family foundations and the Norwegian Ministry of Foreign Affairs; whether that changes any flag is for the editor.
+- maat-lisbon: EDP leadership case rewritten from ECO and Diário de Notícias: charge 28 Oct 2024, one count of active corruption each for Mexia and Manso Neto, over 840M euros; the earlier "June 2017, four counts, 1.2bn" was wrong.
+- lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum: the August 2026 jurisdiction item rests on El Comercio headlines only; the Renovación Popular and Fuerza Popular item is Unverified.

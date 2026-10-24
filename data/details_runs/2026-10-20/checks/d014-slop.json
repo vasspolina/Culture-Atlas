@@ -1,0 +1,738 @@
+[
+ {
+  "id": "m-hong-kong",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: '60,000 square metres'"
+  ],
+  "before": "The building covers 60,000 square metres (Wikipedia, Hong Kong Free Press).",
+  "after": "The building covers 65,000 square metres, or 700,000 square feet (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/M%2B"
+  ],
+  "reason": "Wikipedia gives 700,000 sq ft (65,000 m2); no opened source gives 60,000."
+ },
+ {
+  "id": "m-hong-kong",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported job title: 'board chairman'"
+  ],
+  "before": "board chairman Bernard Chan called it \"long-term\"",
+  "after": "M+ Board chair Bernard Chan called it \"long-term\"",
+  "sources": [
+   "https://www.mplus.org.hk/en/press/hsbc-becomes-first-lead-partner-20220805/"
+  ],
+  "reason": "The press release (5 August 2022) says Chan chairs the M+ Board; it gives no wider title. Start 1 November 2022 and scope confirmed."
+ },
+ {
+  "id": "m-hong-kong",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported title: 'chair of the WKCDA board'",
+   "misquoted series title"
+  ],
+  "before": "Henry Tang, chair of the WKCDA board, said no work that the national security department deemed illegal would be shown, and confirmed Ai Weiwei's Tiananmen photograph from \"Study of Perspective\" would not be in the opening display",
+  "after": "Henry Tang, described as the government official in charge of the cultural district, said no work deemed to breach the law would be shown, welcomed vetting by the police's national security unit, and confirmed Ai Weiwei's Tiananmen photograph from the \"Study of Perspectives\" series would not be in the opening display",
+  "sources": [
+   "https://hongkongfp.com/2021/03/29/new-hong-kong-m-art-museum-will-not-show-ai-weiweis-tiananmen-photo-official/"
+  ],
+  "reason": "HKFP/AFP (29 March 2021) gives no board title for Tang and names the series \"Study of Perspectives\"."
+ },
+ {
+  "id": "m-hong-kong",
+  "section": "RED FLAGS",
+  "problems": [
+   "misattributed quote: Sigg paraphrase credited to Reuters"
+  ],
+  "before": "Ai said \"The museum is clearly under censorship\", and Sigg questioned whether politicians were curating the museum (Outlook India, citing Reuters).",
+  "after": "Ai Weiwei told Reuters \"The museum is clearly under censorship\". Uli Sigg told ART Magazine: \"Can the museum work according to its scholarly ethos, or do politicians curate what it can show?\" (Outlook India, 11 November 2021).",
+  "sources": [
+   "https://www.outlookindia.com/making-a-difference/world-news-hong-kongs-new-m-museum-accused-of-censorship-news-400569"
+  ],
+  "reason": "Outlook India credits Ai's words to Reuters and Sigg's to ART Magazine. The 21 April 2022 removal of nine works, including Wang Xingwei's 'New Beijing' and a Wang Guangyi Mao painting, and the WKCDA 'rotation' statement are confirmed by the CNN piece (krdo.com)."
+ },
+ {
+  "id": "m-hong-kong",
+  "section": "RED FLAGS",
+  "problems": [
+   "wrong figures: $1.25bn / $655m",
+   "authority missing",
+   "date incomplete"
+  ],
+  "before": "HSBC ... agreed in December 2012 to pay $1.9 billion in a deferred prosecution agreement over money laundering: $1.25 billion in forfeiture and $655 million in civil penalties, under the Bank Secrecy Act and the Trading With the Enemy Act (AP via The Spokesman-Review).",
+  "after": "HSBC ... entered a five-year deferred prosecution agreement with the US Justice Department on 11 December 2012 over money laundering and sanctions violations, forfeiting $1.256 billion and paying $665 million in civil penalties to the Comptroller of the Currency and the Federal Reserve, under the Bank Secrecy Act, the International Emergency Economic Powers Act and the Trading with the Enemy Act (US Attorney's Office, Eastern District of New York).",
+  "sources": [
+   "https://www.justice.gov/archive/usao/nye/pr/2012/2012dec11.html",
+   "https://www.spokesman.com/stories/2012/dec/11/hsbc-to-pay-19-billion/"
+  ],
+  "reason": "The Justice Department release gives $1.256bn forfeiture and $665m civil penalties; the AP figures ($1.25bn, $655m) were reported before the announcement. The original omitted the authority and the sanctions statute. The AP total of $1.9 billion was dropped in the length trim."
+ },
+ {
+  "id": "m-hong-kong",
+  "section": "RED FLAGS",
+  "problems": [
+   "imprecise: plea described without authority, accounts or sponsor role"
+  ],
+  "before": "UBS: on 5 May 2025 Credit Suisse Services AG pleaded guilty to conspiring to hide more than $4 billion from the US tax authority and agreed to pay over $510 million.",
+  "after": "UBS, a Programme Sponsor: on 5 May 2025 Credit Suisse Services AG pleaded guilty in a US Justice Department prosecution to conspiring to hide more than $4 billion from the US tax authority in at least 475 offshore accounts, and will pay a fine of more than $510 million.",
+  "sources": [
+   "https://finance.yahoo.com/news/credit-suisse-pay-511-million-194511046.html",
+   "https://www.mplus.org.hk/en/corporate-support/"
+  ],
+  "reason": "Date, amounts and UBS's statement (not involved; conduct predates its 2023 purchase) confirmed from the Reuters piece. UBS is a Programme Sponsor and Morgan Stanley a Corporate Patron on the M+ corporate page; HSBC is not named on that page, and the Lead and Major Partner headings carry no names."
+ },
+ {
+  "id": "m-hong-kong",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "overstated: 'some M+ displays broke the National Security Law'",
+   "byline: 'unsigned' (page credits ArtReview news)"
+  ],
+  "before": "Reports Chief Executive Carrie Lam saying authorities would watch museum exhibitions after lawmaker Eunice Yung said some M+ displays broke the National Security Law.",
+  "after": "Reports Chief Executive Carrie Lam saying authorities were on \"full alert\" for exhibitions that could undermine national security, answering lawmaker Eunice Yung, who argued upcoming M+ shows could breach the National Security Law.",
+  "sources": [
+   "https://artreview.com/future-of-museums-in-hong-kong-threatened-with-censorship/"
+  ],
+  "reason": "Yung argued upcoming shows could breach the law; no display was said to have broken it. The 'no problem' remark by Raffel and the museum spokesperson's statement are confirmed (18 March 2021)."
+ },
+ {
+  "id": "m-hong-kong",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "imprecise: HSBC 'as Lead Partner'"
+  ],
+  "before": "HSBC's 2012 settlement as Lead Partner,",
+  "after": "HSBC's 2012 settlement (it became Lead Partner in 2022),",
+  "sources": [
+   "https://www.mplus.org.hk/en/press/hsbc-becomes-first-lead-partner-20220805/"
+  ],
+  "reason": "The current corporate page names no Lead Partner, so only the 2022 start is stated."
+ },
+ {
+  "id": "m-hong-kong",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "length: report over 800 words after fixes"
+  ],
+  "before": "Collection bullet (Sigg's 1,463 works); the HK$21.6 billion to HK$29 billion estimate; the Hong Kong Jockey Club Charities Trust bullet about a different museum",
+  "after": "(removed)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/West_Kowloon_Cultural_District",
+   "https://en.wikipedia.org/wiki/M%2B"
+  ],
+  "reason": "Cut to bring the report under 800 words; the removed points were confirmed but not about M+'s own money or flags. Wikipedia also confirms the 12 November 2021 opening, 2.6 million visitors in 2024 and HK$5.9 billion cost."
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: '$200 million refurbishment'",
+   "unsupported: 'renamed ... in the fall of 2008'"
+  ],
+  "before": "It supported a $200 million refurbishment of the New York State Theater, which was renamed the David H. Koch Theater in the fall of 2008 (BizBash).",
+  "after": "It supported a $200 million capital campaign by New York City Ballet and New York City Opera for upgrades to the New York State Theater; the theater took the name David H. Koch Theater in November 2008 (BizBash, Wikipedia).",
+  "sources": [
+   "https://www.bizbash.com/event-venues/new-york-state-theater-renovation-gets-100-million-pledge-and-new-name",
+   "https://en.wikipedia.org/wiki/David_H._Koch_Theater"
+  ],
+  "reason": "BizBash (10 July 2008) calls it a capital campaign by the two companies and says the renaming was planned for fall 2008; Wikipedia dates the naming to the November 2008 gala. Gift size ($100M, July 2008, ten years incl. operating costs) and the naming term (at least fifty years, Koch family first refusal) are confirmed."
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'Koch Industries is a fossil-fuel business'",
+   "wrong term: '50-year term' (source: at least fifty years)"
+  ],
+  "before": "Koch Industries is a fossil-fuel business, and the Koch Theater carries David Koch's name under a 50-year term set in 2008 (Wikipedia, BizBash).",
+  "after": "Koch Industries runs petroleum refining, pipeline and oil and gas operations; David Koch was a majority owner until his death in 2019. His $100 million pledge of July 2008 gave the theater his name for at least fifty years, with the Koch family holding first refusal on any new name (Wikipedia, BizBash).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Koch_Industries",
+   "https://en.wikipedia.org/wiki/David_H._Koch_Theater",
+   "https://www.bizbash.com/event-venues/new-york-state-theater-renovation-gets-100-million-pledge-and-new-name"
+  ],
+  "reason": "Neither cited page said Koch Industries was a fossil-fuel business; the Koch Industries page lists refining, pipelines and oil and gas. The theater page says the name is guaranteed for at least fifty years."
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'arrested and charged' for all three (AOL names a charge for one)"
+  ],
+  "before": "three people disrupted the Met Opera's Carmen at Lincoln Center, delaying the show; they were arrested and charged with trespassing (AOL, citing the New York Post). Their leader, Nate Smith, wrote",
+  "after": "three people disrupted the Met Opera's Carmen at Lincoln Center, pausing the show for about 20 minutes (AOL, citing the New York Post). Nate Smith, who led the action, and two others were arrested and charged with trespassing. Smith wrote",
+  "sources": [
+   "https://www.aol.com/news/trio-disrupts-nyc-met-opera-001833298.html",
+   "https://operawire.com/?p=105239"
+  ],
+  "reason": "AOL gives a 20-minute pause and three arrests; OperaWire (David Salazar, 2 December 2025) states Smith and two others were arrested and charged with trespassing. The demand to remove Koch Industries, Chevron and Texaco names and the Sackler reference are confirmed."
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "section": "RED FLAGS",
+  "problems": [
+   "omission: Meyerson also asked for repayment"
+  ],
+  "before": "Harold Meyerson argued in 2013 that the city should remove Koch's name because of his political funding (American Prospect).",
+  "after": "Harold Meyerson argued in 2013 that the city should remove Koch's name because of his political funding, and repay the gift (American Prospect).",
+  "sources": [
+   "https://prospect.org/2013/10/09/de-kochifying-dance/"
+  ],
+  "reason": "The Prospect piece asks the city to arrange repayment."
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong title: 'De-Kochifying Dance'",
+   "unsupported: 'gives cultural legitimacy'; 'largest funder of the Tea Party'",
+   "unverified assertion stated as fact"
+  ],
+  "before": "\"De-Kochifying Dance\" ... Argues that the Koch name gives cultural legitimacy to the largest funder of the Tea Party, and that the city should arrange to remove it. ... Reports the leader's claim that Koch spending undermined climate legislation.",
+  "after": "\"De-Kochifying the Dance\" ... Argues that the city should remove the name of David Koch, whom he calls \"the largest funder of the Tea Party's effort to derail American democracy\", and arrange repayment of the gift. ... Reports Smith's assertion that David Koch blocked major climate legislation, which the piece does not verify.",
+  "sources": [
+   "https://prospect.org/2013/10/09/de-kochifying-dance/",
+   "https://operawire.com/?p=105239"
+  ],
+  "reason": "Title, quotation and remedy taken from the Prospect page (9 October 2013); OperaWire says Smith's climate claim is not independently verified."
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "section": "OVERVIEW / FUNDING / CRITICISM",
+  "problems": [
+   "length: report over 800 words after fixes"
+  ],
+  "before": "Resident organisations bullet; Rockefeller $184.5 million bullet; 'Urges visiting dance companies...' bullet",
+  "after": "(removed)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Lincoln_Center",
+   "https://prospect.org/2013/10/09/de-kochifying-dance/"
+  ],
+  "reason": "Cut to bring the report under 800 words; the points were confirmed (Wikipedia: $184.5M private funds, Rockefeller raised over half) but are not about the Koch flag. Leader-tier list (seven names, footnote 1 June 2026) confirmed on lincolncenter.org."
+ },
+ {
+  "id": "louvre-paris",
+  "section": "FUNDING",
+  "problems": [
+   "misattributed: Cour des comptes quote was spoken by its first president"
+  ],
+  "before": "the Cour des comptes said the museum has \"trésorerie extrêmement solide\" (Public Sénat, 6 November 2025).",
+  "after": "Pierre Moscovici, first president of the Cour des comptes, said the museum has \"ressources abondantes\" and \"une trésorerie extrêmement solide\" (Public Sénat, 6 November 2025).",
+  "sources": [
+   "https://www.publicsenat.fr/actualites/politique/louvre-la-cour-des-comptes-etrille-les-choix-strategiques-du-musee-qui-dispose-pourtant-de-beaucoup-dargent"
+  ],
+  "reason": "Public Sénat (Romain David) attributes the sentence to Moscovici at the report presentation. 125 million euros of ticket sales in 2024 and the 87m/169m, 3m/83m and 1.15bn figures confirmed."
+ },
+ {
+  "id": "louvre-paris",
+  "section": "RED FLAGS",
+  "problems": [
+   "paraphrase of quotation: '20-year limit'"
+  ],
+  "before": "President Jean-Luc Martinez said on radio that the removal followed a 20-year limit on donor naming rights (Apollo, citing The Art Newspaper).",
+  "after": "President Jean-Luc Martinez said on radio that the removal followed a \"20-year statute of limitations on donor naming rights\"; Apollo wrote that the exact circumstances were still unclear (Apollo, citing The Art Newspaper).",
+  "sources": [
+   "https://apollo-magazine.com/sackler-name-removed-from-louvre-galleries-after-protests/"
+  ],
+  "reason": "Dates confirmed from Apollo (17 July 2019): wing inaugurated 1997, PAIN protest 1 July 2019. Wording now matches the source."
+ },
+ {
+  "id": "louvre-paris",
+  "section": "RED FLAGS",
+  "problems": [
+   "imprecise: Greenpeace filing described as 'for the papers'",
+   "campaign date and organiser"
+  ],
+  "before": "The campaign Libérons le Louvre, with 350.org, called in 2017 ... and filed in December 2021 at the Paris administrative court for the papers.",
+  "after": "The campaign Libérons le Louvre, launched in January 2017 and organised by 350.org ... and in December 2021 asked the Paris administrative court to order disclosure of the museum's partnerships with the Fondation TotalEnergies and the list of Cercle Louvre Entreprises members with their contributions.",
+  "sources": [
+   "https://www.linfodurable.fr/culture/le-musee-du-louvre-mis-en-cause-pour-ses-partenariats-avec-totalenergies-29900",
+   "http://www.theartnewspaper.com/2017/03/07/liberty-fraternity-fossil-free-activists-protest-oil-giant-totals-sponsorship-at-louvre"
+  ],
+  "reason": "The 5 March 2017 action, about 40 activists, 10,000 signatures and Martinez's January 2017 letter are confirmed by The Art Newspaper (Stapley-Brown, 7 March 2017). L'Info Durable (7 December 2021) describes the filing, gives the Louvre's no-direct-partnership-since-2018 statement and reports no ruling. TotalEnergies is not on the 2025 patron page."
+ },
+ {
+  "id": "louvre-paris",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "byline: 'unsigned' (Apollo page names no author)"
+  ],
+  "before": "Apollo: unsigned,",
+  "after": "Apollo: news item, no author named,",
+  "sources": [
+   "https://apollo-magazine.com/sackler-name-removed-from-louvre-galleries-after-protests/"
+  ],
+  "reason": "Wording only."
+ },
+ {
+  "id": "louvre-paris",
+  "section": "OVERVIEW",
+  "problems": [
+   "length: report over 800 words after fixes"
+  ],
+  "before": "Pei/pyramid bullet; 19 October 2025 jewel theft bullet",
+  "after": "(removed)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Louvre"
+  ],
+  "reason": "Cut to bring the report under 800 words. Wikipedia confirms the theft (Galerie d'Apollon, 19 October 2025) and that the underground space beneath the pyramid, not the pyramid itself, has been the main entrance since 1993."
+ },
+ {
+  "id": "mac-ccb-museu-de-arte-contemporanea-do-centro-cultural-de-belem",
+  "section": "OVERVIEW",
+  "problems": [
+   "conflicting counts not fully stated"
+  ],
+  "before": "Visitors in 2024: 588,643, up 22.5% on 2023 (Sábado, Lusa, 8 January 2025). A later Lusa report ... gives 179,890 MAC/CCB visitors for 2024 (Observador); the two reports use different counts.",
+  "after": "Visitors in 2024: 588,643, up 22.5% on 480,533 in 2023, according to figures the museum gave Lusa on 8 January 2025 (Sábado). A later Lusa report on the CCB's 2026 strategic plan gives 179,890 MAC/CCB visitors for 2024, up from 171,092 in 2023 (Observador, 15 April 2026). The two counts conflict and neither report explains the difference.",
+  "sources": [
+   "https://www.sabado.pt/gps/detalhe/museu-de-arte-contemporanea-do-ccb-com-aumento-de-225-de-visitantes-em-2024",
+   "https://observador.pt/2026/04/15/ccb-quer-novos-publicos-e-mais-receitas-proprias-com-plano-estrategico-ate-2030/"
+  ],
+  "reason": "Both counts kept as stated, each with its own 2023 comparison from the page. Both pages opened and confirmed."
+ },
+ {
+  "id": "mac-ccb-museu-de-arte-contemporanea-do-centro-cultural-de-belem",
+  "section": "FUNDING",
+  "problems": [
+   "figures do not reconcile, not flagged",
+   "mistranslated quote: 'almost from zero'"
+  ],
+  "before": "...about 10.5 million euros (Observador, Lusa, 15 April 2026). / The CCB says it starts \"almost from zero\" with major patrons",
+  "after": "...currently provides about 10.5 million euros ... The two figures do not match: 10.5 million is about 56% of 18.7 million. / The CCB said it will start \"praticamente do zero\" (practically from zero, translation)",
+  "sources": [
+   "https://observador.pt/2026/04/15/ccb-quer-novos-publicos-e-mais-receitas-proprias-com-plano-estrategico-ate-2030/"
+  ],
+  "reason": "The Observador/Lusa text says 'praticamente do zero' and gives 60 to 70% alongside 10.5m of 18.7m. The specialised patronage team and the Alves Ribeiro rent (350,000 to 1.2 million euros over 65 years) are confirmed."
+ },
+ {
+  "id": "mac-ccb-museu-de-arte-contemporanea-do-centro-cultural-de-belem",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'from 2017'"
+  ],
+  "before": "banks CGD, Novo Banco and BCP sued from 2017 to seize 75% of it",
+  "after": "banks CGD, Novo Banco and BCP sued to seize 75% of it",
+  "sources": [
+   "http://www.theartnewspaper.com/news/berardo-museum-stays-open-in-lisbon-despite-uncertainty-over-future-of-portuguese-saatchi-s-collection"
+  ],
+  "reason": "The Art Newspaper (Gareth Harris, 2 August 2019) gives no start year for the suit. The article states the debts as nearly 1 billion euros and the collection as about 900 works."
+ },
+ {
+  "id": "mac-ccb-museu-de-arte-contemporanea-do-centro-cultural-de-belem",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'more than 2,000 signatures'",
+   "unsupported: 'European cultural bodies issued statements'",
+   "vague: 'higher authority'"
+  ],
+  "before": "A petition against her replacement by Nuno Vassallo e Silva gathered more than 2,000 signatures, European cultural bodies issued statements, and the issue went to Parliament (Observador). / The order cited aligning the CCB with objectives set by higher authority",
+  "after": "Nuno Vassallo e Silva replaced her. An open letter from the cultural sector to the Prime Minister and a public petition asked for the decision to be reversed, and left-wing parliamentary groups asked the minister to explain it in Parliament (Observador, 10 December 2024). / The dismissal order cited the need to align the CCB with the ministry's policy objectives",
+  "sources": [
+   "https://observador.pt/especiais/a-exoneracao-surpresa-os-protestos-as-criticas-e-as-denuncias-de-bullying-e-assedio-moral-o-que-se-passa-nos-corredores-do-ccb/",
+   "https://observador.pt/2026/07/20/estado-reconhece-que-nao-havia-fundamento-para-exoneracao-da-ex-presidente-do-ccb/",
+   "https://www.rtp.pt/noticias/cultura/comissao-de-trabalhadores-do-ccb-demite-se-por-quebra-de-confianca-na-administracao_n1660222"
+  ],
+  "reason": "The 10 December 2024 Observador piece gives no signature count and mentions no European bodies; the petition was for reversing the dismissal. Settlement terms (11 May 2026, lost salary, about 30,000 euros costs), the 'totalmente falso' reply and the Workers' Commission resignation (RTP) are confirmed."
+ },
+ {
+  "id": "louisiana-museum-of-modern-art",
+  "section": "FUNDING",
+  "problems": [
+   "gap: state grant and donor list left out though the source is readable",
+   "unread year: 'Uddelinger 202(x)'"
+  ],
+  "before": "Augustinus Fonden's grants list names ... The list is titled Uddelinger 202(x) and the last year digit could not be read in the file. / The museum's 2024 annual report is posted only as a scanned image PDF; its text could not be read ... / No reporting found of the full list of 2024 donors and sponsors in a readable source.",
+  "after": "Augustinus Fonden's list \"Uddelinger 2025\" names ... DKK 2,000,000 ... / The 2024 annual report (a scanned PDF, read from the page images) shows net turnover of DKK 100.1 million, 716,000 visitors, and a state operating grant from Kulturstyrelsen of DKK 36.125 million in 2024 (34.243 million in 2023). / DKK 27.157 million of grants toward artwork purchases; Augustinus Fonden, Ny Carlsbergfondet and Lemvigh-Müller Fonden credited in acquisition entries / the 19-name list 'Sponsorer og fonde som har støttet Louisiana i 2024' (no amounts).",
+  "sources": [
+   "https://louisiana.dk/wp-content/uploads/2025/05/Louisiana-Museum-Aarsrapport-2024.pdf",
+   "https://cdn.sanity.io/files/2zozkngb/production/7b2bd684312b34d49ccce4db0384f3b3a38ee3c5.pdf"
+  ],
+  "reason": "The annual report is an image PDF with no text layer, so it was read by rendering the pages and reading them by eye (income statement p.39, acquisitions pp.33-36, donor list p.38). The Augustinus PDF has a text layer and is titled Uddelinger 2025; the Louisiana row (DKK 2,000,000, Freud exhibition 2026) was confirmed."
+ },
+ {
+  "id": "louisiana-museum-of-modern-art",
+  "section": "FUNDING",
+  "problems": [
+   "misattributed source: expansions credited to the Louisiana Wikipedia page"
+  ],
+  "before": "Augustinus Fonden also paid for the museum's expansions in 1979 to 1984 and 1989 to 1990 (Wikipedia).",
+  "after": "... (Wikipedia, Augustinus Fonden article).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Augustinus_Fonden",
+   "https://en.wikipedia.org/wiki/Louisiana_Museum_of_Modern_Art"
+  ],
+  "reason": "The Louisiana article lists Augustinus only among supporting foundations and gives other expansion dates."
+ },
+ {
+  "id": "louisiana-museum-of-modern-art",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: founding by Ludvig Augustinus stated flatly",
+   "investment-vehicle wording from the wrong page",
+   "current-funding link weak"
+  ],
+  "before": "Augustinus Fonden was founded in 1942 by tobacco manufacturer Ludvig Augustinus (Wikipedia, lex.dk). Its investment company, Chr. Augustinus Fabrikker, is described as the foundation's investment vehicle (Wikipedia). ... Augustinus Fonden's 2026 Freud grant is current funding, and it also paid for the museum's two earlier expansions.",
+  "after": "Augustinus Fonden was founded in 1942; lex.dk says by tobacco manufacturer Ludvig Augustinus, and Wikipedia says by Chr. Augustinus Fabrikker at his initiative. Chr. Augustinus Fabrikker, a former tobacco company, is called \"the investment company of the Augustinus Foundation\" (Wikipedia). ... Augustinus Fonden's 2025 grant for the 2026 Freud exhibition is current funding. It is on the museum's 2024 donor list and is credited with many of the 2024 acquisitions, and Wikipedia and lex.dk record its funding of the museum's earlier expansions.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Augustinus_Fonden",
+   "https://en.wikipedia.org/wiki/Chr._Augustinus_Fabrikker",
+   "http://www.st-group.com/investor/share-information/"
+  ],
+  "reason": "The Augustinus Fonden page says the company set it up at Augustinus's initiative; lex.dk says he founded it. The Scandinavian Tobacco Group page confirms the 25%+ holding as of 1 May 2025."
+ },
+ {
+  "id": "louisiana-museum-of-modern-art",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "outdated after the annual report was read"
+  ],
+  "before": "Watch the amounts: the annual report is scanned and the donor list was not readable.",
+  "after": "Watch the amounts: the 2024 donor list gives names without sums.",
+  "sources": [
+   "https://louisiana.dk/wp-content/uploads/2025/05/Louisiana-Museum-Aarsrapport-2024.pdf"
+  ],
+  "reason": "Follows the read annual report. The donor list includes the A.P. Møller family foundations and the Norwegian Ministry of Foreign Affairs; the report text states them without comment."
+ },
+ {
+  "id": "le-bal-paris",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Art Deco canopy'"
+  ],
+  "before": "about 300 m2 of exhibition space under an Art Deco canopy (stated by the space).",
+  "after": "about 300 m2 of exhibition space, with an Art Deco ceiling kept in the front exhibition room (stated by the space).",
+  "sources": [
+   "https://www.le-bal.fr/le-bal"
+  ],
+  "reason": "The space's page says an Art Deco ceiling was kept in the front exhibition room. Opening hours and admission confirmed."
+ },
+ {
+  "id": "le-bal-paris",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported link between fund and group",
+   "unsupported name: 'Rubis Énergie Distribution'"
+  ],
+  "before": "Rubis Mécénat is an endowment fund that has run artistic and social projects since 2011 (its own site). ... Rubis Énergie Distribution, the group's business line, sells",
+  "after": "Rubis Mécénat is an endowment fund created by the Rubis group in 2011 that runs artistic and social projects (its own site). ... The Rubis group's Energy Distribution business line sells",
+  "sources": [
+   "https://www.rubismecenat.fr/?p=14",
+   "https://www.rubis.fr/en/our-business-lines/energy-distribution/"
+  ],
+  "reason": "Rubis Mécénat's page says the fund was created by the Rubis group in 2011; the group's page calls the line 'Energy Distribution' and lists the fund under 'Our Group'. Products and '23 countries, mainly in Africa and the Caribbean' confirmed. Le Bal's partners page lists Rubis Mécénat without date or amount (confirmed)."
+ },
+ {
+  "id": "le-bal-paris",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "missing author of the Art Newspaper France interview"
+  ],
+  "before": "2. Art Newspaper France: interview with Diane Dufour,",
+  "after": "2. Art Newspaper France: Natacha Wolinski, interview with Diane Dufour,",
+  "sources": [
+   "http://www.artnewspaper.fr/2021/01/15/diane-dufour-nous-voulons-un-lieu-ouvert-a-la-confrontation-et-au-pas-de-cote"
+  ],
+  "reason": "Byline from the page (15 January 2021). The original URL redirects (301) to the www address, same article. The 20/40/40 budget split and the exceptional City subsidy are confirmed. Foto8 (Max Houghton, 2 December 2010) and Le Monde du Droit (9 February 2016, no amount) also confirmed."
+ },
+ {
+  "id": "listasavn-f-roya-national-gallery-of-the-faroe-islands-t-rshavn",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'foyer café selling art books'"
+  ],
+  "before": "a foyer café selling art books, posters and postcards,",
+  "after": "a shop selling books, posters and postcards, a café,",
+  "sources": [
+   "https://www.art.fo/building"
+  ],
+  "reason": "The building page describes a lobby shop for books, posters and postcards and a separate café."
+ },
+ {
+  "id": "listasavn-f-roya-national-gallery-of-the-faroe-islands-t-rshavn",
+  "section": "FUNDING",
+  "problems": [
+   "claim in the report's own voice: director's funding role",
+   "ambiguous funder line"
+  ],
+  "before": "Karina Lykke Grand, director until 1 April 2024, secured funding for the modernisation (stated by the space). / Bókhandlarin Hans og frú Kate Niclasen, the Dronning Margrethe og Prins Henriks Fond,",
+  "after": "Karina Lykke Grand left the director's post on 1 April 2024; board chairman Niels Christian Nolsøe said she had secured funding for the modernisation of the museum (stated by the space). / Bókhandlarin Hans og frú Kate Niclasen - Dronning Margrethe og Prins Henriks Fond (listed on one line),",
+  "sources": [
+   "https://www.art.fo/news/466/listasavn-foroya-will-have-a-new-director",
+   "https://www.art.fo/building"
+  ],
+  "reason": "The news item (1 February 2024) says she has a new job as of 1 April and quotes the chairman; the building page lists the 1993 funders where the Niclasen and Dronning Margrethe entries run together. Augustinus Fonden as 1993 funder and as a named funder of the 2026 expansion confirmed (building page and the 19 March 2026 news item; no amounts posted)."
+ },
+ {
+  "id": "london-museum",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Bloomberg also funded the ... excavation'"
+  ],
+  "before": "Bloomberg also funded the 2012 to 2014 excavation of the Roman Mithraeum site at its European headquarters and gave the museum the Bloomberg Collection of more than 14,000 Roman artefacts (London Museum press release).",
+  "after": "Bloomberg also gave the museum the Bloomberg Collection of more than 14,000 Roman artefacts, found by MOLA archaeologists in the 2012 to 2014 excavation for Bloomberg's City of London headquarters (London Museum press release).",
+  "sources": [
+   "https://londonmuseum.org.uk/about/press/press-releases/roman-artefacts-20-million-bloomberg-philanthropies"
+  ],
+  "reason": "The press release (18 March 2025) says the artefacts were found by MOLA in excavations for Bloomberg's headquarters; it does not say Bloomberg funded the dig. The 20 million pound gift and 'largest private donation' are confirmed."
+ },
+ {
+  "id": "london-museum",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong title"
+  ],
+  "before": "\"New London Museum £50m cash boost in face of rising costs\" (2024)",
+  "after": "\"New London Museum gets £50m cash boost in face of rising costs\" (2024)",
+  "sources": [
+   "http://www.theartnewspaper.com/2024/09/05/new-london-museum-%C2%A350m-cash-boost-in-face-of-rising-costs"
+  ],
+  "reason": "The Art Newspaper page (Gareth Harris, 5 September 2024) carries 'gets' in the headline. Budget figures (337m, 437m, 222m, 95m, 100m target, 45m raised, 20m green loans) confirmed. The pigeon piece (25 July 2024), both Museums Journal pieces (Kendall Adams 5 May 2026; Hazell 16 April 2026) and Wikipedia's governance and Goldsmiths points confirmed."
+ },
+ {
+  "id": "louvre-abu-dhabi-abu-dhabi",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'Workers earned about $200 a month, the paper reported'",
+   "paraphrase changes meaning: 'least responsive of the Saadiyat museums'",
+   "unsupported: 'Owned'"
+  ],
+  "before": "HRW's Sarah Leah Whitson said the Louvre was the least responsive of the Saadiyat museums to HRW's concerns. Workers earned about $200 a month, the paper reported (The Art Newspaper). / Owned and overseen by the Abu Dhabi Department of Culture and Tourism",
+  "after": "HRW's Sarah Leah Whitson said the Louvre was the least responsive of the institutions she had dealt with on these issues, and said of the UAE: \"You have the bizarre outcome of one of the richest countries in the world paying workers $200 a month\" (The Art Newspaper). / Overseen by the Abu Dhabi Department of Culture and Tourism",
+  "sources": [
+   "https://www.theartnewspaper.com/2017/11/15/louvre-abu-dhabi-opens-but-questions-over-welfare-of-migrant-workers-persist",
+   "https://www.hrw.org/news/2017/11/08/louvre-abu-dhabis-unlovely-back-story",
+   "https://en.wikipedia.org/wiki/Louvre_Abu_Dhabi"
+  ],
+  "reason": "The $200 a month figure is Whitson's quotation, not a report of what workers earned. Wikipedia says the museum is overseen by the department; no opened page says 'owned'. HRW (Jeannerod, 8 November 2017) confirms the 2015 report findings, the 2016 ILO review and the 2013 deportations."
+ },
+ {
+  "id": "louvre-abu-dhabi-abu-dhabi",
+  "section": "RED FLAGS",
+  "problems": [
+   "imprecise date: PwC survey"
+  ],
+  "before": "PwC's 2015 survey noted tougher rules",
+  "after": "PwC's 2015 survey, published in January 2016, noted tougher rules",
+  "sources": [
+   "https://www.theartnewspaper.com/2017/11/15/louvre-abu-dhabi-opens-but-questions-over-welfare-of-migrant-workers-persist"
+  ],
+  "reason": "The Art Newspaper dates publication to January 2016. TDIC's worker village and Employment Practices Policy from 2009 and PwC monitoring since 2011 confirmed."
+ },
+ {
+  "id": "louvre-abu-dhabi-abu-dhabi",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "inaccurate: 'Names the Louvre Abu Dhabi only in that list'",
+   "layout: missing blank line before BOTTOM LINE"
+  ],
+  "before": "Names the Louvre Abu Dhabi only in that list; it centres on the Guggenheim.",
+  "after": "Centres on the Guggenheim; names the Louvre Abu Dhabi as part of the Saadiyat Island campaign and in the coalition's letter.",
+  "sources": [
+   "https://hyperallergic.com/gulf-labor-criticizes-guggenheims-silence-on-migrant-workers-rights",
+   "https://apollo-magazine.com/?p=103141"
+  ],
+  "reason": "Hyperallergic (Claire Voon, 5 October 2016) names the Louvre Abu Dhabi in the body text and in the coalition letter. Apollo (Caroline Rossiter, 12 May 2014) points and the three authors of The Art Newspaper piece confirmed."
+ },
+ {
+  "id": "lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: '17 permanent staff'",
+   "omission: second 2023 budget line"
+  ],
+  "before": "most of it paid the salaries of 17 permanent staff. Spending was S/ 1,818,319.23 (LUM Memoria 2023).",
+  "after": "most of it paid the salaries of 17 staff on administrative service contracts (CAS). Spending was S/ 1,818,319.23. In November the ministry added S/ 421,500 under its \"Con Punche Perú 2\" plan for outside services and maintenance, of which S/ 233,531.90 was spent (LUM Memoria 2023).",
+  "sources": [
+   "https://lum.cultura.pe/sites/default/files/publicaciones/PDF/memoria_institucional_2023_-_lum.pdf"
+  ],
+  "reason": "The 2023 annual report (a PDF with a text layer) says the 17 are CAS contract staff and records the Con Punche Perú 2 allocation. S/ 1,835,678 all from Recursos Ordinarios, S/ 1,818,319.23 spent, Gerda Henkel, Ford, the embassies, the Patronato members, the 56 museums and the 17 December 2015 inauguration were confirmed."
+ },
+ {
+  "id": "lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported date: '7 January 2025'",
+   "unsupported: 'days after he signed'"
+  ],
+  "before": "removed director Manuel Burga, in post since 2018, on 7 January 2025, days after he signed a contract running to at least July 2025. Vice-minister Jamer Chávez Anticona told him",
+  "after": "removed director Manuel Burga, in post since 2018, in early January 2025, after he had recently signed a contract to stay until at least July 2025. Vice-minister Jamer Chávez Antícona, who took over the institution, told him",
+  "sources": [
+   "https://www.infobae.com/peru/2025/01/09/lum-destitucion-de-su-director-paraliza-el-desarrollo-de-una-muestra-sobre-las-muertes-en-el-gobierno-de-dina-boluarte/"
+  ],
+  "reason": "Infobae of 9 January 2025 gives no removal date and says he had recently signed. The 'Unverified' item on Renovación Popular and Fuerza Popular is attributed in the article to unnamed sources and the historian Natalia Sobrevilla; the article does not confirm it."
+ },
+ {
+  "id": "lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'Justice Minister ... pushed to move the LUM'"
+  ],
+  "before": "in August 2026 Justice Minister Ernesto Álvarez pushed to move the LUM to his ministry; Culture Minister Alberto Beingolea said it stays with Culture and \"No voy a cerrar el LUM\" (El Comercio listing).",
+  "after": "in August 2026 several public figures backed a proposal to move the LUM's administration to the Justice Ministry. Culture Minister Alberto Beingolea said on 2 August \"No voy a cerrar el LUM\", on 18 August that Peru's museums sit within the Culture Ministry, and on 24 August denied a dispute with Justice Minister Ernesto Álvarez (El Comercio headlines).",
+  "sources": [
+   "https://elcomercio.pe/noticias/lum/"
+  ],
+  "reason": "The El Comercio tag page gives only headlines: a proposal backed by personalities, Beingolea disagreeing with Álvarez, then denying a dispute. It does not say Álvarez pushed the move. Bottom line changed from 'move' to 'proposal'. Source is thin: only a headline listing could be read."
+ },
+ {
+  "id": "lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum",
+  "section": "RED FLAGS",
+  "problems": [
+   "imprecise: closure length and protesters credited to the wrong sources"
+  ],
+  "before": "Miraflores inspectors closed the museum from 28 March 2023 for about 30 days over an expired safety certificate; critics called it political, and the Ombudsman, Amnesty International Peru, the EU and Germany protested (LUM Memoria 2023, Wikipedia).",
+  "after": "Miraflores inspectors closed the museum on 28 March 2023, citing safety certification; it stayed shut for 30 days, until 30 April (LUM Memoria 2023). Critics including the Ombudsman, Amnesty International Peru, the EU and the German government called the closure political (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Place_of_Memory,_Tolerance_and_Social_Inclusion",
+   "https://lum.cultura.pe/sites/default/files/publicaciones/PDF/memoria_institucional_2023_-_lum.pdf"
+  ],
+  "reason": "The 30 days come from the annual report; the critics from Wikipedia."
+ },
+ {
+  "id": "lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum",
+  "section": "RED FLAGS",
+  "problems": [
+   "omission: film moved"
+  ],
+  "before": "... could not be shown in a state institution (EFE via Infobae, 10 October 2026).",
+  "after": "... Apreci's statement is dated 9 October 2026; the festival moved the film to an independent cultural centre on 18 October (EFE via Infobae, 10 October 2026).",
+  "sources": [
+   "https://www.infobae.com/america/agencias/2026/10/10/la-prensa-cinematografica-de-peru-denuncia-censura-a-pelicula-de-director-palestino/"
+  ],
+  "reason": "Wording from the EFE piece; the quotation about Palestinian cinema is Apreci's account of the ministry representative, as the report already says."
+ },
+ {
+  "id": "lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "length: report over 800 words after fixes"
+  ],
+  "before": "Visitors bullet (83,393 in 2023); list of the other four Patronato members",
+  "after": "(removed)",
+  "sources": [
+   "https://lum.cultura.pe/sites/default/files/publicaciones/PDF/memoria_institucional_2023_-_lum.pdf"
+  ],
+  "reason": "Cut to bring the report under 800 words; both facts were confirmed in the annual report."
+ },
+ {
+  "id": "m-hka-antwerp",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'oldest' credited to Wikipedia and ArtReview"
+  ],
+  "before": "Belgium's oldest contemporary art museum, run by the Flemish Community (Wikipedia, ArtReview).",
+  "after": "called Belgium's oldest contemporary art museum in the Brussels Times, run by the Flemish Community (Wikipedia).",
+  "sources": [
+   "http://www.brusselstimes.com/belgium/1914304/plans-to-dismantle-belgiums-oldest-contemporary-art-museum-set-to-be-softened-after-outcry",
+   "https://en.wikipedia.org/wiki/M_HKA"
+  ],
+  "reason": "Neither the Wikipedia body nor ArtReview uses 'oldest'; it appears in the Brussels Times headline. Founding, directors, architect and building dates confirmed from Wikipedia. The Lee Bul free-entry dates and lift outage confirmed on muhka.be."
+ },
+ {
+  "id": "m-hka-antwerp",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: transition plan credited to a decision, not to a source"
+  ],
+  "before": "The museum says it is working on a transition plan for 2026 to 2028 after the decision to cancel the new building.",
+  "after": "The museum's website refers to a transition plan for 2026 to 2028, which it says it submitted on 1 October (stated by the museum).",
+  "sources": [
+   "https://www.muhka.be/",
+   "https://artreview.com/museum-professionals-protest-plans-to-asset-strip-antwerps-m-hka/"
+  ],
+  "reason": "The muhka.be front page mentions the plan; ArtReview does not. The 130 million (The Art Newspaper) and 80 million (ArtReview) building figures, 8,000 objects and the 4 February 2026 reversal are confirmed."
+ },
+ {
+  "id": "m-hka-antwerp",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'founded Novatek ... chairs its management board'"
+  ],
+  "before": "He founded Novatek, which produces petroleum and natural gas, and chairs its management board (Wikipedia, Novatek).",
+  "after": "He is chairman and chief executive of Novatek, which produces petroleum and natural gas (Wikipedia, Novatek).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Leonid_Mikhelson",
+   "https://en.wikipedia.org/wiki/Novatek",
+   "https://en.wikipedia.org/wiki/V-A-C_Foundation"
+  ],
+  "reason": "Wikipedia lists him as chairman and CEO and says he founded V-A-C in 2009; it does not say he founded Novatek or chairs a management board. Novatek on the SSI list on 16 July 2014 and Mikhelson named in the CAATSA report of 29 January 2018 confirmed; UK sanctions in 2022 confirmed (no date given). Present Continuous and 'Co-op Sunrise' confirmed (Ensembles)."
+ },
+ {
+  "id": "m-hka-antwerp",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'treats a collection as a pile of objects'",
+   "wrong title (Esche)"
+  ],
+  "before": "Argues the plan was imposed without consultation and treats a collection as a pile of objects. / \"The sorry story of Antwerp museum's dissolution serves as a warning to all\"",
+  "after": "Reports critics saying the decision was made \"without the necessary groundwork or proper consultation\", and Museum Watch's letter saying the plan rests on a logic that sees collections as \"merely an assorted accumulation of items\". / \"The dissolution of Antwerp's museum of contemporary art should serve as a warning to all\"",
+  "sources": [
+   "https://artreview.com/museum-professionals-protest-plans-to-asset-strip-antwerps-m-hka/",
+   "https://www.theartnewspaper.com/2026/01/06/comment-%7C-the-sorry-story-of-antwerp-museums-dissolution-serves-as-a-warning-to-all"
+  ],
+  "reason": "ArtReview's text is quoted; the Art Newspaper page headline differs from the URL slug the report had used. The 'development laboratory' phrase is the outgoing director's, quoted by Esche."
+ },
+ {
+  "id": "maat-lisbon",
+  "section": "OVERVIEW",
+  "problems": [
+   "conflicting date stated as fact: power station 1908",
+   "unsupported: documentation centre"
+  ],
+  "before": "the Central Tejo power station, built in 1908, was converted into MAAT Central ... and a documentation centre (stated by the museum).",
+  "after": "... built in 1908 according to the museum's presentation text (its buildings page gives the 1910s to 1940s), became MAAT Central ... and a riverside garden with sculptures (stated by the museum).",
+  "sources": [
+   "https://www.maat.pt/en/about",
+   "https://en.wikipedia.org/wiki/Museum_of_Art,_Architecture_and_Technology"
+  ],
+  "reason": "The museum's page gives both dates and does not mention a documentation centre. Opening hours, the 30 June and 5 October 2016 openings, cost of about 20 million euros, ECO's Serralves details and the EDP Group ownership figures were confirmed."
+ },
+ {
+  "id": "maat-lisbon",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: June 2017 suspect status, four counts, 1.2 billion euros, 6 July 2020 date",
+   "unsupported: EDP statement",
+   "source not opened (HTTP 403 on 24noticias)"
+  ],
+  "before": "António Mexia, EDP's chairman, and João Manso Neto, chairman of EDP Renováveis, became formal suspects in June 2017 and were accused of four counts of active corruption and one of economic participation in business over the CMEC contracts. Prosecutors allege benefits to EDP of about 1.2 billion euros (24noticias, 6 July 2020). / EDP says no irregularity can be attributed to it and the payments were fair.",
+  "after": "On 28 October 2024 prosecutors charged António Mexia, former executive chairman of EDP, and João Manso Neto, former president of EDP Renováveis, with active corruption of former Economy Minister Manuel Pinho, over events between 2006 and 2014. The Public Prosecutor said the state lost more than 840 million euros and asked for forfeiture of up to that sum from the defendants and two EDP Group companies (ECO, 28 October 2024; Diário de Notícias). / ECO reports MAAT was an initiative of Mexia when he chaired EDP (ECO, 14 March 2023).",
+  "sources": [
+   "https://eco.sapo.pt/2024/10/28/caso-cmec-mexia-e-manso-neto-acusados-de-corromper-manuel-pinho/",
+   "https://www.dn.pt/sociedade/caso-edp-antonio-mexia-manuel-pinho-e-manso-neto-acusados-de-corrupcao-pelo-mp",
+   "https://eco.sapo.pt/2023/03/14/afinal-maat-mantem-se-sob-gestao-da-edp"
+  ],
+  "reason": "The cited 24noticias page returned HTTP 403 and was replaced. The pages that opened date the charge to 28 October 2024 (one count of active corruption each, 840 million euros) and do not mention June 2017, four counts or 1.2 billion. Neither opened page carries an EDP statement, so that sentence was cut. The report's older figures could not be confirmed."
+ },
+ {
+  "id": "maat-lisbon",
+  "section": "RED FLAGS",
+  "problems": [
+   "paraphrase beyond source: 'one of Portugal's largest importers'"
+  ],
+  "before": "called EDP one of Portugal's largest importers of fossil fuels for power generation, using the foundation to improve its image (Diário de Notícias).",
+  "after": "accused EDP of being a major importer of fossil fuels for power in Portugal and of using its foundation to \"lavar a imagem\" (clean up its image, translation) (Diário de Notícias).",
+  "sources": [
+   "https://www.dn.pt/sociedade/dois-ativistas-do-climaximo-detidos-por-pintarem-a-fachada-e-escadaria-do-maat-em-protesto-contra-a-edp-17441603.html"
+  ],
+  "reason": "DN (3 December 2023) says 'major importer'; EDP's reply (80% renewable, coal plant closed 2021) confirmed."
+ },
+ {
+  "id": "maat-lisbon",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "misquoted: 'corporate maison'",
+   "vague: association's warning without its terms",
+   "date missing"
+  ],
+  "before": "Calls the building a \"corporate maison\" ... Says EDP, exempt from public procurement rules, commissioned Levete directly and used the building as a marketing tool. / Warned of business-minded cultural policy leading to uniform programming and weaker critical discourse (translation). Asked who would manage MAAT's contemporary art collection and the EDP prizes.",
+  "after": "Compares the building to the houses Portuguese emigrants built on their return ... calls it \"an isolated jewel\" ... hired Levete directly and let marketing goals outweigh the project's good intentions. / Warned of a \"preocupante tendência\" toward a business-style mentality ... \"a mesma programação homogénea\" ... \"terraplanagem da crítica\" (translations) ... Said questions about the MAAT collection and the EDP prizes remained unanswered after the memorandum of 5 November.",
+  "sources": [
+   "https://metropolismag.com/viewpoints/portugal-maat-museum-monument-corporate-ego/",
+   "http://24noticias.sapo.pt/atualidade/artigos/associacao-de-artistas-visuais-desagradada-com-protocolo-entre-serralves-e-fundacao-edp"
+  ],
+  "reason": "Metropolis (29 May 2017) uses 'maison' only in the emigrant-house comparison. The AAVP statement (10 December 2021) opened over http after an https 403."
+ }
+]
