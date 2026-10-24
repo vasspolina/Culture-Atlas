@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=240">
-  <script src="assets/config.js?v=240"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=241">
+  <script src="assets/config.js?v=241"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -784,7 +784,7 @@ return maplibregl$1;
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Share information -->
-                  <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('whistleblower')" class="whitespace-nowrap">Share information</button>
+                  <button id="chatShareBtn" type="button" aria-pressed="false" onclick="window.toggleChatShare()" class="whitespace-nowrap">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
@@ -9909,11 +9909,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v240';
+    const ATLAS_RELEASE = 'culture-atlas-v241';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=240').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=241').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15966,10 +15966,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         placeholder: 'The report service is not configured. Your report will not be saved.'
       };
 
+    // Share information is a toggle like the Details and AI Chat tabs: on while the note is open, and pressing it again goes back to the chat.
+    function setChatShareOn(on) {
+      const b = document.getElementById('chatShareBtn');
+      if (!b) return;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+    function toggleChatShare() {
+      if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
+    }
+
     function enterChatInputMode(kindOrTopic = '') {
       // Share information, a record's link and the old information and gossip links all open the whistleblower note.
       const defaultTopic = ['information', 'gossip', 'whistleblower'].includes(kindOrTopic) ? '' : kindOrTopic;
       isChatInputMode = true;
+      setChatShareOn(true);
       // The conversation so far steps aside while a note is written; it comes back with Back to chat.
       document.querySelectorAll('#curatorMessages > *').forEach(m => m.classList.add('before-note'));
 
@@ -16079,6 +16091,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     function exitChatInputMode() {
       isChatInputMode = false;
+      setChatShareOn(false);
       document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
 
       // 1. Deactivate whole-chat full-width mode
@@ -16200,6 +16213,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.triggerInChatContributeFlow = triggerInChatContributeFlow;
     window.enterChatInputMode = enterChatInputMode;
     window.exitChatInputMode = exitChatInputMode;
+    window.toggleChatShare = toggleChatShare;
 
     async function processInChatWhistleblowerSubmission(text) {
       const q = (text || '').trim();
@@ -19095,9 +19109,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=240"></script>
-<script src="assets/layers.js?v=240"></script>
-<script src="assets/hq-detail.js?v=240"></script>
-<script src="assets/bubbles.js?v=240" defer></script>
+<script src="assets/typeset.js?v=241"></script>
+<script src="assets/layers.js?v=241"></script>
+<script src="assets/hq-detail.js?v=241"></script>
+<script src="assets/bubbles.js?v=241" defer></script>
 </body>
 </html>
