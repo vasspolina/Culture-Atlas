@@ -351,3 +351,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - national-portrait-gallery-london: BP from 1990, not renewed after 2022; Sackler 1 million pound gift withdrawn, "jointly agreed not to proceed" (Museums Journal, 21 March 2019); Blavatnik 10 million pounds in 2022 (Art Newspaper, 15 Nov 2023); the Ukrainian sanction is "Wikipedia only" (no US, EU or UK listing named). No documented objection to Blavatnik found. Gallery site 403.
 - national-gallery-singapore-singapore: Marina Bay Sands a current patron; Keppel a Founding Partner; Keppel O&M DPA December 2017, penalty US$422,216,980 over Brazil bribes (about 2001 to 2014). The DOJ release pages were empty (rests on Keppel's own announcement via Maritime Professional and Compliance Week): confirm against the DOJ release.
 - national-gallery-alexandros-soutzos-museum: reopening 24 March 2021 (Wikipedia) or May 2021 (the gallery's page).
+
+## d023 (research notes, before its slop check)
+- phoenix-art-museum-phoenix: no source shows Desert Diamond Casino as a partner (the record's claim); the record's $11.9M expenses is superseded (ProPublica FY2025: $15.8M).
+- pinacoteca-de-s-o-paulo: no text source for Equinor or Ultra as sponsors (the record's claim); the 2026 sponsor panel is an image; the record's website field points to a news site (real site pinacoteca.org.br).
+- poetry-in-america-harvard-cambridge: the "Gratitude America" name is unconfirmed; sources say Epstein gave $110,000 to Verse Video Education, which ProPublica places in Brookline, MA.
+- pushkin-state-museum-of-fine-arts-moscow: the trustee page still lists Pronicheva as director (BFM, 14 Jan 2026, names her to the post).
+- perez-art-museum-miami: sources disagree on the gift ($35M or $40M) and the building cost ($131M or $220M).
+- raw-material-company-dakar: the space's own site was down on the check date.
+- pictanovo-tourcoing: Epstein-linked: ex-fund president Caroline Lang; Prytanee company; PNF preliminary probe 6 Feb 2026; she and her father deny wrongdoing.
+- pirelli-hangarbicocca: Rostec holds 25.005% of Pirelli Tyre Russia; the Grizzly allegation is unverified and Pirelli denies it.
