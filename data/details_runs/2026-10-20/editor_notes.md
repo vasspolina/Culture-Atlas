@@ -218,3 +218,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - louisiana-museum-of-modern-art: the scanned 2024 report was read by eye: state grant DKK 36.125M, turnover DKK 100.1M, 716,000 visitors, 19-name donor list. The donor list includes the A.P. Møller family foundations and the Norwegian Ministry of Foreign Affairs; whether that changes any flag is for the editor.
 - maat-lisbon: EDP leadership case rewritten from ECO and Diário de Notícias: charge 28 Oct 2024, one count of active corruption each for Mexia and Manso Neto, over 840M euros; the earlier "June 2017, four counts, 1.2bn" was wrong.
 - lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum: the August 2026 jurisdiction item rests on El Comercio headlines only; the Renovación Popular and Fuerza Popular item is Unverified.
+
+## d015 (research notes, before its slop check)
+- mansudae-art-studio-pyongyang: the record's "Kotra $160m to 2018" has no source (VICE 2013: about $160m over the previous decade; Wikipedia: $160m from overseas projects as of August 2011); the record's "directly financed by the Workers' Party and state treasury" has no source. mansudaeartstudio.com fails the TLS handshake.
+- mansudae-art-museum-mansudae-art-studio-gallery-798-beijing: 798artdistrict.com is parked (GoDaddy for-sale page); a Gwangju loan figure could not be verified.
+- madison-museum-of-contemporary-art-madison: the record's "$2.9M expenses (2023)" is superseded (FY2025 expenses $3.77M); the "Business Council list" claim was not addressed.
+- memorial-acte: audit findings and a Parquet national financier inquiry (not a standard atlas flag); memorialacte.fr fails its certificate; the EPCC member list could not be confirmed.
+- mauritshuis-the-hague: mauritshuis.nl returns 403 to every automated fetch; Shell sponsorship ended 2018.
+- masp-são-paulo: the site redirects to masp.com.br; the 2015 to 2024 financial statement PDFs exceeded the size limit.
+- mariupol-drama-theatre: funded by Russian occupation authorities and St Petersburg (up to 13bn roubles per Bumaga); Euromaidan Press is partisan advertorial.
