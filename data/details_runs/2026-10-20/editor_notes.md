@@ -175,3 +175,74 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - haus-für-medienkunst-oldenburg-oldenburg: the "Nazi pasts" red flag heading is not one of the atlas's flags, and the record has none for it.
 - ica-miami: the Witkoff red flag rests on Wikipedia and Democracy Now; NPR, New Yorker, CBS and NYT pieces were not opened.
 - het-concertgebouw-amsterdam: the "about 4 percent municipal subsidy" is an MP's figure inside a question.
+
+## d012 (research notes, before its slop check)
+- kaesong-koryo-museum-kaesong, korean-art-gallery-pyongyang, korean-central-history-museum-pyongyang: no opened page names an owner or budget (the record's "Workers' Party budget" is not in any page); the Sanctions flag is under US Executive Order 13722. The Korean Art Gallery's opening year conflicts (1954 Koryo Tours; 1948 Wikipedia and Koryo Studio); its listed site does not resolve.
+- koorie-heritage-trust-melbourne: no protest found for the record's "Protest or boycott" flag; Viva Energy is a sponsor.
+- kunsten-museum-of-modern-art-aalborg-aalborg: Det Obelske Familiefond gave DKK 10m for 2025 to 2030; the record's 14.5% Scandinavian Tobacco Group stake could not be confirmed (STG's investor page says C.W. Obel A/S holds more than 10%).
+- kiran-nadar-museum-of-art-new-delhi: the record's FCRA statements could not be confirmed (knma.org pages unreachable).
+- kuindzhi-art-museum: under the sanctioned DNR culture ministry per a sign Bellingcat saw; no site.
+- king-abdulaziz-center-for-world-culture-ithra-dhahran: inauguration year 2016 (Wikipedia) or 2017 (The Art Newspaper).
+
+## d014 (research notes, before its slop check)
+- listasavn-føroya-national-gallery-of-the-faroe-islands-tórshavn: Augustinus Fonden funds the 2026 expansion (museum news page, 19 Mar 2026), so the tobacco link is current; STG stake above 25% as of 1 May 2025.
+- louisiana-museum-of-modern-art: the 2024 annual report is a scanned PDF; the record's state grant, DKK 36.1M, 716k visitors and donor list could not be repeated.
+- louvre-abu-dhabi-abu-dhabi: Abu Dhabi pays France 400M euro for the name and 190M for loans; the site returned 403.
+- m-hka-antwerp: new building cost is 130M euro (Art Newspaper) or 80M (ArtReview); the dissolution plan was revoked on 4 Feb 2026 (ArtReview).
+- m-hong-kong: Epstein-linked Morgan Stanley and UBS accounts placed under Wider context; HSBC 2012 DPA and UBS/Credit Suisse 2025 plea are red flags.
+- mac-ccb-museu-de-arte-contemporanea-do-centro-cultural-de-belem: two Lusa reports give different 2024 visitor counts (588,643 and 179,890).
+- lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum: state censorship items (Burga removed Jan 2025, Palestinian film barred Oct 2026, 2023 closure).
+- lincoln-center: no Griffin or Citadel campaign found there; the Whitney claim was not researched.
+
+## d013 (research notes, before its slop check)
+- kunsthaus-zürich-zürich: a corporate partner "JTI" is listed in the 2024 annual report; no opened page names the company, so it is not called Japan Tobacco International. If confirmed, it is a tobacco funder to add.
+- kw-institute-for-contemporary-art: no BMW Group or Casa Camper support found on KW's own pages, though the record names both.
+- kunstinstituut-melly: no source for where Ammodo's money comes from.
+- kunsthalle-praha-prague: Nelson Anstalt gave the foundation CZK 90 million in 2023; its owner is not identified in any source. The record's website link is a news article; the real site is kunsthallepraha.org.
+- kunstmuseum-wolfsburg-wolfsburg: no budget figures or board list found; www.kunstmuseum.de redirects to a ticket shop saying the site is unavailable.
+- latvian-national-museum-of-art: Rietumu Banka fines (EUR 5.85M 2021, 1.5M 2017, an 80M French tax-evasion fine 2017); claimed 2022 and 2024 fine reductions not confirmed.
+- lacma-los-angeles: Steve Tisch's Epstein-file mention is under Wider context; the listed Sony emails do not mention Epstein.
+
+## d012 slop check (17 fixes; every report changed)
+- kaesong-koryo-museum-kaesong, korean-art-gallery-pyongyang, korean-central-history-museum-pyongyang: no opened source names an owner or funding body, so the Sanctions red flag was cut from all three reports and the text says no owner is documented. The records still carry a Sanctions flag; it needs a source naming the state body, or removal.
+- kuindzhi-art-museum: Sanctions kept (OFAC 16 July 2014 lists the Donetsk People's Republic; EU and UK listings per Black Sea News). The only evidence the DNR runs the museum is a handwritten door sign Bellingcat saw. The director's handover is Unverified.
+- karachi-biennale-trust-karachi: the "state censorship" red flag was cut (Dawn names no agency; no source shows the Sindh government or a funder ordered the 2019 closure). K-Electric as KB24 Energy Partner rests on a logo file name; Engro Rs 75 million at KB22 is confirmed by the Associated Press of Pakistan.
+- koorie-heritage-trust-melbourne: grant income $1.62m is smaller than trading income $2.87m (2022-23 annual report); "mainly public" and "Aboriginal-run" were changed.
+- judd-foundation: the record notes Bloomberg Philanthropies is campaigned against elsewhere; the report does not mention it (no source).
+- kemper-museum-kansas-city: hours and admission missing (site returned only headings).
+
+## d014 slop check (52 fixes; every report changed)
+- m-hong-kong: HSBC 5-year DPA 11 Dec 2012 (US Justice Department, EDNY; $1.256bn forfeiture, $665m civil penalties); Credit Suisse Services AG plea 5 May 2025 (more than $4bn hidden from the IRS in at least 475 accounts, fine over $510m; UBS says it was not involved). M+ corporate page names UBS and Morgan Stanley but not HSBC (HSBC became Lead Partner in 2022 per M+ press release). Epstein-linked bank accounts stay in Wider context.
+- louvre-paris: Sackler and Total flags kept. TotalEnergies is not on the 2025 patron page; the Louvre says no direct partnership with the Fondation TotalEnergies since 2018.
+- lincoln-center-for-the-performing-arts: Koch pledged $100M in July 2008; name guaranteed at least 50 years.
+- louisiana-museum-of-modern-art: the scanned 2024 report was read by eye: state grant DKK 36.125M, turnover DKK 100.1M, 716,000 visitors, 19-name donor list. The donor list includes the A.P. Møller family foundations and the Norwegian Ministry of Foreign Affairs; whether that changes any flag is for the editor.
+- maat-lisbon: EDP leadership case rewritten from ECO and Diário de Notícias: charge 28 Oct 2024, one count of active corruption each for Mexia and Manso Neto, over 840M euros; the earlier "June 2017, four counts, 1.2bn" was wrong.
+- lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum: the August 2026 jurisdiction item rests on El Comercio headlines only; the Renovación Popular and Fuerza Popular item is Unverified.
+
+## d015 (research notes, before its slop check)
+- mansudae-art-studio-pyongyang: the record's "Kotra $160m to 2018" has no source (VICE 2013: about $160m over the previous decade; Wikipedia: $160m from overseas projects as of August 2011); the record's "directly financed by the Workers' Party and state treasury" has no source. mansudaeartstudio.com fails the TLS handshake.
+- mansudae-art-museum-mansudae-art-studio-gallery-798-beijing: 798artdistrict.com is parked (GoDaddy for-sale page); a Gwangju loan figure could not be verified.
+- madison-museum-of-contemporary-art-madison: the record's "$2.9M expenses (2023)" is superseded (FY2025 expenses $3.77M); the "Business Council list" claim was not addressed.
+- memorial-acte: audit findings and a Parquet national financier inquiry (not a standard atlas flag); memorialacte.fr fails its certificate; the EPCC member list could not be confirmed.
+- mauritshuis-the-hague: mauritshuis.nl returns 403 to every automated fetch; Shell sponsorship ended 2018.
+- masp-são-paulo: the site redirects to masp.com.br; the 2015 to 2024 financial statement PDFs exceeded the size limit.
+- mariupol-drama-theatre: funded by Russian occupation authorities and St Petersburg (up to 13bn roubles per Bumaga); Euromaidan Press is partisan advertorial.
+
+## d016 (research notes, before its slop check)
+- migros-museum: the record's CHF 12 ticket is outdated; the museum's site says admission is free.
+- mit-media-lab-cambridge: MIT's own report says Epstein was never coded "disqualified"; the record repeats the New Yorker's claim. The report states both.
+- multimedia-art-museum-moscow-mamm-moscow: Wikipedia dates the US action on Alfa-Bank to 24 February 2022; the record says April 2022.
+- moma-the-museum-of-modern-art: Leon Black's payments to Epstein: at least $158M (The Art Newspaper) or $170M (CBS). MoMA's own support and visit pages refused automated access, so the record's corporate sponsors (Bloomberg, Hyundai Card, Cartier and others) are not in the report.
+- micas-malta-international-contemporary-art-space: MICAS says Sultana "stepped down"; The Shift says he was removed.
+- mk-gallery-milton-keynes: the J Paul Getty Jnr Charitable Trust is listed as an expansion donor; the checker is told to apply the founder-fortune ruling if a page ties it to Getty Oil money.
+- moca-cleveland-cleveland: the record's "State censorship or punishment" flag does not fit (the cancellation was the museum's own decision).
+- milwaukee-symphony-orchestra-milwaukee: Epstein item via former board member Peter Mahler (a paid staffing contractor for Epstein).
+
+## d013 slop check (45 fixes; 11 of 12 changed, Kunstinstituut Melly clean)
+- kunstmuseum-wolfsburg-wolfsburg: the record's "Fossil fuels" flag is not supported by anything opened (VW's 11 Jan 2017 plea is about diesel emissions); "Sponsor dropped under pressure" and "State censorship" rest on a dismissal whose cause two outlets call unclear, only the partisan WSWS claims a link. No budget or VW AG payment figures; the site serves only a ticket shop.
+- kunsthalle-praha-prague: the founder's coal stake was sold in 2010; whether the Pudil coal proceeds fund the foundation is undocumented; Nelson Anstalt's owner is not named in the foundation report. Aktuálně.cz: Respekt apologised and Pudil was never charged.
+- kunsthalle-bielefeld-bielefeld: Oetker in the Waffen-SS July 1941, October 2013 study, 1998 name dispute; Oetker ended his support in 1998.
+- kunsthaus-zürich-zürich: Bührle loan and the June 2024 Gross report; "JTI" is not called Japan Tobacco International (the 2024 report only lists "JTI" and thanks it for the Long Night event).
+- lacma-los-angeles: Gores and Securus: artists' letter 16 Sept 2020, Worth Rises and Color of Change letter 9 Sept, resignation 8 Oct 2020. Wynn Resorts: $50M in 2016; no opened page says the gift came from casino income; whether it counts is the editor's call.
+- kw-institute-for-contemporary-art: KW's about page does list Casa Camper as a partner; BMW support for KW itself is not found (BMW's 2018 release names it a partner of the Berlin Biennale, which used KW as a venue); Volkswagen support is the KW Digital Program 2023 to 2024 and a 2021 book.
+- latvian-national-museum-of-art: Teboil/Lukoil comes only via Wikipedia citing Ilta-Sanomat, unopened.
