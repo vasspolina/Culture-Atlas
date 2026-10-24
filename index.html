@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=245">
-  <script src="assets/config.js?v=245"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=246">
+  <script src="assets/config.js?v=246"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9909,11 +9909,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v245';
+    const ATLAS_RELEASE = 'culture-atlas-v246';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=245').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=246').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10235,7 +10235,7 @@ return maplibregl$1;
 
       // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode (yellow text there in gossip mode). Gossip mode never darkens it in light mode.
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const cardInk = cardDark ? (isGossipModeActive ? '#ffd600' : '#ffffff') : '#000000';
+      const cardInk = cardDark ? (isGossipModeActive ? '#e2f86c' : '#ffffff') : '#000000';
       ctx.fillStyle = cardDark ? '#2a2a2a' : '#ffffff';
       ctx.fillRect(cardX, cardY, cardW, cardH);
 
@@ -10325,7 +10325,7 @@ return maplibregl$1;
       const now = (typeof ts === 'number') ? ts : performance.now();
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#f4f4f4'), G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#ffffff'), G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#e2f86c' : '#f4f4f4'), G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#e2f86c' : '#ffffff'), G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'square', U: 'triangle' };
         const TIER_SHAPE_SIZE = { circle: 3, square: 2.7, triangle: 3.3 };
@@ -10463,7 +10463,7 @@ return maplibregl$1;
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = G_GROUND;
         ctx.fill();
-        ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+        ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
         ctx.lineWidth = 0.8;
         ctx.stroke();
 
@@ -10521,7 +10521,7 @@ return maplibregl$1;
               }
               ctx.closePath();
               ctx.fill();
-              ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+              ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
               ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
               ctx.stroke();
             } else {
@@ -10574,7 +10574,7 @@ return maplibregl$1;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
                 ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
                 ctx.stroke();
               }
@@ -10754,7 +10754,7 @@ return maplibregl$1;
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
@@ -10766,7 +10766,7 @@ return maplibregl$1;
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
                 if (isSelected) { ctx.fillStyle = '#ff6119'; ctx.fill(); }
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               }
@@ -10830,10 +10830,10 @@ return maplibregl$1;
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : (GLOBE_LIGHT ? '#007a78' : '#08bdba')) 
+                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : (GLOBE_LIGHT ? '#007a78' : '#08bdba')) 
                     : isHov
                     ? G_TEXT
-                    : ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_TEXT);
+                    : ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_TEXT);
                   ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }
               }
@@ -10954,7 +10954,7 @@ return maplibregl$1;
           const pinShape = TIER_SHAPE[d.inst.tier] || 'triangle';
           if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1)); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR, 0, Math.PI * 2); }
           ctx.strokeStyle = isHov 
-            ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE)
+            ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE)
             : (isVisualCritiqueOnly && hasVc)
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
@@ -19127,9 +19127,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=245"></script>
-<script src="assets/layers.js?v=245"></script>
-<script src="assets/hq-detail.js?v=245"></script>
-<script src="assets/bubbles.js?v=245" defer></script>
+<script src="assets/typeset.js?v=246"></script>
+<script src="assets/layers.js?v=246"></script>
+<script src="assets/hq-detail.js?v=246"></script>
+<script src="assets/bubbles.js?v=246" defer></script>
 </body>
 </html>
