@@ -1,0 +1,317 @@
+[
+ {
+  "id": "hamburger-bahnhof-berlin",
+  "section": "Red flags: protest over the Flick Collection",
+  "problems": [
+   "unsupported: 'victims' groups said' (source says some Nazi victims' groups)",
+   "relationship to Flick not in the cited page"
+  ],
+  "before": "Friedrich Flick, the collector's grandfather, built a fortune ... victims' groups said \"blood money\" financed the collection, and Flick was criticised for not paying into compensation funds (World Jewish Congress).",
+  "after": "Friedrich Flick, the collector's grandfather (Wikipedia), built a fortune ... some Nazi victims' groups said \"blood money\" financed the collection, and Flick was criticised for not paying into victims' compensation funds (World Jewish Congress).",
+  "sources": [
+   "https://www.worldjewishcongress.org/en/news/schr-ouml-der-opens-controversial-art-exhibition-in-berlin",
+   "https://en.wikipedia.org/wiki/Friedrich_Christian_Flick"
+  ],
+  "reason": "The World Jewish Congress page says 'some Nazi victims' groups' and calls Friedrich Flick the collector's father, which is wrong; Wikipedia states he is the grandson. Credited each point to the page that states it and added the Wikipedia URL to SOURCES."
+ },
+ {
+  "id": "hamburger-bahnhof-berlin",
+  "section": "OVERVIEW / length",
+  "problems": [
+   "over length: 804 words"
+  ],
+  "before": "...; a Dan Flavin neon has lit the façade since 1996.",
+  "after": "...the Marx collection includes Beuys, Kiefer, Rauschenberg, Twombly and Warhol.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Hamburger_Bahnhof"
+  ],
+  "reason": "Cut the Flavin clause to bring the text under 800 words. All other numbers (funding agreement, BMW since 2006, Bruguera dates, e-flux and Art Newspaper points) were checked against the opened pages and held."
+ },
+ {
+  "id": "hammer-museum",
+  "section": "OVERVIEW / length",
+  "problems": [
+   "over length: 806 words",
+   "unsupported: 'courtyard performance space'"
+  ],
+  "before": "The collection includes about 7,500 Daumier works; there is also a courtyard performance space and the Annenberg Terrace.",
+  "after": "The collection includes about 7,500 Daumier works.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Hammer_Museum"
+  ],
+  "reason": "Wikipedia confirms the Daumier figure but not a courtyard performance space; cut both and brought the text under 800 words. Newsweek, Hyperallergic, The Art Newspaper, Whitehot, Apollo and the museum's capital campaign, visit and board pages were opened; the Occidental and Gaza protest flag points hold. The Newsweek page shows no date; 1990 is inferred from its content."
+ },
+ {
+  "id": "hasty-pudding-theatricals-cambridge",
+  "section": "Red flags: Epstein money",
+  "problems": [
+   "unsupported: 'thousands of emails' and 'close friendship over several years'",
+   "wrong attribution: 'professional, not personal' credited to the Globe"
+  ],
+  "before": "Department of Justice records released in January 2026 describe a close friendship over several years with thousands of emails; a 2014 text ... (The Harvard Crimson).",
+  "after": "Department of Justice files released in January 2026 show the two were close (The Boston Globe). A 2014 text from Epstein, who invited Farkas to his private island, called the two men \"two guardians of the Sphinx\" and Farkas replied \"That's us\"; scheduled meetings ran as late as 8 April 2019 (The Harvard Crimson).",
+  "sources": [
+   "https://www.thecrimson.com/article/2026/2/2/epstein-hasty-pudding-donations/",
+   "https://www.bostonglobe.com/2026/07/15/nation/should-epsteins-friends-be-punished-an-elite-harvard-club-is-torn/"
+  ],
+  "reason": "Neither opened article gives an email count. The $375,000 figure, the foundations, the dates, the Guardian of the Sphinx tier, the Farkas quotes, the petitions and the Globe's 175 signers all hold. The 'professional, not personal' quote is in the Crimson, not the Globe; credit fixed. Red flag stays: money and tie are both supported."
+ },
+ {
+  "id": "hasty-pudding-theatricals-cambridge",
+  "section": "Red flags: Epstein money",
+  "problems": [
+   "site listing credited to the wrong source"
+  ],
+  "before": "the Institute's site listed him as a 2018 donor (The Harvard Crimson).",
+  "after": "the Pudding listed him as a 2018 \"Guardian of the Sphinx\" until The Crimson reported the gift in April 2019 (The Harvard Crimson, 2019).",
+  "sources": [
+   "https://www.thecrimson.com/article/2019/12/30/top-10-epstein/"
+  ],
+  "reason": "The 2026 Crimson article does not mention the 2018 listing; the December 2019 Crimson article does. Added that URL to SOURCES."
+ },
+ {
+  "id": "hasty-pudding-theatricals-cambridge",
+  "section": "OVERVIEW and FUNDING",
+  "problems": [
+   "unsupported: address '12 Holyoke Street'",
+   "unsupported: show dates 5 February to 7 March and discounts",
+   "unsupported: 'Harvard did not disclose the amount'"
+  ],
+  "before": "Farkas Hall at 12 Holyoke Street ...; The annual show runs from 5 February to 7 March, with group discounts and patron packages ...; He endowed the Farkas Hall building ...; Harvard did not disclose the amount (Harvard Gazette).",
+  "after": "Farkas Hall, a Georgian Revival building of 1888 ...; The annual show plays at Farkas Hall, whose theatre seats about 270 and is open to the public (Harvard Gazette); Harvard named Farkas Hall for his father, Robin L. Farkas, in October 2011 to recognise Farkas's gift; the Gazette gives no amount.",
+  "sources": [
+   "https://news.harvard.edu/gazette/story/2011/10/historic-theater-renamed"
+  ],
+  "reason": "The Gazette gives neither the street address nor an amount. hastypudding.org timed out from this machine, so the show dates and discounts, and the 2021 donor list, could not be checked; the dates were cut, the donor list is kept as stated by the space and needs the editor to confirm."
+ },
+ {
+  "id": "haus-für-medienkunst-oldenburg-oldenburg",
+  "section": "OVERVIEW and FUNDING",
+  "problems": [
+   "unsupported: 'bequest' for Ruß (the house page says donation; Wikipedia says endowment)",
+   "unsupported: 'possibly an uncle's inheritance' (hedge)"
+  ],
+  "before": "Paid for by a bequest from the journalist and teacher Edith Ruß ...; possibly an uncle's inheritance, and that she had evaded tax, so her estate first had to pay back taxes (taz, 2026).",
+  "after": "Paid for by a donation from ... Edith Ruß ...; funds from the legacy of ... Elisabeth Brand ...; an inheritance from an uncle is one explanation, and that she evaded tax, so a back payment to the tax office was due (taz, 2026).",
+  "sources": [
+   "https://hausmedienkunst.de/en/about-us/the-house/",
+   "https://taz.de/Oldenburger-Museum-erforscht-Stifterin/!6149464/",
+   "https://en.wikipedia.org/wiki/Edith-Russ-Haus"
+  ],
+  "reason": "The house page calls Ruß's gift a donation and Brand's a legacy; taz says only that an uncle's inheritance is possible and that a tax back payment was due. Heading and bottom line changed from bequest to gift."
+ },
+ {
+  "id": "haus-für-medienkunst-oldenburg-oldenburg",
+  "section": "Red flags: founding donors' Nazi pasts",
+  "problems": [
+   "misattributed: 'vouched for each other'",
+   "date attributed to the wrong source",
+   "Brand's roles garbled"
+  ],
+  "before": "in 1948 she and her former boss Herbert Heitz, an antisemite, vouched for each other in denazification (taz, 2026); a 2000 biography ... described Ruß as independent; The council removed the name on 24 February 2025 after Krogmann called it no longer tenable (taz); Brand ... held local propaganda and treasurer roles",
+  "after": "in 1948 she vouched for her boss Herbert Heitz, an antisemite, in his denazification, and he certified in return that she had not been in the NSDAP, which taz calls an obvious lie (taz, 2026, our translation); a biography from around 2000 ... (taz, 2024); Krogmann called the name no longer tenable (taz, 2024); the city council renamed the house on 24 February 2025 (the house's website); Brand served as propaganda leader and local group treasurer of the Nazi women's organisation in Varel",
+  "sources": [
+   "https://taz.de/Oldenburger-Museum-erforscht-Stifterin/!6149464/",
+   "https://taz.de/Oldenburger-Edith-Russ-Haus/!6036688/",
+   "https://hausmedienkunst.de/en/about-us/the-house/"
+  ],
+  "reason": "taz 2026 says Ruß gave Heitz a Persilschein and he certified she was not in the party in return. The renaming date is on the house page, not in taz 2024. Brand's two roles were fused. The red flag heading is not one of the map's flags and the record has no flag for this row; the editor should decide whether it falls under Campaigned name."
+ },
+ {
+  "id": "hay-festival-hay-on-wye",
+  "section": "Red flags: Abu Dhabi edition",
+  "problems": [
+   "unsupported: Stephen Fry as 'festival president'",
+   "unsupported: 'two government grants'"
+  ],
+  "before": "including Amnesty International, PEN International and the festival president Stephen Fry,; £122,616 from two government grants",
+  "after": "including Amnesty International, PEN International and Stephen Fry,; £122,616 from government grants",
+  "sources": [
+   "https://newarab.com/news/literature-festival-uae-criticised-human-rights-groups",
+   "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/3950893/financial-history"
+  ],
+  "reason": "The New Arab lists Fry as a signatory only. The Charity Commission page gives £122.62k government grants and no count. All other charity figures match."
+ },
+ {
+  "id": "hay-festival-hay-on-wye",
+  "section": "CRITICISM IN ART MEDIA 1 (Spectator)",
+  "problems": [
+   "unsupported: 'Hay should not have held the Abu Dhabi edition'",
+   "unsupported: 'staying silent'",
+   "claim stronger than source"
+  ],
+  "before": "Hay should not have held the Abu Dhabi edition given the UAE's human rights record; such partnerships work like \"constructive engagement\", lending a regime prestige ...; Director Peter Florence mishandled McNamara's account by staying silent ...; Calls Hay's later statement defensive PR.",
+  "after": "Compares taking part in such events to \"constructive engagement\" with a government that has a poor human rights record, and says the UAE hosted the festival for the prestige it brings; Florence mishandled McNamara's account: he knew of it, the festival opened with the minister on stage, and her request to circulate her account to colleagues and the board was not carried out; Calls the chair's statement, issued about eight months after the incident, \"defensive PR\".",
+  "sources": [
+   "https://spectator.com/article/the-hay-festival-s-uneasy-dance-with-the-uae/"
+  ],
+  "reason": "Rewritten from the page: Sam Leith, headline and 24 October 2020 issue confirmed."
+ },
+ {
+  "id": "hay-festival-hay-on-wye",
+  "section": "FUNDING / Website line",
+  "problems": [
+   "unsupported: 'principal sponsor from 2017 with Tata' (Wikipedia says among the principal sponsors)",
+   "'partners' not what the article says",
+   "website note not verifiable"
+  ],
+  "before": "Baillie Gifford was a principal sponsor from 2017 with Tata Group; 2026 partners named: ...; (checked 2026-10-20; the 2026 festival books through hayfestival.org)",
+  "after": "Baillie Gifford and Tata Group were among the principal sponsors from 2017; 2026 supporters and contributors named: ...; (checked 2026-10-20)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Hay_Festival",
+   "https://www.brecon-radnor.co.uk/news/hay-festival-launches-full-programme-for-2026-885687"
+  ],
+  "reason": "The Brecon & Radnor Express calls these bodies supporters, venues or context, not partners. The hayfestival.org claim did not appear on hayfestival.com, which loads normally."
+ },
+ {
+  "id": "he-art-museum-foshan",
+  "section": "OVERVIEW / FUNDING / CRITICISM",
+  "problems": [
+   "unsupported: 'the family runs it (Al Jazeera)'",
+   "unsupported: 'concrete building'",
+   "'largely praised' overstated"
+  ],
+  "before": "the family runs it (Al Jazeera); the RMB 220 million ... concrete building ...; Al Jazeera reported commentators largely praised the choice of an industrial city.",
+  "after": "(the family-run claim removed); the RMB 220 million ... building ... and a concrete double-helix staircase; Al Jazeera quoted commentators calling the choice of an industrial city \"quite gutsy\" and the museum's growth \"an exciting development\".",
+  "sources": [
+   "https://www.aljazeera.com/news/2020/12/7/in-industrial-foshan-he-art-museum-joins-chinas-arts",
+   "https://en.wikipedia.org/wiki/He_Art_Museum",
+   "https://www.thebureauinvestigates.com/stories/2025-05-29/chinas-economy-runs-on-uyghur-forced-labour"
+  ],
+  "reason": "Al Jazeera says the museum was founded by the family and names Shao Shu as executive director, not that the family runs it. The TBIJ Midea passage, date, author and non-response all hold; the red flag stays."
+ },
+ {
+  "id": "heard-museum-phoenix",
+  "section": "CRITICISM IN ART MEDIA 1",
+  "problems": [
+   "unsupported: 'Goodyear met the ADL's Bill Straus and the donors'",
+   "title attribution"
+  ],
+  "before": "Director Frank Goodyear met the Anti-Defamation League's Bill Straus and the donors, kept the video on view, and said the museum should have been better prepared to answer criticism.",
+  "after": "Director Frank Goodyear kept the video on view with a label saying it reflected only the artist's views, and said the museum would have been better prepared to respond to the criticism; Bill Straus of the Anti-Defamation League's Phoenix chapter called it one-sided.",
+  "sources": [
+   "https://www.philanthropy.com/news/battling-a-holy-war/"
+  ],
+  "reason": "The article does not report a meeting. Author, year (28 June 2007), title and the donors who kept giving all confirmed. Boyce points, ProPublica and Hoodline figures hold. A former executive who is only a trustee, with no reported gift, may not meet the map's Fossil fuels rule (CHECKER.md: a former executive's estate does not count); the editor should confirm the flag."
+ },
+ {
+  "id": "heart-herning-herning",
+  "section": "FUNDING / Red flags",
+  "problems": [
+   "unsupported: 'could not be read here' (the 2023 report is a scanned PDF, readable as images)",
+   "missing named funders",
+   "tobacco flag left unchecked"
+  ],
+  "before": "No reporting found that names the 2023 funders; the 2023 annual report is posted as a PDF whose text could not be read here. No reporting found of a current tobacco-industry funder.",
+  "after": "The 2023 annual report (a scanned PDF, read as images) lists foundations that gave in 2023: A.P. Møller Fonden, Augustinus Fonden, Beckett-Fonden, Det Obelske Familiefond, ... plus Slots- og Kulturstyrelsen and Statens Kunstfond. New Red flags: tobacco money through Det Obelske Familiefond (set up 1956 from the C.W. Obel tobacco factory; C.W. Obel today owns more than 10 percent of Scandinavian Tobacco Group).",
+  "sources": [
+   "https://heartmus.dk/media/pwqd4zgr/a-rsrapport_2023.pdf",
+   "https://cwobel.dk/historie/?lang=en",
+   "https://lex.dk/Det_Obelske_Familiefond"
+  ],
+  "reason": "Rendered page 10 of the 2023 report and read the 'Fondsstøtte' list. Det Obelske Familiefond is the tobacco-linked funder (lex.dk, C.W. Obel's own site), current within five years, so the map's Tobacco flag is supported. Bottom line rewritten. 'In central Jutland' cut (not in the source). The amount of the Obel gift is not published."
+ },
+ {
+  "id": "het-concertgebouw-amsterdam",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'the orchestra is funded separately'",
+   "'No reporting found of a structural city subsidy' contradicted by the parliamentary answer",
+   "source 'could not be read' (it can be read)"
+  ],
+  "before": "No reporting found of a structural state or city subsidy for the hall itself; the orchestra is funded separately. ... The minister's written answer of 12 May 2026 on the hall's guidelines (ah-tk-20252026-1891) could not be read here.",
+  "after": "The Fondsen page thanks: VriendenLoterij, Ammodo, ... Zadelhoff Cultuur Fonds (stated by the space). MP Keijzer's written question of 30 March 2026 puts municipal subsidy at about 4 percent of the hall's income; Minister Letschert answered on 12 May 2026 that her ministry has no direct subsidy relationship with the hall. No reporting found of a state subsidy. New point under Chanukah red flag: the new guidelines let the hall bar artists involved in discrimination, violence or serious breaches of international law, including war crimes and genocide; the minister confirmed they exist.",
+  "sources": [
+   "https://zoek.officielebekendmakingen.nl/ah-tk-20252026-1891.pdf",
+   "https://www.concertgebouw.nl/fondsen",
+   "https://nos.nl/l/2588629"
+  ],
+  "reason": "The Tweede Kamer PDF has a text layer. The 4 percent is the MP's figure inside a question, labelled as such. The funder list was added from the hall's own page to satisfy 'name every funder'."
+ },
+ {
+  "id": "het-concertgebouw-amsterdam",
+  "section": "Red flags: tax arrangement / Chanukah",
+  "problems": [
+   "claim stronger than source: 'gift tax was not paid, with possible exposure'",
+   "misattributed: website job title and 'infringement' / injunction",
+   "FD attribution not on the page"
+  ],
+  "before": "gift tax, which can reach 40 percent, was not paid, with possible exposure of tens of millions of euros (NOS); lead cantor Shai Abramson, whom his own website calls Chief Cantor ... (NOS, NL Times); said it would seek an injunction (NL Times); sixty staff ... (NH Nieuws, citing Het Parool)",
+  "after": "The Belastingdienst considers that the foundation should not have passed gifts tax-free to the NV; gift tax can reach 40 percent, and NOS put the gifts and bequests at tens of millions of euros; NL Times: 'a visible representative' of the Israeli military; NOS: his website calls him Chief Cantor at official army occasions; foundation would file for summary proceedings (kort geding) (NL Times, NOS); quarter of payroll according to Het Parool (NH Nieuws)",
+  "sources": [
+   "https://nos.nl/l/2588629",
+   "https://nos.nl/l/2588928",
+   "https://nltimes.nl/2025/11/03/amsterdam-concertgebouw-cancels-chanukah-concert-singers-ties-israeli-army"
+  ],
+  "reason": "NL Times does not mention the website or an injunction; NOS gives the website claim and kort geding. The Joop piece (Marcel Kolder, 3 Nov 2025) matches. Report trimmed to 794 words after additions."
+ },
+ {
+  "id": "ica-miami",
+  "section": "OVERVIEW / Red flags (Witkoff)",
+  "problems": [
+   "unsupported: 'of Madrid'",
+   "'opened on 1 December 2017' (Cultured only says it opens then)",
+   "'Magic Box' credited to Cultured",
+   "criticism points not read; Hyperallergic summary overstated"
+  ],
+  "before": "Aranguren + Gallegos Arquitectos, of Madrid ... \"Magic Box\" ... it opened on 1 December 2017 (Cultured, Wikipedia); Raises suspicion that the museum is suppressing Palestinian history during Israel's attacks on Gaza, sourced to an anonymous tip.",
+  "after": "The Spanish firm Aranguren + Gallegos Arquitectos ... \"Magic Box\" (Wikipedia) ... due to open on 1 December 2017 (Cultured); Reports Art Against Displacement's claim, from an anonymous tip, that the portrait was removed for Said's Palestinian identity; the reason for the removal stays unexplained.",
+  "sources": [
+   "https://culturedmag.com/article/2017/11/27/ica-miami/",
+   "https://hyperallergic.com/876404/questions-remain-after-ica-miami-removes-portrait-of-edward-said/",
+   "https://en.wikipedia.org/wiki/Alex_Witkoff"
+  ],
+  "reason": "Hyperallergic (Valentina Di Liscia, 13 March 2024) reports the group's claim and says no motive is confirmed. The Witkoff points rest on Wikipedia and a Democracy Now segment; the NPR, New Yorker, CBS and New York Times pieces were not opened and the text now says so. Wikipedia calls Witkoff a trustee; the ICA About page lists him on the executive committee."
+ },
+ {
+  "id": "imma-dublin",
+  "section": "FUNDING / Overview",
+  "problems": [
+   "'text could not be read' (the 2024 statements are readable)",
+   "no amounts given although the source has them",
+   "'appears' wording"
+  ],
+  "before": "No reporting found of amounts for any sponsor; the 2024 and 2025 financial statements are posted as PDFs whose text could not be read here. ... Opening hours and admission were not given on the pages checked.",
+  "after": "In 2024 income was €11,666,300: government grants €8,439,658, net deferred pension funding €1,864,419, commercial activities €1,085,093 and sponsorship €213,616 (€278,880 in 2023) (IMMA financial statements 2024). Sponsorship is given only as a total. Admission is free (stated by the space).",
+  "sources": [
+   "https://imma.ie/wp-content/uploads/2025/11/Financial-Statement-2024.pdf",
+   "https://imma.ie/",
+   "https://my.uplift.ie/petitions/public-art-public-values-imma-must-divest"
+  ],
+  "reason": "The PDF has a text layer. The Uplift page confirms 500 signatures on 16 September 2025, the demands and the unnamed organiser; the BNP point is the petition's claim, not independently checked."
+ },
+ {
+  "id": "institut-du-monde-arabe-paris",
+  "section": "Red flags: Lang and Epstein",
+  "problems": [
+   "wrong order: 'resigned after Barrot summoned him'",
+   "misattributed: 'Reuters says'",
+   "'donor' should be patron, 'No charges' source",
+   "unsupported: 'travelled in Epstein's jet and car' (record watch; not in report)"
+  ],
+  "before": "Emails cited by AFP show a donor to the Institute writing in 2017 ...; Reuters says Lang corresponded with Epstein from 2012 to 2019; police had searched the Institute by 16 February (Reuters). No charges have been brought and Lang denies wrongdoing, citing \"naïveté\" (Brut); Lang resigned as president in February 2026 after Foreign Minister Jean-Noël Barrot summoned him (Euronews, Brut).",
+  "after": "Emails cited by AFP show Étienne Binant, an Institute patron, writing to Epstein in 2017 that Lang \"a personnellement insisté\" that Epstein come to his birthday ...; The files document exchanges from 2012 to 2019, while Lang was president from 2013 (The Citizen, Euronews); Euronews: daughter Caroline partnered with Epstein in 2016 and was named a €5 million beneficiary; police searched the Institute on 16 February (The Citizen). Nobody had been charged by 9 February (Brut); Euronews reported on 9 February that Lang had resigned after the revelations.",
+  "sources": [
+   "https://www.brut.media/fr/articles/affaire-epstein-caroline-et-jack-lang-vises-par-une-enquete-du-pnf-pour-blanchiment-de-fraude-fiscale",
+   "https://www.euronews.com/2026/02/09/former-french-culture-minister-quits-arab-world-institute-over-epstein-ties",
+   "https://www.thecitizen.co.tz/tanzania/news/international/french-police-raid-arab-world-institute-in-epstein-linked-probe-into-jack-lang-5361224"
+  ],
+  "reason": "Lang led the Institute from 2013 (Euronews, The Citizen) and the files show his exchanges with Epstein from 2012 to 2019, so the leadership link is documented: friendship, a 2017 birthday invitation, thanks for 'generosity', a car-ride request, and his daughter's 2016 company with Epstein. Euronews does not mention a jet or car travel, so the record's 'travelled in Epstein's jet' is not carried into the report. The Citizen does not name Reuters. No source reports Epstein money reaching the Institute. Red flag stays as a leadership link."
+ },
+ {
+  "id": "institut-du-monde-arabe-paris",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "'list of patrons could not be opened' (it can)",
+   "admission not given"
+  ],
+  "before": "No reporting found of sponsor amounts; the site's list of patrons could not be opened. ... Admission prices were not on the pages checked.",
+  "after": "The patrons and sponsors page thanks Honor Frost Foundation, Antoine Maamari, ... and shows logos for AFALULA, AFD, Arab Bank Switzerland, CMA CGM, Design Space AlUla and Fondation Jean-Luc Lagardère (stated by the space). No amounts are given. Museum admission is €10 for over-26s and the library is free.",
+  "sources": [
+   "https://www.imarabe.org/fr/ima-remercie-ses-mecenes-et-sponsors",
+   "https://www.imarabe.org/fr/horaires-tarifs",
+   "https://www.ccomptes.fr/fr/publications/linstitut-du-monde-arabe"
+  ],
+  "reason": "Cour des comptes (9 December 2024), TotalEnergies Foundation and L'Info Durable (6 October 2021) points all hold. AFALULA and Design Space AlUla are named without an editor ruling on a Gulf-state flag; the editor should look."
+ }
+]
