@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=244">
-  <script src="assets/config.js?v=244"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=254">
+  <script src="assets/config.js?v=254"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -203,7 +203,7 @@ return maplibregl$1;
             <h2 class="layers-section-title">Spaces on the map</h2>
             <div class="layers-key layers-tier-key">
               <span><i class="shape-dot" style="--marker-color:#9ae3e8"></i>Clean: a source is cited</span>
-              <span><i class="shape-square" style="--marker-color:#ff6119"></i>Flagged: a recorded reason</span>
+              <span><i class="shape-square" style="--marker-color:#e79a3a"></i>Flagged: a recorded reason</span>
               <span><i class="shape-triangle" style="--marker-color:#c8b85a"></i>Unverified</span>
             </div>
           </section>
@@ -784,19 +784,16 @@ return maplibregl$1;
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Share information -->
-                  <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('whistleblower')" class="whitespace-nowrap">Share information</button>
+                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Voice Toggle Button -->
-                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5" title="Auto-Voice: Speaks responses aloud (Click to mute)">
+                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5 is-on" title="Auto-Voice: Speaks responses aloud (Click to mute)">
                     <span id="curatorVoiceToggleIcon"></span>
                     <span id="curatorVoiceToggleLabel">Voice: ON</span>
                   </button>
-
-                  <!-- Listen Button -->
-                  <button id="curatorListenBtn" type="button" onclick="if (typeof window.speakCuratorBriefing === 'function') window.speakCuratorBriefing();" class="" title="Listen to curator briefing">Listen</button>
 
                   <!-- Upward Arrow Send Button -->
                   <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message">
@@ -7089,7 +7086,7 @@ return maplibregl$1;
       let layers = [];
       try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const ground = isGossipModeActive ? '#ff6119' : dark ? '#121212' : '#ffffff';
+      const ground = isGossipModeActive ? '#e79a3a' : dark ? '#121212' : '#ffffff';
       const line = isGossipModeActive ? '#000000' : dark ? '#f4f4f4' : '#161616';
       layers.forEach(l => {
         if (l.id && l.id.indexOf('xray') === 0) return; // the building view keeps its own colours
@@ -9909,11 +9906,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v244';
+    const ATLAS_RELEASE = 'culture-atlas-v254';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=244').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=254').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10235,7 +10232,7 @@ return maplibregl$1;
 
       // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode (yellow text there in gossip mode). Gossip mode never darkens it in light mode.
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const cardInk = cardDark ? (isGossipModeActive ? '#ffd600' : '#ffffff') : '#000000';
+      const cardInk = cardDark ? (isGossipModeActive ? '#e2f86c' : '#ffffff') : '#000000';
       ctx.fillStyle = cardDark ? '#2a2a2a' : '#ffffff';
       ctx.fillRect(cardX, cardY, cardW, cardH);
 
@@ -10325,7 +10322,7 @@ return maplibregl$1;
       const now = (typeof ts === 'number') ? ts : performance.now();
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#f4f4f4'), G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#ffd600' : '#ffffff'), G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#e2f86c' : '#f4f4f4'), G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : (isGossipModeActive ? '#e2f86c' : '#ffffff'), G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'square', U: 'triangle' };
         const TIER_SHAPE_SIZE = { circle: 3, square: 2.7, triangle: 3.3 };
@@ -10463,7 +10460,7 @@ return maplibregl$1;
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = G_GROUND;
         ctx.fill();
-        ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+        ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
         ctx.lineWidth = 0.8;
         ctx.stroke();
 
@@ -10521,7 +10518,7 @@ return maplibregl$1;
               }
               ctx.closePath();
               ctx.fill();
-              ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+              ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
               ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
               ctx.stroke();
             } else {
@@ -10574,7 +10571,7 @@ return maplibregl$1;
                     penDown = false;
                   }
                 }
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
                 ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
                 ctx.stroke();
               }
@@ -10595,7 +10592,9 @@ return maplibregl$1;
         // City and museum names sit on a flat block. The block takes the colour of the spaces it names:
         // cyan clean, orange flagged, mustard unverified (a city: the tier most of its spaces have).
         // Yellow when hovered or selected (white on yellow in gossip mode).
-        const TIER_FILL = { A: '#9ae3e8', B: '#ff6119' };
+        const TIER_FILL = { A: '#9ae3e8', B: '#e79a3a' };
+        // Dark theme: Carbon's teal 60, orange 60 and yellow 60 with white type (5:1 or better), in place of the pale fills with black type.
+        const TIER_FILL_DARK = { A: '#007d79', B: '#ba4e00' }, UNVERIFIED_FILL_DARK = '#8e6a00';
         const cityTierCache = {};
         const cityTier = (name) => {
           const k = (name || '').toLowerCase().trim();
@@ -10610,9 +10609,10 @@ return maplibregl$1;
           ctx.save();
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 28, h = 22;
-          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : '#ff6119') : (active ? '#ffd600' : (TIER_FILL[tier] || '#c8b85a'));
+          const darkLabel = !GLOBE_LIGHT && !active;
+          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffd600' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c8b85a')));
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
-          ctx.fillStyle = '#000000';
+          ctx.fillStyle = darkLabel ? '#ffffff' : '#000000';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(text, cx0, cy0 + 0.5);
@@ -10754,7 +10754,7 @@ return maplibregl$1;
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
@@ -10765,8 +10765,8 @@ return maplibregl$1;
 
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
-                if (isSelected) { ctx.fillStyle = '#ff6119'; ctx.fill(); }
-                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE;
+                if (isSelected) { ctx.fillStyle = '#e79a3a'; ctx.fill(); }
+                ctx.strokeStyle = (isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               }
@@ -10830,10 +10830,10 @@ return maplibregl$1;
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : (GLOBE_LIGHT ? '#007a78' : '#08bdba')) 
+                    ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : (GLOBE_LIGHT ? '#007a78' : '#08bdba')) 
                     : isHov
                     ? G_TEXT
-                    : ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_TEXT);
+                    : ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_TEXT);
                   ctx.fillText(c.name, pt.x, pt.y + 0.5);
                 }
               }
@@ -10954,7 +10954,7 @@ return maplibregl$1;
           const pinShape = TIER_SHAPE[d.inst.tier] || 'triangle';
           if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1)); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR, 0, Math.PI * 2); }
           ctx.strokeStyle = isHov 
-            ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#ffd600' : G_LINE)
+            ? ((isGossipModeActive && !GLOBE_LIGHT) ? '#e2f86c' : G_LINE)
             : (isVisualCritiqueOnly && hasVc)
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
@@ -11025,7 +11025,7 @@ return maplibregl$1;
 
               ctx.beginPath();
               ctx.arc(hPt.x, hPt.y, 6.5, 0, Math.PI * 2);
-              ctx.fillStyle = '#ff6119';
+              ctx.fillStyle = '#e79a3a';
               ctx.strokeStyle = '#ffffff';
               ctx.lineWidth = 0.8;
               ctx.fill();
@@ -11075,7 +11075,7 @@ return maplibregl$1;
               };
 
               // Flat block: cobalt, or yellow in gossip mode. No rounding, no outline, no shadow.
-              ctx.fillStyle = isGossipModeActive ? '#ff6119' : '#0046ff';
+              ctx.fillStyle = isGossipModeActive ? '#e79a3a' : '#0046ff';
               ctx.fillRect(cardX, cardY, cardW, cardH);
 
               // Line 1: city name, in the roman
@@ -11951,15 +11951,6 @@ return maplibregl$1;
       }
     }
     window.toggleGlobeExpand = toggleGlobeExpand;
-
-    function speakCuratorBriefing() {
-      const hero = document.getElementById('curatorHeroGreeting');
-      const speech = hero ? hero.getAttribute('data-speech') : 'Welcome to Culture Atlas.';
-      if (typeof speakCuratorText === 'function') {
-        speakCuratorText(speech);
-      }
-    }
-    window.speakCuratorBriefing = speakCuratorBriefing;
 
     function deselectInstitution() {
       if (typeof window.atlasHqClose === 'function') window.atlasHqClose();   // a funder's record in the Details tab gives way to the space
@@ -15997,10 +15988,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         placeholder: 'The report service is not configured. Your report will not be saved.'
       };
 
+    // Share information is a toggle like the Details and AI Chat tabs: on while the note is open, when it reads Back to chat and pressing it returns to the chat.
+    function setChatShareOn(on) {
+      const b = document.getElementById('chatShareBtn');
+      if (!b) return;
+      b.classList.toggle('is-on', on);
+      b.textContent = on ? 'Back to chat' : 'Share information';
+    }
+    function toggleChatShare() {
+      if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
+    }
+
     function enterChatInputMode(kindOrTopic = '') {
       // Share information, a record's link and the old information and gossip links all open the whistleblower note.
       const defaultTopic = ['information', 'gossip', 'whistleblower'].includes(kindOrTopic) ? '' : kindOrTopic;
       isChatInputMode = true;
+      setChatShareOn(true);
       // The conversation so far steps aside while a note is written; it comes back with Back to chat.
       document.querySelectorAll('#curatorMessages > *').forEach(m => m.classList.add('before-note'));
 
@@ -16110,6 +16113,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     function exitChatInputMode() {
       isChatInputMode = false;
+      setChatShareOn(false);
       document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
 
       // 1. Deactivate whole-chat full-width mode
@@ -16231,6 +16235,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.triggerInChatContributeFlow = triggerInChatContributeFlow;
     window.enterChatInputMode = enterChatInputMode;
     window.exitChatInputMode = exitChatInputMode;
+    window.toggleChatShare = toggleChatShare;
 
     async function processInChatWhistleblowerSubmission(text) {
       const q = (text || '').trim();
@@ -16442,7 +16447,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (curatorAutoVoiceEnabled) {
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '';
         if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: ON';
-        curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0';
+        curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0 is-on';
         curatorVoiceToggleBtn.title = 'Auto-Voice: Speaks responses aloud (Click to mute)';
         const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.textContent = 'Voice: On';
       } else {
@@ -19144,9 +19149,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=244"></script>
-<script src="assets/layers.js?v=244"></script>
-<script src="assets/hq-detail.js?v=244"></script>
-<script src="assets/bubbles.js?v=244" defer></script>
+<script src="assets/typeset.js?v=254"></script>
+<script src="assets/layers.js?v=254"></script>
+<script src="assets/hq-detail.js?v=254"></script>
+<script src="assets/bubbles.js?v=254" defer></script>
 </body>
 </html>
