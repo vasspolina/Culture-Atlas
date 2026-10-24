@@ -265,3 +265,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - museum-of-fine-arts-budapest-hungarian-national-gallery: MVM Group sponsor; Szerencsejáték's betting arm not sourced (left out).
 - museum-of-contemporary-art-belgrade: government replaced the acting director in January 2020; board chair resigned.
 - museo-reina-sof-a: la Caixa holding Criteria is Naturgy's largest shareholder; a 2026 parliamentary inventory demand.
+
+## d015 slop check (47 fixes; every report changed)
+- Mansudae: the UN Security Council listed "Mansudae Overseas Project Group of Companies", alias Mansudae Art Studio, on 5 August 2017; the EU lists it in Implementing Regulation 2017/1457 of 10 August 2017; US Treasury designated the company on 2 December 2016 under Executive Order 13722 (the record had 7 December). The UK listing rests only on OpenSanctions and was not used. For the Beijing gallery (mansudae-art-museum-mansudae-art-studio-gallery-798-beijing) the sanctions red flag was kept, but no source shows a listing of the gallery or its operator Ji Zhengtai: remove that heading if the flag should apply only where the entity itself is listed.
+- mariupol-drama-theatre: the named body is the Donetsk People's Republic (OFAC listing 16 July 2014, UK 25 July 2014, EU 25 July 2014); no opened page shows the DNR paid for the rebuild. Black Sea News is an aggregator; the UK listing has only that source.
+- memorial-acte: audit and Parquet national financier item stays: Cour des comptes request 6 Oct 2023, regional audit chamber report 20 Nov 2023, searches 22 April 2024.
+- mathaf-arab-museum-of-modern-art-doha: Gulf state body and state censorship kept (Eviner removal, show opened 3 Nov 2024, Art Newspaper 11 Dec 2024; the 2013 Abdessemed film); the labour heading moved to Wider context (no page ties a labour event to Mathaf).
+- mauritshuis-the-hague: the Shell item is no longer a red flag (the 2018 protest and arrests were at the Van Gogh Museum); facts moved to Funding. Site returned 403.
+- masp-são-paulo: "Ultra" on the partner page has no year and is not identified as Ultrapar; the Fossil fuels red flag is kept with those limits and needs a dated sponsor document.
+- maxxi: the 2025 accounts list a MED-OR Italian Foundation contribution for the exhibition Mediterranea (17 May to 31 August 2025), with Telespazio and e-GEOS; no Leonardo entry. No amount given.
+- madison-museum-of-contemporary-art-madison: a state lottery (Wisconsin Lottery) is not a Gambling flag; Ho-Chunk Gaming Madison remains.
