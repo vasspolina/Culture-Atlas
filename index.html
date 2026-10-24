@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=243">
-  <script src="assets/config.js?v=243"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=244">
+  <script src="assets/config.js?v=244"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9909,11 +9909,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v243';
+    const ATLAS_RELEASE = 'culture-atlas-v244';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=243').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=244').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11406,6 +11406,15 @@ return maplibregl$1;
     // A watch note goes into the Funding block when it is about money or a sponsor; otherwise it stays under the title.
     const MONEY_WORDS = /fund|sponsor|donor|grant|budget|money|[$€£¥]|\bM\b|million|fortune|foundation|trustee|board|gift|endow|subsid|revenue|income|tax|levy|corporate|bank|wealth|patron|financ|paid|pays|heir|family|partner|supporter|casino|oil|gas\b|energy|dropped|ended|removed|protest|boycott|campaign|sackler|\bBP\b/i;
     function watchIsAboutMoney(s) { return MONEY_WORDS.test(String(s || '')); }
+    // A watch line is gossip when it names a funder or person with a controversy, a penalty, a sanction, a protest or a flagged
+    // industry, past or present (notes/gossip-criteria.md). A clause that says what was not found, or what a funder is not, is a
+    // clean result and does not count: "not an arms maker", "No flagged funder or protest found". "No longer" keeps a past tie.
+    const WATCH_GOSSIP = /\b(names? to know|fines?d?|penalt\w*|sanction\w*|settle(?:d|ment)|sued|lawsuits?|court(?! of audit)|convict\w*|charged|indict\w*|guilty|brib\w*|kickbacks?|fraud\w*|launder\w*|corrupt\w*|dumping|violations?|scandals?|controvers\w*|protest(?! movement)\w*|boycott\w*|campaign(?!\s+(?:donors?|gifts?|goals?))\w*|petition\w*|appeal urged|strikes?|resign\w*|dismiss\w*|ousted|fired|withdrew|sacked|picket\w*|sit-ins?|pulled|dropped|drop it|under pressure|cancell?ed|apologi[sz]\w*|exclusions?|kanders|baillie gifford|bloomberg philanthropies|ruling[- ]family|walkouts?|alleg\w*|accus\w*|investigat\w*|probe|impeach\w*|complaints?|threat\w*|confiscat\w*|demanded|epstein|sackler|purdue|opioids?|oxycontin|arms (?:maker|manufacturer|dealer|firm|company|group|trade|exporter|industry)|weapons?|munitions?|missiles?|defen[cs]e (?:contractor|group|firm|company|maker)|fossil|oil (?:and gas|company|firm|group|major|money|giant|fortune|trader)|petro\w*|tobacco|cigarettes?|casinos?|gambling|betting|lottery|mining (?:company|firm|group|giant|disaster)|prisons?|detention|forced labou?r|slave\w*|exploit\w*|censor\w*|human rights|abuse\w*|harass\w*|misconduct|disputes?|disputed|backlash|critics?|removal|removed|criticis\w*|condemn\w*|divest\w*|oligarch\w*|bankrupt\w*|scrutiny|gulf state|aramco|bp|shell plc|exxon\w*|chevron|totalenergies|equinor|gazprom|rosneft|lukoil|glencore|rio tinto|bae systems|bae|lockheed|raytheon|rheinmetall|philip morris|altria|blackrock|vale)\b/i;
+    const WATCH_CLEAN = /\b(?:not|no(?! longer)|nor|none|nothing|never|without)\b/i;
+    function watchIsGossip(s) {
+      return String(s || '').split(/[.;]\s+|;\s*|,\s+(?=(?:but|though|although|while|yet|not)\b)|\s+but\s+/i)
+        .some(c => !WATCH_CLEAN.test(c) && WATCH_GOSSIP.test(c));
+    }
     // A block of facts set as a table (the user's reference, 19 Oct 2026): its name on a line, a rule, then one row per
     // fact, the label in the left column and the value in the right, all at the text size, and a rule to close it.
     // rows: [label, html] pairs; a row with no value is left out. Values are passed as HTML, already escaped.
@@ -12539,7 +12548,6 @@ return maplibregl$1;
         return out;
       };
       const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.join(', ')}.` : ''; };
-      const flagged = inst.tier === 'B' || !!inst.why_flagged || (inst.flags || []).length > 0;
       if (gossip) {
         const c = ((inst.gossip_data || {}).real_cases || [])[0];
         if (c && (c.title || (c.facts || []).length)) return { text: firstSentence((c.facts || [])[0] || c.title), src: src(hosts((c.sources || []).map(x => x && x.url)), 1) };
@@ -12547,7 +12555,9 @@ return maplibregl$1;
         if (e && (e.summary || e.person)) return { text: firstSentence(e.summary ? `${e.person && !String(e.summary).startsWith(e.person) ? e.person + ': ' : ''}${e.summary}` : e.person), src: src(hosts(e.sources), 1) };
         const w = (inst.wikileaks_records || [])[0];
         if (w && w.what_shows) return { text: firstSentence(`${w.date ? w.date + ': ' : ''}${w.what_shows}`), src: src(hosts(w.sources), 1) };
-        if (flagged && inst.watch && !/\b(founded|opened|home to|known for|topped by|housed in)\b|\bnot (?:at|here)\b/i.test(inst.watch)) return { text: firstSentence(inst.watch), src: src(hosts(inst.sources), 2) };
+        // Flagged or not, a watch line is gossip by the shared test; a clean result is not. full: a past tie is stated with what
+        // the record says now ("No current gambling funding found"), so one space's answer prints a short line whole.
+        if (watchIsGossip(inst.watch)) return { text: firstSentence(inst.watch), full: inst.watch.length <= 280 ? inst.watch.trim() : '', src: src(hosts(inst.sources), 2) };
         const why = String(inst.why_flagged || '').split(/(?<=[.!?])\s+(?=[A-Z])/).filter(x => !/\bnot (?:at|here)\b/i.test(x)).join(' ');
         if (why) return { text: firstSentence(`${(inst.flags || []).length ? inst.flags.join(', ') + ': ' : ''}${why}`), src: src(hosts(inst.sources), 2) };
         const of = typeof inst.other_findings === 'string' ? inst.other_findings.split(' | ')[0] : '';
@@ -13529,6 +13539,7 @@ return maplibregl$1;
   Governance Classification: ${tierName(i)}
   Governance & Ethical Safeguard: ${i.governance_details || i.ethical_safeguard || 'not stated'}
   Recorded Watch / Flag: ${i.why_flagged || i.watch || 'not stated'}
+  Watch Line: ${i.watch ? `${i.watch} (Watch Line Is Gossip: ${watchIsGossip(i.watch) ? 'yes' : 'no, a clean result or a description'})` : 'none recorded'}
   Recorded Flags: ${(i.flags || []).join(', ') || 'none recorded'}
   Statutory Audit Dossier: ${i.audit_dossier_url || ''}
   Public Funding: ${i.funding || 'not stated'}
@@ -13813,6 +13824,8 @@ return maplibregl$1;
       return turns;
     }
 
+    // A request for gossip, by the words used: the chat then prints the gossip itself and nothing around it.
+    const GOSSIP_ASK = /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i;
     async function queryAI(userPrompt, webIntel = null) {
       const activeKey = aiApiKey || _SYS_KEY;
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
@@ -13889,13 +13902,12 @@ return maplibregl$1;
       }
 
       // 4. Assemble XML Structured User Prompt with Explicit Constraints and Investigative Journalism Directives
-      const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || 
-                           /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i.test(userPrompt);
+      const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || GOSSIP_ASK.test(userPrompt);
       const gossipDirective = isGossipMode
-        ? `\n\n<gossip_mode>\nGossip mode is on. Lead with what is reported: the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, label unverified platform accounts as unverified sentiment, and separate allegation from documented fact. If the supplied records hold nothing reported about a space, say that in one sentence and stop. Do not infer wrongdoing, pad with generalities, or force a fixed section template.\n</gossip_mode>`
+        ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself: what the supplied records report about the space, which is a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or the official URL. If the supplied records report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, say so once and direct the visitor to the official URL when available.\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a requested detail is absent, say so once and direct the visitor to the official URL when available.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -14090,7 +14102,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         queryAI.lastDuration = elapsedSec;
 
         if (rawText) {
-          return renderCuratorMarkdown(rawText);
+          // A gossip request answers with the gossip alone. NO_GOSSIP is the model's word for "the records report nothing", which the chat says in its own plain sentence.
+          if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing is reported for this space in the records.</p>', gossip: false, none: true };
+          return isGossipMode ? { html: renderCuratorMarkdown(rawText), gossip: true } : renderCuratorMarkdown(rawText);
         }
       } catch (err) {
         console.warn('Live AI query error, falling back to offline knowledge engine:', err);
@@ -15123,6 +15137,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             if (aiRes) {
               curatorTyping.classList.add('hidden');
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
+              if (aiRes.gossip || aiRes.none) {
+                // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
+                appendCuratorMessage(aiRes.none ? aiHtml : `<div class="space-y-3" data-gossip="ai">${aiHtml}<p class="no-indent ai-note">AI-written from archival records. Unverified.</p></div>`, []);
+                return true;
+              }
               let thinkingData = null;
               const thoughtText = (aiRes && aiRes.thinking) || (typeof queryAI !== 'undefined' && queryAI.lastThinking) || '';
               if (thoughtText) {
@@ -15154,7 +15173,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (asks(/\b(what (do )?(employees|staff|workers) (say|report|think)|employee (reviews?|accounts?)|staff (reviews?|accounts?)|glassdoor|kununu|working conditions|work(ing)? (there|here|at))\b/)) {
         const own = target ? ((target.gossip_data || {}).accounts || []).length : 0;
         const note = target ? `<p>${formatInstLink(target)} carries ${own ? `${own} such ${own === 1 ? 'account' : 'accounts'}, shown in Gossip mode` : 'no such account'}.</p>` : '';
-        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])]);
+        // The summary names spaces and reports conduct from review platforms, so it is gossip and gets the balloon.
+        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])], true);
         return;
       }
       // The critical frames (data/research_attach/institutional_critiques.json): quotations with author, title, publication and date, one frame per museum type.
@@ -15251,9 +15271,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         listOf(ALL_INSTITUTIONS.filter(i => documentedRecordHtml(i)), 'Spaces with reported items in the records. Open one to see each item with its source. None is independently verified:', true);
         return;
       }
-      if (target && (isGossipModeActive || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
+      if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
         const reported = documentedRecordHtml(target);
+        // Asked for gossip: the reported items alone, no title line, rating or source list around them.
+        if (isGossipModeActive || GOSSIP_ASK.test(query)) {
+          // A record with no reported items can still carry a watch flag or a flagged funder: that line is its gossip.
+          const f = reported ? null : recordFact(target, true);
+          if (reported) answer(reported, [], true);
+          else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}</p>`, [], true);
+          else answer('<p>Nothing is reported for this space in the records.</p>', []);
+          return;
+        }
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing is reported for this space in the records.</p>'}${sourcesHtml(target)}`);
         return;
       }
@@ -19113,9 +19142,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=243"></script>
-<script src="assets/layers.js?v=243"></script>
-<script src="assets/hq-detail.js?v=243"></script>
-<script src="assets/bubbles.js?v=243" defer></script>
+<script src="assets/typeset.js?v=244"></script>
+<script src="assets/layers.js?v=244"></script>
+<script src="assets/hq-detail.js?v=244"></script>
+<script src="assets/bubbles.js?v=244" defer></script>
 </body>
 </html>
