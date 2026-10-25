@@ -692,3 +692,14 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - henry-art-gallery: the ProPublica page for EIN 91-6001537 returned 404 on 25 Oct 2026; the Henry Gallery Association's EIN is 23-7052537; the funders page carries no date.
 - instituto-tunga-rio-de-janeiro: the site shows only "Em manutenção"; Rouanet criticism attributed to unnamed critics in Wikipedia.
 - institute-of-modern-art: the Crikey item (3 Feb 2006).
+
+## d038 (research notes, before its slop check)
+- lace-los-angeles: the record's ProPublica link (EIN 953258525) returns 404; the correct EIN is 95-3397305; funders: Warhol $80k over 2 years (2015), Ruth Foundation $150k over 3 years, Teiger, Getty (PST 2024), California Arts Council $14.4k, MacArthur 1994 and 1995.
+- lenbachhaus: Deutsche Bank's $150 million NY DFS penalty (7 July 2020); its Munich foundation funds a 2026 project; gift amounts are in non-public council sessions.
+- le-consortium: leconsortium.fr now redirects to consortiummuseum.com (the centre calls itself Consortium Museum).
+- lismore-castle-arts: lismorecastlearts.com does not resolve (the live site is .ie); Arts Council 40,000 euros (Sept 2026).
+- macaal: Euronews says Othman Lazraq set up Fondation Alliances in 2009, Art Basel says his parents did; the Lazraq family property company's trading halt (Financial Afrik 2015).
+- lalit-kala-akademi: the ministry's April 2015 takeover notice (via Shabdankan); The Wire, ThePrint and The Hindu blocked.
+- lusaka-contemporary-art-centre-lucac: no official website found (lucac.org does not resolve).
+- leopold-museum: federal subsidy more than 4.3 million euros a year (2018 parliamentary motion).
+- lugar-a-dudas-cali: foundation-funded in the past (Prince Claus Fund, Hivos, DOEN, Mondriaan Fund, Avina, Daros); now runs on savings.
