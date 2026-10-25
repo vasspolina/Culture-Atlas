@@ -703,3 +703,14 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - lusaka-contemporary-art-centre-lucac: no official website found (lucac.org does not resolve).
 - leopold-museum: federal subsidy more than 4.3 million euros a year (2018 parliamentary motion).
 - lugar-a-dudas-cali: foundation-funded in the past (Prince Claus Fund, Hivos, DOEN, Mondriaan Fund, Avina, Daros); now runs on savings.
+
+## d037 slop check (101 entries; every report changed)
+- kunsthalle-basel: the SVP demand moved from Red flags to Wider context (date, party and body stated; no cut found; Swissinfo English 20 Nov 2023, German 23 Nov); the 32/30/22/8% budget split is now verified: the canton's proposal of 13 Sept 2023 (Grand Council PDF) asks CHF 950,000 a year for 2024 to 2027; model budget: canton 32%, third parties 30% (about CHF 660,000 a year), property 22%, members about 8%, other income about 8%; the Kunsthalle, not the Kunstverein, refused to reverse the appointment.
+- kunsthalle-wien: stays a Red flag: a panel acting for the city rejected all 20 applicants and the city councillor answered; ArtReview 23 Dec 2022; the L'Internationale letter 10 Jan 2023 (advocacy); Hyperallergic 23 Jan 2023; ORF Wien (2011) states plans as plans and does not say the leave was paid; Falter confirms the proceedings were discontinued.
+- kunsthalle-mannheim: The Art Newspaper: EUR 68M cost, EUR 50M from the Hector Foundation II, EUR 10M from the city, the rest from unnamed sponsors; the plans met resistance at first, including two petitions to the regional parliament.
+- kingston-creative: IDB: the Gleaner (2026) says US$1.3M; the Observer (2024) and Kingston Creative's own 2023 annual report say US$1.2M; the Bank of Jamaica pledge ($15M over three years) appears only in the Gleaner (2026); the Gleaner article of 24 June 2025 would not load.
+- kampala-art-biennale: the TotalEnergies Foundation page says it chose to support the 2018 mentoring programme (35 young artists, ten days); no amount or years; stays under Funding.
+- kettle-s-yard: the 44% figure is on the Jim and Helen Ede Fund page; the University's philanthropy page says "around 45%"; the footer shows Research England and Cambridge City Council logos.
+- kr-ller-m-ller-museum: VriendenLoterij a funder since 1988 (the museum's own 40% player-share wording).
+- ker-thiossane-dakar: its own site is down; nothing after the 2009 EU grant carries an amount.
+- l-appartement-22-rabat: no funder list anywhere; the Prince Claus Fund claim not confirmed as a grant to the space.
