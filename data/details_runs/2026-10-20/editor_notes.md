@@ -803,3 +803,10 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Swiss Institute: Blavatnik (2020, 2021) and Bloomberg (2018, 2019) only; no flag. ProPublica figures confirmed: revenue $4,198,232 (2025), net assets minus $248,650.
 - TANK Shanghai: no page shows West Bund Group evicting tenants; the report states only what the pages say.
 - Tainan, Stroom, Temple Bar: accounts PDFs did not open; no budget figures verified (the record's Tainan NT$201M still unverified).
+
+## d044 (after its slop check)
+- Texaf Bilembo: no TotalEnergies on the "Qui sommes-nous" page (it lists the European Union); the only trace is a home-page logo labelled "UE" that links to totalenergies.cd. Stated as an unquantified logo listing; no Fossil fuels flag.
+- The MAC: capital funders on the supporters page come from logo file names only, so they are not named. Auditor's going-concern material uncertainty (year to March 2025) is quoted.
+- The Model: the EUR 10,000 grant has no named fund in the article. The ERDF figure appears as EUR 2.4M and EUR 2.9M in Wikipedia.
+- Thapong: Daily News pages (expired certificate) cannot be checked; the record's P2.2M ministry sum is not used; Mmegi (30 Oct 2013) gives ministry P1.5M and DTC P654,908.
+- The Muse Multi Studios: no amounts exist anywhere. The Renaissance Society: Sacramento State removed (no opened page mentions it).
