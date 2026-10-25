@@ -839,3 +839,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - arete-foundation-for-arts-and-culture-tripoli: funder list rests on one MERIP interview (Khaled Mattawa, 17 Nov 2021) and the AFAC grantee page.
 - art-gallery-of-ballarat-ballarat: the original critical opinion piece (The Courier, 4 Jan 2022) was not opened; only the director's reply (25 Jan 2022) is cited.
 - armenian-center-for-contemporary-experimental-art-accea-npak-yerevan: founding year 1992 (About page, Mirror-Spectator, Wikipedia) versus 1995 (Edward Balassanian's biography page).
+
+## d047 (research and slop check)
+- almaty-museum-of-arts-almaty: ICIJ's page does not allege wrongdoing by Halyk Bank itself (it calls Halyk "majority-owned by Timur Kulibayev" in a caption; its concerns are the TenizService contracts); Kulibayev was not charged in the 2017 Italian case; the item is Wider context, not a flag. Halyk as lead partner since 5 March 2026 is on the museum's announcement. The Bloomberg and Wikipedia cost figures were not re-opened.
+- alternative-space-loop-seoul: the protest flag stays (K-ARTNOW, "A Team", 23 Dec 2025: the questionnaire was addressed to LOOP). The record's Arts Council Korea and Seoul funding is left out (not confirmed).
+- alula-arts-cultural-oasis: Gulf state body flag kept (RCU, chaired by the Crown Prince; Arab News 28 April 2021, 2 billion dollars Saudi seed funding; Desert X AlUla organised with the RCU). Protest flag: Ruscha, Lipschutz and Milanovich resigned from the board (Hyperallergic, 8 Oct 2019); MaddocksBrown Foundation (about 13,000 dollars since 2017) withdrew on 17 Oct 2019, no reason quoted from the foundation. The name "AlUla Arts & Cultural Oasis" is absent from the visitor site.
+- amorepacific-museum-of-art-seoul: Korea Times body prints both 96 million won and 9.6 billion won for the 2020 fines.
+- apexart-new-york: the record's founder endowment is not confirmed and is left out. Contributions about 99% of revenue; 2025 revenue 668,067 dollars, deficit 26,617 dollars.
+- am-qattan-foundation-ramallah: the record's Drosos, Taawon, Enabel, Save the Children, Arts Council England, Art Fund and Barclays funding is not confirmed and is left out.
+- arab-image-foundation-beirut: the two Mellon grants (560,000 dollars from 2010; 440,000 dollars from 2014) went to the University of Delaware, with the foundation named as partner. The record's Ford and AFAC funding is not confirmed.
