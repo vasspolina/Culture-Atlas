@@ -1984,8 +1984,12 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-media{display:block;width:100%;max-width:20em;height:9em;object-fit:cover;margin:var(--H) 0 0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-action{margin-top:var(--H)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list.review-list{list-style:none}
+/* On a phone the rows keep their two columns, the title and what it comes to on the left and the points on the right, with the rule between rows
+   (user, 25 Oct 2026, after the licence page's mobile view). The gap is tighter than on the desktop but still wide enough to hang a quotation mark in. */
 @container (max-width:34em){
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr);row-gap:var(--H);align-items:start}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{column-gap:calc(1.5 * var(--H));padding:var(--L) 0 calc(1.5 * var(--L))}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-title{text-wrap:pretty;hyphens:manual}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-action{white-space:normal;text-align:left}
 }
 /* The chat's dock buttons take the displaay.net button row (25 Oct 2026): an outlined button with a 12px radius and a 1.5px ink line, no fill; the one that is on (Voice, or Back to chat once a note is open) is a solid blue pill. The note's own Send for review block keeps its design. Same 44px height as the header (var(--bar)) and the same large type. Desktop only; the phone's composer keeps its plain tap targets. */
 @media (min-width:768px){
