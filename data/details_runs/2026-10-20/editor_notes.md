@@ -975,3 +975,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - fundació-antoni-tàpies-barcelona: published subsidies 1,414,055 euros (2021) to 2,757,406 (2025); the 2024 rename to Museu Tapies cites Bonart (2 July 2024) and Wikipedia.
 - fries-museum-leeuwarden: director Kris Callens's departure is limited to the museum's quoted statement in VRT NWS (Jani Lambrechts, 21 March 2025).
 - fresh-milk-art-platform-st-george: 2024 accounts: revenue BBD 396,128 of which grants 383,333; Mellon grant 350,000 dollars.
+
+## d065 (research and slop check)
+- haus-der-kulturen-der-welt-hkw: State censorship or punishment flag kept: the BKM funds HKW (German and English Wikipedia; hkw.de partner page did not open). Minister Weimer called on the HKW director to intervene; the concert planned for 7 Oct 2025 was cancelled in a statement announced 29 Sept 2025 signed by Boehmermann, his group Royale and "HKW as venue"; it does not say which party decided or name Weimer, so no causation is claimed (Juedische Allgemeine, dpa, 29 Sept 2025). The 2022 BDS accusation (Ron Prosor and Felix Klein, Funke papers, 28 Oct 2022) is Wider context; Claudia Roth defended the appointment.
+- goma-glasgow: no flag: Bloomberg Philanthropies is on Glasgow Life's 2025/26 supporters list with no amount; the May 2026 letter (The New Arab, 29 May 2026) names UK theatres, not Glasgow Life or GoMA: Wider context with the connection stated. Apollo (Conrad Landin, 28 June 2023) criticises the council and Glasgow Life, not GoMA.
+- grand-palais-paris: 288 million euros state, 150 million euros loan, Chanel 25 million for the renovation (The Art Newspaper, Gareth Harris, 13 Feb 2018) and 30 million for 2024 to 2028 (Numero, Juan Luca Wick, 11 Sept 2024).
+- green-papaya-art-projects-manila: the Criticism section is deleted (the only item was the group's own 4A Papers essay, Oct 2021); Japan Foundation Manila approved early Aug 2020 (project launched 14 Aug 2020); Goethe-Institut mid-Sept 2020; greenpapaya.art itself did not load.
+- hakone-open-air-museum-hakone: foundation dates 6 Sept 1968 and 1 Aug 1969; Japanese Wikipedia says 6 Sept 1969.
+- halle-fuer-kunst-steiermark-graz: Kronen Zeitung (Christoph Hartner, undated): Land +142,000 to 500,000 euros, Bund 140,000, Stadt 102,000; no year given.
+- hara-museum-arc-shibukawa: eight corporate supporting members as of November 2021; no flag.
