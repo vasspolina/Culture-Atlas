@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=273">
-  <script src="assets/config.js?v=273"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=274">
+  <script src="assets/config.js?v=274"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -759,15 +759,17 @@ return maplibregl$1;
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
               <!-- The submission form of the note screen (shown only while a note is written) -->
               <div id="noteFormFields">
-                <label for="noteInstitution">Institution</label>
-                <input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space">
+                <h3 id="noteFormTitle">Share information</h3>
+                <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
+                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space"></label>
                 <datalist id="noteInstitutionList"></datalist>
-                <fieldset><legend>Rating, optional</legend><div class="review-stars-input"><label class="review-star"><input type="radio" name="note-rating" value="1"><span aria-hidden="true">★</span><span class="sr-only">1 star</span></label><label class="review-star"><input type="radio" name="note-rating" value="2"><span aria-hidden="true">★</span><span class="sr-only">2 stars</span></label><label class="review-star"><input type="radio" name="note-rating" value="3"><span aria-hidden="true">★</span><span class="sr-only">3 stars</span></label><label class="review-star"><input type="radio" name="note-rating" value="4"><span aria-hidden="true">★</span><span class="sr-only">4 stars</span></label><label class="review-star"><input type="radio" name="note-rating" value="5"><span aria-hidden="true">★</span><span class="sr-only">5 stars</span></label></div> <button type="button" id="noteClearRating" class="review-clear" hidden>Clear rating</button></fieldset>
-                <label for="noteAuthor">Name shown, optional</label>
-                <input id="noteAuthor" type="text" maxlength="40" autocomplete="off" placeholder="Whistleblower">
-                <label for="workInput">Your note</label>
+                <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" placeholder="Whistleblower"></label>
               </div>
-              <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+              <div id="noteInputBlock">
+                <label id="noteInputLabel" for="workInput">Your note</label>
+                <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+              </div>
+              <div id="noteAckRow"><label class="nf-check"><input type="checkbox" id="noteAck"><span>I have left out my name and anything that identifies me.*</span></label></div>
               <p id="noteFormStatus" role="status" aria-live="polite"></p>
               
               <!-- Bottom Toolbar -->
@@ -9889,11 +9891,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v273';
+    const ATLAS_RELEASE = 'culture-atlas-v274';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=273').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=274').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11631,12 +11633,11 @@ return maplibregl$1;
     }
     // Whistleblower reviews, set out like the reviews on a Google Maps place and shown under the record they are about.
     // They come from the report API (server/), one request per place, approved reviews only, and are written only with
-    // the form on the note screen (Share information). Nothing is kept in this browser. A review may carry stars, but a rating is never required.
+    // the form on the note screen (Share information). Nothing is kept in this browser. A review has no rating.
     let dossierInst = null;
     const ATLAS_REPORT_API_URL = (window.ATLAS_REPORT_API_URL || '').replace(/\/+$/, '');
     const PLACE_REVIEWS = new Map();   // place id -> an array of reviews, or 'loading', or 'failed'
     const REVIEW_LIMITS = { min: 10, max: 2000, name: 40 };
-    const reviewStars = (n) => `<span class="review-stars" role="img" aria-label="${n} out of 5 stars">${'★'.repeat(n)}${'☆'.repeat(5 - n)}</span>`;
     const reviewDate = (iso) => {
       const d = new Date(iso);
       return Number.isNaN(d.getTime()) ? null : { iso: d.toISOString().slice(0, 10), text: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) };
@@ -11646,12 +11647,7 @@ return maplibregl$1;
       if (state === 'failed') return '<p class="no-indent">The reviews could not be loaded.</p>';
       if (!Array.isArray(state)) return '<p class="no-indent">Loading reviews…</p>';
       if (!state.length) return '<p class="no-indent">No reviews yet.</p>';
-      const rated = state.filter(r => Number.isInteger(r.rating));
-      const average = rated.length ? rated.reduce((sum, r) => sum + r.rating, 0) / rated.length : 0;
-      const summary = rated.length
-        ? `<div class="review-summary"><span class="review-average">${average.toFixed(1)}</span>${reviewStars(Math.round(average))}<span class="meta">${rated.length} ${rated.length === 1 ? 'rating' : 'ratings'}</span></div>`
-        : '';
-      return `${summary}<h4 class="kicker review-count">${state.length} ${state.length === 1 ? 'review' : 'reviews'}</h4>${state.map(r => {
+      return `<h4 class="kicker review-count">${state.length} ${state.length === 1 ? 'review' : 'reviews'}</h4>${state.map(r => {
         const label = (r.authorLabel || '').trim() || 'Whistleblower';
         const d = reviewDate(r.createdAt);
         return `<article class="review">
@@ -11659,7 +11655,6 @@ return maplibregl$1;
             <span class="review-avatar" aria-hidden="true">${escapeHtml(label.charAt(0).toUpperCase())}</span>
             <div><span class="review-name">${escapeHtml(label)}</span>${d ? `<time class="review-date" datetime="${d.iso}">${d.text}</time>` : ''}</div>
           </div>
-          ${Number.isInteger(r.rating) ? `<div class="review-rating">${reviewStars(r.rating)}</div>` : ''}
           <p class="t-lead no-indent review-text">${escapeHtml(r.content)}</p>
         </article>`;
       }).join('')}`;
@@ -11693,23 +11688,21 @@ return maplibregl$1;
         <div class="review-list d-row-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div>
       </section></div>`;
     }
-    // The stars of the note screen's form: the picked star and the ones before it are filled.
-    function syncNoteStars() {
-      const box = document.getElementById('noteFormFields');
-      if (!box) return;
-      const picked = box.querySelector('input[type=radio]:checked');
-      const value = picked ? Number(picked.value) : 0;
-      box.querySelectorAll('.review-star').forEach((label, i) => label.classList.toggle('is-on', i < value));
-      document.getElementById('noteClearRating').hidden = !value;
+    // Send for review looks ready (blue) once the form could be sent: an institution from the atlas, a note long enough, the box ticked.
+    function syncNoteReady() {
+      const sendBtn = document.getElementById('workSendBtn');
+      if (!sendBtn) return;
+      const wanted = (document.getElementById('noteInstitution').value || '').trim().toLowerCase();
+      const known = wanted && ALL_INSTITUTIONS.some(i => i.id && i.name && i.name.toLowerCase() === wanted);
+      const longEnough = (document.getElementById('workInput').value || '').trim().length >= REVIEW_LIMITS.min;
+      const ready = Boolean(known && longEnough && document.getElementById('noteAck').checked);
+      if (ready) sendBtn.dataset.ready = 'true'; else delete sendBtn.dataset.ready;
     }
-    document.addEventListener('change', (e) => {
-      if (e.target.matches && e.target.matches('#noteFormFields input[type=radio]')) syncNoteStars();
+    document.addEventListener('input', (e) => {
+      if (e.target.matches && e.target.matches('#noteInstitution, #workInput')) syncNoteReady();
     });
-    document.addEventListener('click', (e) => {
-      if (e.target.closest && e.target.closest('#noteClearRating')) {
-        document.querySelectorAll('#noteFormFields input[type=radio]').forEach(r => { r.checked = false; });
-        syncNoteStars();
-      }
+    document.addEventListener('change', (e) => {
+      if (e.target.matches && e.target.matches('#noteInstitution, #noteAck')) syncNoteReady();
     });
     // Fills the institution list of the note form once, from the atlas records.
     function fillNoteInstitutions() {
@@ -12664,7 +12657,7 @@ return maplibregl$1;
       if (!inst) return;
       dossierInst = inst;
       // On the note screen, opening another record makes it the institution of the note.
-      if (isChatInputMode) { const noteInstitution = document.getElementById('noteInstitution'); if (noteInstitution) noteInstitution.value = inst.name || ''; }
+      if (isChatInputMode) { const noteInstitution = document.getElementById('noteInstitution'); if (noteInstitution) { noteInstitution.value = inst.name || ''; syncNoteReady(); } }
       const html = recordHtml(inst);
       const phoneBody = document.getElementById('detailBody');
       if (phoneBody) phoneBody.innerHTML = html;
@@ -16265,6 +16258,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || '';
         const noteStatus = document.getElementById('noteFormStatus');
         if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not configured. A note cannot be sent.';
+        syncNoteReady();
         (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus();
       }
 
@@ -16450,9 +16444,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!place) return fail('Choose the institution from the list. It must be a space on the atlas.', institutionBox);
       const content = (input.value || '').trim();
       if (content.length < REVIEW_LIMITS.min) return fail(`Write at least ${REVIEW_LIMITS.min} characters.`, input);
+      const ack = document.getElementById('noteAck');
+      if (!ack.checked) return fail('Tick the box to confirm you have left out anything that identifies you.', ack);
       const body = { content };
-      const picked = document.querySelector('#noteFormFields input[type=radio]:checked');
-      if (picked) body.rating = Number(picked.value);
       const label = (document.getElementById('noteAuthor').value || '').trim();
       if (label) body.authorLabel = label;
       const sendBtn = document.getElementById('workSendBtn');
@@ -16468,8 +16462,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (!res.ok) throw new Error(out.error || 'The server did not take it.');
         input.value = '';
         document.getElementById('noteAuthor').value = '';
-        document.querySelectorAll('#noteFormFields input[type=radio]').forEach(r => { r.checked = false; });
-        syncNoteStars();
+        ack.checked = false;
+        syncNoteReady();
         status.textContent = '';
         appendCuratorMessage(`
           <div class="space-y-1">
@@ -19351,9 +19345,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=273"></script>
-<script src="assets/layers.js?v=273"></script>
-<script src="assets/hq-detail.js?v=273"></script>
-<script src="assets/bubbles.js?v=273" defer></script>
+<script src="assets/typeset.js?v=274"></script>
+<script src="assets/layers.js?v=274"></script>
+<script src="assets/hq-detail.js?v=274"></script>
+<script src="assets/bubbles.js?v=274" defer></script>
 </body>
 </html>
