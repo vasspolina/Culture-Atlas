@@ -9,7 +9,7 @@ ALLOWED_ORIGINS = "https://vasspolina.github.io"
 # and paste the id it prints here.
 [[kv_namespaces]]
 binding = "SUBMISSIONS"
-id = "PASTE_KV_NAMESPACE_ID_HERE"
+id = "511423f2e1a1449382d0e2ff27d96f17"
 
 # ADMIN_TOKEN is a secret: `npx wrangler secret put ADMIN_TOKEN`. Never put it in this file.
 
