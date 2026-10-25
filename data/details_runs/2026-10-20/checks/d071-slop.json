@@ -1,0 +1,262 @@
+[
+ {
+  "id": "kunsthal-charlottenborg",
+  "section": "RED FLAGS (Tobacco)",
+  "problems": [
+   "heading wrong: foundations are not 'tobacco-company-owned'",
+   "percentage stated as a fact from company page without the page's wording",
+   "Obel 10% attributed to C.W. Obel statement only"
+  ],
+  "before": "Red flags: tobacco-company-owned foundations; 'C.W. Obel states that it owns more than 10%'; 'backed the 2025 programme and Augustinus Fonden backed the 2026 programme of venues'",
+  "after": "Heading 'Tobacco, funders tied to Scandinavian Tobacco Group shareholders'. STG share information page, as of 1 May 2025: Chr. Augustinus Fabrikker Aktieselskab more than 25%, C.W.Obel A/S more than 10%, the page's only two holders above 5% (given as lower bounds, no exact percentages). Wikipedia: Augustinus Fonden fully owns Chr. Augustinus Fabrikker; Det Obelske Familiefond (established 1956) fully owns C.W. Obel. C.W. Obel history page gives '+10%' for 2017.",
+  "sources": [
+   "http://www.st-group.com/investor/share-information/",
+   "https://en.wikipedia.org/wiki/Augustinus_Fonden",
+   "https://en.wikipedia.org/wiki/C.W._Obel"
+  ],
+  "reason": "Flag KEPT: current funders (both named in the press release of 11 Dec 2024 for the 2025 exhibitions, Augustinus Fonden on its 2026 list of 41 venues, DKK 21 million total, no per-venue amount) and a tobacco link shown by opened pages (foundation owns holder of more than 25% / more than 10%)."
+ },
+ {
+  "id": "kunsthal-charlottenborg",
+  "section": "FUNDING",
+  "problems": [
+   "vague funder count 'about a dozen'",
+   "absence clauses 'with no years or amounts', 'no amount per venue'"
+  ],
+  "before": "about a dozen Danish foundations ... with no years or amounts ... and no amount per venue",
+  "after": "Danish foundations; 17 names listed as thanked on the support page; DKK 21 million total for 41 venues",
+  "sources": [
+   "https://kunsthalcharlottenborg.dk/en/information-2/support/",
+   "https://www.mynewsdesk.com/dk/kunsthal-charlottenborg/pressreleases/aarsprogram-2025-3359164",
+   "https://kunsthalcharlottenborg.dk/en/information-2/about-us/"
+  ],
+  "reason": "Support page lists 17 funders including Kulturministeriet and Statens Kunstfond (ministry and Statens Kunstfond confirmed); press release dated 11 December 2024 names 11 funders for 2025 including both Statens Kunstfond and the two foundations. Building (Albert Jensen and Ferdinand Meldahl, 1883, Botanical Garden site), visit details and palace dates checked on Wikipedia and the visit page (palace academy ownership 1787 matches Wikipedia's ownership transfer)."
+ },
+ {
+  "id": "kunsthalle-bremen",
+  "section": "FUNDING / BOTTOM LINE (Tobacco history)",
+  "problems": [
+   "bottom line implied current funding ('appears on the funders page')",
+   "funders known only from logos (names from image alt text/file names)",
+   "pre-existing Wikipedia-only wording",
+   "'my translation' process note"
+  ],
+  "before": "Funders page: 22 logos ... [22 names]; Hermann Reemtsma Stiftung ... whose firm B. Reemtsma & Söhne made cigarettes; 'appears on the funders page'; (not always successful, my translation)",
+  "after": "Funders page: 22 foundations, firms and public bodies shown as logos (names cut); Reemtsma Stiftung entry marked history, 2018: German Wikipedia (foundation established 1988 by Hermann-Hinrich Reemtsma in memory of his father Hermann Fürchtegott Reemtsma; the father's page: B. Reemtsma & Söhne market leader with 40 percent of German cigarette production by the 1950s); artinwords.de, Alexandra Matzner, 4 February 2018: restoration of over 900 Dutch and Flemish drawings, exhibition 7 March to 1 July 2018. Bottom line: that is history, not a current funding line.",
+  "sources": [
+   "https://artinwords.de/?p=18367",
+   "https://de.wikipedia.org/wiki/Hermann_Reemtsma_Stiftung",
+   "https://de.wikipedia.org/wiki/Hermann_F%C3%BCrchtegott_Reemtsma"
+  ],
+  "reason": "No Tobacco flag: the only documented grant is the 2018 conservation (not current), and the funders page gives names only as logo alt text and file names. The Reemtsma Stiftung page itself does not mention cigarettes; the cigarette link is on the father's page. Unverified or unsupported items cut: '1921 state treaty set up ongoing support' (page only says the treaty put five Bürgerschaft members on the board), 'collection spanning 14th to 21st century', 'first self-financed building', 'on the Ostertor', Wallanlagen location."
+ },
+ {
+  "id": "kunsthalle-bremen",
+  "section": "CRITICISM IN ART MEDIA (taz)",
+  "problems": [
+   "year only",
+   "process note 'my translation'",
+   "summary beyond what the page states"
+  ],
+  "before": "1. taz: Bettina Maria Brosowsky, \"Stolzer Träger eines Museums\" (2021) ... my translation",
+  "after": "taz, Bettina Maria Brosowsky, \"Stolzer Träger eines Museums\", 8 September 2021: postwar rebuilding and extensions 'nicht immer geglückt' (translated); chair Nicole Lamotte says the Verein carries the burden when something goes wrong; money for the 1990s and 2000s large exhibitions no longer available; public funding about 40 percent of the annual budget; just over 10,000 members; about 70 staff.",
+  "sources": [
+   "https://taz.de/!5799087"
+  ],
+  "reason": "Title, author and date confirmed on the page. Wikipedia gives about 9,000 members, taz just over 10,000: both attributed. Item names the Kunsthalle Bremen and is mild criticism of the building only."
+ },
+ {
+  "id": "kunsthalle-mainz-mainz",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "address wrong: 'Mainzer Stadtwerke AG' (imprint says c/o Stadtwerke Mainz AG)",
+   "absence clause 'no description, years or amounts'",
+   "Easy Language tours overstated",
+   "board description overstated",
+   "bottom line one sentence"
+  ],
+  "before": "c/o Mainzer Stadtwerke AG; partners listed 'with no description, years or amounts'; tours in Easy Language are offered",
+  "after": "c/o Stadtwerke Mainz AG (imprint); partners page lists the utilities as logos; Wikipedia: board has one member of the Mainzer Stadtwerke AG board, one City of Mainz and one state representative; an Easy Language tour is listed; two-sentence bottom line; Wikipedia statement that CHP in gas power plants is the main source of district heat added to the utility ownership line",
+  "sources": [
+   "https://www.kunsthalle-mainz.de/de/partners-and-supporters",
+   "https://www.mainz.de/en/angebote-entdecken/kultur/kulturentwicklung/institutionelle-foerderung",
+   "https://de.wikipedia.org/wiki/Mainzer_Stadtwerke"
+  ],
+  "reason": "City of Mainz EUR 30,000 in each of 2024 and 2025 confirmed (list 'Supported institutions'). Foundation recognised 12 Feb 2007, launched by Stadtwerke Mainz AG (about page). Utilities appear only as headings and logos on the partners page, with no funding statement: not shown as funders of the Kunsthalle beyond founding and hosting. No page opened gives a generation mix for the Mainzer Stadtwerke electricity business; the Wikipedia page lists capacities and district heat sources only, so no fossil fuels flag. Ministry (since 2009), Rheinhessen Sparkasse (Freistunden) and Sparda-Bank foundation (2022) are on the partners page."
+ },
+ {
+  "id": "kunsthalle-bern-bern",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "question and answer described loosely",
+   "'took no action' paraphrase",
+   "absence clause 'with no amounts' in funding"
+  ],
+  "before": "SVP councillors filed a question about a 'controversial Palestine letter'; city took no action",
+  "after": "Council paper 2023.SR.0244 (Kleine Anfrage Fraktion SVP, Alexander Feuz and Thomas Glauser, Bern 23 November 2023): asked why the Gemeinderat did not follow Basel-Stadt and condemn the approach, why it did not react to the director's letter, whether it would demand a condemnation of Hamas, and what it would do concretely about the future director and the head of culture. Answer of 10 January 2024: signed as a private person with 8,000 others weeks before the board named her; authors' statement four days later condemning Hamas; board and Fokianaki statement of 17 November 2023; no need for further measures; Connection stated last.",
+  "sources": [
+   "https://ris.bern.ch/de/dokumente/c084317ae2ce4b09bcc401e2aa8fc91a-332",
+   "https://www.bern.ch/themen/kultur/foerderung/kulturhaeuser-mit-mehrjahresvertrag/leistungsvertraege-2024-2027/leistungsvertraege-2024-2027/kunsthalle-2024-2027.pdf/download"
+  ],
+  "reason": "Council paper text read from the PDF (Wider context kept: a council asked about the director's open letter). Service contract Art. 15: CHF 1,050,000 a year, no inflation adjustment; Art. 28: 1 January 2024 to 31 December 2027; Art. 17 share of building upkeep. Verdict 'mainly public' removed (no page says so); 'private collectors' changed to 'private individuals'; words cut to stay under 800."
+ },
+ {
+  "id": "kunsthal-gent",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported figures '52 organisers and 121 activities (2024)'",
+   "unsupported 'non-profit association (vzw)'",
+   "verdict 'mainly public' not stated on any page",
+   "funder logos identified by file name"
+  ],
+  "before": "In 2024 its platform hosted programmes by 52 organisers and 121 activities; non-profit association (vzw); mainly public: City of Ghent and the Flemish government; logos of the City of Ghent and the Flemish government",
+  "after": "Figures and vzw statement cut; verdict 'supported by the City of Ghent and the Flemish government, stated by the space'; 'Gesteund door' line with two logos, labeled for Gent and, by image file name, for Vlaanderen; City took back the church and Old House in 2018, opened January 2019 (history page). Boycott declaration kept in Overview with its page named",
+  "sources": [
+   "https://kunsthal.gent/over/apartheidsvrije-zone",
+   "https://kunsthal.gent/gebruik/partners",
+   "https://kunsthal.gent/over/geschiedenis"
+  ],
+  "reason": "Apartheid Free Zone page: joins the campaign of Palestina Solidariteit vzw and Association Belgo Palestinienne, cultural boycott together with more than 875 Dutch and Belgian artists and nearly 300 cultural institutions, will not work on art projects financed by the Israeli state or complicit organisations; the page shows no date, so none is given. An institution's own boycott is not a flag. The figures 52/121 and vzw were searched on the home, mission, meewerken pages and the manual PDF and are on none. Both logos carry the alt text 'Logo Gent'; the Flemish one is identified only by file name vlaanderen_logo.png: kept because the space states 'Gesteund door' and the brief names both, but this is the thinnest funding line of the batch."
+ },
+ {
+  "id": "kumu-art-museum-tallinn",
+  "section": "OVERVIEW / FUNDING / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "unsupported 'floors 2 to 4', education centre, 18th century to present",
+   "unsupported 'six individual members of the Friends of Art Society'",
+   "'pays for part of purchases' overstated",
+   "verdict 'mainly public' not stated by a page",
+   "Kalm summary overstated ('accepts a dedicated building was overdue', 'serious drawbacks')",
+   "absence clause 'with no years or amounts'",
+   "Overall line contradicted by item 2"
+  ],
+  "before": "mainly public ...; Cultural Endowment pays for part of the museum's purchases of contemporary art; Accepts that a dedicated building was overdue ... serious drawbacks",
+  "after": "state-founded foundation verdict; Cultural Endowment supported acquisition of 109 works in 2023 and gave its annual award to the Kumu exhibition (2023 activity report, title translated); Kalm piece dated 1 October 2006 with arguments as the page states them; A Shade Colder item without year; Saarinen building sale dated 2002; two-sentence bottom line without the sponsor list",
+  "sources": [
+   "https://kunstimuuseum.ekm.ee/wp-content/uploads/2024/04/Aruanne_-2023.pdf",
+   "https://kaupunkitutkimuksenseura.fi/en/?p=455",
+   "https://www.ashadecolder.com/art-museums-and-spaces-in-the-baltics-are-made-of-dreams"
+  ],
+  "reason": "2023 report (read from PDF): foundation set up by the Ministry of Culture on 13.06.2016; funded by the Ministry operating grant, own income, targeted grants and sponsor money; Kumu owned by RKAS; five-member supervisory board appointed by the founder elects the one-member management board. ERR (Tiina Jaakson, 26 August 2020; date from the page timestamp, template placeholder shown): Kumu among the first nationally important cultural buildings built from the gambling tax paid into the Cultural Endowment. Press items kept: (1) Mart Kalm, 'Where in the Capital is the Proper Location for the National Art Museum?', 1 October 2006, Urban Studies Society of Finland site; (2) A Shade Colder, Kaarin Kivirähk (the page's spelling), 'Art museums and spaces in the Baltics are made of dreams', no date on the page, so no year given. Thank-you page lists about 30 names with no year or amount, kept as a plain list of supporters and removed from the bottom line. Construction start: history page 2002, Wikipedia 2003 to 2006; the history page cited."
+ },
+ {
+  "id": "kunst-halle-sankt-gallen-st-gallen",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported history (Volksbad, Gewerbeschule, 2004 storehouse and Keller/Hubacher architects)",
+   "Julius Bär and Würth described as firm members although the report lists individuals with employers",
+   "directors misdescribed (Strauss was curator; Jetzer to 2006)",
+   "two list items run together",
+   "verdict 'mainly public'"
+  ],
+  "before": "Firm members include Bank Julius Bär & Co. AG, Zürich; Gianni Jetzer (from September 2001); Founded in 1985 as a non-profit association; condemned buildings such as the Volksbad ...",
+  "after": "Club der 20 and Friends lists given as individuals with their firms (Helvetia Versicherungen, UBS Switzerland AG, Soplar sa, OTG St.Gallen AG; Bank Julius Bär & Co. AG, Würth Management AG); history cut back to what German Wikipedia states (1985, Wassergasse 24 from 1988, Davidstrasse 40 after 1992); leadership per Wikipedia",
+  "sources": [
+   "https://live.kunsthallesanktgallen.ch/asset/1029/17942/Jahresbericht_KunstHalleSanktGallen_2024.pdf",
+   "https://de.wikipedia.org/wiki/Kunst_Halle_Sankt_Gallen"
+  ],
+  "reason": "Annual report 2024 read from the PDF: City CHF 208,100 and Canton CHF 195,936, other grants CHF 164,692.10, Club der 20 CHF 50,000, members CHF 25,873.22 and CHF 29,000, tickets CHF 10,274.45, total operating income CHF 684,261.17, profit CHF 1,353.84, auditors Viola Schumacher and Pascal Wiesli; Raiffeisen 'für die Ermöglichung des Vermittlungsprogramms'; named supporters including Swisslos, Pro Helvetia. Friends CHF 500, firm members up to CHF 1,500, Gönner CHF 100 to 400. Site pages are script-rendered and could not give the history. No flag involved."
+ },
+ {
+  "id": "kunstfort-bij-vijfhuizen",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "'registered ANBI' not stated (page links the 2024 ANBI form)",
+   "volunteers from Sein unsupported",
+   "verdict 'mainly public'",
+   "Zoöp explanation uncited"
+  ],
+  "before": "programme foundation is a registered ANBI cultural foundation; the medical centre Sein sends volunteers to maintain the grounds; mainly public",
+  "after": "Stichting Kunstfort Activiteiten, KvK 67368905, with an ANBI publication form on the site; fellow fort users per the partners page; Zoöp from November 2023 with Bonnie Chopard, stated by the Kunstfort (zoop page added to sources); bottom line states the EUR 225,000 grant and the stated municipal support",
+  "sources": [
+   "https://rapportages.mondriaanfonds.nl/toekenningen/toekenningen-2024/programmas-kunstpodia-2025-2028",
+   "https://www.kunstfort.nl/nl/informatie/over/voorwaarden-documenten/",
+   "https://www.kunstfort.nl/en/projects/zoop/"
+  ],
+  "reason": "Mondriaan Fund list: Stichting Kunstfort Activiteiten, Vijfhuizen, Kunstpodium Basis, EUR 225,000, 2025 to 2028; scheme text: EUR 225,000 per year for four calendar years. The Kunstfort about page says the Kunstfort is supported by the municipality of Haarlemmermeer and the Mondriaan Fund, thanks Staatsbosbeheer and Recreatieschap Noord-Holland. The province of North Holland in the old record appears on no opened page and is not in the report. Fort built 1889 to 1890 (Wikipedia); Stelling 1880 to 1914 and UNESCO 1996 (Kunstfort page). Director Rabiaâ Benlahbib: Haarlems Dagblad, 6 August 2022, 'Rabiaâ Benlahbib, nieuwe directeur Kunstfort bij Vijfhuizen' (press page)."
+ },
+ {
+  "id": "kunsthall-stavanger-stavanger",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "absence clause 'with no years or amounts'",
+   "1992 museum move conflicts with the 2024 report (1990)",
+   "verdict 'mainly public' not stated",
+   "garden described as restored in 2025 beyond the page"
+  ],
+  "before": "restored in 2025 with a permanent access ramp; moved ... in 1992; mainly public with foundation support",
+  "after": "garden with a permanent ramp; move year dropped (history page says 1992, annual report 1990); verdict 'public grants and foundation support'; supporter list without the absence clause",
+  "sources": [
+   "https://storage.lfcdn.com/lf-kunsthallstavanger-prod/kunsthallstavanger.no/about-us/about-us/KS_2024_Annual-Report.pdf",
+   "https://kunsthallstavanger.no/en/about-us",
+   "https://kunsthallstavanger.no/en/about-us/building"
+  ],
+  "reason": "2024 report read from the PDF: 'generøs støtte' from Kulturdepartementet, Kulturrådet, Fritt Ord, Bergesenstiftelsen, Norske Kunstforeninger; Støttespillere 2024: Kulturdepartementet, Kulturrådet, Stavanger kommune, Fritt Ord, Norske kunstforeninger, the Norwegian Consulate in New York; garden/access project backed by Stavanger kommune, Sparebankstiftelsen SR-bank, Sparebanken Vest, Kulturrådet ARENA, Rogaland fylkeskommune (decided 2024, carried out 2025); Rom for Kunst drainage 2018/2019, ventilation December 2020; 'største trusselen' is running the building on an association's finances; chair Martha Norheim Lyse, Stavanger kommune representative Alexander Røed Hart. Erik Erga and private funds confirmed on the building page. About page also lists Deutsche Bank and others without year or amount; not used. No flag."
+ },
+ {
+  "id": "kunsthalle-münster-münster",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "footer quote 'Eine Einrichtung der Stadt Münster' not on the page (logo only)",
+   "Richter installation 'initiated by the Kunsthalle' unsupported",
+   "studios provided by the Kulturamt unsupported",
+   "paper date missing",
+   "verdict 'mainly public'"
+  ],
+  "before": "the footer reads \"Eine Einrichtung der Stadt Münster\"; a project the Kunsthalle initiated; artists' studios provided by the Kulturamt",
+  "after": "council paper calls it a 'städtische Institution'; since June 2018 the Kunsthalle has been responsible for the content care of Richter's installation (paper); paper dated 9 November 2018 (Rat decision 12 December 2018); verdict 'municipal institution'",
+  "sources": [
+   "https://oparl.stadt-muenster.de/bodies/0001/downloadfiles/00432674.pdf",
+   "https://www.kunsthallemuenster.de/de/ueber/",
+   "https://de.wikipedia.org/wiki/Kunsthalle_M%C3%BCnster"
+  ],
+  "reason": "Council paper V/0899/2018 read from the PDF: about EUR 84,000 from the city budget and 1.0 full-time post; third-party funds raised the budget to an average of EUR 160,000 (about 25,000 Freundeskreis donations; about 55,000 private initiatives, corporate-linked foundations and public bodies such as British Council, Pro Helvetia, Mondriaan Fund, Kunststiftung NRW, Kulturministerium NRW); split about 70,000 staff and fees, 85,000 exhibitions, 5,000 education; sculpture upkeep paid by the city property office. Residence NRW+: ministry and Kunststiftung NRW; Pro Helvetia co-awards since 2020; Freundeskreis EUR 20 (page). Accessibility wording aligned with the page. No Stadtwerke or arms funder appears on any opened page and none is stated."
+ },
+ {
+  "id": "kunsthalle-tbilisi-tbilisi",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported Protocinema/Mari Spirito claim",
+   "unsupported 'week of the first Tbilisi Art Fair'",
+   "absence clause 'It names no donor'",
+   "'private non-profit run by its two founding curators' verdict",
+   "'borrowed' spaces"
+  ],
+  "before": "Mesiti show was organised by Mari Spirito of Protocinema; names no donor; private non-profit run by its two founding curators",
+  "after": "Protocinema, fair-week and absence sentences cut; verdict 'private non-profit, per The Art Newspaper'; the paper's wording kept as the fragment 'commercial galleries, art fairs and privately funded non-profits'; Overview adds the site's own description (roving space founded by the two curators, archived February 2023); archive About URL added to sources",
+  "sources": [
+   "https://theartnewspaper.com/analysis/can-tbilisi-sustain-an-art-market",
+   "https://www.theartnewspaper.com/2018/05/16/tbilisis-first-contemporary-art-fair-hopes-to-draw-new-buyers",
+   "http://web.archive.org/web/20250710194027/https://kunsthalletbilisi.org/en/"
+  ],
+  "reason": "The Art Newspaper, Lorena Muñoz-Alonso, 'Can Tbilisi sustain an art market?', 23 May 2018: 'the nomadic project Kunsthalle Tbilisi, organised by Irena Popiashvili and Lika Chkuaseli'; commercial galleries, art fairs and privately funded non-profits step in; no funder or municipal share given (so none is stated). 16 May 2018 article 'Tbilisi's first contemporary art fair hopes to draw new buyers': launch 18 May 2018, Kutateladze on Pavlov Street, Mesiti in a winery on Petriashvili Street. The old record's 'small municipal share' appears on no opened page and is not in the report. Archive pages were read by curl (WebFetch refuses web.archive.org): 'Conspiracy Bar', 27 September to 7 November 2024, rented apartment, Thursday to Sunday 14:00 to 19:00. Website line is the address only."
+ },
+ {
+  "id": "kunsthalle-z-rich",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "verdict 'mainly public' (figures show 51 percent)",
+   "board list missing members",
+   "auditor claim cited to the wrong page"
+  ],
+  "before": "mainly public with private support; board without Gerd Schepers' role and Anette Bollag-Rothschild; the auditor is Audita GmbH",
+  "after": "public subsidy and private support, City and Canton CHF 1,233,200; vice-president Gerd Schepers and Anette Bollag-Rothschild added; 'the annual report names Audita GmbH as auditor'",
+  "sources": [
+   "https://www.kunsthallezurich.ch/files/2026_05_25_KZ_Annual_Report_Single_Pages.pdf",
+   "https://www.kunsthallezurich.ch/en/institution/",
+   "https://www.kunsthallezurich.ch/en/besuch"
+  ],
+  "reason": "Annual report 2025 read from the PDF: total income CHF 2,422,103 (2024: 2,487,363), City subsidy CHF 1,033,200 (2024: 1,020,900), Canton CHF 200,000, Zuwendungen Private CHF 350,000, Stiftung Kunsthalle CHF 225,500, project contributions CHF 133,998, gala/education CHF 284,549, members CHF 111,080, admissions CHF 46,087, shop CHF 31,632, surplus CHF 8,798; thanks list and Firmengönner (Bank Julius Bär, Burger Collection, E.A.T. Engadin Art Talks Stiftung, Hauser & Wirth, Hesta AG, Laboratoire Osler GmbH, Migros-Genossenschafts-Bund) match the report. No flag. 'Swiss Re and Bloomberg' line was already absent."
+ },
+ {
+  "id": "ALL 11 reports with a checked date",
+  "section": "WEBSITE LINE",
+  "problems": [
+   "'(checked 2026-10-25)' on the Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only (user's rule); Tbilisi already had none."
+ }
+]

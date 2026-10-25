@@ -1,0 +1,312 @@
+[
+ {
+  "id": "beirut-art-center-bac",
+  "section": "Red flags: Gulf state body",
+  "problems": [
+   "unsupported: Qatar Foundation state link rests on Wikipedia only",
+   "absence statement: \"The donor page gives no amount or project for either.\""
+  ],
+  "before": "Sharjah Art Foundation is listed on the donor page as an Exhibitions and Activities Patron in 2018. Wikipedia lists the foundation's parent organisation as the Department of Culture and Information, Government of Sharjah ... Qatar Foundation ... Wikipedia calls Qatar Foundation a \"state-led non-profit organization\" ... The donor page gives no amount or project for either.",
+  "after": "Sharjah point now adds the foundation's own statement \"a legally independent public body established by Emiri Decree and supported by government funding\" (press release, 8 July 2026) beside Wikipedia's parent-organisation line. Qatar point adds MEED (Ananda Shakespeare, 24 Feb 2014): \"an independent non-profit organisation\" supported by a hydrocarbons-revenue endowment, with stakes in government-backed companies such as Nakilat, beside Wikipedia's \"state-led\". Closing line now reads: The donor page lists the names by tier and year only.",
+  "sources": [
+   "https://beirutartcenter.org/donate/",
+   "https://www.sharjahart.org/en/press/details/her-highness-sheikha-hoor-bint-sultan-al-qasimi-appointed-as-president-of-sharjah-museums-authority",
+   "https://www.meed.com/qatar-foundation-for-education-science-and-community-development/"
+  ],
+  "reason": "Donor page confirms Sharjah Art Foundation (Exhibitions and Activities Patrons, 2018) and Qatar Foundation (Patrons, 2020, in a joint entry). The Sharjah foundation's own boilerplate states government funding and an Emiri Decree, so the Gulf state body flag stays; Qatar Foundation is shown with both Wikipedia and MEED wording so the reader sees the mixed description. Two independent pages on the state link could not be opened for Sharjah (Frieze, MoMA, Business Wire refused access), so that link rests on the foundation's own statement and Wikipedia."
+ },
+ {
+  "id": "beirut-art-center-bac",
+  "section": "Wider context (Ghosn)",
+  "problems": [
+   "unsupported: \"left Japan for Lebanon on 29 December 2019\" (page gives 30 December 2019 reports of arrival in Beirut)",
+   "absence statement: \"no later listing appears\"",
+   "unsupported inference: \"listings pre-date his arrest\""
+  ],
+  "before": "Wikipedia reports that Ghosn was arrested in Tokyo on 19 November 2018 and left Japan for Lebanon on 29 December 2019. The listings pre-date his arrest and no later listing appears.",
+  "after": "Wikipedia reports that Tokyo prosecutors arrested Ghosn on 19 November 2018 over allegations of false accounting at Nissan, and that media reported on 30 December 2019 that he had escaped from Japan and arrived in Beirut.",
+  "sources": [
+   "https://beirutartcenter.org/donate/",
+   "https://en.wikipedia.org/wiki/Carlos_Ghosn"
+  ],
+  "reason": "Donor page lists Carole & Carlos Ghosn as Supporters in 2017 and 2018 and as Patrons in 2018. The text now keeps to what Wikipedia states."
+ },
+ {
+  "id": "beirut-art-center-bac",
+  "section": "Bottom line",
+  "problems": [
+   "absence statement: \"with no amount published\""
+  ],
+  "before": "... appear once each as patrons, with no amount published. Those two entries are the points worth watching.",
+  "after": "... appear once each as patrons. Those two entries are the points worth watching.",
+  "sources": [
+   "https://beirutartcenter.org/donate/"
+  ],
+  "reason": "Absence clause cut."
+ },
+ {
+  "id": "belfast-exposed-belfast",
+  "section": "Red flags heading and points",
+  "problems": [
+   "unsupported: \"July 2026 exhibition\" (no opened page dates the show)",
+   "unsupported: protest described without saying campaigners are unnamed",
+   "\"two days later\" left undated"
+  ],
+  "before": "Red flags: protest and boycott call over AI images in a July 2026 exhibition ... The gallery was accused of promoting \"AI slop\"; campaigners demanded the work's removal, a formal apology and a boycott of the gallery (Creative Bloq, 3 August 2026).",
+  "after": "Red flags: Protest or boycott over AI-generated images in \"Beneath the Surface\". Creative Bloq reports that the online reaction included accusations of promoting \"AI slop\", and that unnamed campaigners demanded the work's removal, a formal apology and a boycott of the gallery; the gallery is the target. Response dated: statement 22 July, public panel 24 July. Digital Camera World (Alan Palazon, 6 August 2026) added: Robb and Sheridan both defended the work in a BBC article.",
+  "sources": [
+   "https://www.creativebloq.com/ai/everyone-in-this-ai-art-row-has-a-point-and-thats-what-worries-me",
+   "https://www.digitalcameraworld.com/tech/artificial-intelligence/it-took-far-more-than-pressing-a-button-says-creator-of-controversial-ai-images-shown-at-belfast-exhibition-and-honestly-i-agree"
+  ],
+  "reason": "Both pages opened. Neither names the campaigners or dates the show; Creative Bloq (Tom May, 3 August 2026) gives the demands, Robb's BBC defence, the 22 July statement and the 24 July panel."
+ },
+ {
+  "id": "belfast-exposed-belfast",
+  "section": "Criticism in art media",
+  "problems": [
+   "wrong/missing author and date: Digital Camera World item had no author, year only",
+   "Creative Bloq date given as year only",
+   "hedging paraphrase: \"ought to take that seriously\""
+  ],
+  "before": "2. Digital Camera World: \"It took far more...\" (2026) ; 1. Creative Bloq: Tom May ... (2026) ; \"says a gallery dedicated to photography ought to take that seriously\"",
+  "after": "1. Creative Bloq: Tom May ... (3 August 2026) ; 2. Digital Camera World: Alan Palazon, \"It took far more than pressing a button...\" (6 August 2026) ; Creative Bloq bullet now quotes \"defensible, provocative\" and the \"legitimate grievance\" conclusion.",
+  "sources": [
+   "https://www.creativebloq.com/ai/everyone-in-this-ai-art-row-has-a-point-and-thats-what-worries-me",
+   "https://www.digitalcameraworld.com/tech/artificial-intelligence/it-took-far-more-than-pressing-a-button-says-creator-of-controversial-ai-images-shown-at-belfast-exhibition-and-honestly-i-agree"
+  ],
+  "reason": "Authors and dates added from the pages. The Overall line no longer says the coverage \"defends the gallery's right\"."
+ },
+ {
+  "id": "belfast-exposed-belfast",
+  "section": "Overview",
+  "problems": [
+   "unsupported: \"on the Falls Road\""
+  ],
+  "before": "it opened at Conway Mill on the Falls Road and",
+  "after": "it opened at Conway Mill and",
+  "sources": [
+   "https://www.belfastexposed.org/about-us-belfast-exposed/"
+  ],
+  "reason": "The gallery's page says Conway Mill on the nationalist side of the Peace Wall; Falls Road appears on no opened page."
+ },
+ {
+  "id": "berlinische-galerie",
+  "section": "Funding (GASAG Art Prize)",
+  "problems": [
+   "unsupported: \"a solo exhibition and an acquisition for the collection\"",
+   "wording: prize name",
+   "Hilti Art Foundation line is an image credit, not funding",
+   "\"Wikipedia\" for German-language GASAG page"
+  ],
+  "before": "GASAG Kunstpreis: the biennial art prize has been presented with GASAG since 2010. It was initiated by GASAG (visitBerlin) and carries a purse of 10,000 euros, a solo exhibition and an acquisition ... The Hilti Art Foundation is credited on the image for the 2026 Lovis Corinth exhibition",
+  "after": "GASAG Art Prize: awarded every two years and presented with the Berlinische Galerie since 2010; GASAG initiated it (visitBerlin). The winner receives a purse of 10,000 euros, a show with a catalogue, and a new work that joins the collection (Berlinische Galerie). GASAG ownership now cited to German Wikipedia. Hilti line cut. No Fossil fuels flag added: no opened page says who pays the purse.",
+  "sources": [
+   "https://berlinischegalerie.de/en/berlinische-galerie/awards/gasag-art-prize/",
+   "https://www.visitberlin.de/en/event/jeewi-lee",
+   "https://de.wikipedia.org/wiki/GASAG"
+  ],
+  "reason": "Prize page says \"Since 2010 GASAG has been teaming up with the Berlinische Galerie\", purse 10,000 euros, a show with catalogue, new work integrated into the collection; visitBerlin says \"Initiated by GASAG\". Foundation page confirms public-law foundation and Dr Alexander Steinhilber as chair of the foundation council."
+ },
+ {
+  "id": "berlinische-galerie",
+  "section": "Funding and Bottom line",
+  "problems": [
+   "unsupported: IBB \"wholly owned by the state\" (Wikipedia says parent company is wholly state-owned)",
+   "Bottom line implied the foundation, not its council, is chaired by the Senate official"
+  ],
+  "before": "IBB ... a development bank wholly owned by the state of Berlin ; through a public-law foundation chaired by a Senate culture official",
+  "after": "Investitionsbank Berlin, which Wikipedia calls the central development bank of the state of Berlin ; through a public-law foundation whose foundation council is chaired by a Senate culture official",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Investitionsbank_Berlin",
+   "https://berlinischegalerie.de/en/berlinische-galerie/the-museum/foundation/"
+  ],
+  "reason": "Wording matched to the pages."
+ },
+ {
+  "id": "beursschouwburg-brussels",
+  "section": "Overview (boycott)",
+  "problems": [
+   "boycott statement lacked date and actor detail",
+   "venue rebuilds: Sept 2026 closure is contradicted by the venue's homepage (September 2027)"
+  ],
+  "before": "Cultural boycott: the venue states on its site that it imposes a cultural boycott on the Israeli state and Israeli institutions and companies, in response to calls from Palestinian artists and society. ; The venue leaves the building in September 2026 ...",
+  "after": "Cultural boycott: on 3 October 2025 the venue published \"FREE PALESTINE\": \"With immediate effect, and in response to persistent calls from Palestinian artists and Palestinian society, we are imposing a cultural boycott on the Israeli state and all Israeli institutions and companies.\" It acts with 875 cultural workers and 300 organisations and calls on other sectors to sever ties. Renovation: VRT (15 June 2025) said September 2026; the venue's homepage now says September 2027. Not flagged: the boycott is the venue's own action, not a protest, petition, open letter or boycott aimed at the venue, its funders or its leadership.",
+  "sources": [
+   "https://beursschouwburg.be/en/events/solidarity-with-the-palestinian-people/",
+   "https://beursschouwburg.be/en/",
+   "https://www.vrt.be/vrtnws/en/2025/06/10/brussels_-beursschouwburg-to-undergo-major-renovation-work/"
+  ],
+  "reason": "House rules require protest or boycott aimed at the space, its funders or its leadership; a boycott by the space itself stays in the Overview as a stated fact."
+ },
+ {
+  "id": "beursschouwburg-brussels",
+  "section": "Funding and Overview",
+  "problems": [
+   "unsupported: \"sold ... bought\" (Dutch Wikipedia: \"deed ... over\", transferred)",
+   "funder list incomplete: venue's own list names Government of Flanders, City of Brussels, VGC, Brussels Capital Region, Maes, Bruzz",
+   "unsupported: Flemish Department \"commissions the work\" (press page: commissioned the design team)",
+   "hedging: \"possible 10 percent cut\""
+  ],
+  "before": "Funding: Flemish Community and VGC only; \"The Flemish Community owns the building, which it bought in 1983\"; \"a possible 10 percent cut\"",
+  "after": "Funding verdict and first bullet now name the Government of Flanders, City of Brussels, Flemish Community Commission and Brussels Capital Region (venue list, with Maes and Bruzz); building \"transferred\" to the Flemish Community in 1983; Department of Culture, Youth and Media is among the bodies that commissioned the design team; quoted \"potential 10% cut\". VGC manager and Flemish Community owner attributed to Dutch Wikipedia.",
+  "sources": [
+   "https://beursschouwburg.be/en/about-bsb/",
+   "https://nl.wikipedia.org/wiki/Beursschouwburg",
+   "https://beursschouwburg.prezly.com/who-will-renovate-beursschouwburg-bovenbouw-architectuur"
+  ],
+  "reason": "Pages opened; wording fixed to what each states."
+ },
+ {
+  "id": "beursschouwburg-brussels",
+  "section": "Bottom line",
+  "problems": [
+   "absence statement: \"No private or flagged funder appears in the sources.\""
+  ],
+  "before": "No private or flagged funder appears in the sources.",
+  "after": "Replaced by a sentence naming the four listed public bodies.",
+  "sources": [
+   "https://beursschouwburg.be/en/about-bsb/"
+  ],
+  "reason": "Absence clause cut."
+ },
+ {
+  "id": "basis-frankfurt",
+  "section": "Funding",
+  "problems": [
+   "inaccurate date: sale described as completed in January 2016",
+   "unsupported: \"two public bodies shown as logos\"",
+   "unsupported: \"between the opera house and the bank towers\"",
+   "absence statement in Bottom line: \"Nothing in the sources ties the space to a flagged funder.\""
+  ],
+  "before": "The State of Hesse owned the building and sold it ... in January 2016 (Journal Frankfurt, 25 and 29 February 2016).",
+  "after": "25 January 2016: planned sale for 4.7 million euros, pending budget committee and city council approval; 29 February 2016: the city had bought it for 4.7 million euros and made it available to basis for ten years. 19 March 2019 grant of up to 96,000 euros confirmed. Homepage heading \"wird dauerhaft gefördert von\" translated. Opera house and bank towers phrase cut. Absence sentence cut from Bottom line.",
+  "sources": [
+   "https://www.journal-frankfurt.de/journal_news/Stadtleben-2/Stadt-kauft-Haus-fuer-Kuenstler-Raum-fuer-Kreative-26251.html",
+   "https://www.journal-frankfurt.de/journal_news/Kultur-9/Basis-Frankfurt-Zukunft-des-Atelierhauses-gesichert-26494.html",
+   "https://www.journal-frankfurt.de/journal_news/Politik-10/Basis-eV-erhaelt-Unterstuetzung-der-Stadt-Diskussionsabende-im-Bahnhofsviertel-33702.html"
+  ],
+  "reason": "The January article reports a planned sale; the February article reports the completed purchase. The 96,000 euro grant was approved by planning commissioner Mike Josef (19 March 2019)."
+ },
+ {
+  "id": "belarus-free-theatre-london",
+  "section": "Funding",
+  "problems": [
+   "source URL redirects (ArtsJournal ?p=66434)",
+   "paraphrase of company statement not matching the page",
+   "year range wording"
+  ],
+  "before": "The company says it receives no regular government support and that its funds come from philanthropy, through donations and supporters (stated by the company). ; ArtsJournal ?p=66434",
+  "after": "The company states: \"We work with no regular support from any government and raise our funds wholly through philanthropy\" (page at moc.media). ArtsJournal URL updated to the final article address; 2012 funding warning attributed to ArtsJournal quoting the founder. 360Giving line kept: seven grants 14 May 2014 to 6 June 2023, 502,228 pounds.",
+  "sources": [
+   "https://grantnav.threesixtygiving.org/org/GB-CHC-1147372",
+   "https://moc.media/en/bft",
+   "https://www.sigrid-rausing-trust.org/grantee/belarus-free-theatre/"
+  ],
+  "reason": "GrantNav page confirms the funders and totals (DCMS 3 grants 272,500; Backstage Trust 200,000; Gulbenkian UK 15,000; Esmée Fairbairn 5,000; National Lottery Community Fund 9,728). It gives the range of award dates, not a year per funder, so no per-funder years are stated. Sigrid Rausing Trust page: supported 2012 to 2014, previous grants 50,000 pounds."
+ },
+ {
+  "id": "belarusian-council-for-culture-rada-kultury-warsaw",
+  "section": "Overview, Funding, Wider context, Bottom line",
+  "problems": [
+   "unsupported: contacts page mentions Warsaw and Vilnius addresses",
+   "absence statements: \"board without naming its members\", \"no roles or amounts given\", \"No flagged funder is named\"",
+   "unsupported: \"Belarus neither funds nor controls the council\"",
+   "redirecting URL ?p=8085"
+  ],
+  "before": "the contacts page also mentions addresses in Warsaw and Vilnius ; Belarus neither funds nor controls the council, which is registered in Estonia. ; No flagged funder is named.",
+  "after": "Estonian registry address kept (contacts page); board and roles/amounts sentences cut; wider-context closing point now reads: The council is registered in Estonia and names the European Union as the funder of ArtPower Belarus; the designation comes from Belarusian authorities (stated by the council; Reform.news). Reform.news individuals described as \"associated\". Final URL for the programme results page.",
+  "sources": [
+   "https://by.byculture.org/en/press_release.html",
+   "https://reform.news/en/belarusian-council-for-culture-and-several-cultural-initiatives-declared-extremist-formations-in-belarus/",
+   "https://byculture.org/en/meet-us/"
+  ],
+  "reason": "Press release confirms 2 million euros from the EU, 28 months, Danish Cultural Institute as lead partner. The council's site states the Ministry of Internal Affairs \"extremist formation\" designation; Reform.news (24 April 2026) reports the KGB decision of 9 April 2026."
+ },
+ {
+  "id": "belarusian-state-museum-of-the-history-of-the-great-patriotic-war-minsk",
+  "section": "Funding and Bottom line",
+  "problems": [
+   "unsupported: \"state-funded\" (no opened page states the funding)",
+   "rule statement and absence in Bottom line"
+  ],
+  "before": "state-funded: a Belarusian state institution ... The money behind the museum is the Belarusian state ... A state's own money alone is not a red flag, and no private or corporate funder is named in the sources.",
+  "after": "Belarusian State Museum ...: a Belarusian state museum (by name). Bullets: the site's title «Учреждение «Белорусский государственный музей...»» (translation) and Wikipedia's name; 2014 opening by Lukashenko and Putin (Attractions Management, 8 July 2014). Bottom line states those two facts only.",
+  "sources": [
+   "https://war.museum.by/",
+   "http://war.museum.by/about",
+   "https://www.attractionsmanagement.com/attractions-news/Russian-and-Belarusian-Presidents-open-museum-commemorating-WW2/310224"
+  ],
+  "reason": "No opened page says who funds the museum or that it is state-funded; the Ministry of Culture appears only as a footer link on the museum's about page. The funding claim was cut, per the rule on unverifiable claims; no weak source states it."
+ },
+ {
+  "id": "bendigo-art-gallery-bendigo",
+  "section": "Funding and Bottom line",
+  "problems": [
+   "paraphrase of the Ian Potter quote not matching the page",
+   "attribution: \"rejected at the first assessment stage\" stated as fact (Chesters' claim)",
+   "absence statement: \"No flagged funder appears in the sources.\""
+  ],
+  "before": "The Ian Potter Foundation lists A$3 million over five years, \"to support the redevelopment of the Gallery's current premises\". ; rejected ... at the first assessment stage. ; No flagged funder appears in the sources.",
+  "after": "Ian Potter: A$3 million over five years for the Bendigo Art Gallery Redevelopment, awarded March 2025: \"This grant supports the redevelopment of the Gallery's current premises\". Federal bid: Chesters said it did not get past the first assessment stage and was ineligible because of a mistake; Cooney said \"an unfortunate timing issue\". Absence sentence cut.",
+  "sources": [
+   "https://www.ianpotter.org.au/knowledge-centre/news/grants-round-up-april-2025",
+   "https://www.bendigoadvertiser.com.au/story/8875041/bendigo-art-gallery-revamp-stalls-over-15m-funding-issue/",
+   "https://www.bendigoadvertiser.com.au/story/8973593/private-donors-give-bendigo-art-gallery-upgrade-9m-boost"
+  ],
+  "reason": "Confirmed on opened pages: stage one A$45 million; Victorian Government A$21 million (agreed 2023); City of Greater Bendigo A$9 million; Gallery Board A$4 million; philanthropy A$9.35 million including Sidney Myer Fund A$4 million and Ian Potter Foundation A$3 million (Bendigo Advertiser 22 May 2025; ArchitectureAU 23 May 2025)."
+ },
+ {
+  "id": "beta-local-san-juan",
+  "section": "Funding and Overview",
+  "problems": [
+   "unsupported: Mellon funds the Puerto Rican Arts Initiative paying La Práctica fellows (e-flux says PRAI is a Northwestern initiative funded by the university and Mellon, separate from Beta-Local)",
+   "unsupported: \"Beta-Local raises funds every year ...\"",
+   "unsupported programme descriptions (La Iván Illich as a platform where anyone proposes classes; The Harbor as an international residency)",
+   "\"individual donations\" not documented",
+   "absence statement in Bottom line"
+  ],
+  "before": "Mellon also funds the Puerto Rican Arts Initiative, which pays La Práctica fellows 20,000 dollars ... ; Beta-Local raises funds every year ... ; Programmes: La Práctica ... La Iván Illich, a public platform where anyone can propose a class ... ; No flagged funder appears in the sources.",
+  "after": "Sentences cut; programmes now listed by name from the archived site with the e-flux facts on La Práctica (nine months, five to eight fellows, no fees); verdict says \"contributions\"; absence sentence cut; Warhol URL updated to its final address.",
+  "sources": [
+   "https://www.mellon.org/grant-details/beta-local-inc.-20445968",
+   "https://www.mellon.org/grant-details/beta-local-inc.-20449601",
+   "https://warholfoundation.org/grants/archive/beta-local/"
+  ],
+  "reason": "Confirmed: Mellon 230,000 dollars (6 March 2019, 27 months) and 40,000 dollars (25 August 2021, 7 months); Warhol 100,000 dollars (Fall 2018 cycle); Warhol, Rauschenberg and the Hispanic Federation relief effort 100,000 dollars each (17 October 2017); ProPublica revenue 328,157 dollars (FY June 2025) and 688,867 dollars (FY June 2021)."
+ },
+ {
+  "id": "betonsalon-paris",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: Villa Vassilieff \"in Montparnasse\" and \"a City of Paris cultural establishment\"",
+   "undated press release presented as current",
+   "unsupported inference: \"The private lines are past\"",
+   "absence statement: \"No flagged funder appears in the sources.\""
+  ],
+  "before": "Its fifteen-year press release also credits Leroy Merlin ... The private lines are past ... No flagged funder appears in the sources.",
+  "after": "The 2018 fifteenth-anniversary press release (May 2018) is dated; it names Université Paris Diderot - Paris 7, the regional cultural affairs directorate, the Île-de-France Region, Leroy Merlin - Quai d'Ivry, the Carasso foundation, and Pernod Ricard as Villa Vassilieff's first patron. Émilie Renard named director in 2021 (Bétonsalon site).",
+  "sources": [
+   "https://www.betonsalon.net/infos/",
+   "https://www.betonsalon.net/a-propos/",
+   "https://archives.betonsalon.net/betonsalon.net/IMG/pdf/cp-_15_ans_-_be_tonsalon_-_fr_-_light.pdf"
+  ],
+  "reason": "Current site confirms support from the Ville de Paris, the regional directorate (Ministry of Culture) and the Île-de-France Region, with Université Paris Cité, and the City of Paris cultural-establishment and national-importance labels."
+ },
+ {
+  "id": "bienal-de-arte-paiz-guatemala-city",
+  "section": "Criticism in art media",
+  "problems": [
+   "wrong title/date: item gave \"review of the 24th Bienal\" and \"2025\"",
+   "unsupported: \"extraction\"",
+   "source states the venue \"soft-launched\" and \"will open\", report said it \"has opened\""
+  ],
+  "before": "The Art Newspaper: Constanza Ontiveros Valdés, review of the 24th Bienal de Arte Paiz (2025) ; Reports works on extraction, pollution and state power ; Fundación Paiz has opened its first permanent exhibition and programming venue",
+  "after": "The Art Newspaper: Constanza Ontiveros Valdés, \"Guatemala's Bienal de Arte Paiz nurtures connections across geography and history\" (22 December 2025) ; Describes works on pollution, colonialism and state oppression ; the venue soft-launched with a Carlos Martiel performance on 6 November 2025 and the review said it would open at the end of the biennial",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/12/22/guatemala-24th-bienal-de-arte-paiz-the-world-tree",
+   "https://biennialfoundation.org/biennials/bienal-de-arte-paiz/",
+   "https://bienaldeartepaiz.org/"
+  ],
+  "reason": "Review opened in full: author and date confirmed; quotes \"uneven in some venues and projects\" and \"verging on cultural appropriation\" confirmed."
+ }
+]

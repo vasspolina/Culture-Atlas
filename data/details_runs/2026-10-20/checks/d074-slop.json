@@ -1,0 +1,345 @@
+[
+ {
+  "id": "m-museum",
+  "section": "FUNDING",
+  "problems": [
+   "logo alt text only",
+   "unsupported verdict 'mainly public'"
+  ],
+  "before": "M+'s corporate support page lists Cathay as travel partner, Julius Baer, Ritz Carlton, Rosewood and UBS as programme sponsors, and Bloomberg Philanthropies, Citadel and Morgan Stanley as corporate patrons. / mainly public: Hong Kong government through the WKCDA",
+  "after": "Line deleted; verdict now 'public: administered by the West Kowloon Cultural District Authority, a statutory authority, with a corporate lead partner and foundation supporters'. HSBC kept (press release, 5 Aug 2022, lead partner from 1 Nov 2022, value not stated on the page).",
+  "sources": [
+   "https://mplus.org.hk/en/corporate-support",
+   "https://www.mplus.org.hk/en/press/hsbc-becomes-first-lead-partner-20220805/",
+   "https://en.wikipedia.org/wiki/West_Kowloon_Cultural_District"
+  ],
+  "reason": "The corporate support page names every sponsor only in image alt text, with no year or amount: Bloomberg Philanthropies, Citadel and the others are cut, no flag. No opened page says 'mainly' public; Wikipedia shows a statutory authority in a government-planned district."
+ },
+ {
+  "id": "m-museum",
+  "section": "Red flags: Ai Weiwei",
+  "problems": [
+   "actor not stated precisely",
+   "title attributed wrongly",
+   "Wikipedia sentence attributed to a politician"
+  ],
+  "before": "WKCDA board chair Henry Tang ... said all exhibits would fall under the law (Al Jazeera) / Wikipedia states that the museum withheld the piece after a politician accused it",
+  "after": "Kept as a flag: the museum itself acted (AP: M+ chose not to display the work after pro-Beijing politicians said it spread hatred against China and could violate the national security law; it replaced the image with its logo and said it was only complying). Henry Tang: AP calls him chairman of the WKCDA board; Al Jazeera calls him district chief of West Kowloon and reports he said all exhibits are subject to the National Security Law.",
+  "sources": [
+   "https://www.news4jax.com/entertainment/2021/11/11/hong-kongs-m-museum-opens-amid-censorship-controversy/",
+   "https://www.aljazeera.com/news/2021/11/12/m-art-hong-kong",
+   "https://en.wikipedia.org/wiki/M%2B"
+  ],
+  "reason": "House rule: state censorship flag needs the controlling state body or the space itself to have acted. AP states that M+ chose not to display the work, so it stays a flag."
+ },
+ {
+  "id": "m-museum",
+  "section": "Red flags: HSBC",
+  "problems": [
+   "no archived DOJ page",
+   "partnership date missing in the flag"
+  ],
+  "before": "In December 2012 HSBC agreed to pay $1.9 billion ... (The Inquirer, 11 December 2012).",
+  "after": "Added the lead-partner line and the DOJ archived release of 11 December 2012: five-year deferred prosecution agreement, forfeiture of $1.256 billion, sanctions violations (Cuba, Iran, Libya, Sudan, Burma), at least $881 million in drug proceeds laundered through HSBC Bank USA; Inquirer kept for the $1.9 billion total.",
+  "sources": [
+   "https://www.justice.gov/archive/usao/nye/pr/2012/2012dec11.html",
+   "https://www.inquirer.com/philly/business/20121211_HSBC_to_pay__1_9B_in_money-laundering.html",
+   "https://www.mplus.org.hk/en/press/hsbc-becomes-first-lead-partner-20220805/"
+  ],
+  "reason": "House rules list a bank's criminal plea or fine, HSBC named, as a name to know; HSBC is the lead partner from 1 November 2022. Flag kept."
+ },
+ {
+  "id": "m-museum",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "absence phrasing ('found')",
+   "claims stronger than the page",
+   "unsupported 'self-censorship is spreading'"
+  ],
+  "before": "Calls the Ai Weiwei decision a climb-down ... reports that self-censorship is spreading among Hong Kong artists. / Critical coverage found concerns ...",
+  "after": "Al Jazeera: the statement 'was widely seen as a climb down by the museum's executive director'; self-censorship 'is becoming a strategy for self-preservation' for artists whose works must circulate locally. Overall line reworded. Raffel March 2021 point cut for length.",
+  "sources": [
+   "https://www.aljazeera.com/news/2021/11/12/m-art-hong-kong"
+  ],
+  "reason": "Al Jazeera, Violet Law, 12 November 2021, 'Hong Kong opens top art museum amid fear of cultural 'dark ages''. AP item (no byline) 'Hong Kong's M+ museum opens amid censorship controversy', 11 November 2021, kept."
+ },
+ {
+  "id": "m-museum",
+  "section": "OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "unsupported detail",
+   "over length (893 words)"
+  ],
+  "before": "47 more works for HK$177 million; cost HK$5.9 billion; hours; mainly public",
+  "after": "Currency of the 177 million not stated on the page: cut. 'The HK$5.9 billion institution' is Wikipedia's wording. Hours and ticket line shortened. Bottom line rewritten. Report now 777 words.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/M%2B",
+   "https://www.mplus.org.hk/en/plan-your-visit/"
+  ],
+  "reason": "Checked each figure on the opened pages."
+ },
+ {
+  "id": "ludwig-museum-budapest-budapest",
+  "section": "Red flags: 2013 occupation",
+  "problems": [
+   "actor and source not precise"
+  ],
+  "before": "more than 30 artists occupied the museum from 9 May ... (ArtLeaks press release by United for Contemporary Art)",
+  "after": "Kept as a protest flag: more than 30 artists occupied the museum on 9 May 2013; the group United for Contemporary Art demanded a new transparent tender for the director's post; it said the Ludwig Foundation endorsed Barnabás Bencsik, competing with Júlia Fabényi, whom it calls 'Fidesz-backed'; occupiers left 22 May and continued in front of the Ministry of Human Resources. Title: 'Enough is enough! (Ludwig Museum, Budapest, Hungary)', ArtLeaks, 12 May 2013, no individual author named.",
+  "sources": [
+   "https://art-leaks.org/2013/05/12/enough-is-enough-ludwig-museum-budapest-hungary/"
+  ],
+  "reason": "A documented occupation and demands aimed at the museum's director appointment fit the Protest flag. It is not a censorship claim."
+ },
+ {
+  "id": "ludwig-museum-budapest-budapest",
+  "section": "Red flags: 2019 portrait",
+  "problems": [
+   "claim wording",
+   "state censorship basis"
+  ],
+  "before": "Emerging Europe says she believed it would provoke a negative public reaction ... removal of a portrait",
+  "after": "Kept: director Júlia Fabényi decided to exclude Brückner's 'Here and Now' (mural of Orbán built by visitors, for the 30th anniversary exhibition); Emerging Europe reports she expected a negative public reaction, calls it self-censorship; it cites no ministry instruction; the museum itself acted. Heading changed to 'the museum excluded a portrait'.",
+  "sources": [
+   "https://emerging-europe.com/?p=39912"
+  ],
+  "reason": "Claudia Patricolo, 'Why did a Hungarian museum self-censor a portrait of Viktor Orbán?', Emerging Europe, 18 May 2019. The flag stays because the space itself acted (House rule); no state instruction is claimed."
+ },
+ {
+  "id": "ludwig-museum-budapest-budapest",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "logo alt text only",
+   "unsupported detail",
+   "date wording"
+  ],
+  "before": "sponsors and partners page names NKA, Müpa, Samsung, Roadster; 1989 contract ... state establish and maintain; American pop art; Koblenz",
+  "after": "Sponsors-and-partners bullet cut (names only in logo alt text, no year); 1989 contract bullet cut (not found on an opened page); 'American pop art' replaced by the page's 'Central-Eastern European character'; 'central government-funded body under the Treasury, supervisory body Ministry of the National Cultural Heritage' confirmed on node/192; 'still regularly financed by the Foundation based in Aachen' confirmed on node/574; /en/history URL removed (it serves the Venice pavilion text).",
+  "sources": [
+   "https://www.ludwigmuseum.hu/en/node/192",
+   "https://www.ludwigmuseum.hu/en/node/574",
+   "https://www.ludwigmuseum.hu/en/node/29878"
+  ],
+  "reason": "Funding confirmed on opened pages. Bottom line: 'No flagged funder is documented' removed."
+ },
+ {
+  "id": "le-confort-moderne-poitiers",
+  "section": "FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "unsupported 'mainly public'",
+   "Vienne and Nouvelle-Aquitaine not on the page",
+   "concert prices not on the page",
+   "absence clause in bottom line",
+   "'paid for' overstated"
+  ],
+  "before": "mainly public: city of Poitiers, State and Région, with the rest self-financed ... no flagged funder is documented",
+  "after": "French Wikipedia: financed in part by local authorities (city of Poitiers, département, région) and the State, self-financed for another part. Reduced rates, accessibility and ear protection reworded from the venue's page. City of Poitiers was the client of the 2017 rehabilitation, 4.8 million euros excluding VAT (Climat Conseil).",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Le_Confort_moderne",
+   "https://www.confort-moderne.fr/fr/page/en-pratique/15",
+   "https://climat-conseil.com/references-climat-conseil/neuf-climat-conseils/rehabilitation-du-confort-moderne/"
+  ],
+  "reason": "Names Vienne, Nouvelle-Aquitaine and Ministry of Culture/DRAC appear on no opened page, so they are not stated. The Climat Conseil page lists Construire (33) as architect while Wikipedia names Nicole Condorcet; the report credits Condorcet to Wikipedia only."
+ },
+ {
+  "id": "le-cube-independent-art-room-rabat",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported detail",
+   "date wording",
+   "absence clause",
+   "partners presented as backers"
+  ],
+  "before": "1st floor; library of more than 600 books; moved to Rabat in 2004; opened on 2 February 2011; Vienna page items; no corporate or flagged funder is documented",
+  "after": "Cut floor, 600 books, 2004 move (no opened page). Afrik.com (24 January 2011) announced the inauguration for 2 February 2011. TransArtists: the artist pays the entire residency costs. Piskernik's page names Pro Helvetia Cairo, Institut français du Maroc, La Maison Salvan and the Austrian Ministry of Culture as partners of her programmes. Stats 111/138/70/80 confirmed on the 20-years page.",
+  "sources": [
+   "https://lecube-art.com/evenement/20-years-le-cube/?lang=en",
+   "https://www.afrik.com/le-cube-independent-art-room-inauguration-du-nouvel-espace",
+   "https://www.transartists.org/en/air/le-cube"
+  ],
+  "reason": "Partners are not funders; the bottom line says only what the pages show. Le Cube also lists residencies from 2007 on the 20-years page and 'since 2006' on Piskernik's page; the report keeps 2007 with its source."
+ },
+ {
+  "id": "le-fresnoy-studio-national-des-arts-contemporains",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported 'mainly public'",
+   "absence clause",
+   "partners list attribution"
+  ],
+  "before": "mainly public ... No flagged funder is documented",
+  "after": "Partners page: 'financé par le Ministère de la Culture et la Région Hauts-de-France', participation of the Ville de Tourcoing, FEDER co-financed technical equipment; Métropole européenne de Lille and Département du Nord are exhibition and event partners; private foundations listed as national and international exhibition partners.",
+  "sources": [
+   "https://www.lefresnoy.net/institution/partenaires/",
+   "https://fr.wikipedia.org/wiki/Le_Fresnoy_-_Studio_national_des_arts_contemporains",
+   "https://www.lefresnoy.net"
+  ],
+  "reason": "Matches the brief: Lille Métropole is only an exhibition partner. Address and hours confirmed on the homepage; Wikipedia facts confirmed."
+ },
+ {
+  "id": "les-ateliers-sahm-brazzaville",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "claim stronger than the page",
+   "'training partner' overstated",
+   "unsupported purpose clause",
+   "missing blank line",
+   "verdict-like clause"
+  ],
+  "before": "Founded and directed by ...; Institut français du Congo is named as a training partner for Popul'Art; meetings between artists and development leaders; none falls in a flagged category",
+  "after": "Founder per Wikipedia, opening in September 2012 per Almayuda; the Institut français du Congo is named only among structures the centre works with on training events; Almayuda purpose limited to what Fundraiso states; RIAC 'regularly supported by the Institut Français and Almayuda' (Almayuda); bottom line states the money only.",
+  "sources": [
+   "https://almayuda.com/en/les-ateliers-sahm-2/",
+   "https://www.adiac-congo.com/content/projet-populart-les-ateliers-sahm-lancent-la-deuxieme-phase-147908",
+   "https://www.fundraiso.ch/en/organisations/fondation-almayuda"
+  ],
+  "reason": "ADIAC: Bruno Okokana, 2 May 2023, EU funding with OACPS support, 150 young people aged 10 to 25 in each of 12 departments. Almayuda registration 16 January 2023 confirmed on Fundraiso. No Website line, as the brief says."
+ },
+ {
+  "id": "livingstone-office-for-contemporary-arts-loca-livingstone",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported 'studio programme'",
+   "partners called sponsors",
+   "absence clause"
+  ],
+  "before": "a studio programme; names 15 partners; No corporate, state or flagged funder is documented",
+  "after": "Studio programme cut (not on the homepage); 'Our Sponsors' page named 15 sponsors in visible text, no years or amounts; 13 partners on the e-flux announcement of 19 June 2025 confirmed; ArtReview title added ('Who Builds Zambia's Art World?', Chaze Matakala, 19 January 2026).",
+  "sources": [
+   "https://www.locazm.org/our-sponsors/",
+   "https://www.e-flux.com/announcements/675190/mosi-oa-tunya-perennial",
+   "https://artreview.com/zambias-artist-run-institutions/"
+  ],
+  "reason": "All 15 names confirmed against the page."
+ },
+ {
+  "id": "lothringer-13-halle-munich",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported 'two-year programmes'",
+   "unsupported 'mainly public'",
+   "absence clause",
+   "missing blank line"
+  ],
+  "before": "in 1998 the city adopted a model of rotating independent curators who develop two-year programmes; mainly public ... No private or flagged funder is documented",
+  "after": "German Wikipedia: since 1998 rotating independent curators lead the programme; funded by city grants, project money and donations. City of Munich: Kulturreferat runs the venue, free admission. muenchen.de: hours, open only during a running event, barrier-free, about 700 square metres.",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Lothringer_13",
+   "https://stadt.muenchen.de/infos/lothringer13-kunstraum.html",
+   "https://www.muenchen.de/sehenswuerdigkeiten/museen/lothringer-13-halle"
+  ],
+  "reason": "Kulturreferat of the city of Munich confirmed on the city page."
+ },
+ {
+  "id": "luma-arles",
+  "section": "FUNDING",
+  "problems": [
+   "figures not attributed precisely",
+   "Wikipedia-only claims"
+  ],
+  "before": "Architectural Record calls the project a '$175 million LUMA Foundation'; Wikipedia states that Artnet put the total project cost at 150 million euros",
+  "after": "Both figures attributed: Architectural Record (Andrew Ayers, 29 June 2021) cites a project of $175 million for the LUMA Foundation and calls Hoffmann a Swiss pharmaceutical heiress; Wikipedia quotes Artnet that the total cost 'is understood to be 150 million euros', Hoffmann declined to comment; Roche shareholder pool per Wikipedia (Maja Hoffmann).",
+  "sources": [
+   "https://www.architecturalrecord.com/articles/15201-frank-gehrys-luma-arles-opens-in-france",
+   "https://en.wikipedia.org/wiki/LUMA_Arles",
+   "https://en.wikipedia.org/wiki/Maja_Hoffmann"
+  ],
+  "reason": "Founder-fortune history (Roche) is not a flag. 'Just outside the walls of Arles' and 'free to visit' attributions cut or moved to LUMA's own page."
+ },
+ {
+  "id": "luma-arles",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "verdict 'mixed'",
+   "date missing",
+   "hedge 'seeing' / 'seems'"
+  ],
+  "before": "Overall: The coverage found is mixed ...",
+  "after": "Linda Yablonsky, 'What's wrong with creating an art mega-complex in Arles?', The Art Newspaper, 16 August 2018: a defence of LUMA Arles; Gapper (Financial Times) and opponents' 'grab for power that shouldn't be hers alone' quoted; the article says Hoffmann owns two hotels.",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/08/16/whats-wrong-with-creating-an-art-mega-complex-in-arles"
+  ],
+  "reason": "Title, author and date confirmed on the page."
+ },
+ {
+  "id": "lunds-konsthall-lund",
+  "section": "Red flags / FUNDING",
+  "problems": [
+   "claims attributed to the wrong person",
+   "'former deputy director' unsupported",
+   "'shocking' misquoted",
+   "Bergwall statement attributed to the wrong article",
+   "'ten heads' overstated",
+   "absence-style clause"
+  ],
+  "before": "Board vice chair Peter Bergwall denied a shutdown ... (Kunstkritikk, Anders Kreuger, 3 February 2016); Director Åsa Nacking called the closure ... shocking; former deputy director Anders Kreuger",
+  "after": "Kept as a protest flag aimed at the hall's own owner. Swedish Wikipedia: on 10 December 2015 the committee voted to close the hall with a view to reopening it reconstructed. Kunstkritikk (Frida Sandström, 17 December 2015): board announced 'reconstruction' to suit 'the present and future Lund'; Nacking: 'The staff and myself are shocked'; Bergwall (Green Party) and Friberg (Social Democrat) quoted; Leiderstam: another attempt to get rid of Nacking. Open letter: Sydsvenska Dagbladet 15 December 2015, e-flux 16 December 2015, translated by Anders Kreuger; signed by museum directors, university professors and deans; 'hurried decision', 'serious error'. Kreuger (3 February 2016): politicians say they never meant to close the hall and plan to hire an outside consultant.",
+  "sources": [
+   "https://kunstkritikk.com/lunds-konsthall-to-be-discontinued/",
+   "https://www.e-flux.com/announcements/28536/an-open-letter-in-support-of-lunds-konsthall/",
+   "https://kunstkritikk.com/lunds-konsthall-time-and-again/"
+  ],
+  "reason": "Bergwall is not named in Kreuger's 2016 piece; Kreuger's role is given only as byline on the pages. The protest is aimed at the municipal board that runs the hall (City of Lund), stated as such. Press items kept: Kunstkritikk, Frida Sandström, 'The End of Lund's Konsthall as We Know It', 17 December 2015; e-flux, 'An open letter in support of Lunds konsthall', 16 December 2015 (no author, translated by Anders Kreuger); Kunstkritikk, Anders Kreuger, 'Lund's Konsthall: Time and Again', 3 February 2016."
+ },
+ {
+  "id": "mac-lima-lima",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "logo alt text only, no year or amount",
+   "funders named from logos"
+  ],
+  "before": "The Auspicios page thanks ten organisations: UTEC, Fundación Telefónica Movistar, ... Bloomberg, the Getty Foundation, Credicorp ...",
+  "after": "Sponsor line and the sponsors in the bottom line deleted. Funding now states: private non-profit, land donated by the Municipality of Barranco (English Wikipedia), ceded in concession by the district municipality (Spanish Wikipedia).",
+  "sources": [
+   "https://maclima.pe/auspicios-mac-lima/",
+   "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art_of_Lima",
+   "https://es.wikipedia.org/wiki/Museo_de_Arte_Contempor%C3%A1neo_de_Lima"
+  ],
+  "reason": "All sponsor names on the Auspicios page are image alt text or file names, with no date: not a funding line. Bloomberg and Getty therefore appear nowhere in the report; no Getty founder-fortune flag."
+ },
+ {
+  "id": "mac-lima-lima",
+  "section": "Red flags: 2018 petition",
+  "problems": [
+   "petition addressees wrong",
+   "signature date missing",
+   "1990s auction misattributed"
+  ],
+  "before": "A CitizenGo petition addressed to the museum's director and to Spain's ambassador ... A 1990s auction raised the first funds for the building",
+  "after": "Kept as a protest flag: The Advocate (Advocate.com Editors, 'Trans Photography Under Attack In Peru', 27 February 2018): CitizenGo petition addressed to Luis Tejada Chacón (director, Spanish Cooperation Agency), Enrique Stiglich (director of the Museum of Contemporary Art in Lima) and Ernesto de Zulueta Habsburgo-Lorraine (Spain's ambassador to Peru), demanding the closing of the exhibitions, over 20,000 signatures; groups named. Exhibition opened 7 February, runs to 1 April 2018. Spanish Wikipedia: Tubino and conservative groups called it blasphemous, a bill on religious defamation followed, the museum publicly defended the works. The auction brought in geometric art for the collection (Spanish Wikipedia).",
+  "sources": [
+   "https://www.advocate.com/photography/2018/2/27/trans-photography-under-attack-peru",
+   "https://es.wikipedia.org/wiki/Museo_de_Arte_Contempor%C3%A1neo_de_Lima"
+  ],
+  "reason": "The Advocate gives no museum response and no petition start date; the museum's response comes from Spanish Wikipedia only."
+ },
+ {
+  "id": "mac-montr-al",
+  "section": "Red flags: AtkinsRéalis",
+  "problems": [
+   "fraud case of a donor's subsidiary is not a flag category",
+   "wrongly placed under Red flags"
+  ],
+  "before": "Red flags: AtkinsRéalis, governor partner of the Bal du MAC, 2019 guilty plea",
+  "after": "Moved to WIDER CONTEXT, dated: on 18 December 2019 SNC-Lavalin's construction division pleaded guilty to one count of fraud over $5,000 over its Libya work, penalty $280 million, three years' probation, remaining charges stayed (Canadian Press, 18 December 2019). Connection stated: AtkinsRéalis Canada inc. is in the 25,000 to 49,999 dollar donor band of the MAC Foundation in 2024-25 and a governor partner of the Foundation's Bal du MAC of 14 September 2024.",
+  "sources": [
+   "https://obj.ca/snc-lavalin-pleads-guilty-to-fraud-will-pay-a-280m-fine-for-libyan-work/",
+   "https://en.wikipedia.org/wiki/AtkinsR%C3%A9alis",
+   "https://macm.org/app/uploads/2025/10/Rapport_Annuel_2024-2025.pdf"
+  ],
+  "reason": "Fraud by a corporation is not on the atlas's flag list; the convicted entity is a subsidiary (SNC-Lavalin Construction Inc., per Wikipedia), the donor is AtkinsRéalis Canada inc., and the donation is to the Foundation, not the museum."
+ },
+ {
+  "id": "mac-montr-al",
+  "section": "FUNDING",
+  "problems": [
+   "figure mislabelled"
+  ],
+  "before": "Quebec government grants 13,015,643 dollars (12,535,454 for operations)",
+  "after": "Statement of results: 12,535,454 in the operations fund plus 480,189 in the capital fund = 13,015,643; 11,511,011 of the director's text is the operating grant. Audit by the Auditor General of Quebec confirmed in the management declaration. Crown corporation (société d'État) since 16 May 1984, free entry for Indigenous visitors since April 2024, 719 activities, Bal du MAC 14 September 2024, 20 million dollar campaign launched in April 2024: all confirmed in the 2024-25 annual report (text extracted from the PDF).",
+  "sources": [
+   "https://macm.org/app/uploads/2025/10/Rapport_Annuel_2024-2025.pdf"
+  ],
+  "reason": "The 13,015,643 figure in the brief is confirmed; the 'for operations' label was wrong."
+ }
+]

@@ -1,0 +1,370 @@
+[
+ {
+  "id": "vasl-artists-association",
+  "section": "RED FLAGS / WIDER CONTEXT",
+  "problems": [
+   "flag rests on a name match only",
+   "unverified identity of HBL",
+   "unlabelled 'Unverified:' with no claimant"
+  ],
+  "before": "Red flags: Habib Bank (HBL) fine, if HBL is Habib Bank Limited (3 points) and 'Unverified: that this HBL is Habib Bank Limited; the pages do not say.'",
+  "after": "Red flags section removed. WIDER CONTEXT: 7 September 2017 DFS fine of 225 million dollars on Habib Bank, stated as dated history with the DFS wording (sanctions-screening and anti-money-laundering failures, Al Rajhi Bank 'reported links to al Qaeda', licence surrender); connection: pages name only 'HBL' and 'HBL Art Committee', not shown to be Habib Bank, so context not a flag. Funding line: HBL named under 'Supported By' on the 2025 exhibition page and as 'HBL Art Committee' in the 2026 disclosure; no page says HBL is Habib Bank Limited.",
+  "sources": [
+   "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1709071",
+   "https://vaslart.org/exhibition/traces-works-from-the-vasl-archive/",
+   "https://vaslart.org/wp-content/uploads/2026/05/Vasl-Artists-Association-Corporate-Compliances-2026.pdf"
+  ],
+  "reason": "The DFS release states the fine and the AML and sanctions-screening findings but does not say sanctions were violated; the Vasl pages give no full name for HBL. The funding link rests on a name match, so the item moved to Wider context."
+ },
+ {
+  "id": "vasl-artists-association",
+  "section": "FUNDING",
+  "problems": [
+   "name misspelt",
+   "overstatement: 'mainly'",
+   "undated interview"
+  ],
+  "before": "Nishat Siddiqui; In 2015 Suleman said Vasl was supported mainly by local individuals ... named earlier international funders",
+  "after": "Nishat Siddiqi (as in the disclosure); December 2015 interview: supported by local individuals plus a monthly amount from Getz Pharma Pakistan, which also backed programmes and provided an apartment; ASEF, Arts Collaboratory, Hivos, Stichting Doen and the Ford Foundation gave intermittent funding until the previous year (Herman Bashiron Mendolicchio).",
+  "sources": [
+   "https://culture360.asef.org/insights/interview-adeela-suleman-vasl-artists-collective-karachi-pakistan/",
+   "https://vaslart.org/wp-content/uploads/2026/05/Vasl-Artists-Association-Corporate-Compliances-2026.pdf"
+  ],
+  "reason": "Interview of 10 December 2015 says 'supported by local individuals', not 'mainly'; the disclosure spells the name Siddiqi."
+ },
+ {
+  "id": "uffizi",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'permanent contracts'",
+   "unsupported: 'backed by' and 'unrolled'",
+   "pay claim attributed to the union, not in the source",
+   "no authors or dates for the press items"
+  ],
+  "before": "workers ... backed by the union Sudd Cobas, unrolled a banner ... They demanded permanent contracts and an end to on-call contracts and what they called the contracting system. Unverified: long-serving workers have had no pay since October, from the union Sudd Cobas via L'Espresso; the museum's response was not reported in either piece.",
+  "after": "5 April 2026: workers of Florence's museums, with Sudd Cobas, held a banner 'Basta vite precarie' in front of Botticelli's Venus inside the Uffizi; they asked for stabilisation of long-serving temporary staff and no new on-call hires; the union denounced the 'sistema malato degli appalti' (Open, Bruno Gaetani; L'Espresso, Valentina Romagnoli, both 6 April 2026). Unverified: L'Espresso writes 'senza salario da ottobre'; Open does not report it; neither names who made the claim.",
+  "sources": [
+   "https://www.open.online/2026/04/06/protesta-precari-uffizi-firenze-video/",
+   "https://lespresso.it/c/attualita/2026/4/6/uffizi-precari-botticelli-venere-protesta-video-giovani-lavoratori/61121"
+  ],
+  "reason": "Open (6 April 2026) gives the date 5 April, Sudd Cobas, the banner and the demands; the pay claim appears only in L'Espresso and is not attributed in the text. L'Espresso's Uffizi statement is about a hacking incident."
+ },
+ {
+  "id": "uffizi",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: donation page lists Ferragamo and CR Firenze",
+   "undated donations",
+   "amount source"
+  ],
+  "before": "The Uffizi's donation page lists the gifts above and gifts of artworks, with no years for most entries.",
+  "after": "The donation page names Atkins and the Wiegand Foundation and lists gifts of artworks, with no years for most entries; it does not name Ferragamo or Fondazione CR Firenze. Atkins announced 10 March 2023; Wiegand announced 11 October 2023 (Finestre sull'Arte).",
+  "sources": [
+   "https://uffizi.it/en/td/donation",
+   "https://finestresullarte.info/en/news/uffizi-american-patron-donates-nearly-usd5-million-to-restore-boboli-amphitheater",
+   "https://www.finestresullarte.info/en/museums/uffizi-usd1-million-maxi-donation-for-vasari-corridor"
+  ],
+  "reason": "The donation page does not mention Ferragamo (2014, 600,000 euros, Artribune 12 May 2014) or Fondazione CR Firenze (Uffizi Diffusi, 17 December 2024); amounts and years confirmed on the other pages."
+ },
+ {
+  "id": "uffizi",
+  "section": "CRITICISM IN ART MEDIA / OVERVIEW / SOURCES",
+  "problems": [
+   "over 800 words",
+   "item that is not criticism",
+   "dead source URL",
+   "wider-context claim with no source"
+  ],
+  "before": "Item 3 ArtReview 'Uffizi sues Jean Paul Gaultier over Venus use' (11 October 2022); governance URL (page did not load); 'Holds ... Botticelli, Leonardo ...' line; 'became a museum in 1865'; Ultima Generazione 'neither painting was damaged' without dates",
+  "after": "Item 3 and its source removed (not criticism, and trimmed for length); governance URL removed (HTTP 404); overview line on the collection and the 1865 clause cut; Ultima Generazione dated 22 July 2022 and 13 February 2024. Titles, authors and dates of items 1 and 2 confirmed (Finestre sull'Arte 8 June 2018, redaction; Linkiesta, Guia Soncini, 20 July 2020).",
+  "sources": [
+   "https://www.finestresullarte.info/es/museos/la-nueva-exposicion-del-tondo-doni-parece-una-lavadora-y-los-uffizi-responden-a-la-web-con-ironia",
+   "https://www.linkiesta.it/2020/07/chiara-ferragni-uffizi-fedez/",
+   "https://en.wikipedia.org/wiki/Uffizi"
+  ],
+  "reason": "The report was 823 words; now under 800 without SOURCES. No ARTnews item was present in this report. The governance URL returned 404."
+ },
+ {
+  "id": "van-abbemuseum",
+  "section": "WIDER CONTEXT / FUNDING",
+  "problems": [
+   "wording beyond the source",
+   "source credit",
+   "allegation-adjacent detail"
+  ],
+  "before": "Ammodo has stated that the Zwarte Zwanen programme ... gave a \"highly one-sided representation of the facts\" about the origin of Inphykem's assets. ... The page also says insured parties claimed a share of the Optas sale proceeds ... Ammodo says its money comes from donations by Stichting Inphykem",
+  "after": "The only source is Ammodo's own statement about Zwarte Zwanen (Omroep Max, NPO 2, 23 April 2025): Ammodo 'does not recognise ourselves in this highly one-sided representation of the facts'; Inphykem Foundation is the source of most of Ammodo's funding, formerly sole shareholder of Optas N.V. (sold to Aegon 2007); one-off 500 million euro contribution in 2010. The insured-party claim is not repeated. Connection: Ammodo production partner of the museum since 2012.",
+  "sources": [
+   "https://www.ammodo.org/verklaring-uitzending",
+   "https://vanabbemuseum.nl/en/museum/support-the-museum/foundations"
+  ],
+  "reason": "The statement says Inphykem is the source of 'most of' Ammodo's funding, not all; it does not say what the programme alleged. VriendenLoterij 250,000 euros a year since the 2022 extension (partner since 2007) and the 798,500 euro one-off in February 2020 confirmed on the foundations page; no 2021 manifesto found on the museum's pages, line kept."
+ },
+ {
+  "id": "van-abbemuseum",
+  "section": "OVERVIEW / FUNDING / SOURCES",
+  "problems": [
+   "unsupported: 'cigar manufacturer'",
+   "unsupported: 'councillor'",
+   "unsupported: 'mainly public'",
+   "unsupported: 'founder's fortune'",
+   "dead source URLs"
+  ],
+  "before": "cigar manufacturer; Labour Party councillor Arnold Raaijmakers; mainly public; the founder's fortune came from cigars; two sources marked 'page did not load'",
+  "after": "cigar businessman (Wikipedia); Labour Party representative (Kunstkritikk); public and lottery funded; the founder was a cigar businessman; the two URLs that return 'This page does not seem to exist' removed; visit line states only the confirmed hours.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Van_Abbemuseum",
+   "https://kunstkritikk.com/the-van-abbemuseum-under-political-pressure/",
+   "https://vanabbemuseum.nl/en/plan-your-visit"
+  ],
+  "reason": "Wikipedia says 'cigar businessman'; Kunstkritikk gives no councillor title; no page gives public shares of income. Hyperallergic (Claire Voon, 12 November 2015) and Kunstkritikk (Mariann Enge, 24 October 2011) titles, authors and dates confirmed."
+ },
+ {
+  "id": "w139-amsterdam",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "wrong actor: demand attributed to the Mondriaan Fund removing Art Rotterdam",
+   "'movement' not in the source",
+   "undated page, no author, advocacy source"
+  ],
+  "before": "\"Collective Refusal\", a movement of artists and cultural workers, demands that the Mondriaan Fund remove Art Rotterdam from Ahoy ... The campaign names the fund and Art Rotterdam, not W139.",
+  "after": "An open letter signed \"Collective Refusal\", from artists, cultural workers and publics, \"demands the removal of Art Rotterdam from Ahoy\" and an \"ethical realignment\" of the Mondriaan Fund's commitments, and objects to the fund hosting Prospects at Ahoy in 2026; it names Elbit Systems and Lockheed Martin as NEDS exhibitors in 2023 and 2024. Connection: the letter does not mention W139; no action aimed at W139 was found.",
+  "sources": [
+   "https://dutchartinstitute.eu/page/26475/no-neutral-space-a-collective-refusal-of-ahoy%E2%80%99s-militarized-venue-~-a"
+  ],
+  "reason": "The page has no publication date or named author, and never mentions W139 or Amsterdam. No page says W139 has zero commercial gallery representation; that line stays as 'No reporting found'."
+ },
+ {
+  "id": "w139-amsterdam",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'at least four development residencies'",
+   "unsupported: 'four large exhibitions a year' as a 2024 fact",
+   "board list wrong",
+   "funder list incomplete",
+   "unsupported: 'small own income'",
+   "unsupported: 'Accessibility details were not found'"
+  ],
+  "before": "at least four development residencies for international artists a year; four large exhibitions a year; Board: Bart Rutten (chair), Remco Mol (treasurer), Susan Kooi (secretary), Marcel van den Berg ... I. Kensmil and F. Sedoc as members; a small own income",
+  "after": "in 2024 it held four exhibitions and a residency space used by Dutch and international makers; Para-Siting starts in 2025; 2024 board: Rutten, Mol, George Korsmit (secretary to January 2025), Iris Kensmil (to 13 October 2024), Susan Kooi (secretary from 13 October 2024), Farida Sedoc from January 2025; 2024 funders now include Mondriaan Fund, Amsterdam Fund for the Arts, Fonds21 and Cultuurfonds; own income 34% against a 27% target.",
+  "sources": [
+   "https://w139.nl/wp-content/uploads/2025/06/ANBI_W139_2024.pdf",
+   "https://w139.nl/en/about/",
+   "https://w139.nl/en/contact/"
+  ],
+  "reason": "The 2024 report (Dutch) gives the board, income share, 9,993 visitors, 172 opening days, surplus of 14,442 euros, equity of 73,680 euros and Supporting W139 equity of 39,730 euros at the end of 2023; the ANBI form states income comes 'voor een groot deel uit publieke fondsen'. The report counts 49 activities in one place and 4 exhibitions plus 45 other activities in another, so the figure was dropped."
+ },
+ {
+  "id": "wattis-institute",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "claim beyond the source: CCA Institute 'includes continuing programming at the Wattis'",
+   "unsupported: 'continues only under Vanderbilt's promised CCA Institute'",
+   "unsupported: 'mid-2027'"
+  ],
+  "before": "Vanderbilt University will buy the San Francisco campus and has promised a \"CCA Institute\" that includes continuing programming at the Wattis.",
+  "after": "Vanderbilt ... has promised a \"CCA Institute\" to preserve CCA's legacy and manage its archives. KQED reports that Wattis programming is set to continue. Financial terms were not disclosed. Bottom line: CCA closes by the end of the 2026 to 2027 academic year; KQED reports Wattis programming is set to continue.",
+  "sources": [
+   "https://www.kqed.org/arts/13985359/california-college-of-the-arts-closing-vanderbilt-university"
+  ],
+  "reason": "KQED (13 January 2026, Sarah Hotchkiss and Sydney Johnson) confirms the closure by end of 2026-27 and the Vanderbilt purchase, and lists the CCA Institute and Wattis programming as separate points."
+ },
+ {
+  "id": "wattis-institute",
+  "section": "OVERVIEW / PRESS / SOURCES",
+  "problems": [
+   "unsupported: 'cultural philanthropist who died before 2002'",
+   "unsupported: 'or of CCA's leadership'",
+   "absence statement",
+   "source with no mention of the space"
+  ],
+  "before": "Named for Phyllis C. Wattis, a San Francisco cultural philanthropist who died before the 2002 renaming; makes no criticism of the Wattis or of CCA's leadership; propublica 941156614 source",
+  "after": "Named for Phyllis C. Wattis; the 2002 renaming followed her death; makes no criticism of the Wattis; ProPublica URL removed (page is 'Unknown Organization' and does not mention the Wattis); hours/accessibility absence sentence cut.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Wattis_Institute_for_Contemporary_Arts",
+   "https://projects.propublica.org/nonprofits/organizations/941156614",
+   "https://www.theartnewspaper.com/2024/08/28/california-college-arts-20m-deficit-falling-enrollment-campus-expansion"
+  ],
+  "reason": "Wikipedia gives no description of Wattis beyond the death preceding the rename; Art Newspaper (Tim Schneider, 28 August 2024), the 20 million dollar deficit, 97.5 million expansion, 123 million campaign and the 27 September 2024 layoffs of 23 staff were confirmed."
+ },
+ {
+  "id": "townhouse-gallery-cairo",
+  "section": "OVERVIEW / BOTTOM LINE / PRESS",
+  "problems": [
+   "unsupported: 'closed again in 2019' / 'closed since 2019'",
+   "unsupported: 'began in one flat and grew to four flats'",
+   "wrong source credit for the Factory",
+   "unsupported: 'founded in the 1990s' framing of closures"
+  ],
+  "before": "Shut after a state raid in December 2015, partly collapsed in April 2016, reopened in April 2018, and closed again in 2019. Visiting: the gallery is no longer open. ... The gallery has been closed since 2019, so current funding is not applicable.",
+  "after": "Status line: Contemporary And (15 September 2020) says Rawabet and the Factory announced closures in 2019 when their rental agreements ended and that the Townhouse was expected to shut or change, with no official announcement; a Contemporary And places page of 13 October 2025 describes the gallery in the present tense. Bottom line: current status unconfirmed. One-flat-to-four-flats clause removed.",
+  "sources": [
+   "https://contemporaryand.com/magazines/the-end-of-many-endings/",
+   "https://contemporaryand.com/en/places/townhouse-gallery",
+   "https://apollo-magazine.com/the-remarkable-rebirth-of-the-townhouse-gallery-in-cairo/"
+  ],
+  "reason": "No page opened states that the Townhouse closed in 2019; Apollo does not mention flats. The December 2015 raid and the Ford Foundation mention were confirmed."
+ },
+ {
+  "id": "townhouse-gallery-cairo",
+  "section": "FUNDING / WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'led by Darren Walker'",
+   "unsupported: 'almost every work ... needs permission'",
+   "unsupported: 'neither funds nor controls'",
+   "dead source mentioned in text"
+  ],
+  "before": "modest sums from the Ford Foundation, led by Darren Walker; Wells ... that almost every work, exhibition or performance needs permission and \"There is no flexibility.\"; The Egyptian state neither funds nor controls the Townhouse",
+  "after": "Bridgespan (27 November 2013, no author named): \"modest sums from Walker (and Ford)\", no amounts; Wells told The Art Newspaper (Anny Shaw, Contemporary And, 30 November 2016) the new venue must follow the rules that apply to all cultural institutions: \"There is no flexibility.\"; No page opened reports funding from the Egyptian state.",
+  "sources": [
+   "https://www.bridgespan.org/insights/darren-walker/a-small-grant-goes-a-long-way-darren-walker-and-t",
+   "https://contemporaryand.com/en/c-and-magazine/texts/cairos-townhouse-gallery-reopens-in-converted-factory",
+   "https://egyptianstreets.com/2015/12/29/art-spaces-in-downtown-cairo-shut-down-in-government-raid/"
+  ],
+  "reason": "No opened page says the state does not fund the space; the raid is stated as context. Press items dated: Eslayed 15 September 2020, Diab 31 August 2018, Harris 18 February 2016. The report was over 800 words before trimming. The website thetownhousegallery.com could not be re-tested because the proxy returned 502."
+ },
+ {
+  "id": "transmission-gallery-glasgow",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'held regular funding of £210,000 over 2015 to 2018'",
+   "unsupported: 'still received Creative Scotland project funding'",
+   "unsupported: 'Creative Scotland is the public body for arts funding in Scotland'",
+   "partners misdescribed"
+  ],
+  "before": "Transmission held regular funding of £210,000 over 2015 to 2018, lost it in the 2018 to 2021 round ... (The Art Newspaper, 2018; Frieze via ARThing, 2018). After the cut the gallery still received Creative Scotland project funding (Frieze via ARThing, December 2018).",
+  "after": "In the 2018 to 2021 round Creative Scotland rejected Transmission's application, listed by The Art Newspaper as £210,000 (27 February 2018); Wikipedia says Transmission was dropped from the portfolio of regularly funded organisations in 2018. No page read gives the years or amount of the earlier regular grant or any later grant.",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/02/27/creative-scotland-chief-apologises-for-funding-backlashthough-questions-remain",
+   "https://en.wikipedia.org/wiki/Transmission_Gallery",
+   "https://www.transmissiongallery.org/"
+  ],
+  "reason": "The Art Newspaper says the funder 'rejected applications from the artist-run Glasgow space Transmission Gallery (£210,000)'; it does not say the sum was a 2015-18 grant. The ARThing page returned HTTP 500 and the Frieze page 403, so every claim resting on them was cut."
+ },
+ {
+  "id": "transmission-gallery-glasgow",
+  "section": "CRITICISM IN ART MEDIA / SOURCES",
+  "problems": [
+   "press item whose body was not read",
+   "dead source URLs",
+   "misquote: 'strong'"
+  ],
+  "before": "3. Frieze: Chris Sharratt, \"The Highs and Lows of Scotland's Year in Art 2018\" (2018, read on ARThing's reproduction) URL: https://www.arthing.org/?p=9911; its approach to equality, diversity and inclusion was strong",
+  "after": "Item 3 removed together with the ARThing and Frieze URLs (ARThing returned HTTP 500, Frieze HTTP 403; neither body was read, so no original outlet or author can be stated from the page). ArtReview item dated 2 February 2018 and quotes Creative Scotland's assessment as \"exceptionally strong and sectorally relevant at this time\".",
+  "sources": [
+   "https://artreview.com/news-2-februay-2018-transmission-gallery-decries-funding-cut/",
+   "https://www.theartnewspaper.com/2018/02/27/creative-scotland-chief-apologises-for-funding-backlashthough-questions-remain"
+  ],
+  "reason": "ArtReview (byline ArtReview, 2 February 2018) gives 'exceptionally strong'; the Art Newspaper item is by Hannah McGivern, 27 February 2018, and its 'profoundly sorry' quote was read in full. The ARTnews page redirected to a paywall gateway and was not used."
+ },
+ {
+  "id": "typography-center-krasnodar",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "wrong source credit: liquidation attributed to OVD-Info",
+   "date of removal stated as the Ministry's action date",
+   "unsupported: 'The Russian state did not fund or control'",
+   "conflict between sources not stated"
+  ],
+  "before": "11 June 2025: the legal entity was liquidated, and on 5 September 2025 the Ministry removed it from the register because of the liquidation (OVD-Info; Caucasian Knot). The Russian state did not fund or control the centre",
+  "after": "11 June 2025 liquidation per the Unified State Register (Caucasian Knot, 6 September 2025); Ministry of Justice announced removal on 5 September 2025; OVD-Info gives only the year 2025; the centre's own site says the legal entity stopped working in March 2023. No page opened reports Russian state funding of the centre.",
+  "sources": [
+   "https://www.eng.kavkaz-uzel.eu/articles/68366",
+   "https://ovd.info/en/ino/autonomous-non-profit-organisation-krasnodar-centre-contemporary-art-typography",
+   "https://typography-online.ru"
+  ],
+  "reason": "6 May 2022 foreign-agent listing confirmed by Novaya Gazeta (6 May 2022) and OVD-Info (06.05.2022), with the reasons cited. OVD-Info does not mention liquidation."
+ },
+ {
+  "id": "typography-center-krasnodar",
+  "section": "OVERVIEW / FUNDING / SOURCES",
+  "problems": [
+   "unsupported: 'Named for the building'",
+   "unsupported: 'in the city centre'",
+   "unsupported: 'paid for by' the foundation",
+   "dead source URL"
+  ],
+  "before": "Named for the building it first occupied: the former printing house \"Sovetskaya Kuban\" in the city centre; Forbes.ru reported that one exhibition ... was paid for by the Vladimir Smirnov and Konstantin Sorokin Foundation; artguide.com/posts/2275 (page did not load)",
+  "after": "Opened in the space of the former printing house \"Sovetskaya Kuban\"; Forbes.ru (17 January 2018, via Rambler) says the foundation funds the initiative; Moroz named as patron who founded the centre with ZIP (Russian Art Archive), artist and philanthropist (7x7); artguide URL removed (connection refused).",
+  "sources": [
+   "https://russianartarchive.net/en/catalogue/organization/OGCB",
+   "https://weekend.rambler.ru/places/38904464-komu-moskovskie-metsenaty-dayut-dengi/amp/",
+   "https://daily.afisha.ru/culture/22323-gde-nayti-sovremennoe-iskusstvo-v-krasnodare/"
+  ],
+  "reason": "Neither Cyclowiki nor the Russian Art Archive says the centre was named after the printing house. The 2018 Garage grant and Cosmoscow 'Institution of the Year' were confirmed in Afisha (31 January 2022)."
+ },
+ {
+  "id": "ulaanbaatar-international-media-art-festival-ubimaf",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "wrong title: 'its director' (Seattle Times names an arts manager)",
+   "unsupported: 'small'",
+   "claim credited to the wrong source (Inga Seidler, venues)",
+   "dead source URL"
+  ],
+  "before": "in 2006 its director said it raised about $120,000 a year; The money behind the festival is small; curated with the Berlin-based curator Inga Seidler, at the Mongolian National Art Gallery and the Red Ger Gallery; goethe.de URL (page did not load)",
+  "after": "in 2006 the arts manager Tserenpil Ariunaa said it raised around $120,000 every year, and the board later included three ambassadors (Seattle Times, 12 February 2006); 'small' removed; Seidler credited to ASEF Culture360 and venues to Hunter College; goethe.de URL removed (HTTP 403).",
+  "sources": [
+   "https://archive.seattletimes.com/archive/20060212/mongolia12/seattle-to-the-steppes-local-arts-manager-connects-with-mongolia",
+   "https://culture360.org/opportunities/mongolia-9th-ulaanbaatar-international-media-art-festival",
+   "https://fm.hunter.cuny.edu/?p=24151"
+  ],
+  "reason": "The Seattle Times calls Ariunaa an arts manager. The 2016, 2020 and 2022 supporters, the 2002 founding with Soros Foundation support and the Biennale 2025 initiation by the Capital City Governor's Office were confirmed on the cited pages; the 2020 review is dated 6 August 2020."
+ },
+ {
+  "id": "urban-shaman-contemporary-aboriginal-art-winnipeg",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'second floor' and 'Exchange District'",
+   "unsupported: 'Louis Ogemah chose the name'",
+   "unsupported: CBC claim from a dead URL",
+   "unsupported: 'Santa Fe satellite gallery'",
+   "unsupported: 'mainly public'"
+  ],
+  "before": "290 McDermot Avenue, second floor, Unit 203, in Winnipeg's Exchange District; Louis Ogemah chose the name; CBC names Lita Fontaine and Louis Ogemah ...; a Santa Fe satellite gallery; mainly public",
+  "after": "203-290 McDermot Avenue, Winnipeg (contact page); Windspeaker credits Ogemah with the idea of the name and Daina Warren says it came from Norval Morrisseau; Fontaine recalls the papers were signed at her house; the site lists Main, Marvin, AND and Santa Fe galleries; 'federal grants, with membership and donations'; CBC URL removed (HTTP 403).",
+  "sources": [
+   "https://www.urbanshaman.org/contact/",
+   "https://ammsa.com/publications/windspeaker/masquerade-gala-exhibit-and-symposium-celebrates-20-years-urban-shaman",
+   "https://www.urbanshaman.org/history/"
+  ],
+  "reason": "Pages opened do not give 'second floor', 'Exchange District' or 'satellite'. Canada Council 280,000 dollars over two years in fiscal 2017-18 (14 November 2018) and Canadian Heritage 340,000 dollars, 1 April 2021 to 31 March 2023, confirmed. Supporters page shows nine logos with no names. The history page says 'one of three Aboriginal artist-run centres in Canada'."
+ },
+ {
+  "id": "vleeshal-middelburg",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "claim that the income tables did not open: they did",
+   "unsupported: 'neither is listed' (Mondriaan Fund and province funding appear in the 2024 report)",
+   "unsupported: 'free entrance on designated days'",
+   "wrong year for the Haarlem building"
+  ],
+  "before": "I read the 2024 report only in part; the income tables and the accounts did not open as text, so no income figures are given here. No reporting found on the pages read of Mondriaan Fund or Province of Zeeland funding.",
+  "after": "2024 actual income 1,121,538 euros, subsidies 1,068,110 euros (structural 1,023,426 euros), sponsor income 0; 2024 incidental grants from the province's Impuls Jongerencultuur scheme (Team V) and the Mondriaan Fund's Kunstenaarshonorarium scheme; private fund income below the planned 30,000 euros a year; the Haarlem Vleeshal opened in 1604 (Wikipedia); free-entrance clause removed; Mullié and 'about ten years' corrected from the Ziherl announcement.",
+  "sources": [
+   "https://cdn.sanity.io/files/ku63gn59/production/0586b6ce9830086f2e20e7d2ae2914bd3ba56e14.pdf",
+   "https://vleeshal.nl/archive/vleeshal-announces-vivian-ziherl-as-its-new-managing-director",
+   "https://en.wikipedia.org/wiki/Vleeshal"
+  ],
+  "reason": "The full 2024 annual report extracted as text; the first column of the income table is the 2024 actual (result 27,350 euros matches the report text). Individual OCW and city amounts are garbled in the extraction, so only totals are stated. The about page does not name the chair; the Ziherl announcement does (Jerry Troy)."
+ },
+ {
+  "id": "west-den-haag",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'no permanent collection'",
+   "wrong source credit: Museum Pass",
+   "unsupported: opening-hours comparison",
+   "accessibility source not named",
+   "unsupported: 'mainly public'"
+  ],
+  "before": "West has no permanent collection of its own. ... museum.nl lists Monday and Tuesday closed and a late Thursday ... The Netherlands Museum Pass is valid. ... denhaag.com lists exhibition prices from 0 to 12.50 ... Accessibility: a side entrance ...; mainly public",
+  "after": "Claim about the collection removed (denhaag.com lists 'Permanent collection West Den Haag - Alphabetum XI' as an event); museum.nl gives Thursday to 22:00 and no Sunday hours; Museum Pass credited to museum.nl; prices 0,00 to 12,50 euros; accessibility credited to the Dutch denhaag.com page, with the English page's 'No accessibility info available' noted; verdict 'public'.",
+  "sources": [
+   "https://denhaag.com/en/west-den-haag-former-american-embassy",
+   "https://denhaag.com/nl/west-den-haag-vml-amerikaanse-ambassade",
+   "https://museum.nl/en/west-den-haag"
+  ],
+  "reason": "Funding by the City of The Hague and the ministry (structural support) and BIS membership since 2017 with the Mauritshuis confirmed on the English denhaag.com page; the Dutch page does not give 2017 or the Mauritshuis. westdenhaag.nl returned HTTP 503. No founding, director or amounts found, lines kept."
+ }
+]

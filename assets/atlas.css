@@ -766,6 +766,20 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-count{text-align:right;white-space:nowrap;color:var(--row-dim);font:400 var(--fs-s)/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase}
 #layersPanel .layers-count:empty{display:none}
 @media (max-width:640px){#layersPanel label{grid-template-columns:auto minmax(0,1fr) auto;row-gap:2px}#layersPanel .layer-name{white-space:normal}#layersPanel .layer-desc{grid-column:2/-1}}
+#layersPanel .layers-note{margin:0 0 8px;color:var(--row-dim);font:400 var(--fs-s)/1.4 var(--sans)}
+#layersPanel .layers-kinds{display:flex;flex-wrap:wrap;gap:4px}
+#layersPanel label.kind-chip{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;flex:1 1 150px}
+#layersPanel label.kind-chip i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
+#layersPanel .layers-top{display:flex;flex-direction:column;gap:2px}
+#layersPanel .top-funder{display:grid;grid-template-columns:11px minmax(0,13em) minmax(40px,1fr) 2.5em;align-items:center;column-gap:10px;min-height:32px;padding:4px 10px;border:0;border-radius:6px;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.2 var(--sans);text-align:left;cursor:pointer}
+#layersPanel .top-funder:hover{background:var(--row-hover);color:#000}
+#layersPanel .top-funder[aria-pressed="true"]{background:var(--row-on);color:var(--row-on-ink)}
+#layersPanel .top-funder:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+#layersPanel .top-funder i{width:11px;height:11px;background:var(--marker-color)}
+#layersPanel .tf-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#layersPanel .tf-bar{display:block;height:6px;background:rgba(127,127,127,.25)}
+#layersPanel .tf-bar b{display:block;height:100%;background:currentColor}
+#layersPanel .tf-n{text-align:right;font-variant-numeric:tabular-nums}
 #layersPanel .layers-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;color:var(--ink);font:400 var(--fs-s)/1.3 var(--sans)}
 #layersPanel .layers-key span{display:flex;align-items:center;gap:8px;min-width:0}
 #layersPanel .layers-key i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
@@ -1973,3 +1987,19 @@ div:has(>#topThemeBtn){column-gap:0}
 @container (max-width:34em){
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr);row-gap:var(--H);align-items:start}
 }
+/* The chat's dock buttons take the displaay.net button row (25 Oct 2026): an outlined button with a 12px radius and a 1.5px ink line, no fill; the one that is on (Voice, or Back to chat once a note is open) is a solid blue pill. The note's own Send for review block keeps its design. Same 44px height as the header (var(--bar)) and the same large type. Desktop only; the phone's composer keeps its plain tap targets. */
+@media (min-width:768px){
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)){background:transparent!important;color:var(--ink)!important;border:1.5px solid var(--ink)!important;border-radius:12px!important;box-shadow:none!important;height:var(--bar);min-height:var(--bar);box-sizing:border-box;padding:0 16px;font:400 var(--fs-l)/1 var(--sans);text-decoration:none;transition:background-color .15s,border-radius .15s}
+  :root[data-theme] #workInputCard #workSendBtn:not(.is-on){width:var(--bar);min-width:var(--bar);padding:0}
+  :root[data-theme] #workInputCard #chatShareBtn:not(.is-on){padding:0 16px;font-size:var(--fs-l)}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)):not(.is-on):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)):not(.is-on):hover{background:color-mix(in srgb,var(--ink) 12%,transparent)!important;color:var(--ink)!important;text-decoration:none}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)):not(.is-on):hover :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)):not(.is-on):hover :is(svg,span){color:var(--ink)!important}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on{background:var(--cobalt)!important;color:#fff!important;border-color:var(--cobalt)!important;border-radius:999px!important;padding:0 20px}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on:hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on:hover{background:var(--cobalt)!important;color:#fff!important;filter:brightness(.85);text-decoration:none}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on :is(svg,span){color:#fff!important}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+}
+/* No bullets in Details (user's instruction, 25 Oct 2026): the lists read as lines, one blank half-line (--H) between them, flush left. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-list,ul.list-disc)>li::before{content:none}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{padding-left:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-list,ul.list-disc)>li+li{margin-top:var(--H)}

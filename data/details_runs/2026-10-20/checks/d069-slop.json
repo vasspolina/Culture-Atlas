@@ -1,0 +1,291 @@
+[
+ {
+  "id": "kamloops-art-gallery",
+  "section": "Red flags",
+  "problems": [
+   "flag category: BCLC is a state-owned lottery operator (name to know), not a Gambling funder flag",
+   "Wikipedia-only Cullen wording without date",
+   "sole Benefactor claim from truncated page"
+  ],
+  "before": "Red flags: gambling sponsor (BCLC); Cullen Commission described only via Wikipedia, 'top-tier sponsor'",
+  "after": "Red flags: BCLC sponsorship (provincial Crown corporation named in the Cullen Commission); inquiry announced May 2019 and final report submitted 3 June 2022 (Cullen Commission site); finding wording attributed to Wikipedia; BCLC listed as Benefactor Level sponsor and 2025 sponsor",
+  "sources": [
+   "https://kag.bc.ca/news/sponsorship",
+   "https://cullencommission.ca/",
+   "https://en.wikipedia.org/wiki/British_Columbia_Lottery_Corporation"
+  ],
+  "reason": "CHECKER.md: state-owned lottery operators that sponsor directly, even when they run casinos or sports betting (BC Lottery Corporation named), are a name to know, not a Gambling flag. The documented Cullen Commission finding keeps the item as a name-to-know red flag. BCLC is current (2025 sponsor list, free Thursdays on visit page). Heading no longer says gambling flag."
+ },
+ {
+  "id": "kamloops-art-gallery",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: schools programming, a library, a permanent collection and a gallery store",
+   "unsupported: 'signed' 2025 financial statements",
+   "'sole Benefactor' stated more strongly than page",
+   "'fiscal 2024 to 25' format",
+   "absence: 'no amounts are published'"
+  ],
+  "before": "Programmes: exhibitions, studio programs, talks and tours, schools programming, a library, a permanent collection and a gallery store; signed 2025 financial statements; no amounts are published",
+  "after": "Programmes limited to those on the about page; 2025 financial statements dated 31 December 2025; BCLC listed alone under Benefactor Level Sponsors; absence clause cut",
+  "sources": [
+   "https://kag.bc.ca/about",
+   "https://kag.bc.ca/our-supporters",
+   "https://kag.bc.ca/visit"
+  ],
+  "reason": "Only what the opened pages state. Funding mix confirmed: government funders, foundations, tiered individual donors since January 2024, corporate sponsors, none with amounts. President tier names confirmed."
+ },
+ {
+  "id": "kestner-gesellschaft-hannover",
+  "section": "Wider context",
+  "problems": [
+   "Insure Our Future scorecard claim not supported (page says rankings only; direction and 'stopped insuring' not tied to Talanx and Hannover Re)",
+   "title carried a removed dash",
+   "connection to space only implied"
+  ],
+  "before": "Wider context: Correctiv/CLEW item plus scorecard ranking Hannover Re 4th and Talanx 6th, 'among the few insurers that stopped insuring'",
+  "after": "Wider context: Clean Energy Wire (Benjamin Wehrmann, 23 February 2024) summary of Correctiv: Allianz, Hannover Re, Talanx and Munich Re had entered into contracts to insure US LNG projects, often signed by subsidiaries; connection: Talanx and HANNOVER Rück SE are named on the corporate partners page, the article does not name the Kestner Gesellschaft; scorecard cut and its URL removed from SOURCES",
+  "sources": [
+   "https://www.cleanenergywire.org/news/german-insurers-cover-us-lng-industry-despite-sustainability-pledges-report",
+   "https://kestnergesellschaft.de/en/page/corporate_partners",
+   "https://forourclimate.org/en/sub/data/insure-our-futures-seventh-annual-scorecard"
+  ],
+  "reason": "No Fossil fuels flag: the insurers are financial services firms and no page shows a fossil fuel producer funding the space; item kept as Wider context because it criticises named partners. CLEW piece (by Benjamin Wehrmann, 23 Feb 2024) names Talanx and Hannover Re only in the list. Both are on the 32-name partner page (page footer 2026, no year for the partnership)."
+ },
+ {
+  "id": "kestner-gesellschaft-hannover",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: roughly 2,500 supporters including members (page says some 2,500 members, the Förderkreis)",
+   "unsupported: address Goseriede 11 attributed to Kestner (Wikipedia gives it)",
+   "absence clauses: lists no amounts, undated, no flagged industry documented",
+   "Region Hannover not on any opened page"
+  ],
+  "before": "funding line: state of Lower Saxony, NDR cultural partner, 'lists no amounts'; 32 partners 'undated'; bottom line 'no flagged industry is documented'",
+  "after": "funding: State of Lower Saxony (page and ministry logo caption), NDR cultural partner (home page); 32 partners listed, page copyright 2026; absence clauses cut; GETEC ownership reworded (fully family-owned until 2022, German Wikipedia)",
+  "sources": [
+   "https://kestnergesellschaft.de/en",
+   "https://kestnergesellschaft.de/en/page/kestner_gesellschaft",
+   "https://de.wikipedia.org/wiki/Getec-Gruppe"
+  ],
+  "reason": "Counts confirmed: 32 named partners, board and advisory board chairs. Wikipedia confirms address, 2025 director, building dates."
+ },
+ {
+  "id": "khalil-sakakini-cultural-center-ramallah",
+  "section": "Wider context",
+  "problems": [
+   "wrong attribution: Ruhrbarone and Dortmund site claim sourcing",
+   "FAZ described as calling works anti-Israeli incitement (page says article on 'Hetzkunst')",
+   "'invited to documenta fifteen' unsupported",
+   "absence clause: no action against the centre described"
+  ],
+  "before": "German press attacked Yazan Khalili ... FAZ called works anti-Israeli incitement; Unverified: websites claimed Sakakini was a Nazi supporter, citing Wikipedia; no action against the centre itself is described",
+  "after": "Jadaliyya (13 April 2022, partisan): on 12 January 2022 a DIE ZEIT editor asked whether documenta has an antisemitism problem and tied Khalili's group The Question of Funding to the centre and called Sakakini a 'radical nationalist and Nazi supporter'; FAZ published an article on 14 January 2022 about 'Hetzkunst'; Unverified item attributes the National Socialism claim to Ruhrbarone and a Dortmund site per Jadaliyya; connection: Khalili directed the centre 2015 to 2019",
+  "sources": [
+   "https://www.jadaliyya.com/Details/44043/Who-was-Khalil-al-Sakakini-Diaries-to-Palestine",
+   "https://www.yazankhalili.com/index.php/writings/the-total-work-of-the-cultural-institution-/"
+  ],
+  "reason": "Jadaliyya names no author in the opened text; DIE ZEIT and FAZ pieces were not opened, so all wording is attributed to Jadaliyya. Persecution of a former director is Wider context, not a flag."
+ },
+ {
+  "id": "khalil-sakakini-cultural-center-ramallah",
+  "section": "Funding, Overview, Bottom line",
+  "problems": [
+   "wrong name: 'Munib Rashid Masri Foundation' (page: Munib & Angela Masri Foundation, established the Munib Rashid Masri Hall)",
+   "unsupported: Almahal shop details, hire of garden/attic/veranda, Partnerships and Hosting programme, Jerusalem-born",
+   "absence: 'No amount or years are given', 'No flagged funder is named'",
+   "UN should read UN Development Program, Dutch sources read Dutch donors"
+  ],
+  "before": "The Munib Rashid Masri Foundation ... No amount or years are given.",
+  "after": "The Munib & Angela Masri Foundation says it established the Munib Rashid Masri Hall and provides funding for events (masrifoundation.org); programmes limited to Visual Art, Literature, In Reach, Land; Scoop 2004 (Am Johal, 23 September 2004) list corrected",
+  "sources": [
+   "https://masrifoundation.org/program/khalil-sakakini-cultural",
+   "https://m.scoop.co.nz/stories/HL0409/S00250.htm",
+   "https://www.sakakini.org/en/about"
+  ],
+  "reason": "Makhzin issue 3 (2020, Rayya Badran, interview of June 2019) quotes confirmed; Wikipedia confirms first director years."
+ },
+ {
+  "id": "kassak-muzeum-budapest",
+  "section": "Wider context, Funding",
+  "problems": [
+   "Átlátszó item not tied to the museum",
+   "unsupported: Deutsch-Ungarische Gesellschaft and a 2010 renovation (not on the catalogue page)",
+   "'2011 catalogue' year not on the page",
+   "PIM 'managed the castle' (page: manages the ground floor)",
+   "reason for protest missing",
+   "Hungarian titles not marked as translated"
+  ],
+  "before": "Wider context: 444.hu protest; hvg.hu 48 billion forints; Átlátszó 4 November 2021 grants item; funding: 2011 catalogue supporters and 2010 renovation by Stiftung Ahlers pro Arte and Deutsch-Ungarische Gesellschaft",
+  "after": "444.hu (Szurovecz Illés, 2 December 2020): protest organised by aHang demanding Demeter's resignation after his Origó article, 28,000+ signatures; hvg.hu (17 February 2022, no author named): Orbán-signed resolution, 48 billion forints over four years to the Magyar Kultúráért Alapítvány, 12.73 billion in 2022 to 11.28 billion in 2025; Átlátszó item and URL cut; catalogue 'Supported by' National Cultural Fund, Ministry of National Resources, Stiftung Ahlers pro Arte",
+  "sources": [
+   "https://444.hu/2020/12/02/muveszek-es-kutatok-tiltakoztak-demeter-szilard-ellen-a-petofi-irodalmi-muzeum-elott",
+   "https://hvg.hu/elet/20220217_Demeter_Szilard_alapitvanyat_48_milliard_forintnyi_kozpenzbol_erositik_meg",
+   "https://kassakmuzeum.hu/en/publication/exhibition-catalogue/kassak-permanent-exhibition-kassak-museum"
+  ],
+  "reason": "Neither 444.hu nor hvg.hu nor Átlátszó names the Kassák Museum. Ties kept: member institution of PIM (mission statement) and the foundation maintains the castle (building page). hvg.hu also refers to the Zichy Castle. Átlátszó piece concerns grants through the Petőfi Cultural Agency and the page ties it to PIM only through Demeter, so it was cut."
+ },
+ {
+  "id": "kaohsiung-museum-of-fine-arts-kaohsiung",
+  "section": "Funding (2025 ledger)",
+  "problems": [
+   "check of PDF amounts: all confirmed",
+   "header claim 'growing share' unsupported"
+  ],
+  "before": "Kaohsiung Museum of Fine Arts: city-owned administrative corporation, with a growing share from named corporate, foundation and individual sponsors",
+  "after": "Kaohsiung Museum of Fine Arts: city-founded administrative corporation, with named corporate, foundation and individual sponsors",
+  "sources": [
+   "https://www.kmfa.gov.tw/Uploads/files/114%E5%B9%B4%E9%AB%98%E7%BE%8E%E9%A4%A8%E8%B4%8A%E5%8A%A9.pdf",
+   "https://www.kmfa.gov.tw/Service/CommunityResource/BusinessCooperation.htm"
+  ],
+  "reason": "The PDF was decoded again from its embedded streams (amounts are in units of 萬 = NT$10,000). Confirmed: Applied Materials Taiwan 60萬; Rotary 3510 63萬 and 75萬; 山藝術文教基金會 150+33+10+5 = 198萬; 楠弘集團 100萬; 高雄市大愛扶輪社 100萬; 勇源 50萬; 富隆船舶 30萬; 京城 30萬; 明安 20萬; 建弘 10萬; 聚和 10萬; 43 core members 86萬; individual gifts 1萬 to 190萬. 2017 administrative corporation status confirmed on the sponsorship page."
+ },
+ {
+  "id": "kaohsiung-museum-of-fine-arts-kaohsiung",
+  "section": "Criticism in art media",
+  "problems": [
+   "wrong descriptors: 'exhibition planner' for Mickeyelk Gesne (curator), 'art historian' for Wei Tsung-chou (cultural worker)",
+   "unsupported: signs outside the gallery listed the rules; 'up to A3' (page: smaller than A3); free general admission with special ticket",
+   "'my translation' process note",
+   "process words 'annual exhibition'"
+  ],
+  "before": "Online critics, the exhibition planner Mickeyelk Gesne ... The art historian Wei Tsung-chou ...; sketchbooks up to A3",
+  "after": "The paper names the curator Mickeyelk Gesne, the physician Li Chia-yen and the Facebook page 高雄好過日; the cultural worker Wei Tsung-chou; sketching allowed with sketchbooks smaller than A3; Department of Culture pledged volunteer training; title marked as translated",
+  "sources": [
+   "https://udn.com/news/story/6885/8167768"
+  ],
+  "reason": "Kept press item: United Daily News (聯合報), Song Yuan-chang (宋原彰), '孩童模仿畢卡索真跡遭制止引眾怒 高美館緊急改規定：開放速寫', 17 August 2024 (10:51). Names the museum. Other fixes: address number, admission wording, Wikipedia building description, Bottom line flag-industry sentence cut."
+ },
+ {
+  "id": "k-nstlerhaus-bethanien-berlin",
+  "section": "Funding, Press, Bottom line",
+  "problems": [
+   "verdict 'mainly public' not stated on any page",
+   "'foreign arts councils pay for studio places' not stated by the page",
+   "'each shown with the artists it sent' unsupported",
+   "Dazed letter content misattributed (genre 'created by artists of colour' is the article's wording; letter says not a single black artist could be accommodated, Musk 'leads a new kind of colonialism')",
+   "absences: 'no amounts', 'No funder in a flagged industry is named'",
+   "'later posted' and name-origin and Tannert 'retired' unsupported"
+  ],
+  "before": "Künstlerhaus Bethanien: mainly public ...; letter argued the show whitewashed Afrofuturism, a genre created by artists of colour",
+  "after": "Institutionally funded by the Berlin Senate Department for Culture and Social Cohesion, with 32 named partner organisations; Dazed item rewritten from the page",
+  "sources": [
+   "https://bethanien.de/en/partner-sponsors/",
+   "https://taz.de/Berliner-Kultur-von-Kuerzungen-bedroht/!6054078",
+   "https://www.dazeddigital.com/art-photography/article/45455/1/afrofuturism-elon-musk-art-exhibition-black-artists-diversity-exclusion-berlin"
+  ],
+  "reason": "Kept press item: Dazed, Amelia Abraham, 'An Afrofuturism exhibition is being criticised for excluding black artists', 31 July 2019. Confirmed: 32 partners, Senate funding statement, taz 13 December 2024 (Nina Apin and six others; the Bethanien section by Beate Scheder): 'fast 150.000 Euro' planned cut, 'Residencies haben keine Lobby' (Antje Weitzel). n.b.k. joint statement has no date on the page."
+ },
+ {
+  "id": "juming-museum-new-taipei",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: 24,000 ping and 'largest outdoor sculpture museum in Taiwan' (page: 11 hectares, 8 open to visitors)",
+   "'supervising agency' (page: 指導單位, guidance unit)",
+   "'memberships' not on the Support & Join menu",
+   "absence/verdict: 'none of them falls in a flagged industry'",
+   "art students group rate omitted"
+  ],
+  "before": "the museum says its grounds cover about 24,000 ping and calls it the largest outdoor sculpture museum in Taiwan",
+  "after": "the museum says the site covers 11 hectares, of which 8 are open to visitors; Ministry of Culture as guidance unit (指導單位)",
+  "sources": [
+   "https://www.juming.org.tw/mainssl/modules/MySpace/index.php?sn=ec&pg=ZC843601",
+   "https://www.juming.org.tw/mainssl/wdb2/go.php?xmlid=151724&urlxmlid=151744",
+   "https://www.juming.org.tw/mainssl/modules/MySpace/index.php?sn=ec&pg=ZC943614"
+  ],
+  "reason": "Confirmed: founder page says he put his lifetime savings and twelve years into the museum, opened 1999; board of nine, accounting and legal advisors on the organisation page; annual report links for 2016 to 2025; sponsors 新北北海溫泉洲際酒店 and 虹鋼鍛藝設計股份有限公司 and exhibition dates 2026/5/9 to 2026/12/20; ticket and closure details."
+ },
+ {
+  "id": "kapelica-gallery-kersnikova-institute-ljubljana",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: Depot:LJU Cosinus BRX Gallery in Brussels",
+   "Jurij Krpan 'has led the institute' (page: has led the gallery since its founding)",
+   "'non-governmental' unsupported",
+   "verdict 'public' not on a page",
+   "absence: 'The list gives no amounts', 'No funder in a flagged industry is named'"
+  ],
+  "before": "Funding verdict 'public: ...'; gallery also manages Depot:LJU Cosinus BRX Gallery in Brussels",
+  "after": "Verdict 'supported by the Slovenian Ministry of Culture, the City of Ljubljana and European Union programmes'; Brussels gallery cut",
+  "sources": [
+   "https://kersnikova.org/wp-json/wp/v2/supporter?per_page=100",
+   "https://culture.gov.si/en/Kapelica_Gallery",
+   "https://culture.gov.si/en/Kersnikova_Institute"
+  ],
+  "reason": "21 supporter entries confirmed including Ministrstvo za kulturo RS and Mestna občina Ljubljana; BioTehna 2012 and Rampa 2013 confirmed on kersnikova.org unit data; Kapelica 1995 and ŠOU founder confirmed."
+ },
+ {
+  "id": "kaskadenkondensator-basel",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: idea arose when the brewery complex became the Werkraum Warteck pp",
+   "verdict 'mainly public' not on the page (page: state contributions of the Canton plus other foundations and rental income)",
+   "'renovated in 2021' (page: was and is being renovated in 2021)",
+   "absences: 'No amounts are given', 'No funder in a flagged industry'",
+   "'and others' filler"
+  ],
+  "before": "Kaskadenkondensator (Kasko): mainly public and foundation-funded ...",
+  "after": "Costs covered by state contributions from the Canton of Basel-Stadt, foundations and occasional rental income; 2025 supporters Kanton BS-Stadt, GGG Basel, Christoph Merian Stiftung; Memoriav supports the archive",
+  "sources": [
+   "https://www.kasko.ch/info",
+   "https://www.bs.ch/medienmitteilungen/2007-kurzmitteilungen-aus-der-regierungsrats-sitzung-bulletin",
+   "https://de.wikipedia.org/wiki/Kaskadenkondensator"
+  ],
+  "reason": "Confirmed: CHF 60/30/150 membership, board of five, co-leaders, 16 January 2007 CHF 25,000 a year for 2007 to 2010."
+ },
+ {
+  "id": "kathmandu-triennale-kathmandu",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: 'Nepal's premier international platform for global contemporary art' (footer says 'premier arts festival of Nepal')",
+   "unsupported: 11 February to 12 April 2026 (pages say February 2026)",
+   "unsupported: satellite residencies, symposiums, visiting hours 10:00 to 18:00, free entry",
+   "'private arts foundation' verdict wording unsupported",
+   "absence: 'supporter page lists only these two', 'no funder in a flagged industry is documented'"
+  ],
+  "before": "Fifth edition 11 February to 12 April 2026 ...; Visiting 2026: open daily 10:00 am to 6:00 pm, free",
+  "after": "Fifth edition February 2026; programme limited to Students' Triennale, satellite exhibitions and workshops; visiting line cut; Australian Embassy support attributed to the Triennale page and the Kathmandu Post of 12 August 2024",
+  "sources": [
+   "https://kathmandupost.com/arts/2024/08/12/kathmandu-triennale-s-fifth-edition-to-take-place-in-2026",
+   "https://kathmandupost.com/art-culture/2023/12/29/nafa-saf-tie-up-for-kathmandu-triennale",
+   "https://www.e-flux.com/announcements/434340/kathmandu-triennale-2077"
+  ],
+  "reason": "Confirmed: NAFA MoU December 2023 (Post Report, 29 December 2023), e-flux 2022 edition facts with culture ministry as organiser, Orientations review by Yifawn Lee dated 24 August 2022 (more than seventy organisations). The 2022 supporters list names embassies and companies only as logos identified by file names, so none was added. plan-your-visit URL removed from SOURCES (no hours or fees on it)."
+ },
+ {
+  "id": "kharkiv-municipal-gallery",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "title of the Objectiv.tv piece quoted with Russian 'ради' (page: 'заради' and '(відео)')",
+   "Wikipedia attribution for programmes (the programmes are on Ukrainian Wikipedia)",
+   "'one of the first municipal galleries' (en Wikipedia: first Ukrainian galleries of contemporary art)",
+   "absences: 'The sources give no budget figures or named private funders', 'No private or flagged funder is documented'",
+   "'culture department' not named on the Ukrainian page"
+  ],
+  "before": "Objectiv.tv, Olena Nahorna, 'Переселення «муніципалки» ради комунального ТБ: що гарантує Терехов' ...",
+  "after": "Objectiv.tv, Olena Nahorna, 'Переселення «муніципалки» заради комунального ТБ: що гарантує Терехов (відео)', 11 March 2023; programmes attributed to Ukrainian Wikipedia",
+  "sources": [
+   "https://www.objectiv.tv/?p=309863",
+   "https://www.objectiv.tv/?p=309860",
+   "https://uk.wikipedia.org/wiki/Харківська_муніципальна_галерея"
+  ],
+  "reason": "Objectiv.tv confirmed: published 11 March 2023 17:57, six staff, mayor Terekhov phoned the director on 11 March, documented guarantees awaited. English Wikipedia carries maintenance tags (no sources)."
+ },
+ {
+  "id": "khoj-new-delhi",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: 'for artists by artists', annual artists' workshop, international residencies, India Foundation for the Arts, 'embassies' in the verdict, 'many embassies, cultural centres and companies'",
+   "Art Newspaper wording: 'donated or made' (article: invited to donate or create work); alumni donation statement now quoted from the article",
+   "absences: 'undated and with no amounts', 'no funder in a flagged industry is documented'"
+  ],
+  "before": "Funding: foundations, cultural institutes, embassies and private donors; Peers with the India Foundation for the Arts",
+  "after": "Funding: foundations, cultural institutes and private donors; programmes limited to the story page; The Art Newspaper (Cleo Roberts-Komireddi, 3 February 2025) paraphrased from the article",
+  "sources": [
+   "https://khojstudios.org/supporters/",
+   "https://khojstudios.org/our-story/",
+   "https://www.theartnewspaper.com/2025/02/03/khoj-artists-association-in-delhi-holds-fundraising-show-at-perilous-time-for-indias-non-profits"
+  ],
+  "reason": "Confirmed: main supporters Prince Claus Fund, Goethe-Institut New Delhi, Ford Foundation; 12 Capital Circle names; Benefactor Sangeeta Jindal. The record source khojstudios.org/about/ returns 404 and is not cited. Wikipedia places the studio in Khirkee Village; the address S-17 Khirkee Extension is stated on khojstudios.org."
+ }
+]

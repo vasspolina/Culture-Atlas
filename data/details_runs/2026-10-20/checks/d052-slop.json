@@ -1,0 +1,231 @@
+[
+ {
+  "id": "birmingham-museum-of-art-birmingham",
+  "section": "Red flags: Fossil fuels (Alabama Power)",
+  "problems": [
+   "logo-only sponsor named as a funding line",
+   "unsupported: 'Alabama Power is a subsidiary of Southern Company (Inside Climate News)' for the 2021 article",
+   "no generation mix stated",
+   "no article author or date"
+  ],
+  "before": "Alabama Power is a current Founders Circle corporate supporter ... Inside Climate News reported that Plant Miller emitted 20,834,019 metric tons ... largest single producer of greenhouse gas pollution in 2023 for the ninth year running.",
+  "after": "Alabama Power's logo appears under Founders Circle on the museum's list of current corporate supporters (archived 5 March 2026). Alabama Power's 2026 fact card gives 2025 generation as 37% natural gas, 34% coal, 21% nuclear, 5% hydro, 3% other. Plant Miller emitted 20,834,019 t CO2 in 2021 (Phil McKenna, ICN, 21 Nov 2022); top US greenhouse gas emitter for 2023, ninth year (Dennis Pillion, ICN, 16 Oct 2024). Flag kept: coal and gas are 71% of generation, natural gas the largest single line.",
+  "sources": [
+   "https://web.archive.org/web/20260305045537/https://www.artsbma.org/get-involved/sponsorship/",
+   "https://insideclimatenews.org/?p=87585",
+   "https://www.alabamapower.com/content/dam/alabama-power/pdfs-docs/company/fact-card.pdf"
+  ],
+  "reason": "On the archive copy the sponsor names appear only as logo images under tier headings (file name AL_power_v_rgb.jpg for Alabama Power); the report now says so. The fact card text was read from the PDF text layer; the percentages were confirmed against the energy page, which gives about 30% clean."
+ },
+ {
+  "id": "birmingham-museum-of-art-birmingham",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "incomplete tier list",
+   "bottom line named an Inside Climate News ranking not on the page ('ranks as the nation's largest greenhouse gas emitter')"
+  ],
+  "before": "Sustainers Circle shows Blue Cross and Blue Shield of Alabama and Vulcan Materials ... Inside Climate News ranks as the nation's largest greenhouse gas emitter.",
+  "after": "Added Barber Companies to the Sustainers Circle and the Benefactor's Circle names; bottom line now states Alabama Power's fact-card mix and Plant Miller's 2023 ranking.",
+  "sources": [
+   "https://web.archive.org/web/20260305045537/https://www.artsbma.org/get-involved/sponsorship/",
+   "https://projects.propublica.org/nonprofits/organizations/636188288"
+  ],
+  "reason": "ProPublica figures ($33,760,976 net assets; $1,334,203 expenses and $1,064,453 revenue to June 2025; $3,637,520 revenue and $2,862,025 contributions to June 2024) all confirmed."
+ },
+ {
+  "id": "blanton-museum-of-art-austin",
+  "section": "Red flags: Fossil fuels (Scurlock oil money)",
+  "problems": [
+   "unsupported: 'later president of Scurlock Oil' not on the Eddy Scurlock page",
+   "foundation date imprecise"
+  ],
+  "before": "The museum's namesake Jack S. Blanton was Scurlock's son-in-law and later president of Scurlock Oil (Wikipedia). ... He set up the foundation in 1954.",
+  "after": "Jack S. Blanton joined Scurlock Oil in 1950, became president in 1958, CEO and chairman from 1983 (Wikipedia, Jack S. Blanton); Scurlock established and chartered the Scurlock Foundation in April 1954 (Wikipedia, Eddy Scurlock).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Jack_S._Blanton",
+   "https://en.wikipedia.org/wiki/Eddy_Scurlock",
+   "https://blantonmuseum.b-cdn.net/app/uploads/2026/02/2025-Blanton-Impact-Report-Pages-2.1.26.pdf"
+  ],
+  "reason": "Impact report confirmed: Visionary Circle ($100,000+, gifts received 1 Sep 2024 to 31 Aug 2025) lists Scurlock Foundation; Leadership Board as of 31 Dec 2025 lists Aubrey Epstein (chair) and Elle Moody (vice-chair). The report adds no Epstein implication. Founder-fortune ruling holds: the foundation still gives at the top tier. Wikipedia does not state the foundation's endowment source beyond Scurlock establishing it."
+ },
+ {
+  "id": "boise-art-museum-boise",
+  "section": "Red flags: Fossil fuels (Idaho Power) -> moved to WIDER CONTEXT",
+  "problems": [
+   "flag not supported by the House rule: Idaho Power's own page shows hydro as largest source (36.9%), coal 9.9%, gas 22.6%",
+   "annual report cited for sponsorship also checked",
+   "co-ownership of North Valmy not stated on the page",
+   "bottom line listed the flag as the weak point"
+  ],
+  "before": "Red flags: Fossil fuels (Idaho Power) ... co-owns North Valmy ... The weak point is the Idaho Power sponsorship, since the utility still has coal-fired capacity with an exit planned for 2030.",
+  "after": "WIDER CONTEXT: Idaho Power's 2025 mix (36.9% hydro, 22.6% natural gas, 9.9% coal, 10.8% market purchases, 9.1% solar, 8.8% wind, 1.9% other; 'our largest resource' is hydropower); Jim Bridger one-third share, two units converted to gas in early 2024, coal exit scheduled by end of 2030; sponsorship link. Bottom line now gives both expense figures.",
+  "sources": [
+   "https://www.idahopower.com/energy-environment/energy/clean-today-cleaner-tomorrow/",
+   "https://www.idahopower.com/energy-environment/energy/energy-sources/thermal/emissions-data/",
+   "https://boiseartmuseum.org/wp-content/uploads/2026/09/FY2026-Annual-Report_for-WEBEMAIL.pdf"
+  ],
+  "reason": "Museum home page and annual report both say Especially for Seniors is sponsored by Idaho Power (third Wednesday of each month). Form 990 expenses $1,701,311 versus annual report total expenses $1,899,670 and total support and revenues $2,456,390: both confirmed."
+ },
+ {
+  "id": "bildmuseet-umeå",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "unsupported: 'The 2017 and 2018 annual reports name securing long-term funding as the main challenge'",
+   "bottom line repeated the unsupported claim"
+  ],
+  "before": "The 2017 and 2018 annual reports name securing long-term funding as the main challenge. / ... which the museum's own reports call its main challenge.",
+  "after": "Bullet and clause cut; bottom line now lists the 2024 figures (26.0 of 35.7 million kronor, Ministry of Culture 0.7, municipality 5.0, Campus X, region, Kempe, Nordic funds, Henry Moore Foundation).",
+  "sources": [
+   "https://bildmuseet.umu.se/siteassets/pdfer---bildmuseet/bildmuseet_2024.pdf",
+   "https://www.bildmuseet.umu.se/en/about-bildmuseet/"
+  ],
+  "reason": "Every 2024 figure confirmed in the annual report text (income 35.7 Mkr; Umeå University 26.0 incl. 2.2 from the Ministry of Education; Culture 0.7; 5.0, 1.5, 1.4, 0.5, 0.3, 0.6; costs 35.5; surplus 0.2; 76,173 visitors). The 2017 and 2018 reports are not among the sources and their addresses return no page, so the claim was cut."
+ },
+ {
+  "id": "bishop-museum-bernice-pauahi-bishop-museum-honolulu",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "unsupported: 'deferred maintenance'",
+   "verdict framing 'governance rather than funding'",
+   "formatting: two bullets run together"
+  ],
+  "before": "$10 million for capital improvements and deferred maintenance ... The weak point is governance rather than funding: ... whose report was withheld.",
+  "after": "$10 million for capital improvement projects; bottom line states the January 2023 dismissal and that officials said the report would not be made public.",
+  "sources": [
+   "https://mauinow.com/?p=385718",
+   "https://www.hawaiipublicradio.org/local-news/2023-01-13/bishop-museum-parts-ways-with-ceo-and-2-execs-after-lengthy-investigation",
+   "https://projects.propublica.org/nonprofits/organizations/990161980"
+  ],
+  "reason": "HPR (13 Jan 2023): board voted unanimously on Thursday to terminate CEO Melanie Ide, General Counsel Barron Oda and Vice President Wesley 'Kaiwi' Yoon, on paid leave since 1 July; investigator interviewed more than 40 staff. ProPublica: revenue $28,096,033, contributions $23,880,761 to June 2025, confirmed."
+ },
+ {
+  "id": "bishkek-school-of-contemporary-art-bisca",
+  "section": "Overview / Funding / Bottom line",
+  "problems": [
+   "unsupported: documenta fifteen participation through Gudskul (no opened page)",
+   "unsupported: eight Aralash issues (page lists twelve)",
+   "Wikipedia cited for BiSCA co-founder (page does not mention BiSCA)",
+   "date missing for 24.kg quote",
+   "Bulbul called BiSCA's residency",
+   "'prize money' not stated"
+  ],
+  "before": "participation in documenta fifteen (Kassel, 2022) through the Gudskul collective; eight issues of the zine Aralash; Prize money to a co-founder; Worth watching are ...",
+  "after": "documenta/Gudskul claim cut; twelve numbered issues of Aralash; Prince Claus Fund and NYU named as co-founder sources; 24.kg dated 25 September 2020; award wording neutral; bottom line lists partners.",
+  "sources": [
+   "https://bishci.com/en/about",
+   "https://bulbul.org.kg/",
+   "https://princeclausfund.nl/awardees/bermet-borubaeva"
+  ],
+  "reason": "BiSCA about page confirmed: informal self-organising association, no premises, autumn 2020, seven names, nine active, work 'for free'. Bulbul fees confirmed. The only source for documenta/Gudskul (an Artnet list) returns 403 and Wikipedia's list does not name BiSCA, so the claim was cut."
+ },
+ {
+  "id": "blaxtarlines-kumasi",
+  "section": "Overview / Funding",
+  "problems": [
+   "misquote: 'attached to, yet independent from' (e-flux says 'works in association with, yet independent from, KNUST')",
+   "cofounders not named for atelier houses",
+   "missing blank line before SOURCES"
+  ],
+  "before": "It is \"attached to, yet independent from\" the KNUST art college ...",
+  "after": "It \"works in association with, yet independent from, KNUST\" (e-flux, 6 October 2026); KNUST places it at the Department of Painting and Sculpture, Faculty of Art.",
+  "sources": [
+   "https://www.e-flux.com/education/features/6732773/trains-of-thought-on-educational-practices-crossing-venice",
+   "https://www.knust.edu.gh/news/news-items/knusts-blaxtarlines-selected-venice-biennale-2026-international-exhibition",
+   "https://www.thestateofthearts.co.uk/features/tsota-around-the-world-blaxtarlines/"
+  ],
+  "reason": "Other points confirmed: formally instituted 2015, seid'ou project 2003, four exhibitions 2015 to 2017 and 'Spectacles. Speculations…' 2018, free exhibitions; No. 69 from No. 81 (KNUST); Brooklyn Rail on Nkrumah, Garvey, Mahama, Akoi-Jackson."
+ },
+ {
+  "id": "bloc-projects-sheffield",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "bottom line 'public and modest' is a verdict without the figures behind it",
+   "income years not labelled"
+  ],
+  "before": "The documented money behind it is public and modest.",
+  "after": "Bottom line: income £105,892 to March 2025, £10,900 government grants, £8,600 NLHF award in 2017, grant for the 2015 renovation (Now Then).",
+  "sources": [
+   "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5138877/financial-history",
+   "https://www.heritagefund.org.uk/projects/forging-culture-and-industry-sheffields-changing-centre",
+   "https://nowthenmagazine.com/articles/bloc-projects"
+  ],
+  "reason": "Charity Commission: income £105.89k and government grants £10.90k to 31/03/2025; £145.20k to 31/03/2024. Heritage Fund: £8,600, 15/03/2017, Sharing Heritage. Charity purpose, Richard Bartle, Studio Polpo and 23 October 2015 confirmed."
+ },
+ {
+  "id": "bonner-kunstverein-bonn",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "Kunststiftung NRW purpose not on the page cited",
+   "Peter-Mertes 'has funded ... since 1985' overstates the page",
+   "city paid toward the renovation overstated",
+   "exhibition credits generalised into the Kunstverein's funding"
+  ],
+  "before": "Kunststiftung NRW was created ... to support art and culture projects ... paid toward the Blumenhalle renovation ... The money behind the Kunstverein is ... Kunststiftung NRW and the culture ministry ...",
+  "after": "Kunststiftung NRW is a foundation created by the NRW government, established 12 September 1989; Peter-Mertes agreed in 1985 to enable two scholarships a year; 2006 renovation started from a benefit auction supplemented by city funds; bottom line ties Kunststiftung, ministry, Kemmler, Art Explora and Galerie Molitor to the 2026 Dora Budor exhibition.",
+  "sources": [
+   "https://www.e-flux.com/announcements/6787546/dora-budormy-energy-comes-from-freedom",
+   "https://de.wikipedia.org/wiki/Bonner_Kunstverein",
+   "https://en.wikipedia.org/wiki/Kunststiftung_NRW"
+  ],
+  "reason": "e-flux credits confirmed for the exhibition (27 June to 6 September 2026). Website confirmed over 1,000 members, eight subsidised workspaces, over 2,000 Artothek works, ten board members, directors and awards."
+ },
+ {
+  "id": "bonniers-konsthall-stockholm",
+  "section": "Overview / Funding / Bottom line",
+  "problems": [
+   "unsupported: 'Founded by Jeanette Bonnier' (site says roots in the Maria Bonnier Dahlin Foundation)",
+   "'young Swedish artist' not stated",
+   "'iron-framed' (page says iron-shaped)",
+   "unsupported: café on the first floor",
+   "unsupported: the Bonnier Group media business funds it (pages say it runs it)",
+   "'about 3 billion' and 'planned to donate'"
+  ],
+  "before": "Founded by Jeanette Bonnier ... family-funded: the Bonnier family, the Bonnier Group media business and a foundation ... set up to pay 15 million SEK a year according to a 2016 report.",
+  "after": "Roots in the foundation Jeanette Bonnier founded in 1985; run by the family within the Bonnier Group; Bonnier's 2017 review says she left a foundation for future financing; Dagens PS (Ola Söderlund, 20 Sep 2016, citing Sveriges Radio): estate 3 billion SEK, 15 million SEK a year to the konsthall from its returns.",
+  "sources": [
+   "https://www.dagensps.se/privatekonomi/har-hamnar-hennes-miljarder/",
+   "https://annualreview2017.bonnier.com/art-for-everyone",
+   "https://bonnierskonsthall.se/en/?p=248"
+  ],
+  "reason": "Confirmed: 15 million SEK a year per Dagens PS; foundation chaired by niece Christel Engelbert; Bonnier Group 2025 net sales SEK 23,311 million and EBITA 2,402 million; ticket prices, hours, Nordin and Ringborg dates. No page opened says the Bonnier Group's business pays the konsthall directly, so the verdict names the estate foundation and the family's running of it."
+ },
+ {
+  "id": "britto-arts-trust-dhaka",
+  "section": "Overview / Funding / Criticism / Wider context / Bottom line",
+  "problems": [
+   "unsupported: 'pooled their own money to rent workspace', 'artwork sales', 'later went to the space fund' (interview: salaries and remuneration donated, savings from artworks, fixed deposit paid for the space)",
+   "unsupported: 'roughly seven rented homes', studio and village workshop",
+   "'working unofficially since about 2000' reworded",
+   "date of Bad at Sports piece",
+   "mural 'taken down after it opened' reworded to the Wikipedia wording",
+   "'core project'",
+   "Overall line generalised from one review"
+  ],
+  "before": "At the start the trustees pooled their own money to rent workspace and took no salary ... Overall: Coverage is admiring, with one mild reservation about the art.",
+  "after": "The trustees donated their salaries and all remuneration to the house, saved some money from their own artworks and put the savings in a fixed deposit that paid for the space bought in 2011 (On Curating); Bad at Sports dated 28 June 2022; Overall describes the single review; wider context states the mural by Taring Padi and that Britto is on Wikipedia's participant list.",
+  "sources": [
+   "https://www.on-curating.org/issue-54-reader/britto-arts-trust-tayeba-begum-lipi-and-mahbubur-rahman.html",
+   "https://www.showcase.com.bd/britto-arts-trust-to-represent-bangladesh-in-documenta-fifteen/",
+   "https://badatsports.com/?p=52016"
+  ],
+  "reason": "Showcase (1 June 2022) confirms 19 artists, documenta Halle, politics of food, documenta und Museum Fridericianum gGmbH support and Goethe Institut, Arts Collaboratory, Bagri Foundation as major supporters. Bad at Sports (Keeley Haftner, 28 June 2022) confirms 'deftly-constructed' palan, 'delectable (albeit on the nose)' and the meaning of Britto. Tate page confirms Rasad (2024)."
+ },
+ {
+  "id": "bikini-wax-eps-mexico-city",
+  "section": "Overview / Funding / Bottom line",
+  "problems": [
+   "unsupported: 'communal living, working and hangout space' (not on any opened page)",
+   "'two or three events a month' (page says up to)",
+   "'small backers' not stated",
+   "bottom line told the reader to check the founding story"
+  ],
+  "before": "It describes itself as a communal living, working and hangout space and a self-organised study centre ... Sources disagree on who founded it and when, so the founding story is worth checking ...",
+  "after": "Self-description quoted from de Appel: 'self-organised study centre/experimental exhibition-making (para)site'; 'up to two or three events'; funding verdict 'named backers'; bottom line states the two founding accounts (Elephant: Daniel Aguilar Ruvalcaba, 2011; My Art Guides: Israel Urmeer, 2008).",
+  "sources": [
+   "https://myartguides.com/artspaces/non-profit/mexico-city/biquini-wax-eps",
+   "https://elephant.art/new-collectives-shaking-mexico-city-art-scene/",
+   "https://www.deappel.nl/en/archive/entities/37708-biquini-wax-eps"
+  ],
+  "reason": "Backers (Tacos Güero, Roy's and Moncho's parents, Tezcatlipoca, PAC) confirmed on My Art Guides; Elephant (6 Feb 2019) confirms founder, twelve members, Doctores squat March 2017 to October 2018 and the quote. The CDMX tourism site confirms 'entirely collective'."
+ }
+]

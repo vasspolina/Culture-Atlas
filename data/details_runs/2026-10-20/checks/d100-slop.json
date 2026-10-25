@@ -1,0 +1,211 @@
+[
+ {
+  "id": "yorkshire-sculpture-park",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "flag without funding relationship: HSBC listed with no year, amount or current label"
+  ],
+  "before": "In October 2022 two HSBC advertisements were banned by the ASA ... Connection to the space: HSBC is named as one of YSP's corporate partners on its supporters page. The page gives no year or amount for the partnership.",
+  "after": "Section deleted. HSBC stays in FUNDING as a listed corporate partner; the HSBC Wikipedia URL removed from SOURCES.",
+  "sources": [
+   "https://ysp.org.uk/support-us/our-supporters",
+   "https://en.wikipedia.org/wiki/HSBC"
+  ],
+  "reason": "The supporters page lists HSBC under Corporate Partners with no year, amount or 'current' label, so the ASA ban of HSBC adverts (a bank's own case) has no documented link to the space. The HSBC Wikipedia page was opened but the 2022 ASA passage sat beyond the part the fetch returned, so the claim also stayed unverified."
+ },
+ {
+  "id": "yorkshire-sculpture-park",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "absence statements: 'It gives no years or amounts', 'the page names none of them'",
+   "unsupported: 'then director'",
+   "unsupported: 'two named foundations', 'mainly Arts Council England and Wakefield Council grants'"
+  ],
+  "before": "public and private mix: Arts Council England, Wakefield Council, two named foundations and individuals, plus corporate partners; ... YSP's then director Clare Lilley; ... The money behind YSP is mainly Arts Council England and Wakefield Council grants, two named foundations ...",
+  "after": "Verdict names each funder; 'YSP director Clare Lilley'; bottom line states the documented £4,010,397 (2023 to 2026, 17% of annual income, stated by YSP) and lists the other funders.",
+  "sources": [
+   "https://ysp.org.uk/press/ysp-has-been-offered-funding-as-part-of-arts-council-englands-2023-26-investment-programme",
+   "https://ysp.org.uk/support-us/our-supporters"
+  ],
+  "reason": "Confirmed: ACE £4,010,397 for 2023 to 26, matching the past 12 years, 17% of income, release of 4 November 2022, 'standstill award'. Confirmed names: Roger Evans, Liz and Terry Bramall Foundation, Wakefield Council, Dunard Fund, corporate partners Archivist, Ashleigh Signs, HSBC, Luscombe Drinks Ltd, Sandal MINI and BMW. The press release gives Lilley's title as Director with no 'then'; no page calls the Bramall Foundation and Dunard Fund 'two named foundations' as a pair or says 'mainly'. Overview facts (entry prices, accessibility, Wikipedia history) opened and match; no press items."
+ },
+ {
+  "id": "yyz-artists-outlet-toronto",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: '116 Spadina in the early 1980s'",
+   "unsupported: name 'chosen to create something new'",
+   "recent graduates"
+  ],
+  "before": "Moved to 116 Spadina in the early 1980s and to 401 Richmond in 1997 ... The name was chosen to create something new while staying connected to the history of artists supporting artists ...",
+  "after": "YYZ says it started on Queen Street, moved to Spadina and has been at 401 Richmond since 1997. The name reflects a commitment to artists supporting artists ...",
+  "sources": [
+   "https://yyzartistsoutlet.org/history/",
+   "https://www.yyzartistsoutlet.org"
+  ],
+  "reason": "The history page says 'We started on Queen Street, before moving to Spadina' with no street number or year (1981 appears only in image file names) and 401 Richmond in 1997. Founders graduated from OCAD in 1979."
+ },
+ {
+  "id": "yyz-artists-outlet-toronto",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'programming fund'",
+   "unsupported: 'project support', 'individual donors' in verdict",
+   "2015 results page not cited"
+  ],
+  "before": "Registered charity (CanadaHelps), taking donations to its programming fund ... The 2015 results list the same amount in year 2 ...",
+  "after": "Registered charity (CanadaHelps), taking donations through CanadaHelps. The March 2015 results list the same amount in year 2; 2015 OAC URL added to SOURCES; accessibility URL removed.",
+  "sources": [
+   "https://www.arts.on.ca/grants/general-granting-information/grant-results/2016/march/visual-arts-artist-run-centres-and-organizations",
+   "https://www.arts.on.ca/grants/general-granting-information/grant-results/2015/march/visual-arts-artist-run-centres-and-organizations",
+   "https://www.canadahelps.org/en/charities/yyz-artists-outlet"
+  ],
+  "reason": "Confirmed $41,966 Multi-Year Operating year 3 (March 2016 results) and year 2 (March 2015 results); window space 2002 funded by Margie Zeidler's donation and Ontario Trillium Foundation funds (YYZ history page); CanadaHelps says registered charity, names no fund. The accessibility page does not support any cited line, so it was removed from SOURCES."
+ },
+ {
+  "id": "z33-hasselt",
+  "section": "FUNDING",
+  "problems": [
+   "absence statements: 'The site gives no years or amounts', 'VRT NWS does not name the funding body'",
+   "wrong date: investigation 'opened in February 2025' (VRT says it began some time earlier and was confirmed 4 February 2025)",
+   "partners identified only by logo links"
+  ],
+  "before": "In February 2025 the Federal Judicial Police opened an investigation ...; The partners shown on Z33's site are Vlaanderen, the city of Hasselt, the Nationale Loterij and De Standaard. The site gives no years or amounts.",
+  "after": "On 4 February 2025 the Limburg prosecutor's office confirmed that the Federal Judicial Police had opened an investigation ...; the Partners section of Z33's organisation page links to Vlaanderen, the city of Hasselt, the Nationale Loterij and De Standaard. Added: Paardsdemer chapel project (200,000 euros) funded by Nationale Loterij and Z33 (VRT NWS, Lieven Roux, 31 May 2024).",
+  "sources": [
+   "https://www.vrt.be/vrtnws/nl/2025/02/04/gerechtelijk-onderzoek-opgestart-naar-mogelijke-financieel-wanbe/",
+   "https://www.vrt.be/vrtnws/nl/2025/04/03/onderzoek-z33-hasselt-financiele-onregelmatigheden-afgesloten/",
+   "https://z33.be/nl/organisatie"
+  ],
+  "reason": "Press items kept: VRT NWS, Yente Van der Sande, 'Gerechtelijk onderzoek gestart naar mogelijk financieel wanbeleid bij kunstenhuis Z33 in Hasselt', 4 February 2025 (Coppin of the prosecutor's office confirmed; Rutten/Gennez; reduced subsidies and dismissals some years earlier); VRT NWS, Khalid Sellam and Christine Peeters, 'Onderzoek naar financiële onregelmatigheden bij Z33 in Hasselt afgesloten: Duidelijkheid komt geen dag te vroeg', 3 April 2025 (no indications of breach of trust; An Moons). The partner section is headed 'Partners:' and holds four logo links to vlaanderen.be, hasselt.be, nationale-loterij.be and standaard.be; stated as links, not as amounts. Nationale Loterij treated as an ordinary public funder, no flag. Wikipedia: Flemish Community structural support since 2006 within the Arts decree, Province of Limburg support."
+ },
+ {
+  "id": "z33-hasselt",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported attribution: Paardsdemerkapel mural credited to Z33 without a cited page",
+   "'curated Manifesta 9' (Wikipedia says brought to Flanders)",
+   "Kunst aan de Maas name not on Wikipedia"
+  ],
+  "before": "the Paardsdemerkapel, a chapel with a mural by Amber Andrews (Z33); Z33 curated Manifesta 9 in 2012 ...",
+  "after": "The Paardsdemer chapel is built into the front facade; VRT NWS reported on 31 May 2024 that it would open permanently with a mural by Amber Andrews. Wikipedia says Z33 brought Manifesta 9 to Flanders in 2012 and curated the Ljubljana and Istanbul editions.",
+  "sources": [
+   "https://www.vrt.be/vrtnws/nl/2024/05/31/z33-in-hasselt-opent-kapel-tijdens-virga-jessefeesten-met-kleurr/",
+   "https://en.wikipedia.org/wiki/Art_Museum_Z33"
+  ],
+  "reason": "VRT NWS, Lieven Roux, 'Z33 in Hasselt opent kapel tijdens Virga Jessefeesten met kleurrijke muurschildering: Ode aan vrouwen', 31 May 2024, says the chapel will open and Andrews will paint it. Opening hours, prices and accessibility match z33.be/nl/praktisch."
+ },
+ {
+  "id": "zanabazar-museum-of-fine-art-ulaanbaatar",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported verdict 'public' / 'Mongolian public museum'",
+   "unsupported: thangkas, masks, statues, costumes",
+   "unsourced Website line",
+   "address and collection size not attributed",
+   "absence-style clause (own site is down)"
+  ],
+  "before": "Zanabazar Museum of Fine Art: public: listed by the National Centre for Cultural Heritage, a Mongolian government site; Website: en.zanabazarmuseum.mn; Collection: nearly 16,600 objects according to Google Arts & Culture, and more than 20,000 according to Wikipedia; paintings by B. Sharav, thangkas, masks, statues and costumes ...",
+  "after": "Verdict: listed on the website of the National Centre for Cultural Heritage; UNESCO project since 2004. Website: http://www.zanabazarmuseum.mn/ (the address listed on the NCCH page). Addresses (Wikipedia: Chingeltei District; Google Arts & Culture: Sambuu St, CHD 4th khoroo, 15170; NCCH footer: Khan-Uul district, the centre's own address), galleries (12 vs 10 halls) and collection (16,600 / over 16,000 / over 20,000) given attributed. Lawsuit paragraph rewritten with the museum's arguments attributed to the museum.",
+  "sources": [
+   "http://ncch.gov.mn/Museum/5",
+   "https://artsandculture.google.com/partner/the-fine-arts-zanabazar-museum",
+   "https://ikon.mn/n/3jte"
+  ],
+  "reason": "No opened page calls the museum a state museum (NCCH page, e-flux directory and Wikipedia do not say so), so 'public' was cut and the facts kept. iKon.mn, G. Mörön (Г.Мөрөн), 4 December 2025, 'Г.Занабазарын нэрэмжит музейн дэргэд 28 давхар барилга барихыг эсэргүүцсэн нэхэмжлэлийг гурван шатны шүүх хэрэгсэхгүй болгов': Supreme Court heard it on 2 December 2025 and upheld the first-instance and appeal rulings; groundwater, three metres from the protected zone and no protection measures are the museum's claims. UNESCO project since 2004 is Wikipedia-only and attributed. e-flux directory page and artscouncil.mn PDF were not used (e-flux page holds no museum facts)."
+ },
+ {
+  "id": "zarya-centre-for-contemporary-art-vladivostok",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "residency date conflict (centre: mid-2014; ASEF: December 2014) stated as one",
+   "'MIF' and 'Smena' called partners for events",
+   "'programme partners, not funders' unsupported"
+  ],
+  "before": "The artist residency opened in December 2014 (ASEF Culture360). ... names the Smena Centre ... and MIF as partners for 2026 events. ... Its state museum partners are programme partners, not funders.",
+  "after": "The centre says its residency has run since mid-2014 ...; ASEF Culture360 gives December 2014. The news page lists 'Na nozhkakh', organised with the Smena Centre in Kazan, and an MIF event on 4 to 6 September. The Tretyakov Gallery and other museums are named by the centre as partners in its exhibitions.",
+  "sources": [
+   "https://zaryavladivostok.ru/ru/page/about",
+   "https://zaryavladivostok.ru/en/news",
+   "https://culture360.asef.org/resources/zarya-center-contemporary-art"
+  ],
+  "reason": "Confirmed: opened 2013 on Mechetin's initiative, Novabev Group (formerly Beluga Group); ASEF Culture360 page posted 27 November 2015 calls him founder of Russia's largest alcoholic beverage company. AiF-Primorye (vl.aif.ru, 14 November 2020, no author listed), 'Переезд в винодельческое хозяйство: ЦСИ «Заря» покидает Владивосток': the team moved to the Golubitskoe Art Foundation in Krasnodar Krai and the centre would close after meeting partnership obligations. Alcohol money not flagged. The 2016 Sobolev and 2017 kinetic art shows come from the centre's about page, not from ASEF."
+ },
+ {
+  "id": "ze-dos-bois-zdb-lisbon",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: '27 October 1994'",
+   "unsupported: 'began as a workspace for its founders then opened to outside artists'",
+   "'transdisciplinary' not on page",
+   "'Ministry of Culture, Youth and Sport' wording",
+   "'ticketed events' (Observador: paid attendance at shows and exhibitions)"
+  ],
+  "before": "Created on 27 October 1994 through a civic initiative by fifteen founders ...; it began as a workspace for its founders and then opened to outside artists ...; public and earned income: DGArtes, Lisbon City Council and ticketed events",
+  "after": "Created in 1994 as a non-profit by a civic initiative of fifteen founders, who wanted an alternative structure to the institutional and commercial panorama (stated by ZDB). Verdict: ... paid attendance at shows and exhibitions. Bottom line names the Direção-Geral das Artes, the Instituto de Gestão Financeira da Segurança Social and Lisbon City Council, 60% own revenue of a budget of about one million euros.",
+  "sources": [
+   "https://zedosbois.org/en/mission/",
+   "https://observador.pt/2024/11/29/galeria-ze-dos-bois-celebra-30-anos-com-exposicao-coletiva-singsong/",
+   "https://observador.pt/2026/02/08/incendio-na-galeria-ze-dos-bois-no-bairro-alto-em-lisboa/"
+  ],
+  "reason": "Confirmed: Observador/Lusa, 29 November 2024, 'Galeria Zé dos Bois celebra 30 anos com exposição coletiva Singsong' (support from 25,000 to 400,000 euros, budget about one million, 60% own revenue from 25,000 spectators at shows and exhibitions, quadrennial DGArtes support, Checa founder and director). Fire: Observador, Larissa Faria with Lusa, 8 February 2026, 'Incêndio na Galeria Zé dos Bois, no Bairro Alto, feriu quatro bombeiros. Espaço promete reabertura para breve' (first-floor room, four firefighters burned, commander reported floor and walls damaged, director said structure not damaged, closed for cleaning)."
+ },
+ {
+  "id": "zeitz-mocaa",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "layout break: numbered item 1 glued to the Overall line",
+   "wrong titles: Blackman missing 'Zeitz Mocaa:' prefix and quote marks; Harris 'MeToo' vs '#MeToo'; Daily Maverick 'Zeitz MOCAA' vs 'Zeitz Mocaa'",
+   "Overall line did not describe the four pieces",
+   "'declined to disclose financial details even to the press' loosely worded",
+   "criticism status not stated for each piece"
+  ],
+  "before": "Overall: Criticism concentrates on governance ...founding director.1. The Art Newspaper: Matthew Blackman, \"Africa's private Tate Modern must do more for its public\" (2018) ...",
+  "after": "Overall line on its own line; item 1: The Art Newspaper: Matthew Blackman, \"Zeitz Mocaa: Africa's private 'Tate Modern' must do more for its public\" (2018) - criticises the museum; item 2: Daily Maverick: Rebecca Davis, \"Zeitz Mocaa: Cape Town's new art museum stuns and provokes\" (2017) - favourable overall, records criticism; item 3: Flash Art: Kirsty Cockerill, \"The Main Complaint\" (2019) - criticises the museum; item 4: The Art Newspaper: Gareth Harris, \"Zeitz Mocaa director Mark Coetzee embroiled in #MeToo scandal\" (2018) - news report, not criticism of the museum.",
+  "sources": [
+   "http://www.theartnewspaper.com/comment/africa-s-private-tate-modern-must-do-more-for-its-public",
+   "https://www.dailymaverick.co.za/article/2017-09-26-zeitz-mocaa-cape-towns-new-art-museum-stuns-and-provokes/",
+   "https://flash---art.com/2019/03/the-main-complaint-zeitz-mocaa-cape-town/"
+  ],
+  "reason": "Press items kept with exact data: The Art Newspaper, Matthew Blackman, 'Zeitz Mocaa: Africa's private \"Tate Modern\" must do more for its public', 31 October 2018 (quotes 'steadfastly declined to reveal details about its finances', 192 schoolchildren, 9,000 students, 'public benefit'); Daily Maverick, Rebecca Davis, 'Zeitz Mocaa: Cape Town's new art museum stuns and provokes', 26 September 2017; Flash Art, Kirsty Cockerill, 'The Main Complaint', 11 March 2019 (review of the show The Main Complaint, praises the show, criticises the museum's governance); The Art Newspaper, Gareth Harris, 'Zeitz Mocaa director Mark Coetzee embroiled in #MeToo scandal', 21 May 2018 (suspended 16 May, resigned per the museum, trustees' inquiry). The two Art Newspaper titles came from URL slugs and were corrected from the opened pages."
+ },
+ {
+  "id": "zeitz-mocaa",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'owns the building'",
+   "unsupported: 9,500 m2",
+   "unsupported: '6 May 2019'",
+   "bottom line named Growthpoint as a Waterfront investor (Daily Maverick names only the PIC)",
+   "absence clause: 'The page gives no years', 'press release states no amount'",
+   "over 800 words (855)"
+  ],
+  "before": "The V&A Waterfront owns the building and paid for its renovation ...; about 9,500 m2 over nine floors; from 6 May 2019; built with more than R500 million from the V&A Waterfront and its investors, including the Public Investment Corporation and Growthpoint ...",
+  "after": "The conversion cost more than R500 million, borne by the V&A Waterfront and its investors, including the Public Investment Corporation (Daily Maverick, 2017); nine floors; from May 2019; bottom line lists Growthpoint, Zeitz, PIC and the V&A Waterfront as founders on the supporters page and BMW Group South Africa, the Mellon Foundation and Hazendal as sponsors; BMW naming partnership 2024 to 2026. Report cut to 791 words without SOURCES.",
+  "sources": [
+   "https://zeitzmocaa.museum/supporters/",
+   "https://www.press.bmwgroup.com/south-africa/article/detail/T0445019EN/",
+   "https://www.theartnewspaper.com/2024/04/22/how-koyo-kouoh-is-getting-zeitz-mocaa-museum-back-on-track"
+  ],
+  "reason": "Confirmed: supporters page founders (Growthpoint, Jochen Zeitz, PIC, V & A Waterfront), corporate members (Allan Gray, Bloomberg), sponsors (Mellon Foundation, Hazendal Wine Estate, BMW Group South Africa); BMW press release 12 September 2024, three-year naming rights 2024 to 2026; The Art Newspaper, John Kampfner, 'How Koyo Kouoh is getting Zeitz Mocaa museum back on track', 22 April 2024 (loan then donation, Mellon-funded fellowship of about six a year, Gucci and BMW, paying board). Wikipedia: Kouoh from May 2019 to her death in May 2025; 57 m silo, 1921 to 1924, Heatherwick, nine floors."
+ },
+ {
+  "id": "zolak-vilnius",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'founders' private contributions' (Reform.news says private contributions, not whose)",
+   "unsupported: crypto bar as an income source",
+   "wrong attribution: 150 m2 and sauna credited to Zolak",
+   "unsupported: 'Opened on 14 June 2025' (Reform.news of 11 June announces the opening)",
+   "unsupported: masterclass 'later'",
+   "unsupported: sustainability 'without grants as a way to sustain Belarusian culture independently'"
+  ],
+  "before": "self-funded: founders' private contributions, residency subscriptions, event rentals, a crypto bar and donations; Opened on 14 June 2025 ...; The space is about 150 m2 ... (stated by Zolak)",
+  "after": "privately funded: private contributions, a residency subscription, space rentals and event donations; does not plan to take grants. Reform.news reported on 11 June 2025 that the space would open on 14 June 2025; 150 m2 and sauna credited to Reform.news; Zolak lists the room sizes.",
+  "sources": [
+   "https://reform.news/u-vilni-adkryvaecca-novaja-belaruskaja-prastora-zolak",
+   "https://zolak.lt/"
+  ],
+  "reason": "Reform.news, no byline, 11 June 2025, 'У Вільні адкрываецца новая беларуская прастора «Золак»': 'Золак існуе за кошт прыватных унёскаў і не плануе фінансавацца грантамі'; creators Markielau (activist), Nahornaja (writer), Hudzilin (photographer). zolak.lt lists a Crypto Bar as a 21.36 m2 room, not as income; rates, 24 hours, donation-based events and Lightning discount confirmed there."
+ }
+]
