@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=266">
-  <script src="assets/config.js?v=266"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=267">
+  <script src="assets/config.js?v=267"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9886,11 +9886,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v266';
+    const ATLAS_RELEASE = 'culture-atlas-v267';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=266').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=267').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10192,7 +10192,7 @@ return maplibregl$1;
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ', ' + inst.curatorial_focus : (inst.neighborhood ? ', ' + inst.neighborhood : ''));
 
-      ctx.font = '600 20px "Jokker", sans-serif';
+      ctx.font = '600 24px "Jokker", sans-serif';
       const nameW = ctx.measureText(nameUpper).width;
       ctx.font = ATLAS_CARD_MONO_FONT;
       const subW = ctx.measureText(subText).width;
@@ -10202,7 +10202,7 @@ return maplibregl$1;
       const padX = 16;
       const cardW = Math.max(260, Math.min(400, Math.max(nameW, subW, webW + 28) + barW + padX * 2));
       const pillH = 26;
-      const cardH = webUrl ? 112 : 70;
+      const cardH = webUrl ? 116 : 74;
 
       let cardX = px - cardW / 2;
       cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
@@ -10230,15 +10230,15 @@ return maplibregl$1;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillStyle = cardInk;
-      ctx.font = '600 20px "Jokker", sans-serif';
+      ctx.font = '600 24px "Jokker", sans-serif';
       ctx.fillText(fit(nameUpper), textX, cardY + 14);
 
       ctx.font = ATLAS_CARD_MONO_FONT;
-      ctx.fillText(fit(subText), textX, cardY + 44);
+      ctx.fillText(fit(subText), textX, cardY + 48);
 
       if (webUrl) {
         const btnX = textX;
-        const btnY = cardY + 70;
+        const btnY = cardY + 74;
         const btnW = Math.min(maxTextW, webW + 24);
         const btnH = pillH;
 
@@ -11205,7 +11205,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.stroke();
 
-        ctx.font = '400 15px "Jokker", sans-serif';
+        ctx.font = '400 14px "Jokker", sans-serif';
         ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -19406,9 +19406,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=266"></script>
-<script src="assets/layers.js?v=266"></script>
-<script src="assets/hq-detail.js?v=266"></script>
-<script src="assets/bubbles.js?v=266" defer></script>
+<script src="assets/typeset.js?v=267"></script>
+<script src="assets/layers.js?v=267"></script>
+<script src="assets/hq-detail.js?v=267"></script>
+<script src="assets/bubbles.js?v=267" defer></script>
 </body>
 </html>
