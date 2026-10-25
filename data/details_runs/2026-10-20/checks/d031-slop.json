@@ -1,0 +1,228 @@
+[
+ {
+  "id": "auto-italia-london",
+  "section": "RED FLAGS / FUNDING",
+  "problems": [
+   "flag without dated gift: Gulbenkian listed undated",
+   "unsupported: 'fundraising generates over half of its core running costs'",
+   "accessibility reported missing though the about page gives it"
+  ],
+  "before": "Red flags: Fossil fuels (Calouste Gulbenkian Foundation) / The listing is undated. / fundraising generates over half of its core running costs each year",
+  "after": "Red flags section removed. Funding: the Gulbenkian Foundation is named in the undated international supporters list ('past 15 years'); Wikipedia: foundation created by the will of oil magnate Calouste Gulbenkian, fully owned Partex until sold in June 2019; no dated gift or objection found. Fundraising wording matched to the page; access details added from the about page.",
+  "sources": [
+   "https://autoitaliasoutheast.org/support/partners-2/",
+   "https://en.wikipedia.org/wiki/Calouste_Gulbenkian_Foundation",
+   "https://autoitaliasoutheast.org/about/"
+  ],
+  "reason": "A dated gift or documented objection is required for a flag. Neither page opened shows one. Charity number 1151979 was already on the page and matches the organisation's own page; 1172824 is not on it."
+ },
+ {
+  "id": "ayala-museum",
+  "section": "RED FLAGS / FUNDING / BOTTOM LINE",
+  "problems": [
+   "flag not shown: diversified group, fossil energy not shown as largest or majority line",
+   "bottom line asserted a fossil-fuel link"
+  ],
+  "before": "Red flags: Fossil fuels (Ayala group energy business) ... with a fossil-fuel link through the group's energy arm.",
+  "after": "Red flags section removed; ACEN coal sale (2022) and cancelled gas project (2025) moved to Funding with the group's earnings split: full-year 2025 core net income P48.3 billion, BPI the largest earnings contributor, ACEN P6.3 billion. Bottom line now says no flagged funder was found.",
+  "sources": [
+   "https://tribune.net.ph/2026/03/13/ayala-profit-jumps-on-mynt-gains",
+   "https://en.wikipedia.org/wiki/Ayala_Corporation",
+   "https://www.philstar.com/business/2025/11/17/2487684/ayala-axing-gas-project-amid-offtake-woes"
+  ],
+  "reason": "The pages show banking, real estate, telecoms and energy; no page shows energy as the largest or majority line. Revenue by segment is not published on the pages opened, so earnings contribution is stated as such. Authors and dates fixed (Business Mirror, Lenie Lectura, 26 July 2022)."
+ },
+ {
+  "id": "bangladesh-shilpakala-academy",
+  "section": "FUNDING / RED FLAGS / WIDER CONTEXT / OVERVIEW",
+  "problems": [
+   "unsupported: 'state-funded' verdict",
+   "unsupported: 'misused rights-issue funds' stated as the outlet's finding",
+   "unsupported: 'organised by the Samdanis' group'",
+   "unsupported: 'Parishad', 'gives overall direction'",
+   "unsupported: 'seemed to limit' (hedge)",
+   "unsupported: Luthfa 'tied funding and performance dates' to loyalty at the academy",
+   "Dhaka Art Summit years cited to the wrong Wikipedia page",
+   "over 800 words (885)"
+  ],
+  "before": "state-funded: Ministry of Cultural Affairs ... Unverified: ... failed to repay bond investors and misused rights-issue funds ... Hasina family: ... exhibition organised by the Samdanis' group",
+  "after": "Verdict now 'state body ... no budget or donor list published'. Red flags rewritten to what Bonik Barta (24 Sep 2024) states: unpaid 2017 bonds (trustee: five institutions owed BDT 392.9 million), BSEC inquiry into whether funds were spent in their intended sectors, DoE fine of BDT 5.017 million in February 2024; rights-issue redirection and the artwork theft stay labelled Unverified with the outlet named. Luthfa and Webster points cut back to what the pages say. TLS failure of shilpakala.gov.bd stated twice. Trimmed to 781 words.",
+  "sources": [
+   "https://en.bonikbarta.com/exclusive/eHPPWsSrqWVnm1ye/",
+   "https://en.wikipedia.org/wiki/Dhaka_Art_Summit",
+   "https://www.theartnewspaper.com/2016/03/04/bangladesh-puts-exposure-before-sales-to-get-itself-on-art-market-map"
+  ],
+  "reason": "shilpakala.gov.bd returned a certificate error, so nothing about the academy's own budget could be read there. The Dhaka Art Summit report (dhaka-art-summit-dhaka.txt) was read for the Golden Harvest facts, but each fact was re-checked against the Bonik Barta page. Hasina-family attendance bullet cut in the trim."
+ },
+ {
+  "id": "bangkok-art-biennale-bangkok",
+  "section": "FUNDING / OVERVIEW / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "unsupported: Venice show dates '9 May'",
+   "unsupported: 'Apinan said in January 2025 that BAB5 is already funded'",
+   "Artribune figure not attributed (author, date, original source)",
+   "unsupported: 'July 2025'",
+   "unsupported: 'did not address political prisoners'",
+   "unsupported: 'Commoners' Choir'",
+   "alcohol wording ('not a flag')",
+   "over 800 words (816)"
+  ],
+  "before": "Apinan said in January 2025 that BAB5 'is already funded' (Koktail). / alcohol money is not a flag.",
+  "after": "Koktail (Cornwel-Smith, 2025) says BAB5 'is already funded'. Artribune (Umberta Genta, 8 Nov 2018, citing The Art Newspaper) $67 million attributed. Venice show: on view until 2 August 2026. Reviews quoted closely (e-flux 2022, ArtReview 2021 and 2024). ThaiBev described as alcohol and beverage group, not a flagged funder; BEM, Ch. Karnchang and Generali still 'no reporting found'. Trimmed to 787 words.",
+  "sources": [
+   "https://www.koktailmagazine.com/2025/02/03/is-bangkok-art-biennale-a-success/",
+   "https://www.artribune.com/?p=580486",
+   "https://www.e-flux.com/criticism/508133/bangkok-art-biennale-2022-chaos-calm"
+  ],
+  "reason": "None of BEM, Ch. Karnchang or Generali appear on the TAT, Venice or foundation pages opened. ThaiBev stays in Funding."
+ },
+ {
+  "id": "baltic-centre-for-contemporary-art",
+  "section": "FUNDING / WIDER CONTEXT / CRITICISM / OVERVIEW",
+  "problems": [
+   "unsupported: 'Spiked gave £46 million' (spiked is an outlet; it cites the project as £46million)",
+   "unsupported: 'premier partner' credited to ArtReview",
+   "unsupported: 'Commoners' Choir withdrew'",
+   "unsupported: Baltic Flour Mills Visual Arts Trust 'run by registered charity' via Wikipedia",
+   "Fenwick shown as a supporter from a photo caption",
+   "over 800 words (824)"
+  ],
+  "before": "Spiked gave £46 million in 2002. / BAE Systems was a 'premier partner' ... The singer Nadine Shah and the Commoners' Choir withdrew",
+  "after": "spiked called it a '£46million project' in 2002, different from Wikipedia's £50 million. BAE wording credited to Museums Journal (Patrick Steel, 6 March 2018; Premier Partner; withdrawal update 9 March 2018); ArtReview (8 March 2018) credited only with Nadine Shah, the 3,000-signature petition and Michael Dean exhibitions. BAE stays under Wider context with date and sources. Trust named via Companies House. Trimmed to 780 words.",
+  "sources": [
+   "https://www.museumsassociation.org/museums-journal/news/06032018-artists-distance-themselves-from-get-north-arms-dealer-sponsor",
+   "https://artreview.com/news-8-march-bae-systems-great-exhibition-of-the-north-sponsorship/",
+   "https://www.spiked-online.com/2002/07/19/baltic-centre-gateshead-to-what/"
+  ],
+  "reason": "The Charity Commission page returned 403; Companies House confirms the trust's name and registered office at the centre."
+ },
+ {
+  "id": "anadolu-kultur-depo-and-diyarbak-r-arts-center",
+  "section": "OVERVIEW / WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'Osman Kavala founded it and chaired its board' credited to the Sigrid Rausing Trust",
+   "filler: 'and others'",
+   "'over the 2013 Gezi Park protests' wider than the source",
+   "Depo founding year (2008 vs 2009) unattributed"
+  ],
+  "before": "The Sigrid Rausing Trust page still calls Kavala the chair; Anadolu Kültür's own page lists Asena Günal as chair. / Stiftung Mercator and others called the verdict unfounded",
+  "after": "Chair: the Sigrid Rausing Trust page says Kavala 'remains Chair'; Anadolu Kültür's own page lists Asena Günal as chair of its board. Joint statement signatories listed in full (ECF, German-Turkish Youth Bridge, Goethe-Institut, Heinrich Böll Foundation, Stiftung Mercator). Life sentence stated as 'charges tied to the Gezi Park protests' (Wikipedia). Depo 2009 credited to Anadolu Kültür's site, 2008 to ArtReview. Kavala prosecution stays Wider context.",
+  "sources": [
+   "https://www.sigrid-rausing-trust.org/grantee/anadolu-kultur/",
+   "https://www.anadolukultur.org/EN/33-about-us/",
+   "https://culturalfoundation.eu/stories/ecf-statement-on-the-verdict-against-osman-kavala/"
+  ],
+  "reason": "The ECF page gives the verdict date as '25 April' without a year in the text; Wikipedia gives 25 April 2022."
+ },
+ {
+  "id": "ateneo-art-gallery-quezon-city",
+  "section": "WEBSITE / OVERVIEW / FUNDING / SOURCES",
+  "problems": [
+   "names the spam domain",
+   "dead source URL kept in SOURCES",
+   "unsupported: 'residency grants came from' partners",
+   "unsupported: Areté facts mixed with funding in Building line",
+   "Embassy of Italy 'bought'"
+  ],
+  "before": "Website: ... redirects to an unrelated domain, teamprediksijitu.com / - https://ateneoartgallery.com/ (redirects to an unrelated domain)",
+  "after": "Website line: the web address no longer serves the gallery; it redirects to an unrelated gambling-prediction site, which was not opened. The redirecting URL removed from SOURCES. Residency wording: winners became eligible for residency grants with La Trobe University, Artesan Gallery + Studio and Liverpool Hope University. Areté 75% pledge line reworded from The Guidon.",
+  "sources": [
+   "https://theguidon.com/2019/08/ateneo-art-gallery-recognizes-recipients-of-the-2019-ateneo-art-awards",
+   "https://theguidon.com/?p=18244",
+   "https://quezoncity.gov.ph/place/ateneo-art-gallery/"
+  ],
+  "reason": "The gambling-prediction domain was not opened. Collection count (over 500) is on Wikipedia only."
+ },
+ {
+  "id": "audain-art-museum",
+  "section": "FUNDING / OVERVIEW / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'Land donated'",
+   "unsupported: endowment reached 'just under $50 million ... donations from Founders'",
+   "unsupported: 'Audain's money comes from Polygon Homes'",
+   "unsupported: Audain Foundation 'bought some works'",
+   "unsupported: $100 million gift 'carried no mandated conditions'",
+   "moralising wording: 'built on a home-building fortune', 'leased free'"
+  ],
+  "before": "Land: donated by the Resort Municipality of Whistler under a 199-year lease. / just under $50 million ... 'Founders'",
+  "after": "Land leased for 199 years (Wikipedia, Michael Audain page). Endowment goal rose from $25 million to $50 million and was met by mid-2024 (same page); no donors named. Audain described as chairman and major shareholder of Polygon Homes. Globe and Mail (Marsha Lederman, 2022): he did not mandate anything but suggested design changes; storage floor removed, saving about $12 million. Polygon, Onni and Whistler Blackcomb Foundation money stays 'not confirmed'.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Michael_Audain",
+   "https://www.bcbusiness.ca/?p=36867",
+   "https://www.theglobeandmail.com/arts/art-and-architecture/article-how-a-100-million-private-donation-put-the-vancouver-art-gallerys/"
+  ],
+  "reason": "Free-admission wording kept at under-19s (the page says 18 and under). BCBusiness gives the $35 million construction cost as a February 2015 projection."
+ },
+ {
+  "id": "bag-factory-johannesburg",
+  "section": "OVERVIEW / FUNDING / CRITICISM",
+  "problems": [
+   "third founder named only as Sandra Burnett; later 'Director Sandy Burnett'",
+   "unsupported: name origin, 'disused factory in Fordsburg'",
+   "unsupported: 'short walk from Oriental Plaza'",
+   "unsupported: Loder 'then founded African Arts Trust in 1959' (order)",
+   "funding verdict 'grant- and donor-funded' with no grant named",
+   "'Director Sandy Burnett rejected the idea of a movement'",
+   "NAC and Triangle funding not marked not confirmed"
+  ],
+  "before": "founders ... Sandra Burnett / Director Sandy Burnett rejected the idea of a movement / grant- and donor-funded non-profit / No reporting found of funding from the National Arts Council",
+  "after": "Third founder given as Sandra (Sandy) Burnett (Contemporary And); Sandy Burnett quoted as saying the studios were not the core of a new movement (Mail & Guardian, Ian Tromp, 1995). Verdict now 'no funders named'. Funding from the National Arts Council and from the Triangle network is 'not confirmed in the pages opened'. Location wording matched to the about page ('next to the Oriental Plaza'). Name tied to the disused Speedy Bag Factory (Mail & Guardian); no source explains it further.",
+  "sources": [
+   "https://contemporaryand.com/en/events/bag-factory-30-years-so-far-the-future",
+   "https://mg.co.za/article/1995-09-22-of-rat-traps-and-art-prats",
+   "https://bagfactoryart.org.za/about/"
+  ],
+  "reason": "Ricky Burnett does not appear in the sources opened."
+ },
+ {
+  "id": "ashkal-alwan-beirut",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'critics called the first edition conventional'",
+   "unsupported: 'drew charges of poverty tourism' stated as the piece's finding"
+  ],
+  "before": "critics called the first edition conventional, and the 2012-13 edition drew charges of 'poverty tourism'",
+  "after": "critics objected to the open studios' conventional exhibition format; audience members quoted from an Artforum piece called X-Apartments 'poverty tourism', which Awad reports without endorsing. Founding dates left as stated: 1994 (Wikipedia, Ibraaz bio) and 1993 (Sigrid Rausing Trust, Tohmé interview).",
+  "sources": [
+   "https://www.e-flux.com/education/features/6732768/navigating-volatility-home-workspace-program-at-ashkal-alwan",
+   "https://www.sigrid-rausing-trust.org/grantee/ashkal-alwan/",
+   "https://archive.ibraaz.org/interviews/24"
+  ],
+  "reason": "Both founding years were already stated and are confirmed on the pages opened."
+ },
+ {
+  "id": "amos-rex",
+  "section": "OVERVIEW / FUNDING / CRITICISM",
+  "problems": [
+   "unsupported: Lasipalatsi 'built for visitors to the 1940 Olympics'",
+   "unsupported: wealth 'from real estate dealing ... and from' the newspaper",
+   "hedge in Yle point: 'doubts ... will draw teenagers'"
+  ],
+  "before": "was built for visitors to the planned 1940 Helsinki Olympics. / doubts the planned Magritte and Carlstedt shows will draw teenagers.",
+  "after": "shops and a restaurant intended to serve visitors to the planned 1940 Helsinki Olympics. / Anderson built his fortune in real estate during the First World War; his two most important companies were the newspaper and the Tilgmann printing house. / calls drawing teenagers to the planned shows somewhat challenging.",
+  "sources": [
+   "https://www.finnisharchitecture.fi/projects/amos-rex-art-museum",
+   "https://amosrex.fi/en/about-us/amos-anderson/",
+   "https://yle.fi/a/3-10375914"
+  ],
+  "reason": "Partners (Helsingin Sanomat, Genelec, Bauer Media Outdoor) confirmed with no amounts or years."
+ },
+ {
+  "id": "badischer-kunstverein-karlsruhe",
+  "section": "OVERVIEW / FUNDING / SOURCES",
+  "problems": [
+   "broken sentence in first Overview point",
+   "unsupported: 329,330 euros attributed to both motions",
+   "motion text attributed to the association",
+   "unsupported cause: 'because of the Kunsthalle and the Landesmuseum'"
+  ],
+  "before": "Motions by the Linke group and the KAL group ask the council to restore the grant to 329,330 euros / the association said its institutional grant was almost entirely used up ... (KAL motion, quoting the association)",
+  "after": "Linke motion (19 Nov 2025) asks for 329,330 euros a year; it and the KAL motion (11 Nov 2025) both give the cut as 28,650 euros a year. The 16 Nov 2023 KAL/Die PARTEI motion states the shortfall claims and cites the association's own 15,000 euro staffing calculation; the association's own application of 10 Oct 2023 asked for 65,000 euros a year. The Kunsthalle and Landesmuseum cause stated as unclear in the motions' wording.",
+  "sources": [
+   "https://web1.karlsruhe.de/ris/oparl/bodies/0001/downloadfiles/a/00673815.pdf",
+   "https://web1.karlsruhe.de/ris/oparl/bodies/0001/downloadfiles/a/00673817.pdf",
+   "https://web1.karlsruhe.de/ris/oparl/bodies/0001/downloadfiles/00652021.pdf"
+  ],
+  "reason": "The Karlsruhe PDFs were read in full. The 'second oldest' (city administration) and 'third oldest' (German Wikipedia) claims are both kept and attributed."
+ }
+]
