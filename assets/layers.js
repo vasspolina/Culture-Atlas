@@ -471,19 +471,19 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.grade || !G[i.grade]) return;
-        LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `Why is ${i.name} graded ${G[i.grade].letter || i.grade}?` });
-        ctx.beginPath(); ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
+        LM.push({ x: d.x, y: d.y, r: 12, pass: true, rec: i, ask: `Why is ${i.name} graded ${G[i.grade].letter || i.grade}?` });
+        ctx.beginPath(); ctx.arc(d.x, d.y, 10, 0, Math.PI * 2);
         ctx.fillStyle = G[i.grade].col; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
         // The letter is the second cue: grade A and B are two near greens, and colour alone cannot tell the five apart.
-        ctx.save(); ctx.font = '700 9px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
+        ctx.save(); ctx.font = '700 14px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
         ctx.fillText(G[i.grade].letter, d.x, d.y + 0.5); ctx.restore();
       });
     }
     if (L.mix && recById && r >= baseRadius * 3) {
       // Each space with funders: a ring split into public funding, foundations and companies, by how many of each it names,
       // in the same order and colours as the funder marks. A kind switched off under Funder types leaves the ring. Only from a moderately close view, where the dots have room.
-      const order = ['gov', 'found', 'corp'], GAP = 0.16, R = 10;
+      const order = ['gov', 'found', 'corp'], GAP = 0.16, R = 13;
       dots.forEach(d => {
         const i = d.inst, rec = i && recById.get(i.id); if (!rec) return;
         const c = { gov: 0, found: 0, corp: 0 }; rec.nodes.forEach(n => { if (FUNDER(n) && kindOn(n[1])) c[n[1]]++; });
@@ -562,7 +562,7 @@
         const N = Math.min(nodes.length, focus ? 10 : 6), R = (focus ? 64 : 36) * zoomK;
         for (let i = 0; i < N; i++) {
           const n = nodes[i], a = -Math.PI / 2 + (i * 2 * Math.PI) / N, x = d.x + R * Math.cos(a), y = d.y + R * Math.sin(a);
-          const col = gossip ? '#e2f86c' : COL[n[1]];
+          const col = COL[n[1]];
           ctx.globalAlpha = focus ? 1 : 0.7;
           ctx.strokeStyle = lineCol(col); ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
           // The outline says the kind (square public funding, hexagon company, triangle foundation); the colour repeats it.

@@ -71,7 +71,7 @@ export function AdminModerator() {
 
   return (
     <main className="report-moderator">
-      <h1>Whistleblower notes</h1>
+      <h1>Whistleblower reviews</h1>
       {!API && <p role="alert">Set ATLAS_REPORT_API_URL in assets/config.js to connect the report API.</p>}
       <label>
         Admin bearer token
@@ -102,6 +102,7 @@ export function AdminModerator() {
               {report.institution ? ` | ${report.city}` : ''}
               {' · '}{new Date(report.createdAt).toLocaleString()}
             </p>
+            <p>{report.authorLabel ? `shown as “${report.authorLabel}”` : 'shown as Whistleblower'}</p>
             <p style={{ whiteSpace: 'pre-wrap' }}>{report.content}</p>
             {report.status !== 'APPROVED' && (
               <button type="button" disabled={busy === report.id} onClick={() => setStatus(report.id, 'APPROVED')}>
