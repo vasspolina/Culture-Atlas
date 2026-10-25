@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=282">
-  <script src="assets/config.js?v=282"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=283">
+  <script src="assets/config.js?v=283"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9911,11 +9911,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v282';
+    const ATLAS_RELEASE = 'culture-atlas-v283';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=282').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=283').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11664,9 +11664,7 @@ return maplibregl$1;
     };
     function placeReviewListHtml(placeId) {
       const state = PLACE_REVIEWS.get(placeId);
-      if (state === 'failed') return '<p class="no-indent">The reviews could not be loaded.</p>';
-      if (!Array.isArray(state)) return '<p class="no-indent">Loading reviews…</p>';
-      if (!state.length) return '<p class="no-indent">No reviews yet.</p>';
+      if (!Array.isArray(state) || !state.length) return '';
       return `<h4 class="kicker review-count">${state.length} ${state.length === 1 ? 'review' : 'reviews'}</h4>${state.map(r => {
         const label = (r.authorLabel || '').trim() || 'Whistleblower';
         const d = reviewDate(r.createdAt);
@@ -11684,7 +11682,9 @@ return maplibregl$1;
       document.querySelectorAll('.place-reviews').forEach(box => {
         if (box.dataset.place !== placeId) return;
         const list = box.querySelector('.review-list');
-        if (list) list.innerHTML = placeReviewListHtml(placeId);
+        if (!list) return;
+        list.innerHTML = placeReviewListHtml(placeId);
+        box.hidden = !list.innerHTML;
       });
     }
     function loadPlaceReviews(placeId) {
@@ -11699,13 +11699,12 @@ return maplibregl$1;
     // The reviews of a place, under its record. They are only listed here; a review is written on the note screen (Share information).
     function placeReviewsHtml(inst) {
       if (!inst || !inst.id) return '';
-      if (!ATLAS_REPORT_API_URL) {
-        return proseRows([proseRow('Whistleblower reviews', '', [proseLi('', 'Reviews are not available right now.')])], 'Whistleblower reviews');
-      }
+      if (!ATLAS_REPORT_API_URL) return '';
       loadPlaceReviews(inst.id);
-      return `<div class="prose-part d-rows place-reviews" data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews"><section class="d-row">
+      const html = placeReviewListHtml(inst.id);
+      return `<div class="prose-part d-rows place-reviews"${html ? '' : ' hidden'} data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews"><section class="d-row">
         <div class="d-row-head"><h3 class="d-row-title">Whistleblower reviews</h3><p class="d-row-sub no-indent">Written by people who say they know this place from inside. The editor reads every review before it appears. None is checked against a source.</p></div>
-        <div class="review-list d-row-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div>
+        <div class="review-list d-row-list" aria-live="polite">${html}</div>
       </section></div>`;
     }
     // Send for review looks ready (blue) once the form could be sent: an institution from the atlas, a note long enough, the box ticked.
@@ -19372,9 +19371,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=282"></script>
-<script src="assets/layers.js?v=282"></script>
-<script src="assets/hq-detail.js?v=282"></script>
-<script src="assets/bubbles.js?v=282" defer></script>
+<script src="assets/typeset.js?v=283"></script>
+<script src="assets/layers.js?v=283"></script>
+<script src="assets/hq-detail.js?v=283"></script>
+<script src="assets/bubbles.js?v=283" defer></script>
 </body>
 </html>

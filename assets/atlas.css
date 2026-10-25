@@ -1583,6 +1583,7 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 
 /* Whistleblower reviews under a record, laid out the way Google Maps lists the reviews of a place: the count, then one
    entry each with the reviewer's line, the date and the text, newest first. Black and white, the page's own type. */
+.place-reviews[hidden]{display:none}
 .review-list{margin:0;padding:0}
 .review-list .review-count{margin:0 0 4px}
 .review{border-top:1px solid var(--line);padding:12px 0}
