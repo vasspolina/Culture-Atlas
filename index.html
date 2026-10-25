@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=291">
-  <script src="assets/config.js?v=291"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=293">
+  <script src="assets/config.js?v=293"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -424,10 +424,7 @@ return maplibregl$1;
           <!-- Verified Pane -->
           <div id="dossier-sheet-verified-pane" class="space-y-3">
             <p class="" id="dossier-sheet-summary"></p>
-            <div id="dossier-sheet-funding" class="hidden py-2_5 rule-b space-y-1">
-              <span class="kicker block">Funding</span>
-              <p class="t-lead" id="dossier-sheet-funding-text"></p>
-            </div>
+            <div id="dossier-sheet-funding" class="hidden"></div>
             <div id="dossier-sheet-visit" class="hidden"></div>
             <div id="dossier-sheet-record" class="hidden"></div>
             <div id="dossier-sheet-sources"></div>
@@ -9904,11 +9901,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v291';
+    const ATLAS_RELEASE = 'culture-atlas-v293';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=291').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=293').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11980,10 +11977,10 @@ return maplibregl$1;
       text('dossier-sheet-summary', [inst.highlight, watchReported ? '' : inst.watch].filter(Boolean).join(' '));
       // The phone sheet shows the same Funding block as the desktop record.
       const fBox = document.getElementById('dossier-sheet-funding');
-      if (fBox) { const fh = fundingHtml(inst); fBox.className = fh ? '' : 'hidden'; fBox.innerHTML = fh; }
+      if (fBox) { const fr = proseFundingRow(inst), fh = fr ? proseRows([fr], 'Funding') : ''; fBox.className = fh ? '' : 'hidden'; fBox.innerHTML = fh; }
       const vBox = document.getElementById('dossier-sheet-visit');
       if (vBox) {
-        const vh = factsTableHtml('Visiting', [['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')], ['Address', escapeHtml(inst.address || '')]]);
+        const vh = visitingRowsHtml([['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')], ['Address', escapeHtml(inst.address || '')]]);
         vBox.className = vh ? '' : 'hidden'; vBox.innerHTML = vh;
       }
       if (isGossipModeActive) {
@@ -11992,7 +11989,7 @@ return maplibregl$1;
       }
 
       const srcBox = document.getElementById('dossier-sheet-sources');
-      if (srcBox) srcBox.innerHTML = sourcesHtml(inst, true) + (isGossipModeActive ? '' : researchContextHtml(inst));
+      if (srcBox) srcBox.innerHTML = sourcesHtml(inst, true, true);
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
         record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
@@ -12481,17 +12478,22 @@ return maplibregl$1;
     }
     const proseRows = (rows, label, gossip) => { const body = rows.filter(Boolean).join(''); return body ? `<div class="prose-part d-rows" role="region" aria-label="${label}"${gossip ? ' data-gossip="items"' : ''}>${body}</div>` : ''; };
     // Overview and funding: what the space is, then who pays for it, from the report where there is one and from the archive otherwise.
-    function proseIntroHtml(inst) {
+    // The Funding row alone: the report's verdict and points where there is a report, the archive's account otherwise. The phone and iPad sheet shows it too.
+    function proseFundingRow(inst) {
       const d = inst.details || {};
-      const rows = [];
-      rows.push(proseRow('Overview', '', proseChunks(d.overview, 0).map(t => proseLi('', escapeHtml(t)))));
       const money = inst.watch && watchIsAboutMoney(inst.watch) && !inst.details ? inst.watch : '';
       const archiveFunding = String(inst.funding || '').split(/\n+/).map(proseEnd).filter(Boolean).join(' ');
       const hasReport = d.funding_verdict || (d.funding || []).length;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
       const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
       const shared = (inst.funder_links || []).filter(f => f && f.funder).map(f => `${f.funder} is listed at ${f.institutions} spaces in this atlas, including this one.`).join(' ');
-      rows.push(proseRow('Funding', escapeHtml(verdict), proseChunks(funding.concat(shared || []), 0).map(t => proseLi('', escapeHtml(t)))));
+      return proseRow('Funding', escapeHtml(verdict), proseChunks(funding.concat(shared || []), 0).map(t => proseLi('', escapeHtml(t))));
+    }
+    function proseIntroHtml(inst) {
+      const d = inst.details || {};
+      const rows = [];
+      rows.push(proseRow('Overview', '', proseChunks(d.overview, 0).map(t => proseLi('', escapeHtml(t)))));
+      rows.push(proseFundingRow(inst));
       const note = (lead, t) => t ? proseLi(lead, escapeHtml(proseEnd(t))) : '';
       rows.push(fundingCritiqueRow(inst));
       rows.push(proseRow('Records', '', [note('Publishes:', inst.records_note), note('Accounts:', inst.finances_note), note('Affiliations:', inst.affiliations_note)]));
@@ -19387,9 +19389,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=291"></script>
-<script src="assets/layers.js?v=291"></script>
-<script src="assets/hq-detail.js?v=291"></script>
-<script src="assets/bubbles.js?v=291" defer></script>
+<script src="assets/typeset.js?v=293"></script>
+<script src="assets/layers.js?v=293"></script>
+<script src="assets/hq-detail.js?v=293"></script>
+<script src="assets/bubbles.js?v=293" defer></script>
 </body>
 </html>

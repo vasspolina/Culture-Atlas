@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v291';
+const CACHE_NAME = 'culture-atlas-v293';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -20,7 +20,13 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE).catch(() => {});
+      return Promise.all(
+        ASSETS_TO_CACHE.map((u) =>
+          fetch(u, { cache: 'no-cache' })
+            .then((r) => (r && r.status === 200 ? cache.put(u, r) : null))
+            .catch(() => {})
+        )
+      );
     })
   );
 });
@@ -55,7 +61,7 @@ self.addEventListener('fetch', (event) => {
   // NETWORK-FIRST FOR THE PAGE: always the server's current copy; the cached copy only when the network fails.
   if (isNavigation) {
     event.respondWith(
-      fetch(event.request, { cache: 'no-cache' }).then((networkResponse) => {
+      fetch(event.request.url, { cache: 'no-cache' }).then((networkResponse) => {
         if (networkResponse && networkResponse.status === 200) {
           const responseToCache = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
@@ -75,7 +81,7 @@ self.addEventListener('fetch', (event) => {
   // Network-first with cache fallback for the page's own files
   // Revalidated on every load, so a release is never hidden behind the host's ten-minute HTTP cache.
   event.respondWith(
-    fetch(event.request, { cache: 'no-cache' }).then((networkResponse) => {
+    fetch(event.request.url, { cache: 'no-cache' }).then((networkResponse) => {
       if (networkResponse && networkResponse.status === 200) {
         const responseToCache = networkResponse.clone();
         caches.open(CACHE_NAME).then((cache) => {

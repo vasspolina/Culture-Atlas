@@ -2066,6 +2066,56 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover{filter:brightness(1.25);text-decoration:none}
 }
 
+/* The sheet over the map on a phone and an iPad, set like the Displaay pages (user, 25 Oct 2026): the name large in mixed case over a rule, the place and the
+   summary as the lead, the close a large thin cross on a solid square, and the funding, visiting and sources as the same rows the Details tab uses, numbered. */
+@media (max-width:767px){
+  #dossier-bottom-sheet .sheet-title-block{padding:var(--m-s4) 72px var(--m-s3) var(--m-s4);border-bottom:1px solid var(--ink)}
+  :root:root:root body #dossier-bottom-sheet #dossier-sheet-name{font:500 clamp(30px,8vw,44px)/1.1 var(--sans)!important;letter-spacing:-.01em!important;word-spacing:normal!important;text-transform:none!important;margin:0!important;white-space:normal!important;text-wrap:balance}
+  :root:root:root body #dossier-bottom-sheet #dossier-sheet-meta{font-size:var(--fs-m)!important;line-height:1.35!important;color:var(--ink)!important;margin-top:var(--m-s3)}
+  :root:root:root body #dossier-bottom-sheet #dossier-sheet-summary{font-size:var(--fs-m)!important;line-height:1.35!important}
+  #dossier-bottom-sheet .sheet-close{top:0!important;right:0!important;width:56px!important;height:56px!important;border-radius:0!important;background:var(--grey)!important;display:flex;align-items:center;justify-content:center}
+  #dossier-bottom-sheet .sheet-close svg{width:40px;height:40px;stroke-width:1.1;stroke-linecap:butt}
+  #dossier-bottom-sheet .sheet-close::after{inset:0}
+  :root #dossier-sheet-scrollable-body #dossier-sheet-verified-pane{counter-reset:drow}
+}
+/* An iPad window narrower than 768px keeps the phone's top bar, with the three buttons as the Displaay menu's outlined pills; the one that is on is a solid pill. */
+@media (min-width:520px) and (max-width:767px){
+  :root[data-theme] #mobileTopBar>div:last-child{gap:8px;padding-right:16px;align-items:center}
+  :root[data-theme] #mobileTopBar>div:last-child :is(#mobileThemeBtn,#mobileGossipBtn,#reset-state-btn){height:40px;padding:0 16px!important;border:1.5px solid var(--ink)!important;border-radius:12px;background:transparent;color:var(--ink);align-self:center}
+  :root[data-theme] #mobileTopBar>div:last-child #mobileThemeBtn[aria-pressed=true]{background:var(--cobalt);border-color:var(--cobalt)!important;color:#fff;border-radius:999px}
+  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:var(--gossip)!important;color:#000;border-radius:999px}
+}
+
+:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end>div,:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble{display:inline-block!important;background:#8c8c8f!important;color:#111!important;border-radius:14px!important;padding:12px 18px!important;max-width:85%!important;text-indent:0!important;font:400 var(--fs-m)/1.3 var(--sans)}
+:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end>div *,:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble *{color:#111!important}
+:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.justify-end,.curator-message-wrap)::before{content:none!important;display:none!important}
+:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>:is(.justify-end,.curator-message-wrap){padding-left:0!important}
+:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{display:flex!important;justify-content:flex-end!important}
+:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip){background:var(--block);color:var(--ink);border-radius:14px;padding:14px 18px!important;width:fit-content;max-width:100%}
+:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip) :is(p,li,div){text-indent:0}
+:root[data-theme] #workBottomDock{border-top:0!important}
+:root[data-theme] #workBottomDock>div:has(>#workInputCard:not(.is-mode)){display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:8px}
+:root[data-theme] #workInputCard:not(.is-mode){display:flex!important;flex-direction:column!important;position:relative;background:transparent;border:0 solid transparent;border-radius:0;padding:0}
+:root[data-theme] #workInputCard:not(.is-mode) #noteInputBlock,:root[data-theme] #mobileStickyInputBar>div:first-child{position:relative;box-sizing:border-box;width:100%;min-height:80px;padding:18px 80px 18px 22px;background:#2d3352;border:1px solid transparent;border-radius:14px;display:flex!important;align-items:center}
+:root[data-theme] #workInputCard:not(.is-mode) #workInput,:root[data-theme] #mobileStickyInputBar #chat-input{background:transparent!important;color:#fff!important;border:0!important;padding:0!important;min-height:1.5em!important;line-height:1.35!important;outline:0!important}
+:root[data-theme] #workInputCard:not(.is-mode) #workInput::placeholder,:root[data-theme] #mobileStickyInputBar #chat-input::placeholder{color:#9aa0c4!important;opacity:1!important}
+:root[data-theme] #workInputCard:not(.is-mode) #noteInputBlock:has(#workInput:focus),:root[data-theme] #workInputCard:not(.is-mode) #noteInputBlock:has(#workInput:not(:placeholder-shown)),:root[data-theme] #mobileStickyInputBar>div:first-child:has(#chat-input:focus),:root[data-theme] #mobileStickyInputBar>div:first-child:has(#chat-input:not(:placeholder-shown)){border-color:#fff204!important}
+:root[data-theme] #workInputCard:not(.is-mode) #noteInputBlock:has(#workInput:not(:placeholder-shown)),:root[data-theme] #mobileStickyInputBar>div:first-child:has(#chat-input:not(:placeholder-shown)){background:#410043!important}
+:root[data-theme] #workInputCard:not(.is-mode) #workInput:not(:placeholder-shown),:root[data-theme] #mobileStickyInputBar #chat-input:not(:placeholder-shown){color:#fff204!important;caret-color:#fff204!important}
+:root[data-theme] #workInputCard:not(.is-mode) #workInput:focus,:root[data-theme] #mobileStickyInputBar #chat-input:focus{caret-color:#fff204!important;outline:0!important}
+:root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on),:root[data-theme] #mobileStickyInputBar #mobileStickySendBtn{position:absolute;top:14px;right:14px;bottom:auto;width:52px!important;height:52px!important;min-width:52px!important;min-height:52px!important;padding:0!important;background:#fff!important;color:#000!important;border:0!important;border-radius:12px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+:root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on) svg{width:22px;height:22px;color:#000!important;stroke-width:1.8}
+:root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):hover,:root[data-theme] #mobileStickyInputBar #mobileStickySendBtn:hover{background:#e6e6e6!important;color:#000!important}
+:root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):hover svg{color:#000!important}
+:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{display:flex!important;padding-top:10px;justify-content:flex-start;gap:10px}
+:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{display:flex!important;align-items:center;gap:10px}
+:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn),:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#chatShareBtn.is-on),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{border:0!important;border-radius:14px!important;height:44px!important;min-height:44px!important;padding:0 20px!important;font:400 var(--fs-l)/1 var(--sans);display:inline-flex!important;align-items:center!important;justify-content:center!important;transition:filter .15s}
+:root[data-theme] #workInputCard #chatShareBtn:not(.is-on){background:#420401!important;color:#fff!important}
+:root[data-theme] #workInputCard #chatShareBtn:not(.is-on) :is(svg,span){color:#fff!important}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{background:#410043!important;color:#fff!important}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(svg,span),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn *{color:#fff!important}
+:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn:hover{filter:brightness(1.25);text-decoration:none}
+
 /* Desktop details: 15px is the smallest size (user, 25 Oct 2026). The small size --fs-s is 14px everywhere else; inside the record panels on a wide screen it is 15px, so the
    lists, sources, quotations' credits, links and buttons all follow. The phone keeps 14px. */
 @media (min-width:768px){
