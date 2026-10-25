@@ -10969,17 +10969,18 @@ return maplibregl$1;
             const bw = tw + 28;
             const bh = 22;
             const bx = d.x - bw / 2;
-            const by = d.y - 18;
-
             // A label drawn last frame keeps its place unless it truly overlaps; a new one needs air.
             const wasShownInst = lastShownInstLabels.has(d.inst.name);
             const ix = wasShownInst ? 0 : 6, iy = wasShownInst ? 0 : 4;
-            const collidesWithOtherLabel = drawnInstLabelBoxes.some(box => {
-              return !(bx + bw + ix < box.x || bx > box.x + box.w + ix || by + bh + iy < box.y || by > box.y + box.h + iy);
+            const clashes = (boxes, y) => boxes.some(box => {
+              return !(bx + bw + ix < box.x || bx > box.x + box.w + ix || y + bh + iy < box.y || y > box.y + box.h + iy);
             });
-            const collidesWithCity = drawnCityBoxes.some(box => {
-              return !(bx + bw + ix < box.x || bx > box.x + box.w + ix || by + bh + iy < box.y || by > box.y + box.h + iy);
-            });
+            // Above the dot; below it when the city's own badge sits there. A country with one city draws the badge on its spaces,
+            // and the space's name was dropped as a collision, so a click on the country showed a badge and no space.
+            let by = d.y - 18;
+            if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, d.y + 8)) by = d.y + 8;
+            const collidesWithOtherLabel = clashes(drawnInstLabelBoxes, by);
+            const collidesWithCity = clashes(drawnCityBoxes, by);
 
             if ((!collidesWithOtherLabel && !collidesWithCity && bx >= 2 && bx + bw <= width - 2) || isSel) {
               drawnInstLabelBoxes.push({ x: bx, y: by, w: bw, h: bh });
