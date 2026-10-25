@@ -1,0 +1,228 @@
+[
+ {
+  "id": "museum-tinguely",
+  "section": "Red flags",
+  "problems": [
+   "flag basis",
+   "overstatement"
+  ],
+  "before": "Red flags: Roche price-fixing plea; fine called 'the highest criminal fine in an antitrust case at that time'; 'Roche is the sole funder of the museum today.'",
+  "after": "Kept as Red flags (funder with a documented criminal plea, the House rules' name-to-know rule: a funder or founder's company convicted). DOJ release wording used: 'the highest criminal fine ever'; connection point cites the museum's Roche page ('funded entirely and exclusively by Roche since 1996').",
+  "sources": [
+   "https://www.justice.gov/archive/atr/public/press_releases/1999/2450.htm",
+   "https://www.tinguely.ch/en/information/about-us/roche.html",
+   "https://en.wikipedia.org/wiki/Roche"
+  ],
+  "reason": "Price-fixing is not a listed flag category, but details_prompt.md's name-to-know paragraph makes a funder's or founder's criminal plea a Red flag with event, date and authority. The rule sets no age limit (the 5-year limit applies to funder flags only), so the 1999 plea by the sole current funder stays; the lead may move it to Wider context if it prefers a 25-year cut-off. DOJ page: 20 May 1999, one count, vitamins, $500M, Dallas, Jan 1990 to Feb 1999; BASF $225M also named."
+ },
+ {
+  "id": "museum-tinguely",
+  "section": "Overview",
+  "problems": [
+   "unsupported",
+   "process note"
+  ],
+  "before": "Roche founded the museum; Niki de Saint Phalle, Tinguely's widow, gave more than fifty machine sculptures and archive material...; Solitude Park upkeep (museum website; Wikipedia); on the banks of the Rhine; sign-language tour on 29 October 2026; museum describes support as long support for contemporary music and the arts",
+  "after": "Roche Centenary Foundation wording and 'over 50 machine sculptures' taken from the museum's Roche page; 'widow' cut; Wikipedia removed from Solitude Park (it does not mention it); dated tour cut; inclusion section named hearing, seeing, walking, learning; Roche Commissions and Roche'n'Jazz stated as the page states them.",
+  "sources": [
+   "https://www.tinguely.ch/en/information/about-us/roche.html",
+   "https://www.tinguely.ch/en/information/about-us.html",
+   "https://en.wikipedia.org/wiki/Museum_Tinguely"
+  ],
+  "reason": "Each cut or rewording follows the opened pages. Sign-language tour on 29 Oct 2026 exists on the museum home page but is a dated event."
+ },
+ {
+  "id": "museum-of-modern-and-contemporary-art-sri-lanka-colombo",
+  "section": "Red flags",
+  "problems": [
+   "flag basis"
+  ],
+  "before": "Red flags: Gambling (sponsor's parent group): John Keells Holdings developed the Cinnamon Life resort...; City of Dreams casino",
+  "after": "Moved to WIDER CONTEXT; Red flags heading deleted. Wider context: The Island, 6 August 2025, 'City of Dreams' opened: Govt. urged to enact dedicated casino law (Harsha de Silva on licensing; licence issued by Finance Ministry in 2023); connection states John Keells Holdings as Melco's partner and parent Group of the primary sponsor; museum and foundation not named.",
+  "sources": [
+   "https://island.lk/city-of-dreams-opened-govt-urged-to-enact-dedicated-casino-law/",
+   "https://en.wikipedia.org/wiki/City_of_Dreams_Sri_Lanka",
+   "https://www.keells.com/about-us/our-businesses"
+  ],
+  "reason": "A gambling funder flag needs a current funder in the gambling industry; a conglomerate counts only if gambling is its largest line. keells.com lists eight sectors (Leisure, Transportation, Retail, Consumer Foods, Property, Financial Services, IT & Innovation, Plantation Services) and no page shows gambling as the largest line. The Island quotes Melco as developer, owner and operator, JKH as local partner managing the Cinnamon Life hotel; Wikipedia says the gaming operation is managed by Melco in partnership with JKH. The museum's own pages (about, support-us) do not name John Keells Foundation or Nations Trust Bank; those come from the foundation page and The Island (17 July 2022)."
+ },
+ {
+  "id": "museum-of-modern-and-contemporary-art-sri-lanka-colombo",
+  "section": "Funding",
+  "problems": [
+   "unsupported",
+   "absence"
+  ],
+  "before": "foundation 'is funded by the Group'; 'No amount is given'; 'no amount given'; programmes: collection with cataloguing",
+  "after": "Foundation described as the Group's CSR entity with the Group allocating at least 1% of annual profit (as the foundation site states); absence clauses cut; Encounters article dated 26 October 2022; Programmes line rewritten from the museum About page.",
+  "sources": [
+   "https://www.johnkeellsfoundation.com/",
+   "https://island.lk/ntb-partners-with-museum-of-modern-and-contemporary-art/",
+   "https://island.lk/the-museum-of-modern-and-contemporary-art-sri-lanka-launches-exhibition-titled-encounters/"
+  ],
+  "reason": "The foundation page does not say the foundation is funded by the Group; it says the Group allocates a minimum of 1% of annual profit to social responsibility."
+ },
+ {
+  "id": "museum-of-jurassic-technology",
+  "section": "Red flags / Funding / Overview",
+  "problems": [
+   "unsupported",
+   "verdict",
+   "internal rule wording"
+  ],
+  "before": "Getty Trust 'which funds the Getty Foundation'; 'mostly contributions'; Tula Tea Room on second floor; 'museum of curiosities'; admission with reduced rates for students and seniors; fire 'damaged part of the building'; 35-name roster in full",
+  "after": "Getty flag kept: Getty Foundation two grants totalling $210,000 for the 2024 'A Veiled Gazelle' exhibition (Hyperallergic, Matt Stromberg, 1 July 2024); Getty Foundation is a programme of the J. Paul Getty Trust, endowment from Getty Oil stock bequest of nearly $660M, received in full 1982 (Wikipedia). Tea Room sentence and 'museum of curiosities' cut; hours and admission restated from mjt.org/vistinfo/hours.html ($15 adults, under-13 free, $12 or $3 others); fire damage 'minor' per LAFD (LAist, Robert Garrova, 9 August 2025); roster shortened to eight names; bottom line restated with Form 990 figures.",
+  "sources": [
+   "https://hyperallergic.com/924580/museum-of-jurassic-technology-aims-to-recreate-islamic-spain-in-los-angeles/",
+   "https://en.wikipedia.org/wiki/J._Paul_Getty_Trust",
+   "https://projects.propublica.org/nonprofits/organizations/954309388"
+  ],
+  "reason": "Getty ruling: Getty money counts as Fossil fuels while the endowment built on Getty Oil still pays; the grant is 2024, so current. Kelley Foundation: $28,000 from its fourth annual Operational Support Grants. Form 990 FY2024 expenses $662,601, contributions $685,538; 2023 contributions $787,551. The mjt.org donors page has no date (only a 1996-2001 copyright footer) and is described as undated."
+ },
+ {
+  "id": "museum-of-contemporary-art-yinchuan-yinchuan",
+  "section": "Red flags",
+  "problems": [
+   "attribution",
+   "unsupported"
+  ],
+  "before": "Board excluded Ai Weiwei 'after domestic Chinese media criticised his involvement, according to Hsieh Suchen'; letter 'cited his political status and stated that higher officials made the decision'; 'Unverified: that officials ordered the removal, from Ai Weiwei' ; 'The money ultimately comes from Minsheng's property development business'; 'coverage of the building is admiring'; 'No flagged-industry funder is documented'",
+  "after": "Flag kept, restated by speaker: board decided on 21 August 2016; Hsieh Suchen (artistic director) said domestic media displeasure worried her and 'The government doesn't have any involvement at all'; Ai said on Twitter on 24 August 2016 he received a vague letter from Hsieh stating the decision was made by 'higher officials' and cited his 'political' status; Unverified label names Ai as the claimant and the museum's denial; ArtZip (1 December 2016) reports that amid censorship the curator had to remove Ai's name from the invitation list.",
+  "sources": [
+   "https://www.theartnewspaper.com/2016/08/26/ai-weiwei-dropped-from-yinchuan-biennale-in-china",
+   "https://www.artzip.org/problematic-contemporaneity-museum-contemporary-art-yinchuan",
+   "http://www.theartnewspaper.com/2015/08/27/new-museum-on-silk-road-breaks-the-chinese-mould"
+  ],
+  "reason": "The Art Newspaper article does not mention the provincial government or name any official; it refers to 'higher officials' (Ai's words) and the central government's One Belt, One Road sensitivities. The flag stands on the space itself having acted (the board excluded the work), not on a funding state body. ArtZip title 'The Problematic Contemporaneity of the Museum of Contemporary Art, Yinchuan', byline Gong Zhiyun, dated 1 December 2016 (page header). ArtZip says 'nearly 300 million USD'; The Art Newspaper (Lisa Movius, 26 August 2015, 'New museum on Silk Road breaks the Chinese mould') says 300m yuan; both are stated. Hsieh Suchen is 'art supervisor' in 2015 and 'artistic director' in 2016. The 2.5-hectare wetlands park, 8 August 2015 opening and 'three years in the making' are in the 2015 article, not Dezeen or ArtZip."
+ },
+ {
+  "id": "muzeum-sztuki-lodz",
+  "section": "Red flags",
+  "problems": [
+   "flag basis",
+   "unsupported",
+   "word limit"
+  ],
+  "before": "Red flags: Ministry of Culture removed the director in 2022; 'The ministry installed the painter Andrzej Biernacki ... as acting director'; Wider context: ministry 'often appoints directors without competition' under the 'United Right government'",
+  "after": "Flag kept, retitled 'Director Jarosław Suchan removed in 2022' and restated per page: TAN (Anny Shaw with Gareth Harris, 30 May 2022): Law and Justice party did not renew his contract in November, deputy culture minister Sellin told him of the dismissal at the end of April, 'I didn't get any explanation'; the Polish government replaced him with the artist Biernacki. Notes from Poland (Piotr Kosiewski, 26 September 2022): culture ministry would not allow a further term, 'the marshal's opposition' stood in the way, dismissed overnight without a specific reason, museum administered jointly by ministry and marshal; Gliński told PAP the main reason for the nomination was Biernacki's views. Wider context section deleted (the piece names the space, so it moved into Red flags); unsupported 'often' and 'United Right' cut; Wikipedia date '20 November 2008' replaced by 'autumn 2008'.",
+  "sources": [
+   "http://www.theartnewspaper.com/2022/05/30/a-shock-to-the-museum-community-worldwide-leading-museum-directors-condemn-ousting-of-polish-museum-head",
+   "https://notesfrompoland.com/2022/09/26/lodz-art-museum-epitomises-failures-of-polish-governments-cultural-policy/",
+   "https://artreview.com/daniel-muzyczuk-appointed-director-of-muzeum-sztuki/"
+  ],
+  "reason": "The Art Newspaper never uses the word 'ministry' in its body and names no formal body; it attributes the non-renewal to the ruling party and government and names a deputy culture minister. Notes from Poland attributes the non-renewal to the ministry against the marshal's opposition. The ministry is co-financier and co-administrator (museum site footer; Notes from Poland), so the controlling state body acted and the censorship flag stands. Report trimmed from 849 to 781 words."
+ },
+ {
+  "id": "museum-of-russian-impressionism-moscow",
+  "section": "Wider context",
+  "problems": [
+   "section misuse",
+   "hedging",
+   "unsupported",
+   "logo source"
+  ],
+  "before": "WIDER CONTEXT on founder Mints (2018 departure, OpenSanctions entry); Voronin 'president of the developer group FSK'; Dobychina exhibition credited to RTVI as well; 'Mints can no longer support as before'; logos for a general partner and strategic partner",
+  "after": "Wider context deleted; Mints material moved into FUNDING as history: TAN (Sophia Kishkovsky, 28 June 2018, 'Founder of Museum of Russian Impressionism flees for the UK'): news of his departure for London emerged at the end of May 2018, unclear whether he would keep funding; Unverified label for the reports of a possible criminal investigation over bank dealings; OpenSanctions entry restated (close associate and oligarch topics, inferred from Wikidata and the Russian Oligarch/Billionaires Database, not found on international sanctions lists). Voronin: businessman and shareholder of FSK, founder and president per TAN Russia (Sofia Bagdasarova, 15 February 2024); president per RTVI. Logo line cut. Building text restated from the museum's About page and Wikipedia.",
+  "sources": [
+   "https://www.theartnewspaper.ru/posts/20240215-mlmn/",
+   "https://www.theartnewspaper.com/2018/06/28/founder-of-museum-of-russian-impressionism-flees-for-the-uk",
+   "https://www.opensanctions.org/entities/Q4295305/"
+  ],
+  "reason": "Wider context is for criticism of a patron the space is part of; Mints is the founder, so his departure is history. Petrova says he cannot support the museum for legal reasons; Mints says being outside the country prevents adequate support. RTVI does not mention Dobychina or say shareholder. The museum About page names no partners in text (logo file names only), so the logo sentence was cut."
+ },
+ {
+  "id": "musée-dart-de-joliette-joliette",
+  "section": "Funding",
+  "problems": [
+   "unsupported",
+   "filler"
+  ],
+  "before": "'multi-year funding' for the virtual exhibition; 'and other municipalities'; 'the lawyer Emmanuel Préville-Ratelle'; Caisse Desjardins 'presents the museum's family workshops'; Banque Nationale in the annex; 'regional list'",
+  "after": "Musées numériques Canada financed the research for the virtual exhibition (online since 14 June 2025); Ondulation 2025 supported by the Quebec government and Ville de Joliette; Annex 7 'Les partenaires de premier plan' lists Énergir, Fondation Famille Pierre Lassonde, Fondation Hydro-Québec, Fondation J.A. DeSève, Famille Parizeau, Power Corporation du Canada and Caisse Desjardins; Banque Nationale appears in the foundation's 'Partenariats et commandites' list.",
+  "sources": [
+   "https://storage.googleapis.com/maj-strapi-uploads-prod/2025_MAJ_Rapport_Annuel_v7_WEB_d004d51b60/2025_MAJ_Rapport_Annuel_v7_WEB_d004d51b60.pdf",
+   "https://www.museejoliette.org/partenaires",
+   "https://www.museejoliette.org/en/history"
+  ],
+  "reason": "Énergir and Lassonde are listed with no amount or year, so no flag. 65,000 participants, 39,000 for Ondulation, 149 acquisitions, eight exhibitions, $644,300 split 35/23/22/20, board chair and director confirmed in the annual report text. 'Lawyer' appears nowhere on an opened page."
+ },
+ {
+  "id": "musée-des-civilisations-noires-dakar",
+  "section": "Overview / Criticism",
+  "problems": [
+   "attribution",
+   "unsupported"
+  ],
+  "before": "area and capacity cited to Wikipedia; Toumaï 'lent by Chad'; rock paintings and Egyptian objects as opening exhibitions; 'school groups'; partners sentence; Mail & Guardian thesis 'primarily a political symbol'",
+  "after": "Area and capacity attributed to AFP via RTBF (7 December 2018): 14,000 m2, 18,000 pieces, more than 30 million euros from China; Toumaï skull came 'exceptionally' from Chad; opening exhibits restated from RTBF list; 19,408 school entries; partners sentence cut (article names no partner); Mail & Guardian (Sean O Toole, 'Senegalese artistic heritage gets a home', 20 December 2018) restated: museum is principally a symbol, Camara quote on soft infrastructure, no permanent displays, empty galleries, signage in Chinese and English.",
+  "sources": [
+   "https://www.rtbf.be/article/de-toumai-a-l-anti-colonialisme-les-civilisations-noires-entrent-au-musee-a-dakar-10091609",
+   "https://mg.co.za/friday/2018-12-20-senegalese-artistic-heritage-gets-a-home/",
+   "https://fr.allafrica.com/stories/202602140208.html"
+  ],
+  "reason": "Wikipedia does not give the area or the China amount (it says about $30,000,000 to construct). Own revenue 353.9M FCFA, up 148%, is confirmed (Lamine Diedhiou, Sud Quotidien via AllAfrica, 14 February 2026); the article calls Ly 'directeur', the May 2026 piece 'Director General'."
+ },
+ {
+  "id": "musée-national-des-beaux-arts-du-québec-quebec-city",
+  "section": "Funding",
+  "problems": [
+   "figure error"
+  ],
+  "before": "Revenue breakdown: other grants and contributions C$3,198,957; sponsorships C$223,263",
+  "after": "Statement of results: Quebec grants 24,454,620; Government of Canada grants 1,261,235; other grants or contributions 513,106; Fondation contributions 1,424,616; donated items 2,618,320; ticketing 1,504,420; sponsorships 229,332; investment income 437,834; total 34,142,457. Bottom line sponsorships corrected to C$229,332. Donor tiers given with their French labels and a note that tiers carry no year.",
+  "sources": [
+   "https://s3.ca-central-1.amazonaws.com/mnbaq-assets/production/documents-gouvernance/rapport-de-gestion-2023-2024.pdf",
+   "https://www.mnbaq.org/en/support-us/our-donors",
+   "http://www.mnbaq.org/a-propos/le-musee"
+  ],
+  "reason": "Imperial Oil, Rio Tinto, Osisko, SNC-Lavalin and Énergir are listed by tier with no year: no flag. Loto-Québec (Majeur tier, C$500,000 to C$999,999) is a state lottery, ordinary funder. Visitors 248,643, 187 employees and 14 exhibitions confirmed in the report. Architects of the Grand Hall removed (not on the opened Wikipedia page)."
+ },
+ {
+  "id": "muu-helsinki",
+  "section": "Overview / Funding",
+  "problems": [
+   "unsupported",
+   "filler"
+  ],
+  "before": "centre started in January 2021 with Material Light organised with FLASH; opening hours; bottom line 'make up the rest of the picture'",
+  "after": "Move to the Cable Factory space at the start of 2021 (activity report 2025); official inauguration with Hukkataival retrospective (Noba, 4 December 2021 to 6 February 2022); funding section adds from the activity report: annual operating grant applications to Taike and the City of Helsinki, Taike three-year grant 2022 to 2024, exhibition fee grant from Museovirasto since 2023, 2025 surplus 25,031.30 euros.",
+  "sources": [
+   "https://muu.fi/site/assets/files/1018/muu_toimintakertomus_2025.pdf",
+   "https://noba.ac/et/naitus/helina-hukkataival-never-a-lazy-moment-retrospective-exhibition",
+   "http://www.kaapelitehdas.fi/en/events/muu-gala-2023/"
+  ],
+  "reason": "muu.fi renders by script and returns only 'MUU ry.' to the fetch tool in part; opening hours and the FLASH/Material Light claim could not be confirmed on an opened page and were cut. Finnish Cultural Foundation (in the record) appears on no opened page and is not in the report."
+ },
+ {
+  "id": "museum-of-free-belarus-warsaw",
+  "section": "Overview / Funding",
+  "problems": [
+   "unsupported",
+   "absence"
+  ],
+  "before": "'artworks from the 2020 protests'; 'no amount given'; claim about State Catalog 'stated by him alone and the page gives no independent verification'",
+  "after": "Collection restated from the parent's 14 May 2023 post; first exhibits from Radio Svaboda (17 July 2022); preliminary cooperation agreements; poster exhibition handed over 23 March 2023, prepared with the Ministry of Foreign Affairs, Gliński announced as speaker; State Catalog item relabelled 'Unverified:' naming Latushka's own organisation's site (25 May 2024); Reform.news (17 November 2025) funding wording: Fund for Support of Culture.",
+  "sources": [
+   "https://www.svaboda.org/a/31947442.html",
+   "https://www.belarus-nau.org/en/post/museum-of-free-belarus",
+   "https://reform.news/muzej-volnaj-belarusi-pracjagvae-ladzic-varkshopy-pa-stvarjennju-lichbavyh-kalekcyj"
+  ],
+  "reason": "Premises of 367 m2 from the Warsaw municipality confirmed on the parent's page; Digital Culture 2025 co-financing by the Polish Ministry of Culture and National Heritage confirmed on Reform.news; no amount appears and none is stated."
+ },
+ {
+  "id": "museum-of-modern-egyptian-art-cairo",
+  "section": "Overview / Sources",
+  "problems": [
+   "source does not name the space",
+   "absence"
+  ],
+  "before": "'No corporate or private funder is documented.'; fineart.gov.eg listed as source; 'the Fine Arts Sector head said'; 'former fair grounds' attributed to Asharq Al-Awsat",
+  "after": "Absence sentence cut; fineart.gov.eg removed from SOURCES (page shows only a news header and visitor counter and does not mention the museum; the Website line keeps the record's address); Asharq Al-Awsat (Mohamed El-Kafrawy, 22 January 2025) restated: current building since 1983, opened to the public in 1991 as a Ministry of Culture venue represented by the Fine Arts Sector, works completed, opening show 'Khabiat Bikar' for Hussein Bikar, hours from February 2025; Wikipedia: Zamalek, former fair grounds, more than 13,000 works, owned by the Ministry of Culture.",
+  "sources": [
+   "https://aawsat.com/node/5104062",
+   "https://en.wikipedia.org/wiki/Museum_of_Modern_Egyptian_Art",
+   "https://www.fineart.gov.eg/"
+  ],
+  "reason": "Asharq Al-Awsat places the museum on Opera House Square and puts about 1,000 works on display and 16,000 to 18,000 in storage; Wikipedia says more than 13,000 works; both are stated."
+ }
+]
