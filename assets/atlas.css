@@ -2000,3 +2000,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on :is(svg,span){color:#fff!important}
   :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 }
+/* No bullets in Details (user's instruction, 25 Oct 2026): the lists read as lines, one blank half-line (--H) between them, flush left. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-list,ul.list-disc)>li::before{content:none}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{padding-left:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-list,ul.list-disc)>li+li{margin-top:var(--H)}
