@@ -2006,18 +2006,6 @@ div:has(>#topThemeBtn){column-gap:0}
 }
 /* The count starts on the element inside the panels, not on the panels: they are containers, and a container's style containment drops its own counters. */
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{counter-reset:drow}
-/* The chat's dock buttons take the displaay.net button row (25 Oct 2026): an outlined button with a 12px radius and a 1.5px ink line, no fill; the one that is on (Voice, or Back to chat once a note is open) is a solid blue pill. The note's own Send for review block keeps its design. Same 44px height as the header (var(--bar)) and the same large type. Desktop only; the phone's composer keeps its plain tap targets. */
-@media (min-width:768px){
-  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)){background:transparent!important;color:var(--ink)!important;border:1.5px solid var(--ink)!important;border-radius:12px!important;box-shadow:none!important;height:var(--bar);min-height:var(--bar);box-sizing:border-box;padding:0 16px;font:400 var(--fs-l)/1 var(--sans);text-decoration:none;transition:background-color .15s,border-radius .15s}
-  :root[data-theme] #workInputCard #workSendBtn:not(.is-on){width:var(--bar);min-width:var(--bar);padding:0}
-  :root[data-theme] #workInputCard #chatShareBtn:not(.is-on){padding:0 16px;font-size:var(--fs-l)}
-  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)):not(.is-on):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)):not(.is-on):hover{background:color-mix(in srgb,var(--ink) 12%,transparent)!important;color:var(--ink)!important;text-decoration:none}
-  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)):not(.is-on):hover :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)):not(.is-on):hover :is(svg,span){color:var(--ink)!important}
-  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on{background:var(--cobalt)!important;color:#fff!important;border-color:var(--cobalt)!important;border-radius:999px!important;padding:0 20px}
-  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on:hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on:hover{background:var(--cobalt)!important;color:#fff!important;filter:brightness(.85);text-decoration:none}
-  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on :is(svg,span){color:#fff!important}
-  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
-}
 /* No bullets in Details (user's instruction, 25 Oct 2026): the lists read as lines, one blank half-line (--H) between them, flush left. */
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-list,ul.list-disc)>li::before{content:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{padding-left:0}
@@ -2039,6 +2027,26 @@ div:has(>#topThemeBtn){column-gap:0}
 #detailDrawer .detail-bar #closeDetailBtn{position:absolute;top:0;right:0;display:flex;align-items:center;justify-content:center;width:56px;height:56px;padding:0;line-height:0;background:var(--grey);pointer-events:auto}
 #detailDrawer .detail-bar-cross{display:block;width:40px;height:40px}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head h2.dossier-main-heading{padding-right:56px}
+
+/* The sheet over the map on a phone and an iPad, set like the Displaay pages (user, 25 Oct 2026): the name large in mixed case over a rule, the place and the
+   summary as the lead, the close a large thin cross on a solid square, and the funding, visiting and sources as the same rows the Details tab uses, numbered. */
+@media (max-width:767px){
+  #dossier-bottom-sheet .sheet-title-block{padding:var(--m-s4) 72px var(--m-s3) var(--m-s4);border-bottom:1px solid var(--ink)}
+  :root:root:root body #dossier-bottom-sheet #dossier-sheet-name{font:500 clamp(30px,8vw,44px)/1.1 var(--sans)!important;letter-spacing:-.01em!important;word-spacing:normal!important;text-transform:none!important;margin:0!important;white-space:normal!important;text-wrap:balance}
+  :root:root:root body #dossier-bottom-sheet #dossier-sheet-meta{font-size:var(--fs-m)!important;line-height:1.35!important;color:var(--ink)!important;margin-top:var(--m-s3)}
+  :root:root:root body #dossier-bottom-sheet #dossier-sheet-summary{font-size:var(--fs-m)!important;line-height:1.35!important}
+  #dossier-bottom-sheet .sheet-close{top:0!important;right:0!important;width:56px!important;height:56px!important;border-radius:0!important;background:var(--grey)!important;display:flex;align-items:center;justify-content:center}
+  #dossier-bottom-sheet .sheet-close svg{width:40px;height:40px;stroke-width:1.1;stroke-linecap:butt}
+  #dossier-bottom-sheet .sheet-close::after{inset:0}
+  :root #dossier-sheet-scrollable-body #dossier-sheet-verified-pane{counter-reset:drow}
+}
+/* An iPad window narrower than 768px keeps the phone's top bar, with the three buttons as the Displaay menu's outlined pills; the one that is on is a solid pill. */
+@media (min-width:520px) and (max-width:767px){
+  :root[data-theme] #mobileTopBar>div:last-child{gap:8px;padding-right:16px;align-items:center}
+  :root[data-theme] #mobileTopBar>div:last-child :is(#mobileThemeBtn,#mobileGossipBtn,#reset-state-btn){height:40px;padding:0 16px!important;border:1.5px solid var(--ink)!important;border-radius:12px;background:transparent;color:var(--ink);align-self:center}
+  :root[data-theme] #mobileTopBar>div:last-child #mobileThemeBtn[aria-pressed=true]{background:var(--cobalt);border-color:var(--cobalt)!important;color:#fff;border-radius:999px}
+  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:var(--gossip)!important;color:#000;border-radius:999px}
+}
 
 /* The chat after the displaay.net Albert chat, keeping the existing starter-prompt highlights (user's instruction, 25 Oct 2026): the question box is a rounded navy field (#2d3352) with a yellow ring (#fff204) while in use, plum (#410043) with yellow type once the reader has typed, and a white square send button inside it; Share information (#420401) and Voice (#410043) sit below the box as solid rounded buttons after the Trials / Tester / Buy row; the starter questions stay as coloured highlight strips; the reader's lines are grey bubbles, the reply a dark box. */
 :root[data-theme] .curator-followup-pill{display:inline-block;width:auto;max-width:100%;padding:13px 24px;background:var(--ink)!important;color:var(--paper)!important;border:0;border-radius:14px;font:400 var(--fs-m)/1.2 var(--sans);text-align:left;text-decoration:none}
@@ -2066,9 +2074,17 @@ div:has(>#topThemeBtn){column-gap:0}
 :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):hover svg{color:#000!important}
 :root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{display:flex!important;padding-top:10px;justify-content:flex-start;gap:10px}
 :root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{display:flex!important;align-items:center;gap:10px}
-:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn),:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#chatShareBtn.is-on),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{border:0!important;border-radius:14px!important;height:44px!important;min-height:44px!important;padding:0 20px!important;font:400 var(--fs-l)/1 var(--sans);display:inline-flex!important;align-items:center!important;justify-content:center!important;transition:filter .15s}
-:root[data-theme] #workInputCard #chatShareBtn:not(.is-on){background:#420401!important;color:#fff!important}
-:root[data-theme] #workInputCard #chatShareBtn:not(.is-on) :is(svg,span){color:#fff!important}
-:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{background:#410043!important;color:#fff!important}
+:root[data-theme] #curatorVoiceToggleIcon:empty{display:none!important}
+:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn),:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):not(.is-on),:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#chatShareBtn.is-on),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{border:0!important;border-radius:11px!important;box-shadow:none!important;height:44px!important;min-height:44px!important;padding:0 18px!important;gap:0!important;font:400 var(--fs-m)/1 var(--sans)!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;text-decoration:none!important;transition:filter .15s}
+:root[data-theme] #workInputCard #chatShareBtn,:root[data-theme] #workInputCard #chatShareBtn:not(.is-on),:root[data-theme] #workInputCard #chatShareBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#chatShareBtn.is-on){background:#420401!important;color:#fff!important}
+:root[data-theme] #workInputCard #chatShareBtn :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn :is(svg,span){color:#fff!important}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #curatorVoiceToggleBtn:not(.is-on),:root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{background:#410043!important;color:#fff!important}
 :root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(svg,span),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn *{color:#fff!important}
-:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn:hover{filter:brightness(1.25);text-decoration:none}
+:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn:hover{filter:brightness(1.25);text-decoration:none!important}
+:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+
+/* Desktop details: 15px is the smallest size (user, 25 Oct 2026). The small size --fs-s is 14px everywhere else; inside the record panels on a wide screen it is 15px, so the
+   lists, sources, quotations' credits, links and buttons all follow. The phone keeps 14px. */
+@media (min-width:768px){
+  :root :is(#desktopDossierRecordBody,#detailBody){--fs-s:15px}
+}
