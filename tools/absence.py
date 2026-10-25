@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
-"""Drop sentences that only say something was not found.
+"""Drop what only says something was not found.
 
 The Details card shows what research found. "No criticism found in art media." or "No reporting found of
-accessibility." says nothing about the space, so the card leaves it out. A sentence goes only when its whole
-point is the absence; a sentence that also states something ("No flagged funder was found: its pages name the
-City of Arles ...") stays, and `strip_details` reports it so someone can reword it by hand.
+accessibility." says nothing about the space, so the card leaves it out. The filter works clause by clause: a
+clause goes when its whole point is the absence ("No annual reports found", "Amounts were not verified", "the
+page could not be read"); a clause that states something stays ("No annual reports found; accounts are on the
+Charity Commission register" keeps the accounts). A sentence with nothing left disappears, and a note or field
+with nothing left is removed.
 
-  python3 tools/absence.py            # dry run: counts, and the sentences it would keep for review
+Covers record.details and the plain-text funding line (a sentence goes only when all of it is absence) and the
+one-line notes (watch, why_flagged, records_note), where the absence clauses of a mixed sentence go too.
+
+  python3 tools/absence.py            # dry run: counts, and sentences that lost only part of themselves
   python3 tools/absence.py --apply    # rewrite institutions.json
 """
 import json
@@ -16,101 +21,127 @@ from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / 'institutions.json'
 
-SENTENCE = re.compile(r'(?<=[.;])\s+(?=[A-Z"“(])')
-# "No criticism found in art media." / "None of the funders was named."
-LABEL = re.compile(r"^[A-Z][\w'()/& -]{0,40}:\s+(?=(?:No|None|Nothing|Neither)\b)")   # "Visiting: No reporting found of ..."
+SENTENCE = re.compile(r'(?<=[.;])\s+(?=[A-Z0-9"“(])')
+LABEL = re.compile(r"^([A-Z][\w'()/& -]{0,40}:\s+)(?=(?:No|None|Nothing|Neither)\b)")   # "Visiting: No reporting found of ..."
 LEAD = re.compile(r'^(No|None|Nothing|Neither)\b', re.I)
+# "No criticism found in art media." / "None of the funders was named."
 ABSENT = re.compile(r'\b(found|located|published|reporting|reported|available|disclosed|named|stated|documented|'
-                    r'listed|identified|given|readable|opened|exists?|seen|raised|mentioned|criticism|objection|protest|complaint|controversy)\b', re.I)
+                    r'listed|identified|given|readable|opened|exists?|seen|raised|mentioned|criticism|objection|'
+                    r'protest|complaint|controversy|turned up|ties|tied|link|payment|source|page|list)\b', re.I)
 # "Amounts were not verified." / "Accessibility details were not found."
 PLAIN = re.compile(r"\b(?:(?:was|were|is|are|been)\s+not|could\s+not|cannot|couldn't|wasn't|weren't|isn't|aren't)\s+"
                    r"(?:be\s+)?(?:found|located|published|verified|confirmed|listed|named|stated|disclosed|readable|"
                    r"read|given|checked|opened|available|identified|on the page|on the pages)\b[^.:;]{0,60}$", re.I)
-PROCESS = re.compile(r"\b(did not load|no longer resolves|could not be (?:opened|read|checked|reached))\b", re.I)
+PROCESS = re.compile(r"\b(did not load|too large to open|no longer resolves|could not be (?:opened|read|checked|reached)|"
+                     r"returned (?:an? )?(?:HTTP \d+|authorization error)|blocked access|refused (?:automated )?(?:access|requests?|the connection))\b", re.I)
+# Why nothing was found, after the absence it explains.
+EXCUSE = re.compile(r"\b(could not|couldn't|cannot|did not (?:load|show|open)|not (?:read|opened|readable|available|"
+                    r"listed|named|shown|posted|on the)|blocked|refused|returned|unavailable|exceeded|403|404|500|"
+                    r"names? (?:no|none)|gives? no|shows? no|lists? no|states? no|no (?:amounts?|names?|funders?|"
+                    r"trustees?|figures?|reason|page|reporting|source|report|annual report)|(?:was|were) found|"
+                    r"none could be|carries no|(?:un|not )disclosed|is not explained|(?:are|is) not shown|"
+                    r"showed none|fails its certificate)\b", re.I)
+SUBJECT_NOT_NAMED = re.compile(r"^[A-Z][\w'. -]{0,30} (?:was|were) not named\b")   # "Charleston was not named" in a campaign letter is the finding
+CHECKED = re.compile(r'\b(confirmed|verified|read|shown|noted|recorded|released|posted|announced|included|mentions?|says|gives?|appears?|shows?)\b', re.I)
+NOINFO = re.compile(r'\b(?:publishes|posts|gives|lists|names|states|shows|has) no\b', re.I)   # "YARAT publishes no funder list"
+UNCONFIRMED = re.compile(r'\b(unconfirmed|unverified|not (?:established|confirmed|verified|known))\b', re.I)
 NOT_ABSENCE = re.compile(r'\b(guilty|liable|responsible|culpable|complicit|in breach|to have|to be|to contain)\b', re.I)
-SHORT = 16   # words; a longer "not found" sentence usually carries a fact as well
-# After the colon or semicolon: why nothing was found. That is still only the absence.
-EXCUSE = re.compile(r"\b(could not|couldn't|cannot|did not (?:load|show|open)|not (?:read|opened|readable|available|listed|named|"
-                    r"shown|posted|on the)|blocked|refused|returned|unavailable|exceeded|403|404|500|names? (?:no|none)|"
-                    r"gives? no|shows? no|lists? no|states? no|no (?:amounts?|names?|funders?|trustees?|figures?|reason)|"
-                    r"only (?:the )?\d{4} \w+ (?:form|report) is linked|links? (?:only|an annual report)|no (?:page|reporting|source|report|"
-                    r"annual report)|(?:was|were) found|none could be|carries no|(?:un|not )disclosed|is not explained|"
-                    r"(?:are|is) not shown|showed none)\b", re.I)
+SHORT = 16   # words; a longer "not found" clause usually carries a fact as well
+NOTES = ('watch', 'why_flagged', 'records_note')
 
 
-def is_absence(s):
-    t = LABEL.sub('', s.strip()).rstrip('.;')
-    if NOT_ABSENCE.search(t):
+def absent(c, after_absent):
+    c = c.strip().rstrip('.;')
+    if not c:
+        return True
+    if NOT_ABSENCE.search(c) or SUBJECT_NOT_NAMED.match(c):
         return False
-    if LEAD.match(t) and ABSENT.search(t):
-        m = re.search(r'[:;]', t)
-        return not m or bool(EXCUSE.search(t[m.end():]))
-    return len(t.split()) <= SHORT and bool(PLAIN.search(t) or PROCESS.search(t))
+    if LEAD.match(c) and (after_absent or ((ABSENT.search(c) or CHECKED.search(c)) and len(c.split()) <= 30)):
+        return True
+    n = len(c.split())
+    if n <= SHORT and (PLAIN.search(c) or PROCESS.search(c) or NOINFO.search(c)):
+        return True
+    return after_absent and n <= 14 and bool(EXCUSE.search(c) or UNCONFIRMED.search(c) or NOINFO.search(c))
 
 
-def strip_text(text, kept=None):
-    """The text without its absence sentences; kept collects "No ..." sentences that state something too."""
+def clean_sentence(s, kept=None, partial=True, lead_only=False):
+    """The sentence without its absence clauses ('' when nothing is left). With partial=False a sentence that
+    still states something is returned whole."""
+    if lead_only and not LEAD.match(s.strip()):
+        return s
+    end = s.rstrip()[-1:] if s.rstrip()[-1:] in '.;' else ''
+    m = LABEL.match(s.strip())
+    label, body = (m.group(1), s.strip()[m.end():]) if m else ('', s.strip())
+    parts = re.split(r';\s+|,\s+(?:though|but|while|although|and|so)\s+', body.rstrip('.;'))
+    if LEAD.match(parts[0]) and re.search(r':\s+', parts[0]):   # "No flagged funder was found: its pages name ..."
+        parts[0:1] = re.split(r':\s+', parts[0], maxsplit=1)
+    out, prev = [], False
+    for p in parts:
+        gone = absent(p, prev)
+        if not gone:
+            out.append(p)
+        prev = gone
+    if not out:
+        return ''
+    if len(out) == len(parts) or not partial:
+        return s
+    if kept is not None:
+        kept.append(s)
+    r = '; '.join(out)
+    return label + r[:1].upper() + r[1:] + end
+
+
+def strip_text(text, kept=None, partial=True, lead_only=False):
     if '\n' in text:
-        return '\n'.join(x for x in (strip_text(l, kept) for l in text.split('\n')) if x)
-    out = []
-    for s in SENTENCE.split(text.strip()):
-        if is_absence(s):
-            continue
-        if kept is not None and LEAD.match(LABEL.sub('', s)) and ABSENT.search(s):
-            kept.append(s)
-        out.append(s)
-    r = ' '.join(out).strip()
+        return '\n'.join(x for x in (strip_text(l, kept, partial, lead_only) for l in text.split('\n')) if x)
+    r = ' '.join(x for x in (clean_sentence(s, kept, partial, lead_only) for s in SENTENCE.split(text.strip())) if x).strip()
     return re.sub(r';$', '.', r)
 
 
 def strip_details(d, kept=None):
-    """Rewrite one `details` dict in place; returns how many sentences were dropped."""
+    """Rewrite one `details` dict in place; returns 1 if anything changed."""
     before = json.dumps(d, ensure_ascii=False)
-    n = [0]
 
-    def one(t):
-        r = strip_text(t, kept)
-        if r != t.strip():
-            n[0] += len(SENTENCE.split(t.strip())) - len(SENTENCE.split(r)) if r else len(SENTENCE.split(t.strip()))
-        return r
+    def lines(items):
+        return [x for x in (strip_text(t, kept, False) for t in items) if x]
 
     for k in ('overview', 'funding', 'wider_context', 'not_related'):
-        d[k] = [x for x in (one(t) for t in d.get(k, [])) if x]
-    for k in ('bottom_line',):
-        d[k] = one(d.get(k, '')) if d.get(k) else d.get(k, '')
+        d[k] = lines(d.get(k, []))
+    if d.get('bottom_line'):
+        d['bottom_line'] = strip_text(d['bottom_line'], kept, False, True)   # "The weak point is ..." is the analysis, not a search result
     for f in d.get('red_flags', []):
-        f['points'] = [x for x in (one(t) for t in f['points']) if x]
+        f['points'] = lines(f['points'])
     d['red_flags'] = [f for f in d.get('red_flags', []) if f['points']]
     p = d.get('press') or {}
     if p:
-        p['overall'] = one(p['overall']) if p.get('overall') else ''
+        p['overall'] = strip_text(p['overall'], kept, False) if p.get('overall') else ''
         for it in p.get('items', []):
-            it['points'] = [x for x in (one(t) for t in it.get('points', [])) if x]
-    return n[0] if json.dumps(d, ensure_ascii=False) != before else 0
+            it['points'] = lines(it.get('points', []))
+    return int(json.dumps(d, ensure_ascii=False) != before)
 
 
 def strip_record(r, kept=None):
-    """details and the plain-text funding line of one record; returns the sentences dropped."""
+    """details, the funding line and the notes of one record; returns how many fields changed."""
     n = strip_details(r['details'], kept) if 'details' in r else 0
-    if isinstance(r.get('funding'), str):
-        before = r['funding']
-        r['funding'] = strip_text(before, kept)
-        n += before.strip() != r['funding']
+    for f in ('funding',) + NOTES:
+        if isinstance(r.get(f), str) and r[f].strip():
+            before = r[f]
+            r[f] = strip_text(before, kept, f in NOTES)
+            n += before.strip() != r[f]
+            if not r[f]:
+                del r[f]
     return n
 
 
 def main():
     apply = '--apply' in sys.argv
     recs = json.loads(DATA.read_text())
-    total, touched, kept = 0, 0, []
+    touched, kept = 0, []
     for r in recs:
-        n = strip_record(r, kept)
-        total += n
-        touched += bool(n)
-    print(f'{total} sentences dropped from {touched} records')
-    print(f'{len(kept)} sentences start "No ..." but state something too, so they stay:')
+        touched += bool(strip_record(r, kept))
+    print(f'{touched} records changed; {len(kept)} sentences lost only part of themselves:')
     for s in kept:
-        print('  -', s[:200])
+        print('  -', s[:220])
     if apply:
         DATA.write_text(json.dumps(recs, ensure_ascii=True, indent=2))
         print('institutions.json rewritten')
