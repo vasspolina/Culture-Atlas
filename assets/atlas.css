@@ -1491,9 +1491,8 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 /* A bullet in the Details text sits 2px of ink to the left of its words (user's instruction, 19 Oct 2026). Jokker's bullet inks from .075em to .298em of
    its .372em advance, so the box ends .074em beyond the ink: the marker is hung from the item's left edge with that much taken off a 2px gap. The text
    stays where it was; only the bullet moves. */
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc{list-style:none}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc>li{position:relative}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc>li::before{content:"\2022";position:absolute;right:100%;margin-right:calc(2px - .074em)}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc{list-style:none;padding-left:0}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.list-disc>li+li{margin-top:var(--H)}
 
 /* Bold is for the names of museum spaces only (user's instruction, 19 Oct 2026): the space's name in the Details tab, the record sheet, the map card and
    the route popup. Every other title is regular weight: the Layers panel's layer names, and a funder's or person's name in its record. */
@@ -1954,9 +1953,9 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-sub{margin:0;padding:0;font:400 var(--fs-m)/var(--lh) var(--sans);text-indent:0;max-width:none;color:var(--ink);text-wrap:pretty}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-box{margin:var(--H) 0 0;padding:calc(var(--H) / 2) var(--H);font:400 var(--fs-s)/var(--lh) var(--sans);text-indent:0;max-width:none;border:1px solid var(--row-rule);border-radius:6px;color:var(--ink);overflow-wrap:anywhere}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list{list-style:none;margin:0;padding:0;min-width:0}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{position:relative;margin:0;padding:0 0 0 1em;font:400 var(--fs-s)/var(--lh) var(--sans);text-indent:0;max-width:none;text-wrap:pretty;hyphens:manual;overflow-wrap:break-word}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li+li{margin-top:calc(var(--H) / 2)}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li::before{content:"\2022";position:absolute;left:0;top:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{position:relative;margin:0;padding:0;font:400 var(--fs-s)/var(--lh) var(--sans);text-indent:0;max-width:none;text-wrap:pretty;hyphens:manual;overflow-wrap:break-word}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li+li{margin-top:var(--H)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .quote-hang{position:absolute;right:100%;top:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .lead-in{font-weight:600}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .d-cite{display:block;margin:0;font-size:var(--fs-s);line-height:var(--lh);opacity:.75;text-indent:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li>.d-cite:first-child{margin-bottom:calc(var(--H) / 4)}

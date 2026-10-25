@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=273">
-  <script src="assets/config.js?v=273"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=274">
+  <script src="assets/config.js?v=274"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9889,11 +9889,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v273';
+    const ATLAS_RELEASE = 'culture-atlas-v274';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=273').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=274').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11606,9 +11606,10 @@ return maplibregl$1;
     function critiqueQuoteLi(q) {
       const e = escapeHtml;
       const where = [q.publication, q.date].filter(Boolean).map(e).join(', ');
-      return `<li data-no-typeset>${q.context ? `<span class="d-cite">${e(q.context)}</span>` : ''}${e(quotedText(q.text))}<span class="d-cite">${e(q.author)}, <a href="${e(q.url)}" target="_blank" rel="noopener noreferrer">${e(q.title)}</a>, ${where}.</span></li>`;
+      const t = quotedText(q.text);
+      return `<li data-no-typeset>${q.context ? `<span class="d-cite">${e(q.context)}</span>` : ''}<span class="quote-hang">${e(t.charAt(0))}</span>${e(t.slice(1))}<span class="d-cite">${e(q.author)}, <a href="${e(q.url)}" target="_blank" rel="noopener noreferrer">${e(q.title)}</a>, ${where}.</span></li>`;
     }
-    // The record's critique as a row: its strategy as the title, what it targets under it, the quotation or summary and what to do with it as bullets,
+    // The record's critique as a row: an artwork keeps its strategy as the title and its target under it; a critical frame is titled plainly Criticism (the frame's own name and target are working labels, not for readers). The quotations and what to do with them follow as plain paragraphs,
     // the picture and the Next critique button under the title.
     function critiqueRowHtml(inst, vc, vcs, vcIdx) {
       const e = escapeHtml, theory = vc.kind === 'theory';
@@ -11616,7 +11617,7 @@ return maplibregl$1;
         theory ? '' : e(vc.artist_designer || vc.artist || ''),
         theory ? '' : [quotedText(vc.artwork_title || vc.artwork || ''), vc.year ? `(${vc.year})` : ''].filter(Boolean).map(e).join(' '),
         e(vc.medium_format || ''),
-        `Target: ${e(vc.target || vc.institution_target || inst.name)}`,
+        theory ? '' : `Target: ${e(vc.target || vc.institution_target || inst.name)}`,
         e(vc.credits || ''),
       ].filter(Boolean).join('<br>');
       const lis = theory && vc.quotes ? vc.quotes.map(critiqueQuoteLi) : [proseLi('', e(vc.summary || ''))];
@@ -11624,7 +11625,7 @@ return maplibregl$1;
       if (vc.citation) lis.push(proseLi('Source:', e(vc.citation)));
       const img = theory || !vc.image ? '' : `<img class="d-row-media" src="${e(vc.image)}" alt="${e(vc.artwork_title || 'Visual Critique')}">`;
       const next = vcs.length > 1 ? `<button type="button" onclick="window.cycleDossierVisualCritique();" class="record-action d-row-action">Next critique, ${(vcIdx + 1) % vcs.length + 1} of ${vcs.length}</button>` : '';
-      return proseRows([proseRow(e(vc.strategy || 'Critique'), sub, lis, { after: img + next })], 'Critique');
+      return proseRows([proseRow(theory ? 'Criticism' : e(vc.strategy || 'Critique'), sub, lis, { after: img + next })], 'Critique');
     }
     function critiqueQuoteLine(q) {
       return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
@@ -12153,7 +12154,7 @@ return maplibregl$1;
         const vcSummary = document.getElementById('floatingCardVcSummary');
         const vcCitation = document.getElementById('floatingCardVcCitation');
 
-        if (vcBadge) vcBadge.textContent = vc.strategy || 'Visual Critique';
+        if (vcBadge) vcBadge.textContent = (vc.kind === 'theory' ? 'Criticism' : vc.strategy) || 'Visual Critique';
         if (vcCountBadge) {
           if (vcs.length > 1) {
             vcCountBadge.textContent = `${idx + 1} of ${vcs.length}`;
@@ -19351,9 +19352,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=273"></script>
-<script src="assets/layers.js?v=273"></script>
-<script src="assets/hq-detail.js?v=273"></script>
-<script src="assets/bubbles.js?v=273" defer></script>
+<script src="assets/typeset.js?v=274"></script>
+<script src="assets/layers.js?v=274"></script>
+<script src="assets/hq-detail.js?v=274"></script>
+<script src="assets/bubbles.js?v=274" defer></script>
 </body>
 </html>
