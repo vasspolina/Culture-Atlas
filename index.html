@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=285">
-  <script src="assets/config.js?v=285"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=286">
+  <script src="assets/config.js?v=286"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9911,11 +9911,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v285';
+    const ATLAS_RELEASE = 'culture-atlas-v286';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=285').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=286').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11937,6 +11937,15 @@ return maplibregl$1;
       while (1.05 / (lum(c) + 0.05) < 4.5 && k > 0.2) { k -= 0.02; c = rgb.map(v => Math.round(v * k)); }
       return '#' + c.map(v => v.toString(16).padStart(2, '0')).join('');
     };
+    // The head of a record, set like a section of the licence page's Discounts view (user, 25 Oct 2026): the name large over a rule, the summary as the lead
+    // paragraph, then the place as a bold lead-in on its own line with the category and the founding year in the words beneath.
+    function headFactHtml(inst) {
+      const place = inst.location || inst.city || '';
+      const year = inst.year_founded ? String(inst.year_founded) : '';
+      const rest = inst.category ? inst.category + (year ? `, founded ${year}` : '') : (year ? `Founded ${year}` : '');
+      if (!place && !rest) return '';
+      return `<p class="no-indent head-fact">${place ? `<strong class="lead-in">${escapeHtml(place)}</strong> ` : ''}${escapeHtml(rest)}</p>`;
+    }
     function gradeLineHtml(inst) {
       if (inst.grade && GRADE[inst.grade]) {
         const g = GRADE[inst.grade];
@@ -12622,11 +12631,11 @@ return maplibregl$1;
 
       return `
         <div class="space-y-3">
-          <div class="space-y-1_5 pb-3 rule-b">
+          <div class="space-y-1_5 pb-3 rule-b record-head">
             <h2 class="dossier-main-heading break-words" style="--title-length:${Math.max((inst.name || '').length, 1)}" title="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</h2>
-            <p class="kicker no-indent">${escapeHtml([inst.location || inst.city, inst.year_founded ? 'founded ' + inst.year_founded : '', inst.category].filter(Boolean).join(', '))}</p>
-            ${inst.curatorial_focus ? `<p class="no-indent account-note">Programme: ${escapeHtml(inst.curatorial_focus)}</p>` : ''}
             ${!isClean && inst.highlight ? `<p class="institution-summary">${escapeHtml(inst.highlight)}</p>` : ''}
+            ${headFactHtml(inst)}
+            ${inst.curatorial_focus ? `<p class="no-indent account-note">Programme: ${escapeHtml(inst.curatorial_focus)}</p>` : ''}
             ${inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : ''}
             ${isCommunity ? '' : gradeLineHtml(inst)}
             ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${escapeHtml(inst.watch)}</p>` : ''}
@@ -19385,9 +19394,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=285"></script>
-<script src="assets/layers.js?v=285"></script>
-<script src="assets/hq-detail.js?v=285"></script>
-<script src="assets/bubbles.js?v=285" defer></script>
+<script src="assets/typeset.js?v=286"></script>
+<script src="assets/layers.js?v=286"></script>
+<script src="assets/hq-detail.js?v=286"></script>
+<script src="assets/bubbles.js?v=286" defer></script>
 </body>
 </html>

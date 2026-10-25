@@ -2012,3 +2012,13 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-list,ul.list-disc)>li::before{content:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{padding-left:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-list,ul.list-disc)>li+li{margin-top:var(--H)}
+
+/* The head of a record set like the licence page's Discounts view (user, 25 Oct 2026): the name large in mixed case over a rule, the summary as the lead
+   paragraph, the place as a bold lead-in on its own line with the words beneath, the rating likewise. Written last so it wins over the earlier head rules and
+   over the phone's two-size scale, which it leaves alone everywhere else. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head{--head-title:clamp(30px,10cqi,44px)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head h2.dossier-main-heading{font:500 var(--head-title)/1.1 var(--sans)!important;letter-spacing:-.01em!important;word-spacing:normal!important;text-transform:none!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;text-wrap:balance;margin:0 0 var(--L)!important;padding:0 0 var(--H);border-bottom:1px solid var(--ink)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head>.institution-summary{font-size:var(--fs-m)!important;line-height:1.35!important;margin:0 0 var(--L)!important;text-indent:0;max-width:none;opacity:1}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head>:is(.head-fact,.account-note,.architecture-status,.grade-line,p:not([class])){margin:0 0 var(--L)!important;text-indent:0;max-width:none}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head .head-fact .lead-in{display:block;font-weight:600!important}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head .grade-line .grade-mark{display:table!important;margin-bottom:calc(var(--H) / 2)}
