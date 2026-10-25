@@ -784,3 +784,15 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Tirana: Adela Demetja is director per Shqiptarja 15 Oct 2025; Wikipedia lists Erzen Shkololli. Two separate reconstruction cost figures stated.
 - Chile: two Wikipedia items in Wider context (dictatorship-era censorship, 2018 resignation of director Farriol) concern the museum itself; decide whether they belong.
 - Moldova: 2024 report PDF could not be fully read; 39,767 items figure dropped. Skopje: Eurolink 1,100,000 denars is a pledge.
+
+## d043 and d044 (research notes, before their slop checks)
+- swiss-institute: Blavatnik Family Foundation (2020, 2021) and Bloomberg Philanthropies (2018, 2019) are past funders, not flagged. If Blavatnik is read strictly under the fossil-fuels ruling, a flag would need adding.
+- tensta-konsthall-stockholm: Lundin-owned Bukowskis was a partner and sales venue of the 2012 "Abstract Possible" show, not a listed funder; flag kept only if the slop check confirms a documented objection.
+- taipei-fine-arts-museum-taipei: CTBC flag rests on regulator fines to CTBC Bank (NT$14M Dec 2021, NT$20M and NT$10M 2023); the museum lists the CTBC Foundation, whose tie to the bank group is not confirmed. 2020 "I-DEN-TI-TY" pressure from Taipei City.
+- tarrawarra-museum-of-art: Besen Family Foundation advocacy piece (Matt Chun's Newsletter, Dec 2023) under Wider context, not a flag.
+- tainan-art-museum: the record's NT$201M revenue and its breakdown were not verified. swiss-institute: the record's 2025 revenue and net-asset claims were not checked.
+- tank-shanghai: no working website found (tank.art did not resolve); ARTnews pieces paywalled.
+- texaf-bilembo: TotalEnergies appears in the centre's partner list with no amount, year or role; not flagged. Decide whether a bare partner logo counts as current funding.
+- the-crab-museum: a community interest company limited by guarantee (Companies House), not a cooperative as the record says.
+- the-showroom-london: the record's Esmée Fairbairn funding does not appear in the FY2025 accounts. thapong-visual-arts-centre-gaborone: Daily News pages did not load (expired certificate), so the record's P2.2M ministry sum is unconfirmed.
+- the-mac: auditor reports a going-concern material uncertainty (FY2025 accounts).
