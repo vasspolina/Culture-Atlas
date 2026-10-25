@@ -1242,3 +1242,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Nukus and Tashkent (ACDF): Wider context kept; director start date conflicts between 2019 and 2025 articles (both stated).
 - Studio Voltaire: Bloomberg line has no year; Wider context removed.
 - State of Concept: confirm on the live site that the home page says the physical space is permanently closed.
+
+## d095 (slop check: checks/d095-slop.json)
+- Te Papa: Gambling flag kept; it rests on the 2024-25 annual report (31 October 2025), which thanks the Lotto NZ Lottery Grants Board, Pub Charity and The Lion Foundation under Grant partners for the Te Taiao | Nature exhibition, shown as logos. The Current partners page lists them by logo only. Editor to confirm a logo under a named thanks heading counts as a funding line.
+- Tahiti/TPMM (Tbilisi Photography and Multimedia Museum): no Gambling flag; Adjarabet stake sold in 2019, no page shows that money funds the space today. Foreign-agent-law item kept as Wider context.
+- Tashkeel: no Gulf state body flag; ENOC partnership page does not say who paid.
+- The Common Guild: Outset Wider context cut (Euronews item targets Tate).
+- Te Uru: support page returned 429, funding section rebuilt from the About page and the Charities Register; benefactor levels and patron line cut. Website line still points to the support page.
+- Teoretica: FFAI, Arts Collaboratory and DOEN known from footer logo link addresses under a Colaboradores heading only.
