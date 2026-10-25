@@ -2065,3 +2065,23 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(svg,span){color:#fff!important}
   :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover{filter:brightness(1.25);text-decoration:none}
 }
+
+/* The sheet over the map on a phone and an iPad, set like the Displaay pages (user, 25 Oct 2026): the name large in mixed case over a rule, the place and the
+   summary as the lead, the close a large thin cross on a solid square, and the funding, visiting and sources as the same rows the Details tab uses, numbered. */
+@media (max-width:767px){
+  #dossier-bottom-sheet .sheet-title-block{padding:var(--m-s4) 72px var(--m-s3) var(--m-s4);border-bottom:1px solid var(--ink)}
+  :root:root:root body #dossier-bottom-sheet #dossier-sheet-name{font:500 clamp(30px,8vw,44px)/1.1 var(--sans)!important;letter-spacing:-.01em!important;word-spacing:normal!important;text-transform:none!important;margin:0!important;white-space:normal!important;text-wrap:balance}
+  :root:root:root body #dossier-bottom-sheet #dossier-sheet-meta{font-size:var(--fs-m)!important;line-height:1.35!important;color:var(--ink)!important;margin-top:var(--m-s3)}
+  :root:root:root body #dossier-bottom-sheet #dossier-sheet-summary{font-size:var(--fs-m)!important;line-height:1.35!important}
+  #dossier-bottom-sheet .sheet-close{top:0!important;right:0!important;width:56px!important;height:56px!important;border-radius:0!important;background:var(--grey)!important;display:flex;align-items:center;justify-content:center}
+  #dossier-bottom-sheet .sheet-close svg{width:40px;height:40px;stroke-width:1.1;stroke-linecap:butt}
+  #dossier-bottom-sheet .sheet-close::after{inset:0}
+  :root #dossier-sheet-scrollable-body #dossier-sheet-verified-pane{counter-reset:drow}
+}
+/* An iPad window narrower than 768px keeps the phone's top bar, with the three buttons as the Displaay menu's outlined pills; the one that is on is a solid pill. */
+@media (min-width:520px) and (max-width:767px){
+  :root[data-theme] #mobileTopBar>div:last-child{gap:8px;padding-right:16px;align-items:center}
+  :root[data-theme] #mobileTopBar>div:last-child :is(#mobileThemeBtn,#mobileGossipBtn,#reset-state-btn){height:40px;padding:0 16px!important;border:1.5px solid var(--ink)!important;border-radius:12px;background:transparent;color:var(--ink);align-self:center}
+  :root[data-theme] #mobileTopBar>div:last-child #mobileThemeBtn[aria-pressed=true]{background:var(--cobalt);border-color:var(--cobalt)!important;color:#fff;border-radius:999px}
+  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:var(--gossip)!important;color:#000;border-radius:999px}
+}
