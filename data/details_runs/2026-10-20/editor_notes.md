@@ -775,3 +775,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Secession: the space's partner page says only roughly a third of the budget is public grants and calls the house largely self-supporting; added, attributed to the space.
 - Soane: 2024-25 accounts; the earlier 417,443 pounds "tours and events" figure was the restricted charitable total; tours and events are 101,385 pounds.
 - Thin sources: Red Brick (founders' wealth, museum site TLS error), Selasar (own site suspended), Raven Row (no accounts), Rwanda (no budget or funder).
+
+## d040 (after its slop check)
+- Nasher: the Duke Endowment tobacco history ($40 million in December 1924, mainly Duke Power stock; American Tobacco founded 1890) is in Wider context as history, no flag. Record flags unchanged.
+- MNAC: Malevich sponsor flag holds (Akinsha 30 June 2025; HVG names the lender). The Varzari residency allegation (via ArtLeaks) is labelled Unverified with MNAC's reply.
+- National Arts Festival: the 2012 Rhini event (Mahala, 13 July 2012) was an alternative festival, not a documented protest; moved to Wider context.
+- Habana: 2021 artists' letter (27N-aligned; Art Newspaper 24 May 2021, OnCuba 25 May 2021) states no museum response. The Havana Times item was removed (does not name the museum).
+- Tirana: Adela Demetja is director per Shqiptarja 15 Oct 2025; Wikipedia lists Erzen Shkololli. Two separate reconstruction cost figures stated.
+- Chile: two Wikipedia items in Wider context (dictatorship-era censorship, 2018 resignation of director Farriol) concern the museum itself; decide whether they belong.
+- Moldova: 2024 report PDF could not be fully read; 39,767 items figure dropped. Skopje: Eurolink 1,100,000 denars is a pledge.
