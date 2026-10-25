@@ -1949,6 +1949,11 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li+li{margin-top:calc(var(--H) / 2)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li::before{content:"\2022";position:absolute;left:0;top:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .lead-in{font-weight:600}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .d-cite{display:block;margin:0;font-size:var(--fs-s);line-height:var(--lh);opacity:.75;text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li>.d-cite:first-child{margin-bottom:calc(var(--H) / 4)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-media{display:block;width:100%;max-width:20em;height:9em;object-fit:cover;margin:var(--H) 0 0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-action{margin-top:var(--H)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list.review-list{list-style:none}
 @container (max-width:34em){
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr);row-gap:var(--H);align-items:start}
 }

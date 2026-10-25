@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=271">
-  <script src="assets/config.js?v=271"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=272">
+  <script src="assets/config.js?v=272"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9889,11 +9889,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v271';
+    const ATLAS_RELEASE = 'culture-atlas-v272';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=271').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=272').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11415,6 +11415,11 @@ return maplibregl$1;
     // A block of facts set as a table (the user's reference, 19 Oct 2026): its name on a line, a rule, then one row per
     // fact, the label in the left column and the value in the right, all at the text size, and a rule to close it.
     // rows: [label, html] pairs; a row with no value is left out. Values are passed as HTML, already escaped.
+    // The record page's Visiting and Highlight, set as rows like the rest of Details (the other panels keep factsTableHtml).
+    function visitingRowsHtml(rows) {
+      const lis = (rows || []).filter(x => x && x[1]).map(([k, v]) => proseLi(`${k}:`, v));
+      return proseRows([proseRow('Visiting', '', lis)], 'Visiting');
+    }
     function factsTableHtml(title, rows, attrs = '') {
       const r = (rows || []).filter(x => x && x[1]);
       if (!r.length) return '';
@@ -11509,7 +11514,7 @@ return maplibregl$1;
 
     // Links to the sources recorded for a space. Recording a source is not verifying it, and the page says so.
     // With fieldsOnly the funding sources are left to the Funding block and only the field clauses remain.
-    function sourcesHtml(inst, fieldsOnly) {
+    function sourcesHtml(inst, fieldsOnly, asRow) {
       if (!inst) return '';
       const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).slice(0, 6);
       // Each source reads as its site name, as everywhere else on the page. A path cut at 30 characters
@@ -11549,6 +11554,12 @@ return maplibregl$1;
         foundHtml = `${fieldParts[0].label} and address from ${join(fieldParts[0].links)}.`;
       } else if (fieldParts.length) {
         foundHtml = `${fieldParts.map(f => `${f.label} from ${join(f.links)}`).join('. ')}.`;
+      }
+      // As a row (the record page): one bullet per field, or one for both when they share their sources.
+      if (asRow) {
+        const lis = fieldParts.length === 2 && fieldParts[0].links.sites === fieldParts[1].links.sites ? [`${fieldParts[0].label} and address from ${join(fieldParts[0].links)}.`]
+          : fieldParts.map(f => `${f.label} from ${join(f.links)}.`);
+        return lis.length ? proseRows([proseRow('Where the basics come from', '', lis.map(t => `<li>${t}</li>`))], 'Where the basics come from') : '';
       }
       // A bare "Founding year from ..." line read as stray prose between two blocks: it carries a label, like the blocks around it.
       if (foundHtml) foundHtml = `<div class="py-3" role="group" aria-label="Where the basics come from"><span class="kicker block">Where the basics come from</span><p class="no-indent source-note">${foundHtml}</p></div>`;
@@ -11590,6 +11601,30 @@ return maplibregl$1;
         <figcaption class="meta">${e(q.author)}, <a href="${e(q.url)}" target="_blank" rel="noopener noreferrer" class="">${e(q.title)}</a>, ${where}.</figcaption>
       </figure>`;
     }
+    // A critical frame's quotation as one bullet of a row: the words, then who wrote them and where, in small print under them.
+    function critiqueQuoteLi(q) {
+      const e = escapeHtml;
+      const where = [q.publication, q.date].filter(Boolean).map(e).join(', ');
+      return `<li data-no-typeset>${q.context ? `<span class="d-cite">${e(q.context)}</span>` : ''}${e(quotedText(q.text))}<span class="d-cite">${e(q.author)}, <a href="${e(q.url)}" target="_blank" rel="noopener noreferrer">${e(q.title)}</a>, ${where}.</span></li>`;
+    }
+    // The record's critique as a row: its strategy as the title, what it targets under it, the quotation or summary and what to do with it as bullets,
+    // the picture and the Next critique button under the title.
+    function critiqueRowHtml(inst, vc, vcs, vcIdx) {
+      const e = escapeHtml, theory = vc.kind === 'theory';
+      const sub = [
+        theory ? '' : e(vc.artist_designer || vc.artist || ''),
+        theory ? '' : [quotedText(vc.artwork_title || vc.artwork || ''), vc.year ? `(${vc.year})` : ''].filter(Boolean).map(e).join(' '),
+        e(vc.medium_format || ''),
+        `Target: ${e(vc.target || vc.institution_target || inst.name)}`,
+        e(vc.credits || ''),
+      ].filter(Boolean).join('<br>');
+      const lis = theory && vc.quotes ? vc.quotes.map(critiqueQuoteLi) : [proseLi('', e(vc.summary || ''))];
+      if (vc.historical_impact) lis.push(proseLi(theory ? 'How to read this record with it:' : 'What followed:', e(vc.historical_impact)));
+      if (vc.citation) lis.push(proseLi('Source:', e(vc.citation)));
+      const img = theory || !vc.image ? '' : `<img class="d-row-media" src="${e(vc.image)}" alt="${e(vc.artwork_title || 'Visual Critique')}">`;
+      const next = vcs.length > 1 ? `<button type="button" onclick="window.cycleDossierVisualCritique();" class="record-action d-row-action">Next critique, ${(vcIdx + 1) % vcs.length + 1} of ${vcs.length}</button>` : '';
+      return proseRows([proseRow(e(vc.strategy || 'Critique'), sub, lis, { after: img + next })], 'Critique');
+    }
     function critiqueQuoteLine(q) {
       return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
     }
@@ -11607,9 +11642,9 @@ return maplibregl$1;
     };
     function placeReviewListHtml(placeId) {
       const state = PLACE_REVIEWS.get(placeId);
-      if (state === 'failed') return '<p class="meta no-indent">The reviews could not be loaded.</p>';
-      if (!Array.isArray(state)) return '<p class="meta no-indent">Loading reviews…</p>';
-      if (!state.length) return '<p class="meta no-indent">No reviews yet.</p>';
+      if (state === 'failed') return '<p class="no-indent">The reviews could not be loaded.</p>';
+      if (!Array.isArray(state)) return '<p class="no-indent">Loading reviews…</p>';
+      if (!state.length) return '<p class="no-indent">No reviews yet.</p>';
       const rated = state.filter(r => Number.isInteger(r.rating));
       const average = rated.length ? rated.reduce((sum, r) => sum + r.rating, 0) / rated.length : 0;
       const summary = rated.length
@@ -11649,14 +11684,13 @@ return maplibregl$1;
     function placeReviewsHtml(inst) {
       if (!inst || !inst.id) return '';
       if (!ATLAS_REPORT_API_URL) {
-        return `<section class="place-reviews py-3 rule-b" aria-label="Whistleblower reviews"><h3 class="kicker">Whistleblower reviews</h3><p class="meta no-indent">Reviews are not available right now.</p></section>`;
+        return proseRows([proseRow('Whistleblower reviews', '', [proseLi('', 'Reviews are not available right now.')])], 'Whistleblower reviews');
       }
       loadPlaceReviews(inst.id);
-      return `<section class="place-reviews py-3 rule-b" data-place="${escapeHtml(inst.id)}" aria-label="Whistleblower reviews">
-        <h3 class="kicker">Whistleblower reviews</h3>
-        <p class="meta no-indent">Written by people who say they know this place from inside. The editor reads every review before it appears. None is checked against a source.</p>
-        <div class="review-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div>
-      </section>`;
+      return `<div class="prose-part d-rows place-reviews" data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews"><section class="d-row">
+        <div class="d-row-head"><h3 class="d-row-title">Whistleblower reviews</h3><p class="d-row-sub no-indent">Written by people who say they know this place from inside. The editor reads every review before it appears. None is checked against a source.</p></div>
+        <div class="review-list d-row-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div>
+      </section></div>`;
     }
     // The stars of the note screen's form: the picked star and the ones before it are filled.
     function syncNoteStars() {
@@ -12415,7 +12449,7 @@ return maplibregl$1;
       const items = (lis || []).filter(Boolean).join('');
       if (!title || (!items && !sub && !opts.box)) return '';
       const g = opts.gossip ? ' data-gossip="item"' : '';
-      return `<section class="d-row${opts.tone ? ' is-' + opts.tone : ''}"><div class="d-row-head"><h3 class="d-row-title"${g}>${title}</h3>${sub ? `<p class="d-row-sub no-indent"${g}>${sub}</p>` : ''}${opts.box ? `<p class="d-row-box no-indent">${opts.box}</p>` : ''}</div>${items ? `<ul class="d-row-list">${items}</ul>` : ''}</section>`;
+      return `<section class="d-row${opts.tone ? ' is-' + opts.tone : ''}"><div class="d-row-head"><h3 class="d-row-title"${g}>${title}</h3>${sub ? `<p class="d-row-sub no-indent"${g}>${sub}</p>` : ''}${opts.box ? `<p class="d-row-box no-indent">${opts.box}</p>` : ''}${opts.after || ''}</div>${items ? `<ul class="d-row-list">${items}</ul>` : ''}</section>`;
     }
     const proseRows = (rows, label, gossip) => { const body = rows.filter(Boolean).join(''); return body ? `<div class="prose-part d-rows" role="region" aria-label="${label}"${gossip ? ' data-gossip="items"' : ''}>${body}</div>` : ''; };
     // Overview and funding: what the space is, then who pays for it, from the report where there is one and from the archive otherwise.
@@ -12584,77 +12618,31 @@ return maplibregl$1;
           <!--  3D BUILDING & ARCHITECTURAL FLOOR WORKSPACE INSPECTOR -->
           <!-- Overview, funding and visiting: only what the record states -->
           ${proseIntroHtml(inst)}
-          ${!isClean ? factsTableHtml('Visiting', [
+          ${!isClean ? visitingRowsHtml([
             ['Opening hours', escapeHtml(inst.opening_hours || '')],
             ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')],
             ['Address', escapeHtml(inst.address || '')],
-          ], ' role="region" aria-label="Visiting"') : ''}
+          ]) : ''}
 
           <!-- Flags, the art press, wider context, bottom line and sources, as prose from the report and the archive together. -->
           ${proseBodyHtml(inst)}
 
           <!-- 3.  ARTISTIC CRITIQUES & INSTITUTIONAL HISTORY (Uncontained Rich Research Section) -->
-          ${vcs.length > 0 && vc ? `
-            <div class="py-3 rule-b space-y-2 critique-section">
-              <div class="critique-head">
-                ${vc.strategy ? `<h3 class="critique-title">${escapeHtml(vc.strategy)}</h3>` : ''}
-              </div>
-              <div class="space-y-2 pt-1">
-                <!-- Artist / Designer Credits. A critical frame (kind 'theory') has no artist, work or picture. -->
-                ${vc.kind === 'theory' ? '' : `<div class="space-y-0_5">
-                  <div class="t-strong t-lead">${escapeHtml(vc.artist_designer || vc.artist)}</div>
-                  <div>${escapeHtml(quotedText(vc.artwork_title || vc.artwork))} (${escapeHtml(vc.year)})</div>
-                </div>`}
+          ${vcs.length > 0 && vc ? critiqueRowHtml(inst, vc, vcs, vcIdx) : ''}
 
-                <!-- Archival Thumbnail & Target / Medium -->
-                <div class="flex flex-col gap-2 items-start">
-                  ${vc.kind === 'theory' || !vc.image ? '' : `<img src="${escapeHtml(vc.image)}" alt="${escapeHtml(vc.artwork_title || 'Visual Critique')}" class="w-full max-w-xs h-36 object-cover shrink-0" />`}
-                  <div class="space-y-1">
-                    <div class="meta">${escapeHtml(vc.medium_format || '')}</div>
-                    <div class="meta">Target: ${escapeHtml(vc.target || vc.institution_target || inst.name)}</div>
-                    ${vc.credits ? `<div class="meta">${escapeHtml(vc.credits)}</div>` : ''}
-                  </div>
-                </div>
-
-                <!-- Archival Summary & Curatorial History -->
-                ${vc.kind === 'theory' && vc.quotes ? vc.quotes.map(critiqueQuoteHtml).join('') : `<p class="py-1 rule-t">
-                  ${escapeHtml(vc.summary || '')}
-                </p>`}
-
-                ${vc.historical_impact ? `
-                  <p class="critique-asks">${vc.kind === 'theory' ? 'How to read this record with it:' : 'What followed:'} ${escapeHtml(vc.historical_impact)}</p>
-                ` : ''}
-
-                <!-- Citation and critique cycle -->
-                ${vc.citation ? `<div class="meta">Source: ${escapeHtml(vc.citation)}</div>` : ''}
-                ${vcs.length > 1 ? `<div class="record-actions critique-actions"><button type="button" onclick="window.cycleDossierVisualCritique();" class="record-action">Next critique, ${(vcIdx + 1) % vcs.length + 1} of ${vcs.length}</button></div>` : ''}
-              </div>
-            </div>
-          ` : ''}
-
-          ${isCommunity ? `
-            <div class="py-2_5 rule-t space-y-2">
-              <div class="flex flex-col gap-0_5">
-                <span class="meta block t-strong">Community Research Submission</span>
-                <span class="meta">Status: community submission, not checked</span>
-              </div>
-              <p class="">
-                This item comes from a community submission. It is kept apart from the records and has not been checked against any source.
-              </p>
-              <div class="meta flex flex-col gap-0_5 pt-1">
-                <span>Contributor: ${escapeHtml(inst.contributor || 'not stated')}</span>
-                ${inst.sourceUrl ? `<a href="${escapeHtml(inst.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="">Source Link</a>` : ''}
-              </div>
-            </div>
-          ` : ''}
+          ${isCommunity ? proseRows([proseRow('Community research submission', 'Status: community submission, not checked', [
+            proseLi('', 'This item comes from a community submission. It is kept apart from the records and has not been checked against any source.'),
+            proseLi('Contributor:', escapeHtml(inst.contributor || 'not stated')),
+            inst.sourceUrl ? `<li><a href="${escapeHtml(inst.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source link</a></li>` : '',
+          ])], 'Community research submission') : ''}
 
           ${proseVoicesHtml(inst)}
-          ${sourcesHtml(inst, true)}
+          ${sourcesHtml(inst, true, true)}
           ${isCommunity ? '' : placeReviewsHtml(inst)}
 
 
-          ${isClean && inst.highlight ? `<section class="facts" role="region" aria-label="Highlight"><h3 class="facts-title">Highlight</h3><p class="facts-text">${escapeHtml(inst.highlight)}</p></section>` : ''}
-          ${isClean ? factsTableHtml('Visiting', [
+          ${isClean && inst.highlight ? proseRows([proseRow('Highlight', '', [proseLi('', escapeHtml(inst.highlight))])], 'Highlight') : ''}
+          ${isClean ? visitingRowsHtml([
             ['Opening hours', escapeHtml(inst.opening_hours || '')],
             ['Admission', escapeHtml(inst.admission_fee || '')],
             ['Address', escapeHtml(inst.address || inst.location || '') + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '')],
@@ -12662,7 +12650,7 @@ return maplibregl$1;
             ['Getting there', escapeHtml(inst.transit_tips || '')],
             ['Accessibility', escapeHtml(inst.accessibility || '')],
             ['Amenities', escapeHtml(inst.amenities ? inst.amenities.toString().split(',').map(x => x.trim()).filter(Boolean).join(', ') : '')],
-          ], ' role="region" aria-label="Visiting"') : ''}
+          ]) : ''}
 
         </div>
         <!-- /drawerAuditView -->
@@ -19362,9 +19350,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=271"></script>
-<script src="assets/layers.js?v=271"></script>
-<script src="assets/hq-detail.js?v=271"></script>
-<script src="assets/bubbles.js?v=271" defer></script>
+<script src="assets/typeset.js?v=272"></script>
+<script src="assets/layers.js?v=272"></script>
+<script src="assets/hq-detail.js?v=272"></script>
+<script src="assets/bubbles.js?v=272" defer></script>
 </body>
 </html>
