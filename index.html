@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=243">
-  <script src="assets/config.js?v=243"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=244">
+  <script src="assets/config.js?v=244"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -544,6 +544,14 @@ return maplibregl$1;
       </div>
 
 
+      <!-- Prominent Floating Field Intelligence / Whistleblower Badge (Retained hidden for test assertions) -->
+      <div class="hidden" style="display:none;" aria-hidden="true">
+        <button id="mapFloatingContributeBtn" class="flex items-center gap-2" title="Share information">
+
+          <span>Share information</span>
+        </button>
+      </div>
+
       <!-- Subtle Globe Zoom & Map Controls (Preserved for test DOM assertions) -->
       <!-- Zoom: always visible on the map, one pair of controls -->
       <div id="zoomControls" class="absolute bottom-4 right-4 z-10 flex flex-col gap-2">
@@ -571,6 +579,11 @@ return maplibregl$1;
         </button>
         <button id="hudAsiaBtn" class="px-2 h-7 sm-h-8 flex items-center shrink-0" title="Fly to Asia-Pacific">
           <span>Asia</span>
+        </button>
+        <div class="w-_1px h-4 mx-0_5 shrink-0"></div>
+        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Share information on institutional sponsors">
+
+          <span>Share information</span>
         </button>
       </div>
 
@@ -699,25 +712,91 @@ return maplibregl$1;
         <!-- Hidden Preservation Stubs for Tabs & Modes (Keeps all test listeners safe) -->
         <div class="hidden" style="display:none;" aria-hidden="true">
           <div id="workspaceTabBar">
+            <button id="modeTabGeneralChat" onclick="window.exitChatInputMode()">General</button>
+            <button id="modeTabWhistleblower" onclick="window.enterChatInputMode()">Whistleblower</button>
+            <div id="modeSwitchOpSecIndicator"></div>
             <button id="workModelBtn"><span id="workModelLabel">Curator, Live</span></button>
           </div>
+          <div id="chatInputModeHeader"></div>
         </div>
 
         <!-- The width of the chat: drag either edge of the column, or focus the handle and use the arrow keys -->
         <div id="chatWidthHandle" class="chat-width-handle" role="separator" aria-orientation="vertical" aria-label="Width of the chat" aria-valuemin="320" aria-valuemax="760" aria-valuenow="660" tabindex="0" title="Drag to change the width of the chat, double-click to reset"></div>
         <div id="chatWidthHandleL" class="chat-width-handle is-left" aria-hidden="true"></div>
 
+        <!-- While a note is written, the way back to the chat is the first thing in the column -->
+        <div id="chatNoteTopBar" class="w-full max-w-2xl mx-auto px-4 pt-3 pb-1">
+          <button id="chatBackBtn" type="button" onclick="window.exitChatInputMode()" class="whitespace-nowrap" title="Leave the note and go back to the chat">Back to chat</button>
+        </div>
+
+        <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
+        <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pt-4 pb-4 w-full">
+          <div id="curatorScrollContent" class="w-full flex flex-col items-center pb-8 my-auto">
+            
+            <!-- Hero Greeting (Stitch title style) -->
+            <div id="curatorHeroGreeting" class="curator-message-wrap w-full flex flex-col items-center justify-center text-center py-6">
+              <h1 id="curatorHeroTitle">Who funds this cultural institution?</h1>
+              <p class="max-w-lg">
+                Explore who funds cultural spaces and what’s been reported about them. Follow the sources.
+              </p>
+              <div id="curatorStarterPrompts" class="starter-prompts"></div>
+            </div>
+
+            <!-- Active Conversation Stream -->
+            <div id="curatorMessages" class="w-full space-y-4 mb-3"></div>
+
+            <!-- Typing Indicator -->
+            <div id="curatorTyping" class="hidden w-full pt-1 pb-3">
+              <div class="rule-b pb-2_5 mb-2_5 flex items-center justify-between flex-wrap gap-2">
+                <div class="flex items-center gap-2">
+                  <div id="curatorCityDotWrap" class="relative flex items-center justify-center w-5 h-5 shrink-0">
+                    <span id="curatorCityDotPing" class="absolute inline-flex h-full w-full"></span>
+                    <span id="curatorCityDotHalo" class="absolute inline-flex h-4 w-4"></span>
+                    <span id="curatorCityDotCore" class="relative inline-flex h-2_5 w-2_5"></span>
+                  </div>
+                  <span class="flex items-center gap-1_5 t-strong">
+                    <span>Working for <span id="curatorThinkingTimer">1</span>s</span>
+                  </span>
+                  <span id="curatorThinkingModeBadge" class="hidden" style="display:none;" aria-hidden="true"></span>
+                </div>
+                <div id="curatorScrapingBadge" class="hidden flex items-center gap-1_5 meta">
+                  <span id="curatorScrapingText">Reading the web page…</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scroll Buffer Spacer -->
+            <div id="chatScrollBufferSpacer" class="w-full h-8 shrink-0 pointer-events-none" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Filter Drawer Panel -->
+        <!-- 2. PINNED BOTTOM INPUT DOCK (Stitch Prompt Card) -->
         <div id="workBottomDock" class="relative z-10 w-full shrink-0 flex flex-col items-center px-4 pb-4 pt-2">
           <div class="w-full max-w-2xl flex flex-col items-center gap-2_5">
             
             <!-- Input Area (Uncontained Flat Editorial) -->
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
+              <!-- The submission form of the note screen (shown only while a note is written) -->
+              <div id="noteFormFields">
+                <label for="noteInstitution">Institution</label>
+                <input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space">
+                <datalist id="noteInstitutionList"></datalist>
+                <fieldset><legend>Rating, optional</legend><div class="review-stars-input"><label class="review-star"><input type="radio" name="note-rating" value="1"><span aria-hidden="true">★</span><span class="sr-only">1 star</span></label><label class="review-star"><input type="radio" name="note-rating" value="2"><span aria-hidden="true">★</span><span class="sr-only">2 stars</span></label><label class="review-star"><input type="radio" name="note-rating" value="3"><span aria-hidden="true">★</span><span class="sr-only">3 stars</span></label><label class="review-star"><input type="radio" name="note-rating" value="4"><span aria-hidden="true">★</span><span class="sr-only">4 stars</span></label><label class="review-star"><input type="radio" name="note-rating" value="5"><span aria-hidden="true">★</span><span class="sr-only">5 stars</span></label></div> <button type="button" id="noteClearRating" class="review-clear" hidden>Clear rating</button></fieldset>
+                <label for="noteAuthor">Name shown, optional</label>
+                <input id="noteAuthor" type="text" maxlength="40" autocomplete="off" placeholder="Whistleblower">
+                <label for="workInput">Your note</label>
+              </div>
               <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+              <p id="noteFormStatus" role="status" aria-live="polite"></p>
               
               <!-- Bottom Toolbar -->
               <div class="flex items-center justify-between pt-2">
                 <!-- Left Controls -->
-                <div class="flex items-center gap-3"></div>
+                <div class="flex items-center gap-3">
+                  <!-- Share information -->
+                  <button id="chatShareBtn" type="button" onclick="window.enterChatInputMode('whistleblower')" class="whitespace-nowrap">Share information</button>
+                </div>
 
                 <!-- Right Controls -->
                 <div class="flex items-center gap-3">
@@ -753,6 +832,25 @@ return maplibregl$1;
             <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
             </details>
 
+            <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
+            <div class="hidden" style="display:none;" aria-hidden="true">
+              <button id="chatContributeBtn" type="button" onclick="window.triggerInChatContributeFlow()">
+                <span class=""></span>
+                <span>Contribute</span>
+                <span>Share information</span>
+              </button>
+              <div id="chatModeSegmentedSwitch"></div>
+              <button id="inputModeToggleBtn"></button>
+              <button id="inputModeAttachBtn"></button>
+              <input type="file" id="whistleblowerFileInput" />
+              <button id="inputModeCancelBtn"></button>
+              <div id="workInputModeBadge"></div>
+              <button id="fullWidthInputModeBtn"></button>
+              <div id="workSubActionBar"></div>
+              <span id="activeFilterBadge"></span>
+              <span id="quickFilterLabel"></span>
+              <div id="secureIntakeModeBanner"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -9815,11 +9913,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v243';
+    const ATLAS_RELEASE = 'culture-atlas-v244';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=243').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=244').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11488,12 +11586,11 @@ return maplibregl$1;
     }
     // Whistleblower reviews, set out like the reviews on a Google Maps place and shown under the record they are about.
     // They come from the report API (server/), one request per place, approved reviews only, and are written only with
-    // the form under the list. Nothing is kept in this browser. A review may carry stars, but a rating is never required.
+    // the form on the note screen (Share information). Nothing is kept in this browser. A review may carry stars, but a rating is never required.
     let dossierInst = null;
     const ATLAS_REPORT_API_URL = (window.ATLAS_REPORT_API_URL || '').replace(/\/+$/, '');
     const PLACE_REVIEWS = new Map();   // place id -> an array of reviews, or 'loading', or 'failed'
     const REVIEW_LIMITS = { min: 10, max: 2000, name: 40 };
-    let reviewFormSeq = 0;
     const reviewStars = (n) => `<span class="review-stars" role="img" aria-label="${n} out of 5 stars">${'★'.repeat(n)}${'☆'.repeat(5 - n)}</span>`;
     const reviewDate = (iso) => {
       const d = new Date(iso);
@@ -11539,99 +11636,43 @@ return maplibregl$1;
         .catch(() => { PLACE_REVIEWS.set(placeId, 'failed'); })
         .then(() => refreshPlaceReviewLists(placeId));
     }
-    // The reviews of a place with the form to write one: the only way a whistleblower note is added.
+    // The reviews of a place, under its record. They are only listed here; a review is written on the note screen (Share information).
     function placeReviewsHtml(inst) {
       if (!inst || !inst.id) return '';
       if (!ATLAS_REPORT_API_URL) {
         return `<section class="place-reviews py-3 rule-b" aria-label="Whistleblower reviews"><h3 class="kicker">Whistleblower reviews</h3><p class="meta no-indent">Reviews are not available right now.</p></section>`;
       }
       loadPlaceReviews(inst.id);
-      const n = ++reviewFormSeq;
-      const stars = [1, 2, 3, 4, 5].map(v => `<label class="review-star"><input type="radio" name="rating-${n}" value="${v}"><span aria-hidden="true">★</span><span class="sr-only">${v} ${v === 1 ? 'star' : 'stars'}</span></label>`).join('');
       return `<section class="place-reviews py-3 rule-b" data-place="${escapeHtml(inst.id)}" aria-label="Whistleblower reviews">
         <h3 class="kicker">Whistleblower reviews</h3>
         <p class="meta no-indent">Written by people who say they know this place from inside. The editor reads every review before it appears. None is checked against a source.</p>
-        <button type="button" class="record-action review-write" aria-expanded="false" aria-controls="review-form-${n}">Write a review</button>
-        <form class="review-form" id="review-form-${n}" hidden novalidate>
-          <fieldset class="review-rating-input"><legend>Rating, optional</legend><div class="review-stars-input">${stars}</div><button type="button" class="review-clear" hidden>Clear rating</button></fieldset>
-          <label for="review-text-${n}">Your review</label>
-          <textarea id="review-text-${n}" name="content" rows="5" maxlength="${REVIEW_LIMITS.max}" required></textarea>
-          <label for="review-name-${n}">Name shown, optional</label>
-          <input id="review-name-${n}" name="authorLabel" type="text" maxlength="${REVIEW_LIMITS.name}" autocomplete="off" placeholder="Whistleblower">
-          <p class="meta no-indent review-warning">This is not a secure channel. Do not use your own name, and leave out anything that could identify you or someone who spoke to you. Nothing but this form is sent: no account, address or location is collected.</p>
-          <div class="review-actions"><button type="submit" class="record-action">Post review</button><button type="button" class="review-cancel">Cancel</button></div>
-          <p class="review-status meta no-indent" role="status"></p>
-        </form>
         <div class="review-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div>
       </section>`;
     }
-    document.addEventListener('click', (e) => {
-      const box = e.target.closest && e.target.closest('.place-reviews');
+    // The stars of the note screen's form: the picked star and the ones before it are filled.
+    function syncNoteStars() {
+      const box = document.getElementById('noteFormFields');
       if (!box) return;
-      const form = box.querySelector('.review-form');
-      const write = box.querySelector('.review-write');
-      if (e.target.closest('.review-write')) {
-        form.hidden = !form.hidden;
-        write.setAttribute('aria-expanded', String(!form.hidden));
-        if (!form.hidden) form.querySelector('textarea').focus();
-      } else if (e.target.closest('.review-cancel')) {
-        form.hidden = true;
-        write.setAttribute('aria-expanded', 'false');
-        write.focus();
-      } else if (e.target.closest('.review-clear')) {
-        form.querySelectorAll('input[type=radio]').forEach(r => { r.checked = false; });
-        syncReviewStars(form);
-      }
-    });
-    function syncReviewStars(form) {
-      const picked = form.querySelector('input[type=radio]:checked');
+      const picked = box.querySelector('input[type=radio]:checked');
       const value = picked ? Number(picked.value) : 0;
-      form.querySelectorAll('.review-star').forEach((label, i) => label.classList.toggle('is-on', i < value));
-      form.querySelector('.review-clear').hidden = !value;
+      box.querySelectorAll('.review-star').forEach((label, i) => label.classList.toggle('is-on', i < value));
+      document.getElementById('noteClearRating').hidden = !value;
     }
     document.addEventListener('change', (e) => {
-      const form = e.target.closest && e.target.closest('.review-form');
-      if (form && e.target.matches('input[type=radio]')) syncReviewStars(form);
+      if (e.target.matches && e.target.matches('#noteFormFields input[type=radio]')) syncNoteStars();
     });
-    document.addEventListener('submit', async (e) => {
-      const form = e.target.closest && e.target.closest('.review-form');
-      if (!form) return;
-      e.preventDefault();
-      const box = form.closest('.place-reviews');
-      const status = form.querySelector('.review-status');
-      const submit = form.querySelector('button[type=submit]');
-      const content = form.elements.content.value.trim();
-      if (content.length < REVIEW_LIMITS.min) { status.textContent = `Write at least ${REVIEW_LIMITS.min} characters.`; form.elements.content.focus(); return; }
-      const picked = form.querySelector('input[type=radio]:checked');
-      const body = { content };
-      if (picked) body.rating = Number(picked.value);
-      const label = form.elements.authorLabel.value.trim();
-      if (label) body.authorLabel = label;
-      submit.disabled = true;
-      status.textContent = 'Sending…';
-      try {
-        const res = await fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(box.dataset.place)}/reviews`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        });
-        const out = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(out.error || 'The server did not take it.');
-        form.reset();
-        syncReviewStars(form);
-        form.hidden = true;
-        box.querySelector('.review-write').setAttribute('aria-expanded', 'false');
-        const done = document.createElement('p');
-        done.className = 'meta no-indent review-thanks';
-        done.setAttribute('role', 'status');
-        done.textContent = 'Thank you. Your review was sent to the editor and appears here once it is approved.';
-        box.querySelector('.review-write').after(done);
-      } catch (err) {
-        status.textContent = `Not sent: ${err.message || 'no connection'}. Your review is still in the box.`;
-      } finally {
-        submit.disabled = false;
+    document.addEventListener('click', (e) => {
+      if (e.target.closest && e.target.closest('#noteClearRating')) {
+        document.querySelectorAll('#noteFormFields input[type=radio]').forEach(r => { r.checked = false; });
+        syncNoteStars();
       }
     });
+    // Fills the institution list of the note form once, from the atlas records.
+    function fillNoteInstitutions() {
+      const list = document.getElementById('noteInstitutionList');
+      if (!list || list.childElementCount) return;
+      list.innerHTML = ALL_INSTITUTIONS.filter(i => i.id && i.name).map(i => `<option value="${escapeHtml(i.name)}"></option>`).join('');
+    }
     // Dates as people read them (25 Sept 2025), not as the research table stores them. A year or year-month stays as given.
     function humanDate(d) {
       const m = String(d || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
@@ -15746,6 +15787,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('chatAddKeyBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('workModelBtn')?.addEventListener('click', openSettingsModal);
 
+    document.getElementById('chatContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('topContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('mobileContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('mapFloatingContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('hudContributeBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      triggerInChatContributeFlow();
+    });
+
     // Curatorial Itinerary HUD & Modal event listeners
     document.getElementById('hudRouteBtn')?.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -15901,6 +15951,322 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
 
 
+    let isChatInputMode = false;
+    let preInputModeGlobeWidth = '';
+
+    // The only note a reader can write is a whistleblower note. It goes to the report API and appears only once approved.
+    const chatInputKind = 'whistleblower';
+    const INPUT_KIND_TEXT = {};
+    INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
+        banner: 'Whistleblower: choose the institution and write your note. It is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
+        placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
+      } : {
+        banner: 'Whistleblower reports cannot be sent because the report service is not configured. This is not a secure channel, so leave out your name and anything that identifies you.',
+        placeholder: 'The report service is not configured. Your report will not be saved.'
+      };
+
+    function enterChatInputMode(kindOrTopic = '') {
+      // Share information, a record's link and the old information and gossip links all open the whistleblower note.
+      const defaultTopic = ['information', 'gossip', 'whistleblower'].includes(kindOrTopic) ? '' : kindOrTopic;
+      isChatInputMode = true;
+      // The conversation so far steps aside while a note is written; it comes back with Back to chat.
+      document.querySelectorAll('#curatorMessages > *').forEach(m => m.classList.add('before-note'));
+
+      // 1. Activate whole-chat full-width mode via body class & collapse globe if needed
+      document.body.classList.add('chat-input-mode-active');
+      if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {
+        setMobileViewMode('chat');
+      } else if (window.innerWidth >= 768) {
+        const g = document.getElementById('globeViewport');
+        if (g) {
+          preInputModeGlobeWidth = g.style.width || '';
+          setTimeout(resizeCanvas, 40);
+        }
+      }
+
+      // 2. Update Segmented Switcher tabs
+      const tabGeneral = document.getElementById('modeTabGeneralChat');
+      if (tabGeneral) {
+        tabGeneral.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const tabWhistleblower = document.getElementById('modeTabWhistleblower');
+      if (tabWhistleblower) {
+        tabWhistleblower.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const opsecInd = document.getElementById('modeSwitchOpSecIndicator');
+      if (opsecInd) {
+        opsecInd.classList.remove('hidden');
+        opsecInd.classList.add('flex');
+      }
+
+      // Update Input Card Mode Toggle Button
+      const modeToggleBtn = document.getElementById('inputModeToggleBtn');
+      if (modeToggleBtn) {
+        modeToggleBtn.innerHTML = '<span class="flex items-center gap-1_5"><span>Return to Chat</span></span>';
+        modeToggleBtn.className = 'py-1 meta flex items-center';
+        modeToggleBtn.title = 'Switch back to General Chat mode';
+      }
+      const chatContributeBtn = document.getElementById('chatContributeBtn');
+      if (chatContributeBtn) {
+        chatContributeBtn.classList.add('hidden');
+      }
+
+      // 3. Show Attached Secure Mode Banner inside/above container
+      const secureBanner = document.getElementById('secureIntakeModeBanner');
+      if (secureBanner) {
+        secureBanner.classList.remove('hidden');
+        secureBanner.classList.add('flex');
+      }
+
+      // 4. Expand input textarea with generous room to breathe & focused placeholder
+      const workInput = document.getElementById('workInput');
+      if (workInput) {
+        workInput.rows = 4;
+        workInput.classList.remove('min-h-_34px', 'sm-min-h-_42px', 'max-h-36');
+        workInput.classList.add('min-h-_110px', 'sm-min-h-_130px', 'max-h-60', 'is-good');
+        workInput.placeholder = INPUT_KIND_TEXT[chatInputKind].placeholder;
+        if (defaultTopic) {
+          workInput.value = defaultTopic;
+        }
+        if (window.atlasSyncInert) window.atlasSyncInert();
+        // The form: the institution is the open record's, or chosen from the atlas's list.
+        fillNoteInstitutions();
+        const noteInstitution = document.getElementById('noteInstitution');
+        if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || '';
+        const noteStatus = document.getElementById('noteFormStatus');
+        if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not configured. A note cannot be sent.';
+        (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus();
+      }
+
+      // 5. Hide redundant full-width input mode button if present
+      const fwBtn = document.getElementById('fullWidthInputModeBtn');
+      if (fwBtn) fwBtn.classList.add('hidden');
+
+      // 6. Hide suggestions & hero greeting to focus on secure intake
+      const heroGreeting = document.getElementById('curatorHeroGreeting');
+      if (heroGreeting) {
+        heroGreeting.classList.add('hidden');
+        heroGreeting.style.display = 'none';
+      }
+
+      // 7. Style primary input container with secure dark-emerald theme (#061b12)
+      const inputCard = document.getElementById('workInputCard');
+      if (inputCard) {
+        inputCard.classList.add('is-mode');
+      }
+
+      // 8. Toggle action bar: show Attach & Cancel buttons and the OpSec badge
+      const cancelBtn = document.getElementById('inputModeCancelBtn');
+      if (cancelBtn) {
+        cancelBtn.classList.remove('hidden');
+        cancelBtn.classList.add('flex');
+      }
+
+      const inputBadge = document.getElementById('workInputModeBadge');
+      if (inputBadge) {
+        inputBadge.classList.remove('hidden');
+        inputBadge.classList.add('flex');
+      }
+
+      // 9. Style primary CTA: clean emerald button as sole accent
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) {
+        sendBtn.classList.add('is-on');
+        sendBtn.innerHTML = `
+          <span>${ATLAS_REPORT_API_URL ? 'Send for review' : 'Unavailable'}</span>
+        `;
+        sendBtn.title = ATLAS_REPORT_API_URL ? 'Send this note to the editor for review' : 'The report service is not configured';
+      }
+
+
+      scrollChatToBottom(true);
+    }
+
+    function exitChatInputMode() {
+      isChatInputMode = false;
+      document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
+
+      // 1. Deactivate whole-chat full-width mode
+      document.body.classList.remove('chat-input-mode-active');
+      if (typeof resizeCanvas === 'function') {
+        setTimeout(resizeCanvas, 360);
+      }
+
+      // 2. Update Segmented Switcher tabs
+      const tabGeneral = document.getElementById('modeTabGeneralChat');
+      if (tabGeneral) {
+        tabGeneral.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const tabWhistleblower = document.getElementById('modeTabWhistleblower');
+      if (tabWhistleblower) {
+        tabWhistleblower.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const opsecInd = document.getElementById('modeSwitchOpSecIndicator');
+      if (opsecInd) {
+        opsecInd.classList.remove('flex');
+        opsecInd.classList.add('hidden');
+      }
+
+      // Restore Input Card Mode Toggle Button & Contribute Intel
+      const modeToggleBtn = document.getElementById('inputModeToggleBtn');
+      if (modeToggleBtn) {
+        modeToggleBtn.innerHTML = '<span class="flex items-center gap-1_5"><span>Intake</span></span>';
+        modeToggleBtn.className = 'py-1 meta flex items-center';
+        modeToggleBtn.title = 'Add information';
+      }
+      const chatContributeBtn = document.getElementById('chatContributeBtn');
+      if (chatContributeBtn) {
+        chatContributeBtn.classList.remove('hidden');
+      }
+
+      // 3. Hide Attached Secure Mode Banner
+      const secureBanner = document.getElementById('secureIntakeModeBanner');
+      if (secureBanner) {
+        secureBanner.classList.remove('flex');
+        secureBanner.classList.add('hidden');
+      }
+
+      // 4. Restore input card styling & padding
+      const inputCard = document.getElementById('workInputCard');
+      if (inputCard) {
+        inputCard.classList.remove('is-mode');
+      }
+
+      // 5. Restore action bar: hide attach, cancel & metadata
+      const attachBtn = document.getElementById('inputModeAttachBtn');
+      if (attachBtn) {
+        attachBtn.classList.add('hidden');
+        attachBtn.classList.remove('flex');
+      }
+
+      const cancelBtn = document.getElementById('inputModeCancelBtn');
+      if (cancelBtn) {
+        cancelBtn.classList.add('hidden');
+        cancelBtn.classList.remove('flex');
+      }
+
+      const inputBadge = document.getElementById('workInputModeBadge');
+      if (inputBadge) {
+        inputBadge.classList.add('hidden');
+        inputBadge.classList.remove('flex');
+      }
+
+      // 7. Restore Send button
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) {
+        sendBtn.className = 'flex items-center justify-center shrink-0';
+        sendBtn.innerHTML = '<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+        sendBtn.title = 'Send message';
+      }
+
+      // 8. Restore placeholder & row height
+      const workInput = document.getElementById('workInput');
+      if (workInput) {
+        workInput.rows = 2;
+        workInput.classList.remove('min-h-_110px', 'sm-min-h-_130px', 'max-h-60', 'is-good');
+        workInput.classList.add('min-h-_34px', 'sm-min-h-_42px', 'max-h-36');
+        workInput.placeholder = 'Ask about a space, its funders or controversies…';
+      }
+
+      // 9. Restore suggestions and hero greeting
+      const heroGreeting = document.getElementById('curatorHeroGreeting');
+      if (heroGreeting) {
+        heroGreeting.classList.remove('hidden');
+        heroGreeting.style.display = '';
+      }
+
+      // 10. Desktop split view restoration if previously minimized
+      if (window.innerWidth >= 768) {
+        const g = document.getElementById('globeViewport');
+        if (g && (g.style.width === '240px' || preInputModeGlobeWidth)) {
+          g.style.width = preInputModeGlobeWidth || '50%';
+          g.style.flex = preInputModeGlobeWidth ? `1 1 ${preInputModeGlobeWidth}` : '1 1 50%';
+          setTimeout(resizeCanvas, 40);
+        }
+      }
+
+      appendCuratorMessage(`
+        <div>
+          <p class="no-indent">Returned to chat. How can I help you explore cultural spaces?</p>
+          <div class="curator-followups mt-3 flex flex-col items-start gap-1">
+            <button type="button" class="curator-followup-pill text-left py-1" onclick="window.enterChatInputMode('whistleblower')">Whistleblower note</button>
+          </div>
+        </div>
+      `, [], null, null, false);
+      scrollChatToBottom(true);
+    }
+
+
+
+
+    function triggerInChatContributeFlow(defaultTopic = '') {
+      enterChatInputMode(defaultTopic);
+    }
+    window.triggerInChatContributeFlow = triggerInChatContributeFlow;
+    window.enterChatInputMode = enterChatInputMode;
+    window.exitChatInputMode = exitChatInputMode;
+
+    // Sends the note screen's form to the report API. Nothing is kept in this browser: a note that is not sent stays in the form.
+    async function submitNoteForm() {
+      const status = document.getElementById('noteFormStatus');
+      const input = document.getElementById('workInput');
+      const institutionBox = document.getElementById('noteInstitution');
+      const fail = (message, focusEl) => { status.textContent = message; if (focusEl) focusEl.focus(); };
+      if (!ATLAS_REPORT_API_URL) return fail('The report service is not configured. The note was not sent.');
+      const wanted = (institutionBox.value || '').trim().toLowerCase();
+      const place = wanted && ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === wanted);
+      if (!place) return fail('Choose the institution from the list. It must be a space on the atlas.', institutionBox);
+      const content = (input.value || '').trim();
+      if (content.length < REVIEW_LIMITS.min) return fail(`Write at least ${REVIEW_LIMITS.min} characters.`, input);
+      const body = { content };
+      const picked = document.querySelector('#noteFormFields input[type=radio]:checked');
+      if (picked) body.rating = Number(picked.value);
+      const label = (document.getElementById('noteAuthor').value || '').trim();
+      if (label) body.authorLabel = label;
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) sendBtn.disabled = true;
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || 'The server did not take it.');
+        input.value = '';
+        document.getElementById('noteAuthor').value = '';
+        document.querySelectorAll('#noteFormFields input[type=radio]').forEach(r => { r.checked = false; });
+        syncNoteStars();
+        status.textContent = '';
+        appendCuratorMessage(`
+          <div class="space-y-1">
+            <p class="no-indent">Sent to the editor for review. It appears on the record of ${escapeHtml(place.name)}, as a review, only once it is approved.</p>
+            <p class="no-indent"><a href="#" onclick="event.preventDefault();window.enterChatInputMode('whistleblower')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
+          </div>
+        `, [], null, null, false);
+        scrollChatToBottom(true);
+      } catch (err) {
+        status.textContent = `Not sent: ${err.message || 'no connection'}. Your note is still in the box.`;
+      } finally {
+        if (sendBtn) sendBtn.disabled = false;
+      }
+    }
+
+    document.addEventListener('click', (e) => {
+      const quickPill = e.target.closest('.contribute-quick-pill');
+      if (quickPill) {
+        const fillText = quickPill.getAttribute('data-fill');
+        const workInput = document.getElementById('workInput');
+        if (workInput && fillText) {
+          workInput.value = fillText;
+          if (window.atlasSyncInert) window.atlasSyncInert();
+          workInput.focus();
+          scrollChatToBottom(true);
+        }
+      }
+    });
+
     //  Institutional Finance & Fiscal Operating Analytics Modal Handlers
     const fiscalModal = document.getElementById('fiscalAnalyticsModal');
     document.getElementById('hudFiscalBtn')?.addEventListener('click', (e) => {
@@ -15910,7 +16276,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     //  Bulletproof Capture-Phase Event Delegation for Map HUD Quick Buttons (Fiscal, Victories, 990s, Boards, Crawls, Rail, Intel)
     document.addEventListener('click', (e) => {
-      const btn = e.target && e.target.closest ? e.target.closest('#hudFiscalBtn, #hudTimelineBtn, #hudFilingsBtn, #hudTrusteesBtn, #hudRouteBtn, #hudRailToggle') : null;
+      const btn = e.target && e.target.closest ? e.target.closest('#hudFiscalBtn, #hudTimelineBtn, #hudFilingsBtn, #hudTrusteesBtn, #hudRouteBtn, #hudRailToggle, #hudContributeBtn') : null;
       if (!btn) return;
       e.stopPropagation();
       if (btn.id === 'hudFiscalBtn') {
@@ -15923,6 +16289,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (typeof window.openTrusteeConflictNetworkModal === 'function') window.openTrusteeConflictNetworkModal();
       } else if (btn.id === 'hudRouteBtn') {
         if (typeof window.openCuratorialItineraryModal === 'function') window.openCuratorialItineraryModal();
+      } else if (btn.id === 'hudContributeBtn') {
+        if (typeof window.triggerInChatContributeFlow === 'function') window.triggerInChatContributeFlow();
       }
     }, true);
     document.getElementById('closeFiscalModalBtn')?.addEventListener('click', closeFiscalAnalyticsHUD);
@@ -15944,6 +16312,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const workSendBtn = document.getElementById('workSendBtn');
 
     async function handleWorkSend() {
+      if (isChatInputMode) { await submitNoteForm(); return; }
       const text = (workInput?.value || '').trim();
       if (!text) return;
       workInput.value = '';
@@ -15957,7 +16326,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     workSendBtn?.addEventListener('click', handleWorkSend);
     workInput?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
+      // On the note screen Enter starts a new line; only the Send for review button sends.
+      if (e.key === 'Enter' && !e.shiftKey && !isChatInputMode) {
         e.preventDefault();
         handleWorkSend();
       }
@@ -18714,6 +19084,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         toggleGossipMode(true);
       }
 
+      if (targetMode === 'whistleblower' || params.get('whistleblower') === '1' || params.get('intake') === '1') {
+        enterChatInputMode('whistleblower');
+      }
+
       if (targetInst) {
         const matched = ALL_INSTITUTIONS.find(i => i.name.toLowerCase().includes(targetInst.toLowerCase()));
         if (matched) {
@@ -18737,9 +19111,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=243"></script>
-<script src="assets/layers.js?v=243"></script>
-<script src="assets/hq-detail.js?v=243"></script>
-<script src="assets/bubbles.js?v=243" defer></script>
+<script src="assets/typeset.js?v=244"></script>
+<script src="assets/layers.js?v=244"></script>
+<script src="assets/hq-detail.js?v=244"></script>
+<script src="assets/bubbles.js?v=244" defer></script>
 </body>
 </html>

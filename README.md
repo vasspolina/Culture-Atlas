@@ -21,7 +21,7 @@ The look follows the It's a book fair site: a white page, a strip of tabs on hai
 
 Contrast is measured, not assumed (WCAG 2.2: 4.5:1 for text under 24px, 3:1 for large text, UI components, focus rings and the marks that carry data). A mark is never told only by colour: a space's tier is a circle (clean), square (flagged) or triangle (unverified) on its pin and on its city and museum label; a funding grade is its letter inside the dot; funders on the money map are squares (public funding), hexagons (companies) and triangles (foundations); right-wing and Epstein-file marks are a shield and a star, the key shows each. On the white ground of light mode the pale layer colours are drawn as a deeper step of the same hue (`LINE_LIGHT` in `assets/layers.js`), and the pale originals stay as the fills of the name blocks, where the text on them is black. The focus ring is `--focus` (cobalt on light, a lighter blue on dark).
 
-The Details panel is the full record, with no separate record page on desktop; a place's whistleblower reviews sit at the foot of the record, with the form to add one (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the approved reviews of a place are listed at the foot of its record (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ---
 
@@ -35,7 +35,7 @@ python3 -m http.server 8080
 
 Then open [http://localhost:8080](http://localhost:8080).
 
-To try the review form against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
+To try the Share information form against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
 
 ---
 
@@ -55,7 +55,11 @@ check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
 ## Whistleblower reviews
 
-The only notes the atlas holds are whistleblower reviews, and they exist in one place: under the record of the space they are about, laid out like the reviews of a place on Google Maps. A review has the text, an optional star rating from 1 to 5, and an optional name to show (blank shows "Whistleblower"). The list shows the average of the stars that were given and the count, then one entry per review with the name, date, stars and text, newest first. The form that adds one is under the same list ("Write a review"); there is no other way to add a note: the chat has no note mode, the page has no Share information button, and nothing is kept in the reader's browser. If a review cannot be sent, the text stays in the form.
+The only notes the atlas holds are whistleblower reviews. They are written on one screen and read in one place.
+
+**Writing:** Share information (in the chat composer, and on the map's control bar) opens the note screen, which is a form: the institution (the open record's, or chosen from the list of every space on the atlas), an optional star rating from 1 to 5, an optional name to show (blank shows "Whistleblower"), and the note, 10 to 2000 characters. Send for review posts it to the report API; Enter inside the note starts a new line. If it cannot be sent, everything stays in the form and nothing is kept in the reader's browser. The page has no other way to add a note.
+
+**Reading:** under the record of the space they are about, approved reviews are laid out like the reviews of a place on Google Maps: the average of the stars that were given and the count, then one entry per review with the name, date, stars and text, newest first. The record only lists reviews; it has no form.
 
 A review is sent to the report API below, held as waiting, and shows on the record only after the editor approves it on `reports-admin.html`. The map pin's hover card is drawn on the canvas and has no room for a list, so reviews appear on the record only. Reviews are not posted to Google Maps.
 
