@@ -769,6 +769,8 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-note{margin:0 0 8px;color:var(--row-dim);font:400 var(--fs-s)/1.4 var(--sans)}
 #layersPanel .layers-kinds{display:flex;flex-wrap:wrap;gap:4px}
 #layersPanel label.kind-chip{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;flex:1 1 150px}
+#layersPanel label.kind-chip .layer-name{white-space:nowrap}
+@media (max-width:640px){#layersPanel label.kind-chip{flex:1 1 auto;padding:6px 8px;gap:6px}}
 #layersPanel label.kind-chip i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
 #layersPanel .layers-top{display:flex;flex-direction:column;gap:2px}
 #layersPanel .top-funder{display:grid;grid-template-columns:11px minmax(0,13em) minmax(40px,1fr) 2.5em;align-items:center;column-gap:10px;min-height:32px;padding:4px 10px;border:0;border-radius:6px;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.2 var(--sans);text-align:left;cursor:pointer}
@@ -1897,6 +1899,10 @@ div:has(>#topThemeBtn){column-gap:0}
   #layersPanel label>input{grid-column:1;grid-row:1 / span 3;margin-top:2px}
   #layersPanel label>:not(input){grid-column:2!important;text-align:left!important;white-space:normal!important}
   #layersPanel .layers-count{text-transform:none;letter-spacing:0!important;color:var(--row-dim)}
+  /* The funder-type chips are a row of three, not stacked rows: undo the stacking above for them. */
+  #layersPanel label.kind-chip{align-items:center!important}
+  #layersPanel label.kind-chip>input{grid-row:auto;margin-top:0}
+  #layersPanel label.kind-chip>:not(input){grid-column:auto!important;white-space:nowrap!important}
 
   /* ---- Record sheet: SwiftUI half sheet ----
      Medium detent ≈ 52% of the map, large fills it. One scroll container, so the title scrolls up with the record;
