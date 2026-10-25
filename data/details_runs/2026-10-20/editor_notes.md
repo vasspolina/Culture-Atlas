@@ -1250,3 +1250,10 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - The Common Guild: Outset Wider context cut (Euronews item targets Tate).
 - Te Uru: support page returned 429, funding section rebuilt from the About page and the Charities Register; benefactor levels and patron line cut. Website line still points to the support page.
 - Teoretica: FFAI, Arts Collaboratory and DOEN known from footer logo link addresses under a Colaboradores heading only.
+
+## d100 (slop check: checks/d100-slop.json)
+- Yorkshire Sculpture Park: HSBC Wider context cut (corporate partner listing with no year or amount; the ASA ban is the bank's own case with no page linking it to the Park). HSBC stays under Funding as a listed partner.
+- Zeitz MOCAA: four press items kept; Gucci named in The Art Newspaper (22 April 2024). Report trimmed to 791 words.
+- Z33: VRT NWS pieces on the 2025 financial investigation (opened 4 February, closed 3 April 2025, no indications of breach of trust).
+- Zanabazar Museum: no source shows who pays; Funding states only the NCCH listing and the UNESCO project. Needs a better source if a verdict is wanted.
+- Zolak: funding rests on one Reform.news article (11 June 2025).
