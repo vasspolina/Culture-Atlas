@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=258">
-  <script src="assets/config.js?v=258"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=259">
+  <script src="assets/config.js?v=259"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -8016,6 +8016,7 @@ return maplibregl$1;
       if (typeof cityVectorMap.resize === 'function') {
         cityVectorMap.resize();
       }
+      if (window.atlasStreetLayers) window.atlasStreetLayers.start(cityVectorMap, mapEl);
 
       // Ensure globe floating card is strictly hidden in street view
       document.getElementById('floatingCard')?.classList.add('hidden');
@@ -8159,6 +8160,7 @@ return maplibregl$1;
 
     function exitCityStreetView() {
       isCityStreetViewActive = false;
+      if (window.atlasStreetLayers) window.atlasStreetLayers.stop();
       const mapEl = document.getElementById('cityMapContainer');
       if (mapEl) mapEl.classList.add('hidden');
       document.getElementById('cityViewControlBanner')?.classList.add('hidden');
@@ -9921,11 +9923,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v258';
+    const ATLAS_RELEASE = 'culture-atlas-v259';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=258').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=259').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19294,9 +19296,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=258"></script>
-<script src="assets/layers.js?v=258"></script>
-<script src="assets/hq-detail.js?v=258"></script>
-<script src="assets/bubbles.js?v=258" defer></script>
+<script src="assets/typeset.js?v=259"></script>
+<script src="assets/layers.js?v=259"></script>
+<script src="assets/hq-detail.js?v=259"></script>
+<script src="assets/bubbles.js?v=259" defer></script>
 </body>
 </html>

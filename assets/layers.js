@@ -50,8 +50,9 @@
   const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
   // The funder under the pointer: where else it appears is drawn until the pointer has been off it a moment.
   // One picked from the list of widest-reaching funders can be pinned, and then stays until it is picked again or Esc is pressed.
+  let STREET = false;   // true while the layers are being drawn over the street map
   let REACH = null, reachTimer = 0;
-  const repaint = () => { if (typeof scheduleRender === 'function') scheduleRender(); };
+  const repaint = () => { if (typeof scheduleRender === 'function') scheduleRender(); svSchedule(); };
   function clearReach() { clearTimeout(reachTimer); reachTimer = 0; if (!REACH) return; REACH = null; if (typeof renderTop === 'function') renderTop(); repaint(); }
   function setReach(m) {
     if (REACH && REACH.pinned) return;
@@ -98,7 +99,7 @@
       byCity.forEach(list => list.forEach((e, i) => { const a = i * 2.39996, rr = i === 0 ? 0 : 8 + 5 * Math.sqrt(i); e.dx = Math.cos(a) * rr; e.dy = Math.sin(a) * rr; }));
       HQ = { orgs, people, byKey: new Map(orgs.map(o => [o.key, o])), byName: new Map(people.map(p => [p.n, p])) };
       hqLoading = false; updateCounts();
-      if (typeof scheduleRender === 'function') scheduleRender();
+      repaint();
     }).catch(() => { hqLoading = false; });
   }
 
@@ -125,7 +126,7 @@
       loading = false;
       updateCounts();
       if (cb) cb();
-      if (typeof scheduleRender === 'function') scheduleRender();
+      repaint();
     }).catch(() => { loading = false; });
   }
 
@@ -163,7 +164,9 @@
   const sameInst = (a, b) => !!a && !!b && (a.id ? a.id === b.id : a.name === b.name);
 
   // Under the dots: the funding ties.
+  const streetUp = () => !STREET && typeof window.getIsCityStreetViewActive === 'function' && window.getIsCityStreetViewActive();
   window.atlasLayersDraw = function (ctx, project, r, cx, cy, list, sel, hov, baseRadius) {
+    if (streetUp()) return;   // the street map is in front: its own frame draws the layers
     LM = [];
     drawReach(ctx, project, r, cx, cy);
     if (!L.ties) return;
@@ -254,7 +257,7 @@
   }
   function labelBoxesOnScreen(dots) {
     const out = [];
-    if (typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) cityBadgeHitboxes.forEach(b => out.push({ x: b.x, y: b.y, w: b.w, h: b.h }));
+    if (!STREET && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) cityBadgeHitboxes.forEach(b => out.push({ x: b.x, y: b.y, w: b.w, h: b.h }));
     dots.forEach(d => { if (d.labelBox) out.push(d.labelBox); });
     return out;
   }
@@ -487,7 +490,7 @@
         });
       });
     }
-    if (L.mix && recById && r < baseRadius * 3 && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
+    if (L.mix && recById && !STREET && r < baseRadius * 3 && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
       // Too far out for a ring on each space: a bar under each city's label instead, the same three colours in the same order.
       const mixes = cityMix(), order = ['gov', 'found', 'corp'];
       cityBadgeHitboxes.forEach(b => {
@@ -511,7 +514,7 @@
         ctx.strokeStyle = '#000'; ctx.stroke();
       });
       // Each city cluster: the number of flagged spaces in it, on an orange block after the city's label.
-      if (typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
+      if (!STREET && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
         const byCity = flaggedByCity();
         ctx.textAlign = 'left';
         cityBadgeHitboxes.forEach(b => {
@@ -605,6 +608,7 @@
     ctx.restore();
   }
   window.atlasLayersDrawNodes = function (ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
+    if (streetUp()) return;
     HQ_HITS = []; HQ_LABELS = [];
     try { drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy); }
     finally { if (window.atlasHqFrame) window.atlasHqFrame(HQ_HITS); }
@@ -666,8 +670,8 @@
     // The office whose drawn name is under the point, if any.
     labelAt(mx, my) { const l = HQ_LABELS.find(b => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h); return l ? l.e : null; },
     reach: () => (window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') ? 22 : 12,
-    hover(e) { if (HQ_HOV === e) return; HQ_HOV = e; if (typeof scheduleRender === 'function') scheduleRender(); },
-    select(e) { HQ_SEL = e; if (typeof scheduleRender === 'function') scheduleRender(); },
+    hover(e) { if (HQ_HOV === e) return; HQ_HOV = e; repaint(); },
+    select(e) { HQ_SEL = e; repaint(); },
     selected: () => HQ_SEL,
     screenPos(e) { const m = HQ_HITS.find(x => x.e === e); return m ? { x: m.x, y: m.y } : null; },
     // Turn on the layer an office belongs to, so the mark being named is on the map.
@@ -712,7 +716,7 @@
     // Pointer moved: a mark that stands alone takes the hover (true, so the page shows a pointer); a mark on a space's dot does not.
     hover(mx, my) {
       const m = markAt(mx, my), alone = m && !m.pass ? m : null;
-      if ((alone && alone.ask) !== (LM_HOV && LM_HOV.ask) || (alone && alone.rec) !== (LM_HOV && LM_HOV.rec)) { LM_HOV = alone; if (typeof scheduleRender === 'function') scheduleRender(); }
+      if ((alone && alone.ask) !== (LM_HOV && LM_HOV.ask) || (alone && alone.rec) !== (LM_HOV && LM_HOV.rec)) { LM_HOV = alone; repaint(); }
       setReach(alone);
       return !!alone;
     },
@@ -741,7 +745,7 @@
       if (typeof window.setTargetRadius === 'function') window.setTargetRadius(z);
       window.flyTo(inst.lon, inst.lat, z);
     }
-    if (typeof scheduleRender === 'function') scheduleRender();
+    repaint();
   };
 
   // What each layer holds, as a count after its name.
@@ -769,6 +773,75 @@
       set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)} spaces`);
     }
   }
+
+  // ---- Street view ----
+  // Opening a city puts a MapLibre map over the globe, so the globe canvas, where the layers draw, is out of sight. A canvas of
+  // the same size is laid over the street map instead, and the same drawing code runs on it with the map's own projection, at a
+  // scale that grows with the map's zoom (so a layer that waits for a close view shows at street zoom). The marks answer the pointer
+  // as they do on the globe.
+  const SV = { map: null, el: null, canvas: null, raf: 0, dots: [], on: false, bound: null };
+  function svSchedule() { if (SV.on && !SV.raf) SV.raf = requestAnimationFrame(svRender); }
+  function svRender() {
+    SV.raf = 0; if (!SV.on || !SV.map || typeof ALL_INSTITUTIONS === 'undefined') return;
+    const map = SV.map, W = SV.el.clientWidth, H = SV.el.clientHeight, dpr = window.devicePixelRatio || 1, cv = SV.canvas;
+    if (!W || !H) return;
+    if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px'; }
+    const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    if (!(REACH || L.flags || L.grade || L.money || L.mix || L.right || L.epstein || L.hq || L.people || L.ties)) { SV.dots = []; LM = []; return; }
+    const base = 240, r = base * Math.pow(2, map.getZoom() - 7);
+    // Points behind the camera on a tilted map project to nonsense; anything far off the canvas is treated as not in front.
+    const project = (lon, lat) => { const p = map.project([lon, lat]); return { x: p.x, y: p.y, front: Math.abs(p.x - W / 2) < 6 * W && Math.abs(p.y - H / 2) < 6 * H, depth: 1 }; };
+    const dots = [], list = [], pad = 40;
+    ALL_INSTITUTIONS.forEach(i => {
+      if (typeof i.lat !== 'number' || typeof i.lon !== 'number') return;
+      const p = project(i.lon, i.lat); if (!p.front) return;
+      list.push(i);
+      if (p.x > -pad && p.x < W + pad && p.y > -pad && p.y < H + pad) dots.push({ inst: i, x: p.x, y: p.y });
+    });
+    SV.dots = dots;
+    const sel = typeof window.getSelectedInstitution === 'function' ? window.getSelectedInstitution() : null;
+    STREET = true;
+    try {
+      window.atlasLayersDraw(ctx, project, r, W / 2, H / 2, list, sel, null, base);
+      window.atlasLayersDrawNodes(ctx, dots, r, base, sel, null, false, project, W / 2, H / 2);
+    } finally { STREET = false; }
+  }
+  window.atlasStreetLayers = {
+    start(map, el) {
+      if (SV.map !== map) {
+        if (SV.map && SV.bound) { SV.map.off('render', SV.bound.render); SV.map.off('mousemove', SV.bound.move); SV.map.off('click', SV.bound.click); }
+        SV.map = map; SV.el = el;
+        const render = () => svSchedule();
+        const move = e => {
+          if (!SV.on) return;
+          const hit = (window.atlasHqPointer && window.atlasHqPointer.hover(e.point.x, e.point.y, SV.dots)) || (window.atlasLayerMarks && window.atlasLayerMarks.hover(e.point.x, e.point.y));
+          map.getCanvas().style.cursor = hit ? 'pointer' : '';
+        };
+        const click = e => {
+          if (!SV.on) return;
+          const oe = e.originalEvent || {};
+          if (window.atlasHqPointer && window.atlasHqPointer.click(e.point.x, e.point.y, oe.clientX, oe.clientY, SV.dots)) return;
+          if (window.atlasLayerMarks) window.atlasLayerMarks.click(e.point.x, e.point.y);
+        };
+        SV.bound = { render, move, click };
+        map.on('render', render); map.on('mousemove', move); map.on('click', click);
+      }
+      if (!SV.canvas || !SV.canvas.isConnected) {
+        SV.canvas = document.createElement('canvas'); SV.canvas.id = 'streetLayersCanvas'; SV.canvas.setAttribute('aria-hidden', 'true');
+        SV.canvas.style.cssText = 'position:absolute;left:0;top:0;pointer-events:none;z-index:1';
+        el.appendChild(SV.canvas);
+      }
+      SV.on = true; if (REACH || L.hq || L.people) { loadMoney(); loadHq(); }
+      svSchedule();
+    },
+    stop() {
+      SV.on = false; if (SV.canvas) SV.canvas.getContext('2d').clearRect(0, 0, SV.canvas.width, SV.canvas.height);
+      LM = []; LM_HOV = null; HQ_HITS = []; if (SV.map) SV.map.getCanvas().style.cursor = '';
+      repaint();
+    },
+    // The marks and dots drawn last frame, for checking from a script.
+    marks: () => ({ n: LM.length, dots: SV.dots.length, on: SV.on })
+  };
 
   // ---- The widest-reaching funders, as a list in the panel ----
   // Offices the map already groups as one body (same name and country) are one funder here, whatever keys the records use.
@@ -853,7 +926,7 @@
       });
       box.querySelectorAll('input[data-kind]').forEach(input => { input.checked = true; L.kinds[input.dataset.kind] = true; });
       clearReach();
-      if (typeof scheduleRender === 'function') scheduleRender();
+      repaint();
     });
     document.addEventListener('click', e => { if (!panel.hidden && !box.contains(e.target)) setOpen(false); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { clearReach(); if (!panel.hidden) setOpen(false); } });
@@ -863,12 +936,12 @@
       L[k] = inp.checked;
       if (k !== 'flags' && k !== 'grade' && inp.checked) loadMoney();
       if ((k === 'hq' || k === 'people') && inp.checked) loadHq();
-      if (typeof scheduleRender === 'function') scheduleRender();
+      repaint();
     }));
     box.querySelectorAll('input[data-kind]').forEach(inp => inp.addEventListener('change', () => {
       L.kinds[inp.dataset.kind] = inp.checked;
       renderTop();
-      if (typeof scheduleRender === 'function') scheduleRender();
+      repaint();
     }));
     updateCounts();
   }
