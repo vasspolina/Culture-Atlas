@@ -1,0 +1,371 @@
+[
+ {
+  "id": "ges-2-house-of-culture-moscow",
+  "section": "RED FLAGS: Fossil fuels",
+  "problems": [
+   "funding relationship not shown on an opened page"
+  ],
+  "before": "Mikhelson, who financed GES-2, is the founder, chairman and major shareholder of Novatek ... He is described as a Russian natural gas billionaire in The Art Newspaper's opening report.",
+  "after": "Mikhelson finances GES-2: Forbes says he spent more than $470 million turning the power plant into the art space, and The Art Newspaper (14 July 2025) says GES-2 was \"financed by the gas magnate Leonid Mikhelson\" ... Mikhelson is the founder and chairman of Novatek (Forbes); Wikipedia calls him CEO and major shareholder.",
+  "sources": [
+   "https://www.forbes.com/profile/leonid-mikhelson/",
+   "https://www.theartnewspaper.com/2025/07/14/amid-cracks-down-on-dissent-russias-beleaguered-private-museums-fight-to-survive",
+   "https://en.wikipedia.org/wiki/Leonid_Mikhelson"
+  ],
+  "reason": "KEPT as a flag. Forbes (opened) states he spent more than $470 million on the conversion and is founder and chairman of Novatek; The Art Newspaper 14 July 2025 (opened) says GES-2 is financed by him, which makes the funding current. The 2021 Art Newspaper opening report does not say he funds GES-2 and does not name Novatek, so the bullet resting on it was dropped."
+ },
+ {
+  "id": "ges-2-house-of-culture-moscow",
+  "section": "RED FLAGS: Sanctions",
+  "problems": [
+   "vague source: Wikipedia dating only",
+   "no official page"
+  ],
+  "before": "Mikhelson is under UK and Canadian sanctions (21bis, 4 May 2022); Wikipedia dates the UK sanction to 2022.",
+  "after": "UK: added to the UK Sanctions List on 6 April 2022 under the Russia (Sanctions) (EU Exit) Regulations 2019; the Financial Sanctions Notice of that date says he supports the Government of Russia as a director of Novatek and Sibur. Canada: item 728 in Part 1 of Schedule 1 to the Special Economic Measures (Russia) Regulations, SOR/2022-74, registered 5 April 2022. 21bis (4 May 2022) also states both sanctions.",
+  "sources": [
+   "https://www.bvifsc.vg/sites/default/files/2022-04-06_russia_notice.pdf",
+   "https://gazette.gc.ca/rp-pr/p2/2022/2022-04-27/html/sor-dors74-eng.html",
+   "https://21bis.be/2022/05/oligarch-led-art-organization-v-a-c-foundation-closed-its-doors-in-venice-due-to-the-war-in-ukraine-but-keeps-on-going-in-moscow/"
+  ],
+  "reason": "KEPT as a flag. 21bis (opened, Kiia Heikkila, 4 May 2022) gives no dates. The UK notice (a copy of the official Financial Sanctions Notice 06/04/2022, text read from the PDF) lists MIKHELSON Leonid Viktorovich, Group ID 15073, designated 06/04/2022. The Canada Gazette page (opened) lists him as item 728, SOR/2022-74, registered 5 April 2022. The search-tool snippet of the UK Sanctions List page RUS1126 could not be opened (page needs a script), so it is not cited."
+ },
+ {
+  "id": "ges-2-house-of-culture-moscow",
+  "section": "RED FLAGS: Campaigned name",
+  "problems": [
+   "campaign targeted a different venue (V-A-C Venice), not GES-2"
+  ],
+  "before": "Red flags: Campaigned name - Activists from the group Global Project ... occupied V-A-C's Palazzo Zattere in Venice in May 2022 ... (two bullets)",
+  "after": "Moved to WIDER CONTEXT with the connection stated: the occupation targeted Mikhelson at V-A-C's Venice building, not GES-2; V-A-C is the foundation Mikhelson co-founded in 2009 and GES-2 is its Moscow venue.",
+  "sources": [
+   "http://www.theartnewspaper.com/2022/05/19/venice-gets-political-how-the-art-worlds-biggest-stage-has-become-a-focal-point-for-ukrainian-protests",
+   "https://21bis.be/2022/05/oligarch-led-art-organization-v-a-c-foundation-closed-its-doors-in-venice-due-to-the-war-in-ukraine-but-keeps-on-going-in-moscow/"
+  ],
+  "reason": "House rule: a campaign is a red flag only where campaigners targeted the funder at this space; a campaign at the same funder's other institution goes under Wider context. The Art Newspaper, Gareth Harris and Jose da Silva, 19 May 2022 (opened) does not mention GES-2. Source also says north-east social centres only (the report's 'Italy' was cut) and 'more than 100 activists' is from a tweet it quotes. Flag heading removed; the report's last Wider context point states the connection."
+ },
+ {
+  "id": "ges-2-house-of-culture-moscow",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 1907",
+   "unsupported: about a year later than planned",
+   "unsupported: entry is free",
+   "unsupported: ges-2 figure for 41,000 sq m attribution"
+  ],
+  "before": "converted 1907 power station ... opened on 4 December 2021, about a year later than planned ... entry is free and requires online registration",
+  "after": "former power plant at 15 Bolotnaya Embankment, opposite the Kremlin, spanning 41,000 square metres ... opened on 4 December 2021 ... entry is by online registration (ges-2.org; Moscow city website)",
+  "sources": [
+   "https://ges-2.org/en/",
+   "https://www.mos.ru/en/mayor/themes/46299/7896050/",
+   "https://www.theartnewspaper.com/2021/12/03/moscows-ges-2-house-of-culture-raises-curtain-with-soap-opera-drama"
+  ],
+  "reason": "None of the opened pages gives 1907, a one-year delay or free entry (ges-2.org shows a registration button only; mos.ru says pre-registration with a QR code). 41,000 square metres is from The Art Newspaper 3 December 2021."
+ },
+ {
+  "id": "ges-2-house-of-culture-moscow",
+  "section": "FUNDING",
+  "problems": [
+   "wrong attribution",
+   "added job title",
+   "unsupported paraphrase"
+  ],
+  "before": "The Art Newspaper put the capital cost at about $300 million in 2018 ... Former music head Nikita Rasskazov said Mikhelson became increasingly vocal about programming",
+  "after": "Mavica put the cost at around $300 million in 2018 ... (Rasskazov line cut for length; described elsewhere as a curator in charge of musical programmes for V-A-C who quit over the war)",
+  "sources": [
+   "https://www.theartnewspaper.com/2021/12/03/moscows-ges-2-house-of-culture-raises-curtain-with-soap-opera-drama",
+   "https://www.theartnewspaper.com/2022/10/19/moscows-ges-2-house-of-culture-the-rise-and-fall-of-russian-billionaires-huge-new-art-hub"
+  ],
+  "reason": "The 2021 piece says Mavica gave the $300m figure; the 2022 piece calls Rasskazov a curator in charge of musical programmes for V-A-C, not 'music head'."
+ },
+ {
+  "id": "ges-2-house-of-culture-moscow",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong claim about press item 3",
+   "absence wording",
+   "dates"
+  ],
+  "before": "Garage museum, Art4.ru and Erarta are the cases it cites, not GES-2 ... no review makes a full case against the centre",
+  "after": "Covers private museums under pressure: Garage, the Museum of Russian Impressionism and Erarta alongside GES-2. Overall line states what the coverage concerns. Full dates added to all three items.",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/07/14/amid-cracks-down-on-dissent-russias-beleaguered-private-museums-fight-to-survive"
+  ],
+  "reason": "The 2025 piece has a section on GES-2 and four cases; Art4.ru only appears in the introduction. Press items kept: (1) The Art Newspaper, Sophia Kishkovsky, \"'Frightening' price tag and soap opera drama: Moscow's GES-2 House of Culture opens opposite Kremlin\", 3 December 2021; (2) The Art Newspaper, Sophia Kishkovsky, \"Moscow's GES-2 House of Culture: the rise and fall of Russian billionaire's huge new art hub\", 19 October 2022; (3) The Art Newspaper, Sophia Kishkovsky, \"Amid crackdowns on dissent, Russia's private museums are threatened\", 14 July 2025. All three name GES-2. Prudnikova: appointed programme director of V-A-C and GES-2 in May 2022 (item 2), confirmed."
+ },
+ {
+  "id": "ges-2-house-of-culture-moscow",
+  "section": "BOTTOM LINE / length",
+  "problems": [
+   "over 800 words",
+   "venice clause moved",
+   "post-trim"
+  ],
+  "before": "...a natural gas billionaire who is under UK and Canadian sanctions, with at least $300 million spent on the building. Putin visited it in 2021 and 2022. V-A-C's Venice space was occupied...",
+  "after": "GES-2 is a private centre funded by Leonid Mikhelson, founder and chairman of the gas producer Novatek, who has been on the UK sanctions list since 6 April 2022 and on Canada's Schedule 1 since April 2022. Forbes puts his spending on the building at more than $470 million.",
+  "sources": [
+   "https://www.forbes.com/profile/leonid-mikhelson/"
+  ],
+  "reason": "Report was 920 words; trimmed to 793 (without SOURCES) by cutting duplicate lines. Added sources: UK notice copy, Canada Gazette, Moscow city website."
+ },
+ {
+  "id": "gamec-bergamo",
+  "section": "RED FLAGS: Gambling",
+  "problems": [
+   "unsupported: Brightstar paid for free access (2025 accounts)",
+   "IGT activity not stated"
+  ],
+  "before": "- Brightstar paid for free access to guided activities in 2025 (2025 accounts). Wikipedia says IGT's lottery business was renamed Brightstar Lottery in 2025, and describes IGT as a multinational gambling company.",
+  "after": "- Wikipedia says IGT's lottery business was renamed Brightstar Lottery in 2025, and describes IGT as a multinational gambling company that produces slot machines and other gambling technology.\n- Brightstar Lottery's release of 18 November 2025 says its subsidiary LottoItalia S.r.l. signed an agreement to operate the Italy Lotto for nine years and will manage the licence until November 2034.",
+  "sources": [
+   "https://ir.brightstarlottery.com/news/news-details/2025/Brightstar-Lottery-Signs-Nine-Year-Agreement-to-Continue-Operation-of-Italy-Lotto/default.aspx",
+   "https://en.wikipedia.org/wiki/Brightstar_Lottery"
+  ],
+  "reason": "KEPT as a flag. CHECKER.md line 16 defines Gambling as covering casino, betting and gaming-machine operators and companies, 'lottery companies such as IGT'; public lottery distributors and gambling-tax funds are the exceptions, and IGT is a private operator under licence, not a public distributor. Current: 50,000 euros in 2025 (0 in 2024), read in the 2025 accounts (Sponsorizzazione IGT Lottery 50.000). The word Brightstar is not in the accounts' text, so the free-access claim was cut. IGT's own page (igt.com/about-igt) returned 404; Brightstar's own release is cited for what it does (Italy Lotto, nine years)."
+ },
+ {
+  "id": "gamec-bergamo",
+  "section": "FUNDING",
+  "problems": [
+   "wrong figure",
+   "unsupported: palazzo della ragione attribution",
+   "unsupported: three municipal staff",
+   "unsupported: Fondazione Comunita Bergamasca in contributor list",
+   "vague count"
+  ],
+  "before": "income was 2,073,965 against costs of 2,016,793, a surplus of 14,027 ... TenarisDalmine 370,000 recognised for the Palazzo della Ragione exhibition ... three municipal staff ... names 27 private contributors: TenarisDalmine, Fondazione Comunita Bergamasca, Carvico ...",
+  "after": "total charges of 2,059,939 (2,016,793 is before taxes), surplus 14,027; Comune di Bergamo 735,000 plus 15,000 for Palazzo della Ragione; TenarisDalmine 370,000 recognised as income, 550,000 received; in-kind use of offices, exhibition spaces, utilities and cleaning; accounts number 27 private contributors including TenarisDalmine, Carvico ...; Fondazione Cariplo made possible Guida per un Giorno",
+  "sources": [
+   "https://www.gamec.it/wp-content/uploads/2026/06/gamec-bc-2025.pdf"
+  ],
+  "reason": "Figures checked in the PDF text: 735,000 (519,000 in 2024), 550,000 from Tenaris Dalmine, sponsorships Bonaldi 25,000, Intesa 25,000, IGT 50,000, 5-member Consiglio Direttivo, founding 11 June 1999 all confirmed. Item 2 of the numbered contributor list does not read in the PDF, so Fondazione Comunita Bergamasca (not named there as a contributor) was removed from it. The 'collection belongs to the city' sentence is not stated and was cut. Funding verdict 'about two dozen' replaced by 27 named."
+ },
+ {
+  "id": "gamec-bergamo",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "incomplete event description",
+   "link to Tenaris unsourced"
+  ],
+  "before": "In May 2011 Tenaris agreed to pay US$8.9 million over bribes to officials of an Uzbek state-controlled oil company (Wikipedia).",
+  "after": "In May 2011 Tenaris agreed to pay the US Department of Justice US$8.9 million after it disclosed bribes paid to officials of an Uzbek state-controlled oil firm (Wikipedia). Tenaris makes steel pipes for the petroleum industry (Wikipedia). TenarisDalmine ... is owned by Tenaris SA (Global Energy Monitor).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Tenaris",
+   "https://www.gem.wiki/Tenaris_Dalmine_steel_plant"
+  ],
+  "reason": "Wikipedia names Tenaris and the 8.9 million dollars (a reference title shows a different 5.4 million SEC figure; only the DOJ figure from the text is used). No Fossil fuels flag: Tenaris makes pipes for the petroleum industry. Wikipedia's Tenaris page does not mention TenarisDalmine; the ownership link comes from Global Energy Monitor (Dalmine SpA 100% owned by Tenaris SA)."
+ },
+ {
+  "id": "gamec-bergamo",
+  "section": "OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "attribution",
+   "gambling company label"
+  ],
+  "before": "(stated by the gallery) for monastery and Palazzo della Ragione; Its accounts ... IGT Lottery, a gambling company.",
+  "after": "attributed to Wikipedia, gallery website and 2025 accounts; bottom line: ... a 50,000 euro sponsorship from IGT Lottery, the lottery business renamed Brightstar Lottery in 2025, which operates the Italy Lotto (Wikipedia; Brightstar release).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/GAMeC",
+   "https://www.gamec.it/en/the-gallery/"
+  ],
+  "reason": "The gallery page states 1991, fifteenth-century monastery, 1,500 sq m, Lorenzo Giusti; the Dimesse and Servite and Studio Gregotti are Wikipedia."
+ },
+ {
+  "id": "georgia-okeeffe-museum-santa-fe",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: later gift described as foundation for campus",
+   "unsupported: 91% attributed to museum",
+   "tribute date"
+  ],
+  "before": "The museum says the Burnett Foundation later gave $25 million, which it describes as the foundation for the campus project (museum tribute to John L. Marion, 4 June 2026).",
+  "after": "The museum's tribute to John L. Marion (4 June 2026) describes \"a $25 million gift from The Burnett Foundation, Anne's family philanthropic organization\", which the Marions secured to help the museum prepare for expansion. [91% from 98 donors now credited to the Albuquerque Journal]",
+  "sources": [
+   "https://www.okeeffemuseum.org/in-memoriam-john-l-marion/",
+   "https://www.abqjournal.com/news/article_d8ff574b-0efc-45fe-832b-890c938317d5.html"
+  ],
+  "reason": "Confirmed: 10 million dollar founding gift from the foundation (Wikipedia, Anne Windfohr Marion); 25 million dollar gift (tribute; 4 June 2026 is the page date, the gift has no date on the page). Anne Marion's Burnett Oil role (established 1980, chairman) stays as history attributed to Wikipedia. No Fossil fuels flag: no opened page shows oil money funding the museum now. Audit figures all matched the 2025 statements."
+ },
+ {
+  "id": "georgia-okeeffe-museum-santa-fe",
+  "section": "OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "unsupported: nearly 150 paintings",
+   "unsupported: largest repository",
+   "topped out",
+   "absence sentence"
+  ],
+  "before": "nearly 150 paintings and hundreds of works on paper, the largest repository of O'Keeffe's work; campus topped out on 6 April 2026; No corporate or state funder is documented; Form 990 posted",
+  "after": "140 O'Keeffe oil paintings (museum website) and nearly 1,200 objects (Wikipedia); topping-off ceremony scheduled for 6 April 2026 (press release of 31 March 2026); bottom line ends with audited statements for 2025 posted",
+  "sources": [
+   "https://www.okeeffemuseum.org/about-the-museum/",
+   "https://www.okeeffemuseum.org/?p=28513",
+   "https://en.wikipedia.org/wiki/Georgia_O%27Keeffe_Museum"
+  ],
+  "reason": "The press release announces the ceremony, so 'topped out' was not shown. Form 990 not opened."
+ },
+ {
+  "id": "gaza-biennale-gaza",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "wrong attribution: Hyperallergic does not call Al Risan a sponsor",
+   "unsupported: Toronto",
+   "unsupported: only partner named",
+   "absence sentence in bottom line"
+  ],
+  "before": "Sponsored by the Al Risan Art Museum ... (Hyperallergic). ... Toronto ... Al Risan Art Museum is the only partner named on the site. ... No corporate, state or flagged-industry funder is documented.",
+  "after": "Announced with sponsorship from the Al Risan Art Museum (The Art Newspaper). Hyperallergic describes the museum ... T'karonto ... bottom line states the 90,000 dollar aim, Al Risan sponsorship, the Chuffed page and the Istanbul sponsors.",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/12/12/gaza-biennale-fundraising-artists-palestine",
+   "https://hyperallergic.com/969815/dreams-of-a-gaza-biennale-amid-loss-and-ruin/",
+   "https://gazabiennale.org/support/"
+  ],
+  "reason": "Confirmed: 90,000 dollar target (The Art Newspaper, Angella d'Avignon, 12 December 2024); sponsor Al Risan (The Art Newspaper only); ICA protest 14 January 2025 (Huck, Cyna Mirzai, 14 January 2025, names ARTCRY and Palestinian Youth Movement and Bloomberg Philanthropies); Hyperallergic, Isa Farfan, 26 November 2024 (title 'A Gaza Biennale Takes Shape Amid Loss and Ruin'); Chuffed link on the support page. The site lists the Sweden pavilion as 30 May to 10 June 2026. The Istanbul sponsor list is in the alt text of a sponsor image, now labelled so. e-flux directory page only lists the biennial (kept as a source)."
+ },
+ {
+  "id": "galeria-de-la-raza-san-francisco",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: founders list attributed to the space",
+   "unsupported: gave up space in late 2018",
+   "unsupported: private landlord",
+   "absence sentences",
+   "source does not support: Horizons page"
+  ],
+  "before": "Founded ... including Rupert Garcia, Peter Rodriguez, Rene Yanez and Ralph Maradiaga (stated by the space) ... The article reports no city money ... a rent and accessibility-cost dispute with a private landlord ... No corporate or foreign state funder is documented.",
+  "after": "Founders named by Wikipedia (Garcia, Rodriguez, Maradiaga; Yanez first artistic director); Mission Local 12 October 2018 says the gallery would give up the main space, Wikipedia says it vacated in November 2018; bottom line: left its 24th Street home in 2018 after a 100 percent rent increase and a dispute over accessibility work; sites came through community benefit agreements (stated by the space).",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/942495604",
+   "https://missionlocal.org/2018/10/breaking-sf-missions-galeria-de-la-raza-forced-out-of-longtime-space-by-rent-hike/",
+   "https://www.galeriadelaraza.org/"
+  ],
+  "reason": "ProPublica confirmed: Galeria Studio 24, EIN 94-2495604, FY2024 revenue 1,814,748, 99.9% contributions, expenses 1,242,133; 153,200 (2019), 500,538 (2022), 1,911,409 (2023). Mission Local (Julian Mark): 12 and 29 October 2018 confirmed (127,000 and 167,403 in 2016; nearly 500,000 in 2013); Mission Local never calls the landlord private. KQED, Marissa Shieh, 30 October 2018: the mayor 'would direct' OEWD and the Arts Commission. Horizons Foundation page only lists donation links, so it was removed from SOURCES."
+ },
+ {
+  "id": "galeria-foksal-warsaw",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: address ul. Foksal 1/4",
+   "mainly public verdict",
+   "absence sentence"
+  ],
+  "before": "at ul. Foksal 1/4 ... mainly public ... The gallery names no corporate sponsor or private donor on the pages read",
+  "after": "on Foksal Street ... public: the regional government of Mazovia ... the commercial Foksal Gallery Foundation is a separate organisation.",
+  "sources": [
+   "https://www.galeriafoksal.pl/en/o-galerii/",
+   "https://en.wikipedia.org/wiki/Foksal_Gallery",
+   "https://www.galeriafoksal.pl/en/kontakt/"
+  ],
+  "reason": "Gallery page: 'financed by the Marshal Office of the Province of Mazovia'; Foundation 'a separate body, without any direct links with Foksal Gallery' (Not related confirmed); foundation established 1997, some members left; Wikipedia: commercial, left 2001. The house number is not on the page."
+ },
+ {
+  "id": "galerie-de-luqam-montréal",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "absence sentences: gives no amounts or years; no corporate sponsor named",
+   "vague donation sentence",
+   "collection figure attribution"
+  ],
+  "before": "It gives no amounts or years. ... No corporate sponsor is named on the gallery's site, and no amounts are published there. ... over 4,000 works (French Wikipedia; Esse).",
+  "after": "The gallery's 'Faire un don' link leads to the online donation page of the UQAM Foundation; 1969 start and 3,000 prints from French Wikipedia; Esse (2020) puts the collection at over 4,000 works.",
+  "sources": [
+   "https://galerie.uqam.ca/",
+   "https://fr.wikipedia.org/wiki/Galerie_de_l'UQAM",
+   "https://esse.ca/en/?p=1544"
+  ],
+  "reason": "Confirmed on the gallery page: partners Conseil des arts du Canada, CALQ, UQAM; address, hours. French Wikipedia: founded 1975, moved 1979, Louise Dery, funded by the Canada Council. UQAM public university (French Wikipedia). Esse says over 4,000 works, not the 1969 donation."
+ },
+ {
+  "id": "galerie-rudolfinum-prague",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "wrong: established by the Ministry (report says supported by)",
+   "wrong: admission free throughout 2025 stated as current",
+   "unsupported: nadacni fond Abakus attribution",
+   "Samsung detail",
+   "absence sentence in bottom line",
+   "CZ PDF not readable"
+  ],
+  "before": "public institution established by the Ministry of Culture ... Admission to exhibitions stayed free throughout 2025, with a voluntary contribution added ... No fossil fuel, gambling, tobacco or arms funder is documented.",
+  "after": "public institution supported by the Ministry of Culture ... annual report: free throughout 2025 with Pay What You Wish added; admission page now: Pay What You Wish for adults 26 and over, minimum 200 CZK, free for ages 0 to 15 and first Sunday, 120 CZK for 65+ and students 15 to 26 ... Abakus, the foundation of the Avast founders Pavel Baudis and Eduard Kucera, is the long-term sponsor ... Samsung Technology Partner from Poetics of Encryption.",
+  "sources": [
+   "https://www.galerierudolfinum.cz/wp-content/uploads/Galerie_Rudolfinum_2025_vyrocni_zprava_EN.pdf",
+   "https://www.galerierudolfinum.cz/en/about-gallery/vstupne/",
+   "https://abakus.cz/en/"
+  ],
+  "reason": "English annual report 2025 read: Ministry of Culture contribution CZK 21,435,805 including CZK 1,980,000 extraordinary; Czech Philharmonic part, independent unit with own budget; 109,280 visitors (second most-visited year); Julia Bailey director; Advisory Committee with Helena Musilova. Abakus site describes the foundation but does not mention the gallery; the report calls Abakus long-term sponsor. Verdict changed from 'mainly public' to the report's own wording; CZ PDF replaced by EN PDF in SOURCES."
+ },
+ {
+  "id": "geelong-gallery-geelong",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "wrong figure: 64,322 is digital visitation",
+   "mainly public verdict not stated by a page",
+   "grants attributed only to two governments",
+   "absence sentence"
+  ],
+  "before": "recorded 64,322 visits to its exhibitions ... mainly public: City of Greater Geelong and the Victorian Government ... grants from the City ... make up A$1.67 million ... No flagged-industry funder is documented.",
+  "after": "welcomed 69,844 visitors and recorded 64,322 digital exhibition visits ... grant-funded: grant income of A$1.67 million of A$2.85 million revenue, with the City of Greater Geelong and the Victorian Government named as partners ...",
+  "sources": [
+   "https://www.geelonggallery.org.au/cms_uploads/docs/gg_annual_report_2025_dd_251117_v2-small.pdf",
+   "https://www.geelonggallery.org.au/support/partnerships",
+   "https://www.geelonggallery.org.au/visit"
+  ],
+  "reason": "Annual report text read: revenue 2,850,977 (before donated works of art), grant income 1,525,777 plus Creative Victoria 140,000, expenditure 2,972,381, sponsorship and prize income 40,552, donor and foundation names, 139 donors, 805 members, board seat for a City representative. The report does not say the grants come only from the two governments. Partners page dated 2020/2021."
+ },
+ {
+  "id": "gertrude-contemporary-melbourne",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "mainly public verdict",
+   "Keir Foundation listed as patron",
+   "bundled supporters",
+   "absence sentence"
+  ],
+  "before": "mainly public ... Private patrons in 2025: ... The Keir Foundation, 101 Collins ... Production and Apex Circle ... small trade firms ... No flagged-industry funder is documented",
+  "after": "grant-funded ... The Keir Foundation supported the Contact High: New York program in July 2025 (annual report) ... Production Partners and Apex Circle supporters named on the supporters page ... grants and funding were 980,977 of 1.24 million revenue; annual report names the Australian and Victorian governments, the Department of Education and two city councils among its funders.",
+  "sources": [
+   "https://www.datocms-assets.com/36179/1781156803-gertrude-annualreport2025.pdf",
+   "https://gertrude.org.au/supporters/",
+   "https://gertrude.org.au/about/"
+  ],
+  "reason": "Annual report read: revenue 1,237,429, grants 980,977, donations 154,243, expenses 1,248,617, deficit 11,188; Proclaim since 2002 (supporters page) and 20 years (report); board up to 10, incorporated 1985, Callum Morton chair, Tracy Burgess Executive Director and Board Secretary. The Mori Provan and Tucker foundations appear on the supporters page (undated page), not in the report."
+ },
+ {
+  "id": "ghetto-biennale-port-au-prince",
+  "section": "OVERVIEW / CRITICISM",
+  "problems": [
+   "unsupported: 2017 and 2019 themes",
+   "unsupported: financial supporter",
+   "wrong: inequality clear",
+   "unsupported: productive contradictions",
+   "wrong URL ending .md"
+  ],
+  "before": "Themes include ... \"A Cartography of Port-au-Prince\" (2017) and \"The Haitian Revolution and Beyond\" (2019) ... Owsley Brown III (financial supporter) ... inequality between local and visiting artists was clear ... calling its contradictions productive ... URL ...ghetto-biennale.md",
+  "after": "Editions listed by the festival; 2013 theme from Hyperallergic; Swen Moun 6 to 31 January 2022 (Biennial Foundation call); Owsley Brown III; Haitian artists sometimes preferred working for someone over collaborating as peers; Overall: One critical essay, from 2013, questions the festival's premises; URL https://hyperallergic.com/the-many-contradictions-of-a-ghetto-biennale/",
+  "sources": [
+   "https://hyperallergic.com/the-many-contradictions-of-a-ghetto-biennale/",
+   "https://ghettobiennale.org",
+   "https://ghettobiennale.org/5th-ghetto-biennale-2017/sponsors/"
+  ],
+  "reason": "Press item kept: Hyperallergic, Myriam Vanneschi, \"The Many Contradictions of a 'Ghetto Biennale'\", 27 December 2013; it names the Ghetto Biennale (2013 edition). The homepage lists no themes. Sponsor pages for 2015, 2017 and 2019 and the Cussans blog (7 August 2024) and the Biennial Foundation call confirmed."
+ },
+ {
+  "id": "gibbes-museum-of-art-charleston",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "mainly private verdict",
+   "launched vs completed",
+   "Dec 1901 day and city received money",
+   "absence sentence"
+  ],
+  "before": "mainly private ... launched a $17.5 million building renovation ... 6 December 1901 and the city received the money ... No state, corporate or flagged-industry funder is documented.",
+  "after": "contribution-funded: contributions were 84.2% of fiscal 2025 revenue ... completed a $17.5 million building renovation ... upheld the gift in December 1901 and the association received the money in 1903 ... Contributions made up 84% of the Gibbes's $5.96 million revenue in fiscal 2025 (ProPublica) ...",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/570323047",
+   "https://charlestoncitypaper.com/?p=237888",
+   "https://www.scartshub.com/gibbes-museum-awarded-grants-to-increase-diversity/"
+  ],
+  "reason": "ProPublica confirmed: revenue 5,961,167, expenses 4,991,874, contributions 5,018,995 (84.2%), rental 584,438, net assets 19,019,082, 5,291,398 (FY2024), 7,213,637 (FY2023). City Paper staff, 29 May 2024, says completed. SC Arts Hub, Jason Rapp, 28 April 2022 confirms 60,000 (Donnelley) and 76,015 (Art Bridges). ProPublica 'contributions' can include government grants, so 'private' was dropped."
+ }
+]
