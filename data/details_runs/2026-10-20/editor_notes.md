@@ -796,3 +796,10 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - the-crab-museum: a community interest company limited by guarantee (Companies House), not a cooperative as the record says.
 - the-showroom-london: the record's Esmée Fairbairn funding does not appear in the FY2025 accounts. thapong-visual-arts-centre-gaborone: Daily News pages did not load (expired certificate), so the record's P2.2M ministry sum is unconfirmed.
 - the-mac: auditor reports a going-concern material uncertainty (FY2025 accounts).
+
+## d043 (after its slop check)
+- Taipei Fine Arts Museum: the CTBC item moved from Red flags to Wider context (no page links the bank's fines to the museum or its sponsor, the CTBC Cultural and Educational Foundation; Economic Daily News 21 Nov 2025 says the bank sponsored the Biennial). The 2020 Taipei City reaction to a work stays a Red flag; the link to the director's resignation is Unverified (both ArtAsiaPacific and Finestre sull'Arte call it speculation or rumour).
+- Tensta konsthall: the Lundin/Bukowskis flag moved to Wider context (partner, not funder; Dagens Nyheter could not be opened, so the Ravini claim was cut). The record flag, if any, is no longer supported.
+- Swiss Institute: Blavatnik (2020, 2021) and Bloomberg (2018, 2019) only; no flag. ProPublica figures confirmed: revenue $4,198,232 (2025), net assets minus $248,650.
+- TANK Shanghai: no page shows West Bund Group evicting tenants; the report states only what the pages say.
+- Tainan, Stroom, Temple Bar: accounts PDFs did not open; no budget figures verified (the record's Tainan NT$201M still unverified).
