@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=269">
-  <script src="assets/config.js?v=269"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=270">
+  <script src="assets/config.js?v=270"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9889,11 +9889,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v269';
+    const ATLAS_RELEASE = 'culture-atlas-v270';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=269').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=270').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12527,12 +12527,8 @@ return maplibregl$1;
         const who = [v.title.replace(/\s·\s/g, ', '), /unknown/i.test(v.date) ? '' : v.date].filter(Boolean).join(', ');
         return proseLi(`${who}.`, escapeHtml([what, v.note ? 'Context: ' + proseEnd(v.note) : '', v.alsoAbout.length ? 'Also about ' + v.alsoAbout.join(', ') + '.' : ''].filter(Boolean).join(' ')) + proseCite(urls, 1), true);
       }), { tone: 'flag', gossip: true }));
-      const kindLabel = { information: 'Information', gossip: 'Gossip, unverified', whistleblower: 'Whistleblower note' };
-      const noted = readerNotesFor(inst);
-      const readers = noted.filter(n => n.kind !== 'whistleblower');
-      if (readers.length) rows.push(proseRow('Shared by readers', 'Approved by the editor, not checked against a source.', readers.map(n => proseLi(`${kindLabel[n.kind] || 'Note'}${n.approvedAt ? ', ' + humanDate((n.approvedAt || '').slice(0, 10)) : ''}.`, escapeHtml(proseEnd(n.text)) + proseCite(n.sourceUrl ? [n.sourceUrl] : [], 1), true)), { tone: 'flag', gossip: true }));
-      const reviews = whistleblowerReviewsHtml(noted.filter(n => n.kind === 'whistleblower'));
-      return proseRows(rows, 'Accounts and notes', true) + (reviews ? `<div class="py-3 rule-b">${reviews}</div>` : '');
+      // Reader notes and whistleblower notes are no longer posted from the page (release 243): reviews are the place view's own section, placeReviewsHtml().
+      return proseRows(rows, 'Accounts and notes', true);
     }
 
     // The record of one space. The Details page shows it, and so does the phone's record page.
@@ -19366,9 +19362,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=269"></script>
-<script src="assets/layers.js?v=269"></script>
-<script src="assets/hq-detail.js?v=269"></script>
-<script src="assets/bubbles.js?v=269" defer></script>
+<script src="assets/typeset.js?v=270"></script>
+<script src="assets/layers.js?v=270"></script>
+<script src="assets/hq-detail.js?v=270"></script>
+<script src="assets/bubbles.js?v=270" defer></script>
 </body>
 </html>

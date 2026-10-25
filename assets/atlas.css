@@ -1578,7 +1578,7 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 .review-date{display:block;font:400 var(--fs-s)/1.2 var(--sans)}
 .review-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}
 .review-summary{display:flex;align-items:center;gap:10px;margin:12px 0 4px}
-.review-average{font:400 32px/1 var(--sans)}
+.review-average{font:400 var(--fs-l)/1 var(--sans)}
 .review-stars{letter-spacing:2px;color:var(--ink);white-space:nowrap}
 .review-rating{margin:0 0 4px}
 
@@ -1586,18 +1586,18 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
    take the note box's own colours, so they hold in light and dark. */
 #noteFormFields{display:none;margin:0 0 8px}
 body.chat-input-mode-active #noteFormFields{display:block}
-#noteFormFields label,#noteFormFields legend{display:block;font:400 14px/1.3 var(--sans);margin:10px 0 4px;padding:0}
+#noteFormFields label,#noteFormFields legend{display:block;font:400 var(--fs-s)/1.3 var(--sans);margin:10px 0 4px;padding:0}
 #noteFormFields fieldset{border:0;margin:0;padding:0;min-width:0}
-body.chat-input-mode-active #noteFormFields input[type=text]{display:block;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:0;padding:.6em .75em;background:var(--grey);color:var(--ink);font:400 16px/1.4 var(--sans)}
+body.chat-input-mode-active #noteFormFields input[type=text]{display:block;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:0;padding:.6em .75em;background:var(--grey);color:var(--ink);font:400 var(--fs-m)/1.4 var(--sans)}
 body.chat-input-mode-active #noteFormFields :is(input[type=text]):focus{outline:2px solid var(--focus);outline-offset:-2px}
 body.chat-input-mode-active #noteFormFields .review-star:focus-within{outline:2px solid var(--focus);outline-offset:1px}
 .review-stars-input{display:inline-flex;gap:2px}
 .review-star{position:relative;display:inline-block;margin:0!important;cursor:pointer}
 .review-star input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
-.review-star>span[aria-hidden]{display:block;padding:2px 4px;font:400 28px/1 var(--sans);color:var(--line);opacity:.45}
+.review-star>span[aria-hidden]{display:block;padding:2px 4px;font:400 var(--fs-l)/1 var(--sans);color:var(--line);opacity:.45}
 .review-star.is-on>span[aria-hidden]{color:var(--ink);opacity:1}
-#noteFormFields .review-clear{font:400 14px/1 var(--sans);background:none;border:0;color:inherit;text-decoration:underline;padding:8px 0;cursor:pointer}
-#noteFormStatus{display:none;margin:8px 0 0;font:400 15px/1.4 var(--sans)}
+#noteFormFields .review-clear{font:400 var(--fs-s)/1 var(--sans);background:none;border:0;color:inherit;text-decoration:underline;padding:8px 0;cursor:pointer}
+#noteFormStatus{display:none;margin:8px 0 0;font:400 var(--fs-s)/1.4 var(--sans)}
 body.chat-input-mode-active #noteFormStatus:not(:empty){display:block}
 
 /* ---- the chat in the dark theme (releases 238 and 239) ----
