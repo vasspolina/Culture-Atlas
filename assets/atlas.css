@@ -289,6 +289,9 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 :root[data-theme="dark"] .inst-pin-label{background:#6f6f6f;color:#fff}
 :root[data-theme="dark"] .inst-pin-label[data-tier="A"]{background:#007d79}
 :root[data-theme="dark"] .inst-pin-label[data-tier="B"]{background:#ba4e00}
+/* Hover on the name itself, not only on the pin: the pill inverts to the page's ink on its paper, in both themes and over every tier fill. */
+.inst-pin-label{transition:opacity .25s var(--ease),background-color .15s var(--ease),color .15s var(--ease)}
+:root:root .custom-inst-pin .inst-pin-label:hover{background:var(--ink);color:var(--paper)}
 .custom-inst-pin:focus-within .inst-pin-label.collision-occluded,.custom-inst-pin:hover .inst-pin-label,.custom-inst-pin.popup-active .inst-pin-label{opacity:1;pointer-events:auto;z-index:9999}
 .curatorial-route-stop-pin,.route-stop-badge{background:var(--paper);color:var(--ink);border:1px solid var(--ink);font:400 var(--fs-s)/1 var(--sans);padding:4px 8px}
 .maplibregl-ctrl-group{background:var(--paper)!important;border:1px solid var(--ink)!important;border-radius:0!important;box-shadow:none!important}
