@@ -1886,3 +1886,24 @@ div:has(>#topThemeBtn){column-gap:0}
   /* Sections in the record keep the 16px rhythm; the 50px gap under the actions came from a desktop margin. */
   #detailBody>.space-y-3>*+*,#detailBody #drawerAuditView{margin-top:var(--m-s4)!important}
 }
+
+/* ---- Hochuli pass, 25 Oct 2026 (rules in notes/hochuli-spacing.md) ----
+   The record's two small-print lines, the account note and the date under a card's title, were 15px: a size the panel
+   does not use. Small print is 14px on the text's own leading, like the source lines. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) p.account-note,
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card>.kicker+.kicker{font-size:14px;line-height:var(--lh)}
+
+/* Phone: the phone layer above keeps its own 4/8/12/16 grid and 14px on 20px lines, so the line steps take the grid's
+   values (a part is 12px apart, a block set off 8px, a section 24px) instead of the 18px text's. And its blanket
+   letter-spacing:0 would flatten the capitals, which are always spaced (p.39-40): abbreviations and the grade as in
+   running text, the bold capital names by .02em. */
+@media (max-width:767px){
+  :root{--L:12px;--H:8px}
+  :root:root:root body :is(span.abbr,.grade-word,span.grade-mark){letter-spacing:.06em!important}
+  /* The sheet's section gaps came out at 36px and 32px because each section's bottom padding, its margin and the next
+     table's top padding stacked. One gap, two lines of the grid, between sections; nothing stacked. */
+  :root:root #dossier-sheet-verified-pane>*{padding-top:0!important;padding-bottom:0!important}
+  :root:root #dossier-sheet-verified-pane>*+*{margin-top:calc(2 * var(--L))!important}
+  :root:root #dossier-bottom-sheet .facts{padding-top:0!important}
+  :root:root:root body :is(h2.lede,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.record-popup-name,#floatingCardTitle){letter-spacing:.02em!important}
+}
