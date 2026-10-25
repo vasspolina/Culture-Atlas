@@ -796,3 +796,90 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - the-crab-museum: a community interest company limited by guarantee (Companies House), not a cooperative as the record says.
 - the-showroom-london: the record's Esmée Fairbairn funding does not appear in the FY2025 accounts. thapong-visual-arts-centre-gaborone: Daily News pages did not load (expired certificate), so the record's P2.2M ministry sum is unconfirmed.
 - the-mac: auditor reports a going-concern material uncertainty (FY2025 accounts).
+
+## d043 (after its slop check)
+- Taipei Fine Arts Museum: the CTBC item moved from Red flags to Wider context (no page links the bank's fines to the museum or its sponsor, the CTBC Cultural and Educational Foundation; Economic Daily News 21 Nov 2025 says the bank sponsored the Biennial). The 2020 Taipei City reaction to a work stays a Red flag; the link to the director's resignation is Unverified (both ArtAsiaPacific and Finestre sull'Arte call it speculation or rumour).
+- Tensta konsthall: the Lundin/Bukowskis flag moved to Wider context (partner, not funder; Dagens Nyheter could not be opened, so the Ravini claim was cut). The record flag, if any, is no longer supported.
+- Swiss Institute: Blavatnik (2020, 2021) and Bloomberg (2018, 2019) only; no flag. ProPublica figures confirmed: revenue $4,198,232 (2025), net assets minus $248,650.
+- TANK Shanghai: no page shows West Bund Group evicting tenants; the report states only what the pages say.
+- Tainan, Stroom, Temple Bar: accounts PDFs did not open; no budget figures verified (the record's Tainan NT$201M still unverified).
+
+## d044 (after its slop check)
+- Texaf Bilembo: no TotalEnergies on the "Qui sommes-nous" page (it lists the European Union); the only trace is a home-page logo labelled "UE" that links to totalenergies.cd. Stated as an unquantified logo listing; no Fossil fuels flag.
+- The MAC: capital funders on the supporters page come from logo file names only, so they are not named. Auditor's going-concern material uncertainty (year to March 2025) is quoted.
+- The Model: the EUR 10,000 grant has no named fund in the article. The ERDF figure appears as EUR 2.4M and EUR 2.9M in Wikipedia.
+- Thapong: Daily News pages (expired certificate) cannot be checked; the record's P2.2M ministry sum is not used; Mmegi (30 Oct 2013) gives ministry P1.5M and DTC P654,908.
+- The Muse Multi Studios: no amounts exist anywhere. The Renaissance Society: Sacramento State removed (no opened page mentions it).
+
+## d046 (research and slop check)
+- 21st-century-museum-of-contemporary-art: the Fossil fuels flag rests on two paying members (Kanazawa Energy, Gold, 300,000 yen a unit; Iwatani Central Hokuriku, Standard). The members page is undated (footer "Copyright 2024"); Kanazawa Energy was founded 13 May 2021 and renamed 30 Nov 2021. Its ownership split comes only from an unofficial site (Unverified). Iwatani's LP gas business rests on directory pages. Decide whether paid memberships count as funding for the flag. The 2027 closure rests on Japanese Wikipedia only.
+- ackland-art-museum-chapel-hill: the museum's own (undated) history page says the Ackland fortune came from Isaac Franklin's slave trading company and that Ackland himself "did not participate in the slave trade or slave ownership, except as a recipient of its labor during his childhood". The Ackland Trust income pays about 45% of acquisition funds and about 6% of the annual budget. Record flag (Forced or exploited labour) kept on that basis; founder-fortune ruling to apply.
+- 421-arts-campus-formerly-warehouse421-abu-dhabi: privately funded by the Salama bint Hamdan Al Nahyan Foundation; no page shows a government body funding the campus; no Gulf state body flag.
+- akademie-schloss-solitude-stuttgart: the KfW Stiftung programme rests on German Wikipedia only; Robert Bosch removed (no opened page).
+- a-kasteyev-state-museum-of-arts-almaty: no page says who paid for the 2026 renovation or the amounts; Bizmedia names the Ministry, Samruk-Kazyna and Senim Qogamy as implementers.
+- al-mamal-foundation-jerusalem: almamalfoundation.org redirects to an unrelated essay-review site; the live site is almamal.org. European Cultural Foundation (in the record) is not among its logos.
+- addis-foto-fest: last sponsor list is from 2018; no edition after 2018 found.
+
+## d045 (research and slop check)
+- vasl-artists-association: "HBL" is listed as a supporter (2025 show "Traces"; 2026 disclosure lists "HBL Art Committee"), no year or amount; no page says HBL is Habib Bank Limited. The 7 September 2017 New York DFS fine on Habib Bank (225 million dollars; weak anti-money-laundering controls, lack of evidence for adequate OFAC and sanctions screening) does not say sanctions were violated. Moved from Red flags to Wider context as dated history. Decide whether it should be a flag.
+- townhouse-gallery-cairo: whether the gallery is open or closed is unconfirmed (Contemporary And, 15 Sept 2020, says closure was expected with no official announcement; a places page dated 13 Oct 2025 describes it in the present tense). No page says the state does or does not fund or control it. Ford is named (Bridgespan, 27 Nov 2013) with no amounts.
+- transmission-gallery-glasgow: Creative Scotland rejected Transmission's application, listed as 210,000 pounds (The Art Newspaper, 27 Feb 2018); the 2015-18 regular-grant amount rests on an ARThing reproduction of a Frieze article that did not load, so it is cut.
+- typography-center-krasnodar: the centre's site says the legal entity stopped working in March 2023; the Register via Caucasian Knot says liquidated 11 June 2025. Both stated.
+- vleeshal-middelburg: the 2024 annual report was readable: income 1,121,538 euros, subsidies 1,068,110 euros; Impuls Jongerencultuur and Mondriaan Fund Kunstenaarshonorarium grants in 2024 (the earlier research note that no Mondriaan or province funding was found was wrong).
+- w139-amsterdam: Collective Refusal open letter (undated, advocacy) is about Art Rotterdam at Ahoy and the Mondriaan Fund; it never mentions W139.
+- uffizi: April 2026 workers' protest (Open and L'Espresso, 6 April 2026); the "no pay since October" claim appears only in L'Espresso and is marked Unverified.
+- west-den-haag: westdenhaag.nl returned 503; no founding, director or accounts information.
+
+## d048 (research and slop check)
+- arario-museum-in-space-seoul: founder Kim Chang-il's January 2021 first-instance conviction (a cinema concession at a group property) is not a flag category; moved to Wider context. No appeal ruling found in English or Korean press. Chungnam Ilbo does not name him; The Korea Herald dates the ruling only as "Wednesday".
+- arko-art-center-seoul: the ArtReview piece (Hyunjin Kim, "Self-censored", 12 Aug 2016) names Arts Council Korea, never the Arko Art Center; the blacklist item moved to Wider context. The presidential-office claim is Unverified (Hankook Ilbo via The Korea Herald).
+- arnolfini: Protest or boycott flag confirmed on opened pages (Bristol Cable, Adam Quarshie, 6 Feb 2024; the gallery's May 2024 apology; Artists for Palestine UK).
+- art-gallery-of-nova-scotia: TD Bank (2024 money-laundering plea, 10 Oct 2024; NBC/CNBC) kept as a Red flag under the house name-to-know rule; the gallery's undated business-support page lists TD as a current supporter of the TD Assistant Curatorial Fellowship. Move it to Wider context if a bank's plea should not be a flag.
+- ars-aevi-sarajevo: the open letter of 24 July 2026 (589 signatures) names no author.
+- arete-foundation-for-arts-and-culture-tripoli: funder list rests on one MERIP interview (Khaled Mattawa, 17 Nov 2021) and the AFAC grantee page.
+- art-gallery-of-ballarat-ballarat: the original critical opinion piece (The Courier, 4 Jan 2022) was not opened; only the director's reply (25 Jan 2022) is cited.
+- armenian-center-for-contemporary-experimental-art-accea-npak-yerevan: founding year 1992 (About page, Mirror-Spectator, Wikipedia) versus 1995 (Edward Balassanian's biography page).
+
+## d047 (research and slop check)
+- almaty-museum-of-arts-almaty: ICIJ's page does not allege wrongdoing by Halyk Bank itself (it calls Halyk "majority-owned by Timur Kulibayev" in a caption; its concerns are the TenizService contracts); Kulibayev was not charged in the 2017 Italian case; the item is Wider context, not a flag. Halyk as lead partner since 5 March 2026 is on the museum's announcement. The Bloomberg and Wikipedia cost figures were not re-opened.
+- alternative-space-loop-seoul: the protest flag stays (K-ARTNOW, "A Team", 23 Dec 2025: the questionnaire was addressed to LOOP). The record's Arts Council Korea and Seoul funding is left out (not confirmed).
+- alula-arts-cultural-oasis: Gulf state body flag kept (RCU, chaired by the Crown Prince; Arab News 28 April 2021, 2 billion dollars Saudi seed funding; Desert X AlUla organised with the RCU). Protest flag: Ruscha, Lipschutz and Milanovich resigned from the board (Hyperallergic, 8 Oct 2019); MaddocksBrown Foundation (about 13,000 dollars since 2017) withdrew on 17 Oct 2019, no reason quoted from the foundation. The name "AlUla Arts & Cultural Oasis" is absent from the visitor site.
+- amorepacific-museum-of-art-seoul: Korea Times body prints both 96 million won and 9.6 billion won for the 2020 fines.
+- apexart-new-york: the record's founder endowment is not confirmed and is left out. Contributions about 99% of revenue; 2025 revenue 668,067 dollars, deficit 26,617 dollars.
+- am-qattan-foundation-ramallah: the record's Drosos, Taawon, Enabel, Save the Children, Arts Council England, Art Fund and Barclays funding is not confirmed and is left out.
+- arab-image-foundation-beirut: the two Mellon grants (560,000 dollars from 2010; 440,000 dollars from 2014) went to the University of Delaware, with the foundation named as partner. The record's Ford and AFAC funding is not confirmed.
+
+## d050 (research and slop check)
+- baku-museum-of-modern-art-baku: no flag. OCCRP (4 Dec 2015, the foundation's Bucharest house), Hyperallergic (Jamgochian, 28 Feb 2021; Batycka, 2 Nov 2020) and The Art Newspaper (Sansom, 30 Oct 2020) concern the ruling family and YARAT and none names the museum; they are Wider context, linked through Aida Mahmudova (founded YARAT, directs the museum since 2012, per Wikipedia). The Heydar Aliyev Foundation funding of the museum rests on Wikipedia.
+- bam-new-york: Protest or boycott flag kept (2014 Adalah-NY protest dated 12 Nov, Mondoweiss for the 2025 letter); NYT 2025 claims attributed to Wikipedia.
+- bampfa-berkeley: the Hollywood Foreign Press Association (undated supporters listing, 20,000 to 49,999 dollar tier) is not a flag category; moved to Wider context. Its 2021 controversy and 2023 rebrand are Wikipedia's claims.
+- barbican-centre-london: Protest or boycott flag kept (Barbican acted: 2024 cancellation; Pettway quilts removed 29 Feb 2024; other withdrawals 7 to 11 Mar; the lenders' campaign page is advocacy). 191 million pounds figure confirmed.
+- az-museum-anatoly-zverev-museum-moscow: founder Natalia Opaleva's earlier Lanta-Bank role (OpenSanctions lists the bank as sanctioned) and 33.34% of Legion K LLC are Wider context; she is not on sanctions lists.
+- b7l9-art-centre-kamel-lazaar-foundation-tunis and b7l9-art-centre-tunis: two records, one identical report each; the 18 listed partners are a partner listing, not a funding list.
+- bandjoun-station-bandjoun: opening date differs per source (2007, 2013, 2016); no website address known.
+- basic-space-dublin: the record's Arts Council and Dublin City funding appears on no opened page.
+
+## d051 (research and slop check)
+- beirut-art-center-bac: Gulf state body flag kept: the donor page lists Sharjah Art Foundation (Exhibitions and Activities Patron, 2018) and Qatar Foundation (Patron, 2020) in a joint entry; Sharjah Art Foundation's own 8 July 2026 press release calls itself "a legally independent public body established by Emiri Decree and supported by government funding". No independent page on Sharjah's state link could be opened (Frieze, MoMA, Business Wire refused access). Qatar Foundation is "state-led" per Wikipedia and an "independent non-profit organisation" per MEED (24 Feb 2014). Carole and Carlos Ghosn are listed as Supporters (2017, 2018) and Patrons (2018): Wider context, from Wikipedia.
+- belfast-exposed-belfast: Protest or boycott flag: campaigners (unnamed on both pages) demanded the work's removal, an apology and a boycott (Creative Bloq, 3 Aug 2026; Digital Camera World, Alan Palazon, 6 Aug 2026).
+- berlinische-galerie: GASAG initiated the GASAG Kunstpreis (every two years since 2010); no page says who pays the 10,000 euro purse; no Fossil fuels flag.
+- beursschouwburg-brussels: the venue's own page (3 Oct 2025) declares a cultural boycott "on the Israeli state and all Israeli institutions and companies"; kept in Overview, not as a flag (House rules need a boycott aimed at the space, its funders or its leadership). Closure announced for September 2027.
+- belarusian-state-museum-of-the-history-of-the-great-patriotic-war-minsk: no opened page says it is state-funded or who funds it; "state-funded" cut.
+- belarusian-council-for-culture-rada-kultury-warsaw: 2 million euros EU ArtPower, Danish Cultural Institute lead; registered in Estonia; "extremist formation" designation on the council's site (Ministry of Internal Affairs); Reform.news reports a KGB listing decided 9 April 2026.
+- belarus-free-theatre-london: 360Giving range 14 May 2014 to 6 June 2023; no per-funder years.
+
+## d049 (research and slop check)
+- auckland-art-gallery-toi-o-t-maki: HSBC kept as a Red flag (2012 US money-laundering and sanctions settlement; the archived DOJ release of 11 Dec 2012 gives a 1.256 billion dollar forfeiture, 665 million dollars civil penalties and IEEPA and TWEA violations for Cuba, Iran, Libya, Sudan and Burma; the Arkansas wire story's body says 1.92 billion while its headline URL says 2.9 billion). The Annual Review 2024/25 lists HSBC as a current partner; the settlement is more than five years old. The Spinoff (Simon Wilson, 12 Dec 2017) targets the council and Mayor Goff, not the Gallery: Wider context.
+- art-sonje-center: Daewoo founder Kim Woo-choong's 30 May 2006 conviction moved to Wider context (the Daewoo Foundation page says its projects have been "primarily funded" by him since 1978; no page says who funds the foundation or the centre today).
+- artspace-sydney: the Belgiorno-Nettis benefactors are not linked to the Transfield family (no opened page says they are the same people). 2014 Biennale of Sydney boycott is Wider context (Artspace was only a venue).
+- artbank-sydney: "self-funded by leasing income" rests on Wikipedia, attributed in the text.
+- art-siadziba-minsk: Belarus liquidation (Radio Svaboda: late July 2021 list; 3 January 2022 announcement) is Wider context; 275 and 857 figures dropped.
+- associacao-nucleo-de-arte: founding year 1921 (Globalnyt), 1936 (Culturgest) or 1948 (africaserver.nl); the 2021 mural project cut (source names Nucleo de Artes de Maputo).
+
+## d052 (research and slop check)
+- birmingham-museum-of-art-birmingham: Fossil fuels flag kept (Alabama Power, listed under the museum's "current corporate supporters" heading as a logo; Alabama Power's own 2026 fact card gives 2025 generation as 37% natural gas, 34% coal, 21% nuclear, 5% hydro, 3% other; Inside Climate News, Phil McKenna, 21 Nov 2022 and Dennis Pillion, 16 Oct 2024: Plant Miller the top US CO2 emitter in 2021 and top US greenhouse gas emitter for 2023, no plan to retire its four units). The fact card PDF text layer was garbled but the percentages sum to 100.
+- blanton-museum-of-art-austin: Fossil fuels flag: the 2025 impact report lists the Scurlock Foundation in the Visionary Circle (100,000 dollars or more, 1 Sept 2024 to 31 Aug 2025); the foundation was established in April 1954 by Eddy Scurlock (Wikipedia); Jack S. Blanton joined Scurlock Oil in 1950 and became president in 1958 (Wikipedia). The Leadership Board chair, Aubrey Epstein, has no link to the Epstein flag (surname only).
+- boise-art-museum-boise: Idaho Power item removed as a flag and not kept as context: its own page gives hydro as the largest source (36.9%), with natural gas 22.6% and coal 9.9%, coal exit scheduled for end of 2030. The record flag, if any, is no longer supported. Form 990 expenses 1,701,311 dollars against the annual report's 1,899,670 dollars.
+- bonniers-konsthall-stockholm: no opened page says the Bonnier Group's business pays the konsthall directly; Dagens PS (Ola Soderlund, 20 Sept 2016) gives 15 million SEK a year from the estate foundation's returns.
+- bishkek-school-of-contemporary-art-bisca: the documenta fifteen / Gudskul participation cut (sources not opened); the record said no website, but bishci.com/en and bulbul.org.kg exist.
+- bloc-projects-sheffield: no Arts Council England National Portfolio funding found; government grants 10.9k of 105.89k income to March 2025; Heritage Fund award 8,600 pounds on 15 March 2017.
