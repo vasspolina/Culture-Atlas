@@ -1967,7 +1967,7 @@ div:has(>#topThemeBtn){column-gap:0}
    format chip. The rows stack, title above list, when the panel is narrow. */
 :root{--row-rule:color-mix(in srgb,var(--ink) 30%,transparent);--row-accent:#0045fc;--row-accent-flag:#b83c00}
 :root[data-theme="dark"]{--row-accent:var(--cyan);--row-accent-flag:var(--orange)}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-rows{container-type:inline-size;display:block;padding:0;margin:0;border:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-rows{display:block;padding:0;margin:0;border:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:calc(2 * var(--L));align-items:baseline;margin:0;padding:var(--L) 0 calc(2 * var(--L));border-top:1px solid var(--row-rule)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row.is-flag{--row-accent:var(--row-accent-flag)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-head{min-width:0}
@@ -1984,18 +1984,22 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-media{display:block;width:100%;max-width:20em;height:9em;object-fit:cover;margin:var(--H) 0 0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-action{margin-top:var(--H)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list.review-list{list-style:none}
-/* On a phone each row is a section set like the licence page's Discounts view (user, 25 Oct 2026): a large ink title with a rule under it, what it comes to
-   as a lead paragraph, then the points as plain paragraphs whose lead-in stands on its own line in bold, the words beneath. One column, no bullets.
-   A row of reported, unverified items keeps its flag colour. */
+/* On a phone each row is a numbered section set like the licence page (user, 25 Oct 2026): the title in the accent colour at the larger size, numbered
+   01, 02 and so on with an em dash, no rule under it; the words at the reading size with a blank line between paragraphs and the lead-ins bold in the line.
+   One column, no bullets. A row of reported, unverified items keeps its flag colour, which the accent variable already carries. */
 @container (max-width:34em){
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr);row-gap:0;align-items:start;border-top:0;padding:calc(2 * var(--L)) 0 0}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-rows h3.d-row-title{font:500 32px/1.15 var(--sans)!important;letter-spacing:-.01em;color:var(--ink);text-wrap:balance;padding:0 0 var(--H);border-bottom:1px solid var(--ink);margin:0 0 var(--L)}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row.is-flag h3.d-row-title{color:var(--row-accent)}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-sub{margin:0 0 var(--L);font-size:var(--fs-m)!important;line-height:var(--m-title-lh)!important}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body)   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li+li{margin-top:var(--L)!important}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .lead-in{display:block}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr);row-gap:0;align-items:start;border-top:0;padding:calc(2 * var(--L)) 0 0;counter-increment:drow}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-rows h3.d-row-title{font:400 var(--fs-l)/1.2 var(--sans)!important;letter-spacing:0!important;color:var(--row-accent);text-wrap:balance;padding:0;border:0;margin:0 0 var(--L)}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-rows h3.d-row-title::before{content:counter(drow,decimal-leading-zero) "\2014";font-size:inherit!important;line-height:inherit!important}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-sub{margin:0 0 var(--L);font-size:var(--fs-m)!important;line-height:1.35!important}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{font-size:var(--fs-m)!important;line-height:1.35!important}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li+li{margin-top:var(--L)!important}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .d-cite{font-size:var(--fs-s)!important;line-height:1.35!important}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .lead-in{display:inline;font-size:inherit!important;line-height:inherit!important}
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-action{white-space:normal;text-align:left}
 }
+/* The count starts on the element inside the panels, not on the panels: they are containers, and a container's style containment drops its own counters. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{counter-reset:drow}
 /* The chat's dock buttons take the displaay.net button row (25 Oct 2026): an outlined button with a 12px radius and a 1.5px ink line, no fill; the one that is on (Voice, or Back to chat once a note is open) is a solid blue pill. The note's own Send for review block keeps its design. Same 44px height as the header (var(--bar)) and the same large type. Desktop only; the phone's composer keeps its plain tap targets. */
 @media (min-width:768px){
   :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)){background:transparent!important;color:var(--ink)!important;border:1.5px solid var(--ink)!important;border-radius:12px!important;box-shadow:none!important;height:var(--bar);min-height:var(--bar);box-sizing:border-box;padding:0 16px;font:400 var(--fs-l)/1 var(--sans);text-decoration:none;transition:background-color .15s,border-radius .15s}
@@ -2022,3 +2026,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head>:is(.head-fact,.account-note,.architecture-status,.grade-line,p:not([class])){margin:0 0 var(--L)!important;text-indent:0;max-width:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head .head-fact .lead-in{display:block;font-weight:600!important}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head .grade-line .grade-mark{display:table!important;margin-bottom:calc(var(--H) / 2)}
+
+/* The bar over a record that holds Back to Overview and the cross: no rule under it, and a large thin cross after the Displaay menu's (user, 25 Oct 2026). */
+#detailDrawer>div.detail-bar:first-child{border-bottom:0}
+#detailDrawer .detail-bar #closeDetailBtn{padding:4px;line-height:0}
+#detailDrawer .detail-bar-cross{display:block;width:40px;height:40px}

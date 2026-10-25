@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=286">
-  <script src="assets/config.js?v=286"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=288">
+  <script src="assets/config.js?v=288"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -854,17 +854,10 @@ return maplibregl$1;
 
       <!-- 2.  DOSSIER & INTELLIGENCE INSPECTOR (Full Deep Audit Overlay / Tab 2) -->
       <div id="detailDrawer" class="hidden absolute inset-0 z-30 w-full h-full flex flex-col overflow-hidden">
-        <div class="px-4 py-2_5 rule-b flex items-center justify-between shrink-0">
-          <div class="flex items-center gap-2 min-w-0">
-            <button type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="meta flex items-center gap-1_5 shrink-0">
-              <span>Back to Overview</span>
-            </button>
-            <span class="meta hidden sm-inline">|</span>
-            <span class="meta hidden sm-inline">Record</span>
-          </div>
+        <div class="px-4 py-2_5 flex items-center justify-end shrink-0 detail-bar">
           <div class="flex items-center gap-2">
-            <button id="closeDetailBtn" type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="p-1" title="Close Dossier">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <button id="closeDetailBtn" aria-label="Close record" type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="p-1" title="Close Dossier">
+              <svg class="detail-bar-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg>
             </button>
           </div>
         </div>
@@ -9911,11 +9904,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v286';
+    const ATLAS_RELEASE = 'culture-atlas-v288';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=286').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=288').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19394,9 +19387,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=286"></script>
-<script src="assets/layers.js?v=286"></script>
-<script src="assets/hq-detail.js?v=286"></script>
-<script src="assets/bubbles.js?v=286" defer></script>
+<script src="assets/typeset.js?v=288"></script>
+<script src="assets/layers.js?v=288"></script>
+<script src="assets/hq-detail.js?v=288"></script>
+<script src="assets/bubbles.js?v=288" defer></script>
 </body>
 </html>
