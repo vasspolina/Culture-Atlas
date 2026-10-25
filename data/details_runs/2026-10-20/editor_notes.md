@@ -848,3 +848,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - apexart-new-york: the record's founder endowment is not confirmed and is left out. Contributions about 99% of revenue; 2025 revenue 668,067 dollars, deficit 26,617 dollars.
 - am-qattan-foundation-ramallah: the record's Drosos, Taawon, Enabel, Save the Children, Arts Council England, Art Fund and Barclays funding is not confirmed and is left out.
 - arab-image-foundation-beirut: the two Mellon grants (560,000 dollars from 2010; 440,000 dollars from 2014) went to the University of Delaware, with the foundation named as partner. The record's Ford and AFAC funding is not confirmed.
+
+## d050 (research and slop check)
+- baku-museum-of-modern-art-baku: no flag. OCCRP (4 Dec 2015, the foundation's Bucharest house), Hyperallergic (Jamgochian, 28 Feb 2021; Batycka, 2 Nov 2020) and The Art Newspaper (Sansom, 30 Oct 2020) concern the ruling family and YARAT and none names the museum; they are Wider context, linked through Aida Mahmudova (founded YARAT, directs the museum since 2012, per Wikipedia). The Heydar Aliyev Foundation funding of the museum rests on Wikipedia.
+- bam-new-york: Protest or boycott flag kept (2014 Adalah-NY protest dated 12 Nov, Mondoweiss for the 2025 letter); NYT 2025 claims attributed to Wikipedia.
+- bampfa-berkeley: the Hollywood Foreign Press Association (undated supporters listing, 20,000 to 49,999 dollar tier) is not a flag category; moved to Wider context. Its 2021 controversy and 2023 rebrand are Wikipedia's claims.
+- barbican-centre-london: Protest or boycott flag kept (Barbican acted: 2024 cancellation; Pettway quilts removed 29 Feb 2024; other withdrawals 7 to 11 Mar; the lenders' campaign page is advocacy). 191 million pounds figure confirmed.
+- az-museum-anatoly-zverev-museum-moscow: founder Natalia Opaleva's earlier Lanta-Bank role (OpenSanctions lists the bank as sanctioned) and 33.34% of Legion K LLC are Wider context; she is not on sanctions lists.
+- b7l9-art-centre-kamel-lazaar-foundation-tunis and b7l9-art-centre-tunis: two records, one identical report each; the 18 listed partners are a partner listing, not a funding list.
+- bandjoun-station-bandjoun: opening date differs per source (2007, 2013, 2016); no website address known.
+- basic-space-dublin: the record's Arts Council and Dublin City funding appears on no opened page.
