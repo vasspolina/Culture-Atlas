@@ -1,0 +1,1093 @@
+[
+ {
+  "id": "ploshchad-mira-museum-centre-krasnoyarsk",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'central'"
+  ],
+  "before": "in central Krasnoyarsk (Putevka).",
+  "after": "in Krasnoyarsk (Putevka).",
+  "sources": [
+   "https://www.putevka.com/krasnoyarskiy-kray/krasnoyarsk/sight/muzeynyy-tsentr-ploshchad-mira"
+  ],
+  "reason": "Putevka gives the Yenisei embankment, not 'central'."
+ },
+ {
+  "id": "ploshchad-mira-museum-centre-krasnoyarsk",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: reason for the 2017 renaming"
+  ],
+  "before": "(Peace Square), after its address and its focus on contemporary art, in 2017 (Russian Wikipedia).",
+  "after": "(Peace Square) in 2017 (Russian Wikipedia).",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Музейный_центр_«Площадь_Мира»"
+  ],
+  "reason": "Russian Wikipedia gives the 2017 renaming but not the reason."
+ },
+ {
+  "id": "ploshchad-mira-museum-centre-krasnoyarsk",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Leningrad designers', 'labyrinth of passages'"
+  ],
+  "before": "with Leningrad designers Alexander Bakusov, Vladimir Korotkov and Vladimir Rivin: a Soviet modernist building of two uneven polyhedra joined by a gallery, with a labyrinth of passages inside (Russian Wikipedia; Putevka).",
+  "after": "with Alexander Bakusov, Vladimir Korotkov and Vladimir Rivin: a Soviet modernist building of two polyhedra of different sizes joined by a gallery (Russian Wikipedia; Putevka).",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Музейный_центр_«Площадь_Мира»",
+   "https://www.putevka.com/krasnoyarskiy-kray/krasnoyarsk/sight/muzeynyy-tsentr-ploshchad-mira"
+  ],
+  "reason": "The opened pages do not say Leningrad or describe a labyrinth; Russian Wikipedia gives the polyhedra joined by a gallery and the honoured architect title."
+ },
+ {
+  "id": "ploshchad-mira-museum-centre-krasnoyarsk",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: consulates and foundations 'paid for exhibitions abroad'"
+  ],
+  "before": "- Past years: the museum worked with consulates and international foundations that paid for exhibitions abroad (Snob).",
+  "after": "- Past years: the museum worked closely with consulates and international foundations, mainly to bring internationally known artists to Siberia (Snob).",
+  "sources": [
+   "https://snob.ru/culture/ploshchad-mira-v-krasnoiarske-kak-iskat-identichnost-sovremennogo-iskusstva-v-sibiri/"
+  ],
+  "reason": "Snob (15 September 2025) says the work with consulates and foundations brought artists to Siberia; it does not say they paid for exhibitions abroad."
+ },
+ {
+  "id": "ploshchad-mira-museum-centre-krasnoyarsk",
+  "section": "FUNDING",
+  "problems": [
+   "Wikipedia-only claim not attributed precisely"
+  ],
+  "before": "co-created the museum library, and the museum won its 2020 competition for the BookGames programme (Russian Wikipedia).",
+  "after": "co-created the museum library, and the museum's BookGames programme won the foundation's 2020 competition (Russian Wikipedia).",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Музейный_центр_«Площадь_Мира»"
+  ],
+  "reason": "Russian Wikipedia says the BookGames programme won the Prokhorov Foundation competition."
+ },
+ {
+  "id": "ploshchad-mira-museum-centre-krasnoyarsk",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'sole owner'; Prokhorov Foundation listed as a money source"
+  ],
+  "before": "topped up by earned income, grants, the Cosmoscow foundation and the Prokhorov Foundation. The ministry is the founder and sole owner of the institution.",
+  "after": "topped up by earned income, grants and, since 2025, investment by the Cosmoscow foundation in the collection (Snob). The ministry is the single founder of the institution (Rusprofile).",
+  "sources": [
+   "https://www.rusprofile.ru/id/1461964",
+   "https://snob.ru/culture/ploshchad-mira-v-krasnoiarske-kak-iskat-identichnost-sovremennogo-iskusstva-v-sibiri/"
+  ],
+  "reason": "Rusprofile gives one founder (the ministry), not an owner; the Prokhorov Foundation co-created the library and the programme won its competition, which is not a stated funding line."
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Private'"
+  ],
+  "before": "- Private art museum at 1285 Sengokuhara",
+  "after": "- Art museum at 1285 Sengokuhara",
+  "sources": [
+   "https://www.e-flux.com/directory/562838/pola-museum-of-art",
+   "https://en.wikipedia.org/wiki/Pola_Museum_of_Art"
+  ],
+  "reason": "Neither opened page calls the museum private."
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Kanagawa page 70th anniversary claim (page could not be opened)"
+  ],
+  "before": "- The Kanagawa Prefecture environmental assessment page describes the foundation as set up as a commemorative project for the 70th anniversary of Pola Cosmetics, to display, store and research art collected mainly by Pola Cosmetics.\n",
+  "after": "",
+  "sources": [
+   "https://mecenat.or.jp/en/activities/pola-art-foundation",
+   "https://ja.wikipedia.org/wiki/ポーラ美術館"
+  ],
+  "reason": "The Kanagawa page did not resolve (host not found), so its anniversary claim cannot be checked; Japanese Wikipedia has no such claim. Cut; the 1996 foundation date stays (Mecenat Association)."
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "section": "FUNDING",
+  "problems": [
+   "unverified verdict 'privately funded'; unsupported creation by the company"
+  ],
+  "before": "Pola Museum of Art: privately funded: a foundation created by the Pola cosmetics company and the Suzuki collection",
+  "after": "Pola Museum of Art: foundation-run: the Pola Art Foundation, with a collection gathered by Tsuneji Suzuki of the Pola founding family",
+  "sources": [
+   "https://mecenat.or.jp/en/activities/pola-art-foundation",
+   "https://ja.wikipedia.org/wiki/ポーラ美術館"
+  ],
+  "reason": "Opened pages show the foundation runs the museum and Suzuki gathered the collection; none states how the foundation is funded."
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "section": "FUNDING",
+  "problems": [
+   "mischaracterised source: 'grants for overseas study'"
+  ],
+  "before": "also gives grants for overseas study by young artists, research programmes for curators and international exchange (Mecenat Association).",
+  "after": "also runs overseas internships for young artists, research programmes for curators and international exchange (Mecenat Association).",
+  "sources": [
+   "https://mecenat.or.jp/en/activities/pola-art-foundation"
+  ],
+  "reason": "The Mecenat page says overseas internships, not grants."
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Kanagawa page; collector not named by cited source"
+  ],
+  "before": "- The Kanagawa environmental assessment page ties the foundation's creation to the 70th anniversary of Pola Cosmetics.\n- The collection on display was gathered by the former head of the Pola group (English Wikipedia; Japanese Wikipedia).",
+  "after": "- Japanese Wikipedia says the museum opened in September 2002 to display the collection of Tsuneji Suzuki, second head of the Pola founding family; English Wikipedia says the works were acquired by the former head of the Pola cosmetics group.",
+  "sources": [
+   "https://ja.wikipedia.org/wiki/ポーラ美術館",
+   "https://en.wikipedia.org/wiki/Pola_Museum_of_Art"
+  ],
+  "reason": "Kanagawa page could not be opened; collector claim restated from the two Wikipedia pages and attributed to them."
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: anniversary project of Pola Cosmetics; 'funds art grants'"
+  ],
+  "before": "The money behind the museum is a private foundation created in 1996 as an anniversary project of Pola Cosmetics and built around the collection of Tsuneji Suzuki. The foundation operates the museum and funds art grants.",
+  "after": "The museum is operated by the Pola Art Foundation, established in 1996 (Mecenat Association), and displays the collection of Tsuneji Suzuki, second head of the Pola founding family (Japanese Wikipedia). The foundation also runs internships for young artists, programmes for curators and international exchange.",
+  "sources": [
+   "https://mecenat.or.jp/en/activities/pola-art-foundation",
+   "https://ja.wikipedia.org/wiki/ポーラ美術館"
+  ],
+  "reason": "Removed the anniversary claim (unopened source) and the grants wording; the sources do not say who funds the foundation. Needs the foundation's own pages (site suspended during the check) to document its money."
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "section": "SOURCES",
+  "problems": [
+   "dead source: host not found"
+  ],
+  "before": "- http://www.pref.kanagawa.jp/docs/pf7/cnt/f247/p363504.html\n",
+  "after": "",
+  "sources": [
+   "http://www.pref.kanagawa.jp/docs/pf7/cnt/f247/p363504.html"
+  ],
+  "reason": "The URL did not resolve (getaddrinfo ENOTFOUND) on three tries; removed."
+ },
+ {
+  "id": "portikus-frankfurt",
+  "section": "OVERVIEW",
+  "problems": [
+   "contradictory wording: 'surviving portico ... destroyed'"
+  ],
+  "before": "Named for a surviving portico of a public library from 1825, destroyed in the Second World War (English Wikipedia).",
+  "after": "Named for a portico of a public library built in 1825 that was destroyed in the Second World War (English Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Portikus"
+  ],
+  "reason": "English Wikipedia does not say the portico survived."
+ },
+ {
+  "id": "portikus-frankfurt",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'white cube', 'Frankfurt architects'"
+  ],
+  "before": "The first space was a white cube by the Frankfurt architects Marie-Theres Deutsch and Klaus Dreißigacker;",
+  "after": "The first space was a simple cube made of shipping containers by the architects Marie-Theres Deutsch and Klaus Dreißigacker;",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Portikus"
+  ],
+  "reason": "English Wikipedia describes the first home as a simple cube made of shipping containers."
+ },
+ {
+  "id": "portikus-frankfurt",
+  "section": "FUNDING",
+  "problems": [
+   "unverified verdict 'mainly public'"
+  ],
+  "before": "Portikus: mainly public: the City of Frankfurt and the state of Hesse, with a private foundation behind the building",
+  "after": "Portikus: publicly funded: the City of Frankfurt and the state of Hesse, with a non-profit foundation behind the building",
+  "sources": [
+   "https://www.portikus.de/en/about"
+  ],
+  "reason": "The Portikus page says the city funds it permanently and the Hessian ministry funds it for 2022 to 2026, and calls Stiftung Giersch a non-profit foundation; no page gives shares."
+ },
+ {
+  "id": "portikus-frankfurt",
+  "section": "FUNDING",
+  "problems": [
+   "missing date"
+  ],
+  "before": "(Journal Frankfurt, 2024).",
+  "after": "(Journal Frankfurt, 11 September 2024).",
+  "sources": [
+   "https://www.journal-frankfurt.de/journal_news/Kultur-9/Barbara-Clausen-uebernimmt-Neue-Chefin-im-Portikus-und-in-der-Staedelschule-42845.html"
+  ],
+  "reason": "Date given by the page."
+ },
+ {
+  "id": "portikus-frankfurt",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unverified verdict 'is public'; cooperation partner worded loosely"
+  ],
+  "before": "The money behind Portikus is public: permanent funding from the City of Frankfurt culture department and Hessian state funding for 2022 to 2026, with the 2006 building paid for by the non-profit Stiftung Giersch. THE FLAG is its cooperation partner from 2025.",
+  "after": "The money behind Portikus is public funding: permanent funding from the City of Frankfurt Department for Culture and funding from the Hessian ministry for 2022 to 2026, with the 2006 building financed by the non-profit foundation Stiftung Giersch. THE FLAG became an official cooperation partner of Portikus in 2025.",
+  "sources": [
+   "https://www.portikus.de/en/about"
+  ],
+  "reason": "Wording follows the Portikus page. 'THE FLAG' is the page's own spelling; no stray or garbled text found."
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "section": "OVERVIEW",
+  "problems": [
+   "date missing; present tense for a 2016 agreement"
+  ],
+  "before": "Mark Rothko's children Christopher Rothko and Kate Rothko Prizel are lending paintings to the museum for 20 years (Hyperallergic, 2016; English Wikipedia).",
+  "after": "Mark Rothko's children Christopher Rothko and Kate Rothko Prizel agreed to lend paintings to the museum for 20 years (Hyperallergic, Jillian Steinhauer, 6 October 2016; English Wikipedia).",
+  "sources": [
+   "https://hyperallergic.com/portland-art-museum-gets-new-rothko-pavilion-loans-work-go",
+   "https://en.wikipedia.org/wiki/Portland_Art_Museum"
+  ],
+  "reason": "Page dated 6 October 2016 and says the children agreed to lend."
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "section": "FUNDING",
+  "problems": [
+   "unverified verdict 'privately funded'"
+  ],
+  "before": "Portland Art Museum: privately funded: foundations, individual donors and trustees",
+  "after": "Portland Art Museum: donor-funded: foundations, individual donors and trustees",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/930391604",
+   "https://portlandartmuseum.org/blog/capital-campaign-completion/"
+  ],
+  "reason": "ProPublica gives contributions as 72.2 percent of revenue in the year to June 2025; 98 percent private applies to the capital campaign only."
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement: 'with no year or amount'; logos identified by file name"
+  ],
+  "before": "- Major sponsors named on the museum's site, with no year or amount: Blue Balloon Fund, Mary and Don Blair, Mary and Tim Boyle, William G. Gilmore Foundation, Mary and Pete Mark Family Foundation, The Meier Family Fund, The James F. and Marion L. Miller Foundation, and one anonymous sponsor. The site also shows the logos of Portland Arts & Culture, the Miller Foundation and the Oregon Community Foundation.",
+  "after": "- Major sponsors named on the museum's corporate-giving page: Blue Balloon Fund, Mary and Don Blair, Mary and Tim Boyle, William G. Gilmore Foundation, Mary and Pete Mark Family Foundation, The Meier Family Fund, The James F. and Marion L. Miller Foundation, and one anonymous sponsor.",
+  "sources": [
+   "https://portlandartmuseum.org/corporate-giving/"
+  ],
+  "reason": "The logo names (Portland Arts & Culture, Oregon Community Foundation) came only from image file names on the page, so they are cut."
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "section": "CRITICISM",
+  "problems": [
+   "missing date",
+   "wording"
+  ],
+  "before": "1. ARTnews: Francesca Aton, \"Portland Art Museum Disbands Its Docent Program, Sparking Controversy\" (2023)",
+  "after": "1. ARTnews: Francesca Aton, \"Portland Art Museum Disbands Its Docent Program, Sparking Controversy\" (6 October 2023)",
+  "sources": [
+   "https://museumanthropology.org/portland-art-museum-disbands-its-docent-program-sparking-controversy/"
+  ],
+  "reason": "The reposted copy gives the original ARTnews date as 6 October 2023 (repost 7 December 2023)."
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "section": "CRITICISM",
+  "problems": [
+   "precision"
+  ],
+  "before": "ending a council of about 40 years and hiring paid learning guides from Portland Community College, Portland State University and Lewis & Clark College.",
+  "after": "ending the 40-year-old docent council and recruiting paid learning guides from Portland Community College, Portland State University and Lewis & Clark College.",
+  "sources": [
+   "https://museumanthropology.org/portland-art-museum-disbands-its-docent-program-sparking-controversy/"
+  ],
+  "reason": "Matches the repost: '40-year-old docent council structure'; guides recruited from the three colleges."
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "section": "CRITICISM",
+  "problems": [
+   "misquoted source: 'older, largely white women'; email wording"
+  ],
+  "before": "- Reports the same 22 August email to 175 docents and the museum's reason that the word \"docent\" was \"confusing and unclear.\"\n- Raises the question of whether reflecting the community means reducing the role of the older, largely white women who made up much of the council; Ferriso said \"I apologize if people heard it that way.\"",
+  "after": "- Reports the same 22 August email to 175 docents, which said the museum had received feedback that the word \"docent\" was \"confusing and unclear.\"\n- Asks whether reflecting the communities the museum serves means reducing the role of senior white women, who made up a large share of the council; Ferriso said \"I apologize if people heard it that way.\"",
+  "sources": [
+   "https://www.wweek.com/news/2023/10/04/the-portland-art-museum-ditches-its-docents-raising-auestions-about-race-class-and-especially-age/"
+  ],
+  "reason": "Willamette Week (Rachel Saslow, 4 October 2023) says 'senior white women' and attributes the 'confusing and unclear' phrase to feedback received."
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "section": "CRITICISM",
+  "problems": [
+   "absence statement; claim about a non-cited page"
+  ],
+  "before": " The Hyperallergic piece on the pavilion carries no criticism.",
+  "after": "",
+  "sources": [],
+  "reason": "A sentence whose point is an absence; removed."
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unverified verdict 'private philanthropy'"
+  ],
+  "before": "The money behind the museum is private philanthropy: foundations, the Boyle, Ritz, Whitsell and Jubitz families and anonymous donors, with 98 percent of the $116 million capital campaign privately funded.",
+  "after": "The money behind the museum is donor contributions, 72.2 percent of revenue in the year to June 2025 (ProPublica): foundations, the Boyle, Ritz, Whitsell and Jubitz families and anonymous donors, with 98 percent of the $116 million capital campaign from private sources (museum announcement, 16 October 2025).",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/930391604",
+   "https://portlandartmuseum.org/blog/capital-campaign-completion/"
+  ],
+  "reason": "Each figure is on an opened page."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong attribution: LEVER not in Press Herald"
+  ],
+  "before": "is part of a $100 million capital campaign; LEVER Architecture produced the concept (museum Blueprint page; Portland Press Herald, 5 March 2025). Wikipedia states the building was demolished in September 2025.",
+  "after": "is part of a $100 million capital campaign (Portland Press Herald, 5 March 2025). The museum's Blueprint page links to LEVER Architecture's concept for the site. Wikipedia states the museum demolished the building in September 2025.",
+  "sources": [
+   "https://www.pressherald.com/2025/03/05/dispute-over-portland-museum-of-art-expansion-goes-to-court/",
+   "https://www.portlandmuseum.org/blueprint/",
+   "https://en.wikipedia.org/wiki/Portland_Museum_of_Art"
+  ],
+  "reason": "The Press Herald does not name LEVER; the Blueprint page links to the concept and gives the October 2019 purchase."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "FUNDING",
+  "problems": [
+   "unverified verdict 'privately funded'; unsupported 'individual donors'"
+  ],
+  "before": "Portland Museum of Art: privately funded: individual donors, foundations and corporate sponsors, with state arts-agency support",
+  "after": "Portland Museum of Art: contribution-led: foundations and corporate sponsors, with a Maine Arts Commission grant",
+  "sources": [
+   "https://www.portlandmuseum.org/art-for-all/",
+   "https://projects.propublica.org/nonprofits/organizations/10378420"
+  ],
+  "reason": "ProPublica gives contributions as 55.8 percent of revenue; the Art for All page names foundations, corporate sponsors and the Maine Arts Commission grant."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement: 'no years or amounts'"
+  ],
+  "before": "John Marin Foundation (museum site, no years or amounts).",
+  "after": "John Marin Foundation (museum site).",
+  "sources": [
+   "https://www.portlandmuseum.org/art-for-all/"
+  ],
+  "reason": "Absence clause cut."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "FUNDING",
+  "problems": [
+   "source attribution"
+  ],
+  "before": "WR Wright-Ryan.\n",
+  "after": "WR Wright-Ryan (museum site).\n",
+  "sources": [
+   "https://www.portlandmuseum.org/art-for-all/"
+  ],
+  "reason": "Source named."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "CRITICISM",
+  "problems": [
+   "missing title"
+  ],
+  "before": "1. Greater Portland Landmarks: Alison Frazee, Director of Advocacy, blog post (17 April 2025, advocacy source)",
+  "after": "1. Greater Portland Landmarks: Alison Frazee, Director of Advocacy, \"The Column Advocacy News\" (17 April 2025, advocacy source)",
+  "sources": [
+   "https://www.portlandlandmarks.org/columnblog/april-17-2025"
+  ],
+  "reason": "The page is an update in the group's 'The Column' advocacy series."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "CRITICISM",
+  "problems": [
+   "unsupported: district name",
+   "misattributed speaker"
+  ],
+  "before": "The council had voted 6 to 3 to reclassify the building as non-contributing to the Congress Street Historic District, although the city's historic preservation and planning boards had recommended keeping its classification.\n- The group argued the vote was an abuse of discretion; the city attorney said the council was not bound by the boards' recommendations. A judge later upheld the reclassification (Wikipedia; the group's post above).",
+  "after": "The council had voted 6 to 3 to reclassify the building as non-contributing, although the city's historic preservation and planning boards had recommended keeping its classification.\n- The group's director called the vote an abuse of discretion; the museum's attorney, Mary Costigan, said the council was not bound by the boards' recommendations. Wikipedia reports that Justice Deborah Cashman upheld the reclassification in March 2025.",
+  "sources": [
+   "https://www.pressherald.com/2025/03/05/dispute-over-portland-museum-of-art-expansion-goes-to-court/",
+   "https://en.wikipedia.org/wiki/Portland_Museum_of_Art"
+  ],
+  "reason": "The Press Herald names the museum's attorney, not the city attorney, and does not name the historic district."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "TD decision: stays Wider context; connection and source stated"
+  ],
+  "before": "- The TD Charitable Foundation, described in a 2009 Vermont Business Magazine article as the charitable giving arm of TD Bank N.A., is on the museum's Art for All corporate sponsor list, with no year or amount.",
+  "after": "- Connection: the museum's Art for All page lists the TD Charitable Foundation among its corporate sponsors. A 21 October 2009 article on vermontbiz.com, \"TD Bank supports area organizations with $29,000 through charitable foundation\", says the foundation is the charitable giving arm of TD Bank N.A.",
+  "sources": [
+   "https://www.portlandmuseum.org/art-for-all/",
+   "https://vermontbiz.com/node/193190"
+  ],
+  "reason": "Kept as Wider context, not Red flags: the sponsor entry on the Art for All page has no year or amount, and the foundation is the bank's charitable giving arm, not the bank. The Nova Scotia, MacKenzie and Mercer Union reports flag TD itself or its TD Ready Commitment with a named post, year or band."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported 'local and regional companies'; wording"
+  ],
+  "before": "The money behind the museum is private giving plus a Maine Arts Commission grant, with contributions at 55.8 percent of revenue in the year to January 2025. Named funders are foundations and local and regional companies, among them the Avangrid CMP Foundation, KeyBank, Allagash and the TD Charitable Foundation.",
+  "after": "The money behind the museum is contributions, 55.8 percent of revenue in the year to January 2025, plus a Maine Arts Commission grant for the Art for All programme. Named funders include the Avangrid CMP Foundation, KeyBank, Allagash and the TD Charitable Foundation.",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/10378420",
+   "https://www.portlandmuseum.org/art-for-all/"
+  ],
+  "reason": "Contributions are not shown to be all private; 'local and regional' is not on any opened page."
+ },
+ {
+  "id": "post-museum-singapore",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'where nothing is for sale'"
+  ],
+  "before": "plus the recurring Singapore Really Really Free Market, where nothing is for sale (Post-Museum site; Artshelp).",
+  "after": "plus the recurring Singapore Really Really Free Market (Post-Museum site).",
+  "sources": [
+   "https://post-museum.org/root/"
+  ],
+  "reason": "The Post-Museum page lists the market without saying nothing is for sale."
+ },
+ {
+  "id": "post-museum-singapore",
+  "section": "OVERVIEW",
+  "problems": [
+   "precision"
+  ],
+  "before": "Bamboo Broadcast Studio is described as its current project, with free ecology and sustainability programmes (Artshelp).",
+  "after": "Bamboo Broadcast Studio is described as its current project, part of the 2024 Singapore Art Week exhibition Alternative Ecology, with free programmes on sustainability, nature and ecology (Artshelp).",
+  "sources": [
+   "https://www.artshelp.com/post-museum-singapore/"
+  ],
+  "reason": "Detail from Artshelp."
+ },
+ {
+  "id": "post-museum-singapore",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'which carry event announcements'"
+  ],
+  "before": "and its listed contact is its social media channels, which carry event announcements.",
+  "after": "and its site lists social media channels as its contact.",
+  "sources": [
+   "https://post-museum.org/root/"
+  ],
+  "reason": "The page lists Facebook, Twitter, Instagram, YouTube and Discord links only."
+ },
+ {
+  "id": "post-museum-singapore",
+  "section": "FUNDING",
+  "problems": [
+   "unverified verdict: founders did not state individual contributions or rental as funding"
+  ],
+  "before": "Post-Museum: independent: individual contributions and venue rental, with no funding from government agencies in its early years",
+  "after": "Post-Museum: independent: no government funding in its early years, according to the founders",
+  "sources": [
+   "https://www.on-curating.org/issue-41-reader/interview-with-the-founders-of-post-museum-jennifer-teo-and-woon-tien-wei.html"
+  ],
+  "reason": "The founders state only that they took no government funding; the individual-contributions framing comes from the interviewer."
+ },
+ {
+  "id": "post-museum-singapore",
+  "section": "FUNDING",
+  "problems": [
+   "attribution: founders vs interviewer"
+  ],
+  "before": "- In the On Curating interview the founders said of the early years: \"we didn't want to take any funding from government agencies.\" The interviewer's question puts the funding as individual contributions with very little corporate sponsorship.\n- The venue also ran as a rental space (On Curating).",
+  "after": "- In the On Curating interview (Carolina Sanchez, Issue 41) the founders said of the early years: \"we didn't want to take any funding from government agencies.\"\n- The interviewer's question described the funding as individual contributions with very little corporate sponsorship, and the interviewer's introduction describes the venue as a rental space (On Curating).",
+  "sources": [
+   "https://www.on-curating.org/issue-41-reader/interview-with-the-founders-of-post-museum-jennifer-teo-and-woon-tien-wei.html"
+  ],
+  "reason": "Separates what the founders said from what the interviewer said."
+ },
+ {
+  "id": "post-museum-singapore",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "claim not supported: founders refusing corporate funding"
+  ],
+  "before": "The money behind Post-Museum is small and independent: individual contributions and venue rental, with the founders refusing government and significant corporate funding in the early years. Its stated aim now is more engagement with government agencies.",
+  "after": "The On Curating interview describes Post-Museum's money as individual contributions and venue rental, with the founders declining government funding in the early years. The founders now say they want more public engagement with government agencies.",
+  "sources": [
+   "https://www.on-curating.org/issue-41-reader/interview-with-the-founders-of-post-museum-jennifer-teo-and-woon-tien-wei.html"
+  ],
+  "reason": "'Small' and corporate refusal are not stated by the founders."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "FUNDING",
+  "problems": [
+   "unverified verdict: university as funder"
+  ],
+  "before": "Potter Museum of Art: university museum: the University of Melbourne, with private donors and arts agencies behind the 2025 reopening",
+  "after": "Potter Museum of Art: university museum: part of the University of Melbourne, with private donors and arts agencies named for the 2025 reopening",
+  "sources": [
+   "https://potter-museum.unimelb.edu.au/about/media/potter-museum-of-art-reopens"
+  ],
+  "reason": "No opened page states the university's funding; it states the museum is part of the university and names the reopening supporters."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "FUNDING",
+  "problems": [
+   "precision"
+  ],
+  "before": "- Learning spaces: the new and improved learning spaces were made possible by the Ian Potter Foundation and Lady Primrose Potter AC (University of Melbourne announcement).",
+  "after": "- Redevelopment: the Ian Potter Foundation and Lady Primrose Potter AC supported the redevelopment and the new learning spaces (University of Melbourne announcement, 10 October 2024).",
+  "sources": [
+   "https://potter-museum.unimelb.edu.au/about/media/potter-museum-of-art-reopens"
+  ],
+  "reason": "Date and wording from the announcement."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'companion book', 'Thames & Hudson'"
+  ],
+  "before": "- The Gordon Darling Foundation is publication partner for the companion book, published by Thames & Hudson.\n- Other named supporters: John Wardle, Judith and Leon Gorr, Creative Australia and Creative Victoria. The announcement gives no dollar amounts.",
+  "after": "- The Gordon Darling Foundation is the publication partner (University of Melbourne announcement).\n- John Wardle and Judith and Leon Gorr are named supporters; Creative Australia and Creative Victoria are named supporters of the exhibition (University of Melbourne announcement).",
+  "sources": [
+   "https://potter-museum.unimelb.edu.au/about/media/potter-museum-of-art-reopens"
+  ],
+  "reason": "The announcement does not mention a companion book or Thames & Hudson; absence clause on amounts cut."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "CRITICISM",
+  "problems": [
+   "verdict with one piece; clarity"
+  ],
+  "before": "Overall: Coverage of the reopening is admiring. The one piece read criticises the university's past as a eugenics research centre, shown in the exhibition, not the museum.",
+  "after": "Overall: The one review read gives five stars and criticises the University of Melbourne's past as a eugenics research centre, shown in the exhibition, not the museum.",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/09/01/the-big-review-%7C-65000-years-a-short-history-of-australian-art-at-the-potter-museum-of-art-in-melbourne"
+  ],
+  "reason": "One piece cannot show that coverage is admiring."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "CRITICISM",
+  "problems": [
+   "unsupported: praise of the reopened museum"
+  ],
+  "before": "- Praises the reopened museum; criticises the university's history, not the Potter.",
+  "after": "- Praises the exhibition and its works; criticises the university's history, not the Potter. The only mention of the reopening is that the exhibition at the newly reopened Potter is on track to be the most visited in the institution's history.",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/09/01/the-big-review-%7C-65000-years-a-short-history-of-australian-art-at-the-potter-museum-of-art-in-melbourne"
+  ],
+  "reason": "The review does not praise the building; it gives an attendance remark."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "CRITICISM",
+  "problems": [
+   "precision: 'shameful' quoted"
+  ],
+  "before": "which the review calls shameful.",
+  "after": "which the review calls a \"shameful past\".",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/09/01/the-big-review-%7C-65000-years-a-short-history-of-australian-art-at-the-potter-museum-of-art-in-melbourne"
+  ],
+  "reason": "Quoted wording."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "facts overstated: 22 May agreement date; Melburnian does not report refusal to divest"
+  ],
+  "before": "- In May 2024 students held a Gaza solidarity encampment at the University of Melbourne and demanded that the university disclose and divest from weapons companies. The university agreed on 22 May 2024 to disclose its ties to weapons manufacturers, among them Lockheed Martin, Boeing and BAE Systems, and refused to divest (Green Left, Jacob Andrewartha, 23 May 2024; The Melburnian, Georgie Atkins, 28 May 2024).\n- Neither article names the Potter; the connection is that the Potter is part of the University of Melbourne.",
+  "after": "- Green Left (Jacob Andrewartha, \"Student encampment forces Uni of Melbourne to disclose weapons ties\", 23 May 2024) reported that after a four-week Gaza solidarity encampment and a week-long occupation the University of Melbourne agreed to disclose its funding arrangements with weapons corporations, that Unimelb for Palestine expected disclosure of ties to all weapons manufacturers including Lockheed Martin, Boeing and BAE Systems, and that the university rejected the demand to divest.\n- The Melburnian (Georgie Atkins, \"University commits to disclose ties to weapons companies amid student protest\", 28 May 2024) reported that the university committed to additional disclosure of its research grant arrangements, and named the same three companies.\n- Neither article names the Potter; the connection is that the Potter is part of the University of Melbourne (museum site).",
+  "sources": [
+   "https://greenleft.org.au/node/76481",
+   "https://themelburnian.au/university-commits-to-disclose-ties-to-weapons-companies-amid-student-protest/",
+   "https://potter-museum.unimelb.edu.au/"
+  ],
+  "reason": "Neither page gives a 22 May agreement date; Green Left gives the rejection of divestment, the Melburnian says nothing on divestment."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "precision on Creative bodies; claim about the campaign"
+  ],
+  "before": "plus Creative Australia and Creative Victoria. The 2024 student campaign over the university's weapons-company ties was aimed at the university, not the museum.",
+  "after": "with Creative Australia and Creative Victoria named as supporters of the reopening exhibition. The 2024 student campaign over the university's weapons-company ties concerned the university; neither article about it names the Potter.",
+  "sources": [
+   "https://potter-museum.unimelb.edu.au/about/media/potter-museum-of-art-reopens"
+  ],
+  "reason": "Creative bodies are named as exhibition supporters only."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "OVERVIEW",
+  "problems": [
+   "attribution"
+  ],
+  "before": "- Gong Yan is listed as director; Wikipedia gives about 700,000 visitors in 2019.",
+  "after": "- Wikipedia lists Gong Yan as director and gives about 700,000 visitors in 2019.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Power_Station_of_Art"
+  ],
+  "reason": "Wikipedia-only claims attributed."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "FUNDING",
+  "problems": [
+   "add controlling-body wording"
+  ],
+  "before": "- The museum sits directly under the Shanghai Municipal Administration of Culture and Tourism (Wikipedia).",
+  "after": "- The museum sits directly under the Shanghai Municipal Administration of Culture and Tourism (Wikipedia); Hyperallergic calls it \"China's first government-run contemporary art museum\".",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Power_Station_of_Art",
+   "https://hyperallergic.com/chinese-officials-remove-ai-weiwei-work-from-exhibition"
+  ],
+  "reason": "Quoted from Hyperallergic."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "RED FLAGS",
+  "problems": [
+   "Red flag kept after checking pages; precision on who, what, when, who says so"
+  ],
+  "before": "Red flags: state censorship of Ai Weiwei's work in 2014\n- Exhibition: for \"15 Years Chinese Contemporary Art Award\", opened in April 2014 at the museum, local Shanghai cultural officials removed Ai Weiwei's name and work, two pieces being a wooden stool and porcelain sunflower seeds (Hyperallergic, citing the New York Times).\n- A few days before the opening, officials told the award's founder, Uli Sigg, the works could not be shown. Ai's name stayed on the exhibition webpage but was taken off the on-site wall text (Hyperallergic).\n- The museum is state-owned and sits under the Shanghai Municipal Administration of Culture and Tourism (Wikipedia); Hyperallergic names the officials only as local Shanghai cultural officials.",
+  "after": "Red flags: state censorship, Shanghai cultural officials removed Ai Weiwei's work from a 2014 show at the museum\n- Hyperallergic (Jillian Steinhauer, 30 April 2014), citing the New York Times, reported that local cultural officials in Shanghai censored Ai Weiwei's name and work from the exhibition \"15 Years Chinese Contemporary Art Award\" at the museum. Two works, a wooden stool and porcelain sunflower seeds, were pulled.\n- The works were to be shown until a few days before the opening the previous Saturday, when Shanghai officials told Sigg they could not be shown (Hyperallergic). Ai's name stayed on the show's webpage; Hyperallergic wrote that it \"has apparently been removed from the on-site wall text\".\n- The museum is state-owned and sits directly under the Shanghai Municipal Administration of Culture and Tourism, and the Shanghai municipal government paid $64 million for its conversion (Wikipedia). Hyperallergic names the actors as Shanghai officials and local cultural officials, not as a named body.",
+  "sources": [
+   "https://hyperallergic.com/chinese-officials-remove-ai-weiwei-work-from-exhibition",
+   "https://en.wikipedia.org/wiki/Power_Station_of_Art"
+  ],
+  "reason": "KEPT as a Red flag. Hyperallergic reports that local Shanghai cultural officials, citing the NYT, removed the works from a show at the museum; the museum is government-run, under the Shanghai municipal culture administration, and the Shanghai government paid for its conversion (Wikipedia, $64 million). The House rule (the funding or controlling state body acted) is met on those pages."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "CRITICISM",
+  "problems": [
+   "absence statement: 'Gives no statement'"
+  ],
+  "before": "- Gives no statement from the museum, Sigg or the officials.\n",
+  "after": "",
+  "sources": [
+   "https://hyperallergic.com/chinese-officials-remove-ai-weiwei-work-from-exhibition"
+  ],
+  "reason": "Absence sentence cut."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "CRITICISM",
+  "problems": [
+   "absence statement: 'date not stated'",
+   "unsupported details"
+  ],
+  "before": "2. The Miami Rail: Jacob Dreyer, \"The 9th Shanghai Biennale\" (date not stated on the page)",
+  "after": "2. The Miami Rail: Jacob Dreyer, \"The 9th Shanghai Biennale\"",
+  "sources": [
+   "https://miamirail.org/visual-arts/the-9th-shanghai-biennale"
+  ],
+  "reason": "The page gives no issue date; the clause is an absence statement and is cut."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "CRITICISM",
+  "problems": [
+   "unsupported: 'weaker copy', national representatives, Mao summary, last-minute installation, cheap materials"
+  ],
+  "before": "- Calls the museum a missed opportunity whose \"details of execution cheapened a potentially amazing venue for cultural production\", with echoes of Tate Modern that look like a weaker copy.\n- Argues the biennale, directed by the local government, treats Chinese artists as national representatives and defuses critiques of Mao by absorbing them into state-run exhibitions.\n- Cites last-minute installation, cheap mounting materials and spelling errors.",
+  "after": "- Names the opening of the Power Station of Art among opportunities that could have been spectacular and says \"a sense of incompetence in the details of execution cheapened a potentially amazing venue for cultural production\"; says the echoes of Tate Modern went from seeming like a subtle tribute to a mediocre copy.\n- Says the 9th Shanghai Biennale, \"directed by the local government\", betrayed the problems of its approach, and that state-run exhibitions like the biennale \"seem to appropriate this sort of outsider vision for their own\".\n- Cites prominent spelling errors in exhibits, such as \"Hong Knog\".",
+  "sources": [
+   "https://miamirail.org/visual-arts/the-9th-shanghai-biennale"
+  ],
+  "reason": "Rewritten from the page's own wording; the dropped details are not on the page."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "CRITICISM",
+  "problems": [
+   "unsupported: half-empty cause, 'unfinished or poorly placed', 'mismanagement'; quote beyond page"
+  ],
+  "before": "- Says construction finished just before the opening, so the huge space felt half-empty and the works lost impact.\n- Calls the main exhibition's themes vague and says some works were unfinished or poorly placed; cites the Vancouver Art Gallery's withdrawal of Brian Jungen's work over poor maintenance as evidence of mismanagement.\n- Describes the nearby China Art Palace, opened the same day, as \"a dazzling, though questionable, display of state-sponsored leveraging of the arts\"; this concerns the neighbouring building, not the Power Station.",
+  "after": "- Says construction finished in the immediate lead-up to the official opening and the exhibition seemed \"half-empty\" despite large-scale works in its main venue.\n- Describes an \"elastic theme with oblique references to contemporaneity and social engagement\" and reports that the Vancouver Art Gallery silently withdrew Brian Jungen's contribution to the Vancouver pavilion, citing poor gallery maintenance.\n- Describes the state-backed China Art Palace, opened alongside the Power Station of Art, as \"dazzling, though questionable\"; this concerns the neighbouring building, not the Power Station.",
+  "sources": [
+   "https://bordercrossingsmag.com/article/shanghai-biennial-2012"
+  ],
+  "reason": "Rewritten to what the page says (Jesi Khadivi, March 2013, Issue 171)."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "Wikipedia-only claim not attributed",
+   "attribution of the removal"
+  ],
+  "before": "which converted the power plant for $64 million and holds the museum directly under its culture and tourism administration. The documented weak point is the 2014 removal of Ai Weiwei's work by Shanghai cultural officials from a show at the museum.",
+  "after": "which Wikipedia says paid $64 million to convert the power plant and holds the museum directly under its culture and tourism administration. The documented weak point is the 2014 removal of Ai Weiwei's work from a show at the museum by local Shanghai cultural officials, as reported by Hyperallergic.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Power_Station_of_Art",
+   "https://hyperallergic.com/chinese-officials-remove-ai-weiwei-work-from-exhibition"
+  ],
+  "reason": "Attributed."
+ },
+ {
+  "id": "primary-nottingham",
+  "section": "FUNDING",
+  "problems": [
+   "funder known only from a logo link (no visible text)"
+  ],
+  "before": " The Esmée Fairbairn Foundation appears among the funder logos on the site.",
+  "after": "",
+  "sources": [
+   "https://www.weareprimary.org"
+  ],
+  "reason": "Esmée Fairbairn appears only in a logo link URL, not in visible text; cut."
+ },
+ {
+  "id": "printed-matter-new-york",
+  "section": "CRITICISM",
+  "problems": [
+   "overstatement"
+  ],
+  "before": "- Printed Matter did not answer the letter. A website update on 15 July said it \"does not censor the artists who take part in our programming,\" and it declined Hyperallergic's request for comment.",
+  "after": "- Printed Matter did not respond directly to the letter. A website update on 15 July said it \"does not censor the artists who take part in our programming,\" and it declined to comment to Hyperallergic.",
+  "sources": [
+   "https://hyperallergic.com/936479/printed-matter-window-display-divides-audiences-on-israel-palestine/"
+  ],
+  "reason": "Matches the article's wording."
+ },
+ {
+  "id": "printed-matter-new-york",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "connection and Aarons facts stated exactly"
+  ],
+  "before": "- Friends of the High Line: its co-founder Robert Hammond said in a 2017 CityLab interview, reported by DNAinfo (Maya Rajamani, 13 February 2017), \"Ultimately, we failed\" to build a park that benefited neighbours, and critics said the park put gentrification into \"hyperdrive.\"\n- W Magazine (2014) describes Aarons as an early adviser to the High Line. The connection to Printed Matter is that he was president of its board in 2014.",
+  "after": "- DNAinfo (Maya Rajamani, \"'We Failed' To Design Park That Benefited Neighbors, High Line Creator Says\", 13 February 2017) reported High Line co-founder Robert Hammond telling CityLab \"Ultimately, we failed\", and that the park has been accused of putting gentrification into \"hyperdrive.\" The article does not name Phil Aarons or Printed Matter.\n- Connection: W Magazine (Jim Lewis, 26 August 2014) describes Aarons as one of the first advisers to the High Line and as president of the Printed Matter board, and the Los Angeles Art Book Fair 2023 site lists Phil Aarons and Shelley Fox Aarons among its lead supporters.",
+  "sources": [
+   "https://www.dnainfo.com/new-york/20170213/chelsea/high-line-citylab-robert-hammond",
+   "https://www.wmagazine.com/story/printed-matter-ny-art-book-fair",
+   "https://laabf2023.printedmatterartbookfairs.org/about"
+  ],
+  "reason": "Kept: the W Magazine and 2023 fair pages tie Aarons to Printed Matter and its supporter giving with years (2014, 2023); DNAinfo does not name him, which is now stated."
+ },
+ {
+  "id": "printed-matter-new-york",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "precision"
+  ],
+  "before": "where the organisation declined to remove the work.",
+  "after": "where the organisation said it does not censor the artists in its programming.",
+  "sources": [
+   "https://hyperallergic.com/936479/printed-matter-window-display-divides-audiences-on-israel-palestine/"
+  ],
+  "reason": "Matches the 15 July statement."
+ },
+ {
+  "id": "proyecto-martadero-cochabamba",
+  "section": "OVERVIEW",
+  "problems": [
+   "source attribution"
+  ],
+  "before": "in the Villa Coronilla neighbourhood of Cochabamba, a few blocks from the city centre (mARTadero site).",
+  "after": "in the Villa Coronilla neighbourhood of Cochabamba, a few blocks from the city centre (mARTadero site; history page).",
+  "sources": [
+   "https://martadero.org/historia",
+   "https://martadero.org"
+  ],
+  "reason": "Villa Coronilla and the distance are on the history page; the address is on the home page."
+ },
+ {
+  "id": "proyecto-martadero-cochabamba",
+  "section": "OVERVIEW",
+  "problems": [
+   "misattribution of roles"
+  ],
+  "before": "Artists led by Angélika Heckl and Fernando García, then Oficial Mayor de Cultura Jenny Rivero, and the NADA association pushed the project; the artists requested a loan of use from the Concejo Municipal (mARTadero history page).",
+  "after": "The competition was promoted by the Oficial Mayor de Cultura, Jenny Rivero, and by a group of artists led by Angélika Heckl and Fernando García; the NADA association began the works, and a loan of use was requested from the Concejo Municipal (mARTadero history page).",
+  "sources": [
+   "https://martadero.org/historia"
+  ],
+  "reason": "The history page names Rivero and the artists as promoters and NADA as starting the works."
+ },
+ {
+  "id": "proyecto-martadero-cochabamba",
+  "section": "OVERVIEW",
+  "problems": [
+   "source attribution"
+  ],
+  "before": "- NADA generated the project and holds a 30-year concession on the building; Fundación Imagen manages it (mARTadero site).",
+  "after": "- NADA generated the project and holds a 30-year concession on the building; Fundación Imagen manages it (mARTadero site; Quiénes somos page).",
+  "sources": [
+   "https://martadero.org/quienes-somos",
+   "https://martadero.org"
+  ],
+  "reason": "The concession is on the Quiénes somos page."
+ },
+ {
+  "id": "proyecto-martadero-cochabamba",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'keep the architectural character'"
+  ],
+  "before": "with a phased restoration plan meant to keep the architectural character (mARTadero history page).",
+  "after": "with a survey of each room and a progressive recovery plan to adapt the spaces to multiple uses (mARTadero history page).",
+  "sources": [
+   "https://martadero.org/historia"
+  ],
+  "reason": "The page does not say the plan keeps the architectural character."
+ },
+ {
+  "id": "proyecto-martadero-cochabamba",
+  "section": "OVERVIEW",
+  "problems": [
+   "source attribution"
+  ],
+  "before": "including innovation, research and interculturality (stated by the project).",
+  "after": "including innovation, research and interculturality (stated by the project, Quiénes somos page).",
+  "sources": [
+   "https://martadero.org/quienes-somos"
+  ],
+  "reason": "Self-management, assembly character and the seven principles are on the Quiénes somos page."
+ },
+ {
+  "id": "proyecto-martadero-cochabamba",
+  "section": "FUNDING",
+  "problems": [
+   "unverified verdict 'aid-agency funded'"
+  ],
+  "before": "Proyecto mARTadero: aid-agency funded: international cooperation partners, in a building held on a 30-year concession",
+  "after": "Proyecto mARTadero: supporter-funded: Misereor and Oxfam International listed as current supporters, in a building held on a 30-year concession",
+  "sources": [
+   "https://martadero.org/apoyos"
+  ],
+  "reason": "The Apoyos page lists supporters without amounts; the verdict now states only that."
+ },
+ {
+  "id": "proyecto-martadero-cochabamba",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement: 'gives no amounts or years'; date"
+  ],
+  "before": "The page is dated 2019 and gives no amounts or years.",
+  "after": "The page was posted on 25 February 2019.",
+  "sources": [
+   "https://martadero.org/apoyos"
+  ],
+  "reason": "Page metadata gives 25 February 2019 (no year is attached to individual supporters)."
+ },
+ {
+  "id": "proyecto-martadero-cochabamba",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unverified generalisation 'development agencies and NGOs'"
+  ],
+  "before": "The money behind mARTadero is international development agencies and NGOs, among them Misereor and Oxfam International as current supporters, with the building held by NADA on a 30-year concession.",
+  "after": "The Apoyos page lists Misereor and Oxfam International as current supporters and Hivos, Conexión, Solidar Suiza, Cooperación Italiana and CAF as previous supporters; the building is held by NADA on a 30-year concession.",
+  "sources": [
+   "https://martadero.org/apoyos",
+   "https://martadero.org/quienes-somos"
+  ],
+  "reason": "States what the page lists."
+ },
+ {
+  "id": "pushkinskaya-10-art-centre-st-petersburg",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Khlobystin as founder; organisers wording"
+  ],
+  "before": "Founders named include Yuly Rybakov, Sergei Kovalsky and Andrei Khlobystin, and Evgeny Orlov is described as the centre's director (T-J (t-j.ru)). The Manege exhibition page names Vadim Voinov, Sergei Kovalsky, Evgeny Orlov and Yuly Rybakov as its organisers.",
+  "after": "T-J (t-j.ru) describes Yuly Rybakov and Sergei Kovalsky as founders and Evgeny Orlov as the director. The Manege exhibition page lists Vadim Voinov, Sergei Kovalsky, Evgeny Orlov and Yuly Rybakov as organisers of the art centre.",
+  "sources": [
+   "https://t-j.ru/kovcheg-manezh/",
+   "https://manege.spb.ru/events/vystavochnyj-proekt-pushkinskaya-10-kovcheg-hhi-veka/"
+  ],
+  "reason": "T-J credits Khlobystin with designing the community's flag, not founding it; the Manege page heads the list 'organisers of the art centre'."
+ },
+ {
+  "id": "pushkinskaya-10-art-centre-st-petersburg",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Museum of Sound, Big Hall and Small Hall attributed to Lidenz"
+  ],
+  "before": "the First National Rock Museum, the Samizdat A4 gallery, the Museum of Nonconformist Art with a Big Hall and a Small Hall, and a Museum of Sound (Lidenz, Rachel South, 5 September 2019; Pushkinskaya-10 site).",
+  "after": "the First National Rock Museum, the Samizdat A4 gallery and exhibition spaces called the Big Hall and the Small Hall (Lidenz, Rachel South, 5 September 2019).",
+  "sources": [
+   "https://lidenz.com/pushkinskaya-10-a-haven-of-underground-culture/"
+  ],
+  "reason": "Lidenz does not mention a Museum of Sound; the p-10.ru home page text opened does not list it."
+ },
+ {
+  "id": "pushkinskaya-10-art-centre-st-petersburg",
+  "section": "FUNDING",
+  "problems": [
+   "overstated: 'no meaningful state support'"
+  ],
+  "before": "and that the centre receives no meaningful state support, only a small annual sum for a house holiday.",
+  "after": "and that the centre receives no help from the state apart from a small sum once a year, in summer, for the house festival.",
+  "sources": [
+   "https://www.svoboda.org/a/30566110.html"
+  ],
+  "reason": "Radio Svoboda: no help from the state; a small sum once a year for the festival."
+ },
+ {
+  "id": "pushkinskaya-10-art-centre-st-petersburg",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "conflates two sources: 1996 lease vs free use"
+  ],
+  "before": "with a building the city of St Petersburg lends free for 49 years under a 1996 agreement.",
+  "after": "with a building the city lends free for 49 years (Radio Svoboda, 4 May 2020).",
+  "sources": [
+   "https://www.svoboda.org/a/30566110.html",
+   "https://t-j.ru/kovcheg-manezh/"
+  ],
+  "reason": "T-J describes the 1996 agreement as leasing about a third of the premises to artists for 49 years; Radio Svoboda gives free use for 49 years. Only the Radio Svoboda claim is kept here."
+ },
+ {
+  "id": "primary-nottingham",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement: 'it gives no amounts'"
+  ],
+  "before": " in the financial year; it gives no amounts.",
+  "after": " in the financial year.",
+  "sources": [
+   "https://www.weareprimary.org/news/committing-to-our-future-funding-success-for-primary"
+  ],
+  "reason": "Absence clause cut; the 20 January 2025 news item names the funders."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unverified verdict: university as the money"
+  ],
+  "before": "The money behind the museum is the University of Melbourne, with the 2025 reopening backed by",
+  "after": "The museum is part of the University of Melbourne, with the 2025 reopening backed by",
+  "sources": [
+   "https://potter-museum.unimelb.edu.au/about/media/potter-museum-of-art-reopens"
+  ],
+  "reason": "No opened page states the university's funding of the museum."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "FUNDING",
+  "problems": [
+   "unverified verdict 'mainly public'"
+  ],
+  "before": "Power Station of Art: mainly public: the Shanghai municipal government",
+  "after": "Power Station of Art: government-run: the Shanghai municipal government paid for the conversion",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Power_Station_of_Art",
+   "https://hyperallergic.com/chinese-officials-remove-ai-weiwei-work-from-exhibition"
+  ],
+  "reason": "Wikipedia gives the $64 million conversion cost to the municipal government and Hyperallergic calls the museum government-run; no page gives operating shares."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unverified verdict"
+  ],
+  "before": "The money behind the museum is the Shanghai municipal government, which Wikipedia says paid $64 million to convert the power plant and holds the museum directly under its culture and tourism administration.",
+  "after": "The museum sits directly under the Shanghai Municipal Administration of Culture and Tourism, and Wikipedia says the Shanghai municipal government paid $64 million to convert the power plant.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Power_Station_of_Art"
+  ],
+  "reason": "Stated as the page states it."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "section": "PRESS ITEMS KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Hyperallergic: Jillian Steinhauer, \"Chinese Officials Remove Ai Weiwei Work from Exhibition\" (30 April 2014); The Miami Rail: Jacob Dreyer, \"The 9th Shanghai Biennale\" (no date on page); Border Crossings: Jesi Khadivi, \"Shanghai Biennial 2012\" (March 2013, Issue 171)",
+  "sources": [
+   "https://hyperallergic.com/chinese-officials-remove-ai-weiwei-work-from-exhibition",
+   "https://miamirail.org/visual-arts/the-9th-shanghai-biennale",
+   "https://bordercrossingsmag.com/article/shanghai-biennial-2012"
+  ],
+  "reason": "All three opened and name the Power Station of Art."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "PRESS ITEMS KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Greater Portland Landmarks: Alison Frazee, Director of Advocacy, \"The Column Advocacy News\" (17 April 2025, advocacy); Portland Press Herald: Megan Gray, \"Dispute over Portland Museum of Art expansion now in judge's hands\" (5 March 2025)",
+  "sources": [
+   "https://www.portlandlandmarks.org/columnblog/april-17-2025",
+   "https://www.pressherald.com/2025/03/05/dispute-over-portland-museum-of-art-expansion-goes-to-court/"
+  ],
+  "reason": "Both opened; both concern the museum's expansion at 142 Free Street. The Press Herald headline differs from the URL slug."
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "section": "PRESS ITEMS KEPT",
+  "problems": [],
+  "before": "",
+  "after": "ARTnews: Francesca Aton, \"Portland Art Museum Disbands Its Docent Program, Sparking Controversy\" (6 October 2023; read via the Council for Museum Anthropology repost of 7 December 2023); Willamette Week: Rachel Saslow, \"The Portland Art Museum Ditches Its Docents, Raising Questions About Race, Class and Especially Age\" (4 October 2023); OPB: Aaron Scott, \"Portland Art Museum Adapts Expansion Plan To Win Over Critics\" (2 December 2017)",
+  "sources": [
+   "https://museumanthropology.org/portland-art-museum-disbands-its-docent-program-sparking-controversy/",
+   "https://www.wweek.com/news/2023/10/04/the-portland-art-museum-ditches-its-docents-raising-auestions-about-race-class-and-especially-age/",
+   "https://opb.org/radio/programs/state-of-wonder/article/portland-art-museum-rothko-pavilion-accessibility"
+  ],
+  "reason": "All three criticise the museum (docent decision twice; pavilion passageway once)."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "section": "PRESS ITEMS KEPT",
+  "problems": [],
+  "before": "",
+  "after": "The Art Newspaper: Tim Stone, \"The Big Review | 65,000 Years: A Short History of Australian Art at the Potter Museum of Art, Melbourne\" (1 September 2025); five-star review that criticises the university's past, not the museum",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/09/01/the-big-review-%7C-65000-years-a-short-history-of-australian-art-at-the-potter-museum-of-art-in-melbourne"
+  ],
+  "reason": "Opened; names the Potter."
+ },
+ {
+  "id": "printed-matter-new-york",
+  "section": "PRESS ITEMS KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Hyperallergic: Matt Stromberg, \"Printed Matter Window Display Divides Audiences on Israel-Palestine\" (25 July 2024); DNAinfo (Wider context): Maya Rajamani, \"'We Failed' To Design Park That Benefited Neighbors, High Line Creator Says\" (13 February 2017), does not name Aarons or Printed Matter",
+  "sources": [
+   "https://hyperallergic.com/936479/printed-matter-window-display-divides-audiences-on-israel-palestine/",
+   "https://www.dnainfo.com/new-york/20170213/chelsea/high-line-citylab-robert-hammond"
+  ],
+  "reason": "Both opened."
+ },
+ {
+  "id": "portikus-frankfurt",
+  "section": "CHECK NOTE",
+  "problems": [],
+  "before": "",
+  "after": "",
+  "sources": [
+   "https://www.portikus.de/en/about"
+  ],
+  "reason": "No stray or garbled text. The Portikus about page reads: 'THE FLAG became an official cooperation partner of Portikus' in 2025; the report now uses that wording. The page does not say what THE FLAG is."
+ }
+]

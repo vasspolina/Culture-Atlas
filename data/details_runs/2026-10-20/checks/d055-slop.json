@@ -1,0 +1,402 @@
+[
+ {
+  "id": "cca-lagos",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "ceaac-strasbourg",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "cemeti-institute-yogyakarta",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "center-for-cultural-decontamination-czkd-belgrade",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "center-of-contemporary-art-tbilisi-tbilisi-triennial-tbilisi",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "centrale-fies-dro",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "centre-dart-la-panera-lleida",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "centro-de-arte-contemporáneo-de-quito-quito",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "centro-de-arte-fundaci-n-ortiz-gurdi-n-le-n",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "centro-pecci-prato",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "chale-wote-street-art-festival-accra",
+  "section": "Website",
+  "problems": [
+   "absence/fetch-note: '(checked <date>)'"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "The Website line gives the address only (new binding rule)."
+ },
+ {
+  "id": "cca-lagos",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Oyindamola Fakeye is now artistic and executive director'",
+   "unsupported: 'Sabo'",
+   "unsupported: 'Lagos firms'"
+  ],
+  "before": "Oyindamola Fakeye is now artistic and executive director; 9 McEwen Street, Sabo, Yaba; the Lagos firms Greycave and Studio Contra",
+  "after": "the centre's website lists Ade Hassan, MBE as Executive Director; 9 McEwen Street, Yaba; Greycave and Studio Contra Ltd; plans include experimental studio",
+  "sources": [
+   "https://ccalagos.org/about/",
+   "https://contemporaryand.com/c-and-magazine/texts/bisi-silvas-cca-lagos-is-the-subject-of-a-major-revamp",
+   "https://ccalagos.org/cca-lagos-to-reopen-with-tribute-exhibition-to-bisi-silva/"
+  ],
+  "reason": "The centre's own About page names Ade Hassan as Executive Director and does not name Fakeye; the reopening page names a different director spelling, so the name was cut. Address and firm details brought back to what the pages state."
+ },
+ {
+  "id": "cca-lagos",
+  "section": "FUNDING",
+  "problems": [
+   "inference: 'the collectors who bought them'"
+  ],
+  "before": "The money behind the auction comes from the artists' own donated works and the collectors who bought them.",
+  "after": "(cut)",
+  "sources": [
+   "https://contemporaryand.com/c-and-magazine/texts/bisi-silvas-cca-lagos-is-the-subject-of-a-major-revamp"
+  ],
+  "reason": "No opened page says who bought the lots. The over-one-million-dollar figure and no seller's commission are confirmed on Contemporary And (Sabo Kpade, 28 June 2022); the same article also prints a garbled pound figure, which is not used."
+ },
+ {
+  "id": "ceaac-strasbourg",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Alice Motard is named there' (about page)",
+   "label date",
+   "unsupported: 'Hop residencies'"
+  ],
+  "before": "the French culture ministry awarded it the label ... on 1 July 2024, and Alice Motard is named there as its director; short curatorial residencies (Hop) were added from 2023",
+  "after": "The Ministry of Culture announced on 1 July 2024 ... and names Alice Motard as its director; a production residency for invited artists has run since 2023",
+  "sources": [
+   "https://www.culture.gouv.fr/fr/presse/communiques-de-presse/attribution-du-label-centre-d-art-contemporain-d-interet-national-au-centre-europeen-d-actions-artistiques-contemporaines-de-strasbourg",
+   "https://ceaac.org/en/the-ceaac/about/",
+   "https://ceaac.org/fr/le-ceaac/a-propos/"
+  ],
+  "reason": "Motard is named in the ministry release, not on the about page; 1 July 2024 is the release date; Hop is a programme for visiting curators, the residency is for invited artists."
+ },
+ {
+  "id": "ceaac-strasbourg",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "verdict without a source: 'mainly public' / 'ordinary government arts funders'",
+   "unsupported: 'family firm that built the building'"
+  ],
+  "before": "CEAAC: mainly public ... The money behind CEAAC is public ... SAS Neunreiter, linked to the family firm that built the building",
+  "after": "CEAAC: four named public funders and one private patron ... SAS Neunreiter, which shares its name with the Neunreiter firm that the Mérimée notice lists as owner of the building",
+  "sources": [
+   "https://pop.culture.gouv.fr/notice/merimee/PA67000099",
+   "https://ceaac.org/fr/le-ceaac/a-propos/",
+   "https://www.e-flux.com/directory/166484/ceaac"
+  ],
+  "reason": "No page gives amounts, so 'mainly public' was cut. The Mérimée notice confirms Eugène Neunreiter (founder of the glassware and porcelain firm, 1865) bought the site in 1878 and the owner is the Société des établissements de porcelaine et de verrerie Neunreiter; no opened page states that SAS Neunreiter is that company, so only the shared name is stated."
+ },
+ {
+  "id": "cemeti-institute-yogyakarta",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'Run since 2024'",
+   "unsupported: 'one Indonesian artist and one or two artists from other countries'",
+   "misquote: 'there are no subsidies'",
+   "unsupported: coalition/endowment attributed to the founders",
+   "dead-weight source cut"
+  ],
+  "before": "Run since 2024 by co-directors ...; Jaarsma said \"there are no subsidies\" ...; In 2013 the founders described a coalition working to create an endowment fund",
+  "after": "Directed by co-directors ...; Jaarsma notes that the scene is privately funded, with \"no subsidies\"; coalition bullet cut",
+  "sources": [
+   "https://www.cemeti.art/about-cemeti/",
+   "https://unprojects.org.au/article/cemeti-art-house-on-turning-twenty-five/",
+   "https://culture360.asef.org/insights/turning-targets-25-years-cemeti-art-house/"
+  ],
+  "reason": "The ASEF article is about Koalisi Seni Indonesia, not stated as Cemeti's own plan. Mondriaan Fund EUR 8,772, 1 March to 31 May 2027, rent paid to Cemeti, KADIST/AFIELD 2024 grant, Prince Claus partnership all confirmed on opened pages. The Dutch Art Institute source does not mention funding and was removed from the list."
+ },
+ {
+  "id": "center-for-cultural-decontamination-czkd-belgrade",
+  "section": "FUNDING / CRITICISM",
+  "problems": [
+   "Wikipedia-only claim stated as fact",
+   "misquote of Munitić",
+   "unsupported: 'Pavićević association 1994 to 2019'",
+   "'state-aligned media' not in source"
+  ],
+  "before": "In 2005 the journalist and critic Ranko Munitić criticised the centre's foreign funding ... he said he was against those who \"decontaminate\" others while receiving \"foreign money\" (Wikipedia ...)",
+  "after": "CRITICISM IN ART MEDIA item 1: Unverified: Wikipedia, the only source, states that on 30 October 2005 the film critic Munitić criticised the centre's foreign funding on B92 ... large sums of money",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Centre_for_Cultural_Decontamination",
+   "https://www.mott.org/grants/201300226/",
+   "https://www.sigrid-rausing-trust.org/grantee/center-for-cultural-decontamination-ckzd/"
+  ],
+  "reason": "Mott: US$60,000 (1 July 2013 to 30 June 2015) and US$60,000 (1 July 2015 to 30 June 2017) confirmed; Sigrid Rausing Trust page says supported 2020 to 2024 and total of previous grants GBP 280,000. Wikipedia describes Munitić as a film critic and gives different wording. 'Regime media' replaces 'state-aligned' (Radio Slobodna Evropa, attributed to Shkelzen Maliqi). Bottom line no longer calls the donors funders of human rights work for the Trust."
+ },
+ {
+  "id": "center-of-contemporary-art-tbilisi-tbilisi-triennial-tbilisi",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "funders known only from a page that does not open (cca.ge supporters page, HTTP 502)",
+   "unsupported: 5th triennial dates and venues",
+   "unsupported: German Federal Foreign Office"
+  ],
+  "before": "Stated by the centre: its supporters page lists these key benefactors ... the German Federal Foreign Office ... Peter Moening Foundation ...",
+  "after": "Replaced by Arterritory (Swiss Embassy, DVV International), Artribune 2014 (Swiss Agency for Development and Cooperation) and Danish Cultural Institute (New Democracy Fund); German Federal Foreign Office and the other benefactors cut",
+  "sources": [
+   "https://www.artribune.com/?p=210118",
+   "https://arterritory.com/en/visual_arts/interviews/6878-the_centre_of_contemporary_art/",
+   "https://www.danishculture.com/blog/2023/09/22/hub-contemporary-art-tbilisi/"
+  ],
+  "reason": "cca.ge returned 502 on every page tried. SDC, DVV International and the New Democracy Fund are each confirmed on an opened page; the Federal Foreign Office has no opened page and was cut, as was the 5th Triennial overview line."
+ },
+ {
+  "id": "center-of-contemporary-art-tbilisi-tbilisi-triennial-tbilisi",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "connection not exact"
+  ],
+  "before": "Connection: the centre's listed benefactors are mostly foreign governments and foundations, which places its funding inside the field these laws regulate.",
+  "after": "Connection: the Swiss agency, DVV International and the Danish New Democracy Fund are foreign funders of the centre, the kind of funding these laws regulate. Freemuse describes the sector as a whole and does not name the centre.",
+  "sources": [
+   "https://www.freemuse.org/the-trap-has-new-rooms-art-freedom-and-resistance-in-georgia"
+  ],
+  "reason": "Freemuse (Musa Igrek, 25 March 2026): 2024 Law on Transparency of Foreign Influence (20 percent), 2025 Foreign Agents Registration Act (up to five years), Grants Law (government approval before foreign grants; up to six years after the 4 March 2026 amendment). It does not name CCA Tbilisi."
+ },
+ {
+  "id": "centraal-museum-utrecht",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported attendance figures",
+   "unsupported collection items",
+   "unsupported 'garden terrace and shop'",
+   "verdict: 'mainly public' / 'All are ordinary ... funders'",
+   "'led by' the Mondriaan Fund",
+   "absence: 'without years or amounts'",
+   "unsupported: 'Friends pay for membership'"
+  ],
+  "before": "Attendance across the museums was 417,000 in 2025 ...; mainly public ...; All are ordinary public, lottery, foundation and corporate cultural funders.",
+  "after": "In 2023 the three museums had 342,893 visitors, 93,666 at the Centraal Museum (English Wikipedia); public partners, funds and corporate sponsors ... ; bottom line lists the named partners without a verdict",
+  "sources": [
+   "https://www.centraalmuseum.nl/en/support-us/our-sponsors",
+   "https://nl.wikipedia.org/wiki/Centraal_Museum",
+   "https://www.utrecht.nl/nieuws/nieuwsbericht-gemeente-utrecht/overheidssteun-voor-utrechtse-culturele-instellingen"
+  ],
+  "reason": "The sponsor page shows Municipality of Utrecht, Friends Lottery (VriendenLoterij) and the Ministry of Education, Culture and Science as trusted partners and Mercis bv as main sponsor; funds and corporate partners appear as named logos (alt text). 2020 municipal news says the museum was among five organisations with a chance of state support."
+ },
+ {
+  "id": "centrale-fies-dro",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'local banking foundations'",
+   "operator and owner not tied to a page",
+   "verdict 'mixed public and private' is the centre's own claim"
+  ],
+  "before": "Centrale Fies: mixed public and private: ... local banking foundations",
+  "after": "Centrale Fies: public and private by the centre's own account: ...; Il Gaviale named in the website footer as operator; Hydro Dolomiti Energia described via Dolomiti Energia group page as a hydroelectric producer; Enel partnership kept as an undated Trentino portal statement",
+  "sources": [
+   "https://www.centralefies.it/aboutus/",
+   "https://lampoonmagazine.com/centrale-fies-dro-trento-performative-arts-barbara-boninsegna/",
+   "https://www.gruppodolomitienergia.it/attivita/produzione-rinnovabile.html"
+  ],
+  "reason": "Lampoon (Eugenia Pacelli, 18 September 2024): plant owned by Hydro Dolomiti Energia, partly still active. Dolomiti Energia group page: hydroelectric is its 'marchio di fabbrica', 1.5 GW installed. Il Gaviale società cooperativa, via Gramsci 13, Dro, is the footer operator. The Enel partnership line (Trentino culture portal, undated) is retained as stated; it is not a current funder claim."
+ },
+ {
+  "id": "centre-dart-la-panera-lleida",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "opening year conflict stated per source",
+   "unsupported: 'friends' scheme'",
+   "irrelevant data-controller line",
+   "verdict 'ordinary government cultural funders'"
+  ],
+  "before": "Inaugurated in 2003 ... English Wikipedia gives 1997 as the opening year.; A friends' scheme ... is listed; These are ordinary government cultural funders.",
+  "after": "The centre's own page says it was inaugurated in 2003, taking up the biennial begun in 1997; English Wikipedia gives 1997 as the year the centre opened; friends scheme, web-form line and verdict cut",
+  "sources": [
+   "https://www.lapanera.cat/ca/presentacio/centre",
+   "https://www.lapanera.cat/ca/presentacio/la-xarxa",
+   "https://en.wikipedia.org/wiki/Centre_d%27Art_la_Panera"
+  ],
+  "reason": "lapanera.cat fails WebFetch (certificate chain) and was read with curl. The centre calls itself 'un equipament públic, fruit de la cooperació entre l'Ajuntament de Lleida i el Departament de Cultura'. The visit page shows only a newsletter form headed 'Amics de La Panera'."
+ },
+ {
+  "id": "centro-de-arte-contemporáneo-de-quito-quito",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported 'sistema de museos y espacios culturales'",
+   "unsupported 'heritage buildings' attribution",
+   "verdict 'A city government's own money is an ordinary public funder'",
+   "funding header 'public' without a budget page"
+  ],
+  "before": "Centro de Arte Contemporáneo de Quito: public: Municipality of Quito, through the Fundación Museos de la Ciudad",
+  "after": "Centro de Arte Contemporáneo de Quito: run for the Municipality of Quito by the Fundación Museos de la Ciudad",
+  "sources": [
+   "https://fundacionmuseosquito.gob.ec/quienes-somos/",
+   "https://museosquito.gob.ec/espacios/centro-de-arte-contemporaneo/",
+   "https://www.expreso.ec/quito/vacaciones-quito-centro-arte-contemporaneo-ofrece-recorridos-exposiciones-vacacionales-287781.html"
+  ],
+  "reason": "The foundation calls itself a private non-profit working 'por encargo del Ilustre Municipio de Quito'; Expreso says the centre is part of the Municipality's cultural offer; no opened page states a budget line."
+ },
+ {
+  "id": "centro-de-arte-fundaci-n-ortiz-gurdi-n-le-n",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "arrest details loosely stated",
+   "unsupported: state-payments sentence is neutral information",
+   "unsupported: 'police cited ...' law date"
+  ],
+  "before": "Nicaraguan police arrested Luis Alberto Rivas Anduray ... on 15 June 2021, under a law passed in December 2020 ... The same article says Banpro handles some state payments",
+  "after": "Nicaraguan police arrested Luis Alberto Rivas Anduray, general manager of Banpro, on the night of Tuesday 15 June 2021 (Infobae, 16 June 2021). The police accused him of inciting foreign interference ... cited the law ... approved by the National Assembly in December 2020. Connection: ... The police action was against the sponsor's general manager, not the foundation.",
+  "sources": [
+   "https://www.infobae.com/america/america-latina/2021/06/16/el-regimen-de-daniel-ortega-no-detiene-sus-razias-arresto-a-luis-alberto-rivas-anduray-gerente-general-del-banco-de-la-produccion/",
+   "https://cultura.fundacionortizgurdian.org/",
+   "https://www.dantemag.com/2015/11/the-ortiz-gurdian-foundation-and-its-contribution-to-the-cultural-development-of-nicaragua-and-central-america/"
+  ],
+  "reason": "Infobae says he was detained 'este martes por la noche' and the article is dated 16 June 2021, so Tuesday 15 June is derived; it does not give the exact date. By the Policía de Nicaragua. Ramiro Ortiz Mayorga is named there as Banpro's president; the Ortiz-Gurdián foundation is not mentioned. The foundation site confirms Banpro's auspicio of the Managua centre (11 December 2013); DANTEmag confirms the Mariana Sansón prize and Promerica sponsorship."
+ },
+ {
+  "id": "centro-de-arte-fundaci-n-ortiz-gurdi-n-le-n",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'from traditional León families'",
+   "unsupported: 'the Ortiz-Gurdián Foundation is the Nicaraguan sponsor'",
+   "unsupported date: 'Banpro founded on 11 November 1991'",
+   "verdict 'ordinary private funders'",
+   "bottom-line 'Promerica ... whose president is' ambiguity"
+  ],
+  "before": "from traditional León families ... Banpro is a commercial bank, founded on 11 November 1991 ... A commercial bank and a family foundation are ordinary private funders.",
+  "after": "line removed; bottom line states the family money, Banpro sponsorship and the June 2021 arrest of Banpro's general manager",
+  "sources": [
+   "https://www.dantemag.com/2015/11/the-ortiz-gurdian-foundation-and-its-contribution-to-the-cultural-development-of-nicaragua-and-central-america/",
+   "https://cultura.fundacionortizgurdian.org/"
+  ],
+  "reason": "DANTEmag calls the founders 'art collectors from León'; it does not say 'traditional families'."
+ },
+ {
+  "id": "centro-pecci-prato",
+  "section": "OVERVIEW / FUNDING / CRITICISM",
+  "problems": [
+   "unsupported: 'design that recalls a textile factory'",
+   "unsupported: 'because of Covid commitments'",
+   "press item detail corrected: second dismissal notice not yet delivered, first dated 28 August 2023",
+   "Overall line: absence 'not its exhibitions'",
+   "Bini Smaghi 2022 attribution"
+  ],
+  "before": "Il Sole 24 Ore reports ... a 26 percent fall to EUR 635,000 in 2021 because of Covid commitments; Two of the 18 staff were dismissed without notice at the end of August 2023; Overall: ... not its exhibitions.",
+  "after": "... 26 percent fall to EUR 635,000 in 2021; Reports that two of the museum's 18 staff were dismissed, the first notice dated 28 August 2023 ...; Overall: Press criticism of the Pecci concerns its finances, its dependence on public money and its handling of staff.",
+  "sources": [
+   "https://www.artribune.com/?p=1007160",
+   "https://en.ilsole24ore.com/art/pecci-la-programmazione-artistica-fondamentale-l-intervento-pubblico-AE1xLuPC",
+   "https://www.lanazione.it/prato/cronaca/pecci-tempo-di-bilanci-previsto-347400f2"
+  ],
+  "reason": "Confirmed: Artribune, Livia Montagnoli, 29 August 2023, title as printed; Il Sole 24 Ore, Maria Adelaide Marchesoni, 26 December 2022 (the 'troppo vincolante' phrase is the author's own assessment); La Nazione 4 January 2025 forecast total EUR 3,196,470 with Comune EUR 1,158,000 and Regione EUR 775,000, about EUR 1.9 million of EUR 3.2 million. Artribune reports union and councillor criticism rather than criticising the centre itself, which is stated."
+ },
+ {
+  "id": "chale-wote-street-art-festival-accra",
+  "section": "OVERVIEW / FUNDING / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'persuaded the city of Accra' and 'James Fort Prison opened for the first time in a decade'",
+   "unsupported: ACCRA(dot)ALT 'platform for creative industries', 2010",
+   "misquote: 'we have no money ...'",
+   "wrong item title and date: 'review of the seventh Chale Wote'",
+   "'mainly admiring' verdict",
+   "absence: 'No amounts disclosed'",
+   "verdict 'state tourism, local government and media supporters'"
+  ],
+  "before": "Contemporary And: Lineo Segoete, review of the seventh Chale Wote (2017) ... Coverage in the art press is mainly admiring",
+  "after": "Contemporary And: Lineo Segoete, \"Collaborating Against the Odds\" (2017) ... Overall: One art-press piece reports an objection to the festival, from religious critics of a procession; the article itself does not criticise the festival.",
+  "sources": [
+   "https://contemporaryand.com/magazines/collaborating-against-the-odds",
+   "https://gna.org.gh/2023/08/chale-wote-2023-institutional-support-has-lessened-our-financial-burden-organisers/",
+   "https://accradotaltradio.com/993-2/"
+  ],
+  "reason": "Contemporary And, Lineo Segoete, 16 September 2017: fundamentalists 'were quick to call the festival evil' over the Mami Wata procession; more than 30,000 attendees. 2023 supporters confirmed on the festival's press release (Ministry of Tourism, Arts & Culture, Ghana Tourism Authority, Citi FM/TV, Institut Français, Korle Klottey Municipal Assembly) and by the Ghana News Agency; Multimedia Group as media partner in 2024 on MyJoyOnline."
+ }
+]

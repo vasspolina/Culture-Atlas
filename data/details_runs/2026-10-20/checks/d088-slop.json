@@ -1,0 +1,349 @@
+[
+ {
+  "id": "perm-state-art-gallery-perm",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Perm Diocese'",
+   "unsupported: '14 halls'"
+  ],
+  "before": "handed to the Perm Diocese in 2023; up to 14 halls (4,700 square metres) of exhibition space",
+  "after": "handed to the Russian Orthodox Church in 2023; up to 14 exhibition spaces (4,700 square metres)",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Пермская_государственная_художественная_галерея",
+   "https://m.vk.ru/@iskralsv-otkrylis"
+  ],
+  "reason": "Russian Wikipedia says the cathedral went to the Orthodox Church in 2023 and names the Perm Diocese only for a 2011 order; Iskra says 'up to 14 exhibition spaces'."
+ },
+ {
+  "id": "perm-state-art-gallery-perm",
+  "section": "Red flags: sanctioned bank as opening partner (kept)",
+  "problems": [
+   "flag check",
+   "unsupported: 'supplied the opening digital tour'",
+   "sanctions claim Wikipedia-only"
+  ],
+  "before": "Sber ... supplied the opening digital tour (Iskra). Sberbank has been under United States sanctions since February 2022 and European Union sanctions since July 2022 (Wikipedia).",
+  "after": "Sber is the gallery's named general partner of the opening season, which began in 2026 (gallery homepage), and built the digital tour \"History of the Place\" with its generative AI (Iskra). The United States Treasury announced sanctions on Sberbank on 24 February 2022 (US Treasury press release); Wikipedia dates the European Union sanctions to July 2022.",
+  "sources": [
+   "https://permartmuseum.ru/",
+   "https://m.vk.ru/@iskralsv-otkrylis",
+   "https://home.treasury.gov/news/press-releases/jy0608"
+  ],
+  "reason": "KEPT as a Sanctions flag. Homepage text (Russian, undated): 'Сбер — генеральный партнер сезона открытия' (translated: Sber, general partner of the opening season); the page states no payment, but Iskra (a regional newspaper, article dated 3 April, year not shown, citing the Perm Krai government site) states Sber's in-kind role: it created the digital tour 'История места' with its generative AI and a GigaChat-based guide. A current named partner with a stated in-kind role counts under the House rules. US Treasury release of 24 February 2022 opened and cites the Sberbank sanctions; the EU date (July 2022) could not be opened on EUR-Lex (page returned empty) and stays attributed to Wikipedia."
+ },
+ {
+  "id": "perm-state-art-gallery-perm",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "claim beyond source: 'sponsored'"
+  ],
+  "before": "which sponsored the 2026 opening season",
+  "after": "which the gallery names as general partner of its 2026 opening season and which built its digital tour",
+  "sources": [
+   "https://permartmuseum.ru/",
+   "https://m.vk.ru/@iskralsv-otkrylis"
+  ],
+  "reason": "No page says Sber paid; the page states 'general partner' and Iskra the in-kind digital tour."
+ },
+ {
+  "id": "perm-state-art-gallery-perm",
+  "section": "SOURCES",
+  "problems": [
+   "missing source"
+  ],
+  "before": "(no Treasury URL)",
+  "after": "added https://home.treasury.gov/news/press-releases/jy0608",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jy0608"
+  ],
+  "reason": "Source for the US sanctions date."
+ },
+ {
+  "id": "permm-museum-of-contemporary-art-perm",
+  "section": "Red flags: state censorship or punishment (moved to WIDER CONTEXT)",
+  "problems": [
+   "flag not supported by House rule: acting bodies neither fund nor control the museum"
+  ],
+  "before": "Red flags: state censorship or punishment (searches, prosecutor suit, criminal case)",
+  "after": "Heading removed; points moved to WIDER CONTEXT as dated state actions with actors named (investigators, Perm Krai prosecutor's office, Leninsky and Dzerzhinsky District Courts, Perm Regional Court); last point states the controlling Perm Krai Ministry of Culture is not the actor in these pages.",
+  "sources": [
+   "https://www.svoboda.org/a/permskaya-prokuratura-trebuet-uvolit-eks-direktora-muzeya-permm-nailyu-allahverdievu-za-utratu-doveriya-/33268601.html",
+   "https://meduza.io/news/2024/12/05/glava-permskogo-muzeya-sovremennogo-iskusstva-nailya-allahverdieva-ushla-v-otstavku-u-nee-prohodili-obyski-po-delam-petra-verzilova-i-marata-gelmana",
+   "https://www.svoboda.org/a/allahverdiyeva-ugolovnoe-delo/33361918.html"
+  ],
+  "reason": "RULING: MOVED to Wider context. Opened pages: RBC Perm (22 Nov 2024) names no agency for the 21 Nov searches; The Art Newspaper Russia (Sofia Bagdasarova, 'Музей современного искусства PERMM заявил о продолжении работы', 22 Nov 2024) says the Perm FSB declined to comment; Meduza (5 Dec 2024) cites Kommersant: the Ministry of Culture said she resigned 'по собственному желанию' and her last day was 6 December; Radio Svoboda (8 Jan 2025) shows the prosecutor's office as plaintiff and the ministry only as a third party; Radio Svoboda 27 and 31 March 2025: 'the investigation' (agency unnamed, opened after citizens' appeals per ProPerm); Meduza 1 July 2025: Dzerzhinsky District Court arrest, cancelled by the Perm Regional Court. No page shows the controlling ministry acted against the museum. Radio Svoboda 31 March 2025 also reports the ministry stated in 2024 that a conflict of interest was noted in her work: a statement, not a sanction, left out."
+ },
+ {
+  "id": "permm-museum-of-contemporary-art-perm",
+  "section": "WIDER CONTEXT / criminal case",
+  "problems": [
+   "unsupported: 'shown in 2011 and 2012'",
+   "unsupported: 'resigned on 6 December 2024'",
+   "unsupported: 'conflict of interest' suit date 'Late 2024'"
+  ],
+  "before": "works from the museum's collection shown in 2011 and 2012; Allakhverdieva resigned on 6 December 2024; Late 2024: prosecutor sued over contracts made under a conflict of interest",
+  "after": "works ... shown at PERMM in the early 2010s (Radio Svoboda, 31 March 2025); her last day of work would be 6 December 2024 (Kommersant via Meduza); prosecutors, from November 2024, challenged several museum deals involving people close to the leadership (Radio Svoboda, 8 January 2025)",
+  "sources": [
+   "https://www.svoboda.org/a/truba-angelu-v-sotssetyah-obsuzhdayut-delo-naili-allahverdievoy/33365158.html",
+   "https://www.svoboda.org/a/permskaya-prokuratura-trebuet-uvolit-eks-direktora-muzeya-permm-nailyu-allahverdievu-za-utratu-doveriya-/33268601.html"
+  ],
+  "reason": "The 2011 and 2012 dates appeared only in a search snippet; opened pages say 'early 2010s'. Svoboda says deals involved people close to leadership, not 'conflict of interest' in its own voice. March 2024 search: Meduza calls it the 'artists' case', The Art Newspaper Russia a treason case; text now says only 'a criminal case involving Petr Verzilov'."
+ },
+ {
+  "id": "permm-museum-of-contemporary-art-perm",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'early public questions focused on spending'",
+   "unsupported: 'arranged by the regional culture ministry'"
+  ],
+  "before": "Russian Wikipedia says early public questions focused on spending from the regional budget, and that an audit launched in 2011 was never made public. The move to Krisanova Street was arranged by the regional culture ministry",
+  "after": "In late January 2023 the Perm Krai Ministry of Culture said the museum would move to Krisanova Street; the building was advertised for lease at 6.2 million rubles a month (Ura.ru via Rambler, 21 February 2023).",
+  "sources": [
+   "https://finance.rambler.ru/realty/50250611-v-permi-vladelets-zdaniya-v-kotoroe-dolzhen-pereehat-muzey-permm-ischet-arendatorov/",
+   "https://ru.wikipedia.org/wiki/Пермский_музей_современного_искусства"
+  ],
+  "reason": "Wikipedia states only that the audit results remain unknown (an absence): cut. Rambler says the ministry announced the move, not that it arranged it. Krisanova move on 1 September 2023 and reopening in late October 2023 confirmed by Russian Wikipedia."
+ },
+ {
+  "id": "permm-museum-of-contemporary-art-perm",
+  "section": "WIDER CONTEXT / Novaya Gazeta",
+  "problems": [
+   "Chirkunov role unsupported"
+  ],
+  "before": "Governor Oleg Chirkunov and Gordeev backed it",
+  "after": "Connection point now says the actors are not the ministry; Chirkunov claim removed; Novaya Gazeta rallies dated June 2011 and April 2012",
+  "sources": [
+   "https://novayagazeta.ru/articles/2024/11/23/permskaia-kulturnaia-revoliutsiia-final"
+  ],
+  "reason": "Novaya Gazeta (Julietta Sarkisyan, 'Пермская «культурная революция». Финал', 23 Nov 2024) lists Chirkunov only as governor among key figures."
+ },
+ {
+  "id": "pica-perth",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported attribution: judge named to Canberra Times",
+   "connection to Minderoo"
+  ],
+  "before": "On 12 May 2026 the Federal Court, with Justice Stephen Burley, ordered ... (The Canberra Times, Aaron Bunch, 12 May 2026; ArtAsiaPacific, Kalani Ko, 15 May 2026)",
+  "after": "Canberra Times carries the order and amounts; ArtAsiaPacific carries Justice Burley and the finding of no consent; connection bullet now cites Wikipedia (Minderoo founded by Andrew and Nicola Forrest) and The Canberra Times ('Andrew Forrest's Fortescue Metals Group') plus the PICA Annual Report 2024",
+  "sources": [
+   "https://www.canberratimes.com.au/story/9244353/indigenous-group-claims-landmark-win-over-mining-giant/",
+   "https://www.artasiapacific.com/news/yindjibarndi-awarded-australias-largest-native-title-compensation/",
+   "https://en.wikipedia.org/wiki/Minderoo_Foundation"
+  ],
+  "reason": "RULING: KEPT in Wider context. Neither news page mentions PICA or Minderoo, but Wikipedia ties the Forrests to Minderoo and the Canberra Times ties Forrest to Fortescue, and the annual report (page 'Capacity'; Hatched pages) states Minderoo funds Hatched, the Hatched Artist-in-Residence and two roles. Minderoo also listed under Trusts and Foundations 2024. A company case of the funder's founder is not a flag: dated Wider context."
+ },
+ {
+  "id": "pica-perth",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "Minderoo wealth claim unattributed"
+  ],
+  "before": "whose wealth is Fortescue shares",
+  "after": "which Wikipedia says received Fortescue shares worth A$5 billion from the Forrests in 2023",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Minderoo_Foundation"
+  ],
+  "reason": "Wikipedia-only claim attributed."
+ },
+ {
+  "id": "pica-perth",
+  "section": "SOURCES",
+  "problems": [
+   "source names nothing"
+  ],
+  "before": "https://pica.org.au/support/partners/",
+  "after": "removed",
+  "sources": [
+   "https://pica.org.au/support/partners/"
+  ],
+  "reason": "The page lists logos with no names in text (partners known only from file names); no claim in the report rests on it. Revenue A$2,840,093 (2023: A$2,568,193), deficit A$67,550, 169,720 and 153,592 visitors, donors and board confirmed in PICA Annual Report 2024 (read via text extraction)."
+ },
+ {
+  "id": "petach-tikva-museum-of-art",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unconnected criticism (Regev funding cuts) with no link to the museum",
+   "municipality control not shown"
+  ],
+  "before": "Marisa Mazria Katz and Mairav Zonszein ... describe funding cuts, threatened legislation and self-censorship in Israeli culture under Culture Minister Miri Regev. Connection to the museum: ...",
+  "after": "2014: The New York Review of Books (... 22 March 2018) reports that after pressure from a few right-wing activists and Mothers of Soldiers Against B'Tselem, the Petah Tikva municipality called on the museum to close the video installation of Arkadi Zaides's Archive ... The museum refused.",
+  "sources": [
+   "https://www.nybooks.com/online/2018/03/22/israels-war-on-culture/",
+   "https://musraramixfest.org.il/2022/program/capture-practice/",
+   "https://en.wikipedia.org/wiki/Petah_Tikva_Museum_of_Art"
+  ],
+  "reason": "NYRB (Marisa Mazria Katz and Mairav Zonszein, 'Israel's War on Culture', 22 March 2018) says the municipality 'called on its local museum' to close the installation and 'the museum stood its ground'; it states no funding or governing relation. The museum's About page and Wikipedia also state none. Kept as a dated event with the actors named; the general Regev paragraph has no stated link to the museum and was cut. Musrara site confirms Capture Practice was commissioned by the museum in 2014."
+ },
+ {
+  "id": "petach-tikva-museum-of-art",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict wording"
+  ],
+  "before": "The money behind the museum that is documented is private giving: Friends memberships of 1,800 and 23,000 NIS",
+  "after": "The documented money is private giving: the Friends association, whose memberships cost 1,800 and 23,000 NIS a year, and British Friends of the Art Museums of Israel...",
+  "sources": [
+   "https://www.petachtikvamuseum.com/en/?p=14242",
+   "https://bfami.org/museums/petach-tikva-museum-of-art/"
+  ],
+  "reason": "Tiers are prices, not receipts; Friends page: association founded 2015, 1,800 NIS Friend, 23,000 NIS Patron, board with Reut Ferster as chair; BFAMI lists four programmes under 'PROGRAMS SUPPORTED BY BFAMI'."
+ },
+ {
+  "id": "pica-portland",
+  "section": "FUNDING",
+  "problems": [
+   "funders known only from logos identified by file name",
+   "absence sentence"
+  ],
+  "before": "Government: the support page lists the City of Portland, the Oregon Arts Commission, the Regional Arts & Culture Council and the Oregon Cultural Trust ... Mellon, Meyer Trust, Murdock and JMS Catalyst Fund logos also appear. ... The support page gives no tiers, years or amounts.",
+  "after": "Government: the TBA page says PICA receives support from the Oregon Arts Commission ... and that TBA:26 is supported by the Oregon Cultural Trust. ... (logo-only names and absence sentence cut)",
+  "sources": [
+   "https://www.pica.org/support",
+   "https://www.pica.org/tba",
+   "https://projects.propublica.org/nonprofits/organizations/931177971"
+  ],
+  "reason": "City of Portland, RACC, Mellon, Meyer Trust, Murdock and JMS Catalyst Fund appear only as logos whose names come from file names: cut. NW Natural appears nowhere on the page: not in the report. Pacific Power Foundation is in the text donor list with no year or amount: a listing, no flag, kept as a listed donor. ProPublica: FY June 2025 revenue $2,018,235, contributions $1,817,964 (90.1 percent), expenses $2,474,760, net assets $1,371,707; FY2024 revenue $2,412,312, expenses $2,331,200; filings from FY May 2002 to FY June 2025."
+ },
+ {
+  "id": "pica-portland",
+  "section": "FUNDING verdict and BOTTOM LINE",
+  "problems": [
+   "city arts money unsupported"
+  ],
+  "before": "with city and state arts money / with City of Portland and Oregon arts agency support",
+  "after": "with state arts money / with support from the Oregon Arts Commission and the Oregon Cultural Trust",
+  "sources": [
+   "https://www.pica.org/tba"
+  ],
+  "reason": "Only state bodies are named in page text."
+ },
+ {
+  "id": "pinault-collection-bourse-de-commerce-paris",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "claim beyond source: 'urged Parliament to approve'",
+   "claim beyond source: 'social media critics questioned whether he should make such proposals'"
+  ],
+  "before": "urged Parliament to approve 90 percent tax relief for Notre-Dame donations; social media critics questioned whether he should make such proposals as Pinault's adviser, and Artémis then declined any tax relief on its 100 million euro Notre-Dame donation",
+  "after": "called for tax relief of up to 90 percent for companies donating to rebuild Notre-Dame; critics on social media questioned his standing to offer such advice given his role as an adviser to François Pinault, and Artémis, which pledged 100 million euros, said its donation would not be tax-deductible",
+  "sources": [
+   "https://www.theartnewspaper.com/2019/04/18/director-of-pinault-collection-proposes-controversial-90percent-tax-breaks-for-notre-dame-donors"
+  ],
+  "reason": "The Art Newspaper (Gareth Harris, 'Director of Pinault Collection proposes controversial 90% tax breaks for Notre Dame donors', 18 April 2019) confirmed: Artemis said the family would not claim the tax benefit under the 2003 sponsorship law for the Bourse de Commerce museum, and 'out of the question to charge French taxpayers' for the 100 million euro donation."
+ },
+ {
+  "id": "pinault-collection-bourse-de-commerce-paris",
+  "section": "FUNDING",
+  "problems": [
+   "claim beyond source: Château Latour held directly"
+  ],
+  "before": "plus Christie's and Château Latour (Wikipedia)",
+  "after": "plus Christie's and, through its wine arm Artémis Domaines, Château Latour (Wikipedia)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Groupe_Art%C3%A9mis"
+  ],
+  "reason": "Wikipedia says Latour is held through Artémis Domaines."
+ },
+ {
+  "id": "pastificio-cerere-rome",
+  "section": "FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "absence sentences",
+   "unsupported: 'library and archive'",
+   "figure rounding",
+   "attribution"
+  ],
+  "before": "The foundation publishes its financial statements ...; The foundation's Partnership page shows partner and technical sponsor logos without names; 32,204 euros; runs ... a library and archive; Misciattelli, whose family owned part of the property, is its president",
+  "after": "(both sentences cut); 32,203.50 euros; runs exhibitions, workshops, artist residencies, educational programmes and public and participatory art projects (governance page); Misciattelli took a room in the building in 1998 on his family's property and is president (history and governance pages)",
+  "sources": [
+   "https://www.pastificiocerere.it/wp-content/uploads/2025/05/Rendiconto-al-31.12.2024.pdf",
+   "https://www.pastificiocerere.it/wp-content/uploads/2026/06/Pastificio-Cerere-Bilancio-2025.pdf",
+   "https://www.pastificiocerere.it/chi-siamo/mission-e-governance/"
+  ],
+  "reason": "CONFIRMED from the statements: 2024 total income 66,503.49 euros, elargizioni liberali 58,000, Ministry of the Interior 8,500 for 'Radical Pleasure', 'Anche il sole sorge' costs 27,931.24 with MIC and SIAE 'Per Chi Crea'; 2025 total 81,350.44, SIAE 'Per Chi Crea 2023' 30,000, 'Italian Council XIV' 32,203.50, elargizioni liberali 19,141.10. Partnership page removed from SOURCES because it names no partner."
+ },
+ {
+  "id": "pejman-foundation-argo-factory",
+  "section": "FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "attribution error",
+   "absence sentence",
+   "unsupported: 'Iranian'",
+   "unsupported: 'bought from the state' stated as fact",
+   "unsupported: closure in 1970s on Argo website"
+  ],
+  "before": "Al-Monitor reports that Pejman said there was no government funding...; Wikipedia says the foundation bought the building from the state; ...subsidiary of Kalle's food industry...; The page gives no sponsorship years or amounts; three Iranian companies",
+  "after": "Al-Monitor reports that there is no government funding to support restoration projects like this one, and that Pejman cited years of crippling sanctions; Wikipedia says the foundation decided to acquire the factory from the state; Castle Noush, one of Kalle's food industry subsidiaries; sponsors named only as the page names them (Brutal Beton, Barad a brand of Pars Diba Chemical Industries, Castle Noush); 'Iranian' dropped",
+  "sources": [
+   "https://pejman.foundation/argofactory/sponsors/",
+   "https://www.al-monitor.com/originals/2025/03/once-crumbling-relic-old-iran-brewery-reborn-arts-hub",
+   "https://www.merip.org/2026/08/closed-until-further-notice-keeping-a-tehran-art-institution-alive-during-wartime/"
+  ],
+  "reason": "The sponsors page gives no country for the companies. Al-Monitor (Ramin Khanizadeh and Menna Zaki, 6 March 2025) states the no-government-funding point in its own voice. MERIP (Hamidreza Pejman and Parham Ghalamdar, 20 August 2026) confirms the 28 February 2026 war start, 'closed until further notice', the unidentified institution that shut the third screening, and the sponsors' withdrawal."
+ },
+ {
+  "id": "parrish-art-museum-water-mill",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'named for'",
+   "list wording",
+   "grammar"
+  ],
+  "before": "Named for its founder...; under-18s ...; the Southampton School District in the same tier; The 2024 donor list, and ProPublica filings",
+  "after": "The museum carries the surname of its founder...; children 18 and under, ... veterans and active-duty military; residents of the Southampton School District; The 2024 donor list and ProPublica filings",
+  "sources": [
+   "https://parrishart.org/donor-recognition/",
+   "https://projects.propublica.org/nonprofits/organizations/111782495",
+   "https://parrishart.org/visit/"
+  ],
+  "reason": "Donor page lists 'Residents of Southampton School District' in the top tier; ProPublica FY2024 revenue $14,728,028, contributions $12,917,257, expenses $7,300,783, net assets $44,014,110; FY2023 revenue $4,715,317, expenses $6,149,125. Bloomberg Philanthropies is on the donor list at $20,000 to $49,999 with no protest at the museum named on any opened page: listing, no flag."
+ },
+ {
+  "id": "pera-museum-istanbul",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "claim beyond source: 'privately funded', 'paid for by', 'institutional backers'"
+  ],
+  "before": "Pera Museum (Istanbul): privately funded by a family foundation...; shows the foundation ... as its institutional backers; paid for by the Suna and İnan Kıraç Foundation, set up in 2003 by members of the Kıraç family",
+  "after": "private: founded by a family foundation...; credits the foundation and the Istanbul Research Institute in the page footer; founded by the Suna and İnan Kıraç Foundation, set up in 2003 by Suna, İnan and İpek Kıraç",
+  "sources": [
+   "https://peramuseum.org/Content/suna-and-inan-kirac-foundation/60",
+   "https://www.sunaveinankiracvakfi.org.tr/en/corporate/founders/45",
+   "https://en.wikipedia.org/wiki/Pera_Museum"
+  ],
+  "reason": "Pages state the foundation founded the museum and carries out its arts work through it; none states it pays for it. Koç ties kept as career facts (Suna Kıraç 1961 to 2010 Vice Chair; İnan Kıraç CEO Koç Group 1994 to 1998; İpek Kıraç Koç Holding board since 2016, per the foundation's corporate page), no flag."
+ },
+ {
+  "id": "picha-lubumbashi-biennale-lubumbashi",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "claim beyond source",
+   "filler 'and more'"
+  ],
+  "before": "ArtReview reports that the Biennale operates without state support (Louise Darblay, interview with Sammy Baloji, 18 January 2021). ... more than 6,000 euros",
+  "after": "ArtReview (Louise Darblay, \"Artist Sammy Baloji on Colonial Legacies, New Stories and Creating the Lubumbashi Biennale\", 18 January 2021) asked how the Biennale is maintained \"without state support\"; Baloji answered that \"we're not really expecting any support\". ... over 6,000 euros",
+  "sources": [
+   "https://artreview.com/artist-sammy-baloji-colonial-legacies-lubumbashi-biennale/",
+   "https://www.theartnewspaper.com/2026/08/19/artist-led-space-in-the-democratic-republic-of-congo-launches-urgent-call-for-funding"
+  ],
+  "reason": "PRESS ITEMS KEPT: The Art Newspaper, Gameli Hamelo, 'Artist-led space in the Democratic Republic of the Congo launches 'urgent call' for funding', 19 August 2026 (founded 2008; self-funded by founders with private donors and French and Belgian cultural agencies; no state funding; GoFundMe 10,000 euro target, over 6,000 raised; Baloji 'fragile'; Bamako Encounters 2007, Simon Njami; Lubumbashi 'second largest city'). ArtReview, Louise Darblay, 'Artist Sammy Baloji on Colonial Legacies, New Stories and Creating the Lubumbashi Biennale', 18 January 2021. The 2026 Biennale sponsor logos page is not used in the report."
+ },
+ {
+  "id": "pier-arts-centre-stromness",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "verdict 'mainly public' without a page",
+   "absence clause 'with no years or amounts'",
+   "'funded by' beyond source"
+  ],
+  "before": "Pier Arts Centre: mainly public and charitable: ...; lists ... as funders and supporters, with no years or amounts; funded by Creative Scotland and Orkney Islands Council",
+  "after": "Pier Arts Centre: charity supported by Creative Scotland and Orkney Islands Council; says the centre is supported by ...; supported by Creative Scotland and Orkney Islands Council",
+  "sources": [
+   "https://www.pierartscentre.com/partnerships-awards",
+   "https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC014815",
+   "https://www.pierartscentre.com/about"
+  ],
+  "reason": "OSCR confirmed: income 618,369 pounds and expenditure 608,698 pounds to 31 March 2025; 1,394,112 and 644,308 to March 2024; 620,615 and 664,316 to March 2023; nine trustees as listed. Page says 'supported by' Creative Scotland and Orkney Islands Council; the 'held in trust for Orkney' phrase is on the history page."
+ }
+]

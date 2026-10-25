@@ -1,0 +1,369 @@
+[
+ {
+  "id": "copenhagen-contemporary-copenhagen",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'a harbour district a short distance from central Copenhagen'",
+   "unsupported: 'Darcy's cafe and a picnic area in Hall 4', 'Aftershock in Hall 5'",
+   "unsupported: 'lifts to all three floors'"
+  ],
+  "before": "Contemporary art centre on Refshaleøen, a harbour district a short distance from central Copenhagen ... the permanent James Turrell work Aftershock in Hall 5, the Darcy's cafe and a picnic area in Hall 4.",
+  "after": "Contemporary art centre on the Refshaleøen peninsula, close to the city's opera house (The Art Newspaper) ... the permanent James Turrell work Aftershock and the cafe Darcy's. ... lifts on all floors",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/06/27/copenhagens-new-kunsthalle-for-huge-site-specific-art-installations-opens-in-refurbished-shipyard",
+   "https://copenhagencontemporary.org/en/visit",
+   "https://copenhagencontemporary.org/en/accessibility"
+  ],
+  "reason": "The Art Newspaper gives the opera-house location and no distance; no opened page names Hall 4, Hall 5 or a picnic area; the accessibility page says elevators on all floors. Faurschou 'initiated' is from The Art Newspaper, 'founded the Foundation in 2014' from the About page."
+ },
+ {
+  "id": "copenhagen-contemporary-copenhagen",
+  "section": "FUNDING",
+  "problems": [
+   "filler list opener '2026 funders and supporters listed on its About page: 15.' (reads as a count)",
+   "'paid for' stronger than the source"
+  ],
+  "before": "Augustinus Fonden: a donation from the foundation paid for the 2024 acquisition of Aftershock.",
+  "after": "Augustinus Fonden: the annual report 2024 states that, thanks to a donation from the foundation, Aftershock became the museum's first permanent acquisition in 2024 (translated from Danish). Its About page lists 22 supporters for 2026: ...",
+  "sources": [
+   "https://copenhagencontemporary.org/en/about/",
+   "https://pub-9197c3231b124e16ba861d7731d9ca6c.r2.dev/wp-content/uploads/2025/05/Aarsrapport_2024_Copenhagen_Contemporary-Fonden_ERST.pdf",
+   "https://copenhagencontemporary.org/en/visit"
+  ],
+  "reason": "Annual report text (read from the PDF): 'Takket være en gavmild donation fra Augustinus Fonden blev Aftershock i 2024 den første erhvervelse'. Net revenue 41,056,544, foundation support 25,799 thousand, public grants 10,852 thousand, Ministry of Culture 5,308,334, City 5,000,000, Statens Kunstfond 543,672 all confirmed. The About page lists 22 names."
+ },
+ {
+  "id": "copenhagen-contemporary-copenhagen",
+  "section": "Red flags: tobacco",
+  "problems": [
+   "unsupported: 'commercial foundation'"
+  ],
+  "before": "Det Obelske Familiefond: a commercial foundation established in 1956 by Asta Obel that owns C.W. Obel A/S",
+  "after": "Det Obelske Familiefond: a foundation established in 1956 by Asta Obel that is the sole owner of the investment company C.W. Obel A/S (lex.dk)",
+  "sources": [
+   "https://lex.dk/Det_Obelske_Familiefond",
+   "http://www.st-group.com/investor/share-information/",
+   "https://cwobel.dk/investeringer/scandinavian-tobacco-group/?lang=en"
+  ],
+  "reason": "Confirmed: Chr. Augustinus Fabrikker more than 25 percent and C.W. Obel more than 10 percent of Scandinavian Tobacco Group as of 1 May 2025; Augustinus Fonden established 1942; Obelske established 1956. The pages give only the lower bounds."
+ },
+ {
+  "id": "copenhagen-contemporary-copenhagen",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict 'mainly' and 'large stakes' without figures"
+  ],
+  "before": "Copenhagen Contemporary is funded mainly by Danish private foundations (DKK 25.8 million in 2024) with DKK 10.9 million in state and Copenhagen city grants. ... hold large stakes ... Augustinus Fonden paid for the 2024 Aftershock acquisition.",
+  "after": "In 2024 Copenhagen Contemporary received DKK 25.8 million in foundation support and DKK 10.9 million in public grants, against net revenue of DKK 41.06 million. ... through Chr. Augustinus Fabrikker (more than 25 percent) and C.W. Obel (more than 10 percent), and a donation from Augustinus Fonden made the 2024 Aftershock acquisition possible.",
+  "sources": [
+   "https://pub-9197c3231b124e16ba861d7731d9ca6c.r2.dev/wp-content/uploads/2025/05/Aarsrapport_2024_Copenhagen_Contemporary-Fonden_ERST.pdf",
+   "http://www.st-group.com/investor/share-information/"
+  ],
+  "reason": "Figures stated instead of a verdict adjective; funding headline no longer says 'mainly'."
+ },
+ {
+  "id": "compton-verney-kineton",
+  "section": "FUNDING",
+  "problems": [
+   "claim from logos only: corporate supporters Silson and Design Penguin",
+   "National Lottery Heritage Fund known only from a logo",
+   "unsupported: Compton Verney Fund 'formed to support the gallery'"
+  ],
+  "before": "The gallery's support page ... lists Arts Council England and the National Lottery Heritage Fund as public funders. Compton Verney Fund, a separate registered charity (1134907) formed to support the gallery ... Corporate supporters shown ... include Silson and Design Penguin.",
+  "after": "The gallery's support page says over 70 per cent of its income comes from visitors, supporters and funders, and carries the line \"Supported using public funding by Arts Council England\".",
+  "sources": [
+   "https://www.comptonverney.org.uk/join-support/",
+   "https://www.comptonverney.org.uk/join-support/corporate-support/",
+   "https://findthatcharity.uk/orgid/GB-CHC-1196705.json"
+  ],
+  "reason": "The corporate support page names sponsors only through logo images, the support page names the Heritage Fund only in a logo, and no opened page ties the Compton Verney Fund charity to the gallery. Income 5,066,800 and spending 4,913,908 for the year to 31 March 2026, 113 employees, 14 trustees confirmed from Find that Charity."
+ },
+ {
+  "id": "compton-verney-kineton",
+  "section": "Red flags: Gambling",
+  "problems": [
+   "single weak wording: 'Pools heir' alone",
+   "dash inside quotation",
+   "heading 'gambling money in the founder's endowment' not tied to named sources"
+  ],
+  "before": "Sir Peter Moores ... chaired Littlewoods from 1977 to 1980 ... The Stratford Herald calls him 'the Pools heir' and reports that his endowment supplies about 37 per cent of the gallery's funding today.",
+  "after": "Red flags: Gambling. Founder fortune (Wikipedia: chaired the Littlewoods football pools and retail business 1977 to 1980; father founded it; family no longer owns it). Slipped Disc (Norman Lebrecht, 24 March 2016): 'Peter Moores inherited a half-share of a football pools fortune'. The Art Newspaper (Giles Waterfield, 2016): father founded Littlewoods, Peter succeeded him as chairman in 1977, 'extremely rich'; the gallery 'was given an endowment'. Stratford Herald (Gill Sutherland, 10 March 2025): endowment of the founder contributes around 37 per cent of funding.",
+  "sources": [
+   "https://stratford-herald.com/news/art-gallery-forced-to-reduce-opening-times-9407626",
+   "https://slippedisc.com/2016/03/english-opera-backer-dies/",
+   "https://www.theartnewspaper.com/2016/05/01/sir-peter-moores-the-contradictory-character-of-a-generous-patron-of-the-arts"
+  ],
+  "reason": "Founder-fortune ruling applies: Moores is the founder and an heir of the owning family of a football pools business (gambling), and the Herald says the endowment still funds the gallery today, so the flag stays under Gambling. Two independent pages (a blog and The Art Newspaper) support the family fortune beyond the Herald's wording. The flag rests on the family-owned pools business, which the pages describe as football pools and retail."
+ },
+ {
+  "id": "compton-verney-kineton",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Domesday-listed'",
+   "unsupported: 'the largest collection of British naive art' (per Wikipedia)",
+   "unsupported: Stanton Williams credited to the history page",
+   "'near-derelict', 'charity created for the gallery' not on opened pages",
+   "'bookable mobility vehicle' (page says tramper)"
+  ],
+  "before": "a Domesday-listed manor ... requisitioned by the War Office ... Stanton Williams ... British folk art (the largest collection of British naive art in the UK, per Wikipedia) ... bookable mobility vehicle",
+  "after": "the 14th Baron Willoughby de Broke commissioned Robert Adam ... the army requisitioned it ... the gallery's history page gives £45 million ... Wikipedia says a modern wing was designed by Stanton Williams ... British folk art (Wikipedia) ... a tramper bookable in advance",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Compton_Verney_House",
+   "https://en.wikipedia.org/wiki/Compton_Verney_Art_Gallery",
+   "https://www.comptonverney.org.uk/visit/"
+  ],
+  "reason": "Wikipedia pages do not mention Domesday, the War Office or the naive-art claim; the history page does not mention Stanton Williams."
+ },
+ {
+  "id": "compton-verney-kineton",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "dash in quotation",
+   "verdict 'mainly by visitors'",
+   "claim from logos"
+  ],
+  "before": "an endowment from founder Sir Peter Moores, 'the Pools heir', contributes about 37 per cent ... Compton Verney is an independent charity funded mainly by visitors ... the National Lottery Heritage Fund and local firms also support it.",
+  "after": "Gill Sutherland wrote ... the endowment of its founder, Sir Peter Moores, whom it calls 'the Pools heir', 'contributes around 37 per cent of funding' ... Compton Verney is a charity whose income was £5.07 million in the year to March 2026 ... Its biggest income stream is visitors.",
+  "sources": [
+   "https://stratford-herald.com/news/art-gallery-forced-to-reduce-opening-times-9407626"
+  ],
+  "reason": "Herald wording is exact: 'around 37 per cent', 'around three per cent' from ACE, 'biggest income stream comes from visitors'. ACE 3 percent and income figure confirmed."
+ },
+ {
+  "id": "craft-contemporary-los-angeles",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Programme line (about six exhibitions a year, monthly Maker Nights) credited to the Form 990",
+   "admission details credited to a press release",
+   "'seniors with ID'"
+  ],
+  "before": "Programme: about six exhibitions a year, monthly Maker Nights, workshops, school programmes and public programmes (Form 990, FY2025). ... $10 for students, educators and seniors with ID ... (Craft Contemporary press release, 8 July 2026)",
+  "after": "(line cut) ... $10 for adults 65 and over, students and educators; free for children 12 and under, EBT holders and members; pay what you wish on Sundays (Craft Contemporary visit page)",
+  "sources": [
+   "https://www.craftcontemporary.org/visit/",
+   "https://www.craftcontemporary.org/about/"
+  ],
+  "reason": "The programme figures appear in no opened page; admission is on the visit page, not in the press release."
+ },
+ {
+  "id": "craft-contemporary-los-angeles",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'through August 2028' and '$250,000 campaign' (could not be read in the opened PDF)",
+   "unsupported: tiers 'from under $250'"
+  ],
+  "before": "Perenchio Foundation: a $560,000 unrestricted grant announced on 8 July 2026, running through August 2028 ... $250,000 fundraising campaign",
+  "after": "Perenchio Foundation: a $560,000 unrestricted grant, announced by the museum on 8 July 2026, that includes the establishment of operating reserves (Craft Contemporary press release).",
+  "sources": [
+   "https://www.craftcontemporary.org/wp-content/uploads/2026/07/Craft-Contemporary_Perenchio-Grant-Announcement-7-8-26.pdf",
+   "https://www.craftcontemporary.org/supporters/",
+   "https://projects.propublica.org/nonprofits/organizations/237442244"
+  ],
+  "reason": "Decoded text of the release confirms $560,000 unrestricted, dated July 08, 2026, and operating reserves; the other terms did not decode. Form 990 confirms revenue 1,068,541, contributions 972,504, government grants 36,662; the donor list has 13 foundations, 8 corporate partners, 7 community partners."
+ },
+ {
+  "id": "craft-contemporary-los-angeles",
+  "section": "Red flags: Fossil fuels",
+  "problems": [
+   "wealth statement not attributed",
+   "'Getty Foundation's grants come from the Trust' stated as fact"
+  ],
+  "before": "The Getty Foundation's grants come from the J. Paul Getty Trust, whose wealth traces to oil ...",
+  "after": "The Getty Foundation is listed under Foundations on the annual donor recognition list for 1 July 2025 to 30 June 2026. Wikipedia states that J. Paul Getty founded the Getty Oil Company in 1942 and left nearly $660 million in Getty Oil stock to the J. Paul Getty Trust ... The Getty Foundation began in 1984 as the Trust's Getty Grant Program (Wikipedia).",
+  "sources": [
+   "https://www.craftcontemporary.org/support",
+   "https://en.wikipedia.org/wiki/J._Paul_Getty_Trust"
+  ],
+  "reason": "Getty is a named Fossil fuels case in the house rules, and the Getty Foundation is on the 2025-26 donor list, so the flag stays. The list shows no tier for the Getty Foundation; the oil history is attributed to Wikipedia."
+ },
+ {
+  "id": "confederation-centre-of-the-arts-charlottetown",
+  "section": "Red flags",
+  "problems": [
+   "heading 'criticism of a fundraising campaign' not a flag name",
+   "'some businesses refused ... colour associated with Indigenous reconciliation movements' loosely worded",
+   "quote not tied to exact CBC statements"
+  ],
+  "before": "Red flags: criticism of a fundraising campaign using John A. Macdonald - In August 2025 some downtown Charlottetown businesses refused to use promotional material for the Centre's renovation fundraising ...",
+  "after": "Red flags: Protest or boycott - on 14 August 2025 CBC News (Tony Davis) reported that some downtown Charlottetown business owners were refusing to use promotional material, aimed at helping the Centre raise money for renovations, that showed Macdonald's face on an orange background ... Noel said she does not want to 'cancel' the Centre ... Bellamy said ... if the pairing was an oversight the Centre apologised.",
+  "sources": [
+   "https://www.cbc.ca/news/canada/prince-edward-island/pei-confed-centre-macdonald-coffee-1.7608162"
+  ],
+  "reason": "The campaign is the Centre's own renovation fundraising, so the refusal concerns the Centre's campaign material (coffee sleeves) and stays a red flag, stated exactly with who, what, when and why; the page does not describe a boycott of the Centre itself."
+ },
+ {
+  "id": "confederation-centre-of-the-arts-charlottetown",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "verdict 'mainly public' and 'Sobey family'",
+   "'list current at 31 March 2024' unsupported",
+   "bottom line sentence about 'documented objection'"
+  ],
+  "before": "mainly public: federal and provincial grants, with Sobey family foundations and corporate sponsors ... (annual report, list current at 31 March 2024) ... The documented objection is to its August 2025 Macdonald fundraising campaign.",
+  "after": "public grants (C$15.1 million of C$20.7 million revenue in 2023-24), with Sobey and Webster foundations and corporate sponsors ... (annual report, 2023-24 donor list) ... In August 2025 downtown businesses refused the Centre's Macdonald fundraising material, as CBC News reported.",
+  "sources": [
+   "https://confederationcentre.com/wp-content/uploads/2024/12/2024_AnnualReport_Final.pdf",
+   "https://en.wikipedia.org/wiki/Confederation_Centre_of_the_Arts"
+  ],
+  "reason": "Annual report statements: revenue 20,733 thousand; public sector grants 6,533 operating plus 8,576 capital = 15,109; sponsorship 402,250; sponsors TD, CN, RBC Foundation, BMO, Maritime Electric, Pepsico, Cavendish Farms, with years 2023-24."
+ },
+ {
+  "id": "corning-museum-of-glass-corning",
+  "section": "FUNDING",
+  "problems": [
+   "misquote: 'has long relied mainly on' not in the Urban Glass article",
+   "verdict 'Corning Incorporated is the main funder' without the source wording",
+   "ProPublica '$4.8 million state grants' wording stronger than the article"
+  ],
+  "before": "Urban Glass reported on 17 November 2016 (Andrew Page) that the museum 'has long relied mainly on' its major benefactor Corning Inc. ... Corning and the museum together won $4.8 million in state grants",
+  "after": "Urban Glass (Andrew Page, 17 November 2016) wrote that since its founding in 1951 the museum 'has been funded primarily by its major benefactor, Corning Inc.' ... Corning and the Corning Museum of Glass together won $4.8 million through the Southern Tier regional council",
+  "sources": [
+   "https://urbanglass.org/glass/detail/looking-to-diversify-its-funding-sources-the-corning-museum-hires-high-leve",
+   "https://www.propublica.org/article/cornings-glass-brimming-with-taxpayer-subsidies",
+   "https://projects.propublica.org/nonprofits/organizations/160764349"
+  ],
+  "reason": "Form 990 data confirmed: 2025 revenue 59,870,439 and contributions 39,665,203; 2024 revenue 48,617,053 and contributions 28,183,484; 2023 revenue 42,538,297 and contributions 25,146,743."
+ },
+ {
+  "id": "corning-museum-of-glass-corning",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "'by the authors' analysis' vague",
+   "property tax figure without source of the number"
+  ],
+  "before": "Corning Incorporated received about $113 million in state and local subsidies from 2009 to 2015 by the authors' analysis",
+  "after": "Corning Incorporated was awarded $113 million ... between 2009 and 2015, according to an analysis by Investigative Post, ProPublica and the Columbia University Graduate School of Journalism. G. Thomas Tranter Jr. ... said the figure 'far exceeds reality' ... $590,000 ... according to state reports.",
+  "sources": [
+   "https://www.propublica.org/article/cornings-glass-brimming-with-taxpayer-subsidies"
+  ],
+  "reason": "Confirmed: ProPublica and Investigative Post, Charlotte Keith and Masako Melissa Hirsch, 27 March 2017, 'Corning's Glass Brimming With Taxpayer Subsidies'; $85 million and $340,000 per job for the Erwin expansion; the museum named among winners of a combined $4.8 million, including $1.5 million for the entrance and $275,000 for the barge studio."
+ },
+ {
+  "id": "columbus-museum-of-art-columbus",
+  "section": "FUNDING",
+  "problems": [
+   "funders known only from logos: Greater Columbus Arts Council, Nationwide, Ohio Arts Council and National Endowment for the Arts on the About page",
+   "unsupported: 'The Columbus Foundation (including the Walter Foundation)'",
+   "Free Sundays 'extended through June 2031' (page says through 2026)",
+   "Battelle date 19 September (release dated 20 September 2023)"
+  ],
+  "before": "Its About page lists the Greater Columbus Arts Council, The Columbus Foundation (including the Walter Foundation), Art Bridges Foundation, Battelle, Nationwide, the Ohio Arts Council and the National Endowment for the Arts ... with Free Sundays now extended through June 2031 ... announced 19 September 2023",
+  "after": "Its About page states that the Henry D. and Carol B. Clark, Paul-Henri Bourguignon and Erika Bourguignon Fund for Visual Arts, and Fred R. Place funds of The Columbus Foundation provide ongoing support ... the museum says Free Sundays continue through 2026 ... announced on 20 September 2023",
+  "sources": [
+   "https://www.columbusmuseum.org/about-us",
+   "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-receives-dollar12-million-gift-from-art-bridges-foundation",
+   "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-receives-dollar12-investment-from-battelle-for-fund-for-learning"
+  ],
+  "reason": "Confirmed: Art Bridges $1.2 million (12 October 2023), Battelle $1.2 million (20 September 2023), JPMorgan Chase $1 million (press release under the 2015 URL), Walter Foundation $4 million (9 June 2026), Pizzuti gift (September 2018, Wikipedia). Revenue to June 2025 13,954,674 and contributions 9,354,076 from Form 990 data."
+ },
+ {
+  "id": "columbus-museum-of-art-columbus",
+  "section": "OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "admission tiers inexact (seniors 60+, students 26+ with ID)",
+   "bottom line lists logo-only funders and 'itemised' praise"
+  ],
+  "before": "seniors $18, students $16 ... BOTTOM LINE: The money behind the museum is local and national philanthropy ... National Endowment for the Arts, which its About page lists as funders. The named gifts are dated and itemised in museum and company releases.",
+  "after": "seniors 60 and over $18, students 26 and over with ID $16 ... BOTTOM LINE: Contributions were $9.35 million of $13.95 million revenue in the fiscal year to June 2025. Named gifts are ...",
+  "sources": [
+   "https://www.columbusmuseum.org/visit",
+   "https://projects.propublica.org/nonprofits/organizations/314379447"
+  ],
+  "reason": "Visit page lists the tiers; bottom line now states figures and dated gifts only."
+ },
+ {
+  "id": "constant-brussels",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "project names missing for the listed funders",
+   "funder list grouped without the project each funds"
+  ],
+  "before": "Project grants: the Creative Europe Programme ... (Iterations project) and the European Cultural Foundation (ATNOFS ...)",
+  "after": "... Wallonie-Bruxelles International (ATNOFS, Iterations and Cqrrelations). Project grants shown on the same page: Creative Europe (Iterations), the European Cultural Foundation (ATNOFS), the Ville de Bruxelles (Open coil) and Innoviris (SpecXcraft).",
+  "sources": [
+   "https://constantvzw.org/site/-Support-.html",
+   "https://constantvzw.org/site/Meer-over-Constant.html"
+  ],
+  "reason": "Support page read in full: all listed funders confirmed; the report had omitted the Ville de Bruxelles and Innoviris project entries. Founding 1997, studio since 2022, 150 m2 floors, 11 units, office hours 10-17, free events, 20.5 cm step confirmed."
+ },
+ {
+  "id": "contemporary-art-platform-cap-kuwait-city",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'the person documented as backing it is its founder'",
+   "verdict header 'private non-profit, founded by'"
+  ],
+  "before": "CAP is a privately founded non-profit; the person documented as backing it is its founder Amer Al-Huneidi. ... Al-Jarida reports that founder Amer Al-Huneidi attended the opening and gave support to the UNHCR campaign.",
+  "after": "CAP describes itself as a non-profit private organization founded in 2011, and Al-Jarida names Amer Al-Huneidi as its founder ... quotes UNHCR's representative in Kuwait, Nesreen Al-Rubaian, thanking him for his support of the campaign and for including it in the exhibition (translated).",
+  "sources": [
+   "https://www.aljarida.com/article/78144",
+   "https://www.capkuwait.com/about/"
+  ],
+  "reason": "Al-Jarida (Azza Ibrahim, 17 October 2024) names the founder and thanks him for support of the UNHCR campaign, not for funding CAP. 'A Tribute to Lebanon', 120 works by 60 artists, not for sale, confirmed. The page names no funder of CAP itself."
+ },
+ {
+  "id": "contemporary-image-collective-cairo",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "absence statement: 'The article does not name CiC as a recipient'",
+   "off-topic DutchCulture paragraph about Cairo in general",
+   "verdict 'project-funded: grant programmes' without a source"
+  ],
+  "before": "DutchCulture (Minke van Schaik ...) describes Cairo's independent artists and initiatives as dependent on foreign grants ... The article does not name CiC as a recipient.",
+  "after": "The Arab Fund for Arts and Culture lists Contemporary Image Collective under the National Cultural Opportunities Fund (NCOF), 2024, Egypt ... TransArtists states that CiC seeks funds for all programming it commits to.",
+  "sources": [
+   "https://www.arabculturefund.org/Projects/7437",
+   "https://www.transartists.org/en/air/contemporary-image-collective",
+   "https://dutchculture.nl/news/between-renewal-and-loss-cairos-alternative-art-scene"
+  ],
+  "reason": "The AFAC page shows 'National Cultural Opportunities Fund (NCOF) | 2024 | Egypt'; the DutchCulture article is general and does not mention CiC funding, so it was cut from Funding. Garden City move and Cairo 360 (Aleksandra Sekinger, 23 June 2010) details confirmed."
+ },
+ {
+  "id": "cove-park-argyll-and-bute",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "'Robertson Trust' where source says 'the Robertson and Monument Trusts'",
+   "Scottish Government claim unattributed",
+   "'led by director' inference"
+  ],
+  "before": "2015 artists' centre: Creative Scotland, the Robertson Trust and the Monument Trust, plus other trusts and individuals ... The Scottish Government's budget commitment funds the programme.",
+  "after": "2015 artists' centre: funded by Creative Scotland and a number of trusts and individuals, including major awards from the Robertson and Monument Trusts (Project Scotland, 13 November 2015) ... Creative Scotland's Karen Dick said a Scottish Government budget commitment lets Culture Collective build on its pilot programme",
+  "sources": [
+   "https://projectscot.com/?p=8423",
+   "https://thelochsidepress.com/2026/03/16/major-funding-award-for-cove-park/",
+   "https://findthatcharity.uk/orgid/GB-SC-SC029530.json"
+  ],
+  "reason": "Confirmed: £286,294 Culture Collective (16 March 2026, one of 23 organisations); income £610,540 and spending £524,173 to 31 March 2025; registered 26 October 1999; Bridge Awards funding for the sound studio."
+ },
+ {
+  "id": "crac-occitanie-sète",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: Sète city, Agglopôle and Hérault listed as supporters (the page names them as partners in educational actions)",
+   "'among others' filler",
+   "verdict header 'public'"
+  ],
+  "before": "The partners page also lists the Mairie de Sète, Sète Agglopôle Méditerranée and the Hérault departmental council. ... with the city of Sète, Sète Agglopôle Méditerranée and the Hérault department as partners.",
+  "after": "For its educational actions the centre names the Mairie de Sète, Sète Agglopôle Méditerranée and the Conseil départemental de l'Hérault as partners (Crac Occitanie partners page). BOTTOM LINE: Crac Occitanie is managed by the Région Occitanie. Its partners page says it is under agreement with the State and supported by the Ministry of Culture, with aid from the DRAC.",
+  "sources": [
+   "https://crac.laregion.fr/Les-partenaires-44535",
+   "https://crac.laregion.fr/Missions-et-histoire?lang=en",
+   "https://fr.wikipedia.org/wiki/Centre_r%C3%A9gional_d%27art_contemporain_Occitanie"
+  ],
+  "reason": "Partners page: the Mairie, Agglopôle and departmental council appear under 'actions pédagogiques', not as funders. Opening 1997, Tissier 1997 to 2017, Cozette since 2018, 1200 m2, 600 artists, free entry and hours confirmed."
+ },
+ {
+  "id": "crac-valparaiso",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "'repeated by' wording"
+  ],
+  "before": "CRAC Valparaíso describes itself as a self-sustained ... This funding description is the platform's own statement, repeated by TransArtists and the Dutch Art Institute.",
+  "after": "CRAC Valparaíso is described by TransArtists and the Dutch Art Institute as a self-sustained, independent non-profit platform for residencies in Valparaíso, running since 2007. That is the platform's own description.",
+  "sources": [
+   "https://www.transartists.org/en/air/crac-valpara%C3%ADso",
+   "https://dutchartinstitute.eu/id/3504"
+  ],
+  "reason": "TransArtists lists the website as cracvalparaiso.cl; the report uses it. Sources are thin (two directory descriptions, no funder named): a human may want to search for the platform's own funding pages."
+ }
+]

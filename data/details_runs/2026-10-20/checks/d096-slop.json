@@ -1,0 +1,342 @@
+[
+ {
+  "id": "the-whitworth",
+  "section": "Red flags: statement removal (kept)",
+  "problems": [
+   "who removed the statement attributed only to the gallery",
+   "quoted words not in source",
+   "'kept open' overstated"
+  ],
+  "before": "The gallery removed it ... UKLFI called the statement \"inflammatory language\" ... says it kept Cloud Studies open for its full planned run",
+  "after": "Museums Journal: the Whitworth removed it; Hyperallergic: the university removed it. UKLFI called the statement inflammatory (ArtReview, paraphrase, no quote marks). University says it worked to keep Cloud Studies open for its full planned run (The Art Newspaper).",
+  "sources": [
+   "https://hyperallergic.com/artists-withdraw-from-manchester-exhibition-to-protest-directors-ousting",
+   "https://artreview.com/alistair-hudson-forced-out-from-manchesters-whitworth-gallery-over-pro-palestine-statement",
+   "https://www.museumsassociation.org/museums-journal/news/2022/07/alistair-hudson-to-leave-manchester-galleries-for-new-role-in-germany"
+  ],
+  "reason": "Flag KEPT. The University of Manchester owns and runs the Whitworth and the pages say the university (Hyperallergic) or the gallery (Museums Journal, ArtReview) removed the Forensic Architecture statement in 2021; reversed after Forensic Architecture threatened to withdraw, show closed three days. Decided by Hyperallergic and Museums Journal."
+ },
+ {
+  "id": "the-whitworth",
+  "section": "Red flags: boycott (kept)",
+  "problems": [
+   "'at least 23' not in source",
+   "protest target not stated"
+  ],
+  "before": "Two more withdrew, bringing the total to at least 23",
+  "after": "Two more, including James Bridle, had also withdrawn, a total of 23 (The Art Newspaper, 25 Feb 2022). Open letter addressed to Vice-Chancellor Nancy Rothwell (Hyperallergic, 1 Mar 2022).",
+  "sources": [
+   "http://www.theartnewspaper.com/2022/02/25/oscar-murillo-among-slew-of-artists-to-pull-out-of-manchester-show",
+   "https://hyperallergic.com/artists-withdraw-from-manchester-exhibition-to-protest-directors-ousting"
+  ],
+  "reason": "Flag KEPT. 21 named artists pledged to withdraw from British Art Show 9 in Manchester (Whitworth leg), 23 in total; they condemned the university's 'capitulation to continued UKLFI demands' over the Whitworth episode and its reported ousting of director Hudson. The protest targets the university that owns the Whitworth. Hudson later reported not forced out (Museums Journal)."
+ },
+ {
+  "id": "the-whitworth",
+  "section": "Criticism in art media",
+  "problems": [
+   "dates missing",
+   "ArtReview author not given",
+   "absence sentence ('carries no statement from the university')",
+   "'Sustained' verdict"
+  ],
+  "before": "ArtReview: \"Alistair Hudson forced out ...\" (2022) - Reports Hudson left ...; carries no statement from the university.",
+  "after": "ArtReview: no author given, same title (23 February 2022) - reports the gallery removed the statement and redisplayed it after protests; Hudson asked to leave over the fallout.",
+  "sources": [
+   "https://artreview.com/alistair-hudson-forced-out-from-manchesters-whitworth-gallery-over-pro-palestine-statement"
+  ],
+  "reason": "Items kept: (1) Hyperallergic, Valentina Di Liscia, \"Artists Withdraw From Manchester Exhibition to Protest Director's Ousting Over Pro-Palestine Message\", 1 March 2022. (2) ArtReview, no author given, \"Alistair Hudson forced out from Manchester's Whitworth gallery over pro-Palestine statement\", 23 February 2022. (3) The Art Newspaper, Gareth Harris, \"Oscar Murillo among slew of artists to pull out of Manchester show in protest at treatment of reportedly ousted director\", 25 February 2022. All name the Whitworth."
+ },
+ {
+  "id": "the-whitworth",
+  "section": "Funding / Overview / Bottom line",
+  "problems": [
+   "'eight other trusts and livery companies' wrong (page lists 17 capital funders)",
+   "'publicly funded' verdict and 'owned and run by' not on a page",
+   "Royal Charter footer is neutral",
+   "Wikipedia 'first building 1908' conflict",
+   "Website '(checked)'"
+  ],
+  "before": "...the Pilgrim Trust and eight other trusts and livery companies.",
+  "after": "Capital funders listed up to the Granada Foundation and the Pilgrim Trust; Frieze x Deutsche Bank and J Paul Getty Jnr Charitable Trust listed on sponsors page without years or amounts, no flag. Verdict reworded; Royal Charter bullet cut; trimmed to 786 words.",
+  "sources": [
+   "https://web.archive.org/web/2025/https://www.whitworth.manchester.ac.uk/about/supportus/ourcurrentsponsorsandfunders/",
+   "https://en.wikipedia.org/wiki/Whitworth_Art_Gallery"
+  ],
+  "reason": "Sponsors page (archived 2025) opened. Hudson's departure reworded: Museums Journal (22 July 2022) says he will leave at end of 2022."
+ },
+ {
+  "id": "the-polygon-gallery-north-vancouver",
+  "section": "Red flags: coal export terminal sponsor (moved/cut)",
+  "problems": [
+   "flag not supported by the House rules (oil-industry services line)"
+  ],
+  "before": "Red flags: coal export terminal sponsor - Neptune Terminals gave $15,000+ in 2024 ... handles steelmaking coal and potash",
+  "after": "Red flags heading deleted. Neptune facts kept under FUNDING (15,000+ in 2024, Kids First sponsor, Gold Sponsor of the Mayor's Gala, what the terminal does) and in BOTTOM LINE.",
+  "sources": [
+   "https://thepolygon.ca/wp-content/uploads/2025/06/Annual-Report-2024.pdf",
+   "https://www.neptuneterminals.com/news/our-canadian-exports-steelmaking-coal-and-potash"
+  ],
+  "reason": "Annual report 2024 lists Neptune Terminals at $15,000+, Kids First sponsor and Gala Gold Sponsor. Neptune's page (1 Aug 2019): it unloads trains and loads ships for steelmaking coal (BC, Alberta) and potash (Saskatchewan); Canpotex one of its owners; Teck not mentioned. A bulk port terminal operator is a port service like a tanker owner or drilling contractor, which the rules treat as services, not Fossil fuels; no documented objection. No criticism exists, so nothing goes to Wider context."
+ },
+ {
+  "id": "the-polygon-gallery-north-vancouver",
+  "section": "Red flags: TD Bank Group (added)",
+  "problems": [
+   "name-to-know rule: TD named as 2024 sponsor"
+  ],
+  "before": "(none)",
+  "after": "Red flags: TD Bank Group, 2024 money-laundering guilty plea: TD Bank N.A. pleaded guilty 10 October 2024, $1.8 billion in penalties (US DOJ Criminal Division); Polygon 2024 annual report lists TD Bank Group at $100,000+, presenting sponsor of Tau Lewis's Coloratura and Gala Gold Sponsor.",
+  "sources": [
+   "https://www.justice.gov/criminal/case/united-states-america-v-td-bank-na",
+   "https://thepolygon.ca/wp-content/uploads/2025/06/Annual-Report-2024.pdf"
+  ],
+  "reason": "Added because details_prompt.md House rules make TD's 2024 plea a name-to-know red flag whenever a page names TD with a year; check_rules.md says a bank case is Wider context unless linked. Judgment call for the caller to confirm; delete the section if the rule is the stricter one."
+ },
+ {
+  "id": "the-polygon-gallery-north-vancouver",
+  "section": "Overview / Funding",
+  "problems": [
+   "Governor General's Medal not in opened page body",
+   "'fuer' spelling",
+   "Website '(checked)'"
+  ],
+  "before": "It won the 2020 Governor General's Medal in Architecture.",
+  "after": "Cut. Institut für Auslandsbeziehungen spelled as in report; Canada Gives (Taylor Taliesin Foundation).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/The_Polygon_Gallery"
+  ],
+  "reason": "All figures confirmed in the 2024 annual report text: revenue $5,411,381 (+7.6%), expenses $5,408,624, surplus $2,757, endowment income $181,783, gifts to endowment $1,419,458, Audain Foundation and Lind Family $500,000+, Canada Council, BC Arts Council, North Vancouver Recreation and Culture Commission, West Vancouver Community Grants Program, BMO $150,000+, RBC Foundation, Rogers, Polygon Homes at $25,000+, 12 exhibitions by 90 artists."
+ },
+ {
+  "id": "the-drawing-center-new-york",
+  "section": "Red flags: World Trade Center site 2005 (kept, rewritten)",
+  "problems": [
+   "catalogue claim unsupported",
+   "'its move was blocked' unsupported",
+   "Carnegie '$20 million' not in source",
+   "who selected/demanded not precise"
+  ],
+  "before": "Governor George Pataki and his lower Manhattan officials gave the center space ... Pataki, who had backed the selection, demanded an \"absolute guarantee\" ... its move to the site was blocked",
+  "after": "LMDC, backed by Pataki, selected the center (amNY); after objections to its art Pataki demanded an \"absolute guarantee\" that curators would not offend 9/11 families; the center refused that summer and said it hoped to find a new home elsewhere; the LMDC then gave $10 million toward a new home (amNY, 17 Nov 2005). Daily News editorial (24 June 2005) blamed Pataki and his officials, objected to the 'Homeland Security' and Abu Ghraib-themed works in the center's exhibits and urged Pataki to 'Show these people the door'. Cotter: 'a tempest in a teapot' (Douglas McLennan, 'An Odd Target', ArtsJournal, 26 June 2005).",
+  "sources": [
+   "https://www.amny.com/news/drawing-center-to-get-10-million",
+   "https://www.gothamgazette.com/open-government/2971-get-the-picture-governor/",
+   "https://www.artsjournal.org/?p=9682"
+  ],
+  "reason": "Flag KEPT, close call. amNY states Pataki himself demanded the guarantee and the center refused; the state also funds the center (NYSCA, current donors page) and its agency LMDC chose the site and later funded it ($10M). The Daily News editorial does not mention any guarantee. The sources do not show who blocked the move. If the stricter reading (the controlling state body must punish the space) is wanted, move to Wider context, dated 2005."
+ },
+ {
+  "id": "the-drawing-center-new-york",
+  "section": "Funding / Overview / Bottom line",
+  "problems": [
+   "'top tier' not stated by the page",
+   "19th-century cast-iron building unsupported",
+   "Website '(checked)'"
+  ],
+  "before": "in the top Partners tier ... Bloomberg Philanthropies in the top donor tier",
+  "after": "Partners list (the first on the page), gifts of $1,000+ from 1 July 2023 to 1 January 2025, includes Bloomberg Philanthropies, NYC Department of Cultural Affairs and NYSCA; Benefactors include UNIQLO.",
+  "sources": [
+   "https://drawingcenter.org/support/donors",
+   "https://projects.propublica.org/nonprofits/organizations/132887872",
+   "https://en.wikipedia.org/wiki/The_Drawing_Center"
+  ],
+  "reason": "Form 990 figures (FY June 2025) confirmed."
+ },
+ {
+  "id": "the-hepworth-wakefield",
+  "section": "Funding and criticism",
+  "problems": [
+   "spelling 'King and McGaw' (page: King & McGraw)",
+   "'page gives no years or amounts' absence",
+   "'does not describe a grant' absence",
+   "'No funder in a flagged category is documented' bottom line",
+   "Jackdaw date and 'prestigious'",
+   "£11 not labelled concession on the page"
+  ],
+  "before": "King and McGaw ... The page gives no years or amounts ... No funder in a flagged category is documented.",
+  "after": "King & McGraw; absence sentences cut; Jackdaw item dated July-August 2011; objection reworded to the 35 million pound spend.",
+  "sources": [
+   "https://hepworthwakefield.org/our-story/about-us/35729-2/",
+   "https://www.thejackdaw.co.uk/?p=168",
+   "https://findthatcharity.uk/orgid/GB-CHC-1138117"
+  ],
+  "reason": "Press item kept: The Jackdaw, Brian Lewis (standfirst credit; byline reads 'the editor'), \"Art's urbane guerillas hit Wakefield: the Hepworth Museum\", Jul-Aug 2011. Income 4,236,583 pounds to 31 March 2025 confirmed. Partners (Wakefield Council, Arts Council England) and Major Supporters (Bloomberg Philanthropies, Art Fund etc.) confirmed on the supporters page."
+ },
+ {
+  "id": "the-contemporary-austin-austin",
+  "section": "Criticism in art media -> Wider context",
+  "problems": [
+   "item concerns the predecessor Arthouse and does not name the museum"
+  ],
+  "before": "CRITICISM IN ART MEDIA: 1. ART F CITY: Paddy Johnson ... (2011)",
+  "after": "Moved to WIDER CONTEXT as a dated item (14 April 2011), connection stated last; Criticism heading deleted.",
+  "sources": [
+   "https://artfcity.com/posts/2011/04/austins-arthouse-eliminates-its-only-curator-citing-budget-problems/"
+  ],
+  "reason": "Paddy Johnson, \"Austin's Arthouse Eliminates Its Only Curator Citing Budget Problems\", ART F CITY, 14 April 2011. Arthouse is one of the two bodies merged in 2011; the piece does not name The Contemporary Austin."
+ },
+ {
+  "id": "the-contemporary-austin-austin",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "heritage grants sentence overstated (city supported research; app by city and Texas Historical Commission)",
+   "'small' unsupported",
+   "'No funder ...' bottom line",
+   "Website '(checked)'"
+  ],
+  "before": "City ... and the Texas Historical Commission fund the Laguna Gloria history research and a walking tour app",
+  "after": "City supported the research; city and Texas Historical Commission support the app (museum history page).",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/741233816",
+   "https://dallas.culturemap.com/news/arts/09-13-13-laguna-gloria-austin-edward-betty-marcus-foundation-grant",
+   "https://moodyf.org/moody-grant-contemporary-austin/"
+  ],
+  "reason": "Confirmed: Marcus Foundation $9M in 2013 (CultureMap Dallas, Katie Friel, 13 Sept 2013, headline 'Contemporary Austin museum lands game-changing grant from Dallas foundation'); Moody $1.3M 2015 (museum history), Moody lead gift Phase I (Moody Foundation, 5 July 2018, no amount); 2024 Form 990 revenue $8,611,154, investment income $558,001, asset sales $886,041, expenses $10,265,447; Suzanne Deal Booth trustee, prize 2016 (The Art Newspaper, Benjamin Sutton, 21 May 2024)."
+ },
+ {
+  "id": "the-power-plant-contemporary-art-gallery",
+  "section": "Red flags: TD Bank Group (added)",
+  "problems": [
+   "name-to-know rule: TD named with years"
+  ],
+  "before": "(none)",
+  "after": "Red flags: TD Bank Group, 2024 money-laundering guilty plea: TD Bank N.A. pleaded guilty 10 October 2024, $1.8 billion in penalties (US DOJ); annual reports name TD Bank Group as sponsor of the Nathan Eugene Carson tour (2023-24) and a TD Curatorial Fellow 2025-27 (2025-26).",
+  "sources": [
+   "https://www.justice.gov/criminal/case/united-states-america-v-td-bank-na",
+   "https://strapi-uploads-the-power-plant-live.s3.ca-central-1.amazonaws.com/The_Power_Plant_25_26_Annual_Report_412704971d.pdf"
+  ],
+  "reason": "Added on the batch instruction (TD's plea is a name-to-know under the House rules when a page names TD with a year). BMO and RBC carry no flag. Neither press item names TD, BMO or RBC. Judgment call for the caller."
+ },
+ {
+  "id": "the-power-plant-contemporary-art-gallery",
+  "section": "Funding and press items",
+  "problems": [
+   "871,651 dollars is not the Harbourfront contribution total (it is an expense line)",
+   "dependence statement is only in the 2025-26 accounts",
+   "unsupported 'after months of disputes', 'governance concerns left unaddressed', 'non-collecting'",
+   "RBC programme misnamed",
+   "dates missing",
+   "Hyperallergic URL ended .md"
+  ],
+  "before": "Harbourfront contributions were 871,651 dollars ... RBC Emerging Artist Network",
+  "after": "Figure cut; RBC Emerging Artist Membership; press items dated 23 September 2022.",
+  "sources": [
+   "https://www.theartnewspaper.com/2022/09/23/power-plant-toronto-board-resignations-harbourfront",
+   "https://hyperallergic.com/collective-resignation-of-board-members-shakes-torontos-power-plant-gallery/",
+   "https://www.thepowerplant.org/about/leadership"
+  ],
+  "reason": "Items kept: The Art Newspaper, Hadani Ditmars, \"Toronto's revered Power Plant art centre in peril after board members' mass resignation\", 23 September 2022. Hyperallergic, Jasmine Liu, \"Collective Resignation of Board Members Shakes Toronto's Power Plant Gallery\", 23 September 2022. Grants 518,800 / 226,612 / 206,000 / 53,300 = 1,004,712 confirmed (2023-24 note 13). Board of 14 with Katrina Rempel (BMO Capital Markets) and Julia Park (CIBC) confirmed."
+ },
+ {
+  "id": "the-freedom-theatre",
+  "section": "Funding",
+  "problems": [
+   "Halfon objection paraphrase not in source",
+   "'tens of thousands of pounds' put in quotes",
+   "donate-page quote reworded as a quote",
+   "'No funder ...' bottom line",
+   "Website '(checked)'"
+  ],
+  "before": "Conservative MP Robert Halfon is quoted objecting to taxpayers' money being spent on promoting boycotts of Israel.",
+  "after": "Halfon called the funding \"pretty shocking\" and urged the government to act on its pledge to stop publicly funded bodies supporting BDS (The Jewish Chronicle, marked partisan).",
+  "sources": [
+   "https://thejc.com/news/uk-taxpayer-funds-pro-bds-arts-company-founded-by-terrorist-qlghvk0k",
+   "https://thefreedomtheatre.org/?p=31179",
+   "https://www.nhpr.org/2024-01-28/how-a-west-bank-palestinian-theater-went-from-symbol-of-hope-to-casualty-of-war"
+  ],
+  "reason": "British Council 74,976 pounds March 2022, JC David Rose 19 May 2022 confirmed; 2013 report names Ford Foundation, Sida, AFAC, Medico International, European Commission; Al Jazeera (Mauricio Morales, 20 Dec 2023), NPR (Lauren Frayer, 28 Jan 2024) and PEN International confirmed."
+ },
+ {
+  "id": "the-glucksman-cork",
+  "section": "Bottom line",
+  "problems": [
+   "'No funder ...' sentence",
+   "Website '(checked)'"
+  ],
+  "before": "The founding donor was a Wall Street financier. No funder in a flagged category is documented.",
+  "after": "The museum is named for Lewis Glucksman, a founding donor whom Wikipedia describes as a Wall Street financier.",
+  "sources": [
+   "https://www.glucksman.org/content/files/Files_Policies/ArtGallery-UCC-DAC-FS-2025.pdf?v=1788279528",
+   "https://www.glucksman.org/about/support/funding",
+   "https://en.wikipedia.org/wiki/Lewis_Glucksman_Gallery"
+  ],
+  "reason": "All figures confirmed in the 2025 financial statements: income 871,074; subvention 427,720; Arts Council 191,815 (111,815 + 80,000)."
+ },
+ {
+  "id": "the-newbridge-project-newcastle",
+  "section": "Overview / Funding / Bottom line",
+  "problems": [
+   "'Gallery of Sanctuary linked to Newcastle City of Sanctuary' not on page",
+   "'gives no years or amounts' absence",
+   "neutral hire line",
+   "'No funder ...'",
+   "Website '(checked)'"
+  ],
+  "before": "It is a Gallery of Sanctuary linked to Newcastle City of Sanctuary.",
+  "after": "It describes itself as a Gallery of Sanctuary.",
+  "sources": [
+   "https://thenewbridgeproject.com",
+   "https://findthatcharity.uk/orgid/GB-CHC-1173849",
+   "http://www.ncl.ac.uk/press/articles/archive/2024/06/ajnewbridge/"
+  ],
+  "reason": "Income 593,833 pounds to 31 March 2025 and funders list (Arts Council England, Newcastle City Council, Garfield Weston, Jerwood, Community Foundation North East, Newcastle University, North East Mayoral Strategic Authority) confirmed."
+ },
+ {
+  "id": "the-royal-standard-liverpool",
+  "section": "Overview / Criticism / Bottom line",
+  "problems": [
+   "absence clause ('sources do not name')",
+   "'Mostly admiring coverage' unsupported",
+   "'has not always succeeded' unsupported",
+   "'No funder ...'",
+   "date missing",
+   "Website '(checked)'"
+  ],
+  "before": "Overall: Mostly admiring coverage. One piece notes strains behind the work.",
+  "after": "Overall: One piece, from 2016, on the strains of running the space on unpaid two-year directorships.",
+  "sources": [
+   "https://www.thedoublenegative.co.uk/?p=18994",
+   "https://findthatcharity.uk/orgid/GB-CHC-1152968",
+   "https://www.theskinny.co.uk/art/showcase/the-royal-standard-is-10"
+  ],
+  "reason": "Item kept: The Double Negative, C. James Fagan, \"'It's my dream job, but it's voluntary': Trials And Triumphs At The Royal Standard\", 11 May 2016. ACE grants 14,186 / 10,078 / 38,047 / 14,890 / 14,960 / 29,600 and National Lottery Community Fund 2,886 confirmed; income 56,069 pounds to 30 August 2024 confirmed."
+ },
+ {
+  "id": "thecube-project-space-taipei",
+  "section": "Overview / Funding / Bottom line",
+  "problems": [
+   "'Sound and Era lectures began in 2010' and research-focus claim not on an opened page",
+   "'during exhibition dates' unsupported",
+   "'gives no years or amounts' absence",
+   "'small' unsupported; 'No funder ...'",
+   "Website '(checked)'"
+  ],
+  "before": "Taiwanese sound culture has been a research focus since the founding; its \"Sound and Era\" lectures began in 2010",
+  "after": "Cut; Altering Nativism book (June 2014, Chinese/English) and NCAF 2012 Production Grant kept.",
+  "sources": [
+   "https://thecubespace.com/en/about/",
+   "https://thecubespace.com/en/publication-en/altering-nativism/",
+   "https://thecubespace.com"
+  ],
+  "reason": "About page (Chinese text) states the space is sponsored by NCAF (國藝會), Taipei City Department of Cultural Affairs, Lu Fu Life Aesthetics Foundation and Mr. Chen Bo-wen."
+ },
+ {
+  "id": "the-dowse-art-museum-lower-hutt",
+  "section": "Overview / Funding / Bottom line",
+  "problems": [
+   "Respect: Hip Hop Aotearoa (2003) not on history page (page shows a 2001 Respect festival)",
+   "'a trust gift' vague",
+   "'No funder ...'",
+   "Website '(checked)'"
+  ],
+  "before": "Exhibitions include Respect: Hip Hop Aotearoa (2003).",
+  "after": "The Dowse hosted the hip-hop oriented Respect festival (2001 photo caption, museum history).",
+  "sources": [
+   "https://web.archive.org/web/20250130215909/https://dowse.org.nz/about-us/support-us/partner-with-us",
+   "https://web.archive.org/web/2025/https://dowse.org.nz/about-us/who-we-are/our-history",
+   "https://m.scoop.co.nz/stories/PA0505/S00612.htm"
+  ],
+  "reason": "Confirmed: council funds most (support page), Dulux current corporate partner, Steel and Tube early Free Bus Campaign donor, Blumhardt Foundation 1.5 million, 2005 redevelopment 5.906 million (Helen Clark media statement, 23 May 2005)."
+ }
+]
