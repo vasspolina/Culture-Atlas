@@ -127,10 +127,6 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 #activeRouteBanner .meta,#activeRouteBanner span,#activeRouteBanner div{color:var(--paper)}
 #activeRouteBanner button{color:var(--paper);text-decoration:underline;font:400 14px/1 var(--sans)}
 #buildingInsidePanel{background:var(--paper);color:var(--ink);border:1px solid var(--ink)}
-.xray-pill{font:400 14px/1 var(--sans);background:var(--xray-colour,var(--paper));color:var(--ink);border-radius:0;padding:5px 12px}
-.xray-pill[aria-pressed=true]{background:var(--ink);color:var(--paper)}
-#xrayModes .xray-pill{border:1px solid var(--ink)}
-/* The mode bar sits under the city banner, which wraps to two lines on a phone. */
 
 
 /* the card that opens on a pin: a colour block with the name set large */
@@ -656,7 +652,8 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 body.chat-input-mode-active #chatNoteTopBar{display:block}
 #chatNoteTopBar #chatBackBtn{font:400 15px/1 var(--sans);padding:8px 0}
 /* One set of zoom buttons at a time: on the street map the map's own square set stays, the round pair goes. */
-#globeViewport:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none}
+/* The street map brings its own zoom buttons; the globe pair is moved out of #globeViewport by script, so match from body. */
+body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 
 /* The Epstein flag is highlighted in purple */
 .flag-epstein{background:#be95ff;color:#000;padding:0 5px}
@@ -1697,3 +1694,179 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part a.domain{white-space:normal}
 /* The gossip question keeps black type on its yellow in the dark theme too (white on #e2f86c is 1.2:1). */
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"],:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"] .sp-text,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]:hover{color:#000}
+
+/* =====================================================================
+   PHONE SYSTEM (≤767px) — one authoritative layer, built like a SwiftUI view.
+   Supersedes the earlier phone fixes above. Keep phone changes here.
+   - Type: text 14px/20 (.body), titles 16px/22 semibold (.headline),
+     labels 14px in secondary colour (.secondary).
+   - Spacing: 4 / 8 / 12 / 16 grid. Tap targets: 44pt (secondary 32pt).
+   - Layout: NavigationStack bar on top, scrolling content, and a single
+     .safeAreaInset(edge: .bottom) composer. Never two composers at once.
+   ===================================================================== */
+@media (max-width:767px){
+  :root{
+    --m-size:14px; --m-lh:20px; --m-title:16px; --m-title-lh:22px;
+    --m-s1:4px; --m-s2:8px; --m-s3:12px; --m-s4:16px;
+    --m-tap:44px; --m-tap-2:32px;
+    --m-secondary:color-mix(in srgb,var(--ink) 62%,transparent);
+  }
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+  /* Font: one size everywhere on the phone (Text default style). */
+  :root:root body,
+  :root:root body *:not(svg):not(svg *):not(canvas){
+    font-size:var(--m-size)!important;
+    line-height:var(--m-lh)!important;
+    letter-spacing:0!important;
+  }
+  :root:root body *:not(svg):not(svg *)::before,:root:root body *:not(svg):not(svg *)::after{font-size:var(--m-size)!important;line-height:var(--m-lh)!important}
+  :root:root body #mobileTopBar #reset-state-btn,:root:root body #mobileTopBar button{font-size:var(--m-size)!important}
+  /* .headline — titles: 16px, semibold. */
+  :root:root body :is(h1,h2,h3,h4,.lede,.curator-section-hdr,.layers-title,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.curator-hero-title),
+  :root:root body #mobileTopBar #mobileTopBrandBtn span{font-size:var(--m-title)!important;line-height:var(--m-title-lh)!important;font-weight:600!important;margin-top:0}
+  /* .secondary — labels and meta. */
+  :root:root body :is(.meta,.kicker,strong.meta){color:var(--m-secondary)!important;font-weight:400!important}
+
+  /* ---- NavigationStack toolbar ---- */
+  #mobileTopBar{min-height:var(--m-tap);padding-top:var(--safe-t,0);padding-bottom:0}
+  #mobileTopBar #mobileTopBrandBtn{padding-left:var(--m-s4);font-weight:600}
+  #mobileTopBar #mobileTopBrandBtn span{font-weight:600}
+  #mobileTopBar>div:last-child{gap:0}
+  #mobileTopBar>div:last-child button{border:0!important;padding:0 var(--m-s3)!important;min-height:var(--m-tap);min-width:var(--m-tap)}
+  #mobileTopBar>div:last-child button:last-child{padding-right:var(--m-s4)!important}
+
+  /* ---- Chat transcript: VStack(alignment:.leading, spacing:16) ---- */
+  #curatorScrollArea{padding:var(--m-s3) var(--m-s4)!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap,
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{padding-left:0!important;margin:0 0 var(--m-s4)!important}
+  /* Role label sits on its own line above the message, like a list-row caption. */
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap::before,
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end::before{position:static!important;display:block;margin-bottom:var(--m-s1);font-weight:600!important;color:var(--m-secondary)!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,li,div,.user-bubble){text-indent:0!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap p{margin:0 0 var(--m-s2)!important}
+  /* LabeledContent rows (hours, admission, address…) */
+  :is(#curatorMessages,#curatorDrawerLiveStream) .rule-t{padding-top:var(--m-s2)!important;padding-bottom:var(--m-s2)!important;margin-top:0!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) .space-y-1_5>*+*{margin-top:0!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) strong.meta.block{margin-bottom:2px}
+  :is(#curatorMessages,#curatorDrawerLiveStream) [class*="pl-"],:is(#curatorMessages,#curatorDrawerLiveStream) [class*="ml-"]{padding-left:0;margin-left:0}
+  /* Follow-up suggestions: a wrapping row of compact buttons (FlowLayout), not a stacked column. */
+  :is(#curatorMessages,#curatorDrawerLiveStream) div:has(>.curator-followup-pill){display:flex!important;flex-wrap:wrap;gap:var(--m-s2);flex-direction:row!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) div:has(>.curator-followup-pill)>*{margin:0!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) .curator-followups{margin-top:var(--m-s3)!important}
+  :is(#curatorMessages,#curatorDrawerLiveStream) a p{display:inline;margin:0!important}
+  .curator-followup-pill{display:inline-flex!important;align-items:center;min-height:var(--m-tap-2);padding:6px var(--m-s3)!important;margin:0!important}
+
+
+  /* ---- Phone chat drawer (Chat tab): same transcript rules as the chat column ---- */
+  #curator-chat-drawer>div:first-child{min-height:var(--m-tap);padding:0 var(--m-s4)!important}
+  #curator-chat-drawer>div:first-child>div:first-child::before{content:"Chat";font-weight:600;color:var(--ink)}
+  #curator-chat-drawer>div:first-child button{min-height:var(--m-tap);padding:0 0 0 var(--m-s3)!important;color:var(--m-secondary)!important}
+  #curatorDrawerChatBody{padding:var(--m-s3) var(--m-s4)!important}
+  #curatorDrawerChatBody>*+*{margin-top:var(--m-s3)!important}
+  #curatorDrawerGreeting:not(.hidden){margin-bottom:var(--m-s3)}
+  #chatRecordsInfoMobile{border-top:0!important;padding-top:0!important}
+  #chatRecordsInfoMobile>summary{min-height:var(--m-tap-2);display:flex;align-items:center;color:var(--m-secondary)}
+  /* The user's line reads like the chat column: green text, no white slab. */
+  :root:root body #curatorDrawerLiveStream>.justify-end{display:block!important}
+  :root:root body #curatorDrawerLiveStream>.justify-end>div,:root:root body #curatorDrawerLiveStream .user-bubble{background:none!important;padding:0!important;max-width:none!important;color:#1d7a3a!important;text-indent:0!important}
+  :root[data-theme="dark"] body #curatorDrawerLiveStream>.justify-end>div,:root[data-theme="dark"] body #curatorDrawerLiveStream .user-bubble{color:#8fe3a4!important}
+  /* Gossip balloon uses the full column instead of 80%, so the text is not a narrow ribbon. */
+  :root:root body :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{width:100%!important;max-width:100%!important;padding:var(--m-s3) var(--m-s4) var(--m-s4)!important;margin:0 0 var(--m-s4)!important}
+
+  /* ---- Bottom composer: .safeAreaInset(edge:.bottom) ----
+     Row 1: TextField | Send.  Row 2: Share · Voice …… How the records work. */
+  #workBottomDock{padding:var(--m-s2) var(--m-s4) max(var(--m-s2),var(--safe-b,0px))!important;border-top:1px solid var(--line)}
+  #workBottomDock>div{display:grid!important;grid-template-columns:auto auto 1fr var(--m-tap);
+    grid-template-areas:"input input input send" "share voice info info";column-gap:var(--m-s3);row-gap:var(--m-s1);align-items:center}
+  #workBottomDock>div>#chatRecordsInfo{margin-left:calc(-1 * var(--m-s3))}
+  #workInputCard,#workInputCard>div,#workInputCard>div>div{display:contents!important}
+  #workInput{grid-area:input;min-height:var(--m-tap)!important;max-height:120px;padding:var(--m-s3) 0!important;border:0!important;background:none}
+  #workSendBtn{grid-area:send;align-self:end;width:var(--m-tap);height:var(--m-tap);min-height:var(--m-tap);border-radius:0}
+  #chatShareBtn{grid-area:share}
+  #curatorVoiceToggleBtn{grid-area:voice}
+  #chatShareBtn,#curatorVoiceToggleBtn,#chatRecordsInfo>summary{min-height:var(--m-tap-2);padding:0!important;border:0!important;background:none!important;color:var(--m-secondary)!important;display:inline-flex;align-items:center;white-space:nowrap}
+  /* Voice "on" reads in the primary colour, "off" in secondary; the old blue fill is gone, so its white text must go too. */
+  :root:root body #workBottomDock #curatorVoiceToggleBtn.is-on,:root:root body #workBottomDock #curatorVoiceToggleBtn.is-on *{color:var(--ink)!important}
+  :root:root body #workBottomDock #curatorVoiceToggleBtn:not(.is-on),:root:root body #workBottomDock #curatorVoiceToggleBtn:not(.is-on) *{color:var(--m-secondary)!important}
+  #chatRecordsInfo>summary{list-style:none}
+  #chatRecordsInfo>summary::-webkit-details-marker{display:none}
+  #chatRecordsInfo{grid-area:info;justify-self:end;border-top:0!important;padding:0!important;width:auto}
+  #chatRecordsInfo[open]{grid-column:1/-1;grid-row:3;justify-self:stretch;max-height:40vh;overflow:auto;padding-top:var(--m-s2)!important;border-top:1px solid var(--line)!important}
+  #chatRecordsInfo p{margin:0 0 var(--m-s2)!important;text-indent:0!important}
+
+  /* ---- Map-mode composer: only when the chat column is not on screen ---- */
+  body[data-mobile-mode="chat"] #mobileStickyInputBar,
+  body[data-mobile-mode="split"] #mobileStickyInputBar{display:none!important}
+  #mobileStickyInputBar{padding:var(--m-s2) var(--m-s4) max(var(--m-s2),var(--safe-b,0px))!important;gap:var(--m-s1)!important}
+  #chat-input{min-height:var(--m-tap)!important;padding:var(--m-s3) 72px var(--m-s3) 0!important}
+  #mobileStickySendBtn{height:var(--m-tap-2)!important;padding:0 var(--m-s3)!important}
+  #mobileStickyVoiceBtn{min-height:var(--m-tap-2);padding:0!important;color:var(--m-secondary)!important;border:0!important;background:none!important}
+  #mobileStickyInputBar>div:last-child{padding:0!important}
+
+  /* ---- Map controls: compact capsules, 36pt ---- */
+  #desktopGlobeTopControls button,#hudControlsBar button,#layersToggleBtn,#layersControl>button{min-height:36px!important;height:auto!important;padding:0 var(--m-s3)!important}
+  /* Zoom: one pair on the globe, MapLibre's on the street map; same 44pt size. + and − are icons, not text, so they keep their own size. */
+  :root:root body #zoomControls button{width:var(--m-tap)!important;height:var(--m-tap)!important;font-size:30px!important;line-height:1!important;font-weight:300}
+  :root:root body .maplibregl-ctrl-group button{width:var(--m-tap)!important;height:var(--m-tap)!important}
+  :root:root body .maplibregl-ctrl-group{border:0!important}
+  /* The map credit opens beside Layers (bottom-left), never under it. */
+  #cityMapContainer .maplibregl-ctrl-bottom-right{max-width:calc(100% - 114px)}
+  #cityMapContainer .maplibregl-ctrl-attrib{margin:0 var(--m-s3) var(--m-s3) 0!important}
+
+  /* Toolbar stays one row at 320px and with "Gossip mode: on"; the title truncates first. */
+  #mobileTopBar{flex-wrap:nowrap!important}
+  #mobileTopBar #mobileTopBrandBtn{flex:1 1 0!important;min-width:0!important}
+  #mobileTopBar>div:last-child button{white-space:nowrap}
+  #mobileTopBrandBtn>div{min-width:0;overflow:hidden}
+  #mobileTopBrandBtn>div>span{display:block!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  @media (max-width:374px){#mobileTopBar>div:last-child button{padding:0 var(--m-s2)!important}}
+  /* Touch has no hover: a tapped title must not stay inverted. */
+  @media (hover:none){#mobileTopBrandBtn:hover{background:transparent!important;color:inherit!important}#mobileTopBrandBtn:hover *{color:inherit!important}}
+
+  /* Composer row 2 on narrow phones: records info drops to its own line instead of running off the edge. */
+  @media (max-width:374px){
+    #workBottomDock>div{grid-template-areas:"input input input send" "share voice . ." "info info info info"}
+    #workBottomDock>div>#chatRecordsInfo{justify-self:start;margin-left:0}
+  }
+  /* Map composer matches the chat composer: no underline, outlined Send, Voice on the same quiet row. */
+  #chat-input{border-bottom:0!important}
+  #mobileStickySendBtn{background:transparent!important;border:1px solid var(--ink)!important;height:var(--m-tap)!important;min-width:var(--m-tap)}
+  #mobileStickyInputBar{border-top:1px solid var(--line)}
+
+  /* Layers rows: checkbox | name, description and count stacked beside it. Long counts no longer squeeze the name. */
+  #layersPanel label{grid-template-columns:auto minmax(0,1fr)!important;row-gap:2px;align-items:start!important}
+  #layersPanel label>input{grid-column:1;grid-row:1 / span 3;margin-top:2px}
+  #layersPanel label>:not(input){grid-column:2!important;text-align:left!important;white-space:normal!important}
+  #layersPanel .layers-count{text-transform:none;letter-spacing:0!important;color:var(--row-dim)}
+
+  /* ---- Record sheet: SwiftUI half sheet ----
+     Medium detent ≈ 52% of the map, large fills it. One scroll container, so the title scrolls up with the record;
+     only the grabber row stays. Close is a 30pt circle in the top-trailing corner. */
+  #dossier-bottom-sheet{overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;transition:max-height var(--dur,.2s) ease}
+  #dossier-bottom-sheet.is-large{max-height:calc(100% - var(--m-s2))!important}
+  #dossier-bottom-sheet>*{flex:none!important}
+  #dossier-bottom-sheet>#dossier-sheet-scrollable-body{flex:none!important;overflow:visible!important;min-height:auto!important}
+  #dossier-bottom-sheet .sheet-chrome{position:sticky;top:0;z-index:2;height:24px;padding:0!important;display:block;background:var(--grey)}
+  #dossier-bottom-sheet .sheet-grabber{position:absolute;left:50%;top:6px;width:36px;height:5px;margin-left:-18px;border-radius:3px;background:var(--m-secondary);opacity:.5}
+  #dossier-bottom-sheet .sheet-size{position:absolute;left:50%;top:0;width:88px;height:24px;margin-left:-44px;background:none!important;border:0!important;padding:0!important;min-height:0}
+  #dossier-bottom-sheet .sheet-close{position:absolute;right:var(--m-s3);top:6px;width:30px;height:30px;min-height:0;padding:0!important;border:0!important;border-radius:50%;background:color-mix(in srgb,var(--ink) 14%,transparent)!important;color:var(--m-secondary)!important;display:flex;align-items:center;justify-content:center}
+  #dossier-bottom-sheet .sheet-close svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+  /* Hit area stays 44pt around the 30pt circle. */
+  #dossier-bottom-sheet .sheet-close::after{content:"";position:absolute;inset:-7px}
+  #dossier-bottom-sheet .sheet-title-block{padding:var(--m-s1) 56px var(--m-s3) var(--m-s4);border-bottom:1px solid var(--line)}
+  #dossier-bottom-sheet .sheet-title-block #dossier-sheet-meta{margin-top:var(--m-s1);color:var(--m-secondary)!important}
+  #dossier-bottom-sheet>div:nth-child(2){border-bottom:1px solid var(--line)}
+  /* One 12px rhythm inside the record instead of stacked desktop paddings (the 60px gap above Funding). */
+  #dossier-sheet-verified-pane>*+*{margin-top:var(--m-s3)!important}
+  #dossier-sheet-verified-pane>*{padding-top:0!important}
+  #dossier-sheet-funding{padding-bottom:var(--m-s3)!important}
+  #dossier-bottom-sheet :is(.facts){padding-top:var(--m-s3)!important}
+
+  /* ---- Record sheet / full record ---- */
+  #dossier-sheet-scrollable-body,#detailBody{padding:var(--m-s3) var(--m-s4)!important}
+  .record-action{min-height:36px;padding:0 var(--m-s3)!important;display:inline-flex;align-items:center}
+  :is(#dossier-sheet-scrollable-body,#detailBody,#desktopDossierRecordBody) p{text-indent:0!important}
+  /* Sections in the record keep the 16px rhythm; the 50px gap under the actions came from a desktop margin. */
+  #detailBody>.space-y-3>*+*,#detailBody #drawerAuditView{margin-top:var(--m-s4)!important}
+}
