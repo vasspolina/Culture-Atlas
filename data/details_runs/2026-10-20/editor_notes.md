@@ -670,3 +670,14 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - hek-haus-der-elektronischen-k-nste-basel: Göhner and Binding not named on any opened page; the Christoph Merian Stiftung only the Dreispitz site developer.
 - hangar-barcelona: hangar.org returned 403; built from council, 3Cat, Fillip and tourism pages.
 - franco-namibian-cultural-centre-fncc: both founding dates stated (30 Jan and 31 July 1991).
+
+## d037 (research notes, before its slop check)
+- kampala-art-biennale: the TotalEnergies Foundation funded a 2018 mentoring programme; EU and Pro Helvetia funded KAB20 in 2020; the partners page shows logos only for 2014 to 2018.
+- kunsthalle-basel: the SVP demand to cut the subsidy over the director's ceasefire letters (Nov 2023; no cut found); the record's 32/30/22/8% budget split is unverified (the Grand Council PDF is unreadable); Canton Basel-Stadt CHF 950k in the 2026 budget.
+- kunsthalle-wien: public letter and board resignation after the city rejected all director applicants, including WHW (Dec 2022 to Jan 2023); the L'Internationale letter is advocacy.
+- kunsthalle-mannheim: the Hector family EUR 50M of the EUR 68M building (city EUR 10M); The Art Newspaper (Catherine Hickley, 2018) notes petitions against the building.
+- kingston-creative: the IDB sum (US$1.3M or 1.2M) and the Bank of Jamaica pledge differ between sources.
+- kettle-s-yard: Arts Council England and the University of Cambridge 44% of running costs; the record's support-us URL is a 404; the Inexpensive Progress blog is partisan.
+- l-appartement-22-rabat: the record's Prince Claus Fund claim is not confirmed as a grant to the space; the Prince Claus Fund and Clark Art Institute support only the founder's research, per an undated bio.
+- ker-thiossane-dakar: ker-thiossane.org refused the connection; no UNESCO IFCD or Francophonie funding found.
+- kunsthaus-hamburg-hamburg: no Kemmler Foundation found.
