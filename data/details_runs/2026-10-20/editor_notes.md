@@ -883,3 +883,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - bonniers-konsthall-stockholm: no opened page says the Bonnier Group's business pays the konsthall directly; Dagens PS (Ola Soderlund, 20 Sept 2016) gives 15 million SEK a year from the estate foundation's returns.
 - bishkek-school-of-contemporary-art-bisca: the documenta fifteen / Gudskul participation cut (sources not opened); the record said no website, but bishci.com/en and bulbul.org.kg exist.
 - bloc-projects-sheffield: no Arts Council England National Portfolio funding found; government grants 10.9k of 105.89k income to March 2025; Heritage Fund award 8,600 pounds on 15 March 2017.
+
+## d053 (research and slop check)
+- bronx-museum-of-the-arts-bronx: three 2016 press items (Apollo 29 Aug 2016; The Art Newspaper, David D'Arcy, 30 Sep 2016; DNAinfo, Eddie Small, 29 Aug 2016) on the board resignations; "corporate governance and finances" is DNAinfo's paraphrase of what Mandanas told the Times. The funders page lists no years; IMLS 231,000 dollars is for fiscal year 2022; the Mellon Foundation is not on the supporters page and was cut.
+- bunkier-sztuki-krakow: OKO.press reports a labour court ruling against director Potocka (unlawful dismissal of curator Lidia Krawczyk, and mobbing by Potocka); Potocka disputes the verdict. City funding rests on Polish Wikipedia; the record's Ministry of Culture funder has no source.
+- buxton-contemporary-melbourne: gift figures kept, attributed: 26 million (MAB, 3 Dec 2014) and 22 million (Chronicle of Philanthropy citing The Age, 3 Dec 2014), neither names a currency; the 40% board share is on MAB's page only. The Conversation (Julie Shiels, 4 Apr 2018) criticises philanthropy, not the museum: Wider context.
+- busan-biennale-busan, busan-museum-of-art-busan, busan-museum-of-contemporary-art-busan: funding cut back to what opened pages state (presenting bodies; municipal museum); the record's sponsors (BNK Busan Bank, Shinsegae, Naver, Danish, Dutch and UK funds) appear on no opened page.
+- cac-vilnius: ERDF 4,175,534 euros (main building) and 11,872,255.69 euros (Sapieha Palace) confirmed; no annual budget figure.
+- ca2m-centro-de-arte-dos-de-mayo-m-stoles and ca2m-madrid: one institution in Mostoles; two reports identical apart from the ID line.
+- bwa-wrocław-wrocław: the report file is named with the record id's lower-case letter l with stroke.

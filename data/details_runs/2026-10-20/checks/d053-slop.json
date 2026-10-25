@@ -1,0 +1,867 @@
+[
+ {
+  "id": "bronx-museum-of-the-arts-bronx",
+  "section": "Website",
+  "problems": [
+   "absence/fetch note: '(checked 2026-10-25)'"
+  ],
+  "before": "Website: https://bronxmuseum.org (checked 2026-10-25)",
+  "after": "Website: https://bronxmuseum.org",
+  "sources": [
+   "https://bronxmuseum.org/visit/"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "bronx-museum-of-the-arts-bronx",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Concourse neighbourhood of the South Bronx'",
+   "unsupported: 'pleated aluminium facade'",
+   "unsupported: 'Marvel Architects' and 'July 2024' attributed to The Art Newspaper",
+   "cost stated as $42.9 million only; The Art Newspaper says $43 million",
+   "admission free since 2012 not attributed"
+  ],
+  "before": "Contemporary art museum at 1040 Grand Concourse in the Concourse neighbourhood of the South Bronx, New York. ... A $42.9 million renovation of the south wing by Marvel Architects broke ground in July 2024; ... (The Art Newspaper, September 2026).",
+  "after": "Contemporary art museum at 1040 Grand Concourse in the Bronx, New York. ... A renovation of the south wing, which the museum puts at $42.9 million and The Art Newspaper at $43 million, broke ground in 2024 (Wikipedia gives July 2024); ... The Art Newspaper (21 September 2026) reports a full reopening in autumn 2027.",
+  "sources": [
+   "https://www.bronxmuseum.org/about",
+   "https://www.theartnewspaper.com/2026/09/21/new-york-city-museum-building-boom-bronx-museum-canyon-metropolitan-museum",
+   "https://en.wikipedia.org/wiki/Bronx_Museum_of_the_Arts"
+  ],
+  "reason": "The museum's page gives $42.9 million and 2024; The Art Newspaper (Gabriella Angeleti, 21 September 2026) gives $43 million, no month and Marvel; Wikipedia gives July 2024. The neighbourhood and facade wording appear on no opened page."
+ },
+ {
+  "id": "bronx-museum-of-the-arts-bronx",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Mellon Foundation' (not on the supporters page)",
+   "'among 29 listed' filler count",
+   "city funding of renovation not tied to a year",
+   "Wikipedia funding claim lacks its 2013 source date",
+   "absence-style: none; years not given on page"
+  ],
+  "before": "... Henry Luce Foundation, Mellon Foundation, Pollock Krasner Foundation, Rockefeller Brothers Fund and Scherman Foundation, among 29 listed. / The City of New York is the main funder of the $42.9 million renovation, per the museum. Wikipedia reports that the mayor's office provided $7 million when the expansion was announced in 2016.",
+  "after": "Corporate and foundation supporters on the museum's page, listed without years or amounts, include ... Henry Luce Foundation, Pollock Krasner Foundation, Rockefeller Brothers Fund and Scherman Foundation. / The museum says the City of New York primarily funds the south wing renovation. Wikipedia reports that the mayor's office provided $7 million when a renovation and expansion plan was announced in 2016.",
+  "sources": [
+   "https://bronxmuseum.org/make-a-donation/support/our-supporters/",
+   "https://www.bronxmuseum.org/about",
+   "https://imls.gov/grants/awarded/ma-252078-oms-22"
+  ],
+  "reason": "The supporters page does not list Mellon Foundation. The museum's wording is 'primarily funded by the City of New York'. The page gives no years or amounts for any supporter; the only dated figure is IMLS $231,000 for fiscal year 2022."
+ },
+ {
+  "id": "bronx-museum-of-the-arts-bronx",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "absence statement: 'none found of its programme or its funders'",
+   "Apollo item undated and byline described as unsigned (page shows 'News')",
+   "Apollo: 'main objection' overstated (page says 'particular concern')",
+   "quote misattributed: 'corporate governance and finances' is DNAinfo's paraphrase, not Mandanas's quote",
+   "Blanco quote altered",
+   "dates missing on all three items",
+   "who resigned not stated in full"
+  ],
+  "before": "Overall: The only criticism of the museum is about its 2016 governance dispute; none found of its programme or its funders, ... / Mandanas told the New York Times her main concern was \"corporate governance and finances.\" A museum spokeswoman said the museum had \"minimal financial exposure\" on the statue project.",
+  "after": "Overall: Three news items from August and September 2016 report the resignation of six board members over governance and the museum's Cuba projects. / Mandanas told the New York Times she was mainly concerned with corporate governance and finances. Museum spokeswoman Sara Griffin said the museum had \"minimal financial exposure\" on the statue project and did not believe the other four left over those concerns.",
+  "sources": [
+   "https://www.apollo-magazine.com/resignations-at-the-bronx-museum/",
+   "https://www.theartnewspaper.com/2016/09/30/us-museums-cuban-dreams-deferred",
+   "https://www.dnainfo.com/new-york/20160829/concourse/bronx-arts-museum-loses-6-board-members-week"
+  ],
+  "reason": "Apollo (29 August 2016, 'News' byline), The Art Newspaper (David D'Arcy, 30 September 2016) and DNAinfo (Eddie Small, 29 August 2016) opened. DNAinfo names Blanco as chair and Mandanas as vice chair, the other four resigners, Blanco's memo objections and the $3.2 million budget; the Blanco quote is now exact."
+ },
+ {
+  "id": "bronx-museum-of-the-arts-bronx",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "lists what is absent: 'none of the named funders sits in a flag category' (no opened page establishes it)"
+  ],
+  "before": "... and none of the named funders sits in a flag category. The documented weak point is the 2016 board dispute over governance and the Cuba projects. ...",
+  "after": "The money behind the museum is public arts funding ... In August 2016 six board members resigned over governance and the Cuba projects, as Apollo, The Art Newspaper and DNAinfo reported. Annual spending exceeded revenue in each of the last three filings, and net assets fell to $3.55 million in 2025.",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/132709368"
+  ],
+  "reason": "ProPublica figures confirmed: expenses exceed revenue in FY2023, 2024 and 2025; net assets $3,551,509 in 2025. The report also trimmed under 800 words. The report was trimmed from about 870 to 783 words (programme bullet, Mellon and other list names, detail wording)."
+ },
+ {
+  "id": "bulegoa-zb-bilbao",
+  "section": "Website",
+  "problems": [
+   "fetch note '(checked 2026-10-25)'"
+  ],
+  "before": "Website: https://bulegoa.org (checked 2026-10-25)",
+  "after": "Website: https://bulegoa.org",
+  "sources": [
+   "https://bulegoa.org"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "bulegoa-zb-bilbao",
+  "section": "OVERVIEW",
+  "problems": [
+   "overstated: 'hosting one COOP study group a year'"
+  ],
+  "before": "Partnered with the Dutch Art Institute from 2017 to 2025, hosting one COOP study group a year in the \"Curating Positions\" series",
+  "after": "Partner of the Dutch Art Institute from 2017 to 2025; contributed to eight COOP study groups in the \"Curating Positions\" series, one per academic year",
+  "sources": [
+   "https://dutchartinstitute.eu/page/11993/bulegoa-z-b-bilbao---partner-from-2017-till-2025"
+  ],
+  "reason": "The Dutch Art Institute page lists eight study groups, 2017-18 to 2024-25, to which Bulegoa contributed; it does not say Bulegoa hosted them."
+ },
+ {
+  "id": "bulegoa-zb-bilbao",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'mainly public' (no amounts anywhere)",
+   "unsupported: 'announced in July 2020' (post is dated 11/07/2020 with a 2020-06-05 timestamp)",
+   "'grant' not used by the page; page says 'given the support of'"
+  ],
+  "before": "Bulegoa z/b: mainly public: ... / In July 2020 the space announced support from the Foundation for Arts Initiatives for a project running from 2020 to 2023 (stated by the space; no amount given).",
+  "after": "Bulegoa z/b: public: ... / A 2020 post on the space's site says it was given the support of the Foundation for Arts Initiatives for a new project running from 2020 to 2023 (stated by the space).",
+  "sources": [
+   "https://bulegoa.org/en/about-us/",
+   "https://bulegoa.org",
+   "https://bulegoa.org/en/bulegoa_en/foundation-for-arts-initiatives/"
+  ],
+  "reason": "Basque Government, Diputacion Foral de Bizkaia, Bilbao City Council, Creative Europe and the Ministry of Culture and Sports are listed on the site without years or amounts; the foundation post gives 2020 to 2023."
+ },
+ {
+  "id": "bulegoa-zb-bilbao",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "lists what is absent: 'No funder is in a flag category'",
+   "overstated article summary: only the abstract was readable; the abstract says the initiatives respond to Guggenheim-effect gentrification and that Bulegoa criticises the cultural, artistic and academic system",
+   "authors not named"
+  ],
+  "before": "No funder is in a flag category. A 2026 academic article in Arte, Individuo y Sociedad treats the space as an independent initiative that critiques Bilbao's cultural establishment and the Guggenheim-driven gentrification, which is a point about its programme rather than its funding.",
+  "after": "A 2026 article in Arte, Individuo y Sociedad by Irantzu Sanzo-San Martin and Concepcion Elorza-Ibanez de Gauna chooses the space as a case study of independent Bilbao initiatives that respond to the gentrification that followed the \"Guggenheim effect\"; its abstract says the space criticises the cultural, artistic and academic system.",
+  "sources": [
+   "https://revistas.ucm.es/index.php/ARIS/article/view/106650"
+  ],
+  "reason": "The article page showed the abstract and metadata only (Vol. 38, no. 3, 2026, pp. 555-565); the claim is limited to what the abstract states."
+ },
+ {
+  "id": "bundanon",
+  "section": "Website",
+  "problems": [
+   "fetch note"
+  ],
+  "before": "Website: https://www.bundanon.com.au (checked 2026-10-25)",
+  "after": "Website: https://www.bundanon.com.au",
+  "sources": [
+   "https://www.bundanon.com.au/about/"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "bundanon",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'on the Shoalhaven River in Illaroo' (about page names the Shoalhaven region of the NSW South Coast, no Illaroo)",
+   "unsupported: 'the artist Yvonne Boyd'",
+   "Bridge contents and burial credited to wrong page"
+  ],
+  "before": "Art museum, heritage homestead and artist residency site on the Shoalhaven River in Illaroo, New South Wales; ...",
+  "after": "Art museum, heritage homestead and artist residency site in the Shoalhaven region of the New South Wales South Coast, set across 1,000 hectares of wildlife refuge; the site is about 25 km by car from Nowra (Bundanon).",
+  "sources": [
+   "https://www.bundanon.com.au/about/",
+   "https://www.bundanon.com.au/visit/",
+   "https://en.wikipedia.org/wiki/Bundanon"
+  ],
+  "reason": "Bundanon's about and visit pages give the region, the 1,000 hectares and the 25 km; Wikipedia gives 'partially buried in the landscape', Riversdale and the Bridge contents."
+ },
+ {
+  "id": "bundanon",
+  "section": "FUNDING",
+  "problems": [
+   "mislabelled: A$6 million described as operating funding, Art Collector calls it uplift funding",
+   "source not dated or authored",
+   "Benefactors tier is under Legacy Supporters on the page"
+  ],
+  "before": "Art Collector Magazine reports the Federal Government's budget also added A$6 million in operating funding over two years.",
+  "after": "The Art Museum and Bridge project totals A$34 million: A$22.5 million from the Australian Government and A$10.3 million from the NSW Government, with philanthropic support also noted (Art Collector, Charlotte Middleton, originally published 18 January 2021). The article adds that the Federal Government later announced uplift funding of A$6 million over two years.",
+  "sources": [
+   "https://artcollector.net.au/bridge-to-the-future-bundanon-to-open-new-world-class-facilities",
+   "https://www.bundanon.com.au/give/supporters/",
+   "https://www.johnmcdonald.net.au/?p=19572"
+  ],
+  "reason": "A$34 million, A$22.5 million and A$10.3 million confirmed on the Art Collector page. McDonald's article states funding came from federal and state governments and the private sector. The supporters page carries no years or amounts."
+ },
+ {
+  "id": "bundanon",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong title: the article is 'Bundanon: Impulse to Action'; 'From Impulse to Action' is the exhibition",
+   "date only '2022'; original SMH date 7 May 2022",
+   "quote altered: 'bite off more than it can chew' (page: 'possibly bites off more than it can chew')",
+   "Overall line states only 'Coverage found is favourable' (an absence-style survey claim)"
+  ],
+  "before": "1. Sydney Morning Herald: John McDonald, \"Bundanon: From Impulse to Action\" (2022) ... says the opening exhibition tries to \"bite off more than it can chew\"",
+  "after": "1. Sydney Morning Herald: John McDonald, \"Bundanon: Impulse to Action\" (7 May 2022; read on McDonald's own site) ... says the first exhibition at the museum, \"From Impulse to Action,\" \"possibly bites off more than it can chew\"",
+  "sources": [
+   "https://www.johnmcdonald.net.au/?p=19572"
+  ],
+  "reason": "The page confirms the criticism is of the exhibition, not the institution. The page is McDonald's own site, which gives SMH 7 May 2022 as the original publication."
+ },
+ {
+  "id": "bundanon",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "lists what is absent: 'no funder is in a flag category'"
+  ],
+  "before": "... patron program of individuals and family foundations; no funder is in a flag category. The site began as a gift ...",
+  "after": "... patron program of individuals and family foundations. The site began as a gift of the Boyds' land and collection to the nation.",
+  "sources": [
+   "https://www.bundanon.com.au/give/supporters/"
+  ],
+  "reason": "The absence clause is removed."
+ },
+ {
+  "id": "bunkier-sztuki-krakow",
+  "section": "Website",
+  "problems": [
+   "fetch note"
+  ],
+  "before": "Website: https://bunkier.art.pl (checked 2026-10-25)",
+  "after": "Website: https://bunkier.art.pl",
+  "sources": [
+   "https://pl.wikipedia.org/wiki/Bunkier_Sztuki"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "bunkier-sztuki-krakow",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Krakow branch of the Central Bureau for Art Exhibitions' (Polish Wikipedia says the history goes back to 1950 when BWA was created)",
+   "unsupported: 'pavilion opened in 1965' (English Wikipedia: building constructed in 1965)",
+   "'cafe outside the gallery' wording",
+   "city 'gave' status: page says the gallery received municipal status"
+  ],
+  "before": "Founded in 1950 as the Krakow branch of the Central Bureau for Art Exhibitions (BWA); the city gave it municipal gallery status in 1994 ... The pavilion opened in 1965 ...",
+  "after": "Polish Wikipedia dates the institution's history to 1950, when the Bureau of Art Exhibitions (BWA) was created; the gallery received municipal status in 1994 and adopted the name Bunkier Sztuki in 1995. / The building was designed by Krystyna Tolloczko-Rozyska (Polish Wikipedia); English Wikipedia dates its construction to 1965 and credits Stefan Borzecki and Antoni Hajdecki with the concrete facade.",
+  "sources": [
+   "https://pl.wikipedia.org/wiki/Bunkier_Sztuki",
+   "https://en.wikipedia.org/wiki/Bunkier_Sztuki"
+  ],
+  "reason": "Rewritten to what the two Wikipedia pages state. The 980 exhibitions and 445 works by 170 artists are confirmed on English Wikipedia."
+ },
+ {
+  "id": "bunkier-sztuki-krakow",
+  "section": "FUNDING",
+  "problems": [
+   "overstated: 'finances and runs the gallery as a municipal institution'"
+  ],
+  "before": "The City of Krakow finances and runs the gallery as a municipal institution (Polish Wikipedia).",
+  "after": "The gallery is financed by the City of Krakow (Polish Wikipedia: \"finansowana przez Miasto Krakow\").",
+  "sources": [
+   "https://pl.wikipedia.org/wiki/Bunkier_Sztuki"
+  ],
+  "reason": "Polish Wikipedia states 'finansowana przez Miasto Kraków'. English Wikipedia has no funding details. bunkier.art.pl returned HTTP 403, so the gallery's own page was not used."
+ },
+ {
+  "id": "bunkier-sztuki-krakow",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "OKO.press title missing (placeholder description used)",
+   "wording of the ruling not given in the page's words",
+   "Potocka's dispute of the verdict omitted",
+   "Magazyn Szum: author 'editorial team', date year only; Jalowik 'won competition' on 30 November 2023 not stated",
+   "Art Newspaper: date year only, council vote date missing"
+  ],
+  "before": "3. OKO.press: Katarzyna Kojzar, article on Maria Anna Potocka's dismissal as MOCAK director (2 October 2024) ... Reports that a labour court ruled in July 2024, in a case concerning Bunkier Sztuki, that curator Lidia Krawczyk had been dismissed unlawfully and that Potocka had committed mobbing; the ruling was final.",
+  "after": "3. OKO.press: Katarzyna Kojzar, \"Masza Potocka traci stanowisko dyrektorki MOCAK-u. Czesc pracownikow oskarzyla ja o mobbing\" (2 October 2024) ... in July 2024 the court found, in the article's quoted words, that the curator was dismissed unlawfully and that Potocka \"dopuscila sie mobbingu\" (my translation: committed mobbing). The article calls the ruling final. / Potocka disputes the verdict.",
+  "sources": [
+   "https://oko.press/masza-potocka-traci-prace",
+   "https://magazynszum.pl/delfina-jalowik-dyrektorka-bunkra-sztuki-czyli-w-krakowie-bez-zmian-komentarz-redakcja",
+   "https://www.theartnewspaper.com/2019/04/29/krakow-city-council-rejects-mayors-plan-to-merge-the-citys-two-leading-contemporary-art-spaces"
+  ],
+  "reason": "All three pages opened. The Art Newspaper (Richard Unwin, 29 April 2019), Magazyn Szum (editorial board, 1 December 2023) and OKO.press (Katarzyna Kojzar, 2 October 2024) confirmed. The ruling is stated with the page's words and attributed to OKO.press; the ruling went against Potocka, who disputes it."
+ },
+ {
+  "id": "bunkier-sztuki-krakow",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict-style claims without attribution ('the 2019 appointment of Potocka without a competition' stated as fact)"
+  ],
+  "before": "The documented weak points are governance: the 2019 appointment of Potocka without a competition, the 2019 merger attempt, and the July 2024 labour court ruling on mobbing in a case concerning the gallery.",
+  "after": "The documented points are the 2019 merger plan rejected by the city council, Magazyn Szum's account of Potocka's 2019 appointment without a competition, and the July 2024 labour court finding, reported by OKO.press, that Potocka committed mobbing in a case concerning Bunkier Sztuki.",
+  "sources": [
+   "https://oko.press/masza-potocka-traci-prace"
+  ],
+  "reason": "Claims now attributed to the outlets that state them."
+ },
+ {
+  "id": "busan-biennale-busan",
+  "section": "Website",
+  "problems": [
+   "fetch note"
+  ],
+  "before": "Website: http://www.busanbiennale.org/BBOCkr (checked 2026-10-25)",
+  "after": "Website: http://www.busanbiennale.org/BBOCkr",
+  "sources": [
+   "https://www.busan.go.kr/eng/bsnews01/1752281"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "busan-biennale-busan",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'century-old' (e-flux and the Biennial Foundation call Space OneZ a marine warehouse, no age)",
+   "'renamed in 2000' reworded to the city page's wording",
+   "'Run by' reworded to the city page's 'Presented by'"
+  ],
+  "before": "Space OneZ, a century-old marine warehouse on Yeongdo ... renamed in 2000.",
+  "after": "Space OneZ, a marine warehouse on Yeongdo ... took its current name after the organizing committee was established in 2000.",
+  "sources": [
+   "https://www.busan.go.kr/eng/bsnews01/1752281",
+   "https://www.e-flux.com/announcements/6787772/dissident-chorus",
+   "https://en.wikipedia.org/wiki/Busan_Biennale"
+  ],
+  "reason": "The City of Busan page (presented by Busan Metropolitan City in cooperation with the Organizing Committee; 29 August to 1 November 2026; 46 artists from 22 countries; open call of over 70 teams; 16,000 won ticket) and Wikipedia confirmed."
+ },
+ {
+  "id": "busan-biennale-busan",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Organizing Committee 'office in Dong-gu' and 'invites companies, organisations and individuals to become sponsors' (busanbiennale.org presented a self-signed certificate and could not be opened; no other page states it)"
+  ],
+  "before": "- Busan Metropolitan City presents the biennale with the Busan Biennale Organizing Committee, which has its office in Dong-gu, Busan.\n- The Organizing Committee's site invites companies, organisations and individuals to become sponsors on a standing basis.",
+  "after": "- Busan Metropolitan City presents the 2026 biennale in cooperation with the Busan Biennale Organizing Committee (Busan Metropolitan City); Wikipedia states the biennale is hosted by the city and the Organizing Committee.",
+  "sources": [
+   "https://www.busan.go.kr/eng/bsnews01/1752281",
+   "https://en.wikipedia.org/wiki/Busan_Biennale",
+   "https://www.e-flux.com/announcements/6787772/dissident-chorus"
+  ],
+  "reason": "Only the presenting bodies are stated on opened pages. The e-flux announcement and the Biennial Foundation announcement name no funders, and a web search found no page naming BNK Busan Bank, Shinsegae, Naver or the Danish, Dutch and UK funds. The site busanbiennale.org is also removed from SOURCES. Funding is thin: a human with access to the organizer's site should add sponsors."
+ },
+ {
+  "id": "busan-biennale-busan",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "date year only (page: 29 September 2026)",
+   "quote altered: 'more staid and generic' (page: 'feels more staid and generic'), 'needlessly large installations' (page: 'a few needlessly large installations for visual drama')",
+   "'Praises the show's open stance on dissent' not what the page says; it says the open celebration of underdogs and dissent makes it an accidental foil"
+  ],
+  "before": "(2026) ... Finds the curation at the Busan Museum of Contemporary Art \"more staid and generic\" ... Praises the show's open stance on dissent, which she calls \"an accidental foil ...\"",
+  "after": "(29 September 2026) ... Writes that the curation at the Busan Museum of Contemporary Art \"feels more staid and generic,\" ... \"a few needlessly large installations for visual drama.\" / Says the biennial's open celebration of underdogs and dissent makes it \"an accidental foil to the political quarrels plaguing the concurrent Gwangju Biennale.\"",
+  "sources": [
+   "https://www.e-flux.com/criticism/6782475/busan-biennale-2026-dissident-chorus"
+  ],
+  "reason": "Quotes checked on the opened e-flux review (Adeline Chia, 29 September 2026)."
+ },
+ {
+  "id": "busan-biennale-busan",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "lists what is absent: 'no funder in a flag category is documented'"
+  ],
+  "before": "The biennale is a city-run event: Busan Metropolitan City presents it through its Organizing Committee, and no funder in a flag category is documented. The one published criticism concerns the 2026 curation.",
+  "after": "The biennale is presented by Busan Metropolitan City in cooperation with its Organizing Committee. The published review of the 2026 edition, by Adeline Chia in e-flux Criticism, concerns the curation.",
+  "sources": [
+   "https://www.busan.go.kr/eng/bsnews01/1752281"
+  ],
+  "reason": "The absence clause is removed and the claim is attributed."
+ },
+ {
+  "id": "busan-museum-of-art-busan",
+  "section": "Website",
+  "problems": [
+   "fetch note"
+  ],
+  "before": "Website: https://art.busan.go.kr (checked 2026-10-25)",
+  "after": "Website: https://art.busan.go.kr",
+  "sources": [
+   "https://art.busan.go.kr/index.nm?menuCd=45"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "busan-museum-of-art-busan",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'its site also lists a Space Lee Ufan unit'",
+   "'second reopening show' not stated; Hankyung reports four exhibitions, one of about 260 works"
+  ],
+  "before": "its site also lists a Space Lee Ufan unit (museum website). / A second reopening show, on North Korea-linked and socialist-leaning artists, has about 260 works (Hankyung).",
+  "after": "Hankyung calls it the Busan Municipal Museum of Art. / Hankyung reports four exhibitions at the reopening, one of them showing about 260 works by artists who defected to North Korea or leaned socialist.",
+  "sources": [
+   "https://www.hankyung.com/article/2026092801331",
+   "https://www.busan.go.kr/eng/bsevents/1752391"
+  ],
+  "reason": "46.9 billion won and three years confirmed in Hankyung; 'Dear All The Yesterdays', 17 September 2026 to 14 March 2027, free admission, Tuesday to Sunday 10:00 to 18:00 confirmed on the Busan city events page."
+ },
+ {
+  "id": "busan-museum-of-art-busan",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'site is operated by Busan Metropolitan City, which runs the museum' (the museum page names no operator)",
+   "amounts/years: patrons' page lists supporting members with no years or amounts, only two founding dates"
+  ],
+  "before": "Busan Museum of Art: public: run by Busan Metropolitan City / The museum's site is operated by Busan Metropolitan City, which runs the museum.",
+  "after": "Busan Museum of Art: public: municipal museum / Hankyung calls it the Busan Municipal Museum of Art, and the Busan Metropolitan City website carries its reopening exhibition.",
+  "sources": [
+   "https://art.busan.go.kr/index.nm?menuCd=45",
+   "https://www.hankyung.com/article/2026092801331",
+   "https://www.busan.go.kr/eng/bsevents/1752391"
+  ],
+  "reason": "The patrons' page lists the supporting members as written (Centum Medical Foundation, Taekwang, Dongsung Chemical, Korens, Goryeo Development & Haeundae Beach C.C., Hwaseung Group, Songwol Towel, BNK Busan Bank) with no years or amounts, so it is kept as a listing. Sources are too thin for the funding amount: no budget or subsidy figure was found."
+ },
+ {
+  "id": "busan-museum-of-art-busan",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong translated title ('Taking a notebook: ... brings the exhibition controversy on itself')",
+   "'Quotes the museum saying' stated as fact; the column reports it",
+   "overstated: 'misrepresent the artist Lee Kwae-dae, who suffered under the North Korean regime' (the column argues the texts ignore his experience under the regime)",
+   "the column's praise of the works and its display-design point not given",
+   "'wall texts frame the US role and division negatively' reworded to the column's points"
+  ],
+  "before": "1. Hankyung (Korea Economic Daily): Sung Su-young, \"Taking a notebook: the Busan Museum of Art brings the exhibition controversy on itself\" (28 September 2026; title is my translation) ... Says the texts frame the US role and the division of Korea negatively and misrepresent the artist Lee Kwae-dae ...",
+  "after": "1. Hankyung (Korea Economic Daily): Sung Su-young, \"[취재수첩] 편파 전시 논란 자초한 부산시립미술관\" (28 September 2026; my translation: [Reporter's Notebook] Busan Municipal Museum of Art invites controversy with a biased exhibition) ... Argues the texts ignore Lee Kwae-dae's experience under the North Korean regime, including forced portraits of Kim Il-sung and Stalin and his later purge. / Reports that the museum said it has \"no political intent\" (my translation) and that director Seo Jin-seok told the reporter to look at the works rather than the texts.",
+  "sources": [
+   "https://www.hankyung.com/article/2026092801331"
+  ],
+  "reason": "Headline, byline (Sung Su-young, Hankyung culture and sports desk), date (28 September 2026, updated 29 September) and content confirmed on the opened column, which is about this museum."
+ },
+ {
+  "id": "busan-museum-of-art-busan",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported/vague: 'The money behind the museum is Busan Metropolitan City' and 'small circle'",
+   "lists what is absent: 'No funder in a flag category is documented'"
+  ],
+  "before": "The money behind the museum is Busan Metropolitan City, with a small circle of corporate and medical-foundation supporting members named without years or amounts. No funder in a flag category is documented. The one published objection is ...",
+  "after": "The museum is municipal, with supporting members including BNK Busan Bank, Hwaseung Group and the Centum Medical Foundation named without years or amounts. A September 2026 Hankyung column objects to the wall texts ...",
+  "sources": [
+   "https://art.busan.go.kr/index.nm?menuCd=45"
+  ],
+  "reason": "The museum's own pages do not state an operator or budget; the claim is cut back to 'municipal' as Hankyung describes it."
+ },
+ {
+  "id": "busan-museum-of-contemporary-art-busan",
+  "section": "Website",
+  "problems": [
+   "fetch note"
+  ],
+  "before": "Website: https://www.busan.go.kr/moca_en (checked 2026-10-25)",
+  "after": "Website: https://www.busan.go.kr/moca_en",
+  "sources": [
+   "http://www.busan.go.kr/moca_en/about01"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "busan-museum-of-contemporary-art-busan",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: '29,900 square metre site', '15,312 square metres of floor area', 'three-storey' (not in the Newsis article)",
+   "unsupported: 'an area known for its birdlife and reeds (museum site)'",
+   "'botanist' added to Patrick Blanc",
+   "'emphasis on nature and environmental issues' reworded to the museum page's 'nature, ecosystems'"
+  ],
+  "before": "Three-storey building on a 29,900 square metre site with 15,312 square metres of floor area; the exterior carries a \"Vertical Garden\" by the botanist Patrick Blanc ...",
+  "after": "The exterior carries a \"Vertical Garden\" by Patrick Blanc with 175 plant species native to Korea, and the children's art library was designed by the architect Lee Ki-chul (Newsis, 27 May 2018).",
+  "sources": [
+   "https://www.newsis.com/view/NISX20180527_0000319295",
+   "http://www.busan.go.kr/moca_en/about01",
+   "https://www.busan.go.kr/eng/bsfacility01/1321571"
+  ],
+  "reason": "Newsis (Heo Sang-cheon, 27 May 2018) confirms the garden and library only. The museum pages confirm the 2013-2017 construction, the 15 June 2018 opening, Type 1 registration in May 2018, both directors, the 2005 study and 2009 plan, hours and free admission except special exhibitions."
+ },
+ {
+  "id": "busan-museum-of-contemporary-art-busan",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'public institution of Busan Metropolitan City' (the museum page says only a Busan-based public art museum hosted on the city government's site)",
+   "'about 2 billion won' (KNN: nearly 2 billion won)"
+  ],
+  "before": "The museum is a public institution of Busan Metropolitan City, and Busan City announced its 2018 opening (Newsis). / A proposed rooftop restaurant would use about 2 billion won of city funds (KNN, 16 September 2024).",
+  "after": "The museum describes itself as a public art museum and sits on the Busan city government's website; the Busan city government announced its 2018 opening (Newsis). / A proposed rooftop restaurant would use nearly 2 billion won in city funds (KNN, 16 September 2024).",
+  "sources": [
+   "http://www.busan.go.kr/moca_en/about01",
+   "https://www.newsis.com/view/NISX20180527_0000319295",
+   "https://news.knn.co.kr/news/article/162684"
+  ],
+  "reason": "Sources are thin: no budget or subsidy figure appears on any opened page."
+ },
+ {
+  "id": "busan-museum-of-contemporary-art-busan",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "'designated natural monument' not stated by KNN (KNN: protected cultural heritage zone)",
+   "'roughly 60-seat' reworded to 'seating about 60'",
+   "Overall line framed as what is not (not art-press); reworded to state what the report covers",
+   "museum response paraphrase 'refine the design for safety' made exact"
+  ],
+  "before": "Overall: The criticism found is local press coverage of a 2024 building proposal, not art-press criticism of the programme. ... Eulsukdo, a designated natural monument and protection zone ...",
+  "after": "Overall: One local news report, from 2024, covers objections to a proposed rooftop restaurant; it is not art-press criticism of the programme. ... Eulsukdo, which the report calls a protected heritage zone ...",
+  "sources": [
+   "https://news.knn.co.kr/news/article/162684"
+  ],
+  "reason": "KNN (Hwangbo Ram, 16 September 2024, headline '부산현대미술관 옥상에 음식점 추진 논란') confirmed: 60 seats, art storage building, Park Sang-hyeon, Song Sang-jo, special glass response, fire concern."
+ },
+ {
+  "id": "busan-museum-of-contemporary-art-busan",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "lists what is absent: 'no funder in a flag category is documented'",
+   "'Busan Metropolitan City' as the money not supported by a funding page"
+  ],
+  "before": "The money behind the museum is Busan Metropolitan City, and no funder in a flag category is documented. The one documented dispute ...",
+  "after": "The museum is a public art museum of the Busan city government. The one documented dispute is the 2024 rooftop restaurant plan ...",
+  "sources": [
+   "https://news.knn.co.kr/news/article/162684"
+  ],
+  "reason": "Absence clause removed; funding claim cut back to what the pages state."
+ },
+ {
+  "id": "buxton-contemporary-melbourne",
+  "section": "Website",
+  "problems": [
+   "fetch note"
+  ],
+  "before": "Website: https://buxtoncontemporary.com (checked 2026-10-25)",
+  "after": "Website: https://buxtoncontemporary.com",
+  "sources": [
+   "https://buxtoncontemporary.com/about/"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "buxton-contemporary-melbourne",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'at the corner of Dodds Street and Southbank Boulevard' (the museum page says only the Melbourne Arts Precinct)",
+   "unsupported: 'Named for the donors'",
+   "Open House walk-through and tour are one-off events for the Bauhaus Now! exhibition, not visiting hours",
+   "unsupported: 'solo and thematic exhibitions, commissions, publishing and learning programmes'"
+  ],
+  "before": "Public art museum ... at the corner of Dodds Street and Southbank Boulevard. / Named for the donors, the property developer Michael Buxton and Janet Buxton, who are listed as its Patrons. / Open House Melbourne lists a Saturday 11:30am exhibition walk-through and a Sunday 1pm architectural tour.",
+  "after": "Public art gallery on the University of Melbourne's Victorian College of the Arts Southbank campus, in the Melbourne Arts Precinct; the University of Melbourne runs it through its Museums and Collections area (museum site). / Michael and Janet Buxton are listed as its Patrons.",
+  "sources": [
+   "https://buxtoncontemporary.com/about/",
+   "https://openhousemelbourne.org/?p=6432"
+  ],
+  "reason": "Open House Melbourne confirms Fender Katsalidis, the Victoria Architecture Award shortlist and the Michael Buxton Collection of more than 350 works by 59 artists."
+ },
+ {
+  "id": "buxton-contemporary-melbourne",
+  "section": "FUNDING",
+  "problems": [
+   "figures attributed loosely: MAB's page is dated 3 December 2014 and gives $26 million with no currency label; the Chronicle of Philanthropy (headline '$22-Million Gift to Establish U. of Melbourne Art Gallery', 3 December 2014, citing The Age) gives $8.5 million for a collection of more than 300 works and $13.5 million toward construction",
+   "unsupported: 'the gift is his private donation'",
+   "Circle described only as 'invites further support'"
+  ],
+  "before": "In December 2014 Michael Buxton's gift was announced as $26 million ... the Buxton family keeps 40 per cent of the new centre's board (MAB, which reprints the announcement). The Chronicle of Philanthropy, citing The Age, reported the same day a $22 million gift ...",
+  "after": "A 3 December 2014 announcement on MAB's website gives Michael Buxton's gift to the University of Melbourne as $26 million: $10 million of artworks and $16 million towards construction of the gallery; it states \"The Buxton family will retain a 40 per cent share of the new centre's board.\" The Chronicle of Philanthropy, citing The Age, reported the same day a $22 million gift: an $8.5 million collection of more than 300 works and $13.5 million toward construction.",
+  "sources": [
+   "https://www.mab.com.au/news/michael-buxton-s-26-million-art-gift-to-university-of-melbourne-will-create-new-gallery/",
+   "https://www.philanthropy.com/news/22-million-gift-to-establish-u-of-melbourne-art-gallery/",
+   "https://openhousemelbourne.org/?p=6432"
+  ],
+  "reason": "Both figures kept and attributed; the 40 per cent board share is on MAB's page only. Neither page names a currency; MAB's page does not say it reprints the Age announcement, and it does not mention operating funds (Open House Melbourne and The Conversation do). The Chronicle page has no byline in the text read."
+ },
+ {
+  "id": "buxton-contemporary-melbourne",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "The Conversation piece criticises the philanthropy system, not the museum, and praises the Buxton gift: moved to WIDER CONTEXT",
+   "CRITICISM IN ART MEDIA heading left with no numbered items, so deleted",
+   "date year only (4 April 2018); author's role added from the page"
+  ],
+  "before": "CRITICISM IN ART MEDIA\nOverall: The one critical piece concerns the system of private philanthropy in Australian art, not the museum.\n1. The Conversation: Julie Shiels, \"Private collectors are saving Australian art, but they can't do it on their own\" (2018) ...",
+  "after": "WIDER CONTEXT\n- The Conversation: Julie Shiels, a lecturer at RMIT University's School of Art, \"Private collectors are saving Australian art, but they can't do it on their own\" (4 April 2018). ... Her criticism is aimed at reliance on philanthropy, not at Buxton Contemporary; ...",
+  "sources": [
+   "https://theconversation.com/private-collectors-are-saving-australian-art-but-they-cant-do-it-on-their-own-93427"
+  ],
+  "reason": "The page names Buxton Contemporary and the Buxton gift (including operational funding) and criticises the broader reliance on philanthropy and the decline in government arts funding, not the museum."
+ },
+ {
+  "id": "buxton-contemporary-melbourne",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "connection statement reworded to state what the sources say",
+   "2024 protest dates and article details added"
+  ],
+  "before": "The article does not mention Buxton Contemporary. The museum sits on the university's campus, but no page links its funding to the university's arms-related research.",
+  "after": "Connection: Buxton Contemporary is run by the University of Melbourne (museum site); the Melburnian article concerns the university's research grants and does not mention the museum.",
+  "sources": [
+   "https://themelburnian.au/university-commits-to-disclose-ties-to-weapons-companies-amid-student-protest/",
+   "https://buxtoncontemporary.com/about/"
+  ],
+  "reason": "The Melburnian (Georgie Atkins, 28 May 2024) says students demanded disclosure and divestment from weapons makers (Lockheed Martin, Boeing, BAE Systems) and that on 22 May the university committed to disclose its research grant arrangements. It does not mention Buxton Contemporary or any museum."
+ },
+ {
+  "id": "buxton-contemporary-melbourne",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict 'weak point' wording and 'no funder in a flag category is documented' (absence)",
+   "'private gift from the property developer Michael Buxton and Janet Buxton' broader than the museum's page"
+  ],
+  "before": "The weak point is the family's 40 per cent share of the founding board, as announced in 2014. The 2024 campus protest concerns the parent university, not the museum.",
+  "after": "The money behind the museum is a 2014 gift from the Michael and Janet Buxton Foundation (stated by the museum), announced as $26 million by MAB and $22 million by The Age via the Chronicle of Philanthropy. MAB's announcement states that the Buxton family keeps 40 per cent of the founding board.",
+  "sources": [
+   "https://www.mab.com.au/news/michael-buxton-s-26-million-art-gift-to-university-of-melbourne-will-create-new-gallery/"
+  ],
+  "reason": "Rewritten to state what is documented and who says it."
+ },
+ {
+  "id": "bwa-wrocław-wrocław",
+  "section": "file name and ID line",
+  "problems": [
+   "file name and ID line used 'wroclaw' instead of the record id 'bwa-wrocław-wrocław'"
+  ],
+  "before": "bwa-wroclaw-wroclaw.txt / ID: bwa-wroclaw-wroclaw",
+  "after": "bwa-wrocław-wrocław.txt / ID: bwa-wrocław-wrocław",
+  "sources": [],
+  "reason": "The batch record id contains the letter ł; the file was renamed to match it exactly."
+ },
+ {
+  "id": "bwa-wrocław-wrocław",
+  "section": "Website",
+  "problems": [
+   "fetch note"
+  ],
+  "before": "Website: https://www.bwa.wroc.pl (checked 2026-10-25)",
+  "after": "Website: https://www.bwa.wroc.pl",
+  "sources": [
+   "https://bwa.wroc.pl/en/new-headquarters/"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "bwa-wrocław-wrocław",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Its office is at ul. Ruska 46a'",
+   "unsupported: 'neoclassical palace commissioned by Prince Franz von Hatzfeldt in 1764'",
+   "unsupported: 'technical condition experts judged dangerous' and '16 October 2018'",
+   "unsupported: 'committee appointed by the city president'",
+   "unsupported: 'photographer and curator', 'yellow' buses"
+  ],
+  "before": "... a neoclassical palace commissioned by Prince Franz von Hatzfeldt in 1764 and badly damaged in the 1945 siege ... which experts judged dangerous ... (City of Wrocław, 16 October 2018) ... a nine-member committee appointed by the city president",
+  "after": "... an 18th-century palace whose final design is credited to Carl Gotthard Langhans and which was badly damaged in 1945 (City of Wrocław, 8 September 2020) ... experts found in poor condition with some areas at risk of collapse (City of Wrocław, October 2018) ... a nine-member committee chaired by Jerzy Pietraszek, director of the city's Culture Department",
+  "sources": [
+   "https://www.wroclaw.pl/kultura/bwa-wroclaw-historia-i-przyszlosc",
+   "https://www.wroclaw.pl/galeria-bwa-awangarda-opuszcza-palac-hatzfeldow",
+   "https://www.wroclaw.pl/kultura/dyrektor-bwa-wroclaw-maciej-bujko"
+  ],
+  "reason": "City pages opened: history page (8 September 2020; Puchała 2002 to 2020, Awangarda early 1970s, Langhans), the 2018 article (October 2018; 1,000 to 1,200 square metres) and the Bujko page (8 September 2020; nine-member committee, Pietraszek, start 17 September 2020). Neither page gives the Hatzfeldt commission or 1764."
+ },
+ {
+  "id": "bwa-wrocław-wrocław",
+  "section": "FUNDING",
+  "problems": [
+   "absence: 'the page gives no cost'; 'No amounts are given for these'",
+   "verdict 'mainly public: City of Wrocław subsidy' broader than the report: basic subsidy 'w tym miejska'",
+   "PFRON project partner is the National Centre for Culture (misattributed in the original sentence)"
+  ],
+  "before": "BWA Wrocław: mainly public: City of Wrocław subsidy / ... 82 per cent basic subsidy including the city's ... No amounts are given for these. / The new headquarters is a partnership between the City of Wrocław and PFR Nieruchomości; the page gives no cost (BWA).",
+  "after": "BWA Wrocław: public: basic subsidy including the City of Wrocław's / 2024 budget: 7,496,064.69 zloty (\"w zł: 7 496 064,69\"). ... 82 per cent \"dotacja podstawowa instytucji (w tym miejska)\" ... and 0 per cent \"środki spoza sektora finansów publicznych (niezależni sponsorzy, donatorzy)\" ...",
+  "sources": [
+   "https://bip.bwa.wroc.pl/wp-content/uploads/2025/02/507649837-kwestionariusz-sprawozdanie-roczne-pracy-instytucji-kultury-za-rok-2024-1422664-1738754049.pdf",
+   "https://bwa.wroc.pl/en/new-headquarters/"
+  ],
+  "reason": "The 2024 annual report was opened: budget 7 496 064,69 zl; 82/8/5/1/3/1 per cent and 0 per cent from outside the public sector; 32,677 visitors; funders of Galeria Dizajn renovation, Projektowanie uniwersalne and Laboratorium badan nad szczesciem confirmed. The report page names the public figure as 'City of Wroclaw' only in the basic-subsidy line (w tym miejska)."
+ },
+ {
+  "id": "bwa-wrocław-wrocław",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "'a real-estate partner' descriptor not on the page",
+   "absence clause 'none is in a flag category'"
+  ],
+  "before": "Named project funders are the Ministry of Culture, PFRON and German cultural bodies, and none is in a flag category. The new headquarters depends on a deal between the city and PFR Nieruchomości, a real-estate partner.",
+  "after": "Named project funders are the Ministry of Culture, PFRON and German cultural bodies. The new headquarters is a partnership between the City of Wrocław and PFR Nieruchomości.",
+  "sources": [
+   "https://bwa.wroc.pl/en/new-headquarters/"
+  ],
+  "reason": "Stated as the pages state it."
+ },
+ {
+  "id": "ca2m-madrid",
+  "section": "Website / heading",
+  "problems": [
+   "fetch note '(checked 2026-10-25)'",
+   "title and funding verdict differed between the two records for one museum"
+  ],
+  "before": "Website: https://ca2m.org (checked 2026-10-25)",
+  "after": "Website: https://ca2m.org (both reports now identical apart from the ID line; both headed Móstoles)",
+  "sources": [
+   "https://ca2m.org"
+  ],
+  "reason": "A Website line gives the address only; the two reports for one museum are kept identical except the ID line."
+ },
+ {
+  "id": "ca2m-madrid",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'on the outskirts of Madrid'",
+   "unsupported: 'talks' among the museum's activities"
+  ],
+  "before": "Contemporary art museum at Avenida de la Constitución 23 in central Móstoles, on the outskirts of Madrid, in the Comunidad de Madrid (Spanish Wikipedia, Es Madrid). ... a reading group, talks and a university course",
+  "after": "Contemporary art museum at Avenida de la Constitución 23 in the heart of Móstoles, in the Comunidad de Madrid (Es Madrid). ... guided visits with artists, workshops, a reading group and a university course",
+  "sources": [
+   "https://www.esmadrid.com/en/tourist-information/centro-de-arte-dos-de-mayo-ca2m",
+   "https://es.wikipedia.org/wiki/Centro_de_Arte_Dos_de_Mayo",
+   "https://ca2m.org"
+  ],
+  "reason": "Es Madrid gives the address, 'in the heart of Móstoles', the 5,886 m2 building and the architects; Spanish Wikipedia gives May 2008, La Casona, Barenblit and Segade, about 1,500 works and about 300 from ARCO; ca2m.org gives hours and free admission."
+ },
+ {
+  "id": "ca2m-madrid",
+  "section": "FUNDING",
+  "problems": [
+   "'spent 1.3 million euros' mixes the 11 September 2020 announcement of 1.3 million euros to be allocated with the 5 October 2020 release",
+   "dates and the Spanish titles not given",
+   "deputy director not named"
+  ],
+  "before": "In 2020 the Comunidad de Madrid spent 1.3 million euros on contemporary art acquisitions, including a 500,000 euro plan that bought 54 works for the CA2M collection; the purchases were chosen by the Comunidad's acquisitions commission, which includes the CA2M's director and deputy director",
+  "after": "On 11 September 2020 the Comunidad de Madrid announced ... 1.3 million euros ... On 5 October 2020 it announced \"Adquirimos obras de 54 artistas contemporáneos por valor de 500.000 euros\": 54 works bought for 500,000 euros for the CA2M collection, within 1.3 million euros invested in contemporary art that year ... The acquisitions commission includes Manuel Segade, director of the CA2M, and Tania Pardo, deputy director",
+  "sources": [
+   "https://www.comunidad.madrid/node/57936",
+   "https://www.comunidad.madrid/node/57732",
+   "https://www.esmadrid.com/en/tourist-information/centro-de-arte-dos-de-mayo-ca2m"
+  ],
+  "reason": "Both Spanish pages opened. 5 October 2020: 54 works, 500,000 euros, 1.3 million invested in 2020 (the highest since the collection was created), commission includes Segade and Pardo. 11 September 2020: 1.3 million euros allocated, works to join the CA2M collection. Ownership: Es Madrid says the collection 'belongs to the Regional Government of Madrid'; Visit Madrid says it belongs to the Community of Madrid."
+ },
+ {
+  "id": "ca2m-madrid",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence clause 'no funder in a flag category is documented'"
+  ],
+  "before": "... which owns the collection and buys works for it, and no funder in a flag category is documented.",
+  "after": "... which owns the collection and bought 54 works for it in 2020 as part of 1.3 million euros of acquisitions.",
+  "sources": [
+   "https://www.comunidad.madrid/node/57936"
+  ],
+  "reason": "Absence clause removed; the 2020 purchase stated."
+ },
+ {
+  "id": "ca2m-centro-de-arte-dos-de-mayo-m-stoles",
+  "section": "Website / heading",
+  "problems": [
+   "fetch note '(checked 2026-10-25)'",
+   "title and funding verdict differed between the two records for one museum"
+  ],
+  "before": "Website: https://ca2m.org (checked 2026-10-25)",
+  "after": "Website: https://ca2m.org (both reports now identical apart from the ID line; both headed Móstoles)",
+  "sources": [
+   "https://ca2m.org"
+  ],
+  "reason": "A Website line gives the address only; the two reports for one museum are kept identical except the ID line."
+ },
+ {
+  "id": "ca2m-centro-de-arte-dos-de-mayo-m-stoles",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'on the outskirts of Madrid'",
+   "unsupported: 'talks' among the museum's activities"
+  ],
+  "before": "Contemporary art museum at Avenida de la Constitución 23 in central Móstoles, on the outskirts of Madrid, in the Comunidad de Madrid (Spanish Wikipedia, Es Madrid). ... a reading group, talks and a university course",
+  "after": "Contemporary art museum at Avenida de la Constitución 23 in the heart of Móstoles, in the Comunidad de Madrid (Es Madrid). ... guided visits with artists, workshops, a reading group and a university course",
+  "sources": [
+   "https://www.esmadrid.com/en/tourist-information/centro-de-arte-dos-de-mayo-ca2m",
+   "https://es.wikipedia.org/wiki/Centro_de_Arte_Dos_de_Mayo",
+   "https://ca2m.org"
+  ],
+  "reason": "Es Madrid gives the address, 'in the heart of Móstoles', the 5,886 m2 building and the architects; Spanish Wikipedia gives May 2008, La Casona, Barenblit and Segade, about 1,500 works and about 300 from ARCO; ca2m.org gives hours and free admission."
+ },
+ {
+  "id": "ca2m-centro-de-arte-dos-de-mayo-m-stoles",
+  "section": "FUNDING",
+  "problems": [
+   "'spent 1.3 million euros' mixes the 11 September 2020 announcement of 1.3 million euros to be allocated with the 5 October 2020 release",
+   "dates and the Spanish titles not given",
+   "deputy director not named"
+  ],
+  "before": "In 2020 the Comunidad de Madrid spent 1.3 million euros on contemporary art acquisitions, including a 500,000 euro plan that bought 54 works for the CA2M collection; the purchases were chosen by the Comunidad's acquisitions commission, which includes the CA2M's director and deputy director",
+  "after": "On 11 September 2020 the Comunidad de Madrid announced ... 1.3 million euros ... On 5 October 2020 it announced \"Adquirimos obras de 54 artistas contemporáneos por valor de 500.000 euros\": 54 works bought for 500,000 euros for the CA2M collection, within 1.3 million euros invested in contemporary art that year ... The acquisitions commission includes Manuel Segade, director of the CA2M, and Tania Pardo, deputy director",
+  "sources": [
+   "https://www.comunidad.madrid/node/57936",
+   "https://www.comunidad.madrid/node/57732",
+   "https://www.esmadrid.com/en/tourist-information/centro-de-arte-dos-de-mayo-ca2m"
+  ],
+  "reason": "Both Spanish pages opened. 5 October 2020: 54 works, 500,000 euros, 1.3 million invested in 2020 (the highest since the collection was created), commission includes Segade and Pardo. 11 September 2020: 1.3 million euros allocated, works to join the CA2M collection. Ownership: Es Madrid says the collection 'belongs to the Regional Government of Madrid'; Visit Madrid says it belongs to the Community of Madrid."
+ },
+ {
+  "id": "ca2m-centro-de-arte-dos-de-mayo-m-stoles",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence clause 'no funder in a flag category is documented'"
+  ],
+  "before": "... which owns the collection and buys works for it, and no funder in a flag category is documented.",
+  "after": "... which owns the collection and bought 54 works for it in 2020 as part of 1.3 million euros of acquisitions.",
+  "sources": [
+   "https://www.comunidad.madrid/node/57936"
+  ],
+  "reason": "Absence clause removed; the 2020 purchase stated."
+ },
+ {
+  "id": "cac-vilnius",
+  "section": "Website",
+  "problems": [
+   "fetch note"
+  ],
+  "before": "Website: https://cac.lt (checked 2026-10-25)",
+  "after": "Website: https://cac.lt",
+  "sources": [
+   "https://cac.lt/en/about"
+  ],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "cac-vilnius",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Old Town', '(Antakalnis)', 'shares administrative resources'",
+   "unsupported: 'Kuizinas was founding director until October 2024; Klimašauskas has led the centre since 2025 (CAC)' (no CAC page opened states it)",
+   "unsupported: 'about 3,000 square metres of exhibition space'",
+   "'Soviet-era' not on the Open House page"
+  ],
+  "before": "Kęstutis Kuizinas was founding director until October 2024; Valentinas Klimašauskas has led the centre since 2025 (CAC). / ... the two venues together offer about 3,000 square metres of exhibition space (CAC).",
+  "after": "Valentinas Klimašauskas took over the centre from its founding director, Kęstutis Kuizinas, in early 2025 (e-flux, 31 July 2025). / The main building reopened in mid-2024 after a renovation that began in 2021 (CAC).",
+  "sources": [
+   "https://www.e-flux.com/announcements/6784015/summer-exhibitions-and-closing-events",
+   "https://cac.lt/en/about",
+   "https://www.openhousevilnius.lt/2024/?p=32967"
+  ],
+  "reason": "The CAC about page gives both addresses, 'branch focused on contemporaneity and heritage' and 'since July 2024 across two venues'; the activities page gives 1992, the Ministry of Culture, the 2021 renovation, mid-2024 reopening and the 14th Baltic Triennial; the tickets page gives hours, prices and the quiet visit; Wikipedia gives the Arts Exhibition Palace succession; Open House Vilnius gives the architects and 'largest institution of this kind in the Baltic States'."
+ },
+ {
+  "id": "cac-vilnius",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Both projects were led by Kuizinas from 2018' (neither project page names a leader)",
+   "Sapieha Palace described as 'co-financed' without naming co-funders; page says 'jointly financed project'",
+   "verdict 'Ministry of Culture' as current funder: pages only state the Ministry founded the centre"
+  ],
+  "before": "Contemporary Art Centre (CAC / ŠMC): public: Lithuanian Ministry of Culture, with European Regional Development Fund money for the buildings / ... Both projects were led by Kuizinas from 2018 (CAC).",
+  "after": "Contemporary Art Centre (CAC / ŠMC): public: founded by the Lithuanian Ministry of Culture, with European Regional Development Fund money for two building projects / Revitalisation of Sapieha Palace: 11,872,255.69 euros allocated, financed by the European Regional Development Fund under the measure \"Revitalisation of Cultural Heritage Objects\"; the page calls it a jointly financed project; planned completion 31 December 2023 (CAC).",
+  "sources": [
+   "https://cac.lt/en/about-the-cac/redevelopment-projects/modernisation-of-the-contemporary/",
+   "https://cac.lt/en/about-the-cac/redevelopment-projects/revitalisation-of-sapieha-palace/",
+   "https://cac.lt/en/about/activities-and-history"
+  ],
+  "reason": "4,175,534 euros (main building; measures 07.1.1-CPVA-V-304 and 04.3.1-VIPA-T-113, 2014-2020 Operational Programme) and 11,872,255.69 euros (Sapieha Palace; measure 05.4.1-CPVA-V-301) confirmed on the CAC project pages. No annual budget or ministry subsidy figure appears on an opened page, so the Ministry's current funding is not documented beyond its founding role."
+ },
+ {
+  "id": "cac-vilnius",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "'2021 to 2024 building projects' dates not stated by the project pages (planned completion 31 December 2023; renovation from 2021; reopening mid-2024)",
+   "absence clause 'No funder in a flag category is documented'"
+  ],
+  "before": "The money behind the centre is the Lithuanian state, through the Ministry of Culture that founded it, plus EU regional development money for the 2021 to 2024 building projects (about 4.2 million euros ...). No funder in a flag category is documented.",
+  "after": "The centre was founded by the Lithuanian Ministry of Culture in 1992. Its two building projects are financed by the European Regional Development Fund: 4,175,534 euros for the main building and 11,872,255.69 euros for Sapieha Palace.",
+  "sources": [
+   "https://cac.lt/en/about-the-cac/redevelopment-projects/modernisation-of-the-contemporary/"
+  ],
+  "reason": "Exact figures from the project pages; absence clause removed."
+ }
+]
