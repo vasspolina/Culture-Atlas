@@ -1923,3 +1923,11 @@ div:has(>#topThemeBtn){column-gap:0}
   :root:root #dossier-bottom-sheet .facts{padding-top:0!important}
   :root:root:root body :is(h2.lede,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.record-popup-name,#floatingCardTitle){letter-spacing:.02em!important}
 }
+/* The chat's buttons take the header's and the tabs' size (25 Oct 2026): 44px high (var(--bar)), 22px regular type, 16px side padding, square, hairline. Voice, the send arrow and the tab bar's New Query were three different heights and sizes (about 38px, 48px, and 15px type). Desktop only; the phone's composer keeps its own tap sizes. */
+@media (min-width:768px){
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #workSendBtn:not(.is-on){height:var(--bar);min-height:var(--bar);box-sizing:border-box;padding:0 16px}
+  :root[data-theme] #workInputCard #workSendBtn:not(.is-on){width:var(--bar);min-width:var(--bar);padding:0}
+  :root[data-theme] #workInputCard #workSendBtn:not(.is-on) svg{width:20px;height:20px}
+  :root[data-theme] #workInputCard #chatShareBtn.is-on{height:var(--bar);box-sizing:border-box;padding:0 16px}
+  #workspaceNewChatBtn{font:400 22px/1 var(--sans)!important}
+}
