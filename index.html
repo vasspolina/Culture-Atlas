@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=262">
-  <script src="assets/config.js?v=262"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=264">
+  <script src="assets/config.js?v=264"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -140,7 +140,7 @@ return maplibregl$1;
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
       <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Dark</button>
-      <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap">Gossip mode</button>
+      <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Gossip mode</button>
 
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
       <div class="hidden" style="display:none;" aria-hidden="true">
@@ -242,7 +242,7 @@ return maplibregl$1;
             <span>Reset view</span>
           </button>
           <button type="button" data-globe-control="spin" aria-pressed="true" onclick="if (typeof window.toggleGlobeAutoSpin === 'function') window.toggleGlobeAutoSpin();" class="flex items-center gap-1" title="Turn the globe's slow rotation on or off">
-            <span data-globe-label>Rotate: On</span>
+            <span data-globe-label>Rotate</span>
           </button>
           <button type="button" data-globe-control="expand" aria-pressed="false" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" class="flex items-center gap-1" title="Give the map more of the window">
             <span data-globe-label>Expand map</span>
@@ -254,7 +254,7 @@ return maplibregl$1;
       <section class="relative z-20 pt-2 px-3 flex md-hidden flex-col gap-1 pointer-events-auto" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
         <div class="flex gap-1">
         <button type="button" class="px-2 py-0_5" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();" title="Back to the whole world, with filters cleared">Reset view</button>
-        <button type="button" data-globe-control="spin" aria-pressed="true" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();" title="Turn the globe's slow rotation on or off"><span data-globe-label>Rotate: On</span></button>
+        <button type="button" data-globe-control="spin" aria-pressed="true" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();" title="Turn the globe's slow rotation on or off"><span data-globe-label>Rotate</span></button>
         <button type="button" data-globe-control="expand" aria-pressed="false" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" title="Give the map more of the window"><span data-globe-label>Expand map</span></button>
         </div>
       </section>
@@ -556,7 +556,7 @@ return maplibregl$1;
           <span>Reset view</span>
         </button>
         <button id="hudSpinBtn" data-globe-control="spin" aria-pressed="true" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Turn the globe's slow rotation on or off">
-          <span id="hudSpinText" data-globe-label>Rotate: On</span>
+          <span id="hudSpinText" data-globe-label>Rotate</span>
         </button>
         <button id="hudExpandBtn" data-globe-control="expand" aria-pressed="false" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Give the map more of the window">
           <span id="hudExpandText" data-globe-label>Expand map</span>
@@ -639,13 +639,6 @@ return maplibregl$1;
 
       <!--  DESKTOP DOSSIER COLUMN (Full 45% Context Panel Inspector) -->
       <section id="desktopDossierColumn" class="hidden md-flex w-full min-w-_350px shrink-0 flex-col h-full overflow-hidden z-10">
-        <!-- Sub-header: Collapse Dossier & Close -->
-        <div class="px-4 py-2_5 rule-b flex items-center justify-between shrink-0">
-          <button id="collapseDossierBtn" type="button" onclick="window.toggleDesktopDossier(false)" class="meta flex items-center gap-1_5" title="Collapse Dossier Column">
-            <span>Collapse Dossier</span>
-          </button>
-        </div>
-
         <!-- Scrollable Dossier Body -->
         <div id="desktopDossierBody" class="flex-1 overflow-y-auto custom-scrollbar p-5 space-y-4">
           <div id="desktopDossierRecordBody"></div>
@@ -716,11 +709,6 @@ return maplibregl$1;
         <div id="chatWidthHandle" class="chat-width-handle" role="separator" aria-orientation="vertical" aria-label="Width of the chat" aria-valuemin="320" aria-valuemax="760" aria-valuenow="660" tabindex="0" title="Drag to change the width of the chat, double-click to reset"></div>
         <div id="chatWidthHandleL" class="chat-width-handle is-left" aria-hidden="true"></div>
 
-        <!-- While a note is written, the way back to the chat is the first thing in the column -->
-        <div id="chatNoteTopBar" class="w-full max-w-2xl mx-auto px-4 pt-3 pb-1">
-          <button id="chatBackBtn" type="button" onclick="window.exitChatInputMode()" class="whitespace-nowrap" title="Leave the note and go back to the chat">Back to chat</button>
-        </div>
-
         <!-- 1. SCROLLABLE CONVERSATION STREAM (Only this area scrolls!) -->
         <div id="curatorScrollArea" class="relative z-10 flex-1 min-h-0 overflow-y-auto custom-scrollbar flex flex-col items-center px-4 pt-4 pb-4 w-full">
           <div id="curatorScrollContent" class="w-full flex flex-col items-center pb-8 my-auto">
@@ -770,21 +758,22 @@ return maplibregl$1;
             <!-- Input Area (Uncontained Flat Editorial) -->
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
               <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+              <p id="noteTargetLine" class="meta hidden" role="status" aria-live="polite"></p>
               
               <!-- Bottom Toolbar -->
               <div class="flex items-center justify-between pt-2">
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Share information -->
-                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap">Share information</button>
+                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" aria-pressed="false" title="Write a note about an institution">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Voice Toggle Button -->
-                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5 is-on" title="Auto-Voice: Speaks responses aloud (Click to mute)">
+                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5 is-on" aria-pressed="true" title="Auto-Voice: Speaks responses aloud (Click to mute)">
                     <span id="curatorVoiceToggleIcon"></span>
-                    <span id="curatorVoiceToggleLabel">Voice: ON</span>
+                    <span id="curatorVoiceToggleLabel">Voice</span>
                   </button>
 
                   <!-- Upward Arrow Send Button -->
@@ -873,7 +862,7 @@ return maplibregl$1;
     <!-- Micro Badges: Live Status + Voice Mode -->
     <div class="flex items-center justify-between px-1">
       <div class="flex items-center space-x-2">
-        <button id="mobileStickyVoiceBtn" type="button" class="px-2 py-0_5">Voice: On</button>
+        <button id="mobileStickyVoiceBtn" type="button" class="px-2 py-0_5" aria-pressed="true">Voice</button>
       </div>
     </div>
   </div>
@@ -7096,7 +7085,7 @@ return maplibregl$1;
     // Light and dark mode: one switch in the header, remembered, following the system until it is set.
     function syncThemeButtons() {
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-      ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = dark ? 'Light' : 'Dark'; b.setAttribute('aria-pressed', String(dark)); b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode'); } });
+      ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.setAttribute('aria-pressed', String(dark)); } });
       const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#121212' : '#ffffff');
     }
     function toggleTheme(force) {
@@ -7113,8 +7102,7 @@ return maplibregl$1;
     function toggleGossipMode(forceState) {
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
-      const label = isGossipModeActive ? 'Gossip mode: on' : 'Gossip mode';
-      ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = label; b.setAttribute('aria-pressed', String(isGossipModeActive)); } });
+      ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) b.setAttribute('aria-pressed', String(isGossipModeActive)); });
       if (typeof appendCuratorMessage === 'function') {
         appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces have reported items. Every item comes from the records with its source, and none is independently verified.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
       }
@@ -9898,11 +9886,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v262';
+    const ATLAS_RELEASE = 'culture-atlas-v264';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=262').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=264').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11944,7 +11932,7 @@ return maplibregl$1;
         const on = b.dataset.globeControl === 'spin' ? isAutoSpinning : isGlobeExpanded;
         b.setAttribute('aria-pressed', on ? 'true' : 'false');
         const label = b.querySelector('[data-globe-label]');
-        if (label) label.textContent = b.dataset.globeControl === 'spin' ? (on ? 'Rotate: On' : 'Rotate: Off') : (on ? 'Shrink map' : 'Expand map');
+        if (label) label.textContent = b.dataset.globeControl === 'spin' ? 'Rotate' : (on ? 'Shrink map' : 'Expand map');
       });
     }
     function toggleGlobeAutoSpin() {
@@ -12565,7 +12553,7 @@ return maplibregl$1;
             ${inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : ''}
             ${isCommunity ? '' : gradeLineHtml(inst)}
             ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${escapeHtml(inst.watch)}</p>` : ''}
-            <div class="record-actions record-action-row" style="display:flex; flex-wrap:wrap; gap:4px 24px; padding-top:4px;">
+            <div class="record-actions record-action-row">
               <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
               ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
               ${(inst.lat && inst.lon && inst.address) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
@@ -12669,6 +12657,7 @@ return maplibregl$1;
     function openDossier(inst, shouldShowDrawer = true) {
       if (!inst) return;
       dossierInst = inst;
+      if (isChatInputMode) syncNoteTarget(false);
       const html = recordHtml(inst);
       const phoneBody = document.getElementById('detailBody');
       if (phoneBody) phoneBody.innerHTML = html;
@@ -15259,6 +15248,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Follow-up chips only offer what the space in view has on record: funding, a flag, opening hours.
       const followFor = () => {
         const t = (typeof target !== 'undefined' && target) || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        // Gossip mode asks about what is reported (user's instruction, 24 Oct 2026); each is a question the offline answers answer.
+        if (isGossipModeActive) return t
+          ? ['What is reported about this space?', 'Who are its flagged funders?', t.city ? `Which spaces in ${t.city} are flagged?` : 'Which spaces are flagged?']
+          : ['Which spaces are flagged?', 'Which spaces are linked to Epstein?', 'What do employees report?'];
         if (!t) return freshChips(2);
         const out = [];
         if (t.funding || t.funder_links) out.push('Who funds this museum?');
@@ -15751,13 +15744,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           openGossipDossier(inst);
         }
       });
-      document.getElementById('collapseDossierBtn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (typeof window.toggleDesktopDossier === 'function') {
-          window.toggleDesktopDossier(false);
-        }
-      });
       document.getElementById('closeDesktopDossierBtn')?.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -16211,12 +16197,46 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         placeholder: 'The report service is not configured. Your report will not be saved.'
       };
 
-    // Share information is a toggle like the Details and AI Chat tabs: on while the note is open, when it reads Back to chat and pressing it returns to the chat.
+    // A note is kept only when it belongs to an institution on the atlas: the record that is open, or one named in the note.
+    const NOTE_NEEDS_INSTITUTION = 'Open the record of the institution this note is about, or name the institution in the note';
+    function noteTargetFor(text) {
+      const lower = (text || '').toLowerCase();
+      const named = ALL_INSTITUTIONS.find(i => i.name && i.name.length > 3 && lower.includes(i.name.toLowerCase()));
+      return dossierInst || named || null;
+    }
+    // The line under the box says which record the note will go to, or what is missing. Send stays dimmed until a record is found.
+    function syncNoteTarget(flash) {
+      const line = document.getElementById('noteTargetLine');
+      const sendBtn = document.getElementById('workSendBtn');
+      if (!line) return;
+      if (!isChatInputMode || !ATLAS_REPORT_API_URL) {
+        line.classList.add('hidden');
+        line.textContent = '';
+        if (sendBtn) sendBtn.removeAttribute('aria-disabled');
+        return;
+      }
+      const target = noteTargetFor(document.getElementById('workInput')?.value);
+      line.classList.remove('hidden');
+      line.textContent = target ? `Goes to the record of ${target.name}.` : `${NOTE_NEEDS_INSTITUTION}, then send it.`;
+      if (sendBtn) {
+        if (target) sendBtn.removeAttribute('aria-disabled'); else sendBtn.setAttribute('aria-disabled', 'true');
+      }
+      if (flash && !target) { line.classList.remove('is-flashed'); void line.offsetWidth; line.classList.add('is-flashed'); }
+    }
+    let noteTargetTimer = 0;
+    document.getElementById('workInput')?.addEventListener('input', () => {
+      if (!isChatInputMode) return;
+      clearTimeout(noteTargetTimer);
+      noteTargetTimer = setTimeout(() => syncNoteTarget(false), 120);
+    });
+
+    // Share information is a switch like Dark, Gossip mode, Voice and Rotate: the label stays, the button is highlighted while the note is open, and pressing it again returns to the chat.
     function setChatShareOn(on) {
       const b = document.getElementById('chatShareBtn');
       if (!b) return;
       b.classList.toggle('is-on', on);
-      b.textContent = on ? 'Back to chat' : 'Share information';
+      b.setAttribute('aria-pressed', String(on));
+      b.title = on ? 'Leave the note and go back to the chat' : 'Write a note about an institution';
     }
     function toggleChatShare() {
       if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
@@ -16227,7 +16247,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const defaultTopic = ['information', 'gossip', 'whistleblower'].includes(kindOrTopic) ? '' : kindOrTopic;
       isChatInputMode = true;
       setChatShareOn(true);
-      // The conversation so far steps aside while a note is written; it comes back with Back to chat.
+      // The conversation so far steps aside while a note is written; it comes back with Back to chat (the Share information button, which reads that while the note is open).
       document.querySelectorAll('#curatorMessages > *').forEach(m => m.classList.add('before-note'));
 
       // 1. Activate whole-chat full-width mode via body class & collapse globe if needed
@@ -16289,6 +16309,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (window.atlasSyncInert) window.atlasSyncInert();
         workInput.focus();
       }
+      syncNoteTarget(false);
 
       // 5. Hide redundant full-width input mode button if present
       const fwBtn = document.getElementById('fullWidthInputModeBtn');
@@ -16336,6 +16357,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     function exitChatInputMode() {
       isChatInputMode = false;
+      syncNoteTarget(false);
       setChatShareOn(false);
       document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
 
@@ -16463,9 +16485,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     async function processInChatWhistleblowerSubmission(text) {
       const q = (text || '').trim();
       if (!q) return;
-      const lower = q.toLowerCase();
-      const named = ALL_INSTITUTIONS.find(i => i.name && i.name.length > 3 && lower.includes(i.name.toLowerCase()));
-      const target = dossierInst || named;
+      const target = noteTargetFor(q);
       // Nothing is kept in this browser. If the note is not sent, it goes back into the box so it is not lost.
       const keepTyped = () => { const input = document.getElementById('workInput'); if (input) input.value = q; };
       let said;
@@ -16475,7 +16495,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       } else if (!target) {
         // The report service takes a note only when it names an institution on the atlas.
         keepTyped();
-        said = 'Open the record of the institution this note is about, or name the institution in the note, then send it again. The note was not sent.';
+        said = `${NOTE_NEEDS_INSTITUTION}, then send it again. The note was not sent.`;
       } else {
         try {
           const res = await fetch(ATLAS_REPORT_API_URL + '/api/reports', {
@@ -16570,6 +16590,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     async function handleWorkSend() {
       const text = (workInput?.value || '').trim();
       if (!text) return;
+      // A note with no institution is not sent: it stays in the box and the line under it says what to do.
+      if (isChatInputMode && ATLAS_REPORT_API_URL && !noteTargetFor(text)) {
+        syncNoteTarget(true);
+        workInput.focus();
+        return;
+      }
       workInput.value = '';
       if (window.innerWidth < 768 && currentMobileMode === 'map') {
         setMobileViewMode('split');
@@ -16669,16 +16695,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!curatorVoiceToggleBtn) return;
       if (curatorAutoVoiceEnabled) {
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '';
-        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: ON';
+        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice';
         curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0 is-on';
+        curatorVoiceToggleBtn.setAttribute('aria-pressed', 'true');
         curatorVoiceToggleBtn.title = 'Auto-Voice: Speaks responses aloud (Click to mute)';
-        const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.textContent = 'Voice: On';
+        const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.setAttribute('aria-pressed', 'true');
       } else {
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '';
-        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice: OFF';
+        if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice';
         curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0';
+        curatorVoiceToggleBtn.setAttribute('aria-pressed', 'false');
         curatorVoiceToggleBtn.title = 'Auto-Voice: Muted (Click to turn ON)';
-        const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.textContent = 'Voice: Off';
+        const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.setAttribute('aria-pressed', 'false');
       }
     }
 
@@ -19378,9 +19406,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=262"></script>
-<script src="assets/layers.js?v=262"></script>
-<script src="assets/hq-detail.js?v=262"></script>
-<script src="assets/bubbles.js?v=262" defer></script>
+<script src="assets/typeset.js?v=264"></script>
+<script src="assets/layers.js?v=264"></script>
+<script src="assets/hq-detail.js?v=264"></script>
+<script src="assets/bubbles.js?v=264" defer></script>
 </body>
 </html>

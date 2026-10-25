@@ -160,8 +160,6 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 #desktopDossierColumn{background:var(--grey)}
 #desktopDossierColumn:has(#desktopDossierName:empty) #desktopDossierBody{display:none}
 #desktopDossierColumn:has(#desktopDossierName:empty)::after{content:"Select a space on the globe, or ask in the chat.";display:block;padding:16px;font:400 18px/1.25 var(--sans)}
-#desktopDossierColumn>div:first-child{border-bottom:1px solid var(--line);padding:0}
-#collapseDossierBtn{font:400 14px/1 var(--sans);padding:14px 16px}
 #desktopDossierBody{padding:0!important}
 #desktopDossierBody>*{margin:0}
 #desktopDossierName,#detailDrawer h2,#dossier-sheet-name{font:600 44px/.95 var(--display-xl);text-transform:uppercase;letter-spacing:0;overflow-wrap:break-word;margin:0 0 12px}
@@ -647,10 +645,6 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 #zoomControls button+button{border-top:1px solid #000}
 #zoomControls button:hover{background:#000;color:#fff}
 #zoomControls svg{width:14px;height:14px}
-/* Back to chat shows only while a note is being written. */
-#chatNoteTopBar{display:none}
-body.chat-input-mode-active #chatNoteTopBar{display:block}
-#chatNoteTopBar #chatBackBtn{font:400 15px/1 var(--sans);padding:8px 0}
 /* One set of zoom buttons at a time: on the street map the map's own square set stays, the round pair goes. */
 /* The street map brings its own zoom buttons; the globe pair is moved out of #globeViewport by script, so match from body. */
 body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
@@ -870,7 +864,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#cb9440}
 
 /* Every button answers the pointer: plain ones invert, the filled ones brighten. */
-#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#curatorVoiceToggleBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#collapseDossierBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
+#layersBtn:hover,#zoomInBtn:hover,#zoomOutBtn:hover,#curatorVoiceToggleBtn:hover,#workSendBtn:hover,#mobileStickySendBtn:hover,#mobileStickyVoiceBtn:hover,#mobileTopBrandBtn:hover,#closeSettingsModalBtn:hover,.provider-tab-btn:hover,#toggleKeyVisibilityBtn:hover,#testConnectionBtn:hover,#clearApiKeyBtn:hover,#saveApiKeyBtn:hover,#curatorDrawerListenBtn:hover,#close-chat-view-btn:hover,summary:hover{background:var(--ink)!important;color:var(--paper)!important}
 [data-globe-control]:hover,.is-on:hover,[aria-pressed="true"]:hover{filter:brightness(.85)}
 button,summary{cursor:pointer}
 /* Question colours are the map's own: mustard, orange and cyan labels; darker equivalents on the light ground. Type 10% smaller. */
@@ -1225,7 +1219,7 @@ body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note .abbr{color:inheri
 body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-bottom:2.2em}
 /* A grade named in the chat is set like the rating in the record (user's instruction, 20 Oct 2026): bold, in the grade's own
    colour. On white that colour is darkened until it clears 4.5:1 (gradeInk in index.html); on the dark theme it is the colour itself. */
-.grade-word{color:var(--grade-ink);font-weight:700;padding:0;border:0;background:transparent}
+.grade-word{color:var(--grade-ink);font-weight:400;padding:0;border:0;background:transparent}
 .grade-word-1{--grade-ink:#1f7f5c;--grade-col:#34d399}
 .grade-word-2{--grade-ink:#1b7f73;--grade-col:#2dd4bf}
 .grade-word-3{--grade-ink:#8c720c;--grade-col:#facc15}
@@ -1233,8 +1227,8 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 .grade-word-5{--grade-ink:#8f2929;--grade-col:#ef4444}
 :root[data-theme="dark"] .grade-word{color:var(--grade-col)}
 /* A grade is named in capitals, GRADE D (user's instruction, 20 Oct 2026), set like every capital in running text: one step
-   smaller and evenly spaced (Hochuli p.39-40), the trailing space pulled in so the word space after it stays even. */
-.grade-word,span.grade-mark{text-transform:uppercase;font-size:.92em;letter-spacing:.06em;margin-right:-.06em}
+   smaller and spaced 1pt apart, normal weight (user's instruction, 24 Oct 2026; Hochuli p.39-40), the trailing space pulled in so the word space after it stays even. */
+.grade-word,span.grade-mark{text-transform:uppercase;font-size:.92em;font-weight:400;letter-spacing:1pt;margin-right:-1pt}
 #curatorScrollArea,#workBottomDock,#workInputCard,#workInput{transition:background-color var(--dur) var(--ease),color var(--dur) var(--ease),min-height var(--dur) var(--ease)}
 #curatorMessages>*{animation:msg-in var(--dur) var(--ease) both}
 @keyframes msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -1450,7 +1444,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,.t-lead,.kicker,.visit-rows>div>div:last-child){max-width:none}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading){white-space:normal;text-wrap:balance;overflow:visible;text-overflow:clip;overflow-wrap:break-word}
 #desktopDossierRecordBody>div{padding-left:18px;padding-right:18px}
-:root:root:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{display:inline;background:none;padding:0;border-radius:0;color:var(--grade-ink);font-weight:700}
+:root:root:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{display:inline;background:none;padding:0;border-radius:0;color:var(--grade-ink);font-weight:400}
 :root[data-theme="dark"]:root body :is(#desktopDossierColumn,#detailBody,#dossier-bottom-sheet,#dossier-sheet-scrollable-body) span.grade-mark{color:var(--grade-col)}
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{padding:6px 13.5px;height:auto;min-height:0}
 :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action::after{inset:-6px -2px}
@@ -1593,13 +1587,13 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme="dark"] #workInputCard.is-mode ::placeholder{color:var(--ink);opacity:.7}
 :root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active){background:var(--mint)!important;color:#000!important}
 :root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active) *{color:#000!important}
-/* The balloon: dark fill, orange outline, light type. bubbles.js draws the fill and outline as SVG paint; a presentation rule outranks its attributes. */
+/* The balloon: dark fill, no outline, gossip yellow type (user's instruction, 24 Oct 2026). bubbles.js draws the fill and outline as SVG paint; a presentation rule outranks its attributes. */
 :root[data-theme="dark"] .bubble-svg .bubble-fill{fill:var(--grey)}
-:root[data-theme="dark"] .bubble-svg .bubble-line{stroke:var(--gossip)}
+:root[data-theme="dark"] .bubble-svg .bubble-line{stroke:none}
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
-:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:var(--ink)!important}
-:root[data-theme="dark"] .is-gossip .thinking{color:var(--ink)}
+:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:#e2f86c!important}
+:root[data-theme="dark"] .is-gossip .thinking{color:#e2f86c}
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
 
 /* ---- release 239 ---- */
@@ -1664,14 +1658,14 @@ body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer)
 
 
 /* Every button in the chat is drawn like the Details and AI Chat tabs: square, 22px regular, ink on paper with a hairline, inverted on hover, cobalt while it is on (Voice). The send arrow is the same square with an arrow in it. */
-:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #workSendBtn,:root[data-theme] #chatNoteTopBar #chatBackBtn{background:var(--paper);color:var(--ink)!important;border:1px solid var(--line);border-radius:0;box-shadow:none;width:auto;height:auto;min-height:0;padding:8px 16px;display:inline-flex;align-items:center;justify-content:center;font:400 22px/1 var(--sans);text-transform:none;letter-spacing:0;text-decoration:none;white-space:nowrap}
-:root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover,:root[data-theme] #workInputCard #workSendBtn:hover,:root[data-theme] #chatNoteTopBar #chatBackBtn:hover{background:var(--ink);color:var(--paper)!important;text-decoration:none}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #workSendBtn{background:var(--paper);color:var(--ink)!important;border:1px solid var(--line);border-radius:0;box-shadow:none;width:auto;height:auto;min-height:0;padding:8px 16px;display:inline-flex;align-items:center;justify-content:center;font:400 22px/1 var(--sans);text-transform:none;letter-spacing:0;text-decoration:none;white-space:nowrap}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover,:root[data-theme] #workInputCard #workSendBtn:hover{background:var(--ink);color:var(--paper)!important;text-decoration:none}
 :root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on{background:var(--cobalt);color:#fff!important;border-color:var(--cobalt)}
 :root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on:hover{background:var(--cobalt);color:#fff!important;filter:brightness(.85)}
 :root[data-theme] #workInputCard #workSendBtn svg{width:20px;height:20px;color:inherit}
 :root[data-theme] #workInputCard #curatorVoiceToggleLabel{font:inherit}
-:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn,:root[data-theme] body.chat-input-mode-active #chatNoteTopBar #chatBackBtn{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important}
-:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn:hover,:root[data-theme] body.chat-input-mode-active #chatNoteTopBar #chatBackBtn:hover{background:var(--ink)!important;color:var(--paper)!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn{background:var(--paper)!important;color:var(--ink)!important;border:1px solid var(--line)!important;box-shadow:none!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn:hover{background:var(--ink)!important;color:var(--paper)!important}
 
 /* The header's buttons run the full height of the bar, so their vertical lines meet the rules above and below with no gap (they were 44px tall in a 55px bar). */
 #topThemeBtn,#topGossipBtn{height:auto;align-self:stretch}
@@ -1692,6 +1686,28 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p.account-note,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part.prose-part>p.source-note{margin-top:var(--H);text-indent:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part .lead-in{font-weight:600}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part a.domain{white-space:normal}
+
+/* Note field: which record the note goes to, and the dimmed send while none is found */
+#noteTargetLine{margin:8px 0 0}
+#workSendBtn[aria-disabled="true"]{opacity:.45;cursor:default}
+#noteTargetLine.is-flashed{animation:noteFlash .6s steps(2,jump-none) 2}
+@keyframes noteFlash{50%{text-decoration:underline}}
+@media (prefers-reduced-motion:reduce){#noteTargetLine.is-flashed{animation:none;text-decoration:underline}}
+/* Share information, on: no outline */
+#workInputCard #chatShareBtn.is-on{outline:0}
+:root[data-theme] #workInputCard #chatShareBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn.is-on{border-color:transparent!important}
+/* In the chat, Send is the main button: larger than the rest. Share information is a plain button until a note is open. */
+:root[data-theme] #workInputCard #workSendBtn:not(.is-on){min-width:48px;min-height:48px;padding:0}
+:root[data-theme] #workInputCard #workSendBtn:not(.is-on) svg{width:24px;height:24px}
+:root[data-theme] #workInputCard #chatShareBtn:not(.is-on){border-color:transparent;padding-left:0;padding-right:0;font-size:18px}
+:root[data-theme] #workInputCard #chatShareBtn:not(.is-on):hover{background:transparent;color:inherit;text-decoration:underline}
+/* One pattern for the switches: the label stays, the button is highlighted while on (aria-pressed). Gossip mode keeps its own colour. */
+:root[data-theme] #topThemeBtn[aria-pressed=true],:root[data-theme] #mobileThemeBtn[aria-pressed=true],:root[data-theme] #mobileStickyVoiceBtn[aria-pressed=true]{background:var(--cobalt);color:#fff}
+/* The record's actions are a table with lines, like the header buttons: one cell each, ruled on every side, no pills and no colours. */
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row{display:flex!important;flex-wrap:wrap;gap:0!important;padding-top:0!important;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{flex:1 1 132px;width:auto;height:auto;min-height:44px;padding:10px 14px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;background:transparent;color:var(--ink);font:400 17px/1.2 var(--sans);display:flex;align-items:center;justify-content:center;white-space:normal}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:var(--ink);color:var(--paper)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:focus-visible{outline-offset:-3px}
 /* The gossip question keeps black type on its yellow in the dark theme too (white on #e2f86c is 1.2:1). */
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"],:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"] .sp-text,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]:hover{color:#000}
 
