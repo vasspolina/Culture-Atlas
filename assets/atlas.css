@@ -2091,10 +2091,13 @@ div:has(>#topThemeBtn){column-gap:0}
 :root[data-theme] body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer){--paper:#fff;--ink:#000;--line:#000;background:var(--paper)!important;color:var(--ink)!important}
 :root[data-theme="dark"] body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer){--paper:#000;--ink:#fff;--line:#fff;background:#000!important;color:#fff!important}
 :root[data-theme] body.chat-input-mode-active #curatorScrollArea{display:none!important}
-:root[data-theme] body.chat-input-mode-active #workBottomDock{flex:1 1 auto;overflow-y:auto;justify-content:flex-start;padding-top:20px!important;background:var(--paper)!important;color:var(--ink)!important}
+:root[data-theme] body.chat-input-mode-active #workBottomDock{flex:1 1 auto;overflow-y:auto;justify-content:flex-start;padding-top:14px!important;background:var(--paper)!important;color:var(--ink)!important}
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode{background:transparent!important;border:0 solid transparent!important;padding:0!important;color:var(--ink)!important}
 :root[data-theme] body.chat-input-mode-active :is(#noteFormTitle,#noteFormIntro){color:var(--ink)!important}
-:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field,#noteInputBlock,#noteAckRow .nf-check){background:#2d3352!important;color:#fff!important;border:1px solid transparent!important;border-radius:14px!important;padding:14px 22px!important;margin:0 0 10px!important;outline:0!important}
+:root[data-theme] body.chat-input-mode-active #noteFormIntro{margin:0 0 12px!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field,#noteInputBlock,#noteAckRow .nf-check){background:#2d3352!important;color:#fff!important;border:1px solid transparent!important;border-radius:14px!important;padding:12px 20px!important;margin:0 0 8px!important;outline:0!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #noteInputBlock textarea{min-height:4.5em!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #noteAckRow{margin-top:0!important}
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field,#noteInputBlock,#noteAckRow .nf-check):focus-within{border-color:#fff204!important;outline:0!important}
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field>span,#noteInputLabel,#noteAckRow .nf-check span){color:#fff!important}
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea,#workInput.is-good){background:transparent!important;color:#fff!important;border:0!important;padding:0!important;outline:0!important}
