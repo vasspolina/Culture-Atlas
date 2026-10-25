@@ -1,0 +1,266 @@
+[
+ {
+  "id": "museo-de-arte-de-el-salvador-marte-san-salvador",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Pilares de MARTE",
+   "unsupported: individuals, companies and institutions pay for exhibitions, catalogues and activities"
+  ],
+  "before": "through the programmes Pilares de MARTE and Amigos del Museo",
+  "after": "The museum states that it works thanks to contributions from individuals, companies and organisations; Amigos del Museo invites anyone to support its programmes",
+  "sources": [
+   "https://museomarte.org/colabora/",
+   "https://museomarte.org/quienes-somos/"
+  ],
+  "reason": "The colabora page does not name Pilares de MARTE and does not say who pays for exhibitions or catalogues; it says MARTE works through the contributions of personas, empresas y organizaciones. Verdict and bottom line reworded to match."
+ },
+ {
+  "id": "museo-de-arte-de-el-salvador-marte-san-salvador",
+  "section": "OVERVIEW",
+  "problems": [
+   "misattribution: association 2000, US$1.8 million, Eli Lecha de Lindo"
+  ],
+  "before": "(Wikipedia)",
+  "after": "English Wikipedia (2000, US$1.8 million, Eli Lecha de Lindo first president); Spanish Wikipedia (Eugenia Lindo executive director since 2020); opening date 22 May 2003 credited to the museum site",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Salvadoran_Museum_of_Art",
+   "https://es.wikipedia.org/wiki/Museo_de_Arte_de_El_Salvador",
+   "https://museomarte.org/quienes-somos/"
+  ],
+  "reason": "Spanish Wikipedia does not carry the 2000, cost or first-president claims; English Wikipedia does. Board: museum page names Michel Langlais as president, Eugenia Lindo and Jaime Izaguirre as directors (confirmed)."
+ },
+ {
+  "id": "museo-de-arte-de-ponce-ponce",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong address",
+   "unsupported hours detail"
+  ],
+  "before": "2325 Blvd. Luis A. Ferré Aguayo ... In March 2023 the annex opened to the public only on Fridays",
+  "after": "2325 Avenida Las Américas (renamed Luis A. Ferré Boulevard); from March 2023 the museum opened only on Fridays 10:00 to 15:00 because of repairs (El Nuevo Día, 13 March 2023); annex contents and 70 Cristina Street from Wikipedia",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Museo_de_Arte_de_Ponce",
+   "https://www.elnuevodia.com/entretenimiento/cultura/notas/el-museo-de-arte-de-ponce-anuncia-nuevo-horario-de-apertura/"
+  ],
+  "reason": "Wikipedia gives Avenida Las Américas; El Nuevo Día says the institution, not only the annex, opened Fridays. $30 million, PRAR Architecture and funding sources confirmed on museoarteponce.org/?p=11198 (page undated); the restoration-campaign page states a $25 million fundraising goal, not used."
+ },
+ {
+  "id": "museo-de-arte-de-ponce-ponce",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement: \"gives no amounts and dates only this 2019 gala\""
+  ],
+  "before": "Silver sponsors included Puma Energy ...; The page gives no amounts and dates only this 2019 gala.",
+  "after": "Puma Energy appears among the silver sponsors ... and New Fortress Energy and UBS Financial Services among the collaborators.",
+  "sources": [
+   "https://museoarteponce.org/apoyanos/patrocinadores/"
+  ],
+  "reason": "Page confirmed: only dated item is the 2019 gala \"Somos Isla\"; Puma Energy is Plata, New Fortress Energy and UBS are Colaborador; no amounts. Outside five years, so no Fossil fuels flag; stated in Funding with year and in the bottom line. Mellon grant confirmed: $500,000, 30 June 2022, Luis A. Ferré Foundation, conservation capacity at the museum, 36 months. CauseIQ figures confirmed."
+ },
+ {
+  "id": "museo-de-arte-de-zapopan-zapopan",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: closed Mondays (myartguides)",
+   "uncredited address",
+   "process note: translation"
+  ],
+  "before": "closed Mondays (myartguides directory); Chic Magazine reported ...; (translation: ...)",
+  "after": "Monday line removed; address credited to myartguides; Chic Magazine item given with author, title and date (Michelle Freyría, \"Viviana Kuri pone a Jalisco como punto de referencia artístico\", 13 March 2024); quotation rendered as a paraphrase plus original",
+  "sources": [
+   "https://myartguides.com/artspaces/museums/mexico/museo-de-arte-zapopan-maz/",
+   "https://www.chicmagazine.com.mx/personajes/viviana-kuri-haddad-mundo-arte-jalisc",
+   "https://playersoflife.com/guadalajara/estacionmaz-zapopan-horarios-y-ubicacion-abre-el-nuevo-museo/"
+  ],
+  "reason": "myartguides lists Tue to Sun 10 to 18, Thu to 22 and does not state Monday closure. Chic: Kuri says the EstaciónMAZ project is pushed with the team and the Ayuntamiento. Players of Life (30 September 2024): 65.99 million pesos municipal investment, opened 28 September 2024, Frangie led the inauguration, confirmed."
+ },
+ {
+  "id": "museo-de-arte-de-zapopan-zapopan",
+  "section": "SOURCES",
+  "problems": [
+   "dead source"
+  ],
+  "before": "https://maz.zapopan.gob.mx/",
+  "after": "removed from SOURCES; kept on the Website line as the brief instructs",
+  "sources": [
+   "https://maz.zapopan.gob.mx/"
+  ],
+  "reason": "The municipal site returned HTTP 500 twice, so it supports nothing in the text; Mexico Desconocido lists it as the museum site."
+ },
+ {
+  "id": "museo-de-arte-latinoamericano-de-buenos-aires-malba",
+  "section": "FUNDING",
+  "problems": [
+   "percentages re-checked"
+  ],
+  "before": "58 percent, 11.5 percent, 8.8 percent",
+  "after": "unchanged and confirmed",
+  "sources": [
+   "https://malba.org.ar/wp-content/uploads/2025/09/Balance-2024-para-publicacion-Web.pdf"
+  ],
+  "reason": "Image-only PDF rendered and read: Anexo II (Recursos ordinarios) 2024: total 19,011,239,845; presentaciones y sponsors 11,035,694,439 (58.05%); donaciones del fundador 2,191,394,826 (11.53%); donaciones 1,676,948,861 (8.82%); entradas 1,840,791,368; tienda 1,073,709,093; membresías 906,274,974. 2023 total 16,972,340,428. Statement of resources and expenses: surplus 6,523,151,007. Deloitte audit report dated 10 July 2025. The record text (12 and 17 percent) is superseded by the report."
+ },
+ {
+  "id": "museo-de-arte-latinoamericano-de-buenos-aires-malba",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: Bulgheroni became president in November 2020 as a completed fact",
+   "uncredited quotation",
+   "imprecise: works belong to the Fundación since 1997"
+  ],
+  "before": "Teresa Aguirre Lanari de Bulgheroni became president in November 2020, replacing Costantini",
+  "after": "Perfil (Adriana Lorusso, 12 November 2020) reported that Teresa Bulgheroni would become president, Costantini honorary president; she signed the 2024 statements as president; CIMAM says vice president since July 2025. Costantini paragraph attributed to Perfil with author and date.",
+  "sources": [
+   "https://noticias.perfil.com/noticias/cultura/teresa-bulgheroni-ocupara-el-lugar-de-eduardo-costantini-en-malba.phtml",
+   "https://www.cimam.org/travel-grant-program/2025-turin/about-the-2025-travel-grant-funders/teresa-a-l-bulgheroni/",
+   "https://caras.perfil.com/noticias/celebridades/el-millonario-reclamo-de-la-ex-de-eduardo-costantini-teresa-costantini-explica-por-que-recurre-a-la-justicia.phtml"
+  ],
+  "reason": "Perfil is an announcement and does not carry the full name. Caras (Diego Esteves, 21 August 2026) confirmed: she says she handed over the works out of trust, not as a donation; Malba says the works were transferred to the Fundación in 1997, divorce approved April 1995; \"Esto no es un reclamo contra el MALBA como proyecto cultural\". Sponsors page: Chevron appears only as a file name (Chevron-Logo-1200x675.png); not named in the report, no flag. Transparency page confirmed: roughly 50% of the budget from own income, Fundación covers the deficit, Consejo of president, two vice presidents and four members, statements 2005 to 2024."
+ },
+ {
+  "id": "museo-de-arte-moderno-de-medell-n-mamm-medell-n",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "wrong figure: about 4.3 billion pesos",
+   "unattributed claim",
+   "undated connection"
+  ],
+  "before": "found 26 of 28 people and entities fiscally responsible ... for about 4.3 billion pesos ... EPM is the company building the project.",
+  "after": "El Espectador (Redacción Economía and Redacción Política, \"Lo que viene tras fallo de responsabilidad fiscal por Hidroituango\", 6 September 2021): Contraloría found 26 of 28 responsible for gross negligence; damage 4.3 billones of pesos (4.3 trillion); first instance; responsible parties include Sergio Fajardo, Alonso Salazar, Luis Alfredo Ramos and the CCC Ituango companies; EPM develops the project and is not named among those responsible; connection: EPM is a pillar on the sponsors page and supports Cine MAMM (2023 management report).",
+  "sources": [
+   "https://www.elespectador.com/economia/lo-que-viene-tras-fallo-de-responsabilidad-fiscal-por-hidroituango/",
+   "https://www.elmamm.org/Patrocinadores-pilares-y-aliados",
+   "https://elmamm.org/content/uploads/2024/05/informe_gestion_2023_baja.pdf"
+  ],
+  "reason": "In Colombian usage a billon is a million millones. The article does not mention MAMM. Sponsors page footer reads 2026; EPM listed under Pilares. 2023 report (read by text extraction) confirms 54% own income, tickets over 700 million pesos, 163,072 visitors, pillars list, Cine MAMM with EPM, SURA and Fundación MUV for the Naufus Ramírez-Figueroa show, Bancolombia since 2008. \"public utility\" removed from the bottom line (no opened page says it). Mission wording credited to the mission statement."
+ },
+ {
+  "id": "museo-de-arte-y-diseño-contemporáneo-san-josé",
+  "section": "FUNDING / WIDER CONTEXT / OVERVIEW",
+  "problems": [
+   "unsupported: Article 7 purposes",
+   "imprecise march report",
+   "unsupported: first director"
+  ],
+  "before": "items in the annual national budget law for maintenance, conservation and operations; budget cuts ... approved in the Legislative Assembly; with Virginia Pérez-Ratton as first director",
+  "after": "Article 7 restated from the law text; Semanario Universidad (Natalia Díaz Zeledón, \"Artistas y trabajadores de cultura marchan por San José contra recortes presupuestarios\", 24 October 2020): about 4,100 million colones approved by the Comisión de Hacendarias, several institutions under the Ministry; Sara Mata (photographer and visual artist) on the MAC/MADC merger and the IMF; photo caption places a protest near the MADC; collection began under the direction of Virginia Pérez-Ratton (La Nación).",
+  "sources": [
+   "https://madc.cr/es/ley-de-creacion-del-madc",
+   "https://semanariouniversidad.com/?p=203826",
+   "https://www.nacion.com/ancora/25-anos-del-madc-un-adulto-joven-sabio-y/7JDCQQDV6BHU3DJDUKSPPKVR54/story/"
+  ],
+  "reason": "La Nación does not call her first director. Law 7758 confirmed (Articles 1 to 9, board of five, director appointed jointly by Ministry and Fundación). Budgets 2013 to 2020 and hours confirmed. Director appointment page (Semanario, Ana Beatriz Fernández González, 18 June 2019) confirmed."
+ },
+ {
+  "id": "museo-de-la-ciudad-de-méxico-mexico-city",
+  "section": "RED FLAGS / BOTTOM LINE",
+  "problems": [
+   "flag restructured",
+   "unsupported quotation wording",
+   "overview detail"
+  ],
+  "before": "Red flags: protest and court action against an exhibition (five points; Mor quote \"we can never allow censorship\"; expropriated and sold)",
+  "after": "Red flag kept as protest at the space (seven people outside the museum, Vanguardia 17 April 2025); court suspension and city position stated point by point with dates; closing point states that the suit and order came from outside, the court not the city ordered the closure and the city culture ministry opposed it; Mor quote given in Spanish as printed by El Financiero.",
+  "sources": [
+   "https://vanguardia.com.mx/show/artes/en-plena-semana-santa-vuelven-a-suspender-la-exposicion-de-fabian-chairez-PB15634469",
+   "https://www.elfinanciero.com.mx/cdmx/2025/04/17/segunda-venida-del-senor-vuelve-a-enfrentar-la-censura-juez-suspende-la-expo-de-fabian-chairez-en-cdmx/",
+   "https://www.razon.com.mx/cultura/2025/04/28/suspenden-definitivamente-exposicion-de-fabian-chairez-en-el-museo-de-la-ciudad-de-mexico/"
+  ],
+  "reason": "Protest or boycott kept: a documented protest aimed at the show at the space. No State censorship flag: the closing order came from a district court (Juzgado Sexto de Distrito en Materia Administrativa), not the funding or controlling city government and not the museum; the pages do not call the court federal, so the report does not. Items: Vanguardia, Mauro Marines, \"En plena Semana Santa vuelven a suspender la exposición de Fabián Cháirez\", 17 April 2025 (seven protesters; religious groups; amparo 15 April; provisional suspension notified 15 April; Secretaría de Cultura statement); El Financiero, Redacción with information from Brenda Nairobi Aguilar, \"La segunda venida del Señor vuelve a enfrentar la censura: Juez suspende la expo de Fabián Cháirez en CDMX\", 17 April 2025 (plaintiff not named; nine paintings; run 2 to 30 April; Mor quote); UnoTV, Redacción, \"Decretan suspensión definitiva para la exposición La segunda venida del Señor en el Museo de la Ciudad de México\", 29 April 2025 (plaintiffs \"un reducido grupo de ciudadanos\"; museum complied); La Razón, Julio Vázquez, \"Suspenden definitivamente exposición de Fabián Cháirez en el Museo de la Ciudad de México\", 29 April 2025 (definitive suspension; ministry called the ban a \"retroceso\"). Wikipedia: ownership, 1960 decree, 1964 inauguration confirmed; \"expropriated 1964\" reworded (family lived there to 1964, sold after expropriation). Chilango (Montse Quintana, 21 February 2023): hours and $38 confirmed. Museum site refused connections."
+ },
+ {
+  "id": "museo-de-los-pintores-oaxaqueños-oaxaca",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict without page: \"The sources show public money only.\""
+  ],
+  "before": "The sources show public money only.",
+  "after": "The money documented is state money.",
+  "sources": [
+   "https://www.excelsior.com.mx/expresiones/restauran-espacios-culturales-artisticos-oaxaca/1718748",
+   "https://es.wikipedia.org/wiki/Museo_de_los_Pintores_Oaxaque%C3%B1os"
+  ],
+  "reason": "Excélsior (Patricia Briseño, 30 May 2025) confirms Seculta (Flavio Sosa Villavicencio) and Inpac works including MUPO. Wikipedia confirms the Patronato, the state-initiated rehabilitation, the four rooms, 1686 foundation and funders. The oaxaca.gob.mx Website page returned HTTP 500; the Website line is kept as in the record."
+ },
+ {
+  "id": "museo-del-barro-asunción",
+  "section": "FUNDING",
+  "problems": [
+   "overstated: paid for / funded"
+  ],
+  "before": "AECI paid for the Museo de Arte Indígena; German cooperation paid for the Gabinete; the Paraguayan Senate funded the programme",
+  "after": "contributed to building/equipping; Cámara de Senadores gave contributions; subsidies ended in 2005; foundation described by its mission (provides premises to the Centro de Artes Visuales)",
+  "sources": [
+   "https://www.museodelbarro.org/museo/historia",
+   "https://www.museodelbarro.org/museo/la-fundacion",
+   "https://www.museodelbarro.org/museo/patrocinadores"
+  ],
+  "reason": "Sponsors page confirmed (Banco Itaú sponsor; González Acosta & Wood, Embajada de Francia, Citibank as supporters; nine named friends); it shows no year. La Nación 25 November 2023 confirmed (no author named on the page). Decree 1035 of 9 June 1989 and constitution on 31 December 1987 confirmed."
+ },
+ {
+  "id": "museo-del-prado",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "event not aimed at the museum or its funders"
+  ],
+  "before": "WIDER CONTEXT: 2022 Futuro Vegetal protest (Fox News, Julia Musto, 5 November 2022; blooloop, Bea Mitchell, 7 November 2022)",
+  "after": "section and its two sources removed",
+  "sources": [
+   "https://www.foxnews.com/world/climate-activists-glue-hands-goya-paintings-spains-prado-museum",
+   "https://blooloop.com/museum/news/climate-activists-protest-artworks-prado-museum/"
+  ],
+  "reason": "Both pages confirm the 5 November 2022 action (two arrests; museum condemned it) but it targeted climate policy, not the museum or its funders, so it is neither a flag nor criticism of a patron."
+ },
+ {
+  "id": "museo-del-prado",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "overstated: Iberdrola and Endesa called benefactors",
+   "unsupported: \"a record\"",
+   "Wikipedia 2003 bylaws overstated",
+   "percentages derived"
+  ],
+  "before": "Its named corporate benefactors are the foundations of BBVA, AXA, Iberdrola España, Endesa and la Caixa",
+  "after": "BBVA, AXA and la Caixa are benefactors; Iberdrola España and Endesa foundations fund scholarships and an educational project; 56/44 attributed to EFE figures",
+  "sources": [
+   "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2025-579",
+   "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2024-4662",
+   "https://planoinformativo.com/1085394/el-museo-del-prado-cerro-2024-con-un-superavit-de-228-millones-de-euros"
+  ],
+  "reason": "BOE confirmed: BBVA signed 2 January 2025 (BOE 14 January 2025), 625,000 euros a year, 2,500,000 in total; AXA signed 28 February 2024 (BOE 9 March 2024), same amounts; Iberdrola signed 20 December 2024 (BOE 4 January 2025), 1,500 euros per month per scholarship, maximum 116,526 euros, to 31 December 2027; Endesa 25,000 euros signed 16 April 2026 (BOE 27 April 2026); la Caixa addendum signed 22 February 2023 (BOE 6 March 2023), to 21 December 2025. EFE 9 July 2025: income 85.2 million, own 37.2 million, subsidies just over 48 million, sponsorship 6 million, surplus 22.8 million, 3,457,057 visitors. No page shows fossil fuel as a generation line for Iberdrola or Endesa; no flag. que.es (Marina Merino, 27 June 2026) confirmed."
+ },
+ {
+  "id": "museo-experimental-el-eco-mexico-city",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "misattribution: habitable sculpture, parking lot, restored",
+   "unsupported: director since early 2024"
+  ],
+  "before": "Goeritz conceived it as a \"habitable sculpture\" (Crónica; Gaceta); slated to become a parking lot (Crónica; Gaceta); UNAM bought and restored; became director in early 2024",
+  "after": "habitable sculpture and parking lot credited to Gaceta UNAM only; \"restored\" replaced by \"reopened in 2005\"; director sentence dated to the April 2024 El Universal article",
+  "sources": [
+   "https://www.cronica.com.mx/cultura/2025/08/06/avanza-el-proceso-para-declarar-al-museo-experimental-el-eco-como-monumento-artistico-nacional/",
+   "https://www.gaceta.unam.mx/el-museo-experimental-el-eco-un-espacio-de-libertad-y-pluralismo/",
+   "https://unamglobal.unam.mx/global_tv/la-unam-ratifica-su-compromiso-con-la-transparencia-en-la-entrega-de-la-cuenta-anual-2025/"
+  ],
+  "reason": "UNAM Global (1 July 2026): 2025 spending just over 60 billion pesos, 89.2 percent federal subsidy, 10.8 percent own income, confirmed. Crónica (6 August 2025) does not say who paid for the 1953 construction; the report says only that Mont commissioned it (Gaceta UNAM, Roberto Frías, 9 October 2025). Mont's early death confirmed in Crónica."
+ },
+ {
+  "id": "museo-ixchel-del-traje-ind-gena-guatemala-city",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: Princeton credited to museum site",
+   "overstated: US grant",
+   "uncredited details",
+   "verdict \"grants\""
+  ],
+  "before": "Friends ... based in Princeton (museum site; ProPublica); La Hora listed the conservation ... among Guatemalan projects supported by the U.S. Ambassadors Fund for Cultural Preservation",
+  "after": "Princeton credited to ProPublica; La Hora item stated as the article words it (under earlier support to Guatemala, in an article on the Ambassadors Fund; no year given); Prensa Libre author and date added; Nottebohm sentence reworded to her wording",
+  "sources": [
+   "https://lahora.gt/nacionales/dguzman/2024/11/18/guatemala-podra-recibir-hasta-us500-mil-del-fondo-de-embajadores-para-la-preservacion-cultural-de-ee-uu/",
+   "https://projects.propublica.org/nonprofits/organizations/450596153",
+   "https://revista.drclas.harvard.edu/?p=28241"
+  ],
+  "reason": "La Hora (Diego Estuardo Guzmán, \"Guatemala podrá recibir hasta US$500 mil del Fondo de Embajadores para la Preservación Cultural de EE. UU.\", 18 November 2024): the article does not say which fund paid for the Ixchel conservation, so the report no longer states a US government grant as fact. ProPublica confirmed: Princeton NJ, exemption August 2008, revenue 29,130 (2024) and 45,638 (2025), expenses 47,402 and 74,131, president Ana-maria V Zaugg, treasurer Loa P Traxler. Membership tiers confirmed on the patrocinadores page, which names no members. Getty, Finland, Carene Foundation and US Embassy grants (record text) appear on no opened page and are not in the report. DRCLAS (Holly Nottebohm, 4 December 2010) confirmed."
+ }
+]
