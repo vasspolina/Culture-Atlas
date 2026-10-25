@@ -1742,8 +1742,9 @@ div:has(>#topThemeBtn){column-gap:0}
   }
   :root:root body *:not(svg):not(svg *)::before,:root:root body *:not(svg):not(svg *)::after{font-size:var(--m-size)!important;line-height:var(--m-lh)!important}
   :root:root body #mobileTopBar #reset-state-btn,:root:root body #mobileTopBar button{font-size:var(--m-size)!important}
-  /* .headline — titles: 16px, semibold. */
-  :root:root body :is(h1,h2,h3,h4,.lede,.curator-section-hdr,.layers-title,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.curator-hero-title),
+  /* .headline — titles: 18px on 24, semibold. */
+  :root:root body :is(h1,h2,h3,h4,.lede,.curator-section-hdr,.layers-title,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.curator-hero-title){font-size:var(--m-title)!important;line-height:var(--m-title-lh)!important;font-weight:600!important;margin-top:0}
+  /* The brand name is a title in weight only: 14px, so it fits the top bar beside the buttons. */
   :root:root body #mobileTopBar #mobileTopBrandBtn span{font-size:var(--m-size)!important;line-height:var(--m-lh)!important;font-weight:600!important;margin-top:0}
   /* .secondary — labels and meta. */
   :root:root body :is(.meta,.kicker,strong.meta){color:var(--m-secondary)!important;font-weight:400!important}
