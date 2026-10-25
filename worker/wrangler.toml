@@ -11,6 +11,4 @@ ALLOWED_ORIGINS = "https://vasspolina.github.io"
 binding = "SUBMISSIONS"
 id = "511423f2e1a1449382d0e2ff27d96f17"
 
-# ADMIN_TOKEN is a secret: `npx wrangler secret put ADMIN_TOKEN`. Never put it in this file.
-
-# ANTHROPIC_API_KEY is a secret too (POST /chat): `npx wrangler secret put ANTHROPIC_API_KEY`. Never put it in this file.
+# ANTHROPIC_API_KEY is a secret (POST /chat): `npx wrangler secret put ANTHROPIC_API_KEY`. Never put it in this file.

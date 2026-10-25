@@ -233,8 +233,8 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 /* A quotation is never put in a container: no fill, box, border or padding (19 Oct 2026). Callouts keep theirs. */
 blockquote{background:none;padding:0;border:0;margin:12px 0}
 .critique-quote{margin:12px 0;padding:0;border:0;background:none}
-.critique-quote blockquote{margin:0;padding:0;background:none;border:0;text-indent:0}
-.critique-quote .quote-hang{position:static}
+.critique-quote blockquote{position:relative;margin:0;padding:0;background:none;border:0;text-indent:0}
+.critique-quote .quote-hang{position:absolute;right:100%;top:0}
 .critique-quote figcaption{margin:0;overflow-wrap:break-word}
 .curator-message-wrap blockquote.atlas-quote{background:transparent;border:0;margin:2em 0;padding:0;color:var(--ink);font:400 var(--fs-l)/1.3 Georgia,"Times New Roman",serif;letter-spacing:0}
 .curator-message-wrap blockquote.atlas-quote .atlas-quote-text{margin:0}
@@ -1567,8 +1567,8 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 /* In a card the date-and-status line sits under the title, smaller and quieter, so the title leads. */
 :is(#desktopDossierRecordBody,#detailBody) .record-card>.kicker+.kicker{font-size:var(--fs-s);line-height:1.35;opacity:.8;margin-top:2px}
 
-/* Whistleblower notes on a record, laid out as a review list (the way Google Maps lists customer reviews, without stars: the notes are not ratings).
-   Anonymous reviewer line, date, the text, newest first, a count above. Black and white, the page's own type. */
+/* Whistleblower reviews under a record, laid out the way Google Maps lists the reviews of a place: the average and the count, then one
+   entry each with the reviewer's line, the date, optional stars and the text, newest first. Black and white, the page's own type. */
 .review-list{margin:0;padding:0}
 .review-list .review-count{margin:0 0 4px}
 .review{border-top:1px solid var(--line);padding:12px 0}
@@ -1577,6 +1577,28 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 .review-name{display:block;font:400 var(--fs-m)/1.2 var(--sans)}
 .review-date{display:block;font:400 var(--fs-s)/1.2 var(--sans)}
 .review-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+.review-summary{display:flex;align-items:center;gap:10px;margin:12px 0 4px}
+.review-average{font:400 32px/1 var(--sans)}
+.review-stars{letter-spacing:2px;color:var(--ink);white-space:nowrap}
+.review-rating{margin:0 0 4px}
+
+/* The submission form of the note screen: shown only while a note is written (Share information). Fields sit above the note box and
+   take the note box's own colours, so they hold in light and dark. */
+#noteFormFields{display:none;margin:0 0 8px}
+body.chat-input-mode-active #noteFormFields{display:block}
+#noteFormFields label,#noteFormFields legend{display:block;font:400 14px/1.3 var(--sans);margin:10px 0 4px;padding:0}
+#noteFormFields fieldset{border:0;margin:0;padding:0;min-width:0}
+body.chat-input-mode-active #noteFormFields input[type=text]{display:block;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:0;padding:.6em .75em;background:var(--grey);color:var(--ink);font:400 16px/1.4 var(--sans)}
+body.chat-input-mode-active #noteFormFields :is(input[type=text]):focus{outline:2px solid var(--focus);outline-offset:-2px}
+body.chat-input-mode-active #noteFormFields .review-star:focus-within{outline:2px solid var(--focus);outline-offset:1px}
+.review-stars-input{display:inline-flex;gap:2px}
+.review-star{position:relative;display:inline-block;margin:0!important;cursor:pointer}
+.review-star input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.review-star>span[aria-hidden]{display:block;padding:2px 4px;font:400 28px/1 var(--sans);color:var(--line);opacity:.45}
+.review-star.is-on>span[aria-hidden]{color:var(--ink);opacity:1}
+#noteFormFields .review-clear{font:400 14px/1 var(--sans);background:none;border:0;color:inherit;text-decoration:underline;padding:8px 0;cursor:pointer}
+#noteFormStatus{display:none;margin:8px 0 0;font:400 15px/1.4 var(--sans)}
+body.chat-input-mode-active #noteFormStatus:not(:empty){display:block}
 
 /* ---- the chat in the dark theme (releases 238 and 239) ----
    The atlas has one switch, :root[data-theme], and the chat already followed it except in two places that stayed bright: the note
@@ -1691,12 +1713,6 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part .lead-in{font-weight:600}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part a.domain{white-space:normal}
 
-/* Note field: which record the note goes to, and the dimmed send while none is found */
-#noteTargetLine{margin:8px 0 0}
-#workSendBtn[aria-disabled="true"]{opacity:.45;cursor:default}
-#noteTargetLine.is-flashed{animation:noteFlash .6s steps(2,jump-none) 2}
-@keyframes noteFlash{50%{text-decoration:underline}}
-@media (prefers-reduced-motion:reduce){#noteTargetLine.is-flashed{animation:none;text-decoration:underline}}
 /* Share information, on: no outline */
 #workInputCard #chatShareBtn.is-on{outline:0}
 :root[data-theme] #workInputCard #chatShareBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn.is-on{border-color:transparent!important}

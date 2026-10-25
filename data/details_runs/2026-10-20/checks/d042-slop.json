@@ -1,0 +1,500 @@
+[
+ {
+  "id": "rijksakademie-amsterdam",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'must raise about a third of its annual income itself'",
+   "unsupported: 'annual report ... figures could not be read'"
+  ],
+  "before": "The Rijksakademie says it is mainly financed by the Dutch Ministry ..., and must raise about a third of its annual income itself from private and public sources (Rijksakademie site). No reporting found of the amounts: the 2024 annual report is published in Dutch only and its figures could not be read.",
+  "after": "The Rijksakademie says it is mainly financed by the Dutch Ministry of Education, Culture and Science (Rijksakademie site). No reporting found of the amounts, or of the share of income raised from other sources.",
+  "sources": [
+   "https://www.rijksakademie.nl/en/support/our-supporters",
+   "https://www.rijksakademie.nl/en/rijksakademie-foundation",
+   "https://www.rijksakademie.nl/en/support"
+  ],
+  "reason": "The supporters, foundation and support pages say only 'mainly financed by' the ministry. No opened page gives a one-third share, and the annual report was not opened."
+ },
+ {
+  "id": "rijksakademie-amsterdam",
+  "section": "RED FLAGS (Ammodo)",
+  "problems": [
+   "misstated source: 'call by scientists to boycott Ammodo's funding'",
+   "opinion not labelled",
+   "unsourced attribution"
+  ],
+  "before": "Timo Demollin calls the Optas sale \"rather dubious\" ... and notes a 2014 call by scientists to boycott Ammodo's funding (Platform BK, 2021).",
+  "after": "Opinion: Timo Demollin, in a \"Retort\" essay for Platform BK, a membership organisation for visual artists, calls the sale of Optas \"rather dubious\" because it took place without the knowledge of the employers and employees involved (24 March 2021). The same essay says that in 2014 six scientists and members of the KNAW opposed the presentation of the Ammodo KNAW Award.",
+  "sources": [
+   "https://www.platformbk.nl/en/the-philanthropy-trap/",
+   "https://www.ammodo.org/verklaring-uitzending",
+   "https://www.platformbk.nl/en/"
+  ],
+  "reason": "The essay says the scientists opposed an award presentation, not that they called for a boycott. Ammodo's own account (Inphykem, Optas sold to Aegon 2007, EUR 500 million, closed 2010) matches the funder statement; it is labelled as stated by the funder. Platform BK describes itself as a membership organisation, so the 'artists' union magazine' wording was also wrong."
+ },
+ {
+  "id": "rijksakademie-amsterdam",
+  "section": "RED FLAGS (alumni campaign) -> WIDER CONTEXT",
+  "problems": [
+   "advocacy claims presented as flag",
+   "page does not show the funder acting",
+   "claims not each labelled Unverified"
+  ],
+  "before": "Red flags: alumni campaign on governance (December 2024) - An alumni open letter to the Supervisory Board claims 12 staff left in 18 months, ...",
+  "after": "Moved to WIDER CONTEXT. Unverified: an open letter and call to action posted in December 2024 on rijksakademie.art, an advocacy site, says 12 staff members left in 18 months ... The letter concerns the academy's governance. It does not name Ammodo, and no page read shows a funder acting in the dispute.",
+  "sources": [
+   "https://rijksakademie.art/"
+  ],
+  "reason": "The page does not mention Ammodo and shows no funder acting, so under the campaign rule it is context, not a flag. It is also not an art-press item, so the numbered press entry for it was removed."
+ },
+ {
+  "id": "rijksakademie-amsterdam",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "claim attributed to the wrong institution",
+   "non-press item numbered"
+  ],
+  "before": "Finds it ironic that the Rijksakademie introduced a \"social practice\" workshop while Ammodo was its main partner, and says young artists \"cannot afford to criticise their patron.\" / 2. Alumni campaign: open letter ...",
+  "after": "Finds it ironic that the Rijksakademie is launching a \"social practice\" workshop while Ammodo is at the top of its patrons list. Says that young artists at De Ateliers, which announced a four-year collaboration with Ammodo, \"cannot afford to criticise their patron.\" This point is about De Ateliers, not the Rijksakademie.",
+  "sources": [
+   "https://www.platformbk.nl/en/the-philanthropy-trap/"
+  ],
+  "reason": "The 'cannot afford to criticise their patron' sentence sits in a paragraph about De Ateliers. Item 2 had no author, title or outlet and was moved to Wider context."
+ },
+ {
+  "id": "rijksakademie-amsterdam",
+  "section": "OVERVIEW",
+  "problems": [
+   "detail not in source"
+  ],
+  "before": "Offers a two-year residency ... on average 23 artists ...",
+  "after": "Offers a residency of one or two years, most staying two, with a private studio and a stipend; about 23 artists are selected each year, roughly 11 from the Netherlands and 12 from other countries.",
+  "sources": [
+   "https://rijksakademie.nl/en/residency-apply/apply"
+  ],
+  "reason": "Matches the apply page. Report also trimmed from about 846 to 786 words (supervisory board names and Open Studios detail cut)."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "Website",
+  "problems": [
+   "claim not specific"
+  ],
+  "before": "could not be loaded: the server's security certificate does not match the address",
+  "after": "could not be loaded: the server's security certificate does not match the address, as it is issued for hy.redbrickartmuseum.com",
+  "sources": [
+   "http://www.redbrickartmuseum.org"
+  ],
+  "reason": "The fetch error named the certificate altnames hy.redbrickartmuseum.com and www.hy.redbrickartmuseum.com, which confirms the mismatch."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'wetlands'",
+   "source does not mention brick: Visit Beijing",
+   "malformed source URL"
+  ],
+  "before": "red and grey brick ... (Visit Beijing). ... in an area once marked by factory buildings and wetlands (Our China Story, English edition).",
+  "after": "the site covers about 20,000 square metres, with exhibition space of nearly 10,000 square metres (Visit Beijing). The grey bricks come from local village houses and the red bricks are associated with factory buildings (Our China Story, English edition).",
+  "sources": [
+   "https://www.visitbeijing.com.cn/article/47QoeJhVvxc?device=amp",
+   "https://www.ourchinastory.com/en/amp/16755",
+   "https://www.archdaily.com/884521/dong-yugans-brick-art-museum-through-the-lens-of-he-lian"
+  ],
+  "reason": "Visit Beijing gives the areas but not the brick; no opened page mentions wetlands. The ArchDaily source URL contained 'whatsapp:/send'; replaced with the working article address."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "FUNDING",
+  "problems": [
+   "figure needs exact source"
+  ],
+  "before": "The founders invested nearly RMB 400 million over about eight years of building (Our China Story).",
+  "after": "The founders invested nearly RMB 400 million over eight years, and the museum opened in May 2014 (Our China Story, Chinese edition ... our translation). No independent figure found.",
+  "sources": [
+   "https://www.ourchinastory.com/cn/10523",
+   "https://www.ourchinastory.com/en/amp/16755"
+  ],
+  "reason": "The English page has no figure; the Chinese page states 投资近4亿人民币，历时8年. Cited to the Chinese edition."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: 'video of it was posted online'",
+   "unclear attribution of injuries",
+   "wage claim denial not on the Unverified line"
+  ],
+  "before": "More than ten museum staff dragged them from the hall and pushed them into two cars; video of it was posted online ... The family said Liu's parents had bruises and scrapes, and The Paper's introduction said the matter had no resolution at the time.",
+  "after": "More than ten museum staff removed them and forced them into two cars (The Paper, 4 June 2017). ... Unverified: the unpaid wages and overwork claims, made by the family as reported by The Paper; the museum denies the wage claim. ... Photos and accounts reported bruises and abrasions on the parents' hands and bodies. The Paper said the dispute ended with no agreed settlement.",
+  "sources": [
+   "https://www.thepaper.cn/newsDetail_forward_1700081"
+  ],
+  "reason": "The Paper commentary (顾一指, 4 June 2017) gives the dates, the removal by more than ten staff, the two cars, the museum's denial of the wage claim and apology. It does not mention a video."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'neither side had a clear legal basis'"
+  ],
+  "before": "Says neither side had a clear legal basis, that no central mechanism existed ... Says the handling showed a lack of professionalism in Chinese museums.",
+  "after": "Says that without a neutral mediating mechanism, compensation talks were bound to fail, and that financial difficulty is no excuse for neglecting care for workers. Says the museum's poor crisis response damaged its reputation and that professionalism and foresight are lacking across the sector.",
+  "sources": [
+   "https://www.thepaper.cn/newsDetail_forward_1700081"
+  ],
+  "reason": "The article does not state a legal-basis argument. Headline confirmed as 评论 | 开幕式成“打戏”，美术馆建设的“道”依然崎岖."
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "section": "RED FLAGS -> WIDER CONTEXT",
+  "problems": [
+   "flag without censorship by the funding body or Sesc",
+   "hedge-free but unclear actor"
+  ],
+  "before": "Red flags: 2017 petition against a Judith Butler seminar at Sesc Pompeia ... Vermelho is an openly left-leaning outlet and frames the episode as censorship.",
+  "after": "Moved to WIDER CONTEXT: an anonymous online petition (88,821 signatures) and about 386 negative Facebook reviews targeted the seminar; about 3,000 positive reviews followed. The actors were the petitioners and the reviewers. Vermelho does not report that Sesc cancelled the seminar or censored anything; Sesc representatives declined to comment.",
+  "sources": [
+   "https://vermelho.org.br/2017/11/01/a-censura-a-judith-butler-no-brasil-e-a-reacao-dos-artistas/"
+  ],
+  "reason": "Vermelho (1 November 2017, no byline) calls the petition anonymous and reports no cancellation or Sesc action, so under the brief it is context. The levy-funding body is not shown acting. 'Openly left-leaning' is not on the page; the outlet is labelled partisan as briefed."
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'too large to open'",
+   "unsupported: 'plus service income'",
+   "vague: 'public-law levy'"
+  ],
+  "before": "Sesc São Paulo: mainly public-law levy: a compulsory payment ..., plus service income / the 2024 annual management report ... was too large to open",
+  "after": "Sesc São Paulo: mainly a levy on companies in commerce, services and tourism / No reporting found of São Paulo revenue figures: the transparency portal page read showed no totals.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Serviço_Social_do_Comércio",
+   "https://transparencia-sp.sesc.com.br"
+  ],
+  "reason": "Wikipedia says revenue comes from a tax on companies (0.2% to 2.5%). The portal page loaded with no figures; no opened page supports service income or the report-size claim. The R$3.44bn figures are not in the report."
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "section": "OVERVIEW",
+  "problems": [
+   "stale 'current' exhibition",
+   "source does not say private non-profit"
+  ],
+  "before": "Current exhibition at the Sesc 24 de Maio centre ... extended to 29 March 2026 (e-flux).",
+  "after": "Sesc 24 de Maio, Rua 24 de Maio 109, showed \"HIP-HOP 80'sp\" with free admission, extended to 29 March 2026 (e-flux).",
+  "sources": [
+   "https://www.e-flux.com/announcements/6784487",
+   "https://www.sescsp.org.br"
+  ],
+  "reason": "The date is already past on 25 October 2026. sescsp.org.br does not state the non-profit status; that is cited to Wikipedia only."
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "imprecise: 'cut the contribution rates'"
+  ],
+  "before": "A 2020 provisional measure cut the contribution rates until 30 June 2020",
+  "after": "Provisional Measure 932/2020 cut contributions to the Sistema S entities, Sesc among them, by 50% until 30 June 2020 (Congresso em Foco, 1 April 2020).",
+  "sources": [
+   "https://congressoemfoco.com.br/governo/medida-provisoria-corta-pela-metade-contribuicao-para-o-sistema-s",
+   "https://jornalcontabil.com.br/noticia/projeto-limita-e-torna-facultativas-contribuicoes-para-o-sistema-s/"
+  ],
+  "reason": "Dates, Guedes 50% proposal rejected by the CNI, and Eli Borges PL 6505/19 (3 May 2021) confirmed."
+ },
+ {
+  "id": "secession-vienna",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "statement kept out as briefed; negative claim contradicted by site",
+   "unsupported: 'Neuroth also behind the free-entry Wednesdays'"
+  ],
+  "before": "The pages read do not state the public share of the budget. / Neuroth (also behind the free-entry Wednesdays) ... Worth watching: the size of the public share",
+  "after": "No reporting found of the amounts given by any funder, or of published accounts. / Annual partners: Neuroth, Dorotheum and LG.",
+  "sources": [
+   "https://secession.at/partner_en"
+  ],
+  "reason": "As briefed, the 'third of the budget is public' statement is kept out. NOTE for the editor: https://secession.at/partner_en does contain the sentence 'Only roughly a third of the budget is covered by grants from the Austrian federal government and the City of Vienna' (re-checked with a neutral prompt). The report no longer claims the pages are silent. The page does not tie Neuroth to the free Wednesdays."
+ },
+ {
+  "id": "secession-vienna",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'tactile model'",
+   "unsupported: 'lower level'",
+   "unsupported: 'most exhibition rooms are step-free'"
+  ],
+  "before": "Beethoven Frieze, shown permanently on the lower level ... most exhibition rooms are step-free with a lift, and there is a tactile model of the building outside",
+  "after": "Klimt's Beethoven Frieze ... The Beethoven Frieze and parts of the exhibitions are barrier-free, with a lift on the left side of the building (secession.at).",
+  "sources": [
+   "https://secession.at/en/information_tickets",
+   "https://secession.at/building",
+   "https://secession.at/en/mission"
+  ],
+  "reason": "The tickets and building pages do not mention a tactile model or a lower level. Admission prices, hours, Erste Bank EUR 11, building dates and board names are confirmed."
+ },
+ {
+  "id": "secession-vienna",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "claims beyond the visible text",
+   "bottom line implied unsupported point"
+  ],
+  "before": "Holub said she would face the general assembly ... Reports that months of quarrels ended with a new leadership",
+  "after": "The subtitle says the president faces the general assembly, and the lead says the resignations had so far not moved her to step down. / Teaser: after months of quarrels, the artists' association has a new leadership. Only the teaser could be read; the page is cut off.",
+  "sources": [
+   "https://www.derstandard.at/story/2992559/secession-holub-bietet-ruecktritt-an",
+   "https://www.falter.at/zeitung/20071212/secessionskrieg-beendet",
+   "https://www.tt.com/artikel/18393715/wiener-secession-hat-mit-ramesch-daha-neue-praesidentin"
+  ],
+  "reason": "Der Standard page shows no date or author, eight of fourteen board members resigned, board unable to decide; Falter teaser by Matthias Dusini (12.12.2007) only; TT of 5 October 2021 names Kempinger as previous president. The bottom line's remark on sponsor logos and ticket discounts was dropped."
+ },
+ {
+  "id": "raven-row-london",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'now listed Grade I and Grade II' (no opened source)",
+   "unsupported: break 'tied to a lease'"
+  ],
+  "before": "... now listed Grade I and Grade II. ... Sainsbury said the break was planned and tied to a lease of at least 20 years (The Art Newspaper).",
+  "after": "... rebuilt in the 1750s for Huguenot silk weavers and traders (Wikipedia). ... Sainsbury said there was always going to be an intermission, and that the building lease runs for at least 20 years (The Art Newspaper).",
+  "sources": [
+   "https://www.theartnewspaper.com/2022/12/15/east-london-art-space-raven-row-makes-a-comeback",
+   "https://en.wikipedia.org/wiki/Raven_Row",
+   "https://www.anothermag.com/art-photography/3248/a-shrink-wrapped-house"
+  ],
+  "reason": "The listing grades appear on no opened page. Another Magazine confirms the 2004 purchase; Wikipedia confirms Ray Johnson, the charity, the 1895 name and January 2023 reopening."
+ },
+ {
+  "id": "raven-row-london",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported job titles"
+  ],
+  "before": "Melanie Keen (Director, Wellcome Collection) and Jenni Lomax, formerly Director of Camden Arts Centre (Galleries Now).",
+  "after": "Melanie Keen and Jenni Lomax (Galleries Now).",
+  "sources": [
+   "https://www.galleriesnow.net/gallery/raven-row/"
+  ],
+  "reason": "Galleries Now confirms 'funded by Glass-House Trust, of which Alex is settlor' and the trustees, with a title only for Farquharson. The Art Newspaper confirms 'The funding also comes from me; it is a streamlined operation.'"
+ },
+ {
+  "id": "raven-row-london",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "overstated paraphrase"
+  ],
+  "before": "Argues the curatorial theme is so vague that any artwork could fit it ... Praises some individual works",
+  "after": "Argues the show works as a loose visual mixtape without a cohesive theme ... Praises the tapestries by the Black Panthers and the Zapatistas and calls the upstairs mini-exhibition \"great\".",
+  "sources": [
+   "https://timeout.com/london/art/chronoplasticity",
+   "https://www.timeout.com/london/art/56-artillery-lane"
+  ],
+  "reason": "Eddy Frankel, 4 October 2024, 3/5; Katie McCabe, 3 May 2017, 4/5, confirmed."
+ },
+ {
+  "id": "selasar-sunaryo-art-space-bandung",
+  "section": "Website",
+  "problems": [
+   "imprecise: 'blank template'"
+  ],
+  "before": "live, but most text fields are blank template placeholders; the older address selasarsunaryo.com shows \"This Account has been suspended\"",
+  "after": "selasarsunaryo.org loads an unfilled template that shows placeholder keys instead of text, with no address, hours or ticket information, only two phone numbers and an email; the older address selasarsunaryo.com shows \"Account Suspended\"",
+  "sources": [
+   "https://selasarsunaryo.org/",
+   "https://selasarsunaryo.com/"
+  ],
+  "reason": "Both pages opened and described as stated."
+ },
+ {
+  "id": "selasar-sunaryo-art-space-bandung",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'Selasar means hallway'",
+   "unsupported: 'Dago Pakar highlands north of Bandung'",
+   "wrong source: Curatorial Advisory Council credited to Manual",
+   "unsupported: 'in response to the political turmoil' wording"
+  ],
+  "before": "The name \"Selasar\" means hallway; the stated aim was to connect artists and the public (CNN Indonesia). ... a Curatorial Advisory Council ... (Manual, culture360).",
+  "after": "CNN Indonesia says Sunaryo wanted to make a public place where artists and the public could interact. ... a programme guided by a council of academics, critics and art practitioners (culture360). Sunaryo bought about 5,000 square metres of land and built the space (CNN Indonesia, 2017, our translation).",
+  "sources": [
+   "https://www.cnnindonesia.com/inspirasi/20170615123929-454-221924/menengok-seni-di-bukit-pakar",
+   "https://culture360.org/resources/selasar-sunaryo-arts-space-ssas",
+   "https://manual.co.id/?p=59190"
+  ],
+  "reason": "CNN: 'Sunaryo membeli tanah seluas 5000 meter dan membangun gedung ini' and free entry; it does not explain the word Selasar or use 'Dago Pakar'. Manual does not name a Curatorial Advisory Council. The 2010 'ASEF profile' label was replaced with the culture360 posting date."
+ },
+ {
+  "id": "sir-john-soane-s-museum",
+  "section": "FUNDING",
+  "problems": [
+   "wrong figure: 417,443 is not tours and events",
+   "unsupported donors: Borthwick, Rick Mather David Scrase Foundation",
+   "no donor amounts note"
+  ],
+  "before": "... licensing 22,187 pounds, ticketed tours and events 417,443 pounds. ... the David Borthwick and Molly Lowell Borthwick collections research gift, the Rick Mather David Scrase Foundation and the John R. Murray Charitable Trust.",
+  "after": "... licensing 22,187 pounds and visitor tours and ticketed events 101,385 pounds ... and the John R Murray Charitable Trust (archive cataloguing). The report gives no amounts for these donors.",
+  "sources": [
+   "https://assets.publishing.service.gov.uk/media/6944125e36f089d38be1f309/E03309837_SJSM_ARA_2024-25_Web_Accessible.pdf",
+   "https://www.soane.org/support-us",
+   "https://www.soane.org/about/inspired-soane-brand-partnerships"
+  ],
+  "reason": "In note 3 the figure 417,443 is the restricted total for charitable activities; tours and events are 101,385. Year is the year to 31 March 2025 (accounts presented to Parliament 17 December 2025). Total income 4,221,788 and 4,018,221, grant-in-aid 1,165,000 (+32,000 +62,000 = 1,259,000), 48,000, 1,362,808, 70,498, 612,173 all match. Borthwick and Rick Mather appear in neither the report text nor soane.org. 14 licensing partners and the GBP 1.5 million target confirmed."
+ },
+ {
+  "id": "sir-john-soane-s-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'a single US foundation and a family trust are named among its closest supporters'"
+  ],
+  "before": "a single US foundation and a family trust are named among its closest supporters",
+  "after": "the Deborah Loeb Brice Foundation is the only donor the report names as a closest supporter",
+  "sources": [
+   "https://assets.publishing.service.gov.uk/media/6944125e36f089d38be1f309/E03309837_SJSM_ARA_2024-25_Web_Accessible.pdf"
+  ],
+  "reason": "The report says the Brice Foundation is amongst its 'closest and most generous supporters'; it says that of no other donor. Visit hours, Gompertz (since January 2024), the 1833 Act, 7 million pound project and Architectural Record quote also confirmed."
+ },
+ {
+  "id": "schaulager",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong source attribution",
+   "unsupported: 'an open warehouse'",
+   "unsupported build dates"
+  ],
+  "before": "Built in 2002 and 2003 ... Described as \"an open warehouse\" ... tram 11 ... (Wikipedia, schaulager.org).",
+  "after": "Completed in 2003, built under commission of the Laurenz Foundation ... A hybrid of storage facility and museum ... (archiweb.cz). Tram 11 ... (museenbasel.ch).",
+  "sources": [
+   "https://www.archiweb.cz/en/b/schaulager",
+   "https://en.wikipedia.org/wiki/Schaulager",
+   "https://www.museenbasel.ch/en/museen/schaulager"
+  ],
+  "reason": "Wikipedia gives the commission and the collection history but not 'open warehouse'. The tram line comes from museenbasel.ch. The opening-hours page confirms 'will reopen to the public in 2027' with an exhibition for Anri Sala; the accessibility page confirms the wheelchair and lift statements."
+ },
+ {
+  "id": "schaulager",
+  "section": "FUNDING",
+  "problems": [
+   "wrong source: 'pays for equipment, concept and operation' credited to schaulager.org",
+   "Roche link needs its source"
+  ],
+  "before": "The foundation pays for Schaulager's equipment, concept and operation; the building cost was given as 80 million francs (archiweb.cz). ... The Art Newspaper reported in 2010 that her family founded ... Roche",
+  "after": "archiweb.cz says the foundation pays for Schaulager's equipment, concept and operation, and its reviewer gives the building cost as 80 million francs. ... The foundation's own page does not mention Roche.",
+  "sources": [
+   "https://schaulager.org/en/schaulager/laurenz-foundation",
+   "https://www.archiweb.cz/en/b/schaulager",
+   "http://www.theartnewspaper.com/2010/05/01/basels-tunnel-vision-basel-kunstmuseum-receives-funding-from-laurez-foundation-for-new-extension"
+  ],
+  "reason": "The foundation page confirms 1999, Oeri and Bodenmann, Laurenz Jakob, 'not a grant funding institution'. The Roche family and the 50 million franc gift are in The Art Newspaper (2010) only. 'Board page could not be opened' replaced by 'no board page was found'."
+ },
+ {
+  "id": "schaulager",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "numbered item with nothing read",
+   "unsupported: 'optical illusions'"
+  ],
+  "before": "2. Artforum: \"The Schaulager\" column ... Paywalled; could not be read, so it is not summarised. / Praises the interior's optical illusions",
+  "after": "Item 2 removed; Overall notes the Artforum column is paywalled and was not read. Praises the interior layout and the experiments with materials.",
+  "sources": [
+   "https://www.archiweb.cz/en/b/schaulager",
+   "https://www.artforum.com/columns/the-schaulager-166781/"
+  ],
+  "reason": "The Artforum page returned HTTP 402 (via tollbit), so nothing could be summarised or checked; its URL was dropped from SOURCES."
+ },
+ {
+  "id": "sculpturecenter",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'commissioning programme for mid-career artists'",
+   "unsupported: 'free public talks, screenings and publications'",
+   "courtyard size"
+  ],
+  "before": "including a commissioning programme for mid-career artists and the \"In Practice\" projects for emerging artists, with free public talks, screenings and publications",
+  "after": "about three exhibition cycles a year and work by more than 750 artists shown (Wikipedia); the \"In Practice\" series is named on the support page.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/SculptureCenter",
+   "https://www.sculpture-center.org/support/95/support-us"
+  ],
+  "reason": "Wikipedia confirms the history, Lin and Hotson, Berman's 2014 expansion, 750 artists and three cycles; it does not mention In Practice or the other programme details. The 1,500 square foot courtyard is from Wikipedia."
+ },
+ {
+  "id": "sculpturecenter",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "tier mislabelled: Miyoung Lee and Neil Simpkins omitted",
+   "unsupported: 'board made up largely of collectors and artists'",
+   "unsupported: 'others named on the page'"
+  ],
+  "before": "the board is made up largely of collectors and artists linked to the donors / SAHA (Füsun Eczacıbaşı) and others named on the page",
+  "after": "board members Eleanor Heyman Propp and Justin Beal also appear on the donor list / The page lists an International Council of individuals, including Füsun Eczacıbaşı of SAHA.",
+  "sources": [
+   "https://www.sculpture-center.org/support/95/support-us",
+   "https://www.sculpture-center.org/about/6870/board-staff",
+   "https://projects.propublica.org/nonprofits/organizations/131669204"
+  ],
+  "reason": "ProPublica figures (year to June 2025: revenue 2,134,666, expenses 2,609,276, contributions 2,068,454, net assets 6,819,397; June 2024 revenue 3,620,043, contributions 3,518,731) match. The board page lists Beal and Propp as vice chairs, Waldburg-Wolfegg as treasurer, Quinn as secretary. The donor page lists Propp and 'Jane Hait and Justin Beal'."
+ },
+ {
+  "id": "sculpturecenter",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "summary-only reading of cited pieces"
+  ],
+  "before": "Criticises the exhibition, not the institution. Read from the outlet's tag listing summary only. / Read from the tag listing summary only.",
+  "after": "Rodney: the press release promises more than the works deliver, and he calls SculptureCenter \"a captivating space.\" Sutton: the sculptures are visually appealing but \"conceptually aimless\".",
+  "sources": [
+   "https://hyperallergic.com/when-the-language-meant-to-prop-up-art-makes-it-fall-over/",
+   "https://hyperallergic.com/an-exhibition-of-sea-creatures-and-beach-gear-treads-water/"
+  ],
+  "reason": "Both articles were opened in full this time (Rodney 14 March 2017; Sutton 19 December 2016). The tag-page source was dropped and the summary-only labels removed."
+ },
+ {
+  "id": "rwanda-art-museum",
+  "section": "WIDER CONTEXT / CRITICISM",
+  "problems": [
+   "unsupported paraphrase: 'narrative citizens know not to contest'",
+   "unsupported: 'benefits from suspicion over the plane attack'",
+   "'Kagame's rule' not in quoted phrase"
+  ],
+  "before": "Wrong argues the Rwandan government uses its museums to promote a narrative citizens know not to contest, and that it benefits from suspicion over the 1994 plane attack",
+  "after": "Wrong argues the government-run museums anchor the regime's legacy \"in brick and mortar\" and present a selective view of Rwandan history (Foreign Policy, 2016).",
+  "sources": [
+   "https://foreignpolicy.com/2016/04/27/the-false-idols-of-rwandas-genocide-war-paul-kagame-museums-culture/",
+   "https://roadsandkingdoms.com/2014/in-rwanda-a-tour-of-disaster/"
+  ],
+  "reason": "The word 'narrative' does not appear in the Foreign Policy piece; it says 'a selective view of Rwandan history' and 'implicit warnings to anyone contemplating a change in Rwanda's leadership'. The RPF's denial is stated as the page states it."
+ },
+ {
+  "id": "rwanda-art-museum",
+  "section": "FUNDING",
+  "problems": [
+   "decree credited to the wrong source"
+  ],
+  "before": "created by Presidential Decree No. 082/01 of 28 August 2020 ... (Rwanda Cultural Heritage Academy, Wikipedia).",
+  "after": "set up by Presidential Decree No. 082/01 of 28 August 2020 as a merger of ... (Wikipedia).",
+  "sources": [
+   "https://www.rwandaheritage.gov.rw/en/about-rha",
+   "https://en.wikipedia.org/wiki/Rwanda_Cultural_Heritage_Academy"
+  ],
+  "reason": "The Academy's own page gives 'non commercial Public Institution' and Masozera's 11 November 2020 appointment but not the decree; Wikipedia does. Fees, hours and event packages match the visit page. The 2008 facilities and 2018 opening figures match The New Times."
+ },
+ {
+  "id": "siida-s-mi-museum-saamelaismuseo-siida-inari",
+  "section": "OVERVIEW",
+  "problems": [
+   "overstated: 'opened on 1 June 2022'"
+  ],
+  "before": "the main exhibition ... opened on 1 June 2022",
+  "after": "the main exhibition ... planned to open on 1 June 2022 (siida.fi)",
+  "sources": [
+   "https://siida.fi/en/siida-will-be-renewed/main-exhibition-renewal/",
+   "https://siida.fi/en/releases/siidas-old-main-exhibition-is-making-way-for-a-new-one/",
+   "https://yle.fi/a/3-9558574"
+  ],
+  "reason": "The releases give a planned date only. Kone Foundation EUR 300,000, Finnish Cultural Foundation EUR 400,000, 1998 building, the foundation board, the 17.5 million euro application (Yle, April 2017) and the prices are confirmed. Scan Magazine says 2,200 objects were returned but gives no year in the text."
+ }
+]
