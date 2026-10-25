@@ -810,3 +810,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - The Model: the EUR 10,000 grant has no named fund in the article. The ERDF figure appears as EUR 2.4M and EUR 2.9M in Wikipedia.
 - Thapong: Daily News pages (expired certificate) cannot be checked; the record's P2.2M ministry sum is not used; Mmegi (30 Oct 2013) gives ministry P1.5M and DTC P654,908.
 - The Muse Multi Studios: no amounts exist anywhere. The Renaissance Society: Sacramento State removed (no opened page mentions it).
+
+## d046 (research and slop check)
+- 21st-century-museum-of-contemporary-art: the Fossil fuels flag rests on two paying members (Kanazawa Energy, Gold, 300,000 yen a unit; Iwatani Central Hokuriku, Standard). The members page is undated (footer "Copyright 2024"); Kanazawa Energy was founded 13 May 2021 and renamed 30 Nov 2021. Its ownership split comes only from an unofficial site (Unverified). Iwatani's LP gas business rests on directory pages. Decide whether paid memberships count as funding for the flag. The 2027 closure rests on Japanese Wikipedia only.
+- ackland-art-museum-chapel-hill: the museum's own (undated) history page says the Ackland fortune came from Isaac Franklin's slave trading company and that Ackland himself "did not participate in the slave trade or slave ownership, except as a recipient of its labor during his childhood". The Ackland Trust income pays about 45% of acquisition funds and about 6% of the annual budget. Record flag (Forced or exploited labour) kept on that basis; founder-fortune ruling to apply.
+- 421-arts-campus-formerly-warehouse421-abu-dhabi: privately funded by the Salama bint Hamdan Al Nahyan Foundation; no page shows a government body funding the campus; no Gulf state body flag.
+- akademie-schloss-solitude-stuttgart: the KfW Stiftung programme rests on German Wikipedia only; Robert Bosch removed (no opened page).
+- a-kasteyev-state-museum-of-arts-almaty: no page says who paid for the 2026 renovation or the amounts; Bizmedia names the Ministry, Samruk-Kazyna and Senim Qogamy as implementers.
+- al-mamal-foundation-jerusalem: almamalfoundation.org redirects to an unrelated essay-review site; the live site is almamal.org. European Cultural Foundation (in the record) is not among its logos.
+- addis-foto-fest: last sponsor list is from 2018; no edition after 2018 found.
