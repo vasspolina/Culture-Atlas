@@ -1,0 +1,620 @@
+[
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported attribution: study authors credited to The Local"
+  ],
+  "before": "appeared in October 2013; chairman August Oetker said his father \"was a National Socialist\" (The Local).",
+  "after": "appeared in October 2013 (German Wikipedia, Oetker-Gruppe); chairman August Oetker said his father \"was a National Socialist\" (The Local).",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Oetker-Gruppe",
+   "https://www.thelocal.com/20131017/52441"
+  ],
+  "reason": "The Local names neither the study nor its authors; the three authors and the October 2013 date are in the German Wikipedia article on the Oetker group."
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: \"dpa\" credit",
+   "misattributed source: Gundlach and Adler credited to the museum article"
+  ],
+  "before": "(BRF Nachrichten, dpa, 20 October 2013)",
+  "after": "(BRF Nachrichten, 20 October 2013)",
+  "sources": [
+   "https://brf.be/gesellschaft/landundleute/668588"
+  ],
+  "reason": "The opened BRF page, dated 20 October 2013, shows no dpa credit; the credit is cut."
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "section": "RED FLAGS",
+  "problems": [
+   "source gap: Gundlach and Adler named in the Oetker-Gruppe article, not the museum article"
+  ],
+  "before": "German Wikipedia names the Gundlach printing house and the Adler sewing-machine works.",
+  "after": "German Wikipedia (Oetker-Gruppe) names the Gundlach printing house and the Adler sewing-machine works as firms that employed forced labourers.",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Oetker-Gruppe"
+  ],
+  "reason": "The Gundlach and Adler passages are in the Oetker-Gruppe article; the Kunsthalle article does not mention them. Adler is described there as mostly owned by the Oetker group."
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "section": "RED FLAGS",
+  "problems": [
+   "no statement of where the money is current",
+   "over length: report above 800 words"
+  ],
+  "before": "Red flags: Oetker family money and Nazi-era history\n",
+  "after": "Red flags: Oetker family money and Nazi-era history\n- Money today: the Oetker group paid most of the building cost; Oetker ended his support in 1998. No reporting found of Oetker family payments now.\n",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Kunsthalle_Bielefeld",
+   "https://www.wsws.org/de/articles/1998/12/biel-d02.html"
+  ],
+  "reason": "States plainly which Oetker money is historic (building gift, support ended 1998) and that no current payment is documented."
+ },
+ {
+  "id": "kunsthalle-bratislava",
+  "section": "RED FLAGS",
+  "problems": [
+   "allegation stated as attributed fact outside an \"Unverified:\" line"
+  ],
+  "before": " (STVR, 17 January 2024). Eurozine (Tomáš Hučko, 2 December 2024) writes that the ministry forced him to resign.",
+  "after": " (STVR, 17 January 2024).",
+  "sources": [
+   "https://enrsi.stvr.sk/articles/Culture/350850/kunsthalle-bratislava-director-resigns",
+   "https://eurozine.com/culture-strikes-back"
+  ],
+  "reason": "Eurozine says Kratochvíl was \"forced to resign by the Ministry of Culture\"; the ministry says he asked to be released. The allegation moves to the Unverified line."
+ },
+ {
+  "id": "kunsthalle-bratislava",
+  "section": "RED FLAGS",
+  "problems": [
+   "claim stronger than source: Erste statement described as \"similar\"",
+   "allegation not labelled"
+  ],
+  "before": "- Unverified: that the move under the SNG, with funding revoked, effectively shut the Kunsthalle down, from Eurozine (Hučko). Erste Foundation CEO Boris Marte makes a similar claim on the foundation's own site (9 September 2024), an advocacy source.",
+  "after": "- Unverified: that the ministry forced Kratochvíl to resign and that the move under the SNG, with funding revoked, effectively shut the Kunsthalle down, from Eurozine (Tomáš Hučko, 2 December 2024). Erste Foundation CEO Boris Marte wrote on 9 September 2024 that Kratochvíl resigned due to the revocation of funding (the foundation's own site, an advocacy source).",
+  "sources": [
+   "https://eurozine.com/culture-strikes-back",
+   "https://www.erstestiftung.org/?p=763"
+  ],
+  "reason": "Eurozine says he was forced to resign and the institution effectively shut down; Marte says he resigned due to the revocation of funding, which is a different claim, now stated as such."
+ },
+ {
+  "id": "kunsthalle-praha-prague",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: \"Malá Strana\""
+  ],
+  "before": "Prague's Malá Strana, near Malostranská metro station (Aktuálně.cz)",
+  "after": "Prague, near Malostranská metro station (Aktuálně.cz)",
+  "sources": [
+   "https://magazin.aktualne.cz/kultura/umeni/ani-koruna-od-statu-kunsthalle-praha-spojí-ceske-umeni-se-svetem-za-soukrome-penize/r~4d1d85328e4811ec9ba00cc47ab5f122/?lp=1"
+  ],
+  "reason": "Aktuálně.cz says \"Klárov, near the Malostranská stop\" and does not name the Malá Strana district; the museum page says only \"historic centre\"."
+ },
+ {
+  "id": "kunsthalle-praha-prague",
+  "section": "RED FLAGS",
+  "problems": [
+   "heading joins two issues (\"fossil fuels and protest\")",
+   "\"denies a link\" not in the source",
+   "protest group credited to Radio Prague, which does not name it",
+   "no statement of where the money is current"
+  ],
+  "before": "Red flags: fossil fuels and protest\n- Founder's coal business: Pudil took part in the 2005 buyout of Mostecká uhelná společnost from Appian Group and sold his stake in 2010 to companies linked to Pavel Tykač (ČTK, 22 February 2022; ČT24).\n- ČTK adds that public sources do not show Pudil took part in the privatisation or was prosecuted in related proceedings; Aktuálně.cz reports he denies a link and was never charged.\n- Protest: about thirty people gathered outside on opening day, 22 February 2022. The group Společnost pro lepší současnost said in a statement that it could not close its eyes to oligarchs laundering their money through art (Radio Prague, 22 February 2022) and held an \"artwashing\" workshop. The Kunsthalle said the organisers had not contacted it (ČTK).\n- Artists including Vladimír Turner call the foundation's activities artwashing (Archiweb).",
+  "after": "Red flags: founder's coal business\n- Pudil took part in the 2005 buyout of Mostecká uhelná společnost from Appian Group and sold his stake in 2010 to companies linked to Pavel Tykač (ČTK, 22 February 2022; ČT24).\n- Aktuálně.cz says part of his fortune came from coal. It reports that the weekly Respekt apologised for claiming he gained wealth through the privatisation, and that he was never charged in the Appian case. ČTK adds that public sources do not show he took part in the privatisation.\n- Money today: the stake was sold in 2010. No reporting found of coal proceeds in the foundation's accounts.\n\nRed flags: opening-day protest over artwashing\n- About thirty people gathered outside on opening day, 22 February 2022. The organisers, the group Společnost pro lepší současnost (ČTK), said they could not close their eyes to oligarchs laundering their money through art (Radio Prague) and held an \"artwashing\" workshop. The Kunsthalle said the organisers had not contacted it (ČTK).\n- Artists including Vladimír Turner call the foundation's activities artwashing (Archiweb).",
+  "sources": [
+   "https://www.ceskenoviny.cz/zpravy/tri-desitky-lidi-se-sesly-pred-kunsthalle-praha-na-protestu/2165223",
+   "https://magazin.aktualne.cz/kultura/umeni/ani-koruna-od-statu-kunsthalle-praha-spojí-ceske-umeni-se-svetem-za-soukrome-penize/r~4d1d85328e4811ec9ba00cc47ab5f122/?lp=1",
+   "https://english.radio.cz/node/8742710"
+  ],
+  "reason": "Split into two plain headings, both supported. Aktuálně.cz says Respekt apologised and Pudil was never charged; it does not say he denies a link. ČTK names the group; Radio Prague gives the quote. The coal stake was sold in 2010, so the sources show a documented objection, not current coal money. Nelson Anstalt gift (90,000 thousand CZK) confirmed in the foundation annual report 2023, owner not named there. The Nelson Anstalt gift stays under Funding and Bottom line (owner not named), not under Red flags."
+ },
+ {
+  "id": "kunsthalle-praha-prague",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "claim stronger than source"
+  ],
+  "before": "- Not criticism: reports that operations depend on one foundation and that the carbon footprint was not yet measured.",
+  "after": "- Not criticism: reports that running costs are covered by grants from the Pudil Family Foundation, and quotes Goossen saying her main goal for 2022 was to establish the carbon footprint.",
+  "sources": [
+   "https://www.theartnewspaper.com/2022/02/21/new-euro35m-kunsthalle-praha-gallery-backed-by-private-collectors-opens-in-prague"
+  ],
+  "reason": "The article says the 2022 goal is to establish the carbon footprint; \"not yet measured\" is an inference."
+ },
+ {
+  "id": "kunsthaus-baselland-münchenstein",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: \"five-year\""
+  ],
+  "before": "Novartis also signed a five-year corporate integrity agreement with the HHS Office of Inspector General (Skadden).",
+  "after": "Novartis also signed a corporate integrity agreement with the HHS Office of Inspector General (Skadden).",
+  "sources": [
+   "https://www.skadden.com/insights/publications/2020/08/novartis-678-million-settlement"
+  ],
+  "reason": "Skadden says the settlement includes a corporate integrity agreement but gives no term."
+ },
+ {
+  "id": "kunsthaus-baselland-münchenstein",
+  "section": "FUNDING",
+  "problems": [
+   "figure wrong: CHF 30 is the student rate"
+  ],
+  "before": "Private members pay from CHF 30 a year; the Art Club for individuals and companies starts at CHF 1,000.",
+  "after": "Private members pay from CHF 30 a year (students and apprentices up to 25; single membership CHF 90); the Art Club for individuals starts at CHF 1,000.",
+  "sources": [
+   "https://www.kunsthausbaselland.ch/mitgliedschaft"
+  ],
+  "reason": "The membership page gives CHF 30 for students and apprentices, CHF 90 single, Art Club individual from CHF 1000; companies are not mentioned."
+ },
+ {
+  "id": "kunsthaus-bregenz",
+  "section": "FUNDING",
+  "problems": [
+   "source gap: Hugo Boss and illwerke vkw are on the partners page, not the fundraising page"
+  ],
+  "before": "- Also listed: illwerke vkw AG,",
+  "after": "- Also listed on the space's fundraising and partners pages: illwerke vkw AG,",
+  "sources": [
+   "https://www.kunsthaus-bregenz.at/en/sponsors-partners/partners",
+   "https://www.kunsthaus-bregenz.at/en/sponsors-partners/fundraising"
+  ],
+  "reason": "Hugo Boss and Illwerke vkw AG appear on the partners page; Mader Flatz Schett, KUB Freunde and UNIQA (Partnership 2026) on the fundraising page."
+ },
+ {
+  "id": "kunsthaus-zürich-zürich",
+  "section": "RED FLAGS",
+  "problems": [
+   "claim stronger than source"
+  ],
+  "before": "sold weapons to Nazi Germany and the Allies and bought art from persecuted Jewish owners (The Art Newspaper, 2021).",
+  "after": "sold weapons to Nazi Germany and the Allies and bought art looted by the Nazis (The Art Newspaper, 2021).",
+  "sources": [
+   "https://www.theartnewspaper.com/2021/09/20/zurich-takes-quantum-leap-with-chipperfield-designed-kunsthaus-extension"
+  ],
+  "reason": "The Art Newspaper says \"bought art looted by the Nazis\"; \"from persecuted Jewish owners\" is the report's own wording."
+ },
+ {
+  "id": "kunsthaus-zürich-zürich",
+  "section": "RED FLAGS",
+  "problems": [
+   "no statement of where the money is current"
+  ],
+  "before": "Red flags: Bührle arms fortune and Nazi-era provenance\n",
+  "after": "Red flags: Bührle arms fortune and Nazi-era provenance\n- Money today: the Bührle Foundation owns the 205 works and lends them; no reporting found of it paying the museum (see Funding).\n",
+  "sources": [
+   "https://www.kunsthaus.ch/en/museum/engagement/engagement-als-unternehmen/",
+   "https://jahresbericht.kunsthaus.ch/2024/media/pages/downloads/c50897c7a1-1745799883/01_kuns_jahresbericht_2024.pdf"
+  ],
+  "reason": "Separates the loan (not a payment) from the arms fortune, as the brief asks."
+ },
+ {
+  "id": "kunsthaus-zürich-zürich",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "claim stronger than source"
+  ],
+  "before": "Gross called the collection \"historically particularly tainted\" and recommended an independent commission and reconsidering the Bührle name for the collection.",
+  "after": "Gross called the collection \"historically particularly tainted\", suggested the Kunsthaus trustees set up an independent commission, and the report questioned using Bührle's name for the collection.",
+  "sources": [
+   "https://www.swissinfo.ch/eng/culture/b%C3%BChrles-tainted-art-collection-needs-much-more-provenance-research/83449370"
+  ],
+  "reason": "Swissinfo does not report a recommendation to rename; it says the report questioned the use of the name."
+ },
+ {
+  "id": "kunstmuseum-wolfsburg-wolfsburg",
+  "section": "RED FLAGS",
+  "problems": [
+   "heading does not say what the flag rests on",
+   "no statement of where the money is current"
+  ],
+  "before": "Red flags: Volkswagen's role\n",
+  "after": "Red flags: Volkswagen's 2017 criminal plea and its role at the foundation\n- Money today: the museum's sponsor is the Kunststiftung Volkswagen, whose board Pötsch chairs; no reporting found of how much Volkswagen AG pays now.\n",
+  "sources": [
+   "https://emobilityplus.com/2024/05/24/volkswagen-celebrates-30-years-of-artistic-collaboration-with-kunstmuseum-wolfsburg/amp/",
+   "https://en.wikipedia.org/wiki/Kunstmuseum_Wolfsburg"
+  ],
+  "reason": "The plea (EPA, 11 January 2017) is confirmed. The sources show a foundation funded largely by the Holler foundation and chaired by VW's supervisory board chair, and no figures for VW AG."
+ },
+ {
+  "id": "kunstmuseum-wolfsburg-wolfsburg",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: \"with pay continuing\"",
+   "source attribution"
+  ],
+  "before": "the museum said he did not agree to a mutual termination, and ended the contract on 30 June 2019 with pay continuing (Monopol; Tagesspiegel, 14 December 2018).",
+  "after": "he did not agree to a mutual termination (Monopol), and the museum said it ended the contract as of 30 June 2019 and released him from duty (Tagesspiegel, 14 December 2018).",
+  "sources": [
+   "https://www.tagesspiegel.de/kultur/direktor-ralf-beil-entlassen-4019725.html",
+   "https://www.monopol-magazin.de/ralf-beil-als-direktor-des-kunstmuseum-wolfsburg-gekuendigt"
+  ],
+  "reason": "Tagesspiegel says the contract was terminated as of 30 June 2019 and that Beil was freigestellt (released from duty); neither page says pay continued. Monopol has the 31 January 2020 end date and the refused agreement; Tagesspiegel does not state that the trustees revoked the appointment, Monopol does."
+ },
+ {
+  "id": "kunstmuseum-wolfsburg-wolfsburg",
+  "section": "RED FLAGS",
+  "problems": [
+   "claim stronger than source: curator role"
+  ],
+  "before": "The show opened on 4 September 2021 with Beitin among its curators.",
+  "after": "The show ran from 4 September 2021, with Beitin credited in its collective (Freitag).",
+  "sources": [
+   "https://www.freitag.de/produkt-der-woche/ausstellung/oil-schoenheit-und-schrecken-des-erdoelzeitalters"
+  ],
+  "reason": "The Freitag page gives the run from 4 September 2021 and credits \"Kollektiv Beauty of Oil: Alexander Klose, Benjamin Steininger, Andreas Beitin\"; it does not call him a curator or say \"opened\"."
+ },
+ {
+  "id": "kw-institute-for-contemporary-art",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Berlin Biennale founded 1996, KW spaces since 1998, same association"
+  ],
+  "before": "- On site: exhibition halls, the Berlin Biennale (founded 1996, a sister organisation under the same association, using KW's spaces since 1998) and Café Bravo.",
+  "after": "- On site: exhibition halls and Café Bravo. The Berlin Biennale has used KW as a venue, as in 2018 (BMW press release, 30 May 2018).",
+  "sources": [
+   "https://press.bmwgroup.com/global/article/detail/T0281589EN/10th-berlin-biennale-for-contemporary-art-from-june-9-to-september-9-2018-bmw-is-corporate-partner-and-supports-the-curators-workshop-for-the-seventh-time",
+   "https://en.wikipedia.org/wiki/KW_Institute_for_Contemporary_Art"
+  ],
+  "reason": "Wikipedia's KW article does not mention the 1996 founding date or the 1998 move; the 2018 venue use is in the BMW press release."
+ },
+ {
+  "id": "kw-institute-for-contemporary-art",
+  "section": "FUNDING",
+  "problems": [
+   "record claim wrong in part: Casa Camper is listed on KW's about page",
+   "record claim unconfirmed: BMW sponsorship of commissions"
+  ],
+  "before": "- No reporting found of BMW Group or Casa Camper support on KW's own pages.",
+  "after": "- KW's about page lists Casa Camper as a partner; no amount or year is given.\n- No reporting found of BMW Group support for KW itself or of BMW sponsoring commissions at KW. BMW's press site names BMW a corporate partner of the Berlin Biennale, which used KW as a venue in 2018.",
+  "sources": [
+   "https://www.kw-berlin.de/en/about/",
+   "https://press.bmwgroup.com/global/article/detail/T0281589EN/10th-berlin-biennale-for-contemporary-art-from-june-9-to-september-9-2018-bmw-is-corporate-partner-and-supports-the-curators-workshop-for-the-seventh-time"
+  ],
+  "reason": "The KW about page names Casa Camper as a partner, so \"no reporting found\" was wrong for Casa Camper. No KW page names BMW; the 2018 BMW release concerns the Biennale. The record's BMW commissions claim stays unconfirmed."
+ },
+ {
+  "id": "kw-institute-for-contemporary-art",
+  "section": "RED FLAGS",
+  "problems": [
+   "no statement of where the money is current"
+  ],
+  "before": "Red flags: Volkswagen support\n",
+  "after": "Red flags: Volkswagen support\n- Volkswagen Group supports the KW Digital Program 2023 to 2024 (KW exhibition page); Volkswagen AG supported the 2021 book \"KW, A History\" (e-flux).\n",
+  "sources": [
+   "https://www.kw-berlin.de/en/exhibitions/poetics-of-encryption-exhibition-24",
+   "https://www.e-flux.com/announcements/370345/30-years-of-kw"
+  ],
+  "reason": "Dates the Volkswagen money before the 2017 plea item, so the flag is tied to a dated, sourced payment."
+ },
+ {
+  "id": "kw-institute-for-contemporary-art",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "quote altered: \"perhaps\" dropped",
+   "claim stronger than source"
+  ],
+  "before": "- Calls the absence of the two withdrawn artists \"the most glaring omission\" of the show.\n- Faults the exhibition for not explaining that they withdrew from a state-funded show to protest German government complicity in the war in Gaza.",
+  "after": "- Calls the absence of the two withdrawn artists \"perhaps the most glaring omission\" of the show.\n- Faults the exhibition for not explaining that they withdrew in protest, which the review ties to German government complicity in Gaza.",
+  "sources": [
+   "https://www.spikeartmagazine.com/articles/review-poetics-of-encryption-kw-berlin-2024"
+  ],
+  "reason": "The review says \"perhaps the most glaring omission\"; its framing of the protest is German government complicity in Gaza, not \"the war\"."
+ },
+ {
+  "id": "kw-institute-for-contemporary-art",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "claim stronger than source"
+  ],
+  "before": "the works of Mutar and Abbas were moved to KW, one of the relocation venues, before all three were taken off display.",
+  "after": "the works of Mutar and Abbas were first moved to the Akademie der Künste and KW before all three were taken off display.",
+  "sources": [
+   "https://www.theartnewspaper.com/2022/08/17/iraqi-artists-remove-their-works-from-berlin-biennale-over-abu-ghraib-photography-row"
+  ],
+  "reason": "The Art Newspaper names the Akademie der Künste and KW as the places the works were first moved."
+ },
+ {
+  "id": "kyoto-city-kyocera-museum-of-art-kyoto",
+  "section": "RED FLAGS",
+  "problems": [
+   "translation of group name inexact"
+  ],
+  "before": "The group was the Kyoto Water and Green Protection Network (Kyoto Minpo; my translation of the group's name).",
+  "after": "The group was the Kyoto Water and Green Protection Liaison Council (Kyoto Minpo; my translation of the group's name).",
+  "sources": [
+   "https://www.kyoto-minpo.net/archives/2019/11/22/post-24056.php"
+  ],
+  "reason": "The page names 京都・水と緑をまもる連絡会, a liaison council."
+ },
+ {
+  "id": "kyoto-city-kyocera-museum-of-art-kyoto",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: link to the Japanese Communist Party"
+  ],
+  "before": "A local weekly; its stance is not stated and its page carries a link to the Japanese Communist Party.",
+  "after": "A local weekly; its stance is not stated on the page.",
+  "sources": [
+   "https://www.kyoto-minpo.net/archives/2019/11/22/post-24056.php"
+  ],
+  "reason": "The article text does not mention the party; the only reference on the page is an advertising banner."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "OVERVIEW",
+  "problems": [
+   "length trim; unsupported \"free docent tours\""
+  ],
+  "before": "Wallpaper describes a 110,000 square foot building spanning Wilshire Boulevard with 26 galleries.\n",
+  "after": "Wallpaper gives 110,000 square feet and 26 galleries.\n",
+  "sources": [
+   "https://www.wallpaper.com/architecture/public-buildings/review-lacma-david-geffen-galleries"
+  ],
+  "reason": "Wallpaper: 110,000 sq ft, 26 standalone galleries; \"spanning Wilshire\" shortened away."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "OVERVIEW",
+  "problems": [
+   "claim stronger than source: \"free docent tours and a café\"",
+   "over length: report above 800 words"
+  ],
+  "before": "- On site: the galleries, the older campus buildings, free docent tours and a café.",
+  "after": "(line removed)",
+  "sources": [
+   "https://www.lacma.org/"
+  ],
+  "reason": "The homepage says docent tours are free with admission and does not mention a café; the line only restated the building bullets and was cut, which also brings the report under 800 words."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "RED FLAGS",
+  "problems": [
+   "claim stronger than source",
+   "missing date"
+  ],
+  "before": "- A letter by artist Jessica Simmons, signed by more than 100 artists including Andrea Fraser, Sam Durant and EJ Hill, demanded his removal in September 2020. It followed a letter from Color of Change and Worth Rises (Hyperallergic, 16 September 2020).",
+  "after": "- A letter by artist Jessica Simmons, signed by more than 100 artists, curators and writers including Andrea Fraser, Sam Durant and EJ Hill, was delivered to LACMA leadership on 16 September 2020. It followed a 9 September letter from Color of Change and Worth Rises (Hyperallergic, 16 September 2020; Worth Rises).",
+  "sources": [
+   "https://hyperallergic.com/588856/open-letter-lacma-tom-gores/",
+   "https://worthrises.org/pressreleases/tom-gores-resigns-from-lacma-board-following-pressure-from-worth-rises-coc-and-artists",
+   "https://hyperallergic.com/tom-gores-resigns-from-lacma-board"
+  ],
+  "reason": "Hyperallergic dates the Simmons letter 16 September and names the signers; Worth Rises dates its own letter 9 September. The Gores item targets a LACMA trustee at this museum, so it stays under Red flags."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "RED FLAGS",
+  "problems": [
+   "missing dates and sources",
+   "claim stronger than source: gift not tied to casino income by the source",
+   "over length: report above 800 words"
+  ],
+  "before": "- Elaine Wynn co-chaired the board and gave 50 million dollars in 2016 toward the expansion. She co-founded Wynn Resorts, a casino resort company, and owned nearly 9 percent of it at her death in April 2025 (Wikipedia).",
+  "after": "- Elaine Wynn, LACMA board co-chair, gave 50 million dollars in 2016 toward the 650 million dollar expansion (Wikipedia). She was a founder of Wynn Resorts, which develops and operates hotels and casinos, and still owned nearly 9 percent of it when she died in April 2025 (Wikipedia). LACMA's 2023 release names her among the Geffen Galleries contributors. No reporting found of a protest.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Elaine_Wynn",
+   "https://en.wikipedia.org/wiki/Wynn_Resorts",
+   "https://www.lacma.org/press/lacma-surpasses-750-million-campaign-fundraising-goal"
+  ],
+  "reason": "Wikipedia gives the 2016 gift, the founder role and the April 2025 stake; LACMA's release gives the 2023 contributor list. No opened page says the gift came from casino income, so the item rests on founder-fortune wealth and says so; no protest found."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "claim stronger than source: leaked-email allegation overstated",
+   "over length: report above 800 words"
+  ],
+  "before": "- Unverified: that trustee Michael Lynton arranged a 25,000 dollar contribution to a political committee of Supervisor Mark Ridley-Thomas before a county vote, from Giovannini; Sony, the supervisor's office and Govan denied wrongdoing.",
+  "after": "- Unverified: that trustee Michael Lynton set in motion a 25,000 dollar contribution to Supervisor Mark Ridley-Thomas's political committee shortly before a county vote, from Giovannini, citing leaked Sony emails with no \"smoking gun\". Sony, the supervisor's office and Govan denied a link.",
+  "sources": [
+   "https://lareviewofbooks.org/article/inconvenient-truths-at-lacma/"
+  ],
+  "reason": "Giovannini writes that Lynton set the payment in motion, citing LA Times and ProPublica reporting; he says there is no smoking gun. \"Arranged\" and \"wrongdoing\" were stronger than the piece."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "claim stronger than source: \"appears more than 400 times\""
+  ],
+  "before": "appears more than 400 times in the Justice Department's Epstein documents released in January 2026; he was never charged.",
+  "after": "was mentioned more than 400 times in Justice Department files on Epstein released in January 2026; he was not charged with a crime connected to the investigation.",
+  "sources": [
+   "https://cnycentral.com/news/new-york-news/steve-tisch-jeffrey-epstein"
+  ],
+  "reason": "AP says \"mentioned more than 400 times\" and that he was not charged in connection with the investigation."
+ },
+ {
+  "id": "latvian-national-museum-of-art",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "claim stronger than source: \"sanctioned\" Lukoil"
+  ],
+  "before": "a Finnish fuel company owned by the sanctioned Russian oil company Lukoil (as cited on Wikipedia).",
+  "after": "a Finnish fuel company owned by the Russian oil company Lukoil, after sanctions disrupted Teboil's payments in Finland (as cited on Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Rietumu_Banka"
+  ],
+  "reason": "Wikipedia says the bank collected Teboil payments after sanctions disrupted them; it does not say Lukoil is sanctioned."
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "a café, an art education space, a film and lecture hall,",
+  "after": "a café, a film and lecture hall,",
+  "sources": [
+   "https://kunsthalle-bielefeld.de/en/museum/architecture/"
+  ],
+  "reason": "Trimmed to bring the report under 800 words; no fact removed that a source needed."
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "section": "FUNDING",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": " The client is the city's property and service agency (Caruso St John).",
+  "after": "(removed)",
+  "sources": [
+   "https://carusostjohn.com/projects/kunsthalle-bielefeld/"
+  ],
+  "reason": "Trim to stay under 800 words; the client detail is on the Caruso St John page but not needed."
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "section": "RED FLAGS",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "Protest returned in waves: students in 1971, a 1985 Greens motion to rename the house for Käthe Kollwitz, a residents' petition and the 1998 council vote (Irene Below).",
+  "after": "Protest returned in 1971, in 1985 with a Greens motion to rename the house for Käthe Kollwitz, and with a residents' petition before the 1998 council vote (Irene Below).",
+  "sources": [
+   "https://kunsthalle-bielefeld.de/en/blog/art-has-wumm-the-kunsthalle-and-its-naming-as-a-site-of-civil-society-debates-and-artistic-interventions/"
+  ],
+  "reason": "Below dates the 1971 student protest, the 1985 motion, the petition and the 1998 vote."
+ },
+ {
+  "id": "kunsthalle-praha-prague",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "; the Ministry of Culture's heritage inspection found the work not fully compliant with heritage interests but commensurate with the building's condition.",
+  "after": ".",
+  "sources": [
+   "https://archiweb.cz/en/n/home/ocekavana-i-kontroverzni-kunsthalle-praha"
+  ],
+  "reason": "Trim; the heritage inspection finding is kept in the Archiweb press item."
+ },
+ {
+  "id": "kunsthalle-praha-prague",
+  "section": "FUNDING",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "- Pudil estimated yearly operating costs at 60 to 100 million CZK (Aktuálně.cz, February 2022).\n",
+  "after": "(removed)",
+  "sources": [
+   "https://magazin.aktualne.cz/kultura/umeni/ani-koruna-od-statu-kunsthalle-praha-spojí-ceske-umeni-se-svetem-za-soukrome-penize/r~4d1d85328e4811ec9ba00cc47ab5f122/?lp=1"
+  ],
+  "reason": "Trim to stay under 800 words; the estimate is on the Aktuálně.cz page."
+ },
+ {
+  "id": "kunsthaus-zürich-zürich",
+  "section": "FUNDING",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "- The Bührle Foundation lends the collection; no reporting found of it paying the museum.\n",
+  "after": "(removed)",
+  "sources": [
+   "https://www.kunsthaus.ch/en/museum/engagement/engagement-als-unternehmen/"
+  ],
+  "reason": "Duplicates the new \"Money today\" point under Red flags; removed to stay under 800 words."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "Established in 1961 as a separate museum, split from the Los Angeles Museum of History, Science and Art; the William Pereira",
+  "after": "Established in 1961; the William Pereira",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Los_Angeles_County_Museum_of_Art"
+  ],
+  "reason": "Trim to stay under 800 words."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "- Visiting: Monday, Tuesday and Thursday 11:00 to 18:00, Wednesday closed, Friday 11:00 to 20:00, Saturday and Sunday 10:00 to 19:00.",
+  "after": "- Visiting: closed Wednesday; Friday 11:00 to 20:00, Saturday and Sunday 10:00 to 19:00, other days 11:00 to 18:00.",
+  "sources": [
+   "https://www.lacma.org/"
+  ],
+  "reason": "Same hours, shorter."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "- Mixed: criticises the architecture, not the funders, and concludes the building is a gift to the city.",
+  "after": "- Mixed: criticises the architecture, not the funders.",
+  "sources": [
+   "https://www.wallpaper.com/architecture/public-buildings/review-lacma-david-geffen-galleries"
+  ],
+  "reason": "Shortened."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "wording not matching the AP source (\"appearances\" for \"mentioned\")",
+   "over length: report above 800 words"
+  ],
+  "before": "The money is mixed: county support plus wealthy individual donors, with the Geffen Galleries 80 percent private. The weak points are the casino fortune behind a board co-chair, the Gores campaign, and the Epstein-file appearances of the largest single donor. Watch the donor list as the galleries open.",
+  "after": "The money is mixed: county support plus wealthy donors, with the Geffen Galleries 80 percent private. The weak points are the Wynn Resorts stake behind a board co-chair, the Gores campaign, and the Epstein-file mentions of the largest donor.",
+  "sources": [
+   "https://www.lacma.org/press/lacma-surpasses-750-million-campaign-fundraising-goal"
+  ],
+  "reason": "AP says Tisch was mentioned in the files, and the Wynn item rests on her Wynn Resorts stake; shortened to bring the report under 800 words."
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "red Main sandstone, three floors above ground and two below, about",
+  "after": "red Main sandstone, about",
+  "sources": [
+   "https://kunsthalle-bielefeld.de/en/museum/architecture/"
+  ],
+  "reason": "Trim to stay under 800 words."
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": " Watch the 40.5 million euro renovation.",
+  "after": "(removed)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Kunsthalle_Bielefeld"
+  ],
+  "reason": "Trim to stay under 800 words."
+ },
+ {
+  "id": "lacma-los-angeles",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length: report above 800 words"
+  ],
+  "before": "- On site: the galleries and the older campus buildings; docent tours are free with admission.\n",
+  "after": "(removed)",
+  "sources": [
+   "https://www.lacma.org/"
+  ],
+  "reason": "Trim to stay under 800 words; the line only restated the building bullets."
+ }
+]
