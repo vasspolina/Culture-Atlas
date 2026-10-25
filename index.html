@@ -33,8 +33,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=256">
-  <script src="assets/config.js?v=256"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=257">
+  <script src="assets/config.js?v=257"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -208,6 +208,11 @@ return maplibregl$1;
               <label class="kind-chip" style="--marker-color:#f472b6"><input type="checkbox" data-kind="found" checked> <i class="shape-triangle"></i><span class="layer-name">Foundations</span></label>
               <label class="kind-chip" style="--marker-color:#38bdf8"><input type="checkbox" data-kind="corp" checked> <i class="shape-hexagon"></i><span class="layer-name">Companies</span></label>
             </div>
+          </section>
+          <section class="layers-section">
+            <h2 class="layers-section-title">Widest-reaching funders</h2>
+            <p class="layers-note">The funders named on the most spaces. Point at one to draw every space it funds; click to pin it, and click again or press Esc to let go.</p>
+            <div id="topFunders" class="layers-top" role="group" aria-label="Widest-reaching funders"></div>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Spaces on the map</h2>
@@ -9916,11 +9921,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v256';
+    const ATLAS_RELEASE = 'culture-atlas-v257';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=256').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=257').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19289,9 +19294,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=256"></script>
-<script src="assets/layers.js?v=256"></script>
-<script src="assets/hq-detail.js?v=256"></script>
-<script src="assets/bubbles.js?v=256" defer></script>
+<script src="assets/typeset.js?v=257"></script>
+<script src="assets/layers.js?v=257"></script>
+<script src="assets/hq-detail.js?v=257"></script>
+<script src="assets/bubbles.js?v=257" defer></script>
 </body>
 </html>

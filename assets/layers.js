@@ -49,15 +49,18 @@
   const sizeFor = n => 5.5 + Math.min(4, Math.log2(Math.max(1, n)));
   const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
   // The funder under the pointer: where else it appears is drawn until the pointer has been off it a moment.
+  // One picked from the list of widest-reaching funders can be pinned, and then stays until it is picked again or Esc is pressed.
   let REACH = null, reachTimer = 0;
+  const repaint = () => { if (typeof scheduleRender === 'function') scheduleRender(); };
+  function clearReach() { clearTimeout(reachTimer); reachTimer = 0; if (!REACH) return; REACH = null; if (typeof renderTop === 'function') renderTop(); repaint(); }
   function setReach(m) {
-    const repaint = () => { if (typeof scheduleRender === 'function') scheduleRender(); };
+    if (REACH && REACH.pinned) return;
     if (m && m.key) {
       clearTimeout(reachTimer); reachTimer = 0;
-      if (!REACH || REACH.key !== m.key || REACH.space !== m.space) { REACH = { key: m.key, kind: m.kind, space: m.space, name: m.name }; repaint(); }
+      if (!REACH || REACH.key !== m.key || REACH.space !== m.space) { REACH = { key: m.key, keys: [m.key], kind: m.kind, space: m.space, name: m.name }; repaint(); }
     } else if (!m) {
-      if (REACH && !reachTimer) reachTimer = setTimeout(() => { REACH = null; reachTimer = 0; repaint(); }, 1500);
-    } else if (REACH) { clearTimeout(reachTimer); reachTimer = 0; REACH = null; repaint(); }
+      if (REACH && !reachTimer) reachTimer = setTimeout(clearReach, 1500);
+    } else if (REACH) clearReach();
   }
   let recById = null, keyIndex = null, keyKind = null, web = null, loading = false;
   let cityFlags = null;
@@ -214,7 +217,8 @@
     const home = REACH.space, ends = [], lc = lineCol(COL[REACH.kind]), dark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (!home || typeof home.lat !== 'number') return;
     ctx.save(); ctx.lineCap = 'round'; ctx.lineWidth = 1.6; ctx.globalAlpha = 0.9; ctx.strokeStyle = lc;
-    (keyIndex.get(REACH.key) || []).forEach(id => {
+    const ids = new Set(); (REACH.keys || [REACH.key]).forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
+    ids.forEach(id => {
       const o = recById.get(id); if (!o || o === home || typeof o.lat !== 'number') return;
       arc(project, home, o, r, cx, cy, ctx); ends.push(o);
     });
@@ -224,9 +228,24 @@
       const hot = LM_HOV && LM_HOV.rec === o;
       ctx.beginPath(); ctx.arc(pt.x, pt.y, hot ? 6.5 : 4.5, 0, Math.PI * 2); ctx.fillStyle = lc; ctx.fill();
       ctx.lineWidth = 1.5; ctx.strokeStyle = dark ? '#000' : '#fff'; ctx.stroke();
-      LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: COL[REACH.kind], key: REACH.key, kind: REACH.kind, space: home, name: REACH.name, label: o.n, sub: `Also funded by ${REACH.name}`, ask: `Who funds ${o.n}?` });
+      LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: COL[REACH.kind], key: REACH.key, kind: REACH.kind, space: home, name: REACH.name, label: o.n, sub: `Funded by ${REACH.name}`, ask: `Who funds ${o.n}?` });
     });
     ctx.restore();
+  }
+
+  // The funding mix of a whole city, for the bar under its label: the funders of every space in it, by kind.
+  let cityMixCache = null;
+  function cityMix() {
+    const sig = ['gov', 'found', 'corp'].map(k => (kindOn(k) ? 1 : 0)).join('');
+    if (cityMixCache && cityMixCache.sig === sig) return cityMixCache.map;
+    const map = new Map();
+    if (typeof ALL_INSTITUTIONS !== 'undefined') ALL_INSTITUTIONS.forEach(i => {
+      const rec = i.city && recById.get(i.id); if (!rec) return;
+      const k = i.city.toLowerCase().trim(); let c = map.get(k); if (!c) map.set(k, c = { gov: 0, found: 0, corp: 0, spaces: 0 });
+      let any = false; rec.nodes.forEach(n => { if (FUNDER(n) && kindOn(n[1])) { c[n[1]]++; any = true; } });
+      if (any) c.spaces++;
+    });
+    cityMixCache = { sig, map }; return map;
   }
 
   // A box collides with any of the label boxes already on screen (city pills, museum pills, our own labels).
@@ -394,7 +413,7 @@
   }
 
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!L.flags && !L.grade && !L.money && !L.mix && !L.right && !L.epstein && !L.hq && !L.people && !L.ties) return;
+    if (!REACH && !L.flags && !L.grade && !L.money && !L.mix && !L.right && !L.epstein && !L.hq && !L.people && !L.ties) return;
     if ((L.money || L.mix || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -434,6 +453,19 @@
           const span = (c[k] / total) * Math.PI * 2, gap = parts.length > 1 ? Math.min(GAP, span * 0.4) : 0;
           ctx.beginPath(); ctx.arc(d.x, d.y, R, a0 + gap / 2, a0 + span - gap / 2); ctx.strokeStyle = lineCol(COL[k]); ctx.stroke(); a0 += span;
         });
+      });
+    }
+    if (L.mix && recById && r < baseRadius * 3 && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
+      // Too far out for a ring on each space: a bar under each city's label instead, the same three colours in the same order.
+      const mixes = cityMix(), order = ['gov', 'found', 'corp'];
+      cityBadgeHitboxes.forEach(b => {
+        const c = mixes.get((b.name || '').toLowerCase().trim()); if (!c) return;
+        const parts = order.filter(k => c[k]), total = parts.reduce((a, k) => a + c[k], 0); if (!total) return;
+        const y = b.y + b.h + 1, h = 4;
+        ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fillRect(b.x - 1, y - 1, b.w + 2, h + 2);
+        let x = b.x; parts.forEach(k => { const w = b.w * c[k] / total; ctx.fillStyle = lineCol(COL[k]); ctx.fillRect(x, y, Math.max(1, w - 1), h); x += w; });
+        const text = parts.map(k => `${c[k]} ${k === 'gov' ? 'public' : k === 'found' ? (c[k] === 1 ? 'foundation' : 'foundations') : (c[k] === 1 ? 'company' : 'companies')}`).join(', ');
+        LM.push({ box: { x: b.x, y: y - 3, w: b.w, h: h + 6 }, x: b.x + b.w / 2, y, r: 0, col: COL.person, label: `Funders in ${b.name}`, sub: text, sub2: `${plural(c.spaces, 'space')} with funders`, ask: `How are the spaces in ${b.name} funded?` });
       });
     }
     if (L.flags) {
@@ -691,6 +723,7 @@
       set('hq', `${formatCount(HQ.orgs.length)} offices · ${formatCount(new Set(HQ.orgs.map(o => o.c)).size)} cities`);
       set('people', `${formatCount(HQ.people.length)} offices`);
     }
+    if (recById && HQ) buildTop();
     if (web) {
       set('ties', `${formatCount(web.length)} links · ${formatCount([...keyIndex.values()].filter(ids => ids.length >= 2).length)} shared funders`);
       set('money', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)} spaces`);
@@ -700,6 +733,61 @@
       set('right', `${formatCount(rightRecs.length)} spaces · ${formatCount(rightKeys.size)} funders`);
       set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)} spaces`);
     }
+  }
+
+  // ---- The widest-reaching funders, as a list in the panel ----
+  // Offices the map already groups as one body (same name and country) are one funder here, whatever keys the records use.
+  let TOP = null;
+  function buildTop() {
+    if (!recById || !HQ || TOP) return;
+    const groups = new Map();
+    keyIndex.forEach((ids, key) => {
+      const o = HQ.byKey.get(key), g = o ? `${o.n}|${o.co}` : key;
+      let e = groups.get(g); if (!e) groups.set(g, e = { keys: [], ids: new Set(), names: new Map(), kinds: new Map(), hub: o || null });
+      e.keys.push(key); ids.forEach(id => e.ids.add(id));
+    });
+    recById.forEach(rec => rec.nodes.forEach(n => {
+      if (!FUNDER(n) || !n[5]) return;
+      const o = HQ.byKey.get(n[5]), e = groups.get(o ? `${o.n}|${o.co}` : n[5]); if (!e) return;
+      e.names.set(n[0], (e.names.get(n[0]) || 0) + 1); e.kinds.set(n[1], (e.kinds.get(n[1]) || 0) + 1);
+    }));
+    const top = (m, tie) => [...m.entries()].sort((a, b) => b[1] - a[1] || tie(a[0], b[0]))[0][0];
+    TOP = [...groups.values()].filter(e => e.names.size).map(e => ({
+      keys: e.keys, n: e.ids.size, hub: e.hub, kind: top(e.kinds, () => 0),
+      name: e.hub ? e.hub.n : top(e.names, (a, b) => b.length - a.length)
+    })).filter(t => t.n >= 2).sort((a, b) => b.n - a.n || a.name.localeCompare(b.name));
+    renderTop();
+  }
+  function hubOf(t) { return t.hub || recById.get([...(keyIndex.get(t.keys[0]) || [])][0]); }
+  function pickTop(t, pin) {
+    if (REACH && REACH.pinned && !pin) return;
+    clearTimeout(reachTimer); reachTimer = 0;
+    const same = REACH && REACH.top === t;
+    if (pin && same && REACH.pinned) { clearReach(); return; }
+    REACH = { key: t.keys[0], keys: t.keys, kind: t.kind, space: hubOf(t), name: t.name, top: t, pinned: !!pin };
+    if (pin && typeof window.flyTo === 'function' && REACH.space && typeof REACH.space.lat === 'number') {
+      const base = window.getBaseRadius ? window.getBaseRadius() : 276;
+      window.flyTo(REACH.space.lon, REACH.space.lat, base * 1.6);
+    }
+    renderTop(); repaint();
+  }
+  function renderTop() {
+    const box = document.getElementById('topFunders'); if (!box || !TOP) return;
+    const list = TOP.filter(t => kindOn(t.kind)).slice(0, 10), max = list.length ? list[0].n : 1;
+    box.textContent = '';
+    list.forEach(t => {
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'top-funder';
+      b.setAttribute('aria-pressed', String(!!(REACH && REACH.pinned && REACH.top === t)));
+      b.innerHTML = `<i class="shape-${KIND_SHAPE[t.kind]}" style="--marker-color:${COL[t.kind]}"></i><span class="tf-name"></span><span class="tf-bar"><b style="width:${Math.round(100 * t.n / max)}%"></b></span><span class="tf-n">${t.n}</span>`;
+      b.querySelector('.tf-name').textContent = t.name;
+      b.title = `${t.name}: named on ${t.n} spaces. Click to pin its connections on the map.`;
+      b.addEventListener('mouseenter', () => pickTop(t, false));
+      b.addEventListener('focus', () => pickTop(t, false));
+      b.addEventListener('mouseleave', () => { if (REACH && !REACH.pinned && REACH.top === t) clearReach(); });
+      b.addEventListener('blur', () => { if (REACH && !REACH.pinned && REACH.top === t) clearReach(); });
+      b.addEventListener('click', () => pickTop(t, true));
+      box.appendChild(b);
+    });
   }
 
   function init() {
@@ -719,7 +807,7 @@
     const setOpen = open => {
       panel.hidden = !open;
       btn.setAttribute('aria-expanded', String(open));
-      if (open) placePanel();
+      if (open) { placePanel(); loadMoney(); loadHq(); }
     };
     btn.addEventListener('click', () => setOpen(panel.hidden));
     box.querySelector('.layers-close').addEventListener('click', () => { setOpen(false); btn.focus(); });
@@ -729,11 +817,11 @@
         L[input.dataset.layer] = false;
       });
       box.querySelectorAll('input[data-kind]').forEach(input => { input.checked = true; L.kinds[input.dataset.kind] = true; });
-      REACH = null;
+      clearReach();
       if (typeof scheduleRender === 'function') scheduleRender();
     });
     document.addEventListener('click', e => { if (!panel.hidden && !box.contains(e.target)) setOpen(false); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (REACH) { REACH = null; if (typeof scheduleRender === 'function') scheduleRender(); } if (!panel.hidden) setOpen(false); } });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { clearReach(); if (!panel.hidden) setOpen(false); } });
     window.addEventListener('resize', () => { if (!panel.hidden) placePanel(); });
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
       const k = inp.dataset.layer;
@@ -744,6 +832,7 @@
     }));
     box.querySelectorAll('input[data-kind]').forEach(inp => inp.addEventListener('change', () => {
       L.kinds[inp.dataset.kind] = inp.checked;
+      renderTop();
       if (typeof scheduleRender === 'function') scheduleRender();
     }));
     updateCounts();
