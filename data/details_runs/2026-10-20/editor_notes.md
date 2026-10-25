@@ -714,3 +714,14 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - kr-ller-m-ller-museum: VriendenLoterij a funder since 1988 (the museum's own 40% player-share wording).
 - ker-thiossane-dakar: its own site is down; nothing after the 2009 EU grant carries an amount.
 - l-appartement-22-rabat: no funder list anywhere; the Prince Claus Fund claim not confirmed as a grant to the space.
+
+## d039 (research notes, before its slop check)
+- mumok: the sponsors page lists Dorotheum, Uniqa, Gerngross and legero, not Audi or Erste Bank as the record says; the News column by Sichrovsky is Unverified; the 2022 and 2023 financial statement PDFs could not be read.
+- mohatta-palace-museum: the Sindh government bought the palace in 1993 or 1995 per sources; the record's "bought by the federal government after 1980" conflicts; the ownership lawsuit is Wider context.
+- magazzino-italian-art: the record's ProPublica EIN 814144498 returned 404; EIN 831666946 is the Magazzino Italian Art Foundation; contributions $3.3M to $12.6M a year.
+- moca-bangkok: founder Boonchai Bencharongkul (DTAC); his sister's Dhammakaya foundation money-laundering inquiry is Wider context (the prosecutor said no evidence involved Boonchai); the 2012 personal blog is a weak source.
+- museo-de-la-memoria-y-los-derechos-humanos: the 2026 cut of $79.4m pesos; the record's CLP 2.15bn figure and 176,846 visitors are not repeated (annual-report PDFs exceeded the fetch size).
+- museo-de-la-palabra-y-la-imagen-mupi: the museum site carries unrelated gambling adverts.
+- museo-antropologico-y-de-arte-contemporaneo-maac: budget about USD 2.5m, of which about USD 500k a year goes to the city's Malecón 2000 foundation (Primicias).
+- magasin-iii: the Robert Weil Family Foundation, paid for by the family office Proventus.
+- modern-art-oxford: Arts Council England 2.73m pounds over three years; Oxford City Council cut to 50,000 pounds with a further 50% cut notified.
