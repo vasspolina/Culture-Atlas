@@ -1,0 +1,698 @@
+[
+ {
+  "id": "cafesjian-center-for-the-arts-yerevan",
+  "section": "Website",
+  "problems": [
+   "checked date on Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "cample-line-thornhill",
+  "section": "Website",
+  "problems": [
+   "checked date on Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "can-centre-dart-neuchatel",
+  "section": "Website",
+  "problems": [
+   "checked date on Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "capacete-rio-de-janeiro",
+  "section": "Website",
+  "problems": [
+   "checked date on Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "capc-mus-e-d-art-contemporain",
+  "section": "Website",
+  "problems": [
+   "checked date on Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "casa-tres-patios-medellin",
+  "section": "Website",
+  "problems": [
+   "checked date on Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "casino-luxembourg",
+  "section": "Website",
+  "problems": [
+   "checked date on Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "castello-di-rivoli-turin",
+  "section": "Website",
+  "problems": [
+   "checked date on Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "castlefield-gallery-manchester",
+  "section": "Website",
+  "problems": [
+   "checked date on Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "A Website line gives the address only."
+ },
+ {
+  "id": "cca-glasgow",
+  "section": "Red flags",
+  "problems": [
+   "unattributed occupation and arrest",
+   "'spokesman' not in source",
+   "6 June date unsupported"
+  ],
+  "before": "On 24 June 2025 Art Workers for Palestine Scotland occupied the centre (The Telegraph) ... Police removed the group at the board's request, and a 63-year-old woman taking part was arrested and injured (The Skinny). ... a spokesman said it \"sincerely regret[s] ...\"",
+  "after": "The Telegraph (Samuel Montgomery, 14 August 2025) reports ... the group occupied the building on 24 June 2025. The Skinny (Jamie Dunn, 30 January 2026) reports the board arranged for police officers to remove the group and that a 63-year-old woman taking part was arrested and injured. The Telegraph reports the centre said it \"sincerely regret[s] the outcome of our decisions on 24 June\".",
+  "sources": [
+   "https://www.theartnewspaper.com/2026/02/02/glasgows-centre-for-contemporary-arts-to-close-permanently",
+   "https://www.theskinny.co.uk/art/news/glasgow-cca-centre-for-contemporary-arts-to-close",
+   "https://www.civilsociety.co.uk/news/unions-concerned-as-glasgow-arts-charity-shuts-permanently.html"
+  ],
+  "reason": "Each event now names the outlet that reports it; 'The CCA closed, then apologised' and 'spokesman' were not in the sources."
+ },
+ {
+  "id": "cca-glasgow",
+  "section": "Funding",
+  "problems": [
+   "wrong attribution of the 1 pound lease",
+   "verdict 'public' not stated by a page",
+   "income bullet cut for length"
+  ],
+  "before": "Creative Scotland owns the building and leased it ... (The Art Newspaper; ArtReview). CCA Glasgow: public: Creative Scotland, which also owns the building",
+  "after": "Creative Scotland owns the building and leased it to the CCA for £1 a year (The Art Newspaper). ... CCA Glasgow: Creative Scotland funding and a Creative Scotland building",
+  "sources": [
+   "https://www.theartnewspaper.com/2026/02/02/glasgows-centre-for-contemporary-arts-to-close-permanently",
+   "https://www.theskinny.co.uk/art/news/glasgow-cca-centre-for-contemporary-arts-to-close",
+   "https://www.civilsociety.co.uk/news/unions-concerned-as-glasgow-arts-charity-shuts-permanently.html"
+  ],
+  "reason": "ArtReview does not mention the lease; verdict reworded to state the funder."
+ },
+ {
+  "id": "cca-glasgow",
+  "section": "Overview",
+  "problems": [
+   "2018 fire claim mis-sourced",
+   "closure wording"
+  ],
+  "before": "Closed temporarily in 2018 after the fire ... for four months, and reopened in October 2018 (The Art Newspaper; Wikipedia).",
+  "after": "The centre closed for four months after the 2018 fire at the nearby Glasgow School of Art (The Art Newspaper). Wikipedia states it reopened in October 2018.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/CCA_Glasgow"
+  ],
+  "reason": "Wikipedia gives a different fire year; each claim is credited to the page that states it. Liquidation date attributed to Civil Society."
+ },
+ {
+  "id": "cca-glasgow",
+  "section": "Criticism in art media",
+  "problems": [
+   "unsupported press summary",
+   "missing date"
+  ],
+  "before": "Reports Creative Scotland's statement ... placed in administration.",
+  "after": "Overall and item 1 reworded to what The Art Newspaper states (apology, replaced staff and board, consultation criticism, Hazelwood quote).",
+  "sources": [
+   "https://www.theartnewspaper.com/2026/02/02/glasgows-centre-for-contemporary-arts-to-close-permanently"
+  ],
+  "reason": "Checked against the opened article; 'ethical rot' quote credited to Art Workers for Palestine Scotland's Instagram statement."
+ },
+ {
+  "id": "cca-glasgow",
+  "section": "Wider context",
+  "problems": [
+   "SAU statement paraphrase",
+   "Saramago facts imprecise",
+   "petition claim"
+  ],
+  "before": "The Scottish Artists Union said the liquidation followed systemic failures ...; The CCA ended its relationship with the café with immediate effect ...",
+  "after": "SAU quoted as 'preceded by systemic failures in governance and risk management' (Civil Society, George Hayes, 9 February 2026); Saramago item attributed to Museums Association, Geraldine Kendall Adams, 21 April 2023, with the accusation, the owners' denial and the CCA statement; petition claim kept as Unverified by Ali Hassan.",
+  "sources": [
+   "https://www.museumsassociation.org/museums-journal/news/2023/04/centre-for-contemporary-art-cuts-ties-with-cafe-following-worker-dispute/",
+   "https://www.civilsociety.co.uk/news/unions-concerned-as-glasgow-arts-charity-shuts-permanently.html"
+  ],
+  "reason": "Opened both pages; exact wording and attribution restored."
+ },
+ {
+  "id": "cca-glasgow",
+  "section": "Bottom line",
+  "problems": [
+   "lists weak points",
+   "trimmed to under 800 words"
+  ],
+  "before": "The documented weak points are ...",
+  "after": "States the funding and the documented events only; report cut to under 800 words (Third Eye Bar, redevelopment detail, income bullet, Hazelwood detail removed).",
+  "sources": [],
+  "reason": "Bottom line no longer lists weak points."
+ },
+ {
+  "id": "capc-mus-e-d-art-contemporain",
+  "section": "Overview",
+  "problems": [
+   "claims not on any opened page"
+  ],
+  "before": "Sandra Patron is the current director. ... Commented visits run on Saturdays and Sundays at 15:00. ... strong in conceptual art, minimal art, Land Art ... facing the Garonne quays ... Capc Kids",
+  "after": "Cut Sandra Patron, commented visits, collection strengths, Garonne quays and Capc Kids; kept the 140 artists/about a thousand works, Richard Long, tram B, 1973/1984/2002 dates, Claude Deschamps, Valode/Pistre, Putman, 3,500 m2, hours, accessibility.",
+  "sources": [
+   "https://www.capc-bordeaux.fr/nospartenaires",
+   "https://fr.wikipedia.org/wiki/CAPC_musée_d'art_contemporain_de_Bordeaux"
+  ],
+  "reason": "None of the cut items appear on the opened CAPC pages or French Wikipedia."
+ },
+ {
+  "id": "capc-mus-e-d-art-contemporain",
+  "section": "Funding",
+  "problems": [
+   "verdict 'mainly public' not stated",
+   "patron list undated",
+   "AXA, exhibition patrons known only from logo file names"
+  ],
+  "before": "CAPC: mainly public: ...; Patrons of current exhibitions: Fluxus, EVL, Layher and RAJA ART. Patrons of the mediation projects: Fondation Aleksandr Savchuk and AXA.",
+  "after": "Verdict names the municipal museum status; patron list dated to the partners page as seen in October 2026; logo-only patrons moved to an 'Unverified:' line crediting the logo file names. Palatine, CIC and Lacoste confirmed as main patrons; no year on the page.",
+  "sources": [
+   "https://www.capc-bordeaux.fr/nospartenaires",
+   "https://fr.wikipedia.org/wiki/CAPC_musée_d'art_contemporain_de_Bordeaux"
+  ],
+  "reason": "The page gives no year and no captions for the logos."
+ },
+ {
+  "id": "capc-mus-e-d-art-contemporain",
+  "section": "Criticism in art media",
+  "problems": [
+   "detail check"
+  ],
+  "before": "the city's press release cited \"managerial difficulties.\"",
+  "after": "Confirmed title, author Anna Sansom, date 13 March 2018, 50 signatories, Libération letter, Nyssen; Nègre and Rue89 wording tightened to the article.",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/03/13/french-art-world-shock-at-sacking-of-bordeaux-museum-director"
+  ],
+  "reason": "Matches the opened article."
+ },
+ {
+  "id": "capc-mus-e-d-art-contemporain",
+  "section": "Wider context",
+  "problems": [
+   "Wikipedia-only claim not attributed"
+  ],
+  "before": "Wikipedia states ... Karfa Diallo criticised, in a Mediapart op-ed of 31 August ...",
+  "after": "French Wikipedia attributed; 31 August 2023 and 21 September meeting confirmed; quotation marked as a translation.",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/CAPC_musée_d'art_contemporain_de_Bordeaux"
+  ],
+  "reason": "Claim rests on French Wikipedia alone."
+ },
+ {
+  "id": "capc-mus-e-d-art-contemporain",
+  "section": "Bottom line",
+  "problems": [
+   "lists what is missing and what to watch"
+  ],
+  "before": "No flagged-industry patron is documented. The points to watch are ...",
+  "after": "States the funders and the 2018 dismissal and open letter only.",
+  "sources": [],
+  "reason": "Bottom line states what the money is and what is documented."
+ },
+ {
+  "id": "castello-di-rivoli-turin",
+  "section": "Funding",
+  "problems": [
+   "verdict 'mainly public' not stated",
+   "absence statement"
+  ],
+  "before": "Castello di Rivoli: mainly public: ... The 2023 accounts recorded no fees paid to directors.",
+  "after": "Verdict lists the funders; absence sentence cut.",
+  "sources": [
+   "https://www.castellodirivoli.org/wp-content/uploads/2024/05/BILANCIO-CONSUNTIVO-E-RELAZIONE-ATTIVITA-2023.pdf"
+  ],
+  "reason": "Accounts PDF opened: income 5,628,736; public grants 3,249,636; Regione Piemonte 510,000 + 1,979,000 = 2,489,000; private grants 1,279,281; Compagnia di San Paolo, CRC, CRT (institutional 2023 and per l'Arte 20,000), Magnetto 13,000, Intesa 23,000 + 5,000 all confirmed."
+ },
+ {
+  "id": "castello-di-rivoli-turin",
+  "section": "Funding",
+  "problems": [
+   "vice president out of date for the 2023 accounts",
+   "benefactors credit"
+  ],
+  "before": "Paola Volpe as vice president (accounts)",
+  "after": "Credited to the museum's Who we are page; accounts list Gianluca Ferrero as 2023 vice president. Added Lavazza Group as main partner of the Eliasson show (accounts).",
+  "sources": [
+   "https://www.castellodirivoli.org/en/who-we-are/",
+   "https://en.wikipedia.org/wiki/Castello_di_Rivoli"
+  ],
+  "reason": "Website and accounts differ by year."
+ },
+ {
+  "id": "castello-di-rivoli-turin",
+  "section": "Overview",
+  "problems": [
+   "unverified details"
+  ],
+  "before": "video archive, a café and education programmes; Cerruti Collection in a separate villa; metro to Paradiso, bus 36",
+  "after": "Kept only library since 1999, Cerruti Collection (opening hours on the visit page); free categories reworded to 'minors' as listed.",
+  "sources": [
+   "https://www.castellodirivoli.org/en/who-we-are/",
+   "https://en.wikipedia.org/wiki/Castello_di_Rivoli"
+  ],
+  "reason": "Not on opened pages."
+ },
+ {
+  "id": "castello-di-rivoli-turin",
+  "section": "Bottom line",
+  "problems": [
+   "ranking not supported",
+   "lists what is missing"
+  ],
+  "before": "Regione Piemonte is the largest source ... followed by the Ministry of Culture ... No flagged-industry funder is documented.",
+  "after": "States the 2023 public and private totals from the accounts and the named funders.",
+  "sources": [
+   "https://www.castellodirivoli.org/wp-content/uploads/2024/05/BILANCIO-CONSUNTIVO-E-RELAZIONE-ATTIVITA-2023.pdf"
+  ],
+  "reason": "The accounts give totals, not a ranking beyond Regione Piemonte."
+ },
+ {
+  "id": "cafesjian-center-for-the-arts-yerevan",
+  "section": "Funding",
+  "problems": [
+   "verdict 'privately endowed' not stated by a page",
+   "corporate sponsorship not on page",
+   "'then founded' order unsupported"
+  ],
+  "before": "privately endowed: ...; offers corporate sponsorship; He then founded the Cafesjian Family Foundation",
+  "after": "Verdict reworded; corporate sponsorship cut; 'then' removed. 2002 city transfer and the 21 February 2022 city statement confirmed.",
+  "sources": [
+   "https://www.cmf.am/en/cafesjian-center-for-the-arts",
+   "https://en.wikipedia.org/wiki/Cafesjian_Museum_of_Art",
+   "https://www.yerevan.am/en/news/anavart-kaskad-hamaliri-shinararowt-yownn-avartelow-hamar-hamaynk-e-banakts-owm-e-gafeschean-t-angar/"
+  ],
+  "reason": "Opened the center's pages, Wikipedia and the City of Yerevan item."
+ },
+ {
+  "id": "cafesjian-center-for-the-arts-yerevan",
+  "section": "Overview",
+  "problems": [
+   "unverified details",
+   "Wikipedia foundation wording"
+  ],
+  "before": "Run by ... set up in April 2002 under the auspices of the Government of Armenia and the Cafesjian Museum Foundation of America; Special Events Auditorium; Yerevan Collectors' Choice; children's workshops",
+  "after": "Wikipedia: established April 2002 with Armenian government support, which provided the half-built Cascade; auditorium, series and workshops cut as not on opened pages; opening hours and closed days confirmed.",
+  "sources": [
+   "https://www.cmf.am/en/cafesjian-center-for-the-arts",
+   "https://en.wikipedia.org/wiki/Cafesjian_Museum_of_Art"
+  ],
+  "reason": "Not on opened pages."
+ },
+ {
+  "id": "cafesjian-center-for-the-arts-yerevan",
+  "section": "Wider context",
+  "problems": [
+   "neutral information, not criticism of a patron or government"
+  ],
+  "before": "In April 2007 Cafesjian and his Cafesjian Family Foundation sued the Armenian Assembly ...",
+  "after": "Section removed.",
+  "sources": [],
+  "reason": "The Washington lawsuit concerns the founder, not criticism of a patron or government the space is part of."
+ },
+ {
+  "id": "cafesjian-center-for-the-arts-yerevan",
+  "section": "Bottom line",
+  "problems": [
+   "watch point"
+  ],
+  "before": "No flagged industry funder is documented. ... is the point to watch.",
+  "after": "States the founder's money, the foundations, the 2002 transfer and membership.",
+  "sources": [],
+  "reason": "Bottom line states what the money is."
+ },
+ {
+  "id": "cample-line-thornhill",
+  "section": "Overview",
+  "problems": [
+   "details not on opened pages"
+  ],
+  "before": "two miles south of Thornhill and 14 miles north of Dumfries ... Film at Cample, the 15 Reads series and a Greenspace Coordinator post",
+  "after": "Distances taken from the location page (about 14 miles); building line taken from the About page; programme limited to what the home page states; Living Wage and Green Arts Initiative shown as logos on the site.",
+  "sources": [
+   "https://campleline.org.uk/support-us/",
+   "https://campleline.org.uk/about/aims-and-board/"
+  ],
+  "reason": "OSCR figures confirmed: 51,890 (2024), 126,761 (2025)."
+ },
+ {
+  "id": "cample-line-thornhill",
+  "section": "Funding",
+  "problems": [
+   "verdict 'independent'",
+   "cloth bag price"
+  ],
+  "before": "independent registered charity: ... (£7)",
+  "after": "Verdict states the OSCR income; bag price '£7 plus postage'; artworks described as limited-edition artworks.",
+  "sources": [
+   "https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC047031",
+   "https://campleline.org.uk/support-us/",
+   "https://campleline.org.uk/about/aims-and-board/"
+  ],
+  "reason": "Matches support page and OSCR."
+ },
+ {
+  "id": "cample-line-thornhill",
+  "section": "Bottom line",
+  "problems": [
+   "lists what is missing"
+  ],
+  "before": "No flagged industry, sponsor dispute or controversy is documented.",
+  "after": "Cut.",
+  "sources": [],
+  "reason": "Absence statement."
+ },
+ {
+  "id": "can-centre-dart-neuchatel",
+  "section": "Funding",
+  "problems": [
+   "verdict 'mainly public'",
+   "membership fee not on opened pages",
+   "public lottery distributor label not on a page"
+  ],
+  "before": "mainly public and foundation grants ...; ordinary members pay CHF 50 ...; a public lottery distributor (Loterie Romande)",
+  "after": "Verdict lists funders; membership fee sentence cut; lottery label cut. Supporters listed exactly as the support page groups them; Pro Helvetia and Fondation Casino de Neuchâtel confirmed as one-off supporters.",
+  "sources": [
+   "https://can.ch/centre/soutiens/?section=3",
+   "https://can.ch/centre/a-propos/?section=1",
+   "https://www.fundraiso.com/fr/organisations/fondation-artkunst-neuchatel"
+  ],
+  "reason": "Support page gives no years."
+ },
+ {
+  "id": "can-centre-dart-neuchatel",
+  "section": "Overview",
+  "problems": [
+   "studio space not on opened pages",
+   "wording"
+  ],
+  "before": "a studio space; Took shape in 1995",
+  "after": "Studio cut; 'Founded in 1995 under the impulse of' per the About page; Huguet and Wahler details confirmed.",
+  "sources": [
+   "https://can.ch/centre/a-propos/?section=1"
+  ],
+  "reason": ""
+ },
+ {
+  "id": "can-centre-dart-neuchatel",
+  "section": "Bottom line",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "No flagged industry funder, protest or censorship case is documented.",
+  "after": "Cut.",
+  "sources": [],
+  "reason": ""
+ },
+ {
+  "id": "capacete-rio-de-janeiro",
+  "section": "Funding",
+  "problems": [
+   "verdict 'independent residency'",
+   "Residents arrange their own funding"
+  ],
+  "before": "independent residency: project grants from Brazilian federal bodies and residents' own funding",
+  "after": "FUNARTE, the Ministry of Culture and the Foreign Ministry of Brazil supported its 2013 Frankfurt exhibition; application page: CAPACETE cannot fund residents and will try to help selected applicants find funding. e-flux announcement dated 21 September 2013 confirmed.",
+  "sources": [
+   "https://www.e-flux.com/announcements/32161/capacete",
+   "https://capacete.org/en/about/history/",
+   "https://capacete.org/en/residencies/long-term-residency/"
+  ],
+  "reason": "Matches the e-flux text."
+ },
+ {
+  "id": "capacete-rio-de-janeiro",
+  "section": "Overview",
+  "problems": [
+   "details not on opened pages",
+   "Portikus in the participation list"
+  ],
+  "before": "focus on interdisciplinary practices, self-management; art school, library, collection; Santa Teresa; Portikus in list",
+  "after": "Cut; kept founder 1997, oldest residence claim, figures 1997 to 2025, biennials, Tate Turbine Hall, Documenta 14, Glória addresses.",
+  "sources": [
+   "https://capacete.org/en/about/history/"
+  ],
+  "reason": "History page does not mention these."
+ },
+ {
+  "id": "capacete-rio-de-janeiro",
+  "section": "Bottom line",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "No flagged industry funder, protest or censorship case is documented.",
+  "after": "Cut.",
+  "sources": [],
+  "reason": ""
+ },
+ {
+  "id": "casa-tres-patios-medellin",
+  "section": "Funding",
+  "problems": [
+   "verdict 'mixed'",
+   "auction attribution",
+   "Foundation For Arts Initiative spelling"
+  ],
+  "before": "mixed: grants and designated donations ...; partly self-financed through an annual year-end auction",
+  "after": "Verdict lists the donors; Global Voices (2014) wording: the house supports itself through an auction at the end of the year and receives some institutional support; research services credited to the financial page.",
+  "sources": [
+   "https://www.casatrespatios.org/informacion-financiera",
+   "https://www.casatrespatios.org/historia",
+   "https://globalvoices.org/2014/12/27/medellins-casa-tres-patios-a-space-where-modern-art-can-flourish/"
+  ],
+  "reason": "Financial page does not mention the auction."
+ },
+ {
+  "id": "casa-tres-patios-medellin",
+  "section": "Overview",
+  "problems": [
+   "founder description",
+   "self-description"
+  ],
+  "before": "Founded by the artist and architect Tony Evanko",
+  "after": "Global Voices (2014) says founded by Tony Evanko; 'artist and architect' cut; self-description 'non-profit organisation dedicated to promoting social justice' from the site.",
+  "sources": [
+   "https://www.casatrespatios.org/historia",
+   "https://globalvoices.org/2014/12/27/medellins-casa-tres-patios-a-space-where-modern-art-can-flourish/"
+  ],
+  "reason": ""
+ },
+ {
+  "id": "casa-tres-patios-medellin",
+  "section": "Bottom line",
+  "problems": [
+   "absence statement",
+   "public bodies line"
+  ],
+  "before": "Public bodies appear as research clients and partners. No flagged industry funder is documented.",
+  "after": "Cut.",
+  "sources": [],
+  "reason": ""
+ },
+ {
+  "id": "casino-luxembourg",
+  "section": "Funding",
+  "problems": [
+   "verdict 'mainly public'",
+   "Muhlen quotation not in article"
+  ],
+  "before": "mainly public: Luxembourg's Ministry of Culture; a status Muhlen describes as giving it lasting stability",
+  "after": "Funded by the Ministère de la Culture (about page); établissement public since 2024 by law (Paperjam, 25 October 2026).",
+  "sources": [
+   "https://casino-luxembourg.lu/en/about",
+   "https://paperjam.lu/article/interview-kevin-muhlen"
+  ],
+  "reason": "The article gives the status, not a Muhlen quotation on it."
+ },
+ {
+  "id": "casino-luxembourg",
+  "section": "Overview",
+  "problems": [
+   "details not on opened pages"
+  ],
+  "before": "open-top white-walled exhibition cubes; Lunghi 1996 to 2008; pavilion added that year; reading room, restaurant, halls; Hamilius stop",
+  "after": "Cut; kept Funck 1882, Liszt July 1886, State purchase 1959, Maillet pavilion, Raussmüller 1995/1996, Manifesta 2, Lady Rosa 2001, Infolab, hours.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Casino_Luxembourg"
+  ],
+  "reason": "Wikipedia and the About page do not say these."
+ },
+ {
+  "id": "casino-luxembourg",
+  "section": "Bottom line",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "No flagged industry funder is documented.",
+  "after": "Cut.",
+  "sources": [],
+  "reason": ""
+ },
+ {
+  "id": "castlefield-gallery-manchester",
+  "section": "Funding",
+  "problems": [
+   "numbers and names not in the accounts",
+   "verdict 'mixed'"
+  ],
+  "before": "Art Fund, WEA ESF, GMCA Great Places and Friends of Energy House 2.0; restricted premises fund £220,810 at 31 March 2024; Arts Council England grants fund the gallery premises",
+  "after": "Cut those names and the premises claim; kept ACE £71,288, MCC £19,622, £90,910 (note 12), cash income £334,618, donated services £336,817, cash donations £54,410, £690 trustee payment, restricted funds £205,495; Haworth and Brian Mercer Trusts credited with funding 30 Associates' memberships together with Manchester City Council.",
+  "sources": [
+   "https://opencharities.uk/ew/515571/files/2025-03-31-accounts.html",
+   "https://oxfordroadcorridor.com/castlefield-gallery-at-40/",
+   "https://www.castlefieldgallery.co.uk/support-us/"
+  ],
+  "reason": "Opened the accounts in two parts (characters 0 to 100000 and 100000 on)."
+ },
+ {
+  "id": "castlefield-gallery-manchester",
+  "section": "Overview",
+  "problems": [
+   "unattributed first-in-Manchester claim"
+  ],
+  "before": "It opened as the first dedicated contemporary art space in Manchester and the second in the UK outside London",
+  "after": "Credited to Matthew Pendergast, the gallery's Curator and Deputy Director (Oxford Road Corridor, November 2023).",
+  "sources": [
+   "https://oxfordroadcorridor.com/castlefield-gallery-at-40/"
+  ],
+  "reason": "The gallery's About page and Wikipedia do not say it."
+ },
+ {
+  "id": "castlefield-gallery-manchester",
+  "section": "Bottom line",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "No flagged-industry funder is documented.",
+  "after": "Cut; figures restated.",
+  "sources": [],
+  "reason": ""
+ },
+ {
+  "id": "catalyst-arts-belfast",
+  "section": "Funding",
+  "problems": [
+   "verdict 'mainly public'",
+   "logo claim based on a file name",
+   "answer reference"
+  ],
+  "before": "mainly public: ...; The gallery's website footer carries the Arts Council logo",
+  "after": "Verdict lists funders; footer sentence cut; NI Assembly answer identified as AQW 26643/22-27 from the Minister for Communities, 23 June 2025 (Catalyst Arts Ltd, Belfast South listed); 2018 programme dated 15 November to 15 December 2018.",
+  "sources": [
+   "https://www.niassembly.gov.uk/globalassets/documents/raise/deposited-papers/2025/dp1939.pdf",
+   "https://www.catalystarts.org.uk/25-years-of-catalyst",
+   "https://www.patreon.com/catalystarts"
+  ],
+  "reason": "Read the PDF text directly."
+ },
+ {
+  "id": "catalyst-arts-belfast",
+  "section": "Overview",
+  "problems": [
+   "off-site and outreach not on opened pages"
+  ],
+  "before": "off-site projects, an outreach programme",
+  "after": "Cut.",
+  "sources": [
+   "https://www.catalystarts.org.uk/25-years-of-catalyst"
+  ],
+  "reason": ""
+ },
+ {
+  "id": "catalyst-arts-belfast",
+  "section": "Bottom line",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "No flagged-industry funder is documented.",
+  "after": "Cut.",
+  "sources": [],
+  "reason": ""
+ },
+ {
+  "id": "cca-derry-londonderry",
+  "section": "Funding",
+  "problems": [
+   "Civic Innovation Fund and Garfield Weston not on opened pages",
+   "verdict 'mainly public'",
+   "Jerwood detail"
+  ],
+  "before": "The Civic Innovation Fund funded the Cross Border Creativity programme; Garfield Weston Foundation named",
+  "after": "Cut; Jerwood Developing Artists Fund (Supports Programme from January 2023) and Jerwood Foundation (New Curating) restated from the 2024 report; income £171,757 and expenditure £185,995 (2024/25) confirmed.",
+  "sources": [
+   "https://opencharities.uk/ni/101414",
+   "https://opencharities.uk/ni/101414/files/2024-03-31-annual-report.html",
+   "https://wiki.photoireland.org/organisations/centre-for-contemporary-art/"
+  ],
+  "reason": "ccadld.org/about refused the connection on both attempts, so the Garfield Weston claim could not be checked and was cut."
+ },
+ {
+  "id": "cca-derry-londonderry",
+  "section": "Overview",
+  "problems": [
+   "details not on opened pages"
+  ],
+  "before": "exhibition galleries and a Project Space visible from the street (Art Fund)",
+  "after": "Address and hours from the Art Fund page; Project Space line credited to the 2024 annual report.",
+  "sources": [
+   "https://opencharities.uk/ni/101414/files/2024-03-31-annual-report.html"
+  ],
+  "reason": ""
+ },
+ {
+  "id": "cca-derry-londonderry",
+  "section": "Bottom line",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "No flagged-industry funder, protest or censorship case is documented.",
+  "after": "Cut.",
+  "sources": [],
+  "reason": ""
+ }
+]

@@ -892,3 +892,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - cac-vilnius: ERDF 4,175,534 euros (main building) and 11,872,255.69 euros (Sapieha Palace) confirmed; no annual budget figure.
 - ca2m-centro-de-arte-dos-de-mayo-m-stoles and ca2m-madrid: one institution in Mostoles; two reports identical apart from the ID line.
 - bwa-wrocław-wrocław: the report file is named with the record id's lower-case letter l with stroke.
+
+## d054 (research and slop check)
+- cca-glasgow: Protest or boycott flag: The Telegraph (Samuel Montgomery, 14 Aug 2025) reports the board's non-consensus on a boycott of Israel and the 24 June occupation; The Skinny (Jamie Dunn, 30 Jan 2026) reports the police removal and the arrest and injury of a 63-year-old woman. Funding: 1 pound lease and 3.4 million pounds from January 2025, suspended 30 Jan 2026, 39 staff (The Art Newspaper, Joe Ware, 2 Feb 2026); provisional liquidator 6 Feb 2026 (Civil Society, 9 Feb 2026). ArtReview (30 Jan 2026, no author) says "administration". The Art Newspaper's own line says the centre shut "in April of last year", which conflicts with June; not used. Petition claim: Unverified, Ali Hassan.
+- capc-mus-e-d-art-contemporain: Palatine, CIC, Lacoste and DRAC are on the partners page (no year); AXA, Fondation Aleksandr Savchuk, Fluxus, EVL, Layher and RAJA ART appear there only as logos identified by file name and sit under an Unverified line. Anna Sansom (The Art Newspaper, 13 March 2018): 50 signatories, Liberation letter. The Karfa Diallo item rests on French Wikipedia.
+- castello-di-rivoli-turin: 2023 accounts: income 5,628,736 euros, public grants 3,249,636, Regione Piemonte 510,000 + 1,979,000 (about 2.49 million), private grants 1,279,281. The accounts name Gianluca Ferrero as vice president for 2023; the museum's current page says Paola Volpe. An unlabelled 600,000 euros line (probably the Fondazione CRT grant) is not stated.
+- cca-derry-londonderry: ccadld.org refused the connection; the funder list rests on the Photoireland wiki, annual reports and OpenCharities; Garfield Weston cut.
+- casino-luxembourg: etablissement public status since 2024 is from Paperjam, 25 Oct 2026.
+- cafesjian-center-for-the-arts-yerevan: the Wider context lawsuit paragraph removed (neutral information about the founder); the 2022 city statement stays under Funding.
