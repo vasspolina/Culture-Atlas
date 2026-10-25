@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=274">
-  <script src="assets/config.js?v=274"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=275">
+  <script src="assets/config.js?v=275"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9889,11 +9889,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v274';
+    const ATLAS_RELEASE = 'culture-atlas-v275';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=274').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=275').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11611,7 +11611,7 @@ return maplibregl$1;
     }
     // The record's critique as a row: an artwork keeps its strategy as the title and its target under it; a critical frame is titled plainly Criticism (the frame's own name and target are working labels, not for readers). The quotations and what to do with them follow as plain paragraphs,
     // the picture and the Next critique button under the title.
-    function critiqueRowHtml(inst, vc, vcs, vcIdx) {
+    function critiqueProseRow(inst, vc, vcs, vcIdx, title) {
       const e = escapeHtml, theory = vc.kind === 'theory';
       const sub = [
         theory ? '' : e(vc.artist_designer || vc.artist || ''),
@@ -11625,7 +11625,18 @@ return maplibregl$1;
       if (vc.citation) lis.push(proseLi('Source:', e(vc.citation)));
       const img = theory || !vc.image ? '' : `<img class="d-row-media" src="${e(vc.image)}" alt="${e(vc.artwork_title || 'Visual Critique')}">`;
       const next = vcs.length > 1 ? `<button type="button" onclick="window.cycleDossierVisualCritique();" class="record-action d-row-action">Next critique, ${(vcIdx + 1) % vcs.length + 1} of ${vcs.length}</button>` : '';
-      return proseRows([proseRow(theory ? 'Criticism' : e(vc.strategy || 'Critique'), sub, lis, { after: img + next })], 'Critique');
+      return proseRow(title || (theory ? 'Criticism' : e(vc.strategy || 'Critique')), sub, lis, { after: img + next });
+    }
+    function critiqueRowHtml(inst, vc, vcs, vcIdx) {
+      return proseRows([critiqueProseRow(inst, vc, vcs, vcIdx)], 'Critique');
+    }
+    // The frame about gifts and their givers belongs with the money, not with the art: it sits directly under Funding, and only on a
+    // record graded 4 or 5 (user, 25 Oct 2026). Every other critique stays in its own place further down the record.
+    const isFundingFrame = (v) => v && v.strategy_id === 'gift';
+    function fundingCritiqueRow(inst) {
+      if (inst.grade !== 4 && inst.grade !== 5) return '';
+      const vc = (inst.visual_critiques || []).find(isFundingFrame);
+      return vc ? critiqueProseRow(inst, vc, [vc], 0, 'Criticism of giving') : '';
     }
     function critiqueQuoteLine(q) {
       return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
@@ -12467,6 +12478,7 @@ return maplibregl$1;
       const shared = (inst.funder_links || []).filter(f => f && f.funder).map(f => `${f.funder} is listed at ${f.institutions} spaces in this atlas, including this one.`).join(' ');
       rows.push(proseRow('Funding', escapeHtml(verdict), proseChunks(funding.concat(shared || []), 0).map(t => proseLi('', escapeHtml(t)))));
       const note = (lead, t) => t ? proseLi(lead, escapeHtml(proseEnd(t))) : '';
+      rows.push(fundingCritiqueRow(inst));
       rows.push(proseRow('Records', '', [note('Publishes:', inst.records_note), note('Accounts:', inst.finances_note), note('Affiliations:', inst.affiliations_note)]));
       return proseRows(rows, 'Overview and funding');
     }
@@ -12584,7 +12596,7 @@ return maplibregl$1;
 
 
       // 4. Visual Critiques (Hans Haacke, etc.)
-      const vcs = (inst.visual_critiques && inst.visual_critiques.length > 0) ? inst.visual_critiques : [];
+      const vcs = (inst.visual_critiques || []).filter(v => !(isFundingFrame(v) && (inst.grade === 4 || inst.grade === 5)));
       if (window.dossierVcFor !== (inst.id || inst.name)) { window.dossierVcFor = inst.id || inst.name; window.dossierVcIndex = 0; }
       window.dossierVcIndex = window.dossierVcIndex || 0;
       const vcIdx = window.dossierVcIndex % (vcs.length || 1);
@@ -19352,9 +19364,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=274"></script>
-<script src="assets/layers.js?v=274"></script>
-<script src="assets/hq-detail.js?v=274"></script>
-<script src="assets/bubbles.js?v=274" defer></script>
+<script src="assets/typeset.js?v=275"></script>
+<script src="assets/layers.js?v=275"></script>
+<script src="assets/hq-detail.js?v=275"></script>
+<script src="assets/bubbles.js?v=275" defer></script>
 </body>
 </html>
