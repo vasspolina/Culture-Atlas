@@ -2027,7 +2027,9 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head .head-fact .lead-in{display:block;font-weight:600!important}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head .grade-line .grade-mark{display:table!important;margin-bottom:calc(var(--H) / 2)}
 
-/* The bar over a record that holds Back to Overview and the cross: no rule under it, and a large thin cross after the Displaay menu's (user, 25 Oct 2026). */
-#detailDrawer>div.detail-bar:first-child{border-bottom:0}
-#detailDrawer .detail-bar #closeDetailBtn{padding:4px;line-height:0}
+/* The cross over a record (user, 25 Oct 2026): no bar across the top, only a large thin cross on a solid square in the panel's colour, pinned top right, so the
+   record runs to the top edge and its words pass under the square rather than being cut off along a line. */
+#detailDrawer>div.detail-bar:first-child{position:absolute;top:0;right:0;z-index:6;width:0;height:0;padding:0;border:0;overflow:visible;pointer-events:none}
+#detailDrawer .detail-bar #closeDetailBtn{position:absolute;top:0;right:0;display:flex;align-items:center;justify-content:center;width:56px;height:56px;padding:0;line-height:0;background:var(--grey);pointer-events:auto}
 #detailDrawer .detail-bar-cross{display:block;width:40px;height:40px}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head h2.dossier-main-heading{padding-right:56px}
