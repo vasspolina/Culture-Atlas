@@ -768,3 +768,10 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - museo-nacional-de-bellas-artes-de-la-habana-havana: bellasartes.co.cu does not resolve; Diario de Cuba 403 and Mezosfera expired certificate, not cited.
 - national-museum-of-fine-arts-of-chile-mnba and national-museum-of-moldova: several figures rest on pages other than the museums' own sites (mnba.gob.cl did not resolve from the sandbox; Moldova IPN pieces returned 403).
 - national-arts-festival: 2012 Unemployed People's Movement protest is old; the About, Sponsors and Board pages were placeholders or 404.
+
+## d042 (after its slop check)
+- Rijksakademie: Ammodo's account (Inphykem, Optas sold to Aegon 2007) is stated as the funder's own; Platform BK essay labelled opinion; December 2024 alumni letter in Wider context, labelled Unverified.
+- Sesc São Paulo and Project Arts Centre: the Butler petition and the mural order were moved from Red flags to Wider context (no Sesc action shown; the regulator is not shown as a funder). Confirm.
+- Secession: the space's partner page says only roughly a third of the budget is public grants and calls the house largely self-supporting; added, attributed to the space.
+- Soane: 2024-25 accounts; the earlier 417,443 pounds "tours and events" figure was the restricted charitable total; tours and events are 101,385 pounds.
+- Thin sources: Red Brick (founders' wealth, museum site TLS error), Selasar (own site suspended), Raven Row (no accounts), Rwanda (no budget or funder).
