@@ -819,3 +819,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - a-kasteyev-state-museum-of-arts-almaty: no page says who paid for the 2026 renovation or the amounts; Bizmedia names the Ministry, Samruk-Kazyna and Senim Qogamy as implementers.
 - al-mamal-foundation-jerusalem: almamalfoundation.org redirects to an unrelated essay-review site; the live site is almamal.org. European Cultural Foundation (in the record) is not among its logos.
 - addis-foto-fest: last sponsor list is from 2018; no edition after 2018 found.
+
+## d045 (research and slop check)
+- vasl-artists-association: "HBL" is listed as a supporter (2025 show "Traces"; 2026 disclosure lists "HBL Art Committee"), no year or amount; no page says HBL is Habib Bank Limited. The 7 September 2017 New York DFS fine on Habib Bank (225 million dollars; weak anti-money-laundering controls, lack of evidence for adequate OFAC and sanctions screening) does not say sanctions were violated. Moved from Red flags to Wider context as dated history. Decide whether it should be a flag.
+- townhouse-gallery-cairo: whether the gallery is open or closed is unconfirmed (Contemporary And, 15 Sept 2020, says closure was expected with no official announcement; a places page dated 13 Oct 2025 describes it in the present tense). No page says the state does or does not fund or control it. Ford is named (Bridgespan, 27 Nov 2013) with no amounts.
+- transmission-gallery-glasgow: Creative Scotland rejected Transmission's application, listed as 210,000 pounds (The Art Newspaper, 27 Feb 2018); the 2015-18 regular-grant amount rests on an ARThing reproduction of a Frieze article that did not load, so it is cut.
+- typography-center-krasnodar: the centre's site says the legal entity stopped working in March 2023; the Register via Caucasian Knot says liquidated 11 June 2025. Both stated.
+- vleeshal-middelburg: the 2024 annual report was readable: income 1,121,538 euros, subsidies 1,068,110 euros; Impuls Jongerencultuur and Mondriaan Fund Kunstenaarshonorarium grants in 2024 (the earlier research note that no Mondriaan or province funding was found was wrong).
+- w139-amsterdam: Collective Refusal open letter (undated, advocacy) is about Art Rotterdam at Ahoy and the Mondriaan Fund; it never mentions W139.
+- uffizi: April 2026 workers' protest (Open and L'Espresso, 6 April 2026); the "no pay since October" claim appears only in L'Espresso and is marked Unverified.
+- west-den-haag: westdenhaag.nl returned 503; no founding, director or accounts information.
