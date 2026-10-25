@@ -1282,3 +1282,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Theertha: only a listing as an Arts Collaboratory participant (2013 to 2015) plus Wikipedia; no amount or current status.
 - Trafo: Szabo's managing-director title comes from a 29 December 2014 interview; Hungarian Wikipedia ends his directorship in 2012.
 - Triple Canopy: NEA, NYSCA and NYC DCLA listed without years; Warhol USD 100,000 (Fall 2022) verified.
+
+## d098 (slop check: checks/d098-slop.json)
+- Wadsworth Atheneum: Fossil fuels flag kept. Viking Fuel Oil Company, Inc. is in the $500 to $1,499 tier of the archived FY2024 philanthropy list; OilMonster shows a West Hartford home-heating-oil and diesel dealer. The House rules set no amount floor. A tiny listing; the stricter reading drops it.
+- Ujazdowski Castle CCA: Protest or boycott kept (2019 petition, two unions, CIMAM statement against the Minister's appointment; 2020 cancellations per Kunstkritikk). No opened page states a subsidy; funding line rests on CIMAM and dzieje.pl. Trimmed to 785 words; the New York Times quote item was dropped.
+- Ural Industrial Biennial: Protest kept (August 2021 open letter, over 300 signatures, against the circus venue; The Blueprint, 24 August 2021). The page does not say who wrote it.
+- Vitra Design Museum: IKEA Stiftung stays as a named supporter of the Jongerius show; no flag.
+- Vanuatu Cultural Centre: Qatar Fund for Development is one of 15 donors to UNESCO's Heritage Emergency Fund; no Gulf state body flag.
+- UMOCA: no flag. Donor tier amounts are garbled in the annual report's text layer and were taken from the research agent's reading. Walje claim cut.
+- Viafarini: supporters page gives start years for institutions only.
