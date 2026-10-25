@@ -101,7 +101,11 @@ async function chat(request, env) {
   } catch (e) {
     return json({ error: 'The model did not answer in time.' }, 504);
   }
-  if (!res.ok) return json({ error: 'The model could not answer.' }, res.status === 429 ? 429 : 502);
+  if (!res.ok) {
+    // The reason goes to the Worker's own log (Cloudflare dashboard), never to the visitor.
+    console.error('anthropic', res.status, (await res.text().catch(() => '')).slice(0, 300));
+    return json({ error: 'The model could not answer.' }, res.status === 429 ? 429 : 502);
+  }
   const data = await res.json();
   return json({ content: Array.isArray(data.content) ? data.content : [] }, 200, { 'Cache-Control': 'no-store' });
 }
