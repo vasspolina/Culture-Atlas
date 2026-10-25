@@ -1581,8 +1581,9 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 /* The submission form of the note screen, shown only while a note is written (Share information). Every field is a filled block with its
    label inside at the top and the text under it: dark slate blocks with white type (11:1), 14px corners, 10px between blocks, a block for
    the confirm box, and one large Send for review block, grey until the form could be sent and blue after. Sizes are the page's scale. */
-:is(#noteFormFields,#noteInputBlock,#noteAckRow){display:none}
-body.chat-input-mode-active :is(#noteFormFields,#noteInputBlock,#noteAckRow){display:block}
+/* The note's textarea is the chat's own input, so its block stays; only the form's extras and the "Your note" label wait for the note screen. */
+:is(#noteFormFields,#noteInputLabel,#noteAckRow){display:none}
+body.chat-input-mode-active :is(#noteFormFields,#noteInputLabel,#noteAckRow){display:block}
 #noteFormTitle{font:400 var(--fs-l)/1.15 var(--sans);margin:0 0 8px}
 #noteFormIntro{font:400 var(--fs-m)/1.4 var(--sans);margin:0 0 20px;max-width:60ch}
 body.chat-input-mode-active :is(.nf-field,#noteInputBlock,.nf-check){display:block;box-sizing:border-box;width:100%;margin:0 0 10px;padding:14px 22px 14px;border-radius:14px;background:#2f3452;color:#fff}
