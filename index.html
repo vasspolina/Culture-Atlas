@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=276">
-  <script src="assets/config.js?v=276"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=277">
+  <script src="assets/config.js?v=277"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -194,11 +194,26 @@ return maplibregl$1;
               <label><input type="checkbox" data-layer="flags"> <span class="layer-name">Flagged organizations</span><span class="layer-desc">Spaces with a flagged funder, marked in orange</span><span class="layers-count" data-count="flags"></span></label>
               <label><input type="checkbox" data-layer="grade"> <span class="layer-name">Funding transparency ratings</span><span class="layer-desc">Each rated space coloured by its grade</span><span class="layers-count" data-count="grade"></span></label>
               <label><input type="checkbox" data-layer="money"> <span class="layer-name">Funder networks</span><span class="layer-desc">A space’s funders around it when it is in focus or close</span><span class="layers-count" data-count="money"></span></label>
+              <label><input type="checkbox" data-layer="mix"> <span class="layer-name">Funding mix</span><span class="layer-desc">A ring on each space: public funding, foundations and companies, by how many of each</span><span class="layers-count" data-count="mix"></span></label>
               <label><input type="checkbox" data-layer="hq"> <span class="layer-name">Funder headquarters</span><span class="layer-desc">Head offices of the funders, joined to the space in focus</span><span class="layers-count" data-count="hq"></span></label>
               <label><input type="checkbox" data-layer="people"> <span class="layer-name">People &amp; office locations</span><span class="layer-desc">Offices of the people the Epstein files name</span><span class="layers-count" data-count="people"></span></label>
               <label><input type="checkbox" data-layer="right"> <span class="layer-name">Right-wing funders</span><span class="layer-desc">Spaces with a right-wing sponsor among their funders</span><span class="layers-count" data-count="right"></span></label>
               <label><input type="checkbox" data-layer="epstein"> <span class="layer-name">Mentions in the Epstein files</span><span class="layer-desc">Spaces whose funders or people appear in the files</span><span class="layers-count" data-count="epstein"></span></label>
             </div>
+          </section>
+          <section class="layers-section">
+            <h2 class="layers-section-title">Funder types</h2>
+            <p class="layers-note">Show or hide each kind of funder on the connections, funder networks, funding mix and headquarters. Point at a funder around a space to see every other space it funds.</p>
+            <div class="layers-kinds">
+              <label class="kind-chip" style="--marker-color:#818cf8"><input type="checkbox" data-kind="gov" checked> <i class="shape-square"></i><span class="layer-name">Public funding</span></label>
+              <label class="kind-chip" style="--marker-color:#f472b6"><input type="checkbox" data-kind="found" checked> <i class="shape-triangle"></i><span class="layer-name">Foundations</span></label>
+              <label class="kind-chip" style="--marker-color:#38bdf8"><input type="checkbox" data-kind="corp" checked> <i class="shape-hexagon"></i><span class="layer-name">Companies</span></label>
+            </div>
+          </section>
+          <section class="layers-section">
+            <h2 class="layers-section-title">Widest-reaching funders</h2>
+            <p class="layers-note">The funders named on the most spaces. Point at one to draw every space it funds; click to pin it, and click again or press Esc to let go.</p>
+            <div id="topFunders" class="layers-top" role="group" aria-label="Widest-reaching funders"></div>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Spaces on the map</h2>
@@ -217,6 +232,9 @@ return maplibregl$1;
               <span><i class="shape-square" style="--marker-color:#f59e0b"></i>Flagged organization</span>
               <span><i class="shape-shield" style="--marker-color:#fb7185"></i>Right-wing funder</span>
               <span><i class="shape-diamond" style="--marker-color:#22d3ee"></i>Funder headquarters</span>
+              <span><i class="shape-diamond" style="--marker-color:#22d3ee"></i>Number in a diamond: offices in a city</span>
+              <span><i class="shape-dot" style="background:conic-gradient(#818cf8 0 33%,#f472b6 0 66%,#38bdf8 0)"></i>Ring or bar: funding mix</span>
+              <span><i class="shape-hexagon" style="--marker-color:#38bdf8;transform:scale(1.3)"></i>Larger funder mark: named on more spaces</span>
               <span><i class="shape-dot" style="--marker-color:#e5e7eb"></i>Individual’s office</span>
               <span><i class="shape-star" style="--marker-color:#a78bfa"></i>Mentioned in the Epstein files</span>
             </div>
@@ -7986,6 +8004,7 @@ return maplibregl$1;
       if (typeof cityVectorMap.resize === 'function') {
         cityVectorMap.resize();
       }
+      if (window.atlasStreetLayers) window.atlasStreetLayers.start(cityVectorMap, mapEl);
 
       // Ensure globe floating card is strictly hidden in street view
       document.getElementById('floatingCard')?.classList.add('hidden');
@@ -8129,6 +8148,7 @@ return maplibregl$1;
 
     function exitCityStreetView() {
       isCityStreetViewActive = false;
+      if (window.atlasStreetLayers) window.atlasStreetLayers.stop();
       const mapEl = document.getElementById('cityMapContainer');
       if (mapEl) mapEl.classList.add('hidden');
       document.getElementById('cityViewControlBanner')?.classList.add('hidden');
@@ -9891,11 +9911,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v276';
+    const ATLAS_RELEASE = 'culture-atlas-v277';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=276').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=277').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19352,9 +19372,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=276"></script>
-<script src="assets/layers.js?v=276"></script>
-<script src="assets/hq-detail.js?v=276"></script>
-<script src="assets/bubbles.js?v=276" defer></script>
+<script src="assets/typeset.js?v=277"></script>
+<script src="assets/layers.js?v=277"></script>
+<script src="assets/hq-detail.js?v=277"></script>
+<script src="assets/bubbles.js?v=277" defer></script>
 </body>
 </html>
