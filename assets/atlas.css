@@ -1988,3 +1988,15 @@ div:has(>#topThemeBtn){column-gap:0}
 @container (max-width:34em){
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr);row-gap:var(--H);align-items:start}
 }
+/* The chat's dock buttons take the displaay.net button row (25 Oct 2026): an outlined button with a 12px radius and a 1.5px ink line, no fill; the one that is on (Voice, or Back to chat once a note is open) is a solid blue pill. The note's own Send for review block keeps its design. Same 44px height as the header (var(--bar)) and the same large type. Desktop only; the phone's composer keeps its plain tap targets. */
+@media (min-width:768px){
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)){background:transparent!important;color:var(--ink)!important;border:1.5px solid var(--ink)!important;border-radius:12px!important;box-shadow:none!important;height:var(--bar);min-height:var(--bar);box-sizing:border-box;padding:0 16px;font:400 var(--fs-l)/1 var(--sans);text-decoration:none;transition:background-color .15s,border-radius .15s}
+  :root[data-theme] #workInputCard #workSendBtn:not(.is-on){width:var(--bar);min-width:var(--bar);padding:0}
+  :root[data-theme] #workInputCard #chatShareBtn:not(.is-on){padding:0 16px;font-size:var(--fs-l)}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)):not(.is-on):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)):not(.is-on):hover{background:color-mix(in srgb,var(--ink) 12%,transparent)!important;color:var(--ink)!important;text-decoration:none}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn:not(.is-on)):not(.is-on):hover :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#workSendBtn:not(.is-on)):not(.is-on):hover :is(svg,span){color:var(--ink)!important}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on{background:var(--cobalt)!important;color:#fff!important;border-color:var(--cobalt)!important;border-radius:999px!important;padding:0 20px}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on:hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on:hover{background:var(--cobalt)!important;color:#fff!important;filter:brightness(.85);text-decoration:none}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on :is(svg,span){color:#fff!important}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+}
