@@ -1,0 +1,493 @@
+[
+ {
+  "id": "scottsdale-museum-of-contemporary-art-scottsdale",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported source: Turrell skyspace credited to no source"
+  ],
+  "before": "James Turrell's Knight Rise skyspace is on permanent view.",
+  "after": "James Turrell's Knight Rise skyspace is permanently on view (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Scottsdale_Museum_of_Contemporary_Art",
+   "https://scottsdalearts.org/explore-scottsdale-arts/smoca/"
+  ],
+  "reason": "The museum page does not mention the skyspace; Wikipedia does, so it is attributed."
+ },
+ {
+  "id": "scottsdale-museum-of-contemporary-art-scottsdale",
+  "section": "FUNDING",
+  "problems": [
+   "audit wording stronger than source",
+   "unsourced date on audit"
+  ],
+  "before": "A 2024 city audit called for clearer performance expectations and stronger financial reporting",
+  "after": "The agreement follows a 2024 city audit that recommended clearer expectations, stronger financial reporting and better oversight",
+  "sources": [
+   "https://www.scottsdaleaz.gov/news/details/scottsdale-approves-new-three-year-agreement-with-scottsdale-arts"
+  ],
+  "reason": "City release, 26 February 2026, says audit recommended clearer expectations, stronger financial reporting and better oversight; 'performance' was not in the page. Council vote each year, 1987, 250,000 dollar steps and 6,297,114 dollars confirmed."
+ },
+ {
+  "id": "scottsdale-museum-of-contemporary-art-scottsdale",
+  "section": "RED FLAGS",
+  "problems": [
+   "misattributed to KJZZ: artists Cassils, Awadi, SaVAge K'lub, 'very unprotected'",
+   "name misspelt: Wuestermann (pages spell Wuestemann)",
+   "DEI line attributed to Wuestermann; KJZZ says Scottsdale Arts",
+   "McCabe quote paraphrase dropped hedging 'may'",
+   "'shrank' / 'dropped' wording"
+  ],
+  "before": "The show shrank from five galleries to three, the planned community Forum space was dropped, and works by Cassils, Myriam Omar Awadi and SaVAge K'lub were not included (KJZZ). ... Wuestermann called the changes pragmatic ... Asked whether the City Council's cut ... Wuestermann said the two were unrelated (KJZZ).",
+  "after": "The show filled three galleries instead of five, the planned community Forum gallery was used for another exhibition, and works by Cassils, Myriam Omar Awadi and SaVAge K'lub were left out (Southwest Contemporary). KJZZ reported that planned artists from Israel and China did not take part. ... Gerd Wuestemann, chief executive of Scottsdale Arts, said the whole SMoCA team decided how to adapt the show and called the changes pragmatic, citing 'spaces, timelines, and budgets' ... Scottsdale Arts said the two were unrelated (KJZZ).",
+  "sources": [
+   "https://southwestcontemporary.com/transfeminisms/",
+   "https://www.kjzz.org/the-show/2025-03-24/smoca-under-fire-for-changing-a-traveling-feminism-exhibit-one-of-the-original-curators-isnt-happy"
+  ],
+  "reason": "Southwest Contemporary (Lynn Trimble, 13 March 2025) names the three artists, the 22 February 2025 opening, the October 2024 press release (five galleries, Forum) and that Wuestemann said the SMoCA team decided; KJZZ (Mark Brodie with Trimble, 24 March 2025) has the Israel and China artists, 'violently edited' and the DEI question. Flag kept: the museum itself (SMoCA team) retitled and cut the show and the co-curators objected on the record; the museum calls it pragmatic."
+ },
+ {
+  "id": "scottsdale-museum-of-contemporary-art-scottsdale",
+  "section": "CRITICISM IN ART MEDIA / BOTTOM LINE",
+  "problems": [
+   "name misspelt",
+   "quote paraphrase",
+   "bottom line verdict without figures"
+  ],
+  "before": "Khan says the curators learned late ... Wuestermann answers ... The documented dispute is the March 2025 editing",
+  "after": "Khan says the curators later learned that the museum wanted a reduced version and that they had no ownership of their own creation. ... Wuestemann answers ... The documented dispute is the February 2025 editing",
+  "sources": [
+   "https://southwestcontemporary.com/transfeminisms/"
+  ],
+  "reason": "Title, author (Lynn Trimble) and date (13 March 2025) confirmed; show opened 22 February 2025. SRP not flagged, kept in sponsor list per 20 January 2025 Arizona Digital Free Press list."
+ },
+ {
+  "id": "secca-winston-salem",
+  "section": "RED FLAGS",
+  "problems": [
+   "flag not supported: no opened page shows the Reynolds foundation's endowment still comes from tobacco"
+  ],
+  "before": "Red flags: tobacco-fortune foundation as donor | - Z. Smith Reynolds Foundation is a named donor to the downtown space in 2026 | - Wikipedia lists the foundation's endowment as the Reynolds family tobacco fortune ...",
+  "after": "Red flags heading deleted; FUNDING bullet: The Z. Smith Reynolds Foundation was established in 1936 by the children of RJ and Katharine Smith Reynolds as a memorial to their brother Zachary Smith Reynolds (foundation website); Wikipedia describes its endowment as the Reynolds family tobacco fortune.",
+  "sources": [
+   "https://www.zsr.org/about",
+   "https://en.wikipedia.org/wiki/Z._Smith_Reynolds_Foundation",
+   "https://zsr.org/about/timeline-of-zsr-events-and-milestones/"
+  ],
+  "reason": "Founder-fortune rule: the donor is current (NCMA Winston-Salem donor list, 21 May 2026, no amount) but the foundation's about page and timeline, and NCpedia, never mention tobacco, Reynolds American or RJR stock; only Wikipedia says 'Reynolds family tobacco fortune' (origins, undated). No page shows tobacco money still funds the endowment, so no flag; the Wikipedia statement is kept, attributed, in FUNDING and BOTTOM LINE."
+ },
+ {
+  "id": "secca-winston-salem",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "absence statement 'No amounts are given'",
+   "unsupported: 'branch'",
+   "unsupported: 'Winston-Salem Gallery of Contemporary Art' as name at the move",
+   "unsupported: 'gallery for Southeastern artists' phrase",
+   "board 'unsustainable' credited to history page",
+   "'additional fundraising' credited to history page",
+   "'major contemporary artists nationally' wording",
+   "downtown opening status"
+  ],
+  "before": "a branch of the North Carolina Museum of Art ... was announced on 21 May 2026 to open on 16 July ... its board had judged it unsustainable (NCMA Winston-Salem history page, WFDD) ... supplemented by additional fundraising (NCMA Winston-Salem history page, WFDD) ... No amounts are given.",
+  "after": "now called the North Carolina Museum of Art, Winston-Salem ... is open Wednesday through Sunday (NCMA Winston-Salem) ... Its board then 'really thought it was unsustainable' ... (WFDD, 30 December 2024) ... WFDD reports the $15 million appropriation came along with some additional fundraising.",
+  "sources": [
+   "https://ncmawinstonsalem.gov/history/",
+   "https://www.wfdd.org/story/north-carolina-museum-art-winston-salem-past-present-future",
+   "https://ncmawinstonsalem.gov/about-us"
+  ],
+  "reason": "Confirmed: 2007 affiliation and division of the Department of Natural and Cultural Resources (history page; WFDD 'joined in 2007', David Ford, 30 December 2024; no 2023 takeover on either page, 2007 used); 15 million dollars approved 2024 (history page, WFDD); 1972, 32 acres, 1976, 1990 additions; donor list. About page says the museum is an agency of the State of North Carolina and the downtown space is now open Wednesday through Sunday."
+ },
+ {
+  "id": "seoul-museum-of-art-seoul",
+  "section": "FUNDING",
+  "problems": [
+   "wrong figure: 1.9957 billion won (article: 19억 5695만 7000원, about 1.957 billion)",
+   "'reviews line by line' not in source",
+   "wrong director title: SK Stores (page: SK Stoa)",
+   "absence statement 'The page is undated and gives no amounts'"
+  ],
+  "before": "the Seoul Metropolitan Council reviews its exhibition budget line by line, for example 1.9957 billion won for exhibition planning in the 2026 supplementary budget ... former chief executive of SK Stores ... The page is undated and gives no amounts.",
+  "after": "On 4 September 2026 the Seoul Metropolitan Council's Culture, Sports and Tourism Committee reviewed a supplementary budget for the museum whose largest item, exhibition planning, was 1.957 billion won (Seoul Shinmun, Ryu Jeong-im, title translated) ... former chief executive of SK Stoa",
+  "sources": [
+   "https://m.go.seoul.co.kr/news/2026/09/04/20260904500311",
+   "https://sema.seoul.go.kr/kr/sema/sema_in",
+   "https://sema.seoul.go.kr/kr/support/landing"
+  ],
+  "reason": "Seoul Shinmun (Ryu Jeong-im, 4 September 2026) gives 19억 5695만 7000원. Patrons page lists the directors as stated; Hana co-sponsorship of the SeMA-Hana Art Prize confirmed (SeMA-하나 미술상 awarded together with Hana Financial Group); the page gives no amount and Hana is not shown to fund more."
+ },
+ {
+  "id": "seoul-museum-of-art-seoul",
+  "section": "RED FLAGS",
+  "problems": [
+   "'runner-up' not in source (second winner of the SeMA-Hana criticism award)",
+   "'commissioned in January 2025' not in source (Nam submitted the essay in January)",
+   "'did not publish' stated as fact without the museum's account",
+   "'no intention whatsoever' quote not in source",
+   "'handled communication badly' stronger than the apology wording",
+   "apology credited without the exact wording"
+  ],
+  "before": "The museum commissioned the critic Nam Woong in January 2025 ... Nam had been runner-up ... The museum said it had 'no intention whatsoever' of excluding the essay ... handled communication badly.",
+  "after": "The critic Nam Woong, second winner of the SeMA-Hana Art Criticism Award, which the museum runs, submitted an essay in January 2025 ... The museum left the essay out of the catalogue ... Nam says the museum refused the essay as 'not neutral' ... The museum says it discussed with him whether the essay fit the exhibition's intent ... On 19 June 2025 it posted a statement saying it had no intention of excluding a work over a political event or viewpoint and apologising for not handling the matter carefully enough (translation)",
+  "sources": [
+   "https://www.khan.co.kr/article/202506241145011"
+  ],
+  "reason": "Kyunghyang Shinmun, Jung Won-sik, 24 June 2025, '서울시립미술관 '계엄 비판' 원고 검열 논란···예술인 수백명 연대 성명': museum left the essay out; the 'not neutral' reason is Nam's account; the museum says it discussed fit and denies a political motive; apology 19 June 2025 is for the handling ('충분히 세심하고 조심스럽게 다뤄지지 못했던 점을 인정하며 사과한다'); December archival catalogue; 2 June critics' protest, 18 June artists' statement, 700+ signatures by 23 June; the article calls the museum an agency under the Seoul city government. Flag kept: the museum itself acted (State censorship or punishment)."
+ },
+ {
+  "id": "seoul-museum-of-art-seoul",
+  "section": "OVERVIEW / CRITICISM",
+  "problems": [
+   "'replaced it as the main building' / 'former Supreme Court building' stated as fact (Wikipedia-only)",
+   "'dropped' / 'hundreds' wording; 20 June statement quote"
+  ],
+  "before": "The main building is the former Korean Supreme Court building ... the museum dropped a critic's catalogue essay ... hundreds of artists ... censorship can be recast as a 'miscommunication'",
+  "after": "Wikipedia describes the main building as the old Korean Supreme Court building ... left a critic's catalogue essay ... more than 700 ... On 20 June the solidarity group said the museum was treating censorship as a 'misunderstanding in communication' (translation)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Seoul_Museum_of_Art",
+   "https://www.khan.co.kr/article/202506241145011"
+  ],
+  "reason": "Press item title, author (Jung Won-sik) and date (24 June 2025) confirmed and names the museum."
+ },
+ {
+  "id": "serlachius-museums-mänttä",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: foundation 'owns the art collection and the museum buildings'",
+   "unsupported: 'foundation-owned' verdict, 'formed from the Serlachius paper family's collection'",
+   "quote presented as translation though the page is in English and wording differs ('beautifying Mänttä with art')"
+  ],
+  "before": "foundation-owned ... The foundation owns the art collection and the museum buildings, including Joenniemi Manor, the Gösta Pavilion completed in 2014 and the former headquarters (foundation page).",
+  "after": "foundation-run ... The foundation maintains the Serlachius museum complex and residency and bought the former G. A. Serlachius headquarters in 2000 (foundation page).",
+  "sources": [
+   "https://serlachius.fi/en/goesta-serlachius-fine-arts-foundation/",
+   "https://serlachius.fi/en/"
+  ],
+  "reason": "The foundation page says the complex is 'maintained by' the foundation, established 1933 to preserve and build Gösta Serlachius's art collection, bought the former headquarters in 2000; it says nothing on ownership of the collection, Joenniemi Manor or the pavilion. Board names, family association appointing four members, the 1986 merger with Metsäliitto and rule revision confirmed. The museum site says the paper mill owners began collecting more than a hundred years ago."
+ },
+ {
+  "id": "serlachius-museums-mänttä",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Gösta built the manor 'as his residence'",
+   "'Golden Age' credited to museum home page (foundation page)",
+   "1935 date and 2014 date credited to the wrong source",
+   "site banner hours / 'Gösta Pavilion' name"
+  ],
+  "before": "the manor Gösta Serlachius had built as his residence ... Joenniemi Manor, built in 1935, was restored in 1983 and 1984 ... (Finnish Architecture, foundation page). The Gösta Pavilion ... opened in summer 2014 (Finnish Architecture)",
+  "after": "Serlachius Manor (Kartano, Joenniementie 47) ... Joenniemi Manor was built in 1935 (Finnish Architecture) and thoroughly restored in 1983 and 1984 ... (foundation page). Gösta's Pavilion ... (Finnish Architecture); the foundation page dates the new museum building to summer 2014.",
+  "sources": [
+   "https://www.finnisharchitecture.fi/projects/serlachius-museum-gostas-pavilion",
+   "https://serlachius.fi/en/",
+   "https://serlachius.fi/en/goesta-serlachius-fine-arts-foundation/"
+  ],
+  "reason": "Finnish Architecture gives MX_SI, Huttunen-Lipasti-Pakkanen, the 2011 open competition, 5,700 square metres and the 1935 manor, but lists completion as 2015; the foundation page says summer 2014, so both are shown. Home page confirms addresses, 10,000 works, hours 11:00 to 18:00, Tuesday sauna days, residency, Anish Kapoor dates."
+ },
+ {
+  "id": "serpentine-galleries",
+  "section": "RED FLAGS",
+  "problems": [
+   "'In March 2021 the gallery dropped the name': article gives no removal date",
+   "'Sackler name stayed ... until January 2022': article says early 2022 (article dated 12 January 2022)",
+   "spokeswoman wording not exact; 'planned in phases' quote partial",
+   "documented objection (Hito Steyerl, criticism for not distancing sooner) omitted",
+   "'did not tie the change to the opioid crisis' stronger than source"
+  ],
+  "before": "In March 2021 the gallery dropped the Sackler name on its website ... The Sackler name stayed above the main entrance until January 2022. A spokesperson called the removal 'the result of discussions' with the board, and the Sackler foundation was consulted beforehand",
+  "after": "By 25 March 2021 the gallery had removed the Sackler name from its website and exhibition archive and called the space Serpentine North, while the name remained on the building's facade ... The Sackler name stayed above the main entrance until early 2022 ... the Serpentine had been criticised for not distancing itself from the name sooner, including by exhibiting artist Hito Steyerl",
+  "sources": [
+   "https://www.theartnewspaper.com/2021/03/25/serpentine-drops-sackler-name-following-rebranding",
+   "https://www.theartnewspaper.com/2022/01/12/serpentine-removes-sackler-name-from-building-replacing-it-with-north"
+  ],
+  "reason": "Item 1: The Art Newspaper, José da Silva and Cristina Ruiz, 'London's Serpentine Galleries drops Sackler name following 'rebranding'' (25 March 2021): name quietly removed from website and exhibition archive, facade unchanged, gallery denies a link to the Sackler controversy, 'rebranding process', 2019 'no future plans', 5.5 million pound 2013 donation from a foundation run by Theresa and Mortimer Sackler, no trustee minutes published, Purdue bankruptcy 15 March. Item 2: José da Silva, 'London's Serpentine Galleries finally removes Sackler name from building, replacing it with North' (12 January 2022): removal early 2022, 'result of discussions' with the board, Sackler foundation consulted, 'rebrand was planned in phases', criticism incl. Hito Steyerl. Flag kept: removal and a documented objection both on the pages; the gallery itself denies pressure."
+ },
+ {
+  "id": "serpentine-galleries",
+  "section": "FUNDING",
+  "problems": [
+   "two bullets merged into one line",
+   "charity number credited to the gallery site (OpenCharities gives it)",
+   "'Maja Hoffmann' differs from source spelling 'Maja Hoffman'",
+   "'25th anniversary' not in the press release",
+   "unsupported: 'architect who has not yet built in England'",
+   "bottom line 'built Serpentine North' stronger than source (the gift led to the naming)"
+  ],
+  "before": "in the year to 31 March 2025.- Michael R. Bloomberg is chair of the trustees ... Maja Hoffmann ... the Zaha Hadid Foundation is a partner for the 25th anniversary (Serpentine press release) ... gift of £5.5 million that built Serpentine North",
+  "after": "in the year to 31 March 2025 (OpenCharities).\n- Michael R. Bloomberg is chair of the trustees, appointed 14 January 2014 (OpenCharities) ... Maja Hoffman ... the press release names a special partnership with the Zaha Hadid Foundation (Serpentine) ... gift of £5.5 million that led to the gallery being named for the Sackler family",
+  "sources": [
+   "https://opencharities.uk/ew/298809",
+   "https://www.serpentinegalleries.org/about/",
+   "https://www.serpentinegalleries.org/about/press/lanza-atelier-founded-by-isabel-abascal-and-alessandro-arienzo-selected-for-the-serpentine-pavilion-2026/"
+  ],
+  "reason": "Confirmed: gallery's own About page says 5% of annual income from Arts Council England and 95% from individual donors, corporate supporters, charitable trusts and earned income; income 14,756,643 and expenditure 15,553,882 to 31 March 2025; Bloomberg chair since 14 January 2014 (OpenCharities); Goldman Sachs 'for the 12th consecutive year' and Rolex per the 2026 Pavilion press release."
+ },
+ {
+  "id": "serralves-museum-of-contemporary-art",
+  "section": "RED FLAGS (Mapplethorpe)",
+  "problems": [
+   "'two galleries restricted to visitors aged 18 and over': article says two rooms restricted to under-18s, who may enter with an adult",
+   "who removed the works not stated",
+   "board agreement quote incomplete; foundation statement date/placement",
+   "open letter paraphrase added 'US culture wars' not confirmed"
+  ],
+  "before": "Twenty works were removed ... two galleries were restricted to visitors aged 18 and over. The director João Ribas, appointed in January 2018, resigned and said he was 'no longer able to lead the institution' ... The foundation said the removal of the 20 works was the curator's sole decision and 'do not correspond to any form of censorship'",
+  "after": "Twenty of the 179 planned works were left out ... two rooms were restricted to visitors under 18, who could enter only with an adult. A Serralves spokesman told Público the works were removed by the curator, João Ribas ... A Serralves Foundation statement of 28 September, added to the article, said the 20 works were left out 'at the sole decision of the curator' ... The removal and the age restriction were the museum's own actions, by its curator and board.",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/09/24/wolfgang-tillmans-and-tania-bruguera-pledge-support-for-censored-serralves-museum-director"
+  ],
+  "reason": "The Art Newspaper, Gareth Harris and José da Silva, 'Wolfgang Tillmans and Tania Bruguera pledge support for censored Serralves Museum director', 24 September 2018 (update of 28 September, year not printed): 179 works planned, 159 shown, 20 removed by the curator per a Serralves spokesman to Público and the foundation's statement; Ribas appointed January 2018 and stepped down (no resignation date given); open letter of more than 150 signatories incl. Tillmans, Bruguera, Stuart Comer, addressed to Ana Pinho; letter calls invoking Portuguese law on 'pornographic' material 'disingenuous and insulting'; board agreed with Ribas's reserved-area proposal. No Portuguese government body is described as acting, so the actor is the institution itself (curator and board): flag kept under State censorship or punishment (space itself acted); the Portuguese state did not censor."
+ },
+ {
+  "id": "serralves-museum-of-contemporary-art",
+  "section": "RED FLAGS (GALP)",
+  "problems": [
+   "Galp description 'petroleum company ... crude oil refining' not Wikipedia wording",
+   "Patron Founder years need to be tied to the Annual Fund lists"
+  ],
+  "before": "Wikipedia describes Galp as a Portuguese petroleum company active in oil and gas exploration and production and crude oil refining",
+  "after": "GALP Energia, SGPS, S.A. is listed as a Patron Founder in the 2021, 2022, 2023 and 2024 lists, each naming the founders who contributed to the Annual Fund that year (Serralves). ... Wikipedia describes Galp as a Portuguese multinational energy company whose activities cover oil and gas exploration and production, refining and retail, with co-generation and renewables, and calls it the largest oil and gas group in Portugal as of 2020.",
+  "sources": [
+   "https://www.serralves.pt/en/institucional-serralves/1.82.-_ok-apoiar---fundadores-patrono/",
+   "https://en.wikipedia.org/wiki/Galp_Energia"
+  ],
+  "reason": "Serralves Patron Founder pages list GALP Energia, SGPS, S.A. in 2021, 2022, 2023 and 2024 (59 names in the 2024 list; Galp not named on the Maecenas and Sponsors page). 2024 is within five years and Galp is an oil and gas group, so the Fossil fuels flag is kept; no amount given."
+ },
+ {
+  "id": "serralves-museum-of-contemporary-art",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "absence clause 'with no amounts given'",
+   "funding from a logo (Co-financing section logo identified only by alt text): cut",
+   "'State bought the estate in December 1986': Wikipedia gives both December and October 1986",
+   "visitor source 'Lusa' not shown on the opened page",
+   "'State-created' and 'co-financing' in bottom line"
+  ],
+  "before": "Its 'Co-financing' section shows the logo of the Portuguese Republic, with no amounts given (Serralves) ... (Lusa, 17 December 2024)",
+  "after": "the sponsorship contributions of the Founders, alongside the subsidy support provided by the State, play a key role in the foundation's financial equilibrium (Serralves, Maecenas and Sponsors page) ... (Notícias ao Minuto, 17 December 2024, title translated)",
+  "sources": [
+   "https://www.serralves.pt/en/institucional-serralves/1.84.-_nok-apoiar---mecenas-e-patrocinadores/",
+   "https://www.noticiasaominuto.com/cultura/2691619/serralves-conta-encerrar-2024-com-1-24-milhoes-de-visitantes",
+   "https://en.wikipedia.org/wiki/Serralves"
+  ],
+  "reason": "Notícias ao Minuto gives 1.24 million projected for 2024 and 1.1 million for 2023. Tax benefit 130% and 140% and the sponsor types confirmed. Wikipedia: 29 May 1987, 1989, 6 June 1999, 181 founders, Siza 4,500 sqm and 14 galleries."
+ },
+ {
+  "id": "setouchi-triennale-takamatsu",
+  "section": "RED FLAGS (arms and defence, Kawasaki Heavy Industries)",
+  "problems": [
+   "flag not supported: diversified conglomerate whose defence line is not the largest"
+  ],
+  "before": "Red flags: arms and defence, Kawasaki Heavy Industries | - Kawasaki Heavy Industries is a Corporate Sponsor as of February 2025 | - Wikipedia states that it is a contractor for Japan's Ministry of Defence ...",
+  "after": "Red flags heading deleted. FUNDING bullet: Kawasaki Heavy Industries is a diversified manufacturer; its own results page (first quarter FY2026) gives revenue of 170.7 billion yen for Powersports & Engine, 137.6 for Aerospace Systems, 86.9 for Energy Solution & Marine Engineering, 69.5 for Precision Machinery & Robot and 60.1 for Rolling Stock; Kaisha Danmen gives FY2025 Power Sports & Engines 682.81 billion yen (29.5%) against Aerospace Systems 613.69 billion (26.6%); Wikipedia states it is a contractor for the Ministry of Defence.",
+  "sources": [
+   "https://global.kawasaki.com/en/corp/ir/financial/business_segment/risk.html",
+   "https://kaisha-danmen.jp/en/companies/E02127",
+   "https://en.wikipedia.org/wiki/Kawasaki_Heavy_Industries"
+  ],
+  "reason": "Diversified-conglomerate rule: arms count only if the arms line is the largest. Kawasaki's own segment page and the aggregator both show Powersports & Engine (motorcycles) largest; the whole Aerospace Systems segment (civil and defence) is smaller, so defence cannot be the largest line. Kawasaki's FY2025 results PDFs could not be read as text, so the full-year figures come from the third-party site. No flag; the bottom line no longer calls Kawasaki a defence contractor."
+ },
+ {
+  "id": "setouchi-triennale-takamatsu",
+  "section": "RED FLAGS (gambling, Chari-Loto)",
+  "problems": [
+   "PayPay page alone does not say who runs Chari-Loto; added the company's own page",
+   "'users in Japan aged 20 and over' wording"
+  ],
+  "before": "PayPay Bank's Chari-Loto page describes it as an online betting service for keirin and auto race tickets, for users in Japan aged 20 and over.",
+  "after": "Chari-Loto's own company page describes 株式会社チャリ・ロト as a wholly owned subsidiary of MIXI that runs the internet betting site Chari-Loto for keirin and auto race tickets, sold since April 2008, and provides operating services for keirin venues including Takamatsu (chariloto.jp/company). PayPay Bank's page describes Chari-Loto as an internet betting service for keirin and auto race with an age limit of 20 (translated).",
+  "sources": [
+   "https://chariloto.jp/company/",
+   "https://www.paypay-bank.co.jp/racing/register/chariloto.html",
+   "https://www.chariloto.com/"
+  ],
+  "reason": "Public-lottery exemption does not apply: the company page shows a private company (subsidiary of MIXI) selling betting tickets on keirin and auto race and operating venues; the PayPay page (partly garbled) calls the races public-run (公営競技) and says users register with local governments but names no operator. Corporate Sponsor line, dated February 2025 on the festival's 2025 sponsor page, is current. Flag kept."
+ },
+ {
+  "id": "setouchi-triennale-takamatsu",
+  "section": "RED FLAGS (tobacco, fossil fuels)",
+  "problems": [
+   "'international arm is one of the three largest' not in Wikipedia wording",
+   "37.57% undated (infobox)",
+   "Cosmo Oil and Okayama Gas descriptions imprecise"
+  ],
+  "before": "Wikipedia describes Japan Tobacco as a diversified tobacco company, whose international arm is one of the three largest international tobacco manufacturers ... The Ministry of Finance owns 37.57% of the company.",
+  "after": "Wikipedia describes Japan Tobacco as a Japanese diversified tobacco company and one of the three largest international tobacco product manufacturers in the world ... Wikipedia's infobox gives the Ministry of Finance 37.57% of the company. / Wikipedia describes Cosmo Oil as a Japanese petrochemical company and Japan's third-biggest refiner by sales after Eneos and Idemitsu Kosan ... / Japanese Wikipedia describes Okayama Gas as a general gas utility and the largest city gas company in Okayama Prefecture ...",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Japan_Tobacco",
+   "https://en.wikipedia.org/wiki/Cosmo_Oil_Company",
+   "https://ja.wikipedia.org/wiki/岡山ガス"
+  ],
+  "reason": "Japan Tobacco (tobacco) and Cosmo Oil (refiner) kept: Corporate Sponsors on the festival's 2025 sponsor page dated February 2025 (the page lists all seven companies). Okayama Gas kept under Fossil fuels as a city gas utility; the page does not name the gas type. Shikoku Electric Power and Mitsui & Co. are not flagged. No amounts are on the page."
+ },
+ {
+  "id": "setouchi-triennale-takamatsu",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "absence clauses 'It gives no amounts', 'No amounts are given', 'no amounts published'",
+   "Soichiro Fukutake role differs between sources",
+   "'followed the Fukutake family's Benesse Art Site project on Naoshima' not in source",
+   "visitor figure rounded (108.4万)"
+  ],
+  "before": "Soichiro Fukutake is general producer ... followed the Fukutake family's Benesse Art Site project on Naoshima ... about 1.08 million visitors",
+  "after": "Japanese Wikipedia lists Soichiro Fukutake as general producer; the festival's page lists him as Honorary Adviser (Honorary Chairman, Fukutake Foundation) ... Benesse Art Site as the collective title for the Benesse-initiated art projects on Naoshima, Teshima and Inujima ... about 1.084 million visitors in total",
+  "sources": [
+   "https://setouchi-artfest.jp/en/about/",
+   "https://ja.wikipedia.org/wiki/瀬戸内国際芸術祭",
+   "https://en.wikipedia.org/wiki/Setouchi_Triennale"
+  ],
+  "reason": "Festival 'about' page: Toyohito Ikeda president (Governor of Kagawa), Kitagawa General Director, 17 islands and coastal areas, nine sites in all three seasons, theme 'Restoration of the Sea'. Sponsor page groups: Partners 17, Corporate Donors 13, Individual Donors 3."
+ },
+ {
+  "id": "shedhalle-zurich",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Hartwig Art Foundation and Schering Stiftung credits (not on the opened page)",
+   "absence clause 'No amounts are given'",
+   "'the city subsidised' not stated by SRF (the operation is subsidised 2.4 million francs a year)",
+   "'2025 anniversary project' year not on the page"
+  ],
+  "before": "- The city subsidised the whole Rote Fabrik centre with 2.4 million francs a year as of 2020 ... - Exhibition credits name the Hartwig Art Foundation, Amsterdam, for Liam Gillick's reading, and Schering Stiftung for a photo credit.",
+  "after": "- SRF reports that the Rote Fabrik operation is subsidised with 2.4 million francs a year and that its funding and status remain subject to political debate (SRF, 12 March 2020, translated). This is the whole centre, not the Shedhalle alone.",
+  "sources": [
+   "https://www.srf.ch/news/40-jahre-rote-fabrik-zuerich-ein-kind-des-kulturkampfs",
+   "https://shedhalle.ch/en/agenda/loving-shedhalle-2/"
+  ],
+  "reason": "SRF Regionaljournal, 12 March 2020: 'Der Betrieb wird jährlich mit 2,4 Millionen Franken subventioniert'; STR left 1972, city bought site, provisional cultural centre October 1980, 1987 vote. Loving Shedhalle page lists the Cultural Fund of the Canton of Zurich, City of Zurich Contribution Fund, Memoriav, Ernst Göhner, Stanley Thomas Johnson, Else v. Sick, Cassinelli-Vogel, Dr. Adolf Streuli, videocompany.ch and ZHdK; Hartwig and Schering are not on it. Board names and Kultur Stadt Zürich seat confirmed."
+ },
+ {
+  "id": "shedhalle-zurich",
+  "section": "OVERVIEW / CRITICISM",
+  "problems": [
+   "'mid-1980s' vs page 'in 1986'",
+   "'international recognition' (source: 'wide renown')",
+   "'the city uses' not in source",
+   "Fillip item wording ('too professionalised and exclusionary')"
+  ],
+  "before": "It evolved in the mid-1980s ... gained international recognition ... Some artists felt the Shedhalle had become too professionalised and exclusionary",
+  "after": "It evolved in 1986 ... gained wide renown ... Some Freie Szene artists felt the Shedhalle had become so professionalised that it was closed to them",
+  "sources": [
+   "https://shedhalle.ch/en/about-en/info/",
+   "https://fillip.ca/content/we-want-everything"
+  ],
+  "reason": "Fillip 4 (Fall 2006), Barnaby Drabble, 'We Want Everything: Assembled Thoughts on Artist-led Culture in Zürich': curators Katharina Schlieben and Sönke Gau answered, Drabble faults both sides ('ritualized protest', imposed 'constructive' dialogue); item kept."
+ },
+ {
+  "id": "shepparton-art-museum-shepparton",
+  "section": "FUNDING",
+  "problems": [
+   "absence clause 'The list gives no amounts or tiers'",
+   "'material financial surplus' not supported ('material' in the report describes visitation; the Director of Business report says 'a healthy year-end')",
+   "'dates the move to independence to a gift' stronger than text ('catalysed in 2012 by the promise of a ... gift')",
+   "'Zurcas Family Landing' (caption says 'Zurcas Landing'); amphitheatre 'named after' not stated",
+   "verdict 'public and philanthropic' without a page"
+  ],
+  "before": "The list gives no amounts or tiers. ... The annual report records a material financial surplus for 2024/25 ... names the outdoor amphitheatre after the Sir Andrew and Lady Fairley Foundation.",
+  "after": "The report also thanks cash donors who gave at the museum and attended SAM Foundation events. ... The Director of Business report says the organisation posted \"a healthy year-end\" in 2024/25 ... refers to the Sir Andrew Fairley and Lady Fairley Foundation Amphitheatre.",
+  "sources": [
+   "https://sheppartonartmuseum.com.au/wp-content/uploads/2025/12/SAM-AnnualReport24-25-WEB.pdf",
+   "https://en.wikipedia.org/wiki/Shepparton_Art_Museum"
+  ],
+  "reason": "The annual report PDF could not be read by the fetch tool; its text was extracted locally. The donor list headed 'during 2024/25' matches the names in the report (Greater Shepparton City Council, Creative Victoria, Bega Cheese Limited, Sir Andrew & Lady Fairley Foundation, Carrillo Gantner AC & Ziyin Gantner, Zurcas Family, Attwood, Bowden Marstan and Montgomery foundations, Committee for Greater Shepparton, Friends of SAM, La Trobe University, University of Melbourne, Victorian Challenge and Enrichment Series). The income note's labels are not readable in the PDF text, so the record's claim of 2.57 million dollars from the council out of 3.18 million revenue and the 1 dollar lease could not be confirmed and are not in the report. Board: Stephen Merrylees chair of SAM Ltd, Clare Pullar chair of the SAM Foundation, John Dewar AO joined."
+ },
+ {
+  "id": "shepparton-art-museum-shepparton",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict 'public and philanthropic' and 'led by the Gantner, Fairley and Zurcas families' not supported (list is alphabetical, no amounts)",
+   "'ran the gallery' wording"
+  ],
+  "before": "The money behind Shepparton Art Museum is public and philanthropic: ... a named donor list led by the Gantner, Fairley and Zurcas families and Bega Cheese.",
+  "after": "The money behind Shepparton Art Museum is the Greater Shepparton City Council, which previously managed the museum before the non-profit SAM Ltd took over (Wikipedia), Creative Victoria, and donors named in the 2024/25 annual report, including Bega Cheese Limited, the Sir Andrew & Lady Fairley Foundation, Carrillo Gantner AC & Ziyin Gantner and the Zurcas Family.",
+  "sources": [
+   "https://sheppartonartmuseum.com.au/wp-content/uploads/2025/12/SAM-AnnualReport24-25-WEB.pdf"
+  ],
+  "reason": "The donor roll is alphabetical with no amounts or tiers, so 'led by' is not supported."
+ },
+ {
+  "id": "singapore-art-museum-sam",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "absence clause 'No amounts are given'",
+   "vague funder in bottom line: 'Singapore business families and foundations' and 'foreign cultural funds'",
+   "verdict 'state-linked' adjective",
+   "Mapletree line misdescribed (support was for This Little Red Dot, sixth edition, 60th birthday)"
+  ],
+  "before": "Its benefit supporters include DBS Bank Ltd, Diageo Rare & Exceptional and Wing Tai Holdings Ltd. No amounts are given. ... Its private money is a named list of Singapore business families and foundations, Mapletree, the Singapore Tourism Board and foreign cultural funds, plus a Tote Board matching grant for its 2026 benefit.",
+  "after": "Its list of benefit supporters includes DBS Bank Ltd, Diageo Rare & Exceptional and Wing Tai Holdings Ltd. ... The FY2025 report names donors including Mapletree Investments, the Singapore Tourism Board, the Lee Foundation, the Tanoto Art Foundation, Pro Helvetia and Culture Ireland, and records a Tote Board matching grant for the 2026 benefit, which raised about S$1.95 million.",
+  "sources": [
+   "https://www.singaporeartmuseum.sg/-/media/SAM/Files/Financial-Reports/FY2025/SAM-AR-FY2025.pdf",
+   "https://www.singaporeartmuseum.sg/about"
+  ],
+  "reason": "FY2025 report (text extracted locally; fetch tool could not read the PDF): Donors and Sponsors list and the SAM Benefit Supporters list confirmed; 30th Anniversary Benefit 23 January 2026, more than 240 supporters, about S$1.95 million with a matching grant under the Tote Board Enhanced Fundraising Programme; 'major support from Mapletree and venue support from VivoCity' for This Little Red Dot; Pierre Lorinet and Pierre and Bolor Lorinet both appear. About page: board and ex-officio members (Audrey Tan, Ministry of Culture, Community and Youth; Elaine Ng, CEO of the National Arts Council) and annual reports FY2015 to FY2025 confirmed. Pierre Lorinet is a Non-Executive Director of Trafigura Group Pte Ltd and a donor in his own name and a founding-benefactor-level ART SG Fund contributor (ART SG, 26 November 2025: fund grew from SGD 150,000 to SGD 250,000); a trustee's employer is not a funder, so no flag."
+ },
+ {
+  "id": "singapore-art-museum-singapore",
+  "section": "ALL (same text as singapore-art-museum-sam)",
+  "problems": [
+   "same fixes as singapore-art-museum-sam; only the ID line differs"
+  ],
+  "before": "see singapore-art-museum-sam",
+  "after": "identical text to singapore-art-museum-sam apart from 'ID: singapore-art-museum-singapore'",
+  "sources": [
+   "https://www.singaporeartmuseum.sg/about",
+   "https://www.singaporeartmuseum.sg/-/media/SAM/Files/Financial-Reports/FY2025/SAM-AR-FY2025.pdf"
+  ],
+  "reason": "Two records for one museum; each keeps its own file. Eugene Tan: Director of SAM since 2019 and CEO of National Gallery Singapore and SAM and Head of the Visual Arts Cluster (Gallery, SAM, STPI) from 1 April 2024 (National Gallery Singapore media release, 13 March 2024)."
+ },
+ {
+  "id": "site-gallery-sheffield",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "absence clause 'none with amounts or years'",
+   "'future support' from Fidelity UK Foundation (accounts: supporting strategic development work over two years)",
+   "'filed with the Charity Commission' not shown on the opened page (OpenCharities copy of the accounts)"
+  ],
+  "before": "It also thanks individual donors by name, none with amounts or years. ... The accounts also mention future support from the Fidelity UK Foundation ... The accounts are filed with the Charity Commission and the funders are named.",
+  "after": "It also thanks its individual donors. ... The accounts name the Fidelity UK Foundation as supporting strategic development work over two years. ... The accounts for the year to 31 March 2025 name the funders and the grants.",
+  "sources": [
+   "https://opencharities.uk/ew/510322/files/2025-03-31-accounts.html",
+   "https://www.sitegallery.org/about/supporters/"
+  ],
+  "reason": "Accounts (OpenCharities OCR copy) confirm: income 564,870 (2024: 539,493), expenditure 654,207, funds 1,365,269 to 1,275,932; Arts Council England National Portfolio Funding 319,887; Sheffield City Council 21,700 and Low Carbon Capital 25,658; Esmée Fairbairn 37,500 and 1,100; JG Graves 5,000; Jerwood Arts and Southwark Park Galleries 4,000; University of Sheffield 3,000; DWP Access to Work 6,853; Freelands 14,000 (2024 only); rent 43,507, café franchise 18,008, other trading 40,934, exhibition tax relief 31,244, donations and legacies 1,449; charity 510322, company 01495927, Chief Executive Judith Harry. Supporters page: funder list and 2018 capital expansion funders (incl. Foyle, Garfield Weston, Wolfson) confirmed. Wikipedia: 1978, 1979 Untitled Gallery, 1996, 1988 Brown Street, Matthew Conduit, Sharna Jackson since July 2018."
+ },
+ {
+  "id": "scottsdale-museum-of-contemporary-art-scottsdale",
+  "section": "LENGTH",
+  "problems": [
+   "over 800 words (863 without SOURCES)"
+  ],
+  "before": "long sponsor list, hours and admission detail, Mimosa House 'five chapters in 2024' (not in an opened page)",
+  "after": "sponsor list shortened to the organisations, hours and admission condensed, 'five chapters in 2024' cut; 770 words",
+  "sources": [
+   "https://arizonadigitalfreepress.com/scottsdale-arts-announces-new-performances-for-the-2024-25-season/",
+   "https://southwestcontemporary.com/transfeminisms/"
+  ],
+  "reason": "Peripheral detail cut; FUNDING, RED FLAGS, BOTTOM LINE and SOURCES kept. Mimosa House staging in five chapters in 2024 was not on any opened page; KJZZ says the show was called Transfeminisms in London."
+ },
+ {
+  "id": "serpentine-galleries",
+  "section": "LENGTH",
+  "problems": [
+   "over 800 words (897 without SOURCES)"
+  ],
+  "before": "full trustee list, Rolex and Zaha Hadid Foundation, 2026 exhibition programme, duplicate Sackler gift bullet in FUNDING",
+  "after": "Bloomberg named as chair with four other trustees named; Goldman Sachs Pavilion line kept; duplicate bullet and 2026 programme cut (exhibition programme source removed from SOURCES); 782 words",
+  "sources": [
+   "https://opencharities.uk/ew/298809",
+   "https://www.serpentinegalleries.org/about/press/lanza-atelier-founded-by-isabel-abascal-and-alessandro-arienzo-selected-for-the-serpentine-pavilion-2026/"
+  ],
+  "reason": "Peripheral detail cut; the Sackler gift stays under Red flags."
+ },
+ {
+  "id": "serralves-museum-of-contemporary-art",
+  "section": "LENGTH",
+  "problems": [
+   "over 800 words (914 without SOURCES)"
+  ],
+  "before": "full list of 59 Patron Founders, Maecenas roles list",
+  "after": "2024 Patron Founders list condensed to 14 corporate names, GALP Energia and eight municipalities with the count of 59; 782 words",
+  "sources": [
+   "https://www.serralves.pt/en/institucional-serralves/1.82.-_ok-apoiar---fundadores-patrono/"
+  ],
+  "reason": "GALP Energia, SGPS, S.A. kept by name in the list and under Red flags."
+ }
+]
