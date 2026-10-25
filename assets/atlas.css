@@ -1935,6 +1935,15 @@ div:has(>#topThemeBtn){column-gap:0}
   :root:root #dossier-bottom-sheet .facts{padding-top:0!important}
   :root:root:root body :is(h2.lede,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.record-popup-name,#floatingCardTitle){letter-spacing:.02em!important}
 }
+/* The chat's buttons take the header's and the tabs' size (25 Oct 2026): 44px high (var(--bar)), large type (--fs-l), 16px side padding, square, hairline. Voice, the send arrow and the tab bar's New Query were three different heights and sizes (about 38px, 48px, and 15px type). Desktop only; the phone's composer keeps its own tap sizes. */
+@media (min-width:768px){
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #workSendBtn:not(.is-on){height:var(--bar);min-height:var(--bar);box-sizing:border-box;padding:0 16px}
+  :root[data-theme] #workInputCard #workSendBtn:not(.is-on){width:var(--bar);min-width:var(--bar);padding:0}
+  :root[data-theme] #workInputCard #workSendBtn:not(.is-on) svg{width:20px;height:20px}
+  :root[data-theme] #workInputCard #chatShareBtn.is-on{height:var(--bar);box-sizing:border-box;padding:0 16px}
+  #workspaceNewChatBtn{font:400 var(--fs-l)/1 var(--sans)!important}
+}
+
 
 /* ---- Details as rows (25 Oct 2026), after a font-licence page the user showed ----
    Each part of the account is a row under a hairline: on the left its title in the accent colour with what it comes to beneath
@@ -1956,6 +1965,11 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li+li{margin-top:calc(var(--H) / 2)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li::before{content:"\2022";position:absolute;left:0;top:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .lead-in{font-weight:600}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .d-cite{display:block;margin:0;font-size:var(--fs-s);line-height:var(--lh);opacity:.75;text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li>.d-cite:first-child{margin-bottom:calc(var(--H) / 4)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-media{display:block;width:100%;max-width:20em;height:9em;object-fit:cover;margin:var(--H) 0 0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-action{margin-top:var(--H)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list.review-list{list-style:none}
 @container (max-width:34em){
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr);row-gap:var(--H);align-items:start}
 }
