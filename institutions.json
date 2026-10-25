@@ -16337,7 +16337,74 @@
     "grade": 3,
     "grade_basis": "No flagged funder, but on record: protests or a boycott.",
     "records_note": "Names its public funders with no date and lists its trustees; no annual report on the site, Form 990s for 2001 to 2025 on ProPublica.",
-    "finances_note": "FY2024-25 income USD 7.79M: about 67 percent government grants, 29 percent other donations and gifts, 3 percent earned (Form 990, Part VIII)."
+    "finances_note": "FY2024-25 income USD 7.79M: about 67 percent government grants, 29 percent other donations and gifts, 3 percent earned (Form 990, Part VIII).",
+    "details": {
+      "overview": [
+        "Art museum and educational centre in the New York City Building in Flushing Meadows Corona Park, Queens, on the site of the 1939-40 and 1964-65 World's Fairs; the building is owned by the City of New York (museum website).",
+        "Opened in November 1972 as the Queens County Art and Cultural Center and was renamed the Queens Museum in 1973 (Wikipedia).",
+        "The building was designed by Aymar Embury II as the New York City Pavilion for the 1939 World's Fair; it housed the UN General Assembly from 1946 to 1951 (Wikipedia). The 1947 UN vote on the partition of Palestine took place on the site (Hyperallergic).",
+        "Open Wednesday to Friday 12 pm to 5 pm and Saturday and Sunday 11 am to 5 pm; closed Monday and Tuesday (museum website). Wikipedia states that admission is pay what you want."
+      ],
+      "funding_verdict": "Queens Museum: public funds from New York City, New York State and Queens officials, plus members and trustees",
+      "funding": [
+        "The museum website states that its support comes in part from the New York City Department of Cultural Affairs, with assistance from the Queens Borough President and the New York City Council, and from the New York State Council on the Arts. It also lists the Board of Trustees, members and friends.",
+        "Capital money: Wikipedia lists $10.6 million from Queens Borough President Helen Marshall in 2006, $26.4 million from the city in 2021, and $8.5 million each from the city (2023) and the state (2025) for the Suna Children's Museum wing. Hyperallergic confirms the $26.4 million city award of 2021 for the second phase of expansion."
+      ],
+      "red_flags": [
+        {
+          "heading": "Protest or boycott",
+          "points": [
+            "2017: the museum cancelled, then reinstated, an on-site event organised by Israel's ambassador to the UN, Danny Danon, to commemorate the 70th anniversary of Israel's founding with a reenactment of the 1947 UN partition vote. Hyperallergic, citing the Jerusalem Post, reported that director Laura Raicovich told Danon she was reversing her approval, citing concerns from \"Palestinian friends of the museum\", and that her message said the board had voted not to hold a \"political event.\" Danon called for her immediate dismissal. Councilman Rory Lancman and Assemblyman Michael Simanowitz called the decision \"a disgrace and a violation of law.\" After what the museum described as a \"productive conversation\" with Danon, it reversed its decision and said it would work with the Israeli Mission on the commemoration (Hyperallergic, Claire Voon, 18 August 2017).",
+            "2023: in October, 17 Queens Museum employees signed a letter asking leadership to address the building's history as the site of the 1947 UN vote and to speak publicly on Palestine. Several signatories joined a strike for Palestine on 20 October. Staff then described heightened surveillance, and the director said circulating the letter and strike call by museum email broke museum policy. At a staff meeting on 16 November Tallant said the museum \"is not able to make political statements\" and cited its nonprofit status, its bylaws and the American Alliance of Museums code of ethics (Hyperallergic, Maya Pontone, 17 November 2023)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "Hyperallergic reported two episodes in which the museum was criticised: by Israeli and New York officials in 2017, and by its own staff in 2023.",
+        "items": [
+          {
+            "outlet": "Hyperallergic",
+            "title": "Claire Voon, \"Queens Museum Cancels, Then Reinstates Israel-Sponsored Event After Accusations of Antisemitism\" (2017)",
+            "url": "https://hyperallergic.com/396426/queens-museum-israel-event-antisemitism/",
+            "points": [
+              "Reports that the museum cancelled an on-site event for the 70th anniversary of Israel's founding, organised by Danon, and reversed the decision after objections from Danon and New York officials, including Comptroller Scott Stringer, who said it sent \"a disappointing message.\"",
+              "Reports the museum's statement that it would work with the Israeli Mission on the commemoration of the 1947 vote."
+            ]
+          },
+          {
+            "outlet": "Hyperallergic",
+            "title": "Maya Pontone, \"Queens Museum Director Declines to Issue Statement on Gaza\" (2023)",
+            "url": "https://hyperallergic.com/857430/queens-museum-director-declines-to-issue-statement-on-gaza/",
+            "points": [
+              "Reports a staff letter signed by 17 employees, a strike on 20 October 2023 and staff accounts of surveillance.",
+              "The museum declined to issue a statement on Palestine."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The documented money behind the Queens Museum is a city-owned building, public funds from the New York City Department of Cultural Affairs, the Queens Borough President, the City Council and the New York State Council on the Arts, capital grants from the city and state, plus members and trustees. The documented points are the two protest episodes, the 2017 pressure over the cancelled Israeli Mission event and the 2023 staff letter and strike over the museum's silence on Palestine.",
+      "sources": [
+        {
+          "url": "https://queensmuseum.org/about"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Queens_Museum"
+        },
+        {
+          "url": "https://hyperallergic.com/396426/queens-museum-israel-event-antisemitism/"
+        },
+        {
+          "url": "https://hyperallergic.com/857430/queens-museum-director-declines-to-issue-statement-on-gaza/"
+        },
+        {
+          "url": "https://hyperallergic.com/queens-museum-leader-sally-tallant-to-step-down-after-seven-years"
+        }
+      ],
+      "website": "https://queensmuseum.org",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "SculptureCenter",
@@ -19830,7 +19897,87 @@
     "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Remai%20Modern",
     "tier_note": "No reason for the flag is recorded.",
     "records_note": "It posts reports for 2016 to 2025 with a 2025 donor list and its board, but audited accounts are available only on request.",
-    "affiliations_note": "Remai Modern replaced the Mendel Art Gallery and holds the Mendel Art Gallery Collection. Member of CIMAM."
+    "affiliations_note": "Remai Modern replaced the Mendel Art Gallery and holds the Mendel Art Gallery Collection. Member of CIMAM.",
+    "details": {
+      "overview": [
+        "Public art museum at 102 Spadina Crescent East in Saskatoon, Saskatchewan, on the west bank of the South Saskatchewan River (museum website, Wikipedia).",
+        "Incorporated as the Art Gallery of Saskatchewan on 9 July 2009 after a plan to renovate the Mendel Art Gallery was abandoned; it opened to the public on 21 October 2017 and became Remai Modern in 2016 (Wikipedia).",
+        "Named for Ellen Remai, whose donation helped fund it; the collection grew out of the Mendel Art Gallery, which operated from 1964 to 2015 (museum website).",
+        "Bruce Kuwabara of KPMB Architects designed the building (Wikipedia).",
+        "Aileen Burns and Johan Lundh are the co-executive directors and CEOs (museum website).",
+        "Open Wednesday, Saturday and Sunday 10 am to 5 pm, Thursday and Friday 10 am to 9 pm; closed Monday and Tuesday (museum website).",
+        "204,352 people visited in 2025, and the museum reported a surplus of $95,027 (2025 annual report)."
+      ],
+      "funding_verdict": "Remai Modern: mainly public: City of Saskatoon operating grants, with a lead private donor, arts-council grants and corporate sponsors",
+      "funding": [
+        "2025 operating revenue was C$13.087 million: City of Saskatoon grants C$6.652 million, other grants C$728,000, self-generated revenue C$3.655 million, donations and sponsorships C$1.952 million, interest C$99,000. The City of Saskatoon grants are about 51% of revenue. The annual report states that the accounts are audited by Deloitte LLP (2025 annual report).",
+        "Core funders named in the 2025 annual report: the Frank and Ellen Remai Foundation (lead donor), the City of Saskatoon, the Canada Council for the Arts, SK Arts and Sask Lotteries.",
+        "Operating grants in the 2025 donor list: the Canada Council for the Arts, the Sask Lotteries Trust Fund for Sport, Culture and Recreation (via SaskCulture) and SK Arts. Project grants: Canadian Heritage, Creative Australia, the Embassy of Sweden, the Government of Saskatchewan, PrairiesCan, the Terra Foundation for American Art and Tourism Saskatchewan.",
+        "2025 sponsors listed include RBC Wealth Management, the Saskatchewan Indian Gaming Authority, SaskEnergy, SaskTel, SGI, TD Canada Trust and Wyant Group."
+      ],
+      "red_flags": [
+        {
+          "heading": "Gambling",
+          "points": [
+            "The Saskatchewan Indian Gaming Authority is a 2025 sponsor of Remai Modern and \"generously supported\" the exhibition Tarralik Duffy: Klik My Heels (2025 annual report).",
+            "Wikipedia states that SIGA is owned by a consortium of the 74 First Nations band governments in Saskatchewan and operates seven tribal casinos and the online casino PlayNow.com; it generated a record $378 million in gross revenue in fiscal year 2024-25 (Wikipedia)."
+          ]
+        },
+        {
+          "heading": "Fossil fuels",
+          "points": [
+            "SaskEnergy is a 2025 sponsor, and presented the museum's Fireside event series for the third year in 2025 (2025 annual report).",
+            "SaskEnergy is a Crown corporation of the Saskatchewan government that supplies natural gas in the province and serves over 405,000 customers (Wikipedia)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "The criticism concerns governance, not the art: a 2019 board shake-up and the management behind it.",
+        "items": [
+          {
+            "outlet": "Canadian Art",
+            "title": "Jen Budney, \"What the Remai Modern Shakeup Really Means\" (2019)",
+            "url": "https://canadianart.ca/features/what-the-remai-modern-shakeup-really-means/",
+            "points": [
+              "Argues the dispute is \"about accountability and transparency in management and governance\" and not a clash over programming vision, a claim she calls \"a red herring\".",
+              "Points to staff turnover, a harassment investigation of the CEO by the Saskatchewan Human Rights Commission, a top-down management style and weak public accountability, and recommends public release of board agendas and minutes and reporting attendance as actual visitors.",
+              "Names CEO Gregory Burke, who announced his resignation in December 2018, and ousted board secretary Alison Norlen; says the gallery's \"world-class\" ambitions shifted its focus from its public mission."
+            ]
+          }
+        ]
+      },
+      "wider_context": [
+        "In March 2019, five of the previous 12 board members stayed on; board secretary Alison Norlen was not reappointed and five others resigned or did not seek another term, two weeks after city council appointed five new members. Outgoing chair Scott Verity described a \"difficult\" governance relationship with the City of Saskatoon; Mayor Charlie Clark would not link workplace complaints to the turnover (Global News, Ryan Kessler, 11 March 2019).",
+        "City council voted unanimously to appoint five new members to the 12-person board, and two of the five continuing members were city councillors (Global News)."
+      ],
+      "bottom_line": "Remai Modern is mainly funded by the City of Saskatoon, which provided about 51% of its C$13.1 million revenue in 2025, plus a lead private donor, the Frank and Ellen Remai Foundation, and arts-council grants. Two 2025 corporate sponsors fall in flagged categories: the Saskatchewan Indian Gaming Authority (gambling) and the natural gas utility SaskEnergy (fossil fuels). In 2019 the city council appointed five new board members, and the outgoing chair described a difficult governance relationship with the city.",
+      "sources": [
+        {
+          "url": "https://remaimodern.org/wp-content/uploads/2026/08/2025-Annual-Report-Final-PRINT-Edit3-compressed-compressed.pdf"
+        },
+        {
+          "url": "https://remaimodern.org/about/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Remai_Modern"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/SaskEnergy"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Saskatchewan_Indian_Gaming_Authority"
+        },
+        {
+          "url": "https://canadianart.ca/features/what-the-remai-modern-shakeup-really-means/"
+        },
+        {
+          "url": "https://globalnews.ca/news/5044957/remai-modern-saskatoon/amp"
+        }
+      ],
+      "website": "https://remaimodern.org",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Frye Art Museum",
@@ -20430,7 +20577,65 @@
     "highlight": "David Chipperfield restored the 1930s Art Deco building, originally the Royal Asiatic Society, for contemporary art commissions.",
     "visit_url": "https://www.rockbundartmuseum.org/en/visit/",
     "tier_note": "No source outside the museum is recorded.",
-    "records_note": "Its support page names founders Lynn and Thomas Ou and lead sponsors Rockbund and Ping An, undated; no annual report, accounts or board are posted."
+    "records_note": "Its support page names founders Lynn and Thomas Ou and lead sponsors Rockbund and Ping An, undated; no annual report, accounts or board are posted.",
+    "details": {
+      "overview": [
+        "Contemporary art museum at 20 Huqiu Road, Huangpu District, Shanghai (museum website), on the northern tip of the Bund area (Institute of Network Cultures); the nearest Metro station is East Nanjing Road, on Lines 2 and 10 (Wikipedia).",
+        "Opened in 2010 as part of the Rockbund Urban Renaissance project to renovate heritage buildings at the north end of the Bund (DutchCulture); Geert Lovink dates the opening to May 2010, timed with the Shanghai World Expo (Institute of Network Cultures).",
+        "The museum occupies the former Royal Asiatic Society building, completed in 1933 and designed by Palmer and Turner; the same building housed one of China's first modern museums, the earlier Shanghai Museum (Wikipedia).",
+        "In 2005 the Shanghai Bund de Rockefeller Group Master Development Co. Ltd. obtained the right to develop the area and chose to restore the building as a public contemporary art museum; British architect David Chipperfield restored and redesigned it from 2007, extending it eastward and adding a ground-floor plaza, a rooftop terrace and a skylight (Wikipedia).",
+        "The museum has no permanent collection and shows exhibitions such as Zeng Fanzhi (2010), Song Dong (2017) and Philippe Parreno (2017) (Wikipedia). Its opening show was curated by Cai Guo-Qiang, and Hsiangling Lai was director at the opening (Institute of Network Cultures).",
+        "Open Wednesday to Sunday 11:00 to 18:00 with last admission at 17:30; Tuesday is a member day, open 12:00 to 18:00 (museum website).",
+        "e-flux describes it as a non-profit arts organization in Shanghai."
+      ],
+      "funding_verdict": "Rockbund Art Museum: founders Lynn and Thomas Ou, with lead sponsors ROCKBUND and Ping An",
+      "funding": [
+        "The museum's support page names Lynn and Thomas Ou as founders and ROCKBUND and Ping An as lead sponsors, with no years or amounts.",
+        "At the 2010 opening, Lovink wrote that the Rockbund Investment Corporation owns the museum and that the board of the Rockbund was its sole sponsor; director Hsiangling Lai told him the municipality had no plans to build a contemporary arts museum and wanted private developers to establish such institutions (Institute of Network Cultures, 18 July 2010).",
+        "DutchCulture states that the museum receives \"substantial financial support to the production of original new artworks\"."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "One blog review from the 2010 opening, on the museum's dependence on a property developer and its first show.",
+        "items": [
+          {
+            "outlet": "Institute of Network Cultures",
+            "title": "Geert Lovink, \"Cia Guo-Qiang's Romantic Resolution of the Peasant Question\" (18 July 2010; title as published)",
+            "url": "https://networkcultures.org/geert/?p=495",
+            "points": [
+              "Places the museum in the Rockbund real estate redevelopment, owned by the Rockbund Investment Corporation, whose brochure promises \"the most elite luxury area in Shanghai\"; says the board of the Rockbund is the museum's sole sponsor and asks the director what would happen to the museum in a recession or a collapse of the real estate market.",
+              "On the opening show \"Peasant Da Vincis\", curated by Cai Guo-Qiang, notes \"romantic overtones\" and calls the works \"anthropological artefacts\", but says the problem is not brutal appropriation: the rural makers are credited and he sees no hint of exploitation.",
+              "Mostly about the exhibition, not the institution, apart from the sponsorship point."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "Rockbund Art Museum is a non-profit museum inside the Rockbund property development on the Bund. Its support page names founders Lynn and Thomas Ou and lead sponsors ROCKBUND and Ping An, and in 2010 the Rockbund Investment Corporation owned it and the Rockbund board was its sole sponsor.",
+      "sources": [
+        {
+          "url": "https://www.rockbundartmuseum.org/support"
+        },
+        {
+          "url": "https://www.rockbundartmuseum.org/en/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rockbund_Art_Museum"
+        },
+        {
+          "url": "https://dutchculture.nl/en/location/rockbund-art-museum"
+        },
+        {
+          "url": "https://www.e-flux.com/clients/6557/rockbund-art-museum/"
+        },
+        {
+          "url": "https://networkcultures.org/geert/?p=495"
+        }
+      ],
+      "website": "https://www.rockbundartmuseum.org",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Bundanon",
@@ -42002,7 +42207,52 @@
     "visit_url": "https://www.recessart.org/visit/",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Recess",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Recess",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "details": {
+      "overview": [
+        "Non-profit arts organisation at 46 Washington Avenue, Brooklyn, its address since 2018 (Recess website).",
+        "Allison Freedman Weisberg founded Recess in 2009, opening in SoHo, Manhattan, at 41 Grand Street; it became the registered non-profit Recess Activities Inc. in 2010 (Recess website).",
+        "Session, its artist residency programme, began with its first artist in 2009; Assembly, launched in 2017 at 370 Schermerhorn Street, supports system-impacted youth through art and storytelling; a Critical Writing fellowship began in 2011 (Recess website).",
+        "Recess is led by co-directors in a shared-power model; Shaun Leonardo co-directed from 2021 to 2024, Lindsay C. Harris joined in 2023 and Ladi'Sasha Jones in 2025 (Recess website).",
+        "In 2024 Recess seated its first compensated, consensus-based board (Recess website).",
+        "In September 2025 it hosted the New York Pavilion of the Gaza Biennale, \"From Gaza to the World\", the Biennale's first North American host site, with 25 of the more than 50 artists in the global exhibition (Hyperallergic, Diba Mohtasham, 12 September 2025). An abbreviated version ran until 20 December 2025.",
+        "Open Thursday to Saturday 12 pm to 5 pm; the public programme space is wheelchair accessible and the restrooms are gender neutral and ADA compliant (Recess website)."
+      ],
+      "funding_verdict": "Recess: grant-funded non-profit: public arts agencies, foundations and individual donors",
+      "funding": [
+        "Government: Recess's timeline records its first grants from the National Endowment for the Arts and the New York City Department of Cultural Affairs in 2013 and from the New York State Council on the Arts in 2016 (Recess website).",
+        "Andy Warhol Foundation: a first grant in 2011 (Recess website); the Warhol Foundation's grant archive lists a Multi-year Program Support grant of $100,000 in the Spring 2018 cycle.",
+        "Other foundations whose first grants the timeline records, with year: VIA Art Fund (2015), Donald and Shelley Rubin Foundation (2017), Pinkerton Foundation (Youth Justice, 2017), Art for Justice Fund (2018), ELMA Philanthropies (2019), Mellon Foundation (2021), Ford Foundation (2022), New York Community Trust (2023).",
+        "Individuals and companies: a $2 million donation from MacKenzie Scott in 2021, Alloy Development's support for the opening of Assembly's Schermerhorn Street space in 2017, and the Ruth Arts Artist Choice award in 2025 (Recess website)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "Recess is funded by public arts agencies, named foundations and individual gifts, including a $2 million donation from MacKenzie Scott in 2021 and a $100,000 Warhol Foundation multi-year grant in 2018. Its timeline also records first grants from the Mellon Foundation in 2021 and the Ford Foundation in 2022.",
+      "sources": [
+        {
+          "url": "https://www.recessart.org/about?locale=en"
+        },
+        {
+          "url": "https://www.recessart.org/about"
+        },
+        {
+          "url": "https://www.recessart.org/visit"
+        },
+        {
+          "url": "https://warholfoundation.org/grants/archive/recess"
+        },
+        {
+          "url": "https://hyperallergic.com/1041355/a-defiant-gaza-biennale-opens-recess-new-york-city/"
+        }
+      ],
+      "website": "https://www.recessart.org",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "id": "triple-canopy-new-york",
@@ -42118,7 +42368,60 @@
     "visit_url": "https://www.redcat.org/visit",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=REDCAT%20%28Roy%20and%20Edna%20Disney/CalArts%20Theater%29",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=REDCAT%20%28Roy%20and%20Edna%20Disney/CalArts%20Theater%29",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "details": {
+      "overview": [
+        "Downtown Los Angeles contemporary arts centre of CalArts (California Institute of the Arts) at 631 W 2nd Street, in the Walt Disney Concert Hall complex; it presents performances, exhibitions, screenings and literary events (REDCAT website).",
+        "Opened in November 2003 as an extension of CalArts into downtown Los Angeles (Wikipedia).",
+        "Named for Roy and Edna Disney: Patty and Roy E. Disney matched the Walt Disney Company's gift and named the venue after his parents (Wikipedia).",
+        "Frank Gehry, who also designed Walt Disney Concert Hall, designed the building; the entrance has a stainless steel and neon marquee by Gehry (REDCAT website, Wikipedia).",
+        "On site: a 250-seat flexible black-box theatre, a 3,000-square-foot exhibition space and the Olga Garay-English and Dr. Kerry English REDCAT Lounge (REDCAT website).",
+        "Programmes include the NOW Festival, which takes applications from artists (REDCAT website).",
+        "Jo\u00e3o Ribas was hired in 2019 as the first CalArts Vice President for Cultural Partnerships and Executive Director of REDCAT; Mark Murphy was the first executive director of REDCAT (Wikipedia).",
+        "A REDCAT Council, chaired by Diane Levine, is listed on the site (REDCAT website)."
+      ],
+      "funding_verdict": "REDCAT: university-run, with foundation and arts-agency grants",
+      "funding": [
+        "CalArts operates REDCAT as its downtown arts centre (REDCAT website).",
+        "Founding support: Wikipedia states that the venue was developed with the financial support of the Walt Disney Company and the County of Los Angeles, and that Patty and Roy E. Disney personally matched the Disney Company's gift.",
+        "National Endowment for the Arts: a $45,000 grant for \"adventurous programming\" in December 2015 (Time Out, Seth Kelley, 9 December 2015).",
+        "Andy Warhol Foundation: a Multi-year Program Support grant of $80,000 in the Fall 2023 cycle (Warhol Foundation grant archive).",
+        "Mike Kelley Foundation for the Arts: a $50,000 Artist Project Grant in 2020 for Nao Bustamante's The Wooden People (CalArts blog, 23 April 2020), and a $26,000 organisational support grant in 2024 (Mike Kelley Foundation)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "REDCAT is run by CalArts and supported by named arts funders: the National Endowment for the Arts, the Andy Warhol Foundation and the Mike Kelley Foundation. Wikipedia states that the venue, which opened in 2003, was developed with support from the Walt Disney Company and Los Angeles County, and that Patty and Roy E. Disney matched the Disney Company's gift.",
+      "sources": [
+        {
+          "url": "https://www.redcat.org/about"
+        },
+        {
+          "url": "https://www.redcat.org/support"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/REDCAT"
+        },
+        {
+          "url": "https://www.timeout.com/los-angeles/blog/redcat-just-got-a-big-nea-grant-to-increase-funding-for-la-artists-120915"
+        },
+        {
+          "url": "https://warholfoundation.org/grants/archive/redcat-california-institute-of-the-arts/"
+        },
+        {
+          "url": "https://blog.calarts.edu/2020/04/23/redcat-named-recipient-of-2020-mike-kelley-foundation-grant/"
+        },
+        {
+          "url": "https://mikekelleyfoundation.org/grants/2024-organizational-support-grants/calarts-redcat"
+        }
+      ],
+      "website": "https://www.redcat.org",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "id": "artpace-san-antonio",
@@ -48216,7 +48519,72 @@
     "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=QAGOMA",
     "tier_note": "No reason for the flag is recorded.",
     "records_note": "Publishes statutory annual reports with financial statements and trustees back to 1991-92; the main site blocked checks of its donor pages.",
-    "affiliations_note": "Listed in the Biennial Foundation directory."
+    "affiliations_note": "Listed in the Biennial Foundation directory.",
+    "details": {
+      "overview": [
+        "Art museum in South Bank, Brisbane, made up of the Queensland Art Gallery (QAG) and the Gallery of Modern Art (GOMA), about 150 metres apart in the Queensland Cultural Centre (Wikipedia).",
+        "Founded on 29 March 1895 as the Queensland National Art Gallery; it moved into its permanent building, designed by Robin Gibson, in 1982 (Wikipedia).",
+        "GOMA, the second building, opened in 2006 and won the 2007 RAIA National Award for Public Architecture (Wikipedia).",
+        "GOMA houses the Australian Cinematheque, and QAGOMA hosts the Asia Pacific Triennial of Contemporary Art; the collection holds more than 20,000 works, with strengths in Asian, Oceanian, Australian and Indigenous Australian art (Wikipedia).",
+        "Wikipedia gives 1,146,277 visitors for 2019-20, a fall it attributes to the COVID-19 pandemic.",
+        "In February 2021 the Queensland Police Union and the Police Minister objected to a helmet artwork showing a burning police car; director Chris Saines kept it on display, saying the gallery defends artists' right to make challenging statements (4BC, 2 February 2021)."
+      ],
+      "funding_verdict": "QAGOMA: public statutory body with corporate partners",
+      "funding": [
+        "Legal status: the Queensland Art Gallery Act 1987 makes the Board of Trustees a body corporate and states that it is a statutory body under the Financial Accountability Act 2009. The Act lets the board set up a foundation committee to encourage gifts, donations and bequests, and lets it charge for goods, services and facilities (Queensland legislation).",
+        "Board chair: philanthropist Paul Taylor, already a board member, was announced as chair on 22 July 2025, replacing Professor Emeritus Ian O'Connor, who had held the role since 2017 (Queensland Government statement).",
+        "Shayher Group: a $1 million sponsorship of QAGOMA from 2021 to 2026, announced on 18 May 2021 (Indulge Magazine).",
+        "Make, Believe, Magic: The Worlds of The Jim Henson Company (2026): supporters are Strategic Partner Tourism and Events Queensland, Shayher Group, Carnival Cruise Line, Gadens, Screen Queensland and Brisbane Festival (InDaily, Phil Brown, 3 September 2026).",
+        "Carnival Cruise Line says on its own site that it \"is proud to partner with QAGOMA\" for the Henson exhibition."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Carnival Cruise Line is a wholly owned subsidiary of Carnival Corporation & plc (Wikipedia).",
+        "Carnival Corporation was convicted in 2016 of illegally dumping oily waste and covering it up over eight years, and paid a $40 million fine (Miami Herald, Taylor Dolven and Caitlin Ostroff, via ADN, 4 June 2019).",
+        "On 3 June 2019 Carnival Corporation pleaded guilty in the US District Court in Miami to six probation violations and agreed to a $20 million fine (Miami Herald via ADN, 4 June 2019).",
+        "The cruise line's parent company is the party in those cases. QAGOMA's link is the cruise line's partnership in the 2026 Henson exhibition."
+      ],
+      "bottom_line": "QAGOMA is a Queensland statutory body. The documented corporate support is Shayher Group's $1 million sponsorship for 2021 to 2026 and the 2026 Henson exhibition supporters, who include Carnival Cruise Line; its parent, Carnival Corporation, has US convictions dated 2016 and 2019 for dumping oily waste and violating probation.",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/QAGOMA"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Queensland_Art_Gallery_and_Gallery_of_Modern_Art"
+        },
+        {
+          "url": "https://www.legislation.qld.gov.au/view/whole/html/inforce/current/act-1987-040"
+        },
+        {
+          "url": "https://statements.qld.gov.au/statements/103130"
+        },
+        {
+          "url": "https://indulgemagazine.net/shayher-supports-qagoma/"
+        },
+        {
+          "url": "https://www.indailyqld.com.au/inreview/festivals/2026/09/03/70-muppet-years-on-make-believe-becomes-magic-at-henson-blockbuster"
+        },
+        {
+          "url": "https://www.carnival.com.au/about-carnival/in-the-community"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Carnival_Cruise_Line"
+        },
+        {
+          "url": "https://www.adn.com/nation-world/2019/06/04/carnival-corp-pleads-guilty-to-pollution-probation-violations-agrees-to-20-million-fine/"
+        },
+        {
+          "url": "https://www.4bc.com.au/?p=126626"
+        }
+      ],
+      "website": "https://www.qagoma.qld.gov.au/",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Cairns Art Gallery",
@@ -54397,7 +54765,64 @@
     "tier_note": "No source outside the museum is recorded.",
     "watch": "African photography biennale since 1994. The 15th edition runs 26 November 2026 to 26 January 2027. No protest or censorship found.",
     "records_note": "The festival site names its 2026 partners, led by Mali's culture ministry, with earlier editions filterable, but posts no reports, accounts or board.",
-    "affiliations_note": "Co-organised and co-produced by Mali's Ministry of Culture and the Institut fran\u00e7ais; the biennial's own domain no longer serves its pages."
+    "affiliations_note": "Co-organised and co-produced by Mali's Ministry of Culture and the Institut fran\u00e7ais; the biennial's own domain no longer serves its pages.",
+    "details": {
+      "overview": [
+        "Biennale of contemporary African photography and video held in Bamako, Mali, since 1994 and also called Bamako Encounters and the African Biennale of Photography (Biennial Foundation).",
+        "Organised by Mali's Ministry of Culture and co-produced with the Institut fran\u00e7ais; exhibitions are spread across Bamako in museums, galleries, foundations, art centres, public venues and French cultural centres (Biennial Foundation).",
+        "The Mus\u00e9e national du Mali was the main venue of the 14th edition, held from 16 November 2024 to 16 January 2025 under the theme \"Kouma\", the spoken word, with Morocco as guest of honour (Le360 Afrique, Diemba Moussa Konat\u00e9, 18 November 2024).",
+        "Past artistic directors include Bisi Silva (2015), Bonaventure Soh Bejeng Ndikung (2019) and Lassana Igo Diarra (2024) (Wikipedia, Biennial Foundation). The 2013 edition was cancelled because of security concerns (Wikipedia).",
+        "The 15th edition runs from 26 November 2026 to 26 January 2027 under the theme REFABULATION(S), with Armelle Dakouo as curator (Biennial Foundation, 4 June 2026). It shows 49 artists, 25 of them women, in installation, video, sound and sculpture as well as photography, with a tribute to Malick Sidib\u00e9 (DakArt News on africa.com, 6 September 2026)."
+      ],
+      "funding_verdict": "Rencontres de Bamako: organised by Mali's Ministry of Culture and co-produced by the Institut fran\u00e7ais, with Royal Air Maroc as a long-standing partner",
+      "funding": [
+        "Mali's Ministry of Handicrafts, Culture, Hotel Industry and Tourism is the organiser; the 2026 call names its general delegate as El Hadj Amadou Diop (Biennial Foundation, 4 June 2026).",
+        "The Institut fran\u00e7ais co-produces the event (Biennial Foundation). Wikipedia describes the biennale as jointly run by the government of Mali and the Institut fran\u00e7ais.",
+        "Le360 describes Royal Air Maroc as the event's long-standing partner, which has backed the biennial for years (Le360, 18 November 2024).",
+        "For the 2007 edition, Christian Kravagna reported that Mali's Ministry of Culture and CULTURESFRANCE, backed by the French ministries of foreign affairs and culture, funded the event, and that Fondation Orange Mali hosted the Quartiers d'Orange venue (springerin, 1/2008)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "One critique, from 2008, questions French influence over the biennale's funding and organisation while praising parts of the programme.",
+        "items": [
+          {
+            "outlet": "springerin",
+            "title": "Christian Kravagna, \"Bamako 2007: On the seventh Rencontres africaines de la photographie\" (2008)",
+            "url": "https://springerin.at/en/2008/1/bamako-2007/",
+            "points": [
+              "Argues that the event gives the impression that \"links between France and its former West African colonies are still strong\": a long list of French logos on the catalogue and poster, and market-panel speakers who were mostly French gallery owners or photo experts.",
+              "Finds the theme \"Dans la ville et au-del\u00e0\" loose, and the curation by Paris-based Simon Njami technically and aesthetically strong but mostly documentary or photojournalistic.",
+              "Highlights the Cin\u00e9ma Num\u00e9rique Ambulant project as a translation of the studio-photography tradition into contemporary practice. Says Dak'art has often been criticised for organisational shortcomings while the Bamako programme ran almost without a hitch, which he links to Western ideas of orderly scheduling and the \"positive aspects\" of colonialism."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The Rencontres de Bamako are organised by Mali's Ministry of Culture and co-produced by the Institut fran\u00e7ais, with Royal Air Maroc as a long-standing partner. For the 2007 edition, Christian Kravagna reported funding from Mali's Ministry of Culture and CULTURESFRANCE, and a venue hosted by Fondation Orange Mali.",
+      "sources": [
+        {
+          "url": "https://biennialfoundation.org/biennials/bamako-encounters/"
+        },
+        {
+          "url": "https://biennialfoundation.org/2026/06/bamako-encounters-african-biennale-of-photography-announces-open-call-for-applications/"
+        },
+        {
+          "url": "https://afrique.le360.ma/culture/aux-14emes-rencontres-de-bamako-la-parole-est-a-la-photo_6EEARJYWOZEKPH2DDVQICH6IWM/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/African_Photography_Encounters"
+        },
+        {
+          "url": "https://africa.com/cultural-profiles/bamako-biennale-pushes-photography-beyond-the-image"
+        },
+        {
+          "url": "https://springerin.at/en/2008/1/bamako-2007/"
+        }
+      ],
+      "website": "https://biennialfoundation.org/biennials/bamako-encounters/",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Museo Experimental El Eco",
@@ -87902,7 +88327,49 @@
     "visit_url": "https://www.listasafn.is",
     "records_note": "Posts its 2023 annual report; its parent City of Reykjavik posts consolidated annual accounts. No sponsor list, and no current board for the museum.",
     "finances_note": "FY2023 income ISK 704M: about 77 percent City of Reykjavik contribution, 23 percent own income, mostly tickets and shop (annual report 2023, p. 11).",
-    "affiliations_note": "Reykjav\u00edk Art Museum runs three sites, Hafnarh\u00fas, Kjarvalssta\u00f0ir and \u00c1smundarsafn, and names Reykjav\u00edk Arts Festival, DesignMarch and Iceland Airwaves as festival partners."
+    "affiliations_note": "Reykjav\u00edk Art Museum runs three sites, Hafnarh\u00fas, Kjarvalssta\u00f0ir and \u00c1smundarsafn, and names Reykjav\u00edk Arts Festival, DesignMarch and Iceland Airwaves as festival partners.",
+    "details": {
+      "overview": [
+        "Municipal art museum (Listasafn Reykjav\u00edkur) with three sites in central Reykjav\u00edk: Hafnarh\u00fas at Tryggvagata 17, Kjarvalssta\u00f0ir at Fl\u00f3kagata 24 and \u00c1smundarsafn at Sigt\u00fan 105 (museum website).",
+        "Founded in 1973 (Wikipedia). Kjarvalssta\u00f0ir opened in 1973 beside Klambrat\u00fan garden, named for the painter J\u00f3hannes S. Kjarval, and was the first building in Iceland designed for visual art exhibitions (Wikipedia).",
+        "Hafnarh\u00fas is a harbour warehouse built in the 1930s; Studio Grandi architects renovated it in 1998 to 2000 to house the museum (Visit Reykjav\u00edk); Wikipedia gives April 2000 for its reopening.",
+        "\u00c1smundarsafn opened in 1983 in Laugardalur, in the former home and studio of the sculptor \u00c1smundur Sveinsson, which he largely built himself between 1942 and 1950 (Wikipedia).",
+        "The collection holds more than 17,000 items, mostly by 20th and 21st century Icelandic artists, with holdings by Err\u00f3, Kjarval and Sveinsson; about fifteen exhibitions open each year and the museum also manages public art in the city (museum website).",
+        "The museum runs around 200 events a year, including tours for people with disabilities, and takes part in Iceland Airwaves, Reykjav\u00edk Museum Night, Reykjav\u00edk Arts Festival, DesignMarch and Reykjav\u00edk Cultural Night (museum website).",
+        "Hafnarh\u00fas is open 10:00 to 17:00 with late opening to 22:00 on Thursdays, Kjarvalssta\u00f0ir 10:00 to 17:00 and \u00c1smundarsafn 13:00 to 17:00 (museum website)."
+      ],
+      "funding_verdict": "Reykjav\u00edk Art Museum: municipal: financed and managed by the City of Reykjav\u00edk",
+      "funding": [
+        "Wikipedia states that the museum manages the city's art collection and that Reykjav\u00edk city is responsible for the museum's management and financing.",
+        "Its contact address is on the city's reykjavik.is domain (museum website)."
+      ],
+      "red_flags": [],
+      "not_related": [
+        "the National Gallery of Iceland (Listasafn \u00cdslands), whose website is listasafn.is. It is a different institution at Lauf\u00e1svegur 12, with a collection owned by the Icelandic nation and its own sites (the main gallery, Safnah\u00fasi\u00f0 and the Einar J\u00f3nsson Museum), not part of the Reykjav\u00edk city museum."
+      ],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "Reykjav\u00edk Art Museum is a municipal museum financed and managed by the City of Reykjav\u00edk (Wikipedia). Its collection of more than 17,000 items is shown across three sites, and the museum is responsible for public art in the city (museum website).",
+      "sources": [
+        {
+          "url": "https://listasafnreykjavikur.is/en"
+        },
+        {
+          "url": "https://listasafnreykjavikur.is/en/about-the-museum"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Reykjav%C3%ADk_Art_Museum"
+        },
+        {
+          "url": "https://visitreykjavik.is/service/reykjavik-art-museum-hafnarhus"
+        }
+      ],
+      "website": "https://listasafnreykjavikur.is",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Ruya Foundation",
@@ -90784,7 +91251,70 @@
         "funder": "Open Society Foundations",
         "institutions": 10
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Art biennale run by Riwaq, the Centre for Architectural Conservation, a non-governmental, non-profit organisation in Ramallah that protects Palestinian cultural heritage (e-flux, OPEC Fund project page).",
+        "Suad Amiry founded Riwaq in 1991 (Wikipedia); the OPEC Fund page gives June 1991 as its establishment and says it carried out an architectural survey from 1994 to 2007.",
+        "Riwaq launched the first biennale in 2005, named after the institution itself rather than a place; Riwaq's director Khaldun Bshara writes that the biennale gave Riwaq exposure beyond the heritage world and \"opened new funding possibilities\", and that there was no fourth edition in 2011 after resistance within Riwaq (PARSE Journal, Khaldun Bshara).",
+        "Editions listed on Riwaq's site: Biennale III (2009), IV (2012), V (2014) and the Chicago Biennial 2019 (Riwaq website). The third edition, \"A Geography: 50 Villages\", ran in Palestine from June to October 2009 and was curated by Reem Fadda and Charles Esche as tours, curated conversations and temporary interventions (Bidoun, Beth Stryker).",
+        "In 2019 Riwaq showed \"Secrets of a Digital Garden: 50 Flowers...50 Villages\", a speculative installation with Yara Sharif and Nasser Golzari, in the Chicago Architecture Biennial; the 50 flowers stand for the 50 villages of Riwaq's 50 Villages Project (Riwaq website).",
+        "Riwaq's Registry of Historic Buildings, published in 2006, records 50,320 buildings in 122 villages, towns and cities; Riwaq received the Prince Claus Award in 2011 and the Aga Khan Award for Architecture in 2013 (Wikipedia)."
+      ],
+      "funding_verdict": "Riwaq Biennale: NGO-funded: European and international development funders, foundations and heritage funds",
+      "funding": [
+        "The biennale is organised by Riwaq, whose \"Donors & Partners\" page thanks these funding partners for operational and programmatic support: the Arab Fund for Economic and Social Development, ALIPH, Arts Collaboratory, the Cultural Protection Fund of the British Council, UNDP, the Doen Foundation, the European Union (including EuroMed Heritage and the ENPI-CBC tool), Germany through KfW, the French Consulate, the Ford Foundation, the French Development Agency, the Foundation for Arts Initiatives, the Goethe Institute, Hivos, the OPEC Fund for International Development, the Open Society Foundation, the Prince Claus Fund, the Tamari Foundation, the Tides Foundation, the Swedish Government, UNESCO, Wallonie-Bruxelles International, the Walloon Heritage Institute and the Welfare Association.",
+        "OPEC Fund: a grant of US$0.15 million, approved on 5 October 2011 and signed on 27 December 2011, later extended to support rehabilitation of the old centre of Mazare Al Nobani (OPEC Fund project page).",
+        "Operating partners named on the same page include Ramallah Municipality, the Hebron Rehabilitation Committee, Oxford Brookes University and Columbia University's GSAPP."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "One review, analytical rather than hostile, of the third edition's framing.",
+        "items": [
+          {
+            "outlet": "Bidoun",
+            "title": "Beth Stryker, \"3rd Riwaq Biennale\" (2010, first published in Bazaar, issue 20)",
+            "url": "https://bidoun.org/articles/3rd-riwaq-biennale",
+            "points": [
+              "Reads the biennial as the second half of a \"dual presentation\" with Khalil Rabah's \"Palestine c/o Venice\", a collateral event of the 53rd Venice Biennale, and says the tours often became the main event and the biennial negotiated the space between fact and fiction.",
+              "Says the Jamma'een community centre performance, with children in traditional costume, \"threatened to cater to guests' expectations of an 'authentic' experience\", but that the critical engagement of the curatorial framework kept it from defaulting to the maudlin; adds that, unlike many biennials criticised as tourist attractions, this one turned the tour into an object of critical reflection.",
+              "Says whether Riwaq achieves its goals of protecting, utilizing and promoting cultural heritage in Palestine \"may take time to fully discern\"; names Rabah, Fadda and Esche."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The Riwaq Biennale is funded through Riwaq, a Palestinian non-profit supported by European governments and agencies, UN bodies, foundations and heritage funds, with a US$0.15 million OPEC Fund grant approved in 2011. Riwaq's site lists the biennale editions of 2009, 2012 and 2014 and the 2019 Chicago Architecture Biennial exhibition.",
+      "sources": [
+        {
+          "url": "https://www.riwaq.org/page/9"
+        },
+        {
+          "url": "https://www.riwaq.org/riwaq-biennale-previous-editions"
+        },
+        {
+          "url": "https://www.riwaq.org/page/31"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/72184/riwaq-biennale-palestine/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Riwaq_(organization"
+        },
+        {
+          "url": "https://opecfund.org/where-we-work/list/assistance-to-civil-society-organizations-in-palestine-phase-iv-riwaq-center-for-architectural-conservation"
+        },
+        {
+          "url": "https://bidoun.org/articles/3rd-riwaq-biennale"
+        },
+        {
+          "url": "https://parsejournal.com/wp-content/uploads/2017/05/PARSE_Issue5-BiennalesInPalestine.pdf"
+        }
+      ],
+      "website": "https://www.riwaq.org",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Museo de Arte Contempor\u00e1neo de Panam\u00e1",
@@ -95526,7 +96056,55 @@
     "id": "rak-art-foundation-ras-al-khaimah",
     "aliases": [
       "RAK Art Foundation"
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Non-profit art foundation in Riffa, in the centre of Bahrain, housed in the restored childhood home of its founder, Rashid Al Khalifa (Identity, Lemma Shehadi, 15 June 2022).",
+        "Founder Rashid Al Khalifa, born in Riffa in 1952, is an artist, patron and collector who founded the Bahrain Arts Society in 1983 (foundation website); Identity describes him as a member of the Bahraini royal family.",
+        "Launched in 2020 as the Rashid Al Khalifa Art Foundation (Identity). The foundation's own site says a white-cube gallery extension was completed in 2020.",
+        "The house dates from the 1920s with a 1960s extension that includes his childhood bedroom; he acquired it from his family in 2014 and restored and expanded it with Italian architect Davide Chiaverini, adding a two-storey courtyard pavilion with steel mashrabiya panels (Identity).",
+        "The collection holds hundreds of international works of fine and decorative art (foundation website), including Pierre Soulages, Damien Hirst, Fernando Botero, Mohammed Melehi and Fateh Al Moudarres, and Al Khalifa's own work (Identity).",
+        "The foundation's site lists exhibitions, the RAK Art Prize and The Art Station as its programmes. Bahrain Confidential states that Shaikh Rashid bin Khalifa Al Khalifa founded it in Riffa to make an enormous art collection available to the Bahraini people (Bahrain Confidential, 14 May 2025).",
+        "The Art Station ran a three-month residency in Bahrain from 7 March to 30 May 2024 for US citizens over 21, with housing, a monthly stipend of 1,500 USD and a 5,300 USD artwork production grant (e-flux announcement, 20 January 2024)."
+      ],
+      "funding_verdict": "RAK Art Foundation: founder-led non-profit; one documented outside grant, from the US Embassy",
+      "funding": [
+        "The foundation's own site describes it as a non-profit. It occupies the founder's childhood home, which he acquired from his family in 2014 (foundation website, Identity).",
+        "The 2024 Art Station residency was \"funded by the US Embassy in Manama\" (e-flux announcement)."
+      ],
+      "red_flags": [],
+      "not_related": [
+        "Ras Al Khaimah Art (RAK Art) in the United Arab Emirates. The Al Qasimi Foundation's arts and culture page says the Ras Al Khaimah Art Festival was founded in 2013 and is now Ras Al Khaimah Art, a year-round hub, and that the Al Qasimi Foundation convenes the community through the annual festival and funds its Artist-in-Residence Program and Film Grants. It is a different organisation from the Bahrain foundation, which is based in Riffa and founded by Rashid Al Khalifa; the two share only the abbreviation \"RAK\" (Al Qasimi Foundation, Ras Al Khaimah Art website)."
+      ],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The RAK Art Foundation is a non-profit built around one collector's collection and childhood home in Riffa, Bahrain. The documented outside money is the US Embassy in Manama's funding of the 2024 Art Station residency.",
+      "sources": [
+        {
+          "url": "https://rakartfoundation.com/about"
+        },
+        {
+          "url": "https://identity.ae/bahraini-artist-rashid-al-khalifa-transforms-childhood-home-into-art-museum/"
+        },
+        {
+          "url": "https://www.bahrain-confidential.com/culture/a-tour-at-the-exquisite-rak-art-foundation/"
+        },
+        {
+          "url": "https://www.e-flux.com/announcements/584608/the-art-station-residency-program"
+        },
+        {
+          "url": "https://www.alqasimifoundation.com/arts-culture"
+        },
+        {
+          "url": "https://www.rakart.ae"
+        }
+      ],
+      "website": "https://rakartfoundation.com",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "The Common Guild",
@@ -111239,7 +111817,64 @@
     "tier_note": "No reason for the flag is recorded.",
     "records_note": "RDM posts annual reports for 2014 to 2025 and names its eight board members, but no donor list; its accounts are in Norway's register.",
     "finances_note": "FY2025 income NOK 26.1M: the six named public grants total NOK 22.8M (about 87 percent), NOK 20.4M from the S\u00e1mi Parliament; sales NOK 1.0M (annual report 2025, p. 5).",
-    "affiliations_note": "A S\u00e1mi museum foundation made up of De Samiske Samlinger, Kautokeino bygdetun, Porsanger museum, Kokelv sj\u00f8samiske museum and the Samisk Kunstmagasin art collection."
+    "affiliations_note": "A S\u00e1mi museum foundation made up of De Samiske Samlinger, Kautokeino bygdetun, Porsanger museum, Kokelv sj\u00f8samiske museum and the Samisk Kunstmagasin art collection.",
+    "details": {
+      "overview": [
+        "S\u00e1mi museum foundation (RDM) that runs four cultural-history museums and manages the S\u00e1mi Parliament's art collection: De Samiske Samlinger in Karasjok, Kautokeino bygdetun, Porsanger museum and Kokelv sj\u00f8samiske museum, plus the S\u00e1mi art store (Samisk kunstmagasin) (RDM annual report 2023, lokalhistoriewiki).",
+        "Established in 2006 (lokalhistoriewiki). RDM is a private foundation; its founders are the municipalities of Kautokeino and Porsanger, the foundation Stiftelsen De Samiske Samlinger (Karasjok municipality) and Stiftelsen Kokelv sj\u00f8samiske museum (RDM annual report 2023).",
+        "The S\u00e1mi Parliament (Sametinget) appoints two board members including the chair, and Karasjok municipality appoints one; S\u00e1mi is the organisation's main language, and the main administration is at De Samiske Samlinger in Karasjok (RDM annual report 2023).",
+        "It presents S\u00e1mi inland culture, reindeer herding, sea S\u00e1mi culture and the meeting of S\u00e1mi, Kven and Norwegian culture through objects, photographs and intangible heritage (RDM annual report 2023).",
+        "De Samiske Samlinger was established in 1972 as the first S\u00e1mi cultural institution in Norway and holds more than 5,000 objects (Fortidsminneforeningen). The main building is a brutalist reinforced-concrete building from 1972, drawn by two Troms\u00f8-based architects in close cooperation with the S\u00e1mi artist Iver J\u00e5ks (Fortidsminneforeningen).",
+        "The museums had 14,467 visitors in 2023, up 1.5% on 2022; RDM had 17 full-time equivalent positions and the director was Anne May Olli (RDM annual report 2023).",
+        "A planned new museum building in Karasjok would replace the 1972 building and house both the cultural-history and the art collections. Statsbygg is the developer on behalf of the Ministry of Culture and Equality and would own and manage it (Riksantikvaren, 25 August 2025; Fortidsminneforeningen)."
+      ],
+      "funding_verdict": "RiddoDuottarMuseat: mainly public: the S\u00e1mi Parliament, Finnmark county and four municipalities",
+      "funding": [
+        "2023 public grants listed in the annual report: Sametinget NOK 13,122,000 (NOK 13,687,000 in 2022), Finnmark fylkeskommune NOK 800,000, Porsanger municipality NOK 564,584, Kautokeino municipality NOK 282,100, Hammerfest municipality NOK 282,225 and Karasjok municipality NOK 220,000. These total about NOK 15.27 million (RDM annual report 2023).",
+        "The Sametinget figure excludes the M\u00e1ze project and the S\u00e1mi Parliament's art purchase scheme (RDM annual report 2023).",
+        "The 2023 result was a surplus of NOK 142,185 (RDM annual report 2023).",
+        "The S\u00e1mi Parliament has administrative responsibility for RDM and is responsible for operating grants (lokalhistoriewiki).",
+        "The state budget set aside NOK 5 million for further planning of the new Karasjok building (Fortidsminneforeningen)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Protest over the planned demolition of the Karasjok museum building",
+          "points": [
+            "In June 2022 the S\u00e1mi Parliament, the museum's main funder, voted for demolition of the museum building for De Samiske Samlinger and a new building; the protests below are aimed at that decision and at the Statsbygg zoning plan that follows it (Riksantikvaren, Fortidsminneforeningen).",
+            "Fortidsminneforeningen (the Society for the Preservation of Norwegian Ancient Monuments), through its Finnmark branch, protested the demolition, and its antiquarian committee backed the branch fully; in a letter to Statsbygg dated 19 April 2024 it asked Statsbygg to study keeping the building with an extension. It argues that the art by Iver J\u00e5ks is integrated in the architecture and cannot be moved without loss, and says Statsbygg's own 2019 feasibility study found renovation with an extension realistic.",
+            "Riksantikvaren (the Directorate for Cultural Heritage) lodged a formal objection on 25 August 2025 to the detailed zoning plan for the new museum building, saying the cultural environment is not adequately addressed, the plan is too imprecise and the impact assessment has significant gaps, with the protected hunting-pit site and eight protected S\u00e1mi buildings on the museum grounds not sufficiently secured. It does not oppose demolition as such, but says reuse and rehabilitation should be the first choice.",
+            "RDM's board has itself criticised Riksantikvaren: S\u00e1gat reported on 11 May 2026 under the headline \"Riksantikvaren undergraver samisk selvbestemmelse\" (title translated: Riksantikvaren undermines S\u00e1mi self-determination) that RDM's board holds that Riksantikvaren touches fundamental questions of S\u00e1mi self-determination (S\u00e1gat, Stein Torger Svala; paywalled, headline and lead only)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "RiddoDuottarMuseat is a S\u00e1mi museum foundation financed by public money: NOK 13.1 million of about NOK 15.3 million in 2023 grants came from the S\u00e1mi Parliament, the rest from Finnmark county and four municipalities. The documented dispute concerns the planned demolition of the 1972 Karasjok museum building, opposed by a heritage society and objected to in zoning by Riksantikvaren.",
+      "sources": [
+        {
+          "url": "https://rdm.no/wp-content/uploads/2024/05/NO_-2023_Arsmelding-RDM.pdf"
+        },
+        {
+          "url": "https://lokalhistoriewiki.no/wiki/RiddoDuottarMuseat"
+        },
+        {
+          "url": "https://fortidsminneforeningen.no/media/icqee2y1/museumsbygningen-for-de-samiske-samlinger-i-karasjok.pdf"
+        },
+        {
+          "url": "https://riksantikvaren.no/content/uploads/2025/08/25_01778-11-Riddo-Duottar-Museat-Nytt-museumsbygg-Detaljregulering-Plan-ID-5610_202401-692497_88_1.pdf"
+        },
+        {
+          "url": "https://www.sagat.no/riksantikvaren-undergraver-samisk-selvbestemmelse/19.57159",
+          "note": "paywalled"
+        }
+      ],
+      "website": "https://rdm.no",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "id": "nordnorsk-kunstmuseum-troms",
@@ -122609,6 +123244,81 @@
           ]
         }
       ]
+    },
+    "details": {
+      "overview": [
+        "Artist-led institution and gallery at Burlington House, Piccadilly, London, where it has been since 1868; it moved there from Pall Mall, Somerset House and Trafalgar Square (Wikipedia).",
+        "Founded through a personal act of King George III on 10 December 1768, with Joshua Reynolds as first president (Wikipedia).",
+        "Rebecca Salter was elected president on 10 December 2019, the first woman in the post (Wikipedia).",
+        "The Royal Academy Schools are the oldest art school in Britain; their three-year postgraduate programme is free to every applicant offered a place (Wikipedia).",
+        "David Chipperfield Architects were appointed in 2008; the site closed in 2016 and the \"New RA\" reopened on 19 May 2018 after a \u00a356 million project (Wikipedia).",
+        "The annual Summer Exhibition shows public submissions and works by Royal Academicians; the majority of works are for sale, and sales support the exhibiting artists and the Academy's charitable work, including training artists at the Royal Academy Schools. The 257th edition ran from 17 June to 17 August 2025 (Royal Academy press notice, Insight Investment website).",
+        "Visitor numbers were 696,000 in 2022, 710,000 in 2023 and 622,000 in 2024, against 1.25 million before the pandemic (The Art Newspaper, 27 February 2025)."
+      ],
+      "funding_verdict": "Royal Academy of Arts: independent charity: tickets, donations, sponsorship, commercial income and membership, with no direct government funding",
+      "funding": [
+        "Wikipedia states that the Academy \"receives funding from neither the State nor the Crown and operates as a charity\"; The Art Newspaper states that it receives no direct government funding and relies on ticket sales, donations, sponsorship, commercial activities and its membership scheme (The Art Newspaper, Gareth Harris, 27 February 2025).",
+        "Summer Exhibition sponsor: Insight Investment sponsored the 2025 edition (Royal Academy press notice on the Insight Investment website). House of Creed was headline partner of the 2026 Summer Exhibition Preview Party, which supports the Royal Academy Schools (Retail Boss, Shipra Bohara, 15 June 2026).",
+        "Finances: the 2024-25 budget forecast a net loss of \u00a37.1 million before any measures; without action the Academy would breach its credit facilities by the year ending 31 August 2026 and would need to draw on \u00a310.3 million of unrestricted funds held by the separate Royal Academy Trust charity (The Art Newspaper, Gareth Harris, 27 February 2025).",
+        "Sackler name: the Academy has a Sackler wing. In December 2021 a Royal Academy spokesperson told Museums Journal that the Academy has not received donations from the Sackler Trust or the Mortimer and Theresa Sackler Foundation, and that it has received support from Jillian and Arthur M Sackler, which the spokesperson called \"a different branch of the Sackler family\"; the wing kept its name (Museums Journal, Michael Rudling, 14 December 2021)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Protest or boycott",
+          "points": [
+            "15 March 2025: about 50 members of the IWGB union demonstrated at the Royal Academy against its second round of mass redundancies in five years, and 78% of the 118 staff who took part in a vote expressed no confidence in the president, the interim chief executive and the treasurer to lead the restructure (The Art Newspaper, Gareth Harris, 17 March 2025).",
+            "The Academy's proposal was to cut up to 60 roles, about 18% of the workforce, almost half of them current vacancies. The IWGB called the cuts evidence of \"reckless mismanagement of an historic institution\" (The Art Newspaper, 27 February 2025)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "The criticism concerns the Academy's management and finances in 2025, as reported by The Art Newspaper.",
+        "items": [
+          {
+            "outlet": "The Art Newspaper",
+            "title": "Gareth Harris, \"Royal Academy staff face redundancy amid plans to cut 18% of workforce\" (2025)",
+            "url": "http://www.theartnewspaper.com/2025/02/27/royal-academy-staff-face-redundancy-amid-plans-to-cut-18-of-workforce",
+            "points": [
+              "Reports that the Royal Academy Council approved the redundancy plans, for up to 60 roles, and that the union blames \"reckless mismanagement\".",
+              "Quotes interim chief executive Natasha Mitchell, who says the Academy faces \"a serious financial challenge\"."
+            ]
+          },
+          {
+            "outlet": "The Art Newspaper",
+            "title": "Gareth Harris, \"Protestors descend on London's Royal Academy over planned job cuts\" (2025)",
+            "url": "http://www.theartnewspaper.com/2025/03/17/protestors-descend-on-londons-royal-academy-over-planned-job-cuts",
+            "points": [
+              "Reports the 15 March protest, the union's demand to stop all mandatory redundancies and its no-confidence figures.",
+              "The Academy disputed the union's figure of almost 100 jobs at risk and said no decisions had been made."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The Royal Academy is an independent charity with no direct government funding, living on tickets, donations, sponsorship, commercial income and membership. The documented sponsors are Insight Investment for the Summer Exhibition and House of Creed for its preview party; the documented dispute is the 2025 redundancy plan, which brought a staff no-confidence vote and a union protest.",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Royal_Academy"
+        },
+        {
+          "url": "https://www.insightinvestment.com/globalassets/documents/media-library/media-updates/press-release_royal-academy-of-arts-summer-exhibition-2025.pdf"
+        },
+        {
+          "url": "https://retailboss.co/house-of-creed-brings-centuries-of-craft-to-the-royal-academys-2026-summer-exhibition/"
+        },
+        {
+          "url": "http://www.theartnewspaper.com/2025/02/27/royal-academy-staff-face-redundancy-amid-plans-to-cut-18-of-workforce"
+        },
+        {
+          "url": "http://www.theartnewspaper.com/2025/03/17/protestors-descend-on-londons-royal-academy-over-planned-job-cuts"
+        },
+        {
+          "url": "https://www.museumsassociation.org/museums-journal/news/2021/12/metropolitan-museum-of-art-drops-sackler-name/"
+        }
+      ],
+      "website": "https://www.royalacademy.org.uk",
+      "retrieved": "2026-10-25"
     }
   },
   {
