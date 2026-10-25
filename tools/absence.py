@@ -8,8 +8,9 @@ page could not be read"); a clause that states something stays ("No annual repor
 Charity Commission register" keeps the accounts). A sentence with nothing left disappears, and a note or field
 with nothing left is removed.
 
-Covers record.details and the plain-text funding line (a sentence goes only when all of it is absence) and the
-one-line notes (watch, why_flagged, records_note), where the absence clauses of a mixed sentence go too.
+Covers record.details and the plain-text funding line (a sentence that opens with "No ..." loses its absence
+clauses; any other sentence goes only when all of it is absence) and the one-line notes (watch, why_flagged,
+records_note), where the absence clauses of every mixed sentence go.
 
   python3 tools/absence.py            # dry run: counts, and sentences that lost only part of themselves
   python3 tools/absence.py --apply    # rewrite institutions.json
@@ -43,8 +44,8 @@ EXCUSE = re.compile(r"\b(could not|couldn't|cannot|did not (?:load|show|open)|no
                     r"showed none|fails its certificate)\b", re.I)
 SUBJECT_NOT_NAMED = re.compile(r"^[A-Z][\w'. -]{0,30} (?:was|were) not named\b")   # "Charleston was not named" in a campaign letter is the finding
 CHECKED = re.compile(r'\b(confirmed|verified|read|shown|noted|recorded|released|posted|announced|included|mentions?|says|gives?|appears?|shows?)\b', re.I)
-NOINFO = re.compile(r'\b(?:publishes|posts|gives|lists|names|states|shows|has) no\b', re.I)   # "YARAT publishes no funder list"
-UNCONFIRMED = re.compile(r'\b(unconfirmed|unverified|not (?:established|confirmed|verified|known))\b', re.I)
+NOINFO = re.compile(r'\b(?:publishes|posts|gives|lists|names|states|shows|showed|has) no\b', re.I)   # "YARAT publishes no funder list"
+UNCONFIRMED = re.compile(r'\b(unconfirmed|unverified|not (?:established|confirmed|verified|known|sourced))\b', re.I)
 NOT_ABSENCE = re.compile(r'\b(guilty|liable|responsible|culpable|complicit|in breach|to have|to be|to contain)\b', re.I)
 SHORT = 16   # words; a longer "not found" clause usually carries a fact as well
 NOTES = ('watch', 'why_flagged', 'records_note')
@@ -66,13 +67,14 @@ def absent(c, after_absent):
 
 def clean_sentence(s, kept=None, partial=True, lead_only=False):
     """The sentence without its absence clauses ('' when nothing is left). With partial=False a sentence that
-    still states something is returned whole."""
+    still states something is returned whole; 'lead' trims only sentences that open with No/None/Neither."""
     if lead_only and not LEAD.match(s.strip()):
         return s
     end = s.rstrip()[-1:] if s.rstrip()[-1:] in '.;' else ''
     m = LABEL.match(s.strip())
     label, body = (m.group(1), s.strip()[m.end():]) if m else ('', s.strip())
-    parts = re.split(r';\s+|,\s+(?:though|but|while|although|and|so)\s+', body.rstrip('.;'))
+    masked = re.sub(r'\([^()]*\)', lambda m: m.group(0).replace(';', '\x00').replace(',', '\x01'), body.rstrip('.;'))   # a ; inside brackets is not a clause break
+    parts = [x.replace('\x00', ';').replace('\x01', ',') for x in re.split(r';\s+|,\s+(?:though|but|while|although|and|so)\s+', masked)]
     if LEAD.match(parts[0]) and re.search(r':\s+', parts[0]):   # "No flagged funder was found: its pages name ..."
         parts[0:1] = re.split(r':\s+', parts[0], maxsplit=1)
     out, prev = [], False
@@ -83,7 +85,7 @@ def clean_sentence(s, kept=None, partial=True, lead_only=False):
         prev = gone
     if not out:
         return ''
-    if len(out) == len(parts) or not partial:
+    if len(out) == len(parts) or not (partial is True or (partial == 'lead' and LEAD.match(body))):
         return s
     if kept is not None:
         kept.append(s)
@@ -103,7 +105,7 @@ def strip_details(d, kept=None):
     before = json.dumps(d, ensure_ascii=False)
 
     def lines(items):
-        return [x for x in (strip_text(t, kept, False) for t in items) if x]
+        return [x for x in (strip_text(t, kept, 'lead') for t in items) if x]
 
     for k in ('overview', 'funding', 'wider_context', 'not_related'):
         d[k] = lines(d.get(k, []))
@@ -114,7 +116,7 @@ def strip_details(d, kept=None):
     d['red_flags'] = [f for f in d.get('red_flags', []) if f['points']]
     p = d.get('press') or {}
     if p:
-        p['overall'] = strip_text(p['overall'], kept, False) if p.get('overall') else ''
+        p['overall'] = strip_text(p['overall'], kept, 'lead') if p.get('overall') else ''
         for it in p.get('items', []):
             it['points'] = lines(it.get('points', []))
     return int(json.dumps(d, ensure_ascii=False) != before)
@@ -126,7 +128,7 @@ def strip_record(r, kept=None):
     for f in ('funding',) + NOTES:
         if isinstance(r.get(f), str) and r[f].strip():
             before = r[f]
-            r[f] = strip_text(before, kept, f in NOTES)
+            r[f] = strip_text(before, kept, True if f in NOTES else 'lead')
             n += before.strip() != r[f]
             if not r[f]:
                 del r[f]

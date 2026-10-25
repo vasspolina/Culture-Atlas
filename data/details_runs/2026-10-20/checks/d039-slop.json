@@ -1,0 +1,380 @@
+[
+ {
+  "id": "magasin-iii",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'generous operative support'",
+   "unsupported: 'shared administrative functions'",
+   "unsupported: 'chairman of Proventus'",
+   "no statement of what Proventus invests in"
+  ],
+  "before": "The museum credits Robert Weil, chairman of the foundation and of Proventus, with \"generous operative support.\" / the two share administrative functions / Proventus is a family-owned investment company founded in 1969...",
+  "after": "Robert Weil is chairman and founder of the foundation (Weil Foundation). Proventus describes itself as \"active in European capital markets\" with long-term asset management; Wikipedia lists holdings in glass, furniture, consumer brands and banking restructurings. No reporting found of fossil-fuel or energy holdings at Proventus: neither page lists any.",
+  "sources": [
+   "https://weilfoundation.se/about-us/people-organization/",
+   "https://en.wikipedia.org/wiki/Robert_Weil_(businessman)",
+   "https://weilfoundation.se/"
+  ],
+  "reason": "The quoted phrase and the shared-functions claim appear on no opened page. Both Weil Foundation and Wikipedia describe Proventus as an investment company with no fossil-fuel holdings, so no Fossil fuels flag is supported; the report states only what the pages show. Foundation year 2014 is on the foundation home page."
+ },
+ {
+  "id": "magasin-iii",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported date: '2020 reopening'"
+  ],
+  "before": "added a library and seminar room for the 2020 reopening (e-flux)",
+  "after": "added a library and seminar room for the reopening after the 2017 closure (e-flux)",
+  "sources": [
+   "https://www.e-flux.com/announcements/354817/the-opening-of-the-innermost-rooms/"
+  ],
+  "reason": "The e-flux page gives the 2017 closure and a postponed May opening but no year for the reopening."
+ },
+ {
+  "id": "magasin-iii",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'Names Neuman and Weil as co-founders'"
+  ],
+  "before": "Names Neuman and Weil as co-founders. An interview, not a critique; the museum's own people answer the question.",
+  "after": "An interview, not a critique; the museum's chairman answers the question.",
+  "sources": [
+   "https://kunstkritikk.com/no-or-rather-yes-and-no/"
+  ],
+  "reason": "The interview names Neuman as chairman; co-founders are not stated there."
+ },
+ {
+  "id": "magazzino-italian-art",
+  "section": "FUNDING",
+  "problems": [
+   "EIN confusion",
+   "unsupported: '501(c)(3)'",
+   "job title missing for named speaker"
+  ],
+  "before": "The Magazzino Italian Art Foundation (EIN 83-1666946) is a 501(c)(3)... / its director said",
+  "after": "EIN 83-1666946 is the Magazzino Italian Art Foundation; ProPublica contributions of $12.6M (2019), $8.5M, $3.3M (2021), $7.0M, $9.1M, $3.6M (2024); EIN 81-4144498 returns a 404 (checked 2026-10-25), so no figures come from it; the speaker is executive director Vittorio Calabrese.",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/831666946",
+   "https://projects.propublica.org/nonprofits/organizations/814144498",
+   "https://lavocedinewyork.com/en/arts/2023/03/21/magazzino-italian-art-a-little-eden-in-the-hudson-valley/"
+  ],
+  "reason": "All six yearly figures match the ProPublica table (range $3.3M in 2021 to $12.6M in 2019); 2018 has only a Form 990-PF with no extracted figures."
+ },
+ {
+  "id": "manchester-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported attribution: British Museum partnership credited to Apollo",
+   "descriptor not on page: 'dinosaur gallery'"
+  ],
+  "before": "South Asia Gallery, which the museum made with the British Museum (Apollo, Wikipedia). ... a dinosaur gallery.",
+  "after": "Apollo for the extension and gallery; Wikipedia for the British Museum partnership and the 18 February 2023 reopening; dinosaur hall (The Mill).",
+  "sources": [
+   "https://apollo-magazine.com/manchester-museum-renovation-south-asia-gallery/",
+   "https://en.wikipedia.org/wiki/Manchester_Museum",
+   "https://manchestermill.co.uk/manchester-museum-is-now-unmissable/"
+  ],
+  "reason": "Apollo does not mention the British Museum. The museum's own About page gives February 2023 but no day or cost."
+ },
+ {
+  "id": "manchester-museum",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: ERDF, Wellcome Trust and Wolfson backing for 1997-2003 works"
+  ],
+  "before": "The 1997 to 2003 redevelopment received £12.5 million from the Heritage Lottery Fund, with the European Regional Development Fund, the Wellcome Trust and the Wolfson Foundation also backing it",
+  "after": "A £12.5 million Heritage Lottery Fund award in 1997, with other funding, supported the refurbishment that reopened the museum in 2003",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Manchester_Museum"
+  ],
+  "reason": "Only the HLF award and the 2003 reopening were on the opened page. Culture Recovery Fund (£1,304,489, 11 December 2020, £13.5m cost) and the supporters page confirmed as written."
+ },
+ {
+  "id": "manchester-museum",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong title",
+   "wrong job title",
+   "misattributed denial",
+   "unsupported: 'the author did not resolve the question'",
+   "overstatement: 'violent'"
+  ],
+  "before": "\"...fresh from a £15 million revamp...\"; Curator Bryan Sitch denied...the Institute is funded separately from the museum; the author did not resolve the question; a violent attack",
+  "after": "Title \"...£15m revamp...\"; deputy head of collections Bryan Sitch denied censorship and said the museum is funded separately and sought their advice; Director Esme Ward said the museum does not avoid events in China; \"an attack\".",
+  "sources": [
+   "https://manchestermill.co.uk/manchester-museum-is-now-unmissable/"
+  ],
+  "reason": "Matched to The Mill (18 February 2023). Bottom line changed to match."
+ },
+ {
+  "id": "moca-bangkok",
+  "section": "FUNDING",
+  "problems": [
+   "weak source unlabelled",
+   "overstated paraphrase",
+   "unsupported: 'founder and his son lead it together'"
+  ],
+  "before": "A 2012 blog says he funded it entirely (Dateline Bangkok, a personal blog). / His son said running a museum brings heavy financial responsibilities. / the founder and his son lead it together",
+  "after": "The 2012 post is labelled a weak source that no other source supports; Kit Kanachai said managing the financial responsibilities can be stressful; Lux calls him a co-owner and says the father has not fully handed over control.",
+  "sources": [
+   "https://blog.matthewhunt.com/2012/08/museum-of-contemporary-art.html",
+   "https://www.lux-mag.com/?p=22060",
+   "https://en.wikipedia.org/wiki/Boonchai_Bencharongkul"
+  ],
+  "reason": "Hunt's post of 3 August 2012 says 'funded entirely'; no other opened source states it."
+ },
+ {
+  "id": "moca-bangkok",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "claim beyond source: 'money-laundering inquiry' of the sister",
+   "missing headline and source details"
+  ],
+  "before": "In June 2017 Thailand's Department of Special Investigation summoned her several times in a money-laundering inquiry (The Nation, 16 June 2017).",
+  "after": "The Nation, 'Foundation chaired by Boonchai's sister implicated in KCUC embezzlement probe' (16 June 2017): DSI summoned Wanna Chirakiti several times as chair of the foundation under the patronage of Phra Dhammachayo, who faced a money-laundering arrest warrant; the special prosecutor said the foundation built temple facilities with money from Supachai Srisupa-aksorn. Prosecutor: 'to date there has been no evidence that Boonchai was involved in alleged money-laundering.' The article names no donations by Boonchai.",
+  "sources": [
+   "https://www.nationthailand.com/in-focus/30318281",
+   "https://en.wikipedia.org/wiki/Boonchai_Bencharongkul"
+  ],
+  "reason": "The article's money-laundering charge concerns the monk, not the sister; the report now says so. Quote, date and no-evidence statement confirmed; Wikipedia says only that Boonchai follows the Dhammakaya movement."
+ },
+ {
+  "id": "mohatta-palace-museum",
+  "section": "FUNDING",
+  "problems": [
+   "conflicting dates not stated",
+   "unsupported: trust 'constituted by the provincial government' (Friday Times)",
+   "unsupported verdict 'mainly public ... small income'"
+  ],
+  "before": "The Government of Sindh bought the property ... (Wikipedia gives 1995). In court ... 1993 ... Dawn (2020) says the federal government bought the palace and handed it to the Sindh government. / constituted by the provincial government",
+  "after": "Sources conflict: Wikipedia 1995 (Government of Sindh, with a board of trustees headed by the Governor); the Sindh government told the court it bought in 1993 at the official assignee's market value (Dawn, 2021); Dawn (2020) says the federal government bought it after 1980 and handed it to Sindh, no year. The trust runs the museum and sought to intervene in the lawsuit. The museum's Support page says it depends mainly on donations and lists Citibank, Standard Chartered, Shell Pakistan, Engro, Unilever and Telenor as event clients, not donors.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mohatta_Palace",
+   "https://www.dawn.com/news/1656933/official-assignee-restrained-from-taking-over-mohatta-palace",
+   "https://www.dawn.com/news/amp/1580894"
+  ],
+  "reason": "Dates verified on all three pages. The Friday Times page does not say the provincial government constituted the trust. Verdict line and bottom line reworded to match the museum's own funding statement."
+ },
+ {
+  "id": "mohatta-palace-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong job title",
+   "dates"
+  ],
+  "before": "Nasreen Askari was the museum's director from its start; in December 2025 Dawn reported she was stepping down after 28 years.",
+  "after": "Nasreen Askari has been the museum's curator since 1998; Dawn reported on 14 December 2025 that she was stepping down after 28 years.",
+  "sources": [
+   "https://www.dawn.com/news/1960914"
+  ],
+  "reason": "Dawn calls her curator, not director."
+ },
+ {
+  "id": "mohatta-palace-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "date not on page"
+  ],
+  "before": "On 24 August 2023 a single bench rejected applications...",
+  "after": "In August 2023 (The Friday Times, 25 August 2023) a single bench rejected applications...",
+  "sources": [
+   "https://thefridaytimes.com/25-Aug-2023/petition-to-prevent-conversion-of-historical-mohatta-palace-into-medical-college-rejected"
+  ],
+  "reason": "The page gives no ruling date; the article is dated 25 August 2023. The 13 October and 8 November 2021 dates and the 1971 suit were confirmed in Dawn."
+ },
+ {
+  "id": "mohatta-palace-museum",
+  "section": "Website line",
+  "problems": [
+   "site compromised not stated",
+   "trimmed to under 800 words"
+  ],
+  "before": "the About page link returned an error",
+  "after": "the Support section carries unrelated outside links, one to a promo-code site, so the address is compromised",
+  "sources": [
+   "https://www.mohattapalacemuseum.com"
+  ],
+  "reason": "Home page lists exhibitions from 10 December 2019 and links to NoDepositPromoCodes.com."
+ },
+ {
+  "id": "mostyn",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: '2007 to 2010'",
+   "name not on page: 'Siop Mostyn'"
+  ],
+  "before": "Ellis Williams Architects carried out the 2007 to 2010 redevelopment ... (Siop Mostyn)",
+  "after": "...redevelopment, which reopened the gallery in May 2010 ... (Mostyn Siop)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mostyn_(gallery)",
+   "https://mostyn.org/"
+  ],
+  "reason": "Wikipedia gives May 2010 and a £5 million cost; the shop is 'Mostyn Siop' on the gallery site."
+ },
+ {
+  "id": "mostyn",
+  "section": "FUNDING",
+  "problems": [
+   "mislabelled funds",
+   "trust names wrong"
+  ],
+  "before": "Conwy-tagged restricted funds were £74,814 for boilers and £63,869 for learning ... Ashley Foundation ... The 2025 accounts name Clare Harding as gallery director.",
+  "after": "Restricted funds of £74,814 (capital boilers, labelled SPF and ACW Capital) and £63,869 (learning and development, labelled SPF), Conwy referenced in both descriptions; Foyle £25,000 for the Jeremy Deller project; support page lists the Ashley Family Foundation and Colwinston Charitable Trust; Clare Harding is interim director and a trustee.",
+  "sources": [
+   "https://opencharities.uk/ew/507842/files/2025-03-31-accounts.html",
+   "https://opencharities.uk/ew/507842",
+   "https://mostyn.org/support-us/"
+  ],
+  "reason": "Arts Council of Wales £385,130 for the year to 31 March 2025 and income figures confirmed. The funds are not labelled as Conwy money in the accounts."
+ },
+ {
+  "id": "mostyn",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "missing title and date",
+   "paraphrase beyond source"
+  ],
+  "before": "review of the new Mostyn (2010); Museums Journal (2013): describes reliance on a small local population",
+  "after": "\"The new Mostyn in Llandudno\" (30 May 2010); Museums Journal 2 September 2013; Cramerotti says about 80,000 visitors a year in a town of 18,000.",
+  "sources": [
+   "https://andrewgrahamdixon.com/archive/the-new-mostyn-in-llandudno.html",
+   "https://www.museumsassociation.org/museums-journal/features/2013/09/01092013-making-waves/"
+  ],
+  "reason": "Graham-Dixon page is behind a login (excerpt only); Museums Journal confirms the 60 per cent and £400,000 in 2011-12."
+ },
+ {
+  "id": "mumok",
+  "section": "FUNDING",
+  "problems": [
+   "unread financial statements now read",
+   "sponsor page contents stated"
+  ],
+  "before": "The sponsors page gives no amounts or years. Financial statements for 2022 and 2023 ... the PDF text could not be read, so no figures from them are given here.",
+  "after": "The sponsors page lists Dorotheum, Uniqa, Gerngross and legero united the shoemakers and does not list Audi or Erste Bank. 2023 statements: federal base funding EUR 11,196,000 (2022: TEUR 10,088); sponsoring revenue EUR 181,631.80; donations EUR 383,634.92; Legero contract EUR 20,202.50 (owner is a trustee).",
+  "sources": [
+   "https://www.mumok.at/en/sponsors-partners",
+   "https://mumok.at/fileadmin/Bibliothek/0_Berichte_und_Dokumente/3_GuV_und_Bilanz/mumok_Jahresabschluss_2023_inkl_Anhang.pdf"
+  ],
+  "reason": "The PDF was extracted locally. Bottom line updated. The Sichrovsky column (News, updated 31 May 2024) stays Unverified and named; no response on the page."
+ },
+ {
+  "id": "mumok",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "first-person translation"
+  ],
+  "before": "My translation of the headline",
+  "after": "Translation of the headline (ours)",
+  "sources": [
+   "https://www.news.at/a/spitzentoene-mumok-phrasen-antisemitismus-13375447"
+  ],
+  "reason": "Column details confirmed."
+ },
+ {
+  "id": "mus-e-de-la-chasse-et-de-la-nature",
+  "section": "FUNDING",
+  "problems": [
+   "claim beyond source: Malraux 'gave' the hôtels",
+   "unsupported: fortune funds the foundation",
+   "dead address not noted"
+  ],
+  "before": "self-funded: the founders' family foundation / When Malraux gave the foundation the two hôtels... / ran the family felt-making firm ... which became Sommer SA",
+  "after": "privately run: the Fondation François Sommer, created by the family that owned a felt-making firm; Malraux helped entrust the two hôtels to the foundation; Sommer took over the felt firm in 1953; no source states how the foundation is financed today; fondationsommer.org does not resolve (2026-10-25).",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/François_Sommer",
+   "https://fr.wikipedia.org/wiki/Musée_de_la_Chasse_et_de_la_Nature",
+   "https://fondationfrancoissommer.org/le-musee/"
+  ],
+  "reason": "The felt-making firm stays under Funding as asked, but no opened page says the museum is paid for from that fortune. Bottom line reworded to match. Interview with d'Anthenaise dated spring 2019 per the page."
+ },
+ {
+  "id": "museo-antropologico-y-de-arte-contemporaneo-maac",
+  "section": "FUNDING",
+  "problems": [
+   "wrong attribution of fee amount and area",
+   "invented quotation",
+   "unsupported: opening date"
+  ],
+  "before": "monthly fee of USD 37,872 plus VAT ... about USD 500,000 a year ... 13,526 m2 (Primicias, 2024) / 'under any circumstances' (my translation) / 30 July 2004",
+  "after": "Primicias (5 June 2024): fees of USD 37,872 plus VAT, nearly USD 500,000 a year, about 19 per cent of a budget a little over USD 2.5 million, to the municipal Fundación Malecón 2000; Expreso (22 August 2025): USD 37,872.80 a month for 13,526.73 m2 of exterior space; mayor said on X the foundation will not reform the agreement 'in any way'; opening 'in 2004'.",
+  "sources": [
+   "https://primicias.ec/noticias/guayaquil/crisis-maac-altas-alicuotas-municipio",
+   "https://www.expreso.ec/guayaquil/guayaquil-no-recibe-40-millones-por-cultura-dice-municipio-en-pugna-con-ministerio-254378.html",
+   "https://primicias.ec/noticias/guayaquil/grito-desesperado-salvar-museo-antropologico-malecon"
+  ],
+  "reason": "The USD 500,000 and 19 per cent figures are confirmed in Primicias. 13,526.73 m2 is exterior space, not the building. The mayor's words come from his post on X as quoted by Primicias."
+ },
+ {
+  "id": "museo-antropologico-y-de-arte-contemporaneo-maac",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "missing headline/byline",
+   "petition claim stated as fact risk"
+  ],
+  "before": "\"Ministra de Cultura sobre crisis del MAAC\" (2024); the petition says ... (my translation)",
+  "after": "Full headline and 5 June 2024; Redacción Primicias byline; petition claims 'reported without verifying'.",
+  "sources": [
+   "https://primicias.ec/noticias/guayaquil/crisis-maac-altas-alicuotas-municipio",
+   "https://primicias.ec/noticias/guayaquil/grito-desesperado-salvar-museo-antropologico-malecon"
+  ],
+  "reason": "Both press items opened; KCH Comunicación (8 October 2024) confirms USD 451,000 and USD 125,000."
+ },
+ {
+  "id": "museo-de-la-memoria-y-los-derechos-humanos",
+  "section": "FUNDING",
+  "problems": [
+   "annual reports now read",
+   "figures from reports"
+  ],
+  "before": "The museum publishes annual reports, but the 2024 report was too large to open.",
+  "after": "Annual reports (read as extracted text): state transfers set in budget laws of CLP 2,152,606,000 in 2024 and CLP 2,079,813,000 in 2023; 176,846 visitors in 2024 and 209,364 in 2023. The Clinic (15 May 2026): cut of $79,429,000 within a Culture cut of $51,750 million, after Finance asked ministries for 3 per cent.",
+  "sources": [
+   "https://manager.mmdh.cl/uploads/Memoria_2024_Version_Final_247ce8d994.pdf",
+   "https://manager.mmdh.cl/uploads/Memoria_MMDH_2023_VF_661bff2316.pdf",
+   "https://www.theclinic.cl/2026/05/15/gobierno-kast-recorte-presupuesto-cultura-2026-teatro-a-mil-museo-memoria/"
+  ],
+  "reason": "The PDFs (24.8 MB and 16.0 MB) were downloaded and text-extracted locally. El Mostrador (23 November 2022) confirmed the Senate restoration and RN and Republican objections."
+ },
+ {
+  "id": "museo-de-la-memoria-y-los-derechos-humanos",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "claim beyond source"
+  ],
+  "before": "Culture Minister Mauricio Rojas lost his post over a remark that the museum is 'a staging'",
+  "after": "Mauricio Rojas lost his post as Culture Minister after calling the museum 'a staging' in a book (our translation)",
+  "sources": [
+   "https://www.biobiochile.cl/noticias/nacional/chile/2018/08/13/museo-de-la-memoria-tiene-area-sobre-atentado-a-pinochet-invitan-a-criticos-a-conocerlo.shtml"
+  ],
+  "reason": "BioBioChile says he called it 'un montaje' in a book; the cause of his dismissal is not stated."
+ },
+ {
+  "id": "museo-de-la-palabra-y-la-imagen-mupi",
+  "section": "FUNDING",
+  "problems": [
+   "claim beyond source: funders 'supported moving the archive'",
+   "missing dates and bylines"
+  ],
+  "before": "AGIAMONDO and the Ford Foundation supported moving the archive to the annex.",
+  "after": "On 11 January 2026 elsalvador.com reported the annex was bought with a mortgage loan backed by international cooperation from AGIAMONDO and the Ford Foundation; ContraPunto (Tania Primavera, 15 July 2021) lists TDH Alemania, BMZ and AGIAMONDO for Escuelas de Paz; campaign dated 17 December 2024.",
+  "sources": [
+   "https://www.elsalvador.com/?p=1258114",
+   "https://www.contrapunto.com.sv/mupi-fortalece-escuelas-de-paz/",
+   "https://www.elsalvador.com/entretenimiento/cultura/el-mupi-lanza-campana-benefica-para-preservar-patrimonio-cultural-salvadoreno-en-un-espacio-renovado/1188289/2024/"
+  ],
+  "reason": "No amounts appear in any of the three pages."
+ },
+ {
+  "id": "museo-de-la-palabra-y-la-imagen-mupi",
+  "section": "Website line",
+  "problems": [
+   "compromised address not stated plainly"
+  ],
+  "before": "the home page loaded but carried unrelated gambling advertisements in several languages",
+  "after": "the address is compromised: unrelated gambling advertisements, and an online casino link in the About page navigation menu",
+  "sources": [
+   "https://www.museo.com.sv/sobre-el-museo/"
+  ],
+  "reason": "Hours, address and 1996 timeline on the About page were confirmed."
+ }
+]

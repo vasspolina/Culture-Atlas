@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Culture Atlas report moderation</title>
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
-  <link rel="stylesheet" href="assets/atlas.css?v=147">
-  <script src="assets/config.js?v=148"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=272">
+  <script src="assets/config.js?v=272"></script>
   <style>
     body.review{height:auto;min-height:100vh;overflow:auto;display:block}
     .review header{display:flex;align-items:stretch;justify-content:space-between}
@@ -30,11 +30,11 @@
 <body class="review">
   <header>
     <a class="brand" href="./" style="text-decoration:none">Culture Atlas</a>
-    <a class="brand" href="admin.html" style="text-decoration:none">Share information review</a>
+    <span class="brand">Review moderation</span>
   </header>
   <main>
     <h1>Whistleblower reports</h1>
-    <p>Every note waits here until you approve it. Approved notes appear as reviews on the atlas record for their institution. Delete removes a note for good.</p>
+    <p>Every review waits here until you approve it. An approved review appears under the place it was written for, as a review, with the star rating and name the sender chose, if any. Check that the name is not a real person's before approving. Delete removes a review for good.</p>
     <p id="noBackend" class="hidden" role="alert">Set ATLAS_REPORT_API_URL in assets/config.js to connect the report API.</p>
     <form id="loginForm">
       <label for="tokenInput">Admin bearer token</label>
@@ -56,6 +56,6 @@
       <div id="list"></div>
     </section>
   </main>
-  <script src="assets/reports-admin.js?v=237"></script>
+  <script src="assets/reports-admin.js?v=272"></script>
 </body>
 </html>

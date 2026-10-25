@@ -692,3 +692,107 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - henry-art-gallery: the ProPublica page for EIN 91-6001537 returned 404 on 25 Oct 2026; the Henry Gallery Association's EIN is 23-7052537; the funders page carries no date.
 - instituto-tunga-rio-de-janeiro: the site shows only "Em manutenção"; Rouanet criticism attributed to unnamed critics in Wikipedia.
 - institute-of-modern-art: the Crikey item (3 Feb 2006).
+
+## d038 (research notes, before its slop check)
+- lace-los-angeles: the record's ProPublica link (EIN 953258525) returns 404; the correct EIN is 95-3397305; funders: Warhol $80k over 2 years (2015), Ruth Foundation $150k over 3 years, Teiger, Getty (PST 2024), California Arts Council $14.4k, MacArthur 1994 and 1995.
+- lenbachhaus: Deutsche Bank's $150 million NY DFS penalty (7 July 2020); its Munich foundation funds a 2026 project; gift amounts are in non-public council sessions.
+- le-consortium: leconsortium.fr now redirects to consortiummuseum.com (the centre calls itself Consortium Museum).
+- lismore-castle-arts: lismorecastlearts.com does not resolve (the live site is .ie); Arts Council 40,000 euros (Sept 2026).
+- macaal: Euronews says Othman Lazraq set up Fondation Alliances in 2009, Art Basel says his parents did; the Lazraq family property company's trading halt (Financial Afrik 2015).
+- lalit-kala-akademi: the ministry's April 2015 takeover notice (via Shabdankan); The Wire, ThePrint and The Hindu blocked.
+- lusaka-contemporary-art-centre-lucac: no official website found (lucac.org does not resolve).
+- leopold-museum: federal subsidy more than 4.3 million euros a year (2018 parliamentary motion).
+- lugar-a-dudas-cali: foundation-funded in the past (Prince Claus Fund, Hivos, DOEN, Mondriaan Fund, Avina, Daros); now runs on savings.
+
+## d037 slop check (101 entries; every report changed)
+- kunsthalle-basel: the SVP demand moved from Red flags to Wider context (date, party and body stated; no cut found; Swissinfo English 20 Nov 2023, German 23 Nov); the 32/30/22/8% budget split is now verified: the canton's proposal of 13 Sept 2023 (Grand Council PDF) asks CHF 950,000 a year for 2024 to 2027; model budget: canton 32%, third parties 30% (about CHF 660,000 a year), property 22%, members about 8%, other income about 8%; the Kunsthalle, not the Kunstverein, refused to reverse the appointment.
+- kunsthalle-wien: stays a Red flag: a panel acting for the city rejected all 20 applicants and the city councillor answered; ArtReview 23 Dec 2022; the L'Internationale letter 10 Jan 2023 (advocacy); Hyperallergic 23 Jan 2023; ORF Wien (2011) states plans as plans and does not say the leave was paid; Falter confirms the proceedings were discontinued.
+- kunsthalle-mannheim: The Art Newspaper: EUR 68M cost, EUR 50M from the Hector Foundation II, EUR 10M from the city, the rest from unnamed sponsors; the plans met resistance at first, including two petitions to the regional parliament.
+- kingston-creative: IDB: the Gleaner (2026) says US$1.3M; the Observer (2024) and Kingston Creative's own 2023 annual report say US$1.2M; the Bank of Jamaica pledge ($15M over three years) appears only in the Gleaner (2026); the Gleaner article of 24 June 2025 would not load.
+- kampala-art-biennale: the TotalEnergies Foundation page says it chose to support the 2018 mentoring programme (35 young artists, ten days); no amount or years; stays under Funding.
+- kettle-s-yard: the 44% figure is on the Jim and Helen Ede Fund page; the University's philanthropy page says "around 45%"; the footer shows Research England and Cambridge City Council logos.
+- kr-ller-m-ller-museum: VriendenLoterij a funder since 1988 (the museum's own 40% player-share wording).
+- ker-thiossane-dakar: its own site is down; nothing after the 2009 EU grant carries an amount.
+- l-appartement-22-rabat: no funder list anywhere; the Prince Claus Fund claim not confirmed as a grant to the space.
+
+## d039 (research notes, before its slop check)
+- mumok: the sponsors page lists Dorotheum, Uniqa, Gerngross and legero, not Audi or Erste Bank as the record says; the News column by Sichrovsky is Unverified; the 2022 and 2023 financial statement PDFs could not be read.
+- mohatta-palace-museum: the Sindh government bought the palace in 1993 or 1995 per sources; the record's "bought by the federal government after 1980" conflicts; the ownership lawsuit is Wider context.
+- magazzino-italian-art: the record's ProPublica EIN 814144498 returned 404; EIN 831666946 is the Magazzino Italian Art Foundation; contributions $3.3M to $12.6M a year.
+- moca-bangkok: founder Boonchai Bencharongkul (DTAC); his sister's Dhammakaya foundation money-laundering inquiry is Wider context (the prosecutor said no evidence involved Boonchai); the 2012 personal blog is a weak source.
+- museo-de-la-memoria-y-los-derechos-humanos: the 2026 cut of $79.4m pesos; the record's CLP 2.15bn figure and 176,846 visitors are not repeated (annual-report PDFs exceeded the fetch size).
+- museo-de-la-palabra-y-la-imagen-mupi: the museum site carries unrelated gambling adverts.
+- museo-antropologico-y-de-arte-contemporaneo-maac: budget about USD 2.5m, of which about USD 500k a year goes to the city's Malecón 2000 foundation (Primicias).
+- magasin-iii: the Robert Weil Family Foundation, paid for by the family office Proventus.
+- modern-art-oxford: Arts Council England 2.73m pounds over three years; Oxford City Council cut to 50,000 pounds with a further 50% cut notified.
+
+## d038 slop check (77 entries; 11 changed, Le Consortium clean)
+- lace-los-angeles: the Getty Fossil fuels flag kept: the LACE press release and exhibition page show Getty Foundation support for "(Un)disciplinary Tactics" in PST ART 2024, shown 7 Sept 2024 to 5 Jan 2025; no grant amount on any opened page; Wikipedia: J. Paul Getty left nearly $660 million of Getty Oil stock to the Trust, received in 1982; InfluenceWatch: the Trust received part of the $10 billion Texaco sale proceeds in 1984. The ProPublica EIN 95-3397305 page loads.
+- lenbachhaus: the Deutsche Bank red flag kept: the 16 April 2026 council committee decision shows the Jubiläums-Stiftung funding "Figurentheater"; the foundation was set up in 1992 and exists only to support the Lenbachhaus; the museum site says Deutsche Bank set it up with DM 750,000; NY DFS: 7 July 2020, a consent order, $150 million, for compliance failures over Epstein and the Danske Bank Estonia and FBME correspondent relationships. Deutsche Bank's link is the Munich foundation, not the bank directly.
+- lalit-kala-akademi: the 6 April 2015 notice is confirmed: the Ministry of Culture (through the Press Information Bureau; reproduced by Shabdankan) took over management from 1 April 2015 and appointed K.K. Mittal, IAS, as Administrator, citing complaints of irregularities, a General Council and Board non-functional since 2013, and a suspended Secretary. It sits under Wider context although it is the funder's own action: a grading call for you.
+- leopold-museum: the Austrian Parliament committee report: the motion by Wolfgang Zinggl and colleagues, filed 21 Nov 2018, says over EUR 4.3 million a year; the committee did not approve it on 28 Nov 2018; the museum's sponsors page only thanks the ministry; the Grünbaum suit (The Art Newspaper, 9 Nov 2023); settlement $19 million (2010).
+- lismore-castle-arts: the Arts Council EUR 40,000 is in the round announced 10 Sept 2026 (Waterford News); the Burlington Magazine piece (Frank Wasser, 2019) is critical ("a troubling lack of material", no Irish artist, one London gallery, an awkward venue) but gives a positive verdict.
+- macaal: Financial Afrik (15 April 2015) covers a trading suspension at the Alliances property company and does not mention Fondation Alliances or MACAAL, so it is a funding note; Euronews: Othman Lazraq set up the foundation in 2009; Art Basel: his parents.
+- laongo-granite-sculpture-symposium: HRW says unidentified men abducted the journalists, not the junta.
+- long-museum-shanghai: the 2023 Sotheby's sale planned (about 50 works, later almost 40); the $6 million loss credited to the TEFAF report that ArtReview cites.
+- lugar-a-dudas-cali: The Art Newspaper, 31 May 2013: Daros; no reporting found of Daros money reaching the space today.
+
+## d039 slop check (25 entries; 11 changed, Modern Art Oxford clean; no report has a Red flags section)
+- mumok: federal base funding EUR 11,196,000 (2022: TEUR 10,088), sponsoring revenue EUR 181,631.80, donations EUR 383,634.92 (2023 financial statements, extracted locally); the legero contract EUR 20,202.50 net and its owner is a trustee; Audi and Erste Bank are not on the sponsors page; the Sichrovsky column stays Unverified, no response on the page.
+- museo-de-la-memoria-y-los-derechos-humanos: The Clinic (15 May 2026): the $79,429,000 cut to the foundation within a Culture cut of $51,750 million after Finance asked each ministry for 3 per cent; both annual reports extracted locally: state transfers CLP 2,152,606,000 in 2024 and 2,079,813,000 in 2023; 176,846 visitors in 2024 against 209,364 in 2023.
+- mohatta-palace-museum: the conflict stated: Wikipedia: the Government of Sindh bought the palace in 1995; the Sindh government told the court it bought it in 1993 at the official assignee's market value (Dawn, 2021); Dawn (2020): the federal government bought it after 1980 and handed it to Sindh; lawsuit dates 13 Oct and 8 Nov 2021, a 1971 suit; the museum's site is compromised (links to a promo-code site; latest exhibition entry 10 Dec 2019); its Support page names Shell Pakistan and Citibank as event clients, not donors.
+- moca-bangkok: The Nation (16 June 2017): "Foundation chaired by Boonchai's sister implicated in KCUC embezzlement probe"; the money-laundering warrant is against the monk Phra Dhammachayo, not the sister; the special prosecutor said there was "no evidence that Boonchai was involved"; the outcome of the Wanna Chirakiti inquiry is not reported.
+- magazzino-italian-art: EIN 83-1666946 is the Magazzino Italian Art Foundation (the record's 81-4144498 returns 404); contributions $12.6M (2019), $8.5M, $3.3M (2021), $7.0M, $9.1M, $3.6M (2024).
+- magasin-iii: the Weil Foundation people page: Proventus "provides the funding that enables the foundation to fulfill its mission"; Wikipedia lists Proventus holdings in glass, furniture, consumer brands and banking restructurings, no fossil or energy holdings.
+- museo-antropologico-y-de-arte-contemporaneo-maac: Primicias (5 June 2024): a budget of a little over USD 2.5 million and nearly USD 500,000 a year to Fundación Malecón 2000 (about 19 per cent).
+- manchester-museum: 11 Dec 2020 grant of 1,304,489 pounds; reopening 18 Feb 2023. mostyn: Arts Council of Wales 385,130 pounds for the year to 31 March 2025. modern-art-oxford: the council cut from 70,000 to 50,000 pounds from 2022/23 and a further 50 per cent cut notified from 2025/26.
+- museo-de-la-palabra-y-la-imagen-mupi: elsalvador.com (11 Jan 2026): the annex mortgage backed by AGIAMONDO and the Ford Foundation; ContraPunto (15 July 2021): TDH Alemania, BMZ, AGIAMONDO; no amounts; the site carries gambling adverts and an online casino link.
+
+## d041 and d042 (research notes, before their slop checks)
+- ocat-shenzhen-shenzhen: The Art Newspaper says the Shenzhen venue "closed in 2022", but 2024 and 2025 notices show it open; the funding-cut claim rests on a search extract (oeeee.com returned HTTP 493).
+- project-arts-centre-dublin: the Charities Regulator ordered the 2018 "Repeal the 8th" mural painted over; the Arts Council gave EUR 979,600 in 2025.
+- pulitzer-arts-foundation: the record's second ProPublica link (EIN 431940989) returned 404; EIN 43-1752949 confirms $6.2M is 2024 expenses ($6.18M; revenue $10.2M).
+- nha-san-collective-hanoi: nhasan.org did not resolve; the copy at mail.nhasan.org/introduces loaded.
+- pallant-house-gallery: the 130k pounds Chichester grant rests on a search extract; the Fidelity Foundation 260k and 3.0M income could not be confirmed.
+- rijksakademie-amsterdam: Ammodo's money from the 2007 sale of the pension insurer Optas (the funder's own account plus Platform BK's opinion); the Dec 2024 alumni governance campaign is unverified, from an advocacy site.
+- red-brick-art-museum: the 2017 protest by a dead employee's parents at an opening; the wage claim is unverified and denied by the museum; the museum site has a TLS certificate mismatch.
+- sesc-são-paulo-são-paulo: the 2017 petition and review campaign against the Judith Butler seminar at Sesc Pompeia (Vermelho, partisan); the record's R$3.44bn figures were not verified.
+- selasar-sunaryo-art-space-bandung: selasarsunaryo.com is suspended; selasarsunaryo.org mostly a blank template.
+- sir-john-soane-s-museum: income 4,221,788 pounds; grant-in-aid 1,165,000 pounds (annual report, local text extraction).
+- schaulager: currently closed to the public until 2027.
+
+## d040 (research notes, before its slop check)
+- nasher-museum-of-art-at-duke-durham: The Duke Endowment funds acquisitions (2021 to 2023); its 1924 trust held mainly Duke Power stock and James B. Duke's fortune came from tobacco. Not flagged (founder-fortune rule); stated as history. Editor to rule.
+- national-museum-of-contemporary-art-mnac: sponsor linked to the lender of the disputed Malevich loan; ArtLeaks allegation against the director is labelled Unverified; Societe Generale and UniCredit enforcement records under Wider context (pages do not show the Romanian subsidiaries were party).
+- national-gallery-of-arts-tirana: Wikipedia lists Erzen Shkololli as director; an October 2025 Shqiptarja interview names Adela Demetja.
+- museo-nacional-de-bellas-artes-de-la-habana-havana: bellasartes.co.cu does not resolve; Diario de Cuba 403 and Mezosfera expired certificate, not cited.
+- national-museum-of-fine-arts-of-chile-mnba and national-museum-of-moldova: several figures rest on pages other than the museums' own sites (mnba.gob.cl did not resolve from the sandbox; Moldova IPN pieces returned 403).
+- national-arts-festival: 2012 Unemployed People's Movement protest is old; the About, Sponsors and Board pages were placeholders or 404.
+
+## d042 (after its slop check)
+- Rijksakademie: Ammodo's account (Inphykem, Optas sold to Aegon 2007) is stated as the funder's own; Platform BK essay labelled opinion; December 2024 alumni letter in Wider context, labelled Unverified.
+- Sesc São Paulo and Project Arts Centre: the Butler petition and the mural order were moved from Red flags to Wider context (no Sesc action shown; the regulator is not shown as a funder). Confirm.
+- Secession: the space's partner page says only roughly a third of the budget is public grants and calls the house largely self-supporting; added, attributed to the space.
+- Soane: 2024-25 accounts; the earlier 417,443 pounds "tours and events" figure was the restricted charitable total; tours and events are 101,385 pounds.
+- Thin sources: Red Brick (founders' wealth, museum site TLS error), Selasar (own site suspended), Raven Row (no accounts), Rwanda (no budget or funder).
+
+## d040 (after its slop check)
+- Nasher: the Duke Endowment tobacco history ($40 million in December 1924, mainly Duke Power stock; American Tobacco founded 1890) is in Wider context as history, no flag. Record flags unchanged.
+- MNAC: Malevich sponsor flag holds (Akinsha 30 June 2025; HVG names the lender). The Varzari residency allegation (via ArtLeaks) is labelled Unverified with MNAC's reply.
+- National Arts Festival: the 2012 Rhini event (Mahala, 13 July 2012) was an alternative festival, not a documented protest; moved to Wider context.
+- Habana: 2021 artists' letter (27N-aligned; Art Newspaper 24 May 2021, OnCuba 25 May 2021) states no museum response. The Havana Times item was removed (does not name the museum).
+- Tirana: Adela Demetja is director per Shqiptarja 15 Oct 2025; Wikipedia lists Erzen Shkololli. Two separate reconstruction cost figures stated.
+- Chile: two Wikipedia items in Wider context (dictatorship-era censorship, 2018 resignation of director Farriol) concern the museum itself; decide whether they belong.
+- Moldova: 2024 report PDF could not be fully read; 39,767 items figure dropped. Skopje: Eurolink 1,100,000 denars is a pledge.
+
+## d043 and d044 (research notes, before their slop checks)
+- swiss-institute: Blavatnik Family Foundation (2020, 2021) and Bloomberg Philanthropies (2018, 2019) are past funders, not flagged. If Blavatnik is read strictly under the fossil-fuels ruling, a flag would need adding.
+- tensta-konsthall-stockholm: Lundin-owned Bukowskis was a partner and sales venue of the 2012 "Abstract Possible" show, not a listed funder; flag kept only if the slop check confirms a documented objection.
+- taipei-fine-arts-museum-taipei: CTBC flag rests on regulator fines to CTBC Bank (NT$14M Dec 2021, NT$20M and NT$10M 2023); the museum lists the CTBC Foundation, whose tie to the bank group is not confirmed. 2020 "I-DEN-TI-TY" pressure from Taipei City.
+- tarrawarra-museum-of-art: Besen Family Foundation advocacy piece (Matt Chun's Newsletter, Dec 2023) under Wider context, not a flag.
+- tainan-art-museum: the record's NT$201M revenue and its breakdown were not verified. swiss-institute: the record's 2025 revenue and net-asset claims were not checked.
+- tank-shanghai: no working website found (tank.art did not resolve); ARTnews pieces paywalled.
+- texaf-bilembo: TotalEnergies appears in the centre's partner list with no amount, year or role; not flagged. Decide whether a bare partner logo counts as current funding.
+- the-crab-museum: a community interest company limited by guarantee (Companies House), not a cooperative as the record says.
+- the-showroom-london: the record's Esmée Fairbairn funding does not appear in the FY2025 accounts. thapong-visual-arts-centre-gaborone: Daily News pages did not load (expired certificate), so the record's P2.2M ministry sum is unconfirmed.
+- the-mac: auditor reports a going-concern material uncertainty (FY2025 accounts).
