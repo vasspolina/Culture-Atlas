@@ -829,3 +829,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - w139-amsterdam: Collective Refusal open letter (undated, advocacy) is about Art Rotterdam at Ahoy and the Mondriaan Fund; it never mentions W139.
 - uffizi: April 2026 workers' protest (Open and L'Espresso, 6 April 2026); the "no pay since October" claim appears only in L'Espresso and is marked Unverified.
 - west-den-haag: westdenhaag.nl returned 503; no founding, director or accounts information.
+
+## d048 (research and slop check)
+- arario-museum-in-space-seoul: founder Kim Chang-il's January 2021 first-instance conviction (a cinema concession at a group property) is not a flag category; moved to Wider context. No appeal ruling found in English or Korean press. Chungnam Ilbo does not name him; The Korea Herald dates the ruling only as "Wednesday".
+- arko-art-center-seoul: the ArtReview piece (Hyunjin Kim, "Self-censored", 12 Aug 2016) names Arts Council Korea, never the Arko Art Center; the blacklist item moved to Wider context. The presidential-office claim is Unverified (Hankook Ilbo via The Korea Herald).
+- arnolfini: Protest or boycott flag confirmed on opened pages (Bristol Cable, Adam Quarshie, 6 Feb 2024; the gallery's May 2024 apology; Artists for Palestine UK).
+- art-gallery-of-nova-scotia: TD Bank (2024 money-laundering plea, 10 Oct 2024; NBC/CNBC) kept as a Red flag under the house name-to-know rule; the gallery's undated business-support page lists TD as a current supporter of the TD Assistant Curatorial Fellowship. Move it to Wider context if a bank's plea should not be a flag.
+- ars-aevi-sarajevo: the open letter of 24 July 2026 (589 signatures) names no author.
+- arete-foundation-for-arts-and-culture-tripoli: funder list rests on one MERIP interview (Khaled Mattawa, 17 Nov 2021) and the AFAC grantee page.
+- art-gallery-of-ballarat-ballarat: the original critical opinion piece (The Courier, 4 Jan 2022) was not opened; only the director's reply (25 Jan 2022) is cited.
+- armenian-center-for-contemporary-experimental-art-accea-npak-yerevan: founding year 1992 (About page, Mirror-Spectator, Wikipedia) versus 1995 (Edward Balassanian's biography page).
