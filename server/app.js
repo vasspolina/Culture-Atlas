@@ -109,7 +109,7 @@ export function createApp({
           status: 'APPROVED',
           OR: [{ placeId: place.id }, { placeId: null, institution: place.name }]
         },
-        select: { id: true, authorLabel: true, rating: true, content: true, createdAt: true },
+        select: { id: true, authorLabel: true, content: true, createdAt: true },
         orderBy: { createdAt: 'desc' },
         take: MAX_PUBLIC_REVIEWS
       });

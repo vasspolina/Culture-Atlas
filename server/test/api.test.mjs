@@ -84,13 +84,12 @@ test('health check answers without touching the database', async () => {
 
 describe('submitting a review', () => {
   test('stores it as PENDING under the place and shows it nowhere public', async () => {
-    const id = await submit({ rating: 2, authorLabel: 'Former registrar' });
+    const id = await submit({ authorLabel: 'Former registrar' });
     const row = await prisma.whistleblowerReport.findUnique({ where: { id } });
     assert.equal(row.status, 'PENDING');
     assert.equal(row.placeId, place.id);
     assert.equal(row.institution, place.name);
     assert.equal(row.city, place.city);
-    assert.equal(row.rating, 2);
     assert.equal(row.authorLabel, 'Former registrar');
     assert.ok(!(await reviews()).some(r => r.id === id));
     assert.ok((await pending()).some(r => r.id === id));
@@ -131,13 +130,10 @@ describe('submitting a review', () => {
     assert.equal(row.city, place.city);
   });
 
-  test('the rating is optional and must be a whole number from 1 to 5', async () => {
-    for (const rating of [0, 6, 2.5, '3', 'five', {}, [], -1, true]) {
-      assert.equal((await post({ content: NOTE, rating })).status, 400, JSON.stringify(rating));
-    }
-    for (const rating of [1, 5, null, undefined]) {
-      assert.equal((await post({ content: NOTE, rating })).status, 201, JSON.stringify(rating));
-    }
+  test('a rating sent by the client is ignored: reviews have none', async () => {
+    const id = await submit({ rating: 5 });
+    const row = await prisma.whistleblowerReport.findUnique({ where: { id } });
+    assert.equal(row.rating, null);
   });
 
   test('the display name is optional, plain text and at most 40 characters', async () => {
@@ -178,7 +174,7 @@ describe('submitting a review', () => {
 
 describe('listing a place', () => {
   test('shows approved reviews of that place only, newest first, with only review fields', async () => {
-    const older = await submit({ rating: 4, authorLabel: 'Visitor' });
+    const older = await submit({ authorLabel: 'Visitor' });
     await new Promise(resolve => setTimeout(resolve, 15));
     const newer = await submit();
     const elsewhere = await submit({}, other.id);
@@ -190,9 +186,8 @@ describe('listing a place', () => {
     assert.ok(ids.includes(older) && ids.includes(newer));
     assert.ok(ids.indexOf(newer) < ids.indexOf(older));
     assert.ok(!ids.includes(elsewhere) && !ids.includes(waiting));
-    for (const r of list) assert.deepEqual(Object.keys(r).sort(), ['authorLabel', 'content', 'createdAt', 'id', 'rating']);
+    for (const r of list) assert.deepEqual(Object.keys(r).sort(), ['authorLabel', 'content', 'createdAt', 'id']);
     const first = list.find(r => r.id === older);
-    assert.equal(first.rating, 4);
     assert.equal(first.authorLabel, 'Visitor');
     assert.ok((await reviews(other.id)).some(r => r.id === elsewhere));
     assert.ok(!(await pending()).some(r => r.id === older || r.id === newer));
@@ -236,10 +231,9 @@ describe('moderating', () => {
     assert.equal((await admin('/api/admin/reports?status=LIVE')).status, 400);
   });
 
-  test('the moderator sees the rating and name the sender gave', async () => {
-    const id = await submit({ rating: 3, authorLabel: 'Ex-intern' });
+  test('the moderator sees the name the sender gave', async () => {
+    const id = await submit({ authorLabel: 'Ex-intern' });
     const row = (await pending()).find(r => r.id === id);
-    assert.equal(row.rating, 3);
     assert.equal(row.authorLabel, 'Ex-intern');
     assert.equal(row.placeId, place.id);
   });
