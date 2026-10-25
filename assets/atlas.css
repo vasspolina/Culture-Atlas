@@ -1742,8 +1742,9 @@ div:has(>#topThemeBtn){column-gap:0}
   }
   :root:root body *:not(svg):not(svg *)::before,:root:root body *:not(svg):not(svg *)::after{font-size:var(--m-size)!important;line-height:var(--m-lh)!important}
   :root:root body #mobileTopBar #reset-state-btn,:root:root body #mobileTopBar button{font-size:var(--m-size)!important}
-  /* .headline — titles: 16px, semibold. */
-  :root:root body :is(h1,h2,h3,h4,.lede,.curator-section-hdr,.layers-title,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.curator-hero-title),
+  /* .headline — titles: 18px on 24, semibold. */
+  :root:root body :is(h1,h2,h3,h4,.lede,.curator-section-hdr,.layers-title,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.curator-hero-title){font-size:var(--m-title)!important;line-height:var(--m-title-lh)!important;font-weight:600!important;margin-top:0}
+  /* The brand name is a title in weight only: 14px, so it fits the top bar beside the buttons. */
   :root:root body #mobileTopBar #mobileTopBrandBtn span{font-size:var(--m-size)!important;line-height:var(--m-lh)!important;font-weight:600!important;margin-top:0}
   /* .secondary — labels and meta. */
   :root:root body :is(.meta,.kicker,strong.meta){color:var(--m-secondary)!important;font-weight:400!important}
@@ -1910,4 +1911,28 @@ div:has(>#topThemeBtn){column-gap:0}
   :root:root #dossier-sheet-verified-pane>*+*{margin-top:calc(2 * var(--L))!important}
   :root:root #dossier-bottom-sheet .facts{padding-top:0!important}
   :root:root:root body :is(h2.lede,#dossier-sheet-name,#desktopDossierName,.dossier-main-heading,.record-popup-name,#floatingCardTitle){letter-spacing:.02em!important}
+}
+
+/* ---- Details as rows (25 Oct 2026), after a font-licence page the user showed ----
+   Each part of the account is a row under a hairline: on the left its title in the accent colour with what it comes to beneath
+   it in the ink, on the right its points as a bulleted list. On the 14/18/24 scale: title and subtitle 18, the list 14, so
+   the two columns keep the ratio of the page they follow (about 1 : 1.3). The accent is blue (cyan on the dark theme); a
+   row of reported, unverified items is orange. A box under the title holds a short annotation, set like the licence page's
+   format chip. The rows stack, title above list, when the panel is narrow. */
+:root{--row-rule:color-mix(in srgb,var(--ink) 30%,transparent);--row-accent:#0045fc;--row-accent-flag:#b83c00}
+:root[data-theme="dark"]{--row-accent:var(--cyan);--row-accent-flag:var(--orange)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-rows{container-type:inline-size;display:block;padding:0;margin:0;border:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:calc(2 * var(--L));align-items:baseline;margin:0;padding:var(--L) 0 calc(2 * var(--L));border-top:1px solid var(--row-rule)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row.is-flag{--row-accent:var(--row-accent-flag)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-head{min-width:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-title{margin:0;padding:0;font:600 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0;word-spacing:normal;text-transform:none;color:var(--row-accent);text-wrap:balance;overflow-wrap:break-word}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-sub{margin:0;padding:0;font:400 var(--fs-m)/var(--lh) var(--sans);text-indent:0;max-width:none;color:var(--ink);text-wrap:pretty}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-box{margin:var(--H) 0 0;padding:calc(var(--H) / 2) var(--H);font:400 var(--fs-s)/var(--lh) var(--sans);text-indent:0;max-width:none;border:1px solid var(--row-rule);border-radius:6px;color:var(--ink);overflow-wrap:anywhere}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list{list-style:none;margin:0;padding:0;min-width:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{position:relative;margin:0;padding:0 0 0 1em;font:400 var(--fs-s)/var(--lh) var(--sans);text-indent:0;max-width:none;text-wrap:pretty;hyphens:manual;overflow-wrap:break-word}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li+li{margin-top:calc(var(--H) / 2)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li::before{content:"\2022";position:absolute;left:0;top:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list .lead-in{font-weight:600}
+@container (max-width:34em){
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr);row-gap:var(--H);align-items:start}
 }
