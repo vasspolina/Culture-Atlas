@@ -1257,3 +1257,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Z33: VRT NWS pieces on the 2025 financial investigation (opened 4 February, closed 3 April 2025, no indications of breach of trust).
 - Zanabazar Museum: no source shows who pays; Funding states only the NCCH listing and the UNESCO project. Needs a better source if a verdict is wanted.
 - Zolak: funding rests on one Reform.news article (11 June 2025).
+
+## d096 (slop check: checks/d096-slop.json)
+- The Whitworth: State censorship kept (university removed the Forensic Architecture statement after a UK Lawyers for Israel complaint, reversed it; Museums Journal 22 July 2022) and Protest or boycott kept (23 artists withdrew from British Art Show 9 in Manchester, February 2022). Frieze x Deutsche Bank and the J Paul Getty Jnr Charitable Trust are listings only, no flag.
+- The Polygon Gallery: Fossil fuels flag cut. Neptune Terminals ($15,000+ in the 2024 annual report) is a port operator for coal and potash, treated like an oil-industry service. Neptune stays under Funding.
+- The Drawing Center: Pataki / LMDC 2005 episode kept as a Red flag, a close call. The stricter reading moves it to Wider context, dated 2005.
+- The Power Plant and The Polygon: TD Bank Group added as a Red flag (TD Bank N.A. plea, 10 October 2024, USD 1.8 billion), per the House rules' name-to-know paragraph; TD is named with years in each space's annual report. Editor to confirm; the stricter reading moves both to Wider context.
+- The Contemporary Austin: ART F CITY 2011 item moved to Wider context (concerns the predecessor Arthouse).
+- The Hepworth Wakefield: Bloomberg Philanthropies is a Major Supporter; the 27 May 2021 partnership is the Bloomberg Connects app, no grant stated.
