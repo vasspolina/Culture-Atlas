@@ -1235,3 +1235,10 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - seoul-museum-of-art-seoul: State censorship flag kept: Kyunghyang Shinmun (Jung Won-sik, 24 June 2025): the museum left Nam Woong's essay out of the catalogue; the "not neutral" reason is Nam's account; the museum says it discussed fit with him; apology on 19 June 2025 and a promised December archival catalogue; the SeMA-Hana Art Prize is co-sponsored by Hana.
 - scottsdale-museum-of-contemporary-art-scottsdale: flag kept: Southwest Contemporary (Lynn Trimble, 13 March 2025): the SMoCA team retitled and cut the show (opened 22 Feb 2025; three galleries instead of five; three artists left out), per Wuestemann (Scottsdale Arts chief executive) "pragmatic"; City contract 6,297,114 dollars for FY2026/27 (2026 to 2029). SRP not flagged.
 - shepparton-art-museum-shepparton: the record's 2.57 million of 3.18 million dollars and the 1 dollar lease unconfirmed (income-note labels unreadable).
+
+## d094 (slop check: checks/d094-slop.json)
+- Stedelijk Museum Amsterdam: ABN AMRO kept as a name-to-know Red flag (partnership extended March 2026; Public Prosecution Service release 19 April 2021, EUR 480m); Bakunin's Barricade protest kept.
+- Tabakalera: Ubik strike moved to Wider context (workers employed by subcontractor; no protest aimed at Tabakalera).
+- Nukus and Tashkent (ACDF): Wider context kept; director start date conflicts between 2019 and 2025 articles (both stated).
+- Studio Voltaire: Bloomberg line has no year; Wider context removed.
+- State of Concept: confirm on the live site that the home page says the physical space is permanently closed.
