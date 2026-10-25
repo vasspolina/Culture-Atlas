@@ -2065,3 +2065,9 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(svg,span){color:#fff!important}
   :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover{filter:brightness(1.25);text-decoration:none}
 }
+
+/* Desktop details: 15px is the smallest size (user, 25 Oct 2026). The small size --fs-s is 14px everywhere else; inside the record panels on a wide screen it is 15px, so the
+   lists, sources, quotations' credits, links and buttons all follow. The phone keeps 14px. */
+@media (min-width:768px){
+  :root :is(#desktopDossierRecordBody,#detailBody){--fs-s:15px}
+}
