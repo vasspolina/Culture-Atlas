@@ -1,0 +1,495 @@
+[
+ {
+  "id": "spike-island-bristol",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: petition of more than 1,300 signatures (Bristol 24/7 returned HTTP 403, figure came from a search summary)",
+   "unsupported: Spike Island director and trustees response and 'inaccurate and misleading'",
+   "unsupported: 'studio review process' and 'asked ... to leave'",
+   "no dates or actor"
+  ],
+  "before": "- 2020: a studio review process led the board to ask Howard Silverman, a founding member, to leave his studio during the coronavirus lockdown (The Guardian, via ArtsJournal, 4 May 2020). ... Bristol 24/7 reported a petition of more than 1,300 signatures ... called the claims \"inaccurate and misleading\".",
+  "after": "- 1 May 2020: The Guardian reported that Spike Island's new board had told Howard Silverman, a founding member and long-standing studio holder, to leave his studio during the coronavirus lockdown. ArtsJournal reposted the report on 4 May 2020. ... Bristol 24/7 also covered the dispute. Its page returned HTTP 403 when opened on 24 October 2026, so no petition count and no Spike Island response are given here.",
+  "sources": [
+   "https://www.artsjournal.org/?p=222139"
+  ],
+  "reason": "ArtsJournal (opened) states the new board, the lockdown timing and the artists' backing; Guardian date 1 May 2020 from ArtsJournal. The Bristol 24/7 page could not be opened, so the 1,300 figure and the response quotation were cut and the 403 is stated. Heading and bottom line changed from 'petition' to 'protest'."
+ },
+ {
+  "id": "spike-island-bristol",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'disused Victorian warehouse'",
+   "unsupported: 'rising rents and a redevelopment plan forced them out'"
+  ],
+  "before": "- The artists first occupied a disused Victorian warehouse on Gas Ferry Road; after rising rents and a redevelopment plan forced them out in 1989, they moved into the former Brooke Bond tea-packing warehouse in 1992.",
+  "after": "- The artists first moved into the McArthur's Steel and Metal warehouse on Gas Ferry Road; the threat of increased rents and a proposed redevelopment of the site forced a move in 1989, and in 1992 they moved into the former Brooke Bond tea-packing warehouse (Spike Island history page).",
+  "sources": [
+   "https://www.spikeisland.org.uk/about/history/"
+  ],
+  "reason": "The history page names the McArthur's warehouse and the threat of increased rents and redevelopment; it does not say 'Victorian' or 'disused'."
+ },
+ {
+  "id": "spike-island-bristol",
+  "section": "FUNDING",
+  "problems": [
+   "name error: 'Nisbet Trust'; Fluxus Art Projects omitted"
+  ],
+  "before": "Elephant Trust, Paul Mellon Centre, Nisbet Trust,",
+  "after": "Elephant Trust, Fluxus Art Projects, Paul Mellon Centre, Nisbett Trust,",
+  "sources": [
+   "https://www.spikeisland.org.uk/our-supporters/"
+  ],
+  "reason": "Spelling and the missing partner taken from the supporters page."
+ },
+ {
+  "id": "stills-edinburgh",
+  "section": "WEBSITE",
+  "problems": [
+   "unsupported: 'redirects to a lander page'",
+   "internal wording 'atlas record' removed from public text"
+  ],
+  "before": "The address https://stills.info/ redirects to a \"lander\" page with no content, so it is parked.",
+  "after": "The older address https://stills.info/ is parked: it returned no content on 2026-10-24.",
+  "sources": [
+   "https://stills.org/about/our-team/"
+  ],
+  "reason": "The stills.info page returned empty content when opened; a redirect to a lander page could not be seen. stills.org is the real site (about and team pages open)."
+ },
+ {
+  "id": "stills-edinburgh",
+  "section": "RED FLAGS",
+  "problems": [
+   "causal verdict in heading ('under campaign pressure') not stated by source",
+   "date: 'August 2024' lacked day",
+   "attribution: Bella Caledonia list attributed to the campaign group"
+  ],
+  "before": "Red flags: Baillie Gifford funding ended under campaign pressure / - August 2024: ... / - March 2026: Art Workers for Palestine Scotland ... listed Stills among organisations that have refused Baillie Gifford funding",
+  "after": "Red flags: Baillie Gifford ties cut in 2024 amid a campaign over its investments / - 8 August 2024: ... The article gives no month for the break and no amount. / - 11 March 2026: reporting a boycott call ... Bella Caledonia named Stills among organisations that have refused Baillie Gifford funding",
+  "sources": [
+   "https://www.artbasel.com/stories/edinburgh-art-festival-uk-ecosystem",
+   "https://bellacaledonia.org.uk/2026/03/11/edinburgh-international-festival-faces-public-boycott/"
+  ],
+  "reason": "Art Basel (Tom Jeffreys, 8 Aug 2024) says Stills cut ties and that campaigning revealed investments in fossil fuels and illegal Israeli settlements; it states no month and no Stills amount (the 25,000 pound figure is not in it). Bella Caledonia (11 Mar 2026) names Stills as having refused the funding."
+ },
+ {
+  "id": "stills-edinburgh",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'stopped taking Baillie Gifford money'"
+  ],
+  "before": "It stopped taking Baillie Gifford money in 2024, reported by Art Basel.",
+  "after": "It cut ties with Baillie Gifford, as Art Basel reported in August 2024.",
+  "sources": [
+   "https://www.artbasel.com/stories/edinburgh-art-festival-uk-ecosystem"
+  ],
+  "reason": "Source says 'cut ties', not that money stopped."
+ },
+ {
+  "id": "state-hermitage-museum-st-petersburg",
+  "section": "RED FLAGS",
+  "problems": [
+   "Sanctions flag lacked named sanctioned sponsors, lists and dates",
+   "sanctioned director and trustees presented as funders",
+   "unsupported: 'Poland detained ... on 4 December 2025'",
+   "unsupported: 'Ukraine puts the damage at over 200 million hryvnia'",
+   "dates missing"
+  ],
+  "before": "Red flags: sanctions on the director and trustees / - Canada sanctioned Piotrovsky in August 2023 ... / - Potanin, the board chairman, was sanctioned by Canada ... / - 4 December 2025: Poland detained ... Butyagin ...",
+  "after": "Red flags: sanctioned banks, oil companies and a donor on the sponsor list: VTB (US Treasury 24 Feb 2022), Sber (6 Apr 2022), Alfa-Bank (6 Apr 2022), Gazprombank (21 Nov 2024), Gazprom Neft (10 Jan 2025), Rosneft (22 Oct 2025), Potanin as donor (Canada 6 Apr 2022, US 15 Dec 2022). Piotrovsky (Canada 31 Aug 2023, EU 23 Apr 2026), trustee Gref (US 24 Mar 2022) and the Butyagin case moved to WIDER CONTEXT; Butyagin detention dated 'early December 2025' (Novaya Gazeta, 11 Dec 2025) and released 28 Apr 2026.",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jy0608",
+   "https://home.treasury.gov/news/press-releases/jy0705",
+   "https://home.treasury.gov/news/press-releases/jy2725"
+  ],
+  "reason": "Each listing date read on the US Treasury page; also opened jy2777 (Gazprom Neft), jy0677 (Gref) and the Treasury Rosneft bulletin. The sponsor and trustee list was read from the Hermitage Friends Club page. Sanctioned trustees and the director are not funders, so they sit under Wider context; sanctioned sponsors and Potanin (personal and foundation donor) count as funders."
+ },
+ {
+  "id": "state-hermitage-museum-st-petersburg",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: The Art Newspaper 2022 item (page could not be opened)",
+   "unsupported: 'Piotrovsky asked whether ...' (it was asked of Putin)",
+   "unsupported: Ozerkov 'for 22 years' and 'tying the decision to'"
+  ],
+  "before": "2. The Art Newspaper: Sophia Kishkovsky, \"Isolated by Russia boycotts ...\" (2022) ...; Piotrovsky asked whether the museum's expansion could be called \"cultural aggression\"; Ozerkov, head of contemporary art for 22 years, left ... tying the decision to Piotrovsky's June interview",
+  "after": "The Art Newspaper 2022 item and URL removed; 'cultural aggression' point removed from the Hyperallergic item; Ozerkov described as head of the modern arts section who announced on 2 October 2022 that he had quit (RFE/RL, 3 Oct 2022).",
+  "sources": [
+   "https://hyperallergic.com/715271/how-the-hermitage-museum-artwashes-russian-aggression/",
+   "https://www.rferl.org/a/hermitage-director-ozerkov-leaves-russia-ukraine-invasion/32063557.html"
+  ],
+  "reason": "The Art Newspaper 2022 page could not be opened in this session (fetch denied), so its claims were cut. RFE/RL gives 2 October and does not state 22 years or a causal tie."
+ },
+ {
+  "id": "state-hermitage-museum-st-petersburg",
+  "section": "OVERVIEW",
+  "problems": [
+   "Amsterdam branch date",
+   "Wikipedia Piotrovsky page does not support the cited points"
+  ],
+  "before": "Its branch in Amsterdam, opened in 2009",
+  "after": "Its Amsterdam branch (Amstelhof building opened 19 June 2009)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Hermitage_Museum"
+  ],
+  "reason": "Wikipedia gives 19 June 2009 for the Amstelhof building; the Mikhail Piotrovsky page was removed from sources because it did not state the 1992 date or the EU listing. Report cut to 789 words."
+ },
+ {
+  "id": "state-russian-museum-st-petersburg",
+  "section": "RED FLAGS",
+  "problems": [
+   "Sanctions flag rested on Wikipedia and a director's listing, not on a funder's listing page",
+   "a sanctioned director presented as a flag",
+   "unsupported: 'the day before its 19 July opening'",
+   "unsupported: 'breached technical rules' wording",
+   "Adam and Eve source"
+  ],
+  "before": "Red flags: sanctions / - Manilova ... Canada's cultural sanctions list in early August 2023 ... / - VTB, the general sponsor, was sanctioned by the EU and UK from 2014, and by the US, UK and others again on 24 February 2022; ... (Wikipedia). / - July 2023: the museum cancelled the Timur Novikov show ... the day before its 19 July opening.",
+  "after": "Red flags: sanctioned general sponsor: VTB, US Treasury full blocking sanctions on 24 February 2022 (US Treasury), earlier US/EU/UK listings of 29 Jul, 31 Jul and 1 Aug 2014 (Wikipedia). Novikov show: Meduza reported cancellation on 19 July 2023; named persons said Manilova ordered it; museum press service gave technical reasons; opened 26 July. Manilova's Canada listing (August 2023, Canada Gazette) moved to WIDER CONTEXT.",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jy0608",
+   "https://en.wikipedia.org/wiki/VTB_Bank",
+   "https://rusmuseum.ru/sponsors/"
+  ],
+  "reason": "Treasury page opened for VTB; museum sponsors page names VTB as general sponsor and general partner since 2024. A museum director is not a funder, so the Canada listing sits under Wider context. Meduza and The Art Newspaper give 19 July as the planned opening, the Moscow Times 20 July; no source says the cancellation came a day before."
+ },
+ {
+  "id": "state-russian-museum-st-petersburg",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'evidence that cultural restriction ... has intensified'",
+   "unsupported: 'Former New Academy colleagues'",
+   "Novaya Gazeta byline and date"
+  ],
+  "before": "- Partial censorship of the Novikov show is evidence that cultural restriction in Russia has intensified since the invasion of Ukraine. - Former New Academy colleagues said works were altered or removed ...",
+  "after": "- The partial censorship stoked fears that cultural censorship in Russia is intensifying ...; former colleagues of Novikov said their works were censored, \"especially to obscure male genitalia\". Novaya Gazeta item: byline Ivan Sidorov, written before Manilova's appointment, allegations sourced to documents, court testimony and anonymous staff.",
+  "sources": [
+   "http://www.theartnewspaper.com/2023/08/15/st-petersburg-show-honouring-timur-novikov-finally-openswith-censorship",
+   "https://novayagazeta.ru/articles/2023/04/24/zhenshchina-prazdnik-na-poroge-russkogo-muzeia"
+  ],
+  "reason": "The Art Newspaper states fears, not a finding, and names the New Artists group colleagues only as 'former colleagues'."
+ },
+ {
+  "id": "state-tretyakov-gallery-moscow",
+  "section": "RED FLAGS",
+  "problems": [
+   "Sanctions flag rested on Wikipedia and lacked lists and dates",
+   "trustees presented as funders",
+   "unsupported: '3 to 4 November 2022'",
+   "Biennale: Donetsk/Luhansk detail",
+   "unsupported: May 2023 Trinity item is not state censorship"
+  ],
+  "before": "Red flags: sanctioned banks and trustees / - VTB is a named sponsor and its president sits on the board ... (Wikipedia). / - Trustee Viktor Vekselberg: OFAC sanctioned him and Renova in April 2018; the UK and EU did so in March 2022 (Wikipedia). / - 3 to 4 November 2022: the Ministry of Culture cancelled the ninth Moscow Biennale ...",
+  "after": "Red flags: sanctioned banks and a sanctioned donor: VTB 24 Feb 2022, PSB 22 Feb 2022, Sberbank 6 Apr 2022, Gazprombank 21 Nov 2024, Usmanov (private donor) 3 Mar 2022 (US Treasury); oil and gas: Surgutneftegas 10 Jan 2025, LUKOIL 22 Oct 2025; arms and defence: PSB; censorship: Biennale cancelled about 4 November 2022 (three days before 7 November, USA Art News), Tregulova not renewed (reported 13 Feb 2023). Trustees Kostin, Vekselberg (6 Apr 2018), Fradkov (22 Feb 2022), Golodets and Akimov (8 May 2022) moved to WIDER CONTEXT.",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jy0608",
+   "https://home.treasury.gov/news/press-releases/jy0771",
+   "https://home.treasury.gov/news/press-releases/jy0628"
+  ],
+  "reason": "Each date read on the US Treasury or OFAC page (also jy0602, jy0705, jy2725, jy2777, sm0338, ofac recent-actions 20180406 and the Lukoil bulletin). USA Art News gives 'three days before' 7 November, not an exact day. Trustees are not funders, so they sit under Wider context. The Trinity transfer was cut (a transfer to the Church, not state censorship) and its press item removed to meet the word limit."
+ },
+ {
+  "id": "state-tretyakov-gallery-moscow",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Mikhelson and Usmanov described as not on the current partners page / as 'private patrons' without a source",
+   "Defence Minister board chair wording",
+   "report over 800 words (860)"
+  ],
+  "before": "(record text: private patrons Leonid Mikhelson and Alisher Usmanov; report said nothing of their listing) / Board of trustees, chaired by Andrey Belousov, Minister of Defence of Russia ...",
+  "after": "- Private individuals on the current partners page: Leonid Mikhelson (exhibition projects in Samara) and Alisher Usmanov (a donation to the statutory activities), with no amounts or years. / Board chaired by Andrei Belousov, \"Minister of Defence of the Russian Federation\"; the page gives no further role.",
+  "sources": [
+   "https://partners.tretyakov.ru/partners"
+  ],
+  "reason": "The current partners page (read as raw HTML) lists Mikhelson and Usmanov under private individuals; the brief expected them to be absent, so this was reported as found. The board page lists Belousov as chairman and Minister of Defence. Overview, funding list and press items trimmed to 790 words."
+ },
+ {
+  "id": "state-tretyakov-gallery-moscow",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: director dates"
+  ],
+  "before": "Elena Pronicheva from 2023; Olga Galaktionova from January 2026",
+  "after": "Elena Pronicheva until January 2026; Olga Galaktionova named on 14 January 2026 by Culture Minister Olga Lyubimova",
+  "sources": [
+   "https://novayagazeta.eu/articles/2026/01/14/tretiakovskuiu-galereiu-vozglavila-byvshii-direktor-pushkinskogo-muzeia-i-rosizo-olga-galaktionova-news"
+  ],
+  "reason": "Novaya Gazeta Europe, 14 January 2026, gives the appointment and the minister's announcement."
+ },
+ {
+  "id": "storm-king-art-center",
+  "section": "RED FLAGS",
+  "problems": [
+   "no amounts, court detail incomplete",
+   "TD gift page and year not stated",
+   "Vermont Biz tie lacked date"
+  ],
+  "before": "- The TD Charitable Foundation, the philanthropic arm of TD Bank (Vermont Biz), is a 2025 donor at the $25,000+ level. - 10 October 2024: ... about $3 billion in penalties from the Department of Justice, FinCEN and the Federal Reserve (NBC News).",
+  "after": "- The TD Charitable Foundation is on Storm King's 2025 donor list at the Fellow level, $25,000+ ... Vermont Biz described the foundation in 2013 as the charitable giving arm of TD Bank N.A. - 10 October 2024: TD Bank pleaded guilty in federal court in Newark ... $1.8 billion to the Department of Justice, $1.3 billion to FinCEN and more than $124 million to the Federal Reserve.",
+  "sources": [
+   "https://stormking.org/support/donors/",
+   "https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912",
+   "https://vermontbiz.com/node/185373"
+  ],
+  "reason": "Donor page: TD Charitable Foundation in the Fellow ($25,000+) tier for 2025. NBC News (10 Oct 2024): plea in Newark, penalties as stated. Vermont Biz (25 Apr 2013) calls it the charitable giving arm of TD Bank N.A. The gift amount is a tier range, not a figure."
+ },
+ {
+  "id": "storm-king-art-center",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: Bloomberg Connects (no source)",
+   "date: 'May 2026'",
+   "wrong detail: 'funding of a Tel Aviv University centre and settlement leadership training'"
+  ],
+  "before": "- May 2026: ... over its funding of a Tel Aviv University centre and settlement leadership training (The New Arab).",
+  "after": "- 29 May 2026: ... calling it \"complicit in grave war crimes\" through its involvement with illegal Israeli settlements and the Bloomberg-Sagol Center (The New Arab). ... Bloomberg Connects (Chronogram, 1 November 2023).",
+  "sources": [
+   "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg",
+   "https://www.chronogram.com/arts/bloomberg-connects-provides-free-digital-guides-to-hudson-valley-art-institutions-19284384"
+  ],
+  "reason": "The New Arab (29 May 2026) quotes the accusation and names five theatres; it does not mention Storm King. Chronogram lists Storm King's digital guide on Bloomberg Connects."
+ },
+ {
+  "id": "storm-king-art-center",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: admission $25 and free-entry list",
+   "unsupported: Beacon station phrase"
+  ],
+  "before": "adult admission is listed at $25, with free entry for members, Orange County students up to 21, SNAP cardholders and military families",
+  "after": "adult admission is $25 on weekdays and $28 on weekends, with free entry for members, Orange County students up to 21, SNAP cardholders and military families on Blue Star dates",
+  "sources": [
+   "https://stormking.org/visit/tickets/",
+   "https://stormking.org/visit/plan-your-visit/"
+  ],
+  "reason": "The plan-your-visit page gave no prices; the tickets page does."
+ },
+ {
+  "id": "sursock-museum",
+  "section": "RED FLAGS",
+  "problems": [
+   "no page year for Engie support",
+   "unsupported: 'which the museum lists as an institutional donor for 2020 to 2022'",
+   "Gulf body fundraising lacked dates and what the page shows"
+  ],
+  "before": "- Fondation Engie is listed as an energy sponsor in 2026. ... - Shaikha Mai bint Mohammed Al-Khalifa ... raised 98,231 dollars ... on behalf of the Arab Regional Centre for World Heritage, which the museum lists as an institutional donor for 2020 to 2022",
+  "after": "- Fondation Engie is listed as an energy sponsor in the 2026 section of the museum's supporters page, with no amount or start year. - The 2020 to 2022 section says Shaikha Mai ... raised 98,231 US dollars for the museum on behalf of the Arab Regional Centre for World Heritage. The page gives no exact date and does not say the Authority itself paid.",
+  "sources": [
+   "https://sursock.museum/content/our-supporters",
+   "https://en.wikipedia.org/wiki/Engie"
+  ],
+  "reason": "Supporters page read in two parts: Engie under 2026 energy sponsors; the Bahrain sentence sits in the 2020 to 2022 supporters section. Wikipedia Engie: 55 percent gas capacity in 2018, largest gas distribution network in Europe, fifth largest LNG portfolio. The withdrawn 2026 appeal source was left out as instructed."
+ },
+ {
+  "id": "sursock-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'closed in 2008'",
+   "unsupported: 'waqf, a trust' / Wikipedia says city of Beirut",
+   "unsupported: 'after a closure during the Israel-Lebanon conflict'",
+   "visiting"
+  ],
+  "before": "Closed in 2008 for renovation ...; ... left it to the citizens of Lebanon as an art museum (waqf, a trust) (Wikipedia, stated by the museum); ... after a closure during the Israel-Lebanon conflict; school visits are free",
+  "after": "Closed for an expansion ...; left it as an art museum to the citizens of Lebanon (stated by the museum); Wikipedia says to the city of Beirut; ... after closing in October 2024; admission is free",
+  "sources": [
+   "https://sursock.museum/content/history",
+   "https://sursock.museum/content/plan-your-visit",
+   "https://en.wikipedia.org/wiki/Sursock_Museum"
+  ],
+  "reason": "The history page gives no 2008 closure year in text read; Wikipedia gives closing in October 2024 without naming a cause; the visit page says admission is free."
+ },
+ {
+  "id": "sursock-museum",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: '3 million dollar reconstruction estimate'"
+  ],
+  "before": "raised 2,376,751 US dollars of a 3 million dollar reconstruction estimate:",
+  "after": "raised 2,376,751 US dollars (stated by the museum), made up of",
+  "sources": [
+   "https://sursock.museum/content/our-supporters"
+  ],
+  "reason": "The page gives the 2,376,751 total and its breakdown; the 3 million estimate was not found in the portions opened."
+ },
+ {
+  "id": "tai-kwun-hong-kong",
+  "section": "FUNDING / RED FLAGS",
+  "problems": [
+   "unsupported: 'The Hong Kong Jockey Club paid for the revitalisation' (stated by the space)",
+   "conflicting Wikipedia costs instead of a government source",
+   "Gambling flag lacked page and years"
+  ],
+  "before": "- The Hong Kong Jockey Club paid for the revitalisation ... (stated by the space). - Wikipedia gives different construction costs ... / Red flags: Gambling - The funder is the Hong Kong Jockey Club, whose betting monopoly pays the Charities Trust ...",
+  "after": "- Chief Executive Carrie Lam said on 25 May 2018 that the project was \"a gift from the Hong Kong Jockey Club to the people of Hong Kong\", with HK$3.8 billion committed against the HK$1.8 billion estimate of October 2007 (news.gov.hk). ... Gambling: Charities Trust set up the operator (Tai Kwun page); the Club committed HK$3.8 billion to the revitalisation that opened in 2018; the Club is a non-profit with a government-granted betting monopoly (Wikipedia).",
+  "sources": [
+   "https://www.news.gov.hk/eng/2018/05/20180525/20180525_210652_860.html",
+   "https://www.taikwun.hk/en/taikwun/hkjc",
+   "https://en.wikipedia.org/wiki/Hong_Kong_Jockey_Club"
+  ],
+  "reason": "The Tai Kwun page says partnership and that the Charities Trust set up the operator, with no amounts or years; the government page quotes Carrie Lam on the HK$3.8 billion. Wikipedia Tai Kwun does not state that the Club funded the project."
+ },
+ {
+  "id": "tai-kwun-hong-kong",
+  "section": "RED FLAGS",
+  "problems": [
+   "date: 'November 2018' without day",
+   "unsupported: 'two literary festival events'",
+   "reversal attributed to the 8 November article, which reports none",
+   "date of march"
+  ],
+  "before": "- November 2018: Tai Kwun cancelled two literary festival events with the exiled writer Ma Jian. ... The decision was reversed two days later ... On 18 November 2018 twelve artists marched ...",
+  "after": "- 7 November 2018: Tai Kwun cancelled book launch events with the exiled writer Ma Jian, part of the Hong Kong International Literary Festival ... Tai Kwun reversed the decision two days later after public outcry; the talk was scheduled for 10 November. On Sunday 18 November 2018 twelve artists marched ...",
+  "sources": [
+   "https://hongkongfp.com/2018/11/08/hong-kong-art-space-tai-kwun-says-cannot-become-political-platform-cancelling-ma-jians-book-events/",
+   "https://hongkongfp.com/2018/11/20/video-artists-march-silently-blank-placards-tai-kwun-art-space-protest-political-censorship/"
+  ],
+  "reason": "HKFP 8 November says the events were announced cancelled in a Wednesday tweet (7 November); the 20 November report gives the two-day reversal, the 10 November talk, twelve artists on 'Sunday' (18 November) and the Au Yeung Tung quotation."
+ },
+ {
+  "id": "tanoto-art-foundation-singapore",
+  "section": "RED FLAGS",
+  "problems": [
+   "Fossil fuels flag not established: no revenue-by-line source for RGE",
+   "Pacific Energy business with no source on revenue share"
+  ],
+  "before": "Red flags: Fossil fuels (family business) / - RGE's energy arm Pacific Energy, formerly Pacific Oil & Gas, explores for gas in Canada ... / - Nothing read states that this business pays the foundation. ...",
+  "after": "Red flags heading removed. FUNDING now states: RGE businesses include energy; Pacific Energy explores for gas in Canada and runs an LNG terminal and gas power plant in China (Wikipedia). 'No source read gives RGE's revenue by line, so it is not established that fossil energy is the group's largest or majority line.'",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Royal_Golden_Eagle",
+   "https://en.wikipedia.org/wiki/Sukanto_Tanoto"
+  ],
+  "reason": "Both Wikipedia pages list RGE's lines (pulp and paper, agro-industry, specialty cellulose, viscose, energy) with no revenue or asset split, so the diversified-conglomerate rule for a Fossil fuels flag is not met; the fact stays under Funding with the caveat."
+ },
+ {
+  "id": "tanoto-art-foundation-singapore",
+  "section": "WEBSITE / OVERVIEW",
+  "problems": [
+   "record website is an SCMP article",
+   "unsupported: ART SG author and date 'Payal Uttam, 6 November 2025'",
+   "unsupported: Conversation Series in Gwangju; 'research, residencies and exhibitions'"
+  ],
+  "before": "Website: https://www.tanotoartfoundation.org (checked 2026-10-24) ... (ART SG, Payal Uttam, 6 November 2025) ... Conversation Series held in Singapore, Sao Paulo, Hong Kong and Gwangju",
+  "after": "Website: ... (checked 2026-10-24; the page loads, and a South China Morning Post article had been listed as its website) ... ART SG says Belinda Tanoto ... founded it ... talks in Sao Paulo and Hong Kong",
+  "sources": [
+   "https://artsg.com/?p=62155",
+   "https://www.e-flux.com/announcements/641503/launch-in-singapore-with-inaugural-symposium-soul-song-of-a-new-organisation",
+   "https://www.tanotoartfoundation.org/about"
+  ],
+  "reason": "The opened ART SG page gives no author or date and names São Paulo and Hong Kong talks; e-flux gives the trustees and the 14 January 2025 symposium."
+ },
+ {
+  "id": "tate-modern",
+  "section": "RED FLAGS",
+  "problems": [
+   "BP dates incomplete",
+   "Blavatnik year and amount missing",
+   "Sackler: 'removed' but source says 'will remove'; 2019 policy undated",
+   "protest items lacked dates",
+   "unsupported: Rudd quotation 'You can't just wake up one day ...'",
+   "unsupported: 'sit-in and seed-bombing'"
+  ],
+  "before": "- BP sponsored Tate for 26 years; in March 2016 it announced the deal would end in spring 2017 ... - Len Blavatnik ... built his fortune ... - Tate said in 2019 it would take no further Sackler money. In February 2022 it removed the Sackler name from three places at Tate Modern and two at Tate Britain. - Liberate Tate protested BP from 2010 ... - November 2024: more than 900 artists ...",
+  "after": "- BP: announced 11 March 2016, deal ending spring 2017, last renewed 2011; BP payments of 4 million pounds 1990 to 2006 disclosed January 2015. - Blavatnik: more than 50 million pounds in 2011; Blavatnik Building named May 2017; foundation a 2024-25 donor. - Sackler: 2019 refusal of further money; 8 February 2022 report that the name would be removed from five places; Tate 'mutually agreed'. - 26 November 2024 open letter, 3 December Turner Prize ceremony. Rudd item rewritten to the verified quotes.",
+  "sources": [
+   "http://www.theartnewspaper.com/2016/03/11/bp-ends-26-year-sponsorship-deal-with-tate",
+   "https://www.theartnewspaper.com/2022/02/08/tates-u-turn-on-sackler-naming",
+   "https://en.wikipedia.org/wiki/Len_Blavatnik"
+  ],
+  "reason": "Each date and amount read on the cited page. The Tate annual report PDF was read as extracted text (income lines, 4,432,890 visitors, corporate partners, Blavatnik Family Foundation grants, Hyundai to 2036). Culture Unstained gives April 2016 for the BP entry and credits Art Not Oil, not Liberate Tate. The Euronews page (26 Nov 2024) reports no Tate response. The 2024 Blavatnik protest has no exact date in Wikipedia."
+ },
+ {
+  "id": "tate-modern",
+  "section": "FUNDING",
+  "problems": [
+   "Blavatnik share unspecified",
+   "report over 800 words (829)"
+  ],
+  "before": "plus a large share from Len Blavatnik (Wikipedia).",
+  "after": "Len Blavatnik gave more than 50 million pounds in 2011, the largest gift in the gallery's history (Wikipedia, Len Blavatnik).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Len_Blavatnik",
+   "https://en.wikipedia.org/wiki/Tate_Modern"
+  ],
+  "reason": "Wikipedia Tate Modern gives no Blavatnik figure; Wikipedia Len Blavatnik gives more than 50 million pounds in 2011. Several funding and overview details cut to meet the limit."
+ },
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "section": "RED FLAGS",
+  "problems": [
+   "Sanctions: listing page and program not stated",
+   "Berlin cancellation actor ('Berlin cancelled') imprecise",
+   "unsupported: AP claim 'government has long opposed Western influences' attached to museum"
+  ],
+  "before": "- The Ministry of Culture and Islamic Guidance is on the US blocked-entity list: OFAC designated it on 8 November 2012 under Executive Order 13628 (Federal Register, 16 November 2012). - Berlin cancelled a 61-work show ... - Associated Press reports Iran's government has long opposed Western influences ...",
+  "after": "- ... OFAC's recent-actions page of 8 November 2012 lists it under the IRAN-TRA program tag, and the Federal Register notice of 16 November 2012 ties the designations to Executive Order 13628. - On 27 December 2016 the Prussian Cultural Heritage Foundation, for the Berlin State Museums, cancelled a show of 61 works ... because Iran had not granted export permits ... - Associated Press says Shiite clerics packed the museum's Western art into its vault after 1979 ...",
+  "sources": [
+   "https://ofac.treasury.gov/recent-actions/20121108",
+   "https://www.govinfo.gov/content/pkg/FR-2012-11-16/html/2012-27938.htm",
+   "https://www.smb.museum/en/whats-new/detail/tehran-exhibition-cancelled/"
+  ],
+  "reason": "OFAC page and the Federal Register entry list the ministry (IRAN-TRA, effective 8 November 2012; the notice cites EO 13628 of 9 October 2012). The SMB page says the SPK terminated the agreement on 27 December 2016 over the missing export licence; Tehran Times (8 March 2017) has the minister's February 2017 proposal to cancel."
+ },
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'a deputy minister said in Aban 1397'",
+   "date '24 January 2021' not on the page"
+  ],
+  "before": "a deputy minister said in Aban 1397 that 5 billion had been spent and 3 billion more was needed (Etemad Online, 24 January 2021).",
+  "after": "The official cost of the whole renovation project was 16.5 billion toman; in late 2018 officials said 5 billion had been spent and 3 billion more was needed (Etemad Online, January 2021).",
+  "sources": [
+   "https://www.etemadonline.com/بخش-فرهنگ-هنر-16/460399"
+  ],
+  "reason": "The Etemad article (late January 2021) says 'officials', not a deputy minister, and gives 16.5 billion toman as the project cost."
+ },
+ {
+  "id": "tel-aviv-museum-of-art",
+  "section": "RED FLAGS",
+  "problems": [
+   "dates incomplete: 'June 2021', 'September 2025'",
+   "campaign claims stated as the museum's conduct without attribution",
+   "unsupported: 'convicted as a war criminal in 1947'",
+   "unsupported: 'her late husband's family fortune traces to Friedrich Flick' as source wording",
+   "who acted: Flick review"
+  ],
+  "before": "- June 2021: the #VisualArtsforPalestine campaign, backed by Turner Prize winners ..., named the museum ..., saying it had partnered with agencies of Israel's government and never denounced apartheid (ArtReview, 1 June 2021). - September 2025: ... - July 2023: the museum said it was \"thoroughly reviewing\" the Flick gift after reports that her late husband's family fortune traces to Friedrich Flick, convicted as a war criminal in 1947.",
+  "after": "- 1 June 2021: ArtReview reported that the #VisualArtsforPalestine campaign, backed by British artists including Turner Prize winners ..., asks artists to refuse to exhibit with or sell to institutions it calls complicit; its website singles out the museum, saying it never denounced apartheid and repeatedly partnered with agencies of Israel's government. - September 2025 (ArtReview, 23 September; Hyperallergic, 24 September): over 50 artists ... - 13 July 2023: a museum spokeswoman told Artnet the current leadership was reviewing the Flick gift, after reporting that the Flick fortune traces to Friedrich Flick, whom USA Art News describes as convicted at Nuremberg ... The museum said it would take \"appropriate action\"; no final decision reported.",
+  "sources": [
+   "https://artreview.com/artists-denounce-israeli-apartheid-renew-calls-for-boycott/",
+   "https://usaartnews.com/news/tel-aviv-museum-of-art-initiates-review-of-a-670000-donation-by-austrian-billionaire-ingrid-flick",
+   "https://hyperallergic.com/1044626/israeli-artists-urge-judy-chicago-to-withdraw-tel-aviv-exhibition/"
+  ],
+  "reason": "ArtReview (1 June 2021) attributes the claims to the campaign and its website. USA Art News (Romario, 13 July 2023) gives the review and the 'Nuremberg' conviction without a year. Hyperallergic (24 September 2025) and ArtReview (23 September 2025) date the letter coverage."
+ },
+ {
+  "id": "tel-aviv-museum-of-art",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Klimt and Kandinsky in the collection",
+   "unsupported: architects cited to Wikipedia",
+   "'Israel's first art museum for modern and contemporary Israeli and international art'",
+   "word count 811 over limit"
+  ],
+  "before": "Collection includes Klimt, Kandinsky and the Peggy Guggenheim Collection ...; The main building was designed by Dan Eytan and Yitzhak Yashar ... (Wikipedia, the museum).",
+  "after": "Dan Eitan and Itzhak Yashar won the competition for the main building, inaugurated in 1971 (the museum) ...; collection line cut.",
+  "sources": [
+   "https://tamuseum.org.il/en/about/buildings-and-architecture/the-main-building/",
+   "https://www.tamuseum.org.il/en/about"
+  ],
+  "reason": "The museum's main-building page names the architects (spelling Eitan, Itzhak) and 1971; the about page says 'Israel's first art museum, founded in 1932'. No opened source names Klimt or Kandinsky, so the line was cut; several overview and funding details trimmed to 768 words."
+ },
+ {
+  "id": "state-hermitage-museum-st-petersburg",
+  "section": "FUNDING",
+  "problems": [
+   "filler: 'among others'"
+  ],
+  "before": "the Gazprombank \"Social Responsibility\" charitable foundation, Alfa-Bank, AlfaStrakhovanie and Ingosstrakh among others in the Atlas circle",
+  "after": "the Gazprombank \"Social Responsibility\" charitable foundation and Alfa-Bank in the Atlas circle",
+  "sources": [
+   "https://support.hermitagemuseum.org/ru/sponsors"
+  ],
+  "reason": "Page read as raw HTML with certificate checking off (WebFetch failed certificate verification); the Atlas circle lists many more names, so the sentence names only those relevant to the flags."
+ }
+]

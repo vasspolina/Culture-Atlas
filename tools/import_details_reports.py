@@ -49,7 +49,13 @@ def parse(text, stem, ids):
         raise ValueError('empty report')
     rid = next((m.group(1) for l in lines[:4] for m in [re.match(r'^ID:\s*(\S+)', l.strip())] if m), None) or stem
     if rid not in ids:
-        raise ValueError(f'id "{rid}" is not a record')
+        # an accent or case slip in the id (museu-do-amanhã for museu-do-amanha) resolves when exactly one record matches
+        import unicodedata
+        flat = lambda x: ''.join(c for c in unicodedata.normalize('NFKD', x.lower()) if not unicodedata.combining(c))
+        hits = [i for i in ids if flat(i) == flat(rid)]
+        if len(hits) != 1:
+            raise ValueError(f'id "{rid}" is not a record')
+        rid = hits[0]
     d = {'overview': [], 'funding_verdict': '', 'funding': [], 'red_flags': [], 'not_related': [],
          'press': {'overall': '', 'items': []}, 'wider_context': [], 'bottom_line': '', 'sources': []}
     section, bottom = None, []
