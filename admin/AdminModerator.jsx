@@ -102,10 +102,7 @@ export function AdminModerator() {
               {report.institution ? ` | ${report.city}` : ''}
               {' · '}{new Date(report.createdAt).toLocaleString()}
             </p>
-            <p>
-              {report.rating ? `${'★'.repeat(report.rating)}${'☆'.repeat(5 - report.rating)} (${report.rating} of 5)` : 'No rating'}
-              {' · '}{report.authorLabel ? `shown as “${report.authorLabel}”` : 'shown as Whistleblower'}
-            </p>
+            <p>{report.authorLabel ? `shown as “${report.authorLabel}”` : 'shown as Whistleblower'}</p>
             <p style={{ whiteSpace: 'pre-wrap' }}>{report.content}</p>
             {report.status !== 'APPROVED' && (
               <button type="button" disabled={busy === report.id} onClick={() => setStatus(report.id, 'APPROVED')}>

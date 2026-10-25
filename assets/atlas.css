@@ -766,6 +766,20 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-count{text-align:right;white-space:nowrap;color:var(--row-dim);font:400 var(--fs-s)/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase}
 #layersPanel .layers-count:empty{display:none}
 @media (max-width:640px){#layersPanel label{grid-template-columns:auto minmax(0,1fr) auto;row-gap:2px}#layersPanel .layer-name{white-space:normal}#layersPanel .layer-desc{grid-column:2/-1}}
+#layersPanel .layers-note{margin:0 0 8px;color:var(--row-dim);font:400 var(--fs-s)/1.4 var(--sans)}
+#layersPanel .layers-kinds{display:flex;flex-wrap:wrap;gap:4px}
+#layersPanel label.kind-chip{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;flex:1 1 150px}
+#layersPanel label.kind-chip i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
+#layersPanel .layers-top{display:flex;flex-direction:column;gap:2px}
+#layersPanel .top-funder{display:grid;grid-template-columns:11px minmax(0,13em) minmax(40px,1fr) 2.5em;align-items:center;column-gap:10px;min-height:32px;padding:4px 10px;border:0;border-radius:6px;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.2 var(--sans);text-align:left;cursor:pointer}
+#layersPanel .top-funder:hover{background:var(--row-hover);color:#000}
+#layersPanel .top-funder[aria-pressed="true"]{background:var(--row-on);color:var(--row-on-ink)}
+#layersPanel .top-funder:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+#layersPanel .top-funder i{width:11px;height:11px;background:var(--marker-color)}
+#layersPanel .tf-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#layersPanel .tf-bar{display:block;height:6px;background:rgba(127,127,127,.25)}
+#layersPanel .tf-bar b{display:block;height:100%;background:currentColor}
+#layersPanel .tf-n{text-align:right;font-variant-numeric:tabular-nums}
 #layersPanel .layers-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;color:var(--ink);font:400 var(--fs-s)/1.3 var(--sans)}
 #layersPanel .layers-key span{display:flex;align-items:center;gap:8px;min-width:0}
 #layersPanel .layers-key i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
@@ -1567,8 +1581,8 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 /* In a card the date-and-status line sits under the title, smaller and quieter, so the title leads. */
 :is(#desktopDossierRecordBody,#detailBody) .record-card>.kicker+.kicker{font-size:var(--fs-s);line-height:1.35;opacity:.8;margin-top:2px}
 
-/* Whistleblower reviews under a record, laid out the way Google Maps lists the reviews of a place: the average and the count, then one
-   entry each with the reviewer's line, the date, optional stars and the text, newest first. Black and white, the page's own type. */
+/* Whistleblower reviews under a record, laid out the way Google Maps lists the reviews of a place: the count, then one
+   entry each with the reviewer's line, the date and the text, newest first. Black and white, the page's own type. */
 .review-list{margin:0;padding:0}
 .review-list .review-count{margin:0 0 4px}
 .review{border-top:1px solid var(--line);padding:12px 0}
@@ -1577,28 +1591,36 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 .review-name{display:block;font:400 var(--fs-m)/1.2 var(--sans)}
 .review-date{display:block;font:400 var(--fs-s)/1.2 var(--sans)}
 .review-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}
-.review-summary{display:flex;align-items:center;gap:10px;margin:12px 0 4px}
-.review-average{font:400 var(--fs-l)/1 var(--sans)}
-.review-stars{letter-spacing:2px;color:var(--ink);white-space:nowrap}
-.review-rating{margin:0 0 4px}
 
-/* The submission form of the note screen: shown only while a note is written (Share information). Fields sit above the note box and
-   take the note box's own colours, so they hold in light and dark. */
-#noteFormFields{display:none;margin:0 0 8px}
-body.chat-input-mode-active #noteFormFields{display:block}
-#noteFormFields label,#noteFormFields legend{display:block;font:400 var(--fs-s)/1.3 var(--sans);margin:10px 0 4px;padding:0}
-#noteFormFields fieldset{border:0;margin:0;padding:0;min-width:0}
-body.chat-input-mode-active #noteFormFields input[type=text]{display:block;width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:0;padding:.6em .75em;background:var(--grey);color:var(--ink);font:400 var(--fs-m)/1.4 var(--sans)}
-body.chat-input-mode-active #noteFormFields :is(input[type=text]):focus{outline:2px solid var(--focus);outline-offset:-2px}
-body.chat-input-mode-active #noteFormFields .review-star:focus-within{outline:2px solid var(--focus);outline-offset:1px}
-.review-stars-input{display:inline-flex;gap:2px}
-.review-star{position:relative;display:inline-block;margin:0!important;cursor:pointer}
-.review-star input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
-.review-star>span[aria-hidden]{display:block;padding:2px 4px;font:400 var(--fs-l)/1 var(--sans);color:var(--line);opacity:.45}
-.review-star.is-on>span[aria-hidden]{color:var(--ink);opacity:1}
-#noteFormFields .review-clear{font:400 var(--fs-s)/1 var(--sans);background:none;border:0;color:inherit;text-decoration:underline;padding:8px 0;cursor:pointer}
-#noteFormStatus{display:none;margin:8px 0 0;font:400 var(--fs-s)/1.4 var(--sans)}
+/* The submission form of the note screen, shown only while a note is written (Share information). Every field is a filled block with its
+   label inside at the top and the text under it: dark slate blocks with white type (11:1), 14px corners, 10px between blocks, a block for
+   the confirm box, and one large Send for review block, grey until the form could be sent and blue after. Sizes are the page's scale. */
+/* The note's textarea is the chat's own input, so its block stays; only the form's extras and the "Your note" label wait for the note screen. */
+:is(#noteFormFields,#noteInputLabel,#noteAckRow){display:none}
+body.chat-input-mode-active :is(#noteFormFields,#noteInputLabel,#noteAckRow){display:block}
+#noteFormTitle{font:400 var(--fs-l)/1.15 var(--sans);margin:0 0 8px}
+#noteFormIntro{font:400 var(--fs-m)/1.4 var(--sans);margin:0 0 20px;max-width:60ch}
+body.chat-input-mode-active :is(.nf-field,#noteInputBlock,.nf-check){display:block;box-sizing:border-box;width:100%;margin:0 0 10px;padding:14px 22px 14px;border-radius:14px;background:#2f3452;color:#fff}
+body.chat-input-mode-active :is(.nf-field>span,#noteInputLabel){display:block;margin:0 0 8px;font:400 var(--fs-m)/1.2 var(--sans);color:#fff}
+body.chat-input-mode-active :is(.nf-field input,#noteInputBlock textarea){display:block;width:100%;box-sizing:border-box;margin:0;padding:0;border:0;border-radius:0;outline:0;background:transparent!important;color:#fff!important;font:400 var(--fs-m)/1.4 var(--sans);box-shadow:none}
+body.chat-input-mode-active #noteInputBlock textarea{min-height:7em;resize:vertical}
+body.chat-input-mode-active :is(.nf-field input,#noteInputBlock textarea)::placeholder{color:#b4b9d6;opacity:1}
+body.chat-input-mode-active .nf-field input::-webkit-calendar-picker-indicator{display:none!important}
+body.chat-input-mode-active :is(.nf-field,#noteInputBlock,.nf-check):focus-within{outline:2px solid #fff;outline-offset:2px}
+body.chat-input-mode-active #noteAckRow{margin-top:20px}
+body.chat-input-mode-active #noteAckRow .nf-check{display:flex;align-items:center;gap:14px;cursor:pointer;font:400 var(--fs-m)/1.3 var(--sans)}
+body.chat-input-mode-active #noteAckRow .nf-check input{appearance:none;-webkit-appearance:none;flex:none;position:relative;width:26px;height:26px;margin:0;border:2px solid #fff!important;border-radius:6px;background:transparent;cursor:pointer}
+body.chat-input-mode-active #noteAckRow .nf-check input:checked{background:#fff}
+body.chat-input-mode-active #noteAckRow .nf-check input:checked::after{content:"";position:absolute;left:7px;top:2px;width:7px;height:13px;border:solid #2f3452;border-width:0 3px 3px 0;transform:rotate(45deg)}
+body.chat-input-mode-active #noteFormStatus{display:none;margin:0 0 10px;font:400 var(--fs-m)/1.4 var(--sans)}
 body.chat-input-mode-active #noteFormStatus:not(:empty){display:block}
+/* The toolbar under the form: the large Send for review block first, the Share information switch below it. */
+body.chat-input-mode-active #workInputCard>div.justify-between{flex-direction:column-reverse;align-items:stretch;flex-wrap:nowrap;gap:10px}
+body.chat-input-mode-active #workInputCard>div.justify-between>div{width:100%;justify-content:flex-start}
+:root[data-theme] body.chat-input-mode-active #workInputCard #workSendBtn.is-on{display:flex;align-items:flex-start;justify-content:flex-start;width:100%!important;min-height:88px;box-sizing:border-box;padding:20px 22px!important;border:0!important;border-radius:14px;background:#3a3a3a!important;color:#9a9a9a!important;font:400 var(--fs-l)/1.15 var(--sans);text-align:left;white-space:normal}
+:root[data-theme] body.chat-input-mode-active #workInputCard #workSendBtn.is-on[data-ready="true"]{background:var(--cobalt)!important;color:#fff!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard #workSendBtn.is-on:hover{background:#fff!important;color:#000!important;text-decoration:none}
+:root[data-theme] body.chat-input-mode-active #workInputCard #workSendBtn.is-on:focus-visible{outline:2px solid #fff;outline-offset:2px}
 
 /* ---- the chat in the dark theme (releases 238 and 239) ----
    The atlas has one switch, :root[data-theme], and the chat already followed it except in two places that stayed bright: the note
