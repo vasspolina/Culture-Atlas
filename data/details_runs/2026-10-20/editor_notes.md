@@ -760,3 +760,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - selasar-sunaryo-art-space-bandung: selasarsunaryo.com is suspended; selasarsunaryo.org mostly a blank template.
 - sir-john-soane-s-museum: income 4,221,788 pounds; grant-in-aid 1,165,000 pounds (annual report, local text extraction).
 - schaulager: currently closed to the public until 2027.
+
+## d040 (research notes, before its slop check)
+- nasher-museum-of-art-at-duke-durham: The Duke Endowment funds acquisitions (2021 to 2023); its 1924 trust held mainly Duke Power stock and James B. Duke's fortune came from tobacco. Not flagged (founder-fortune rule); stated as history. Editor to rule.
+- national-museum-of-contemporary-art-mnac: sponsor linked to the lender of the disputed Malevich loan; ArtLeaks allegation against the director is labelled Unverified; Societe Generale and UniCredit enforcement records under Wider context (pages do not show the Romanian subsidiaries were party).
+- national-gallery-of-arts-tirana: Wikipedia lists Erzen Shkololli as director; an October 2025 Shqiptarja interview names Adela Demetja.
+- museo-nacional-de-bellas-artes-de-la-habana-havana: bellasartes.co.cu does not resolve; Diario de Cuba 403 and Mezosfera expired certificate, not cited.
+- national-museum-of-fine-arts-of-chile-mnba and national-museum-of-moldova: several figures rest on pages other than the museums' own sites (mnba.gob.cl did not resolve from the sandbox; Moldova IPN pieces returned 403).
+- national-arts-festival: 2012 Unemployed People's Movement protest is old; the About, Sponsors and Board pages were placeholders or 404.
