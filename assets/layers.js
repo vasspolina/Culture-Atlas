@@ -420,14 +420,16 @@
       const cn = {}; list.forEach(e => { cn[e.c] = (cn[e.c] || 0) + 1; });
       const e0 = list.find(e => e.c === Object.keys(cn).sort((a, b) => cn[b] - cn[a])[0]), pt = project(mlon, mlat, r, cx, cy); if (!pt.front) return;
       const s = 7 + Math.min(7, Math.sqrt(n) * 1.5), counts = {};
+      // A city's label sits right above its pin, so the diamond hangs from the pin (its top tip on it) instead of being centred on it.
+      const px = pt.x, py = pt.y + (STREET ? 0 : s - 2);
       list.forEach(e => { counts[e.k] = (counts[e.k] || 0) + 1; });
       const k = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0], col = KIND[k] || COL.corp;
       ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 1; ctx.fillStyle = col; ctx.strokeStyle = '#000';
-      ctx.beginPath(); ctx.moveTo(pt.x, pt.y - s); ctx.lineTo(pt.x + s, pt.y); ctx.lineTo(pt.x, pt.y + s); ctx.lineTo(pt.x - s, pt.y); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(px, py - s); ctx.lineTo(px + s, py); ctx.lineTo(px, py + s); ctx.lineTo(px - s, py); ctx.closePath(); ctx.fill(); ctx.stroke();
       ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '700 10px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(String(n), pt.x, pt.y + 0.5);
+      ctx.fillText(String(n), px, py + 0.5);
       const names = list.slice(0, 3).map(e => e.n).join(', ') + (n > 3 ? ` and ${n - 3} more` : '');
-      LM.push({ x: pt.x, y: pt.y, r: s + 3, col, label: `${e0.c}, ${e0.co}`, sub: `${n} funder offices`, sub2: names, ask: `Which funders are headquartered in ${e0.c}?`,
+      LM.push({ x: px, y: py, r: s + 3, col, label: `${e0.c}, ${e0.co}`, sub: `${n} funder offices`, sub2: names, ask: `Which funders are headquartered in ${e0.c}?`,
         go() { if (typeof window.flyTo === 'function') window.flyTo(mlon, mlat, baseRadius * (CLUSTER_AT + 1.5)); } });
     });
     ctx.font = '14px "Jokker", sans-serif';
