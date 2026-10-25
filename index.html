@@ -16175,17 +16175,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         placeholder: 'The report service is not configured. Your report will not be saved.'
       };
 
-    // Share information is a switch like Dark, Gossip mode, Voice and Rotate: the label stays, the button is highlighted while the note is open, and pressing it again returns to the chat.
+    // Share information is a switch like Dark, Gossip mode, Voice and Rotate: the button is highlighted while the note is open and then reads Back to chat; pressing it returns to the chat.
     function setChatShareOn(on) {
       const b = document.getElementById('chatShareBtn');
       if (!b) return;
       b.classList.toggle('is-on', on);
       b.setAttribute('aria-pressed', String(on));
+      b.textContent = on ? 'Back to chat' : 'Share information';
       b.title = on ? 'Leave the note and go back to the chat' : 'Write a note about an institution';
     }
     function toggleChatShare() {
       if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
     }
+    // Clicking another tab (Details, or on a phone Atlas and Dossier) closes the note screen; the chat is left as it was, with no message.
+    document.addEventListener('click', (e) => {
+      if (isChatInputMode && e.target.closest && e.target.closest('#workspaceTabDossier, #tab-atlas, #tab-dossier')) exitChatInputMode(true);
+    }, true);
 
     function enterChatInputMode(kindOrTopic = '') {
       // Share information, a record's link and the old information and gossip links all open the whistleblower note.
@@ -16306,7 +16311,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       scrollChatToBottom(true);
     }
 
-    function exitChatInputMode() {
+    function exitChatInputMode(quiet = false) {
       isChatInputMode = false;
       setChatShareOn(false);
       document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
@@ -16410,15 +16415,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      appendCuratorMessage(`
-        <div>
-          <p class="no-indent">Returned to chat. How can I help you explore cultural spaces?</p>
-          <div class="curator-followups mt-3 flex flex-col items-start gap-1">
-            <button type="button" class="curator-followup-pill text-left py-1" onclick="window.enterChatInputMode('whistleblower')">Whistleblower note</button>
+      if (!quiet) {
+        appendCuratorMessage(`
+          <div>
+            <p class="no-indent">Returned to chat. How can I help you explore cultural spaces?</p>
+            <div class="curator-followups mt-3 flex flex-col items-start gap-1">
+              <button type="button" class="curator-followup-pill text-left py-1" onclick="window.enterChatInputMode('whistleblower')">Whistleblower note</button>
+            </div>
           </div>
-        </div>
-      `, [], null, null, false);
-      scrollChatToBottom(true);
+        `, [], null, null, false);
+        scrollChatToBottom(true);
+      }
     }
 
 
