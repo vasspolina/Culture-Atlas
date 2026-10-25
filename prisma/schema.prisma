@@ -14,7 +14,8 @@ enum ReportStatus {
 }
 
 // One whistleblower review of one place. `institution` is the place's name as the atlas gives it; `placeId` is its id.
-// latitude and longitude are never written; they stay only so an existing database needs no destructive change.
+// latitude, longitude and rating are never written; they stay only so an existing database needs no destructive change.
+// (A rating column was added and then dropped from the form; rows keep it empty.)
 model WhistleblowerReport {
   id          String       @id @default(cuid())
   placeId     String?
