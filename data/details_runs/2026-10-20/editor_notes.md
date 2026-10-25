@@ -858,3 +858,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - b7l9-art-centre-kamel-lazaar-foundation-tunis and b7l9-art-centre-tunis: two records, one identical report each; the 18 listed partners are a partner listing, not a funding list.
 - bandjoun-station-bandjoun: opening date differs per source (2007, 2013, 2016); no website address known.
 - basic-space-dublin: the record's Arts Council and Dublin City funding appears on no opened page.
+
+## d051 (research and slop check)
+- beirut-art-center-bac: Gulf state body flag kept: the donor page lists Sharjah Art Foundation (Exhibitions and Activities Patron, 2018) and Qatar Foundation (Patron, 2020) in a joint entry; Sharjah Art Foundation's own 8 July 2026 press release calls itself "a legally independent public body established by Emiri Decree and supported by government funding". No independent page on Sharjah's state link could be opened (Frieze, MoMA, Business Wire refused access). Qatar Foundation is "state-led" per Wikipedia and an "independent non-profit organisation" per MEED (24 Feb 2014). Carole and Carlos Ghosn are listed as Supporters (2017, 2018) and Patrons (2018): Wider context, from Wikipedia.
+- belfast-exposed-belfast: Protest or boycott flag: campaigners (unnamed on both pages) demanded the work's removal, an apology and a boycott (Creative Bloq, 3 Aug 2026; Digital Camera World, Alan Palazon, 6 Aug 2026).
+- berlinische-galerie: GASAG initiated the GASAG Kunstpreis (every two years since 2010); no page says who pays the 10,000 euro purse; no Fossil fuels flag.
+- beursschouwburg-brussels: the venue's own page (3 Oct 2025) declares a cultural boycott "on the Israeli state and all Israeli institutions and companies"; kept in Overview, not as a flag (House rules need a boycott aimed at the space, its funders or its leadership). Closure announced for September 2027.
+- belarusian-state-museum-of-the-history-of-the-great-patriotic-war-minsk: no opened page says it is state-funded or who funds it; "state-funded" cut.
+- belarusian-council-for-culture-rada-kultury-warsaw: 2 million euros EU ArtPower, Danish Cultural Institute lead; registered in Estonia; "extremist formation" designation on the council's site (Ministry of Internal Affairs); Reform.news reports a KGB listing decided 9 April 2026.
+- belarus-free-theatre-london: 360Giving range 14 May 2014 to 6 June 2023; no per-funder years.
