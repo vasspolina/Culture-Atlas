@@ -1,0 +1,1399 @@
+[
+ {
+  "id": "modern-art-museum-of-fort-worth-fort-worth",
+  "section": "FUNDING",
+  "problems": [
+   "absence: 'with no individual amounts'"
+  ],
+  "before": "- The museum's Foundation Support page lists 21 funders under \"2025-2026 Grants\" for donations of $250 or more, with no individual amounts:",
+  "after": "- The museum's Foundation Support page lists 21 funders under the heading \"2025-2026 Grants\" (donations of $250 or more):",
+  "sources": [
+   "https://www.themodern.org/foundation-support"
+  ],
+  "reason": "The page gives the grant period 2025-2026 and no amounts; the absence clause is cut and the dated heading is kept."
+ },
+ {
+  "id": "modern-art-museum-of-fort-worth-fort-worth",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: oil fortune still funds the foundation"
+  ],
+  "before": "- Sid W. Richardson Foundation: set up in 1947 by Sid W. Richardson, who made his fortune in oil; it reported about $526.8 million in total assets in December 2024 and gave the Modern $750,000 in 2017 (Wikipedia).",
+  "after": "- Sid W. Richardson Foundation: set up in 1947 by Sid W. Richardson, who earned his fortune in the oil industry (Wikipedia). The foundation's own site says its grantmaking began in 1962, when income from assets of Richardson's estate became available. It had about $526.8 million in total assets in December 2024 and gave the Modern $750,000 for operational support in 2017 (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sid_W._Richardson_Foundation",
+   "https://sidrichardson.org/"
+  ],
+  "reason": "Wikipedia states the fortune and the 2017 grant; the foundation site states the estate income and does not say what funds it today."
+ },
+ {
+  "id": "modern-art-museum-of-fort-worth-fort-worth",
+  "section": "RED FLAGS",
+  "problems": [
+   "flag not supported: founder fortune must still fund the space"
+  ],
+  "before": "Red flags: oil fortune behind a current funder\n- The Sid W. Richardson Foundation, endowed from the founder's oil fortune, is on the museum's 2025 to 2026 grants list.",
+  "after": "",
+  "sources": [
+   "https://www.themodern.org/foundation-support",
+   "https://en.wikipedia.org/wiki/Sid_W._Richardson_Foundation",
+   "https://sidrichardson.org/"
+  ],
+  "reason": "The funder is current (dated 2025-2026 page) but no opened page shows the foundation's present money comes from oil: Wikipedia says only that Richardson earned his fortune in oil and the foundation was primarily funded after his death; the foundation site says grantmaking began in 1962 from estate income. Under the founder-fortune ruling the flag is removed; the facts stay in FUNDING."
+ },
+ {
+  "id": "modern-art-museum-of-fort-worth-fort-worth",
+  "section": "RED FLAGS",
+  "problems": [
+   "vague/unsourced: who complained and what the museum did",
+   "date of grand jury",
+   "funding link wording"
+  ],
+  "before": "Red flags: police seizure of Sally Mann photographs\n- Fort Worth police seized four Sally Mann photographs from the exhibition \"Diaries of Home\" in January 2025 after a complaint that the images of naked children could be seen as pornographic (The Art Newspaper, 9 January 2025).\n- A Tarrant County judge posted on X on 8 January 2025 urging police to investigate (Cardinal News, 27 March 2025).\n- A Tarrant County grand jury declined to indict the museum or Mann in March 2025 (Cardinal News).\n- The National Coalition Against Censorship and Artists At Risk Connection condemned the seizure (The Art Newspaper). The City of Fort Worth, whose police acted, is also a listed funder of the museum.",
+  "after": "Red flags: police seizure of Sally Mann photographs\n- The Fort Worth Police Department seized Sally Mann photographs from the exhibition \"Diaries of Home\" by 7 January 2025 (Cardinal News, Charles Paullin, 27 March 2025). The museum's statement referred to four works (The Art Newspaper, Elena Goukassian, 9 January 2025).\n- Complaint: The Art Newspaper reports that a complaint alleged the images show naked children and could be seen as pornographic, that a police report was filed against the museum and that the first story came from The Dallas Express on 23 December 2024. FIRE says several local officials complained in December 2024. A Tarrant County judge posted on X on 8 January 2025 urging police to investigate (Cardinal News).\n- Museum: a spokesperson said the photographs had been published and exhibited for more than 30 years in leading cultural institutions (The Art Newspaper). The museum's attorney, Michael Anderson, thanked the grand jury for its review (Cardinal News).\n- Outcome: a Tarrant County grand jury declined to take action against museum employees on 25 March 2025, and police said the photographs would be returned (Cardinal News); FIRE reports that police closed the case against Mann and the museum and returned the artwork in April 2025.\n- The National Coalition Against Censorship and Artists At Risk Connection condemned the seizure (The Art Newspaper).\n- Funding link: the museum's Foundation Support page lists the City of Fort Worth among its 2025-2026 funders; the Fort Worth Police Department made the seizure.",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/01/09/sally-mann-photographs-seized-fort-worth-modern-art-museum",
+   "https://cardinalnews.org/2025/03/27/texas-grand-jury-declines-to-indict-lexington-photographer-museum-over-images-of-children/",
+   "https://www.fire.org/cases/fort-worth-texas-police-seize-artist-sally-manns-photos-museum-and-launch-investigation"
+  ],
+  "reason": "Flag kept: the Fort Worth Police Department acted and the City of Fort Worth is a listed 2025-2026 funder. Pages show who seized, when, the complaint as described by The Art Newspaper and FIRE, the museum's response and the outcome. No opened page names the person who filed the report or who ordered the seizure."
+ },
+ {
+  "id": "modern-art-museum-of-fort-worth-fort-worth",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "claim restated; oil fortune claim"
+  ],
+  "before": "One of them, the Sid W. Richardson Foundation, rests on an oil fortune. In January 2025 city police seized four photographs from a museum exhibition; a grand jury declined to indict in March 2025.",
+  "after": "One of them, the Sid W. Richardson Foundation, was set up in 1947 by an oilman, and its own site dates its grantmaking from his estate's income in 1962. In January 2025 city police seized Sally Mann photographs from a museum exhibition; the grand jury declined to take action in March 2025, and the City of Fort Worth is a listed funder.",
+  "sources": [
+   "https://www.themodern.org/foundation-support"
+  ],
+  "reason": "Bottom line brought into line with the opened pages."
+ },
+ {
+  "id": "modern-art-museum-of-fort-worth-fort-worth",
+  "section": "SOURCES",
+  "problems": [
+   "added opened sources"
+  ],
+  "before": "- https://en.wikipedia.org/wiki/Sid_W._Richardson_Foundation",
+  "after": "- https://en.wikipedia.org/wiki/Sid_W._Richardson_Foundation\n- https://sidrichardson.org/\n- https://www.fire.org/cases/fort-worth-texas-police-seize-artist-sally-manns-photos-museum-and-launch-investigation",
+  "sources": [
+   "https://www.themodern.org/foundation-support"
+  ],
+  "reason": "Sources opened and used."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'merged'"
+  ],
+  "before": "merged with MoMA in January 2000 and renamed MoMA PS1 in 2010 (Wikipedia).",
+  "after": "affiliated with MoMA since January 2000 and renamed MoMA PS1 in 2010 (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/MoMA_PS1"
+  ],
+  "reason": "Wikipedia says the museum has been affiliated with MoMA since January 2000."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'from 2019'"
+  ],
+  "before": "Kate Fowle from 2019 (Wikipedia).",
+  "after": "Kate Fowle, announced as director in June 2019 (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/MoMA_PS1"
+  ],
+  "reason": "Wikipedia gives the June 2019 announcement."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "FUNDING",
+  "problems": [
+   "absence: 'The list gives no amounts'"
+  ],
+  "before": "The list gives no amounts.",
+  "after": "",
+  "sources": [
+   "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2024_Annual_Report.pdf"
+  ],
+  "reason": "Absence clause cut."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "FUNDING",
+  "problems": [
+   "added dated fact from PS1 site"
+  ],
+  "before": "- The City of New York provided about 8 percent of the operating budget in 2019 (Wikipedia).",
+  "after": "- The City of New York provided about 8 percent of the operating budget in 2019 (Wikipedia). PS1 has been a member of the City's Cultural Institutions Group, in partnership with the Department of Cultural Affairs, since 1982 (museum website).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/MoMA_PS1",
+   "https://www.momaps1.org/en/about"
+  ],
+  "reason": "Both stated on the opened pages."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "RED FLAGS / CRITICISM / WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'later unpaused' attribution",
+   "'third-floor gallery'",
+   "'alleged' hedging",
+   "Black 'a MoMA board member' only",
+   "date/author of press items",
+   "connection to parent not stated exactly"
+  ],
+  "before": "Red flags: protests at the museum over MoMA trustees, 2019 to 2020\n- Thirty-seven artists in the exhibition \"Theater of Operations: The Gulf Wars 1991-2011\" signed an open letter asking the museum to distance itself from trustees with ties to private prison companies and to a defence contractor involved in the Iraq wars (Hyperallergic).\n- Michael Rakowitz asked in 2019 for his video \"Return\" to be paused as a protest against the museum's ties to donors and trustees he saw as linked to harmful industries; the museum refused and later unpaused the video and removed his plaque (The Art Newspaper, 2 December 2019; Hyperallergic).\n- On 1 March 2020 dozens of MoMA Divest activists disrupted the closing of the exhibition; they named trustees Larry Fink, whose company BlackRock is invested in two of the largest US private prison companies, and Leon Black, whose company is invested in Constellis Holdings, formerly Blackwater (Hyperallergic, 2 March 2020).\n\nCRITICISM IN ART MEDIA\nOverall: The criticism is of MoMA's trustees and donors, voiced by artists exhibiting at PS1 and by activists at the museum, in 2019 and 2020.\n1. The Art Newspaper: Zachary Small, \"Michael Rakowitz wants to pause his video work at MoMA PS1 as a protest against museum's ties to 'toxic philanthropy'\" (2019)\nURL: https://www.theartnewspaper.com/news/michael-rakowitz-says-moma-ps1-curators-repeatedly-denied-his-requests-to-pause-video-work-in-gulf-war-exhibition-as-a-protest-of-moma-trustees\n- Rakowitz asked three times to pause the work and post a statement; the museum refused.\n- Names Larry Fink and Leon Black as MoMA board members.\n2. Hyperallergic: Hakim Bishara, \"Protesters Occupy MoMA PS1, Calling Museum 'Complicit in Global Violence'\" (2020)\nURL: https://hyperallergic.com/protesters-occupy-moma-ps1-calling-museum-complicit-in-global-violence\n- MoMA Divest activists and the artist Ali Yass objected to alleged ties between board members and defence contractors and the prison industry.\n- Security kept protesters out of a third-floor gallery after the museum removed Yass's works beforehand.\n\nWIDER CONTEXT\n- The Art Newspaper (Carlie Porterfield, 19 August 2025): Leon Black paid Jeffrey Epstein at least $158 million between 2012 and 2017; Senator Ron Wyden wrote to the IRS on 31 July 2025 accusing it of failing to audit transactions tied to Epstein's tax and estate planning services. A spokesperson for Black said an independent review found no wrongdoing.\n- Black remains a MoMA trustee; he did not stand for re-election as chair in 2021 after an open letter from more than 150 artists (same article).\n- Connection: MoMA is the parent of PS1 and lists Black among its trustees in its 2023-2024 report; the PS1 board is listed separately there.",
+  "after": "Red flags: protests at the museum over MoMA trustees, 2019 to 2020\n- Phil Collins withdrew his work from \"Theater of Operations: The Gulf Wars 1991-2011\" at PS1, and the artist Michael Rakowitz, who stayed in the show, asked PS1 to divest from MoMA board members Larry Fink and Leon Black and, if MoMA would not, to divest from its parent (The Art Newspaper, Zachary Small, 2 December 2019).\n- Rakowitz asked three times to pause his video \"Return\" and post his protest statement. After a 3 November 2019 meeting the curators told him the two museums have separate boards and the exhibition was not the right venue; the museum refused each request (The Art Newspaper).\n- On 11 January 2020 Rakowitz paused the video himself in support of activists pressing Fink to sell his stakes in private prison companies. The museum later restarted it and took down his plaque against his stated wishes. Separately, 37 artists in the show signed an open letter asking MoMA to separate itself from trustees tied to private prison companies and a defence contractor involved in the Iraq wars (Hyperallergic, Jasmine Weber, 17 January 2020).\n- On 1 March 2020 dozens of MoMA Divest activists, more than 70 in all, gathered at PS1 for the closing of the exhibition and called for accountability, transparency and reinvestment. They said Fink's firm BlackRock is invested in the two largest US private prison companies and that Black's company is invested in Constellis Holdings, formerly Blackwater Worldwide (Hyperallergic, Hakim Bishara, 2 March 2020).\n- Museum action: before the protest PS1 removed works by the artist Ali Yass, and security closed the gallery \"for security reasons\". Protesters were allowed at the gallery entrance, and NYPD officers came. MoMA did not respond to Hyperallergic's request for comment (Hyperallergic, 2 March 2020).\n- Connection: the protests were aimed at MoMA trustees and held at PS1. MoMA's 2023-2024 report lists Laurence D. Fink and Leon D. Black among MoMA's trustees, and MoMA's chair and president sit on the PS1 board ex officio.\n\nCRITICISM IN ART MEDIA\nOverall: The criticism is of MoMA trustees, voiced by artists exhibiting at PS1 and by activists at the museum, in 2019 and 2020.\n1. The Art Newspaper: Zachary Small, \"Michael Rakowitz wants to pause his video work at MoMA PS1 as a protest against museum's ties to 'toxic philanthropy'\" (2 December 2019)\nURL: https://www.theartnewspaper.com/news/michael-rakowitz-says-moma-ps1-curators-repeatedly-denied-his-requests-to-pause-video-work-in-gulf-war-exhibition-as-a-protest-of-moma-trustees\n- Rakowitz asked three times to pause the work and post a statement; the museum refused. Collins withdrew his work.\n- Names Larry Fink and Leon Black as MoMA board members; Black is described as MoMA's chairman and his equity firm Apollo Global Management as owner of Constellis, which acquired and restructured Blackwater.\n2. Hyperallergic: Hakim Bishara, \"Protesters Occupy MoMA PS1, Calling Museum 'Complicit in Global Violence'\" (2 March 2020)\nURL: https://hyperallergic.com/protesters-occupy-moma-ps1-calling-museum-complicit-in-global-violence\n- MoMA Divest activists, joined by the artist Ali Yass by video call, targeted ties between board members and defence contractors and the prison industry. Speakers included Basma Eid of Freedom to Thrive and Sophia Garcia of MoMA Divest.\n- The article reports that the museum removed Yass's works before the action and that security kept the gallery closed to visitors.\n\nWIDER CONTEXT\n- The Art Newspaper (Carlie Porterfield, \"US Senator calls for investigation into MoMA trustee Leon Black's business ties to Jeffrey Epstein\", 19 August 2025): Black paid Epstein at least $158 million between 2012 and 2017 for tax and estate planning advice. Senator Ron Wyden wrote to the IRS on 31 July 2025 accusing it of failing to properly audit suspicious transactions tied to Epstein's tax and estate planning services. A spokesperson for Black said an independent review found he had not engaged in any wrongdoing and had no awareness of Epstein's criminal activity.\n- Same article: more than 150 artists signed an open letter demanding Black's removal as MoMA board chair. He remains on MoMA's board of trustees along with Glenn Dubin, whom the article calls another billionaire client of Epstein's.\n- Connection: PS1 has been affiliated with MoMA since January 2000. MoMA's 2023-2024 report lists Black and Dubin among MoMA's trustees and Eva and Glenn Dubin among MoMA PS1 Benefactors; MoMA's chair and president sit on the PS1 board ex officio.",
+  "sources": [
+   "https://www.theartnewspaper.com/news/michael-rakowitz-says-moma-ps1-curators-repeatedly-denied-his-requests-to-pause-video-work-in-gulf-war-exhibition-as-a-protest-of-moma-trustees",
+   "https://hyperallergic.com/protesters-occupy-moma-ps1-calling-museum-complicit-in-global-violence",
+   "https://hyperallergic.com/week-in-review-artists-confront-moma-ps1-trustees-museum-director-pushed-out-after-harassment-allegations.md",
+   "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs",
+   "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2024_Annual_Report.pdf"
+  ],
+  "reason": "Protest flag kept: protests were held at PS1, by PS1 exhibition artists and MoMA Divest, aimed at MoMA trustees (stated as the connection). Dates, speakers and museum actions rewritten from the opened pages; 'third-floor' is not on the page; Rakowitz's own pause on 11 January 2020 is from Hyperallergic (Weber). Epstein items stay in Wider context: Black is a MoMA trustee, not on the PS1 board or donor list in MoMA's 2023-2024 report; the article does not mention PS1. Dubin, a trustee the article calls an Epstein client, is also listed as a PS1 Benefactor: left to the caller to decide whether that supports an Epstein flag."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "vague: 'among its named leaders'",
+   "dates"
+  ],
+  "before": "MoMA PS1 is paid for by private donors and MoMA's circle, with Mellon Foundation, Bloomberg Philanthropies, Allianz and the Luma Foundation among its named leaders and the City of New York supplying about 8 percent of its budget in 2019. Artists and activists targeted MoMA trustees Larry Fink and Leon Black at PS1 in 2019 and 2020, and Black's payments to Epstein are on record.",
+  "after": "MoMA PS1 is paid for by private donors and MoMA's circle: MoMA's 2023-2024 report names the Mellon Foundation as a Champion and Bloomberg Philanthropies, Allianz and the Luma Foundation as Leaders, and the City of New York supplied about 8 percent of the operating budget in 2019 (Wikipedia). Artists and activists protested at PS1 in 2019 and 2020 over MoMA trustees Larry Fink and Leon Black. Black, a MoMA trustee, paid Epstein at least $158 million between 2012 and 2017, according to The Art Newspaper.",
+  "sources": [
+   "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2024_Annual_Report.pdf",
+   "https://en.wikipedia.org/wiki/MoMA_PS1",
+   "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs"
+  ],
+  "reason": "Tiers and sources stated."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "whole body (trim to word limit)",
+  "problems": [
+   "over 800 words after corrections"
+  ],
+  "before": "OVERVIEW\n- Contemporary art museum at 22-25 Jackson Avenue in Long Island City, Queens, an affiliate of the Museum of Modern Art (museum website).\n- Founded in 1971 by Alanna Heiss as the Institute for Art and Urban Resources; opened in 1976 as the P.S.1 Contemporary Art Center in an 1892 public school building; affiliated with MoMA since January 2000 and renamed MoMA PS1 in 2010 (Wikipedia).\n- Directors: Heiss until 2008, Klaus Biesenbach from 2009 to 2018, Kate Fowle, announced as director in June 2019 (Wikipedia).\n- Programmes: the five-yearly \"Greater New York\" survey and the Warm Up summer music series begun in 1998 (museum website).\n- Open 12 to 6 pm, Saturday from 10 am; closed Tuesdays and Wednesdays. Admission is free. Wheelchair accessible, with wheelchairs at the entrance (museum website).\n\nFUNDING\nMoMA PS1: private: MoMA's trustees and donors, with city support\n- Affiliate of the Museum of Modern Art since 2000; the chair of MoMA's board, Marie-Josée Kravis, and its president, Ronnie F. Heyman, sit on the PS1 board ex officio, alongside the Mayor of New York City, the Queens Borough President, a City Council member and the Commissioner of the Department of Cultural Affairs (MoMA Annual Report, Donors 2023-2024).\n- The City of New York provided about 8 percent of the operating budget in 2019 (Wikipedia). PS1 has been a member of the City's Cultural Institutions Group, in partnership with the Department of Cultural Affairs, since 1982 (museum website).\n- MoMA's 2023-2024 donor list names the MoMA PS1 donors. Champions: Sarah Arison and Thomas Wilhelm, Agnes Gund, Mellon Foundation, Simon and Catriona Mordant, Jamie and Robert Soros. Leaders: Allianz, Bloomberg Philanthropies, the Luma Foundation, Marie-Josée and Henry R. Kravis, Jerry I. Speyer and Katherine G. Farley. Benefactors: Paula H. Crown, Eva and Glenn Dubin, Mimi Haas, Pace Gallery, Ronald S. and Jo Carole Lauder.\n\nRed flags: protests at the museum over MoMA trustees, 2019 to 2020\n- Phil Collins withdrew his work from \"Theater of Operations: The Gulf Wars 1991-2011\" at PS1, and the artist Michael Rakowitz, who stayed in the show, asked PS1 to divest from MoMA board members Larry Fink and Leon Black and, if MoMA would not, to divest from its parent (The Art Newspaper, Zachary Small, 2 December 2019).\n- Rakowitz asked three times to pause his video \"Return\" and post his protest statement. After a 3 November 2019 meeting the curators told him the two museums have separate boards and the exhibition was not the right venue; the museum refused each request (The Art Newspaper).\n- On 11 January 2020 Rakowitz paused the video himself in support of activists pressing Fink to sell his stakes in private prison companies. The museum later restarted it and took down his plaque against his stated wishes. Separately, 37 artists in the show signed an open letter asking MoMA to separate itself from trustees tied to private prison companies and a defence contractor involved in the Iraq wars (Hyperallergic, Jasmine Weber, 17 January 2020).\n- On 1 March 2020 dozens of MoMA Divest activists, more than 70 in all, gathered at PS1 for the closing of the exhibition and called for accountability, transparency and reinvestment. They said Fink's firm BlackRock is invested in the two largest US private prison companies and that Black's company is invested in Constellis Holdings, formerly Blackwater Worldwide (Hyperallergic, Hakim Bishara, 2 March 2020).\n- Museum action: before the protest PS1 removed works by the artist Ali Yass, and security closed the gallery \"for security reasons\". Protesters were allowed at the gallery entrance, and NYPD officers came. MoMA did not respond to Hyperallergic's request for comment (Hyperallergic, 2 March 2020).\n- Connection: the protests were aimed at MoMA trustees and held at PS1. MoMA's 2023-2024 report lists Laurence D. Fink and Leon D. Black among MoMA's trustees, and MoMA's chair and president sit on the PS1 board ex officio.\n\nCRITICISM IN ART MEDIA\nOverall: The criticism is of MoMA trustees, voiced by artists exhibiting at PS1 and by activists at the museum, in 2019 and 2020.\n1. The Art Newspaper: Zachary Small, \"Michael Rakowitz wants to pause his video work at MoMA PS1 as a protest against museum's ties to 'toxic philanthropy'\" (2 December 2019)\nURL: https://www.theartnewspaper.com/news/michael-rakowitz-says-moma-ps1-curators-repeatedly-denied-his-requests-to-pause-video-work-in-gulf-war-exhibition-as-a-protest-of-moma-trustees\n- Rakowitz asked three times to pause the work and post a statement; the museum refused. Collins withdrew his work.\n- Names Larry Fink and Leon Black as MoMA board members; Black is described as MoMA's chairman and his equity firm Apollo Global Management as owner of Constellis, which acquired and restructured Blackwater.\n2. Hyperallergic: Hakim Bishara, \"Protesters Occupy MoMA PS1, Calling Museum 'Complicit in Global Violence'\" (2 March 2020)\nURL: https://hyperallergic.com/protesters-occupy-moma-ps1-calling-museum-complicit-in-global-violence\n- MoMA Divest activists, joined by the artist Ali Yass by video call, targeted ties between board members and defence contractors and the prison industry. Speakers included Basma Eid of Freedom to Thrive and Sophia Garcia of MoMA Divest.\n- The article reports that the museum removed Yass's works before the action and that security kept the gallery closed to visitors.\n\nWIDER CONTEXT\n- The Art Newspaper (Carlie Porterfield, \"US Senator calls for investigation into MoMA trustee Leon Black's business ties to Jeffrey Epstein\", 19 August 2025): Black paid Epstein at least $158 million between 2012 and 2017 for tax and estate planning advice. Senator Ron Wyden wrote to the IRS on 31 July 2025 accusing it of failing to properly audit suspicious transactions tied to Epstein's tax and estate planning services. A spokesperson for Black said an independent review found he had not engaged in any wrongdoing and had no awareness of Epstein's criminal activity.\n- Same article: more than 150 artists signed an open letter demanding Black's removal as MoMA board chair. He remains on MoMA's board of trustees along with Glenn Dubin, whom the article calls another billionaire client of Epstein's.\n- Connection: PS1 has been affiliated with MoMA since January 2000. MoMA's 2023-2024 report lists Black and Dubin among MoMA's trustees and Eva and Glenn Dubin among MoMA PS1 Benefactors; MoMA's chair and president sit on the PS1 board ex officio.",
+  "after": "OVERVIEW\n- Contemporary art museum at 22-25 Jackson Avenue in Long Island City, Queens, an affiliate of the Museum of Modern Art (museum website).\n- Founded in 1971 by Alanna Heiss as the Institute for Art and Urban Resources; opened in 1976 as the P.S.1 Contemporary Art Center in an 1892 public school building; affiliated with MoMA since January 2000 and renamed MoMA PS1 in 2010 (Wikipedia).\n- Programmes: the five-yearly \"Greater New York\" survey and the Warm Up summer music series begun in 1998 (museum website).\n- Open 12 to 6 pm, Saturday from 10 am; closed Tuesdays and Wednesdays. Admission is free. Wheelchair accessible, with wheelchairs at the entrance (museum website).\n\nFUNDING\nMoMA PS1: private: MoMA's trustees and donors, with city support\n- Affiliate of the Museum of Modern Art since 2000; MoMA's board chair, Marie-Josée Kravis, and president, Ronnie F. Heyman, sit on the PS1 board ex officio, alongside the Mayor of New York City, the Queens Borough President, a City Council member and the Commissioner of the Department of Cultural Affairs (MoMA Annual Report, Donors 2023-2024).\n- The City of New York provided about 8 percent of the operating budget in 2019 (Wikipedia). PS1 has been a member of the City's Cultural Institutions Group, with the Department of Cultural Affairs, since 1982 (museum website).\n- MoMA's 2023-2024 report names MoMA PS1 donors. Champions include the Mellon Foundation, Agnes Gund and Jamie and Robert Soros. Leaders include Allianz, Bloomberg Philanthropies and the Luma Foundation. Benefactors include Paula H. Crown, Eva and Glenn Dubin and Pace Gallery.\n\nRed flags: protests at the museum over MoMA trustees, 2019 to 2020\n- Phil Collins withdrew his work from \"Theater of Operations: The Gulf Wars 1991-2011\" at PS1. Michael Rakowitz, who stayed in the show, asked PS1 to divest from MoMA board members Larry Fink and Leon Black or, if MoMA would not, from its parent. He asked three times to pause his video \"Return\" and post his protest statement; after a 3 November 2019 meeting the curators said the two museums have separate boards, and the museum refused each request (The Art Newspaper, Zachary Small, 2 December 2019).\n- On 11 January 2020 Rakowitz paused the video himself; the museum later restarted it and took down his plaque against his stated wishes. Thirty-seven artists in the show signed an open letter asking MoMA to separate itself from trustees tied to private prison companies and a defence contractor involved in the Iraq wars (Hyperallergic, Jasmine Weber, 17 January 2020).\n- On 1 March 2020 more than 70 MoMA Divest activists gathered at PS1 for the closing of the exhibition and called for accountability, transparency and reinvestment. They said Fink's firm BlackRock is invested in the two largest US private prison companies and Black's company in Constellis Holdings, formerly Blackwater Worldwide. PS1 removed works by Ali Yass before the action and security closed the gallery; protesters were allowed at its entrance (Hyperallergic, Hakim Bishara, 2 March 2020).\n- Connection: the protests were aimed at MoMA trustees and held at PS1. MoMA's 2023-2024 report lists Laurence D. Fink and Leon D. Black among MoMA's trustees.\n\nCRITICISM IN ART MEDIA\nOverall: The criticism is of MoMA trustees, voiced by artists exhibiting at PS1 and by activists, in 2019 and 2020.\n1. The Art Newspaper: Zachary Small, \"Michael Rakowitz wants to pause his video work at MoMA PS1 as a protest against museum's ties to 'toxic philanthropy'\" (2 December 2019)\nURL: https://www.theartnewspaper.com/news/michael-rakowitz-says-moma-ps1-curators-repeatedly-denied-his-requests-to-pause-video-work-in-gulf-war-exhibition-as-a-protest-of-moma-trustees\n- Rakowitz's requests and the museum's refusal; Collins withdrew his work.\n- Names Fink and Black as MoMA board members; Black is described as MoMA's chairman and his firm Apollo Global Management as owner of Constellis, which acquired and restructured Blackwater.\n2. Hyperallergic: Hakim Bishara, \"Protesters Occupy MoMA PS1, Calling Museum 'Complicit in Global Violence'\" (2 March 2020)\nURL: https://hyperallergic.com/protesters-occupy-moma-ps1-calling-museum-complicit-in-global-violence\n- MoMA Divest activists, joined by Ali Yass by video call, targeted ties between board members and defence contractors and the prison industry.\n\nWIDER CONTEXT\n- The Art Newspaper (Carlie Porterfield, \"US Senator calls for investigation into MoMA trustee Leon Black's business ties to Jeffrey Epstein\", 19 August 2025): Black paid Epstein at least $158 million between 2012 and 2017 for tax and estate planning advice. Senator Ron Wyden wrote to the IRS on 31 July 2025 accusing it of failing to properly audit suspicious transactions tied to Epstein's tax and estate planning services. A spokesperson for Black said an independent review found he had not engaged in any wrongdoing and had no awareness of Epstein's criminal activity.\n- Same article: more than 150 artists signed an open letter demanding Black's removal as MoMA board chair. He remains on MoMA's board of trustees along with Glenn Dubin, whom the article calls another billionaire client of Epstein's.\n- Connection: PS1 has been affiliated with MoMA since January 2000. MoMA's 2023-2024 report lists Black and Dubin among MoMA's trustees and Eva and Glenn Dubin among MoMA PS1 Benefactors.",
+  "sources": [
+   "https://www.theartnewspaper.com/news/michael-rakowitz-says-moma-ps1-curators-repeatedly-denied-his-requests-to-pause-video-work-in-gulf-war-exhibition-as-a-protest-of-moma-trustees",
+   "https://hyperallergic.com/protesters-occupy-moma-ps1-calling-museum-complicit-in-global-violence"
+  ],
+  "reason": "Trimmed to the limit: dropped the director list, the full donor tiers and duplicate protest detail; no heading or required section dropped."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "OVERVIEW",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- Programmes: the five-yearly \"Greater New York\" survey and the Warm Up summer music series begun in 1998 (museum website).",
+  "after": "",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "FUNDING",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "; MoMA's board chair, Marie-Josée Kravis, and president, Ronnie F. Heyman, sit on the PS1 board ex officio, alongside the Mayor of New York City, the Queens Borough President, a City Council member and the Commissioner of the Department of Cultural Affairs (MoMA Annual Report, Donors 2023-2024).",
+  "after": "; MoMA's board chair, Marie-Josée Kravis, and president, Ronnie F. Heyman, sit on the PS1 board ex officio, with the Mayor of New York City and other city officials (MoMA Annual Report, Donors 2023-2024).",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "RED FLAGS",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "He asked three times to pause his video \"Return\" and post his protest statement; after a 3 November 2019 meeting the curators said the two museums have separate boards, and the museum refused each request (The Art Newspaper, Zachary Small, 2 December 2019).",
+  "after": "He asked three times to pause his video \"Return\" and post his protest statement; after a 3 November 2019 meeting the curators said the two museums have separate boards, and the museum refused (The Art Newspaper, Zachary Small, 2 December 2019).",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "RED FLAGS",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "They said Fink's firm BlackRock is invested in the two largest US private prison companies and Black's company in Constellis Holdings, formerly Blackwater Worldwide. PS1 removed works by Ali Yass before the action and security closed the gallery; protesters were allowed at its entrance (Hyperallergic, Hakim Bishara, 2 March 2020).",
+  "after": "They said Fink's firm BlackRock is invested in the two largest US private prison companies and Black's company in Constellis Holdings, formerly Blackwater Worldwide. PS1 removed works by Ali Yass before the action (Hyperallergic, Hakim Bishara, 2 March 2020).",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "CRITICISM",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- Rakowitz's requests and the museum's refusal; Collins withdrew his work.\n- Names Fink and Black as MoMA board members; Black is described as MoMA's chairman and his firm Apollo Global Management as owner of Constellis, which acquired and restructured Blackwater.",
+  "after": "- Rakowitz's requests and the museum's refusal; Collins withdrew his work. Names Fink and Black as MoMA board members; describes Black as MoMA's chairman and his firm Apollo Global Management as owner of Constellis.",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "Senator Ron Wyden wrote to the IRS on 31 July 2025 accusing it of failing to properly audit suspicious transactions tied to Epstein's tax and estate planning services. A spokesperson for Black said an independent review found he had not engaged in any wrongdoing and had no awareness of Epstein's criminal activity.",
+  "after": "Senator Ron Wyden wrote to the IRS on 31 July 2025 accusing it of failing to properly audit suspicious transactions tied to Epstein's tax and estate planning services. Black's spokesperson said an independent review found he had not engaged in any wrongdoing.",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "OVERVIEW",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "Founded in 1971 by Alanna Heiss as the Institute for Art and Urban Resources; opened in 1976 as the P.S.1 Contemporary Art Center in an 1892 public school building; affiliated with MoMA since January 2000 and renamed MoMA PS1 in 2010 (Wikipedia).",
+  "after": "Founded in 1971 by Alanna Heiss; opened in 1976 as the P.S.1 Contemporary Art Center in an 1892 public school building; affiliated with MoMA since January 2000 and renamed MoMA PS1 in 2010 (Wikipedia).",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "FUNDING",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "Champions include the Mellon Foundation, Agnes Gund and Jamie and Robert Soros. Leaders include Allianz, Bloomberg Philanthropies and the Luma Foundation. Benefactors include Paula H. Crown, Eva and Glenn Dubin and Pace Gallery.",
+  "after": "Champions include the Mellon Foundation and Agnes Gund; Leaders include Allianz, Bloomberg Philanthropies and the Luma Foundation; Benefactors include Paula H. Crown, Eva and Glenn Dubin and Pace Gallery.",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "RED FLAGS",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "Phil Collins withdrew his work from \"Theater of Operations: The Gulf Wars 1991-2011\" at PS1. Michael Rakowitz, who stayed in the show, asked PS1",
+  "after": "Phil Collins withdrew his work from \"Theater of Operations: The Gulf Wars 1991-2011\" at PS1. Michael Rakowitz asked PS1",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "RED FLAGS",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "On 1 March 2020 more than 70 MoMA Divest activists gathered at PS1 for the closing of the exhibition and called for accountability, transparency and reinvestment. They said",
+  "after": "On 1 March 2020 more than 70 MoMA Divest activists gathered at PS1 for the closing of the exhibition. They said",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "WIDER",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- Same article: more than 150 artists signed an open letter demanding Black's removal as MoMA board chair. He remains on MoMA's board of trustees along with Glenn Dubin, whom the article calls another billionaire client of Epstein's.",
+  "after": "- Same article: more than 150 artists signed an open letter demanding Black's removal as MoMA board chair. He remains a trustee along with Glenn Dubin, whom the article calls another billionaire client of Epstein's.",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "WIDER",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "(Carlie Porterfield, \"US Senator calls for investigation into MoMA trustee Leon Black's business ties to Jeffrey Epstein\", 19 August 2025): Black paid Epstein at least $158 million between 2012 and 2017 for tax and estate planning advice.",
+  "after": "(Carlie Porterfield, \"US Senator calls for investigation into MoMA trustee Leon Black's business ties to Jeffrey Epstein\", 19 August 2025): Black paid Epstein at least $158 million between 2012 and 2017.",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "MoMA PS1 is paid for by private donors and MoMA's circle: MoMA's 2023-2024 report names the Mellon Foundation as a Champion and Bloomberg Philanthropies, Allianz and the Luma Foundation as Leaders, and the City of New York supplied about 8 percent of the operating budget in 2019 (Wikipedia). Artists and activists protested at PS1 in 2019 and 2020 over MoMA trustees Larry Fink and Leon Black. Black, a MoMA trustee, paid Epstein at least $158 million between 2012 and 2017, according to The Art Newspaper.",
+  "after": "MoMA PS1 is paid for by private donors and MoMA's circle, and the City of New York supplied about 8 percent of the operating budget in 2019 (Wikipedia). Artists and activists protested at PS1 in 2019 and 2020 over MoMA trustees Larry Fink and Leon Black. Black, a MoMA trustee, paid Epstein at least $158 million between 2012 and 2017, according to The Art Newspaper.",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "CRITICISM",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "MoMA Divest activists, joined by Ali Yass by video call, targeted ties",
+  "after": "MoMA Divest activists targeted ties",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "FUNDING",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "Overall: The criticism is of MoMA trustees, voiced by artists exhibiting at PS1 and by activists, in 2019 and 2020.",
+  "after": "Overall: The criticism targets MoMA trustees, voiced by artists at PS1 and by activists, in 2019 and 2020.",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "RED FLAGS / CRITICISM / WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'quiet and meditative' attributed as authors' view ok",
+   "'seems': assumptions",
+   "'unanimously' not on page",
+   "'staff member Mikala Tai'",
+   "author of ArtReview piece (none)",
+   "dates: 26 March 2025 ArtReview, Hyperallergic",
+   "reopening dates from URL not page",
+   "reason quote added",
+   "'alleged' style hedging"
+  ],
+  "before": "Red flags: indefinite postponement of an exhibition by the owner, 2025\n- In March 2025 Monash University postponed indefinitely \"Stolon Press: Flat earth\", due to open on 8 May after 18 months of preparation, which included work by Khaled Sabsabi. The ABC understood it to be the first exhibition pulled in the gallery's 50-year history (ABC, 26 March 2025).\n- A Monash spokesperson said consultation with communities showed the museum needed to deepen its collaboration and engagement on the exhibition, and that postponing \"will allow this important work to be undertaken\" (ArtReview, 26 March 2025). The spokesperson did not say whether it was linked to Sabsabi's withdrawn Venice appointment (Hyperallergic).\n- Stolon Press's founders Tom Melick and Simryn Gill said they did not agree to the postponement and were working to make the exhibition go ahead (Hyperallergic).\n- The National Association for the Visual Arts called the decision \"a devastating blow to artistic and academic freedom and the integrity of our public institutions\"; the Monash branch of the NTEU said \"a university censoring its own art gallery is a really bad idea\" (Visual Arts Australia, 27 March 2025).\n- Unverified: Josh Milani, Sabsabi's gallerist, said MUMA's curators \"started receiving pressure from their superiors\" after Sabsabi was dropped from the Venice Biennale (ABC; ArtReview).\n- The exhibition later ran from 29 May to 12 July 2025 (MUMA website).\n\nCRITICISM IN ART MEDIA\nOverall: The criticism is of Monash University's 2025 postponement of one exhibition, not of MUMA's funders or programme.\n1. ArtReview: \"Khaled Sabsabi exhibition cancelled following Venice Biennale sacking\" (2025)\nURL: https://artreview.com/khaled-sabsabi-exhibition-cancelled-following-venice-biennale-sacking-monash-university\n- Reports that Monash postponed the show a month after Sabsabi and curator Michael Dagostino were withdrawn as Australia's 2026 Venice Biennale representatives, and gives the gallerist's charge of pressure from superiors and Monash's reply.\n2. Hyperallergic: Maya Pontone, \"Australian University Scraps Show Featuring Work of Lebanese-Born Artist\" (2025)\nURL: https://hyperallergic.com/australian-university-scraps-show-featuring-work-of-lebanese-born-artist\n- Reports Monash's postponement and the objections of Stolon Press's founders; Monash did not say whether the postponement was linked to the Venice decision.\n3. Visual Arts Australia (NAVA): Penelope Benton and Ben Eltham, \"Monash University's postponement of exhibition featuring Khaled Sabsabi undermines artistic and academic freedom\" (2025)\nURL: https://visualarts.net.au/news-opinion/2025/monash-universitys-postponement-exhibition-featuring-khaled-sabsabi-undermines-artistic-and-academic-freedom/\n- Argues that the decision rests on assumptions about the artist, not the work, which the authors describe as quiet and meditative, and that censoring artists to avoid political backlash erodes academic and artistic freedom.\n- Cites Monash's earlier removal of the right to student protest without consultation as a pattern, and calls on Monash to reinstate the show. Written by an advocacy body (NAVA) and a union branch president (NTEU).\n\nWIDER CONTEXT\n- Creative Australia withdrew the Venice Biennale commission from Sabsabi and Dagostino in February 2025, after Coalition arts spokesperson Claire Chandler raised concerns in parliament about works of his from more than 15 years earlier; its board voted unanimously to drop them on 13 February, and staff member Mikala Tai, program manager Tahmina Maskinyar and board member Lindy Lee resigned (ABC).\n- Connection: MUMA's postponement of the show with Sabsabi's work came in the weeks after that decision.",
+  "after": "Red flags: indefinite postponement of an exhibition by the owner, 2025\n- Monash University, which owns the museum, postponed \"Stolon Press: Flat earth\" indefinitely in March 2025. It was due to open on 8 May after 18 months of planning and included work by Khaled Sabsabi. The ABC understood it to be the first exhibition pulled in the gallery's 50-year history, and wrote that it was unclear what process led to the decision (ABC, Nicola Heath and Daniel Browning, 26 March 2025).\n- Reason given: a Monash spokesperson said that after consulting communities the university had \"identified there is a need for the Museum to deepen its collaboration and engagement on this exhibition\", and that postponing \"will allow this important work to be undertaken\" (ArtReview, 26 March 2025). The spokesperson did not say whether the postponement was tied to Sabsabi's withdrawn Venice appointment or whether a new date had been chosen (Hyperallergic, Maya Pontone, 26 March 2025, updated 27 March).\n- Stolon Press's founders Tom Melick and Simryn Gill said they did not agree to the postponement (Hyperallergic).\n- Penelope Benton, executive director of the National Association for the Visual Arts (NAVA), called the decision \"a devastating blow to artistic and academic freedom and the integrity of our public institutions\", and Ben Eltham, president of the NTEU Monash branch, said \"a university censoring its own art gallery is a really bad idea\" (Visual Arts Australia, 27 March 2025).\n- Unverified: Josh Milani, Sabsabi's gallerist, said MUMA's curators \"started receiving pressure from their superiors\" after Sabsabi's Venice commission was pulled; this is Milani's claim, not a Monash statement (ABC; ArtReview).\n- The exhibition ran from 29 May to 12 July 2025 (Milani Gallery).\n\nCRITICISM IN ART MEDIA\nOverall: The criticism is of Monash University's 2025 postponement of one exhibition, not of MUMA's funders or programme.\n1. ArtReview: no named author, \"Khaled Sabsabi exhibition cancelled following Venice Biennale sacking\" (26 March 2025)\nURL: https://artreview.com/khaled-sabsabi-exhibition-cancelled-following-venice-biennale-sacking-monash-university\n- Reports that Monash postponed the show weeks after Sabsabi and curator Michael Dagostino were withdrawn as Australia's Venice Biennale representatives, gives Milani's claim of pressure on curators and prints Monash's written reply.\n2. Hyperallergic: Maya Pontone, \"Australian University Scraps Show Featuring Work of Lebanese-Born Artist\" (26 March 2025, updated 27 March)\nURL: https://hyperallergic.com/australian-university-scraps-show-featuring-work-of-lebanese-born-artist\n- Reports Monash's postponement of the show, which was due to run from 8 May to 5 July, and the objection of Stolon Press's founders; quotes Milani calling the decision a \"direct result of Creative Australia's abandonment of him\".\n3. Visual Arts Australia (NAVA): Penelope Benton and Ben Eltham, \"Monash University's postponement of exhibition featuring Khaled Sabsabi undermines artistic and academic freedom\" (27 March 2025)\nURL: https://visualarts.net.au/news-opinion/2025/monash-universitys-postponement-exhibition-featuring-khaled-sabsabi-undermines-artistic-and-academic-freedom/\n- The authors argue the decision rests on assumptions about Sabsabi rather than the work, which they call quiet and meditative, and that giving in to pressure erodes trust and academic freedom.\n- They cite Monash's removal of the right to student protest without consultation with student organisations and urge Monash to reinstate the show. Written by NAVA's executive director and the president of the NTEU Monash branch.\n\nWIDER CONTEXT\n- Creative Australia's board met on 13 February 2025 and voted to drop Sabsabi and curator Michael Dagostino from the 2026 Venice Biennale, after Coalition arts spokesperson Claire Chandler raised concerns in parliament about works of his from more than 15 years earlier. Mikala Tai (head of visual arts), program manager Tahmina Maskinyar and board member Lindy Lee resigned (ABC).\n- Connection: ArtReview and Hyperallergic tie the Monash postponement, about a month later, to that decision; Monash did not say whether the two were linked (Hyperallergic).",
+  "sources": [
+   "https://www.abc.net.au/news/2025-03-26/artist-khaled-sabsabi-muma-exhibition-postponed/105096590",
+   "https://artreview.com/khaled-sabsabi-exhibition-cancelled-following-venice-biennale-sacking-monash-university",
+   "https://hyperallergic.com/australian-university-scraps-show-featuring-work-of-lebanese-born-artist"
+  ],
+  "reason": "Flag kept: Monash University, which owns MUMA, itself postponed the show, so the institution acted. Opened pages: ABC (Heath and Browning, 26 March 2025) gives the decider, the 8 May opening date, 'first exhibition pulled in 50 years' and Milani's claim; ArtReview (no byline, 26 March 2025) gives the reason in the spokesperson's words; Hyperallergic (Pontone) gives the founders' objection and that Monash did not say if the Venice decision was linked; NAVA/NTEU piece (27 March 2025) gives the authors' views. The vote was not stated as unanimous on the ABC page, so the word is cut; Hyperallergic's date range for the show (8 May to 5 July) is added. Date of the decision itself is not given in the pages; reported 26 March 2025."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "SOURCES",
+  "problems": [
+   "dead/blocked source (403)"
+  ],
+  "before": "- https://www.monash.edu/muma/exhibitions/previous/2025/stolon-press-flat-earth",
+  "after": "- https://milanigallery.com.au/exhibitions/stolon-press-flat-earth/",
+  "sources": [
+   "https://milanigallery.com.au/exhibitions/stolon-press-flat-earth/"
+  ],
+  "reason": "The MUMA exhibitions page returned 403 and could not be opened; the Milani Gallery page, which was opened, gives the same dates."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "OVERVIEW",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- The collection held more than 2,300 works by 2022, including works by Tracey Moffatt and Vivienne Binns (Wikipedia).",
+  "after": "",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "conflicting dates between sources"
+  ],
+  "before": "Creative Australia's board met on 13 February 2025 and voted to drop Sabsabi",
+  "after": "In February 2025 Creative Australia's board voted to drop Sabsabi",
+  "sources": [],
+  "reason": "ABC gives 13 February for the board meeting and ArtReview gives 7 February for the withdrawal; the month is the safe common fact."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "RED FLAGS",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- Stolon Press's founders Tom Melick and Simryn Gill said they did not agree to the postponement (Hyperallergic).",
+  "after": "- Stolon Press's founders Tom Melick and Simryn Gill said they did not agree to it (Hyperallergic).",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "CRITICISM",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- Reports Monash's postponement of the show, which was due to run from 8 May to 5 July, and the objection of Stolon Press's founders; quotes Milani calling the decision a \"direct result of Creative Australia's abandonment of him\".",
+  "after": "- Reports the postponement of the show, due to run from 8 May to 5 July, and the objection of Stolon Press's founders; quotes Milani calling it a \"direct result of Creative Australia's abandonment of him\".",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "CRITICISM",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- They cite Monash's removal of the right to student protest without consultation with student organisations and urge Monash to reinstate the show. Written by NAVA's executive director and the president of the NTEU Monash branch.",
+  "after": "- They cite Monash's removal of the right to student protest without consultation and urge Monash to reinstate the show.",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "RED FLAGS",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "The ABC understood it to be the first exhibition pulled in the gallery's 50-year history, and wrote that it was unclear what process led to the decision (ABC, Nicola Heath and Daniel Browning, 26 March 2025).",
+  "after": "The ABC understood it to be the first exhibition pulled in the gallery's 50-year history (ABC, Nicola Heath and Daniel Browning, 26 March 2025).",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "OVERVIEW",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- The current building remodels an existing modernist structure on the Caulfield campus, designed by Kerstin Thompson and completed in 2010; it includes the Ian Potter Sculpture Court (Wikipedia).",
+  "after": "- The current building on the Caulfield campus, designed by Kerstin Thompson and completed in 2010, includes the Ian Potter Sculpture Court (Wikipedia).",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "OVERVIEW",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "Grew from a fund created in 1961 by Vice Chancellor Louis Matheson to buy work by living Australian artists; Patrick McCaughey created the Monash University Gallery in 1975 and Grazia Gunn became the first full-time collection curator; the gallery moved to the Multi-Discipline Centre in 1987 and was renamed Monash University Museum of Art in 2002 (Wikipedia).",
+  "after": "Grew from a fund created in 1961 by Vice Chancellor Louis Matheson to buy work by living Australian artists; Patrick McCaughey created the Monash University Gallery in 1975; it was renamed Monash University Museum of Art in 2002 (Wikipedia).",
+  "sources": [],
+  "reason": "Trimmed to the 800-word limit."
+ },
+ {
+  "id": "moderna-galerija-ljubljana",
+  "section": "FUNDING / RED FLAGS / CRITICISM / WIDER CONTEXT",
+  "problems": [
+   "unsupported: ministry 'denies political motive' (Apollo quotes the ministry calling it routine under left-wing governments)",
+   "misattribution: statute changes and 'preferred candidate' come from CIMAM's unsigned text, not the staff letter",
+   "unsupported: Čelik's job title",
+   "unsupported: 'ministry says it will follow international standards' (the government said so, 13 December)",
+   "unsupported: collaborations line",
+   "dates missing"
+  ],
+  "before": "FUNDING\nModerna galerija (MG+MSUM): public: a national museum whose founder is the Slovenian Ministry of Culture\n- The Ministry of Culture is the museum's founder and issues the call for its director (CIMAM, publishing the staff letter of 8 March 2022).\n- The museum lists collaborations including L'Internationale and the New Mappings of Europe project (museum website).\n\nRed flags: Ministry of Culture and the director's post\n- Apollo (Dorian Batycka, 23 December 2020): the ministry advertised Badovinac's post three times and named the poet and art historian Robert Simonišek interim director in November 2020. Badovinac called the removal \"absolutely political\". The ministry rejected the criticism and said replacing museum directors is routine when governments change.\n- CIMAM, publishing a staff letter of 8 March 2022: the ministry repeated the call for the director's post three times, changed the museum's statutes over the objections of the professional public and altered the qualifications for the post, which in the staff's account enabled the appointment of the ministry's preferred candidate, Aleš Vaupotič. The letter describes Badovinac's mandate as ending in 2020 with the ministry not reappointing her.\n- Twenty-seven staff, 79.4 percent of all employees according to the letter, demanded Vaupotič's resignation or dismissal. Their grievances were that he removed part of the permanent display without telling its curators, mishandled contracts, approved inflated budgets and treated staff poorly.\n\nCRITICISM IN ART MEDIA\nOverall: The criticism in art and museum media concerns the Slovenian government's control of the museum's leadership between 2020 and 2022, not its funding sources.\n1. Apollo: Dorian Batycka, \"Concerns rise about cultural freedom in Slovenia\" (2020)\nURL: https://apollo-magazine.com/slovenia-arts-government/\n- Argues that the government led by Janez Janša's Slovenian Democratic Party was curbing cultural freedom by replacing leading figures in the arts sector, naming the removal of Badovinac from Moderna galerija.\n- Matevž Čelik, director of the Museum of Architecture and Design, says two of the three selection jurors were appointed by the ruling party and that experience requirements were dropped.\n- The ministry rejects these claims.\n2. CIMAM: \"A Courageous Action by the staff of Moderna galerija, Ljubljana\" (2022)\nURL: https://cimam.org/museum-watch/museum-watch-actions/a-courageous-action-by-the-staff-of-moderna-galerija-ljubljana/\n- Publishes the staff's public letter of protest of 8 March 2022 asking the government and the Ministry of Culture to remove Vaupotič.\n- Names the ministry's repeated call and statute changes; the letter is the staff's own account.\n\nWIDER CONTEXT\n- Apollo reports Violeta Tomić, a member of parliament and acting head of the parliamentary culture committee, citing cancelled subsidies for the public broadcaster and cancelled film financing under the Janša government.\n- Apollo reports an open letter with more than 1,000 signatures calling the planned Museum of Slovenian Independence a propaganda institution; the ministry says it will follow international standards.\n- Connection: the Ministry of Culture that these critics target is the founder of Moderna galerija and chose its director.",
+  "after": "FUNDING\nModerna galerija (MG+MSUM): public: a national museum whose founder is the Slovenian Ministry of Culture\n- The Ministry of Culture, as the founder of Moderna galerija, issued the call for applications for the post of director (CIMAM, text of 10 March 2022).\n\nRed flags: Ministry of Culture and the director's post\n- Apollo (Dorian Batycka, 23 December 2020): the ministry advertised Zdenka Badovinac's post three times and in November 2020 named the poet and art historian Robert Simonisek (spelling as in Apollo) as interim director. Badovinac called her removal \"absolutely political\". The ministry rejected the criticism, saying that appointing new directors has been routine under left-wing governments for decades.\n- CIMAM, in an unsigned text posted on 10 March 2022 beside the staff letter and written in the staff's voice: after Badovinac's mandate ended in 2020 the ministry repeated the call for the post three times instead of reappointing her; it changed the museum's statutes despite \"loudly voiced opposition\" from the professional public and changed the qualifications for the post. The text says these changes were made to enable the appointment of the ministry's \"favoured candidate\", Aleš Vaupotič, and calls it one of many \"politically motivated changes\" of directors. Badovinac had reapplied.\n- Staff letter of 8 March 2022, addressed to the Government and the Ministry of Culture: 27 employees, 79.4 percent of all employees according to the letter, demanded the resignation or dismissal of Vaupotič. Their grievances: he removed part of the permanent exhibition without notifying its curators, mishandled contracts of external help and part-time employees, approved inflated budgets and pressured employees.\n\nCRITICISM IN ART MEDIA\nOverall: The criticism in art and museum media concerns political control of the museum's leadership between 2020 and 2022, not its funding sources.\n1. Apollo: Dorian Batycka, \"Concerns rise about cultural freedom in Slovenia\" (23 December 2020)\nURL: https://apollo-magazine.com/slovenia-arts-government/\n- Reports concern about cultural freedom under the ruling Slovenian Democratic Party led by Janez Janša, naming Badovinac's removal from Moderna galerija.\n- Matevž Čelik says two of the three jurors selecting his successor were appointed by the ruling party and that earlier experience requirements were dropped.\n- The ministry rejects the criticism.\n2. CIMAM: \"A Courageous Action by the staff of Moderna galerija, Ljubljana\" (10 March 2022)\nURL: https://cimam.org/museum-watch/museum-watch-actions/a-courageous-action-by-the-staff-of-moderna-galerija-ljubljana/\n- CIMAM's Museum Watch Committee introduces the staff's public letter of protest of 8 March 2022 asking the Government and the Ministry of Culture for Vaupotič's resignation or dismissal.\n- The ministry's repeated call and statute changes are described in the unsigned text beside the letter, which gives the staff's account.\n\nWIDER CONTEXT\n- Apollo: opposition member of parliament Violeta Tomić, acting head of the parliamentary culture committee, cites the cancelling of major subsidies for the public broadcaster and of financing for film production, and the firing of directors of several major cultural institutions.\n- Apollo: an open letter of 17 November 2020 to Culture Minister Vasko Simoniti, with more than 1,000 signatures, criticised the director replacements and called the planned Museum of Slovenian Independence a \"propaganda institution\". The government said in a press release of 13 December that these characterisations were incorrect and that the museum would be curated by professional historians with no political affiliations.\n- Connection: the letter's criticism of director replacements concerns the ministry that founded Moderna galerija and issued the call for its director.",
+  "sources": [
+   "https://apollo-magazine.com/slovenia-arts-government/",
+   "https://cimam.org/museum-watch/museum-watch-actions/a-courageous-action-by-the-staff-of-moderna-galerija-ljubljana/"
+  ],
+  "reason": "Apollo (Batycka, 23 December 2020) quotes the ministry as saying director appointments are routine under left-wing governments and presents the process as political; it does not say the ministry denies a political motive. CIMAM's page has the staff letter (8 March 2022) and a separate unsigned text (10 March 2022) holding the claims about the repeated call, statute and qualification changes and the 'favoured candidate'; labelled by who says it. The 27 staff and 79.4 percent figures and the grievances are in the letter. The 'international standards' line is the government's press release of 13 December as reported by Apollo."
+ },
+ {
+  "id": "moderna-galerija-ljubljana",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "'ministry denying political motive' unsupported"
+  ],
+  "before": "The documented issue is political control of its leadership, with the ministry's 2020 to 2022 handling of the director's post criticised by Badovinac, museum staff and Apollo, and the ministry denying political motive.",
+  "after": "The documented issue is the ministry's handling of the director's post from 2020 to 2022: Badovinac called her removal \"absolutely political\", museum staff described politically motivated changes in a 2022 letter and accompanying text, and the ministry said that replacing directors is routine under left-wing governments.",
+  "sources": [
+   "https://apollo-magazine.com/slovenia-arts-government/",
+   "https://cimam.org/museum-watch/museum-watch-actions/a-courageous-action-by-the-staff-of-moderna-galerija-ljubljana/"
+  ],
+  "reason": "Ministry's position stated as Apollo reports it."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'municipal' from Wikipedia",
+   "wrong opening hours"
+  ],
+  "before": "- Established on 1 February 2010 as an institution of culture of the City of Kraków and opened on 19 May 2011; Maria Anna (Masza) Potocka was its first director (Wikipedia).",
+  "after": "- Established on 1 February 2010 and opened on 19 May 2011; Maria Anna (Masza) Potocka was its first director (Wikipedia). The museum's site describes it as an institution of culture of the City of Kraków.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art_in_Krak%C3%B3w",
+   "https://www.mocak.pl/"
+  ],
+  "reason": "Wikipedia gives the dates and Potocka; the museum site gives the city status."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "OVERVIEW",
+  "problems": [
+   "Potocka dismissal attributed to Wikipedia only",
+   "director competition"
+  ],
+  "before": "- Leadership: Potocka was removed as director in 2024; her successor Adam Budak was dismissed in May 2026; Grzegorz Kuźma has been acting director since 12 May 2026 (ArtReview, Wikipedia).\n- The museum's site header gives opening hours of Thursday to Sunday, 11:00 to 19:00, and links to an accessibility page and online ticket sales.",
+  "after": "- Leadership: Wikipedia says Potocka led the museum from 2010 until 2024 and was dismissed over workplace bullying allegations that a court confirmed. Her successor Adam Budak was dismissed in May 2026 and Grzegorz Kuźma has been acting director since 12 May 2026 (ArtReview). On 19 October 2026 the museum's site announced that, by order of the President of the City of Kraków, the competition for a new director was cancelled.\n- Open Tuesday to Sunday, 11:00 to 19:00, at ul. Lipowa 4; the site links to an accessibility page and online ticket sales (museum website).",
+  "sources": [
+   "https://artreview.com/adam-budak-dismissed-as-director-of-mocak-amid-controversy/",
+   "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art_in_Krak%C3%B3w",
+   "https://www.mocak.pl/"
+  ],
+  "reason": "Hours on the museum site are Tuesday to Sunday, not Thursday to Sunday. ArtReview does not mention Potocka; her dismissal is attributed to Wikipedia."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "FUNDING",
+  "problems": [
+   "listing without a year presented as funding",
+   "'small group of corporate partners'",
+   "names known from logo file names (Miastoprojekt 'SAO1', media patrons)",
+   "EU claim sourced to Wikipedia only"
+  ],
+  "before": "FUNDING\nMOCAK: mainly public: the City of Kraków, with EU funds for the building and a small group of corporate partners\n- The museum describes itself as \"instytucja kultury miasta Krakowa\", an institution of culture of the City of Kraków (MOCAK website).\n- Building: cost estimated at 70 million PLN, about 16 million euros, co-financed by European Union funds (Wikipedia, citing Culture.pl).\n- Museum sponsor: the construction company STRABAG, named on the museum's partners page without a year or amount (MOCAK website).\n- Co-organiser of the hospitality and local activities programme: Miastoprojekt; hotel partner: Tribe Hotels Krakow Old Town; patron of the Re Gallery: RE-Bau (MOCAK website).\n- Sponsors of the installation \"Gniazdo Katatzyny\" by Katarzyna Krakowiak-Bałka: Electro-System and REMONDIS (MOCAK website).\n- Media patrons: Gazeta Wyborcza, Chilli ZET, Tygodnik Powszechny, Mint Magazine, Szum, Daily Art Magazine, Karnet, Architektura&Biznes (MOCAK website).\n- The Ministry of Culture and National Heritage is listed among partner institutions (MOCAK website).",
+  "after": "FUNDING\nMOCAK: public: an institution of culture of the City of Kraków, with Ministry of Culture grants and EU funds for the building\n- The museum's site names it \"instytucja kultury miasta Krakowa\", an institution of culture of the City of Kraków. The city bought the buildings and land of the former Schindler factory in 2004, and the Ministry of Culture granted 4 million PLN to the project at the mayor's application (MOCAK website, history page).\n- Building: total cost over 70 million PLN, of which 35 million PLN was co-financed from EU funds (MOCAK website, history page).\n- The museum's page of Ministry of Culture and National Heritage grants lists, among others: 200,000 PLN in 2026 for the collection (Narodowa Kolekcja Sztuki Współczesnej programme), 470,000 PLN in 2023 for the collection, 269,999 PLN for 2026 and 2027 for a Kiki Smith retrospective, 312,978 PLN for 2026 and 2027 for an Eleanor Antin retrospective, and 882,000 PLN for 2025 to 2027 for ventilation and air-conditioning modernisation (MOCAK website).\n- The partners page, which carries no year, lists STRABAG under \"Sponsor Muzeum\" (a logo linking to strabag.pl), Tribe Hotels as hotel partner, RE-Bau as patron of the Re Gallery, Electro-System and REMONDIS as sponsors of the installation \"Gniazdo Katatzyny\" by Katarzyna Krakowiak-Bałka, and the Ministry of Culture (MKiDN) among partner institutions (MOCAK website).",
+  "sources": [
+   "https://www.mocak.pl/partnerzy",
+   "https://www.mocak.pl/dotacje-ministerstwa-kultury-i-dziedzictwa-narodowego",
+   "https://www.mocak.pl/historia"
+  ],
+  "reason": "The museum's own history page gives the 70 million PLN cost, 35 million PLN from EU funds and the 4 million PLN ministry grant; the grants page gives dated ministry lines. The partners page has no year, so STRABAG and the others are stated as a listing; the Miastoprojekt entry (logo alt text 'SAO1') and the media patrons are cut. 'Mainly public' is changed to 'public' because no page says the share."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "CRITICISM",
+  "problems": [
+   "author/date of ArtReview item",
+   "'amid' paraphrase"
+  ],
+  "before": "CRITICISM IN ART MEDIA\nOverall: The press coverage concerns the management of the museum and the dismissal of its directors, not its funders or its programme.\n1. ArtReview: \"Adam Budak dismissed as director of MOCAK amid controversy\" (2026)\nURL: https://artreview.com/adam-budak-dismissed-as-director-of-mocak-amid-controversy/\n- The city announced Budak's dismissal on 16 May 2026, citing \"improper performance of duties related to work organization and team management\"; the investigation followed a complaint signed by 37 employees, according to Onet.\n- Budak said the dismissal has no legal basis and was made under time pressure, and said he was considering an appeal.\n- Artists Monika Drożyńska, Wilhelm Sasnal, Katarzyna Krakowiak-Bałka and Gabrielle Goliath withdrew from the 2026 to 2027 programme in solidarity with him; Paulina Ołowska started a petition asking the city to reconsider.\n- Concerns workplace management, not funding or the art.",
+  "after": "CRITICISM IN ART MEDIA\nOverall: The press coverage concerns the management of the museum and the dismissal of its directors, not its funders or its programme.\n1. ArtReview: no named author, \"Adam Budak dismissed as director of MOCAK amid controversy\" (18 May 2026)\nURL: https://artreview.com/adam-budak-dismissed-as-director-of-mocak-amid-controversy/\n- The city of Kraków announced the mayor's decision to dismiss Budak in a statement of 16 May 2026, citing \"the finding of improper performance of duties related to work organization and team management\"; his employment ends with his notice period on 30 June.\n- According to Onet, cited by ArtReview, the investigation followed a misconduct complaint signed by 37 employees and submitted to City Hall.\n- Budak said the dismissal \"has no legal basis and was made under time pressure\" and that he was considering an appeal.\n- Monika Drożyńska, Wilhelm Sasnal, Katarzyna Krakowiak-Bałka and Gabrielle Goliath withdrew from MOCAK's 2026 to 2027 programme in solidarity with him; Paulina Ołowska started a petition for reconsideration.\n- Concerns workplace management, not funding or the art.",
+  "sources": [
+   "https://artreview.com/adam-budak-dismissed-as-director-of-mocak-amid-controversy/"
+  ],
+  "reason": "ArtReview carries no byline and is dated 18 May 2026; the city's statement was 16 May. Quoted reason and the 30 June notice period are on the page."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported 'small group'",
+   "absence clause 'no years or amounts'",
+   "Potocka attribution"
+  ],
+  "before": "MOCAK is a city-run museum: Kraków pays for it as an institution of culture of the City of Kraków, and EU funds co-financed its building. The museum's own partners page names STRABAG as museum sponsor and lists a few other companies, with no years or amounts. The documented problems are two director dismissals over workplace management, in 2024 and 2026.",
+  "after": "MOCAK is an institution of culture of the City of Kraków. The Ministry of Culture and National Heritage lists grants to it on the museum's site, and 35 million PLN of the building's cost of over 70 million PLN came from EU funds. The documented problems are two director dismissals over workplace management, in 2024 (Wikipedia) and 2026 (ArtReview).",
+  "sources": [
+   "https://www.mocak.pl/historia",
+   "https://www.mocak.pl/dotacje-ministerstwa-kultury-i-dziedzictwa-narodowego",
+   "https://artreview.com/adam-budak-dismissed-as-director-of-mocak-amid-controversy/"
+  ],
+  "reason": "Bottom line states what is documented."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "SOURCES",
+  "problems": [
+   "added opened sources"
+  ],
+  "before": "- https://www.mocak.pl/partnerzy",
+  "after": "- https://www.mocak.pl/partnerzy\n- https://www.mocak.pl/dotacje-ministerstwa-kultury-i-dziedzictwa-narodowego\n- https://www.mocak.pl/historia",
+  "sources": [],
+  "reason": "Opened and used."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "SOURCES",
+  "problems": [
+   "unverified source"
+  ],
+  "before": "- https://en.mocak.pl/visit",
+  "after": "- https://www.mocak.pl/",
+  "sources": [],
+  "reason": "en.mocak.pl/visit returned almost no text; the Polish home page, which was opened, carries the hours, city status and director-competition notice."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "wording"
+  ],
+  "before": "The Ministry of Culture and National Heritage lists grants to it on the museum's site, and",
+  "after": "The museum's site lists grants from the Ministry of Culture and National Heritage, and",
+  "sources": [],
+  "reason": "Wording fixed."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported/confusing figure: '13.5 million visitors in 2018'"
+  ],
+  "before": "the museum reported 13.5 million visitors in 2018, with 30 percent arriving after 5 pm (Wikipedia).",
+  "after": "in 2018, visitors after 5 pm accounted for 30 percent of its visitors (Wikipedia).",
+  "sources": [],
+  "reason": "The 13.5 million figure reads as a cumulative total and cannot be tied to one year, so it is cut; the 30 percent is stated on the page."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Kataoka took office"
+  ],
+  "before": "Directors: David Elliott from 2003 to 2006, Fumio Nanjo from 2006 to 2019, then Mami Kataoka (Wikipedia).",
+  "after": "Directors: David Elliott from 2003 to 2006 and Fumio Nanjo from 2006 to 2019; Mami Kataoka was announced as his successor at the end of 2019 (Wikipedia).",
+  "sources": [],
+  "reason": "Wikipedia says Kataoka was announced as the successor."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "source for founder dates"
+  ],
+  "before": "(museum website, Wikipedia)",
+  "after": "(museum website)",
+  "sources": [],
+  "reason": "The museum's about page gives Minoru Mori 1934 to 2012 as founder and Yoshiko Mori 1940 to 2025 as first chairperson."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "FUNDING",
+  "problems": [
+   "listing presented as funding: member list has no fees or years",
+   "absence clause 'without fees'",
+   "unidentified member 'MELCO Group Inc.' given exactly as the page names it",
+   "wrong circle name 'Contemporary Circle'",
+   "uncredited quote from Tokyo Art Beat moved"
+  ],
+  "before": "FUNDING\nMori Art Museum: private: the Mori family's real-estate business and a corporate membership of 68 companies\n- Artscape Japan describes the museum as a private institution backed by the Mori family (Lucy Birmingham, \"Art Censorship: Whose Problem Is This?\").\n- Mori Building Co., Ltd. holds the copyright on the museum's website footer (museum website).\n- Corporate membership programme in three tiers, Diamond, Platinum and Gold, with the stated goal to \"encourage support for new artistic and cultural activities in Japan\"; the list shows 68 members, ordered by year of admission, without fees (museum website).\n- Diamond members (13): Japan Airlines, Morgan Stanley, Kajima Corporation, Obayashi Corporation, Panasonic Electric Works, Takenaka Corporation, Bloomberg, Shimizu Corporation, Kinden Corporation, Toshiba Elevator and Building Systems, Prada Japan, MELCO Group Inc. and Semba.\n- Platinum members (9): Nihon Sekkei, Taisei Corporation, Sanken Setsubi Kogyo, Fujitec, Kraftia Corporation, Takasago Thermal Engineering, AIG, Saikyu Kogyo and Lotte Holdings.\n- Gold members (46) include Hermès Japon, BMW Group Japan, Mizuho Bank, The Pokémon Company, Christian Dior G.K., Mitsubishi Electric Corporation, Accenture Japan and Forbes Japan.\n- The Southeast Asia Contemporary Circle (SEACC), launched in 2023, supports the museum's curatorial research in Southeast Asia and artwork acquisitions; it has six named members in Indonesia, Thailand, Vietnam, Singapore and the Philippines (museum website).\n- Tokyo Art Beat (William Andrews, 19 November 2011) notes that Japan has little tradition of government arts subsidy, so corporations often lead and sponsor art, and suggests that Mori's activity in Roppongi also promotes its brands and raises land value.",
+  "after": "FUNDING\nMori Art Museum: private: backed by the Mori family, with a corporate membership programme\n- Artscape Japan describes the museum as a private institution backed by the Mori family (Lucy Birmingham, \"Art Censorship: Whose Problem Is This?\").\n- Mori Building Co., Ltd. holds the copyright on the museum's website footer (museum website).\n- The corporate membership programme has three tiers, Diamond, Platinum and Gold, with the stated goal to \"encourage support for new artistic and cultural activities in Japan\" (museum website). The list of 68 members, as of October 2026, is in order of admission year, without years shown.\n- Diamond members (13): Japan Airlines, Morgan Stanley, Kajima Corporation, Obayashi Corporation, Panasonic Electric Works, Takenaka Corporation, Bloomberg, Shimizu Corporation, Kinden Corporation, Toshiba Elevator and Building Systems, Prada Japan, \"MELCO Group Inc.\" and Semba.\n- Platinum members (9): Nihon Sekkei, Taisei Corporation, Sanken Setsubi Kogyo, Fujitec, Kraftia Corporation, Takasago Thermal Engineering, AIG, Saikyu Kogyo and Lotte Holdings.\n- Gold members (46) include Hermès Japon, BMW Group Japan, Mizuho Bank, The Pokémon Company, Christian Dior G.K., Mitsubishi Electric Corporation, Accenture Japan and Forbes Japan.\n- The Southeast Asia Collectors Circle, launched in 2023, supports the museum's curatorial research in Southeast Asia and artwork acquisitions; six listings were shown in July 2026 (museum website).",
+  "sources": [
+   "https://www.mori.art.museum/en/mamc/corporate/list/",
+   "https://www.mori.art.museum/en/mamc/corporate/about/",
+   "https://www.mori.art.museum/en/support/"
+  ],
+  "reason": "The members page lists 68 names, in order of admission year, with no fees and no years shown, so it is stated as a listing; 'MELCO Group Inc.' appears in the Diamond tier exactly so, with no further identification. The support page names the group the Southeast Asia Collectors Circle and shows six listings as of July 2026. Verdict changed from 'private: the Mori family's real-estate business and a corporate membership of 68 companies' because only Artscape states the family backing."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "CRITICISM",
+  "problems": [
+   "unsupported: 'assembled shows at public museums'",
+   "attribution of 2013 protest",
+   "date missing for Tokyo Art Beat",
+   "Artscape date not printed on page"
+  ],
+  "before": "CRITICISM IN ART MEDIA\nOverall: Little direct criticism of the museum in the art press; the two pieces concern protests over one artist's show and the museum's corporate model.\n1. Artscape Japan: Lucy Birmingham, \"Art Censorship: Whose Problem Is This?\" (2015)\nURL: https://artscape.jp/artscape/eng/focus/1509_01.html\n- Reports that the museum has faced protests, among them over Makoto Aida's 2013 exhibition there.\n- Says that because it is privately funded and backed by the Mori family, government censorship of it is \"highly unlikely\"; Chairperson Yoshiko Mori gives curators wide room.\n- Mostly concerns censorship at the Museum of Contemporary Art Tokyo; does not name Mori Building.\n2. Tokyo Art Beat: William Andrews, \"Getting Down to Business\" (2011)\nURL: https://tokyoartbeat.com/en/articles/-/getting-down-to-business\n- Argues that corporate museums such as Mori's also serve to promote the owner's brands and land value, and that Roppongi needs no extra help.\n- Praises its shows as planned and fresh compared with the assembled shows at public museums.",
+  "after": "CRITICISM IN ART MEDIA\nOverall: Little direct criticism of the museum in the art press; the two pieces concern protests over one artist's show and the museum's corporate model.\n1. Artscape Japan: Lucy Birmingham, \"Art Censorship: Whose Problem Is This?\" (2015)\nURL: https://artscape.jp/artscape/eng/focus/1509_01.html\n- Artscape says the museum has faced protests, and names Makoto Aida's 2013 exhibition there as one target; the 2013 protest is cited only through this article.\n- Says that because it is a private institution backed by the Mori family, government censorship of it is \"highly unlikely\", and credits chairperson Yoshiko Mori with giving curators wide latitude.\n- Mostly concerns censorship at the Museum of Contemporary Art Tokyo; does not name Mori Building.\n2. Tokyo Art Beat: William Andrews, \"Getting Down to Business\" (19 November 2011)\nURL: https://tokyoartbeat.com/en/articles/-/getting-down-to-business\n- Cites Mori as an early example of a business building an art space for international contemporary exhibitions, and suggests that efforts like Mori's in Roppongi also promote the companies' brands and raise land values; questions whether Roppongi needs public art funding when Mori and similar businesses do not need the help.\n- Notes that Japan has little tradition of government arts funding, so corporations often lead as sponsors; says Mori's shows \"feel planned and fresh almost every time\".",
+  "sources": [
+   "https://artscape.jp/artscape/eng/focus/1509_01.html",
+   "https://tokyoartbeat.com/en/articles/-/getting-down-to-business"
+  ],
+  "reason": "Artscape's page carries no printed date; the exhibitions it reviews ran 25 July to 12 October 2015, so 2015 is kept. Tokyo Art Beat is dated 19 November 2011; the 'assembled' comparison is not on the page. The 2013 Aida protest is attributed to Artscape."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict adjectives/unsupported: 'includes construction firms, airlines, banks and luxury brands' presented as funding"
+  ],
+  "before": "The Mori Art Museum is a private museum founded by the Mori family's property business, with a corporate membership of 68 companies that includes construction firms, airlines, banks and luxury brands. The documented funding is family backing and the corporate member list.",
+  "after": "The Mori Art Museum was founded by Minoru Mori, and Artscape Japan describes it as a private institution backed by the Mori family. Its website lists 68 corporate members in three tiers, including Japan Airlines, Morgan Stanley, Bloomberg and Prada Japan, with no fees or years shown.",
+  "sources": [
+   "https://www.mori.art.museum/en/mamc/corporate/list/",
+   "https://artscape.jp/artscape/eng/focus/1509_01.html"
+  ],
+  "reason": "Stated as documented; the member list is a listing, not a funding line."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "FUNDING",
+  "problems": [
+   "absence clause"
+  ],
+  "before": "The list of 68 members, as of October 2026, is in order of admission year, without years shown.",
+  "after": "The list shows 68 members as of October 2026, in order of admission year.",
+  "sources": [],
+  "reason": "Absence clause cut."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence clause"
+  ],
+  "before": "Bloomberg and Prada Japan, with no fees or years shown.",
+  "after": "Bloomberg and Prada Japan.",
+  "sources": [],
+  "reason": "Absence clause cut."
+ },
+ {
+  "id": "moderna-museet",
+  "section": "FUNDING",
+  "problems": [
+   "sponsor known only from a logo file name (Bloomberg)",
+   "absence clause 'without years or amounts'"
+  ],
+  "before": "- The museum's support page shows logos of the sponsors Bank of America, Bloomberg, Jung and Patriksson and two others, and lists Hotel Skeppsholmen and Panasonic Connect as partners, without years or amounts (museum website).",
+  "after": "- The museum's support page shows logos of the sponsors Bank of America, Jung and Patriksson and lists Hotel Skeppsholmen and Panasonic Connect as partners (museum website).",
+  "sources": [
+   "https://www.modernamuseet.se/en/stockholm/about/support/"
+  ],
+  "reason": "On the opened page Bloomberg and PwC are identified only by image file names, and two logos have no name, so they are cut; Bank of America (logo alt text and the annual report), Jung and Patriksson (alt text) stay as a listing."
+ },
+ {
+  "id": "moderna-museet",
+  "section": "CRITICISM",
+  "problems": [
+   "'attributes to renovation' stronger than the source",
+   "date missing"
+  ],
+  "before": "1. Kunstkritikk: Frans Josef Petersson, \"The Swedish Art Spring\" (2024)",
+  "after": "1. Kunstkritikk: Frans Josef Petersson, \"The Swedish Art Spring\" (22 January 2024)",
+  "sources": [
+   "https://kunstkritikk.com/the-swedish-art-spring"
+  ],
+  "reason": "Date from the opened page."
+ },
+ {
+  "id": "moderna-museet",
+  "section": "CRITICISM",
+  "problems": [
+   "'attributes' / certainty"
+  ],
+  "before": "- Says Moderna Museet's Stockholm programming is weak, which he attributes to renovation, and asks whether it still plays its former leading role.",
+  "after": "- Calls the museum's spring programming weak, \"supposedly due to an ongoing renovation of the building\", and asks where the Moderna of old has gone.",
+  "sources": [
+   "https://kunstkritikk.com/the-swedish-art-spring"
+  ],
+  "reason": "Wording follows the page: the cause is given as 'supposedly'."
+ },
+ {
+  "id": "moderna-museet",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "cut: relies on Bloomberg being a sponsor, identified only by a logo file name",
+   "New Arab article does not mention Moderna Museet"
+  ],
+  "before": "WIDER CONTEXT\n- The New Arab (29 May 2026): more than 260 UK artists signed an open letter asking the National Theatre, the Royal Shakespeare Company, the Young Vic, the Royal Court and the Almeida to end their partnerships with Bloomberg Philanthropies, citing its funding of the Bloomberg-Sagol Center for City Leadership at Tel Aviv University and its Regional Recovery and Repair Initiative. The article does not mention Moderna Museet.\n- Connection: Bloomberg is among the sponsors on the museum's support page, with no year or amount given.",
+  "after": "",
+  "sources": [
+   "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg",
+   "https://www.modernamuseet.se/en/stockholm/about/support/"
+  ],
+  "reason": "The only link to Moderna Museet was Bloomberg's logo on the support page, named only by its image file name; with that funder cut, the piece (The New Arab staff, 'Over 260 UK artists urge theatres to end ties with Bloomberg Philanthropies over Israel', 29 May 2026) does not connect to the museum, and the heading is deleted."
+ },
+ {
+  "id": "moderna-museet",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "funder known only from a logo file name"
+  ],
+  "before": "Corporate sponsorship and barter totalled 2.7 million SEK, and the named sponsors include Bank of America, whose conservation project pays for work on Tinguely's Le Paradis Fantastique, and Bloomberg.",
+  "after": "Corporate sponsorship and barter totalled 2.7 million SEK, and the named sponsors include Bank of America, whose conservation project pays for work on Tinguely's Le Paradis Fantastique.",
+  "sources": [
+   "https://www.modernamuseet.se/app/uploads/2026/06/Moderna-Museet-Arsredovisning-2025.pdf"
+  ],
+  "reason": "Bloomberg cut."
+ },
+ {
+  "id": "moderna-museet",
+  "section": "SOURCES",
+  "problems": [
+   "source no longer used"
+  ],
+  "before": "- https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg",
+  "after": "",
+  "sources": [
+   "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg"
+  ],
+  "reason": "The New Arab piece is no longer cited."
+ },
+ {
+  "id": "momus-thessaloniki",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: card price labelling"
+  ],
+  "before": "A myMOMus Card for all venues costs 24 euros, 12 reduced; the Museum of Contemporary Art is free to enter; reduced rates apply to students, visitors aged 12 to 25 and over-65s (MOMus website).",
+  "after": "A myMOMus Card gives access to all venues for six months from the first visit; the Museum of Contemporary Art is free to enter; reduced rates apply to students, visitors aged 12 to 25 and over-65s (MOMus website).",
+  "sources": [
+   "https://www.momus.gr/en/visit"
+  ],
+  "reason": "The visit page lists 24.00 and 12.00 euros without labelling them clearly as the card price."
+ },
+ {
+  "id": "momus-thessaloniki",
+  "section": "OVERVIEW",
+  "problems": [
+   "source: November 2018 is on the MOMus home page, not the Wikipedia cite"
+  ],
+  "before": "- Four museums in Thessaloniki and one in Athens joined in November 2018 as a single public cultural organisation (MOMus website).",
+  "after": "- Four museums in Thessaloniki and one in Athens joined forces in November 2018 to form MOMus (MOMus website).",
+  "sources": [
+   "https://www.momus.gr"
+  ],
+  "reason": "Wording follows the home page."
+ },
+ {
+  "id": "momus-thessaloniki",
+  "section": "FUNDING",
+  "problems": [
+   "misattributed: TIF 'largest sponsor' said by the museum's president, not in.gr's own voice"
+  ],
+  "before": "- Thessaloniki International Fair (TIF): the contemporary art museum described by in.gr, whose collections come from the former Macedonian Museum of Contemporary Art and State Museum of Contemporary Art, has been housed in the TIF exhibition centre since 1992, and TIF is described as its largest sponsor (in.gr, 11 September 2021).",
+  "after": "- Thessaloniki International Fair (TIF): the museum has been housed in the TIF exhibition centre since 1992, and its president, Xanthippi Heupel, said TIF \"has been and remains the largest sponsor in the history of the museum\" (in.gr, 11 September 2021).",
+  "sources": [
+   "https://www.in.gr/2021/09/11/english-edition/momus-museum-lives-rhythm-thessaloniki-international-fair/"
+  ],
+  "reason": "The in.gr article quotes the museum's president."
+ },
+ {
+  "id": "momus-thessaloniki",
+  "section": "FUNDING",
+  "problems": [
+   "wording"
+  ],
+  "before": "- Subsidy: in 2017 the Ministry of Culture announced an annual subsidy of about 1.2 million euros for the new body (Greek Travel Pages, 21 April 2017).",
+  "after": "- Subsidy: in April 2017 Culture Minister Lydia Koniordou said the ministry would subsidise the new body with about 1.2 million euros a year (Greek Travel Pages, GTP editing team, 21 April 2017).",
+  "sources": [
+   "https://news.gtp.gr/2017/04/21/new-thessaloniki-museum-body-momus-first-steps/"
+  ],
+  "reason": "Attribution to the minister and the date follow the page."
+ },
+ {
+  "id": "momus-thessaloniki",
+  "section": "FUNDING",
+  "problems": [
+   "wording: grant years"
+  ],
+  "before": "- Acquisitions: a three-year ministry grant of 240,000 euros, extending an emergency grant of 80,000 euros a year from 2020 to cover 2021 and 2022, bought 45 new works for the Museum of Contemporary Art and the Museum of Photography (Naftemporiki, 27 June 2021).",
+  "after": "- Acquisitions: a three-year ministry grant of 240,000 euros, 80,000 euros a year, extended the emergency grant received in 2020 to cover 2021 and 2022 and bought 45 new works for the Museum of Contemporary Art and the Museum of Photography (Naftemporiki, 27 June 2021; title translated).",
+  "sources": [
+   "https://www.naftemporiki.gr/culture/738987/yppoa-240-000-evro-gia-tin-agora-neon-ergon-apo-to-momus/"
+  ],
+  "reason": "Follows the article."
+ },
+ {
+  "id": "momus-thessaloniki",
+  "section": "FUNDING",
+  "problems": [
+   "wording"
+  ],
+  "before": "announced by Deputy Culture Minister Christos Dimas (To Vima, 21 January 2024).",
+  "after": "announced by Deputy Culture Minister Christos Dimas (To Vima, tovima.com newsroom, 21 January 2024).",
+  "sources": [
+   "https://tovima.com/culture/momus-to-be-upgraded-through-the-recovery-resilience-fund/amp"
+  ],
+  "reason": "No named author on the page."
+ },
+ {
+  "id": "modern-art-museum-of-yerevan-yerevan",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported verdict 'mainly public'"
+  ],
+  "before": "Modern Art Museum of Yerevan: mainly public: Yerevan municipality, plus artists' gifts and private donors",
+  "after": "Modern Art Museum of Yerevan: municipal museum with artists' gifts and private donors",
+  "sources": [
+   "https://www.yerevan.am/en/allmuseums/museums/",
+   "https://www.yerevan.am/en/news/bats-vel-e-zhamanakakits-arvesti-t-angarani-50-amyakin-nvirvats-ts-owts-ahandese/"
+  ],
+  "reason": "The municipality's pages list the museum and a 2022 exhibition it supported; no page gives a funding share."
+ },
+ {
+  "id": "modern-art-museum-of-yerevan-yerevan",
+  "section": "OVERVIEW",
+  "problems": [
+   "quote context: Kamensky"
+  ],
+  "before": "- The museum's own history says the founders had \"neither a building for exhibitions nor funds to buy artists' works\", quoting the art historian Alexander Kamensky (1979).",
+  "after": "- The museum's own history quotes the art historian Alexander Kamensky (1979): the initiators had \"neither a building for exhibitions nor funds to buy artists' works\".",
+  "sources": [
+   "https://mamy.am/en/mer-masin/"
+  ],
+  "reason": "Quotation attributed to Kamensky as on the page."
+ },
+ {
+  "id": "modern-art-museum-of-yerevan-yerevan",
+  "section": "FUNDING",
+  "problems": [
+   "wording: 'helped secure'"
+  ],
+  "before": "benefactor Grigor Muradyan helped secure works by Emil Kazaz in 2004",
+  "after": "benefactor Grigor Muradyan brought works by Emil Kazaz in 2004",
+  "sources": [
+   "https://mamy.am/en/mer-masin/"
+  ],
+  "reason": "The page says he brought the works."
+ },
+ {
+  "id": "modern-art-museum-of-yerevan-yerevan",
+  "section": "FUNDING",
+  "problems": [
+   "wording"
+  ],
+  "before": "In 2022 the municipality and Eduardo Ernekyan, named as a National Hero of Armenia, supported the 50th anniversary exhibition",
+  "after": "In June 2022 Yerevan Municipality and Eduardo Ernekyan, named as a National Hero of Armenia, supported the 50th anniversary exhibition",
+  "sources": [
+   "https://www.yerevan.am/en/news/bats-vel-e-zhamanakakits-arvesti-t-angarani-50-amyakin-nvirvats-ts-owts-ahandese/"
+  ],
+  "reason": "Page dated 16 June 2022."
+ },
+ {
+  "id": "modern-art-museum-of-yerevan-yerevan",
+  "section": "OVERVIEW",
+  "problems": [
+   "attribution: claim is the museum's own, repeated in the municipality's list"
+  ],
+  "before": "- Described by the Yerevan municipality as the first modern art museum in the former Soviet Union; its first exhibition was made up of works donated by 1960s artists living in Armenia and the diaspora (museum website).",
+  "after": "- The museum states that it was the first modern art museum in the former Soviet Union (museum website, Yerevan municipality museum list). Its first exhibition consisted entirely of works by Armenian artists of the 1960s, living in Armenia and the diaspora, who gave their works to the museum (museum website).",
+  "sources": [
+   "https://mamy.am/en/mer-masin/",
+   "https://www.yerevan.am/en/allmuseums/museums/"
+  ],
+  "reason": "Both pages carry the museum's own claim."
+ },
+ {
+  "id": "modern-art-museum-of-yerevan-yerevan",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'gifts from artists abroad'"
+  ],
+  "before": "and later gifts from artists abroad (museum website).",
+  "after": "and later works by foreign artists (museum website).",
+  "sources": [
+   "https://mamy.am/en/mer-masin/"
+  ],
+  "reason": "The page names works by foreign artists, brought by a benefactor and a donor."
+ },
+ {
+  "id": "montresso-art-foundation-jardin-rouge-marrakech",
+  "section": "OVERVIEW",
+  "problems": [
+   "date: 'about 80 by early 2020'"
+  ],
+  "before": "about thirty artists of various nationalities are hosted each year, and about 80 had been hosted by early 2020 (Arterritory).",
+  "after": "about thirty artists of various nationalities are hosted each year, and eighty had been hosted in total by the time of the February 2020 interview (Arterritory).",
+  "sources": [
+   "https://arterritory.com/en/conversations_with-collectors/conversations_with-collectors/24571-the_oasis_encouraging_artists_to_step_out_of_their_creative_comfort_zones/"
+  ],
+  "reason": "The article says eighty in total."
+ },
+ {
+  "id": "montresso-art-foundation-jardin-rouge-marrakech",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'artists are invited back to continue their work'",
+   "unsupported: two-year acquisition offer and price split"
+  ],
+  "before": "The residency is open to painters, photographers and sculptors from anywhere; stays last from one month to 90 days, and artists are invited back to continue their work (ONArt, 20 November 2022).\n- Selected artists get accommodation, meals, an individual workshop, equipment and transport; works made during the residency are offered for acquisition within the foundation's spaces for two years, with the sale price split between the artist and the foundation under an agreement (TransArtists).\n- The site is closed to spontaneous visits and open to visitors by appointment (Arterritory, TransArtists).",
+  "after": "The residency is open to painters, photographers and sculptors from anywhere in the world; stays last from one month to 90 days (ONArt, 20 November 2022).\n- Selected artists get accommodation, meals, an individual workshop, equipment and transport; in agreement with the artist, a selection of works made during the residency is offered for purchase (TransArtists).\n- Visits are by appointment (Arterritory, TransArtists).",
+  "sources": [
+   "https://transartists.org/en/air/fondation-montresso",
+   "https://www.onart.media/?p=9266",
+   "https://arterritory.com/en/conversations_with-collectors/conversations_with-collectors/24571-the_oasis_encouraging_artists_to_step_out_of_their_creative_comfort_zones/"
+  ],
+  "reason": "Neither TransArtists nor the other opened pages give a two-year offer, a price split or invitations back; the TransArtists text says works are offered for purchase in agreement with the artist. Arterritory says visits are by prior reservation and TransArtists says by appointment."
+ },
+ {
+  "id": "montresso-art-foundation-jardin-rouge-marrakech",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'funded by' the collector",
+   "verdict"
+  ],
+  "before": "Montresso Art Foundation (Jardin Rouge): private: the foundation of the collector Jean-Louis Haguenauer",
+  "after": "Montresso Art Foundation (Jardin Rouge): private: a private initiative of the collector Jean-Louis Haguenauer",
+  "sources": [
+   "https://arterritory.com/en/conversations_with-collectors/conversations_with-collectors/24571-the_oasis_encouraging_artists_to_step_out_of_their_creative_comfort_zones/"
+  ],
+  "reason": "Arterritory calls Jardin Rouge a private initiative of Haguenauer; it does not say who pays for it."
+ },
+ {
+  "id": "montresso-art-foundation-jardin-rouge-marrakech",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: sale split with buyers; two-year"
+  ],
+  "before": "- Sale of residency works to the foundation or buyers is shared between the artist and the foundation (TransArtists).",
+  "after": "",
+  "sources": [
+   "https://transartists.org/en/air/fondation-montresso"
+  ],
+  "reason": "TransArtists does not state a split."
+ },
+ {
+  "id": "montresso-art-foundation-jardin-rouge-marrakech",
+  "section": "FUNDING",
+  "problems": [
+   "wording"
+  ],
+  "before": "- The foundation funds the production of each approved residency project and covers transport, accommodation, meals, equipment and the individual workshop (TransArtists, ONArt).",
+  "after": "- The foundation funds the production of the artistic project approved by the selection committee and covers transport, individual accommodation, meals, equipment and an individual workshop (TransArtists); ONArt says the foundation finances the artist's production.",
+  "sources": [
+   "https://transartists.org/en/air/fondation-montresso",
+   "https://www.onart.media/?p=9266"
+  ],
+  "reason": "Follows the pages."
+ },
+ {
+  "id": "montresso-art-foundation-jardin-rouge-marrakech",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'privately funded'"
+  ],
+  "before": "Montresso is a privately funded residency run by the foundation of the collector Jean-Louis Haguenauer, who bought the land in 2002 and opened Jardin Rouge in 2009. The foundation pays for residents' production and living costs.",
+  "after": "Montresso is a private initiative of the collector Jean-Louis Haguenauer, who bought the land in 2002 and opened Jardin Rouge in 2009, according to Arterritory. The foundation pays for residents' production, transport, accommodation and meals.",
+  "sources": [
+   "https://arterritory.com/en/conversations_with-collectors/conversations_with-collectors/24571-the_oasis_encouraging_artists_to_step_out_of_their_creative_comfort_zones/",
+   "https://transartists.org/en/air/fondation-montresso"
+  ],
+  "reason": "Arterritory states the private initiative, not the source of the money."
+ },
+ {
+  "id": "morgan-library-museum-new-york",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'founding money was J. P. Morgan's banking fortune'"
+  ],
+  "before": "The Morgan is financed by the 1924 Morgan family endowment, later gifts such as the Thaw and Rayner gifts, and $29.0 million in contributions in the year to March 2025. The founding money was J. P. Morgan's banking fortune, and the institution's net assets were $426 million at that date.",
+  "after": "The Morgan is financed by the 1924 endowment of $1.5 million announced by Jack Morgan, later gifts such as the Thaw and Rayner gifts, and $29.0 million in contributions in the year to March 2025 (Form 990). Its net assets were $426.4 million at 31 March 2025 per the Form 990.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Morgan_Library_%26_Museum",
+   "https://projects.propublica.org/nonprofits/organizations/131624146"
+  ],
+  "reason": "Wikipedia says Jack Morgan, J. P. Morgan's son, announced the endowment; no page says the endowment came from a banking fortune. ProPublica gives net assets of $426,442,469 for the fiscal year ending March 2025."
+ },
+ {
+  "id": "morgan-library-museum-new-york",
+  "section": "FUNDING",
+  "problems": [
+   "wording"
+  ],
+  "before": "- The 1924 endowment of $1.5 million came from Jack Morgan; the Fellows group was formed in 1949 to raise funds (Wikipedia).",
+  "after": "- Jack Morgan, J. P. Morgan's son, announced a $1.5 million endowment for the library when it became a public institution in 1924; the Fellows group was formed in 1949 to raise funds for the collections (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Morgan_Library_%26_Museum"
+  ],
+  "reason": "Follows the page."
+ },
+ {
+  "id": "morgan-library-museum-new-york",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "precision"
+  ],
+  "before": "at 31 March 2025 per the Form 990.",
+  "after": "at the end of the fiscal year ending March 2025 (Form 990).",
+  "sources": [],
+  "reason": "ProPublica gives the fiscal year, not the day."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: independence date"
+  ],
+  "before": "since January 2026 an independent organisation and separate legal entity (A.M. Qattan Foundation, 15 January 2026).",
+  "after": "on 15 January 2026 the A.M. Qattan Foundation announced that it would operate as an independent organisation and a legal entity distinct from the foundation (A.M. Qattan Foundation).",
+  "sources": [
+   "https://qattanfoundation.org/en/mosaic-rooms-embarks-exciting-new-chapter-independent-organisation"
+  ],
+  "reason": "The page is dated 15 January 2026 and gives no effective date."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'It has shown artists ...'"
+  ],
+  "before": "- It has shown artists from the Arab region including Heba Y. Amin, Sandi Hilal and Alessandro Petti, and Mohammed Omar Khalil (The Art Newspaper, Melissa Gronlund, 11 February 2026).",
+  "after": "",
+  "sources": [
+   "https://www.theartnewspaper.com/2026/02/11/londons-mosaic-rooms-art-arab-region-reopens-after-expansion"
+  ],
+  "reason": "The Art Newspaper mentions these artists but not in a way that shows a past exhibition at the space; cut."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'which dismissed her ... after the university postponed a film screening she had planned'"
+  ],
+  "before": "which dismissed her in late 2024 after the university postponed a film screening she had planned (The Art Newspaper; The Link, 16 September 2025).",
+  "after": "which dismissed her in late 2024 after less than six months. The Art Newspaper reports that local media linked the dismissal to her support for Palestine and that the university said it could not discuss employee matters. The Link (Maria Cholakova, 16 September 2025) reports that on 10 October 2024 Concordia's Campus Safety and Prevention Services postponed a screening scheduled by the gallery and a partner group, and that five advisory council members resigned in January 2025.",
+  "sources": [
+   "https://www.theartnewspaper.com/2026/02/11/londons-mosaic-rooms-art-arab-region-reopens-after-expansion",
+   "https://thelinknewspaper.ca/article/15878"
+  ],
+  "reason": "The Link does not say Day planned the screening or that the university decided the dismissal; both are cut and the pages' statements are given with their sources."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "FUNDING",
+  "problems": [
+   "wording",
+   "continues to support"
+  ],
+  "before": "- The Al-Qattan Charitable Trust, the foundation's largest donor, paid for the year-long refurbishment, and continues to support the Mosaic Rooms (The Art Newspaper; Mosaic Rooms website).",
+  "after": "- The Al-Qattan Charitable Trust, the foundation's largest donor, paid for the year-long refurbishment (The Art Newspaper). The Mosaic Rooms website says it \"is generously supported by Al-Qattan Charitable Trust\".",
+  "sources": [
+   "https://www.theartnewspaper.com/2026/02/11/londons-mosaic-rooms-art-arab-region-reopens-after-expansion",
+   "https://www.mosaicrooms.org/support-us"
+  ],
+  "reason": "Both statements are on the opened pages."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "FUNDING",
+  "problems": [
+   "attribution"
+  ],
+  "before": "- The Qattan family money: Abdel Mohsin Al-Qattan, founder of the A.M. Qattan Foundation, joined the Kuwaiti government as a senior manager and later founded a construction company; his son Omar al-Qattan has been deputy chair of the family firm, Al-Hani Construction and Trading, since 2005 (Wikipedia).",
+  "after": "- The Qattan family money: Wikipedia's article on Omar al-Qattan says his father Abdel Mohsin Al-Qattan first joined the Kuwaiti government as a senior manager and later founded a construction company, and that Omar has been deputy chair of the family firm, Al-Hani Construction and Trading, since 2005.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Omar_al-Qattan"
+  ],
+  "reason": "Wikipedia's page on the foundation does not mention construction; the claim is from the page on Omar al-Qattan."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "attribution to Wikipedia"
+  ],
+  "before": "The family's money comes from a Kuwaiti construction company founded by Abdel Mohsin Al-Qattan.",
+  "after": "According to Wikipedia, the family's money comes from a Kuwaiti construction company founded by Abdel Mohsin Al-Qattan.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Omar_al-Qattan"
+  ],
+  "reason": "Wikipedia-only claim attributed."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "wording"
+  ],
+  "before": "The Mosaic Rooms was paid for entirely by the A.M. Qattan Foundation until 2026,",
+  "after": "The Art Newspaper reports that the A.M. Qattan Foundation fully funded the Mosaic Rooms to date, and",
+  "sources": [
+   "https://www.theartnewspaper.com/2026/02/11/londons-mosaic-rooms-art-arab-region-reopens-after-expansion"
+  ],
+  "reason": "Follows the page."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "typo"
+  ],
+  "before": "Mosaic Rooms to date, and and the Al-Qattan",
+  "after": "Mosaic Rooms to date, and the Al-Qattan",
+  "sources": [],
+  "reason": "Typo."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "FUNDING",
+  "problems": [
+   "attribution: who states the aim"
+  ],
+  "before": "the stated aim is to make it a public institution belonging to London rather than to the family (The Art Newspaper).",
+  "after": "director Pip Day says the goal was to transition into a public institution that belongs to London rather than to the family (The Art Newspaper).",
+  "sources": [
+   "https://www.theartnewspaper.com/2026/02/11/londons-mosaic-rooms-art-arab-region-reopens-after-expansion"
+  ],
+  "reason": "The quotation is Day's."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "section": "SOURCES",
+  "problems": [
+   "unused source"
+  ],
+  "before": "- https://en.wikipedia.org/wiki/A._M._Qattan_Foundation",
+  "after": "",
+  "sources": [],
+  "reason": "The foundation's Wikipedia page does not mention construction or the trust; it supports none of the report's claims."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "FUNDING",
+  "problems": [
+   "filler: 'among others'"
+  ],
+  "before": "grants lists, among others: 200,000 PLN",
+  "after": "grants includes 200,000 PLN",
+  "sources": [],
+  "reason": "Filler cut."
+ },
+ {
+  "id": "modern-art-museum-of-fort-worth-fort-worth",
+  "section": "RED FLAGS",
+  "problems": [
+   "hedging-style: 'alleged'"
+  ],
+  "before": "reports that a complaint alleged the images show naked children and could be seen as pornographic,",
+  "after": "reports that a complaint said the images show naked children and could be seen as pornographic,",
+  "sources": [],
+  "reason": "Plain verb."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "The Art Newspaper; Zachary Small; \"Michael Rakowitz wants to pause his video work at MoMA PS1 as a protest against museum's ties to 'toxic philanthropy'\"; 2 December 2019. Epstein not mentioned.",
+  "sources": [
+   "https://www.theartnewspaper.com/news/michael-rakowitz-says-moma-ps1-curators-repeatedly-denied-his-requests-to-pause-video-work-in-gulf-war-exhibition-as-a-protest-of-moma-trustees"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Hyperallergic; Hakim Bishara; \"Protesters Occupy MoMA PS1, Calling Museum 'Complicit in Global Violence'\"; 2 March 2020 (action on 1 March 2020). Epstein not mentioned.",
+  "sources": [
+   "https://hyperallergic.com/protesters-occupy-moma-ps1-calling-museum-complicit-in-global-violence"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "The Art Newspaper (Wider context); Carlie Porterfield; \"US Senator calls for investigation into MoMA trustee Leon Black's business ties to Jeffrey Epstein\"; 19 August 2025. Does not mention PS1; calls Glenn Dubin another billionaire client of Epstein's.",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "moma-ps1",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Hyperallergic (cited in Red flags); Jasmine Weber; \"Week in Review: Artists Confront MoMA PS1 Trustees; Museum Director Pushed Out After Harassment Allegations\"; 17 January 2020.",
+  "sources": [
+   "https://hyperallergic.com/week-in-review-artists-confront-moma-ps1-trustees-museum-director-pushed-out-after-harassment-allegations.md"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "ArtReview; no named author; \"Khaled Sabsabi exhibition cancelled following Venice Biennale sacking\"; 26 March 2025.",
+  "sources": [
+   "https://artreview.com/khaled-sabsabi-exhibition-cancelled-following-venice-biennale-sacking-monash-university"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Hyperallergic; Maya Pontone; \"Australian University Scraps Show Featuring Work of Lebanese-Born Artist\"; 26 March 2025, updated 27 March 2025.",
+  "sources": [
+   "https://hyperallergic.com/australian-university-scraps-show-featuring-work-of-lebanese-born-artist"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Visual Arts Australia (NAVA); Penelope Benton and Ben Eltham; \"Monash University's postponement of exhibition featuring Khaled Sabsabi undermines artistic and academic freedom\"; 27 March 2025.",
+  "sources": [
+   "https://visualarts.net.au/news-opinion/2025/monash-universitys-postponement-exhibition-featuring-khaled-sabsabi-undermines-artistic-and-academic-freedom/"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "ABC (cited in Red flags); Nicola Heath and Daniel Browning; \"Monash University indefinitely postpones MUMA exhibition featuring Khaled Sabsabi's work\"; 26 March 2025, updated 27 March 2025.",
+  "sources": [
+   "https://www.abc.net.au/news/2025-03-26/artist-khaled-sabsabi-muma-exhibition-postponed/105096590"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "moderna-galerija-ljubljana",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Apollo; Dorian Batycka; \"Concerns rise about cultural freedom in Slovenia\"; 23 December 2020.",
+  "sources": [
+   "https://apollo-magazine.com/slovenia-arts-government/"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "moderna-galerija-ljubljana",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "CIMAM; Museum Watch Committee introduction; staff letter of 8 March 2022; unsigned context text; \"A Courageous Action by the staff of Moderna galerija, Ljubljana\"; posted 10 March 2022.",
+  "sources": [
+   "https://cimam.org/museum-watch/museum-watch-actions/a-courageous-action-by-the-staff-of-moderna-galerija-ljubljana/"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "mocak-kraków",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "ArtReview; no named author; \"Adam Budak dismissed as director of MOCAK amid controversy\"; 18 May 2026. Does not mention Potocka; her dismissal is attributed to Wikipedia.",
+  "sources": [
+   "https://artreview.com/adam-budak-dismissed-as-director-of-mocak-amid-controversy/"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Artscape Japan; Lucy Birmingham; \"Art Censorship: Whose Problem Is This?\"; 2015 (no date printed; reviews shows of 25 July to 12 October 2015).",
+  "sources": [
+   "https://artscape.jp/artscape/eng/focus/1509_01.html"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "mori-art-museum",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Tokyo Art Beat; William Andrews; \"Getting Down to Business\"; 19 November 2011.",
+  "sources": [
+   "https://tokyoartbeat.com/en/articles/-/getting-down-to-business"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ },
+ {
+  "id": "moderna-museet",
+  "section": "PRESS ITEM KEPT",
+  "problems": [],
+  "before": "",
+  "after": "Kunstkritikk; Frans Josef Petersson; \"The Swedish Art Spring\"; 22 January 2024.",
+  "sources": [
+   "https://kunstkritikk.com/the-swedish-art-spring"
+  ],
+  "reason": "Opened; title, author and date confirmed on the page."
+ }
+]

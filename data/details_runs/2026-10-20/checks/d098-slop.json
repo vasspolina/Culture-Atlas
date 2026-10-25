@@ -1,0 +1,292 @@
+[
+ {
+  "id": "wadsworth-atheneum-museum-of-art-hartford",
+  "section": "Red flags",
+  "problems": [
+   "heading 'small donor' is a verdict",
+   "flag basis stated thinly"
+  ],
+  "before": "Red flags: fossil fuels, small donor\n- Viking Fuel Oil Company, Inc. is on the FY2024 philanthropy list in the $500 to $1,499 tier (annual report FY2024).",
+  "after": "Red flags: fossil fuels\n- Viking Fuel Oil Company, Inc. is on the FY2024 philanthropy list in the $1,499 to $500 tier (annual report FY2024). A Viking Fuel Oil Company at 10 Crossroads Plaza, West Hartford, is listed as delivering home heating oil and on- and off-road diesel and as in the fuel oil business since 1933 (OilMonster directory).",
+  "sources": [
+   "http://web.archive.org/web/20241118203019/https://www.thewadsworth.org/annual-reports/annual-report-2024/fy24-philanthropy/",
+   "https://www.oilmonster.com/company/viking-fuel-oil-company/64874"
+  ],
+  "reason": "KEPT as a Fossil fuels flag. Decided by the archived FY2024 philanthropy list (entry 'Viking Fuel Oil Company, Inc.' under the heading $1,499 - $500, a dated donor list with a tier) and the OilMonster page (heating oil and diesel dealer, a fuel retailer, not an oil-industry contractor). Funder is current (FY2024). The House rules set no amount floor, so the flag stays; the wording states the tier exactly. The identity match rests on the identical name and the Hartford area."
+ },
+ {
+  "id": "wadsworth-atheneum-museum-of-art-hartford",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "verdict 'Hartford insurers and banks' not stated on an opened page",
+   "'banker' Frank Sumner not on page",
+   "'Hartford foundations' descriptor",
+   "'lowest listed tier'"
+  ],
+  "before": "Wadsworth Atheneum Museum of Art: private and corporate philanthropy: foundations, Hartford insurers and banks, estates, with a state grant / A $1 million bequest from the banker Frank Sumner in 1927",
+  "after": "...foundations, companies, estates and individuals, with Connecticut state support / Frank Sumner's 1927 bequest of $1 million established an acquisitions endowment (Wikipedia). Added: Sustaining support line from Exhibitions & Sponsors page.",
+  "sources": [
+   "http://web.archive.org/web/20241119144748/https://www.thewadsworth.org/annual-reports/annual-report-2024/exhibitions-sponsors/",
+   "https://en.wikipedia.org/wiki/Wadsworth_Atheneum",
+   "https://projects.propublica.org/nonprofits/organizations/60653111"
+  ],
+  "reason": "Confirmed on opened pages: Travelers, Hartford Foundation for Public Giving, CT DECD and Art Bridges in the $50,000+ tier; The Hartford at $25,000 to $49,999; Henkel, Lincoln Financial Foundation, Stanley Black & Decker, Consigli, Connecticut Humanities at $10,000 to $24,999; corporate members; Styling Identities sponsors; ProPublica FY2025 revenue $10,554,764, expenses $19,280,762, contributions $5,258,779 (49.8%). Overview facts (78 paintings, Daniel Wadsworth site, 1842/1844, 50,000 objects, $33 million, 1970 NRHP) confirmed on Wikipedia; 'continuously' changed to the page's 'continually' and 'first collection came from the family' cut back to the page's wording. Website line 'checked' removed."
+ },
+ {
+  "id": "ujazdowski-castle-cca-warsaw",
+  "section": "Funding",
+  "problems": [
+   "verdict 'mainly public' not stated on an opened page",
+   "partner and sponsor pages name no funder"
+  ],
+  "before": "Ujazdowski Castle CCA: mainly public: a state cultural institution whose director is appointed by the Minister of Culture and National Heritage / The website links to a page of projects co-financed by the European Union, and to partner and sponsor pages.",
+  "after": "public cultural institution whose director is appointed by the Minister of Culture and National Heritage; CIMAM (27 November 2019) and dzieje.pl (19 November 2024, Minister Wróblewska announced a director competition); page headed 'Projects co-financed by the European Union'.",
+  "sources": [
+   "https://cimam.org/news-archive/key-institution-polish-cultural-heritage-post-cold-war-era-under-threat/",
+   "https://dzieje.pl/mkidn-oglosilo-konkurs-na-dyrektora-centrum-sztuki-wspolczesnej-zamek-ujazdowski",
+   "https://u-jazdowski.pl/en"
+  ],
+  "reason": "No opened page states a subsidy or that the Ministry funds the Centre; CIMAM calls it a public cultural institution and says the Minister appointed the director. The funding claim is therefore limited to what pages show."
+ },
+ {
+  "id": "ujazdowski-castle-cca-warsaw",
+  "section": "Red flags",
+  "problems": [
+   "'undue political interference' attributed to critics: Kunstkritikk says the government was accused, accuser unnamed",
+   "CIMAM 'stating that the appointment followed the regulations' misstated: CIMAM says the Ministry did not break existing rules",
+   "dates and who petitioned incomplete",
+   "Anti-fascist Year cancellation lacked its date"
+  ],
+  "before": "March 2020: Kunstkritikk reported cancellation of the PTV performance programme, a Miet Warlop exhibition with Kunst-Werke Berlin and the Anti-fascist Year collaboration, and budget cuts to the journal Obieg. / critics saw undue political interference",
+  "after": "16 March 2020 (Kunstkritikk, Robert Stasinski): the Ministry hand-picked Bernatowicz; PTV: Performance TV and a Miet Warlop exhibition produced with Kunst-Werke Berlin were cancelled, linked by the article to the new management and budget cuts, which also hit Obieg; the Anti-fascist Year collaboration was cancelled after an 11 February 2020 seminar. Petition counts, signatories (Esche, Tokarczuk, Lippard, Foster), the two unions (44 staff), CIMAM 27 November 2019 stated with dates.",
+  "sources": [
+   "https://hyperallergic.com/polish-art-community-petition",
+   "https://kunstkritikk.com/?p=156092",
+   "https://cimam.org/news-archive/key-institution-polish-cultural-heritage-post-cold-war-era-under-threat/"
+  ],
+  "reason": "KEPT as Protest: a petition (over 2,500 Polish and over 1,200 English signatures, Hyperallergic 6 November 2019), two unions' formal opposition and a CIMAM Museum Watch Committee statement were aimed at the Minister's appointment of the director of the institution the Minister controls. Kunstkritikk (16 March 2020) does not say who decided the Anti-fascist Year cancellation; the text states only what the page shows."
+ },
+ {
+  "id": "ujazdowski-castle-cca-warsaw",
+  "section": "Criticism in art media",
+  "problems": [
+   "dates missing",
+   "'Controversial' kept only inside the exact Hyperallergic title",
+   "Kunstkritikk 'critics saw undue political interference' misattributed",
+   "Strategies of Rebellion described without gallery and year",
+   "CIMAM item had no title"
+  ],
+  "before": "1. Hyperallergic: ... (2019) / 2. Kunstkritikk: ... (2020) / 3. CIMAM: Museum Watch Committee ... statement on the Centre (2019)",
+  "after": "1. Hyperallergic: Dorian Batycka, 'Polish Art Community Rebuffs Ministry of Culture's Controversial Choice for a Museum Director' (6 November 2019) / 2. Kunstkritikk: Robert Stasinski, 'Ujazdowski Castle Takes a Right-Wing Turn' (16 March 2020) / 3. CIMAM: Museum Watch Committee of the CIMAM Board, 'A key institution for Polish cultural heritage of post-Cold War era under threat' (27 November 2019)",
+  "sources": [
+   "https://hyperallergic.com/polish-art-community-petition",
+   "https://kunstkritikk.com/?p=156092",
+   "https://cimam.org/news-archive/key-institution-polish-cultural-heritage-post-cold-war-era-under-threat/"
+  ],
+  "reason": "All three pages opened; titles, authors and dates confirmed and all name the Centre. Bernatowicz's New York Times line dropped to bring the report under 800 words (now 785). Overview: reconstruction approved 1975 (Wikipedia); Bernatowicz 'appointed by Gliński for seven-year term' reworded to the Ministry picking him (Kunstkritikk) with Gliński's stated preference in Hyperallergic; Website line 'checked' removed."
+ },
+ {
+  "id": "ural-industrial-biennial-of-contemporary-art-yekaterinburg",
+  "section": "Red flags",
+  "problems": [
+   "'asking organisers not to work with Yekaterinburg Circus over treatment of circus animals' put the letter's reason in the signatories' mouth",
+   "'wanted to examine the circus as a problematic cultural space' paraphrase not on page",
+   "target (biennial vs city) not stated",
+   "no date for Goroshenina beyond 'late July'"
+  ],
+  "before": "August 2021: artists, activists and cultural workers signed an open letter ... asking the organisers not to work with the Yekaterinburg Circus over the treatment of circus animals. The circus was one of the main project's venues ... they oppose violence against animals and wanted to examine the circus as a problematic cultural space",
+  "after": "24 August 2021 (The Blueprint): ... open letter with more than 300 signatures asking the biennial's organisers not to work with a circus. The letter was aimed at the biennial's choice of the Yekaterinburg Circus as one of its venues, not at the city. Organisers' Instagram reply quoted: 'exploitation and cruel treatment of circus animals in Russia', 'an ambiguous and in its own way problematic place' (title and quotations translated).",
+  "sources": [
+   "https://theblueprint.ru/news/22415"
+  ],
+  "reason": "KEPT as Protest: the open letter (more than 300 signatures) and the artist's withdrawal target the biennial's choice of venue. The page does not say who wrote the letter beyond artists, activists and cultural workers as signatories, so the report says only that."
+ },
+ {
+  "id": "ural-industrial-biennial-of-contemporary-art-yekaterinburg",
+  "section": "Overview",
+  "problems": [
+   "Prudnikova given as director of NCCA Ekaterinburg branch: no opened page states the title",
+   "'regional culture department' not as the page says",
+   "ROSIZO phrased as fact for 2019",
+   "'supported by Ministry of Culture' unchanged and confirmed"
+  ],
+  "before": "Alisa Prudnikova, director of the NCCA Ekaterinburg branch, was the biennial's commissioner",
+  "after": "Alisa Prudnikova was the commissioner of the 2019 and 2021 editions (e-flux)",
+  "sources": [
+   "https://www.e-flux.com/announcements/366474/curators-announced-for-sixth-edition/",
+   "https://www.e-flux.com/announcements/272310/5th-ural-industrial-biennial-of-contemporary-art",
+   "https://www.kommersant.ru/doc/5924952"
+  ],
+  "reason": "Kommersant (7 April 2023) confirms 2021 budget about 100 million rubles, 40 percent state, 60 percent sponsors, and the city administration's cancellation of the seventh edition; it is about the biennial, so the Website line stays. e-flux 2019 page confirms 'With the support of the Ministry of Culture of the Russian Federation'. The Art Newspaper Russia (7 September 2023) and E1.ru (30 September 2021) confirmed. The biennial's own site does not resolve."
+ },
+ {
+  "id": "usine-kugler-geneva",
+  "section": "Funding",
+  "problems": [
+   "logos as a source",
+   "'2002 petition' year not on page",
+   "'low rents' vs 'moderate rents'",
+   "self-managed claim not tied to a page quote",
+   "contracts and fire details beyond the debate record"
+  ],
+  "before": "Partner logos appear at the foot of the guide-contemporain.ch page for the Fonderie. / The 2002 petition P 1417 ... / low rents in exchange for usage charters",
+  "after": "Logo line cut. Petition P 1417 stated without the year. 'moderate rents' (usinekugler.ch). Self-managed: event listing calls the Fonderie 'un lieu alternatif et autogéré' (title translated). Fire: Moutinot on strict access hours, security company, basement definitively condemned, contracts signed 15 March 2005.",
+  "sources": [
+   "https://ge.ch/grandconseil/memorial/seances/550407/42/5/",
+   "https://usinekugler.ch",
+   "https://www.guide-contemporain.ch/en/lieux/fonderie-kugler/"
+  ],
+  "reason": "Grand Council debate of 28 April 2005 confirmed: vote 37 yes, 17 no, 9 abstentions on referral to the Conseil d'Etat; Alder's 30,000 francs a month; Moutinot's 'provisoire' and Pointe de la Jonction. The City of Geneva page (geneve.ch) confirms the Fonderie programme and the ge.ch heritage-days page (six former industrial sites, 'l'Usine et l'Usine Kugler') was reworded to what it says."
+ },
+ {
+  "id": "utah-museum-of-contemporary-art-salt-lake-city",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "bottom line named Walje a donor: the donor entry is 'Arlo Rich Walje and Dr. Laura Nelson' and no page ties it to Rich Walje",
+   "absence sentence on Rocky Mountain Power",
+   "'mixed public and private' verdict",
+   "24 further trustees (about page lists 30 including officers and emeriti)",
+   "Art Truck described as statewide mobile museum that visited schools"
+  ],
+  "before": "The board president for FY2024-25, Rich Walje, is a former Rocky Mountain Power chief executive and a donor in the $25,000 to $49,999 tier. / Rocky Mountain Power does not appear in the supporters list of the FY2024-25 report.",
+  "after": "Bottom line now states the 79 percent contributions share (ProPublica) and the $50,000-and-above tier entries; board line states Walje as FY2024-25 President, former Rocky Mountain Power CEO, now President Emeritus; absence line cut; Art Truck stated as 48 visits (annual report).",
+  "sources": [
+   "https://utahmoca.org/wp-content/uploads/2026/06/FY2024-25_annual_report-1.pdf",
+   "https://projects.propublica.org/nonprofits/organizations/870221537",
+   "https://utahmoca.org/about/"
+  ],
+  "reason": "No flag: Rocky Mountain Power is not among the funders listed. ProPublica FY2025: revenue $1,504,862, expenses $1,215,013, contributions $1,191,457 (79.2%), as the report already said. Annual report figures confirmed (25 exhibitions, 217 artists, 63,753, 56 K-12 tours, Jensen 1931, President Walje). The tier amounts are garbled in the PDF text layer; the order of tiers and the names match the brief."
+ },
+ {
+  "id": "uks-unge-kunstneres-samfund-oslo",
+  "section": "Overview",
+  "problems": [
+   "'central Oslo' not on page",
+   "membership/NBK phrasing",
+   "sources of grants and residency places"
+  ],
+  "before": "Keysers gate 1 in central Oslo ... largest member organisation within NBK ... (UKS website, Store norske leksikon)",
+  "after": "Keysers gate 1 in Oslo ... largest basic organisation within NBK (Store norske leksikon); grants and residency places credited to Store norske leksikon; consultations and main projects credited to the UKS website",
+  "sources": [
+   "https://www.uks.no/en/about",
+   "https://www.uks.no/uks-union/?locale=en",
+   "https://snl.no/Unge_Kunstneres_Samfund"
+  ],
+  "reason": "Confirmed: founded 1921, principal funder the Ministry of Culture (UKS about), mainly financed by the Ministry of Culture and Equality (SNL), 1937 venue, annual Open Call, six board members with two-year terms, chair Ragnhild Aamås, opening hours, free entrance. The UKS union page says over 600 members; SNL says about 700 in 2024, SNL kept and attributed."
+ },
+ {
+  "id": "v2-lab-unstable-media-rotterdam",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "verdict 'mainly public' with no share on a page",
+   "'shown by their logos'",
+   "'The 2012 Dutch arts cuts' (page says severe cuts in government funding of the arts after 2012)",
+   "reports/accounts line attributed to the wrong pages"
+  ],
+  "before": "V2_ Lab for the Unstable Media: mainly public: ... / The money behind V2_ is public: ...",
+  "after": "V2_ Lab for the Unstable Media: public structural funding from the Creative Industries Fund NL and the City of Rotterdam, plus EU project money and Dutch foundations; 2025 to 2028 structural funding shown as the logos of the Stimuleringsfonds and the City of Rotterdam; bottom line says the structural money comes from those two bodies.",
+  "sources": [
+   "https://v2.nl/pages/funding/",
+   "https://v2.nl/pages/history-3/",
+   "https://v2.nl/pages/anbi/"
+  ],
+  "reason": "Opened via the site's WordPress page data. Confirmed: Creative Europe and DG CONNECT co-funding, Pro Helvetia and Mondriaan Fund recurring funders, funder lists for 2020, 2018, 2015 and 2016, KvK 41082049, director F. Saavedra-Lara and deputy J. C. Brouwer, board of four unpaid, accounts 2019 to 2023 and a certified 2025 account, 1981 squat history, 2012 cuts, 2025 to 2028 theme. The 2025 to 2028 funders appear on the funding page as logos with alt text; the 2017 and 2020 text lists both bodies as structural funders."
+ },
+ {
+  "id": "vanuatu-cultural-centre-vanuatu-kaljoral-senta-port-vila",
+  "section": "Funding / Bottom line",
+  "problems": [
+   "verdict 'mainly public: the Vanuatu government' beyond the curator's post",
+   "'the government funds the statutory body' unsupported",
+   "Qatar Fund for Development listed as a donor line without saying whose fund",
+   "'online appeal added support' unsupported",
+   "'Australian Museum sent staff' not on page",
+   "'smashed beyond repair' and 'can only be repaired' stronger than the source"
+  ],
+  "before": "UNESCO states the fund's donors are the Qatar Fund for Development, Norway, ... / the Vanuatu government funds the statutory body and the curator's post, and ... an online appeal added support",
+  "after": "UNESCO thanks the donors to its Heritage Emergency Fund: the Qatar Fund for Development, Norway, ... These are the donors to UNESCO's fund; UNESCO states the centre's work is funded 'through funding from the UNESCO Heritage Emergency Fund (HEF)'. Bottom line: the government funds the curator's post; the US Embassy project funded the Australian Museum's outreach.",
+  "sources": [
+   "https://www.unesco.org/en/articles/unesco-supports-post-earthquake-recovery-vanuatu-cultural-centre-and-chief-roi-matas-domain-world",
+   "https://www.canberratimes.com.au/story/8971426/australia-helping-vanuatu-with-museum-collection-upkeep/",
+   "https://vanuatuculturalcentre.gov.vu/"
+  ],
+  "reason": "No Gulf state body flag: UNESCO's page lists the Qatar Fund for Development among donors to UNESCO's own fund, not as a funder of the Centre. Confirmed: UNESCO article (11 December 2025, magnitude 7.3 near Port Vila, December 2024), AAP via Canberra Times (Ben McKay, 20 May 2025): curator's post government-funded, no extra upkeep money, 13 showcases, Lapita pottery, Pasifika Tahui. The GoFundMe appeal is stated as a link on the centre's website."
+ },
+ {
+  "id": "viafarini-milan",
+  "section": "Funding",
+  "problems": [
+   "supporters list given without the years the page states",
+   "bullet run together in the file",
+   "verdict 'mixed public and private'"
+  ],
+  "before": "The Viafarini website lists as institutional supporters Regione Lombardia, Comune di Milano, Fondazione Cariplo, Fondazione Banca del Monte di Lombardia and departments of the Italian Ministry of Culture.- Its Fabbrica del Vapore spaces ...",
+  "after": "The supporters page, under 'Supporto istituzionale negli anni', lists with start years: Regione Lombardia (from 1994), Comune di Milano (from 1995), Fondazione Cariplo (from 1997), Fondazione Banca del Monte di Lombardia (from 2008), Ministry of Culture departments (from 2008, 2016 and 2019); companies including UniCredit, Vodafone, Zanotta, Furla listed.",
+  "sources": [
+   "https://viafarini.org/team-and-supporters/",
+   "https://www.artribune.com/?p=676060",
+   "https://www.viafarini.org/en/team"
+  ],
+  "reason": "Artribune (Giulia Ronchi, 9 June 2020, '\"Saremo in pochi\": riparte l'attivita di Viafarini a Milano. Tra studio visit e arte emergente') confirms the 2008 and 2017 Comune di Milano calls. The supporters page gives start years for institutions and none for companies. Brusarosco, Verago, Mbengue, Vettese confirmed."
+ },
+ {
+  "id": "villa-arson-nice",
+  "section": "Funding / Overview",
+  "problems": [
+   "'mainly public' verdict",
+   "'national public establishment' not the page's wording",
+   "'whose minister names the director' attributed to French Wikipedia",
+   "scholarship 'every other year', 'graduate in painting or drawing'",
+   "Centre National d'Art Contemporain 1971 conflicts with French Wikipedia (contemporary art centre 1984)"
+  ],
+  "before": "Villa Arson: mainly public: the French Ministry of Culture / It is a national public establishment under the Ministry of Culture, whose minister names the director (French Wikipedia, Ministry of Culture press release).",
+  "after": "Villa Arson: public establishment under the French Ministry of Culture / an établissement public administratif under the Ministry of Culture (French Wikipedia); Minister Rachida Dati named Ulrika Byttner after the board's opinion (press release, 19 January 2026); the MB Art Foundation awards a EUR 10,000 'Villa Arson Artist Support Scholarship' every two years to a graduate with a DNSEP master's in painting or drawing, partnership since 2017.",
+  "sources": [
+   "https://www.mbartfoundation.com/?p=5763",
+   "https://www.culture.gouv.fr/presse/communiques-de-presse/nomination-de-mme-ulrika-byttner-a-la-direction-de-la-villa-arson-ecole-nationale-superieure-d-art-et-centre-d-art-contemporain-nice",
+   "https://fr.wikipedia.org/wiki/Villa_Arson"
+  ],
+  "reason": "Press release dated 19 January 2026 confirmed (Byttner previously head of ésadhar since 2022). French Wikipedia confirms 1812, 1964, Marot 1972, 2003 EPA, Université Côte d'Azur 2020, Lizon 2019 to 2025; the 1971 centre date was cut because the two Wikipedias differ."
+ },
+ {
+  "id": "vitra-design-museum-weil-am-rhein",
+  "section": "Overview / Funding / Criticism / Bottom line",
+  "problems": [
+   "'then chief executive', 'Willi and Erika', 'originally meant to display a private furniture collection', Pfeifer and materials: not on opened pages",
+   "restoration lab, research library not on page",
+   "'still pays an annual subsidy' and 'provides the architecture'",
+   "Graphéine date missing",
+   "Graphéine welcomed the strategy; 'argues' and 'notes that the museum shows some objects still sold' overstate",
+   "'(undated)' process note",
+   "IKEA Stiftung"
+  ],
+  "before": "The money behind the museum is Vitra's: the company founded the foundation in 1989, still pays an annual subsidy and provides the architecture, and exhibitions add sponsors such as Maharam, Camper and the IKEA Stiftung. / 1. Graphéine: author not stated, 'Vitra Design Museum' (2013)",
+  "after": "The Vitra company founded the museum in 1989 and, per Wikipedia, provides a financial subsidy and use of Vitra architecture; Mediamatic calls the museum largely self-sufficient. The 2026 Jongerius show was supported by Maharam, Camper and the IKEA Stiftung. / 1. Graphéine: author not stated, 'Vitra Design Museum' (20 April 2013); the piece calls the museum's position 'ambiguous' and asks whether its discourse can be 'perfectly objective'.",
+  "sources": [
+   "https://grapheine.com/en/magazine/vitra-design-museum/",
+   "https://www.design-museum.de/en/exhibitions/detailpages/hella-jongerius-whispering-things.html",
+   "https://en.wikipedia.org/wiki/Vitra_Design_Museum"
+  ],
+  "reason": "IKEA Stiftung stays only as a named supporter of the Jongerius show (14 March to 6 September 2026); no page ties it to IKEA group, and the Disclose.ngo piece is not in the report, so it appears in neither Red flags nor Wider context. Graphéine is undated by author but dated 20 April 2013 on the page."
+ },
+ {
+  "id": "void-derry",
+  "section": "Funding / Criticism",
+  "problems": [
+   "disclaimer 'not supported by funding from the State of Israel' not on the Circa page",
+   "'refurbished over about two years' not on pages",
+   "'mainly public' verdict",
+   "Greavu described as 'a Derry curator' (Curator, Public Programmes at CCA Derry~Londonderry)",
+   "title and date of Circa piece incomplete",
+   "Cushendall Curfew Tower detail"
+  ],
+  "before": "Void published a disclaimer that the project was not supported by funding from the State of Israel (Circa Art Magazine). / 1. Circa Art Magazine: Sara Greavu, 'Pushback' (2017)",
+  "after": "Void's disclaimer said all the artists in the exhibition condemn Israel's occupation of Palestine. / 1. Circa Art Magazine: Sara Greavu, 'Pushback' (29 March 2017), headed 'Nothing But Longing, Void Art Centre and the LD50 Gallery controversy'",
+  "sources": [
+   "https://circaartmagazine.net/sara-greavu-pushback/",
+   "https://www.derryvoid.com/about-us/",
+   "https://opencharities.uk/ni/101068"
+  ],
+  "reason": "Confirmed: funder list on Void's page, income GBP 329,093 and expenditure GBP 177,056 to 31 March 2025 with 6 employees (Open Charities), registration 6 March 2015, trustees (eight), Peace II funding, 2021 Arts Council NI grant over GBP 123,000 and Chechia since May 2023 (Wikipedia). Greavu's quote that Artis International's agenda 'appears to align closely with the artwashing of Brand Israel' is kept inside quotation marks."
+ }
+]
