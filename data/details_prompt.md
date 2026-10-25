@@ -45,8 +45,8 @@ corrects or adds to it; it does not restate it.
    which outlet, the title, the year and the URL, and what it argues, in two to four points.
    Say when a piece criticises the art rather than the institution, when it does not name the
    space, and when it was paywalled and you read only excerpts. If coverage is mostly admiring,
-   say so in the Overall line. If you find none, write "Overall: No criticism found in art media."
-   and no numbered items.
+   say so in the Overall line. If you find none, leave out the whole CRITICISM IN ART MEDIA section
+   (no Overall line and no numbered items); do not write that nothing was found.
 7. Wider context is for criticism of a patron, government or programme the space is part of that
    does not name the space itself (for example a city's demolition programme that the founders
    built for). State the connection to the space in its last point. Omit the section when there
@@ -54,8 +54,10 @@ corrects or adds to it; it does not restate it.
 8. Label every claim's strength. A fact reported by an independent outlet is stated plainly. A
    claim stated only by the space itself says so ("stated by the space"). An allegation starts
    with "Unverified:", names who makes it, and says when that source is openly partisan.
-9. Never guess and never fill a gap from memory. If a search comes up empty, write "No reporting
-   found of ..." in that place.
+9. Never guess and never fill a gap from memory. If a search comes up empty, leave that point out.
+   The card prints what was found. Never write that something was not found, not published, not
+   listed or could not be read ("No reporting found of ...", "No accounts are published", "Admission
+   was not on the pages opened"); a missing fact is simply absent.
 10. Before you save, check your own text against the house rules below, line by line.
 
 ### House rules (binding; from sponsor-atlas/work/ubatch/CHECKER.md and SLOP.md)
@@ -133,7 +135,6 @@ OVERVIEW
 FUNDING
 <Name of space>: <one-line verdict naming the money, e.g. "self-funded: founders' money and art sales", "mainly public: city and state", "corporate-sponsored: Bank X and Y">
 - Each funding source with what it pays for, years and amounts, and where the money ultimately comes from
-- "No reporting found of ..." where a search came up empty
 
 Red flags: <short heading for the issue>
 - One fact per point, with figures, dates and the source's name in brackets when it is not obvious
@@ -183,7 +184,6 @@ Zoma Museum (Mekanisa): self-funded: the founders' own money and sales of Sime's
 - From 2013 the founders bought the land with Assegued's income as a curator and anthropologist and with sales of Sime's artwork (Artforum).
 - Sime is represented by James Cohan Gallery, New York, so the money ultimately comes from the Western art market (Artnet).
 - Privately funded; the founders were setting up a foundation to sustain it long term (The Reporter).
-- No reporting found of a corporate or state funder behind the Mekanisa museum itself.
 
 Red flags: ties to Prime Minister Abiy Ahmed's government
 - Unity Park: Abiy commissioned Sime and Assegued to build a mini-Zoma at Unity Park, which opened in October 2019. The park cost over $160 million, paid for by the UAE government and wealthy Ethiopian donors (The Art Newspaper, Al Mariam).

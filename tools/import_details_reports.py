@@ -24,6 +24,8 @@ import json
 import re
 from pathlib import Path
 
+from absence import strip_details
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / 'institutions.json'
 
@@ -136,8 +138,6 @@ def lint(d):
         hard.append('no SOURCES')
     if not d['overview']:
         soft.append('no OVERVIEW')
-    if not d['press']['overall'] and not d['press']['items']:
-        soft.append('no CRITICISM IN ART MEDIA')
     for f in d['red_flags']:
         if not f['points']:
             hard.append(f'empty red flag "{f["heading"]}"')
@@ -201,6 +201,7 @@ def main():
             continue
         if only and rid not in only:
             continue
+        strip_details(d)   # sentences that only say something was not found never reach the card
         hard, soft = lint(d)
         r = by_id[rid]
         review.append(f'## {r["name"]} (`{rid}`)\n\n'
