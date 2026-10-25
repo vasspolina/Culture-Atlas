@@ -55,7 +55,7 @@
   const repaint = () => { if (typeof scheduleRender === 'function') scheduleRender(); svSchedule(); };
   function clearReach() { clearTimeout(reachTimer); reachTimer = 0; if (!REACH) return; REACH = null; if (typeof renderTop === 'function') renderTop(); repaint(); }
   function setReach(m) {
-    if (REACH && REACH.pinned) return;
+    if (REACH && (REACH.pinned || REACH.tapped)) return;
     if (m && m.key) {
       clearTimeout(reachTimer); reachTimer = 0;
       if (!REACH || REACH.key !== m.key || REACH.space !== m.space) { REACH = { key: m.key, keys: [m.key], kind: m.kind, space: m.space, name: m.name }; repaint(); }
@@ -601,7 +601,7 @@
     const m = LM.find(q => q.ask === LM_HOV.ask && q.rec === LM_HOV.rec && !q.pass) || null; if (!m) return;
     const W = ctx.canvas.clientWidth || 1e9;
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
-    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.go ? 'Click to zoom in' : 'Click to ask the chat'].filter(Boolean);
+    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat')].filter(Boolean);
     ctx.save(); ctx.font = '14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 12, h = 20;
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
@@ -730,8 +730,16 @@
     // A click on a mark asks the chat about it, and that is all the click does. The chat answers a question about a space
     // with the space selected on the map and stays in front, so a flag or grade mark loses nothing by not opening the record.
     click(mx, my) {
-      const m = markAt(mx, my); if (!m) return false;
+      const m = markAt(mx, my);
+      if (!m) { if (REACH && REACH.tapped) clearReach(); return false; }
       if (m.go) { m.go(); return true; }
+      // A finger has no hover: the first tap on a funder around a space shows where else it appears (and its tooltip), a second asks the chat.
+      if ((window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') && m.key && !m.rec && !(REACH && REACH.tapped && REACH.key === m.key && REACH.space === m.space)) {
+        clearTimeout(reachTimer);
+        REACH = { key: m.key, keys: [m.key], kind: m.kind, space: m.space, name: m.name, tapped: true };
+        reachTimer = setTimeout(clearReach, 8000); LM_HOV = m; repaint();
+        return true;
+      }
       askChat(m.ask);
       return true;
     }
