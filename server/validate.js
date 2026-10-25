@@ -38,22 +38,14 @@ export function findPlace(placeId, institutions) {
   return institutions.byId.get(placeId) || null;
 }
 
-// Returns { error } or { data } ready for the database. Nothing from the sender but the text, an optional star
-// rating, an optional display label and the place the review is filed under.
+// Returns { error } or { data } ready for the database. Nothing from the sender but the text, an optional display
+// label and the place the review is filed under.
 export function validateReview(body, place) {
   const source = body && typeof body === 'object' ? body : {};
   const content = cleanText(source.content);
   if (!content) return { error: 'Write the review first.' };
   if (content.length < LIMITS.minContent) return { error: `The review must be at least ${LIMITS.minContent} characters.` };
   if (content.length > LIMITS.content) return { error: `The review cannot be longer than ${LIMITS.content} characters.` };
-
-  let rating = null;
-  if (source.rating != null && source.rating !== '') {
-    if (!Number.isInteger(source.rating) || source.rating < 1 || source.rating > 5) {
-      return { error: 'The rating must be a whole number from 1 to 5, or left out.' };
-    }
-    rating = source.rating;
-  }
 
   let authorLabel = null;
   if (source.authorLabel != null && source.authorLabel !== '') {
@@ -65,5 +57,5 @@ export function validateReview(body, place) {
     authorLabel = authorLabel || null;
   }
 
-  return { data: { content, rating, authorLabel, placeId: place.id, institution: place.name, city: place.city || 'Unspecified' } };
+  return { data: { content, authorLabel, placeId: place.id, institution: place.name, city: place.city || 'Unspecified' } };
 }
