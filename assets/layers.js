@@ -360,12 +360,12 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.grade || !G[i.grade]) return;
-        LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `Why is ${i.name} graded ${G[i.grade].letter || i.grade}?` });
-        ctx.beginPath(); ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
+        LM.push({ x: d.x, y: d.y, r: 12, pass: true, rec: i, ask: `Why is ${i.name} graded ${G[i.grade].letter || i.grade}?` });
+        ctx.beginPath(); ctx.arc(d.x, d.y, 10, 0, Math.PI * 2);
         ctx.fillStyle = G[i.grade].col; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
         // The letter is the second cue: grade A and B are two near greens, and colour alone cannot tell the five apart.
-        ctx.save(); ctx.font = '700 9px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
+        ctx.save(); ctx.font = '700 14px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
         ctx.fillText(G[i.grade].letter, d.x, d.y + 0.5); ctx.restore();
       });
     }

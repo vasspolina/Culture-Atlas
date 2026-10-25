@@ -65,6 +65,7 @@
       $('list').innerHTML = reports.map(report => `
         <article data-id="${esc(report.id)}">
           <p><strong>${esc(report.institution || report.city)}</strong>${report.institution ? ` | ${esc(report.city)}` : ''} · ${esc(new Date(report.createdAt).toLocaleString())}</p>
+          <p>${report.rating ? `${'★'.repeat(report.rating)}${'☆'.repeat(5 - report.rating)} (${report.rating} of 5)` : 'No rating'} · ${report.authorLabel ? `shown as “${esc(report.authorLabel)}”` : 'shown as Whistleblower'}</p>
           <p style="white-space:pre-wrap">${esc(report.content)}</p>
           <div class="actions">${actionsFor(report.status)}</div>
         </article>
