@@ -2032,3 +2032,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):hover{background:color-mix(in srgb,var(--ink) 82%,var(--paper))!important;color:var(--paper)!important}
   :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):hover svg{color:var(--paper)!important}
 }
+/* No bullets in Details (user's instruction, 25 Oct 2026): the lists read as lines, one blank half-line (--H) between them, flush left. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-list,ul.list-disc)>li::before{content:none}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{padding-left:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-list,ul.list-disc)>li+li{margin-top:var(--H)}
