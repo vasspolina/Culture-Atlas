@@ -747,3 +747,16 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - museo-antropologico-y-de-arte-contemporaneo-maac: Primicias (5 June 2024): a budget of a little over USD 2.5 million and nearly USD 500,000 a year to Fundación Malecón 2000 (about 19 per cent).
 - manchester-museum: 11 Dec 2020 grant of 1,304,489 pounds; reopening 18 Feb 2023. mostyn: Arts Council of Wales 385,130 pounds for the year to 31 March 2025. modern-art-oxford: the council cut from 70,000 to 50,000 pounds from 2022/23 and a further 50 per cent cut notified from 2025/26.
 - museo-de-la-palabra-y-la-imagen-mupi: elsalvador.com (11 Jan 2026): the annex mortgage backed by AGIAMONDO and the Ford Foundation; ContraPunto (15 July 2021): TDH Alemania, BMZ, AGIAMONDO; no amounts; the site carries gambling adverts and an online casino link.
+
+## d041 and d042 (research notes, before their slop checks)
+- ocat-shenzhen-shenzhen: The Art Newspaper says the Shenzhen venue "closed in 2022", but 2024 and 2025 notices show it open; the funding-cut claim rests on a search extract (oeeee.com returned HTTP 493).
+- project-arts-centre-dublin: the Charities Regulator ordered the 2018 "Repeal the 8th" mural painted over; the Arts Council gave EUR 979,600 in 2025.
+- pulitzer-arts-foundation: the record's second ProPublica link (EIN 431940989) returned 404; EIN 43-1752949 confirms $6.2M is 2024 expenses ($6.18M; revenue $10.2M).
+- nha-san-collective-hanoi: nhasan.org did not resolve; the copy at mail.nhasan.org/introduces loaded.
+- pallant-house-gallery: the 130k pounds Chichester grant rests on a search extract; the Fidelity Foundation 260k and 3.0M income could not be confirmed.
+- rijksakademie-amsterdam: Ammodo's money from the 2007 sale of the pension insurer Optas (the funder's own account plus Platform BK's opinion); the Dec 2024 alumni governance campaign is unverified, from an advocacy site.
+- red-brick-art-museum: the 2017 protest by a dead employee's parents at an opening; the wage claim is unverified and denied by the museum; the museum site has a TLS certificate mismatch.
+- sesc-são-paulo-são-paulo: the 2017 petition and review campaign against the Judith Butler seminar at Sesc Pompeia (Vermelho, partisan); the record's R$3.44bn figures were not verified.
+- selasar-sunaryo-art-space-bandung: selasarsunaryo.com is suspended; selasarsunaryo.org mostly a blank template.
+- sir-john-soane-s-museum: income 4,221,788 pounds; grant-in-aid 1,165,000 pounds (annual report, local text extraction).
+- schaulager: currently closed to the public until 2027.
