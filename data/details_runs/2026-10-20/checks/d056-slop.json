@@ -1,0 +1,289 @@
+[
+ {
+  "id": "cheongju-craft-biennale-cheongju",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Held every two years since 1999'",
+   "wrong attribution: 402,539 visitors credited to Segye Ilbo and Hankyung"
+  ],
+  "before": "Held every two years since 1999 (Korea JoongAng Daily). ... had 402,539 visitors (Segye Ilbo, Hankyung, The City Maker).",
+  "after": "First held in 1999 (Korea JoongAng Daily). ... had 402,539 visitors (Hankyung for the edition and dates, The City Maker for the visitor total).",
+  "sources": [
+   "https://www.koreajoongangdaily.com/lifestyle/cheongju-craft-biennale-art-brings-history-to-life/12244619",
+   "https://thecitymaker.com.my/final-report-meeting-on-the-achievements-of-the-cheongju-craft-biennale-2025-record-breaking-economic-impact/",
+   "https://www.hankyung.com/article/202509118800i"
+  ],
+  "reason": "The JoongAng piece says the biennale first started in 1999 and gives no two-year cycle. Segye gives about 400,000, Hankyung gives no attendance; only The City Maker gives 402,539."
+ },
+ {
+  "id": "cheongju-craft-biennale-cheongju",
+  "section": "FUNDING",
+  "problems": [
+   "verdict 'mainly public' with no page saying so",
+   "'led by' ranking of Hyundai unsupported",
+   "Entangled and Woven attribution"
+  ],
+  "before": "mainly public: ... with corporate partners led by Hyundai Motor; first exhibition ... co-organised by the biennale and the Whitworth ... eight artists from Korea and India (Hankyung, Hyundai press release, Hyundai Art Lab)",
+  "after": "public and corporate: ... corporate partners including Hyundai Motor; first presented at the 2025 biennale and co-organised with the Whitworth, eight artists and collectives based in Korea and India (Hankyung; Hyundai press release; Hyundai Art Lab, 'invites and supports art institutions worldwide')",
+  "sources": [
+   "https://www.hyundai.news/uk/articles/press-releases/hyundai-motor-announces-hyundai-translocal-series.html",
+   "https://artlab.hyundai.com/project/hyundai-translocal-series-entangled-and-woven",
+   "https://www.hankyung.com/article/202509118800i"
+  ],
+  "reason": "Hyundai's release places the first exchange at the 2025 biennale (September 2025) and says Hyundai Motor will 'support' the series; Art Lab names the exhibition and says it was first presented at the biennale. No page gives proportions of public and corporate money."
+ },
+ {
+  "id": "cheongju-craft-biennale-cheongju",
+  "section": "RED FLAGS / BOTTOM LINE",
+  "problems": [
+   "flag on the funder itself not supported: complaint names a subsidiary",
+   "Wikipedia-only claims not attributed",
+   "'child labor in its Alabama operations' heading"
+  ],
+  "before": "Red flags: Hyundai Motor and child labour in its Alabama operations ... 'In July 2022 Reuters reported that SMART Alabama, described by Wikipedia as a Hyundai subsidiary...' ... bottom line: 'the US Department of Labor's 2024 complaint over child labour names Hyundai Motor Manufacturing Alabama.'",
+  "after": "Red flags: Hyundai Motor subsidiary named in a US child labour complaint. The complaint (UPI, Doug Cunningham, 31 May 2024) names Hyundai Motor Manufacturing Alabama LLC, SMART Alabama LLC and Best Practice Service LLC as joint employers of a 13-year-old; Wikipedia states HMMA is a subsidiary of Hyundai Motor Company; the 2022 Reuters story and SL Alabama penalties are attributed to Wikipedia, which says neither labor department accused Hyundai or Kia. Bottom line states the subsidiary relationship.",
+  "sources": [
+   "https://www.upi.com/Top_News/US/2024/05/31/DOL-Hyundai-child-labor-violation-Alabama/2131717166718",
+   "https://en.wikipedia.org/wiki/Hyundai_Alabama_child_labor_allegations",
+   "https://en.wikipedia.org/wiki/Hyundai_Motor_Manufacturing_Alabama"
+  ],
+  "reason": "UPI names only the Alabama plant, its supplier SMART Alabama and a staffing agency; it does not mention Hyundai Motor Company. The flag is kept but states exactly that the defendant is a subsidiary; the supplier fine and Reuters story are Wikipedia-only and attributed. Added the HMMA Wikipedia page to SOURCES."
+ },
+ {
+  "id": "colección-femsa-monterrey",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported figure: 'roughly 47.8% of Coca-Cola FEMSA' and 28.1% (Wikipedia gives 47.9% in text, 47.8% in infobox)",
+   "FEMSA PDF does not state the stake",
+   "'provides support and backing' not in CIMAM"
+  ],
+  "before": "FEMSA runs OXXO convenience stores and drugstore chains, and holds roughly 47.8% of Coca-Cola FEMSA, with The Coca-Cola Company at 28.1% (Wikipedia).",
+  "after": "FEMSA runs the OXXO convenience store chain and drugstore chains in South America ... (Wikipedia). Coca-Cola FEMSA's Form 20-F for 2025 states that FEMSA indirectly owns 47.2% of its outstanding capital stock, representing 56.0% of its voting shares.",
+  "sources": [
+   "https://www.femsa.com/wp-content/uploads/2025/12/50-Aniversario-Coleccion-FEMSA.pdf",
+   "https://www.sec.gov/Archives/edgar/data/910631/000162828026025313/kof-20251231.htm",
+   "https://en.wikipedia.org/wiki/FEMSA"
+  ],
+  "reason": "The FEMSA PDF (press release of 8 December 2025) confirms the collection history, the 50th anniversary exhibition and the Pacheco quote but states no stake in the bottler. The bottler's FY2025 20-F gives 47.2%; 47.8% was not confirmed anywhere, so the figure is replaced throughout."
+ },
+ {
+  "id": "colección-femsa-monterrey",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "page titles, authors and dates missing",
+   "absence clause: 'FEMSA did not respond to requests for comment'"
+  ],
+  "before": "On 10 April 2017 residents ... (SIPAZ, via BHRRC). Al Jazeera (8 January 2025) reported ... FEMSA did not respond to requests for comment.",
+  "after": "SIPAZ, 'Chiapas: Protest to cancel Femsa-Coca Cola concession in San Cristobal de las Casas' (posted by the Business and Human Rights Resource Centre 11 April 2017) ... Al Jazeera, Peter Yeung, ''Forgotten': How one Mexican city struggles against big industry for water' (8 January 2025) ... non-response clause cut.",
+  "sources": [
+   "https://business-humanrights.org/en/latest-news/chiapas-protest-to-cancel-femsa-coca-cola-concession-in-san-cristobal-de-las-casas",
+   "https://www.aljazeera.com/news/longform/2025/1/8/forgotten-how-one-mexican-city-struggles-against-big-industry-for-water"
+  ],
+  "reason": "Both pages name Femsa and the Coca-Cola bottler, not the collection; the connection statement is kept and updated to 47.2%. The Bienal sentence ('feeds the collection through acquisition prizes') was rewritten to what CIMAM states."
+ },
+ {
+  "id": "coleccion-de-arte-amalia-lacroze-de-fortabat",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "history presented as current",
+   "Boston Globe wording 'grew'",
+   "Moreno item imprecise (court, sentence, who)",
+   "ongoing-trial item names neither Fortabat nor owners",
+   "absence clause"
+  ],
+  "before": "Página/12 ... 'a federal court sentenced three men to life imprisonment and ordered an investigation of Loma Negra's board'; Buenos Aires Province human rights portal reports a trial in Mar del Plata ... the page does not name Fortabat.",
+  "after": "Items labelled 'History' and attributed: Verbitsky, 'Microeconomia del terror' (Pagina/12, 25 May 2014) and the OFINEC study; Moreno (labour lawyer who won occupational-illness suits against Loma Negra, murdered May 1977), 2012 life sentences for Tommasi, Pappalardo and Ojeda by the Tribunal Oral Federal de Mar del Plata sitting in Tandil, ruling included an order to investigate Loma Negra's board; Boston Globe 'flourished through government contracts with the military junta'. Mar del Plata trial item and its URL cut. Connection statement kept, now says these concern the company in the 1970s.",
+  "sources": [
+   "https://www.pagina12.com.ar/diario/elpais/1-247054-2014-05-25.html",
+   "https://www.bostonglobe.com/metro/obituaries/2012/02/21/amalia-lacroze-fortabat-argentine-patroness-art/VQeBeoVlu1vkhMR0lHC7XP/story.html",
+   "https://gba.gob.ar/derechoshumanos/juicios_lesa_humanidad/los_casos_de_los_trabajadores_de_loma_negra"
+  ],
+  "reason": "Pagina/12 says the company then belonged to Fortabat. The Buenos Aires Province page concerns detentions of workers in 1976, names foremen and officers, and no owner, so it does not bear on funding and was cut."
+ },
+ {
+  "id": "coleccion-de-arte-amalia-lacroze-de-fortabat",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'modernist', 'a feature Fortabat requested', 'was to be museum director'",
+   "opening date wording"
+  ],
+  "before": "two-storey modernist building ... a feature Fortabat requested; ... Fortabat was to be museum director",
+  "after": "two-storey concrete, steel and glass building ... Fortabat said 'I've always wanted to look at pictures and the stars at the same time' (Wikipedia); museum director clause cut; La Nacion article credited to Alicia de Arteaga, 22 October 2008, with the 'no tengo idea' quote translated",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Fortabat_Art_Collection",
+   "https://www.lanacion.com.ar/cultura/el-museo-fortabat-abrio-sus-puertas-nid1061782",
+   "https://en.wikipedia.org/wiki/Mar%C3%ADa_Amalia_Lacroze_de_Fortabat"
+  ],
+  "reason": "Wikipedia confirms 22 October 2008, Vinoly, 6,000 sq m, the 2005 sale to Camargo Correa for just over US$1 billion (80% stake) and the US$40 million figure."
+ },
+ {
+  "id": "charleston",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "Lewes site cited to Wikipedia, which does not mention it",
+   "'ordinary charity income' verdict wording",
+   "road ownership stated as fact",
+   "Heritage Fund grant described without date or source title"
+  ],
+  "before": "Wikipedia says the road is owned by the eighth Viscount Gage ... The one point of public criticism ... as recorded by Wikipedia.",
+  "after": "Wikipedia says the road is reported to be privately owned by the eighth Viscount Gage and his wife, and that the grant 'gave rise to criticism', citing a Guardian article. Heritage Lottery Fund grant dated 28 March 2011 with source title. Bottom line lists the 2011 and 2025 grants.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Charleston_Farmhouse",
+   "https://www.heritagefund.org.uk/news/home-bloomsbury-set-wins-ps24million",
+   "https://www.heritagefund.org.uk/cy/node/146243"
+  ],
+  "reason": "All amounts confirmed: 2.4 million pounds (38% of 6.3 million) in 2011, 567,738 pounds on 27 November 2025, Sigrid Rausing Trust 30,000 pounds from April 2026 plus 255,500 earlier, Getting Building Fund 89,293 and 240,542 pounds. Wikipedia's 'half-century' sentence replaced with the sentence it supports."
+ },
+ {
+  "id": "chat-centre-for-heritage-arts-and-textile-hong-kong",
+  "section": "OVERVIEW / FUNDING / WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'Nan Fung Group owns the mills'",
+   "unverified permanent exhibition title and workshops by former workers",
+   "absence clause: 'no page ties it to CHAT'",
+   "'Mill6 Foundation 2015' attributed correctly; opening-date source",
+   "Wikipedia-only mask episode not attributed to its cited outlets"
+  ],
+  "before": "Nan Fung Group owns the mills and led the HK$700 million revitalisation ... The workshop was in Units 4 and 5, owned by Nan Fung Group, CHAT's main donor; no page ties it to CHAT, which is in Unit 6.",
+  "after": "Nan Fung invested HK$700 million to convert Units 4, 5 and 6 ... (Wikipedia, citing HK01 and Ming Pao). Mask-workshop episode attributed to Wikipedia (The Mills, Hong Kong) citing HK01 and Ming Pao of 17 May 2020, with the lease holder named; connection statement says the complex was developed by Nan Fung Group, CHAT's main donor, and CHAT is in Unit 6.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/The_Mills,_Hong_Kong",
+   "https://www.mill6chat.org/chat-organisation",
+   "https://nanfung.com/en/our-business/the-mills"
+  ],
+  "reason": "Board list (four of eight from Nan Fung Development: Vanessa Cheung, Vincent Cheung, Billy Hui, Nelson Tang) confirmed on the CHAT organisation page. Founding donor D. H. Chen Foundation and main donor Nan Fung Group confirmed on the Nan Fung page. The themills.com.hk page gives the 4th floor; the CHAT visit page gives 2/F, which is used. Seed to Textile, ANTEPRIMA prize and 29 November 2024 winners confirmed."
+ },
+ {
+  "id": "changwon-sculpture-biennale-changwon",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'held every two years since 2012' credited to Biennial Foundation",
+   "unsupported: 'Historic Site No. 240'",
+   "verdict 'mainly public' with no page saying so",
+   "BNK certificate handed to CEO"
+  ],
+  "before": "Held every two years since 2012; ... Seongsan Shell Mound (Historic Site No. 240) ...; mainly public ...; the certificate was handed to the foundation's CEO on 21 October 2022 (Twig24).",
+  "after": "Claims cut or reattributed; 'public and corporate'; BNK Kyongnam Bank announced on 21 October 2022 that it had given 25 million won to the Changwon Culture Foundation for the 2022 edition (Twig24).",
+  "sources": [
+   "https://biennialfoundation.org/biennials/changwon-sculpture-biennale-south-korea/",
+   "https://artbava.com/exhibit/2024-%EC%A0%9C7%ED%9A%8C-%EC%B0%BD%EC%9B%90%EC%A1%B0%EA%B0%81%EB%B9%84%EC%97%94%EB%82%A0%EB%A0%88-%ED%81%B0-%EC%82%AC%EA%B3%BC%EA%B0%80-%EC%86%8C%EB%A6%AC%EC%97%86%EC%9D%B4-silent-apple/",
+   "https://www.twig24.com/news/local_gs/kynam_gs/2022/10/21/20221021500118"
+  ],
+  "reason": "Artbava confirms the hosts (Changwon City, Changwon Culture Foundation) and the five 2024 supporters; Twig24 confirms 25 million won; the receiver of the certificate was a foundation director, not named as CEO in the page summary. The 2026 edition page is credited to its outlet (Hankook Sotong Today, 30 September 2026)."
+ },
+ {
+  "id": "chillida-leku-hernani",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported address 'Barrio Jauregui 66'",
+   "unsupported: 'two years before his death'",
+   "'reopened fully on 17 April 2019' stated as fact from a February 2019 announcement",
+   "'plus admission income'",
+   "'closed in 2011' vs guided tours by appointment"
+  ],
+  "before": "reopened fully on 17 April 2019 ... Hauser & Wirth took on the international representation of Chillida's estate ... and provided financial support ...; supported by the Hauser & Wirth gallery since 2017, plus admission income.",
+  "after": "in February 2019 it announced a full reopening on 17 April 2019 (Hannah McGivern, 'Eduardo Chillida's Basque museum and sculpture park announces full reopening', The Art Newspaper, 21 February 2019); Hauser & Wirth announced in November 2017 it would represent the estate and The Art Newspaper states it has given financial support; Elephant (Joe Lloyd, 26 May 2020) says the gallery 'funded the Leku's restoration and reopening'; admission income cut.",
+  "sources": [
+   "https://www.theartnewspaper.com/2019/02/21/eduardo-chillidas-basque-museum-and-sculpture-park-announces-full-reopening",
+   "https://elephant.art/eduardo-chillida-basque-country-farmhouse-sculpture-hauser-wirth-01062020",
+   "https://www.ondavasca.com/hauser-wirth-evito-que-chillida-leku-se-convirtiese-en-un-mausoleo/"
+  ],
+  "reason": "The Art Newspaper gives title, author and date as above and does not give the 10 km distance or the Zabalaga name; those come from Arquitectura Viva (Kosme de Barañano, 2019). Onda Vasca (19 August 2022) has the Luis Chillida 'mausoleo' quote and the 1983 land purchase; Orain (ETB, 30 November 2017) has the Gipuzkoa and Basque government refusals."
+ },
+ {
+  "id": "chinati-foundation",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "Wikipedia quote wrongly credited to the foundation",
+   "accessibility wording uses 'landmarks'",
+   "Dorsey grant date and Lannan grant detail imprecise",
+   "tier bound $999,999 not on page"
+  ],
+  "before": "Chinati describes itself as an 'independent, non-profit, publicly funded institution' (Wikipedia, quoting the foundation). ... a challenge grant in December 1996, with further grants in 1997, 1998 and 1999",
+  "after": "Wikipedia's account of the 1986 opening calls Chinati an 'independent, non-profit, publicly funded institution'. Lannan: challenge grant December 1996, further grants October 1997, October 1998 and December 1999. Dorsey grant reported 12 May 2021 by Jacoba Urist, The Art Newspaper.",
+  "sources": [
+   "https://chinati.org/campaign/",
+   "https://projects.propublica.org/nonprofits/organizations/742340423",
+   "https://www.mellon.org/grant-details/chinati-foundation-20444845"
+  ],
+  "reason": "Confirmed: Sarofim Foundation $2,500,000, Brown Foundation of Houston and Chadwick-Loher Foundation $1,000,000 each (campaign page as of 23 October 2026); Mellon $525,000 awarded 6 September 2018; 2024 revenue $6,370,230 (ProPublica); Lannan page gives no amounts. Judd concrete works free and accessibility wording confirmed on the plan-your-visit page."
+ },
+ {
+  "id": "ciap-genk",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'two Limburg organisations active since the 1970s'",
+   "'moved to C-mine in 2020' credited to ArtRabbit",
+   "'free parking under the site'",
+   "verdict 'mainly public'",
+   "'city owns the site' (page says it bought it in 2001)"
+  ],
+  "before": "Jester ... mainly public ...; The City of Genk owns the C-mine site, bought from LRM in 2001; bottom line 'on the city-owned C-mine site'.",
+  "after": "public: Jester states it is supported by the Flemish Government and the City of Genk; VRT (Yente Van der Sande, 17 November 2023) reports both invested in the 4.5 million euro building; the City of Genk bought the site from LRM in 2001 (Wikipedia).",
+  "sources": [
+   "https://www.vrt.be/vrtnws/nl/2023/11/17/kunstencentrum-jester-opent-in-genk/",
+   "https://www.jester.be/organisatie",
+   "https://en.wikipedia.org/wiki/Genk"
+  ],
+  "reason": "Merger with FLACC in 2021, Flemish Government and City of Genk support and the 4.5 million euro cost are confirmed. CIAP founded 1976 in Hasselt is on ArtRabbit; relocation to C-mine in 2020 is on the C-mine page."
+ },
+ {
+  "id": "cit-internationale-des-arts-paris",
+  "section": "FUNDING / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "partners known only from logos identified by file name (Ministry of Culture, City of Paris, Academie des Beaux-Arts as 'institutional partners'; 'sponsor')",
+   "unsupported: 'City of Paris owned the premises and funded electrical and boiler renovation'",
+   "unsupported accusation list ('running the foundation opaquely for 30 years')",
+   "absence clause in Overall line",
+   "'former president' not on page"
+  ],
+  "before": "Institutional partners shown on the Partners page: the Ministry of Culture, the City of Paris and the Academie des Beaux-Arts; the Ministry of Culture is listed as a sponsor ... Overall: One item, a 2007 governance dispute; no critique of the Cite's programme or funders. ... Unverified: accusations against the former president Simone Brunau, including running the foundation opaquely for 30 years ...",
+  "after": "Residency partners named as text on the Partners page (Ministere de la Culture, Academie des beaux-arts, Direction des affaires culturelles of the City of Paris, and others); over 300 partners and more than 135 long-standing supporters; Malraux sentence from the About page; item 1 now dated 23 February 2007, author 'La redaction', with Brunau's denials as the only allegation content and the Unverified label naming the removed artists' statement.",
+  "sources": [
+   "https://www.citeinternationaledesarts.fr/en/our-partners/",
+   "https://www.citeinternationaledesarts.fr/en/about-us/",
+   "https://www.paris-art.com/23-02-07-remous-a-la-cite-internationale-des-arts/"
+  ],
+  "reason": "The Partners page logo row has no text; Ministry of Culture and Academie appear as text only in the residency-partner list. The paris-art.com article does not publish the artists' statement, so the specific accusations cannot be stated; Brunau's reply denies visiting studios in residents' absence and reserving studios for privileged individuals. Needs a human if a full account of the 2007 dispute is wanted."
+ },
+ {
+  "id": "coaxial-arts-foundation-la",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'to address the scarcity of avant-garde venues and offer an alternative to blue-chip galleries'",
+   "KCHUNG partnership claim not in sources",
+   "residency start date conflict (2016 vs March 2015)",
+   "California Arts Council purposes 'staff pay, artist fees and facility costs' not on page",
+   "'event income'"
+  ],
+  "before": "Founded by Eva Aguila ... to address the scarcity of avant-garde art venues ...; it partners with KCHUNG radio ...; $27,000 ... for staff pay, artist fees and facility costs",
+  "after": "Founded by Eva Aguila; Brock Fansler is treasurer (Joshua Oduga, Hyperallergic, 26 March 2024); both start dates given with their sources; California Arts Council grant described as the page does ('help cover operating costs after pandemic-era drops in box office and entry revenue') with the 60% earned-income quote; Warhol $60,000 Fall 2021 cycle announced 12 January 2022.",
+  "sources": [
+   "https://warholfoundation.org/grants/archive/coaxial-arts-foundation/",
+   "https://arts.ca.gov/grantee/coaxial-arts-foundation-3/",
+   "https://hyperallergic.com/a-los-angeles-residency-envisions-a-radical-future-for-experimental-art"
+  ],
+  "reason": "Hyperallergic 2019 is by Matt Stromberg (27 March 2019). The Warhol page gives no purpose beyond Multi-year Program Support."
+ },
+ {
+  "id": "colomboscope-colombo",
+  "section": "CRITICISM IN ART MEDIA / OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: MoMA post 'moved from political critique to larger, more polished events'",
+   "MoMA: 'says both ... cater mainly' stated as the author's claim (essay says 'have been accused')",
+   "'appreciative review'/'the only criticism is logistical' unsupported",
+   "Overall verdict 'Mixed coverage'",
+   "Tamil Guardian outlet description ('accountability for war crimes') unsupported",
+   "'ran for one weekend' unsupported",
+   "dates and authors missing"
+  ],
+  "before": "Argues that under sponsorship pressure the festival moved from political critique to larger, more polished events and 'lost [its] charge'. ... Appreciative review of the ninth edition; the only criticism is logistical ... Tamil Guardian is a partisan outlet that focuses on Tamil perspectives and accountability for war crimes.",
+  "after": "Quotes Dhar's own words ('time and sponsorship issues resulted in a hasty assortment of works'; 'lost their charge and, to a certain extent, their way'; 'have been accused of catering primarily to the English-speaking elite of Colombo'); Berlin Art Link item limited to what the review says about the Port City dock; Tamil Guardian described as reporting from a Tamil perspective (partisan); Overall line lists the four items; dates added (28 August 2015, 18 April 2018, 3 April 2013, 13 February 2026).",
+  "sources": [
+   "https://www.ft.lk/article/463577/Growing-pains--A-review-of-Cinnamon-Colomboscope-2015",
+   "https://post.moma.org/colombo-art-biennale-and-colomboscope-islands-in-an-unmappable-sea/",
+   "https://www.tamilguardian.com/node/25393"
+  ],
+  "reason": "EUNIC Cluster Fund since 2015 (one of five projects from over forty applicants) is on the Colomboscope home-old page, not the Partners page. Standard Chartered 2014 is in the 2017 Daily FT piece; Cinnamon Hotels title sponsorship and the 2015 renaming are in the MoMA post. Berlin Art Link also confirms free admission and the venues."
+ }
+]

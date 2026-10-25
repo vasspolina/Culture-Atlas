@@ -1,0 +1,245 @@
+[
+ {
+  "id": "ikon-gallery",
+  "section": "Red flags",
+  "problems": [
+   "heading says 'fined over Epstein accounts' but the page frames it as a regulator penalty on the bank",
+   "'alleged co-conspirators' hedge outside quotation",
+   "listing not dated"
+  ],
+  "before": "Red flags: Deutsche Bank, corporate patron fined over Epstein accounts; penalty over its relationship with Jeffrey Epstein ... payments to alleged co-conspirators",
+  "after": "Red flags: Deutsche Bank, a corporate patron fined by the New York regulator; sponsorship page listing undated, 2025 partner in the 2024 annual review; 7 July 2020 NYDFS $150 million penalty under a Consent Order, first regulator enforcement action over dealings with Epstein, plus Danske Bank Estonia and FBME Bank monitoring failures; payments to people \"publicly alleged to be\" co-conspirators, over $7 million settlements, over $6 million law firm payments, over $800,000 cash withdrawals over about four years",
+  "sources": [
+   "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202007071",
+   "https://www.ikon-gallery.org/support/sponsorship",
+   "https://ikon-gallery.org/news/view/annual-review-2024"
+  ],
+  "reason": "FLAG KEPT as a bank fine (House rules: a bank's criminal plea or fine is a name-to-know red flag; the bank is the funder itself; the NYDFS page, dated 7 July 2020, states the $150 million penalty and that the bank failed to properly monitor account activity for the registered sex offender, with the Epstein-account findings quoted). Not framed as an Epstein-linked donor flag: the page describes a regulator action against the bank. Ikon's sponsorship page lists Deutsche Bank, Elonex, Howells, Kier and Transport for West Midlands as current corporate patrons with no year; the 2024 annual review lists Deutsche Bank and Kier among the partners named under 'Looking ahead' for 2025."
+ },
+ {
+  "id": "ikon-gallery",
+  "section": "Overview",
+  "problems": [
+   "1964 given as founding year; Wikipedia says the collection began in 1964 and the gallery was established in 1965"
+  ],
+  "before": "Founded in 1964 by the collector Angus Skene and four Birmingham School of Art artists ... It opened in 1965 in an octagonal glass kiosk ... moved several times before reaching its current site in 1997",
+  "after": "Founded by the collector Angus Skene with four Birmingham School of Art artists ...; the collection began in 1964 when Skene bought a painting by Prentice. The gallery was established in 1965 in an octagonal glass-walled kiosk ... and reached its current site in 1997",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ikon_Gallery"
+  ],
+  "reason": "Wording follows the Wikipedia page. Funding, Birmingham City Council (core funder per 2024 annual review; project supporter per funding page), Freelands 2024 to 2027, Motesiczky 2024 to 2026, Rothschild, 2026 supporters, benefactors and patron count confirmed on ikon-gallery.org pages."
+ },
+ {
+  "id": "humboldt-forum-berlin",
+  "section": "Funding and Criticism",
+  "problems": [
+   "missing line break between two funding points",
+   "'ethnological museum' not in the Hyperallergic piece",
+   "Art Newspaper: removal stated as done; the article says the medallion will be removed, at the family's request",
+   "Oswalt article date missing",
+   "bottom line says 'was removed in 2021'",
+   "'owned' not supported (page says operator and builder)",
+   "'Hyperallergic report of December 2020' framing"
+  ],
+  "before": "The Art Newspaper: Reports that the forum removed the medallion ... the museum removed his medallion at his family's request",
+  "after": "Reports that the forum will remove the medallion of Ehrhardt Bödecker after Philipp Oswalt set out some of his far-right and antisemitic statements in the Tagesspiegel in October 2021; forum statement quoted; his son and daughter-in-law asked for the removal; Bödecker, a banker and historian who died in 2016, is honoured by one of the medallions for donors of more than €1 million toward the facade. Bottom line: medallion the forum announced in November 2021 it would remove",
+  "sources": [
+   "https://hyperallergic.com/609318/humboldt-forum/",
+   "http://www.theartnewspaper.com/2021/11/05/humboldt-forum-to-remove-medallion-honouring-far-right-donor",
+   "https://www.humboldtforum.org/wp-content/uploads/2026/07/Jahresbericht_SHF_2025.pdf"
+  ],
+  "reason": "FLAG KEPT: Hyperallergic, Hakim Bishara, 'Artists and Cultural Workers Oppose Humboldt Forum Opening, Citing Colonial Ties', 16 December 2020: the Coalition of Cultural Workers Against Humboldt Forum protested outside the forum on its (virtual) opening day, calling it a costly project with colonial roots and demanding it be defunded; July 2020 protest of about 250 coalition members against the gilded cross; cost €677 million, €100 million over plan; Savoy resigned 2017; Nigeria's ambassador Tuggar called for return of Benin Bronzes. The Art Newspaper, Catherine Hickley, 'Humboldt Forum to remove medallion honouring far-right donor', 5 November 2021: article says the medallion will be removed immediately; Oswalt (professor of architectural theory) wrote in the Tagesspiegel in October; the board says it did not know of the views; medallions honour donors of more than €1 million toward the facade. Annual report 2025 (pages 38 and 39 of the PDF, read with pypdf): federal and other public funds €57,016,068.38 (institutional €53,510,258.20 plus construction €3,505,810.18); sales €3,999,154.83; third parties €265,992.92; 2024 €64,695,990.40, €4,777,488.89, €1,305,329.39. Admission model from 3 October 2025 and first fundraising and sponsorship strategy confirmed on pages 36 and 37. Foundation page: BKM and a federal housing and building ministry named as funders."
+ },
+ {
+  "id": "ica-london",
+  "section": "Red flags and Criticism",
+  "problems": [
+   "'categorically false' not in any opened page (The Art Newspaper January 2025 has 'categorically untrue'; Hyperallergic paraphrases a denial)",
+   "walkout date: preview 14 January per article, spokesperson says 13 January",
+   "'14 staff at risk' placed in the 2025 article; the article cites 14 former staff",
+   "'at least one donor withdrew' reworded to the article's wording",
+   "Ünsal quote reworded to the article",
+   "Hyperallergic: 'argue cuts reflect mismanagement' not stated; the workers say six resigned against the ICA's financial mismanagement",
+   "'between Buckingham Palace ...' page says near",
+   "over 800 words (945)",
+   "'No funder in a flagged industry is documented' bottom-line clause",
+   "missing blank line before FUNDING",
+   "'Rheim Alkadhi began withdrawing' vs 'would withdraw'",
+   "funding verdict 'mainly public and earned income' unsupported"
+  ],
+  "before": "The ICA calls this \"categorically false\" ... Protesters urged the ICA to end its ties with Bloomberg Philanthropies and cited the 14 staff at risk of redundancy.",
+  "after": "The ICA denies this ... calling the claims \"categorically untrue\" (The Art Newspaper, 5 July 2024 and 16 January 2025; Hyperallergic, 19 July 2024); protesters demanded the ICA cut ties with Bloomberg Philanthropies and cited 14 former staff who linked their redundancies to the Israel boycott letter",
+  "sources": [
+   "http://www.theartnewspaper.com/2025/01/16/artists-at-ica-london-stage-mass-walkout-in-support-of-pro-palestine-protesters",
+   "http://www.theartnewspaper.com/2024/07/05/institute-contemporary-arts-london-workers-redundancies-palestine-protest",
+   "https://hyperallergic.com/ica-london-workers-say-they-were-fired-for-supporting-palestine"
+  ],
+  "reason": "FLAG KEPT (protest aimed at the ICA and its sponsor; staff dispute; dismissal link labelled Unverified with CWAG and former workers named). Press items: The Art Newspaper, Gareth Harris, 'Artists at London's ICA stage mass walkout in support of pro-Palestine protesters', 16 January 2025: more than 20 New Contemporaries artists walked out of the preview on 14 January (ICA spokesperson says 13 January), led by the UK wing of the Gaza Biennale and supported by the Palestinian Youth Movement, demanding the ICA cut ties with Bloomberg Philanthropies; ICA says no Bloomberg funding since 2020, funding went directly to New Contemporaries, which confirmed an undisclosed sum. The Art Newspaper, Kabir Jhala, 'Workers allege redundancies at London's Institute of Contemporary Arts are related to Palestine solidarity actions', 5 July 2024: ACE cut of £200,000 per year; deficit for 2023/24 expected around £800,000 (spokesperson); Ünsal quote; 'smokescreen' from an anonymous former worker. Hyperallergic, Maya Pontone, 'London Art Institute Workers Say They Were Fired for Supporting Palestine', 19 July 2024: 13 March all-staff meeting, 14 roles at risk, union saved three, at least six resigned (as the workers say), Alkadhi would withdraw her show. ICA governance page: NPO, charity 236848, chair Henrietta Moore, director Ünsal. Report trimmed from 945 to 786 words (kept FUNDING, BOTTOM LINE, SOURCES)."
+ },
+ {
+  "id": "ilham-gallery",
+  "section": "Wider context",
+  "problems": [
+   "RM2.3 billion/Renong/UEM attributed to The Star and The Vibes, neither mentions it",
+   "'December 2023' seizure date: The Star gives no seizure date; The Edge gives notice dated 18 December",
+   "4 June 2025 date not in The Vibes",
+   "absence sentence 'The reports on the seizure do not mention the gallery'",
+   "60-storey vs Wikipedia 58 storeys",
+   "landscape of commercial galleries (banned word, not in source)",
+   "'names no funders there' and 'publishes no funders' absence statements"
+  ],
+  "before": "December 2023: MACC seized Ilham Tower ... tied to a RM2.3 billion corporate transaction involving Renong Bhd and United Engineers Malaysia Bhd (The Star; The Vibes). 4 June 2025: MACC issued a second seizure notice ... The reports on the seizure do not mention the gallery.",
+  "after": "December 2023: MACC seized Ilham Tower under a notice dated 18 December 2023 addressed to Daim Zainuddin as owner (The Star, 21 December 2023; The Edge Malaysia Weekly, 25 to 31 December 2023); investigation since May 2023 of the Renong and UEM deal of the late 1990s, RM2.3 billion (The Edge); second seizure June 2025 under the Anti-Money Laundering Act 2001 (The Star, 5 June 2025); forfeiture filing planned 25 June 2025, tower valued RM1.5 billion to RM2 billion (The Vibes). Connection: gallery address is Levels 3 and 5 of Ilham Tower (Art Rabbit); IB Tower Sdn Bhd, which ran the gallery 2015 to 2018, is the tower's developer (Wikipedia).",
+  "sources": [
+   "https://theedgemalaysia.com/node/695186",
+   "https://www.thestar.com.my/news/nation/2025/06/05/macc-seizes-ilham-tower-again",
+   "https://www.artrabbit.com/organisations/ilham-gallery?view=cur"
+  ],
+  "reason": "ITEM KEPT in Wider context: a page (Art Rabbit, address 'Levels 3 & 5, Ilham Tower No 8 Jalan Binjai') shows the tower houses the gallery; no page says the tower funds it, and none of the seizure articles mention the gallery, so the report states only the address and the developer link. Exactly what was seized: the tower, by the MACC (The Star, Tarrence Tan, 'Daim's Ilham Tower seized by MACC', 21 December 2023: owned by the family of Daim Zainuddin). The Vibes, 25 June 2025, 'MACC to file for Ilham Tower forfeiture today' (no author shown): second seizure 'earlier this month', valuation, forfeiture filing. The Star, Benjamin Lee, 5 June 2025. Funding: 'privately-funded public art gallery' confirmed in Art & Market, Rahel Joseph, 23 October 2025; About page confirms IB Tower Sdn Bhd 2015 to 2018 and Yayasan ILHAM from 1 January 2019."
+ },
+ {
+  "id": "ilmin-museum-of-art-seoul",
+  "section": "Red flags and Criticism",
+  "problems": [
+   "flag aimed-at wording: protest location and subject not stated precisely",
+   "funding verdict 'privately run' not stated by a page",
+   "absence-style duplicate: 'Notes that the museum had issued no statement'"
+  ],
+  "before": "21 to 24 October 2016: after several women accused chief curator Youngjune Hahm ... About a dozen art students protested outside the museum building on 24 October (ArtAsiaPacific, citing the Korea Herald).",
+  "after": "After Soma Kim and other women accused chief curator Youngjune Hahm of sexual harassment, Hahm apologised, acknowledged abusing his position and said he would resign (ArtAsiaPacific, HG Masters, 28 October 2016); on 24 October 2016 a dozen art students protested in front of the Ilmin Museum of Art's building in Gwanghwamun, per the Korea Herald as cited; ArtAsiaPacific reported the museum had not released a statement on the resignation.",
+  "sources": [
+   "https://artasiapacific.com/news/ilmin-museum-chief-curator-to-step-down-after-sexual-harassment-complaint",
+   "https://en.wikipedia.org/wiki/Ilmin_Museum_of_Art"
+  ],
+  "reason": "FLAG KEPT, on the page's terms: ArtAsiaPacific, HG Masters, 'Ilmin Museum Chief Curator to Step Down After Sexual Harassment Complaint', 28 October 2016, says (citing the Korea Herald, 24 October 2016) a dozen art students protested in front of the museum's building in Gwanghwamun; the accused was the museum's chief curator since May 2015, so the protest was at the museum and about its chief curator (leadership). The page does not state the students' demands, and the Korea Herald link in the article is dead (404), so the report does not state any. Soma Kim identified as a fashion photographer and artist. Ilmin pages (opened by curl, ilmin.org is blocked in WebFetch): foundation founded 1994, collection about 2,000 works, prize 50 million won biennial, hours and admission confirmed; Wikipedia gives address 139 Sejongno, museum site gives 152 Sejong-daero (site kept)."
+ },
+ {
+  "id": "iaia-museum-of-contemporary-native-arts-santa-fe",
+  "section": "Overview, Wider context, Bottom line",
+  "problems": [
+   "1962 high school/BIA and 1920/1974 building facts attributed to the wrong Wikipedia article",
+   "Art Bridges 'according to Wikipedia' phrasing",
+   "Luján 'would push back' reworded to the article's quotation",
+   "FY2027 date of submission added",
+   "'No funder in a flagged industry is documented'"
+  ],
+  "before": "The FY2027 proposal, submitted in April 2026, again proposed eliminating IAIA's roughly $13 million federal funding. ... Senator Ben Ray Lujan said he would push back against the cuts (Source New Mexico, Danielle Prokop, 8 April 2026).",
+  "after": "The FY2027 proposal, submitted to Congress on 3 April 2026, would eliminate about $13 million in federal funding for IAIA. Shelly C. Lowe: \"Eliminating IAIA's federal appropriation will weaken educational opportunity.\" Luján pledged to fight what he called \"devastating cuts\" (Source New Mexico, Danielle Prokop, 8 April 2026, republished by Indian Country Today on 12 April 2026).",
+  "sources": [
+   "https://hyperallergic.com/congress-funds-institute-for-american-indian-arts/",
+   "https://ictnews.org/news/new-mexico-officials-universities-decry-federal-effort-to-cut-funds-for-colleges-serving-minority-students/",
+   "https://projects.propublica.org/nonprofits/api/v2/organizations/850365964.json"
+  ],
+  "reason": "KEPT as Wider context (criticism of a funding proposal that targets the parent IAIA, which owns the museum). FY2026: Hyperallergic, Isa Farfan, 'Congress Funds Institute of American Indian Arts', 22 January 2026: the Trump FY2026 budget proposal 'suggested eliminating the IAIA, NEH, the Smithsonian's fledgling Latino museum, and the NEA'; the Senate bill funds IAIA with $13.48 million for July 2026 to September 2027; about 75% of operating expenses federal. FY2027: ICT/Source New Mexico page as above. ProPublica FY2023 figures confirmed ($30,141,322 revenue; $24,273,876 contributions and grants; $5,104,528 program services; $24,331,198 expenses). Ford (2020, America's Cultural Treasures, 20 recipients) and Art Bridges (2025 Access for All, free Fridays through December 2026) rest on Wikipedia only, stated without amounts; neither Hyperallergic nor any other opened page names them, so they carry the Wikipedia attribution."
+ },
+ {
+  "id": "hospitalfield-arbroath",
+  "section": "Overview and Funding",
+  "problems": [
+   "13th-century 'pilgrims arriving by sea' and 1813 to 1890, Elizabeth, 'Trust established after his death', 'mainly 19th-century Arts and Crafts buildings', 1938 summer school and Mortuary Chapel owned by Angus Council: no opened page supports them",
+   "support page 'Supported by' rests on logos (Angus Council 'Community Grants Scheme' and Creative Carbon Scotland are link URLs and a logo without alt text)",
+   "'It gives no individual amounts' absence statement",
+   "missing line break",
+   "verdict 'mainly public' unsupported",
+   "'No funder in a flagged industry is documented'"
+  ],
+  "before": "The painter Patrick Allan-Fraser (1813 to 1890) ... the Trust was established after his death in 1890; From 1938 it ran a summer school ...; Support page: \"Supported by\" Creative Scotland, Heritage Lottery Fund, Angus Council through its Community Grants Scheme and Creative Carbon Scotland.",
+  "after": "Overview rewritten to the history pages: monks of Arbroath Abbey built a hospital to receive pilgrims in the 13th century; Patrick Allan married Elizabeth Fraser in 1843; the couple left estates and collections in trust; trustees took over on his death in 1890; art college opened 1902, postgraduate school in the 1920s, from 1922 students recommended by four Scottish art colleges. Funding: the full Future Plan funder list for Phase One and Phase Two, and the Tay Cities Joint Committee approval of £5.5 million subject to match funding; support-page logo bullet cut.",
+  "sources": [
+   "https://hospitalfield.org.uk/about/future-plan/",
+   "https://hospitalfield.org.uk/heritage/history/",
+   "https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC009987"
+  ],
+  "reason": "OSCR figures confirmed (income 2021 to 2025: £3,258,815; £902,484; £2,259,823; £1,588,311; £839,392; spending 2025 £877,351). Heritage Fund pages confirmed: £647,000 on 14 June 2016 (glass houses and Victorian fernery) and £2,033,176 on 7 June 2022 (Future Plan Phase 4). Fernery opened to the public June 2021 per the visit page. Foyle, Robertson Trust, Garfield Weston Trust, William Grant Foundation, HES, Creative Scotland named on the Future Plan page without amounts or grant dates. Trustees confirmed. The Wikipedia page was also opened and does not support the 13th-century pilgrim hospice wording, so the Hospitalfield history pages were used."
+ },
+ {
+  "id": "hubei-museum-of-art-wuhan",
+  "section": "Funding",
+  "problems": [
+   "missing line break",
+   "'no ticket income' inference",
+   "bottom line 'No private or corporate funder is documented'",
+   "'files a unit budget' overstated: the portal lists a unit budget disclosure catalogue"
+  ],
+  "before": "The Department's budget portal carries a \"2026 unit budget disclosure catalogue\" for the museum, posted on 3 March 2026.- Admission is free, so there is no ticket income.",
+  "after": "... posted on 3 March 2026 (Hubei Department of Culture and Tourism).\n- Admission is free (Maigoo).",
+  "sources": [
+   "http://wlt.hubei.gov.cn/zfxxgk/fdzdgknr/czzj/czyjs/index.shtml",
+   "http://wlt.hubei.gov.cn/zfxxgk/fdzdgknr/gysyjs/ggwhfw/ggmsg/202010/t20201030_2987804.shtml",
+   "https://www.maigoo.com/citiao/143207.html"
+  ],
+  "reason": "Department page: managed by the Hubei Department of Culture and Tourism, 'government-invested public-interest cultural institution'; opened 6 November 2007, free from 30 October 2008, renamed July 2010, key art museum 2011, 15,318 square metres, more than 5,400 works, six specialities, triennials. Budget portal: '湖北美术馆2026年度单位预算信息公开目录' posted 2026-03-03 (a unit budget entry, not a department one). Maigoo: 140 million yuan (100 million construction, 40 million land), hours, free. No change to the funding verdict beyond wording."
+ },
+ {
+  "id": "hugh-lane-gallery-dublin",
+  "section": "Overview and Funding",
+  "problems": [
+   "archived support page (RCN20040185, Section 1003, Friends of the National Collections 140 works, membership coming soon, Barbara Dawson as director) could not be opened (Wayback Machine blocks the fetch)",
+   "'run by DCC through its wholly owned Trust' attributed to the council page, which does not say so (Wikipedia does)",
+   "'core funding' not stated by Dublin Inquirer",
+   "closure stated without a source that says it happened",
+   "verdict 'mainly public' unsupported",
+   "'no corporate or flagged funder is documented'"
+  ],
+  "before": "Dublin City Council owns the gallery and provides its core funding. ... The Hugh Lane Gallery Trust is a registered charity (RCN20040185) ... Gifts of artworks come from ... Friends of the National Collections of Ireland, which has given more than 140 works. ... membership plan ... Barbara Dawson is named as director.",
+  "after": "Dublin City Council owns the gallery (Dublin Inquirer). Unverifiable archived-page bullets cut; replaced with: Sir Hugh Lane met the gallery's running costs when he founded it in 1908 and his bequest forms part of the collection (Wikipedia). Closure: 'The gallery closed on 28 September 2025 for refurbishment' (Wikipedia), expected closed at least three years (Dublin City Council; Dublin People, 30 July 2025).",
+  "sources": [
+   "https://www.dublininquirer.com/the-council-s-hugh-lane-gallery-has-an-ambitious-strategy/",
+   "https://en.wikipedia.org/wiki/Hugh_Lane_Gallery",
+   "https://dublinpeople.com/news/arts-culture/articles/2025/07/30/hugh-lane-gallery-to-close-for-refurbishment-until-2028/"
+  ],
+  "reason": "Dublin Inquirer, Cónal Thomas, 15 November 2017: €11.6 million over the previous five years, €3.5 million set aside by the council for refurbishment, €2.4 million extra wanted over five years (€1.2 million council, rising to €350,000 extra a year by 2022; €1.2 million own income); the council owns the gallery. Closure on 28 September 2025: Wikipedia states it closed on that date; the council page and Dublin People (30 July 2025) said it would close then for at least three years. The archive URL was removed from SOURCES because it could not be opened for checking."
+ },
+ {
+  "id": "human-resources-la",
+  "section": "Overview and Bottom line",
+  "problems": [
+   "Mike Kelley Foundation page describes the April 2024 show in the future tense; report said 'presented'",
+   "'No funder in a flagged industry is documented'"
+  ],
+  "before": "In April 2024 it presented the group exhibition \"There in Green California\", curated by Gelare Khoshgozaran (Mike Kelley Foundation).",
+  "after": "The Mike Kelley Foundation grants page lists the group exhibition \"There in Green California\", curated by Gelare Khoshgozaran, for April 2024.",
+  "sources": [
+   "https://warholfoundation.org/grants/archive/human-resources",
+   "https://mikekelleyfoundation.org/grants/2024-organizational-support-grants/human-resources-los-angeles",
+   "https://h-r.la/about"
+  ],
+  "reason": "Confirmed: Warhol Foundation, $60,000, Multi-year Program Support, Spring 2019; Mike Kelley Foundation, $30,000, 2024 Organizational Support Grants; About page names the LA County Board of Supervisors through the LA County Arts Commission, Rauschenberg Foundation and Ruth Foundation for the Arts without amounts or years; board and executive director John Burdle; BDS statement is stated by the space; Wikipedia facts (2010 founders, 2011 move) and visit page accessibility confirmed."
+ },
+ {
+  "id": "image-factory-art-foundation-imagination-factory-belize-city",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "'artist-run', 'non-profit', 'small and private' not stated by any opened page",
+   "'artist, poet and publisher' reworded to Wikipedia's 'visual artist, teacher, poet and publisher'",
+   "partners named for Ka'añaar were attendees and thanks, not partners",
+   "'page about the Said Musa Archival Project, 2025' (page is titled 'Said Musa Project 1', undated)",
+   "Breaking Belize News piece does not give the address"
+  ],
+  "before": "The money behind the foundation is small and private: a founder-led, artist-run non-profit that has used space provided free by the founder's father ... for 30 years.",
+  "after": "The foundation was developed by Yasser Musa, and the 501 Academy page says his father, Said Musa, a former prime minister, has provided space for it free for thirty years. In 2006 the Art in the Classroom project was a joint initiative of Hivos, the Image Factory Art Foundation and the Ministry of Education.",
+  "sources": [
+   "https://501academy.edu.bz/2025/03/13/said-musa-project-1/",
+   "https://archive.channel5belize.com/archives/8568",
+   "https://amandala.com.bz/news/ka-anaar-graphic-arts-exhibition-image-factory-library-african-indigenous-studies/"
+  ],
+  "reason": "501 Academy, 'Said Musa Project 1': 'He has generously provided free, for thirty years, space for our Image Factory (1995), now the Imagination Factory (2025)'; page gives no year or author and does not mention Yasser Musa; footer credits the Ministry of Education, Culture, Science and Technology. News 5, 13 September 2006, 'We are Belize highlights 25 years of art': Art in the Classroom a joint initiative of Hivos, the foundation and the Ministry of Education. News 5, Isani Cayetano, 'Image Factory Turns Twenty', 26 June 2015: over 200 books and over 500 artists (Musa's words). Breaking Belize News, Aaron Humes, '25 years of the Image Factory', 5 June 2020. Amandala, 29 June 2019: Cuban Ambassador Lissette Perez and Embassy Counsel Orestes Hernandez attended; NICH and UBAD thanked; Musa coordinated."
+ },
+ {
+  "id": "inema-arts-center",
+  "section": "Overview and Funding",
+  "problems": [
+   "'resident artists' (National Geographic Traveller says 10 local artists)",
+   "'led by', 'membership page', 'School of Art & Strengths' and 'school education programmes and social projects' not supported by the pages opened",
+   "'artist-run' verdict"
+  ],
+  "before": "The centre was founded and is led by Nkurunziza and Nkuranga ... The website lists adult courses, a cafe and a membership page.",
+  "after": "The centre was founded by Nkurunziza and Nkuranga, who are painters themselves (Inema website). The website lists creative courses and a cafe.",
+  "sources": [
+   "https://inemaartcenter.com/about/",
+   "https://inemaartcenter.com/visit/",
+   "https://www.nationalgeographic.com/travel/article/you-should-visit-kigali-africas-rising-creative-capital-rwanda"
+  ],
+  "reason": "Confirmed: founded 2012 by Nkurunziza and Nkuranga, both self-taught painters; address KG 563 St, Kacyiru; hours and free entry; Wikipedia lists six painter-siblings as founders; National Geographic Traveller, Zoey Goto, 'How Kigali's creativity is helping the Rwandan capital step into the limelight', 29 July 2026: opened 13 years ago in a former ambassador's residence, 10 local artists, Congolese masks. No funder is named on any opened page, so the report states only the founders and free entry. Source too thin to say more."
+ }
+]

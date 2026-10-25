@@ -1,0 +1,261 @@
+[
+ {
+  "id": "kunstmuseum-basel",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "Fed 2004 and Novartis 2020 cited to Wikipedia only",
+   "FinCEN entity wording incomplete",
+   "no flag: funder page undated, penalties against UBS AG, UBS Financial Services Inc. and Novartis Pharmaceuticals Corporation"
+  ],
+  "before": "Wikipedia's UBS article states that UBS was fined $100 million by the Federal Reserve in 2004 for trading in dollars with Iran and other sanctioned countries. / Wikipedia states that Novartis agreed in July 2020 to pay $678 million ...",
+  "after": "Fed release of 10 May 2004 (opened): UBS AG of Zurich consented to a $100 million civil money penalty 'in connection with U.S. dollar banknote transactions with counterparties in jurisdictions subject to sanctions under U.S. law', naming Cuba, Libya, Iran and Yugoslavia; order is against UBS AG, museum lists UBS and UBS Switzerland AG. FinCEN release of 3 August 2026 (opened): $125 million against UBS Financial Services Inc., Bank Secrecy Act, anti-money laundering failures (50,000+ wires, $10 billion+), not sanctions; entity is the US subsidiary, not UBS Switzerland AG. Novartis: 1 July 2020 SDNY release as reposted by VA OIG (justice.gov page returned empty; VA OIG page opened): $678 million, Novartis Pharmaceuticals Corporation, False Claims Act and Anti-Kickback Statute, speaker programmes; museum sponsor is Novartis International AG.",
+  "sources": [
+   "https://www.fincen.gov/news/news-releases/fincen-assesses-historic-125-million-penalty-against-ubs-financial-services-inc",
+   "https://www.federalreserve.gov/boarddocs/press/enforcement/2004/200405102/default.htm",
+   "https://www.vaoig.gov/articles/investigative-update/acting-manhattan-us-attorney-announces-678-million-settlement-fraud"
+  ],
+  "reason": "Kept as Wider context, no flag. Donors page lists UBS as Partner and Novartis International AG as Sponsor with no year or amount (page shows only Copyright 2026); FinCEN release is AML, not a flag category; the Fed 2004 penalty is 22 years old and against UBS AG; the Novartis case is pharma kickbacks by a subsidiary, no flag category and no page links it to the museum."
+ },
+ {
+  "id": "kunstmuseum-basel",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "verdict 'mainly public' with no page saying so",
+   "Basler Kantonalbank listed under Major donors but the page lists it under Companies",
+   "'none of them is tied to a payment' absence clause"
+  ],
+  "before": "mainly public: Canton Basel-Stadt, with foundations and a bank and corporate partner and sponsors / Major donors ... Nationale Suisse, Maja Oeri and Basler Kantonalbank / none of them is tied to a payment to the museum",
+  "after": "Kunstmuseum Basel: Canton Basel-Stadt, Basel foundations, a bank partner and corporate sponsors; Basler Kantonalbank moved to the companies list; bottom line states what each penalty is against.",
+  "sources": [
+   "https://kunstmuseumbasel.ch/en/museum/lendersdonorssponsors",
+   "https://www.bs.ch/medienmitteilungen/pd/2018-fit-die-zukunft-die-ergebnisse-der-betriebsanalyse-des-kunstmuseum-basel-liegen-vor"
+  ],
+  "reason": "Donors page and 7 September 2018 canton release give no public share. Also: 'rejected the claim in 2008' reworded to the Times of Israel wording (city held Glaser sold at fair value); 'world's first' reworded to Wikipedia wording; extension detail trimmed to get under 800 words."
+ },
+ {
+  "id": "kunstmuseum-bern",
+  "section": "WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "Fed 2004 cited to Wikipedia only",
+   "FinCEN entity wording",
+   "no flag: partner page undated",
+   "absence clause in bottom line"
+  ],
+  "before": "Wikipedia's UBS article states that UBS was fined $100 million ... / neither is tied to a payment to the museum",
+  "after": "Fed release (opened) and FinCEN release (opened) described exactly as for Basel; bottom line states the two penalties and their entities.",
+  "sources": [
+   "https://www.fincen.gov/news/news-releases/fincen-assesses-historic-125-million-penalty-against-ubs-financial-services-inc",
+   "https://www.federalreserve.gov/boarddocs/press/enforcement/2004/200405102/default.htm",
+   "https://www.kunstmuseumbern.ch/de/mitwirken/partner"
+  ],
+  "reason": "Partner page names UBS as Hauptsponsor with no year in the visible text; FinCEN is AML, Fed 2004 is against UBS AG and 22 years old: Wider context, no flag."
+ },
+ {
+  "id": "kunstmuseum-bern",
+  "section": "FUNDING",
+  "problems": [
+   "Canton Bern, Federal Office of Culture, Mobiliar, UNIQA known only from logos",
+   "verdict 'mainly public' with no page saying so",
+   "Burgergemeinde not named by SRF"
+  ],
+  "before": "The museum's partner page names Canton Bern as its public funder ... Exhibition sponsors on the page: the Federal Office of Culture, Mobiliar and UNIQA Art ... the Burgergemeinde and the lottery fund (SRF)",
+  "after": "Partner page lists UBS as Hauptsponsor and a Subventionsgeber logo linking to be.ch; three exhibition-sponsor logos linking to bak.admin.ch, mobiliar.ch, art-uniqa.ch (stated as link targets); SRF says 'Bernburger' and the lottery fund.",
+  "sources": [
+   "https://www.kunstmuseumbern.ch/de/mitwirken/partner",
+   "https://www.srf.ch/news/schweiz/abstimmung-kanton-bern-kunstmuseum-bern-kann-vorerst-nicht-saniert-werden"
+  ],
+  "reason": "The page has no written names for the funding body or exhibition sponsors; the link targets are stated as such. Verdict reworded. SRF article is dated 12 June 2026, vote 14 June; 51.8 percent No, CHF 15.7 million, CHF 147 million, CHF 81 million confirmed."
+ },
+ {
+  "id": "kunstmuseum-bern",
+  "section": "OVERVIEW",
+  "problems": [
+   "UNESCO, Federal Palace and Aare description on no opened page",
+   "'same director' unsourced",
+   "'lacks modern climate control' stronger than page"
+  ],
+  "before": "in the old town that the museum describes as a UNESCO World Heritage site, between the Federal Palace and the Aare slope. / The same director, Nina Zimmer, leads the Zentrum Paul Klee (museum website).",
+  "after": "about 10 minutes on foot from Bern station (museum website); Nina Zimmer took over in August 2016 and is also director of the Zentrum Paul Klee (Wikipedia); building lacks up-to-date infrastructure including climate and cooling systems and fire protection (museum website).",
+  "sources": [
+   "https://www.kunstmuseumbern.ch/de/info/anfahrt",
+   "https://en.wikipedia.org/wiki/Nina_Zimmer",
+   "https://www.kunstmuseumbern.ch/de/zukunft"
+  ],
+  "reason": "Anfahrt page gives no UNESCO, Bundeshaus or Aare wording; hours (Tuesday 10 to 20, Wednesday to Sunday 10 to 17) and CHF 24 on 25 October 2026 confirmed."
+ },
+ {
+  "id": "kunstmuseum-den-haag",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "verdict 'mainly public' with no page saying so",
+   "Mondriaan Fonds 'for the collection' not on page",
+   "'major contributor' and Vereniging Rembrandt wording"
+  ],
+  "before": "mainly public: the City of The Hague ... Mondriaan Fonds gives a structural contribution for the collection and project grants",
+  "after": "the City of The Hague, with a lottery, public funds and private funds; Mondriaan Fonds gives a structural contribution and support for projects (2022 Paula Rego purchase); Rembrandt contributes to several acquisitions (no year on page); Aronson since 2017; VriendenLoterij 500,000 euros a year.",
+  "sources": [
+   "https://www.kunstmuseum.nl/nl/museum/subsidienten",
+   "https://www.kunstmuseum.nl/en/support",
+   "https://www.denhaag.nl/pers/?p=5273"
+  ],
+  "reason": "City of The Hague owning building and collection confirmed on denhaag.nl release of 30 September 2026 (450,000 visitors, 85,000 design, 2 million and 0.5 million euro credits). Subsidy page: half of Kunstenplan contribution goes to building and collection care on average."
+ },
+ {
+  "id": "kunstnernes-hus-oslo",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "verdict 'mainly public' contradicts annual report ('dels finansiert', public operating grant low relative to costs)",
+   "bottom line 'annual reports name its funders' filler"
+  ],
+  "before": "mainly public, with foundation support: the state and the City of Oslo cover operations",
+  "after": "operating grants from the Ministry of Culture and the City of Oslo, with foundation support; foundation says it is partly financed ('dels finansiert') by the grants; ownership sentence sourced to annual report 2024.",
+  "sources": [
+   "https://kunstnernesh-site.files.svdcdn.com/production/A%CC%8Arsrapport-2024-FINAL.pdf",
+   "https://kunstnerneshus.no/artikler/regjeringen-bevilger-stotte-til-rehabiliteringen-av-kunstnernes-hus"
+  ],
+  "reason": "Annual report 2024 (36 pages, text extracted) confirms 13,823,000 NOK subsidy 2023 vs 18,185,858 NOK cost, Sparebankstiftelsen DNB 40 million NOK 2024, Fritt Ord, Bergesenstiftelsen, Talent Norge, 186 million NOK, yellow list, no borrowing. 1 October 2026 item confirms Lubna Jaffery, 64.6 million NOK, one third, about 194 million NOK. History page confirms 1930, 650,000 kroner, 62 entries, 1942, 22 November 1945, cinema 2016."
+ },
+ {
+  "id": "kunstraum-dornbirn-dornbirn",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "verdict 'mainly public' with no page saying so",
+   "'one named company supporter' and 'names these funders itself' filler"
+  ],
+  "before": "mainly public: City of Dornbirn, Province of Vorarlberg and the Republic of Austria, with Dornbirner Sparkasse",
+  "after": "supported by the City of Dornbirn, the Province of Vorarlberg, the Republic of Austria and Dornbirner Sparkasse (organisation page, no amounts); bottom line adds private non-profit association founded 1987; Adlassnigg named as the atelier's head.",
+  "sources": [
+   "https://www.kunstraumdornbirn.at/en/institution/organization",
+   "https://www.kunstraumdornbirn.at/en/institution/exhibition-hall",
+   "https://www.kunstraumdornbirn.at/en/institution/board"
+  ],
+  "reason": "Board of six, hall data (30 x 14 m, 11.15 m, 1893, 1984, not heatable), shows and hours confirmed."
+ },
+ {
+  "id": "kunstraum-kreuzberg-bethanien",
+  "section": "FUNDING / NOT RELATED",
+  "problems": [
+   "Künstlerhaus Bethanien called a tenant in the same building; page says it left in June 2010",
+   "'1973 and 1974 housed cultural institutions' unsupported",
+   "verdict 'mainly public' with no page saying so",
+   "leasehold detail"
+  ],
+  "before": "Not related: the Künstlerhaus Bethanien. It is a separate organisation and a tenant in the same building",
+  "after": "Not related: the Künstlerhaus Bethanien GmbH. It is a separate company that was based in the Bethanien building until June 2010 and then moved to Kottbusser Straße 10 (stated by the space).",
+  "sources": [
+   "https://www.kunstraumkreuzberg.de",
+   "https://taz.de/50-Jahre-Kunstraum-Kreuzberg/!5959181",
+   "https://www.berlin.de/ba-friedrichshain-kreuzberg/aktuelles/pressemitteilungen/2024/pressemitteilung.1488756.php"
+  ],
+  "reason": "Confirmed: Bezirksamt basic funding, Senate Ausstellungsfonds since 2014, Istanbul scholarship (home page), GSE Erbpacht since May 2009, taz interview by Tilman Baumgärtel 27 September 2023 (50,000 euros, partners, 50,000 to 60,000 visitors), press release 26 September 2024 (budget committee 25 September 2024, 5 million euros KulturInvest 2024), Berlin Biennale statement 17 January 2012."
+ },
+ {
+  "id": "kunstverein-bielefeld-bielefeld",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "eleven corporate partners known only from logo images",
+   "'Projektförderung' logo unnamed",
+   "'member-run' verdict kept; 'row of company partners' cut"
+  ],
+  "before": "member-run: almost 1,000 members and a row of company partners / The website shows a 'Corporate Partner' row of eleven company logos ...",
+  "after": "member-run: almost 1,000 members; 2025 WESTSTERN prize of 40,000 euros (e-flux, 3 July 2025); Wikipedia: non-profit registered association; Wikipedia membership more than 1,000.",
+  "sources": [
+   "https://www.kunstverein-bielefeld.de/de/kvb",
+   "https://www.e-flux.com/announcements/676771/winners-of-the-inaugural-weststern-art-award"
+  ],
+  "reason": "Partner names are not in text on the site; logos cut. Founding sentence reworded to Wikipedia (known as Bielefelder Kunstverein until 2019). The unopened exhibitions URL removed from sources. Vorstand, Beirat of twelve, hours and current show confirmed."
+ },
+ {
+  "id": "kunstverein-braunschweig",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "founding wording stronger than page",
+   "Villa Rotonda 'modelled on' vs 'one model'",
+   "'public and private mix' verdict shortened",
+   "Wikipedia 1923/1941/1946 wording"
+  ],
+  "before": "Founded in 1832 as the Verein der Kunstfreunde ... Krahe was a founding member and chaired it from 1834 ... modelled on Palladio's Villa Rotonda",
+  "after": "Founded in 1832; Krahe, a founder of the predecessor Verein der Kunstfreunde, first chair from 1834, active until his death in 1840; Villa Rotonda as one of its models; Wikipedia: Verein der Kunstfreunde dissolved 1923, e. V. formed 1941 under National Socialist direction, villa 1942, re-founded 1946.",
+  "sources": [
+   "https://kunstvereinbraunschweig.de/information/sponsors/",
+   "https://kunstvereinbraunschweig.de/information/institution/",
+   "https://de.wikipedia.org/wiki/Kunstverein_Braunschweig"
+  ],
+  "reason": "Sponsors page (undated) confirms City of Braunschweig, Lower Saxony ministry, BKM, foundations, companies (including BS|ENERGY, Credit Suisse), Fördermitglieder with Nowak and Janßen. Entries without year or amount, so no funder flag considered."
+ },
+ {
+  "id": "kunstverein-für-die-rheinlande-und-westfalen-düsseldorf",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "BKM identified only by image file name",
+   "member auctions and public artworks unsupported",
+   "Stadtwerke figures: EnBW 54.95 percent, supply mix wording",
+   "renovation postponement had no date"
+  ],
+  "before": "Pandemic-related infrastructure investments in 2020 and 2021 were supported by Stadtwerke Düsseldorf, the Federal Government Commissioner for Culture and the Media and the Neustart Kultur programme / EnBW holds the majority ... renewables made up 61.8 percent",
+  "after": "Sponsors page lists Stadtwerke Düsseldorf and Neustart Kultur (logo alt text) for pandemic-related infrastructure investments in 2020 and 2021; Neustart Kultur was a BKM programme (Wikipedia). Wikipedia: sales 3,058 million euros 2023, EnBW 54.95 percent after the 2005 sale, city just over 25 percent; 2022 supply: renewables 61.8, nuclear 3.7, fossil and other 32.6 percent. Renovation postponed by three further years per City press release of 28 January 2026.",
+  "sources": [
+   "https://kunstverein-duesseldorf.de/en/about/sponsors/",
+   "https://de.wikipedia.org/wiki/Stadtwerke_Düsseldorf",
+   "https://de.wikipedia.org/wiki/Neustart_Kultur"
+  ],
+  "reason": "Permanent partner Stadtwerke Düsseldorf, supporters Landeshauptstadt Düsseldorf and de Haen-Carstanjen & Söhne confirmed. No Fossil fuels flag: renewables are the largest line of the 2022 supply table and the table does not split coal and gas."
+ },
+ {
+  "id": "kunstverein-in-hamburg",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "Prateek Vijan (Hamburgische Kulturstiftung 2025) and Marina Xenofontos (Claussen-Simon 2024) pages not found (404)",
+   "annual fee not on membership page",
+   "early exhibition years 1826, 1898, 1958, 1965 not on page",
+   "Nazis closed it in 1944 stronger than Wikipedia",
+   "public tour Thursday 17:00 not on pages opened",
+   "Hapag-Lloyd wording"
+  ],
+  "before": "Hapag-Lloyd Stiftung makes the Thursday opening until 21:00 possible and also supported 'Inscape' with Grundig. / Members pay an annual fee / Friedrich (1826), Böcklin (1898), Pollock (1958) and Bacon (1965)",
+  "after": "Visit page: 'thanks to the generous support of the Hapag-Lloyd Stiftung' open until 9 pm every Thursday; Inscape (24 May to 10 August 2025): supported by Grundig and Hapag-Lloyd Stiftung; In and Out of Place (7 September 2024 to 12 January 2025): Behörde für Kultur und Medien, Bingo Umweltlotterie, Alfred Töpfer Stiftung, Hapag-Lloyd Stiftung, Hamburgische Kulturstiftung, CORA-Kunststiftung, Susanna Hegewisch-Becker. Pages name the foundation only. Dates added for Lenke Rothman, deutschland, Olga Balema, Angelika Oehms, Entombed.",
+  "sources": [
+   "https://kunstverein.de/api/texts/Besuch%20Informationen",
+   "https://kunstverein.de/api/exhibitions/inscape",
+   "https://kunstverein.de/api/exhibitions/in-and-out-of-place-land-after-information-1992-2024"
+  ],
+  "reason": "No flag: a foundation carrying a shipping line's name is not the company, and the pages say only 'Hapag-Lloyd Stiftung'. Ministry thanks on Sample Question (4 June 2026 opening) and the residency page confirmed. Klosterwall 23, 1993, 1822 statute, 1,906 members (2017) confirmed on Wikipedia."
+ },
+ {
+  "id": "kunstverein-munchen",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "exhibition title wrong: page reads 'George Tourkovasilis' presented with 'Daybed' by Julie Peeters",
+   "purpose of founding from memory of Wikipedia not on page",
+   "ADKV membership not on opened page",
+   "director start dates not on team page"
+  ],
+  "before": "George Tourkovasilis's 'Daybed' ... Tom Engels has been director since 2026, following Maurin Dietrich (2019 to 2025) ... mediate between art production and the public and ... a sales venue",
+  "after": "exhibition 'George Tourkovasilis', presented with 'Daybed' by Julie Peeters; Tom Engels is director (team page); council paper says Dietrich, director since 2019, was expected to leave at the end of 2025; Wikipedia aim 'Förderung und Pflege der Bildenden Kunst'.",
+  "sources": [
+   "https://www.muenchen-transparent.de/dokumente/9249781/datei",
+   "https://www.kunstverein-muenchen.de/en/institution",
+   "https://www.kunstverein-muenchen.de/de/programm/ausstellungen/aktuell/george-tourkovasilis"
+  ],
+  "reason": "Council paper opened (PDF text extracted): Anlage 2 to the Beschlussvorlage for the Kulturausschuss of 18 September 2025, Haushaltsjahr 2026; Kunstverein München e.V. entry 1 (grant for exhibition operation with events, lectures and publications; over 2,000 members; founded 1823), Kunstraum München e.V. entry 2 (founded 1972); no amount is given for the Kunstverein. Flanders State of the Art and Knackscharf Rent confirmed on exhibition pages (26 September to 29 November 2026)."
+ },
+ {
+  "id": "kuona-collective-nairobi",
+  "section": "RED FLAGS / OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "Red flags heading not in a flag category: missing funds at the predecessor Trust",
+   "Trust income presented as the Collective's funding",
+   "Gachia/Oduor details stronger than Business Daily",
+   "Triangle Arts Trust 'part of' claim not confirmed",
+   "'Business Daily counted 35 artists' wording"
+  ],
+  "before": "Red flags: missing funds at the predecessor Kuona Trust / Business Daily reported that Oduor received none of the ministry's Sh1 million until the ministry questioned ... Gachia, then only a fraction / artist-run: studio rents and the artists' own sales, after the Trust's donor funding ended",
+  "after": "Heading removed; the Trust's closure is history in the Overview with the connection stated (NYT piece reposted by Brownell: Collective opened on the same grounds; Wikipedia: Collective established 2017 following the Trust's closure). Business Daily, 10 November 2016, 'Art fair opens under the shadow of Kuona Trust scandal' (no author on page): offices shut September 2016 for Forum Syd audit, 'multi-million shillings are missing', ministry queried Gachia, Oduor never received the funds needed for materials and has yet to complete the work. Unverified item: NYT piece reposted by Brownell, 'alleged misappropriation of funds', accuser not named. Funding verdict now 'artist-run space on the grounds of the former Kuona Trust' with the Trust's income labelled as the Trust's.",
+  "sources": [
+   "https://www.businessdailyafrica.com/bd/lifestyle/art-fair-opens-under-the-shadow-of-kuona-trust-scandal--2130986",
+   "https://ginannebrownell.com/new-york-times-in-nairobi-an-art-scene-in-transition/",
+   "https://en.wikipedia.org/wiki/Kilimani"
+  ],
+  "reason": "No flag category fits. Business Daily's article does not mention the Collective; the connection comes from the Brownell repost and Wikipedia, whose dates differ (December after a September closure vs 2017). Brownell page shows no date of its own; the NYT piece is not named by author. Happening Africa (Isabel S. Wilcox, 4 November 2016), Africanah (Craig Halliday, dated 08/05/16 on the page, given as 2016), Communication Initiative entry of 17 November 2004, Arts Collaboratory (Wikipedia), Kuona Trust newsletter of 11 July 2013 confirmed. Triangle Arts Trust sentence cut because the opened page was not confirmed to say the Trust was part of it."
+ }
+]
