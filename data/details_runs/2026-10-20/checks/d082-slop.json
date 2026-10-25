@@ -1,0 +1,208 @@
+[
+ {
+  "id": "museu-lasar-segall-são-paulo",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: Petrobras paid for renovation works completed with 2015 reopening",
+   "absence-free rewrite"
+  ],
+  "before": "Petrobras sponsorship dates from 2013, with the works finished at the 2015 reopening; 2013 museums programme paid for the renovation works",
+  "after": "Jornal de Brasília 2 Oct 2013: Programa Petrobras Ministério da Cultura de Museus, R$ 20 million for 12 institutions, money for the requalificação of the Segall museum; separate line: museum resumed activities in 2015 after 18 months closed (My Art Guides, no sponsor named). Petrobras is an oil company; history only, no flag.",
+  "sources": [
+   "https://jornaldebrasilia.com.br/viva/museus-instalados-em-cidades-sede-da-copa-receberao-patrocinio-de-r-20-milhoes/",
+   "https://myartguides.com/exhibitions/sao-paulo/comings-and-goings-segall-and-brazil/"
+  ],
+  "reason": "No opened page links Petrobras money to the 2013 to 2015 works as paid; the batch's R$2.5M (R$1.5M Culture Fund, R$1M Petrobras) figure appears on no opened page and was not added. Federal IBRAM unit and friends' association (ACAMLS) confirmed on Google Arts & Culture."
+ },
+ {
+  "id": "museum-abteiberg-monchengladbach",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: roof",
+   "unsupported: Beuys's first museum exhibition",
+   "unsupported: archive of Fluxus material",
+   "absence statement x2",
+   "outlet/date missing"
+  ],
+  "before": "The roof is a walk-on surface...; Beuys's first museum exhibition; archive of Fluxus material; The source does not name the funding programme; No corporate or flagged funder is documented.",
+  "after": "Walk-on structure whose surface is open; a major Joseph Beuys exhibition; Sammlung/Archiv Andersch; Börse Express, 5 August 2026: square of about 900 m2, about 490,000 euros, 80 percent external funding, construction begun early August.",
+  "sources": [
+   "https://www.boerse-express.com/news/articles/moenchengladbach-neuer-stadtplatz-am-museum-abteiberg-im-bau-935691",
+   "https://hollein.com/eng/layout/set/print/Architecture/Nations/Germany/Staedtisches-Museum-Abteiberg",
+   "https://www.kulturstiftung-des-bundes.de/en/programmes_projects/image_and_space/detail/from_that_point_on_temporary_re_opening_of_the_municipal_museum_in_moenchengladbach.html"
+  ],
+  "reason": "Cladders 1985 end date credited to Wikipedia (Kulturstiftung page gives no end date)."
+ },
+ {
+  "id": "museum-arnhem-arnhem",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: city paid/commissioned 23 million (NOS says nothing on who paid)",
+   "misattribution: city said tiles could come loose (an independent expert concluded)",
+   "December 2025 inferred"
+  ],
+  "before": "Gemeente Arnhem ... commissioned the 23 million euro renovation; the city said all 82,000 tiles could come loose; in default in December 2025",
+  "after": "Nieuws.nl (ANP), 13 May 2022: renovation cost 23 million euros, Arnhem city council 22.5 million, province of Gelderland 0.5 million. NOS/Omroep Gelderland, 29 March 2026: independent expert concluded all 82,000 tiles could come loose; contractor given notice of default in December.",
+  "sources": [
+   "https://nieuws.nl/algemeen/museum-arnhem-na-jaren-weer-open",
+   "https://nos.nl/l/2608271",
+   "https://nl.wikipedia.org/wiki/Museum_Arnhem"
+  ],
+  "reason": "Added nieuws.nl source to SOURCES. Wikipedia nl: council decision 25 January 2016, 11.2 million euro budget."
+ },
+ {
+  "id": "museum-beelden-aan-zee-the-hague",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 2024 board report describes support from private individuals, funds, businesses (annual report not opened)"
+  ],
+  "before": "Its 2024 board report describes support from private individuals, funds, businesses and other subsidisers (annual report listing).",
+  "after": "(cut)",
+  "sources": [
+   "https://www.beeldenaanzee.nl/anbi",
+   "https://www.vriendenloterij.nl/goede-doelen/culturele-partners/museum-beelden-aan-zee"
+  ],
+  "reason": "Annual report PDF could not be read from the ANBI page. VriendenLoterij since 2008, 250,000 / 108,079 / 579,767 euros, 40 percent confirmed on the lottery page; foundation assets and no active fundraising on the ANBI page."
+ },
+ {
+  "id": "museum-de-lakenhal-leiden",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "figure presented as final cost (2016 budget)",
+   "absence statements",
+   "filler"
+  ],
+  "before": "the municipality covered 20.5 million euros and third parties 2.8 million euros; paid 20.5 of the 23.3 million euros for the 2016 to 2019 rebuild; No flagged funder is documented.",
+  "after": "Kassa (BNNVARA, credit ANP), 12 October 2016: project of 23.3 million euros, municipality contributing 20.5 million, third parties 2.8 million; Wikipedia gives about 19 million euros as the cost of the 2016 to 2019 renovation.",
+  "sources": [
+   "https://www.bnnvara.nl/kassa/artikelen/museum-de-lakenhal-in-leiden-voor-2-5-jaar-dicht",
+   "https://lakenhal.nl/en/story/thanks-to",
+   "https://en.wikipedia.org/wiki/Museum_De_Lakenhal"
+  ],
+  "reason": "Thanks page names the government funders, funds and Niemeijer Fund exactly as stated; the page gives no years or amounts and says it covers donations since the foundation."
+ },
+ {
+  "id": "museum-dhondt-dhaenens-deurle",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "wrong count: 24 patrons (23 named)",
+   "unsupported: annual reports 2019 to 2025 posted",
+   "unsupported: Leie region (kept only for press release wording)",
+   "absence statements x2",
+   "merged bullet"
+  ],
+  "before": "24 patrons ... Annual reports for 2019 to 2025 are posted. No amounts or years are given on that page. It did not name the funders.",
+  "after": "23 patrons; annual reports clause cut; absence clauses cut; extension: 6 million euro investment, joint venture of government and private parties, financing nearly complete (press release 30 August 2018, read from PDF text).",
+  "sources": [
+   "https://museumdd.be/en/support/partners",
+   "https://museumdd.be/en/support/patroons",
+   "https://museumdd.be/en/about/colofon"
+  ],
+  "reason": "Partners page: public partners Vlaamse overheid, Gemeente Sint-Martens-Latem, De Nationale Loterij; structural partners Christie's, Zwartopwit, Duvel, Colora Gent, Jet Import; Puilaetco listed under Residency partners 2024; Willame foundation under Other partners. Colophon confirms private foundation recognised by the Flemish Government. Dutch press release PDF text read through the system PDF reader."
+ },
+ {
+  "id": "museum-fuer-naturkunde-berlin",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "misattribution: 'Berlin had spent' (report says public funds, 61 million euros)",
+   "unsupported: museum page says plan backed by Bundestag and House of Representatives",
+   "absence/verdict clause"
+  ],
+  "before": "Berlin had spent public money on the renovation continuously...; backed by the Bundestag and the Berlin House of Representatives; No private or flagged funder is documented.",
+  "after": "Public funds totalling 61 million euros spent since 2008; Senate Chancellery report of 12 February 2019: Gesamtkosten 660 Mio, davon 330 Mio als Einnahme vom Bund; museum page: in 2018 it secured funding from the German Bundestag and the State of Berlin.",
+  "sources": [
+   "https://www.parlament-berlin.de/adosservice/18/Haupt/vorgang/h18-0971.D-v.pdf",
+   "https://www.berliner-zeitung.de/article/zukunftsplan-in-drei-bauphasen-5354",
+   "https://www.museumfuernaturkunde.berlin/en/the-museum/museums-evolution-zukunftsplan/"
+  ],
+  "reason": "80/20 split, 50:50 building work and Article 91b confirmed in the Senate report (12 February 2019). Berliner Zeitung, Torsten Harmsen, 22 January 2020: 660 million euros, half each from Bund and Land; phase 1 about 299 million euros to about 2028."
+ },
+ {
+  "id": "museum-of-arts-and-design-new-york",
+  "section": "CRITICISM IN ART MEDIA / FUNDING / BOTTOM LINE",
+  "problems": [
+   "allegations not labelled",
+   "wrong detail: October 2023 vacation (article says autumn 2023)",
+   "verdict clause",
+   "Form 990 years imprecise"
+  ],
+  "before": "She says ... on an October 2023 vacation in Mexico ...; No flagged funder is documented.",
+  "after": "Allegations marked Unverified: and attributed to Lewis; museum's denial quoted; Forms 990 for 2017 and 2020 only.",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/03/26/museum-arts-and-design-lawsuit-director-expenses-whistleblower",
+   "https://projects.propublica.org/nonprofits/organizations/133585408",
+   "https://madmuseum.org/exhibition/haas-brothers-uncanny-valley"
+  ],
+  "reason": "Press item kept: The Art Newspaper, Benjamin Sutton, 'New York museum's former chief financial officer claims in lawsuit she was fired for raising concerns about director's expenses', 26 March 2024. Plaintiff Denise Lewis, filed 22 March 2024, museum spokesperson: 'These allegations are untrue.' Funding: NYSCA and NYC Department of Cultural Affairs credit confirmed on the Haas Brothers exhibition page; Sarah Arison and Suzi Cordish named; Duggal from the batch is on no opened page and was not added."
+ },
+ {
+  "id": "museum-of-contemporary-art-and-design-mcad-manila",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement: page names no donors",
+   "2025 details misattributed to Tribune (five years comes from BluPrint)",
+   "verdict clause"
+  ],
+  "before": "The campaign seeks funding for at least five more years (Daily Tribune, 4 November 2025; BluPrint ...)",
+  "after": "Daily Tribune 4 November 2025 lists 39 donating artists; BluPrint (Elle Yap, 7 November 2025) gives the goal of at least five years of funding.",
+  "sources": [
+   "https://tribune.net.ph/2025/11/03/artists-boost-fundraising-initiative",
+   "https://bluprint-onemega.com/arts-culture/mcad-funding-the-future-2025-aims-to-fund-five-years-of-gallery-initiatives/",
+   "https://www.mcadmanila.org.ph/funding-the-future/"
+  ],
+  "reason": "2018 auction (8 September 2018, Leon Gallery, Makati) confirmed on the museum's Funding the Future page; 15 November 2025 dinner and auction, Leon Gallery as official auction partner and exhibition 9 to 16 November confirmed on Tribune and BluPrint (the museum page does not carry the 2025 event). Art Circle tiers confirmed on the Support page."
+ },
+ {
+  "id": "museum-of-contemporary-art-australia-mca",
+  "section": "FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "imprecise: 14.7 percent is NSW Government recurrent funding, not all government",
+   "Telstra/Qantas detail missing",
+   "unsupported: building finished early 1950s",
+   "verdict clause"
+  ],
+  "before": "recurrent government funding was 14.7 percent of 2024 expenditure",
+  "after": "NSW Government recurrent funding 4.3 million dollars = 14.7 percent; federal support through Creative Australia 0.7 million dollars = 2.4 percent (Annual Report 2024, Government section). Qantas concluded its 20+ year partnership in 2024 as Aboriginal and Torres Strait Islander Collection Partner; Telstra communication partner of 24 years; Oceania Cruises major partner; Bloomberg corporate member.",
+  "sources": [
+   "https://www.mca.com.au/files/documents/MCA_Annual_Report_2024_v2.pdf",
+   "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art_Australia"
+  ],
+  "reason": "Operating revenue 27,040,807 dollars, 2 million dollar operating deficit funded from cash reserves and self-generated about 85 percent of revenue confirmed in the report. The 20 dollar admission fee is on Wikipedia, not in the report text read."
+ },
+ {
+  "id": "museum-of-contemporary-art-chicago-mca",
+  "section": "WIDER CONTEXT / FUNDING / BOTTOM LINE",
+  "problems": [
+   "Griffin item stated protest relation but not his MCA relation precisely",
+   "unsupported grouping: Griffin under 'foundations and families'",
+   "name coincidence: Griffin Galleries",
+   "donor levels incomplete",
+   "verdict clause"
+  ],
+  "before": "Kenneth C. Griffin, a donor at 100,000 dollars and above, was targeted by protesters at the Whitney...; Griffin Galleries sentence",
+  "after": "Wider context kept: the MCA 2025 Annual Report lists Kenneth C. Griffin as a donor at 100,000 dollars and above for gifts 1 July 2024 to 30 June 2025; the Whitney protest was aimed at the Whitney. Griffin Galleries sentence cut (no page ties the gallery name to him).",
+  "sources": [
+   "https://mcachicago.org/about/annual-reports/2025-annual-report/",
+   "https://hyperallergic.com/858510/whitney-museum-entrance-doused-with-fake-blood/"
+  ],
+  "reason": "Press item kept: Hyperallergic, Hakim Bishara, 'Whitney Museum Entrance Doused With Fake Blood', 23 November 2023 (does not mention the MCA; Griffin on the Whitney board until July 2023). Annual report: Northern Trust 100,000 and above, BMO Bank 25,000 to 49,999, Bank of America 15,000 to 24,999, FY2025 gifts; financial figures confirmed (revenue 28,814k, expenses 34,914k, net assets 174,061k). The Griffin item stays as Wider context because the page shows him as a donor to the MCA, a campaign against a funder at another institution; no trustee listing was found."
+ },
+ {
+  "id": "museum-of-contemporary-art-san-diego-la-jolla",
+  "section": "FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "funders known only from logos",
+   "unsupported: about 30 trustees",
+   "imprecise: restoration architect of 1996 additions",
+   "verdict clause"
+  ],
+  "before": "lists JPMorgan, Northern Trust, Bank of America, KPBS, Westfield UTC, Room and Board and Schuback Aviation ...; about 30 further trustees listed",
+  "after": "Corporate partner names cut (page names them by logo only); partnership levels kept; bylaws maximum of 40 trustees; NEH 750,000 dollar matching grant announced 30 January 2020.",
+  "sources": [
+   "https://www.neh.gov/news/mcasd-awarded-750000-grant",
+   "https://www.mcasd.org/support/corporate-partners",
+   "https://projects.propublica.org/nonprofits/organizations/951855640"
+  ],
+  "reason": "Axline bequest (1999, more than 30 million dollars) and endowment over 40 million dollars are Wikipedia's wording and credited to Wikipedia. ProPublica FY2025 figures confirmed (revenue 1,721,132; expenses 13,688,922; net assets 124,604,727; FY2024 net assets 135,251,189; CEO compensation 399,331)."
+ }
+]
