@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=266">
-  <script src="assets/config.js?v=266"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=267">
+  <script src="assets/config.js?v=267"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9886,11 +9886,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v266';
+    const ATLAS_RELEASE = 'culture-atlas-v267';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=266').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=267').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11569,9 +11569,13 @@ return maplibregl$1;
     // The quotation is an inserted passage (Hochuli p.52, fig 70): the text's own size, not indented, set off by the space
     // around it, with its source in small print directly under it. It is typeset whole, so the outer marks are single and any
     // quotation inside it double (p.37); the opening mark hangs in the indent and the words, not the mark, align.
+    // A quotation that opens with its own quoted word (\u201cPhilanthropy\u201d thus becomes...) would meet the outer mark as two
+    // doubles in a row and set \u2018\u2019Philanthropy\u2019. The source's own doubles are made singles first; the outer pair then
+    // takes them for the inner level and sets them as doubles.
     function quotedText(text) {
-      const t = '\u201c' + String(text || '').trim() + '\u201d';
-      return typeof window.typeset === 'function' ? window.typeset(t, 'en') : '\u2018' + String(text || '').trim().replace(/[\u201c\u201d"]/g, m => m === '\u201d' ? '\u201d' : '\u201c') + '\u2019';
+      const body = String(text || '').trim().replace(/[\u201c"]([^\u201c\u201d"]*)[\u201d"]/g, '\u2018$1\u2019');
+      return typeof window.typeset === 'function' ? window.typeset('\u201c' + body + '\u201d', 'en')
+        : '\u2018' + body.replace(/\u2018([^\u2018\u2019]*)\u2019/g, '\u201c$1\u201d') + '\u2019';
     }
     function critiqueQuoteHtml(q) {
       const e = escapeHtml;
@@ -15362,7 +15366,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           focus(target);
           const recordContext = target.why_flagged || target.watch;
           const hasTheory = (target.visual_critiques || []).some(v => v.kind === 'theory');
-          answer(`<p>${formatInstLink(target)}: the structured record does not list specific critics, reviews or public controversies. ${hasTheory ? 'Published critics write about this kind of museum; the quotations below are about the type, not evidence of how this museum itself was received.' : ''}</p>${(target.visual_critiques || []).filter(v => v.kind === 'theory').map(v => `<p><strong>${escapeHtml(v.strategy)}.</strong></p>` + (v.quotes || []).map(critiqueQuoteHtml).join('')).join('')}${recordContext ? `<p><strong>Recorded context:</strong> ${escapeHtml(recordContext)} This is institutional context from the record, not evidence of critical reception.</p>` : ''}${sourcesHtml(target)}`);
+          answer(`<p>${formatInstLink(target)}: the structured record does not list specific critics, reviews or public controversies. ${hasTheory ? 'Published critics write about this kind of museum; the quotations below are about the type, not evidence of how this museum itself was received.' : ''}</p>${(target.visual_critiques || []).filter(v => v.kind === 'theory').map(v => (v.quotes || []).map(critiqueQuoteHtml).join('')).join('')}${recordContext ? `<p><strong>Recorded context:</strong> ${escapeHtml(recordContext)} This is institutional context from the record, not evidence of critical reception.</p>` : ''}${sourcesHtml(target)}`);
           return;
         }
         answer('<p>The Atlas attaches quotations from published critics (e-flux, L\u2019Internationale Online and similar press, with author and source named) to spaces by museum type, but these are about the type, not evidence of how a given space was received, and they are not reviews of it. The records do not provide a map-wide catalog of critical reception; name a space to see its recorded context and sources.</p>');
@@ -19406,9 +19410,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=266"></script>
-<script src="assets/layers.js?v=266"></script>
-<script src="assets/hq-detail.js?v=266"></script>
-<script src="assets/bubbles.js?v=266" defer></script>
+<script src="assets/typeset.js?v=267"></script>
+<script src="assets/layers.js?v=267"></script>
+<script src="assets/hq-detail.js?v=267"></script>
+<script src="assets/bubbles.js?v=267" defer></script>
 </body>
 </html>
