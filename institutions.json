@@ -527,7 +527,74 @@
         "funder": "HSBC",
         "institutions": 5
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Public art gallery on the corner of Wellesley Street East and Kitchener Street, Auckland, entered through the main doors at 1 Kitchener Street (Auckland Art Gallery site).",
+        "Established in 1888 as the first permanent art gallery in New Zealand, sharing a building with the Auckland public library and opening with donations from Sir George Grey and James Tannock Mackelvie; the Mackelvie Trust Collection is still a core holding (Wikipedia).",
+        "The 2011 redevelopment by the Australian firm FJMT with Auckland-based Archimedia increased exhibition space by 50%, restored parts of the building to its 1916 state and reduced 17 floor levels to six; it won the 2013 World Building of the Year award. It cost NZ$113 million, of which Auckland City Council contributed just under NZ$50 million (Wikipedia).",
+        "The collection holds more than 18,000 works (Wikipedia). The Gallery is owned and operated by T\u0101taki Auckland Unlimited, an Auckland Council-controlled organisation (Annual Review 2024/25). Attendance in 2024 to 2025 was 497,998 against a target of 500,000 (Annual Review 2024/25).",
+        "Open every day 10:00 to 17:00 except Christmas Day. General collection exhibitions are free for everyone; special exhibitions can carry a charge."
+      ],
+      "funding_verdict": "Auckland Art Gallery Toi o T\u0101maki: public (Auckland Council through T\u0101taki Auckland Unlimited), with corporate partners, trusts and an endowment foundation",
+      "funding": [
+        "Corporate partners in 2024 to 2025: BMW, Van Cleef & Arpels, HSBC, Anthony Harper, Baker Tilly, Beca, Cordis, Omnigraphics and Trinity Hill (Annual Review 2024/25). The exhibition \"A Century of Modern Art\" (June to September 2025) was supported by HSBC, Cordis and the Auckland Art Gallery Foundation.",
+        "Trusts and foundations: the Joyce Fisher Charitable Trust, Friedlander Foundation, Sue Fisher Art Trust and Sir William and Lady Lois Manchester Charitable Trust fund transport, staffing and resources so students can visit; Lottery Environment and Heritage supported the Heritage Restoration Project (Annual Review 2024/25).",
+        "Auckland Art Gallery Foundation: gave over NZ$500,000 to the Gallery in 2024 to 2025, its largest annual gift; its endowment grew 78% to NZ$6,180,000 (Annual Review 2024/25).",
+        "The Chartwell Trust has been the long-term home of the Chartwell Collection at the Gallery since 1997 (2,134 works) and has supported the North Terrace commissions since 2012 (Annual Review 2024/25).",
+        "The Contemporary Benefactors, founded in 2013 with 127 members, funded \"Olafur Eliasson: Your curious journey\". The trustees of Gibbs Farm donate a day each year for a fundraiser, which had 1,000 ticket holders in November 2024 (Annual Review 2024/25)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Partner bank HSBC, 2012 US money-laundering and sanctions settlement",
+          "points": [
+            "HSBC is listed among the Gallery's current partners and backed \"A Century of Modern Art\" (June to September 2025) (Annual Review 2024/25); the Gallery's partnerships page lists HSBC among its Members.",
+            "On 11 December 2012 the US Department of Justice announced that HSBC Holdings and HSBC Bank USA agreed to forfeit US$1.256 billion and enter a deferred prosecution agreement, with a further US$665 million in civil penalties; wire reports put the total at US$1.92 billion (Justice Department release; Arkansas Democrat-Gazette).",
+            "The release cites violations of the Bank Secrecy Act, including at least US$881 million in drug proceeds laundered, among them proceeds of the Sinaloa Cartel in Mexico and the Norte del Valle Cartel in Colombia, and violations of the International Emergency Economic Powers Act and the Trading with the Enemy Act through transactions for customers in Cuba, Iran, Libya, Sudan and Burma (Justice Department release).",
+            "The settlement dates from 2012, more than five years ago; HSBC's partnership with the Gallery is current."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "The Spinoff, Simon Wilson, \"Why is Auckland slowly strangling its art gallery?\" (12 December 2017): argues that Auckland Council, led by Mayor Phil Goff, underfunds the Gallery. The Gallery's operating budget was NZ$6.9 million in the latest financial year, down 25% from NZ$9.2 million in 2012, while visitors reached 550,000 against a target of 470,000.",
+        "Wilson writes that benefactor and sponsor money \"doesn't keep the doors open\", and he opposes an entry fee for overseas visitors, who are about 60% of visitors. He names Goff, the Gallery's director Rhana Devenport and Paul Brewer of Regional Facilities Auckland.",
+        "The column's target is the council, which owns the Gallery through T\u0101taki Auckland Unlimited, not the Gallery itself."
+      ],
+      "bottom_line": "The Gallery is publicly owned and funded through Auckland Council, with corporate partners, trusts and an endowment on top. The name to know is HSBC, a current partner that settled US money-laundering and sanctions cases in December 2012. The council's funding of the Gallery, criticised in The Spinoff in 2017, is the other point to watch.",
+      "sources": [
+        {
+          "url": "https://www.aucklandartgallery.com/visit"
+        },
+        {
+          "url": "https://www.aucklandartgallery.com/give-and-join/partnerships"
+        },
+        {
+          "url": "https://www.aucklandartgallery.com/connect/support/foundation"
+        },
+        {
+          "url": "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Auckland_Art_Gallery_Toi_o_T%C4%81maki"
+        },
+        {
+          "url": "https://www.justice.gov/archive/usao/nye/pr/2012/2012dec11.html"
+        },
+        {
+          "url": "https://www.arkansasonline.com/news/2012/dec/11/hsbc-pay-29-billion-settle-money-laundering-probes/"
+        },
+        {
+          "url": "https://thespinoff.co.nz/auckland/12-12-2017/the-gallery-of-all-our-dreams/"
+        }
+      ],
+      "website": "https://www.aucklandartgallery.com",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "MACBA (Museu d'Art Contemporani de Barcelona)",
@@ -17209,7 +17276,78 @@
     "year_founded": 1998,
     "address": "87 Yulgok-ro 3-gil, Jongno-gu, Seoul",
     "records_note": "Its site posts no annual reports, accounts, sponsor names or board; it links the Daewoo Foundation and invites corporate sponsors only.",
-    "affiliations_note": "Its parent is the Art Sonje Museum in Gyeongju, founded in 1991 by the same founder."
+    "affiliations_note": "Its parent is the Art Sonje Museum in Gyeongju, founded in 1991 by the same founder.",
+    "details": {
+      "overview": [
+        "Private contemporary art centre at 87 Yulgok-ro 3-gil, Jongno-gu, Seoul (the centre's own site). Wikipedia places it in Samcheong-dong.",
+        "Founded and chaired by Heeja K. Chung (Chung Hee-ja), whom the centre's site calls \"a pioneering female business leader and a distinguished patron of the arts and culture in Korea\"; opened in 1998. It grew out of the \"Sprout\" exhibition programme held in 1995 in a hanok house and a Western-style house on the site.",
+        "The centre says Chung founded it to honour her love of art and to remember her late son, Kim Son-je. The centre's site says Chung also founded the Sonje Museum of Art in Gyeongju in 1991.",
+        "Building: three floors and a basement on a street corner that was previously a traditional hanok home, designed by the architect Kim Jong-sung (the centre's facilities page).",
+        "On site: exhibition spaces of 174 to 466 square metres, a learning space, a 238-seat basement Art Hall with a proscenium stage and a digital cinema projector, an inner hanok-style garden and a rooftop garden. The centre's programme covers exhibitions, screenings, performances, publications, new productions and research.",
+        "Open Tuesday to Sunday, 12:00 to 18:00; closed Monday. Tickets are sold through a Naver booking page."
+      ],
+      "funding_verdict": "Art Sonje Center: private non-profit, stated by the centre to be an extension of the Daewoo Foundation's arts work",
+      "funding": [
+        "The centre states that it was founded as an extension of the Daewoo Foundation's social-sharing work in the arts (artsonje.org, About).",
+        "The Daewoo Foundation page on artsonje.org says the foundation's projects \"have been primarily funded by the late Daewoo Group chairperson Kim Woo Choong since 1978\". Chung married Kim in 1964; he died in 2019 (artsonje.org, Founder page)."
+      ],
+      "red_flags": [],
+      "not_related": [
+        "the Wooyang Museum of Art in Gyeongju. It was the Art Sonje Museum, run by Daewoo Development; Wooyang Industrial Development bought Daewoo Development at auction in 2012 and renamed it. The Seoul centre kept the Art Sonje name (USA Art News). Chung sought the return of 188 artworks from Wooyang; the court ordered three of them returned to her (USA Art News)."
+      ],
+      "press": {
+        "overall": "One review praises a show at the centre and has one reservation about it.",
+        "items": [
+          {
+            "outlet": "Art & Market",
+            "title": "Ian Tee, \"Editor's Notes: Exhibitions in Seoul\" (2026)",
+            "url": "https://www.artandmarket.net/exhibition/2026/04/23/editors-notes-exhibitions-in-seoul",
+            "points": [
+              "Praises \"Spectrosynthesis Seoul\" at the centre as an \"unapologetically queer\" show and credits the curators for including many Korean artists.",
+              "Says the show needed \"more breathing room\" for the nuances among works and contexts to come through.",
+              "Criticises the show, not the institution."
+            ]
+          }
+        ]
+      },
+      "wider_context": [
+        "Kim Woo-choong, founder and former chairman of Daewoo, was sentenced on 30 May 2006 by the Seoul Central District Court to 10 years in prison, forfeiture of more than 21 trillion won and a fine of 10 million won. The court found accounting fraud of over 20 trillion won, 9.8 trillion won of illegal financing, 19 trillion won diverted abroad and $100 million embezzled (AP via NBC News).",
+        "Daewoo collapsed under massive debts in the wake of the 1997 to 1998 Asian financial crisis (AP via NBC News).",
+        "Connection to the centre: the centre says it was founded as an extension of the Daewoo Foundation's commitment to social sharing practices in the arts, and the foundation's page on the centre's site says its projects have been primarily funded by Kim since 1978. Chung, the centre's founder, married Kim in 1964."
+      ],
+      "bottom_line": "The centre is a family-founded private non-profit that says it was founded as an extension of the Daewoo Foundation's arts work; the foundation says Kim Woo-choong primarily funded its projects from 1978. Kim was convicted of fraud and embezzlement in 2006, a case that belongs to the founder personally.",
+      "sources": [
+        {
+          "url": "https://artsonje.org/en/asjasjc-enc/about/"
+        },
+        {
+          "url": "https://artsonje.org/en/about/"
+        },
+        {
+          "url": "https://artsonje.org/en/asjasjc-enc/founder/"
+        },
+        {
+          "url": "https://artsonje.org/en/asjasjc-enc/foundation/"
+        },
+        {
+          "url": "https://artsonje.org/en/asjasjc-enc/facilities/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Art_Sonje_Center"
+        },
+        {
+          "url": "https://www.nbcnews.com/id/wbna13043919"
+        },
+        {
+          "url": "https://usaartnews.com/news/korean-court-rules-in-bitter-dispute-over-patrons-188-alleged-art-loans/"
+        },
+        {
+          "url": "https://www.artandmarket.net/exhibition/2026/04/23/editors-notes-exhibitions-in-seoul"
+        }
+      ],
+      "website": "https://artsonje.org",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "National Museum of Modern and Contemporary Art (MMCA)",
@@ -27000,7 +27138,73 @@
     "visit_url": "https://aaa.org.hk/en/visit",
     "funding": "Individuals, foundations, corporate patrons, HK government agencies and an annual auction; the US arm cites NYSCA, NYC DCLA and the Ruth Foundation.",
     "records_note": "The archive names its donors by tier and lists its board, but the site refused direct access so reports and accounts stay unchecked.",
-    "affiliations_note": "Member of CIMAM."
+    "affiliations_note": "Member of CIMAM.",
+    "details": {
+      "overview": [
+        "Non-profit research library and archive documenting recent art histories in Asia, at 233 Hollywood Road in Sheung Wan, Hong Kong, with independently run offices in New York and New Delhi (Wikipedia; AAA America).",
+        "Founded in 2000 by Claire Hsu, Johnson Chang Tsong-zung and Ronald Arculli; Hsu was the first Executive Director and Christopher K. Ho succeeded her in September 2021 (Wikipedia). It is a registered charity in Hong Kong (Wikipedia).",
+        "The library was renovated in 2022, increasing shelving capacity by fifty percent (Wikipedia). In July 2025 AAA launched an archiving facility with a digitisation lab, a processing room and archival storage (Artomity).",
+        "Over 120,000 records were in the online catalogue as of January 2023; about 70% of acquisitions are donations (Wikipedia). The CIMAM award profile puts donations at over 85% of the library collection.",
+        "Programmes: exhibitions, public and educational programmes, artist residencies, publishing, archival workshops and itinerant library projects; a post-custodial model digitises personal archives and returns the originals to their owners (CIMAM).",
+        "Governance: a board of directors and a rotating Advisory Board; Wikipedia says Jane DeBevoise chaired the board from 2003, and that in 2021 Hsu became co-chair with Benjamin Cha."
+      ],
+      "funding_verdict": "Asia Art Archive: mainly private: an annual donated-art auction and donors, with a small share of public funding",
+      "funding": [
+        "CIMAM's award profile says income comes from private donations, annual fundraisers featuring donated artworks and public funding, which makes up less than 10% of the budget. An endowment was established in 2010.",
+        "The annual fundraiser is \"a major source of support for its operations, programmes and endowment\" (e-flux, 2012). The 2012 endowment campaign had raised USD 4.3 million of a USD 6.5 million goal since 2007. The 2012 auction was previewed at Sotheby's Hong Kong, with works donated by artists and galleries including Gagosian Gallery, Pearl Lam Fine Arts and ShanghART Gallery.",
+        "2014: Van Cleef & Arpels was lead sponsor for the second consecutive year; the auction offered 80 donated works, previewed at Christie's Hong Kong offices (e-flux). AAA states it relies on government agencies, corporations and individuals.",
+        "2025 (25th anniversary): over 65 donated works; sponsors Altaya Wines, Christie's Hong Kong, Chubb, Jebsen, The Peninsula Hong Kong, SALONI and WTW | Willis; venue partner The Henderson (Artomity).",
+        "2026: more than 50 donated works; supporters Altaya Wines, Christie's Hong Kong, Chubb, Jebsen and WTW | Willis; venue sponsor H Queen's (ArtReview). The two-year \"New Archive\" digital archiving project is supported by the Arts Capacity Development Funding Scheme.",
+        "The New York office, Asia Art Archive in America, is funded by the New York State Council on the Arts, the New York City Department of Cultural Affairs in Partnership with the City Council, and the Ruth Foundation for the Arts (AAA America)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "One news piece, not from the art press, reports a criticism by an artists' group whose trip AAA sponsored.",
+        "items": [
+          {
+            "outlet": "Hong Kong Free Press",
+            "title": "Holmes Chan, \"Interview: 'A little bit of espionage' - The Guerrilla Girls attack gender and class bias at Art Basel Hong Kong\" (2018)",
+            "url": "https://hongkongfp.com/2018/03/31/interview-little-bit-espionage-guerrilla-girls-attack-gender-class-bias-art-basel-hong-kong/",
+            "points": [
+              "Reports that the Guerrilla Girls \"criticise Asia Art Archive, one of the sponsors for their trip, for inadequate diversity in its archives\".",
+              "Names the Hong Kong Museum of Art and M+ as having less than 20% women in their collections; the Hong Kong Museum of Art replied that this reflects the historical situation of the time and M+ did not respond.",
+              "The Guerrilla Girls' Zubeida Agha said the group works with organisations \"willing to be self-critical\"."
+            ]
+          }
+        ]
+      },
+      "wider_context": [],
+      "bottom_line": "The money behind AAA is private and public-arts money: donated works sold at an annual auction, corporate sponsors, an endowment and, per CIMAM, under 10% public funding. The sponsors named are corporate and change with each auction; the 2018 criticism concerned gender diversity in its archive, not its funders.",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Asia_Art_Archive"
+        },
+        {
+          "url": "https://www.aaa-a.org/about/about"
+        },
+        {
+          "url": "https://cimam.org/cimam-outstanding-museum-practice-award/ompa-2025/asia-art-archive"
+        },
+        {
+          "url": "https://www.e-flux.com/announcements/33519/fundraiser-2012-endowment-for-our-future"
+        },
+        {
+          "url": "https://www.e-flux.com/announcements/30437/aaa-annual-fundraiser-auction-2014"
+        },
+        {
+          "url": "https://artomity.art/2025/10/30/asia-art-archive-2025-annual-fundraiser/"
+        },
+        {
+          "url": "https://artreview.com/lift-a-paddle-at-the-asia-art-archive-2026-annual-fundraiser/"
+        },
+        {
+          "url": "https://hongkongfp.com/2018/03/31/interview-little-bit-espionage-guerrilla-girls-attack-gender-class-bias-art-basel-hong-kong/"
+        }
+      ],
+      "website": "https://aaa.org.hk",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "id": "raw-material-company-dakar",
@@ -34091,7 +34295,53 @@
     "visit_url": "https://artspeak.ca/about/",
     "audit_dossier_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Artspeak",
     "statutory_filings_url": "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscSrch?q=Artspeak",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "details": {
+      "overview": [
+        "Non-profit, artist-run gallery and publisher at 233 Carrall Street in Gastown, Vancouver, registered as the I.E. Artspeak Gallery Society (CanadaHelps).",
+        "Founded in 1986 at the Kootenay School of Writing, a writers' collective in Vancouver, by Jeff Derksen, Cate Rimmer and the artist Kay Higgins; Rimmer and Higgins ran it as volunteers at first (Wikipedia). It became independent in 1987 and moved to 311 West Hastings (Wikipedia).",
+        "In 1996 it bought its present building at 233 Carrall Street. Wikipedia says it is one of the few artist-run centres in Vancouver to own its space.",
+        "Mandate: \"to exhibit contemporary art and to encourage a dialogue between visual art and writing\" (Artspeak director/curator job listing, 2022). Programme: contemporary practices, publications, bookworks, editions, talks and events (CanadaHelps).",
+        "Directors: Lorna Brown was director-curator from 1999 to 2004 (Wikipedia); Canadian Art, 15 March 2017, quotes the curator Tarah Hogue on Bopha Chhay's \"recent appointment as director of Artspeak\"."
+      ],
+      "funding_verdict": "Artspeak: public arts grants and donations: BC Arts Council grants, plus fundraisers",
+      "funding": [
+        "BC Arts Council, 1 April 2023 to 31 March 2024: $41,080 in operating assistance for visual arts and media arts organisations, $14,000 under Arts Circulation and Touring and $3,430 under Arts Infrastructure (BC Arts Council awards listing 2023/24).",
+        "The 2022 director/curator listing says the post includes successful grant applications to municipal, provincial and federal governments, foundations and other private sources, and pays $56,000 a year plus benefits (Akimbo).",
+        "Artspeak's 2024/25 benefit appeal on CanadaHelps says \"2024 has witnessed drastic cuts to funding in arts and culture\" and sets a goal of $25,000 from key donors.",
+        "In 2004 the gallery held a runway fundraiser, \"Fashionista\" (Wikipedia)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "Artspeak's money is public arts grants, of which the BC Arts Council's are documented, with donations and benefit events; it owns its building, per Wikipedia. The 2024 cuts to arts funding and the $25,000 donor appeal are the points to watch.",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Artspeak_Gallery"
+        },
+        {
+          "url": "https://www.canadahelps.org/en/charities/artspeak/"
+        },
+        {
+          "url": "https://www.canadahelps.org/en/charities/artspeak/campaign/artspeak-benefit-2425/"
+        },
+        {
+          "url": "https://www.bcartscouncil.ca/app/uploads/sites/508/2024/07/202324-Recipients-List.pdf"
+        },
+        {
+          "url": "https://akimbo.ca/listings/director-curator-artspeak/"
+        },
+        {
+          "url": "https://canadianart.ca/site-specific/great-art-galleries-in-beyond-the-vancouver-city-core/"
+        }
+      ],
+      "website": "https://artspeak.ca",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "id": "art-metropole-toronto",
@@ -34415,7 +34665,65 @@
     "visit_url": "https://artpace.org/visit/",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Artpace%20San%20Antonio",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Artpace%20San%20Antonio",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "details": {
+      "overview": [
+        "Non-profit contemporary art residency and exhibition space at 445 N Main Ave, downtown San Antonio (Artpace visit page).",
+        "Founded in 1993 by the artist, collector and businesswoman Linda Pace (1945 to 2007) and opened to the public in 1995; Robert Storr, then senior curator at the Museum of Modern Art, chose the inaugural artists (Artpace site). Wikipedia says she launched it through the Pace-Roberts Foundation for Contemporary Art, since renamed the Linda Pace Foundation.",
+        "The building is a former 1920s Hudson automobile dealership with 18,000 square feet, five exhibition spaces, an archives and research library, a workshop and event areas (Wikipedia).",
+        "The International Artist-in-Residence programme invites nine artists a year, chosen by guest curators, to live and work in three furnished apartments; more than 250 artists have taken part since 1995 (Wikipedia). Since 2001 the residencies have used a guest-curator format (Artpace site).",
+        "Other programmes: education, exhibitions, rentals and an archive and resource library (Artpace site).",
+        "Open Monday to Friday 10:00 to 17:00 and Saturday and Sunday 12:00 to 17:00; admission free. The building is ADA-compliant with an elevator and accessible bathrooms; sign-language interpreters, large-print notes and audio guides are available on request (Artpace visit page)."
+      ],
+      "funding_verdict": "Artpace San Antonio: mainly private: the Linda Pace Foundation, with federal, state, city and foundation grants",
+      "funding": [
+        "Linda Pace Foundation: on 27 May 2022 it gave $250,000 to Artpace's new Artist Residency Endowment Fund and released the remaining principal of an annuity Linda Pace set up in 2005, a final $1,196,000 for the operations of the residency programme. With the gift, Artpace had raised more than $2.5 million in the first 16 months of its endowment campaign (Artpace, 2022).",
+        "National Endowment for the Arts: $15,000 under Grants for Arts Projects in fiscal year 2022 (San Antonio Current, 12 January 2022).",
+        "Artpace's 2017 residency announcement names as supporters the Kronkosky Charitable Foundation, the National Endowment for the Arts, the Texas Commission on the Arts, the Linda Pace Foundation, the San Antonio Department for Culture & Creative Development, The Brown Foundation, Inc. and its members (Artpace, 2017). Footers on the same page also list The Andy Warhol Foundation for the Visual Arts and the Parker Foundation among supporters.",
+        "The Artpace support page shows the logos of the Linda Pace Foundation, the National Endowment for the Arts, the Santikos Foundation and the Texas Commission on the Arts, with Mid-America Arts Alliance and Get Creative San Antonio.",
+        "ProPublica's Nonprofit Explorer lists Artpace Inc revenue of $1,648,130, expenses of $1,447,940 and contributions of $1,283,714 for the fiscal year ending December 2025.",
+        "Where the foundation's money comes from: Wikipedia says Linda Pace's parents owned Pace Foods; she and her husband Christopher Goldsbury bought the company from her mother in September 1982, she sold him her share after their 1991 divorce, and Pace Foods was sold to Campbell's in 1994."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The money behind Artpace is a private foundation set up by the founder, plus federal, state, city and foundation arts grants, with, per Wikipedia, a food-company fortune behind the founder. The weak point is dependence on the Linda Pace Foundation, which gave a final annuity payment of $1,196,000 in 2022; its board president Kathryn Kanjo said Artpace's financial independence lets the foundation focus on its own mission at Ruby City. The endowment campaign is the item to watch.",
+      "sources": [
+        {
+          "url": "https://artpace.org/about/"
+        },
+        {
+          "url": "https://artpace.org/visit/"
+        },
+        {
+          "url": "https://artpace.org/support/"
+        },
+        {
+          "url": "https://artpace.org/artpace-receives-major-financial-contribution-from-the-linda-pace-foundation/"
+        },
+        {
+          "url": "https://artpace.org/announcing-the-2017-artpace-artists-in-residence/"
+        },
+        {
+          "url": "https://www.sacurrent.com/arts/7-san-antonio-organizations-win-145000-in-funding-from-the-national-endowment-of-the-arts-27979167"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/43757857"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Artpace"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Linda_Pace"
+        }
+      ],
+      "website": "https://artpace.org",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "id": "teoretica-san-jose",
@@ -34935,7 +35243,71 @@
     "visit_url": "https://www.artspace.org.au/visit/visit-artspace/",
     "audit_dossier_url": "https://www.acnc.gov.au/charity/charities?search=Artspace%20Sydney",
     "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=Artspace%20Sydney",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "details": {
+      "overview": [
+        "Independent, not-for-profit contemporary art space at The Gunnery, 43 to 51 Cowper Wharf Roadway, Woolloomooloo (Artspace site).",
+        "Established in 1983 as an artist-run gallery for emerging and early-career artists, in its original home at 11 Randle Street, Surry Hills, a hat factory built in 1912 (Wikipedia). It moved to The Gunnery in 1992 (Artspace site, Wikipedia).",
+        "Building: erected around 1900 as a bulk store for the Sydney Morning Herald, used by the Commonwealth for defence until 1948 and squatted by artists in the 1970s and early 1980s. In 1989 the NSW Government proposed selling it; artists challenged the sale in the Land & Environment Court, and in 1991 the government proposed a visual arts centre there (Wikipedia).",
+        "A redevelopment led by Dunn and Hillam Architects moved the entrance from Cowper Wharf Road to Forbes Street Plaza, restored all three floors and added galleries, studios and universal access; Artspace reopened in December 2023 (ArtAsiaPacific, Wikipedia).",
+        "On site: exhibitions, a rent-free Studio Program of ten studios for Sydney-based artists on a two-year model, the Ideas Platform, a Banner Series on the building, commissions, publications and an archive (Artspace annual report 2025).",
+        "Open Tuesday to Sunday, 11:00 to 17:00; exhibitions are unticketed (Artspace site, annual report 2025). Victor Wang has been Executive Director since July 2025 (annual report 2025)."
+      ],
+      "funding_verdict": "Artspace Sydney: government-supported with a benefactor programme: Create NSW and Creative Australia, plus private benefactors",
+      "funding": [
+        "The organisation states that it receives government support from the Federal Government through Creative Australia and from the NSW Government through Create NSW, supplemented by partners and benefactors (Artspace site).",
+        "The 2025 annual report records a $350,000 increase in Create NSW funding from 2026, continued Creative Australia investment, a new partnership with TWT Property Group and a major grant from the Fidelity Asia Pacific Foundation.",
+        "The NSW Government committed over AUD 5 million to upgrade The Gunnery (ArtAsiaPacific, 30 November 2020); the chair's foreword to the 2025 report credits the redevelopment to \"the generous support of the NSW Government\". The 1992 renovation cost AUD 1.5 million, supported by the state government and the industrialist and arts patron Franco Belgiorno-Nettis (ArtAsiaPacific).",
+        "Benefactors listed on the Artspace site (current as of 13 August 2026): Luminaries are Daniel Boyd, Andrew Cameron AM and Cathy Cameron, TWT Property Group and one anonymous donor. Vision-Makers are Anita and Luca Belgiorno-Nettis, Michelle and Guido Belgiorno-Nettis, and The Medich Foundation. Catalysts are the Neilson Foundation and The Keir Foundation. The Turnbull Foundation, Orange & Sardines Foundation and Wheen Family Foundation are also named.",
+        "The 2025 annual report thanks the Anita and Luca Belgiorno-Nettis Foundation and Michelle and Guido Belgiorno-Nettis for supporting the Franco Belgiorno-Nettis Archive, which Artspace houses.",
+        "Self-generated revenue was 28% of annual turnover in 2025, 32% in 2024 and 40% in 2023; the reserves ratio was 20%, 42% and 32% (annual report 2025).",
+        "Board in 2025: chair Lisa Chung AM, treasurer Leisa Sadler, Daniel Boyd, Julie Rrap, Andrew Martin and Alenka Tindale, with Ramesh Mario Nithiyendran, Zoe Paulsen and Victor Wang (annual report 2025). Chung, Tindale and Boyd also appear on the benefactor list."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "In February 2014 the Sydney academic Matt Kiem began a call to boycott the 19th Biennale of Sydney with an open letter of 4 February; 28 of the 90 participating artists then wrote to the Biennale board asking it to end its sponsorship arrangement with Transfield, and the board replied that it would not sever ties (Hyperallergic, Jillian Steinhauer, 21 February 2014).",
+        "Transfield Services held a contract worth AUD 1.2 billion to provide and administer offshore detention facilities on Nauru and Manus Island (Apollo, Tim Walsh, 14 March 2014). Luca Belgiorno-Nettis, executive director of Transfield Holdings, resigned as chairman of the Biennale, and the organisers said they would sever ties with Transfield (Apollo, Maggie Gray, 8 March 2014).",
+        "Walsh's Apollo article describes the debate over arts sponsorship in Australia as \"riddled with difficult questions and double standards\".",
+        "Connection to Artspace: Artspace was one of the venues of the 2014 Biennale (Apollo, Walsh). The campaign was aimed at the Biennale and its sponsor."
+      ],
+      "bottom_line": "Artspace is supported by the NSW and federal governments through Create NSW and Creative Australia, with private benefactors and a property-group partnership on top. TWT Property Group is a new multi-year partner and a Luminary benefactor. The 2014 Biennale of Sydney boycott over Transfield concerned the Biennale, of which Artspace was a venue.",
+      "sources": [
+        {
+          "url": "https://www.artspace.org.au"
+        },
+        {
+          "url": "https://artspace.org.au/about-artspace"
+        },
+        {
+          "url": "https://artspace.org.au/partners-and-benefactors"
+        },
+        {
+          "url": "https://artspace.org.au/media/pages/about-artspace/16a2e5bf25-1777607606/annual-report-2025.pdf"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Artspace_Visual_Arts_Centre"
+        },
+        {
+          "url": "https://artasiapacific.com/news/artspace-sydney-to-receive-millions-for-renovation"
+        },
+        {
+          "url": "https://apollo-magazine.com/?p=67711"
+        },
+        {
+          "url": "https://apollo-magazine.com/sponsorship-ethics-biennale-sydney/"
+        },
+        {
+          "url": "https://hyperallergic.com/artists-call-for-boycott-of-sydney-biennale-over-sponsorship"
+        }
+      ],
+      "website": "https://www.artspace.org.au",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "id": "artspace-aotearoa-auckland",
@@ -38818,7 +39190,55 @@
     "statutory_filings_url": "https://www.acnc.gov.au/charity/charities?search=Artbank",
     "tier_note": "No source outside the museum is recorded.",
     "watch": "Part of a federal department.",
-    "records_note": "Publishes yearly reviews for 2024 and 2025, funds itself by leasing art, names no sponsors, and reports accounts through its parent department."
+    "records_note": "Publishes yearly reviews for 2024 and 2025, funds itself by leasing art, names no sponsors, and reports accounts through its parent department.",
+    "details": {
+      "overview": [
+        "Australian Government art-leasing programme that buys works from living Australian artists and leases them to businesses, government agencies and individuals. Collection stores are in Sydney, Melbourne and Perth (Wikipedia).",
+        "Established by the Australian Government in 1980, modelled on Canada's Art Bank. Arts minister Bob Ellicott saw the Ottawa collection in 1979 and persuaded Prime Minister Malcolm Fraser; the Treasurer, John Howard, approved A$250,000 in seed funding (Wikipedia).",
+        "The collection began with 600 works from the National Gallery of Australia (Wikipedia). It had grown to 10,950 works by the time of the 2023 audit (Government News).",
+        "The Melbourne store opened in Armadale in 1996 and moved to a converted warehouse in Collingwood in 2018, which also hosts a studio programme for artists and designers (Wikipedia).",
+        "Leases run six months to a year at A$165 to A$5,500 a year, and businesses can claim a 100% tax deduction for leasing (Wikipedia).",
+        "Part of the Department of Infrastructure, Transport, Regional Development, Communications and the Arts (Canberra Times); Wikipedia names Zoe Rodriguez as director as of October 2023."
+      ],
+      "funding_verdict": "Artbank: self-funded by leasing income, inside a federal department",
+      "funding": [
+        "Wikipedia reports that by 1992 the programme was profitable enough for government funding to be cut, and that it has since operated on self-generated income.",
+        "Revenue in 2021 was A$2.8 million, of which A$566,000 (20%) was spent on 71 acquisitions (Government News, on the 2023 audit).",
+        "More than 4,350 works were leased to 390 clients in 2021 to 2022 (Government News)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "In April 2023 the Australian National Audit Office (Auditor-General Grant Hehir) found that the department's handling of Artbank \"has not been appropriate\" (Government News, Canberra Times).",
+        "Acquisitions did not follow the Commonwealth Procurement Rules and skipped open or competitive processes; value for money was not documented or demonstrated, and public reporting was limited (Region Canberra, Canberra Times).",
+        "About 40% of the collection was leased against a target of 70%; 30% was never leased from July 2015 to June 2022 and a further 29% was leased for less than half the time it was available (Government News, Region Canberra, Canberra Times).",
+        "Approvals for removing over 70 works were obtained after the fact, though the works had been sold more than four years earlier (Region Canberra).",
+        "Acquisition spending fell from A$507,993 for 179 works in 2016 to 2017 to A$396,462 for 75 works in 2021 to 2022; applications to the artist pitch roadshows fell from 40 in 2016 to three in 2021 (Government News).",
+        "The department defended its approach by citing a rule allowing \"limited tender\". Its secretary, Jim Betts, wrote that he was \"concerned that aspects of the narrative may unduly and adversely impact the reputation and operation of Artbank\" (Canberra Times).",
+        "Connection to Artbank: the audit examined Artbank's own acquisitions, leasing and records, which the department runs."
+      ],
+      "bottom_line": "Artbank runs on leasing income inside a federal department. The weak points are governance and procurement, documented by the April 2023 national audit, which found leasing below target and acquisitions outside the procurement rules.",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Artbank"
+        },
+        {
+          "url": "https://www.governmentnews.com.au/report-paints-grim-picture-of-artbank-program/"
+        },
+        {
+          "url": "https://canberratimes.com.au/story/8151988/audit-criticises-government-management-of-art-leasing-program"
+        },
+        {
+          "url": "https://region.com.au/artists-cant-bank-on-artbank-auditor-finds/651455"
+        }
+      ],
+      "website": "https://www.artbank.gov.au/",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Argos",
@@ -46167,7 +46587,55 @@
         "funder": "Andy Warhol Foundation",
         "institutions": 17
       }
-    ]
+    ],
+    "details": {
+      "overview": [
+        "Non-collecting contemporary art centre at 535 Means Street NW, West Midtown, Atlanta, near the Georgia Tech campus (Atlanta Contemporary site, Wikipedia).",
+        "Founded in 1973 by Atlanta photographers as Nexus, a storefront cooperative gallery supported by member dues and run by volunteers. It became Nexus Contemporary Art Center in 1984, Atlanta Contemporary Art Center in 2000 and Atlanta Contemporary in 2015 (Wikipedia).",
+        "Building: a 35,000-square-foot warehouse complex on Means Street, renovated after a $1.95 million capital campaign finished in 1987, in phases from 1989 to 1994 (Wikipedia).",
+        "On site: exhibitions by local and international artists, commissions, education programmes, a Studio Artist Program with subsidised studio space, and a shop selling artist-made goods and Nexus Press books (Wikipedia). Nexus Press, which produced more than 150 titles, closed in 2003 (Wikipedia).",
+        "Admission is free every day, a policy in place since 1 September 2015. Open Sunday 11:00 to 18:00, Thursday 11:00 to 20:00, Friday and Saturday 11:00 to 18:00; closed Monday to Wednesday (Atlanta Contemporary site)."
+      ],
+      "funding_verdict": "Atlanta Contemporary: private non-profit funded by foundations, city and county arts money, corporate and individual donors",
+      "funding": [
+        "FY26 donors page (1 July 2025 to 30 June 2026): major support from the Andy Warhol Foundation for the Visual Arts and Ruth Foundation for the Arts; programme support from the City of Atlanta Mayor's Office of Cultural Affairs and the Fulton County Board of Commissioners; generous support from the Community Foundation for Greater Atlanta, Intuit, the Molly Blank Fund of the Arthur M. Blank Family Foundation, Massey Charitable Trust, LuluMa Foundation and Robert Rauschenberg Foundation. Supporters giving $5,000 or more also include the Bill & Agnes Monk Family Foundation, the Tim & Lauren Schrager Family Foundation and the Georgia Committee of the National Museum of Women in the Arts.",
+        "In-kind business sponsors: AAA Parking, Hotel Indigo, Kaldi's Coffee Roasting Co., Orange Barrel Media, Post Meridiem Spirit Co, Poston Communications and Rough Draft Atlanta.",
+        "Form 990 data (ProPublica, fiscal years ending June): FY2025 revenue $906,793 and expenses $712,289, with contributions of $745,319 (82.2% of revenue); FY2024 revenue $592,865 and expenses $841,621; FY2023 revenue $1,055,402 and expenses $837,529. Net assets were $1,505,670 at the end of FY2025.",
+        "The 1999 selection for the Warhol Initiative funded long-term institutional planning (Wikipedia).",
+        "Culture Type reports that its 2025 to 2028 strategic plan calls for improving fundraising, adding revenue streams and relying less on grants (Victoria L. Valentine, 19 February 2026).",
+        "Leadership: Floyd Hall left as executive director in August 2025 after 18 months; former board chair Everett Long served as interim; Lauren Haynes became Executive Director on 16 March 2026 (Culture Type; Atlanta Contemporary announcement, 9 February 2026). Culture Type, citing the website, reports a staff of five including the interim director."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The money behind Atlanta Contemporary is foundation, city, county and individual giving on a budget under $1 million a year. The weak points are the thin finances, with expenses above revenue in FY2024, and the leadership turnover of 2025 to 2026; the fundraising plan under the new director is the item to watch.",
+      "sources": [
+        {
+          "url": "https://atlantacontemporary.org/donors"
+        },
+        {
+          "url": "https://atlantacontemporary.org/about"
+        },
+        {
+          "url": "https://atlantacontemporary.org/atlanta-contemporary-announces-lauren-haynes-as-new-executive-director"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/581174492"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Atlanta_Contemporary_Art_Center"
+        },
+        {
+          "url": "https://www.culturetype.com/2026/02/19/atlanta-contemporary-is-welcoming-a-new-executive-director-lauren-haynes-is-the-ideal-leader-for-this-moment/"
+        }
+      ],
+      "website": "https://atlantacontemporary.org/",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Blanton Museum of Art",
@@ -71765,7 +72233,70 @@
     ],
     "tier_note": "No reason for the flag is recorded.",
     "records_note": "The Ishibashi Foundation, Artizon's operator, posts reports from 2019, balance sheets for 2020 to 2025 and a dated officer list, but no donor list.",
-    "affiliations_note": "Artizon Museum, formerly the Bridgestone Museum of Art, is managed by the Ishibashi Foundation, which also runs its sister museum, the Ishibashi Museum of Art in Kurume. Member of CIMAM."
+    "affiliations_note": "Artizon Museum, formerly the Bridgestone Museum of Art, is managed by the Ishibashi Foundation, which also runs its sister museum, the Ishibashi Museum of Art in Kurume. Member of CIMAM.",
+    "details": {
+      "overview": [
+        "Art museum at 1-7-2 Kyobashi, Chuo-ku, Tokyo, with galleries on three floors in the lower section of Museum Tower Kyobashi (e-flux, Artizon site). Its best-known holdings are Impressionist works and modern Japanese Western-style paintings (e-flux).",
+        "Founded as the Bridgestone Museum of Art by Ishibashi Shojiro, founder of Bridgestone, on the second floor of the Bridgestone Building in Kyobashi; it opened on 8 January 1952 (Artizon history page).",
+        "In 1956 Ishibashi established the Ishibashi Foundation, which took over the museum; in 1961 he gave the foundation most of his collection (Artizon history page).",
+        "The museum closed for renovation on 18 May 2015. Museum Tower Kyobashi was completed on 1 July 2019, and the museum reopened in January 2020 as the Artizon Museum, a name combining \"ART\" and \"HORIZON\" (Artizon history page, e-flux).",
+        "The earlier name came from Bridgestone, the company Ishibashi founded in 1931, whose name reverses the meanings of the characters in his surname (Artizon founder page).",
+        "Open 10:00 to 18:00, until 20:00 on Fridays; closed Mondays; entry closes 30 minutes before closing. Students enter free with an online reservation (Artizon site)."
+      ],
+      "funding_verdict": "Artizon Museum: private foundation, operated by the Ishibashi Foundation, which the founder of Bridgestone set up in 1956",
+      "funding": [
+        "The Ishibashi Foundation was accredited as a Public Interest Incorporated Foundation in 2012 (Artizon history page). Its two programmes are museum operations and grants for arts, culture and education (Ishibashi Foundation site).",
+        "Its balance sheet at 31 December 2025 shows total assets of 691.38 billion yen and net assets of 691.09 billion yen. Basic assets of 468.73 billion yen include investment securities of 442.76 billion yen, art works of 7.23 billion yen, buildings of 13.16 billion yen and land of 5.58 billion yen (Ishibashi Foundation balance sheet).",
+        "2026 officers: chairman \u77f3\u6a4b \u5bec, managing director \u897f\u5d8b \u5927\u4e8c, five directors, two auditors and seven councillors (Ishibashi Foundation site, list dated 18 March 2026).",
+        "Earlier museum: the Ishibashi Museum of Art in Kurume, built by Ishibashi in 1956, was handed to the City of Kurume in 2016 and renamed the Kurume City Art Museum (Artizon history page)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Bridgestone's Firestone unit was sued on 17 November 2005 in a US federal court under the Alien Tort Statute by 23 Liberian children who worked on its rubber plantation in Liberia (International Rights Advocates).",
+        "The Seventh Circuit opinion, written by Judge Richard Posner and posted on 11 July 2011, left summary judgment for Firestone in place on the child-labour claims because the plaintiffs had not shown a sufficiently clear rule of customary international law on child labour, and held that corporations can be liable under the Alien Tort Statute (International Rights Advocates; Business and Human Rights Resource Centre).",
+        "Connection to Artizon, as history: Shojiro Ishibashi founded Bridgestone in 1931 and set up the Ishibashi Foundation, which runs the museum, in 1956; the museum was called the Bridgestone Museum of Art until it closed in 2015 (Artizon history and founder pages)."
+      ],
+      "bottom_line": "The museum is run by a private public-interest foundation built on its founder's collection and assets, with total assets of 691.38 billion yen at the end of 2025. The founder's company, Bridgestone, faced the Liberian child-labour suit through its Firestone unit; the suit named Firestone, not the foundation. The foundation's balance sheet shows 442.76 billion yen of investment securities.",
+      "sources": [
+        {
+          "url": "https://www.artizon.museum/en/"
+        },
+        {
+          "url": "https://www.artizon.museum/en/about-museum/history/"
+        },
+        {
+          "url": "https://www.artizon.museum/en/about-museum/founder/"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/624296/artizon-museum/"
+        },
+        {
+          "url": "https://www.ishibashi-foundation.or.jp/about/overview/"
+        },
+        {
+          "url": "https://www.ishibashi-foundation.or.jp/about/annual_report/"
+        },
+        {
+          "url": "https://www.ishibashi-foundation.or.jp/pdf/2025balancesheet.pdf"
+        },
+        {
+          "url": "https://business-humanrights.org/en/firestone-wins-liberian-child-labor-case-in-us"
+        },
+        {
+          "url": "https://business-humanrights.org/en/latest-news/pdf-10-3675-boimah-flomo-v-firestone-natural-r-opinion-posner"
+        },
+        {
+          "url": "https://www.internationalrightsadvocates.org/case/africa-liberia/flomo-et-al-v-firestone-natural-rubber-company"
+        }
+      ],
+      "website": "https://www.artizon.museum/en/",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Yamaguchi Center for Arts and Media (YCAM)",
@@ -74898,7 +75429,51 @@
     "statutory_filings_url": "https://sede.mjusticia.gob.es/es/tramites/buscador-fundaciones?nombre=Artium%20Museoa",
     "records_note": "It posts activity reports 2019 to 2025, audited accounts 2019 to 2025, sponsor logos without dates, and names its Patronato.",
     "finances_note": "FY2024 operating income EUR 4.53M, of which EUR 4.40M is activity income (grants, donations, sponsorship; not split in the registry) and EUR 0.12M commercial sales.",
-    "affiliations_note": "Member of CIMAM."
+    "affiliations_note": "Member of CIMAM.",
+    "details": {
+      "overview": [
+        "Basque Museum Centre of Contemporary Art at C/ Francia 24, Vitoria-Gasteiz (\u00c1lava tourism board).",
+        "Opened on 26 April 2002 (\u00c1lava tourism board). The Diputaci\u00f3n Foral de \u00c1lava, the provincial council, created the managing foundation as its sole founder: the foundation was constituted by public deed on 16 February 2001 under Foral Decree 112/2000 of 14 November 2000 (Basque Government public-sector register, 2023).",
+        "Wikipedia says the museum occupies a former bus station and names Jos\u00e9 Luis Caton as architect.",
+        "The collection holds more than 3,000 works, from paintings to multimedia installations; the provincial council began building it in the last quarter of the twentieth century (\u00c1lava tourism board).",
+        "The foundation's stated purposes are to run the museum, conserve its holdings, exhibit the collections, support study and research, and take part in museology training (Basque Government register).",
+        "Visiting: general admission 6 euros, free for under-14s; a pay-what-you-decide rate on Wednesdays and the weekend after an exhibition opens, and every day for students, unemployed people, pensioners and under-14s; annual pass 10 euros. Wheelchairs and strollers for the galleries are available from the cloakroom; the audio guide is free with admission (\u00c1lava tourism board)."
+      ],
+      "funding_verdict": "Artium Museoa: mainly public, run by a foundation the \u00c1lava provincial council founded and holds as sole capital contributor",
+      "funding": [
+        "The Diputaci\u00f3n Foral de \u00c1lava contributed the foundation's entire initial fund of 180,304 euros and is listed as holding 100% of the capital (Basque Government register, 2023 and 2024).",
+        "Board (2024 listing): chair Ramiro Gonz\u00e1lez Vicente and vice-chair Ana Mar\u00eda Del Val Sancho, both for the Diputaci\u00f3n Foral de \u00c1lava, which holds three further seats; the Basque Government holds two seats; the Vitoria-Gasteiz city council one; the Ministry of Education, Culture and Sport one; the Diputaci\u00f3n Foral de Bizkaia the secretary's seat, held by Susana Guede Arana (Basque Government register, 2024).",
+        "Two private members sit on the board: Diario El Correo S.A. (I\u00f1igo Barrenechea Lombardero) and Fundaci\u00f3n Vital (Silvia Garc\u00eda de Garayo D\u00edaz in the 2024 listing; I\u00f1igo Recio Alvarez in 2023, as the register prints the name) (Basque Government register).",
+        "Total assets were 55,416,037 euros in 2023 and 55,424,946 euros in 2024; net worth 54,674,414 euros and 54,593,233 euros. Sales and other commercial income were 103,194 euros in 2023 and 118,002 euros in 2024, with an average of 22.46 and 23.63 employees (Basque Government register)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The money behind Artium is public: the \u00c1lava provincial council founded and holds the foundation, with the Basque Government, the Vitoria-Gasteiz council and the culture ministry on its board. The two private seats, held by Diario El Correo and Fundaci\u00f3n Vital, are the points to watch.",
+      "sources": [
+        {
+          "url": "https://alavaturismo.eus/en/artium-arte-contemporaneo"
+        },
+        {
+          "url": "https://www.euskadi.eus/contenidos/entidad/soc_publica_193/es_def/adjuntos/20237108.pdf"
+        },
+        {
+          "url": "https://www.euskadi.eus/contenidos/entidad/soc_publica_193/eu_def/adjuntos/20247108.pdf"
+        },
+        {
+          "url": "https://www.euskadi.eus/fundacion/fundacion-artium-de-alava/web01-s2oga/es/adjuntos/x42tFundacion.pdf"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Artium_Museum"
+        }
+      ],
+      "website": "https://www.artium.eus",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Museum of Modern and Contemporary Art Sri Lanka",
@@ -83354,7 +83929,64 @@
     "lat": 53.889,
     "lon": 27.622,
     "tier_note": "No reason for the flag is recorded.",
-    "records_note": "Liquidated on 23 July 2021; its site artsiadziba.by returned no content, so reports, accounts, funders and board were not checked."
+    "records_note": "Liquidated on 23 July 2021; its site artsiadziba.by returned no content, so reports, accounts, funders and board were not checked.",
+    "details": {
+      "overview": [
+        "Independent cultural platform in Minsk that promoted the Belarusian language through concerts, lectures and entertainment events for young people (Radio Svaboda).",
+        "Founded on 24 December 2011. Radio Svaboda names Pavel Belavus as founder and first director; Wikipedia lists Stas Babaytsau, Franak Viachorka and Zmicier Afanasenka as founders. Kalektar names Belavus as founder and Afanasenka and Viachorka as co-founders.",
+        "The English Wikipedia entry translates the name as \"Art Headquarters\".",
+        "Venues: the Horizont factory building, then 28a Pushkin Avenue, then a two-room flat in central Minsk and, from 2013, 6 Instrumentalny Lane (Kalektar). A new space planned for 4 Maskvin Lane was lost in December 2012 before it opened (Nasha Niva, 6 December 2012).",
+        "Programme: concerts, presentations and film screenings (Nasha Niva, December 2012), book launches and lectures (Nasha Niva, July 2012).",
+        "It announced on 3 January 2022 that it was ending its activity (Radio Svaboda)."
+      ],
+      "funding_verdict": "Art-Siadziba: independent venue in rented premises, with a 2014 crowdfunding appeal for a building of its own",
+      "funding": [
+        "In 2014 the \"Dom\" (House) campaign raised a little over $4,000 in 10 days toward a goal of $200,000, sold as 40,000 virtual bricks at $5 each (Charter97, 6 March 2014).",
+        "Premises were rented: the planned Maskvin Lane space belonged to JSC Sukno and was leased by JSC RefOilProdukt, with Art-Siadziba as sub-tenant (Nasha Niva, 6 December 2012); at Instrumentalny Lane the owner was the Belarusian Society of Hunters and Fishermen, which let Art-Siadziba stay until 1 May 2014 (Charter97, 6 March 2014)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Radio Svaboda reports that by the end of 2021 the Belarusian authorities had liquidated at least 275 non-governmental organisations, with more in liquidation or under threat. An update on the same page says that in July 2022 it became known that 857 had been liquidated or driven to self-liquidation.",
+        "Amnesty International (Aisha Jung, 22 February 2021): \"The authorities are methodically destroying Belarus's spirited cultural life and its most creative members.\" The statement is about the country's cultural scene as a whole.",
+        "In July 2012, when the space had closed for the first time, the city culture department told Nasha Niva it does not handle decisions of this kind.",
+        "Unverified: after the third loss of premises in December 2012, Pavel Belavus said the landlord was summoned to the Minsk City Executive Committee and strongly advised to cancel the lease, and that the order came from its ideology department; Nasha Niva reports this as Belavus's account.",
+        "Connection to Art-Siadziba: Radio Svaboda reports that it was placed on a list of organisations subject to liquidation in late July 2021 and announced on 3 January 2022 that it was ending its activity. Belavus faced a criminal case under Article 342 of the Criminal Code and was held in SIZO-1 in Minsk when Svaboda published."
+      ],
+      "bottom_line": "Art-Siadziba was an independent venue in rented premises, with a 2014 crowdfunding appeal for a building of its own. It was placed on a liquidation list in July 2021 and ended its activity in January 2022, during the wider Belarusian liquidation of non-governmental organisations.",
+      "sources": [
+        {
+          "url": "https://www.svaboda.org/a/31637620.html"
+        },
+        {
+          "url": "https://nashaniva.com/404675"
+        },
+        {
+          "url": "https://nashaniva.com/101437"
+        },
+        {
+          "url": "https://nashaniva.com/be_latn/76723"
+        },
+        {
+          "url": "https://charter97.org/be/news/2014/3/6/89398/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Art-Siadziba"
+        },
+        {
+          "url": "https://kalektar.org/in/terms/3zQqWmcTp6OokhSm7Hov"
+        },
+        {
+          "url": "https://www.amnesty.org/en/latest/news/2021/02/belarus-cultural-scene-in-peril-as-crackdown-escalates-2/"
+        }
+      ],
+      "website": "https://artsiadziba.by",
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "id": "belarusian-state-museum-of-the-history-of-the-great-patriotic-war-minsk",
@@ -114585,7 +115217,47 @@
     "id": "associacao-nucleo-de-arte",
     "funding": "Artists' association with over 100 members. State funding ended in the civil war; a late-1990s profile names Hivos as donor. No current funder list is published.",
     "watch": "Official foundation 1948; reopened in 1993 by young artists. Maputo's council and the CTA led a 2021 mural project with 40 of its members.",
-    "records_note": "The association's only page found is a late-1990s profile naming Hivos; it publishes no reports, accounts, funder list or board."
+    "records_note": "The association's only page found is a late-1990s profile naming Hivos; it publishes no reports, accounts, funder list or board.",
+    "details": {
+      "overview": [
+        "Artists' association in an old villa in the centre of Maputo (africaserver.nl profile); Globalnyt (29 December 2016) places it in the Polana Cimento neighbourhood near the Mercado do Museu.",
+        "The profile on africaserver.nl calls it the oldest artists' collective in Mozambique and gives 1948 as the \"more official foundation\"; the name first appeared in 1937 as the title of an exhibition in Louren\u00e7o Marques that featured only Portuguese artists. Culturgest says N\u00facleo de Arte was founded in 1936 by the Portuguese painter Frederico Ayres. Globalnyt gives 1921.",
+        "Mozambican artists were gradually admitted; a 1964 exhibition of Malangatana's work, staged by the N\u00facleo dos Estudantes Africanos, was closed by the secret police. After independence in 1975 the group was renamed COAP and the Associa\u00e7\u00e3o N\u00facleo de Arte name was later restored. It closed several times during the civil war and in the early 1990s, and in 1993 a group of young artists reopened the building (africaserver.nl).",
+        "Malangatana joined its painting course in 1958 (Culturgest).",
+        "The villa has a garden with studios and a self-built ceramics oven, a workshop building, a permanent exhibition and a terrace serving meals and drinks (africaserver.nl; Globalnyt).",
+        "Members: over one hundred painters, sculptors and ceramists, including Bertina Lopes, Malangatana and Alberto Chissano (africaserver.nl); Globalnyt gives 350 members and says the association is run by its artists.",
+        "In 2021 it operated a gallery and offered workshops throughout the year (Club of Mozambique, 13 May 2021)."
+      ],
+      "funding_verdict": "Associa\u00e7\u00e3o N\u00facleo de Arte: member-run artists' association; the profile names Hivos as a donor",
+      "funding": [
+        "The africaserver.nl profile says \"A few donors, such as Hivos in the Netherlands, grant financial assistance.\" It mentions a workshop in Durban in 1997.",
+        "The same profile says the permanent exhibition is popular with buyers and the terrace serves inexpensive meals and drinks.",
+        "Club of Mozambique (13 May 2021) says the Nucleo de Arte \"operates a gallery and offers workshops throughout the year\"."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "bottom_line": "The association is a member-run artists' group with a gallery, a terrace and workshops; its profile on africaserver.nl names Hivos in the Netherlands as a donor. The founding year differs by source: 1921 (Globalnyt), 1936 (Culturgest) and 1948 as the \"more official foundation\" (africaserver.nl).",
+      "sources": [
+        {
+          "url": "https://www.africaserver.nl/nucleo/eng/main.htm"
+        },
+        {
+          "url": "https://globalnyt.dk/ugens-tre-kunstnerfaellesskaber"
+        },
+        {
+          "url": "https://www.culturgest.pt/en/collection/detail/cela-4-expectativa"
+        },
+        {
+          "url": "https://clubofmozambique.com/news/mozambique-minister-visits-mankew-valente-muhumana/"
+        }
+      ],
+      "retrieved": "2026-10-25"
+    }
   },
   {
     "name": "Nesr Art Foundation",

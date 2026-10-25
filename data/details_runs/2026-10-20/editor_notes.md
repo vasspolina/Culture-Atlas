@@ -867,3 +867,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - belarusian-state-museum-of-the-history-of-the-great-patriotic-war-minsk: no opened page says it is state-funded or who funds it; "state-funded" cut.
 - belarusian-council-for-culture-rada-kultury-warsaw: 2 million euros EU ArtPower, Danish Cultural Institute lead; registered in Estonia; "extremist formation" designation on the council's site (Ministry of Internal Affairs); Reform.news reports a KGB listing decided 9 April 2026.
 - belarus-free-theatre-london: 360Giving range 14 May 2014 to 6 June 2023; no per-funder years.
+
+## d049 (research and slop check)
+- auckland-art-gallery-toi-o-t-maki: HSBC kept as a Red flag (2012 US money-laundering and sanctions settlement; the archived DOJ release of 11 Dec 2012 gives a 1.256 billion dollar forfeiture, 665 million dollars civil penalties and IEEPA and TWEA violations for Cuba, Iran, Libya, Sudan and Burma; the Arkansas wire story's body says 1.92 billion while its headline URL says 2.9 billion). The Annual Review 2024/25 lists HSBC as a current partner; the settlement is more than five years old. The Spinoff (Simon Wilson, 12 Dec 2017) targets the council and Mayor Goff, not the Gallery: Wider context.
+- art-sonje-center: Daewoo founder Kim Woo-choong's 30 May 2006 conviction moved to Wider context (the Daewoo Foundation page says its projects have been "primarily funded" by him since 1978; no page says who funds the foundation or the centre today).
+- artspace-sydney: the Belgiorno-Nettis benefactors are not linked to the Transfield family (no opened page says they are the same people). 2014 Biennale of Sydney boycott is Wider context (Artspace was only a venue).
+- artbank-sydney: "self-funded by leasing income" rests on Wikipedia, attributed in the text.
+- art-siadziba-minsk: Belarus liquidation (Radio Svaboda: late July 2021 list; 3 January 2022 announcement) is Wider context; 275 and 857 figures dropped.
+- associacao-nucleo-de-arte: founding year 1921 (Globalnyt), 1936 (Culturgest) or 1948 (africaserver.nl); the 2021 mural project cut (source names Nucleo de Artes de Maputo).

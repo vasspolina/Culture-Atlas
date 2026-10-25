@@ -1,0 +1,740 @@
+[
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "section": "RED FLAGS",
+  "problems": [
+   "wrong flag category: \"sanctions\" claimed from a wire story only",
+   "no age stated for a 2012 event",
+   "source: justice.gov 404 replaced by archived DOJ release"
+  ],
+  "before": "Red flags: partner bank HSBC settled US money-laundering and sanctions cases\n- HSBC is a current corporate partner and backed \"A Century of Modern Art\" in 2025 (Annual Review 2024/25).\n- On 11 December 2012 HSBC Holdings agreed to pay US$1.92 billion to settle US money-laundering investigations, including a deferred prosecution agreement with the US Department of Justice. The Justice Department's court papers alleged laundering of Mexican narcotics money in breach of the Bank Secrecy Act and transactions with Iran and other sanctioned countries (Arkansas Democrat-Gazette, wire reports).\n",
+  "after": "Red flags: partner bank HSBC, 2012 US money-laundering and sanctions settlement\n- HSBC is listed among the Gallery's current partners and backed \"A Century of Modern Art\" (June to September 2025) (Annual Review 2024/25); the Gallery's partnerships page lists HSBC among its Members.\n- On 11 December 2012 the US Department of Justice announced that HSBC Holdings and HSBC Bank USA agreed to forfeit US$1.256 billion and enter a deferred prosecution agreement, with a further US$665 million in civil penalties; wire reports put the total at US$1.92 billion (Justice Department release; Arkansas Democrat-Gazette).\n- The release cites violations of the Bank Secrecy Act, including at least US$881 million in drug proceeds laundered, among them proceeds of the Sinaloa Cartel in Mexico and the Norte del Valle Cartel in Colombia, and violations of the International Emergency Economic Powers Act and the Trading with the Enemy Act through transactions for customers in Cuba, Iran, Libya, Sudan and Burma (Justice Department release).\n- The settlement dates from 2012, more than five years ago; HSBC's partnership with the Gallery is current.\n",
+  "sources": [
+   "https://www.justice.gov/archive/usao/nye/pr/2012/2012dec11.html",
+   "https://www.arkansasonline.com/news/2012/dec/11/hsbc-pay-29-billion-settle-money-laundering-probes/",
+   "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf"
+  ],
+  "reason": "HSBC is a documented current partner (Annual Review 2024/25: 'Current partners include ... HSBC'), so the House rule on a bank's fine (HSBC named) applies as a name to know. The wire story's sanctions wording is now backed by the DOJ release, whose text names IEEPA/TWEA and the five countries; the age (2012) is stated. Arkansas headline says 2.9 billion but its body and DOJ sums (1.256 + 0.665) give 1.92 billion."
+ },
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "section": "CRITICISM IN ART MEDIA -> WIDER CONTEXT",
+  "problems": [
+   "press item criticises the council, not the Gallery",
+   "absence/meta line (\"One piece found\")",
+   "2017 year not stated for the budget figure",
+   "unsupported: none of the article names the Gallery as target"
+  ],
+  "before": "CRITICISM IN ART MEDIA\nOverall: One piece found, from a culture and news outlet rather than the art press; it criticises the Gallery's public funder, not the Gallery.\n1. The Spinoff: Simon Wilson, \"Why is Auckland slowly strangling its art gallery?\" (2017)\nURL: https://thespinoff.co.nz/auckland/12-12-2017/the-gallery-of-all-our-dreams/\n- Argues that Auckland Council, led by Mayor Phil Goff, underfunds the Gallery: the operating budget was NZ$6.9 million in 2017, down 25% from NZ$9.2 million in 2012, while visitors reached 550,000 against a target of 470,000.\n- Says benefactor and sponsor money \"doesn't keep the doors open\" and opposes charging overseas visitors, who are about 60% of visitors.\n- Names Goff, the director Rhana Devenport and Paul Brewer of Regional Facilities Auckland; criticises the council, not the Gallery.\n\nBOTTOM LINE\nThe Gallery is publicly owned and funded through Auckland Council, with corporate partners, trusts and an endowment on top. The name to know is HSBC, a current partner whose 2012 US money-laundering settlement is documented. The public funding squeeze raised in 2017 is the other point to watch.\n",
+  "after": "WIDER CONTEXT\n- The Spinoff, Simon Wilson, \"Why is Auckland slowly strangling its art gallery?\" (12 December 2017): argues that Auckland Council, led by Mayor Phil Goff, underfunds the Gallery. The Gallery's operating budget was NZ$6.9 million in the latest financial year, down 25% from NZ$9.2 million in 2012, while visitors reached 550,000 against a target of 470,000.\n- Wilson writes that benefactor and sponsor money \"doesn't keep the doors open\", and he opposes an entry fee for overseas visitors, who are about 60% of visitors. He names Goff, the Gallery's director Rhana Devenport and Paul Brewer of Regional Facilities Auckland.\n- The column's target is the council, which owns the Gallery through Tātaki Auckland Unlimited, not the Gallery itself.\n\nBOTTOM LINE\nThe Gallery is publicly owned and funded through Auckland Council, with corporate partners, trusts and an endowment on top. The name to know is HSBC, a current partner that settled US money-laundering and sanctions cases in December 2012. The council's funding of the Gallery, criticised in The Spinoff in 2017, is the other point to watch.\n",
+  "sources": [
+   "https://thespinoff.co.nz/auckland/12-12-2017/the-gallery-of-all-our-dreams/"
+  ],
+  "reason": "The Spinoff column was opened: it names the council and Mayor Goff as targets and describes the Gallery sympathetically, so it moves to Wider context and the Criticism heading (with no numbered item) is deleted. The article gives no year for the NZ$6.9 million figure ('that same year', latest financial year), so '2017' is removed. Owned/operated by Tātaki Auckland Unlimited, a council-controlled organisation, per the Annual Review 2024/25."
+ },
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "section": "SOURCES",
+  "problems": [
+   "source list"
+  ],
+  "before": "- https://www.arkansasonline.com/news/2012/dec/11/hsbc-pay-29-billion-settle-money-laundering-probes/\n",
+  "after": "- https://www.justice.gov/archive/usao/nye/pr/2012/2012dec11.html\n- https://www.arkansasonline.com/news/2012/dec/11/hsbc-pay-29-billion-settle-money-laundering-probes/\n",
+  "sources": [
+   "https://www.justice.gov/archive/usao/nye/pr/2012/2012dec11.html"
+  ],
+  "reason": "Added the archived DOJ press release that confirms the settlement terms."
+ },
+ {
+  "id": "art-sonje-center",
+  "section": "OVERVIEW",
+  "problems": [
+   "name spelling not as on the centre page"
+  ],
+  "before": "to remember her late son, Kim Seon-jae.",
+  "after": "to remember her late son, Kim Son-je.",
+  "sources": [
+   "https://artsonje.org/en/asjasjc-enc/about/"
+  ],
+  "reason": "The centre's About page spells the name Kim Son-je."
+ },
+ {
+  "id": "art-sonje-center",
+  "section": "FUNDING",
+  "problems": [
+   "quote attached to the wrong subject: the page says the foundation's projects were funded by Kim"
+  ],
+  "before": "- The Daewoo Foundation states that it has been \"primarily funded by the late Daewoo Group chairperson Kim Woo Choong since 1978\" (Daewoo Foundation page on artsonje.org). Chung married Kim in 1964; he died in 2019 (artsonje.org, Founder page).",
+  "after": "- The Daewoo Foundation page on artsonje.org says the foundation's projects \"have been primarily funded by the late Daewoo Group chairperson Kim Woo Choong since 1978\". Chung married Kim in 1964; he died in 2019 (artsonje.org, Founder page).",
+  "sources": [
+   "https://artsonje.org/en/asjasjc-enc/foundation/"
+  ],
+  "reason": "Quote now matches the page's wording ('These projects have been primarily funded ...')."
+ },
+ {
+  "id": "art-sonje-center",
+  "section": "RED FLAGS -> WIDER CONTEXT",
+  "problems": [
+   "founder personal case is not a flag: no flag category fits and no page shows foundation money funding the centre today",
+   "absence-style conviction link wording",
+   "absence in bottom line (\"how much ... still gives\")"
+  ],
+  "before": "Red flags: Daewoo founder behind the funding foundation was convicted of fraud and embezzlement\n- Kim Woo-choong, founder and former chairman of Daewoo, was sentenced on 30 May 2006 by the Seoul Central District Court to 10 years in prison, forfeiture of more than 21 trillion won and a fine of 10 million won. The court found accounting fraud of over 20 trillion won, 9.8 trillion won of illegal financing, 19 trillion won diverted abroad and $100 million embezzled (AP via NBC News).\n- Daewoo collapsed under heavy debt after the 1997 to 1998 Asian financial crisis (AP via NBC News).\n- The link to the centre is the centre's own statement that it extends the Daewoo Foundation's work, and the foundation's statement that Kim was its primary funder.\n\nNot related:",
+  "after": "Not related:",
+  "sources": [
+   "https://artsonje.org/en/asjasjc-enc/foundation/",
+   "https://artsonje.org/en/asjasjc-enc/about/",
+   "https://www.nbcnews.com/id/wbna13043919"
+  ],
+  "reason": "The conviction is the founder's personal case from 2006. The Foundation page says Kim primarily funded the foundation's projects since 1978 and does not say who funds the foundation or the centre today; no flag category (fossil fuels, gambling, tobacco, arms, opioids, sanctions and so on) fits, so it moves to Wider context with its 2006 date. See the Wider context entry below."
+ },
+ {
+  "id": "art-sonje-center",
+  "section": "CRITICISM / WIDER CONTEXT",
+  "problems": [
+   "Overall line framed as an absence of coverage (\"Coverage is listings\")",
+   "conviction moved from Red flags"
+  ],
+  "before": "Overall: Coverage is listings and exhibition reviews; the one critical note concerns a single show.",
+  "after": "Overall: One review praises a show at the centre and has one reservation about it.",
+  "sources": [
+   "https://www.artandmarket.net/exhibition/2026/04/23/editors-notes-exhibitions-in-seoul"
+  ],
+  "reason": "Opened the Art & Market page: Ian Tee, 'Editor's Notes: Exhibitions in Seoul', dated 23 April (2026 in the URL and text); it mostly praises 'Spectrosynthesis Seoul' and says the show needed 'more breathing room'. It criticises one show, not the institution. The claim that coverage 'is listings' is not supported by an opened source, so the line now states only what the piece says."
+ },
+ {
+  "id": "art-sonje-center",
+  "section": "WIDER CONTEXT (new)",
+  "problems": [
+   "conviction moved from Red flags, dated 2006"
+  ],
+  "before": "BOTTOM LINE\nThe sources show a family-founded private centre whose only stated funder is the Daewoo Foundation, which the foundation says was built mainly on Kim Woo-choong's money. Kim was convicted of fraud and embezzlement in 2006. What is worth watching is how much the Daewoo Foundation still gives.",
+  "after": "WIDER CONTEXT\n- Kim Woo-choong, founder and former chairman of Daewoo, was sentenced on 30 May 2006 by the Seoul Central District Court to 10 years in prison, forfeiture of more than 21 trillion won and a fine of 10 million won. The court found accounting fraud of over 20 trillion won, 9.8 trillion won of illegal financing, 19 trillion won diverted abroad and $100 million embezzled (AP via NBC News).\n- Daewoo collapsed under massive debts in the wake of the 1997 to 1998 Asian financial crisis (AP via NBC News).\n- Connection to the centre: the centre says it was founded as an extension of the Daewoo Foundation's commitment to social sharing practices in the arts, and the foundation's page on the centre's site says its projects have been primarily funded by Kim since 1978. Chung, the centre's founder, married Kim in 1964.\n\nBOTTOM LINE\nThe centre is a family-founded private non-profit that says it was founded as an extension of the Daewoo Foundation's arts work; the foundation says Kim Woo-choong primarily funded its projects from 1978. Kim was convicted of fraud and embezzlement in 2006, a case that belongs to the founder personally.",
+  "sources": [
+   "https://artsonje.org/en/asjasjc-enc/foundation/",
+   "https://artsonje.org/en/asjasjc-enc/about/",
+   "https://www.nbcnews.com/id/wbna13043919"
+  ],
+  "reason": "Moved from Red flags to Wider context, dated 30 May 2006, per the NBC/AP page (sentence, forfeiture, fine, fraud, financing, embezzlement and collapse wording all confirmed). Bottom line rewritten to state what the money is and what is documented, with no statement of what is missing."
+ },
+ {
+  "id": "art-sonje-center",
+  "section": "NOT RELATED",
+  "problems": [
+   "unsupported: \"concerns her own collection, not the centre\""
+  ],
+  "before": "Chung's dispute with Wooyang over 188 artworks concerns her own collection, not the centre.",
+  "after": "Chung sought the return of 188 artworks from Wooyang; the court ordered three of them returned to her (USA Art News).",
+  "sources": [
+   "https://usaartnews.com/news/korean-court-rules-in-bitter-dispute-over-patrons-188-alleged-art-loans/"
+  ],
+  "reason": "The USA Art News page states the dispute and the court order (two Nam June Paik works and one Sigmar Polke work returned; the evidence was not sufficient for the other 185) but does not say whose collection the works belong to, so the claim is replaced with what the page states."
+ },
+ {
+  "id": "artspace-sydney",
+  "section": "OVERVIEW",
+  "problems": [
+   "architect firm name as printed by the source"
+  ],
+  "before": "A redevelopment led by DunnHillam Architects",
+  "after": "A redevelopment led by Dunn and Hillam Architects",
+  "sources": [
+   "https://artasiapacific.com/news/artspace-sydney-to-receive-millions-for-renovation"
+  ],
+  "reason": "ArtAsiaPacific writes 'Dunn and Hillam Architects'."
+ },
+ {
+  "id": "artspace-sydney",
+  "section": "FUNDING",
+  "problems": [
+   "verdict \"mainly public\" not supported: no page gives the government share",
+   "confusing mix of the 2025 report and the current list"
+  ],
+  "before": "Artspace Sydney: mainly public, with a benefactor programme: Create NSW and Creative Australia, plus private benefactors",
+  "after": "Artspace Sydney: government-supported with a benefactor programme: Create NSW and Creative Australia, plus private benefactors",
+  "sources": [
+   "https://artspace.org.au/partners-and-benefactors"
+  ],
+  "reason": "The annual report gives self-generated revenue (28% of turnover in 2025) but no government share, so 'mainly public' is replaced with a verdict the pages state."
+ },
+ {
+  "id": "artspace-sydney",
+  "section": "FUNDING",
+  "problems": [
+   "benefactor list mixed two sources and tiers",
+   "name-only link to Transfield family avoided"
+  ],
+  "before": "- Benefactors, 2025 report and current list: Luminaries are Andrew Cameron AM and Cathy Cameron, TWT Property Group, Daniel Boyd and one anonymous donor. Vision-Makers are Anita and Luca Belgiorno-Nettis, Michelle and Guido Belgiorno-Nettis, and The Medich Foundation. Catalysts are the Neilson Foundation and The Keir Foundation (and James Emmett and Peter Wilson in 2025). Other named funds and foundations are the Turnbull Foundation, Orange & Sardines Foundation and Wheen Family Foundation (Artspace benefactors page, annual report 2025).",
+  "after": "- Benefactors listed on the Artspace site (current as of 13 August 2026): Luminaries are Daniel Boyd, Andrew Cameron AM and Cathy Cameron, TWT Property Group and one anonymous donor. Vision-Makers are Anita and Luca Belgiorno-Nettis, Michelle and Guido Belgiorno-Nettis, and The Medich Foundation. Catalysts are the Neilson Foundation and The Keir Foundation. The Turnbull Foundation, Orange & Sardines Foundation and Wheen Family Foundation are also named.\n- The 2025 annual report thanks the Anita and Luca Belgiorno-Nettis Foundation and Michelle and Guido Belgiorno-Nettis for supporting the Franco Belgiorno-Nettis Archive, which Artspace houses.",
+  "sources": [
+   "https://artspace.org.au/partners-and-benefactors",
+   "https://artspace.org.au/media/pages/about-artspace/16a2e5bf25-1777607606/annual-report-2025.pdf"
+  ],
+  "reason": "Both lists opened: the site list (13 August 2026) and the 2025 report list differ slightly (the report has James Emmett and Peter Wilson as Catalysts; Daniel Boyd appears as a Luminary only on the site). The annual report line on the Archive acknowledgement is added as the stated fact."
+ },
+ {
+  "id": "artspace-sydney",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "Belgiorno-Nettis names on the benefactor list linked to the Transfield family by surname only",
+   "wording \"Sydney artists called for a boycott\" less exact than the page",
+   "Luca resignation/end of sponsorship stated more firmly than the pages",
+   "absence-type wording \"not Artspace\""
+  ],
+  "before": "- In February 2014 Sydney artists called for a boycott of the 19th Biennale of Sydney over its sponsor Transfield, whose subsidiary Transfield Services held a contract worth AUD 1.2 billion to run offshore immigration detention on Nauru and Manus Island. Luca Belgiorno-Nettis, executive director of Transfield Holdings, resigned as Biennale chairman in March 2014 and the Biennale ended the sponsorship (Apollo, Maggie Gray, 8 March 2014; Apollo, Tim Walsh, 14 March 2014; Hyperallergic, Jillian Steinhauer, 21 February 2014).\n- Apollo's Tim Walsh argued that Australian arts sponsorship is \"riddled with difficult questions and double standards\".\n- The campaign targeted the Biennale, not Artspace. Artspace's benefactor list names Anita and Luca Belgiorno-Nettis and Michelle and Guido Belgiorno-Nettis, and Artspace was one of the Biennale's venues (Apollo, Walsh).",
+  "after": "- In February 2014 the Sydney academic Matt Kiem began a call to boycott the 19th Biennale of Sydney with an open letter of 4 February; 28 of the 90 participating artists then wrote to the Biennale board asking it to end its sponsorship arrangement with Transfield, and the board replied that it would not sever ties (Hyperallergic, Jillian Steinhauer, 21 February 2014).\n- Transfield Services held a contract worth AUD 1.2 billion to provide and administer offshore detention facilities on Nauru and Manus Island (Apollo, Tim Walsh, 14 March 2014). Luca Belgiorno-Nettis, executive director of Transfield Holdings, resigned as chairman of the Biennale, and the organisers said they would sever ties with Transfield (Apollo, Maggie Gray, 8 March 2014).\n- Walsh's Apollo article describes the debate over arts sponsorship in Australia as \"riddled with difficult questions and double standards\".\n- Connection to Artspace: Artspace was one of the venues of the 2014 Biennale (Apollo, Walsh). The campaign was aimed at the Biennale and its sponsor.",
+  "sources": [
+   "https://apollo-magazine.com/sponsorship-ethics-biennale-sydney/",
+   "https://apollo-magazine.com/?p=67711",
+   "https://hyperallergic.com/artists-call-for-boycott-of-sydney-biennale-over-sponsorship"
+  ],
+  "reason": "Opened all three pages. Gray (8 March) says the chairman has resigned and the organisers 'will sever ties'; Walsh (14 March) names Artspace as a Biennale venue and gives the AUD 1.2 billion contract; Hyperallergic gives Kiem's 4 February open letter and the 28 of 90 artists. None of them mentions Artspace's benefactors, and no opened page says the Belgiorno-Nettis benefactors are the Transfield family, so that link (surname only) is cut."
+ },
+ {
+  "id": "artspace-sydney",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "implied link of benefactors to the Transfield family",
+   "\"mainly\" not supported"
+  ],
+  "before": "Artspace is funded mainly by the NSW and federal governments, with private benefactors and a property-group partnership on top. The names to watch are the Belgiorno-Nettis family, whose family company was the target of the 2014 Biennale of Sydney boycott, and TWT Property Group as a new multi-year partner.",
+  "after": "Artspace is supported by the NSW and federal governments through Create NSW and Creative Australia, with private benefactors and a property-group partnership on top. TWT Property Group is a new multi-year partner and a Luminary benefactor. The 2014 Biennale of Sydney boycott over Transfield concerned the Biennale, of which Artspace was a venue.",
+  "sources": [
+   "https://artspace.org.au/partners-and-benefactors",
+   "https://apollo-magazine.com/sponsorship-ethics-biennale-sydney/"
+  ],
+  "reason": "The bottom line no longer links the benefactors to the Transfield boycott; it states the funders and the documented venue connection."
+ },
+ {
+  "id": "artizon-museum-tokyo",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "filing date and ruling date not on the cited page (BHRRC article gives neither)",
+   "ruling wording paraphrased more loosely than the source",
+   "connection point stated as the founder only; history wording; no funding implication"
+  ],
+  "before": "- Bridgestone's Firestone unit was sued in November 2005 in a US federal court under the Alien Tort Statute by 23 Liberian children who worked on its rubber plantation in Liberia. On 11 July 2011 the Seventh Circuit, in an opinion by Judge Richard Posner, threw out the child-labour claims because there was an inadequate basis to find a violation of customary international law, while holding that corporations can be liable under the statute (Business and Human Rights Resource Centre).\n- The connection to Artizon is the founder: Ishibashi created Bridgestone and the foundation that runs the museum, and the museum was called the Bridgestone Museum of Art until it closed in 2015.",
+  "after": "- Bridgestone's Firestone unit was sued on 17 November 2005 in a US federal court under the Alien Tort Statute by 23 Liberian children who worked on its rubber plantation in Liberia (International Rights Advocates).\n- The Seventh Circuit opinion, written by Judge Richard Posner and posted on 11 July 2011, left summary judgment for Firestone in place on the child-labour claims because the plaintiffs had not shown a sufficiently clear rule of customary international law on child labour, and held that corporations can be liable under the Alien Tort Statute (International Rights Advocates; Business and Human Rights Resource Centre).\n- Connection to Artizon, as history: Shojiro Ishibashi founded Bridgestone in 1931 and set up the Ishibashi Foundation, which runs the museum, in 1956; the museum was called the Bridgestone Museum of Art until it closed in 2015 (Artizon history and founder pages).",
+  "sources": [
+   "https://www.internationalrightsadvocates.org/case/africa-liberia/flomo-et-al-v-firestone-natural-rubber-company",
+   "https://business-humanrights.org/en/latest-news/pdf-10-3675-boimah-flomo-v-firestone-natural-r-opinion-posner",
+   "https://www.artizon.museum/en/about-museum/founder/"
+  ],
+  "reason": "Opened the International Rights Advocates case page (filed 17 November 2005, 23 children, Alien Tort Statute, Seventh Circuit affirmed on the child-labour claims for lack of a 'crisp rule of customary international law', corporations may be liable) and the BHRRC copy of the opinion (Seventh Circuit, Posner, posted 11 July 2011). The Reuters article on BHRRC gives neither the filing nor the opinion date. The Artizon founder page states the history only; no page shows Bridgestone money funding the museum, so it stays in Wider context."
+ },
+ {
+  "id": "artizon-museum-tokyo",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line lists what is missing / a research question rather than a documented fact"
+  ],
+  "before": "The museum is run by a private public-interest foundation built on its founder's collection and assets. The weak point is the founder's link to Bridgestone, whose Firestone unit faced the Liberian child-labour suit; the suit concerned Bridgestone, not the foundation. What is worth watching is what the foundation's 442.76 billion yen of investment securities consist of.",
+  "after": "The museum is run by a private public-interest foundation built on its founder's collection and assets, with total assets of 691.38 billion yen at the end of 2025. The founder's company, Bridgestone, faced the Liberian child-labour suit through its Firestone unit; the suit named Firestone, not the foundation. The foundation's balance sheet shows 442.76 billion yen of investment securities.",
+  "sources": [
+   "https://www.ishibashi-foundation.or.jp/pdf/2025balancesheet.pdf",
+   "https://www.internationalrightsadvocates.org/case/africa-liberia/flomo-et-al-v-firestone-natural-rubber-company"
+  ],
+  "reason": "Balance sheet opened: total assets 691,379,473,140 yen, net assets 691,094,878,766 yen, basic assets 468,731,512,961 yen incl. investment securities 442,764,000,000, art 7,230,933,907, buildings 13,156,534,692, land 5,580,044,362 (all as in the report). 'The suit concerned Bridgestone' replaced with what the case page states (Firestone Natural Rubber Company)."
+ },
+ {
+  "id": "artizon-museum-tokyo",
+  "section": "SOURCES",
+  "problems": [
+   "source list"
+  ],
+  "before": "- https://business-humanrights.org/en/firestone-wins-liberian-child-labor-case-in-us\n",
+  "after": "- https://business-humanrights.org/en/firestone-wins-liberian-child-labor-case-in-us\n- https://business-humanrights.org/en/latest-news/pdf-10-3675-boimah-flomo-v-firestone-natural-r-opinion-posner\n- https://www.internationalrightsadvocates.org/case/africa-liberia/flomo-et-al-v-firestone-natural-rubber-company\n",
+  "sources": [
+   "https://www.internationalrightsadvocates.org/case/africa-liberia/flomo-et-al-v-firestone-natural-rubber-company"
+  ],
+  "reason": "Added the two pages that carry the filing date and the Seventh Circuit opinion."
+ },
+ {
+  "id": "artium-museoa-vitoria-gasteiz",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: location description (\"just outside the medieval centre, near the Museum of Archaeology and the Fournier Playing Card Museum\") not on the opened tourism page"
+  ],
+  "before": "at C/ Francia 24, just outside the medieval centre of Vitoria-Gasteiz, near the Museum of Archaeology and the Fournier Playing Card Museum (Álava tourism board).",
+  "after": "at C/ Francia 24, Vitoria-Gasteiz (Álava tourism board).",
+  "sources": [
+   "https://alavaturismo.eus/en/artium-arte-contemporaneo"
+  ],
+  "reason": "The opened tourism page gives the address, the 26 April 2002 opening, the collection size, admission and services, but not the neighbourhood description, so that detail is cut."
+ },
+ {
+  "id": "artium-museoa-vitoria-gasteiz",
+  "section": "FUNDING",
+  "problems": [
+   "capital share missing; names without accents"
+  ],
+  "before": "- The Diputación Foral de Álava contributed the foundation's entire initial fund of 180,304 euros (Basque Government register, 2023).\n- Board (2024 listing): chair Ramiro Gonzalez Vicente and vice-chair Ana Maria Del Val Sancho, both for the Diputación Foral de Álava, which holds three further seats; the Basque Government holds two seats; the Vitoria-Gasteiz city council one; the Ministry of Education, Culture and Sport one; the Diputación Foral de Bizkaia the secretary's seat (Basque Government register, 2024).\n- Two private members sit on the board: Diario El Correo S.A. (Iñigo Barrenechea Lombardero) and Fundación Vital (Silvia Garcia de Garayo Diaz in the 2024 listing; Iñigo Recio Alvarez in 2023) (Basque Government register).",
+  "after": "- The Diputación Foral de Álava contributed the foundation's entire initial fund of 180,304 euros and is listed as holding 100% of the capital (Basque Government register, 2023 and 2024).\n- Board (2024 listing): chair Ramiro González Vicente and vice-chair Ana María Del Val Sancho, both for the Diputación Foral de Álava, which holds three further seats; the Basque Government holds two seats; the Vitoria-Gasteiz city council one; the Ministry of Education, Culture and Sport one; the Diputación Foral de Bizkaia the secretary's seat, held by Susana Guede Arana (Basque Government register, 2024).\n- Two private members sit on the board: Diario El Correo S.A. (Iñigo Barrenechea Lombardero) and Fundación Vital (Silvia García de Garayo Díaz in the 2024 listing; Iñigo Recio Alvarez in 2023, as the register prints the name) (Basque Government register).",
+  "sources": [
+   "https://www.euskadi.eus/contenidos/entidad/soc_publica_193/eu_def/adjuntos/20247108.pdf",
+   "https://www.euskadi.eus/contenidos/entidad/soc_publica_193/es_def/adjuntos/20237108.pdf"
+  ],
+  "reason": "Opened both register pages. Capital composition reads 'Diputación Foral de Álava: 100%'. Names restored with accents: González, María, García, Díaz. The register prints 'Alvarez' without an accent, so it is kept as printed. Seat counts checked: Álava 5 (chair, vice-chair and three vocales), Basque Government 2, Vitoria-Gasteiz council 1, Ministry 1, Bizkaia secretary, Diario El Correo 1, Fundación Vital 1."
+ },
+ {
+  "id": "artium-museoa-vitoria-gasteiz",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "sentence about what is not stated (budget split)"
+  ],
+  "before": "The private seats held by Diario El Correo and Fundación Vital are the points to watch, along with how much of the budget comes from each public body.",
+  "after": "The two private seats, held by Diario El Correo and Fundación Vital, are the points to watch.",
+  "sources": [
+   "https://www.euskadi.eus/contenidos/entidad/soc_publica_193/eu_def/adjuntos/20247108.pdf"
+  ],
+  "reason": "Both private members confirmed on the 2023 and 2024 register pages. The 'budget from each public body' clause pointed at missing data and is cut."
+ },
+ {
+  "id": "art-siadziba-minsk",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Maskvin Lane was a lost planned venue, not a venue it moved to",
+   "activity ended wording tied to the announcement"
+  ],
+  "before": "- It moved between venues: the Horizont factory building, 28a Pushkin Avenue, 4 Maskvin Lane, a two-room flat in central Minsk and, from 2013, 6 Instrumentalny Lane (Nasha Niva, Kalektar).",
+  "after": "- Venues: the Horizont factory building, then 28a Pushkin Avenue, then a two-room flat in central Minsk and, from 2013, 6 Instrumentalny Lane (Kalektar). A new space planned for 4 Maskvin Lane was lost in December 2012 before it opened (Nasha Niva, 6 December 2012).",
+  "sources": [
+   "https://kalektar.org/in/terms/3zQqWmcTp6OokhSm7Hov",
+   "https://nashaniva.com/101437"
+  ],
+  "reason": "Nasha Niva (6 December 2012) says the Maskvin Lane opening on 6-7 December was cancelled when the owner ended the lease, so it was never a venue it moved into. Kalektar gives Horizont, 28a Pushkin Avenue, the two-room flat and 6 Instrumentalny Lane from 2013."
+ },
+ {
+  "id": "art-siadziba-minsk",
+  "section": "OVERVIEW",
+  "problems": [
+   "date precision"
+  ],
+  "before": "- It ended its activity in 2022.",
+  "after": "- It announced on 3 January 2022 that it was ending its activity (Radio Svaboda).",
+  "sources": [
+   "https://www.svaboda.org/a/31637620.html"
+  ],
+  "reason": "Radio Svaboda's article of 3 January 2022 carries the announcement."
+ },
+ {
+  "id": "art-siadziba-minsk",
+  "section": "OVERVIEW",
+  "problems": [
+   "descriptor not on the source"
+  ],
+  "before": "- Independent cultural and educational organisation in Minsk that promoted the Belarusian language through concerts, lectures and entertainment events for young people (Radio Svaboda).",
+  "after": "- Independent cultural platform in Minsk that promoted the Belarusian language through concerts, lectures and entertainment events for young people (Radio Svaboda).",
+  "sources": [
+   "https://www.svaboda.org/a/31637620.html"
+  ],
+  "reason": "Radio Svaboda calls it a cultural platform; 'educational' is not on the page."
+ },
+ {
+  "id": "art-siadziba-minsk",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: \"living on rent, events\" (no page gives its income); wording",
+   "premises described as moved-to"
+  ],
+  "before": "Art-Siadziba: small independent venue living on rent, events and a public crowdfunding appeal\n- In 2014 the \"Dom\" (House) campaign raised just over $4,000 in 10 days toward a building of its own, with a goal of $200,000 sold as 40,000 virtual bricks at $5 each (Charter97, 6 March 2014).\n- Premises were rented: at Maskvin Lane the building belonged to JSC Sukno and was leased by JSC RefOilProdukt, with Art-Siadziba as sub-tenant (Nasha Niva, 6 December 2012); at Instrumentalny Lane the landlord was the Belarusian Society of Hunters and Fishermen (Charter97, 6 March 2014).",
+  "after": "Art-Siadziba: independent venue in rented premises, with a 2014 crowdfunding appeal for a building of its own\n- In 2014 the \"Dom\" (House) campaign raised a little over $4,000 in 10 days toward a goal of $200,000, sold as 40,000 virtual bricks at $5 each (Charter97, 6 March 2014).\n- Premises were rented: the planned Maskvin Lane space belonged to JSC Sukno and was leased by JSC RefOilProdukt, with Art-Siadziba as sub-tenant (Nasha Niva, 6 December 2012); at Instrumentalny Lane the owner was the Belarusian Society of Hunters and Fishermen, which let Art-Siadziba stay until 1 May 2014 (Charter97, 6 March 2014).",
+  "sources": [
+   "https://charter97.org/be/news/2014/3/6/89398/",
+   "https://nashaniva.com/101437"
+  ],
+  "reason": "Charter97 (6 March 2014) states the campaign figures and the landlord with the 1 May deadline; Nasha Niva (6 December 2012) states the Sukno/RefOilProdukt sub-lease. No opened page gives its income sources, so 'living on rent, events' is removed."
+ },
+ {
+  "id": "art-siadziba-minsk",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "Lawtrend attribution not on the page",
+   "857 figure not tied to Lawtrend",
+   "connection should be the last point",
+   "culture department answer tied to the wrong event",
+   "absence-style line about the Amnesty statement"
+  ],
+  "before": "- Radio Svaboda reports that Belarusian authorities liquidated non-governmental organisations on a large scale after 2020: at least 275 by the end of 2021 and at least 857 by July 2022, citing the Lawtrend monitor.\n- Amnesty International said on 22 February 2021 that the authorities were \"methodically destroying Belarus's spirited cultural life\". The statement covers the country's cultural scene as a whole.\n- Radio Svaboda reports that Art-Siadziba was added to the list of organisations to be liquidated in late July 2021, and that it announced on 3 January 2022 that it was ending its activity. Belavus faced a criminal case under Article 342 of the Belarusian Criminal Code and was held in SIZO-1 in Minsk when Svaboda published.\n- Unverified: after the third loss of premises in December 2012, Belavus said the landlord was summoned to the Minsk City Executive Committee and told to cancel the lease, and that the order came from its ideology department; Nasha Niva reports this as Belavus's account. The city culture department told Nasha Niva in July 2012 that it does not handle decisions of this kind.",
+  "after": "- Radio Svaboda reports that by the end of 2021 the Belarusian authorities had liquidated at least 275 non-governmental organisations, with more in liquidation or under threat. An update on the same page says that in July 2022 it became known that 857 had been liquidated or driven to self-liquidation.\n- Amnesty International (Aisha Jung, 22 February 2021): \"The authorities are methodically destroying Belarus's spirited cultural life and its most creative members.\" The statement is about the country's cultural scene as a whole.\n- In July 2012, when the space had closed for the first time, the city culture department told Nasha Niva it does not handle decisions of this kind.\n- Unverified: after the third loss of premises in December 2012, Pavel Belavus said the landlord was summoned to the Minsk City Executive Committee and strongly advised to cancel the lease, and that the order came from its ideology department; Nasha Niva reports this as Belavus's account.\n- Connection to Art-Siadziba: Radio Svaboda reports that it was placed on a list of organisations subject to liquidation in late July 2021 and announced on 3 January 2022 that it was ending its activity. Belavus faced a criminal case under Article 342 of the Criminal Code and was held in SIZO-1 in Minsk when Svaboda published.",
+  "sources": [
+   "https://www.svaboda.org/a/31637620.html",
+   "https://www.amnesty.org/en/latest/news/2021/02/belarus-cultural-scene-in-peril-as-crackdown-escalates-2/",
+   "https://nashaniva.com/101437"
+  ],
+  "reason": "Radio Svaboda gives the 275 figure with no named source and the 857 figure through a link to another RFE/RL article, not Lawtrend (Lawtrend is cited only for later figures), so the Lawtrend attribution is removed. The Amnesty quote is by Aisha Jung and the page does not mention Art-Siadziba. Nasha Niva (13 July 2012) has the culture department's statement after the first closure; it was not an answer to the December 2012 claim. Connection moved to the last point."
+ },
+ {
+  "id": "art-siadziba-minsk",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "\"living on rent, events\" unsupported",
+   "claims the evictions belong to a crackdown (not supported by a page that links them)"
+  ],
+  "before": "The sources show a small independent venue living on rent, events and a public crowdfunding appeal. The evictions of 2012 to 2014 and the 2021 liquidation listing belong to the wider crackdown on independent culture in Belarus.",
+  "after": "Art-Siadziba was an independent venue in rented premises, with a 2014 crowdfunding appeal for a building of its own. It was placed on a liquidation list in July 2021 and ended its activity in January 2022, during the wider Belarusian liquidation of non-governmental organisations.",
+  "sources": [
+   "https://www.svaboda.org/a/31637620.html"
+  ],
+  "reason": "States what the money was and what is documented; the 2021 listing and the January 2022 announcement are from Radio Svaboda."
+ },
+ {
+  "id": "artbank-sydney",
+  "section": "OVERVIEW",
+  "problems": [
+   "department named only generally"
+  ],
+  "before": "- Part of the federal arts and infrastructure department; Wikipedia names Zoe Rodriguez as director as of October 2023.",
+  "after": "- Part of the Department of Infrastructure, Transport, Regional Development, Communications and the Arts (Canberra Times); Wikipedia names Zoe Rodriguez as director as of October 2023.",
+  "sources": [
+   "https://canberratimes.com.au/story/8151988/audit-criticises-government-management-of-art-leasing-program"
+  ],
+  "reason": "The Canberra Times names the department; Wikipedia gives the director as of October 2023."
+ },
+ {
+  "id": "artbank-sydney",
+  "section": "FUNDING",
+  "problems": [
+   "\"leasing revenue\" not on the page: Government News says revenue"
+  ],
+  "before": "- Leasing revenue in 2021 was A$2.8 million; about A$566,000 (20%) of it went on 71 acquisitions (Government News, on the 2023 audit).",
+  "after": "- Revenue in 2021 was A$2.8 million, of which A$566,000 (20%) was spent on 71 acquisitions (Government News, on the 2023 audit).",
+  "sources": [
+   "https://www.governmentnews.com.au/report-paints-grim-picture-of-artbank-program/"
+  ],
+  "reason": "Government News writes 'revenue of $2.8 million', not 'leasing revenue'."
+ },
+ {
+  "id": "artbank-sydney",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "attribution to sources that do not carry the figure",
+   "department defence attributed to the secretary",
+   "audit wording",
+   "meta sentence about where the findings come from"
+  ],
+  "before": "- In April 2023 the Australian National Audit Office (Auditor-General Grant Hehir) concluded that the department's approach to acquiring, managing and leasing Artbank's art \"has not been appropriate\" (Government News, Canberra Times).\n- The audit found acquisitions did not follow the Commonwealth Procurement Rules: no open or competitive process, value for money not documented, limited public reporting (Region Canberra).\n- Leasing covered about 40% of the collection against a target of at least 70%; 30% of the collection was never rented from July 2015 to June 2022 and a further 29% was rented for less than half the time it was available (Canberra Times, Region Canberra).\n- Approvals for over 70 works to be removed from the collection were granted retrospectively, although the works had been sold more than four years earlier (Canberra Times, Region Canberra).\n- Acquisition spending fell from A$507,993 for 179 works in 2016 to 2017 to A$396,462 for 75 works in 2021 to 2022; applications to artist pitch roadshows fell from 40 in 2016 to three in 2021 (Canberra Times, Government News).\n- The department's secretary, Jim Betts, said he was concerned that aspects of the audit's narrative could unduly harm Artbank's reputation, and that the department relied on a rule allowing limited tender for acquisitions (Canberra Times).\n- These findings come from audit and general-press coverage, not art media. They concern Artbank's own management.",
+  "after": "- In April 2023 the Australian National Audit Office (Auditor-General Grant Hehir) found that the department's handling of Artbank \"has not been appropriate\" (Government News, Canberra Times).\n- Acquisitions did not follow the Commonwealth Procurement Rules and skipped open or competitive processes; value for money was not documented or demonstrated, and public reporting was limited (Region Canberra, Canberra Times).\n- About 40% of the collection was leased against a target of 70%; 30% was never leased from July 2015 to June 2022 and a further 29% was leased for less than half the time it was available (Government News, Region Canberra, Canberra Times).\n- Approvals for removing over 70 works were obtained after the fact, though the works had been sold more than four years earlier (Region Canberra).\n- Acquisition spending fell from A$507,993 for 179 works in 2016 to 2017 to A$396,462 for 75 works in 2021 to 2022; applications to the artist pitch roadshows fell from 40 in 2016 to three in 2021 (Government News).\n- The department defended its approach by citing a rule allowing \"limited tender\". Its secretary, Jim Betts, wrote that he was \"concerned that aspects of the narrative may unduly and adversely impact the reputation and operation of Artbank\" (Canberra Times).\n- Connection to Artbank: the audit examined Artbank's own acquisitions, leasing and records, which the department runs.",
+  "sources": [
+   "https://www.governmentnews.com.au/report-paints-grim-picture-of-artbank-program/",
+   "https://canberratimes.com.au/story/8151988/audit-criticises-government-management-of-art-leasing-program",
+   "https://region.com.au/artists-cant-bank-on-artbank-auditor-finds/651455"
+  ],
+  "reason": "Opened all three press pages (Government News 12 April 2023; Canberra Times, Natalie Vikhrov, 8 April 2023; Region Canberra, Chris Johnson, 12 April 2023). The 70% target appears in Government News and Region Canberra, not in the Canberra Times; the retroactive removal approvals and the 'more than four years' detail are in Region Canberra (the Canberra Times says the records did not show the sale); the 'limited tender' rule was cited by the department, not by Mr Betts. The line saying the findings are not from art media is meta and is cut."
+ },
+ {
+  "id": "artbank-sydney",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "speculative \"recover after the audit\" clause"
+  ],
+  "before": "Artbank runs on leasing income inside a federal department. The weak points are governance and procurement, documented by the 2023 national audit, which found leasing below target and acquisitions outside the procurement rules. Worth watching is whether leasing and artist support recover after the audit.",
+  "after": "Artbank runs on leasing income inside a federal department. The weak points are governance and procurement, documented by the April 2023 national audit, which found leasing below target and acquisitions outside the procurement rules.",
+  "sources": [
+   "https://www.governmentnews.com.au/report-paints-grim-picture-of-artbank-program/",
+   "https://region.com.au/artists-cant-bank-on-artbank-auditor-finds/651455"
+  ],
+  "reason": "The closing clause is a forecast no page supports; the documented findings stay."
+ },
+ {
+  "id": "artpace-san-antonio",
+  "section": "FUNDING",
+  "problems": [
+   "figure given without fiscal year end; source URL was a search page",
+   "state the full finance line"
+  ],
+  "before": "- ProPublica's Nonprofit Explorer lists revenue of $1,648,130 for 2025.",
+  "after": "- ProPublica's Nonprofit Explorer lists Artpace Inc revenue of $1,648,130, expenses of $1,447,940 and contributions of $1,283,714 for the fiscal year ending December 2025.",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/43757857"
+  ],
+  "reason": "Opened the ProPublica organisation page (the search URL listed in Sources is replaced by this page)."
+ },
+ {
+  "id": "artpace-san-antonio",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: foundation \"said in 2022 it would ... focus on Ruby City\""
+  ],
+  "before": "The weak point is dependence on the Linda Pace Foundation, which said in 2022 that it would pay a final annuity sum and focus on its Ruby City programme; the endowment campaign is the item to watch.",
+  "after": "The weak point is dependence on the Linda Pace Foundation, which gave a final annuity payment of $1,196,000 in 2022; its board president Kathryn Kanjo said Artpace's financial independence lets the foundation focus on its own mission at Ruby City. The endowment campaign is the item to watch.",
+  "sources": [
+   "https://artpace.org/artpace-receives-major-financial-contribution-from-the-linda-pace-foundation/"
+  ],
+  "reason": "The Artpace 27 May 2022 release states the $250,000 gift, the final annuity release of $1,196,000 and Kanjo's remark; it does not say the foundation 'would pay a final annuity sum and focus on Ruby City' as a plan."
+ },
+ {
+  "id": "artpace-san-antonio",
+  "section": "SOURCES",
+  "problems": [
+   "search-page URL"
+  ],
+  "before": "- https://projects.propublica.org/nonprofits/search?q=Artpace+San+Antonio\n",
+  "after": "- https://projects.propublica.org/nonprofits/organizations/43757857\n",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/43757857"
+  ],
+  "reason": "Replaced a search URL with the organisation page, which states the revenue figure."
+ },
+ {
+  "id": "artpace-san-antonio",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "Wikipedia-only claim stated without attribution"
+  ],
+  "before": "with a food-company fortune behind the founder.",
+  "after": "with, per Wikipedia, a food-company fortune behind the founder.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Linda_Pace"
+  ],
+  "reason": "The Pace Foods ownership history is cited to Wikipedia in the Funding section; the bottom line now carries the attribution too."
+ },
+ {
+  "id": "artspeak-vancouver",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: \"refused offers to sell\" and the Vancouver Sun title not confirmed on the opened Wikipedia page"
+  ],
+  "before": "Wikipedia says it is one of the few artist-run centres in Vancouver to own its space and has refused offers to sell despite the area's gentrification, and cites a 2016 Vancouver Sun article titled \"Vancouver artist-run gallery secures mortgage-free future\".",
+  "after": "Wikipedia says it is one of the few artist-run centres in Vancouver to own its space.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Artspeak_Gallery"
+  ],
+  "reason": "The opened Wikipedia page states the building purchase in 1996 and the ownership remark; the offers-to-sell and Vancouver Sun title are not on the page text read."
+ },
+ {
+  "id": "artspeak-vancouver",
+  "section": "OVERVIEW",
+  "problems": [
+   "\"by March 2017\" overstates the page; it says \"recent appointment\""
+  ],
+  "before": "Bopha Chhay was appointed director by March 2017 (Canadian Art, 15 March 2017).",
+  "after": "Canadian Art, 15 March 2017, quotes the curator Tarah Hogue on Bopha Chhay's \"recent appointment as director of Artspeak\".",
+  "sources": [
+   "https://canadianart.ca/site-specific/great-art-galleries-in-beyond-the-vancouver-city-core/"
+  ],
+  "reason": "The page says 'recent appointment' without a date."
+ },
+ {
+  "id": "artspeak-vancouver",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: \"artists' fashion items were auctioned\""
+  ],
+  "before": "- In 2004 the gallery ran a runway fundraiser, \"Fashionista\", at which artists' fashion items were auctioned for its benefit (Wikipedia).",
+  "after": "- In 2004 the gallery held a runway fundraiser, \"Fashionista\" (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Artspeak_Gallery"
+  ],
+  "reason": "Wikipedia names the 2004 Fashionista runway fundraiser and states no auction detail."
+ },
+ {
+  "id": "asia-art-archive-hong-kong",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia uses the past tense for the chair since 2003"
+  ],
+  "before": "Jane DeBevoise has chaired the board since 2003, and in 2021 Hsu became co-chair with Benjamin Cha (Wikipedia).",
+  "after": "Wikipedia says Jane DeBevoise chaired the board from 2003, and that in 2021 Hsu became co-chair with Benjamin Cha.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Asia_Art_Archive"
+  ],
+  "reason": "The page reads 'The chair of the board since 2003 was Jane DeBevoise' (past tense), not a statement that she chairs it now."
+ },
+ {
+  "id": "asia-art-archive-hong-kong",
+  "section": "FUNDING",
+  "problems": [
+   "date not on the page: ArtReview 19 October 2026"
+  ],
+  "before": "venue sponsor H Queen's (ArtReview, 19 October 2026).",
+  "after": "venue sponsor H Queen's (ArtReview).",
+  "sources": [
+   "https://artreview.com/lift-a-paddle-at-the-asia-art-archive-2026-annual-fundraiser/"
+  ],
+  "reason": "The opened page says the fundraiser opens on 22 October 2026 and gives no publication date; supporters, over 50 donated works and the Arts Capacity Development Funding Scheme are confirmed."
+ },
+ {
+  "id": "asia-art-archive-hong-kong",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "absence-style framing (\"One piece found\")"
+  ],
+  "before": "Overall: One piece found, from a news outlet rather than the art press; it reports a criticism by an artists' group whose trip AAA sponsored.",
+  "after": "Overall: One news piece, not from the art press, reports a criticism by an artists' group whose trip AAA sponsored.",
+  "sources": [
+   "https://hongkongfp.com/2018/03/31/interview-little-bit-espionage-guerrilla-girls-attack-gender-class-bias-art-basel-hong-kong/"
+  ],
+  "reason": "Opened the Hong Kong Free Press interview (Holmes Chan, 31 March 2018); the quoted sentence, the under-20% women figures for the Hong Kong Museum of Art and M+, the museum's reply and Zubeida Agha's remark all match."
+ },
+ {
+  "id": "associacao-nucleo-de-arte",
+  "section": "OVERVIEW",
+  "problems": [
+   "attribution: Polana Cimento and Mercado do Museu are on Globalnyt, not on the africaserver.nl page"
+  ],
+  "before": "- Artists' association in an old villa in central Maputo, in the Polana Cimento area near the Mercado do Museu (africaserver.nl profile; Globalnyt, 29 December 2016).",
+  "after": "- Artists' association in an old villa in the centre of Maputo (africaserver.nl profile); Globalnyt (29 December 2016) places it in the Polana Cimento neighbourhood near the Mercado do Museu.",
+  "sources": [
+   "https://www.africaserver.nl/nucleo/eng/main.htm",
+   "https://globalnyt.dk/ugens-tre-kunstnerfaellesskaber"
+  ],
+  "reason": "africaserver.nl says 'an old villa in the centre of Maputo'; Globalnyt (29 December 2016) gives Polana Cimento and the Mercado do Museu."
+ },
+ {
+  "id": "associacao-nucleo-de-arte",
+  "section": "OVERVIEW",
+  "problems": [
+   "1964 exhibition attributed to the association; the page says the Núcleo dos Estudantes Africanos staged it"
+  ],
+  "before": "a 1964 exhibition by Malangatana was closed by the secret police.",
+  "after": "a 1964 exhibition of Malangatana's work, staged by the Núcleo dos Estudantes Africanos, was closed by the secret police.",
+  "sources": [
+   "https://www.africaserver.nl/nucleo/eng/main.htm"
+  ],
+  "reason": "The africaserver.nl profile credits the 1964 exhibition to the Core Group of African Students."
+ },
+ {
+  "id": "associacao-nucleo-de-arte",
+  "section": "FUNDING",
+  "problems": [
+   "undated-profile phrasing",
+   "2021 mural project: the source names the \"Núcleo de Artes de Maputo\" and no opened page says it is this association"
+  ],
+  "before": "- The africaserver.nl profile names Hivos in the Netherlands as providing financial assistance, with \"a few donors\" unnamed. The profile is undated and mentions a 1997 workshop in Durban.\n- The same profile says the permanent exhibition is popular with buyers and the terrace serves inexpensive meals and drinks.\n- Maputo's municipal council, with the CTA business confederation, ran a 2021 mural project at the Frango e Magumba municipal market in which 40 artists from the Núcleo de Artes de Maputo, chosen by competition, painted 36 shipping containers as an open-air gallery. The organisers' cost was close to one million dollars, about 70 million meticais; CIN supplied the paint (Forbes África Lusófona, 3 October 2021).",
+  "after": "- The africaserver.nl profile says \"A few donors, such as Hivos in the Netherlands, grant financial assistance.\" It mentions a workshop in Durban in 1997.\n- The same profile says the permanent exhibition is popular with buyers and the terrace serves inexpensive meals and drinks.\n- Club of Mozambique (13 May 2021) says the Nucleo de Arte \"operates a gallery and offers workshops throughout the year\".",
+  "sources": [
+   "https://www.africaserver.nl/nucleo/eng/main.htm",
+   "https://clubofmozambique.com/news/mozambique-minister-visits-mankew-valente-muhumana/"
+  ],
+  "reason": "Forbes África Lusófona (3 October 2021) says the 40 artists belong to the 'Núcleo de Artes de Maputo' and the project came from the Maputo municipality with the CTA; no opened page says this is the Associação Núcleo de Arte, so the mural bullet is cut from the association's record. The Hivos sentence is quoted from the profile, which gives no date."
+ },
+ {
+  "id": "associacao-nucleo-de-arte",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "sentence about what the sources lack; mural project link to the association"
+  ],
+  "before": "The sources show a member-run artists' association supported by sales, a terrace bar and donor aid, with Hivos the one donor named in an undated profile. The 2021 mural project was organised by the Maputo council and the CTA. The founding year is given as 1921, 1936 and 1948 by different sources.",
+  "after": "The association is a member-run artists' group that earns from sales, a terrace bar and workshops, with donor aid from Hivos named in its profile on africaserver.nl. The founding year differs by source: 1921 (Globalnyt), 1936 (Culturgest) and 1948 as the \"more official foundation\" (africaserver.nl).",
+  "sources": [
+   "https://www.africaserver.nl/nucleo/eng/main.htm",
+   "https://globalnyt.dk/ugens-tre-kunstnerfaellesskaber",
+   "https://www.culturgest.pt/en/collection/detail/cela-4-expectativa"
+  ],
+  "reason": "Founding-year conflict kept and attributed: Globalnyt 'established in 1921', Culturgest 'founded by Frederico Ayres in 1936', africaserver.nl 'more official foundation in 1948'."
+ },
+ {
+  "id": "associacao-nucleo-de-arte",
+  "section": "SOURCES",
+  "problems": [
+   "source no longer cited in text"
+  ],
+  "before": "- https://forbesafricalusofona.com/40-artistas-plasticos-mocambicanos-juntam-forcas-e-erguem-galeria-de-arte-ao-ar-livre/\n",
+  "after": "",
+  "sources": [],
+  "reason": "The Forbes África Lusófona page names a differently titled group, so it is no longer cited."
+ },
+ {
+  "id": "associacao-nucleo-de-arte",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: the pages do not say the association earns from sales, a bar or workshops"
+  ],
+  "before": "Associação Núcleo de Arte: member-run artists' association: sales, a terrace bar, workshops and donor aid",
+  "after": "Associação Núcleo de Arte: member-run artists' association; the profile names Hivos as a donor",
+  "sources": [
+   "https://www.africaserver.nl/nucleo/eng/main.htm"
+  ],
+  "reason": "africaserver.nl says the permanent exhibition is popular with buyers and the terrace serves meals; no opened page gives income figures or says these pay for the association."
+ },
+ {
+  "id": "associacao-nucleo-de-arte",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported income claim"
+  ],
+  "before": "The association is a member-run artists' group that earns from sales, a terrace bar and workshops, with donor aid from Hivos named in its profile on africaserver.nl.",
+  "after": "The association is a member-run artists' group with a gallery, a terrace and workshops; its profile on africaserver.nl names Hivos in the Netherlands as a donor.",
+  "sources": [
+   "https://www.africaserver.nl/nucleo/eng/main.htm"
+  ],
+  "reason": "Wording now follows the pages."
+ },
+ {
+  "id": "atlanta-contemporary-atlanta",
+  "section": "FUNDING",
+  "problems": [
+   "funder named by its short name only"
+  ],
+  "before": "Intuit, Molly Blank Fund, Massey",
+  "after": "Intuit, the Molly Blank Fund of the Arthur M. Blank Family Foundation, Massey",
+  "sources": [
+   "https://atlantacontemporary.org/donors"
+  ],
+  "reason": "The Supporters ($5,000+) tier on the donors page names 'The Molly Blank Fund of the Arthur M. Blank Family Foundation'. FY2025 revenue $906,793, expenses $712,289, contributions $745,319 and net assets $1,505,670 (and FY2024 and FY2023 figures) were confirmed on ProPublica."
+ },
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "section": "OVERVIEW",
+  "problems": [
+   "over 800 words (857 without SOURCES)"
+  ],
+  "before": "- Building: the main building, designed by the Melbourne architects John Harry Grainger and Charles D'Ebro, was completed in 1887 with a 1916 extension and a six-storey clock tower, and has been a Category I heritage item since 1983 (Wikipedia).\n",
+  "after": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Auckland_Art_Gallery_Toi_o_T%C4%81maki"
+  ],
+  "reason": "Trimmed peripheral building detail to bring the report under 800 words; FUNDING, BOTTOM LINE and SOURCES are untouched."
+ },
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "section": "FUNDING",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- Patrons of the Auckland Art Gallery, established in 1987 by Dame Jenny Gibbs, have contributed over 315 works; the Contemporary Benefactors, founded in 2013 with 127 members, funded \"Olafur Eliasson: Your curious journey\". The trustees of Gibbs Farm donate a day each year for a fundraiser, which had 1,000 ticket holders in November 2024 (Annual Review 2024/25).",
+  "after": "- The Contemporary Benefactors, founded in 2013 with 127 members, funded \"Olafur Eliasson: Your curious journey\". The trustees of Gibbs Farm donate a day each year for a fundraiser, which had 1,000 ticket holders in November 2024 (Annual Review 2024/25).",
+  "sources": [
+   "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf"
+  ],
+  "reason": "Trimmed the Patrons sentence (Annual Review 2024/25: established 1987 by Dame Jenny Gibbs, over 315 works) to get under the word limit; Contemporary Benefactors (2013, 127 members) and Gibbs Farm (1000 ticketholders, November 2024) confirmed."
+ },
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "section": "FUNDING",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": " The Mackelvie and Edmiston trusts' collections are also long-term loans (Annual Review 2024/25).",
+  "after": " (Annual Review 2024/25).",
+  "sources": [
+   "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf"
+  ],
+  "reason": "Trimmed to get under the word limit."
+ },
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "section": "OVERVIEW",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": " There is an accessible bathroom on the mezzanine (Auckland Art Gallery site).",
+  "after": "",
+  "sources": [
+   "https://www.aucklandartgallery.com/visit"
+  ],
+  "reason": "Trimmed peripheral visiting detail to get under the word limit."
+ },
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "section": "FUNDING",
+  "problems": [
+   "punctuation after trim"
+  ],
+  "before": "since 2012. (Annual Review 2024/25).",
+  "after": "since 2012 (Annual Review 2024/25).",
+  "sources": [],
+  "reason": "Punctuation fixed after the trim."
+ }
+]
