@@ -1,0 +1,175 @@
+[
+ {
+  "id": "nederlands-fotomuseum-rotterdam",
+  "name": "Nederlands Fotomuseum",
+  "city": "Rotterdam",
+  "country": "Netherlands",
+  "website": "https://nederlandsfotomuseum.nl/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://nederlandsfotomuseum.nl/wp-content/uploads/2026/06/Nederlands-Fotomuseum-Jaarverslag-2025-3.pdf",
+   "https://networkcultures.org/longform/2024/04/10/six-theses-towards-the-liberation-of-arts-philanthropy/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 8.59M: about 70 percent public subsidies (ministry, Rotterdam, others), 25 percent private funds and lotteries, 5 percent earned (jaarrekening pp. 31 to 32)."
+ },
+ {
+  "id": "tent-rotterdam",
+  "name": "TENT Rotterdam",
+  "city": "Rotterdam",
+  "country": "Netherlands",
+  "website": "https://www.tentrotterdam.nl",
+  "size": "M",
+  "year_founded": 1999,
+  "sources": [],
+  "needs_finance": true
+ },
+ {
+  "id": "v2-lab-unstable-media-rotterdam",
+  "name": "V2_ Lab for the Unstable Media",
+  "city": "Rotterdam",
+  "country": "Netherlands",
+  "website": "https://v2.nl",
+  "size": "S",
+  "year_founded": 1981,
+  "sources": [
+   "https://v2.nl/pages/funding/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 1.26M: earned EUR 83,878 and private funds EUR 5,000 are named; the rest is described as Rotterdam city and Stimuleringsfonds subsidy (bestuursverslag 2025, section 7)."
+ },
+ {
+  "id": "kunstmuseum-den-haag",
+  "name": "Kunstmuseum Den Haag",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "website": "https://www.kunstmuseum.nl",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.kunstmuseum.nl/en/museum/organisation",
+   "https://www.kunstmuseum.nl/en/support",
+   "https://www.kunstmuseum.nl/nl/museum/subsidienten"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 22.4M: about 62 percent public subsidies (mostly Gemeente Den Haag), 7 percent private funds and lotteries, 31 percent earned (jaarverslag pp. 37 to 38)."
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "name": "Mauritshuis",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "website": "https://www.mauritshuis.nl/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.mauritshuis.nl/en/business/sponsorship-and-funds/nn-group"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "museum-beelden-aan-zee-the-hague",
+  "name": "Museum Beelden aan Zee",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "website": "https://www.vriendenloterij.nl/goede-doelen/culturele-partners/museum-beelden-aan-zee",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.vriendenloterij.nl/goede-doelen/culturele-partners/museum-beelden-aan-zee",
+   "https://www.beeldenaanzee.nl/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income EUR 3.09M: about 55 percent earned, 45 percent gifts, funds and sponsors; the museum reports no structural government subsidy (jaarverslag p. 37)."
+ },
+ {
+  "id": "stroom-den-haag",
+  "name": "Stroom Den Haag",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "website": "https://www.stroom.nl",
+  "size": "S",
+  "year_founded": 1990,
+  "sources": [
+   "https://www.stroom.nl/en/about-stroom",
+   "https://www.denhaag.nl"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "west-den-haag",
+  "name": "West Den Haag",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "website": "https://www.westdenhaag.nl",
+  "size": "S",
+  "year_founded": 2007,
+  "sources": [
+   "https://www.westdenhaag.nl/about",
+   "https://www.mondriaanfonds.nl"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "de-pont",
+  "name": "De Pont",
+  "city": "Tilburg",
+  "country": "Netherlands",
+  "website": "https://depont.nl",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://depont.nl/en/about-the-museum/history-and-building",
+   "https://depont.nl/en/support",
+   "https://www.omroeptilburg.nl/regio/tilburg/tilburgse-musea-halen-bezoekersrecords-maar-financieel-gaat-het-minder-goed/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "bak-utrecht",
+  "name": "BAK, basis voor actuele kunst",
+  "city": "Utrecht",
+  "country": "Netherlands",
+  "website": "https://www.bakonline.org",
+  "size": "S",
+  "year_founded": 2000,
+  "sources": [
+   "https://www.bakonline.org",
+   "https://mitpress.mit.edu/9780262533836/former-west/",
+   "https://www.mondriaanfonds.nl"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 537,608: about 85 percent public subsidies (all incidental, no structural funding), 15 percent earned, under 1 percent donations (jaarrekening 2025, p. 19)."
+ },
+ {
+  "id": "casco-art-institute",
+  "name": "Casco Art Institute: Working for the Commons",
+  "city": "Utrecht",
+  "country": "Netherlands",
+  "website": "https://casco.art",
+  "size": "S",
+  "year_founded": 1990,
+  "sources": [
+   "https://casco.art",
+   "https://www.mondriaanfonds.nl",
+   "https://casco.art/about/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income EUR 203K: about 59 percent City of Utrecht subsidy, 18 percent Arts Collaboratory foundation, 23 percent other income and project payments (financieel verslag p. 13)."
+ },
+ {
+  "id": "centraal-museum-utrecht",
+  "name": "Centraal Museum",
+  "city": "Utrecht",
+  "country": "Netherlands",
+  "website": "https://www.centraalmuseum.nl/en/support-us/centraal-sponsor",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.centraalmuseum.nl/en/support-us/centraal-sponsor"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 18.4M: about 53 percent city and ministry subsidy, 38 percent earned, 7 percent fund contributions (public and private mixed), 2 percent other private (jaarverslag p. 74)."
+ }
+]

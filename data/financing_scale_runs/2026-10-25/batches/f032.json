@@ -1,0 +1,172 @@
+[
+ {
+  "id": "asia-art-archive-hong-kong",
+  "name": "Asia Art Archive (AAA)",
+  "city": "Hong Kong",
+  "country": "Hong Kong",
+  "website": "https://aaa.org.hk",
+  "size": "S",
+  "year_founded": 2000,
+  "sources": [
+   "https://aaa.org.hk/en/about",
+   "https://www.ird.gov.hk/eng/tax/ach_lst.htm",
+   "https://ocula.com/magazine/art-news/asia-art-archive-announces-2024-annual-fundraiser/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "chat-centre-for-heritage-arts-and-textile-hong-kong",
+  "name": "CHAT (Centre for Heritage, Arts and Textile)",
+  "city": "Hong Kong",
+  "country": "Hong Kong",
+  "website": "https://www.themills.com.hk/en/chat/introduction/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://en.wikipedia.org/wiki/Centre_for_Heritage,_Arts_and_Textile",
+   "https://www.mill6chat.org/chat-organisation",
+   "https://www.mill6chat.org/about/press-releases"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "para-site",
+  "name": "Para Site",
+  "city": "Hong Kong",
+  "country": "Hong Kong",
+  "website": "https://www.para-site.art",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.para-site.art/",
+   "https://www.para-site.art/support/become-a-supporter/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kassak-muzeum-budapest",
+  "name": "Kassák Múzeum",
+  "city": "Budapest",
+  "country": "Hungary",
+  "website": "https://kassakmuzeum.hu/",
+  "size": "S",
+  "year_founded": 1976,
+  "sources": [
+   "https://kassakmuzeum.hu/en/lajos-kassak-1887-1967"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "ludwig-museum-budapest-budapest",
+  "name": "Ludwig Museum Budapest",
+  "city": "Budapest",
+  "country": "Hungary",
+  "website": "https://www.ludwigmuseum.hu/en/exhibition/permanent-revolution-ukrainian-art-today",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.ludwigmuseum.hu/en/exhibition/permanent-revolution-ukrainian-art-today"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income HUF 743.8M: about 66 percent state funding, 13 percent company and foreign donors, 21 percent own revenue (éves költségvetési beszámoló 2025, forms 01, 02, 04)."
+ },
+ {
+  "id": "museum-of-fine-arts-budapest-hungarian-national-gallery",
+  "name": "Museum of Fine Arts Budapest / Hungarian National Gallery",
+  "city": "Budapest",
+  "country": "Hungary",
+  "website": null,
+  "size": "L",
+  "year_founded": null,
+  "sources": [
+   "https://www.szepmuveszeti.hu/tamogatok/",
+   "https://mvm.hu/",
+   "https://www.economx.hu/belfold/2026/05/05/magyar-peter-nka-palyazatok-kivizsgalas/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 funds HUF 11.2bn: about 65 percent state support, 23 percent own sales and services, 11 percent VAT flows (budget report 2025, forms 02 and 04)."
+ },
+ {
+  "id": "trafo-house-budapest",
+  "name": "Trafó House of Contemporary Arts",
+  "city": "Budapest",
+  "country": "Hungary",
+  "website": "https://trafo.hu",
+  "size": "M",
+  "year_founded": 1998,
+  "sources": [
+   "https://trafo.hu"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kling-og-bang-reykjavik",
+  "name": "Kling & Bang",
+  "city": "Reykjavík",
+  "country": "Iceland",
+  "website": "https://this.is/klingogbang/",
+  "size": "S",
+  "year_founded": 2004,
+  "sources": [
+   "https://tba21.org/Kling_Bang"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "nylo-living-art-museum-reykjavik",
+  "name": "Nýló (The Living Art Museum / Nýlistasafnið)",
+  "city": "Reykjavík",
+  "country": "Iceland",
+  "website": "https://www.nylo.is",
+  "size": "M",
+  "year_founded": 1978,
+  "sources": [
+   "https://nylo.is/en-us/about",
+   "https://en.wikipedia.org/wiki/The_Living_Art_Museum"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "reykjavík-art-museum-reykjavík",
+  "name": "Reykjavík Art Museum",
+  "city": "Reykjavík",
+  "country": "Iceland",
+  "website": "https://www.listasafn.is",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.listasafn.is"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2023 income ISK 704M: about 77 percent City of Reykjavik contribution, 23 percent own income, mostly tickets and shop (annual report 2023, p. 11)."
+ },
+ {
+  "id": "1-shanthiroad-bengaluru",
+  "name": "1 Shanthiroad Studio Gallery",
+  "city": "Bengaluru",
+  "country": "India",
+  "website": "https://1shanthiroad.com",
+  "size": "S",
+  "year_founded": 2003,
+  "sources": [
+   "https://1shanthiroad.com"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "museum-of-art-photography-map",
+  "name": "Museum of Art & Photography (MAP)",
+  "city": "Bengaluru",
+  "country": "India",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://usaartnews.com/news/south-indias-first-private-art-museum-to-open-in-december/",
+   "https://hyperallergic.com/artists-protest-collectors-takeover-of-indian-museum/",
+   "https://en.wikipedia.org/wiki/Abhishek_Poddar"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income INR 405.7M: about 66 percent donations, CSR gifts and sponsorship, 23 percent interest, 11 percent earned; public money under 1 percent (one Swiss arts council grant)."
+ }
+]
