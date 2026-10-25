@@ -1,0 +1,574 @@
+[
+ {
+  "id": "frac-des-pays-de-la-loire-carquefou",
+  "section": "HEADER",
+  "problems": [
+   "absence/process note: \"(checked 2026-10-25)\""
+  ],
+  "before": "Website: https://fracdespaysdelaloire.com (checked 2026-10-25)",
+  "after": "Website: https://fracdespaysdelaloire.com",
+  "sources": [
+   "https://fracdespaysdelaloire.com/"
+  ],
+  "reason": "A Website line gives the address only. Same fix applied to all 12 reports in the batch."
+ },
+ {
+  "id": "frac-des-pays-de-la-loire-carquefou",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: \"mobile art libraries\"; \"wood-clad volume\"; \"east of Nantes\"",
+   "mixed source attribution"
+  ],
+  "before": "...east of Nantes... runs exhibitions, workshops, school programmes and mobile art libraries (Frac website). French Wikipedia describes a wood-clad volume with a 418 square metre exhibition hall...",
+  "after": "...northeast of Nantes... runs about twenty exhibitions a year across the region's five departments, with school and hospital partnerships (Frac website). French Wikipedia gives the Carquefou exhibition hall as 418 square metres...",
+  "sources": [
+   "https://fracdespaysdelaloire.com/en/?p=3466",
+   "https://fr.wikipedia.org/wiki/Fonds_régional_d'art_contemporain_des_Pays_de_la_Loire"
+  ],
+  "reason": "The home page lists mobile art libraries only as a menu link; \"wood-clad\" is not on the opened Wikipedia text; Wikipedia says about 12 km northeast of Nantes."
+ },
+ {
+  "id": "frac-des-pays-de-la-loire-carquefou",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only claim not attributed"
+  ],
+  "before": "...opened in 2021 and closed in April 2025 (Frac website; French Wikipedia).",
+  "after": "...opened in 2021; the Frac website records the closure in April 2025 and French Wikipedia gives major budget cuts as the reason for the closure.",
+  "sources": [
+   "https://fracdespaysdelaloire.com/en/?p=3466",
+   "https://fr.wikipedia.org/wiki/Fonds_régional_d'art_contemporain_des_Pays_de_la_Loire"
+  ],
+  "reason": "Closure cause rests on French Wikipedia and is attributed."
+ },
+ {
+  "id": "frac-des-pays-de-la-loire-carquefou",
+  "section": "FUNDING",
+  "problems": [
+   "formatting: two points run together",
+   "verdict \"publicly supported\" not stated on a page",
+   "DRAC wording"
+  ],
+  "before": "publicly supported by the State and the Pays de la Loire Region, with corporate patronage from Sodebo ... (Frac patronage page).- Sodebo...",
+  "after": "funded by the State and the Pays de la Loire Region, with Sodebo as main patron; point split; \"regional cultural affairs directorate (DRAC)\" and \"regional council\" as the page words it",
+  "sources": [
+   "https://fracdespaysdelaloire.com/mecenat/"
+  ],
+  "reason": "The patronage page names the State (regional cultural affairs directorate) and the regional council, Sodebo since 2012 (grand mécène), and Collection RAJA for \"De plain-pied\", 17 May to 1 September 2024. No figures are on the page."
+ },
+ {
+  "id": "fresh-milk-art-platform-st-george",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: Davis named in about page",
+   "Wikipedia-only claim stated as fact",
+   "process note \"tagged citation needed\""
+  ],
+  "before": "Founded in 2011 by the artist Annalee Davis ... (Fresh Milk, financial statements). Davis's studio is on a working dairy farm that was historically a 17th-century sugarcane plantation (Wikipedia, tagged \"citation needed\" there).",
+  "after": "Established in 2011 ... (Fresh Milk); Business Barbados names Annalee Davis as founding director. Unverified: Wikipedia states that Davis's studio is on a working dairy farm that operated historically as a 17th-century sugarcane plantation; the sentence is unsourced there.",
+  "sources": [
+   "https://freshmilkbarbados.com/about/",
+   "https://en.wikipedia.org/wiki/Annalee_Davis",
+   "https://www.businessbarbados.com/post/fresh-milk-art-platform-awarded-usd-350-000-grant"
+  ],
+  "reason": "The about page does not name Davis; Business Barbados calls her Founding Director. The plantation sentence carries the only citation-needed tag on the Wikipedia page."
+ },
+ {
+  "id": "fresh-milk-art-platform-st-george",
+  "section": "FUNDING",
+  "problems": [
+   "figure checked",
+   "source detail added"
+  ],
+  "before": "Mellon: unrestricted US$350,000 (BBD 700,000) ... (Business Barbados, financial statements).",
+  "after": "Same figures, with the Business Barbados date 28 February 2024; Davis quote reworded to the page: \"on a shoestring budget\" for twelve years.",
+  "sources": [
+   "https://freshmilkbarbados.com/wp-content/uploads/2025/04/fm-annual-report-ye-2024_signed-by-ad.pdf",
+   "https://www.businessbarbados.com/post/fresh-milk-art-platform-awarded-usd-350-000-grant"
+  ],
+  "reason": "Statements text confirms 2024 revenue BBD 396,128; grants 383,333 (150,000 restricted, 233,333 unrestricted); donations 2,556; in kind 9,671; other 568; deferred 466,667; 2023 revenue 124,309, grants 36,863, in kind 78,050; accountant Ashok Merai, no audit; directors Davis, Mangal, McGuire; incorporated 6 July 2012. Mellon USD 350,000 = BBD 700,000 in note 7."
+ },
+ {
+  "id": "fresh-milk-art-platform-st-george",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported verdict: \"made up most of its 2024 revenue\"",
+   "directors repeated"
+  ],
+  "before": "...which made up most of its 2024 revenue. ... The directors are named in the 2024 financial statements, which are compiled by an accountant and not audited.",
+  "after": "...whose first year made up BBD 233,333 of its BBD 396,128 revenue in 2024. ... The 2024 financial statements are compiled by an accountant and not audited.",
+  "sources": [
+   "https://freshmilkbarbados.com/wp-content/uploads/2025/04/fm-annual-report-ye-2024_signed-by-ad.pdf"
+  ],
+  "reason": "Replaced the judgement with the two figures from the statements."
+ },
+ {
+  "id": "friart-kunsthalle-fribourg",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: \"Basse-Ville\"; source mix-up; \"early Swiss solo exhibitions\""
+  ],
+  "before": "...in the Basse-Ville (Lower Town) of Fribourg... Housed since 1991 in a former cardboard factory... Showed early Swiss solo exhibitions by artists including Roman Signer (1992), Thomas Hirschhorn (1995) and Latifa Echakhch (2010)...",
+  "after": "...in the lower town of Fribourg... Housed since 1991 in an industrial building at Petites-Rames 22, whose spaces are in a former cardboard factory... Gave Roman Signer (1992), Thomas Hirschhorn (1995) and Latifa Echakhch (2010) their first exhibitions in Switzerland...",
+  "sources": [
+   "https://friart.ch/en/about",
+   "https://sculpture-network.org/en/id/47044"
+  ],
+  "reason": "Friart says \"lower town\" and \"first exhibition in Switzerland\"; Sculpture Network gives the 1991 move to the industrial building and the floor sizes."
+ },
+ {
+  "id": "friart-kunsthalle-fribourg",
+  "section": "FUNDING",
+  "problems": [
+   "absence clause: \"no years or amounts\"",
+   "verdict \"publicly supported\" not on a page"
+  ],
+  "before": "publicly supported: Canton, City and Agglomeration of Fribourg and Loterie Romande, with a cantonal bank and a family foundation ... (stated by the space; no years or amounts).",
+  "after": "funded by the State of Fribourg, the City and Agglomeration of Fribourg and Loterie Romande, with the Banque Cantonale de Fribourg and a family foundation ... (stated by the space).",
+  "sources": [
+   "https://friart.ch/en/about/supports",
+   "https://www.friart.ch/fr/about"
+  ],
+  "reason": "Supporters page lists State of Fribourg, Loterie Romande, Agglomeration, City, Cantonal Bank, Fondation Philanthropique Famille Sandoz, Friends; free admission is made possible by the Banque Cantonale de Fribourg. Loterie Romande is a public lottery, no flag."
+ },
+ {
+  "id": "friart-kunsthalle-fribourg",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "wording"
+  ],
+  "before": "...which pays for free admission... The funders are named on the space's own supporters page.",
+  "after": "...which makes free admission possible... All are named on the space's own supporters page.",
+  "sources": [
+   "https://friart.ch/en/about/supports"
+  ],
+  "reason": "Follows the page wording."
+ },
+ {
+  "id": "fries-museum-leeuwarden",
+  "section": "OVERVIEW",
+  "problems": [
+   "director item beyond the statement",
+   "\"hastened\" attributed to accounts rather than the museum statement",
+   "spacing error"
+  ],
+  "before": "...on 21 March 2025 the museum confirmed that accounts of boundary-crossing behaviour hastened his departure, said the supervisory board acted once it received the reports, and said it was considering an independent investigation (VRT NWS, Jani Lambrechts).",
+  "after": "On 21 March 2025 the museum said its supervisory board received reports of possible sexual and boundary-crossing behaviour and acted on them, and that \"the seriousness of the situation was obvious, and that hastened the departure of Kris Callens\" (VRT NWS, Jani Lambrechts; quotation translated).",
+  "sources": [
+   "https://www.vrt.be/vrtnws/nl/2025/03/21/fries-museum-bevestigt-dat-vlaamse-directeur-vertrok-na-grensove/",
+   "https://www.friesmuseum.nl/en/about-the-museum/news/news/kris-callens-is-stepping-down-as-general-director"
+  ],
+  "reason": "VRT NWS (Jani Lambrechts with Belga, 21 March 2025) quotes the museum: \"De ernst van de situatie was overduidelijk, en dat heeft het vertrek van Kris Callens bespoedigd.\" The investigation sentence was cut to keep the item to the statement. The 4 February 2025 announcement, start date 1 August 2015 and mutual agreement are confirmed on the museum page."
+ },
+ {
+  "id": "fries-museum-leeuwarden",
+  "section": "FUNDING",
+  "problems": [
+   "source description unclear (\"the museum states ... Leeuwarden council information site\")",
+   "spacing error",
+   "verdict not on a page"
+  ],
+  "before": "In a briefing on the effects of savings dated 16 September 2024, the museum states that the Province cut its funding by 331,000 euros... Partners named on the museum's page:Abe Bonnema Stichting",
+  "after": "A briefing titled \"Fries Museum 2025-2028: Gevolgen van besparingen voor de gemeente Leeuwarden\" (title translated), dated 16 September 2024 on the council information site, states that the Province's cut of 331,000 euros ...; spacing fixed; 4 February 2025 statement worded as the page has it.",
+  "sources": [
+   "https://leeuwarden.bestuurlijkeinformatie.nl/Document/View/381b5056-cb42-4d1c-a96b-882d0d5c5697",
+   "https://www.friesmuseum.nl/over-het-museum/steun-het-museum/onze-partners"
+  ],
+  "reason": "The briefing PDF text confirms 331.000 euro cut, about 1.3 million euros a year lower than agreed, 150.000 euro for \"Ja, ik wil\" (400.000 euro), 100.000 euro OZB, and the staff-cost passage; no author is named in the text. Partners page confirms Provinsje Fryslân as fixed subsidy provider, VriendenLoterij, Windpark Fryslân, the listed funds and the 2015 Turing award. The partners page does not mention the municipality; the municipality figures come from the briefing. VriendenLoterij is a public lottery and Windpark Fryslân a wind farm: no flag."
+ },
+ {
+  "id": "fries-museum-leeuwarden",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "\"announced\" attributed to the museum as a Province decision; director item"
+  ],
+  "before": "...the museum announced a further 300,000 euro cut from 2026. The 2025 departure of director Kris Callens was hastened by accounts of boundary-crossing behaviour, as the museum confirmed in March 2025.",
+  "after": "...the museum's February 2025 statement names a further 300,000 euro cut from 2026. Director Kris Callens left in 2025; the museum said in March 2025 that reports of boundary-crossing behaviour hastened his departure.",
+  "sources": [
+   "https://www.friesmuseum.nl/en/about-the-museum/news/news/kris-callens-is-stepping-down-as-general-director"
+  ],
+  "reason": "The museum page says \"a 300,000-euro subsidy cut from 2026\"; it does not say the Province announced it."
+ },
+ {
+  "id": "fruitmarket-gallery",
+  "section": "RED FLAGS",
+  "problems": [
+   "unsupported: \"during its 50th anniversary year\"",
+   "campaign described by the Snack piece only in part",
+   "demand missing",
+   "who says so missing"
+  ],
+  "before": "The Fruitmarket ended its partnership with the investment firm Baillie Gifford in summer 2024, during its 50th anniversary year. Snack magazine (Zoë White) reports that...",
+  "after": "Snack magazine (Zoë White) reports that by summer 2024 the Fruitmarket, Collective Gallery, Stills and Imaginate had announced they would drop Baillie Gifford ... Demand: AW4PS urged institutions to press Baillie Gifford to divest from Israel's war or sever ties (Snack). Bella Caledonia (AW4PS, 5 August 2024) ... Morning Star (Matt Kerr, 27 August 2025) reports the Fruitmarket has cut ties with Baillie Gifford.",
+  "sources": [
+   "https://snackmag.co.uk/interview-art-workers-for-palestine-scotland-on-the-case-for-a-cultural-boycott",
+   "https://bellacaledonia.org.uk/2024/08/05/on-art-war-festival-and-palestine/",
+   "https://morningstaronline.co.uk/article/art-workers-call-edinburgh-festival-sever-ties-war-profiteers"
+  ],
+  "reason": "Flag kept (Sponsor dropped under pressure; Campaigned name): three opened pages, one advocacy and one partisan, say the Fruitmarket dropped or suspended Baillie Gifford and credit AW4PS. The gallery's own statement and the Scotsman piece (403 to the fetch tool) could not be opened, so the 50th anniversary year and the 25,000 pound figure are not used. The Art Newspaper item (Anny Shaw, 2 July 2024, \"National Galleries of Scotland will continue to take sponsorship from Baillie Gifford despite protests over ties with fossil fuel industry and Israel\") was kept only for Baillie Gifford's 2 percent against 11 percent market average; it does not mention the Fruitmarket and the text says so."
+ },
+ {
+  "id": "fruitmarket-gallery",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: National Lottery Heritage Fund as public funder",
+   "verdict \"publicly supported\" overreach",
+   "list entry split"
+  ],
+  "before": "Creative Scotland, the Scottish Government and the National Lottery Heritage Fund are named as public funders on the gallery's thanks page... verdict: publicly supported with trusts...",
+  "after": "Creative Scotland and the Scottish Government are named as public funders on the thanks page; verdict: supported by trusts, foundations, galleries and individual donors, with Creative Scotland and the Scottish Government named as public funders; \"Jane Hamlyn, Frith Street Gallery\" kept as one entry; \"building campaign\" changed to \"building project\".",
+  "sources": [
+   "https://www.fruitmarket.co.uk/thanks/",
+   "https://www.fruitmarket.co.uk/current-supporters/"
+  ],
+  "reason": "On the thanks page the National Lottery Heritage Fund appears only as a heading above a donor list, not under Public Funders. Baillie Gifford is not on the current supporters page; Bloomberg is."
+ },
+ {
+  "id": "fruitmarket-gallery",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: \"the board is voluntary\""
+  ],
+  "before": "Fiona Bradley is director; the board is voluntary and has eight members (Fruitmarket).",
+  "after": "Fiona Bradley is director; the board has eight members (Fruitmarket).",
+  "sources": [
+   "https://www.fruitmarket.co.uk/staff-and-board/"
+  ],
+  "reason": "The staff and board page lists eight board members; \"voluntary\" is not stated. Opening 1974, 1938 market building, Murphy 1994, Reiach and Hall refurbishment and July 2021 Karla Black reopening are on Wikipedia."
+ },
+ {
+  "id": "fruitmarket-gallery",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "causal claim stronger than the source",
+   "\"all named on its own pages\" covers the sponsor"
+  ],
+  "before": "Its sponsor Baillie Gifford ended in 2024 after a campaign by Art Workers for Palestine Scotland over the firm's investments.",
+  "after": "Its sponsor Baillie Gifford ended in 2024; Snack magazine credits a campaign by Art Workers for Palestine Scotland over the firm's investments.",
+  "sources": [
+   "https://snackmag.co.uk/interview-art-workers-for-palestine-scotland-on-the-case-for-a-cultural-boycott"
+  ],
+  "reason": "Credits the outlet that says it."
+ },
+ {
+  "id": "frye-art-museum",
+  "section": "RED FLAGS",
+  "problems": [
+   "who organised, demands and response spread unevenly",
+   "heading",
+   "Hyperallergic description"
+  ],
+  "before": "union dispute and picket, 2020 ... Members of the Art Workers Union held a socially distant picket ... said two union representatives had been targeted...",
+  "after": "Protest or boycott, union picket and petition after the April 2020 layoffs: Frye workers who are Art Workers Union members picketed on 10 April 2020 (Hyperallergic, Hakim Bishara, 13 April 2020; The Spectator, Michaela Moore, 23 April 2020); petition demands (reinstate the 21, full pandemic pay and health coverage); allegation, with Caitlin Lee named; Rosa's quoted denial and the salary cuts.",
+  "sources": [
+   "https://hyperallergic.com/554727/frye-art-museum-covid-19/",
+   "https://seattlespectator.com/2020/04/23/alleged-union-busting-at-the-frye-art-museum/"
+  ],
+  "reason": "Flag kept (Protest or boycott): both pages are open. Hyperallergic does not name an organiser beyond the workers who are union members and names Caitlin Lee as a founding AWU member laid off; the Spectator confirms the picket, the museum's denial and the union's start with security staff. The Spectator page does not mention a petition; the petition rests on Hyperallergic alone."
+ },
+ {
+  "id": "frye-art-museum",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "absence statement: \"No review or essay criticising...\"",
+   "unsupported: \"the two union representatives\" named"
+  ],
+  "before": "Overall: One news report ... No review or essay criticising the museum's programme or funding. ... Names the museum, director Joseph Rosa and the two union representatives the union says were targeted.",
+  "after": "Overall: One news report on the 2020 layoffs, which gives the union's allegation and the director's denial. ... Names the museum, director Joseph Rosa and Caitlin Lee, a founding union member who was laid off.",
+  "sources": [
+   "https://hyperallergic.com/554727/frye-art-museum-covid-19/"
+  ],
+  "reason": "Press item kept: Hyperallergic, Hakim Bishara, \"Frye Art Museum Workers Say Layoffs Motivated by Union Busting\", 13 April 2020 (listed as 2020 in the report). It names the museum, Rosa and Lee; the two targeted representatives are not named."
+ },
+ {
+  "id": "frye-art-museum",
+  "section": "FUNDING",
+  "problems": [
+   "figures checked",
+   "word limit (805 words)",
+   "unsupported: \"Charles and Emma Frye Free Public Art Museum\""
+  ],
+  "before": "Organised as a private operating foundation and 501(c)(3) charity, the Charles and Emma Frye Free Public Art Museum ... Exhibition support in 2025 included the Hayward-Hughes Family...",
+  "after": "Organised as a 501(c)(3) private operating foundation; the exhibition-support point was cut to bring the report under 800 words (767).",
+  "sources": [
+   "https://fryemuseum.org/sites/default/files/2026-10/AnnualReport_FY2025_1000626.pdf",
+   "https://fryemuseum.org/about"
+  ],
+  "reason": "Annual report \"By the numbers\": revenue $9,178,533; investment distributions 75.6% ($6,942,691); donations 16.9% ($1,548,989); earned (store and events) 3% ($275,807); other 2.2%; memberships 0.9%; in-kind 0.8%; expenses $9,254,774; donors lists as reported. The about page says 501(c)(3) private operating foundation; it does not give that long name."
+ },
+ {
+  "id": "frye-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported firm name",
+   "Wikipedia detail"
+  ],
+  "before": "Rick Sundberg of Olson Sundberg Kundig Allen Architects expanded it (Wikipedia)",
+  "after": "Rick Sundberg expanded and renovated it in the mid-1990s (Wikipedia)",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Frye_Art_Museum"
+  ],
+  "reason": "Wikipedia names the architect Rick Sundberg only; the museum names Olson Sundberg Kundig."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "RED FLAGS",
+  "problems": [
+   "flag unsupported: state censorship needs the funding or controlling state body, or the space, to have acted"
+  ],
+  "before": "Red flags: closed and confiscated by the Nicaraguan state (four points)",
+  "after": "Moved to WIDER CONTEXT, dated and attributed to Confidencial (Redacción Confidencial, 12 February 2026) and La Verdad Nica (Augusto Cermeño, 27 August 2024); connection stated in the last point.",
+  "sources": [
+   "https://confidencial.digital/en/nation/ortega-murillo-regime-declares-confiscated-cultural-center-in-granada-national-heritage-site/",
+   "https://laverdadnica.com/cierran-fundacion-casa-de-los-tres-mundos-tambien-radio-volcan/"
+  ],
+  "reason": "Confidencial: on 19 August 2024 the Executive outlawed the foundation and 1,499 other nonprofit associations \"for alleged noncompliance with the law\", assets to the State, building seized August 2024, 11 February 2026 decree. The pages do not show the Nicaraguan state funding or controlling the foundation, whose funders are foreign governments and the City of Granada."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Weltwärts placement is not a funding line",
+   "verdict \"grant-funded\"; no years on the page",
+   "Germany line"
+  ],
+  "before": "grant-funded by foreign governments and the City of Granada ... Weltwärts, the German voluntary service programme, placed German volunteers at the foundation from 2009.",
+  "after": "funded by the governments of Germany, Austria, Switzerland and the Netherlands and by the City of Granada; Germany named as the Ministry of Foreign Affairs (for monument conservation); Weltwärts point cut.",
+  "sources": [
+   "https://c3mundos.org/en/about/history-building/",
+   "https://c3mundos.org/en/about/partners/"
+  ],
+  "reason": "The history page names the five funders with no years or amounts; the partners page mentions Weltwärts volunteers only."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: \"Plaza de los Leones\"",
+   "bought -> acquired"
+  ],
+  "before": "...House of the Lions) on Plaza de los Leones in Granada... who bought the building",
+  "after": "...House of the Lions) in Granada... who acquired the building from the heirs of Julio Cardenal",
+  "sources": [
+   "https://c3mundos.org/en/about/history-building/",
+   "https://laverdadnica.com/cierran-fundacion-casa-de-los-tres-mundos-tambien-radio-volcan/"
+  ],
+  "reason": "The plaza name is not on the opened pages. La Verdad Nica gives 1989 as the foundation year; the foundation's history page gives 1987 and is used."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "red flag wording removed"
+  ],
+  "before": "The Nicaraguan government shut it down on 19 August 2024 and took the building...",
+  "after": "The Nicaraguan government outlawed it on 19 August 2024 along with 1,499 other organisations and took the building...",
+  "sources": [
+   "https://confidencial.digital/en/nation/ortega-murillo-regime-declares-confiscated-cultural-center-in-granada-national-heritage-site/"
+  ],
+  "reason": "Matches Confidencial."
+ },
+ {
+  "id": "fundació-antoni-tàpies-barcelona",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only claim",
+   "wording"
+  ],
+  "before": "Wikipedia states that the institution changed its name to Museu Tàpies in 2024.",
+  "after": "Renamed Museu Tàpies on 1 July 2024 after the board of trustees approved the change; Ferran Rodés and director Imma Prieto announced it (Bonart, 2 July 2024). Wikipedia also states the 2024 rename.",
+  "sources": [
+   "https://www.bonart.cat/en/n/44578/the-antoni-tapies-foundation-is-renamed-quotmuseu-tapiesquot",
+   "https://en.wikipedia.org/wiki/Fundació_Antoni_Tàpies"
+  ],
+  "reason": "Wikipedia carries the rename only as a citation title (El Nacional, 1 July 2024); Bonart, \"The Antoni Tàpies Foundation is renamed Museu Tàpies\" (no author, 2 July 2024), states it. Founding 1984, opening June 1990, prices and closure from 13 October 2026 confirmed on the museum pages."
+ },
+ {
+  "id": "fundació-antoni-tàpies-barcelona",
+  "section": "FUNDING",
+  "problems": [
+   "figures checked",
+   "verdict lacks the figures"
+  ],
+  "before": "private foundation with public funding from the Generalitat ...",
+  "after": "private foundation with public subsidies of 1.41 million euros in 2021 and 2.76 million euros in 2025 from the Generalitat de Catalunya, the Barcelona city council, the Spanish Ministry of Culture and the Diputació de Barcelona; \"audited accounts\" worded as \"accounts with audit reports\".",
+  "sources": [
+   "https://museutapies.org/wp-content/uploads/2026/06/Grants-2021-2025.pdf",
+   "https://museutapies.org/en/board-of-trustees/",
+   "https://museutapies.org/en/ccaa-i-informe-dauditoria/"
+  ],
+  "reason": "The grants table gives totals 1,414,055.11 (2021), 1,649,169.39, 1,900,533.33, 1,971,645.73, 2,757,405.94 (2025) and every line quoted in the report matches. Board: chair Rodés, vice-president Barba, 3 family, 2 Generalitat, 2 Ajuntament, 6 elective. Accounts with audit reports are posted for 2021 to 2024."
+ },
+ {
+  "id": "fundació-antoni-tàpies-barcelona",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "figures"
+  ],
+  "before": "...whose published subsidies reached 2.76 million euros in 2025...",
+  "after": "...whose published subsidies rose from 1.41 million euros in 2021 to 2.76 million euros in 2025...",
+  "sources": [
+   "https://museutapies.org/wp-content/uploads/2026/06/Grants-2021-2025.pdf"
+  ],
+  "reason": "Both years from the grants table. Website line is museutapies.org."
+ },
+ {
+  "id": "fundación-ama-amoedo-josé-ignacio",
+  "section": "FUNDING",
+  "problems": [
+   "verdict states fortune as present funding",
+   "Wikipedia-free; history only",
+   "missing grandchildren detail"
+  ],
+  "before": "privately run by its founder, whose family wealth comes from the Loma Negra cement company ... gave most of her property in her lifetime to her daughter and grandchildren (La Nación...).",
+  "after": "privately run by its founder; her family's Loma Negra cement fortune is background history; the 2012 La Nación article added: Fortabat's grandchildren include \"Amalita Amoedo\"; titles and dates of the 2019 article added.",
+  "sources": [
+   "https://www.lanacion.com.ar/sociedad/la-intrigante-herencia-de-amalita-nid1455590/",
+   "https://www.lanacion.com.ar/economia/negocios/punta-del-este-meca-del-arte-nid04022023",
+   "https://www.lanacion.com.ar/lifestyle/amalia-amoedo-nid2236685/"
+  ],
+  "reason": "Confirmed: Alicia de Arteaga, 4 February 2023 (\"her foundation\", granddaughter of Amalia Lacroze de Fortabat, arteBA president); Loreley Gaffoglio, \"La intrigante herencia de Amalita\", 11 March 2012 (Loma Negra sold April 2005 for US$1,025 million to the Camargo Correa heirs; gifts to daughter and grandchildren); María Güiraldes, 10 April 2019 (foundations, farmland, US$1.2 billion estimate). No page ties the cement fortune to the foundation's budget, so it is stated as history."
+ },
+ {
+  "id": "fundación-ama-amoedo-josé-ignacio",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: \"to channel patronage she had carried out personally\""
+  ],
+  "before": "Created by the collector and philanthropist Amalia Amoedo to channel patronage she had carried out personally for more than twenty years",
+  "after": "Founder and president Amalia Amoedo is a philanthropist, patron and art collector who has supported artists and cultural institutions for more than twenty years",
+  "sources": [
+   "https://www.fundacionamaamoedo.org/fundacion"
+  ],
+  "reason": "The page says she has supported artists and institutions for more than twenty years; it does not say the foundation was created to channel that. Casa Neptuna details and the 800-work collection confirmed."
+ },
+ {
+  "id": "fundación-ama-amoedo-josé-ignacio",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "overstatement"
+  ],
+  "before": "...the family fortune was passed on from the cement sale of 2005.",
+  "after": "...Loma Negra was sold in 2005, after which Fortabat passed most of her property to her family.",
+  "sources": [
+   "https://www.lanacion.com.ar/sociedad/la-intrigante-herencia-de-amalita-nid1455590/"
+  ],
+  "reason": "Follows the 2012 article."
+ },
+ {
+  "id": "fundación-casa-wabi-puerto-escondido",
+  "section": "OVERVIEW",
+  "problems": [
+   "citation mismatch",
+   "\"opened in late 2014\" cited to Forbes México"
+  ],
+  "before": "Founded by the Mexican artist Bosco Sodi, who is based in New York; the Puerto Escondido building opened in late 2014 (Dezeen...; Forbes México...).",
+  "after": "Founded by the Mexican artist Bosco Sodi, who has lived in New York for years (Forbes México, Carlos López Fe, \"Él es el guerrillero del arte\", 29 August 2016); the building opened in late 2014 (Dezeen, Amy Frearson, 14 January 2016).",
+  "sources": [
+   "https://forbes.com.mx/?p=272337",
+   "https://www.dezeen.com/?p=832906"
+  ],
+  "reason": "Forbes México gives no opening date; Dezeen says late 2014. Five programmes listed as the page words them."
+ },
+ {
+  "id": "fundación-casa-wabi-puerto-escondido",
+  "section": "FUNDING",
+  "problems": [
+   "Monocle claim stronger than the page",
+   "verdict"
+  ],
+  "before": "Monocle (Alexa Firmenich, October 2015) reported that the foundation wholly funds each residency programme and that artists do not pay to attend.",
+  "after": "Monocle (Alexa Firmenich, \"Shore start\", October 2015) reported that the foundation \"wholly funds each programme\". Verdict: artist-founded non-profit; public funding and a bank sponsorship reported in 2016.",
+  "sources": [
+   "https://www.theartnewspaper.com/news/artist-retreat-expands-with-new-mexico-city-space",
+   "https://monocle.com/culture/tadao-ando-casa-wabi-oaxaca/"
+  ],
+  "reason": "The Art Newspaper, Jane Morris, \"Artist retreat expands with new Mexico City space\", 25 October 2016: the foundation \"receives funding from Mexico's ministry of culture and the state of Oaxaca\" and has sponsorship from Deutsche Bank. The Monocle page also calls it \"a paid artist residency\", so \"artists do not pay\" was cut. The 2026 sponsors known only from logo file names on the donations page are not named in the report."
+ },
+ {
+  "id": "fundación-oswaldo-vigas-caracas",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported date: \"e-flux, 29 September 2022\"",
+   "Wikipedia claim for Venice Biennale unattributed in sentence"
+  ],
+  "before": "...catalogues more than 3,000 paintings with exhibition histories and published literature and is free to browse (e-flux, 29 September 2022).",
+  "after": "...e-flux calls it the first complete online catalogue raisonné of any Venezuelan modern or contemporary artist, documenting more than 3,000 paintings, free to browse (e-flux). Wikipedia calls him the first artist to represent Venezuela at the Venice Biennale, in 1954.",
+  "sources": [
+   "https://www.e-flux.com/announcements/491089/oswaldo-vigas-catalogue-raisonn-launches-online",
+   "https://en.wikipedia.org/wiki/Oswaldo_Vigas"
+  ],
+  "reason": "The e-flux page gives the 15 September 2022 launch at Another Space; its posting date is not shown. The Arte al Día piece is dated 22 September 2022."
+ },
+ {
+  "id": "fundación-oswaldo-vigas-caracas",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: \"collaborated on\"",
+   "date of Kwai Fung Hin item"
+  ],
+  "before": "Axel Stein ... supported and collaborated on the catalogue raisonné ... announced on 22 March 2023",
+  "after": "Axel Stein ... supported the catalogue raisonné ... announced in March 2023",
+  "sources": [
+   "https://artealdia.com/News/THE-OSWALDO-VIGAS-FOUNDATION-LAUNCHES-THE-ARTIST-S-ONLINE-CATALOG-RAISONNE",
+   "https://www.e-flux.com/announcements/528653/kwai-fung-hin-art-gallery-represents-oswaldo-vigas/"
+  ],
+  "reason": "Arte al Día says Stein supported the project. Staff page confirms Lorenzo Vigas chairman, Janine Vigas custodian, Dilia Hernández director and Axel Stein head of outreach and development. The e-flux post is dated 22 March 2023; it announces the exclusive Asia representation."
+ },
+ {
+  "id": "fundación-oswaldo-vigas-caracas",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "\"has represented since 2023\" stronger than the announcement"
+  ],
+  "before": "...Kwai Fung Hin Art Gallery has represented Vigas's work in Asia since 2023.",
+  "after": "...and a March 2023 announcement that Kwai Fung Hin Art Gallery would represent Vigas's work in Asia.",
+  "sources": [
+   "https://www.e-flux.com/announcements/528653/kwai-fung-hin-art-gallery-represents-oswaldo-vigas/"
+  ],
+  "reason": "Follows the announcement."
+ },
+ {
+  "id": "fundación-sala-mendoza-caracas",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: \"privately founded by the Mendoza family of industrialists\"",
+   "link between the founder Eugenio Mendoza and the industrialist Eugenio Mendoza Goiticoa not stated on any opened page",
+   "Wikipedia claim about Fundación Mendoza"
+  ],
+  "before": "privately founded by the Mendoza family of industrialists; independent civil association with a bookstore and a documentation centre ... Eugenio Mendoza also founded the Fundación Mendoza...",
+  "after": "started by Luisa Rodríguez de Mendoza and Eugenio Mendoza; runs a bookstore and an Amigos de la Sala membership programme. The Fundación Mendoza point was cut.",
+  "sources": [
+   "https://fundacionsalamendoza.com/",
+   "https://fundacionsalamendoza.com/la-sala",
+   "https://en.wikipedia.org/wiki/Eugenio_Mendoza"
+  ],
+  "reason": "The Sala's pages name the founders but not their trade or family; the Wikipedia article on Eugenio Mendoza Goiticoa does not mention the Sala. The home page names the founders and Amigos de la Sala; la-sala gives president Pulido, general manager Fonseca, director Valdivieso."
+ },
+ {
+  "id": "fundación-sala-mendoza-caracas",
+  "section": "OVERVIEW",
+  "problems": [
+   "founder identified as industrialist without a source"
+  ],
+  "before": "Eugenio Mendoza Goiticoa (1906 to 1979) was a Venezuelan industrialist whose companies included Venezolana de Cementos, and he founded Universidad Metropolitana ... (Wikipedia).",
+  "after": "Wikipedia describes Eugenio Mendoza Goiticoa (1906 to 1979) as a Venezuelan industrialist who founded Universidad Metropolitana in 1970; stated as the namesake of the building only.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Eugenio_Mendoza"
+  ],
+  "reason": "The building name is on the Sala pages; the identity of the founder with the namesake is not stated on an opened page."
+ },
+ {
+  "id": "fundación-sala-mendoza-caracas",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "\"a Venezuelan industrialist\" applied to the founder"
+  ],
+  "before": "...Eugenio Mendoza, a Venezuelan industrialist, and works as an independent civil association with its own bookstore and prize.",
+  "after": "...Eugenio Mendoza and works as an independent civil association with its own bookstore, membership programme and prize. It is housed in a building named for Eugenio Mendoza Goiticoa...",
+  "sources": [
+   "https://fundacionsalamendoza.com/"
+  ],
+  "reason": "As above."
+ }
+]
