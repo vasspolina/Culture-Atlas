@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=300">
-  <script src="assets/config.js?v=300"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=301">
+  <script src="assets/config.js?v=301"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -6696,6 +6696,7 @@ return maplibregl$1;
           zoom: 14,
           pitch: 35,
           bearing: 0,
+          antialias: true,
           attributionControl: { compact: true }
         });
 
@@ -7516,7 +7517,7 @@ return maplibregl$1;
     // layers widen each line on the ground and then project it, so under the tilted camera they thin out toward the horizon;
     // here each segment is projected first and then widened on the screen, square to the segment as it appears. That serves the
     // building's edges (including the standing ones, which have no ground direction) and the street map itself (below). The
-    // quad is feathered over one device pixel on each side, as MapLibre's line shader does. Positions are kept relative to the
+    // quad is feathered over a pixel and a half on each side. Positions are kept relative to the
     // first point (float32 cannot hold a whole Mercator coordinate to the centimetre); the matrix carries the offset.
     const XRAY_LINE_WIDTH = 1;
     function screenLineLayer(id) {
@@ -7545,7 +7546,10 @@ return maplibregl$1;
         'uniform vec4 u_color; uniform mediump float u_half_px;',
         'varying float v_side;',
         'void main() {',
-        '  gl_FragColor = u_color * clamp(u_half_px - abs(v_side) * u_half_px, 0.0, 1.0);',
+        // Coverage falls from full to none over a pixel and a half centred on the line's edge: a wider, smoother ramp than a pixel's own
+        // gives, so a line at a slant is a soft edge and not a run of steps.
+        '  float c = clamp((u_half_px - abs(v_side) * u_half_px) / 1.5, 0.0, 1.0);',
+        '  gl_FragColor = u_color * (c * c * (3.0 - 2.0 * c));',
         '}'
       ].join('\n');
       return {
@@ -7605,7 +7609,7 @@ return maplibregl$1;
           gl.useProgram(this.program);
           gl.uniformMatrix4fv(this.u.matrix, false, new Float32Array(t));
           gl.uniform2f(this.u.res, gl.drawingBufferWidth, gl.drawingBufferHeight);
-          gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH * dpr / 2 + 0.5); // half the width plus half a device pixel
+          gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH * dpr / 2 + 0.75); // half the width plus three quarters of a device pixel, the feather
           gl.uniform4fv(this.u.color, this.color);
           gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
           if (this.dirty) { gl.bufferData(gl.ARRAY_BUFFER, this.data, gl.STATIC_DRAW); this.dirty = false; }
@@ -8085,7 +8089,8 @@ return maplibregl$1;
 
         const nameSpan = document.createElement('span');
         nameSpan.className = 'inst-pin-label-name';
-        nameSpan.textContent = inst.name;
+        nameSpan.textContent = inst.name.length > 24 ? inst.name.substring(0, 22) + '…' : inst.name;   // as on the globe
+        if (inst.tier === 'A' || inst.tier === 'B') labelEl.setAttribute('data-tier', inst.tier);
 
         labelEl.appendChild(tierDot);
         labelEl.appendChild(nameSpan);
@@ -9901,11 +9906,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v300';
+    const ATLAS_RELEASE = 'culture-atlas-v301';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=300').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=301').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19389,9 +19394,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=300"></script>
-<script src="assets/layers.js?v=300"></script>
-<script src="assets/hq-detail.js?v=300"></script>
-<script src="assets/bubbles.js?v=300" defer></script>
+<script src="assets/typeset.js?v=301"></script>
+<script src="assets/layers.js?v=301"></script>
+<script src="assets/hq-detail.js?v=301"></script>
+<script src="assets/bubbles.js?v=301" defer></script>
 </body>
 </html>

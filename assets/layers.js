@@ -271,19 +271,19 @@
       const names = namesOf(rec); if (!names.length || typeof rec.lat !== 'number') return;
       const pt = project(rec.lon, rec.lat, r, cx, cy); if (!pt.front) return;
       const focus = (sel && sel.id === rec.id) || (hov && hov.id === rec.id);
-      marks.push([pt, names, focus]);
-      LM.push({ x: pt.x + dx, y: pt.y, r: 9, rec, col, label: names.slice(0, 3).join(', '), sub: `${what}: ${rec.n}`, ask: askOf(rec) });
+      const mk = { x: pt.x + dx, y: pt.y, r: 9, rec, col, label: names.slice(0, 3).join(', '), sub: `${what}: ${rec.n}`, ask: askOf(rec) };
+      marks.push([pt, names, focus, mk]); LM.push(mk);
     });
     ctx.lineWidth = 0.8;
     marks.forEach(([pt]) => { shapePath(ctx, shape, pt.x + dx, pt.y, 6.5); ctx.fillStyle = col; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); });
     ctx.textAlign = 'left';
-    marks.forEach(([pt, names, focus]) => {
+    marks.forEach(([pt, names, focus, mk]) => {
       if (!(focus || close)) return;
       let y = pt.y - 10 - (names.length - 1) * 11;
       names.slice(0, 4).forEach(name => {
         const text = name.length > 28 ? name.slice(0, 26) + '…' : name, tw = ctx.measureText(text).width, w = tw + 12, h = 20;
         const box = { x: pt.x + 10 + dx, y: y - h / 2, w, h };
-        if (!collides(box, boxes)) { boxes.push(box); ctx.fillStyle = col; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(text, box.x + 6, y + 0.5); }
+        if (!collides(box, boxes)) { boxes.push(box); (mk.lboxes = mk.lboxes || []).push(box); ctx.fillStyle = col; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(text, box.x + 6, y + 0.5); }
         y += 22;
       });
     });
@@ -569,11 +569,10 @@
           const reach = reachOf(n[5]), sr = sizeFor(reach.n > 1 ? reach.n : 1);
           shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, sr); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 1.3; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
           if (n[5]) { if (!byKey.has(n[5])) byKey.set(n[5], []); byKey.get(n[5]).push([x, y, col]); }
-          labels.push([n[0], x, y, a, col]);
-          const shared = reach.n > 1;
-          LM.push({ x, y, r: Math.max(10, sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `Funder of ${rec.n}`,
+          const shared = reach.n > 1, mk = { x, y, r: Math.max(10, sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `Funder of ${rec.n}`,
             sub2: shared ? `Also funds ${plural(reach.n - 1, 'other space')} in ${plural(reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
-            ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
+            ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` };
+          LM.push(mk); labels.push([n[0], x, y, a, col, mk]);
         }
       });
       // A funder named on two spaces on screen is joined across them.
@@ -582,12 +581,12 @@
       byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = lineCol(pts[i][2]); ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[i][0], pts[i][1]); ctx.stroke(); } });
       // Funder names on flat blocks, in the funder's colour, never over another label.
       ctx.globalAlpha = 1;
-      labels.forEach(([label, x, y, a, col]) => {
+      labels.forEach(([label, x, y, a, col, mk]) => {
         const text = label.length > 28 ? label.slice(0, 26) + '…' : label, right = Math.cos(a) >= -0.2;
         const tw = ctx.measureText(text).width, w = tw + 12, h = 20;
         const bx = right ? x + 9 : x - 9 - w, box = { x: bx, y: y - h / 2, w, h };
         if (collides(box, boxes)) return;
-        boxes.push(box);
+        boxes.push(box); mk.lbox = box;   // the name answers the pointer as the mark does
         ctx.fillStyle = col; ctx.fillRect(box.x, box.y, w, h);
         ctx.fillStyle = '#000'; ctx.textAlign = 'left'; ctx.fillText(text, box.x + 6, y + 0.5);
       });
@@ -710,8 +709,13 @@
     let best = null, bd = Infinity;
     LM.forEach(m => {
       let d;
-      if (m.box) { if (mx < m.box.x || mx > m.box.x + m.box.w || my < m.box.y || my > m.box.y + m.box.h) return; d = 0; }
-      else { d = Math.hypot(m.x - mx, m.y - my); if (d > m.r * (touch ? 1.6 : 1)) return; }
+      const inBox = b => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h;
+      if (m.box) { if (!inBox(m.box)) return; d = 0; }
+      else {
+        d = Math.hypot(m.x - mx, m.y - my);
+        // The name drawn beside a mark is part of it: pointing at the name is pointing at the mark.
+        if (d > m.r * (touch ? 1.6 : 1)) { if ((m.lbox && inBox(m.lbox)) || (m.lboxes && m.lboxes.some(inBox))) d = m.r; else return; }
+      }
       if (m.pass) d += 100;   // a mark on a space's own dot gives way to one that stands alone
       if (d < bd) { bd = d; best = m; }
     });
