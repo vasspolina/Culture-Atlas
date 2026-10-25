@@ -1986,3 +1986,35 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn).is-on :is(svg,span){color:#fff!important}
   :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 }
+/* The chat after the displaay.net Albert chat (25 Oct 2026): a bold two-line title; the question box is a rounded navy field with a yellow ring while it is in use, plum with yellow type once the reader has typed, and a white square send button inside it; "Suggestions:" over white chips; the reader's lines in grey bubbles, the reply in a dark one. */
+:root[data-theme] :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{display:block;margin:0 0 28px;text-align:left;white-space:normal;font-weight:700;font-size:clamp(30px,4.4vw,40px);line-height:1.04;letter-spacing:-.03em}
+:root[data-theme] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+:root[data-theme] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts)::before{content:"Suggestions:";font:700 var(--fs-m)/1 var(--sans);color:var(--ink);margin-bottom:4px}
+:root[data-theme] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root[data-theme] .curator-followup-pill{display:inline-block;width:auto;max-width:100%;padding:13px 24px;background:var(--ink)!important;color:var(--paper)!important;border:0;border-radius:14px;font:400 var(--fs-m)/1.2 var(--sans);text-align:left;text-decoration:none}
+:root[data-theme] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme] .curator-followup-pill:hover{background:color-mix(in srgb,var(--ink) 82%,var(--paper))!important;color:var(--paper)!important;text-decoration:none}
+:root[data-theme] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n) .sp-text{display:inline;padding:0;background:none;color:inherit}
+:root[data-theme] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n) .sp-text::before{content:"";display:inline-block;width:.5em;height:.5em;margin-right:.6em;border-radius:50%;background:var(--fill,#c6c6c6);vertical-align:.05em}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:none}
+:root[data-theme] #curatorMessages>.justify-end>div,:root[data-theme] #curatorMessages .user-bubble{display:inline-block;background:#8c8c8f;color:#111;border-radius:14px;padding:12px 18px;max-width:85%;text-indent:0;font:400 var(--fs-m)/1.3 var(--sans)}
+:root[data-theme] #curatorMessages>.justify-end>div *,:root[data-theme] #curatorMessages .user-bubble *{color:#111}
+:root[data-theme] #curatorMessages>:is(.justify-end,.curator-message-wrap)::before{content:none}
+:root[data-theme] #curatorMessages>:is(.justify-end,.curator-message-wrap){padding-left:0}
+:root[data-theme] #curatorMessages>.justify-end{display:flex;justify-content:flex-end}
+:root[data-theme] #curatorMessages>.curator-message-wrap:not(.is-gossip){background:var(--block);color:var(--ink);border-radius:14px;padding:14px 18px!important;width:fit-content;max-width:100%}
+:root[data-theme] #curatorMessages>.curator-message-wrap:not(.is-gossip) :is(p,li,div){text-indent:0}
+@media (min-width:768px){
+  :root[data-theme] #workInputCard:not(.is-mode){position:relative;background:#e4e7f6;border:1px solid transparent;border-radius:16px;padding:20px 24px 16px}
+  :root[data-theme="dark"] #workInputCard:not(.is-mode){background:#2f3452}
+  :root[data-theme] #workInputCard:not(.is-mode) #workInput{background:transparent;color:var(--ink);border:0;padding:0 68px 0 0;min-height:3.4em}
+  :root[data-theme="dark"] #workInputCard:not(.is-mode) #workInput::placeholder{color:#9aa0c4;opacity:1}
+  :root[data-theme] #workInputCard:not(.is-mode):has(#workInput:focus){border-color:var(--focus)}
+  :root[data-theme="dark"] #workInputCard:not(.is-mode):has(#workInput:focus){border-color:#ffe94d}
+  :root[data-theme] #workInputCard:not(.is-mode):has(#workInput:not(:placeholder-shown)){background:#f0dcf2}
+  :root[data-theme="dark"] #workInputCard:not(.is-mode):has(#workInput:not(:placeholder-shown)){background:#3d0640}
+  :root[data-theme] #workInputCard:not(.is-mode) #workInput:not(:placeholder-shown){color:#3d0640}
+  :root[data-theme="dark"] #workInputCard:not(.is-mode) #workInput:not(:placeholder-shown){color:#ffe94d}
+  :root[data-theme] #workInputCard:not(.is-mode) #workInput:focus{outline:0}
+  :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on){position:absolute;top:14px;right:14px;width:52px;height:52px;min-width:52px;background:var(--ink)!important;color:var(--paper)!important;border:0!important;border-radius:14px!important}
+  :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):hover{background:color-mix(in srgb,var(--ink) 82%,var(--paper))!important;color:var(--paper)!important}
+  :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):hover svg{color:var(--paper)!important}
+}
