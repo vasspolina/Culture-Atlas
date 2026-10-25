@@ -293,7 +293,7 @@
   // mark with a neighbour a few pixels away could not be hovered, because the neighbour was always the nearer. Nothing moves
   // more than MAX_SHIFT pixels from its place, and marks that already have room stay put. The relaxation is costly, so it is
   // worked out once the view has settled and the offsets are reused while it pans or turns; it is not redone during a zoom.
-  const MIN_GAP = 12, MAX_SHIFT = 70, PASSES = 40;
+  const MIN_GAP = 12, MAX_SHIFT = 70, PASSES = 40, CLUSTER_AT = 10;
   let spreadCache = null, spreadAt = 0;
   function relax(pts) {
     const n = pts.length, ox = pts.map(p => p[1]), oy = pts.map(p => p[2]), x = ox.slice(), y = oy.slice();
@@ -351,7 +351,7 @@
       (rec.ep || []).forEach(e => { if (e.p && HQ.byName.has(e.p)) linkedPeople.add(e.p); });
     }
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const pts = [];
+    let pts = [];
     const place = (e, show) => {
       if (!show || (e.kind === 'org' && !kindOn(e.k))) return;
       const pt = project(e.lon, e.lat, r, cx, cy); if (!pt.front) return;
@@ -360,6 +360,21 @@
     const picked = e => e === HQ_SEL || e === HQ_HOV;
     if (L.hq) HQ.orgs.forEach(e => place(e, true));
     if (L.people) HQ.people.forEach(e => place(e, true));
+    // Offices are pinned to their city, and a city holds up to 45 of them. Spread across the map they settle into a lattice that
+    // spills over the sea and the next country, so until the view is close enough to give each its own room a city with several
+    // offices is one numbered mark at the city's true place. The ones in play (the focused space's funders, the picked office)
+    // stay out of it and are drawn singly.
+    const clusters = [];
+    if (r < baseRadius * CLUSTER_AT) {
+      const groups = new Map();
+      pts.forEach(p => {
+        const e = p[0]; if (e.kind !== 'org' || picked(e) || (rec && linkedOrgs.has(e.key))) return;
+        const k = e.lat.toFixed(1) + ',' + e.lon.toFixed(1); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(p);
+      });
+      const drop = new Set();
+      groups.forEach(list => { if (list.length < 2) return; list.forEach(p => drop.add(p)); clusters.push(list.map(p => p[0])); });
+      if (drop.size) pts = pts.filter(p => !drop.has(p));
+    }
     spreadMarks(pts, r, baseRadius);
     // joins from the focused space
     if (rec && typeof rec.lat === 'number') {
@@ -380,7 +395,7 @@
     ctx.lineWidth = 1;
     pts.forEach(([e, x, y]) => {
       const on = (e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n)) || picked(e);
-      const s = on ? 7 : (rec ? 3.5 : (e.kind === 'org' && recById ? 4 + Math.min(5, Math.sqrt(orgReach(e)) * 1.1) : 5));
+      const s = on ? 7 : (rec ? 3.5 : (e.kind === 'org' && recById ? 4 + Math.min(2.5, Math.sqrt(orgReach(e)) * 0.7) : 5));
       HQ_HITS.push({ e, x, y });
       ctx.globalAlpha = rec && !on ? 0.35 : 1;
       ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.strokeStyle = '#000';
@@ -396,6 +411,23 @@
       }
     });
     ctx.globalAlpha = 1;
+    clusters.forEach(list => {
+      // The metro area (0.1 degree, about 11 km) is one place: the mark sits at the mean of its pins and takes the commonest city name.
+      const n = list.length, mlat = list.reduce((a, e) => a + e.lat, 0) / n, mlon = list.reduce((a, e) => a + e.lon, 0) / n;
+      const cn = {}; list.forEach(e => { cn[e.c] = (cn[e.c] || 0) + 1; });
+      const e0 = list.find(e => e.c === Object.keys(cn).sort((a, b) => cn[b] - cn[a])[0]), pt = project(mlon, mlat, r, cx, cy); if (!pt.front) return;
+      const s = 7 + Math.min(7, Math.sqrt(n) * 1.5), counts = {};
+      list.forEach(e => { counts[e.k] = (counts[e.k] || 0) + 1; });
+      const k = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0], col = KIND[k] || COL.corp;
+      ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 1; ctx.fillStyle = col; ctx.strokeStyle = '#000';
+      ctx.beginPath(); ctx.moveTo(pt.x, pt.y - s); ctx.lineTo(pt.x + s, pt.y); ctx.lineTo(pt.x, pt.y + s); ctx.lineTo(pt.x - s, pt.y); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '700 10px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(String(n), pt.x, pt.y + 0.5);
+      const names = list.slice(0, 3).map(e => e.n).join(', ') + (n > 3 ? ` and ${n - 3} more` : '');
+      LM.push({ x: pt.x, y: pt.y, r: s + 3, col, label: `${e0.c}, ${e0.co}`, sub: `${n} funder offices`, sub2: names, ask: `Which funders are headquartered in ${e0.c}?`,
+        go() { if (typeof window.flyTo === 'function') window.flyTo(mlon, mlat, baseRadius * (CLUSTER_AT + 1.5)); } });
+    });
+    ctx.font = '14px "Jokker", sans-serif';
     // Names: on blocks for the focused space's own funders and people. With nothing in focus, only a very close view names them,
     // as plain text on a halo, so the map is not covered in blocks.
     const veryClose = !rec && r >= baseRadius * 30;
@@ -559,7 +591,7 @@
     const m = LM.find(q => q.ask === LM_HOV.ask && q.rec === LM_HOV.rec && !q.pass) || null; if (!m) return;
     const W = ctx.canvas.clientWidth || 1e9;
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
-    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, 'Click to ask the chat'].filter(Boolean);
+    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.go ? 'Click to zoom in' : 'Click to ask the chat'].filter(Boolean);
     ctx.save(); ctx.font = '14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 12, h = 20;
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
@@ -675,6 +707,8 @@
     return best;
   }
   window.atlasLayerMarks = {
+    // The marks drawn last frame (position, name, count line), for checking the layers from a test script.
+    marks: () => LM.map(m => ({ x: m.x, y: m.y, r: m.r, label: m.label, sub: m.sub, go: !!m.go })),
     // Pointer moved: a mark that stands alone takes the hover (true, so the page shows a pointer); a mark on a space's dot does not.
     hover(mx, my) {
       const m = markAt(mx, my), alone = m && !m.pass ? m : null;
@@ -686,6 +720,7 @@
     // with the space selected on the map and stays in front, so a flag or grade mark loses nothing by not opening the record.
     click(mx, my) {
       const m = markAt(mx, my); if (!m) return false;
+      if (m.go) { m.go(); return true; }
       askChat(m.ask);
       return true;
     }
