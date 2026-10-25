@@ -649,3 +649,13 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - foam-fotografiemuseum-amsterdam-amsterdam: the Annual Report 2025 (supervisory board report 20 May 2026) states "interne onrust" in the previous policy period (years not given) and an external confidential adviser was appointed; one report to the adviser in 2025.
 - cubitt-london: charity number 1049653 printed on both the homepage and the donation page.
 - fondation-vincent-van-gogh-arles: LUMA planning item: Toby Skeggs, The Art Newspaper, 30 June 2011; it does not name the Fondation.
+
+## d036 (research notes, before its slop check)
+- ishara-art-foundation-dubai: the two red flags are trustees' employers (the trustee who chairs HSBC Middle East, HSBC's 2012 $1.92bn deferred-prosecution agreement; the trustee who is CEO of Wasl Hospitality and Leisure, a Dubai government-linked company): board seats only, no funding shown; the foundation is self-funded by founder Smita Prabhakar as the foundation states.
+- jameel-arts-centre: developed with Dubai Holding, Dubai Properties and other UAE government bodies; the record's "not financed by the UAE state" is contradicted by the centre's own About page.
+- julia-stoschek-foundation: the founder is an active shareholder in Brose; Brose's Nazi-era forced labour; no source says how the foundation is financed; the Berlin venue closes at the end of October 2026; the record's js-foundation.art does not resolve (real domain jsfoundation.art).
+- henry-art-gallery: the record's ProPublica EIN 916001537 returned 404.
+- imal-brussels: reopening 2020 (its own site) or inauguration 2023 (the EU); Fondation Orange and Selligent partners, amounts unpublished.
+- instituto-tunga-rio-de-janeiro: the institute's own site is down for maintenance; the catalogue raisonné is sponsored by Itaú and Sabesp under the Rouanet Law.
+- javett-art-centre-at-the-university-of-pretoria-javett-up: protest over Zwelethu Mthethwa's work in the 2019 opening show; no source found for Michael Javett's business background.
+- kalektar-research-platform-on-belarusian-contemporary-art-białystok: grant-funded; the Rönne Stiftung main financial partner, backed by the German Federal Foreign Office.
