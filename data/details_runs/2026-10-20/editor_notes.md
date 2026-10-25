@@ -1274,3 +1274,11 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - Wits Art Museum: Sabvest shares and R204.4m come from Billionaires.Africa only and are credited to it.
 - Y Gallery Minsk: no Criticism section; dates split by source (CIMAM, MoMA, Wikipedia).
 - Wysing: the Charity Commission page was not readable, so no income figure.
+
+## d097 (slop check: checks/d097-slop.json)
+- transmediale: Protest or boycott kept for the February 2025 open letter addressed to transmediale e.V. and its advisory board (!Mediengruppe Bitnik, Aram Bartholl, Constant Dullaart, Danja Vasiliev). The 2024 #StrikeGermany withdrawals moved to Wider context: they targeted the Berlin Senate clause and German state policy, not the space (Spike, Adina Glickstein, 14 February 2024).
+- Tramway: the Bloomberg Philanthropies letter material cut (the New Arab piece, 29 May 2026, names five other theatres and not Tramway; no page ties Bloomberg money to Tramway).
+- Tokyo Arts and Space: the 2006 to 2007 Ishihara row stays Wider context (nepotism is not a flag category; no state body censored the space). Funding verdict rests on Japanese Wikipedia because the official site returned 503.
+- Theertha: only a listing as an Arts Collaboratory participant (2013 to 2015) plus Wikipedia; no amount or current status.
+- Trafo: Szabo's managing-director title comes from a 29 December 2014 interview; Hungarian Wikipedia ends his directorship in 2012.
+- Triple Canopy: NEA, NYSCA and NYC DCLA listed without years; Warhol USD 100,000 (Fall 2022) verified.
