@@ -1,0 +1,334 @@
+[
+ {
+  "id": "de-la-warr-pavilion",
+  "section": "Red flags",
+  "problems": [
+   "claim beyond source: UAE described as 'current and previous' funder without the page's list structure; unsupported 'searches of press pages'"
+  ],
+  "before": "lists \"United Arab Emirates\" among its current and previous building funders, with no year, amount or purpose given",
+  "after": "lists \"United Arab Emirates\" as the last of 15 names under \"Building funders\", introduced as thanks for \"current and previous support for the building\"; no year, amount, purpose or named UAE body. Capital project page and Wikipedia do not mention the UAE.",
+  "sources": [
+   "https://www.dlwp.com/support/our-funders/",
+   "https://www.dlwp.com/our-capital-project/",
+   "https://en.wikipedia.org/wiki/De_La_Warr_Pavilion"
+  ],
+  "reason": "Flag kept: the page names the United Arab Emirates itself as a building funder. Wording restricted to what the page shows; which UAE body is not stated."
+ },
+ {
+  "id": "de-la-warr-pavilion",
+  "section": "Funding",
+  "problems": [
+   "number misattributed: £23.4m is the Pavilion project cost per Rother, not the combined scheme",
+   "Heritage Fund amount: project data £7,875,683 vs article 'over £7.6million'",
+   "2023 'round' not in source",
+   "descriptor 'the actor' not on page"
+  ],
+  "before": "Rother received £19,192,000 in the 2023 round for a scheme costing £23.4m, of which £17m goes to the Pavilion and £2m to a community hub in Sidley; Heritage Fund £7,875,683 awarded 27 March 2024",
+  "after": "Rother announced £19,192,000 on 26 January 2023 and said the Pavilion project totals £23.4m; capital page gives the £17m/£2m split; Heritage Fund page records £7,875,683 (27 March 2024) and text of 'over £7.6million' (article 12 December 2025); capital page: full application August 2025, decision December 2025, no amount",
+  "sources": [
+   "https://www.rother.gov.uk/news/council-secures-levelling-up-funding-for-cultural-led-regeneration",
+   "https://www.heritagefund.org.uk/projects/restoring-de-la-warr-pavilion",
+   "https://www.dlwp.com/our-capital-project/"
+  ],
+  "reason": "Amounts and years restated as each page gives them; the funders page gives no Levelling Up or Heritage Fund amount or year."
+ },
+ {
+  "id": "de-la-warr-pavilion",
+  "section": "Overview / Criticism",
+  "problems": [
+   "unsupported: 'Rother District Council ran it after the war; Trust took it over'",
+   "unsupported: ticket 'exhibitions are free ... from £6' (£6 is for screenings)",
+   "unsupported year: London Magazine review '2019' (page undated)",
+   "trimmed to word limit"
+  ],
+  "before": "Rother District Council ran it after the war; the Trust took it over ... review ... 2019",
+  "after": "Bexhill Corporation, later Rother District Council, managed it; ownership passed to the Trust from 2004 ... review undated on the page",
+  "sources": [
+   "https://en.wikipedia.org/wiki/De_La_Warr_Pavilion",
+   "https://www.dlwp.com/",
+   "https://thelondonmagazine.org/review-group-hat-and-how-chicago-imagists-1960s-70s-at-de-la-warr-pavilion/"
+  ],
+  "reason": "Cut back to what the pages state; report trimmed from 855 to under 800 words by dropping peripheral detail."
+ },
+ {
+  "id": "dk-rozy-st-petersburg",
+  "section": "Red flags",
+  "problems": [
+   "unsupported: Sanctions flag; no opened page shows Abramovich controls Garage or that Garage is listed",
+   "claim beyond source: no payment from Garage to the House documented"
+  ],
+  "before": "Red flags: Garage Museum, co-founded by a sanctioned oligarch (3 points)",
+  "after": "Red flags section removed; facts moved to Funding: Garage's research support (House page) and 2022 archive purchase (main page), no price or month; Garage names Abramovich and Zhukova co-founders; Art Newspaper 2018: they underwrite about two-thirds of the budget; UK sanctioned Abramovich 10 March 2022; no page shows who controls Garage now",
+  "sources": [
+   "https://garagemca.org/en/about",
+   "https://www.theartnewspaper.com/news/garage-still-going-strong-at-ten-despite-co-founders-split",
+   "https://www.dailymaverick.co.za/article/2022-03-11-chelsea-owner-abramovich-and-rosneft-boss-sechin-hit-with-uk-sanctions.md"
+  ],
+  "reason": "The Sanctions flag needs the funder or its controller to be listed. Abramovich is a co-founder and (in 2018) a funder of Garage, but no opened page shows current control; the EU listing is on no opened page."
+ },
+ {
+  "id": "dk-rozy-st-petersburg",
+  "section": "Overview",
+  "problems": [
+   "claim beyond source: 'management cited FSB signal and ended the lease' (the cluster ended it; Sobaka quotes the signal)"
+  ],
+  "before": "after management cited an \"FSB signal\" and ended the lease; ... (the FSB claim is Vilensky's)",
+  "after": "whose cluster ended the lease after, in Sobaka.ru's words, a \"signal from the FSB\" reached its management; Vilensky called this self-censorship",
+  "sources": [
+   "https://www.sobaka.ru/entertainment/art/39970",
+   "https://chtodelat.org/category/rosas-house-of-culture/"
+  ],
+  "reason": "Restated as the page states it; removed the unused Cimam source."
+ },
+ {
+  "id": "dk-rozy-st-petersburg",
+  "section": "Criticism in art media",
+  "problems": [
+   "unsupported: Vilensky 'mistaken to expect visitors to leave the House unchanged'"
+  ],
+  "before": "Vilensky says the collective was \"mistaken\" to expect visitors to leave the House unchanged",
+  "after": "Vilensky says of the House's aim of relaxed open doors that \"we have been mistaken about the last objective\", since schedules are too dense",
+  "sources": [
+   "https://field-journal.com/issue-12-13/near-east-russia/a-discussion-with-residents-of-rosa-house-of-culture/"
+  ],
+  "reason": "The page does not say anything about visitors leaving unchanged."
+ },
+ {
+  "id": "espacio-cultural-patino",
+  "section": "Funding / Red flags",
+  "problems": [
+   "unsupported: foundations' present money tied to the tin fortune (no opened page states the source of the funds)",
+   "founder-fortune rule: historical industry money counts only if it still funds the space today"
+  ],
+  "before": "Funding verdict: self-funded by family foundations: the Patiño family fortune built on Bolivian tin mining; Red flags: founder wealth from tin mines with documented labour abuses",
+  "after": "Funding verdict: funded by the Patiño family foundations; the pages opened do not say where their money comes from today. Red flags section removed; tin history, Catavi conditions and the 21 December 1942 massacre moved to Wider context with the connection stated.",
+  "sources": [
+   "https://fundacionpatino.org/quienes-somos/",
+   "https://en.wikipedia.org/wiki/Catavi_mine",
+   "https://en.wikipedia.org/wiki/Catavi_massacre"
+  ],
+  "reason": "Foundation pages say the Geneva foundation manages funds for the foundations' activities but name no source; Wikipedia biography does not link present funds to the mines."
+ },
+ {
+  "id": "espacio-cultural-patino",
+  "section": "Wider context",
+  "problems": [
+   "number misstated: 'crowd of about 7,000' (page: 7,000 miners on a five-day strike)",
+   "segregation detail restated to the page's words"
+  ],
+  "before": "troops fired on a crowd of about 7,000 for six hours",
+  "after": "7,000 miners on a five-day strike sought a 100% wage rise, and the military fired for six hours",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Catavi_massacre",
+   "https://en.wikipedia.org/wiki/Catavi_mine"
+  ],
+  "reason": "Restated as the page states it."
+ },
+ {
+  "id": "espacio-cultural-patino",
+  "section": "Overview / Criticism",
+  "problems": [
+   "unsupported: 'praises the new building as efficient and transparent'",
+   "unsupported: 'does not discuss the family's mining wealth' (column calls Patiño the main tin baron)",
+   "'Named for' lifespan and tin descriptor"
+  ],
+  "before": "praises the new building as efficient and transparent and does not discuss the family's mining wealth",
+  "after": "calls the building \"magnífico\" and the curation \"impecable\" (translation) and does not explain how the foundation is funded",
+  "sources": [
+   "https://www.lostiempos.com/node/441912",
+   "https://en.wikipedia.org/wiki/Sim%C3%B3n_I._Pati%C3%B1o"
+  ],
+  "reason": "Restated from the column."
+ },
+ {
+  "id": "foam-fotografiemuseum-amsterdam-amsterdam",
+  "section": "Criticism in art media",
+  "problems": [
+   "vague: 'workload and social safety needing attention' without the report's wording or year context"
+  ],
+  "before": "Foam writes of \"interne onrust\" (internal unrest) in the previous policy period, with workload and social safety needing attention, an external confidential adviser appointed and one report to that adviser in 2025",
+  "after": "Annual Report 2025 (board report dated 20 May 2026): \"interne onrust\" of the previous policy period (years not given) shifted attention to social safety, inclusion, transparency and work culture; high workload took management time; external confidential adviser appointed; one report to the adviser in 2025",
+  "sources": [
+   "https://a.storyblok.com/f/113697/x/ca002a8fef/foam-jaarverslag-2025.pdf"
+  ],
+  "reason": "Read the PDF text (downloaded and extracted); all figures, partners and board names in the report checked against it. No red flags; VriendenLoterij is an ordinary public funder."
+ },
+ {
+  "id": "fondation-vincent-van-gogh-arles",
+  "section": "Funding",
+  "problems": [
+   "unsupported: Luc Hoffmann 'set up the permanent framework' and 'backed the foundation'; Hoffmann family as payer",
+   "descriptor 'chairs the board' for LUMA not supported (Wikipedia says heads/founded)",
+   "verdict named a private-philanthropy payer that no page states"
+  ],
+  "before": "Funding verdict: private philanthropy and corporate partners: the Hoffmann family, Roche heirs ...; Luc Hoffmann set up the permanent framework in 2008 and backed the foundation; Hoffmann chairs both LUMA and the Fondation",
+  "after": "Verdict: private and partner-supported, no amounts published; Luc Hoffmann gave the project new momentum in 2008; Maja Hoffmann is president of the foundation and heads LUMA; no page says how much she or her family pays",
+  "sources": [
+   "https://fondation-vincentvangogh-arles.org/?p=497879",
+   "https://www.fondation-vincentvangogh-arles.org/en/partners/",
+   "https://en.wikipedia.org/wiki/Maja_Hoffmann"
+  ],
+  "reason": "Cut back to what the pages state. The LUMA planning criticism (The Art Newspaper, Toby Skeggs, 30 June 2011) stays under Wider context and does not name the Fondation."
+ },
+ {
+  "id": "fondation-vincent-van-gogh-arles",
+  "section": "Overview / Wider context",
+  "problems": [
+   "unsupported: Bertrand Lavier as gate designer (page says only 'hybrid sculpture')",
+   "cost item not criticism and its Wikipedia citation not verifiable from the Hoffmann page"
+  ],
+  "before": "Bertrand Lavier designed the entrance gate; Wikipedia cites Artnet News (Anna Sansom, 28 June 2021) for a reported LUMA cost of €150 million",
+  "after": "the entrance gate is conceived as a hybrid sculpture; LUMA cost bullet removed (not criticism)",
+  "sources": [
+   "https://fondation-vincentvangogh-arles.org/?p=497879",
+   "https://en.wikipedia.org/wiki/LUMA_Arles",
+   "https://www.theartnewspaper.com/2011/07/01/arles-cultural-centre-falls-foul-of-planning-rules"
+  ],
+  "reason": "The Wikipedia LUMA page does cite the Artnet figure; removed because it is a cost figure, not criticism of a patron or programme."
+ },
+ {
+  "id": "cubitt-london",
+  "section": "Funding",
+  "problems": [
+   "unsupported: studio rents named as funding in verdict and bottom line (no page states rent income)",
+   "charity number: correct number is 1049653 (not 1049602)"
+  ],
+  "before": "Cubitt: mainly public and charitable: Arts Council England support, studio rents and donations; Registered charity No. 1049653 (Cubitt website)",
+  "after": "Cubitt: public and charitable: Arts Council England support and donations; no studio rent figures published. Registered charity No. 1049653, as printed on the Cubitt homepage and donation page; register returned HTTP 403.",
+  "sources": [
+   "https://cubittartists.org.uk",
+   "https://www.cubittartists.org.uk/appeal/donate",
+   "https://www.cubittartists.org.uk/news/cubitt-artists-an-update-on-our-future"
+  ],
+  "reason": "Both Cubitt pages print 1049653. Art Newspaper quotes, trustees, lease facts and landlord names checked against their pages."
+ },
+ {
+  "id": "crawford-art-gallery",
+  "section": "Funding / Criticism",
+  "problems": [
+   "unsupported: 'Exchequer-funded project' and 'designed by Grafton Architects' (not on the opened pages)",
+   "unsupported: '€6.5m spent by November 2025' (page gives no date)",
+   "unsupported: 'company with charitable status' (board page gives charity numbers only)",
+   "press items lacked full dates",
+   "minister's reply paraphrase beyond the page"
+  ],
+  "before": "The redevelopment is an \"Exchequer-funded project\" costing €93 million, delivered with the Office of Public Works and designed by Grafton Architects; €6.5m was spent by November 2025; a company with charitable status (CHY 18818)",
+  "after": "The redevelopment costs €93 million and is a State investment delivered with the Office of Public Works (Irish Examiner, 12 December 2025); €6.5m spent on surveys, design and storage, no date given (Echo Live, 13 December 2025); charity no. CHY 18818 and registered charity number 20072926; press dates 24 Nov 2025, 12 Dec 2025, 12 Mar 2026",
+  "sources": [
+   "https://www.irishexaminer.com/news/munster/arid-41759420.html",
+   "https://www.echolive.ie/corknews/arid-41759537.html",
+   "https://crawfordartgallery.ie/?p=1024"
+  ],
+  "reason": "Restated to what the opened pages state; no red flags; Funding facts and not-confirmed lines kept."
+ },
+ {
+  "id": "cue-art-foundation-new-york",
+  "section": "Funding",
+  "problems": [
+   "unsupported: 'Evercore gives programmatic support' (the page credits programmatic support to the Warhol Foundation and lists Evercore among funders)",
+   "vague: 'financial-services firms'"
+  ],
+  "before": "Evercore, Inc. gives programmatic support ... two financial-services firms hosting prizes",
+  "after": "Evercore, Inc. is listed among CUE's funders on the Evercore Artist Award page, with the Arison Arts Foundation and ING Group ... two companies (Aon, Evercore) hosting prizes",
+  "sources": [
+   "https://cueartfoundation.org/wendi-men-evercore-artist-award",
+   "https://projects.propublica.org/nonprofits/organizations/542064462",
+   "https://grantedai.com/org/cue-art-foundation-542064462"
+  ],
+  "reason": "ProPublica figures, Granted AI grants, Brooklyn Rail profile, Aon and Rubin posts, W.A.G.E. statement and visitor information checked and match. No red flags."
+ },
+ {
+  "id": "dar-jacir-for-art-and-research",
+  "section": "Funding / Website",
+  "problems": [
+   "unsupported: direct quotation from Emily Jacir (Art Asia Pacific page paraphrases, quotation not on the page)",
+   "unsupported: 'Donors and Partners page names no donors' (page could not be opened)",
+   "unsupported: archive 'family documents' cited to Wikipedia (not on that page)",
+   "founder statement beyond Wikipedia (founded by Emily Jacir; Annemarie and Yusuf Nasri listed as co-founders)"
+  ],
+  "before": "Emily Jacir wrote the project was undertaken \"without the financial backing or input of any international organization or government\"; its Donors and Partners page names no donors",
+  "after": "Art Asia Pacific reported that Emily Jacir described the project as community-based and artist-run, with no international funding or oversight (25 May 2017); the Donors and Partners page could not be opened",
+  "sources": [
+   "https://artasiapacific.com/news/emily-jacir-launches-crowdfunding-campaign-for-new-art-center-in-bethlehem",
+   "https://en.wikipedia.org/wiki/Dar_Yusuf_Nasri_Jacir_for_Art_and_Research",
+   "https://www.darjacir.com"
+  ],
+  "reason": "Funders confirmed on their pages: Qattan Foundation (Sida), US$255,691, 10 March 2018; AFAC three projects (2018, 2021, 2026), no amounts; British Council Cultural Protection Fund with DCMS, £99,855, start March 2024; Open Society per The Art Newspaper, 19 May 2021, no amount or year. The 2021 raid stays under Wider context."
+ },
+ {
+  "id": "de-pont",
+  "section": "Funding",
+  "problems": [
+   "wrong outlet and speaker: January 2024 quote is from Omroep Tilburg, director Martijn van Nieuwenhuyzen (not Omroep Brabant, unnamed director)"
+  ],
+  "before": "The museum director told Omroep Brabant in January 2024",
+  "after": "Director Martijn van Nieuwenhuyzen told Omroep Tilburg on 23 January 2024; Omroep Brabant 13 September 2017",
+  "sources": [
+   "https://www.omroeptilburg.nl/regio/tilburg/tilburgse-musea-halen-bezoekersrecords-maar-financieel-gaat-het-minder-goed/",
+   "https://www.omroepbrabant.nl/nieuws/233255/Sky-Mirror-mooi-cadeau-voor-25e-verjaardag-van-Museum-De-Pont",
+   "https://www.depont.nl/over-het-museum"
+  ],
+  "reason": "Other facts (biography, AGAM, 1988 foundation, financially independent, opening hours, wings, directors, Omroep Brabant 22 February 2019 success-story line) match their pages. No red flags."
+ },
+ {
+  "id": "dr-bhau-daji-lad-mumbai-city-museum",
+  "section": "Funding",
+  "problems": [
+   "repair cost stated without per-source attribution and date",
+   "unsupported: Outlook amounts 'describe the early 2000s restoration' (page says corpus 'recently created'; year not stated)"
+  ],
+  "before": "Rs 2.8 crore according to Knocksense and Rs 3 crore according to ETV Bharat quoting the Municipal Commissioner; Outlook ... describes the early 2000s restoration",
+  "after": "Knocksense (9 January 2025) gives Rs 2.8 crore; ETV Bharat (9 January 2025) quotes Municipal Commissioner Bhushan Gagrani saying Rs 3 crore; the Wikipedia page opened gives no cost; Outlook amounts: year of events not stated",
+  "sources": [
+   "https://www.knocksense.com/mumbai/mumbais-oldest-168-yo-dr-bhau-daji-lad-museum-reopens-today-with-a-28-crore-facelift/",
+   "https://etvbharat.com/en/!state/170-year-old-dr-bhau-daji-lad-museum-gets-new-look-reopens-after-4-years-enn25010902135",
+   "https://en.wikipedia.org/wiki/Bhau_Daji_Lad_Museum"
+  ],
+  "reason": "Both figures stated and attributed; the Wikipedia page gives no repair cost, contrary to the brief. Reopening date differs between sources (8 vs 9 January 2025)."
+ },
+ {
+  "id": "dr-bhau-daji-lad-mumbai-city-museum",
+  "section": "Criticism in art media",
+  "problems": [
+   "unsupported: FPJ 'does not name a source' (it quotes BJP's Manoj Kotak)",
+   "press dates missing"
+  ],
+  "before": "Unverified: ... from the Free Press Journal, which does not name a source for the claim.",
+  "after": "Unverified: the Corporation had long wanted to unseat Mehta ... from the Free Press Journal, which also quotes BJP's Manoj Kotak saying it had not been decided to remove her. Dated 31 May 2019.",
+  "sources": [
+   "https://www.freepressjournal.in/mumbai/separate-panel-for-lad-museum-soon",
+   "https://www.outlookindia.com/society/passage-to-bombay-news-236538",
+   "https://scroll.in/article/720585/scroll_in"
+  ],
+  "reason": "Restated from the opened pages. Scroll piece (Girish Shahane, 15 April 2015) matches."
+ },
+ {
+  "id": "e-werk-luckenwalde-luckenwalde",
+  "section": "Funding",
+  "problems": [
+   "credit to wrong outlet: '100% of profit' stated by Reiseland Brandenburg, not e-flux",
+   "author missing on Art Newspaper 2019 item"
+  ],
+  "before": "says it invests 100% of its profit ... (e-flux; Reiseland Brandenburg)",
+  "after": "... (Reiseland Brandenburg); e-flux says the Kunststrom supplier part-finances the art programme; start-up funding credited to José da Silva, The Art Newspaper, 22 August 2019",
+  "sources": [
+   "https://www.reiseland-brandenburg.de/poi/flaeming/museen/e-werk-luckenwalde/",
+   "https://www.e-flux.com/announcements/6787787/asad-razaelectricity",
+   "https://www.theartnewspaper.com/news/danger-high-voltage-german-arts-centre-in-disused-power-station-sparks-back-to-life-with-green-power"
+  ],
+  "reason": "Funders, UBS wording (partnered in 2022, no sponsor label, no amount), press dates and authors checked against their pages. No red flags."
+ },
+ {
+  "id": "dr-bhau-daji-lad-mumbai-city-museum",
+  "section": "Criticism in art media",
+  "problems": [
+   "unsupported: 'agreement of more than a decade earlier'"
+  ],
+  "before": "revoke the agreement of more than a decade earlier that created the trust",
+  "after": "revoke a trust agreement that guided the museum's development",
+  "sources": [
+   "https://scroll.in/article/720585/scroll_in"
+  ],
+  "reason": "The Scroll piece (Girish Shahane, 15 April 2015) names the agreement but gives no age for it."
+ }
+]

@@ -1,0 +1,352 @@
+[
+ {
+  "id": "yerba-buena-center-for-the-arts-san-francisco",
+  "section": "RED FLAGS: boycott and protest",
+  "problems": [
+   "no dates for most events",
+   "who acted not stated beyond 'eight artists'",
+   "unsupported: 'Hyperallergic named the Hewlett Foundation and the Koret Foundation as the funders targeted'",
+   "misquote: 'antisemitic' (KQED prints 'anti-Semitic'; quoted words were a fragment)",
+   "Ronen hearing undated"
+  ],
+  "before": "Eight artists ... altered their own works on 15 February 2024 ... Their demands included an end to censorship ... Hyperallergic named the Hewlett Foundation and the Koret Foundation as the funders targeted. On 21 February 2024 the centre rejected the demands as discrimination ... Interim CEO ... resigned on 3 March 2024, citing 'the vitriolic and antisemitic backlash directed at me personally' (KQED). Supervisor Hillary Ronen called a special hearing ...",
+  "after": "15 February 2024: eight artists altered their own works at the 'Love Letter to SOMA' event; Jewish Voice for Peace Bay Area and two other groups dropped flyers (Hyperallergic, 16 Feb 2024). Demands: end 'censorship of artists', a ceasefire, 'remove all Zionist board members and funders'; Hyperallergic reports the organizers citing the Hewlett and Koret Foundations. 21 February: statement 'We will not agree to demands that insist YBCA discriminate on the basis of religion, ethnic background, or national origin.' 26 February: eight artists and 15 employees published open letters; artists called a boycott until leadership met them (KQED). Resignation letter dated 3 March 2024 cited 'The vitriolic and anti-Semitic backlash directed at me personally' (KQED, 7 March). 5 March 2024: Ronen called the actions censorship at a Board of Supervisors meeting and called for a special hearing (KQED). December 2023 background.",
+  "sources": [
+   "https://hyperallergic.com/872425/artists-deface-their-work-protesting-san-francisco-yerba-buena-center-for-the-arts-silence-on-gaza/",
+   "https://www.kqed.org/arts/13953032/ybca-pro-palestinian-artist-protest-censorship-allegations-boycott",
+   "https://giving.kqed.org/arts/13953653/ybca-ceo-resigns-after-pro-palestinian-protest-and-boycott"
+  ],
+  "reason": "Hyperallergic names the two foundations in the sentence on the demand; it does not say who was 'targeted' beyond that, so the wording now reports the organizers citing them. Dates, actors and the exact YBCA statement (ybca.org, 21 Feb 2024) added from opened pages; Ronen's remarks were on 5 March per KQED."
+ },
+ {
+  "id": "yerba-buena-center-for-the-arts-san-francisco",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "press items without dates or content detail",
+   "Variable West advocacy label incomplete",
+   "Variable West claim about funders stated without label",
+   "unsupported: 'Names the Hewlett and Koret Foundations without specifying the funding ties'"
+  ],
+  "before": "3. Variable West: Ella Ray ... (2024) - Argues the centre censored artists ... calls on it to cut ties with 'Zionist' donors. - Names the Hewlett and Koret Foundations without specifying the funding ties. Variable West states it 'unequivocally supports' the artists, so this is an advocacy position.",
+  "after": "Dated items (16 Feb, 8 Mar, 10 Mar 2024). Variable West: argues the centre censored artists and put the eight artists' work in storage; 'Unverified: Variable West says the centre has \"financial and social connections to individuals and organizations funding said genocide\", \"namely\" the Hewlett and Koret Foundations; it gives no figures. Variable West states it \"unequivocally supports\" the artists: an advocacy position.' Hyperallergic 2 now carries the board's 21 Feb 'unreasonable' and Morris's boycott statement.",
+  "sources": [
+   "https://variablewest.com/2024/03/10/editors-note-ybcas-censorship-of-artists-for-palestinian-liberation/",
+   "https://hyperallergic.com/yerba-buena-center-for-the-arts-ceo-resigns-over-pro-palestine-action",
+   "https://hyperallergic.com/872425/artists-deface-their-work-protesting-san-francisco-yerba-buena-center-for-the-arts-silence-on-gaza/"
+  ],
+  "reason": "Variable West's funder claim is the author's characterisation and is now labelled Unverified with the outlet's stance."
+ },
+ {
+  "id": "yerba-buena-center-for-the-arts-san-francisco",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Granted AI 'largest recurring funder' (page does not say so)",
+   "claim taken from a search result, not a page read"
+  ],
+  "before": "lists 17 foundation funders including Hewlett (the largest recurring funder) ... (YBCA 100 page; the Andrew W. Mellon Foundation, William and Flora Hewlett Foundation and San Francisco Arts Commission were named in a search result of the same sentence).",
+  "after": "lists 17 foundation funders including Hewlett, Koret, Mellon and Doris Duke, plus 2025 federal awards from IMLS and the NEA ... (YBCA 100 page, which also names further foundations, the San Francisco Arts Commission and YBCA Members).",
+  "sources": [
+   "https://grantedai.com/org/yerba-buena-center-for-the-arts-943042571",
+   "https://ybca.org/?p=1588"
+  ],
+  "reason": "Granted AI lists Hewlett with the most grant entries but never calls it the largest; Mellon's $500K in 2021 is the single largest grant. The funder line on ybca.org was read directly."
+ },
+ {
+  "id": "yerba-buena-center-for-the-arts-san-francisco",
+  "section": "WORD COUNT",
+  "problems": [
+   "over 800 words (810 before; 790 after the added dates and quotes)"
+  ],
+  "before": "810 words",
+  "after": "790 words",
+  "sources": [
+   "https://ybca.org/about/"
+  ],
+  "reason": "Trimmed Overview, Funding and Bottom line; FUNDING, BOTTOM LINE and SOURCES kept."
+ },
+ {
+  "id": "yuz-museum-shanghai",
+  "section": "RED FLAGS: Qatar Museums",
+  "problems": [
+   "role of Qatar Museums needs the page's wording",
+   "unsupported source: 'Wikipedia' for the 1,500-works figure (Wikipedia Yuz page gives no size)"
+  ],
+  "before": "Red flags: partnership with Qatar Museums (Gulf state body) / Qatar Museums ... is a partner ... (press release) / holds roughly 1,500 works (Wikipedia, ArtReview)",
+  "after": "Red flags: Qatar Museums, a Gulf state body, organised an exhibition at Yuz and is a programme partner ... No page opened shows Qatar Museums funding Yuz or the foundation. / holds about 1,500 works (ArtReview)",
+  "sources": [
+   "http://www.theartnewspaper.com/news/behind-the-scenes-of-yuz-museum-s-landmark-partnership-with-lacma-and-qatar",
+   "https://qm.org.qa/en/press/press-releases/qatar-museums-in-collaboration-with-yuz-museum-/",
+   "https://artlyst.com/?p=159145"
+  ],
+  "reason": "The Art Newspaper (Lisa Movius, 4 Dec 2019): 'Qatar Museums' involvement will focus on exhibitions and not extend to the foundation.' The flag stays because the Qatar Museums release (5 Nov 2023) says it organised 'Watering the Desert' at Yuz, 8 Nov 2023 to 3 Mar 2024, which is Qatar Museums running a programme at Yuz. No page shows Qatar Museums money. The poultry fortune (PT Sierad Produce) is not flagged; the report does not flag it."
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "section": "RED FLAGS: boycott and protest",
+  "problems": [
+   "no dates for the 600-signature call",
+   "who acted not stated (BDZ described only as a group)",
+   "'In May 2021 BDZ's call was signed by' dated wrongly (article date is 18 May; count is as of publication)",
+   "July action undated"
+  ],
+  "before": "- In May 2021 BDZ's call was signed by more than 600 artists and organisations; the collection's spokesperson said it is not a political organisation and called the petition misinformed (Hyperallergic). - In July 2021, 25 artists and cultural workers sent letters ... withdrawing ('deauthoring') their past work (Hyperallergic).",
+  "after": "BDZ, an anonymous group of artists and activists founded in 2014 ... 18 May 2021: Hyperallergic reported BDZ's call had more than 600 signatories ... The collection's spokesperson called the petition 'misinformed and upsetting'. 26 July 2021: 25 artists and cultural workers sent signed letters to the Art Trust and Zabludowicz Art Projects withdrawing their work (Hyperallergic).",
+  "sources": [
+   "https://hyperallergic.com/646541/artists-boycott-the-zabludowicz-art-trust-over-israel-ties/",
+   "https://hyperallergic.com/665123/citing-pro-israel-ties-artists-disaffiliate-from-zabludowicz-collection/",
+   "https://www.timeout.com/london/news/camden-arts-projects-london-has-a-brand-new-free-art-gallery-051425"
+  ],
+  "reason": "Hyperallergic (Valentina Di Liscia) dated 18 May and 26 July 2021. Time Out (14 May 2025) is the source for the collection's statement that the 2023 closure was unrelated to the boycott or the war in Gaza."
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "section": "RED FLAGS: arms and defence",
+  "problems": [
+   "claim stronger than the pages: 'arms and defence business in the family money'",
+   "no statement of what is current",
+   "BICOM line stated as fact though it is a 2013 University of Bath finding"
+  ],
+  "before": "Red flags: arms and defence business in the family money - Poju Zabludowicz chairs and is CEO of the Tamares Group, which holds a stake in Knafaim ... - BICOM ... was financed through the fortune of his father, an Israeli arms dealer (Hyperallergic, July 2021).",
+  "after": "Red flags: arms and defence links in the family business - Hyperallergic (2021) states that Poju Zabludowicz is CEO of Tamares Group, which holds a stake in Knafaim ... No page opened gives the stake's size or shows it after 2021. - Hyperallergic (May 2021): his father Shlomo founded Soltam Systems; Wikipedia says Shlomo built the family business around Soltam; Hyperallergic (July 2021) cites a 2013 University of Bath report that BICOM was financed by his father's fortune. - No page opened shows arms money paying for the Art Trust or the collection.",
+  "sources": [
+   "https://hyperallergic.com/646541/artists-boycott-the-zabludowicz-art-trust-over-israel-ties/",
+   "https://hyperallergic.com/665123/citing-pro-israel-ties-artists-disaffiliate-from-zabludowicz-collection/",
+   "https://en.wikipedia.org/wiki/Zabludowicz_Collection"
+  ],
+  "reason": "The pages show a reported Tamares stake in Knafaim (2021) and the father's Soltam business; none shows that arms money is the source of the collection's funding, so the report now says exactly that. The heading stays because Hyperallergic reports a current (2021) holding."
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong title and author format for The White Pube item",
+   "partisan label placed but argument misdescribed ('artwashes money from ... political donations'; 'targets young, precarious artists' unsupported)",
+   "names list missing Shlomo"
+  ],
+  "before": "3. The White Pube: \"ZM\", \"BDZ\" (2021) - Argues the collection 'artwashes' money from Soltam ... Argues it targets young, precarious artists ... Names Poju, Anita and Tiffany Zabludowicz and director Elizabeth Neilson.",
+  "after": "3. The White Pube: signed \"ZM\", \"Boycott Zabludowicz\" (20 June 2021) - Argues the collection is an 'artwashing' front for money from arms dealing and West Bank property; this is the essay's own claim. - Names Poju, Anita, Shlomo and Tiffany Zabludowicz and director Elizabeth Neilson. An openly partisan essay.",
+  "sources": [
+   "https://thewhitepube.co.uk/art-thoughts/bdz/",
+   "https://thewhitepube.co.uk/texts/2021/bdz/"
+  ],
+  "reason": "The page is titled 'Boycott Zabludowicz' and signed ZM; the page does not name its author in full, so no name was added."
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "section": "WORD COUNT",
+  "problems": [
+   "over 800 words after added dates"
+  ],
+  "before": "782 words before edits, 990 mid-edit",
+  "after": "793 words",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Zabludowicz_Collection"
+  ],
+  "reason": "Trimmed Overview, Funding and Bottom line."
+ },
+ {
+  "id": "zachęta-national-gallery-of-art-warsaw",
+  "section": "RED FLAGS: ORLEN",
+  "problems": [
+   "start year and amount not stated plainly"
+  ],
+  "before": "- ORLEN is the gallery's current patron, per both the gallery and ORLEN.",
+  "after": "- ORLEN is named as the gallery's patron on the gallery's partners page and on ORLEN's own page (checked 24 October 2026). Neither page gives a start year or an amount, so how long it has paid and how much are not known.",
+  "sources": [
+   "https://zacheta.art.pl/en/partnerzy",
+   "https://www.orlen.pl/en/about-the-company/our-support/sponsorship/sponsorship-of-culture-and-science/zacheta--national-gallery-of-art",
+   "https://en.wikipedia.org/wiki/Orlen"
+  ],
+  "reason": "Both pages opened; neither gives a date or amount. The partners page says many partners 'have been with us for over ten years' without naming ORLEN."
+ },
+ {
+  "id": "zachęta-national-gallery-of-art-warsaw",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "no actor or date stated for the dismissal",
+   "'protests from ten artists ... said their works were used without consent' overstated (ten accused copyright infringement; consent point is Sasnal and Tarasewicz per Gazeta Wyborcza)",
+   "'jury Janowski led' not in article (his commission)",
+   "'some jury members' vague (three named)",
+   "opening date inconsistent in the article"
+  ],
+  "before": "Reports that Hanna Wróblewska ... handed Janowski his dismissal letter ... drew protests from ten artists, including Wilhelm Sasnal and Leon Tarasewicz, who said their works were used without consent ... a jury Janowski led chose Ignacy Czwartos ...",
+  "after": "Reports that on 22 December 2023 Hanna Wróblewska, a former Zachęta director and now head of the ministry's national institutions department, delivered Janowski his dismissal letter; he did not sign it. The ministry's communiqué gave these reasons ... Ten artists ... accused him of copyright infringement; per Gazeta Wyborcza, works by Sasnal and Tarasewicz were shown without consent. The piece gives the opening as November 2023 and, in a caption, 16 October 2023. Janowski's commission chose Ignacy Czwartos; three jury members distanced themselves.",
+  "sources": [
+   "https://oko.press/zacheta-dyrektor-odwolany-janusz-janowski"
+  ],
+  "reason": "OKO.press (Roman Pawłowski-Felberg, 22 December 2023) read in full. The Wróblewska remark on the missing 2022 report is from her TOK FM interview as reported by OKO.press."
+ },
+ {
+  "id": "zachęta-national-gallery-of-art-warsaw",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "implied cause: dismissal 'after ten artists protested' (article gives ministry's stated reasons)",
+   "verdict phrase 'political swings in its leadership' unsupported"
+  ],
+  "before": "...political swings in its leadership: the director was dismissed in December 2023, after ten artists protested one of his exhibitions.",
+  "after": "...the fossil-fuel patron with no published start year or amount, and the director's dismissal by the ministry on 22 December 2023.",
+  "sources": [
+   "https://oko.press/zacheta-dyrektor-odwolany-janusz-janowski"
+  ],
+  "reason": "The article does not link the protest to the dismissal. Report also trimmed from 843 to 789 words."
+ },
+ {
+  "id": "zkm-center-for-art-and-media-karlsruhe",
+  "section": "FUNDING / RED FLAGS",
+  "problems": [
+   "EnBW label: partners page says 'Partner', not 'Main Partner'",
+   "'main sponsor' came from the joint release (Hauptsponsor)",
+   "'hosted a satellite show in spring 2022' not stated by the release date",
+   "hedged phrasing 'intends to end coal'",
+   "'half owned by the state' imprecise"
+  ],
+  "before": "EnBW Energie Baden-Württemberg: listed on the ZKM partners page as \"Partner\". ... says EnBW has been the ZKM's main sponsor ... - EnBW's coal plants include ... in March 2023 EnBW announced it intends to end coal use by 2028 (Wikipedia). - The sponsorship is current: EnBW hosted a ZKM satellite show in spring 2022 ...",
+  "after": "listed on the ZKM partners page as \"Partner\" (the page does not use \"Main Partner\"). The joint release of 28 March 2022 calls EnBW the ZKM's \"Hauptsponsor\" for over 15 years ... - Wikipedia's EnBW page lists coal plants at Altbach, Heilbronn and Walheim, a biofuel and coal plant at Stuttgart-Münster, the Rheinhafen steam power station (\"coal and gas turbine plant\") and a gas plant at Stuttgart-Gaisburg. In March 2023 EnBW announced a plan to end coal use by 2028 ... - The sponsorship is current: the partners page, checked 24 October 2026, lists EnBW ...",
+  "sources": [
+   "https://zkm.de/en/partners",
+   "https://en.wikipedia.org/wiki/EnBW",
+   "https://www.enbw.com/presse/zkm-ausstellungssatellit-biomedien.html"
+  ],
+  "reason": "The red flag stays because the opened Wikipedia page documents coal and gas generation, EnBW being a current partner. The 46.75% state-owned stake is stated as such in the Bottom line. E.ON Foundation is listed as a project funder only and is not flagged."
+ },
+ {
+  "id": "zotov-centre-for-constructivism-moscow",
+  "section": "RED FLAGS: Sanctions",
+  "problems": [
+   "listing dates attributed only to Wikipedia",
+   "'new US and UK sanctions on 24 February 2022' vague, no listing page",
+   "SWIFT removal attributed to Wikipedia, which does not name the authority",
+   "unsupported: 'VTB describes the centre as its cultural project'"
+  ],
+  "before": "- Sanctions on VTB: US sectoral sanctions from 29 July 2014; EU from 31 July 2014; UK from 1 August 2014; new US and UK sanctions on 24 February 2022; removal from SWIFT in March 2022 (Wikipedia).",
+  "after": "- US: on 24 February 2022 OFAC imposed full blocking sanctions on VTB under Executive Order 14024 (Treasury press release, 24 February 2022); a Treasury release of 15 December 2022 says its property is blocked. - UK: a full asset freeze on VTB was announced on 24 February 2022 (K&L Gates, 25 February 2022). - EU: Regulation (EU) 2022/345, published 2 March 2022, put VTB among seven banks under the SWIFT ban, in force from 12 March 2022 (DLA Piper).",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jy0608",
+   "https://www.klgates.com/thought-leadership/UK-Imposes-Further-Sanctions-in-Response-to-Russias-invasion-of-Ukraine-2-25-2022",
+   "https://www.dlapiper.com/en/insights/publications/global-sanctions-alert/2022/explaining-swift-and-recent-actions"
+  ],
+  "reason": "US listing page and date confirmed from the Treasury release (jy0608; the 15 Dec 2022 release jy1163 gives only 'February 2022'). The UK freeze is from a law-firm alert, not the gov.uk notice (the gov.uk page tried returned 404), and the EU measure is the SWIFT ban, not an asset freeze: both stated as such. The four sources are added to SOURCES. Also cut: VTB 'describes the centre as its cultural project', which the partners page does not say."
+ },
+ {
+  "id": "zotov-centre-for-constructivism-moscow",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'burnish owners' images and raise property values' (article wording differs)",
+   "quoted words 'somewhat exaggerating' are not the page's",
+   "Novaya Gazeta: 'true constructivist works few' overstated",
+   "press items undated"
+  ],
+  "before": "- Calls the press release's claim ... \"somewhat exaggerating\", since constructivism has been studied for decades. / - Finds the show more educational than artistic and the true constructivist works few.",
+  "after": "- Describes the press release's claim ... as somewhat exaggerated, since other Moscow centres have long studied the movement. / - Notes the show is educational and that constructivist works have a significant but not central place among ancient, Soviet and contemporary pieces.",
+  "sources": [
+   "https://artfocusnow.com/news/moscow-constructivist-landmark-turns-into-a-new-arts-institution/",
+   "https://artfocusnow.com/discoveries/the-rise-and-fall-of-moscows-private-museums-a-study-in-oligarchic-museology",
+   "https://novayagazeta.ru/articles/2025/02/04/russkoe-neveroiatnoe-i-likho"
+  ],
+  "reason": "Dates added: Mak 7 November 2022, Bavilsky 4 January 2023. Novaya Gazeta has no publication date on the page; the year comes from the address. Hedge 'may be the last such project' is now a direct quote. Trimmed to 799 words."
+ },
+ {
+  "id": "32-east-ugandan-arts-trust-kampala",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "press items not labelled as general remarks",
+   "dates missing",
+   "Rolling Stone item implied a target"
+  ],
+  "before": "Overall: ... two pieces discuss, in general terms, the risks of foreign money ... / - Argues that artists' funding 'almost always comes with stipulations ...' / - Criticises no named funder ...",
+  "after": "Overall: ... two pieces make general remarks on the risks of foreign money and Western ideas ... and name no funder. / - General remarks, not aimed at one funder ... / - A general remark, not about the trust's funders; names no funder ... Dates: 9 May 2025 and 3 December 2013.",
+  "sources": [
+   "https://rollingstoneafrica.com/culture/art-features/32-is-a-sanctuary-for-visual-arts-in-uganda/",
+   "https://www.theskinny.co.uk/travel/features/32-east-art-of-africa"
+  ],
+  "reason": "Both pieces opened; neither names a funder. Rolling Stone Africa mentions Arts Collaboratory and the Prince Claus Fund only as networks."
+ },
+ {
+  "id": "32-east-ugandan-arts-trust-kampala",
+  "section": "FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'KLA ART ... launched 2012'",
+   "unsupported: 'delivered in two phases'",
+   "Arts Collaboratory 'run and funded by Hivos and DOEN' (Wikipedia says 'a program promoted by Hivos and DOEN Foundation')",
+   "'cited elsewhere as core funders' refers to an internal source"
+  ],
+  "before": "the KLA ART festival (five editions, launched 2012) / delivered in two phases / Arts Collaboratory is run and funded by Hivos and the DOEN Foundation / ... DOEN, the Segal Family Foundation and the Open Society Foundations, cited elsewhere as core funders, could not be confirmed ...",
+  "after": "the KLA ART festival (five editions) / The trust's June 2024 news page says phase one is delivered / Arts Collaboratory is \"a program promoted by Hivos and DOEN Foundation\" / ... no page read confirms DOEN, the Segal Family Foundation or the Open Society Foundations as funders ...",
+  "sources": [
+   "https://32east.org/about",
+   "https://32east.org/2024/06",
+   "https://en.wikipedia.org/wiki/Arts_Collaboratory"
+  ],
+  "reason": "Sigrid Rausing Trust amounts (since 2019, £500,000 in earlier grants, £80,000 from May 2026) confirmed on the Trust's page. DOEN, Segal and Open Society appear on none of the pages opened (32east.org, Myriad USA, Rolling Stone Africa, Skinny)."
+ },
+ {
+  "id": "4a-centre-for-contemporary-asian-art-sydney",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'about 90 Friends'",
+   "'unnamed trusts and foundations' stated more than the page says"
+  ],
+  "before": "about 90 Friends. 4A also thanks unnamed trusts and foundations.",
+  "after": "82 Friends listed, one anonymous. The page says 4A \"is supported by a number of trusts and foundations\" and names none.",
+  "sources": [
+   "https://4a.com.au/donate",
+   "https://meetings.cityofsydney.nsw.gov.au/ieDecisionDetails.aspx?AIId=17852",
+   "https://www.nsw.gov.au/grants-and-funding/clubgrants-category-3-fund/clubgrants-infrastructure-arts/recipients"
+  ],
+  "reason": "No red flags; Funding facts (NSW ClubGRANTS $200,000 Nov 2021 and $167,650 Mar 2025, City of Sydney 19 Aug 2024 subsidy 97% to 100%, rents) and the not-confirmed lines were confirmed and kept."
+ },
+ {
+  "id": "acca",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "'in-kind partners' category not on the page",
+   "'Victorian Department of Education' expands the printed 'DET'",
+   "'houses' Chunky Move and Malthouse overstated"
+  ],
+  "before": "Corporate and in-kind partners listed ... / the Victorian Department of Education ... / it also houses the Chunky Move dance company and Malthouse Theatre.",
+  "after": "Corporate partners listed ... / DET (as printed on the page) ... / the complex also includes facilities for the Chunky Move dance company and Malthouse Theatre.",
+  "sources": [
+   "https://acca.melbourne/support/current-partners/",
+   "https://acca.melbourne/about/people/",
+   "https://en.wikipedia.org/wiki/Australian_Centre_for_Contemporary_Art"
+  ],
+  "reason": "No red flags. Board names and roles confirmed; funding facts kept."
+ },
+ {
+  "id": "albertina",
+  "section": "OVERVIEW",
+  "problems": [
+   "date: 'April 1919' is German Wikipedia only (English says early 1919)",
+   "'in 2015 its director called for a time limit' not in the pages opened (English Wikipedia says moratorium)",
+   "1776 founding attributed to the museum"
+  ],
+  "before": "passed into state ownership in April 1919 ... renamed ... 1921 (Wikipedia). / and in 2015 its director called for a time limit on claims (Wikipedia). / The collection was founded in 1776 ... (stated by the museum).",
+  "after": "April 1919 (German Wikipedia; English Wikipedia says early 1919) ... / and its director called for a moratorium on claims (English Wikipedia). / The museum says the collection was founded in 1776 by Duke Albert of Saxony-Teschen and Archduchess Marie Christine.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Albertina",
+   "https://de.wikipedia.org/wiki/Albertina_(Wien)",
+   "https://www.albertina.at/en/organization/profile/"
+  ],
+  "reason": "No red flags; Funding facts (four named partners, 'at least three years', limit of three companies) and Verbund details (51% state, Mellach) confirmed and kept."
+ },
+ {
+  "id": "amon-carter-museum",
+  "section": "FUNDING / CRITICISM IN ART MEDIA",
+  "problems": [
+   "incomplete corporate list: support page names 18 organisations incl. Eagle Energy Systems, LTD",
+   "'short list' of corporate supporters",
+   "unsupported: '$341,235 program service revenue'",
+   "press items undated",
+   "Southwest Contemporary summary misstated the review's argument",
+   "Vanderpool's title not given"
+  ],
+  "before": "Corporate supporters listed on the support page: BNSF Railway, CBRE, Fidelity Investments, Frost and Kelly Hart & Hallman LLP. / ... a short list of corporate supporters / Reviews \"Cowboy\" ... says the museum's response ... shows why such exhibitions are needed ... / The museum's development director, Cliff Vanderpool ...",
+  "after": "\"Current Corporate Leaders\" on the support page include BNSF Railway, CBRE, Eagle Energy Systems, Fidelity Investments, Frost, Kelly Hart & Hallman, Lone Oak Trust Company, Luther King Capital Management and USI Insurance Services, with media outlets and local organisations. The page does not say what Eagle Energy Systems does. / a list of corporate supporters / Calls the \"mature content\" sign \"the museum's remedy to visitor pushback\" and says the reaction shows \"why we need more exhibitions like Cowboy in cowboy country\". / Cliff Vanderpool, the museum's director of development and communications ... Dates 7 March 2025 and 14 February 2025.",
+  "sources": [
+   "https://www.cartermuseum.org/support",
+   "https://southwestcontemporary.com/cowboy-amon-carter/",
+   "https://dallasvoice.com/cowboy-exhibit-amon-carter-lgbtq-censorship-debate/"
+  ],
+  "reason": "No red flags found; the LinkedIn source is not in the report. ProPublica figures for the museum (EIN 75-1077979) and the Carter Foundation (EIN 75-6000331, $553,053,361 in 2024) confirmed. Trimmed to 796 words."
+ }
+]
