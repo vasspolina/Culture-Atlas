@@ -757,8 +757,18 @@ return maplibregl$1;
             
             <!-- Input Area (Uncontained Flat Editorial) -->
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
+              <!-- The submission form of the note screen (shown only while a note is written) -->
+              <div id="noteFormFields">
+                <label for="noteInstitution">Institution</label>
+                <input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space">
+                <datalist id="noteInstitutionList"></datalist>
+                <fieldset><legend>Rating, optional</legend><div class="review-stars-input"><label class="review-star"><input type="radio" name="note-rating" value="1"><span aria-hidden="true">★</span><span class="sr-only">1 star</span></label><label class="review-star"><input type="radio" name="note-rating" value="2"><span aria-hidden="true">★</span><span class="sr-only">2 stars</span></label><label class="review-star"><input type="radio" name="note-rating" value="3"><span aria-hidden="true">★</span><span class="sr-only">3 stars</span></label><label class="review-star"><input type="radio" name="note-rating" value="4"><span aria-hidden="true">★</span><span class="sr-only">4 stars</span></label><label class="review-star"><input type="radio" name="note-rating" value="5"><span aria-hidden="true">★</span><span class="sr-only">5 stars</span></label></div> <button type="button" id="noteClearRating" class="review-clear" hidden>Clear rating</button></fieldset>
+                <label for="noteAuthor">Name shown, optional</label>
+                <input id="noteAuthor" type="text" maxlength="40" autocomplete="off" placeholder="Whistleblower">
+                <label for="workInput">Your note</label>
+              </div>
               <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
-              <p id="noteTargetLine" class="meta hidden" role="status" aria-live="polite"></p>
+              <p id="noteFormStatus" role="status" aria-live="polite"></p>
               
               <!-- Bottom Toolbar -->
               <div class="flex items-center justify-between pt-2">
@@ -994,13 +1004,6 @@ return maplibregl$1;
     </div>
   </div>
 
-
-  <!-- ========================================================= -->
-  <!--  CONFIDENTIAL FIELD INTELLIGENCE & WHISTLEBLOWER INTAKE CHAT MODAL -->
-  <!-- ========================================================= -->
-
-  <!-- Research & Feedback Modal (Community Verification Pipeline) -->
-  <div id="researchFeedbackModal" class="hidden"></div><div id="closeFeedbackModalBtn" class="hidden"></div><div id="researchFeedbackForm" class="hidden"></div><div id="rfCategory" class="hidden"></div><div id="rfSpaceName" class="hidden"></div><div id="rfCity" class="hidden"></div><div id="rfDetails" class="hidden"></div><div id="rfSourceUrl" class="hidden"></div><div id="rfContributor" class="hidden"></div><div id="cancelFeedbackBtn" class="hidden"></div><div id="submitFeedbackBtn" class="hidden"></div>
 
   <!--  INSTITUTIONAL FINANCE & FISCAL OPERATING ANALYTICS HUD MODAL -->
   <div id="fiscalAnalyticsModal" class="hidden"></div><div id="faCohortScopeBadge" class="hidden"></div><div id="closeFiscalModalBtn" class="hidden"></div><div id="faTotalBudgetStat" class="hidden"></div><div id="faAvgProgramStat" class="hidden"></div><div id="faAvgSubsidiesStat" class="hidden"></div><div id="faAvgAdminStat" class="hidden"></div><div id="faLeanPctStat" class="hidden"></div><div id="faRevMixPublicBar" class="hidden"></div><div id="faRevMixEarnedBar" class="hidden"></div><div id="faRevMixPhilBar" class="hidden"></div><div id="faRevMixPublicPct" class="hidden"></div><div id="faRevMixEarnedPct" class="hidden"></div><div id="faRevMixPhilPct" class="hidden"></div><div id="faTypologyGrid" class="hidden"></div><div id="faTopPerformersTable" class="hidden"></div><div id="faFilterCivicBtn" class="hidden"></div><div id="faFilterHighProgBtn" class="hidden"></div><div id="closeFiscalModalFooterBtn" class="hidden"></div>
@@ -11590,72 +11593,94 @@ return maplibregl$1;
     function critiqueQuoteLine(q) {
       return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
     }
-    // Notes readers sent with Share information that the editor approved, fetched once from the submissions Worker.
-    let APPROVED_READER_NOTES = [];
-    let APPROVED_WHISTLEBLOWER_REPORTS = [];
+    // Whistleblower reviews, set out like the reviews on a Google Maps place and shown under the record they are about.
+    // They come from the report API (server/), one request per place, approved reviews only, and are written only with
+    // the form on the note screen (Share information). Nothing is kept in this browser. A review may carry stars, but a rating is never required.
     let dossierInst = null;
-    if (window.ATLAS_SUBMIT_URL) {
-      fetch(window.ATLAS_SUBMIT_URL.replace(/\/+$/, '') + '/approved')
-        .then(r => r.ok ? r.json() : { notes: [] })
-        .then(d => {
-          APPROVED_READER_NOTES = (Array.isArray(d.notes) ? d.notes : []).concat(APPROVED_WHISTLEBLOWER_REPORTS);
-          // A record opened before the notes arrived is drawn again with them.
-          if (dossierInst && readerNotesFor(dossierInst).length) openDossier(dossierInst, false);
-        })
-        .catch(() => {});
-    }
     const ATLAS_REPORT_API_URL = (window.ATLAS_REPORT_API_URL || '').replace(/\/+$/, '');
-    if (ATLAS_REPORT_API_URL) {
-      fetch(ATLAS_REPORT_API_URL + '/api/map/approved-reports')
-        .then(r => {
-          if (!r.ok) throw new Error(`Report API returned ${r.status}.`);
-          return r.json();
-        })
-        .then(reports => {
-          const approvedReports = Array.isArray(reports) ? reports.map(report => ({
-            id: report.id,
-            kind: 'whistleblower',
-            text: report.content,
-            spaceName: report.institution || '',
-            city: report.city,
-            approvedAt: report.createdAt,
-            _reportApi: true
-          })) : [];
-          APPROVED_WHISTLEBLOWER_REPORTS = approvedReports;
-          APPROVED_READER_NOTES = APPROVED_READER_NOTES.filter(n => n._reportApi !== true)
-            .concat(APPROVED_WHISTLEBLOWER_REPORTS);
-          if (dossierInst && readerNotesFor(dossierInst).length) openDossier(dossierInst, false);
-        })
-        .catch(err => console.error('Could not load approved whistleblower reports:', err));
-    }
-    // Approved whistleblower notes, set out like the customer reviews on Google Maps: a count, then one entry per note with an
-    // anonymous reviewer line, the date and the text, newest first. No stars: a note is not a rating.
-    function whistleblowerReviewsHtml(notes) {
-      if (!notes.length) return '';
-      const when = (iso) => {
-        const d = new Date(iso);
-        return Number.isNaN(d.getTime()) ? null : { iso: d.toISOString().slice(0, 10), text: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) };
-      };
-      const rows = notes.slice().sort((a, b) => String(b.approvedAt || '').localeCompare(String(a.approvedAt || '')));
-      return `<section class="review-list" aria-label="Whistleblower notes">
-        <h3 class="kicker review-count">${rows.length} whistleblower ${rows.length === 1 ? 'note' : 'notes'}</h3>
-        <p class="meta no-indent">Submitted without a name and approved by the editor. Not checked against a source.</p>
-        ${rows.map(n => { const d = when(n.approvedAt); return `<article class="review">
+    const PLACE_REVIEWS = new Map();   // place id -> an array of reviews, or 'loading', or 'failed'
+    const REVIEW_LIMITS = { min: 10, max: 2000, name: 40 };
+    const reviewStars = (n) => `<span class="review-stars" role="img" aria-label="${n} out of 5 stars">${'★'.repeat(n)}${'☆'.repeat(5 - n)}</span>`;
+    const reviewDate = (iso) => {
+      const d = new Date(iso);
+      return Number.isNaN(d.getTime()) ? null : { iso: d.toISOString().slice(0, 10), text: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) };
+    };
+    function placeReviewListHtml(placeId) {
+      const state = PLACE_REVIEWS.get(placeId);
+      if (state === 'failed') return '<p class="meta no-indent">The reviews could not be loaded.</p>';
+      if (!Array.isArray(state)) return '<p class="meta no-indent">Loading reviews…</p>';
+      if (!state.length) return '<p class="meta no-indent">No reviews yet.</p>';
+      const rated = state.filter(r => Number.isInteger(r.rating));
+      const average = rated.length ? rated.reduce((sum, r) => sum + r.rating, 0) / rated.length : 0;
+      const summary = rated.length
+        ? `<div class="review-summary"><span class="review-average">${average.toFixed(1)}</span>${reviewStars(Math.round(average))}<span class="meta">${rated.length} ${rated.length === 1 ? 'rating' : 'ratings'}</span></div>`
+        : '';
+      return `${summary}<h4 class="kicker review-count">${state.length} ${state.length === 1 ? 'review' : 'reviews'}</h4>${state.map(r => {
+        const label = (r.authorLabel || '').trim() || 'Whistleblower';
+        const d = reviewDate(r.createdAt);
+        return `<article class="review">
           <div class="review-head">
-            <span class="review-avatar" aria-hidden="true">W</span>
-            <div><span class="review-name">Whistleblower</span>${d ? `<time class="review-date" datetime="${d.iso}">${d.text}</time>` : ''}</div>
+            <span class="review-avatar" aria-hidden="true">${escapeHtml(label.charAt(0).toUpperCase())}</span>
+            <div><span class="review-name">${escapeHtml(label)}</span>${d ? `<time class="review-date" datetime="${d.iso}">${d.text}</time>` : ''}</div>
           </div>
-          <p class="t-lead no-indent review-text">${escapeHtml(n.text)}</p>
-        </article>`; }).join('')}
+          ${Number.isInteger(r.rating) ? `<div class="review-rating">${reviewStars(r.rating)}</div>` : ''}
+          <p class="t-lead no-indent review-text">${escapeHtml(r.content)}</p>
+        </article>`;
+      }).join('')}`;
+    }
+    // Only the list is drawn again when the reviews arrive, so a review being written is never lost.
+    function refreshPlaceReviewLists(placeId) {
+      document.querySelectorAll('.place-reviews').forEach(box => {
+        if (box.dataset.place !== placeId) return;
+        const list = box.querySelector('.review-list');
+        if (list) list.innerHTML = placeReviewListHtml(placeId);
+      });
+    }
+    function loadPlaceReviews(placeId) {
+      if (!ATLAS_REPORT_API_URL || (PLACE_REVIEWS.has(placeId) && PLACE_REVIEWS.get(placeId) !== 'failed')) return;
+      PLACE_REVIEWS.set(placeId, 'loading');
+      fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(placeId)}/reviews`)
+        .then(r => { if (!r.ok) throw new Error(`Report API returned ${r.status}.`); return r.json(); })
+        .then(rows => { PLACE_REVIEWS.set(placeId, Array.isArray(rows) ? rows : []); })
+        .catch(() => { PLACE_REVIEWS.set(placeId, 'failed'); })
+        .then(() => refreshPlaceReviewLists(placeId));
+    }
+    // The reviews of a place, under its record. They are only listed here; a review is written on the note screen (Share information).
+    function placeReviewsHtml(inst) {
+      if (!inst || !inst.id) return '';
+      if (!ATLAS_REPORT_API_URL) {
+        return `<section class="place-reviews py-3 rule-b" aria-label="Whistleblower reviews"><h3 class="kicker">Whistleblower reviews</h3><p class="meta no-indent">Reviews are not available right now.</p></section>`;
+      }
+      loadPlaceReviews(inst.id);
+      return `<section class="place-reviews py-3 rule-b" data-place="${escapeHtml(inst.id)}" aria-label="Whistleblower reviews">
+        <h3 class="kicker">Whistleblower reviews</h3>
+        <p class="meta no-indent">Written by people who say they know this place from inside. The editor reads every review before it appears. None is checked against a source.</p>
+        <div class="review-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div>
       </section>`;
     }
-    function readerNotesFor(inst) {
-      const name = String(inst.name || '').toLowerCase();
-      const city = String(inst.city || '').toLowerCase();
-      return APPROVED_READER_NOTES.filter(n =>
-        (name && String(n.spaceName || '').toLowerCase() === name) ||
-        (!n.spaceName && city && String(n.city || '').toLowerCase() === city)
-      );
+    // The stars of the note screen's form: the picked star and the ones before it are filled.
+    function syncNoteStars() {
+      const box = document.getElementById('noteFormFields');
+      if (!box) return;
+      const picked = box.querySelector('input[type=radio]:checked');
+      const value = picked ? Number(picked.value) : 0;
+      box.querySelectorAll('.review-star').forEach((label, i) => label.classList.toggle('is-on', i < value));
+      document.getElementById('noteClearRating').hidden = !value;
+    }
+    document.addEventListener('change', (e) => {
+      if (e.target.matches && e.target.matches('#noteFormFields input[type=radio]')) syncNoteStars();
+    });
+    document.addEventListener('click', (e) => {
+      if (e.target.closest && e.target.closest('#noteClearRating')) {
+        document.querySelectorAll('#noteFormFields input[type=radio]').forEach(r => { r.checked = false; });
+        syncNoteStars();
+      }
+    });
+    // Fills the institution list of the note form once, from the atlas records.
+    function fillNoteInstitutions() {
+      const list = document.getElementById('noteInstitutionList');
+      if (!list || list.childElementCount) return;
+      list.innerHTML = ALL_INSTITUTIONS.filter(i => i.id && i.name).map(i => `<option value="${escapeHtml(i.name)}"></option>`).join('');
     }
     // Dates as people read them (25 Sept 2025), not as the research table stores them. A year or year-month stays as given.
     function humanDate(d) {
@@ -11803,18 +11828,12 @@ return maplibregl$1;
           ${urls.length ? `<div class="account-source-links">${urls.map(u => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(host(u))}${externalIcon}</a>`).join('')}</div>` : ''}
         </div>`;
       });
-      const kindLabel = { information: 'Information', gossip: 'Gossip, unverified', whistleblower: 'Whistleblower note' };
-      const noted = readerNotesFor(inst);
-      const readers = noted.filter(n => n.kind !== 'whistleblower').map(n => item(kindLabel[n.kind] || 'Note', (n.approvedAt || '').slice(0, 10), p('', n.text), n.sourceUrl ? [n.sourceUrl] : []));
-      const reviews = whistleblowerReviewsHtml(noted.filter(n => n.kind === 'whistleblower'));
-      if (!blocks.length && !relatedReports.length && !accounts.length && !readers.length && !reviews) return '';
+      if (!blocks.length && !relatedReports.length && !accounts.length) return '';
       // data-gossip marks the one block of a reply that is gossip: assets/bubbles.js draws a comic balloon only around a turn that holds it.
       return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
         ${blocks.length ? `<h3 class="kicker">Reported, not independently verified</h3>${blocks.join('')}` : ''}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
         ${accounts.length ? `<h3 class="kicker">Personal accounts (${accounts.length})</h3><p class="no-indent account-note">Posts by staff and visitors on review sites and Reddit. One person's experience each, not verified findings about the institution.</p>${accounts.join('')}` : ''}
-        ${readers.length ? `<h3 class="kicker">Shared by readers and approved by the editor. Not checked against a source.</h3>${readers.join('')}` : ''}
-        ${reviews}
       </div>`;
     }
 
@@ -11914,7 +11933,7 @@ return maplibregl$1;
       if (srcBox) srcBox.innerHTML = sourcesHtml(inst, true) + (isGossipModeActive ? '' : researchContextHtml(inst));
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        record.innerHTML = reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '');
+        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
         record.classList.toggle('hidden', !record.innerHTML);
       }
       const webLink = document.getElementById('dossier-sheet-link-web');
@@ -12638,6 +12657,7 @@ return maplibregl$1;
 
           ${proseVoicesHtml(inst)}
           ${sourcesHtml(inst, true)}
+          ${isCommunity ? '' : placeReviewsHtml(inst)}
 
 
           ${isClean && inst.highlight ? `<section class="facts" role="region" aria-label="Highlight"><h3 class="facts-title">Highlight</h3><p class="facts-text">${escapeHtml(inst.highlight)}</p></section>` : ''}
@@ -12661,7 +12681,8 @@ return maplibregl$1;
     function openDossier(inst, shouldShowDrawer = true) {
       if (!inst) return;
       dossierInst = inst;
-      if (isChatInputMode) syncNoteTarget(false);
+      // On the note screen, opening another record makes it the institution of the note.
+      if (isChatInputMode) { const noteInstitution = document.getElementById('noteInstitution'); if (noteInstitution) noteInstitution.value = inst.name || ''; }
       const html = recordHtml(inst);
       const phoneBody = document.getElementById('detailBody');
       if (phoneBody) phoneBody.innerHTML = html;
@@ -13050,33 +13071,11 @@ return maplibregl$1;
     // Hosted AI proxy (Cloudflare Worker keeps the API key server-side). Empty = disabled.
     const ATLAS_AI_PROXY_URL = window.ATLAS_AI_PROXY_URL || "";   // set in assets/config.js: the chat Worker's address
 
-    // Reader notes are never kept in this browser: a whistleblower note goes to the report API and waits for the editor.
-    // Reader notes are not places, so they are never put on the map.
+    // Reviews are not places, so nothing the community writes is ever put on the map.
     function getCommunityAsInstitutions() {
       return [];
     }
     window.getCommunityAsInstitutions = getCommunityAsInstitutions;
-
-
-    function openResearchFeedbackModal(spaceName = '', city = '') {
-      const modal = document.getElementById('researchFeedbackModal');
-      if (!modal) return;
-      modal.classList.remove('hidden');
-      const nameInput = document.getElementById('rfSpaceName');
-      const cityInput = document.getElementById('rfCity');
-      const detailsInput = document.getElementById('rfDetails');
-      if (nameInput && spaceName) nameInput.value = spaceName;
-      if (cityInput && city) cityInput.value = city;
-      if (detailsInput) setTimeout(() => detailsInput.focus(), 60);
-    }
-    window.openResearchFeedbackModal = openResearchFeedbackModal;
-
-    function closeResearchFeedbackModal() {
-      const modal = document.getElementById('researchFeedbackModal');
-      if (modal) modal.classList.add('hidden');
-    }
-    window.closeResearchFeedbackModal = closeResearchFeedbackModal;
-
 
 
     // =========================================================================
@@ -16194,45 +16193,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const chatInputKind = 'whistleblower';
     const INPUT_KIND_TEXT = {};
     INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
-        banner: 'Whistleblower: open the record of the institution, or name it in your note. The note is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
+        banner: 'Whistleblower: choose the institution and write your note. It is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
         placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
       } : {
         banner: 'Whistleblower reports cannot be sent because the report service is not configured. This is not a secure channel, so leave out your name and anything that identifies you.',
         placeholder: 'The report service is not configured. Your report will not be saved.'
       };
-
-    // A note is kept only when it belongs to an institution on the atlas: the record that is open, or one named in the note.
-    const NOTE_NEEDS_INSTITUTION = 'Open the record of the institution this note is about, or name the institution in the note';
-    function noteTargetFor(text) {
-      const lower = (text || '').toLowerCase();
-      const named = ALL_INSTITUTIONS.find(i => i.name && i.name.length > 3 && lower.includes(i.name.toLowerCase()));
-      return dossierInst || named || null;
-    }
-    // The line under the box says which record the note will go to, or what is missing. Send stays dimmed until a record is found.
-    function syncNoteTarget(flash) {
-      const line = document.getElementById('noteTargetLine');
-      const sendBtn = document.getElementById('workSendBtn');
-      if (!line) return;
-      if (!isChatInputMode || !ATLAS_REPORT_API_URL) {
-        line.classList.add('hidden');
-        line.textContent = '';
-        if (sendBtn) sendBtn.removeAttribute('aria-disabled');
-        return;
-      }
-      const target = noteTargetFor(document.getElementById('workInput')?.value);
-      line.classList.remove('hidden');
-      line.textContent = target ? `Goes to the record of ${target.name}.` : `${NOTE_NEEDS_INSTITUTION}, then send it.`;
-      if (sendBtn) {
-        if (target) sendBtn.removeAttribute('aria-disabled'); else sendBtn.setAttribute('aria-disabled', 'true');
-      }
-      if (flash && !target) { line.classList.remove('is-flashed'); void line.offsetWidth; line.classList.add('is-flashed'); }
-    }
-    let noteTargetTimer = 0;
-    document.getElementById('workInput')?.addEventListener('input', () => {
-      if (!isChatInputMode) return;
-      clearTimeout(noteTargetTimer);
-      noteTargetTimer = setTimeout(() => syncNoteTarget(false), 120);
-    });
 
     // Share information is a switch like Dark, Gossip mode, Voice and Rotate: the label stays, the button is highlighted while the note is open, and pressing it again returns to the chat.
     function setChatShareOn(on) {
@@ -16311,9 +16277,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           workInput.value = defaultTopic;
         }
         if (window.atlasSyncInert) window.atlasSyncInert();
-        workInput.focus();
+        // The form: the institution is the open record's, or chosen from the atlas's list.
+        fillNoteInstitutions();
+        const noteInstitution = document.getElementById('noteInstitution');
+        if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || '';
+        const noteStatus = document.getElementById('noteFormStatus');
+        if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not configured. A note cannot be sent.';
+        (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus();
       }
-      syncNoteTarget(false);
 
       // 5. Hide redundant full-width input mode button if present
       const fwBtn = document.getElementById('fullWidthInputModeBtn');
@@ -16361,7 +16332,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     function exitChatInputMode() {
       isChatInputMode = false;
-      syncNoteTarget(false);
       setChatShareOn(false);
       document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
 
@@ -16486,44 +16456,52 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.exitChatInputMode = exitChatInputMode;
     window.toggleChatShare = toggleChatShare;
 
-    async function processInChatWhistleblowerSubmission(text) {
-      const q = (text || '').trim();
-      if (!q) return;
-      const target = noteTargetFor(q);
-      // Nothing is kept in this browser. If the note is not sent, it goes back into the box so it is not lost.
-      const keepTyped = () => { const input = document.getElementById('workInput'); if (input) input.value = q; };
-      let said;
-      if (!ATLAS_REPORT_API_URL) {
-        keepTyped();
-        said = 'The report service is not configured. The note was not sent.';
-      } else if (!target) {
-        // The report service takes a note only when it names an institution on the atlas.
-        keepTyped();
-        said = `${NOTE_NEEDS_INSTITUTION}, then send it again. The note was not sent.`;
-      } else {
-        try {
-          const res = await fetch(ATLAS_REPORT_API_URL + '/api/reports', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content: q, institution: target.name })
-          });
-          const out = await res.json().catch(() => ({}));
-          if (!res.ok) throw new Error(out.error || 'The server did not take it.');
-          said = `Sent to the editor for review. It appears on the record of ${escapeHtml(target.name)}, as a review, only once it is approved.`;
-        } catch (err) {
-          keepTyped();
-          said = `It could not be sent (${escapeHtml(err.message || 'no connection')}). The note was not sent.`;
-        }
+    // Sends the note screen's form to the report API. Nothing is kept in this browser: a note that is not sent stays in the form.
+    async function submitNoteForm() {
+      const status = document.getElementById('noteFormStatus');
+      const input = document.getElementById('workInput');
+      const institutionBox = document.getElementById('noteInstitution');
+      const fail = (message, focusEl) => { status.textContent = message; if (focusEl) focusEl.focus(); };
+      if (!ATLAS_REPORT_API_URL) return fail('The report service is not configured. The note was not sent.');
+      const wanted = (institutionBox.value || '').trim().toLowerCase();
+      const place = wanted && ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === wanted);
+      if (!place) return fail('Choose the institution from the list. It must be a space on the atlas.', institutionBox);
+      const content = (input.value || '').trim();
+      if (content.length < REVIEW_LIMITS.min) return fail(`Write at least ${REVIEW_LIMITS.min} characters.`, input);
+      const body = { content };
+      const picked = document.querySelector('#noteFormFields input[type=radio]:checked');
+      if (picked) body.rating = Number(picked.value);
+      const label = (document.getElementById('noteAuthor').value || '').trim();
+      if (label) body.authorLabel = label;
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) sendBtn.disabled = true;
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || 'The server did not take it.');
+        input.value = '';
+        document.getElementById('noteAuthor').value = '';
+        document.querySelectorAll('#noteFormFields input[type=radio]').forEach(r => { r.checked = false; });
+        syncNoteStars();
+        status.textContent = '';
+        appendCuratorMessage(`
+          <div class="space-y-1">
+            <p class="no-indent">Sent to the editor for review. It appears on the record of ${escapeHtml(place.name)}, as a review, only once it is approved.</p>
+            <p class="no-indent"><a href="#" onclick="event.preventDefault();window.enterChatInputMode('whistleblower')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
+          </div>
+        `, [], null, null, false);
+        scrollChatToBottom(true);
+      } catch (err) {
+        status.textContent = `Not sent: ${err.message || 'no connection'}. Your note is still in the box.`;
+      } finally {
+        if (sendBtn) sendBtn.disabled = false;
       }
-      appendCuratorMessage(`
-        <div class="space-y-1">
-          <p class="no-indent">${said}</p>
-          <p class="no-indent"><a href="#" onclick="event.preventDefault();window.enterChatInputMode('whistleblower')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
-        </div>
-      `, [], null, null, false);
-      scrollChatToBottom(true);
     }
-    window.processInChatWhistleblowerSubmission = processInChatWhistleblowerSubmission;
 
     document.addEventListener('click', (e) => {
       const quickPill = e.target.closest('.contribute-quick-pill');
@@ -16537,14 +16515,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           scrollChatToBottom(true);
         }
       }
-    });
-
-    // Research & Feedback Modal Handlers
-    const researchModal = document.getElementById('researchFeedbackModal');
-    document.getElementById('closeFeedbackModalBtn')?.addEventListener('click', closeResearchFeedbackModal);
-    document.getElementById('cancelFeedbackBtn')?.addEventListener('click', closeResearchFeedbackModal);
-    researchModal?.addEventListener('click', (e) => {
-      if (e.target === researchModal) closeResearchFeedbackModal();
     });
 
     //  Institutional Finance & Fiscal Operating Analytics Modal Handlers
@@ -16592,30 +16562,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const workSendBtn = document.getElementById('workSendBtn');
 
     async function handleWorkSend() {
+      if (isChatInputMode) { await submitNoteForm(); return; }
       const text = (workInput?.value || '').trim();
       if (!text) return;
-      // A note with no institution is not sent: it stays in the box and the line under it says what to do.
-      if (isChatInputMode && ATLAS_REPORT_API_URL && !noteTargetFor(text)) {
-        syncNoteTarget(true);
-        workInput.focus();
-        return;
-      }
       workInput.value = '';
       if (window.innerWidth < 768 && currentMobileMode === 'map') {
         setMobileViewMode('split');
       }
       appendUserMessage(text);
 
-      if (isChatInputMode) {
-        await processInChatWhistleblowerSubmission(text);
-      } else {
-        handleCuratorQuery(text);
-      }
+      handleCuratorQuery(text);
     }
 
     workSendBtn?.addEventListener('click', handleWorkSend);
     workInput?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
+      // On the note screen Enter starts a new line; only the Send for review button sends.
+      if (e.key === 'Enter' && !e.shiftKey && !isChatInputMode) {
         e.preventDefault();
         handleWorkSend();
       }
@@ -18904,10 +18866,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       } else if (e.key === 'Escape') {
         const drawer = document.getElementById('detailDrawer');
         const auditModal = document.getElementById('momaAuditModal');
-        const rfModal = document.getElementById('researchFeedbackModal');
-        if (rfModal && !rfModal.classList.contains('hidden')) {
-          rfModal.classList.add('hidden');
-        } else if (drawer && !drawer.classList.contains('hidden')) {
+        if (drawer && !drawer.classList.contains('hidden')) {
           drawer.classList.add('hidden');
         } else if (auditModal && !auditModal.classList.contains('hidden')) {
           auditModal.classList.add('hidden');

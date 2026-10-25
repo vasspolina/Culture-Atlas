@@ -13,11 +13,16 @@ enum ReportStatus {
   REJECTED
 }
 
+// One whistleblower review of one place. `institution` is the place's name as the atlas gives it; `placeId` is its id.
+// latitude and longitude are never written; they stay only so an existing database needs no destructive change.
 model WhistleblowerReport {
   id          String       @id @default(cuid())
+  placeId     String?
   city        String
   institution String?
   content     String
+  rating      Int?
+  authorLabel String?
   latitude    Float?
   longitude   Float?
   status      ReportStatus @default(PENDING)
@@ -26,4 +31,5 @@ model WhistleblowerReport {
 
   @@index([status])
   @@index([city])
+  @@index([placeId, status])
 }

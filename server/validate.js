@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 
-export const LIMITS = { content: 2000, minContent: 10, name: 200 };
+export const LIMITS = { content: 2000, minContent: 10, label: 40, placeId: 120 };
 
 // Plain text only. Tags (and what a script or style tag holds), control characters and stray angle brackets are
 // removed, runs of spaces collapse, and no more than one blank line survives. The page escapes the text again.
@@ -20,47 +20,50 @@ export function cleanText(value) {
     .trim();
 }
 
-const fold = value => cleanText(value).toLowerCase().replace(/\s+/g, ' ');
-
-// The institutions and cities a note may be about, read from the atlas data so a note always names a real record.
+// The places a review may be about, read from the atlas data so a review always names a real record.
 export function loadInstitutions(file) {
   const rows = JSON.parse(readFileSync(file, 'utf8'));
   if (!Array.isArray(rows) || !rows.length) throw new Error(`No institutions found in ${file}.`);
-  const byName = new Map();
-  const cities = new Map();
+  const byId = new Map();
   for (const row of rows) {
-    if (!row || typeof row.name !== 'string') continue;
-    const entry = { name: row.name, city: row.city || '' };
-    byName.set(fold(row.name), entry);
-    if (row.city) cities.set(fold(row.city), row.city);
+    if (!row || typeof row.id !== 'string' || typeof row.name !== 'string') continue;
+    byId.set(row.id, { id: row.id, name: row.name, city: row.city || '' });
   }
-  return { byName, cities };
+  if (!byId.size) throw new Error(`No institutions with an id found in ${file}.`);
+  return { byId };
 }
 
-// Returns { error } or { data } ready for the database. Nothing from the sender but the text and the place.
-export function validateReport(body, institutions) {
+export function findPlace(placeId, institutions) {
+  if (typeof placeId !== 'string' || !placeId || placeId.length > LIMITS.placeId) return null;
+  return institutions.byId.get(placeId) || null;
+}
+
+// Returns { error } or { data } ready for the database. Nothing from the sender but the text, an optional star
+// rating, an optional display label and the place the review is filed under.
+export function validateReview(body, place) {
   const source = body && typeof body === 'object' ? body : {};
   const content = cleanText(source.content);
-  if (!content) return { error: 'Write the note first.' };
-  if (content.length < LIMITS.minContent) return { error: `The note must be at least ${LIMITS.minContent} characters.` };
-  if (content.length > LIMITS.content) return { error: `The note cannot be longer than ${LIMITS.content} characters.` };
+  if (!content) return { error: 'Write the review first.' };
+  if (content.length < LIMITS.minContent) return { error: `The review must be at least ${LIMITS.minContent} characters.` };
+  if (content.length > LIMITS.content) return { error: `The review cannot be longer than ${LIMITS.content} characters.` };
 
-  for (const field of ['institution', 'city']) {
-    const value = source[field];
-    if (value != null && value !== '' && (typeof value !== 'string' || value.length > LIMITS.name * 2)) {
-      return { error: `${field === 'city' ? 'City' : 'Institution'} must be text no longer than ${LIMITS.name} characters.` };
+  let rating = null;
+  if (source.rating != null && source.rating !== '') {
+    if (!Number.isInteger(source.rating) || source.rating < 1 || source.rating > 5) {
+      return { error: 'The rating must be a whole number from 1 to 5, or left out.' };
     }
+    rating = source.rating;
   }
-  const institutionName = cleanText(source.institution);
-  const cityName = cleanText(source.city);
-  if (!institutionName && !cityName) return { error: 'Name the institution this note is about.' };
 
-  if (institutionName) {
-    const match = institutions.byName.get(fold(institutionName));
-    if (!match) return { error: 'That institution is not on the atlas. Use the name as the record gives it.' };
-    return { data: { content, institution: match.name, city: match.city || 'Unspecified' } };
+  let authorLabel = null;
+  if (source.authorLabel != null && source.authorLabel !== '') {
+    if (typeof source.authorLabel !== 'string' || source.authorLabel.length > LIMITS.label * 4) {
+      return { error: `The name must be text no longer than ${LIMITS.label} characters.` };
+    }
+    authorLabel = cleanText(source.authorLabel).replace(/\s+/g, ' ');
+    if (authorLabel.length > LIMITS.label) return { error: `The name must be text no longer than ${LIMITS.label} characters.` };
+    authorLabel = authorLabel || null;
   }
-  const city = institutions.cities.get(fold(cityName));
-  if (!city) return { error: 'That city is not on the atlas.' };
-  return { data: { content, institution: null, city } };
+
+  return { data: { content, rating, authorLabel, placeId: place.id, institution: place.name, city: place.city || 'Unspecified' } };
 }
