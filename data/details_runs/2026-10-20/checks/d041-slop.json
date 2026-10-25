@@ -1,0 +1,321 @@
+[
+ {
+  "id": "ocat-shenzhen-shenzhen",
+  "section": "Red flags: State censorship or punishment",
+  "problems": [
+   "overstatement: 'ordered the museum closed'",
+   "unsupported: 'closed for months'"
+  ],
+  "before": "The local Cultural Bureau ordered the museum closed and the work permanently removed ... OCAT Shanghai was closed for months.",
+  "after": "The Art Newspaper says the local Cultural Bureau instructed the museum to remove the work permanently and met nearby art spaces; the closure was announced by OCAT Shanghai (\"for a period of time\"), and a sign said \"closed temporarily\" from 18 June. The article does not name OCT Group; OCT is a state-owned sponsor of OCAT (TrueArt, OCAT notice).",
+  "sources": [
+   "https://www.theartnewspaper.com/2021/06/21/ocat-shanghai-closes-after-public-outcry-over-uglier-and-uglier-video-that-ranks-womens-attractiveness",
+   "https://www.trueart.com/news/369177.html",
+   "https://www.sohu.com/a/765103410_428907"
+  ],
+  "reason": "The article attributes only the removal instruction and the warning to the Bureau, not the closure, and gives no duration. Flag kept because the owner-sponsor is state-owned; date 21 June 2021 and the Bureau confirmed."
+ },
+ {
+  "id": "ocat-shenzhen-shenzhen",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: funding-cut claim stated as fact",
+   "first-person 'would not load for me'"
+  ],
+  "before": "Southern Metropolis Daily ... reported that OCT Group had funded OCAT for 18 years; ... funding would be cut sharply ... The page would not load for me; this is from a search extract.",
+  "after": "Unverified: a Southern Metropolis Daily article (oeeee.com, dated 21 March 2023 by its URL), seen only as a search extract in translation, reports the cut. The page returned HTTP 493 when opened. Verdict line no longer says income 'it must now earn itself'; bottom line labels it unconfirmed.",
+  "sources": [
+   "https://m.mp.oeeee.com/a/BAAFRD000020230321774681.html"
+  ],
+  "reason": "Page could not be opened, so the claim is labelled rather than cut, as the brief allowed."
+ },
+ {
+  "id": "ocat-shenzhen-shenzhen",
+  "section": "CRITICISM IN ART MEDIA 2",
+  "problems": [
+   "conflict with later notices not stated precisely"
+  ],
+  "before": "The Shenzhen venue was still open in 2024 and 2025 (Sohu), so this statement does not match those notices.",
+  "after": "States The Art Newspaper's 2022 closure claim and OCAT's own 18 March 2024 notice (two-day renovation closure, 19 to 20 March) and the 3 April 2025 Sohu notice side by side as conflicting.",
+  "sources": [
+   "https://www.theartnewspaper.com/2023/09/27/whats-behind-chinas-spate-of-museum-closures-and-downsizings",
+   "https://www.sohu.com/a/765103410_428907",
+   "https://m.sohu.com/a/879417877_121956424/?pvid=000115_3w_a"
+  ],
+  "reason": "All three pages opened. The Art Newspaper does not mention OCT Group."
+ },
+ {
+  "id": "ocat-shenzhen-shenzhen",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported detail",
+   "wrong attribution"
+  ],
+  "before": "Name ... after OCT (Overseas Chinese Town); newer B10 hall opened in 2022 (search extract); registered 2012 (TrueArt, Artforum China); B10 'during a holiday'; 'nearby kindergarten'",
+  "after": "Cut the Overseas Chinese Town gloss and the B10 2022 search-extract claim; registration (April 2012) credited to OCAT's own 2024 notice; kindergarten and holiday wording removed; 'our fetch' wording removed from the Website line.",
+  "sources": [
+   "https://www.sohu.com/a/765103410_428907",
+   "https://www.trueart.com/news/369177.html",
+   "https://www.e-flux.com/directory/7924/ocat-shenzhen"
+  ],
+  "reason": "TrueArt does not state the 2012 registration; the Sohu notice does. The 3 April 2025 post names a B10 exhibition and a different kindergarten, with no 'nearby' or 'holiday' wording. Report trimmed from 932 to 786 words."
+ },
+ {
+  "id": "project-arts-centre-dublin",
+  "section": "Red flags: State censorship or punishment, 2018 mural order",
+  "problems": [
+   "flag not met: regulator is not the funder"
+  ],
+  "before": "Red flags: State censorship or punishment, 2018 mural order (Charities Regulator told Project the mural was political activity)",
+  "after": "Section moved to WIDER CONTEXT. States that the Charities Regulator is a state body not named as a funder in any source opened; Project's 2022 annual report names the Arts Council and Dublin City Council; the order is not counted as state censorship by a funder.",
+  "sources": [
+   "https://www.irishtimes.com/news/social-affairs/project-arts-centre-told-to-remove-repeal-the-8th-mural-from-wall-1.3468694",
+   "https://gcn.ie/maser-mural-project-arts-centre-charities-regulator/",
+   "https://projectartscentre.ie/wp-content/uploads/2023/12/Project-Arts-Centre-Annual-Report-2022_.pdf"
+  ],
+  "reason": "The atlas flags a state action only when the funding body or the institution censors. Dates verified: 12 April letter, 20 April report, 23 April 2018 paint-over, about 200 protesters."
+ },
+ {
+  "id": "project-arts-centre-dublin",
+  "section": "WIDER CONTEXT / CRITICISM",
+  "problems": [
+   "overstatement: regulator 'told' and 'warned'",
+   "misquote"
+  ],
+  "before": "the Charities Regulator told Project ... and warned it could lose charitable status; Horan said the regulator 'found a rule'",
+  "after": "Irish Times relays the Project's account: the Project said the Regulator considered the mural political activity and that it risked losing charitable status; GCN does not quote the regulator. Horan: if you look hard enough for a rule you will find one (paraphrase, no longer in quotation marks).",
+  "sources": [
+   "https://www.irishtimes.com/news/social-affairs/project-arts-centre-told-to-remove-repeal-the-8th-mural-from-wall-1.3468694",
+   "https://gcn.ie/maser-mural-project-arts-centre-charities-regulator/"
+  ],
+  "reason": "Neither article quotes the regulator directly."
+ },
+ {
+  "id": "project-arts-centre-dublin",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported / unread source",
+   "first-person"
+  ],
+  "before": "No reporting found of a Dublin City Council grant figure ... a search extract of Project's 2022 annual report ... could not be read as text.",
+  "after": "The 2022 annual report was read: Project is \"largely funded through a grant from The Arts Council,\" supplemented by grants from Dublin City Council, fundraising and ticket income. Arts Council EUR 979,600 (9 January 2025, Dublin People) verified. Accessibility and ticket price wording tidied; support page confirms no company or foundation is named.",
+  "sources": [
+   "https://dublinpeople.com/news/arts-culture/articles/2025/01/09/arts-council-25-funding/",
+   "https://projectartscentre.ie/wp-content/uploads/2023/12/Project-Arts-Centre-Annual-Report-2022_.pdf",
+   "https://projectartscentre.ie/support-us/"
+  ],
+  "reason": "Dublin People lists 'Project Arts Centre (€979,600)' under Arts Centre Funding, first round of 2025 decisions."
+ },
+ {
+  "id": "palais-de-lomé-lomé",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong figure",
+   "unsupported date",
+   "unsupported descriptor"
+  ],
+  "before": "botanical park of about 10 to 11 hectares; briefly held the prime minister's office in 1991; abandoned after the 1990 to 1991 unrest; restored by the Lyon firm Segond-Guyon; ten Togolese companies",
+  "after": "11 hectares (The Art Newspaper) or ten hectares (French Wikipedia); prime minister's residence in September 1991, left abandoned after an army attack in December 1991 (French Wikipedia); 'Lyon' cut; opening-shows line cut for length.",
+  "sources": [
+   "https://www.theartnewspaper.com/news/togo-opens-arts-centre-in-former-colonial-palace",
+   "https://fr.wikipedia.org/wiki/Palais_de_Lomé"
+  ],
+  "reason": "The Art Newspaper gives 11 hectares, French Wikipedia ten; neither says 'Lyon'. Report trimmed from 822 to 794 words."
+ },
+ {
+  "id": "palais-de-lomé-lomé",
+  "section": "FUNDING",
+  "problems": [
+   "promotional source not labelled",
+   "quote"
+  ],
+  "before": "In June 2026 the centre hosted the first exhibition of the Toyota Tsusho CFAO African Art Award (AllAfrica, 11 June 2026).",
+  "after": "The exhibition opened 11 June 2026; the source is a press release carried as Premium Partner content from 35Nord and gives no payment to the centre. Afrik.com's phrase quoted in French with translation; Art Newspaper 'fully financed by the state' now quoted.",
+  "sources": [
+   "https://fr.allafrica.com/stories/202606110672.html",
+   "https://www.afrik.com/togo-le-premier-centre-d-art-du-pays-est-installe-au-palais-de-lome"
+  ],
+  "reason": "State money alone is not a flag; no red flag added. 2025 protests remain Wider context."
+ },
+ {
+  "id": "palais-de-lomé-lomé",
+  "section": "CRITICISM / WIDER CONTEXT",
+  "problems": [
+   "misreading of source",
+   "hedging 'may seem'"
+  ],
+  "before": "describes it as a 'gesture of goodwill' from the president; Amnesty described the arrests of dozens on 5 and 6 June 2025",
+  "after": "True Africa: 'gesture of goodwill' toward Togolese artists and writers who went into exile; Bilbao effect, with the author conceding critics could find it contrived. TimesLIVE: authorities arrested dozens on 5 and 6 June, which Amnesty called a crackdown on dissent; government attributed bodies from a lagoon and lake to drowning.",
+  "sources": [
+   "https://trueafrica.co/article/why-this-new-museum-is-putting-togo-on-the-map/",
+   "https://www.timeslive.co.za/news/africa/2025-07-01-watch-seven-killed-during-togo-protests-say-civil-society-groups/",
+   "https://ghanaiantimes.com.gh/togo-protests-against-faure-gnassingbe-leave-seven-dead"
+  ],
+  "reason": "Seven-killed figure is the civil society groups' count, not an official tally."
+ },
+ {
+  "id": "ntt-intercommunication-center-icc-tokyo",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "press items not labelled as reposts/mailing-list posts",
+   "misquote",
+   "unsupported detail"
+  ],
+  "before": "1. ART iT / REALTOKYO (reposted to nettime) ... 3. nettime: Geert Lovink interview ... 'internal critique' ... called its continued existence important",
+  "after": "Overall line now says items 1 and 3 are nettime mailing-list posts (item 1 forwarded by Andreas Broeckmann, 20 August 2005; item 3 posted by Lovink, 16 September 2000) and item 2 is Telepolis (15 August 2001). Item 1 insider closure claims labelled Unverified. Shigata is a Canon ArtLab curator; her words are \"provided a kind of critic to ICC from inside\"; 'continued existence important' cut.",
+  "sources": [
+   "https://nettime.org/Lists-Archives/nettime-l-0508/msg00021.html",
+   "https://nettime.org/Lists-Archives/nettime-l-0009/msg00128.html",
+   "https://www.telepolis.de/article/Japan-Corporate-Restructuring-Affects-Media-Art-Institutions-3452061.html"
+  ],
+  "reason": "No red flags exist for ICC and none added. 'Narrow definition of new media art' not found in the post and cut."
+ },
+ {
+  "id": "ntt-intercommunication-center-icc-tokyo",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "wrong figure",
+   "misattribution",
+   "hedging 'may'"
+  ],
+  "before": "ICC lost half its budget and had to move; most of about 20 staff; first director 'described the centre as part of NTT's policy of social responsibility'; 'part of its permanent display'",
+  "after": "Lovink: ICC \"has lost half of its budget\" and will move; Ozaki: just under 20 staff, mostly contract, temp or part-time; first director (unnamed) said the project would not be allowed to die because of NTT's \"social responsibility\"; Medosch: \"has given up one floor\", permanent collection on display shrank. Visitor page 404 and wheelchair-phone claims corrected.",
+  "sources": [
+   "https://www.ntticc.or.jp/en/about/",
+   "https://www.tokyoartbeat.com/en/events/-/ICC-Annual-2026-What-Is-Left-What-Remains-and-What-We-Take-on/08-BF3-F48/2026-06-20"
+  ],
+  "reason": "Tokyo Art Beat gives a general contact number, not a wheelchair line."
+ },
+ {
+  "id": "pinto-art-museum",
+  "section": "CRITICISM IN ART MEDIA / FUNDING",
+  "problems": [
+   "allegations not labelled Unverified",
+   "incomplete title",
+   "overstatement"
+  ],
+  "before": "Hilario ... said artists complained ...; he called the 50 percent commission on sales unfair ... (no Unverified label on the criticism item)",
+  "after": "Each Hilario claim is now prefixed 'Unverified:' and attributed; item title is the Lifestyle Asia headline (9 April 2021, Katherine Alamares); article says Pintô had issued no official statement and Cuanang declined an interview \"for now.\" NCCA accreditation claim and 'pushed for accreditation' attributed to him. Wikipedia founding wording corrected (gallery 2000, museum 2010).",
+  "sources": [
+   "https://lifestyleasia-onemega.com/arts-and-culture/art/social-media-post-pinto-art-museum/",
+   "https://en.wikipedia.org/wiki/Pint%C3%B4_Art_Museum"
+  ],
+  "reason": "Allegations kept, labelled and attributed as instructed."
+ },
+ {
+  "id": "pivo-sao-paulo",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: incentive-law consultancy",
+   "verdict overstates",
+   "source misattributed"
+  ],
+  "before": "Its partners list includes an incentive-laws consultancy (Clarice Magalhães and Amanda Leones). / mixed private: ... incentive-law sponsorship, with published accounts",
+  "after": "Consultancy sentence cut (not on any page opened; partner logos carry no text). Verdict now says a tax-incentive scheme is open to sponsors. Support page quoted for PRONAC; it does not name the Lei Rouanet, so the link is stated as unconfirmed. Auction quote credited to the home page (\"principal fonte de financiamento\"). Maintainers list (including all 19 named, no further comment) stays as listed on the About page; no donor controversy added.",
+  "sources": [
+   "https://pivo.org.br/en/sobre/",
+   "https://pivo.org.br/apoie/",
+   "https://www.pivo.org.br"
+  ],
+  "reason": "The 2025 activity report claim was cut; the About page lists reports and statements for 2020 to 2024. En dash inside a quoted label removed."
+ },
+ {
+  "id": "norval-foundation",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "date stated as fact from a pre-opening article",
+   "unsupported 'Strauss hosts'"
+  ],
+  "before": "it opened on 28 April 2018 (The Art Newspaper, 2018); Norval financed the project entirely at the 2018 opening",
+  "after": "The Art Newspaper of 26 April 2018 gave 28 April as the planned opening date, and the Sunday Independent describes the opening after a Freedom Day preview; funding sentence now says 'ahead of the April 2018 opening'. Strauss & Co benefit auction tied to the 2025 prize page. 'No reporting found' lines for Sanlam and the Gerard Sekoto Foundation kept, without 'on the pages read'.",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/04/26/norval-foundation-near-cape-town-opens-months-after-launch-of-citys-zeitz-museum",
+   "https://sundayindependent.co.za/capetimes/news/2018-05-04-world-class-gallery-to-showcase-old-and-new/",
+   "https://www.norvalfoundation.org/about/"
+  ],
+  "reason": "Neither the About page nor the Sunday Independent mentions Sanlam or custodianship of the Gerard Sekoto Foundation."
+ },
+ {
+  "id": "pallant-house-gallery",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported detail (logo file name)",
+   "claim from search extract unlabelled"
+  ],
+  "before": "Chichester District Council: its cabinet and council approved ... (a search extract of council records; the council pages would not load for me). / Sofas and Stuff (Major Partner)",
+  "after": "Council grant labelled 'Unverified: this rests on a web search extract dated July 2025; the council pages returned HTTP 403'. Sofas and Stuff cut (inferred from a logo file name). Fidelity Foundation 260k and 3.0M income kept as 'No reporting found'. Wikipedia 'on condition they be shown there' cut; Hussey described as Dean of Chichester Cathedral.",
+  "sources": [
+   "https://pallant.org.uk/support-us/corporate-support/",
+   "https://grantnav.threesixtygiving.org/org/GB-COH-05045130",
+   "https://en.wikipedia.org/wiki/Pallant_House_Gallery"
+  ],
+  "reason": "Council pages were not openable. Evelyn Partners (13 March 2025, no amount) and GrantNav totals (20 grants, GBP 2,090,794) confirmed."
+ },
+ {
+  "id": "phi-foundation",
+  "section": "FUNDING",
+  "problems": [
+   "overstatement",
+   "source on a dev domain",
+   "unsupported month"
+  ],
+  "before": "Everett-Green wrote that the gallery is funded entirely by one benefactor ... receives no public funding for its operations; Renamed ... in March 2019; Partners Circle lists SiriusXM, ...",
+  "after": "Everett-Green: 'sustained entirely by one benefactor', family property interests about $1.58 billion (Canadian Business survey); Taylor (15 July 2022): 'financed entirely with private money' (no 'operations' wording); Momus: PHI Centre receives some government project funding, exhibition support and sponsorship; Partners Circle levels $5,000, $10,000, $15,000 and logos not tied to Circle membership; rename dated 2019 only. arc-dev.theglobeandmail.com URLs replaced with the production theglobeandmail.com URLs, which load. The C$26.6M grant (29 April 2022, Canada and Quebec, ICIP) verified.",
+  "sources": [
+   "https://www.canada.ca/en/office-infrastructure/news/2022/04/the-government-of-canada-and-the-government-of-quebec-announce-more-than-266-million-for-the-creation-of-a-new-cultural-institution--phi-contemporain.html",
+   "https://www.theglobeandmail.com/arts/art-and-architecture/article-montreals-phi-foundation-wants-to-make-art-an-urban-routine/",
+   "https://phi.ca/en/partners-circle/"
+  ],
+  "reason": "Release states no PHI contribution; the Globe puts the expansion at $100 million."
+ },
+ {
+  "id": "plug-in-ica",
+  "section": "OVERVIEW / FUNDING / CRITICISM",
+  "problems": [
+   "unsupported date",
+   "wrong name",
+   "unsupported sponsorship wording"
+  ],
+  "before": "the new building opened in 2010; Mentoring Artists for Women's Art (1984); Its sponsorship page offers packages",
+  "after": "Opening date cut (the 2010 release announces funding only). MAWA is 'Manitoba Artists for Women's Art', year removed. Sponsors page lists opportunities, no packages or amounts. Controversy item names Festival du Voyeur (1993) and says the article does not state whether the Gacy works were shown. RBC Foundation, Canada Council, Manitoba and Winnipeg Arts Councils kept as 'No reporting found'.",
+  "sources": [
+   "https://themanitoban.com/2012/03/40-years-strong-for-plug-in/9477/",
+   "https://www.canada.ca/en/news/archive/2010/02/government-canada-invests-construction-relocation-plug-institute-contemporary-art.html",
+   "https://plugin.org/sponsors/"
+  ],
+  "reason": "None of the four funders appear on any plugin.org page opened."
+ },
+ {
+  "id": "pulitzer-arts-foundation",
+  "section": "FUNDING",
+  "problems": [
+   "first-person",
+   "unsupported 'unpaid directors'"
+  ],
+  "before": "with unpaid directors and an executive director ...; A second ProPublica page ... returned an error when I opened it.",
+  "after": "Officer pay stated from ProPublica FY2024 (chair, vice chair, vice president $0; president $10,000; executive director $375,000). EIN 43-1940989 now stated as HTTP 404 and not used. EIN 43-1752949 confirms 2024 expenses $6,184,760 ($6.18M, rounds to $6.2M) and revenue $10,237,241.",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/431752949",
+   "https://projects.propublica.org/nonprofits/organizations/431940989",
+   "https://pulitzerarts.org/about/board/"
+  ],
+  "reason": "Board page lists treasurer and secretary as well; officers named in the report unchanged."
+ },
+ {
+  "id": "nha-san-collective-hanoi",
+  "section": "Website line / FUNDING / WIDER CONTEXT",
+  "problems": [
+   "website status",
+   "wrong attribution",
+   "unsupported descriptor"
+  ],
+  "before": "the main domain did not load in my check; Vietnam News (2017) names Nguyễn Quốc Thành as a co-founder; a Mường stilt house on the outskirts of Hanoi; the piece names no grant",
+  "after": "Website line now states nhasan.org did not resolve on the first attempt but later loaded with only a heading and menu, and that mail.nhasan.org/introduces loaded with the text. 2017 Viet Nam News piece does not mention Nha San or co-founders: claim and URL cut. 'Mường' and 'outskirts' cut. Yale Globalist quote credited to member Thanh Nguyen with the funders it names (not tied to Nha San); Art Asia Pacific dated 1 November 2018; Residency Unlimited talk dated 13 June 2019.",
+  "sources": [
+   "https://mail.nhasan.org/introduces",
+   "https://globalist.yale.edu/?p=10671",
+   "https://ovietnam.vietnamnews.vn/works-express-concern-for-social-issues-post259967.html"
+  ],
+  "reason": "The instruction said nhasan.org did not resolve; in this check it did load (placeholder page), so the report states both."
+ }
+]
