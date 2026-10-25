@@ -659,3 +659,14 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - instituto-tunga-rio-de-janeiro: the institute's own site is down for maintenance; the catalogue raisonné is sponsored by Itaú and Sabesp under the Rouanet Law.
 - javett-art-centre-at-the-university-of-pretoria-javett-up: protest over Zwelethu Mthethwa's work in the 2019 opening show; no source found for Michael Javett's business background.
 - kalektar-research-platform-on-belarusian-contemporary-art-białystok: grant-funded; the Rönne Stiftung main financial partner, backed by the German Federal Foreign Office.
+
+## d035 slop check (69 entries; every report changed)
+- g-a-s-foundation-guest-artists-space: the Fossil fuels red flag removed: the G.A.S. news page of 7 Aug 2024 names Still Earth Holdings Founding Corporate Patron in 2022; LEADERS (Jan 2025) names its subsidiary Tirex Petroleum & Energy, a drilling company in the upstream sector; ThisDay (21 Jan 2023): Tirex's 2021 TotalEnergies drilling contract at the Ikike field in OML99, five wells; no page shows oil production by the group itself; Still Earth Holdings is not on the current Thank You page. The record may still carry a Fossil fuels flag.
+- gallery-1957: the Fossil fuels red flag removed (facts under Funding: TrueAfrica 10 June 2016, Nataal 2018; neither shows oil production); the prize page: $5,000 to each of two winners (sixth edition, 2026). The record may still carry the flag.
+- glenstone: the Senate inquiry (The Art Newspaper: 2015 to 2016, 11 museums; Oregon Business names Glenstone as a letter recipient, no year) moved to Wider context; the union drive stays under Red flags: 8 May 2024 (Hyperallergic) and 7 June 2024 (Teamsters); the Teamsters' "intense union-busting campaign" claim is Unverified and partisan. It is not one of the atlas's flags (Protest or boycott vs Wider context is your call).
+- grazer-kunstverein: the Arms and defence flag removed: trend (3 Oct 2025) says AVL List "liebäugelt" with defence and seeks new fields there; it names no customers or products; the patron listing has no year.
+- gasworks: the report says the site refused connection and the supporters page was not opened; no page read confirms 290,000 pounds from Arts Council England (only the 2013 1M pledge); income 999,591 pounds for the year to 31 March 2026 (OpenCharities).
+- heide-museum-of-modern-art: partner names are read from logo link addresses; the Tucker Foundation link is one logo with four other unnamed logos; the annual report with donor names could not be read.
+- hek-haus-der-elektronischen-k-nste-basel: Göhner and Binding not named on any opened page; the Christoph Merian Stiftung only the Dreispitz site developer.
+- hangar-barcelona: hangar.org returned 403; built from council, 3Cat, Fillip and tourism pages.
+- franco-namibian-cultural-centre-fncc: both founding dates stated (30 Jan and 31 July 1991).

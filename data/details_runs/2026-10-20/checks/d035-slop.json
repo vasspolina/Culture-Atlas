@@ -1,0 +1,977 @@
+[
+ {
+  "id": "framer-framed",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'socially engaged art'",
+   "unsupported: 'an old gas works'",
+   "unsupported: 'Amsterdam Noord' for the second site"
+  ],
+  "before": "- Contemporary art venue for socially engaged art in the former Oostergasfabriek, an old gas works, at Oranje-Vrijstaatkade 71 in Amsterdam Oost, with a second site, Framer Framed Noord, at Zuideinde 369 in Amsterdam Noord.\n",
+  "after": "- Contemporary art venue for exhibitions on art, visual culture and politics in the former Oostergasfabriek at Oranje-Vrijstaatkade 71 in Amsterdam Oost, with a second site, Framer Framed Noord, at Zuideinde 369 in Amsterdam (framerframed.nl; Ammodo).\n",
+  "sources": [
+   "https://framerframed.nl/en/contact/",
+   "https://www.ammodo-art.org/en/art/partners/framer-framed"
+  ],
+  "reason": "The pages read do not say 'socially engaged', 'gas works' or which district the Zuideinde site is in; wording cut back to what they state."
+ },
+ {
+  "id": "framer-framed",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'founded by curators from cultural heritage institutions'",
+   "unsupported: 'Amsterdam Noord' for the Tolhuistuin"
+  ],
+  "before": "- Founded in 2009 by curators from cultural heritage institutions; it began as a travelling project and opened a fixed exhibition space in 2014 at the Tolhuistuin in Amsterdam Noord (stated by the space and by Ammodo).\n",
+  "after": "- Founded in 2009 as an independent initiative questioning the role of museums in a globalizing society; it began as a travelling project and opened a fixed exhibition space in 2014 at the Tolhuistuin (stated by the space and by Ammodo).\n",
+  "sources": [
+   "https://framerframed.nl/over-ons/",
+   "https://www.ammodo-art.org/en/art/partners/framer-framed"
+  ],
+  "reason": "Ammodo's page does not say the founders were curators from heritage institutions; the space's about page gives the description now used."
+ },
+ {
+  "id": "framer-framed",
+  "section": "Overview",
+  "problems": [
+   "claim attributed to the wrong speaker: rent rise is quoted from Het Parool (June 2019) on the space's news page"
+  ],
+  "before": "the space says it left the Tolhuistuin because the rent was set to rise by about 220%.\n",
+  "after": "the space's news page, quoting Het Parool (June 2019), says it left the Tolhuistuin because the rent was set to rise by about 220%.\n",
+  "sources": [
+   "https://framerframed.nl/en/dossier/nieuws-een-nieuwe-plek-voor-framer-framed/"
+  ],
+  "reason": "The 2019 move, the 1,000 square metres and the CBK Oost detail are on that page; the rent figure is from the quoted newspaper."
+ },
+ {
+  "id": "framer-framed",
+  "section": "Overview",
+  "problems": [
+   "unsupported: programme list (school education, archive research, co-creation, podcast)",
+   "unsupported: 'replaced by Framer Framed Noord in January 2026'"
+  ],
+  "before": "- Programme: exhibitions, public events, school education, archive research, co-creation and a podcast; Werkplaats Molenwijk in Noord (a community space, artist residency and research platform) opened in 2018 and was replaced by Framer Framed Noord in January 2026.\n",
+  "after": "- Programme: about ten exhibitions a year on contemporary art, visual culture and politics (Ammodo); Werkplaats Molenwijk (a community space, artist residency and research platform) opened in 2018 and closed permanently on 31 December 2025, and Framer Framed Noord is listed at its Zuideinde 369 site (framerframed.nl).\n",
+  "sources": [
+   "https://framerframed.nl/en/contact/",
+   "https://framerframed.nl/over-ons/",
+   "https://www.ammodo-art.org/en/art/partners/framer-framed"
+  ],
+  "reason": "No opened page gives a January 2026 date or the other programme items; the closing date is on the contact page."
+ },
+ {
+  "id": "framer-framed",
+  "section": "Funding",
+  "problems": [
+   "unsupported: BIS advice 'for 2021 to 2024' stated as fact from a related headline; ministry funding named on the about page"
+  ],
+  "before": "- Ministry of Education, Culture and Science: the Council for Culture advised the ministry to fund Framer Framed in the national basic cultural infrastructure (BIS) for 2025 to 2028, and earlier for 2021 to 2024. The amount is not stated on the pages read (framerframed.nl).\n- Amsterdams Fonds voor de Kunst, Stadsdeel Oost and VriendenLoterij Fonds are named as funders on the space's about page (stated by the space); no amounts or years are given.\n",
+  "after": "- The Ministry of Education, Culture and Science, Amsterdams Fonds voor de Kunst, Stadsdeel Oost and VriendenLoterij Fonds are named as funders on the space's about page (stated by the space); no amounts or years are given.\n- The Council for Culture gave a positive recommendation for Framer Framed in the national basic cultural infrastructure (BIS) for 2025 to 2028; a related headline on the space's site refers to its advice for 2021 to 2024. No amount is stated on the pages read (framerframed.nl).\n",
+  "sources": [
+   "https://framerframed.nl/over-ons/",
+   "https://framerframed.nl/en/dossier/advies-raad-voor-cultuur-framer-framed-in-bis-2025-2028/"
+  ],
+  "reason": "The page says the Council gave a positive recommendation; it does not say the Council advised 'to fund' or give details of the 2021 to 2024 advice beyond a headline."
+ },
+ {
+  "id": "framer-framed",
+  "section": "Sources",
+  "problems": [
+   "source does not support any claim: page names no funders and does not mention the space's funding"
+  ],
+  "before": "- https://framerframed.nl/en/category/institutionele-kritiek/\n",
+  "after": "",
+  "sources": [
+   "https://framerframed.nl/en/category/institutionele-kritiek/"
+  ],
+  "reason": "Removed: it is an archive of the space's own critical writing about other institutions; it names no funder and nothing in the report rests on it."
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'Volunteer-run'"
+  ],
+  "before": "- Volunteer-run library, archive and museum of Belarusian books, art and artefacts at 37 Holden Road",
+  "after": "- Library, archive and museum of Belarusian books, art and artefacts at 37 Holden Road",
+  "sources": [
+   "https://skaryna.org/?p=21",
+   "https://skaryna.org/governance/"
+  ],
+  "reason": "No page read says the library is volunteer-run."
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "section": "Overview",
+  "problems": [
+   "overstatement: 'paid for the building'"
+  ],
+  "before": "- A 1969 fundraising campaign run by Ceslaus Sipovich, Auberon Herbert and Paval Navara paid for the building (Wikipedia).\n",
+  "after": "- Ceslaus Sipovich, Auberon Herbert and Paval Navara organised a fundraising campaign in 1969 that allowed the library to acquire a building (Wikipedia).\n",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Francis_Skaryna_Belarusian_Library_and_Museum"
+  ],
+  "reason": "Wikipedia says the campaign allowed the acquisition of a building; it does not say the three paid for it."
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'coins'",
+   "unsupported: 'art collection'"
+  ],
+  "before": "- On site: a library of over 30,000 volumes, archives, an art collection and a museum with textiles, coins, banknotes, stamps and religious art (Wikipedia, the library's support page).\n",
+  "after": "- On site: a library of over 30,000 volumes, archives and a museum whose items include 18th-century Słuck girdles, banknotes, stamps and religious art (Wikipedia).\n",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Francis_Skaryna_Belarusian_Library_and_Museum",
+   "https://skaryna.org/?p=21"
+  ],
+  "reason": "Wikipedia lists girdles, banknotes, stamps and religious art; coins and a separate art collection appear on no page read."
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'for inactivity'"
+  ],
+  "before": "removed from the charity register in 2011 for inactivity,",
+  "after": "removed from the charity list in 2011,",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Francis_Skaryna_Belarusian_Library_and_Museum"
+  ],
+  "reason": "The page states the removal and the dates, not the reason."
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "section": "Funding",
+  "problems": [
+   "quote not found as written",
+   "unsupported: 'bank transfer'"
+  ],
+  "before": "- The library states: \"We receive no regular public or corporate funding.\" It asks for monthly gifts from £10 and one-off gifts, with Gift Aid, bank transfer, CAF Donate and gifts in wills.\n",
+  "after": "- The library states that it receives no regular public or corporate funding. Its support page asks for monthly gifts from £10 and one-off gifts through Stripe, with Gift Aid, CAF Donate and gifts in wills.\n",
+  "sources": [
+   "https://skaryna.org/support/"
+  ],
+  "reason": "The support page says the library 'receives no regular public or corporate funding' in the third person and names Stripe, not bank transfer."
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "section": "Funding",
+  "problems": [
+   "date missing",
+   "overstatement: 'guarantee of independence'"
+  ],
+  "before": "- Ihar Ivanou, writing on the library's site, says the library has never received public funds and relies on fundraising among Belarusians worldwide and their friends, which he presents as a guarantee of independence.\n- Ivanou also reports that trustees have received formal and informal requests from Belarus to hand parts of the collection and archive to state-funded institutions (stated by the library's author).\n",
+  "after": "- Ihar Ivanou, writing on the library's site (8 September 2015, updated 2021), says the library has never received public funds and aims to rely on Belarusians and their friends, which he says preserves its independence.\n- Ivanou also reports that trustees have received formal and informal requests from Belarus to hand over parts of the collection to state-funded institutions (stated by the library's author).\n",
+  "sources": [
+   "https://skaryna.org/library-as-a-soft-power-tool/"
+  ],
+  "reason": "Added the page's dates; 'archive' and 'guarantee' are not in the text."
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "section": "Not related",
+  "problems": [
+   "vague actor: 'A Minsk court'"
+  ],
+  "before": "A Minsk court ruled its Instagram page \"extremist\" on 15 May 2025, which the publisher calls politically motivated.",
+  "after": "The Maładečna District Court in Minsk Voblast ruled its Instagram page \"extremist\" on 15 May 2025; the publisher calls this a politically motivated attempt to pressure its editors, authors and readers.",
+  "sources": [
+   "https://skarynapress.com/?p=1852"
+  ],
+  "reason": "Names the court and the publisher's own words as the page gives them."
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "section": "Bottom line",
+  "problems": [
+   "unsupported: 'the latest accounts sit with the Charity Commission'",
+   "unsupported: 'the library's own account of its limited access and incomplete catalogue'"
+  ],
+  "before": "The money behind the library is clean: small donations, a bond endowment and rent, with no public, corporate or flagged funder found. The weak points are thin financial disclosure (no donor names, and the latest accounts sit with the Charity Commission) and the library's own account of its limited access and incomplete catalogue. Worth watching are the filed accounts and any further requests from Belarusian state bodies for the collection.",
+  "after": "The money behind the library is small and community-based: donations, a bond endowment and flat rent, with no public, corporate or flagged funder found. The weak points are thin financial disclosure (no donor names, and the figures in the annual reports were not read) and the requests from Belarus to hand over parts of the collection, reported by the library's own author. Worth watching are the annual reports and any further such requests.",
+  "sources": [
+   "https://skaryna.org/?p=568",
+   "https://skaryna.org/library-as-a-soft-power-tool/",
+   "https://skaryna.org/about/reports/"
+  ],
+  "reason": "Removed two points no opened page supports; 'clean' also replaced by a description of the money."
+ },
+ {
+  "id": "franco-namibian-cultural-centre-fncc",
+  "section": "Overview",
+  "problems": [
+   "wording: 'founding agreement' is not in the source"
+  ],
+  "before": "says Nujoma signed its founding agreement on 31 July 1991.",
+  "after": "says Nujoma signed the creation of the centre on 31 July 1991.",
+  "sources": [
+   "https://fncc.org.na/events/memory-he-dr-sam-nujoma",
+   "https://www.fncc.org.na/about"
+  ],
+  "reason": "Both dates are kept: the about page gives 30 January 1991 as the inauguration; the memorial page gives 31 July 1991 for the signing."
+ },
+ {
+  "id": "g-a-s-foundation-guest-artists-space",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'of NS Design Consult'"
+  ],
+  "before": "with Nihinlola Shonibare of NS Design Consult (BusinessDay)",
+  "after": "with Nihinlola Shonibare (BusinessDay)",
+  "sources": [
+   "https://businessday.ng/arts-and-life/article/shonibares-new-cultural-centre-to-bring-together-artists-in-nigeria-diaspora/"
+  ],
+  "reason": "The firm name is not on the page."
+ },
+ {
+  "id": "g-a-s-foundation-guest-artists-space",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'a residence for artists, scientists, agriculturists and researchers'",
+   "unsupported: 'of MOE+'"
+  ],
+  "before": "- Ijebu building: a residence for artists, scientists, agriculturists and researchers, designed by Papa Omotayo of MOE+ and built with 40,000 bricks made from soil dug for the foundations (BusinessDay).\n",
+  "after": "- Ijebu building: a residential space on the farm, designed by Papa Omotayo and built with local materials, including 40,000 bricks made from soil excavated for the foundations (BusinessDay).\n",
+  "sources": [
+   "https://businessday.ng/arts-and-life/article/shonibares-new-cultural-centre-to-bring-together-artists-in-nigeria-diaspora/"
+  ],
+  "reason": "BusinessDay names a residential space and the designer, not the resident groups or the firm."
+ },
+ {
+  "id": "g-a-s-foundation-guest-artists-space",
+  "section": "Funding",
+  "problems": [
+   "verdict names the group by its industry type",
+   "claim placed under the wrong heading (see Red flags)"
+  ],
+  "before": "G.A.S. Foundation: philanthropy-funded: Shonibare's UK foundation, individual patrons, art foundations and corporate partners including an oil-services group\n",
+  "after": "G.A.S. Foundation: philanthropy-funded: Shonibare's UK foundation, individual patrons, art foundations and corporate partners including Still Earth Holdings, whose subsidiaries include an oil drilling contractor\n",
+  "sources": [
+   "https://leadersmag.com/issues/2025.1_Jan/WL/LEADERS_Adeyemi_Still_Earth_Holdings.html"
+  ],
+  "reason": "Names the patron and states the activity."
+ },
+ {
+  "id": "g-a-s-foundation-guest-artists-space",
+  "section": "Funding",
+  "problems": [
+   "unsupported: 'funded ... local staff and fellowships'",
+   "date of the news page missing",
+   "executive chairperson claim moved from Red flags"
+  ],
+  "before": "- Still Earth Holdings: named the foundation's Founding Corporate Patron in 2022; its \"transformative donation\" funded the Fellowship residency programme, local staff and fellowships (G.A.S. news page). No amount is stated.\n",
+  "after": "- Still Earth Holdings: the G.A.S. news page of 7 August 2024 names it the foundation's Founding Corporate Patron in 2022 and says its \"transformative generosity\" helped launch the Fellowship residency programme and support G.A.S. Fellows. No amount is stated. The page names Oyindamola Lami Adeyemi as Executive Chairperson of Still Earth Holdings.\n- Still Earth Holdings' business: LEADERS magazine (January 2025) describes it as a group of companies founded in 2011 and says its subsidiary Tirex Petroleum & Energy, a drilling company, operates in the upstream sector of the oil and gas industry. ThisDay (21 January 2023) reports that Tirex completed a drilling and well intervention campaign for TotalEnergies at the Ikike field in OML99, five wells under a contract awarded in 2021. Tirex is a drilling contractor for TotalEnergies; no page read shows oil production by Still Earth Holdings or Tirex themselves.\n",
+  "sources": [
+   "https://www.guestartistsspace.com/News/celebrating-the-impact-of-still-earth-holdings-generous-support-on-gas-foundation",
+   "https://leadersmag.com/issues/2025.1_Jan/WL/LEADERS_Adeyemi_Still_Earth_Holdings.html",
+   "https://www.thisdaylive.com/2023/01/21/tirex-pe-successfully-completes-ikike-well-drilling-awarded-additional-extention/"
+  ],
+  "reason": "The news page does not mention staff or subsidiaries; the drilling facts are from LEADERS and ThisDay."
+ },
+ {
+  "id": "g-a-s-foundation-guest-artists-space",
+  "section": "Red flags",
+  "problems": [
+   "flag not supported: drilling and oil-services contractors are oil-industry services, not Fossil fuels; no page shows oil production by the group itself"
+  ],
+  "before": "Red flags: fossil fuels\n- Still Earth Holdings, the 2022 Founding Corporate Patron, is a holding company with subsidiaries in infrastructure, oil and gas, and finance, including Tirex Petroleum & Energy (LEADERS magazine, January 2025).\n- Tirex describes itself as an indigenous drilling and well intervention company; TotalEnergies awarded it an offshore drilling contract in 2021 for the Ikike field in OML99, where it drilled five wells (ThisDay, 2023).\n- Oyindamola Lami Adeyemi is executive chairperson of Still Earth Holdings and Tirex, and is quoted on G.A.S.'s own page about the donation.\n\n",
+  "after": "",
+  "sources": [
+   "https://leadersmag.com/issues/2025.1_Jan/WL/LEADERS_Adeyemi_Still_Earth_Holdings.html",
+   "https://www.thisdaylive.com/2023/01/21/tirex-pe-successfully-completes-ikike-well-drilling-awarded-additional-extention/",
+   "https://www.guestartistsspace.com/News/celebrating-the-impact-of-still-earth-holdings-generous-support-on-gas-foundation"
+  ],
+  "reason": "Heading removed; the facts moved to Funding. The G.A.S. page does not call Adeyemi chair of Tirex or quote her, and does not list subsidiaries, so those points were dropped."
+ },
+ {
+  "id": "g-a-s-foundation-guest-artists-space",
+  "section": "Bottom line",
+  "problems": [
+   "flag wording removed",
+   "unsupported: 'stays on the supporter lists'"
+  ],
+  "before": "with one current fossil-fuel link: its Founding Corporate Patron owns an oil-drilling contractor that works for TotalEnergies. The weak points are that no donation amounts are published for most backers and no accounts for the Nigerian entity were found. Worth watching is whether Still Earth Holdings stays on the supporter lists.",
+  "after": "and a Founding Corporate Patron, Still Earth Holdings, whose subsidiary Tirex is a drilling contractor for TotalEnergies. The weak points are that no donation amounts are published for most backers and no accounts for the Nigerian entity were found. Worth watching is whether Still Earth Holdings appears on future supporter lists; it is not on the current Thank You page.",
+  "sources": [
+   "https://www.guestartistsspace.com/Support-Us/Thank-You"
+  ],
+  "reason": "The Thank You page does not list Still Earth Holdings."
+ },
+ {
+  "id": "gallery-1957",
+  "section": "Overview",
+  "problems": [
+   "tense: 'donated' stated as done; the source says he was donating"
+  ],
+  "before": "Zakhem donated his private collection to start the gallery and planned to commission new work;",
+  "after": "Zakhem was donating his private collection to the gallery and planned to commission new work;",
+  "sources": [
+   "https://www.theartnewspaper.com/news/british-construction-boss-to-open-new-gallery-in-ghana"
+  ],
+  "reason": "The Art Newspaper (14 January 2016) uses the present continuous."
+ },
+ {
+  "id": "gallery-1957",
+  "section": "Funding",
+  "problems": [
+   "verdict adds 'art sales' no page states"
+  ],
+  "before": "Gallery 1957: self-funded: its founder's money and art sales\n",
+  "after": "Gallery 1957: self-funded: its founder, Marwan Zakhem, and a commercial gallery model\n",
+  "sources": [
+   "https://nataal.com/gallery-1957"
+  ],
+  "reason": "Nataal describes the commercial model; no page states art sales as the funding."
+ },
+ {
+  "id": "gallery-1957",
+  "section": "Funding",
+  "problems": [
+   "unsupported: 'owns the gallery'",
+   "quote not found: 'commercial gallery to international standards'",
+   "prize figure"
+  ],
+  "before": "- Zakhem, who is British, Lebanese-born and London-raised, owns the gallery and gave it his private collection (The Art Newspaper; TrueAfrica).\n- Nataal, quoting Zakhem, says Zakhem wants a \"commercial gallery to international standards\", and the gallery shows at fairs abroad including 1-54 London.\n- Yaa Asantewaa Art Prize: the 2026 edition pays $5,000 cash to each of two winners, one Ghanaian and one Senegalese, with the Institut Français du Sénégal as partner (gallery website). The jury includes people from Tate Britain, the 1-54 fair, Gasworks, Haus der Kulturen der Welt and Fondation Cartier.\n",
+  "after": "- Zakhem, a British, Lebanese-born, London-raised entrepreneur, founded the gallery and was donating his private collection to it (The Art Newspaper, 2016; TrueAfrica, 2016).\n- Nataal (Helen Jennings, 2018) says Zakhem presents the gallery as a commercial model, not a philanthropic one, and that it showed at the 1-54 fair in London in 2018.\n- Yaa Asantewaa Art Prize: the 2026 edition, the sixth, pays $5,000 cash to each of two winners, one Ghanaian and one Senegalese, with the Institut Français du Sénégal as partner (gallery website). No GHC 50,000 prize figure appears on that page. The jury includes people from Tate Britain, the 1-54 fair, Gasworks, Haus der Kulturen der Welt and Fondation Cartier.\n- Zakhem's business: TrueAfrica (Claude Grunitzky, 10 June 2016) says his company \"handles large engineering, procurement and construction contracts in the oil and gas sector\" and developed and built the Kempinski Hotel Gold Coast City, which opened in 2015 and houses the gallery. Nataal (2018) calls the Zakhem group a family-owned group of construction companies with interests across Africa and says the hotel's art is Zakhem's collection. Neither page names the company or shows oil production by it, and no payment from it to the gallery is itemised.\n",
+  "sources": [
+   "https://nataal.com/gallery-1957",
+   "https://www.gallery1957.com/the-yaa-asantewaa-art-prize/",
+   "https://trueafrica.co/article/meet-the-team-behind-ghanas-latest-contemporary-art-gallery/"
+  ],
+  "reason": "The quoted phrase is not on the Nataal page; the prize page gives $5,000 for each of two winners and no cedi figure. The oil and gas engineering contractor facts moved from Red flags to Funding."
+ },
+ {
+  "id": "gallery-1957",
+  "section": "Red flags",
+  "problems": [
+   "flag not supported: an engineering, procurement and construction contractor in the oil and gas sector is oil-industry services, not Fossil fuels; no page shows oil production by the group"
+  ],
+  "before": "Red flags: fossil fuels\n- Zakhem's company \"handles large engineering, procurement and construction contracts in the oil and gas sector\" and built the Kempinski Hotel Gold Coast City, which opened in 2015 and houses the gallery (TrueAfrica, Claude Grunitzky, 2016).\n- Nataal (2018) describes the Zakhem group as a family-owned group of construction companies with interests across Africa and says Zakhem assembled the hotel's art collection.\n- The pages read do not name the company, and no payment from it to the gallery is itemised.\n\n",
+  "after": "",
+  "sources": [
+   "https://trueafrica.co/article/meet-the-team-behind-ghanas-latest-contemporary-art-gallery/",
+   "https://nataal.com/gallery-1957"
+  ],
+  "reason": "Heading removed; the facts are stated under Funding."
+ },
+ {
+  "id": "gallery-1957",
+  "section": "Bottom line",
+  "problems": [
+   "flag wording",
+   "unsupported: 'personal wealth', 'art sales'"
+  ],
+  "before": "The money behind the gallery is private: Zakhem's personal collection and wealth, and art sales. The weak point is that his construction business does oil and gas contract work and built the hotel that houses the gallery, and the gallery publishes no board, accounts or funder list. Worth watching is whether the gallery discloses its funding and governance.",
+  "after": "The money behind the gallery is private: founder Marwan Zakhem, whose company does oil and gas engineering, procurement and construction work and built the hotel that houses the gallery. The weak point is that the gallery publishes no board, accounts or funder list. Worth watching is whether the gallery discloses its funding and governance.",
+  "sources": [
+   "https://trueafrica.co/article/meet-the-team-behind-ghanas-latest-contemporary-art-gallery/",
+   "https://www.gallery1957.com"
+  ],
+  "reason": "Matches what the pages state."
+ },
+ {
+  "id": "gasworks",
+  "section": "Overview",
+  "problems": [
+   "unsupported descriptor: 'philanthropist and collector'",
+   "overstatement: 'had already started the Triangle Network'"
+  ],
+  "before": "- Founded in 1994 by the philanthropist and collector Robert Loder, who with the sculptor Anthony Caro had already started the Triangle Network before Gasworks opened (The Art Newspaper, Louisa Buck, 2024).\n",
+  "after": "- Founded in 1994 by Robert Loder, who had earlier set up the beginnings of the Triangle Network with the sculptor Anthony Caro (The Art Newspaper, Louisa Buck, 2024).\n",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/05/03/thirty-glorious-years-of-gasworks"
+  ],
+  "reason": "The article gives Loder no descriptor and says he 'set up the beginnings' of the network."
+ },
+ {
+  "id": "gasworks",
+  "section": "Overview",
+  "problems": [
+   "claim differs from source: 'bought ... for £2.1 million'"
+  ],
+  "before": "- Building: the organisation bought the warehouse and redeveloped it with HAT Projects (architect Hana Loftus) for £2.1 million, unveiled in 2015 (The Art Newspaper, Louisa Buck, 2015).\n",
+  "after": "- Building: Gasworks raised £2.1 million to buy and redevelop the building, redesigned by Hana Loftus of HAT Projects (The Art Newspaper, Louisa Buck, 2015).\n",
+  "sources": [
+   "http://www.theartnewspaper.com/2015/09/22/the-buck-stopped-here-new-gasworks-is-a-blast"
+  ],
+  "reason": "The article states the £2.1 million raised and the architect; 'unveiled in 2015' is not stated."
+ },
+ {
+  "id": "gasworks",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'commissions artists' first major UK shows'"
+  ],
+  "before": "- On site: a gallery that commissions artists' first major UK shows, nine subsidised five-year studios for London artists, and four spaces for three-month international residencies. The Triangle Network links workshops and organisations in regions from Colombia to Bangladesh and Kenya to China.\n- Visiting: Wednesday to Sunday, 12:00 to 18:00 during exhibitions, free, per an Art Fund listing that also carries pandemic-era visiting rules. Accessibility details were not found.\n",
+  "after": "- On site: a gallery that often stages artists' first major UK shows (Art Fund), nine subsidised studios on five-year leases for London artists, and four studios for three-month international residencies (The Art Newspaper, 2024). The Triangle Network stretches from Colombia to Bangladesh and from Kenya to China.\n- Visiting: Wednesday to Sunday, 12:00 to 18:00 during exhibitions, or by appointment; free (Art Fund). Accessibility details were not found.\n",
+  "sources": [
+   "https://www.artfund.org/explore/museums-and-galleries/gasworks",
+   "https://www.theartnewspaper.com/2024/05/03/thirty-glorious-years-of-gasworks"
+  ],
+  "reason": "Art Fund says 'often' and 'or by appointment'; no pandemic-era rules were on the page."
+ },
+ {
+  "id": "gasworks",
+  "section": "Funding",
+  "problems": [
+   "Arts Council figure"
+  ],
+  "before": "The annual amount was not found. In 2013 the Arts Council pledged",
+  "after": "The annual amount was not found, and no page read confirms a figure of £290,000 from Arts Council England. In 2013 the Arts Council pledged",
+  "sources": [
+   "https://artlyst.com/?p=170376",
+   "https://www.e-flux.com/announcements/6784293/exhibitions-programme-2026"
+  ],
+  "reason": "Only the 2013 £1 million capital pledge is documented."
+ },
+ {
+  "id": "gasworks",
+  "section": "Funding",
+  "problems": [
+   "source of trustee list"
+  ],
+  "before": "nine trustees are listed on the Charity Commission record, including Alexa Waley-Cohen.",
+  "after": "nine trustees are listed on OpenCharities, from Charity Commission data, including Alexa Waley-Cohen (appointed March 2025).",
+  "sources": [
+   "https://opencharities.uk/ew/326411"
+  ],
+  "reason": "States the source actually opened."
+ },
+ {
+  "id": "glenstone",
+  "section": "Overview",
+  "problems": [
+   "source attribution: 1986 purchase is on Wikipedia, not The Art Newspaper 2023"
+  ],
+  "before": "- Founded by Mitchell Rales and his wife Emily Wei Rales; Rales bought the property in 1986 to build a home and the museum opened in 2006 (Wikipedia; The Art Newspaper, 2023).\n",
+  "after": "- Founded by Mitchell Rales and his wife Emily Wei Rales (The Art Newspaper, 2023); Rales bought the property in 1986 to build a home and the museum opened in 2006 (Wikipedia).\n",
+  "sources": [
+   "https://www.theartnewspaper.com/2023/03/02/mitchell-rales-19bn-donation-glenstone-museum",
+   "https://en.wikipedia.org/wiki/Glenstone"
+  ],
+  "reason": "The 2023 article does not give the 1986 date."
+ },
+ {
+  "id": "glenstone",
+  "section": "Red flags",
+  "problems": [
+   "flag not supported: a Senate inquiry into private museums' tax status was not aimed at Glenstone and concerns tax status, not funders; moved to Wider context",
+   "date source: year not stated on the Oregon Business page"
+  ],
+  "before": "Red flags: Senate inquiry into private museums' tax status\n- 2015: Senator Orrin Hatch, chairman of the Senate Finance Committee, sent letters to Glenstone and other private museums asking about visiting hours, donations, trustees, valuations and art loans (Oregon Business, from The New York Times).\n- Hatch's closing letter to the IRS said some museums \"are not readily accessible by the general public\"; Rales said Glenstone \"did not deserve to be in that category\" (The Art Newspaper, 2018). The New York Times reported fewer than 10,000 visitors from 2006 to 2013.\n\nRed flags: staff union drive\n- May 2024: about 100 hourly staff, roughly half the workforce, gave Glenstone 24 hours to recognise a union; the lowest-paid unit members earned $20.58 an hour against a $27.12 living wage for Montgomery County (Hyperallergic). Glenstone had not responded to Hyperallergic's request for comment.\n- June 2024: 89 workers joined Teamsters Local 639 (Teamsters press release, 7 June 2024).\n- Unverified: that the owners waged a \"union-busting assault\" and paid union-avoidance consultants, from Teamsters Local 639, the union in the dispute and a partisan source. No Glenstone response was found.\n",
+  "after": "Red flags: staff union drive (labour dispute)\n- 8 May 2024: about 100 hourly staff, around half the workforce, gave Glenstone 24 hours to voluntarily recognise a union, with the International Brotherhood of Teamsters; the lowest-paid members of the bargaining unit earned $20.58 an hour against a $27.12 living wage for Montgomery County, calculated by MIT (Hyperallergic, Elaine Velie). Glenstone had not responded to Hyperallergic's request for comment.\n- 7 June 2024: 89 workers voted to join Teamsters Local 639 (Teamsters press release).\n- Unverified: that the owners ran an \"intense union-busting campaign\" and paid union avoidance consultants (the release names Proskauer Rose and the American Labor Group), from the Teamsters' press release; the union is a party to the dispute and a partisan source. No Glenstone response was found.\n",
+  "sources": [
+   "https://hyperallergic.com/912801/workers-at-glenstone-museum-move-to-unionize/",
+   "https://teamster.org/2024/06/workers-at-glenstone-museum-vote-to-join-teamsters/",
+   "https://oregonbusiness.com/15973-senate-finance-committee-scrutinizes-museum-tax-status/"
+  ],
+  "reason": "The union-drive dates are 8 May 2024 (Hyperallergic) and 7 June 2024 (Teamsters). The Teamsters' words are 'intense union-busting campaign', not 'assault'. The Senate inquiry is now under Wider context."
+ },
+ {
+  "id": "glenstone",
+  "section": "Criticism in art media",
+  "problems": [
+   "unsupported: article title 'The Most Exciting New Private Museum In America'",
+   "unsupported: 'founders, who live on the property'",
+   "hedge: 'may sense'"
+  ],
+  "before": "3. The Washington Post: Sebastian Smee, \"The Most Exciting New Private Museum In America\" (read in an ArtsJournal repost, 2019)\nURL: https://www.artsjournal.org/?p=188533\n- Mostly praise, comparing Glenstone to the Frick; notes visitors may sense the founders, who live on the property, \"have designs on you\".\n",
+  "after": "3. The Washington Post: Sebastian Smee, piece on Glenstone (2019, read in an ArtsJournal repost whose page does not show the headline)\nURL: https://www.artsjournal.org/?p=188533\n- Mostly praise: calls Glenstone a 21st-century version of the Frick, the Phillips Collection or the Isabella Stewart Gardner Museum.\n- The excerpt includes the line that the founders \"have designs on you\".\n",
+  "sources": [
+   "https://www.artsjournal.org/?p=188533"
+  ],
+  "reason": "The repost does not show the headline used before; the Frick comparison and quoted line are on the page."
+ },
+ {
+  "id": "glenstone",
+  "section": "Criticism in art media",
+  "problems": [
+   "scope of the criticism line"
+  ],
+  "before": "The criticism that exists concerns access, the founders' tax benefits and staff pay, not the collection.",
+  "after": "The criticism that exists concerns access, the tax status of private museums and staff pay, not the collection.",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/09/21/glenstones-giant-dollar200m-expansion-is-ready-but-will-visitors-come"
+  ],
+  "reason": "The inquiry examined private museums' tax status; no page read criticises the founders' tax benefits."
+ },
+ {
+  "id": "glenstone",
+  "section": "Wider context",
+  "problems": [
+   "moved from Red flags"
+  ],
+  "before": "",
+  "after": "WIDER CONTEXT\n- 2015 to 2016: Senator Orrin Hatch, chairman of the Senate Finance Committee, examined 11 private art museums, Glenstone among them, and sent letters asking about visiting hours, donations, trustees, valuations and art loans (The Art Newspaper, 2018; Oregon Business).\n- In a letter to the IRS Hatch wrote that some museums \"are not readily accessible by the general public\"; Rales said Glenstone \"did not deserve to be in that category\". The New York Times reported fewer than 10,000 visitors from 2006 to 2013 (The Art Newspaper, 2018).\n- The inquiry concerned the tax status of private museums, not their funders, and no page read shows it was aimed at Glenstone alone. Glenstone was one of the museums that received letters.\n",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/09/21/glenstones-giant-dollar200m-expansion-is-ready-but-will-visitors-come",
+   "https://oregonbusiness.com/15973-senate-finance-committee-scrutinizes-museum-tax-status/"
+  ],
+  "reason": "Oregon Business names Glenstone among the recipients but gives no year; The Art Newspaper dates the inquiry 2015-16 and counts 11 museums."
+ },
+ {
+  "id": "glenstone",
+  "section": "Bottom line",
+  "problems": [
+   "wording follows the move of the inquiry to Wider context"
+  ],
+  "before": "The weak points are the 2015 Senate inquiry into private museums' tax benefits, low early access, and the 2024 dispute over staff pay.",
+  "after": "The weak points are low early access, the 2024 dispute over staff pay and recognition, and Glenstone's place in the 2015 to 2016 Senate inquiry into private museums' tax status, which was not aimed at it alone.",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/09/21/glenstones-giant-dollar200m-expansion-is-ready-but-will-visitors-come"
+  ],
+  "reason": "Consistent with the sections above."
+ },
+ {
+  "id": "grazer-kunstverein",
+  "section": "Funding",
+  "problems": [
+   "Patron list: no year given on the about page",
+   "claim moved from Red flags"
+  ],
+  "before": "- Patrons named on the space's about page: legero united (initiator of con-tempus.eu), Weitzer Hotels, Industriellenvereinigung Steiermark, AVL List GmbH, Flanders State of the Art and Weingut Peter Skoff. No amounts are given.\n",
+  "after": "- Patrons named on the space's about page (checked 2026-10-24, no year given): legero united (initiator of con-tempus.eu), Weitzer Hotels, Industriellenvereinigung Steiermark, AVL List GmbH, Flanders State of the Art and Weingut Peter Skoff. No amounts are given.\n- AVL List GmbH: a Graz company that develops, simulates and tests drive systems for the automotive and other industries; Helmut List is listed as its owner (Wikipedia). trend (Markus Groll, \"Warum AVL List verstärkt mit dem Rüstungsgeschäft liebäugelt\", updated 3 October 2025) reports that AVL is seeking new fields of activity increasingly in the defence industry, has regularly attended defence trade fairs in recent years and takes a \"dual use\" approach, with management saying civil topics can be implemented very well in the military sector too (translation). The article names no defence customers, products or revenue, and no page read shows that AVL currently makes defence products.\n",
+  "sources": [
+   "https://www.trend.at/unternehmen/warum-avl-list-verstaerkt-mit-dem-ruestungsgeschaeft-liebaeugelt",
+   "https://www.grazerkunstverein.org/about/",
+   "https://en.wikipedia.org/wiki/AVL_List"
+  ],
+  "reason": "The article says AVL is looking at defence work ('liebäugelt', 'sucht ... verstärkt'), not that it makes defence products."
+ },
+ {
+  "id": "grazer-kunstverein",
+  "section": "Red flags",
+  "problems": [
+   "flag not supported: no opened page shows AVL List currently makes defence products; the about page gives no year for the patronage"
+  ],
+  "before": "Red flags: arms and defence (patron AVL List)\n- AVL List GmbH is a Graz engineering company that develops and tests drive systems for the automotive and other industries; Helmut List owns it (Wikipedia).\n- trend (Markus Groll, updated 3 October 2025) reports AVL is moving into defence as a new business area, has regularly exhibited at defence trade fairs, and describes its approach as \"dual use\", quoting management that civil powertrain and efficiency topics \"can be readily applied in the military sector too\" (translation).\n- The article names no customers, products or defence revenue.\n\n",
+  "after": "",
+  "sources": [
+   "https://www.trend.at/unternehmen/warum-avl-list-verstaerkt-mit-dem-ruestungsgeschaeft-liebaeugelt",
+   "https://en.wikipedia.org/wiki/AVL_List"
+  ],
+  "reason": "Heading removed; the facts are stated under Funding. 'Moving into defence', 'powertrain and efficiency' and the quoted wording were not what the article says."
+ },
+ {
+  "id": "grazer-kunstverein",
+  "section": "Bottom line",
+  "problems": [
+   "flag wording",
+   "overstatement: 'whose management now pursues defence business'"
+  ],
+  "before": "The weak point is the patron AVL List, whose management now pursues defence business; the other patrons are not tied to a flagged industry in the pages read. Worth watching are AVL's defence contracts and whether the Kunstverein publishes accounts.",
+  "after": "The weak points are that no amounts or accounts are published and that the patron AVL List told trend in 2025 it is looking at defence business; no page read shows it currently makes defence products. Worth watching are AVL's defence activity and whether the Kunstverein publishes accounts.",
+  "sources": [
+   "https://www.trend.at/unternehmen/warum-avl-list-verstaerkt-mit-dem-ruestungsgeschaeft-liebaeugelt"
+  ],
+  "reason": "Matches the article."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "section": "Overview",
+  "problems": [
+   "slop vocabulary: 'ecosystem'",
+   "unsupported: 'contemporary art' organisation framing"
+  ],
+  "before": "- Collective study and contemporary art ecosystem at Jl. Durian Raya No. 30A,",
+  "after": "- Collective learning space for art at Jl. Durian Raya No. 30A,",
+  "sources": [
+   "https://gudskul.art/kontak/",
+   "https://en.wikipedia.org/wiki/Ruangrupa"
+  ],
+  "reason": "Wikipedia calls Gudskul a public learning space; 'ecosystem' is filler."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "section": "Overview",
+  "problems": [
+   "claim differs from source: 'Founded in 2018 by'; Sharjah says the collectives transformed into Gudskul in 2018"
+  ],
+  "before": "- Founded in 2018 by the collectives ruangrupa (founded in 2000), Serrum (2006) and Grafis Huru Hara (2012); it grew out of Gudang Sarinah Ekosistem, formed in 2015 (Sharjah Art Foundation; Wikipedia).\n",
+  "after": "- The collectives ruangrupa (founded in 2000), Serrum (2006) and Grafis Huru Hara (2012) formed Gudang Sarinah Ekosistem in 2015 and transformed into Gudskul in 2018 (Sharjah Art Foundation; Wikipedia).\n",
+  "sources": [
+   "https://www.sharjahart.org/en/people/details/gudskul",
+   "https://en.wikipedia.org/wiki/Ruangrupa"
+  ],
+  "reason": "Follows the Sharjah page's wording."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'rented or borrowed space at first'"
+  ],
+  "before": "- Building: Gudskul rented or borrowed space at first and now owns land and a building, which an essay co-written by Gudskul says is used \"suboptimally\" (e-flux, 2026).\n",
+  "after": "- Building: Gudskul owns land and a building, which an essay co-written by Gudskul says continue to be used \"suboptimally\" (e-flux, April 2026).\n",
+  "sources": [
+   "https://www.e-flux.com/architecture/essays/6783044/building-ideas-from-the-middle"
+  ],
+  "reason": "The essay does not say how Gudskul housed itself earlier."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'managing creative spaces'",
+   "event dated 2024, not current"
+  ],
+  "before": "- Programmes: short courses (September to October 2026 topics include archive and film, writing about art, comics and managing creative spaces), the Studi Kolektif programme, a speculative collective board game and performances at Aula Gudskul (Gudskul).\n",
+  "after": "- Programmes: short courses (September to October 2026 topics include archival, film, video and new media art, writing about art and comic-making), the Studi Kolektif programme, a cooperative board game about art collectives, and performances at Aula Gudskul (Gudskul).\n",
+  "sources": [
+   "https://gudskul.art"
+  ],
+  "reason": "'Managing creative spaces' is not on the page."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "section": "Funding",
+  "problems": [
+   "translation not marked"
+  ],
+  "before": "- Per its about page, each collective's operations are supported mainly by donor agencies, sponsors and income from Gudskul's business units; members also give voluntary funds (stated by the space).\n",
+  "after": "- Per its about page (translated from Indonesian), most of each collective's operational support comes from donor agencies and sponsors, with self-funding from its business units; members also give voluntary funds (stated by the space).\n",
+  "sources": [
+   "https://gudskul.art/tentang/"
+  ],
+  "reason": "The page is in Indonesian; the wording now follows it."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "section": "Funding",
+  "problems": [
+   "claim differs from source: 'member of Arts Collaboratory'",
+   "DOEN tie stated more loosely than the sources allow"
+  ],
+  "before": "- Founder ruangrupa is a member of Arts Collaboratory, whose only named funder on its site is the DOEN Foundation; Wikipedia says ruangrupa is part of the Ford Foundation and Arts Collaboratory networks and receives financial support from them. The Arts Collaboratory page does not list Gudskul, so no reporting found of DOEN money going to Gudskul itself.\n- Sharjah Art Foundation lists Gudskul among the participants of the 14th Sharjah Biennial (2019); no reporting found of any payment.\n",
+  "after": "- Founder ruangrupa is listed among the organisations on the Arts Collaboratory site, whose only named funder is the DOEN Foundation; Wikipedia says ruangrupa is part of the Ford Foundation and Arts Collaboratory networks and receives financial support from them. The DOEN tie runs through ruangrupa and Arts Collaboratory only: neither the Arts Collaboratory site nor its Wikipedia page lists Gudskul, and no reporting found of DOEN money going to Gudskul itself.\n- Sharjah Art Foundation lists Gudskul's participation in Sharjah Biennial 14, which Wikipedia dates to 2019; no reporting found of any payment.\n",
+  "sources": [
+   "https://artscollaboratory.org",
+   "https://en.wikipedia.org/wiki/Ruangrupa",
+   "https://en.wikipedia.org/wiki/Arts_Collaboratory"
+  ],
+  "reason": "States the DOEN link as the sources give it."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "section": "Criticism in art media",
+  "problems": [
+   "hedge: 'may try'",
+   "unsupported: 'they say long-term survival is uncertain'"
+  ],
+  "before": "- Written from conversations led by farid rakun and Rifandi Nugroho of Gudskul; the space's own people name its problems.\n- Gudskul has not resolved its economic model; its owned building is underused; ownership and agency remain unsettled.\n- Power may try to co-opt the collective for political interests, which the authors say Gudskul resists; they say long-term survival is uncertain.\n",
+  "after": "- Introduced by farid rakun and Rifandi Nugroho of Gudskul, who held a series of conversations with Kusno that became the essay; the space's own people name its problems.\n- Gudskul has not yet formed a new economic model and works within formal, informal and mixed economies; its owned land and building \"continue to be used suboptimally\"; ownership and agency remain unsettled (\"Who has the right to do what?\").\n- The authors write that \"Power will always try to use the collective to serve the interest of certain political groups\", and that Gudskul works to speak against power and injustice; they also write that \"We don't need to be too ambitious in thinking that Gudskul will last forever.\"\n",
+  "sources": [
+   "https://www.e-flux.com/architecture/essays/6783044/building-ideas-from-the-middle"
+  ],
+  "reason": "Hedge removed by quoting the essay; the survival point now uses the authors' own sentence."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "section": "Criticism in art media",
+  "problems": [
+   "unsupported: 'Western audiences treat as a model'",
+   "hedge/verdict: 'can read as simplistic'"
+  ],
+  "before": "- Funding can build infrastructure but also serves donor states' foreign policy interests, so collectivity risks becoming a \"token of difference\" that Western audiences treat as a model.\n- Funding structures reward certain forms (tin sheds, bamboo, communal meals), which can read as simplistic.\n",
+  "after": "- Argues that funding builds infrastructure but also advances \"the regional foreign policy interests of the donor nation states\", so that \"collectivity ends up being mediated as a token of difference\".\n- Describes the non-Western collectives' architecture as using recognisable, simplistic materials from their home countries, including \"tin sheds, brick, straw, bamboo\".\n",
+  "sources": [
+   "https://www.e-flux.com/criticism/482210/the-double-bind-on-documenta-15"
+  ],
+  "reason": "Reworded to what the piece states, with its own phrases quoted."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "section": "Wider context",
+  "problems": [
+   "wording follows the source more closely"
+  ],
+  "before": "- Ruangrupa and 65 participating artists signed an open letter on 10 September 2022 opposing the scientific advisory panel set up to review artworks (Wikipedia).\n",
+  "after": "- Ruangrupa and 65 participating artists signed an open letter on 10 September 2022 responding to the scientific advisory panel's preliminary findings (Wikipedia).\n",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Documenta_fifteen"
+  ],
+  "reason": "The page says the letter responded to the panel's preliminary findings."
+ },
+ {
+  "id": "hangar-barcelona",
+  "section": "Overview",
+  "problems": [
+   "wording: 'run by a private foundation, the AAVC' is not what the page says"
+  ],
+  "before": "- Founded in 1997 by the Associació d'Artistes Visuals de Catalunya (AAVC); since 2003 it has been run by a private foundation, the AAVC (Barcelona City Council).\n",
+  "after": "- Founded in 1997 by the Associació d'Artistes Visuals de Catalunya (AAVC); it has had private foundation status since 2003 (Barcelona City Council).\n",
+  "sources": [
+   "https://ajuntament.barcelona.cat/fabriquescreacio/en/fabriques/fabrica-a-fabrica/hangar"
+  ],
+  "reason": "The page says private foundation status since 2003."
+ },
+ {
+  "id": "hangar-barcelona",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'lost most of its industries between 2004 and 2006, leaving Hangar its only occupant until 2016'",
+   "unsupported: 'the University of Barcelona manages the rest of the complex'"
+  ],
+  "before": "Can Ricart lost most of its industries between 2004 and 2006, leaving Hangar its only occupant until 2016; the University of Barcelona manages the rest of the complex, and 3Cat reports the city ceded 7,000 square metres of it to the university.\n",
+  "after": "Fillip (2008) describes Hangar as the only site still active at Can Ricart after more than thirty small industries were pushed out; 3Cat (2016) reports that the city ceded 7,000 square metres to the University of Barcelona, which is developing a humanities and social sciences park there.\n",
+  "sources": [
+   "https://fillip.ca/content/art-activism-and-urban-conflict-in-contemporary-barcelona",
+   "https://www.3cat.cat/3catinfo/lantic-conjunt-industrial-de-can-ricart-reviu-amb-projectes-de-futur/noticia-amp/2713245/"
+  ],
+  "reason": "3Cat gives no 2004 to 2006 period or 'only occupant until 2016'; Fillip gives the only-active-site point."
+ },
+ {
+  "id": "hangar-barcelona",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'rental spaces, grants, residencies, training, an artist archive and open days'"
+  ],
+  "before": "- On site: material workshops (carpentry, bio-hacking), audiovisual and multimedia labs, a film set, coworking, rental spaces, grants, residencies, training, an artist archive and open days; 3Cat reports 19 artists' studios and an artist residence (2016).\n",
+  "after": "- On site: material workshops (carpentry, bio-hacking), audiovisual and multimedia labs, a 150-square-metre film set, coworking space, a classroom and multi-purpose rooms (Barcelona City Council); 3Cat reports 19 artists' studios and an artist residence (2016).\n",
+  "sources": [
+   "https://ajuntament.barcelona.cat/fabriquescreacio/en/fabriques/fabrica-a-fabrica/hangar",
+   "https://www.3cat.cat/3catinfo/lantic-conjunt-industrial-de-can-ricart-reviu-amb-projectes-de-futur/noticia-amp/2713245/"
+  ],
+  "reason": "Cut back to the facilities the council page lists."
+ },
+ {
+  "id": "hangar-barcelona",
+  "section": "Funding",
+  "problems": [
+   "verdict 'mainly public' is not supported by a current funder source",
+   "premises claim not supported"
+  ],
+  "before": "Hangar: mainly public with some private grants: Barcelona City Council premises, municipal and other public support, and a bank foundation grant\n- Barcelona City Council renovated the new buildings Hangar uses at Can Ricart (3Cat, 2016); its factories programme page does not say how Hangar is funded.\n",
+  "after": "Hangar: public and private support, with no funder list published: city hall paid its early rent and renovated its buildings, and a bank foundation co-ran a 2020 grant\n- Barcelona City Council rehabilitated the new halls Hangar uses at Can Ricart (3Cat, 2016); its factories programme page does not say how Hangar is funded.\n",
+  "sources": [
+   "https://www.3cat.cat/3catinfo/lantic-conjunt-industrial-de-can-ricart-reviu-amb-projectes-de-futur/noticia-amp/2713245/",
+   "https://fillip.ca/content/art-activism-and-urban-conflict-in-contemporary-barcelona"
+  ],
+  "reason": "The only dated public-money statements are Fillip (rent, 2008) and 3Cat (renovation, 2016)."
+ },
+ {
+  "id": "hangar-barcelona",
+  "section": "Funding",
+  "problems": [
+   "which party paid which item"
+  ],
+  "before": "- Fundació Banc Sabadell co-organised a research grant at Hangar for 2020: fees of 9,750 euros gross, a production grant of up to 4,000 euros and up to 250 euros for travel, with the application deadline on 31 October 2019 (Barcelona City Council grants page). The page does not say which party paid which item.\n- Jeffrey Swartz (Fillip, 2008) wrote that Hangar was originally funded entirely by city hall, which paid its rent, and that it had since secured a wider funding base.\n",
+  "after": "- Fundació Banc Sabadell and Hangar jointly offered a research grant for 2020: fees of 9,750 euros gross, a production grant of up to 4,000 euros gross, travel up to 250 euros, and accommodation and work spaces at Hangar, with the application deadline on 31 October 2019 (Barcelona City Council grants page). The page does not say which party paid which item.\n- Jeffrey Swartz (Fillip, 2008) wrote that Hangar was originally funded entirely by Barcelona city hall, which also paid the rent on its building, and that its association had since secured broader funding.\n",
+  "sources": [
+   "https://ajuntament.barcelona.cat/fabriquescreacio/en/grants-aid/fundacio-banc-sabadell-hangar-arts-research-grant",
+   "https://fillip.ca/content/art-activism-and-urban-conflict-in-contemporary-barcelona"
+  ],
+  "reason": "Both pages say 'the organisers' for the grant; Fillip says city hall paid the rent."
+ },
+ {
+  "id": "hangar-barcelona",
+  "section": "Criticism in art media",
+  "problems": [
+   "unsupported date: 'in 2005'",
+   "hedge: 'Suggests ... explains'"
+  ],
+  "before": "- Describes Hangar as the only active site left at Can Ricart after more than thirty small industries and several artist groups were forced out, and the city agreed in 2005 to save the complex from demolition.\n- Suggests that Hangar's dependence on city hall for rent explains a \"soft\" political stance during the 1990s studio losses and that it became more outspoken once it had a wider funding base.\n",
+  "after": "- Describes Hangar as the only site still active at Can Ricart after more than thirty small industries and some artist and design groups were pushed out; the city agreed to save the factory from demolition.\n- Links the \"soft\" political stance of the association that runs Hangar to its financial dependence on city hall, and says it became more outspoken about the shortage of studio space once it had secured broader funding.\n",
+  "sources": [
+   "https://fillip.ca/content/art-activism-and-urban-conflict-in-contemporary-barcelona"
+  ],
+  "reason": "The article gives no year for the demolition decision; 'may explain' replaced by the author's linkage."
+ },
+ {
+  "id": "hangar-barcelona",
+  "section": "Bottom line",
+  "problems": [
+   "'mainly public' not supported",
+   "premises claim not supported"
+  ],
+  "before": "The money behind Hangar is mainly public, with premises from Barcelona City Council and a bank-foundation grant in 2020; no flagged funder was found. The weak points are that the pages opened give no current funder amounts or accounts and that its own site could not be read here. Worth watching is its relationship with the city council, which renovated its buildings.",
+  "after": "The money behind Hangar is a mix of city support and a bank-foundation grant in 2020; no flagged funder was found. The weak points are that the pages opened give no current funder amounts or accounts and that its own site could not be read here. Worth watching is its relationship with the city council, which paid its early rent and renovated its buildings.",
+  "sources": [
+   "https://fillip.ca/content/art-activism-and-urban-conflict-in-contemporary-barcelona",
+   "https://www.3cat.cat/3catinfo/lantic-conjunt-industrial-de-can-ricart-reviu-amb-projectes-de-futur/noticia-amp/2713245/"
+  ],
+  "reason": "Matches the verdict line."
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "section": "Overview",
+  "problems": [
+   "source attribution: Yarra River and Bulleen are on Wikipedia, not the about page"
+  ],
+  "before": "- Public art museum and sculpture park on the Yarra River in Bulleen, Melbourne, with five gallery spaces on 6.5 hectares of parkland (Heide about page).",
+  "after": "- Public art museum and sculpture park in Bulleen, Melbourne, on the Yarra River (Wikipedia), with five gallery spaces on 6.5 hectares of parkland (Heide about page).",
+  "sources": [
+   "https://www.heide.com.au/about-us/",
+   "https://en.wikipedia.org/wiki/Heide_Museum_of_Modern_Art"
+  ],
+  "reason": "Splits the attribution between the two pages."
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'heritage gardens'",
+   "figure conflict: the about page gives 3,800 and the collection policy 3,700"
+  ],
+  "before": "- On site: a collection of more than 3,800 works, a sculpture park and heritage gardens, and the Sidney Myer Education Centre (Heide about page; Wikipedia).\n",
+  "after": "- On site: a collection of more than 3,800 works (the page's collection policy section says more than 3,700), a sculpture park, and the Sidney Myer Education Centre, built in 2005 (Heide about page; Wikipedia).\n",
+  "sources": [
+   "https://www.heide.com.au/about-us/",
+   "https://en.wikipedia.org/wiki/Heide_Museum_of_Modern_Art"
+  ],
+  "reason": "Heide's page gives both figures; the education centre is on Wikipedia only."
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "section": "Funding",
+  "problems": [
+   "unsupported: partner names come from link addresses, not page text",
+   "wrong count: four other major-partner logos, not six",
+   "Tucker Foundation unconfirmed"
+  ],
+  "before": "- Government partners named on Heide's partners page: Creative Victoria, Creative Australia and Manningham City Council. No amounts are given on the pages read.\n",
+  "after": "- Government partners on Heide's partners page, read from the logo links because the page prints no names: Creative Victoria, Creative Australia and Manningham City Council. No amounts are given on the pages read.\n",
+  "sources": [
+   "https://heide.com.au/partnerships"
+  ],
+  "reason": "The partners page shows logos only."
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "section": "Funding",
+  "problems": [
+   "unsupported: partner names come from link addresses, not page text",
+   "wrong count: four other major-partner logos, not six"
+  ],
+  "before": "- Major project partner named: the Tucker Foundation; six other major-partner logos carry no name on the page. Supporting partners listed: ABL, Gunn and Taylor, IAS DAS, Merry People, Taubmans, Yalyal, Leif Products, Erebus Studio and Studio Mass; media partners Clemenger BBDO, Broadsheet, The Saturday Paper and Cinema Nova.\n",
+  "after": "- Major Project Partners: one logo links to tuckerfoundation.org.au and four other logos carry no name; the page text names none of them, so the Tucker Foundation is unconfirmed as a funder. Supporting partners, read from the logo links: ABL, Gunn Taylor, IAS DAS, Merry People, Taubmans, Yalyal, Leif Products, Erebus Studio and Studio Mass; media partners, also from the links: Clemenger BBDO, Broadsheet, The Saturday Paper and Cinema Nova.\n",
+  "sources": [
+   "https://heide.com.au/partnerships"
+  ],
+  "reason": "The partners page has four unnamed logos besides the Tucker link, not six; none of the names is printed on the page."
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "section": "Funding",
+  "problems": [
+   "names left ambiguous: 'No reporting found of amounts'"
+  ],
+  "before": "- No reporting found on the pages opened of Gordon Darling, Downer or Shine On foundation amounts, a Melbourne Water grant or a North East Link Community Fund grant; the annual report that lists donors could not be read.\n",
+  "after": "- No page opened names Gordon Darling, Downer or Shine On foundation gifts, a Melbourne Water grant or a North East Link Community Fund grant as support for Heide, so they are unconfirmed; North East Link appears on Heide's donate page only as a road project affecting access to the museum. The annual report that lists donors could not be read.\n",
+  "sources": [
+   "https://heide.com.au/donate",
+   "https://heide.com.au/partnerships"
+  ],
+  "reason": "Neither page names any of these donors."
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "section": "Bottom line",
+  "problems": [
+   "unsupported speculation: 'how the North East Link road works affect the site and its funding'"
+  ],
+  "before": "Worth watching is how the North East Link road works affect the site and its funding.",
+  "after": "Worth watching is whether Heide publishes its donor list.",
+  "sources": [
+   "https://heide.com.au/donate"
+  ],
+  "reason": "The donate page mentions the road project only as affecting access; no page links it to funding."
+ },
+ {
+  "id": "hek-haus-der-elektronischen-k-nste-basel",
+  "section": "Overview",
+  "problems": [
+   "unsupported: 'on the Basel city edge'"
+  ],
+  "before": "- Museum for digital and media art at Freilager-Platz 9, Münchenstein, on the Basel city edge; tram 11 stops at \"Freilager\" (museums.ch).\n",
+  "after": "- Museum for digital and media art at Freilager-Platz 9, Münchenstein / Basel; tram 11 from Bahnhof SBB stops at \"Freilager\" (museums.ch).\n",
+  "sources": [
+   "https://www.museums.ch/de/museumsbesuch/museen/museen/hek-(haus-der-elektronischen-kuenste)-2802.html"
+  ],
+  "reason": "The page gives the address as Münchenstein / Basel and names the tram stop."
+ },
+ {
+  "id": "hek-haus-der-elektronischen-k-nste-basel",
+  "section": "Funding",
+  "problems": [
+   "verdict adds 'federal culture office' as a current funder",
+   "'faced closure' is not on the page"
+  ],
+  "before": "HEK: mainly public with foundation and corporate partners: the two Basel cantons and the Swiss federal culture office\n- Public: in 2018 HEK faced closure after the Federal Office of Culture cut its annual funding; the cantons of Basel-Stadt and Basel-Landschaft covered the losses (Wikipedia).\n",
+  "after": "HEK: public funding from the two Basel cantons (and the Swiss federal culture office until its 2018 cut), plus an award foundation and a corporate award partner\n- Public: in 2018 the Federal Office of Culture cut HEK's annual funding, and the cantons of Basel-Stadt and Basel-Landschaft covered the losses so that HEK could continue (Wikipedia).\n",
+  "sources": [
+   "https://en.wikipedia.org/wiki/House_of_Electronic_Arts"
+  ],
+  "reason": "Wikipedia says the cantons covered the losses and HEK continued."
+ },
+ {
+  "id": "hek-haus-der-elektronischen-k-nste-basel",
+  "section": "Funding",
+  "problems": [
+   "wrong verb: 'sponsored by' where the page says 'hosted by'"
+  ],
+  "before": "- HEK also hosts works from the VH Award, sponsored by Hyundai Motor Company (Wikipedia).\n",
+  "after": "- HEK also hosts the VH Award, which Wikipedia describes as hosted by Hyundai Motor Company.\n",
+  "sources": [
+   "https://en.wikipedia.org/wiki/House_of_Electronic_Arts"
+  ],
+  "reason": "The page does not say 'sponsored'."
+ },
+ {
+  "id": "hek-haus-der-elektronischen-k-nste-basel",
+  "section": "Funding",
+  "problems": [
+   "Göhner and Binding unconfirmed; Christoph Merian Foundation stated only as site developer"
+  ],
+  "before": "- No reporting found on the pages opened of Göhner or Binding foundation amounts, of Christoph Merian Foundation amounts, of annual cantonal or federal sums, or of accounts. The cantonal funding documents found were unreadable PDFs.\n",
+  "after": "- Christoph Merian Foundation: named only as the developer of the Dreispitz site where HEK was founded (Wikipedia); no funding from it is stated on the pages opened.\n- Göhner and Binding are not named on any page opened, so they are unconfirmed as funders. No reporting found of annual cantonal or federal sums or of accounts. The cantonal funding documents found were unreadable PDFs.\n",
+  "sources": [
+   "https://en.wikipedia.org/wiki/House_of_Electronic_Arts",
+   "https://hek.ch"
+  ],
+  "reason": "Neither Wikipedia nor hek.ch names Göhner or Binding."
+ },
+ {
+  "id": "hek-haus-der-elektronischen-k-nste-basel",
+  "section": "Bottom line",
+  "problems": [
+   "unsupported: 'cantonal funding contract for 2027 to 2031'"
+  ],
+  "before": "Worth watching is the cantonal funding contract for 2027 to 2031.",
+  "after": "Worth watching are the cantonal funding sums and whether HEK publishes a supporter list.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/House_of_Electronic_Arts"
+  ],
+  "reason": "No opened page mentions a 2027 to 2031 contract."
+ },
+ {
+  "id": "glenstone",
+  "section": "Overview",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- On site: indoor galleries and outdoor sculpture including Jeff Koons's \"Split-Rocker\" and Richard Serra's \"Sylvester\" (The Art Newspaper, 2023).\n",
+  "after": "",
+  "sources": [
+   "https://www.theartnewspaper.com/2023/03/02/mitchell-rales-19bn-donation-glenstone-museum",
+   "https://projects.propublica.org/nonprofits/organizations/205938416"
+  ],
+  "reason": "Trimmed to get under 800 words; FUNDING, BOTTOM LINE and SOURCES kept."
+ },
+ {
+  "id": "glenstone",
+  "section": "Funding",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "- Officers on the FY2024 filing: Mitchell Rales (chairman), Emily Rales (president), C Scott Brannan and Rachel Plumley.\n",
+  "after": "",
+  "sources": [
+   "https://www.theartnewspaper.com/2023/03/02/mitchell-rales-19bn-donation-glenstone-museum",
+   "https://projects.propublica.org/nonprofits/organizations/205938416"
+  ],
+  "reason": "Trimmed to get under 800 words; FUNDING, BOTTOM LINE and SOURCES kept."
+ }
+]
