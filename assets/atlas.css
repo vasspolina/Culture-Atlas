@@ -737,7 +737,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 /* One thin up chevron on the right, drawn from the current text colour so hover and dark mode invert it with the label. */
 #layersBtn::after{content:"";flex:none;width:10px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 #layersBtn:hover,#layersBtn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
-#layersPanel{position:absolute;top:auto;bottom:calc(100% + 6px);left:0;right:auto;z-index:1;box-sizing:border-box;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:0;padding:14px;width:620px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 72px);overflow-y:auto;box-shadow:none;font:400 var(--fs-s)/1.35 var(--sans);letter-spacing:0;user-select:none;--row:#efede6;--row-ink:#000;--row-dim:#6a6a6a;--row-on:#6a675f;--row-on-ink:#fff;--row-on-dim:#e9e7e1;--row-hover:#fbfd5e}
+#layersPanel{position:absolute;top:auto;bottom:calc(100% + 6px);left:0;right:auto;z-index:1;box-sizing:border-box;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:0;padding:14px;width:640px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 72px);overflow-y:auto;box-shadow:none;font:400 var(--fs-s)/1.35 var(--sans);letter-spacing:0;user-select:none;--row:#efede6;--row-ink:#000;--row-dim:#6a6a6a;--row-on:#6a675f;--row-on-ink:#fff;--row-on-dim:#e9e7e1;--row-hover:#fbfd5e}
 :root[data-theme="dark"] #layersPanel{--row:#232322;--row-ink:#fff;--row-dim:#a3a3a3}
 #layersPanel.is-above{top:auto;bottom:calc(100% + 6px)}
 #layersPanel[hidden]{display:none}
@@ -752,18 +752,18 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-section+.layers-section{margin-top:8px;border-top:1px solid var(--line)}
 #layersPanel .layers-section-title{margin:0 0 8px;color:var(--ink);font:400 var(--fs-s)/1.2 var(--sans);letter-spacing:0}
 #layersPanel .layers-list{display:flex;flex-direction:column;gap:4px}
-/* Each layer is one full-width row, the way a type foundry lists its licences: the box, the name in bold, what the layer
-   shows in grey, and its count on the right in small capitals. Off: beige. On: warm grey with white text. Under the pointer: yellow. */
-#layersPanel label{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;align-items:center;column-gap:12px;min-height:40px;padding:8px 14px;border-radius:9px;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.3 var(--sans);letter-spacing:0;cursor:pointer;transition:background .15s var(--ease),color .15s var(--ease)}
+/* Each layer is one full-width row typeset in aligned columns: checkbox, name, description, and count on the right (no capitals).
+   Off: beige. On: warm grey with white text. Under the pointer: yellow. */
+#layersPanel label{display:grid;grid-template-columns:18px 11em minmax(0,1fr) 8.6em;align-items:center;column-gap:14px;min-height:40px;padding:8px 14px;border-radius:9px;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.3 var(--sans);letter-spacing:0;cursor:pointer;transition:background .15s var(--ease),color .15s var(--ease)}
 #layersPanel label:has(input:checked){background:var(--row-on);color:var(--row-on-ink);--row-dim:var(--row-on-dim)}
 #layersPanel label:has(input:disabled){cursor:default}
 #layersPanel label:has(input:not(:disabled)):hover{background:var(--row-hover);color:#000;--row-dim:#6b6b6b}
 #layersPanel input{appearance:none;width:18px;height:18px;margin:0;border:2px solid currentColor;border-radius:3px;background:transparent;cursor:inherit;display:grid;place-items:center}
 #layersPanel input:checked::after{content:"";width:8px;height:8px;background:currentColor}
 #layersPanel input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-#layersPanel .layer-name{font:700 var(--fs-s)/1.2 var(--display);letter-spacing:0;white-space:nowrap}
-#layersPanel .layer-desc{min-width:0;color:var(--row-dim)}
-#layersPanel .layers-count{text-align:right;white-space:nowrap;color:var(--row-dim);font:400 var(--fs-s)/1.2 var(--sans);letter-spacing:.08em;text-transform:uppercase}
+#layersPanel .layer-name{font:700 var(--fs-s)/1.25 var(--display);letter-spacing:0;white-space:normal}
+#layersPanel .layer-desc{min-width:0;color:var(--row-dim);line-height:1.3}
+#layersPanel .layers-count{text-align:right;white-space:normal;color:var(--row-dim);font:400 var(--fs-s)/1.25 var(--sans);letter-spacing:0;text-transform:none;font-variant-numeric:tabular-nums}
 #layersPanel .layers-count:empty{display:none}
 @media (max-width:640px){#layersPanel label{grid-template-columns:auto minmax(0,1fr) auto;row-gap:2px}#layersPanel .layer-name{white-space:normal}#layersPanel .layer-desc{grid-column:2/-1}}
 #layersPanel .layers-note{margin:0 0 8px;color:var(--row-dim);font:400 var(--fs-s)/1.4 var(--sans)}

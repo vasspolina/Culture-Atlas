@@ -771,21 +771,21 @@
       set('spaces', `${formatCount(ALL_INSTITUTIONS.length)}`);
       set('flags', `${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
       const graded = ALL_INSTITUTIONS.filter(i => i.grade).length;
-      set('grade', `${formatCount(graded)} rated · ${formatCount(ALL_INSTITUTIONS.length - graded)} unrated`);
+      set('grade', `${formatCount(graded)}\u00a0rated · ${formatCount(ALL_INSTITUTIONS.length - graded)}\u00a0unrated`);
     }
     if (HQ) {
-      set('hq', `${formatCount(HQ.orgs.length)} offices · ${formatCount(new Set(HQ.orgs.map(o => o.c)).size)} cities`);
-      set('people', `${formatCount(HQ.people.length)} offices`);
+      set('hq', `${formatCount(HQ.orgs.length)}\u00a0offices · ${formatCount(new Set(HQ.orgs.map(o => o.c)).size)}\u00a0cities`);
+      set('people', `${formatCount(HQ.people.length)}\u00a0offices`);
     }
     if (recById && HQ) buildTop();
     if (web) {
-      set('ties', `${formatCount(web.length)} links · ${formatCount([...keyIndex.values()].filter(ids => ids.length >= 2).length)} shared funders`);
-      set('money', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)} spaces`);
-      set('mix', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)} spaces`);
+      set('ties', `${formatCount(web.length)}\u00a0links · ${formatCount([...keyIndex.values()].filter(ids => ids.length >= 2).length)}\u00a0shared\u00a0funders`);
+      set('money', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)}\u00a0spaces`);
+      set('mix', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)}\u00a0spaces`);
       const rightRecs = [...recById.values()].filter(rec => rec.nodes.some(RIGHT)), rightKeys = new Set();
       rightRecs.forEach(rec => rec.nodes.filter(RIGHT).forEach(n => rightKeys.add(n[5])));
-      set('right', `${formatCount(rightRecs.length)} spaces · ${formatCount(rightKeys.size)} funders`);
-      set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)} spaces`);
+      set('right', `${formatCount(rightRecs.length)}\u00a0spaces · ${formatCount(rightKeys.size)}\u00a0funders`);
+      set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)}\u00a0spaces`);
     }
   }
 
