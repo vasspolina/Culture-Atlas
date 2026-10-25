@@ -1265,3 +1265,12 @@ these; each needs an editor's decision (flags and tier go through tools/import_r
 - The Power Plant and The Polygon: TD Bank Group added as a Red flag (TD Bank N.A. plea, 10 October 2024, USD 1.8 billion), per the House rules' name-to-know paragraph; TD is named with years in each space's annual report. Editor to confirm; the stricter reading moves both to Wider context.
 - The Contemporary Austin: ART F CITY 2011 item moved to Wider context (concerns the predecessor Arthouse).
 - The Hepworth Wakefield: Bloomberg Philanthropies is a Major Supporter; the 27 May 2021 partnership is the Bloomberg Connects app, no grant stated.
+
+## d099 (slop check: checks/d099-slop.json)
+- White Columns: Blavatnik Family Foundation (Fossil fuels) added as a Red flag. The support page is titled "Support - Effective Sept. 2025" and lists the foundation under "Additional support is provided by", so the funder is current; the Blavatnik ruling applies (Wikipedia: aluminium and oil assets, TNK-BP stake sold to Rosneft in 2013). Editor to confirm; undo by deleting the Red flags block, one bottom-line clause and one source line.
+- Winnipeg Art Gallery: Eckhardt item kept under Criticism (a former director; the gallery removed his name). The 2024 donor list on wag.ca was not readable, so TD Bank, Manitoba Liquor & Lotteries and the government grants are not in the report. C$35m of C$65m is Wikipedia's figure.
+- Yemisi Shyllon Museum: Okomu Oil Palm Wider context cut (Mongabay does not mention Oyebode, the museum or Shyllon).
+- WHW: Vienna non-renewal at Kunsthalle Wien kept as Wider context; ERSTE Foundation is on WHW's support list.
+- Wits Art Museum: Sabvest shares and R204.4m come from Billionaires.Africa only and are credited to it.
+- Y Gallery Minsk: no Criticism section; dates split by source (CIMAM, MoMA, Wikipedia).
+- Wysing: the Charity Commission page was not readable, so no income figure.
