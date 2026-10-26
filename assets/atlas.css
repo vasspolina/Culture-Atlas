@@ -2236,3 +2236,31 @@ div:has(>#topThemeBtn){column-gap:0}
 @container (min-width:34em){
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--L)}
 }
+
+/* ---- The record in two columns, a third and two thirds, with nothing indented (user, 26 Oct 2026) ----
+   The head is the buttons on the left and the facts on the right, with no bullets in the facts (the grade and the sentence under it are not a list).
+   Every row under the head has the same split, so its title sits under the buttons and its points under the facts; the old left margin on everything
+   under the head, which left an empty strip beside each row, is gone. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li{padding-left:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li::before{content:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li::before{content:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li{padding-left:0}
+@container (min-width: 620px) {
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-grid{grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--L)}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{margin-left:0}
+  /* The head's facts are one block in the right-hand column: the place and the founding over the grade, not a row of their own. */
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row{grid-template-columns:minmax(0,1fr);row-gap:0;border-top:0;padding:0}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list{margin-top:var(--H)}
+}
+
+/* ---- Visiting nearer the foundry footer (user, 26 Oct 2026) ----
+   There the label and the words under it are one size, the label in grey capitals, and each column is its own stack that runs down and then
+   starts the next, not a grid whose rows keep every column waiting for the tallest fact. So: the label at the text size (16px), and the facts
+   flow in two columns with each fact kept whole. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:1}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item{break-inside:avoid;margin:0 0 var(--L)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item:last-child{margin-bottom:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dt{font-size:16px}
+@container (min-width:34em){
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:2;column-gap:calc(2 * var(--L))}
+}
