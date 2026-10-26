@@ -1,0 +1,53 @@
+[
+ {
+  "id": "kamloops-art-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artspeak-vancouver",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "m-hong-kong",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "M Plus Museum Limited (M+ Ltd) is a wholly owned subsidiary of the West Kowloon Cultural District Authority, a statutory public body established by the WKCDA Ordinance (Cap. 601). The page states the form of the owner, not a legal form for M+ Ltd itself.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "m-hong-kong",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "m-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "M Plus Museum Limited (M+ Ltd) is a wholly owned subsidiary of the West Kowloon Cultural District Authority, a statutory public body established by the WKCDA Ordinance (Cap. 601). The page states the form of the owner, not a legal form for M+ Ltd itself.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "m-museum",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "art-macao-macau",
+  "verdict": "ok",
+  "faults": []
+ }
+]

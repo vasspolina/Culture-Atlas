@@ -1,0 +1,160 @@
+[
+ {
+  "id": "appartement-temoin-perret",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "le-19-crac-montbéliard",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://le19crac.com/en/infos",
+    "https://le19crac.com/en/about",
+    "https://recherche-entreprises.api.gouv.fr/search?q=391920881"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The French business register (SIRENE) lists the Centre régional d'art contemporain at 19 avenue des Alliés, Montbéliard, as an association declared in 1993, and the centre's own information page gives the same address."
+ },
+ {
+  "id": "fondation-cartier",
+  "governance": {
+   "legal_form": "private company",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://www.fondationcartier.com/storage/uploads/67b62068-65da-4d91-b099-93dbb41f42c5/Ticketing-Terms-and-Conditions-for-Fondation_FR_NOV25.pdf",
+    "https://recherche-entreprises.api.gouv.fr/search?q=331876284"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Fondation's ticketing terms (November 2025, page 1) name Cartier & Compagnie SAS as the Fondation Cartier, and the SIRENE register lists that company at 2 place du Palais-Royal as a simplified joint-stock company (SAS)."
+ },
+ {
+  "id": "georgian-national-museum-tbilisi",
+  "governance": {
+   "legal_form": "statutory public body",
+   "parent": "Ministry of Education, Science, Culture and Sport of Georgia",
+   "director_appointed_by": "government or ministry",
+   "staff_status": "employees of the institution",
+   "budget_set_by": "legislature or ministry",
+   "controls": [
+    "approval of programme, loans or disposals by a ministry or council"
+   ],
+   "year": "2025",
+   "sources": [
+    "https://matsne.gov.ge/ka/document/view/4591799"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The ministerial order approving the museum's statute (matsne.gov.ge, current version) says in Article 1 that it is a legal entity of public law, in Article 3 that the minister appoints the general director for four years and the director hires staff under the Labour Code, and in Article 9 that budget, staffing table, payroll, loans and property transactions need ministry consent."
+ },
+ {
+  "id": "kropka-belarusian-community-space-listed-in-place-of-krokva-tbilisi",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "kunsthalle-tbilisi-tbilisi",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "ambasada-kultury-berlin",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "http://web.archive.org/web/20260510063537/https://jsfoundation.art/imprint/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The imprint on the foundation's own site (Wayback copy of May 2026) says it is a non-profit foundation in the legal sense, financed by donations in particular from Julia Stoschek, and was recognised as a legal entity by the Berlin Senate Administration for Justice on 23 June 2017."
+ },
+ {
+  "id": "museum-fur-deutsche-geschichte",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "koelnischer-kunstverein",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://koelnischerkunstverein.de/en/imprint/",
+    "https://koelnischerkunstverein.de/en/institutionsinfos/board-comittee/",
+    "https://koelnischerkunstverein.de/en/membership/",
+    "https://kunstvereine.de/sites/default/files/2022-09/KKV_Ausschreibung.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The imprint names a Vorstand with a chair, the board page lists board and committee, the membership page sets out member subscriptions, and the 2022 director job advertisement speaks of the Vereinsbetrieb."
+ },
+ {
+  "id": "kunstverein-in-hamburg",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": "board",
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2018",
+   "sources": [
+    "https://kunstverein.de/media/Dokumente/KVH24_Satzung_210x297mm_DE.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The statute (edition KVH24, last amended 29 October 2018) gives the name Kunstverein in Hamburg e.V. in section 1.1, lets the board hire and dismiss the director in section 15, and refers to the association's employees (Angestellte des Vereins) in section 15."
+ },
+ {
+  "id": "museum-abteiberg-monchengladbach",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "City of Mönchengladbach",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.moenchengladbach.de/rathaus/buergerinfo-a-z/bildung-kultur-sport-dezernat-iv/fachbereich-museen-43/museum-abteiberg/",
+    "https://www.museum-abteiberg.de/impressum"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The city's administration page lists Museum Abteiberg under Dezernat IV, Fachbereich Museen (43), and the museum's imprint names the Stadt Mönchengladbach as publisher and the museum as Städtisches Museum Abteiberg."
+ }
+]

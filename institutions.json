@@ -4854,6 +4854,16 @@
         "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/22a0366c-5db3-11f1-bca5-a97a03ed1ef3",
         "https://kfda.be/en/venues/wiels/"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?lang=nl&ondernemingsnummer=0478422608"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -6739,6 +6749,17 @@
       ],
       "website": "https://christchurchartgallery.org.nz (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Christchurch City Council",
+      "controls": [],
+      "year": "2020",
+      "sources": [
+        "https://web.archive.org/web/20240702082426/https://www.ccc.govt.nz/assets/Documents/The-Council/Plans-Strategies-Policies-Bylaws/Plans/Long-Term-Plan/ltp2021/AMP-Christchurch-Art-Gallery-Draft-LTP-2021-2031.PDF"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -9473,6 +9494,17 @@
       ],
       "website": "https://vanabbemuseum.nl (checked 2026-10-25; live, though some subpages returned \"page not found\")",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Gemeente Eindhoven",
+      "controls": [],
+      "year": "2024",
+      "sources": [
+        "https://cdn.vanabbemuseum.nl/media/vAM_Beleidsplan%2025-28_def.pdf"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -11648,6 +11680,20 @@
       "sources": [
         "https://kag.bc.ca/about"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [
+        "charity or foundation regulator"
+      ],
+      "year": "2025",
+      "sources": [
+        "https://www.canadahelps.org/en/charities/kamloops-art-gallery",
+        "https://kag.bc.ca/news/sponsorship",
+        "https://kag.bc.ca/s/KAG_Annual_Report_2025_WEB_Spreads.pdf"
+      ],
+      "level": 2,
+      "level_basis": "A private body under a charity or foundation regulator."
     }
   },
   {
@@ -16384,6 +16430,18 @@
       ],
       "website": "https://acca.melbourne (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [
+        "charity or foundation regulator"
+      ],
+      "year": "2026",
+      "sources": [
+        "https://abr.business.gov.au/ABN/View?abn=53089604277"
+      ],
+      "level": 2,
+      "level_basis": "A private body under a charity or foundation regulator."
     }
   },
   {
@@ -17318,6 +17376,22 @@
       ],
       "website": "https://pirellihangarbicocca.org/en/pirelli-hangarbicocca/ (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "bureaucracy": {
+      "legal_form": "private foundation",
+      "director_appointed_by": "board",
+      "budget_set_by": "board",
+      "parent": "Pirelli & C. S.p.A. (Founder Promoter)",
+      "controls": [
+        "charity or foundation regulator"
+      ],
+      "year": "2024",
+      "sources": [
+        "https://web-assets-hangarbicocca.pirelli.com/wp-content/uploads/2024/01/Foundation-Bylaws-Pirelli-HangarBicocca-ETS.pdf",
+        "https://pirellihangarbicocca.org/en/pirelli-hangarbicocca/"
+      ],
+      "level": 2,
+      "level_basis": "A private body under a charity or foundation regulator."
     }
   },
   {
@@ -20830,6 +20904,17 @@
         "https://www.fondationcartier.com/storage/uploads/96619b79-c858-47ca-9b5e-358d9ef67bf2/PRESS-KIT-FONDATION-CARTIER-OPENING.pdf",
         "https://www.fondationcartier.com/en/the-fondation/fondation-cartier-and-architecture"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "private company",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://www.fondationcartier.com/storage/uploads/67b62068-65da-4d91-b099-93dbb41f42c5/Ticketing-Terms-and-Conditions-for-Fondation_FR_NOV25.pdf",
+        "https://recherche-entreprises.api.gouv.fr/search?q=331876284"
+      ],
+      "level": 1,
+      "level_basis": "A private company."
     }
   },
   {
@@ -22888,6 +22973,20 @@
       "net_assets": 11190897,
       "source_kind": "other",
       "url": "https://www.institutotomieohtake.org.br/wp-content/uploads/2025/10/INST-TOMIE-OHTAKE-Balancos-Patromoniais_2023-2024.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "association",
+      "director_appointed_by": "board",
+      "staff_status": "employees of the institution",
+      "budget_set_by": "board",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://www.institutotomieohtake.org.br/wp-content/uploads/2025/07/2025.04.24_Estatuto-Social-Registrado.pdf",
+        "https://www.institutotomieohtake.org.br/termos-de-uso/"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -39930,6 +40029,16 @@
       ],
       "website": "https://www.kunstfort.nl",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://www.kunstfort.nl/nl/informatie/over/voorwaarden-documenten/"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -40552,6 +40661,18 @@
       ],
       "website": "https://www.kunstverein.de",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "association",
+      "director_appointed_by": "board",
+      "staff_status": "employees of the institution",
+      "controls": [],
+      "year": "2018",
+      "sources": [
+        "https://kunstverein.de/media/Dokumente/KVH24_Satzung_210x297mm_DE.pdf"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -44858,6 +44979,17 @@
       ],
       "website": "https://www.jester.be",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?lang=nl&ondernemingsnummer=0415920855",
+        "https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?lang=nl&ondernemingsnummer=0431003860"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -44949,6 +45081,18 @@
       ],
       "website": "https://museum-abteiberg.de",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "City of M\u00f6nchengladbach",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.moenchengladbach.de/rathaus/buergerinfo-a-z/bildung-kultur-sport-dezernat-iv/fachbereich-museen-43/museum-abteiberg/",
+        "https://www.museum-abteiberg.de/impressum"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -49078,6 +49222,18 @@
       "sponsorship": 29500.0,
       "source_kind": "annual report",
       "url": "https://mdc.hr/files/pdf/Izvjesca/2025/Muzej-suvremene-umjetnosti_2025.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "City of Zagreb",
+      "controls": [],
+      "year": "2024",
+      "sources": [
+        "https://web.zagreb.hr/Sjednice/2021/sjednice_skupstine_2021.nsf/0/C12586DF003A998FC1258AA20040FA9A/$FILE/03+Obrazlo\u017eenje.pdf",
+        "https://web.zagreb.hr/Sjednice/2021/sjednice_skupstine_2021.nsf/0/8F100B83458143D2C125876E0033E3CC/$FILE/15+Prijedlog+odluke+Muzeja+suvremene+umjetnosti.pdf"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -49431,6 +49587,18 @@
       ],
       "website": "https://artspeak.ca",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [
+        "charity or foundation regulator"
+      ],
+      "year": "2026",
+      "sources": [
+        "https://www.canadahelps.org/en/charities/artspeak"
+      ],
+      "level": 2,
+      "level_basis": "A private body under a charity or foundation regulator."
     }
   },
   {
@@ -54982,6 +55150,16 @@
       "sponsorship": 61000,
       "source_kind": "annual report",
       "url": "https://beirutartcenter.org/wp-content/uploads/2026/06/BAC_Annual-Report-2025.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "association",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://beirutartcenter.org/about-ar/"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -57445,6 +57623,18 @@
       "sources": [
         "https://www.ballarat.vic.gov.au/news/art-gallery-ballarat-close-temporarily-significant-upgrades"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "staff_status": "public employees",
+      "parent": "City of Ballarat",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.artgalleryofballarat.com.au/explore/about-us/the-organisation"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -58784,6 +58974,16 @@
       ],
       "website": "https://fondationcab.com/about-us",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "private foundation",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?lang=nl&ondernemingsnummer=0691942372"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -58988,6 +59188,16 @@
       ],
       "website": "https://fondationzinsou.org/",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "association",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.fondation-zinsou.org/en/faire-un-don"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -59153,6 +59363,17 @@
       ],
       "website": "https://casabrasil.rj.gov.br/ (checked 2026-10-20)",
       "retrieved": "2026-10-20"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Secretaria de Estado de Cultura e Economia Criativa do Rio de Janeiro",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "http://casabrasil.rj.gov.br/projeto/"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -59271,6 +59492,18 @@
       ],
       "website": "https://artsandculture.google.com/partner/mam-bahia",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Instituto do Patrim\u00f4nio Art\u00edstico e Cultural da Bahia (Ipac), attached to the Secretaria de Cultura do Estado da Bahia",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.ba.gov.br/ipac/museus-0",
+        "https://www.ba.gov.br/ipac/institucional/apresentacao"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -59448,6 +59681,17 @@
       "net_assets": 41604000,
       "source_kind": "annual report",
       "url": "https://confederationcentre.com/wp-content/uploads/2024/12/2024_AnnualReport_Final.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2019",
+      "sources": [
+        "https://confederationcentre.com/wp-content/uploads/2024/02/AReng2018-19.pdf",
+        "https://confederationcentre.com/wp-content/uploads/2024/12/2024_AnnualReport_Final.pdf"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -59728,6 +59972,16 @@
       "net_assets": -115015,
       "source_kind": "audited statements",
       "url": "https://storage.googleapis.com/maj-strapi-uploads-prod/2025_MAJ_Rapport_Annuel_v7_WEB_d004d51b60/2025_MAJ_Rapport_Annuel_v7_WEB_d004d51b60.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2017",
+      "sources": [
+        "https://storage.googleapis.com/maj-strapi-uploads-prod/maj_rapportannuel_2016_17_04b41b9b9f/maj_rapportannuel_2016_17_04b41b9b9f.pdf"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -62183,6 +62437,17 @@
       ],
       "website": "https://www.fineart.gov.eg/",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "national government body",
+      "parent": "Ministry of Culture (Fine Arts Sector)",
+      "controls": [],
+      "year": "2022",
+      "sources": [
+        "http://www.fineart.gov.eg/arb/about/about.htm"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -63113,6 +63378,17 @@
       ],
       "website": "https://www.dublincity.ie/culture-art-and-film/arts-culture-public-spaces/hugh-lane-gallery",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Dublin City Council",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://www.dublincity.ie/sites/default/files/2026-05/annual-service-delivery-plan-progress-report-2025.pdf"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -63610,6 +63886,16 @@
       "net_assets": 189746038027,
       "source_kind": "foundation financial statements",
       "url": "https://www.pola-art-foundation.jp/files/r07_syomi_zaisan_keisan.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "private foundation",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://web.archive.org/web/2025/https://www.polamuseum.or.jp/about/pola-art-foundation/"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -64186,6 +64472,17 @@
       ],
       "website": "https://www.2121designsight.jp/designsight/ (checked 2026-10-20)",
       "retrieved": "2026-10-20"
+    },
+    "bureaucracy": {
+      "legal_form": "private company",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.2121designsight.jp/privacy/",
+        "https://www.2121designsight.jp/recruit/"
+      ],
+      "level": 1,
+      "level_basis": "A private company."
     }
   },
   {
@@ -66664,7 +66961,18 @@
     },
     "flags": null,
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Hutt City Council",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://web.archive.org/web/20260126222039/https://dowse.org.nz/footer/privacy-policy"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
+    }
   },
   {
     "name": "Sarjeant Gallery",
@@ -67098,7 +67406,17 @@
     "why_flagged": "Sponsor Bloomberg: more than 260 UK artists asked five London theatres to drop Bloomberg Philanthropies in May 2026. The 2022 Getty Foundation grant was one-off.",
     "grade": 3,
     "grade_basis": "A funder worth knowing about, outside the flagged categories.",
-    "flags": null
+    "flags": null,
+    "bureaucracy": {
+      "legal_form": "association",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://maclima.pe/politicas-privacidad-mac-lima/"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
+    }
   },
   {
     "name": "Ateneo Art Gallery",
@@ -77745,6 +78063,19 @@
       "sources": [
         "https://agsa-prod.s3.amazonaws.com/media/dd/files/Art_Gallery_of_South_Australia_2024-25_Annual_Report_-_FINAL.1718fee.pdf"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "statutory public body",
+      "parent": "Minister for Arts, South Australia",
+      "controls": [
+        "state audit office"
+      ],
+      "year": "2025",
+      "sources": [
+        "https://agsa-prod.s3.amazonaws.com/media/dd/files/Art_Gallery_of_South_Australia_2024-25_Annual_Report_-_FINAL.1718fee.pdf"
+      ],
+      "level": 3,
+      "level_basis": "A public body with its own board or statute."
     }
   },
   {
@@ -77928,6 +78259,18 @@
       "net_assets": 343661,
       "source_kind": "ACNC",
       "url": "https://data.gov.au/data/api/3/action/datastore_search?resource_id=710630ea-1202-4bbb-95f7-3973a972ddf8&q=Darwin%20Festival"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [
+        "charity or foundation regulator"
+      ],
+      "year": "2026",
+      "sources": [
+        "https://abr.business.gov.au/ABN/View?abn=15616936371"
+      ],
+      "level": 2,
+      "level_basis": "A private body under a charity or foundation regulator."
     }
   },
   {
@@ -78430,6 +78773,18 @@
         "https://www.biennaleofsydney.art/about-us/",
         "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [
+        "charity or foundation regulator"
+      ],
+      "year": "2026",
+      "sources": [
+        "https://abr.business.gov.au/ABN/View?abn=74001614384"
+      ],
+      "level": 2,
+      "level_basis": "A private body under a charity or foundation regulator."
     }
   },
   {
@@ -83070,6 +83425,18 @@
       "expenditure": 9864324,
       "source_kind": "Form 990",
       "url": "https://projects.propublica.org/nonprofits/organizations/135562233"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "parent": "Solomon R. Guggenheim Foundation",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.guggenheim-venice.it/en/the-museum/",
+        "https://projects.propublica.org/nonprofits/organizations/135562233"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -84563,6 +84930,17 @@
       "earned": 580000,
       "source_kind": "annual report",
       "url": "https://www.npdc.govt.nz/media/xxra5dzm/annual-report-2024_25.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "New Plymouth District Council",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://govettbrewster.com/privacy/"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -95409,6 +95787,18 @@
       "net_assets": 968708,
       "source_kind": "ACNC",
       "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [
+        "charity or foundation regulator"
+      ],
+      "year": "2026",
+      "sources": [
+        "https://abr.business.gov.au/ABN/View?abn=50197852194"
+      ],
+      "level": 2,
+      "level_basis": "A private body under a charity or foundation regulator."
     }
   },
   {
@@ -98760,6 +99150,16 @@
       ],
       "website": "https://institutotunga.org (checked 2026-10-25; shows only the notice \"Em manuten\u00e7\u00e3o\", under maintenance, with no other content)",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2023",
+      "sources": [
+        "https://www.e-flux.com/announcements/559902/open-call-catalogue-raisonn/"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -100929,6 +101329,17 @@
       "sponsorship": 89856,
       "source_kind": "other",
       "url": "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
+    },
+    "bureaucracy": {
+      "legal_form": "private foundation",
+      "parent": "City of Espoo",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://www.sttinfo.fi/tiedote/70832929/emma-kaynnistaa-uuden-museonjohtajan-rekrytoinnin-emman-johtaja-pilvi-kalhamasta-uuden-arkkitehtuuri-ja-designmuseon-johtaja?lang=fi"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -101234,6 +101645,18 @@
       "sources": [
         "https://le19crac.com/en/about"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "association",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://le19crac.com/en/infos",
+        "https://le19crac.com/en/about",
+        "https://recherche-entreprises.api.gouv.fr/search?q=391920881"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -104096,6 +104519,18 @@
       ],
       "website": "https://www.museibologna.it/artemoderna/",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Comune di Bologna",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.comune.bologna.it/novita/comunicati-stampa/sites/default/files/imported/files/0-2022/5-maggio/consiglio-comunale/delibera-scioglimento-istituzione-bologna-musei-e-creazione-di-un-nuovo-settore.pdf",
+        "https://cittadellamusica.comune.bologna.it/documents/artcity"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -105437,6 +105872,18 @@
       "sources": [
         "https://www.ycam.jp/asset/pdf/publication/annual-report/ycam-annual-report-2021.pdf"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "public foundation",
+      "staff_status": "mixed",
+      "controls": [],
+      "year": "2022",
+      "sources": [
+        "https://www.ycam.jp/asset/pdf/publication/annual-report/ycam-annual-report-2021.pdf",
+        "https://www.ycam.jp/aboutus/history/"
+      ],
+      "level": 3,
+      "level_basis": "A public body with its own board or statute."
     }
   },
   {
@@ -105565,7 +106012,17 @@
       "retrieved": "2026-10-25"
     },
     "watch": "Patron Antanas Guoga (listed 2022 to 2026) sold TonyBet's Lithuanian arm in 2016.",
-    "why_flagged": "The museum earns up to 50% of its budget. Sponsors, donors and members cover the rest. Tesonet Foundation is strategic patron; Svyturys, Hostinger and PLC Panorama are major partners."
+    "why_flagged": "The museum earns up to 50% of its budget. Sponsors, donors and members cover the rest. Tesonet Foundation is strategic patron; Svyturys, Hostinger and PLC Panorama are major partners.",
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2021",
+      "sources": [
+        "https://mo.lt/wp-content/uploads/2021/10/TvaruMO-strategija-MO-muziejus.pdf"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
+    }
   },
   {
     "name": "Zolak",
@@ -105861,7 +106318,18 @@
     },
     "flags": null,
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Secretar\u00eda de las Culturas y Artes de Oaxaca (Seculta)",
+      "controls": [],
+      "year": "2020",
+      "sources": [
+        "http://web.archive.org/web/2024/https://www.oaxaca.gob.mx/comunicacion/celebra-museo-de-los-pintores-16-anos-como-espacio-cultural-para-el-arte-oaxaqueno/"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
+    }
   },
   {
     "name": "Centro Cultural Tijuana",
@@ -107262,6 +107730,18 @@
       "net_assets": 2292426,
       "source_kind": "audited statements",
       "url": "https://www.riwaq.org/files/43461/1789030976_154154.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.riwaq.org/page/8",
+        "https://www.riwaq.org/page/35",
+        "https://opecfund.org/where-we-work/list/assistance-to-civil-society-organizations-in-palestine-phase-iv-riwaq-center-for-architectural-conservation"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -113153,7 +113633,17 @@
       "retrieved": "2026-10-25"
     },
     "records_note": "Its site lists no reports, accounts, funders or board; the about page names only the founder Rashid Al Khalifa.",
-    "affiliations_note": "RAK Art Foundation sends RAK Art Prize winners to a residency at The Art Station in Muharraq Souq, Bahrain."
+    "affiliations_note": "RAK Art Foundation sends RAK Art Prize winners to a residency at The Art Station in Muharraq Souq, Bahrain.",
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.rakartfoundation.com/about"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
+    }
   },
   {
     "name": "The Common Guild",
@@ -118132,6 +118622,18 @@
       ],
       "website": "https://www.artmacao.mo (checked 2026-10-20; redirects to the 2025 edition's pages; the record's website field holds an SCMP article, which returned 403)",
       "retrieved": "2026-10-20"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Macao SAR Government",
+      "controls": [],
+      "year": "2023",
+      "sources": [
+        "https://www.gcs.gov.mo/news/detail/en/N25EBBJFFv",
+        "https://yearbook.gcs.gov.mo/yearbook_pdf/2023/myb2023ePA01CH16.pdf"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -122819,6 +123321,20 @@
       ],
       "website": "https://unofficial-official.com",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [
+        "charity or foundation regulator"
+      ],
+      "year": "2026",
+      "sources": [
+        "https://www.e-flux.com/announcements/6787189/official-unofficial-belarus",
+        "https://register-of-charities.charitycommission.gov.uk/en/constituency-search/-/charity-details/5025151/governance",
+        "https://register-of-charities.charitycommission.gov.uk/en/constituency-search/-/charity-details/5025151/governing-document"
+      ],
+      "level": 2,
+      "level_basis": "A private body under a charity or foundation regulator."
     }
   },
   {
@@ -126437,6 +126953,18 @@
         }
       ],
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "statutory public body",
+      "director_appointed_by": "government or ministry",
+      "controls": [],
+      "year": "2011",
+      "sources": [
+        "https://archive.gazettes.africa/archive/dz/2011/dz-government-gazette-dated-2011-10-16-no-56.pdf",
+        "https://archive.gazettes.africa/archive/dz/2023/dz-government-gazette-dated-2023-08-14-no-53.pdf"
+      ],
+      "level": 3,
+      "level_basis": "A public body with its own board or statute."
     }
   },
   {
@@ -128138,6 +128666,19 @@
       "sources": [
         "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [
+        "charity or foundation regulator"
+      ],
+      "year": "2026",
+      "sources": [
+        "https://abr.business.gov.au/ABN/View?abn=66988958476",
+        "https://yirrkala.com/"
+      ],
+      "level": 2,
+      "level_basis": "A private body under a charity or foundation regulator."
     }
   },
   {
@@ -129844,6 +130385,16 @@
       ],
       "website": "https://fespaco.bf",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "statutory public body",
+      "controls": [],
+      "year": "2024",
+      "sources": [
+        "https://www.presidencedufaso.bf/wp-content/uploads/2024/11/CONSEIL-DES-MINISTRES-N%C2%B0036-DU-06-NOVEMBRE-2024.pdf"
+      ],
+      "level": 3,
+      "level_basis": "A public body with its own board or statute."
     }
   },
   {
@@ -129980,6 +130531,17 @@
       ],
       "website": "https://lagos-biennial.org/",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "parent": "\u00c0k\u00e9te Art Foundation",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://lagos-biennial.org/lagos-biennial/"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -130812,6 +131374,18 @@
       ],
       "website": "https://muna.culturaypatrimonio.gob.ec",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "national government body",
+      "director_appointed_by": "government or ministry",
+      "parent": "Ministerio de Educaci\u00f3n, Deporte y Cultura",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://esacc.corteconstitucional.gob.ec/storage/api/v1/10_DWL_FL/eyJjYXJwZXRhIjoicm8iLCJ1dWlkIjoiOGMxOGJlYzEtZGVhZS00MjQ1LWI2M2QtOWQ2ZDRiNWY0N2UyLnBkZiJ9"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -131875,6 +132449,18 @@
       "sources": [
         "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/44a0cf9b-761b-11f1-adc7-191362a921e7"
       ]
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [
+        "public procurement law"
+      ],
+      "year": "2026",
+      "sources": [
+        "https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?lang=nl&ondernemingsnummer=0472300621"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -133714,7 +134300,18 @@
       "website": "https://artbelarus.by/ru/about.html (checked 2026-10-20; loaded normally)",
       "retrieved": "2026-10-20"
     },
-    "funding": "Belgazprombank started and runs the gallery and its corporate collection. Its Art-Minsk festival has run since 2018. Gazprom and Gazprombank own 49.8% each; Gazprom's chairman greets the project."
+    "funding": "Belgazprombank started and runs the gallery and its corporate collection. Its Art-Minsk festival has run since 2018. Gazprom and Gazprombank own 49.8% each; Gazprom's chairman greets the project.",
+    "bureaucracy": {
+      "legal_form": "private company",
+      "parent": "Belgazprombank",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://artbelarus.by/ru/about.html"
+      ],
+      "level": 1,
+      "level_basis": "A private company."
+    }
   },
   {
     "id": "ok16-cultural-hub-minsk",
@@ -138221,7 +138818,19 @@
       "website": "https://villadesarts.ma (checked 2026-10-24; returned HTTP 403 and could not be read; the Fondation Al Mada site refused the connection)",
       "retrieved": "2026-10-24"
     },
-    "funding": "Run by Fondation Al Mada, the corporate foundation of Al Mada, the royal family's holding company. Le360 (10 May 2023) says it manages the Casablanca and Rabat villas."
+    "funding": "Run by Fondation Al Mada, the corporate foundation of Al Mada, the royal family's holding company. Le360 (10 May 2023) says it manages the Casablanca and Rabat villas.",
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "parent": "Fondation Al Mada",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://web.archive.org/web/20251214040925/https://www.fondationalmada.ma/en/terms-conditions",
+        "https://web.archive.org/web/20250327203250/https://www.villadesarts.ma/a-propos"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
+    }
   },
   {
     "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
@@ -153737,6 +154346,17 @@
       "net_assets": 185711312,
       "source_kind": "audited statements",
       "url": "https://mohattapalacemuseum.com/Account/Audit%20report%202016.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://mohattapalacemuseum.com/About%20the%20Museum.html",
+        "https://mohattapalacemuseum.com/Support%20The%20Museum.html"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -154338,6 +154958,17 @@
       ],
       "website": "https://ngmaindia.gov.in/ (checked 2026-10-24; loads, but the pages read held only menu headings and no visitor details)",
       "retrieved": "2026-10-24"
+    },
+    "bureaucracy": {
+      "legal_form": "national government body",
+      "parent": "Ministry of Culture, Government of India",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.museumsofindia.gov.in/repository/museum/ngma_del"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -154464,6 +155095,16 @@
       "earned": 19414000,
       "source_kind": "other",
       "url": "https://www.guidestar.org.il/organization/520028275/finances"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://data.gov.il/api/3/action/datastore_search?resource_id=be5b7935-3922-45d4-9638-08871b17ec95&q=520028275"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -154587,6 +155228,16 @@
       ],
       "website": "https://www.tamuseum.org.il (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://data.gov.il/api/3/action/datastore_search?resource_id=be5b7935-3922-45d4-9638-08871b17ec95&q=520002320"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -155519,6 +156170,19 @@
       ],
       "website": "https://theiraqmuseum.com/ (checked 2026-10-24; working, but ownership by the museum is not stated, the footer reads 2020 and it gives no hours or prices)",
       "retrieved": "2026-10-24"
+    },
+    "bureaucracy": {
+      "legal_form": "national government body",
+      "parent": "State Board of Antiquities and Heritage, Ministry of Culture",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://sbah.gov.iq/museums/",
+        "https://sbah.gov.iq/sbah-structure/",
+        "https://sbah.gov.iq"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -158897,6 +159561,17 @@
       ],
       "website": "https://museudoamanha.org.br (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "Prefeitura do Rio de Janeiro",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://museudoamanha.org.br/info/gestao/quem-somos"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -159110,6 +159785,17 @@
       ],
       "website": "no official MAAC site found (checked 2026-10-25; searches returned only press, Wikipedia and a petition page)",
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "national government body",
+      "parent": "Ministerio de Educaci\u00f3n, Deporte y Cultura",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://esacc.corteconstitucional.gob.ec/storage/api/v1/10_DWL_FL/eyJjYXJwZXRhIjoicm8iLCJ1dWlkIjoiOGMxOGJlYzEtZGVhZS00MjQ1LWI2M2QtOWQ2ZDRiNWY0N2UyLnBkZiJ9"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -159283,6 +159969,16 @@
       "net_assets": 22617942,
       "source_kind": "annual report",
       "url": "https://kingstoncreative.org/wp-content/uploads/2024/11/Kingston-Creative-annual-report-2023.pdf"
+    },
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2023",
+      "sources": [
+        "https://kingstoncreative.org/wp-content/uploads/2024/11/Kingston-Creative-annual-report-2023.pdf"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -159428,6 +160124,16 @@
       "net_assets": 1714267,
       "source_kind": "annual report",
       "url": "https://www.barbmuse.org.bb/attachment?file=Attachments%2fAnnual+Report+2014.pdf&id=43&name=Annual+Report+2014"
+    },
+    "bureaucracy": {
+      "legal_form": "association",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://barbmuse.org.bb/About/History"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -159916,6 +160622,19 @@
       ],
       "website": "No museum website found. Searched 2026-10-24.",
       "retrieved": "2026-10-24"
+    },
+    "bureaucracy": {
+      "legal_form": "national government body",
+      "budget_set_by": "legislature or ministry",
+      "parent": "Ministerio de Cultura",
+      "controls": [],
+      "year": "2022",
+      "sources": [
+        "https://dgm.gob.do/wp-content/uploads/2023/05/Ley-41-00-de-cultura.pdf",
+        "https://dgm.gob.do/wp-content/uploads/2023/05/Decreto-251-22.pdf"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
     }
   },
   {
@@ -162350,6 +163069,19 @@
       ],
       "website": "https://micas.art (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "bureaucracy": {
+      "legal_form": "statutory public body",
+      "director_appointed_by": "government or ministry",
+      "staff_status": "employees of the institution",
+      "parent": "Ministry responsible for culture",
+      "controls": [],
+      "year": "2023",
+      "sources": [
+        "https://legislation.mt/eli/sl/595.29/eng/pdf"
+      ],
+      "level": 3,
+      "level_basis": "A public body with its own board or statute."
     }
   },
   {
@@ -163520,6 +164252,17 @@
         }
       ],
       "retrieved": "2026-10-25"
+    },
+    "bureaucracy": {
+      "legal_form": "association",
+      "controls": [],
+      "year": "2022",
+      "sources": [
+        "https://nucleodeartemaputo.wordpress.com/",
+        "https://nucleodarteing.blogspot.com/"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
     }
   },
   {
@@ -167606,7 +168349,18 @@
     "records_note": "The city's council papers give the restoration budget and the ministry grant. The villa has no separate accounts.",
     "affiliations_note": "Owned and run by the City of J\u00e4rvenp\u00e4\u00e4 as one of four city museum sites with the Art Museum, Ahola and Suviranta. Iconic Houses member.",
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "parent": "City of J\u00e4rvenp\u00e4\u00e4",
+      "controls": [],
+      "year": "2024",
+      "sources": [
+        "https://jarvenpaa.cloudnc.fi/download/noname/{e6098ff9-68ce-4faf-9456-535cb80a7434}/67051"
+      ],
+      "level": 5,
+      "level_basis": "A department of its owner."
+    }
   },
   {
     "name": "Didrichsen Art Museum",
@@ -172724,7 +173478,18 @@
       "retrieved": "2026-10-26"
     },
     "records_note": "Publishes tour terms and donation rates only. No accounts, funder list or board names found.",
-    "affiliations_note": "Tours run by the Mart van Schijndel Foundation, which sells the house's book. Iconic Houses hosts its visiting page and members pay half. Listed in the Iconic Houses network."
+    "affiliations_note": "Tours run by the Mart van Schijndel Foundation, which sells the house's book. Iconic Houses hosts its visiting page and members pay half. Listed in the Iconic Houses network.",
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.iconichouses.org/specials/mart-van-schijndel/visit-mvs",
+        "https://www.iconichouses.org/doc/vanschijndel/Van%20Schijndel%20House%20brochure%20DutchEnglish.pdf"
+      ],
+      "level": 2,
+      "level_basis": "A private body with its own board; no public control is stated."
+    }
   },
   {
     "name": "Takaezu Studio",
@@ -178793,7 +179558,25 @@
     "finances_note": "Admission fees raised N$64,188 in 2006 against upkeep of N$500,000 a year (Van der Hoog, Leiden University thesis, 2024, p.147, citing The Namibian, 2002 to 2006).",
     "affiliations_note": "Run by the National Heritage Council of Namibia, the statutory body under the National Heritage Act 2004 that sets admission fees for protected places.",
     "grade": 3,
-    "grade_basis": "A funder worth knowing about, outside the flagged categories."
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
+    "bureaucracy": {
+      "legal_form": "statutory public body",
+      "director_appointed_by": "board",
+      "staff_status": "employees of the institution",
+      "budget_set_by": "legislature or ministry",
+      "controls": [
+        "state audit office"
+      ],
+      "year": "2023",
+      "sources": [
+        "https://www.lac.org.na/laws/annoSTAT/National%20Heritage%20Act%2027%20of%202004.pdf",
+        "https://www.lac.org.na/laws/2023/8206.pdf",
+        "https://nhc-nam.org/about-us/",
+        "https://nhc-nam.org/heritage-places/"
+      ],
+      "level": 3,
+      "level_basis": "A public body with its own board or statute."
+    }
   },
   {
     "name": "Tishreen War Panorama (October War Panorama)",
