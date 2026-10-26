@@ -1689,7 +1689,8 @@ body.chat-input-mode-active #workInput{padding:.75em}
    better, as the globe's buttons). The compass is a solid north arrow over an outlined south one, told apart by shape and not by grey.
    Where the system forces colours (forced-colors) MapLibre's own system-colour icons stay. */
 @media (min-width:768px){.maplibregl-ctrl-top-right{top:66px}}
-.maplibregl-ctrl-group{display:flex;flex-direction:column;gap:8px;background:none!important}
+/* The buttons are separate squares eight pixels apart; the group has no frame of its own, which showed the map through the gaps between them. */
+.maplibregl-ctrl-group{display:flex;flex-direction:column;gap:8px;background:none!important;border:0!important}
 .maplibregl-ctrl-group button,.maplibregl-ctrl-group button:last-child,.maplibregl-ctrl-group button+button{width:36px!important;height:36px!important;padding:0;box-sizing:border-box;background:#fff!important;color:#000;border:1px solid #000!important;border-radius:0}
 .maplibregl-ctrl-group button:not(:disabled):hover{background:#000!important;color:#fff}
 .maplibregl-ctrl-group button:disabled{border-style:dashed!important}
