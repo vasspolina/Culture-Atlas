@@ -2432,3 +2432,7 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Share information has no fill: the button is an outline, 0.8px, in #a06f46 read from the swatch the user sent (26 Oct 2026: "this button can have this color outline and no fill").
    The older rules fill it #420401 with ids and !important in every state, so this one carries more classes than any of them. */
 :root:root:root:root:root:root:root[data-theme] #workInputCard :is(#chatShareBtn,#chatShareBtn.is-on,#chatShareBtn:hover,#chatShareBtn:focus-visible,#chatShareBtn:active){background:transparent!important;border-color:#a06f46!important;border-width:.8px!important}
+
+/* No "Visiting" title (user, 26 Oct 2026: "drop visiting title"). The row keeps its place in the two columns (the empty head holds the left cell, so the facts stay where
+   they are) and its region still carries the label "Visiting" for screen readers. */
+:root:root:not(#t):not(#t):not(#t) .d-row-visit .d-row-title{display:none!important}
