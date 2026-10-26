@@ -2543,3 +2543,12 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Every line on the web is 0.8px (user's instruction, 26 Oct 2026): all border widths above (1px, 1.5px, 2px, 2.5px and 3px became .8px), the hr, and the canvas
    strokes in index.html and assets/layers.js (links, outlines, rings; the 3px to 6.5px text halos behind labels are knockouts, not lines, and stay). The
    underlines were already .8px (--ul-w). Focus outlines and icon stroke-width are not lines of the layout and keep their widths. */
+
+/* The dossier bullet text (the Overview list and every other .d-row-list item) is 16px (user's instruction, 26 Oct 2026), a size between the 14 and
+   18 of the three-size scale; the phone layer's 18px rule above is overridden too, so the list reads the same at every width. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{font-size:16px!important}
+
+/* The question bubble in the chat is a dark blue-grey (#2d3352, the navy of the chat box) with white type, in both themes and at every width (user's
+   instruction, 26 Oct 2026). It beats the grey fill above and the phone layer's grey block fill. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(.user-bubble,.justify-end>div){background:#2d3352!important;color:#fff!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(.user-bubble,.justify-end>div) *{color:#fff!important}
