@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=302">
-  <script src="assets/config.js?v=302"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=303">
+  <script src="assets/config.js?v=303"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9901,11 +9901,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v302';
+    const ATLAS_RELEASE = 'culture-atlas-v303';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=302').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=303').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11939,7 +11939,7 @@ return maplibregl$1;
     function gradeLineHtml(inst) {
       if (inst.grade && GRADE[inst.grade]) {
         const g = GRADE[inst.grade];
-        return `<p class="no-indent grade-line"><span class="grade-mark" style="--grade-col:${g.col};--grade-ink:${gradeInk(g.col)}">Grade ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
+        return `<p class="no-indent grade-line"><span class="grade-mark" style="--grade-col:${g.col};--grade-ink:${gradeInk(g.col)}">Grade ${gradeLetter(inst.grade)}</span></p>`;
       }
       return inst.tier === 'U' ? `<p class="no-indent grade-line">Not graded. ${inst.funding ? 'No independent source confirms the funders named here.' : 'No funders are recorded.'}</p>` : '';
     }
@@ -15396,7 +15396,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const notGradedReason = target.funding
             ? 'No independent source confirms the funders named here.'
             : 'No funders are recorded.';
-          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Grade ${gradeLetter(target.grade)}, ${escapeHtml(GRADE[target.grade].label.toLowerCase())}. ${escapeHtml(target.grade_basis || '')}` : `Not rated: ${escapeHtml(notGradedReason)}`}</p>${sourcesHtml(target)}`);
+          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Grade ${gradeLetter(target.grade)}.` : `Not rated: ${escapeHtml(notGradedReason)}`}</p>${sourcesHtml(target)}`);
           return;
         }
         if (wanted) {
@@ -19389,9 +19389,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=302"></script>
-<script src="assets/layers.js?v=302"></script>
-<script src="assets/hq-detail.js?v=302"></script>
-<script src="assets/bubbles.js?v=302" defer></script>
+<script src="assets/typeset.js?v=303"></script>
+<script src="assets/layers.js?v=303"></script>
+<script src="assets/hq-detail.js?v=303"></script>
+<script src="assets/bubbles.js?v=303" defer></script>
 </body>
 </html>
