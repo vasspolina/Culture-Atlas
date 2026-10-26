@@ -2264,3 +2264,7 @@ div:has(>#topThemeBtn){column-gap:0}
 @container (min-width:34em){
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:2;column-gap:calc(2 * var(--L))}
 }
+
+/* ---- The chat's edges (user, 26 Oct 2026) ----
+   What scrolls under the tabs above and the composer below fades out over 14px instead of being cut by a hard line through a bubble. */
+#curatorScrollArea{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
