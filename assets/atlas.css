@@ -2248,3 +2248,15 @@ div:has(>#topThemeBtn){column-gap:0}
   :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row{grid-template-columns:minmax(0,1fr);row-gap:0;border-top:0;padding:0}
   :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list{margin-top:var(--H)}
 }
+
+/* ---- Visiting nearer the foundry footer (user, 26 Oct 2026) ----
+   There the label and the words under it are one size, the label in grey capitals, and each column is its own stack that runs down and then
+   starts the next, not a grid whose rows keep every column waiting for the tallest fact. So: the label at the text size (16px), and the facts
+   flow in two columns with each fact kept whole. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:1}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item{break-inside:avoid;margin:0 0 var(--L)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item:last-child{margin-bottom:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dt{font-size:16px}
+@container (min-width:34em){
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:2;column-gap:calc(2 * var(--L))}
+}
