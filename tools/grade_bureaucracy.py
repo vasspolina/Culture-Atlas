@@ -10,9 +10,9 @@ level so every record is judged by the same ladder. The first rule that matches 
                   controls.
   3 Supervised    a public foundation or statutory body, or any space whose director is named by a
                   government, city or parent body, or that is bound by two or more public controls.
-  2 Light         a private nonprofit, foundation, association or religious body with its own board,
-                  under a charity or foundation regulator or one public control.
-  1 Independent   a private company or owner-run space, or a private body with no control listed.
+  2 Light         a private nonprofit, foundation, association or religious body with its own board
+                  (it answers to the register or regulator of its form), whether or not a page names it.
+  1 Independent   a private company or owner-run space.
 
 A record with no stated legal form gets no level. The facts are the fields of record['bureaucracy'].
 
@@ -58,9 +58,13 @@ def level(g):
         else:
             why = 'it is bound by ' + ' and '.join(public[:2])
         return 3, 'A private body, but ' + why + '.'
-    if form == 'private company' or not (public or regulator):
-        return 1, 'No public control is stated.' if form != 'private company' else 'A private company.'
-    return 2, 'A private body under ' + ('a charity or foundation regulator' if regulator else public[0]) + '.'
+    if form == 'private company':
+        return 1, 'A private company.'
+    # A nonprofit, foundation, association or religious body answers to the register or regulator of its own form,
+    # whether or not a source page names it, so it is never rated as free of oversight.
+    if regulator:
+        return 2, 'A private body under a charity or foundation regulator.'
+    return 2, 'A private body with its own board; no public control is stated.'
 
 
 def main():

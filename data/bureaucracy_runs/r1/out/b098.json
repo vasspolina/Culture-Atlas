@@ -1,0 +1,227 @@
+[
+ {
+  "id": "bloc-projects-sheffield",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "charity or foundation regulator"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5138877/governing-document",
+    "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5138877/governance",
+    "https://www.blocprojects.co.uk/about"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Charity Commission register lists charity 1188511 as a CIO, and the About page lists the board of trustees."
+ },
+ {
+  "id": "site-gallery-sheffield",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "charity or foundation regulator"
+   ],
+   "year": "2025",
+   "sources": [
+    "https://opencharities.uk/ew/510322/files/2025-03-31-accounts.html",
+    "https://www.sitegallery.org/about/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the trustees' report in the accounts for the year to 31 March 2025 states a company limited by guarantee and registered charity with a board of 11 trustees, and examination under the Charities Act 2011 and Charity Commission directions."
+ },
+ {
+  "id": "john-hansard-gallery-southampton",
+  "governance": {
+   "legal_form": "university unit",
+   "parent": "University of Southampton",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2021",
+   "sources": [
+    "https://jhg.art/about/",
+    "https://jhg.art/wp-content/uploads/2021/08/JHG-Board-Artist-Recruitment-Pack-2021.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the 2021 Strategic Board recruitment pack, page 5, says the gallery is part of the University of Southampton, which has ultimate responsibility for it."
+ },
+ {
+  "id": "coaxial-arts-foundation-la",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://projects.propublica.org/nonprofits/organizations/473355354"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the ProPublica Nonprofit Explorer entry for EIN 47-3355354 shows IRS designation as a 501(c)(3)."
+ },
+ {
+  "id": "human-resources-la",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.h-r.la/support/",
+    "https://www.h-r.la/about/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Support page describes a not-for-profit 501c(3) organization and the About page lists its board of directors."
+ },
+ {
+  "id": "lace-los-angeles",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://welcometolace.org/about/",
+    "https://welcometolace.org/about/board-of-directors/",
+    "https://projects.propublica.org/nonprofits/organizations/953397305"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the History page calls LACE a nonprofit venue, the Board of Directors page lists its board, and the ProPublica entry for EIN 95-3397305 shows a 501(c)(3)."
+ },
+ {
+  "id": "redcat-los-angeles",
+  "governance": {
+   "legal_form": "university unit",
+   "parent": "California Institute of the Arts (CalArts)",
+   "director_appointed_by": "parent institution",
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.redcat.org/about",
+    "https://calarts.edu/news/california-institute-arts-appoints-joao-ribas-steven-d-lavine-executive-director-roy-and-edna"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the REDCAT About page calls it CalArts' downtown center and names CalArts its parent organization, and the 2020 CalArts announcement says CalArts appointed the executive director, who reports to the CalArts president."
+ },
+ {
+  "id": "abc-no-rio-new-york",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.abcnorio.org/about/",
+    "https://www.abcnorio.org/staff-and-board-of-directors/"
+   ]
+  },
+  "red_tape": {
+   "note": "A 2012 DNAinfo article says the new building at 156 Rivington Street had been held up several times while ABC No Rio raised money and navigated the city's bureaucracy.",
+   "kind": "press report",
+   "date": "2012-04-04",
+   "url": "https://www.dnainfo.com/new-york/20120404/lower-east-side-east-village/abc-no-rios-new-5-million-home-moves-closer-construction"
+  },
+  "basis": "Governance: the About page calls ABC No Rio a volunteer-led nonprofit community center and the Board of Directors page gives the board legal and fiduciary responsibility. Red tape: the DNAinfo article of 4 April 2012, opening paragraphs."
+ },
+ {
+  "id": "american-folk-art-museum",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://projects.propublica.org/nonprofits/organizations/131985627",
+    "https://folkartmuseum.org/about/leadership/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the ProPublica Nonprofit Explorer entry for EIN 13-1985627 shows a 501(c)(3), and the Leadership page lists the Board of Trustees."
+ },
+ {
+  "id": "apexart-new-york",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://apexart.org/aboutus.php"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the About Us page calls apexart a 501(c)(3) not-for-profit contemporary visual arts organization."
+ },
+ {
+  "id": "bam-new-york",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.bam.org",
+    "https://projects.propublica.org/nonprofits/organizations/112201344"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the BAM site footer states BAM is a 501(c)(3) and the ProPublica Nonprofit Explorer entry for EIN 11-2201344 shows that designation."
+ },
+ {
+  "id": "cue-art-foundation-new-york",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://cueartfoundation.org/mission-history",
+    "https://cueartfoundation.org/staff"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Mission and History page calls CUE Art a nonprofit organization and the Staff page lists its board of directors."
+ }
+]
