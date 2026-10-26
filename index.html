@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=327">
-  <script src="assets/config.js?v=327"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=328">
+  <script src="assets/config.js?v=328"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9957,11 +9957,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v327';
+    const ATLAS_RELEASE = 'culture-atlas-v328';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=327').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=328').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10658,14 +10658,20 @@ return maplibregl$1;
           }
           return cityTierCache[k];
         };
+        // A badge's fill and type colour. The city hover card takes the same pair, so it reads as the badge opened out.
+        const pillColors = (active, tier) => {
+          const darkLabel = !GLOBE_LIGHT && !active;
+          const fill = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
+          return { fill, ink: darkLabel ? '#ffffff' : '#000000' };
+        };
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 28, h = 22;
-          const darkLabel = !GLOBE_LIGHT && !active;
-          ctx.fillStyle = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
+          const pc = pillColors(active, tier);
+          ctx.fillStyle = pc.fill;
           ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
-          ctx.fillStyle = darkLabel ? '#ffffff' : '#000000';
+          ctx.fillStyle = pc.ink;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(text, cx0, cy0 + 0.5);
@@ -10802,7 +10808,7 @@ return maplibregl$1;
                 ctx.font = '14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawPillLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2, !!(isSelected || isHovered), cityTier(city.name));
+                drawPillLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name));
 
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
@@ -10814,7 +10820,7 @@ return maplibregl$1;
                 ctx.font = '14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawPillLabel(txt, pt.x, by + bh / 2, !!(isSelected || isHovered), cityTier(city.name));
+                drawPillLabel(txt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name));
 
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
@@ -11079,7 +11085,8 @@ return maplibregl$1;
 
               ctx.beginPath();
               ctx.arc(hPt.x, hPt.y, 6.5, 0, Math.PI * 2);
-              ctx.fillStyle = '#e79a3a';
+              const cardColors = pillColors(false, cityTier(hMeta.name));
+              ctx.fillStyle = cardColors.fill;
               ctx.strokeStyle = '#ffffff';
               ctx.lineWidth = 0.8;
               ctx.fill();
@@ -11092,7 +11099,7 @@ return maplibregl$1;
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
               const countTxt = `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`;
               const linkTxt = 'Click to explore';
-              const cardInk = isGossipModeActive ? '#000000' : '#ffffff';
+              const cardInk = cardColors.ink;
 
               ctx.font = ATLAS_CARD_TITLE_FONT;
               const twCity = ctx.measureText(cityTxt).width;
@@ -11128,8 +11135,8 @@ return maplibregl$1;
                 linkH: linkBtnH
               };
 
-              // Flat block: cobalt, or yellow in gossip mode. No rounding, no outline, no shadow.
-              ctx.fillStyle = isGossipModeActive ? '#e79a3a' : '#0046ff';
+              // Flat block in the colour of the city's badge (cyan, orange or grey by tier). No rounding, no outline, no shadow.
+              ctx.fillStyle = cardColors.fill;
               ctx.fillRect(cardX, cardY, cardW, cardH);
 
               // Line 1: city name, in the roman
@@ -11147,12 +11154,14 @@ return maplibregl$1;
               }
               ctx.fillText(countTxt, cardX + 16, currentY);
 
-              // Action: a flat grey block with black text, white on hover.
+              // Action: a tint of the type colour at rest, solid type colour with card-coloured text on hover.
               ctx.save();
-              ctx.fillStyle = isHoveringCityExploreLink ? '#ffffff' : '#d9d9d9';
+              ctx.fillStyle = cardInk;
+              ctx.globalAlpha = isHoveringCityExploreLink ? 1 : 0.16;
               ctx.fillRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
+              ctx.globalAlpha = 1;
               ctx.font = ATLAS_CARD_MONO_FONT;
-              ctx.fillStyle = '#000000';
+              ctx.fillStyle = isHoveringCityExploreLink ? cardColors.fill : cardInk;
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2 + 0.5);
@@ -19519,9 +19528,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=327"></script>
-<script src="assets/layers.js?v=327"></script>
-<script src="assets/hq-detail.js?v=327"></script>
-<script src="assets/bubbles.js?v=327" defer></script>
+<script src="assets/typeset.js?v=328"></script>
+<script src="assets/layers.js?v=328"></script>
+<script src="assets/hq-detail.js?v=328"></script>
+<script src="assets/bubbles.js?v=328" defer></script>
 </body>
 </html>
