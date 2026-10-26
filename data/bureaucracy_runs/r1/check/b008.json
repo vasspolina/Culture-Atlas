@@ -1,0 +1,82 @@
+[
+ {
+  "id": "espacio-cultural-patino",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-nacional-de-arte-de-bolivia-la-paz",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.director_appointed_by",
+    "stored": "parent institution",
+    "page says": "Only a 2021 eju.tv news article reports that the Fundacion Cultural del BCB chose the museum directors; no statute, law or official appointment announcement among the cited urls states who appoints the director",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "museo-nacional-de-arte-de-bolivia-la-paz",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Fundación Cultural del Banco Central de Bolivia",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://www.fundacionculturalbcb.gob.bo/institucion/i-historia.php",
+     "https://www.fundacionculturalbcb.gob.bo/notas-de-prensa-mna/2022/np-mna-023-2022.php"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The foundation's history page says Law 1670 of 1995 created it as a state legal person under public law and Law 2389 of 2002 placed the Museo Nacional de Arte under its administration."
+  }
+ },
+ {
+  "id": "museo-nacional-de-etnograf-a-y-folklore-musef-la-paz",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.director_appointed_by",
+    "stored": "parent institution",
+    "page says": "Only a 2021 eju.tv news article reports that the Fundacion Cultural del BCB chose the museum directors; no statute, law or official appointment announcement among the cited urls states who appoints the director",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "museo-nacional-de-etnograf-a-y-folklore-musef-la-paz",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Fundación Cultural del Banco Central de Bolivia",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://www.fundacionculturalbcb.gob.bo/institucion/i-historia.php",
+     "https://www.fundacionculturalbcb.gob.bo/notas-de-prensa-musef/2022/np-musef-013-2022.php"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The foundation's history page says Law 1670 of 1995 created it as a state legal person under public law, and the MUSEF press note says the museum depends on it."
+  }
+ },
+ {
+  "id": "ars-aevi-sarajevo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "botswana-national-museum-and-art-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "instituto-inhotim",
+  "verdict": "ok",
+  "faults": []
+ }
+]

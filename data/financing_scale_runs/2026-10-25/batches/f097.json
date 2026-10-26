@@ -1,0 +1,170 @@
+[
+ {
+  "id": "site-gallery-sheffield",
+  "name": "Site Gallery",
+  "city": "Sheffield",
+  "country": "United Kingdom",
+  "website": "https://www.sitegallery.org",
+  "size": "M",
+  "year_founded": 1979,
+  "sources": [
+   "https://www.sitegallery.org/about/supporters/",
+   "https://opencharities.uk/ew/510322/files/2025-03-31-accounts.html"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income GBP 565k: about 66 percent public bodies (Arts Council England NPO GBP 320k, Sheffield City Council), 9 percent trusts and donations, 18 percent earned (accounts pp. 9, 15)."
+ },
+ {
+  "id": "john-hansard-gallery-southampton",
+  "name": "John Hansard Gallery",
+  "city": "Southampton",
+  "country": "United Kingdom",
+  "website": "https://jhg.art",
+  "size": "M",
+  "year_founded": 1979,
+  "sources": [
+   "https://jhg.art/about/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "coaxial-arts-foundation-la",
+  "name": "Coaxial Arts Foundation",
+  "city": "Los Angeles",
+  "country": "United States",
+  "website": "https://coaxialarts.org",
+  "size": "S",
+  "year_founded": 2015,
+  "sources": [
+   "https://coaxialarts.org"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "human-resources-la",
+  "name": "Human Resources LA (HRLA)",
+  "city": "Los Angeles",
+  "country": "United States",
+  "website": "https://humanresourcesla.com",
+  "size": "S",
+  "year_founded": 2010,
+  "sources": [
+   "https://h-r.la/about",
+   "https://h-r.la/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "lace-los-angeles",
+  "name": "LACE (Los Angeles Contemporary Exhibitions)",
+  "city": "Los Angeles",
+  "country": "United States",
+  "website": "https://welcometolace.org",
+  "size": "S",
+  "year_founded": 1978,
+  "sources": [
+   "https://welcometolace.org/about/",
+   "https://projects.propublica.org/nonprofits/organizations/953258525"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "redcat-los-angeles",
+  "name": "REDCAT (Roy and Edna Disney/CalArts Theater)",
+  "city": "Los Angeles",
+  "country": "United States",
+  "website": "https://www.redcat.org",
+  "size": "M",
+  "year_founded": 2003,
+  "sources": [
+   "https://en.wikipedia.org/wiki/REDCAT",
+   "https://www.redcat.org/about"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "abc-no-rio-new-york",
+  "name": "ABC No Rio",
+  "city": "New York",
+  "country": "United States",
+  "website": "https://www.abcnorio.org",
+  "size": "S",
+  "year_founded": 1980,
+  "sources": [
+   "https://commercialobserver.com/2024/08/the-plan-abc-no-rio-156-rivington-street/",
+   "https://www.abcnorio.org/about/history/",
+   "https://www.abcnorio.org"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "american-folk-art-museum",
+  "name": "American Folk Art Museum",
+  "city": "New York",
+  "country": "United States",
+  "website": "https://folkartmuseum.org",
+  "size": "M",
+  "year_founded": 1961,
+  "sources": [
+   "https://folkartmuseum.org/about/",
+   "https://hyperallergic.com/unions-reach-tentative-agreements-at-brooklyn-museum-and-american-folk-art-museum/",
+   "https://menafn.com/1111753441/Guggenheim-Brooklyn-Museum-Unions-Ratify-New-Contracts"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "apexart-new-york",
+  "name": "Apexart",
+  "city": "New York",
+  "country": "United States",
+  "website": "https://apexart.org",
+  "size": "S",
+  "year_founded": 1994,
+  "sources": [
+   "https://apexart.org/events/manchev.htm",
+   "https://apexart.org"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "bam-new-york",
+  "name": "Brooklyn Academy of Music (BAM)",
+  "city": "New York",
+  "country": "United States",
+  "website": "https://www.bam.org",
+  "size": "L",
+  "year_founded": 1861,
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/112201344"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "cue-art-foundation-new-york",
+  "name": "CUE Art Foundation",
+  "city": "New York",
+  "country": "United States",
+  "website": "https://cueartfoundation.org",
+  "size": "S",
+  "year_founded": 2003,
+  "sources": [
+   "https://cueartfoundation.org/about",
+   "https://projects.propublica.org/nonprofits/organizations/134106518"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "flux-factory-queens",
+  "name": "Flux Factory",
+  "city": "New York",
+  "country": "United States",
+  "website": "https://fluxfactory.org",
+  "size": "M",
+  "year_founded": 1994,
+  "sources": [
+   "https://qns.com/2022/12/more-than-40-arts-organizations-in-western-queens-awarded-state-funding/",
+   "https://www.fluxfactory.org/mission-history/"
+  ],
+  "needs_finance": true
+ }
+]

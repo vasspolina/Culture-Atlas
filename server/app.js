@@ -2,9 +2,10 @@ import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import cors from 'cors';
 import express from 'express';
 import { Prisma } from '@prisma/client';
-import { validateReport } from './validate.js';
+import { findPlace, validateReview } from './validate.js';
 
 const STATUSES = ['PENDING', 'APPROVED', 'REJECTED'];
+const MAX_PUBLIC_REVIEWS = 200;
 
 // Counts submissions per sender for one window. The address is hashed with a salt that exists only in this
 // process's memory, and neither the address nor the hash is written to the database or a log: when the process
@@ -70,15 +71,17 @@ export function createApp({
   // For the host's health check. Touches nothing.
   app.get('/healthz', (_req, res) => res.json({ ok: true }));
 
-  // The only way a note enters the system. It is stored PENDING; nothing public reads PENDING rows.
-  app.post('/api/reports', async (req, res, next) => {
-    const result = validateReport(req.body, institutions);
+  // The only way a review enters the system. It is stored PENDING; nothing public reads PENDING rows.
+  app.post('/api/places/:placeId/reviews', async (req, res, next) => {
+    const place = findPlace(req.params.placeId, institutions);
+    if (!place) return res.status(404).json({ error: 'That place is not on the atlas.' });
+    const result = validateReview(req.body, place);
     if (result.error) return res.status(400).json({ error: result.error });
 
     const turn = limiter.take(req.ip);
     if (!turn.ok) {
       res.set('Retry-After', String(turn.retryAfter));
-      return res.status(429).json({ error: 'Too many notes from here. Try again later.' });
+      return res.status(429).json({ error: 'Too many reviews from here. Try again later.' });
     }
 
     try {
@@ -87,7 +90,7 @@ export function createApp({
         select: { id: true }
       });
       return res.status(201).json({
-        message: 'Report submitted successfully for review.',
+        message: 'Review submitted for the editor to read. It appears here once approved.',
         id: report.id
       });
     } catch (error) {
@@ -95,26 +98,23 @@ export function createApp({
     }
   });
 
-  // What the atlas shows: approved notes only, and only the fields a review needs.
-  app.get('/api/map/approved-reports', async (req, res, next) => {
-    const { city, institution } = req.query;
-    for (const [field, value] of [['City', city], ['Institution', institution]]) {
-      if (value !== undefined && (typeof value !== 'string' || value.length > 200)) {
-        return res.status(400).json({ error: `${field} must be a string no longer than 200 characters.` });
-      }
-    }
+  // What a place shows: its approved reviews, newest first, and only the fields a review needs. Reviews stored before
+  // places had ids carry the place's name and no id, so they are matched by name.
+  app.get('/api/places/:placeId/reviews', async (req, res, next) => {
+    const place = findPlace(req.params.placeId, institutions);
+    if (!place) return res.status(404).json({ error: 'That place is not on the atlas.' });
     try {
-      const reports = await prisma.whistleblowerReport.findMany({
+      const reviews = await prisma.whistleblowerReport.findMany({
         where: {
           status: 'APPROVED',
-          ...(city ? { city } : {}),
-          ...(institution ? { institution } : {})
+          OR: [{ placeId: place.id }, { placeId: null, institution: place.name }]
         },
-        select: { id: true, city: true, institution: true, content: true, createdAt: true },
-        orderBy: { createdAt: 'desc' }
+        select: { id: true, authorLabel: true, content: true, createdAt: true },
+        orderBy: { createdAt: 'desc' },
+        take: MAX_PUBLIC_REVIEWS
       });
       res.set('Cache-Control', 'no-store');
-      return res.json(reports);
+      return res.json(reviews);
     } catch (error) {
       return next(error);
     }
@@ -180,7 +180,9 @@ export function createApp({
     if (error.type === 'entity.too.large') {
       return res.status(413).json({ error: 'Request body is too large.' });
     }
-    console.error('Report API request failed:', error);
+    // Only the kind of failure is logged. An error from the database can carry the data of the request, which is a
+    // review, so the error itself is never printed.
+    console.error('Report API request failed:', error?.name || 'Error', error?.code || '');
     return res.status(500).json({ error: 'The report API could not complete the request.' });
   });
 

@@ -258,3 +258,52 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch); else watch();
   window.typeset = typeset;
 })();
+
+// Titles under 17px are set in Documan Regular, the rest in Thin (user, 26 Oct 2026: "use regular for any size under 17"; "thin for the rest").
+// A rule in CSS cannot test a font size, so each title is measured once its page has drawn and the small ones get the class title-small, which atlas.css
+// sets at weight 400. The sizes are read all together, then the classes are written, so a scan costs one style pass. It runs again when content is added,
+// when the window is resized (the phone sizes differ) and when the fonts have loaded.
+(function () {
+  var SEL = 'h1,h2,h3,h4,h5,h6,.t-title,.lede,.curator-section-hdr,.curator-hero-title,.dossier-main-heading,.d-row-title,.layers-title,.layers-section-title,.hq-chooser-title,.facts-title,.critique-title,#floatingCardTitle,.record-popup-name,#desktopDossierName,#dossier-sheet-name,.inst-link,.space-name,.layer-name,#topBrandLogoBtn>span:first-child,#mobileTopBrandBtn span:first-child';
+  var timer = 0;
+  function scan() {
+    timer = 0;
+    var els = [].slice.call(document.querySelectorAll(SEL));
+    var small = els.map(function (el) { return parseFloat(getComputedStyle(el).fontSize) < 17; });
+    els.forEach(function (el, i) { if (el.classList.contains('title-small') !== small[i]) el.classList.toggle('title-small', small[i]); });
+  }
+  function later() { if (!timer) timer = setTimeout(scan, 120); }
+  function start() {
+    scan();
+    new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
+    window.addEventListener('resize', later);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+
+// No bold anywhere (user, 26 Oct 2026: "no bold use thin instead"). CSS cannot test a weight, so every element is measured once it is on the page and any at weight 600 or more gets the class
+// no-bold, which atlas.css sets at 100 (Jokker Thin). The whole body is read first, then the classes are written; later only the nodes that were added are read, batched in 120ms,
+// so a streaming answer costs one small pass. A weight that changes by state (a hover) is not caught.
+(function () {
+  var pending = [], timer = 0;
+  function mark(root) {
+    var list = [root].concat([].slice.call(root.querySelectorAll('*')));
+    var bold = list.map(function (el) { return parseInt(getComputedStyle(el).fontWeight, 10) >= 600; });
+    list.forEach(function (el, i) { if (bold[i]) el.classList.add('no-bold'); });
+  }
+  function flush() {
+    timer = 0;
+    var batch = pending; pending = [];
+    batch.forEach(function (n) { if (n.isConnected) mark(n); });
+  }
+  function later(n) { pending.push(n); if (!timer) timer = setTimeout(flush, 120); }
+  function start() {
+    later(document.body);
+    new MutationObserver(function (list) {
+      list.forEach(function (m) { m.addedNodes.forEach(function (a) { if (a.nodeType === 1) later(a); }); });
+    }).observe(document.body, { childList: true, subtree: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { later(document.body); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();

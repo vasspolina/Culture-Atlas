@@ -1,0 +1,279 @@
+[
+ {
+  "id": "nmacc-mumbai",
+  "section": "Red flags / FUNDING",
+  "problems": [
+   "conglomerate share from Wikipedia only",
+   "Russia criticism line not on opened page"
+  ],
+  "before": "its largest segment, Oil to Chemicals, supplied 53.12% of 2024 revenue ... Wikipedia reports that Reliance faced criticism for keeping business ties with Russia ... listed on Leave Russia, an advocacy list",
+  "after": "Oil to Chemicals is the largest of the five segments in the company's annual report (6,26,921 crore rupees in 2024-25); Wikipedia puts it at 53.12% of 2024 revenue. Rosneft contract and Leave Russia attributed to Wikipedia; criticism-for-ties clause cut.",
+  "sources": [
+   "https://www.ril.com/ar2024-25/reliance-at-a-glance.html",
+   "https://www.ril.com/ar2024-25/oil-to-chemicals.html",
+   "https://en.wikipedia.org/wiki/Reliance_Industries"
+  ],
+  "reason": "Flag KEPT (Fossil fuels): Reliance's own annual report page lists Oil to Chemicals (6,26,921 crore) as the largest segment (Retail 3,30,943; Digital Services 1,54,119; Oil and Gas 25,211; Media 20,696). The annual report gives no percentage share; shares are not computed. The foundation ownership is Wikipedia-only and attributed."
+ },
+ {
+  "id": "nmacc-mumbai",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "invented detail: 'caste oppression'",
+   "wrong claim: shows drive shopper traffic into the mall",
+   "executive described by type",
+   "dates missing"
+  ],
+  "before": "Argues the centre uses art to bring shoppers into the Ambanis' retail business; doubts the centre will support critique of capitalism, state violence or caste oppression; Reliance Brands executive",
+  "after": "Says the mall setting encourages a flow of shoppers into the shows; 'capitalistic greed and state violence can be critiqued through art forms'; Darshan Mehta, president of Reliance Brands, at the India Art Fair. Dates added.",
+  "sources": [
+   "https://theartnewspaper.com/2024/02/09/blockbuster-mumbai-show-of-pop-art-portends-future-of-art-and-luxury-in-india",
+   "https://www.nationalheraldindia.com/art-and-culture/does-big-business-beggar-art"
+  ],
+  "reason": "Kept: The Art Newspaper, Kabir Jhala, 'Blockbuster Pop art show in Mumbai marks a new type of exhibition for India', 9 February 2024 (criticises the show and the retail setting; names the Ambani business, Jio World Centre; does not state who owns the centre). National Herald, Rashmi Sawhney, 'Does big business beggar art?', 8 July 2023 (critical of NMACC; names the Ambani family and Mukesh Ambani, not Reliance; the word caste appears only for the Dalit Panthers). The Open Magazine source (Lhendup G Bhutia, 14 April 2023) opens and covers NMACC."
+ },
+ {
+  "id": "nmacc-mumbai",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "paid through ... wholly owned (unattributed)",
+   "Reliance-owned retail complex (unsupported)"
+  ],
+  "before": "paid through its wholly owned Reliance Foundation, and the centre sits inside a Reliance-owned retail complex",
+  "after": "The centre belongs to the Reliance Foundation, which Wikipedia says is wholly owned by Reliance Industries ... sits inside the Jio World Centre retail complex.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Reliance_Foundation",
+   "https://en.wikipedia.org/wiki/Nita_Mukesh_Ambani_Cultural_Centre"
+  ],
+  "reason": "Ownership of the complex is not on any opened page; Rosneft item attributed to Wikipedia."
+ },
+ {
+  "id": "neuer-berliner-kunstverein",
+  "section": "Red flags",
+  "problems": [
+   "translation note ('my translation')",
+   "target not stated",
+   "unreadable detail"
+  ],
+  "before": "cancelling ... because the association does not share their political views ... (my translation)",
+  "after": "Cennetoglu and Takala announced on Instagram on 5 February 2024 they were cancelling their solo shows at the n.b.k.; the Berliner Zeitung lead says it was because the n.b.k. does not share their political opinion on the Gaza war; aimed at the n.b.k., lead does not name the Senate or state. Babias interview 4 April 2024: headline and a caption quote 'Die Staatsraeson spielt in der Praxis keine Rolle' (title translated).",
+  "sources": [
+   "https://www.berliner-zeitung.de/article/streit-um-gaza-krieg-kuenstlerinnen-banu-cennetolu-und-pilvi-takala-canceln-ihre-ausstellungen-in-berlin-2184410",
+   "https://www.berliner-zeitung.de/article/2201046"
+  ],
+  "reason": "Flag KEPT (Protest or boycott): the readable lead names the n.b.k. itself as the target. Artists' own statement (pilvitakala.com page 'Statement on n.b.k. strike') loaded with title only; ARTnews piece returned HTTP 402; only search extracts were seen, so neither is cited. Timo Feldhaus byline: first piece 6 Feb 2024 17:19 (byline shown by page next to date), second 4 April 2024 06:03."
+ },
+ {
+  "id": "neuer-berliner-kunstverein",
+  "section": "FUNDING",
+  "problems": [
+   "Klassenlotterie claim misattributed",
+   "absence line",
+   "unsupported detail"
+  ],
+  "before": "Its funds originally came from the Stiftung Deutsche Klassenlotterie Berlin; ... Senate split them ... No sponsors are named on the n.b.k. site ...",
+  "after": "German Wikipedia says the Senate divided the funds of the Lotto-Stiftung evenly between n.b.k. and NGBK, and names the Klassenlotterie as funder of the earlier DGBK. Absence line cut. Headline: 'with lottery foundation money at its origin'.",
+  "sources": [
+   "https://www.nbk.org/de/institution",
+   "https://de.wikipedia.org/wiki/Neuer_Berliner_Kunstverein"
+  ],
+  "reason": "n.b.k. page confirms funding by the Berlin Senate Department for Culture and Social Cohesion (it does not name the lottery foundation). Also fixed: Artothek 1970 and Video-Forum 1971 (institution page), cut 'near the Oranienburger Tor', 'brought down' (Wikipedia: dissolved 1969 after the 5 December 1968 disruption), unverified 'separate afternoon hours' and 'discourse programme'."
+ },
+ {
+  "id": "newlyn-art-gallery",
+  "section": "FUNDING / WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "logo-only funders presented as supporters",
+   "'listed supporter' unsupported",
+   "wrong fact: letter 'involvement with Israeli settlements'",
+   "unsourced '2024' date"
+  ],
+  "before": "Bloomberg Philanthropies is among its listed supporters ...; the letter accuses ... through its involvement with Israeli settlements; Bloomberg's 2024 Regional Recovery ...",
+  "after": "Gallery's review '2025 in Reflection, 2026 in Sight' says it joined the Bloomberg Philanthropies Digital Accelerator programme in 2025; support page shows logos (Bloomberg, Headley, Linbury, Wolfson, Ashden, DASH) with no text, date or amount. Letter described as in The New Arab (29 May 2026): over 260 artists, five theatres, 'complicit in grave war crimes', Bloomberg-Sagol Center.",
+  "sources": [
+   "https://newlynartgallery.co.uk/support-us/",
+   "https://newlynartgallery.co.uk/?p=28910",
+   "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg"
+  ],
+  "reason": "Wider context item KEPT: the gallery's own page states the programme participation with a year (2025; the post itself carries no publication date or author). Support-page logos are logo-only; ACE and Cornwall Council '50% from these sources' is stated in text. GrantNav (7 DCMS grants 2,080,586 pounds etc., range 22 Apr 2004 to 10 Feb 2026) and OpenCharities (income 733,736, spending 842,543, year to 31 March 2025) confirmed. The New Arab article, by 'The New Arab Staff', 29 May 2026, names no gallery."
+ },
+ {
+  "id": "national-museum-of-the-republic-of-kazakhstan-astana",
+  "section": "OVERVIEW / WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "wrong date: show start 29 July not on page",
+   "planned facilities stated as built",
+   "'mainly public' verdict",
+   "absence clause 'No private funder is documented'"
+  ],
+  "before": "From 29 July to 30 September 2026 it hosted ...; the Potanin collection project was a named co-organiser ... does not say who paid; No private funder is documented.",
+  "after": "Exhibition runs until 30 September 2026 (news item dated 1 August 2026); 140 artifacts from Potanin's collection; 'V. Potanin Olympic Collection' project listed among organisers. Verdict 'state budget: Kazakh Ministry of Culture and Sports'. Absence clauses cut.",
+  "sources": [
+   "https://nmrk.kz/en/press/news/945/",
+   "https://www.gov.uk/government/news/commission-opens-inquiry-into-the-potanin-foundation-as-founder-sanctioned",
+   "https://informburo.kz/novosti/minkultury-neobosnovanno-vydelilo-nacmuzeyu-polmilliarda-tenge.html"
+  ],
+  "reason": "Potanin item KEPT in Wider context: opened news item confirms the collection is Potanin's and his collection project is a listed organiser; gov.uk (29 June 2022) confirms UK sanction and full asset freeze. Wikipedia gives no UK date but gives US 15 Dec 2022 and Canada 6 Apr 2022. Informburo, 3 December 2015, no author named: 514.7 million tenge allocated to a museum not eligible for subsidies, called unjustified by the Accounts Committee."
+ },
+ {
+  "id": "national-taiwan-museum-of-fine-arts-taichung",
+  "section": "WIDER CONTEXT / FUNDING",
+  "problems": [
+   "unverified claim: donor names and amounts in PDFs",
+   "unattributed acronym explanation",
+   "attribution of pressure claim",
+   "museum role stated as fact"
+  ],
+  "before": "Chen and the artists alleged pressure from larger forces ...; it is the organiser that submitted the exhibition proposal and signed the agreement",
+  "after": "The Art Newspaper (Lisa Movius, 26 August 2026): poster 'NTMoFA Pavilion'; Chen and nine artists objected 15 August; foundation cites 12 January 2026 agreement; ministry cites 2 April agreement; 25 August approval of 'Taiwan Pavilion'. ArtReview (staff, 26 August 2026): 'political censorship'; organisers say museum signed as institutional participant. Museum role attributed to the artists' statement and the organisers. CNA/udn 24 August 2026 added.",
+  "sources": [
+   "https://www.theartnewspaper.com/2026/08/26/gwangju-biennale-permits-taiwan-pavilion-name-after-row",
+   "https://artreview.com/taiwan-name-restored-to-gwangju-biennale-pavilion/",
+   "https://udn.com/news/story/7314/9711130"
+  ],
+  "reason": "Row aimed at the Gwangju Biennale Foundation, so Wider context (no flag). Donations page confirmed: reports 2016 to 1-6 2026 (dated 2026-08-25); contents of PDFs not opened, so claim about donor names cut. Wikipedia: 20 May 2012 is the ministry's restructuring date."
+ },
+ {
+  "id": "neon-athens",
+  "section": "FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "unsupported partners (Ministry of Culture, Acropolis Museum)",
+   "funding misattributed to Daskalopoulos personally (Wikipedia credits NEON)",
+   "'self-funded' verdict and 'one private individual's wealth' not stated by a page",
+   "'throughout' unsupported",
+   "Neon Parallax described as a public art project"
+  ],
+  "before": "self-funded by its founder; Named partners: Hellenic Ministry of Culture, Acropolis Museum ...; Wikipedia says Daskalopoulos funded the tobacco factory renovation; Neon Parallax, a public art project",
+  "after": "Verdict 'private non-profit: Daskalopoulos is the named funder of its projects' (Art Newspaper 2016 headline; partners page Outset Greece). Partners limited to those on the partners page. Wikipedia: NEON funded the renovation. Neon Parallax: Geneva, began 2006 with a call for neon signs. Closure: NEON post of 20 April 2026 says it will conclude its activities with its final project, 'Michael Rakowitz & Ancient Cultures', at the Old Acropolis Museum.",
+  "sources": [
+   "https://neon.org.gr/en/2026/04/",
+   "https://neon.org.gr/en/partners",
+   "https://www.e-flux.com/directory/72331/neon-parallax"
+  ],
+  "reason": "'Not related' line KEPT; closure CONFIRMED on NEON's own post (title 'NEON 2012 – 2026 | 14 YEARS OF CONTEMPORARY ART', author Nafsika Papadopoulou, dated 20 April 2026). Art Newspaper 2016 (Anny Shaw, 19 Sept 2016): 180,000 euros, 1,800 sq m, opening 24 Sept. USA Art News 28 April 2026: 1.4 million euros, 6 million euros grants. Wikipedia: Vivartia 1983 to 2007, Marfin 30% for 550 million euros."
+ },
+ {
+  "id": "netwerk-aalst",
+  "section": "FUNDING / OVERVIEW",
+  "problems": [
+   "names unsupported by opened page",
+   "unsupported place 'Dender'",
+   "'Flemish recognition' credited to NW website that does not state it",
+   "'independent' unverified",
+   "Juist is Juist misdescribed"
+  ],
+  "before": "founded on the initiative of Annemie Van de Casteele, Jan Van Gyseghem and Jos Vermeiren; right bank of the Dender; independent non-profit",
+  "after": "King Baudouin Foundation page says the fund was set up on the initiative of 'bevriende filantropen', unnamed; 'right bank'; non-profit association; Juist is Juist covers solidarity, transparency, sustainability and care.",
+  "sources": [
+   "https://kbs-frb.be/nl/netwerk-fonds-vrienden-van",
+   "https://nw-aalst.be/vrienden/",
+   "https://nl.wikipedia.org/wiki/Netwerk_(Aalst)"
+  ],
+  "reason": "Confirmed: club prices 50 to 1,500 euros and 45% tax reduction (Friends page); visiting hours and prices (visit page); 2001 recognition (NW English about page), 2005 kunsthal recognition and 2017/2019 changes (Dutch Wikipedia); VRT NWS (Sandra Stacius, 21 March 2024) reopening after about a year and a half, Laura Herman, Maya Deren show (VRT gives 22 March, Dutch Wikipedia 20 March; report says March 2024). 'No flagged funder is documented' cut."
+ },
+ {
+  "id": "new-art-exchange-nottingham",
+  "section": "BOTTOM LINE / OVERVIEW",
+  "problems": [
+   "absence clause 'No private or flagged funder is documented'",
+   "'has been CEO since 2021' (Wikipedia says appointed)",
+   "figure missing in bottom line"
+  ],
+  "before": "No private or flagged funder is documented.",
+  "after": "Clause cut; bottom line now gives 1,268,853 of 1,610,538 pounds (about 79%); Said 'appointed in 2021'.",
+  "sources": [
+   "https://opencharities.uk/ew/1121755/files/2025-03-31-accounts.html",
+   "https://www.nae.org.uk/about/who-we-are/",
+   "https://en.wikipedia.org/wiki/New_Art_Exchange"
+  ],
+  "reason": "All figures confirmed in the accounts: income 1,610,538; ACE 1,268,853 (78.8%); Power to Change 104,028 (Freelands, ended); Nottingham City Council 25,541 (14,312 + 11,229); NTU 20,000; trading and tax relief 178,604 (74,288 + 80,344); reserves 3,914,436; chair Samori Gambrah, vice chair Christopher O'Brien. The last 1,104 characters of the accounts page were not read."
+ },
+ {
+  "id": "new-museum-new-york",
+  "section": "CRITICISM IN ART MEDIA / OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported detail in press item 1 ('poor pay', 'Former staff accused')",
+   "paraphrase not in page ('male leader excused', 'suits a more commercial institution')",
+   "dates missing",
+   "Saltz 'defended' not supported",
+   "Skin Fruit year",
+   "over 800 words",
+   "'longtime trustee', 'artistic director' unsupported"
+  ],
+  "before": "Former staff accused Phillips of being emotionally abusive; ... Jerry Saltz defended the museum; Wikipedia summary of the 2009 'Skin Fruit' controversy; hyperallergic ... .md URL",
+  "after": "One former assistant described Phillips as emotionally abusive; Phillips argued her style would be forgiven in a male leader; Hawthorne: better suited to an institution with a sit-down restaurant and showy features; Saltz 'published responses'; Skin Fruit announced September 2009, NYT review 4 March 2010; canonical Hyperallergic URL; trimmed to 795 words.",
+  "sources": [
+   "https://hyperallergic.com/600246/rhizome-board-member-resigns-in-protest-of-workplace-culture-at-new-museum/",
+   "https://hyperallergic.com/whats-so-new-about-the-new-museum-building/",
+   "https://hyperallergic.com/new-yorkers-arent-thrilled-about-the-new-museum-expansion/"
+  ],
+  "reason": "Kept press items: (1) Hyperallergic, Valentina Di Liscia, 'Rhizome Board Member Resigns In Protest of Workplace Culture at New Museum', 6 November 2020; (2) Hyperallergic, Aaron Short, 'What's So New About the New Museum Building?', 20 March 2026; (3) Hyperallergic, Rhea Nayyar, 'New Yorkers Aren't Thrilled About the New Museum's Expansion', 22 March 2024 (quotes are from 2019-design reactions via EV Grieve and Instagram commenters); (4) Wikipedia Skin Fruit article. ProPublica FY June 2025 (revenue 25,693,478; contributions 22,476,994 = 87.5%; net assets 121,840,246), ArtReview (11 May 2016, 80m campaign, 43m from trustees), Mellon (1,500,000, 8 Dec 2022, 36 months), 6sqft (Aaron Ginsburg, 20 March 2026; Lewis 30m, 82m, admission) confirmed. WNYC 7 Oct 2020 source opens."
+ },
+ {
+  "id": "nezu-museum-tokyo",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "title error: 'former honorary chairman'",
+   "wrong company: 'Fuji Life Insurance' (page: Fukoku Mutual Life)",
+   "titles overstated (CEO, vice president)",
+   "'family foundation'",
+   "absence clause 'No flagged funder is documented'"
+  ],
+  "before": "former honorary chairman of Tobu Department Store ... Hiroo Mori (vice president) ... Mamoru Yasuda (CEO) ... Yoshiteru Yoneyama (chairman, Fuji Life Insurance) ... a family foundation ... No flagged funder is documented.",
+  "after": "honorary chairman of Tobu Department Store; Mori (director and executive vice president); Yasuda (representative director and president); Yoneyama (chairman of the board, Fukoku Mutual Life Insurance); 'a foundation'; clause cut.",
+  "sources": [
+   "https://www.nezu-muse.or.jp/jp/foundation/index.html",
+   "https://www.nezu-muse.or.jp/en/visit/",
+   "https://en.wikipedia.org/wiki/Nezu_Museum"
+  ],
+  "reason": "Confirmed on the foundation page: chairman Koichi Nezu (honorary chairman, Tobu Department Store), councillor Yoshizumi Nezu (chairman, Tobu Railway), supporting members, reports from FY2012. Wikipedia: Nezu Kaichiro president of Tobu Railway in 1905, wealth from stock investments; 1941 exhibitions, 1946 resumption, 2009 Kuma building. Admission figures confirmed on the English visit page."
+ },
+ {
+  "id": "nguyen-art-foundation-ho-chi-minh-city",
+  "section": "FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "unsupported: A. Farm 'run with MoT+++ and San Art'",
+   "'income comes from Viet Huong'",
+   "'family wealth built on ... education businesses'",
+   "hedge-like 'may be sold' turned into fact",
+   "absence clause"
+  ],
+  "before": "A. Farm, a residency run with MoT+++ and Sàn Art; The founder's income comes from Viet Huong JSC; wealth built on the founder's flavour and fragrance company and her education businesses. No corporate, state or flagged funder is documented",
+  "after": "NAF co-sponsored A. Farm 2018 to 2021 (Il Sole 24 Ore, interview of 5 December 2025 by Patrizia Sandretto Re Rebaudengo); Nguyen has led Viet Huong JSC since 1995; privately funded by the Nguyen family (Art and Market, 17 Feb 2020; Wikipedia); sale of works 'can be' sold, as Nguyen says.",
+  "sources": [
+   "https://www.artandmarket.net/conversation/2020/02/17/conversation-with-quynh-nguyen",
+   "https://nguyenartfoundation.com/naf-team",
+   "https://en.wikipedia.org/wiki/Nguyen_Art_Foundation"
+  ],
+  "reason": "Team page confirmed (Nguyen, Bill Nguyen director, Nhat Q. Vo manager, Vicky Do curator). Vietcetera (Valeria Mertsalova, 2020, month and day shown as September 28): origin in her collection, students help curate, museum at least a decade away."
+ },
+ {
+  "id": "nhaka-gallery-formerly-gallery-delta",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "claim not on page: 'presents itself as a continuation'",
+   "'dynamic' (promo word) outside a quotation",
+   "'were auctioned' vs 'auction on 28 April'",
+   "absence clause 'No flagged funder is documented'"
+  ],
+  "before": "aims to be a safe, dynamic space ...; Nhaka presents itself as a continuation of Gallery Delta; Artworks in that show were auctioned on 28 April 2023",
+  "after": "Quoted: 'a creative, safe, dynamic space for nurturing Zimbabwe's next generation of artists' (Greedy South, Tafadzwa Madzika, 11 March 2023); the address was Gallery Delta until 2022; artworks could be bought through an auction on 28 April; embassy support described as one 2023 show.",
+  "sources": [
+   "https://www.greedysouth.co.zw/2023/03/nhaka-gallery-honours-women-with-power.html?m=1",
+   "https://www.wits.ac.za/news/latest-news/opinion/2021/2021-07/building-an-art-gallery-in-the-midst-of-war-in-zimbabwe.html",
+   "https://africa.com/top-10-news/death-of-zimbabwean-art-curators-leaves-questions-about-legacy"
+  ],
+  "reason": "Confirmed: Swiss and Australian embassies and UN Women supported 'Women, Power & Mobility' (opened 10 March 2023, with Mobility for Africa); Wits (Tinashe Mushakavanhu, 26 July 2021): 1975 founding by Derek Huggins and Helen Lieros, 1991 move, roughly 500 exhibitions, 2008 trust; Africa.com (SG Editor, 28 July 2021): died a week apart. Deaths' year inferred from article dates 2021. No Website line in the report."
+ },
+ {
+  "id": "all 11 reports with a Website line",
+  "section": "Website",
+  "problems": [
+   "'(checked <date>)' on the Website line"
+  ],
+  "before": "Website: <url> (checked 2026-10-25)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only (Nhaka has none)."
+ }
+]

@@ -1,0 +1,72 @@
+[
+ {
+  "id": "karachi-biennale-trust-karachi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vasl-artists-association",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "lahore-biennale-foundation-lahore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "palestinian-museum-birzeit",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-freedom-theatre",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "al-mamal-foundation-jerusalem",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "am-qattan-foundation-ramallah",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "khalil-sakakini-cultural-center-ramallah",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "association",
+    "page says": "KSCC was registered as a non-profit non-governmental organization (NGO) in 1998; neither cited page calls it an association (the team page only says a 36-member general assembly elects the board)",
+    "fix": "private nonprofit"
+   },
+   {
+    "field": "governance.sources",
+    "stored": "team-board-of-directors-general-assembly page listed",
+    "page says": "the team page states no fact kept in the corrected record",
+    "fix": "only the About page"
+   }
+  ],
+  "corrected": {
+   "id": "khalil-sakakini-cultural-center-ramallah",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://sakakini.org/about/?lang=en"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The About page says the Center was registered as a non-profit NGO in 1998."
+  }
+ }
+]

@@ -1,0 +1,545 @@
+[
+ {
+  "id": "nuuk-art-museum-nuuk-kunstmuseum-nuuk",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: homepage speaks of 'a large funding'",
+   "unsupported: exhibition dates with year"
+  ],
+  "before": "its homepage speaks of \"a large funding\" from the foundation (stated by the museum). The exhibition of the work ran 10 October to 30 December 2024.",
+  "after": "its exhibition page says the exhibition was supported by the foundation (stated by the museum). Kunstkritikk (2025) reports the work was shown at the museum until December 2024.",
+  "sources": [
+   "https://www.nuukkunstmuseum.com/en/exhibitions/exhibition-melting-barricades/",
+   "https://kunstkritikk.com/defending-greenland/"
+  ],
+  "reason": "The homepage text has no Augustinus or 'large funding' wording; the exhibition page gives the donation and support, and gives dates without a year, which Kunstkritikk supports."
+ },
+ {
+  "id": "nuuk-art-museum-nuuk-kunstmuseum-nuuk",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Seventh-day Adventists'",
+   "conflicting date: inauguration 22 May 2005"
+  ],
+  "before": "a church built in 1958 for the Seventh-day Adventists; Wikipedia gives its inauguration as 22 May 2005",
+  "after": "a church built in 1958 for an Adventist congregation, designed by Jens Johan Frederiksen, who was himself an Adventist; Wikipedia states the Junges donated it to the citizens of Kommuneqarfik Sermersooq",
+  "sources": [
+   "https://www.nuukkunstmuseum.com/en/the-building/",
+   "https://en.wikipedia.org/wiki/Nuuk_Art_Museum"
+  ],
+  "reason": "The museum's building page says Adventist, not Seventh-day Adventist; Wikipedia gives 22 May 2005 and 21 June 2007 for the inauguration, so the date was cut."
+ },
+ {
+  "id": "nuuk-art-museum-nuuk-kunstmuseum-nuuk",
+  "section": "Red flags",
+  "problems": [
+   "missing amount note"
+  ],
+  "before": "- The donation was made in 2024, so the funder is current.",
+  "after": "- The donation was made in 2024, so the funder is current. No amount is stated on any page read.",
+  "sources": [
+   "https://www.nuukkunstmuseum.com/en/exhibitions/exhibition-melting-barricades/",
+   "http://www.st-group.com/investor/share-information/"
+  ],
+  "reason": "Gift year confirmed; no amount on any opened page. Stake of more than 25% as of 1 May 2025 confirmed on the investor page."
+ },
+ {
+  "id": "ny-carlsberg-glyptotek",
+  "section": "Red flags",
+  "problems": [
+   "claim stated as finding: heading 'bought from dealers tied to looting'",
+   "unsupported: Medici/denial summary from tag page only",
+   "date inferred"
+  ],
+  "before": "Red flags: antiquities bought from dealers tied to looting; Hecht: the museum bought Etruscan and Greco-Roman objects from the dealer Robert Hecht (ArtsJournal, 2009).",
+  "after": "Red flags: antiquities from dealers, as reported; each point attributed to ArtsJournal (2009), Chasing Aphrodite (2013, updated July 2016) or The Local Denmark (2024), stating who reports what.",
+  "sources": [
+   "https://chasingaphrodite.com/2013/03/14/the-danish-connection-holding-on-to-loot-at-the-ny-carlsberg-glypotech-of-copenhagen/",
+   "https://artsjournal.org/?p=44471",
+   "https://www.thelocal.dk/20241127/denmark-to-return-severed-head-of-ancient-statue-to-turkiye"
+  ],
+  "reason": "Heading asserted looting as a finding; rewritten as reported claims with dated, opened sources. Full Chasing Aphrodite post is readable, so the 'tag-page only' note was removed and the sources list now points to the post."
+ },
+ {
+  "id": "ny-carlsberg-glyptotek",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Carl and Ottilia Jacobsen",
+   "unsupported: 'design studies' only",
+   "identity claim: Møller foundation 'owns A.P. Møller Holding'",
+   "vague: 'Møller family foundation'",
+   "undated"
+  ],
+  "before": "the Ny Carlsberg Foundation in 1902 by Carl and Ottilia Jacobsen (Carlsberg Foundation) ... It owns A.P. Møller Holding, which holds a large stake in Mærsk",
+  "after": "the Ny Carlsberg Foundation was founded in 1902 by the brewer Carl Jacobsen (lex.dk); TV 2 Kosmopol states that A.P. Møller Fonden owns A.P. Møller Holding, which owns a large part of the shares of Mærsk (undated page); the DKK 80 million covered studies, the building programme and the schematic design",
+  "sources": [
+   "https://lex.dk/Ny_Carlsbergfondet",
+   "https://www.tv2kosmopol.dk/koebenhavn/familiefond-stotter-glyptotek-renovering-med-trecifret-millionbelob-367c1",
+   "https://www.carlsbergfondet.dk/en/news/the-carlsberg-foundation-donates-a-historic-grant-to-future-proof-the-ny-carlsberg-glyptotek/"
+  ],
+  "reason": "Ottilia is on no page opened; the TV 2 page names A.P. Møller Fonden as the owner, not the donor foundation, and shows no date."
+ },
+ {
+  "id": "ny-carlsberg-glyptotek",
+  "section": "FUNDING",
+  "problems": [
+   "Augustinus date not stated on page"
+  ],
+  "before": "supported the 2022 purchase of Gauguin's \"La neige à Copenhague\" ... no amount given",
+  "after": "supported the purchase of Gauguin's \"La neige à Copenhague\" ...; the foundation's page is tagged 2022 and gives no amounts",
+  "sources": [
+   "https://ny-carlsbergfondet.dk/en/node/2936746"
+  ],
+  "reason": "Page states the year only through a tag. 'No reporting found of a 2025 Augustinus Fonden grant of DKK 1.53 million' kept: a Danish search found no page showing it."
+ },
+ {
+  "id": "ny-carlsberg-glyptotek",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: '1906 wing'"
+  ],
+  "before": "a 1906 wing by Hack Kampmann",
+  "after": "a later expansion by Hack Kampmann inaugurated in 1906",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ny_Carlsberg_Glyptotek"
+  ],
+  "reason": "Wikipedia is ambiguous whether 1906 dates the wing or the winter garden."
+ },
+ {
+  "id": "ny-carlsberg-glyptotek",
+  "section": "CRITICISM IN ART MEDIA / BOTTOM LINE",
+  "problems": [
+   "verdict wording: 'settled', 'later tied to looting'"
+  ],
+  "before": "acquisitions from dealers later tied to looting, settled with Italy in 2016 and Türkiye in 2024",
+  "after": "reported purchases of antiquities from dealers, which ended in returns to Italy in 2016 and Türkiye in 2024",
+  "sources": [
+   "https://chasingaphrodite.com/2013/03/14/the-danish-connection-holding-on-to-loot-at-the-ny-carlsberg-glypotech-of-copenhagen/",
+   "https://www.thelocal.dk/20241127/denmark-to-return-severed-head-of-ancient-statue-to-turkiye"
+  ],
+  "reason": "Restated as reported; Rune Frederiksen quote given with its AFP context and the May 2023 request."
+ },
+ {
+  "id": "ordrupgaard-charlottenlund",
+  "section": "FUNDING / Red flags",
+  "problems": [
+   "gift not linked to page: DKK 2.5 million tied to the 2024 exhibition",
+   "unsupported: 'rebuilt' collection",
+   "unsupported: address and 'north of Copenhagen' source"
+  ],
+  "before": "a 2024 grant of DKK 2.5 million, with the foundation saying it supports the museum's outreach and contributed to the 2024 exhibition",
+  "after": "its project page lists a grant (\"Bevilling\") of DKK 2.5 million dated 2024 ... The page does not say which activity the DKK 2.5 million covered.",
+  "sources": [
+   "https://augustinusfonden.dk/projekter/sikre-rammer-til-verdenskunst-paa-ordrupgaard",
+   "https://en.wikipedia.org/wiki/Ordrupgaard",
+   "https://www.dezeen.com/?p=1704800"
+  ],
+  "reason": "Page shows the amount and 2024 but does not link it to the exhibition; added the 1958 start and 2025 support from the same page. Vilvordevej 110 is not on Wikipedia or Dezeen, so it was cut; 'north of Copenhagen' is from Dezeen. 'Sponsor dropped under pressure' stays 'No reporting found'."
+ },
+ {
+  "id": "nyu-tisch-school-of-the-arts-new-york",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "source not opened: Artnet page returned 403",
+   "claim from search extract"
+  ],
+  "before": "1. Artnet News: author not seen, article on Dean Allyson Green's dance video ... Search extract only ... The page returned an error and was not read.",
+  "after": "Overall: No criticism found in art media.",
+  "sources": [
+   "https://www.cbsnews.com/news/nyu-dean-sends-dance-video-in-response-to-students-petitioning-for-tuition-refund"
+  ],
+  "reason": "The Artnet URL returned HTTP 403 and could not be opened, so its item and URL were removed. The same 2020 dispute is covered by CBS News (27 March 2020), which is not art media. The Artnet piece needs a human read."
+ },
+ {
+  "id": "nyu-tisch-school-of-the-arts-new-york",
+  "section": "FUNDING",
+  "problems": [
+   "source not opened: Google, Cohen Foundation and HFPA claims read only from a search extract of a page with a certificate error"
+  ],
+  "before": "- Google: a three-year grant ... - Steven & Alexandra Cohen Foundation: ... - HFPA Charitable Trust: ...",
+  "after": "- No reporting found of other named donors: the school's institutional giving page returned a certificate error and could not be opened.",
+  "sources": [],
+  "reason": "tisch.nyu.edu returned a certificate error on every fetch; the three funders cannot be stated from a snippet. A human read of the giving page would restore them."
+ },
+ {
+  "id": "nyu-tisch-school-of-the-arts-new-york",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: Maurice Kanbar Institute, Clive Davis Institute, dual MFA/MBA with Stern",
+   "verdict wording"
+  ],
+  "before": "Programmes: institutes for Performing Arts, Film and Television (Maurice Kanbar Institute) and Emerging Media, the Clive Davis Institute of Recorded Music, a dual MFA/MBA with NYU Stern ...",
+  "after": "Programmes: three institutes (Performing Arts, Film and Television, Emerging Media) and 16 programmes ...",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Tisch_School_of_the_Arts",
+   "https://www.meti.gov.sg/newsroom/minister-lim-hng-kiang-s-written-reply-to-parliament-question-on-tisch-school-of-the-arts-asia/",
+   "https://www.meti.gov.sg/newsroom/minister-lim-hng-kiang-s-written-reply-on-the-closure-of-new-york-university-tisch-asia-s-singapore/"
+  ],
+  "reason": "The Wikipedia text names only three institutes and no Kanbar, Davis or Stern items. The S$11.68 million and S$5.3 million figures are in the 14 January 2013 reply; the S$20 million NYU figure appears in both replies."
+ },
+ {
+  "id": "nyu-tisch-school-of-the-arts-new-york",
+  "section": "WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'has not been accused of a crime'",
+   "minor vs minors",
+   "month of release"
+  ],
+  "before": "soliciting prostitution from a minor; whose emails ... who has not been accused of a crime in them",
+  "after": "soliciting prostitution from minors; the reporting describes correspondence only; the emails were released by the Department of Justice 'last month' relative to 18 February 2026",
+  "sources": [
+   "https://nyunews.com/news/2026/02/18/tisch-steve-epstein-dean-council/",
+   "https://en.wikipedia.org/wiki/Steve_Tisch"
+  ],
+  "reason": "Washington Square News says 'minors' and 'last month', and reports no money from Epstein to NYU or Tisch. Epstein items stay in Wider context."
+ },
+ {
+  "id": "oakland-museum-of-california-oakland",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'city operating subsidy ended'"
+  ],
+  "before": "mixed private: ... after the city's operating subsidy ended; ... the city subsidy has ended",
+  "after": "mixed private: ... with a city payment schedule agreed in 2011; Nonprofit Quarterly (13 June 2011) reported the city would pay $5 million a year for nine years with a final $3 million due in 2022. The article does not say the payments ended",
+  "sources": [
+   "https://nonprofitquarterly.org/city-of-oakland-cuts-ties-to-oakland-museum-of-california/",
+   "https://en.wikipedia.org/wiki/Oakland_Museum_of_California"
+  ],
+  "reason": "The 2011 page announces a payment schedule and the move to nonprofit operation; it does not say a subsidy ended, and Wikipedia has no city operating-funding text."
+ },
+ {
+  "id": "oakland-museum-of-california-oakland",
+  "section": "Red flags: PG&E criminal plea",
+  "problems": [
+   "missing court, date and sentence",
+   "unsupported: plea date"
+  ],
+  "before": "On 23 March 2020 PG&E announced it would plead guilty ... with $4 million in fines (KTVU). The plea needed approval from the Butte County Superior Court.",
+  "after": "Announcement of 23 March 2020 (KTVU), plea on 16 June 2020 in Butte County Superior Court before Judge Michael Deems to 84 counts of involuntary manslaughter (Wikipedia, NBC News), maximum fine $3.5 million plus $500,000 investigation costs, no imprisonment, formal sentencing still to come; no reporting found of the sentence as pronounced",
+  "sources": [
+   "https://www.ktvu.com/news/pge-says-it-will-plead-guilty-to-84-counts-of-involuntary-manslaughter-following-camp-fire",
+   "https://www.nbcnews.com/news/us-news/pg-e-pleads-guilty-84-counts-manslaughter-devastating-camp-fire-n1231256",
+   "https://en.wikipedia.org/wiki/Pacific_Gas_and_Electric_Company"
+  ],
+  "reason": "KTVU gives the March announcement and 84 + 1 counts; NBC (17 June 2020) gives the court, judge and fine; Wikipedia gives 16 June 2020. No opened page gives the pronounced sentence."
+ },
+ {
+  "id": "oakland-museum-of-california-oakland",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Chevron gift purpose",
+   "'and others' filler",
+   "statement of a future launch as past"
+  ],
+  "before": "Chevron gave $1 million in 2006 to broaden the museum's learning programmes; Director tier ... and others; launched its first Bloomberg Connects digital guide in August 2026",
+  "after": "Chevron announced a $1 million gift on 6 February 2006 for educational programming; Director tier named in full or counted; Bloomberg Connects bullet cut (the release says the guide will launch and names no funder)",
+  "sources": [
+   "https://www.webwire.com/ViewPressRel.asp?aId=9035",
+   "https://museumca.org/corporate-partners/",
+   "https://museumca.org/es/press/omca-announces-public-programs-and-events-for-august-2026/"
+  ],
+  "reason": "Webwire release says educational programming; the supporters page lists nine Director names and also Oakland Roots and Soul SC as Benefactor; the 14 July 2026 release says the guide will launch. Report trimmed to under 800 words. The Bloomberg ICA protest stays under Wider context."
+ },
+ {
+  "id": "ohara-museum-of-art-kurashiki",
+  "section": "FUNDING / Red flags",
+  "problems": [
+   "wrong source page and grouping: partner list is at /official, in four blocks not three",
+   "partner role not stated",
+   "unsupported: annex closed, 2011 on foundation site, 'businessman'"
+  ],
+  "before": "The museum's partner page (as of 1 April 2026) lists the partners in three unlabelled groups ... The second includes Okayama Gas, Yokoyama Sekiyu ... The third includes ENEOS Mizushima refinery, Japan Tobacco Inc.",
+  "after": "The 'Official Partner' page dated 1 April 2026 lists them in four unlabelled blocks (Okayama Gas and Yokoyama Sekiyu in block 3; ENEOS Mizushima refinery and Japan Tobacco in block 4), with no amounts, and says partners support four purposes: viewing environment, young artists, children's creativity, conservation",
+  "sources": [
+   "https://www.ohara.or.jp/official",
+   "https://bijutsutecho.com/magazine/news/headline/32721",
+   "https://bijutsutecho.com/magazine/news/headline/22939"
+  ],
+  "reason": "/official is the real partner page (the /supporters page links to it). The history page gives June 2011 for public-interest status; the annex closure is not on it, and 'businessman' is on no opened page, so both were cut. Individual membership fees, 220 sponsors (26 June 2026), 80% admission share, 136 closure days and 10 million yen target were confirmed."
+ },
+ {
+  "id": "ohara-museum-of-art-kurashiki",
+  "section": "OVERVIEW",
+  "problems": [
+   "'translation mine' wording",
+   "unsupported: annex closed for an extended period"
+  ],
+  "before": "On site: the main gallery, a Craft and Oriental museum and the Kojima Torajiro Memorial Hall; the annex is closed for an extended period",
+  "after": "On site: the main gallery, the Craft and Oriental Hall and the Kojima Torajiro Memorial Museum, on one ticket (museum visitor page)",
+  "sources": [
+   "https://www.ohara.or.jp/visitor_info",
+   "https://www.ohara.or.jp/history"
+  ],
+  "reason": "The visitor page confirms one shared ticket for three buildings and free borrowing of wheelchairs and strollers; no opened page says the annex is closed."
+ },
+ {
+  "id": "ok16-cultural-hub-minsk",
+  "section": "Red flags: sanctions",
+  "problems": [
+   "flag basis unclear: Canada and Ukraine listings alone",
+   "source not opened: Zerkalo returned 403"
+  ],
+  "before": "Red flags: sanctions on Belgazprombank - Canada and Ukraine added Belgazprombank to their sanctions lists in 2023; EU transaction ban of 24 February 2025",
+  "after": "Red flags: sanctions on the bank's controllers - Gazprombank (49.8%) added to the UK asset-freeze list on 24 March 2022 and designated by the US Treasury on 21 November 2024; Canada and Ukraine listings of the bank itself and the EU transaction ban of 24 February 2025 kept as separate points",
+  "sources": [
+   "https://content.govdelivery.com/accounts/USTREAS/bulletins/3c32d96",
+   "https://www.kelleydrye.com/viewpoints/blogs/trade-and-manufacturing-monitor/additional-u-k-sanctions-targeting-russian-industries-banks-elites-belarusian-entities",
+   "https://interfax.com/newsroom/top-stories/109991/"
+  ],
+  "reason": "The Sanctions flag holds because a 49.8% owner is on UK and US lists. The Treasury release says Gazprombank is designated under E.O. 14024 but does not use the words 'SDN list'; Kelley Drye says the UK added it to the consolidated asset-freeze list. No opened page lists Gazprom itself. Wikipedia names only Canada and Ukraine for the bank itself; Interfax confirms the EU ban of 24 February 2025."
+ },
+ {
+  "id": "ok16-cultural-hub-minsk",
+  "section": "FUNDING / Red flags (state closure)",
+  "problems": [
+   "source not opened: Zerkalo 403 (price of $3 million, ArtCorporation, auction)",
+   "unsupported: 'Warsaw' relaunch",
+   "unsupported: sale by Belgazprombank",
+   "unsupported: Belarusian spelling, 'penal colony'"
+  ],
+  "before": "Zerkalo ... reports the bank bought the workshops for $3 million and that the company ArtCorporation rented the site ...; Unverified: Belgazprombank has tried to sell the buildings. Zerkalo ... reports an auction ...",
+  "after": "No reporting found that could be opened of the purchase price or any operator; Unverified: a Russian discount chain, Svetofor, will open on the OK16 site, from an unnamed Minsk woman interviewed by The Village Belarus and republished by Nasha Niva on 6 October 2022. The article does not mention a sale or an auction",
+  "sources": [
+   "https://nashaniva.com/300549",
+   "https://penbelarus.org/en/2021/01/12/a-hto-tam-idze-novy-god-represii-usyo-tyya-zh-vypusk-14.html",
+   "https://kalektar.org/in/terms/YcdYwbmLihoCaZ08glta"
+  ],
+  "reason": "Zerkalo cannot be opened, so its figures were cut and the URL removed from the sources. The Nasha Niva interview does not mention Belgazprombank selling. Dates confirmed: closure 7 January 2021 (Kalektar), Babaryka sentenced 6 July 2021 and Kalesnikava 6 September 2021, both released 13 December 2025 (Wikipedia). The sale item stays 'Unverified:'. Whether the state-closure item is a flag or context under the rule on persecution by a state that does not fund the space is a question for the editor."
+ },
+ {
+  "id": "onassis-stegi",
+  "section": "Red flags",
+  "problems": [
+   "flag not supported: tanker income labelled Fossil fuels",
+   "unsupported/overstated: 'Aristotle set it up in his will'"
+  ],
+  "before": "Red flags: crude oil tanker income (fossil fuels) - The Foundation's activities are funded by the profits of the Business Foundation ... and the Foundation controls Olympic Shipping and Management, which ran 18 crude oil tankers in January 2023",
+  "after": "Red flag heading removed; stated under Funding: ITLN (31 January 2023) calls Olympic Shipping and Management \"Onassis Foundation-controlled\" with a fleet that \"comprises 18 crude oil tankers\"; no page read says how much of the profit comes from tankers or that the Foundation produces fossil fuels",
+  "sources": [
+   "https://www.itln.in/shipping/gcmd-olympic-shipping-sign-decarbonisation-deal-1347718",
+   "https://en.wikipedia.org/wiki/Alexander_S._Onassis_Foundation"
+  ],
+  "reason": "Tanker owners count as oil-industry services, not Fossil fuels; no opened page shows the foundation's money comes from fossil fuel production. Bottom line reworded to match."
+ },
+ {
+  "id": "onassis-stegi",
+  "section": "Red flags: teachers' strike",
+  "problems": [
+   "missing times and date detail",
+   "OLME acronym not on page"
+  ],
+  "before": "The Federation of Secondary Education Officials (OLME) held a three-hour work stoppage on 17 February 2025",
+  "after": "The Federation of Secondary Education Officials held a three-hour work stoppage from 11:00 to 14:00 on Monday 17 February 2025, with a rally at Syntagma Square (To Vima, 15 February 2025); the 22 schools and 160 million euros over 12 years are from To Vima, 28 January 2025",
+  "sources": [
+   "https://www.tovima.com/society/teachers-to-stage-work-stoppage-to-protest-onassis-schools/",
+   "https://www.tovima.com/society/greek-parliament-to-vote-on-controversial-bill-to-create-onassis-foundation-public-schools"
+  ],
+  "reason": "Dates and quotes confirmed on both To Vima pages."
+ },
+ {
+  "id": "onassis-stegi",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported quotes: 'forced', 'an element of artistic expression'",
+   "unsupported: 'police were involved'",
+   "unsupported: 'Greek state does not fund the Stegi' sourced to nothing",
+   "translation marked 'by me'"
+  ],
+  "before": "After a priest complained, police were involved and the Stegi halted the projection on 26 May 2015. Its statement said it was \"forced\" to halt the screening and called nudity \"an element of artistic expression\"",
+  "after": "After a priest filed a complaint that went to the Acropolis police station, the Stegi stopped the projection on 26 May 2015, citing complaints about the content, and rejected the view that nudity in art is obscene (in.gr, 29 May 2015, translated)",
+  "sources": [
+   "https://www.in.gr/2015/05/29/culture/kataggelia-ierea-diekopse-tin-proboli-binteoperformans-stin-klaythmwnos/",
+   "https://en.wikipedia.org/wiki/Onassis_Stegi"
+  ],
+  "reason": "The in.gr article has no quotation with those words. Also corrected the Aristotle Onassis time-charter sentence to the page's wording and the website line (onassis.org returned no text)."
+ },
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "section": "Red flags: state censorship / protest by artists",
+  "problems": [
+   "missing dates and actors",
+   "unsupported: 'asked ... to come down'",
+   "unsupported: 'early 2026' date for Biennial withdrawal",
+   "official reply understated",
+   "wording: 'killing of Palestinians'"
+  ],
+  "before": "It said Palacio Libertad authorities had asked for three works supporting Palestine and one defending public education to come down ... Culture sources rejected the censorship claim, said no national cultural venue would host political expression of any kind ... The Asociación de Fileteadores publicly denounced the cancellation and said the show would go ahead at another venue",
+  "after": "La Nación (11 September 2025): the association announced hours before opening that the show would not take place and denounced censorship; authorities had questioned four works; Secretaría de Cultura sources said there is no space for political demonstrations in national cultural spaces and that taking the show down was the association's decision; association denounced it in a statement reported 11 September 2025 (Izquierda Diario 10 September 2025); Biennial shown at the UCA pavilion by 20 February 2026 (Perfil)",
+  "sources": [
+   "https://www.lanacion.com.ar/cultura/polemica-entre-fileteadores-portenos-y-el-palacio-libertad-por-obras-pro-educacion-publica-y-nid11092025/",
+   "https://www.perfil.com/noticias/cultura/censura-y-resistencia-la-disputa-por-el-sentido-del-arte.phtml",
+   "https://www.perfil.com/noticias/cultura/la-primera-bienal-de-arte-indigena-abre-un-nuevo-capitulo-en-la-escena-contemporanea-argentina.phtml"
+  ],
+  "reason": "La Nación gives no exact opening date and presents the move to another venue as an announcement of intent. Perfil (22 March 2026) gives no date for the withdrawal; the 20 February 2026 Perfil piece shows it happened earlier. Izquierda Diario is a partisan outlet dated 10 September 2025."
+ },
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "section": "OVERVIEW",
+  "problems": [
+   "unattributed actor: 'new management' covered plaque",
+   "unsupported: 'glass and stainless steel against the original interior'"
+  ],
+  "before": "In April and May 2024 the new management covered a plaque naming Cristina Fernández de Kirchner and others and removed signs bearing the Kirchner name",
+  "after": "In mid-April 2024 Culture Secretary Leonardo Cifelli ordered a plaque naming Cristina Fernández de Kirchner covered, and by 7 May 2024 a crew was removing Kirchner-name signs (La Nación, Diego Cabot); Bares siblings design uses clear and frosted glass and stainless steel",
+  "sources": [
+   "https://www.lanacion.com.ar/economia/la-nueva-gestion-esta-retirando-del-cck-todos-los-objetos-del-kirchnerismo-nid07052024/",
+   "https://en.wikipedia.org/wiki/N%C3%A9stor_Kirchner_Cultural_Centre"
+  ],
+  "reason": "La Nación names the secretary and the 'not politicising' reason; Wikipedia attributes the materials to the architects' team, not the siblings individually, so wording was loosened. Website line corrected: the address did not resolve. Report trimmed under 800 words."
+ },
+ {
+  "id": "palais-de-tokyo",
+  "section": "Red flags: Gulf state body",
+  "problems": [
+   "missing money answer: what, if anything, came from Qatar",
+   "hedge-adjacent: unattributed Michaud quote framing"
+  ],
+  "before": "Yves Michaud said the partnership aims to \"bribe French society ...\". The museum said on 9 January 2020 it would not cancel the show",
+  "after": "Money: a Palais spokeswoman told The Art Newspaper (8 January 2020) the Qatari government has never donated to the museum and that production costs are shared between the Palais and Mathaf; no amounts found. ArtAsiaPacific states no funder of the show.",
+  "sources": [
+   "https://www.theartnewspaper.com/2020/01/08/artists-criticise-palais-de-tokyo-partnership-with-qatari-museum-over-lgbtq-rights",
+   "https://artasiapacific.com/news/artists-protest-palais-de-tokyo-mathaf-collaboration-over-lgbtq-issues"
+  ],
+  "reason": "The Art Newspaper article of 8 January 2020 (Nikita Dmitriev) is the only opened page that answers the money question. The Gulf state body flag stays: Mathaf is a state-run Qatari museum and a named partner."
+ },
+ {
+  "id": "palais-de-tokyo",
+  "section": "Red flags: protest over a sponsor (La Poste, 2018)",
+  "problems": [
+   "unsupported: 'striking postal workers'",
+   "year inferred",
+   "missing context: La Poste temporary post office"
+  ],
+  "before": "On 16 August 2018 about twenty striking postal workers occupied the entrance hall for half an hour",
+  "after": "La Poste set up a temporary post office in the entrance hall, presented as an artwork by Sabrina Vitali; on 16 August 2018 about twenty people occupied the hall for barely half an hour ... (Carenews, 19 November 2018; the year of the occupation is inferred from the article date)",
+  "sources": [
+   "https://www.carenews.com/fr/news/11825-mecenat-culturel-le-mecenat-mute-avec-la-poste"
+  ],
+  "reason": "Carenews says 'une vingtaine d'individus', not striking workers, and gives '16 août dernier' in an article dated 19 November 2018."
+ },
+ {
+  "id": "palais-de-tokyo",
+  "section": "Red flags: fossil fuels (Fondation Engie)",
+  "problems": [
+   "no year for the Fondation Engie support",
+   "undated Engie figures"
+  ],
+  "before": "Fondation Engie is an annual supporter and funds the museum's inclusive outreach (museum website). Engie \"covers the whole gas chain\" ...",
+  "after": "Fondation Engie is listed on the supporters page \"for inclusive outreach\" and in the home page's annual-support line; neither page gives a year. Engie figures dated 2018 and 2021 (Wikipedia)",
+  "sources": [
+   "https://www.palaisdetokyo.com/en/merci/",
+   "https://palaisdetokyo.com/en/",
+   "https://en.wikipedia.org/wiki/Engie"
+  ],
+  "reason": "Both museum pages are undated; the Engie figures come from Wikipedia's 2018 and 2021 data. The Wikipedia Palais page does not mention Engie."
+ },
+ {
+  "id": "palais-de-tokyo",
+  "section": "OVERVIEW / CRITICISM",
+  "problems": [
+   "unsupported: 22,000 square metres",
+   "unsupported: bookshop, restaurants and outreach programmes",
+   "wrong quotation: Hegedüs"
+  ],
+  "before": "expanded it in 2012 to 22,000 square metres; saying \"I don't want to be associated with the new, very political direction at the Palais de Tokyo.\"",
+  "after": "overhauled and expanded it in 2012; she no longer wanted to be linked to the \"new, very political direction\" of the Palais de Tokyo",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Palais_de_Tokyo",
+   "http://www.theartnewspaper.com/2024/05/14/palais-de-tokyo-patron-row-intensifies-after-french-art-world-figures-sign-letter-of-support"
+  ],
+  "reason": "Wikipedia gives no floor area; The Art Newspaper (Gareth Harris, 14 May 2024) paraphrases rather than quotes the longer sentence. Letter was published in Le Monde. Report trimmed under 800 words."
+ },
+ {
+  "id": "palazzo-grassi-and-punta-della-dogana",
+  "section": "Red flags: Kering tax settlement",
+  "problems": [
+   "authority not stated precisely",
+   "unsupported: 'Kering acknowledged the claim'"
+  ],
+  "before": "On 9 May 2019 Kering announced a settlement of 1.25 billion euros ... after Italian tax authorities accused Gucci ... Kering acknowledged the claim that Gucci had a permanent establishment in Italy",
+  "after": "Settlement with the Italian tax authorities announced 9 May 2019: 1.25 billion euros in total, 897 million euros of it additional taxes plus penalties and interest (swissinfo); the article names Italian tax authorities and prosecutors but no agency or court; Kering denied avoiding tax and acknowledged that prosecutors had claimed a permanent establishment in Italy",
+  "sources": [
+   "https://www.swissinfo.ch/eng/business/swiss-subsidiary_gucci-parent-kering-agrees-huge-settlement-over-italian-taxes/44953028",
+   "https://en.wikipedia.org/wiki/Kering"
+  ],
+  "reason": "swissinfo gives the date, amounts, 2011 to 2017 period and Luxury Goods International; it does not name the Agenzia delle Entrate or a prosecutor's office. Wikipedia's Kering page does not mention the settlement; it confirms Groupe Artémis at 42.34% of shares."
+ },
+ {
+  "id": "palazzo-grassi-and-punta-della-dogana",
+  "section": "FUNDING",
+  "problems": [
+   "lease length differs (30 vs 33 years) not attributed to each source",
+   "exact quote wrong: 'exclusively supports'"
+  ],
+  "before": "In 2007 The Art Newspaper reported a 30-year lease ... Wikipedia gives a 33-year agreement and a restoration cost of about 20 million euros. ... Bottega Veneta \"exclusively supports\" the Lorna Simpson show",
+  "after": "The Art Newspaper (Georgina Adam, 31 May 2007) reported a 30-year lease at no rent, about 25 million euros of restoration and 85 million over 30 years; The Art Newspaper (Gareth Harris, 30 April 2007) also reported 30 years; Wikipedia says Pinault \"signed a 33-year agreement with the city\" with a 20 million euro renovation; the Lorna Simpson show is \"exclusively supported by Bottega Veneta\"",
+  "sources": [
+   "https://www.theartnewspaper.com/2007/06/01/pinault-commits-dollar110m-to-new-museum",
+   "https://www.theartnewspaper.com/2007/05/01/pinault-trounces-guggenheim-in-battle-to-control-customs-house",
+   "https://en.wikipedia.org/wiki/Punta_della_Dogana"
+  ],
+  "reason": "Both lengths now stated and attributed. The Wikipedia text calls it an 'agreement', not a lease."
+ },
+ {
+  "id": "palazzo-grassi-and-punta-della-dogana",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "overstated: 'criticism grew'",
+   "paraphrase beyond the page: Miracco",
+   "vague: Sgarbi"
+  ],
+  "before": "Venetian criticism of Pinault's management grew after he dropped the temporary exhibition programme ... Franco Miracco ... said the arrangement did not serve the city because ... Mayor Massimo Cacciari dismissed the criticism",
+  "after": "Pinault dropped the temporary exhibition programme, and the decision drew local objections; Miracco pointed to Pinault's ownership of Christie's and said the quoted line; Sgarbi criticised the city for favouring Pinault's collection over the Terruzzi collection; the outgoing mayor Cacciari called the criticism \"insane\"",
+  "sources": [
+   "https://www.theartnewspaper.com/2010/06/01/francois-pinault-poaches-leading-paris-fair-director",
+   "https://www.theartnewspaper.com/2007/05/01/pinault-trounces-guggenheim-in-battle-to-control-customs-house"
+  ],
+  "reason": "Article dated 31 May 2010 by Enrico Tantucci and Gareth Harris. The 2007 piece is dated 30 April 2007. Report trimmed under 800 words."
+ },
+ {
+  "id": "peggy-guggenheim-collection-venice",
+  "section": "Red flags",
+  "problems": [
+   "parent-foundation policy presented as a Red flag for the Venice museum",
+   "source not opened: Artnet page blocked, headline only",
+   "unsupported: Dorsoduro 701; 'members'"
+  ],
+  "before": "Red flags: Sackler family (opioids), at the parent foundation ... Artnet carried a report in 2022 headed that the Guggenheim \"Has Finally Quietly Removed\" the Sackler name; the page was blocked and only the headline was seen.",
+  "after": "Red flag removed. Under Funding: no reporting found of a Sackler gift to, or the Sackler name at, the Venice museum; the parent foundation's 2019 policy (the New York museum would not accept future donations from Sacklers involved in Purdue Pharma, per Wikipedia) applies only to the New York museum; neither page mentions Venice. Artnet claim and URL removed.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sackler_family",
+   "https://en.wikipedia.org/wiki/P.A.I.N.",
+   "https://en.wikipedia.org/wiki/Peggy_Guggenheim_Collection"
+  ],
+  "reason": "Wikipedia's Peggy Guggenheim Collection page has no Sackler mention. Wikipedia gives only 'later in 2019' with no month. The Artnet page could not be opened, so its 2022 claim was cut. The street number Dorsoduro 701 is on no opened page; the Intrapresæ page calls the 11 names 'Corporate sponsors', not members."
+ },
+ {
+  "id": "peggy-guggenheim-collection-venice",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "missing title and exact date",
+   "missing byline note"
+  ],
+  "before": "1. ArtsJournal: Matthew Westphal, report on the suit by Peggy Guggenheim's descendants (2014); 2. Artlyst: News Desk, report ... (2014)",
+  "after": "ArtsJournal, \"Peggy Guggenheim's Descendants Sue Foundation Over What They've Done To Her Venice Palazzo\" (8 May 2014); Artlyst, \"Peggy Guggenheim Relatives Sue Foundation Over Venice Grave Desecration\" (20 May 2014, no byline)",
+  "sources": [
+   "https://www.artsjournal.org/?p=173767",
+   "https://artlyst.com/?p=168749"
+  ],
+  "reason": "Titles and dates taken from the opened pages; quotes and the Foundation's reply confirmed on Artlyst (the ArtsJournal page gives no reply)."
+ },
+ {
+  "id": "ny-carlsberg-glyptotek",
+  "section": "whole report",
+  "problems": [
+   "over 800 words (911 without SOURCES)"
+  ],
+  "before": "911 words",
+  "after": "791 words",
+  "sources": [
+   "https://www.carlsbergfondet.dk/en/news/the-carlsberg-foundation-donates-a-historic-grant-to-future-proof-the-ny-carlsberg-glyptotek/",
+   "https://lex.dk/Ny_Carlsbergfondet"
+  ],
+  "reason": "Trimmed overview, funding and press items; no fact added. Gift year for Augustinus Fonden stays 2022 by tag only with no amount; the DKK 1.53 million 2025 grant is stated as not found."
+ }
+]

@@ -1,0 +1,354 @@
+[
+ {
+  "id": "ruang-mes-56-yogyakarta",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "s-mi-center-for-contemporary-art-s-mi-d-iddaguovdd-karasjok",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "sa-sa-art-projects-phnom-penh",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "salonul-de-proiecte-bucharest",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "salt-galata-istanbul",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "salzburger-kunstverein",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "samstag-museum-of-art-adelaide",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "san-art-ho-chi-minh-city",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "sapporo-international-art-festival-sapporo",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "sarjeant-gallery-whanganui",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "savannah-centre-for-contemporary-art-scca-tamale-tamale",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "savvy-contemporary-berlin",
+  "section": "Website",
+  "problems": [
+   "process note: '(checked 2026-10-25 ...)' and page-state notes"
+  ],
+  "before": "Website: <url> (checked 2026-10-25; ...)",
+  "after": "Website: <url>",
+  "sources": [],
+  "reason": "Website line gives the address only."
+ },
+ {
+  "id": "ruang-mes-56-yogyakarta",
+  "section": "FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "unsupported: Dutch foundations (Gieskes-Strijbis, Van Bijlevelt, Prince Claus, Kleurgamma, Fonds21, Mondriaan, Prins Bernhard) known only from a search-tool extract; foam.org pages returned HTTP 429 on every attempt",
+   "unsupported: 'members' as a source of money",
+   "spelling: Mayanga Anggrian"
+  ],
+  "before": "Foam's 2017 Amsterdam exhibition ... was supported by the Gieskes-Strijbis Fund, the Van Bijlevelt Foundation, the Prince Claus Fund and Kleurgamma ... The only named institutional money is the Dutch foundation support",
+  "after": "Foam funder bullet cut; Foam show kept in Overview as 'Foam X Ruang Mes 56', 15 September to 12 November 2017 (photography-now.com); verdict 'self-funded: the collective's own money and programmes'; Bottom line attributes self-funding to oddweb.org and photography-now.com; author spelling Anggrian",
+  "sources": [
+   "https://oddweb.org/?p=5116",
+   "https://photography-now.com/exhibition/126264",
+   "https://journal.unnes.ac.id/nju/imajinasi/article/view/17473"
+  ],
+  "reason": "Foam pages could not be opened, so the foundations were cut as the rules require for funders known only from an unopened extract. Foam's own listing may name them: the editor can retry foam.org/museum/programme/foam-x-ruang-mes-56 later. Artists Putera and William also dropped (not on an opened page)."
+ },
+ {
+  "id": "s-mi-center-for-contemporary-art-s-mi-d-iddaguovdd-karasjok",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "logo-only funders block",
+   "verdict 'documented money is public' and 'funds its projects' broader than the page",
+   "unsupported: 'Lithuanian-born'",
+   "purpose statement paraphrase not matching page"
+  ],
+  "before": "The centre's about page carries a \"SDG is funded by\" block of logos without amounts. / the Sámi Parliament funds its projects ... / Lithuanian-born curator Marija Griniuk",
+  "after": "Logo line cut; bottom line names only the ArtVilnius 2024 grant (Sametinget funded participation), the board seats and Proff's 2025 revenue NOK 7.9 million; Griniuk described only as appointed for four years from 25 July 2022; purpose text follows the page wording; Kalak 'assistant professor of law'",
+  "sources": [
+   "https://samidaiddaguovddas.no/sami-center-for-contemporary-art-to-be-presented-at-artvilnius-art-fair/",
+   "https://www.proff.no/roller/stiftelsen-s%C3%A0mi-d%C3%A0iddaguovdd%C3%A0s/-/-/912625281/",
+   "https://samidaiddaguovddas.no/en/about-sdg/"
+  ],
+  "reason": "Confirmed: Proff NOK 7,921 thousand operating revenue 2025, operating result minus 229, assets 2,051, equity 1,611; foundation established 23 Aug 2013, registered 9 Jan 2014; board seats (Holm/SDS; Jåma and Muotka/Sámi Parliament; Somby and Eira/Karasjok Municipality); ArtVilnius 'funded by Sametinget' 4 to 6 Oct 2024; Kalak release 13 May 2025; Griniuk 19 May 2022. Logos are not sources."
+ },
+ {
+  "id": "sa-sa-art-projects-phnom-penh",
+  "section": "OVERVIEW / FUNDING / WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "overview claim beyond page: 'housed artists, cultural workers and families'",
+   "auction wording",
+   "wider context wording 'taken down around 18 to 22 June'; 'This criticism does not name Sa Sa'",
+   "missing blank line before SOURCES"
+  ],
+  "before": "which housed artists, cultural workers and families / Around 18 to 22 June 2022 ... was taken down / This criticism does not name Sa Sa Art Projects.",
+  "after": "housed municipal staff and then cultural workers and low-to-mid income families (Afterall); mural covered and removed days after the 18 June 2022 opening; connection point: Wikipedia lists Sa Sa among participants and südostasien describes it as a guest at documenta fifteen",
+  "sources": [
+   "https://www.reifoundation.com/projects/sa-sa-art-projects-cultivating-cambodia-s-arts-community",
+   "https://reifoundation.com/journal/partnership-sa-sa-art-projects",
+   "https://en.wikipedia.org/wiki/Documenta_fifteen"
+  ],
+  "reason": "Rei Foundation April 2018 to January 2024 (project page) and renewal 7 Oct 2019 for 2019-20 (journal), founder Reiko Fukutake (about), Cambodianess 22 Oct 2022 auction (Michelle Vachon), Biennale of Sydney 2018 assistance, all confirmed. documenta fifteen Wider context KEPT: Wikipedia participant list names Sa Sa (and südostasien by Kathrin Eitel, 1/2022 calls it a guest), Schormann resigned 17 July 2022, January 2023 'echo chamber' finding confirmed; the point states the criticism concerned the mural and show, not Sa Sa."
+ },
+ {
+  "id": "salonul-de-proiecte-bucharest",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported: 'Since 2018 it has worked with the photographic archive'",
+   "unsupported: AFCN co-financing of 'Tipare mobilizatoare ... (2025)' (not on any opened page)",
+   "unsupported years for Schimburi strategice '2025 to 2026'",
+   "dead URL https://salonuldeproiecte.ro/en/press/ (404)"
+  ],
+  "before": "Since 2018 it has worked with the photographic archive ... / 'Tipare mobilizatoare' (2025) ... / 'Schimburi strategice' (2025 to 2026)",
+  "after": "From 5 December 2018 to 10 February 2019 it showed a first selection from the archive; Tipare mobilizatoare cut; Schimburi strategice given its page dates 10 December 2025 to 15 February 2026; Legenda familiei 24 April to 31 May 2026; Bernea exhibition 25 September to 2 November 2025; Goethe-Institut 'Împreună' 26 June to 3 August 2025; press URL removed",
+  "sources": [
+   "https://salonuldeproiecte.ro/expozitii/PoianaMaruluiRo/",
+   "https://salonuldeproiecte.ro/expozitii/StrategicEx/",
+   "https://salonuldeproiecte.ro/expozitii/Impreuna/"
+  ],
+  "reason": "Confirmed on opened pages: AFCN co-financing (Poiana Mărului, Negativul unei lumi, Legenda familiei, Strategic (Ex)Changes, Bernea), Foundation for Arts Initiatives (Poiana, Negativul, Legenda), UniCredit Bank (Poiana, 'Cu prijinul'), ERSTE Foundation (Strategic (Ex)Changes), Goethe-Institut România (Împreună), sponsors Corcova Roy & Dâmboviceanu, C-Side Tonic (Poiana), Doka (Negativul), benefit auction 11 June 2026."
+ },
+ {
+  "id": "salt-galata-istanbul",
+  "section": "OVERVIEW / FUNDING / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "unsupported: 'Salt says its archives hold over 2,000,000 digitised documents' (on no Salt page; Garanti release says over 2 million archive documents and sources opened to public access)",
+   "spelling: Vallaury (Salt page spells Vallauri)",
+   "supporters list mis-grouped: Mastercard and Doğuş named as corporate supporters (page lists them under halls)",
+   "press item: Kortun 'denied pressure' (page quotes him: cannot speculate on other reasons; permits needed)",
+   "'an editor's note' (public wording)",
+   "'the one documented controversy' verdict wording; 'owns its spaces' Wikipedia-only",
+   "missing dates on press items"
+  ],
+  "before": "Reports that many suspected ... Kortun denied pressure and said permits were needed. / an editor's note on the page says ... / The one documented controversy is the 2016 to 2018 closure ... the director denied it.",
+  "after": "Hyperallergic item: Dorian Batycka, \"Istanbul's Leading Contemporary Art Space Reopens in a Very Different Turkey\" (23 May 2018); Kortun said he could not speculate on other reasons and that permits were needed; 'a correction note on the page'; ArtReview item given date 1 December 2012; bottom line attributes ownership to Wikipedia and states the Hyperallergic report without a verdict word",
+  "sources": [
+   "https://hyperallergic.com/443986/salt-beyoglu-reopening-istanbul-turkey/",
+   "https://artreview.com/research-and-rescue-istanbul/",
+   "https://saltonline.org/en/supporters"
+  ],
+  "reason": "PRESS KEPT: (1) Hyperallergic, Dorian Batycka, \"Istanbul's Leading Contemporary Art Space Reopens in a Very Different Turkey\", 23 May 2018: names Salt Beyoğlu, questions the reopening, mild criticism of the Turkish context; calls Garanti 'one of the biggest financial institutions in Turkey' and Salt's primary funder. (2) ArtReview, Laura McLean-Ferris, \"Istanbul\", 1 December 2012: does not criticise Salt (structural point about private money). Garanti release 22 May 2026 confirmed: Ova thanks founder, Ebru Taşcı Firuzbay is a Salt board member, ~5 million visitors, Research Funds since 2013 (80+ projects), Economic History Fund 2025. History page confirmed Kortun 2011-2017, Öner 2017-2021. Wikipedia Salt_Research confirmed: three spaces owned by Garanti BBVA. Garanti BBVA is a bank; no House flag category fits and no page links it to one: no flag."
+ },
+ {
+  "id": "salzburger-kunstverein",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "unsupported: location description (old town edge, Nonntal, county court, Karolinen bridge, left bank)",
+   "unsupported: director list years (Amanshauser 1995 to 2004) and attribution",
+   "'membership-based ... members and event rentals add income' (no page says dues or rental income are revenue)",
+   "Wikipedia attribution (German vs English)"
+  ],
+  "before": "on the edge of the old town in the Nonntal district ... / Hildegund Amanshauser again (1995 to 2004) / about 900 members and event rentals add income",
+  "after": "address only; directors attributed to Wikipedia with its years (Eiblmayr 1993 to 1995, Amanshauser 1996 to 2004); Baciak five-year term attributed to e-flux (26 May 2023); bottom line states the ministry support, the City and Land residencies, 900 members and event rentals without a revenue claim; German Wikipedia named for the 2015 cooperation, 1885 handover and share financing",
+  "sources": [
+   "https://salzburger-kunstverein.at/residencies_artist",
+   "https://de.wikipedia.org/wiki/Salzburger_Kunstverein",
+   "https://en.wikipedia.org/wiki/Salzburger_Kunstverein"
+  ],
+  "reason": "Confirmed: residency programme in cooperation with / supported by the Federal Ministry for Arts and Culture; City and Land each offer a residency within the Kunstverein, 30-year AIR exchange; German Wikipedia: share-financed founding, 1 Aug 1885, cooperation with Bundeskanzleramt, Land and Stadt since 2015. Logos of Trumer and Cocoon Hotels on the site are not a funding line and were not used."
+ },
+ {
+  "id": "samstag-museum-of-art-adelaide",
+  "section": "WIDER CONTEXT / FUNDING / OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "Wider context cut: the May 2024 encampment (Students for Palestine) named the University of Adelaide; the InDaily page (Charlie Gilchrist, 1 May 2024) mentions neither Samstag nor the University of South Australia",
+   "verdict 'university-funded' not stated on any opened page",
+   "unsupported: '15-minute walk from the city centre'",
+   "unsupported: 'after the American benefactors Anne and Gordon Samstag'",
+   "unsupported: Dwelling (Adelaide Issue) commissioned page (friends page does not mention it)"
+  ],
+  "before": "WIDER CONTEXT - In May 2024 the Students for Palestine group ... / university-funded ... / Archie Moore's \"Dwelling (Adelaide Issue)\" (2024) was commissioned by Samstag and the Adelaide Film Festival (the museum's website)",
+  "after": "Wider context section and the encampment sentence in the bottom line removed; verdict 'part of Adelaide University, with a private bequest funding its scholarships'; Moore work described as 'Dwelling' made in partnership with the Adelaide Film Festival (AFF page, 2024)",
+  "sources": [
+   "https://www.indailysa.com.au/news/adelaide/2024/05/01/pro-palestine-protest-to-set-up-at-university-of-adelaide",
+   "https://samstag.adelaide.edu.au/scholarship/",
+   "https://www.adelaidefilmfestival.org/news/artist-archie-moore-to-be-part-of-aff-2024"
+  ],
+  "reason": "The Samstag was part of the University of South Australia, a different university from the University of Adelaide that the encampment targeted; the two merged into Adelaide University in 2026 (Samstag about page), but no opened page ties the encampment to Samstag, so the item is cut. Confirmed: scholarships established 1991 by the bequest of Gordon Samstag, US trustee Bank of America, $75,000 tax-free allowance, 152 awarded; Samstag home page and Wikipedia state no funding source for the museum itself."
+ },
+ {
+  "id": "san-art-ho-chi-minh-city",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "misattribution: bottom line says Vietnamese cultural authorities 'cancelled an exhibition and halted its residency'; ArtAsiaPacific says the exhibition was cancelled (actor not named) and Sàn Art itself ended its residency after government warnings",
+   "'Officials maintained' tense; 'planned for November' (page: the following month)",
+   "the quote 'no financial support' credited to the announcement; page credits Dinh Q Lê",
+   "unsupported dates: e-flux 5 December 2014",
+   "dead/irrelevant URL: culture360 page does not describe Sàn Art's funding"
+  ],
+  "before": "The documented pressure on it comes from Vietnamese cultural authorities, who cancelled an exhibition and halted its residency in 2015 and 2016.",
+  "after": "ArtAsiaPacific (Brady Ng, 12 September 2016) reports that in October 2015 the country's Cultural Police scrutinised the residency programme; an exhibition planned for the following month was cancelled; after warnings from the Vietnamese government in February 2016 Sàn Art 'temporarily terminated its residency program'; officials maintain Sàn Art has no licence to host foreigners at its events",
+  "sources": [
+   "https://artasiapacific.com/news/zoe-butt-moves-to-the-factory",
+   "https://www.e-flux.com/announcements/30250/benefit-art-auction-thresholds-of-motion",
+   "https://www.sfaq.us/2014/10/san-art/"
+  ],
+  "reason": "Confirmed: 'Within Vietnam, there is no financial support for the work we do at Sàn Art' (e-flux, stated by Dinh Q Lê, chairman of the board), Paddle8 auction 4 to 18 December 2014, 24 artists, A.Farm amounts (Viet Nam News, 2 March 2019), Sàn Art Laboratory and Conscious Realities (SFAQ, Courtney Malick, 10 October 2014), first exhibition 3 October 2007 (Zoe Butt, 27 September 2012), address 132 Ben Van Don. culture360 source removed from list (page does not state funding; interview of 18 December 2017 only says founded 2007 by four artists)."
+ },
+ {
+  "id": "sapporo-international-art-festival-sapporo",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "quotation not on page: 'some criticism that the duration of the festival was too short'",
+   "bottom line 'municipal event' verdict and 'a Swiss embassy' wording; omitted CLAIR",
+   "edition dates missing"
+  ],
+  "before": "The Secretariat acknowledges \"some criticism that the duration ...\" / The festival is a municipal event ... a Swiss embassy",
+  "after": "Secretariat paraphrased: some people felt the 2024 run was too short, 'the best possible outcome given SIAF's advantage in media art'; edition dates added from siaf.jp/en/about; bottom line lists the five bodies under 'Supported by' as the page does and the four Initiative Partners",
+  "sources": [
+   "https://siaf.jp/en/2027/about/",
+   "https://siaf.jp/en/2027/partner/",
+   "https://siaf.jp/?p=25544"
+  ],
+  "reason": "Confirmed on opened pages: Organizer = Executive Committee and City of Sapporo; Supported by Agency for Cultural Affairs (Fiscal Year 2026), Embassy of Switzerland in Japan, Japan Foundation for Regional Art-Activities, Kao Foundation for Arts and Sciences, CLAIR; Cooperation New Chitose Airport International Animation Festival; Initiative Partners KOKUYO, Nikkei, Startbahn, Wacom; Official Partners DAT, JAGDA Hokkaido; venue dates; director team. 'Supported by' is a credit with no amounts, stated as such."
+ },
+ {
+  "id": "sarjeant-gallery-whanganui",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "verdict 'mostly public' without a page",
+   "'the council attributed' (the attribution is Local Democracy Reporting, two-thirds of the increase)",
+   "2017 year for the trust pledges not shown on the Stout page (only '18 Oct')",
+   "unsupported: 'biennial exhibition series' for Ināianei | Current; 'classrooms'; 'Pukenamu Drive' and '1919' lacked an opened page",
+   "partners listing stated as support"
+  ],
+  "before": "The money behind the Sarjeant is mostly public ... which the council attributed to the heritage building, ground conditions and COVID-19. / 2017 pledges ... by 20 December 2017",
+  "after": "Bottom line states figures only and attributes the overrun reasons to Local Democracy Reporting; trust pledges dated '18 October media release' without a year; Ināianei | Current described as an exhibition opening in November 2026 sponsored by Craigs (gallery blog post, 2 September 2026); classrooms cut; 1919 opening (6 September, centenary page) and 4 Pukenamu Drive (visit page) now sourced",
+  "sources": [
+   "https://awafm.co.nz/whanganui-ratepayers-to-fund-less-than-a-third-of-79m-gallery-bill/",
+   "https://www.whanganui.govt.nz/Your-Council/News-and-Events/News/Final-report-on-gallery-redevelopment",
+   "https://sarjeant.org.nz/information/"
+  ],
+  "reason": "Confirmed: Local Democracy Reporting, Moana Ellis, 31 July 2025: council about $26.08 million, total $79.4 million to November 2025, original budget $55.06 million (2019/2020, with $5.15 million contingency), overspend $19.67 million, 21 months, two-thirds of the increase tied to the existing building, ground conditions, COVID-19 and design variations. Council release 31 July 2025: $26.08 million council share, $79.4 million, two-thirds from fundraising; it does not give the overspend or the budget. Gallery information page: $26.1 million, $53.3 million grants and fundraising, nearly $11 million trusts and individuals, named funders. Partners page lists Kānoa (principal funder), Four Regions Trust, Lotto New Zealand, New Zealand Community Trust and others with no year or amount: stated as a listing, no flag (gaming-machine trusts: nothing stated about their source of money on the page). Stout Trust release: $600,000, naming rights up to $1 million; 15 June 2017 release: Treadwell Gordon $10,000."
+ },
+ {
+  "id": "savannah-centre-for-contemporary-art-scca-tamale-tamale",
+  "section": "OVERVIEW / FUNDING / NOT RELATED",
+  "problems": [
+   "missing title and author for the Contemporary And piece",
+   "'dedicated to art and cultural practices that emerged in the 20th century' not confirmed",
+   "Wikipedia source URL changed to the disambiguation page",
+   "self-funding verdict not attributed"
+  ],
+  "before": "(Contemporary And, 10 August 2021) / self-funded: the founder's own earnings from selling his art",
+  "after": "Will Furtado, \"Savannah Center for Contemporary Art\", Magazine C& (Contemporary And), 10 August 2021; verdict marked 'stated by Mahama'; Wikipedia disambiguation page cited for the Not related line",
+  "sources": [
+   "https://contemporaryand.com/en/c-and-magazine/texts/savannah-center-for-contemporary-art",
+   "https://en.wikipedia.org/wiki/Ibrahim_Mahama_(disambiguation)",
+   "https://www.sccatamale.org/"
+  ],
+  "reason": "Confirmed: quote 'There is no funding structure. I fund everything from the work that I sell as an artist.'; foundation started February 2014; motto; children a major focus; blaxTARLINES KUMASI affiliation; Akutia caption; White Cube 27 February 2019; Apollo 28 September 2020 (Red Clay) and 24 December 2025 (Apalazzo Gallery and White Cube); AFIELD 2024 Art Space Grant special recognition; birth years 1971 (businessman) and 1987 (artist) on the Wikipedia disambiguation page. Not related line kept."
+ },
+ {
+  "id": "savvy-contemporary-berlin",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "unsupported names: Colonial Neighbours, SAVVY .doc (not on opened pages)",
+   "wrong partner name: 'African Heritage House' (Kulturstiftung des Bundes: African Digital Heritage)",
+   "unsupported: board members of SAVVY friends beyond chairman and treasurer; Wikipedia date",
+   "'around 25 members and a network of collaborators' network not on page"
+  ],
+  "before": "a participatory archive on German colonial history (Colonial Neighbours), a documentation centre of performance arts (SAVVY .doc) ... African Heritage House in Nairobi",
+  "after": "archive and documentation centre described without invented names; partner corrected to African Digital Heritage in Nairobi; board list cut to chairman Thomas Eller Wang and treasurer Wolfgang von Dallwitz; Ndikung sentence attributed to Wikipedia",
+  "sources": [
+   "https://savvy-contemporary.com/en/about/",
+   "https://www.kulturstiftung-des-bundes.de/en/programmes_projects/detail/unraveling_the_underdevelopment_complex.html",
+   "https://savvy-contemporary.com/en/about/savvyfriends/"
+  ],
+  "reason": "Confirmed: 'partly funded by' Berlin Senate Department for Culture and Social Cohesion (concept page); 'Our financial situation as a non-profit is precarious' (about page); TURN2 Fund of Kulturstiftung des Bundes 2021 to 2024, Berlin exhibition 26 November 2022 to 27 January 2023; SAVVY friends e.V. 4.16 euros a month (50 a year); 'Architectural Echotones' supporters list; free entry and wheelchair access (project page)."
+ }
+]

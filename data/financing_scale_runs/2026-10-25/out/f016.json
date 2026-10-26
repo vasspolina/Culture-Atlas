@@ -1,0 +1,225 @@
+[
+ {
+  "id": "fragmentos-espacio-de-arte-y-memoria-bogotá",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museo-de-arte-moderno-de-bogotá-bogotá",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "lugar-a-dudas-cali",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museo-la-tertulia-cali",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "casa-tres-patios-medellin",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "COP",
+   "income": null,
+   "expenditure": null,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": 434892216,
+   "source_kind": "audited statements",
+   "url": "https://www.casatrespatios.org/_files/ugd/0132e4_9cf581a1d945459a888dbb48e60143fe.pdf"
+  },
+  "basis": "Finance: the 2025 statement of financial position (page 1) states total patrimonio of COP 434,892,216, while note 5 of the revelaciones gives an operating income line of COP 370,451,667 and a separate financial income line, so no total income is stated."
+ },
+ {
+  "id": "museo-de-antioquia-medellín",
+  "scale": {
+   "visitors": 256370,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://museodeantioquia.co/wp-content/uploads/2026/06/RTE-2026.zip"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "COP",
+   "income": 12541455000,
+   "expenditure": null,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": 4790809000,
+   "source_kind": "audited statements",
+   "url": "https://museodeantioquia.co/wp-content/uploads/2026/06/RTE-2026.zip"
+  },
+  "basis": "Scale: the informe de gestión 2025 (PDF page 9, table Públicos) gives Total Públicos of 256,370 in-person entries, made up of 122,790 paid, 49,633 museum projects, 36,305 public training and 47,642 subsidised; finance: the memoria económica 2025 (page 2) gives total income of COP 12,541,455,000 and the audited statement of financial position (page 8) gives total patrimonio neto of COP 4,790,809 thousand."
+ },
+ {
+  "id": "museo-de-arte-moderno-de-medell-n-mamm-medell-n",
+  "scale": {
+   "visitors": 163801,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://drive.google.com/file/d/1peO0jTFtnyzE56YFVBiYRo878n5mMwqk/view?usp=sharing",
+    "https://www.elmamm.org/informes-de-gestion/"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the informe de gestión 2025 (PDF page 17, table Programa) totals 163,801 participations across exhibitions (56,317), cinema, events and other programmes, counted as visits and not as unique visitors."
+ },
+ {
+  "id": "museo-de-arte-costarricense-mac-san-jos",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museo-de-arte-y-diseño-contemporáneo-san-josé",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "teoretica-san-jose",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "msu-zagreb",
+  "scale": {
+   "visitors": 85283,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://mdc.hr/files/pdf/Izvjesca/2025/Muzej-suvremene-umjetnosti_2025.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 5450471.35,
+   "expenditure": null,
+   "public": null,
+   "private": null,
+   "earned": 464805.84,
+   "sponsorship": 29500.0,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://mdc.hr/files/pdf/Izvjesca/2025/Muzej-suvremene-umjetnosti_2025.pdf"
+  },
+  "basis": "Scale: section 14 of the museum's 2025 report to the Museum Documentation Centre states 85,283 visitors; finance: section 15.1 Izvori financiranja (PDF page 48) lists total funding sources of EUR 5,450,471.35, of which own income (vlastiti prihodi) is 464,805.84 and sponsorship 29,500.00."
+ },
+ {
+  "id": "whw-galerija-nova-zagreb",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": "Finance: the 2025 statement of the association WHW (notes on pages 7 to 9) gives total income EUR 354,920.45, total expenditure EUR 348,317.85, sales of goods and services EUR 560.00 and own sources (vlastiti izvori) EUR 347,950.36, for the whole organisation that runs Galerija Nova."
+ }
+]

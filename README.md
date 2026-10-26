@@ -21,7 +21,7 @@ The look follows the It's a book fair site: a white page, a strip of tabs on hai
 
 Contrast is measured, not assumed (WCAG 2.2: 4.5:1 for text under 24px, 3:1 for large text, UI components, focus rings and the marks that carry data). A mark is never told only by colour: a space's tier is a circle (clean), square (flagged) or triangle (unverified) on its pin and on its city and museum label; a funding grade is its letter inside the dot; funders on the money map are squares (public funding), hexagons (companies) and triangles (foundations); right-wing and Epstein-file marks are a shield and a star, the key shows each. On the white ground of light mode the pale layer colours are drawn as a deeper step of the same hue (`LINE_LIGHT` in `assets/layers.js`), and the pale originals stay as the fills of the name blocks, where the text on them is black. The focus ring is `--focus` (cobalt on light, a lighter blue on dark).
 
-The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and sends notes for review (see "Share information" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the approved reviews of a place are listed at the foot of its record (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ---
 
@@ -35,7 +35,7 @@ python3 -m http.server 8080
 
 Then open [http://localhost:8080](http://localhost:8080).
 
-To try Share information against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
+To try the Share information form against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
 
 ---
 
@@ -48,20 +48,26 @@ Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a f
 ## Deploying
 
 `main` is the source of truth. Every push to `main` runs
-`.github/workflows/deploy.yml`, which copies `index.html`, `admin.html`,
+`.github/workflows/deploy.yml`, which copies `index.html`,
 `reports-admin.html`, `sw.js`, `manifest.json`, `assets/` and `fonts/` to the `gh-pages` branch that GitHub
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
-## Share information: whistleblower notes wait for approval
+## Whistleblower reviews
 
-Share information opens the whistleblower note. It is the only note a reader can write: the page no longer has information or gossip notes, and it never saves a note in the reader's browser. A note is sent to the report API below, held as waiting, and shows on its institution's record only after the editor approves it on `reports-admin.html`. If it cannot be sent, the text stays in the box and nothing is kept.
+The only notes the atlas holds are whistleblower reviews. They are written on one screen and read in one place.
 
-The Cloudflare Worker in `worker/` predates this. The page no longer sends notes to it; if `window.ATLAS_SUBMIT_URL` is set, the page still shows information and gossip notes the editor approved there earlier. The Worker refuses whistleblower notes. Its setup is kept below for the chat proxy (`/chat`), which it also serves.
+**Writing:** Share information (in the chat composer, and on the map's control bar) opens the note screen, which is a form of filled blocks: the institution (the open record's, or chosen from the list of every space on the atlas), an optional name to show (blank shows "Whistleblower"), the note (10 to 2000 characters), and a box confirming that the sender has left out their name and anything that identifies them. Send for review is grey until the form could be sent and blue after; it posts to the report API. Enter inside the note starts a new line. If it cannot be sent, everything stays in the form and nothing is kept in the reader's browser. The page has no other way to add a note. There are no star ratings.
 
-### Prisma-backed whistleblower reports
+**Reading:** under the record of the space they are about, approved reviews are laid out like the reviews of a place on Google Maps: the count, then one entry per review with the name, date and text, newest first. The record only lists reviews; it has no form.
 
-Whistleblower notes are held by an Express API with SQLite and Prisma. A note is stored as `PENDING` and is invisible to the public until the editor approves it on `reports-admin.html`. Approved notes then show on the institution's record as a review list in the style of Google Maps customer reviews: a count ("3 whistleblower notes"), then one entry per note with the reviewer line "Whistleblower", the date and the text, newest first. There are no stars, because a note is not a rating. A note about an institution shows on that institution's record; a note that names only a city shows on the records in that city. The map pin's hover card is drawn on the canvas and has no room for a list, so reviews appear on the record only. Notes are not posted to Google Maps.
+A review is sent to the report API below, held as waiting, and shows on the record only after the editor approves it on `reports-admin.html`. The map pin's hover card is drawn on the canvas and has no room for a list, so reviews appear on the record only. Reviews are not posted to Google Maps.
+
+The Cloudflare Worker in `worker/` serves only the chat proxy (`/chat`). It takes no notes and no reviews; its setup is kept below.
+
+### The report API (Express, SQLite and Prisma)
+
+A review is stored as `PENDING` and is invisible to the public until it is approved. A review written before places had ids is matched to its place by name, so approved reviews already stored still show. A note that named only a city, which the old form allowed, no longer shows anywhere; its row stays in the database until the editor deletes it.
 
 From the repository root:
 
@@ -77,25 +83,25 @@ npm run db:push
 npm start
 ```
 
-Set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to the API origin, for example `http://localhost:4000`. The API reads `institutions.json` at start to check each note against the atlas; keep it in the repository root where the API runs, or set `INSTITUTIONS_FILE` to its path. The API allows browser requests only from origins listed in `ALLOWED_ORIGINS`. The repository's GitHub Pages deployment serves static files only, so host this Node API separately and configure its public origin in `assets/config.js` before enabling submissions.
+Set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to the API origin, for example `http://localhost:4000`. The API reads `institutions.json` at start, so a review can be filed only under a record's id; keep it in the repository root where the API runs, or set `INSTITUTIONS_FILE` to its path. The API allows browser requests only from origins listed in `ALLOWED_ORIGINS`. The repository's GitHub Pages deployment serves static files only, so host this Node API separately and configure its public origin in `assets/config.js` before enabling submissions.
 
-**Checks before anything is saved** (`server/validate.js`): the text is trimmed, HTML tags and control characters are removed, and the note must be 10 to 2000 characters once cleaned. It must name an institution that is on the atlas (matched by name, ignoring case) or, failing that, a city that is on the atlas; the stored city is taken from the matched record. Client-sent status, id and coordinates are ignored. Each sender may submit 5 notes an hour (`REPORTS_PER_HOUR`); behind a proxy set `TRUST_PROXY=1` so the limit sees the sender and not the proxy. The limit is counted in memory under a salted hash of the address that is never written to the database or a log and disappears on restart.
+**Checks before anything is saved** (`server/validate.js`): the place comes from the address, `/api/places/<record id>/reviews`, and must be the id of a record in `institutions.json`; anything the body says about the place is ignored. The text is trimmed, HTML tags and control characters are removed, and it must be 10 to 2000 characters once cleaned. A rating sent by a client is ignored. The name to show, if sent, is plain text of at most 40 characters. Client-sent status, id and coordinates are ignored. Each sender may submit 5 reviews an hour (`REPORTS_PER_HOUR`); behind a proxy set `TRUST_PROXY=1` so the limit sees the sender and not the proxy. The limit is counted in memory under a salted hash of the address that is never written to the database or a log and disappears on restart. A database failure logs only its kind and code, never the request, so a review's text cannot reach the logs.
 
-**What is stored:** the text, the institution and city, the status and two timestamps. No IP address, user agent, name or any other identifying data. The reader is told to leave out their name and anything that identifies them, because the connection itself is not a secure channel.
+**What is stored:** the text, the place's id, name and city, the name to show if given, the status and two timestamps. No IP address, user agent, account or any other identifying data. The form tells the reader to leave out their name and anything that identifies them, because the connection itself is not a secure channel, and the editor checks the name to show before approving. The `latitude`, `longitude` and `rating` columns are never written; they remain only so an existing database needs no destructive change.
 
 **Endpoints**
 
 | Route | Who | What |
 | --- | --- | --- |
-| `POST /api/reports` | anyone | Validates and stores a `PENDING` note |
-| `GET /api/map/approved-reports` | anyone | Approved notes only (`id`, `city`, `institution`, `content`, `createdAt`), newest first; optional `city` and `institution` filters |
-| `GET /api/admin/reports?status=PENDING\|APPROVED\|REJECTED` | admin | Notes in one state (`/api/admin/reports/pending` is kept) |
-| `PATCH /api/admin/reports/:id/status` | admin | Set `APPROVED`, `REJECTED` or `PENDING` (takes a note off the atlas) |
-| `DELETE /api/admin/reports/:id` | admin | Removes the note entirely |
+| `POST /api/places/:placeId/reviews` | anyone | Validates and stores a `PENDING` review of that place |
+| `GET /api/places/:placeId/reviews` | anyone | That place's approved reviews only (`id`, `authorLabel`, `content`, `createdAt`), newest first, at most 200; never cached |
+| `GET /api/admin/reports?status=PENDING\|APPROVED\|REJECTED` | admin | Reviews in one state (`/api/admin/reports/pending` is kept) |
+| `PATCH /api/admin/reports/:id/status` | admin | Set `APPROVED`, `REJECTED` or `PENDING` (takes a review off the atlas) |
+| `DELETE /api/admin/reports/:id` | admin | Removes the review entirely |
 
-Admin routes need `Authorization: Bearer <ADMIN_SECRET_KEY>`. The moderation page `reports-admin.html` (linked from `admin.html`) asks for the token, keeps it in session storage only, and lists notes under Waiting, On the atlas and Rejected, each with Approve, Reject or Take off the atlas, and Delete. `admin/AdminModerator.jsx` is the same page as a React component for a React host.
+Admin routes need `Authorization: Bearer <ADMIN_SECRET_KEY>`. The moderation page `reports-admin.html` asks for the token, keeps it in session storage only, and lists reviews, with the name each sender chose, under Waiting, On the atlas and Rejected, each with Approve, Reject or Take off the atlas, and Delete. `admin/AdminModerator.jsx` is the same page as a React component for a React host.
 
-Tests: `npm test` (the API runs in-process against a throwaway SQLite file, so no port is opened). The Worker's tests are `node --test worker/test/*.test.mjs`.
+Tests: `npm test` (the API runs in-process against a throwaway SQLite file, so no port is opened; it covers validation, per-place listing, moderation, the rate limit and the logging rule). The Worker's tests are `node --test worker/test/*.test.mjs`.
 
 #### Hosting the report API on Fly.io
 
@@ -115,28 +121,27 @@ Keep the secret: it is the password for `reports-admin.html`, and `fly secrets s
 
 Last step: set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to `https://<app-name>.fly.dev` (no trailing slash), bump the release as usual, and merge through a PR. Then moderate at https://vasspolina.github.io/Culture-Atlas/reports-admin.html with the secret as the bearer token. Back up the database with `fly ssh sftp get /data/reports.db`.
 
-Setting it up once (free Cloudflare plan), in the Cloudflare dashboard, no install needed:
-
-1. **Workers & Pages → Create → Worker**, name it `culture-atlas-submissions`, deploy the starter, then **Edit code**, replace it with `worker/index.js` and deploy.
-2. **Storage & Databases → KV → Create**, name it `culture-atlas-submissions`.
-3. In the Worker's **Settings → Bindings**, add a KV namespace binding called `SUBMISSIONS` pointing at that store.
-4. In **Settings → Variables and Secrets**, add a secret `ADMIN_TOKEN` (the review page password; make it long) and a text variable `ALLOWED_ORIGINS` = `https://vasspolina.github.io`.
-5. Copy the Worker's address (`https://culture-atlas-submissions.<you>.workers.dev`) into `assets/config.js` and push to `main`.
-
-Or from a terminal: in `worker/`, `npx wrangler kv namespace create SUBMISSIONS`, paste the id into `wrangler.toml`, `npx wrangler secret put ADMIN_TOKEN`, `npx wrangler deploy`.
-
-Review page: https://vasspolina.github.io/Culture-Atlas/admin.html. Tests for the Worker: `node --test worker/test/*.test.mjs`.
-
 ### Live Claude answers
 
 With a model connected the chat holds a conversation: every question that is not a plain list of spaces goes to Claude, with the earlier turns of the chat and the records on the page as grounding. Without one, it answers from the records alone.
 
-The same Worker serves it at `POST /chat`. The Anthropic key stays in the Worker and never reaches the browser.
+The Cloudflare Worker in `worker/` serves it at `POST /chat`. The Anthropic key stays in the Worker and never reaches the browser. The Worker needs one KV namespace, bound as `SUBMISSIONS`, that holds only the hourly rate counters, and the variable `ALLOWED_ORIGINS` (`https://vasspolina.github.io`). From a terminal, in `worker/`: `npx wrangler kv namespace create SUBMISSIONS`, paste the id into `wrangler.toml`, then `npx wrangler deploy`. Tests: `node --test worker/test/*.test.mjs`.
 
 1. In `worker/`, `npx wrangler secret put ANTHROPIC_API_KEY` and paste the key from console.anthropic.com. (In the dashboard: the Worker's **Settings → Variables and Secrets**.)
 2. Put the Worker's address plus `/chat` in `assets/config.js`: `window.ATLAS_AI_PROXY_URL = 'https://culture-atlas-submissions.<you>.workers.dev/chat';` and push to `main`.
 
 The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
+
+## Studies
+
+`studies.html` gathers the studies that read across many records: the Epstein cross-reference, what Democracy Now!,
+Bellingcat and WikiLeaks show, Brazil's tax incentives, who connects the institutions (shared funders), small and
+community-led spaces, who publishes what about their money, what the field says, the Tear Gas Biennial and MoMA.
+They come from the Sponsor Atlas research page (its `CASES`) through `tools/build_studies.py`, which writes
+`assets/studies.json` and links every institution a study names to its record (`./?inst=<name>`; an exact name wins).
+`moma-money-map.html` is the interactive MoMA Money Map, kept here so the atlas is the one place it is published. Both
+are linked from Map layers & legend, under Studies. Rebuild after each Sponsor Atlas import:
+`python3 tools/build_studies.py`.
 
 ## Money maps
 
@@ -200,7 +205,7 @@ The page shows what a record states and where it comes from, and says plainly th
 
 - A field appears only if a record states it. Figures, hours, prices, exhibitions, architects and "chatter" are not generated to fill a gap. A text value shared by five or more records (after masking the name and city) is filler and is left out. Sentences that assert the absence of ties ("zero fossil fuel", "strict ethical charter") are left out.
 - **Clean, source cited** needs at least one source outside the museum's own site. **Flagged** needs a recorded reason. Otherwise a space is **Unverified**.
-- Anything reported about a space, such as a sponsor tie, an Epstein-related item, a WikiLeaks cable or a case file, is shown with its own source links under "Reported, not independently verified".
+- Anything reported about a space, such as a sponsor tie, an Epstein-related item, a WikiLeaks cable or a case file, is shown with its own source links.
 - Anonymous staff reviews, the board network, the timeline, the filings registry, the itineraries and the generated 3D building interiors are not shown: they had no source, or were invented or generated. The building view draws only the outline OpenStreetMap holds for the building, through the map tiles, with the record's own material stacked inside it, and says where any Wikidata fact came from.
 
 Rules live in `tools/clean_data.py`. To check records against their sources, run `tools/verify_claims.py` somewhere with network access, then `tools/apply_verification.py` and `tools/embed_data.py`. Wording corrected after checking is in `data/corrections.json`; the pilot of the three-check protocol is in `data/verification_pilot.json`.
@@ -211,10 +216,9 @@ Rules live in `tools/clean_data.py`. To check records against their sources, run
 Culture-Atlas/
 ├── index.html          # The whole app, edited in place. The only copy of the atlas page.
 ├── money-maps.html     # The money maps page (assets/money-maps.*, built by tools/build_money_maps.py)
-├── admin.html        # Review page for notes sent with Share information
-├── reports-admin.html # Moderation page for Prisma-backed whistleblower reports
-├── worker/           # The submissions backend (Cloudflare Worker) and its tests
-├── server/            # Optional Express API for whistleblower reports
+├── reports-admin.html # Moderation page for whistleblower reviews
+├── worker/           # The chat proxy (Cloudflare Worker) and its tests
+├── server/            # Express API for whistleblower reviews
 ├── prisma/            # Prisma schema and SQLite database (database file is ignored)
 ├── admin/             # Reusable React AdminModerator component
 ├── sw.js               # Service worker (network-first for the page, same-origin cache only)

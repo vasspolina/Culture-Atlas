@@ -1,0 +1,175 @@
+[
+ {
+  "id": "heart-herning-herning",
+  "name": "HEART Herning",
+  "city": "Herning",
+  "country": "Denmark",
+  "website": "https://heartmus.dk/om-heart/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://heartmus.dk/om-heart/",
+   "https://heartmus.dk/media/pwqd4zgr/a-rsrapport_2023.pdf"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2023 income DKK 16.9M: about 96 percent grants and support (state, Herning Municipality, foundations, sponsors), about 4 percent admissions and shop contribution (audited statements 2023, p. 10)."
+ },
+ {
+  "id": "louisiana-museum-of-modern-art",
+  "name": "Louisiana Museum of Modern Art",
+  "city": "Humlebæk",
+  "country": "Denmark",
+  "website": "https://louisiana.dk",
+  "size": "L",
+  "year_founded": 1958,
+  "sources": [
+   "https://louisiana.dk/wp-content/uploads/2025/05/Louisiana-Museum-Aarsrapport-2024.pdf",
+   "https://cdn.sanity.io/files/2zozkngb/production/7b2bd684312b34d49ccce4db0384f3b3a38ee3c5.pdf",
+   "http://www.st-group.com/investor/share-information/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income DKK 143.8M before art-purchase grants: about 25 percent Kulturstyrelsen grant; the other 75 percent, net revenue of 105.7M, is not split in the report (årsrapport 2025, p. 37)."
+ },
+ {
+  "id": "trapholt-kolding",
+  "name": "Trapholt",
+  "city": "Kolding",
+  "country": "Denmark",
+  "website": "https://augustinusfonden.dk/da/nyheder/fonde-bidrager-til-markant-udvidelse-af-trapholt",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://augustinusfonden.dk/da/nyheder/fonde-bidrager-til-markant-udvidelse-af-trapholt"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "centro-león-santiago-de-los-caballeros",
+  "name": "Centro León",
+  "city": "Santiago de los Caballeros",
+  "country": "Dominican Republic",
+  "website": "https://centroleon.org.do",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.afar.com/places/centro-leon-santiago-de-los-caballeros",
+   "https://fundacionleon.org.do/en/nuestrosproyectos/eduardo-leon-jimenes-cultural-center/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "museo-de-arte-moderno-de-santo-domingo",
+  "name": "Museo de Arte Moderno de Santo Domingo",
+  "city": "Santo Domingo",
+  "country": "Dominican Republic",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://elnuevodiario.com.do/artistas-califican-de-negligencia-la-no-celebracion-de-la-bienal-nacional-de-artes-visuales/",
+   "https://www.diariolibre.com/revista/cultura/mas-de-60-artistas-denuncian-deficiente-manejo-de-29-bienal-de-artes-visuales-ED27063986",
+   "https://eldia.com.do/cultura-juramenta-miembros-comision-bienal-de-artes-visuales/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "bienal-de-cuenca",
+  "name": "Bienal de Cuenca",
+  "city": "Cuenca",
+  "country": "Ecuador",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.theartnewspaper.com/2025/12/16/bienal-de-cuenca-ecuador-17th-edition-review",
+   "https://drive.google.com/file/d/1qTQ4rA3EEDVIalyVAINaJj42SV1ylaBH/view?usp=sharing",
+   "https://elmercurio.com.ec/cuenca/2025/11/25/bienal-de-cuenca-denuncia-amenazas-intento-censura/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "museo-antropologico-y-de-arte-contemporaneo-maac",
+  "name": "Museo Antropológico y de Arte Contemporáneo (MAAC)",
+  "city": "Guayaquil",
+  "country": "Ecuador",
+  "website": null,
+  "size": "L",
+  "year_founded": null,
+  "sources": [
+   "https://primicias.ec/noticias/guayaquil/crisis-maac-altas-alicuotas-municipio",
+   "https://www.primicias.ec/noticias/sociedad/maac-museos-manabi-necesitan-intervenciones-inmediatas-cultura-ecuador",
+   "https://kchcomunicacion.com/?p=129146"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "centro-de-arte-contemporáneo-de-quito-quito",
+  "name": "Centro de Arte Contemporáneo de Quito",
+  "city": "Quito",
+  "country": "Ecuador",
+  "website": "https://fundacionmuseosquito.gob.ec/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://fundacionmuseosquito.gob.ec/quienes-somos/",
+   "https://museosquito.gob.ec/espacios/centro-de-arte-contemporaneo/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "museo-nacional-del-ecuador-muna-quito",
+  "name": "Museo Nacional del Ecuador (MuNa)",
+  "city": "Quito",
+  "country": "Ecuador",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.infobae.com/america/agencias/2026/07/10/el-gobierno-de-ecuador-rechaza-diseno-ganador-para-el-nuevo-museo-nacional-tras-criticas/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "contemporary-image-collective-cairo",
+  "name": "Contemporary Image Collective",
+  "city": "Cairo",
+  "country": "Egypt",
+  "website": "https://www.arabculturefund.org/Projects/7437",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.arabculturefund.org/Projects/7437",
+   "https://dutchculture.nl/news/between-renewal-and-loss-cairos-alternative-art-scene"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "darb-1718-contemporary-art-and-culture-center-cairo",
+  "name": "Darb 1718 Contemporary Art and Culture Center",
+  "city": "Cairo",
+  "country": "Egypt",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.artmajeur.com/en/magazine/2-art-news/destruction-of-historic-cairo-art-center-darb-1718-in-urban-redevelopment-drive/334846",
+   "https://babmsr.com/en/2025/06/24/darb-1718/",
+   "https://moleskinefoundation.org/creativity-pioneer/the-fight-to-save-darb-1718/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "medrar-for-contemporary-art-cairo",
+  "name": "Medrar for Contemporary Art",
+  "city": "Cairo",
+  "country": "Egypt",
+  "website": "https://medrar.org/about/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://medrar.org/about/",
+   "https://www.arabculturefund.org/Projects/6788"
+  ],
+  "needs_finance": true
+ }
+]

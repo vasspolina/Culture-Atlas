@@ -1,0 +1,454 @@
+[
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "section": "Red flags",
+  "problems": [
+   "wrong date placement: 7 October 2025 is the concert date, not the date Weimer spoke",
+   "causal wording: \"rather than acting against the event before the cancellation\"",
+   "unsupported: cancellation attributed to Boehmermann with HKW only as venue, without the statement wording"
+  ],
+  "before": "Red flags: federal pressure on the programme; 7 October 2025: federal culture minister Wolfram Weimer sharply criticised a concert planned at the HKW for that date ...; Outcome: Boehmermann and his group Royale, together with the HKW as venue, announced on 29 September 2025 that Chefket's appearance was cancelled ...; The HKW director pointed to Boehmermann's artistic freedom ... rather than acting against the event before the cancellation",
+  "after": "Red flags: State censorship or punishment, concert cancelled after the federal culture minister's call. Funder point (BKM is a regular HKW funder, German Wikipedia). Weimer criticised the appearance planned for 7 October 2025 and called on the HKW director to intervene (Juedische Allgemeine, dpa, 29 September 2025). Director had earlier pointed to artistic freedom. On 29 September 2025 the organisers, listed as Boehmermann, Royale and HKW as venue, announced the cancellation, quoting \"Diesen Einspruch nehmen wir ernst\" (translated).",
+  "sources": [
+   "https://www.juedische-allgemeine.de/kultur/antisemitismus-debatte-boehmermann-sagt-rapper-auftritt-ab/",
+   "https://de.wikipedia.org/wiki/Haus_der_Kulturen_der_Welt",
+   "https://en.wikipedia.org/wiki/House_of_World_Cultures"
+  ],
+  "reason": "FLAG KEPT. Weimer heads the BKM, which funds HKW (German Wikipedia: BKM and Auswaertiges Amt), he publicly asked the HKW director to intervene, and the statement of cancellation is signed by Boehmermann, Royale and HKW as venue, so the funding body and the space both acted. The article does not say which party decided and does not name Weimer in the statement; the report states exactly who acted and does not claim causation. Dates: concert 7 October 2025, cancellation announced 29 September 2025."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "section": "Funding",
+  "problems": [
+   "wrong quotation: \"near-total\" is not in the Hyperallergic piece",
+   "absence statement: \"No corporate sponsor is documented in the pages read\""
+  ],
+  "before": "Hyperallergic's Adam Broomberg describes the institution's funding as \"near-total\" federal ... No corporate sponsor is documented in the pages read.",
+  "after": "Hyperallergic: HKW \"is funded almost entirely by the federal government\" (5 November 2025). Absence line cut. Funding named from German and English Wikipedia: BKM and Federal Foreign Office.",
+  "sources": [
+   "https://hyperallergic.com/1055123/the-irony-of-a-fascism-exhibition-in-germany-berlin-hkw/",
+   "https://de.wikipedia.org/wiki/Haus_der_Kulturen_der_Welt"
+  ],
+  "reason": "The partner page on hkw.de returned HTTP 503, so funding is confirmed on German and English Wikipedia (opened) and Hyperallergic."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "section": "Criticism in art media",
+  "problems": [
+   "date given as year only",
+   "quote not on page (\"near-total\")",
+   "Gaza claim worded without the page's sentence"
+  ],
+  "before": "Hyperallergic: Adam Broomberg, \"The Irony of a Fascism Exhibition in Germany\" (2025)",
+  "after": "Hyperallergic: Adam Broomberg, \"The Irony of a Fascism Exhibition in Germany\" (5 November 2025); added the exact \"has a price: preemptive obedience\" and \"Not one work in the exhibition acknowledges the world burning just beyond the door\"; 2022 BDS renunciation kept as Broomberg's claim.",
+  "sources": [
+   "https://hyperallergic.com/1055123/the-irony-of-a-fascism-exhibition-in-germany-berlin-hkw/"
+  ],
+  "reason": "Title, author and date confirmed (Adam Broomberg, 5 November 2025). The piece names HKW and the exhibition \"Global Fascisms\"; it does not mention Weimer or Boehmermann."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "section": "Wider context",
+  "problems": [
+   "accusation not attributed to the accusers named on the page",
+   "Grütters: page does not quote her, only says the selection fell in her term",
+   "connection point missing"
+  ],
+  "before": "Federal antisemitism commissioner Felix Klein and Israeli ambassador Ron Prosor accused ...; Roth said that her predecessor Monika Gruetters had overseen the selection",
+  "after": "Klein and Prosor criticised Ndikung in Funke Mediengruppe papers and accused him of closeness to BDS; Ndikung's denial quoted; Roth said she had no objection to the procedure or result; Roth was not involved, the selection fell in Gruetters' term (Juedische Allgemeine, dpa, 28 October 2022). Connection stated.",
+  "sources": [
+   "https://www.juedische-allgemeine.de/kultur/vorwurf-der-bds-unterstuetzung-claudia-roth-nimmt-den-kuenftigen-intendanten-des-hauses-der-kulturen-der-welt-in-schutz"
+  ],
+  "reason": "2022 accusation: made by Prosor and Klein, reported 28 October 2022; Roth defended the appointment. Kept in Wider context because the accusation targets the director, not the funder."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "section": "Website, Overview, Bottom line",
+  "problems": [
+   "Website line carried \"(checked 2026-10-25)\"",
+   "Overview: Ndikung \"has been director since 2023\" imprecise; bottom line \"attacks\"/\"political pressure from federal ministers\""
+  ],
+  "before": "Website: https://www.hkw.de (checked 2026-10-25); bottom line: political pressure from federal ministers",
+  "after": "Website line address only; Ndikung took over 1 January 2023; bottom line names the minister's call, the cancellation and the 2022 accusers exactly.",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Haus_der_Kulturen_der_Welt"
+  ],
+  "reason": "German Wikipedia gives 1 January 2023."
+ },
+ {
+  "id": "goma-glasgow",
+  "section": "Funding",
+  "problems": [
+   "absence: \"with no amounts and without saying which venue each supports\"",
+   "absence: \"Neither is for GoMA\"",
+   "\"500\" unattributed superlative: list described as \"a long list\""
+  ],
+  "before": "Glasgow Life's 2025/26 \"With thanks\" list names ... in a long list of trusts, companies and public bodies, with no amounts and without saying which venue each supports; Named grants ... Neither is for GoMA.",
+  "after": "List names the supporters among more than 60 names; the two named grants are given with the Mitchell Library and Sauchiehall Street project they fund; Apollo 28 June 2023 date added to the cuts line.",
+  "sources": [
+   "https://www.glasgowlife.org.uk/about-us/annual-review",
+   "https://en.wikipedia.org/wiki/Glasgow_Life",
+   "https://apollo-magazine.com/glasgow-council-culture-cuts-burrell-unison/"
+  ],
+  "reason": "Bloomberg Philanthropies confirmed in Glasgow Life's 2025/26 supporters list (65 entries, no amounts). Council service fee about 60% and 2021/22 figures confirmed on Wikipedia. Funder flag not applicable: no funding line beyond a list entry."
+ },
+ {
+  "id": "goma-glasgow",
+  "section": "Wider context",
+  "problems": [
+   "connection wording used absence (\"no amount or project given\")",
+   "letter criticism worded from memory"
+  ],
+  "before": "The article does not name Glasgow Life or GoMA. Bloomberg Philanthropies appears in Glasgow Life's 2025/26 supporters list, with no amount or project given.",
+  "after": "Connection: the article does not name Glasgow Life or GoMA. Bloomberg Philanthropies is named in Glasgow Life's 2025/26 supporters list. Letter: more than 260 UK artists, Artists for Palestine UK, five UK theatres, 29 May 2026 (The New Arab Staff).",
+  "sources": [
+   "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg",
+   "https://www.glasgowlife.org.uk/about-us/annual-review"
+  ],
+  "reason": "KEPT as Wider context: the letter does not name Glasgow Life or GoMA; the only link is the supporters-list entry for 2025/26. The page says UK theatres, not London theatres (the RSC is in Stratford), so \"London\" was corrected to \"UK\"."
+ },
+ {
+  "id": "goma-glasgow",
+  "section": "Criticism in art media",
+  "problems": [
+   "date missing",
+   "Overall line said \"not ... its funders\" though the council funds Glasgow Life",
+   "paraphrase wider than source"
+  ],
+  "before": "Apollo: Conrad Landin, \"Glasgow's cuts will hamper its museums for years to come\" (2023)",
+  "after": "Apollo: Conrad Landin, \"Glasgow's cuts will hamper its museums for years to come\" (28 June 2023); Overall says it criticises Glasgow Life and the council, not GoMA.",
+  "sources": [
+   "https://apollo-magazine.com/glasgow-council-culture-cuts-burrell-unison/"
+  ],
+  "reason": "Title, author, date confirmed. It criticises the funder (council) and Glasgow Life, not GoMA; GoMA appears only as the venue of the Banksy queues."
+ },
+ {
+  "id": "goma-glasgow",
+  "section": "Bottom line, Website",
+  "problems": [
+   "\"five London theatres\" wrong",
+   "\"mainly\" verdict without attribution",
+   "Website date"
+  ],
+  "before": "... the May 2026 artists' letter against Bloomberg targeted five London theatres.",
+  "after": "... the May 2026 artists' letter against Bloomberg Philanthropies was addressed to five UK theatres; council service fee attributed to Wikipedia.",
+  "sources": [
+   "https://www.newarab.com/news/uk-theatres-urged-end-ties-israel-linked-bloomberg"
+  ],
+  "reason": "The New Arab names five UK theatres."
+ },
+ {
+  "id": "grand-palais-paris",
+  "section": "Funding",
+  "problems": [
+   "formatting: two bullets run together",
+   "unsupported: Wikipedia \"final cost\"",
+   "unsupported: \"has held fashion shows under the glass roof\" (Numero does not mention the roof)",
+   "unsupported: footer \"institutional partner\" (logos only)",
+   "unsupported: \"income from exhibitions and events\" in verdict"
+  ],
+  "before": "Renovation ... (The Art Newspaper, Gareth Harris, 13 February 2018).- In September 2020 ...; The final cost is reported as 466 million euros (Wikipedia); has held its fashion shows under the glass roof since 2005; The site's footer names the Ministry of Culture as institutional partner ...; The 2001 to 2007 restoration cost 101.36 million euros, paid by the French government",
+  "after": "Bullets separated; Wikipedia gives 466 million euros as the cost of the overhaul; Chanel fashion shows at the Grand Palais since 2005 (Numero, Juan Luca Wick, 11 September 2024); footer bullet cut; 2001 to 2007 restoration \"budget\" 101.36 million euros funded by the French government through the Ministry of Culture (Wikipedia).",
+  "sources": [
+   "http://www.theartnewspaper.com/2018/02/13/plans-for-grand-palaiss-euro466m-facelift-revealed-six-new-galleries-and-a-chanel-sponsored-entrance",
+   "https://numeromagazine.ch/chanels-ongoing-patronage-of-the-grand-palais/",
+   "https://en.wikipedia.org/wiki/Grand_Palais"
+  ],
+  "reason": "CONFIRMED on opened pages: French government 288 million euros donated, 150 million euro loan by the RMN, Chanel 25 million euros (The Art Newspaper, Gareth Harris, 13 February 2018; the listed amounts total 463 million of 466 million); Chanel 30 million euros for 2024 to 2028 (Numero, Juan Luca Wick, 11 September 2024, title \"CHANEL's ongoing Patronage of the Grand Palais\")."
+ },
+ {
+  "id": "grand-palais-paris",
+  "section": "Criticism in art media",
+  "problems": [
+   "date given as year only"
+  ],
+  "before": "The Art Newspaper: Gareth Harris, \"Grand Palais's long-awaited renovation curtailed over soaring costs\" (2020)",
+  "after": "... (28 September 2020)",
+  "sources": [
+   "http://www.theartnewspaper.com/2020/09/28/grand-palaiss-long-awaited-renovation-curtailed-over-soaring-costs"
+  ],
+  "reason": "Title, author, date confirmed; \"financial drift\", \"slippage in the schedule\" and \"more than 600 million euros\" (The Art Newspaper Daily in France) are on the page."
+ },
+ {
+  "id": "grand-palais-paris",
+  "section": "Overview, Bottom line, Website",
+  "problems": [
+   "\"iron frame\" not on page",
+   "bottom line \"state-owned\" and \"paid for mainly by ... and a loan\" unsupported",
+   "Website date",
+   "\"with a section for visitors with disabilities\" not on page"
+  ],
+  "before": "Beaux-Arts building with stone facades, glass vaults and an iron frame; ... The Grand Palais is a state-owned venue paid for mainly by the French government and a 150 million euro loan",
+  "after": "Designed in Beaux-Arts style, with stone facades, glass vaults and a metal structure (Wikipedia); bottom line restates the 2018 breakdown and the 2024 Chanel commitment.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Grand_Palais"
+  ],
+  "reason": "Wording kept to the opened pages."
+ },
+ {
+  "id": "guangdong-times-museum-guangzhou",
+  "section": "Overview, Funding",
+  "problems": [
+   "source mislabelled \"Beijing Review government page\" (it is the Baiyun District page, 25 May 2022)",
+   "Koolhaas and Fouraux design credited to ArtAsiaPacific, which does not mention it",
+   "unsupported detail: more than a dozen new works a year, cafeteria, hall, reading room",
+   "\"closed on 9 October 2022\" stated as past; ArtAsiaPacific says it would close",
+   "severance attributed to The Art Newspaper via ArtAsiaPacific; page says only insufficient cash flow",
+   "Art Newspaper 2023 piece described as listing the museum among museums depending on property backers; it says \"backed by a property company\""
+  ],
+  "before": "Beijing Review government page; The Art Newspaper reported, as cited by ArtAsiaPacific, that the developer did not have the cash flow ...; places the museum among Chinese private museums that depended on property-company backers",
+  "after": "Baiyun District government page, 25 May 2022; design credited to The Art Newspaper 26 March 2024; closure announced 17 August 2022 for 9 October 2022 (ArtAsiaPacific, Jenna Chan, 23 August 2022); 2023 piece quoted as \"backed by a property company\".",
+  "sources": [
+   "https://en.by.gov.cn/2022-05/25/c_756751.htm",
+   "https://artasiapacific.com/news/private-art-museum-in-guangzhou-closes-after-19-years",
+   "https://www.theartnewspaper.com/2024/03/26/guangdong-times-museum-reopens-after-money-issues"
+  ],
+  "reason": "FUNDING CONFIRMED: Times China core funder since inauguration (Baiyun District page); quarter of previous budget, January 2024 auction of works from 65 artists, curatorial staff 18 to three, Nikita Yingqian Cai quote (\"Guangdong Times Museum reopens after money issues\", Lisa Movius, 26 March 2024). Second piece: \"What's behind China's spate of museum closures and downsizings?\", Lisa Movius, 27 September 2023. Both are funding sources, not criticism, and sit in Funding only."
+ },
+ {
+  "id": "guangdong-times-museum-guangzhou",
+  "section": "Bottom line",
+  "problems": [
+   "\"funded by an artists' auction\" overstates; page says auction helped fund the reopening"
+  ],
+  "before": "funded by an artists' auction and a stated plan to build a base of several donors",
+  "after": "a January 2024 artists' auction helped fund the reopening, and the museum says it will rely on several donors",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/03/26/guangdong-times-museum-reopens-after-money-issues"
+  ],
+  "reason": "Matches the article."
+ },
+ {
+  "id": "hakone-open-air-museum-hakone",
+  "section": "Overview",
+  "problems": [
+   "museum opening date 1 August 1969 attributed to museum site; only the foundation site gives it",
+   "Japanese Wikipedia gives 6 September 1969: not mentioned",
+   "address, park and hills description, \"Takeshi Inoue designed\" not all on pages",
+   "Shikanai called \"founder\" on museum site but Japanese Wikipedia says first director"
+  ],
+  "before": "The foundation behind it was established on 6 September 1968 ... museum opened on 1 August 1969 ...; The sculptor Takeshi Inoue designed the museum and grounds",
+  "after": "Foundation dates attributed to the foundation website (translated from Japanese); Japanese Wikipedia gives the opening as 6 September 1969; Shikanai founder and first director per the museum site, chairman of the Fujisankei Group per Japanese Wikipedia; Inoue \"was commissioned\"; national park wording cut.",
+  "sources": [
+   "https://www.hakone-oamfoundation.jp/",
+   "https://www.hakone-oam.or.jp/aboutus/",
+   "https://ja.wikipedia.org/wiki/箱根彫刻の森美術館"
+  ],
+  "reason": "CONFIRMED: foundation launched 6 September 1968, museum opened 1 August 1969, public interest foundation 1 April 2012; \"建設資金協賛社は国内企業173社\" (173 domestic companies sponsored the construction funds); Fujisankei Group centred on Fuji Television, Sankei Shimbun and Nippon Broadcasting System (all foundation site); admissions fund operations (donation page). Address and prices confirmed on the museum info page."
+ },
+ {
+  "id": "hakone-open-air-museum-hakone",
+  "section": "Funding, Bottom line",
+  "problems": [
+   "funding bullet attributed Fujisankei affiliation to museum website and Wikipedia without wording",
+   "bottom line \"founded in 1968 and 1969 by the Fujisankei Group\" loose",
+   "\"Fujisankei Communications Group, which founded the museum\" is English Wikipedia affiliation only"
+  ],
+  "before": "The foundation is affiliated with the Fujisankei Communications Group, which founded the museum (museum website; English Wikipedia).",
+  "after": "English Wikipedia says the museum is affiliated with the Fujisankei Communications Group; bottom line states the foundation's own statements.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Hakone_Open-Air_Museum",
+   "https://www.hakone-oamfoundation.jp/donation"
+  ],
+  "reason": "Wikipedia-only claim attributed to Wikipedia."
+ },
+ {
+  "id": "hara-museum-arc-shibukawa",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported name: grandson of \"Kunizo Hara\" (page says only \"the grandfather\")",
+   "absence: \"No amounts are given\"",
+   "absence: \"with no state funder named\"",
+   "\"private foundation\", \"Hara family's foundation\", \"admissions\" not on pages",
+   "visiting date \"February 2024\" not on page",
+   "Hara Museum Tokyo notice wording and 2008 Kankai Pavilion not attributed exactly"
+  ],
+  "before": "Toshio Hara, grandson of the industrialist Kunizo Hara ...; No amounts are given.; The documented money comes from the Hara foundation, admissions and members, with no state funder named.",
+  "after": "Grandson/Kunizo bullet cut; foundation established 1977 by Toshio Hara (museum site); list of eight corporate supporting members as of November 2021 kept; bottom line: foundation established 1977, paid membership, eight corporate supporting members as of November 2021 including MUFG Bank and Mori Building.",
+  "sources": [
+   "https://www.haramuseum.or.jp/en/membership/",
+   "https://www.haramuseum.or.jp/en/arc/about/",
+   "https://www.art-it.asia/?p=195336"
+  ],
+  "reason": "CONFIRMED on the membership page: ARTEC, INC.; Ikaho Country Club Co., Ltd.; Mori Building Co., Ltd.; MRA Foundation; MUFG Bank, Ltd.; Nihon Tochisanrin Co., Ltd.; Takanawa High School; Takasago Thermal Engineering Co., Ltd., \"As of November 2021\" (eight members; record text listing only four is a subset). Foundation 1977 and Toshio Hara as chairman confirmed on the About page. No flag. The museum site needs curl -k (incomplete certificate chain); read-only."
+ },
+ {
+  "id": "halle-fuer-kunst-steiermark-graz",
+  "section": "Funding",
+  "problems": [
+   "source not named exactly: krone.at article is Kronen Zeitung, Christoph Hartner, undated",
+   "\"Land budget raised to 500,000\" lacked the 142,000 increase and the federal \"40 percent more\", city \"stable\""
+  ],
+  "before": "krone.at reported a Land budget raised to 500,000 euros, a federal contribution of 140,000 euros and a City of Graz contribution of 102,000 euros (krone.at, \"Halle fuer Kunst: Neuer Tempel als Saeule der steirischen Kultur\", undated copy on the gallery's site).",
+  "after": "Kronen Zeitung (krone.at), undated article by Christoph Hartner on the relaunch as Halle fuer Kunst Steiermark: the Land raised the budget by 142,000 euros to 500,000 euros, the federal government contributed 140,000 euros (40 percent more), the City of Graz funding stayed at 102,000 euros. No year given.",
+  "sources": [
+   "https://halle-fuer-kunst.at/site/assets/files/2479/krone_at.pdf",
+   "https://de.wikipedia.org/wiki/Halle_für_Kunst_Steiermark"
+  ],
+  "reason": "Figures confirmed on the PDF copy; headline \"Neuer Tempel als Saeule der steirischen Kultur\"; the article gives no date or year."
+ },
+ {
+  "id": "halle-fuer-kunst-steiermark-graz",
+  "section": "Wider context",
+  "problems": [
+   "\"largest funder\" superlative not on a page",
+   "Draxl's \"project and annual funding\" category not on page",
+   "\"former council chair\" imprecise"
+  ],
+  "before": "Former council chair Edith Draxl said project and annual funding totalled about 2.5 million euros in 2024 ... The connection: the Land Steiermark that sets this budget owns the building and is the house's largest funder.",
+  "after": "Draxl, former chair of the Kuratorium: funding sums of about 2.5 million euros in 2024 and 1.4 million euros in 2025, cuts of 12 to 70 percent or rejections; Krienzer-Radojevic quote added; connection: the Land owns the building and pays 500,000 euros per the Kronen Zeitung.",
+  "sources": [
+   "https://www.profil.at/kultur/heimatpflege-notstand-wie-geht-es-nach-dem-steirischen-kultur-eklat-weiter/403024648",
+   "https://halle-fuer-kunst.at/site/assets/files/2479/krone_at.pdf"
+  ],
+  "reason": "KEPT as Wider context: profil, Stefan Grissemann and Wolfgang Paterno, \"Heimatpflege-Notstand: Wie geht es nach dem steirischen Kultur-Eklat weiter?\", 22 March 2025; criticism of the Land's culture budget; the article does not mention Halle fuer Kunst."
+ },
+ {
+  "id": "halle-fuer-kunst-steiermark-graz",
+  "section": "Overview, Bottom line",
+  "problems": [
+   "670 square metres not on e-flux or site",
+   "Droschl \"since 2013\" attributed to German Wikipedia, which says he won the 2012 selection",
+   "2018 protest wording incomplete",
+   "bottom line absence \"No private or corporate funder is documented\"",
+   "Website date"
+  ],
+  "before": "about 670 square metres of exhibition space; Sandro Droschl ... has directed it since 2013 (German Wikipedia, e-flux directory); No private or corporate funder is documented.",
+  "after": "Area cut; since 2013 attributed to e-flux with the 2012 selection noted from German Wikipedia; protest by the three named associations; absence line replaced by the profil mention.",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Halle_für_Kunst_Steiermark",
+   "https://www.e-flux.com/directory/125385/halle-fur-kunst-steiermark/"
+  ],
+  "reason": "Confirmed on opened pages."
+ },
+ {
+  "id": "hangar-lisboa",
+  "section": "Overview, Funding",
+  "problems": [
+   "unsupported: neighbourhood \"hilltop quarter near Martim Moniz and Intendente\"",
+   "unsupported: FIELD summary of \"non-exhibition-based residencies\"",
+   "Leitao and de Miranda both \"named as founders\"; page calls de Miranda a founder, Leitao curatorial director and board member",
+   "\"2017 Gulbenkian residency grant\": page says support, not a grant",
+   "XEREM 2010 date attributed to Hangar rather than de Miranda in FIELD",
+   "BipZip: year absence wording"
+  ],
+  "before": "a hilltop quarter near Martim Moniz and Intendente; Mónica de Miranda and Bruno Leitão are named as founders; The Calouste Gulbenkian Foundation supported ...; BipZip ... with no year given on Hangar's partners page",
+  "after": "neighbourhood described only as Graça; FIELD describes de Miranda as a founder and Leitao as curatorial director; Gulbenkian support for 2017 residencies; BipZip quote in Portuguese with translation.",
+  "sources": [
+   "https://hangar.com.pt/redes-e-parceiros",
+   "https://gulbenkian.pt/en/news/artists-180o-to-the-south/",
+   "https://field-journal.com/issue-6/hangar/"
+  ],
+  "reason": "CONFIRMED: \"O HANGAR é lançado com o apoio financeiro do programa BipZip Parcerias Locais da Câmara Municipal de Lisboa\" (no year); Gulbenkian, 1 February 2017: programme \"has received support from the Calouste Gulbenkian Foundation for the rest of this year\"; studios rented to guests and visiting artists contribute to funding (FIELD, Carlos Garrido Castellano, issue 6, winter 2017). Hours and address on the Hangar home page."
+ },
+ {
+  "id": "grizedale-arts-coniston",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: \"leased from Forestry England\"",
+   "\"charity\" and \"registered charity\" not on opened pages",
+   "absence: \"with no year or amount given\"",
+   "\"partner of Tate\" is not funding",
+   "\"self-guided garden tours all year\" not on page",
+   "\"mainly\" verdict not on a page",
+   "Wikipedia \"funded by donors and investors after a community appeal\" worded wider than source"
+  ],
+  "before": "the farm is leased from Forestry England; Grizedale Arts is a registered charity funded mainly by Arts Council England and South Lakeland District Council ...",
+  "after": "lease detail cut; \"agency\"; website quote \"made possible by the ongoing support of Arts Council England and South Lakeland District Council\"; Wikipedia bought \"with the support of investors and donors\"; King's Coronation Orchard Fund and Royal Countryside Fund attributed to Wikipedia.",
+  "sources": [
+   "https://www.grizedale.org/",
+   "https://ahfund.org.uk/projects/farmers-arms",
+   "https://www.theartnewspaper.com/2020/11/26/grizedale-launches-campaign-to-turn-historic-lake-district-pub-into-rural-arts-centre"
+  ],
+  "reason": "CONFIRMED: Architectural Heritage Fund 400,000 pound loan (purchase, working capital, fit-out) and 8,100 pound viability grant, 2020; Grizedale puts up 25% from its own reserves and seeks 300,000 pounds (The Art Newspaper, Louisa Buck, 26 November 2020, \"Grizedale launches campaign to turn historic Lake District pub into rural arts centre\"). Arts Council England and South Lakeland District Council: website names them, no year or amount."
+ },
+ {
+  "id": "grunt-gallery-vancouver",
+  "section": "Overview, Funding, Bottom line",
+  "problems": [
+   "unsupported: 1400-square-foot space",
+   "unsupported: logo \"the gallery still uses\"",
+   "funding bullet from a logo block with no names",
+   "\"developer-fund\" and \"registered\" not on pages",
+   "\"paid off\" a mortgage stated as done; release says \"will allow us to pay off\""
+  ],
+  "before": "in a 1400-square-foot office and gallery space; The website thanks its \"operating funders\" in a logo block.; a 2014 developer-fund capital grant",
+  "after": "area cut; logo block bullet cut; Rize Alliance Cultural Amenity Contribution fund grant of 400,000 dollars on 11 June 2014, Glenn Alteen thanked RIZE and the City of Vancouver; endowment fund 2006 via Vancouver Foundation.",
+  "sources": [
+   "https://grunt.ca/wp-content/uploads/2014/02/grunt-gallery-Annual-Report-2012-2013-web.pdf",
+   "https://grunt.ca/wp-content/uploads/2014/06/Press-Release-grunt-galleryis-the-proud-recipient-of-CAC-funding_.pdf"
+  ],
+  "reason": "CONFIRMED on the annual report 2012-2013: public funders (Canada Council for the Arts, British Columbia Arts Council, Heritage Canada, Cultural Spaces Canada, City of Vancouver, Canada Interactive Fund, Canada Cultural Investment Fund, Gaming Direct Access, Government of Nunavut, Saskatchewan Arts Board) and foundations (Hamber, McLean, Michael O'Brian Family, Audain, Vancouver). Press release 11 June 2014: 400,000 dollar cultural capital grant, 240,000 dollars towards a new facility."
+ },
+ {
+  "id": "gropius-bau",
+  "section": "Overview, Funding",
+  "problems": [
+   "wrong: \"Italian Renaissance\" (Wikipedia: neo-Renaissance)",
+   "wrong: reopened 1981 \"with the exhibition Preussen. Versuch einer Bilanz\" (German Wikipedia: a Schinkel exhibition)",
+   "merger described as the organisation merging with HKW and Berlinale only; the Gropius Bau was part of it",
+   "funding sentence undated: Rosenthal statement is from 2019",
+   "\"The sponsors are not named in that article\" absence"
+  ],
+  "before": "in the Italian Renaissance style ... reopened in 1981 with the exhibition \"Preussen. Versuch einer Bilanz\"; In 2002 the organisation merged into ... together with the Haus der Kulturen der Welt and the Berlin International Film Festival; The sponsors are not named in that article.",
+  "after": "neo-Renaissance; reopened in 1981 with a Schinkel exhibition; 2002 merger with HKW, the Martin-Gropius-Bau and the Berlin International Film Festival; Rosenthal quote dated 2019.",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Berliner_Festspiele",
+   "https://de.wikipedia.org/wiki/Martin-Gropius-Bau",
+   "https://www.the-berliner.com/art/stephanie-rosenthal-martin-gropius-bau-interview/"
+  ],
+  "reason": "CONFIRMED: Berliner Festspiele financed exclusively by the federal government since 2001 and operate the Gropius Bau on behalf of the Federal Government Commissioner for Culture and the Media; shared Land Berlin and Bund funding from 1967; The Berliner, Anna Larkin, 20 March 2019, quote \"we must fundraise for each of our exhibitions individually\" (the report text uses \"must fundraise for each of our exhibitions individually\")."
+ },
+ {
+  "id": "green-papaya-art-projects-manila",
+  "section": "Funding",
+  "problems": [
+   "wrong year: \"Right People, Wrong Timing\" (2021) is August 2020",
+   "unsupported use of Goethe-Institut money: now stated as on the page",
+   "Papaya Shop \"paused for lack of staff\" wording",
+   "\"fundraiser event\" undated"
+  ],
+  "before": "Japan Foundation, Manila approved a project proposal for \"Right People, Wrong Timing\" (2021); The Goethe-Institut's International 2020 Relief Fund supported archive recovery, re-establishing the office, digitisation and the website after the fire",
+  "after": "Japan Foundation, Manila approved the proposal in early August 2020 and the project launched 14 August 2020; Goethe-Institut approved an application to its International 2020 Relief Fund for Organisations in Culture and Education around mid-September 2020, money helped re-establish the office and archive facility and continue digitising; live selling fundraiser 3 February 2021.",
+  "sources": [
+   "https://4a.com.au/articles/green-papaya",
+   "https://artasiapacific.com/news/manila-s-oldest-artist-run-space-damaged-in-fire"
+  ],
+  "reason": "CONFIRMED on 4A Papers Issue 10 (October 2021, by the group itself). Website https://greenpapaya.art is given by the culture360 listing; the site itself did not load for me (TLS error), so the Website line gives the address only and no claim rests on it."
+ },
+ {
+  "id": "green-papaya-art-projects-manila",
+  "section": "Overview",
+  "problems": [
+   "wrong: group \"had planned to close in May 2020\" (ArtAsiaPacific: planned to close in 2021)",
+   "wrong: fire \"burned the interior and the archives\" (page: severely damaged interior, destroyed much of archives)",
+   "wrong: Lopez Museum \"dried and cleaned\" materials; page: offered restoration laboratory and temporary archival facility",
+   "wrong: Asia Art Archive \"has held the archive since 2017\"; page: began working on archiving in 2017, phase 1 accessible February 2021",
+   "VIVA ExCon \"in Capiz (Istanbul Biennial page)\": Capiz is on Wikipedia, not the Biennial page",
+   "Kamuning Road 2008 and Catch272 dated from 2015 detail"
+  ],
+  "before": "The group had planned to close in May 2020 after 20 years ...; The Lopez Museum and Library dried and cleaned the damaged materials in its laboratory; Asia Art Archive in Hong Kong has held the archive since 2017",
+  "after": "planned to close in 2021; October 2021 quote \"Papaya won't close in 2021, largely thanks to our community's support\"; Lopez laboratory offered, materials moved June 2020 and returned October 2020; AAA archiving from 2017, phase 1 online February 2021.",
+  "sources": [
+   "https://4a.com.au/articles/green-papaya",
+   "https://artasiapacific.com/news/manila-s-oldest-artist-run-space-damaged-in-fire",
+   "https://bienal.iksv.org/en/17b-artists/green-papaya-art-projects"
+  ],
+  "reason": "ArtAsiaPacific, HG Masters, \"Manila's Oldest Artist-Run Space Damaged in Fire\", 4 June 2020: fire 3 June 2020, electrical fault per fire-service investigators, over 300 artist-donated works."
+ },
+ {
+  "id": "green-papaya-art-projects-manila",
+  "section": "Criticism in art media, Bottom line",
+  "problems": [
+   "section removed: the only item is the group's own essay (4A Papers, Issue 10, October 2021, \"The Trees That Grow Fragrant White Flowers are Gone\", by Yuji de Torres, Iris Ferrer, Norberto Roldan, Touki Roldan, Jel Suarez, Dominic Zinampan) criticising the Philippine government's pandemic response, not the space, its funders or its programme",
+   "Overall line \"coverage is admiring or descriptive\" is a verdict without a page",
+   "bottom line absence: \"with no corporate or flagged funder\""
+  ],
+  "before": "CRITICISM IN ART MEDIA / Overall: Coverage is admiring or descriptive ... 1. 4A Papers (Issue 10) ...; bottom line: ... with no corporate or flagged funder.",
+  "after": "Heading, Overall line and item deleted; the essay stays in SOURCES as the funding source; bottom line states the grants and donations as stated by the group itself.",
+  "sources": [
+   "https://4a.com.au/articles/green-papaya"
+  ],
+  "reason": "The essay names the group and calls the government's pandemic response \"severely bungled\", which is neither criticism of the space nor of a patron it belongs to. Cut under the rule on neutral or unrelated items."
+ }
+]

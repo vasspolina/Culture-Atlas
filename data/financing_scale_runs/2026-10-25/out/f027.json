@@ -1,0 +1,190 @@
+[
+ {
+  "id": "transmediale-berlin",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kunstverein-bielefeld-bielefeld",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "bonner-kunstverein-bonn",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kunstverein-braunschweig",
+  "scale": {
+   "visitors": 7348,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.braunschweig.de/politik_verwaltung/statistik/jahrbuch/jahrbuch/13_01_export.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors: 7,348 visitors to the Kunstverein's exhibitions in 2025 from the City of Braunschweig statistics table 13_01 (PDF page 1, column Ausstellungen des Kunstvereins, row 2025), which names the Kunstverein as its data source."
+ },
+ {
+  "id": "kunsthalle-bremen",
+  "scale": {
+   "visitors": 175861,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.senatspressestelle.bremen.de/sixcms/media.php/13/20260205_Besuchszahlen_Museen_2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors: 175,861 visits in 2025 from the Senator für Kultur table of museum visits in the Land Bremen (PDF page 1, row Kunsthalle Bremen, column 2025); these are visits, not unique visitors."
+ },
+ {
+  "id": "koelnischer-kunstverein",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museum-ludwig",
+  "scale": {
+   "visitors": 273229,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.stadt-koeln.de/mediaasset/content/pdf15/statistisches_jahrbuch_koeln_2025_kap_7_kultur_und_freizeit.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors: 273,229 visits in 2025 including special exhibitions from the Statistisches Jahrbuch Köln 2025 chapter 7, Tabelle 701 (PDF page 6, row 2025, column Museum Ludwig); these are visits, not unique visitors."
+ },
+ {
+  "id": "hmkv-hartware-medienkunstverein-dortmund",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kunstverein-für-die-rheinlande-und-westfalen-düsseldorf",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museum-folkwang-essen",
+  "scale": {
+   "visitors": 175213,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://opendata.essen.de/sites/default/files/Museum%20Folkwang%20Besucherzahlen%202010-2024_0.CSV"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors: 175,213 visits in 2024 (total of permanent collection and special exhibitions) from the City of Essen statistics office CSV on opendata.essen.de, row 2024, column Besucher/-innen insgesamt; these are visits, not unique visitors."
+ },
+ {
+  "id": "portikus-frankfurt",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

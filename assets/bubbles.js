@@ -7,7 +7,8 @@
   var SEL = '#curatorMessages>.curator-message-wrap,#curatorMessages>.justify-end,#curatorDrawerLiveStream>.curator-message-wrap,#curatorDrawerLiveStream>.justify-end';
   var seq = 0;
 
-  function gossip() { return document.body.classList.contains('gossip-mode-active'); }
+  /* A turn marked as gossip is drawn as a balloon in any mode (asking the chat for gossip is enough; Gossip mode is not needed). */
+  function gossip() { return true; }
 
   /* Only a turn that holds gossip gets a balloon. The reply builder in index.html marks it: the turn carries .is-gossip and its
      reported, unverified items carry data-gossip (the record's reported items, a list of spaces with reported items). A plain
@@ -289,6 +290,17 @@
     var chips = after && after.querySelector && after.querySelector('.curator-suggest-chip') ? after : null;
     if (chips) chips.style.visibility = 'hidden';
     nodes.forEach(function (n) { n.nodeValue = ''; });
+    /* The list bullets and the link icons are not text, so emptying the text left them standing in the final layout
+       before any word (gossip mode showed a column of bullets and icons while it typed). Each link and each block is
+       hidden until its first character lands. */
+    var owners = nodes.map(function (n) {
+      var a = n.parentElement && n.parentElement.closest('a'), b = blockOf(n, el), out = [];
+      if (a && el.contains(a)) out.push(a);
+      if (b !== el) out.push(b);
+      out.forEach(function (o) { o.classList.add('not-yet'); });
+      return out;
+    });
+    function reveal() { el.querySelectorAll('.not-yet').forEach(function (o) { o.classList.remove('not-yet'); }); }
     var dots = null, dotsAfter = null;
     function showDots(block) {
       if (dots && dotsAfter === block) return;
@@ -302,12 +314,12 @@
       follow(dots);
     }
     function hideDots() { if (dots) { dots.remove(); dots = null; dotsAfter = null; } }
-    function finish() { hideDots(); el.classList.remove('is-typing'); el.style.minHeight = ''; if (chips) chips.style.visibility = ''; done(); }
+    function finish() { hideDots(); reveal(); el.classList.remove('is-typing'); el.style.minHeight = ''; if (chips) chips.style.visibility = ''; done(); }
     var start = performance.now(), shown = -1;
     function frame(now) {
       // The app may rewrite a reply's markup once it has arrived; when the nodes being typed are gone, start over on the new ones.
       if (nodes.length && !nodes[0].isConnected) {
-        hideDots(); el.classList.remove('is-typing'); el.style.minHeight = '';
+        hideDots(); reveal(); el.classList.remove('is-typing'); el.style.minHeight = '';
         if (tries < 3) setTimeout(function () { typeIn(el, done, tries + 1); }, 120); else done();
         return;
       }
@@ -325,6 +337,7 @@
         for (var i = 0; i < nodes.length; i++) {
           var n = Math.max(0, Math.min(full[i].length, left));
           if (nodes[i].nodeValue.length !== n) nodes[i].nodeValue = full[i].slice(0, n);
+          if (n > 0) owners[i].forEach(function (o) { o.classList.remove('not-yet'); });
           if (n > 0 && n < full[i].length) tip = nodes[i].parentElement;
           left -= full[i].length;
         }

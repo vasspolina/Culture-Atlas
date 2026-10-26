@@ -1,0 +1,167 @@
+[
+ {
+  "id": "artizon-museum-tokyo",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": "board",
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.ishibashi-foundation.or.jp/about/articles/",
+    "https://www.artizon.museum/about-museum/",
+    "https://www.ishibashi-foundation.or.jp/about/overview/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The museum is run by the public interest foundation named in the statutes (article 4, private museum under the Museum Act; article 7, the chair prepares the budget and the board approves it), and the museum's about page says Shojiro Ishibashi founded it with his own collection and the foundation followed in 1956."
+ },
+ {
+  "id": "japan-folk-crafts-museum-nihon-mingeikan-tokyo",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://mingeikan.or.jp/about/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The history page says the museum's operating body is a public interest foundation and that Yanagi Soetsu chose to found it without relying on government."
+ },
+ {
+  "id": "mori-art-museum",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "museum-of-contemporary-art-tokyo-tokyo",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Tokyo Metropolitan Government",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2021",
+   "sources": [
+    "https://www.seikatubunka.metro.tokyo.lg.jp/documents/d/seikatubunka/genbi_kisoku20210401"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The enforcement rules of the Museum of Contemporary Art Tokyo ordinance (page 1 to 3) give the governor power over closing days and opening hours and let a designated manager run the museum."
+ },
+ {
+  "id": "ntt-intercommunication-center-icc-tokyo",
+  "governance": {
+   "legal_form": "private company",
+   "parent": "NTT East Corp",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.ntticc.or.jp/en/about/",
+    "https://www.ntticc.or.jp/ja/about/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The about page greeting says ICC is a cultural facility run by NTT East Corp."
+ },
+ {
+  "id": "nezu-museum-tokyo",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": "board",
+   "staff_status": null,
+   "budget_set_by": "board",
+   "controls": [
+    "charity or foundation regulator"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://www.nezu-muse.or.jp/jp/foundation/index.html"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The statutes on the foundation page set the museum director's appointment with board approval (article 40), the budget by board resolution with council approval (article 7), and require the authority's approval of key statute changes (article 35)."
+ },
+ {
+  "id": "tokyo-arts-and-space-tokyo",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Tokyo Metropolitan Government",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.tokyoartsandspace.jp/about/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The TOKAS about page says it was created as an institution run by the Tokyo government and has been run by a section of the Museum of Contemporary Art Tokyo since April 2017."
+ },
+ {
+  "id": "watari-um-tokyo",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "towada-art-center-towada",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Towada City",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://towadaartcenter.com/about/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The about page lists Towada City as the museum's owner (setchisha) and a private group as its designated manager since 2012."
+ },
+ {
+  "id": "yamaguchi-center-for-arts-and-media-ycam-yamaguchi",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "yokohama-museum-of-art-yokohama",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Yokohama City",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://yokohama.art.museum/wp-content/uploads/2026/03/annual_R6.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Yokohama Museum of Art ordinance printed on annual report page 56 establishes the museum in Yokohama City and has the mayor designate the manager, which today is the Yokohama Arts Foundation."
+ },
+ {
+  "id": "amman-design-week",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ }
+]

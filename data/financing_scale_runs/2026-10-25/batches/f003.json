@@ -1,0 +1,175 @@
+[
+ {
+  "id": "fringe-world-perth",
+  "name": "Fringe World",
+  "city": "Perth",
+  "country": "Australia",
+  "website": "https://fringeworld.com.au/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.mi-3.com.au/08-01-2024/perths-fringe-world-festival-cuts-ties-fossil-fuel-giant-woodside-after-community"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2023-24 Artrage (Fringe World) income AUD 19.9M: about 25 percent government, under 1 percent donations, about 75 percent goods and services (ticketing and sponsorship not split; ACNC AIS)."
+ },
+ {
+  "id": "pica-perth",
+  "name": "PICA Perth",
+  "city": "Perth",
+  "country": "Australia",
+  "website": "https://pica.org.au",
+  "size": "S",
+  "year_founded": 1989,
+  "sources": [
+   "https://pica.org.au/support/partners/",
+   "https://pica.org.au/wp-content/uploads/2025/05/PICA_Annual-Report-2024.pdf"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 revenue AUD 2.84M: about 68 percent government, 24 percent donations and bequests, 6 percent goods and services (ACNC return 2024; annual report 2024, p. 93)."
+ },
+ {
+  "id": "shepparton-art-museum-shepparton",
+  "name": "Shepparton Art Museum",
+  "city": "Shepparton",
+  "country": "Australia",
+  "website": "https://sheppartonartmuseum.com.au/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://sheppartonartmuseum.com.au/wp-content/uploads/2025/12/SAM-AnnualReport24-25-WEB.pdf"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 revenue AUD 3.18M: about 80 percent government grants (Greater Shepparton City Council 2.33M), 13 percent donations, 1 percent shop sales, 6 percent other revenue (audited statements 2024/25, note 4)."
+ },
+ {
+  "id": "bundanon",
+  "name": "Bundanon",
+  "city": "Shoalhaven",
+  "country": "Australia",
+  "website": "https://www.bundanon.com.au",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.bundanon.com.au/",
+   "https://www.bundanon.com.au/wp-content/uploads/2025/11/Bundanon-Annual-Report-2024-2025.pdf"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 revenue AUD 14.5M: about 70 percent Commonwealth grants, 5 percent donations, 17 percent customer revenue, 8 percent other (audited statements 2024-25, PDF p. 62)."
+ },
+ {
+  "id": "4a-centre-for-contemporary-asian-art-sydney",
+  "name": "4A Centre for Contemporary Asian Art",
+  "city": "Sydney",
+  "country": "Australia",
+  "website": null,
+  "size": null,
+  "year_founded": 1996,
+  "sources": [
+   "https://4a.com.au/about"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "artbank-sydney",
+  "name": "Artbank",
+  "city": "Sydney",
+  "country": "Australia",
+  "website": "https://www.artbank.gov.au/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.artbank.gov.au/about-artbank"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "artspace-sydney",
+  "name": "Artspace Sydney",
+  "city": "Sydney",
+  "country": "Australia",
+  "website": "https://www.artspace.org.au",
+  "size": "M",
+  "year_founded": 1983,
+  "sources": [
+   "https://en.wikipedia.org/wiki/Artspace_Visual_Arts_Centre",
+   "https://www.artspace.org.au/studios",
+   "https://www.artspace.org.au"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "biennale-of-sydney-sydney",
+  "name": "Biennale of Sydney",
+  "city": "Sydney",
+  "country": "Australia",
+  "website": "https://www.biennaleofsydney.art/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.biennaleofsydney.art/biennale-of-sydney-announces-new-partners-for-25th-edition/",
+   "https://hyperallergic.com/sydney-biennale-boycott-grows/",
+   "https://artreview.com/news-7-march-sydney/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income AUD 6.6M: about 52 percent government, 9 percent donations and bequests, 36 percent goods and services including sponsorship; expenses 8.7M, a deficit of 2.2M (ACNC AIS 2024)."
+ },
+ {
+  "id": "museum-of-contemporary-art-australia-mca",
+  "name": "Museum of Contemporary Art Australia (MCA)",
+  "city": "Sydney",
+  "country": "Australia",
+  "website": "https://www.mca.com.au",
+  "size": "L",
+  "year_founded": 1991,
+  "sources": [
+   "https://www.mca.com.au/support-us/corporate-partners/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "tarrawarra-museum-of-art",
+  "name": "TarraWarra Museum of Art",
+  "city": "Yarra Valley",
+  "country": "Australia",
+  "website": "https://www.twma.com.au",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.twma.com.au/about/",
+   "https://www.acnc.gov.au/charity/charities/12608240-39af-e811-a960-000d3ad24282/profile",
+   "https://www.twma.com.au/support/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "buku-larrnggay-mulka-centre-yirrkala",
+  "name": "Buku-Larrnggay Mulka Centre",
+  "city": "Yirrkala",
+  "country": "Australia",
+  "website": null,
+  "size": null,
+  "year_founded": 1976,
+  "sources": [
+   "https://yirrkala.com/",
+   "https://www.oric.gov.au/corporations-and-registers/corporation-stories/leaders-law-business-and-community"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2023-24 income AUD 10.2M: 10 percent government revenue, under 1 percent donations, 76 percent goods and services, 14 percent other revenue (ACNC annual information statement)."
+ },
+ {
+  "id": "kunsthaus-bregenz",
+  "name": "Kunsthaus Bregenz",
+  "city": "Bregenz",
+  "country": "Austria",
+  "website": "https://www.kunsthaus-bregenz.at",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.kunsthaus-bregenz.at/en/about-kub/",
+   "https://vorarlberg.at",
+   "https://www.kunsthaus-bregenz.at/en/sponsors-partners/partners"
+  ],
+  "needs_finance": true
+ }
+]

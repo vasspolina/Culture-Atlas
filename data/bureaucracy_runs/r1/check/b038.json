@@ -1,0 +1,89 @@
+[
+ {
+  "id": "viafarini-milan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondazione-morra-greco-naples",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "madre-museum-naples",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centro-pecci-prato",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "castello-di-rivoli-museo-d-arte-contemporanea",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pastificio-cerere-rome",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "galleria-nazionale-d-arte-moderna-e-contemporanea",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "macro-museo-d-arte-contemporanea-di-roma",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "maxxi",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.controls",
+    "stored": "approval of programme, loans or disposals by a ministry or council",
+    "page says": "The Corte dei conti report says the supervising ministry must approve the staffing plan, permanent hires and the recruitment rules, and approves winding up; it does not say the ministry or a council approves the programme, loans or disposals (the board authorises disposals of real estate itself, art. 13).",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "maxxi",
+   "governance": {
+    "legal_form": "public foundation",
+    "parent": "Ministero della cultura",
+    "director_appointed_by": "board",
+    "staff_status": "employees of the institution",
+    "budget_set_by": "board",
+    "controls": [
+     "public procurement law",
+     "state audit office"
+    ],
+    "year": "2025",
+    "sources": [
+     "https://www.maxxi.art/wp-content/uploads/2025/12/Relazione-gestione-economica-della-Corte-dei-Conti-2023®.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Corte dei conti report of 2 October 2025 (determination 121) calls the foundation a private-law body under public control, says the minister appoints the board by decree, the board approves the budget and hires the artistic director, procurement follows the public contracts code, and the ministry approves staffing and permanent hires."
+  }
+ },
+ {
+  "id": "castello-di-rivoli-turin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondazione-sandretto-re-rebaudengo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "parco-arte-vivente-pav-turin",
+  "verdict": "ok",
+  "faults": []
+ }
+]

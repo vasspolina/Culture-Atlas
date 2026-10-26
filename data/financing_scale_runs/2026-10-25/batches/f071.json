@@ -1,0 +1,176 @@
+[
+ {
+  "id": "schaulager",
+  "name": "Schaulager",
+  "city": "Basel",
+  "country": "Switzerland",
+  "website": "https://schaulager.org",
+  "size": "S",
+  "year_founded": 2003,
+  "sources": [
+   "https://schaulager.org/en/schaulager/laurenz-foundation",
+   "https://en.wikipedia.org/wiki/Schaulager"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunsthalle-bern-bern",
+  "name": "Kunsthalle Bern",
+  "city": "Bern",
+  "country": "Switzerland",
+  "website": "https://kunsthallebern.ch/de/support",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://kunsthallebern.ch/de/support",
+   "https://www.e-flux.com/announcements/6785664/edgar-calellin-may-saeed"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income CHF 1.16M: about 90 percent City of Bern operating grant, 8 percent membership contributions; donations of CHF 96k listed separately (annual report 2024, p. 72)."
+ },
+ {
+  "id": "kunstmuseum-bern",
+  "name": "Kunstmuseum Bern",
+  "city": "Bern",
+  "country": "Switzerland",
+  "website": "https://www.kunstmuseumbern.ch/de",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.kunstmuseumbern.ch/de/mitwirken/partner",
+   "https://en.wikipedia.org/wiki/UBS"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 operating income CHF 9.14M: about 72 percent public contributions (Canton Bern and the Burgergemeinde's museum foundation), 16 percent earned, 12 percent received gifts and sponsorship (annual report 2025, Betriebsrechnung)."
+ },
+ {
+  "id": "friart-kunsthalle-fribourg",
+  "name": "Friart Kunsthalle Fribourg",
+  "city": "Fribourg",
+  "country": "Switzerland",
+  "website": "https://friart.ch",
+  "size": "S",
+  "year_founded": 1981,
+  "sources": [
+   "https://www.friart.ch/fr/about",
+   "https://friart.ch/en/archives/focus/fri-art-81"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "centre-art-contemporain-geneva",
+  "name": "Centre d'Art Contemporain Genève",
+  "city": "Geneva",
+  "country": "Switzerland",
+  "website": "https://centre.ch",
+  "size": "S",
+  "year_founded": 1974,
+  "sources": [
+   "https://centre.ch/en/about/",
+   "https://www.geneve.ch"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "usine-kugler-geneva",
+  "name": "Usine Kugler (Fédération des Artistes de Kugler)",
+  "city": "Geneva",
+  "country": "Switzerland",
+  "website": "https://usinekugler.ch",
+  "size": "L",
+  "year_founded": 2010,
+  "sources": [
+   "https://usinekugler.ch"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunsthaus-baselland-münchenstein",
+  "name": "Kunsthaus Baselland",
+  "city": "Münchenstein",
+  "country": "Switzerland",
+  "website": "https://www.kunsthausbaselland.ch/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.kunsthausbaselland.ch/",
+   "https://en.wikipedia.org/wiki/Novartis",
+   "https://www.novartis.com/ch-de/gesellschaft-und-umwelt/sponsoring"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income CHF 1.27M: about 51 percent Canton Basel-Landschaft, 36 percent sponsors, donations, members and the building foundation, 12 percent earned (annual report 2025, Erfolgsrechnung)."
+ },
+ {
+  "id": "can-centre-dart-neuchatel",
+  "name": "CAN Centre d'art Neuchâtel",
+  "city": "Neuchâtel",
+  "country": "Switzerland",
+  "website": "https://can.ch",
+  "size": "S",
+  "year_founded": 1995,
+  "sources": [
+   "https://can.ch",
+   "https://www.galerieartconcept.com/en/pierre-olivier-arnaud-no-center-can-centre-dart-neuchatel-ch-october-4-december-21-2025/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "fondation-beyeler",
+  "name": "Fondation Beyeler",
+  "city": "Riehen",
+  "country": "Switzerland",
+  "website": "https://www.fondationbeyeler.ch",
+  "size": "L",
+  "year_founded": 1997,
+  "sources": [
+   "https://grosserrat.bs.ch/dokumente/100405/000000405724.pdf",
+   "https://www.fondationbeyeler.ch/en/join-support/companies/sponsoring",
+   "https://en.wikipedia.org/wiki/UBS"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunst-halle-sankt-gallen-st-gallen",
+  "name": "Kunst Halle Sankt Gallen",
+  "city": "St. Gallen",
+  "country": "Switzerland",
+  "website": "https://www.kunsthallesanktgallen.ch/de/",
+  "size": null,
+  "year_founded": 1985,
+  "sources": [
+   "https://live.kunsthallesanktgallen.ch/asset/1029/17942/Jahresbericht_KunstHalleSanktGallen_2024.pdf",
+   "https://www.kunsthallesanktgallen.ch/de/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income CHF 668k: about 63 percent City and Canton of St.Gallen, 16 percent membership fees, 17 percent other grants (mixed), 3 percent earned (annual report 2025)."
+ },
+ {
+  "id": "fotomuseum-winterthur-winterthur",
+  "name": "Fotomuseum Winterthur",
+  "city": "Winterthur",
+  "country": "Switzerland",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://web.archive.org/web/20251202215721id_/https://www.fotomuseum.ch/de/partner/",
+   "https://parlament.winterthur.ch/_doc/5196871"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income CHF 2.17M: 57 percent City of Winterthur and Canton of Zurich, 14 percent the Verein, 2 percent earned; the rest names no funder (annual report 2024, p. 44)."
+ },
+ {
+  "id": "kunsthalle-z-rich",
+  "name": "Kunsthalle Zürich",
+  "city": "Zürich",
+  "country": "Switzerland",
+  "website": "https://www.kunsthallezurich.ch",
+  "size": "L",
+  "year_founded": null,
+  "sources": [
+   "https://www.kunsthallezurich.ch/en/institution/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income CHF 2.42M: about 51 percent City and Canton of Zurich subsidies, 28 percent members, private donors and the Kunsthalle foundation, 3 percent earned (annual report 2025, Erfolgsrechnung)."
+ }
+]

@@ -1,0 +1,100 @@
+[
+ {
+  "id": "bata-villa-thomas-bata-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "zikmund-villa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-skeppet",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "gallen-kallela-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "didrichsen-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "muuratsalo-experimental-house",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2025",
+    "page says": "The archived copy resolves to the snapshot web.archive.org/web/20260617012955, so the document read is dated 2026",
+    "fix": "2026"
+   }
+  ],
+  "corrected": {
+   "id": "muuratsalo-experimental-house",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": "Alvar Aalto Foundation",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://web.archive.org/web/2025/https://www.alvaraalto.fi/en/alvar-aalto-foundation/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "An archived copy of the Alvar Aalto Foundation's own page presents the foundation, which runs the Muuratsalo Experimental House, with a board of family, company, city, academy and university members."
+  }
+ },
+ {
+  "id": "villa-kokkonen",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "municipal or regional body",
+    "page says": "The story page says only that the city of Jarvenpaa bought the villa in 1998; the 27.5.2024 city board presentation says the city board decided in principle on renovating the villa as a museum site. Neither page says the villa or the art museum is a city department or unit; the form is inferred from ownership",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "City of Järvenpää",
+    "page says": "No cited page names a parent body for the museum",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "villa-kokkonen",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "hvittrask",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-mairea",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondation-hartung-bergman",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "maison-louis-carre",
+  "verdict": "ok",
+  "faults": []
+ }
+]
