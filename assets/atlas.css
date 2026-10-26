@@ -261,6 +261,8 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 .chat-info summary::-webkit-details-marker{display:none}
 .chat-info[open] summary::after{content:" ×"}
 .chat-info p{margin:8px 0 0;max-width:62ch}
+.grade-list{list-style:none;margin:4px 0 0;padding:0}
+.grade-list li{margin:0 0 4px}
 
 /* ---- modals and the full inspector ---- */
 [id$="Modal"]{background:var(--paper)!important;color:var(--ink)}
