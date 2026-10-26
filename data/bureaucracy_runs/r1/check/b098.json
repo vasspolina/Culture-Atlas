@@ -1,0 +1,87 @@
+[
+ {
+  "id": "bloc-projects-sheffield",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "site-gallery-sheffield",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "john-hansard-gallery-southampton",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "coaxial-arts-foundation-la",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "human-resources-la",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "lace-los-angeles",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "redcat-los-angeles",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "abc-no-rio-new-york",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "red_tape",
+    "stored": "A 2012 DNAinfo article says the new building at 156 Rivington Street had been held up several times while ABC No Rio raised money and navigated the city's bureaucracy.",
+    "page says": "The 4 April 2012 DNAinfo article says the building 'has already been held up several times while ABC No Rio raises money and navigates the city's bureaucracy'. It names bureaucracy only as the setting, shares the holdups with fundraising, and does not say that approvals or process are slow, layered or burdensome; the director's quote is about construction bids and cost.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "abc-no-rio-new-york",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.abcnorio.org/about/",
+     "https://www.abcnorio.org/staff-and-board-of-directors/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the About page calls ABC No Rio a volunteer-led nonprofit community center and the Board of Directors page gives the board legal and fiduciary responsibility."
+  }
+ },
+ {
+  "id": "american-folk-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "apexart-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bam-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cue-art-foundation-new-york",
+  "verdict": "ok",
+  "faults": []
+ }
+]

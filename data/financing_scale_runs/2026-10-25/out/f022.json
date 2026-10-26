@@ -1,0 +1,252 @@
+[
+ {
+  "id": "le-consortium",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "s-ries-mania-lille",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://senalnews.com/en/events/series-mania-2025-gathered-5000-professionals-from-75-countries-"
+   ]
+  },
+  "finance": null,
+  "basis": "The Senal News report on the March 2025 edition states more than 108,000 festivalgoers, so 108000 is the stated lower bound, and it counts festival attendances, not visits to a venue."
+ },
+ {
+  "id": "la-friche-la-belle-de-mai",
+  "scale": {
+   "visitors": 400000,
+   "visitors_year": "2023",
+   "staff": 74,
+   "staff_kind": "full-time equivalent",
+   "staff_year": "2022",
+   "area_m2": 100000,
+   "area_kind": "building",
+   "sources": [
+    "https://www.lelabo-ess.org/system/files/inline-files/Les%20mod%C3%A8les%20socio-%C3%A9conomiques%20des%20Scic%20-%20Monographie%20Friche%20La%20Belle%20de%20Mai_0.pdf",
+    "https://lafriche.org/app/uploads/2024/11/rapport-activites-2023.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors (400,000 site visitors a year), net turnover of 8,562,808 euros (entered as earned) and total equity of 25,832,049 euros (entered as net assets) sit on page 1 of the 2023 fact sheet in the Le Labo de l'ESS monograph, a secondary summary of the cooperative's accounts; staff (74 full-time equivalents, 2022) is on page 9 and the floor area (100,000 m2 of floor space on a 45,000 m2 site) on page 16 of the cooperative's own Bilan d'activite 2022, so the years differ between the blocks."
+ },
+ {
+  "id": "triangle-asterides-marseille",
+  "scale": {
+   "visitors": 28860,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://triangle-asterides.org/media/pages/presentation/rapports-d-activite/726c8d3f74-1749742928/250612_bilan-2024_public.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "EUR",
+   "income": 487051,
+   "expenditure": 487724,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://triangle-asterides.org/media/pages/presentation/rapports-d-activite/726c8d3f74-1749742928/250612_bilan-2024_public.pdf"
+  },
+  "basis": "Visitors (28,860 overall attendance in 2024, as indicator I.3 'Fréquentation globale') are on page 5 of the 2024 public activity report, and the total products of 487,051 euros and total charges of 487,724 euros are in section VI, Budget 2024 réalisé, on page 33."
+ },
+ {
+  "id": "49-nord-6-est-frac-lorraine-metz",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "le-19-crac-montbéliard",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 550,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://le19crac.com/en/about"
+   ]
+  },
+  "finance": null,
+  "basis": "The About page of Le 19 describes 'its 550 m2 exhibition space', with no year given."
+ },
+ {
+  "id": "la-station-nice",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 1000,
+   "area_kind": "building",
+   "sources": [
+    "https://www.lastation.org/l-association/projet-la-station/"
+   ]
+  },
+  "finance": null,
+  "basis": "The project page states that the renovated halls La Station moved into in October 2009 have an area of 1,000 m2, which covers both exhibition spaces and studios."
+ },
+ {
+  "id": "villa-arson-nice",
+  "scale": {
+   "visitors": 12000,
+   "visitors_year": "2023-24",
+   "staff": 67,
+   "staff_kind": "staff",
+   "staff_year": "2023-24",
+   "area_m2": 880,
+   "area_kind": null,
+   "sources": [
+    "https://villa-arson-assets.ams3.digitaloceanspaces.com/production/app/uploads/2025/02/12124800/VILLA-ARSON-RAPPORT-ACTIVITE-23-24.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2023",
+   "currency": "EUR",
+   "income": 4213424.58,
+   "expenditure": 3275039.06,
+   "public": null,
+   "private": null,
+   "earned": 267274.34,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://villa-arson-assets.ams3.digitaloceanspaces.com/production/app/uploads/2025/02/12124800/VILLA-ARSON-RAPPORT-ACTIVITE-23-24.pdf"
+  },
+  "basis": "In the 2023-24 activity report, page 12 gives 67 agents and 880 m2 for the art centre, page 14 gives 12,000 visitors across exhibitions, talks and events (9,000 for the exhibitions), page 120 gives 2023 total receipts of 4,213,424.58 euros and own receipts of 267,274.34 euros, and page 122 gives 2023 total spending of 3,275,039.06 euros, so the money is calendar 2023 and the scale figures are the academic year 2023-24."
+ },
+ {
+  "id": "frac-centre-val-de-loire",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 3300,
+   "area_kind": "building",
+   "sources": [
+    "https://www.frac-centre.fr/wp-content/uploads/2025/01/Poste-Administrateur.pdf",
+    "https://www.frac-centre.fr/qui-sommes-nous/projet-architectural/"
+   ]
+  },
+  "finance": null,
+  "basis": "The January 2025 recruitment notice states that the Frac employs 26 permanent agents, and the architectural project page gives the former army warehouses it occupies as a total surface of 3,300 m2."
+ },
+ {
+  "id": "betonsalon-paris",
+  "scale": {
+   "visitors": 8452,
+   "visitors_year": "2025",
+   "staff": 7,
+   "staff_kind": "staff",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.betonsalon.net/wp-content/uploads/2026/05/bs-rapport-activite-2025-low.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 528969,
+   "expenditure": null,
+   "public": 405000,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://www.betonsalon.net/wp-content/uploads/2026/05/bs-rapport-activite-2025-low.pdf"
+  },
+  "basis": "In the 2025 activity report, '2025 en quelques chiffres' (page 5) and page 112 give 8,452 visitors to the exhibitions, the introduction gives a team of 7 people (5.2 full-time equivalents), and the Bilan budgetaire 2025 (page 9) gives a total budget of 528,969 euros, entered as income, of which 405,000 euros are operating subsidies."
+ },
+ {
+  "id": "centre-pompidou",
+  "scale": {
+   "visitors": 3204369,
+   "visitors_year": "2024",
+   "staff": 1082,
+   "staff_kind": "full-time equivalent",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.centrepompidou.fr/fileadmin/user_upload/Bilans_d_activite/bilan-activite_centre-pompidou_2024.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "EUR",
+   "income": 183500000,
+   "expenditure": 153400000,
+   "public": 108400000,
+   "private": null,
+   "earned": 75100000,
+   "sponsorship": 25100000,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://www.centrepompidou.fr/fileadmin/user_upload/Bilans_d_activite/bilan-activite_centre-pompidou_2024.pdf"
+  },
+  "basis": "In the Bilan d'activite 2024, the key figures on PDF page 4 give 3,204,369 visits and 1,082 full-time equivalents (ETPT), and the Les finances section on PDF pages 83 and 84 gives budget receipts of 183.5 million euros (108.4 million public, 75.1 million own resources, of which 25.1 million patronage, partnerships and sponsorship) and budget spending of 153.4 million euros, the visits being counts of visits and the sums being the budget (cash) accounts of the Centre."
+ },
+ {
+  "id": "cit-internationale-des-arts-paris",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 48,
+   "staff_kind": "staff",
+   "staff_year": "2023",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.citeinternationaledesarts.fr/app/uploads/2025/07/Rapport-dactivite-2023.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "In the 2023 activity report, page 42 states 48 posts at 31 December 2023 (46.03 full-time equivalents on average over the year) and page 46, Gestion financiere, gives operating products of 6,266,627 euros and operating charges of 6,519,210 euros for 2023, before financial and exceptional items."
+ }
+]

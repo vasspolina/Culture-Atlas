@@ -1,0 +1,161 @@
+[
+ {
+  "id": "colección-femsa-monterrey",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "museo-de-los-pintores-oaxaqueños-oaxaca",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "museo-amparo-puebla",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": "Fundación Amparo",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://museoamparo.com/acerca-de",
+    "https://museoamparo.com/nuestros-fundadores"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The museum's About page calls it a private institution founded in 1991 through Fundación Amparo, and the founders page says Manuel Espinosa Yglesias established that foundation in 1979."
+ },
+ {
+  "id": "fundación-casa-wabi-puerto-escondido",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://casawabi.org/en/about/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The foundation's About page describes Fundación Casa Wabi as a non-profit civil association."
+ },
+ {
+  "id": "centro-cultural-tijuana-tijuana",
+  "governance": {
+   "legal_form": "statutory public body",
+   "parent": "Secretaría de Cultura",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": "legislature or ministry",
+   "controls": [
+    "public procurement law",
+    "state audit office",
+    "freedom of information law"
+   ],
+   "year": "2024",
+   "sources": [
+    "https://www.cecut.gob.mx/oit/pdf/IGG_CECUT_2018_2024.pdf",
+    "https://cecut.gob.mx/oit/pdf/2025/Informacion%20Programatica%203er%20Trimestre%202025.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The 2018-2024 government management report (page 14) calls the S.A. de C.V. a majority state-owned enterprise of Ramo 48 Cultura and lists the federal paraestatal entities law, procurement law, transparency law and Auditoría Superior de la Federación review; the 2025 budget report lists its approved budget under the Presupuesto de Egresos de la Federación."
+ },
+ {
+  "id": "museo-de-arte-de-zapopan-zapopan",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Municipality of Zapopan, through its Dirección de Museos",
+   "director_appointed_by": "city or region",
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "approval of programme, loans or disposals by a ministry or council"
+   ],
+   "year": "2025",
+   "sources": [
+    "https://servicios.zapopan.gob.mx:8000/wwwportal/publicfiles/descargasEnlaces/08-2025/Reglamento%20del%20Museo%20de%20Arte%20de%20Zapopan.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Reglamento del Museo de Arte de Zapopan (Gaceta Municipal No. 313, 13 August 2025) makes the museum dependent on the municipal Dirección de Museos (article 3), has the Presidente Municipal select the director from three profiles proposed by the foundation's patronato (article 9 and the patronato duties), and requires the Ayuntamiento plenary to authorise removing a work from the collection (article 17)."
+ },
+ {
+  "id": "national-art-museum-of-moldova",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "ulaanbaatar-international-media-art-festival-ubimaf",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": "Arts Council of Mongolia",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://artscouncil.mn/about-us/",
+    "https://artscouncil.mn/art_program_mon/ulaanbaatar-international-media-art-festival"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Arts Council of Mongolia About us page calls it a non-governmental organization, and the festival page says the council has organized the festival since 2015."
+ },
+ {
+  "id": "zanabazar-museum-of-fine-art-ulaanbaatar",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "http://www.zanabazarmuseum.mn/about-us"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The museum's own About us page describes it as a state-owned cultural and scientific organisation."
+ },
+ {
+  "id": "villa-des-arts-de-casablanca-casablanca",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "fondation-ifitry-essaouira",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": "Maroc Premium Foundation",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.marocpremium.info/en/la-fondation",
+    "https://en.biennalecasablanca.org/presentation"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Maroc Premium Foundation page says the association has no profit, political, union or religious aim and that the Ifitry residency and Essaouira art centre sit inside it, and the Biennale presentation page says the foundation oversees the art centre."
+ },
+ {
+  "id": "le-18-marrakech",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ }
+]

@@ -1,0 +1,53 @@
+[
+ {
+  "id": "21st-century-museum-of-contemporary-art",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The Kanazawa City reform plan for the Kanazawa Art Creation Foundation (2024) states city founding, 100 percent city funding, public interest foundation status under the public interest law and its role as designated manager of the 21st Century Museum.",
+    "page says": "The page gives 市出資割合 100% next to 市出資額 40,000 thousand yen and a basic fund of 40,000 thousand yen, which is the city's share of the foundation's capital, not funding of its operations",
+    "fix": "The Kanazawa City reform plan for the Kanazawa Art Creation Foundation (2024) states city founding, a 100 percent city share in the foundation's capital, public interest foundation status under the public interest law and its role as designated manager of the 21st Century Museum."
+   }
+  ],
+  "corrected": {
+   "id": "21st-century-museum-of-contemporary-art",
+   "governance": {
+    "legal_form": "public foundation",
+    "parent": "Kanazawa City",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "charity or foundation regulator"
+    ],
+    "year": "2024",
+    "sources": [
+     "https://www4.city.kanazawa.lg.jp/material/files/group/15/2-1geijutsu.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Kanazawa City reform plan for the Kanazawa Art Creation Foundation (2024) states city founding, a 100 percent city share in the foundation's capital, public interest foundation status under the public interest law and its role as designated manager of the 21st Century Museum."
+  }
+ },
+ {
+  "id": "ohara-museum-of-art-kurashiki",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kyoto-city-kyocera-museum-of-art-kyoto",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-tower-mito-mito",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hara-museum-arc-shibukawa",
+  "verdict": "ok",
+  "faults": []
+ }
+]

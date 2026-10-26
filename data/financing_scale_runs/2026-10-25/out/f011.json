@@ -1,0 +1,216 @@
+[
+ {
+  "id": "esker-foundation-calgary",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "CAD",
+   "income": 2631600,
+   "expenditure": 2094777,
+   "public": null,
+   "private": 2602093,
+   "earned": 7977,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "CRA",
+   "url": "https://open.canada.ca/data/dataset/80c00cdb-1358-415c-bb8b-0de7f12675b8/resource/e545170c-3689-4833-b2a8-e9e83100ab59/download/financial_d_and_schedule_6_2024_updated.csv"
+  },
+  "basis": "Finance is the CRA T3010 return for the year ended 31 December 2024 (BN 802236315RR0001): line 4700 total revenue, line 5100 total expenditures, private is line 4500 (tax-receipted gifts), earned is line 4640 (sale of goods and services)."
+ },
+ {
+  "id": "glenbow-calgary",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "confederation-centre-of-the-arts-charlottetown",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "art-gallery-of-alberta",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 2787,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://www.youraga.ca/about-aga/building"
+   ]
+  },
+  "finance": null,
+  "basis": "Area is the three floors of exhibition space totalling 30,000 sq feet (2,787 sq metres) on the AGA building page."
+ },
+ {
+  "id": "art-gallery-of-nova-scotia",
+  "scale": {
+   "visitors": 45383,
+   "visitors_year": "2024-25",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://agns.ca/wp-content/uploads/2025/06/AGNS-2024-25-Annual-Report.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors are the 45,383 visitors to the AGNS in the 2024-25 highlights on PDF page 11 of the 2024-25 annual report."
+ },
+ {
+  "id": "dalhousie-art-gallery-halifax",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "art-gallery-of-hamilton-hamilton",
+  "scale": {
+   "visitors": 177202,
+   "visitors_year": "2024",
+   "staff": 53,
+   "staff_kind": "employees",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.artgalleryofhamilton.com/wp-content/uploads/2025/09/AGH_AnnualReport_2024_WEB.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "CAD",
+   "income": 8556213,
+   "expenditure": 8804823,
+   "public": 3215287,
+   "private": 1406547,
+   "earned": 2504931,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "CRA",
+   "url": "https://open.canada.ca/data/dataset/80c00cdb-1358-415c-bb8b-0de7f12675b8/resource/e545170c-3689-4833-b2a8-e9e83100ab59/download/financial_d_and_schedule_6_2024_updated.csv"
+  },
+  "basis": "Visitors (177,202) and employees (53) are from the 2024 by-the-numbers page, PDF page 14 of the 2024 annual report, and are visits in calendar 2024. Finance is the CRA T3010 return for the year ended 31 December 2024 (BN 106723588RR0002): line 4700 total revenue, line 5100 total expenditures, public is lines 4540 + 4550 + 4560 (federal, provincial, municipal revenue), private is lines 4500 + 4510 + 4530 (tax-receipted gifts, receipts from other charities, other gifts), earned is line 4640 (sale of goods and services)."
+ },
+ {
+  "id": "musée-dart-de-joliette-joliette",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kamloops-art-gallery",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 418,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://kag.bc.ca/about"
+   ]
+  },
+  "finance": null,
+  "basis": "Area is the 4,500 square feet of exhibition space on the Gallery history page, converted at 0.0929 to 418 square metres."
+ },
+ {
+  "id": "dazibao-montreal",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": "Finance is the CRA T3010 return for the year ended 30 June 2024 (BN 118883412RR0001): line 4700 total revenue, line 5100 total expenditures, public is lines 4540 + 4550 + 4560 (federal, provincial, municipal revenue), private is line 4500 (tax-receipted gifts), earned is line 4640 (sale of goods and services)."
+ },
+ {
+  "id": "galerie-de-luqam-montréal",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "mac-montr-al",
+  "scale": {
+   "visitors": 36066,
+   "visitors_year": "2024-25",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://macm.org/app/uploads/2025/10/Rapport_Annuel_2024-2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors are the 36,066 visits to the exhibitions at Place Ville Marie on PDF page 103 of the 2024-25 annual report (year to 31 March 2025), excluding the 2,595 visits to exhibitions outside the museum."
+ }
+]

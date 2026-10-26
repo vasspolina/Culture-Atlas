@@ -1,0 +1,62 @@
+[
+ {
+  "id": "fundación-ama-amoedo-josé-ignacio",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private foundation",
+    "page says": "The page names the vehicle as non-profit civil organizations (organizaciones civiles sin fines de lucro) through which the Fundacion acts and never says the entity has foundation status; 'Fundacion' in the name is not a stated legal form.",
+    "fix": "private nonprofit"
+   },
+   {
+    "field": "basis",
+    "stored": "The foundation's own page says Amalia Amoedo created it and that it acts through a non-profit civil organization constituted in Uruguay in 2021.",
+    "page says": "The page says the foundation acts through two non-profit civil organizations (Uruguay 2021 and Argentina 2025), not one.",
+    "fix": "The foundation's own page says Amalia Amoedo created it and that it acts through two non-profit civil organizations, one constituted in Uruguay in 2021 and one in Argentina in 2025."
+   }
+  ],
+  "corrected": {
+   "id": "fundación-ama-amoedo-josé-ignacio",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.fundacionamaamoedo.org/fundacion"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The foundation's own page says Amalia Amoedo created it and that it acts through two non-profit civil organizations, one constituted in Uruguay in 2021 and one in Argentina in 2025."
+  }
+ },
+ {
+  "id": "espacio-de-arte-contemporaneo-eac-montevideo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-nacional-de-artes-visuales",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vanuatu-cultural-centre-vanuatu-kaljoral-senta-port-vila",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundación-oswaldo-vigas-caracas",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundación-sala-mendoza-caracas",
+  "verdict": "ok",
+  "faults": []
+ }
+]
