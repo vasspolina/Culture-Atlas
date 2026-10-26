@@ -2552,3 +2552,8 @@ div:has(>#topThemeBtn){column-gap:0}
    instruction, 26 Oct 2026). It beats the grey fill above and the phone layer's grey block fill. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(.user-bubble,.justify-end>div){background:#2d3352!important;color:#fff!important}
 :root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(.user-bubble,.justify-end>div) *{color:#fff!important}
+
+/* "Share information" and "Voice" under the chat box at the displaay.net/typeface/dazzed button size (user's instruction, 26 Oct 2026): 34px high, 14px type,
+   12px side padding, a .8px outline, a 10px radius. Colours, fills and states stay as they were. The send arrow is not changed. The ids and 13 :root
+   beat the id rules above (:root x7 to x8 with !important). */
+:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn){box-sizing:border-box!important;width:auto!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-width:.8px!important;border-style:solid!important;border-radius:10px!important;font-size:14px!important;line-height:1!important}
