@@ -2669,3 +2669,7 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* The header's Dark and Gossip mode buttons run to the right edge of the screen (the header had 24px of padding there). */
 :root:root:root:root:root:root:root:root header.rule-b{padding-right:0!important}
+
+/* The title has the same margin on every side: 14px from the left edge, as it is from the top and bottom of the header. */
+:root:root:root:root:root:root:root:root header.rule-b{padding-left:0!important}
+:root:root:root:root:root:root:root:root header.rule-b>:first-child{margin-left:14px!important;padding-left:0!important}
