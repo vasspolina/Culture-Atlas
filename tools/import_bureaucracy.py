@@ -104,6 +104,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('out_dir')
     ap.add_argument('--apply', action='store_true')
+    ap.add_argument('--require-check', action='store_true', help='skip a record whose block no checker entry covers')
+    ap.add_argument('--drop', default='', help='comma-separated record ids to leave out')
     args = ap.parse_args()
     records = json.load(open(DATA, encoding='utf-8'))
     by_id = {r['id']: r for r in records}
@@ -116,6 +118,17 @@ def main():
         if check.exists():   # a checker's corrected record replaces the researcher's
             fixed = {c['id']: c['corrected'] for c in json.load(open(check, encoding='utf-8')) if c.get('verdict') == 'fault' and c.get('corrected')}
             entries = [fixed.get(e.get('id'), e) for e in entries]
+            if args.require_check:
+                seen = {c['id'] for c in json.load(open(check, encoding='utf-8'))}
+                for e in entries:
+                    if (e.get('governance') or e.get('red_tape')) and e.get('id') not in seen:
+                        report.append(f'{path.name} {e.get("id")}: no checker entry; left out')
+                entries = [e for e in entries if not (e.get('governance') or e.get('red_tape')) or e.get('id') in seen]
+        elif args.require_check:
+            report.append(f'{path.name}: no check file; whole batch left out')
+            continue
+        drop = set(filter(None, args.drop.split(',')))
+        entries = [e for e in entries if e.get('id') not in drop]
         for e in entries:
             rec = by_id.get(e.get('id'))
             if not rec:
