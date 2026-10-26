@@ -833,14 +833,19 @@
     // Points behind the camera on a tilted map project to nonsense; anything far off the canvas is treated as not in front.
     const project = (lon, lat) => { const p = map.project([lon, lat]); return { x: p.x, y: p.y, front: Math.abs(p.x - W / 2) < 6 * W && Math.abs(p.y - H / 2) < 6 * H, depth: 1 }; };
     const dots = [], list = [], pad = 40;
+    const sel = typeof window.getSelectedInstitution === 'function' ? window.getSelectedInstitution() : null;
     ALL_INSTITUTIONS.forEach(i => {
       if (typeof i.lat !== 'number' || typeof i.lon !== 'number') return;
       const p = project(i.lon, i.lat); if (!p.front) return;
       list.push(i);
-      if (p.x > -pad && p.x < W + pad && p.y > -pad && p.y < H + pad) dots.push({ inst: i, x: p.x, y: p.y });
+      if (p.x > -pad && p.x < W + pad && p.y > -pad && p.y < H + pad) {
+        // The selected record's badge sits on its x-ray building when one was matched, not on the record's own point.
+        const a = i === sel && typeof window.xrayAnchor === 'function' ? window.xrayAnchor(i) : null;
+        const ap = a ? project(a[0], a[1]) : null;
+        dots.push(ap && ap.front ? { inst: i, x: ap.x, y: ap.y } : { inst: i, x: p.x, y: p.y });
+      }
     });
     SV.dots = dots;
-    const sel = typeof window.getSelectedInstitution === 'function' ? window.getSelectedInstitution() : null;
     STREET = true;
     try {
       window.atlasLayersDraw(ctx, project, r, W / 2, H / 2, list, sel, null, base);
