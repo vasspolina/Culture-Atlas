@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=340">
-  <script src="assets/config.js?v=340"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=356">
+  <script src="assets/config.js?v=356"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -206,7 +206,7 @@ return maplibregl$1;
             <h2 class="layers-section-title">Propaganda periods</h2>
             <p class="layers-note">Show or hide the spaces used for propaganda now and those used in a past period. A space with a documented use in both shows both marks.</p>
             <div class="layers-kinds">
-              <label class="kind-chip" style="--marker-color:#2dd4bf"><input type="checkbox" data-pkind="today" checked> <i class="shape-pentagon"></i><span class="layer-name">Now</span></label>
+              <label class="kind-chip" style="--marker-color:#2dd4bf"><input type="checkbox" data-pkind="today" checked> <i class="shape-dot"></i><span class="layer-name">Now</span></label>
               <label class="kind-chip" style="--marker-color:#2dd4bf"><input type="checkbox" data-pkind="historical" checked> <i class="shape-ring"></i><span class="layer-name">In the past</span></label>
             </div>
           </section>
@@ -221,9 +221,9 @@ return maplibregl$1;
             <h2 class="layers-section-title">Funder types</h2>
             <p class="layers-note">Show or hide each kind of funder on the connections, funder networks, funding mix and headquarters. Point at a funder around a space to see every other space it funds.</p>
             <div class="layers-kinds">
-              <label class="kind-chip" style="--marker-color:#818cf8"><input type="checkbox" data-kind="gov" checked> <i class="shape-square"></i><span class="layer-name">Public funding</span></label>
-              <label class="kind-chip" style="--marker-color:#f472b6"><input type="checkbox" data-kind="found" checked> <i class="shape-triangle"></i><span class="layer-name">Foundations</span></label>
-              <label class="kind-chip" style="--marker-color:#38bdf8"><input type="checkbox" data-kind="corp" checked> <i class="shape-hexagon"></i><span class="layer-name">Companies</span></label>
+              <label class="kind-chip" style="--marker-color:#818cf8"><input type="checkbox" data-kind="gov" checked> <i class="shape-dot"></i><span class="layer-name">Public funding</span></label>
+              <label class="kind-chip" style="--marker-color:#f472b6"><input type="checkbox" data-kind="found" checked> <i class="shape-dot"></i><span class="layer-name">Foundations</span></label>
+              <label class="kind-chip" style="--marker-color:#38bdf8"><input type="checkbox" data-kind="corp" checked> <i class="shape-dot"></i><span class="layer-name">Companies</span></label>
             </div>
           </section>
           <section class="layers-section">
@@ -235,25 +235,20 @@ return maplibregl$1;
             <h2 class="layers-section-title">Spaces on the map</h2>
             <div class="layers-key layers-tier-key">
               <span><i class="shape-dot" style="--marker-color:#9ae3e8"></i>Clean: a source is cited</span>
-              <span><i class="shape-square" style="--marker-color:#e79a3a"></i>Flagged: a recorded reason</span>
-              <span><i class="shape-triangle" style="--marker-color:#c6c6c6"></i>Unverified</span>
+              <span><i class="shape-dot" style="--marker-color:#e79a3a"></i>Flagged: a recorded reason</span>
+              <span><i class="shape-dot" style="--marker-color:#c6c6c6"></i>Unverified</span>
             </div>
           </section>
           <section class="layers-section">
-            <h2 class="layers-section-title">Map legend</h2>
+            <h2 class="layers-section-title">Marks on the map</h2>
+            <p class="layers-note">Every mark is a dot, and its name on the map says what it is.</p>
             <div class="layers-key layers-entity-key">
-              <span><i class="shape-square" style="--marker-color:#818cf8"></i>Public funding</span>
-              <span><i class="shape-triangle" style="--marker-color:#f472b6"></i>Foundation or individual donor</span>
-              <span><i class="shape-hexagon" style="--marker-color:#38bdf8"></i>Company</span>
-              <span><i class="shape-square" style="--marker-color:#f59e0b"></i>Flagged organization</span>
-              <span><i class="shape-shield" style="--marker-color:#fb7185"></i>Right-wing funder</span>
-              <span><i class="shape-diamond" style="--marker-color:#22d3ee"></i>Funder headquarters</span>
-              <span><i class="shape-diamond" style="--marker-color:#22d3ee"></i>Number in a diamond: offices in a city</span>
-              <span><i class="shape-dot" style="background:conic-gradient(#818cf8 0 33%,#f472b6 0 66%,#38bdf8 0)"></i>Ring or bar: funding mix</span>
-              <span><i class="shape-hexagon" style="--marker-color:#38bdf8;transform:scale(1.3)"></i>Larger funder mark: named on more spaces</span>
-              <span><i class="shape-dot" style="--marker-color:#e5e7eb"></i>Individual’s office</span>
-              <span><i class="shape-star" style="--marker-color:#a78bfa"></i>Mentioned in the Epstein files</span>
-              <span><i class="shape-pentagon" style="--marker-color:#2dd4bf"></i>Used for propaganda now</span>
+              <span><i class="shape-dot" style="--marker-color:#818cf8"></i>Public funding</span>
+              <span><i class="shape-dot" style="--marker-color:#f472b6"></i>Foundation or individual donor</span>
+              <span><i class="shape-dot" style="--marker-color:#38bdf8"></i>Company</span>
+              <span><i class="shape-dot" style="--marker-color:#fb7185"></i>Right-wing funder</span>
+              <span><i class="shape-dot" style="--marker-color:#a78bfa"></i>Mentioned in the Epstein files</span>
+              <span><i class="shape-dot" style="--marker-color:#2dd4bf"></i>Used for propaganda now</span>
               <span><i class="shape-ring" style="--marker-color:#2dd4bf"></i>Used for propaganda in the past</span>
             </div>
           </section>
@@ -271,30 +266,7 @@ return maplibregl$1;
         <button id="layersBtn" type="button" aria-expanded="false" aria-controls="layersPanel">Layers</button>
       </div>
 
-      <!-- Top-Left Floating Map Controls (Uncontained) -->
-      <div id="desktopGlobeTopControls" class="hidden md-flex absolute top-3 left-3 z-20 pointer-events-auto items-center gap-2 lg-gap-3 meta flex-wrap max-w-_calc_100_-24px">
-        <div class="flex items-center gap-1_5 lg-gap-2 whitespace-nowrap">
-          <button type="button" onclick="if (typeof window.resetGlobeView === 'function') window.resetGlobeView();" class="flex items-center gap-1" title="Back to the whole world, with filters cleared">
-            <span>Reset view</span>
-          </button>
-          <button type="button" data-globe-control="spin" aria-pressed="true" onclick="if (typeof window.toggleGlobeAutoSpin === 'function') window.toggleGlobeAutoSpin();" class="flex items-center gap-1" title="Turn the globe's slow rotation on or off">
-            <span data-globe-label>Rotate</span>
-          </button>
-          <button type="button" data-globe-control="expand" aria-pressed="false" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" class="flex items-center gap-1" title="Give the map more of the window">
-            <span data-globe-label>Expand map</span>
-          </button>
-        </div>
-      </div>
 
-      <!-- BEGIN: FloatingFilterCategoryChips (Mobile Bar matching code.html & media_1791792341045_b9272491.png) -->
-      <section class="relative z-20 pt-2 px-3 flex md-hidden flex-col gap-1 pointer-events-auto" data-purpose="map-filter-chips" id="mobileFilterChipsSection">
-        <div class="flex gap-1">
-        <button type="button" class="px-2 py-0_5" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();" title="Back to the whole world, with filters cleared">Reset view</button>
-        <button type="button" data-globe-control="spin" aria-pressed="true" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeSpin === 'function') window.toggleGlobeSpin();" title="Turn the globe's slow rotation on or off"><span data-globe-label>Rotate</span></button>
-        <button type="button" data-globe-control="expand" aria-pressed="false" class="px-2 py-0_5" onclick="if (typeof window.toggleGlobeExpand === 'function') window.toggleGlobeExpand();" title="Give the map more of the window"><span data-globe-label>Expand map</span></button>
-        </div>
-      </section>
-      <!-- END: FloatingFilterCategoryChips -->
 
 
       <!-- Outer Celestial Orbit Lines (Mobile Matching code.html) -->
@@ -577,12 +549,6 @@ return maplibregl$1;
         </button>
       </div>
 
-      <!-- Subtle Globe Zoom & Map Controls (Preserved for test DOM assertions) -->
-      <!-- Zoom: always visible on the map, one pair of controls -->
-      <div id="zoomControls" class="absolute bottom-4 right-4 z-10 flex flex-col gap-2">
-  <button id="zoomInBtn" type="button" class="flex items-center justify-center shrink-0" title="Zoom In" aria-label="Zoom in">+</button>
-  <button id="zoomOutBtn" type="button" class="flex items-center justify-center shrink-0" title="Zoom Out" aria-label="Zoom out">&minus;</button>
-      </div>
 
       <div id="hudControlsBar" class="hidden absolute bottom-3 sm-bottom-4 right-2 sm-right-4 z-10 items-center gap-1 sm-gap-1_5 p-1 max-w-_calc_100_-16px sm-max-w-_calc_100_-32px overflow-x-auto overflow-y-hidden no-scrollbar">
         <button id="hudWorldBtn" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Back to the whole world, with filters cleared">
@@ -889,19 +855,24 @@ return maplibregl$1;
   <!--  STICKY CURATOR INPUT BAR (Mobile Matching code.html & media_1791625755099_5e95dfd6.png) -->
   <!-- ========================================================= -->
   <div class="z-40 rule-t px-3 py-2 flex md-hidden flex-col gap-1_5 shrink-0" data-purpose="ai-chat-input-bar" id="mobileStickyInputBar">
-    <div class="relative flex items-center">
-      <!-- Input Field -->
-      <textarea class="w-full px-3 py-2 pr-20" id="chat-input" rows="2" placeholder="Ask about a space, its funders or controversies…"></textarea>
-      <!-- Send Pill Button -->
-      <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5" aria-label="Send message" title="Send message">
+    <!-- Composer card, laid out like the Claude app: text on top, controls in a row inside the card -->
+    <div id="mobileComposerCard" class="relative">
+      <textarea class="w-full" id="chat-input" rows="1" placeholder="Ask about a space, its funders or controversies…"></textarea>
+      <div id="mobileComposerActions">
+        <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Write a note about an institution">Share information</button>
+        <span class="flex-1"></span>
+        <button id="mobileStickyVoiceBtn" type="button" aria-pressed="true" aria-label="Voice: read answers aloud" title="Read answers aloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+        <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5" aria-label="Send message" title="Send message">
         <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
       </button>
-    </div>
-    <!-- Micro Badges: Live Status + Voice Mode -->
-    <div class="flex items-center justify-between px-1">
-      <div class="flex items-center space-x-2">
-        <button id="mobileStickyVoiceBtn" type="button" class="px-2 py-0_5" aria-pressed="true">Voice</button>
       </div>
+    </div>
+    <div id="mobileSuggestChips" role="group" aria-label="Suggested questions">
+        <button type="button" class="curator-suggest-chip" data-query="Who funds MoMA?">Who funds MoMA?</button>
+        <button type="button" class="curator-suggest-chip" data-query="Which museums take oil and gas money?">Oil and gas money</button>
+        <button type="button" class="curator-suggest-chip" data-query="Which museums still carry the Sackler name?">Sackler names</button>
+        <button type="button" class="curator-suggest-chip" data-query="Which spaces have arms-industry donors?">Arms-industry donors</button>
+        <button type="button" class="curator-suggest-chip" data-query="Which spaces near me are flagged, and why?">Spaces near me</button>
     </div>
   </div>
 
@@ -9964,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v340';
+    const ATLAS_RELEASE = 'culture-atlas-v356';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=340').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=356').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10012,7 +9983,10 @@ return maplibregl$1;
 
     function computeBaseRadius() {
       const minDim = Math.min(width, height);
-      return window.innerWidth < 768 ? Math.max(120, minDim * 0.46) : Math.max(160, minDim * 0.47);
+      // Phone: the globe sits inside the 16pt side margins with room for the labels on its rim
+      // (city labels are centred on their dot, so a rim dot's label reaches ~half a label past the globe).
+      if (window.innerWidth < 768) return Math.max(120, Math.min(width * 0.40, height * 0.44));
+      return Math.max(160, minDim * 0.47);
     }
     let baseRadius = 200;
     let currentRadius = baseRadius;
@@ -10248,9 +10222,9 @@ return maplibregl$1;
     }
 
 
-    // Canvas type for the cards: Documan Thin for names (a space's in capitals, a city's in normal case), Jokker Regular for facts.
-    const ATLAS_CARD_TITLE_FONT = '100 24px "Documan", "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
-    const ATLAS_CARD_NAME_FONT = '100 24px "Documan", "Jokker", sans-serif';
+    // Canvas type for the cards: Jokker Thin for names (a space's in capitals, a city's in normal case), Jokker Regular for facts.
+    const ATLAS_CARD_TITLE_FONT = '100 24px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const ATLAS_CARD_NAME_FONT = '100 24px "Jokker", sans-serif';
     const ATLAS_CARD_MONO_FONT = '14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
@@ -10383,8 +10357,8 @@ return maplibregl$1;
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
       const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
-        const TIER_SHAPE = { A: 'circle', B: 'square', U: 'triangle' };
-        const TIER_SHAPE_SIZE = { circle: 3, square: 2.7, triangle: 3.3 };
+        const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
+        const TIER_SHAPE_SIZE = { circle: 3 };
       const dt = lastRenderTs ? Math.min(0.1, Math.max(0, (now - lastRenderTs) / 1000)) : 1 / 60;
       lastRenderTs = now;
       // Scale coordinates to high-DPI hardware buffer for crystal-clear Retina rendering
@@ -10783,7 +10757,8 @@ return maplibregl$1;
 
             // Selected city or hovered city always draws; other cities only draw if they do NOT collide
             // A label cut by the screen edge reads as broken text: draw it only when it fits.
-            const clipped = bx < 2 || bx + bw > width - 2;
+            const edgeInset = window.innerWidth < 768 ? 16 : 2;   // phone: keep labels inside the 16pt margins
+            const clipped = bx < edgeInset || bx + bw > width - edgeInset;
             if ((!collides && !clipped) || isSelected || isHovered) {
               drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
               shownCityLabels.add(city.name);
@@ -11016,7 +10991,7 @@ return maplibregl$1;
           ctx.save();
           ctx.globalAlpha = limbD;
           const pinR = isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5);
-          const pinShape = TIER_SHAPE[d.inst.tier] || 'triangle';
+          const pinShape = TIER_SHAPE[d.inst.tier] || 'circle';
           if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1)); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR, 0, Math.PI * 2); }
           ctx.strokeStyle = isHov 
             ? G_LINE
@@ -15760,6 +15735,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitChatInput);
       fitChatInput();
 
+      // iPhone: opening the keyboard scrolls the whole page up, and Safari often leaves it there after the
+      // keyboard closes, which shows as an empty band under the bar. The app never scrolls as a page, so put it back.
+      const settlePage = () => {
+        if (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) {
+          window.scrollTo(0, 0); document.documentElement.scrollTop = 0; document.body.scrollTop = 0;
+        }
+      };
+      chatInput?.addEventListener('blur', () => { setTimeout(settlePage, 60); setTimeout(settlePage, 350); });
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => {
+          if (window.visualViewport.height >= window.innerHeight * 0.85) settlePage();
+        });
+      }
+      window.addEventListener('pageshow', settlePage);
+
       function setActiveMobileTab(activeEl) {
         [tabAtlas, tabDossier, tabChat].forEach(el => {
           if (!el) return;
@@ -19555,9 +19545,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=340"></script>
-<script src="assets/layers.js?v=340"></script>
-<script src="assets/hq-detail.js?v=340"></script>
-<script src="assets/bubbles.js?v=340" defer></script>
+<script src="assets/typeset.js?v=356"></script>
+<script src="assets/layers.js?v=356"></script>
+<script src="assets/hq-detail.js?v=356"></script>
+<script src="assets/bubbles.js?v=356" defer></script>
 </body>
 </html>
