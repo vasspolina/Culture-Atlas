@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=380">
-  <script src="assets/config.js?v=380"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=381">
+  <script src="assets/config.js?v=381"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v380';
+    const ATLAS_RELEASE = 'culture-atlas-v381';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=380').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=381').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10662,6 +10662,8 @@ return maplibregl$1;
           ctx.restore();
         };
         // 6. City labels (all cities in the selected country or the top cities worldwide)
+        // City labels are drawn after the institution dots (see 8.4), so a dot never shows through a label.
+        const deferredPills = [];
         cityBadgeHitboxes = [];
         cityClusterHitboxes = [];
         const drawnCityBoxes = [];
@@ -10793,7 +10795,7 @@ return maplibregl$1;
                 ctx.font = '300 14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawPillLabel(city.name + ' ' + countTxt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name));
+                deferredPills.push([city.name + ' ' + countTxt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name), badgeAlpha]);
 
                 // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
                 ctx.beginPath();
@@ -10805,7 +10807,7 @@ return maplibregl$1;
                 ctx.font = '300 14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                drawPillLabel(txt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name));
+                deferredPills.push([txt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name), badgeAlpha]);
 
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
@@ -11056,6 +11058,9 @@ return maplibregl$1;
         lastShownInstLabels = shownInstLabels;
 
         if (window.atlasLayersDrawNodes) window.atlasLayersDrawNodes(ctx, visibleDots, r, baseRadius, selectedInstitution, hoveredInstitution, isGossipModeActive, project, cx, cy);
+
+        // 8.4 City labels on top of the dots
+        deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4]); ctx.restore(); });
 
         // 8.5 Render Rich Interactive Hover Card for Hovered City on Globe
         // Suppress city hover cards when hovering an institution or for cities outside selected country
@@ -19599,9 +19604,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=380"></script>
-<script src="assets/layers.js?v=380"></script>
-<script src="assets/hq-detail.js?v=380"></script>
-<script src="assets/bubbles.js?v=380" defer></script>
+<script src="assets/typeset.js?v=381"></script>
+<script src="assets/layers.js?v=381"></script>
+<script src="assets/hq-detail.js?v=381"></script>
+<script src="assets/bubbles.js?v=381" defer></script>
 </body>
 </html>
