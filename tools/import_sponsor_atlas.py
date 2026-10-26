@@ -11,6 +11,7 @@ import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+PANEL_LINES = {'Records', 'Finances', 'Affiliations', 'Critique', 'Sponsors'}
 
 
 def norm(s):
@@ -57,8 +58,11 @@ for d in json.load(open(ROOT / 'data' / 'sponsor_atlas.json', encoding='utf-8'))
         rec['watch'] = w
         if d['t'] in 'BOF':
             rec['why_flagged'] = w
-    if d.get('x'):
-        rec['other_findings'] = ' | '.join(f'{src}: {text}' for src, text in d['x'])
+    # The study's panel lines (Records, Finances, Affiliations, Critique) go to their own fields through
+    # tools/attach_pin_layers.py, and Sponsors repeats the funding text; other_findings keeps reported items only.
+    found = [(src, text) for src, text in d.get('x') or [] if src not in PANEL_LINES]
+    if found:
+        rec['other_findings'] = ' | '.join(f'{src}: {text}' for src, text in found)
     records.append(rec)
     ids.add(rec['id'])
     added += 1
