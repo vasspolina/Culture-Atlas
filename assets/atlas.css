@@ -8,7 +8,8 @@ h1,h2,h3,h4,p{margin:0}
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Thin.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Thin.woff2") format("woff2");font-weight:100 300;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Regular.woff2") format("woff2");font-weight:400 900;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -2309,3 +2310,16 @@ div:has(>#topThemeBtn){column-gap:0}
    The bubble's 14px of padding used to keep the turns apart, so the space is counted in lines now (notes/hochuli-spacing.md): half a line (H) between the
    reader's message and the answer, two lines (2L) from the end of the answer to the next question. The gossip bubble is unchanged. */
 :root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip){background:none;border-radius:0;padding:var(--H) 0 0!important;margin-bottom:calc(2 * var(--L))!important}
+
+/* ---- The empty chat's question and the starter questions in Documan Regular, larger, about ten to a page (user, 26 Oct 2026) ----
+   Titles are Thin; these are the one place that is Regular. The tier colours (the highlight behind each question and its type) are not touched.
+   The questions stack one to a line-block at 28px (22px on a phone) with a 10px gap: on the desktop panel that is ten or eleven before fitQuestionCloud
+   takes off the ones that do not fit whole, on a phone about as many above the fold. A highlight that wraps repeats its padding on each line. */
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;gap:10px!important}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-family:var(--display)!important;font-weight:400!important;font-size:28px!important;line-height:1.2!important;letter-spacing:0!important;text-align:left;max-width:100%;height:auto;white-space:normal}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{padding:.04em .28em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-family:var(--display)!important;font-weight:400!important;font-size:32px!important;line-height:1.15!important}
+@media (max-width:520px){
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-size:22px!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-size:26px!important}
+}
