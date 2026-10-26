@@ -2520,9 +2520,9 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .no-bold{font-weight:100!important}
 
 /* The record action pills, the chat follow-up pills and the globe popup actions at the displaay.net/typefaces button size (user's instruction,
-   26 Oct 2026; measured on the live page): 34px high, 14px type, 12px side padding, a 1px outline, a 10px radius. Fills and outline colours stay as
+   26 Oct 2026; measured on the live page): 34px high, 14px type, 12px side padding, a 1px outline, a 10px radius, Jokker at weight 300 (regular, a little thinner). Fills and outline colours stay as
    they were. The follow-up pills may wrap, so theirs is a minimum height. */
-:root:root:root:root:root :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,#floatingCard) .record-action{box-sizing:border-box!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-width:1px!important;border-style:solid!important;border-radius:10px!important;font-size:14px!important;line-height:1!important}
+:root:root:root:root:root :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,#floatingCard) .record-action{box-sizing:border-box!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-width:1px!important;border-style:solid!important;border-radius:10px!important;font-size:14px!important;font-weight:300!important;line-height:1!important}
 :root:root:root:root:root :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,#floatingCard) .record-action::after{inset:-2px!important}
-:root:root[data-theme] .curator-followup-pill{box-sizing:border-box!important;min-height:34px!important;padding:0 12px!important;border-width:1px!important;border-radius:10px!important;font-size:14px!important;line-height:1.2!important}
-:root:root .record-popup-actions a,:root:root .record-popup-actions button{box-sizing:border-box;min-height:34px;padding:0 12px;border:1px solid currentColor;border-radius:10px;font-size:14px;line-height:1.2}
+:root:root[data-theme] .curator-followup-pill{box-sizing:border-box!important;min-height:34px!important;padding:0 12px!important;border-width:1px!important;border-radius:10px!important;font-size:14px!important;font-weight:300!important;line-height:1.2!important}
+:root:root .record-popup-actions a,:root:root .record-popup-actions button{box-sizing:border-box;min-height:34px;padding:0 12px;border:1px solid currentColor;border-radius:10px;font-size:14px;font-weight:300;line-height:1.2}
