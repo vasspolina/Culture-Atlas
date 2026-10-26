@@ -2552,3 +2552,120 @@ div:has(>#topThemeBtn){column-gap:0}
    instruction, 26 Oct 2026). It beats the grey fill above and the phone layer's grey block fill. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(.user-bubble,.justify-end>div){background:#2d3352!important;color:#fff!important}
 :root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(.user-bubble,.justify-end>div) *{color:#fff!important}
+
+/* "Share information" and "Voice" under the chat box at the displaay.net/typeface/dazzed button size (user's instruction, 26 Oct 2026): 34px high, 14px type,
+   12px side padding, a .8px outline, a 10px radius. Colours, fills and states stay as they were. The send arrow is not changed. The ids and 13 :root
+   beat the id rules above (:root x7 to x8 with !important). */
+:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn){box-sizing:border-box!important;width:auto!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-width:.8px!important;border-style:solid!important;border-radius:10px!important;font-size:14px!important;line-height:1!important}
+
+/* "How the records work", after the displaay.net FAQ rows (user's instruction, 26 Oct 2026): a heavy rule on top (the one line on the web that is not 0.8px,
+   as in the reference), a solid triangle that points right when closed and down when open, the question in 18px, the answer in 14px set in under the question.
+   The phone dock's closed link (#chatRecordsInfo below 768px) keeps its text-link form; the phone drawer's #chatRecordsInfoMobile gets the full design. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile{border-top:3px solid var(--ink)!important;padding:12px 0 0!important;margin-top:8px}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>summary{display:flex!important;align-items:center!important;gap:12px;width:100%!important;min-height:0!important;padding:0!important;border-radius:0!important;font:300 var(--fs-m)/1.2 var(--sans)!important;color:var(--ink)!important;text-decoration:none!important;background:none!important;justify-content:flex-start!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>summary::before{content:"";flex:none;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:12px solid currentColor;transform:rotate(-90deg);transition:transform .2s var(--ease)}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile[open]>summary::before{transform:rotate(0)}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>summary::after,:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile[open]>summary::after{content:none!important;display:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>summary:hover{text-decoration:underline!important;text-underline-offset:.2em}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>p{margin:var(--H) 0 0!important;padding:0 0 0 26px!important;font:300 var(--fs-s)/var(--lh) var(--sans)!important;max-width:62ch!important;text-indent:0!important}
+@media (min-width:768px){
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo{border-top:3px solid var(--ink)!important;padding:12px 0 0!important;margin-top:8px}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>summary{display:flex!important;align-items:center!important;gap:12px;width:100%!important;min-height:0!important;padding:0!important;border-radius:0!important;font:300 var(--fs-m)/1.2 var(--sans)!important;color:var(--ink)!important;text-decoration:none!important;background:none!important;justify-content:flex-start!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>summary::before{content:"";flex:none;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:12px solid currentColor;transform:rotate(-90deg);transition:transform .2s var(--ease)}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo[open]>summary::before{transform:rotate(0)}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>summary::after,:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo[open]>summary::after{content:none!important;display:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>summary:hover{text-decoration:underline!important;text-underline-offset:.2em}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>p{margin:var(--H) 0 0!important;padding:0 0 0 26px!important;font:300 var(--fs-s)/var(--lh) var(--sans)!important;max-width:62ch!important;text-indent:0!important}
+}
+
+/* While a reply types (assets/bubbles.js), a link or a block whose first character has not landed is hidden, bullet, link icon and all, so that
+   only the words typed so far and their own bullets show. */
+.not-yet{visibility:hidden!important}
+
+/* Button outlines are 1px (user's instruction, 26 Oct 2026), the exception to the .8px lines: every button, role=button and pill-shaped link keeps whatever
+   sides and colours it has, only their width is 1px. A button with no border stays without one (a border-style of none computes to 0). The six :not(#t)
+   beat every id rule that sets a width with !important. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(button,[role=button],input[type=button],input[type=submit],.record-action,.curator-followup-pill,.record-popup-actions a,.atlas-pill-btn,.pill-sm,#desktopDossierWebLink){border-width:1px!important}
+
+/* Voice sits inside the chat field, left of the send arrow, as plain text with no outline (user's instruction, 26 Oct 2026). It is out of the toolbar row
+   under the box; the field gives it room on the right. Muted dims it. Hover turns the type yellow like the other links on the navy. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #noteInputBlock{padding-right:150px!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn{position:absolute!important;top:14px!important;right:74px!important;left:auto!important;height:52px!important;min-height:52px!important;width:auto!important;padding:0 8px!important;margin:0!important;border-style:none!important;border-color:transparent!important;border-radius:10px!important;background:transparent!important;box-shadow:none!important;color:#fff!important;display:inline-flex!important;align-items:center!important;opacity:1;z-index:2}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn[aria-pressed="false"]{opacity:.55}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:inherit!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn:is(:hover,:focus-visible,:active){background:transparent!important;color:#fff204!important;border-style:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn:is(:hover,:focus-visible,:active) :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:#fff204!important}
+
+/* "Share information" is stretched across the full width under the chat box, in 17px type (user's instruction, 26 Oct 2026); it keeps the 34px height, the
+   10px radius and its outline. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) div:has(>#chatShareBtn){flex:1 1 100%!important;width:100%!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #chatShareBtn{width:100%!important;font-size:17px!important;justify-content:center!important;text-align:center!important}
+
+/* Send us a tip (was Share information) is drawn as a consent bar: a navy rounded bar with a checkbox and a sentence-case label, full width in the chat. The box is ticked while the note is open; pressing the bar again returns to the chat. The repeated id outranks the earlier button rules above. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{background:#30344f!important;color:#fff!important;border:0!important;border-radius:14px!important;box-sizing:border-box!important;width:auto!important;height:auto!important;min-height:0!important;padding:14px 30px!important;gap:18px!important;display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;font:400 22px/1.2 var(--sans)!important;text-decoration:none!important;filter:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:hover{background:#3d426a!important;color:#fff!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{width:100%!important}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn::before{content:"";flex:none;width:26px;height:26px;box-sizing:border-box;border:2px solid #fff;border-radius:4px;background:transparent center/18px no-repeat}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{background-color:#fff;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M3 9.500l4 4 8-9' fill='none' stroke='%2330344f' stroke-width='2.500'/%3E%3C/svg%3E")}
+
+/* While the note is open the bar reads Back to chat with an arrow in front, not a ticked box. */
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{width:22px;height:22px;border:0;border-radius:0;background-color:#fff;background-image:none;-webkit-mask:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M20 10h-14l5-5-1.500-1.500-8 8 8 8 1.500-1.500-5-5h14z'/%3E%3C/svg%3E") center/100% no-repeat;mask:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M20 10h-14l5-5-1.500-1.500-8 8 8 8 1.500-1.500-5-5h14z'/%3E%3C/svg%3E") center/100% no-repeat}
+
+/* Share information is back to its name and is drawn in the grey of the Purchasing Fonts button: grey fill, black type and a black box or arrow. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{background:#86878b!important;color:#000!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:hover{background:#9b9ca0!important;color:#000!important}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn::before{border-color:#000}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{background-color:#000}
+
+/* No checkbox: Share information is plain grey text; only Back to chat keeps its arrow. */
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:not(.is-on)::before{display:none}
+
+
+/* The prompt suggestions are drawn like the registry line in a record: a thin soft outline, rounded, the type unchanged; the outline firms up on hover. */
+:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){border:1px solid color-mix(in srgb,var(--ink) 30%,transparent)!important;border-radius:14px!important;padding:10px 20px!important;background:transparent!important}
+:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){border-color:color-mix(in srgb,var(--ink) 70%,transparent)!important}
+
+/* In Gossip mode the chat's divider lines turn yellow. */
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-b,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-t{border-color:#e2f86c!important}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #chatRecordsInfo,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetHandleBar,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetSummaryStrip{border-color:#e2f86c!important}
+
+/* Share information is regular weight (400, it was light 300) and turns yellow with black type on hover and focus. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-weight:400!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible){background:#fff204!important;color:#000!important}
+
+/* The site sets every face to weight 300 with eight ids; Share information alone is regular, so it outranks that with twelve. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #chatShareBtn,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #chatShareBtn::before{font-weight:400!important}
+
+/* The suggested questions in the chat (the chips and the follow-up pills) are drawn like the registry line in a record: a thin soft outline, rounded, quiet type. They fill yellow on hover. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] .curator-suggest-chip,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] .curator-followup-pill,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #mobileSuggestChips .curator-suggest-chip{background:transparent!important;color:color-mix(in srgb,var(--ink) 75%,transparent)!important;border:1px solid color-mix(in srgb,var(--ink) 30%,transparent)!important;border-radius:16px!important;box-shadow:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] .curator-suggest-chip:is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] .curator-followup-pill:is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #mobileSuggestChips .curator-suggest-chip:is(:hover,:focus-visible){background:#fff204!important;color:#000!important;border-color:#fff204!important}
+
+/* The thick line above "How the records work" is grey, the grey of the Share information bar (Gossip mode still turns it yellow, above). */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.gossip-mode-active) #chatRecordsInfo{border-top-color:#86878b!important}
+
+/* The left edges line up: the question text, Share information and How the records work all start 23px in from the card's edge. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{padding-left:23px!important;justify-content:flex-start!important;text-align:left!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary{padding-left:23px!important}
+
+/* Gossip mode: every divider line (the token the rules and borders draw with) and the Gossip button turn the lime yellow. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active{--line:#e2f86c}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #topGossipBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #mobileGossipBtn{background:#e2f86c!important;border-color:#e2f86c!important;color:#000!important}
+
+/* A record's name fills each line to the edge and breaks only where the line ends (it was balanced into two short lines). */
+:root:root:root:root:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading,h2.dossier-main-heading){text-wrap:wrap!important;max-width:none!important;width:auto!important}
+
+/* Gossip mode on the dark theme: the globe's ground is a dark yellow, the Gossip button's lime (#e2f86c) darkened. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#4f5a12!important}
+
+/* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (teal clean, orange flagged, grey unverified; orange in Gossip mode). */
+:root:root:root:root:root:root[data-theme] .inst-pin-label{--lc:#6f6f6f;background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:8px}
+:root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="A"]{--lc:#007d79}
+:root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="B"]{--lc:#ba4e00}
+:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{--lc:#a8a8a8;background:#000}
+:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="A"]{--lc:#3ddbd9}
+:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="B"]{--lc:#ff832b}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#ba4e00}
+:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#ff832b}
+
+/* The header's Dark and Gossip mode buttons run to the right edge of the screen (the header had 24px of padding there). */
+:root:root:root:root:root:root:root:root header.rule-b{padding-right:0!important}
