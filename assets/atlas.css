@@ -2324,10 +2324,30 @@ div:has(>#topThemeBtn){column-gap:0}
    The questions stack one to a line-block at 28px (22px on a phone) with a 10px gap: on the desktop panel that is ten or eleven before fitQuestionCloud
    takes off the ones that do not fit whole, on a phone about as many above the fold. A highlight that wraps repeats its padding on each line. */
 :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;gap:10px!important}
-:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-family:var(--display)!important;font-weight:400!important;font-size:28px!important;line-height:1.2!important;letter-spacing:0!important;text-align:left;max-width:100%;height:auto;white-space:normal}
-:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{padding:.04em .28em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-:root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-family:var(--display)!important;font-weight:400!important;font-size:32px!important;line-height:1.15!important}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-family:var(--display)!important;font-weight:400!important;font-size:34px!important;line-height:1.2!important;letter-spacing:0!important;text-align:left;max-width:100%;height:auto;white-space:normal}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{padding:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-family:var(--display)!important;font-weight:400!important;font-size:38px!important;line-height:1.15!important}
 @media (max-width:520px){
-  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-size:22px!important}
-  :root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-size:26px!important}
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-size:26px!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-size:30px!important}
 }
+
+/* ---- Starter questions as coloured type, no highlight (user, 26 Oct 2026: "keep colors, fonts can be bigger and delete background just colored font with yellow on hover") ----
+   Each question is set in its tier colour (the same --fill the highlight used) on the page; on hover or focus it turns yellow. In the light theme the pastel
+   fills are too pale for type on white, so they are darkened by half, and the hover there stays the yellow highlight with black type. Sizes: 34px on the desktop
+   panel (ten or so fit), 26px on a phone. */
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{background:none!important;padding:0!important;color:var(--fill,#c6c6c6)!important;transition:color .15s}
+:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{color:color-mix(in srgb,var(--fill,#c6c6c6) 50%,#000)!important}
+:root:root:root:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:none!important;color:#fff204!important;text-decoration:none}
+:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:#fff204!important;color:#000!important;text-decoration:none}
+
+/* ---- Row titles at 17px (user, 26 Oct 2026: "this title can be 17") ----
+   The row's title (the flag, "Programme", the place) was 24px in the narrow record; it is 17px everywhere, still Thin and in the row's accent colour. */
+:root:root:not(#t):not(#t):not(#t) .d-row-title{font-size:17px!important;line-height:var(--lh)!important}
+
+/* ---- The standalone quotation: text 17px, its source line 14px, a line of space under it (user, 26 Oct 2026: "make text 17, info 14 and add space underneath") ----
+   The quotation and its hanging mark are 17px; the source line, with its linked title, is 14px (the same step as the other source notes). The space under
+   it is one line (L), so the rule of the next row does not sit against the source line. */
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote{font-size:17px!important;margin-bottom:var(--L)}
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-size:17px!important;line-height:var(--lh)!important}
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(figcaption,figcaption a){font-size:14px!important;line-height:var(--lh)!important}
