@@ -2624,3 +2624,7 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The prompt suggestions are drawn like the registry line in a record: a thin soft outline, rounded, the type unchanged; the outline firms up on hover. */
 :root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){border:1px solid color-mix(in srgb,var(--ink) 30%,transparent)!important;border-radius:14px!important;padding:10px 20px!important;background:transparent!important}
 :root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){border-color:color-mix(in srgb,var(--ink) 70%,transparent)!important}
+
+/* In Gossip mode the chat's divider lines turn yellow. */
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-b,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-t{border-color:#e2f86c!important}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #chatRecordsInfo,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetHandleBar,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetSummaryStrip{border-color:#e2f86c!important}
