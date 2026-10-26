@@ -2143,3 +2143,11 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #chatRecordsInfo>summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
   :root[data-theme] #chatRecordsInfo[open]>summary{margin-bottom:4px}
 }
+
+/* Phone map composer (user, 26 Oct 2026): Send sat 26px too high, half outside the input, because the plain-theme rule that centres it (top:50% with translateY(-50%)) outlived the navy field's top:14px. No shift, and an arrow like the desktop Send. */
+:root[data-theme] #mobileStickyInputBar #mobileStickySendBtn{transform:none!important;inset:14px 14px auto auto!important}
+:root[data-theme] #mobileStickyInputBar #mobileStickySendBtn svg{width:22px;height:22px;stroke-width:1.8;color:#000!important}
+:root[data-theme] #mobileStickyInputBar{gap:12px!important}
+:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{box-sizing:border-box!important;height:48px!important;min-height:48px!important;padding:0 20px!important;border:1px solid var(--ink)!important;border-radius:14px!important;gap:10px!important}
+:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn::before{content:"";flex:0 0 auto;width:9px;height:9px;box-sizing:border-box;border:1.5px solid var(--ink);border-radius:50%;background:transparent}
+:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn[aria-pressed="true"]::before{background:var(--ink)}

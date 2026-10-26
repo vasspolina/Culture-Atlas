@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=303">
-  <script src="assets/config.js?v=303"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=305">
+  <script src="assets/config.js?v=305"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -875,8 +875,8 @@ return maplibregl$1;
       <!-- Input Field -->
       <textarea class="w-full px-3 py-2 pr-20" id="chat-input" rows="2" placeholder="Ask about a space, its funders or controversies…"></textarea>
       <!-- Send Pill Button -->
-      <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5">
-        <span>Send</span>
+      <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5" aria-label="Send message" title="Send message">
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
       </button>
     </div>
     <!-- Micro Badges: Live Status + Voice Mode -->
@@ -9901,11 +9901,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v303';
+    const ATLAS_RELEASE = 'culture-atlas-v305';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=303').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=305').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19389,9 +19389,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=303"></script>
-<script src="assets/layers.js?v=303"></script>
-<script src="assets/hq-detail.js?v=303"></script>
-<script src="assets/bubbles.js?v=303" defer></script>
+<script src="assets/typeset.js?v=305"></script>
+<script src="assets/layers.js?v=305"></script>
+<script src="assets/hq-detail.js?v=305"></script>
+<script src="assets/bubbles.js?v=305" defer></script>
 </body>
 </html>
