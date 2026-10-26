@@ -2450,3 +2450,11 @@ div:has(>#topThemeBtn){column-gap:0}
 @media (min-width:768px){
   :root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{margin-left:14px}
 }
+
+/* ---- The bottom row under the question box (user, 26 Oct 2026: "fix paddings on bottom button, do not underline text") ----
+   "How the records work" no longer fills white or underlines on hover or focus: the type turns yellow, as the starter questions do, and the "+" stays plain. The Voice label is white on its grey
+   (a rule for the phone had made it the secondary grey, so it nearly vanished), and none of the three controls underlines its text. */
+:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary,:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary::after{text-decoration:none!important}
+:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){background:transparent!important;color:#fff204!important;text-decoration:none!important}
+:root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn *,#chatShareBtn,#chatShareBtn:hover){text-decoration:none!important}
+:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:#fff!important}
