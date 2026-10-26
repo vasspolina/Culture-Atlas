@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=406">
-  <script src="assets/config.js?v=406"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=407">
+  <script src="assets/config.js?v=407"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -189,17 +189,16 @@ return maplibregl$1;
           <section class="layers-section">
             <h2 class="layers-section-title">Map layers</h2>
             <div class="layers-list">
-              <label><input type="checkbox" checked disabled> <span class="layer-name">Cultural spaces</span><span class="layer-desc">Every museum, gallery and art space in the atlas</span><span class="layers-count" data-count="spaces"></span></label>
-              <label><input type="checkbox" data-layer="ties"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines joining the spaces that share a funder</span><span class="layers-count" data-count="ties"></span></label>
-              <label><input type="checkbox" data-layer="flags"> <span class="layer-name">Flagged organizations</span><span class="layer-desc">Spaces with a flagged funder, marked in orange</span><span class="layers-count" data-count="flags"></span></label>
-              <label><input type="checkbox" data-layer="grade"> <span class="layer-name">Funding transparency ratings</span><span class="layer-desc">Each rated space coloured by its grade</span><span class="layers-count" data-count="grade"></span></label>
-              <label><input type="checkbox" data-layer="money"> <span class="layer-name">Funder networks</span><span class="layer-desc">A space’s funders around it when it is in focus or close</span><span class="layers-count" data-count="money"></span></label>
-              <label><input type="checkbox" data-layer="mix"> <span class="layer-name">Funding mix</span><span class="layer-desc">A ring on each space: public funding, foundations and companies, by how many of each</span><span class="layers-count" data-count="mix"></span></label>
-              <label><input type="checkbox" data-layer="hq"> <span class="layer-name">Funder headquarters</span><span class="layer-desc">Head offices of the funders, joined to the space in focus</span><span class="layers-count" data-count="hq"></span></label>
-              <label><input type="checkbox" data-layer="people"> <span class="layer-name">People &amp; office locations</span><span class="layer-desc">Offices of the people the Epstein files name</span><span class="layers-count" data-count="people"></span></label>
-              <label><input type="checkbox" data-layer="right"> <span class="layer-name">Right-wing funders</span><span class="layer-desc">Spaces with a right-wing sponsor among their funders</span><span class="layers-count" data-count="right"></span></label>
-              <label><input type="checkbox" data-layer="epstein"> <span class="layer-name">Mentions in the Epstein files</span><span class="layer-desc">Spaces whose funders or people appear in the files</span><span class="layers-count" data-count="epstein"></span></label>
-              <label><input type="checkbox" data-layer="propaganda"> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state or regime has used to promote its line, now or in a past period</span><span class="layers-count" data-count="propaganda"></span></label>
+              <label><input type="checkbox" checked disabled> <span class="layer-name">Cultural spaces</span><span class="layer-desc">Every museum, gallery and art space</span><span class="layers-count" data-count="spaces"></span></label>
+              <label><input type="checkbox" data-layer="ties"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder</span><span class="layers-count" data-count="ties"></span></label>
+              <label><input type="checkbox" data-layer="flags"> <span class="layer-name">Flagged organizations</span><span class="layer-desc">Spaces with a flagged funder</span><span class="layers-count" data-count="flags"></span></label>
+              <label><input type="checkbox" data-layer="grade"> <span class="layer-name">Funding transparency ratings</span><span class="layer-desc">Each space coloured by its grade</span><span class="layers-count" data-count="grade"></span></label>
+              <label><input type="checkbox" data-layer="money"> <span class="layer-name">Funder networks</span><span class="layer-desc">The funders around a space in focus</span><span class="layers-count" data-count="money"></span></label>
+              <label><input type="checkbox" data-layer="hq"> <span class="layer-name">Funder headquarters</span><span class="layer-desc">Funders’ head offices, joined to the space in focus</span><span class="layers-count" data-count="hq"></span></label>
+              <label><input type="checkbox" data-layer="people"> <span class="layer-name">People &amp; office locations</span><span class="layer-desc">Offices of people the Epstein files name</span><span class="layers-count" data-count="people"></span></label>
+              <label><input type="checkbox" data-layer="right"> <span class="layer-name">Right-wing funders</span><span class="layer-desc">Spaces with a right-wing funder</span><span class="layers-count" data-count="right"></span></label>
+              <label><input type="checkbox" data-layer="epstein"> <span class="layer-name">Mentions in the Epstein files</span><span class="layer-desc">Spaces whose funders or people appear</span><span class="layers-count" data-count="epstein"></span></label>
+              <label><input type="checkbox" data-layer="propaganda"> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
             </div>
           </section>
           <section class="layers-section">
@@ -219,7 +218,7 @@ return maplibregl$1;
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Funder types</h2>
-            <p class="layers-note">Show or hide each kind of funder on the connections, funder networks, funding mix and headquarters. Point at a funder around a space to see every other space it funds.</p>
+            <p class="layers-note">Show or hide each kind of funder on the funder layers. Point at a funder around a space to see every other space it funds.</p>
             <div class="layers-kinds">
               <label class="kind-chip" style="--marker-color:#818cf8"><input type="checkbox" data-kind="gov" checked> <i class="shape-dot"></i><span class="layer-name">Public funding</span></label>
               <label class="kind-chip" style="--marker-color:#f472b6"><input type="checkbox" data-kind="found" checked> <i class="shape-dot"></i><span class="layer-name">Foundations</span></label>
@@ -9939,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v406';
+    const ATLAS_RELEASE = 'culture-atlas-v407';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=406').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=407').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19652,9 +19651,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=406"></script>
-<script src="assets/layers.js?v=406"></script>
-<script src="assets/hq-detail.js?v=406"></script>
-<script src="assets/bubbles.js?v=406" defer></script>
+<script src="assets/typeset.js?v=407"></script>
+<script src="assets/layers.js?v=407"></script>
+<script src="assets/hq-detail.js?v=407"></script>
+<script src="assets/bubbles.js?v=407" defer></script>
 </body>
 </html>

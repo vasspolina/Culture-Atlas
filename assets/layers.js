@@ -1,12 +1,12 @@
 // Map layers drawn over the globe: funding connections, flagged organizations, funding transparency ratings, funder networks,
 // and the two highlights the funding map had: right-wing funders and mentions in the Epstein files.
-// Funding mix: a ring on each space split by the kinds of funder it has. Funder types: a filter on all the funder layers.
+// Funder types: a filter on all the funder layers.
 // Hovering a funder around a space draws everywhere else it funds. Each layer shows something at every zoom. Ties: the web of funders shared between spaces, the selected space's own
 // ties on top. Flags: flagged spaces marked, and a flagged count on each city cluster. Money: a space's funders around
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, mix: false, right: false, epstein: false, hq: false, people: false, propaganda: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
+  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
   const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#2dd4bf' };
   // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
   // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
@@ -241,21 +241,6 @@
     ctx.restore();
   }
 
-  // The funding mix of a whole city, for the bar under its label: the funders of every space in it, by kind.
-  let cityMixCache = null;
-  function cityMix() {
-    const sig = ['gov', 'found', 'corp'].map(k => (kindOn(k) ? 1 : 0)).join('');
-    if (cityMixCache && cityMixCache.sig === sig) return cityMixCache.map;
-    const map = new Map();
-    if (typeof ALL_INSTITUTIONS !== 'undefined') ALL_INSTITUTIONS.forEach(i => {
-      const rec = i.city && recById.get(i.id); if (!rec) return;
-      const k = i.city.toLowerCase().trim(); let c = map.get(k); if (!c) map.set(k, c = { gov: 0, found: 0, corp: 0, spaces: 0 });
-      let any = false; rec.nodes.forEach(n => { if (FUNDER(n) && kindOn(n[1])) { c[n[1]]++; any = true; } });
-      if (any) c.spaces++;
-    });
-    cityMixCache = { sig, map }; return map;
-  }
-
   // A box collides with any of the label boxes already on screen (city pills, museum pills, our own labels).
   function collides(box, boxes) {
     return boxes.some(o => !(box.x + box.w < o.x || box.x > o.x + o.w || box.y + box.h < o.y || box.y > o.y + o.h));
@@ -459,8 +444,8 @@
   }
 
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!REACH && !L.flags && !L.grade && !L.money && !L.mix && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties) return;
-    if ((L.money || L.mix || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
+    if (!REACH && !L.flags && !L.grade && !L.money && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties) return;
+    if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
     const font = '300 14px "Jokker", sans-serif';
@@ -482,36 +467,6 @@
         // The letter is the second cue: grade A and B are two near greens, and colour alone cannot tell the five apart.
         ctx.save(); ctx.font = '300 14px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
         ctx.fillText(G[i.grade].letter, d.x, d.y + 0.5); ctx.restore();
-      });
-    }
-    if (L.mix && recById && r >= baseRadius * 3) {
-      // Each space with funders: a ring split into public funding, foundations and companies, by how many of each it names,
-      // in the same order and colours as the funder marks. A kind switched off under Funder types leaves the ring. Only from a moderately close view, where the dots have room.
-      const order = ['gov', 'found', 'corp'], GAP = 0.16, R = 13;
-      dots.forEach(d => {
-        const i = d.inst, rec = i && recById.get(i.id); if (!rec) return;
-        const c = { gov: 0, found: 0, corp: 0 }; rec.nodes.forEach(n => { if (FUNDER(n) && kindOn(n[1])) c[n[1]]++; });
-        const parts = order.filter(k => c[k]), total = parts.reduce((a, k) => a + c[k], 0); if (!total) return;
-        ctx.lineCap = 'butt';
-        ctx.beginPath(); ctx.arc(d.x, d.y, R, 0, Math.PI * 2); ctx.lineWidth = 6.5; ctx.strokeStyle = dark ? '#000' : '#fff'; ctx.stroke();
-        let a0 = -Math.PI / 2; ctx.lineWidth = 4;
-        parts.forEach(k => {
-          const span = (c[k] / total) * Math.PI * 2, gap = parts.length > 1 ? Math.min(GAP, span * 0.4) : 0;
-          ctx.beginPath(); ctx.arc(d.x, d.y, R, a0 + gap / 2, a0 + span - gap / 2); ctx.strokeStyle = lineCol(COL[k]); ctx.stroke(); a0 += span;
-        });
-      });
-    }
-    if (L.mix && recById && !STREET && r < baseRadius * 3 && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
-      // Too far out for a ring on each space: a bar under each city's label instead, the same three colours in the same order.
-      const mixes = cityMix(), order = ['gov', 'found', 'corp'];
-      cityBadgeHitboxes.forEach(b => {
-        const c = mixes.get((b.name || '').toLowerCase().trim()); if (!c) return;
-        const parts = order.filter(k => c[k]), total = parts.reduce((a, k) => a + c[k], 0); if (!total) return;
-        const y = b.y + b.h + 1, h = 4;
-        ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fillRect(b.x - 1, y - 1, b.w + 2, h + 2);
-        let x = b.x; parts.forEach(k => { const w = b.w * c[k] / total; ctx.fillStyle = lineCol(COL[k]); ctx.fillRect(x, y, Math.max(1, w - 1), h); x += w; });
-        const text = parts.map(k => `${c[k]} ${k === 'gov' ? 'public' : k === 'found' ? (c[k] === 1 ? 'foundation' : 'foundations') : (c[k] === 1 ? 'company' : 'companies')}`).join(', ');
-        LM.push({ box: { x: b.x, y: y - 3, w: b.w, h: h + 6 }, x: b.x + b.w / 2, y, r: 0, col: COL.person, label: `Funders in ${b.name}`, sub: text, sub2: `${plural(c.spaces, 'space')} with funders`, ask: `How are the spaces in ${b.name} funded?` });
       });
     }
     if (L.flags) {
@@ -795,22 +750,19 @@
       set('spaces', `${formatCount(ALL_INSTITUTIONS.length)}`);
       set('flags', `${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
       const graded = ALL_INSTITUTIONS.filter(i => i.grade).length;
-      set('grade', `${formatCount(graded)}\u00a0rated · ${formatCount(ALL_INSTITUTIONS.length - graded)}\u00a0unrated`);
-      const propOf = k => ALL_INSTITUTIONS.filter(i => (i.propaganda || []).some(p => p.kind === k)).length;
-      set('propaganda', `${formatCount(propOf('today'))}\u00a0now · ${formatCount(propOf('historical'))}\u00a0past`);
+      set('grade', `${formatCount(graded)}\u00a0rated`);
+            set('propaganda', `${formatCount(ALL_INSTITUTIONS.filter(i => (i.propaganda || []).length).length)}\u00a0spaces`);
     }
     if (HQ) {
-      set('hq', `${formatCount(HQ.orgs.length)}\u00a0offices · ${formatCount(new Set(HQ.orgs.map(o => o.c)).size)}\u00a0cities`);
+      set('hq', `${formatCount(HQ.orgs.length)}\u00a0offices`);
       set('people', `${formatCount(HQ.people.length)}\u00a0offices`);
     }
     if (recById && HQ) buildTop();
     if (web) {
-      set('ties', `${formatCount(web.length)}\u00a0links · ${formatCount([...keyIndex.values()].filter(ids => ids.length >= 2).length)}\u00a0shared\u00a0funders`);
+      set('ties', `${formatCount(web.length)}\u00a0links`);
       set('money', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)}\u00a0spaces`);
-      set('mix', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)}\u00a0spaces`);
-      const rightRecs = [...recById.values()].filter(rec => rec.nodes.some(RIGHT)), rightKeys = new Set();
-      rightRecs.forEach(rec => rec.nodes.filter(RIGHT).forEach(n => rightKeys.add(n[5])));
-      set('right', `${formatCount(rightRecs.length)}\u00a0spaces · ${formatCount(rightKeys.size)}\u00a0funders`);
+      const rightRecs = [...recById.values()].filter(rec => rec.nodes.some(RIGHT));
+      set('right', `${formatCount(rightRecs.length)}\u00a0spaces`);
       set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)}\u00a0spaces`);
     }
   }
@@ -828,7 +780,7 @@
     if (!W || !H) return;
     if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px'; }
     const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    if (!(REACH || L.flags || L.grade || L.money || L.mix || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties)) { SV.dots = []; LM = []; return; }
+    if (!(REACH || L.flags || L.grade || L.money || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties)) { SV.dots = []; LM = []; return; }
     const base = 240, r = base * Math.pow(2, map.getZoom() - 7);
     // Points behind the camera on a tilted map project to nonsense; anything far off the canvas is treated as not in front.
     const project = (lon, lat) => { const p = map.project([lon, lat]); return { x: p.x, y: p.y, front: Math.abs(p.x - W / 2) < 6 * W && Math.abs(p.y - H / 2) < 6 * H, depth: 1 }; };
