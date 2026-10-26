@@ -2371,3 +2371,8 @@ div:has(>#topThemeBtn){column-gap:0}
    The row title ("Funding", "Programme", the flag) and the standalone quotation are 20px, weight 500. The other headings stay Thin; the quotation's source line stays 14px. */
 :root:root:not(#t):not(#t):not(#t):not(#t) .d-row-title{font-family:var(--display)!important;font-weight:500!important;font-size:20px!important}
 :root:root:not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-family:var(--display)!important;font-weight:500!important;font-size:20px!important}
+
+/* ---- Titles under 17px in Documan Regular (user, 26 Oct 2026) ----
+   assets/typeset.js puts title-small on every title whose computed size is under 17px. Thin is too light that small, so those take Regular; 17px and over stay Thin
+   (the row titles and the quotation stay Medium at 20px by the earlier rule). */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t) .title-small{font-family:var(--display)!important;font-weight:400!important}
