@@ -2673,3 +2673,6 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The title has the same margin on every side: 14px from the left edge, as it is from the top and bottom of the header. */
 :root:root:root:root:root:root:root:root header.rule-b{padding-left:0!important}
 :root:root:root:root:root:root:root:root header.rule-b>:first-child{margin-left:14px!important;padding-left:0!important}
+
+/* Details subtitles (Krasnodar, Programme, Overview, Funding...) and the quotes in a record are 18px, down from 24px. The earlier rules stack ids to win, so this one stacks more. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet) :is(h3.d-row-title,blockquote,blockquote .quote-hang,.standalone-quote){font-size:18px!important;line-height:1.3!important}
