@@ -10251,9 +10251,11 @@ return maplibregl$1;
     // Canvas type for the cards: Compact Bold capitals for names, Regular for facts.
     // A city's name on its hover card is set in the roman, in normal case: bold capitals are kept for the names of spaces.
     const ATLAS_CARD_TITLE_FONT = '400 24px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const ATLAS_CARD_NAME_FONT = '600 24px "Documan", "Jokker", sans-serif';
     const ATLAS_CARD_MONO_FONT = '14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
+      document.fonts.load(ATLAS_CARD_NAME_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
     }
 
     function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {
@@ -10270,7 +10272,7 @@ return maplibregl$1;
       const locText = [inst.city, inst.country].filter(Boolean).join(', ');
       const subText = locText + (inst.curatorial_focus ? ', ' + inst.curatorial_focus : (inst.neighborhood ? ', ' + inst.neighborhood : ''));
 
-      ctx.font = '600 24px "Jokker", sans-serif';
+      ctx.font = ATLAS_CARD_NAME_FONT;
       const nameW = ctx.measureText(nameUpper).width;
       ctx.font = ATLAS_CARD_MONO_FONT;
       const subW = ctx.measureText(subText).width;
@@ -10308,7 +10310,7 @@ return maplibregl$1;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillStyle = cardInk;
-      ctx.font = '600 24px "Jokker", sans-serif';
+      ctx.font = ATLAS_CARD_NAME_FONT;
       ctx.fillText(fit(nameUpper), textX, cardY + 14);
 
       ctx.font = ATLAS_CARD_MONO_FONT;
@@ -11351,7 +11353,7 @@ return maplibregl$1;
       let domReady = false; // readyState turns 'interactive' before the deferred scripts have run; this event comes after them
       document.addEventListener('DOMContentLoaded', () => { domReady = true; }, { once: true });
       const fontReady = (document.fonts && document.fonts.load)
-        ? Promise.race([document.fonts.load(ATLAS_CARD_TITLE_FONT).catch(() => {}), new Promise((r) => setTimeout(r, 1500))])
+        ? Promise.race([Promise.all([document.fonts.load(ATLAS_CARD_TITLE_FONT), document.fonts.load(ATLAS_CARD_NAME_FONT)]).catch(() => {}), new Promise((r) => setTimeout(r, 1500))])
         : Promise.resolve();
       (window.__atlasLiveRelease || Promise.resolve(null)).then((live) => {
         if (live && live !== ATLAS_RELEASE) {
