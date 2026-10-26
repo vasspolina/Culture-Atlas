@@ -2414,8 +2414,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:3px!important;gap:3px!important}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{gap:3px!important}
 
-/* The outline of the Voice and Share information buttons is 0.8px, in the dark red of the Share information button, #420401 (user, 26 Oct 2026: "the outline can be 0.8px" and "this color"). */
-:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn),:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn):is(.is-on,:hover,:focus-visible){border-width:.8px!important}
+/* The outline of the Voice and Share information buttons is 1px, in the dark red of the Share information button, #420401 (user, 26 Oct 2026: "the outline can be 0.8px" and "this color"). */
+:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn),:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn):is(.is-on,:hover,:focus-visible){border-width:1px!important}
 :root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn:is(.is-on,:hover,:focus-visible){border-color:#ec69f9!important}
 
 /* 5px between the question box and the buttons under it (user, 26 Oct 2026: "make 5px space between buttons and chat"); the two buttons stay 3px apart. */
@@ -2423,10 +2423,13 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* The outline of Voice and Share information is pink, #ec69f9, read from the swatch the user sent (26 Oct 2026: "make it pink"); it replaces the dark red in the rule above. */
 
-/* Share information has no fill: the button is an outline, 0.8px, in #a06f46 read from the swatch the user sent (26 Oct 2026: "this button can have this color outline and no fill").
+/* Share information has no fill: the button is an outline, 1px (user, 26 Oct 2026: "make outlines 1px"), in #a06f46 read from the swatch the user sent (26 Oct 2026: "this button can have this color outline and no fill").
    The older rules fill it #420401 with ids and !important in every state, so this one carries more classes than any of them. */
-:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#chatShareBtn,#chatShareBtn.is-on,#chatShareBtn:hover,#chatShareBtn:focus-visible,#chatShareBtn:active){background:transparent!important;border-color:#a06f46!important;border-width:.8px!important}
+:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#chatShareBtn,#chatShareBtn.is-on,#chatShareBtn:hover,#chatShareBtn:focus-visible,#chatShareBtn:active){background:transparent!important;border-color:#a06f46!important;border-width:1px!important}
 
 /* No "Visiting" title (user, 26 Oct 2026: "drop visiting title"). The row keeps its place in the two columns (the empty head holds the left cell, so the facts stay where
    they are) and its region still carries the label "Visiting" for screen readers. */
 :root:root:not(#t):not(#t):not(#t) .d-row-visit .d-row-title{display:none!important}
+
+/* Voice is a greyed-out block: grey fill (#3a3a3a, the grey of the disabled send button), no outline, white type (user, 26 Oct 2026: "voice button can be just greyed out background and no outline"). */
+:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn.is-on,#curatorVoiceToggleBtn:not(.is-on),#curatorVoiceToggleBtn:hover,#curatorVoiceToggleBtn:focus-visible,#curatorVoiceToggleBtn:active){background:#3a3a3a!important;border:0!important;color:#fff!important;filter:none!important}
