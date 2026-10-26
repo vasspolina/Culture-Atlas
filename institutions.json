@@ -4087,6 +4087,18 @@
       ],
       "website": "https://ima.org.au (checked 2026-10-24; loads)",
       "retrieved": "2026-10-25"
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "AUD",
+      "income": 1872205,
+      "expenditure": 1859293,
+      "public": 999804,
+      "private": 279289,
+      "earned": 308810,
+      "net_assets": 692054,
+      "source_kind": "ACNC",
+      "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
     }
   },
   {
@@ -4476,6 +4488,17 @@
       ],
       "website": "https://wiels.org (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "staff": 24,
+      "staff_year": "2025",
+      "staff_kind": "employees",
+      "area_m2": 1800,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/22a0366c-5db3-11f1-bca5-a97a03ed1ef3",
+        "https://kfda.be/en/venues/wiels/"
+      ]
     }
   },
   {
@@ -4658,6 +4681,13 @@
       "net_assets": 61369692574,
       "source_kind": "audited statements",
       "url": "https://malba.org.ar/wp-content/uploads/2025/09/Balance-2024-para-publicacion-Web.pdf"
+    },
+    "scale": {
+      "visitors": 347588,
+      "visitors_year": "2022",
+      "sources": [
+        "https://malba.org.ar/en/2023-anio-record/"
+      ]
     }
   },
   {
@@ -9433,6 +9463,13 @@
       ],
       "website": "https://smak.be (checked 2026-10-24; working)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "visitors": 94717,
+      "visitors_year": "2025",
+      "sources": [
+        "https://smak.be/volumes/general/20260313_SMAK-jaarverslag-2025_compressed.pdf"
+      ]
     }
   },
   {
@@ -15322,6 +15359,15 @@
       "net_assets": 90010439,
       "source_kind": "audited statements",
       "url": "https://wp.heide.com.au/app/uploads/2025/07/2024-Financial-Statements-Heide-Park-and-Art-Gallery-.pdf"
+    },
+    "scale": {
+      "visitors": 87000,
+      "visitors_year": "2024",
+      "area_m2": 65000,
+      "area_kind": "site",
+      "sources": [
+        "https://wp.heide.com.au/app/uploads/2025/07/1120.Annual-Report-2024_v09_DIGITAL.pdf"
+      ]
     }
   },
   {
@@ -19949,6 +19995,14 @@
       "net_assets": 455933,
       "source_kind": "ACNC",
       "url": "https://data.gov.au/data/dataset/acnc-2024-annual-information-statement-ais-data"
+    },
+    "scale": {
+      "staff": 65,
+      "staff_year": "2024",
+      "staff_kind": "staff",
+      "sources": [
+        "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+      ]
     }
   },
   {
@@ -22294,6 +22348,16 @@
       "net_assets": 102536000,
       "source_kind": "audited statements",
       "url": "https://www.bundanon.com.au/wp-content/uploads/2025/11/Bundanon-Annual-Report-2024-2025.pdf"
+    },
+    "scale": {
+      "visitors": 133513,
+      "visitors_year": "2024-25",
+      "staff": 76,
+      "staff_year": "2024-25",
+      "staff_kind": "employees",
+      "sources": [
+        "https://www.bundanon.com.au/wp-content/uploads/2025/11/Bundanon-Annual-Report-2024-2025.pdf"
+      ]
     }
   },
   {
@@ -22961,6 +23025,28 @@
       ],
       "website": "https://www.mca.com.au",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 833699,
+      "visitors_year": "2024",
+      "staff": 255,
+      "staff_year": "2024",
+      "staff_kind": "employees",
+      "sources": [
+        "https://www.mca.com.au/files/documents/MCA_Annual_Report_2024_v2.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "AUD",
+      "income": 28538898,
+      "expenditure": 31205855,
+      "public": 8507989,
+      "private": 4369460,
+      "earned": 13567918,
+      "net_assets": 71895944,
+      "source_kind": "ACNC",
+      "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
     }
   },
   {
@@ -24295,6 +24381,17 @@
       "net_assets": 83209185.49,
       "source_kind": "audited statements",
       "url": "https://albertina.at/site/assets/files/21301/jahresabschluss_2024.pdf"
+    },
+    "scale": {
+      "visitors": 1321385,
+      "visitors_year": "2024",
+      "staff": 280,
+      "staff_year": "2024",
+      "staff_kind": "employees",
+      "sources": [
+        "https://www.albertina.at/site/assets/files/1302/geschaeftsbericht_2024.pdf",
+        "https://albertina.at/site/assets/files/21301/jahresabschluss_2024.pdf"
+      ]
     }
   },
   {
@@ -24799,6 +24896,20 @@
       "net_assets": 20642010.17,
       "source_kind": "audited statements",
       "url": "https://mumok.at/fileadmin/Bibliothek/0_Berichte_und_Dokumente/3_GuV_und_Bilanz/mumok_Jahresabschluss_2024.pdf"
+    },
+    "scale": {
+      "visitors": 142322,
+      "visitors_year": "2024",
+      "staff": 137,
+      "staff_year": "2024",
+      "staff_kind": "employees",
+      "area_m2": 4500,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.vienna.at/bundesmuseen-erzielten-2024-neuen-besucherrekord/9202600",
+        "https://www.mumok.at/fileadmin/Bibliothek/0_Berichte_und_Dokumente/1_Public_Corporate_Governance/PCGB_mumok_2024.pdf",
+        "https://www.mumok.at/en/architecture"
+      ]
     }
   },
   {
@@ -25525,6 +25636,26 @@
       ],
       "website": "https://www.twma.com.au (checked 2026-10-25; loads)",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "staff": 23,
+      "staff_year": "2023-24",
+      "staff_kind": "staff",
+      "sources": [
+        "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+      ]
+    },
+    "finance": {
+      "fy": "2023-24",
+      "currency": "AUD",
+      "income": 142753419,
+      "expenditure": 3237474,
+      "public": 0,
+      "private": 141887276,
+      "earned": 0,
+      "net_assets": 227428485,
+      "source_kind": "ACNC",
+      "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
     }
   },
   {
@@ -29369,6 +29500,16 @@
       "net_assets": 49181000,
       "source_kind": "audited statements",
       "url": "https://www.inhotim.org.br/wp-content/uploads/2026/06/Demonstracoes-Contabeis-Inhotim-2025.pdf"
+    },
+    "scale": {
+      "visitors": 323313,
+      "visitors_year": "2023",
+      "area_m2": 1400000,
+      "area_kind": "site",
+      "sources": [
+        "https://diariodocomercio.com.br/negocios/inhotim-pode-ter-recorde-de-publico-em-2024/",
+        "https://www.inhotim.org.br/wp-content/uploads/2023/09/Release_Institucional_Inhotim_PT_set2023.pdf"
+      ]
     }
   },
   {
@@ -36966,6 +37107,13 @@
       ],
       "website": "https://nw-aalst.be/",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 1200,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://nw-aalst.be/je-bezoek/"
+      ]
     }
   },
   {
@@ -41179,6 +41327,14 @@
       ],
       "website": "https://kunsthal.gent",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "staff": 10,
+      "staff_year": "2025",
+      "staff_kind": "employees",
+      "sources": [
+        "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/6e73b8af-42fe-11f1-931a-d7df8b066c4a"
+      ]
     }
   },
   {
@@ -42413,6 +42569,13 @@
       ],
       "website": "https://www.salzburger-kunstverein.at",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 500,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://salzburger-kunstverein.at/about_us"
+      ]
     }
   },
   {
@@ -47294,6 +47457,26 @@
       ],
       "website": "https://www.artspace.org.au",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "staff": 37,
+      "staff_year": "2025",
+      "staff_kind": "staff",
+      "sources": [
+        "https://www.artspace.org.au/media/pages/about-artspace/16a2e5bf25-1777607606/annual-report-2025.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "AUD",
+      "income": 2424169,
+      "expenditure": 2574022,
+      "public": 1443394,
+      "private": 829069,
+      "earned": 133673,
+      "net_assets": 827174,
+      "source_kind": "ACNC",
+      "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
     }
   },
   {
@@ -52359,6 +52542,13 @@
       ],
       "website": "https://martadero.org",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 3000,
+      "area_kind": "site",
+      "sources": [
+        "https://martadero.org/quienes-somos/"
+      ]
     }
   },
   {
@@ -52786,6 +52976,13 @@
       ],
       "website": "https://www.mamalbury.com.au",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 2036,
+      "area_kind": "building",
+      "sources": [
+        "https://www.mamalbury.com.au/architecture"
+      ]
     }
   },
   {
@@ -52888,6 +53085,13 @@
       "earned": 95000,
       "source_kind": "audited statements",
       "url": "https://www.ballarat.vic.gov.au/sites/default/files/2025-10/Annual%20Report%202025_27OCT%20%281%29.pdf"
+    },
+    "scale": {
+      "visitors": 150607,
+      "visitors_year": "2023-24",
+      "sources": [
+        "https://www.ballarat.vic.gov.au/news/art-gallery-ballarat-close-temporarily-significant-upgrades"
+      ]
     }
   },
   {
@@ -53224,6 +53428,13 @@
       "net_assets": 8769201,
       "source_kind": "ACNC",
       "url": "https://data.gov.au/data/api/3/action/datastore_search?resource_id=710630ea-1202-4bbb-95f7-3973a972ddf8&q=45062537259"
+    },
+    "scale": {
+      "visitors": 160406,
+      "visitors_year": "2023-24",
+      "sources": [
+        "https://www.cairnsartgallery.com.au/give-commit"
+      ]
     }
   },
   {
@@ -53310,6 +53521,16 @@
       "net_assets": 47989496,
       "source_kind": "audited statements",
       "url": "https://www.geelonggallery.org.au/cms_uploads/docs/gg_annual_report_2025_dd_251117_v2-small.pdf"
+    },
+    "scale": {
+      "visitors": 69844,
+      "visitors_year": "2024-25",
+      "staff": 17,
+      "staff_year": "2024-25",
+      "staff_kind": "full-time equivalent",
+      "sources": [
+        "https://www.geelonggallery.org.au/cms_uploads/docs/gg_annual_report_2025_dd_251117_v2-small.pdf"
+      ]
     }
   },
   {
@@ -53443,6 +53664,13 @@
       ],
       "website": "https://buxtoncontemporary.com",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 1770,
+      "area_kind": "building",
+      "sources": [
+        "https://fkaustralia.com/project/buxton-contemporary/"
+      ]
     }
   },
   {
@@ -53584,6 +53812,13 @@
       "net_assets": 281179,
       "source_kind": "annual report",
       "url": "https://www.datocms-assets.com/36179/1781156803-gertrude-annualreport2025.pdf"
+    },
+    "scale": {
+      "visitors": 26573,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.datocms-assets.com/36179/1781156803-gertrude-annualreport2025.pdf"
+      ]
     }
   },
   {
@@ -53869,6 +54104,17 @@
       "net_assets": 3321855,
       "source_kind": "audited statements",
       "url": "https://sheppartonartmuseum.com.au/wp-content/uploads/2025/12/SAM-AnnualReport24-25-WEB.pdf"
+    },
+    "scale": {
+      "visitors": 109954,
+      "visitors_year": "2024-25",
+      "staff": 45,
+      "staff_year": "2023-24",
+      "staff_kind": "staff",
+      "sources": [
+        "https://sheppartonartmuseum.com.au/wp-content/uploads/2025/12/SAM-AnnualReport24-25-WEB.pdf",
+        "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+      ]
     }
   },
   {
@@ -54163,6 +54409,15 @@
       ],
       "website": "https://museumdd.be/",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "staff": 8,
+      "staff_year": "2025",
+      "staff_kind": "employees",
+      "sources": [
+        "https://museumdd.be/uploads/collection-photos/Jaarboek-2025.pdf",
+        "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/fc04ffb7-3e39-11f1-8329-b37d48926385"
+      ]
     }
   },
   {
@@ -71280,6 +71535,13 @@
       ],
       "website": "https://proa.org (checked 2026-10-20; the record's website field points to Tecpetrol's community page instead)",
       "retrieved": "2026-10-20"
+    },
+    "scale": {
+      "area_m2": 2300,
+      "area_kind": "building",
+      "sources": [
+        "https://www.proa.org/eng/press-note.php?id=14"
+      ]
     }
   },
   {
@@ -71628,6 +71890,13 @@
       "net_assets": 950663000,
       "source_kind": "audited statements",
       "url": "https://agsa-prod.s3.amazonaws.com/media/dd/files/Art_Gallery_of_South_Australia_2024-25_Annual_Report_-_FINAL.1718fee.pdf"
+    },
+    "scale": {
+      "visitors": 504373,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://agsa-prod.s3.amazonaws.com/media/dd/files/Art_Gallery_of_South_Australia_2024-25_Annual_Report_-_FINAL.1718fee.pdf"
+      ]
     }
   },
   {
@@ -72001,6 +72270,14 @@
       "net_assets": 1836459,
       "source_kind": "ACNC",
       "url": "https://data.gov.au/data/api/3/action/datastore_search?resource_id=710630ea-1202-4bbb-95f7-3973a972ddf8&q=90649491963"
+    },
+    "scale": {
+      "staff": 117,
+      "staff_year": "2023-24",
+      "staff_kind": "staff",
+      "sources": [
+        "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+      ]
     }
   },
   {
@@ -72284,6 +72561,17 @@
       "net_assets": 1172109,
       "source_kind": "ACNC",
       "url": "https://data.gov.au/data/api/3/action/datastore_search?resource_id=710630ea-1202-4bbb-95f7-3973a972ddf8&q=74001614384"
+    },
+    "scale": {
+      "visitors": 777386,
+      "visitors_year": "2024",
+      "staff": 21,
+      "staff_year": "2024",
+      "staff_kind": "staff",
+      "sources": [
+        "https://www.biennaleofsydney.art/about-us/",
+        "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+      ]
     }
   },
   {
@@ -72587,6 +72875,13 @@
       "public": 8169000,
       "source_kind": "annual report",
       "url": "https://wp.assets.sh/uploads/sites/15610/2026/05/Jaarverslag_2025_def_extern_website_M_HKA.pdf"
+    },
+    "scale": {
+      "visitors": 161954,
+      "visitors_year": "2025",
+      "sources": [
+        "https://wp.assets.sh/uploads/sites/15610/2026/05/Jaarverslag_2025_def_extern_website_M_HKA.pdf"
+      ]
     }
   },
   {
@@ -72822,6 +73117,17 @@
       ],
       "website": "https://mam.rio (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "finance": {
+      "fy": "2021",
+      "currency": "BRL",
+      "income": 6113917.7,
+      "expenditure": 10375678.4,
+      "private": 2145251.64,
+      "earned": 1971795.78,
+      "net_assets": 34603063.45,
+      "source_kind": "financial statements",
+      "url": "https://mam.rio/wp-content/uploads/2022/10/MAM-Rio_Balanco-2021_pag-simples.pdf"
     }
   },
   {
@@ -73035,6 +73341,14 @@
       "net_assets": 98522269,
       "source_kind": "audited statements",
       "url": "https://assets.masp.org.br/uploads/about-governance-items/TrwlQv4Lp7m5FWqkKsPiD85I9oBK9DQC.pdf"
+    },
+    "scale": {
+      "visitors": 580508,
+      "visitors_year": "2024",
+      "area_m2": 10485,
+      "sources": [
+        "https://assets.masp.org.br/uploads/about-governance-items/79F8y5NO26M9D72BsXWWmaMvINfp83kE.pdf"
+      ]
     }
   },
   {
@@ -88405,6 +88719,18 @@
       ],
       "website": "https://www.tandanya.com.au",
       "retrieved": "2026-10-25"
+    },
+    "finance": {
+      "fy": "2023-24",
+      "currency": "AUD",
+      "income": 949800,
+      "expenditure": 979432,
+      "public": 937540,
+      "private": 3000,
+      "earned": 2082,
+      "net_assets": 968708,
+      "source_kind": "ACNC",
+      "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
     }
   },
   {
@@ -90448,6 +90774,27 @@
       ],
       "website": "https://4a.com.au/ (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "staff": 9,
+      "staff_year": "2024",
+      "staff_kind": "staff",
+      "sources": [
+        "https://www.datocms-assets.com/53320/1781864921-4a-2025-annual-report-web.pdf",
+        "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "AUD",
+      "income": 1344346,
+      "expenditure": 1324893,
+      "public": 1124079,
+      "private": 192218,
+      "earned": 25977,
+      "net_assets": 285099,
+      "source_kind": "ACNC",
+      "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
     }
   },
   {
@@ -90519,6 +90866,14 @@
       ],
       "website": "https://www.kunstraumdornbirn.at/en",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 440,
+      "area_kind": "building",
+      "sources": [
+        "https://www.kunstraumdornbirn.at/en/institution/exhibition-hall",
+        "https://www.kunstraumdornbirn.at/wp-content/uploads/2026/07/Kunstraum-Dornbirn-Infobrochure-July-2026.pdf"
+      ]
     }
   },
   {
@@ -90987,6 +91342,15 @@
       ],
       "website": "http://z33.be/",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "staff": 56,
+      "staff_year": "2025",
+      "staff_kind": "employees",
+      "sources": [
+        "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/2df001af-13e8-11f1-ab22-cb5e9db4bcf1",
+        "https://en.wikipedia.org/wiki/Art_Museum_Z33"
+      ]
     }
   },
   {
@@ -109195,6 +109559,13 @@
       "net_assets": 64736238,
       "source_kind": "audited statements",
       "url": "https://mam.org.br/wp-content/uploads/2026/06/ra25-demonstrativo-financeiro-26-06-26-compressed.pdf"
+    },
+    "scale": {
+      "visitors": 260097,
+      "visitors_year": "2025",
+      "sources": [
+        "https://mam.org.br/wp-content/uploads/2026/06/ra25-miolo-digital-26-06-26.pdf"
+      ]
     }
   },
   {
@@ -113763,6 +114134,13 @@
       ],
       "website": "https://war.museum.by/ (checked 2026-10-25)",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 4200,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://war.museum.by/"
+      ]
     }
   },
   {
@@ -116036,6 +116414,13 @@
       "net_assets": 0,
       "source_kind": "Form 990",
       "url": "https://projects.propublica.org/nonprofits/organizations/133877381"
+    },
+    "scale": {
+      "area_m2": 1823,
+      "area_kind": "building",
+      "sources": [
+        "https://www.accea.info/about-us/"
+      ]
     }
   },
   {
@@ -118994,6 +119379,14 @@
       "net_assets": 11261429,
       "source_kind": "ACNC",
       "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8"
+    },
+    "scale": {
+      "staff": 35,
+      "staff_year": "2023-24",
+      "staff_kind": "staff",
+      "sources": [
+        "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+      ]
     }
   },
   {
@@ -122468,6 +122861,14 @@
       ],
       "website": "https://www.imal.org (checked 2026-10-24; loads)",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "staff": 10,
+      "staff_year": "2025",
+      "staff_kind": "employees",
+      "sources": [
+        "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/44a0cf9b-761b-11f1-adc7-191362a921e7"
+      ]
     }
   },
   {
@@ -123054,6 +123455,16 @@
       "earned": 3490000,
       "source_kind": "annual report",
       "url": "https://www.mak.at/jart/prj3/mak-resp/images/img-db/1747377812845.pdf"
+    },
+    "scale": {
+      "visitors": 160333,
+      "visitors_year": "2024",
+      "staff": 155,
+      "staff_year": "2024",
+      "staff_kind": "staff",
+      "sources": [
+        "https://www.mak.at/jart/prj3/mak-resp/images/img-db/1747377812845.pdf"
+      ]
     }
   },
   {
@@ -127384,6 +127795,13 @@
       "net_assets": 15463094,
       "source_kind": "ACNC",
       "url": "https://data.gov.au/data/api/3/action/datastore_search?resource_id=710630ea-1202-4bbb-95f7-3973a972ddf8&q=Koorie+Heritage"
+    },
+    "scale": {
+      "area_m2": 1145,
+      "area_kind": "building",
+      "sources": [
+        "https://kht.org.au/wp-content/uploads/2024/05/22-23-AnnualReport.pdf"
+      ]
     }
   },
   {

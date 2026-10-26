@@ -26,7 +26,7 @@ URL = re.compile(r'^https?://\S+$')
 STAFF_KIND = {'employees', 'full-time equivalent', 'staff'}
 AREA_KIND = {'gallery space', 'building', 'site'}
 AMOUNTS = ('income', 'expenditure', 'public', 'private', 'earned', 'sponsorship', 'net_assets')
-LIMITS = {'visitors': 30_000_000, 'staff': 20_000, 'area_m2': 1_000_000}
+LIMITS = {'visitors': 30_000_000, 'staff': 20_000, 'area_m2': 1_000_000, 'site_m2': 50_000_000}
 CURRENCY = re.compile(r'^[A-Z]{3}$')
 
 
@@ -53,7 +53,7 @@ def check_scale(s, problems):
         out['staff_kind'] = s['staff_kind']
     v = s.get('area_m2')
     if v is not None:
-        if whole(v) and v <= LIMITS['area_m2']:
+        if whole(v) and v <= (LIMITS['site_m2'] if s.get('area_kind') == 'site' else LIMITS['area_m2']):
             out['area_m2'] = int(v)
             if s.get('area_kind') in AREA_KIND:
                 out['area_kind'] = s['area_kind']

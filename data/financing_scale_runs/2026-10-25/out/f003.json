@@ -1,0 +1,253 @@
+[
+ {
+  "id": "fringe-world-perth",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 117,
+   "staff_kind": "staff",
+   "staff_year": "2023-24",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Staff is the Artrage Inc count in its FY2023-24 ACNC annual information statement (37 full-time, 8 part-time and 72 casual staff); Artrage runs Fringe World."
+ },
+ {
+  "id": "pica-perth",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 65,
+   "staff_kind": "staff",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Staff is the ACNC 2024 annual information statement count (5 full-time, 12 part-time and 48 casual staff)."
+ },
+ {
+  "id": "shepparton-art-museum-shepparton",
+  "scale": {
+   "visitors": 109954,
+   "visitors_year": "2024-25",
+   "staff": 45,
+   "staff_kind": "staff",
+   "staff_year": "2023-24",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://sheppartonartmuseum.com.au/wp-content/uploads/2025/12/SAM-AnnualReport24-25-WEB.pdf",
+    "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors is the 'Total museum visitation' figure on PDF page 23 of the 2024/25 annual report; staff is the FY2023-24 ACNC count (19 full-time, 8 part-time and 18 casual staff), an earlier year than visitors."
+ },
+ {
+  "id": "bundanon",
+  "scale": {
+   "visitors": 133513,
+   "visitors_year": "2024-25",
+   "staff": 76,
+   "staff_kind": "employees",
+   "staff_year": "2024-25",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.bundanon.com.au/wp-content/uploads/2025/11/Bundanon-Annual-Report-2024-2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors is the sitewide count of 'visitors and guests' (events included) on PDF page 5 and staff is 'Total staff' in the employee statistics table on PDF page 47 (51 non-casual plus 25 casual employees); the report also gives 50 full-time equivalent staff on PDF page 5."
+ },
+ {
+  "id": "4a-centre-for-contemporary-asian-art-sydney",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 9,
+   "staff_kind": "staff",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.datocms-assets.com/53320/1781864921-4a-2025-annual-report-web.pdf",
+    "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+   ]
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "AUD",
+   "income": 1344346,
+   "expenditure": 1324893,
+   "public": 1124079,
+   "private": 192218,
+   "earned": 25977,
+   "sponsorship": null,
+   "net_assets": 285099,
+   "source_kind": "ACNC",
+   "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+  },
+  "basis": "Visitors is the 56K walk-in count on PDF page 3 of the 2025 annual report (the 132K total visitation adds 76K window visits), staff is the ACNC 2024 count (3 full-time, 4 part-time and 2 casual staff), and the figures carry different years. Finance is the ACNC 2024 annual information statement (public is government revenue, private is donations, earned is goods and services), and the 2024 annual report statements on PDF page 34 give revenue of 1,344,349 and net assets of 285,100."
+ },
+ {
+  "id": "artbank-sydney",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "artspace-sydney",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 37,
+   "staff_kind": "staff",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.artspace.org.au/media/pages/about-artspace/16a2e5bf25-1777607606/annual-report-2025.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "AUD",
+   "income": 2424169,
+   "expenditure": 2574022,
+   "public": 1443394,
+   "private": 829069,
+   "earned": 133673,
+   "sponsorship": null,
+   "net_assets": 827174,
+   "source_kind": "ACNC",
+   "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+  },
+  "basis": "Staff is 12 full-time employees plus 25 casual staff on PDF page 7 of the 2025 annual report. Finance is the ACNC 2024 annual information statement (public is government revenue, private is donations and bequests, earned is goods and services)."
+ },
+ {
+  "id": "biennale-of-sydney-sydney",
+  "scale": {
+   "visitors": 777386,
+   "visitors_year": "2024",
+   "staff": 21,
+   "staff_kind": "staff",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.biennaleofsydney.art/about-us/",
+    "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors is the 24th Biennale attendance (9 March to 10 June 2024, seven locations) stated on the Biennale's About page, and staff is the ACNC 2024 count of 21 full-time staff."
+ },
+ {
+  "id": "museum-of-contemporary-art-australia-mca",
+  "scale": {
+   "visitors": 833699,
+   "visitors_year": "2024",
+   "staff": 255,
+   "staff_kind": "employees",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.mca.com.au/files/documents/MCA_Annual_Report_2024_v2.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "AUD",
+   "income": 28538898,
+   "expenditure": 31205855,
+   "public": 8507989,
+   "private": 4369460,
+   "earned": 13567918,
+   "sponsorship": null,
+   "net_assets": 71895944,
+   "source_kind": "ACNC",
+   "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+  },
+  "basis": "Visitors is the onsite count on PDF page 8 and staff is 'total employees' on PDF page 35 (143 full-time equivalents) of the 2024 annual report. Finance is the ACNC 2024 annual information statement (total gross income including 1,498,091 outside operating activities; public is government revenue, private is donations and bequests, earned is goods and services), and net assets match PDF page 46 of the annual report."
+ },
+ {
+  "id": "tarrawarra-museum-of-art",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 23,
+   "staff_kind": "staff",
+   "staff_year": "2023-24",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+   ]
+  },
+  "finance": {
+   "fy": "2023-24",
+   "currency": "AUD",
+   "income": 142753419,
+   "expenditure": 3237474,
+   "public": 0,
+   "private": 141887276,
+   "earned": 0,
+   "sponsorship": null,
+   "net_assets": 227428485,
+   "source_kind": "ACNC",
+   "url": "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+  },
+  "basis": "Staff is the ACNC FY2023-24 count (6 full-time, 9 part-time and 8 casual staff; 11 full-time equivalents). Finance is the ACNC FY2023-24 annual information statement, where donations and bequests of 141,887,276 are the main part of the 142,753,419 income."
+ },
+ {
+  "id": "buku-larrnggay-mulka-centre-yirrkala",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 35,
+   "staff_kind": "staff",
+   "staff_year": "2023-24",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://data.gov.au/data/dataset/276ec1bc-4971-461c-88bc-be9f3c99a0f8/resource/710630ea-1202-4bbb-95f7-3973a972ddf8/download/datadotgov_ais24.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Staff is the ACNC FY2023-24 count of 34 full-time and 1 part-time staff."
+ },
+ {
+  "id": "kunsthaus-bregenz",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]
