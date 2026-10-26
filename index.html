@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=371">
-  <script src="assets/config.js?v=371"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=372">
+  <script src="assets/config.js?v=372"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -776,7 +776,7 @@ return maplibregl$1;
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Share information -->
-                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" aria-pressed="false" title="Write a note about an institution">Share information</button>
+                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" role="checkbox" aria-checked="false" title="Write a note about an institution">Send us a tip</button>
                 </div>
 
                 <!-- Right Controls -->
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v371';
+    const ATLAS_RELEASE = 'culture-atlas-v372';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=371').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=372').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -16415,8 +16415,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const b = document.getElementById('chatShareBtn');
       if (!b) return;
       b.classList.toggle('is-on', on);
-      b.setAttribute('aria-pressed', String(on));
-      b.textContent = on ? 'Back to chat' : 'Share information';
+      b.setAttribute('aria-checked', String(on));
       b.title = on ? 'Leave the note and go back to the chat' : 'Write a note about an institution';
     }
     function toggleChatShare() {
@@ -19595,9 +19594,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=371"></script>
-<script src="assets/layers.js?v=371"></script>
-<script src="assets/hq-detail.js?v=371"></script>
-<script src="assets/bubbles.js?v=371" defer></script>
+<script src="assets/typeset.js?v=372"></script>
+<script src="assets/layers.js?v=372"></script>
+<script src="assets/hq-detail.js?v=372"></script>
+<script src="assets/bubbles.js?v=372" defer></script>
 </body>
 </html>
