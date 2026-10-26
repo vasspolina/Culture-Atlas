@@ -21,7 +21,7 @@ h1,h2,h3,h4,p{margin:0}
   /* Hochuli spacing: reading leading, one line of 18px text, half a line. */
   --lh:1.4; --L:25.2px; --H:12.6px;
   /* Every underline: 0.8px, dropped below the descenders (g, p, y) so it never crosses a letter. */
-  --ul-w:.8px; --ul-off:.3em;
+  --ul-w:.8pt; --ul-off:.3em;
   /* Three type sizes and no others (user's instruction, 25 Oct 2026): 14 for labels, controls and small print, 18 for the
      text, 24 for names and headings. 14:18:24 is about 1 : 1.29 : 1.71, each step near a perfect fourth (1.33), wide enough
      that no two read as a mistake. Every size in the page, the canvas and the phone layer is one of these. */
@@ -2265,6 +2265,19 @@ div:has(>#topThemeBtn){column-gap:0}
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:2;column-gap:calc(2 * var(--L))}
 }
 
-/* ---- The chat's edges (user, 26 Oct 2026) ----
-   What scrolls under the tabs above and the composer below fades out over 14px instead of being cut by a hard line through a bubble. */
-#curatorScrollArea{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
+
+/* ---- The chat at 17px (user, 26 Oct 2026) ----
+   The answers and the reader's own messages are set at 17px (it was 16), with the line, the half line and the leading counted from it:
+   1.4 x 17 = 23.8px, so one line is 23.8px and half a line 11.9px. The record keeps 16px. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream){--fs-m:17px;--L:23.8px;--H:11.9px}
+:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,li,dt,dd,.kicker,.t-lead){font-size:var(--fs-m)}
+/* The reader's own message sits on the same leading as the answers. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble{line-height:var(--lh)}
+/* Underlines in the chat are 0.8pt: a link's own `text-decoration` shorthand had put the thickness back to auto. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(a,.source-citation-pill):not(.record-action){text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
+
+/* ---- Margin beside the chat bubbles (user, 26 Oct 2026) ----
+   The answer bubbles and the reader's own messages keep 7px from the column's edges on both sides. The answer is full width, so it is 100% less the two
+   margins (100% plus a margin would run past the column). The gossip bubble sets its own. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip){width:calc(100% - 14px);margin-left:7px;margin-right:7px}
+:root :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{padding-left:7px;padding-right:7px;box-sizing:border-box}
