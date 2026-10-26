@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=377">
-  <script src="assets/config.js?v=377"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=378">
+  <script src="assets/config.js?v=378"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v377';
+    const ATLAS_RELEASE = 'culture-atlas-v378';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=377').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=378').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10649,9 +10649,13 @@ return maplibregl$1;
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 28, h = 22;
           const pc = pillColors(active, tier);
-          ctx.fillStyle = pc.fill;
-          ctx.fillRect(cx0 - w / 2, cy0 - h / 2, w, h);
-          ctx.fillStyle = pc.ink;
+          // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
+          const textCol = isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
+          ctx.beginPath();
+          ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 8);
+          if (active) { ctx.fillStyle = pc.fill; ctx.fill(); }
+          else { ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : '#000000'; ctx.fill(); ctx.strokeStyle = textCol; ctx.globalAlpha = 0.55; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
+          ctx.fillStyle = active ? pc.ink : textCol;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(text, cx0, cy0 + 0.5);
@@ -19595,9 +19599,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=377"></script>
-<script src="assets/layers.js?v=377"></script>
-<script src="assets/hq-detail.js?v=377"></script>
-<script src="assets/bubbles.js?v=377" defer></script>
+<script src="assets/typeset.js?v=378"></script>
+<script src="assets/layers.js?v=378"></script>
+<script src="assets/hq-detail.js?v=378"></script>
+<script src="assets/bubbles.js?v=378" defer></script>
 </body>
 </html>
