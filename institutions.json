@@ -552,6 +552,13 @@
       ],
       "website": "https://www.fondation-vincentvangogh-arles.org (checked 2026-10-24; live)",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 1000,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.fondation-vincentvangogh-arles.org/en/the-foundation/"
+      ]
     }
   },
   {
@@ -647,6 +654,13 @@
       ],
       "website": "https://www.luma.org/arles",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 70000,
+      "area_kind": "site",
+      "sources": [
+        "https://www.luma.org/en/arles/about-us/"
+      ]
     }
   },
   {
@@ -2734,6 +2748,13 @@
       ],
       "website": "https://www.kw-berlin.de (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "visitors": 62100,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.berlin.de/sen/kultgz/aktuelles/pressemitteilungen/2026/2026_pm_besucher-innenzahlen-2025_anhang.pdf"
+      ]
     }
   },
   {
@@ -3933,6 +3954,13 @@
       ],
       "website": "https://www.kunsthalle-bremen.de",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 175861,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.senatspressestelle.bremen.de/sixcms/media.php/13/20260205_Besuchszahlen_Museen_2025.pdf"
+      ]
     }
   },
   {
@@ -6543,6 +6571,13 @@
       "earned": 2761673,
       "source_kind": "city budget",
       "url": "https://www.stadt-koeln.de/mediaasset/content/pdf20/jahresabschluesse/jahresabschluss_2023_teil_2.pdf"
+    },
+    "scale": {
+      "visitors": 273229,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.stadt-koeln.de/mediaasset/content/pdf15/statistisches_jahrbuch_koeln_2025_kap_7_kultur_und_freizeit.pdf"
+      ]
     }
   },
   {
@@ -9741,6 +9776,14 @@
       ],
       "website": "https://amosrex.fi (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "visitors": 233871,
+      "visitors_year": "2025",
+      "sources": [
+        "https://2025.amosanderson.fi/wp-content/uploads/sites/14/2026/03/Amos_Andersons_fond-verksamhetsberattelse_2025.pdf",
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+      ]
     }
   },
   {
@@ -9895,6 +9938,13 @@
       ],
       "website": "https://kiasma.fi",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 274394,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+      ]
     }
   },
   {
@@ -19443,6 +19493,14 @@
       ],
       "website": "https://www.fondationcartier.com (checked 2026-10-20; the old /en/about page returns 404)",
       "retrieved": "2026-10-20"
+    },
+    "scale": {
+      "area_m2": 6500,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.fondationcartier.com/storage/uploads/96619b79-c858-47ca-9b5e-358d9ef67bf2/PRESS-KIT-FONDATION-CARTIER-OPENING.pdf",
+        "https://www.fondationcartier.com/en/the-fondation/fondation-cartier-and-architecture"
+      ]
     }
   },
   {
@@ -19554,6 +19612,13 @@
       ],
       "website": "https://www.chassenature.org (checked 2026-10-25)",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 1000,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.chassenature.org/storage/1177/MCN\u2014Dossier-de-presse-Institutionnel_pp.pdf"
+      ]
     }
   },
   {
@@ -19854,6 +19919,24 @@
       ],
       "website": "https://palaisdetokyo.com (checked 2026-10-24; loads normally)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "staff": 109,
+      "staff_year": "2025",
+      "staff_kind": "employees",
+      "sources": [
+        "https://admin.palaisdetokyo.com/wp-content/uploads/2026/06/RA-TOUT-2025-CA-web3.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 18679718,
+      "expenditure": 19228228,
+      "public": 7730350,
+      "sponsorship": 2728953,
+      "source_kind": "annual report",
+      "url": "https://admin.palaisdetokyo.com/wp-content/uploads/2026/06/RA-TOUT-2025-CA-web3.pdf"
     }
   },
   {
@@ -23658,6 +23741,12 @@
       ],
       "website": "https://www.lefresnoy.net",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 11000,
+      "sources": [
+        "https://www.lefresnoy.net/institution/une-institution-unique/"
+      ]
     }
   },
   {
@@ -24347,6 +24436,26 @@
       ],
       "website": "https://www.chateauversailles.fr/ (checked 2026-10-20)",
       "retrieved": "2026-10-20"
+    },
+    "scale": {
+      "staff": 1138,
+      "staff_year": "2024",
+      "staff_kind": "staff",
+      "area_m2": 63154,
+      "area_kind": "building",
+      "sources": [
+        "https://www.chateauversailles.fr/sites/default/files/versailles-ra2024-web.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "EUR",
+      "income": 176244339,
+      "expenditure": 170661712,
+      "public": 62514060,
+      "private": 8475353,
+      "source_kind": "annual report",
+      "url": "https://www.chateauversailles.fr/sites/default/files/versailles-ra2024-web.pdf"
     }
   },
   {
@@ -32280,6 +32389,13 @@
       ],
       "website": "https://www.badischer-kunstverein.de (checked 2026-10-24; the site says it is being revised and a new site is coming)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "area_m2": 1000,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.badischer-kunstverein.de/index.php?Direction=Wir%20ueber%20uns"
+      ]
     }
   },
   {
@@ -37948,6 +38064,13 @@
       ],
       "website": "https://www.nbk.org/de",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 70409,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.berlin.de/sen/kultgz/aktuelles/pressemitteilungen/2026/2026_pm_besucher-innenzahlen-2025_anhang.pdf"
+      ]
     }
   },
   {
@@ -39656,6 +39779,27 @@
       ],
       "website": "https://www.ekkm.ee",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 14406,
+      "visitors_year": "2023",
+      "staff": 3,
+      "staff_year": "2023",
+      "staff_kind": "full-time equivalent",
+      "sources": [
+        "https://admin.ekkm.ee/wp-content/uploads/2024/07/Aruanne_2023.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2023",
+      "currency": "EUR",
+      "income": 403993,
+      "expenditure": 395307,
+      "private": 11025,
+      "earned": 41179,
+      "net_assets": 15525,
+      "source_kind": "annual report",
+      "url": "https://admin.ekkm.ee/wp-content/uploads/2024/07/Aruanne_2023.pdf"
     }
   },
   {
@@ -42148,6 +42292,13 @@
       ],
       "website": "https://kunstvereinbraunschweig.de",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 7348,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.braunschweig.de/politik_verwaltung/statistik/jahrbuch/jahrbuch/13_01_export.pdf"
+      ]
     }
   },
   {
@@ -44808,6 +44959,27 @@
       ],
       "website": "https://www.kunstihoone.ee",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 18364,
+      "visitors_year": "2024",
+      "staff": 18,
+      "staff_year": "2024",
+      "staff_kind": "full-time equivalent",
+      "sources": [
+        "https://www.kunstihoone.ee/wp-content/uploads/2025/05/sa-kunstihoone-2024-maa.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "EUR",
+      "income": 1336829,
+      "expenditure": 1084765,
+      "private": 4800,
+      "earned": 6693,
+      "net_assets": 458075,
+      "source_kind": "annual report",
+      "url": "https://www.kunstihoone.ee/wp-content/uploads/2025/05/sa-kunstihoone-2024-maa.pdf"
     }
   },
   {
@@ -49393,6 +49565,13 @@
       ],
       "website": "https://www.confort-moderne.fr",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 8500,
+      "area_kind": "site",
+      "sources": [
+        "https://www.confort-moderne.fr/fr/page/propos/16"
+      ]
     }
   },
   {
@@ -75429,6 +75608,17 @@
       ],
       "website": "https://www.louvre.fr/ (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "staff": 2242,
+      "staff_year": "2024",
+      "staff_kind": "staff",
+      "area_m2": 70000,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://api-www.louvre.fr/sites/default/files/2025-06/RA2024-annexes.pdf",
+        "https://api-www.louvre.fr/sites/default/files/2025-06/RA2024.pdf"
+      ]
     }
   },
   {
@@ -75699,6 +75889,13 @@
       "private": 9600000,
       "source_kind": "annual report",
       "url": "https://www.epmo-musees.fr/sites/default/files/2026-07/EPMO_RapportActivite_2025.pdf"
+    },
+    "scale": {
+      "visitors": 3785134,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.epmo-musees.fr/sites/default/files/2026-07/EPMO_RapportActivite_2025.pdf"
+      ]
     }
   },
   {
@@ -76160,6 +76357,13 @@
       ],
       "website": "https://www.museum-folkwang.de (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "visitors": 175213,
+      "visitors_year": "2024",
+      "sources": [
+        "https://opendata.essen.de/sites/default/files/Museum%20Folkwang%20Besucherzahlen%202010-2024_0.CSV"
+      ]
     }
   },
   {
@@ -94155,6 +94359,26 @@
       ],
       "website": "https://emmamuseum.fi",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 159997,
+      "visitors_year": "2025",
+      "area_m2": 6000,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv",
+        "https://emmamuseum.fi/tietoa-emmasta/"
+      ]
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 5384172,
+      "expenditure": 5359165,
+      "earned": 1219081,
+      "sponsorship": 89856,
+      "source_kind": "other",
+      "url": "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
     }
   },
   {
@@ -94216,6 +94440,14 @@
       ],
       "website": "https://www.serlachius.fi (checked 2026-10-25)",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 81616,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv",
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+      ]
     }
   },
   {
@@ -94549,6 +94781,13 @@
       ],
       "website": "https://crac.laregion.fr",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 1200,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://crac.laregion.fr/Missions-et-histoire"
+      ]
     }
   },
   {
@@ -95701,6 +95940,13 @@
       ],
       "website": "https://hausmedienkunst.de (checked 2026-10-20)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "area_m2": 380,
+      "area_kind": "building",
+      "sources": [
+        "https://hausmedienkunst.de/en/about-us/the-house/"
+      ]
     }
   },
   {
@@ -95986,6 +96232,13 @@
       ],
       "website": "https://www.emst.gr",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 18142,
+      "area_kind": "building",
+      "sources": [
+        "https://www.emst.gr/en/the-museum/fix-building"
+      ]
     }
   },
   {
@@ -116000,6 +116253,13 @@
       ],
       "website": "https://museomarte.org/",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "area_m2": 1208,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://museomarte.org/quienes-somos/"
+      ]
     }
   },
   {
@@ -119022,6 +119282,14 @@
       "public": 158800000,
       "source_kind": "annual report",
       "url": "https://www.service-public.pf/wp-content/uploads/2026/02/9.3.12-MUSEE-DE-TAHITI-ET-DES-ILES-_MTI_.pdf"
+    },
+    "scale": {
+      "staff": 24,
+      "staff_year": "2025",
+      "staff_kind": "employees",
+      "sources": [
+        "https://www.service-public.pf/wp-content/uploads/2026/09/03.6.1.11_EPA_MTI_Musee_Tahiti_iles.pdf"
+      ]
     }
   },
   {
@@ -120323,6 +120591,14 @@
       ],
       "website": "https://jeudepaume.org",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 189751,
+      "visitors_year": "2025",
+      "sources": [
+        "https://jeudepaume.org/wp-content/uploads/2023/04/RA-2025.pdf",
+        "https://www.ccomptes.fr/sites/default/files/2025-11/20251126-S2025-1555-Jeu-de-Paume.pdf"
+      ]
     }
   },
   {
@@ -122619,6 +122895,25 @@
       ],
       "website": "https://siida.fi (checked 2026-10-25; live)",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 83506,
+      "visitors_year": "2025",
+      "area_m2": 1100,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://siida.fi/en/releases/the-sami-museum-siida-achieved-its-highest-visitor-record-of-all-time-in-2025/",
+        "https://siida.fi/en/about-us/siidas-architecture/"
+      ]
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 4524979,
+      "expenditure": 4173300,
+      "earned": 1837732,
+      "source_kind": "other",
+      "url": "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
     }
   },
   {
@@ -124349,6 +124644,13 @@
       ],
       "website": "https://bethanien.de/en/",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 19987,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.berlin.de/sen/kultgz/aktuelles/pressemitteilungen/2026/2026_pm_besucher-innenzahlen-2025_anhang.pdf"
+      ]
     }
   },
   {
@@ -131540,6 +131842,24 @@
       ],
       "website": "https://www.imarabe.org (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "visitors": 728876,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.imarabe.org/sites/default/files/2026-06/rapport-d-activite-de-l-ima-2025.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 25948012,
+      "expenditure": 25489812,
+      "public": 13541293,
+      "earned": 8436766,
+      "sponsorship": 847041,
+      "source_kind": "annual report",
+      "url": "https://www.imarabe.org/sites/default/files/2026-06/rapport-d-activite-de-l-ima-2025.pdf"
     }
   },
   {
@@ -133365,6 +133685,13 @@
       ],
       "website": "https://www.smb.museum/museen-einrichtungen/neue-nationalgalerie (checked 2026-10-24; working)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "area_m2": 13900,
+      "area_kind": "building",
+      "sources": [
+        "https://davidchipperfield.com/projects/neue-nationalgalerie-refurbishment"
+      ]
     }
   },
   {
@@ -133522,6 +133849,13 @@
       ],
       "website": "https://www.smb.museum/museen-einrichtungen/hamburger-bahnhof (checked 2026-10-20)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "visitors": 357737,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.smb.museum/fileadmin/website/SMB_allgemein/Ueber_uns/Jahresbericht/Staatliche-Museen-zu-Berlin-Jahresbericht-2024.pdf"
+      ]
     }
   },
   {
@@ -135578,6 +135912,13 @@
       ],
       "website": "https://berlinischegalerie.de (checked 2026-10-25)",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 174978,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.berlin.de/sen/kultgz/aktuelles/pressemitteilungen/2026/2026_pm_besucher-innenzahlen-2025_anhang.pdf"
+      ]
     }
   },
   {
@@ -135719,6 +136060,19 @@
       ],
       "website": "https://www.museumfuernaturkunde.berlin",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 737918,
+      "visitors_year": "2025",
+      "staff": 438,
+      "staff_year": "2025",
+      "staff_kind": "staff",
+      "area_m2": 60000,
+      "area_kind": "building",
+      "sources": [
+        "https://www.museumfuernaturkunde.berlin/assets/Download/Publikationen_und_Downloads/Geschaeftsbericht_2025_digital.pdf",
+        "https://www.museumfuernaturkunde.berlin/assets/Download/Publikationen_und_Downloads/geschaeftsbericht2023-24__1_.pdf"
+      ]
     }
   },
   {
@@ -135837,6 +136191,28 @@
       ],
       "website": "https://www.jmberlin.de",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 653169,
+      "visitors_year": "2024",
+      "staff": 199,
+      "staff_year": "2024",
+      "staff_kind": "staff",
+      "area_m2": 25000,
+      "area_kind": "building",
+      "sources": [
+        "https://www.jmberlin.de/sites/default/files/media/documents/2023_2024_TB_komplett_barrierefrei_final.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "EUR",
+      "income": 28746698,
+      "expenditure": 28746698,
+      "public": 25206748,
+      "earned": 977756,
+      "source_kind": "annual report",
+      "url": "https://www.jmberlin.de/sites/default/files/media/documents/2023_2024_TB_komplett_barrierefrei_final.pdf"
     }
   },
   {
@@ -136260,6 +136636,16 @@
       ],
       "website": "https://www.dhm.de",
       "retrieved": "2026-10-25"
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "EUR",
+      "income": 49523484,
+      "expenditure": 49523484,
+      "public": 43736952,
+      "earned": 989512,
+      "source_kind": "annual report",
+      "url": "https://www.dhm.de/assets/DHM/Download/Museum/T%C3%A4tigkeitsberichte/DHM_Taetigkeitsbericht_2024.pdf"
     }
   },
   {
@@ -136494,6 +136880,16 @@
       ],
       "website": "https://www.deutsches-spionagemuseum.de",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 441537,
+      "visitors_year": "2023",
+      "area_m2": 3000,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.deutsches-spionagemuseum.de/wp-content/uploads/2025/07/visitor-record-2024.pdf",
+        "https://www.deutsches-spionagemuseum.de/wp-content/uploads/2024/11/dsm-presse-factsheet-en.pdf"
+      ]
     }
   },
   {
@@ -136592,6 +136988,13 @@
       ],
       "website": "https://www.stadtmuseum.de",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 220771,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.berlin.de/sen/kultgz/aktuelles/pressemitteilungen/2026/2026_pm_besucher-innenzahlen-2025_anhang.pdf"
+      ]
     }
   },
   {
@@ -136842,6 +137245,13 @@
       ],
       "website": "https://www.parismusees.paris.fr",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 5166874,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.parismusees.paris.fr/sites/default/files/medias/fichiers/2026-10/Rapport%20d%27activit%C3%A9%202025%20-%20Paris%20Mus%C3%A9es%20-%2019102026.pdf"
+      ]
     }
   },
   {
@@ -152185,6 +152595,13 @@
       ],
       "website": "https://www.nationalgallery.gr/en/ (checked 2026-10-24)",
       "retrieved": "2026-10-24"
+    },
+    "scale": {
+      "area_m2": 20760,
+      "area_kind": "building",
+      "sources": [
+        "https://www.nationalgallery.gr/en/buildings/national-gallery-central-building/"
+      ]
     }
   },
   {

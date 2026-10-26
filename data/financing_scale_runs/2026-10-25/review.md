@@ -50,3 +50,19 @@ from stage 1, which came from Arquitectura Viva).
 - Dropped as unreliable: Power Plant finance (the statement is marked draft), Dazibao finance (the charity
   number could not be tied to the gallery).
 - Corrected: MeetFactory income and spending now the exact figures from its financial overview.
+
+# Stage 3 review, f020 to f021 and f023 to f030 (f022 was the France pilot)
+
+Four checker agents re-opened every cited source for the 44 records that held a figure; the 8 figures in
+f027 to f030 passed unchanged.
+
+- Dropped, wider or narrower than the record: Humboldt Forum area (a heading figure covering partners'
+  rooms), Tallinn Art Hall public (one ministry line), Grand Palais visitors (excludes the Olympic events),
+  Palais de Tokyo visitors (exhibition tickets only).
+- Dropped as unreliable: Humboldt Forum finance (income is an unlabelled subtotal), Louvre finance (operating
+  lines rounded to 0.1 million), Versailles visitors (the source's total disagrees with its own components
+  by 5,000), Jeu de Paume staff (54 in one table, 57 in another).
+- Replaced: four Berlin visitor counts were provisional 2025 figures; the final 2024 figures from the same
+  Senate table are stored. Palais de Tokyo income, spending, public and sponsorship are the exact figures
+  of its budget table, not the rounded text.
+- Le Fresnoy keeps 11,000 m2 with no kind.
