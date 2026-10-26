@@ -21,7 +21,9 @@
     shield: [[.5, 0], [1, .18], [.9, .72], [.5, 1], [.1, .72], [0, .18]],
     star: [[.5, 0], [.62, .35], [1, .35], [.69, .57], [.81, .95], [.5, .72], [.19, .95], [.31, .57], [0, .35], [.38, .35]]
   };
-  const KIND_SHAPE = { gov: 'square', corp: 'hexagon', found: 'triangle' };
+  const KIND_SHAPE = { gov: 'circle', corp: 'circle', found: 'circle' };
+  // Every mark is a dot; the colour says the kind, and the names on the map say it in words too.
+  const KIND_WORD = { gov: 'Public funding', corp: 'Company', found: 'Foundation' };
   function shapePath(ctx, shape, x, y, s) {
     ctx.beginPath();
     const pts = SHAPES[shape];
@@ -403,8 +405,7 @@
       ctx.globalAlpha = rec && !on ? 0.35 : 1;
       ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.strokeStyle = '#000';
       ctx.beginPath();
-      if (e.kind === 'org') { ctx.moveTo(x, y - s); ctx.lineTo(x + s, y); ctx.lineTo(x, y + s); ctx.lineTo(x - s, y); ctx.closePath(); }
-      else ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
+      ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
       ctx.fill(); ctx.stroke();
       if (e === HQ_SEL) {
         // A ring in two colours, so one of them always shows against the ground.
@@ -430,7 +431,7 @@
       list.forEach(e => { counts[e.k] = (counts[e.k] || 0) + 1; });
       const k = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0], col = KIND[k] || COL.corp;
       ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 1; ctx.fillStyle = col; ctx.strokeStyle = '#000';
-      ctx.beginPath(); ctx.moveTo(px, py - s); ctx.lineTo(px + s, py); ctx.lineTo(px, py + s); ctx.lineTo(px - s, py); ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.arc(px, py, s, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
       ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '700 10px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       if (!small) ctx.fillText(String(n), px, py + 0.5);
       const names = list.slice(0, 3).map(e => e.n).join(', ') + (n > 3 ? ` and ${n - 3} more` : '');
@@ -516,7 +517,7 @@
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.flags || !i.flags.length) return;
         LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `What is reported about ${i.name}?` });
-        shapePath(ctx, 'square', d.x, d.y, 4.6);
+        shapePath(ctx, 'circle', d.x, d.y, 4.6);
         ctx.fillStyle = COL.flag; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
       });
@@ -538,8 +539,8 @@
     }
 
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
-    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'shield', 'Right-wing funder', rec => `Who funds ${rec.n}?`);
-    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'star', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`);
+    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'circle', 'Right-wing funder', rec => `Who funds ${rec.n}?`);
+    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'circle', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`);
 
     if (L.hq || L.people) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
 
@@ -565,14 +566,14 @@
           const col = COL[n[1]];
           ctx.globalAlpha = focus ? 1 : 0.7;
           ctx.strokeStyle = lineCol(col); ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
-          // The outline says the kind (square public funding, hexagon company, triangle foundation); the colour repeats it.
+          // A dot in the kind's colour; the name block beside it says the kind in words.
           const reach = reachOf(n[5]), sr = sizeFor(reach.n > 1 ? reach.n : 1);
           shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, sr); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 1.3; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
           if (n[5]) { if (!byKey.has(n[5])) byKey.set(n[5], []); byKey.get(n[5]).push([x, y, col]); }
-          const shared = reach.n > 1, mk = { x, y, r: Math.max(10, sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `Funder of ${rec.n}`,
+          const shared = reach.n > 1, mk = { x, y, r: Math.max(10, sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `${KIND_WORD[n[1]] || 'Funder'}, funder of ${rec.n}`,
             sub2: shared ? `Also funds ${plural(reach.n - 1, 'other space')} in ${plural(reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
             ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` };
-          LM.push(mk); labels.push([n[0], x, y, a, col, mk]);
+          LM.push(mk); labels.push([n[0], x, y, a, col, mk, KIND_WORD[n[1]]]);
         }
       });
       // A funder named on two spaces on screen is joined across them.
@@ -581,8 +582,8 @@
       byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = lineCol(pts[i][2]); ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[i][0], pts[i][1]); ctx.stroke(); } });
       // Funder names on flat blocks, in the funder's colour, never over another label.
       ctx.globalAlpha = 1;
-      labels.forEach(([label, x, y, a, col, mk]) => {
-        const text = label.length > 28 ? label.slice(0, 26) + '…' : label, right = Math.cos(a) >= -0.2;
+      labels.forEach(([label, x, y, a, col, mk, kindWord]) => {
+        const text = (label.length > 28 ? label.slice(0, 26) + '…' : label) + (kindWord ? ' \u00b7 ' + kindWord : ''), right = Math.cos(a) >= -0.2;
         const tw = ctx.measureText(text).width, w = tw + 12, h = 20;
         const bx = right ? x + 9 : x - 9 - w, box = { x: bx, y: y - h / 2, w, h };
         if (collides(box, boxes)) return;
