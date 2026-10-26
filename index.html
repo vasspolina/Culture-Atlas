@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=307">
-  <script src="assets/config.js?v=307"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=308">
+  <script src="assets/config.js?v=308"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -6696,6 +6696,7 @@ return maplibregl$1;
           zoom: 14,
           pitch: 35,
           bearing: 0,
+          antialias: true,
           attributionControl: { compact: true }
         });
 
@@ -7516,7 +7517,7 @@ return maplibregl$1;
     // layers widen each line on the ground and then project it, so under the tilted camera they thin out toward the horizon;
     // here each segment is projected first and then widened on the screen, square to the segment as it appears. That serves the
     // building's edges (including the standing ones, which have no ground direction) and the street map itself (below). The
-    // quad is feathered over one device pixel on each side, as MapLibre's line shader does. Positions are kept relative to the
+    // quad is feathered over a pixel and a half on each side. Positions are kept relative to the
     // first point (float32 cannot hold a whole Mercator coordinate to the centimetre); the matrix carries the offset.
     const XRAY_LINE_WIDTH = 1;
     function screenLineLayer(id) {
@@ -7535,8 +7536,11 @@ return maplibregl$1;
         '  vec2 ps = p.xy / p.w * u_res * 0.5, qs = q.xy / q.w * u_res * 0.5;',
         '  vec2 d = qs - ps; float len = length(d);',
         '  d = len > 0.0001 ? d / len : vec2(1.0, 0.0);',
-        '  vec2 off = vec2(-d.y, d.x) * a_side * u_half_px - d * u_half_px * 0.5;', // the end stands out half a width, so corners close
-        '  v_side = a_side;',
+        '  float sd = a_side < 0.0 ? -1.0 : 1.0;',
+        '  vec2 off = vec2(-d.y, d.x) * sd * u_half_px - d * u_half_px * 0.5;', // the end stands out half a width, so corners close
+        // The far end of a segment names the same edge with the opposite sign (and is marked 2): flip it back, so v_side runs across
+        // the line the whole way along it and not from one edge to the other.
+        '  v_side = abs(a_side) > 1.5 ? -sd : sd;',
         '  gl_Position = vec4(p.xy / p.w + off / (u_res * 0.5), p.z / p.w, 1.0);',
         '}'
       ].join('\n');
@@ -7545,7 +7549,10 @@ return maplibregl$1;
         'uniform vec4 u_color; uniform mediump float u_half_px;',
         'varying float v_side;',
         'void main() {',
-        '  gl_FragColor = u_color * clamp(u_half_px - abs(v_side) * u_half_px, 0.0, 1.0);',
+        // Coverage falls from full to none over a pixel and a half centred on the line's edge: a wider, smoother ramp than a pixel's own
+        // gives, so a line at a slant is a soft edge and not a run of steps.
+        '  float c = clamp((u_half_px - abs(v_side) * u_half_px) / 1.5, 0.0, 1.0);',
+        '  gl_FragColor = u_color * (c * c * (3.0 - 2.0 * c));',
         '}'
       ].join('\n');
       return {
@@ -7581,8 +7588,9 @@ return maplibregl$1;
           const put = (a, b, side) => { data[k++] = a.x - o.x; data[k++] = a.y - o.y; data[k++] = a.z - o.z; data[k++] = b.x - o.x; data[k++] = b.y - o.y; data[k++] = b.z - o.z; data[k++] = side; };
           for (let i = 0; i < n; i++) {
             const a = at(i * 6), b = at(i * 6 + 3);
-            // The far end sees the segment turned round, so its sides are swapped to keep the quad flat.
-            put(a, b, 1); put(a, b, -1); put(b, a, -1); put(a, b, -1); put(b, a, 1); put(b, a, -1);
+            // The far end sees the segment turned round, so its sides are swapped to keep the quad flat; they are marked 2 so the
+            // shader can tell that end.
+            put(a, b, 1); put(a, b, -1); put(b, a, -2); put(a, b, -1); put(b, a, 2); put(b, a, -2);
           }
           this.data = data; this.count = n * 6; this.dirty = true;
           if (this.map && typeof this.map.triggerRepaint === 'function') this.map.triggerRepaint();
@@ -7605,7 +7613,7 @@ return maplibregl$1;
           gl.useProgram(this.program);
           gl.uniformMatrix4fv(this.u.matrix, false, new Float32Array(t));
           gl.uniform2f(this.u.res, gl.drawingBufferWidth, gl.drawingBufferHeight);
-          gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH * dpr / 2 + 0.5); // half the width plus half a device pixel
+          gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH * dpr / 2 + 0.75); // half the width plus three quarters of a device pixel, the feather
           gl.uniform4fv(this.u.color, this.color);
           gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
           if (this.dirty) { gl.bufferData(gl.ARRAY_BUFFER, this.data, gl.STATIC_DRAW); this.dirty = false; }
@@ -7643,6 +7651,38 @@ return maplibregl$1;
       const n = Math.pow(2, z), lat = ty => Math.atan(Math.sinh(Math.PI * (1 - 2 * ty / n))) * 180 / Math.PI;
       return { w: x / n * 360 - 180, e: (x + 1) / n * 360 - 180, n: lat(y), s: lat(y + 1) };
     }
+    // The tiles keep every vertex on a grid (4096 units a tile, 0.6 m at the zoom the tiles end at), so under a close camera a
+    // straight wall that runs at a slant is a staircase a unit or so high, and the line wobbles along it. A vertex that sits within
+    // one grid unit of the line between its neighbours is the grid's doing, not the wall's: it is dropped (Douglas-Peucker, in grid
+    // units), and the wall is one straight line again. Corners, which stand many units off, stay.
+    function streetSimplify(ring, z) {
+      const n = ring.length; if (n < 4) return ring;
+      const scale = Math.pow(2, z) * 4096, X = lon => (lon + 180) / 360 * scale;
+      const Y = lat => { const s = Math.sin(lat * Math.PI / 180); return (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * scale; };
+      const px = ring.map(c => X(c[0])), py = ring.map(c => Y(c[1])), keep = new Uint8Array(n);
+      keep[0] = keep[n - 1] = 1;
+      const run = (a, b) => {
+        // an iterative stack, so a ring of thousands of vertices cannot overflow the call stack
+        const stack = [[a, b]];
+        while (stack.length) {
+          const [i, j] = stack.pop(); if (j <= i + 1) continue;
+          const dx = px[j] - px[i], dy = py[j] - py[i], len = Math.hypot(dx, dy);
+          let far = -1, fd = 1;   // one grid unit
+          for (let k = i + 1; k < j; k++) {
+            const d = len > 1e-9 ? Math.abs(dy * (px[k] - px[i]) - dx * (py[k] - py[i])) / len : Math.hypot(px[k] - px[i], py[k] - py[i]);
+            if (d > fd) { fd = d; far = k; }
+          }
+          if (far >= 0) { keep[far] = 1; stack.push([i, far], [far, j]); }
+        }
+      };
+      const closed = px[0] === px[n - 1] && py[0] === py[n - 1];
+      if (closed) {   // a closed ring has no chord to measure from: split it at the vertex farthest from the start
+        let far = 1, fd = -1;
+        for (let k = 1; k < n - 1; k++) { const d = Math.hypot(px[k] - px[0], py[k] - py[0]); if (d > fd) { fd = d; far = k; } }
+        keep[far] = 1; run(0, far); run(far, n - 1);
+      } else run(0, n - 1);
+      return ring.filter((c, k) => keep[k]);
+    }
     function streetLinesBuild() {
       const map = cityVectorMap, layer = cityScreenLayer(STREET_LINE_ID);
       if (!map || !layer) return;
@@ -7658,7 +7698,8 @@ return maplibregl$1;
         const tile = sc._tiles && sc._tiles[id];
         if (!tile || tile.state !== 'loaded' || typeof tile.querySourceFeatures !== 'function') continue;
         const c = tile.tileID.canonical, tb = streetTileBounds(c.z, c.x, c.y);
-        const addRing = ring => {
+        const addRing = ring0 => {
+          const ring = streetSimplify(ring0, c.z);
           for (let i = 0; i + 1 < ring.length && n < STREET_SEGMENT_CAP; i++) {
             const a = ring[i], b = ring[i + 1];
             if (outside(a, b, tb) || outside(a, b, box)) continue;
@@ -8085,7 +8126,8 @@ return maplibregl$1;
 
         const nameSpan = document.createElement('span');
         nameSpan.className = 'inst-pin-label-name';
-        nameSpan.textContent = inst.name;
+        nameSpan.textContent = inst.name.length > 24 ? inst.name.substring(0, 22) + '…' : inst.name;   // as on the globe
+        if (inst.tier === 'A' || inst.tier === 'B') labelEl.setAttribute('data-tier', inst.tier);
 
         labelEl.appendChild(tierDot);
         labelEl.appendChild(nameSpan);
@@ -9901,11 +9943,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v307';
+    const ATLAS_RELEASE = 'culture-atlas-v308';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=307').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=308').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19421,9 +19463,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=307"></script>
-<script src="assets/layers.js?v=307"></script>
-<script src="assets/hq-detail.js?v=307"></script>
-<script src="assets/bubbles.js?v=307" defer></script>
+<script src="assets/typeset.js?v=308"></script>
+<script src="assets/layers.js?v=308"></script>
+<script src="assets/hq-detail.js?v=308"></script>
+<script src="assets/bubbles.js?v=308" defer></script>
 </body>
 </html>
