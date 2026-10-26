@@ -132,6 +132,17 @@ The Cloudflare Worker in `worker/` serves it at `POST /chat`. The Anthropic key 
 
 The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
 
+## Studies
+
+`studies.html` gathers the studies that read across many records: the Epstein cross-reference, what Democracy Now!,
+Bellingcat and WikiLeaks show, Brazil's tax incentives, who connects the institutions (shared funders), small and
+community-led spaces, who publishes what about their money, what the field says, the Tear Gas Biennial and MoMA.
+They come from the Sponsor Atlas research page (its `CASES`) through `tools/build_studies.py`, which writes
+`assets/studies.json` and links every institution a study names to its record (`./?inst=<name>`; an exact name wins).
+`moma-money-map.html` is the interactive MoMA Money Map, kept here so the atlas is the one place it is published. Both
+are linked from Map layers & legend, under Studies. Rebuild after each Sponsor Atlas import:
+`python3 tools/build_studies.py`.
+
 ## Money maps
 
 The page opens on **one big map of every space and every sponsor** (`#all`): each space is a white circle, each sponsor a circle coloured by group (public bodies, corporate, foundations and donors), bigger the more spaces it funds, joined by a line for each tie. Tap a circle to light up its ties and zoom to them; search a sponsor in the second bar; filter the groups with the pills. Sponsors are merged across records by name (for example "NEA" and "National Endowment for the Arts"); public bodies are told apart by country, and generic ones such as "City government" stay with their own record so they never become one false hub. Records that name no funder are not in the big map. Two filters highlight part of the map and grey out the rest: **Mentions in the Epstein files** (33 spaces whose record has Epstein entries or an Epstein-linked flag, joined to the 23 people named in those entries; a space with only the flag is joined to Jeffrey Epstein) and **Right-wing funders**. The atlas records have no political field, so the second is a short curated list in `tools/build_money_maps.py` (`RIGHT`): only funders that appear in the records (as a sponsor or named in a record's own text) and have a published source for predominantly Republican or conservative giving, with that source shown in the panel. Currently Koch, Ken Griffin / Citadel, Ronald Lauder, Steven Cohen and Rebekah Mercer. It is not a complete list; add a name to it with a source, or remove one, and re-run the script. Each record also has its own map, at `money-maps.html#<record id>`.
