@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=334">
-  <script src="assets/config.js?v=334"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=336">
+  <script src="assets/config.js?v=336"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9964,11 +9964,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v334';
+    const ATLAS_RELEASE = 'culture-atlas-v336';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=334').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=336').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -18128,6 +18128,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const g = document.getElementById('curatorHeroGreeting');
       const box = document.getElementById('curatorStarterPrompts');
       if (!g || !box || g.classList.contains('hidden') || !g.clientHeight) return;
+      // Above phone width a question never wraps (user, 26 Oct 2026): the ones too long for one line of the panel are taken off first, all in one pass
+      // (the widths are read together, then the nodes go), so the page fills with shorter questions and more of them.
+      if (window.innerWidth > 520) {
+        const room = box.clientWidth;
+        const wide = [].slice.call(box.children).filter(k => { const s = k.querySelector('.sp-text'); return s && s.getBoundingClientRect().width > room + 0.5; });
+        wide.forEach(k => k.remove());
+      }
       if (g.scrollHeight <= g.clientHeight) return;
       // The cloud holds about a thousand questions and a dozen fit. Taking them off one at a time re-laid the page out after
       // every one (seconds on load). All the bottoms are read in one pass, the ones past the foot go together, and the
@@ -19548,9 +19555,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=334"></script>
-<script src="assets/layers.js?v=334"></script>
-<script src="assets/hq-detail.js?v=334"></script>
-<script src="assets/bubbles.js?v=334" defer></script>
+<script src="assets/typeset.js?v=336"></script>
+<script src="assets/layers.js?v=336"></script>
+<script src="assets/hq-detail.js?v=336"></script>
+<script src="assets/bubbles.js?v=336" defer></script>
 </body>
 </html>

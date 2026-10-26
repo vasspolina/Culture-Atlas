@@ -9,7 +9,8 @@ h1,h2,h3,h4,p{margin:0}
 
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 @font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Thin.woff2") format("woff2");font-weight:100 300;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Regular.woff2") format("woff2");font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Medium.woff2") format("woff2");font-weight:500 900;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -2351,3 +2352,22 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote{font-size:17px!important;margin-bottom:var(--L)}
 :root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-size:17px!important;line-height:var(--lh)!important}
 :root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(figcaption,figcaption a){font-size:14px!important;line-height:var(--lh)!important}
+
+/* ---- The logo in Documan Thin (user, 26 Oct 2026: "make culture atlas logo also in documan") ----
+   The wordmark, in the top bar on the desktop and the phone, takes the same face and weight as the titles. The tagline badge beside it stays in Jokker. */
+:root:root:not(#t):not(#t):not(#t) :is(#topBrandLogoBtn>span:first-child,#mobileTopBrandBtn span:first-child){font-family:var(--display)!important;font-weight:100!important}
+
+/* ---- One line to a question (user, 26 Oct 2026: "add more questions and do not break even in two lines") ----
+   Above phone width a starter question never wraps. fitQuestionCloud (index.html) takes off every question too long for one line of the panel, so the
+   page fills with shorter ones and more of them fit; a line that still overflows is cut off, never wrapped. On a phone, 26px type cannot hold a question on one
+   line, so the questions wrap there as before. */
+@media (min-width:521px){
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){overflow:hidden!important;gap:8px!important}
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){white-space:nowrap!important;text-wrap:nowrap!important;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{white-space:nowrap!important;text-wrap:nowrap!important}
+}
+
+/* ---- Row titles and the quotation at 20px in Documan Medium (user, 26 Oct 2026: "make titles and quote at 20px, use medium documan for both") ----
+   The row title ("Funding", "Programme", the flag) and the standalone quotation are 20px, weight 500. The other headings stay Thin; the quotation's source line stays 14px. */
+:root:root:not(#t):not(#t):not(#t):not(#t) .d-row-title{font-family:var(--display)!important;font-weight:500!important;font-size:20px!important}
+:root:root:not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-family:var(--display)!important;font-weight:500!important;font-size:20px!important}
