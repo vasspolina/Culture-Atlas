@@ -17,6 +17,8 @@ PATH = ROOT / 'institutions.json'
 PROSE = ['funding', 'watch', 'records_note', 'finances_note', 'affiliations_note', 'critique_note', 'why_flagged', 'other_findings',
          'highlight']
 LIMIT = {'funding': 30, 'watch': 25}
+# Dossier fields under record['details'] that the lint also reads: (section, key) -> record['details'][section][key] or [section] if key is None
+DETAILS = [('press', 'overall'), ('bottom_line', None)]
 
 HEDGE = re.compile(r"\b((?-i:may)(?! \d)|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|are said to|believed to|likely|some say|"
                    r"it could be argued|probably|possibly|perhaps)\b", re.I)
@@ -26,6 +28,7 @@ FILLER = re.compile(r"\b(vibrant|rich|renowned|prestigious|world-class|iconic|la
                     r"hub of|heart of|spirit of|pure \w+ energy|grassroots|Grassroots|co-optation|self-sustaining)\b|(?<![\w.])0% ")
 EMPTY = re.compile(r"plays? a (crucial|key|vital) role|it is worth noting|in the realm of|a diverse range of|a variety of|among others|"
                    r"and more\b|not only .{1,60} but also|a wide range of|numerous|various (donors|funders|sponsors|partners)", re.I)
+FRAME = re.compile(r"\b(the )?(documented|recorded|reported) (criticism|objection|controversy) (is|are|concerns?|centres? on|centers? on|relates? to|aimed at)\b", re.I)
 VERDICT = re.compile(r"\b(controversial|problematic|troubling|concerning)\b", re.I)
 VAGUE = re.compile(r"\b(a major (oil|tobacco|mining|arms|gas)\b|various (donors|funders)|several (donors|funders)|many foundations|"
                    r"unnamed (donors|funders)|private donors|corporate partners)\b", re.I)
@@ -66,6 +69,9 @@ def problems(rec):
         m = VERDICT.search(t)
         if m:
             found.append('verdict: ' + m.group(0))
+        m = FRAME.search(t)
+        if m:
+            found.append('frame: ' + m.group(0))
         m = VAGUE.search(t)
         if m and len(re.findall(r"(?<=[a-z,;:] )[A-Z][\w&'.-]+", t)) < 3:
             found.append('vague: ' + m.group(0))
@@ -79,6 +85,14 @@ def problems(rec):
             found.append('lower-case start')
         for p in found:
             out.append((f, p))
+    det = rec.get('details') or {}
+    for sec, key in DETAILS:
+        t = det.get(sec)
+        if key and isinstance(t, dict):
+            t = t.get(key)
+        m = FRAME.search(t) if isinstance(t, str) else None
+        if m:
+            out.append((f'details.{sec}' + (f'.{key}' if key else ''), 'frame: ' + m.group(0)))
     return out
 
 
