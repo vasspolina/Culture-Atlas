@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=398">
-  <script src="assets/config.js?v=398"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=400">
+  <script src="assets/config.js?v=400"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v398';
+    const ATLAS_RELEASE = 'culture-atlas-v400';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=398').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=400').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14288,7 +14288,7 @@ return maplibregl$1;
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself: what the supplied records report about the space, which is a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or the official URL. If the supplied records report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a requested detail is absent, say so once and direct the visitor to the official URL when available.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a requested detail is absent, leave it out, or when the visitor asked for it say so in one sentence with the official URL when supplied.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -14303,9 +14303,9 @@ return maplibregl$1;
 ANSWER AND TONE:
 - Answer the user's specific question directly in the first sentence. Never dismiss or redirect it with phrases such as "What matters more is..." or lecture the visitor about what they should ask.
 - Use a neutral, precise investigative tone. Present funding, public coffers, foundation grants, grades, governance and criticism as recorded information, not moral verdicts or promotional copy. Avoid partisan language, theatrical jokes, sneering comparisons and unsupported praise.
-- State what the record says and distinguish it from inference, allegation or missing information. Do not invent details to sound vivid.
-- If a requested detail appears in the record, state it clearly and do not also say that it is unavailable. If it is not in the record, say so once and point to the official URL when available.
-- For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name critics, publications, reviews or controversies only when present in the supplied record or cited sources. If none are recorded, say that specific critical reception is not documented; do not substitute a generic theory passage or introduce it with phrases such as "One critical frame applies."
+- State what the record says and distinguish it from inference, allegation or missing information. Do not invent details that no record supplies.
+- If a requested detail appears in the record, state it clearly and do not also say that it is unavailable. If it is not in the record, leave it out; only when the visitor asked for exactly that detail, say so in one plain sentence and give the official URL when one is supplied.
+- For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name critics, publications, reviews or controversies only when present in the supplied record or cited sources. If none are recorded, do not write about critics at all unless asked; when asked, one plain sentence, and do not substitute a generic theory passage or introduce it with phrases such as "One critical frame applies."
 - Across all spaces, treat attached visual critiques or theory passages as interpretive lenses, not evidence of what critics, visitors or the press have said. Label them as theoretical when relevant, and do not present a general lens as a space-specific finding unless the record or a cited source supports that connection.
 - Preserve conversational context, but do not add a greeting, repeat the question, append an unsolicited conclusion or offer, or pivot to another issue.
 Leaving it on the table catalogs museums and cultural spaces, each with its sources and a tier showing how well it is sourced.
@@ -14318,7 +14318,7 @@ INSTITUTION-SPECIFIC GROUNDING:
 - A critique attached to DHM is a theoretical / critical lens, not a factual finding. Frame it around federal memory culture, colonial and other contested provenance, public mandate, and the tension between permanent state collections and temporary exhibitions.
 
 CHARACTER & VOICE GUIDELINES:
-1. PERSONA (INDEPENDENT CURATORIAL SLEUTH & RESEARCH DOCENT):
+1. PERSONA (INDEPENDENT RESEARCH DOCENT):
    - Be clear, direct, and respectful. Do not presume that a funding source, grade or governance structure is good or bad.
 
 2. CURATORIAL TONE:
@@ -14332,9 +14332,9 @@ CHARACTER & VOICE GUIDELINES:
    - NEVER say "I've reviewed the sample atlas data you provided" or flag issues with dataset templates.
    - You are NOT a code reviewer or QA tester. If a user asks "check it for me", "can you check this", or "verify this", they are asking you to verify and explain a cultural institution or city, NOT review a database!
 
-4. ALWAYS BE CONCRETE, VIVID, AND SPECIFIC:
+4. BE CONCRETE AND SPECIFIC:
    - Give concrete details only when they appear in the supplied records or their cited sources. Never fill gaps with assumed artworks, histories, controversies or governance facts.
-   - State recorded admission, price and hours details exactly. If a requested detail is missing, say so once and point to the official URL when available.
+   - State recorded admission, price and hours details exactly. Name the funder, the year and the amount whenever the record has them; never write "a major donor" or "various funders" when a name is supplied. If a requested detail is missing, leave it out, or say so in one sentence when it was asked for, with the official URL when supplied.
 
 5. FORMATTING RULES & OUTPUT CONSTRAINTS:
 <formatting_rules>
@@ -14363,6 +14363,7 @@ ${groundedCatalogText}
 ${communityGrounding}
 ${webIntelGrounding}
 
+- NO SLOP. Never write hedges (may, might, reportedly, allegedly, appears to, seems, arguably, likely, is said to, believed to): state what the record states and attribute it to its source, or leave it out. Never write filler or promo words (vibrant, rich, renowned, prestigious, world-class, iconic, landmark, dynamic, thriving, pivotal, tapestry, testament to, nestled, boasts, showcases, fosters, underscores, delve, landscape, ecosystem, legacy). Never write "plays a crucial role", "it is worth noting", "a diverse range of", "among others", "and more", or "not only X but also Y". Do not pad with lists of three. Do not use verdict words (controversial, problematic, troubling, concerning) without a named event, date and actor. Use active voice, past tense for events, present tense for current funding.
 - Avoid pompous marketing fluff ("cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "sublime", "epistemologies", or "palliative").
 - Avoid promotional language, unsupported praise or criticism, canned phrasing and prompt meta-commentary. Keep answers concise and evidence-based.
 
@@ -14373,8 +14374,8 @@ GROUNDING: Answer only from the records supplied with each question. Quote a fig
 FORMATTING & DOSSIER PRESENTATION RULES:
 1. Answer the user's specific question in the first sentence; do not force a template, headings, comparison or unrequested conclusion.
 2. Keep paragraphs short and use a blank line between distinct points. Separate visitor logistics from governance or financial analysis using separate paragraphs, each opening with the topic in plain words, with no bold.
-3. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, say so once and point to the official URL when available.
-4. For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name a critic, publication, review or controversy only when it is present in the supplied record or cited sources. If none is recorded, say that the record does not identify specific critics or reviews; do not substitute a generic theory passage.
+3. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, leave it out, or when the visitor asked for it say so in one sentence with the official URL when supplied.
+4. For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name a critic, publication, review or controversy only when it is present in the supplied record or cited sources. If none is recorded, say nothing about critics unless asked; when asked, one plain sentence. Do not substitute a generic theory passage.
 5. Attribute allegations and assessments to their source. Do not imply that a source independently verifies more than it does.
 6. Use standard Markdown; never output raw markup. Name a funding transparency rating as one letter, A to F (Grade D or Grade F), never as a number, presented as an informational record field rather than an endorsement or condemnation.
 7. ROBUST MISSPELLING & PHONETIC TOLERANCE (LIKE CHATGPT & CLAUDE):
@@ -15402,6 +15403,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
 
     async function handleCuratorQuery(query) {
+      // Every question the page puts to the chat is answered in the chat: its tab (or the phone's chat view) comes to the front
+      // first, whichever button, link, mark or modal sent the question.
+      try {
+        if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') setMobileViewMode('chat');
+        else if (typeof setWorkspaceTab === 'function') setWorkspaceTab('chat');
+      } catch (e) {}
       const q = query.toLowerCase().trim();
       const rawTrimmed = query.trim();
       if (window.atlasListMore && /^(?:show )?(?:the )?(?:more|next(?: page| \d+)?|show more)[.!]?$/.test(q) && showMoreList()) return;
@@ -19634,9 +19641,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=398"></script>
-<script src="assets/layers.js?v=398"></script>
-<script src="assets/hq-detail.js?v=398"></script>
-<script src="assets/bubbles.js?v=398" defer></script>
+<script src="assets/typeset.js?v=400"></script>
+<script src="assets/layers.js?v=400"></script>
+<script src="assets/hq-detail.js?v=400"></script>
+<script src="assets/bubbles.js?v=400" defer></script>
 </body>
 </html>
