@@ -2665,3 +2665,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] header.rule-b{padding-right:16px!important}
 
 :root:root:root:root div:has(>#topThemeBtn){column-gap:8px!important}
+
+/* Gossip mode on the dark theme: a deep red ground (#3c0a04) behind the header, the globe and the chat. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active{--paper:#3c0a04;--grey:#4a120a;background:#3c0a04!important}
+
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer,#desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet){background:#3c0a04!important}
