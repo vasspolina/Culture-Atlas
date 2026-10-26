@@ -2191,7 +2191,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"] .sp-text{--hover:#00535a}
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"] .sp-text{--hover:#8a3b00}
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"] .sp-text{--hover:#4f5a00}
-:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:var(--hover);color:#fff;text-decoration:none}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:#fff204;color:#000;text-decoration:none}
 
 /* The head of a record after a font licence page (user, 26 Oct 2026): the title large, the actions stacked in a left column as filled pills, the summary and the facts at
    the right in ruled rows with the label in the accent colour. Narrower than 620px the actions run in a row under the title and the rows take the full width. */
