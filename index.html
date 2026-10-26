@@ -12048,7 +12048,7 @@ return maplibregl$1;
     function gradeLineHtml(inst) {
       if (inst.grade && GRADE[inst.grade]) {
         const g = GRADE[inst.grade];
-        return `<p class="no-indent grade-line"><span class="grade-mark" style="--grade-col:${g.col};--grade-ink:${gradeInk(g.col)}">Grade ${gradeLetter(inst.grade)}</span> ${escapeHtml(g.label)}. ${escapeHtml(inst.grade_basis || '')}</p>`;
+        return `<p class="no-indent grade-line"><span class="grade-mark" style="--grade-col:${g.col};--grade-ink:${gradeInk(g.col)}">Grade ${gradeLetter(inst.grade)}</span></p>`;
       }
       return inst.tier === 'U' ? `<p class="no-indent grade-line">Not graded. ${inst.funding ? 'No independent source confirms the funders named here.' : 'No funders are recorded.'}</p>` : '';
     }
@@ -15545,7 +15545,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const notGradedReason = target.funding
             ? 'No independent source confirms the funders named here.'
             : 'No funders are recorded.';
-          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Grade ${gradeLetter(target.grade)}, ${escapeHtml(GRADE[target.grade].label.toLowerCase())}. ${escapeHtml(target.grade_basis || '')}` : `Not rated: ${escapeHtml(notGradedReason)}`}</p>${sourcesHtml(target)}`);
+          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Grade ${gradeLetter(target.grade)}.` : `Not rated: ${escapeHtml(notGradedReason)}`}</p>${sourcesHtml(target)}`);
           return;
         }
         if (wanted) {
