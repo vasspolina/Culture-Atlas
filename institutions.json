@@ -894,11 +894,11 @@
     ],
     "flags": [
       "Fossil fuels",
-      "State censorship or punishment"
+      "Protest or boycott"
     ],
     "why_flagged": "Repsol is a fossil-fuel funder; Naturgy executives on the board.",
     "grade": 5,
-    "grade_basis": "A funder tied to fossil fuels. Also on record: state censorship.",
+    "grade_basis": "A funder tied to fossil fuels. Also on record: protests or a boycott.",
     "former_ids": [
       "macba-barcelona"
     ],
@@ -14637,7 +14637,7 @@
   {
     "name": "Museo Jumex",
     "location": "Mexico City, Mexico",
-    "tier": "B",
+    "tier": "A",
     "size": "L",
     "funding": "Fundaci\u00f3n Jumex runs the museum with no board, funded by profits of the Grupo Jumex juice company. Admission is free.",
     "watch": "Free museum in Mexico City's Polanco district. Its operating budget comes from the Grupo Jumex beverage conglomerate, under family foundation governance.",
@@ -14677,12 +14677,8 @@
         "retrieved": "2026-10-14"
       }
     },
-    "why_flagged": "Fundaci\u00f3n Jumex runs the museum with no board, funded by profits of the Grupo Jumex juice company. Admission is free.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "records_note": "The museum's foundation posts no reports, accounts, funder list or board; the site names only Grupo Jumex as the source of support.",
     "affiliations_note": "Museo Jumex is the main platform of the Fundaci\u00f3n Jumex Arte Contempor\u00e1neo and shows works from Colecci\u00f3n Jumex.",
     "details": {
@@ -19263,14 +19259,16 @@
   {
     "name": "Glenstone",
     "location": "Potomac, USA",
-    "tier": "A",
+    "tier": "B",
     "size": "L",
     "funding": "$65M. Rales family, $1.9B gift.",
-    "watch": "Mitchell Rales co-founded Danaher. A 2015 Senate inquiry examined 11 private museums, Glenstone among them, over founders' tax benefits.",
+    "watch": "On 8 May 2024 hourly staff gave leadership 24 hours to recognise their union. They won a Teamsters election in June 2024.",
     "sources": [
       "https://www.theartnewspaper.com/2023/03/02/mitchell-rales-19bn-donation-glenstone-museum",
       "https://projects.propublica.org/nonprofits/organizations/205938416",
-      "https://www.glenstone.org/"
+      "https://www.glenstone.org/",
+      "https://hyperallergic.com/912801/workers-at-glenstone-museum-move-to-unionize/",
+      "https://hyperallergic.com/glenstone-museum-workers-are-officially-unionized"
     ],
     "lat": 39.049,
     "lon": -77.226,
@@ -19306,8 +19304,8 @@
     },
     "year_founded": 2006,
     "address": "12100 Glen Road, Potomac, Maryland 20854",
-    "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "grade": 3,
+    "grade_basis": "No flagged funder, but on record: protests or a boycott.",
     "records_note": "No annual reports, donor list or board on its site; Form 990-PF filings for 2006 to 2024 are public on ProPublica.",
     "finances_note": "FY2024 income USD 15.9M, of which contributions received USD 3.19M. Spending USD 64.8M included USD 15.3M of grants paid. Net assets USD 2.70B (Form 990-PF).",
     "details": {
@@ -19403,7 +19401,11 @@
       ],
       "website": "https://www.glenstone.org/ (checked 2026-10-24)",
       "retrieved": "2026-10-25"
-    }
+    },
+    "why_flagged": "$65M. Rales family, $1.9B gift. Free, no sponsors.",
+    "flags": [
+      "Protest or boycott"
+    ]
   },
   {
     "name": "MacKenzie Art Gallery",
@@ -54197,7 +54199,7 @@
   {
     "name": "Power Station of Art",
     "location": "Shanghai, China",
-    "tier": "U",
+    "tier": "A",
     "size": "L",
     "funding": "State museum under the Shanghai Municipal Administration of Culture and Tourism. The city paid $64M for the conversion. Entry is free.",
     "sources": [
@@ -54300,7 +54302,9 @@
       ],
       "website": "https://www.powerstationofart.com/",
       "retrieved": "2026-10-25"
-    }
+    },
+    "grade": 1,
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
   },
   {
     "name": "OCAT Shenzhen",
@@ -55892,7 +55896,7 @@
   {
     "name": "Jehangir Art Gallery",
     "location": "Mumbai, India",
-    "tier": "B",
+    "tier": "A",
     "sources": [
       "https://www.thenationalnews.com/world/asia/indian-artist-forced-to-remove-goddess-paintings-1.291316",
       "https://subirghosh.in/blog/jatin-das-exhibition-for-adults-only",
@@ -55910,12 +55914,8 @@
     "visit_url": "https://jehangirartgallery.com/about",
     "tier_note": "No source outside the museum is recorded.",
     "watch": "In April 2013 the gallery and Mumbai police made Eleena Banik remove two goddess paintings. In 2006 it had a student cover a nude sculpture.",
-    "why_flagged": "Built 1952 on Sir Cowasji Jehangir's gift in memory of his son. A committee chaired by Adi H. Jehangir manages it; no sponsors or ongoing funders are listed.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "records_note": "The gallery names its management committee with chairman Adi Jehangir, but publishes no reports, accounts or sponsors.",
     "details": {
       "overview": [
@@ -59398,7 +59398,7 @@
     "name": "Lahore Biennale Foundation",
     "location": "Lahore, Pakistan",
     "tier": "B",
-    "funding": "Punjab and federal government bodies. Lead sponsor Habib Bank. Star sponsors Barjeel Art Foundation, Bareeze and ICCI. Partners include Nishat, PIA, Dulux and Careem.",
+    "funding": "Punjab and federal government bodies fund it. Habib Bank is lead sponsor, with Barjeel Art Foundation, Bareeze and ICCI as star sponsors and Nishat, PIA, Dulux and Careem as partners.",
     "watch": "The sponsor page is undated and shows logos only.",
     "sources": [
       "https://www.lahorebiennale.org/sponsors/",
@@ -77528,12 +77528,11 @@
     ],
     "visit_url": "https://sharjahart.org/visit",
     "flags": [
-      "Gulf state body",
-      "State censorship or punishment"
+      "Gulf state body"
     ],
     "why_flagged": "Its parent is a Government of Sharjah department and its president is the ruler's daughter, Hoor Al Qasimi. In April 2011 it removed a work and dismissed its director.",
     "grade": 3,
-    "grade_basis": "No flagged funder, but on record: a Gulf state body and state censorship.",
+    "grade_basis": "No flagged funder, but on record: a Gulf state body.",
     "critique_note": "Ghalya Saadawi, Post-Sharjah Biennial 10: Institutional Grease and Institutional Critique (e-flux, 2011): Saadawi argues that the fallout from Sharjah Biennial 10 should widen into a critique of how institutions and capital shape art, beyond boycotts alone. She questions the Sharjah Art Foundation's conduct and state funding, and the Guggenheim's censorship of Hans Haacke in 1971.",
     "records_note": "Its site has no annual reports, accounts, funder list or board list; the sponsors page names no one.",
     "affiliations_note": "Founded in 2009 by Hoor Al Qasimi. Its parent organization is the Department of Culture and Information, Government of Sharjah.",
@@ -88880,7 +88879,7 @@
   {
     "name": "Museum of Contemporary Art Yinchuan",
     "location": "Yinchuan, China",
-    "tier": "U",
+    "tier": "A",
     "funding": "Founded 2012-15 by Ningxia Minsheng Real Estate (property developer) with the provincial government under a BOT deal; about 300m yuan build.",
     "sources": [
       "https://www.e-flux.com/announcements/?i=Museum of Contemporary Art Yinchuan",
@@ -89019,7 +89018,9 @@
       ],
       "website": "https://www.moca-yinchuan.com/",
       "retrieved": "2026-10-25"
-    }
+    },
+    "grade": 1,
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
   },
   {
     "name": "Fragmentos, Espacio de Arte y Memoria",
@@ -92780,7 +92781,8 @@
       ],
       "website": "https://www.ludwigmuseum.hu",
       "retrieved": "2026-10-25"
-    }
+    },
+    "tier_note": "No source outside the museum is recorded."
   },
   {
     "name": "Reykjav\u00edk Art Museum",
@@ -100840,7 +100842,7 @@
   {
     "name": "Thailand Biennale",
     "location": "Phuket, Thailand",
-    "tier": "U",
+    "tier": "A",
     "funding": "2025-26 edition: Ministry of Culture's Office of Contemporary Art and Culture with Phuket province; commissions co-funded by unnamed foundations.",
     "watch": "State-run; commissions are co-funded by unnamed foundations.",
     "sources": [
@@ -100962,7 +100964,9 @@
       ],
       "website": "https://www.thailandbiennale.org",
       "retrieved": "2026-10-25"
-    }
+    },
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
   },
   {
     "name": "Alice Yard",
@@ -101245,8 +101249,12 @@
       "website": "https://www.peramuzesi.org.tr",
       "retrieved": "2026-10-25"
     },
-    "flags": null,
-    "tier_note": "No reason for the flag is recorded."
+    "flags": [
+      "Fossil fuels"
+    ],
+    "tier_note": "No reason for the flag is recorded.",
+    "grade": 4,
+    "grade_basis": "A funder tied to fossil fuels."
   },
   {
     "name": "RAK Art Foundation",
@@ -101970,7 +101978,7 @@
   {
     "name": "MOCA Cleveland",
     "location": "Cleveland, USA",
-    "tier": "B",
+    "tier": "A",
     "funding": "$3.7M expenses (2023); private donors and foundations.",
     "watch": "Bloomberg Philanthropies gives lead institutional support. In 2020 the museum cancelled Shaun Leonardo's show; it later apologised and the director resigned.",
     "sources": [
@@ -101985,14 +101993,11 @@
     "aliases": [
       "MOCA Cleveland"
     ],
-    "flags": [
-      "State censorship or punishment"
-    ],
     "why_flagged": "Bloomberg Philanthropies gives lead institutional support. In 2020 the museum cancelled Shaun Leonardo's show; it later apologised and the director resigned.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=MOCA%20Cleveland",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=MOCA%20Cleveland",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 1,
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
     "records_note": "Its Form 990 is public for 2001 to 2025, it names institutional supporters undated and lists its board; no annual reports found.",
     "finances_note": "FY2024-25 income USD 2.0M: about 77 percent donations and grants, 4 percent government grants, 4 percent earned, 10 percent investment income and gains (Form 990, Part VIII).",
     "affiliations_note": "Member of AAMD.",
@@ -104754,7 +104759,8 @@
       ],
       "website": "https://nationalgallery.co.zw",
       "retrieved": "2026-10-25"
-    }
+    },
+    "tier_note": "No source outside the museum is recorded."
   },
   {
     "name": "Funda\u00e7\u00e3o Sindika Dokolo",
@@ -112523,22 +112529,19 @@
     "city": "Bishkek",
     "country": "Kyrgyzstan",
     "location": "Bishkek, Kyrgyzstan",
-    "tier": "B",
+    "tier": "A",
     "watch": "In December 2019 a Culture Ministry commission confiscated works from the Feminnale. Director Mira Dzhangaracheva left after death threats.",
     "sources": [
       "https://www.hrw.org/news/2019/12/06/feminist-art-exhibit-threatened-kyrgyzstan",
       "https://24.kg/obschestvo/137013_skandal_sfeminale_vmuzee_izo_novyiy_direktor/",
       "https://news.artnet.com/art-world/museum-kyrgyzstan-censorship-1722195",
-      "https://24.kg/english/136602_Feminnale_scandal_Director_of_Museum_of_Fine_Arts_dismissed/"
+      "https://24.kg/english/136602_Feminnale_scandal_Director_of_Museum_of_Fine_Arts_dismissed/",
+      "https://24.kg/obschestvo/124924_mira_djangaracheva_sostoyanie_muzeya_izo_kritichno_dlya_ego_buduschego/"
     ],
     "lat": 42.876,
     "lon": 74.611,
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "why_flagged": "Underfunded national museum (about 18,000 works) paid for by Kyrgyzstan's Ministry of Culture.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "records_note": "A state museum; its site has no reports, accounts, donor list or board, and a search found none from the ministry.",
     "details": {
       "overview": [
@@ -134613,7 +134616,7 @@
     "location": "Nairobi, Kenya",
     "city": "Nairobi",
     "country": "Kenya",
-    "tier": "B",
+    "tier": "A",
     "size": "S",
     "sources": [
       "https://www.businessdailyafrica.com/bd/lifestyle/art/museum-bans-works-by-three-of-kenya-s-finest-artists-2152656",
@@ -134624,13 +134627,9 @@
     "lon": 36.815,
     "id": "nairobi-national-museum",
     "funding": "National Museums of Kenya, a state corporation, runs it. Planet Africa (2024 to 2025) was funded by the German Research Foundation and Germany's Foreign Office.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "why_flagged": "Run by National Museums of Kenya, a state corporation. The Planet Africa project (opened November 2024) lists the German Research Foundation and Germany's Foreign Office as funders. No sponsor list.",
     "watch": "In May 2017 museum management pulled works by Michael Soi, Patrick Mukabi and Bertiers Mbatia on opening day, saying they were unsuitable for children.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "records_note": "No records of its own: parent National Museums of Kenya posts annual reports for 2015 to 2019 and names its board; no accounts or donors.",
     "affiliations_note": "Part of National Museums of Kenya, alongside Nairobi Gallery, Karen Blixen Museum and Fort Jesus Museum, and initiated in 1910 by the East Africa and Uganda Natural History Society.",
     "details": {
@@ -136257,7 +136256,7 @@
     "location": "Shanghai, China",
     "city": "Shanghai",
     "country": "China",
-    "tier": "B",
+    "tier": "A",
     "size": "L",
     "sources": [
       "https://www.theartnewspaper.com/news/centre-pompidou-chief-outlines-challenges-of-setting-up-a-satellite-in-shanghai-including-censorship-threats-and-settling-the-project-costs",
@@ -136268,13 +136267,9 @@
     "lon": 121.459,
     "id": "west-bund-museum",
     "funding": "Run and paid for by the state-owned West Bund Group. The Centre Pompidou partnership was renewed in 2023 for five years. Joint shows since 2019 drew over 2 million visitors.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "why_flagged": "Run and paid for by the state-owned West Bund Group. The Centre Pompidou partnership was renewed in 2023 for five years. Joint shows since 2019 drew over 2 million visitors.",
     "watch": "Local officials had fewer than five works removed from the 2019 opening show, The Shape of Time. Pompidou says it does not self-censor.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 1,
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
     "records_note": "West Bund Museum posts no annual reports, accounts, funder list or board; its site names only the Centre Pompidou partnership.",
     "affiliations_note": "In a five-year partnership with the Centre Pompidou from 2019, renewed in 2023, covering loans, exhibitions, programmes and training.",
     "details": {
@@ -136376,7 +136371,7 @@
     "location": "Kuala Lumpur, Malaysia",
     "city": "Kuala Lumpur",
     "country": "Malaysia",
-    "tier": "B",
+    "tier": "A",
     "size": "S",
     "sources": [
       "https://artsequator.com/leading-arts-collectors-put-pressure-on-balai-seni-visual-negara/",
@@ -136388,13 +136383,9 @@
     "lon": 101.705,
     "id": "national-visual-arts-gallery",
     "funding": "Owned by the Government of Malaysia and run by the National Visual Art Development Board, a statutory body under the Ministry of Tourism, Arts and Culture. Most exhibitions are free.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "why_flagged": "Owned by the Government of Malaysia and run by the National Visual Art Development Board, a statutory body under the Ministry of Tourism, Arts and Culture. Most exhibitions are free.",
     "watch": "In February 2020 it removed four works from Ahmad Fuad Osman's retrospective. Nearly 400 artists and 55 collectors petitioned; a deputy minister sought their return.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "records_note": "Annual reports for 2023 and 2024 are posted but password protected. The board is listed as an image, and six former sponsors are named, undated.",
     "affiliations_note": "Member of CIMAM.",
     "details": {
@@ -136551,7 +136542,7 @@
     "location": "Shanghai, China",
     "city": "Shanghai",
     "country": "China",
-    "tier": "B",
+    "tier": "A",
     "size": "S",
     "sources": [
       "https://en.ilsole24ore.com/art/the-shanghai-biennial-invites-listening-to-a-better-future-AHD0eX0D",
@@ -136562,13 +136553,9 @@
     "lon": 121.494,
     "id": "shanghai-biennale",
     "funding": "Run by the state-owned Power Station of Art; budget undisclosed and paid mainly from Shanghai city government funds. 2025 partners: Aesop, Denza, Langham hotels and lighting maker Flos.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "why_flagged": "Run by the state-owned Power Station of Art; budget undisclosed and paid mainly from Shanghai city government funds. 2025 partners: Aesop, Denza, Langham hotels and lighting maker Flos.",
     "watch": "In 2012 officials demanded cuts to Yuri Albert's work, so he withdrew; a committee rejected Barbad Golshiri's proposal. Both artists published their accounts.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "visual_critiques": [
       {
         "kind": "theory",
@@ -137578,24 +137565,21 @@
     "location": "Panaji, India",
     "city": "Panaji",
     "country": "India",
-    "tier": "B",
+    "tier": "A",
     "size": "S",
     "sources": [
       "https://archive2025.serendipityartsfestival.com/partners",
       "https://etvbharat.com/english/bharat/bharat-news/caa-nrc-leave-awkward-footprint-on-goa-art-festival/na20191219124219107",
-      "https://en.wikipedia.org/wiki/Serendipity_Arts_Festival"
+      "https://en.wikipedia.org/wiki/Serendipity_Arts_Festival",
+      "https://www.deccanherald.com/india/anti-caa-protests-goa-art-fest-exhibits-closed-786876.html"
     ],
     "lat": 15.499,
     "lon": 73.828,
     "id": "serendipity-arts-festival",
     "funding": "Non-profit Serendipity Arts Foundation, founded by Hero Enterprise chair Sunil Kant Munjal. 2025 partners include the Goa government, Hero Insurance Broking, Hero Realty, Campa, Milton and foreign cultural institutes.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "why_flagged": "Non-profit Serendipity Arts Foundation, founded by Hero Enterprise chair Sunil Kant Munjal. 2025 partners include the Goa government, Hero Insurance Broking, Hero Realty, Campa, Milton and foreign cultural institutes.",
     "watch": "On 18 December 2019 the organisers shut two exhibits with CAA and NRC content, citing technical issues. Poets called it political suppression.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "records_note": "It posts no reports, accounts or full trustee list; its patrons page names nine patrons undated, and the 2025 festival partners page shows only logos.",
     "affiliations_note": "The festival is run by the not-for-profit Serendipity Arts Foundation, which also has London and Venice programmes.",
     "details": {
@@ -138637,20 +138621,20 @@
     "sources": [
       "https://fa.wikipedia.org/wiki/\u0645\u0648\u0632\u0647_\u0647\u0646\u0631\u0647\u0627\u06cc_\u0645\u0639\u0627\u0635\u0631_\u062a\u0647\u0631\u0627\u0646",
       "https://www.treasury.gov/ofac/downloads/sdn.csv",
-      "https://www.tehrantimes.com/news/411763/Tehran-museum-displays-collection-once-slated-for-exhibit-in"
+      "https://www.tehrantimes.com/news/411763/Tehran-museum-displays-collection-once-slated-for-exhibit-in",
+      "https://www.govinfo.gov/content/pkg/FR-2012-11-16/html/2012-27938.htm"
     ],
     "lat": 35.712,
     "lon": 51.39,
     "id": "tehran-museum-of-contemporary-art-tmoca",
     "funding": "State museum owned by the arts deputy of Iran's Ministry of Culture and Islamic Guidance, which OFAC lists as an entity. The state set a 16.5 billion toman renovation budget.",
     "flags": [
-      "Sanctions",
-      "State censorship or punishment"
+      "Sanctions"
     ],
     "why_flagged": "State museum owned by the arts deputy of Iran's Ministry of Culture and Islamic Guidance, which OFAC lists as an entity. The state set a 16.5 billion toman renovation budget.",
     "watch": "After 1979 the state kept its Western collection in storage. In 2017 the culture minister cancelled its Berlin and Rome loan show.",
-    "grade": 5,
-    "grade_basis": "A funder tied to a sanctioned person or company. Also on record: state censorship.",
+    "grade": 4,
+    "grade_basis": "A funder tied to a sanctioned person or company.",
     "visual_critiques": [
       {
         "kind": "theory",
@@ -138852,7 +138836,7 @@
     "location": "New Delhi, India",
     "city": "New Delhi",
     "country": "India",
-    "tier": "B",
+    "tier": "A",
     "size": "S",
     "sources": [
       "https://webarchives.rhizome.org/thefileroom/im_/http:/www.thefileroom.org/documents/dyn/DisplayCase.cfm/id/1352",
@@ -138883,13 +138867,9 @@
     },
     "year_founded": 1954,
     "address": "Jaipur House, India Gate, New Delhi - 110003",
-    "why_flagged": "Run as a subordinate office of the Ministry of Culture, Government of India, since its 1954 opening, with centres in Mumbai and Bengaluru. No sponsor is listed.",
-    "flags": [
-      "State censorship or punishment"
-    ],
     "watch": "In 2000 the Culture Ministry ordered a painting pulled and all the artists withdrew. In 2019 members cut off Amol Palekar's criticism of the ministry.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "visual_critiques": [
       {
         "kind": "theory",
@@ -139284,19 +139264,17 @@
     "sources": [
       "https://www.hms.org.il/eng/Sponsorship",
       "https://www.foxnews.com/world/israeli-museum-to-remove-mcjesus-art-sculpture-after-violent-protests.amp",
-      "https://en.wikipedia.org/wiki/Haifa_Museum_of_Art"
+      "https://en.wikipedia.org/wiki/Haifa_Museum_of_Art",
+      "https://www.foxbusiness.com/markets/israeli-bank-to-pay-195m-for-us-tax-avoidance-scheme"
     ],
     "lat": 32.822,
     "lon": 34.992,
     "id": "haifa-museum-of-art",
     "funding": "Municipal museum group Haifa Museums. Site logos: Haifa Municipality, Ministry of Culture and Sport, Mizrahi Tefahot bank. Japan's embassy gave NIS 15,620 for a 2025 Tikotin show.",
-    "flags": [
-      "Protest or boycott"
-    ],
-    "why_flagged": "Municipal museum group Haifa Museums. Site logos: Haifa Municipality, Ministry of Culture and Sport, Mizrahi Tefahot bank. Japan's embassy gave NIS 15,620 for a 2025 Tikotin show.",
-    "watch": "In January 2019 hundreds protested the loaned McJesus sculpture. Minister Regev threatened to defund the museum; a deputy attorney general rebuked her. It was removed.",
+    "why_flagged": "Mizrahi-Tefahot Bank agreed in 2019 to pay the US $195M over hiding clients' assets offshore. Hundreds protested the McJesus sculpture there in January 2019.",
+    "watch": "Mizrahi-Tefahot Bank agreed in 2019 to pay the US $195M over hiding clients' assets offshore. Hundreds protested the McJesus sculpture there in January 2019.",
     "grade": 3,
-    "grade_basis": "No flagged funder, but on record: protests or a boycott.",
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "records_note": "No reports or accounts; the sponsorship page names one 2025 foreign-state donor, the Embassy of Japan, beside logos, and the board of directors is listed.",
     "affiliations_note": "Haifa Museum of Art is one of the six venues of Haifa Museums, with the Tikotin, National Maritime, City, Mane-Katz and Hermann Struck museums.",
     "details": {
@@ -141154,7 +141132,7 @@
     "location": "Belgrade, Serbia",
     "city": "Belgrade",
     "country": "Serbia",
-    "tier": "B",
+    "tier": "A",
     "size": "S",
     "sources": [
       "https://www.cimam.org/museum-watch/museum-watch-actions/belgrade-leading-institution-damaged-local-politics/",
@@ -141165,13 +141143,9 @@
     "lon": 20.442,
     "id": "museum-of-contemporary-art-belgrade",
     "funding": "Funded by Serbia's Ministry of Culture; the museum publishes the ministry's financial plans for 2023 to 2026.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "why_flagged": "Funded by Serbia's Ministry of Culture; the museum publishes the ministry's financial plans for 2023 to 2026.",
     "watch": "On 30 January 2020 the government replaced acting director Slobodan Nakarada with Viktor Ki\u0161 despite a 2019 open call. Board chair resigned; CIMAM objected.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "visual_critiques": [
       {
         "kind": "theory",
@@ -144425,7 +144399,7 @@
     "location": "Caracas, Venezuela",
     "city": "Caracas",
     "country": "Venezuela",
-    "tier": "B",
+    "tier": "A",
     "size": "S",
     "sources": [
       "https://elestimulo.com/cultura/2021-12-20/museo-de-arte-contemporaneo-toda-la-verdad-sobre-su-cierre-caracas/",
@@ -144436,13 +144410,9 @@
     "lon": -66.9,
     "id": "museo-de-arte-contemporaneo-de-caracas",
     "funding": "Venezuelan public museum, under the state's Fundaci\u00f3n Museos Nacionales since 2005, with the Ministry of Culture overseeing it.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "why_flagged": "Venezuelan public museum, under the state's Fundaci\u00f3n Museos Nacionales since 2005, with the Ministry of Culture overseeing it.",
     "watch": "Ch\u00e1vez dismissed founder Sof\u00eda \u00cdmber on air in January 2001. A January 2006 Culture Ministry notice dropped her name from the museum.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship.",
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "records_note": "State museum under Fundaci\u00f3n Museos Nacionales; the foundation's site lists no reports, accounts, sponsors or board, and the museum's own site was not readable.",
     "affiliations_note": "The museum belongs to the Fundaci\u00f3n Museos Nacionales, which answers to Venezuela's culture ministry.",
     "details": {
@@ -163959,17 +163929,19 @@
     "sources": [
       "https://www.14ymedio.com/cuba/expulsan-alina-barbara-lopez-uneac_1_1106246.html",
       "https://www.pen-international.org/cases/alina-brbara-lpez-hernndez",
-      "https://web.archive.org/web/20241210014710/http://www.uneac.org.cu/wp-content/uploads/2020/10/estatutos_uneac-2020.pdf"
+      "https://web.archive.org/web/20241210014710/http://www.uneac.org.cu/wp-content/uploads/2020/10/estatutos_uneac-2020.pdf",
+      "https://www.pen-international.org/cases/jorge-fernndez-era"
     ],
     "lat": 23.139,
     "lon": -82.389,
     "id": "union-de-escritores-y-artistas-de-cuba-uneac",
     "funding": "Membership union founded in 1961 that runs galleries, magazines and the Premios Caracol, given since 1978. Its 2020 statutes list dues, a state contribution and donations as income.",
     "flags": [
-      "State censorship or punishment"
+      "State censorship or punishment",
+      "Protest or boycott"
     ],
     "why_flagged": "Membership union founded in 1961 that runs galleries, magazines and the Premios Caracol, given since 1978. Its 2020 statutes list dues, a state contribution and donations as income.",
-    "watch": "UNEAC expelled historian Alina B\u00e1rbara L\u00f3pez on 12 September 2024, citing criticism of Revolution leaders, 11 July solidarity and offence to a Party official (14ymedio).",
+    "watch": "UNEAC expelled historian Alina B\u00e1rbara L\u00f3pez on 12 September 2024 for criticising Revolution leaders. Writer Jorge Fern\u00e1ndez Era quit in solidarity before 18 September.",
     "details": {
       "overview": [
         "Membership union of Cuban writers and artists, based in Havana, with 14 provincial committees (UNEAC site).",
@@ -164061,7 +164033,7 @@
     "records_note": "UNEAC's site posts its 2020 statutes, which name its income sources and give no amounts.",
     "affiliations_note": "Five national associations (performing artists, visual artists, writers, musicians, and film, radio and television makers) and 14 provincial committees. The Premios Caracol cover film, radio, television and criticism.",
     "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship."
+    "grade_basis": "No flagged funder, but on record: state censorship and protests or a boycott."
   },
   {
     "name": "Biblioteca Nacional de Cuba Jos\u00e9 Mart\u00ed",
@@ -164413,7 +164385,7 @@
     "location": "Havana, Cuba",
     "city": "Havana",
     "country": "Cuba",
-    "tier": "B",
+    "tier": "A",
     "size": "S",
     "sources": [
       "https://oncubanews.com/cultura/cine/posponen-muestra-joven-de-cine-realizadores-retiran-sus-obras-tras-la-censura-de-un-documental/",
@@ -164425,10 +164397,6 @@
     "lon": -82.398,
     "id": "muestra-joven-icaic",
     "funding": "Screening of young Cuban directors' films run by ICAIC with a filmmakers' board. The 19th edition, set for April 2020, was postponed; 14ymedio wrote in 2025 that it had disappeared.",
-    "flags": [
-      "State censorship or punishment"
-    ],
-    "why_flagged": "Screening of young Cuban directors' films run by ICAIC with a filmmakers' board. The 19th edition, set for April 2020, was postponed; 14ymedio wrote in 2025 that it had disappeared.",
     "watch": "2018: ICAIC moved one film to a 24-seat room; the director withdrew it. 2020: ICAIC cut a documentary and at least six filmmakers withdrew works.",
     "details": {
       "overview": [
@@ -164538,8 +164506,8 @@
     },
     "records_note": "The Muestra's site publishes each edition's competition list, awards and poster contest; no accounts or sponsor list is public.",
     "affiliations_note": "Run by ICAIC, which also runs the Cinemateca de Cuba and the Havana film festival.",
-    "grade": 3,
-    "grade_basis": "No flagged funder, but on record: state censorship."
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
   },
   {
     "name": "Escuela Internacional de Cine y Televisi\u00f3n (EICTV)",
