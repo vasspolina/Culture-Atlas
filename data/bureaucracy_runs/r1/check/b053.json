@@ -1,0 +1,57 @@
+[
+ {
+  "id": "bergen-international-festival-bergen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bergen-kunsthall-norway",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "henia-onstad-kunstsenter",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kistefos",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "riddoduottarmuseat-karasjok",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private foundation",
+    "page says": "RDM is called a private foundation (privat stiftelse); founders are the municipalities of Kautokeino and Porsanger, Stiftelsen De Samiske Samlinger (Karasjok kommune) and Stiftelsen Kokelv sjoesamiske museum; the Sami Parliament appoints two board members including the chair and Karasjok municipality one",
+    "fix": "public foundation (the brief's rule: a foundation created by municipalities and controlled through its board; 'private foundation' is for a private donor or company founder)"
+   },
+   {
+    "field": "basis",
+    "stored": "calls RDM a private foundation whose founders are the municipalities ...",
+    "page says": "same page 4 text; basis wording must follow the corrected form",
+    "fix": "reworded to state founders and board appointments"
+   }
+  ],
+  "corrected": {
+   "id": "riddoduottarmuseat-karasjok",
+   "governance": {
+    "legal_form": "public foundation",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2023",
+    "sources": [
+     "https://rdm.no/wp-content/uploads/2024/05/NO_-2023_Arsmelding-RDM.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The 2023 annual report, page 4, says the founders are the municipalities of Kautokeino and Porsanger and two foundations, that the Sami Parliament appoints two board members including the chair, and that Karasjok municipality appoints one."
+  }
+ }
+]

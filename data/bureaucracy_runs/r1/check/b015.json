@@ -1,0 +1,48 @@
+[
+ {
+  "id": "m-hong-kong",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "M Plus Museum Limited (M+ Ltd) is a wholly owned subsidiary of the West Kowloon Cultural District Authority, a statutory public body established by Cap. 601. The page does not state a legal form for M+ Ltd itself; the statutory public body is the parent.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "m-hong-kong",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "m-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "M Plus Museum Limited (M+ Ltd) is a wholly owned subsidiary of the West Kowloon Cultural District Authority, a statutory public body established by Cap. 601. The page does not state a legal form for M+ Ltd itself; the statutory public body is the parent.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "m-museum",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "tai-kwun-hong-kong",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "verdict": "ok",
+  "faults": []
+ }
+]

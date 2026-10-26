@@ -1,0 +1,92 @@
+[
+ {
+  "id": "s-mi-center-for-contemporary-art-s-mi-d-iddaguovdd-karasjok",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "amandus-festival-lillehammer",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "astrup-fearnley-museet",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fotogalleriet-oslo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstnernes-hus-oslo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "munch-oslo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nasjonalmuseet-national-museum-of-norway",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "uks-unge-kunstneres-samfund-oslo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthall-stavanger-stavanger",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nordnorsk-kunstmuseum-troms",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bait-al-zubair-muscat",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private foundation",
+    "page says": "Footer names the entity 'Bait Al Zubair Foundation LLC, CR 1711326', a limited liability company; no non-profit or foundation-law status is stated",
+    "fix": "private company"
+   },
+   {
+    "field": "governance.year",
+    "stored": "2026",
+    "page says": "Page footer reads '© Bait Al Zubair 2025'",
+    "fix": "2025"
+   }
+  ],
+  "corrected": {
+   "id": "bait-al-zubair-muscat",
+   "governance": {
+    "legal_form": "private company",
+    "parent": "The Zubair Corporation",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://www.baitalzubair.com/about-us"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the About Us page footer names the operator as Bait Al Zubair Foundation LLC (CR 1711326), and the text says the Zubair family established the foundation in 2005 to manage the museum as the cultural and social arm of the family-owned business The Zubair Corporation."
+  }
+ },
+ {
+  "id": "national-museum-of-oman",
+  "verdict": "ok",
+  "faults": []
+ }
+]
