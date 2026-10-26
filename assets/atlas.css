@@ -2628,3 +2628,10 @@ div:has(>#topThemeBtn){column-gap:0}
 /* In Gossip mode the chat's divider lines turn yellow. */
 :root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-b,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-t{border-color:#e2f86c!important}
 :root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #chatRecordsInfo,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetHandleBar,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetSummaryStrip{border-color:#e2f86c!important}
+
+/* Share information is regular weight (400, it was light 300) and turns yellow with black type on hover and focus. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-weight:400!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible){background:#fff204!important;color:#000!important}
+
+/* The site sets every face to weight 300 with eight ids; Share information alone is regular, so it outranks that with twelve. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #chatShareBtn,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #chatShareBtn::before{font-weight:400!important}
