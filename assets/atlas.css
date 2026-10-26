@@ -2619,3 +2619,8 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* No checkbox: Share information is plain grey text; only Back to chat keeps its arrow. */
 #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:not(.is-on)::before{display:none}
+
+
+/* The prompt suggestions are drawn like the registry line in a record: a thin soft outline, rounded, the type unchanged; the outline firms up on hover. */
+:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){border:1px solid color-mix(in srgb,var(--ink) 30%,transparent)!important;border-radius:14px!important;padding:10px 20px!important;background:transparent!important}
+:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){border-color:color-mix(in srgb,var(--ink) 70%,transparent)!important}
