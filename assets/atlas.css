@@ -2118,3 +2118,28 @@ div:has(>#topThemeBtn){column-gap:0}
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn{order:1!important}
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn{order:2!important}
 :root[data-theme] body.chat-input-mode-active #chatRecordsInfo{border-color:var(--line)!important}
+
+/* Chat controls refined after the displaay.net Stay in the Loop form (user, 26 Oct 2026): Share information and Voice are 52px blocks with the input's 14px corners, both with a 1px edge so the pair is one size, both yellow on hover and a press nudge; Voice carries a dot that is filled while the voice is on; How the records work is a full-width row with a plus that turns to a cross when open. Desktop only: the phone keeps its own bar. */
+@media (min-width:768px){
+  :root[data-theme] #workBottomDock>div:has(>#workInputCard:not(.is-mode)){gap:12px!important}
+  :root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:12px!important;gap:12px!important}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)){box-sizing:border-box!important;height:52px!important;min-height:52px!important;padding:0 24px!important;border:1px solid transparent!important;border-radius:14px!important;gap:10px!important;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),transform .1s var(--ease)!important}
+  :root[data-theme] #workInputCard #chatShareBtn:is(.is-on,:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:is(.is-on,:not(.is-on)){border-color:#420401!important}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn:is(.is-on,:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn:is(.is-on,:not(.is-on)){border-color:var(--ink)!important}
+  :root[data-theme] #workInputCard #chatShareBtn:is(.is-on,:not(.is-on)):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:is(.is-on,:not(.is-on)):hover{filter:none!important;background:#fff204!important;border-color:#fff204!important;color:#000!important}
+  :root[data-theme] #workInputCard #chatShareBtn:is(.is-on,:not(.is-on)):hover :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:is(.is-on,:not(.is-on)):hover :is(svg,span){color:#000!important}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)):active{transform:translateY(1px)}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn::before{content:"";flex:0 0 auto;width:9px;height:9px;box-sizing:border-box;border:1.5px solid var(--ink);border-radius:50%;background:transparent;transition:background-color .15s var(--ease)}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn[aria-pressed="true"]::before{background:var(--ink)}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover::before{border-color:#000;background:transparent}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn[aria-pressed="true"]:hover::before{background:#000}
+  :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on){transition:background-color .15s var(--ease),transform .1s var(--ease)}
+  :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):active{transform:scale(.96)}
+  :root[data-theme] #chatRecordsInfo{border-top:1px solid color-mix(in srgb,var(--line) 45%,transparent)!important;padding-top:0!important;margin-top:2px}
+  :root[data-theme] #chatRecordsInfo>summary{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:52px;border-radius:10px;font:400 var(--fs-m)/1.2 var(--sans)}
+  :root[data-theme] #chatRecordsInfo>summary::after,:root[data-theme] #chatRecordsInfo[open]>summary::after{content:"+";font:300 28px/1 var(--sans);transition:transform .2s var(--ease)}
+  :root[data-theme] #chatRecordsInfo[open]>summary::after{transform:rotate(45deg)}
+  :root[data-theme] #chatRecordsInfo>summary:hover{text-decoration:underline;text-underline-offset:.2em}
+  :root[data-theme] #chatRecordsInfo>summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+  :root[data-theme] #chatRecordsInfo[open]>summary{margin-bottom:4px}
+}
