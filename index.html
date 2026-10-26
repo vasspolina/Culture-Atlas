@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=360">
-  <script src="assets/config.js?v=360"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=361">
+  <script src="assets/config.js?v=361"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9119,7 +9119,7 @@ return maplibregl$1;
       const cx = w / 2 + trusteePanX;
       const cy = h / 2 + trusteePanY;
       trusteeCtx.strokeStyle = 'rgba(168, 85, 247, 0.06)';
-      trusteeCtx.lineWidth = 1;
+      trusteeCtx.lineWidth = 0.8;
       [110, 200, 290].forEach(r => {
         trusteeCtx.beginPath();
         trusteeCtx.arc(cx, cy, r * trusteeZoom, 0, Math.PI * 2);
@@ -9151,7 +9151,7 @@ return maplibregl$1;
         }
 
         if (isConnectedToFocus) {
-          trusteeCtx.lineWidth = 3.0;
+          trusteeCtx.lineWidth = 0.8;
           trusteeCtx.strokeStyle = '#c084fc';
           trusteeCtx.shadowBlur = 0;
         } else if (isDimmed) {
@@ -9159,7 +9159,7 @@ return maplibregl$1;
           trusteeCtx.strokeStyle = 'rgba(100, 90, 130, 0.15)';
           trusteeCtx.shadowBlur = 0;
         } else {
-          trusteeCtx.lineWidth = 1.5;
+          trusteeCtx.lineWidth = 0.8;
           trusteeCtx.strokeStyle = SECTOR_COLORS[e.sector] ? `${SECTOR_COLORS[e.sector]}88` : 'rgba(168, 85, 247, 0.4)';
           trusteeCtx.shadowBlur = 0;
         }
@@ -9192,7 +9192,7 @@ return maplibregl$1;
           trusteeCtx.beginPath();
           trusteeCtx.arc(n.x, n.y, r + 4, 0, Math.PI * 2);
           trusteeCtx.strokeStyle = '#e9d5ff';
-          trusteeCtx.lineWidth = 2.0;
+          trusteeCtx.lineWidth = 0.8;
           trusteeCtx.stroke();
         }
 
@@ -9221,7 +9221,7 @@ return maplibregl$1;
         trusteeCtx.fillStyle = fillColor;
         trusteeCtx.fill();
         trusteeCtx.strokeStyle = isDimmed ? 'rgba(255,255,255,0.2)' : strokeColor;
-        trusteeCtx.lineWidth = isFocus ? 3 : 1.8;
+        trusteeCtx.lineWidth = 0.8;
         trusteeCtx.stroke();
 
         // Icon or Initial in center
@@ -9241,7 +9241,7 @@ return maplibregl$1;
           trusteeCtx.fillStyle = '#7e22ce';
           trusteeCtx.fill();
           trusteeCtx.strokeStyle = '#e9d5ff';
-          trusteeCtx.lineWidth = 1;
+          trusteeCtx.lineWidth = 0.8;
           trusteeCtx.stroke();
 
           trusteeCtx.fillStyle = '#ffffff';
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v360';
+    const ATLAS_RELEASE = 'culture-atlas-v361';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=360').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=361').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10552,7 +10552,7 @@ return maplibregl$1;
               ctx.closePath();
               ctx.fill();
               ctx.strokeStyle = G_LINE;
-              ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
+              ctx.lineWidth = isCActive || isCHovered ? 0.8 : 0.8;
               ctx.stroke();
             } else {
               // Ring crosses horizon: clip edges strictly at the horizon plane
@@ -10605,7 +10605,7 @@ return maplibregl$1;
                   }
                 }
                 ctx.strokeStyle = G_LINE;
-                ctx.lineWidth = isCActive || isCHovered ? 1.6 : 0.8;
+                ctx.lineWidth = isCActive || isCHovered ? 0.8 : 0.8;
                 ctx.stroke();
               }
             }
@@ -11247,7 +11247,7 @@ return maplibregl$1;
         const compassInk = G_LINE;
         ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : 'rgba(0, 0, 0, 0)';
         ctx.strokeStyle = compassInk;
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = 0.8;
         ctx.beginPath();
         ctx.arc(compassX, compassY, 18, 0, Math.PI * 2);
         ctx.fill();
@@ -11261,7 +11261,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.fill();
 
-        ctx.lineWidth = 1.2;
+        ctx.lineWidth = 0.8;
         ctx.beginPath();
         ctx.moveTo(compassX, compassY + 11);
         ctx.lineTo(compassX + 4.5, compassY);
@@ -19595,9 +19595,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=360"></script>
-<script src="assets/layers.js?v=360"></script>
-<script src="assets/hq-detail.js?v=360"></script>
-<script src="assets/bubbles.js?v=360" defer></script>
+<script src="assets/typeset.js?v=361"></script>
+<script src="assets/layers.js?v=361"></script>
+<script src="assets/hq-detail.js?v=361"></script>
+<script src="assets/bubbles.js?v=361" defer></script>
 </body>
 </html>
