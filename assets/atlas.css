@@ -2528,11 +2528,9 @@ div:has(>#topThemeBtn){column-gap:0}
    (headings, strong, labels, buttons, the grade marks), and this rule sets those at 100. The specificity is six ids' worth (:not(#t)) to beat the rules that set a bold weight with an id and !important. */
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .no-bold{font-weight:100!important}
 
-/* The record action pills, the chat follow-up pills and the globe popup actions at the displaay.net/typefaces button size (user's instruction,
+/* The chat follow-up pills and the globe popup actions at the displaay.net/typefaces button size (user's instruction,
    26 Oct 2026; measured on the live page): 34px high, 14px type, 12px side padding, a 1px outline, a 10px radius, Jokker at weight 300 (regular, a little thinner). Fills and outline colours stay as
    they were. The follow-up pills may wrap, so theirs is a minimum height. */
-:root:root:root:root:root :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,#floatingCard) .record-action{box-sizing:border-box!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-width:.8px!important;border-style:solid!important;border-radius:10px!important;font-size:14px!important;font-weight:300!important;line-height:1!important}
-:root:root:root:root:root :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,#floatingCard) .record-action::after{inset:-2px!important}
 :root:root[data-theme] .curator-followup-pill{box-sizing:border-box!important;min-height:34px!important;padding:0 12px!important;border-width:.8px!important;border-radius:10px!important;font-size:14px!important;font-weight:300!important;line-height:1.2!important}
 :root:root .record-popup-actions a,:root:root .record-popup-actions button{box-sizing:border-box;min-height:34px;padding:0 12px;border:.8px solid currentColor;border-radius:10px;font-size:14px;font-weight:300;line-height:1.2}
 
@@ -2545,3 +2543,12 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Every line on the web is 0.8px (user's instruction, 26 Oct 2026): all border widths above (1px, 1.5px, 2px, 2.5px and 3px became .8px), the hr, and the canvas
    strokes in index.html and assets/layers.js (links, outlines, rings; the 3px to 6.5px text halos behind labels are knockouts, not lines, and stay). The
    underlines were already .8px (--ul-w). Focus outlines and icon stroke-width are not lines of the layout and keep their widths. */
+
+/* The dossier bullet text (the Overview list and every other .d-row-list item) is 16px (user's instruction, 26 Oct 2026), a size between the 14 and
+   18 of the three-size scale; the phone layer's 18px rule above is overridden too, so the list reads the same at every width. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{font-size:16px!important}
+
+/* The question bubble in the chat is a dark blue-grey (#2d3352, the navy of the chat box) with white type, in both themes and at every width (user's
+   instruction, 26 Oct 2026). It beats the grey fill above and the phone layer's grey block fill. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(.user-bubble,.justify-end>div){background:#2d3352!important;color:#fff!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(.user-bubble,.justify-end>div) *{color:#fff!important}
