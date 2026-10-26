@@ -79,14 +79,13 @@
   "governance": {
    "legal_form": "association",
    "parent": null,
-   "director_appointed_by": "board",
+   "director_appointed_by": null,
    "staff_status": null,
    "budget_set_by": "board",
    "controls": [],
    "year": "2023",
    "sources": [
-    "https://kuenstlerhaus.de/wp-content/uploads/2023/06/KHS_SATZUNG-aktuell_web.pdf",
-    "https://www.domino1.stuttgart.de/web/ksd/KSDRedSystem.nsf/0/67F93D9CE229A7BAC1258B5B004233F1/$File/Anlage1zuGRDrs170_2024.pdf"
+    "https://kuenstlerhaus.de/wp-content/uploads/2023/06/KHS_SATZUNG-aktuell_web.pdf"
    ]
   },
   "red_tape": null,
@@ -98,10 +97,10 @@
    "legal_form": "association",
    "parent": null,
    "director_appointed_by": "board",
-   "staff_status": "employees of the institution",
+   "staff_status": "public employees",
    "budget_set_by": "board",
    "controls": [],
-   "year": "2026",
+   "year": "2016",
    "sources": [
     "https://www.wkv-stuttgart.de/verein/mitglieder/satzung/"
    ]
@@ -112,7 +111,7 @@
  {
   "id": "vitra-design-museum-weil-am-rhein",
   "governance": {
-   "legal_form": "private company",
+   "legal_form": "private nonprofit",
    "parent": null,
    "director_appointed_by": null,
    "staff_status": null,

@@ -1,0 +1,65 @@
+[
+ {
+  "id": "spike-island-bristol",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cca-derry-londonderry",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cca-glasgow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tramway-glasgow",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "The Tramway about page says only that Tramway is managed by Glasgow Life, the charity that delivers culture and sport on behalf of Glasgow City Council. No cited page states Tramway's own legal form. The Glasgow Life governance page and diagram show a Board of 12 Directors, 6 independent and 5 Partner directors (named as councillors, plus one Executive Director), so an independent-board charity is not what the pages say.",
+    "fix": null
+   },
+   {
+    "field": "governance",
+    "stored": "whole block (parent, controls charity regulator, year 2025)",
+    "page says": "The parent and the OSCR reference are stated for Glasgow Life, not for Tramway as a body; with legal_form unsupported the rule in the brief (step 5) makes the record governance null.",
+    "fix": null
+   }
+  ]
+ },
+ {
+  "id": "auto-italia-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "barbican-art-gallery-the-curve",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "barbican-centre-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "belarus-free-theatre-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cubitt-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "verdict": "ok",
+  "faults": []
+ }
+]

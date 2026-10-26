@@ -86,7 +86,20 @@ The note states what the source says, with no verdict of your own.
    (macOS PDFKit; pages count from 1 in PDF order). A page summary from a fetch tool is not the page:
    take a fact only from the document's own text. If a host refuses curl or the PDF is a scan with no
    text, write null for what only that document held.
-4. Open every document and write each fact from the page in front of you. Never infer a legal form
+4. A pilot checker found faults in 9 of 30 records, so hold to these. A legal form needs the
+   statute, law, register entry or the space's own governance page saying it; a ministry called
+   "superior institution" in a news article is not a legal form, so write null. A decree is the form
+   in force today only if the page shows it is still in force: a repealed or superseded text needs
+   the text that replaced it. A third-party profile or a news article does not prove a governance
+   fact; a document about another institution (an opera house in the same article) proves nothing
+   here. `director_appointed_by` is set only when the source names one appointing body: a search
+   commission or a body that hires "in agreement with" another is null. `staff_status` is "public
+   employees" when staff are hired under a public pay scale and no civil-service status is stated.
+   `year` is the date of the document you read, not today's. A non-profit limited company
+   (gGmbH, a charitable company limited by guarantee) is a "private nonprofit". A web.archive.org
+   copy of the space's own page is allowed as a source when the live page refuses you. Each fact must
+   sit on a page you cite, and a page that does not state a fact is not listed for it.
+5. Open every document and write each fact from the page in front of you. Never infer a legal form
    from a name ("National Museum" is not proof of a government body), never fill a gap from a similar
    space, never take a fact from a search snippet or memory.
 5. A fact the sources do not state is null; `controls` is an empty list when none is stated. If
