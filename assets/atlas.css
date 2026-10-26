@@ -2177,4 +2177,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li+li{margin-top:0}
   /* A quotation hangs its own opening mark in the margin; it takes the bullet's place. */
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:has(.quote-hang)::before{content:none}
+  /* A row with one point is a sentence, not a list: no bullet and no indent. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child{padding-left:0}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child::before{content:none}
 }
