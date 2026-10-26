@@ -1,0 +1,179 @@
+[
+ {
+  "id": "phi-foundation",
+  "name": "PHI Foundation",
+  "city": "Montréal",
+  "country": "Canada",
+  "website": "https://phi.ca",
+  "size": "S",
+  "year_founded": 2007,
+  "sources": [
+   "https://phi.ca/en/about/",
+   "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscChrtyPfl?selectedCharityBn=854497672RR0001"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "the-polygon-gallery-north-vancouver",
+  "name": "The Polygon Gallery",
+  "city": "North Vancouver",
+  "country": "Canada",
+  "website": "https://thepolygon.ca/about/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://thepolygon.ca/about/",
+   "https://thepolygon.ca/wp-content/uploads/2025/06/Annual-Report-2024.pdf",
+   "https://www.neptuneterminals.com/news/our-canadian-exports-steelmaking-coal-and-potash"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income CAD 5.4M: about 14 percent government grants, 30 percent donations, sponsorship and events, 41 percent earned (audited statements, annual report p. 49)."
+ },
+ {
+  "id": "oakville-galleries",
+  "name": "Oakville Galleries",
+  "city": "Oakville",
+  "country": "Canada",
+  "website": "https://www.oakvillegalleries.com",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.oakvillegalleries.com/funding_partners",
+   "https://en.wikipedia.org/wiki/Carmichael_coal_mine"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "musée-national-des-beaux-arts-du-québec-quebec-city",
+  "name": "Musée national des beaux-arts du Québec",
+  "city": "Quebec City",
+  "country": "Canada",
+  "website": "https://www.mnbaq.org/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://s3.ca-central-1.amazonaws.com/mnbaq-assets/production/documents-gouvernance/rapport-de-gestion-2023-2024.pdf",
+   "https://www.mnbaq.org/en/support-us/our-donors"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2023-24 revenue CAD 34.1M: about 75 percent Quebec and federal grants, 5 percent Foundation and sponsors, 8 percent donated art, 9 percent earned (audited statements, report p. 103)."
+ },
+ {
+  "id": "mackenzie-art-gallery",
+  "name": "MacKenzie Art Gallery",
+  "city": "Regina",
+  "country": "Canada",
+  "website": "https://mackenzie.art",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://mackenzie.art/site-content/uploads/2025/06/03_MAG-Annual-Report_2024-25_FINAL-1.pdf",
+   "https://mackenzie.art/about/",
+   "https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 revenue CAD 5.8M: about 22 percent operating grants, 7 percent programming grants, 49 percent fundraising, 16 percent earned (summary statements, annual report p. 49)."
+ },
+ {
+  "id": "owens-art-gallery-sackville",
+  "name": "Owens Art Gallery",
+  "city": "Sackville",
+  "country": "Canada",
+  "website": "http://mta.ca/owens/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "http://mta.ca/owens/",
+   "https://owensartgallery.com/annualreports/OwensAnnualReport2023-2024.pdf",
+   "https://owensartgallery.com/visit/support/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "remai-modern",
+  "name": "Remai Modern",
+  "city": "Saskatoon",
+  "country": "Canada",
+  "website": "https://remaimodern.org",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://remaimodern.org/wp-content/uploads/2026/06/2025_Annual_Report_Web_Version.pdf",
+   "https://www.ckom.com/2019/02/25/7-members-of-remai-modern-board-ousted-or-leaving/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "the-rooms-st-johns",
+  "name": "The Rooms",
+  "city": "St. John's",
+  "country": "Canada",
+  "website": "https://www.therooms.ca/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.therooms.ca/",
+   "https://www.gov.nl.ca/tcar/files/TheRoomsAnnualReport2023-2024.pdf"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025-26 revenue CAD 11.2M: about 78 percent provincial and federal government, 21 percent commercial operations, 1 percent corporate sponsorship; deficit 486,495 (audited statements, PDF p. 88)."
+ },
+ {
+  "id": "art-metropole-toronto",
+  "name": "Art Metropole",
+  "city": "Toronto",
+  "country": "Canada",
+  "website": "https://artmetropole.com",
+  "size": "S",
+  "year_founded": 1974,
+  "sources": [
+   "https://artmetropole.com",
+   "https://artmetropole.com/events/on-display-general-idea-rare-and-out-of-print-books-and-editions"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "mercer-union-toronto",
+  "name": "Mercer Union",
+  "city": "Toronto",
+  "country": "Canada",
+  "website": "https://www.mercerunion.org",
+  "size": "S",
+  "year_founded": 1979,
+  "sources": [
+   "https://www.mercerunion.org/about/",
+   "https://www.canadacouncil.ca",
+   "https://www.mercerunion.org/about"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "the-power-plant-contemporary-art-gallery",
+  "name": "The Power Plant Contemporary Art Gallery",
+  "city": "Toronto",
+  "country": "Canada",
+  "website": "https://www.thepowerplant.org",
+  "size": "S",
+  "year_founded": 1987,
+  "sources": [
+   "https://www.thepowerplant.org/join-and-support",
+   "https://www.thepowerplant.org/SupportUs.aspx"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "yyz-artists-outlet-toronto",
+  "name": "YYZ Artists' Outlet",
+  "city": "Toronto",
+  "country": "Canada",
+  "website": "https://www.yyzartistsoutlet.org",
+  "size": "S",
+  "year_founded": 1979,
+  "sources": [
+   "https://www.yyzartistsoutlet.org/about/",
+   "https://www.canadahelps.org/en/charities/yyz-artists-outlet",
+   "https://www.yyzartistsoutlet.org"
+  ],
+  "needs_finance": true
+ }
+]

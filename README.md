@@ -1,4 +1,4 @@
-# Culture Atlas
+# Leaving it on the table
 
 A globe and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
 

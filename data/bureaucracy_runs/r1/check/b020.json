@@ -1,0 +1,56 @@
+[
+ {
+  "id": "bienal-de-cuenca",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.staff_status",
+    "stored": "public employees",
+    "page says": "The 2015 instruction (articles on pay scales) covers servidoras y servidores publicos under the LOSEP and, separately, obreros under the Codigo de Trabajo; the activity report also says the foundation must distinguish workers under the labour code from servants under the LOSEP",
+    "fix": "mixed"
+   },
+   {
+    "field": "basis",
+    "stored": "says the instruction quotes the statute for the Directorio naming the director from the mayor's list and for staff under the public service law",
+    "page says": "The statute is quoted only for the private-law nonprofit form (articles 1, 2, 4); the terna and staff regimes are the instruction's own text",
+    "fix": "reworded in corrected"
+   }
+  ],
+  "corrected": {
+   "id": "bienal-de-cuenca",
+   "governance": {
+    "legal_form": "public foundation",
+    "parent": "I. Municipalidad de Cuenca",
+    "director_appointed_by": "board",
+    "staff_status": "mixed",
+    "budget_set_by": null,
+    "controls": [
+     "freedom of information law"
+    ],
+    "year": "2015",
+    "sources": [
+     "https://www.bienaldecuenca.org/files/853-4%20informe%20de%20actividades.pdf",
+     "https://www.bienaldecuenca.org/files/2849-3%20instructivo%20que%20regula%20el%20procedimiento.pdf",
+     "https://transparenciabienal.bienaldecuenca.org/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The 2015 activity report says the Cuenca municipality created the foundation by ordinance, and the 2015 classification instruction quotes its statute (private-law nonprofit) and states that the Directorio names the executive director from a list sent by the mayor and that staff are public servants under the public service law or workers under the labour code, while the foundation's transparency page states its freedom of information duty."
+  }
+ },
+ {
+  "id": "centro-de-arte-contemporáneo-de-quito-quito",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "medrar-for-contemporary-art-cairo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-de-el-salvador-marte-san-salvador",
+  "verdict": "ok",
+  "faults": []
+ }
+]

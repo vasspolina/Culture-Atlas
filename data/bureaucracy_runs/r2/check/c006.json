@@ -1,0 +1,62 @@
+[
+ {
+  "id": "zofia-and-oskar-hansen-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "plecnik-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "la-pedrera-casa-mila",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "muhba-bon-pastor",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "only the who-we-are page",
+    "page says": "The who-we-are page states the City Council and ICUB ownership of MUHBA but never mentions Bon Pastor. The page that places Cases Barates del Bon Pastor among the museum's spaces is the museum spaces page, which is not cited.",
+    "fix": "Add https://www.barcelona.cat/museuhistoria/en/heritages/museum-spaces to sources and to the basis sentence."
+   }
+  ],
+  "corrected": {
+   "id": "muhba-bon-pastor",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "Barcelona City Council, through the Institut de Cultura de Barcelona (ICUB)",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.barcelona.cat/museuhistoria/en/el-museu-dhistoria-de-barcelona/who-we-are",
+     "https://www.barcelona.cat/museuhistoria/en/heritages/museum-spaces"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The museum's own who-we-are page says it belongs to Barcelona City Council as part of the Institut de Cultura, and its museum spaces page lists Cases Barates del Bon Pastor among the museum's spaces."
+  }
+ },
+ {
+  "id": "casa-maso",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-casa-botines-gaudi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mas-miro",
+  "verdict": "ok",
+  "faults": []
+ }
+]

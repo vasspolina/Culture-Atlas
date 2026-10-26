@@ -1,0 +1,170 @@
+[
+ {
+  "id": "lenbachhaus",
+  "name": "Lenbachhaus",
+  "city": "Munich",
+  "country": "Germany",
+  "website": "https://www.lenbachhaus.de",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.lenbachhaus.de/en/about",
+   "https://stadt.muenchen.de/service/info/kulturreferat/1083403/",
+   "https://www.lenbachhaus.de/en/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 costs EUR 15.0M: about 77 percent City of Munich general budget (net), 20 percent admission and other fees, 3 percent grants from other bodies (Haushaltsplan 2026, product 36252200)."
+ },
+ {
+  "id": "lothringer-13-halle-munich",
+  "name": "Lothringer 13 Halle",
+  "city": "Munich",
+  "country": "Germany",
+  "website": "https://www.lothringer13.com",
+  "size": "M",
+  "year_founded": 1980,
+  "sources": [
+   "https://stadt.muenchen.de/infos/lothringer13-kunstraum.html"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "museum-abteiberg-monchengladbach",
+  "name": "Museum Abteiberg",
+  "city": "Mönchengladbach",
+  "country": "Germany",
+  "website": "https://museum-abteiberg.de",
+  "size": "L",
+  "year_founded": 1904,
+  "sources": [
+   "https://museum-abteiberg.de"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunsthalle-münster-münster",
+  "name": "Kunsthalle Münster",
+  "city": "Münster",
+  "country": "Germany",
+  "website": "https://www.kunsthallemuenster.de/de/ueber/",
+  "size": null,
+  "year_founded": 1991,
+  "sources": [
+   "https://www.kunsthallemuenster.de/de/ueber/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "haus-für-medienkunst-oldenburg-oldenburg",
+  "name": "Haus für Medienkunst Oldenburg",
+  "city": "Oldenburg",
+  "country": "Germany",
+  "website": "https://hausmedienkunst.de/en/about-us/grants/",
+  "size": null,
+  "year_founded": 2000,
+  "sources": [
+   "https://hausmedienkunst.de/en/about-us/the-house/",
+   "https://hausmedienkunst.de/en/about-us/grants/",
+   "https://www.e-flux.com/announcements/641637/die-stifterin-der-nationalsozialismus-und-das-haus-the-donator-national-socialism-and-the-house"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunsthalle-recklinghausen-recklinghausen",
+  "name": "Kunsthalle Recklinghausen",
+  "city": "Recklinghausen",
+  "country": "Germany",
+  "website": "https://kunsthalle-recklinghausen.de",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://kunsthalle-recklinghausen.de",
+   "https://www.e-flux.com/announcements/6787511/ragnar-kjartanssonsunday-without-love"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "akademie-schloss-solitude-stuttgart",
+  "name": "Akademie Schloss Solitude",
+  "city": "Stuttgart",
+  "country": "Germany",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.akademie-solitude.de/en/about-us/",
+   "https://miz.org/de/institutionen/akademie-schloss-solitude-i9362",
+   "https://www.landtag-bw.de/resource/blob/264734/1ab8a43920d3fc30fd2af8a6f60dd8b0/17_5894_D.pdf"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kuenstlerhaus-stuttgart",
+  "name": "Künstlerhaus Stuttgart",
+  "city": "Stuttgart",
+  "country": "Germany",
+  "website": "https://kuenstlerhaus.de",
+  "size": "M",
+  "year_founded": 1978,
+  "sources": [
+   "https://www.domino1.stuttgart.de/web/ksd/KSDRedSystem.nsf/0/67F93D9CE229A7BAC1258B5B004233F1/$File/Anlage1zuGRDrs170_2024.pdf",
+   "https://kuenstlerhaus.de/en/about"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "wuerttembergischer-kunstverein-stuttgart",
+  "name": "Württembergischer Kunstverein Stuttgart",
+  "city": "Stuttgart",
+  "country": "Germany",
+  "website": "https://www.wkv-stuttgart.de",
+  "size": "M",
+  "year_founded": 1827,
+  "sources": [
+   "https://www.stuttgarter-zeitung.de/inhalt.antisemitismus-debatte-in-stuttgart-stadt-zieht-foerderung-von-symposium-zurueck-kunstverein-widerspricht-vorwuerfen.d9735e08-82a1-474c-b18b-d2fe5b9c3745.html"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "vitra-design-museum-weil-am-rhein",
+  "name": "Vitra Design Museum",
+  "city": "Weil am Rhein",
+  "country": "Germany",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.design-museum.de/en/about-us/the-vitra-design-museum.html",
+   "https://www.design-museum.de/en/exhibitions/detailpages/hella-jongerius-whispering-things.html",
+   "https://disclose.ngo/en/article/ikea-subcontractors-resort-forced-labour-in-belarus-prisons"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunstmuseum-wolfsburg-wolfsburg",
+  "name": "Kunstmuseum Wolfsburg",
+  "city": "Wolfsburg",
+  "country": "Germany",
+  "website": "https://www.kunstmuseum.de/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.kunstmuseum.de/en/about-us/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "chale-wote-street-art-festival-accra",
+  "name": "Chale Wote Street Art Festival",
+  "city": "Accra",
+  "country": "Ghana",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://accradotaltradio.com/993-2/",
+   "https://www.myjoyonline.com/chale-wote-street-art-festival-2024-slated-for-august-19-25/"
+  ],
+  "needs_finance": true
+ }
+]

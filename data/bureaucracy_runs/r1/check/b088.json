@@ -1,0 +1,91 @@
+[
+ {
+  "id": "lacma-los-angeles",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The LACMA About page (Corporate Governance tab) says Museum Associates, a California nonprofit public benefit corporation, manages and operates LACMA under a board of trustees, and the bylaws (page 17, Article on officers) say the Board selects the Director and that the Executive Committee selects or removes employees of the corporation.",
+    "page says": "Bylaws printed page 11 say the Executive Committee does NOT have the power to select or remove employees of the corporation; the sentence reverses this. Director selected by the Board is Section 7, printed page 17 (PDF page 20).",
+    "fix": "The LACMA About page (Corporate Governance tab) says Museum Associates, a California nonprofit public benefit corporation, manages and operates LACMA under a board of trustees, and the bylaws say the Board selects the Director (Article V, Section 7, printed page 17) and refer to employees of the corporation (printed page 11)."
+   }
+  ],
+  "corrected": {
+   "id": "lacma-los-angeles",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": "board",
+    "staff_status": "employees of the institution",
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2021",
+    "sources": [
+     "https://www.lacma.org/about",
+     "https://www-images.lacma.org/s3fs-public/file-attachments/Bylaws_of_Museum_Associates_x9.29.21x.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The LACMA About page (Corporate Governance tab) says Museum Associates, a California nonprofit public benefit corporation, manages and operates LACMA under a board of trustees, and the bylaws say the Board selects the Director (Article V, Section 7, printed page 17) and refer to employees of the corporation (printed page 11)."
+  }
+ },
+ {
+  "id": "moca-los-angeles-los-angeles",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "speed-art-museum-louisville",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ballroom-marfa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chinati-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "judd-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ica-miami",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2026",
+    "page says": "The cited membership FAQ page carries a modified date of 2025-08-04 and no 2026 date; year is the date of the document read.",
+    "fix": "2025"
+   }
+  ],
+  "corrected": {
+   "id": "ica-miami",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://icamiami.org/support/membership-faq/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The membership FAQ says ICA Miami is recognized by the IRS as a 501(c)3 nonprofit organization."
+  }
+ },
+ {
+  "id": "the-bass-miami-beach",
+  "verdict": "ok",
+  "faults": []
+ }
+]

@@ -1,0 +1,62 @@
+[
+ {
+  "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "masp-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-lasar-segall-são-paulo",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "Notice 1301/2025 calls the museum an \"autarquia federal\" linked to Ibram and a unit of Ibram, an \"autarquia do Ministerio da Cultura\"; an autarquia is a statutory public body, and the page never calls it a ministry department or a federal body",
+    "fix": "statutory public body"
+   },
+   {
+    "field": "basis",
+    "stored": "Ibram's notice 1301/2025, section 1, calls the museum a federal body and a unit of Ibram, and its vacancies require effective federal civil servants.",
+    "page says": "The page's wording is autarquia federal, not federal body",
+    "fix": "Ibram's notice 1301/2025, section 1, calls the museum an autarquia federal and a unit of Ibram, an autarquia of the Ministry of Culture, and its vacancies require effective federal civil servants."
+   }
+  ],
+  "corrected": {
+   "id": "museu-lasar-segall-são-paulo",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Instituto Brasileiro de Museus (Ibram), Ministério da Cultura",
+    "director_appointed_by": null,
+    "staff_status": "civil servants",
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://www.gov.br/museus/pt-br/acesso-a-informacao/institucional/sobre-o-orgao/trabalhe-conosco/curriculo-e-oportunidades/edital-n1301_2025-processo-seletivo-lasar-segall.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Ibram's notice 1301/2025, section 1, calls the museum an autarquia federal and a unit of Ibram, an autarquia of the Ministry of Culture, and its vacancies require effective federal civil servants."
+  }
+ },
+ {
+  "id": "museu-de-arte-brasileira-da-faap-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ }
+]

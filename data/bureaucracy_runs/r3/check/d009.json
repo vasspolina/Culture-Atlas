@@ -1,0 +1,68 @@
+[
+ {
+  "id": "le-19-crac-montbéliard",
+  "verdict": "ok",
+  "faults": [],
+  "note": "SIRENE entry 391920881 (nature juridique 9220, association déclarée, created 1993-05-20, 19 avenue des Alliés) supports the form; the /about page does not state it."
+ },
+ {
+  "id": "fondation-cartier",
+  "verdict": "ok",
+  "faults": [],
+  "note": "Terms PDF page 1 defines Cartier & Compagnie SAS as the 'Fondation Cartier'; SIRENE 331876284 nature juridique 5710 (SAS)."
+ },
+ {
+  "id": "georgian-national-museum-tbilisi",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance",
+    "stored": "statutory public body, statute in force (basis says 'current version')",
+    "page says": "matsne.gov.ge/ka/document/view/4591799 is order no. 110/n of 18/06/2019; its metadata shows loss of force 01/08/2025 (last consolidated version 22/07/2025). No replacing text is cited. Same inference as first_pass_rulings.json, and the researcher cites no page stating what that checker found missing.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "georgian-national-museum-tbilisi",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "koelnischer-kunstverein",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "association",
+    "page says": "None of the four cited pages states a legal form (no e.V., no register entry, no statute). Imprint gives address, VAT ID and a Board of Directors chairman; board page and membership page describe members and fees; the 2022 job ad says 'Vereinsbetrieb'. The form is inferred from the name 'Kunstverein' and membership.",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "imprint names a Vorstand ..., membership page sets out subscriptions ...",
+    "page says": "These are indications, not a statement of legal form",
+    "fix": ""
+   }
+  ],
+  "corrected": {
+   "id": "koelnischer-kunstverein",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "kunstverein-in-hamburg",
+  "verdict": "ok",
+  "faults": [],
+  "note": "Statute PDF: section 1.1 'Kunstverein in Hamburg e.V.'; section 15 board hires and dismisses the director and refers to 'Angestellte des Vereins'; page 1 amendment list ends 29.10.2018."
+ },
+ {
+  "id": "museum-abteiberg-monchengladbach",
+  "verdict": "ok",
+  "faults": [],
+  "note": "City page lists Museum Abteiberg under Dez 4 / Fachbereich Museen (43); museum imprint is issued by Stadt Mönchengladbach and names Städtisches Museum Abteiberg."
+ }
+]
