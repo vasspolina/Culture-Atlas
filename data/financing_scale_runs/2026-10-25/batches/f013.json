@@ -1,0 +1,181 @@
+[
+ {
+  "id": "artspeak-vancouver",
+  "name": "Artspeak",
+  "city": "Vancouver",
+  "country": "Canada",
+  "website": "https://artspeak.ca",
+  "size": "S",
+  "year_founded": 1986,
+  "sources": [
+   "https://www.canadahelps.org/en/charities/artspeak",
+   "https://www.artspeak.ca/",
+   "https://en.wikipedia.org/wiki/Artspeak_Gallery"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "contemporary-art-gallery-cag",
+  "name": "Contemporary Art Gallery (CAG)",
+  "city": "Vancouver",
+  "country": "Canada",
+  "website": "https://www.contemporaryartgallery.ca",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.contemporaryartgallery.ca/support/",
+   "https://cagvancouver.org/about"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "western-front-vancouver",
+  "name": "Western Front",
+  "city": "Vancouver",
+  "country": "Canada",
+  "website": "https://westernfront.ca",
+  "size": "S",
+  "year_founded": 1973,
+  "sources": [
+   "https://westernfront.ca/about",
+   "https://www.canadacouncil.ca",
+   "https://westernfront.ca/pages/support"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025-26 income CAD 1.22M: about 53 percent government grants, 28 percent private donations and fundraising, 14 percent earned, 5 percent interest and other (audited statements, p. 43)."
+ },
+ {
+  "id": "grunt-gallery-vancouver",
+  "name": "grunt gallery",
+  "city": "Vancouver",
+  "country": "Canada",
+  "website": "https://grunt.ca",
+  "size": "S",
+  "year_founded": 1984,
+  "sources": [
+   "https://grunt.ca/joingive/",
+   "https://grunt.ca/history/",
+   "https://grunt.ca/about/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "art-gallery-of-greater-victoria-victoria",
+  "name": "Art Gallery of Greater Victoria",
+  "city": "Victoria",
+  "country": "Canada",
+  "website": "https://aggv.ca/about/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://aggv.ca/about/",
+   "http://web.archive.org/web/20261001232124/https://aggv.ca/about/board/",
+   "https://www.wikidata.org/wiki/Q4796829"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "audain-art-museum",
+  "name": "Audain Art Museum",
+  "city": "Whistler",
+  "country": "Canada",
+  "website": "https://audainartmuseum.com",
+  "size": "S",
+  "year_founded": 2016,
+  "sources": [
+   "https://audainartmuseum.com/about/",
+   "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscChrtyPfl?selectedCharityBn=840228397RR0001",
+   "https://audainartmuseum.com/support/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "plug-in-ica",
+  "name": "Plug In ICA",
+  "city": "Winnipeg",
+  "country": "Canada",
+  "website": "https://plugin.org",
+  "size": "S",
+  "year_founded": 1972,
+  "sources": [
+   "https://plugin.org/support/",
+   "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscChrtyPfl?selectedCharityBn=119095655RR0001",
+   "https://plugin.org/sponsors/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "urban-shaman-contemporary-aboriginal-art-winnipeg",
+  "name": "Urban Shaman Contemporary Aboriginal Art",
+  "city": "Winnipeg",
+  "country": "Canada",
+  "website": null,
+  "size": null,
+  "year_founded": 1996,
+  "sources": [
+   "https://www.urbanshaman.org/supporters-partners/",
+   "https://canadacouncil.ca/research/2017-18-stats-and-stories/artist-stories/2018/urban-shaman-gallery"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2023-24 income CAD 503k: 76 percent federal, provincial and municipal grants, 7 percent gifts and charity grants, under 1 percent earned sales (T3010, Schedule 6)."
+ },
+ {
+  "id": "winnipeg-art-gallery-qaumajuq-winnipeg",
+  "name": "Winnipeg Art Gallery-Qaumajuq",
+  "city": "Winnipeg",
+  "country": "Canada",
+  "website": "https://www.wag.ca/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.wag.ca/annual-report-24/",
+   "http://web.archive.org/web/20260710135339/https://www.wag.ca/annual-report-24/",
+   "https://www.theartnewspaper.com/2024/01/11/winnipeg-art-gallery-removing-name-nazi-supporter-ferdinand-eckhardt"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "bienal-de-artes-mediales-de-santiago",
+  "name": "Bienal de Artes Mediales de Santiago",
+  "city": "Santiago",
+  "country": "Chile",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://26trans.gam.cl/en/17-biennial-of-media-arts-of-santiago/",
+   "https://0.bienaldeartesmediales.cl/informacion/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income CLP 292.3M, 99.6 percent booked as project income with no funder named, so no public share; donations CLP 421,320 (trial balance, 31 Dec 2025)."
+ },
+ {
+  "id": "museo-de-arte-contemporáneo-de-santiago-santiago",
+  "name": "Museo de Arte Contemporáneo de Santiago",
+  "city": "Santiago",
+  "country": "Chile",
+  "website": "https://mac.uchile.cl/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://mac.uchile.cl/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "museo-de-la-memoria-y-los-derechos-humanos",
+  "name": "Museo de la Memoria y los Derechos Humanos",
+  "city": "Santiago",
+  "country": "Chile",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://manager.mmdh.cl/uploads/Memoria_2024_Version_Final_247ce8d994.pdf",
+   "https://www.elmostrador.cl/destacado/2022/11/23/senado-revierte-negativa-de-la-camara-y-repone-recursos-para-instituciones-de-dd-hh-entre-ellas-el-museo-de-la-memoria/",
+   "https://www.theclinic.cl/2026/05/15/gobierno-kast-recorte-presupuesto-cultura-2026-teatro-a-mil-museo-memoria/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income CLP 2.49bn: about 96 percent public (state heritage service, presidential grant, Recoleta municipality), 1 percent donations, 2 percent rentals and collections services (trial balance, 31 Dec 2025)."
+ }
+]

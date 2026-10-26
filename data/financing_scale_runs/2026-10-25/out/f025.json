@@ -1,0 +1,203 @@
+[
+ {
+  "id": "ambasada-kultury-berlin",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "berlinische-galerie",
+  "scale": {
+   "visitors": 174978,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.berlin.de/sen/kultgz/aktuelles/pressemitteilungen/2026/2026_pm_besucher-innenzahlen-2025_anhang.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors is the 2024 (IST) line for Stiftung Berlinische Galerie in the Berlin Senate Department for Culture's visitor table of state-funded museums on PDF page 1; the count is of visits."
+ },
+ {
+  "id": "c-o-berlin-berlin",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "ddr-museum-berlin",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "deutsches-historisches-museum-berlin",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "EUR",
+   "income": 49523484,
+   "expenditure": 49523484,
+   "public": 43736952,
+   "private": null,
+   "earned": 989512,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://www.dhm.de/assets/DHM/Download/Museum/T%C3%A4tigkeitsberichte/DHM_Taetigkeitsbericht_2024.pdf"
+  },
+  "basis": "Finance is the 2024 column of the Einnahmen table (GESAMT, public is the verausgabte Zuwendung line, earned is Verwaltungseinnahmen) and the Ausgaben table (GESAMT) in the 2023/2024 Tätigkeitsbericht, PDF page 41 (printed pages 78-79); the totals are amounts spent and include 3,794,976 carried over from 2023 and 1,002,044 of third-party funds and donations."
+ },
+ {
+  "id": "deutsches-spionagemuseum-berlin",
+  "scale": {
+   "visitors": 441537,
+   "visitors_year": "2023",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 3000,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://www.deutsches-spionagemuseum.de/wp-content/uploads/2025/07/visitor-record-2024.pdf",
+    "https://www.deutsches-spionagemuseum.de/wp-content/uploads/2024/11/dsm-presse-factsheet-en.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors is the 2023 count of 441,537 in the museum's own press release (the file is named 2024 but dated January 2024), and the 3,000 m2 exhibition space is from the museum's own 2024/2025 press fact sheet, page 1."
+ },
+ {
+  "id": "flutgraben-berlin",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "gropius-bau",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "hamburger-bahnhof-berlin",
+  "scale": {
+   "visitors": 357737,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.smb.museum/fileadmin/website/SMB_allgemein/Ueber_uns/Jahresbericht/Staatliche-Museen-zu-Berlin-Jahresbericht-2024.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors is the 2024 count of visits for Hamburger Bahnhof - Nationalgalerie der Gegenwart in the Besuchszahlen 2024 table on PDF page 5 of the Staatliche Museen zu Berlin annual report 2024."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "humboldt-forum-berlin",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.humboldtforum.org/wp-content/uploads/2026/07/Jahresbericht_SHF_2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Area is the 40,000 m2 of exhibitions named in the facility management section of the Stiftung Humboldt Forum annual report 2025 (it covers the foundation's own exhibition rooms and those of the other partners), and finance is the 2025 profit and loss account on PDF page 39 (income is the subtotal of lines 1 to 5 including 3,505,810.18 of construction project funding, public is line 2, private is line 1, earned is Umsatzerlöse) with equity (Stiftungskapital plus Ergebnisrücklage) from the balance sheet."
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

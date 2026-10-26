@@ -1,0 +1,172 @@
+[
+ {
+  "id": "iniva-london",
+  "name": "Iniva (Institute of International Visual Arts)",
+  "city": "London",
+  "country": "United Kingdom",
+  "website": "https://iniva.org",
+  "size": "S",
+  "year_founded": 1994,
+  "sources": [
+   "https://en.wikipedia.org/wiki/Iniva"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "ica-london",
+  "name": "Institute of Contemporary Arts (ICA)",
+  "city": "London",
+  "country": "United Kingdom",
+  "website": "https://www.ica.art",
+  "size": "M",
+  "year_founded": 1946,
+  "sources": [
+   "https://www.ica.art/organisational-governance"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "london-museum",
+  "name": "London Museum",
+  "city": "London",
+  "country": "United Kingdom",
+  "website": "https://www.londonmuseum.org.uk",
+  "size": "L",
+  "year_founded": 1976,
+  "sources": [
+   "https://media.londonmuseum.org.uk/documents/Annual-Report-Financial-Statements-2025.pdf",
+   "https://www.museumsassociation.org/museums-journal/news/2026/05/london-museum-rejects-pigeon-and-splat-plagiarism-claim/",
+   "https://www.londonmuseum.org.uk/about-us/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "raven-row-london",
+  "name": "Raven Row",
+  "city": "London",
+  "country": "United Kingdom",
+  "website": "https://www.ravenrow.org",
+  "size": "S",
+  "year_founded": 2009,
+  "sources": [
+   "https://www.ravenrow.org/about/",
+   "https://register-of-charities.charitycommission.gov.uk"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income GBP 1.54M: all donations, GBP 1.2M of it from Alex Sainsbury and the Glass-House Trust, GBP 215k donated rent; no public grants (accounts p. 13)."
+ },
+ {
+  "id": "royal-academy-of-arts-london",
+  "name": "Royal Academy of Arts",
+  "city": "London",
+  "country": "United Kingdom",
+  "website": "https://www.royalacademy.org.uk",
+  "size": "L",
+  "year_founded": 1768,
+  "sources": [],
+  "needs_finance": true
+ },
+ {
+  "id": "serpentine-galleries",
+  "name": "Serpentine Galleries",
+  "city": "London",
+  "country": "United Kingdom",
+  "website": "https://www.serpentinegalleries.org",
+  "size": "L",
+  "year_founded": 1970,
+  "sources": [
+   "https://www.serpentinegalleries.org/about/",
+   "https://www.artforum.com/news/serpentine-removes-sackler-name-250005/",
+   "https://www.bloomberg.org/arts/advancing-the-arts-around-world/serpentine/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income GBP 14.8M: about 73 percent donations, patrons, events and sponsorship, 19 percent earned, 5 percent Arts Council England grant, 3 percent tax relief (Companies House accounts, p. 91)."
+ },
+ {
+  "id": "the-photographers-gallery",
+  "name": "The Photographers' Gallery",
+  "city": "London",
+  "country": "United Kingdom",
+  "website": "https://thephotographersgallery.org.uk",
+  "size": "M",
+  "year_founded": 1971,
+  "sources": [
+   "https://thephotographersgallery.org.uk/about-us",
+   "https://www.artscouncil.org.uk",
+   "https://thephotographersgallery.org.uk/join-support/corporate-partnerships"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income GBP 4.26M: about 27 percent public funding, 10 percent donations and memberships, 60 percent earned from ticketing and the trading company (accounts p. 16)."
+ },
+ {
+  "id": "the-showroom-london",
+  "name": "The Showroom",
+  "city": "London",
+  "country": "United Kingdom",
+  "website": "https://www.theshowroom.org",
+  "size": "S",
+  "year_founded": 1983,
+  "sources": [
+   "https://www.theshowroom.org/about",
+   "https://register-of-charities.charitycommission.gov.uk"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "castlefield-gallery-manchester",
+  "name": "Castlefield Gallery",
+  "city": "Manchester",
+  "country": "United Kingdom",
+  "website": "https://www.castlefieldgallery.co.uk",
+  "size": "M",
+  "year_founded": 1984,
+  "sources": [
+   "https://www.castlefieldgallery.co.uk/about/",
+   "https://opencharities.uk/ew/515571/files/2025-03-31-accounts.html"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income GBP 671k, half of it donated services; of the GBP 335k cash income, about 27 percent is Arts Council England and Manchester City Council (accounts p. 35)."
+ },
+ {
+  "id": "the-newbridge-project-newcastle",
+  "name": "The NewBridge Project",
+  "city": "Newcastle upon Tyne",
+  "country": "United Kingdom",
+  "website": "https://thenewbridgeproject.com",
+  "size": "M",
+  "year_founded": 2010,
+  "sources": [
+   "https://thenewbridgeproject.com"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "primary-nottingham",
+  "name": "Primary",
+  "city": "Nottingham",
+  "country": "United Kingdom",
+  "website": "https://www.weareprimary.org",
+  "size": "M",
+  "year_founded": 2011,
+  "sources": [
+   "https://www.weareprimary.org/about",
+   "https://www.weareprimary.org"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "bloc-projects-sheffield",
+  "name": "Bloc Projects",
+  "city": "Sheffield",
+  "country": "United Kingdom",
+  "website": "https://www.blocprojects.co.uk",
+  "size": "S",
+  "year_founded": 2002,
+  "sources": [
+   "https://www.blocprojects.co.uk",
+   "https://www.creativetourist.com/venue/bloc-projects/",
+   "https://www.heritagefund.org.uk/projects/forging-culture-and-industry-sheffields-changing-centre"
+  ],
+  "needs_finance": true
+ }
+]

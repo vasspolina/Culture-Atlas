@@ -1,5 +1,5 @@
 *,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;height:100%}
+html,body{margin:0;height:100%;overscroll-behavior:none}
 button,input,select,textarea{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0}
 button{cursor:pointer;text-align:inherit}
 img,svg,canvas{display:block}
@@ -8,9 +8,6 @@ h1,h2,h3,h4,p{margin:0}
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Thin.woff2") format("woff2");font-weight:100 300;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Medium.woff2") format("woff2");font-weight:500 900;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -18,8 +15,8 @@ h1,h2,h3,h4,p{margin:0}
   --cobalt:#0045fc; --focus:var(--cobalt); --blue:#527fe6; --orange:#e79a3a; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#e79a3a;
   --sans:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display-xl:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-xl:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --bar:44px; --gap:16px;
   /* Hochuli spacing: reading leading, one line of 18px text, half a line. */
   --lh:1.4; --L:25.2px; --H:12.6px;
@@ -242,9 +239,9 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 .critique-quote blockquote{position:relative;margin:0;padding:0;background:none;border:0;text-indent:0}
 .critique-quote .quote-hang{position:absolute;right:100%;top:0}
 .critique-quote figcaption{margin:0;overflow-wrap:break-word}
-.curator-message-wrap blockquote.atlas-quote{background:transparent;border:0;margin:2em 0;padding:0;color:var(--ink);font:400 var(--fs-l)/1.3 Georgia,"Times New Roman",serif;letter-spacing:0}
+.curator-message-wrap blockquote.atlas-quote{background:transparent;border:0;margin:2em 0;padding:0;color:var(--ink);font:400 var(--fs-l)/1.3 var(--sans);letter-spacing:0}
 .curator-message-wrap blockquote.atlas-quote .atlas-quote-text{margin:0}
-.curator-message-wrap blockquote.atlas-quote cite{display:block;margin-top:.35em;text-align:right;opacity:.78;font:italic 400 var(--fs-s)/1.3 Georgia,"Times New Roman",serif}
+.curator-message-wrap blockquote.atlas-quote cite{display:block;margin-top:.35em;text-align:right;opacity:.78;font:400 var(--fs-s)/1.3 var(--sans)}
 #curatorTyping{font:400 var(--fs-s)/1.3 var(--sans)}
 #curatorCityDotWrap{display:none}
 .typing-dot{display:inline-block;width:6px;height:6px;background:var(--ink);border-radius:50%;margin-right:3px;animation:typingBounce 1.2s infinite ease-in-out both}
@@ -2414,6 +2411,15 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:3px!important;gap:3px!important}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{gap:3px!important}
 
+/* ---- Row titles and the quotation at the city card's size and weight (user, 27 Oct 2026: "make details titles and quote this size and thickness", the city name on the card: 24px Documan Thin) ----
+   The row title ("Funding", "Programme", the flag) and the standalone quotation with its hanging mark are 24px (--fs-l), weight 100, like the name on the city card. This comes after the
+   20px Medium rule and the Regular rule for titles under 17px, and out-ranks both. The quotation's source line stays 14px. At 24px on the 1.4 line, one line is 33.6px, one and a half of L. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .d-row-title{font-family:var(--display)!important;font-weight:100!important;font-size:var(--fs-l)!important}
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-family:var(--display)!important;font-weight:100!important;font-size:var(--fs-l)!important}
+/* How the records work: no underline in any state (the plus is part of the row, so it took the underline too), and the row's text and plus sit 24px in from the edges, like Share information and Voice. */
+@media (min-width:768px){
+  :root[data-theme] #chatRecordsInfo>summary,:root[data-theme] #chatRecordsInfo>summary:hover,:root[data-theme] #chatRecordsInfo>summary:focus-visible{text-decoration:none!important;padding:0 24px!important}
+}
 /* The outline of the Voice and Share information buttons is 1px, in the dark red of the Share information button, #420401 (user, 26 Oct 2026: "the outline can be 0.8px" and "this color"). */
 :root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn),:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn):is(.is-on,:hover,:focus-visible){border-width:1px!important}
 :root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn:is(.is-on,:hover,:focus-visible){border-color:#ec69f9!important}
@@ -2458,3 +2464,66 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){background:transparent!important;color:#fff204!important;text-decoration:none!important}
 :root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn *,#chatShareBtn,#chatShareBtn:hover){text-decoration:none!important}
 :root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:#fff!important}
+
+/* Mobile composer: box (input + Send) on top; Voice, Share information and suggested questions underneath */
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar{gap:10px!important;padding-bottom:max(10px,env(safe-area-inset-bottom))!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>div:first-child{display:flex!important;align-items:center!important;gap:8px!important;padding-right:12px!important;min-height:64px!important;padding-top:8px!important;padding-bottom:8px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #chat-input{flex:1 1 auto!important;min-width:0!important;width:auto!important;padding-right:0!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickySendBtn{position:static!important;inset:auto!important;transform:none!important;flex:0 0 auto!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions{display:flex;gap:8px;align-items:center}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileStickyShareBtn){box-sizing:border-box!important;height:44px!important;min-height:44px!important;padding:0 16px!important;border:1px solid var(--ink)!important;border-radius:12px!important;background:transparent!important;color:var(--ink)!important;font:400 var(--fs-s)/1 var(--sans)!important;display:inline-flex!important;align-items:center!important;gap:8px!important;white-space:nowrap}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn::before{content:""!important;display:block!important;flex:0 0 auto;width:9px;height:9px;box-sizing:border-box;border:1.5px solid currentColor;border-radius:50%;background:transparent}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn[aria-pressed="true"]::before{background:currentColor}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn::after{content:none!important}
+@media (hover:hover){:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileStickyShareBtn):hover{background:#fff204!important;color:#000!important;border-color:#fff204!important}}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>#mobileSuggestChips{display:flex!important;gap:8px!important;overflow-x:auto!important;scrollbar-width:none;margin:0 calc(-1 * var(--m-s4,16px))!important;padding:0 var(--m-s4,16px) 2px!important;scroll-padding-inline:var(--m-s4,16px);scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip{scroll-snap-align:start}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips::after{content:"";flex:0 0 1px}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips::-webkit-scrollbar{display:none}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip{flex:0 0 auto;height:36px;min-height:36px;padding:0 14px;border:1px solid var(--line);border-radius:18px;background:transparent;color:var(--ink);font:400 var(--fs-s)/1 var(--sans);white-space:nowrap}
+@media (hover:hover){:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip:hover{background:var(--ink);color:var(--paper)}}
+:root:root:root:root:root:root:root:root:root:root :is(#mobileComposerActions button,#mobileSuggestChips button):focus-visible{outline:2px solid #fff204!important;outline-offset:2px!important}
+
+/* SwiftUI control metrics on phone. Voice/Share = .bordered, controlSize .regular (34pt tall, 12pt side padding, 8pt corners);
+   Voice on = .borderedProminent (filled). Send = .borderedProminent icon button, 34pt. Suggestions = .bordered capsule,
+   controlSize .small (28pt). Each keeps a 44pt hit area (HIG) through an invisible ::after. */
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileStickyShareBtn){position:relative!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-radius:8px!important;gap:0!important}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn::before{content:none!important;display:none!important}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn[aria-pressed="true"]{background:var(--ink)!important;color:var(--paper)!important;border-color:var(--ink)!important}
+:root:root:root:root:root:root:root:root:root:root :is(#mobileComposerActions #mobileStickyVoiceBtn,#mobileComposerActions #mobileStickyShareBtn,#mobileSuggestChips .curator-suggest-chip)::after{content:""!important;position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%);background:none!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickySendBtn{width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;border-radius:8px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickySendBtn svg{width:17px!important;height:17px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip{position:relative;height:28px!important;min-height:28px!important;padding:0 10px!important;border-radius:14px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>div:first-child{min-height:52px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar{gap:12px!important}
+
+/* ---- Phone composer, Claude-app layout: one rounded card, text on top, a control row inside it ----
+   Share information = pill (left). Voice = round mic, filled white when on, slashed when off. Send = round, white.
+   Controls are 36pt with 44pt hit areas. */
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>#mobileComposerCard{display:block!important;box-sizing:border-box!important;width:100%!important;min-height:0!important;padding:14px 12px 10px 16px!important;border-radius:24px!important;border:1px solid rgba(255,255,255,.10)!important}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #chat-input{display:block!important;width:100%!important;min-height:24px!important;margin:0 0 10px!important;padding:0 4px 0 0!important;resize:none;font:400 var(--fs-m)/1.35 var(--sans)!important}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions{display:flex!important;align-items:center!important;gap:8px!important}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions #mobileStickyShareBtn{height:36px!important;min-height:36px!important;padding:0 14px!important;border-radius:18px!important;border:0!important;background:rgba(255,255,255,.10)!important;color:#fff!important}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions #mobileStickyVoiceBtn{width:36px!important;height:36px!important;min-width:36px!important;padding:0!important;border-radius:50%!important;border:0!important;background:rgba(255,255,255,.10)!important;color:#fff!important;justify-content:center!important}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions #mobileStickyVoiceBtn svg{width:19px;height:19px}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions #mobileStickyVoiceBtn[aria-pressed="true"]{background:#fff!important;color:#000!important}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions #mobileStickyVoiceBtn[aria-pressed="false"]::before{content:""!important;display:block!important;position:absolute;left:50%;top:50%;width:22px;height:1.5px;border:0;border-radius:0;background:currentColor;transform:translate(-50%,-50%) rotate(-45deg);pointer-events:none}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileStickySendBtn{position:relative!important;inset:auto!important;transform:none!important;flex:0 0 auto!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:0!important;border-radius:50%!important;background:#fff!important;color:#000!important;border:0!important;display:flex!important;align-items:center!important;justify-content:center!important}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileStickySendBtn svg{width:18px!important;height:18px!important;color:#000!important}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileStickySendBtn::after{content:"";position:absolute;inset:-4px}
+@media (hover:hover){:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions :is(#mobileStickyShareBtn,#mobileStickyVoiceBtn):hover{background:#fff204!important;color:#000!important}}
+:root:root:root:root:root:root:root:root:root:root:root:root #layersBtn{height:34px!important;min-height:34px!important;padding:0 10px 0 12px!important;border-radius:8px!important}
+
+/* Phone chat: your messages sit right in a rounded bubble, answers stay plain text — as in the Claude app */
+@media (max-width:767px){
+  :root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{display:flex!important;justify-content:flex-end!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end::before{content:none!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble{display:inline-block!important;max-width:80%!important;padding:10px 14px!important;border-radius:20px!important;background:var(--block)!important;color:var(--ink)!important;text-indent:0!important;text-align:left!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble *{color:var(--ink)!important}
+}
+
+/* ---- Jokker everywhere, no bold (user, 26 Oct 2026: "just use jokker font everywhere, no bold use thin instead") ----
+   Documan is gone: --display and --display-xl are Jokker now, so every rule above that says var(--display) (the titles in Thin, the small titles in Regular, the row titles and the quotation in
+   Medium, the starter questions in Thin, the logo) is set in Jokker at the same weights. Bold is Thin: assets/typeset.js puts no-bold on any element whose computed weight is 600 or more
+   (headings, strong, labels, buttons, the grade marks), and this rule sets those at 100. The specificity is six ids' worth (:not(#t)) to beat the rules that set a bold weight with an id and !important. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .no-bold{font-weight:100!important}
