@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=338">
-  <script src="assets/config.js?v=338"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=339">
+  <script src="assets/config.js?v=339"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7809,6 +7809,14 @@ return maplibregl$1;
     }
     window.showBuildingXray = showBuildingXray;
 
+    // Where the selected record's badge sits while its x-ray is up: on the matched building, not on the record's own point,
+    // which can lie in the street beside it. Null when no building was matched.
+    window.xrayAnchor = inst => {
+      if (!inst || XRAY.inst !== inst || !XRAY.building || !XRAY.building.geometry) return null;
+      const c = xrayCentroid(XRAY.building.geometry);
+      return isFinite(c[0]) && isFinite(c[1]) ? c : null;
+    };
+
     function xrayDraw(inst) {
       const b = XRAY.building;
       const wire = xrayWire();
@@ -9964,11 +9972,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v338';
+    const ATLAS_RELEASE = 'culture-atlas-v339';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=338').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=339').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19555,9 +19563,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=338"></script>
-<script src="assets/layers.js?v=338"></script>
-<script src="assets/hq-detail.js?v=338"></script>
-<script src="assets/bubbles.js?v=338" defer></script>
+<script src="assets/typeset.js?v=339"></script>
+<script src="assets/layers.js?v=339"></script>
+<script src="assets/hq-detail.js?v=339"></script>
+<script src="assets/bubbles.js?v=339" defer></script>
 </body>
 </html>
