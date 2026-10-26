@@ -22,7 +22,10 @@
   "governance": {"legal_form": "association", "parent": null, "director_appointed_by": "board", "staff_status": null, "budget_set_by": null, "controls": [], "year": "2026", "sources": ["https://www.kunsthausbaselland.ch/kunsthaus"]},
   "red_tape": null,
   "basis": "The Kunsthaus page names the Kunstverein Baselland as the body running the institution and says its Vorstand elects the curatorial leadership."},
- {"id": "can-centre-dart-neuchatel", "governance": null, "red_tape": null, "basis": ""},
+ {"id": "can-centre-dart-neuchatel",
+  "governance": {"legal_form": "association", "parent": null, "director_appointed_by": null, "staff_status": null, "budget_set_by": null, "controls": [], "year": "2026", "sources": ["https://can.ch/centre/a-propos/?section=2"]},
+  "red_tape": null,
+  "basis": "The Fonctionnement section of the about page says the centre is managed by the non-profit association of the same name, made up of a bureau, a committee and ordinary members."},
  {"id": "fondation-beyeler", "governance": null, "red_tape": null, "basis": ""},
  {"id": "kunst-halle-sankt-gallen-st-gallen", "governance": null, "red_tape": null, "basis": ""},
  {"id": "fotomuseum-winterthur-winterthur", "governance": null, "red_tape": null, "basis": ""}

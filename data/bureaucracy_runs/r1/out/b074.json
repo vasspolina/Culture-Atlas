@@ -46,9 +46,18 @@
  },
  {
   "id": "national-museum-of-tajikistan",
-  "governance": null,
+  "governance": {
+   "legal_form": "national government body",
+   "parent": "Executive Office of the President of Tajikistan",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": ["https://osorkhonaimilliidip.tj/ru/o-nas/"]
+  },
   "red_tape": null,
-  "basis": ""
+  "basis": "The museum's own about page calls it a state institution of the Executive Office of the President, founded by Presidential decree no. 1094 of 27 July 2011."
  },
  {
   "id": "dar-foto-festival",
