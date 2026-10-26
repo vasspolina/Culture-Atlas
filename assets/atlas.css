@@ -2653,3 +2653,16 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* A record's name fills each line to the edge and breaks only where the line ends (it was balanced into two short lines). */
 :root:root:root:root:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading,h2.dossier-main-heading){text-wrap:wrap!important;max-width:none!important;width:auto!important}
+
+/* Gossip mode on the dark theme: the globe's ground is a dark yellow, the Gossip button's lime (#e2f86c) darkened. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#4f5a12!important}
+
+/* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (teal clean, orange flagged, grey unverified; orange in Gossip mode). */
+:root:root:root:root:root:root[data-theme] .inst-pin-label{--lc:#6f6f6f;background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:8px}
+:root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="A"]{--lc:#007d79}
+:root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="B"]{--lc:#ba4e00}
+:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{--lc:#a8a8a8;background:#000}
+:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="A"]{--lc:#3ddbd9}
+:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="B"]{--lc:#ff832b}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#ba4e00}
+:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#ff832b}
