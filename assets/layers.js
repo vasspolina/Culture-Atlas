@@ -6,18 +6,19 @@
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, mix: false, right: false, epstein: false, hq: false, people: false, kinds: { gov: true, corp: true, found: true } };
-  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb' };
+  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, mix: false, right: false, epstein: false, hq: false, people: false, propaganda: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
+  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#2dd4bf' };
   // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
   // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
   // the data are drawn in a deeper step of the same hue there: 3.05:1 or better against white at the 0.8 alpha they are drawn at.
-  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#e2f86c': '#6b8a00' };
+  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#e2f86c': '#6b8a00', '#2dd4bf': '#0d9488' };
   const lineCol = c => (document.documentElement.getAttribute('data-theme') === 'dark' ? c : (LINE_LIGHT[c] || c));
   // Colour is never the only cue (WCAG 1.4.1): each kind of mark has its own outline, the same ones the key in the layers panel shows.
   const SHAPES = {
     square: null,
     hexagon: [[.25, 0], [.75, 0], [1, .5], [.75, 1], [.25, 1], [0, .5]],
     triangle: [[.5, 0], [1, 1], [0, 1]],
+    pentagon: [[.5, 0], [1, .38], [.81, 1], [.19, 1], [0, .38]],
     shield: [[.5, 0], [1, .18], [.9, .72], [.5, 1], [.1, .72], [0, .18]],
     star: [[.5, 0], [.62, .35], [1, .35], [.69, .57], [.81, .95], [.5, .72], [.19, .95], [.31, .57], [0, .35], [.38, .35]]
   };
@@ -36,6 +37,8 @@
   const FUNDER = n => n[1] === 'gov' || n[1] === 'corp' || n[1] === 'found';
   const rad = Math.PI / 180;
   const kindOn = k => L.kinds[k] !== false;
+  const PKINDS = ['today', 'historical'];
+  const pkindOn = k => L.pkinds[k] !== false;
   // How many spaces name a funder, and in how many countries (the key is the same across spaces; local bodies such as a city
   // government have a key of their own per space and so reach one).
   const reachCache = new Map();
@@ -455,7 +458,7 @@
   }
 
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!REACH && !L.flags && !L.grade && !L.money && !L.mix && !L.right && !L.epstein && !L.hq && !L.people && !L.ties) return;
+    if (!REACH && !L.flags && !L.grade && !L.money && !L.mix && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties) return;
     if ((L.money || L.mix || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -535,6 +538,22 @@
           LM.push({ box: { x, y, w, h }, x: x + w / 2, y: y + h / 2, r: 0, col: COL.flag, label: `${n} flagged in ${b.name}`, sub: 'Flagged spaces', ask: `Which spaces in ${b.name} are flagged, and why?` });
         });
       }
+    }
+
+    if (L.propaganda) {
+      // Each space a state or regime has used as an instrument of propaganda: a filled pentagon when it is used that way now, a
+      // ring when it was in a past period. A space with both shows both side by side, just below its dot.
+      ctx.lineWidth = 1.4;
+      dots.forEach(d => {
+        const i = d.inst; if (!i || !i.propaganda || !i.propaganda.length) return;
+        const marks = PKINDS.filter(k => pkindOn(k) && i.propaganda.some(p => p.kind === k));
+        marks.forEach((k, n) => {
+          const p = i.propaganda.find(q => q.kind === k), x = d.x + (n - (marks.length - 1) / 2) * 14, y = d.y + 12;
+          LM.push({ x, y, r: 8, rec: i, col: COL.prop, label: k === 'today' ? 'Used for propaganda now' : 'Used for propaganda in the past', sub: `${i.name}, ${p.period}`, sub2: p.mechanism ? p.mechanism[0].toUpperCase() + p.mechanism.slice(1) : '', ask: `How is ${i.name} used for propaganda?` + (k === 'today' ? '' : ` (${p.period})`) });
+          if (k === 'today') { shapePath(ctx, 'pentagon', x, y, 6); ctx.fillStyle = COL.prop; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); }
+          else { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.lineWidth = 2.4; ctx.strokeStyle = lineCol(COL.prop); ctx.stroke(); ctx.lineWidth = 1.4; }
+        });
+      });
     }
 
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
@@ -772,6 +791,8 @@
       set('flags', `${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
       const graded = ALL_INSTITUTIONS.filter(i => i.grade).length;
       set('grade', `${formatCount(graded)}\u00a0rated · ${formatCount(ALL_INSTITUTIONS.length - graded)}\u00a0unrated`);
+      const propOf = k => ALL_INSTITUTIONS.filter(i => (i.propaganda || []).some(p => p.kind === k)).length;
+      set('propaganda', `${formatCount(propOf('today'))}\u00a0now · ${formatCount(propOf('historical'))}\u00a0past`);
     }
     if (HQ) {
       set('hq', `${formatCount(HQ.orgs.length)}\u00a0offices · ${formatCount(new Set(HQ.orgs.map(o => o.c)).size)}\u00a0cities`);
@@ -802,7 +823,7 @@
     if (!W || !H) return;
     if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px'; }
     const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    if (!(REACH || L.flags || L.grade || L.money || L.mix || L.right || L.epstein || L.hq || L.people || L.ties)) { SV.dots = []; LM = []; return; }
+    if (!(REACH || L.flags || L.grade || L.money || L.mix || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties)) { SV.dots = []; LM = []; return; }
     const base = 240, r = base * Math.pow(2, map.getZoom() - 7);
     // Points behind the camera on a tilted map project to nonsense; anything far off the canvas is treated as not in front.
     const project = (lon, lat) => { const p = map.project([lon, lat]); return { x: p.x, y: p.y, front: Math.abs(p.x - W / 2) < 6 * W && Math.abs(p.y - H / 2) < 6 * H, depth: 1 }; };
@@ -940,6 +961,7 @@
         L[input.dataset.layer] = false;
       });
       box.querySelectorAll('input[data-kind]').forEach(input => { input.checked = true; L.kinds[input.dataset.kind] = true; });
+      box.querySelectorAll('input[data-pkind]').forEach(input => { input.checked = true; L.pkinds[input.dataset.pkind] = true; });
       clearReach();
       repaint();
     });
@@ -949,13 +971,17 @@
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
       const k = inp.dataset.layer;
       L[k] = inp.checked;
-      if (k !== 'flags' && k !== 'grade' && inp.checked) loadMoney();
+      if (k !== 'flags' && k !== 'grade' && k !== 'propaganda' && inp.checked) loadMoney();
       if ((k === 'hq' || k === 'people') && inp.checked) loadHq();
       repaint();
     }));
     box.querySelectorAll('input[data-kind]').forEach(inp => inp.addEventListener('change', () => {
       L.kinds[inp.dataset.kind] = inp.checked;
       renderTop();
+      repaint();
+    }));
+    box.querySelectorAll('input[data-pkind]').forEach(inp => inp.addEventListener('change', () => {
+      L.pkinds[inp.dataset.pkind] = inp.checked;
       repaint();
     }));
     updateCounts();
