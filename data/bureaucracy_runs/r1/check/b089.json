@@ -1,0 +1,97 @@
+[
+ {
+  "id": "milwaukee-symphony-orchestra-milwaukee",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "walker-art-center",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "frist-art-museum-nashville",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "new-orleans-museum-of-art-new-orleans",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ogden-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "storm-king-art-center",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artists-space",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "brooklyn-museum-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "The cited MDA calls the Smithsonian a trust instrumentality of the United States governed by a Board of Regents and names no statute; Cooper Hewitt appears only on the organization chart (page 17).",
+    "fix": "statutory public body, supported by 20 U.S.C. 41 (establishment by act of Congress) and 20 U.S.C. 42 (Board of Regents), which must be added to the sources"
+   },
+   {
+    "field": "governance.sources",
+    "stored": [
+     "MDA pdf only"
+    ],
+    "page says": "The page that states the statutory basis is not among the cited urls.",
+    "fix": "add https://www.law.cornell.edu/uscode/text/20/41 and https://www.law.cornell.edu/uscode/text/20/42"
+   },
+   {
+    "field": "basis",
+    "stored": "The Smithsonian's FY2025 Management's Discussion and Analysis calls the Institution a trust instrumentality of the United States governed by a Board of Regents and lists Cooper Hewitt among its museums.",
+    "page says": "The MDA does not say the Institution was created by statute.",
+    "fix": "20 U.S.C. 41 constitutes the Smithsonian Institution by act of Congress and 20 U.S.C. 42 vests its business in a Board of Regents, and the Smithsonian's FY2025 Management's Discussion and Analysis (organization chart, page 17) lists Cooper Hewitt among its museums."
+   }
+  ],
+  "corrected": {
+   "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Smithsonian Institution",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://www.si.edu/sites/default/files/about/smithsonian_fy2025_mda.pdf",
+     "https://www.law.cornell.edu/uscode/text/20/41",
+     "https://www.law.cornell.edu/uscode/text/20/42"
+    ]
+   },
+   "red_tape": null,
+   "basis": "20 U.S.C. 41 constitutes the Smithsonian Institution by act of Congress and 20 U.S.C. 42 vests its business in a Board of Regents, and the Smithsonian's FY2025 Management's Discussion and Analysis (organization chart, page 17) lists Cooper Hewitt among its museums."
+  }
+ },
+ {
+  "id": "el-museo-del-barrio-new-york",
+  "verdict": "ok",
+  "faults": []
+ }
+]

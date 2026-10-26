@@ -1,0 +1,55 @@
+[
+ {
+  "id": "djerassi-resident-artists-program-woodside",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "32-east-ugandan-arts-trust-kampala",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kharkiv-municipal-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "izolyatsia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mystetskyi-arsenal",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The dus.gov.ua page, the Cabinet order of 5 Sept 2007 (kmu.gov.ua) and the 2025 ministry order all call it a state enterprise (derzhavne pidpryiemstvo) managed by the State Affairs Administration. None says it is a government body or a department of one; a state enterprise is not on the legal_form list and the value was mapped by inference.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "mystetskyi-arsenal",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "pinchukartcentre",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cove-park-argyll-and-bute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "catalyst-arts-belfast",
+  "verdict": "ok",
+  "faults": []
+ }
+]
