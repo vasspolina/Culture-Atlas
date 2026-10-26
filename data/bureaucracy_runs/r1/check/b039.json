@@ -1,0 +1,90 @@
+[
+ {
+  "id": "palazzo-grassi-and-punta-della-dogana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "venice-biennale",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-of-jamaica-kingston",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hiroshima-city-museum-of-contemporary-art-hiroshima",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "aomori-museum-of-art-aomori",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2015",
+    "page says": "The ordinance page is the text in force from 1 October 2019 (last amendment 2019, Ordinance no. 44); 2015 is only the date of the last amendment of the second cited page, the museum regulation (effective 1 April 2015)",
+    "fix": "2019"
+   }
+  ],
+  "corrected": {
+   "id": "aomori-museum-of-art-aomori",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "Aomori Prefecture",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2019",
+    "sources": [
+     "https://reiki.pref.aomori.lg.jp/reiki_honbun/c001RG00002352.html",
+     "https://reiki.pref.aomori.lg.jp/reiki_honbun/c001RG00002414.html"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: article 1 of the Aomori Prefectural Museum of Art Ordinance establishes the museum in Aomori City and articles 3 and 5 give use approvals to the governor."
+  }
+ },
+ {
+  "id": "hakone-open-air-museum-hakone",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.director_appointed_by",
+    "stored": "board",
+    "page says": "Article 39(3): the chair (rijicho) appoints and dismisses the museum director with the board's approval, so two bodies act; article 24(2), which the basis cites, only says the board selects the chair",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "the board's choice of the chair (article 24) and the chair's hiring of office staff (secretariat article)",
+    "page says": "Article 24 concerns choosing the chair, not the museum director; the secretariat staff provision is article 40 (paragraph 3 for staff appointments by the chair)",
+    "fix": "Governance: the foundation page says the Fujisankei Group founded it and the Prime Minister certified it as a public interest foundation in 2012, and its statutes set the board's approval of the budget (article 7) and the chair's hiring of the secretariat staff (article 40)."
+   }
+  ],
+  "corrected": {
+   "id": "hakone-open-air-museum-hakone",
+   "governance": {
+    "legal_form": "private foundation",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": "employees of the institution",
+    "budget_set_by": "board",
+    "controls": [
+     "charity or foundation regulator"
+    ],
+    "year": "2022",
+    "sources": [
+     "https://www.hakone-oamfoundation.jp/",
+     "https://www.hakone-oamfoundation.jp/mod/teikan.pdf?v20220829"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the foundation page says the Fujisankei Group founded it and the Prime Minister certified it as a public interest foundation in 2012, and its statutes set the board's approval of the budget (article 7) and the chair's hiring of the secretariat staff (article 40)."
+  }
+ }
+]

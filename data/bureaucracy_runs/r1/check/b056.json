@@ -1,0 +1,56 @@
+[
+ {
+  "id": "biomuseo-panama-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-contemporáneo-de-panamá-panama-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-del-barro-asunción",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private foundation",
+    "page says": "La Fundacion page calls the foundation an 'entidad civil no lucrativa' recognised by Decree 1035 of 1989; it does not say a private donor or company set it up",
+    "fix": "private nonprofit"
+   }
+  ],
+  "corrected": {
+   "id": "museo-del-barro-asunción",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "1999",
+    "sources": [
+     "https://www.museodelbarro.org/museo/la-fundacion"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The museum's page La Fundacion says the Carlos Colombino Lailla foundation, a civil non-profit entity formed in 1987 and recognised by Decree 1035 of 1989 with statutes approved by Decree 4162 of 1999, backs the Museo del Barro."
+  }
+ },
+ {
+  "id": "lugar-de-la-memoria-la-tolerancia-y-la-inclusion-social-lum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-de-lima",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ayala-museum",
+  "verdict": "ok",
+  "faults": []
+ }
+]

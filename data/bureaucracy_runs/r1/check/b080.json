@@ -1,0 +1,83 @@
+[
+ {
+  "id": "autograph-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "british-museum-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "camden-art-centre",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chisenhale-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "delfina-foundation-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "design-museum-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dulwich-picture-gallery-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "english-national-ballet-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "gasworks",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-london",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "1992",
+    "page says": "1992 is only the year of the Museums and Galleries Act; the cited National Gallery governance page is live with footer 'Copyright 2016-2026 The National Gallery', and the legislation.gov.uk pages are the revised text in force today, with no 1992 document date on them",
+    "fix": "2026"
+   }
+  ],
+  "corrected": {
+   "id": "national-gallery-london",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": "employees of the institution",
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.legislation.gov.uk/ukpga/1992/44/section/1",
+     "https://www.legislation.gov.uk/ukpga/1992/44/schedule/1",
+     "https://www.nationalgallery.org.uk/about-us/governance"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Section 1 of the Museums and Galleries Act 1992 creates the Board of Trustees of the National Gallery as a body corporate, and paragraph 1 and paragraph 3 of Schedule 1 say its staff are not civil servants and that the Board appoints its employees."
+  }
+ }
+]

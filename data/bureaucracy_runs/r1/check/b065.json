@@ -1,0 +1,114 @@
+[
+ {
+  "id": "singapore-art-museum-singapore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "singapore-art-museum-sam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-bratislava",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The archived own page says KHB was founded on 1 January 2020 as an independent state-run contributory organisation of the Ministry of Culture with its own Founding Charter. The 2024 protocol (Article 2) calls KHB and the Slovak National Gallery contributory organisations (prispevkove organizacie) whose founder is the ministry, and Article 1 records the 22 March 2024 ministerial decision abolishing KHB by merger into the gallery. Neither page calls it a ministry department; a contributory organisation is a separate legal entity with its own charter, which the brief does not class as a department of a ministry.",
+    "fix": "statutory public body"
+   }
+  ],
+  "corrected": {
+   "id": "kunsthalle-bratislava",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Ministry of Culture of the Slovak Republic",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2024",
+    "sources": [
+     "https://www.crz.gov.sk//data/att/4864753.pdf",
+     "https://web.archive.org/web/2023/https://old.kunsthallebratislava.sk/en/khb/kunsthalle-bratislava"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Its own site (archived 2023) calls it a state-run contributory organisation of the Ministry of Culture with its own founding charter; the 2024 transfer protocol calls it and the Slovak National Gallery contributory organisations of the ministry and records a ministerial decision of 22 March 2024 merging it into the gallery, so the form in force today is that of the gallery."
+  }
+ },
+ {
+  "id": "slovak-national-gallery",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The founding charter (Zriadovacia listina, effective 1 January 2020) calls SNG a state contributory organisation (statna prispevkova organizacia) and a legal person (pravnicka osoba) that manages independently under its own budget and acquires rights and obligations in its own name; it is not described as a ministry department. The Supreme Audit Office report likewise treats it as a contributory organisation.",
+    "fix": "statutory public body"
+   },
+   {
+    "field": "governance.year",
+    "stored": "2026",
+    "page says": "The charter, the document the legal form and director facts come from, is dated 1 January 2020 (effective date 1.1.2020). The Supreme Audit Office PDF carries no date in its text.",
+    "fix": "2020"
+   }
+  ],
+  "corrected": {
+   "id": "slovak-national-gallery",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Ministry of Culture of the Slovak Republic",
+    "director_appointed_by": "government or ministry",
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "public procurement law",
+     "state audit office"
+    ],
+    "year": "2020",
+    "sources": [
+     "https://sng.sk/storage/10502/oUllKfOYYlVb3QutkJ1c4Au8btPffoNzzINBfgW7.pdf",
+     "https://www.nku.gov.sk/documents/d/nku/kontrola-vybranych-organizacii-v-zriadovatelskej-posobnosti-mk-sr-pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The founding charter in force from 1 January 2020 (Article III and Article V) names it a state contributory organisation founded by the Ministry of Culture whose director the minister appoints after a selection procedure; the Supreme Audit Office report on 2022 to 2024 audited it and records its procurement law duties."
+  }
+ },
+ {
+  "id": "kapelica-gallery-kersnikova-institute-ljubljana",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "The Culture.si profile says Kersnikova Institute is a not-for-profit cultural institution founded by the Student Organisation of the University of Ljubljana and the Union of Student Clubs of Slovenia; it names no legal form or register entry. The Kersnikova notice (19 Dec 2024) cites the Institutes Act (Zakon o zavodih) and the institute's statute and is a job call by its council; it does not say private nonprofit, charity or independent board. The Institutes Act covers public and private institutes alike, so the form is an inference.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "kapelica-gallery-kersnikova-institute-ljubljana",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "mglc-international-centre-of-graphic-arts-ljubljana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "moderna-galerija-ljubljana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "a4-arts-foundation-cape-town",
+  "verdict": "ok",
+  "faults": []
+ }
+]

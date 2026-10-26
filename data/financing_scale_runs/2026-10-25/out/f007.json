@@ -1,0 +1,257 @@
+[
+ {
+  "id": "fondation-cab-brussels",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "la-loge-brussels",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "wiels-contemporary-art-centre",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 24,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": 1800,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/22a0366c-5db3-11f1-bca5-a97a03ed1ef3",
+    "https://kfda.be/en/venues/wiels/"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": null,
+   "expenditure": null,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": -463319,
+   "source_kind": "annual accounts (NBB Central Balance Sheet Office)",
+   "url": "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/22a0366c-5db3-11f1-bca5-a97a03ed1ef3"
+  },
+  "basis": "Scale: staff is the 14 full-time plus 10 part-time employees on the social balance sheet at year end 2025 (20.6 full-time equivalents), and the 1,800 m2 exhibition space over three floors comes from the kfda.be venue page. Finance: the 2025 annual accounts give equity of minus 463,319 euros (balance sheet line 10/15) and report gross margin only, so income and spending are not stated."
+ },
+ {
+  "id": "imal-brussels",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 10,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/44a0cf9b-761b-11f1-adc7-191362a921e7"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": null,
+   "expenditure": null,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": 610526,
+   "source_kind": "annual accounts (NBB Central Balance Sheet Office)",
+   "url": "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/44a0cf9b-761b-11f1-adc7-191362a921e7"
+  },
+  "basis": "Scale: staff is the 1 full-time plus 9 part-time employees on the social balance sheet at year end 2025 (7.5 full-time equivalents). Finance: the 2025 annual accounts give equity of 610,526 euros (balance sheet line 10/15) and report gross operating margin only, so income and spending are not stated."
+ },
+ {
+  "id": "museum-dhondt-dhaenens-deurle",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 8,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://museumdd.be/uploads/collection-photos/Jaarboek-2025.pdf",
+    "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/fc04ffb7-3e39-11f1-8329-b37d48926385"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": null,
+   "expenditure": null,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": 4223809,
+   "source_kind": "annual accounts (NBB Central Balance Sheet Office)",
+   "url": "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/fc04ffb7-3e39-11f1-8329-b37d48926385"
+  },
+  "basis": "Scale: visitors are the 2025 total of 16,157 in the visitor table on PDF page 50 of the 2025 annual report (its paying and free columns do not add to that total), and staff is the 4 full-time plus 4 part-time employees on the social balance sheet at year end 2025 (6.3 full-time equivalents). Finance: the 2025 annual accounts of Stichting Mevrouw Jules Dhondt-Dhaenens give equity of 4,223,809 euros (balance sheet line 10/15) and report gross margin only, so income and spending are not stated."
+ },
+ {
+  "id": "ciap-genk",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kiosk-ghent",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kunsthal-gent",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 10,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/6e73b8af-42fe-11f1-931a-d7df8b066c4a"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": null,
+   "expenditure": null,
+   "public": null,
+   "private": null,
+   "earned": 161662,
+   "sponsorship": null,
+   "net_assets": 169408,
+   "source_kind": "annual accounts (NBB Central Balance Sheet Office)",
+   "url": "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/6e73b8af-42fe-11f1-931a-d7df8b066c4a"
+  },
+  "basis": "Scale: staff is the 10 part-time employees on the social balance sheet at year end 2025 (6.5 full-time equivalents). Finance: the 2025 micro-model accounts state turnover of 161,662 euros and equity of 169,408 euros, and one combined line of 707,039 euros for membership fees, donations, legacies and subsidies that is not split into public and private."
+ },
+ {
+  "id": "s-m-a-k",
+  "scale": {
+   "visitors": 94717,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://smak.be/volumes/general/20260313_SMAK-jaarverslag-2025_compressed.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 94,717 visits registered in 2025 (84,832 individual and 9,885 in groups) in the Terugblik op 2025 section of the 2025 annual report."
+ },
+ {
+  "id": "z33-hasselt",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 56,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/2df001af-13e8-11f1-ab22-cb5e9db4bcf1",
+    "https://en.wikipedia.org/wiki/Art_Museum_Z33"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": null,
+   "expenditure": null,
+   "public": null,
+   "private": null,
+   "earned": 1019599,
+   "sponsorship": null,
+   "net_assets": 1412200,
+   "source_kind": "annual accounts (NBB Central Balance Sheet Office)",
+   "url": "https://consult.cbso.nbb.be/api/external/broker/public/deposits/pdf/2df001af-13e8-11f1-ab22-cb5e9db4bcf1"
+  },
+  "basis": "Scale: staff is the 13 full-time plus 43 part-time employees on the social balance sheet at year end 2025 (27 full-time equivalents), and the 4,600 m2 exhibition space of the two merged wings is the figure on the Wikipedia article for Z33. Finance: the 2025 annual accounts state turnover of 1,019,599 euros and equity of 1,412,200 euros, and one combined line of 2,732,775 euros for membership fees, donations, legacies and subsidies that is not split into public and private."
+ },
+ {
+  "id": "contour-biennale-mechelen",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "image-factory-art-foundation-imagination-factory-belize-city",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

@@ -281,3 +281,29 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
+
+// No bold anywhere (user, 26 Oct 2026: "no bold use thin instead"). CSS cannot test a weight, so every element is measured once it is on the page and any at weight 600 or more gets the class
+// no-bold, which atlas.css sets at 100 (Jokker Thin). The whole body is read first, then the classes are written; later only the nodes that were added are read, batched in 120ms,
+// so a streaming answer costs one small pass. A weight that changes by state (a hover) is not caught.
+(function () {
+  var pending = [], timer = 0;
+  function mark(root) {
+    var list = [root].concat([].slice.call(root.querySelectorAll('*')));
+    var bold = list.map(function (el) { return parseInt(getComputedStyle(el).fontWeight, 10) >= 600; });
+    list.forEach(function (el, i) { if (bold[i]) el.classList.add('no-bold'); });
+  }
+  function flush() {
+    timer = 0;
+    var batch = pending; pending = [];
+    batch.forEach(function (n) { if (n.isConnected) mark(n); });
+  }
+  function later(n) { pending.push(n); if (!timer) timer = setTimeout(flush, 120); }
+  function start() {
+    later(document.body);
+    new MutationObserver(function (list) {
+      list.forEach(function (m) { m.addedNodes.forEach(function (a) { if (a.nodeType === 1) later(a); }); });
+    }).observe(document.body, { childList: true, subtree: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { later(document.body); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
