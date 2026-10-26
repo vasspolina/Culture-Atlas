@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=403">
-  <script src="assets/config.js?v=403"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=404">
+  <script src="assets/config.js?v=404"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9939,11 +9939,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v403';
+    const ATLAS_RELEASE = 'culture-atlas-v404';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=403').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=404').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15408,6 +15408,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
 
     async function handleCuratorQuery(query) {
+      // Only a name the visitor types opens that record's Details tab; a prompt, chip, link or mark that sends the same words stays in the chat.
+      const typedByVisitor = !!window.atlasTypedQuery; window.atlasTypedQuery = false;
       // Every question the page puts to the chat is answered in the chat: its tab (or the phone's chat view) comes to the front
       // first, whichever button, link, mark or modal sent the question.
       try {
@@ -15512,9 +15514,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
       const target = explicit || active;
-      // A name sent on its own ("moma", "show me MoMA") is a request for that record, so it opens as a click on its pin does:
+      // A name the visitor types on its own ("moma", "show me MoMA") is a request for that record, so it opens as a click on its pin does:
       // the Details tab with the record, and the map flown in to the space. A question about a space still keeps you in the chat.
-      if (explicit && isNameRequest(query, explicit)) {
+      if (typedByVisitor && explicit && isNameRequest(query, explicit)) {
         selectInstitution(explicit, true);
         if (window.innerWidth >= 768 && typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
       }
@@ -16222,6 +16224,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       setBottomSheetSnap('expanded');
       if (typeof setWorkspaceTab === 'function') setWorkspaceTab('chat');
       if (typeof handleCuratorQuery === 'function') {
+        window.atlasTypedQuery = true;
         handleCuratorQuery(q);
       }
     }
@@ -16839,6 +16842,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       appendUserMessage(text);
 
+      window.atlasTypedQuery = true;
       handleCuratorQuery(text);
     }
 
@@ -19645,9 +19649,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=403"></script>
-<script src="assets/layers.js?v=403"></script>
-<script src="assets/hq-detail.js?v=403"></script>
-<script src="assets/bubbles.js?v=403" defer></script>
+<script src="assets/typeset.js?v=404"></script>
+<script src="assets/layers.js?v=404"></script>
+<script src="assets/hq-detail.js?v=404"></script>
+<script src="assets/bubbles.js?v=404" defer></script>
 </body>
 </html>
