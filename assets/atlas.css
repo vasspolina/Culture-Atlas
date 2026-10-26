@@ -2221,3 +2221,14 @@ div:has(>#topThemeBtn){column-gap:0}
   /* Everything under the head sits in the same right-hand column, so its rows line up with the head's rows. */
   :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{margin-left:calc((100% - 2 * var(--L)) * 3 / 11 + 2 * var(--L))}
 }
+
+/* ---- Visiting as labelled columns, after the foundry's footer (user, 26 Oct 2026) ----
+   Each fact is a small grey capital label (14px, capitals spaced .06em as Hochuli asks) with its words under it at 16px, regular, no bullet and no bold.
+   Two columns beside the row title; one column when the panel is narrow. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{margin:0;padding:0;min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:var(--L)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item{margin:0;padding:0;min-width:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dt{margin:0;font-size:14px;line-height:var(--lh);font-weight:400;text-transform:uppercase;letter-spacing:.06em;color:color-mix(in srgb,var(--ink) 55%,transparent)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dd{margin:0;grid-column:auto;font-size:16px;line-height:var(--lh);font-weight:400;color:var(--ink);letter-spacing:0;overflow-wrap:break-word;hyphens:manual;text-wrap:pretty}
+@container (min-width:34em){
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--L)}
+}
