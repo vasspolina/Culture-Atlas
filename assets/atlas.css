@@ -2586,3 +2586,17 @@ div:has(>#topThemeBtn){column-gap:0}
    sides and colours it has, only their width is 1px. A button with no border stays without one (a border-style of none computes to 0). The six :not(#t)
    beat every id rule that sets a width with !important. */
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(button,[role=button],input[type=button],input[type=submit],.record-action,.curator-followup-pill,.record-popup-actions a,.atlas-pill-btn,.pill-sm,#desktopDossierWebLink){border-width:1px!important}
+
+/* Voice sits inside the chat field, left of the send arrow, as plain text with no outline (user's instruction, 26 Oct 2026). It is out of the toolbar row
+   under the box; the field gives it room on the right. Muted dims it. Hover turns the type yellow like the other links on the navy. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #noteInputBlock{padding-right:150px!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn{position:absolute!important;top:14px!important;right:74px!important;left:auto!important;height:52px!important;min-height:52px!important;width:auto!important;padding:0 8px!important;margin:0!important;border-style:none!important;border-color:transparent!important;border-radius:10px!important;background:transparent!important;box-shadow:none!important;color:#fff!important;display:inline-flex!important;align-items:center!important;opacity:1;z-index:2}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn[aria-pressed="false"]{opacity:.55}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:inherit!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn:is(:hover,:focus-visible,:active){background:transparent!important;color:#fff204!important;border-style:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #curatorVoiceToggleBtn:is(:hover,:focus-visible,:active) :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:#fff204!important}
+
+/* "Share information" is stretched across the full width under the chat box, in 17px type (user's instruction, 26 Oct 2026); it keeps the 34px height, the
+   10px radius and its outline. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) div:has(>#chatShareBtn){flex:1 1 100%!important;width:100%!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #chatShareBtn{width:100%!important;font-size:17px!important;justify-content:center!important;text-align:center!important}
