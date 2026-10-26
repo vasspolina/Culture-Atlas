@@ -1002,6 +1002,14 @@ abbr[title]{text-decoration:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote .quote-hang{position:absolute;right:100%;top:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote figcaption{margin:0;overflow-wrap:break-word;max-width:44em}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote>.meta:first-child{margin-bottom:0}
+/* The standalone quotation (user, 26 Oct 2026): one quotation from the research in place of the Criticism row, no title, no button, one column, 16px.
+   The opening mark hangs in the margin so the words align; the source line is the same size, quieter in colour. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote{display:block;position:relative;margin:var(--L) 0 0;padding:0;border:0;min-width:0;font:400 16px/1.4 var(--sans);letter-spacing:0;text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote blockquote{position:relative;margin:0;padding:0;border:0;background:none;font:inherit;text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote .quote-hang{position:absolute;right:100%;top:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote figcaption{margin:0;padding:0;font:inherit;opacity:.75;overflow-wrap:break-word;text-indent:0}
+/* The phone sheet sets every element to one small size with !important; the quotation keeps its 16px there too. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,figcaption,a,.quote-hang){font-size:16px!important;line-height:1.4!important}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-asks{font:400 var(--fs-m)/var(--lh) var(--sans);margin:var(--L) 0 0;text-indent:0;max-width:34em}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-actions{margin-top:var(--L)}
 /* Facts as a table, after the user's reference (19 Oct 2026): the block's name, a rule, one row per fact with the label
