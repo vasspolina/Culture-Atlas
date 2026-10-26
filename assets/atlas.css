@@ -8,8 +8,7 @@ h1,h2,h3,h4,p{margin:0}
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-SemiBold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Thin.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -2297,3 +2296,10 @@ div:has(>#topThemeBtn){column-gap:0}
   :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row+.d-row{margin-top:var(--L)}
   :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-head:not(:has(.d-row-sub,.d-row-box))+.d-row-list{margin-top:0}
 }
+
+/* ---- Every title in Documan Thin (user, 26 Oct 2026: "all titles need to go in this font and use thin version") ----
+   A title is a heading (h1 to h6), the record's name and its row titles, the pop-up and card names, the section headers in chat answers, the modal and
+   panel headings, and the names of spaces and layers in the lists. Many rules above set these in Jokker with !important and an id, so this one has
+   three ids' worth of specificity (:not(#t) counts as an id) and comes last. Documan has only the Thin cut; the face is declared 100 to 900 so the
+   browser never fakes a bold from it. Case, size and spacing stay as the rules above set them. */
+:root:root:not(#t):not(#t):not(#t) :is(h1,h2,h3,h4,h5,h6,.t-title,.lede,.curator-section-hdr,.curator-hero-title,.dossier-main-heading,.d-row-title,.layers-title,.layers-section-title,.hq-chooser-title,.facts-title,.critique-title,#floatingCardTitle,.record-popup-name,#desktopDossierName,#dossier-sheet-name,.inst-link,.space-name,.layer-name){font-family:var(--display)!important;font-weight:100!important}
