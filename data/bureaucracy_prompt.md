@@ -102,16 +102,16 @@ The note states what the source says, with no verdict of your own.
 5. Open every document and write each fact from the page in front of you. Never infer a legal form
    from a name ("National Museum" is not proof of a government body), never fill a gap from a similar
    space, never take a fact from a search snippet or memory.
-5. A fact the sources do not state is null; `controls` is an empty list when none is stated. If
+6. A fact the sources do not state is null; `controls` is an empty list when none is stated. If
    `legal_form` itself is not stated by a source you read, write `"governance": null` for the record.
    Where the structure changed in recent years (a museum turned into a foundation), use the form
    in force today and say so in the basis sentence.
-6. Never get past a bot check, login or paywall. If a site blocks you, leave the facts null and move
+7. Never get past a bot check, login or paywall. If a site blocks you, leave the facts null and move
    on. Fetch pages with curl through Bash (the lead gives you the hosts it may reach) or WebFetch;
    never the browser pane. The `sources` already on a record may be funder research, not governance
    sources: use them only if they help.
-7. An all-null record gets `"basis": ""`. Never write what a search missed.
-8. A "search" is one WebSearch call; opening a page is not a search. Use at most <BUDGET> web
+8. An all-null record gets `"basis": ""`. Never write what a search missed.
+9. A "search" is one WebSearch call; opening a page is not a search. Use at most <BUDGET> web
    searches across the batch; the spaces' own pages and registers can be opened directly.
 
 ### House rules
