@@ -2527,3 +2527,17 @@ div:has(>#topThemeBtn){column-gap:0}
    Medium, the starter questions in Thin, the logo) is set in Jokker at the same weights. Bold is Thin: assets/typeset.js puts no-bold on any element whose computed weight is 600 or more
    (headings, strong, labels, buttons, the grade marks), and this rule sets those at 100. The specificity is six ids' worth (:not(#t)) to beat the rules that set a bold weight with an id and !important. */
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .no-bold{font-weight:100!important}
+
+/* The record action pills, the chat follow-up pills and the globe popup actions at the displaay.net/typefaces button size (user's instruction,
+   26 Oct 2026; measured on the live page): 34px high, 14px type, 12px side padding, a 1px outline, a 10px radius, Jokker at weight 300 (regular, a little thinner). Fills and outline colours stay as
+   they were. The follow-up pills may wrap, so theirs is a minimum height. */
+:root:root:root:root:root :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,#floatingCard) .record-action{box-sizing:border-box!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-width:1px!important;border-style:solid!important;border-radius:10px!important;font-size:14px!important;font-weight:300!important;line-height:1!important}
+:root:root:root:root:root :is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,#floatingCard) .record-action::after{inset:-2px!important}
+:root:root[data-theme] .curator-followup-pill{box-sizing:border-box!important;min-height:34px!important;padding:0 12px!important;border-width:1px!important;border-radius:10px!important;font-size:14px!important;font-weight:300!important;line-height:1.2!important}
+:root:root .record-popup-actions a,:root:root .record-popup-actions button{box-sizing:border-box;min-height:34px;padding:0 12px;border:1px solid currentColor;border-radius:10px;font-size:14px;font-weight:300;line-height:1.2}
+
+/* One face, one weight (user's instruction, 26 Oct 2026): everything in the app is Jokker at 300, the headings, the labels, the buttons, the inputs,
+   bold and strong text included. The canvas text (cards, labels, trustees, layers) is set at 300 in index.html and assets/layers.js. Specificity is eight
+   ids' worth (:not(#t)) so it beats the .no-bold rule above and every id rule that sets a weight with !important. The place names the map draws from its
+   own glyph files (assets/glyphs, PP Neue Gstaad) are the one exception: map glyphs are pre-rendered per face and weight, and no Jokker set exists. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(*,*::before,*::after){font-family:var(--sans)!important;font-weight:300!important}
