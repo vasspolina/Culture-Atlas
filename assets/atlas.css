@@ -2118,3 +2118,31 @@ div:has(>#topThemeBtn){column-gap:0}
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn{order:1!important}
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn{order:2!important}
 :root[data-theme] body.chat-input-mode-active #chatRecordsInfo{border-color:var(--line)!important}
+
+/* ---- Text at 16px, small print at 14px, all regular (user, 26 Oct 2026), after the Displaay pages the user showed ----
+   The chat answer, the licence, the discount pages and the font-support answer all do the same few things, and this block does them in the chat and
+   in the record:
+   1. Two sizes for the words: 16px for what is read, 14px for what is only looked up (dates, citations, notes). Names and headings keep 24px. Rank
+      comes from colour and position, not from bold: titles and the name are regular weight; only a lead-in inside a line is bold.
+   2. The rhythm is counted in lines of the 16px text: one line (L, 22.4px) between paragraphs and between parts, half a line (H, 11.2px) between list
+      items that open with a bold lead-in; a plain list sits line under line. The leading is 1.4, the x-height being large.
+   3. A title sits on the words it names, with nothing between; a lead-in line in italics sits on its list the same way.
+   4. Paragraphs are flush left with a blank line between them, no indent (Hochuli: a space or an indent, never both).
+   5. Letters as Jost Hochuli's rules in notes/hochuli-spacing.md: lowercase at text size is not letterspaced, capitals are, word space is the font's own.
+   The sizes are set once, as the tokens the rest of the stylesheet already reads, so nothing else in the panels needs its own 16 or 14. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside){--fs-s:14px;--fs-m:16px;--lh:1.4;--L:22.4px;--H:11.2px}
+:root :is(#curatorMessages,#curatorDrawerLiveStream,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(p,li,dt,dd,.kicker,.t-lead,.d-row-sub){font-size:var(--fs-m);line-height:var(--lh);letter-spacing:0;word-spacing:normal;font-synthesis:none}
+:root :is(#curatorMessages,#curatorDrawerLiveStream,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(.meta,.d-cite,.account-note,.source-note,.record-card>.kicker+.kicker){font-size:var(--fs-s);line-height:var(--lh);letter-spacing:0;word-spacing:normal}
+/* 1. Regular titles: the row titles and the name were bold and medium. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-title{font-weight:400;font-size:var(--fs-s)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{font-size:var(--fs-m)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head h2.dossier-main-heading{font-weight:400!important}
+/* 4. Flush paragraphs, one blank line apart. */
+:root :is(#curatorMessages>.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) p:not(.no-indent){text-indent:0}
+:root :is(#curatorMessages>.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) p+p{margin-top:var(--L)}
+/* 3. A title on its words. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card>.kicker+p,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card>.kicker+.kicker+p{margin-top:0}
+/* 2. A list of items that open with a bold lead-in is set a half line apart; a plain list runs line under line. */
+:root #curatorMessages>.curator-message-wrap li:has(>strong:first-child)+li{margin-top:var(--H)}
+:root #curatorMessages>.curator-message-wrap :is(ul,ol)>li{padding-left:.25em}
+:root #curatorMessages>.curator-message-wrap :is(ul,ol)+p{margin-top:var(--H)}
