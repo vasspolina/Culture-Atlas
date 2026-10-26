@@ -2581,3 +2581,8 @@ div:has(>#topThemeBtn){column-gap:0}
 /* While a reply types (assets/bubbles.js), a link or a block whose first character has not landed is hidden, bullet, link icon and all, so that
    only the words typed so far and their own bullets show. */
 .not-yet{visibility:hidden!important}
+
+/* Button outlines are 1px (user's instruction, 26 Oct 2026), the exception to the .8px lines: every button, role=button and pill-shaped link keeps whatever
+   sides and colours it has, only their width is 1px. A button with no border stays without one (a border-style of none computes to 0). The six :not(#t)
+   beat every id rule that sets a width with !important. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(button,[role=button],input[type=button],input[type=submit],.record-action,.curator-followup-pill,.record-popup-actions a,.atlas-pill-btn,.pill-sm,#desktopDossierWebLink){border-width:1px!important}
