@@ -1,0 +1,224 @@
+[
+ {
+  "id": "oceania-centre-for-arts-culture-and-pacific-studies-usp-suva",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "emma-espoo-museum-of-modern-art-espoo",
+  "scale": {
+   "visitors": 159997,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 6000,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv",
+    "https://emmamuseum.fi/tietoa-emmasta/"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 5384172,
+   "expenditure": 5359165,
+   "public": null,
+   "private": null,
+   "earned": 1219081,
+   "sponsorship": 89856,
+   "net_assets": null,
+   "source_kind": "other",
+   "url": "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
+  },
+  "basis": "Scale: visitors are the 159,997 total visits for the EMMA site line in the Finnish Heritage Agency museum statistics 2025 (visits, not unique visitors), and the 6000 m2 exhibition area is stated on EMMA's own Tietoa EMMAsta page; the staff figures in the museum's reports are fractional full-time equivalents, so staff is empty. Finance: the line for EMMA-Espoon modernin taiteen museo in the same Heritage Agency statistics file gives Tulot yhteensä, Menot yhteensä, Omat tulot yhteensä and Sponsorituki, a statistical return and not a filed account."
+ },
+ {
+  "id": "amos-rex",
+  "scale": {
+   "visitors": 233871,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://2025.amosanderson.fi/wp-content/uploads/sites/14/2026/03/Amos_Andersons_fond-verksamhetsberattelse_2025.pdf",
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the Amos Anderson Fund's 2025 activity report (section on Amos Rex) states Amos Rex's total visitor count for 2025 as 233,871, which matches the Amos Rex site line in the Heritage Agency statistics; the staff figure for Amos Rex Ab is a fractional average, so staff is empty."
+ },
+ {
+  "id": "hiap-helsinki",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kiasma-museum-of-contemporary-art",
+  "scale": {
+   "visitors": 274394,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 274,394 total visits on the Nykytaiteen museo Kiasma site line in the Finnish Heritage Agency museum statistics 2025 (visits, not unique visitors); accounts and staff are reported for the Finnish National Gallery as a whole, so they are empty."
+ },
+ {
+  "id": "muu-helsinki",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "siida-s-mi-museum-saamelaismuseo-siida-inari",
+  "scale": {
+   "visitors": 83506,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 1100,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://siida.fi/en/releases/the-sami-museum-siida-achieved-its-highest-visitor-record-of-all-time-in-2025/",
+    "https://siida.fi/en/about-us/siidas-architecture/"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 4524979,
+   "expenditure": 4173300,
+   "public": null,
+   "private": null,
+   "earned": 1837732,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "other",
+   "url": "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
+  },
+  "basis": "Scale: Siida's release of 7 January 2026 gives 83,506 exhibition and event visitors for 2025, and its architecture page gives 1,100 m2 of exhibition space in the 2,800 m2 building; the museum states 18 permanent employees on its page without a year and the statistics give fractional full-time equivalents, so staff is empty. Finance: the line for Saamelaismuseo Siida in the Heritage Agency museum statistics 2025 gives Tulot yhteensä, Menot yhteensä and Omat tulot yhteensä, a statistical return and not a filed account."
+ },
+ {
+  "id": "serlachius-museums-mänttä",
+  "scale": {
+   "visitors": 81616,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv",
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 81,616 total visits of the Serlachius museum line in the Heritage Agency museum statistics 2025, which equals Serlachius Kartano 55,163 plus Serlachius Pääkonttori 26,453 in the site file (visits in the museum's own premises, not unique visitors); staff there is a fractional full-time equivalent, so staff is empty."
+ },
+ {
+  "id": "fondation-vincent-van-gogh-arles",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 1000,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://www.fondation-vincentvangogh-arles.org/en/the-foundation/"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the foundation's own page on the building states 1,000 square metres of exhibition space (the whole building has a floor area of 2,400 square metres)."
+ },
+ {
+  "id": "luma-arles",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 70000,
+   "area_kind": "site",
+   "sources": [
+    "https://www.luma.org/en/arles/about-us/"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: LUMA's own About page describes the Parc des Ateliers as a former industrial site of 7 hectares, converted here to 70,000 m2."
+ },
+ {
+  "id": "capc-mus-e-d-art-contemporain",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "frac-des-pays-de-la-loire-carquefou",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

@@ -1,0 +1,168 @@
+[
+ {
+  "id": "transmediale-berlin",
+  "name": "transmediale",
+  "city": "Berlin",
+  "country": "Germany",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.spikeartmagazine.com/articles/essay-the-highs-and-lows-of-transmediale-2024",
+   "https://transmediale.de/en/2026/partner-programme-2026",
+   "https://archive.transmediale.de/partners"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "name": "Kunsthalle Bielefeld",
+  "city": "Bielefeld",
+  "country": "Germany",
+  "website": "https://www.kunsthalle-bielefeld.de/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.wsws.org/de/articles/1998/12/biel-d02.html"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunstverein-bielefeld-bielefeld",
+  "name": "Kunstverein Bielefeld",
+  "city": "Bielefeld",
+  "country": "Germany",
+  "website": "https://www.kunstverein-bielefeld.de/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.kunstverein-bielefeld.de/",
+   "https://www.kunstverein-bielefeld.de/de/kvb"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "bonner-kunstverein-bonn",
+  "name": "Bonner Kunstverein",
+  "city": "Bonn",
+  "country": "Germany",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.e-flux.com/announcements/6787546/dora-budormy-energy-comes-from-freedom"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunstverein-braunschweig",
+  "name": "Kunstverein Braunschweig",
+  "city": "Braunschweig",
+  "country": "Germany",
+  "website": "https://kunstvereinbraunschweig.de",
+  "size": "M",
+  "year_founded": 1832,
+  "sources": [
+   "https://kunstvereinbraunschweig.de/information/institution/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunsthalle-bremen",
+  "name": "Kunsthalle Bremen",
+  "city": "Bremen",
+  "country": "Germany",
+  "website": "https://www.kunsthalle-bremen.de",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.kunsthalle-bremen.de/de/ueber-uns/foerderer-und-sponsoren",
+   "https://de.wikipedia.org/wiki/Hermann_Reemtsma_Stiftung",
+   "https://de.wikipedia.org/wiki/Hermann_F%C3%BCrchtegott_Reemtsma"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "koelnischer-kunstverein",
+  "name": "Kölnischer Kunstverein",
+  "city": "Cologne",
+  "country": "Germany",
+  "website": "https://koelnischerkunstverein.de",
+  "size": "M",
+  "year_founded": 1839,
+  "sources": [
+   "https://koelnischerkunstverein.de/en/institutionsinfos/location",
+   "https://koelnischerkunstverein.de/en/institutionsinfos/history/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "museum-ludwig",
+  "name": "Museum Ludwig",
+  "city": "Cologne",
+  "country": "Germany",
+  "website": "https://www.museum-ludwig.de",
+  "size": "S",
+  "year_founded": 1976,
+  "sources": [
+   "https://www.museum-ludwig.de/en/about-the-museum.html",
+   "https://www.stadt-koeln.de",
+   "https://www.museum-ludwig.de/en/home/museum/the-museum/partners-and-supporters"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2023 costs EUR 18.8M: about 75 percent City of Cologne general budget (net), 15 percent earned, 10 percent grants and allocations (Jahresabschluss 2023, Teilergebnisrechnung 0402)."
+ },
+ {
+  "id": "hmkv-hartware-medienkunstverein-dortmund",
+  "name": "Hartware MedienKunstVerein (HMKV)",
+  "city": "Dortmund",
+  "country": "Germany",
+  "website": "https://hmkv.de",
+  "size": "M",
+  "year_founded": 1996,
+  "sources": [
+   "https://www.kunsthalledortmund.de/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "kunstverein-für-die-rheinlande-und-westfalen-düsseldorf",
+  "name": "Kunstverein für die Rheinlande und Westfalen",
+  "city": "Düsseldorf",
+  "country": "Germany",
+  "website": "https://kunstverein-duesseldorf.de/en/about/sponsors/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://kunstverein-duesseldorf.de/en/about/sponsors/",
+   "https://www.e-flux.com/announcements/6787100/maximiliane-baumgartnerproxy-der-b-rger-als-pflanze"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "museum-folkwang-essen",
+  "name": "Museum Folkwang",
+  "city": "Essen",
+  "country": "Germany",
+  "website": "https://www.museum-folkwang.de/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.museum-folkwang.de/en/sponsors"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "portikus-frankfurt",
+  "name": "Portikus",
+  "city": "Frankfurt am Main",
+  "country": "Germany",
+  "website": "https://www.portikus.de",
+  "size": "S",
+  "year_founded": 1987,
+  "sources": [
+   "https://www.portikus.de/en/about"
+  ],
+  "needs_finance": true
+ }
+]

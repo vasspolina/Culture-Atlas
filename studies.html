@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Studies · Culture Atlas</title>
+  <meta name="description" content="The Culture Atlas studies that cross many institutions: Epstein, Democracy Now!, Bellingcat, WikiLeaks, Brazil's tax incentives, shared funders, community-led spaces, what institutions publish about their money, what the field says, MoMA and the Tear Gas Biennial." />
+  <link rel="stylesheet" href="assets/atlas.css?v=328">
+  <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
+  <style>
+    /* The page uses the atlas tokens: Jokker, three sizes (14, 18, 24), leading --lh, measure 34em, hairlines. */
+    /* ss05 draws "(6)" as a circled 6, which reads as a registered mark in counts such as "Chevron (6)": off here. */
+    body{height:auto;overflow:auto;font:400 var(--fs-m)/var(--lh) var(--sans);font-feature-settings:"ss04","tnum"}
+    .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:8px;background:var(--paper);padding:4px 8px;outline:2px solid var(--focus)}
+    .bar{display:flex;align-items:stretch;border-bottom:1px solid var(--line);min-height:var(--bar)}
+    .bar a,.bar span{display:inline-flex;align-items:center;padding:0 16px;font:400 var(--fs-l)/1 var(--sans);border-right:1px solid var(--line);text-decoration:none}
+    .bar a:hover{background:var(--ink);color:var(--paper)}
+    main{padding:var(--L) 16px calc(var(--L) * 3);max-width:72em}
+    .wide{max-width:none}
+    h1{font:400 var(--fs-l)/1.15 var(--sans);margin:0 0 var(--H)}
+    .intro p,.study>p,.study li{max-width:34em;text-wrap:pretty}
+    .intro p+p,.study p+p{margin-top:var(--H)}
+    nav.toc{margin:var(--L) 0;border-top:1px solid var(--line)}
+    nav.toc ol{list-style:none;margin:0;padding:0}
+    nav.toc li{border-bottom:1px solid var(--line);padding:6px 0;max-width:none}
+    nav.toc .meta{display:block}
+    .study{border-top:1px solid var(--line);padding-top:var(--L);margin-top:calc(var(--L) * 2);scroll-margin-top:var(--L)}
+    .study h2{font:400 var(--fs-l)/1.15 var(--sans);margin:0 0 4px;text-wrap:balance}
+    .study h3{font:400 var(--fs-s)/var(--lh) var(--sans);margin:var(--L) 0 var(--H);padding-bottom:4px;border-bottom:1px solid var(--line)}
+    .meta,.kick,.src{font-size:var(--fs-s);line-height:var(--lh)}
+    .kick{margin:0 0 var(--L)}
+    ul.plain,ol.plain{margin:0;padding:0 0 0 1.2em}
+    ul.plain li+li,ol.plain li+li{margin-top:4px}
+    dl.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(11em,1fr));gap:var(--H) 16px;margin:var(--L) 0 0;padding:0}
+    dl.stats div{border-top:1px solid var(--line);padding-top:4px}
+    dl.stats dt{font:400 var(--fs-l)/1.15 var(--sans)}
+    dl.stats dd{margin:2px 0 0;font-size:var(--fs-s);line-height:var(--lh)}
+    details.tab{margin-top:var(--L);border-top:1px solid var(--line)}
+    details.tab>summary{cursor:pointer;padding:6px 0;font-size:var(--fs-m)}
+    details.tab>summary:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+    .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    table{border-collapse:collapse;width:100%;min-width:40em;font-size:var(--fs-s);line-height:var(--lh)}
+    caption{text-align:left;padding:0 0 6px;font-size:var(--fs-s)}
+    th,td{text-align:left;vertical-align:top;padding:6px 12px 6px 0;border-bottom:1px solid var(--line)}
+    th{font-weight:400;border-bottom:1px solid var(--ink)}
+    td:first-child{min-width:10em}
+    .records{columns:16em;column-gap:24px;margin:0;padding:0;list-style:none}
+    .records li{break-inside:avoid;font-size:var(--fs-s);max-width:none}
+    .open{display:inline-block;margin-top:var(--L);padding:6px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none}
+    .open:hover{background:var(--ink);color:var(--paper)}
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the studies</a>
+  <div class="bar" role="banner"><a href="./">Culture Atlas</a><span>Studies</span></div>
+  <main id="main">
+    <div class="intro">
+      <h1>Studies</h1>
+      <p>The records on the atlas describe one space at a time. These studies read across them: who connects the institutions, what one archive or newsroom shows about many of them, and what the research on museum money says. Each names its sources; each institution it names links to its record on the atlas.</p>
+      <p class="meta" id="count"></p>
+    </div>
+    <nav class="toc" aria-label="Studies on this page"><ol id="toc"></ol></nav>
+    <div id="studies" class="wide"><p>Loading the studies.</p></div>
+  </main>
+  <script>
+  (function () {
+    var esc = function (t) { return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var rec = function (name, label) { return '<a href="./?inst=' + encodeURIComponent(name) + '">' + esc(label || name) + '</a>'; };
+    var cell = function (text, link) {
+      if (typeof link === 'string') return rec(link, text);
+      if (Array.isArray(link)) return link.map(function (p) { return p[1] ? rec(p[1], p[0]) : esc(p[0]); }).join(', ');
+      return esc(text);
+    };
+    var table = function (t, i) {
+      var head = '<tr>' + (t.head || []).map(function (h) { return '<th scope="col">' + esc(h) + '</th>'; }).join('') + '</tr>';
+      var rows = t.rows.map(function (r) { return '<tr>' + r.cells.map(function (c, j) { return '<td>' + cell(c, r.links[j]) + '</td>'; }).join('') + '</tr>'; }).join('');
+      var body = '<div class="scroll"><table><caption>' + esc(t.title) + '</caption><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>';
+      return '<details class="tab"' + (t.rows.length <= 12 ? ' open' : '') + '><summary>' + esc(t.title || 'Table') + ' (' + t.rows.length + ' rows)</summary>' + body + '</details>';
+    };
+    fetch('assets/studies.json?v=328').then(function (r) { return r.json(); }).then(function (S) {
+      document.getElementById('count').textContent = S.length + ' studies, naming ' + S.reduce(function (n, s) { return n + s.records.length; }, 0) + ' records on the atlas.';
+      document.getElementById('toc').innerHTML = S.map(function (s) {
+        return '<li><a href="#' + esc(s.key) + '">' + esc(s.title) + '</a><span class="meta">' + esc(s.kick) + '</span></li>';
+      }).join('');
+      document.getElementById('studies').innerHTML = S.map(function (s) {
+        var h = '<section class="study" id="' + esc(s.key) + '" aria-labelledby="h-' + esc(s.key) + '">';
+        h += '<h2 id="h-' + esc(s.key) + '">' + esc(s.title) + '</h2>';
+        if (s.kick) h += '<p class="kick">' + esc(s.kick) + '</p>';
+        h += (s.summary || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+        if ((s.stats || []).length) h += '<dl class="stats">' + s.stats.map(function (x) { return '<div><dt>' + esc(x[0]) + '</dt><dd>' + esc(x[1]) + '</dd></div>'; }).join('') + '</dl>';
+        if ((s.bullets || []).length) h += '<h3>Findings</h3><ul class="plain">' + s.bullets.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') + '</ul>';
+        if ((s.timeline || []).length) h += '<h3>Timeline</h3><ol class="plain">' + s.timeline.map(function (t) { return '<li>' + esc(t.date) + ': ' + esc(t.event) + '</li>'; }).join('') + '</ol>';
+        h += (s.tables || []).map(table).join('');
+        if ((s.records || []).length) h += '<h3>On the atlas (' + s.records.length + ')</h3><ul class="records">' + s.records.map(function (n) { return '<li>' + rec(n) + '</li>'; }).join('') + '</ul>';
+        if (s.link) h += '<a class="open" href="' + esc(s.link[1]) + '">' + esc(s.link[0]) + '</a>';
+        if (s.sources) h += '<h3>Sources</h3><p class="src">' + esc(s.sources) + '</p>';
+        return h + '</section>';
+      }).join('');
+      if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) el.scrollIntoView(); }
+    }).catch(function () {
+      document.getElementById('studies').innerHTML = '<p>The studies could not load. Reload the page, or open the <a href="./">atlas</a>.</p>';
+    });
+  })();
+  </script>
+</body>
+</html>

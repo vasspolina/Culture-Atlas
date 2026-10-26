@@ -6,22 +6,25 @@
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, mix: false, right: false, epstein: false, hq: false, people: false, kinds: { gov: true, corp: true, found: true } };
-  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb' };
+  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, mix: false, right: false, epstein: false, hq: false, people: false, propaganda: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
+  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#2dd4bf' };
   // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
   // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
   // the data are drawn in a deeper step of the same hue there: 3.05:1 or better against white at the 0.8 alpha they are drawn at.
-  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#e2f86c': '#6b8a00' };
+  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#e2f86c': '#6b8a00', '#2dd4bf': '#0d9488' };
   const lineCol = c => (document.documentElement.getAttribute('data-theme') === 'dark' ? c : (LINE_LIGHT[c] || c));
   // Colour is never the only cue (WCAG 1.4.1): each kind of mark has its own outline, the same ones the key in the layers panel shows.
   const SHAPES = {
     square: null,
     hexagon: [[.25, 0], [.75, 0], [1, .5], [.75, 1], [.25, 1], [0, .5]],
     triangle: [[.5, 0], [1, 1], [0, 1]],
+    pentagon: [[.5, 0], [1, .38], [.81, 1], [.19, 1], [0, .38]],
     shield: [[.5, 0], [1, .18], [.9, .72], [.5, 1], [.1, .72], [0, .18]],
     star: [[.5, 0], [.62, .35], [1, .35], [.69, .57], [.81, .95], [.5, .72], [.19, .95], [.31, .57], [0, .35], [.38, .35]]
   };
-  const KIND_SHAPE = { gov: 'square', corp: 'hexagon', found: 'triangle' };
+  const KIND_SHAPE = { gov: 'circle', corp: 'circle', found: 'circle' };
+  // Every mark is a dot; the colour says the kind, and the names on the map say it in words too.
+  const KIND_WORD = { gov: 'Public funding', corp: 'Company', found: 'Foundation' };
   function shapePath(ctx, shape, x, y, s) {
     ctx.beginPath();
     const pts = SHAPES[shape];
@@ -36,6 +39,8 @@
   const FUNDER = n => n[1] === 'gov' || n[1] === 'corp' || n[1] === 'found';
   const rad = Math.PI / 180;
   const kindOn = k => L.kinds[k] !== false;
+  const PKINDS = ['today', 'historical'];
+  const pkindOn = k => L.pkinds[k] !== false;
   // How many spaces name a funder, and in how many countries (the key is the same across spaces; local bodies such as a city
   // government have a key of their own per space and so reach one).
   const reachCache = new Map();
@@ -271,19 +276,19 @@
       const names = namesOf(rec); if (!names.length || typeof rec.lat !== 'number') return;
       const pt = project(rec.lon, rec.lat, r, cx, cy); if (!pt.front) return;
       const focus = (sel && sel.id === rec.id) || (hov && hov.id === rec.id);
-      marks.push([pt, names, focus]);
-      LM.push({ x: pt.x + dx, y: pt.y, r: 9, rec, col, label: names.slice(0, 3).join(', '), sub: `${what}: ${rec.n}`, ask: askOf(rec) });
+      const mk = { x: pt.x + dx, y: pt.y, r: 9, rec, col, label: names.slice(0, 3).join(', '), sub: `${what}: ${rec.n}`, ask: askOf(rec) };
+      marks.push([pt, names, focus, mk]); LM.push(mk);
     });
     ctx.lineWidth = 0.8;
     marks.forEach(([pt]) => { shapePath(ctx, shape, pt.x + dx, pt.y, 6.5); ctx.fillStyle = col; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); });
     ctx.textAlign = 'left';
-    marks.forEach(([pt, names, focus]) => {
+    marks.forEach(([pt, names, focus, mk]) => {
       if (!(focus || close)) return;
       let y = pt.y - 10 - (names.length - 1) * 11;
       names.slice(0, 4).forEach(name => {
         const text = name.length > 28 ? name.slice(0, 26) + '…' : name, tw = ctx.measureText(text).width, w = tw + 12, h = 20;
         const box = { x: pt.x + 10 + dx, y: y - h / 2, w, h };
-        if (!collides(box, boxes)) { boxes.push(box); ctx.fillStyle = col; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(text, box.x + 6, y + 0.5); }
+        if (!collides(box, boxes)) { boxes.push(box); (mk.lboxes = mk.lboxes || []).push(box); ctx.fillStyle = col; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(text, box.x + 6, y + 0.5); }
         y += 22;
       });
     });
@@ -403,8 +408,7 @@
       ctx.globalAlpha = rec && !on ? 0.35 : 1;
       ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.strokeStyle = '#000';
       ctx.beginPath();
-      if (e.kind === 'org') { ctx.moveTo(x, y - s); ctx.lineTo(x + s, y); ctx.lineTo(x, y + s); ctx.lineTo(x - s, y); ctx.closePath(); }
-      else ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
+      ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
       ctx.fill(); ctx.stroke();
       if (e === HQ_SEL) {
         // A ring in two colours, so one of them always shows against the ground.
@@ -430,8 +434,8 @@
       list.forEach(e => { counts[e.k] = (counts[e.k] || 0) + 1; });
       const k = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0], col = KIND[k] || COL.corp;
       ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 1; ctx.fillStyle = col; ctx.strokeStyle = '#000';
-      ctx.beginPath(); ctx.moveTo(px, py - s); ctx.lineTo(px + s, py); ctx.lineTo(px, py + s); ctx.lineTo(px - s, py); ctx.closePath(); ctx.fill(); ctx.stroke();
-      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '700 10px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.beginPath(); ctx.arc(px, py, s, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '100 10px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       if (!small) ctx.fillText(String(n), px, py + 0.5);
       const names = list.slice(0, 3).map(e => e.n).join(', ') + (n > 3 ? ` and ${n - 3} more` : '');
       LM.push({ x: px, y: py, r: s + 3, col, label: `${e0.c}, ${e0.co}`, sub: `${n} funder offices`, sub2: names, ask: `Which funders are headquartered in ${e0.c}?`,
@@ -527,7 +531,7 @@
     });
   }
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!REACH && !L.flags && !L.grade && !L.money && !L.mix && !L.right && !L.epstein && !L.hq && !L.people && !L.ties) return;
+    if (!REACH && !L.flags && !L.grade && !L.money && !L.mix && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties) return;
     if ((L.money || L.mix || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -548,7 +552,7 @@
         ctx.fillStyle = G[i.grade].col; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
         // The letter is the second cue: grade A and B are two near greens, and colour alone cannot tell the five apart.
-        ctx.save(); ctx.font = '700 14px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
+        ctx.save(); ctx.font = '100 14px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
         ctx.fillText(G[i.grade].letter, d.x, d.y + 0.5); ctx.restore();
       });
     }
@@ -588,7 +592,7 @@
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.flags || !i.flags.length) return;
         LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `What is reported about ${i.name}?` });
-        shapePath(ctx, 'square', d.x, d.y, 4.6);
+        shapePath(ctx, 'circle', d.x, d.y, 4.6);
         ctx.fillStyle = COL.flag; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
       });
@@ -609,9 +613,25 @@
       }
     }
 
+    if (L.propaganda) {
+      // Each space a state or regime has used as an instrument of propaganda: a filled pentagon when it is used that way now, a
+      // ring when it was in a past period. A space with both shows both side by side, just below its dot.
+      ctx.lineWidth = 1.4;
+      dots.forEach(d => {
+        const i = d.inst; if (!i || !i.propaganda || !i.propaganda.length) return;
+        const marks = PKINDS.filter(k => pkindOn(k) && i.propaganda.some(p => p.kind === k));
+        marks.forEach((k, n) => {
+          const p = i.propaganda.find(q => q.kind === k), x = d.x + (n - (marks.length - 1) / 2) * 14, y = d.y + 12;
+          LM.push({ x, y, r: 8, rec: i, col: COL.prop, label: k === 'today' ? 'Used for propaganda now' : 'Used for propaganda in the past', sub: `${i.name}, ${p.period}`, sub2: p.mechanism ? p.mechanism[0].toUpperCase() + p.mechanism.slice(1) : '', ask: `How is ${i.name} used for propaganda?` + (k === 'today' ? '' : ` (${p.period})`) });
+          if (k === 'today') { shapePath(ctx, 'circle', x, y, 6); ctx.fillStyle = COL.prop; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); }
+          else { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.lineWidth = 2.4; ctx.strokeStyle = lineCol(COL.prop); ctx.stroke(); ctx.lineWidth = 1.4; }
+        });
+      });
+    }
+
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
-    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'shield', 'Right-wing funder', rec => `Who funds ${rec.n}?`);
-    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'star', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`);
+    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'circle', 'Right-wing funder', rec => `Who funds ${rec.n}?`);
+    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'circle', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`);
 
     if (L.hq || L.people) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
 
@@ -635,7 +655,7 @@
         const zoomK = Math.max(0.4, Math.min(1, r / (baseRadius * 12)));
         const N = Math.min(nodes.length, 10), R = 64 * zoomK;
         const items = nodes.slice(0, N).map(n => {
-          const reach = reachOf(n[5]), text = n[0].length > 28 ? n[0].slice(0, 26) + '…' : n[0];
+          const reach = reachOf(n[5]), word = KIND_WORD[n[1]], text = (n[0].length > 28 ? n[0].slice(0, 26) + '…' : n[0]) + (word ? ' \u00b7 ' + word : '');
           return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, w: ctx.measureText(text).width + 12 };
         });
         placeRing(d, items, R, boxes, W, H, d.labelBox ? Math.PI / 2 : -Math.PI / 2);
@@ -647,16 +667,16 @@
       const onScreen = p => p[0] > -40 && p[0] < W + 40 && p[1] > -40 && p[1] < H + 40;
       byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = lineCol(pts[i][2]); strokeAround(ctx, pts[0][0], pts[0][1], pts[i][0], pts[i][1], boxes); } });
       ctx.restore();
-      // The spokes and marks.
+      // The spokes and marks; each name's block (lbox) answers the pointer as the mark does.
       rings.forEach(({ d, rec, items }) => {
         items.forEach(it => {
           const n = it.n, col = COL[n[1]], x = it.x, y = it.y;
           ctx.globalAlpha = 1;
           ctx.lineWidth = 0.8; ctx.strokeStyle = lineCol(col); ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
-          // The outline says the kind (square public funding, hexagon company, triangle foundation); the colour repeats it.
+          // A dot in the kind's colour; the name block beside it says the kind in words.
           shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, it.sr); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 1.3; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
           const shared = it.reach.n > 1;
-          LM.push({ x, y, r: Math.max(10, it.sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `Funder of ${rec.n}`,
+          LM.push({ x, y, r: Math.max(10, it.sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `${KIND_WORD[n[1]] || 'Funder'}, funder of ${rec.n}`, lbox: it.box,
             sub2: shared ? `Also funds ${plural(it.reach.n - 1, 'other space')} in ${plural(it.reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
             ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
         });
@@ -786,8 +806,13 @@
     let best = null, bd = Infinity;
     LM.forEach(m => {
       let d;
-      if (m.box) { if (mx < m.box.x || mx > m.box.x + m.box.w || my < m.box.y || my > m.box.y + m.box.h) return; d = 0; }
-      else { d = Math.hypot(m.x - mx, m.y - my); if (d > m.r * (touch ? 1.6 : 1)) return; }
+      const inBox = b => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h;
+      if (m.box) { if (!inBox(m.box)) return; d = 0; }
+      else {
+        d = Math.hypot(m.x - mx, m.y - my);
+        // The name drawn beside a mark is part of it: pointing at the name is pointing at the mark.
+        if (d > m.r * (touch ? 1.6 : 1)) { if ((m.lbox && inBox(m.lbox)) || (m.lboxes && m.lboxes.some(inBox))) d = m.r; else return; }
+      }
       if (m.pass) d += 100;   // a mark on a space's own dot gives way to one that stands alone
       if (d < bd) { bd = d; best = m; }
     });
@@ -848,6 +873,8 @@
       set('flags', `${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
       const graded = ALL_INSTITUTIONS.filter(i => i.grade).length;
       set('grade', `${formatCount(graded)}\u00a0rated · ${formatCount(ALL_INSTITUTIONS.length - graded)}\u00a0unrated`);
+      const propOf = k => ALL_INSTITUTIONS.filter(i => (i.propaganda || []).some(p => p.kind === k)).length;
+      set('propaganda', `${formatCount(propOf('today'))}\u00a0now · ${formatCount(propOf('historical'))}\u00a0past`);
     }
     if (HQ) {
       set('hq', `${formatCount(HQ.orgs.length)}\u00a0offices · ${formatCount(new Set(HQ.orgs.map(o => o.c)).size)}\u00a0cities`);
@@ -878,7 +905,7 @@
     if (!W || !H) return;
     if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px'; }
     const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    if (!(REACH || L.flags || L.grade || L.money || L.mix || L.right || L.epstein || L.hq || L.people || L.ties)) { SV.dots = []; LM = []; return; }
+    if (!(REACH || L.flags || L.grade || L.money || L.mix || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties)) { SV.dots = []; LM = []; return; }
     const base = 240, r = base * Math.pow(2, map.getZoom() - 7);
     // Points behind the camera on a tilted map project to nonsense; anything far off the canvas is treated as not in front.
     const project = (lon, lat) => { const p = map.project([lon, lat]); return { x: p.x, y: p.y, front: Math.abs(p.x - W / 2) < 6 * W && Math.abs(p.y - H / 2) < 6 * H, depth: 1 }; };
@@ -1016,6 +1043,7 @@
         L[input.dataset.layer] = false;
       });
       box.querySelectorAll('input[data-kind]').forEach(input => { input.checked = true; L.kinds[input.dataset.kind] = true; });
+      box.querySelectorAll('input[data-pkind]').forEach(input => { input.checked = true; L.pkinds[input.dataset.pkind] = true; });
       clearReach();
       repaint();
     });
@@ -1025,13 +1053,17 @@
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
       const k = inp.dataset.layer;
       L[k] = inp.checked;
-      if (k !== 'flags' && k !== 'grade' && inp.checked) loadMoney();
+      if (k !== 'flags' && k !== 'grade' && k !== 'propaganda' && inp.checked) loadMoney();
       if ((k === 'hq' || k === 'people') && inp.checked) loadHq();
       repaint();
     }));
     box.querySelectorAll('input[data-kind]').forEach(inp => inp.addEventListener('change', () => {
       L.kinds[inp.dataset.kind] = inp.checked;
       renderTop();
+      repaint();
+    }));
+    box.querySelectorAll('input[data-pkind]').forEach(inp => inp.addEventListener('change', () => {
+      L.pkinds[inp.dataset.pkind] = inp.checked;
       repaint();
     }));
     updateCounts();
