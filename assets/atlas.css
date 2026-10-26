@@ -8,9 +8,6 @@ h1,h2,h3,h4,p{margin:0}
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Thin.woff2") format("woff2");font-weight:100 300;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Medium.woff2") format("woff2");font-weight:500 900;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -18,8 +15,8 @@ h1,h2,h3,h4,p{margin:0}
   --cobalt:#0045fc; --focus:var(--cobalt); --blue:#527fe6; --orange:#e79a3a; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#e79a3a;
   --sans:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display-xl:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-xl:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --bar:44px; --gap:16px;
   /* Hochuli spacing: reading leading, one line of 18px text, half a line. */
   --lh:1.4; --L:25.2px; --H:12.6px;
@@ -2458,3 +2455,9 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){background:transparent!important;color:#fff204!important;text-decoration:none!important}
 :root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn *,#chatShareBtn,#chatShareBtn:hover){text-decoration:none!important}
 :root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:#fff!important}
+
+/* ---- Jokker everywhere, no bold (user, 26 Oct 2026: "just use jokker font everywhere, no bold use thin instead") ----
+   Documan is gone: --display and --display-xl are Jokker now, so every rule above that says var(--display) (the titles in Thin, the small titles in Regular, the row titles and the quotation in
+   Medium, the starter questions in Thin, the logo) is set in Jokker at the same weights. Bold is Thin: assets/typeset.js puts no-bold on any element whose computed weight is 600 or more
+   (headings, strong, labels, buttons, the grade marks), and this rule sets those at 100. The specificity is six ids' worth (:not(#t)) to beat the rules that set a bold weight with an id and !important. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .no-bold{font-weight:100!important}
