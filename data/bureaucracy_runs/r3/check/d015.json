@@ -1,0 +1,91 @@
+[
+ {
+  "id": "almaty-museum-of-arts-almaty",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private foundation",
+    "page says": "The 2024 report names the organisation Korporativnyi fond \"Almaty Museum of Arts\" (non-profit, Law on Non-Commercial Organisations). The 2021 report says its earlier name was Chastnyi fond (private fund), renamed 24.08.2022, so the current form is a corporate fund and neither page says private foundation. Same inference as the first-pass ruling; the 2021 page shows the Chastnyi fond wording is the superseded form.",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "The museum's own 2024 funds-use report names the organisation as the corporate fund (korporativny fond) Almaty Museum of Arts, a non-profit financed by founder contributions, and its 2021 report gives the earlier name Private Fund Private Museum of Contemporary Art.",
+    "page says": "Describes the superseded private fund name as support for the form; no governance block remains.",
+    "fix": ""
+   }
+  ],
+  "corrected": {
+   "id": "almaty-museum-of-arts-almaty",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "national-museum-of-the-republic-of-kazakhstan-astana",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "History page only recounts Resolution No. 675 of 2 July 2013 creating a republican state institution; it does not show that form is still in force. The anti-corruption page uses the abbreviation RSE (republican state enterprise) in a project-office heading, a different form from state institution, and states no legal form. The researcher's reading is an inference. Same inference as the first-pass ruling and no cited page states what that checker found missing.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Ministry of Culture and Sports of the Republic of Kazakhstan",
+    "page says": "The anti-corruption page names the Ministry of Culture and Sports in an RSE heading, but with legal_form unsupported the governance block drops (step 6).",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "The museum's history page says Government Resolution No. 675 of 2 July 2013 created the republican state institution of the Ministry of Culture, and its anti-corruption page still styles it a republican state enterprise of the Ministry of Culture and Sports, so the form is read as a government body under that ministry.",
+    "page says": "States the form is 'read as' a government body, which is inference.",
+    "fix": ""
+   }
+  ],
+  "corrected": {
+   "id": "national-museum-of-the-republic-of-kazakhstan-astana",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "beirut-art-center-bac",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "... lists an executive board of ten members.",
+    "page says": "The Arabic about page lists eleven names under the executive board (al-majlis al-tanfidhi). The legal form is stated: the page opens 'Beirut Art Center (BAC) is a non-profit association (jam'iyya la tabtaghi al-ribh)', which is the text the first-pass checker found missing from the English page, so the governance block stands.",
+    "fix": "executive board of eleven members"
+   }
+  ],
+  "corrected": {
+   "id": "beirut-art-center-bac",
+   "governance": {
+    "legal_form": "association",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://beirutartcenter.org/about-ar/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Arabic about page of the centre calls it a non-profit association (jam'iyya la tabtaghi al-ribh) and lists an executive board of eleven members."
+  }
+ },
+ {
+  "id": "mo-museum-vilnius",
+  "verdict": "ok",
+  "faults": [],
+  "note": "Last page of the museum's own 2021 strategy PDF (creation date 2021-10-06) gives MO muziejus, VšĮ, company code 302325629. Mapping VšĮ to private nonprofit rests on the form's non-profit status; the PDF names no founders."
+ }
+]

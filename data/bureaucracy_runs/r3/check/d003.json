@@ -1,0 +1,74 @@
+[
+ {
+  "id": "fondation-zinsou-cotonou",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kiosko-galeria-santa-cruz",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private foundation",
+    "page says": "The Fundación RSV about page says the foundation promotes contemporary arts, supports KIOSKO Galería and NUBE Gallery, and lists a board (Directorio) of named individuals. No page says who created it or that it is private; the kioskogaleria.com footer shows only a logo after 'un proyecto de:'. The form 'private foundation' is inferred from the name and board list.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "kiosko-galeria-santa-cruz",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "casa-frança-brasil-rio-de-janeiro",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "instituto-tunga-rio-de-janeiro",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-do-amanha",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-de-arte-moderna-da-bahia-salvador",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "instituto-tomie-ohtake",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "laongo-granite-sculpture-symposium",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "A noocultures.info reposting of the 2024 call says the Ministry of Communication, Culture, Arts and Tourism launches the call for the 14th edition and pays artists' fees, stay and travel. It does not say the symposium is a unit of the ministry or what legal form it has; the cited page is a third-party site, not the ministry's own document, and funding of one edition is not a legal form.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Ministère de la Communication, de la Culture, des Arts et du Tourisme",
+    "page says": "Only the funder and caller of the 2024 edition is named; no page states a parent. Dropped with the unsupported governance block.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "laongo-granite-sculpture-symposium",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ }
+]

@@ -1,0 +1,36 @@
+[
+ {
+  "id": "21-21-design-sight-tokyo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "yamaguchi-center-for-arts-and-media-ycam-yamaguchi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "makan-art-space-amman",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "Fillip, Spring 2012 interview: \"Technically, we were set up as a not-for-profit company supporting the arts, registered under the Ministry of Industry and Trade, which is subject to new laws that can change from day to night\". A 2012 co-founder remark in the past tense about how Makan was set up; it does not state the legal form in force today, and the page itself says the governing law is changing.",
+    "fix": null
+   },
+   {
+    "field": "governance.year / governance.sources",
+    "stored": "2012; fillip.ca interview",
+    "page says": "The only cited page is a 2012 interview, not a statute, register entry or governance page of the space.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "makan-art-space-amman",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ }
+]
