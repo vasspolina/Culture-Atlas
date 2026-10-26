@@ -2268,3 +2268,9 @@ div:has(>#topThemeBtn){column-gap:0}
 /* ---- The chat's edges (user, 26 Oct 2026) ----
    What scrolls under the tabs above and the composer below fades out over 14px instead of being cut by a hard line through a bubble. */
 #curatorScrollArea{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 14px,#000 calc(100% - 14px),transparent 100%)}
+
+/* ---- The chat at 17px (user, 26 Oct 2026) ----
+   The answers and the reader's own messages are set at 17px (it was 16), with the line, the half line and the leading counted from it:
+   1.4 x 17 = 23.8px, so one line is 23.8px and half a line 11.9px. The record keeps 16px. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream){--fs-m:17px;--L:23.8px;--H:11.9px}
+:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,li,dt,dd,.kicker,.t-lead){font-size:var(--fs-m)}
