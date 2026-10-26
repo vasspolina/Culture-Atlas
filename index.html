@@ -463,7 +463,7 @@ return maplibregl$1;
           <!-- Chat info on a phone: the same text as under the composer on a desktop. -->
           <details id="chatRecordsInfoMobile" class="chat-info">
             <summary>How the records work</summary>
-            <p>Funding transparency ratings run from A to F. A: funding amounts published, no funder flagged. B: funders listed, none flagged. C: a funder named, few details. D: one funder flagged. F: two or more funders flagged, or one flagged funder whose record is disputed.</p>
+            <p>Funding grades run from A to F. A: the record shows how much money came in, and no funder is flagged. B: funders are named without amounts, and none is flagged. C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left. D: one funder is flagged, such as an oil, tobacco, gambling or arms company. F: two or more funders are flagged, or one flagged funder and a complaint on record.</p>
             <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
@@ -796,7 +796,7 @@ return maplibregl$1;
             <!-- Chat info: how the records work -->
             <details id="chatRecordsInfo" class="chat-info">
               <summary>How the records work</summary>
-            <p>Funding transparency ratings run from A to F. A: funding amounts published, no funder flagged. B: funders listed, none flagged. C: a funder named, few details. D: one funder flagged. F: two or more funders flagged, or one flagged funder whose record is disputed.</p>
+            <p>Funding grades run from A to F. A: the record shows how much money came in, and no funder is flagged. B: funders are named without amounts, and none is flagged. C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left. D: one funder is flagged, such as an oil, tobacco, gambling or arms company. F: two or more funders are flagged, or one flagged funder and a complaint on record.</p>
               <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
             </details>
 
@@ -12030,7 +12030,7 @@ return maplibregl$1;
     const gradeFromLetter = (s) => { const k = String(s || '').trim().toUpperCase(); return [1, 2, 3, 4, 5].find(n => GRADE[n].letter === k || String(n) === k) || null; };
     window.atlasGradeLetter = gradeLetter;
     window.atlasGradeFromLetter = gradeFromLetter;
-    const GRADE_LADDER = 'Funding transparency ratings run from A to F. A: funding amounts published, no funder flagged. B: funders listed, none flagged. C: a funder named, few details. D: one funder flagged. F: two or more funders flagged, or one flagged funder whose record is disputed.';
+    const GRADE_LADDER = 'Funding grades run from A to F. A: the record shows how much money came in, and no funder is flagged. B: funders are named without amounts, and none is flagged. C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left. D: one funder is flagged, such as an oil, tobacco, gambling or arms company. F: two or more funders are flagged, or one flagged funder and a complaint on record.';
     // One label per record status, used everywhere a status is named: the grade where there is one, else the tier.
     function tierName(inst) {
       if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}, ${GRADE[inst.grade].label.toLowerCase()}`;
