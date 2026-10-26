@@ -803,6 +803,10 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .shape-triangle{clip-path:polygon(50% 0,100% 100%,0 100%)}
 #layersPanel .shape-diamond{transform:rotate(45deg) scale(.78)}
 #layersPanel .shape-dot{border-radius:50%}
+#layersPanel .shape-pentagon{clip-path:polygon(50% 0,100% 38%,81% 100%,19% 100%,0 38%)}
+#layersPanel .layers-kinds .shape-ring,#layersPanel .layers-key .shape-ring{box-sizing:border-box;border-radius:50%;background:transparent!important;border:2.5px solid var(--marker-color)}
+#layersPanel .shape-ring::after{display:none!important}
+:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#0d9488}
 #layersPanel .shape-shield{clip-path:polygon(50% 0,100% 18%,90% 72%,50% 100%,10% 72%,0 18%)}
 #layersPanel .shape-star{clip-path:polygon(50% 0,62% 35%,100% 35%,69% 57%,81% 95%,50% 72%,19% 95%,31% 57%,0 35%,38% 35%)}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
