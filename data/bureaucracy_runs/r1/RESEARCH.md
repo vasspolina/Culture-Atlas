@@ -9,3 +9,5 @@ Edit no other file. Use WebSearch, WebFetch and curl via Bash (if the sandbox re
 listing that host in allowed_domains); never the browser pane. WebFetch cannot read PDFs: use curl plus
 `python3 tools/pdf_text.py`. Write only what a document you opened states. Final reply under 80 words:
 the counts the prompt asks for.
+
+Disk is scarce on this Mac: keep your downloads in one folder of your own under $TMPDIR, never download a file over 20 MB (read PDF pages from the first bytes you need or skip the source), and delete that folder before your final reply. Never delete anything else.
