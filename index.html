@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=273">
-  <script src="assets/config.js?v=273"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=275">
+  <script src="assets/config.js?v=275"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9889,11 +9889,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v273';
+    const ATLAS_RELEASE = 'culture-atlas-v275';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=273').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=275').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11591,6 +11591,21 @@ return maplibregl$1;
         <figcaption class="meta">${e(q.author)}, <a href="${e(q.url)}" target="_blank" rel="noopener noreferrer" class="">${e(q.title)}</a>, ${where}.</figcaption>
       </figure>`;
     }
+    // A flagged record gets one quotation from the "gift" frame (the critics of museums whose funders carry a flag), taken from the
+    // data once: the oil passage when fossil fuels are among its flags, otherwise the one on philanthropy as reputation management.
+    function giftFrameQuotes() {
+      if (giftFrameQuotes.cache) return giftFrameQuotes.cache;
+      const rec = ALL_INSTITUTIONS.find(i => (i.visual_critiques || []).some(v => v.strategy_id === 'gift' && (v.quotes || []).length));
+      const vc = rec && rec.visual_critiques.find(v => v.strategy_id === 'gift');
+      return (giftFrameQuotes.cache = vc ? vc.quotes : []);
+    }
+    function flagQuote(inst) {
+      if (!(inst.flags || []).length) return null;
+      const qs = giftFrameQuotes();
+      if (!qs.length) return null;
+      const oil = (inst.flags || []).includes('Fossil fuels') && qs.find(q => /Liberate Tate/.test(q.author));
+      return oil || qs[0];
+    }
     function critiqueQuoteLine(q) {
       return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
     }
@@ -12460,6 +12475,9 @@ return maplibregl$1;
       } else if (why || more.length) {
         rows.push(proseRow('Also on record', '', [proseLi('', escapeHtml(said), true)], { tone: 'flag', gossip: true }));
       }
+      // One critic's passage on the gift and its givers, set beside the flags: no title, no target, only the quotation and its source.
+      const flagQ = flagQuote(inst);
+      if (flagQ) rows.push(`<section class="d-row d-row-quote"><div class="d-row-head"></div><div class="d-row-body">${critiqueQuoteHtml(flagQ)}</div></section>`);
       if ((d.not_related || []).length) rows.push(proseRow('Not related', '', [proseLi('', escapeHtml(proseCap(proseSay(d.not_related))))]));
       // Reported items from the archive that the report does not already carry. They are said once to be reported, not verified.
       const items = [];
@@ -12549,7 +12567,8 @@ return maplibregl$1;
 
 
       // 4. Visual Critiques (Hans Haacke, etc.)
-      const vcs = (inst.visual_critiques && inst.visual_critiques.length > 0) ? inst.visual_critiques : [];
+      // A flagged record's critical frames are the one quotation set beside its flags; an artist's work on it still has its own block.
+      const vcs = (inst.visual_critiques || []).filter(v => !(v.kind === 'theory' && flagQuote(inst)));
       if (window.dossierVcFor !== (inst.id || inst.name)) { window.dossierVcFor = inst.id || inst.name; window.dossierVcIndex = 0; }
       window.dossierVcIndex = window.dossierVcIndex || 0;
       const vcIdx = window.dossierVcIndex % (vcs.length || 1);
@@ -19360,9 +19379,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=273"></script>
-<script src="assets/layers.js?v=273"></script>
-<script src="assets/hq-detail.js?v=273"></script>
-<script src="assets/bubbles.js?v=273" defer></script>
+<script src="assets/typeset.js?v=275"></script>
+<script src="assets/layers.js?v=275"></script>
+<script src="assets/hq-detail.js?v=275"></script>
+<script src="assets/bubbles.js?v=275" defer></script>
 </body>
 </html>
