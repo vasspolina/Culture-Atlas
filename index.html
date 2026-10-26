@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=402">
-  <script src="assets/config.js?v=402"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=404">
+  <script src="assets/config.js?v=404"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -463,13 +463,15 @@ return maplibregl$1;
           <!-- Chat info on a phone: the same text as under the composer on a desktop. -->
           <details id="chatRecordsInfoMobile" class="chat-info">
             <summary>How the records work</summary>
-            <p>Every space lists the sources this atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
-            <p>Source cited: the record names at least one source outside the museum's own website.</p>
-            <p>Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
-            <p>Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
-            <p>Funding transparency ratings, A to F, summarize what the record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A roster that is not independently sourced is not rated.</p>
-            <p>Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
-            <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
+            <p class="no-indent">Funding grades run from A to F.</p>
+            <ul class="grade-list">
+              <li>A: the record shows how much money came in, and no funder is flagged.</li>
+              <li>B: funders are named without amounts, and none is flagged.</li>
+              <li>C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</li>
+              <li>D: one funder is flagged, such as an oil, tobacco, gambling or arms company.</li>
+              <li>F: two or more funders are flagged, or one flagged funder and a complaint on record.</li>
+            </ul>
+            <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
         </div>
@@ -801,13 +803,15 @@ return maplibregl$1;
             <!-- Chat info: how the records work -->
             <details id="chatRecordsInfo" class="chat-info">
               <summary>How the records work</summary>
-              <p>Every space lists the sources this atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
-              <p>Source cited: the record names at least one source outside the museum's own website.</p>
-              <p>Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
-              <p>Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
-            <p>Funding transparency ratings, A to F, summarize what the record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A roster that is not independently sourced is not rated.</p>
-              <p>Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>
-            <p class="no-indent">Map data: <a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a>, <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
+            <p class="no-indent">Funding grades run from A to F.</p>
+            <ul class="grade-list">
+              <li>A: the record shows how much money came in, and no funder is flagged.</li>
+              <li>B: funders are named without amounts, and none is flagged.</li>
+              <li>C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</li>
+              <li>D: one funder is flagged, such as an oil, tobacco, gambling or arms company.</li>
+              <li>F: two or more funders are flagged, or one flagged funder and a complaint on record.</li>
+            </ul>
+              <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
             </details>
 
             <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
@@ -9935,11 +9939,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v402';
+    const ATLAS_RELEASE = 'culture-atlas-v404';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=402').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=404').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12040,7 +12044,8 @@ return maplibregl$1;
     const gradeFromLetter = (s) => { const k = String(s || '').trim().toUpperCase(); return [1, 2, 3, 4, 5].find(n => GRADE[n].letter === k || String(n) === k) || null; };
     window.atlasGradeLetter = gradeLetter;
     window.atlasGradeFromLetter = gradeFromLetter;
-    const GRADE_LADDER = 'Funding transparency ratings, A to F, summarize what each record shows: A funding amounts disclosed, no funders flagged; B funders listed, no funders flagged; C funder identified, details limited; D one flagged funder; F multiple flagged funders, or a flagged funder with a disputed record. A record without an independently sourced funder roster is not rated.';
+    const GRADE_INTRO = 'Funding grades run from A to F.';
+    const GRADE_ROWS = ['A: the record shows how much money came in, and no funder is flagged.', 'B: funders are named without amounts, and none is flagged.', 'C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.', 'D: one funder is flagged, such as an oil, tobacco, gambling or arms company.', 'F: two or more funders are flagged, or one flagged funder and a complaint on record.'];
     // One label per record status, used everywhere a status is named: the grade where there is one, else the tier.
     function tierName(inst) {
       if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}, ${GRADE[inst.grade].label.toLowerCase()}`;
@@ -15640,7 +15645,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
         const n = {};
         ALL_INSTITUTIONS.forEach(i => { if (i.grade) n[i.grade] = (n[i.grade] || 0) + 1; });
-        answer(`<p>${escapeHtml(GRADE_LADDER)}</p><p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} unrated. Ask for grade A spaces in a city to compare their funding transparency.</p>`, ['Show grade A spaces', 'Show grade F spaces', 'How are spaces assessed?']);
+        answer(`<p>${GRADE_INTRO}</p><ul class="grade-list">${GRADE_ROWS.map(r => `<li>${r}</li>`).join('')}</ul><p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} unrated. Ask for grade A spaces in a city to compare their funding transparency.</p>`, ['Show grade A spaces', 'Show grade F spaces', 'How are spaces assessed?']);
         return;
       }
       if (!explicit && asks(/epstein/)) {
@@ -15718,9 +15723,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
-        answer(`<p>Every space lists the sources this atlas recorded for it. Recording a source is not verifying it: none of the records on this page has been independently verified.</p>
-          <p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no source outside the museum, or no reason recorded.</p>
-          <p>Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>`);
+        answer(`<p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no outside source, or no reason.</p>
+          <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>`);
         return;
       }
       if (target) {
@@ -19645,9 +19649,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=402"></script>
-<script src="assets/layers.js?v=402"></script>
-<script src="assets/hq-detail.js?v=402"></script>
-<script src="assets/bubbles.js?v=402" defer></script>
+<script src="assets/typeset.js?v=404"></script>
+<script src="assets/layers.js?v=404"></script>
+<script src="assets/hq-detail.js?v=404"></script>
+<script src="assets/bubbles.js?v=404" defer></script>
 </body>
 </html>
