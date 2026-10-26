@@ -2642,3 +2642,7 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* The thick line above "How the records work" is grey, the grey of the Share information bar (Gossip mode still turns it yellow, above). */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.gossip-mode-active) #chatRecordsInfo{border-top-color:#86878b!important}
+
+/* The left edges line up: the question text, Share information and How the records work all start 23px in from the card's edge. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{padding-left:23px!important;justify-content:flex-start!important;text-align:left!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary{padding-left:23px!important}
