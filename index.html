@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=313">
-  <script src="assets/config.js?v=313"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=317">
+  <script src="assets/config.js?v=317"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7021,8 +7021,11 @@ return maplibregl$1;
         inst = selectedInstitution || (typeof curatorContext !== 'undefined' ? curatorContext.lastInst : null);
       }
       if (inst) {
-        if (typeof setMobileViewMode === 'function') {
-          setMobileViewMode('chat');
+        // setMobileViewMode does nothing at 768px and wider, so on a desktop the answer was written into a chat tab nobody was looking at.
+        if (window.innerWidth < 768) {
+          if (typeof setMobileViewMode === 'function') setMobileViewMode('chat');
+        } else if (typeof setWorkspaceTab === 'function') {
+          setWorkspaceTab('chat');
         }
         const q = `Plan my visit to ${inst.name}`;
         appendUserMessage(q);
@@ -9943,11 +9946,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v313';
+    const ATLAS_RELEASE = 'culture-atlas-v317';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=313').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=317').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11471,9 +11474,12 @@ return maplibregl$1;
     // fact, the label in the left column and the value in the right, all at the text size, and a rule to close it.
     // rows: [label, html] pairs; a row with no value is left out. Values are passed as HTML, already escaped.
     // The record page's Visiting and Highlight, set as rows like the rest of Details (the other panels keep factsTableHtml).
+    // Set like the font foundry's footer columns (user, 26 Oct 2026): each fact is a small grey capital label with its words under it, no bullet and
+    // no bold, the facts in two columns beside the row title.
     function visitingRowsHtml(rows) {
-      const lis = (rows || []).filter(x => x && x[1]).map(([k, v]) => proseLi(`${k}:`, v));
-      return proseRows([proseRow('Visiting', '', lis)], 'Visiting');
+      const items = (rows || []).filter(x => x && x[1]).map(([k, v]) => `<div class="visit-item"><dt>${escapeHtml(k)}</dt><dd>${v}</dd></div>`);
+      if (!items.length) return '';
+      return `<div class="prose-part d-rows" role="region" aria-label="Visiting"><section class="d-row d-row-visit"><div class="d-row-head"><h3 class="d-row-title">Visiting</h3></div><dl class="visit-cols">${items.join('')}</dl></section></div>`;
     }
     function factsTableHtml(title, rows, attrs = '') {
       const r = (rows || []).filter(x => x && x[1]);
@@ -19483,9 +19489,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=313"></script>
-<script src="assets/layers.js?v=313"></script>
-<script src="assets/hq-detail.js?v=313"></script>
-<script src="assets/bubbles.js?v=313" defer></script>
+<script src="assets/typeset.js?v=317"></script>
+<script src="assets/layers.js?v=317"></script>
+<script src="assets/hq-detail.js?v=317"></script>
+<script src="assets/bubbles.js?v=317" defer></script>
 </body>
 </html>

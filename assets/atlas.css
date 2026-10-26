@@ -1689,7 +1689,8 @@ body.chat-input-mode-active #workInput{padding:.75em}
    better, as the globe's buttons). The compass is a solid north arrow over an outlined south one, told apart by shape and not by grey.
    Where the system forces colours (forced-colors) MapLibre's own system-colour icons stay. */
 @media (min-width:768px){.maplibregl-ctrl-top-right{top:66px}}
-.maplibregl-ctrl-group{display:flex;flex-direction:column;gap:8px;background:none!important}
+/* The buttons are separate squares eight pixels apart; the group has no frame of its own, which showed the map through the gaps between them. */
+.maplibregl-ctrl-group{display:flex;flex-direction:column;gap:8px;background:none!important;border:0!important}
 .maplibregl-ctrl-group button,.maplibregl-ctrl-group button:last-child,.maplibregl-ctrl-group button+button{width:36px!important;height:36px!important;padding:0;box-sizing:border-box;background:#fff!important;color:#000;border:1px solid #000!important;border-radius:0}
 .maplibregl-ctrl-group button:not(:disabled):hover{background:#000!important;color:#fff}
 .maplibregl-ctrl-group button:disabled{border-style:dashed!important}
@@ -2177,6 +2178,9 @@ div:has(>#topThemeBtn){column-gap:0}
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li+li{margin-top:0}
   /* A quotation hangs its own opening mark in the margin; it takes the bullet's place. */
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:has(.quote-hang)::before{content:none}
+  /* Two columns, not three: the title is a third of the row and the points two thirds, with one line between. The old 5:7 split plus a two-line gap
+     left a wide empty strip between the title and the list that read as a column of its own. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--L)}
   /* A row with one point is a sentence, not a list: no bullet and no indent. */
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child{padding-left:0}
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child::before{content:none}
@@ -2216,4 +2220,15 @@ div:has(>#topThemeBtn){column-gap:0}
   :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main{margin-top:0}
   /* Everything under the head sits in the same right-hand column, so its rows line up with the head's rows. */
   :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{margin-left:calc((100% - 2 * var(--L)) * 3 / 11 + 2 * var(--L))}
+}
+
+/* ---- Visiting as labelled columns, after the foundry's footer (user, 26 Oct 2026) ----
+   Each fact is a small grey capital label (14px, capitals spaced .06em as Hochuli asks) with its words under it at 16px, regular, no bullet and no bold.
+   Two columns beside the row title; one column when the panel is narrow. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{margin:0;padding:0;min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:var(--L)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item{margin:0;padding:0;min-width:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dt{margin:0;font-size:14px;line-height:var(--lh);font-weight:400;text-transform:uppercase;letter-spacing:.06em;color:color-mix(in srgb,var(--ink) 55%,transparent)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dd{margin:0;grid-column:auto;font-size:16px;line-height:var(--lh);font-weight:400;color:var(--ink);letter-spacing:0;overflow-wrap:break-word;hyphens:manual;text-wrap:pretty}
+@container (min-width:34em){
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--L)}
 }
