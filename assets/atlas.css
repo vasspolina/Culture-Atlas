@@ -2319,9 +2319,9 @@ div:has(>#topThemeBtn){column-gap:0}
    The questions stack one to a line-block at 28px (22px on a phone) with a 10px gap: on the desktop panel that is ten or eleven before fitQuestionCloud
    takes off the ones that do not fit whole, on a phone about as many above the fold. A highlight that wraps repeats its padding on each line. */
 :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;gap:10px!important}
-:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-family:var(--display)!important;font-weight:400!important;font-size:34px!important;line-height:1.2!important;letter-spacing:0!important;text-align:left;max-width:100%;height:auto;white-space:normal}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-family:var(--display)!important;font-weight:100!important;font-size:30px!important;line-height:1.2!important;letter-spacing:0!important;text-align:left;max-width:100%;height:auto;white-space:normal}
 :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{padding:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-:root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-family:var(--display)!important;font-weight:400!important;font-size:38px!important;line-height:1.15!important}
+:root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-family:var(--display)!important;font-weight:100!important;font-size:34px!important;line-height:1.15!important}
 @media (max-width:520px){
   :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-size:26px!important}
   :root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-size:30px!important}
@@ -2356,7 +2356,7 @@ div:has(>#topThemeBtn){column-gap:0}
    page fills with shorter ones and more of them fit; a line that still overflows is cut off, never wrapped. On a phone, 26px type cannot hold a question on one
    line, so the questions wrap there as before. */
 @media (min-width:521px){
-  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){overflow:hidden!important;gap:8px!important}
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){overflow:hidden!important;gap:6px!important}
   :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){white-space:nowrap!important;text-wrap:nowrap!important;max-width:100%;overflow:hidden;text-overflow:ellipsis}
   :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{white-space:nowrap!important;text-wrap:nowrap!important}
 }
@@ -2414,8 +2414,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:3px!important;gap:3px!important}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{gap:3px!important}
 
-/* The outline of the Voice and Share information buttons is 0.8px, in the dark red of the Share information button, #420401 (user, 26 Oct 2026: "the outline can be 0.8px" and "this color"). */
-:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn),:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn):is(.is-on,:hover,:focus-visible){border-width:.8px!important}
+/* The outline of the Voice and Share information buttons is 1px, in the dark red of the Share information button, #420401 (user, 26 Oct 2026: "the outline can be 0.8px" and "this color"). */
+:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn),:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn):is(.is-on,:hover,:focus-visible){border-width:1px!important}
 :root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn:is(.is-on,:hover,:focus-visible){border-color:#ec69f9!important}
 
 /* 5px between the question box and the buttons under it (user, 26 Oct 2026: "make 5px space between buttons and chat"); the two buttons stay 3px apart. */
@@ -2423,10 +2423,38 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* The outline of Voice and Share information is pink, #ec69f9, read from the swatch the user sent (26 Oct 2026: "make it pink"); it replaces the dark red in the rule above. */
 
-/* Share information has no fill: the button is an outline, 0.8px, in #a06f46 read from the swatch the user sent (26 Oct 2026: "this button can have this color outline and no fill").
+/* Share information has no fill: the button is an outline, 1px (user, 26 Oct 2026: "make outlines 1px"), in #a06f46 read from the swatch the user sent (26 Oct 2026: "this button can have this color outline and no fill").
    The older rules fill it #420401 with ids and !important in every state, so this one carries more classes than any of them. */
-:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#chatShareBtn,#chatShareBtn.is-on,#chatShareBtn:hover,#chatShareBtn:focus-visible,#chatShareBtn:active){background:transparent!important;border-color:#a06f46!important;border-width:.8px!important}
+:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#chatShareBtn,#chatShareBtn.is-on,#chatShareBtn:hover,#chatShareBtn:focus-visible,#chatShareBtn:active){background:transparent!important;border-color:#a06f46!important;border-width:1px!important}
 
 /* No "Visiting" title (user, 26 Oct 2026: "drop visiting title"). The row keeps its place in the two columns (the empty head holds the left cell, so the facts stay where
    they are) and its region still carries the label "Visiting" for screen readers. */
 :root:root:not(#t):not(#t):not(#t) .d-row-visit .d-row-title{display:none!important}
+
+/* Voice is a greyed-out block: grey fill (#3a3a3a, the grey of the disabled send button), no outline, white type (user, 26 Oct 2026: "voice button can be just greyed out background and no outline"). */
+:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn.is-on,#curatorVoiceToggleBtn:not(.is-on),#curatorVoiceToggleBtn:hover,#curatorVoiceToggleBtn:focus-visible,#curatorVoiceToggleBtn:active){background:#3a3a3a!important;border:0!important;color:#fff!important;filter:none!important}
+
+/* ---- Starter questions in Thin, 30px, three more to a page (user, 26 Oct 2026: "make fonts thin and add 3 more questions") ----
+   The face is Thin (100) and the size 30px with a 6px gap, so a line block is 42px and the panel holds about eleven where it held eight; fitQuestionCloud still takes off whatever
+   does not fit whole. The greeting on a phone follows at 34px. Colours are unchanged. */
+
+/* ---- Share information on hover (user, 26 Oct 2026: "fix hover") ----
+   The older hover rule turned its type to the page colour, which is black on the dark page, so the label vanished once the fill was gone. On hover or focus the type stays white and the outline turns yellow. */
+:root:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#chatShareBtn:hover,#chatShareBtn:focus-visible,#chatShareBtn:active,#chatShareBtn.is-on:hover){background:transparent!important;color:#fff!important;border-color:#fff204!important}
+
+/* ---- The gossip balloon, padded on all four sides (user, 26 Oct 2026: "gossip bubble looks weird") ----
+   A rule for every chat turn took the left padding off (padding-left:0!important), so inside the balloon the text touched its left edge and had 20px on the right. The balloon is drawn round
+   the element's box and only grows outward from it, so the padding is what keeps the text in the middle: 1.1em above and below, 1.7em at the sides, and on a wide screen 14px of margin at the left so the
+   balloon's bulge is not cut by the column. */
+:root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{padding:1.1em 1.7em!important}
+@media (min-width:768px){
+  :root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{margin-left:14px}
+}
+
+/* ---- The bottom row under the question box (user, 26 Oct 2026: "fix paddings on bottom button, do not underline text") ----
+   "How the records work" no longer fills white or underlines on hover or focus: the type turns yellow, as the starter questions do, and the "+" stays plain. The Voice label is white on its grey
+   (a rule for the phone had made it the secondary grey, so it nearly vanished), and none of the three controls underlines its text. */
+:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary,:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary::after{text-decoration:none!important}
+:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){background:transparent!important;color:#fff204!important;text-decoration:none!important}
+:root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn *,#chatShareBtn,#chatShareBtn:hover){text-decoration:none!important}
+:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:#fff!important}
