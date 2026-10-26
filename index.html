@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=320">
-  <script src="assets/config.js?v=320"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=321">
+  <script src="assets/config.js?v=321"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9946,11 +9946,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v320';
+    const ATLAS_RELEASE = 'culture-atlas-v321';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=320').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=321').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14829,8 +14829,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     let curatorAutoVoiceEnabled = true;
     let autoSpeakNextCuratorResponse = false;
 
+    // The end of the conversation stays in view while an answer grows: an answer is written out over a few seconds and is taller when it is done
+    // than when it was added, so a scroll to the bottom made at that moment left the last lines of the bubble under the composer. The chat sticks
+    // to the bottom from the moment a message is added until the reader scrolls away.
+    let chatStickToBottom = true;
+    (function () {
+      const area = document.getElementById('curatorScrollArea');
+      const list = document.getElementById('curatorScrollContent');
+      if (!area || !list) return;
+      const away = () => { chatStickToBottom = area.scrollHeight - area.scrollTop - area.clientHeight < 140; };
+      ['wheel', 'touchmove', 'keydown', 'pointerdown'].forEach(ev => area.addEventListener(ev, () => setTimeout(away, 80), { passive: true }));
+      if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (chatStickToBottom) area.scrollTop = area.scrollHeight; }).observe(list);
+    })();
+
     function scrollChatToBottom(smooth = false) {
       const scrollArea = document.getElementById('curatorScrollArea') || document.getElementById('workViewContainer');
+      chatStickToBottom = true;
       if (scrollArea) {
         if (smooth) {
           scrollArea.scrollTo({ top: scrollArea.scrollHeight, behavior: 'smooth' });
@@ -19489,9 +19503,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=320"></script>
-<script src="assets/layers.js?v=320"></script>
-<script src="assets/hq-detail.js?v=320"></script>
-<script src="assets/bubbles.js?v=320" defer></script>
+<script src="assets/typeset.js?v=321"></script>
+<script src="assets/layers.js?v=321"></script>
+<script src="assets/hq-detail.js?v=321"></script>
+<script src="assets/bubbles.js?v=321" defer></script>
 </body>
 </html>
