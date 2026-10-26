@@ -47,24 +47,24 @@ def level(g):
     state_director = g.get('director_appointed_by') in STATE_DIRECTOR
     parent_director = g.get('director_appointed_by') == 'parent institution'
     if form in STATE_FORMS:
-        return 5, 'A department of its owner' + (', with civil-service staff' if g.get('staff_status') == 'civil servants' else '') + '.'
+        return 5, 'Its staff are civil servants.' if g.get('staff_status') == 'civil servants' else ''
     if (form in PUBLIC_FORMS or (form == 'public foundation' and state_director)) and len(public) >= 2:
-        return 4, 'A public body bound by ' + ' and '.join(public[:2]) + '.'
+        return 4, 'Bound by ' + ' and '.join(public[:2]) + '.'
     if form in ('public foundation', 'statutory public body') or form in PUBLIC_FORMS:
-        return 3, 'A public body with its own board or statute.'
+        return 3, ''
     if state_director or parent_director or len(public) >= 2:
         if state_director or parent_director:
             why = 'its director is named by ' + ('the government or city' if state_director else 'a parent body')
         else:
             why = 'it is bound by ' + ' and '.join(public[:2])
-        return 3, 'A private body, but ' + why + '.'
+        return 3, why[0].upper() + why[1:] + '.'
     if form == 'private company':
-        return 1, 'A private company.'
+        return 1, ''
     # A nonprofit, foundation, association or religious body answers to the register or regulator of its own form,
     # whether or not a source page names it, so it is never rated as free of oversight.
     if regulator:
-        return 2, 'A private body under a charity or foundation regulator.'
-    return 2, 'A private body with its own board; no public control is stated.'
+        return 2, ''
+    return 2, ''
 
 
 def main():
