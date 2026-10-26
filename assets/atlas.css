@@ -2557,3 +2557,27 @@ div:has(>#topThemeBtn){column-gap:0}
    12px side padding, a .8px outline, a 10px radius. Colours, fills and states stay as they were. The send arrow is not changed. The ids and 13 :root
    beat the id rules above (:root x7 to x8 with !important). */
 :root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn){box-sizing:border-box!important;width:auto!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-width:.8px!important;border-style:solid!important;border-radius:10px!important;font-size:14px!important;line-height:1!important}
+
+/* "How the records work", after the displaay.net FAQ rows (user's instruction, 26 Oct 2026): a heavy rule on top (the one line on the web that is not 0.8px,
+   as in the reference), a solid triangle that points right when closed and down when open, the question in 18px, the answer in 14px set in under the question.
+   The phone dock's closed link (#chatRecordsInfo below 768px) keeps its text-link form; the phone drawer's #chatRecordsInfoMobile gets the full design. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile{border-top:3px solid var(--ink)!important;padding:12px 0 0!important;margin-top:8px}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>summary{display:flex!important;align-items:center!important;gap:12px;width:100%!important;min-height:0!important;padding:0!important;border-radius:0!important;font:300 var(--fs-m)/1.2 var(--sans)!important;color:var(--ink)!important;text-decoration:none!important;background:none!important;justify-content:flex-start!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>summary::before{content:"";flex:none;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:12px solid currentColor;transform:rotate(-90deg);transition:transform .2s var(--ease)}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile[open]>summary::before{transform:rotate(0)}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>summary::after,:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile[open]>summary::after{content:none!important;display:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>summary:hover{text-decoration:underline!important;text-underline-offset:.2em}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfoMobile>p{margin:var(--H) 0 0!important;padding:0 0 0 26px!important;font:300 var(--fs-s)/var(--lh) var(--sans)!important;max-width:62ch!important;text-indent:0!important}
+@media (min-width:768px){
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo{border-top:3px solid var(--ink)!important;padding:12px 0 0!important;margin-top:8px}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>summary{display:flex!important;align-items:center!important;gap:12px;width:100%!important;min-height:0!important;padding:0!important;border-radius:0!important;font:300 var(--fs-m)/1.2 var(--sans)!important;color:var(--ink)!important;text-decoration:none!important;background:none!important;justify-content:flex-start!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>summary::before{content:"";flex:none;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:12px solid currentColor;transform:rotate(-90deg);transition:transform .2s var(--ease)}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo[open]>summary::before{transform:rotate(0)}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>summary::after,:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo[open]>summary::after{content:none!important;display:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>summary:hover{text-decoration:underline!important;text-underline-offset:.2em}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #chatRecordsInfo>p{margin:var(--H) 0 0!important;padding:0 0 0 26px!important;font:300 var(--fs-s)/var(--lh) var(--sans)!important;max-width:62ch!important;text-indent:0!important}
+}
+
+/* While a reply types (assets/bubbles.js), a link or a block whose first character has not landed is hidden, bullet, link icon and all, so that
+   only the words typed so far and their own bullets show. */
+.not-yet{visibility:hidden!important}
