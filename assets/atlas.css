@@ -2666,3 +2666,6 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="B"]{--lc:#ff832b}
 :root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#ba4e00}
 :root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#ff832b}
+
+/* The header's Dark and Gossip mode buttons run to the right edge of the screen (the header had 24px of padding there). */
+:root:root:root:root:root:root:root:root header.rule-b{padding-right:0!important}
