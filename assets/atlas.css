@@ -1704,3 +1704,9 @@ body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer)
 
 /* The Dark and Gossip mode buttons sit edge to edge (they were 16px apart), so a hovered one fills right up to the vertical line between them. */
 div:has(>#topThemeBtn){column-gap:0}
+
+/* Send us a tip (was Share information) is drawn as a consent bar: a navy rounded bar with a checkbox and a sentence-case label. The box is ticked while the note is open; pressing the bar again returns to the chat. */
+:root[data-theme] #workInputCard #chatShareBtn,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn,:root[data-theme] #workInputCard #chatShareBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn.is-on{background:#30344f!important;color:#fff!important;border:0!important;border-radius:14px;padding:14px 30px 14px 30px;gap:18px;font:400 22px/1.2 var(--sans)}
+:root[data-theme] #workInputCard #chatShareBtn:hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover,:root[data-theme] #workInputCard #chatShareBtn.is-on:hover{background:#3d426a!important;color:#fff!important;filter:none}
+#workInputCard #chatShareBtn::before{content:"";flex:none;width:26px;height:26px;box-sizing:border-box;border:2px solid #fff;border-radius:4px;background:transparent center/18px no-repeat}
+#workInputCard #chatShareBtn.is-on::before{background-color:#fff;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M3 9.500l4 4 8-9' fill='none' stroke='%2330344f' stroke-width='2.500'/%3E%3C/svg%3E")}
