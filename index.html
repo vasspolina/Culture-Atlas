@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=312">
-  <script src="assets/config.js?v=312"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=314">
+  <script src="assets/config.js?v=314"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9954,11 +9954,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v312';
+    const ATLAS_RELEASE = 'culture-atlas-v314';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=312').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=314').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12029,6 +12029,26 @@ return maplibregl$1;
       return inst.tier === 'U' ? `<p class="no-indent grade-line">Not graded. ${inst.funding ? 'No independent source confirms the funders named here.' : 'No funders are recorded.'}</p>` : '';
     }
 
+    // The head of a record as the rows below it: the place and its founding, then the programme, each a row of its own (user, 26 Oct 2026, after a font
+    // licence page: a large title, the actions stacked at the left, the facts in ruled rows with the label in the accent colour).
+    function headRowsHtml(inst, isCommunity) {
+      const place = inst.location || inst.city || '';
+      const year = inst.year_founded ? String(inst.year_founded) : '';
+      const rest = inst.category ? inst.category + (year ? `, founded ${year}` : '') : (year ? `Founded ${year}` : '');
+      const li = (html) => html ? `<li>${html}</li>` : '';
+      const state = [
+        isCommunity ? '' : gradeLineHtml(inst),
+        inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : '',
+        inst.watch && !watchIsAboutMoney(inst.watch) ? `<p${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${escapeHtml(inst.watch)}</p>` : '',
+      ].map(li);
+      const programme = String(inst.curatorial_focus || '').split(/\s*,\s*/).filter(Boolean).map(t => li(escapeHtml(proseCap(t))));
+      const rows = [
+        proseRow(escapeHtml(place) || 'Record', rest ? escapeHtml(proseCap(rest)) : '', state),
+        proseRow('Programme', '', programme).replace('<ul class="d-row-list">', '<ul class="d-row-list is-bulleted">'),
+      ];
+      return proseRows(rows, 'The record at a glance');
+    }
+
     function updateDesktopDossier(inst) {
       if (!inst) return;
       openDossier(inst, false);
@@ -12714,20 +12734,20 @@ return maplibregl$1;
 
       return `
         <div class="space-y-3">
-          <div class="space-y-1_5 pb-3 rule-b record-head">
+          <div class="space-y-1_5 pb-3 rule-b record-head head-sheet">
             <h2 class="dossier-main-heading break-words" style="--title-length:${Math.max((inst.name || '').length, 1)}" title="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</h2>
-            ${!isClean && inst.highlight ? `<p class="institution-summary">${escapeHtml(inst.highlight)}</p>` : ''}
-            ${headFactHtml(inst)}
-            ${inst.curatorial_focus ? `<p class="no-indent account-note">Programme: ${escapeHtml(inst.curatorial_focus)}</p>` : ''}
-            ${inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : ''}
-            ${isCommunity ? '' : gradeLineHtml(inst)}
-            ${inst.watch && !watchIsAboutMoney(inst.watch) ? `<p${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${escapeHtml(inst.watch)}</p>` : ''}
-            <div class="record-actions record-action-row">
-              <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
-              ${isClean ? `<button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>` : ''}
-              ${(inst.lat && inst.lon && inst.address) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
-              ${inst.id ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
-              ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
+            <div class="head-grid">
+              <div class="head-side record-actions record-action-row">
+                <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
+                <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>
+                ${(inst.lat && inst.lon && inst.address) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
+                ${inst.id ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
+                ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
+              </div>
+              <div class="head-main">
+                ${!isClean && inst.highlight ? `<p class="institution-summary">${escapeHtml(inst.highlight)}</p>` : ''}
+                ${headRowsHtml(inst, isCommunity)}
+              </div>
             </div>
           </div>
 
@@ -19477,9 +19497,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=312"></script>
-<script src="assets/layers.js?v=312"></script>
-<script src="assets/hq-detail.js?v=312"></script>
-<script src="assets/bubbles.js?v=312" defer></script>
+<script src="assets/typeset.js?v=314"></script>
+<script src="assets/layers.js?v=314"></script>
+<script src="assets/hq-detail.js?v=314"></script>
+<script src="assets/bubbles.js?v=314" defer></script>
 </body>
 </html>
