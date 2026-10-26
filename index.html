@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=400">
-  <script src="assets/config.js?v=400"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=401">
+  <script src="assets/config.js?v=401"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v400';
+    const ATLAS_RELEASE = 'culture-atlas-v401';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=400').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=401').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10754,12 +10754,12 @@ return maplibregl$1;
             ctx.font = ATLAS_CARD_MONO_FONT;
 
             if (isClustered) {
-              countTxt = String(city.count);
+              countTxt = `(\u200c${city.count}\u200c)`;   // in brackets like the zoomed-in labels
               bw = ctx.measureText(city.name + ' ' + countTxt).width + 28;
             } else {
               // A count of one says nothing, and adding " (1)" at 1.5x was the last width jump that
               // reshuffled labels mid-zoom. Counts from two up still show.
-              const countLabel = (city.count || 0) >= 2 && (isCountryActive || r > baseRadius * 1.5) ? ` (${city.count})` : '';
+              const countLabel = (city.count || 0) >= 2 && (isCountryActive || r > baseRadius * 1.5) ? ` (\u200c${city.count}\u200c)` : '';   // the zero-width non-joiners stop the typeface turning (2) to (9) into circled digits, so every count reads in brackets
               txt = city.name + countLabel;
               const tw = ctx.measureText(txt).width;
               bw = tw + 28;
@@ -19641,9 +19641,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=400"></script>
-<script src="assets/layers.js?v=400"></script>
-<script src="assets/hq-detail.js?v=400"></script>
-<script src="assets/bubbles.js?v=400" defer></script>
+<script src="assets/typeset.js?v=401"></script>
+<script src="assets/layers.js?v=401"></script>
+<script src="assets/hq-detail.js?v=401"></script>
+<script src="assets/bubbles.js?v=401" defer></script>
 </body>
 </html>
