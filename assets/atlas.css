@@ -2178,6 +2178,9 @@ div:has(>#topThemeBtn){column-gap:0}
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li+li{margin-top:0}
   /* A quotation hangs its own opening mark in the margin; it takes the bullet's place. */
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:has(.quote-hang)::before{content:none}
+  /* Two columns, not three: the title is a third of the row and the points two thirds, with one line between. The old 5:7 split plus a two-line gap
+     left a wide empty strip between the title and the list that read as a column of its own. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--L)}
   /* A row with one point is a sentence, not a list: no bullet and no indent. */
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child{padding-left:0}
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child::before{content:none}
