@@ -8,6 +8,9 @@ h1,h2,h3,h4,p{margin:0}
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Thin.woff2") format("woff2");font-weight:100 300;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Medium.woff2") format("woff2");font-weight:500 900;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -15,8 +18,8 @@ h1,h2,h3,h4,p{margin:0}
   --cobalt:#0045fc; --focus:var(--cobalt); --blue:#527fe6; --orange:#e79a3a; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#e79a3a;
   --sans:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display-xl:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-xl:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --bar:44px; --gap:16px;
   /* Hochuli spacing: reading leading, one line of 18px text, half a line. */
   --lh:1.4; --L:25.2px; --H:12.6px;
@@ -781,34 +784,33 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-kinds{display:flex;flex-wrap:wrap;gap:4px}
 #layersPanel label.kind-chip{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;flex:1 1 150px}
 #layersPanel label.kind-chip .layer-name{white-space:nowrap}
+/* Studies: links to studies.html and the MoMA Money Map, set as the layer rows are, without a checkbox. */
+#layersPanel .layers-studies a{display:grid;grid-template-columns:11em minmax(0,1fr);align-items:center;column-gap:14px;min-height:40px;padding:8px 14px;border-radius:9px;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.3 var(--sans);text-decoration:none}
+#layersPanel .layers-studies a:hover{background:var(--row-hover);color:#000;--row-dim:#6b6b6b}
+#layersPanel .layers-studies a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media (max-width:640px){#layersPanel .layers-studies a{grid-template-columns:minmax(0,1fr);row-gap:2px}}
 @media (max-width:640px){#layersPanel label.kind-chip{flex:1 1 auto;padding:6px 8px;gap:6px}}
-#layersPanel label.kind-chip i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
+#layersPanel label.kind-chip i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal;border-radius:50%}
 #layersPanel .layers-top{display:flex;flex-direction:column;gap:2px}
 #layersPanel .top-funder{display:grid;grid-template-columns:11px minmax(0,13em) minmax(40px,1fr) 2.5em;align-items:center;column-gap:10px;min-height:32px;padding:4px 10px;border:0;border-radius:6px;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.2 var(--sans);text-align:left;cursor:pointer}
 #layersPanel .top-funder:hover{background:var(--row-hover);color:#000}
 #layersPanel .top-funder[aria-pressed="true"]{background:var(--row-on);color:var(--row-on-ink)}
 #layersPanel .top-funder:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-#layersPanel .top-funder i{width:11px;height:11px;background:var(--marker-color)}
+#layersPanel .top-funder i{width:11px;height:11px;background:var(--marker-color);border-radius:50%}
 #layersPanel .tf-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #layersPanel .tf-bar{display:block;height:6px;background:rgba(127,127,127,.25)}
 #layersPanel .tf-bar b{display:block;height:100%;background:currentColor}
 #layersPanel .tf-n{text-align:right;font-variant-numeric:tabular-nums}
 #layersPanel .layers-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 12px;color:var(--ink);font:400 var(--fs-s)/1.3 var(--sans)}
 #layersPanel .layers-key span{display:flex;align-items:center;gap:8px;min-width:0}
-#layersPanel .layers-key i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
+#layersPanel .layers-key i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal;border-radius:50%}
 /* Light ground: the key's pale swatches measure 1.2 to 3:1 against the panel, so each one is drawn on a 1px ink outline (an ink shape with the swatch inset by 1px, clipped to the same outline). */
 :root:not([data-theme="dark"]) #layersPanel .layers-key i{position:relative;background:var(--ink)}
 :root:not([data-theme="dark"]) #layersPanel .layers-key i::after{content:"";position:absolute;inset:1px;background:var(--marker-color);clip-path:inherit;border-radius:inherit}
-#layersPanel .shape-hexagon{clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
-#layersPanel .shape-triangle{clip-path:polygon(50% 0,100% 100%,0 100%)}
-#layersPanel .shape-diamond{transform:rotate(45deg) scale(.78)}
 #layersPanel .shape-dot{border-radius:50%}
-#layersPanel .shape-pentagon{clip-path:polygon(50% 0,100% 38%,81% 100%,19% 100%,0 38%)}
 #layersPanel .layers-kinds .shape-ring,#layersPanel .layers-key .shape-ring{box-sizing:border-box;border-radius:50%;background:transparent!important;border:2.5px solid var(--marker-color)}
 #layersPanel .shape-ring::after{display:none!important}
 :root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#0d9488}
-#layersPanel .shape-shield{clip-path:polygon(50% 0,100% 18%,90% 72%,50% 100%,10% 72%,0 18%)}
-#layersPanel .shape-star{clip-path:polygon(50% 0,62% 35%,100% 35%,69% 57%,81% 95%,50% 72%,19% 95%,31% 57%,0 35%,38% 35%)}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
 #layersPanel .layers-grade-key{grid-template-columns:1fr}
 #layersPanel .layers-grade-key>span{display:grid;grid-template-columns:11px 56px minmax(0,1fr);gap:8px;align-items:start}
@@ -1000,6 +1002,14 @@ abbr[title]{text-decoration:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote .quote-hang{position:absolute;right:100%;top:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote figcaption{margin:0;overflow-wrap:break-word;max-width:44em}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote>.meta:first-child{margin-bottom:0}
+/* The standalone quotation (user, 26 Oct 2026): one quotation from the research in place of the Criticism row, no title, no button, one column, 16px.
+   The opening mark hangs in the margin so the words align; the source line is the same size, quieter in colour. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote{display:block;position:relative;margin:var(--L) 0 0;padding:0;border:0;min-width:0;font:400 16px/1.4 var(--sans);letter-spacing:0;text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote blockquote{position:relative;margin:0;padding:0;border:0;background:none;font:inherit;text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote .quote-hang{position:absolute;right:100%;top:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote figcaption{margin:0;padding:0;font:inherit;opacity:.75;overflow-wrap:break-word;text-indent:0}
+/* The phone sheet sets every element to one small size with !important; the quotation keeps its 16px there too. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,figcaption,a,.quote-hang){font-size:16px!important;line-height:1.4!important}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-asks{font:400 var(--fs-m)/var(--lh) var(--sans);margin:var(--L) 0 0;text-indent:0;max-width:34em}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-actions{margin-top:var(--L)}
 /* Facts as a table, after the user's reference (19 Oct 2026): the block's name, a rule, one row per fact with the label
@@ -2281,3 +2291,142 @@ div:has(>#topThemeBtn){column-gap:0}
    margins (100% plus a margin would run past the column). The gossip bubble sets its own. */
 :root :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip){width:calc(100% - 14px);margin-left:7px;margin-right:7px}
 :root :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{padding-left:7px;padding-right:7px;box-sizing:border-box}
+
+/* ---- Space between the head's rows (user, 26 Oct 2026: "fix typesetting") ----
+   In the two-column head each row had its padding taken away, so "Programme" sat flush under the last line of the grade text while the gap under it
+   was a half line. Hochuli's rule (notes/hochuli-spacing.md): the space above a heading is larger than the space below it, and the space below is 0.
+   A row follows the row before it by one line (L); a title with no summary under it sits directly on its list. */
+@container (min-width: 620px) {
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row+.d-row{margin-top:var(--L)}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-head:not(:has(.d-row-sub,.d-row-box))+.d-row-list{margin-top:0}
+}
+
+/* ---- Every title in Documan Thin (user, 26 Oct 2026: "all titles need to go in this font and use thin version") ----
+   A title is a heading (h1 to h6), the record's name and its row titles, the pop-up and card names, the section headers in chat answers, the modal and
+   panel headings, and the names of spaces and layers in the lists. Many rules above set these in Jokker with !important and an id, so this one has
+   three ids' worth of specificity (:not(#t) counts as an id) and comes last. Documan has only the Thin cut; the face is declared 100 to 900 so the
+   browser never fakes a bold from it. Case, size and spacing stay as the rules above set them. */
+:root:root:not(#t):not(#t):not(#t) :is(h1,h2,h3,h4,h5,h6,.t-title,.lede,.curator-section-hdr,.curator-hero-title,.dossier-main-heading,.d-row-title,.layers-title,.layers-section-title,.hq-chooser-title,.facts-title,.critique-title,#floatingCardTitle,.record-popup-name,#desktopDossierName,#dossier-sheet-name,.inst-link,.space-name,.layer-name){font-family:var(--display)!important;font-weight:100!important}
+
+/* ---- The chat answer without a bubble (user, 26 Oct 2026: "no need for bubble on the chat response and add to vertical space so it is proper spaced") ----
+   The answer is text on the page: no block behind it, no radius, no padding. The reader's own message keeps its grey bubble, so the two voices still differ.
+   The bubble's 14px of padding used to keep the turns apart, so the space is counted in lines now (notes/hochuli-spacing.md): half a line (H) between the
+   reader's message and the answer, two lines (2L) from the end of the answer to the next question. The gossip bubble is unchanged. */
+:root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip){background:none;border-radius:0;padding:var(--H) 0 0!important;margin-bottom:calc(2 * var(--L))!important}
+
+/* ---- The empty chat's question and the starter questions in Documan Regular, larger, about ten to a page (user, 26 Oct 2026) ----
+   Titles are Thin; these are the one place that is Regular. The tier colours (the highlight behind each question and its type) are not touched.
+   The questions stack one to a line-block at 28px (22px on a phone) with a 10px gap: on the desktop panel that is ten or eleven before fitQuestionCloud
+   takes off the ones that do not fit whole, on a phone about as many above the fold. A highlight that wraps repeats its padding on each line. */
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;gap:10px!important}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-family:var(--display)!important;font-weight:400!important;font-size:34px!important;line-height:1.2!important;letter-spacing:0!important;text-align:left;max-width:100%;height:auto;white-space:normal}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{padding:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-family:var(--display)!important;font-weight:400!important;font-size:38px!important;line-height:1.15!important}
+@media (max-width:520px){
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-size:26px!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-size:30px!important}
+}
+
+/* ---- Starter questions as coloured type, no highlight (user, 26 Oct 2026: "keep colors, fonts can be bigger and delete background just colored font with yellow on hover") ----
+   Each question is set in its tier colour (the same --fill the highlight used) on the page; on hover or focus it turns yellow. In the light theme the pastel
+   fills are too pale for type on white, so they are darkened by half, and the hover there stays the yellow highlight with black type. Sizes: 34px on the desktop
+   panel (ten or so fit), 26px on a phone. */
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{background:none!important;padding:0!important;color:var(--fill,#c6c6c6)!important;transition:color .15s}
+:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{color:color-mix(in srgb,var(--fill,#c6c6c6) 50%,#000)!important}
+:root:root:root:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:none!important;color:#fff204!important;text-decoration:none}
+:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:#fff204!important;color:#000!important;text-decoration:none}
+
+/* ---- Row titles at 17px (user, 26 Oct 2026: "this title can be 17") ----
+   The row's title (the flag, "Programme", the place) was 24px in the narrow record; it is 17px everywhere, still Thin and in the row's accent colour. */
+:root:root:not(#t):not(#t):not(#t) .d-row-title{font-size:17px!important;line-height:var(--lh)!important}
+
+/* ---- The standalone quotation: text 17px, its source line 14px, a line of space under it (user, 26 Oct 2026: "make text 17, info 14 and add space underneath") ----
+   The quotation and its hanging mark are 17px; the source line, with its linked title, is 14px (the same step as the other source notes). The space under
+   it is one line (L), so the rule of the next row does not sit against the source line. */
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote{font-size:17px!important;margin-bottom:var(--L)}
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-size:17px!important;line-height:var(--lh)!important}
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(figcaption,figcaption a){font-size:14px!important;line-height:var(--lh)!important}
+
+/* ---- The logo in Documan Thin (user, 26 Oct 2026: "make culture atlas logo also in documan") ----
+   The wordmark, in the top bar on the desktop and the phone, takes the same face and weight as the titles. The tagline badge beside it stays in Jokker. */
+:root:root:not(#t):not(#t):not(#t) :is(#topBrandLogoBtn>span:first-child,#mobileTopBrandBtn span:first-child){font-family:var(--display)!important;font-weight:100!important}
+
+/* ---- One line to a question (user, 26 Oct 2026: "add more questions and do not break even in two lines") ----
+   Above phone width a starter question never wraps. fitQuestionCloud (index.html) takes off every question too long for one line of the panel, so the
+   page fills with shorter ones and more of them fit; a line that still overflows is cut off, never wrapped. On a phone, 26px type cannot hold a question on one
+   line, so the questions wrap there as before. */
+@media (min-width:521px){
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){overflow:hidden!important;gap:8px!important}
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){white-space:nowrap!important;text-wrap:nowrap!important;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{white-space:nowrap!important;text-wrap:nowrap!important}
+}
+
+/* ---- Row titles and the quotation at 20px in Documan Medium (user, 26 Oct 2026: "make titles and quote at 20px, use medium documan for both") ----
+   The row title ("Funding", "Programme", the flag) and the standalone quotation are 20px, weight 500. The other headings stay Thin; the quotation's source line stays 14px. */
+:root:root:not(#t):not(#t):not(#t):not(#t) .d-row-title{font-family:var(--display)!important;font-weight:500!important;font-size:20px!important}
+:root:root:not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-family:var(--display)!important;font-weight:500!important;font-size:20px!important}
+
+/* ---- Titles under 17px in Documan Regular (user, 26 Oct 2026) ----
+   assets/typeset.js puts title-small on every title whose computed size is under 17px. Thin is too light that small, so those take Regular; 17px and over stay Thin
+   (the row titles and the quotation stay Medium at 20px by the earlier rule). */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t) .title-small{font-family:var(--display)!important;font-weight:400!important}
+/* Chat controls refined after the displaay.net Stay in the Loop form (user, 26 Oct 2026): Share information and Voice are 52px blocks with the input's 14px corners, both with a 1px edge so the pair is one size, both yellow on hover and a press nudge; Voice carries a dot that is filled while the voice is on; How the records work is a full-width row with a plus that turns to a cross when open. Desktop only: the phone keeps its own bar. */
+@media (min-width:768px){
+  :root[data-theme] #workBottomDock>div:has(>#workInputCard:not(.is-mode)){gap:12px!important}
+  :root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:12px!important;gap:12px!important}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)){box-sizing:border-box!important;height:52px!important;min-height:52px!important;padding:0 24px!important;border:1px solid transparent!important;border-radius:14px!important;gap:10px!important;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),transform .1s var(--ease)!important}
+  :root[data-theme] #workInputCard #chatShareBtn:is(.is-on,:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:is(.is-on,:not(.is-on)){border-color:#420401!important}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn:is(.is-on,:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn:is(.is-on,:not(.is-on)){border-color:var(--ink)!important}
+  :root[data-theme] #workInputCard #chatShareBtn:is(.is-on,:not(.is-on)):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:is(.is-on,:not(.is-on)):hover{filter:none!important;background:#fff204!important;border-color:#fff204!important;color:#000!important}
+  :root[data-theme] #workInputCard #chatShareBtn:is(.is-on,:not(.is-on)):hover :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:is(.is-on,:not(.is-on)):hover :is(svg,span){color:#000!important}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)):active{transform:translateY(1px)}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn::before{content:"";flex:0 0 auto;width:9px;height:9px;box-sizing:border-box;border:1.5px solid var(--ink);border-radius:50%;background:transparent;transition:background-color .15s var(--ease)}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn[aria-pressed="true"]::before{background:var(--ink)}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover::before{border-color:#000;background:transparent}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn[aria-pressed="true"]:hover::before{background:#000}
+  :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on){transition:background-color .15s var(--ease),transform .1s var(--ease)}
+  :root[data-theme] #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):active{transform:scale(.96)}
+  :root[data-theme] #chatRecordsInfo{border-top:1px solid color-mix(in srgb,var(--line) 45%,transparent)!important;padding-top:0!important;margin-top:2px}
+  :root[data-theme] #chatRecordsInfo>summary{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:52px;border-radius:10px;font:400 var(--fs-m)/1.2 var(--sans)}
+  :root[data-theme] #chatRecordsInfo>summary::after,:root[data-theme] #chatRecordsInfo[open]>summary::after{content:"+";font:300 28px/1 var(--sans);transition:transform .2s var(--ease)}
+  :root[data-theme] #chatRecordsInfo[open]>summary::after{transform:rotate(45deg)}
+  :root[data-theme] #chatRecordsInfo>summary:hover{text-decoration:underline;text-underline-offset:.2em}
+  :root[data-theme] #chatRecordsInfo>summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+  :root[data-theme] #chatRecordsInfo[open]>summary{margin-bottom:4px}
+}
+
+/* Phone map composer (user, 26 Oct 2026): Send sat 26px too high, half outside the input, because the plain-theme rule that centres it (top:50% with translateY(-50%)) outlived the navy field's top:14px. No shift, and an arrow like the desktop Send. */
+:root[data-theme] #mobileStickyInputBar #mobileStickySendBtn{transform:none!important;inset:14px 14px auto auto!important}
+:root[data-theme] #mobileStickyInputBar #mobileStickySendBtn svg{width:22px;height:22px;stroke-width:1.8;color:#000!important}
+:root[data-theme] #mobileStickyInputBar{gap:12px!important}
+:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{box-sizing:border-box!important;height:48px!important;min-height:48px!important;padding:0 20px!important;border:1px solid var(--ink)!important;border-radius:14px!important;gap:10px!important}
+:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn::before{content:"";flex:0 0 auto;width:9px;height:9px;box-sizing:border-box;border:1.5px solid var(--ink);border-radius:50%;background:transparent}
+:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn[aria-pressed="true"]::before{background:var(--ink)}
+
+/* ---- Three small changes to the chat (user, 26 Oct 2026: "drop lines", "delete dot", "spacing between elements can be 3px") ---- */
+/* No rules inside the gossip balloon: the line above and below the text (the record card's top rule and the blocks' rules) is gone; the balloon's own outline stays. */
+:root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(div,section,p,ul,ol,li,details,summary,header,footer){border-top:0!important;border-bottom:0!important}
+:root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip hr{display:none!important}
+/* The Voice button has no dot; it is yellow when on and outlined when off. */
+:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn::before{content:none!important;display:none!important}
+/* The question box, Share information and Voice sit 3px apart: the column's gap, the row's top padding and the gap between the buttons. */
+:root:root[data-theme] #workBottomDock>div:has(>#workInputCard:not(.is-mode)){gap:3px!important}
+:root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:3px!important;gap:3px!important}
+:root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{gap:3px!important}
+
+/* The outline of the Voice and Share information buttons is 0.8px, in the dark red of the Share information button, #420401 (user, 26 Oct 2026: "the outline can be 0.8px" and "this color"). */
+:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn),:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn):is(.is-on,:hover,:focus-visible){border-width:.8px!important}
+:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn:is(.is-on,:hover,:focus-visible){border-color:#ec69f9!important}
+
+/* 5px between the question box and the buttons under it (user, 26 Oct 2026: "make 5px space between buttons and chat"); the two buttons stay 3px apart. */
+:root:root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:5px!important}
+
+/* The outline of Voice and Share information is pink, #ec69f9, read from the swatch the user sent (26 Oct 2026: "make it pink"); it replaces the dark red in the rule above. */
+
+/* Share information has no fill: the button is an outline, 0.8px, in #a06f46 read from the swatch the user sent (26 Oct 2026: "this button can have this color outline and no fill").
+   The older rules fill it #420401 with ids and !important in every state, so this one carries more classes than any of them. */
+:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#chatShareBtn,#chatShareBtn.is-on,#chatShareBtn:hover,#chatShareBtn:focus-visible,#chatShareBtn:active){background:transparent!important;border-color:#a06f46!important;border-width:.8px!important}
+
+/* No "Visiting" title (user, 26 Oct 2026: "drop visiting title"). The row keeps its place in the two columns (the empty head holds the left cell, so the facts stay where
+   they are) and its region still carries the label "Visiting" for screen readers. */
+:root:root:not(#t):not(#t):not(#t) .d-row-visit .d-row-title{display:none!important}

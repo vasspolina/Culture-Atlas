@@ -258,3 +258,26 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch); else watch();
   window.typeset = typeset;
 })();
+
+// Titles under 17px are set in Documan Regular, the rest in Thin (user, 26 Oct 2026: "use regular for any size under 17"; "thin for the rest").
+// A rule in CSS cannot test a font size, so each title is measured once its page has drawn and the small ones get the class title-small, which atlas.css
+// sets at weight 400. The sizes are read all together, then the classes are written, so a scan costs one style pass. It runs again when content is added,
+// when the window is resized (the phone sizes differ) and when the fonts have loaded.
+(function () {
+  var SEL = 'h1,h2,h3,h4,h5,h6,.t-title,.lede,.curator-section-hdr,.curator-hero-title,.dossier-main-heading,.d-row-title,.layers-title,.layers-section-title,.hq-chooser-title,.facts-title,.critique-title,#floatingCardTitle,.record-popup-name,#desktopDossierName,#dossier-sheet-name,.inst-link,.space-name,.layer-name,#topBrandLogoBtn>span:first-child,#mobileTopBrandBtn span:first-child';
+  var timer = 0;
+  function scan() {
+    timer = 0;
+    var els = [].slice.call(document.querySelectorAll(SEL));
+    var small = els.map(function (el) { return parseFloat(getComputedStyle(el).fontSize) < 17; });
+    els.forEach(function (el, i) { if (el.classList.contains('title-small') !== small[i]) el.classList.toggle('title-small', small[i]); });
+  }
+  function later() { if (!timer) timer = setTimeout(scan, 120); }
+  function start() {
+    scan();
+    new MutationObserver(later).observe(document.body, { childList: true, subtree: true });
+    window.addEventListener('resize', later);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
