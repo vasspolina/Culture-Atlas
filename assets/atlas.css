@@ -2178,3 +2178,39 @@ div:has(>#topThemeBtn){column-gap:0}
   /* A quotation hangs its own opening mark in the margin; it takes the bullet's place. */
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:has(.quote-hang)::before{content:none}
 }
+
+/* Starter questions: on hover the chip changes to a different, darker colour of its own (user, 26 Oct 2026), with white type; each is dark enough for 4.5:1. */
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{--hover:#444;transition:background-color .15s,color .15s}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"] .sp-text{--hover:#00535a}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"] .sp-text{--hover:#8a3b00}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"] .sp-text{--hover:#4f5a00}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:var(--hover);color:#fff;text-decoration:none}
+
+/* The head of a record after a font licence page (user, 26 Oct 2026): the title large, the actions stacked in a left column as filled pills, the summary and the facts at
+   the right in ruled rows with the label in the accent colour. Narrower than 620px the actions run in a row under the title and the rows take the full width. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-grid{display:block}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main{min-width:0;margin-top:var(--L)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main>.institution-summary{font-size:var(--fs-l)!important;line-height:1.25!important;margin:0 0 var(--L)!important;text-indent:0;max-width:none;text-wrap:balance}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-rows{margin:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row{counter-increment:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-rows h3.d-row-title::before{content:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row:last-child{padding-bottom:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li>p{margin:0;text-indent:0;max-width:none;font:inherit}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li>p.grade-line .grade-mark{display:table;margin-bottom:calc(var(--H) / 2)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li{padding-left:1.15em}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li::before{content:"";position:absolute;left:.15em;top:.62em;width:.34em;height:.34em;border-radius:50%;background:currentColor}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side{display:flex!important;flex-wrap:wrap;gap:var(--H)!important;margin:0!important;padding:0!important;align-items:flex-start}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action{--pill:#2d3352;--pill-hover:#12162b;flex:0 0 auto;width:auto;min-height:44px;height:auto;padding:10px 16px;border:0;border-radius:10px;background:var(--pill);color:#fff;font:400 16px/1.2 var(--sans);text-align:left;justify-content:flex-start;text-decoration:none;transition:background-color .15s,color .15s}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action:first-child{--pill:#4a0d0d;--pill-hover:#230404}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action[onclick*="atlasPlanVisit"]{--pill:#3c0b52;--pill-hover:#1c0527}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side a.record-action{--pill:transparent;--pill-hover:var(--ink);border:1.5px solid var(--ink);color:var(--ink)}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action:is(:hover,:active,:focus-visible){background:var(--pill-hover);color:#fff}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side a.record-action:is(:hover,:active,:focus-visible){color:var(--paper)}
+@container (min-width: 620px) {
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);column-gap:calc(2 * var(--L));align-items:start}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side{flex-direction:column;flex-wrap:nowrap}
+  :root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action{max-width:100%;white-space:normal}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main{margin-top:0}
+  /* Everything under the head sits in the same right-hand column, so its rows line up with the head's rows. */
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{margin-left:calc((100% - 2 * var(--L)) * 3 / 11 + 2 * var(--L))}
+}
