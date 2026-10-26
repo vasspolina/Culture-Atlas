@@ -165,8 +165,8 @@
     const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: s.rec.n }), h('span', { class: 'hq-s', text: s.rec.c || '' }));
     b.addEventListener('click', () => hq().flyToSpace(s.rec));
     const li = h('li', null, b);
-    // A person's tie to a space carries the record's own wording and how well it is documented; shown as written.
-    if (s.label) li.append(h('p', { class: 'hq-note', text: `${s.label}${s.status ? ' (' + s.status + ')' : ''}${s.text ? ': ' + s.text : ''}` }));
+    // A person's tie to a space is shown as the record's own sentence, without its category tag.
+    if (s.text) li.append(h('p', { class: 'hq-note', text: s.text }));
     return li;
   };
   const officeRow = (o, shared) => {

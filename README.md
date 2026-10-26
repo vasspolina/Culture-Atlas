@@ -132,6 +132,17 @@ The Cloudflare Worker in `worker/` serves it at `POST /chat`. The Anthropic key 
 
 The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
 
+## Studies
+
+`studies.html` gathers the studies that read across many records: the Epstein cross-reference, what Democracy Now!,
+Bellingcat and WikiLeaks show, Brazil's tax incentives, who connects the institutions (shared funders), small and
+community-led spaces, who publishes what about their money, what the field says, the Tear Gas Biennial and MoMA.
+They come from the Sponsor Atlas research page (its `CASES`) through `tools/build_studies.py`, which writes
+`assets/studies.json` and links every institution a study names to its record (`./?inst=<name>`; an exact name wins).
+`moma-money-map.html` is the interactive MoMA Money Map, kept here so the atlas is the one place it is published. Both
+are linked from Map layers & legend, under Studies. Rebuild after each Sponsor Atlas import:
+`python3 tools/build_studies.py`.
+
 ## Money maps
 
 The page opens on **one big map of every space and every sponsor** (`#all`): each space is a white circle, each sponsor a circle coloured by group (public bodies, corporate, foundations and donors), bigger the more spaces it funds, joined by a line for each tie. Tap a circle to light up its ties and zoom to them; search a sponsor in the second bar; filter the groups with the pills. Sponsors are merged across records by name (for example "NEA" and "National Endowment for the Arts"); public bodies are told apart by country, and generic ones such as "City government" stay with their own record so they never become one false hub. Records that name no funder are not in the big map. Two filters highlight part of the map and grey out the rest: **Mentions in the Epstein files** (33 spaces whose record has Epstein entries or an Epstein-linked flag, joined to the 23 people named in those entries; a space with only the flag is joined to Jeffrey Epstein) and **Right-wing funders**. The atlas records have no political field, so the second is a short curated list in `tools/build_money_maps.py` (`RIGHT`): only funders that appear in the records (as a sponsor or named in a record's own text) and have a published source for predominantly Republican or conservative giving, with that source shown in the panel. Currently Koch, Ken Griffin / Citadel, Ronald Lauder, Steven Cohen and Rebekah Mercer. It is not a complete list; add a name to it with a source, or remove one, and re-run the script. Each record also has its own map, at `money-maps.html#<record id>`.
@@ -194,7 +205,7 @@ The page shows what a record states and where it comes from, and says plainly th
 
 - A field appears only if a record states it. Figures, hours, prices, exhibitions, architects and "chatter" are not generated to fill a gap. A text value shared by five or more records (after masking the name and city) is filler and is left out. Sentences that assert the absence of ties ("zero fossil fuel", "strict ethical charter") are left out.
 - **Clean, source cited** needs at least one source outside the museum's own site. **Flagged** needs a recorded reason. Otherwise a space is **Unverified**.
-- Anything reported about a space, such as a sponsor tie, an Epstein-related item, a WikiLeaks cable or a case file, is shown with its own source links under "Reported, not independently verified".
+- Anything reported about a space, such as a sponsor tie, an Epstein-related item, a WikiLeaks cable or a case file, is shown with its own source links.
 - Anonymous staff reviews, the board network, the timeline, the filings registry, the itineraries and the generated 3D building interiors are not shown: they had no source, or were invented or generated. The building view draws only the outline OpenStreetMap holds for the building, through the map tiles, with the record's own material stacked inside it, and says where any Wikidata fact came from.
 
 Rules live in `tools/clean_data.py`. To check records against their sources, run `tools/verify_claims.py` somewhere with network access, then `tools/apply_verification.py` and `tools/embed_data.py`. Wording corrected after checking is in `data/corrections.json`; the pilot of the three-check protocol is in `data/verification_pilot.json`.

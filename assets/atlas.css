@@ -8,6 +8,9 @@ h1,h2,h3,h4,p{margin:0}
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Thin.woff2") format("woff2");font-weight:100 300;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Medium.woff2") format("woff2");font-weight:500 900;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -15,11 +18,13 @@ h1,h2,h3,h4,p{margin:0}
   --cobalt:#0045fc; --focus:var(--cobalt); --blue:#527fe6; --orange:#e79a3a; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#e79a3a;
   --sans:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display-xl:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-xl:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --bar:44px; --gap:16px;
   /* Hochuli spacing: reading leading, one line of 18px text, half a line. */
   --lh:1.4; --L:25.2px; --H:12.6px;
+  /* Every underline: 0.8px, dropped below the descenders (g, p, y) so it never crosses a letter. */
+  --ul-w:.8pt; --ul-off:.3em;
   /* Three type sizes and no others (user's instruction, 25 Oct 2026): 14 for labels, controls and small print, 18 for the
      text, 24 for names and headings. 14:18:24 is about 1 : 1.29 : 1.71, each step near a perfect fourth (1.33), wide enough
      that no two read as a mistake. Every size in the page, the canvas and the phone layer is one of these. */
@@ -32,7 +37,8 @@ html{-webkit-text-size-adjust:100%;font-synthesis:none}
 body{background:var(--paper);color:var(--ink);font:400 var(--fs-s)/1.3 var(--sans);font-feature-settings:"ss04","ss05","tnum";letter-spacing:0;
   height:100vh;height:100dvh;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
 button,[role=button]{cursor:pointer}
-a{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+*{text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
+a{color:inherit;text-decoration:underline;text-underline-offset:var(--ul-off);text-decoration-thickness:var(--ul-w)}
 strong,b{font-weight:400;font-style:normal;text-decoration:none}
 h1,h2,h3,h4,h5,h6{font-weight:400}
 .dossier-main-heading,#dossier-sheet-name,.space-name{font-weight:700}
@@ -190,7 +196,7 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
    the roman, in normal case, and a heading is told by its size and the space around it (Hochuli p.44: capitals and bold
    are restless in running text). In running text a name keeps the text's leading and is set a step smaller, as capitals
    are (p.44, fig 54), so it does not shout over the line. */
-.inst-link,.space-name,.inst-pin-label-name{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+.inst-link,.space-name{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.02em}
 :is(.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#floatingCard) .inst-link,.record-popup-line .space-name{line-height:inherit}
 .inst-link:hover,.city-link:hover,.dossier-link:hover{background:var(--peri)}
 
@@ -275,12 +281,20 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 .custom-inst-pin{cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .25s var(--ease)}
 .custom-inst-pin:hover{transform:scale(1.12);z-index:9999!important}
 .pin-pulse-aura,.brand-city-dot-aura,.brand-city-dot-ping{display:none!important}
-.inst-pin-label{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:4px 10px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);font:400 var(--fs-s)/1.2 var(--sans);white-space:nowrap;cursor:pointer;z-index:20;transition:opacity .25s var(--ease)}
+.inst-pin-label{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:0 14px;height:22px;background:#c6c6c6;color:#000;border:0;font:400 var(--fs-s)/22px var(--sans);white-space:nowrap;cursor:pointer;z-index:20;transition:opacity .25s var(--ease)}
 .inst-pin-label.label-pos-top{bottom:calc(100% + 5px);top:auto;left:50%;right:auto;transform:translateX(-50%)}
 .inst-pin-label.label-pos-bottom{top:calc(100% + 5px);bottom:auto;left:50%;right:auto;transform:translateX(-50%)}
 .inst-pin-label.label-pos-right{left:calc(100% + 6px);right:auto;top:50%;bottom:auto;transform:translateY(-50%)}
 .inst-pin-label.label-pos-left{right:calc(100% + 6px);left:auto;top:50%;bottom:auto;transform:translateY(-50%)}
 .inst-pin-label.collision-occluded{opacity:0;pointer-events:none}
+/* The name on the street map is the globe's pill: the tier's flat fill, no outline, the roman in normal case (the globe draws it
+   on its canvas as drawPillLabel; the fills are the same). */
+.inst-pin-label>span:empty{display:none}
+.inst-pin-label[data-tier="A"]{background:#9ae3e8}
+.inst-pin-label[data-tier="B"]{background:#e79a3a}
+:root[data-theme="dark"] .inst-pin-label{background:#6f6f6f;color:#fff}
+:root[data-theme="dark"] .inst-pin-label[data-tier="A"]{background:#007d79}
+:root[data-theme="dark"] .inst-pin-label[data-tier="B"]{background:#ba4e00}
 .custom-inst-pin:focus-within .inst-pin-label.collision-occluded,.custom-inst-pin:hover .inst-pin-label,.custom-inst-pin.popup-active .inst-pin-label{opacity:1;pointer-events:auto;z-index:9999}
 .curatorial-route-stop-pin,.route-stop-badge{background:var(--paper);color:var(--ink);border:1px solid var(--ink);font:400 var(--fs-s)/1 var(--sans);padding:4px 8px}
 .maplibregl-ctrl-group{background:var(--paper)!important;border:1px solid var(--ink)!important;border-radius:0!important;box-shadow:none!important}
@@ -745,7 +759,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-title{margin:0;font:400 var(--fs-s)/1.2 var(--sans);letter-spacing:0;color:var(--ink)}
 #layersPanel .layers-actions{display:flex;align-items:center;gap:12px}
 #layersPanel .layers-actions button{padding:0;border:0;background:transparent;color:var(--row-dim);cursor:pointer}
-#layersPanel .layers-reset{font:400 var(--fs-s)/1 var(--sans);text-decoration:underline;text-underline-offset:3px}
+#layersPanel .layers-reset{font:400 var(--fs-s)/1 var(--sans);text-decoration:underline;text-underline-offset:var(--ul-off)}
 #layersPanel .layers-close{font:400 var(--fs-l)/1 var(--sans);padding:0 2px!important}
 #layersPanel .layers-actions button:hover{color:var(--ink)}
 #layersPanel .layers-section{padding-top:10px}
@@ -770,6 +784,11 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-kinds{display:flex;flex-wrap:wrap;gap:4px}
 #layersPanel label.kind-chip{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;flex:1 1 150px}
 #layersPanel label.kind-chip .layer-name{white-space:nowrap}
+/* Studies: links to studies.html and the MoMA Money Map, set as the layer rows are, without a checkbox. */
+#layersPanel .layers-studies a{display:grid;grid-template-columns:11em minmax(0,1fr);align-items:center;column-gap:14px;min-height:40px;padding:8px 14px;border-radius:9px;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.3 var(--sans);text-decoration:none}
+#layersPanel .layers-studies a:hover{background:var(--row-hover);color:#000;--row-dim:#6b6b6b}
+#layersPanel .layers-studies a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media (max-width:640px){#layersPanel .layers-studies a{grid-template-columns:minmax(0,1fr);row-gap:2px}}
 @media (max-width:640px){#layersPanel label.kind-chip{flex:1 1 auto;padding:6px 8px;gap:6px}}
 #layersPanel label.kind-chip i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal}
 #layersPanel .layers-top{display:flex;flex-direction:column;gap:2px}
@@ -792,6 +811,10 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .shape-triangle{clip-path:polygon(50% 0,100% 100%,0 100%)}
 #layersPanel .shape-diamond{transform:rotate(45deg) scale(.78)}
 #layersPanel .shape-dot{border-radius:50%}
+#layersPanel .shape-pentagon{clip-path:polygon(50% 0,100% 38%,81% 100%,19% 100%,0 38%)}
+#layersPanel .layers-kinds .shape-ring,#layersPanel .layers-key .shape-ring{box-sizing:border-box;border-radius:50%;background:transparent!important;border:2.5px solid var(--marker-color)}
+#layersPanel .shape-ring::after{display:none!important}
+:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#0d9488}
 #layersPanel .shape-shield{clip-path:polygon(50% 0,100% 18%,90% 72%,50% 100%,10% 72%,0 18%)}
 #layersPanel .shape-star{clip-path:polygon(50% 0,62% 35%,100% 35%,69% 57%,81% 95%,50% 72%,19% 95%,31% 57%,0 35%,38% 35%)}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
@@ -837,7 +860,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 /* Right column: marker highlights. Black text on all three, so contrast holds in light, dark and gossip. */
 :root{--hl-blue:#72a5ed;--hl-green:#5ac651;--hl-yellow:#ffffb1}
 #desktopDossierColumn .t-lead,#desktopDossierColumn .lede{background:none;color:inherit;padding:0}
-#desktopDossierColumn a:not(.record-action){background:none;color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;padding:0}
+#desktopDossierColumn a:not(.record-action){background:none;color:inherit;text-decoration:underline;text-underline-offset:var(--ul-off);text-decoration-thickness:var(--ul-w);padding:0}
 #desktopDossierColumn .is-good,#desktopDossierColumn .meta.t-strong{width:fit-content;background:var(--hl-green);color:#000;padding:0 4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* Chat landing: one centred column of large bold capitals, the title in ink and each starter question in its own colour. */
@@ -854,7 +877,7 @@ body:has(#curator-chat-drawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#e8c040}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#f2b3d6}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#d9b783}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;color:var(--ink);text-decoration:underline;text-underline-offset:.12em}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;color:var(--ink);text-decoration:underline;text-underline-offset:var(--ul-off)}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting),:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){gap:28px}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting){padding:32px 24px;justify-content:flex-start}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:var(--fs-l)}
@@ -985,6 +1008,14 @@ abbr[title]{text-decoration:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote .quote-hang{position:absolute;right:100%;top:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote figcaption{margin:0;overflow-wrap:break-word;max-width:44em}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-quote>.meta:first-child{margin-bottom:0}
+/* The standalone quotation (user, 26 Oct 2026): one quotation from the research in place of the Criticism row, no title, no button, one column, 16px.
+   The opening mark hangs in the margin so the words align; the source line is the same size, quieter in colour. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote{display:block;position:relative;margin:var(--L) 0 0;padding:0;border:0;min-width:0;font:400 16px/1.4 var(--sans);letter-spacing:0;text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote blockquote{position:relative;margin:0;padding:0;border:0;background:none;font:inherit;text-indent:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote .quote-hang{position:absolute;right:100%;top:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote figcaption{margin:0;padding:0;font:inherit;opacity:.75;overflow-wrap:break-word;text-indent:0}
+/* The phone sheet sets every element to one small size with !important; the quotation keeps its 16px there too. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,figcaption,a,.quote-hang){font-size:16px!important;line-height:1.4!important}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-asks{font:400 var(--fs-m)/var(--lh) var(--sans);margin:var(--L) 0 0;text-indent:0;max-width:34em}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-actions{margin-top:var(--L)}
 /* Facts as a table, after the user's reference (19 Oct 2026): the block's name, a rule, one row per fact with the label
@@ -1045,7 +1076,7 @@ abbr[title]{text-decoration:none}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:#e8c040}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:#f2b3d6}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:#d9b783}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;color:var(--ink);text-decoration:underline;text-underline-offset:.12em}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;color:var(--ink);text-decoration:underline;text-underline-offset:var(--ul-off)}
 
 /* ---- the record panel, typeset and given room (Hochuli: leading rises with line length; space between blocks is what makes them read as blocks) ---- */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body){font-variant-numeric:ordinal}
@@ -1091,7 +1122,7 @@ body :is(p,li):not(.meta):not(.starter-label):not(.layers-count){font-size:var(-
 :is(#curatorHeroGreeting,#curatorDrawerGreeting){padding-left:0;padding-right:0}
 
 /* Links in running text are underlined everywhere: chat, record, cards, notes. Buttons made from links stay as blocks. */
-a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:underline;text-underline-offset:var(--ul-off);text-decoration-thickness:var(--ul-w)}
 #curatorMessages a,#detailBody a:not(.record-action),#dossier-sheet-scrollable-body a:not(.record-action),#desktopDossierRecordBody a:not(.record-action),#desktopDossierColumn a:not(.record-action),.chat-info a,#floatingCard a:not(.record-action){text-decoration:underline}
 
 /* The person's turn carries its ME mark again; the input box does not. */
@@ -1150,7 +1181,7 @@ body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(2){--sp:var(--cyan)}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(3){--sp:var(--mustard)}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(4){--sp:var(--orange)}
-:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:hover,:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{text-decoration:underline;text-underline-offset:.12em;outline:0}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:hover,:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1:focus-visible{text-decoration:underline;text-underline-offset:var(--ul-off);outline:0}
 
 /* Superseded in release 239: Share information is bold capitals again, in both themes (see the end of this file). */
 
@@ -1213,7 +1244,7 @@ body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCar
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:#e8e8e8;border-color:#000}
 @media (prefers-reduced-motion:reduce){.thinking i{animation:none}}
 
-/* No rule under a section heading in the record ("Reported, not independently verified"): the first card after it starts clean. */
+/* No rule under a section heading in the record: the first card after it starts clean. */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(h3,.kicker)+.record-card{border-top:0;padding-top:0}
 
 /* No rules between record cards */
@@ -1277,7 +1308,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :root:root body :is(#desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet) span.grade-mark{color:#000}
 /* Chat: a source name is part of the sentence, not a chip. It stays the text's own size and leading (the grey chip with its icon
    made its line taller than the lines around it) and is underlined like any other link. */
-.curator-message-wrap .source-citation-pill{display:inline;background:none;padding:0;border:0;font:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;text-align:inherit;cursor:pointer}
+.curator-message-wrap .source-citation-pill{display:inline;background:none;padding:0;border:0;font:inherit;letter-spacing:inherit;line-height:inherit;text-decoration:underline;text-underline-offset:var(--ul-off);text-decoration-thickness:var(--ul-w);text-align:inherit;cursor:pointer}
 .curator-message-wrap .source-citation-pill svg{display:none}
 /* Chat lists (Hochuli fig 50): the marker is an en dash hung in the margin, one word space from the words, so the words
    align with the paragraph text above; a numbered item hangs its figure and point the same way. */
@@ -1328,7 +1359,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#e79a3a}
 /* A gossip question (its answer is a balloon) is the one yellow label: yellow is for gossip alone. */
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#e2f86c}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c6c6c6);color:#000;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c6c6c6);color:#000;text-decoration:underline;text-underline-offset:var(--ul-off);text-decoration-thickness:var(--ul-w)}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:var(--fs-s);height:22px;line-height:22px}}
 
@@ -1374,7 +1405,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){background:transparent;padding:0;min-height:0;line-height:20px;text-align:left}
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:transparent;text-decoration:none}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{display:inline;padding:2px 8px;background:var(--fill,#c6c6c6);color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
-:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:underline;text-underline-offset:var(--ul-off);text-decoration-thickness:var(--ul-w)}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline-offset:3px}
 /* The chat column is centred in its panel and its width is the reader's (18 Oct 2026). Before this the column was pinned left
    (#curatorScrollContent margin 0 auto 0 0, the dock's inner div margin 0), 22 chips ran from the top-left and the panel's right
@@ -1447,10 +1478,10 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #hqPanel .hq-note{margin:6px 0 0;font-size:var(--fs-s)}
 #hqPanel .hq-list li+li,#hqChooser li+li{border-top:1px solid var(--line)}
 #hqPanel .hq-link{padding-left:0;padding-right:0}
-#hqPanel .hq-link .hq-l{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+#hqPanel .hq-link .hq-l{text-decoration:underline;text-underline-offset:var(--ul-off);text-decoration-thickness:var(--ul-w)}
 #hqPanel .hq-link:hover{padding-left:6px}
 #hqPanel .hq-list .hq-note{margin:0 0 8px}
-#hqPanel .hq-more{margin-top:6px;padding:0;min-height:32px;border:0;background:transparent;color:var(--ink);font:inherit;text-decoration:underline;text-underline-offset:3px}
+#hqPanel .hq-more{margin-top:6px;padding:0;min-height:32px;border:0;background:transparent;color:var(--ink);font:inherit;text-decoration:underline;text-underline-offset:var(--ul-off)}
 #hqPanel .hq-names li{padding:2px 0}
 #hqPanel .hq-names .hq-s{display:block}
 #hqPanel.is-sheet,#hqPanel.is-sheet.is-right{left:8px;right:8px;width:auto;max-width:none;top:auto;bottom:56px;max-height:40%}
@@ -1678,7 +1709,8 @@ body.chat-input-mode-active #workInput{padding:.75em}
    better, as the globe's buttons). The compass is a solid north arrow over an outlined south one, told apart by shape and not by grey.
    Where the system forces colours (forced-colors) MapLibre's own system-colour icons stay. */
 @media (min-width:768px){.maplibregl-ctrl-top-right{top:66px}}
-.maplibregl-ctrl-group{display:flex;flex-direction:column;gap:8px;background:none!important}
+/* The buttons are separate squares eight pixels apart; the group has no frame of its own, which showed the map through the gaps between them. */
+.maplibregl-ctrl-group{display:flex;flex-direction:column;gap:8px;background:none!important;border:0!important}
 .maplibregl-ctrl-group button,.maplibregl-ctrl-group button:last-child,.maplibregl-ctrl-group button+button{width:36px!important;height:36px!important;padding:0;box-sizing:border-box;background:#fff!important;color:#000;border:1px solid #000!important;border-radius:0}
 .maplibregl-ctrl-group button:not(:disabled):hover{background:#000!important;color:#fff}
 .maplibregl-ctrl-group button:disabled{border-style:dashed!important}
@@ -1746,11 +1778,19 @@ div:has(>#topThemeBtn){column-gap:0}
 :root[data-theme] #workInputCard #chatShareBtn:not(.is-on):hover{background:transparent;color:inherit;text-decoration:underline}
 /* One pattern for the switches: the label stays, the button is highlighted while on (aria-pressed). Gossip mode keeps its own colour. */
 :root[data-theme] #topThemeBtn[aria-pressed=true],:root[data-theme] #mobileThemeBtn[aria-pressed=true],:root[data-theme] #mobileStickyVoiceBtn[aria-pressed=true]{background:var(--cobalt);color:#fff}
-/* The record's actions are a table with lines, like the header buttons: one cell each, ruled on every side, no pills and no colours. */
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row{display:flex!important;flex-wrap:wrap;gap:0!important;padding-top:0!important;border-top:1px solid var(--line);border-left:1px solid var(--line)}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{flex:1 1 132px;width:auto;height:auto;min-height:44px;padding:10px 14px;border:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);border-radius:0;background:transparent;color:var(--ink);font:400 var(--fs-m)/1.2 var(--sans);display:flex;align-items:center;justify-content:center;white-space:normal}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:var(--ink);color:var(--paper)}
-:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:focus-visible{outline-offset:-3px}
+/* The record's actions as rounded pills (user's instruction, 26 Oct 2026, after the outlined pills of a font-licence page): 16px type, a
+   1.5px outline, no fill and no white anywhere. The two chat actions are filled dark (maroon, plum); a hover turns an outline dark and a fill darker,
+   and nothing is underlined. */
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row{display:flex!important;flex-wrap:wrap;gap:8px!important;padding-top:0!important;border:0}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action{--pill:#4a0d0d;flex:0 0 auto;width:auto;height:auto;min-height:40px;padding:8px 18px;box-sizing:border-box;border:1.5px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font:400 16px/1.2 var(--sans);display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;text-decoration:none;transition:background-color .15s,border-color .15s,color .15s}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:first-child{background:var(--pill);border-color:var(--pill);color:#fff}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action[onclick*="atlasPlanVisit"]{--pill:#3c0b52;background:var(--pill);border-color:var(--pill);color:#fff}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:hover,:active){background:#4a0d0d;border-color:#4a0d0d;color:#fff;text-decoration:none}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:is(:first-child,[onclick*="atlasPlanVisit"]):is(:hover,:active){background:color-mix(in srgb,var(--pill) 55%,#000);border-color:color-mix(in srgb,var(--pill) 55%,#000)}
+:is(body,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:focus-visible{outline-offset:3px}
+/* The chat's starter questions: 16px type, and a hover darkens the chip's own colour instead of underlining it. */
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-size:16px;line-height:1.3}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:none;background:color-mix(in srgb,var(--fill,#c6c6c6) 68%,#000)}
 /* The gossip question keeps black type on its yellow in the dark theme too (white on #e2f86c is 1.2:1). */
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"],:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"] .sp-text,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]:hover{color:#000}
 
@@ -2050,9 +2090,7 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* The chat after the displaay.net Albert chat, keeping the existing starter-prompt highlights (user's instruction, 25 Oct 2026): the question box is a rounded navy field (#2d3352) with a yellow ring (#fff204) while in use, plum (#410043) with yellow type once the reader has typed, and a white square send button inside it; Share information (#420401) and Voice (#410043) sit below the box as solid rounded buttons after the Trials / Tester / Buy row; the starter questions stay as coloured highlight strips; the reader's lines are grey bubbles, the reply a dark box. */
 :root[data-theme] .curator-followups{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important;gap:6px!important}
-:root[data-theme] .curator-followup-pill{display:inline-flex!important;align-items:center!important;width:auto;max-width:100%;padding:6px 12px!important;margin:0!important;background:#b8fbff!important;color:#000!important;border:1px solid transparent!important;border-radius:7px!important;font:400 var(--fs-s)/1.15 var(--sans)!important;text-align:left;text-decoration:none}
-:root[data-theme] .curator-followup-pill:nth-child(3n+2){background:#bfffbd!important;color:#000!important}
-:root[data-theme] .curator-followup-pill:nth-child(3n){background:transparent!important;color:var(--ink)!important;border-color:var(--ink)!important}
+:root[data-theme] .curator-followup-pill{display:inline-flex!important;align-items:center!important;width:auto;max-width:100%;padding:6px 12px!important;margin:0!important;background:transparent!important;color:var(--ink)!important;border:1px solid var(--ink)!important;border-radius:7px!important;font:400 var(--fs-s)/1.15 var(--sans)!important;text-align:left;text-decoration:none}
 :root[data-theme] .curator-followup-pill:hover{background:#fff204!important;color:#000!important;border-color:#fff204!important;text-decoration:none}
 :root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end>div,:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble{display:inline-block!important;background:#8c8c8f!important;color:#111!important;border-radius:14px!important;padding:12px 18px!important;max-width:85%!important;text-indent:0!important;font:400 var(--fs-m)/1.3 var(--sans)}
 :root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end>div *,:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble *{color:#111!important}
@@ -2119,6 +2157,220 @@ div:has(>#topThemeBtn){column-gap:0}
 :root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn{order:2!important}
 :root[data-theme] body.chat-input-mode-active #chatRecordsInfo{border-color:var(--line)!important}
 
+/* ---- Text at 16px, small print at 14px, all regular (user, 26 Oct 2026), after the Displaay pages the user showed ----
+   The chat answer, the licence, the discount pages and the font-support answer all do the same few things, and this block does them in the chat and
+   in the record:
+   1. Two sizes for the words: 16px for what is read, 14px for what is only looked up (dates, citations, notes). Names and headings keep 24px. Rank
+      comes from colour and position, not from bold: titles and the name are regular weight; only a lead-in inside a line is bold.
+   2. The rhythm is counted in lines of the 16px text: one line (L, 22.4px) between paragraphs and between parts, half a line (H, 11.2px) between list
+      items that open with a bold lead-in; a plain list sits line under line. The leading is 1.4, the x-height being large.
+   3. A title sits on the words it names, with nothing between; a lead-in line in italics sits on its list the same way.
+   4. Paragraphs are flush left with a blank line between them, no indent (Hochuli: a space or an indent, never both).
+   5. Letters as Jost Hochuli's rules in notes/hochuli-spacing.md: lowercase at text size is not letterspaced, capitals are, word space is the font's own.
+   The sizes are set once, as the tokens the rest of the stylesheet already reads, so nothing else in the panels needs its own 16 or 14. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside){--fs-s:14px;--fs-m:16px;--lh:1.4;--L:22.4px;--H:11.2px}
+:root :is(#curatorMessages,#curatorDrawerLiveStream,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(p,li,dt,dd,.kicker,.t-lead,.d-row-sub){font-size:var(--fs-m);line-height:var(--lh);letter-spacing:0;word-spacing:normal;font-synthesis:none}
+:root :is(#curatorMessages,#curatorDrawerLiveStream,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(.meta,.d-cite,.account-note,.source-note,.record-card>.kicker+.kicker){font-size:var(--fs-s);line-height:var(--lh);letter-spacing:0;word-spacing:normal}
+/* 1. Regular titles: the row titles and the name were bold and medium. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-title{font-weight:400;font-size:var(--fs-s)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li{font-size:var(--fs-m)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head h2.dossier-main-heading{font-weight:400!important}
+/* 4. Flush paragraphs, one blank line apart. */
+:root :is(#curatorMessages>.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) p:not(.no-indent){text-indent:0}
+:root :is(#curatorMessages>.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) p+p{margin-top:var(--L)}
+/* 3. A title on its words. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card>.kicker+p,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-card>.kicker+.kicker+p{margin-top:0}
+/* 2. A list of items that open with a bold lead-in is set a half line apart; a plain list runs line under line. */
+:root #curatorMessages>.curator-message-wrap li:has(>strong:first-child)+li{margin-top:var(--H)}
+:root #curatorMessages>.curator-message-wrap :is(ul,ol)>li{padding-left:.25em}
+:root #curatorMessages>.curator-message-wrap :is(ul,ol)+p{margin-top:var(--H)}
+
+/* ---- Details set like the font-licence page's usage rows (user, 26 Oct 2026) ----
+   A row is a hairline, then on the left its title in the accent colour with what it comes to directly under it in the ink, both at 16px and
+   regular weight, and below them a quiet outlined box for the annotation; on the right its points as a bulleted list at 14px, line under line,
+   the bullet hanging in the margin. Nothing is bold except an uncoloured lead-in that has to stand out in the line (the row titles are
+   coloured, so they are regular). The phone's numbered rows, set like the licence text, are left as they are. */
+@container (min-width:34em){
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-title,.d-row-sub){font-size:16px;font-weight:400;line-height:var(--lh)}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-box{margin-top:var(--L);padding:calc(var(--H) * .9) var(--L) calc(var(--H) * .9) calc(var(--L) * .75);border-radius:10px;font-size:14px;line-height:var(--lh);color:color-mix(in srgb,var(--ink) 65%,transparent)}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li{font-size:14px;line-height:var(--lh);padding-left:1.15em}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li::before{content:"";position:absolute;left:.15em;top:.62em;width:.34em;height:.34em;border-radius:50%;background:currentColor}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li+li{margin-top:0}
+  /* A quotation hangs its own opening mark in the margin; it takes the bullet's place. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:has(.quote-hang)::before{content:none}
+  /* Two columns, not three: the title is a third of the row and the points two thirds, with one line between. The old 5:7 split plus a two-line gap
+     left a wide empty strip between the title and the list that read as a column of its own. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--L)}
+  /* A row with one point is a sentence, not a list: no bullet and no indent. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child{padding-left:0}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child::before{content:none}
+}
+
+/* Starter questions: on hover the chip changes to a different, darker colour of its own (user, 26 Oct 2026), with white type; each is dark enough for 4.5:1. */
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{--hover:#444;transition:background-color .15s,color .15s}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"] .sp-text{--hover:#00535a}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"] .sp-text{--hover:#8a3b00}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"] .sp-text{--hover:#4f5a00}
+:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:#fff204;color:#000;text-decoration:none}
+
+/* The head of a record after a font licence page (user, 26 Oct 2026): the title large, the actions stacked in a left column as filled pills, the summary and the facts at
+   the right in ruled rows with the label in the accent colour. Narrower than 620px the actions run in a row under the title and the rows take the full width. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-grid{display:block}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main{min-width:0;margin-top:var(--L)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main>.institution-summary{font-size:var(--fs-l)!important;line-height:1.25!important;margin:0 0 var(--L)!important;text-indent:0;max-width:none;text-wrap:balance}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-rows{margin:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row{counter-increment:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-rows h3.d-row-title::before{content:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row:last-child{padding-bottom:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li>p{margin:0;text-indent:0;max-width:none;font:inherit}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li>p.grade-line .grade-mark{display:table;margin-bottom:calc(var(--H) / 2)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li{padding-left:1.15em}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li::before{content:"";position:absolute;left:.15em;top:.62em;width:.34em;height:.34em;border-radius:50%;background:currentColor}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side{display:flex!important;flex-wrap:wrap;gap:var(--H)!important;margin:0!important;padding:0!important;align-items:flex-start}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action{--pill:#2d3352;--pill-hover:#12162b;flex:0 0 auto;width:auto;min-height:44px;height:auto;padding:10px 16px;border:0;border-radius:10px;background:var(--pill);color:#fff;font:400 16px/1.2 var(--sans);text-align:left;justify-content:flex-start;text-decoration:none;transition:background-color .15s,color .15s}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action:first-child{--pill:#4a0d0d;--pill-hover:#230404}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action[onclick*="atlasPlanVisit"]{--pill:#3c0b52;--pill-hover:#1c0527}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side a.record-action{--pill:transparent;--pill-hover:var(--ink);border:1.5px solid var(--ink);color:var(--ink)}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action:is(:hover,:active,:focus-visible){background:var(--pill-hover);color:#fff}
+:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side a.record-action:is(:hover,:active,:focus-visible){color:var(--paper)}
+@container (min-width: 620px) {
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,8fr);column-gap:calc(2 * var(--L));align-items:start}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side{flex-direction:column;flex-wrap:nowrap}
+  :root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action{max-width:100%;white-space:normal}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main{margin-top:0}
+  /* Everything under the head sits in the same right-hand column, so its rows line up with the head's rows. */
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{margin-left:calc((100% - 2 * var(--L)) * 3 / 11 + 2 * var(--L))}
+}
+
+/* ---- Visiting as labelled columns, after the foundry's footer (user, 26 Oct 2026) ----
+   Each fact is a small grey capital label (14px, capitals spaced .06em as Hochuli asks) with its words under it at 16px, regular, no bullet and no bold.
+   Two columns beside the row title; one column when the panel is narrow. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{margin:0;padding:0;min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:var(--L)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item{margin:0;padding:0;min-width:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dt{margin:0;font-size:14px;line-height:var(--lh);font-weight:400;text-transform:uppercase;letter-spacing:.06em;color:color-mix(in srgb,var(--ink) 55%,transparent)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dd{margin:0;grid-column:auto;font-size:16px;line-height:var(--lh);font-weight:400;color:var(--ink);letter-spacing:0;overflow-wrap:break-word;hyphens:manual;text-wrap:pretty}
+@container (min-width:34em){
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--L)}
+}
+
+/* ---- The record in two columns, a third and two thirds, with nothing indented (user, 26 Oct 2026) ----
+   The head is the buttons on the left and the facts on the right, with no bullets in the facts (the grade and the sentence under it are not a list).
+   Every row under the head has the same split, so its title sits under the buttons and its points under the facts; the old left margin on everything
+   under the head, which left an empty strip beside each row, is gone. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li{padding-left:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li::before{content:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li::before{content:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li{padding-left:0}
+@container (min-width: 620px) {
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-grid{grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--L)}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{margin-left:0}
+  /* The head's facts are one block in the right-hand column: the place and the founding over the grade, not a row of their own. */
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row{grid-template-columns:minmax(0,1fr);row-gap:0;border-top:0;padding:0}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list{margin-top:var(--H)}
+}
+
+/* ---- Visiting nearer the foundry footer (user, 26 Oct 2026) ----
+   There the label and the words under it are one size, the label in grey capitals, and each column is its own stack that runs down and then
+   starts the next, not a grid whose rows keep every column waiting for the tallest fact. So: the label at the text size (16px), and the facts
+   flow in two columns with each fact kept whole. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:1}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item{break-inside:avoid;margin:0 0 var(--L)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item:last-child{margin-bottom:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dt{font-size:16px}
+@container (min-width:34em){
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:2;column-gap:calc(2 * var(--L))}
+}
+
+
+/* ---- The chat at 17px (user, 26 Oct 2026) ----
+   The answers and the reader's own messages are set at 17px (it was 16), with the line, the half line and the leading counted from it:
+   1.4 x 17 = 23.8px, so one line is 23.8px and half a line 11.9px. The record keeps 16px. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream){--fs-m:17px;--L:23.8px;--H:11.9px}
+:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,li,dt,dd,.kicker,.t-lead){font-size:var(--fs-m)}
+/* The reader's own message sits on the same leading as the answers. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble{line-height:var(--lh)}
+/* Underlines in the chat are 0.8pt: a link's own `text-decoration` shorthand had put the thickness back to auto. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream) :is(a,.source-citation-pill):not(.record-action){text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
+
+/* ---- Margin beside the chat bubbles (user, 26 Oct 2026) ----
+   The answer bubbles and the reader's own messages keep 7px from the column's edges on both sides. The answer is full width, so it is 100% less the two
+   margins (100% plus a margin would run past the column). The gossip bubble sets its own. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip){width:calc(100% - 14px);margin-left:7px;margin-right:7px}
+:root :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{padding-left:7px;padding-right:7px;box-sizing:border-box}
+
+/* ---- Space between the head's rows (user, 26 Oct 2026: "fix typesetting") ----
+   In the two-column head each row had its padding taken away, so "Programme" sat flush under the last line of the grade text while the gap under it
+   was a half line. Hochuli's rule (notes/hochuli-spacing.md): the space above a heading is larger than the space below it, and the space below is 0.
+   A row follows the row before it by one line (L); a title with no summary under it sits directly on its list. */
+@container (min-width: 620px) {
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row+.d-row{margin-top:var(--L)}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-head:not(:has(.d-row-sub,.d-row-box))+.d-row-list{margin-top:0}
+}
+
+/* ---- Every title in Documan Thin (user, 26 Oct 2026: "all titles need to go in this font and use thin version") ----
+   A title is a heading (h1 to h6), the record's name and its row titles, the pop-up and card names, the section headers in chat answers, the modal and
+   panel headings, and the names of spaces and layers in the lists. Many rules above set these in Jokker with !important and an id, so this one has
+   three ids' worth of specificity (:not(#t) counts as an id) and comes last. Documan has only the Thin cut; the face is declared 100 to 900 so the
+   browser never fakes a bold from it. Case, size and spacing stay as the rules above set them. */
+:root:root:not(#t):not(#t):not(#t) :is(h1,h2,h3,h4,h5,h6,.t-title,.lede,.curator-section-hdr,.curator-hero-title,.dossier-main-heading,.d-row-title,.layers-title,.layers-section-title,.hq-chooser-title,.facts-title,.critique-title,#floatingCardTitle,.record-popup-name,#desktopDossierName,#dossier-sheet-name,.inst-link,.space-name,.layer-name){font-family:var(--display)!important;font-weight:100!important}
+
+/* ---- The chat answer without a bubble (user, 26 Oct 2026: "no need for bubble on the chat response and add to vertical space so it is proper spaced") ----
+   The answer is text on the page: no block behind it, no radius, no padding. The reader's own message keeps its grey bubble, so the two voices still differ.
+   The bubble's 14px of padding used to keep the turns apart, so the space is counted in lines now (notes/hochuli-spacing.md): half a line (H) between the
+   reader's message and the answer, two lines (2L) from the end of the answer to the next question. The gossip bubble is unchanged. */
+:root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip){background:none;border-radius:0;padding:var(--H) 0 0!important;margin-bottom:calc(2 * var(--L))!important}
+
+/* ---- The empty chat's question and the starter questions in Documan Regular, larger, about ten to a page (user, 26 Oct 2026) ----
+   Titles are Thin; these are the one place that is Regular. The tier colours (the highlight behind each question and its type) are not touched.
+   The questions stack one to a line-block at 28px (22px on a phone) with a 10px gap: on the desktop panel that is ten or eleven before fitQuestionCloud
+   takes off the ones that do not fit whole, on a phone about as many above the fold. A highlight that wraps repeats its padding on each line. */
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:flex-start!important;gap:10px!important}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-family:var(--display)!important;font-weight:400!important;font-size:34px!important;line-height:1.2!important;letter-spacing:0!important;text-align:left;max-width:100%;height:auto;white-space:normal}
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{padding:0;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-family:var(--display)!important;font-weight:400!important;font-size:38px!important;line-height:1.15!important}
+@media (max-width:520px){
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-size:26px!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{font-size:30px!important}
+}
+
+/* ---- Starter questions as coloured type, no highlight (user, 26 Oct 2026: "keep colors, fonts can be bigger and delete background just colored font with yellow on hover") ----
+   Each question is set in its tier colour (the same --fill the highlight used) on the page; on hover or focus it turns yellow. In the light theme the pastel
+   fills are too pale for type on white, so they are darkened by half, and the hover there stays the yellow highlight with black type. Sizes: 34px on the desktop
+   panel (ten or so fit), 26px on a phone. */
+:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{background:none!important;padding:0!important;color:var(--fill,#c6c6c6)!important;transition:color .15s}
+:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{color:color-mix(in srgb,var(--fill,#c6c6c6) 50%,#000)!important}
+:root:root:root:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:none!important;color:#fff204!important;text-decoration:none}
+:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:#fff204!important;color:#000!important;text-decoration:none}
+
+/* ---- Row titles at 17px (user, 26 Oct 2026: "this title can be 17") ----
+   The row's title (the flag, "Programme", the place) was 24px in the narrow record; it is 17px everywhere, still Thin and in the row's accent colour. */
+:root:root:not(#t):not(#t):not(#t) .d-row-title{font-size:17px!important;line-height:var(--lh)!important}
+
+/* ---- The standalone quotation: text 17px, its source line 14px, a line of space under it (user, 26 Oct 2026: "make text 17, info 14 and add space underneath") ----
+   The quotation and its hanging mark are 17px; the source line, with its linked title, is 14px (the same step as the other source notes). The space under
+   it is one line (L), so the rule of the next row does not sit against the source line. */
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote{font-size:17px!important;margin-bottom:var(--L)}
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-size:17px!important;line-height:var(--lh)!important}
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(figcaption,figcaption a){font-size:14px!important;line-height:var(--lh)!important}
+
+/* ---- The logo in Documan Thin (user, 26 Oct 2026: "make culture atlas logo also in documan") ----
+   The wordmark, in the top bar on the desktop and the phone, takes the same face and weight as the titles. The tagline badge beside it stays in Jokker. */
+:root:root:not(#t):not(#t):not(#t) :is(#topBrandLogoBtn>span:first-child,#mobileTopBrandBtn span:first-child){font-family:var(--display)!important;font-weight:100!important}
+
+/* ---- One line to a question (user, 26 Oct 2026: "add more questions and do not break even in two lines") ----
+   Above phone width a starter question never wraps. fitQuestionCloud (index.html) takes off every question too long for one line of the panel, so the
+   page fills with shorter ones and more of them fit; a line that still overflows is cut off, never wrapped. On a phone, 26px type cannot hold a question on one
+   line, so the questions wrap there as before. */
+@media (min-width:521px){
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){overflow:hidden!important;gap:8px!important}
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){white-space:nowrap!important;text-wrap:nowrap!important;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+  :root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{white-space:nowrap!important;text-wrap:nowrap!important}
+}
+
+/* ---- Row titles and the quotation at 20px in Documan Medium (user, 26 Oct 2026: "make titles and quote at 20px, use medium documan for both") ----
+   The row title ("Funding", "Programme", the flag) and the standalone quotation are 20px, weight 500. The other headings stay Thin; the quotation's source line stays 14px. */
+:root:root:not(#t):not(#t):not(#t):not(#t) .d-row-title{font-family:var(--display)!important;font-weight:500!important;font-size:20px!important}
+:root:root:not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-family:var(--display)!important;font-weight:500!important;font-size:20px!important}
 /* Chat controls refined after the displaay.net Stay in the Loop form (user, 26 Oct 2026): Share information and Voice are 52px blocks with the input's 14px corners, both with a 1px edge so the pair is one size, both yellow on hover and a press nudge; Voice carries a dot that is filled while the voice is on; How the records work is a full-width row with a plus that turns to a cross when open. Desktop only: the phone keeps its own bar. */
 @media (min-width:768px){
   :root[data-theme] #workBottomDock>div:has(>#workInputCard:not(.is-mode)){gap:12px!important}
