@@ -137,7 +137,10 @@ researcher's transcript and do not take its `basis` sentence as proof.
 
 Write `data/bureaucracy_runs/<RUN>/check/<BATCH>.json`: a list with one object per checked record,
 `{"id": ..., "verdict": "ok" | "fault", "faults": [{"field": ..., "stored": ..., "page says": ...,
-"fix": the value the page supports, or null to drop it}]}`. Edit no other file. A fault is: a fact the
+"fix": the value the page supports, or null to drop it}], "corrected": only for a fault record: the
+whole record object (`id`, `governance`, `red_tape`, `basis`) as it should be stored, every faulty
+value fixed or set null, every other value copied unchanged; `"governance": null` when the legal
+form is unsupported}`. Edit no other file. A fault is: a fact the
 cited pages do not state, a legal form inferred from a name, a source that is a mirror or snippet
 instead of the document, a staff or budget fact from a different institution, a red-tape note that
 is only an official citing a rule, a wording that is not the page's, or a value outside the lists.

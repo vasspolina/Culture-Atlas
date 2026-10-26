@@ -10,6 +10,10 @@ Checks: every enumerated field holds one of its listed values; a block carries a
 http(s) source url; the year looks like a year; the red-tape note is one sentence with a kind, a
 date and a url, and carries no dash, hedging word or "not found" phrasing.
 
+The checker's `check/bNNN.json` sits beside out/; where it holds a `corrected` record that record is
+read instead of the researcher's. Records whose checker verdict is fault but with no corrected block
+are read as the researcher wrote them: do not apply a batch until its check file has corrections.
+
 Usage:
   python3 tools/import_bureaucracy.py data/bureaucracy_runs/<run>/out            # dry run
   python3 tools/import_bureaucracy.py data/bureaucracy_runs/<run>/out --apply
@@ -107,7 +111,12 @@ def main():
     report = []
     spread = {}
     for path in sorted(Path(args.out_dir).glob('*.json')):
-        for e in json.load(open(path, encoding='utf-8')):
+        entries = json.load(open(path, encoding='utf-8'))
+        check = Path(args.out_dir).parent / 'check' / path.name
+        if check.exists():   # a checker's corrected record replaces the researcher's
+            fixed = {c['id']: c['corrected'] for c in json.load(open(check, encoding='utf-8')) if c.get('verdict') == 'fault' and c.get('corrected')}
+            entries = [fixed.get(e.get('id'), e) for e in entries]
+        for e in entries:
             rec = by_id.get(e.get('id'))
             if not rec:
                 report.append(f'{path.name}: unknown id {e.get("id")!r}')
