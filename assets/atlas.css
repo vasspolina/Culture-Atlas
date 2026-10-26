@@ -1213,7 +1213,7 @@ body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCar
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:#e8e8e8;border-color:#000}
 @media (prefers-reduced-motion:reduce){.thinking i{animation:none}}
 
-/* No rule under a section heading in the record ("Reported, not independently verified"): the first card after it starts clean. */
+/* No rule under a section heading in the record: the first card after it starts clean. */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(h3,.kicker)+.record-card{border-top:0;padding-top:0}
 
 /* No rules between record cards */

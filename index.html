@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=302">
-  <script src="assets/config.js?v=302"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=303">
+  <script src="assets/config.js?v=303"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7381,9 +7381,9 @@ return maplibregl$1;
       const accounts = (g.accounts || []).length;
       const sources = (inst.sources || []).filter(u => /^https?:\/\//.test(u));
       const visiting = [inst.opening_hours ? 'Opening hours: ' + inst.opening_hours : '', (inst.admission_fee || inst.admission_policy) ? 'Admission: ' + (inst.admission_fee || inst.admission_policy) : '', inst.address ? 'Address: ' + inst.address : ''].filter(Boolean);
-      if (inst.why_flagged) cats.push({ key: 'flag', label: 'Why it is flagged', lines: [inst.why_flagged].concat((inst.flag_details || []).map(d => d.text)) });
+      if (inst.why_flagged) cats.push({ key: 'flag', label: 'Flagged', lines: [inst.why_flagged].concat((inst.flag_details || []).map(d => d.text)) });
       if (inst.funding) cats.push({ key: 'funding', label: 'Funding', lines: [inst.funding] });
-      if (reported.length) cats.push({ key: 'reported', label: `Reported, not independently verified (${reported.length})`, lines: reported });
+      if (reported.length) cats.push({ key: 'reported', label: `Reported (${reported.length})`, lines: reported });
       if (accounts) cats.push({ key: 'accounts', label: `Individual accounts (${accounts})`, lines: [xrayAccountsLine(inst)] });
       if (sources.length) cats.push({ key: 'sources', label: `Sources (${sources.length})`, lines: sources.map(xrayHost).filter(Boolean) });
       if (visiting.length) cats.push({ key: 'visiting', label: 'Visiting', lines: visiting });
@@ -9901,11 +9901,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v302';
+    const ATLAS_RELEASE = 'culture-atlas-v303';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=302').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=303').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11486,7 +11486,7 @@ return maplibregl$1;
       }
       return out.join('');
     }
-    // A line the researched report already prints is not printed again under "Reported, not independently verified":
+    // A line the researched report already prints is not printed again under the reported items:
     // most of its words (60%) appear in one of the report's own lines.
     function sayAlreadyInDetails(inst, text) {
       const d = inst && inst.details;
@@ -11781,6 +11781,35 @@ return maplibregl$1;
       const alsoAbout = String(a.scope || '').split(/\s*;\s*/).filter(n => n && !/work location varies/i.test(n) && n.toLowerCase() !== own && !own.includes(n.toLowerCase()) && !n.toLowerCase().includes(own));
       return { title, date: humanDate(date), summary, note, alsoAbout };
     }
+    // What each flag label says about a space, as a plain predicate: the page states it, it does not tag it.
+    const FLAG_SAYS = {
+      'Fossil fuels': 'has a funder or sponsor in the fossil fuel industry',
+      'Protest or boycott': 'has a funder or sponsor that has drawn protest or boycott',
+      'State censorship or punishment': 'has a funder or sponsor tied to state censorship or punishment',
+      'Campaigned name': 'has a funder or sponsor that campaigners have targeted',
+      'Sponsor dropped under pressure': 'has been pressed to drop a sponsor',
+      'Epstein-linked': 'has a recorded link to Jeffrey Epstein',
+      'Sanctions': 'has a recorded tie to sanctions',
+      'Tobacco': 'has a funder or sponsor in the tobacco industry',
+      'Gulf state body': 'has funding or patronage from a Gulf state body',
+      'Gambling': 'has a funder or sponsor in gambling',
+      'Opioids': 'has a funder tied to opioid makers',
+      'Arms and defence': 'has a funder or sponsor in the arms and defence industry',
+      'Forced or exploited labour': 'has a funder tied to forced or exploited labour',
+      'Mining disaster': 'has a funder tied to a mining disaster',
+      'Prison or detention': 'has a funder tied to prisons or detention',
+      "Ties to PM Abiy Ahmed's government": "has ties to Prime Minister Abiy Ahmed's government",
+    };
+    // "X has a funder in the tobacco industry. It has a recorded link to Jeffrey Epstein." One sentence per flag; the first names the space.
+    function flagStatementParts(inst) {
+      return (inst && inst.flags || []).map(f => ({ flag: f, say: FLAG_SAYS[f] || 'is flagged for ' + String(f).toLowerCase() }));
+    }
+    function flagStatement(inst) {
+      return flagStatementParts(inst).map((x, i) => {
+        const text = escapeHtml(`${i ? 'It' : (inst.name || 'This space')} ${x.say}.`);
+        return /epstein/i.test(x.flag) ? text.replace(/(a recorded link to Jeffrey Epstein)/, '<mark class="flag-epstein">$1</mark>') : text;
+      }).join(' ');
+    }
     // Reported items. Each one carries the sources recorded for it. None is independently verified.
     function documentedRecordHtml(inst) {
       if (!inst) return '';
@@ -11808,18 +11837,21 @@ return maplibregl$1;
         const metaHtml = meta && typeof meta === 'object' ? meta.html || '' : escapeHtml(String(meta || '').replace(/\b\d{4}-\d{2}-\d{2}\b/g, humanDate));
         return `
         <div class="record-card space-y-1_5">
-          <div class="kicker no-indent">${escapeHtml(title)}</div>
+          ${title ? `<div class="kicker no-indent">${escapeHtml(title)}</div>` : ''}
           ${metaHtml ? `<div class="kicker no-indent">${metaHtml}</div>` : ''}
           ${body}
           ${srcs(urls) ? `<div class="no-indent">${srcs(urls)}</div>` : ''}
         </div>`;
       };
       const blocks = [];
-      if (inst.why_flagged) {
+      if (inst.why_flagged || (inst.flags || []).length) {
         const more = (inst.flag_details || []).filter(d => d && d.text);
         // The Funding block already prints the funding line and a money-related watch note; the same text is not printed twice.
-        const sameAsFunding = [inst.watch && watchIsAboutMoney(inst.watch) ? inst.watch : '', inst.funding].some(t => t && String(t).trim() === String(inst.why_flagged).trim());
-        blocks.push(item('Why it is flagged', { html: (inst.flags || []).map(f => /epstein/i.test(f) ? `<mark class="flag-epstein">${escapeHtml(f)}</mark>` : escapeHtml(f)).join(', ') }, (sameAsFunding || sayAlreadyInDetails(inst, inst.why_flagged) ? '' : p('', inst.why_flagged)) + more.map(d => p('', d.text)).join(''),
+        const sameAsFunding = [inst.watch && watchIsAboutMoney(inst.watch) ? inst.watch : '', inst.funding].some(t => t && String(t).trim() === String(inst.why_flagged || '').trim());
+        const why = !inst.why_flagged || sameAsFunding || sayAlreadyInDetails(inst, inst.why_flagged) ? '' : escapeHtml(inst.why_flagged);
+        // The statement and the reason are one paragraph, set in the body size with no title or tag above it.
+        const lead = [flagStatement(inst), why].filter(Boolean).join(' ');
+        blocks.push(item('', '', (lead ? `<p class="t-lead">${lead}</p>` : '') + more.map(d => p('', d.text)).join(''),
           [...new Set((inst.sources || []).concat(more.map(d => d.url)))]));
       }
       (inst.epstein_records || []).forEach(e => blocks.push(item(e.person || 'Epstein-related record', [e.link, e.status].filter(Boolean).join(', '),
@@ -11843,7 +11875,7 @@ return maplibregl$1;
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
         if (m) blocks.push(item(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}`, m[3].replace(/^(\w)/, c => c.toUpperCase()), p('', m[4]), []));
-        else blocks.push(item('Other documented finding', '', p('', part), []));
+        else blocks.push(item('', '', p('', part.replace(/^([^:]{1,60}?, )(\d{4}-\d{2}-\d{2}):/, (_, who, d) => `${who}${humanDate(d)}:`)), []));
       });
       const relatedReports = (inst.case_notes || []).map(n => `
         <article class="record-card related-report-card space-y-1_5">
@@ -11881,7 +11913,7 @@ return maplibregl$1;
       if (!blocks.length && !relatedReports.length && !accounts.length) return '';
       // data-gossip marks the one block of a reply that is gossip: assets/bubbles.js draws a comic balloon only around a turn that holds it.
       return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
-        ${blocks.length ? `<h3 class="kicker">Reported, not independently verified</h3>${blocks.join('')}` : ''}
+        ${blocks.join('')}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
         ${accounts.length ? `<h3 class="kicker">Personal accounts (${accounts.length})</h3><p class="no-indent account-note">Posts by staff and visitors on review sites and Reddit. One person's experience each, not verified findings about the institution.</p>${accounts.join('')}` : ''}
       </div>`;
@@ -12520,7 +12552,7 @@ return maplibregl$1;
       const why = !inst.why_flagged || sameAsFunding || sayAlreadyInDetails(inst, inst.why_flagged) ? '' : proseEnd(inst.why_flagged);
       const said = [why, proseSay(more)].filter(Boolean).join(' ');
       if (!own.length && ((inst.flags || []).length || why)) {
-        rows.push(proseRow('Flagged', (inst.flags || []).map(markFlag).join(', '), [proseLi('', escapeHtml(said), true)], { tone: 'flag', gossip: true }));
+        rows.push(proseRow('Flagged', flagStatement(inst), [proseLi('', escapeHtml(said), true)], { tone: 'flag', gossip: true }));
       } else if (why || more.length) {
         rows.push(proseRow('Also on record', '', [proseLi('', escapeHtml(said), true)], { tone: 'flag', gossip: true }));
       }
@@ -12555,7 +12587,7 @@ return maplibregl$1;
         const c = inst.case_study;
         items.push(proseLi(`${c.title}${c.kick ? ' (' + c.kick + ')' : ''}.`, escapeHtml([proseSay(c.summary), proseSay(c.bullets), (c.timeline || []).map(t => `${t.date}: ${proseEnd(t.event)}`).join(' ')].filter(Boolean).join(' ')), true));
       }
-      if (items.some(Boolean)) rows.push(proseRow('Reported, not independently verified', 'Each item names its sources.', items, { tone: 'flag', gossip: true }));
+      if (items.some(Boolean)) rows.push(proseRow('Reported items', 'Each item names its sources.', items, { tone: 'flag', gossip: true }));
       // The art press: the report's overview as the subtitle, one bullet per piece, the outlet linked to the piece; then what the archive adds.
       const press = d.press || {};
       const pressLis = (press.items || []).map(it => {
@@ -19389,9 +19421,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=302"></script>
-<script src="assets/layers.js?v=302"></script>
-<script src="assets/hq-detail.js?v=302"></script>
-<script src="assets/bubbles.js?v=302" defer></script>
+<script src="assets/typeset.js?v=303"></script>
+<script src="assets/layers.js?v=303"></script>
+<script src="assets/hq-detail.js?v=303"></script>
+<script src="assets/bubbles.js?v=303" defer></script>
 </body>
 </html>
