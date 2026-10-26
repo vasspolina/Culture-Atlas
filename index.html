@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=381">
-  <script src="assets/config.js?v=381"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=382">
+  <script src="assets/config.js?v=382"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v381';
+    const ATLAS_RELEASE = 'culture-atlas-v382';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=381').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=382').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10266,8 +10266,16 @@ return maplibregl$1;
       // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode. Gossip mode does not change it: yellow is for gossip alone.
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const cardInk = cardDark ? '#ffffff' : '#000000';
-      ctx.fillStyle = cardDark ? '#2a2a2a' : '#ffffff';
-      ctx.fillRect(cardX, cardY, cardW, cardH);
+      // Drawn like the city labels: a thin soft rounded outline, no block.
+      ctx.beginPath();
+      ctx.roundRect(cardX, cardY, cardW, cardH, 12);
+      ctx.fillStyle = cardDark ? '#000000' : '#ffffff';
+      ctx.fill();
+      ctx.globalAlpha = 0.45;
+      ctx.strokeStyle = cardInk;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.globalAlpha = 1;
 
       const textX = cardX + barW + padX;
       const maxTextW = cardW - barW - padX * 2;
@@ -10295,8 +10303,12 @@ return maplibregl$1;
         const btnW = Math.min(maxTextW, webW + 24);
         const btnH = pillH;
 
-        ctx.fillStyle = cardDark ? '#444444' : '#d9d9d9';
-        ctx.fillRect(btnX, btnY, btnW, btnH);
+        ctx.beginPath();
+        ctx.roundRect(btnX, btnY, btnW, btnH, 8);
+        ctx.globalAlpha = 0.45;
+        ctx.strokeStyle = cardInk;
+        ctx.stroke();
+        ctx.globalAlpha = 1;
         ctx.fillStyle = cardInk;
         ctx.textBaseline = 'middle';
         ctx.fillText(fit(domainPillText), btnX + 12, btnY + btnH / 2 + 0.5);
@@ -10644,13 +10656,15 @@ return maplibregl$1;
           const fill = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
           return { fill, ink: darkLabel ? '#ffffff' : '#000000' };
         };
+        // The type and outline colour of a city label, and of the card it opens into.
+        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = ATLAS_CARD_MONO_FONT;
           const w = ctx.measureText(text).width + 28, h = 22;
           const pc = pillColors(active, tier);
           // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
-          const textCol = isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
+          const textCol = pillTextColor(tier);
           ctx.beginPath();
           ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 8);
           if (active) { ctx.fillStyle = pc.fill; ctx.fill(); }
@@ -11076,8 +11090,10 @@ return maplibregl$1;
               ctx.beginPath();
               ctx.arc(hPt.x, hPt.y, 6.5, 0, Math.PI * 2);
               const cardColors = pillColors(false, cityTier(hMeta.name));
-              ctx.fillStyle = cardColors.fill;
-              ctx.strokeStyle = '#ffffff';
+              const cardText = pillTextColor(cityTier(hMeta.name));
+              const cardBg = GLOBE_LIGHT ? '#ffffff' : '#000000';
+              ctx.fillStyle = cardText;
+              ctx.strokeStyle = cardBg;
               ctx.lineWidth = 0.8;
               ctx.fill();
               ctx.stroke();
@@ -11089,7 +11105,7 @@ return maplibregl$1;
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
               const countTxt = `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`;
               const linkTxt = 'Click to explore';
-              const cardInk = cardColors.ink;
+              const cardInk = cardText;
 
               ctx.font = ATLAS_CARD_TITLE_FONT;
               const twCity = ctx.measureText(cityTxt).width;
@@ -11126,8 +11142,16 @@ return maplibregl$1;
               };
 
               // Flat block in the colour of the city's badge (cyan, orange or grey by tier). No rounding, no outline, no shadow.
-              ctx.fillStyle = cardColors.fill;
-              ctx.fillRect(cardX, cardY, cardW, cardH);
+              // Drawn like the city labels: no block, a thin soft rounded outline and the type in the tier's colour.
+              ctx.beginPath();
+              ctx.roundRect(cardX, cardY, cardW, cardH, 12);
+              ctx.fillStyle = cardBg;
+              ctx.fill();
+              ctx.globalAlpha = 0.55;
+              ctx.strokeStyle = cardText;
+              ctx.lineWidth = 1;
+              ctx.stroke();
+              ctx.globalAlpha = 1;
 
               // Line 1: city name, in the roman
               ctx.font = ATLAS_CARD_TITLE_FONT;
@@ -11146,12 +11170,12 @@ return maplibregl$1;
 
               // Action: a tint of the type colour at rest, solid type colour with card-coloured text on hover.
               ctx.save();
-              ctx.fillStyle = cardInk;
-              ctx.globalAlpha = isHoveringCityExploreLink ? 1 : 0.16;
-              ctx.fillRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH);
-              ctx.globalAlpha = 1;
+              ctx.beginPath();
+              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 8);
+              if (isHoveringCityExploreLink) { ctx.fillStyle = '#fff204'; ctx.fill(); }
+              else { ctx.globalAlpha = 0.55; ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
               ctx.font = ATLAS_CARD_MONO_FONT;
-              ctx.fillStyle = isHoveringCityExploreLink ? cardColors.fill : cardInk;
+              ctx.fillStyle = isHoveringCityExploreLink ? '#000000' : cardInk;
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
               ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2 + 0.5);
@@ -19604,9 +19628,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=381"></script>
-<script src="assets/layers.js?v=381"></script>
-<script src="assets/hq-detail.js?v=381"></script>
-<script src="assets/bubbles.js?v=381" defer></script>
+<script src="assets/typeset.js?v=382"></script>
+<script src="assets/layers.js?v=382"></script>
+<script src="assets/hq-detail.js?v=382"></script>
+<script src="assets/bubbles.js?v=382" defer></script>
 </body>
 </html>
