@@ -9,3 +9,5 @@ curl host, retry listing that host in allowed_domains; WebFetch cannot read PDFs
 how many ok, how many fault, and the faults in a few words each.
 
 Disk is scarce on this Mac: keep your downloads in one folder of your own under $TMPDIR, never download a file over 20 MB (read PDF pages from the first bytes you need or skip the source), and delete that folder before your final reply. Never delete anything else.
+
+Precedent: `data/bureaucracy_runs/r3/first_pass_rulings.json` maps record ids to the reason a first-pass checker nulled their governance block. If a record you check appears there, the same inference was already rejected: null it again unless this researcher cites a page that states what that checker found missing.
