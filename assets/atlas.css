@@ -2430,3 +2430,6 @@ div:has(>#topThemeBtn){column-gap:0}
 /* No "Visiting" title (user, 26 Oct 2026: "drop visiting title"). The row keeps its place in the two columns (the empty head holds the left cell, so the facts stay where
    they are) and its region still carries the label "Visiting" for screen readers. */
 :root:root:not(#t):not(#t):not(#t) .d-row-visit .d-row-title{display:none!important}
+
+/* Voice is a greyed-out block: grey fill (#3a3a3a, the grey of the disabled send button), no outline, white type (user, 26 Oct 2026: "voice button can be just greyed out background and no outline"). */
+:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn.is-on,#curatorVoiceToggleBtn:not(.is-on),#curatorVoiceToggleBtn:hover,#curatorVoiceToggleBtn:focus-visible,#curatorVoiceToggleBtn:active){background:#3a3a3a!important;border:0!important;color:#fff!important;filter:none!important}
