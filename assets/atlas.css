@@ -2232,3 +2232,19 @@ div:has(>#topThemeBtn){column-gap:0}
 @container (min-width:34em){
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--L)}
 }
+
+/* ---- The record in two columns, a third and two thirds, with nothing indented (user, 26 Oct 2026) ----
+   The head is the buttons on the left and the facts on the right, with no bullets in the facts (the grade and the sentence under it are not a list).
+   Every row under the head has the same split, so its title sits under the buttons and its points under the facts; the old left margin on everything
+   under the head, which left an empty strip beside each row, is gone. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li{padding-left:0}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list.is-bulleted>li::before{content:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li::before{content:none}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list>li{padding-left:0}
+@container (min-width: 620px) {
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-grid{grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--L)}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{margin-left:0}
+  /* The head's facts are one block in the right-hand column: the place and the founding over the grade, not a row of their own. */
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row{grid-template-columns:minmax(0,1fr);row-gap:0;border-top:0;padding:0}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-list{margin-top:var(--H)}
+}
