@@ -2155,3 +2155,18 @@ div:has(>#topThemeBtn){column-gap:0}
 :root #curatorMessages>.curator-message-wrap li:has(>strong:first-child)+li{margin-top:var(--H)}
 :root #curatorMessages>.curator-message-wrap :is(ul,ol)>li{padding-left:.25em}
 :root #curatorMessages>.curator-message-wrap :is(ul,ol)+p{margin-top:var(--H)}
+
+/* ---- Details set like the font-licence page's usage rows (user, 26 Oct 2026) ----
+   A row is a hairline, then on the left its title in the accent colour with what it comes to directly under it in the ink, both at 16px and
+   regular weight, and below them a quiet outlined box for the annotation; on the right its points as a bulleted list at 14px, line under line,
+   the bullet hanging in the margin. Nothing is bold except an uncoloured lead-in that has to stand out in the line (the row titles are
+   coloured, so they are regular). The phone's numbered rows, set like the licence text, are left as they are. */
+@container (min-width:34em){
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-title,.d-row-sub){font-size:16px;font-weight:400;line-height:var(--lh)}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-box{margin-top:var(--L);padding:calc(var(--H) * .9) var(--L) calc(var(--H) * .9) calc(var(--L) * .75);border-radius:10px;font-size:14px;line-height:var(--lh);color:color-mix(in srgb,var(--ink) 65%,transparent)}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li{font-size:14px;line-height:var(--lh);padding-left:1.15em}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li::before{content:"";position:absolute;left:.15em;top:.62em;width:.34em;height:.34em;border-radius:50%;background:currentColor}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li+li{margin-top:0}
+  /* A quotation hangs its own opening mark in the margin; it takes the bullet's place. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:has(.quote-hang)::before{content:none}
+}
