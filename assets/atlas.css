@@ -2419,3 +2419,6 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root[data-theme] #workBottomDock>div:has(>#workInputCard:not(.is-mode)){gap:3px!important}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:3px!important;gap:3px!important}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{gap:3px!important}
+
+/* The outline of the Voice and Share information buttons is 0.8px (user, 26 Oct 2026: "the outline can be 0.8px"). */
+:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn),:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn):is(.is-on,:hover,:focus-visible){border-width:.8px!important}
