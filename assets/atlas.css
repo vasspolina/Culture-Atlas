@@ -2458,3 +2458,15 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){background:transparent!important;color:#fff204!important;text-decoration:none!important}
 :root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn *,#chatShareBtn,#chatShareBtn:hover){text-decoration:none!important}
 :root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:#fff!important}
+
+/* Mobile composer: one row — textarea, inline Voice mic toggle, Send */
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>div:first-child{display:flex!important;align-items:center!important;gap:8px!important;padding-right:12px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #chat-input{flex:1 1 auto!important;min-width:0!important;width:auto!important;padding-right:0!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickySendBtn{position:static!important;inset:auto!important;transform:none!important;flex:0 0 auto!important;width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn{position:relative!important;flex:0 0 auto!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;padding:0!important;gap:0!important;border:1px solid #9aa0c4!important;border-radius:12px!important;background:transparent!important;color:#fff!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn svg{width:20px!important;height:20px!important;color:inherit!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn::before{content:none!important;display:none!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn[aria-pressed="true"]{background:#fff204!important;border-color:#fff204!important;color:#000!important}
+/* muted: diagonal strike so state isn't carried by colour alone */
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn[aria-pressed="false"]::after{content:"";position:absolute;left:50%;top:50%;width:26px;height:1.5px;background:currentColor;transform:translate(-50%,-50%) rotate(-45deg);pointer-events:none}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn:focus-visible{outline:2px solid #fff204!important;outline-offset:2px!important}

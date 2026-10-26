@@ -887,16 +887,14 @@ return maplibregl$1;
     <div class="relative flex items-center">
       <!-- Input Field -->
       <textarea class="w-full px-3 py-2 pr-20" id="chat-input" rows="2" placeholder="Ask about a space, its funders or controversies…"></textarea>
+      <!-- Voice toggle (inline mic, sits left of Send) -->
+      <button id="mobileStickyVoiceBtn" type="button" aria-pressed="true" aria-label="Read answers aloud" title="Read answers aloud">
+        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+      </button>
       <!-- Send Pill Button -->
       <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5" aria-label="Send message" title="Send message">
         <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
       </button>
-    </div>
-    <!-- Micro Badges: Live Status + Voice Mode -->
-    <div class="flex items-center justify-between px-1">
-      <div class="flex items-center space-x-2">
-        <button id="mobileStickyVoiceBtn" type="button" class="px-2 py-0_5" aria-pressed="true">Voice</button>
-      </div>
     </div>
   </div>
 
