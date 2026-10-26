@@ -2275,3 +2275,9 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble{line-height:var(--lh)}
 /* Underlines in the chat are 0.8pt: a link's own `text-decoration` shorthand had put the thickness back to auto. */
 :root :is(#curatorMessages,#curatorDrawerLiveStream) :is(a,.source-citation-pill):not(.record-action){text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
+
+/* ---- Margin beside the chat bubbles (user, 26 Oct 2026) ----
+   The answer bubbles and the reader's own messages keep 7px from the column's edges on both sides. The answer is full width, so it is 100% less the two
+   margins (100% plus a margin would run past the column). The gossip bubble sets its own. */
+:root :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip){width:calc(100% - 14px);margin-left:7px;margin-right:7px}
+:root :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{padding-left:7px;padding-right:7px;box-sizing:border-box}
