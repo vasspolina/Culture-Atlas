@@ -2610,3 +2610,9 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* While the note is open the bar reads Back to chat with an arrow in front, not a ticked box. */
 #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{width:22px;height:22px;border:0;border-radius:0;background-color:#fff;background-image:none;-webkit-mask:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M20 10h-14l5-5-1.500-1.500-8 8 8 8 1.500-1.500-5-5h14z'/%3E%3C/svg%3E") center/100% no-repeat;mask:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M20 10h-14l5-5-1.500-1.500-8 8 8 8 1.500-1.500-5-5h14z'/%3E%3C/svg%3E") center/100% no-repeat}
+
+/* Share information is back to its name and is drawn in the grey of the Purchasing Fonts button: grey fill, black type and a black box or arrow. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{background:#86878b!important;color:#000!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:hover{background:#9b9ca0!important;color:#000!important}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn::before{border-color:#000}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{background-color:#000}
