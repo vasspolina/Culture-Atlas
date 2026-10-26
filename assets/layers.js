@@ -454,6 +454,78 @@
     });
   }
 
+  // Stroke a line except where it passes through a label block (with a 3 px margin), so a tie never runs through text.
+  function strokeAround(ctx, x0, y0, x1, y1, bs) {
+    const dx = x1 - x0, dy = y1 - y0, iv = [];
+    bs.forEach(b => {
+      let t0 = 0, t1 = 1;
+      for (const [p, q, lo, hi] of [[x0, dx, b.x - 3, b.x + b.w + 3], [y0, dy, b.y - 3, b.y + b.h + 3]]) {
+        if (Math.abs(q) < 1e-9) { if (p < lo || p > hi) return; continue; }
+        let a = (lo - p) / q, c = (hi - p) / q; if (a > c) [a, c] = [c, a];
+        t0 = Math.max(t0, a); t1 = Math.min(t1, c); if (t0 >= t1) return;
+      }
+      iv.push([t0, t1]);
+    });
+    iv.sort((a, b) => a[0] - b[0]);
+    const seg = (a, c) => { ctx.moveTo(x0 + dx * a, y0 + dy * a); ctx.lineTo(x0 + dx * c, y0 + dy * c); };
+    let t = 0; ctx.beginPath();
+    iv.forEach(([a, c]) => { if (a > t) seg(t, a); t = Math.max(t, c); });
+    if (t < 1) seg(t, 1);
+    ctx.stroke();
+  }
+  // Does the straight spoke from (x0,y0) to (x1,y1) cross a block? The first 12 px, under the space's own mark, do not count.
+  function spokeHits(x0, y0, x1, y1, bs, pad) {
+    const len = Math.hypot(x1 - x0, y1 - y0), n = Math.ceil(len / 4);
+    for (let s = 1; s <= n; s++) {
+      const t = s / n; if (t * len < 12) continue;
+      const x = x0 + (x1 - x0) * t, y = y0 + (y1 - y0) * t;
+      if (bs.some(b => x > b.x - pad && x < b.x + b.w + pad && y > b.y - pad && y < b.y + b.h + pad)) return true;
+    }
+    return false;
+  }
+  // The funders of one space, around its dot. Each takes the angle farthest from the ones placed before it where its spoke and
+  // its name both fit clear of every label on the map (stepping out to a wider ring when the near one is crowded); the first goes
+  // opposite the space's own name block. A funder that fits nowhere keeps the best angle and its name, rather than losing the name.
+  // Sets x, y, box (the name's block) on each item, and adds the blocks to `boxes` so later drawing keeps clear of them.
+  function placeRing(d, items, R, boxes, W, H, pref) {
+    const STEP = Math.PI / 18, TAU = Math.PI * 2, H_ = 20, GAPS = [1, 1.4, 1.8, 2.3];
+    const reachBox = R * GAPS[GAPS.length - 1] + 260;
+    const near = boxes.filter(b => b.x < d.x + reachBox && b.x + b.w > d.x - reachBox && b.y < d.y + reachBox && b.y + b.h > d.y - reachBox);
+    const angles = []; for (let k = 0; k < 36; k++) angles.push(-Math.PI / 2 + k * STEP);
+    const sep = (a, b) => { const t = Math.abs(a - b) % TAU; return t > Math.PI ? TAU - t : t; };
+    const free = (b, bs) => b.x >= 2 && b.y >= 2 && b.x + b.w <= W - 2 && b.y + b.h <= H - 2 && !bs.some(o => !(b.x + b.w + 2 < o.x || b.x - 2 > o.x + o.w || b.y + b.h + 2 < o.y || b.y - 2 > o.y + o.h));
+    const overlap = (b, bs) => bs.reduce((t, o) => t + Math.max(0, Math.min(b.x + b.w, o.x + o.w) - Math.max(b.x, o.x)) * Math.max(0, Math.min(b.y + b.h, o.y + o.h) - Math.max(b.y, o.y)), 0);
+    const spots = (x, y, a, w, sr) => {
+      const right = Math.cos(a) >= -0.2, up = Math.sin(a) < 0, g = sr + 4;
+      const Rt = { x: x + g, y: y - H_ / 2, w, h: H_ }, Lt = { x: x - g - w, y: y - H_ / 2, w, h: H_ };
+      const Ab = { x: x - w / 2, y: y - g - H_, w, h: H_ }, Bl = { x: x - w / 2, y: y + g, w, h: H_ };
+      return right ? [Rt, up ? Ab : Bl, up ? Bl : Ab, Lt] : [Lt, up ? Ab : Bl, up ? Bl : Ab, Rt];
+    };
+    // The space's own name block hangs from its dot and reaches only a few px below it: only that part blocks a spoke (a level spoke would run along its lower edge, so those are out).
+    const lb = d.labelBox, spokeBlocks = near.map(b => lb && b.x === lb.x && b.y === lb.y ? { x: b.x, y: b.y, w: b.w, h: Math.max(0, d.y - b.y) } : b);
+    const placed = [];   // { a, x, y }
+    const blocks = near.slice();
+    items.forEach((it, i) => {
+      let best = null, fallback = null;
+      angles.forEach(a => {
+        const minSep = placed.length ? Math.min(...placed.map(p => sep(a, p.a))) : Math.PI - sep(a, pref);
+        for (let g = 0; g < GAPS.length; g++) {
+          const x = d.x + R * GAPS[g] * Math.cos(a), y = d.y + R * GAPS[g] * Math.sin(a);
+          if (placed.some(p => Math.hypot(p.x - x, p.y - y) < 26)) continue;
+          const mark = { x: x - it.sr - 2, y: y - it.sr - 2, w: it.sr * 2 + 4, h: it.sr * 2 + 4 };
+          const spot = !spokeHits(d.x, d.y, x, y, spokeBlocks, 3) && free(mark, blocks) && spots(x, y, a, it.w, it.sr).find(s => free(s, blocks));
+          if (spot) { if (!best || minSep > best.s + 1e-6) best = { a, x, y, spot, s: minSep }; break; }
+          const sp = spots(x, y, a, it.w, it.sr).map(q => ({ q, o: overlap(q, blocks) + overlap(mark, blocks) })).sort((u, v) => u.o - v.o)[0];
+          if (!fallback || sp.o < fallback.o - 1e-6 || (Math.abs(sp.o - fallback.o) < 1e-6 && minSep > fallback.s + 1e-6)) fallback = { a, x, y, spot: sp.q, s: minSep, o: sp.o };
+        }
+      });
+      const pick = best || fallback || { a: pref + i, x: d.x + R, y: d.y, spot: spots(d.x + R, d.y, 0, it.w, it.sr)[0] };
+      it.x = pick.x; it.y = pick.y; it.box = pick.spot;
+      placed.push({ a: pick.a, x: pick.x, y: pick.y });
+      blocks.push(pick.spot, { x: pick.x - it.sr - 2, y: pick.y - it.sr - 2, w: it.sr * 2 + 4, h: it.sr * 2 + 4 });
+      boxes.push(pick.spot);
+    });
+  }
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
     if (!REACH && !L.flags && !L.grade && !L.money && !L.mix && !L.right && !L.epstein && !L.hq && !L.people && !L.ties) return;
     if ((L.money || L.mix || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
@@ -545,12 +617,14 @@
 
     if (L.money) {
       if (!recById) { ctx.restore(); return; }
-      const byKey = new Map(), labels = [];
+      const byKey = new Map(), rings = [];
       // A selected space with no dot of its own (folded into a cluster) still gets its funders.
       if (sel && typeof sel.lat === 'number' && typeof sel.lon === 'number' && !dots.some(d => sameInst(d.inst, sel))) {
         const pt = project(sel.lon, sel.lat, r, cx, cy); if (pt.front) dots = dots.concat([{ inst: sel, x: pt.x, y: pt.y }]);
       }
-      ctx.lineWidth = 0.8;
+      const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
+      // First pass: where every funder of the focused space goes, and where its name goes. Each spoke and each name must stay
+      // clear of the labels already on the map and of the names placed before it, so nothing is drawn over text and no name is dropped.
       dots.forEach(d => {
         const inst = d.inst, rec = inst && recById.get(inst.id); if (!rec) return;
         const focus = sameInst(sel, inst) || sameInst(hov, inst);
@@ -559,38 +633,40 @@
         if (!nodes.length) return;
         // The ring is 64 px when the view is close; further out it shrinks, so funders never land on other cities.
         const zoomK = Math.max(0.4, Math.min(1, r / (baseRadius * 12)));
-        const N = Math.min(nodes.length, focus ? 10 : 6), R = (focus ? 64 : 36) * zoomK;
-        for (let i = 0; i < N; i++) {
-          const n = nodes[i], a = -Math.PI / 2 + (i * 2 * Math.PI) / N, x = d.x + R * Math.cos(a), y = d.y + R * Math.sin(a);
-          const col = COL[n[1]];
-          ctx.globalAlpha = focus ? 1 : 0.7;
-          ctx.strokeStyle = lineCol(col); ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
+        const N = Math.min(nodes.length, 10), R = 64 * zoomK;
+        const items = nodes.slice(0, N).map(n => {
+          const reach = reachOf(n[5]), text = n[0].length > 28 ? n[0].slice(0, 26) + '…' : n[0];
+          return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, w: ctx.measureText(text).width + 12 };
+        });
+        placeRing(d, items, R, boxes, W, H, d.labelBox ? Math.PI / 2 : -Math.PI / 2);
+        rings.push({ d, rec, items });
+      });
+      // Then the ties, under the marks: a funder named on two spaces on screen is joined across them, in a dashed line that breaks around label blocks.
+      ctx.save(); ctx.lineWidth = 0.8; ctx.globalAlpha = 0.4; ctx.setLineDash([3, 5]);
+      rings.forEach(({ items }) => items.forEach(it => { if (it.n[5]) { if (!byKey.has(it.n[5])) byKey.set(it.n[5], []); byKey.get(it.n[5]).push([it.x, it.y, COL[it.n[1]]]); } }));
+      const onScreen = p => p[0] > -40 && p[0] < W + 40 && p[1] > -40 && p[1] < H + 40;
+      byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = lineCol(pts[i][2]); strokeAround(ctx, pts[0][0], pts[0][1], pts[i][0], pts[i][1], boxes); } });
+      ctx.restore();
+      // The spokes and marks.
+      rings.forEach(({ d, rec, items }) => {
+        items.forEach(it => {
+          const n = it.n, col = COL[n[1]], x = it.x, y = it.y;
+          ctx.globalAlpha = 1;
+          ctx.lineWidth = 0.8; ctx.strokeStyle = lineCol(col); ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
           // The outline says the kind (square public funding, hexagon company, triangle foundation); the colour repeats it.
-          const reach = reachOf(n[5]), sr = sizeFor(reach.n > 1 ? reach.n : 1);
-          shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, sr); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 1.3; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
-          if (n[5]) { if (!byKey.has(n[5])) byKey.set(n[5], []); byKey.get(n[5]).push([x, y, col]); }
-          labels.push([n[0], x, y, a, col]);
-          const shared = reach.n > 1;
-          LM.push({ x, y, r: Math.max(10, sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `Funder of ${rec.n}`,
-            sub2: shared ? `Also funds ${plural(reach.n - 1, 'other space')} in ${plural(reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
+          shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, it.sr); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 1.3; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
+          const shared = it.reach.n > 1;
+          LM.push({ x, y, r: Math.max(10, it.sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `Funder of ${rec.n}`,
+            sub2: shared ? `Also funds ${plural(it.reach.n - 1, 'other space')} in ${plural(it.reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
             ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
-        }
+        });
       });
-      // A funder named on two spaces on screen is joined across them.
-      ctx.globalAlpha = 0.8;
-      const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9, onScreen = p => p[0] > -40 && p[0] < W + 40 && p[1] > -40 && p[1] < H + 40;
-      byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = lineCol(pts[i][2]); ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[i][0], pts[i][1]); ctx.stroke(); } });
-      // Funder names on flat blocks, in the funder's colour, never over another label.
-      ctx.globalAlpha = 1;
-      labels.forEach(([label, x, y, a, col]) => {
-        const text = label.length > 28 ? label.slice(0, 26) + '…' : label, right = Math.cos(a) >= -0.2;
-        const tw = ctx.measureText(text).width, w = tw + 12, h = 20;
-        const bx = right ? x + 9 : x - 9 - w, box = { x: bx, y: y - h / 2, w, h };
-        if (collides(box, boxes)) return;
-        boxes.push(box);
-        ctx.fillStyle = col; ctx.fillRect(box.x, box.y, w, h);
-        ctx.fillStyle = '#000'; ctx.textAlign = 'left'; ctx.fillText(text, box.x + 6, y + 0.5);
-      });
+      // Funder names on flat blocks, in the funder's colour, at the spot the layout found for each.
+      ctx.globalAlpha = 1; ctx.textAlign = 'left';
+      rings.forEach(({ items }) => items.forEach(it => {
+        const b = it.box; ctx.fillStyle = COL[it.n[1]]; ctx.fillRect(b.x, b.y, b.w, b.h);
+        ctx.fillStyle = '#000'; ctx.fillText(it.text, b.x + 6, b.y + b.h / 2 + 0.5);
+      }));
     }
     drawMarkTip(ctx, boxes);
     ctx.restore();
