@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=405">
-  <script src="assets/config.js?v=405"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=406">
+  <script src="assets/config.js?v=406"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9939,11 +9939,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v405';
+    const ATLAS_RELEASE = 'culture-atlas-v406';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=405').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=406').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15632,7 +15632,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // A record's own grade when the question names it or points at it; the ladder for a general question.
         if (target && !wanted && (explicit || /\b(its|this|here|the space|the museum)\b/.test(q))) {
           focus(target);
-          answer(`<p>${formatInstLink(target)}. ${target.grade ? `Grade ${gradeLetter(target.grade)}.` : ''}</p>${sourcesHtml(target)}`);
+          const gradeWhy = target.grade && GRADE[target.grade]
+            ? `<p>${formatInstLink(target)} is Grade ${gradeLetter(target.grade)}: ${escapeHtml(GRADE[target.grade].label.toLowerCase())}.${target.grade_basis ? ' ' + escapeHtml(target.grade_basis) : ''}</p>${target.funding ? `<p>Funding on record: ${escapeHtml(target.funding)}</p>` : ''}`
+            : `<p>${formatInstLink(target)} has no grade yet.</p>`;
+          answer(gradeWhy + sourcesHtml(target));
           return;
         }
         if (wanted) {
@@ -19649,9 +19652,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=405"></script>
-<script src="assets/layers.js?v=405"></script>
-<script src="assets/hq-detail.js?v=405"></script>
-<script src="assets/bubbles.js?v=405" defer></script>
+<script src="assets/typeset.js?v=406"></script>
+<script src="assets/layers.js?v=406"></script>
+<script src="assets/hq-detail.js?v=406"></script>
+<script src="assets/bubbles.js?v=406" defer></script>
 </body>
 </html>
