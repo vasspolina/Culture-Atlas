@@ -8,6 +8,8 @@ h1,h2,h3,h4,p{margin:0}
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-SemiBold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Documan";src:url("../fonts/Documan-TRIAL-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -15,8 +17,8 @@ h1,h2,h3,h4,p{margin:0}
   --cobalt:#0045fc; --focus:var(--cobalt); --blue:#527fe6; --orange:#e79a3a; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#e79a3a;
   --sans:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --display-xl:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --display-xl:"Documan","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --bar:44px; --gap:16px;
   /* Hochuli spacing: reading leading, one line of 18px text, half a line. */
   --lh:1.4; --L:25.2px; --H:12.6px;
@@ -2281,3 +2283,12 @@ div:has(>#topThemeBtn){column-gap:0}
    margins (100% plus a margin would run past the column). The gossip bubble sets its own. */
 :root :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap:not(.is-gossip){width:calc(100% - 14px);margin-left:7px;margin-right:7px}
 :root :is(#curatorMessages,#curatorDrawerLiveStream)>.justify-end{padding-left:7px;padding-right:7px;box-sizing:border-box}
+
+/* ---- Space between the head's rows (user, 26 Oct 2026: "fix typesetting") ----
+   In the two-column head each row had its padding taken away, so "Programme" sat flush under the last line of the grade text while the gap under it
+   was a half line. Hochuli's rule (notes/hochuli-spacing.md): the space above a heading is larger than the space below it, and the space below is 0.
+   A row follows the row before it by one line (L); a title with no summary under it sits directly on its list. */
+@container (min-width: 620px) {
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row+.d-row{margin-top:var(--L)}
+  :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row-head:not(:has(.d-row-sub,.d-row-box))+.d-row-list{margin-top:0}
+}
