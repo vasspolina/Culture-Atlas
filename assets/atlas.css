@@ -2616,3 +2616,6 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:hover{background:#9b9ca0!important;color:#000!important}
 #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn::before{border-color:#000}
 #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{background-color:#000}
+
+/* No checkbox: Share information is plain grey text; only Back to chat keeps its arrow. */
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:not(.is-on)::before{display:none}
