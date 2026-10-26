@@ -10,10 +10,10 @@
   <link rel="manifest" href="manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <meta name="apple-mobile-web-app-title" content="Culture Atlas" />
+  <meta name="apple-mobile-web-app-title" content="Leaving it on the table" />
   <meta name="format-detection" content="telephone=no" />
-  <title>Culture Atlas</title>
-  <meta name="description" content="Culture Atlas: who funds cultural institutions across the world, with the sources." />
+  <title>Leaving it on the table</title>
+  <meta name="description" content="Leaving it on the table: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <script>
     // The globe is held back (assets/atlas.css hides the canvas) until the page is in its final state, so its lines
@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=389">
-  <script src="assets/config.js?v=389"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=390">
+  <script src="assets/config.js?v=390"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -113,7 +113,7 @@ return maplibregl$1;
     <button id="mobileTopBrandBtn" type="button" class="flex items-center space-x-2 text-left p-0" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();" title="Reset Globe View">
       <div class="flex flex-col">
         <span class="t-strong flex items-center gap-1_5">
-          Culture Atlas
+          Leaving it on the table
         </span>
       </div>
     </button>
@@ -132,7 +132,7 @@ return maplibregl$1;
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
     <button id="topBrandLogoBtn" class="shrink-0 min-h-_44px flex items-center gap-2 sm-gap-3 text-left" title="Reset Globe View" aria-label="Reset Globe View">
-      <span class="t-lead whitespace-nowrap">Culture Atlas</span>
+      <span class="t-lead whitespace-nowrap">Leaving it on the table</span>
       
     </button>
 
@@ -463,7 +463,7 @@ return maplibregl$1;
           <!-- Chat info on a phone: the same text as under the composer on a desktop. -->
           <details id="chatRecordsInfoMobile" class="chat-info">
             <summary>How the records work</summary>
-            <p>Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
+            <p>Every space lists the sources this atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
             <p>Source cited: the record names at least one source outside the museum's own website.</p>
             <p>Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
             <p>Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
@@ -801,7 +801,7 @@ return maplibregl$1;
             <!-- Chat info: how the records work -->
             <details id="chatRecordsInfo" class="chat-info">
               <summary>How the records work</summary>
-              <p>Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
+              <p>Every space lists the sources this atlas recorded for it. Recording a source is not verifying it. None of the records on this page has been independently verified.</p>
               <p>Source cited: the record names at least one source outside the museum's own website.</p>
               <p>Flagged: a reason is recorded, with its sources. A flag is a report, not a finding.</p>
               <p>Unverified: no source outside the museum is recorded, or no reason is recorded.</p>
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v389';
+    const ATLAS_RELEASE = 'culture-atlas-v390';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=389').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=390').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14270,7 +14270,7 @@ return maplibregl$1;
         const holdingsStr = currentTarget.highlight || 'not stated';
         currentTargetXml = `<current_target>\nEntity: ${currentTarget.name}\nLocation: ${currentTarget.city || currentTarget.location || 'Global'}\nGovernance Status: ${tierName(currentTarget)}\nFunding Profile: ${budgetStr}\nKey Collections & Archives: ${holdingsStr}\nAdmission Policy: ${currentTarget.admission_policy || 'not stated'}\n</current_target>\n\n`;
       } else {
-        currentTargetXml = `<current_target>\nEntity: None explicitly selected (Global Inquiry across Culture Atlas)\n</current_target>\n\n`;
+        currentTargetXml = `<current_target>\nEntity: None explicitly selected (Global Inquiry across Leaving it on the table)\n</current_target>\n\n`;
       }
 
       // 3. Check for recent focus switch note to prevent context bleed
@@ -14308,7 +14308,7 @@ ANSWER AND TONE:
 - For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name critics, publications, reviews or controversies only when present in the supplied record or cited sources. If none are recorded, say that specific critical reception is not documented; do not substitute a generic theory passage or introduce it with phrases such as "One critical frame applies."
 - Across all spaces, treat attached visual critiques or theory passages as interpretive lenses, not evidence of what critics, visitors or the press have said. Label them as theoretical when relevant, and do not present a general lens as a space-specific finding unless the record or a cited source supports that connection.
 - Preserve conversational context, but do not add a greeting, repeat the question, append an unsolicited conclusion or offer, or pivot to another issue.
-Culture Atlas catalogs museums and cultural spaces, each with its sources and a tier showing how well it is sourced.
+Leaving it on the table catalogs museums and cultural spaces, each with its sources and a tier showing how well it is sourced.
 
 INSTITUTION-SPECIFIC GROUNDING:
 - Deutsches Historisches Museum (DHM) is Germany's national history museum, not a contemporary-art museum, biennial, festival or art pavilion. Do not conflate it with those institutions.
@@ -14328,7 +14328,7 @@ CHARACTER & VOICE GUIDELINES:
 
 3. YOU ARE A VISITOR-FACING DOCENT AND RESEARCHER:
    - You are chatting with museum visitors, art lovers, travelers, and cultural researchers.
-   - NEVER review, evaluate, QA, or critique the Culture Atlas database, data structure, schema, or system itself.
+   - NEVER review, evaluate, QA, or critique the atlas database, data structure, schema, or system itself.
    - NEVER say "I've reviewed the sample atlas data you provided" or flag issues with dataset templates.
    - You are NOT a code reviewer or QA tester. If a user asks "check it for me", "can you check this", or "verify this", they are asking you to verify and explain a cultural institution or city, NOT review a database!
 
@@ -15188,7 +15188,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         hero = document.createElement('div');
         hero.id = 'curatorHeroGreeting';
         hero.className = 'curator-message-wrap w-full flex flex-col py-6';
-        hero.setAttribute('data-speech', 'Welcome to Culture Atlas. Explore who funds cultural spaces and what’s been reported about them. Follow the sources.');
+        hero.setAttribute('data-speech', 'Welcome to Leaving it on the table. Explore who funds cultural spaces and what’s been reported about them. Follow the sources.');
         hero.innerHTML = `
           <h1 id="curatorHeroTitle">${escapeHtml(HERO_TITLE)}</h1>
           <p class="max-w-lg">
@@ -15705,7 +15705,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
-        answer(`<p>Every space lists the sources Culture Atlas recorded for it. Recording a source is not verifying it: none of the records on this page has been independently verified.</p>
+        answer(`<p>Every space lists the sources this atlas recorded for it. Recording a source is not verifying it: none of the records on this page has been independently verified.</p>
           <p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no source outside the museum, or no reason recorded.</p>
           <p>Hours, prices and addresses appear only where a record has them. Check the museum's own page before you visit.</p>`);
         return;
@@ -19468,8 +19468,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     momaAuditChatBtn?.addEventListener('click', () => {
       closeMomaAuditModal();
-      appendUserMessage('Why is MoMA excluded from Culture Atlas?');
-      handleCuratorQuery('Why is MoMA excluded from Culture Atlas?');
+      appendUserMessage('Why is MoMA excluded from Leaving it on the table?');
+      handleCuratorQuery('Why is MoMA excluded from Leaving it on the table?');
     });
 
     // Touch & Pointer Drag for Globe
@@ -19630,9 +19630,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=389"></script>
-<script src="assets/layers.js?v=389"></script>
-<script src="assets/hq-detail.js?v=389"></script>
-<script src="assets/bubbles.js?v=389" defer></script>
+<script src="assets/typeset.js?v=390"></script>
+<script src="assets/layers.js?v=390"></script>
+<script src="assets/hq-detail.js?v=390"></script>
+<script src="assets/bubbles.js?v=390" defer></script>
 </body>
 </html>
