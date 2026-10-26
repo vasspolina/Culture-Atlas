@@ -1,0 +1,203 @@
+[
+ {
+  "id": "heart-herning-herning",
+  "scale": {
+   "visitors": 32750,
+   "visitors_year": "2022",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 1670,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://heartmus.dk/media/0tei5ymf/a-rsrapport_2022.pdf",
+    "https://heartmus.dk/om-heart/hearts-arkitektur/"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors (32,750 visits in 2022) are in the Besøgstal table on PDF page 10 of the 2022 annual report; the area is the museum's architecture page, which gives two exhibition rooms of 855 and 815 square metres, summed to 1,670 as both are in the museum building."
+ },
+ {
+  "id": "louisiana-museum-of-modern-art",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 128,
+   "staff_kind": "employees",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://louisiana.dk/wp-content/uploads/2025/05/Louisiana-Museum-Aarsrapport-2024.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors are the Besøgstal line (716, in units of 1,000) under the income statement on PDF page 40 of the 2024 annual report, and staff is the average number of employees (128) in note 2 on PDF page 44."
+ },
+ {
+  "id": "trapholt-kolding",
+  "scale": {
+   "visitors": 108133,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://trapholt.dk/wp-content/uploads/2025/04/Aarsrapport_2024_Trapholt.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "DKK",
+   "income": 32484056,
+   "expenditure": 32464752,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": 5140655,
+   "source_kind": "annual report",
+   "url": "https://trapholt.dk/wp-content/uploads/2025/04/Aarsrapport_2024_Trapholt.pdf"
+  },
+  "basis": "Visitors (108,133) are in note 1 on PDF page 16 and staff is 31.3 paid full-time equivalents (årsværk) in note 8 on PDF page 18, entered as the whole number 31; income (Indtægter 32,484,056 kroner, with shop and publishing shown as net surplus), costs (Omkostninger 32,464,752 kroner) and closing equity (5,140,655 kroner) are the 2024 income statement on PDF page 13 and equity statement on PDF page 15 of the annual report."
+ },
+ {
+  "id": "centro-león-santiago-de-los-caballeros",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://acento.com.do/cultura/centro-leon-creatividad-y-compromiso-en-el-camino-a-itaca-9356656.html"
+   ]
+  },
+  "finance": null,
+  "basis": "Area is the total constructed surface (9,015 square metres) in the list of institution figures that Acento marks as data supplied by Centro León, published in its 2024 anniversary article."
+ },
+ {
+  "id": "museo-de-arte-moderno-de-santo-domingo",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "bienal-de-cuenca",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museo-antropologico-y-de-arte-contemporaneo-maac",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "centro-de-arte-contemporáneo-de-quito-quito",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museo-nacional-del-ecuador-muna-quito",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "contemporary-image-collective-cairo",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "darb-1718-contemporary-art-and-culture-center-cairo",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "medrar-for-contemporary-art-cairo",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

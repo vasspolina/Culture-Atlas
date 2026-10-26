@@ -116,7 +116,7 @@ def main():
     args = ap.parse_args()
     records = json.load(open(DATA, encoding='utf-8'))
     by_id = {r['id']: r for r in records}
-    n_scale = n_fin = n_rec = 0
+    n_scale = n_fin = n_rec = n_gone = 0
     report = []
     for path in sorted(Path(args.out_dir).glob('*.json')):
         for e in json.load(open(path, encoding='utf-8')):
@@ -129,6 +129,9 @@ def main():
             fin = None if rec.get('finance') else check_finance(e.get('finance'), problems)
             for p in problems:
                 report.append(f'{path.name} {rec["id"]}: {p}')
+            if not scale and rec.get('scale') and args.apply:
+                del rec['scale']   # a figure dropped on review leaves no block behind
+                n_gone += 1
             if not scale and not fin:
                 continue
             n_rec += 1
@@ -140,7 +143,7 @@ def main():
                 n_fin += 1
                 if args.apply:
                     rec['finance'] = fin
-    print(f'{n_rec} records: {n_scale} scale blocks, {n_fin} finance blocks; {len(report)} problems')
+    print(f'{n_rec} records: {n_scale} scale blocks, {n_fin} finance blocks; {len(report)} problems; {n_gone} stale scale blocks removed')
     for line in report:
         print(' ', line)
     if args.apply:

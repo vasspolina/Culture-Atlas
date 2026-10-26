@@ -29,3 +29,24 @@ made to the out files before import:
   10,375,678.40 BRL (the statement's deficit agrees). Malba visitors now the 2022 figure, 347,588,
   the latest in Malba's own table.
 - Five Belgian finance blocks carry only turnover or equity, so the importer drops them.
+
+# Stage 2 review, f010 to f019 (120 records)
+
+Four checker agents re-opened every cited source for the 53 records that held a figure.
+Rule applied to floor areas: a figure stays only when the institution or the architect's own site states
+it; magazine, press, travel-list and aggregator pages are dropped (this also removes 21_21 Design Sight
+from stage 1, which came from Arquitectura Viva).
+
+- Dropped as rounded or estimated: Power Station of Art and Louisiana visitors (tables in 10,000s and
+  1,000s), Ordrupgaard visitors (partly estimated), MeetFactory public, private, earned and net assets
+  (printed in thousands), Trapholt staff (31.3 FTE).
+- Dropped for scope: Sesc Sao Paulo staff and area (whole network of 47 units), Allende museum visitors
+  (include touring exhibitions), WHW finance (whole association, not Galerija Nova), The Rooms staff
+  (excludes seasonal and hourly staff).
+- Dropped for source: Power Station of Art, National Art Museum of China, He Art Museum, HOW Art Museum,
+  Long Museum, Hubei, MOCA Yinchuan and Centro Leon areas (press or magazine); OCAT Shenzhen (page may
+  describe another building); DOX (a programme-plan line); Pivo (rental floors); Copenhagen Contemporary
+  keeps 7,000 m2 with no kind.
+- Dropped as unreliable: Power Plant finance (the statement is marked draft), Dazibao finance (the charity
+  number could not be tied to the gallery).
+- Corrected: MeetFactory income and spending now the exact figures from its financial overview.
