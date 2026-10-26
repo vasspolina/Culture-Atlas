@@ -2675,3 +2675,8 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The title has the same margin on every side: 14px from the left edge, as it is from the top and bottom of the header. */
 :root:root:root:root:root:root:root:root header.rule-b{padding-left:0!important}
 :root:root:root:root:root:root:root:root header.rule-b>:first-child{margin-left:14px!important;padding-left:0!important}
+
+/* How the records work: the text runs the full width of the panel, and the grade list sits at the paragraphs' indent. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#chatRecordsInfo,#chatRecordsInfoMobile)>:is(p,ul){max-width:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#chatRecordsInfo,#chatRecordsInfoMobile)>ul{margin:var(--H) 0 0!important;padding:0 0 0 26px!important;font:300 var(--fs-s)/var(--lh) var(--sans)!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#chatRecordsInfo,#chatRecordsInfoMobile)>ul li{max-width:none!important;margin:0}
