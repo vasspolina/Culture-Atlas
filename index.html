@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=392">
-  <script src="assets/config.js?v=392"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=393">
+  <script src="assets/config.js?v=393"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v392';
+    const ATLAS_RELEASE = 'culture-atlas-v393';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=392').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=393').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10367,7 +10367,9 @@ return maplibregl$1;
       const now = (typeof ts === 'number') ? ts : performance.now();
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : '#000000', G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : 'rgba(0, 0, 0, 0.95)', G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+      // Gossip mode on the dark ground: the globe's ground is the Gossip button's yellow, darkened.
+      const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#4f5a12' : '#000000'), G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : (GOSSIP_DARK ? 'rgba(79, 90, 18, 0.95)' : 'rgba(0, 0, 0, 0.95)'), G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
         const TIER_SHAPE_SIZE = { circle: 3 };
@@ -19628,9 +19630,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=392"></script>
-<script src="assets/layers.js?v=392"></script>
-<script src="assets/hq-detail.js?v=392"></script>
-<script src="assets/bubbles.js?v=392" defer></script>
+<script src="assets/typeset.js?v=393"></script>
+<script src="assets/layers.js?v=393"></script>
+<script src="assets/hq-detail.js?v=393"></script>
+<script src="assets/bubbles.js?v=393" defer></script>
 </body>
 </html>

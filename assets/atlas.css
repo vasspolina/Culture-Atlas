@@ -2653,3 +2653,6 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* A record's name fills each line to the edge and breaks only where the line ends (it was balanced into two short lines). */
 :root:root:root:root:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading,h2.dossier-main-heading){text-wrap:wrap!important;max-width:none!important;width:auto!important}
+
+/* Gossip mode on the dark theme: the globe's ground is a dark yellow, the Gossip button's lime (#e2f86c) darkened. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#4f5a12!important}
