@@ -66,3 +66,29 @@ f027 to f030 passed unchanged.
   Senate table are stored. Palais de Tokyo income, spending, public and sponsorship are the exact figures
   of its budget table, not the rounded text.
 - Le Fresnoy keeps 11,000 m2 with no kind.
+
+# Stage 4 review (f031 to f039 and f041), in part
+
+f035 to f037 checked so far (the f031 to f034 and f038 to f041 checks follow in a later entry).
+- Dropped as wider or narrower than the record: Uffizi visitors (whole autonomous institute), Fondazione Prada
+  area and staff (one site; 2019 count), Palazzo Strozzi area (only the part used for 2025 projects), Centro Pecci
+  visitors (users of several services whose lines do not add up).
+- Dropped for source: Tel Aviv visitors (a news article relaying a list), Pirelli HangarBicocca area (page
+  unreadable), Triennale Milano area (rooms and public spaces together, no kind).
+- Dropped as turnover not total income: Project Arts Centre finance.
+- The two Castello di Rivoli records are the same institution (duplicate pins); both carry the staff count.
+
+f038, f039, f041 checked:
+- Dropped as users of several services or a wider group: Aomori visitors (rental halls, library and exhibitions in one
+  total), Sapporo festival visitors (69 percent at the Snow Festival site), Kanazawa 21 area (the museum line inside
+  a larger total with a car park).
+- Dropped as round: Fondazione Sandretto Re Rebaudengo visitors ("70.000" among other round indicators).
+- Replaced: Kanazawa 21 visitors now the FY2025-26 figure, 2,079,288, from its 2025 annual report.
+
+f031 to f034 checked:
+- Replaced: Reykjavik Art Museum now its 2024 report (257,669 visitors, 42 staff), the museum's own newest.
+- Kept at 2024: Ludwig Museum Budapest (88,249); its 2025 report's total disagrees with its own ticket categories.
+- Dropped: Crawford Art Gallery visitors (a trade-magazine list is the only source). Area kinds the sources do not
+  state were removed for CHAT and Museum MACAN; the numbers stay.
+- The Reykjavik Art Museum record's website field points to the National Gallery of Iceland (a different body);
+  the museum's site is listasafnreykjavikur.is. Not changed here.
