@@ -2650,3 +2650,6 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Gossip mode: every divider line (the token the rules and borders draw with) and the Gossip button turn the lime yellow. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active{--line:#e2f86c}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #topGossipBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #mobileGossipBtn{background:#e2f86c!important;border-color:#e2f86c!important;color:#000!important}
+
+/* A record's name fills each line to the edge and breaks only where the line ends (it was balanced into two short lines). */
+:root:root:root:root:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading,h2.dossier-main-heading){text-wrap:wrap!important;max-width:none!important;width:auto!important}
