@@ -10758,12 +10758,12 @@ return maplibregl$1;
             ctx.font = ATLAS_CARD_MONO_FONT;
 
             if (isClustered) {
-              countTxt = String(city.count);
+              countTxt = `(\u200c${city.count}\u200c)`;   // in brackets like the zoomed-in labels
               bw = ctx.measureText(city.name + ' ' + countTxt).width + 28;
             } else {
               // A count of one says nothing, and adding " (1)" at 1.5x was the last width jump that
               // reshuffled labels mid-zoom. Counts from two up still show.
-              const countLabel = (city.count || 0) >= 2 && (isCountryActive || r > baseRadius * 1.5) ? ` (${city.count})` : '';
+              const countLabel = (city.count || 0) >= 2 && (isCountryActive || r > baseRadius * 1.5) ? ` (\u200c${city.count}\u200c)` : '';   // the zero-width non-joiners stop the typeface turning (2) to (9) into circled digits, so every count reads in brackets
               txt = city.name + countLabel;
               const tw = ctx.measureText(txt).width;
               bw = tw + 28;
