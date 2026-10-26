@@ -1,0 +1,202 @@
+[
+ {
+  "id": "nederlands-fotomuseum-rotterdam",
+  "scale": {
+   "visitors": 13196,
+   "visitors_year": "2025",
+   "staff": 41,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://nederlandsfotomuseum.nl/wp-content/uploads/2026/06/Nederlands-Fotomuseum-Jaarverslag-2025-3.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: jaarverslag 2025, PDF page 12 and appendix 1 (PDF page 21) give 13,196 regular visitors to exhibitions in a year the museum had no permanent building (total public reach of 17,555 also counts events and education), and PDF page 17 gives 41 employees in persons (33.6 FTE)."
+ },
+ {
+  "id": "tent-rotterdam",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "v2-lab-unstable-media-rotterdam",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://v2.nl/wp-content/uploads/2026/05/jaarverslag2025red.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: inhoudelijk jaarverslag 2025, PDF page 10 (section 5, Publieksbereik) gives 12,017 physical visitors at V2_ including events with partners, excluding online participants and external events."
+ },
+ {
+  "id": "kunstmuseum-den-haag",
+  "scale": {
+   "visitors": 414691,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.kunstmuseum.nl/sites/default/files/documents/Museum/Organisatie/Jaarverslag_2025_def.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: jaarverslag 2025, PDF page 7 gives 414,691 visitors to Kunstmuseum Den Haag, listed apart from 62,693 at Fotomuseum and KM21; the staff count on PDF page 32 covers all three museums."
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museum-beelden-aan-zee-the-hague",
+  "scale": {
+   "visitors": 91468,
+   "visitors_year": "2024",
+   "staff": 18,
+   "staff_kind": "employees",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://cdn.beeldenaanzee.nl/media/downloads/mBaZ_Jaarverslag_2024_Def.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: jaarverslag 2024, PDF page 34 gives 91,468 visitors in 2024 and PDF page 37 gives 18 employees (14.48 FTE) at year end 2024; the 2025 report states its visitor figure only as over 102,000, so the exact 2024 figure is used."
+ },
+ {
+  "id": "stroom-den-haag",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 2998111,
+   "expenditure": null,
+   "public": null,
+   "private": 25000,
+   "earned": 82376,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://www.stroom.nl/assets/documenten/jaarverslagen/2025_kb111_str_jaarverslag_2025_def-(1).pdf"
+  },
+  "basis": "Finance: jaarverslag 2025, PDF page 56 (staat van baten en lasten) gives total baten 2,998,111, eigen directe inkomsten 82,376 as earned and eigen indirecte inkomsten 25,000 as private, which the text on PDF page 55 describes as a private donation; public income is split between structural and incidental lines so it is not totalled."
+ },
+ {
+  "id": "west-den-haag",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "de-pont",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "bak-utrecht",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "casco-art-institute",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "centraal-museum-utrecht",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]
