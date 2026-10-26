@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=396">
-  <script src="assets/config.js?v=396"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=397">
+  <script src="assets/config.js?v=397"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9935,11 +9935,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v396';
+    const ATLAS_RELEASE = 'culture-atlas-v397';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=396').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=397').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12018,11 +12018,11 @@ return maplibregl$1;
     // What employees report on review sites and Reddit: a summary of the 127 paraphrased accounts the records carry
     // (Glassdoor, Kununu, Reddit; 58 institutions in eight countries), written 17 October 2026. Individual accounts, not findings.
     const EMPLOYEE_REPORT = [
-      'The records hold 127 paraphrased accounts from people who say they worked, interned or freelanced at 58 of the spaces, in Germany, the UK, France, the US, Spain and the Netherlands. Three quarters come from Glassdoor and Kununu; the Reddit threads are mostly visitors talking, and only a few are workers.',
-      'What they praise is consistent: the colleagues, the collection and the access that comes with the badge, free entry, talks, flexible hours, and where there is a union, its protection and benefits. The health cover at the large New York museums is named more than once.',
-      'What they report against is just as consistent. Pay that does not meet the cost of the city, in London, New York, Paris and Madrid above all. Slow or opaque decisions, hierarchy and bureaucracy, named most often at the French and German public institutions. Little room to move up, and turnover that follows. At the front of house, casual or zero-hours contracts, unreliable hours and a divide from curatorial staff. Unpaid or barely paid internships at several museums. After layoffs, understaffing and last-minute scheduling.',
-      'A smaller number of accounts allege more: favouritism, bullying and HR that does not act, restructuring that removes outspoken staff, months-long payment delays, and at one museum unequal treatment of security staff. Each of these is one person\'s account, and the records say so.',
-      'Read them for what they are: self-selected, anonymous, undated or old in places, and one or two per institution. They do not rank anyone. They show the shape of the complaint, which press and union reporting then confirm at the largest institutions: new unions at the Met, the Whitney, the Guggenheim and MoMA PS1 in the last five years, with pay, benefits and precarity the stated reasons.',
+      'The records hold 127 paraphrased posts about working at 57 spaces in Germany, the UK, France, the US, Spain and the Netherlands: 75 Glassdoor reviews, 15 on Kununu and 37 on Reddit. Each is one anonymous person\'s account, and none is verified.',
+      'Praised: colleagues, the collection, free entry and talks, flexible hours, and union protection and benefits where there is a union. Health cover at the large New York museums comes up more than once.',
+      'Reported against: pay below the cost of living in London, New York, Paris and Madrid; slow decisions and hierarchy, mostly at French and German public institutions; little chance of promotion and high turnover; casual or zero-hours front-of-house contracts; unpaid or barely paid internships; understaffing after layoffs.',
+      'A few posts go further: favouritism, bullying, HR that took no action, payments months late, restructuring that removed outspoken staff, and unequal treatment of security staff at one museum.',
+      'Staff at the Met, the Whitney, the Guggenheim and MoMA PS1 have unionised in the last five years, citing pay, benefits and precarity.',
     ];
     // Funding transparency rating, stored as 1 (highest disclosure) to 5 by tools/grade_funding.py from what each record proves, and named
     // by letter on the page: A, B, C, D, F (no E, as in school marks).
@@ -15580,13 +15580,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       // What employees report: the summary of the accounts on the records, and the count on the space in view.
       if (asks(/\b(what (do )?(employees|staff|workers) (say|report|think)|employee (reviews?|accounts?)|staff (reviews?|accounts?)|glassdoor|kununu|working conditions|work(ing)? (there|here|at))\b/)) {
-        const own = target ? ((target.gossip_data || {}).accounts || []).length : 0;
-        const note = target ? `<p>${formatInstLink(target)} carries ${own ? `${own} such ${own === 1 ? 'account' : 'accounts'}, shown in Gossip mode` : 'no such account'}.</p>` : '';
+        // The space in view leads, with what its own accounts say; the summary of all of them follows. A space with no account gets the summary alone.
+        const mine = target ? ((target.gossip_data || {}).accounts || []) : [];
+        const own = mine.map(a => {
+          const v = accountView(a, target);
+          const when = v.date ? `, posted ${v.date}` : '';
+          return `<p>${escapeHtml(v.title)}${escapeHtml(when)}. ${escapeHtml(v.summary)}${v.note ? ' ' + escapeHtml(v.note) : ''}</p>`;
+        }).join('');
+        const lead = mine.length ? `<p>${formatInstLink(target)} has ${mine.length === 1 ? 'one account' : mine.length + ' accounts'}, shown in Gossip mode:</p>${own}<p>Across all spaces:</p>` : '';
+        const note = '';
         // The summary names spaces and reports conduct from review platforms, so it is gossip and gets the balloon.
         const staffChips = isGossipModeActive
           ? [...(target && hasGossip(target) ? [`What is the gossip about ${target.name}?`] : []), ...freshChips(2)].slice(0, 3)
           : ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])];
-        answer(EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, staffChips, true);
+        answer(lead + EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('') + note, staffChips, true);
         return;
       }
       // The critical frames (data/research_attach/institutional_critiques.json): quotations with author, title, publication and date, one frame per museum type.
@@ -19627,9 +19634,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=396"></script>
-<script src="assets/layers.js?v=396"></script>
-<script src="assets/hq-detail.js?v=396"></script>
-<script src="assets/bubbles.js?v=396" defer></script>
+<script src="assets/typeset.js?v=397"></script>
+<script src="assets/layers.js?v=397"></script>
+<script src="assets/hq-detail.js?v=397"></script>
+<script src="assets/bubbles.js?v=397" defer></script>
 </body>
 </html>
