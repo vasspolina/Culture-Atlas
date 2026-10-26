@@ -2470,7 +2470,9 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn[aria-pressed="true"]::before{background:currentColor}
 :root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn::after{content:none!important}
 @media (hover:hover){:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileStickyShareBtn):hover{background:#fff204!important;color:#000!important;border-color:#fff204!important}}
-:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0;padding:0 0 2px;-webkit-overflow-scrolling:touch}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>#mobileSuggestChips{display:flex!important;gap:8px!important;overflow-x:auto!important;scrollbar-width:none;margin:0 calc(-1 * var(--m-s4,16px))!important;padding:0 var(--m-s4,16px) 2px!important;scroll-padding-inline:var(--m-s4,16px);scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip{scroll-snap-align:start}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips::after{content:"";flex:0 0 1px}
 :root:root:root:root:root:root:root:root:root:root #mobileSuggestChips::-webkit-scrollbar{display:none}
 :root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip{flex:0 0 auto;height:36px;min-height:36px;padding:0 14px;border:1px solid var(--line);border-radius:18px;background:transparent;color:var(--ink);font:400 var(--fs-s)/1 var(--sans);white-space:nowrap}
 @media (hover:hover){:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip:hover{background:var(--ink);color:var(--paper)}}
