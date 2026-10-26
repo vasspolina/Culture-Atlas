@@ -1,0 +1,47 @@
+[
+ {
+  "id": "centro-cultural-tijuana-tijuana",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private company",
+    "page says": "IGG_CECUT_2018_2024.pdf p.14 (document page 14 of 34): the S.A. de C.V. 'pertenece al Ramo 48 Cultura, es una empresa de participacion estatal mayoritaria de control presupuestario indirecto', and p.22 calls it 'una entidad paraestatal de la Administracion Publica Federal'. The cited pages show a majority state-owned federal entity, so 'private company' contradicts them (it would grade as level 1 Independent), and no page states any other value from the list. The acerca.php page says only 'organismo de la Secretaria de Cultura' and lists the acta constitutiva with no text. The same inference was nulled in first_pass_rulings.json; this researcher's pages do contain the Ramo 48 and majority-state wording, but that wording refutes the stored value instead of supporting it",
+    "fix": null
+   },
+   {
+    "field": "governance.staff_status",
+    "stored": "public employees",
+    "page says": "The report (pp.15-17) describes base and confianza posts, honorarios contracts and structure registration with the Secretaria de Cultura, but never says staff are hired under a public pay scale",
+    "fix": null
+   },
+   {
+    "field": "governance.parent / budget_set_by / controls / sources",
+    "stored": "Secretaria de Cultura; legislature or ministry; public procurement law, state audit office, freedom of information law",
+    "page says": "These rest on the legal form being supported; with legal_form unsupported the block is null under method step 6",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "centro-cultural-tijuana-tijuana",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "villa-des-arts-de-casablanca-casablanca",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "associacao-nucleo-de-arte",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "heroes-acre-windhoek",
+  "verdict": "ok",
+  "faults": []
+ }
+]

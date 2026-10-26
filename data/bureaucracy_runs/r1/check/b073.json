@@ -1,0 +1,89 @@
+[
+ {
+  "id": "kunsthalle-z-rich",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthaus-zürich-zürich",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "migros-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private company",
+    "page says": "The Migros Commitment page and the museum facts sheet say the museum is an institution of the Migros Culture Percentage carried by the Migros-Genossenschafts-Bund; neither states a legal form for the museum, and a cooperative is not a stated private company. The form was inferred from the owner's name.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "migros-museum",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "shedhalle-zurich",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-museum-of-damascus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kaohsiung-museum-of-fine-arts-kaohsiung",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "juming-museum-new-taipei",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-taiwan-museum-of-fine-arts-taichung",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tainan-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hong-gah-museum-taipei",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The foundation page says the entrepreneur Chew Tsai-hsing founded the foundation in 1991 and that the foundation founded the museum in 1999.",
+    "page says": "The page says Chew founded the museum in 1999 ('於1999年創立鳳甲美術館', subject Chew Tsai-hsing), not that the foundation founded it; it does not state that the foundation runs or owns the museum.",
+    "fix": "The foundation page says the entrepreneur Chew Tsai-hsing founded the foundation in 1991 and founded the museum in 1999 in memory of his father."
+   }
+  ],
+  "corrected": {
+   "id": "hong-gah-museum-taipei",
+   "governance": {
+    "legal_form": "private foundation",
+    "parent": "Chew's Culture Foundation",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://hong-gah.org.tw/chews-cluture-founsation-zh"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The foundation page says the entrepreneur Chew Tsai-hsing founded the foundation in 1991 and founded the museum in 1999 in memory of his father."
+  }
+ }
+]

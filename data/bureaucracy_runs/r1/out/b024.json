@@ -1,0 +1,216 @@
+[
+ {
+  "id": "le-bal-paris",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.le-bal.fr/mentions-legales"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the legal notice page says Le Bal is an association loi 1901."
+ },
+ {
+  "id": "louvre-paris",
+  "governance": {
+   "legal_form": "statutory public body",
+   "parent": "ministry in charge of culture",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "public procurement law"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://www.louvre.fr/l-etablissement-public",
+    "https://www.louvre.fr/commande-publique-et-occupation-domaniale"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Louvre's institution page calls it an établissement public à caractère administratif under the ministry in charge of culture, and its public procurement page says it is bound by the code de la commande publique."
+ },
+ {
+  "id": "musée-dorsay-paris",
+  "governance": {
+   "legal_form": "statutory public body",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": "board",
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.epmo-musees.fr/fr/mentions-legales",
+    "https://www.epmo-musees.fr/fr/etablissement/organisation/instances"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the legal notice of the Établissement public des musées d'Orsay et de l'Orangerie calls it a national administrative public body created by decree 2003-1300, and its governance page says the board votes the budget."
+ },
+ {
+  "id": "mus-e-de-la-chasse-et-de-la-nature",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": "Fondation François Sommer",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://fondationfrancoissommer.org/les-entites/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the foundation's entities page says it was created by François and Jacqueline Sommer, is recognised as of public utility by decree, and runs the museum through its culture division."
+ },
+ {
+  "id": "palais-de-tokyo",
+  "governance": {
+   "legal_form": "private company",
+   "parent": "French State (sole shareholder)",
+   "director_appointed_by": "government or ministry",
+   "staff_status": "employees of the institution",
+   "budget_set_by": "legislature or ministry",
+   "controls": [
+    "public procurement law",
+    "state audit office"
+   ],
+   "year": "2022",
+   "sources": [
+    "https://www.ccomptes.fr/sites/default/files/2023-10/20230214-S2022-2182-1-SASU-Palais-de-Tokyo.pdf",
+    "https://palaisdetokyo.com/fr/mentions-legales/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Cour des comptes report deliberated 12 December 2022 describes a single-shareholder simplified company owned by the State, and the legal notice gives the same company form."
+ },
+ {
+  "id": "paris-musees-reseau",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Ville de Paris",
+   "director_appointed_by": null,
+   "staff_status": "mixed",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.parismusees.paris.fr/fr/travailler-pour-paris-musees",
+    "https://www.parismuseescollections.paris.fr/fr/l-etablissement-public-paris-musees"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: Paris Musées' recruitment page calls it an administrative public body created by the Ville de Paris that recruits civil servants and, for temporary missions, contract agents."
+ },
+ {
+  "id": "pinault-collection-bourse-de-commerce-paris",
+  "governance": {
+   "legal_form": "private company",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.pinaultcollection.com/en/legal-notice-and-credits"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the legal notice names the publisher as Pinault Collection, a S.A.S. registered in Paris."
+ },
+ {
+  "id": "le-confort-moderne-poitiers",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.confort-moderne.fr/fr/page/propos/16"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the about page says Le Confort Moderne is managed by the association l'Oreille est hardie."
+ },
+ {
+  "id": "ceaac-strasbourg",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://ceaac.org/fr/le-ceaac/a-propos/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the about page says the CEAAC is an association under local law (loi 1908) with an elected board."
+ },
+ {
+  "id": "crac-occitanie-sète",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Région Occitanie / Pyrénées-Méditerranée",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://crac.laregion.fr/Les-partenaires-44535",
+    "https://crac.laregion.fr/Missions-et-histoire"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the centre's pages on the Region's site say it is managed by the Région Occitanie / Pyrénées-Méditerranée and has a funding agreement with the State."
+ },
+ {
+  "id": "le-fresnoy-studio-national-des-arts-contemporains",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.lefresnoy.net/__trashed/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the legal notice of lefresnoy.net gives the publisher's status as association loi 1901."
+ },
+ {
+  "id": "pictanovo-tourcoing",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.pictanovo.com/gouvernance/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: Pictanovo's governance page shows a board of 24 members and a link to join the association."
+ }
+]

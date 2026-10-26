@@ -1,0 +1,110 @@
+[
+ {
+  "id": "de-appel",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "foam-fotografiemuseum-amsterdam-amsterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "framer-framed",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "het-concertgebouw-amsterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mediamatic-amsterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ot301-amsterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "rijksakademie-amsterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "rijksmuseum-amsterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sonic-acts-amsterdam",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2021",
+    "page says": "The ANBI Informatie page carries no date; 2021 is only the year of the newest annual report it links",
+    "fix": "2026"
+   }
+  ],
+  "corrected": {
+   "id": "sonic-acts-amsterdam",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://portal.sonicacts.com/portal/anbi-informatie"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the ANBI Informatie page names Stichting Sonic Acts with a director and a Raad van Toezicht."
+  }
+ },
+ {
+  "id": "stedelijk-museum-amsterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-gogh-museum-amsterdam",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "includes https://www.vangoghmuseum.nl/en/organisation/supervisory-board",
+    "page says": "The supervisory board page only says the board appoints its own members; it states none of the stored facts (legal_form, staff_status, director_appointed_by null)",
+    "fix": "drop that url and the matching clause in basis"
+   }
+  ],
+  "corrected": {
+   "id": "van-gogh-museum-amsterdam",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": "employees of the institution",
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.vangoghmuseum.nl/en/about/organisation/anbi-status"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the ANBI page gives the statutory name Van Gogh Museum Foundation and says staff pay follows the Collective Labour Agreement for the Independent National Museums."
+  }
+ },
+ {
+  "id": "w139-amsterdam",
+  "verdict": "ok",
+  "faults": []
+ }
+]

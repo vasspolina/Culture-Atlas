@@ -22,7 +22,9 @@
     shield: [[.5, 0], [1, .18], [.9, .72], [.5, 1], [.1, .72], [0, .18]],
     star: [[.5, 0], [.62, .35], [1, .35], [.69, .57], [.81, .95], [.5, .72], [.19, .95], [.31, .57], [0, .35], [.38, .35]]
   };
-  const KIND_SHAPE = { gov: 'square', corp: 'hexagon', found: 'triangle' };
+  const KIND_SHAPE = { gov: 'circle', corp: 'circle', found: 'circle' };
+  // Every mark is a dot; the colour says the kind, and the names on the map say it in words too.
+  const KIND_WORD = { gov: 'Public funding', corp: 'Company', found: 'Foundation' };
   function shapePath(ctx, shape, x, y, s) {
     ctx.beginPath();
     const pts = SHAPES[shape];
@@ -194,7 +196,7 @@
     });
     // The focused space's own ties, bright, with a dot at each far end.
     if (rec && typeof rec.lat === 'number') {
-      ctx.lineWidth = 1.4; ctx.globalAlpha = 0.8;
+      ctx.lineWidth = 0.8; ctx.globalAlpha = 0.8;
       const seen = new Set([rec.id]), ends = [];
       rec.nodes.forEach(n => {
         if (!FUNDER(n) || !n[5] || !kindOn(n[1])) return;
@@ -210,7 +212,7 @@
         const pt = project(o.lon, o.lat, r, cx, cy); if (!pt.front) return;
         const hot = LM_HOV && LM_HOV.rec === o;
         ctx.beginPath(); ctx.arc(pt.x, pt.y, hot ? 6 : 3.5, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill();
-        if (hot) { ctx.lineWidth = 1.5; ctx.strokeStyle = '#000'; ctx.stroke(); }
+        if (hot) { ctx.lineWidth = 0.8; ctx.strokeStyle = '#000'; ctx.stroke(); }
         LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: raw, label: o.n, sub: `Shares a funder with ${rec.n}`, ask: `Who funds ${o.n}?` });
       });
     }
@@ -222,7 +224,7 @@
     if (!REACH || !recById || !kindOn(REACH.kind)) return;
     const home = REACH.space, ends = [], lc = lineCol(COL[REACH.kind]), dark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (!home || typeof home.lat !== 'number') return;
-    ctx.save(); ctx.lineCap = 'round'; ctx.lineWidth = 1.6; ctx.globalAlpha = 0.9; ctx.strokeStyle = lc;
+    ctx.save(); ctx.lineCap = 'round'; ctx.lineWidth = 0.8; ctx.globalAlpha = 0.9; ctx.strokeStyle = lc;
     const ids = new Set(); (REACH.keys || [REACH.key]).forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
     ids.forEach(id => {
       const o = recById.get(id); if (!o || o === home || typeof o.lat !== 'number') return;
@@ -233,7 +235,7 @@
       const pt = project(o.lon, o.lat, r, cx, cy); if (!pt.front) return;
       const hot = LM_HOV && LM_HOV.rec === o;
       ctx.beginPath(); ctx.arc(pt.x, pt.y, hot ? 6.5 : 4.5, 0, Math.PI * 2); ctx.fillStyle = lc; ctx.fill();
-      ctx.lineWidth = 1.5; ctx.strokeStyle = dark ? '#000' : '#fff'; ctx.stroke();
+      ctx.lineWidth = 0.8; ctx.strokeStyle = dark ? '#000' : '#fff'; ctx.stroke();
       LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: COL[REACH.kind], key: REACH.key, kind: REACH.kind, space: home, name: REACH.name, label: o.n, sub: `Funded by ${REACH.name}`, ask: `Who funds ${o.n}?` });
     });
     ctx.restore();
@@ -384,7 +386,7 @@
     spreadMarks(pts, r, baseRadius);
     // joins from the focused space
     if (rec && typeof rec.lat === 'number') {
-      ctx.lineWidth = 1.2; ctx.globalAlpha = 0.85;
+      ctx.lineWidth = 0.8; ctx.globalAlpha = 0.85;
       if (L.hq) linkedOrgs.forEach(k => { const o = HQ.byKey.get(k); ctx.strokeStyle = lineCol(KIND[o.k]); arc(project, rec, o, r, cx, cy, ctx); });
       if (L.people) linkedPeople.forEach(n => { const o = HQ.byName.get(n); ctx.strokeStyle = lineCol(COL.person); arc(project, rec, o, r, cx, cy, ctx); });
       ctx.globalAlpha = 1;
@@ -392,13 +394,13 @@
     // The picked office's own joins, and the one under the pointer or keyboard focus: an arc to each space it is named on.
     if (recById) [HQ_SEL, HQ_HOV].filter((o, i, a) => o && a.indexOf(o) === i).forEach(o => {
       if (!pts.some(p => p[0] === o)) return;
-      ctx.lineWidth = o === HQ_HOV ? 1.4 : 1.2; ctx.globalAlpha = o === HQ_HOV ? 0.9 : 0.8;
+      ctx.lineWidth = o === HQ_HOV ? 0.8 : 0.8; ctx.globalAlpha = o === HQ_HOV ? 0.9 : 0.8;
       ctx.strokeStyle = lineCol(o.kind === 'org' ? KIND[o.k] : COL.person);
       hq.spaces(o).slice(0, 80).forEach(sp => { if (typeof sp.rec.lat === 'number') arc(project, o, sp.rec, r, cx, cy, ctx); });
       ctx.globalAlpha = 1;
     });
     // marks
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 0.8;
     pts.forEach(([e, x, y]) => {
       const on = (e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n)) || picked(e);
       const s = on ? 7 : (rec ? 3.5 : (e.kind === 'org' && recById ? 4 + Math.min(2.5, Math.sqrt(orgReach(e)) * 0.7) : 5));
@@ -406,14 +408,13 @@
       ctx.globalAlpha = rec && !on ? 0.35 : 1;
       ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.strokeStyle = '#000';
       ctx.beginPath();
-      if (e.kind === 'org') { ctx.moveTo(x, y - s); ctx.lineTo(x + s, y); ctx.lineTo(x, y + s); ctx.lineTo(x - s, y); ctx.closePath(); }
-      else ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
+      ctx.arc(x, y, s - 0.5, 0, Math.PI * 2);
       ctx.fill(); ctx.stroke();
       if (e === HQ_SEL) {
         // A ring in two colours, so one of them always shows against the ground.
         ctx.globalAlpha = 1; ctx.beginPath(); ctx.arc(x, y, s + 5, 0, Math.PI * 2);
         ctx.lineWidth = 3; ctx.strokeStyle = dark ? '#000' : '#fff'; ctx.stroke();
-        ctx.lineWidth = 1.5; ctx.strokeStyle = dark ? '#fff' : '#000'; ctx.stroke(); ctx.lineWidth = 1;
+        ctx.lineWidth = 0.8; ctx.strokeStyle = dark ? '#fff' : '#000'; ctx.stroke(); ctx.lineWidth = 0.8;
       }
     });
     ctx.globalAlpha = 1;
@@ -432,15 +433,15 @@
       const px = pt.x, py = pt.y + (STREET ? 0 : s - 2);
       list.forEach(e => { counts[e.k] = (counts[e.k] || 0) + 1; });
       const k = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0], col = KIND[k] || COL.corp;
-      ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 1; ctx.fillStyle = col; ctx.strokeStyle = '#000';
-      ctx.beginPath(); ctx.moveTo(px, py - s); ctx.lineTo(px + s, py); ctx.lineTo(px, py + s); ctx.lineTo(px - s, py); ctx.closePath(); ctx.fill(); ctx.stroke();
-      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '700 10px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 0.8; ctx.fillStyle = col; ctx.strokeStyle = '#000';
+      ctx.beginPath(); ctx.arc(px, py, s, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '300 10px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       if (!small) ctx.fillText(String(n), px, py + 0.5);
       const names = list.slice(0, 3).map(e => e.n).join(', ') + (n > 3 ? ` and ${n - 3} more` : '');
       LM.push({ x: px, y: py, r: s + 3, col, label: `${e0.c}, ${e0.co}`, sub: `${n} funder offices`, sub2: names, ask: `Which funders are headquartered in ${e0.c}?`,
         go() { if (typeof window.flyTo === 'function') window.flyTo(mlon, mlat, baseRadius * (CLUSTER_AT + 1.5)); } });
     });
-    ctx.font = '14px "Jokker", sans-serif';
+    ctx.font = '300 14px "Jokker", sans-serif';
     // Names: on blocks for the focused space's own funders and people. With nothing in focus, only a very close view names them,
     // as plain text on a halo, so the map is not covered in blocks.
     const veryClose = !rec && r >= baseRadius * 30;
@@ -462,7 +463,7 @@
     if ((L.money || L.mix || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const font = '14px "Jokker", sans-serif';
+    const font = '300 14px "Jokker", sans-serif';
     const boxes = labelBoxesOnScreen(dots);
     ctx.save();
     ctx.font = font; ctx.textBaseline = 'middle';
@@ -479,7 +480,7 @@
         ctx.fillStyle = G[i.grade].col; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
         // The letter is the second cue: grade A and B are two near greens, and colour alone cannot tell the five apart.
-        ctx.save(); ctx.font = '700 14px "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
+        ctx.save(); ctx.font = '300 14px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
         ctx.fillText(G[i.grade].letter, d.x, d.y + 0.5); ctx.restore();
       });
     }
@@ -519,7 +520,7 @@
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.flags || !i.flags.length) return;
         LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `What is reported about ${i.name}?` });
-        shapePath(ctx, 'square', d.x, d.y, 4.6);
+        shapePath(ctx, 'circle', d.x, d.y, 4.6);
         ctx.fillStyle = COL.flag; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
       });
@@ -543,22 +544,22 @@
     if (L.propaganda) {
       // Each space a state or regime has used as an instrument of propaganda: a filled pentagon when it is used that way now, a
       // ring when it was in a past period. A space with both shows both side by side, just below its dot.
-      ctx.lineWidth = 1.4;
+      ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.propaganda || !i.propaganda.length) return;
         const marks = PKINDS.filter(k => pkindOn(k) && i.propaganda.some(p => p.kind === k));
         marks.forEach((k, n) => {
           const p = i.propaganda.find(q => q.kind === k), x = d.x + (n - (marks.length - 1) / 2) * 14, y = d.y + 12;
           LM.push({ x, y, r: 8, rec: i, col: COL.prop, label: k === 'today' ? 'Used for propaganda now' : 'Used for propaganda in the past', sub: `${i.name}, ${p.period}`, sub2: p.mechanism ? p.mechanism[0].toUpperCase() + p.mechanism.slice(1) : '', ask: `How is ${i.name} used for propaganda?` + (k === 'today' ? '' : ` (${p.period})`) });
-          if (k === 'today') { shapePath(ctx, 'pentagon', x, y, 6); ctx.fillStyle = COL.prop; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); }
-          else { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.lineWidth = 2.4; ctx.strokeStyle = lineCol(COL.prop); ctx.stroke(); ctx.lineWidth = 1.4; }
+          if (k === 'today') { shapePath(ctx, 'circle', x, y, 6); ctx.fillStyle = COL.prop; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); }
+          else { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.lineWidth = 0.8; ctx.strokeStyle = lineCol(COL.prop); ctx.stroke(); ctx.lineWidth = 0.8; }
         });
       });
     }
 
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
-    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'shield', 'Right-wing funder', rec => `Who funds ${rec.n}?`);
-    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'star', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`);
+    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'circle', 'Right-wing funder', rec => `Who funds ${rec.n}?`);
+    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'circle', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`);
 
     if (L.hq || L.people) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
 
@@ -584,14 +585,14 @@
           const col = COL[n[1]];
           ctx.globalAlpha = focus ? 1 : 0.7;
           ctx.strokeStyle = lineCol(col); ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
-          // The outline says the kind (square public funding, hexagon company, triangle foundation); the colour repeats it.
+          // A dot in the kind's colour; the name block beside it says the kind in words.
           const reach = reachOf(n[5]), sr = sizeFor(reach.n > 1 ? reach.n : 1);
-          shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, sr); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 1.3; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
+          shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, sr); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 0.8; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
           if (n[5]) { if (!byKey.has(n[5])) byKey.set(n[5], []); byKey.get(n[5]).push([x, y, col]); }
-          const shared = reach.n > 1, mk = { x, y, r: Math.max(10, sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `Funder of ${rec.n}`,
+          const shared = reach.n > 1, mk = { x, y, r: Math.max(10, sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `${KIND_WORD[n[1]] || 'Funder'}, funder of ${rec.n}`,
             sub2: shared ? `Also funds ${plural(reach.n - 1, 'other space')} in ${plural(reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
             ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` };
-          LM.push(mk); labels.push([n[0], x, y, a, col, mk]);
+          LM.push(mk); labels.push([n[0], x, y, a, col, mk, KIND_WORD[n[1]]]);
         }
       });
       // A funder named on two spaces on screen is joined across them.
@@ -600,8 +601,8 @@
       byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = lineCol(pts[i][2]); ctx.beginPath(); ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[i][0], pts[i][1]); ctx.stroke(); } });
       // Funder names on flat blocks, in the funder's colour, never over another label.
       ctx.globalAlpha = 1;
-      labels.forEach(([label, x, y, a, col, mk]) => {
-        const text = label.length > 28 ? label.slice(0, 26) + '…' : label, right = Math.cos(a) >= -0.2;
+      labels.forEach(([label, x, y, a, col, mk, kindWord]) => {
+        const text = (label.length > 28 ? label.slice(0, 26) + '…' : label) + (kindWord ? ' \u00b7 ' + kindWord : ''), right = Math.cos(a) >= -0.2;
         const tw = ctx.measureText(text).width, w = tw + 12, h = 20;
         const bx = right ? x + 9 : x - 9 - w, box = { x: bx, y: y - h / 2, w, h };
         if (collides(box, boxes)) return;
@@ -620,7 +621,7 @@
     const W = ctx.canvas.clientWidth || 1e9;
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
     const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat')].filter(Boolean);
-    ctx.save(); ctx.font = '14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.save(); ctx.font = '300 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 12, h = 20;
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
     // ring belongs to first, so the ring's other names stay readable.

@@ -1,0 +1,181 @@
+[
+ {
+  "id": "kassak-muzeum-budapest",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": "Petőfi Irodalmi Múzeum (PIM), under the Ministry of Culture and Innovation",
+   "director_appointed_by": null,
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2022",
+   "sources": [
+    "https://pim.hu/sites/default/files/2024-02/I_2_PIM_AOI_2022.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The PIM founding deed II/605-1/2022/PKF (pages 1, 2 and 6) lists the Kassák Múzeum as a site of PIM, names the Ministry of Culture and Innovation as controlling body and puts staff under the Labour Code."
+ },
+ {
+  "id": "ludwig-museum-budapest-budapest",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": "Ministry of Culture and Innovation",
+   "director_appointed_by": "government or ministry",
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://www.ludwigmuseum.hu/system/files/page/attachments/2025-07/Ludwig%20M%C3%BAzeum%20Alap%C3%ADt%C3%B3%20okirat%20250721.PDF"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The consolidated founding deed of 21 July 2025 (pages 1, 2 and 4) names the ministry as controlling body, the minister as the one who appoints the director, and the Labour Code as the staff regime."
+ },
+ {
+  "id": "museum-of-fine-arts-budapest-hungarian-national-gallery",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [
+    "public procurement law",
+    "freedom of information law",
+    "state audit office"
+   ],
+   "year": "2022",
+   "sources": [
+    "https://www.szepmuveszeti.hu/app/uploads/2026/03/Szepmuveszeti_SZMSZ.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The 2022 organisation and operating rules published on the museum's site (pages 3, 4, 29 and 53) state its status as a central budgetary body founded by the Act of 1896, the laws it works under, the audit bodies it reports to and the Labour Code staff regime."
+ },
+ {
+  "id": "trafo-house-budapest",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": "Budapest Főváros Önkormányzata (Budapest city government)",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "public procurement law"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://trafo.hu/en/kozerdeku_adatok",
+    "https://trafo.hu/hu/kozerdeku_adatok"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The open data pages name the company as a Nonprofit Kft. maintained by the Budapest city government and report its filings under the public procurement act."
+ },
+ {
+  "id": "kling-og-bang-reykjavik",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "nylo-living-art-museum-reykjavik",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": "board",
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://www.nylo.is/en-us/membershi/",
+    "https://www.nylo.is/en-us/news/annual-meeting-in-a-week/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The membership page describes a non-profit artist-run association whose members elect the board, and the May 2025 annual meeting notice cites Article 6 of the charter, under which the board hires the person responsible for the museum's activities and the other staff."
+ },
+ {
+  "id": "reykjavík-art-museum-reykjavík",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Reykjavíkurborg (City of Reykjavík)",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2024",
+   "sources": [
+    "https://listasafn-api.prod.thon.is/uploads/RAM_Arsskysla_A4_mai2024_web_2ef78529af.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The 2023 annual report (page 2) says the museum keeps the City of Reykjavík's art collection and works under city council statutes of 2013."
+ },
+ {
+  "id": "1-shanthiroad-bengaluru",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://1shanthiroad.com"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The gallery's about text says it is administered by the not-for-profit Visual Art Collective (VAC) Trust."
+ },
+ {
+  "id": "museum-of-art-photography-map",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": "Art & Photography Foundation",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://map-india.org/about/governance-and-people/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The governance page says MAP is a unit of the Art & Photography Foundation, a public charitable trust whose trustees govern it and hold its assets."
+ },
+ {
+  "id": "kochi-muziris-biennale-kochi",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": "Kochi Biennale Foundation",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.kochimuzirisbiennale.org/about"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The about page says the Kochi Biennale Foundation, which hosts the biennale, was established as a non-profit charitable trust and lists its board of trustees."
+ },
+ {
+  "id": "dr-bhau-daji-lad-mumbai-city-museum",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "jehangir-art-gallery-mumbai",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ }
+]

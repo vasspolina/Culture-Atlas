@@ -1,0 +1,111 @@
+[
+ {
+  "id": "nmacc-mumbai",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "khoj-new-delhi",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://khojstudios.org/about-us/",
+    "https://khojstudios.org/our-team/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the About Us page calls Khoj a not-for-profit contemporary arts organization and the Our Team page lists a Khoj Board with the Director."
+ },
+ {
+  "id": "kiran-nadar-museum-of-art-new-delhi",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "lalit-kala-akademi",
+  "governance": {
+   "legal_form": "association",
+   "parent": "Ministry of Culture",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": "board",
+   "controls": [
+    "state audit office",
+    "approval of programme, loans or disposals by a ministry or council"
+   ],
+   "year": "2018",
+   "sources": [
+    "https://lalitkala.gov.in/images/pdf/New-Constitution-lka-English-Hindi.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Ministry of Culture notification of 26 April 2018 (Gazette of India) prints the Memorandum of Association and Rules, which say the Akademi is registered under the Societies Registration Act 1860, its General Council approves the annual budget, the Comptroller and Auditor General audits its accounts, and disposal of assets and service bye-laws need Government of India approval."
+ },
+ {
+  "id": "national-gallery-of-modern-art-ngma",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "serendipity-arts-festival",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://serendipityarts.org/our-story/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Our Story page says Serendipity Arts is a not-for-profit foundation that hosts the Serendipity Arts Festival."
+ },
+ {
+  "id": "selasar-sunaryo-art-space-bandung",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "galeri-nasional-indonesia",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "jakarta-biennale",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "museum-macan-jakarta",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "biennale-jogja",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ }
+]

@@ -1,0 +1,183 @@
+[
+ {
+  "id": "the-box-plymouth",
+  "name": "The Box",
+  "city": "Plymouth",
+  "country": "UK",
+  "website": "https://www.theboxplymouth.com/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.theboxplymouth.com/supporters"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "pier-arts-centre-stromness",
+  "name": "Pier Arts Centre",
+  "city": "Stromness",
+  "country": "UK",
+  "website": "https://www.pierartscentre.com/about",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.pierartscentre.com/about"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income GBP 618k: about 60 percent public grants (Creative Scotland, Orkney Islands Council, Highlands and Islands Enterprise), 17 percent donated artwork, 14 percent earned (audited accounts pp. 10, 18)."
+ },
+ {
+  "id": "cample-line-thornhill",
+  "name": "Cample Line",
+  "city": "Thornhill",
+  "country": "UK",
+  "website": "https://campleline.org.uk/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://campleline.org.uk/support-us/",
+   "https://campleline.org.uk/"
+  ],
+  "needs_finance": false,
+  "finances_note": "Calendar 2025 income GBP 127k: about 76 percent public grants (Creative Scotland, Dumfries and Galloway Council), 23 percent trusts and donations, 1 percent box office (statements pp. 10, 14)."
+ },
+ {
+  "id": "the-hepworth-wakefield",
+  "name": "The Hepworth Wakefield",
+  "city": "Wakefield",
+  "country": "UK",
+  "website": "https://hepworthwakefield.org",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://hepworthwakefield.org/our-story/about-us/35729-2/",
+   "https://findthatcharity.uk/orgid/GB-CHC-1138117"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income GBP 4.24M: about 38 percent named public funders (Wakefield Council, Arts Council England), 12 percent donations, membership and sponsorship, 33 percent earned (accounts pp. 28, 41)."
+ },
+ {
+  "id": "yorkshire-sculpture-park",
+  "name": "Yorkshire Sculpture Park",
+  "city": "Wakefield",
+  "country": "UK",
+  "website": "https://ysp.org.uk",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://ysp.org.uk/support-us/our-supporters",
+   "https://en.wikipedia.org/wiki/HSBC"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income GBP 7.62M: about 22 percent named public bodies (Arts Council England, Wakefield Council and others), 5 percent donations, trusts and sponsorship, 56 percent earned (accounts pp. 18, 26-27)."
+ },
+ {
+  "id": "akron-art-museum-akron",
+  "name": "Akron Art Museum",
+  "city": "Akron",
+  "country": "USA",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/340813426",
+   "https://akronartmuseum.org/support/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income USD 8.1M: about 26 percent government grants, 34 percent other donations, 30 percent investment income and gains, 6 percent earned (Form 990, Part VIII)."
+ },
+ {
+  "id": "anchorage-museum-anchorage",
+  "name": "Anchorage Museum",
+  "city": "Anchorage",
+  "country": "USA",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.anchoragemuseum.org/media/jylb1bg0/2022-donor-list-for-website-and-donor-wall.pdf",
+   "https://www.anchoragemuseum.org/about-us/museum-spaces/conocophillips-gallery",
+   "https://projects.propublica.org/nonprofits/api/v2/organizations/926009317.json"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income USD 13.2M: about 44 percent government grants, 31 percent donations and gifts, 18 percent earned, 4 percent investment income (Form 990, Part VIII)."
+ },
+ {
+  "id": "bard-college-annandale-on-hudson",
+  "name": "Bard College",
+  "city": "Annandale-on-Hudson",
+  "country": "USA",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.bard.edu/news/message-from-the-executive-committee-of-the-board-of-trustees-2026-05-01",
+   "https://www.highereddive.com/news/bard-college-president-retire-probe-ties-epstein/819259/",
+   "https://www.wamc.org/news/2026-07-02/leon-botstein-steps-down-as-president-of-bard-college-but-what-does-that-actually-mean"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income USD 331.9M: about 58 percent earned (tuition, room and board), 35 percent donations, 1.5 percent government grants, rest investments and other (Form 990, Part VIII)."
+ },
+ {
+  "id": "aspen-art-museum-aspen",
+  "name": "Aspen Art Museum",
+  "city": "Aspen",
+  "country": "USA",
+  "website": "https://www.aspenartmuseum.org/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.theartnewspaper.com/2019/08/06/mega-collectors-raise-dollar23m-at-aspen-art-museums-annual-artcrush-benefit",
+   "https://projects.propublica.org/nonprofits/organizations/840746671"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2023-24 income USD 17.0M: about 80 percent donations and memberships, no government grants, 3 percent earned, 17 percent net event income and other (Form 990, Part VIII)."
+ },
+ {
+  "id": "atlanta-contemporary-atlanta",
+  "name": "Atlanta Contemporary",
+  "city": "Atlanta",
+  "country": "USA",
+  "website": "https://atlantacontemporary.org/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/581174492",
+   "https://atlantacontemporary.org/donors",
+   "https://projects.propublica.org/nonprofits/api/v2/organizations/581174492.json"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income USD 907k: about 13 percent government grants, 69 percent other donations, 11 percent earned (studio rentals) (Form 990, Part VIII)."
+ },
+ {
+  "id": "blanton-museum-of-art-austin",
+  "name": "Blanton Museum of Art",
+  "city": "Austin",
+  "country": "USA",
+  "website": "https://blantonmuseum.org/about/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://blantonmuseum.b-cdn.net/app/uploads/2026/02/2025-Blanton-Impact-Report-Pages-2.1.26.pdf",
+   "https://en.wikipedia.org/wiki/Eddy_Scurlock",
+   "https://blantonmuseum.org/support/national-leadership-board/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "the-contemporary-austin-austin",
+  "name": "The Contemporary Austin",
+  "city": "Austin",
+  "country": "USA",
+  "website": "https://thecontemporaryaustin.org/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/741233816",
+   "https://web.archive.org/web/20260213140304/https://thecontemporaryaustin.org/support/",
+   "https://web.archive.org/web/20260726155157/https://thecontemporaryaustin.org/exhibitions/sable-elyse-smith-clockwork/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income USD 8.6M: about 2 percent government grants, 50 percent private contributions, 26 percent earned (tuition, rentals, admissions); investment income and gains add 17 percent (Form 990)."
+ }
+]

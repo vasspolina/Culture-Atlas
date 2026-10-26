@@ -1,0 +1,55 @@
+[
+ {
+  "id": "gamec-bergamo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museion-bolzano",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondazione-antonio-ratti-como",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centrale-fies-dro",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private company",
+    "page says": "The About us page and the Transparency page name IL GAVIALE societa cooperativa as the entity behind the site and say the project was started with the Cooperativa il Gaviale; neither page states the legal form of Centrale Fies itself, and a cooperative is not a private company by any wording on the page",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "centrale-fies-dro",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "fondazione-palazzo-strozzi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "uffizi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondazione-prada",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "triennale-milano",
+  "verdict": "ok",
+  "faults": []
+ }
+]

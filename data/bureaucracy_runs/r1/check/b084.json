@@ -1,0 +1,121 @@
+[
+ {
+  "id": "dia-art-foundation-beacon",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2025",
+    "page says": "The press release page carries no date; 2025 is the footer and archive capture year, and the text (Dia Chelsea relocation still being explored, Riggio as outgoing chairman) shows an older release. The page also does not show the form is current.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "dia-art-foundation-beacon",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": null,
+    "sources": [
+     "https://web.archive.org/web/2025/https://www.diaart.org/about/press/dia-elects-nathalie-de-gunzburg-chairman-of-board-of-trustees/type/text"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: Dia's own press release, an undated page read in a 2025 archived copy, calls Dia a nonprofit institution with a Board of Trustees."
+  }
+ },
+ {
+  "id": "dia-beacon",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2025",
+    "page says": "The press release page carries no date; 2025 is the footer and archive capture year, and the text (Dia Chelsea relocation still being explored, Riggio as outgoing chairman) shows an older release. The page also does not show the form is current.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "dia-beacon",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": "Dia Art Foundation",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": null,
+    "sources": [
+     "https://web.archive.org/web/2025/https://www.diaart.org/about",
+     "https://web.archive.org/web/2025/https://www.diaart.org/about/press/dia-elects-nathalie-de-gunzburg-chairman-of-board-of-trustees/type/text"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: Dia's About page lists Dia Beacon as one of its sites, and Dia's own press release, an undated page read in a 2025 archived copy, calls Dia a nonprofit institution with a Board of Trustees."
+  }
+ },
+ {
+  "id": "crystal-bridges",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bampfa-berkeley",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "birmingham-museum-of-art-birmingham",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "only the 2018-2019 annual report (PDF page 3: department of the city since 1951)",
+    "page says": "The 2019 report does not show the form is in force today. The museum's current Museum Facts page (archived 2026) says Owner: City of Birmingham; Governed: Museum Board of the City of Birmingham, which supports the stored form but is not cited.",
+    "fix": "add https://web.archive.org/web/2026/https://www.artsbma.org/the-museum/ and year 2026"
+   }
+  ],
+  "corrected": {
+   "id": "birmingham-museum-of-art-birmingham",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "City of Birmingham",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://media.artsbma.org/wp-content/uploads/2020/01/08143232/Annual-Report-2018-2019-Web-Intro-and-Financial-Statement-1.pdf",
+     "https://web.archive.org/web/2026/https://www.artsbma.org/the-museum/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: page 3 of the 2018-2019 annual report says the museum has been a department of the city since 1951, and the museum's current Museum Facts page, read in a 2026 archived copy, lists the City of Birmingham as owner and the Museum Board of the City of Birmingham as governing body."
+  }
+ },
+ {
+  "id": "cranbrook-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "eskenazi-museum-of-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "boise-art-museum-boise",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wave-hill-bronx",
+  "verdict": "ok",
+  "faults": []
+ }
+]

@@ -1,0 +1,55 @@
+[
+ {
+  "id": "taipei-fine-arts-museum-taipei",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "taiwan-contemporary-culture-lab-c-lab-taipei",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "thecube-project-space-taipei",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-museum-of-tajikistan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nafasi-art-space-dar-es-salaam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bangkok-art-biennale-bangkok",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "The centre is under the supervision of the Bangkok Art and Culture Centre Foundation, with establishment and support by the Bangkok Metropolitan Administration; the Advisory Board is chaired by the Governor of Bangkok. No cited page says the foundation is private, nonprofit or created by the city.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "bangkok-art-and-culture-centre-bangkok",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "jim-thompson-art-center-bangkok",
+  "verdict": "ok",
+  "faults": []
+ }
+]
