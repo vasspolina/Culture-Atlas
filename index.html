@@ -12600,11 +12600,32 @@ return maplibregl$1;
       const shared = (inst.funder_links || []).filter(f => f && f.funder).map(f => `${f.funder} is listed at ${f.institutions} spaces in this atlas, including this one.`).join(' ');
       return proseRow('Funding', escapeHtml(verdict), proseChunks(funding.concat(shared || []), 0).map(t => proseLi('', escapeHtml(t))));
     }
+    // Bureaucracy: the level (1 to 5) tools/grade_bureaucracy.py works out from the administration facts a source states (inst.bureaucracy),
+    // then the facts themselves, then a reported finding on red tape (inst.red_tape) where a document says so. Nothing is estimated.
+    const BUREAUCRACY = { 1: 'Independent', 2: 'Light oversight', 3: 'Supervised', 4: 'Administered', 5: 'State-run' };
+    function proseBureaucracyRow(inst) {
+      const b = inst.bureaucracy, r = inst.red_tape, lis = [];
+      if (!b && !r) return '';
+      if (b) {
+        const said = (lead, t) => t ? lis.push(proseLi(lead, escapeHtml(proseEnd(proseCap(t))))) : 0;
+        said('Legal form:', b.legal_form + (b.parent ? ', under ' + b.parent : ''));
+        said('Director named by:', b.director_appointed_by);
+        said('Staff:', b.staff_status);
+        said('Budget set by:', b.budget_set_by);
+        if ((b.controls || []).length) lis.push(proseLi('Bound by:', escapeHtml(proseEnd(proseCap(b.controls.join('; '))))));
+      }
+      if (r) lis.push(proseLi('Reported red tape:', escapeHtml(proseEnd(r.note)) + ` ${proseLinks([r.url], 1)}`));
+      const cite = proseLinks(((b && b.sources) || []).slice(0, 3), 3);
+      if (lis.length && cite) lis.push(`<li>Sources: ${cite}.</li>`);
+      const head = b && b.level ? `Level ${b.level} of 5, ${BUREAUCRACY[b.level]}. ${proseEnd(b.level_basis)}` : '';
+      return proseRow('Bureaucracy', escapeHtml(head), lis);
+    }
     function proseIntroHtml(inst) {
       const d = inst.details || {};
       const rows = [];
       rows.push(proseRow('Overview', '', proseChunks(d.overview, 0).map(t => proseLi('', escapeHtml(t)))));
       rows.push(proseFundingRow(inst));
+      rows.push(proseBureaucracyRow(inst));
       const note = (lead, t) => t ? proseLi(lead, escapeHtml(proseEnd(t))) : '';
       rows.push(fundingCritiqueRow(inst));
       rows.push(proseRow('Records', '', [note('Publishes:', inst.records_note), note('Accounts:', inst.finances_note), note('Affiliations:', inst.affiliations_note)]));

@@ -37,7 +37,8 @@ ENUMS = {
     'budget_set_by': {'legislature or ministry', 'city or regional council', 'parent institution', 'board', 'owner'},
 }
 CONTROLS = {'public procurement law', 'state audit office', 'freedom of information law', 'civil service rules',
-            'approval of programme, loans or disposals by a ministry or council', 'charity or foundation regulator'}
+            'approval of programme, loans or disposals by a ministry or council',
+            'ministry or city seat on the governing board', 'charity or foundation regulator'}
 KINDS = {'audit report', 'parliamentary report', 'press report', 'employee account', 'official review'}
 BAD_TEXT = re.compile(r'[–—]|\b(?:no|nothing|none)\b[^.]{0,40}\b(?:found|reported|located)\b|\b(?:appears?|seems?|reportedly|allegedly|possibly|perhaps|likely)\b', re.I)
 

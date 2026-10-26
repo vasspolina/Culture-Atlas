@@ -70,7 +70,9 @@ if a source says so.
 bureaucracy at this space. It needs a document that says so. An audit office or parliamentary
 report, a named press article, an official review, or one employee account on a public review site
 qualifies; say in the note whose claim it is ("A 2023 audit report says ...", "One employee writes
-..."). A single anonymous account is one person's view, so write it that way and do not generalise.
+..."). An official saying a rule exists, or a deadline applies, is not a finding about red tape: the source
+itself must say approvals are slow, layered or burdensome, or an audit or review must find it.
+A single anonymous account is one person's view, so write it that way and do not generalise.
 The note states what the source says, with no verdict of your own.
 
 ### Method
@@ -108,3 +110,24 @@ in them. Do not write that a space has no bureaucracy, or that none was reported
 Write the file early and update it after every few records. Reply with: how many records got a
 governance block, how many a red_tape block, the legal forms you used and how often, and the three
 oddest sources.
+
+---
+
+## The checker prompt (a second agent, for every batch or a sample of them)
+
+You are checking another researcher's work for the Culture Atlas. Today is <DATE>. Work in
+<WORKTREE>. Read `data/bureaucracy_prompt.md` (the researcher's brief, the part above this line) and
+`data/bureaucracy_runs/<RUN>/out/<BATCH>.json`. For every record that has a `governance` or `red_tape`
+block, open the urls it cites (curl through Bash, WebFetch, or `python3 tools/pdf_text.py` for PDFs;
+never the browser pane) and compare each stated fact with the page's own text. Do not read the
+researcher's transcript and do not take its `basis` sentence as proof.
+
+Write `data/bureaucracy_runs/<RUN>/check/<BATCH>.json`: a list with one object per checked record,
+`{"id": ..., "verdict": "ok" | "fault", "faults": [{"field": ..., "stored": ..., "page says": ...,
+"fix": the value the page supports, or null to drop it}]}`. Edit no other file. A fault is: a fact the
+cited pages do not state, a legal form inferred from a name, a source that is a mirror or snippet
+instead of the document, a staff or budget fact from a different institution, a red-tape note that
+is only an official citing a rule, a wording that is not the page's, or a value outside the lists.
+Also list a fault when a stated fact is right but the page that proves it is not among the cited
+urls. Use at most <BUDGET> web searches. Reply with the counts of ok and fault records and each
+fault in one line.

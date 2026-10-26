@@ -4,8 +4,7 @@
 The research agents report facts only (data/bureaucracy_prompt.md); this module turns them into a
 level so every record is judged by the same ladder. The first rule that matches wins:
 
-  5 State-run     a government or municipal body that is a department of its owner: its staff are
-                  civil servants or its budget is set by a ministry, legislature or council.
+  5 State-run     a government or municipal body, that is a department of a ministry or a city.
   4 Administered  a public body (government, municipal, statutory, university unit, or a public
                   foundation whose director the state or city names) bound by two or more public
                   controls.
@@ -32,6 +31,7 @@ PRIVATE_FORMS = {'private nonprofit', 'private foundation', 'association', 'priv
 PUBLIC_CONTROLS = {
     'public procurement law', 'state audit office', 'freedom of information law', 'civil service rules',
     'approval of programme, loans or disposals by a ministry or council',
+    'ministry or city seat on the governing board',
 }
 STATE_DIRECTOR = {'government or ministry', 'city or region'}
 STATE_BUDGET = {'legislature or ministry', 'city or regional council'}
@@ -46,8 +46,8 @@ def level(g):
     regulator = 'charity or foundation regulator' in (g.get('controls') or [])
     state_director = g.get('director_appointed_by') in STATE_DIRECTOR
     parent_director = g.get('director_appointed_by') == 'parent institution'
-    if form in STATE_FORMS and (g.get('staff_status') == 'civil servants' or g.get('budget_set_by') in STATE_BUDGET):
-        return 5, 'A department of its owner: ' + ('civil-service staff' if g.get('staff_status') == 'civil servants' else 'its budget is set by a ministry, legislature or council') + '.'
+    if form in STATE_FORMS:
+        return 5, 'A department of its owner' + (', with civil-service staff' if g.get('staff_status') == 'civil servants' else '') + '.'
     if (form in PUBLIC_FORMS or (form == 'public foundation' and state_director)) and len(public) >= 2:
         return 4, 'A public body bound by ' + ' and '.join(public[:2]) + '.'
     if form in ('public foundation', 'statutory public body') or form in PUBLIC_FORMS:
