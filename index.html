@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=315">
-  <script src="assets/config.js?v=315"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=316">
+  <script src="assets/config.js?v=316"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7021,8 +7021,11 @@ return maplibregl$1;
         inst = selectedInstitution || (typeof curatorContext !== 'undefined' ? curatorContext.lastInst : null);
       }
       if (inst) {
-        if (typeof setMobileViewMode === 'function') {
-          setMobileViewMode('chat');
+        // setMobileViewMode does nothing at 768px and wider, so on a desktop the answer was written into a chat tab nobody was looking at.
+        if (window.innerWidth < 768) {
+          if (typeof setMobileViewMode === 'function') setMobileViewMode('chat');
+        } else if (typeof setWorkspaceTab === 'function') {
+          setWorkspaceTab('chat');
         }
         const q = `Plan my visit to ${inst.name}`;
         appendUserMessage(q);
@@ -9943,11 +9946,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v315';
+    const ATLAS_RELEASE = 'culture-atlas-v316';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=315').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=316').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19483,9 +19486,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=315"></script>
-<script src="assets/layers.js?v=315"></script>
-<script src="assets/hq-detail.js?v=315"></script>
-<script src="assets/bubbles.js?v=315" defer></script>
+<script src="assets/typeset.js?v=316"></script>
+<script src="assets/layers.js?v=316"></script>
+<script src="assets/hq-detail.js?v=316"></script>
+<script src="assets/bubbles.js?v=316" defer></script>
 </body>
 </html>
