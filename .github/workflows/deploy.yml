@@ -23,7 +23,7 @@ jobs:
       - name: Assemble the files the site loads at runtime
         run: |
           mkdir _site
-          cp index.html reports-admin.html sw.js manifest.json _site/
+          cp index.html reports-admin.html studies.html moma-money-map.html sw.js manifest.json _site/
           cp -r assets fonts _site/
           touch _site/.nojekyll
           test -s _site/index.html
