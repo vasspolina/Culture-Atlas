@@ -2344,3 +2344,10 @@ div:has(>#topThemeBtn){column-gap:0}
 /* ---- Row titles at 17px (user, 26 Oct 2026: "this title can be 17") ----
    The row's title (the flag, "Programme", the place) was 24px in the narrow record; it is 17px everywhere, still Thin and in the row's accent colour. */
 :root:root:not(#t):not(#t):not(#t) .d-row-title{font-size:17px!important;line-height:var(--lh)!important}
+
+/* ---- The standalone quotation: text 17px, its source line 14px, a line of space under it (user, 26 Oct 2026: "make text 17, info 14 and add space underneath") ----
+   The quotation and its hanging mark are 17px; the source line, with its linked title, is 14px (the same step as the other source notes). The space under
+   it is one line (L), so the rule of the next row does not sit against the source line. */
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote{font-size:17px!important;margin-bottom:var(--L)}
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-size:17px!important;line-height:var(--lh)!important}
+:root:root:not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(figcaption,figcaption a){font-size:14px!important;line-height:var(--lh)!important}
