@@ -2214,3 +2214,15 @@ div:has(>#topThemeBtn){column-gap:0}
   /* Everything under the head sits in the same right-hand column, so its rows line up with the head's rows. */
   :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView{margin-left:calc((100% - 2 * var(--L)) * 3 / 11 + 2 * var(--L))}
 }
+
+/* Gossip mode turns the question box yellow (user, 26 Oct 2026): the gossip yellow of the gossip question, black type, the send button navy. It stays yellow while typing. */
+:root[data-theme] body.gossip-mode-active :is(#workInputCard:not(.is-mode) #noteInputBlock,#mobileStickyInputBar>div:first-child),
+:root[data-theme] body.gossip-mode-active :is(#workInputCard:not(.is-mode) #noteInputBlock,#mobileStickyInputBar>div:first-child):has(:is(#workInput,#chat-input):not(:placeholder-shown)){background:#e2f86c!important}
+:root[data-theme] body.gossip-mode-active :is(#workInputCard:not(.is-mode) #noteInputBlock,#mobileStickyInputBar>div:first-child):has(:is(#workInput,#chat-input):is(:focus,:not(:placeholder-shown))){border-color:#000!important}
+:root[data-theme] body.gossip-mode-active :is(#workInputCard:not(.is-mode) #workInput,#mobileStickyInputBar #chat-input),
+:root[data-theme] body.gossip-mode-active :is(#workInputCard:not(.is-mode) #workInput,#mobileStickyInputBar #chat-input):is(:focus,:not(:placeholder-shown)){color:#000!important;caret-color:#000!important}
+:root[data-theme] body.gossip-mode-active :is(#workInputCard:not(.is-mode) #workInput,#mobileStickyInputBar #chat-input)::placeholder{color:#4f5a00!important;opacity:1!important}
+:root[data-theme] body.gossip-mode-active :is(#workInputCard:not(.is-mode) #workSendBtn:not(.is-on),#mobileStickyInputBar #mobileStickySendBtn){background:#2d3352!important;color:#fff!important}
+:root[data-theme] body.gossip-mode-active :is(#workInputCard:not(.is-mode) #workSendBtn:not(.is-on),#mobileStickyInputBar #mobileStickySendBtn) svg{color:#fff!important}
+:root[data-theme] body.gossip-mode-active :is(#workInputCard:not(.is-mode) #workSendBtn:not(.is-on),#mobileStickyInputBar #mobileStickySendBtn):hover{background:#12162b!important;color:#fff!important}
+:root[data-theme] body.gossip-mode-active #workInputCard:not(.is-mode) #workSendBtn:not(.is-on):hover svg{color:#fff!important}
