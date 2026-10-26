@@ -11712,10 +11712,20 @@ return maplibregl$1;
     // The frame about gifts and their givers belongs with the money, not with the art: it sits directly under Funding, and only on a
     // record graded 4 or 5 (user, 25 Oct 2026). Every other critique stays in its own place further down the record.
     const isFundingFrame = (v) => v && v.strategy_id === 'gift';
+    // One quotation from the research, set alone at 16px: no title, no button, no columns, with its source line under it.
+    // The record's critical frames are not listed or cycled; its first frame gives the quotation (user, 26 Oct 2026).
+    function standaloneQuoteHtml(vc) {
+      const q = vc && vc.kind === 'theory' && vc.quotes && vc.quotes[0];
+      if (!q) return '';
+      const e = escapeHtml;
+      const where = [q.publication, q.date].filter(Boolean).map(e).join(', ');
+      const t = quotedText(q.text);
+      return `<figure class="standalone-quote no-indent" data-no-typeset><blockquote class="no-indent"><span class="quote-hang">${e(t.charAt(0))}</span>${e(t.slice(1))}</blockquote><figcaption>${e(q.author)}, <a href="${e(q.url)}" target="_blank" rel="noopener noreferrer">${e(q.title)}</a>, ${where}.</figcaption></figure>`;
+    }
+    // On a record graded 4 or 5 the gift frame's quotation sits under Funding; every other record's quotation stays in its own place further down.
     function fundingCritiqueRow(inst) {
       if (inst.grade !== 4 && inst.grade !== 5) return '';
-      const vc = (inst.visual_critiques || []).find(isFundingFrame);
-      return vc ? critiqueProseRow(inst, vc, [vc], 0, 'Criticism of giving') : '';
+      return standaloneQuoteHtml((inst.visual_critiques || []).find(isFundingFrame));
     }
     function critiqueQuoteLine(q) {
       return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
@@ -12735,7 +12745,9 @@ return maplibregl$1;
 
 
       // 4. Visual Critiques (Hans Haacke, etc.)
-      const vcs = (inst.visual_critiques || []).filter(v => !(isFundingFrame(v) && (inst.grade === 4 || inst.grade === 5)));
+      const allVcs = (inst.visual_critiques || []).filter(v => !(isFundingFrame(v) && (inst.grade === 4 || inst.grade === 5)));
+      const vcs = allVcs.filter(v => v.kind !== 'theory');
+      const quoteHtml = (inst.grade === 4 || inst.grade === 5) && (inst.visual_critiques || []).some(isFundingFrame) ? '' : standaloneQuoteHtml(allVcs.find(v => v.kind === 'theory'));
       if (window.dossierVcFor !== (inst.id || inst.name)) { window.dossierVcFor = inst.id || inst.name; window.dossierVcIndex = 0; }
       window.dossierVcIndex = window.dossierVcIndex || 0;
       const vcIdx = window.dossierVcIndex % (vcs.length || 1);
@@ -12781,6 +12793,7 @@ return maplibregl$1;
           ${proseBodyHtml(inst)}
 
           <!-- 3.  ARTISTIC CRITIQUES & INSTITUTIONAL HISTORY (Uncontained Rich Research Section) -->
+          ${quoteHtml}
           ${vcs.length > 0 && vc ? critiqueRowHtml(inst, vc, vcs, vcIdx) : ''}
 
           ${isCommunity ? proseRows([proseRow('Community research submission', 'Status: community submission, not checked', [
