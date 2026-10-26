@@ -887,14 +887,22 @@ return maplibregl$1;
     <div class="relative flex items-center">
       <!-- Input Field -->
       <textarea class="w-full px-3 py-2 pr-20" id="chat-input" rows="2" placeholder="Ask about a space, its funders or controversies…"></textarea>
-      <!-- Voice toggle (inline mic, sits left of Send) -->
-      <button id="mobileStickyVoiceBtn" type="button" aria-pressed="true" aria-label="Read answers aloud" title="Read answers aloud">
-        <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
-      </button>
       <!-- Send Pill Button -->
       <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5" aria-label="Send message" title="Send message">
         <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
       </button>
+    </div>
+    <!-- Under the box: Voice and Share information, then suggested questions -->
+    <div id="mobileComposerActions">
+      <button id="mobileStickyVoiceBtn" type="button" aria-pressed="true" title="Read answers aloud">Voice</button>
+      <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Write a note about an institution">Share information</button>
+    </div>
+    <div id="mobileSuggestChips" role="group" aria-label="Suggested questions">
+        <button type="button" class="curator-suggest-chip" data-query="Who funds MoMA?">Who funds MoMA?</button>
+        <button type="button" class="curator-suggest-chip" data-query="Which museums take oil and gas money?">Oil and gas money</button>
+        <button type="button" class="curator-suggest-chip" data-query="Which museums still carry the Sackler name?">Sackler names</button>
+        <button type="button" class="curator-suggest-chip" data-query="Which spaces have arms-industry donors?">Arms-industry donors</button>
+        <button type="button" class="curator-suggest-chip" data-query="Which spaces near me are flagged, and why?">Spaces near me</button>
     </div>
   </div>
 
@@ -15752,6 +15760,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       window.addEventListener('resize', fitChatInput);
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitChatInput);
       fitChatInput();
+
+      // iPhone: opening the keyboard scrolls the whole page up, and Safari often leaves it there after the
+      // keyboard closes, which shows as an empty band under the bar. The app never scrolls as a page, so put it back.
+      const settlePage = () => {
+        if (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) {
+          window.scrollTo(0, 0); document.documentElement.scrollTop = 0; document.body.scrollTop = 0;
+        }
+      };
+      chatInput?.addEventListener('blur', () => { setTimeout(settlePage, 60); setTimeout(settlePage, 350); });
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', () => {
+          if (window.visualViewport.height >= window.innerHeight * 0.85) settlePage();
+        });
+      }
+      window.addEventListener('pageshow', settlePage);
 
       function setActiveMobileTab(activeEl) {
         [tabAtlas, tabDossier, tabChat].forEach(el => {

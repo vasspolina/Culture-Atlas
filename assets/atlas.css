@@ -1,5 +1,5 @@
 *,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;height:100%}
+html,body{margin:0;height:100%;overscroll-behavior:none}
 button,input,select,textarea{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0}
 button{cursor:pointer;text-align:inherit}
 img,svg,canvas{display:block}
@@ -2459,14 +2459,19 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn *,#chatShareBtn,#chatShareBtn:hover){text-decoration:none!important}
 :root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:#fff!important}
 
-/* Mobile composer: one row — textarea, inline Voice mic toggle, Send */
-:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>div:first-child{display:flex!important;align-items:center!important;gap:8px!important;padding-right:12px!important}
+/* Mobile composer: box (input + Send) on top; Voice, Share information and suggested questions underneath */
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar{gap:10px!important;padding-bottom:max(10px,env(safe-area-inset-bottom))!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>div:first-child{display:flex!important;align-items:center!important;gap:8px!important;padding-right:12px!important;min-height:64px!important;padding-top:8px!important;padding-bottom:8px!important}
 :root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #chat-input{flex:1 1 auto!important;min-width:0!important;width:auto!important;padding-right:0!important}
-:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickySendBtn{position:static!important;inset:auto!important;transform:none!important;flex:0 0 auto!important;width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important}
-:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn{position:relative!important;flex:0 0 auto!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;padding:0!important;gap:0!important;border:1px solid #9aa0c4!important;border-radius:12px!important;background:transparent!important;color:#fff!important}
-:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn svg{width:20px!important;height:20px!important;color:inherit!important}
-:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn::before{content:none!important;display:none!important}
-:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn[aria-pressed="true"]{background:#fff204!important;border-color:#fff204!important;color:#000!important}
-/* muted: diagonal strike so state isn't carried by colour alone */
-:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn[aria-pressed="false"]::after{content:"";position:absolute;left:50%;top:50%;width:26px;height:1.5px;background:currentColor;transform:translate(-50%,-50%) rotate(-45deg);pointer-events:none}
-:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickyVoiceBtn:focus-visible{outline:2px solid #fff204!important;outline-offset:2px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickySendBtn{position:static!important;inset:auto!important;transform:none!important;flex:0 0 auto!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions{display:flex;gap:8px;align-items:center}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileStickyShareBtn){box-sizing:border-box!important;height:44px!important;min-height:44px!important;padding:0 16px!important;border:1px solid var(--ink)!important;border-radius:12px!important;background:transparent!important;color:var(--ink)!important;font:400 var(--fs-s)/1 var(--sans)!important;display:inline-flex!important;align-items:center!important;gap:8px!important;white-space:nowrap}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn::before{content:""!important;display:block!important;flex:0 0 auto;width:9px;height:9px;box-sizing:border-box;border:1.5px solid currentColor;border-radius:50%;background:transparent}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn[aria-pressed="true"]::before{background:currentColor}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn::after{content:none!important}
+@media (hover:hover){:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileStickyShareBtn):hover{background:#fff204!important;color:#000!important;border-color:#fff204!important}}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0;padding:0 0 2px;-webkit-overflow-scrolling:touch}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips::-webkit-scrollbar{display:none}
+:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip{flex:0 0 auto;height:36px;min-height:36px;padding:0 14px;border:1px solid var(--line);border-radius:18px;background:transparent;color:var(--ink);font:400 var(--fs-s)/1 var(--sans);white-space:nowrap}
+@media (hover:hover){:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip:hover{background:var(--ink);color:var(--paper)}}
+:root:root:root:root:root:root:root:root:root:root :is(#mobileComposerActions button,#mobileSuggestChips button):focus-visible{outline:2px solid #fff204!important;outline-offset:2px!important}
