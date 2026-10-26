@@ -2408,3 +2408,14 @@ div:has(>#topThemeBtn){column-gap:0}
 :root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{box-sizing:border-box!important;height:48px!important;min-height:48px!important;padding:0 20px!important;border:1px solid var(--ink)!important;border-radius:14px!important;gap:10px!important}
 :root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn::before{content:"";flex:0 0 auto;width:9px;height:9px;box-sizing:border-box;border:1.5px solid var(--ink);border-radius:50%;background:transparent}
 :root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn[aria-pressed="true"]::before{background:var(--ink)}
+
+/* ---- Three small changes to the chat (user, 26 Oct 2026: "drop lines", "delete dot", "spacing between elements can be 3px") ---- */
+/* No rules inside the gossip balloon: the line above and below the text (the record card's top rule and the blocks' rules) is gone; the balloon's own outline stays. */
+:root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(div,section,p,ul,ol,li,details,summary,header,footer){border-top:0!important;border-bottom:0!important}
+:root:root[data-theme] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip hr{display:none!important}
+/* The Voice button has no dot; it is yellow when on and outlined when off. */
+:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn::before{content:none!important;display:none!important}
+/* The question box, Share information and Voice sit 3px apart: the column's gap, the row's top padding and the gap between the buttons. */
+:root:root[data-theme] #workBottomDock>div:has(>#workInputCard:not(.is-mode)){gap:3px!important}
+:root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:3px!important;gap:3px!important}
+:root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{gap:3px!important}
