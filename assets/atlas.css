@@ -956,7 +956,7 @@ h1,h2,h3,h4,.t-title,.curator-section-hdr,#floatingCardTitle,.record-popup-name,
 /* The line (p.32-35): 50-70 characters a line, ragged right with a soft rag, no hyphenation,
    no single word left alone on the last line, and a title that breaks into even lines. */
 .curator-message-wrap p,.curator-message-wrap li,#desktopDossierRecordBody p,#detailBody p,#dossier-sheet-scrollable-body p,#curatorHeroGreeting p,.chat-info p,.t-lead{
-  max-width:66ch;text-align:left;text-wrap:pretty;hyphens:manual;hanging-punctuation:first allow-end}
+  max-width:none;text-align:left;text-wrap:wrap;hyphens:manual;hanging-punctuation:first allow-end}
 h1,h2,h3,h4,.t-title,.lede,#floatingCardTitle,.record-popup-name,.curator-section-hdr{text-wrap:balance;hyphens:manual}
 #floatingCardTitle,#desktopDossierName,#dossier-sheet-name,:is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading{white-space:nowrap;text-wrap:nowrap}
 
@@ -1073,7 +1073,7 @@ abbr[title]{text-decoration:none}
 
 /* ---- the record panel, typeset and given room (Hochuli: leading rises with line length; space between blocks is what makes them read as blocks) ---- */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body){font-variant-numeric:ordinal}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,.visit-rows>div>div:last-child){line-height:var(--lh);max-width:66ch;text-wrap:pretty;hyphens:manual}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,.visit-rows>div>div:last-child){line-height:var(--lh);max-width:none;text-wrap:wrap;hyphens:manual}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .dossier-main-heading{margin-bottom:20px}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .kicker{margin-top:12px;line-height:1.4}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-actions{margin-top:20px;padding-top:0;row-gap:8px}
