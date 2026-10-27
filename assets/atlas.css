@@ -188,7 +188,7 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 .source-citation-pill svg{flex:none}
 /* The name is a flex item, so it would take the paragraph's first-line indent; it sits against the icon instead. */
 .source-citation-pill span{text-indent:0}
-.inst-link,.city-link,.dossier-link{text-decoration:underline;cursor:pointer}
+.inst-link,.city-link,.dossier-link,.funder-link{text-decoration:underline;cursor:pointer}
 /* Bold and capitals belong to one thing only: the name of a space (user's instruction, 19 Oct 2026). Everything else is in
    the roman, in normal case, and a heading is told by its size and the space around it (Hochuli p.44: capitals and bold
    are restless in running text). In running text a name keeps the text's leading and is set a step smaller, as capitals
@@ -1179,10 +1179,10 @@ body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet
 /* Superseded in release 239: Share information is bold capitals again, in both themes (see the end of this file). */
 
 /* Hover puts a light blue block behind a link, wider than the text on both sides, with black text, in every theme and in gossip mode. */
-:is(.inst-link,.city-link,.dossier-link):hover,
-:root[data-theme="dark"] :is(.inst-link,.city-link,.dossier-link):hover,
-body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.inst-link,.city-link,.dossier-link):hover,
-:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.inst-link,.city-link,.dossier-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+:is(.inst-link,.city-link,.dossier-link,.funder-link):hover,
+:root[data-theme="dark"] :is(.inst-link,.city-link,.dossier-link,.funder-link):hover,
+body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.inst-link,.city-link,.dossier-link,.funder-link):hover,
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.inst-link,.city-link,.dossier-link,.funder-link):hover{background:var(--peri)!important;color:#000!important;box-shadow:-.3em 0 0 var(--peri),.3em 0 0 var(--peri);-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
 /* A turn that holds gossip, in Gossip mode or not, is a comic balloon: only that turn is. The reply builder marks such a turn .is-gossip (its reported, unverified items carry data-gossip);
    a plain record, a city list, the status line and the reader's own questions are set exactly as in normal mode. assets/bubbles.js draws a hairline outline and a
