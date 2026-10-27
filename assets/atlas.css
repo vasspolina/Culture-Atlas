@@ -2719,3 +2719,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:is(:hover,:focus-visible,:active) :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon,svg,span){background:transparent!important;color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard.is-mode #workSendBtn#workSendBtn.is-on:is(:hover,:active,[data-ready="true"]){background:#d9dcec!important;color:#2d3352!important}
 :root:root:root:root:root:root:root:root:not([data-theme="dark"]) #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){color:#2d3352!important;background:#e6e8f4!important}
+
+/* ---- Visiting across the whole row (user, 27 Oct 2026) ----
+   The row title is hidden, so its third of the row stood empty. The three facts now take the full width, in three equal columns. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-visit{grid-template-columns:minmax(0,1fr)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-visit .d-row-head{display:none}
