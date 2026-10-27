@@ -2688,10 +2688,10 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workInput#workInput,:root:not([data-theme="dark"]) #mobileStickyInputBar #chat-input{color:#2d3352!important;caret-color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workInput#workInput:not(:placeholder-shown),:root:not([data-theme="dark"]) #mobileStickyInputBar #chat-input:not(:placeholder-shown){color:#410043!important;caret-color:#410043!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workInput#workInput::placeholder,:root:not([data-theme="dark"]) #mobileStickyInputBar #chat-input::placeholder{color:#5a6086!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on),:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn{background:#2d3352!important;color:#fff!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on) svg{color:#fff!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover,:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn:hover{background:#12162b!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover svg{color:#fff!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on),:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn{background:#fff!important;color:#2d3352!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on) svg{color:#2d3352!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover,:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn:hover{background:#d9dcec!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover svg{color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn,:root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn :is(svg,span){background:#e8e8ee!important;color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn :is(svg,span){background:transparent!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:hover{background:#d9dae4!important}
