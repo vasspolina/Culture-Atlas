@@ -2239,7 +2239,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dt{margin:0;font-size:14px;line-height:var(--lh);font-weight:400;text-transform:uppercase;letter-spacing:.06em;color:color-mix(in srgb,var(--ink) 55%,transparent)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dd{margin:0;grid-column:auto;font-size:16px;line-height:var(--lh);font-weight:400;color:var(--ink);letter-spacing:0;overflow-wrap:break-word;hyphens:manual;text-wrap:pretty}
 @container (min-width:34em){
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--L)}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--L)}
 }
 
 /* ---- The record in two columns, a third and two thirds, with nothing indented (user, 26 Oct 2026) ----
@@ -2261,13 +2261,13 @@ div:has(>#topThemeBtn){column-gap:0}
 /* ---- Visiting nearer the foundry footer (user, 26 Oct 2026) ----
    There the label and the words under it are one size, the label in grey capitals, and each column is its own stack that runs down and then
    starts the next, not a grid whose rows keep every column waiting for the tallest fact. So: the label at the text size (16px), and the facts
-   flow in two columns with each fact kept whole. */
+   flow in three columns with each fact kept whole (user, 26 Oct 2026). */
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:1}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item{break-inside:avoid;margin:0 0 var(--L)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols .visit-item:last-child{margin-bottom:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols dt{font-size:16px}
 @container (min-width:34em){
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:2;column-gap:calc(2 * var(--L))}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) dl.visit-cols{display:block;column-count:3;column-gap:calc(2 * var(--L))}
 }
 
 
@@ -2409,11 +2409,11 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:3px!important;gap:3px!important}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{gap:3px!important}
 
-/* ---- Row titles and the quotation at the city card's size and weight (user, 27 Oct 2026: "make details titles and quote this size and thickness", the city name on the card: 24px Documan Thin) ----
-   The row title ("Funding", "Programme", the flag) and the standalone quotation with its hanging mark are 24px (--fs-l), weight 100, like the name on the city card. This comes after the
-   20px Medium rule and the Regular rule for titles under 17px, and out-ranks both. The quotation's source line stays 14px. At 24px on the 1.4 line, one line is 33.6px, one and a half of L. */
-:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .d-row-title{font-family:var(--display)!important;font-weight:100!important;font-size:var(--fs-l)!important}
-:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-family:var(--display)!important;font-weight:100!important;font-size:var(--fs-l)!important}
+/* ---- Row titles and the quotation at 18px, the city card's weight (user, 27 Oct 2026, size changed to 18px 28 Oct 2026: "make details titles and quote this size and thickness", the city name on the card: 24px Documan Thin) ----
+   The row title ("Funding", "Programme", the flag) and the standalone quotation with its hanging mark are 18px (--fs-m), weight 100, like the name on the city card. This comes after the
+   20px Medium rule and the Regular rule for titles under 17px, and out-ranks both. The quotation's source line stays 14px.  */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .d-row-title{font-family:var(--display)!important;font-weight:100!important;font-size:var(--fs-m)!important}
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-family:var(--display)!important;font-weight:100!important;font-size:var(--fs-m)!important}
 /* How the records work: no underline in any state (the plus is part of the row, so it took the underline too), and the row's text and plus sit 24px in from the edges, like Share information and Voice. */
 @media (min-width:768px){
   :root[data-theme] #chatRecordsInfo>summary,:root[data-theme] #chatRecordsInfo>summary:hover,:root[data-theme] #chatRecordsInfo>summary:focus-visible{text-decoration:none!important;padding:0 24px!important}
@@ -2684,10 +2684,10 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workInput#workInput,:root:not([data-theme="dark"]) #mobileStickyInputBar #chat-input{color:#2d3352!important;caret-color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workInput#workInput:not(:placeholder-shown),:root:not([data-theme="dark"]) #mobileStickyInputBar #chat-input:not(:placeholder-shown){color:#410043!important;caret-color:#410043!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workInput#workInput::placeholder,:root:not([data-theme="dark"]) #mobileStickyInputBar #chat-input::placeholder{color:#5a6086!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on),:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn{background:#2d3352!important;color:#fff!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on) svg{color:#fff!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover,:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn:hover{background:#12162b!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover svg{color:#fff!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on),:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn{background:#fff!important;color:#2d3352!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on) svg{color:#2d3352!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover,:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn:hover{background:#d9dcec!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover svg{color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn,:root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn :is(svg,span){background:#e8e8ee!important;color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn :is(svg,span){background:transparent!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:hover{background:#d9dae4!important}
@@ -2706,3 +2706,27 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:not([data-theme="dark"]) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side button.record-action:first-child{--pill:#ecd9d7!important;--pill-hover:#dcc2bf!important;color:#420401!important}
 :root:root:root:root:not([data-theme="dark"]) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side button.record-action[onclick*="atlasPlanVisit"]{--pill:#e8d6ee!important;--pill-hover:#d6bce0!important;color:#3c0b52!important}
 :root:root:root:root:not([data-theme="dark"]) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side button.record-action:is(:hover,:active,:focus-visible){background:var(--pill-hover)!important}
+
+/* Light hovers (user, 26 Oct 2026: "fix light version hover and chat, it need to go light"): in the light theme the yellow hover of the starter questions, follow-up pills, suggestion chips, Share information, the records summary and the Voice and Send buttons becomes the pale navy tint with navy type. The dark theme keeps its yellow. */
+:root:root:root:root:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:#d9dcec!important;color:#2d3352!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) :is(.curator-suggest-chip,.curator-followup-pill):is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #mobileSuggestChips .curator-suggest-chip:is(:hover,:focus-visible){background:#d9dcec!important;color:#2d3352!important;border-color:#d9dcec!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible),:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard#workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible){background:#dfd3d1!important;color:#420401!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:is(:hover,:focus-visible,:active){background:#d9dae4!important;color:#2d3352!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:is(:hover,:focus-visible,:active) :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon,svg,span){background:transparent!important;color:#2d3352!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard.is-mode #workSendBtn#workSendBtn.is-on:is(:hover,:active,[data-ready="true"]){background:#d9dcec!important;color:#2d3352!important}
+:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){color:#2d3352!important;background:#e6e8f4!important}
+
+/* Light theme: Share information is blue with cream type; hovered or focused it turns cream with blue type. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{background:#3e7bf6!important;color:#f2f0e7!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible){background:#f2f0e7!important;color:#3e7bf6!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn::before{border-color:#f2f0e7}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{background-color:#f2f0e7}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible)::before{border-color:#3e7bf6}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on:is(:hover,:focus-visible)::before{background-color:#3e7bf6}
+
+/* Starter questions: the whole pill fills on hover and keyboard focus, not only the text inside it. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){background:#d9dcec!important;border-color:#d9dcec!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){background:#fff204!important;border-color:#fff204!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:transparent!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{color:#000!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{transition:background-color .15s,border-color .15s}

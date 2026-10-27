@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=411">
-  <script src="assets/config.js?v=411"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=419">
+  <script src="assets/config.js?v=419"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -6512,10 +6512,10 @@ return maplibregl$1;
       sources: {
         openmaptiles: {
           type: 'vector',
-          tiles: ['https://tiles.openfreemap.org/planet/latest/{z}/{x}/{y}.pbf'],
+          // TileJSON, not the planet/latest path: the latest path now decodes to empty tiles, so the street map drew nothing.
+          url: 'https://tiles.openfreemap.org/planet',
           attribution: '<a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a> <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a> <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>',
-          minzoom: 0,
-          maxzoom: 14
+          minzoom: 0
         }
       },
       // Street-map labels are set in PP Neue Gstaad Regular: glyphs generated from the font file (assets/glyphs), not the map host's Noto Sans.
@@ -9932,11 +9932,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v411';
+    const ATLAS_RELEASE = 'culture-atlas-v419';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=411').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=419').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10222,7 +10222,9 @@ return maplibregl$1;
     // Canvas type for the cards: Jokker Thin for names (a space's in capitals, a city's in normal case), Jokker Regular for facts.
     const ATLAS_CARD_TITLE_FONT = '300 24px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     const ATLAS_CARD_NAME_FONT = '300 24px "Jokker", sans-serif';
-    const ATLAS_CARD_MONO_FONT = '300 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    // Label type is regular on the light theme and light on the dark one.
+    const atlasLabelWeight = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
+    const atlasMonoFont = () => atlasLabelWeight() + ' 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
       document.fonts.load(ATLAS_CARD_NAME_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
@@ -10244,7 +10246,7 @@ return maplibregl$1;
 
       ctx.font = ATLAS_CARD_NAME_FONT;
       const nameW = ctx.measureText(nameUpper).width;
-      ctx.font = ATLAS_CARD_MONO_FONT;
+      ctx.font = atlasMonoFont();
       const subW = ctx.measureText(subText).width;
       const webW = ctx.measureText(domainPillText).width;
 
@@ -10291,7 +10293,7 @@ return maplibregl$1;
       ctx.font = ATLAS_CARD_NAME_FONT;
       ctx.fillText(fit(nameUpper), textX, cardY + 14);
 
-      ctx.font = ATLAS_CARD_MONO_FONT;
+      ctx.font = atlasMonoFont();
       ctx.fillText(fit(subText), textX, cardY + 48);
 
       if (webUrl) {
@@ -10659,7 +10661,7 @@ return maplibregl$1;
         const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
-          ctx.font = ATLAS_CARD_MONO_FONT;
+          ctx.font = atlasMonoFont();
           const w = ctx.measureText(text).width + 28, h = 22;
           const pc = pillColors(active, tier);
           // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
@@ -10694,7 +10696,7 @@ return maplibregl$1;
           const sp = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
           if (sp.front) {
             ctx.save();
-            ctx.font = ATLAS_CARD_MONO_FONT;
+            ctx.font = atlasMonoFont();
             const sn = selectedInstitution.name.length > 24 ? selectedInstitution.name.substring(0, 22) + '…' : selectedInstitution.name;
             const sw = ctx.measureText(sn).width + 28;
             ctx.restore();
@@ -10712,7 +10714,7 @@ return maplibregl$1;
         } catch (e) {}
         const shownCityLabels = new Set();
         const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
-        ctx.font = '300 14px "Jokker", sans-serif';
+        ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
         
         let candidateCities = [];
         if (selectedCountryFilter !== 'all') {
@@ -10748,7 +10750,7 @@ return maplibregl$1;
             const isClustered = isClusterZoom && (city.count >= 2);
 
             let bw, bh = 22, txt = city.name, countTxt = '';
-            ctx.font = ATLAS_CARD_MONO_FONT;
+            ctx.font = atlasMonoFont();
 
             if (isClustered) {
               countTxt = `(\u200c${city.count}\u200c)`;   // in brackets like the zoomed-in labels
@@ -10805,7 +10807,7 @@ return maplibregl$1;
               ctx.globalAlpha = badgeAlpha;
 
               if (isClustered) {
-                ctx.font = '300 14px "Jokker", sans-serif';
+                ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 deferredPills.push([city.name + ' ' + countTxt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name), badgeAlpha]);
@@ -10817,7 +10819,7 @@ return maplibregl$1;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
-                ctx.font = '300 14px "Jokker", sans-serif';
+                ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 deferredPills.push([txt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name), badgeAlpha]);
@@ -10843,7 +10845,7 @@ return maplibregl$1;
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '300 14px "Jokker", sans-serif';
+          ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -11036,11 +11038,11 @@ return maplibregl$1;
 
           if (shouldDrawGlobeLabel && !isHov) {
             ctx.save();
-            ctx.font = '300 14px "Jokker", sans-serif';
+            ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
-            ctx.font = ATLAS_CARD_MONO_FONT;
+            ctx.font = atlasMonoFont();
             const tw = ctx.measureText(nameTxt).width;
             const bw = tw + 28;
             const bh = 22;
@@ -11108,7 +11110,7 @@ return maplibregl$1;
 
               ctx.font = ATLAS_CARD_TITLE_FONT;
               const twCity = ctx.measureText(cityTxt).width;
-              ctx.font = ATLAS_CARD_MONO_FONT;
+              ctx.font = atlasMonoFont();
               const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
               const twCount = ctx.measureText(countTxt).width;
               const twLink = ctx.measureText(linkTxt).width;
@@ -11160,7 +11162,7 @@ return maplibregl$1;
               ctx.fillText(cityTxt, cardX + 16, cardY + 14);
 
               let currentY = cardY + 46;
-              ctx.font = ATLAS_CARD_MONO_FONT;
+              ctx.font = atlasMonoFont();
               if (countryTxt) {
                 ctx.fillText(countryTxt, cardX + 16, currentY);
                 currentY += 20;
@@ -11173,7 +11175,7 @@ return maplibregl$1;
               ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 8);
               if (isHoveringCityExploreLink) { ctx.fillStyle = cardInk; ctx.fill(); }
               else { ctx.globalAlpha = 0.55; ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
-              ctx.font = ATLAS_CARD_MONO_FONT;
+              ctx.font = atlasMonoFont();
               ctx.fillStyle = isHoveringCityExploreLink ? cardBg : cardInk;
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
@@ -11251,7 +11253,7 @@ return maplibregl$1;
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = '300 14px "Jokker", sans-serif';
+        ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
         // "0" over the left tick, the distance over the right one, so the figures line up with the bar at any length.
@@ -11301,7 +11303,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.stroke();
 
-        ctx.font = '300 14px "Jokker", sans-serif';
+        ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
         ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -15521,18 +15523,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // Offline answers use only the records on this page: what is recorded, where it comes from, and nothing more.
       // Follow-up chips only offer what the space in view has on record: funding, a flag, opening hours.
-      const followFor = () => {
-        const t = (typeof target !== 'undefined' && target) || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+      const followFor = (listReply) => {
+        // A list reply is about no one space, so a pin still selected on the map must not decide its chips.
+        const t = listReply ? null : ((typeof target !== 'undefined' && target) || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null);
         // Gossip mode asks about what is reported (user's instruction, 24 Oct 2026); each is a question the offline answers answer.
         if (isGossipModeActive) return t
           ? ['What is reported about this space?', 'Who are its flagged funders?', t.city ? `Which spaces in ${t.city} are flagged?` : 'Which spaces are flagged?']
           : ['Which spaces are flagged?', 'Which spaces are linked to Epstein?', 'What do employees report?'];
         if (!t) return freshChips(2);
         const out = [];
-        if (t.funding || t.funder_links) out.push('Who funds this museum?');
-        if (t.why_flagged || t.tier === 'B') out.push('What is flagged here?');
-        if (t.grade) out.push('What is its funding rating?');
-        if (t.opening_hours) out.push('Opening hours');
+        const nm = t.name && findMentionedInst(t.name) === t ? t.name : '';
+        if (t.funding || t.funder_links) out.push(nm ? `Who funds ${nm}?` : 'Who funds this museum?');
+        if (t.why_flagged || t.tier === 'B') out.push(nm ? `What is flagged at ${nm}?` : 'What is flagged here?');
+        if (t.grade) out.push(nm ? `What is the funding rating of ${nm}?` : 'What is its funding rating?');
+        if (t.opening_hours) out.push(nm ? `Opening hours of ${nm}` : 'Opening hours');
         if (t.city) out.push(`Find cultural spaces in ${t.city}`);
         return out;
       };
@@ -15562,7 +15566,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const listOf = (items, title, gossip) => {
         if (!items.length) { answer('<p>None are recorded.</p>', undefined, false); return; }
         const st = { items, gossip: !!gossip, offset: 0 };
-        answer(`<p>${title}</p>${renderListPage(st)}`, window.atlasListMore ? ['Show more', ...followFor()].slice(0, 3) : undefined, !!gossip);
+        answer(`<p>${title}</p>${renderListPage(st)}`, window.atlasListMore ? ['Show more', ...followFor(true)].slice(0, 3) : followFor(true), !!gossip);
       };
 
       // With a model connected (a visitor's key, or the chat Worker) every question that is not a plain list goes to it, so the
@@ -15618,7 +15622,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const place = places.filter(n => new RegExp('\\b' + esc(n) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
       // A city named in the question turns the globe to it and zooms in, as a click on the city does; a space named with it wins.
       if (place && !explicit && ALL_CITIES_REGISTRY.some(c => c.name === place) && !(selectedCityFilter && matchC(selectedCityFilter, place) && isCityStreetViewActive)) {
-        filterByCity(place, true, false);
+        // The city's first space is selected on the map as part of this; the Details tab does not open over the answer.
+        window.atlasKeepTab = true;
+        try { filterByCity(place, true, false); } finally { window.atlasKeepTab = false; }
       }
       // A question about a place or about spaces in general is not about the record last opened: only a name, "this" or "it" points at one.
       if (!explicit && (place || /\b(spaces|museums|galleries|institutions|cities|countries|funders|sponsors|donors)\b/.test(q) || /\b(?:any|which|what|every|each|best|worst)\s+(?:museum|space|gallery|institution)\b/.test(q)) && !/\b(this|here|it|its|that)\b/.test(q)) target = null;
@@ -19845,9 +19851,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=411"></script>
-<script src="assets/layers.js?v=411"></script>
-<script src="assets/hq-detail.js?v=411"></script>
-<script src="assets/bubbles.js?v=411" defer></script>
+<script src="assets/typeset.js?v=419"></script>
+<script src="assets/layers.js?v=419"></script>
+<script src="assets/hq-detail.js?v=419"></script>
+<script src="assets/bubbles.js?v=419" defer></script>
 </body>
 </html>
