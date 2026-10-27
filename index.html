@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=412">
-  <script src="assets/config.js?v=412"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=413">
+  <script src="assets/config.js?v=413"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v412';
+    const ATLAS_RELEASE = 'culture-atlas-v413';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=412').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=413').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15527,18 +15527,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // Offline answers use only the records on this page: what is recorded, where it comes from, and nothing more.
       // Follow-up chips only offer what the space in view has on record: funding, a flag, opening hours.
-      const followFor = () => {
-        const t = (typeof target !== 'undefined' && target) || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+      const followFor = (listReply) => {
+        // A list reply is about no one space, so a pin still selected on the map must not decide its chips.
+        const t = listReply ? null : ((typeof target !== 'undefined' && target) || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null);
         // Gossip mode asks about what is reported (user's instruction, 24 Oct 2026); each is a question the offline answers answer.
         if (isGossipModeActive) return t
           ? ['What is reported about this space?', 'Who are its flagged funders?', t.city ? `Which spaces in ${t.city} are flagged?` : 'Which spaces are flagged?']
           : ['Which spaces are flagged?', 'Which spaces are linked to Epstein?', 'What do employees report?'];
         if (!t) return freshChips(2);
         const out = [];
-        if (t.funding || t.funder_links) out.push('Who funds this museum?');
-        if (t.why_flagged || t.tier === 'B') out.push('What is flagged here?');
-        if (t.grade) out.push('What is its funding rating?');
-        if (t.opening_hours) out.push('Opening hours');
+        const nm = t.name && findMentionedInst(t.name) === t ? t.name : '';
+        if (t.funding || t.funder_links) out.push(nm ? `Who funds ${nm}?` : 'Who funds this museum?');
+        if (t.why_flagged || t.tier === 'B') out.push(nm ? `What is flagged at ${nm}?` : 'What is flagged here?');
+        if (t.grade) out.push(nm ? `What is the funding rating of ${nm}?` : 'What is its funding rating?');
+        if (t.opening_hours) out.push(nm ? `Opening hours of ${nm}` : 'Opening hours');
         if (t.city) out.push(`Find cultural spaces in ${t.city}`);
         return out;
       };
@@ -15568,7 +15570,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const listOf = (items, title, gossip) => {
         if (!items.length) { answer('<p>None are recorded.</p>', undefined, false); return; }
         const st = { items, gossip: !!gossip, offset: 0 };
-        answer(`<p>${title}</p>${renderListPage(st)}`, window.atlasListMore ? ['Show more', ...followFor()].slice(0, 3) : undefined, !!gossip);
+        answer(`<p>${title}</p>${renderListPage(st)}`, window.atlasListMore ? ['Show more', ...followFor(true)].slice(0, 3) : followFor(true), !!gossip);
       };
 
       // With a model connected (a visitor's key, or the chat Worker) every question that is not a plain list goes to it, so the
@@ -19884,9 +19886,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=412"></script>
-<script src="assets/layers.js?v=412"></script>
-<script src="assets/hq-detail.js?v=412"></script>
-<script src="assets/bubbles.js?v=412" defer></script>
+<script src="assets/typeset.js?v=413"></script>
+<script src="assets/layers.js?v=413"></script>
+<script src="assets/hq-detail.js?v=413"></script>
+<script src="assets/bubbles.js?v=413" defer></script>
 </body>
 </html>
