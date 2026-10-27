@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=427">
-  <script src="assets/config.js?v=427"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=428">
+  <script src="assets/config.js?v=428"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v427';
+    const ATLAS_RELEASE = 'culture-atlas-v428';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=427').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=428').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -16011,6 +16011,29 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           return;
         }
       }
+      // A company, person or organisation the atlas holds no funder link for ("what does Petrobras do?", "who is Potanin?") is not the open record either.
+      // The records that mention the name go to the model with it; it may add public background, labelled as general. Without a model the question falls through.
+      if (!explicit && !place && !region && modelOn) {
+        const subj = (q.match(/^\s*(?:what does|what do|what is|what are|who is|who are|who was|tell me about|what about|about)\s+(?:the\s+)?(.+?)(?:\s+(?:do|does|make|makes|mean|stand for))?\s*[?!.]*\s*$/) || [])[1];
+        const generic = /\b(this|that|it|its|here|there|these|those|you|me|atlas|museum|museums|space|spaces|gallery|institution|funders?|sponsors?|grades?|rating|ratings?|tier|flags?|flagged|trustees?|record|records|hours?|admission|city|country)\b/;
+        if (subj && subj.length >= 3 && subj.split(/\s+/).length <= 4 && !generic.test(subj) && !/^(?:a|an)\s/.test(subj)) {
+          const subjRe = new RegExp('(?<![\\p{L}\\p{N}])' + esc(subj) + '(?![\\p{L}\\p{N}])', 'iu');
+          const hits = [], seenS = new Set(), insts = [];
+          ALL_INSTITUTIONS.forEach(i => {
+            const d = i.details || {};
+            [i.funding, i.watch, d.funding_verdict, ...(d.funding || [])].filter(Boolean).forEach(t => String(t).split(/(?<=[.!?])\s+|\n+/).forEach(sn => {
+              const x = sn.trim();
+              if (x.length > 25 && subjRe.test(x) && !seenS.has(x)) { seenS.add(x); hits.push(x); if (!insts.includes(i)) insts.push(i); }
+            }));
+          });
+          {
+            window.atlasFunderInsts = insts.slice(0, 6);
+            window.atlasFunderNote = `<funder_question>\nThe visitor asks about "${subj}", a company, person or organisation, not about any one space. ${insts.length ? `The Atlas records that mention it: ${insts.slice(0, 8).map(i => i.name + (i.city ? ' (' + i.city + ')' : '')).join('; ')}.` : 'No Atlas record mentions it.'}\nWhat the records say about it: ${hits.length ? hits.slice(0, 6).join(' ') : 'nothing.'}\nAnswer from these records first when they say anything. Where they say little, add what is publicly known about ${subj} in plain neutral sentences, and say in one sentence that this part is general background and not from the Atlas records. If you do not know what ${subj} is, say so in one sentence. Do not guess, and do not answer about the space open on the map.\n</funder_question>\n\n`;
+            if (await askModel()) return;
+            window.atlasFunderNote = '';
+          }
+        }
+      }
       // A kind of funder or controversy named with no space: the spaces whose records carry that flag, worst rating first.
       const topics = !explicit && !target ? FLAG_TOPICS.filter(t => t.re.test(q)) : [];
       if (topics.length) {
@@ -20036,9 +20059,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=427"></script>
-<script src="assets/layers.js?v=427"></script>
-<script src="assets/hq-detail.js?v=427"></script>
-<script src="assets/bubbles.js?v=427" defer></script>
+<script src="assets/typeset.js?v=428"></script>
+<script src="assets/layers.js?v=428"></script>
+<script src="assets/hq-detail.js?v=428"></script>
+<script src="assets/bubbles.js?v=428" defer></script>
 </body>
 </html>
