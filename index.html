@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=425">
-  <script src="assets/config.js?v=425"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=426">
+  <script src="assets/config.js?v=426"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7076,7 +7076,7 @@ return maplibregl$1;
       let layers = [];
       try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const ground = isGossipModeActive ? '#e79a3a' : dark ? '#121212' : '#ffffff';
+      const ground = isGossipModeActive ? '#e79a3a' : dark ? '#262524' : '#ffffff';
       const line = isGossipModeActive ? '#000000' : dark ? '#f4f4f4' : '#161616';
       layers.forEach(l => {
         if (l.id && l.id.indexOf('xray') === 0) return; // the building view keeps its own colours
@@ -7095,7 +7095,7 @@ return maplibregl$1;
     function syncThemeButtons() {
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
       ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.setAttribute('aria-pressed', String(dark)); } });
-      const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#121212' : '#ffffff');
+      const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#262524' : '#ffffff');
     }
     function toggleTheme(force) {
       const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v425';
+    const ATLAS_RELEASE = 'culture-atlas-v426';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=425').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=426').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19935,9 +19935,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=425"></script>
-<script src="assets/layers.js?v=425"></script>
-<script src="assets/hq-detail.js?v=425"></script>
-<script src="assets/bubbles.js?v=425" defer></script>
+<script src="assets/typeset.js?v=426"></script>
+<script src="assets/layers.js?v=426"></script>
+<script src="assets/hq-detail.js?v=426"></script>
+<script src="assets/bubbles.js?v=426" defer></script>
 </body>
 </html>

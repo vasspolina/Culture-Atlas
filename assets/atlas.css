@@ -751,7 +751,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersBtn::after{content:"";flex:none;width:10px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 14'%3E%3Cpath d='M1.5 8 5 4.5 8.5 8' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 #layersBtn:hover,#layersBtn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
 #layersPanel{position:absolute;top:auto;bottom:calc(100% + 6px);left:0;right:auto;z-index:1;box-sizing:border-box;background:var(--paper);color:var(--ink);border:.8px solid var(--line);border-radius:0;padding:14px;width:640px;max-width:calc(100vw - 24px);max-height:calc(100dvh - 72px);overflow-y:auto;box-shadow:none;font:400 var(--fs-s)/1.35 var(--sans);letter-spacing:0;user-select:none;--row:#efede6;--row-ink:#000;--row-dim:#6a6a6a;--row-on:#6a675f;--row-on-ink:#fff;--row-on-dim:#e9e7e1;--row-hover:#fbfd5e}
-:root[data-theme="dark"] #layersPanel{--row:#232322;--row-ink:#fff;--row-dim:#a3a3a3}
+:root[data-theme="dark"] #layersPanel{--row:#302f2d;--row-ink:var(--ink);--row-dim:#b3ada1}
 #layersPanel.is-above{top:auto;bottom:calc(100% + 6px)}
 #layersPanel[hidden]{display:none}
 #layersPanel .layers-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:10px;margin-bottom:6px;border-bottom:.8px solid var(--line)}
@@ -817,17 +817,17 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}
 
-/* Dark mode: the same ink-and-paper system, inverted. The globe stays black in both. */
-:root[data-theme="dark"]{color-scheme:dark;--focus:#618cff;--ink:#fff;--paper:#121212;--grey:#1c1c1c;--block:#2f2f2f;--line:#fff}
-:root[data-theme="dark"] #floatingCard{color:#fff}
-:root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-content{background:#2a2a2a;color:#fff}
-:root[data-theme="dark"] .record-popup,:root[data-theme="dark"] .record-popup-line,:root[data-theme="dark"] .record-popup-name,:root[data-theme="dark"] #globeViewport .record-popup a,:root[data-theme="dark"] #globeViewport a.record-popup-name{color:#fff}
-:root[data-theme="dark"] .record-popup-rule{border-top-color:#fff}
-:root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-close-button{color:#fff}
-:root[data-theme="dark"] .record-popup-actions a,:root[data-theme="dark"] .record-popup-actions button{background:#444;color:#fff}
-:root[data-theme="dark"] .record-popup-actions a:hover,:root[data-theme="dark"] .record-popup-actions button:hover{background:#fff;color:#000}
-:root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-tip{border-top-color:#2a2a2a;border-bottom-color:#2a2a2a}
-:root[data-theme="dark"] .record-popup-category,:root[data-theme="dark"] .institution-category-pill,:root[data-theme="dark"] .critical-lens-label,:root[data-theme="dark"] .unverified-platform-tag{background:#252525;border-color:#555;color:#eee}
+/* Dark mode: the same ink-and-paper system on a warm charcoal ground with bone-white ink, not pure black and white. The globe stays black in both. */
+:root[data-theme="dark"]{color-scheme:dark;--focus:#7fa3ff;--ink:#f1ede6;--paper:#262524;--grey:#302f2d;--block:#403d3a;--line:#cfc8bb}
+:root[data-theme="dark"] #floatingCard{color:var(--ink)}
+:root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-content{background:#34322f;color:var(--ink)}
+:root[data-theme="dark"] .record-popup,:root[data-theme="dark"] .record-popup-line,:root[data-theme="dark"] .record-popup-name,:root[data-theme="dark"] #globeViewport .record-popup a,:root[data-theme="dark"] #globeViewport a.record-popup-name{color:var(--ink)}
+:root[data-theme="dark"] .record-popup-rule{border-top-color:var(--line)}
+:root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-close-button{color:var(--ink)}
+:root[data-theme="dark"] .record-popup-actions a,:root[data-theme="dark"] .record-popup-actions button{background:#4a4743;color:var(--ink)}
+:root[data-theme="dark"] .record-popup-actions a:hover,:root[data-theme="dark"] .record-popup-actions button:hover{background:var(--ink);color:#000}
+:root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-tip{border-top-color:#34322f;border-bottom-color:#34322f}
+:root[data-theme="dark"] .record-popup-category,:root[data-theme="dark"] .institution-category-pill,:root[data-theme="dark"] .critical-lens-label,:root[data-theme="dark"] .unverified-platform-tag{background:#2e2d2b;border-color:#6a655e;color:#e6e1d8}
 :root[data-theme="dark"] .unverified-platform-tag{background:transparent}
 /* Theme switch in the header */
 /* Colour that carries meaning keeps black text in both modes */
@@ -2739,3 +2739,6 @@ div:has(>#topThemeBtn){column-gap:0}
    The row title is hidden, so its third of the row stood empty. The three facts now take the full width, in three equal columns. */
 :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-visit{grid-template-columns:minmax(0,1fr)}
 :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-visit .d-row-head{display:none}
+
+/* The Dark toggle, when on, flips to bone ink with charcoal text (13:1) so it still stands out on the warm ground; cobalt on charcoal is only 1.9:1. */
+:root[data-theme="dark"] #topThemeBtn[aria-pressed=true],:root[data-theme="dark"] #mobileThemeBtn[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)!important}
