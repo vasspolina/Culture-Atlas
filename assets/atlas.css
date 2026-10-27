@@ -2413,11 +2413,11 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:3px!important;gap:3px!important}
 :root:root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{gap:3px!important}
 
-/* ---- Row titles and the quotation at the city card's size and weight (user, 27 Oct 2026: "make details titles and quote this size and thickness", the city name on the card: 24px Documan Thin) ----
-   The row title ("Funding", "Programme", the flag) and the standalone quotation with its hanging mark are 24px (--fs-l), weight 100, like the name on the city card. This comes after the
-   20px Medium rule and the Regular rule for titles under 17px, and out-ranks both. The quotation's source line stays 14px. At 24px on the 1.4 line, one line is 33.6px, one and a half of L. */
-:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .d-row-title{font-family:var(--display)!important;font-weight:100!important;font-size:var(--fs-l)!important}
-:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-family:var(--display)!important;font-weight:100!important;font-size:var(--fs-l)!important}
+/* ---- Row titles and the quotation at 20px, the city card's weight (user, 27 Oct 2026, size changed to 18px, 19px, then 20px 28 Oct 2026: "make details titles and quote this size and thickness", the city name on the card: 24px Documan Thin) ----
+   The row title ("Funding", "Programme", the flag) and the standalone quotation with its hanging mark are 20px, weight 100, line height --lh (1.4), letter-spacing 0 (Hochuli: lowercase below 28px is not tracked), like the name on the city card. This comes after the
+   20px Medium rule and the Regular rule for titles under 17px, and out-ranks both. The quotation's source line stays 14px.  */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) .d-row-title{font-family:var(--display)!important;font-weight:100!important;font-size:20px!important;letter-spacing:0!important}
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,.quote-hang){font-family:var(--display)!important;font-weight:100!important;font-size:20px!important;letter-spacing:0!important}
 /* How the records work: no underline in any state (the plus is part of the row, so it took the underline too), and the row's text and plus sit 24px in from the edges, like Share information and Voice. */
 @media (min-width:768px){
   :root[data-theme] #chatRecordsInfo>summary,:root[data-theme] #chatRecordsInfo>summary:hover,:root[data-theme] #chatRecordsInfo>summary:focus-visible{text-decoration:none!important;padding:0 24px!important}
@@ -2688,10 +2688,10 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workInput#workInput,:root:not([data-theme="dark"]) #mobileStickyInputBar #chat-input{color:#2d3352!important;caret-color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workInput#workInput:not(:placeholder-shown),:root:not([data-theme="dark"]) #mobileStickyInputBar #chat-input:not(:placeholder-shown){color:#410043!important;caret-color:#410043!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workInput#workInput::placeholder,:root:not([data-theme="dark"]) #mobileStickyInputBar #chat-input::placeholder{color:#5a6086!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on),:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn{background:#2d3352!important;color:#fff!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on) svg{color:#fff!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover,:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn:hover{background:#12162b!important}
-:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover svg{color:#fff!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on),:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn{background:#fff!important;color:#2d3352!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on) svg{color:#2d3352!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover,:root:not([data-theme="dark"]) #mobileStickyInputBar #mobileStickySendBtn:hover{background:#d9dcec!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard:not(.is-mode) #workSendBtn#workSendBtn:not(.is-on):hover svg{color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn,:root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn :is(svg,span){background:#e8e8ee!important;color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn :is(svg,span){background:transparent!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:hover{background:#d9dae4!important}
@@ -2719,6 +2719,21 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:is(:hover,:focus-visible,:active) :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon,svg,span){background:transparent!important;color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard.is-mode #workSendBtn#workSendBtn.is-on:is(:hover,:active,[data-ready="true"]){background:#d9dcec!important;color:#2d3352!important}
 :root:root:root:root:root:root:root:root:not([data-theme="dark"]) #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){color:#2d3352!important;background:#e6e8f4!important}
+
+/* Light theme: Share information is blue with cream type; hovered or focused it turns cream with blue type. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{background:#3e7bf6!important;color:#f2f0e7!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible){background:#f2f0e7!important;color:#3e7bf6!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn::before{border-color:#f2f0e7}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{background-color:#f2f0e7}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible)::before{border-color:#3e7bf6}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on:is(:hover,:focus-visible)::before{background-color:#3e7bf6}
+
+/* Starter questions: the whole pill fills on hover and keyboard focus, not only the text inside it. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){background:#d9dcec!important;border-color:#d9dcec!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){background:#fff204!important;border-color:#fff204!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:transparent!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{color:#000!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{transition:background-color .15s,border-color .15s}
 
 /* ---- Visiting across the whole row (user, 27 Oct 2026) ----
    The row title is hidden, so its third of the row stood empty. The three facts now take the full width, in three equal columns. */
