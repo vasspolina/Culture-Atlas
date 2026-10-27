@@ -177,7 +177,8 @@
 
   function fill(e) {
     const p = panel, ready = hq().loaded();
-    const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this record' }, '×');
+    const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this record' });
+    close.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg>';
     close.addEventListener('click', () => closeRecord(true));
     const head = h('div', { class: 'hq-head' }, h('div', null, h('p', { class: 'hq-kind', text: hq().kindLabel(e) }), h('h2', { id: 'hqPanelTitle', text: e.n })), close);
     const ask = h('button', { type: 'button', class: 'hq-ask', text: 'Ask in chat' });
