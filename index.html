@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=426">
-  <script src="assets/config.js?v=426"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=427">
+  <script src="assets/config.js?v=427"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v426';
+    const ATLAS_RELEASE = 'culture-atlas-v427';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=426').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=427').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10374,7 +10374,7 @@ return maplibregl$1;
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
       // Gossip mode on the dark ground: the globe's ground is the Gossip button's yellow, darkened.
       const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#4f5a12' : '#000000'), G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : (GOSSIP_DARK ? 'rgba(79, 90, 18, 0.95)' : 'rgba(0, 0, 0, 0.95)'), G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#4f5a12' : '#262524'), G_LINE = GLOBE_LIGHT ? '#161616' : '#f1ede6', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : (GOSSIP_DARK ? 'rgba(79, 90, 18, 0.95)' : 'rgba(38, 37, 36, 0.95)'), G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
         const TIER_SHAPE_SIZE = { circle: 3 };
@@ -10675,7 +10675,7 @@ return maplibregl$1;
           ctx.beginPath();
           ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 8);
           if (active) { ctx.fillStyle = pc.fill; ctx.fill(); }
-          else { ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : '#000000'; ctx.fill(); ctx.strokeStyle = textCol; ctx.globalAlpha = 0.55; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
+          else { ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : '#262524'; ctx.fill(); ctx.strokeStyle = textCol; ctx.globalAlpha = 0.55; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
           ctx.fillStyle = active ? pc.ink : textCol;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -11098,7 +11098,7 @@ return maplibregl$1;
               ctx.arc(hPt.x, hPt.y, 6.5, 0, Math.PI * 2);
               const cardColors = pillColors(false, cityTier(hMeta.name));
               const cardText = pillTextColor(cityTier(hMeta.name));
-              const cardBg = GLOBE_LIGHT ? '#ffffff' : '#000000';
+              const cardBg = GLOBE_LIGHT ? '#ffffff' : '#262524';
               ctx.fillStyle = cardText;
               ctx.strokeStyle = cardBg;
               ctx.lineWidth = 0.8;
@@ -19935,9 +19935,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=426"></script>
-<script src="assets/layers.js?v=426"></script>
-<script src="assets/hq-detail.js?v=426"></script>
-<script src="assets/bubbles.js?v=426" defer></script>
+<script src="assets/typeset.js?v=427"></script>
+<script src="assets/layers.js?v=427"></script>
+<script src="assets/hq-detail.js?v=427"></script>
+<script src="assets/bubbles.js?v=427" defer></script>
 </body>
 </html>
