@@ -271,9 +271,9 @@
       if (!(focus || close)) return;
       let y = pt.y - 10 - (names.length - 1) * 11;
       names.slice(0, 4).forEach(name => {
-        const text = name.length > 28 ? name.slice(0, 26) + '…' : name, tw = ctx.measureText(text).width, w = tw + 12, h = 20;
+        const text = name.length > 28 ? name.slice(0, 26) + '…' : name, tw = ctx.measureText(text).width, w = tw + 28, h = 22;
         const box = { x: pt.x + 10 + dx, y: y - h / 2, w, h };
-        if (!collides(box, boxes)) { boxes.push(box); (mk.lboxes = mk.lboxes || []).push(box); drawTag(ctx, box.x, box.y, w, h, col, 'l'); ctx.fillStyle = '#000'; ctx.fillText(text, box.x + 6, y + 0.5); }
+        if (!collides(box, boxes)) { boxes.push(box); (mk.lboxes = mk.lboxes || []).push(box); drawTag(ctx, box.x, box.y, w, h, col); ctx.fillStyle = '#000'; ctx.fillText(text, box.x + 14, y + 0.5); }
         y += 22;
       });
     });
@@ -558,30 +558,20 @@
       ctx.globalAlpha = 1;
       labels.forEach(([label, x, y, a, col, mk, kindWord]) => {
         const text = (label.length > 28 ? label.slice(0, 26) + '…' : label) + (kindWord ? ' \u00b7 ' + kindWord : ''), right = Math.cos(a) >= -0.2;
-        const tw = ctx.measureText(text).width, w = tw + 12, h = 20;
+        const tw = ctx.measureText(text).width, w = tw + 28, h = 22;
         const bx = right ? x + 9 : x - 9 - w, box = { x: bx, y: y - h / 2, w, h };
         if (collides(box, boxes)) return;
         boxes.push(box); mk.lbox = box;   // the name answers the pointer as the mark does
-        drawTag(ctx, box.x, box.y, w, h, col, right ? 'l' : 'r');
-        ctx.fillStyle = '#000'; ctx.textAlign = 'left'; ctx.fillText(text, box.x + 6, y + 0.5);
+        drawTag(ctx, box.x, box.y, w, h, col);
+        ctx.fillStyle = '#000'; ctx.textAlign = 'left'; ctx.fillText(text, box.x + 14, y + 0.5);
       });
     }
     drawMarkTip(ctx, boxes);
     ctx.restore();
   }
-  // A label: a flat block in the mark's colour with a hairline edge and a small pointer on the side that faces the mark.
-  function drawTag(ctx, x, y, w, h, col, dir) {
-    const k = 5, my = y + h / 2, mx = x + w / 2;
-    ctx.beginPath(); ctx.moveTo(x, y);
-    if (dir === 't') ctx.lineTo(mx - k, y), ctx.lineTo(mx, y - k), ctx.lineTo(mx + k, y);
-    ctx.lineTo(x + w, y);
-    if (dir === 'r') ctx.lineTo(x + w, my - k), ctx.lineTo(x + w + k, my), ctx.lineTo(x + w, my + k);
-    ctx.lineTo(x + w, y + h);
-    if (dir === 'b') ctx.lineTo(mx + k, y + h), ctx.lineTo(mx, y + h + k), ctx.lineTo(mx - k, y + h);
-    ctx.lineTo(x, y + h);
-    if (dir === 'l') ctx.lineTo(x, my + k), ctx.lineTo(x - k, my), ctx.lineTo(x, my - k);
-    ctx.closePath();
-    ctx.save(); ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = '#000'; ctx.lineJoin = 'miter'; ctx.stroke(); ctx.restore();
+  // A label, cut like the city labels (rounded, 22 high, 14 either side) but filled in the mark's colour.
+  function drawTag(ctx, x, y, w, h, col) {
+    ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 8); ctx.fillStyle = col; ctx.fill(); ctx.restore();
   }
   // The mark under the pointer: its name on a block in its colour, and that a click asks the chat.
   function drawMarkTip(ctx, boxes) {
@@ -590,21 +580,19 @@
     const W = ctx.canvas.clientWidth || 1e9;
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
     const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat')].filter(Boolean);
-    ctx.save(); ctx.font = '700 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    const w = Math.max(ctx.measureText(lines[0]).width, ...lines.slice(1).map(t => { ctx.font = '300 14px "Jokker", "PP Neue Gstaad", sans-serif'; return ctx.measureText(t).width; })) + 20, h = 20, pad = 5;
+    ctx.save(); ctx.font = '300 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 28, h = 22, pad = 6;
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
     // ring belongs to first, so the ring's other names stay readable.
     const H = ctx.canvas.clientHeight || 1e9, th = h * lines.length + pad * 2, away = m.ox !== undefined ? Math.sign(m.x - m.ox) || 1 : 1;
-    const cand = [[away > 0 ? m.x + 14 : m.x - 14 - w, m.y - th / 2, away > 0 ? 'l' : 'r'], [away > 0 ? m.x - 14 - w : m.x + 14, m.y - th / 2, away > 0 ? 'r' : 'l'], [m.x - w / 2, m.y - 14 - th, 'b'], [m.x - w / 2, m.y + 14, 't']]
-      .map(([x, y, dir]) => ({ x: Math.max(4, Math.min(x, W - w - 4)), y: Math.max(4, Math.min(y, H - th - 4)), w, h: th, dir }));
+    const cand = [[away > 0 ? m.x + 12 : m.x - 12 - w, m.y - th / 2], [away > 0 ? m.x - 12 - w : m.x + 12, m.y - th / 2], [m.x - w / 2, m.y - 12 - th], [m.x - w / 2, m.y + 12]]
+      .map(([x, y]) => ({ x: Math.max(4, Math.min(x, W - w - 4)), y: Math.max(4, Math.min(y, H - th - 4)), w, h: th }));
     const spot = cand.find(c => !collides(c, boxes || [])) || cand[0], bx = spot.x, by = spot.y;
-    drawTag(ctx, bx, by, w, th, m.col || '#fff', spot.dir);
+    drawTag(ctx, bx, by, w, th, m.col || '#fff');
     ctx.fillStyle = '#000';
     lines.forEach((t, k) => {
-      const last = k === lines.length - 1 && lines.length > 1, ty = by + pad + h * k + h / 2 + 0.5;
-      if (last) ctx.fillRect(bx + 10, by + pad + h * k, w - 20, 1);
-      ctx.font = last ? '300 12px "Jokker", "PP Neue Gstaad", sans-serif' : k === 0 ? '700 14px "Jokker", "PP Neue Gstaad", sans-serif' : '300 14px "Jokker", "PP Neue Gstaad", sans-serif';
-      ctx.fillText(t, bx + 10, ty + (last ? 1 : 0));
+      if (k === lines.length - 1 && lines.length > 1) { ctx.globalAlpha = 0.35; ctx.fillRect(bx + 14, by + pad + h * k, w - 28, 1); ctx.globalAlpha = 1; }
+      ctx.fillText(t, bx + 14, by + pad + h * k + h / 2 + 0.5);
     });
     ctx.restore();
   }
