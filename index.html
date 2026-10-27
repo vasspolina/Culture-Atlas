@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=421">
-  <script src="assets/config.js?v=421"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=422">
+  <script src="assets/config.js?v=422"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v421';
+    const ATLAS_RELEASE = 'culture-atlas-v422';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=421').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=422').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13920,6 +13920,39 @@ return maplibregl$1;
       return results.slice(0, limit);
     }
 
+    // A question that asks which spaces fit a theme ("which museums took Sackler money", "fossil fuel funding in Berlin") cannot be answered
+    // from the dozen records the name and city steps find. The theme words are looked up in every record's funding, watch, flags and grade
+    // basis; a city or country in the question narrows the matches. The model is told how many records match, and gets them in short form.
+    const THEME_STOP = new Set(['which', 'what', 'where', 'when', 'who', 'whom', 'whose', 'does', 'have', 'has', 'had', 'taken', 'take', 'took', 'money', 'fund', 'funds', 'funded', 'funding', 'funder', 'funders', 'museum', 'museums', 'gallery', 'galleries', 'space', 'spaces', 'institution', 'institutions', 'place', 'places', 'list', 'show', 'tell', 'about', 'there', 'their', 'with', 'from', 'that', 'this', 'family', 'any', 'every', 'atlas', 'record', 'records', 'accept', 'accepted', 'receive', 'received', 'name', 'named', 'between', 'ever', 'still', 'many', 'the', 'and', 'are', 'was', 'were', 'for', 'in']);
+    const LIST_ASK = /\b(which|what|list|all|every|any|how many|who)\b[^?]*\b(museums?|spaces?|galleries|institutions?|places?|foundations?|biennials?|funders?|sponsors?|trustees?)\b/i;
+    function themeMatches(query, limit = 40) {
+      const q = (query || '').toLowerCase();
+      if (!LIST_ASK.test(q)) return null;
+      const cities = new Set(), countries = new Set();
+      for (const i of ALL_INSTITUTIONS) { if (i.city) cities.add(i.city.toLowerCase()); if (i.country && i.country.length > 3) countries.add(i.country.toLowerCase()); }
+      const inQuery = [...cities].filter(c => new RegExp('\\b' + c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b').test(q));
+      const inCountry = [...countries].filter(c => new RegExp('\\b' + c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b').test(q));
+      const words = [...new Set(q.split(/[^a-z0-9À-ɏ]+/).filter(w => w.length > 3 && !THEME_STOP.has(w) && !inQuery.some(c => c.includes(w)) && !inCountry.some(c => c.includes(w))).map(w => w.replace(/s$/, '')))];
+      if (!words.length) return null;
+      const scored = [];
+      for (const i of ALL_INSTITUTIONS) {
+        if (inQuery.length && !inQuery.includes((i.city || '').toLowerCase())) continue;
+        if (!inQuery.length && inCountry.length && !inCountry.includes((i.country || '').toLowerCase())) continue;
+        const text = `${i.name} ${i.funding || ''} ${i.watch || ''} ${i.why_flagged || ''} ${(i.flags || []).join(' ')} ${i.grade_basis || ''} ${i.affiliations_note || ''} ${i.records_note || ''}`.toLowerCase();
+        const hit = words.filter(w => text.includes(w)).length;
+        if (hit) scored.push({ i, hit });
+      }
+      if (!scored.length) return null;
+      const top = Math.max(...scored.map(x => x.hit));
+      const best = scored.filter(x => x.hit === top && top >= Math.min(words.length, 2)).sort((a, b) => (b.i.grade || 0) - (a.i.grade || 0));
+      if (!best.length) return null;
+      return { total: best.length, insts: best.slice(0, limit).map(x => x.i), words };
+    }
+    function formatShortGrounding(i) {
+      const cut = (t, n) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1) + '…' : t; };
+      return `- ${i.name} (${i.city || i.location || 'no city'}, ${i.country || ''}) | ${tierName(i)} | Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none'} | Flags: ${(i.flags || []).join(', ') || 'none'} | Funding: ${cut(i.funding, 260) || 'not stated'} | Watch: ${cut(i.watch, 260) || 'none'}`;
+    }
+
     function formatInstitutionGrounding(i) {
       return `- INSTITUTION: ${i.name}
   Location: ${i.city}, ${i.country} (${i.address || 'address not stated'})
@@ -13929,6 +13962,7 @@ return maplibregl$1;
   Governance & Ethical Safeguard: ${i.governance_details || i.ethical_safeguard || 'not stated'}
   Recorded Watch / Flag: ${i.why_flagged || i.watch || 'not stated'}
   Watch Line: ${i.watch ? `${i.watch} (Watch Line Is Gossip: ${watchIsGossip(i.watch) ? 'yes' : 'no, a clean result or a description'})` : 'none recorded'}
+  Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none recorded'}
   Recorded Flags: ${(i.flags || []).join(', ') || 'none recorded'}
   Statutory Audit Dossier: ${i.audit_dossier_url || ''}
   Public Funding: ${i.funding || 'not stated'}
@@ -14250,7 +14284,9 @@ return maplibregl$1;
       // A "yes" to a reply that named two or more spaces does not say which: neither the open space nor a guess answers it.
       const ambiguousFollowUp = isFollowUp && !resolvedFollowUp && namedInReply.length >= 2;
       const relevantInsts = unknownName ? (nearest && nearest.inst ? [nearest.inst] : []) : retrieveGroundingInstitutions(retrievalText, 12, { includeActive: !ambiguousFollowUp });
-      const groundedCatalogText = relevantInsts.map(formatInstitutionGrounding).join('\n\n');
+      const themed = unknownName ? null : themeMatches(userPrompt);
+      const themedText = themed ? `\n\n<matching_records>\nThe Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} that match this question${themed.total > themed.insts.length ? `; the first ${themed.insts.length} are listed` : ''}. Words matched: ${themed.words.join(', ')}.\n${themed.insts.map(formatShortGrounding).join('\n')}\n</matching_records>` : '';
+      const groundedCatalogText = relevantInsts.map(formatInstitutionGrounding).join('\n\n') + themedText;
       const currentTarget = mentionedInst || (unknownName || ambiguousFollowUp ? null :
                             ((typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
                             (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst))));
@@ -14376,6 +14412,10 @@ ${webIntelGrounding}
 - Avoid promotional language, unsupported praise or criticism, canned phrasing and prompt meta-commentary. Keep answers concise and evidence-based.
 
 NAMES THAT HAVE NO RECORD: When the visitor names a space and no supplied record carries that name, say in one sentence that the Atlas has no record under that name. Then, only if a supplied record is clearly near the name, name that one record. Never answer about the space open on the map in its place, never offer a space from your own memory, and never ask the visitor to clarify. When the visitor answers one of your questions with "yes", "that one" or "the second", take it as the space you last named and answer about that space from its record; if you named no space that has a record, say so in one sentence.
+
+GRADE REASONS: The reason for a grade is its Grade Basis line. State that reason and no other; never explain a grade by transparency, documentation or disclosure unless the Grade Basis line says so. When the Watch Line says a tie with a funder has ended, say so in the same sentence as the grade. When a record's Governance Classification is Unverified, say once that the Atlas has not verified it.
+
+LIST QUESTIONS: When a <matching_records> block is supplied it holds the records the Atlas has for the question, and says how many there are. Name only spaces listed there, give the count, and say when the list is cut off. Never name a space as carrying a flag unless its own Recorded Flags line or Grade Basis line carries it, and never infer a flag from a funder's industry. Use the verb a record uses (refused, returned, removed, dropped); do not say a space accepted money when its line says it refused or returned it, and do not call a record ungraded when its Governance Classification shows a grade.
 
 GROUNDING: Answer only from the records supplied with each question. Quote a figure only if it appears in a record or its cited source, and name that source. If the records do not say, say they do not say. Do not recall studies, cases, budgets or dates from memory.
 
@@ -19888,9 +19928,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=421"></script>
-<script src="assets/layers.js?v=421"></script>
-<script src="assets/hq-detail.js?v=421"></script>
-<script src="assets/bubbles.js?v=421" defer></script>
+<script src="assets/typeset.js?v=422"></script>
+<script src="assets/layers.js?v=422"></script>
+<script src="assets/hq-detail.js?v=422"></script>
+<script src="assets/bubbles.js?v=422" defer></script>
 </body>
 </html>
