@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=416">
-  <script src="assets/config.js?v=416"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=417">
+  <script src="assets/config.js?v=417"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -6518,10 +6518,10 @@ return maplibregl$1;
       sources: {
         openmaptiles: {
           type: 'vector',
-          tiles: ['https://tiles.openfreemap.org/planet/latest/{z}/{x}/{y}.pbf'],
+          // TileJSON, not the planet/latest path: the latest path now decodes to empty tiles, so the street map drew nothing.
+          url: 'https://tiles.openfreemap.org/planet',
           attribution: '<a href="https://openfreemap.org" target="_blank" rel="noopener noreferrer">OpenFreeMap</a> <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener noreferrer">OpenMapTiles</a> <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>',
-          minzoom: 0,
-          maxzoom: 14
+          minzoom: 0
         }
       },
       // Street-map labels are set in PP Neue Gstaad Regular: glyphs generated from the font file (assets/glyphs), not the map host's Noto Sans.
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v416';
+    const ATLAS_RELEASE = 'culture-atlas-v417';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=416').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=417').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19888,9 +19888,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=416"></script>
-<script src="assets/layers.js?v=416"></script>
-<script src="assets/hq-detail.js?v=416"></script>
-<script src="assets/bubbles.js?v=416" defer></script>
+<script src="assets/typeset.js?v=417"></script>
+<script src="assets/layers.js?v=417"></script>
+<script src="assets/hq-detail.js?v=417"></script>
+<script src="assets/bubbles.js?v=417" defer></script>
 </body>
 </html>
