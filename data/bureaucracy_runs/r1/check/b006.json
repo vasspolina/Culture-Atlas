@@ -1,0 +1,47 @@
+[
+ {
+  "id": "netwerk-aalst",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "m-hka-antwerp",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "argos-brussels",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "Governance: the privacy policy names argos vzw as the data holder, and the team page lists a board with a president and six members.",
+    "page says": "The team page lists under the board: president Mohanad Yaqubi and Jens Van Lathem, then members Anouk De Clercq, Kristof Van Hoorde, Tom Bonte, Sorana Munsya and Dirk De Wit (two names under president, five members).",
+    "fix": "Governance: the privacy policy names argos vzw as the data holder, and the team page lists a board with two named presidents and five members."
+   }
+  ],
+  "corrected": {
+   "id": "argos-brussels",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://visit.argosarts.org/privacy-policy",
+     "https://visit.argosarts.org/our-team"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the privacy policy names argos vzw as the data holder, and the team page lists a board with two named presidents and five members."
+  }
+ },
+ {
+  "id": "beursschouwburg-brussels",
+  "verdict": "ok",
+  "faults": []
+ }
+]

@@ -1,0 +1,105 @@
+[
+ {
+  "id": "renee-chaim-gross-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "frank-lloyd-wright-trust",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-gamble-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "edith-farnsworth-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sunnylands",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "schweikher-house",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "public foundation",
+    "page says": "Our story page: the Village Board approved the formation of the Schweikher House Preservation Trust in 2009 and the Village President appointed its board of directors in October 2010. It names no legal form (foundation, nonprofit or other) for the Trust or the house.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "schweikher-house",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "marcel-breuer-house-at-pocantico",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2025",
+    "page says": "The cited web.archive.org/web/2025/ links resolve to snapshots of 1 Apr to 19 Jun 2017 (Pocantico house page, footer 2017) and 6 Jul 2023 (about page). No 2025 copy was read.",
+    "fix": "2023"
+   },
+   {
+    "field": "governance.sources",
+    "stored": "web.archive.org/web/2025/... (two redirecting URLs)",
+    "page says": "The pages that state the facts are the 2017 snapshot of the Marcel Breuer House page and the 2023 snapshot of the about page; the live rbf.org pages return 403, so archive copies are allowed.",
+    "fix": "the two exact snapshot URLs"
+   }
+  ],
+  "corrected": {
+   "id": "marcel-breuer-house-at-pocantico",
+   "governance": {
+    "legal_form": "private foundation",
+    "parent": "National Trust for Historic Preservation",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2023",
+    "sources": [
+     "https://web.archive.org/web/20170619181444/http://www.rbf.org/pocantico/marcel-breuer-house",
+     "https://web.archive.org/web/20230706163325/https://www.rbf.org/about/about-us"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the Rockefeller Brothers Fund's Pocantico page (archived 2017) says the house was deeded to the National Trust and is administered by the Fund, and its about page (archived 2023) calls the Fund a private family foundation."
+  }
+ },
+ {
+  "id": "national-heroes-acre-harare",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "The Heroes Acre page says all heroes' acres are administered by the Department of Museums and National Monuments and were built by the Government; it does not say NMMZ or its Act governs the site. The NMMZ about page describes NMMZ (a parastatal under Act Chapter 25:11) but never mentions Heroes Acre, so the form is carried over from the operator's page by equating a Department with NMMZ.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Ministry of Home Affairs",
+    "page says": "Stated only for NMMZ on the about page, not for Heroes Acre.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "national-heroes-acre-harare",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ }
+]

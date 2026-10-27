@@ -1,0 +1,89 @@
+[
+ {
+  "id": "hayward-gallery-southbank-centre",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "iniva-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ica-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "london-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "raven-row-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "royal-academy-of-arts-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "serpentine-galleries",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-photographers-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-showroom-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "castlefield-gallery-manchester",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The accounts for the year to 31 March 2025 (PDF page 30) say it is a charitable company limited by guarantee, and the gallery's about page says it is a registered charity.",
+    "page says": "The charitable company limited by guarantee statement sits on PDF page 31 of the accounts PDF (page 30 is the reserves policy)",
+    "fix": "The accounts for the year to 31 March 2025 (PDF page 31) say it is a charitable company limited by guarantee, and the gallery's about page says it is a registered charity."
+   }
+  ],
+  "corrected": {
+   "id": "castlefield-gallery-manchester",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "charity or foundation regulator"
+    ],
+    "year": "2025",
+    "sources": [
+     "https://files.opencharities.uk/ew/515571/2025-03-31-accounts.pdf",
+     "https://www.castlefieldgallery.co.uk/about/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The accounts for the year to 31 March 2025 (PDF page 31) say it is a charitable company limited by guarantee, and the gallery's about page says it is a registered charity."
+  }
+ },
+ {
+  "id": "the-newbridge-project-newcastle",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "primary-nottingham",
+  "verdict": "ok",
+  "faults": []
+ }
+]

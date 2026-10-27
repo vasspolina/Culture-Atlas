@@ -1,0 +1,241 @@
+[
+ {
+  "id": "pirelli-hangarbicocca",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://pirellihangarbicocca.org/en/pirelli-hangarbicocca/"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the foundation's own page says the former industrial building occupies 15,000 square metres, with no year given."
+ },
+ {
+  "id": "triennale-milano",
+  "scale": {
+   "visitors": 587494,
+   "visitors_year": "2025",
+   "staff": 47,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://triennale.cdn.prismic.io/triennale/ZJmcLuGtfZbhLvMo_Annualreport2025-TriennaleMilano.pdf",
+    "https://triennale.cdn.prismic.io/triennale/ahBWKLK9tuLqEE8Z_F.Triennale-BilancioeNotaintegrativaal31.12.2025..pdf",
+    "https://triennale.org/trasparenza/carta-servizi"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: Annual Report 2025 (PDF page 25) gives 587,494 entries to Triennale in the year, counted as visits; the 2025 Bilancio e nota integrativa (PDF page 31) gives an average of 47 employees; the Carta dei servizi on triennale.org states 12,000 mq of exhibition rooms and spaces for the public together, so no area kind is given."
+ },
+ {
+  "id": "viafarini-milan",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "fondazione-morra-greco-naples",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 3,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": 2000,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://www.fondazionemorragreco.com/en/history",
+    "https://www.fondazionemorragreco.com/wp-content/uploads/2026/06/2.-Bilancio-al-31.12.25-e-relazione-attivita.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 992378,
+   "expenditure": 966302,
+   "public": 542567,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://www.fondazionemorragreco.com/wp-content/uploads/2026/06/2.-Bilancio-al-31.12.25-e-relazione-attivita.pdf"
+  },
+  "basis": "Scale: the foundation's history page states 2000 square meters of exhibition space over five levels (no year), and the 2025 accounts (PDF page 28) give an average of 3 employees. Finance: the 2025 Bilancio rendiconto gestionale (PDF page 7) gives total proventi e ricavi 992,378 and total oneri e costi 966,302, and the line Contributi da enti pubblici of 542,567 (PDF page 5) is the public figure."
+ },
+ {
+  "id": "madre-museum-naples",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "centro-pecci-prato",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.centropecci.it/site/assets/files/1900/relazione_2024.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the 2024 Relazione attivita (PDF page 84) gives a total of 35,101 under Visitatori mostre e utenti, made of exhibitions 21,883, events 4,504, cinema 7,039 and education 9,614 of which 7,939 are already counted as exhibition entries."
+ },
+ {
+  "id": "castello-di-rivoli-museo-d-arte-contemporanea",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 33,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.castellodirivoli.org/wp-content/uploads/2014/12/BILANCIO-CONSUNTIVO-2025.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 5007708,
+   "expenditure": 5007708,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://www.castellodirivoli.org/wp-content/uploads/2014/12/BILANCIO-CONSUNTIVO-2025.pdf"
+  },
+  "basis": "Scale: the Rendiconto al 31 dicembre 2025, approved 11 May 2026 (PDF page 26), gives 33 employees at 31 December 2025, 30 permanent and 3 fixed term. Finance: the same rendiconto gives Totale proventi 5,007,708 (PDF page 7) and total oneri 5,007,708 with a result of zero (PDF page 36)."
+ },
+ {
+  "id": "pastificio-cerere-rome",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.pastificiocerere.it/wp-content/uploads/2026/06/Pastificio-Cerere-Bilancio-2025.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 81350.44,
+   "expenditure": 80151.15,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://www.pastificiocerere.it/wp-content/uploads/2026/06/Pastificio-Cerere-Bilancio-2025.pdf"
+  },
+  "basis": "Finance: the foundation's Bilancio al 31 dicembre 2025, rendiconto gestionale (PDF page 2), gives Totale ricavi 81,350.44 and Totale costi della produzione 80,151.15."
+ },
+ {
+  "id": "galleria-nazionale-d-arte-moderna-e-contemporanea",
+  "scale": {
+   "visitors": 243206,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA7_2024-1.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: Ministry of Culture statistics Tavola 7 for 2024 (PDF page 7) lists this gallery alone with 131,893 paying and 111,313 non paying visitors, total 243,206."
+ },
+ {
+  "id": "macro-museo-d-arte-contemporanea-di-roma",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 4350,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://www.museomacro.it/pagine/macro-il-museo"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the museum's own page says the exhibition halls occupy a total surface of 4,350 mq, with no year given."
+ },
+ {
+  "id": "maxxi",
+  "scale": {
+   "visitors": 204548,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.maxxi.art/wp-content/uploads/2025/07/BILANCIO-CONSUNTIVO-2024.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the 2024 Bilancio, Relazione sulla gestione (PDF page 4), states visitors to the Rome museum were 204,548, which excludes the L'Aquila museum."
+ },
+ {
+  "id": "castello-di-rivoli-turin",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 33,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.castellodirivoli.org/wp-content/uploads/2014/12/BILANCIO-CONSUNTIVO-2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the Rendiconto al 31 dicembre 2025, approved 11 May 2026 (PDF page 26), gives 33 employees at 31 December 2025, 30 permanent and 3 fixed term."
+ }
+]

@@ -1,0 +1,196 @@
+[
+ {
+  "id": "kunstraum-dornbirn-dornbirn",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 440,
+   "area_kind": "building",
+   "sources": [
+    "https://www.kunstraumdornbirn.at/en/institution/exhibition-hall",
+    "https://www.kunstraumdornbirn.at/wp-content/uploads/2026/07/Kunstraum-Dornbirn-Infobrochure-July-2026.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the exhibition hall page factbox gives a total area of 440 m2 for the hall, and the July 2026 information brochure repeats 440 m2 (area given as the hall's total floor area, not gallery space)."
+ },
+ {
+  "id": "grazer-kunstverein",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "halle-fuer-kunst-steiermark-graz",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "taxispalais-kunsthalle-tirol-innsbruck",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "ars-electronica-center-linz",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "salzburger-kunstverein",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 500,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://salzburger-kunstverein.at/about_us"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the About us page states that the exhibition spaces span 500 m2; the house also has 21 studios, a library and a restaurant, which are not counted."
+ },
+ {
+  "id": "albertina",
+  "scale": {
+   "visitors": 1321385,
+   "visitors_year": "2024",
+   "staff": 280,
+   "staff_kind": "employees",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.albertina.at/site/assets/files/1302/geschaeftsbericht_2024.pdf",
+    "https://albertina.at/site/assets/files/21301/jahresabschluss_2024.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 2024 visits at the three sites (Albertina, Albertina Modern, Albertina Klosterneuburg) in the Geschaeftsbericht 2024, PDF page 9; staff is the average headcount of 280 persons in 2024 in the notes to the Jahresabschluss 2024, PDF page 18 (286 persons on the balance sheet date), without people on parental leave."
+ },
+ {
+  "id": "kunsthalle-wien",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "leopold-museum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "mak-museum-of-applied-arts-vienna",
+  "scale": {
+   "visitors": 160333,
+   "visitors_year": "2024",
+   "staff": 155,
+   "staff_kind": "staff",
+   "staff_year": "2024",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.mak.at/jart/prj3/mak-resp/images/img-db/1747377812845.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: Jahresbericht 2024, PDF page 9 gives 160,333 visits to MAK Wien (174,476 for the MAK as a whole including the MAK Center in Los Angeles); PDF page 47 gives 155 Mitarbeiter*innen in the 2024 staff overview, a headcount whose basis the report does not state."
+ },
+ {
+  "id": "secession-vienna",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "mumok",
+  "scale": {
+   "visitors": 142322,
+   "visitors_year": "2024",
+   "staff": 137,
+   "staff_kind": "employees",
+   "staff_year": "2024",
+   "area_m2": 4500,
+   "area_kind": "gallery space",
+   "sources": [
+    "https://www.vienna.at/bundesmuseen-erzielten-2024-neuen-besucherrekord/9202600",
+    "https://www.mumok.at/fileadmin/Bibliothek/0_Berichte_und_Dokumente/1_Public_Corporate_Governance/PCGB_mumok_2024.pdf",
+    "https://www.mumok.at/en/architecture"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 142,322 visits in 2024 from the federal museums statistics as reported by APA (the museum was closed from 8 January to 6 June 2024 for building work); staff is the Gesamtzahl der Beschaeftigten of 137 on 31 December 2024 in the Corporate Governance Bericht 2024, PDF page 7; area is the exhibition area of 4,500 m2 in the architecture page's Facts and Figures."
+ }
+]

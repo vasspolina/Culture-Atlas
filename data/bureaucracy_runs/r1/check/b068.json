@@ -1,0 +1,109 @@
+[
+ {
+  "id": "songeun-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "seoul-museum-of-art-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "whanki-museum-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nam-june-paik-art-center-yongin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundació-antoni-tàpies-barcelona",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "https://museutapies.org/en/board-of-trustees/",
+    "page says": "The board of trustees page lists trustees and the founding member; it does not state the legal form or any control stored for this record (the regulations page does)",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "fundació-antoni-tàpies-barcelona",
+   "governance": {
+    "legal_form": "private foundation",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "public procurement law",
+     "freedom of information law",
+     "charity or foundation regulator"
+    ],
+    "year": "2026",
+    "sources": [
+     "https://museutapies.org/en/regulations/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The museum's regulations page lists the statutes of the Fundació Privada Antoni Tàpies together with the Catalan foundation protectorate law, the public sector contracts law and the transparency laws."
+  }
+ },
+ {
+  "id": "fundaci-joan-mir",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hangar-barcelona",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "la-virreina-barcelona",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "Institute's 2005 statutes (articles 18, 21 and 27)",
+    "page says": "In the 2005 statutes of the Institut de Cultura de Barcelona, article 27 is the annual accounts; the council approval of budget, credit operations and property disposals is article 28 (staff is article 18, contracting article 21)",
+    "fix": "A Barcelona city gazette agreement says the Institut de Cultura de Barcelona programmes La Virreina, and the Institute's 2005 statutes (articles 18, 21 and 28) set staff, contracting, and council approval of budget, credit operations and property disposals."
+   }
+  ],
+  "corrected": {
+   "id": "la-virreina-barcelona",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "Institut de Cultura de Barcelona (Barcelona City Council)",
+    "director_appointed_by": null,
+    "staff_status": "mixed",
+    "budget_set_by": "city or regional council",
+    "controls": [
+     "public procurement law",
+     "approval of programme, loans or disposals by a ministry or council"
+    ],
+    "year": "2005",
+    "sources": [
+     "https://ajuntament.barcelona.cat/lavirreina/en/center",
+     "https://w123.bcn.cat/APPS/egaseta/cercaAvancada.do?reqCode=downloadFile&publicacionsId=24743",
+     "http://www.bcn.cat/cultura/docs/estatutsicb15112005.830.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "A Barcelona city gazette agreement says the Institut de Cultura de Barcelona programmes La Virreina, and the Institute's 2005 statutes (articles 18, 21 and 28) set staff, contracting, and council approval of budget, credit operations and property disposals."
+  }
+ },
+ {
+  "id": "macba-museu-d-art-contemporani-de-barcelona",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sonar-festival",
+  "verdict": "ok",
+  "faults": []
+ }
+]
