@@ -573,7 +573,7 @@
   }
   // A label, cut like the city labels (rounded, 22 high, 14 either side) but filled in the mark's colour.
   function drawTag(ctx, x, y, w, h, col) {
-    ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 8); ctx.fillStyle = col; ctx.fill(); ctx.restore();
+    ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 0); ctx.fillStyle = col; ctx.fill(); ctx.restore();
   }
   // The mark under the pointer: its name on a block in its colour, and that a click asks the chat.
   function drawMarkTip(ctx, boxes) {
