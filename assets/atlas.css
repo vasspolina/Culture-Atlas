@@ -2734,3 +2734,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:transparent!important}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{color:#000!important}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{transition:background-color .15s,border-color .15s}
+
+/* ---- Visiting across the whole row (user, 27 Oct 2026) ----
+   The row title is hidden, so its third of the row stood empty. The three facts now take the full width, in three equal columns. */
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-visit{grid-template-columns:minmax(0,1fr)}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-visit .d-row-head{display:none}
