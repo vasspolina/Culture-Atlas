@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=426">
-  <script src="assets/config.js?v=426"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=428">
+  <script src="assets/config.js?v=428"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v426';
+    const ATLAS_RELEASE = 'culture-atlas-v428';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=426').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=428').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11613,7 +11613,7 @@ return maplibregl$1;
       if (fil && fil !== reg) regLinks.push(`Filings: ${link(fil, registryName(fil))}`);
       if (regLinks.length) rows.push(`<p class="t-lead no-indent source-note">${regLinks.join(' · ')}</p>`);
       if (!rows.length) return '';
-      return `<div class="py-3 rule-b space-y-2" role="region" aria-label="Funding"><span class="kicker block">Funding</span>${rows.join('')}</div>`;
+      return linkifyFunderNames(`<div class="py-3 rule-b space-y-2" role="region" aria-label="Funding"><span class="kicker block">Funding</span>${rows.join('')}</div>`);
     }
 
     // Links to the sources recorded for a space. Recording a source is not verifying it, and the page says so.
@@ -12643,7 +12643,7 @@ return maplibregl$1;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
       const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
       const shared = (inst.funder_links || []).filter(f => f && f.funder).map(f => `${f.funder} is listed at ${f.institutions} spaces in this atlas, including this one.`).join(' ');
-      return proseRow('Funding', escapeHtml(verdict), proseChunks(funding.concat(shared || []), 0).map(t => proseLi('', escapeHtml(t))));
+      return linkifyFunderNames(proseRow('Funding', escapeHtml(verdict), proseChunks(funding.concat(shared || []), 0).map(t => proseLi('', escapeHtml(t)))));
     }
     // Scale and money: the accounts figures a filing states (inst.finance) and the size figures a source states (inst.scale), nothing estimated.
     // Shares are worked out here from the stored amounts, against the same year's income, and only where the amount is below it.
@@ -13066,6 +13066,76 @@ return maplibregl$1;
           a.href = '#';
           a.className = 'inst-link';
           a.setAttribute('data-name', entry.name);
+          a.textContent = m[0];
+          frag.appendChild(a);
+          last = m.index + m[0].length;
+        }
+        if (!hit) return;
+        frag.appendChild(doc.createTextNode(text.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+      return doc.body.innerHTML;
+    }
+
+    // A funder or company the atlas names on a record (funder_links), with the records that name it. Cached: the data does not change.
+    let funderIdx = null;
+    function funderIndex() {
+      if (funderIdx) return funderIdx;
+      const m = new Map();
+      ALL_INSTITUTIONS.forEach(i => (i.funder_links || []).forEach(f => {
+        if (!f || !f.funder || /\//.test(f.funder) || f.funder.length < 3) return;
+        if (!m.has(f.funder)) m.set(f.funder, []);
+        if (!m.get(f.funder).includes(i)) m.get(f.funder).push(i);
+      }));
+      const esc = (n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const names = [...m.keys()].sort((a, b) => b.length - a.length);
+      funderIdx = { map: m, re: names.length ? new RegExp('(?<![\\p{L}\\p{N}])(?:' + names.map(esc).join('|') + ')(?![\\p{L}\\p{N}])', 'gu') : null };
+      return funderIdx;
+    }
+    // The funder a piece of text names (the longest name when several), or ''.
+    function funderNamedIn(text) {
+      const idx = funderIndex();
+      if (!idx.re || !text) return '';
+      idx.re.lastIndex = 0;
+      const found = [...String(text).matchAll(idx.re)].map(m => m[0]).sort((a, b) => b.length - a.length);
+      return found[0] || '';
+    }
+    // The sentences in a funder's records that name it: the funding account, the watch line and the report's funding points, each once.
+    function funderSnippets(name) {
+      const rec = funderIndex().map.get(name) || [];
+      const has = new RegExp('(?<![\\p{L}\\p{N}])' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?![\\p{L}\\p{N}])', 'u');
+      const seen = new Set(), out = [];
+      rec.forEach(i => {
+        const d = i.details || {};
+        [i.funding, i.watch, d.funding_verdict, ...(d.funding || [])].filter(Boolean).forEach(t => {
+          String(t).split(/(?<=[.!?])\s+|\n+/).forEach(sn => {
+            const x = sn.trim();
+            if (x.length > 25 && has.test(x) && !seen.has(x)) { seen.add(x); out.push({ text: x, inst: i }); }
+          });
+        });
+      });
+      return out;
+    }
+    // A funder's name in a reply or a record's funding text becomes a link; a click opens the chat on that funder. Names already in a link are left alone.
+    function linkifyFunderNames(html) {
+      const idx = funderIndex();
+      if (!html || !idx.re) return html;
+      const doc = new DOMParser().parseFromString('<body>' + html + '</body>', 'text/html');
+      const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) if (!n.parentElement.closest('a, button, .ai-note')) nodes.push(n);
+      nodes.forEach(node => {
+        const text = node.nodeValue;
+        idx.re.lastIndex = 0;
+        let last = 0, hit = false;
+        const frag = doc.createDocumentFragment();
+        for (let m = idx.re.exec(text); m; m = idx.re.exec(text)) {
+          hit = true;
+          frag.appendChild(doc.createTextNode(text.slice(last, m.index)));
+          const a = doc.createElement('a');
+          a.href = '#';
+          a.className = 'funder-link';
+          a.setAttribute('data-funder', m[0]);
           a.textContent = m[0];
           frag.appendChild(a);
           last = m.index + m[0].length;
@@ -14274,24 +14344,27 @@ return maplibregl$1;
 
       // 1. Resolve Target Entity cleanly (from user query or active focus)
       // "this museum", "here", "its": the open space, never a guessed match from the words around it (findMentionedInst applies the same rule).
+      // A funder asked about by name: its records go in, and neither the open space nor a look-alike name answers it.
+      const funderNote = window.atlasFunderNote || ''; window.atlasFunderNote = '';
+      const funderInsts = funderNote ? (window.atlasFunderInsts || []) : [];
       const askingAboutOpen = /\b(this|here|it|its|there)\b/i.test(userPrompt);
       const anyMatch = !askingAboutOpen && typeof findAnyInstitution === 'function' ? findAnyInstitution(userPrompt) : null;
-      const mentionedInst = resolvedFollowUp || (typeof findMentionedInst === 'function' ? findMentionedInst(userPrompt) : null) || 
+      const mentionedInst = funderNote ? null : resolvedFollowUp || (typeof findMentionedInst === 'function' ? findMentionedInst(userPrompt) : null) || 
                             (anyMatch && anyMatch.isClean && !anyMatch.fuzzy ? anyMatch.inst : null);
       const QUESTION_VOCAB = /\b(who|whom|whose|what|which|where|when|why|how|is|are|was|were|does|do|did|can|could|would|tell|show|find|list|give|hours?|open(ing)?|prices?|admission|tickets?|fund(s|ed|er|ers|ing)?|grades?|rating|flag(s|ged)?|sponsors?|trustees?|critics?|criticism|employees?|staff|visit|address|located|museums?|spaces?|galleries|more|check|verify|compare|about|near|in|the)\b/i;
       const CHITCHAT = /^\s*(thanks?|thank you|cool|great|nice|wow|hmm+|lol|good|gossip|rumou?rs?|scandals?|more|why|help|hi|hello|hey|bye)\b/i;
       const isPlace = [...(typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []), ...(typeof ALL_COUNTRIES_REGISTRY !== 'undefined' ? ALL_COUNTRIES_REGISTRY : [])]
         .some(c => c && c.name && userPrompt.toLowerCase().includes(c.name.toLowerCase()));
-      const unknownName = !mentionedInst && !isFollowUp && !isPlace && wordCount <= 6 && !QUESTION_VOCAB.test(userPrompt) && !CHITCHAT.test(userPrompt);
+      const unknownName = !funderNote && !mentionedInst && !isFollowUp && !isPlace && wordCount <= 6 && !QUESTION_VOCAB.test(userPrompt) && !CHITCHAT.test(userPrompt);
       // An unknown name is grounded on nothing but its nearest record, if one is really near; a looser pick would only be offered as the answer.
       const nearest = unknownName && typeof findFuzzyInstitutionMatch === 'function' ? findFuzzyInstitutionMatch(userPrompt.toLowerCase(), 0.75) : null;
       // A "yes" to a reply that named two or more spaces does not say which: neither the open space nor a guess answers it.
       const ambiguousFollowUp = isFollowUp && !resolvedFollowUp && namedInReply.length >= 2;
-      const relevantInsts = unknownName ? (nearest && nearest.inst ? [nearest.inst] : []) : retrieveGroundingInstitutions(retrievalText, 12, { includeActive: !ambiguousFollowUp });
+      const relevantInsts = funderNote ? funderInsts : unknownName ? (nearest && nearest.inst ? [nearest.inst] : []) : retrieveGroundingInstitutions(retrievalText, 12, { includeActive: !ambiguousFollowUp });
       const themed = unknownName ? null : themeMatches(userPrompt);
       const themedText = themed ? `\n\n<matching_records>\nThe Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} that match this question${themed.total > themed.insts.length ? `; the first ${themed.insts.length} are listed` : ''}. Words matched: ${themed.words.join(', ')}. Grades across all ${themed.total}: ${themed.tallyText}.\n${themed.insts.map(formatShortGrounding).join('\n')}\n</matching_records>` : '';
       const groundedCatalogText = relevantInsts.map(formatInstitutionGrounding).join('\n\n') + themedText;
-      const currentTarget = mentionedInst || (unknownName || ambiguousFollowUp ? null :
+      const currentTarget = funderNote ? null : mentionedInst || (unknownName || ambiguousFollowUp ? null :
                             ((typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
                             (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst))));
       const followUpNote = ambiguousFollowUp
@@ -14336,7 +14409,7 @@ return maplibregl$1;
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself: what the supplied records report about the space, which is a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or the official URL. If the supplied records report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a requested detail is absent, leave it out, or when the visitor asked for it say so in one sentence with the official URL when supplied.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${funderNote}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a requested detail is absent, leave it out, or when the visitor asked for it say so in one sentence with the official URL when supplied.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -15593,9 +15666,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return out;
       };
       // gossip: the whole reply is reported, unverified items (a list of flagged spaces); a plain record, a city list or a status line is not.
-      const answer = (html, follow, gossip) => appendCuratorMessage(`<div class="space-y-3"${gossip ? ' data-gossip="list"' : ''}>${html}</div>`, follow || followFor());
+      const answer = (html, follow, gossip) => appendCuratorMessage(`<div class="space-y-3"${gossip ? ' data-gossip="list"' : ''}>${linkifyFunderNames(html)}</div>`, follow || followFor());
       const asks = (re) => re.test(q);
-      const explicit = findMentionedInst(query);
+      // A space whose name only resembles a funder's ("Tell me about Vale" matching Frac Centre-Val de Loire) is not the space asked about: a space counts as named when its name or an alias is in the question.
+      const explicit0 = findMentionedInst(query);
+      const explicit = explicit0 && funderNamedIn(query) && ![explicit0.name, ...(explicit0.aliases || [])].some(n => n && query.toLowerCase().includes(String(n).toLowerCase())) ? null : explicit0;
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
       let target = explicit || active;
       // A name the visitor types on its own ("moma", "show me MoMA") is a request for that record, so it opens as a click on its pin does:
@@ -15659,7 +15734,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              appendCuratorMessage(linkifyInstNames(aiHtml) + '<p class="no-indent ai-note">AI-written from archival records. Unverified.</p>', [], webIntel, thinkingData);
+              appendCuratorMessage(linkifyFunderNames(linkifyInstNames(aiHtml)) + '<p class="no-indent ai-note">AI-written from archival records. Unverified.</p>', [], webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -15913,15 +15988,50 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:', true); return; }
-      // A named funder: the spaces whose records link it (funder_links), the same names the Funding block shows on each record.
-      if (!explicit && asks(/\b(fund|funds|funded|funding|funder|back|backs|backed|sponsor|sponsors|sponsored|give|gives|money|connect|connects|pay|pays)\b/)) {
-        const funders = {};
-        ALL_INSTITUTIONS.forEach(i => (i.funder_links || []).forEach(f => { if (f && f.funder) (funders[f.funder] = funders[f.funder] || []).push(i); }));
-        const named = Object.keys(funders).filter(f => new RegExp('\\b' + esc(f) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
+      // A funder named in the question ("what does Vale do?", or a click on its name) is a question about that funder, not about the record still open on the map,
+      // so no funding verb is needed. The records that name it answer when they say enough; when they say little and a model is connected, the model
+      // answers with the records in front of it and may add what is publicly known about the company, labelled as such.
+      if (!explicit) {
+        const fx = funderIndex();
+        const named = funderNamedIn(query);
         if (named) {
-          const linked = funders[named].sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
-          listOf(linked, `${named} is named as a funder on ${linked.length} ${linked.length === 1 ? 'record' : 'records'}, highest transparency rating first. Each record's Funding block has the detail and the sources${linked.length > 12 ? '. The first 12' : ''}:`);
+          const linked = fx.map.get(named).slice().sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
+          const snips = funderSnippets(named);
+          if (snips.length < 2 && modelOn) {
+            window.atlasFunderInsts = linked.slice(0, 6);
+            window.atlasFunderNote = `<funder_question>\nThe visitor asks about ${named}, a funder or company, not about any one space. The Atlas names it on ${linked.length} record${linked.length === 1 ? '' : 's'}: ${linked.slice(0, 8).map(i => i.name + (i.city ? ' (' + i.city + ')' : '')).join('; ')}.\nWhat the records say about it: ${snips.length ? snips.map(x => x.text).join(' ') : 'nothing beyond the name.'}\nAnswer from these records first. The records say little, so you may add what is publicly known about ${named} in plain neutral sentences, and say in one sentence that this part is general background and not from the Atlas records. Do not guess at facts you are unsure of, and do not answer about the space open on the map.\n</funder_question>\n\n`;
+            if (await askModel()) return;
+            window.atlasFunderNote = '';
+          }
+          const lead = snips.length
+            ? `<p>${escapeHtml(named)} is named as a funder on ${linked.length} ${linked.length === 1 ? 'record' : 'records'}. What the records say:</p>${snips.slice(0, 4).map(x => `<p>${escapeHtml(x.text)} (${formatInstLink(x.inst, { noCity: true, noDossier: true })})</p>`).join('')}<p>Highest transparency rating first. Each record's Funding block has the detail and the sources${linked.length > 12 ? '. The first 12' : ''}:</p>`
+            : `<p>${escapeHtml(named)} is named as a funder on ${linked.length} ${linked.length === 1 ? 'record' : 'records'}, highest transparency rating first. Each record's Funding block has the detail and the sources${linked.length > 12 ? '. The first 12' : ''}:</p>`;
+          const st = { items: linked, gossip: false, offset: 0 };
+          answer(`${lead}${renderListPage(st)}`, window.atlasListMore ? ['Show more', ...followFor(true)].slice(0, 3) : followFor(true), false);
           return;
+        }
+      }
+      // A company, person or organisation the atlas holds no funder link for ("what does Petrobras do?", "who is Potanin?") is not the open record either.
+      // The records that mention the name go to the model with it; it may add public background, labelled as general. Without a model the question falls through.
+      if (!explicit && !place && !region && modelOn) {
+        const subj = (q.match(/^\s*(?:what does|what do|what is|what are|who is|who are|who was|tell me about|what about|about)\s+(?:the\s+)?(.+?)(?:\s+(?:do|does|make|makes|mean|stand for))?\s*[?!.]*\s*$/) || [])[1];
+        const generic = /\b(this|that|it|its|here|there|these|those|you|me|atlas|museum|museums|space|spaces|gallery|institution|funders?|sponsors?|grades?|rating|ratings?|tier|flags?|flagged|trustees?|record|records|hours?|admission|city|country)\b/;
+        if (subj && subj.length >= 3 && subj.split(/\s+/).length <= 4 && !generic.test(subj) && !/^(?:a|an)\s/.test(subj)) {
+          const subjRe = new RegExp('(?<![\\p{L}\\p{N}])' + esc(subj) + '(?![\\p{L}\\p{N}])', 'iu');
+          const hits = [], seenS = new Set(), insts = [];
+          ALL_INSTITUTIONS.forEach(i => {
+            const d = i.details || {};
+            [i.funding, i.watch, d.funding_verdict, ...(d.funding || [])].filter(Boolean).forEach(t => String(t).split(/(?<=[.!?])\s+|\n+/).forEach(sn => {
+              const x = sn.trim();
+              if (x.length > 25 && subjRe.test(x) && !seenS.has(x)) { seenS.add(x); hits.push(x); if (!insts.includes(i)) insts.push(i); }
+            }));
+          });
+          {
+            window.atlasFunderInsts = insts.slice(0, 6);
+            window.atlasFunderNote = `<funder_question>\nThe visitor asks about "${subj}", a company, person or organisation, not about any one space. ${insts.length ? `The Atlas records that mention it: ${insts.slice(0, 8).map(i => i.name + (i.city ? ' (' + i.city + ')' : '')).join('; ')}.` : 'No Atlas record mentions it.'}\nWhat the records say about it: ${hits.length ? hits.slice(0, 6).join(' ') : 'nothing.'}\nAnswer from these records first when they say anything. Where they say little, add what is publicly known about ${subj} in plain neutral sentences, and say in one sentence that this part is general background and not from the Atlas records. If you do not know what ${subj} is, say so in one sentence. Do not guess, and do not answer about the space open on the map.\n</funder_question>\n\n`;
+            if (await askModel()) return;
+            window.atlasFunderNote = '';
+          }
         }
       }
       // A kind of funder or controversy named with no space: the spaces whose records carry that flag, worst rating first.
@@ -18109,6 +18219,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     };
     curatorMessages.addEventListener('click', onCuratorMessagesClick);
     document.getElementById('curatorDrawerLiveStream')?.addEventListener('click', onCuratorMessagesClick);
+    // A funder's name, in a reply or in a record's Funding block, opens the chat on that funder.
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest && e.target.closest('.funder-link');
+      if (!link) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const f = link.getAttribute('data-funder');
+      if (!f) return;
+      setWorkspaceTab('chat');
+      const q = `Tell me about ${f}`;
+      appendUserMessage(q);
+      window.atlasTypedQuery = false;
+      handleCuratorQuery(q);
+    }, true);
 
     // Tab Switching: Curator Guide vs Catalog
     const tabCuratorBtn = document.getElementById('tabCuratorBtn');
@@ -19935,9 +20059,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=426"></script>
-<script src="assets/layers.js?v=426"></script>
-<script src="assets/hq-detail.js?v=426"></script>
-<script src="assets/bubbles.js?v=426" defer></script>
+<script src="assets/typeset.js?v=428"></script>
+<script src="assets/layers.js?v=428"></script>
+<script src="assets/hq-detail.js?v=428"></script>
+<script src="assets/bubbles.js?v=428" defer></script>
 </body>
 </html>
