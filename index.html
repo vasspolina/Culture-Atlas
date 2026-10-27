@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=413">
-  <script src="assets/config.js?v=413"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=416">
+  <script src="assets/config.js?v=416"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v413';
+    const ATLAS_RELEASE = 'culture-atlas-v416';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=413').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=416').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10228,7 +10228,9 @@ return maplibregl$1;
     // Canvas type for the cards: Jokker Thin for names (a space's in capitals, a city's in normal case), Jokker Regular for facts.
     const ATLAS_CARD_TITLE_FONT = '300 24px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     const ATLAS_CARD_NAME_FONT = '300 24px "Jokker", sans-serif';
-    const ATLAS_CARD_MONO_FONT = '300 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    // Label type is regular on the light theme and light on the dark one.
+    const atlasLabelWeight = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
+    const atlasMonoFont = () => atlasLabelWeight() + ' 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
       document.fonts.load(ATLAS_CARD_NAME_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
@@ -10250,7 +10252,7 @@ return maplibregl$1;
 
       ctx.font = ATLAS_CARD_NAME_FONT;
       const nameW = ctx.measureText(nameUpper).width;
-      ctx.font = ATLAS_CARD_MONO_FONT;
+      ctx.font = atlasMonoFont();
       const subW = ctx.measureText(subText).width;
       const webW = ctx.measureText(domainPillText).width;
 
@@ -10297,7 +10299,7 @@ return maplibregl$1;
       ctx.font = ATLAS_CARD_NAME_FONT;
       ctx.fillText(fit(nameUpper), textX, cardY + 14);
 
-      ctx.font = ATLAS_CARD_MONO_FONT;
+      ctx.font = atlasMonoFont();
       ctx.fillText(fit(subText), textX, cardY + 48);
 
       if (webUrl) {
@@ -10665,7 +10667,7 @@ return maplibregl$1;
         const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
-          ctx.font = ATLAS_CARD_MONO_FONT;
+          ctx.font = atlasMonoFont();
           const w = ctx.measureText(text).width + 28, h = 22;
           const pc = pillColors(active, tier);
           // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
@@ -10700,7 +10702,7 @@ return maplibregl$1;
           const sp = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
           if (sp.front) {
             ctx.save();
-            ctx.font = ATLAS_CARD_MONO_FONT;
+            ctx.font = atlasMonoFont();
             const sn = selectedInstitution.name.length > 24 ? selectedInstitution.name.substring(0, 22) + '…' : selectedInstitution.name;
             const sw = ctx.measureText(sn).width + 28;
             ctx.restore();
@@ -10718,7 +10720,7 @@ return maplibregl$1;
         } catch (e) {}
         const shownCityLabels = new Set();
         const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
-        ctx.font = '300 14px "Jokker", sans-serif';
+        ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
         
         let candidateCities = [];
         if (selectedCountryFilter !== 'all') {
@@ -10754,7 +10756,7 @@ return maplibregl$1;
             const isClustered = isClusterZoom && (city.count >= 2);
 
             let bw, bh = 22, txt = city.name, countTxt = '';
-            ctx.font = ATLAS_CARD_MONO_FONT;
+            ctx.font = atlasMonoFont();
 
             if (isClustered) {
               countTxt = `(\u200c${city.count}\u200c)`;   // in brackets like the zoomed-in labels
@@ -10811,7 +10813,7 @@ return maplibregl$1;
               ctx.globalAlpha = badgeAlpha;
 
               if (isClustered) {
-                ctx.font = '300 14px "Jokker", sans-serif';
+                ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 deferredPills.push([city.name + ' ' + countTxt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name), badgeAlpha]);
@@ -10823,7 +10825,7 @@ return maplibregl$1;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
-                ctx.font = '300 14px "Jokker", sans-serif';
+                ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 deferredPills.push([txt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name), badgeAlpha]);
@@ -10849,7 +10851,7 @@ return maplibregl$1;
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = '300 14px "Jokker", sans-serif';
+          ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -11042,11 +11044,11 @@ return maplibregl$1;
 
           if (shouldDrawGlobeLabel && !isHov) {
             ctx.save();
-            ctx.font = '300 14px "Jokker", sans-serif';
+            ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
-            ctx.font = ATLAS_CARD_MONO_FONT;
+            ctx.font = atlasMonoFont();
             const tw = ctx.measureText(nameTxt).width;
             const bw = tw + 28;
             const bh = 22;
@@ -11114,7 +11116,7 @@ return maplibregl$1;
 
               ctx.font = ATLAS_CARD_TITLE_FONT;
               const twCity = ctx.measureText(cityTxt).width;
-              ctx.font = ATLAS_CARD_MONO_FONT;
+              ctx.font = atlasMonoFont();
               const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
               const twCount = ctx.measureText(countTxt).width;
               const twLink = ctx.measureText(linkTxt).width;
@@ -11166,7 +11168,7 @@ return maplibregl$1;
               ctx.fillText(cityTxt, cardX + 16, cardY + 14);
 
               let currentY = cardY + 46;
-              ctx.font = ATLAS_CARD_MONO_FONT;
+              ctx.font = atlasMonoFont();
               if (countryTxt) {
                 ctx.fillText(countryTxt, cardX + 16, currentY);
                 currentY += 20;
@@ -11179,7 +11181,7 @@ return maplibregl$1;
               ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 8);
               if (isHoveringCityExploreLink) { ctx.fillStyle = cardInk; ctx.fill(); }
               else { ctx.globalAlpha = 0.55; ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
-              ctx.font = ATLAS_CARD_MONO_FONT;
+              ctx.font = atlasMonoFont();
               ctx.fillStyle = isHoveringCityExploreLink ? cardBg : cardInk;
               ctx.textAlign = 'center';
               ctx.textBaseline = 'middle';
@@ -11257,7 +11259,7 @@ return maplibregl$1;
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = '300 14px "Jokker", sans-serif';
+        ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
         // "0" over the left tick, the distance over the right one, so the figures line up with the bar at any length.
@@ -11307,7 +11309,7 @@ return maplibregl$1;
         ctx.closePath();
         ctx.stroke();
 
-        ctx.font = '300 14px "Jokker", sans-serif';
+        ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
         ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
@@ -19886,9 +19888,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=413"></script>
-<script src="assets/layers.js?v=413"></script>
-<script src="assets/hq-detail.js?v=413"></script>
-<script src="assets/bubbles.js?v=413" defer></script>
+<script src="assets/typeset.js?v=416"></script>
+<script src="assets/layers.js?v=416"></script>
+<script src="assets/hq-detail.js?v=416"></script>
+<script src="assets/bubbles.js?v=416" defer></script>
 </body>
 </html>
