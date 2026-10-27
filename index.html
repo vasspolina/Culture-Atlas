@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=410">
-  <script src="assets/config.js?v=410"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=411">
+  <script src="assets/config.js?v=411"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v410';
+    const ATLAS_RELEASE = 'culture-atlas-v411';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=410').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=411').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15624,7 +15624,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const place = places.filter(n => new RegExp('\\b' + esc(n) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
       // A city named in the question turns the globe to it and zooms in, as a click on the city does; a space named with it wins.
       if (place && !explicit && ALL_CITIES_REGISTRY.some(c => c.name === place) && !(selectedCityFilter && matchC(selectedCityFilter, place) && isCityStreetViewActive)) {
-        filterByCity(place, true, false);
+        // The city's first space is selected on the map as part of this; the Details tab does not open over the answer.
+        window.atlasKeepTab = true;
+        try { filterByCity(place, true, false); } finally { window.atlasKeepTab = false; }
       }
       // A question about a place or about spaces in general is not about the record last opened: only a name, "this" or "it" points at one.
       if (!explicit && (place || /\b(spaces|museums|galleries|institutions|cities|countries|funders|sponsors|donors)\b/.test(q) || /\b(?:any|which|what|every|each|best|worst)\s+(?:museum|space|gallery|institution)\b/.test(q)) && !/\b(this|here|it|its|that)\b/.test(q)) target = null;
@@ -19882,9 +19884,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=410"></script>
-<script src="assets/layers.js?v=410"></script>
-<script src="assets/hq-detail.js?v=410"></script>
-<script src="assets/bubbles.js?v=410" defer></script>
+<script src="assets/typeset.js?v=411"></script>
+<script src="assets/layers.js?v=411"></script>
+<script src="assets/hq-detail.js?v=411"></script>
+<script src="assets/bubbles.js?v=411" defer></script>
 </body>
 </html>
