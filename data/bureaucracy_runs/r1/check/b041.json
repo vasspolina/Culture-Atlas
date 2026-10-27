@@ -1,0 +1,92 @@
+[
+ {
+  "id": "artizon-museum-tokyo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "japan-folk-crafts-museum-nihon-mingeikan-tokyo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-contemporary-art-tokyo-tokyo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ntt-intercommunication-center-icc-tokyo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nezu-museum-tokyo",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.director_appointed_by",
+    "stored": "board",
+    "page says": "Article 40: the museum director and key staff are appointed and dismissed with the approval of the board (理事会の承認を得て任免する); the text does not name the appointing body",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "nezu-museum-tokyo",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": "board",
+    "controls": [
+     "charity or foundation regulator"
+    ],
+    "year": "2026",
+    "sources": [
+     "https://www.nezu-muse.or.jp/jp/foundation/index.html"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The statutes on the foundation page require board approval for the museum director's appointment and dismissal (article 40), set the budget by board resolution with council approval (article 7), and require the authority's approval of key statute changes (article 35)."
+  }
+ },
+ {
+  "id": "tokyo-arts-and-space-tokyo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "towada-art-center-towada",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "a private group as its designated manager since 2012",
+    "page says": "History: 2012 the designated manager system was introduced; the organisation list names Nanjo and Associates Group as designated manager (as of Nov 2022). The page does not say the group has managed since 2012 or that it is private",
+    "fix": "Reword the basis to what the page states"
+   }
+  ],
+  "corrected": {
+   "id": "towada-art-center-towada",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "Towada City",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://towadaartcenter.com/about/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The about page lists Towada City as the museum's owner (setchisha), names Nanjo and Associates Group as designated manager, and its history records the designated manager system as introduced in 2012."
+  }
+ },
+ {
+  "id": "yokohama-museum-of-art-yokohama",
+  "verdict": "ok",
+  "faults": []
+ }
+]

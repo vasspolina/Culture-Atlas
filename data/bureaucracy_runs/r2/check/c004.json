@@ -1,0 +1,184 @@
+[
+ {
+  "id": "weissenhofmuseum-im-haus-le-corbusier",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-hohe-pappeln",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "https://lexaris.de/book/version/documentflat/head/1320692",
+    "page says": "Lexaris is a third-party legal database reproducing the Thuringian foundation law as unofficial text (Nichtamtliches Inhaltsverzeichnis); the same facts (form, president elected by the Stiftungsrat, Land pay agreements, Rechnungshof audit) are in the foundation's own statutes at klassik-stiftung.de, which are the document",
+    "fix": "cite the statutes PDF on klassik-stiftung.de in place of the mirror"
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Thuringian ministry responsible for art (supervisory authority)",
+    "page says": "Statutes section 19 (2019): supervision by the ministry responsible for culture (Kultur); 'Kunst' is the 2009 wording",
+    "fix": "Thuringian ministry responsible for culture (supervisory authority)"
+   },
+   {
+    "field": "governance.year",
+    "stored": "2023",
+    "page says": "the statutes read are dated 22 May 2019 (Erfurt, Thüringer Staatskanzlei)",
+    "fix": "2019"
+   }
+  ],
+  "corrected": {
+   "id": "haus-hohe-pappeln",
+   "governance": {
+    "legal_form": "public foundation",
+    "parent": "Thuringian ministry responsible for culture (supervisory authority)",
+    "director_appointed_by": "board",
+    "staff_status": "public employees",
+    "budget_set_by": null,
+    "controls": [
+     "state audit office"
+    ],
+    "year": "2019",
+    "sources": [
+     "https://www.klassik-stiftung.de/assets/Dokumente/KOEM/Stiftung_allgemein/KSW_Satzung_lt._SR-Beschluss_7.5.19.pdf",
+     "https://www.klassik-stiftung.de/haus-hohe-pappeln/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The foundation's statutes (approved 22 May 2019) give the form in section 1, the Stiftungsrat's election of the president in sections 8 and 9, Land pay agreements for employees in section 16 and the Rechnungshof audit in section 19, and the house page says the Stiftung bought the house in 2012."
+  }
+ },
+ {
+  "id": "haus-am-horn",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "https://lexaris.de/book/version/documentflat/head/1320692",
+    "page says": "Lexaris is a third-party legal database reproducing the Thuringian foundation law as unofficial text (Nichtamtliches Inhaltsverzeichnis); the same facts (form, president elected by the Stiftungsrat, Land pay agreements, Rechnungshof audit) are in the foundation's own statutes at klassik-stiftung.de, which are the document",
+    "fix": "cite the statutes PDF on klassik-stiftung.de in place of the mirror"
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Thuringian ministry responsible for art (supervisory authority)",
+    "page says": "Statutes section 19 (2019): supervision by the ministry responsible for culture (Kultur); 'Kunst' is the 2009 wording",
+    "fix": "Thuringian ministry responsible for culture (supervisory authority)"
+   },
+   {
+    "field": "governance.year",
+    "stored": "2023",
+    "page says": "the statutes read are dated 22 May 2019 (Erfurt, Thüringer Staatskanzlei)",
+    "fix": "2019"
+   }
+  ],
+  "corrected": {
+   "id": "haus-am-horn",
+   "governance": {
+    "legal_form": "public foundation",
+    "parent": "Thuringian ministry responsible for culture (supervisory authority)",
+    "director_appointed_by": "board",
+    "staff_status": "public employees",
+    "budget_set_by": null,
+    "controls": [
+     "state audit office"
+    ],
+    "year": "2019",
+    "sources": [
+     "https://www.klassik-stiftung.de/assets/Dokumente/KOEM/Stiftung_allgemein/KSW_Satzung_lt._SR-Beschluss_7.5.19.pdf",
+     "https://www.klassik-stiftung.de/haus-am-horn/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The foundation's statutes (approved 22 May 2019) give the form in section 1, the Stiftungsrat's election of the president in sections 8 and 9, Land pay agreements for employees in section 16 and the Rechnungshof audit in section 19, and the house page says the city of Weimar transferred the house to the Stiftung in 2019."
+  }
+ },
+ {
+  "id": "skulpturenpark-waldfrieden",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-rabe",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "walter-rozsi-villa",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "the villa page shows the museum's staff ran the villa's rehabilitation",
+    "page says": "The rehabilitation was financed by the Hungarian Academy of Arts and performed by Laki Zrt; numerous employees of the museum also played a role",
+    "fix": "villa page says employees of the museum took part in the villa's rehabilitation"
+   }
+  ],
+  "corrected": {
+   "id": "walter-rozsi-villa",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Hungarian Academy of Arts (MMA)",
+    "director_appointed_by": "parent institution",
+    "staff_status": "employees of the institution",
+    "budget_set_by": null,
+    "controls": [
+     "state audit office"
+    ],
+    "year": "2022",
+    "sources": [
+     "https://memmdk.hu/download/15/alapito-okirat-modositasokkal-egyseges-szerkezetbe-foglalva-20220307",
+     "https://memmdk.hu/alapdokumentumok-es",
+     "https://memmdk.hu/en",
+     "https://www.walterrozsivilla.hu/en/a-felújítás-1"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The consolidated founding charter of 7 March 2022 (pages 1, 2 and 4) makes the museum a budgetary body whose director the president of the Hungarian Academy of Arts appoints under the Labour Code, the institution's documents page names the State Audit Office as its external auditor, and the villa page says employees of the museum took part in the villa's rehabilitation."
+  }
+ },
+ {
+  "id": "huis-van-zessen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "atelier-volten",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-het-schip",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The 2025 accounts (pages 6 and 14 of the text) name the Stichting as the legal entity with 15 employees paid under the Museum CAO",
+    "page says": "Page 6 names the Stichting; the 15 employees and Museum CAO salary wording are on page 17 of the text; page 14 of the accounts is a liabilities note",
+    "fix": "page 6 for the legal entity, page 17 for the employees and the Museum CAO"
+   }
+  ],
+  "corrected": {
+   "id": "museum-het-schip",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": "Stichting Amsterdamse School Museum Het Schip",
+    "director_appointed_by": null,
+    "staff_status": "employees of the institution",
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://www.hetschip.nl/images/Documenten_formulieren/Museum%20Het%20Schip%20Jaarrekening%202025%20DEF.pdf",
+     "https://www.hetschip.nl/images/Documenten_formulieren/2025%20Jaarverslag%20Amsterdamse%20School%20Museum%20Het%20Schip%201.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The 2025 accounts name the Stichting as the legal entity (page 6 of the text) with 15 employees paid in line with the Museum CAO (page 17 of the text), and page 14 of the annual report gives its ANBI status, Raad van Toezicht and director-bestuurder."
+  }
+ },
+ {
+  "id": "van-eesteren-museum",
+  "verdict": "ok",
+  "faults": []
+ }
+]
