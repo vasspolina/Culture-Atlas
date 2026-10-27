@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=423">
-  <script src="assets/config.js?v=423"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=424">
+  <script src="assets/config.js?v=424"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v423';
+    const ATLAS_RELEASE = 'culture-atlas-v424';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=423').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=424').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13946,7 +13946,11 @@ return maplibregl$1;
       const top = Math.max(...scored.map(x => x.hit));
       const best = scored.filter(x => x.hit === top && top >= Math.min(words.length, 2)).sort((a, b) => (b.i.grade || 0) - (a.i.grade || 0));
       if (!best.length) return null;
-      return { total: best.length, insts: best.slice(0, limit).map(x => x.i), words };
+      // The grade count is made here: a model asked to count 16 records and sum their grades gets both wrong.
+      const tally = {};
+      best.forEach(x => { const k = x.i.grade && GRADE[x.i.grade] ? 'Grade ' + GRADE[x.i.grade].letter : 'ungraded'; tally[k] = (tally[k] || 0) + 1; });
+      const tallyText = Object.keys(tally).sort().map(k => `${tally[k]} ${k}`).join(', ');
+      return { total: best.length, insts: best.slice(0, limit).map(x => x.i), words, tallyText };
     }
     function formatShortGrounding(i) {
       const cut = (t, n) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1) + '…' : t; };
@@ -14285,7 +14289,7 @@ return maplibregl$1;
       const ambiguousFollowUp = isFollowUp && !resolvedFollowUp && namedInReply.length >= 2;
       const relevantInsts = unknownName ? (nearest && nearest.inst ? [nearest.inst] : []) : retrieveGroundingInstitutions(retrievalText, 12, { includeActive: !ambiguousFollowUp });
       const themed = unknownName ? null : themeMatches(userPrompt);
-      const themedText = themed ? `\n\n<matching_records>\nThe Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} that match this question${themed.total > themed.insts.length ? `; the first ${themed.insts.length} are listed` : ''}. Words matched: ${themed.words.join(', ')}.\n${themed.insts.map(formatShortGrounding).join('\n')}\n</matching_records>` : '';
+      const themedText = themed ? `\n\n<matching_records>\nThe Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} that match this question${themed.total > themed.insts.length ? `; the first ${themed.insts.length} are listed` : ''}. Words matched: ${themed.words.join(', ')}. Grades across all ${themed.total}: ${themed.tallyText}.\n${themed.insts.map(formatShortGrounding).join('\n')}\n</matching_records>` : '';
       const groundedCatalogText = relevantInsts.map(formatInstitutionGrounding).join('\n\n') + themedText;
       const currentTarget = mentionedInst || (unknownName || ambiguousFollowUp ? null :
                             ((typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
@@ -14415,7 +14419,7 @@ NAMES THAT HAVE NO RECORD: When the visitor names a space and no supplied record
 
 GRADE REASONS: The reason for a grade is its Grade Basis line. State that reason and no other; never explain a grade by transparency, documentation or disclosure unless the Grade Basis line says so. When the Watch Line says a tie with a funder has ended, say so in the same sentence as the grade. When a record's Governance Classification is Unverified, say once that the Atlas has not verified it.
 
-LIST QUESTIONS: When a <matching_records> block is supplied it holds the records the Atlas has for the question, and says how many there are. Name only spaces listed there, give the count, and say when the list is cut off. Never name a space as carrying a flag unless its own Recorded Flags line or Grade Basis line carries it, and never infer a flag from a funder's industry. Use the verb a record uses (refused, returned, removed, dropped); do not say a space accepted money when its line says it refused or returned it, and do not call a record ungraded when its Governance Classification shows a grade.
+LIST QUESTIONS: When a <matching_records> block is supplied it holds the records the Atlas has for the question, and says how many there are. Name only spaces listed there, give the count, and say when the list is cut off. The page prints the count and the grade tally as the first line of your answer, so write no number of spaces and no sentence about how many spaces hold a grade or how many did something; start with the groups or the names. A space's own grade is the one on its own line. Never name a space as carrying a flag unless its own Recorded Flags line or Grade Basis line carries it, and never infer a flag from a funder's industry. Use the verb a record uses (refused, returned, removed, dropped); do not say a space accepted money when its line says it refused or returned it, and do not call a record ungraded when its Governance Classification shows a grade.
 
 GROUNDING: Answer only from the records supplied with each question. Quote a figure only if it appears in a record or its cited source, and name that source. If the records do not say, say they do not say. Do not recall studies, cases, budgets or dates from memory.
 
@@ -14533,6 +14537,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         if (rawText) {
           // A gossip request answers with the gossip alone. NO_GOSSIP is the model's word for "the records report nothing", which the chat says in its own plain sentence.
+          if (themed && !isGossipMode) rawText = rawText.replace(/^\s*The Atlas (?:holds|records|has)[^.]*\d[^.]*\.\s*(?:(?:Their|The) grades are[^.]*\.\s*)?/i, '');
+          if (themed && !isGossipMode) rawText = `The Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} for this question. Grades: ${themed.tallyText}.\n\n${rawText}`;
           if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing is reported for this space in the records.</p>', gossip: false, none: true };
           return isGossipMode ? { html: renderCuratorMarkdown(rawText), gossip: true } : renderCuratorMarkdown(rawText);
         }
@@ -19929,9 +19935,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=423"></script>
-<script src="assets/layers.js?v=423"></script>
-<script src="assets/hq-detail.js?v=423"></script>
-<script src="assets/bubbles.js?v=423" defer></script>
+<script src="assets/typeset.js?v=424"></script>
+<script src="assets/layers.js?v=424"></script>
+<script src="assets/hq-detail.js?v=424"></script>
+<script src="assets/bubbles.js?v=424" defer></script>
 </body>
 </html>
