@@ -69,6 +69,8 @@
     } else if (REACH) clearReach();
   }
   let recById = null, keyIndex = null, keyKind = null, web = null, loading = false;
+  // Label type is regular on the light theme and light on the dark one.
+  const LW = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
   let cityFlags = null;
   // Headquarters of the funders and offices of the people the funding map names (assets/hq.json, built by tools/build_hq.py).
   const KIND = { gov: COL.gov, corp: COL.corp, found: COL.found };
@@ -420,13 +422,13 @@
       const k = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0], col = KIND[k] || COL.corp;
       ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 0.8; ctx.fillStyle = col; ctx.strokeStyle = '#000';
       ctx.beginPath(); ctx.arc(px, py, s, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '300 10px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = LW() + ' 10px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       if (!small) ctx.fillText(String(n), px, py + 0.5);
       const names = list.slice(0, 3).map(e => e.n).join(', ') + (n > 3 ? ` and ${n - 3} more` : '');
       LM.push({ x: px, y: py, r: s + 3, col, label: `${e0.c}, ${e0.co}`, sub: `${n} funder offices`, sub2: names, ask: `Which funders are headquartered in ${e0.c}?`,
         go() { if (typeof window.flyTo === 'function') window.flyTo(mlon, mlat, baseRadius * (CLUSTER_AT + 1.5)); } });
     });
-    ctx.font = '300 14px "Jokker", sans-serif';
+    ctx.font = LW() + ' 14px "Jokker", sans-serif';
     // Names: on blocks for the focused space's own funders and people. With nothing in focus, only a very close view names them,
     // as plain text on a halo, so the map is not covered in blocks.
     const veryClose = !rec && r >= baseRadius * 30;
@@ -448,7 +450,7 @@
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const font = '300 14px "Jokker", sans-serif';
+    const font = LW() + ' 14px "Jokker", sans-serif';
     const boxes = labelBoxesOnScreen(dots);
     ctx.save();
     ctx.font = font; ctx.textBaseline = 'middle';
@@ -465,7 +467,7 @@
         ctx.fillStyle = G[i.grade].col; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
         // The letter is the second cue: grade A and B are two near greens, and colour alone cannot tell the five apart.
-        ctx.save(); ctx.font = '300 14px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
+        ctx.save(); ctx.font = LW() + ' 14px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
         ctx.fillText(G[i.grade].letter, d.x, d.y + 0.5); ctx.restore();
       });
     }
@@ -580,7 +582,7 @@
     const W = ctx.canvas.clientWidth || 1e9;
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
     const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat')].filter(Boolean);
-    ctx.save(); ctx.font = '300 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.save(); ctx.font = LW() + ' 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 28, h = 22, pad = 6;
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
     // ring belongs to first, so the ring's other names stay readable.
