@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=425">
-  <script src="assets/config.js?v=425"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=426">
+  <script src="assets/config.js?v=426"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v425';
+    const ATLAS_RELEASE = 'culture-atlas-v426';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=425').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=426').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15914,7 +15914,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:', true); return; }
       // A named funder: the spaces whose records link it (funder_links), the same names the Funding block shows on each record.
-      if (!explicit && asks(/\b(fund|funds|funded|funding|funder|back|backs|backed|sponsor|sponsors|sponsored|give|gives|money|connect|connects|pay|pays)\b/)) {
+      // A funder named on its own ("what does Vale do?") is a question about that funder, not about the record still open on the map, so no funding verb is needed.
+      if (!explicit) {
         const funders = {};
         ALL_INSTITUTIONS.forEach(i => (i.funder_links || []).forEach(f => { if (f && f.funder) (funders[f.funder] = funders[f.funder] || []).push(i); }));
         const named = Object.keys(funders).filter(f => new RegExp('\\b' + esc(f) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
@@ -19935,9 +19936,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=425"></script>
-<script src="assets/layers.js?v=425"></script>
-<script src="assets/hq-detail.js?v=425"></script>
-<script src="assets/bubbles.js?v=425" defer></script>
+<script src="assets/typeset.js?v=426"></script>
+<script src="assets/layers.js?v=426"></script>
+<script src="assets/hq-detail.js?v=426"></script>
+<script src="assets/bubbles.js?v=426" defer></script>
 </body>
 </html>
