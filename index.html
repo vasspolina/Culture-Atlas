@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=408">
-  <script src="assets/config.js?v=408"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=409">
+  <script src="assets/config.js?v=409"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v408';
+    const ATLAS_RELEASE = 'culture-atlas-v409';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=408').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=409').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12487,6 +12487,8 @@ return maplibregl$1;
 
       // 4. Responsive Layout Transitions (Mobile vs Desktop)
       if (window.innerWidth < 768) {
+        // Asked from the chat: the phone's Details sheet and tab stay closed behind the answer, as the desktop column does.
+        if (window.atlasKeepTab) return;
         const bs = document.getElementById('dossier-bottom-sheet');
         if (bs) bs.classList.remove('hidden');
         if (typeof setActiveMobileTab === 'function') {
@@ -19880,9 +19882,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=408"></script>
-<script src="assets/layers.js?v=408"></script>
-<script src="assets/hq-detail.js?v=408"></script>
-<script src="assets/bubbles.js?v=408" defer></script>
+<script src="assets/typeset.js?v=409"></script>
+<script src="assets/layers.js?v=409"></script>
+<script src="assets/hq-detail.js?v=409"></script>
+<script src="assets/bubbles.js?v=409" defer></script>
 </body>
 </html>
