@@ -2739,3 +2739,14 @@ div:has(>#topThemeBtn){column-gap:0}
    The row title is hidden, so its third of the row stood empty. The three facts now take the full width, in three equal columns. */
 :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-visit{grid-template-columns:minmax(0,1fr)}
 :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-visit .d-row-head{display:none}
+/* The funder and person record is set as a details page, like the space sheet (user, 27 Oct 2026): the name large in mixed case over a rule, the kind as the
+   small line above it, and the close a large thin cross on a solid grey square in the top-right corner, the one the space sheet uses. */
+#hqPanel.is-details{position:relative}
+#hqPanel.is-details .hq-head{display:block;position:relative;padding:var(--m-s4,18px) 72px 14px 18px;border-bottom:.8px solid var(--ink)}
+#hqPanel.is-details .hq-kind{margin:0 0 8px;font-size:var(--fs-m)}
+#hqPanel.is-details h2{font:500 clamp(30px,3.2vw,44px)/1.1 var(--sans);letter-spacing:-.01em;text-wrap:balance}
+#hqPanel.is-details .hq-close{position:absolute;top:0;right:0;width:56px;height:56px;margin:0;padding:0;display:flex;align-items:center;justify-content:center;background:var(--grey);color:var(--ink)}
+#hqPanel.is-details .hq-close svg{width:40px;height:40px;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:butt}
+#hqPanel.is-details .hq-close:hover{background:var(--ink);color:var(--paper)}
+#hqPanel.is-details .hq-ask{margin-top:14px}
+#hqPanel.is-details section{border-bottom:.8px solid var(--ink)}
