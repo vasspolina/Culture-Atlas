@@ -1,0 +1,177 @@
+[
+ {
+  "id": "pivo-sao-paulo",
+  "name": "Pivô",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "website": "https://www.pivo.org.br",
+  "size": "S",
+  "year_founded": 2012,
+  "sources": [
+   "https://www.pivo.org.br/en/about/",
+   "https://www.gov.br/cultura/pt-br"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "name": "Sesc São Paulo",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "website": "https://www.sescsp.org.br",
+  "size": "L",
+  "year_founded": 1946,
+  "sources": [
+   "https://www.e-flux.com/announcements/6784487"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income BRL 3.78bn: about 79 percent compulsory levy on businesses, 14 percent financial income, 6 percent services; no grant line from a named public body (budget execution summary 2024)."
+ },
+ {
+  "id": "sofia-city-art-gallery",
+  "name": "Sofia City Art Gallery",
+  "city": "Sofia",
+  "country": "Bulgaria",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://sghg.bg/en/mission/",
+   "https://sghg.bg/en/history/",
+   "https://sghg.bg/en/partners/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "laongo-granite-sculpture-symposium",
+  "name": "Laongo Granite Sculpture Symposium",
+  "city": "Laongo",
+  "country": "Burkina Faso",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.noocultures.info/burkina-faso-appel-a-candidature-pour-la-14eme-edition-du-symposium-international-de-sculpture-sur-granite-de-laongo/",
+   "https://burkina24.com/2026/10/16/laongo-la-15e-edition-du-symposium-international-de-sculpture-sur-granite-prevue-du-2-au-23-novembre/",
+   "https://en.wikipedia.org/wiki/Symposium_de_sculpture_sur_granit_de_Laongo"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "fespaco-ouagadougou",
+  "name": "FESPACO",
+  "city": "Ouagadougou",
+  "country": "Burkina Faso",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://fespaco.bf/",
+   "https://www.eeas.europa.eu/delegations/burkina-faso/union-europ%C3%A9enne-partenaire-du-fespaco-2025_fr",
+   "http://africultures.com/alex-moussa-sawadogo-tire-un-bilan-du-fespaco-2025-16324/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "mus-e-national-du-burkina-faso-ouagadougou",
+  "name": "Musée National du Burkina Faso",
+  "city": "Ouagadougou",
+  "country": "Burkina Faso",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.infosculturedufaso.net/musee-national-du-burkina-faso-une-mobilisation-collective-pour-redonner-vie-au-patrimoine/",
+   "https://lefaso.net/spip.php?article133791="
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "sa-sa-art-projects-phnom-penh",
+  "name": "Sa Sa Art Projects",
+  "city": "Phnom Penh",
+  "country": "Cambodia",
+  "website": "http://www.sasaart.info/",
+  "size": "S",
+  "year_founded": 2010,
+  "sources": [
+   "https://cambodianess.com/article/artists-rally-around-sa-sa-art-projects-to-help-the-ngo-continue-its-programs",
+   "https://documenta-fifteen.de/en/lumbung-members-artists/sa-sa-art-projects/",
+   "https://www.reifoundation.com/projects/sa-sa-art-projects-cultivating-cambodia-s-arts-community"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "bandjoun-station-bandjoun",
+  "name": "Bandjoun Station",
+  "city": "Bandjoun",
+  "country": "Cameroon",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://africultures.com/bandjoun-station-laboratoire-sans-frontieres-12778/",
+   "https://www.moco.art/fr/artistes-demain-0"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "doualart-douala",
+  "name": "doual'art",
+  "city": "Douala",
+  "country": "Cameroon",
+  "website": "http://www.doualart.org",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "http://doualart.org/about/",
+   "https://en.wikipedia.org/wiki/Doual%27art"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "mus-e-national-du-cameroun-yaound",
+  "name": "Musée National du Cameroun",
+  "city": "Yaoundé",
+  "country": "Cameroon",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://cameroon-nationalmuseum.cm/",
+   "https://www.afd.fr/en/carte-des-projets/promoting-historical-and-cultural-heritage-cameroon",
+   "https://www.expertisefrance.fr/en/projects/project-support-modernisation-national-museum-yaounde"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "banff-centre-for-arts-and-creativity-banff",
+  "name": "Banff Centre for Arts and Creativity",
+  "city": "Banff",
+  "country": "Canada",
+  "website": null,
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.banffcentre.ca/supporters-banff-centre",
+   "https://www.banffcentre.ca/sites/default/files/Banff%20Centre%20Annual%20Report%20(2024-25).pdf"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024-25 income CAD 60.6M: about 34 percent government grants (Alberta and federal), 6 percent donations, 49 percent earned (sales, rentals, tuition), rest investments and capital grant amortization (audited statements)."
+ },
+ {
+  "id": "contemporary-calgary",
+  "name": "Contemporary Calgary",
+  "city": "Calgary",
+  "country": "Canada",
+  "website": "https://www.contemporarycalgary.com",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.contemporarycalgary.com/support",
+   "https://apps.cra-arc.gc.ca/ebci/hacc/srch/pub/dsplyBscChrtyPfl?selectedCharityBn=861113288RR0001",
+   "https://www.contemporarycalgary.com/leadership-circle"
+  ],
+  "needs_finance": true
+ }
+]

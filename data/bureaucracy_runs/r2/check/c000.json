@@ -1,0 +1,102 @@
+[
+ {
+  "id": "agostinho-neto-memorial-memorial-dr-antonio-agostinho-neto",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-casa-sobre-el-arroyo-casa-del-puente",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "boyd-house-ii-robin-boyd-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "rose-seidler-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "domenig-steinhaus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "das-rote-wien-im-waschsalon-karl-marx-hof",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "margarete-schutte-lihotzky-zentrum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "https://www.schuette-lihotzky.at/de/impressum/",
+    "page says": "The imprint names Verein Margarete Schütte-Lihotzky Club (ZVR 854118344) only as Herausgeber of the website; it says nothing about the Zentrum's legal form. The page that states it, https://www.schuette-lihotzky.at/de/zentrum/verein-msl-club/, says the Club was founded in 2013 as Trägerverein und Organisationsform des gesamten Tätigkeitsbereichs, and is not among the cited urls.",
+    "fix": [
+     "https://www.schuette-lihotzky.at/de/zentrum/verein-msl-club/"
+    ]
+   },
+   {
+    "field": "basis",
+    "stored": "The imprint names Verein Margarete Schütte-Lihotzky Club (ZVR 854118344) as publisher of the Zentrum's site.",
+    "page says": "The imprint proves only who publishes the site; the Verein MSL Club page proves the Verein is the Zentrum's supporting association.",
+    "fix": "The Verein MSL Club page states the Margarete Schütte-Lihotzky Club (ZVR 854118344) was founded in 2013 as the supporting association and organisational form of the Zentrum's whole field of activity."
+   }
+  ],
+  "corrected": {
+   "id": "margarete-schutte-lihotzky-zentrum",
+   "governance": {
+    "legal_form": "association",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.schuette-lihotzky.at/de/zentrum/verein-msl-club/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Verein MSL Club page states the Margarete Schütte-Lihotzky Club (ZVR 854118344) was founded in 2013 as the supporting association and organisational form of the Zentrum's whole field of activity."
+  }
+ },
+ {
+  "id": "villa-beer",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "braemhuis-renaat-braem-huis",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "The Herita page says only that Herita (vzw) has worked with Stad Antwerpen since 2024 to open the house to the public and is studying restoration needs; it does not say Herita owns or runs Braemhuis or give the house a legal form. The Flemish Government decision of 13 December 2024 concerns Herita's recognition as a heritage network and does not mention Braemhuis. A partner's form is not the space's form.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "braemhuis-renaat-braem-huis",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "horta-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-buuren-museum-gardens",
+  "verdict": "ok",
+  "faults": []
+ }
+]

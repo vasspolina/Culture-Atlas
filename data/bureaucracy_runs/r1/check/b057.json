@@ -1,0 +1,46 @@
+[
+ {
+  "id": "cricoteka-krakow",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2026",
+    "page says": "The cited page was published 2024-03-11 and last modified 2025-01-14 (page metadata); its text describes 2024 activities and the programme resolution of 28.03.24. Nothing on the page dates it 2026, which is today's year, not the document's.",
+    "fix": "2025"
+   }
+  ],
+  "corrected": {
+   "id": "cricoteka-krakow",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "Województwo Małopolskie",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://cricoteka.pl/pl/cricoteka-muzeum-tadeusza-kantora-i-nowoczesna-instytucja-kultury/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the institution's own page states it is a cultural institution of Województwo Małopolskie."
+  }
+ },
+ {
+  "id": "mocak-kraków",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "belarusian-council-for-culture-rada-kultury-warsaw",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "msn-warsaw",
+  "verdict": "ok",
+  "faults": []
+ }
+]

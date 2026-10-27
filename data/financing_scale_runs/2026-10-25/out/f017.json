@@ -1,0 +1,228 @@
+[
+ {
+  "id": "bienal-de-la-habana-havana",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "fabrica-de-arte-cubano",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museo-nacional-de-bellas-artes-de-la-habana-havana",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "nicosia-municipal-arts-centre-nimac",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "meetfactory-prague",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 5100,
+   "area_kind": "building",
+   "sources": [
+    "https://www.meetfactory.cz/media/files/Vyroční_zpráva_2025.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "CZK",
+   "income": 56883113.46,
+   "expenditure": 58329214.76,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "audited statements",
+   "url": "https://www.meetfactory.cz/media/files/Vyroční_zpráva_2025.pdf"
+  },
+  "basis": "The 2025 annual report (PDF p. 21) gives a usable floor area of 5,100 m2 for the former glassworks building; its visitor figure is stated only as over 40,000 and its staff only as a planned 20 outsourced workers. Profit and loss statement for 2025 (PDF p. 8) gives total revenue 56,883,113 and total costs 58,329,215 CZK; public is the operating grants line (38,332 thousand), private the donations line (396 thousand), earned the sales of own services and goods line (18,130 thousand), net assets the own resources total on the balance sheet (824 thousand)."
+ },
+ {
+  "id": "tranzit-cz-prague",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "dox-centre-for-contemporary-art-prague",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.dox.cz/files/vyrocni-zprava-2025-final-merged-compressed.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "The 2025 annual report (PDF p. 15) gives 3,200 m2 as the total exhibition area of the three to four exhibitions shown in parallel; its visitor figure is an average of ca 68,543 a year, not a count for one year."
+ },
+ {
+  "id": "galerie-rudolfinum-prague",
+  "scale": {
+   "visitors": 109280,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.galerierudolfinum.cz/wp-content/uploads/Galerie_Rudolfinum_2025_vyrocni_zprava_EN.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "CZK",
+   "income": null,
+   "expenditure": null,
+   "public": 21435805,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://www.galerierudolfinum.cz/wp-content/uploads/Galerie_Rudolfinum_2025_vyrocni_zprava_EN.pdf"
+  },
+  "basis": "The 2025 annual report foreword (PDF p. 4) gives 109,280 visitors for 2025. The financial report (PDF p. 20) states the Ministry of Culture contribution for 2025 operations as CZK 21,435,805; the gallery is a unit of the Czech Philharmonic, whose report holds total income and spending, so only the public line is stored."
+ },
+ {
+  "id": "kunsthalle-praha-prague",
+  "scale": {
+   "visitors": 158093,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 5687,
+   "area_kind": "building",
+   "sources": [
+    "https://www.kunsthallepraha.org/files/kunsthalle-praha-vz-2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "The 2025 annual report (PDF p. 7) gives 158,093 visitors in 2025 and a building area of 5,687 m2 covering three galleries, shop and cafe; the average full-time equivalent staff of 22.75 (PDF p. 44) is not a whole number and is not stored."
+ },
+ {
+  "id": "national-gallery-prague",
+  "scale": {
+   "visitors": 554524,
+   "visitors_year": "2025",
+   "staff": 242,
+   "staff_kind": "staff",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://admin.www.ngprague.cz/storage/17972/VZ_2025_NGP_ENGLISH.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "CZK",
+   "income": 506271079,
+   "expenditure": 506271079,
+   "public": 402654818,
+   "private": null,
+   "earned": 81694684,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "annual report",
+   "url": "https://admin.www.ngprague.cz/storage/17972/VZ_2025_NGP_ENGLISH.pdf"
+  },
+  "basis": "The 2025 annual report (PDF p. 8) gives 554,524 visits across all venues in 2025; staff 242 is the total of the length-of-employment table as of 31 December 2025 (PDF p. 63), while the average full-time equivalent is 207.44. The financial management tables (PDF p. 66) give total revenue and total expenses of CZK 506,271,079 for 2025; public is revenue from transfers, earned is own revenue, and the total also includes CZK 21,921,577 drawn from funds."
+ },
+ {
+  "id": "fondation-donwahi-abidjan",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "musee-des-cultures-contemporaines-adama-toungara-mucat",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

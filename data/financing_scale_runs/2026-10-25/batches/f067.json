@@ -1,0 +1,174 @@
+[
+ {
+  "id": "seoul-museum-of-art-seoul",
+  "name": "Seoul Museum of Art",
+  "city": "Seoul",
+  "country": "South Korea",
+  "website": "https://sema.seoul.go.kr/",
+  "size": "L",
+  "year_founded": null,
+  "sources": [
+   "https://sema.seoul.go.kr/kr/sema/sema_in",
+   "https://sema.seoul.go.kr/kr/support/landing",
+   "https://www.khan.co.kr/article/202506241145011"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "whanki-museum-seoul",
+  "name": "Whanki Museum",
+  "city": "Seoul",
+  "country": "South Korea",
+  "website": "http://whankimuseum.org/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.koreaherald.com/article/10806003",
+   "https://view.asiae.co.kr/en/article/2026052708355821399"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "nam-june-paik-art-center-yongin",
+  "name": "Nam June Paik Art Center",
+  "city": "Yongin",
+  "country": "South Korea",
+  "website": "https://njp.ggcf.kr/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.e-flux.com/announcements/650114/hyundai-translocal-series-to-foster-collaboration-among-art-institutions-in-korea-and-across-the-globe",
+   "https://en.wikipedia.org/wiki/Hyundai_Alabama_child_labor_allegations",
+   "https://www.e-flux.com/directory/3815/nam-june-paik-art-center"
+  ],
+  "needs_finance": false
+ },
+ {
+  "id": "fundació-antoni-tàpies-barcelona",
+  "name": "Fundació Antoni Tàpies",
+  "city": "Barcelona",
+  "country": "Spain",
+  "website": "https://fundaciotapies.org",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://fundaciotapies.org"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 activity income EUR 2.87M: about 69 percent public grants, 6 percent donations and sponsors, 26 percent earned (audited accounts 2024, lines 1 and 6)."
+ },
+ {
+  "id": "fundaci-joan-mir",
+  "name": "Fundació Joan Miró",
+  "city": "Barcelona",
+  "country": "Spain",
+  "website": "https://www.fmirobcn.org",
+  "size": "L",
+  "year_founded": 1975,
+  "sources": [
+   "https://www.fmirobcn.org/en/foundation/",
+   "https://www.fmirobcn.org/en/foundation/alliances-and-philanthropy/institutional-corporate/patrons-sponsors-and-corporate-partners/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 12.0M: about 31 percent official grants, 15 percent other grants, donations and sponsorship, 54 percent earned from tickets, shop, services and rentals (audited accounts, income statement)."
+ },
+ {
+  "id": "hangar-barcelona",
+  "name": "Hangar.org",
+  "city": "Barcelona",
+  "country": "Spain",
+  "website": "https://hangar.org",
+  "size": "S",
+  "year_founded": 1997,
+  "sources": [
+   "https://hangar.org/en/about/",
+   "https://www.barcelona.cat/en/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "la-virreina-barcelona",
+  "name": "La Virreina Centre de la Imatge",
+  "city": "Barcelona",
+  "country": "Spain",
+  "website": "https://ajuntament.barcelona.cat/lavirreina/en",
+  "size": "S",
+  "year_founded": 2007,
+  "sources": [
+   "https://ajuntament.barcelona.cat/lavirreina/en",
+   "https://www.barcelona.cat/en/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "macba-museu-d-art-contemporani-de-barcelona",
+  "name": "MACBA (Museu d'Art Contemporani de Barcelona)",
+  "city": "Barcelona",
+  "country": "Spain",
+  "website": "https://www.macba.cat",
+  "size": "L",
+  "year_founded": 1995,
+  "sources": [
+   "https://www.macba.cat/en/about-macba/transparency",
+   "https://www.macba.cat/en/about-macba/sponsors-and-collaborators",
+   "https://www.barcelona.cat"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 15.0M: about 80 percent public grants (city, Generalitat, Ministry, EU), 7 percent earned, plus 11 percent release of capital grants (Compte General 2025)."
+ },
+ {
+  "id": "sonar-festival",
+  "name": "Sónar Festival",
+  "city": "Barcelona",
+  "country": "Spain",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.catalannews.com/culture/item/arca-and-rone-x-lahorde-cancel-sonar-show-over-ties-to-israeli-investment-fund",
+   "https://sonar.es/en",
+   "https://mixmag.net/read/sónar-founders-cut-ties-festival-amid-controversy-over-superstruct-kkr-ownership-news"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "azkuna-zentroa-bilbao",
+  "name": "Azkuna Zentroa (Alhóndiga Bilbao)",
+  "city": "Bilbao",
+  "country": "Spain",
+  "website": "https://www.azkunazentroa.eus",
+  "size": "L",
+  "year_founded": 2010,
+  "sources": [
+   "https://www.bilbaoria2000.org/en/actions/other-actions/azkunazentroa-alhondiga/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "bulegoa-zb-bilbao",
+  "name": "Bulegoa z/b",
+  "city": "Bilbao",
+  "country": "Spain",
+  "website": "https://bulegoa.org",
+  "size": "S",
+  "year_founded": 2010,
+  "sources": [
+   "https://bulegoa.org/en/about-us/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "guggenheim-bilbao-bilbao",
+  "name": "Guggenheim Bilbao",
+  "city": "Bilbao",
+  "country": "Spain",
+  "website": "https://www.guggenheim-bilbao.eus/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.guggenheim-bilbao.eus/en/corporate-support/our-corporate-members"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 39.0M: about 20 percent public subsidies (Basque Government, Bizkaia, Bilbao), 18 percent fees and sponsorship, 40 percent sales, 14 percent other operating income (audited accounts 2025)."
+ }
+]

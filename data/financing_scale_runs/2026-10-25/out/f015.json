@@ -1,0 +1,211 @@
+[
+ {
+  "id": "art-macao-macau",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "how-art-museum-shanghai",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.gooood.cn/how-art-museum-china-by-ares-partners.htm"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the designer's project page gives the museum as 7,000 sqm in total, of which a 4,200 sqm exhibition space."
+ },
+ {
+  "id": "long-museum-shanghai",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://culture360.asef.org/news-events/chinas-largest-private-museum-opens-shanghai"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the 2014 Art Newspaper report reprinted by ASEF Culture360 states 16,000 sq. m of exhibition space for the West Bund building, 2014 figure."
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.shanghai.gov.cn/cmsres/44/4493e3d6f09146eaa2eaeccf83a89bea/7c5843416cfdcaa582b37f85d3180916.pdf",
+    "https://www.citynewsservice.cn/service/Power-Station-of-Art-the-first-state-run-museum-of-contemporary-art-gnov3xkp"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "CNY",
+   "income": 126098100,
+   "expenditure": 113392100,
+   "public": 52957700,
+   "private": null,
+   "earned": 73140400,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "other (municipal final accounts of the museum)",
+   "url": "https://www.shanghai.gov.cn/cmsres/00/008716d0d9e64c9ba21e6b27d205dfd1/33bfd87143c41bf13b1756c8574588a7.pdf"
+  },
+  "basis": "Scale: visitors are the 43.70 wan visits (437,000) in the 2025 performance self-evaluation of the exhibition display fund, PDF page 8, for 2025; the 15,000 sq m of exhibition sections is stated by the Shanghai city news service. Finance: the museum's own 2025 final accounts, PDF page 5 (income and expenditure total table, in 10,000 yuan) and page 6 (income table); public is fiscal grant income of 5,295.77 and earned is service income (事业收入) of 7,314.04."
+ },
+ {
+  "id": "rockbund-art-museum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "shanghai-biennale",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "tank-shanghai",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 60000,
+   "area_kind": "site",
+   "sources": [
+    "https://touch.shio.gov.cn/jsp/jrsh_detail_en.jsp?id=4552"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the Shanghai government news item states the site covers 60,000 square meters."
+ },
+ {
+  "id": "west-bund-museum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": 22000,
+   "area_kind": "building",
+   "sources": [
+    "https://davidchipperfield.com/projects/west-bund-museum"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the architect's project data lists a gross floor area of 22,000 m2."
+ },
+ {
+  "id": "yuz-museum-shanghai",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "ocat-shenzhen-shenzhen",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.gooood.cn/en/ocat-b10-shenzhen-by-urbanus.htm"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the architect's project data for OCAT-B10, the building that houses OCAT Shenzhen since 2022, lists a floor area of 6,109 m2."
+ },
+ {
+  "id": "hubei-museum-of-art-wuhan",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://govt.chinadaily.com.cn/s/201908/29/WS5d673d9f498ebcb190578ef7/art-museums.html"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the Hubei government China Daily page of 2019 states a total area of 15,318 square meters."
+ },
+ {
+  "id": "museum-of-contemporary-art-yinchuan-yinchuan",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://theartnewspaper.com/2015/08/27/new-museum-on-silk-road-breaks-the-chinese-mould"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the 2015 Art Newspaper report describes a complex covering 15,000 sq. m."
+ }
+]

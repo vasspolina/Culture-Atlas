@@ -1,0 +1,127 @@
+[
+ {
+  "id": "le-bal-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "louvre-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "musée-dorsay-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-de-la-chasse-et-de-la-nature",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "palais-de-tokyo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "paris-musees-reseau",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "municipal or regional body",
+    "page says": "The recruitment page calls Paris Musées an établissement public à caractère administratif created by the Ville de Paris; the establishment page says it is an établissement public local with legal and financial autonomy, replacing management of the museums en régie directe. It is a separate public body, not a department of the city.",
+    "fix": "statutory public body"
+   },
+   {
+    "field": "basis",
+    "stored": "Governance: Paris Musées' recruitment page calls it an administrative public body created by the Ville de Paris that recruits civil servants and, for temporary missions, contract agents.",
+    "page says": "Does not mention the legal and financial autonomy that the establishment page gives as the reason it is a separate public body",
+    "fix": "Governance: Paris Musées' recruitment page calls it an administrative public body created by the Ville de Paris that recruits civil servants and, for temporary missions, contract agents, and its establishment page calls it a local public body with its own legal and financial autonomy."
+   }
+  ],
+  "corrected": {
+   "id": "paris-musees-reseau",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Ville de Paris",
+    "director_appointed_by": null,
+    "staff_status": "mixed",
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.parismusees.paris.fr/fr/travailler-pour-paris-musees",
+     "https://www.parismuseescollections.paris.fr/fr/l-etablissement-public-paris-musees"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: Paris Musées' recruitment page calls it an administrative public body created by the Ville de Paris that recruits civil servants and, for temporary missions, contract agents, and its establishment page calls it a local public body with its own legal and financial autonomy."
+  }
+ },
+ {
+  "id": "pinault-collection-bourse-de-commerce-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "le-confort-moderne-poitiers",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ceaac-strasbourg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "crac-occitanie-sète",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "le-fresnoy-studio-national-des-arts-contemporains",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pictanovo-tourcoing",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": [
+     "https://www.pictanovo.com/gouvernance/"
+    ],
+    "page says": "The governance page lists a 24-member board and an 'Adhérer à l'association' link but never states Pictanovo's legal form. The about page says it became PICTANOVO, 'association dédiée à l'émergence des talents', so the form is right but its page is not cited.",
+    "fix": [
+     "https://www.pictanovo.com/a-propos/"
+    ]
+   },
+   {
+    "field": "basis",
+    "stored": "Governance: Pictanovo's governance page shows a board of 24 members and a link to join the association.",
+    "page says": "A board size and a join link do not state a legal form",
+    "fix": "Governance: Pictanovo's about page calls it an association, formerly the regional audiovisual resource centre created by the Hauts-de-France region in 1985."
+   }
+  ],
+  "corrected": {
+   "id": "pictanovo-tourcoing",
+   "governance": {
+    "legal_form": "association",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.pictanovo.com/a-propos/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: Pictanovo's about page calls it an association, formerly the regional audiovisual resource centre created by the Hauts-de-France region in 1985."
+  }
+ }
+]

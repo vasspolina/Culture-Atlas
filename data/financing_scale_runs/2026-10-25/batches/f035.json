@@ -1,0 +1,177 @@
+[
+ {
+  "id": "basic-space-dublin",
+  "name": "Basic Space",
+  "city": "Dublin",
+  "country": "Ireland",
+  "website": "https://basicspace.ie",
+  "size": "S",
+  "year_founded": 2010,
+  "sources": [
+   "https://visualartistsireland.com/in-focus-artist-led-a-basic-need-for-space"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "douglas-hyde-gallery-dublin",
+  "name": "Douglas Hyde Gallery",
+  "city": "Dublin",
+  "country": "Ireland",
+  "website": "https://thedouglashyde.ie/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://thedouglashyde.ie/wp-content/uploads/2026/08/DHG_2025_Audited_Accounts.pdf",
+   "https://thedouglashyde.ie/support/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 695K: about 55 percent Arts Council, 20 percent Trinity College Dublin, 9 percent donors and sponsors, 5 percent earned, 12 percent Venice and events (accounts p. 18)."
+ },
+ {
+  "id": "hugh-lane-gallery-dublin",
+  "name": "Hugh Lane Gallery",
+  "city": "Dublin",
+  "country": "Ireland",
+  "website": "https://www.dublincity.ie/culture-art-and-film/arts-culture-public-spaces/hugh-lane-gallery",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://www.dublincity.ie/culture-art-and-film/arts-culture-public-spaces/hugh-lane-gallery",
+   "http://web.archive.org/web/20260519134900/https://hughlane.ie/support-and-donate/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "imma-dublin",
+  "name": "IMMA",
+  "city": "Dublin",
+  "country": "Ireland",
+  "website": "https://imma.ie/",
+  "size": null,
+  "year_founded": null,
+  "sources": [
+   "https://my.uplift.ie/petitions/public-art-public-values-imma-must-divest"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 12.4M: about 69 percent Oireachtas grant, 17 percent deferred pension funding, 10 percent commercial, 3 percent sponsorship; deficit 54,587 (audited statements, p. 12)."
+ },
+ {
+  "id": "pallas-projects-dublin",
+  "name": "Pallas Projects/Studios",
+  "city": "Dublin",
+  "country": "Ireland",
+  "website": "https://pallasprojects.org",
+  "size": "S",
+  "year_founded": 1996,
+  "sources": [
+   "https://pallasprojects.org/about",
+   "https://pallasprojects.org"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "project-arts-centre-dublin",
+  "name": "Project Arts Centre",
+  "city": "Dublin",
+  "country": "Ireland",
+  "website": "https://projectartscentre.ie",
+  "size": "S",
+  "year_founded": 1966,
+  "sources": [
+   "https://projectartscentre.ie/about/",
+   "https://www.artscouncil.ie"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "temple-bar-gallery-studios",
+  "name": "Temple Bar Gallery + Studios",
+  "city": "Dublin",
+  "country": "Ireland",
+  "website": "https://www.templebargallery.com",
+  "size": "S",
+  "year_founded": 1983,
+  "sources": [
+   "https://www.templebargallery.com/support",
+   "https://www.charitiesregulator.ie",
+   "https://www.templebargallery.com/about-us/our-partners"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income EUR 821K: about 71 percent Arts Council and Dublin City Council, 12 percent donors, sponsors and friends, 15 percent studio and event income (audited accounts p. 19)."
+ },
+ {
+  "id": "ormston-house-limerick",
+  "name": "Ormston House",
+  "city": "Limerick",
+  "country": "Ireland",
+  "website": "https://ormstonhouse.com",
+  "size": "S",
+  "year_founded": 2011,
+  "sources": [
+   "https://ormstonhouse.com/programme/river-residencies/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "lismore-castle-arts",
+  "name": "Lismore Castle Arts",
+  "city": "Lismore",
+  "country": "Ireland",
+  "website": "https://lismorecastlearts.ie/",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.lismorecastlearts.com/support",
+   "https://www.charitiesregulator.ie",
+   "https://www.lismorecastlearts.ie/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "the-model",
+  "name": "The Model",
+  "city": "Sligo",
+  "country": "Ireland",
+  "website": "https://www.themodel.ie",
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.themodel.ie/support/",
+   "https://www.charitiesregulator.ie",
+   "https://www.themodel.ie/"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2024 income EUR 665K: about 76 percent public funding (Arts Council 50 percent, Sligo County Council 18 percent), 2 percent foundations and donors, 21 percent earned (audited accounts p. 16)."
+ },
+ {
+  "id": "haifa-museum-of-art",
+  "name": "Haifa Museum of Art",
+  "city": "Haifa",
+  "country": "Israel",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.hms.org.il/eng/Sponsorship",
+   "https://www.foxnews.com/world/israeli-museum-to-remove-mcjesus-art-sculpture-after-violent-protests.amp",
+   "https://en.wikipedia.org/wiki/Haifa_Museum_of_Art"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "arab-hebrew-theatre-of-jaffa-al-saraya",
+  "name": "Arab-Hebrew Theatre of Jaffa (Al-Saraya)",
+  "city": "Jaffa",
+  "country": "Israel",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://en.wikipedia.org/wiki/The_Arab-Hebrew_Theater",
+   "https://thejewishindependent.com.au/one-theatre-fought-back-israeli-government",
+   "https://www.arabnews.com/node/2591585/amp"
+  ],
+  "needs_finance": false,
+  "finances_note": "FY2025 income NIS 3.2M: about 43 percent state and municipal grants, 49 percent ticket and service income, 8 percent donations (Guidestar Israel, filed report 2025)."
+ }
+]
