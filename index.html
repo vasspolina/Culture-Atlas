@@ -14858,12 +14858,41 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return null;
     }
 
+    // A city or country spelled wrong after "in", "near", "about" and the like ("Prage") is put right before the question is read.
+    let _placeTypoCache = null;
+    function fixPlaceTypos(text) {
+      if (!text) return text;
+      if (!_placeTypoCache) {
+        const names = [...ALL_CITIES_REGISTRY.map(c => c.name), ...ALL_COUNTRIES_REGISTRY.map(c => c.name)].filter(n => n && n.length >= 5 && !/\s/.test(n));
+        const words = new Set();
+        ALL_INSTITUTIONS.forEach(i => [i.name].concat(i.aliases || []).forEach(n => String(n).toLowerCase().split(/[^\p{L}]+/u).forEach(w => w && words.add(w))));
+        _placeTypoCache = { names, have: new Set(names.map(n => n.toLowerCase())), words };
+      }
+      const { names, have, words } = _placeTypoCache;
+      const stop = new Set(['pairs', 'logos', 'berth', 'those', 'there']);
+      const dist = (a, b) => {
+        const d = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+        for (let j = 1; j <= b.length; j++) d[0][j] = j;
+        for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+        return d[a.length][b.length];
+      };
+      return text.replace(/[\p{L}]{5,}/gu, (w, off) => {
+        const l = w.toLowerCase();
+        if (have.has(l) || words.has(l) || stop.has(l)) return w;
+        if (!/(?:^|\b(?:in|near|around|from|of|about|at|to|for|across|and|vs|versus|compare)\s+)$/i.test(text.slice(0, off))) return w;
+        const hit = names.find(n => Math.abs(n.length - l.length) <= 1 && dist(n.toLowerCase(), l) <= (n.length >= 8 ? 2 : 1));
+        return hit || w;
+      });
+    }
     function findMentionedInst(text) {
       if (!text) return null;
       // A name typed in full is that record, whatever its tier; otherwise the longest name found in the text wins.
       const typed = (text || '').toLowerCase().trim();
       const exact = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === typed);
       if (exact) return exact;
+      // A place named on its own ("Prague", "what about Berlin?") is the place, not a space that has the name among its aliases.
+      const bare = typed.replace(/^(?:what about|tell me about|about|show me|show|how about|go to|open)\s+/, '').replace(/[?!.\s]+$/, '');
+      if ([...ALL_CITIES_REGISTRY, ...ALL_COUNTRIES_REGISTRY].some(c => c && c.name && c.name.toLowerCase() === bare)) return null;
       // "this museum", "here": the question is about the open record, so no guessed match from the words around it.
       const contextual = /\b(this|here|its?)\b/.test(typed);
       const resolved = contextual ? null : findAnyInstitution(text);
@@ -14883,7 +14912,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return false;
       });
       if (direct) return direct;
-      if (!contextual && typeof findFuzzyInstitutionMatch === 'function') {
+      // A question about spaces in general or a comparison names no one space, so a near-miss on its words is not a guess worth making.
+      const aboutMany = /\b(spaces|museums|galleries|institutions|cities|countries|compare|versus)\b/.test(t)
+        || (/\b(museum|space|gallery|institution)\b/.test(t) && [...ALL_CITIES_REGISTRY, ...ALL_COUNTRIES_REGISTRY].some(c => c && c.name && new RegExp('\\b' + c.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(t)));
+      if (!contextual && !aboutMany && typeof findFuzzyInstitutionMatch === 'function') {
         const fuzzy = findFuzzyInstitutionMatch(t, 0.65);
         if (fuzzy && fuzzy.inst && fuzzy.isClean) return fuzzy.inst;
       }
@@ -15407,6 +15439,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
 
     async function handleCuratorQuery(query) {
+      query = fixPlaceTypos(query);
       // Only a name the visitor types opens that record's Details tab; a prompt, chip, link or mark that sends the same words stays in the chat.
       const typedByVisitor = !!window.atlasTypedQuery; window.atlasTypedQuery = false;
       // Every question the page puts to the chat is answered in the chat: its tab (or the phone's chat view) comes to the front
@@ -15512,7 +15545,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const asks = (re) => re.test(q);
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
-      const target = explicit || active;
+      let target = explicit || active;
       // A name the visitor types on its own ("moma", "show me MoMA") is a request for that record, so it opens as a click on its pin does:
       // the Details tab with the record, and the map flown in to the space. A question about a space still keeps you in the chat.
       if (typedByVisitor && explicit && isNameRequest(query, explicit)) {
@@ -15591,8 +15624,139 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (place && !explicit && ALL_CITIES_REGISTRY.some(c => c.name === place) && !(selectedCityFilter && matchC(selectedCityFilter, place) && isCityStreetViewActive)) {
         filterByCity(place, true, false);
       }
+      // A question about a place or about spaces in general is not about the record last opened: only a name, "this" or "it" points at one.
+      if (!explicit && (place || /\b(spaces|museums|galleries|institutions|cities|countries|funders|sponsors|donors)\b/.test(q) || /\b(?:any|which|what|every|each|best|worst)\s+(?:museum|space|gallery|institution)\b/.test(q)) && !/\b(this|here|it|its|that)\b/.test(q)) target = null;
+      // A region named instead of a place ("in Europe") limits the spaces by country.
+      const REGIONS = [
+        { name: 'Europe', re: /\b(europe|european)\b/, set: new Set(['Albania', 'Austria', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Czechia', 'Denmark', 'Estonia', 'Faroe Islands', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Iceland', 'Ireland', 'Italy', 'Kosovo', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Moldova', 'Netherlands', 'North Macedonia', 'Norway', 'Poland', 'Portugal', 'Romania', 'Russia', 'Serbia', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Switzerland', 'UK', 'United Kingdom', 'Ukraine']) },
+        { name: 'Africa', re: /\b(africa|african)\b/, set: new Set(['Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Cameroon', "C\u00f4te d'Ivoire", 'DR Congo', 'Egypt', 'Ethiopia', 'Ghana', 'Guinea', 'Kenya', 'Libya', 'Madagascar', 'Mali', 'Mauritius', 'Morocco', 'Mozambique', 'Namibia', 'Niger', 'Nigeria', 'Republic of the Congo', 'Rwanda', 'Senegal', 'South Africa', 'Sudan', 'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe']) },
+        { name: 'Asia', re: /\b(asia|asian)\b/, set: new Set(['Bangladesh', 'Cambodia', 'China', 'Hong Kong', 'India', 'Indonesia', 'Japan', 'Kazakhstan', 'Kyrgyzstan', 'Malaysia', 'Mongolia', 'Nepal', 'North Korea', 'Pakistan', 'Philippines', 'Singapore', 'South Korea', 'Sri Lanka', 'Taiwan', 'Tajikistan', 'Thailand', 'Uzbekistan', 'Vietnam']) },
+        { name: 'Latin America', re: /\b(latin america\w*|south america\w*|caribbean)\b/, set: new Set(['Argentina', 'Bahamas', 'Barbados', 'Belize', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Costa Rica', 'Cuba', 'Dominican Republic', 'Ecuador', 'El Salvador', 'Guadeloupe', 'Guatemala', 'Haiti', 'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 'Panama', 'Paraguay', 'Peru', 'Puerto Rico', 'Trinidad and Tobago', 'Uruguay', 'Venezuela']) },
+        { name: 'the Middle East', re: /\bmiddle east(?:ern)?\b/, set: new Set(['Bahrain', 'Iran', 'Iraq', 'Israel', 'Jordan', 'Kuwait', 'Lebanon', 'Oman', 'Palestine', 'Qatar', 'Saudi Arabia', 'Syria', 'Turkey', 'UAE']) }
+      ];
+      const region = place ? null : REGIONS.find(r => r.re.test(q));
+      const pl = place || (region && region.name);
+      const inScope = (i, p) => (!p || [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(p.toLowerCase()))) && (!region || region.set.has(i.country));
+      const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+      const FLAG_TOPICS = [
+        { re: /\b(oil|fossil|gas|petrol\w*|coal)\b/, flag: 'Fossil fuels', label: 'a fossil fuel funder' },
+        { re: /\btobacco\b/, flag: 'Tobacco', label: 'a tobacco funder' },
+        { re: /\b(gambling|casino|betting|lottery)\b/, flag: 'Gambling', label: 'a gambling funder' },
+        { re: /\b(arms|weapons?|defen[cs]e|military)\b/, flag: 'Arms and defence', label: 'an arms or defence funder' },
+        { re: /\b(opioids?|sackler|pharma\w*)\b/, flag: 'Opioids', label: 'an opioid funder' },
+        { re: /\bsanctions?\b/, flag: 'Sanctions', label: 'a sanctions link' },
+        { re: /\b(protests?|protested|boycotts?|boycotted)\b/, flag: 'Protest or boycott', label: 'a protest or boycott' },
+        { re: /\bcensor\w*\b/, flag: 'State censorship or punishment', label: 'state censorship or punishment' },
+        { re: /\bgulf\b/, flag: 'Gulf state body', label: 'a Gulf state body' },
+        { re: /\b(forced|exploited) labou?r\b/, flag: 'Forced or exploited labour', label: 'forced or exploited labour' },
+        { re: /\bmining\b/, flag: 'Mining disaster', label: 'a mining disaster' },
+        { re: /\b(?:sponsors?|funders?)\b.{0,40}\b(?:dropp\w*|withdr[ae]w\w*|withdrawn|pulled out|cut ties|walked away|left)\b|\b(?:dropp\w*|withdr[ae]w\w*|pulled out|cut ties|walked away)\b.{0,40}\b(?:sponsors?|funders?)\b/, flag: 'Sponsor dropped under pressure', label: 'a sponsor that dropped out under pressure' },
+        { re: /\b(prison|detention)\b/, flag: 'Prison or detention', label: 'a prison or detention link' }
+      ];
+      // "Which city has the most grade F spaces?": the places ranked by how many of their spaces match.
+      if (!explicit && asks(/\b(cit(?:y|ies)|countr(?:y|ies))\b/) && asks(/\b(which|what|top\s*\d*|name)\b/) && asks(/\b(most|more|highest|largest|top|dirtiest|cleanest|worst|best)\b/)) {
+        const byCity = asks(/\bcit(?:y|ies)\b/);
+        const gl = q.match(/\bgrade\s+([a-f])\b/) || (asks(/\b(dirtiest|worst)\b/) ? [0, 'f'] : asks(/\b(cleanest|best)\b/) ? [0, 'a'] : null);
+        const rankN = Math.min(10, +((q.match(/\btop\s*(\d+)\b/) || [])[1]) || 5);
+        const rankTopic = FLAG_TOPICS.find(t => t.re.test(q));
+        const flagged = asks(/\bflag/);
+        const pool = ALL_INSTITUTIONS.filter(i => gl ? i.grade === gradeFromLetter(gl[1]) : rankTopic ? (i.flags || []).includes(rankTopic.flag) : flagged ? i.tier === 'B' && i.why_flagged : true);
+        const count = {};
+        pool.forEach(i => { const k = byCity ? i.city : i.country; if (k) count[k] = (count[k] || 0) + 1; });
+        const top = Object.entries(count).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, rankN);
+        const what = gl ? `grade ${gradeLetter(gradeFromLetter(gl[1]))} ` : rankTopic ? `${rankTopic.label} ` : flagged ? 'flagged ' : '';
+        if (top.length) {
+          answer(`<p>${byCity ? 'Cities' : 'Countries'} with the most ${escapeHtml(what)}spaces: ${top.map(([k, c]) => `${escapeHtml(k)} ${c}`).join(', ')}.</p>`);
+          return;
+        }
+      }
+      // "Compare Prague and Berlin": the count of spaces, the two ends of the rating scale and the flagged ones, side by side.
+      const named = [...new Set(places.filter(n => new RegExp('\\b' + esc(n) + '\\b', 'i').test(query)))].filter((n, _, all) => !all.some(m => m !== n && m.length > n.length && m.toLowerCase().includes(n.toLowerCase())));
+      if (!explicit && named.length > 1 && asks(/\b(compare|comparison|versus|vs\.?|difference|differ)\b/)) {
+        answer(named.slice(0, 4).map(p => {
+          const here = ALL_INSTITUTIONS.filter(i => inScope(i, p));
+          return `<p>${escapeHtml(p)}: ${plural(here.length, 'space', 'spaces')}, ${here.filter(i => i.grade === 1).length} at grade A, ${here.filter(i => i.grade === 5).length} at grade F, ${here.filter(i => i.tier === 'B' && i.why_flagged).length} flagged.</p>`;
+        }).join(''), named.slice(0, 2).map(p => `Show grade A spaces in ${p}`));
+        return;
+      }
+      // The funders named on the most records, in a place when one is named.
+      if (!explicit && !target && ((asks(/\b(funders?|sponsors?|donors?)\b/) && asks(/\b(most|biggest|largest|top|common|often|main)\b/)) || (place && asks(/\bwho (?:funds|sponsors|backs|pays for)\b/)))) {
+        const count = {};
+        ALL_INSTITUTIONS.filter(i => inScope(i, place)).forEach(i => new Set((i.funder_links || []).map(f => f && f.funder).filter(Boolean)).forEach(f => { count[f] = (count[f] || 0) + 1; }));
+        const top = Object.entries(count).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 5);
+        if (top.length) {
+          answer(`<p>Funders named on the most records${pl ? ' in ' + escapeHtml(pl) : ''}: ${top.map(([k, c]) => `${escapeHtml(k)} ${c}`).join(', ')}.</p>`);
+          return;
+        }
+      }
+      // Spaces ranked on a figure the records state: visitors, income, founding year, administration. Income is in each space's own currency, so it needs a place.
+      if (!explicit && !target && !asks(/\b(funders?|sponsors?|donors?)\b/)) {
+        const founded = q.match(/\b(?:founded|opened|built|established)\s+(before|after|in|since)\s+(\d{4})\b/);
+        if (founded) {
+          const y = +founded[2], rel = founded[1];
+          const here = ALL_INSTITUTIONS.filter(i => inScope(i, place) && +i.year_founded && (rel === 'before' ? +i.year_founded < y : rel === 'in' ? +i.year_founded === y : +i.year_founded >= y)).sort((a, b) => +a.year_founded - +b.year_founded || a.name.localeCompare(b.name));
+          listOf(here, `${plural(here.length, 'space', 'spaces')}${pl ? ' in ' + escapeHtml(pl) : ''} founded ${rel} ${y}, earliest first${here.length > 12 ? '. The first 12' : ''}:`);
+          return;
+        }
+        const level = asks(/\bstate[- ](?:run|owned)\b/) ? 5 : asks(/\bprivately (?:run|owned)\b/) ? 1 : 0;
+        if (level) {
+          const here = ALL_INSTITUTIONS.filter(i => i.bureaucracy && i.bureaucracy.level === level && inScope(i, place)).sort((a, b) => a.name.localeCompare(b.name));
+          listOf(here, `${plural(here.length, 'space', 'spaces')}${pl ? ' in ' + escapeHtml(pl) : ''} rated ${escapeHtml(BUREAUCRACY[level].toLowerCase())} for administration${here.length > 12 ? '. The first 12' : ''}:`);
+          return;
+        }
+        let spec = null;
+        if (asks(/\b(bureaucra\w*|red tape)\b/)) { const asc = asks(/\b(least|fewest|lowest|less)\b/); spec = { asc, ok: i => i.bureaucracy && i.bureaucracy.level, val: i => i.bureaucracy.level, show: i => BUREAUCRACY[i.bureaucracy.level].toLowerCase(), title: asc ? 'Least red tape' : 'Most red tape' }; }
+        else if (asks(/\b(oldest|newest|youngest|earliest)\b/)) { const asc = asks(/\b(oldest|earliest)\b/); spec = { asc, ok: i => +i.year_founded, val: i => +i.year_founded, show: i => 'founded ' + i.year_founded, title: asc ? 'Oldest' : 'Newest' }; }
+        else if (place && asks(/\b(budgets?|income|richest|wealthiest)\b/)) { const asc = asks(/\b(smallest|lowest|least)\b/); spec = { asc, ok: i => i.finance && i.finance.income > 0 && i.finance.currency, val: i => i.finance.income, show: i => `${proseMoney(i.finance.currency, i.finance.income)}${i.finance.fy ? ', FY' + i.finance.fy : ''}`, title: asc ? 'Smallest income' : 'Largest income' }; }
+        else if (asks(/\b(biggest|largest|busiest|most visited|most visitors|visitors|smallest)\b/)) { const asc = asks(/\bsmallest\b/); spec = { asc, ok: i => i.scale && i.scale.visitors, val: i => i.scale.visitors, show: i => `${proseCount(i.scale.visitors)} visitors${i.scale.visitors_year ? ' in ' + i.scale.visitors_year : ''}`, title: asc ? 'Fewest visitors' : 'Most visitors' }; }
+        if (spec) {
+          const top = ALL_INSTITUTIONS.filter(i => inScope(i, place) && spec.ok(i)).sort((a, b) => (spec.asc ? 1 : -1) * (spec.val(a) - spec.val(b)) || a.name.localeCompare(b.name)).slice(0, 5);
+          if (top.length) {
+            answer(`<p>${spec.title}${pl ? ' in ' + escapeHtml(pl) : ''}, where a figure is on record:</p>${top.map(i => `<p>${formatInstLink(i)}: ${escapeHtml(spec.show(i))}.</p>`).join('')}`);
+            return;
+          }
+        }
+      }
+      // "Cleaner than Tate Modern": the spaces in its city with a better (or worse) rating.
+      if (explicit && explicit.grade && asks(/\b(cleaner|better|worse|dirtier|more transparent|less transparent)\b/) && asks(/\bthan\b/)) {
+        const worse = asks(/\b(worse|dirtier|less transparent)\b/);
+        const where = place || explicit.city;
+        const here = ALL_INSTITUTIONS.filter(i => i.grade && (worse ? i.grade > explicit.grade : i.grade < explicit.grade) && inScope(i, where) && i.id !== explicit.id).sort((a, b) => (worse ? b.grade - a.grade : a.grade - b.grade) || a.name.localeCompare(b.name));
+        listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(where)} rated ${worse ? 'worse' : 'better'} than ${escapeHtml(explicit.name)}, which is grade ${gradeLetter(explicit.grade)}${here.length > 12 ? '. The first 12' : ''}:`);
+        return;
+      }
+      // A place on its own, or asked about as a whole: the count of its spaces, the ratings and the flagged ones.
+      if (place && !explicit && !target && (new RegExp('^\\s*(?:the\\s+)?' + esc(place) + '\\s*[?!.]*$', 'i').test(query) || asks(/\b(tell me about|what about|overview|summary|summari[sz]e|how (?:transparent|clean)|how is)\b/))) {
+        const here = ALL_INSTITUTIONS.filter(i => inScope(i, place));
+        if (here.length) {
+          const byGrade = [1, 2, 3, 4, 5].map(g => `${gradeLetter(g)} ${here.filter(i => i.grade === g).length}`).join(', ');
+          answer(`<p>${escapeHtml(place)}: ${plural(here.length, 'space', 'spaces')}. Grades: ${byGrade}; ${here.filter(i => !i.grade).length} unrated. ${here.filter(i => i.tier === 'B' && i.why_flagged).length} flagged with a reason recorded.</p>`,
+            [`Show grade A spaces in ${place}`, `Show grade F spaces in ${place}`, `Which spaces in ${place} are flagged?`]);
+          return;
+        }
+      }
+      // How much the atlas covers.
+      if (!explicit && !place && asks(/\bhow many\b.*\b(spaces|museums|galleries|institutions|records|places)\b|\bhow big is (?:the|this) (?:atlas|map)\b/)) {
+        const rated = ALL_INSTITUTIONS.filter(i => i.grade).length;
+        const cities = new Set(ALL_INSTITUTIONS.map(i => i.city).filter(Boolean)).size, countries = new Set(ALL_INSTITUTIONS.map(i => i.country).filter(Boolean)).size;
+        answer(`<p>${ALL_INSTITUTIONS.length} spaces in ${cities} cities and ${countries} countries. ${rated} are graded and ${ALL_INSTITUTIONS.length - rated} unrated.</p>`, ['Show grade A spaces', 'Show grade F spaces', 'How are spaces graded?']);
+        return;
+      }
+      if (!explicit && !place && asks(/\b(?:how many|what|which|list)\b.*\b(countries|cities)\b/) && !asks(/\b(most|top|highest|largest|dirtiest|cleanest|worst|best)\b/)) {
+        const byCity = asks(/\bcities\b/);
+        const count = {};
+        ALL_INSTITUTIONS.forEach(i => { const k = byCity ? i.city : i.country; if (k) count[k] = (count[k] || 0) + 1; });
+        const top = Object.entries(count).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+        answer(`<p>${top.length} ${byCity ? 'cities' : 'countries'}, with the most spaces in ${top.slice(0, 8).map(([k, c]) => `${escapeHtml(k)} (${c})`).join(', ')}.</p>`);
+        return;
+      }
       // What employees report: the summary of the accounts on the records, and the count on the space in view.
       if (asks(/\b(what (do )?(employees|staff|workers) (say|report|think)|employee (reviews?|accounts?)|staff (reviews?|accounts?)|glassdoor|kununu|working conditions|work(ing)? (there|here|at))\b/)) {
+        // A place with no space named: its spaces that have accounts.
+        if (place && !target) {
+          const here = ALL_INSTITUTIONS.filter(i => inScope(i, place) && ((i.gossip_data || {}).accounts || []).length).sort((a, b) => a.name.localeCompare(b.name));
+          if (here.length) { listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(place)} with employee accounts, shown in Gossip mode${here.length > 12 ? '. The first 12' : ''}:`, true); return; }
+        }
         // The space in view leads, with what its own accounts say; the summary of all of them follows. A space with no account gets the summary alone.
         const mine = target ? ((target.gossip_data || {}).accounts || []) : [];
         const own = mine.map(a => {
@@ -15618,16 +15782,32 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           answer(`<p>${formatInstLink(target)}: the structured record does not list specific critics, reviews or public controversies. ${hasTheory ? 'Published critics write about this kind of museum; the quotations below are about the type, not evidence of how this museum itself was received.' : ''}</p>${(target.visual_critiques || []).filter(v => v.kind === 'theory').map(v => (v.quotes || []).map(critiqueQuoteHtml).join('')).join('')}${recordContext ? `<p><strong>Recorded context:</strong> ${escapeHtml(recordContext)} This is institutional context from the record, not evidence of critical reception.</p>` : ''}${sourcesHtml(target)}`);
           return;
         }
+        if (place) {
+          const here = ALL_INSTITUTIONS.filter(i => inScope(i, place) && (i.visual_critiques || []).length).sort((a, b) => a.name.localeCompare(b.name));
+          if (here.length) { listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(place)} with published critics quoted on the record:`); return; }
+        }
         answer('<p>The Atlas attaches quotations from published critics (e-flux, L\u2019Internationale Online and similar press, with author and source named) to spaces by museum type, but these are about the type, not evidence of how a given space was received, and they are not reviews of it. The records do not provide a map-wide catalog of critical reception; name a space to see its recorded context and sources.</p>');
         return;
       }
       // A record's funding transparency rating and what decided it, the spaces at one rating, or the rating scale.
-      if (asks(/\b(grade|graded|grading|cleanest|cleanliness)\b/)) {
+      if (asks(/\b(grade|graded|grading|cleanest|cleanliness|dirtiest|transparen\w*|ungraded|unrated)\b/) || (!explicit && asks(/\b(best|worst)\b/) && (place || asks(/\b(spaces?|museums?|galleries|institutions?|places?)\b/)))) {
         // A letter needs a space after "grade" ("graded" is not grade D); an old number may follow it directly.
+        // The spaces with no rating, in a place when one is named.
+        if (asks(/\b(ungraded|unrated|not (?:graded|rated)|(?:no|without|missing)\s+(?:a\s+)?(?:grade|rating))\b/)) {
+          const here = ALL_INSTITUTIONS.filter(i => !i.grade && inScope(i, place)).sort((a, b) => a.name.localeCompare(b.name));
+          listOf(here, `${plural(here.length, 'space', 'spaces')}${pl ? ' in ' + escapeHtml(pl) : ''} without a grade, because no independently sourced funder roster is on record${here.length > 12 ? '. The first 12' : ''}:`);
+          return;
+        }
         let wanted = q.match(/\bgrade(?:\s+([a-f])|\s*([1-5]))\b/i);
         if (wanted) wanted = [wanted[0], wanted[1] || wanted[2]];
         // A lower-case a after "grade" is usually the article ("grade a space"): take it as the letter only before a list word.
-        if (wanted && wanted[1] === 'a' && !/\bgrade\s+a\s*(?:spaces?|museums?|places?|institutions?|in\b|$)/i.test(q)) wanted = null;
+        if (wanted && wanted[1] === 'a' && !/\bgrade\s+a\s*(?:spaces?|museums?|places?|institutions?|galleries|in\b|and\b|or\b|vs\b|versus\b|[?!.,\/]*$)/i.test(q)) wanted = null;
+        // "Cleanest" and "best" ask for grade A, "dirtiest" and "worst" for grade F.
+        if (!wanted && !explicit) {
+          const present = (order) => order.find(g => ALL_INSTITUTIONS.some(i => i.grade === g && inScope(i, place)));
+          if (asks(/\b(cleanest|cleanliness|best|most transparent)\b/)) wanted = ['', gradeLetter(present([1, 2, 3, 4, 5]) || 1).toLowerCase()];
+          else if (asks(/\b(dirtiest|worst|least transparent)\b/)) wanted = ['', gradeLetter(present([5, 4, 3, 2, 1]) || 5).toLowerCase()];
+        }
         // A record's own grade when the question names it or points at it; the ladder for a general question.
         if (target && !wanted && (explicit || /\b(its|this|here|the space|the museum)\b/.test(q))) {
           focus(target);
@@ -15637,12 +15817,34 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           answer(gradeWhy + sourcesHtml(target));
           return;
         }
+        if (wanted && explicit) {
+          const g = gradeFromLetter(wanted[1]);
+          focus(explicit);
+          answer(`<p>${formatInstLink(explicit)}. ${explicit.grade ? (explicit.grade === g ? `Grade ${gradeLetter(g)}.` : `Grade ${gradeLetter(explicit.grade)}, not grade ${gradeLetter(g)}.`) : 'Not rated.'}</p>${sourcesHtml(explicit)}`);
+          return;
+        }
         if (wanted) {
           const g = gradeFromLetter(wanted[1]);
-          const here = ALL_INSTITUTIONS.filter(i => i.grade === g && (!place || [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase())))).sort((a, b) => a.name.localeCompare(b.name));
-          selectedCategoryFilter = 'grade' + g;
+          // "What is grade D?": what the grade means and how many spaces hold it.
+          if (!place && asks(/\b(what is|what does|what's|mean|means|meaning|define)\b/)) {
+            const k = ALL_INSTITUTIONS.filter(i => i.grade === g).length;
+            answer(`<p>Grade ${gradeLetter(g)} means ${escapeHtml(GRADE[g].label.toLowerCase())}. ${plural(k, 'space holds', 'spaces hold')} it.</p>`, [`Show grade ${gradeLetter(g)} spaces`, 'How are spaces graded?']);
+            return;
+          }
+          // "grade A and grade F": every letter named.
+          const extra = [...q.matchAll(/\bgrade\s+([a-f])\b/g), ...q.matchAll(/\bgrades?\s+[a-f]\s+(?:and|or)\s+([a-f])\b/g)].map(m => gradeFromLetter(m[1])).filter(x => x && x !== g);
+          const set = extra.length ? new Set([g, ...extra]) : null;
+          const span = asks(/\bor (?:better|above|higher)\b/) ? [1, g] : asks(/\bor (?:worse|below|lower)\b/) ? [g, 5] : [g, g];
+          const here = ALL_INSTITUTIONS.filter(i => (set ? set.has(i.grade) : i.grade >= span[0] && i.grade <= span[1]) && inScope(i, place)).sort((a, b) => a.grade - b.grade || a.name.localeCompare(b.name));
+          selectedCategoryFilter = !set && span[0] === span[1] ? 'grade' + g : 'all';
           applyFilters();
-          listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} at grade ${gradeLetter(g)}, ${escapeHtml(GRADE[g].label.toLowerCase())}${place ? ' in ' + escapeHtml(place) : ''}${here.length > 12 ? '. The first 12' : ''}:`);
+          listOf(here, `${plural(here.length, 'space', 'spaces')}${pl ? ' in ' + escapeHtml(pl) : ''} at grade ${set ? [...set].sort((a, b) => a - b).map(gradeLetter).join(' and ') : gradeLetter(g)}${set ? ', best first' : span[0] === span[1] ? ', ' + escapeHtml(GRADE[g].label.toLowerCase()) : span[0] === 1 ? ' or better, best first' : ' or worse, best first'}${here.length > 12 ? '. The first 12' : ''}:`);
+          return;
+        }
+        // A place with no letter named: its spaces, best rating first, in place of the scale.
+        if (place && !asks(/\bhow\b/)) {
+          const here = ALL_INSTITUTIONS.filter(i => inScope(i, place)).sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
+          listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(place)}, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
           return;
         }
         const n = {};
@@ -15651,8 +15853,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (!explicit && asks(/epstein/)) {
-        const here = ALL_INSTITUTIONS.filter(i => ((i.epstein_records || []).length || (i.flags || []).includes('Epstein-linked')) && (!place || [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase()))));
-        listOf(here, `Spaces${place ? ' in ' + escapeHtml(place) : ''} with a recorded Epstein-related item or flag. Each item is on its space's page with its sources, and none is independently verified:`, true);
+        const here = ALL_INSTITUTIONS.filter(i => ((i.epstein_records || []).length || (i.flags || []).includes('Epstein-linked')) && inScope(i, place));
+        listOf(here, `Spaces${pl ? ' in ' + escapeHtml(pl) : ''} with a recorded Epstein-related item or flag. Each item is on its space's page with its sources, and none is independently verified:`, true);
         return;
       }
       if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Spaces with a recorded WikiLeaks document. Each is on its space\'s page with its source, and none is independently verified:', true); return; }
@@ -15667,14 +15869,35 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           return;
         }
       }
+      // A kind of funder or controversy named with no space: the spaces whose records carry that flag, worst rating first.
+      const topics = !explicit && !target ? FLAG_TOPICS.filter(t => t.re.test(q)) : [];
+      if (topics.length) {
+        const topic = { label: topics.map(t => t.label).join(' or ') };
+        const here = ALL_INSTITUTIONS.filter(i => (i.flags || []).some(f => topics.some(t => t.flag === f)) && inScope(i, place)).sort((a, b) => (b.grade || 0) - (a.grade || 0) || a.name.localeCompare(b.name));
+        selectedCategoryFilter = 'all';
+        listOf(here, `${plural(here.length, 'space', 'spaces')}${pl ? ' in ' + escapeHtml(pl) : ''} with ${topic.label} on record${here.length > 12 ? '. The first 12' : ''}:`, true);
+        return;
+      }
+      // Free admission, where a record has it.
+      if (!explicit && !target && place && asks(/\bfree\b/)) {
+        const here = ALL_INSTITUTIONS.filter(i => inScope(i, place) && /\bfree\b/i.test(i.admission_fee || i.admission_policy || '')).sort((a, b) => a.name.localeCompare(b.name));
+        listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(place)} with free admission on record${here.length > 12 ? '. The first 12' : ''}:`);
+        return;
+      }
       const inPlace = place && (new RegExp('\\b(in|near|around|across)\\s+' + esc(place) + '\\b', 'i').test(query) || (!explicit && asks(/\b(museums?|spaces?|galleries|institutions?|list|show|find)\b/)));
       // The flagged spaces, with the reason on each record; in a place when one is named.
+      // The spaces with nothing flagged.
+      if (!explicit && asks(/\b(no flags?|not flagged|unflagged|without (?:any )?flags?|never flagged)\b/)) {
+        const here = ALL_INSTITUTIONS.filter(i => !(i.flags || []).length && !i.why_flagged && inScope(i, place)).sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
+        listOf(here, `${plural(here.length, 'space', 'spaces')}${pl ? ' in ' + escapeHtml(pl) : ''} with no flag on record, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
+        return;
+      }
       const wantsFlagged = !explicit && asks(/\bflag(ged|s)?\b/);
       if (wantsFlagged && (inPlace || !place)) {
-        const here = ALL_INSTITUTIONS.filter(i => i.tier === 'B' && i.why_flagged && (!place || [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(place.toLowerCase()))))
+        const here = ALL_INSTITUTIONS.filter(i => i.tier === 'B' && i.why_flagged && inScope(i, place))
           .sort((a, b) => (b.grade || 0) - (a.grade || 0) || a.name.localeCompare(b.name));
         selectedCategoryFilter = 'all';
-        answer(here.length ? `<p>${here.length} flagged ${here.length === 1 ? 'space' : 'spaces'} with a reason recorded${place ? ' in ' + escapeHtml(place) : ''}${here.length > 12 ? '. The first 12' : ''}:</p>${(() => { const st = { items: here, gossip: true, offset: 0 }; return renderListPage(st); })()}` : `<p>No space${place ? ' in ' + escapeHtml(place) : ''} is flagged with a reason recorded.</p>`);
+        answer(here.length ? `<p>${here.length} flagged ${here.length === 1 ? 'space' : 'spaces'} with a reason recorded${pl ? ' in ' + escapeHtml(pl) : ''}${here.length > 12 ? '. The first 12' : ''}:</p>${(() => { const st = { items: here, gossip: true, offset: 0 }; return renderListPage(st); })()}` : `<p>No space${pl ? ' in ' + escapeHtml(pl) : ''} is flagged with a reason recorded.</p>`);
         return;
       }
       if (inPlace) {
@@ -15691,6 +15914,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
 
+      // A region with nothing else asked: its spaces, best rating first.
+      if (region && !explicit && !target) {
+        const here = ALL_INSTITUTIONS.filter(i => inScope(i)).sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
+        listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(region.name)}, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
+        return;
+      }
       if (await askModel()) return;
       if (target && asks(/\b(hours?|open|opening|admission|ticket|price|fee|cost|free|visit|address|where is)\b/)) {
         focus(target);
