@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=406">
-  <script src="assets/config.js?v=406"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=407">
+  <script src="assets/config.js?v=407"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -477,12 +477,6 @@ return maplibregl$1;
         </div>
       </section>
       <!-- END: CuratorChatDrawer -->
-
-      <!-- Active Map Filter Banner (Uncontained) -->
-      <div id="activeMapFilterBanner" class="hidden absolute top-2_5 sm-top-3 left-1_2 -translate-x-1_2 z-20 pointer-events-auto flex items-center gap-2 px-3 py-1 rule-b">
-        <span id="activeMapFilterText" class=""></span>
-        <button id="clearMapFilterBtn" class="ml-1" title="Clear filter">Clear [x]</button>
-      </div>
 
       <!-- City & Country Navigation Banner (Uncontained) -->
       <div id="cityViewControlBanner" class="hidden absolute top-2 sm-top-3 left-2 sm-left-4 z-20 pointer-events-auto flex items-center gap-3 max-w-_calc_100_-16px overflow-x-auto px-3 py-1 rule-b">
@@ -9939,11 +9933,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v406';
+    const ATLAS_RELEASE = 'culture-atlas-v407';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=406').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=407').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17665,12 +17659,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       });
     });
 
-    // Clear Map Filter Button
-    document.getElementById('clearMapFilterBtn')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setCategoryFilter('all', false);
-    });
-
     // Delegated click listener in chat messages for inline links, cards, & city mentions
     const onCuratorMessagesClick = (e) => {
       // Explicitly allow external website links to open in a new tab without interference
@@ -18461,31 +18449,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         return true;
       });
-
-      // Update Floating Map Filter Banner
-      const activeMapBanner = document.getElementById('activeMapFilterBanner');
-      const activeMapIcon = document.getElementById('activeMapFilterIcon');
-      const activeMapText = document.getElementById('activeMapFilterText');
-
-      if (activeMapBanner && activeMapText) {
-        if (isCommunityOnly) {
-          activeMapBanner.classList.remove('hidden');
-          if (activeMapIcon) activeMapIcon.textContent = '';
-          activeMapText.textContent = `${filteredList.length} community notes`;
-        } else if (isVisualCritiqueOnly) {
-          activeMapBanner.classList.remove('hidden');
-          if (activeMapIcon) activeMapIcon.textContent = '';
-          const stratLabel = selectedVisualCritiqueStrategy !== 'all' ? ` (${selectedVisualCritiqueStrategy.replace(/_/g, ' ')})` : '';
-          activeMapText.textContent = `Visual critique & artist feedback${stratLabel}, ${filteredList.length} institutional interventions`;
-        } else if (selectedCategoryFilter !== 'all') {
-          activeMapBanner.classList.remove('hidden');
-          const meta = FILTER_META[selectedCategoryFilter] || { label: selectedCategoryFilter.replace(/_/g, ' ') };
-          if (activeMapIcon) activeMapIcon.textContent = '';
-          activeMapText.textContent = `${meta.label}, ${filteredList.length} spaces on map`;
-        } else {
-          activeMapBanner.classList.add('hidden');
-        }
-      }
 
       // Update Catalog Panel Banner if present
       const activeFilterBanner = document.getElementById('activeFilterBanner');
@@ -19652,9 +19615,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=406"></script>
-<script src="assets/layers.js?v=406"></script>
-<script src="assets/hq-detail.js?v=406"></script>
-<script src="assets/bubbles.js?v=406" defer></script>
+<script src="assets/typeset.js?v=407"></script>
+<script src="assets/layers.js?v=407"></script>
+<script src="assets/hq-detail.js?v=407"></script>
+<script src="assets/bubbles.js?v=407" defer></script>
 </body>
 </html>

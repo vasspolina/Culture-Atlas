@@ -121,11 +121,7 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 .globe-ring{display:none}
 
 /* banners over the map: black pill with white text, close mark in yellow */
-#activeMapFilterBanner,#activeRouteBanner{background:var(--ink);color:var(--paper);border:0}
-#activeMapFilterBanner{background:var(--block);color:var(--ink);border-radius:0;padding:8px 16px;font:400 var(--fs-m)/1 var(--sans)}
-#activeMapFilterText{color:var(--ink)}
-#activeMapFilterText{font:400 var(--fs-m)/1 var(--sans)}
-#clearMapFilterBtn{color:var(--ink)}
+#activeRouteBanner{background:var(--ink);color:var(--paper);border:0}
 /* The street-view bar: a plain white block with a black rule, like the drawing it sits on. No scroll container, so no ragged ends. */
 #cityViewControlBanner{background:var(--paper);color:var(--ink);border:.8px solid var(--ink);padding:9px 14px;gap:16px;overflow:visible}
 #cityViewControlBanner button,#cityViewControlBanner span,#cityViewControlBanner div{color:var(--ink)}
