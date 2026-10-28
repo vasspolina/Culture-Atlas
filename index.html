@@ -34,7 +34,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=429">
+  <link rel="stylesheet" href="assets/atlas.css?v=433">
   <script src="assets/config.js?v=427"></script>
   <script src="assets/subtopic.js?v=427"></script>
   <script>
@@ -447,7 +447,8 @@ return maplibregl$1;
       <!-- BEGIN: CuratorChatDrawer (Mobile Collapsible AI Chat Panel Matching code.html) -->
       <section class="hidden absolute inset-0 z-30 flex-1 flex md-hidden flex-col overflow-hidden rule-t" data-purpose="ai-curator-chat" id="curator-chat-drawer">
         <!-- AI Thinking / Status Header -->
-        <div class="px-4 py-2 rule-b flex items-center justify-between shrink-0">
+        <div class="px-4 py-2 rule-b flex items-center justify-between shrink-0" id="chatSheetHead">
+          <span class="sheet-grabber" aria-hidden="true"></span>
           <div></div>
           <div class="flex items-center space-x-2">
             <button id="curatorDrawerListenBtn" type="button" class="px-2 py-0_5">Listen</button>
@@ -16151,6 +16152,26 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       window.addEventListener('pageshow', settlePage);
 
+      // iPhone keyboard: the page keeps its full height behind the keyboard, so the composer and the lower fields of the Share form sat under it.
+      // While the keyboard is open the app is sized to the visible area (--vvh) and follows it (--vvt); the scroll reset below only runs once the keyboard is gone.
+      if (window.visualViewport) {
+        const root = document.documentElement;
+        const fitVisible = () => {
+          const vv = window.visualViewport;
+          const kb = window.innerWidth < 768 && vv.height < window.innerHeight * 0.85;
+          root.classList.toggle('kb-open', kb);
+          root.style.setProperty('--vvh', Math.round(vv.height) + 'px');
+          root.style.setProperty('--vvt', Math.round(vv.offsetTop) + 'px');
+        };
+        window.visualViewport.addEventListener('resize', fitVisible);
+        window.visualViewport.addEventListener('scroll', fitVisible);
+        fitVisible();
+      }
+      document.addEventListener('focusin', (e) => {
+        if (window.innerWidth >= 768 || !e.target.closest || !e.target.closest('#noteFormFields, #noteInputBlock, #noteAckRow')) return;
+        setTimeout(() => { try { e.target.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (_) {} }, 300);
+      });
+
       function setActiveMobileTab(activeEl) {
         [tabAtlas, tabDossier, tabChat].forEach(el => {
           if (!el) return;
@@ -16191,6 +16212,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         new MutationObserver(() => { if (sheet.classList.contains('hidden')) { setLarge(false); sheet.scrollTop = 0; } }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
         const name = document.getElementById('dossier-sheet-name');
         if (name) new MutationObserver(() => { sheet.scrollTop = 0; }).observe(name, { childList: true, characterData: true, subtree: true });
+      })();
+
+      // Chat sheet: swipe down to close, from the header or from the top of the transcript (a 56px pull, like the Details sheet).
+      (function () {
+        const drawer = document.getElementById('curator-chat-drawer');
+        const body = document.getElementById('curatorDrawerChatBody');
+        const header = drawer && drawer.firstElementChild;
+        if (!drawer || !header) return;
+        let y0 = null, fromBody = false;
+        const start = (e, isBody) => { if (e.target.closest('button, a, input, textarea')) { y0 = null; return; } y0 = e.touches[0].clientY; fromBody = isBody; };
+        const end = (e) => {
+          if (y0 === null) return;
+          const dy = e.changedTouches[0].clientY - y0; y0 = null;
+          if (dy > 56 && (!fromBody || (body && body.scrollTop <= 0))) document.getElementById('close-chat-view-btn')?.click();
+        };
+        header.addEventListener('touchstart', (e) => start(e, false), { passive: true });
+        header.addEventListener('touchend', end, { passive: true });
+        body?.addEventListener('touchstart', (e) => start(e, true), { passive: true });
+        body?.addEventListener('touchend', end, { passive: true });
       })();
 
       closeSheetBtn?.addEventListener('click', () => {

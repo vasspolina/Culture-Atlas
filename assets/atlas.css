@@ -2779,3 +2779,54 @@ div:has(>#topThemeBtn){column-gap:0}
   body:not(.chat-input-mode-active) #workBottomDock :is(#noteFormFields,#noteAckRow,#noteFormStatus,#noteInputLabel){display:none!important}
   :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body #workBottomDock #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-size:var(--fs-m)!important;height:var(--m-tap)!important;min-height:var(--m-tap)!important;padding:0 var(--m-s4)!important}
 }
+
+/* Details sheet typesetting (user, 29 Oct 2026): the close button is a 56px grey square but its bar was only 24px tall, so scrolling text slid under the square and was cut off ("Posts by staff and visitors on review sites and Re…"). The bar is now as tall as the button and solid, the title sits beside the button at the top, and text scrolls cleanly under the bar. */
+@media (max-width:767px){
+  #dossier-bottom-sheet .sheet-chrome{height:56px!important;background:var(--grey)!important}
+  #dossier-bottom-sheet .sheet-size{height:24px}
+  #dossier-bottom-sheet .sheet-title-block{margin-top:-32px!important;position:relative;z-index:1}
+}
+
+/* Details sheet vertical rhythm (user, 29 Oct 2026): inside the record the paddings were zeroed, so a section's last link ran straight into the next heading, the heading into its note, and the source line, date, tag and text of each account sat on top of one another. One scale now: 28px between sections, 6px under a heading, 12px before a card, 24px between cards; inside a card the source and date stay together, then 8px steps to the tag, text, context and link. */
+@media (max-width:767px){
+  :root:root #dossier-sheet-scrollable-body :is(h3.kicker){margin:28px 0 6px!important}
+  :root:root #dossier-sheet-scrollable-body :is(h3.kicker):first-child{margin-top:0!important}
+  :root:root #dossier-sheet-scrollable-body .accounts-note{margin:0 0 12px!important}
+  :root:root #dossier-sheet-scrollable-body .record-card+.record-card{margin-top:24px!important}
+  :root:root #dossier-sheet-scrollable-body .record-card :is(.unverified-platform-tag,.t-lead,ul.t-lead,.account-source-links,.no-indent:not(.kicker)){margin-top:8px!important}
+  :root:root #dossier-sheet-scrollable-body .record-card :is(.kicker)+.kicker{margin-top:0!important}
+  :root:root #dossier-sheet-scrollable-body .record-card .accounts-note{margin:12px 0 0!important}
+  :root:root #dossier-sheet-scrollable-body .record-card li+li{margin-top:8px!important}
+  :root:root #dossier-sheet-scrollable-body .record-card>:first-child{margin-top:0!important}
+  :root:root #dossier-sheet-scrollable-body [data-gossip=items]>.record-card:last-child{margin-bottom:0!important}
+  :root:root #dossier-sheet-scrollable-body .record-card:has(+ h3.kicker){margin-bottom:0!important}
+}
+
+/* Share form with the keyboard open (user, 29 Oct 2026): the app is sized to the area the keyboard leaves free, and the form gets room below its last control, so every field can be scrolled to. */
+@media (max-width:767px){
+  body.chat-input-mode-active #workBottomDock{overflow-y:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;padding-bottom:max(var(--m-s6,24px),env(safe-area-inset-bottom))!important}
+  body.chat-input-mode-active #workBottomDock :is(#noteInstitution,#noteAuthor,#workInput){scroll-margin:16px 0}
+}
+
+/* Top buttons (user, 29 Oct 2026): the title fits with room to spare, so the buttons get up to 8px of air on each side (4px on the narrowest phones) instead of a flat 4px. */
+@media (max-width:767px){
+  #mobileTopBar>div:last-child button{padding:0 clamp(4px,calc(4px + (100vw - 375px)*.2),8px)!important}
+  #mobileTopBar>div:last-child button:last-child{padding-right:clamp(8px,calc(8px + (100vw - 375px)*.2),12px)!important}
+}
+
+/* Chat sheet on phones (user, 29 Oct 2026): it had only a small Close word to dismiss it. A grabber now sits on its header and a downward swipe on the header, or from the top of the chat, closes it. The header is taller so there is something to grab. */
+@media (max-width:767px){
+  #chatSheetHead{position:relative;min-height:56px!important;touch-action:none}
+  #chatSheetHead>.sheet-grabber{position:absolute;left:50%;top:6px;width:36px;height:5px;margin-left:-18px;background:var(--m-secondary,#777);opacity:.5}
+  #curatorDrawerChatBody{overscroll-behavior:contain}
+}
+
+/* Details sheet on phones (user, 29 Oct 2026): at its large height it stopped 8px short of the menu, leaving a sliver of map above it. It now slides all the way up to the menu. */
+@media (max-width:767px){
+  #dossier-bottom-sheet.is-large{max-height:100%!important}
+}
+
+/* Keyboard open on a phone (user, 29 Oct 2026): the page is sized to the area above the keyboard and moves with it, so the chat box and Share form stay in view while typing. */
+@media (max-width:767px){
+  html.kb-open body{height:var(--vvh)!important;transform:translateY(var(--vvt,0px))}
+}
