@@ -13665,19 +13665,9 @@ return maplibregl$1;
         </div>
       ` : '';
 
-      return `
-        <div class="mt-3 p-3 space-y-2" data-exclude-speech="false">
-          <div class="flex items-center justify-between rule-b pb-1_5 flex-wrap gap-1">
-            <div class="flex items-center gap-2 meta">
-
-              <span>Web page read for this answer</span>
-            </div>
-            <span class="meta">Live Web Verification</span>
-          </div>
-          <p class="">${escapeHtml(webIntel.scrapedText)}</p>
-          ${trustedLinksHtml}
-        </div>
-      `;
+      // The raw text the web reader pulled from the page (menus, link lists) is not shown: it was unformatted noise under the answer.
+      // Only the links to the sources read are kept.
+      return trustedLinksHtml ? `<div class="mt-3">${trustedLinksHtml}</div>` : '';
     }
 
     // =========================================================================
