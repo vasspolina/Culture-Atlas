@@ -16206,7 +16206,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const fitVisible = () => {
           const vv = window.visualViewport;
           const kb = window.innerWidth < 768 && vv.height < window.innerHeight * 0.85;
+          const wasOpen = root.classList.contains('kb-open');
           root.classList.toggle('kb-open', kb);
+          // The keyboard has just closed: put the page back at the top and tell the map to redraw at full size, which iPhone does not always do by itself.
+          if (wasOpen && !kb) {
+            [60, 350, 800].forEach((ms) => setTimeout(() => { settlePage(); window.dispatchEvent(new Event('resize')); }, ms));
+          }
           root.style.setProperty('--vvh', Math.round(vv.height) + 'px');
           root.style.setProperty('--vvt', Math.round(vv.offsetTop) + 'px');
         };
