@@ -1826,8 +1826,8 @@ div:has(>#topThemeBtn){column-gap:0}
   #mobileTopBar #mobileTopBrandBtn{padding-left:var(--m-s4);font-weight:600}
   #mobileTopBar #mobileTopBrandBtn span{font-weight:600}
   #mobileTopBar>div:last-child{gap:0}
-  #mobileTopBar>div:last-child button{border:0!important;padding:0 var(--m-s3)!important;min-height:var(--m-tap);min-width:var(--m-tap)}
-  #mobileTopBar>div:last-child button:last-child{padding-right:var(--m-s4)!important}
+  #mobileTopBar>div:last-child button{border:0!important;padding:0 var(--m-s1)!important;min-height:var(--m-tap);min-width:var(--m-tap)}
+  #mobileTopBar>div:last-child button:last-child{padding-right:var(--m-s3)!important}
 
   /* ---- Chat transcript: VStack(alignment:.leading, spacing:16) ---- */
   #curatorScrollArea{padding:var(--m-s3) var(--m-s4)!important}
@@ -1913,7 +1913,7 @@ div:has(>#topThemeBtn){column-gap:0}
   #mobileTopBar>div:last-child button{white-space:nowrap}
   #mobileTopBrandBtn>div{min-width:0;overflow:hidden}
   #mobileTopBrandBtn>div>span{display:block!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  @media (max-width:374px){#mobileTopBar>div:last-child button{padding:0 var(--m-s2)!important}}
+  @media (max-width:374px){#mobileTopBar>div:last-child button{padding:0 var(--m-s1)!important}}
   /* Touch has no hover: a tapped title must not stay inverted. */
   @media (hover:none){#mobileTopBrandBtn:hover{background:transparent!important;color:inherit!important}#mobileTopBrandBtn:hover *{color:inherit!important}}
 
@@ -2742,3 +2742,6 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* The Dark toggle, when on, flips to bone ink with charcoal text (13:1) so it still stands out on the warm ground; cobalt on charcoal is only 1.9:1. */
 :root[data-theme="dark"] #topThemeBtn[aria-pressed=true],:root[data-theme="dark"] #mobileThemeBtn[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)!important}
+
+/* Mobile composer Share button (user, 29 Oct 2026): it kept the white-on-dark styling from the old dark composer, so on the light lavender card it read as an empty field. In light mode it now matches the mic and send buttons: white ground, black text. */
+:root:not([data-theme="dark"]) #mobileComposerCard #mobileComposerActions #mobileStickyShareBtn#mobileStickyShareBtn{background:#fff!important;color:#000!important}
