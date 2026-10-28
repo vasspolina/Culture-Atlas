@@ -14289,6 +14289,8 @@ return maplibregl$1;
       const followUpNote = ambiguousFollowUp
         ? `<follow_up>\nThe visitor is answering your last reply, which named ${namedInReply.map(i => i.name).join(' and ')}. Their words do not say which. Ask which one in a single sentence and say nothing else.\n</follow_up>\n\n`
         : '';
+      // A reply that only says the Atlas has no such record, or asks which space is meant, is not a written account: no AI note under it.
+      queryAI.lastIsShortReply = !!(unknownName || ambiguousFollowUp);
       const nameLookup = unknownName
         ? `<name_lookup>\nThe question is the name "${userPrompt.trim()}". No record carries that name${nearest && nearest.inst ? `; the nearest is ${nearest.inst.name} (${nearest.inst.city || nearest.inst.location || 'no city recorded'})` : ' and none is near it'}. Say in one sentence that the Atlas has no record under that name${nearest && nearest.inst ? ', then name that nearest record in one sentence' : ''}. Do not describe the space that happens to be open on the map, do not guess what the name might be, and do not ask the visitor to clarify.\n</name_lookup>\n\n`
         : '';
@@ -15712,7 +15714,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              appendCuratorMessage(linkifyInstNames(aiHtml) + '<p class="no-indent ai-note">AI-written from archival records. Unverified.</p>', [], webIntel, thinkingData);
+              const aiNote = (typeof queryAI !== 'undefined' && queryAI.lastIsShortReply) ? '' : '<p class="no-indent ai-note">AI-written from archival records. Unverified.</p>';
+              appendCuratorMessage(linkifyInstNames(aiHtml) + aiNote, [], webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -16866,6 +16869,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function toggleChatShare() {
       if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
     }
+    // iPhone can swallow the first tap on a button whose :hover look changes (it treats the tap as the hover and waits for a second one).
+    // The Share buttons therefore act on the tap itself, as long as the finger did not move, and cancel the follow-up click so it cannot toggle twice.
+    ['chatShareBtn', 'mobileStickyShareBtn', 'noteFormCloseBtn'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      let sx = 0, sy = 0, moved = false;
+      el.addEventListener('touchstart', (e) => { const t = e.touches[0]; sx = t.clientX; sy = t.clientY; moved = false; }, { passive: true });
+      el.addEventListener('touchmove', (e) => { const t = e.touches[0]; if (Math.abs(t.clientX - sx) > 10 || Math.abs(t.clientY - sy) > 10) moved = true; }, { passive: true });
+      el.addEventListener('touchend', (e) => { if (moved || !e.cancelable) return; e.preventDefault(); toggleChatShare(); });
+    });
     // Clicking another tab (Details, or on a phone Atlas and Dossier) closes the note screen; the chat is left as it was, with no message.
     document.addEventListener('click', (e) => {
       if (isChatInputMode && e.target.closest && e.target.closest('#workspaceTabDossier, #tab-atlas, #tab-dossier')) exitChatInputMode(true);
