@@ -2779,3 +2779,8 @@ div:has(>#topThemeBtn){column-gap:0}
   body:not(.chat-input-mode-active) #workBottomDock :is(#noteFormFields,#noteAckRow,#noteFormStatus,#noteInputLabel){display:none!important}
   :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body #workBottomDock #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-size:var(--fs-m)!important;height:var(--m-tap)!important;min-height:var(--m-tap)!important;padding:0 var(--m-s4)!important}
 }
+
+/* Details sheet on phones (user, 29 Oct 2026): at its large height it stopped 8px short of the menu, leaving a sliver of map above it. It now slides all the way up to the menu. */
+@media (max-width:767px){
+  #dossier-bottom-sheet.is-large{max-height:100%!important}
+}
