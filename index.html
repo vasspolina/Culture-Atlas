@@ -34,8 +34,9 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=426">
-  <script src="assets/config.js?v=426"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=427">
+  <script src="assets/config.js?v=427"></script>
+  <script src="assets/subtopic.js?v=427"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9939,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v426';
+    const ATLAS_RELEASE = 'culture-atlas-v427';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=426').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=427').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14321,6 +14322,10 @@ return maplibregl$1;
         currentTargetXml = `<current_target>\nEntity: None explicitly selected (Global Inquiry across Leaving it on the table)\n</current_target>\n\n`;
       }
 
+      // A sub-topic named beside the space (archive, library, collection...) is the topic of the answer, not the space's general record.
+      const subTopic = currentTarget && window.AtlasSubTopic ? AtlasSubTopic.detectSubTopic(userPrompt, currentTarget) : null;
+      if (subTopic) currentTargetXml += AtlasSubTopic.subTopicBlock(subTopic, currentTarget);
+
       // 3. Check for recent focus switch note to prevent context bleed
       let focusNotice = '';
       if (typeof curatorContext !== 'undefined' && curatorContext && curatorContext.history) {
@@ -15976,6 +15981,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (await askModel()) return;
+      // A sub-topic of a space ("the archive at MoMA") is answered from the record lines that mention it, or says there are none.
+      const subTopicQ = target && window.AtlasSubTopic ? AtlasSubTopic.detectSubTopic(query, target) : null;
+      if (subTopicQ) {
+        focus(target);
+        const sub = AtlasSubTopic.subTopicRecordAnswer(subTopicQ, target);
+        answer(`<p>${formatInstLink(target)}.</p><p>${escapeHtml(sub.text)}</p>${sub.held ? sourcesHtml(target) : ''}`);
+        return;
+      }
       if (target && asks(/\b(hours?|open|opening|admission|ticket|price|fee|cost|free|visit|address|where is)\b/)) {
         focus(target);
         const lines = [fact('Opening hours: ', target.opening_hours), fact('Admission: ', target.admission_fee || target.admission_policy), fact('Address: ', target.address)].join('');
@@ -19935,9 +19948,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=426"></script>
-<script src="assets/layers.js?v=426"></script>
-<script src="assets/hq-detail.js?v=426"></script>
-<script src="assets/bubbles.js?v=426" defer></script>
+<script src="assets/typeset.js?v=427"></script>
+<script src="assets/layers.js?v=427"></script>
+<script src="assets/hq-detail.js?v=427"></script>
+<script src="assets/bubbles.js?v=427" defer></script>
 </body>
 </html>
