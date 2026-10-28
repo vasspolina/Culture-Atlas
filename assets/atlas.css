@@ -2804,7 +2804,6 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* Share form with the keyboard open (user, 29 Oct 2026): the app is sized to the area the keyboard leaves free, and the form gets room below its last control, so every field can be scrolled to. */
 @media (max-width:767px){
-  body.chat-input-mode-active{height:var(--vvh,100dvh)!important}
   body.chat-input-mode-active #workBottomDock{overflow-y:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;padding-bottom:max(var(--m-s6,24px),env(safe-area-inset-bottom))!important}
   body.chat-input-mode-active #workBottomDock :is(#noteInstitution,#noteAuthor,#workInput){scroll-margin:16px 0}
 }
@@ -2825,4 +2824,9 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Details sheet on phones (user, 29 Oct 2026): at its large height it stopped 8px short of the menu, leaving a sliver of map above it. It now slides all the way up to the menu. */
 @media (max-width:767px){
   #dossier-bottom-sheet.is-large{max-height:100%!important}
+}
+
+/* Keyboard open on a phone (user, 29 Oct 2026): the page is sized to the area above the keyboard and moves with it, so the chat box and Share form stay in view while typing. */
+@media (max-width:767px){
+  html.kb-open body{height:var(--vvh)!important;transform:translateY(var(--vvt,0px))}
 }
