@@ -34,7 +34,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=427">
+  <link rel="stylesheet" href="assets/atlas.css?v=429">
   <script src="assets/config.js?v=427"></script>
   <script src="assets/subtopic.js?v=427"></script>
   <script>
@@ -121,8 +121,8 @@ return maplibregl$1;
     <!-- Right: Action Switchers & Controls -->
     <div class="flex items-center space-x-1_5 shrink-0">
       <!-- New Chat / Reset Quick Actions -->
-      <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" aria-pressed="false">Dark</button>
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
+      <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" aria-pressed="false">Dark</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
         Chat
       </button>
@@ -140,8 +140,8 @@ return maplibregl$1;
 
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
-      <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Dark</button>
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Gossip mode</button>
+      <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Dark</button>
 
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
       <div class="hidden" style="display:none;" aria-hidden="true">
@@ -760,7 +760,7 @@ return maplibregl$1;
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
               <!-- The submission form of the note screen (shown only while a note is written) -->
               <div id="noteFormFields">
-                <h3 id="noteFormTitle">Share information</h3>
+                <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <span aria-hidden="true">×</span></button></div>
                 <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
                 <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space"></label>
                 <datalist id="noteInstitutionList"></datalist>
