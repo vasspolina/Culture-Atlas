@@ -15349,6 +15349,56 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
     }
 
+    // Typing reveal: an answer is written out word by word instead of appearing whole. The finished HTML is built first and its text nodes are
+    // emptied and refilled in place, so links, bold text and lists keep their shape. Follow-up questions, buttons, the thinking panel and the
+    // web-page block wait until the writing is done (the buttons) or appear at once. Tapping the answer, speech, or "reduce motion" finishes it immediately.
+    function typeReveal(root, opts = {}) {
+      if (!root) return { finish() {} };
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const skip = 'button, .curator-followups, .curator-thought-content, [data-exclude-speech="true"], script, style, svg';
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: (n) => (!n.nodeValue.trim() || (n.parentElement && n.parentElement.closest(skip))) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+      });
+      const items = [];
+      let total = 0;
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        const parts = node.nodeValue.split(/(\s+)/).filter(Boolean);
+        items.push({ node, full: node.nodeValue, parts, shown: 0 });
+        total += parts.length;
+      }
+      const follow = root.querySelector('.curator-followups');
+      if (reduce || !items.length || total < 4) return { finish() {} };
+      items.forEach(i => { i.node.nodeValue = ''; });
+      if (follow) follow.style.visibility = 'hidden';
+      // About 28 words a second at most, never longer than 5 seconds however long the answer is.
+      const duration = Math.min(5000, Math.max(700, total * 36));
+      const start = performance.now();
+      let timer = null, idx = 0, done = false;
+      const paint = (count) => {
+        let left = count;
+        for (const it of items) {
+          const n = Math.min(it.parts.length, left);
+          if (n !== it.shown) { it.node.nodeValue = it.parts.slice(0, n).join(''); it.shown = n; }
+          left -= n; if (left <= 0) break;
+        }
+      };
+      const finish = () => {
+        if (done) return; done = true;
+        clearInterval(timer);
+        items.forEach(i => { i.node.nodeValue = i.full; });
+        if (follow) follow.style.visibility = '';
+        if (opts.onTick) opts.onTick();
+      };
+      timer = setInterval(() => {
+        const k = Math.min(total, Math.ceil(((performance.now() - start) / duration) * total));
+        if (k !== idx) { idx = k; paint(k); if (opts.onTick) opts.onTick(); }
+        if (k >= total) finish();
+      }, 30);
+      root.addEventListener('click', finish, { once: true });
+      return { finish };
+    }
+
     function appendCuratorMessage(htmlContent, followUps = [], webIntel = null, thinkingData = null, showSpeak = true) {
       if (typeof curatorContext !== 'undefined') {
         if (!curatorContext.history) curatorContext.history = [];
@@ -15442,6 +15492,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (div.querySelector('[data-gossip]')) div.classList.add('is-gossip');
       curatorMessages.appendChild(div);
       scrollChatToBottom(true);
+      const typedMain = typeReveal(div, { onTick: () => scrollChatToBottom(false) });
+      div._finishTyping = typedMain.finish;
 
       const drawerLive = document.getElementById('curatorDrawerLiveStream');
       if (drawerLive) {
@@ -15453,12 +15505,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         drawerLive.appendChild(mBot);
         const drawerBody = document.getElementById('curatorDrawerChatBody');
         if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight;
+        const typedDrawer = typeReveal(mBot, { onTick: () => { if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight; } });
+        mBot._finishTyping = typedDrawer.finish;
+        const prevFinish = div._finishTyping;
+        div._finishTyping = () => { prevFinish && prevFinish(); typedDrawer.finish(); };
       }
 
       const speakBtn = div.querySelector('.curator-speak-btn');
       if (autoSpeakNextCuratorResponse && speakBtn) {
         autoSpeakNextCuratorResponse = false;
         setTimeout(() => {
+          if (div._finishTyping) div._finishTyping();
           speakCuratorText(div, speakBtn);
         }, 150);
       }
