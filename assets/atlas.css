@@ -2900,5 +2900,6 @@ div:has(>#topThemeBtn){column-gap:0}
   html,body{overscroll-behavior:none}
   #curatorScrollArea,#curatorDrawerChatBody{overscroll-behavior-y:contain}
   #chatSheetHead,#phoneChatHead{touch-action:none}
-  #workViewContainer,#curator-chat-drawer{will-change:transform}
 }
+/* Share note on a phone: the keyboard arrow stays out of the note (it sat on the note's Close); the note's own Close and Back to chat lead out. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body.chat-input-mode-active #workKbCloseBtn#workKbCloseBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body.chat-input-mode-active #mobileKbCloseBtn#mobileKbCloseBtn{display:none!important}
