@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Leaving it on the table report moderation</title>
+  <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
+  <link rel="stylesheet" href="assets/atlas.css?v=275">
+  <script src="assets/config.js?v=275"></script>
+  <style>
+    body.review{height:auto;min-height:100vh;overflow:auto;display:block}
+    .review header{display:flex;align-items:stretch;justify-content:space-between}
+    .review header .brand{display:flex;align-items:center;padding:0 16px;font:400 22px/1 var(--sans)}
+    .review main{max-width:880px;margin:0 auto;padding:24px 16px 64px}
+    .review h1{font:700 40px/1 var(--display-xl);text-transform:uppercase;margin:0 0 8px}
+    .review label{display:block;font-size:14px;margin:12px 0 4px}
+    .review input{width:100%;border:1px solid var(--line);padding:8px 10px;background:var(--paper);color:var(--ink);font-size:16px}
+    .review .btn{padding:8px 16px;border:1px solid var(--line);background:var(--paper)}
+    .review .btn.approve{background:var(--cyan);color:#000}
+    .review .btn.reject{background:var(--orange);color:#000}
+    .review .btn.delete{background:var(--paper);color:var(--ink)}
+    .review .btn[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+    .review .btn:disabled{opacity:.4}
+    .review article{padding:16px 0;border-bottom:1px solid var(--line)}
+    .review .actions{display:flex;gap:8px;margin-top:12px}
+    .review [role="alert"]{padding:8px 12px;background:var(--orange);color:#000}
+  </style>
+</head>
+<body class="review">
+  <header>
+    <a class="brand" href="./" style="text-decoration:none">Leaving it on the table</a>
+    <span class="brand">Review moderation</span>
+  </header>
+  <main>
+    <h1>Whistleblower reports</h1>
+    <p>Every review waits here until you approve it. An approved review appears under the place it was written for, as a review, with the star rating and name the sender chose, if any. Check that the name is not a real person's before approving. Delete removes a review for good.</p>
+    <p id="noBackend" class="hidden" role="alert">Set ATLAS_REPORT_API_URL in assets/config.js to connect the report API.</p>
+    <form id="loginForm">
+      <label for="tokenInput">Admin bearer token</label>
+      <input id="tokenInput" type="password" autocomplete="current-password" required>
+      <button class="btn" type="submit">Open the queue</button>
+    </form>
+    <p id="loginError" class="hidden" role="alert"></p>
+    <section id="queue" class="hidden">
+      <div class="actions" role="group" aria-label="Show notes">
+        <button type="button" class="btn" data-view="PENDING" aria-pressed="true">Waiting</button>
+        <button type="button" class="btn" data-view="APPROVED" aria-pressed="false">On the atlas</button>
+        <button type="button" class="btn" data-view="REJECTED" aria-pressed="false">Rejected</button>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" id="refreshBtn">Refresh</button>
+        <button type="button" class="btn" id="signOutBtn">Forget token</button>
+      </div>
+      <p id="status" role="status"></p>
+      <div id="list"></div>
+    </section>
+  </main>
+  <script src="assets/reports-admin.js?v=275"></script>
+</body>
+</html>
