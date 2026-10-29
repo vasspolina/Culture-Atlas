@@ -2877,3 +2877,20 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Layers menu close (×): a 44px tap area around the small glyph. */
 #layersPanel .layers-close{position:relative}
 #layersPanel .layers-close::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
+/* Text cursor in light mode: black in every chat and note box, empty or not, focused or not (the dark theme's yellow cursor showed on the light ground while a box was focused and empty). The repeated ids outrank the older cursor rules. */
+:root:not([data-theme="dark"]) #workInput#workInput#workInput#workInput#workInput#workInput,
+:root:not([data-theme="dark"]) #workInput#workInput#workInput#workInput#workInput#workInput:focus,
+:root:not([data-theme="dark"]) #workInput#workInput#workInput#workInput#workInput#workInput:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #workInput#workInput#workInput#workInput#workInput#workInput:focus:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #chat-input#chat-input#chat-input#chat-input#chat-input#chat-input,
+:root:not([data-theme="dark"]) #chat-input#chat-input#chat-input#chat-input#chat-input#chat-input:focus,
+:root:not([data-theme="dark"]) #chat-input#chat-input#chat-input#chat-input#chat-input#chat-input:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #chat-input#chat-input#chat-input#chat-input#chat-input#chat-input:focus:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields textarea,
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields textarea:focus,
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields textarea:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields textarea:focus:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input,
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input:focus,
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input:focus:not(:placeholder-shown){caret-color:#000!important}
