@@ -802,7 +802,7 @@ return maplibregl$1;
                   <button id="workKbCloseBtn" class="kb-close-btn" type="button" aria-label="Close the keyboard" title="Close the keyboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
 
                   <!-- Upward Arrow Send Button -->
-                  <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message">
+                  <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message" aria-label="Send message">
                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M12 19V5M5 12l7-7 7 7"/>
                     </svg>
@@ -7028,7 +7028,9 @@ return maplibregl$1;
       }
       if (inst) {
         // setMobileViewMode does nothing at 768px and wider, so on a desktop the answer was written into a chat tab nobody was looking at.
+        // On a phone the record page sits over the chat, so it closes first.
         if (window.innerWidth < 768) {
+          document.getElementById('detailDrawer')?.classList.add('hidden');
           if (typeof setMobileViewMode === 'function') setMobileViewMode('chat');
         } else if (typeof setWorkspaceTab === 'function') {
           setWorkspaceTab('chat');
@@ -7273,6 +7275,11 @@ return maplibregl$1;
 
     function askCuratorAboutInst(inst) {
       if (!inst) return;
+      // On a phone the record page sits over the chat, and the chat tab alone does not bring the chat forward: close the record and show the chat.
+      if (window.innerWidth < 768) {
+        document.getElementById('detailDrawer')?.classList.add('hidden');
+        if (typeof setMobileViewMode === 'function') setMobileViewMode('chat');
+      }
       setWorkspaceTab('chat');
       const input = document.getElementById('workInput');
       if (input) {
@@ -12855,8 +12862,8 @@ return maplibregl$1;
             <h2 class="dossier-main-heading break-words" style="--title-length:${Math.max((inst.name || '').length, 1)}" title="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</h2>
             <div class="head-grid">
               <div class="head-side record-actions record-action-row">
-                <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
-                <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>
+                <button type="button" onclick="window.askCuratorAboutInst(dossierInst || selectedInstitution);" class="record-action">Ask in chat</button>
+                <button type="button" onclick="window.atlasPlanVisit(dossierInst || selectedInstitution)" class="record-action">Plan visit in chat</button>
                 ${(inst.lat && inst.lon && inst.address) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
                 ${inst.id ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
                 ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
@@ -16305,6 +16312,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Back to the map from either phone chat view (the chat sheet, or the chat that answers fill): the Atlas tab does it,
       // closing the Share note too, and the keyboard goes down with it.
       window.atlasCloseChat = function () {
+        document.getElementById('detailDrawer')?.classList.add('hidden');   // the record page too: back to the map means the map
         try { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); } catch (_) {}
         if (tabAtlas) tabAtlas.click();
         else { chatDrawer?.classList.add('hidden'); if (stickyDock) stickyDock.classList.remove('hidden'); if (typeof setMobileViewMode === 'function') setMobileViewMode('map'); }

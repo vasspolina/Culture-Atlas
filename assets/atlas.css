@@ -2874,3 +2874,6 @@ div:has(>#topThemeBtn){column-gap:0}
   :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#chatRecordsInfo,#chatRecordsInfoMobile)>ul{list-style:none!important}
   :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#chatRecordsInfo,#chatRecordsInfoMobile)>ul li{font:300 var(--fs-s)/var(--lh) var(--sans)!important;padding:0 0 0 1.1em!important;text-indent:-1.1em!important}
 }
+/* Layers menu close (×): a 44px tap area around the small glyph. */
+#layersPanel .layers-close{position:relative}
+#layersPanel .layers-close::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:44px;transform:translate(-50%,-50%)}
