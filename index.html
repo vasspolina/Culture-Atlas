@@ -34,7 +34,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=438">
+  <link rel="stylesheet" href="assets/atlas.css?v=439">
   <script src="assets/config.js?v=427"></script>
   <script src="assets/subtopic.js?v=427"></script>
   <script>
@@ -101,6 +101,33 @@ return maplibregl$1;
   </script>
 </head>
 <body>
+  <script>
+    // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
+    // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
+    (function () {
+      var on = /[?&]debug\b/.test(location.search), box = null, lines = [];
+      function show(msg) {
+        if (!on) return;
+        lines.push(msg); if (lines.length > 14) lines.shift();
+        if (!box) {
+          box = document.createElement('pre');
+          box.style.cssText = 'position:fixed;left:0;right:0;top:0;z-index:2147483647;max-height:45vh;overflow:auto;margin:0;padding:6px 8px;background:#000;color:#7CFC00;font:11px/1.3 monospace;white-space:pre-wrap;pointer-events:none;opacity:.92';
+          (document.body || document.documentElement).appendChild(box);
+        }
+        box.textContent = lines.join('\n');
+      }
+      window.atlasDebugLog = function (where, err) { show('! ' + where + ': ' + ((err && (err.stack || err.message)) || err)); try { console.error(where, err); } catch (e) {} };
+      window.addEventListener('error', function (e) { show('ERROR ' + e.message + ' @' + (e.filename || '').split('/').pop() + ':' + e.lineno + ':' + e.colno); });
+      window.addEventListener('unhandledrejection', function (e) { show('REJECTED ' + ((e.reason && (e.reason.message || e.reason)) || '')); });
+      document.addEventListener('click', function (e) {
+        var b = e.target && e.target.closest && e.target.closest('button, a, summary');
+        setTimeout(function () {
+          show('tap ' + (b ? (b.id || (b.textContent || '').trim().slice(0, 18)) : (e.target && e.target.tagName)) + ' | mode=' + (document.body.dataset.mobileMode || '-') + ' | body=' + document.body.className + ' | w=' + innerWidth + 'x' + innerHeight + ' vv=' + Math.round((window.visualViewport || {}).height || 0));
+        }, 120);
+      }, true);
+      if (on) show('debug on · ' + navigator.userAgent.slice(0, 90));
+    })();
+  </script>
 
   <!-- ========================================================= -->
   <!-- ========================================================= -->
@@ -11848,6 +11875,8 @@ return maplibregl$1;
     document.addEventListener('change', (e) => {
       if (e.target.matches && e.target.matches('#noteInstitution, #noteAck')) syncNoteReady();
     });
+    // On a phone the list is built the first time the Institution box is used.
+    document.addEventListener('focusin', (e) => { if (e.target && e.target.id === 'noteInstitution') { try { fillNoteInstitutions(); } catch (err) { atlasDebugLog('fillNoteInstitutions', err); } } });
     // Fills the institution list of the note form once, from the atlas records.
     function fillNoteInstitutions() {
       const list = document.getElementById('noteInstitutionList');
@@ -17041,13 +17070,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
         if (window.atlasSyncInert) window.atlasSyncInert();
         // The form: the institution is the open record's, or chosen from the atlas's list.
-        fillNoteInstitutions();
+        // Each step is guarded: an error in one must never leave the note half open (the conversation hidden and nothing in its place).
+        // On a phone the list of 1,400 places is built when the Institution box is first used, and the keyboard is not raised on its own:
+        // the form opens at once and is read first, and a tap on a box brings the keyboard up.
+        const phone = window.innerWidth < 768;
         const noteInstitution = document.getElementById('noteInstitution');
-        if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || '';
-        const noteStatus = document.getElementById('noteFormStatus');
-        if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not configured. A note cannot be sent.';
-        syncNoteReady();
-        (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus();
+        try { if (!phone) fillNoteInstitutions(); } catch (err) { atlasDebugLog('fillNoteInstitutions', err); }
+        try { if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || ''; } catch (err) { atlasDebugLog('institution', err); }
+        try {
+          const noteStatus = document.getElementById('noteFormStatus');
+          if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not configured. A note cannot be sent.';
+          syncNoteReady();
+        } catch (err) { atlasDebugLog('syncNoteReady', err); }
+        try { if (!phone) (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus(); } catch (err) { atlasDebugLog('focus', err); }
       }
 
       // 5. Hide redundant full-width input mode button if present
