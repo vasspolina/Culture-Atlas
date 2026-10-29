@@ -34,7 +34,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=436">
+  <link rel="stylesheet" href="assets/atlas.css?v=437">
   <script src="assets/config.js?v=427"></script>
   <script src="assets/subtopic.js?v=427"></script>
   <script>
@@ -16314,7 +16314,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       function attachPullToClose(view, head, scroller) {
         if (!view || !head) return;
         let y0 = null, t0 = 0, dy = 0, pulling = false, fromScroller = false;
-        const reset = () => { view.style.transition = ''; view.style.transform = ''; };
+        // The view is moved only while a pull is under way and is given back its own layout straight after: a lasting
+        // transform (or will-change) on this tall view made iPhone Safari draw it as a blank block that took every tap.
+        const reset = () => { view.style.transition = ''; view.style.transform = ''; view.style.willChange = ''; };
         const start = (e, isScroller) => {
           if (window.innerWidth >= 768 || e.touches.length !== 1 || e.target.closest('button, a, input, textarea, select, summary, label')) { y0 = null; return; }
           y0 = e.touches[0].clientY; t0 = Date.now(); dy = 0; pulling = false; fromScroller = isScroller;
@@ -16324,7 +16326,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const d = e.touches[0].clientY - y0;
           if (!pulling) {
             // From the conversation a pull only starts when it is at its top and the finger goes down; anything else is a scroll.
-            if (fromScroller && (d <= 0 || (scroller && scroller.scrollTop > 0))) { y0 = null; return; }
+            if (fromScroller && (d <= 0 || (scroller && scroller.scrollTop > 0) || document.body.classList.contains('chat-input-mode-active'))) { y0 = null; return; }
             if (d < 6) return;
             pulling = true; view.style.transition = 'none';
           }
