@@ -34,7 +34,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=437">
+  <link rel="stylesheet" href="assets/atlas.css?v=438">
   <script src="assets/config.js?v=427"></script>
   <script src="assets/subtopic.js?v=427"></script>
   <script>
@@ -16359,6 +16359,34 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       attachPullToClose(document.getElementById('curator-chat-drawer'), document.getElementById('chatSheetHead'), document.getElementById('curatorDrawerChatBody'));
       attachPullToClose(document.getElementById('workViewContainer'), document.getElementById('phoneChatHead'), document.getElementById('curatorScrollArea'));
+
+      // Swipe up on the composer (the bar at the bottom of the map) opens the chat; swipe down on it closes the chat.
+      // The chat sheet follows the same two moves from its own top bar (pull down, above).
+      (function () {
+        const bar = document.getElementById('mobileStickyInputBar');
+        if (!bar) return;
+        let x0 = null, y0 = null, t0 = 0;
+        bar.addEventListener('touchstart', (e) => {
+          if (window.innerWidth >= 768 || e.touches.length !== 1 || e.target.closest('textarea, input, select')) { y0 = null; return; }
+          x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; t0 = Date.now();
+        }, { passive: true });
+        bar.addEventListener('touchend', (e) => {
+          if (y0 === null) return;
+          const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; y0 = null;
+          const quick = Date.now() - t0 < 700;
+          if (!quick || Math.abs(dy) < 36 || Math.abs(dy) < Math.abs(dx) * 1.5) return;   // a tap, a slow drag, or a sideways swipe of the chips
+          const chatOpen = (chatDrawer && !chatDrawer.classList.contains('hidden')) || document.body.dataset.mobileMode === 'chat';
+          if (dy < 0 && !chatOpen && !document.body.classList.contains('chat-input-mode-active')) {
+            const sheetOpen = bottomSheet && !bottomSheet.classList.contains('hidden');
+            if (sheetOpen) return;
+            tabChat?.click();
+            if (chatDrawer) { chatDrawer.classList.remove('sheet-rise'); void chatDrawer.offsetWidth; chatDrawer.classList.add('sheet-rise'); }
+          } else if (dy > 0 && chatOpen) {
+            window.atlasCloseChat();
+          }
+        }, { passive: true });
+        chatDrawer?.addEventListener('animationend', () => chatDrawer.classList.remove('sheet-rise'));
+      })();
 
       // Keyboard arrow: shown while a chat box has the focus on a phone; a tap puts the keyboard away and leaves the text as it is.
       (function () {
