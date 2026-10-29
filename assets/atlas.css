@@ -2903,3 +2903,12 @@ div:has(>#topThemeBtn){column-gap:0}
 }
 /* Share note on a phone: the keyboard arrow stays out of the note (it sat on the note's Close); the note's own Close and Back to chat lead out. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body.chat-input-mode-active #workKbCloseBtn#workKbCloseBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body.chat-input-mode-active #mobileKbCloseBtn#mobileKbCloseBtn{display:none!important}
+/* Swipe up on the composer opens the chat, swipe down closes it: a grabber on the bar says so, and the sheet rises into place. */
+@media (max-width:767px){
+  #mobileStickyInputBar{position:relative}
+  #mobileStickyInputBar::before{content:"";display:block;position:absolute;top:4px;left:50%;width:36px;height:5px;margin-left:-18px;border-radius:0;background:var(--m-secondary,var(--ink));opacity:.5;pointer-events:none}
+  :root:root:root #mobileStickyInputBar{padding-top:max(var(--m-s3,12px),14px)!important}
+  body.chat-input-mode-active   @keyframes sheetRise{from{transform:translateY(48px);opacity:0}to{transform:none;opacity:1}}
+  #curator-chat-drawer.sheet-rise{animation:sheetRise .26s cubic-bezier(.2,.8,.2,1)}
+  @media (prefers-reduced-motion:reduce){#curator-chat-drawer.sheet-rise{animation:none}}
+}
