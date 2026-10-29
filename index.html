@@ -34,7 +34,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=433">
+  <link rel="stylesheet" href="assets/atlas.css?v=436">
   <script src="assets/config.js?v=427"></script>
   <script src="assets/subtopic.js?v=427"></script>
   <script>
@@ -111,7 +111,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <header class="pt-safe px-3_5 pb-2_5 z-40 rule-b flex md-hidden items-center justify-between gap-2 shrink-0" id="mobileTopBar">
     <!-- Left: Logo & Space Count Pill -->
-    <button id="mobileTopBrandBtn" type="button" class="flex items-center space-x-2 text-left p-0" onclick="if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();" title="Reset Globe View">
+    <button id="mobileTopBrandBtn" type="button" class="flex items-center space-x-2 text-left p-0" onclick="if (typeof window.atlasGoToMap === 'function') window.atlasGoToMap(); else if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();" title="Back to the map" aria-label="Leaving it on the table: back to the map">
       <div class="flex flex-col">
         <span class="t-strong flex items-center gap-1_5">
           Leaving it on the table
@@ -707,6 +707,14 @@ return maplibregl$1;
           <div id="chatInputModeHeader"></div>
         </div>
 
+        <!-- Phone only: the top of the chat, as on the chat sheet. Close, or pull it down, to go back to the map. -->
+        <div id="phoneChatHead" class="md-hidden" aria-label="Chat">
+          <span class="sheet-grabber" aria-hidden="true"></span>
+          <span class="flex-1"></span>
+          <button id="phoneChatListenBtn" type="button">Listen</button>
+          <button id="phoneChatCloseBtn" type="button" aria-label="Close the chat and go back to the map">Close</button>
+        </div>
+
         <!-- The width of the chat: drag either edge of the column, or focus the handle and use the arrow keys -->
         <div id="chatWidthHandle" class="chat-width-handle" role="separator" aria-orientation="vertical" aria-label="Width of the chat" aria-valuemin="320" aria-valuemax="760" aria-valuenow="660" tabindex="0" title="Drag to change the width of the chat, double-click to reset"></div>
         <div id="chatWidthHandleL" class="chat-width-handle is-left" aria-hidden="true"></div>
@@ -790,6 +798,9 @@ return maplibregl$1;
                     <span id="curatorVoiceToggleLabel">Voice</span>
                   </button>
 
+                  <!-- Phone only, while typing: the keyboard closes -->
+                  <button id="workKbCloseBtn" class="kb-close-btn" type="button" aria-label="Close the keyboard" title="Close the keyboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+
                   <!-- Upward Arrow Send Button -->
                   <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message">
                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -867,6 +878,7 @@ return maplibregl$1;
         <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Write a note about an institution">Share information</button>
         <span class="flex-1"></span>
         <button id="mobileStickyVoiceBtn" type="button" aria-pressed="true" aria-label="Voice: read answers aloud" title="Read answers aloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+        <button id="mobileKbCloseBtn" class="kb-close-btn" type="button" aria-label="Close the keyboard" title="Close the keyboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <button id="mobileStickySendBtn" type="button" class="absolute right-1_5 top-1_5 bottom-1_5 px-3 flex items-center space-x-1_5" aria-label="Send message" title="Send message">
         <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
       </button>
@@ -7016,7 +7028,9 @@ return maplibregl$1;
       }
       if (inst) {
         // setMobileViewMode does nothing at 768px and wider, so on a desktop the answer was written into a chat tab nobody was looking at.
+        // On a phone the record page sits over the chat, so it closes first.
         if (window.innerWidth < 768) {
+          document.getElementById('detailDrawer')?.classList.add('hidden');
           if (typeof setMobileViewMode === 'function') setMobileViewMode('chat');
         } else if (typeof setWorkspaceTab === 'function') {
           setWorkspaceTab('chat');
@@ -7261,6 +7275,11 @@ return maplibregl$1;
 
     function askCuratorAboutInst(inst) {
       if (!inst) return;
+      // On a phone the record page sits over the chat, and the chat tab alone does not bring the chat forward: close the record and show the chat.
+      if (window.innerWidth < 768) {
+        document.getElementById('detailDrawer')?.classList.add('hidden');
+        if (typeof setMobileViewMode === 'function') setMobileViewMode('chat');
+      }
       setWorkspaceTab('chat');
       const input = document.getElementById('workInput');
       if (input) {
@@ -12843,8 +12862,8 @@ return maplibregl$1;
             <h2 class="dossier-main-heading break-words" style="--title-length:${Math.max((inst.name || '').length, 1)}" title="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</h2>
             <div class="head-grid">
               <div class="head-side record-actions record-action-row">
-                <button type="button" onclick="window.askCuratorAboutInst(selectedInstitution);" class="record-action">Ask in chat</button>
-                <button type="button" onclick="window.atlasPlanVisit(selectedInstitution)" class="record-action">Plan visit in chat</button>
+                <button type="button" onclick="window.askCuratorAboutInst(dossierInst || selectedInstitution);" class="record-action">Ask in chat</button>
+                <button type="button" onclick="window.atlasPlanVisit(dossierInst || selectedInstitution)" class="record-action">Plan visit in chat</button>
                 ${(inst.lat && inst.lon && inst.address) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
                 ${inst.id ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
                 ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
@@ -16266,35 +16285,90 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (name) new MutationObserver(() => { sheet.scrollTop = 0; }).observe(name, { childList: true, characterData: true, subtree: true });
       })();
 
-      // Chat sheet: swipe down to close, from the header or from the top of the transcript (a 56px pull, like the Details sheet).
-      (function () {
-        const drawer = document.getElementById('curator-chat-drawer');
-        const body = document.getElementById('curatorDrawerChatBody');
-        const header = drawer && drawer.firstElementChild;
-        if (!drawer || !header) return;
-        let y0 = null, fromBody = false;
-        const start = (e, isBody) => { if (e.target.closest('button, a, input, textarea')) { y0 = null; return; } y0 = e.touches[0].clientY; fromBody = isBody; };
-        const end = (e) => {
-          if (y0 === null) return;
-          const dy = e.changedTouches[0].clientY - y0; y0 = null;
-          if (dy > 56 && (!fromBody || (body && body.scrollTop <= 0))) document.getElementById('close-chat-view-btn')?.click();
-        };
-        header.addEventListener('touchstart', (e) => start(e, false), { passive: true });
-        header.addEventListener('touchend', end, { passive: true });
-        body?.addEventListener('touchstart', (e) => start(e, true), { passive: true });
-        body?.addEventListener('touchend', end, { passive: true });
-      })();
-
       closeSheetBtn?.addEventListener('click', () => {
         bottomSheet?.classList.add('hidden');
         setActiveMobileTab(tabAtlas);
       });
 
-      closeChatBtn?.addEventListener('click', () => {
-        chatDrawer?.classList.add('hidden');
-        setActiveMobileTab(tabAtlas);
-        if (typeof setMobileViewMode === 'function') setMobileViewMode('map');
-      });
+      // Back to the map from either phone chat view (the chat sheet, or the chat that answers fill): the Atlas tab does it,
+      // closing the Share note too, and the keyboard goes down with it.
+      window.atlasCloseChat = function () {
+        document.getElementById('detailDrawer')?.classList.add('hidden');   // the record page too: back to the map means the map
+        try { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); } catch (_) {}
+        if (tabAtlas) tabAtlas.click();
+        else { chatDrawer?.classList.add('hidden'); if (stickyDock) stickyDock.classList.remove('hidden'); if (typeof setMobileViewMode === 'function') setMobileViewMode('map'); }
+      };
+      // The title: back to the map, from wherever the phone is, and the globe back to its starting view.
+      window.atlasGoToMap = function () {
+        if (window.innerWidth < 768) window.atlasCloseChat();
+        if (typeof window.resetGlobeZoom === 'function') window.resetGlobeZoom();
+      };
+      closeChatBtn?.addEventListener('click', () => window.atlasCloseChat());
+      document.getElementById('phoneChatCloseBtn')?.addEventListener('click', () => window.atlasCloseChat());
+      document.getElementById('phoneChatListenBtn')?.addEventListener('click', () => { if (typeof toggleCuratorVoice === 'function') toggleCuratorVoice(); });
+
+      // Pull down to close, on both phone chat views (the chat sheet, and the chat that answers fill): from the top bar of the
+      // view, or from the conversation when it is already scrolled to its top. The view follows the finger, so the pull never
+      // feels stuck; let go past 90px (or with a quick flick) and it slides away to the map, otherwise it springs back.
+      // The page itself never moves: the pull is taken over before Safari can drag or bounce the whole page.
+      function attachPullToClose(view, head, scroller) {
+        if (!view || !head) return;
+        let y0 = null, t0 = 0, dy = 0, pulling = false, fromScroller = false;
+        const reset = () => { view.style.transition = ''; view.style.transform = ''; };
+        const start = (e, isScroller) => {
+          if (window.innerWidth >= 768 || e.touches.length !== 1 || e.target.closest('button, a, input, textarea, select, summary, label')) { y0 = null; return; }
+          y0 = e.touches[0].clientY; t0 = Date.now(); dy = 0; pulling = false; fromScroller = isScroller;
+        };
+        const move = (e) => {
+          if (y0 === null) return;
+          const d = e.touches[0].clientY - y0;
+          if (!pulling) {
+            // From the conversation a pull only starts when it is at its top and the finger goes down; anything else is a scroll.
+            if (fromScroller && (d <= 0 || (scroller && scroller.scrollTop > 0))) { y0 = null; return; }
+            if (d < 6) return;
+            pulling = true; view.style.transition = 'none';
+          }
+          dy = Math.max(0, d);
+          if (e.cancelable) e.preventDefault();
+          view.style.transform = 'translateY(' + dy + 'px)';
+        };
+        const end = () => {
+          if (y0 === null) return;
+          y0 = null;
+          if (!pulling) return;
+          pulling = false;
+          const fast = dy > 40 && dy / Math.max(1, Date.now() - t0) > 0.6;
+          view.style.transition = 'transform .22s cubic-bezier(.2,.8,.2,1)';
+          if (dy > 90 || fast) {
+            view.style.transform = 'translateY(100%)';
+            setTimeout(() => { reset(); window.atlasCloseChat(); }, 200);
+          } else {
+            view.style.transform = 'translateY(0)';
+            setTimeout(reset, 230);
+          }
+        };
+        [[head, false], [scroller, true]].forEach(([el, isScroller]) => {
+          if (!el) return;
+          el.addEventListener('touchstart', (e) => start(e, isScroller), { passive: true });
+          el.addEventListener('touchmove', move, { passive: false });
+          el.addEventListener('touchend', end, { passive: true });
+          el.addEventListener('touchcancel', end, { passive: true });
+        });
+      }
+      attachPullToClose(document.getElementById('curator-chat-drawer'), document.getElementById('chatSheetHead'), document.getElementById('curatorDrawerChatBody'));
+      attachPullToClose(document.getElementById('workViewContainer'), document.getElementById('phoneChatHead'), document.getElementById('curatorScrollArea'));
+
+      // Keyboard arrow: shown while a chat box has the focus on a phone; a tap puts the keyboard away and leaves the text as it is.
+      (function () {
+        const root = document.documentElement;
+        const boxes = '#chat-input, #workInput, #noteFormFields textarea, #noteFormFields input';
+        document.addEventListener('focusin', (e) => { if (e.target.matches && e.target.matches(boxes)) root.classList.add('kb-typing'); });
+        document.addEventListener('focusout', (e) => { if (e.target.matches && e.target.matches(boxes)) setTimeout(() => { if (!(document.activeElement && document.activeElement.matches && document.activeElement.matches(boxes))) root.classList.remove('kb-typing'); }, 0); });
+        document.querySelectorAll('.kb-close-btn').forEach((b) => {
+          b.addEventListener('pointerdown', (e) => e.preventDefault());   // the box keeps the focus until the tap lands
+          b.addEventListener('click', () => { const a = document.activeElement; if (a && a.blur) a.blur(); root.classList.remove('kb-typing'); });
+        });
+      })();
 
       tabAtlas?.addEventListener('click', () => {
         setActiveMobileTab(tabAtlas);
