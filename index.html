@@ -34,7 +34,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=435">
+  <link rel="stylesheet" href="assets/atlas.css?v=436">
   <script src="assets/config.js?v=427"></script>
   <script src="assets/subtopic.js?v=427"></script>
   <script>
@@ -16285,25 +16285,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (name) new MutationObserver(() => { sheet.scrollTop = 0; }).observe(name, { childList: true, characterData: true, subtree: true });
       })();
 
-      // Chat sheet: swipe down to close, from the header or from the top of the transcript (a 56px pull, like the Details sheet).
-      (function () {
-        const drawer = document.getElementById('curator-chat-drawer');
-        const body = document.getElementById('curatorDrawerChatBody');
-        const header = drawer && drawer.firstElementChild;
-        if (!drawer || !header) return;
-        let y0 = null, fromBody = false;
-        const start = (e, isBody) => { if (e.target.closest('button, a, input, textarea')) { y0 = null; return; } y0 = e.touches[0].clientY; fromBody = isBody; };
-        const end = (e) => {
-          if (y0 === null) return;
-          const dy = e.changedTouches[0].clientY - y0; y0 = null;
-          if (dy > 56 && (!fromBody || (body && body.scrollTop <= 0))) document.getElementById('close-chat-view-btn')?.click();
-        };
-        header.addEventListener('touchstart', (e) => start(e, false), { passive: true });
-        header.addEventListener('touchend', end, { passive: true });
-        body?.addEventListener('touchstart', (e) => start(e, true), { passive: true });
-        body?.addEventListener('touchend', end, { passive: true });
-      })();
-
       closeSheetBtn?.addEventListener('click', () => {
         bottomSheet?.classList.add('hidden');
         setActiveMobileTab(tabAtlas);
@@ -16326,25 +16307,56 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       document.getElementById('phoneChatCloseBtn')?.addEventListener('click', () => window.atlasCloseChat());
       document.getElementById('phoneChatListenBtn')?.addEventListener('click', () => { if (typeof toggleCuratorVoice === 'function') toggleCuratorVoice(); });
 
-      // The chat that answers fill: pull down on its top, or on the top of the conversation, to close it (as on the chat sheet).
-      (function () {
-        const head = document.getElementById('phoneChatHead');
-        const area = document.getElementById('curatorScrollArea');
-        let y0 = null, fromArea = false;
-        const start = (e, isArea) => {
-          if (window.innerWidth >= 768 || e.target.closest('button, a, input, textarea, summary')) { y0 = null; return; }
-          y0 = e.touches[0].clientY; fromArea = isArea;
+      // Pull down to close, on both phone chat views (the chat sheet, and the chat that answers fill): from the top bar of the
+      // view, or from the conversation when it is already scrolled to its top. The view follows the finger, so the pull never
+      // feels stuck; let go past 90px (or with a quick flick) and it slides away to the map, otherwise it springs back.
+      // The page itself never moves: the pull is taken over before Safari can drag or bounce the whole page.
+      function attachPullToClose(view, head, scroller) {
+        if (!view || !head) return;
+        let y0 = null, t0 = 0, dy = 0, pulling = false, fromScroller = false;
+        const reset = () => { view.style.transition = ''; view.style.transform = ''; };
+        const start = (e, isScroller) => {
+          if (window.innerWidth >= 768 || e.touches.length !== 1 || e.target.closest('button, a, input, textarea, select, summary, label')) { y0 = null; return; }
+          y0 = e.touches[0].clientY; t0 = Date.now(); dy = 0; pulling = false; fromScroller = isScroller;
         };
-        const end = (e) => {
+        const move = (e) => {
           if (y0 === null) return;
-          const dy = e.changedTouches[0].clientY - y0; y0 = null;
-          if (dy > 56 && (!fromArea || (area && area.scrollTop <= 0))) window.atlasCloseChat();
+          const d = e.touches[0].clientY - y0;
+          if (!pulling) {
+            // From the conversation a pull only starts when it is at its top and the finger goes down; anything else is a scroll.
+            if (fromScroller && (d <= 0 || (scroller && scroller.scrollTop > 0))) { y0 = null; return; }
+            if (d < 6) return;
+            pulling = true; view.style.transition = 'none';
+          }
+          dy = Math.max(0, d);
+          if (e.cancelable) e.preventDefault();
+          view.style.transform = 'translateY(' + dy + 'px)';
         };
-        head?.addEventListener('touchstart', (e) => start(e, false), { passive: true });
-        head?.addEventListener('touchend', end, { passive: true });
-        area?.addEventListener('touchstart', (e) => start(e, true), { passive: true });
-        area?.addEventListener('touchend', end, { passive: true });
-      })();
+        const end = () => {
+          if (y0 === null) return;
+          y0 = null;
+          if (!pulling) return;
+          pulling = false;
+          const fast = dy > 40 && dy / Math.max(1, Date.now() - t0) > 0.6;
+          view.style.transition = 'transform .22s cubic-bezier(.2,.8,.2,1)';
+          if (dy > 90 || fast) {
+            view.style.transform = 'translateY(100%)';
+            setTimeout(() => { reset(); window.atlasCloseChat(); }, 200);
+          } else {
+            view.style.transform = 'translateY(0)';
+            setTimeout(reset, 230);
+          }
+        };
+        [[head, false], [scroller, true]].forEach(([el, isScroller]) => {
+          if (!el) return;
+          el.addEventListener('touchstart', (e) => start(e, isScroller), { passive: true });
+          el.addEventListener('touchmove', move, { passive: false });
+          el.addEventListener('touchend', end, { passive: true });
+          el.addEventListener('touchcancel', end, { passive: true });
+        });
+      }
+      attachPullToClose(document.getElementById('curator-chat-drawer'), document.getElementById('chatSheetHead'), document.getElementById('curatorDrawerChatBody'));
+      attachPullToClose(document.getElementById('workViewContainer'), document.getElementById('phoneChatHead'), document.getElementById('curatorScrollArea'));
 
       // Keyboard arrow: shown while a chat box has the focus on a phone; a tap puts the keyboard away and leaves the text as it is.
       (function () {

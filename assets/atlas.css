@@ -2894,3 +2894,11 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input:focus,
 :root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input:not(:placeholder-shown),
 :root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input:focus:not(:placeholder-shown){caret-color:#000!important}
+/* Pulling a phone chat down (user, 29 Oct 2026): the page itself must not be dragged or left shifted by Safari's bounce, and the
+   top bars take the pull whole. The chat view follows the finger (index.html, attachPullToClose). */
+@media (max-width:767px){
+  html,body{overscroll-behavior:none}
+  #curatorScrollArea,#curatorDrawerChatBody{overscroll-behavior-y:contain}
+  #chatSheetHead,#phoneChatHead{touch-action:none}
+  #workViewContainer,#curator-chat-drawer{will-change:transform}
+}
