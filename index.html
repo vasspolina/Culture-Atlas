@@ -11666,7 +11666,8 @@ return maplibregl$1;
 
     // Links to the sources recorded for a space. Recording a source is not verifying it, and the page says so.
     // With fieldsOnly the funding sources are left to the Funding block and only the field clauses remain.
-    function sourcesHtml(inst, fieldsOnly, asRow) {
+    // With noFields the field clauses are dropped: where an address came from does not answer a question about money.
+    function sourcesHtml(inst, fieldsOnly, asRow, noFields) {
       if (!inst) return '';
       const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).slice(0, 6);
       // Each source reads as its site name, as everywhere else on the page. A path cut at 30 characters
@@ -11716,6 +11717,13 @@ return maplibregl$1;
       // A bare "Founding year from ..." line read as stray prose between two blocks: it carries a label, like the blocks around it.
       if (foundHtml) foundHtml = `<div class="py-3" role="group" aria-label="Where the basics come from"><span class="kicker block">Where the basics come from</span><p class="no-indent source-note">${foundHtml}</p></div>`;
       if (fieldsOnly) return foundHtml;
+      if (noFields) foundHtml = '';
+      // The sources line above already names these sites. Printing the same site again under a heading of its own
+      // ("Address from theboxplymouth.com") read as filler, so the clauses are kept only where they add a site.
+      if (foundHtml && links.length) {
+        const shown = new Set(urls.map(u => { try { return site(new URL(u).hostname.replace(/^www\./, '')); } catch (e) { return u; } }));
+        if (fieldParts.every(f => f.links.sites.split(',').every(h => shown.has(h)))) foundHtml = '';
+      }
       return `${links.length ? `<p class="no-indent source-note">${links.join(', ')}${state ? '. ' + state : ''}</p>` : ''}${foundHtml}`;
     }
     // What studies say about this space, and the funders it shares with other institutions on the map.
@@ -15967,10 +15975,32 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // A record's own grade when the question names it or points at it; the ladder for a general question.
         if (target && !wanted && (explicit || /\b(its|this|here|the space|the museum)\b/.test(q))) {
           focus(target);
-          const gradeWhy = target.grade && GRADE[target.grade]
-            ? `<p>${formatInstLink(target)} is Grade ${gradeLetter(target.grade)}: ${escapeHtml(GRADE[target.grade].label.toLowerCase())}.${target.grade_basis ? ' ' + escapeHtml(target.grade_basis) : ''}</p>${target.funding ? `<p>Funding on record: ${escapeHtml(target.funding)}</p>` : ''}`
-            : `<p>${formatInstLink(target)} has no grade yet.</p>`;
-          answer(gradeWhy + sourcesHtml(target));
+          // "Why is it graded D?" asks for a reason, so the reason is the answer: the category that set the grade, then the
+          // funder the record names behind it. A reply that only restated the letter sent the reader back to the chips to ask again.
+          const samePoint = (a, b) => {
+            const words = (t) => String(t || '').toLowerCase().match(/[a-z0-9$]+/g) || [];
+            const mine = [...new Set(words(a).filter(w => w.length > 3))];
+            if (!mine.length) return false;
+            const have = new Set(words(b));
+            return mine.filter(w => have.has(w)).length / mine.length >= 0.6;
+          };
+          const gradeRows = [];
+          const why = target.why_flagged || target.watch || '';
+          if (target.grade && GRADE[target.grade]) {
+            gradeRows.push(`<p>${formatInstLink(target)} is Grade ${gradeLetter(target.grade)}: ${escapeHtml(GRADE[target.grade].label.toLowerCase())}.${target.grade_basis ? ' ' + escapeHtml(target.grade_basis) : ''}</p>`);
+            if (why && !samePoint(why, target.grade_basis || '')) gradeRows.push(`<p>On record: ${escapeHtml(why)}</p>`);
+            const flagged = (target.flags || []).filter(Boolean);
+            if (flagged.length) gradeRows.push(`<p class="no-indent source-note">Flagged: ${escapeHtml(flagged.join(', '))}.</p>`);
+            if (target.funding && !samePoint(target.funding, why)) gradeRows.push(`<p>Funding on record: ${escapeHtml(target.funding)}</p>`);
+          } else gradeRows.push(`<p>${formatInstLink(target)} has no grade yet.</p>`);
+          // The reply already names what is flagged and what the grade is, so neither is offered again as a question to ask.
+          const nmG = target.name && findMentionedInst(target.name) === target ? target.name : '';
+          const gradeFollow = [
+            (target.funding || target.funder_links) ? (nmG ? `Who funds ${nmG}?` : 'Who funds this museum?') : '',
+            'How are spaces graded?',
+            target.city ? `Find cultural spaces in ${target.city}` : '',
+          ].filter(Boolean).slice(0, 3);
+          answer(gradeRows.join('') + sourcesHtml(target, false, false, true), gradeFollow);
           return;
         }
         if (wanted && explicit) {
