@@ -205,8 +205,8 @@ def clean(records, report=None):
                 del r[k]
                 bump(k)
         g = r.get('gossip_data')
-        if g is not None:                      # keep sourced case files only
-            keep = {k: g[k] for k in ('real_cases', 'accounts') if g.get(k)}
+        if g is not None:                      # keep sourced case files, accounts and the gossip items (notes/gossip-criteria.md) only
+            keep = {k: g[k] for k in ('real_cases', 'accounts', 'gossip') if g.get(k)}
             if keep:
                 r['gossip_data'] = keep
             else:

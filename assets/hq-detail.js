@@ -148,7 +148,7 @@
     }
   }
   function listOf(items, build, cap) {
-    const ul = h('ul', { class: 'hq-list' });
+    const ul = h('ul', { class: 'd-row-list hq-list' });
     const rows = items.map(build);
     rows.forEach((li, i) => { if (i >= cap) li.hidden = true; ul.appendChild(li); });
     if (rows.length <= cap) return ul;
@@ -175,41 +175,49 @@
     return h('li', null, b);
   };
 
+  // The record is set like a space's record (user, 2 Nov 2026): the name over a rule, then two columns, a third and two thirds. In the head
+  // the Ask in chat pill is on the left and the place, address, note and source on the right. Under the head each part is a row under a
+  // hairline: Names, then each connections group, its title on the left and its items on the right. All the classes are the space record's,
+  // so the funder's record takes its typesetting (sizes, rhythm, the narrow one-column form) from the same rules.
+  const row = (id, title, sub, items, extra) => {
+    const head = h('div', { class: 'd-row-head' }, h('h3', { id, class: 'd-row-title', text: title }));
+    if (sub) head.append(h('p', { class: 'd-row-sub no-indent', text: sub }));
+    const sec = h('section', { class: 'd-row', role: 'group', 'aria-labelledby': id }, head);
+    if (items) sec.append(items);
+    if (extra) sec.append(extra);
+    return sec;
+  };
+  const fact = (k, v) => v ? h('li', null, h('span', { class: 'lead-in', text: k + ' ' }), v instanceof Node ? v : document.createTextNode(v)) : null;
+
   function fill(e) {
     const p = panel, ready = hq().loaded();
     const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this record' }, '×');
     close.addEventListener('click', () => closeRecord(true));
-    const head = h('div', { class: 'hq-head' }, h('div', null, h('p', { class: 'hq-kind', text: hq().kindLabel(e) }), h('h2', { id: 'hqPanelTitle', text: e.n })), close);
-    const ask = h('button', { type: 'button', class: 'hq-ask', text: 'Ask in chat' });
+    const title = h('div', { class: 'hq-head' }, h('div', null, h('p', { class: 'hq-kind', text: hq().kindLabel(e) }), h('h2', { id: 'hqPanelTitle', class: 'dossier-main-heading', text: e.n })), close);
+    const ask = h('button', { type: 'button', class: 'record-action', text: 'Ask in chat' });
     ask.addEventListener('click', () => askInChat(e));
 
-    const info = h('section', { 'aria-labelledby': 'hqInfoT' }, h('h3', { id: 'hqInfoT', text: 'Info' }));
-    const dl = h('dl');
-    const row = (k, v) => { if (v) dl.append(h('dt', { text: k }), v instanceof Node ? h('dd', null, v) : h('dd', { text: v })); };
-    row('Place', where(e));
-    row('Address', e.a);
-    if (e.kind === 'person') row('Role', e.w); else row('Note', e.w);
-    if (e.s) { let host = e.s; try { host = new URL(e.s).hostname.replace(/^www\./, ''); } catch (x) {} row('Source', h('a', { href: e.s, target: '_blank', rel: 'noopener noreferrer', text: host })); }
-    info.append(dl, h('p', { class: 'hq-note', text: 'The pin marks the city, not the building.' }));
+    // Head: the pill on the left; the place as the row's title, the address under it, then the note and the source as the row's points.
+    const facts = h('ul', { class: 'd-row-list' });
+    const add = li => { if (li) facts.append(li); };
+    add(fact(e.kind === 'person' ? 'Role' : 'Note', e.w));
+    if (e.s) { let host = e.s; try { host = new URL(e.s).hostname.replace(/^www\./, ''); } catch (x) {} add(fact('Source', h('a', { href: e.s, target: '_blank', rel: 'noopener noreferrer', text: host }))); }
+    facts.append(h('li', { text: e.noOffice ? 'No head office is mapped for this funder; the record is what the spaces’ funding lines say.' : 'The pin marks the city, not the building.' }));
+    const info = row('hqInfoT', where(e) || 'Record', e.a || '', facts);
+    const head = h('div', { class: 'record-head head-sheet rule-b hq-sheet' }, title,
+      h('div', { class: 'head-grid' }, h('div', { class: 'head-side record-actions record-action-row' }, ask), h('div', { class: 'head-main' }, h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Info' }, info))));
 
-    const names = h('section', { 'aria-labelledby': 'hqNamesT' }, h('h3', { id: 'hqNamesT', text: 'Names' }));
-    if (!ready) names.append(h('p', { class: 'hq-note', text: 'Loading the other names…' }));
+    const rows = h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Names and connections' });
+    if (!ready) rows.append(row('hqNamesT', 'Names', 'Loading the other names…'));
     else {
       const all = hq().names(e);
-      names.append(h('ul', { class: 'hq-names' }, all.map((n, i) => h('li', { text: n }, i === 0 ? h('span', { class: 'hq-s', text: ' · used on the map' }) : null))));
-      if (all.length === 1) names.append(h('p', { class: 'hq-note', text: 'The records give no other name for this one.' }));
-      else names.append(h('p', { class: 'hq-note', text: 'The others are how spaces’ funding lines spell the same funder.' }));
+      rows.append(row('hqNamesT', 'Names', all.length === 1 ? 'The records give no other name for this one.' : 'The others are how spaces’ funding lines spell the same funder.',
+        h('ul', { class: 'd-row-list hq-names' }, all.map((n, i) => h('li', { text: n }, i === 0 ? h('span', { class: 'hq-s', text: ' · used on the map' }) : null)))));
     }
-
-    const conns = h('section', { 'aria-labelledby': 'hqConnT' }, h('h3', { id: 'hqConnT', text: 'Connections' }));
-    if (!ready) conns.append(h('p', { class: 'hq-note', role: 'status', text: 'Loading connections…' }));
+    if (!ready) rows.append(row('hqConnT', 'Connections', 'Loading connections…'));
     else {
       const sp = hq().spaces(e), rel = hq().related(e);
-      const group = (id, title, list, build, empty) => {
-        const g = h('div', { class: 'hq-group', role: 'group', 'aria-labelledby': id }, h('h4', { id, text: title }));
-        g.append(list.length ? listOf(list, build, LIST_SHOWN) : h('p', { class: 'hq-note', text: empty }));
-        conns.append(g);
-      };
+      const group = (id, title, list, build, empty) => rows.append(list.length ? row(id, title, '', listOf(list, build, LIST_SHOWN)) : row(id, title, empty));
       group('hqConnSpaces', e.kind === 'org' ? `Funds ${sp.length} ${sp.length === 1 ? 'space' : 'spaces'}` : `Named on ${sp.length} ${sp.length === 1 ? 'space' : 'spaces'}`, sp, spaceRow,
         e.kind === 'org' ? 'No space in the atlas names this funder.' : 'No space in the atlas records this person.');
       if (e.kind === 'org') {
@@ -217,7 +225,7 @@
         group('hqConnPeople', 'People the files tie to these spaces', rel.people, r => officeRow(r.e, r.shared), 'None.');
       }
     }
-    p.replaceChildren(head, ask, info, names, conns);
+    p.replaceChildren(head, rows);
     p.scrollTop = 0;
   }
 
@@ -226,7 +234,7 @@
     closeChooser(false);
     if (!keepFocusOrigin) openFrom = from;
     openFor = e;
-    hq().showLayer(e);
+    if (!e.noOffice) hq().showLayer(e);
     hq().select(e);
     fill(e);
     p.hidden = false;
@@ -246,6 +254,8 @@
   }
   // Choosing a space (on the map, in the chat, or from a connection in this record) puts that space's record in the tab.
   window.atlasHqClose = () => closeRecord(false);
+  // A click on a funding line (assets/layers.js) opens the line's funder here, with or without a mapped office.
+  window.atlasHqOpen = e => openRecord(e, null);
   // Escape closes the list first, then the record, and does not also clear the space or city the page has selected.
   document.addEventListener('keydown', ev => {
     if (ev.key !== 'Escape') return;

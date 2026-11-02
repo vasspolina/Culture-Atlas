@@ -1,18 +1,45 @@
-// Map layers drawn over the globe: funding connections, flagged organizations, funding transparency ratings, funder networks,
-// and the two highlights the funding map had: right-wing funders and mentions in the Epstein files.
+// Map layers drawn over the globe. The panel has five boxes: Funding connections (one box for the funding ties, flagged and
+// right-wing funders, the funder network around a space and the funders' head offices), Epstein connections (mentions in the
+// files and the offices of the people named), Propaganda, Independent and Artist-run.
 // Funder types: a filter on all the funder layers.
 // Hovering a funder around a space draws everywhere else it funds. Each layer shows something at every zoom. Ties: the web of funders shared between spaces, the selected space's own
 // ties on top. Flags: flagged spaces marked, and a flagged count on each city cluster. Money: a space's funders around
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
-  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#2dd4bf' };
+  const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, independent: false, artist: false, openbooks: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
+  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#ff3dd1', indep: '#9caf7d', artist: '#ffd600', open: '#9ae3e8' };
+  // Open books: the clean grade (tier A) — filings linked, no flagged funder or funding protest on record.
+  const isOpenBooks = i => i.tier === 'A';
+  // Independent and artist-run: the records carry no field for either, so the two layers read the record's own words
+  // (its summary, watch note, funding note, focus and name). "Independently verified/audited" is not the space being independent.
+  const KIND_TEXT = i => ['highlight', 'watch', 'curatorial_focus', 'funding', 'affiliations_note', 'records_note', 'tier_note', 'name'].map(k => i[k] || '').join(' \n ');
+  const INDEP_RE = /\bindependent(?:,? (?:non-?profit|not-for-profit|voluntary-led|non-collecting|artist-run|artist-led))*,? (?:art(?:s)?|contemporary|cultural|exhibition|artist|gallery|institution|cent(?:er|re)|space|museum|charity|organi[sz]ation|non-?profit|not-for-profit|foundation|trust|platform|project space|kunsthalle|art room)\b|\bremains independent\b|\bindependent since\b|\bbecame independent\b/i;
+  const ARTIST_RE = /artist[- ](?:run|led|founded|managed|organi[sz]ed|initiated|operated)|run by artists|by artists,? for artists|founded (?:in \d{4} )?by (?:a (?:group|collective) of |\w+ )?artists\b|artists.? collective|artist collective|artist cooperative|self-organi[sz]ed/i;
+  const kindCache = new WeakMap();
+  function selfKinds(i) {
+    let k = kindCache.get(i);
+    if (!k) { const t = KIND_TEXT(i); k = { independent: INDEP_RE.test(t), artist: ARTIST_RE.test(t) }; kindCache.set(i, k); }
+    return k;
+  }
+  window.atlasSelfKinds = selfKinds;
   // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
   // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
   // the data are drawn in a deeper step of the same hue there: 3.05:1 or better against white at the 0.8 alpha they are drawn at.
-  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#e2f86c': '#6b8a00', '#2dd4bf': '#0d9488' };
+  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#9caf7d': '#889e9a', '#9ae3e8': '#1f8b93', '#2dd4bf': '#0d9488', '#ff3dd1': '#d4109f' };
   const lineCol = c => (document.documentElement.getAttribute('data-theme') === 'dark' ? c : (LINE_LIGHT[c] || c));
+  // A hex colour with an alpha, for the halos.
+  const hexA = (h, a) => `rgba(${parseInt(h.slice(1, 3), 16)}, ${parseInt(h.slice(3, 5), 16)}, ${parseInt(h.slice(5, 7), 16)}, ${Math.max(0, Math.min(1, a)).toFixed(3)})`;
+  // The propaganda marks' glow breathes on a 3.2 second cycle between 0.8 and 1.15 of its resting size. With reduced motion it
+  // holds at 1. While any such mark is on screen the globe (and the street map) is asked for another frame every 80ms, which
+  // is enough for a slow fade and far below the draw rate of a drag.
+  const REDUCE = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const propGlow = () => (REDUCE() ? 1 : 0.975 + 0.175 * Math.sin(performance.now() / 3200 * Math.PI * 2));
+  let propTimer = 0;
+  function propPulse() {
+    if (REDUCE() || propTimer) return;
+    propTimer = setTimeout(() => { propTimer = 0; if (!L.propaganda) return; if (window.scheduleRender) window.scheduleRender(); svSchedule(); }, 80);
+  }
   // Colour is never the only cue (WCAG 1.4.1): each kind of mark has its own outline, the same ones the key in the layers panel shows.
   const SHAPES = {
     square: null,
@@ -78,9 +105,9 @@
   // The mark drawn for each office last frame (x, y on the canvas) so a click, a hover and the keyboard buttons can find it;
   // the one picked in the detail panel (assets/hq-detail.js) and the one under the pointer or keyboard focus.
   let HQ_HITS = [], HQ_LABELS = [], HQ_SEL = null, HQ_HOV = null;
-  // Every other mark the layers draw (the dots at the ends of tie lines, funder rings, right-wing and Epstein marks, flag and
-  // grade marks, the flagged counts) can be found by the pointer too. LM holds the ones drawn last frame, LM_HOV the one under
-  // the pointer. A mark that sits on a space's own dot (flag, grade) is "pass": its hover goes to the space, and a click asks
+  // Every other mark the layers draw (the dots at the ends of tie lines, funder rings, right-wing and Epstein marks, flag,
+  // independent and artist-run marks, the flagged counts) can be found by the pointer too. LM holds the ones drawn last frame, LM_HOV the one under
+  // the pointer. A mark that sits on a space's own dot (flag) is "pass": its hover goes to the space, and a click asks
   // the chat.
   let LM = [], LM_HOV = null;
   // Ask the chat: show its tab (on a desktop the Details tab may be in front) and put the question to it.
@@ -150,22 +177,69 @@
   }
 
   function vec(lat, lon) { const p = lat * rad, l = lon * rad; return [Math.cos(p) * Math.sin(l), Math.sin(p), Math.cos(p) * Math.cos(l)]; }
-  function arc(project, a, b, r, cx, cy, ctx) {
+  // The lines drawn last frame, each with the funder it stands for (tag: key, kind, the two spaces it joins), so the pointer
+  // can find a line: LINES holds runs of points on the canvas, LINE_HOV the funder whose line is under the pointer.
+  let LINES = [], LINE_HOV = null;
+  function arc(project, a, b, r, cx, cy, ctx, tag) {
     const va = vec(a.lat, a.lon), vb = vec(b.lat, b.lon);
     const dot = Math.max(-1, Math.min(1, va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2])), om = Math.acos(dot);
     if (om < 1e-5) return false;
     const so = Math.sin(om), N = Math.max(8, Math.ceil(om * 36));
-    ctx.beginPath(); let pen = false, drawn = false;
+    ctx.beginPath(); let pen = false, drawn = false, run = null;
     for (let i = 0; i <= N; i++) {
       const t = i / N, k1 = Math.sin((1 - t) * om) / so, k2 = Math.sin(t * om) / so;
       const x = k1 * va[0] + k2 * vb[0], y = k1 * va[1] + k2 * vb[1], z = k1 * va[2] + k2 * vb[2];
       const lat = Math.atan2(y, Math.hypot(x, z)) / rad, lon = Math.atan2(x, z) / rad;
       const pt = project(lon, lat, r * (1 + 0.12 * Math.sin(Math.PI * t) * Math.min(1, om)), cx, cy);
-      if (!pt.front) { pen = false; continue; }
+      if (!pt.front) { pen = false; run = null; continue; }
       if (pen) { ctx.lineTo(pt.x, pt.y); drawn = true; } else { ctx.moveTo(pt.x, pt.y); pen = true; }
+      if (tag) { if (!run) { run = { tag, pts: [] }; LINES.push(run); } run.pts.push(pt.x, pt.y); }
     }
     if (drawn) ctx.stroke();
     return drawn;
+  }
+  // The funder a key stands for: its name (the office's, else the longest spelling the records use), kind, every key the
+  // map groups with it, the office if it has one, and its entry in the widest-reaching list if it is there.
+  function funderOf(key) {
+    if (!key || !keyIndex) return null;
+    const t = TOP && TOP.find(x => x.keys.includes(key));
+    const office = HQ && HQ.byKey.get(key);
+    let name = office ? office.n : (t && t.name);
+    if (!name) {
+      const names = new Map();
+      (keyIndex.get(key) || []).forEach(id => { const q = recById.get(id); if (q) q.nodes.forEach(n => { if (n[5] === key) names.set(n[0], (names.get(n[0]) || 0) + 1); }); });
+      name = [...names.entries()].sort((a, b) => b[1] - a[1] || b[0].length - a[0].length).map(e => e[0])[0] || key;
+    }
+    const keys = t ? t.keys : [key];
+    return { key, keys, kind: keyKind.get(key), name, office: office || null, top: t || null, space: t ? hubOf(t) : recById.get((keyIndex.get(key) || [])[0]) };
+  }
+  // The spaces a funder is named on, and how many countries they sit in.
+  function reachOfKeys(keys) {
+    const ids = new Set(), cs = new Set();
+    keys.forEach(k => (keyIndex.get(k) || []).forEach(id => { ids.add(id); const q = recById.get(id); if (q && q.co) cs.add(q.co); }));
+    return { n: ids.size, countries: cs.size };
+  }
+  // The line under the point, if any: the nearest run within a few pixels (more for a finger), unless a name block sits there.
+  function lineAt(mx, my, dots) {
+    if (!LINES.length) return null;
+    const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen', reach = touch ? 10 : 5;
+    const inBox = b => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h;
+    if (labelBoxesOnScreen(dots || []).some(inBox)) return null;
+    // A space's own dot under the point takes the pointer; the line gives way.
+    if ((dots || []).some(d => Math.hypot((d.renderX ?? d.x) - mx, (d.renderY ?? d.y) - my) <= (touch ? 16 : 9))) return null;
+    let best = null, bd = reach;
+    for (let i = 0; i < LINES.length; i++) {
+      const p = LINES[i].pts;
+      for (let k = 2; k < p.length; k += 2) {
+        const ax = p[k - 2], ay = p[k - 1], bx = p[k], by = p[k + 1];
+        if (Math.min(ax, bx) > mx + bd || Math.max(ax, bx) < mx - bd || Math.min(ay, by) > my + bd || Math.max(ay, by) < my - bd) continue;
+        const dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy;
+        const t = l2 ? Math.max(0, Math.min(1, ((mx - ax) * dx + (my - ay) * dy) / l2)) : 0;
+        const d = Math.hypot(mx - (ax + t * dx), my - (ay + t * dy));
+        if (d < bd) { bd = d; best = LINES[i].tag; }
+      }
+    }
+    return best;
   }
 
   const sameInst = (a, b) => !!a && !!b && (a.id ? a.id === b.id : a.name === b.name);
@@ -174,9 +248,8 @@
   const streetUp = () => !STREET && typeof window.getIsCityStreetViewActive === 'function' && window.getIsCityStreetViewActive();
   window.atlasLayersDraw = function (ctx, project, r, cx, cy, list, sel, hov, baseRadius) {
     if (streetUp()) return;   // the street map is in front: its own frame draws the layers
-    LM = [];
-    drawReach(ctx, project, r, cx, cy);
-    if (!L.ties) return;
+    LM = []; LINES = [];
+    if (!L.ties) { drawReach(ctx, project, r, cx, cy); return; }
     if (!recById) { loadMoney(); return; }
     const focus = hov || sel, rec = focus && recById.get(focus.id);
     ctx.save();
@@ -187,15 +260,25 @@
     const showWeb = !rec && !HQ_HOV && r < baseRadius * 8;
     ctx.globalAlpha = 0.35;
     const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
-    if (showWeb) web.forEach(([a, b, kind]) => {
+    // The funder under the pointer, or pinned: its whole chain is drawn bright, on top of the rest of the web.
+    const hotKeys = REACH ? new Set(REACH.keys || [REACH.key]) : null, hot = [];
+    if (showWeb) web.forEach(([a, b, kind, key]) => {
       if (!kindOn(kind)) return;
       const pa = project(a.lon, a.lat, r, cx, cy), pb = project(b.lon, b.lat, r, cx, cy);
       if (!pa.front && !pb.front) return;
       if ((pa.x < -W || pa.x > 2 * W) && (pb.x < -W || pb.x > 2 * W)) return;
       if ((pa.y < -H || pa.y > 2 * H) && (pb.y < -H || pb.y > 2 * H)) return;
+      if (hotKeys && hotKeys.has(key)) { hot.push([a, b, kind, key]); return; }
       ctx.strokeStyle = COL[kind];
-      arc(project, a, b, r, cx, cy, ctx);
+      arc(project, a, b, r, cx, cy, ctx, { key, kind, a, b });
     });
+    if (hot.length) {
+      ctx.globalAlpha = 0.95; ctx.lineWidth = 2;
+      hot.forEach(([a, b, kind, key]) => { ctx.strokeStyle = lineCol(COL[kind]); arc(project, a, b, r, cx, cy, ctx, { key, kind, a, b }); });
+      ctx.globalAlpha = 0.35; ctx.lineWidth = 0.8;
+    }
+    // The funder under the pointer or pinned: a line from its office (or, with no office, the hovered line's west end) to every other space that names it.
+    ctx.restore(); drawReach(ctx, project, r, cx, cy); ctx.save(); ctx.lineCap = 'round';
     // The focused space's own ties, bright, with a dot at each far end.
     if (rec && typeof rec.lat === 'number') {
       ctx.lineWidth = 0.8; ctx.globalAlpha = 0.8;
@@ -206,7 +289,7 @@
           if (seen.has(id) || seen.size > 400) return; seen.add(id);
           const o = recById.get(id); if (!o || typeof o.lat !== 'number') return;
           ctx.strokeStyle = lineCol(COL[n[1]]);
-          arc(project, rec, o, r, cx, cy, ctx); ends.push([o, lineCol(COL[n[1]]), COL[n[1]]]);
+          arc(project, rec, o, r, cx, cy, ctx, { key: n[5], kind: n[1], a: rec, b: o }); ends.push([o, lineCol(COL[n[1]]), COL[n[1]]]);
         });
       });
       ctx.globalAlpha = 1;
@@ -230,7 +313,7 @@
     const ids = new Set(); (REACH.keys || [REACH.key]).forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
     ids.forEach(id => {
       const o = recById.get(id); if (!o || o === home || typeof o.lat !== 'number') return;
-      arc(project, home, o, r, cx, cy, ctx); ends.push(o);
+      arc(project, home, o, r, cx, cy, ctx, { key: REACH.key, kind: REACH.kind, a: home, b: o }); ends.push(o);
     });
     ctx.globalAlpha = 1;
     ends.forEach(o => {
@@ -446,7 +529,7 @@
   }
 
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!REACH && !L.flags && !L.grade && !L.money && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties) return;
+    if (!REACH && !L.flags && !L.money && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties && !L.independent && !L.artist && !L.openbooks) return;
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -455,20 +538,43 @@
     ctx.save();
     ctx.font = font; ctx.textBaseline = 'middle';
 
-    if (L.grade) {
-      // Each rated space: a dot filled with its funding transparency rating colour (window.atlasGrade, set by the page).
-      // A space with no grade keeps its hollow ring.
-      const G = window.atlasGrade || {};
+    if (L.openbooks) {
+      // Open-books spaces: the space's own dot glows cyan, the clean colour of the tier key.
+      const openCol = lineCol(COL.open);
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
-        const i = d.inst; if (!i || !i.grade || !G[i.grade]) return;
-        LM.push({ x: d.x, y: d.y, r: 12, pass: true, rec: i, ask: `Why is ${i.name} graded ${G[i.grade].letter || i.grade}?` });
-        ctx.beginPath(); ctx.arc(d.x, d.y, 10, 0, Math.PI * 2);
-        ctx.fillStyle = G[i.grade].col; ctx.fill();
-        ctx.strokeStyle = '#000'; ctx.stroke();
-        // The letter is the second cue: grade A and B are two near greens, and colour alone cannot tell the five apart.
-        ctx.save(); ctx.font = LW() + ' 14px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
-        ctx.fillText(G[i.grade].letter, d.x, d.y + 0.5); ctx.restore();
+        const i = d.inst; if (!i || !isOpenBooks(i)) return;
+        LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: openCol, label: 'Open books', sub: i.name, ask: `What do the filings show for ${i.name}?` });
+        ctx.save();
+        ctx.shadowColor = openCol; ctx.shadowBlur = dark ? 16 : 10;
+        ctx.fillStyle = openCol;
+        shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fill(); ctx.fill();
+        ctx.restore();
+        shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fillStyle = openCol; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
+      });
+    }
+    if (L.independent || L.artist) {
+      // Independent spaces: the space's own dot glows green (a soft halo under a filled green dot with the usual ink outline).
+      // Artist-run spaces: a small yellow dot just above the space's own dot (the propaganda marks sit below it).
+      const indepCol = lineCol(COL.indep);
+      ctx.lineWidth = 0.8;
+      dots.forEach(d => {
+        const i = d.inst; if (!i) return;
+        const k = selfKinds(i);
+        if (L.independent && k.independent) {
+          LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: indepCol, label: 'Independent space', sub: i.name, ask: `How is ${i.name} independent?` });
+          ctx.save();
+          ctx.shadowColor = indepCol; ctx.shadowBlur = dark ? 16 : 10;
+          ctx.fillStyle = indepCol;
+          shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fill(); ctx.fill();
+          ctx.restore();
+          shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fillStyle = indepCol; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
+        }
+        if (L.artist && k.artist) {
+          const x = d.x, y = d.y - 12;
+          LM.push({ x, y, r: 8, rec: i, col: COL.artist, label: 'Artist-run space', sub: i.name, ask: `Who runs ${i.name}?` });
+          shapePath(ctx, 'circle', x, y, 6); ctx.fillStyle = COL.artist; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
+        }
       });
     }
     if (L.flags) {
@@ -499,8 +605,11 @@
     }
 
     if (L.propaganda) {
-      // Each space a state or regime has used as an instrument of propaganda: a filled pentagon when it is used that way now, a
-      // ring when it was in a past period. A space with both shows both side by side, just below its dot.
+      // Each space a state or regime has used as an instrument of propaganda: a glowing pink dot just below its own dot, filled
+      // when it is used that way now, a ring when it was in a past period. A space with both shows both side by side. The glow
+      // is a soft halo under the mark that breathes slowly; it holds still when the system asks for reduced motion.
+      const glow = propGlow(), halo = dark ? COL.prop : lineCol(COL.prop);
+      let drawn = 0;
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.propaganda || !i.propaganda.length) return;
@@ -508,10 +617,19 @@
         marks.forEach((k, n) => {
           const p = i.propaganda.find(q => q.kind === k), x = d.x + (n - (marks.length - 1) / 2) * 14, y = d.y + 12;
           LM.push({ x, y, r: 8, rec: i, col: COL.prop, label: k === 'today' ? 'Used for propaganda now' : 'Used for propaganda in the past', sub: `${i.name}, ${p.period}`, sub2: p.mechanism ? p.mechanism[0].toUpperCase() + p.mechanism.slice(1) : '', ask: `How is ${i.name} used for propaganda?` + (k === 'today' ? '' : ` (${p.period})`) });
+          drawn++;
+          // The halo: a radial fade from the mark's colour to nothing, wider and brighter for a space used that way now.
+          const R = (k === 'today' ? 20 : 15) * glow;
+          const g = ctx.createRadialGradient(x, y, 2, x, y, R);
+          g.addColorStop(0, hexA(halo, (k === 'today' ? 0.55 : 0.38) * glow));
+          g.addColorStop(0.5, hexA(halo, (k === 'today' ? 0.22 : 0.14) * glow));
+          g.addColorStop(1, hexA(halo, 0));
+          ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
           if (k === 'today') { shapePath(ctx, 'circle', x, y, 6); ctx.fillStyle = COL.prop; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); }
-          else { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.lineWidth = 0.8; ctx.strokeStyle = lineCol(COL.prop); ctx.stroke(); ctx.lineWidth = 0.8; }
+          else { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.lineWidth = 1.2; ctx.strokeStyle = lineCol(COL.prop); ctx.stroke(); ctx.lineWidth = 0.8; }
         });
       });
+      if (drawn) propPulse();
     }
 
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
@@ -568,9 +686,16 @@
         ctx.fillStyle = '#000'; ctx.textAlign = 'left'; ctx.fillText(text, box.x + 14, y + 0.5);
       });
     }
-    drawMarkTip(ctx, boxes);
+    TIP_BOXES = boxes;
     ctx.restore();
   }
+  // The block naming the mark or line under the pointer is drawn last of all, over the city names (index.html calls this
+  // after them; the street map calls it after the nodes), so nothing covers it.
+  let TIP_BOXES = [];
+  window.atlasLayersDrawTip = function (ctx) {
+    if (streetUp()) return;
+    ctx.save(); drawMarkTip(ctx, TIP_BOXES); ctx.restore();
+  };
   // A label, cut like the city labels (rounded, 22 high, 14 either side) but filled in the mark's colour.
   function drawTag(ctx, x, y, w, h, col) {
     ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 0); ctx.fillStyle = col; ctx.fill(); ctx.restore();
@@ -578,10 +703,10 @@
   // The mark under the pointer: its name on a block in its colour, and that a click asks the chat.
   function drawMarkTip(ctx, boxes) {
     if (!LM_HOV) return;
-    const m = LM.find(q => q.ask === LM_HOV.ask && q.rec === LM_HOV.rec && !q.pass) || null; if (!m) return;
+    const m = LM_HOV.line ? LM_HOV : (LM.find(q => q.ask === LM_HOV.ask && q.rec === LM_HOV.rec && !q.pass) || null); if (!m) return;
     const W = ctx.canvas.clientWidth || 1e9;
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
-    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat')].filter(Boolean);
+    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.tip || (m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat'))].filter(Boolean);
     ctx.save(); ctx.font = LW() + ' 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 28, h = 22, pad = 6;
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
@@ -669,8 +794,7 @@
     showLayer(e) {
       const k = e.kind === 'org' ? 'hq' : 'people';
       if (L[k]) return;
-      L[k] = true;
-      document.querySelectorAll('#layersPanel input[data-layer]').forEach(i => { if (i.dataset.layer === k) i.checked = true; });
+      turnOn(k);
     },
     // Centre the map on an office, keeping the zoom unless the view is too wide to tell offices apart.
     flyToOffice(e) {
@@ -709,18 +833,49 @@
   window.atlasLayerMarks = {
     // The marks drawn last frame (position, name, count line), for checking the layers from a test script.
     marks: () => LM.map(m => ({ x: m.x, y: m.y, r: m.r, label: m.label, sub: m.sub, go: !!m.go })),
+    // The line hover and the funder whose web is lit, for checking from a test script.
+    lineHover: () => (LM_HOV && LM_HOV.line ? { key: LM_HOV.key, label: LM_HOV.label, sub: LM_HOV.sub, sub2: LM_HOV.sub2, tip: LM_HOV.tip } : null),
+    reach: () => (REACH ? { key: REACH.key, keys: REACH.keys, name: REACH.name, pinned: !!REACH.pinned } : null),
+    lines: () => LINES.length,
     // Pointer moved: a mark that stands alone takes the hover (true, so the page shows a pointer); a mark on a space's dot does not.
-    hover(mx, my) {
+    hover(mx, my, dots) {
       const m = markAt(mx, my), alone = m && !m.pass ? m : null;
-      if ((alone && alone.ask) !== (LM_HOV && LM_HOV.ask) || (alone && alone.rec) !== (LM_HOV && LM_HOV.rec)) { LM_HOV = alone; repaint(); }
+      // No mark under the pointer: a funding line may be. Its funder's whole web lights up, and a block names the funder.
+      const tag = !m ? lineAt(mx, my, dots) : null, f = tag && funderOf(tag.key);
+      if (f) {
+        const same = LM_HOV && LM_HOV.line && LM_HOV.key === f.key;
+        if (!same) {
+          const n = reachOfKeys(f.keys), st = tag.a && tag.b ? `${tag.a.n} – ${tag.b.n}` : null;
+          LM_HOV = { line: true, key: f.key, x: mx, y: my, col: COL[f.kind], label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${plural(n.n, 'space')} in ${n.countries} ${n.countries === 1 ? 'country' : 'countries'}`, sub2: st, tip: REACH && REACH.pinned && REACH.key === f.key ? 'Pinned · click to open its record' : 'Click for details' };
+        } else { LM_HOV.x = mx; LM_HOV.y = my; }
+        if (!(REACH && (REACH.pinned || REACH.tapped)) && (!REACH || REACH.key !== f.key)) { clearTimeout(reachTimer); reachTimer = 0; REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, line: true }; }
+        else { clearTimeout(reachTimer); reachTimer = 0; }
+        repaint();
+        return true;
+      }
+      if ((alone && alone.ask) !== (LM_HOV && LM_HOV.ask) || (alone && alone.rec) !== (LM_HOV && LM_HOV.rec) || (LM_HOV && LM_HOV.line)) { LM_HOV = alone; repaint(); }
       setReach(alone);
       return !!alone;
     },
     // A click on a mark asks the chat about it, and that is all the click does. The chat answers a question about a space
-    // with the space selected on the map and stays in front, so a flag or grade mark loses nothing by not opening the record.
-    click(mx, my) {
+    // with the space selected on the map and stays in front, so a flag mark loses nothing by not opening the record.
+    click(mx, my, dots) {
       const m = markAt(mx, my);
-      if (!m) { if (REACH && REACH.tapped) clearReach(); return false; }
+      if (!m) {
+        // A click on a funding line pins its funder's web on the map and opens the funder's record in the Details tab.
+        const tag = lineAt(mx, my, dots), f = tag && funderOf(tag.key);
+        if (f) {
+          clearTimeout(reachTimer); reachTimer = 0;
+          REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, pinned: true, line: true };
+          if (typeof renderTop === 'function') renderTop();
+          if (LM_HOV && LM_HOV.line) LM_HOV.tip = 'Pinned · click to open its record';
+          const e = f.office || { key: f.key, kind: 'org', k: f.kind, n: f.name, c: '', co: '', noOffice: true, spaces: reachOfKeys(f.keys).n };
+          if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(e);
+          repaint();
+          return true;
+        }
+        if (REACH && REACH.tapped) clearReach(); return false;
+      }
       if (m.go) { m.go(); return true; }
       // A finger has no hover: the first tap on a funder around a space shows where else it appears (and its tooltip), a second asks the chat.
       if ((window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') && m.key && !m.rec && !(REACH && REACH.tapped && REACH.key === m.key && REACH.space === m.space)) {
@@ -736,8 +891,7 @@
 
   // "Money map" on a record: turn the layers on and show that space's funders on the globe.
   window.atlasShowMoney = function (id) {
-    L.money = true; L.ties = true; loadMoney();
-    document.querySelectorAll('#layersPanel input[data-layer]').forEach(i => { if (i.dataset.layer === 'money' || i.dataset.layer === 'ties') i.checked = true; });
+    turnOn('money'); turnOn('ties'); loadMoney();
     if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
     const inst = id && typeof window.resolveInstitutionByIdOrName === 'function' ? window.resolveInstitutionByIdOrName(id) : null;
     if (id && typeof window.selectInstitution === 'function') window.selectInstitution(id, false);
@@ -757,11 +911,11 @@
     const set = (k, text) => { const el = document.querySelector(`#layersPanel [data-count="${k}"]`); if (el) el.textContent = text; };
     const formatCount = count => new Intl.NumberFormat('en-US').format(count);
     if (typeof ALL_INSTITUTIONS !== 'undefined') {
-      set('spaces', `${formatCount(ALL_INSTITUTIONS.length)}`);
       set('flags', `${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
-      const graded = ALL_INSTITUTIONS.filter(i => i.grade).length;
-      set('grade', `${formatCount(graded)}\u00a0rated`);
-            set('propaganda', `${formatCount(ALL_INSTITUTIONS.filter(i => (i.propaganda || []).length).length)}\u00a0spaces`);
+      set('propaganda', `${formatCount(ALL_INSTITUTIONS.filter(i => (i.propaganda || []).length).length)}\u00a0spaces`);
+      set('independent', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).independent).length)}\u00a0spaces`);
+      set('artist', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).artist).length)}\u00a0spaces`);
+      set('openbooks', `${formatCount(ALL_INSTITUTIONS.filter(isOpenBooks).length)}\u00a0spaces`);
     }
     if (HQ) {
       set('hq', `${formatCount(HQ.orgs.length)}\u00a0offices`);
@@ -770,7 +924,9 @@
     if (recById && HQ) buildTop();
     if (web) {
       set('ties', `${formatCount(web.length)}\u00a0links`);
-      set('money', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)}\u00a0spaces`);
+      const funded = [...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length;
+      set('money', `${formatCount(funded)}\u00a0spaces`);
+      set('funding', `${formatCount(funded)}\u00a0spaces`);
       const rightRecs = [...recById.values()].filter(rec => rec.nodes.some(RIGHT));
       set('right', `${formatCount(rightRecs.length)}\u00a0spaces`);
       set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)}\u00a0spaces`);
@@ -790,7 +946,7 @@
     if (!W || !H) return;
     if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px'; }
     const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    if (!(REACH || L.flags || L.grade || L.money || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties)) { SV.dots = []; LM = []; return; }
+    if (!(REACH || L.flags || L.money || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties || L.independent || L.artist || L.openbooks)) { SV.dots = []; LM = []; return; }
     const base = 240, r = base * Math.pow(2, map.getZoom() - 7);
     // Points behind the camera on a tilted map project to nonsense; anything far off the canvas is treated as not in front.
     const project = (lon, lat) => { const p = map.project([lon, lat]); return { x: p.x, y: p.y, front: Math.abs(p.x - W / 2) < 6 * W && Math.abs(p.y - H / 2) < 6 * H, depth: 1 }; };
@@ -807,6 +963,7 @@
     try {
       window.atlasLayersDraw(ctx, project, r, W / 2, H / 2, list, sel, null, base);
       window.atlasLayersDrawNodes(ctx, dots, r, base, sel, null, false, project, W / 2, H / 2);
+      window.atlasLayersDrawTip(ctx);
     } finally { STREET = false; }
   }
   window.atlasStreetLayers = {
@@ -901,6 +1058,25 @@
     });
   }
 
+  // ---- Boxes in the panel ----
+  // A box turns on the layers its data-layers attribute names (or the one its data-layer names). Turning a layer on from
+  // elsewhere (a record's "Money map", an office being named) turns on the whole box it sits in, so what the map shows and
+  // what the panel says agree.
+  const boxes = () => [...document.querySelectorAll('#layersPanel input[data-layer]')];
+  const keysOfBox = inp => (inp.dataset.layers || inp.dataset.layer).split(/\s+/).filter(Boolean);
+  function setBox(inp, on) {
+    inp.checked = on;
+    keysOfBox(inp).forEach(k => { L[k] = on; });
+    if (!on) return;
+    const ks = keysOfBox(inp);
+    if (ks.some(k => k !== 'flags' && k !== 'propaganda' && k !== 'independent' && k !== 'artist' && k !== 'openbooks')) loadMoney();
+    if (ks.some(k => k === 'hq' || k === 'people')) loadHq();
+  }
+  function turnOn(k) {
+    const inp = boxes().find(i => keysOfBox(i).includes(k));
+    if (inp) setBox(inp, true); else L[k] = true;
+  }
+
   function init() {
     const box = document.getElementById('layersControl'); if (!box) return;
     const btn = box.querySelector('#layersBtn'), panel = box.querySelector('#layersPanel');
@@ -923,10 +1099,7 @@
     btn.addEventListener('click', () => setOpen(panel.hidden));
     box.querySelector('.layers-close').addEventListener('click', () => { setOpen(false); btn.focus(); });
     box.querySelector('.layers-reset').addEventListener('click', () => {
-      box.querySelectorAll('input[data-layer]').forEach(input => {
-        input.checked = false;
-        L[input.dataset.layer] = false;
-      });
+      box.querySelectorAll('input[data-layer]').forEach(input => setBox(input, false));
       box.querySelectorAll('input[data-kind]').forEach(input => { input.checked = true; L.kinds[input.dataset.kind] = true; });
       box.querySelectorAll('input[data-pkind]').forEach(input => { input.checked = true; L.pkinds[input.dataset.pkind] = true; });
       clearReach();
@@ -936,10 +1109,7 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { clearReach(); if (!panel.hidden) setOpen(false); } });
     window.addEventListener('resize', () => { if (!panel.hidden) placePanel(); });
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
-      const k = inp.dataset.layer;
-      L[k] = inp.checked;
-      if (k !== 'flags' && k !== 'grade' && k !== 'propaganda' && inp.checked) loadMoney();
-      if ((k === 'hq' || k === 'people') && inp.checked) loadHq();
+      setBox(inp, inp.checked);
       repaint();
     }));
     box.querySelectorAll('input[data-kind]').forEach(inp => inp.addEventListener('change', () => {

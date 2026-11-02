@@ -13,6 +13,8 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below. Funding transparency ratings, A to F, summarize what each record shows about funding; see "Funding transparency ratings".
 
+The Layers panel on the map has five boxes: **Funding connections** (one box for the lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices), **Epstein connections** (spaces whose funders or people appear in the files, and those people's offices), **Propaganda**, **Independent** and **Artist-run**. The records carry no field for the last two, so `assets/layers.js` reads each record's own words (summary, watch note, funding note, focus, name): "independent art space", "remains independent", "artist-run", "founded by artists" and the like. "Independently verified" or "independent audit" does not count.
+
 ## Design
 
 Plain CSS, no framework: one stylesheet at `assets/atlas.css` (design layer plus a short generated block of layout helpers) and `assets/maplibre-gl.css` for the street map. The page loads no CSS or script from a CDN.
@@ -125,12 +127,14 @@ Last step: set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to `https://<
 
 With a model connected the chat holds a conversation: every question that is not a plain list of spaces goes to Claude, with the earlier turns of the chat and the records on the page as grounding. Without one, it answers from the records alone.
 
+What the model is given is written by `assets/grounding.js`. The record the question is about goes in full, in labelled sections (status, funding and audited figures, governance, overview, every reported case with its date and sources, employee and visitor accounts, critics and studies, visiting, sources), within a 14,000-character budget; the other records found for the question go in a 3,200-character form. A question about a city or country as a whole also gets a `<place_summary>`: the count, the grade tally, each flagged space with its reason, the funders named most and the largest audited incomes, counted on the page so the model does not count. Comparisons of places, a place asked about as a whole, employee accounts, critics and the reason for a grade go to the model first and fall back to the record answers when it is off or fails; plain lists and counts are always answered on the page. Tests: `node --test tests/grounding.test.mjs`.
+
 The Cloudflare Worker in `worker/` serves it at `POST /chat`. The Anthropic key stays in the Worker and never reaches the browser. The Worker needs one KV namespace, bound as `SUBMISSIONS`, that holds only the hourly rate counters, and the variable `ALLOWED_ORIGINS` (`https://vasspolina.github.io`). From a terminal, in `worker/`: `npx wrangler kv namespace create SUBMISSIONS`, paste the id into `wrangler.toml`, then `npx wrangler deploy`. Tests: `node --test worker/test/*.test.mjs`.
 
 1. In `worker/`, `npx wrangler secret put ANTHROPIC_API_KEY` and paste the key from console.anthropic.com. (In the dashboard: the Worker's **Settings → Variables and Secrets**.)
 2. Put the Worker's address plus `/chat` in `assets/config.js`: `window.ATLAS_AI_PROXY_URL = 'https://culture-atlas-submissions.<you>.workers.dev/chat';` and push to `main`.
 
-The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
+The page asks the Worker for Claude Sonnet 4.5 (`queryAI` in `index.html`; a visitor's own key uses the model chosen in settings). The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
 
 ## Studies
 
@@ -198,6 +202,14 @@ The chat also answers "What do employees report?" with a summary of the 127 para
 
 Notes saved in this browser are read back inside the chat ("Notes saved in this
 browser" in the chat reply opens nothing).
+
+## Gossip mode
+
+Gossip mode shows what people are actually saying about a space on the internet: in the arts press, on Reddit, on accounts that collect staff complaints, in open letters, union statements and court filings, and in the comments under them. The rules for what counts, what never goes in, which sources are trusted and how an item is written are in `notes/gossip-criteria.md`; read them before adding anything.
+
+The items live in `data/gossip_items.json`, one object each (schema in the rules, §4). `tools/attach_gossip.py` checks every item against the mechanical rules, marks `talk` items older than 36 months `stale`, drops rumours older than a year that no outlet picked up, and writes the rest onto the records as `gossip_data.gossip`, newest first; then `clean_data.py` and `embed_data.py` as usual. Re-running replaces the field. Items are reopened at least once a year; `retrieved_on` is the proof.
+
+In Gossip mode the record page leads with the items (desktop: the Gossip row; phone: the cards at the top of the record), the globe marks a space with at least one item that is not stale, and the chat answers from the items first, naming who says each one and ending any item about a named person with the response line. The model gets them as the GOSSIP section of the grounding (`assets/grounding.js`) with the same instruction. Outside Gossip mode the items are not volunteered; asked directly, the chat answers from them with the same rules. Every gossip answer carries the line "Talk collected from the internet, with its sources. Unverified unless marked confirmed or resolved."
 
 ## What the page may show
 
@@ -269,7 +281,7 @@ Each record with an independently sourced funder roster carries a rating from A 
 | D | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
 | F | Multiple flagged funders, or a flagged funder with a disputed record | More than one flagged funder category, or a flagged funder plus a documented objection |
 
-Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating on its colour block with the sentence that decided it (`grade_basis`); the Layers panel has a Funding transparency ratings layer that fills each rated dot with its colour; the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
+Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating on its colour block with the sentence that decided it (`grade_basis`); the map has no layer for the rating (removed 2 Nov 2026); the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
 
 ## Verification & Methodology
 
