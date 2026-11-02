@@ -807,11 +807,15 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 :root:not([data-theme="dark"]) #layersPanel .layers-key i{position:relative;background:var(--ink)}
 :root:not([data-theme="dark"]) #layersPanel .layers-key i::after{content:"";position:absolute;inset:1px;background:var(--marker-color);clip-path:inherit;border-radius:inherit}
 #layersPanel .shape-dot{border-radius:50%}
-#layersPanel .shape-glow{box-shadow:0 0 6px 1px var(--marker-color)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow{--marker-color:#889e9a}
 #layersPanel .layers-kinds .shape-ring,#layersPanel .layers-key .shape-ring{box-sizing:border-box;border-radius:50%;background:transparent!important;border:.8px solid var(--marker-color)}
 #layersPanel .shape-ring::after{display:none!important}
-:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#0d9488}
+:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#d4109f}
+/* The propaganda marks glow on the map; the key echoes it with a soft halo of the same pink (a deeper step on the light ground). */
+#layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(255,61,209,.55)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(212,16,159,.4)}
+/* The independent mark glows green on the map; the key echoes it (a deeper step on the light ground). */
+#layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(156,175,125,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#889e9a;box-shadow:0 0 6px 2px rgba(136,158,154,.5)}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}

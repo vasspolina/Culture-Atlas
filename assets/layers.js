@@ -8,7 +8,7 @@
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
   const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, independent: false, artist: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
-  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#2dd4bf', indep: '#9caf7d', artist: '#ffd600' };
+  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#ff3dd1', indep: '#9caf7d', artist: '#ffd600' };
   // Independent and artist-run: the records carry no field for either, so the two layers read the record's own words
   // (its summary, watch note, funding note, focus and name). "Independently verified/audited" is not the space being independent.
   const KIND_TEXT = i => ['highlight', 'watch', 'curatorial_focus', 'funding', 'affiliations_note', 'records_note', 'tier_note', 'name'].map(k => i[k] || '').join(' \n ');
@@ -24,8 +24,20 @@
   // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
   // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
   // the data are drawn in a deeper step of the same hue there: 3.05:1 or better against white at the 0.8 alpha they are drawn at.
-  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#9caf7d': '#889e9a', '#2dd4bf': '#0d9488' };
+  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#9caf7d': '#889e9a', '#2dd4bf': '#0d9488', '#ff3dd1': '#d4109f' };
   const lineCol = c => (document.documentElement.getAttribute('data-theme') === 'dark' ? c : (LINE_LIGHT[c] || c));
+  // A hex colour with an alpha, for the halos.
+  const hexA = (h, a) => `rgba(${parseInt(h.slice(1, 3), 16)}, ${parseInt(h.slice(3, 5), 16)}, ${parseInt(h.slice(5, 7), 16)}, ${Math.max(0, Math.min(1, a)).toFixed(3)})`;
+  // The propaganda marks' glow breathes on a 3.2 second cycle between 0.8 and 1.15 of its resting size. With reduced motion it
+  // holds at 1. While any such mark is on screen the globe (and the street map) is asked for another frame every 80ms, which
+  // is enough for a slow fade and far below the draw rate of a drag.
+  const REDUCE = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const propGlow = () => (REDUCE() ? 1 : 0.975 + 0.175 * Math.sin(performance.now() / 3200 * Math.PI * 2));
+  let propTimer = 0;
+  function propPulse() {
+    if (REDUCE() || propTimer) return;
+    propTimer = setTimeout(() => { propTimer = 0; if (!L.propaganda) return; if (window.scheduleRender) window.scheduleRender(); svSchedule(); }, 80);
+  }
   // Colour is never the only cue (WCAG 1.4.1): each kind of mark has its own outline, the same ones the key in the layers panel shows.
   const SHAPES = {
     square: null,
@@ -520,8 +532,11 @@
     }
 
     if (L.propaganda) {
-      // Each space a state or regime has used as an instrument of propaganda: a filled pentagon when it is used that way now, a
-      // ring when it was in a past period. A space with both shows both side by side, just below its dot.
+      // Each space a state or regime has used as an instrument of propaganda: a glowing pink dot just below its own dot, filled
+      // when it is used that way now, a ring when it was in a past period. A space with both shows both side by side. The glow
+      // is a soft halo under the mark that breathes slowly; it holds still when the system asks for reduced motion.
+      const glow = propGlow(), halo = dark ? COL.prop : lineCol(COL.prop);
+      let drawn = 0;
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.propaganda || !i.propaganda.length) return;
@@ -529,10 +544,19 @@
         marks.forEach((k, n) => {
           const p = i.propaganda.find(q => q.kind === k), x = d.x + (n - (marks.length - 1) / 2) * 14, y = d.y + 12;
           LM.push({ x, y, r: 8, rec: i, col: COL.prop, label: k === 'today' ? 'Used for propaganda now' : 'Used for propaganda in the past', sub: `${i.name}, ${p.period}`, sub2: p.mechanism ? p.mechanism[0].toUpperCase() + p.mechanism.slice(1) : '', ask: `How is ${i.name} used for propaganda?` + (k === 'today' ? '' : ` (${p.period})`) });
+          drawn++;
+          // The halo: a radial fade from the mark's colour to nothing, wider and brighter for a space used that way now.
+          const R = (k === 'today' ? 20 : 15) * glow;
+          const g = ctx.createRadialGradient(x, y, 2, x, y, R);
+          g.addColorStop(0, hexA(halo, (k === 'today' ? 0.55 : 0.38) * glow));
+          g.addColorStop(0.5, hexA(halo, (k === 'today' ? 0.22 : 0.14) * glow));
+          g.addColorStop(1, hexA(halo, 0));
+          ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
           if (k === 'today') { shapePath(ctx, 'circle', x, y, 6); ctx.fillStyle = COL.prop; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); }
-          else { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.lineWidth = 0.8; ctx.strokeStyle = lineCol(COL.prop); ctx.stroke(); ctx.lineWidth = 0.8; }
+          else { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.lineWidth = 1.2; ctx.strokeStyle = lineCol(COL.prop); ctx.stroke(); ctx.lineWidth = 0.8; }
         });
       });
+      if (drawn) propPulse();
     }
 
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
