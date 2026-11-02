@@ -755,7 +755,9 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-actions{display:flex;align-items:center;gap:12px}
 #layersPanel .layers-actions button{padding:0;border:0;background:transparent;color:var(--row-dim);cursor:pointer}
 #layersPanel .layers-reset{font:400 var(--fs-s)/1 var(--sans);text-decoration:underline;text-underline-offset:var(--ul-off)}
-#layersPanel .layers-close{font:400 var(--fs-l)/1 var(--sans);padding:0 2px!important}
+/* A large cross drawn as two 1px lines (not a glyph), from the current text colour so hover and dark mode carry it. */
+#layersPanel .layers-close{font-size:0;line-height:0;width:28px;height:28px;padding:0!important;display:grid;place-items:center}
+#layersPanel .layers-close::before{content:"";width:28px;height:28px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Cpath d='M.5.5l27 27M27.5.5l-27 27' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Cpath d='M.5.5l27 27M27.5.5l-27 27' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") center/100% 100% no-repeat}
 #layersPanel .layers-actions button:hover{color:var(--ink)}
 #layersPanel .layers-section{padding-top:10px}
 #layersPanel .layers-section+.layers-section{margin-top:8px;border-top:.8px solid var(--line)}
