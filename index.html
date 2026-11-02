@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=451">
+  <link rel="stylesheet" href="assets/atlas.css?v=452">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/grounding.js?v=447"></script>
@@ -9975,7 +9975,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v451';
+    const ATLAS_RELEASE = 'culture-atlas-v452';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -16407,12 +16407,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         chrome.addEventListener('touchend', (e) => {
           if (y0 === null) return;
           const dy = e.changedTouches[0].clientY - y0; y0 = null;
-          if (dy < -40) setLarge(true);
-          else if (dy > 40) { if (sheet.classList.contains('is-large')) setLarge(false); else document.getElementById('close-sheet-btn')?.click(); }
+          // One height on a phone (user, 2 Nov 2026): the sheet always covers the map, so dragging the bar down closes it.
+          if (dy > 40) document.getElementById('close-sheet-btn')?.click();
         }, { passive: true });
-        sheet.addEventListener('scroll', () => { if (sheet.scrollTop > 24 && !sheet.classList.contains('is-large')) setLarge(true); }, { passive: true });
-        // A new record opens at medium, scrolled to its title.
-        new MutationObserver(() => { if (sheet.classList.contains('hidden')) { setLarge(false); sheet.scrollTop = 0; } }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+        // A new record opens full, scrolled to its title.
+        new MutationObserver(() => { if (sheet.classList.contains('hidden')) { sheet.scrollTop = 0; } else { setLarge(true); } }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
         const name = document.getElementById('dossier-sheet-name');
         if (name) new MutationObserver(() => { sheet.scrollTop = 0; }).observe(name, { childList: true, characterData: true, subtree: true });
       })();
