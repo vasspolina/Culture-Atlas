@@ -15105,6 +15105,32 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
     window.scrollChatToBottom = scrollChatToBottom;
 
+    // While an answer is being written out the chat keeps its place: it follows the growing text only while the reader has not
+    // scrolled away, and sets the scroll once per step, with nothing queued behind it to pull the view back later.
+    function followChatTyping() {
+      if (!chatStickToBottom) return;
+      const area = document.getElementById('curatorScrollArea');
+      if (area) area.scrollTop = chatFollowTop(area);
+    }
+
+    // The three dots that stand in the chat while the model is answering; the answer, or a failure, takes them away.
+    function showChatPending() {
+      hideChatPending();
+      [['curatorMessages', 'curator-message-wrap chat-pending'], ['curatorDrawerLiveStream', 'curator-message-wrap chat-pending']].forEach(([id, cls]) => {
+        const box = document.getElementById(id);
+        if (!box) return;
+        const el = document.createElement('div');
+        el.className = cls;
+        el.dataset.pending = '1';
+        el.innerHTML = '<span class="thinking" role="status" aria-live="polite">Thinking<i></i><i></i><i></i></span>';
+        box.appendChild(el);
+      });
+      scrollChatToBottom(false);
+    }
+    function hideChatPending() {
+      document.querySelectorAll('[data-pending]').forEach(el => el.remove());
+    }
+
     // curatorContext is initialized globally above in State Variables and attached to window.curatorContext
 
     // =========================================================
@@ -15407,11 +15433,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
 
     // Typing reveal: an answer is written out word by word instead of appearing whole. The finished HTML is built first and its text nodes are
-    // emptied and refilled in place, so links, bold text and lists keep their shape. Follow-up questions, buttons, the thinking panel and the
-    // web-page block wait until the writing is done (the buttons) or appear at once. Tapping the answer, speech, or "reduce motion" finishes it immediately.
+    // emptied and refilled in place, so links, bold text and lists keep their shape. Follow-up questions wait until the writing is done.
+    // Tapping the answer or speech finishes it at once. It is the one place that writes an answer out: assets/bubbles.js draws the balloons
+    // and does not type (two engines on the same text nodes made the answer flicker). It also runs when Reduce Motion is on: it is a reveal of
+    // text, not motion that moves the page.
     function typeReveal(root, opts = {}) {
       if (!root) return { finish() {} };
-      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const skip = 'button, .curator-followups, .curator-thought-content, [data-exclude-speech="true"], script, style, svg';
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
         acceptNode: (n) => (!n.nodeValue.trim() || (n.parentElement && n.parentElement.closest(skip))) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
@@ -15425,7 +15452,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         total += parts.length;
       }
       const follow = root.querySelector('.curator-followups');
-      if (reduce || !items.length || total < 4) return { finish() {} };
+      if (!items.length || total < 4) { if (opts.onDone) opts.onDone(); return { finish() {} }; }
+      // A balloon (gossip) is drawn to fit its text: the turn keeps its final height while it is written, so the balloon is drawn once.
+      if (root.classList.contains('is-gossip')) root.style.minHeight = root.offsetHeight + 'px';
+      root.dataset.typing = '1';
       items.forEach(i => { i.node.nodeValue = ''; });
       if (follow) follow.style.visibility = 'hidden';
       // About 28 words a second at most, never longer than 5 seconds however long the answer is.
@@ -15445,7 +15475,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         clearInterval(timer);
         items.forEach(i => { i.node.nodeValue = i.full; });
         if (follow) follow.style.visibility = '';
+        root.style.minHeight = '';
+        delete root.dataset.typing;
         if (opts.onTick) opts.onTick();
+        if (opts.onDone) opts.onDone();
       };
       timer = setInterval(() => {
         const k = Math.min(total, Math.ceil(((performance.now() - start) / duration) * total));
@@ -15547,9 +15580,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       `;
       // A turn that holds gossip (reported, unverified items) is marked on the turn itself, so in gossip mode the comic balloon goes only around those.
       if (div.querySelector('[data-gossip]')) div.classList.add('is-gossip');
+      hideChatPending();
       curatorMessages.appendChild(div);
-      scrollChatToBottom(true);
-      const typedMain = typeReveal(div, { onTick: () => scrollChatToBottom(false) });
+      // The typography pass (assets/typeset.js) runs now, on the whole text, before the reveal empties it.
+      if (typeof window.atlasTypesetRun === 'function') window.atlasTypesetRun(div);
+      scrollChatToBottom(false);
+      const outline = (el) => { if (typeof window.atlasBubbleOutline === 'function') window.atlasBubbleOutline(el); };
+      const typedMain = typeReveal(div, { onTick: followChatTyping, onDone: () => outline(div) });
       div._finishTyping = typedMain.finish;
 
       const drawerLive = document.getElementById('curatorDrawerLiveStream');
@@ -15560,9 +15597,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         mBot.innerHTML = processedContent + followUpHtml;
         if (mBot.querySelector('[data-gossip]')) mBot.classList.add('is-gossip');
         drawerLive.appendChild(mBot);
+        if (typeof window.atlasTypesetRun === 'function') window.atlasTypesetRun(mBot);
         const drawerBody = document.getElementById('curatorDrawerChatBody');
         if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight;
-        const typedDrawer = typeReveal(mBot, { onTick: () => { if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight; } });
+        const typedDrawer = typeReveal(mBot, { onTick: () => { if (drawerBody) drawerBody.scrollTop = drawerBody.scrollHeight; }, onDone: () => outline(mBot) });
         mBot._finishTyping = typedDrawer.finish;
         const prevFinish = div._finishTyping;
         div._finishTyping = () => { prevFinish && prevFinish(); typedDrawer.finish(); };
@@ -15643,10 +15681,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           <div class="p-3_5 space-y-2">
             <p class="flex items-center gap-2">
 
-              <strong>${pName} API Key connected and securely saved!</strong>
+              ${pName} key saved in this browser.
             </p>
             <p class="">
-              Open-ended replies are on, using <strong>${aiModel}</strong>. Ask about a space, who funds it, or what has been reported.
+              Answers now come from ${aiModel}. Ask about a space, who funds it, or what has been reported.
             </p>
           </div>
         `);
@@ -15665,27 +15703,27 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 
                 <span class="">Add an API key</span>
               </div>
-              <span class="meta px-2 py-0_5">100% Client-Side</span>
+              <span class="meta px-2 py-0_5">Stays in this browser</span>
             </div>
             <p class="">
-              I've opened the <strong>Curator Settings</strong> modal for you. You can connect your personal API key to enable live conversational reasoning across the catalog.
+              Settings are open. Add your own key to have a model answer in your browser; the key is kept there and sent only to its provider.
             </p>
             <div class="space-y-2 pt-1">
               <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="py-2 px-3 rule-b text-left block">
                 <div class="">Anthropic</div>
-                <div class="">Recommended: deep art history &amp; critical theory</div>
+                <div class="">Claude</div>
               </a>
               <a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer" class="py-2 px-3 rule-b text-left block">
-                <div class="">OpenAI (GPT-4o)</div>
-                <div class="">Fast reasoning &amp; visitor guides</div>
+                <div class="">OpenAI</div>
+                <div class="">GPT models</div>
               </a>
               <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="py-2 px-3 rule-b text-left block">
                 <div class="">Google Gemini</div>
-                <div class="">Free plan with high rate limits</div>
+                <div class="">Gemini models</div>
               </a>
             </div>
             <div class="flex flex-col sm-flex-row sm-items-center justify-between gap-2 pt-2 rule-t">
-              <span>Or simply paste your <code class="meta">sk-ant-...</code>, <code class="meta">sk-...</code>, or <code class="meta">AIza...</code> key right here!</span>
+              <span>Or paste the key (<code class="meta">sk-ant-…</code>, <code class="meta">sk-…</code> or <code class="meta">AIza…</code>) into the chat.</span>
               <button onclick="openSettingsModal()" class="px-3 py-1 shrink-0">Open Settings</button>
             </div>
           </div>
@@ -15746,7 +15784,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const modelOn = (aiApiKey && aiApiKey !== _SYS_KEY) || !!ATLAS_AI_PROXY_URL;
       const askModel = async () => {
         if (!modelOn) return false;
-
+          showChatPending();
           const scrapingBadge = document.getElementById('curatorScrapingBadge');
           if (scrapingBadge) scrapingBadge.classList.remove('hidden');
           let webIntel = null;
@@ -15785,6 +15823,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           } catch (aiErr) {
             console.warn('Live AI query error:', aiErr);
           }
+        hideChatPending();
         return false;
       };
 
