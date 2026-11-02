@@ -15404,7 +15404,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // web-page block wait until the writing is done (the buttons) or appear at once. Tapping the answer, speech, or "reduce motion" finishes it immediately.
     function typeReveal(root, opts = {}) {
       if (!root) return { finish() {} };
-      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // The answer is always written out word by word, as in the Claude app, also when the phone's Reduce Motion is on: it is a reveal of text, not
+      // an animation that moves the page. Tapping the answer still finishes it at once.
       const skip = 'button, .curator-followups, .curator-thought-content, [data-exclude-speech="true"], script, style, svg';
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
         acceptNode: (n) => (!n.nodeValue.trim() || (n.parentElement && n.parentElement.closest(skip))) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
@@ -15418,7 +15419,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         total += parts.length;
       }
       const follow = root.querySelector('.curator-followups');
-      if (reduce || !items.length || total < 4) return { finish() {} };
+      if (!items.length || total < 4) return { finish() {} };
       items.forEach(i => { i.node.nodeValue = ''; });
       if (follow) follow.style.visibility = 'hidden';
       // About 28 words a second at most, never longer than 5 seconds however long the answer is.
