@@ -2912,3 +2912,9 @@ div:has(>#topThemeBtn){column-gap:0}
   #curator-chat-drawer.sheet-rise{animation:sheetRise .26s cubic-bezier(.2,.8,.2,1)}
   @media (prefers-reduced-motion:reduce){#curator-chat-drawer.sheet-rise{animation:none}}
 }
+
+/* PHONE CHAT, LIKE THE CLAUDE APP: once a conversation has started the chat view is the conversation and the composer, nothing else.
+   The reference note ("How the records work") is for the empty chat; the answers carry their own sources. */
+@media (max-width:767px){
+  body[data-mobile-mode="chat"]:has(#curatorMessages>*) #workBottomDock #chatRecordsInfo{display:none!important}
+}
