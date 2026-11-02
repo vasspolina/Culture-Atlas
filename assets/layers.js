@@ -768,7 +768,7 @@
     const set = (k, text) => { const el = document.querySelector(`#layersPanel [data-count="${k}"]`); if (el) el.textContent = text; };
     const formatCount = count => new Intl.NumberFormat('en-US').format(count);
     if (typeof ALL_INSTITUTIONS !== 'undefined') {
-      set('spaces', `${formatCount(ALL_INSTITUTIONS.length)}`);
+      set('spaces', `${formatCount(ALL_INSTITUTIONS.length)}\u00a0spaces`);
       set('flags', `${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
       set('propaganda', `${formatCount(ALL_INSTITUTIONS.filter(i => (i.propaganda || []).length).length)}\u00a0spaces`);
       set('independent', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).independent).length)}\u00a0spaces`);

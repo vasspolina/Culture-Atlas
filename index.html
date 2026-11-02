@@ -217,7 +217,8 @@ return maplibregl$1;
           <section class="layers-section">
             <h2 class="layers-section-title">Map layers</h2>
             <div class="layers-list">
-              <label><input type="checkbox" checked disabled> <span class="layer-name">Cultural spaces</span><span class="layer-desc">Every museum, gallery and art space</span><span class="layers-count" data-count="spaces"></span></label>
+              <!-- The base layer is always drawn, so it is a plain row, not a switch. -->
+              <div class="layer-base"><span class="layer-name">Cultural spaces</span><span class="layer-desc">Every museum, gallery and art space, always shown</span><span class="layers-count" data-count="spaces"></span></div>
               <!-- One box can turn on several drawn layers: data-layer names the box, data-layers the layers it holds. -->
               <label><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
               <label><input type="checkbox" data-layer="epstein" data-layers="epstein people"> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
