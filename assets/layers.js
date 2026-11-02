@@ -175,22 +175,69 @@
   }
 
   function vec(lat, lon) { const p = lat * rad, l = lon * rad; return [Math.cos(p) * Math.sin(l), Math.sin(p), Math.cos(p) * Math.cos(l)]; }
-  function arc(project, a, b, r, cx, cy, ctx) {
+  // The lines drawn last frame, each with the funder it stands for (tag: key, kind, the two spaces it joins), so the pointer
+  // can find a line: LINES holds runs of points on the canvas, LINE_HOV the funder whose line is under the pointer.
+  let LINES = [], LINE_HOV = null;
+  function arc(project, a, b, r, cx, cy, ctx, tag) {
     const va = vec(a.lat, a.lon), vb = vec(b.lat, b.lon);
     const dot = Math.max(-1, Math.min(1, va[0] * vb[0] + va[1] * vb[1] + va[2] * vb[2])), om = Math.acos(dot);
     if (om < 1e-5) return false;
     const so = Math.sin(om), N = Math.max(8, Math.ceil(om * 36));
-    ctx.beginPath(); let pen = false, drawn = false;
+    ctx.beginPath(); let pen = false, drawn = false, run = null;
     for (let i = 0; i <= N; i++) {
       const t = i / N, k1 = Math.sin((1 - t) * om) / so, k2 = Math.sin(t * om) / so;
       const x = k1 * va[0] + k2 * vb[0], y = k1 * va[1] + k2 * vb[1], z = k1 * va[2] + k2 * vb[2];
       const lat = Math.atan2(y, Math.hypot(x, z)) / rad, lon = Math.atan2(x, z) / rad;
       const pt = project(lon, lat, r * (1 + 0.12 * Math.sin(Math.PI * t) * Math.min(1, om)), cx, cy);
-      if (!pt.front) { pen = false; continue; }
+      if (!pt.front) { pen = false; run = null; continue; }
       if (pen) { ctx.lineTo(pt.x, pt.y); drawn = true; } else { ctx.moveTo(pt.x, pt.y); pen = true; }
+      if (tag) { if (!run) { run = { tag, pts: [] }; LINES.push(run); } run.pts.push(pt.x, pt.y); }
     }
     if (drawn) ctx.stroke();
     return drawn;
+  }
+  // The funder a key stands for: its name (the office's, else the longest spelling the records use), kind, every key the
+  // map groups with it, the office if it has one, and its entry in the widest-reaching list if it is there.
+  function funderOf(key) {
+    if (!key || !keyIndex) return null;
+    const t = TOP && TOP.find(x => x.keys.includes(key));
+    const office = HQ && HQ.byKey.get(key);
+    let name = office ? office.n : (t && t.name);
+    if (!name) {
+      const names = new Map();
+      (keyIndex.get(key) || []).forEach(id => { const q = recById.get(id); if (q) q.nodes.forEach(n => { if (n[5] === key) names.set(n[0], (names.get(n[0]) || 0) + 1); }); });
+      name = [...names.entries()].sort((a, b) => b[1] - a[1] || b[0].length - a[0].length).map(e => e[0])[0] || key;
+    }
+    const keys = t ? t.keys : [key];
+    return { key, keys, kind: keyKind.get(key), name, office: office || null, top: t || null, space: t ? hubOf(t) : recById.get((keyIndex.get(key) || [])[0]) };
+  }
+  // The spaces a funder is named on, and how many countries they sit in.
+  function reachOfKeys(keys) {
+    const ids = new Set(), cs = new Set();
+    keys.forEach(k => (keyIndex.get(k) || []).forEach(id => { ids.add(id); const q = recById.get(id); if (q && q.co) cs.add(q.co); }));
+    return { n: ids.size, countries: cs.size };
+  }
+  // The line under the point, if any: the nearest run within a few pixels (more for a finger), unless a name block sits there.
+  function lineAt(mx, my, dots) {
+    if (!LINES.length) return null;
+    const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen', reach = touch ? 10 : 5;
+    const inBox = b => mx >= b.x && mx <= b.x + b.w && my >= b.y && my <= b.y + b.h;
+    if (labelBoxesOnScreen(dots || []).some(inBox)) return null;
+    // A space's own dot under the point takes the pointer; the line gives way.
+    if ((dots || []).some(d => Math.hypot((d.renderX ?? d.x) - mx, (d.renderY ?? d.y) - my) <= (touch ? 16 : 9))) return null;
+    let best = null, bd = reach;
+    for (let i = 0; i < LINES.length; i++) {
+      const p = LINES[i].pts;
+      for (let k = 2; k < p.length; k += 2) {
+        const ax = p[k - 2], ay = p[k - 1], bx = p[k], by = p[k + 1];
+        if (Math.min(ax, bx) > mx + bd || Math.max(ax, bx) < mx - bd || Math.min(ay, by) > my + bd || Math.max(ay, by) < my - bd) continue;
+        const dx = bx - ax, dy = by - ay, l2 = dx * dx + dy * dy;
+        const t = l2 ? Math.max(0, Math.min(1, ((mx - ax) * dx + (my - ay) * dy) / l2)) : 0;
+        const d = Math.hypot(mx - (ax + t * dx), my - (ay + t * dy));
+        if (d < bd) { bd = d; best = LINES[i].tag; }
+      }
+    }
+    return best;
   }
 
   const sameInst = (a, b) => !!a && !!b && (a.id ? a.id === b.id : a.name === b.name);
@@ -199,9 +246,8 @@
   const streetUp = () => !STREET && typeof window.getIsCityStreetViewActive === 'function' && window.getIsCityStreetViewActive();
   window.atlasLayersDraw = function (ctx, project, r, cx, cy, list, sel, hov, baseRadius) {
     if (streetUp()) return;   // the street map is in front: its own frame draws the layers
-    LM = [];
-    drawReach(ctx, project, r, cx, cy);
-    if (!L.ties) return;
+    LM = []; LINES = [];
+    if (!L.ties) { drawReach(ctx, project, r, cx, cy); return; }
     if (!recById) { loadMoney(); return; }
     const focus = hov || sel, rec = focus && recById.get(focus.id);
     ctx.save();
@@ -212,15 +258,25 @@
     const showWeb = !rec && !HQ_HOV && r < baseRadius * 8;
     ctx.globalAlpha = 0.35;
     const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
-    if (showWeb) web.forEach(([a, b, kind]) => {
+    // The funder under the pointer, or pinned: its whole chain is drawn bright, on top of the rest of the web.
+    const hotKeys = REACH ? new Set(REACH.keys || [REACH.key]) : null, hot = [];
+    if (showWeb) web.forEach(([a, b, kind, key]) => {
       if (!kindOn(kind)) return;
       const pa = project(a.lon, a.lat, r, cx, cy), pb = project(b.lon, b.lat, r, cx, cy);
       if (!pa.front && !pb.front) return;
       if ((pa.x < -W || pa.x > 2 * W) && (pb.x < -W || pb.x > 2 * W)) return;
       if ((pa.y < -H || pa.y > 2 * H) && (pb.y < -H || pb.y > 2 * H)) return;
+      if (hotKeys && hotKeys.has(key)) { hot.push([a, b, kind, key]); return; }
       ctx.strokeStyle = COL[kind];
-      arc(project, a, b, r, cx, cy, ctx);
+      arc(project, a, b, r, cx, cy, ctx, { key, kind, a, b });
     });
+    if (hot.length) {
+      ctx.globalAlpha = 0.95; ctx.lineWidth = 2;
+      hot.forEach(([a, b, kind, key]) => { ctx.strokeStyle = lineCol(COL[kind]); arc(project, a, b, r, cx, cy, ctx, { key, kind, a, b }); });
+      ctx.globalAlpha = 0.35; ctx.lineWidth = 0.8;
+    }
+    // The funder under the pointer or pinned: a line from its space to every other space that names it.
+    ctx.restore(); drawReach(ctx, project, r, cx, cy); ctx.save(); ctx.lineCap = 'round';
     // The focused space's own ties, bright, with a dot at each far end.
     if (rec && typeof rec.lat === 'number') {
       ctx.lineWidth = 0.8; ctx.globalAlpha = 0.8;
@@ -231,7 +287,7 @@
           if (seen.has(id) || seen.size > 400) return; seen.add(id);
           const o = recById.get(id); if (!o || typeof o.lat !== 'number') return;
           ctx.strokeStyle = lineCol(COL[n[1]]);
-          arc(project, rec, o, r, cx, cy, ctx); ends.push([o, lineCol(COL[n[1]]), COL[n[1]]]);
+          arc(project, rec, o, r, cx, cy, ctx, { key: n[5], kind: n[1], a: rec, b: o }); ends.push([o, lineCol(COL[n[1]]), COL[n[1]]]);
         });
       });
       ctx.globalAlpha = 1;
@@ -255,7 +311,7 @@
     const ids = new Set(); (REACH.keys || [REACH.key]).forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
     ids.forEach(id => {
       const o = recById.get(id); if (!o || o === home || typeof o.lat !== 'number') return;
-      arc(project, home, o, r, cx, cy, ctx); ends.push(o);
+      arc(project, home, o, r, cx, cy, ctx, { key: REACH.key, kind: REACH.kind, a: home, b: o }); ends.push(o);
     });
     ctx.globalAlpha = 1;
     ends.forEach(o => {
@@ -613,9 +669,16 @@
         ctx.fillStyle = '#000'; ctx.textAlign = 'left'; ctx.fillText(text, box.x + 14, y + 0.5);
       });
     }
-    drawMarkTip(ctx, boxes);
+    TIP_BOXES = boxes;
     ctx.restore();
   }
+  // The block naming the mark or line under the pointer is drawn last of all, over the city names (index.html calls this
+  // after them; the street map calls it after the nodes), so nothing covers it.
+  let TIP_BOXES = [];
+  window.atlasLayersDrawTip = function (ctx) {
+    if (streetUp()) return;
+    ctx.save(); drawMarkTip(ctx, TIP_BOXES); ctx.restore();
+  };
   // A label, cut like the city labels (rounded, 22 high, 14 either side) but filled in the mark's colour.
   function drawTag(ctx, x, y, w, h, col) {
     ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 0); ctx.fillStyle = col; ctx.fill(); ctx.restore();
@@ -623,10 +686,10 @@
   // The mark under the pointer: its name on a block in its colour, and that a click asks the chat.
   function drawMarkTip(ctx, boxes) {
     if (!LM_HOV) return;
-    const m = LM.find(q => q.ask === LM_HOV.ask && q.rec === LM_HOV.rec && !q.pass) || null; if (!m) return;
+    const m = LM_HOV.line ? LM_HOV : (LM.find(q => q.ask === LM_HOV.ask && q.rec === LM_HOV.rec && !q.pass) || null); if (!m) return;
     const W = ctx.canvas.clientWidth || 1e9;
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
-    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat')].filter(Boolean);
+    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.tip || (m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat'))].filter(Boolean);
     ctx.save(); ctx.font = LW() + ' 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 28, h = 22, pad = 6;
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
@@ -753,18 +816,49 @@
   window.atlasLayerMarks = {
     // The marks drawn last frame (position, name, count line), for checking the layers from a test script.
     marks: () => LM.map(m => ({ x: m.x, y: m.y, r: m.r, label: m.label, sub: m.sub, go: !!m.go })),
+    // The line hover and the funder whose web is lit, for checking from a test script.
+    lineHover: () => (LM_HOV && LM_HOV.line ? { key: LM_HOV.key, label: LM_HOV.label, sub: LM_HOV.sub, sub2: LM_HOV.sub2, tip: LM_HOV.tip } : null),
+    reach: () => (REACH ? { key: REACH.key, keys: REACH.keys, name: REACH.name, pinned: !!REACH.pinned } : null),
+    lines: () => LINES.length,
     // Pointer moved: a mark that stands alone takes the hover (true, so the page shows a pointer); a mark on a space's dot does not.
-    hover(mx, my) {
+    hover(mx, my, dots) {
       const m = markAt(mx, my), alone = m && !m.pass ? m : null;
-      if ((alone && alone.ask) !== (LM_HOV && LM_HOV.ask) || (alone && alone.rec) !== (LM_HOV && LM_HOV.rec)) { LM_HOV = alone; repaint(); }
+      // No mark under the pointer: a funding line may be. Its funder's whole web lights up, and a block names the funder.
+      const tag = !m ? lineAt(mx, my, dots) : null, f = tag && funderOf(tag.key);
+      if (f) {
+        const same = LM_HOV && LM_HOV.line && LM_HOV.key === f.key;
+        if (!same) {
+          const n = reachOfKeys(f.keys), st = tag.a && tag.b ? `${tag.a.n} – ${tag.b.n}` : null;
+          LM_HOV = { line: true, key: f.key, x: mx, y: my, col: COL[f.kind], label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${plural(n.n, 'space')} in ${n.countries} ${n.countries === 1 ? 'country' : 'countries'}`, sub2: st, tip: REACH && REACH.pinned && REACH.key === f.key ? 'Pinned · click to open its record' : 'Click for details' };
+        } else { LM_HOV.x = mx; LM_HOV.y = my; }
+        if (!(REACH && (REACH.pinned || REACH.tapped)) && (!REACH || REACH.key !== f.key)) { clearTimeout(reachTimer); reachTimer = 0; REACH = { key: f.key, keys: f.keys, kind: f.kind, space: tag.a || f.space, name: f.name, top: f.top, line: true }; }
+        else { clearTimeout(reachTimer); reachTimer = 0; }
+        repaint();
+        return true;
+      }
+      if ((alone && alone.ask) !== (LM_HOV && LM_HOV.ask) || (alone && alone.rec) !== (LM_HOV && LM_HOV.rec) || (LM_HOV && LM_HOV.line)) { LM_HOV = alone; repaint(); }
       setReach(alone);
       return !!alone;
     },
     // A click on a mark asks the chat about it, and that is all the click does. The chat answers a question about a space
     // with the space selected on the map and stays in front, so a flag mark loses nothing by not opening the record.
-    click(mx, my) {
+    click(mx, my, dots) {
       const m = markAt(mx, my);
-      if (!m) { if (REACH && REACH.tapped) clearReach(); return false; }
+      if (!m) {
+        // A click on a funding line pins its funder's web on the map and opens the funder's record in the Details tab.
+        const tag = lineAt(mx, my, dots), f = tag && funderOf(tag.key);
+        if (f) {
+          clearTimeout(reachTimer); reachTimer = 0;
+          REACH = { key: f.key, keys: f.keys, kind: f.kind, space: tag.a || f.space, name: f.name, top: f.top, pinned: true, line: true };
+          if (typeof renderTop === 'function') renderTop();
+          if (LM_HOV && LM_HOV.line) LM_HOV.tip = 'Pinned · click to open its record';
+          const e = f.office || { key: f.key, kind: 'org', k: f.kind, n: f.name, c: '', co: '', noOffice: true, spaces: reachOfKeys(f.keys).n };
+          if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(e);
+          repaint();
+          return true;
+        }
+        if (REACH && REACH.tapped) clearReach(); return false;
+      }
       if (m.go) { m.go(); return true; }
       // A finger has no hover: the first tap on a funder around a space shows where else it appears (and its tooltip), a second asks the chat.
       if ((window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') && m.key && !m.rec && !(REACH && REACH.tapped && REACH.key === m.key && REACH.space === m.space)) {
@@ -852,6 +946,7 @@
     try {
       window.atlasLayersDraw(ctx, project, r, W / 2, H / 2, list, sel, null, base);
       window.atlasLayersDrawNodes(ctx, dots, r, base, sel, null, false, project, W / 2, H / 2);
+      window.atlasLayersDrawTip(ctx);
     } finally { STREET = false; }
   }
   window.atlasStreetLayers = {

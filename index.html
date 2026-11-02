@@ -34,10 +34,10 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=446">
+  <link rel="stylesheet" href="assets/atlas.css?v=447">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
-  <script src="assets/grounding.js?v=446"></script>
+  <script src="assets/grounding.js?v=447"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9982,7 +9982,7 @@ return maplibregl$1;
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=430').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=431').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11122,6 +11122,8 @@ return maplibregl$1;
 
         // 8.4 City labels on top of the dots
         deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4]); ctx.restore(); });
+        // The block naming the layer mark or funding line under the pointer, over everything: assets/layers.js
+        if (window.atlasLayersDrawTip) window.atlasLayersDrawTip(ctx);
 
         // 8.5 Render Rich Interactive Hover Card for Hovered City on Globe
         // Suppress city hover cards when hovering an institution or for cities outside selected country
@@ -19328,7 +19330,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // An office mark under the click opens its record; where marks and spaces crowd, a list offers each one.
       if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.click(mx, my, clientX, clientY, visibleDots)) return;
       // The other layer marks: a click asks the chat about the mark (a flag or grade mark then goes on to its space).
-      if (!isCityStreetViewActive && window.atlasLayerMarks && window.atlasLayerMarks.click(mx, my)) return;
+      if (!isCityStreetViewActive && window.atlasLayerMarks && window.atlasLayerMarks.click(mx, my, visibleDots)) return;
 
       // PRIORITY 1: Check institution click across dots, text label badges, micro-cards, and proximity
       // When zoomed into country or examining institutions, INSTITUTIONS TAKE ABSOLUTE PRECEDENCE
@@ -19561,7 +19563,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       // Any other mark a map layer draws (tie ends, funder rings, right-wing and Epstein marks, flagged counts): assets/layers.js
-      if (!isCityStreetViewActive && window.atlasLayerMarks && window.atlasLayerMarks.hover(mx, my)) {
+      if (!isCityStreetViewActive && window.atlasLayerMarks && window.atlasLayerMarks.hover(mx, my, visibleDots)) {
         canvas.style.cursor = 'pointer';
         hoveredCity = null; hoveredCityCardHitbox = null; isHoveringCityExploreLink = false;
         return;
@@ -20271,8 +20273,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
   
   </script>
 <script src="assets/typeset.js?v=430"></script>
-<script src="assets/layers.js?v=446"></script>
-<script src="assets/hq-detail.js?v=430"></script>
+<script src="assets/layers.js?v=447"></script>
+<script src="assets/hq-detail.js?v=447"></script>
 <script src="assets/bubbles.js?v=430" defer></script>
 </body>
 </html>
