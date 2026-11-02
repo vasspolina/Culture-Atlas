@@ -257,6 +257,9 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch); else watch();
   window.typeset = typeset;
+  // The chat runs this on a reply before it writes it out word by word (typeReveal in index.html): the observer above would
+  // otherwise meet the reply with its text already emptied and set nothing.
+  window.atlasTypesetRun = run;
 })();
 
 // Titles under 17px are set in Documan Regular, the rest in Thin (user, 26 Oct 2026: "use regular for any size under 17"; "thin for the rest").
