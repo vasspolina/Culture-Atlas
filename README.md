@@ -203,6 +203,14 @@ The chat also answers "What do employees report?" with a summary of the 127 para
 Notes saved in this browser are read back inside the chat ("Notes saved in this
 browser" in the chat reply opens nothing).
 
+## Gossip mode
+
+Gossip mode shows what people are actually saying about a space on the internet: in the arts press, on Reddit, on accounts that collect staff complaints, in open letters, union statements and court filings, and in the comments under them. The rules for what counts, what never goes in, which sources are trusted and how an item is written are in `notes/gossip-criteria.md`; read them before adding anything.
+
+The items live in `data/gossip_items.json`, one object each (schema in the rules, §4). `tools/attach_gossip.py` checks every item against the mechanical rules, marks `talk` items older than 36 months `stale`, drops rumours older than a year that no outlet picked up, and writes the rest onto the records as `gossip_data.gossip`, newest first; then `clean_data.py` and `embed_data.py` as usual. Re-running replaces the field. Items are reopened at least once a year; `retrieved_on` is the proof.
+
+In Gossip mode the record page leads with the items (desktop: the Gossip row; phone: the cards at the top of the record), the globe marks a space with at least one item that is not stale, and the chat answers from the items first, naming who says each one and ending any item about a named person with the response line. The model gets them as the GOSSIP section of the grounding (`assets/grounding.js`) with the same instruction. Outside Gossip mode the items are not volunteered; asked directly, the chat answers from them with the same rules. Every gossip answer carries the line "Talk collected from the internet, with its sources. Unverified unless marked confirmed or resolved."
+
 ## What the page may show
 
 The page shows what a record states and where it comes from, and says plainly that none of it has been independently verified.
