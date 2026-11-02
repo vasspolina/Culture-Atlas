@@ -1512,15 +1512,32 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 .is-hq>*:not(#hqPanel){display:none!important}
 #dossier-bottom-sheet.is-hq-sheet :is(#dossier-sheet-name,#dossier-sheet-meta){display:none}
 #hqPanel.is-details{position:static;z-index:auto;top:auto;left:auto;right:auto;bottom:auto;width:auto;max-width:none;overflow:visible;border:0;background:transparent;font:400 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0}
-#hqPanel.is-details :is(.hq-head,section){padding-left:18px;padding-right:18px}
-#hqPanel.is-details .hq-head{padding-top:16px}
-#hqPanel.is-details .hq-kind{font-size:var(--fs-s)}
-#hqPanel.is-details h2{font:700 var(--fs-l)/1.1 var(--display);text-transform:uppercase;letter-spacing:0}
-#hqPanel.is-details h3{font-size:var(--fs-m)}
-#hqPanel.is-details h4{font-size:var(--fs-s)}
-#hqPanel.is-details :is(dt,.hq-note,.hq-s){font-size:var(--fs-s)}
-#hqPanel.is-details .hq-link{padding-left:0;padding-right:0}
-#hqPanel.is-details .hq-ask{margin-left:18px}
+/* Set in two columns like a space's record (user, 2 Nov 2026): the funder's record is built from the space record's own classes
+   (.record-head.head-sheet, .head-grid, .d-rows, .d-row), so the head's split, the rows' hairlines, the accent titles, the line rhythm
+   and the narrow one-column form all come from those rules. Only what is particular to the funder record is set here. */
+#desktopDossierRecordBody>#hqPanel.is-details{padding:16px 18px}
+#hqPanel.is-details section{padding:0;border-bottom:0}
+#hqPanel.is-details .hq-head{display:block;position:relative;padding:0;border:0}
+#hqPanel.is-details .hq-head>div:first-child{min-width:0}
+/* The name's rule runs the full width; the close mark sits over its right end, and the name keeps clear of it. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #hqPanel .record-head h2.dossier-main-heading{padding-right:44px}
+#hqPanel.is-details .hq-close{position:absolute;top:0;right:-10px;margin:0}
+#hqPanel.is-details .hq-kind{margin:0 0 calc(var(--H) / 2);font-size:var(--fs-s);color:color-mix(in srgb,var(--ink) 65%,transparent)}
+/* The name takes the space's title size and rule, at regular weight: bold is for museum spaces only. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #hqPanel .record-head h2.dossier-main-heading{font-weight:400!important}
+#hqPanel.is-details .hq-sheet{padding-bottom:calc(2 * var(--L));margin-bottom:calc(2 * var(--L))}
+#hqPanel.is-details .d-row-list .lead-in{font-weight:600}
+#hqPanel.is-details .hq-link{padding:0;min-height:44px;justify-content:center;gap:0}
+#hqPanel.is-details .hq-link:hover{padding-left:0;background:transparent;color:inherit}
+#hqPanel.is-details .hq-link:hover .hq-l{text-decoration-thickness:calc(var(--ul-w) * 2)}
+#hqPanel.is-details .hq-list li+li{border-top:0}
+/* A list of linked records carries no bullets: the underline already marks each one as a link. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #hqPanel ul.d-row-list.hq-list>li{padding-left:0}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #hqPanel ul.d-row-list.hq-list>li::before{content:none}
+#hqPanel.is-details .hq-list .hq-note{margin:calc(var(--H) / 2) 0 0}
+#hqPanel.is-details .hq-names li{padding:0}
+#hqPanel.is-details .hq-names .hq-s{display:inline}
+#hqPanel.is-details .hq-more{margin-top:var(--H);min-height:44px;font-size:var(--fs-s)}
 /* Chat answers: a section heading sits close to the text it opens and is not pushed away by the box margins of its own h3; the paragraph under it starts flush */
 #curatorMessages .curator-section-hdr{margin:1em 0 .3em;padding:0;display:block}
 #curatorMessages .curator-section-hdr h3{margin:0}
