@@ -2805,7 +2805,16 @@ div:has(>#topThemeBtn){column-gap:0}
 @media (max-width:767px){
   #dossier-bottom-sheet .sheet-chrome{height:56px!important;background:var(--grey)!important}
   #dossier-bottom-sheet .sheet-size{height:24px}
-  #dossier-bottom-sheet .sheet-title-block{margin-top:-32px!important;position:relative;z-index:1}
+  #dossier-bottom-sheet .sheet-title-block{margin-top:0!important;position:relative;z-index:1}
+}
+
+/* Details sheet on phones (user, 2 Nov 2026: "the title is still clipped and window needs to cover map full"). The title block
+   was pulled 32px up under the solid 56px bar, so the top of the name sat behind the bar and was cut off; it now starts under
+   the bar. The sheet has one height on a phone, the whole map area, so a record covers the map from the menu down to the
+   composer; dragging the bar down or tapping the cross closes it. */
+@media (max-width:767px){
+  #dossier-bottom-sheet:not(.hidden){height:100%!important;max-height:100%!important;flex:1 1 auto!important;transition:none}
+  #dossier-bottom-sheet .sheet-size{display:none!important}
 }
 
 /* Details sheet vertical rhythm (user, 29 Oct 2026): inside the record the paddings were zeroed, so a section's last link ran straight into the next heading, the heading into its note, and the source line, date, tag and text of each account sat on top of one another. One scale now: 28px between sections, 6px under a heading, 12px before a card, 24px between cards; inside a card the source and date stay together, then 8px steps to the tag, text, context and link. */
@@ -2954,3 +2963,8 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The Layers button is the panel's hover yellow (#fbfd5e, the row colour in the user's screenshot), not the marker yellow #ffd600,
    in both themes. Its hover (ink on paper) is set with !important above and is unchanged. */
 :root:root #layersControl #layersBtn:not(:hover):not([aria-expanded="true"]){background:#fbfd5e}
+
+/* Record text rag (user, 2 Nov 2026: "text ragging on the right is not correct"). The record's paragraphs, list items and visit
+   columns asked for text-wrap:pretty; Safari on a phone takes that as a licence to even out every line of the paragraph, which left
+   gaps of a word or two along the right edge. They wrap line by line again; the balanced setting stays on titles only. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-sub,.d-row-list>li,dl.visit-cols dd,p,li,dd){text-wrap:wrap}
