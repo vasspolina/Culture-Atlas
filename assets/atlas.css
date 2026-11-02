@@ -2785,8 +2785,10 @@ div:has(>#topThemeBtn){column-gap:0}
 #noteFormHead{display:flex!important;align-items:center;justify-content:space-between;gap:12px;width:100%}
 #noteFormHead #noteFormTitle{margin:0!important}
 :root:root:root #noteFormHead #noteFormCloseBtn{flex:none;min-height:44px;padding:0 4px 0 12px!important;border:0!important;background:none!important;color:var(--ink)!important;font:400 var(--fs-m)/1 var(--sans)!important;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
-:root:root:root #noteFormHead #noteFormCloseBtn span{font-size:1.4em;line-height:1}
+:root:root:root #noteFormHead #noteFormCloseBtn .note-close-cross{display:block;flex:none;width:28px;height:28px;color:inherit}
 :root:root:root #noteFormHead #noteFormCloseBtn:is(:hover,:focus-visible){text-decoration:underline}
+/* The dock-wide hover rule turns every child black; the cross must keep the button's own colour or it vanishes on the dark theme. */
+:root:root:root:root[data-theme] body #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible) :is(.note-close-cross,.note-close-cross *){color:inherit!important}
 @media (max-width:767px){
   body.chat-input-mode-active #workBottomDock #noteFormFields>#noteFormHead{display:flex!important;flex-direction:row!important}
   :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body.chat-input-mode-active #workBottomDock #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-size:var(--fs-m)!important;height:var(--m-tap)!important;min-height:var(--m-tap)!important;padding:0 var(--m-s4)!important}
