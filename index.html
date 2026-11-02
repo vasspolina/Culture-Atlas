@@ -34,7 +34,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=440">
+  <link rel="stylesheet" href="assets/atlas.css?v=443">
   <script src="assets/config.js?v=428"></script>
   <script src="assets/subtopic.js?v=428"></script>
   <script>
@@ -15924,10 +15924,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const mine = target ? ((target.gossip_data || {}).accounts || []) : [];
         const own = mine.map(a => {
           const v = accountView(a, target);
-          const when = v.date ? `, posted ${v.date}` : '';
-          return `<p>${escapeHtml(v.title)}${escapeHtml(when)}. ${escapeHtml(v.summary)}${v.note ? ' ' + escapeHtml(v.note) : ''}</p>`;
+          // The source line stands on its own line above the account: "Glassdoor review by Project assistant, posted 23 Apr 2025."
+          // Same size, weight and leading as the account; the date keeps its parts together on non-breaking spaces.
+          const when = v.date ? `, posted ${v.date.replace(/ /g, '\u00a0')}` : '';
+          return `<p><span class="account-head">${escapeHtml(v.title.replace(/\s*·\s*/, ' by '))}${escapeHtml(when)}.</span> ${escapeHtml(v.summary)}${v.note ? ' ' + escapeHtml(v.note) : ''}</p>`;
         }).join('');
-        const lead = mine.length ? `<p>${formatInstLink(target)} has ${mine.length === 1 ? 'one account' : mine.length + ' accounts'}:</p>${own}` : '';
+        const lead = mine.length ? `<p>${formatInstLink(target)} has ${mine.length === 1 ? 'one account' : mine.length + '\u00a0accounts'}:</p>${own}` : '';
         const note = '';
         // The summary names spaces and reports conduct from review platforms, so it is gossip and gets the balloon.
         const staffChips = isGossipModeActive
