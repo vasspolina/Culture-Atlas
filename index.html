@@ -15364,6 +15364,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (workInput) workInput.focus();
     }
 
+    // Removes the follow-up chips from every earlier answer, in the main chat and the phone drawer.
+    function retireFollowUps() {
+      document.querySelectorAll('#curatorMessages .curator-followups, #curatorDrawerLiveStream .curator-followups').forEach(el => el.remove());
+    }
     function appendUserMessage(text) {
       if (typeof curatorContext !== 'undefined') {
         if (!curatorContext.history) curatorContext.history = [];
@@ -15377,6 +15381,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (hero) hero.remove();
       const contentWrap = document.getElementById('curatorScrollContent');
       if (contentWrap) contentWrap.classList.remove('my-auto');
+      // The follow-up chips belong to the latest answer only: once a new question is sent, the earlier
+      // set is retired, so the same chips are not left standing above the question and again under the next answer.
+      retireFollowUps();
       const div = document.createElement('div');
       div.className = 'flex justify-end my-1 w-full';
       div.innerHTML = `
@@ -16120,7 +16127,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           else answer('<p>Nothing is reported for this space in the records.</p>', []);
           return;
         }
-        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing is reported for this space in the records.</p>'}${sourcesHtml(target)}`);
+        // Each reported item already names its sources, so the record's own source line repeats only the hosts not shown yet.
+        const shownHosts = new Set([...(reported || '').matchAll(/href="([^"]+)"/g)].map(m => hostOf(m[1].replace(/&amp;/g, '&'))).filter(Boolean));
+        const rest = reported ? { ...target, sources: (target.sources || []).filter(u => !shownHosts.has(hostOf(u))) } : target;
+        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing is reported for this space in the records.</p>'}${sourcesHtml(rest)}`);
         return;
       }
       if (target && asks(/\b(who funds|funding|funded|funder|donor|money|pays?|finance|financed|backers?)\b/)) {
