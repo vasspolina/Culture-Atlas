@@ -34,9 +34,9 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=439">
-  <script src="assets/config.js?v=427"></script>
-  <script src="assets/subtopic.js?v=427"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=440">
+  <script src="assets/config.js?v=428"></script>
+  <script src="assets/subtopic.js?v=428"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9990,7 +9990,7 @@ return maplibregl$1;
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=427').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=428').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15074,20 +15074,32 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!area || !list) return;
       const away = () => { chatStickToBottom = area.scrollHeight - area.scrollTop - area.clientHeight < 140; };
       ['wheel', 'touchmove', 'keydown', 'pointerdown'].forEach(ev => area.addEventListener(ev, () => setTimeout(away, 80), { passive: true }));
-      if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (chatStickToBottom) area.scrollTop = area.scrollHeight; }).observe(list);
+      if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (chatStickToBottom) area.scrollTop = chatFollowTop(area); }).observe(list);
     })();
+
+    // Where the chat rests while the newest answer is on screen. A short answer ends at the bottom. On a phone, an answer taller than the screen
+    // keeps the question it answers at the top, so its first line is never cut off under the header (the Claude app does the same).
+    function chatFollowTop(area) {
+      const bottom = area.scrollHeight - area.clientHeight;
+      if (window.innerWidth >= 768) return area.scrollHeight;
+      const asks = area.querySelectorAll('#curatorMessages > .justify-end');
+      const last = asks[asks.length - 1];
+      if (!last) return area.scrollHeight;
+      const top = last.getBoundingClientRect().top - area.getBoundingClientRect().top + area.scrollTop - 8;
+      return Math.max(0, Math.min(bottom, top));
+    }
 
     function scrollChatToBottom(smooth = false) {
       const scrollArea = document.getElementById('curatorScrollArea') || document.getElementById('workViewContainer');
       chatStickToBottom = true;
       if (scrollArea) {
         if (smooth) {
-          scrollArea.scrollTo({ top: scrollArea.scrollHeight, behavior: 'smooth' });
+          scrollArea.scrollTo({ top: chatFollowTop(scrollArea), behavior: 'smooth' });
         } else {
-          scrollArea.scrollTop = scrollArea.scrollHeight;
+          scrollArea.scrollTop = chatFollowTop(scrollArea);
         }
         setTimeout(() => {
-          scrollArea.scrollTop = scrollArea.scrollHeight;
+          scrollArea.scrollTop = chatFollowTop(scrollArea);
         }, 40);
       }
     }
@@ -16471,17 +16483,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         gossipPane?.classList.remove('hidden');
       });
 
+      // One screen for the chat, as in the Claude app: a question from the map goes straight to the full-screen chat, the question first and
+      // the answer under it. The older chat sheet (with its wall of starter prompts) and the Details sheet are never shown on the way.
+      function sendFromPhoneComposer(q) {
+        if (!q) return;
+        appendUserMessage(q);                       // the starter prompts and greeting go as the question lands
+        chatDrawer?.classList.add('hidden');
+        bottomSheet?.classList.add('hidden');
+        setActiveMobileTab(tabChat);
+        if (typeof setMobileViewMode === 'function') setMobileViewMode('chat');
+        if (typeof handleCuratorQuery === 'function') handleCuratorQuery(q);
+      }
+
       // Send Query from Mobile Sticky Input
       function handleMobileStickySend() {
         if (!chatInput) return;
         const q = chatInput.value.trim();
         if (!q) return;
         chatInput.value = '';
-        tabChat?.click();
-        appendUserMessage(q);
-        if (typeof handleCuratorQuery === 'function') {
-          handleCuratorQuery(q);
-        }
+        sendFromPhoneComposer(q);
       }
 
       sendBtn?.addEventListener('click', handleMobileStickySend);
@@ -16501,10 +16521,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       document.querySelectorAll('.curator-suggest-chip').forEach(btn => {
         btn.addEventListener('click', () => {
           const q = btn.getAttribute('data-query');
-          if (q && typeof handleCuratorQuery === 'function') {
-            tabChat?.click();
-            handleCuratorQuery(q);
-          }
+          if (q && typeof handleCuratorQuery === 'function') sendFromPhoneComposer(q);
         });
       });
 
@@ -20179,9 +20196,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=427"></script>
-<script src="assets/layers.js?v=427"></script>
-<script src="assets/hq-detail.js?v=427"></script>
-<script src="assets/bubbles.js?v=427" defer></script>
+<script src="assets/typeset.js?v=428"></script>
+<script src="assets/layers.js?v=428"></script>
+<script src="assets/hq-detail.js?v=428"></script>
+<script src="assets/bubbles.js?v=428" defer></script>
 </body>
 </html>
