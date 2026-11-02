@@ -807,6 +807,8 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 :root:not([data-theme="dark"]) #layersPanel .layers-key i{position:relative;background:var(--ink)}
 :root:not([data-theme="dark"]) #layersPanel .layers-key i::after{content:"";position:absolute;inset:1px;background:var(--marker-color);clip-path:inherit;border-radius:inherit}
 #layersPanel .shape-dot{border-radius:50%}
+#layersPanel .shape-glow{box-shadow:0 0 6px 1px var(--marker-color)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow{--marker-color:#889e9a}
 #layersPanel .layers-kinds .shape-ring,#layersPanel .layers-key .shape-ring{box-sizing:border-box;border-radius:50%;background:transparent!important;border:.8px solid var(--marker-color)}
 #layersPanel .shape-ring::after{display:none!important}
 :root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#0d9488}
