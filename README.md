@@ -134,7 +134,7 @@ The Cloudflare Worker in `worker/` serves it at `POST /chat`. The Anthropic key 
 1. In `worker/`, `npx wrangler secret put ANTHROPIC_API_KEY` and paste the key from console.anthropic.com. (In the dashboard: the Worker's **Settings → Variables and Secrets**.)
 2. Put the Worker's address plus `/chat` in `assets/config.js`: `window.ATLAS_AI_PROXY_URL = 'https://culture-atlas-submissions.<you>.workers.dev/chat';` and push to `main`.
 
-The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
+The page asks the Worker for Claude Sonnet 4.5 (`queryAI` in `index.html`; a visitor's own key uses the model chosen in settings). The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
 
 ## Studies
 

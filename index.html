@@ -14273,7 +14273,8 @@ return maplibregl$1;
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
       if (!activeKey && !useProxy) return null;
       const prov = useProxy ? 'anthropic' : getEffectiveProvider();
-      const model = useProxy ? 'claude-haiku-4-5-20251001' : getEffectiveModel();
+      // Through the Worker the page asks for Sonnet 4.5 (user's choice, 2 Nov 2026); a visitor's own key uses the model chosen in settings.
+      const model = useProxy ? 'claude-sonnet-4-5-20250929' : getEffectiveModel();
 
       // A short reply to the chat's own question ("yes that one", "the second") means what the last answer offered, so it is
       // read together with that answer. A bare name that no record carries is an unknown name, not a question about the open space.
