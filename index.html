@@ -35,8 +35,9 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=443">
-  <script src="assets/config.js?v=428"></script>
-  <script src="assets/subtopic.js?v=428"></script>
+  <script src="assets/config.js?v=430"></script>
+  <script src="assets/subtopic.js?v=430"></script>
+  <script src="assets/grounding.js?v=430"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9979,7 +9980,7 @@ return maplibregl$1;
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=428').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=430').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13986,25 +13987,10 @@ return maplibregl$1;
       return `- ${i.name} (${i.city || i.location || 'no city'}, ${i.country || ''}) | ${tierName(i)} | Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none'} | Flags: ${(i.flags || []).join(', ') || 'none'} | Funding: ${cut(i.funding, 260) || 'not stated'} | Watch: ${cut(i.watch, 260) || 'none'}`;
     }
 
-    function formatInstitutionGrounding(i) {
-      return `- INSTITUTION: ${i.name}
-  Location: ${i.city}, ${i.country} (${i.address || 'address not stated'})
-  Institution Category: ${i.category || 'not stated'}
-  Legal Governance Structure: ${i.governance_type || 'not stated'}
-  Governance Classification: ${tierName(i)}
-  Governance & Ethical Safeguard: ${i.governance_details || i.ethical_safeguard || 'not stated'}
-  Recorded Watch / Flag: ${i.why_flagged || i.watch || 'not stated'}
-  Watch Line: ${i.watch ? `${i.watch} (Watch Line Is Gossip: ${watchIsGossip(i.watch) ? 'yes' : 'no, a clean result or a description'})` : 'none recorded'}
-  Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none recorded'}
-  Recorded Flags: ${(i.flags || []).join(', ') || 'none recorded'}
-  Statutory Audit Dossier: ${i.audit_dossier_url || ''}
-  Public Funding: ${i.funding || 'not stated'}
-  Curatorial Focus: ${i.curatorial_focus || 'not stated'}
-  Specific Highlights & Permanent Collections: ${i.highlight || 'not stated'}
-  Architecture & Site Status: ${i.architecture_status || 'not stated'}
-  Admission Model: ${i.admission_policy || 'not stated'} (${i.admission_details || i.admission_fee || 'not stated'})
-  Opening Hours: ${i.opening_hours || 'not stated'}
-  Sources: ${(i.sources || []).slice(0, 3).join(', ')}`;
+    // The whole record, in labelled sections (assets/grounding.js); full is the record the question is about, the rest are shorter.
+    function formatInstitutionGrounding(i, full) {
+      if (window.AtlasGrounding) return AtlasGrounding.formatRecord(i, { status: tierName(i), watchGossip: watchIsGossip(i.watch), full: !!full });
+      return `- INSTITUTION: ${i.name}\n  Location: ${i.city}, ${i.country}\n  Governance Classification: ${tierName(i)}\n  Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none recorded'}\n  Public Funding: ${i.funding || 'not stated'}\n  Watch Line: ${i.watch || 'none recorded'}\n  Sources: ${(i.sources || []).slice(0, 3).join(', ')}`;
     }
 
     // =========================================================================
@@ -14287,7 +14273,8 @@ return maplibregl$1;
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
       if (!activeKey && !useProxy) return null;
       const prov = useProxy ? 'anthropic' : getEffectiveProvider();
-      const model = useProxy ? 'claude-haiku-4-5-20251001' : getEffectiveModel();
+      // Through the Worker the page asks for Sonnet 4.5 (user's choice, 2 Nov 2026); a visitor's own key uses the model chosen in settings.
+      const model = useProxy ? 'claude-sonnet-4-5-20250929' : getEffectiveModel();
 
       // A short reply to the chat's own question ("yes that one", "the second") means what the last answer offered, so it is
       // read together with that answer. A bare name that no record carries is an unknown name, not a question about the open space.
@@ -14319,7 +14306,14 @@ return maplibregl$1;
       const relevantInsts = unknownName ? (nearest && nearest.inst ? [nearest.inst] : []) : retrieveGroundingInstitutions(retrievalText, 12, { includeActive: !ambiguousFollowUp });
       const themed = unknownName ? null : themeMatches(userPrompt);
       const themedText = themed ? `\n\n<matching_records>\nThe Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} that match this question${themed.total > themed.insts.length ? `; the first ${themed.insts.length} are listed` : ''}. Words matched: ${themed.words.join(', ')}. Grades across all ${themed.total}: ${themed.tallyText}.\n${themed.insts.map(formatShortGrounding).join('\n')}\n</matching_records>` : '';
-      const groundedCatalogText = relevantInsts.map(formatInstitutionGrounding).join('\n\n') + themedText;
+      const focusId = (mentionedInst || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || {}).id;
+      const groundedCatalogText = relevantInsts.map((i, n) => formatInstitutionGrounding(i, i.id === focusId || (n === 0 && !!mentionedInst))).join('\n\n') + themedText;
+      // A city or country asked about with no space named: every record in it, counted and tallied here, so the answer is about that place.
+      const placeAsked = !mentionedInst && !unknownName ? [...(typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []), ...(typeof ALL_COUNTRIES_REGISTRY !== 'undefined' ? ALL_COUNTRIES_REGISTRY : [])]
+        .filter(c => c && c.name && new RegExp('\\b' + c.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(userPrompt)).sort((a, b) => b.name.length - a.name.length)[0] : null;
+      const placeText = placeAsked && window.AtlasGrounding
+        ? '\n\n' + AtlasGrounding.placeSummary(placeAsked.name, ALL_INSTITUTIONS.filter(i => [i.city, i.country, i.location].some(v => v && v.toLowerCase() === placeAsked.name.toLowerCase() || (v && placeAsked.name.length > 3 && v.toLowerCase().includes(placeAsked.name.toLowerCase())))), GRADE)
+        : '';
       const currentTarget = mentionedInst || (unknownName || ambiguousFollowUp ? null :
                             ((typeof selectedInstitution !== 'undefined' && selectedInstitution) || 
                             (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst))));
@@ -14372,7 +14366,7 @@ return maplibregl$1;
       const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a requested detail is absent, leave it out, or when the visitor asked for it say so in one sentence with the official URL when supplied.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
-      const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
+      const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst, true)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
 
       const communityGrounding = ''; // unchecked notes are never given to the model as facts
 
@@ -14414,6 +14408,9 @@ CHARACTER & VOICE GUIDELINES:
    - You are NOT a code reviewer or QA tester. If a user asks "check it for me", "can you check this", or "verify this", they are asking you to verify and explain a cultural institution or city, NOT review a database!
 
 4. BE CONCRETE AND SPECIFIC:
+   - Every answer is about the space, place or funder the visitor asked about, built from that record's own lines: its audited figures and the year they are for, the funders it names, the dates of each reported case, the legal form, the critic and publication quoted, the hours and prices. A sentence that could be written about any museum is not an answer; replace it with what this record states.
+   - The records are written in labelled sections (STATUS, FUNDING AND FINANCES, GOVERNANCE, ABOUT, REPORTED ON THE RECORD, EMPLOYEE AND VISITOR ACCOUNTS, CRITICS AND STUDIES, VISITING, SOURCES). Draw on the section the question is about; a question about money is answered from FUNDING AND FINANCES, one about a protest or a sponsor from REPORTED ON THE RECORD, one about getting there from VISITING. Do not pad with sections the visitor did not ask about.
+   - When a <place_summary> block is supplied the question is about that city or country as a whole: use its count, its grade tally, its flagged spaces and reasons, and the funders named most, and name specific spaces from it rather than describing the place in general.
    - Give concrete details only when they appear in the supplied records or their cited sources. Never fill gaps with assumed artworks, histories, controversies or governance facts.
    - State recorded admission, price and hours details exactly. Name the funder, the year and the amount whenever the record has them; never write "a major donor" or "various funders" when a name is supplied. If a requested detail is missing, leave it out, or say so in one sentence when it was asked for, with the official URL when supplied.
 
@@ -14440,7 +14437,7 @@ CHARACTER & VOICE GUIDELINES:
    - Describe figures and governance details neutrally; do not infer waste, misconduct or conflicts from an expense or relationship alone.
 ${activeInstContext}
 VERIFIED PRIMARY-SOURCE CATALOG GROUNDING (Top Relevant Spaces for this Inquiry):
-${groundedCatalogText}
+${groundedCatalogText}${placeText}
 ${communityGrounding}
 ${webIntelGrounding}
 
@@ -15835,6 +15832,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       // "Compare Prague and Berlin": the count of spaces, the two ends of the rating scale and the flagged ones, side by side.
       const named = [...new Set(places.filter(n => new RegExp('\\b' + esc(n) + '\\b', 'i').test(query)))].filter((n, _, all) => !all.some(m => m !== n && m.length > n.length && m.toLowerCase().includes(n.toLowerCase())));
+      if (!explicit && named.length > 1 && asks(/\b(compare|comparison|versus|vs\.?|difference|differ)\b/) && await askModel()) return;
       if (!explicit && named.length > 1 && asks(/\b(compare|comparison|versus|vs\.?|difference|differ)\b/)) {
         answer(named.slice(0, 4).map(p => {
           const here = ALL_INSTITUTIONS.filter(i => inScope(i, p));
@@ -15889,6 +15887,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       // A place on its own, or asked about as a whole: the count of its spaces, the ratings and the flagged ones.
+      // With a model on, a place asked about as a whole is answered by it, from every record in the place (placeSummary in assets/grounding.js).
+      if (place && !explicit && !target && asks(/\b(tell me about|what about|overview|summary|summari[sz]e|how (?:transparent|clean)|how is|why|what is going on|what happened|story|explain)\b/) && await askModel()) return;
       if (place && !explicit && !target && (new RegExp('^\\s*(?:the\\s+)?' + esc(place) + '\\s*[?!.]*$', 'i').test(query) || asks(/\b(tell me about|what about|overview|summary|summari[sz]e|how (?:transparent|clean)|how is)\b/))) {
         const here = ALL_INSTITUTIONS.filter(i => inScope(i, place));
         if (here.length) {
@@ -15914,6 +15914,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       // What employees report: the summary of the accounts on the records, and the count on the space in view.
+      if (target && asks(/\b(what (do )?(employees|staff|workers) (say|report|think)|employee (reviews?|accounts?)|staff (reviews?|accounts?)|glassdoor|kununu|working conditions|work(ing)? (there|here|at))\b/) && await askModel()) return;
       if (asks(/\b(what (do )?(employees|staff|workers) (say|report|think)|employee (reviews?|accounts?)|staff (reviews?|accounts?)|glassdoor|kununu|working conditions|work(ing)? (there|here|at))\b/)) {
         // A place with no space named: its spaces that have accounts.
         if (place && !target) {
@@ -15940,6 +15941,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       // The critical frames (data/research_attach/institutional_critiques.json): quotations with author, title, publication and date, one frame per museum type.
+      if (target && asks(/\b(critics?|critiques?|criticism|theor(?:y|ists?)|critical frames?)\b/) && await askModel()) return;
       if (asks(/\b(critics?|critiques?|criticism|theor(?:y|ists?)|critical frames?)\b/)) {
         if (target) {
           focus(target);
@@ -15975,6 +15977,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           else if (asks(/\b(dirtiest|worst|least transparent)\b/)) wanted = ['', gradeLetter(present([5, 4, 3, 2, 1]) || 5).toLowerCase()];
         }
         // A record's own grade when the question names it or points at it; the ladder for a general question.
+        if (target && !wanted && (explicit || /\b(its|this|here|the space|the museum)\b/.test(q)) && asks(/\b(why|how|what|explain|basis|reason)\b/) && await askModel()) return;
         if (target && !wanted && (explicit || /\b(its|this|here|the space|the museum)\b/.test(q))) {
           focus(target);
           const gradeWhy = target.grade && GRADE[target.grade]
@@ -20198,9 +20201,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=428"></script>
-<script src="assets/layers.js?v=428"></script>
-<script src="assets/hq-detail.js?v=428"></script>
-<script src="assets/bubbles.js?v=428" defer></script>
+<script src="assets/typeset.js?v=430"></script>
+<script src="assets/layers.js?v=430"></script>
+<script src="assets/hq-detail.js?v=430"></script>
+<script src="assets/bubbles.js?v=430" defer></script>
 </body>
 </html>
