@@ -26111,19 +26111,6 @@
       "website": "https://www.labiennale.org/en (checked 2026-10-24; the donors page for the 2026 art exhibition loads; the organisation page returned 404)",
       "retrieved": "2026-10-24"
     },
-    "propaganda": [
-      {
-        "kind": "historical",
-        "period": "1930 to 1942",
-        "mechanism": "repurposed",
-        "summary": "A royal decree in 1930 moved the Biennale from Venice's council to the fascist state, under president Giuseppe Volpi. Its archive history says it was seen as propping up a propaganda machine.",
-        "sources": [
-          "https://www.labiennale.org/en/history/beginnings-until-second-world-war",
-          "https://wannenesgroup.com/magazine/the-biennale-uniqueopen-general/",
-          "https://www.labyrinthbooks.com/the-patron-state-bssw/"
-        ]
-      }
-    ],
     "finance": {
       "fy": "2025",
       "currency": "EUR",
@@ -26169,7 +26156,20 @@
       "kind": "audit report",
       "date": "2019-12-19",
       "url": "https://www.parlamento.it/service/PDF/PDFServer/DF/351499.pdf"
-    }
+    },
+    "propaganda": [
+      {
+        "kind": "historical",
+        "period": "1930 to 1942",
+        "mechanism": "repurposed",
+        "summary": "A royal decree in 1930 moved the Biennale from Venice's council to the fascist state, under president Giuseppe Volpi. Its archive history says it was seen as propping up a propaganda machine.",
+        "sources": [
+          "https://www.labiennale.org/en/history/beginnings-until-second-world-war",
+          "https://wannenesgroup.com/magazine/the-biennale-uniqueopen-general/",
+          "https://www.labyrinthbooks.com/the-patron-state-bssw/"
+        ]
+      }
+    ]
   },
   {
     "name": "Ch\u00e2teau de Versailles",
@@ -26318,19 +26318,6 @@
       "website": "https://www.chateauversailles.fr/ (checked 2026-10-20)",
       "retrieved": "2026-10-20"
     },
-    "propaganda": [
-      {
-        "kind": "historical",
-        "period": "1837 to 1848",
-        "mechanism": "founded to promote",
-        "summary": "King Louis-Philippe converted the palace into a Museum of the History of France, opened in 1837, to strengthen his legitimacy as king of all the French and reconcile supporters of earlier regimes.",
-        "sources": [
-          "https://en.chateauversailles.fr/discover/estate/palace/historic-galleries",
-          "https://en.versailles-tourisme.com/museum-of-french-history.html",
-          "https://www.napoleon.org/en/magazine/places/museum-and-national-estate-of-versailles-and-the-trianon/"
-        ]
-      }
-    ],
     "scale": {
       "staff": 1138,
       "staff_year": "2024",
@@ -26366,7 +26353,20 @@
       ],
       "level": 3,
       "level_basis": ""
-    }
+    },
+    "propaganda": [
+      {
+        "kind": "historical",
+        "period": "1837 to 1848",
+        "mechanism": "founded to promote",
+        "summary": "King Louis-Philippe converted the palace into a Museum of the History of France, opened in 1837, to strengthen his legitimacy as king of all the French and reconcile supporters of earlier regimes.",
+        "sources": [
+          "https://en.chateauversailles.fr/discover/estate/palace/historic-galleries",
+          "https://en.versailles-tourisme.com/museum-of-french-history.html",
+          "https://www.napoleon.org/en/magazine/places/museum-and-national-estate-of-versailles-and-the-trianon/"
+        ]
+      }
+    ]
   },
   {
     "name": "Albertina",
@@ -81744,19 +81744,6 @@
       "website": "https://www.louvre.fr/ (checked 2026-10-24)",
       "retrieved": "2026-10-24"
     },
-    "propaganda": [
-      {
-        "kind": "historical",
-        "period": "1803 to 1814",
-        "mechanism": "repurposed",
-        "summary": "Bonaparte appointed Vivant Denon director of the Louvre in 1802, and Denon renamed it the Mus\u00e9e Napol\u00e9on. Denon displayed art seized in Napoleon's conquests as trophies of his victories.",
-        "sources": [
-          "https://www.nybooks.com/articles/2009/11/19/napoleons-eye/",
-          "https://19thc-artworldwide.org/autumn23/karrels-on-reframing-art-spoliation-and-the-spoliator-in-napoleonic-france",
-          "https://www.napoleon.org/en/history-of-the-two-empires/biographies/denon-dominique-vivant/"
-        ]
-      }
-    ],
     "scale": {
       "staff": 2242,
       "staff_year": "2024",
@@ -81781,7 +81768,20 @@
       ],
       "level": 3,
       "level_basis": ""
-    }
+    },
+    "propaganda": [
+      {
+        "kind": "historical",
+        "period": "1803 to 1814",
+        "mechanism": "repurposed",
+        "summary": "Bonaparte appointed Vivant Denon director of the Louvre in 1802, and Denon renamed it the Mus\u00e9e Napol\u00e9on. Denon displayed art seized in Napoleon's conquests as trophies of his victories.",
+        "sources": [
+          "https://www.nybooks.com/articles/2009/11/19/napoleons-eye/",
+          "https://19thc-artworldwide.org/autumn23/karrels-on-reframing-art-spoliation-and-the-spoliator-in-napoleonic-france",
+          "https://www.napoleon.org/en/history-of-the-two-empires/biographies/denon-dominique-vivant/"
+        ]
+      }
+    ]
   },
   {
     "name": "Mus\u00e9e d'Orsay",
@@ -94964,7 +94964,19 @@
       ],
       "website": "https://tretyakovgallery.ru (the main site could not be opened from our connection on 2026-10-24; its partners site https://partners.tretyakov.ru loaded that day)",
       "retrieved": "2026-10-24"
-    }
+    },
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "2023 to present",
+        "mechanism": "state-directed",
+        "summary": "In January 2023 Russia's Culture Ministry asked the gallery to bring its displays into line with Putin's November 2022 decree on traditional spiritual and moral values. In February 2023 the ministry replaced director Zelfira Tregulova.",
+        "sources": [
+          "https://themoscowtimes.com/2023/02/09/head-of-russias-tretyakov-gallery-replaced-after-culture-ministry-standoff-a80183",
+          "https://cimam.org/news-archive/signs-of-troubling-times-recent-developments-at-the-state-tretyakov-gallery/"
+        ]
+      }
+    ]
   },
   {
     "id": "y-gallery-minsk",
@@ -119113,6 +119125,7 @@
       "website": "none found (checked 2026-10-20)",
       "retrieved": "2026-10-20"
     },
+    "finances_note": "8th edition, 2003: Dutch foundations withdrew over US$200,000; the Cuban government gave US$156,000, the National Council for the Plastic Arts president said (IPS, 4 November 2003).",
     "propaganda": [
       {
         "kind": "historical",
@@ -119123,8 +119136,7 @@
           "https://www.afterall.org/articles/the-third-bienal-de-la-habana-in-its-global-and-local-contexts-gerardo-mosquera"
         ]
       }
-    ],
-    "finances_note": "8th edition, 2003: Dutch foundations withdrew over US$200,000; the Cuban government gave US$156,000, the National Council for the Plastic Arts president said (IPS, 4 November 2003)."
+    ]
   },
   {
     "name": "Kunsten Museum of Modern Art Aalborg",
@@ -120524,6 +120536,7 @@
       "website": "none found for the museum. The address on file, https://kcnawatch.org (checked 2026-10-24; live), is an aggregator of North Korean state media and does not mention the museum.",
       "retrieved": "2026-10-24"
     },
+    "watch": "A larger building opened in July 2015; closed to foreign visitors since 2018. The Government of North Korea is blocked under US Executive Order 13722.",
     "propaganda": [
       {
         "kind": "today",
@@ -120536,8 +120549,7 @@
           "https://www.dailynk.com/english/north-korea-increases-student-visi/"
         ]
       }
-    ],
-    "watch": "A larger building opened in July 2015; closed to foreign visitors since 2018. The Government of North Korea is blocked under US Executive Order 13722."
+    ]
   },
   {
     "name": "Zach\u0119ta National Gallery of Art",
@@ -123372,7 +123384,20 @@
       "sources": [
         "https://war.museum.by/"
       ]
-    }
+    },
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "2014 to present",
+        "mechanism": "state-directed",
+        "summary": "Founded 1944. The government built its new premises as its central politics of remembrance project, opened 2 July 2014 by Lukashenko and Putin. The exhibition keeps the Soviet heroic narrative of the war.",
+        "sources": [
+          "https://president.gov.by/en/events/opening-of-new-building-of-great-patriotic-war-museum-9189",
+          "https://tass.com/world/738841/amp",
+          "https://www.memorialmuseums.org/eng/denkmaeler/view/1537/Belarusian-State-Museum-of-the-History-of-the-Great-Patriotic-War"
+        ]
+      }
+    ]
   },
   {
     "id": "national-centre-for-contemporary-arts-minsk",
@@ -135256,7 +135281,19 @@
       "website": "No site of the museum found (checked 2026-10-24; the atlas lists none, and searches returned only Koryo Tours and Wikipedia pages)",
       "retrieved": "2026-10-24"
     },
-    "funding": "Collection of about 100,000 relics; its 19 halls show over 4,000 objects (Koryo Tours). The museum claimed 10 million cumulative visitors by 2015. Kim Il Sung founded it in 1945."
+    "funding": "Collection of about 100,000 relics; its 19 halls show over 4,000 objects (Koryo Tours). The museum claimed 10 million cumulative visitors by 2015. Kim Il Sung founded it in 1945.",
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "1945 to present",
+        "mechanism": "state-directed",
+        "summary": "Founded by Kim Il Sung on 1 December 1945 and housed on Kim Il Sung Square since 1977. Exhibits run from the Stone Age to 1919 with political teaching on struggle against invaders and revolution.",
+        "sources": [
+          "https://koryogroup.com/blog/central-history-museum-north-korea-travel-guide",
+          "https://en.wikipedia.org/wiki/Korean_Central_History_Museum"
+        ]
+      }
+    ]
   },
   {
     "id": "mansudae-overseas-project-group-of-companies-mansudae-overseas-projects-pyongyang",
@@ -136150,18 +136187,6 @@
       "website": "https://pushkinmuseum.art/ (checked 2026-10-24)",
       "retrieved": "2026-10-24"
     },
-    "propaganda": [
-      {
-        "kind": "historical",
-        "period": "1949 to 1953",
-        "mechanism": "repurposed",
-        "summary": "A government commission cleared 12 halls in 1949, put the museum's Western art in storage and filled them with gifts sent to Stalin for his 70th birthday. The display closed in 1953.",
-        "sources": [
-          "https://www.gw2ru.com/arts/3671-pushkin-museum-stalin-gifts",
-          "https://neweasterneurope.eu/2024/10/01/the-museum-of-gifts-for-stalins-70th-birthday/"
-        ]
-      }
-    ],
     "finance": {
       "fy": "2018",
       "currency": "RUB",
@@ -136185,7 +136210,19 @@
       ],
       "level": 5,
       "level_basis": ""
-    }
+    },
+    "propaganda": [
+      {
+        "kind": "historical",
+        "period": "1949 to 1953",
+        "mechanism": "repurposed",
+        "summary": "A government commission cleared 12 halls in 1949, put the museum's Western art in storage and filled them with gifts sent to Stalin for his 70th birthday. The display closed in 1953.",
+        "sources": [
+          "https://www.gw2ru.com/arts/3671-pushkin-museum-stalin-gifts",
+          "https://neweasterneurope.eu/2024/10/01/the-museum-of-gifts-for-stalins-70th-birthday/"
+        ]
+      }
+    ]
   },
   {
     "id": "ruarts-foundation-moscow",
@@ -148123,7 +148160,20 @@
       "private": 8549000,
       "source_kind": "ministry budget",
       "url": "https://www.si.edu/sites/default/files/about/fy2027-budgetrequestcongress.pdf"
-    }
+    },
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "2025 to present",
+        "mechanism": "state-directed",
+        "summary": "Executive Order 14253 tasks Vice President Vance with removing improper ideology. The August 2025 White House letter ordered content corrections within 120 days. A July 2026 White House report accused it of ideological capture.",
+        "sources": [
+          "https://www.whitehouse.gov/presidential-actions/2025/03/restoring-truth-and-sanity-to-american-history/",
+          "https://laist.com/news/white-house-calls-for-comprehensive-review-of-eight-smithsonian-museums",
+          "https://www.npr.org/2026/07/09/nx-s1-5887518/smithsonian-chief-lonnie-bunch-white-house-accusations"
+        ]
+      }
+    ]
   },
   {
     "name": "National Museum of Natural History (Smithsonian)",
@@ -148488,7 +148538,20 @@
       ],
       "level": 3,
       "level_basis": ""
-    }
+    },
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "2025 to present",
+        "mechanism": "state-directed",
+        "summary": "Named in the August 2025 White House letter ordering content corrections within 120 days under Executive Order 14253. In January 2026 the gallery removed Trump impeachment wall text after White House objections.",
+        "sources": [
+          "https://www.whitehouse.gov/presidential-actions/2025/03/restoring-truth-and-sanity-to-american-history/",
+          "https://www.cbsnews.com/news/reference-to-trump-impeachments-removed-from-national-portrait-gallery/",
+          "https://www.theartnewspaper.com/2026/02/16/donald-trump-national-portrait-gallery-display-new-painting"
+        ]
+      }
+    ]
   },
   {
     "name": "Eskenazi Museum of Art",
@@ -165994,6 +166057,17 @@
     "watch": "Graded on present funders, since the museum still exists. A Bavarian ministry official chairs its supervisory board. 2024 attendance was nearly 440,000.",
     "grade": 2,
     "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "bureaucracy": {
+      "legal_form": "private nonprofit",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.hausderkunst.de/en/imprint",
+        "https://www.hausderkunst.de/en/about-us/support"
+      ],
+      "level": 2,
+      "level_basis": ""
+    },
     "propaganda": [
       {
         "kind": "historical",
@@ -166006,18 +166080,7 @@
           "https://germanhistorydocs.org/en/nazi-germany-1933-1945/hitler-s-speech-at-the-opening-of-the-house-of-german-art-in-munich-july-18-1937"
         ]
       }
-    ],
-    "bureaucracy": {
-      "legal_form": "private nonprofit",
-      "controls": [],
-      "year": "2026",
-      "sources": [
-        "https://www.hausderkunst.de/en/imprint",
-        "https://www.hausderkunst.de/en/about-us/support"
-      ],
-      "level": 2,
-      "level_basis": ""
-    }
+    ]
   },
   {
     "name": "Museum f\u00fcr Deutsche Geschichte",
@@ -166102,6 +166165,17 @@
     "watch": "Graded on present funders, since the museum still exists in a different form. Its antireligious displays ended in the 1990s.",
     "grade": 2,
     "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "bureaucracy": {
+      "legal_form": "national government body",
+      "parent": "Ministry of Culture of the Russian Federation",
+      "controls": [],
+      "year": "2022",
+      "sources": [
+        "https://www.gmir.ru/files/museum/official-documents/pfhd22_23-24.pdf"
+      ],
+      "level": 5,
+      "level_basis": ""
+    },
     "propaganda": [
       {
         "kind": "historical",
@@ -166113,18 +166187,7 @@
           "http://www.gmir.ru/about/"
         ]
       }
-    ],
-    "bureaucracy": {
-      "legal_form": "national government body",
-      "parent": "Ministry of Culture of the Russian Federation",
-      "controls": [],
-      "year": "2022",
-      "sources": [
-        "https://www.gmir.ru/files/museum/official-documents/pfhd22_23-24.pdf"
-      ],
-      "level": 5,
-      "level_basis": ""
-    }
+    ]
   },
   {
     "name": "Russia, My History (VDNKh)",
@@ -166246,6 +166309,17 @@
     "watch": "Formed 2003 by merging the Museum of the Chinese Revolution and the National Museum of Chinese History. Building opened 1959.",
     "grade": 1,
     "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "bureaucracy": {
+      "legal_form": "national government body",
+      "parent": "Ministry of Culture and Tourism",
+      "controls": [],
+      "year": "2026",
+      "sources": [
+        "https://www.mct.gov.cn/whzx/zsdw/zggjbwg/"
+      ],
+      "level": 5,
+      "level_basis": ""
+    },
     "propaganda": [
       {
         "kind": "today",
@@ -166258,18 +166332,7 @@
           "https://origins.osu.edu/article/2660/images"
         ]
       }
-    ],
-    "bureaucracy": {
-      "legal_form": "national government body",
-      "parent": "Ministry of Culture and Tourism",
-      "controls": [],
-      "year": "2026",
-      "sources": [
-        "https://www.mct.gov.cn/whzx/zsdw/zggjbwg/"
-      ],
-      "level": 5,
-      "level_basis": ""
-    }
+    ]
   },
   {
     "name": "Nanjing Massacre Memorial Hall",
@@ -166322,6 +166385,18 @@
     "watch": "Inside Wanping Fortress near the Marco Polo Bridge. Beijing opened a patriotic education base there for Hong Kong and Macau youth in August 2025.",
     "grade": 1,
     "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "bureaucracy": {
+      "legal_form": "municipal or regional body",
+      "staff_status": "public employees",
+      "parent": "Publicity Department of the Beijing Municipal Committee of the Communist Party of China",
+      "controls": [],
+      "year": "2025",
+      "sources": [
+        "https://www.beijing.gov.cn/gongkai/caizheng/czzt/2025ys/202502/t20250217_4012513.html"
+      ],
+      "level": 5,
+      "level_basis": ""
+    },
     "propaganda": [
       {
         "kind": "today",
@@ -166334,19 +166409,7 @@
           "https://www.politics.ox.ac.uk/publication/behind-scenes-museum-nationalism-history-and-memory-beijing-war-resistance-museum-1987"
         ]
       }
-    ],
-    "bureaucracy": {
-      "legal_form": "municipal or regional body",
-      "staff_status": "public employees",
-      "parent": "Publicity Department of the Beijing Municipal Committee of the Communist Party of China",
-      "controls": [],
-      "year": "2025",
-      "sources": [
-        "https://www.beijing.gov.cn/gongkai/caizheng/czzt/2025ys/202502/t20250217_4012513.html"
-      ],
-      "level": 5,
-      "level_basis": ""
-    }
+    ]
   },
   {
     "name": "Liu Manor Museum (Rent Collection Courtyard)",
@@ -166431,6 +166494,17 @@
     "watch": "Opened in 2012 in Tehran's Abbas-Abad cultural district. The Armed Forces General Staff published its statute amendments in 2021.",
     "grade": 2,
     "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "bureaucracy": {
+      "legal_form": "statutory public body",
+      "controls": [],
+      "year": "2021",
+      "sources": [
+        "https://www.edalatsara.com/paper/%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87-%D8%B1%D8%B3%D9%85%DB%8C-%DA%A9%D8%B4%D9%88%D8%B1-%D8%A7%D8%B3%D8%A7%D8%B3%D9%86%D8%A7%D9%85%D9%87-%D9%85%D9%88%D8%B2%D9%87-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%DB%8C-%D9%88-%D8%AF%D9%81%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%B3",
+        "https://www.edalatsara.com/paper/%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87-%D8%B1%D8%B3%D9%85%DB%8C-%DA%A9%D8%B4%D9%88%D8%B1-%D8%A7%D8%B5%D9%84%D8%A7%D8%AD-%D8%A7%D8%B3%D8%A7%D8%B3%D9%86%D8%A7%D9%85%D9%87-%D9%85%D9%88%D8%B2%D9%87-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%DB%8C-%D9%88-%D8%AF%D9%81%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%B3"
+      ],
+      "level": 3,
+      "level_basis": ""
+    },
     "propaganda": [
       {
         "kind": "today",
@@ -166443,18 +166517,7 @@
           "https://www.edalatsara.com/paper/%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87-%D8%B1%D8%B3%D9%85%DB%8C-%DA%A9%D8%B4%D9%88%D8%B1-%D8%A7%D8%B5%D9%84%D8%A7%D8%AD-%D8%A7%D8%B3%D8%A7%D8%B3%D9%86%D8%A7%D9%85%D9%87-%D9%85%D9%88%D8%B2%D9%87-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%DB%8C-%D9%88-%D8%AF%D9%81%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%B3"
         ]
       }
-    ],
-    "bureaucracy": {
-      "legal_form": "statutory public body",
-      "controls": [],
-      "year": "2021",
-      "sources": [
-        "https://www.edalatsara.com/paper/%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87-%D8%B1%D8%B3%D9%85%DB%8C-%DA%A9%D8%B4%D9%88%D8%B1-%D8%A7%D8%B3%D8%A7%D8%B3%D9%86%D8%A7%D9%85%D9%87-%D9%85%D9%88%D8%B2%D9%87-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%DB%8C-%D9%88-%D8%AF%D9%81%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%B3",
-        "https://www.edalatsara.com/paper/%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87-%D8%B1%D8%B3%D9%85%DB%8C-%DA%A9%D8%B4%D9%88%D8%B1-%D8%A7%D8%B5%D9%84%D8%A7%D8%AD-%D8%A7%D8%B3%D8%A7%D8%B3%D9%86%D8%A7%D9%85%D9%87-%D9%85%D9%88%D8%B2%D9%87-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%DB%8C-%D9%88-%D8%AF%D9%81%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%B3"
-      ],
-      "level": 3,
-      "level_basis": ""
-    }
+    ]
   },
   {
     "name": "Museo Casa sobre el Arroyo (Casa del Puente)",
@@ -176196,7 +176259,20 @@
     "records_note": "It is a state institution, and North Korea reports its state budget only as yearly percentage changes (spending up 3.8 percent in 2025, per the Korea Institute for National Unification).",
     "affiliations_note": "KCNA describes it as an education institution of the Workers' Party of Korea.",
     "grade": 4,
-    "grade_basis": "A funder tied to a sanctioned person or company."
+    "grade_basis": "A funder tied to a sanctioned person or company.",
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "1948 to present",
+        "mechanism": "founded to promote",
+        "summary": "State museum founded 1 August 1948 on Mansudae Hill to exhibit Kim Il Sung's revolutionary history. In April 2022 KCNA reported a new hall presenting Kim Jong Un's first decade, including his nuclear force declaration.",
+        "sources": [
+          "https://www.lokmattimes.com/politics/nkorea-opens-new-exhibition-hall-to-mark-10th-anniv-of-kims-leadership",
+          "https://www.globalsecurity.org/wmd/library/news/dprk/2005/dprk-050222-kcna06.htm",
+          "https://en.wikipedia.org/wiki/Korean_Revolution_Museum"
+        ]
+      }
+    ]
   },
   {
     "name": "Victorious Fatherland Liberation War Museum",
@@ -176288,7 +176364,20 @@
     "records_note": "It is a state institution, and North Korea reports its state budget only as yearly percentage changes (spending up 3.8 percent in 2025, per the Korea Institute for National Unification).",
     "affiliations_note": "Runs the display of the USS Pueblo, moored beside it on the Botong River since 2013.",
     "grade": 4,
-    "grade_basis": "A funder tied to a sanctioned person or company."
+    "grade_basis": "A funder tied to a sanctioned person or company.",
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "1953 to present",
+        "mechanism": "founded to promote",
+        "summary": "Founded 1953 and rebuilt 2013, when Kim Jong Un cut the ribbon. KCNA quoted Kim calling it a centre for anti-US and class education honouring Kim Il Sung's wartime victory over the United States.",
+        "sources": [
+          "https://www.globalsecurity.org/wmd/library/news/dprk/2013/dprk-130701-kcna01.htm",
+          "https://archive.shine.cn/world/Captured-US-spy-ship-main-draw-at-renovated-war-museum/shdaily.shtml",
+          "https://koryogroup.com/blog/north-korea-guide-victorious-fatherland-liberation-war-museum"
+        ]
+      }
+    ]
   },
   {
     "name": "Three Revolutions Exhibition",
@@ -176883,7 +176972,20 @@
     "records_note": "It is a state institution, and North Korea reports its state budget only as yearly percentage changes (spending up 3.8 percent in 2025, per the Korea Institute for National Unification).",
     "affiliations_note": "Part of Mangyongdae, a historic site since 1947 and a listed Revolutionary Site (Wikipedia).",
     "grade": 4,
-    "grade_basis": "A funder tied to a sanctioned person or company."
+    "grade_basis": "A funder tied to a sanctioned person or company.",
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "1970 to present",
+        "mechanism": "founded to promote",
+        "summary": "Opened to the public in 1970 beside Kim Il Sung's birthplace, a state designated revolutionary site. Exhibits present his childhood and portray his family members as patriot revolutionaries.",
+        "sources": [
+          "https://koryogroup.com/blog/mangyongdae-pyongyang-north-korea-travel-guide",
+          "https://www.lonelyplanet.com/points-of-interest/mangyongdae-revolutionary-museum/435014",
+          "https://en.wikipedia.org/wiki/Revolutionary_Site"
+        ]
+      }
+    ]
   },
   {
     "name": "Kumsusan Palace of the Sun",
@@ -177208,7 +177310,19 @@
     "records_note": "North Korea reports its state budget only as yearly percentage changes (spending up 3.8 percent in 2025, per the Korea Institute for National Unification).",
     "affiliations_note": "Includes the nearby house where Kim Il Sung lived, which Wikipedia counts as part of the museum.",
     "grade": 4,
-    "grade_basis": "A funder tied to a sanctioned person or company."
+    "grade_basis": "A funder tied to a sanctioned person or company.",
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "1970 to present",
+        "mechanism": "founded to promote",
+        "summary": "Opened October 1970 in the building where Kim Il Sung proclaimed the Workers' Party of Korea on 10 October 1945. Preserves the meeting hall and plays Kim's founding speech to visitors.",
+        "sources": [
+          "https://koryogroup.com/blog/party-founding-museum-north-korea-travel-guide",
+          "https://en.wikipedia.org/wiki/Party_Founding_Museum"
+        ]
+      }
+    ]
   },
   {
     "name": "Defense Revolution Museum",
@@ -179972,7 +180086,20 @@
       "retrieved": "2026-10-26"
     },
     "records_note": "The Ministry's page describes the building and its exhibits but gives no budget, accounts or funder.",
-    "affiliations_note": "Part of the Syrian Ministry of Defence's military culture and museums section."
+    "affiliations_note": "Part of the Syrian Ministry of Defence's military culture and museums section.",
+    "propaganda": [
+      {
+        "kind": "historical",
+        "period": "1999 to 2024",
+        "mechanism": "founded to promote",
+        "summary": "Syrian state war museum opened October 1999 under Hafez al-Assad, its panorama painted by North Korea's Mansudae Overseas Development Group. It presents the 1973 Quneitra assault as heroic victory and displays murals of Assad.",
+        "sources": [
+          "https://www.nkeconwatch.com/2009/12/02/syrias-tishreen-war-panorama/",
+          "https://www.frontlineclub.com/winning_a_battle_losing_the_war_an_odd_tribute/",
+          "https://en.wikipedia.org/wiki/October_War_Panorama"
+        ]
+      }
+    ]
   },
   {
     "name": "National Heroes' Acre (Harare)",
@@ -180399,7 +180526,20 @@
     "records_note": "Egypt Independent (October 2010) gives the ticket prices; the panorama publishes no accounts.",
     "affiliations_note": "Run by the Egyptian National Military Museums Department.",
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "1989 to present",
+        "mechanism": "founded to promote",
+        "summary": "Conceived by Hosni Mubarak after a North Korea visit, built by North Korean artists and opened 5 October 1989. Run by the Egyptian military, it presents the 1973 war as unbroken victory.",
+        "sources": [
+          "https://www.madamasr.com/en/?p=9311",
+          "https://www.egyptindependent.com/?p=190234",
+          "https://en.wikipedia.org/wiki/6th_of_October_Panorama"
+        ]
+      }
+    ]
   },
   {
     "name": "Casa de las Am\u00e9ricas",
@@ -180628,7 +180768,19 @@
       "retrieved": "2026-10-26"
     },
     "affiliations_note": "Runs the Granma Memorial in its grounds, built in 1976 as an annex.",
-    "records_note": "MINFAR, the armed forces ministry, created it by decree; its 2014 pages on the heritage council site list hours and dollar ticket prices only."
+    "records_note": "MINFAR, the armed forces ministry, created it by decree; its 2014 pages on the heritage council site list hours and dollar ticket prices only.",
+    "propaganda": [
+      {
+        "kind": "today",
+        "period": "1959 to present",
+        "mechanism": "founded to promote",
+        "summary": "Created on 12 December 1959 by a decree of the Ministry of the Revolutionary Armed Forces signed by Ra\u00fal Castro. Installed in the former Presidential Palace in 1974 to present the Revolution's history.",
+        "sources": [
+          "https://www.prensa-latina.cu/2024/12/12/museo-de-la-revolucion-de-cuba-cumple-65-anos/",
+          "https://www.radiorebelde.cu/english/?p=7051"
+        ]
+      }
+    ]
   },
   {
     "name": "Museo Napole\u00f3nico de La Habana",
