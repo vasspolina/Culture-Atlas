@@ -15935,7 +15935,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // The summary names spaces and reports conduct from review platforms, so it is gossip and gets the balloon.
         const staffChips = isGossipModeActive
           ? [...(target && hasGossip(target) ? [`What is the gossip about ${target.name}?`] : []), ...freshChips(2)].slice(0, 3)
-          : ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])];
+          : target
+            // The space whose accounts were just given: what else its own record answers, never the employee question again.
+            ? chipsAbout(target, 3, [/\b(employees|staff|workers)\b/i])
+            : ['What do critics say?', 'How are spaces graded?', ...freshChips(1, ['What do critics say?', 'How are spaces graded?'])];
         // A space with its own accounts is answered by them alone; the summary of all spaces is for a question that names none, or a space with none.
         answer(lead + (mine.length ? '' : EMPLOYEE_REPORT.map(t => `<p>${escapeHtml(t)}</p>`).join('')) + note, staffChips, true);
         return;
@@ -18631,8 +18634,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     };
     const funderName = (f) => /\b(family|foundations?|fonden|fund)$/i.test(f) ? `the ${f}` : f;
     let cloudCache = { key: null, list: [] };
-    function questionCloud() {
-      const sel = typeof selectedInstitution !== 'undefined' ? selectedInstitution : null;
+    function questionCloud(forInst) {
+      // The record the questions open with: the one asked for, else the space in view on the map.
+      const sel = forInst || (typeof selectedInstitution !== 'undefined' ? selectedInstitution : null);
       const key = (sel ? String(sel.id || sel.name) : '') + (isGossipModeActive ? '|gossip' : '');
       if (cloudCache.key === key && cloudCache.list.length) return cloudCache.list;
       const registry = (typeof ALL_CITIES_REGISTRY !== 'undefined' ? ALL_CITIES_REGISTRY : []).filter(c => c && c.name);
@@ -18742,6 +18746,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (out.length < n) take(false);
       lastChips.splice(0, lastChips.length, ...out);
       return out;
+    }
+    // The follow-up chips under an answer about one space (user's correction, 2 Nov 2026: the chips must be specific to the text above).
+    // Each is a question the chat answers from that record (the question cloud's questions for the space: its flag, its funders, its
+    // grade, its critics, its Epstein record), never the one just answered and never one already asked in this chat. A space with
+    // too few of its own gets a question about its city, then the pool fills the rest.
+    function chipsAbout(inst, n = 3, avoid = []) {
+      const norm = (s) => String(s).toLowerCase().replace(/[?\s]+$/, '').trim();
+      const asked = new Set(((typeof curatorContext !== 'undefined' && curatorContext.history) || []).filter(m => m.role === 'user').map(m => norm(m.content)));
+      const skip = (q) => asked.has(norm(q)) || avoid.some(a => a instanceof RegExp ? a.test(q) : norm(a) === norm(q));
+      let own = [];
+      try { own = questionCloud(inst).filter(x => x.inst === inst).map(x => x.q); } catch (e) { own = []; }
+      const out = own.filter(q => !skip(q)).slice(0, n);
+      if (out.length < n && inst.city) {
+        const flaggedHere = ALL_INSTITUTIONS.filter(i => i.tier === 'B' && i.why_flagged && i.id !== inst.id && matchC(i.city, inst.city)).length;
+        const cityQ = flaggedHere >= 2 ? `Which spaces in ${inst.city} are flagged, and why?` : `Show grade ${gradeLetter(1)} spaces in ${inst.city}`;
+        if (!skip(cityQ) && !out.includes(cityQ)) out.push(cityQ);
+      }
+      if (out.length < n) out.push(...freshChips(n - out.length, [...out, ...avoid.filter(a => typeof a === 'string')]));
+      return out.slice(0, n);
     }
     const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}"><span class="sp-text">${escapeHtml(noBreakHyphens(x.q))}</span></button>`;
     function renderStarterPrompts() {
