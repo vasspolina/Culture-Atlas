@@ -2968,3 +2968,12 @@ div:has(>#topThemeBtn){column-gap:0}
    columns asked for text-wrap:pretty; Safari on a phone takes that as a licence to even out every line of the paragraph, which left
    gaps of a word or two along the right edge. They wrap line by line again; the balanced setting stays on titles only. */
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-sub,.d-row-list>li,dl.visit-cols dd,p,li,dd){text-wrap:wrap}
+
+/* Sheet title rag (user, 2 Nov 2026: "now the title is ragged weirdly"). The space name and its line under it were set balanced,
+   which on a phone split "CCA Lagos (Centre / for Contemporary / Art)". Both wrap line by line like the record below them. */
+@media (max-width:767px){
+  :root:root:root:root body #dossier-bottom-sheet :is(#dossier-sheet-name,#dossier-sheet-meta){text-wrap:wrap!important}
+  /* The title block kept 72px free on the right for the close square it used to sit beside; under the bar that only narrowed
+     the measure and forced the early breaks. It now runs the sheet's full width. */
+  :root:root:root:root body #dossier-bottom-sheet .sheet-title-block{padding-right:var(--m-s4)!important}
+}
