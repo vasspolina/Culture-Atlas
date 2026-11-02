@@ -812,6 +812,8 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 :root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(212,16,159,.4)}
 /* The independent mark glows green on the map; the key echoes it (a deeper step on the light ground). */
 #layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(156,175,125,.6)}
+#layersPanel .shape-glow-cyan{box-shadow:0 0 6px 2px rgba(154,227,232,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-cyan{--marker-color:#1f8b93;box-shadow:0 0 6px 2px rgba(31,139,147,.45)}
 :root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#889e9a;box-shadow:0 0 6px 2px rgba(136,158,154,.5)}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
