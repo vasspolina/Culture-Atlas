@@ -688,7 +688,7 @@ body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 #globeViewport a.record-popup-name:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 .record-popup-line{margin:0 0 4px;color:#000}
 .record-popup-rule{border-top:.8px solid #000;padding-top:8px;margin-top:8px}
-.record-popup-category,.institution-category-pill,.critical-lens-label,.unverified-platform-tag{display:inline-flex;align-items:center;width:max-content;max-width:100%;border:.8px solid #d1d1d1;border-radius:0;background:#ececec;color:var(--ink);padding:4px 10px;font:400 var(--fs-s)/1.2 var(--sans);letter-spacing:0}
+.record-popup-category,.institution-category-pill,.critical-lens-label{display:inline-flex;align-items:center;width:max-content;max-width:100%;border:.8px solid #d1d1d1;border-radius:0;background:#ececec;color:var(--ink);padding:4px 10px;font:400 var(--fs-s)/1.2 var(--sans);letter-spacing:0}
 .record-popup-category{margin:0 0 8px}
 .architecture-status{opacity:.82}
 .record-popup-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:12px}
@@ -698,7 +698,6 @@ body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 #globeViewport .record-popup a,#globeViewport .record-popup-actions a,#globeViewport a.record-popup-name{color:#000}
 #globeViewport .record-popup-actions a:hover{color:#fff}
 .account-report-card{border:0;background:none;padding:12px 0}
-.unverified-platform-tag{font-size:var(--fs-s);background:transparent}
 .account-source-links{display:flex;flex-wrap:wrap;gap:8px}
 .account-source-links a{display:inline-flex;align-items:center;gap:4px}
 /* The global svg{display:block} put each source link's icon on a line of its own under the name. It sits inline after the name, on the text's baseline. */
@@ -829,8 +828,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 :root[data-theme="dark"] .record-popup-actions a,:root[data-theme="dark"] .record-popup-actions button{background:#4a4743;color:var(--ink)}
 :root[data-theme="dark"] .record-popup-actions a:hover,:root[data-theme="dark"] .record-popup-actions button:hover{background:var(--ink);color:#000}
 :root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-tip{border-top-color:#34322f;border-bottom-color:#34322f}
-:root[data-theme="dark"] .record-popup-category,:root[data-theme="dark"] .institution-category-pill,:root[data-theme="dark"] .critical-lens-label,:root[data-theme="dark"] .unverified-platform-tag{background:#2e2d2b;border-color:#6a655e;color:#e6e1d8}
-:root[data-theme="dark"] .unverified-platform-tag{background:transparent}
+:root[data-theme="dark"] .record-popup-category,:root[data-theme="dark"] .institution-category-pill,:root[data-theme="dark"] .critical-lens-label{background:#2e2d2b;border-color:#6a655e;color:#e6e1d8}
 /* Theme switch in the header */
 /* Colour that carries meaning keeps black text in both modes */
 #curatorHeroGreeting h1 .lbl,.curator-hero-title .lbl,.starter-prompt:nth-of-type(2),.starter-prompt:nth-of-type(3),.starter-prompt:nth-of-type(4),#chatContributeBtn,#hudContributeBtn,#mapFloatingContributeBtn{color:#000}
@@ -2823,7 +2821,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root:root #dossier-sheet-scrollable-body :is(h3.kicker):first-child{margin-top:0!important}
   :root:root #dossier-sheet-scrollable-body .accounts-note{margin:0 0 12px!important}
   :root:root #dossier-sheet-scrollable-body .record-card+.record-card{margin-top:24px!important}
-  :root:root #dossier-sheet-scrollable-body .record-card :is(.unverified-platform-tag,.t-lead,ul.t-lead,.account-source-links,.no-indent:not(.kicker)){margin-top:8px!important}
+  :root:root #dossier-sheet-scrollable-body .record-card :is(.t-lead,ul.t-lead,.account-source-links,.no-indent:not(.kicker)){margin-top:8px!important}
   :root:root #dossier-sheet-scrollable-body .record-card :is(.kicker)+.kicker{margin-top:0!important}
   :root:root #dossier-sheet-scrollable-body .record-card .accounts-note{margin:12px 0 0!important}
   :root:root #dossier-sheet-scrollable-body .record-card li+li{margin-top:8px!important}
