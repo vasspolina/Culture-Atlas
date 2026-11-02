@@ -1,10 +1,15 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v449';
+const CACHE_NAME = 'culture-atlas-v450';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
+  './assets/institutions.js',
   './reports-admin.html',
   './manifest.json',
+  './assets/icons/icon-192.png',
+  './assets/icons/icon-512.png',
+  './assets/icons/icon-512-maskable.png',
+  './assets/icons/apple-touch-icon-180.png',
   './assets/atlas.css',
   './assets/maplibre-gl.css',
   './assets/layers.js',
@@ -95,7 +100,9 @@ self.addEventListener('fetch', (event) => {
       }
       return networkResponse;
     }).catch(() => {
-      return caches.match(event.request);
+      // The page asks for its files with a `?v=` release number; the copies put away at install have none. Offline,
+      // either copy will do, so the search part is ignored.
+      return caches.match(event.request, { ignoreSearch: true });
     })
   );
 });

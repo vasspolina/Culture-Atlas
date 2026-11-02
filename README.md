@@ -163,9 +163,17 @@ Controls: one finger or a mouse drag turns the map; two fingers or the scroll wh
 
 ## Editing the page
 
-`index.html` is edited directly. No script regenerates it: the data inside it
-is rewritten by `tools/clean_data.py` then `tools/embed_data.py`, and everything
-else is changed in the file itself.
+`index.html` is edited directly. No script regenerates it. The records are not
+in it: they live in `assets/institutions.js`, which `tools/clean_data.py` then
+`tools/embed_data.py` rewrite from `institutions.json` (bump the `?v=` on its
+script tag in `index.html` after a rewrite). Keeping them in their own file means a
+new release of the page does not make every phone download the 10 MB of records
+again, and the service worker caches them on their own. Everything else is
+changed in the file itself.
+
+A release is three numbers kept equal: `CACHE_NAME` in `sw.js`, `ATLAS_RELEASE`
+in `index.html` and the `?v=` on the `sw.js` registration. If they drift apart,
+every first visit reloads the page once before it draws.
 
 The design tool's generator, patch and test scripts that used to sit in the
 repository root were removed on 13 October 2026: the page had been edited
