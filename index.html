@@ -11912,6 +11912,10 @@ return maplibregl$1;
       const cut = summary.split(/\s*Timing \/ scope:\s*/);
       if (cut.length > 1) { summary = cut[0]; note = cut.slice(1).join(' '); }
       summary = stripIds(summary); note = stripIds(note);
+      // The section note already says every account is one unverified person's post, so a card does not repeat that
+      // as a label or a disclaimer sentence (user's instruction, 2 Nov 2026).
+      summary = summary.replace(/^\s*Unverified platform sentiment:\s*/i, '').replace(/\s*(?:The account(?:'s)?|Employment)[^.]*not independently verified\.?\s*$/i, '').trim();
+      if (summary) summary = summary.charAt(0).toUpperCase() + summary.slice(1);
       if (summary && !/[.!?]$/.test(summary)) summary += '.';
       let host = '';
       try { host = new URL(((a.sources || [])[0] || {}).url).hostname.replace(/^www\./, ''); } catch (e) { /* no source link */ }
@@ -12053,7 +12057,6 @@ return maplibregl$1;
         return `<div class="record-card account-report-card space-y-1_5">
           <div class="kicker no-indent">${escapeHtml(v.title)}</div>
           ${v.date ? `<div class="kicker no-indent">${escapeHtml(v.date)}</div>` : ''}
-          <span class="unverified-platform-tag">Unverified platform sentiment</span>
           ${body}
           ${v.note ? `<p class="no-indent account-note">Context: ${escapeHtml(v.note)}</p>` : ''}
           ${v.alsoAbout.length ? `<p class="no-indent account-note">Also about ${escapeHtml(v.alsoAbout.join(', '))}.</p>` : ''}
