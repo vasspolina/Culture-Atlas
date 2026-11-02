@@ -101,11 +101,27 @@
     if (d.bottom_line) about.push('Bottom line of the research: ' + d.bottom_line);
     parts.push(section('ABOUT', about));
 
+    // The gossip items (notes/gossip-criteria.md): talk collected from the internet, each with who says it, where, when, the
+    // response and its sources. Newest first, stale ones last, as the attach tool orders them. Before the reported items: in
+    // Gossip mode the chat answers from these first.
+    var gos = ((i.gossip_data || {}).gossip || []).slice(0, opts.full ? 8 : 1).map(function (g) {
+      return 'Gossip ' + (g.id || '') + ' [' + [g.kind, g.status].filter(Boolean).join(', ') + ']: ' + clean(g.headline) + ' — ' + cut(g.said, opts.full ? 700 : 160) +
+        ' Who says it: ' + (g.who_says || '') + ' (' + (g.where || '') + (g.when ? ', ' + g.when : '') + ').' +
+        (opts.full && g.response ? ' Response: ' + cut(g.response, 300) : '') + (opts.full && g.outcome ? ' Outcome: ' + cut(g.outcome, 300) : '') +
+        (opts.full && g.urls && g.urls.length ? ' Sources: ' + urls(g.urls, 3) : '');
+    });
+    parts.push(section(opts.full ? 'GOSSIP (talk collected from the internet by the atlas\'s rules; state who says each item, never an item of status talk as fact; unverified unless confirmed or resolved)' : 'GOSSIP (internet talk; say who says it; unverified)', gos));
+
     var rep = [];
     (d.red_flags || []).forEach(function (r) { if (r && (r.heading || (r.points || []).length)) rep.push((r.heading ? r.heading + ': ' : '') + (r.points || []).slice(0, 4).map(function (p) { return cut(p, 300); }).join(' ')); });
     if (d.press && (d.press.overall || (d.press.items || []).length)) {
       rep.push('Press: ' + (d.press.overall || '') + ' ' + (d.press.items || []).slice(0, 4).map(function (p) { return typeof p === 'string' ? cut(p, 250) : cut([p.title, p.outlet, p.date, p.summary || p.text].filter(Boolean).join(', '), 250); }).join(' | '));
     }
+    ((i.gossip_data || {}).real_cases || []).slice(0, opts.full ? 6 : 2).forEach(function (c) {
+      rep.push('Case file ' + (c.case_id || '') + (c.event_date ? ' (' + c.event_date + ')' : '') + ': ' + clean(c.title) + ' — ' + cut((c.facts || []).join(' '), 500) +
+        ((c.claims || []).length ? ' Claim: ' + cut(c.claims.join(' '), 300) : '') + (c.response ? ' Response: ' + cut(c.response, 300) : '') + (c.outcome ? ' Outcome: ' + cut(c.outcome, 300) : '') +
+        (c.status ? ' Status: ' + String(c.status).replace(/_/g, ' ') : '') + (c.sources && c.sources.length ? ' Sources: ' + urls(c.sources, 2) : ''));
+    });
     (i.case_notes || []).slice(0, opts.full ? 8 : 3).forEach(function (c) { rep.push('Case: ' + [c.title, c.meta].filter(Boolean).join(', ') + ' — ' + cut(c.text, 500) + (c.sources && c.sources.length ? ' Sources: ' + urls(c.sources, 2) : '')); });
     (i.epstein_records || []).forEach(function (e) { rep.push('Epstein record: ' + [e.person, e.tie, e.status, e.consequence].filter(Boolean).join('; ') + (e.summary ? ' — ' + cut(e.summary, 400) : '') + (e.sources && e.sources.length ? ' Sources: ' + urls(e.sources, 2) : '')); });
     (i.wikileaks_records || []).forEach(function (w) { rep.push('WikiLeaks record' + (w.date ? ' ' + w.date : '') + (w.doc_id ? ' (' + w.doc_id + ')' : '') + ': ' + cut(w.what_shows, 400) + (w.flags_added ? ' Flags added: ' + w.flags_added : '') + (w.sources && w.sources.length ? ' Sources: ' + urls(w.sources, 2) : '')); });
