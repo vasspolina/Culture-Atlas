@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
-const { detectSubTopic, subTopicBlock, subTopicRecordAnswer } = createRequire(import.meta.url)('../assets/subtopic.js');
+createRequire(import.meta.url)('../assets/subtopic.js');
+// The file registers itself on globalThis in Node (package.json is type: module, so module.exports is not set there).
+const { detectSubTopic, subTopicBlock, subTopicRecordAnswer } = globalThis.AtlasSubTopic;
 
 const moma = { name: 'MoMA (The Museum of Modern Art)', grade: 3, highlight: "A modernist museum holding Van Gogh's Starry Night. It has been audited for private equity board ties.", funding: 'Admissions, Bloomberg Philanthropies, UNIQLO.' };
 const withArchive = { name: 'Example Museum', highlight: 'Holds a film archive of 4,000 reels. Founded 1950.' };

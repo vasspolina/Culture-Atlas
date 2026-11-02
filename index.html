@@ -35,9 +35,10 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=452">
+  <link rel="stylesheet" href="assets/atlas.css?v=453">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
+  <script src="assets/names.js?v=1"></script>
   <script src="assets/grounding.js?v=447"></script>
   <script>
 /**
@@ -15040,6 +15041,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return false;
       });
       if (direct) return direct;
+      // A name spelled in another language or another order ("Jewish museum berlin" for the Jüdisches Museum Berlin) is that
+      // record, whatever its tier, before "museum" plus a city is read as a request for every space in the city.
+      if (!contextual && window.AtlasNames) {
+        const named = AtlasNames.findNamedSpace(text, ALL_INSTITUTIONS);
+        if (named) return named;
+      }
       // A question about spaces in general or a comparison names no one space, so a near-miss on its words is not a guess worth making.
       const aboutMany = /\b(spaces|museums|galleries|institutions|cities|countries|compare|versus)\b/.test(t)
         || (/\b(museum|space|gallery|institution)\b/.test(t) && [...ALL_CITIES_REGISTRY, ...ALL_COUNTRIES_REGISTRY].some(c => c && c.name && new RegExp('\\b' + c.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(t)));
@@ -15661,6 +15668,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!t) return false;
       const names = [inst.name, ...(inst.aliases || [])].map(clean);
       if (names.includes(t)) return true;
+      // The name in another language or order ("Jewish museum berlin") is still a request for this record.
+      if (window.AtlasNames && AtlasNames.findNamedSpace(t, ALL_INSTITUTIONS) === inst) {
+        const own = AtlasNames.stems([inst.name, ...(inst.aliases || []), inst.city, inst.country].filter(Boolean).join(' '));
+        if (AtlasNames.stems(t).every(w => own.includes(w))) return true;
+      }
       const place = [inst.city, inst.country].map(clean).filter(Boolean);
       if (place.includes(t)) return false;
       const isPlace = (typeof ALL_CITIES !== 'undefined' && ALL_CITIES.some(c => clean(c) === t)) ||
