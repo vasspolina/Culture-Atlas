@@ -2944,3 +2944,14 @@ div:has(>#topThemeBtn){column-gap:0}
    stands on its own line above the account, in the same size, weight and leading, so each account reads as heading then body
    without leaving the baseline grid. */
 .curator-message-wrap p>.account-head{display:block;font-weight:inherit;line-height:inherit}
+
+/* Dark theme, quieter colour (user, 2 Nov 2026: "make colors on dark mode except map dots less bright and nuanced like the light mode").
+   The light theme sets the starter questions in their tier colour darkened by half (above); the dark theme set them in the full tier
+   colour, which read as neon on the near-black panel. Here each is mixed with the panel's warm grey instead, so the lime, orange and
+   teal keep their hue but lose their glare, as the light theme's do. The globe and its labels are untouched. Five :root so this
+   outranks the four-:root rule above; the hover rules carry eighteen and still win. */
+:root:root:root:root:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{color:color-mix(in srgb,var(--fill,#c6c6c6) 58%,#c9c2b4)!important}
+
+/* The Layers button is the panel's hover yellow (#fbfd5e, the row colour in the user's screenshot), not the marker yellow #ffd600,
+   in both themes. Its hover (ink on paper) is set with !important above and is unchanged. */
+:root:root #layersControl #layersBtn:not(:hover):not([aria-expanded="true"]){background:#fbfd5e}
