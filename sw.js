@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v444';
+const CACHE_NAME = 'culture-atlas-v445';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -17,7 +17,8 @@ const ASSETS_TO_CACHE = [
   './assets/hq.json',
   './assets/config.js',
   './assets/typeset.js',
-  './assets/subtopic.js'
+  './assets/subtopic.js',
+  './assets/grounding.js'
 ];
 
 self.addEventListener('install', (event) => {
