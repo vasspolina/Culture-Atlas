@@ -275,7 +275,7 @@
       hot.forEach(([a, b, kind, key]) => { ctx.strokeStyle = lineCol(COL[kind]); arc(project, a, b, r, cx, cy, ctx, { key, kind, a, b }); });
       ctx.globalAlpha = 0.35; ctx.lineWidth = 0.8;
     }
-    // The funder under the pointer or pinned: a line from its space to every other space that names it.
+    // The funder under the pointer or pinned: a line from its office (or, with no office, the hovered line's west end) to every other space that names it.
     ctx.restore(); drawReach(ctx, project, r, cx, cy); ctx.save(); ctx.lineCap = 'round';
     // The focused space's own ties, bright, with a dot at each far end.
     if (rec && typeof rec.lat === 'number') {
@@ -831,7 +831,7 @@
           const n = reachOfKeys(f.keys), st = tag.a && tag.b ? `${tag.a.n} – ${tag.b.n}` : null;
           LM_HOV = { line: true, key: f.key, x: mx, y: my, col: COL[f.kind], label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${plural(n.n, 'space')} in ${n.countries} ${n.countries === 1 ? 'country' : 'countries'}`, sub2: st, tip: REACH && REACH.pinned && REACH.key === f.key ? 'Pinned · click to open its record' : 'Click for details' };
         } else { LM_HOV.x = mx; LM_HOV.y = my; }
-        if (!(REACH && (REACH.pinned || REACH.tapped)) && (!REACH || REACH.key !== f.key)) { clearTimeout(reachTimer); reachTimer = 0; REACH = { key: f.key, keys: f.keys, kind: f.kind, space: tag.a || f.space, name: f.name, top: f.top, line: true }; }
+        if (!(REACH && (REACH.pinned || REACH.tapped)) && (!REACH || REACH.key !== f.key)) { clearTimeout(reachTimer); reachTimer = 0; REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, line: true }; }
         else { clearTimeout(reachTimer); reachTimer = 0; }
         repaint();
         return true;
@@ -849,7 +849,7 @@
         const tag = lineAt(mx, my, dots), f = tag && funderOf(tag.key);
         if (f) {
           clearTimeout(reachTimer); reachTimer = 0;
-          REACH = { key: f.key, keys: f.keys, kind: f.kind, space: tag.a || f.space, name: f.name, top: f.top, pinned: true, line: true };
+          REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, pinned: true, line: true };
           if (typeof renderTop === 'function') renderTop();
           if (LM_HOV && LM_HOV.line) LM_HOV.tip = 'Pinned · click to open its record';
           const e = f.office || { key: f.key, kind: 'org', k: f.kind, n: f.name, c: '', co: '', noOffice: true, spaces: reachOfKeys(f.keys).n };
