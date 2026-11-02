@@ -218,15 +218,12 @@ return maplibregl$1;
             <h2 class="layers-section-title">Map layers</h2>
             <div class="layers-list">
               <label><input type="checkbox" checked disabled> <span class="layer-name">Cultural spaces</span><span class="layer-desc">Every museum, gallery and art space</span><span class="layers-count" data-count="spaces"></span></label>
-              <label><input type="checkbox" data-layer="ties"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder</span><span class="layers-count" data-count="ties"></span></label>
-              <label><input type="checkbox" data-layer="flags"> <span class="layer-name">Flagged organizations</span><span class="layer-desc">Spaces with a flagged funder</span><span class="layers-count" data-count="flags"></span></label>
-              <label><input type="checkbox" data-layer="grade"> <span class="layer-name">Funding transparency ratings</span><span class="layer-desc">Each space coloured by its grade</span><span class="layers-count" data-count="grade"></span></label>
-              <label><input type="checkbox" data-layer="money"> <span class="layer-name">Funder networks</span><span class="layer-desc">The funders around a space in focus</span><span class="layers-count" data-count="money"></span></label>
-              <label><input type="checkbox" data-layer="hq"> <span class="layer-name">Funder headquarters</span><span class="layer-desc">Funders’ head offices, joined to the space in focus</span><span class="layers-count" data-count="hq"></span></label>
-              <label><input type="checkbox" data-layer="people"> <span class="layer-name">People &amp; office locations</span><span class="layer-desc">Offices of people the Epstein files name</span><span class="layers-count" data-count="people"></span></label>
-              <label><input type="checkbox" data-layer="right"> <span class="layer-name">Right-wing funders</span><span class="layer-desc">Spaces with a right-wing funder</span><span class="layers-count" data-count="right"></span></label>
-              <label><input type="checkbox" data-layer="epstein"> <span class="layer-name">Mentions in the Epstein files</span><span class="layer-desc">Spaces whose funders or people appear</span><span class="layers-count" data-count="epstein"></span></label>
+              <!-- One box can turn on several drawn layers: data-layer names the box, data-layers the layers it holds. -->
+              <label><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
+              <label><input type="checkbox" data-layer="epstein" data-layers="epstein people"> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
               <label><input type="checkbox" data-layer="propaganda"> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
+              <label><input type="checkbox" data-layer="independent"> <span class="layer-name">Independent</span><span class="layer-desc">Spaces whose record describes them as an independent space or institution</span><span class="layers-count" data-count="independent"></span></label>
+              <label><input type="checkbox" data-layer="artist"> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
             </div>
           </section>
           <section class="layers-section">
@@ -277,16 +274,8 @@ return maplibregl$1;
               <span><i class="shape-dot" style="--marker-color:#a78bfa"></i>Mentioned in the Epstein files</span>
               <span><i class="shape-dot" style="--marker-color:#2dd4bf"></i>Used for propaganda now</span>
               <span><i class="shape-ring" style="--marker-color:#2dd4bf"></i>Used for propaganda in the past</span>
-            </div>
-          </section>
-          <section class="layers-section">
-            <h2 class="layers-section-title">Funding ratings</h2>
-            <div class="layers-key layers-grade-key">
-              <span><i style="--marker-color:#34d399"></i><strong>Grade A</strong><span>Funding amounts disclosed; no funders flagged</span></span>
-              <span><i style="--marker-color:#2dd4bf"></i><strong>Grade B</strong><span>Funders listed; no funders flagged</span></span>
-              <span><i style="--marker-color:#facc15"></i><strong>Grade C</strong><span>Funder identified; details limited</span></span>
-              <span><i style="--marker-color:#fb923c"></i><strong>Grade D</strong><span>One flagged funder</span></span>
-              <span><i style="--marker-color:#ef4444"></i><strong>Grade F</strong><span>Multiple flagged funders, or a flagged funder with a disputed record</span></span>
+              <span><i class="shape-dot" style="--marker-color:#e2f86c"></i>Independent space</span>
+              <span><i class="shape-dot" style="--marker-color:#ffd600"></i>Artist-run space</span>
             </div>
           </section>
         </div>
@@ -18968,7 +18957,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           } else if (selectedCategoryFilter === 'ethical') {
             if (inst.tier !== 'A' && !inst.governance_type.includes('Civic') && !inst.governance_type.includes('Public')) return false;
           } else if (selectedCategoryFilter === 'artist_run') {
-            if (!inst.governance_type || !inst.governance_type.toLowerCase().includes('artist')) return false;
+            // The same reading of the record's words as the Artist-run map layer (assets/layers.js).
+            if (!(window.atlasSelfKinds && window.atlasSelfKinds(inst).artist)) return false;
           } else if (selectedCategoryFilter === 'fossil_free') {
             const s = (inst.ethical_safeguard || '').toLowerCase();
             if (inst.tier !== 'A' && !s.includes('divest') && !s.includes('fossil') && !s.includes('clean') && !s.includes('civic') && !s.includes('defense')) return false;

@@ -811,9 +811,6 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .shape-ring::after{display:none!important}
 :root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#0d9488}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
-#layersPanel .layers-grade-key{grid-template-columns:1fr}
-#layersPanel .layers-grade-key>span{display:grid;grid-template-columns:11px 56px minmax(0,1fr);gap:8px;align-items:start}
-#layersPanel .layers-grade-key strong{color:var(--ink);font-weight:400}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}
 
