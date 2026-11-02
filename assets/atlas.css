@@ -2915,3 +2915,8 @@ div:has(>#topThemeBtn){column-gap:0}
 @media (max-width:767px){
   body[data-mobile-mode="chat"]:has(#curatorMessages>*) #workBottomDock #chatRecordsInfo{display:none!important}
 }
+
+/* The chat's employee-accounts answer (2 Nov 2026): the source line ("Glassdoor review by Project assistant, posted 23 Apr 2025.")
+   stands on its own line above the account, in the same size, weight and leading, so each account reads as heading then body
+   without leaving the baseline grid. */
+.curator-message-wrap p>.account-head{display:block;font-weight:inherit;line-height:inherit}
