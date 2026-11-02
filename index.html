@@ -497,12 +497,6 @@ return maplibregl$1;
       </section>
       <!-- END: CuratorChatDrawer -->
 
-      <!-- Active Map Filter Banner (Uncontained) -->
-      <div id="activeMapFilterBanner" class="hidden absolute top-2_5 sm-top-3 left-1_2 -translate-x-1_2 z-20 pointer-events-auto flex items-center gap-2 px-3 py-1 rule-b">
-        <span id="activeMapFilterText" class=""></span>
-        <button id="clearMapFilterBtn" class="ml-1" title="Clear filter">Clear [x]</button>
-      </div>
-
       <!-- City & Country Navigation Banner (Uncontained) -->
       <div id="cityViewControlBanner" class="hidden absolute top-2 sm-top-3 left-2 sm-left-4 z-20 pointer-events-auto flex items-center gap-3 max-w-_calc_100_-16px overflow-x-auto px-3 py-1 rule-b">
         <button id="exitStreetViewBtn" class="flex items-center gap-1 shrink-0" title="Exit street view to 3D Globe">
@@ -18264,12 +18258,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       });
     });
 
-    // Clear Map Filter Button
-    document.getElementById('clearMapFilterBtn')?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      setCategoryFilter('all', false);
-    });
-
     // Delegated click listener in chat messages for inline links, cards, & city mentions
     const onCuratorMessagesClick = (e) => {
       // Explicitly allow external website links to open in a new tab without interference
@@ -19081,31 +19069,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
         return true;
       });
-
-      // Update Floating Map Filter Banner
-      const activeMapBanner = document.getElementById('activeMapFilterBanner');
-      const activeMapIcon = document.getElementById('activeMapFilterIcon');
-      const activeMapText = document.getElementById('activeMapFilterText');
-
-      if (activeMapBanner && activeMapText) {
-        if (isCommunityOnly) {
-          activeMapBanner.classList.remove('hidden');
-          if (activeMapIcon) activeMapIcon.textContent = '';
-          activeMapText.textContent = `${filteredList.length} community notes`;
-        } else if (isVisualCritiqueOnly) {
-          activeMapBanner.classList.remove('hidden');
-          if (activeMapIcon) activeMapIcon.textContent = '';
-          const stratLabel = selectedVisualCritiqueStrategy !== 'all' ? ` (${selectedVisualCritiqueStrategy.replace(/_/g, ' ')})` : '';
-          activeMapText.textContent = `Visual critique & artist feedback${stratLabel}, ${filteredList.length} institutional interventions`;
-        } else if (selectedCategoryFilter !== 'all') {
-          activeMapBanner.classList.remove('hidden');
-          const meta = FILTER_META[selectedCategoryFilter] || { label: selectedCategoryFilter.replace(/_/g, ' ') };
-          if (activeMapIcon) activeMapIcon.textContent = '';
-          activeMapText.textContent = `${meta.label}, ${filteredList.length} spaces on map`;
-        } else {
-          activeMapBanner.classList.add('hidden');
-        }
-      }
 
       // Update Catalog Panel Banner if present
       const activeFilterBanner = document.getElementById('activeFilterBanner');
