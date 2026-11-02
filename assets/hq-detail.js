@@ -190,7 +190,7 @@
     row('Address', e.a);
     if (e.kind === 'person') row('Role', e.w); else row('Note', e.w);
     if (e.s) { let host = e.s; try { host = new URL(e.s).hostname.replace(/^www\./, ''); } catch (x) {} row('Source', h('a', { href: e.s, target: '_blank', rel: 'noopener noreferrer', text: host })); }
-    info.append(dl, h('p', { class: 'hq-note', text: 'The pin marks the city, not the building.' }));
+    info.append(dl, h('p', { class: 'hq-note', text: e.noOffice ? 'No head office is mapped for this funder; the record is what the spaces’ funding lines say.' : 'The pin marks the city, not the building.' }));
 
     const names = h('section', { 'aria-labelledby': 'hqNamesT' }, h('h3', { id: 'hqNamesT', text: 'Names' }));
     if (!ready) names.append(h('p', { class: 'hq-note', text: 'Loading the other names…' }));
@@ -226,7 +226,7 @@
     closeChooser(false);
     if (!keepFocusOrigin) openFrom = from;
     openFor = e;
-    hq().showLayer(e);
+    if (!e.noOffice) hq().showLayer(e);
     hq().select(e);
     fill(e);
     p.hidden = false;
@@ -246,6 +246,8 @@
   }
   // Choosing a space (on the map, in the chat, or from a connection in this record) puts that space's record in the tab.
   window.atlasHqClose = () => closeRecord(false);
+  // A click on a funding line (assets/layers.js) opens the line's funder here, with or without a mapped office.
+  window.atlasHqOpen = e => openRecord(e, null);
   // Escape closes the list first, then the record, and does not also clear the space or city the page has selected.
   document.addEventListener('keydown', ev => {
     if (ev.key !== 'Escape') return;
