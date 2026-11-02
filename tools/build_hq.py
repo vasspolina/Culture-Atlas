@@ -143,6 +143,28 @@ for k, (n, kind, city, ctry, addr) in ORG.items():
 people = {}
 for n, (assoc, city, ctry, addr) in PEOPLE.items():
     lat, lon = C[city]; people[n] = {'n': n, 'w': assoc, 'c': city, 'co': ctry, 'lat': lat, 'lon': lon, **({'a': addr} if addr else {})}
+# Funder notes: what the funder says about why it gives to culture, with the page it rests on. Shown as the Note row of the
+# funder's record (assets/hq-detail.js). Keep each to what the source states.
+NOTES = {
+ 'opensociety': (
+  "George Soros's grant-making network, named after Karl Popper's idea of the open society. Its arts giving began in the "
+  "Soros Center for Contemporary Art, opened in Budapest in 1985 as a documentation centre, and grew from 1992 into a network "
+  "of about twenty Soros Centers for Contemporary Art across Central and Eastern Europe, the former Soviet Union and Central "
+  "Asia (Budapest, Prague, Warsaw, Moscow, Kyiv, Sarajevo, Almaty and others), which ran exhibitions, catalogues and training "
+  "before being spun off as independent organisations in 1999 and 2000. The foundation's stated reason is that art and culture "
+  "carry open-society values and shape public attitudes, yet get too little recognition and money from governments, so its "
+  "Arts and Culture Program set out to build an independent, innovative arts sector and to change cultural policy where "
+  "states controlled culture. Later programmes followed the same line: the Documentary Photography Project and its Moving "
+  "Walls shows, the Soros Arts Fellowship for socially engaged artists (2018 onwards), and support for restitution of African "
+  "art (2019). Critics, among them Octavian Esanu (“the managed avant-garde”) and Aaron Moulton (“The Influencing "
+  "Machine”), read the centres as having set a Western-facing agenda for post-socialist art. National foundations in the "
+  "network (for example Kosova Foundation for Open Society, the Open Society Initiative for West Africa and FOKAL in Haiti) "
+  "are counted here under the one network; several were closed or given a final package in 2024 as the foundations "
+  "restructured.",
+  "https://www.e-flux.com/directory/203562/open-society-foundations"),
+}
+for k, (note, src) in NOTES.items():
+    out[k]['w'] = note; out[k]['s'] = src
 here = os.path.dirname(os.path.abspath(__file__))
 # Funders researched against public sources (tools/hq_extra.json): each carries its source page in `s`.
 extra = json.load(open(os.path.join(here, 'hq_extra.json')))
