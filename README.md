@@ -13,6 +13,8 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below. Funding transparency ratings, A to F, summarize what each record shows about funding; see "Funding transparency ratings".
 
+The Layers panel on the map has five boxes: **Funding connections** (one box for the lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices), **Epstein connections** (spaces whose funders or people appear in the files, and those people's offices), **Propaganda**, **Independent** and **Artist-run**. The records carry no field for the last two, so `assets/layers.js` reads each record's own words (summary, watch note, funding note, focus, name): "independent art space", "remains independent", "artist-run", "founded by artists" and the like. "Independently verified" or "independent audit" does not count.
+
 ## Design
 
 Plain CSS, no framework: one stylesheet at `assets/atlas.css` (design layer plus a short generated block of layout helpers) and `assets/maplibre-gl.css` for the street map. The page loads no CSS or script from a CDN.
@@ -269,7 +271,7 @@ Each record with an independently sourced funder roster carries a rating from A 
 | D | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
 | F | Multiple flagged funders, or a flagged funder with a disputed record | More than one flagged funder category, or a flagged funder plus a documented objection |
 
-Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating on its colour block with the sentence that decided it (`grade_basis`); the Layers panel has a Funding transparency ratings layer that fills each rated dot with its colour; the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
+Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating on its colour block with the sentence that decided it (`grade_basis`); the map has no layer for the rating (removed 2 Nov 2026); the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
 
 ## Verification & Methodology
 

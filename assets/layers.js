@@ -1,13 +1,26 @@
-// Map layers drawn over the globe: funding connections, flagged organizations, funding transparency ratings, funder networks,
-// and the two highlights the funding map had: right-wing funders and mentions in the Epstein files.
+// Map layers drawn over the globe. The panel has five boxes: Funding connections (one box for the funding ties, flagged and
+// right-wing funders, the funder network around a space and the funders' head offices), Epstein connections (mentions in the
+// files and the offices of the people named), Propaganda, Independent and Artist-run.
 // Funder types: a filter on all the funder layers.
 // Hovering a funder around a space draws everywhere else it funds. Each layer shows something at every zoom. Ties: the web of funders shared between spaces, the selected space's own
 // ties on top. Flags: flagged spaces marked, and a flagged count on each city cluster. Money: a space's funders around
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, grade: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
-  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#2dd4bf' };
+  const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, independent: false, artist: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
+  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#2dd4bf', indep: '#e2f86c', artist: '#ffd600' };
+  // Independent and artist-run: the records carry no field for either, so the two layers read the record's own words
+  // (its summary, watch note, funding note, focus and name). "Independently verified/audited" is not the space being independent.
+  const KIND_TEXT = i => ['highlight', 'watch', 'curatorial_focus', 'funding', 'affiliations_note', 'records_note', 'tier_note', 'name'].map(k => i[k] || '').join(' \n ');
+  const INDEP_RE = /\bindependent(?:,? (?:non-?profit|not-for-profit|voluntary-led|non-collecting|artist-run|artist-led))*,? (?:art(?:s)?|contemporary|cultural|exhibition|artist|gallery|institution|cent(?:er|re)|space|museum|charity|organi[sz]ation|non-?profit|not-for-profit|foundation|trust|platform|project space|kunsthalle|art room)\b|\bremains independent\b|\bindependent since\b|\bbecame independent\b/i;
+  const ARTIST_RE = /artist[- ](?:run|led|founded|managed|organi[sz]ed|initiated|operated)|run by artists|by artists,? for artists|founded (?:in \d{4} )?by (?:a (?:group|collective) of |\w+ )?artists\b|artists.? collective|artist collective|artist cooperative|self-organi[sz]ed/i;
+  const kindCache = new WeakMap();
+  function selfKinds(i) {
+    let k = kindCache.get(i);
+    if (!k) { const t = KIND_TEXT(i); k = { independent: INDEP_RE.test(t), artist: ARTIST_RE.test(t) }; kindCache.set(i, k); }
+    return k;
+  }
+  window.atlasSelfKinds = selfKinds;
   // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
   // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
   // the data are drawn in a deeper step of the same hue there: 3.05:1 or better against white at the 0.8 alpha they are drawn at.
@@ -78,9 +91,9 @@
   // The mark drawn for each office last frame (x, y on the canvas) so a click, a hover and the keyboard buttons can find it;
   // the one picked in the detail panel (assets/hq-detail.js) and the one under the pointer or keyboard focus.
   let HQ_HITS = [], HQ_LABELS = [], HQ_SEL = null, HQ_HOV = null;
-  // Every other mark the layers draw (the dots at the ends of tie lines, funder rings, right-wing and Epstein marks, flag and
-  // grade marks, the flagged counts) can be found by the pointer too. LM holds the ones drawn last frame, LM_HOV the one under
-  // the pointer. A mark that sits on a space's own dot (flag, grade) is "pass": its hover goes to the space, and a click asks
+  // Every other mark the layers draw (the dots at the ends of tie lines, funder rings, right-wing and Epstein marks, flag,
+  // independent and artist-run marks, the flagged counts) can be found by the pointer too. LM holds the ones drawn last frame, LM_HOV the one under
+  // the pointer. A mark that sits on a space's own dot (flag) is "pass": its hover goes to the space, and a click asks
   // the chat.
   let LM = [], LM_HOV = null;
   // Ask the chat: show its tab (on a desktop the Details tab may be in front) and put the question to it.
@@ -446,7 +459,7 @@
   }
 
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!REACH && !L.flags && !L.grade && !L.money && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties) return;
+    if (!REACH && !L.flags && !L.money && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties && !L.independent && !L.artist) return;
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -455,20 +468,20 @@
     ctx.save();
     ctx.font = font; ctx.textBaseline = 'middle';
 
-    if (L.grade) {
-      // Each rated space: a dot filled with its funding transparency rating colour (window.atlasGrade, set by the page).
-      // A space with no grade keeps its hollow ring.
-      const G = window.atlasGrade || {};
+    if (L.independent || L.artist) {
+      // Independent and artist-run spaces: a small dot just above the space's own dot (the propaganda marks sit below it).
+      // A space that is both shows both, side by side.
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
-        const i = d.inst; if (!i || !i.grade || !G[i.grade]) return;
-        LM.push({ x: d.x, y: d.y, r: 12, pass: true, rec: i, ask: `Why is ${i.name} graded ${G[i.grade].letter || i.grade}?` });
-        ctx.beginPath(); ctx.arc(d.x, d.y, 10, 0, Math.PI * 2);
-        ctx.fillStyle = G[i.grade].col; ctx.fill();
-        ctx.strokeStyle = '#000'; ctx.stroke();
-        // The letter is the second cue: grade A and B are two near greens, and colour alone cannot tell the five apart.
-        ctx.save(); ctx.font = LW() + ' 14px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000';
-        ctx.fillText(G[i.grade].letter, d.x, d.y + 0.5); ctx.restore();
+        const i = d.inst; if (!i) return;
+        const k = selfKinds(i);
+        const marks = [L.independent && k.independent && 'independent', L.artist && k.artist && 'artist'].filter(Boolean);
+        marks.forEach((m, n) => {
+          const x = d.x + (n - (marks.length - 1) / 2) * 14, y = d.y - 12;
+          const col = m === 'artist' ? COL.artist : COL.indep;
+          LM.push({ x, y, r: 8, rec: i, col, label: m === 'artist' ? 'Artist-run space' : 'Independent space', sub: i.name, ask: m === 'artist' ? `Who runs ${i.name}?` : `How is ${i.name} independent?` });
+          shapePath(ctx, 'circle', x, y, 6); ctx.fillStyle = col; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
+        });
       });
     }
     if (L.flags) {
@@ -669,8 +682,7 @@
     showLayer(e) {
       const k = e.kind === 'org' ? 'hq' : 'people';
       if (L[k]) return;
-      L[k] = true;
-      document.querySelectorAll('#layersPanel input[data-layer]').forEach(i => { if (i.dataset.layer === k) i.checked = true; });
+      turnOn(k);
     },
     // Centre the map on an office, keeping the zoom unless the view is too wide to tell offices apart.
     flyToOffice(e) {
@@ -717,7 +729,7 @@
       return !!alone;
     },
     // A click on a mark asks the chat about it, and that is all the click does. The chat answers a question about a space
-    // with the space selected on the map and stays in front, so a flag or grade mark loses nothing by not opening the record.
+    // with the space selected on the map and stays in front, so a flag mark loses nothing by not opening the record.
     click(mx, my) {
       const m = markAt(mx, my);
       if (!m) { if (REACH && REACH.tapped) clearReach(); return false; }
@@ -736,8 +748,7 @@
 
   // "Money map" on a record: turn the layers on and show that space's funders on the globe.
   window.atlasShowMoney = function (id) {
-    L.money = true; L.ties = true; loadMoney();
-    document.querySelectorAll('#layersPanel input[data-layer]').forEach(i => { if (i.dataset.layer === 'money' || i.dataset.layer === 'ties') i.checked = true; });
+    turnOn('money'); turnOn('ties'); loadMoney();
     if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
     const inst = id && typeof window.resolveInstitutionByIdOrName === 'function' ? window.resolveInstitutionByIdOrName(id) : null;
     if (id && typeof window.selectInstitution === 'function') window.selectInstitution(id, false);
@@ -759,9 +770,9 @@
     if (typeof ALL_INSTITUTIONS !== 'undefined') {
       set('spaces', `${formatCount(ALL_INSTITUTIONS.length)}`);
       set('flags', `${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
-      const graded = ALL_INSTITUTIONS.filter(i => i.grade).length;
-      set('grade', `${formatCount(graded)}\u00a0rated`);
-            set('propaganda', `${formatCount(ALL_INSTITUTIONS.filter(i => (i.propaganda || []).length).length)}\u00a0spaces`);
+      set('propaganda', `${formatCount(ALL_INSTITUTIONS.filter(i => (i.propaganda || []).length).length)}\u00a0spaces`);
+      set('independent', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).independent).length)}\u00a0spaces`);
+      set('artist', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).artist).length)}\u00a0spaces`);
     }
     if (HQ) {
       set('hq', `${formatCount(HQ.orgs.length)}\u00a0offices`);
@@ -770,7 +781,9 @@
     if (recById && HQ) buildTop();
     if (web) {
       set('ties', `${formatCount(web.length)}\u00a0links`);
-      set('money', `${formatCount([...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length)}\u00a0spaces`);
+      const funded = [...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length;
+      set('money', `${formatCount(funded)}\u00a0spaces`);
+      set('funding', `${formatCount(funded)}\u00a0spaces`);
       const rightRecs = [...recById.values()].filter(rec => rec.nodes.some(RIGHT));
       set('right', `${formatCount(rightRecs.length)}\u00a0spaces`);
       set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)}\u00a0spaces`);
@@ -790,7 +803,7 @@
     if (!W || !H) return;
     if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px'; }
     const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    if (!(REACH || L.flags || L.grade || L.money || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties)) { SV.dots = []; LM = []; return; }
+    if (!(REACH || L.flags || L.money || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties || L.independent || L.artist)) { SV.dots = []; LM = []; return; }
     const base = 240, r = base * Math.pow(2, map.getZoom() - 7);
     // Points behind the camera on a tilted map project to nonsense; anything far off the canvas is treated as not in front.
     const project = (lon, lat) => { const p = map.project([lon, lat]); return { x: p.x, y: p.y, front: Math.abs(p.x - W / 2) < 6 * W && Math.abs(p.y - H / 2) < 6 * H, depth: 1 }; };
@@ -901,6 +914,25 @@
     });
   }
 
+  // ---- Boxes in the panel ----
+  // A box turns on the layers its data-layers attribute names (or the one its data-layer names). Turning a layer on from
+  // elsewhere (a record's "Money map", an office being named) turns on the whole box it sits in, so what the map shows and
+  // what the panel says agree.
+  const boxes = () => [...document.querySelectorAll('#layersPanel input[data-layer]')];
+  const keysOfBox = inp => (inp.dataset.layers || inp.dataset.layer).split(/\s+/).filter(Boolean);
+  function setBox(inp, on) {
+    inp.checked = on;
+    keysOfBox(inp).forEach(k => { L[k] = on; });
+    if (!on) return;
+    const ks = keysOfBox(inp);
+    if (ks.some(k => k !== 'flags' && k !== 'propaganda' && k !== 'independent' && k !== 'artist')) loadMoney();
+    if (ks.some(k => k === 'hq' || k === 'people')) loadHq();
+  }
+  function turnOn(k) {
+    const inp = boxes().find(i => keysOfBox(i).includes(k));
+    if (inp) setBox(inp, true); else L[k] = true;
+  }
+
   function init() {
     const box = document.getElementById('layersControl'); if (!box) return;
     const btn = box.querySelector('#layersBtn'), panel = box.querySelector('#layersPanel');
@@ -923,10 +955,7 @@
     btn.addEventListener('click', () => setOpen(panel.hidden));
     box.querySelector('.layers-close').addEventListener('click', () => { setOpen(false); btn.focus(); });
     box.querySelector('.layers-reset').addEventListener('click', () => {
-      box.querySelectorAll('input[data-layer]').forEach(input => {
-        input.checked = false;
-        L[input.dataset.layer] = false;
-      });
+      box.querySelectorAll('input[data-layer]').forEach(input => setBox(input, false));
       box.querySelectorAll('input[data-kind]').forEach(input => { input.checked = true; L.kinds[input.dataset.kind] = true; });
       box.querySelectorAll('input[data-pkind]').forEach(input => { input.checked = true; L.pkinds[input.dataset.pkind] = true; });
       clearReach();
@@ -936,10 +965,7 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { clearReach(); if (!panel.hidden) setOpen(false); } });
     window.addEventListener('resize', () => { if (!panel.hidden) placePanel(); });
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
-      const k = inp.dataset.layer;
-      L[k] = inp.checked;
-      if (k !== 'flags' && k !== 'grade' && k !== 'propaganda' && inp.checked) loadMoney();
-      if ((k === 'hq' || k === 'people') && inp.checked) loadHq();
+      setBox(inp, inp.checked);
       repaint();
     }));
     box.querySelectorAll('input[data-kind]').forEach(inp => inp.addEventListener('change', () => {
