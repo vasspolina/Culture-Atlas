@@ -1476,7 +1476,6 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #hqPanel .hq-list .hq-note{margin:0 0 8px}
 #hqPanel .hq-more{margin-top:6px;padding:0;min-height:32px;border:0;background:transparent;color:var(--ink);font:inherit;text-decoration:underline;text-underline-offset:var(--ul-off)}
 #hqPanel .hq-names li{padding:2px 0}
-#hqPanel .hq-names .hq-s{display:block}
 #hqPanel.is-sheet,#hqPanel.is-sheet.is-right{left:8px;right:8px;width:auto;max-width:none;top:auto;bottom:56px;max-height:40%}
 #hqPanel.is-sheet.is-top{top:88px;bottom:auto;max-height:calc(50% - 100px)}
 
@@ -1531,7 +1530,6 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #hqPanel ul.d-row-list.hq-list>li::before{content:none}
 #hqPanel.is-details .hq-list .hq-note{margin:calc(var(--H) / 2) 0 0}
 #hqPanel.is-details .hq-names li{padding:0}
-#hqPanel.is-details .hq-names .hq-s{display:inline}
 #hqPanel.is-details .hq-more{margin-top:var(--H);min-height:44px;font-size:var(--fs-s)}
 /* Chat answers: a section heading sits close to the text it opens and is not pushed away by the box margins of its own h3; the paragraph under it starts flush */
 #curatorMessages .curator-section-hdr{margin:1em 0 .3em;padding:0;display:block}
