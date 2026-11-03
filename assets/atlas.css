@@ -2979,3 +2979,12 @@ div:has(>#topThemeBtn){column-gap:0}
    columns asked for text-wrap:pretty; Safari on a phone takes that as a licence to even out every line of the paragraph, which left
    gaps of a word or two along the right edge. They wrap line by line again; the balanced setting stays on titles only. */
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-sub,.d-row-list>li,dl.visit-cols dd,p,li,dd){text-wrap:wrap}
+
+/* Details sheet close button on a phone (user, 3 Nov 2026): the full-width bar behind the cross is gone; only the cross has a
+   background, a solid square like the desktop's. It sits inside the page margin on the right, and it is the desktop's cross
+   (same lines, same thin stroke) scaled down from 40px to 32px in a 48px square. The bar keeps its height so the title still starts below it. */
+@media (max-width:767px){
+  #dossier-bottom-sheet .sheet-chrome{background:transparent!important}
+  #dossier-bottom-sheet .sheet-close{top:0!important;right:var(--m-s4)!important;width:48px!important;height:48px!important;background:var(--grey)!important;color:var(--ink)!important}
+  #dossier-bottom-sheet .sheet-close svg{width:32px;height:32px;stroke-width:1.1;stroke-linecap:butt}
+}
