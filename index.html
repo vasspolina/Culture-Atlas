@@ -153,6 +153,8 @@ return maplibregl$1;
       <!-- New Chat / Reset Quick Actions -->
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
       <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" aria-pressed="false">Dark</button>
+      <!-- Details: the record of the selected space, as the desktop's Details tab. Shown once a space is selected, so the sheet can be reopened after Close. -->
+      <button id="mobileDetailsBtn" type="button" class="whitespace-nowrap hidden" onclick="if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails();" aria-label="Space details">Details</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
         Chat
       </button>
@@ -12256,6 +12258,7 @@ return maplibregl$1;
         badgeWrap.classList.remove('flex');
       }
       if (badgeName) badgeName.textContent = '';
+      document.getElementById('mobileDetailsBtn')?.classList.add('hidden');   // no space, no Details button on the phone
 
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) floatingCard.classList.add('hidden');
@@ -12310,6 +12313,7 @@ return maplibregl$1;
       if (tabDossierLabel) {
         tabDossierLabel.textContent = 'Details';
       }
+      document.getElementById('mobileDetailsBtn')?.classList.remove('hidden');   // the phone header gets its Details button once a space is selected
       if (typeof curatorContext !== 'undefined' && inst) {
         const prevInst = curatorContext.activeFocusInst || curatorContext.lastInst;
         const isNewFocus = !prevInst || prevInst.id !== inst.id || prevInst.name !== inst.name;
@@ -16447,6 +16451,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         try { if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); } catch (_) {}
         if (tabAtlas) tabAtlas.click();
         else { chatDrawer?.classList.add('hidden'); if (stickyDock) stickyDock.classList.remove('hidden'); if (typeof setMobileViewMode === 'function') setMobileViewMode('map'); }
+      };
+      // The header's Details button: the record sheet of the selected space, from wherever the phone is (the chat, the record
+      // page, or the map with the sheet closed). It is the phone's counterpart of the desktop Details tab.
+      window.atlasOpenPhoneDetails = function () {
+        if (window.innerWidth >= 768 || typeof selectedInstitution === 'undefined' || !selectedInstitution) return;
+        if (isChatInputMode && typeof exitChatInputMode === 'function') exitChatInputMode(true);
+        window.atlasCloseChat();                       // the chat and the record page give way to the map
+        if (typeof updateMobileDossier === 'function') updateMobileDossier(selectedInstitution);
+        if (tabDossier) tabDossier.click();            // shows the sheet over the map
+        else bottomSheet?.classList.remove('hidden');
       };
       // The title: back to the map, from wherever the phone is, and the globe back to its starting view.
       window.atlasGoToMap = function () {
