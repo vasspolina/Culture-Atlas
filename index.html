@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=471">
+  <link rel="stylesheet" href="assets/atlas.css?v=472">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -1061,7 +1061,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=471"></script>
+  <script src="assets/institutions.js?v=472"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9987,11 +9987,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v471';
+    const ATLAS_RELEASE = 'culture-atlas-v472';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=471').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=472').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13220,18 +13220,26 @@ return maplibregl$1;
       }
       const esc = (n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const reFor = (keys) => new RegExp('(?<![\\p{L}\\p{N}-])(?:' + [...keys].sort((a, b) => b.length - a.length).map(esc).join('|') + ')(?![\\p{L}\\p{N}-])', 'gu');
-      // The pattern of every name is built once; a record with website links of its own gets one with those added.
+      // The pattern of every name is built once; a record's own website names get a small pattern of their own beside it.
       if (!recordLinkIndex.re) recordLinkIndex.re = reFor(recordLinkIndex.keys());
       const own = String(inst.name || '');
-      let labels = recordLinkIndex, re = recordLinkIndex.re;
       // A website link is written once, as the record spells the name; "BEPPU PROJECT" also links "Beppu Project".
       const titleCase = (t) => t.toLowerCase().replace(/(^|[\s-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase());
-      const web = Object.entries(inst.links || {}).filter(([, url]) => /^https?:\/\//.test(url));
-      if (web.length) {
-        labels = new Map(recordLinkIndex);
-        web.forEach(([t, url]) => [t, titleCase(t)].forEach(v => labels.set(v, { url })));
-        re = reFor(labels.keys());
-      }
+      const webLabels = new Map();
+      Object.entries(inst.links || {}).forEach(([t, url]) => { if (/^https?:\/\//.test(url)) [t, titleCase(t)].forEach(v => webLabels.set(v, { url })); });
+      const webRe = webLabels.size ? reFor(webLabels.keys()) : null;
+      // Every match of either pattern in a text, left to right, the longer name winning where two start together.
+      const matches = (text) => {
+        const ms = [];
+        [[webRe, webLabels], [recordLinkIndex.re, recordLinkIndex]].forEach(([re, map]) => {
+          if (!re) return;
+          re.lastIndex = 0;
+          for (let m = re.exec(text); m; m = re.exec(text)) ms.push({ index: m.index, text: m[0], entry: map.get(m[0]) });
+        });
+        ms.sort((a, b) => a.index - b.index || b.text.length - a.text.length);
+        let end = 0;
+        return ms.filter(m => m.index >= end && (end = m.index + m.text.length, true));
+      };
       const before = /\p{Lu}[\p{L}\p{N}'’.&-]* $/u, after = /^ (?:\p{Lu}|(?:of|de|del|der|di|du|des|für|for|voor|van) )/u;
       const doc = new DOMParser().parseFromString('<body>' + html + '</body>', 'text/html');
       const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
@@ -13247,21 +13255,20 @@ return maplibregl$1;
         const seen = done.get(section);
         let last = 0, hit = false;
         const frag = doc.createDocumentFragment();
-        re.lastIndex = 0;
-        for (let m = re.exec(text); m; m = re.exec(text)) {
-          const entry = labels.get(m[0]);
+        for (const m of matches(text)) {
+          const entry = m.entry;
           const key = entry.url || entry.name;
-          if (!entry.url && (entry.name === own || own.includes(m[0]))) continue;
-          if (seen.has(key) || before.test(text.slice(Math.max(0, m.index - 40), m.index)) || after.test(text.slice(m.index + m[0].length, m.index + m[0].length + 6))) continue;
+          if (!entry.url && (entry.name === own || own.includes(m.text))) continue;
+          if (seen.has(key) || before.test(text.slice(Math.max(0, m.index - 40), m.index)) || after.test(text.slice(m.index + m.text.length, m.index + m.text.length + 6))) continue;
           seen.add(key);
           hit = true;
           frag.appendChild(doc.createTextNode(text.slice(last, m.index)));
           const a = doc.createElement('a');
           if (entry.url) { a.href = entry.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.className = 'space-web-link'; }
           else { a.href = '#'; a.className = 'inst-link record-space-link'; a.setAttribute('data-name', entry.name); }
-          a.textContent = m[0];
+          a.textContent = m.text;
           frag.appendChild(a);
-          last = m.index + m[0].length;
+          last = m.index + m.text.length;
         }
         if (!hit) return;
         frag.appendChild(doc.createTextNode(text.slice(last)));
