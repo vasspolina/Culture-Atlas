@@ -66,13 +66,16 @@ async function chat(request, env) {
 
   const model = CHAT_MODELS.includes(body.model) ? body.model : CHAT_MODELS[0];
   const maxTokens = Math.min(Math.max(parseInt(body.max_tokens, 10) || 1024, 64), CHAT_MAX_TOKENS);
+  // With stream: true the page gets Claude's own event stream as it is written, so the answer shows while the model is
+  // still typing it, instead of after the whole of it has arrived. Without it the reply is the finished JSON.
+  const stream = body.stream === true;
   let res;
   try {
     res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model, max_tokens: maxTokens, system, messages }),
-      signal: AbortSignal.timeout(60000)
+      body: JSON.stringify({ model, max_tokens: maxTokens, system, messages, ...(stream ? { stream: true } : {}) }),
+      signal: AbortSignal.timeout(stream ? 120000 : 60000)
     });
   } catch (e) {
     return json({ error: 'The model did not answer in time.' }, 504);
@@ -81,6 +84,9 @@ async function chat(request, env) {
     // The reason goes to the Worker's own log (Cloudflare dashboard), never to the visitor.
     console.error('anthropic', res.status, (await res.text().catch(() => '')).slice(0, 300));
     return json({ error: 'The model could not answer.' }, res.status === 429 ? 429 : 502);
+  }
+  if (stream) {
+    return new Response(res.body, { status: 200, headers: { 'Content-Type': 'text/event-stream', 'Cache-Control': 'no-store', 'X-Accel-Buffering': 'no' } });
   }
   const data = await res.json();
   return json({ content: Array.isArray(data.content) ? data.content : [] }, 200, { 'Cache-Control': 'no-store' });

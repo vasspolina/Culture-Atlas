@@ -75,3 +75,26 @@ test('chat is limited per address each hour', async () => {
     assert.equal(last.status, 429);
   } finally { globalThis.fetch = realFetch; }
 });
+
+test('chat streams Claude\'s events through when the page asks for a stream', async () => {
+  const e = { ...env(), ANTHROPIC_API_KEY: 'sk-test' };
+  const seen = [];
+  const realFetch = globalThis.fetch;
+  const sse = 'event: content_block_delta\ndata: {"type":"content_block_delta","delta":{"type":"text_delta","text":"Hello"}}\n\nevent: message_stop\ndata: {"type":"message_stop"}\n\n';
+  globalThis.fetch = async (url, init) => {
+    seen.push({ url, init });
+    if (!JSON.parse(init.body).stream) return new Response(JSON.stringify({ content: [{ type: 'text', text: 'Hello.' }] }), { status: 200 });
+    return new Response(sse, { status: 200, headers: { 'Content-Type': 'text/event-stream' } });
+  };
+  try {
+    const res = await call(e, 'POST', '/chat', { stream: true, messages: [{ role: 'user', content: 'Who funds Tate?' }] });
+    assert.equal(res.status, 200);
+    assert.match(res.headers.get('Content-Type'), /text\/event-stream/);
+    assert.equal(res.headers.get('Access-Control-Allow-Origin'), 'https://vasspolina.github.io');
+    assert.equal(await res.text(), sse);
+    assert.equal(JSON.parse(seen[0].init.body).stream, true);
+    const plain = await call(e, 'POST', '/chat', { messages: [{ role: 'user', content: 'hi' }] });
+    assert.equal(JSON.parse(seen[1].init.body).stream, undefined);
+    assert.equal(plain.status, 200);
+  } finally { globalThis.fetch = realFetch; }
+});

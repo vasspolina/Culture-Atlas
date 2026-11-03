@@ -14319,8 +14319,73 @@ return maplibregl$1;
       return turns;
     }
 
+    // The text and the thinking blocks of a finished Anthropic reply.
+    function anthropicTextOf(data) {
+      if (!data) return '';
+      if (typeof data.content === 'string') return data.content;
+      if (!Array.isArray(data.content)) return '';
+      return data.content.filter(b => b && (b.type === 'text' || b.text)).map(b => b.text || '').join('');
+    }
+    function anthropicThinkingOf(data) {
+      if (!data || !Array.isArray(data.content)) return '';
+      return data.content.map(b => {
+        if (!b) return '';
+        if (b.type === 'thinking' || b.type === 'thought') return (b.thinking || b.thought || '') + '\n';
+        if (b.type === 'redacted_thinking') return '[Extended thinking block redacted by provider]\n';
+        return '';
+      }).join('');
+    }
+
+    // Reads Claude's event stream (server-sent events) as it arrives, calling onText with the text so far at each step,
+    // and resolves with the whole text. A stream that reports an error is thrown.
+    async function readAnthropicStream(body, onText) {
+      const reader = body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '', text = '', lastPaint = 0, pending = null;
+      const paint = () => {
+        const now = performance.now();
+        if (now - lastPaint >= 120) { lastPaint = now; if (pending) { clearTimeout(pending); pending = null; } onText(text); }
+        else if (!pending) pending = setTimeout(() => { pending = null; lastPaint = performance.now(); onText(text); }, 120 - (now - lastPaint));
+      };
+      const take = (block) => {
+        const lines = block.split('\n');
+        let event = '', data = '';
+        for (const line of lines) {
+          if (line.startsWith('event:')) event = line.slice(6).trim();
+          else if (line.startsWith('data:')) data += line.slice(5).trim();
+        }
+        if (!data) return;
+        let msg; try { msg = JSON.parse(data); } catch (e) { return; }
+        const kind = msg.type || event;
+        if (kind === 'content_block_delta' && msg.delta && msg.delta.type === 'text_delta') { text += msg.delta.text || ''; paint(); }
+        else if (kind === 'error') throw new Error((msg.error && msg.error.message) || 'stream error');
+      };
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        let cut;
+        while ((cut = buffer.indexOf('\n\n')) !== -1) { take(buffer.slice(0, cut)); buffer = buffer.slice(cut + 2); }
+      }
+      if (buffer.trim()) take(buffer);
+      if (pending) clearTimeout(pending);
+      onText(text);
+      return text;
+    }
+
+    // While the model writes, its words take the place of the three dots in the chat; the finished answer then replaces them.
+    function showChatStreaming(text) {
+      if (!text) return;
+      document.querySelectorAll('[data-pending]').forEach(el => {
+        let live = el.querySelector('.chat-live');
+        if (!live) { el.innerHTML = '<div class="chat-live space-y-2_5"></div>'; live = el.querySelector('.chat-live'); }
+        live.innerHTML = renderCuratorMarkdown(text);
+      });
+      followChatTyping();
+    }
+
     // A request for gossip, by the words used: the chat then prints the gossip itself and nothing around it.
-    const GOSSIP_ASK = /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i;
+    const GOSSIP_ASK =/\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i;
     async function queryAI(userPrompt, webIntel = null) {
       const activeKey = aiApiKey || _SYS_KEY;
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
@@ -14356,7 +14421,7 @@ return maplibregl$1;
       const nearest = unknownName && typeof findFuzzyInstitutionMatch === 'function' ? findFuzzyInstitutionMatch(userPrompt.toLowerCase(), 0.75) : null;
       // A "yes" to a reply that named two or more spaces does not say which: neither the open space nor a guess answers it.
       const ambiguousFollowUp = isFollowUp && !resolvedFollowUp && namedInReply.length >= 2;
-      const relevantInsts = unknownName ? (nearest && nearest.inst ? [nearest.inst] : []) : retrieveGroundingInstitutions(retrievalText, 12, { includeActive: !ambiguousFollowUp });
+      const relevantInsts = unknownName ? (nearest && nearest.inst ? [nearest.inst] : []) : retrieveGroundingInstitutions(retrievalText, 6, { includeActive: !ambiguousFollowUp });
       const themed = unknownName ? null : themeMatches(userPrompt);
       const themedText = themed ? `\n\n<matching_records>\nThe Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} that match this question${themed.total > themed.insts.length ? `; the first ${themed.insts.length} are listed` : ''}. Words matched: ${themed.words.join(', ')}. Grades across all ${themed.total}: ${themed.tallyText}.\n${themed.insts.map(formatShortGrounding).join('\n')}\n</matching_records>` : '';
       const focusId = (mentionedInst || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || {}).id;
@@ -14520,39 +14585,52 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 </system_instructions>`;
 
       const startTime = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+      queryAI.lastStreamed = false;
       try {
         let rawText = '';
         let thinkingContent = '';
         if (prov === 'anthropic') {
-          const res = await fetch(useProxy ? ATLAS_AI_PROXY_URL : 'https://api.anthropic.com/v1/messages', {
-            method: 'POST',
-            headers: useProxy ? { 'Content-Type': 'application/json' } : {
-              'Content-Type': 'application/json',
-              'x-api-key': activeKey,
-              'anthropic-version': '2023-06-01',
-              'anthropic-dangerous-direct-browser-access': 'true'
-            },
-            body: JSON.stringify({
-              model: model,
-              max_tokens: 1024,
-              system: criticalSystemPrompt,
-              messages: [...conversationTurns(), { role: 'user', content: structuredUserPrompt }]
-            })
-          });
-          if (!res.ok) throw new Error(`Anthropic error ${res.status}`);
-          const data = await res.json();
-          if (Array.isArray(data.content)) {
-            for (const b of data.content) {
-              if (b.type === 'thinking' || b.type === 'thought') {
-                thinkingContent += (b.thinking || b.thought || '') + '\n';
-              } else if (b.type === 'redacted_thinking') {
-                thinkingContent += '[Extended thinking block redacted by provider]\n';
-              } else if (b.type === 'text' || b.text) {
-                rawText += (b.text || '');
-              }
+          // The Worker is asked to stream: words show in the chat as the model writes them. A reply that has not begun
+          // within 25 s, or not finished within 90 s, is given up, and the chat falls back to its record answers.
+          const ctl = (useProxy && typeof AbortController === 'function') ? new AbortController() : null;
+          let firstByteTimer = ctl ? setTimeout(() => ctl.abort(), 25000) : null;
+          const totalTimer = ctl ? setTimeout(() => ctl.abort(), 90000) : null;
+          let res;
+          try {
+            res = await fetch(useProxy ? ATLAS_AI_PROXY_URL : 'https://api.anthropic.com/v1/messages', {
+              method: 'POST',
+              headers: useProxy ? { 'Content-Type': 'application/json' } : {
+                'Content-Type': 'application/json',
+                'x-api-key': activeKey,
+                'anthropic-version': '2023-06-01',
+                'anthropic-dangerous-direct-browser-access': 'true'
+              },
+              body: JSON.stringify({
+                model: model,
+                max_tokens: 1024,
+                system: criticalSystemPrompt,
+                messages: [...conversationTurns(), { role: 'user', content: structuredUserPrompt }],
+                ...(useProxy ? { stream: true } : {})
+              }),
+              signal: ctl ? ctl.signal : undefined
+            });
+            if (!res.ok) throw new Error(`Anthropic error ${res.status}`);
+            const type = res.headers.get('content-type') || '';
+            if (useProxy && /text\/event-stream/i.test(type) && res.body && typeof res.body.getReader === 'function') {
+              rawText = await readAnthropicStream(res.body, (text) => {
+                if (firstByteTimer) { clearTimeout(firstByteTimer); firstByteTimer = null; }
+                showChatStreaming(text);
+              });
+              queryAI.lastStreamed = !!rawText;
+            } else {
+              // An older Worker, or a visitor's own key: the finished reply arrives as JSON.
+              const data = await res.json();
+              rawText = anthropicTextOf(data);
+              thinkingContent += anthropicThinkingOf(data);
             }
-          } else if (typeof data.content === 'string') {
-            rawText = data.content;
+          } finally {
+            if (firstByteTimer) clearTimeout(firstByteTimer);
+            if (totalTimer) clearTimeout(totalTimer);
           }
         } else if (prov === 'openai') {
           const res = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -15631,7 +15709,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (typeof window.atlasTypesetRun === 'function') window.atlasTypesetRun(div);
       scrollChatToBottom(false);
       const outline = (el) => { if (typeof window.atlasBubbleOutline === 'function') window.atlasBubbleOutline(el); };
-      const typedMain = typeReveal(div, { onTick: followChatTyping, onDone: () => outline(div) });
+      // An answer that was streamed in was already read as it was written, so it is not typed out a second time.
+      const streamed = typeof queryAI !== 'undefined' && queryAI.lastStreamed;
+      if (streamed) queryAI.lastStreamed = false;
+      const typedMain = streamed ? (outline(div), followChatTyping(), { finish() {} }) : typeReveal(div, { onTick: followChatTyping, onDone: () => outline(div) });
       div._finishTyping = typedMain.finish;
 
       const drawerLive = document.getElementById('curatorDrawerLiveStream');
