@@ -406,6 +406,140 @@
       fill();
     }
 
+    // ---- The map's gestures and buttons, as a maps app's (user, 3 Nov 2026: "make it interactive like Google Maps") ----
+    // The globe already turns with one finger (with momentum), zooms with two about the point between them, and zooms in
+    // on a double click. On a phone this adds: a double tap zooms in where it lands (phones do not all send a double
+    // click), a tap with two fingers zooms out, panning the map lowers a half-open record to its peek so the map is free,
+    // and a location button flies to where the visitor is and marks it with a dot. The globe's own functions do the
+    // work (flyTo, the zoom keys, project); none of them is changed.
+    (function mapGestures() {
+      const canvas = $('globeCanvas');
+      if (!canvas) return;
+      const g = (name) => { try { return (0, eval)(name); } catch (_) { return undefined; } };
+
+      // Double tap: zoom in where the second tap lands. A browser that also sends its own double click after it is not
+      // let through, or the globe would zoom twice.
+      let lastTap = null, synthAt = 0, t1 = null;
+      canvas.addEventListener('touchstart', (e) => {
+        if (!PHONE()) return;
+        if (e.touches.length === 1) t1 = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+        else t1 = null;
+      }, { passive: true });
+      canvas.addEventListener('touchend', (e) => {
+        if (!PHONE() || !t1 || e.touches.length) return;
+        const p = e.changedTouches[0], now = Date.now();
+        const tap = Math.hypot(p.clientX - t1.x, p.clientY - t1.y) < 10 && now - t1.t < 250;
+        t1 = null;
+        if (!tap) { lastTap = null; return; }
+        if (lastTap && now - lastTap.t < 320 && Math.hypot(p.clientX - lastTap.x, p.clientY - lastTap.y) < 40) {
+          lastTap = null; synthAt = now;
+          canvas.dispatchEvent(new MouseEvent('dblclick', { clientX: p.clientX, clientY: p.clientY, bubbles: true, cancelable: true }));
+        } else {
+          lastTap = { x: p.clientX, y: p.clientY, t: now };
+        }
+      }, { passive: true });
+      canvas.addEventListener('dblclick', (e) => {
+        if (e.isTrusted && Date.now() - synthAt < 600) { e.stopImmediatePropagation(); e.preventDefault(); }
+      }, true);
+
+      // Two-finger tap: zoom out a step, the same step as the minus key.
+      let two = null;
+      canvas.addEventListener('touchstart', (e) => {
+        if (!PHONE()) return;
+        if (e.touches.length === 2) {
+          const [a, b] = e.touches;
+          two = { t: Date.now(), d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), mx: (a.clientX + b.clientX) / 2, my: (a.clientY + b.clientY) / 2, moved: false };
+        } else if (e.touches.length > 2) two = null;
+      }, { passive: true });
+      canvas.addEventListener('touchmove', (e) => {
+        if (!two || e.touches.length !== 2) return;
+        const [a, b] = e.touches;
+        const d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+        if (Math.abs(d - two.d) > 12 || Math.hypot((a.clientX + b.clientX) / 2 - two.mx, (a.clientY + b.clientY) / 2 - two.my) > 12) two.moved = true;
+      }, { passive: true });
+      canvas.addEventListener('touchend', (e) => {
+        if (!two || e.touches.length) return;
+        const quick = Date.now() - two.t < 300 && !two.moved;
+        two = null;
+        if (quick) window.dispatchEvent(new KeyboardEvent('keydown', { key: '-', bubbles: true }));
+      }, { passive: true });
+
+      // Panning the map with a record half open lowers it to its peek, so the map is free to look at.
+      let pan = null;
+      canvas.addEventListener('pointerdown', (e) => { pan = PHONE() ? { x: e.clientX, y: e.clientY } : null; });
+      window.addEventListener('pointermove', (e) => {
+        if (!pan || Math.hypot(e.clientX - pan.x, e.clientY - pan.y) < 12) return;
+        pan = null;
+        if (sheet && !sheet.classList.contains('hidden') && sheet.dataset.detent === 'half' && window.atlasSetSheetDetent) window.atlasSetSheetDetent('peek');
+      });
+      window.addEventListener('pointerup', () => { pan = null; });
+
+      // Your location: a round button at the bottom right, over the chips. The first tap asks the browser for the
+      // position and flies there at the zoom a city gets; the place is marked with a dot in a ring, which follows the
+      // globe as it turns and is hidden on its far side and on the street map.
+      if (!('geolocation' in navigator)) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.id = 'gmLocateBtn';
+      btn.setAttribute('aria-label', 'Show my location');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/></svg>';
+      const note = document.createElement('p');
+      note.id = 'gmLocateNote';
+      note.setAttribute('role', 'status');
+      note.setAttribute('aria-live', 'polite');
+      const viewport = $('globeViewport') || document.body;
+      viewport.appendChild(btn);
+      viewport.appendChild(note);
+      const dot = document.createElement('span');
+      dot.id = 'gmHereDot';
+      dot.setAttribute('aria-hidden', 'true');
+      viewport.appendChild(dot);
+
+      let here = null, noteTimer = 0;
+      const say = (t) => { note.textContent = t; note.classList.toggle('is-on', !!t); clearTimeout(noteTimer); if (t) noteTimer = setTimeout(() => say(''), 4000); };
+      const nearestCity = (lat, lon) => {
+        const list = g('ALL_CITIES_REGISTRY') || [];
+        let best = null, bd = Infinity;
+        const R = Math.PI / 180;
+        list.forEach((c) => {
+          if (typeof c.lat !== 'number' || typeof c.lon !== 'number') return;
+          const d = Math.acos(Math.min(1, Math.sin(lat * R) * Math.sin(c.lat * R) + Math.cos(lat * R) * Math.cos(c.lat * R) * Math.cos((lon - c.lon) * R)));
+          if (d < bd) { bd = d; best = c; }
+        });
+        return best ? { city: best, km: Math.round(bd * 6371) } : null;
+      };
+      btn.addEventListener('click', () => {
+        btn.setAttribute('aria-busy', 'true');
+        say('Finding where you are…');
+        navigator.geolocation.getCurrentPosition((pos) => {
+          btn.removeAttribute('aria-busy');
+          btn.classList.add('is-on');
+          here = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+          const flyTo = g('flyTo'), cityR = g('getCityTargetRadius');
+          const near = nearestCity(here.lat, here.lon);
+          let r = null;
+          try { r = near && typeof cityR === 'function' ? cityR(near.city.name) : null; } catch (_) { r = null; }
+          if (typeof flyTo === 'function') flyTo(here.lon, here.lat, r);
+          say(near ? 'You are here. The nearest city on the atlas is ' + near.city.name + (near.km > 5 ? ', ' + near.km + ' km away.' : '.') : 'You are here.');
+        }, (err) => {
+          btn.removeAttribute('aria-busy');
+          say(err && err.code === 1 ? 'Location is turned off for this site. Allow it in the browser to use this.' : 'Your location could not be found.');
+        }, { enableHighAccuracy: false, timeout: 12000, maximumAge: 300000 });
+      });
+
+      // The dot follows the globe.
+      (function follow() {
+        requestAnimationFrame(follow);
+        if (!here || !PHONE()) { dot.classList.remove('is-on'); return; }
+        const project = g('project'), r = g('currentRadius'), w = g('width'), h = g('height');
+        if (typeof project !== 'function' || g('isCityStreetViewActive')) { dot.classList.remove('is-on'); return; }
+        const p = project(here.lon, here.lat, r, w / 2, h / 2);
+        const rect = canvas.getBoundingClientRect(), vr = viewport.getBoundingClientRect();
+        dot.classList.toggle('is-on', !!p.front);
+        if (p.front) dot.style.transform = 'translate(' + (rect.left - vr.left + p.x) + 'px,' + (rect.top - vr.top + p.y) + 'px)';
+      })();
+    })();
+
     syncState();
   });
 })();
