@@ -189259,7 +189259,7 @@
     "lon": -73.9605,
     "tier": "A",
     "size": "S",
-    "funding": "Self-financed: paid announcements bought by museums, biennials and fairs, among them Russian, Saudi, Emirati and Qatari state bodies, plus books, Index subscriptions and Bar Laika.",
+    "funding": "Self-financed: paid announcements bought by museums, biennials and fairs, among them Russian, Chinese and Gulf state bodies, plus books, Index and Bar Laika, and two forgiven federal PPP loans.",
     "watch": "Artist-run company of Moscow-born Anton Vidokle; its Russian state and oligarch-funded clients stopped posting after the invasion of Ukraine in February 2022.",
     "sources": [
       "https://www.e-flux.com/about",
@@ -189302,7 +189302,47 @@
       "https://www.e-flux.com/directory/412964/the-king-abdulaziz-center-for-world-culture-ithra",
       "https://www.e-flux.com/directory/73909/qatar-museums",
       "https://www.e-flux.com/announcements/201483/dimensions-of-citizenship",
-      "https://www.e-flux.com/announcements/151403/saic-university-of-chicago-appointed-co-commissioners-for-the-2018-venice-architecture-biennale-with-dimensions-of-citizenship"
+      "https://www.e-flux.com/announcements/151403/saic-university-of-chicago-appointed-co-commissioners-for-the-2018-venice-architecture-biennale-with-dimensions-of-citizenship",
+      "https://data.ny.gov/resource/y8zq-jmz6.json?$where=upper(borrowername)%20like%20%27%25E-FLUX%25%27%20or%20upper(borrowername)%20like%20%27ART%20DOMAIN%25%27",
+      "https://data.ny.gov/resource/n9v6-gdp6.json?$where=dos_id%20in(%272331997%27,%273375706%27,%274735982%27,%274695458%27)",
+      "https://data.cityofnewyork.us/resource/bnx9-e6tj.json?$where=document_id%20like%20%272015120800383%25%27",
+      "https://data.cityofnewyork.us/resource/636b-3b5g.json?$where=document_id%20like%20%272015120800383%25%27",
+      "https://data.cityofnewyork.us/resource/8h5j-fqxa.json?document_id=2015120800383001",
+      "https://artfcity.com/posts/2017/02/e-flux-offers-early-art-domain-registration-to-professionals/",
+      "https://www.e-flux.com/announcements/539266/anton-vidokle-appointed-chief-curator-of-14th-edition/",
+      "https://www.e-flux.com/announcements/624368/artistic-directors-of-the-smb13-anton-vidokle-hallie-ayres-and-lukas-brasiskis",
+      "https://www.asakusa-o.com/en/russin-cosmism-trilogy/",
+      "https://www.e-flux.com/directory/195627/the-state-hermitage-museum",
+      "https://www.e-flux.com/directory/72130/russian-pavilion-at-the-venice-biennale",
+      "https://www.e-flux.com/directory/73642/open-russian-federation-pavilion-at-the-venice-biennale",
+      "https://www.e-flux.com/directory/70381/moscow-committee-of-architecture-and-urban-development-mca",
+      "https://www.e-flux.com/directory/367273/manege-central-exhibition-hall",
+      "https://www.e-flux.com/directory/61965/power-station-of-art",
+      "https://www.e-flux.com/directory/71995/shanghai-biennale",
+      "https://www.e-flux.com/directory/183036/china-academy-of-art",
+      "https://www.e-flux.com/announcements/6784720",
+      "https://www.e-flux.com/directory/5482/m-west-kowloon-cultural-district",
+      "https://www.e-flux.com/directory/544834",
+      "https://www.e-flux.com/directory/201049",
+      "https://www.e-flux.com/directory/389663",
+      "https://www.e-flux.com/directory/3597/louvre-abu-dhabi",
+      "https://www.e-flux.com/directory/91780",
+      "https://www.e-flux.com/directory/69937",
+      "https://www.e-flux.com/directory/668804",
+      "https://www.e-flux.com/directory/61878",
+      "https://www.e-flux.com/directory/667571",
+      "https://www.e-flux.com/directory/71448/azerbaijan-pavilion-at-the-venice-biennale",
+      "https://www.e-flux.com/announcements/35745",
+      "https://www.e-flux.com/directory/452969",
+      "https://www.e-flux.com/directory/73490",
+      "https://www.e-flux.com/announcements/95962",
+      "https://www.e-flux.com/directory/70998",
+      "https://www.e-flux.com/directory/71971",
+      "https://www.e-flux.com/directory/74060",
+      "https://www.e-flux.com/directory/73849",
+      "https://www.e-flux.com/directory/112642",
+      "https://www.e-flux.com/directory/2471",
+      "https://www.e-flux.com/directory/8155/nieuwe-instituut"
     ],
     "curatorial_focus": "Art publishing and announcements, critical theory (e-flux journal, Notes, Criticism, Architecture), screenings, talks and exhibitions",
     "year_founded": 1998,
@@ -189355,17 +189395,20 @@
         "Earlier projects: e-flux video rental (2004, over 950 videos, donated in 2010 to Moderna galerija, Ljubljana), the Martha Rosler Library (2007), unitednationsplaza in Berlin, Pawnshop (2008), Time/Bank (2010) and SUPERCOMMUNITY for the 56th Venice Biennale (Wikipedia).",
         "Bar Laika by e-flux opened on 18 October 2018 at 224 Greene Avenue, Clinton Hill, designed by Nikolaus Hirsch and Michel M\u00fcller, with drinks, screenings, talks and music (e-flux announcement, 12 October 2018).",
         "Vidokle was named an Art Basel Awards medalist in the awards' second year (Art Basel, 7 October 2026).",
-        "172 Classon Avenue is a 27,653 sq ft light-manufacturing building of 1931 (class F5), assessed at $724,950 for 2025/26; the register shows no recent sale, only 2024 mortgage, lease and UCC filings, so whether e-flux owns or leases is not public (PropertyShark).",
-        "e-flux Index launched on 10 May 2024 at KW Institute for Contemporary Art, Berlin, meta-edited by George MacBeth, designed by Remco van Bladel, issue 1 of 420 pages (later issues about 560), sold at e-flux.com and Walter K\u00f6nig stores; institutional subscriptions carry four print issues a year and digital downloads (e-flux announcements, 2024)."
+        "e-flux Index launched on 10 May 2024 at KW Institute for Contemporary Art, Berlin, meta-edited by George MacBeth, designed by Remco van Bladel, issue 1 of 420 pages (later issues about 560), sold at e-flux.com and Walter K\u00f6nig stores; institutional subscriptions carry four print issues a year and digital downloads (e-flux announcements, 2024).",
+        "Companies on the New York register: E-FLUX, INC. (business corporation, filed 6 January 1999, Vidokle chairman), E-FLUX PROJECTS (not-for-profit, 2006), E-FLUX REALTY, LLC (2015) and ART DOMAIN, LLC, which runs Bar Laika (2015) (NY Department of State).",
+        "172 Classon Avenue, a 27,653 sq ft light-manufacturing building of 1931, belongs to 172 Classon Corp., not to e-flux; the city deed register names no e-flux company on it (ACRIS; PropertyShark)."
       ],
-      "funding_verdict": "e-flux: self-financed commercial platform: paid announcements bought by art institutions, including Russian, Saudi, Emirati and Qatari state bodies, plus publishing and subscriptions",
+      "funding_verdict": "e-flux: self-financed commercial platform: paid announcements bought by art institutions, including Russian, Chinese and Gulf state bodies, plus publishing, the bar and $394,309 in forgiven US federal PPP loans",
       "funding": [
         "e-flux began as a for-profit listserv; Vidokle said it turned profitable and that this lets it stay fully independent of market, government and sponsor influence (F Newsmagazine, Ania Szremski, 14 March 2011).",
         "Its website names museums, biennials, art fairs and publishers as users of its announcement services and says to contact e-flux for rates; it publishes no price list and lists no supporters or funders (e-flux website, retrieved 3 November 2026).",
         "A US government vendor registry lists E-FLUX, INC., then at 311 East Broadway, under the advertising-agency code NAICS 541810 (govcb.com).",
         "Income also comes from books, the quarterly e-flux Index, sold by institutional and individual subscription and as PDFs, and Bar Laika (e-flux website).",
         "In-kind support: Marianne Goebl, Artek and Vitra donated Alvar Aalto lighting and helped with seating for Bar Laika (e-flux announcement, 12 October 2018).",
-        "Government money reaches e-flux as announcement fees: Russian federal and Moscow city museums and biennials bought listings until February 2022, and state bodies of Sharjah, Abu Dhabi, Saudi Arabia and Qatar buy them still (e-flux directory). The fees paid are not public."
+        "US federal Paycheck Protection Program: E-FLUX, INC. took $196,727 on 16 April 2020 and $197,582 on 7 February 2021 from JPMorgan Chase, reporting 16 jobs each time; both were forgiven, $396,698 with interest. ART DOMAIN, LLC (Bar Laika) took $54,402 in April 2020 for 7 jobs (SBA data via NY Open Data).",
+        "Property: E-FLUX REALTY, LLC bought 224 Greene Avenue, the Bar Laika building, for $2,950,000 in December 2015, with mortgages of $1,125,000 from JPMorgan Chase, $975,000 from NYBDC Local Development Corporation and $1,004,000 from Empire State Certified Development Corp, the last assigned to the US Small Business Administration (ACRIS).",
+        "Government money reaches e-flux as announcement fees from state museums, ministries, national pavilions and biennials in Russia until February 2022, and in China, the Gulf, Central Asia and elsewhere since (e-flux directory). The fees paid are not public."
       ],
       "red_flags": [
         {
@@ -189376,6 +189419,7 @@
             "Pushkin State Museum of Fine Arts: 3 announcements, April 2017 to November 2020. MMOMA: 2, May and December 2013 (e-flux directory).",
             "State Tretyakov Gallery: 2 announcements, the last on 1 February 2022 for Vidokle's own 'Citizens of the Cosmos' there (e-flux directory).",
             "Garage Museum (Zhukova and Abramovich): 41 announcements from December 2008 to November 2021. Strelka Institute: 17 from May 2011 to December 2021. V-A-C Foundation (Mikhelson, Novatek): 1 in April 2014. Abramovich was sanctioned by the UK, EU and Canada in March 2022 (e-flux directory; Artnet).",
+            "More Russian clients: State Hermitage 2 (2020); Moscow's Committee of Architecture 1 (2014); Moscow's Manege exhibition hall 2 (December 2020 and January 2022); the Russian Pavilion in Venice 3 (2010 to 2012, commissioner Stella Kesaeva); and 'Open', the 2021 Russian Pavilion commissioned by V-A-C's director, 28 (December 2019 to April 2021) (e-flux directory).",
             "None of these clients has posted since the invasion of Ukraine on 24 February 2022 (e-flux directory)."
           ]
         },
@@ -189388,19 +189432,41 @@
           ]
         },
         {
+          "heading": "Chinese state clients",
+          "points": [
+            "Power Station of Art, Shanghai, which calls itself the first state-owned contemporary art museum in mainland China: 39 announcements from April 2014 to July 2026; the Shanghai Biennale it organises: 26 from 2008 to 2024 (e-flux directory).",
+            "China Academy of Art: 18 announcements from 2018 to November 2026; its biennale is co-organised by the Communication Department of the CPC Zhejiang Provincial Committee and the Zhejiang Provincial Department of Culture (e-flux announcement).",
+            "M+, West Kowloon Cultural District, Hong Kong: 99 announcements from April 2013 to October 2026 (e-flux directory).",
+            "Vidokle was chief curator of the 14th Shanghai Biennale, Cosmos Cinema, at the Power Station of Art from 9 November 2023 to 31 March 2024 (e-flux announcement, 11 May 2023)."
+          ]
+        },
+        {
           "heading": "Gulf state clients",
           "points": [
             "Sharjah Art Foundation, under the Government of Sharjah's Department of Culture and Information: 80 announcements from March 2003 to September 2026 (e-flux directory).",
             "Abu Dhabi Art, organised by the Abu Dhabi Tourism and Culture Authority: 13 announcements from July 2011 to October 2023 (e-flux directory and announcement).",
             "Diriyah Biennale Foundation, set up in 2020 by Saudi Arabia's Ministry of Culture: 12 announcements from October 2023 to February 2026 (e-flux directory).",
             "Ithra, Saudi Aramco's King Abdulaziz Center for World Culture: 7 announcements from August 2021 to February 2026 (e-flux directory).",
-            "Qatar Museums: 3 announcements, October 2012 to September 2024 (e-flux directory)."
+            "Qatar Museums: 3 announcements, October 2012 to September 2024 (e-flux directory).",
+            "Saudi Arabia's Ministry of Culture: 10 announcements from June 2023 to April 2026; the Saudi Pavilion in Venice, commissioned by the Visual Arts Commission: 11 from 2022 to 2026; Riyadh Art, of the Royal Commission for Riyadh City: 8 from 2021 to 2025 (e-flux directory).",
+            "UAE: Louvre Abu Dhabi, credited to the Department of Culture and Tourism Abu Dhabi, 19 from 2012 to 2025; the UAE national pavilion in Venice 38 from 2009 to 2026 (e-flux directory).",
+            "Qatar, Kuwait and Bahrain: Mathaf, of Qatar Museums, 9 (2010 to 2014); Qatar's Venice pavilion, commissioned by Qatar Museums' chairperson Sheikha Al Mayassa, 2 (2025 to 2026); Kuwait's pavilion, commissioned by the National Council for Culture, Arts and Letters, 5; Bahrain's, by the Bahrain Authority for Culture and Antiquities, 1 (2025) (e-flux directory)."
           ]
         },
         {
-          "heading": "US and German ties",
+          "heading": "Other state clients",
           "points": [
-            "United States: e-flux Architecture was the editorial partner of 'Dimensions of Citizenship', the US Pavilion at the 2018 Venice Architecture Biennale, commissioned by SAIC and the University of Chicago for the State Department's Bureau of Educational and Cultural Affairs (e-flux announcements).",
+            "Azerbaijan's Venice pavilion, under the Ministry of Culture and Tourism: 2 (2011, 2022). Kyrgyzstan's, naming its Minister of Culture: 2 (2022, 2026) (e-flux directory and announcements).",
+            "Israel's Venice pavilion, under the Ministry of Culture and Sport and the Ministry of Foreign Affairs: 4 (2009 to 2017). Egypt's, commissioned by the Ministry of Culture: 2 (2011 to 2024) (e-flux directory and announcements).",
+            "Public arts bodies of democracies also post: Singapore's Venice pavilion (National Arts Council) 11, Korea's (Arts Council Korea) 13, Portugal's (DGArtes) 25, HKW Berlin 81, Het Nieuwe Instituut 38 and the Canadian Centre for Architecture 117 (e-flux directory)."
+          ]
+        },
+        {
+          "heading": "Founder's state commissions",
+          "points": [
+            "South Korea: Vidokle, Hallie Ayres and Lukas Brasiskis directed the 13th Seoul Mediacity Biennale (2025) at the Seoul Museum of Art; the biennale began in 2000 as an initiative of the Seoul Metropolitan Government (e-flux announcement, 15 October 2024).",
+            "Japan: ASAKUSA's 'Russian Cosmism: Trilogy' (November to December 2017), Vidokle's films, was supported by Arts Council Tokyo (ASAKUSA).",
+            "United States: e-flux Architecture was the editorial partner of the 2018 US Pavilion in Venice, commissioned by SAIC and the University of Chicago for the State Department's Bureau of Educational and Cultural Affairs. It later partnered the Korean and Portuguese pavilions (2023) and the British and Swiss pavilions (2025) (e-flux announcements and Architecture pages).",
             "Germany: HKW's 'Art Without Death: Russian Cosmism' (2017), with Vidokle's film trilogy, was supported by the Federal Government Commissioner for Culture and the Media (e-flux announcement).",
             "unitednationsplaza in Berlin (2006 to 2007) was paid for by e-flux, with the Ford Foundation the one funder that stayed after Manifesta 6 was cancelled (e-flux project page)."
           ]
@@ -189479,7 +189545,7 @@
       "wider_context": [
         "e-flux is the main paid channel through which art institutions announce exhibitions to a global professional list, so its own economy is built on the museums the atlas records; its journal and Notes are a frequent source of critique of museum funding, including texts the atlas quotes."
       ],
-      "bottom_line": "The money behind e-flux is its own: fees institutions pay to post announcements, plus publishing and the bar. Part of those fees comes from governments and oligarch foundations: Russian federal and Moscow city museums and biennials, Garage, Strelka and V-A-C until early 2022, and state bodies of Sharjah, Abu Dhabi, Saudi Arabia and Qatar through 2026, at rates e-flux does not publish.",
+      "bottom_line": "The money behind e-flux is mostly its own: fees institutions pay to post announcements, plus publishing and the bar, with $394,309 in forgiven federal pandemic loans and an SBA-backed mortgage on the bar's building. Part of the fees comes from governments and oligarch foundations: Russian federal and Moscow museums, pavilions and biennials, Garage, Strelka and V-A-C until early 2022, and Chinese, Saudi, Emirati, Qatari and other state bodies through 2026, at rates e-flux does not publish.",
       "sources": [
         {
           "url": "https://www.e-flux.com/about"
@@ -189603,6 +189669,126 @@
         },
         {
           "url": "https://www.e-flux.com/announcements/151403/saic-university-of-chicago-appointed-co-commissioners-for-the-2018-venice-architecture-biennale-with-dimensions-of-citizenship"
+        },
+        {
+          "url": "https://data.ny.gov/resource/y8zq-jmz6.json?$where=upper(borrowername)%20like%20%27%25E-FLUX%25%27%20or%20upper(borrowername)%20like%20%27ART%20DOMAIN%25%27"
+        },
+        {
+          "url": "https://data.ny.gov/resource/n9v6-gdp6.json?$where=dos_id%20in(%272331997%27,%273375706%27,%274735982%27,%274695458%27)"
+        },
+        {
+          "url": "https://data.cityofnewyork.us/resource/bnx9-e6tj.json?$where=document_id%20like%20%272015120800383%25%27"
+        },
+        {
+          "url": "https://data.cityofnewyork.us/resource/636b-3b5g.json?$where=document_id%20like%20%272015120800383%25%27"
+        },
+        {
+          "url": "https://data.cityofnewyork.us/resource/8h5j-fqxa.json?document_id=2015120800383001"
+        },
+        {
+          "url": "https://artfcity.com/posts/2017/02/e-flux-offers-early-art-domain-registration-to-professionals/"
+        },
+        {
+          "url": "https://www.e-flux.com/announcements/539266/anton-vidokle-appointed-chief-curator-of-14th-edition/"
+        },
+        {
+          "url": "https://www.e-flux.com/announcements/624368/artistic-directors-of-the-smb13-anton-vidokle-hallie-ayres-and-lukas-brasiskis"
+        },
+        {
+          "url": "https://www.asakusa-o.com/en/russin-cosmism-trilogy/"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/195627/the-state-hermitage-museum"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/72130/russian-pavilion-at-the-venice-biennale"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/73642/open-russian-federation-pavilion-at-the-venice-biennale"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/70381/moscow-committee-of-architecture-and-urban-development-mca"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/367273/manege-central-exhibition-hall"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/61965/power-station-of-art"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/71995/shanghai-biennale"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/183036/china-academy-of-art"
+        },
+        {
+          "url": "https://www.e-flux.com/announcements/6784720"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/5482/m-west-kowloon-cultural-district"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/544834"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/201049"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/389663"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/3597/louvre-abu-dhabi"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/91780"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/69937"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/668804"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/61878"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/667571"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/71448/azerbaijan-pavilion-at-the-venice-biennale"
+        },
+        {
+          "url": "https://www.e-flux.com/announcements/35745"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/452969"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/73490"
+        },
+        {
+          "url": "https://www.e-flux.com/announcements/95962"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/70998"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/71971"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/74060"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/73849"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/112642"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/2471"
+        },
+        {
+          "url": "https://www.e-flux.com/directory/8155/nieuwe-instituut"
         }
       ],
       "website": "https://www.e-flux.com",
@@ -189644,10 +189830,11 @@
       {
         "title": ".art domain lost to UK Creative Ideas",
         "meta": "2015-08-06",
-        "text": "e-flux applied for .art as EFLUX.ART, LLC (contact Anton Vidokle), one of two community applications with DeviantArt's Dadotart, Inc.; the string went to UK Creative Ideas Limited in a private auction and was delegated on 23 June 2016 (ICANNWiki). Art F City reported the winner's parent as SFERQ, run by Moscow investor Ulvi Kasimov, and that e-flux had pledged 10 per cent of .art profits to artist grants.",
+        "text": "e-flux applied for .art as EFLUX.ART, LLC (contact Anton Vidokle), one of two community applications with DeviantArt's Dadotart, Inc.; the string went to UK Creative Ideas Limited in a private auction and was delegated on 23 June 2016 (ICANNWiki). Art F City reported the winner's parent as SFERQ, run by Moscow investor Ulvi Kasimov, and that e-flux had pledged 10 per cent of .art profits to artist grants. In February 2017 e-flux and UK Creative Ideas offered early .art registration to the e-flux mailing list (Art F City, Paddy Johnson, 2 February 2017).",
         "sources": [
           "https://icannwiki.org/.art",
-          "https://artfcity.com/posts/2015/08/e-flux-and-deviantart-lose-art-bid-to-russian-venture-capitalist/"
+          "https://artfcity.com/posts/2015/08/e-flux-and-deviantart-lose-art-bid-to-russian-venture-capitalist/",
+          "https://artfcity.com/posts/2017/02/e-flux-offers-early-art-domain-registration-to-professionals/"
         ]
       },
       {
@@ -189690,7 +189877,7 @@
       }
     ],
     "records_note": "E-FLUX, INC. is a private company and posts no accounts or rates; its directory lists each client's announcements by date.",
-    "affiliations_note": "Owned and directed by founder Anton Vidokle through E-FLUX, INC.; books with Sternberg Press and University of Minnesota Press; e-flux Architecture partnered the US Pavilion in Venice in 2018."
+    "affiliations_note": "Owned and directed by founder Anton Vidokle through E-FLUX, INC.; E-FLUX REALTY owns the Bar Laika building; e-flux Architecture has partnered US, Korean, Portuguese, British and Swiss pavilions in Venice."
   },
   {
     "name": "AfricaMuseum (Royal Museum for Central Africa)",
