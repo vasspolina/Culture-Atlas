@@ -95,7 +95,7 @@
       if (REACH && !reachTimer) reachTimer = setTimeout(clearReach, 1500);
     } else if (REACH) clearReach();
   }
-  let recById = null, keyIndex = null, keyKind = null, nameKeys = null, web = null, loading = false;
+  let recById = null, keyIndex = null, keyKind = null, web = null, loading = false;
   // Label type is regular on the light theme and light on the dark one.
   const LW = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
   let cityFlags = null;
@@ -132,6 +132,8 @@
       orgs.concat(people).forEach(e => { const k = e.lat.toFixed(2) + ',' + e.lon.toFixed(2); if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(e); });
       byCity.forEach(list => list.forEach((e, i) => { const a = i * 2.39996, rr = i === 0 ? 0 : 8 + 5 * Math.sqrt(i); e.dx = Math.cos(a) * rr; e.dy = Math.sin(a) * rr; }));
       HQ = { orgs, people, byKey: new Map(orgs.map(o => [o.key, o])), byName: new Map(people.map(p => [p.n, p])) };
+      // `also`: the funding keys that name this office today when its own key is an older spelling (tools/hq_aliases.json).
+      orgs.forEach(o => (o.also || []).forEach(k => { if (!HQ.byKey.has(k)) HQ.byKey.set(k, o); }));
       hqLoading = false; updateCounts();
       repaint();
     }).catch(() => { hqLoading = false; });
@@ -142,14 +144,13 @@
     if (loading) return;
     loading = true;
     fetch('assets/money-maps.json').then(r => r.json()).then(D => {
-      recById = new Map(); keyIndex = new Map(); keyKind = new Map(); nameKeys = new Map();
+      recById = new Map(); keyIndex = new Map(); keyKind = new Map();
       D.forEach(rec => {
         recById.set(rec.id, rec);
         rec.nodes.forEach(n => {
           if (!FUNDER(n) || !n[5]) return;
           if (!keyIndex.has(n[5])) { keyIndex.set(n[5], []); keyKind.set(n[5], n[1]); }
           if (!keyIndex.get(n[5]).includes(rec.id)) keyIndex.get(n[5]).push(rec.id);
-          const nm = n[0].toLowerCase(); if (!nameKeys.has(nm)) nameKeys.set(nm, new Set()); nameKeys.get(nm).add(n[5]);
         });
       });
       // The web: one chain per funder named on two or more spaces, west to east, so every space is joined to its neighbour.
@@ -735,12 +736,7 @@
   const KIND_LABEL = { gov: 'Public funder', corp: 'Company', found: 'Foundation or individual donor', person: 'Individual\u2019s office' };
   const kindLabel = e => KIND_LABEL[e.kind === 'org' ? e.k : 'person'];
   // An office is keyed by funder key, and the same body can sit under two keys ('artscouncilengland|UK' and '|United Kingdom').
-  // An office whose key no funding line uses (its key was cut from a phrase, 'linzagascorepartners') takes the keys of the lines that spell its name.
-  const keysOf = e => {
-    const ks = [e.key]; HQ.orgs.forEach(o => { if (o !== e && o.n === e.n && o.co === e.co) ks.push(o.key); });
-    if (keyIndex && nameKeys && !ks.some(k => keyIndex.has(k))) (nameKeys.get(e.n.toLowerCase()) || []).forEach(k => ks.push(k));
-    return ks;
-  };
+  const keysOf = e => { const ks = [e.key, ...(e.also || [])]; HQ.orgs.forEach(o => { if (o !== e && o.n === e.n && o.co === e.co) ks.push(o.key); }); return ks; };
   const byName = (a, b) => a.n.localeCompare(b.n);
   const hq = {
     kindLabel,
