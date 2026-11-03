@@ -147,20 +147,25 @@ for n, (assoc, city, ctry, addr) in PEOPLE.items():
 # funder's record (assets/hq-detail.js). Keep each to what the source states.
 NOTES = {
  'opensociety': (
-  "George Soros's grant-making network, named after Karl Popper's idea of the open society. Its arts giving began in the "
-  "Soros Center for Contemporary Art, opened in Budapest in 1985 as a documentation centre, and grew from 1992 into a network "
-  "of about twenty Soros Centers for Contemporary Art across Central and Eastern Europe, the former Soviet Union and Central "
-  "Asia (Budapest, Prague, Warsaw, Moscow, Kyiv, Sarajevo, Almaty and others), which ran exhibitions, catalogues and training "
-  "before being spun off as independent organisations in 1999 and 2000. The foundation's stated reason is that art and culture "
-  "carry open-society values and shape public attitudes, yet get too little recognition and money from governments, so its "
-  "Arts and Culture Program set out to build an independent, innovative arts sector and to change cultural policy where "
-  "states controlled culture. Later programmes followed the same line: the Documentary Photography Project and its Moving "
-  "Walls shows, the Soros Arts Fellowship for socially engaged artists (2018 onwards), and support for restitution of African "
-  "art (2019). Critics, among them Octavian Esanu (“the managed avant-garde”) and Aaron Moulton (“The Influencing "
-  "Machine”), read the centres as having set a Western-facing agenda for post-socialist art. National foundations in the "
-  "network (for example Kosova Foundation for Open Society, the Open Society Initiative for West Africa and FOKAL in Haiti) "
-  "are counted here under the one network; several were closed or given a final package in 2024 as the foundations "
-  "restructured.",
+  "George Soros's grant-making network, named after Karl Popper's idea of the open society; it spent $1.2 billion in 2024, "
+  "almost $700 million of it in grants, and $24.2 billion since it began (Devex). Its arts giving began in the Soros Center "
+  "for Contemporary Art, opened in Budapest in 1985 as a documentation centre, and grew from 1992 into a network of about "
+  "twenty Soros Centers for Contemporary Art across Central and Eastern Europe, the former Soviet Union and Central Asia "
+  "(Budapest, Prague, Warsaw, Moscow, Kyiv, Sarajevo, Almaty and others), which ran exhibitions, catalogues and training "
+  "before being spun off as independent organisations in 1999 and 2000. The foundation's stated reason is that art and "
+  "culture carry open-society values and shape public attitudes, yet get too little recognition and money from governments, "
+  "so its Arts and Culture Program set out to build an independent, innovative arts sector and to change cultural policy "
+  "where states controlled culture; its culture team today puts it as art being an essential driver of social change. "
+  "Later programmes followed the same line: the Documentary Photography Project and its Moving Walls shows, the Soros Arts "
+  "Fellowship for socially engaged artists (from 2018; $100,000 unrestricted to each of 18 fellows in 2023), a $15 million "
+  "four-year initiative from 2019 to speed the restitution of African objects after France's Sarr-Savoy report, and a "
+  "$180,000 grant in 2024 to The Africa Institute in Sharjah for a fellowship on African heritage and repatriation. Critics, "
+  "among them Octavian Esanu (\u201cthe managed avant-garde\u201d) and Aaron Moulton (\u201cThe Influencing Machine\u201d), read "
+  "the centres as having set a Western-facing agenda for post-socialist art. Alexander Soros took control in June 2023; the "
+  "network then cut about 40 per cent of its staff, closed offices from Kampala to Almaty and folded its programmes into "
+  "four areas (climate justice, equity, expression, justice). National foundations in the network (Kosova Foundation for "
+  "Open Society, the Open Society Initiative for West Africa, FOKAL in Haiti, the Mongolian Foundation for an Open Society) "
+  "are counted here under the one network; several were closed or given a final package in 2024.",
   "https://www.e-flux.com/directory/203562/open-society-foundations"),
 }
 for k, (note, src) in NOTES.items():
