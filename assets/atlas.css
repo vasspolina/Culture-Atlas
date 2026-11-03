@@ -2985,7 +2985,7 @@ div:has(>#topThemeBtn){column-gap:0}
    background, a solid square like the desktop's. It sits inside the page margin on the right, and it is the desktop's cross
    (same lines, same thin stroke) scaled down from 40px to 32px in a 48px square. The bar keeps its height so the title still starts below it. */
 @media (max-width:767px){
-  #dossier-bottom-sheet .sheet-chrome{background:transparent!important}
+  #dossier-bottom-sheet .sheet-chrome{background:var(--grey)!important}   /* the sheet's own colour: no bar shows, and the record scrolls under the cross, not through it */
   #dossier-bottom-sheet .sheet-close{top:0!important;right:var(--m-s4)!important;width:48px!important;height:48px!important;background:var(--grey)!important;color:var(--ink)!important}
   #dossier-bottom-sheet .sheet-close svg{width:32px;height:32px;stroke-width:1.1;stroke-linecap:butt}
 }

@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=463">
+  <link rel="stylesheet" href="assets/atlas.css?v=464">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -9987,11 +9987,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v463';
+    const ATLAS_RELEASE = 'culture-atlas-v464';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=463').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=464').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15248,8 +15248,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         box.appendChild(el);
       });
       scrollChatToBottom(false);
+      // The model takes 10 to 20 seconds to write a full answer, and a line that never changes reads as stuck (user, 3 Nov 2026):
+      // the words move on while it writes.
+      const word = (t) => document.querySelectorAll('[data-pending] .thinking').forEach((el) => { el.firstChild.nodeValue = t; });
+      showChatPending.timers = [setTimeout(() => word('Reading the record'), 4000), setTimeout(() => word('Writing the answer'), 9000), setTimeout(() => word('Nearly there'), 18000)];
     }
     function hideChatPending() {
+      (showChatPending.timers || []).forEach(clearTimeout);
+      showChatPending.timers = [];
       document.querySelectorAll('[data-pending]').forEach(el => el.remove());
     }
 
