@@ -11647,7 +11647,8 @@ return maplibregl$1;
       const seenHosts = new Set();
       const urls = (inst.sources || []).filter(u => /^https?:\/\//.test(u)).filter(u => { const h = host(u); if (seenHosts.has(h)) return false; seenHosts.add(h); return true; }).slice(0, 6);
       if (urls.length) rows.push(`<p class="t-lead no-indent source-note">Sources: ${urls.map(u => link(u, host(u)).replace('<a ', '<a class="domain" ').replace(' class=""', '')).join(', ')}.</p>`);
-      const shared = (inst.funder_links || []).filter(f => f && f.funder);
+      // A funder named at only this one space is no cross-reference, so those links are left out.
+      const shared = (inst.funder_links || []).filter(f => f && f.funder && Number(f.institutions) > 1);
       if (shared.length) rows.push(`<p class="t-lead">Cross-reference: ${shared.map(f => `${e(f.funder)} is listed at ${f.institutions} spaces in this atlas, including this one`).join('; ')}.</p>`);
       const reg = inst.audit_dossier_url, fil = inst.statutory_filings_url;
       const regLinks = [];
@@ -12703,7 +12704,7 @@ return maplibregl$1;
       const hasReport = d.funding_verdict || (d.funding || []).length;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
       const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
-      const shared = (inst.funder_links || []).filter(f => f && f.funder).map(f => `${f.funder} is listed at ${f.institutions} spaces in this atlas, including this one.`).join(' ');
+      const shared = (inst.funder_links || []).filter(f => f && f.funder && Number(f.institutions) > 1).map(f => `${f.funder} is listed at ${f.institutions} spaces in this atlas, including this one.`).join(' ');
       return proseRow('Funding', escapeHtml(verdict), proseChunks(funding.concat(shared || []), 0).map(t => proseLi('', escapeHtml(t))));
     }
     // Scale and money: the accounts figures a filing states (inst.finance) and the size figures a source states (inst.scale), nothing estimated.
@@ -12736,10 +12737,11 @@ return maplibregl$1;
     }
     // Bureaucracy: the level (1 to 5) tools/grade_bureaucracy.py works out from the administration facts a source states (inst.bureaucracy),
     // then the facts themselves, then a reported finding on red tape (inst.red_tape) where a document says so. Nothing is estimated.
+    // The chapter reports bureaucratic issues, so it appears only where a document reports one; the level and facts alone do not earn it.
     const BUREAUCRACY = { 1: 'Independent', 2: 'Light oversight', 3: 'Supervised', 4: 'Administered', 5: 'State-run' };
     function proseBureaucracyRow(inst) {
       const b = inst.bureaucracy, r = inst.red_tape, lis = [];
-      if (!b && !r) return '';
+      if (!r || !r.note) return '';
       if (b) {
         const said = (lead, t) => t ? lis.push(proseLi(lead, escapeHtml(proseEnd(proseCap(t))))) : 0;
         said('Legal form:', b.legal_form + (b.parent ? ', under ' + b.parent : ''));
