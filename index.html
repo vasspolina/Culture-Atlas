@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=472">
+  <link rel="stylesheet" href="assets/atlas.css?v=473">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -1061,7 +1061,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=473"></script>
+  <script src="assets/institutions.js?v=475"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9987,11 +9987,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v473';
+    const ATLAS_RELEASE = 'culture-atlas-v475';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=473').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=475').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11784,67 +11784,11 @@ return maplibregl$1;
     function critiqueQuoteLine(q) {
       return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
     }
-    // Whistleblower reviews, set out like the reviews on a Google Maps place and shown under the record they are about.
-    // They come from the report API (server/), one request per place, approved reviews only, and are written only with
-    // the form on the note screen (Share information). Nothing is kept in this browser. A review has no rating.
+    // A whistleblower note is written on the note screen (Share information) and goes to the report API (server/).
+    // The record no longer lists reviews (user, 3 Nov 2026): the section was removed from the place view.
     let dossierInst = null;
     const ATLAS_REPORT_API_URL = (window.ATLAS_REPORT_API_URL || '').replace(/\/+$/, '');
-    const PLACE_REVIEWS = new Map();   // place id -> an array of reviews, or 'loading', or 'failed'
     const REVIEW_LIMITS = { min: 10, max: 2000, name: 40 };
-    const reviewDate = (iso) => {
-      const d = new Date(iso);
-      return Number.isNaN(d.getTime()) ? null : { iso: d.toISOString().slice(0, 10), text: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) };
-    };
-    function placeReviewListHtml(placeId) {
-      const state = PLACE_REVIEWS.get(placeId);
-      // A row that only says the reviews failed to load, or that there are none, carries no information (user, 3 Nov 2026): it is hidden instead.
-      if (state === 'failed' || (Array.isArray(state) && !state.length)) return '';
-      if (!Array.isArray(state)) return '<p class="no-indent">Loading reviews…</p>';
-      return `<h4 class="kicker review-count">${state.length} ${state.length === 1 ? 'review' : 'reviews'}</h4>${state.map(r => {
-        const label = (r.authorLabel || '').trim() || 'Whistleblower';
-        const d = reviewDate(r.createdAt);
-        return `<article class="review">
-          <div class="review-head">
-            <span class="review-avatar" aria-hidden="true">${escapeHtml(label.charAt(0).toUpperCase())}</span>
-            <div><span class="review-name">${escapeHtml(label)}</span>${d ? `<time class="review-date" datetime="${d.iso}">${d.text}</time>` : ''}</div>
-          </div>
-          <p class="t-lead no-indent review-text">${escapeHtml(r.content)}</p>
-        </article>`;
-      }).join('')}`;
-    }
-    // Only the list is drawn again when the reviews arrive, so a review being written is never lost.
-    function refreshPlaceReviewLists(placeId) {
-      document.querySelectorAll('.place-reviews').forEach(box => {
-        if (box.dataset.place !== placeId) return;
-        const list = box.querySelector('.review-list');
-        if (list) list.innerHTML = placeReviewListHtml(placeId);
-        box.classList.toggle('hidden', !(list && list.innerHTML));
-      });
-    }
-    function loadPlaceReviews(placeId) {
-      if (!ATLAS_REPORT_API_URL || (PLACE_REVIEWS.has(placeId) && PLACE_REVIEWS.get(placeId) !== 'failed')) return;
-      PLACE_REVIEWS.set(placeId, 'loading');
-      fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(placeId)}/reviews`)
-        .then(r => { if (!r.ok) throw new Error(`Report API returned ${r.status}.`); return r.json(); })
-        .then(rows => { PLACE_REVIEWS.set(placeId, Array.isArray(rows) ? rows : []); })
-        .catch(() => { PLACE_REVIEWS.set(placeId, 'failed'); })
-        .then(() => refreshPlaceReviewLists(placeId));
-    }
-    // The reviews of a place, under its record. They are only listed here; a review is written on the note screen (Share information).
-    function placeReviewsHtml(inst) {
-      if (!inst || !inst.id) return '';
-      // Without the API, or with nothing loaded to read, there is no row at all (user, 3 Nov 2026): a row that only says reviews
-      // are unavailable carries no information. The box is rendered while loading and hidden by the refresh if nothing comes.
-      if (!ATLAS_REPORT_API_URL) return '';
-      const cached = PLACE_REVIEWS.get(inst.id);
-      if (cached === 'failed' || (Array.isArray(cached) && !cached.length)) return '';
-      loadPlaceReviews(inst.id);
-      return `<div class="prose-part d-rows place-reviews" data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews"><section class="d-row">
-        <div class="d-row-head"><h3 class="d-row-title">Whistleblower reviews</h3></div>
-        <div class="d-row-list"><p class="no-indent">Written by people who say they know this place from inside. The editor reads every review before it appears. None is checked against a source.</p>
-        <div class="review-list d-row-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div></div>
-      </section></div>`;
-    }
     // Send for review looks ready (blue) once the form could be sent: an institution from the atlas, a note long enough, the box ticked.
     function syncNoteReady() {
       const sendBtn = document.getElementById('workSendBtn');
@@ -12197,7 +12141,7 @@ return maplibregl$1;
       if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b)], 'Sources') : ''; }
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
+        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : ''));
         record.classList.toggle('hidden', !record.innerHTML);
       }
       const webLink = document.getElementById('dossier-sheet-link-web');
@@ -12899,7 +12843,7 @@ return maplibregl$1;
         const who = [v.title.replace(/\s·\s/g, ', '), /unknown/i.test(v.date) ? '' : v.date].filter(Boolean).join(', ');
         return proseLi(`${who}.`, escapeHtml([what, v.note ? 'Context: ' + proseEnd(v.note) : '', v.alsoAbout.length ? 'Also about ' + v.alsoAbout.join(', ') + '.' : ''].filter(Boolean).join(' ')) + proseCite(urls, 1), true);
       }), { tone: 'flag', gossip: true }));
-      // Reader notes and whistleblower notes are no longer posted from the page (release 243): reviews are the place view's own section, placeReviewsHtml().
+      // Reader notes and whistleblower notes are no longer posted from the page (release 243): the note screen's form is the only way in, and the record does not list reviews.
       return proseRows(rows, 'Accounts and notes', true);
     }
 
@@ -12980,7 +12924,6 @@ return maplibregl$1;
           ])], 'Community research submission') : ''}
 
           ${proseVoicesHtml(inst)}
-          ${isCommunity ? '' : placeReviewsHtml(inst)}
 
 
           ${isClean && inst.highlight ? proseRows([proseRow('Highlight', '', [proseLi('', escapeHtml(inst.highlight))])], 'Highlight') : ''}
@@ -20475,8 +20418,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
   
   </script>
 <script src="assets/typeset.js?v=463"></script>
-<script src="assets/layers.js?v=472"></script>
-<script src="assets/hq-detail.js?v=472"></script>
+<script src="assets/layers.js?v=473"></script>
+<script src="assets/hq-detail.js?v=473"></script>
 <script src="assets/bubbles.js?v=430" defer></script>
 </body>
 </html>
