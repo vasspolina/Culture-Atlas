@@ -1,6 +1,6 @@
 // Phone layout after a maps app (user, 3 Nov 2026: "make the cultural atlas work like the Google app on mobile").
-// The globe fills the screen; the search box floats over it at the top with the suggested questions as a row of chips
-// under it; Layers is a round button that opens its menu as a sheet; a space's record is a sheet with three heights
+// The globe fills the screen; the search and chat box floats over it at the bottom (user, 3 Nov 2026: "add a chat at the
+// bottom not on top") with the suggested questions as a row of chips over it; Layers is a round button at the top right that opens its menu as a sheet; a space's record is a sheet with three heights
 // (peek, half, full) that follows the finger and snaps to the nearest one, and a pull down from peek closes it.
 // Only phones (under 768px) are touched. The look itself is in assets/atlas.css, "PHONE: MAPS APP".
 (function () {
