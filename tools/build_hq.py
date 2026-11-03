@@ -173,8 +173,9 @@ for k, (note, src) in NOTES.items():
 here = os.path.dirname(os.path.abspath(__file__))
 # Funders researched against public sources (tools/hq_extra.json): each carries its source page in `s`.
 extra = json.load(open(os.path.join(here, 'hq_extra.json')))
+# Their `w` is the researcher's working note ('Label read as the local council'), kept in the file but not published.
 for k, v in extra.items():
-    out.setdefault(k, v)
+    out.setdefault(k, {f: x for f, x in v.items() if f != 'w'})
 # Offices keyed to an older spelling of a funding line take today's keys from tools/hq_aliases.json ({office: [funding keys]};
 # `drop` lists offices that repeat another office). An office no funding line names is left off the map: its record would be empty.
 aliases = json.load(open(os.path.join(here, 'hq_aliases.json')))
