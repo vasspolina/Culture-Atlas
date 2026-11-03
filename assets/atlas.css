@@ -2215,6 +2215,9 @@ div:has(>#topThemeBtn){column-gap:0}
   /* A row with one point is a sentence, not a list: no bullet and no indent. */
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child{padding-left:0}
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child::before{content:none}
+  /* A verdict too long for the head leads the points unbulleted; a single point after it is a sentence too. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:is(.d-row-lead,.d-row-lead+li:last-child){padding-left:0}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:is(.d-row-lead,.d-row-lead+li:last-child)::before{content:none}
 }
 
 /* Starter questions: on hover the chip changes to a different, darker colour of its own (user, 26 Oct 2026), with white type; each is dark enough for 4.5:1. */

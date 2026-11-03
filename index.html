@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=462">
+  <link rel="stylesheet" href="assets/atlas.css?v=466">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -12694,7 +12694,8 @@ return maplibregl$1;
       opts = opts || {};
       let list = (lis || []).filter(Boolean);
       let subtitle = sub || '';
-      if (subtitle && !isSubtitle(subtitle)) { list = [`<li${opts.gossip ? ' data-gossip="item"' : ''}>${subtitle}</li>`].concat(list); subtitle = ''; }
+      // A subtitle too long for the head leads the points instead, as a line of its own without a bullet.
+      if (subtitle && !isSubtitle(subtitle)) { list = [`<li class="d-row-lead"${opts.gossip ? ' data-gossip="item"' : ''}>${subtitle}</li>`].concat(list); subtitle = ''; }
       if (opts.box) list = list.concat([`<li>${opts.box}</li>`]);
       const items = list.join('');
       if (!title || (!items && !subtitle)) return '';
