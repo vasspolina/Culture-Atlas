@@ -2865,6 +2865,7 @@ div:has(>#topThemeBtn){column-gap:0}
 #phoneChatHead{display:none}
 .kb-close-btn{display:none}
 @media (max-width:767px){
+  body[data-mobile-mode="chat"] #mobileDetailsBtn{display:none!important}  /* in the chat, Details sits beside Close instead */
   body[data-mobile-mode="chat"] #phoneChatHead{display:flex;position:relative;align-items:center;gap:0;flex:0 0 auto;height:56px;padding:0 16px;border-bottom:1px solid var(--ink);touch-action:none}
   #phoneChatHead .sheet-grabber{position:absolute;top:6px;left:50%;width:36px;height:5px;margin-left:-18px;border-radius:0;background:var(--m-secondary,var(--ink));opacity:.5}
   :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #phoneChatHead button{min-height:44px;padding:0 0 0 12px!important;border:0!important;background:none!important;color:var(--m-secondary,var(--ink))!important;font:300 var(--fs-s)/20px var(--sans)!important}
