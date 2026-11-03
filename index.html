@@ -11578,8 +11578,8 @@ return maplibregl$1;
     function detailsListHtml(items) {
       const rows = (items || []).filter(Boolean);
       if (!rows.length) return '';
-      if (rows.length === 1) return `<p class="t-lead">${escapeHtml(rows[0])}</p>`;
-      return `<ul class="list-disc pl-5 t-lead details-list">${rows.map(t => `<li>${escapeHtml(t)}</li>`).join('')}</ul>`;
+      if (rows.length === 1) return `<p class="t-lead">${escapeHtml(proseUnlabel(rows[0]))}</p>`;
+      return `<ul class="list-disc pl-5 t-lead details-list">${rows.map(t => `<li>${escapeHtml(proseUnlabel(t))}</li>`).join('')}</ul>`;
     }
     function detailsOverviewHtml(inst) {
       const d = inst && inst.details;
@@ -12673,7 +12673,10 @@ return maplibregl$1;
     // the research brief: overview, funding, what is flagged, the art press, wider context, bottom line, sources. A line the report
     // already says is not said again from the archive (sayAlreadyInDetails). No pills, no source chips: a source is a link in the
     // text or a name in brackets, and archive items say once that they are reported, not verified.
-    const proseEnd = (t) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return !t ? '' : /[.!?…]["”’')\]]?$/.test(t) ? t : t + '.'; };
+    // A "Unverified:" label before a claim is deleted wherever record text is set (user, 3 Nov 2026): the words that follow
+    // it are kept, opening with a capital where the label opened a sentence.
+    const proseUnlabel = (t) => String(t || '').replace(/(^|[.!?…]["”’')\]]?\s+)Unverified:\s*(\S)/g, (m, pre, c) => pre + c.toUpperCase());
+    const proseEnd = (t) => { t = proseUnlabel(String(t || '')).replace(/\s+/g, ' ').trim(); return !t ? '' : /[.!?…]["”’')\]]?$/.test(t) ? t : t + '.'; };
     const proseCap = (t) => String(t || '').replace(/^\s*(\S)/, (m, c) => c.toUpperCase());
     const proseSay = (items) => (items || []).map(proseEnd).filter(Boolean).join(' ');
     // Sentences into paragraphs of about `limit` characters, so a long section is a few short paragraphs, not one block.
@@ -12805,7 +12808,8 @@ return maplibregl$1;
       // carries the filing's figures, so the same year's income is not said twice.
       const f = inst.finance || {};
       const moneyShown = typeof f.income === 'number' && f.income > 0 && f.currency;
-      rows.push(proseRow('What it publishes', '', [note('Publishes:', inst.records_note), moneyShown ? '' : note('Accounts:', inst.finances_note), note('Affiliations:', inst.affiliations_note)]));
+      // No "Publishes:" lead-in: the row's title already says it, and a lead-in that repeats the title is deleted (user, 3 Nov 2026).
+      rows.push(proseRow('What it publishes', '', [note('', inst.records_note), moneyShown ? '' : note('Accounts:', inst.finances_note), note('Affiliations:', inst.affiliations_note)]));
       return proseRows(rows, 'Overview and funding');
     }
     // What is flagged, the art press, wider context, the bottom line and the sources: the report's points with the archive's cases beside them.
@@ -12824,8 +12828,9 @@ return maplibregl$1;
       const own = (d.red_flags || []).filter(f => f && (f.points || []).length);
       own.forEach(f => {
         const told = f.points.filter(pt => !isCleanResult(pt));
-        const lis = f.points.map(pt => {
-          const m = f.points.length >= 3 ? String(pt).match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s) : null;
+        const lis = f.points.map(raw => {
+          const pt = proseUnlabel(String(raw));
+          const m = f.points.length >= 3 ? pt.match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s) : null;
           return proseLi(m ? `${m[1]}:` : '', escapeHtml(proseEnd(m ? m[2] : pt)), !isCleanResult(pt));
         });
         rows.push(proseRow(markFlag(proseTitle(f.heading)), '', lis, { tone: 'flag', gossip: told.length > 0 }));
