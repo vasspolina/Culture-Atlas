@@ -184,14 +184,14 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 .source-citation-pill svg{flex:none}
 /* The name is a flex item, so it would take the paragraph's first-line indent; it sits against the icon instead. */
 .source-citation-pill span{text-indent:0}
-.inst-link,.city-link,.dossier-link{text-decoration:underline;cursor:pointer}
+.inst-link,.space-web-link,.city-link,.dossier-link{text-decoration:underline;cursor:pointer}
 /* Bold and capitals belong to one thing only: the name of a space (user's instruction, 19 Oct 2026). Everything else is in
    the roman, in normal case, and a heading is told by its size and the space around it (Hochuli p.44: capitals and bold
    are restless in running text). In running text a name keeps the text's leading and is set a step smaller, as capitals
    are (p.44, fig 54), so it does not shout over the line. */
-.inst-link,.space-name{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.02em}
-:is(.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#floatingCard) .inst-link,.record-popup-line .space-name{line-height:inherit}
-.inst-link:hover,.city-link:hover,.dossier-link:hover{background:var(--peri)}
+.inst-link,.space-web-link,.space-name{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+:is(.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#floatingCard) :is(.inst-link,.space-web-link),.record-popup-line .space-name{line-height:inherit}
+.inst-link:hover,.space-web-link:hover,.city-link:hover,.dossier-link:hover{background:var(--peri)}
 
 /* ---- chat ---- */
 #curatorIntelligenceColumn{background:var(--paper)}
@@ -2204,20 +2204,15 @@ div:has(>#topThemeBtn){column-gap:0}
 @container (min-width:34em){
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.d-row-title,.d-row-sub){font-size:16px;font-weight:400;line-height:var(--lh)}
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-box{margin-top:var(--L);padding:calc(var(--H) * .9) var(--L) calc(var(--H) * .9) calc(var(--L) * .75);border-radius:0;font-size:14px;line-height:var(--lh);color:color-mix(in srgb,var(--ink) 65%,transparent)}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li{font-size:14px;line-height:var(--lh);padding-left:1.15em}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li::before{content:"";position:absolute;left:.15em;top:.62em;width:.34em;height:.34em;border-radius:50%;background:currentColor}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li+li{margin-top:0}
+  /* Points are paragraphs, not bullets (user, 3 Nov 2026): no dot and no indent, a blank line between them as on the phone. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li{font-size:14px;line-height:var(--lh);padding-left:0}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li::before{content:none}
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li+li{margin-top:var(--L)}
   /* A quotation hangs its own opening mark in the margin; it takes the bullet's place. */
   :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:has(.quote-hang)::before{content:none}
-  /* Two columns, not three: the title is a third of the row and the points two thirds, with one line between. The old 5:7 split plus a two-line gap
-     left a wide empty strip between the title and the list that read as a column of its own. */
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--L)}
-  /* A row with one point is a sentence, not a list: no bullet and no indent. */
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child{padding-left:0}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:only-child::before{content:none}
-  /* A verdict too long for the head leads the points unbulleted; a single point after it is a sentence too. */
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:is(.d-row-lead,.d-row-lead+li:last-child){padding-left:0}
-  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) ul.d-row-list>li:is(.d-row-lead,.d-row-lead+li:last-child)::before{content:none}
+  /* One column: the title sits above its points and the points run the full width of the record (user, 3 Nov 2026), instead of a third for the
+     title and two thirds for the text. */
+  :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{grid-template-columns:minmax(0,1fr);row-gap:var(--H)}
 }
 
 /* Starter questions: on hover the chip changes to a different, darker colour of its own (user, 26 Oct 2026), with white type; each is dark enough for 4.5:1. */

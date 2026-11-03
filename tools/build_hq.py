@@ -173,7 +173,24 @@ for k, (note, src) in NOTES.items():
 here = os.path.dirname(os.path.abspath(__file__))
 # Funders researched against public sources (tools/hq_extra.json): each carries its source page in `s`.
 extra = json.load(open(os.path.join(here, 'hq_extra.json')))
+# Their `w` is the researcher's working note ('Label read as the local council'), kept in the file but not published.
 for k, v in extra.items():
-    out.setdefault(k, v)
+    out.setdefault(k, {f: x for f, x in v.items() if f != 'w'})
+# Offices keyed to an older spelling of a funding line take today's keys from tools/hq_aliases.json ({office: [funding keys]};
+# `drop` lists offices that repeat another office). An office no funding line names is left off the map: its record would be empty.
+aliases = json.load(open(os.path.join(here, 'hq_aliases.json')))
+for k in aliases.pop('drop', []): out.pop(k, None)
+for k, ks in aliases.items():
+    if k in out and ks: out[k]['also'] = ks
+lines = [n for r in json.load(open(os.path.join(here, '..', 'assets', 'money-maps.json'))) for n in r['nodes'] if len(n) > 5 and n[5]]
+used = {n[5] for n in lines}
+# An office whose keys no line uses also takes the keys of the lines that spell its name ('LINZ AG' and 'Linz AG').
+by_name = {}
+for n in lines: by_name.setdefault(n[0].lower(), set()).add(n[5])
+for k, o in out.items():
+    if not ({k, *o.get('also', [])} & used) and o['n'].lower() in by_name: o['also'] = o.get('also', []) + sorted(by_name[o['n'].lower()])
+unused = sorted(k for k, o in out.items() if not ({k, *o.get('also', [])} & used))
+for k in unused: del out[k]
+print(len(unused), 'offices no funding line names, left off')
 json.dump({'org': out, 'people': people}, open(os.path.join(here, '..', 'assets', 'hq.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 print(len(out), 'organisations,', len(people), 'people')
