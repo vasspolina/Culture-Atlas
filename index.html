@@ -11586,8 +11586,8 @@ return maplibregl$1;
     function detailsListHtml(items) {
       const rows = (items || []).filter(Boolean);
       if (!rows.length) return '';
-      if (rows.length === 1) return `<p class="t-lead">${escapeHtml(rows[0])}</p>`;
-      return `<ul class="list-disc pl-5 t-lead details-list">${rows.map(t => `<li>${escapeHtml(t)}</li>`).join('')}</ul>`;
+      if (rows.length === 1) return `<p class="t-lead">${escapeHtml(proseUnlabel(rows[0]))}</p>`;
+      return `<ul class="list-disc pl-5 t-lead details-list">${rows.map(t => `<li>${escapeHtml(proseUnlabel(t))}</li>`).join('')}</ul>`;
     }
     function detailsOverviewHtml(inst) {
       const d = inst && inst.details;
@@ -11637,6 +11637,19 @@ return maplibregl$1;
       if (!mine.length) return false;
       const lines = [].concat(d.bottom_line || [], d.not_related || [], d.funding || [], ...(d.red_flags || []).map(f => f.points || []), d.wider_context || []);
       return lines.some(l => { const have = new Set(words(l)); return mine.filter(w => have.has(w)).length / mine.length >= 0.6; });
+    }
+    // A finding that digests what the record's case notes and report already say, line by line, is not printed again as a
+    // reported item: most of its words (85%) appear across those lines together (the e-flux record, 3 Nov 2026).
+    function saidAcrossRecord(inst, text) {
+      const d = (inst && inst.details) || {};
+      if (!text) return false;
+      const words = (t) => String(t || '').toLowerCase().match(/[a-z0-9$]+/g) || [];
+      const mine = [...new Set(words(text).filter(w => w.length > 3))];
+      if (mine.length < 20) return false;
+      const lines = [].concat(d.bottom_line || [], d.not_related || [], d.funding || [], d.overview || [], ...(d.red_flags || []).map(f => f.points || []), d.wider_context || [],
+        (inst.case_notes || []).map(c => c && c.text));
+      const have = new Set(words(lines.join(' ')));
+      return mine.filter(w => have.has(w)).length / mine.length >= 0.85;
     }
     function fundingHtml(inst) {
       if (!inst) return '';
@@ -11710,11 +11723,17 @@ return maplibregl$1;
       } else if (fieldParts.length) {
         foundHtml = `${fieldParts.map(f => `${f.label} from ${join(f.links)}`).join('. ')}.`;
       }
-      // As a row (the record page): one bullet per field, or one for both when they share their sources.
+      // As rows (the record page): one bullet per field, or one for both when they share their sources. They go into the
+      // Sources row of the record (proseBodyHtml), not a row of their own: a row named "Where the basics come from" read as a
+      // made-up chapter that said in one line what Sources already lists (user, 3 Nov 2026).
       if (asRow) {
-        const lis = fieldParts.length === 2 && fieldParts[0].links.sites === fieldParts[1].links.sites ? [`${fieldParts[0].label} and address from ${join(fieldParts[0].links)}.`]
-          : fieldParts.map(f => `${f.label} from ${join(f.links)}.`);
-        return lis.length ? proseRows([proseRow('Where the basics come from', '', lis.map(t => `<li>${t}</li>`))], 'Where the basics come from') : '';
+        // A line that only names sites the record's sources already list says nothing new (user, 3 Nov 2026): it is left out.
+        const known = new Set([].concat(inst.sources || [], (((inst.details || {}).sources) || []).map(x => x && x.url))
+          .map(u => { try { return site(new URL(String(u)).hostname.replace(/^www\./, '')); } catch (e) { return ''; } }).filter(Boolean));
+        const fresh = fieldParts.filter(f => String(f.links.sites || '').split(',').some(h => h && !known.has(h)));
+        const lis = fresh.length === 2 && fresh[0].links.sites === fresh[1].links.sites ? [`${fresh[0].label} and address from ${join(fresh[0].links)}.`]
+          : fresh.map(f => `${f.label} from ${join(f.links)}.`);
+        return lis.map(t => `<li>${t}</li>`);
       }
       // A bare "Founding year from ..." line read as stray prose between two blocks: it carries a label, like the blocks around it.
       if (foundHtml) foundHtml = `<div class="py-3" role="group" aria-label="Where the basics come from"><span class="kicker block">Where the basics come from</span><p class="no-indent source-note">${foundHtml}</p></div>`;
@@ -11818,9 +11837,9 @@ return maplibregl$1;
     };
     function placeReviewListHtml(placeId) {
       const state = PLACE_REVIEWS.get(placeId);
-      if (state === 'failed') return '<p class="no-indent">The reviews could not be loaded.</p>';
+      // A row that only says the reviews failed to load, or that there are none, carries no information (user, 3 Nov 2026): it is hidden instead.
+      if (state === 'failed' || (Array.isArray(state) && !state.length)) return '';
       if (!Array.isArray(state)) return '<p class="no-indent">Loading reviews…</p>';
-      if (!state.length) return '<p class="no-indent">No reviews yet.</p>';
       return `<h4 class="kicker review-count">${state.length} ${state.length === 1 ? 'review' : 'reviews'}</h4>${state.map(r => {
         const label = (r.authorLabel || '').trim() || 'Whistleblower';
         const d = reviewDate(r.createdAt);
@@ -11839,6 +11858,7 @@ return maplibregl$1;
         if (box.dataset.place !== placeId) return;
         const list = box.querySelector('.review-list');
         if (list) list.innerHTML = placeReviewListHtml(placeId);
+        box.classList.toggle('hidden', !(list && list.innerHTML));
       });
     }
     function loadPlaceReviews(placeId) {
@@ -11853,13 +11873,16 @@ return maplibregl$1;
     // The reviews of a place, under its record. They are only listed here; a review is written on the note screen (Share information).
     function placeReviewsHtml(inst) {
       if (!inst || !inst.id) return '';
-      if (!ATLAS_REPORT_API_URL) {
-        return proseRows([proseRow('Whistleblower reviews', '', [proseLi('', 'Reviews are not available right now.')])], 'Whistleblower reviews');
-      }
+      // Without the API, or with nothing loaded to read, there is no row at all (user, 3 Nov 2026): a row that only says reviews
+      // are unavailable carries no information. The box is rendered while loading and hidden by the refresh if nothing comes.
+      if (!ATLAS_REPORT_API_URL) return '';
+      const cached = PLACE_REVIEWS.get(inst.id);
+      if (cached === 'failed' || (Array.isArray(cached) && !cached.length)) return '';
       loadPlaceReviews(inst.id);
       return `<div class="prose-part d-rows place-reviews" data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews"><section class="d-row">
-        <div class="d-row-head"><h3 class="d-row-title">Whistleblower reviews</h3><p class="d-row-sub no-indent">Written by people who say they know this place from inside. The editor reads every review before it appears. None is checked against a source.</p></div>
-        <div class="review-list d-row-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div>
+        <div class="d-row-head"><h3 class="d-row-title">Whistleblower reviews</h3></div>
+        <div class="d-row-list"><p class="no-indent">Written by people who say they know this place from inside. The editor reads every review before it appears. None is checked against a source.</p>
+        <div class="review-list d-row-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div></div>
       </section></div>`;
     }
     // Send for review looks ready (blue) once the form could be sent: an institution from the atlas, a note long enough, the box ticked.
@@ -12037,7 +12060,8 @@ return maplibregl$1;
       const lc = of.toLowerCase();
       const repeated = (inst.epstein_records || []).some(e => e.person && lc.includes(e.person.toLowerCase()))
         || (inst.wikileaks_records || []).some(w => w.doc_id && of.includes(w.doc_id))
-        || ((inst.gossip_data || {}).real_cases || []).some(c => c.title && lc.includes(c.title.toLowerCase()));
+        || ((inst.gossip_data || {}).real_cases || []).some(c => c.title && lc.includes(c.title.toLowerCase()))
+        || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
         if (m) blocks.push(item(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}`, m[3].replace(/^(\w)/, c => c.toUpperCase()), p('', m[4]), []));
@@ -12156,7 +12180,8 @@ return maplibregl$1;
         inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : '',
         inst.watch && !watchIsAboutMoney(inst.watch) ? `<p${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${escapeHtml(inst.watch)}</p>` : '',
       ].map(li);
-      const programme = String(inst.curatorial_focus || '').split(/\s*,\s*/).filter(Boolean).map(t => li(escapeHtml(proseCap(t))));
+      // One line per item; a comma inside brackets ("critical theory (journal, Notes, Criticism)") stays with its item.
+      const programme = String(inst.curatorial_focus || '').split(/\s*,\s*(?![^()]*\))/).filter(Boolean).map(t => li(escapeHtml(proseCap(t))));
       const rows = [
         proseRow(escapeHtml(place) || 'Record', rest ? escapeHtml(proseCap(rest)) : '', state),
         proseRow('Programme', '', programme).replace('<ul class="d-row-list">', '<ul class="d-row-list is-bulleted">'),
@@ -12209,7 +12234,7 @@ return maplibregl$1;
       }
 
       const srcBox = document.getElementById('dossier-sheet-sources');
-      if (srcBox) srcBox.innerHTML = sourcesHtml(inst, true, true);
+      if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b)], 'Sources') : ''; }
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
         record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
@@ -12659,7 +12684,10 @@ return maplibregl$1;
     // the research brief: overview, funding, what is flagged, the art press, wider context, bottom line, sources. A line the report
     // already says is not said again from the archive (sayAlreadyInDetails). No pills, no source chips: a source is a link in the
     // text or a name in brackets, and archive items say once that they are reported, not verified.
-    const proseEnd = (t) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return !t ? '' : /[.!?…]["”’')\]]?$/.test(t) ? t : t + '.'; };
+    // A "Unverified:" label before a claim is deleted wherever record text is set (user, 3 Nov 2026): the words that follow
+    // it are kept, opening with a capital where the label opened a sentence.
+    const proseUnlabel = (t) => String(t || '').replace(/(^|[.!?…]["”’')\]]?\s+)Unverified:\s*(\S)/g, (m, pre, c) => pre + c.toUpperCase());
+    const proseEnd = (t) => { t = proseUnlabel(String(t || '')).replace(/\s+/g, ' ').trim(); return !t ? '' : /[.!?…]["”’')\]]?$/.test(t) ? t : t + '.'; };
     const proseCap = (t) => String(t || '').replace(/^\s*(\S)/, (m, c) => c.toUpperCase());
     const proseSay = (items) => (items || []).map(proseEnd).filter(Boolean).join(' ');
     // Sentences into paragraphs of about `limit` characters, so a long section is a few short paragraphs, not one block.
@@ -12698,12 +12726,21 @@ return maplibregl$1;
     // is tone "flag" and carries data-gossip, so Gossip mode still sets it, and only it, in the gossip colour.
     const proseLi = (lead, html, gossip) => html ? `<li${gossip ? ' data-gossip="item"' : ''}>${lead ? proseLead(lead) : ''}${html}</li>` : '';
     const proseTitle = (t) => String(t || '').replace(/\s+/g, ' ').trim().replace(/[.:…]+$/, '');
+    // The left column holds the title and a subtitle only (user, 3 Nov 2026): a subtitle is one short line, such as "Founded 1998",
+    // "Level 1 of 5, Independent" or "Researched 3 Nov 2026". Anything longer than that, or a box of links, is text and goes to the
+    // right column as the first (or, for the box, the last) line of the list.
+    const SUB_MAX = 72;
+    const isSubtitle = (s) => { const t = String(s || '').replace(/<[^>]+>/g, '').trim(); return t.length <= SUB_MAX && !/[.!?;]\s+\S/.test(t); };
     function proseRow(title, sub, lis, opts) {
       opts = opts || {};
-      const items = (lis || []).filter(Boolean).join('');
-      if (!title || (!items && !sub && !opts.box)) return '';
+      let list = (lis || []).filter(Boolean);
+      let subtitle = sub || '';
+      if (subtitle && !isSubtitle(subtitle)) { list = [`<li${opts.gossip ? ' data-gossip="item"' : ''}>${subtitle}</li>`].concat(list); subtitle = ''; }
+      if (opts.box) list = list.concat([`<li>${opts.box}</li>`]);
+      const items = list.join('');
+      if (!title || (!items && !subtitle)) return '';
       const g = opts.gossip ? ' data-gossip="item"' : '';
-      return `<section class="d-row${opts.tone ? ' is-' + opts.tone : ''}"><div class="d-row-head"><h3 class="d-row-title"${g}>${title}</h3>${sub ? `<p class="d-row-sub no-indent"${g}>${sub}</p>` : ''}${opts.box ? `<p class="d-row-box no-indent">${opts.box}</p>` : ''}${opts.after || ''}</div>${items ? `<ul class="d-row-list">${items}</ul>` : ''}</section>`;
+      return `<section class="d-row${opts.tone ? ' is-' + opts.tone : ''}"><div class="d-row-head"><h3 class="d-row-title"${g}>${title}</h3>${subtitle ? `<p class="d-row-sub no-indent"${g}>${subtitle}</p>` : ''}${opts.after || ''}</div>${items ? `<ul class="d-row-list">${items}</ul>` : ''}</section>`;
     }
     const proseRows = (rows, label, gossip) => { const body = rows.filter(Boolean).join(''); return body ? `<div class="prose-part d-rows" role="region" aria-label="${label}"${gossip ? ' data-gossip="items"' : ''}>${body}</div>` : ''; };
     // Overview and funding: what the space is, then who pays for it, from the report where there is one and from the archive otherwise.
@@ -12751,6 +12788,8 @@ return maplibregl$1;
     // The chapter reports bureaucratic issues, so it appears only where a document reports one; the level and facts alone do not earn it.
     const BUREAUCRACY = { 1: 'Independent', 2: 'Light oversight', 3: 'Supervised', 4: 'Administered', 5: 'State-run' };
     function proseBureaucracyRow(inst) {
+      // The chapter reports bureaucratic issues only, and is left out entirely where none is reported (user, 3 Nov 2026):
+      // legal form and staff status alone carry no issue, so a record without reported red tape has no Bureaucracy row.
       const b = inst.bureaucracy, r = inst.red_tape, lis = [];
       if (!r || !r.note) return '';
       if (b) {
@@ -12780,7 +12819,8 @@ return maplibregl$1;
       // carries the filing's figures, so the same year's income is not said twice.
       const f = inst.finance || {};
       const moneyShown = typeof f.income === 'number' && f.income > 0 && f.currency;
-      rows.push(proseRow('What it publishes', '', [note('Publishes:', inst.records_note), moneyShown ? '' : note('Accounts:', inst.finances_note), note('Affiliations:', inst.affiliations_note)]));
+      // No "Publishes:" lead-in: the row's title already says it, and a lead-in that repeats the title is deleted (user, 3 Nov 2026).
+      rows.push(proseRow('What it publishes', '', [note('', inst.records_note), moneyShown ? '' : note('Accounts:', inst.finances_note), note('Affiliations:', inst.affiliations_note)]));
       return proseRows(rows, 'Overview and funding');
     }
     // What is flagged, the art press, wider context, the bottom line and the sources: the report's points with the archive's cases beside them.
@@ -12799,8 +12839,9 @@ return maplibregl$1;
       const own = (d.red_flags || []).filter(f => f && (f.points || []).length);
       own.forEach(f => {
         const told = f.points.filter(pt => !isCleanResult(pt));
-        const lis = f.points.map(pt => {
-          const m = f.points.length >= 3 ? String(pt).match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s) : null;
+        const lis = f.points.map(raw => {
+          const pt = proseUnlabel(String(raw));
+          const m = f.points.length >= 3 ? pt.match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s) : null;
           return proseLi(m ? `${m[1]}:` : '', escapeHtml(proseEnd(m ? m[2] : pt)), !isCleanResult(pt));
         });
         rows.push(proseRow(markFlag(proseTitle(f.heading)), '', lis, { tone: 'flag', gossip: told.length > 0 }));
@@ -12835,7 +12876,8 @@ return maplibregl$1;
       const lc = of.toLowerCase();
       const repeated = (inst.epstein_records || []).some(e => e.person && lc.includes(e.person.toLowerCase()))
         || (inst.wikileaks_records || []).some(w => w.doc_id && of.includes(w.doc_id))
-        || ((inst.gossip_data || {}).real_cases || []).some(c => c.title && lc.includes(c.title.toLowerCase()));
+        || ((inst.gossip_data || {}).real_cases || []).some(c => c.title && lc.includes(c.title.toLowerCase()))
+        || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
         if (m) items.push(proseLi(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}, ${m[3].toLowerCase()}.`, escapeHtml(proseEnd(m[4])), true));
@@ -12853,8 +12895,12 @@ return maplibregl$1;
       const press = d.press || {};
       const pressLis = (press.items || []).map(it => {
         const o = /^https?:\/\//.test(it.url || '') ? `<a href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(it.outlet)}</a>` : escapeHtml(it.outlet);
-        return proseLi('', `${o}${it.title ? ', ' + escapeHtml(proseEnd(it.title)) + ' ' : ': '}${escapeHtml(proseSay(it.points))}`);
-      });
+        // A piece is its points; an item written with a single note and a date (the e-flux record) reads the same way.
+        const said = (it.points || []).length ? proseSay(it.points) : proseEnd(it.note || '');
+        const when = !it.title && it.date ? ` (${it.date})` : '';
+        if (!said && !it.title) return '';
+        return proseLi('', `${o}${it.title ? ', ' + escapeHtml(proseEnd(it.title)) + ' ' : escapeHtml(when) + ': '}${escapeHtml(said)}`);
+      }).filter(Boolean);
       rows.push(proseRow('In the art press', press.overall ? escapeHtml(proseEnd(press.overall)) : '', pressLis));
       if (inst.critique_note) rows.push(proseRow('What the field says', '', [proseLi('', escapeHtml(proseEnd(inst.critique_note)))]));
       const caseLis = (inst.case_notes || []).map(n => proseLi(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3), true));
@@ -12870,7 +12916,9 @@ return maplibregl$1;
       const regLinks = [];
       if (reg) regLinks.push(`Registry: ${link(reg, registryName(reg))}`);
       if (fil && fil !== reg) regLinks.push(`Filings: ${link(fil, registryName(fil))}`);
-      rows.push(proseRow('Sources', d.retrieved ? `Researched ${escapeHtml(humanDate(d.retrieved))}` : '', proseLinkList(urls, 12).map(a => `<li>${a}</li>`), { box: regLinks.join(' · ') }));
+      // Where the founding year and the address came from leads the list; the registry and the filings close it.
+      const basics = sourcesHtml(inst, true, true) || [];
+      rows.push(proseRow('Sources', d.retrieved ? `Researched ${escapeHtml(humanDate(d.retrieved))}` : '', basics.concat(proseLinkList(urls, 12).map(a => `<li>${a}</li>`), regLinks.length ? [`<li>${regLinks.join(' · ')}</li>`] : [])));
       return proseRows(rows, 'Reporting and context');
     }
     // Accounts from review sites and Reddit, and what readers sent in: the same rows, the caution said once as the subtitle.
@@ -12966,7 +13014,6 @@ return maplibregl$1;
           ])], 'Community research submission') : ''}
 
           ${proseVoicesHtml(inst)}
-          ${sourcesHtml(inst, true, true)}
           ${isCommunity ? '' : placeReviewsHtml(inst)}
 
 
