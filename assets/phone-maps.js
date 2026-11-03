@@ -165,6 +165,8 @@
         titleBlock.parentNode.insertBefore(actions, titleBlock.nextSibling);
       }
 
+      buildPlaceCard(sheet, titleBlock, actions);
+
       const sizeBtn = $('sheet-size-btn');
       const closeBtn = $('close-sheet-btn');
       const chrome = $('sheet-drag-handle');
@@ -264,6 +266,144 @@
       };
       sheet.addEventListener('touchend', end, { passive: true });
       sheet.addEventListener('touchcancel', end, { passive: true });
+    }
+
+    // ---- The record as a maps app's place card (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ----
+    // Under the name, a rating line: the funding grade as its letter in a dot of its colour, where a place card has stars.
+    // The actions are pills with icons, the first one filled. Then tabs (Overview, Funding, Record, Sources) with the
+    // open one underlined, and on Overview the visiting facts as rows with an icon each: address, hours, admission, website.
+    // The record's own blocks are moved into the tabs, never copied, so everything the sheet showed is still in it.
+    function buildPlaceCard(sheet, titleBlock, actions) {
+      const pane = $('dossier-sheet-verified-pane');
+      const name = $('dossier-sheet-name');
+      if (!pane || !titleBlock || !name) return;
+      const ICON = {
+        'dossier-sheet-ask-btn': '<path d="M4 5h16v11H9l-5 4z"/>',
+        'dossier-sheet-audit-btn': '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>',
+        'dossier-sheet-plan-btn': '<rect x="4" y="5" width="16" height="15"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+        'dossier-sheet-moneymap-btn': '<circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="20" r="2"/><path d="M10.2 10.4 6.5 7.3M13.8 10.4l3.7-3.1M12 14.5V18"/>',
+        'dossier-sheet-link-web': '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/>',
+      };
+      const svg = (body) => '<svg class="gm-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + body + '</svg>';
+      if (actions) actions.querySelectorAll('.record-action').forEach((a) => {
+        if (ICON[a.id] && !a.querySelector('.gm-ico')) a.insertAdjacentHTML('afterbegin', svg(ICON[a.id]));
+      });
+
+      // Rating line, between the name and the place.
+      const rating = document.createElement('p');
+      rating.className = 'gm-rating';
+      name.insertAdjacentElement('afterend', rating);
+
+      // Tabs, under the actions.
+      const TABS = [['overview', 'Overview'], ['funding', 'Funding'], ['record', 'Record'], ['sources', 'Sources']];
+      const tabs = document.createElement('div');
+      tabs.className = 'gm-tabs';
+      tabs.setAttribute('role', 'tablist');
+      tabs.setAttribute('aria-label', 'Space details');
+      TABS.forEach(([key, label]) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('role', 'tab');
+        b.id = 'gmTab-' + key;
+        b.dataset.tab = key;
+        b.setAttribute('aria-controls', 'dossier-sheet-verified-pane');
+        b.textContent = label;
+        // A tab is read at full height, with the tabs at the top and its first lines under them.
+        b.addEventListener('click', () => {
+          setTab(key);
+          if (window.atlasSetSheetDetent && sheet.dataset.detent !== 'full') window.atlasSetSheetDetent('full');
+          requestAnimationFrame(() => { sheet.scrollTop = Math.max(0, tabs.offsetTop - 24); });
+        });
+        tabs.appendChild(b);
+      });
+      tabs.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const list = [...tabs.querySelectorAll('button:not([hidden])')];
+        const i = list.indexOf(document.activeElement);
+        if (i < 0) return;
+        e.preventDefault();
+        const next = list[(i + (e.key === 'ArrowRight' ? 1 : -1) + list.length) % list.length];
+        next.focus(); setTab(next.dataset.tab);
+      });
+      (actions || titleBlock).insertAdjacentElement('afterend', tabs);
+      pane.setAttribute('role', 'tabpanel');
+
+      // Overview's rows of visiting facts, after the summary.
+      const info = document.createElement('ul');
+      info.className = 'gm-info';
+      info.dataset.tab = 'overview';
+      const summary = $('dossier-sheet-summary');
+      (summary || pane.firstChild) ? (summary ? summary.insertAdjacentElement('afterend', info) : pane.prepend(info)) : pane.appendChild(info);
+
+      const blockTab = { 'dossier-sheet-summary': 'overview', 'dossier-sheet-visit': 'visit', 'dossier-sheet-funding': 'funding', 'dossier-sheet-record': 'record', 'dossier-sheet-sources': 'sources' };
+      let current = 'overview';
+      const filled = (el) => !!el && !el.classList.contains('hidden') && el.textContent.trim().length > 0;
+      function setTab(key) {
+        current = key;
+        tabs.querySelectorAll('button').forEach((b) => {
+          const on = b.dataset.tab === key;
+          b.setAttribute('aria-selected', String(on));
+          b.tabIndex = on ? 0 : -1;
+        });
+        pane.setAttribute('aria-labelledby', 'gmTab-' + key);
+        Object.entries(blockTab).forEach(([id, tab]) => { const el = $(id); if (el) el.toggleAttribute('data-gm-off', tab !== key); });
+        info.toggleAttribute('data-gm-off', key !== 'overview');
+      }
+
+      const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      const ROW_ICON = {
+        place: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+        hours: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+        ticket: '<path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="1.5 2"/>',
+        web: ICON['dossier-sheet-link-web'],
+        grade: '<path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/>',
+      };
+      function fill() {
+        const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        if (!inst) return;
+        // Rating line.
+        let g = null;
+        try { g = (typeof GRADE !== 'undefined' && inst.grade && GRADE[inst.grade]) || null; } catch (_) { g = null; }
+        let status = '';
+        try { status = typeof tierName === 'function' ? tierName(inst) : ''; } catch (_) { status = ''; }
+        if (g) {
+          rating.innerHTML = '<span class="gm-grade-dot" style="--gm-dot:' + esc(g.col) + '" aria-hidden="true">' + esc(g.letter) + '</span>'
+            // One line, as a rating is: the label up to its first clause ("Funders listed; no funders flagged" reads
+            // "Funders listed"), and the whole label is the line's title.
+            + '<span class="gm-grade-text" title="' + esc(g.label) + '">Grade ' + esc(g.letter) + ' · ' + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
+        } else {
+          rating.innerHTML = status ? '<span class="gm-grade-text">' + esc(status) + '</span>' : '';
+        }
+        rating.hidden = !rating.innerHTML;
+        // Visiting rows.
+        let web = '';
+        try { web = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || ''); } catch (_) { web = inst.website || ''; }
+        const place = inst.address || [inst.location || inst.city, inst.country].filter(Boolean).join(', ');
+        const rows = [
+          ['place', place],
+          ['hours', inst.opening_hours],
+          ['ticket', inst.admission_fee || inst.admission_policy],
+          ['web', web ? '<a href="' + esc(web) + '" target="_blank" rel="noopener noreferrer">' + esc(web.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')) + '</a>' : '', true],
+        ].filter((r) => r[1]);
+        const rowsHtml = rows.map(([k, v, html]) => '<li>' + svg(ROW_ICON[k]) + '<span>' + (html ? v : esc(v)) + '</span></li>').join('');
+        // Only when it differs (against what was last written: the browser serializes it back differently), since writing
+        // the rows is a change in the pane, which this function is listening to.
+        if (info.dataset.src !== rowsHtml) { info.dataset.src = rowsHtml; info.innerHTML = rowsHtml; }
+        // The visit block's facts are Overview's rows now.
+        const visit = $('dossier-sheet-visit');
+        if (visit && !visit.hasAttribute('data-gm-dup')) visit.setAttribute('data-gm-dup', '');
+        // A tab with nothing in it is not offered; the open one falls back to Overview.
+        const has = { overview: true, funding: filled($('dossier-sheet-funding')), record: filled($('dossier-sheet-record')), sources: filled($('dossier-sheet-sources')) };
+        tabs.querySelectorAll('button').forEach((b) => { b.hidden = !has[b.dataset.tab]; });
+        tabs.hidden = Object.values(has).filter(Boolean).length < 2;
+        setTab(has[current] ? current : 'overview');
+      }
+      let queued = false;
+      const refill = () => { if (queued) return; queued = true; requestAnimationFrame(() => { queued = false; fill(); }); };
+      // A new space opens on Overview.
+      new MutationObserver(() => { current = 'overview'; refill(); }).observe(name, { childList: true, characterData: true, subtree: true });
+      new MutationObserver(refill).observe(pane, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+      fill();
     }
 
     syncState();
