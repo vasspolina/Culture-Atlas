@@ -169,6 +169,8 @@
 
       const sizeBtn = $('sheet-size-btn');
       const closeBtn = $('close-sheet-btn');
+      // The sheet's cross is the only one: on a funder's record (assets/hq-detail.js) it closes that record too.
+      closeBtn?.addEventListener('click', () => { if (sheet.classList.contains('is-hq-sheet') && typeof window.atlasHqClose === 'function') window.atlasHqClose(); });
       const chrome = $('sheet-drag-handle');
       const DETENTS = ['peek', 'half', 'full'];
       let detent = 'peek';
