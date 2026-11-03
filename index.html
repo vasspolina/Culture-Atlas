@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=462">
+  <link rel="stylesheet" href="assets/atlas.css?v=464">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -473,8 +473,9 @@ return maplibregl$1;
           <span class="sheet-grabber" aria-hidden="true"></span>
           <div></div>
           <div class="flex items-center space-x-2">
+            <button id="chatSheetDetailsBtn" type="button" class="px-2 py-0_5 hidden" aria-label="Space details">Details</button>
             <button id="curatorDrawerListenBtn" type="button" class="px-2 py-0_5">Listen</button>
-            <button class="px-1" id="close-chat-view-btn" type="button">Close</button>
+            <button class="px-1" id="close-chat-view-btn" type="button" aria-label="Close the chat"><span>Close</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
           </div>
         </div>
         <!-- Chat Transcript Message Area -->
@@ -728,7 +729,7 @@ return maplibregl$1;
           <span class="sheet-grabber" aria-hidden="true"></span>
           <span class="flex-1"></span>
           <button id="phoneChatDetailsBtn" type="button" class="hidden" aria-label="Space details">Details</button>
-          <button id="phoneChatCloseBtn" type="button" aria-label="Close the chat and go back to the map">Close</button>
+          <button id="phoneChatCloseBtn" type="button" aria-label="Close the chat and go back to the map"><span>Close</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
         </div>
 
         <!-- The width of the chat: drag either edge of the column, or focus the handle and use the arrow keys -->
@@ -12250,8 +12251,11 @@ return maplibregl$1;
         badgeWrap.classList.remove('flex');
       }
       if (badgeName) badgeName.textContent = '';
-      document.getElementById('mobileDetailsBtn')?.classList.add('hidden');   // no space, no Details button on the phone
-      document.getElementById('phoneChatDetailsBtn')?.classList.add('hidden');
+      // A space the chat has named keeps the Details button on the phone; with none, there is nothing to open.
+      const keptInst = (typeof curatorContext !== 'undefined' && curatorContext.lastInst) ? curatorContext.lastInst : null;
+      document.getElementById('mobileDetailsBtn')?.classList.toggle('hidden', !keptInst);
+      document.getElementById('phoneChatDetailsBtn')?.classList.toggle('hidden', !keptInst);
+      document.getElementById('chatSheetDetailsBtn')?.classList.toggle('hidden', !keptInst);
 
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) floatingCard.classList.add('hidden');
@@ -12308,6 +12312,7 @@ return maplibregl$1;
       }
       document.getElementById('mobileDetailsBtn')?.classList.remove('hidden');   // the phone header gets its Details button once a space is selected
       document.getElementById('phoneChatDetailsBtn')?.classList.remove('hidden');   // and so does the top of the chat, beside Close
+      document.getElementById('chatSheetDetailsBtn')?.classList.remove('hidden');   // and so does the top of the chat, beside Close
       if (typeof curatorContext !== 'undefined' && inst) {
         const prevInst = curatorContext.activeFocusInst || curatorContext.lastInst;
         const isNewFocus = !prevInst || prevInst.id !== inst.id || prevInst.name !== inst.name;
@@ -14403,6 +14408,9 @@ return maplibregl$1;
         if (!prevTarget || prevTarget.id !== mentionedInst.id) {
           curatorContext.activeFocusInst = mentionedInst;
           curatorContext.lastInst = mentionedInst;
+          document.getElementById('mobileDetailsBtn')?.classList.remove('hidden');   // the chat named a space: Details can open it
+          document.getElementById('phoneChatDetailsBtn')?.classList.remove('hidden');
+          document.getElementById('chatSheetDetailsBtn')?.classList.remove('hidden');
           if (mentionedInst.city) curatorContext.lastCity = mentionedInst.city;
           curatorContext.activeEntityHistory = [];
         }
@@ -14437,7 +14445,7 @@ return maplibregl$1;
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the space: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a requested detail is absent, leave it out, or when the visitor asked for it say so in one sentence. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a detail is absent from the record, leave it out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated"; answer with what the record holds and stop there. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst, true)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -14525,12 +14533,12 @@ GRADE REASONS: The reason for a grade is its Grade Basis line. State that reason
 
 LIST QUESTIONS: When a <matching_records> block is supplied it holds the records the Atlas has for the question, and says how many there are. Name only spaces listed there, give the count, and say when the list is cut off. The page prints the count and the grade tally as the first line of your answer, so write no number of spaces and no sentence about how many spaces hold a grade or how many did something; start with the groups or the names. A space's own grade is the one on its own line. Never name a space as carrying a flag unless its own Recorded Flags line or Grade Basis line carries it, and never infer a flag from a funder's industry. Use the verb a record uses (refused, returned, removed, dropped); do not say a space accepted money when its line says it refused or returned it, and do not call a record ungraded when its Governance Classification shows a grade.
 
-GROUNDING: Answer only from the records supplied with each question. Quote a figure only if it appears in a record or its cited source, and name that source. If the records do not say, say they do not say. Do not recall studies, cases, budgets or dates from memory.
+GROUNDING: Answer only from the records supplied with each question. Quote a figure only if it appears in a record or its cited source, and name that source. If the records do not say, give what they do say and stop; never write a sentence about what they do not say. Do not recall studies, cases, budgets or dates from memory.
 
 FORMATTING & DOSSIER PRESENTATION RULES:
 1. Answer the user's specific question in the first sentence; do not force a template, headings, comparison or unrequested conclusion.
 2. Keep paragraphs short and use a blank line between distinct points. Separate visitor logistics from governance or financial analysis using separate paragraphs, each opening with the topic in plain words, with no bold.
-3. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a requested detail is absent, leave it out, or when the visitor asked for it say so in one sentence. Never end an answer with a web address, a link or a "Sources:" line.
+3. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a detail is absent from the record, leave it out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated"; answer with what the record holds and stop there. Never end an answer with a web address, a link or a "Sources:" line.
 4. For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name a critic, publication, review or controversy only when it is present in the supplied record or cited sources. If none is recorded, say nothing about critics unless asked; when asked, one plain sentence. Do not substitute a generic theory passage.
 5. Attribute allegations and assessments to their source. Do not imply that a source independently verifies more than it does.
 6. Use standard Markdown; never output raw markup. Name a funding transparency rating as one letter, A to F (Grade D or Grade F), never as a number, presented as an informational record field rather than an endorsement or condemnation.
@@ -14540,6 +14548,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
    - Do not claim facts about the intended institution beyond what its record and cited sources support.
 </system_instructions>`;
 
+      // A model that does not answer in 30 seconds gives way to the record answer, so "Thinking" never hangs.
+      const chatSignal = () => (typeof AbortSignal !== 'undefined' && AbortSignal.timeout) ? AbortSignal.timeout(30000) : undefined;
+
       const startTime = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
       try {
         let rawText = '';
@@ -14547,6 +14558,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (prov === 'anthropic') {
           const res = await fetch(useProxy ? ATLAS_AI_PROXY_URL : 'https://api.anthropic.com/v1/messages', {
             method: 'POST',
+            signal: chatSignal(),
             headers: useProxy ? { 'Content-Type': 'application/json' } : {
               'Content-Type': 'application/json',
               'x-api-key': activeKey,
@@ -14578,6 +14590,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         } else if (prov === 'openai') {
           const res = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
+            signal: chatSignal(),
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${activeKey}`
@@ -14599,6 +14612,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           // Google Gemini
           const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${activeKey}`, {
             method: 'POST',
+            signal: chatSignal(),
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               systemInstruction: { parts: [{ text: criticalSystemPrompt }] },
@@ -14643,6 +14657,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           // A gossip request answers with the gossip alone. NO_GOSSIP is the model's word for "the records report nothing", which the chat says in its own plain sentence.
           if (themed && !isGossipMode) rawText = rawText.replace(/^\s*The Atlas (?:holds|records|has)[^.]*\d[^.]*\.\s*(?:(?:Their|The) grades are[^.]*\.\s*)?/i, '');
           if (themed && !isGossipMode) rawText = `The Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} for this question. Grades: ${themed.tallyText}.\n\n${rawText}`;
+          rawText = dropAbsenceLines(rawText);
           if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing is reported for this space in the records.</p>', gossip: false, none: true };
           return isGossipMode ? { html: renderCuratorMarkdown(rawText), gossip: true } : renderCuratorMarkdown(rawText);
         }
@@ -14651,6 +14666,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       return null;
     }
+
+    // Atlas text never says that something was not found (project rule; tools/absence.py does the same for the records): a sentence that
+    // only reports what the record does not list, name, state or hold is dropped from the model's answer. A sentence with a figure or a
+    // name in it is kept even when it is phrased in the negative, so "Leon Black is no longer a trustee" stays.
+    const ABSENCE_RE = /^(?:the\s+)?(?:records?|atlas|sources?|filing|entry|dossier|data|it)\s+(?:do|does|did)\s+not\s+(?:list|name|state|say|mention|give|include|identify|record|show|hold|specify|provide|report|disclose|indicate|contain)\b|^(?:no|nothing)\s+(?:further|more|else|other|additional|such|specific)?\s*[\w\s,-]{0,40}?\b(?:is|are|was|were)\s+(?:recorded|listed|named|given|stated|mentioned|found|held|available|provided|disclosed|reported|documented|identified|included)\b|^(?:there\s+(?:is|are)\s+no\s+(?:record|mention|information|detail|data|figure|note|entry)s?\b)|^[\w\s,'’()-]{0,60}?\b(?:is|are)\s+not\s+(?:recorded|listed|stated|named|given|mentioned|available|documented|specified|disclosed|provided|included|noted)\b(?:\s+in\s+the\s+(?:record|atlas|sources?|filing))?\s*[.!]?$/i;
+    // A sentence goes only when the whole of it is the absence: one that carries on ("..., but the treasurer is ...") or holds a figure stays.
+    const absent = (p) => ABSENCE_RE.test(p.trim()) && !/\d|USD|EUR|GBP|£|\$|€/.test(p) && !/[,;:]\s*(?:but|however|though|although|while|whereas|and|yet)\b|\b(?:but|however|although|whereas)\b/i.test(p);
+    function dropAbsenceLines(text) {
+      if (!text || typeof text !== 'string') return text;
+      return text.split('\n').map((line) => {
+        const item = /^(\s*(?:[-*]|\d+\.)\s+)([\s\S]*)$/.exec(line);
+        if (/^\s*[#>|]/.test(line)) return line;   // headings and tables keep their own shape
+        if (item) return absent(item[2]) ? '' : line;   // a list item that only reports an absence goes; the rest of the list stays
+        const parts = line.match(/[^.!?]+[.!?]+["')\]]*\s*|[^.!?]+$/g);
+        if (!parts) return line;
+        return parts.filter((p) => !absent(p)).join('').trim();
+      }).filter((line, i, arr) => line.trim() !== '' || (arr[i - 1] || '').trim() !== '').join('\n').trim();
+    }
+    window.dropAbsenceLines = dropAbsenceLines;
 
     async function testAPIConnection(prov, key, model) {
       const activeKey = key || aiApiKey || _SYS_KEY;
@@ -15192,8 +15226,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         box.appendChild(el);
       });
       scrollChatToBottom(false);
+      // The model takes 10 to 20 seconds to write a full answer, and a line that never changes reads as stuck (user, 3 Nov 2026):
+      // the words move on while it writes.
+      const word = (t) => document.querySelectorAll('[data-pending] .thinking').forEach((el) => { el.firstChild.nodeValue = t; });
+      showChatPending.timers = [setTimeout(() => word('Reading the record'), 4000), setTimeout(() => word('Writing the answer'), 9000), setTimeout(() => word('Nearly there'), 18000)];
     }
     function hideChatPending() {
+      (showChatPending.timers || []).forEach(clearTimeout);
+      showChatPending.timers = [];
       document.querySelectorAll('[data-pending]').forEach(el => el.remove());
     }
 
@@ -15446,6 +15486,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         curatorContext.lastInst = null;
         curatorContext.lastCity = null;
         curatorContext.history = [];
+        if (!selectedInstitution) { document.getElementById('mobileDetailsBtn')?.classList.add('hidden'); document.getElementById('phoneChatDetailsBtn')?.classList.add('hidden'); document.getElementById('chatSheetDetailsBtn')?.classList.add('hidden'); }
         curatorContext.activeEntityHistory = [];
       }
       const workInput = document.getElementById('workInput');
@@ -16492,10 +16533,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // The header's Details button: the record sheet of the selected space, from wherever the phone is (the chat, the record
       // page, or the map with the sheet closed). It is the phone's counterpart of the desktop Details tab.
       window.atlasOpenPhoneDetails = function () {
-        if (window.innerWidth >= 768 || typeof selectedInstitution === 'undefined' || !selectedInstitution) return;
+        const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || (typeof curatorContext !== 'undefined' && curatorContext.lastInst) || null;
+        if (window.innerWidth >= 768 || !inst) return;
         if (isChatInputMode && typeof exitChatInputMode === 'function') exitChatInputMode(true);
         window.atlasCloseChat();                       // the chat and the record page give way to the map
-        if (typeof updateMobileDossier === 'function') updateMobileDossier(selectedInstitution);
+        if (typeof updateMobileDossier === 'function') updateMobileDossier(inst);
         if (tabDossier) tabDossier.click();            // shows the sheet over the map
         else bottomSheet?.classList.remove('hidden');
       };
@@ -16507,6 +16549,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       closeChatBtn?.addEventListener('click', () => window.atlasCloseChat());
       document.getElementById('phoneChatCloseBtn')?.addEventListener('click', () => window.atlasCloseChat());
       document.getElementById('phoneChatDetailsBtn')?.addEventListener('click', () => { if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails(); });
+      document.getElementById('chatSheetDetailsBtn')?.addEventListener('click', () => { if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails(); });
 
       // Pull down to close, on both phone chat views (the chat sheet, and the chat that answers fill): from the top bar of the
       // view, or from the conversation when it is already scrolled to its top. The view follows the finger, so the pull never
@@ -20347,7 +20390,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=430"></script>
+<script src="assets/typeset.js?v=463"></script>
 <script src="assets/layers.js?v=447"></script>
 <script src="assets/hq-detail.js?v=447"></script>
 <script src="assets/bubbles.js?v=430" defer></script>
