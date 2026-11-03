@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=454">
+  <link rel="stylesheet" href="assets/atlas.css?v=461">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -727,7 +727,7 @@ return maplibregl$1;
         <div id="phoneChatHead" class="md-hidden" aria-label="Chat">
           <span class="sheet-grabber" aria-hidden="true"></span>
           <span class="flex-1"></span>
-          <button id="phoneChatListenBtn" type="button">Listen</button>
+          <button id="phoneChatDetailsBtn" type="button" class="hidden" aria-label="Space details">Details</button>
           <button id="phoneChatCloseBtn" type="button" aria-label="Close the chat and go back to the map">Close</button>
         </div>
 
@@ -9978,11 +9978,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v459';
+    const ATLAS_RELEASE = 'culture-atlas-v461';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=459').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=461').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12070,7 +12070,6 @@ return maplibregl$1;
       if (!blocks.length && !relatedReports.length && !accounts.length && !stale.length) return '';
       // data-gossip marks the one block of a reply that is gossip: assets/bubbles.js draws a comic balloon only around a turn that holds it.
       return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
-        ${gossipOn && gossipItems(inst).length ? `<p class="no-indent account-note">${GOSSIP_NOTE}</p>` : ''}
         ${blocks.join('')}
         ${stale.length ? `<h3 class="kicker">Older talk</h3>${stale.join('')}` : ''}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
@@ -12259,6 +12258,7 @@ return maplibregl$1;
       }
       if (badgeName) badgeName.textContent = '';
       document.getElementById('mobileDetailsBtn')?.classList.add('hidden');   // no space, no Details button on the phone
+      document.getElementById('phoneChatDetailsBtn')?.classList.add('hidden');
 
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) floatingCard.classList.add('hidden');
@@ -12314,6 +12314,7 @@ return maplibregl$1;
         tabDossierLabel.textContent = 'Details';
       }
       document.getElementById('mobileDetailsBtn')?.classList.remove('hidden');   // the phone header gets its Details button once a space is selected
+      document.getElementById('phoneChatDetailsBtn')?.classList.remove('hidden');   // and so does the top of the chat, beside Close
       if (typeof curatorContext !== 'undefined' && inst) {
         const prevInst = curatorContext.activeFocusInst || curatorContext.lastInst;
         const isNewFocus = !prevInst || prevInst.id !== inst.id || prevInst.name !== inst.name;
@@ -12770,7 +12771,7 @@ return maplibregl$1;
     function proseGossipHtml(inst) {
       if (!isGossipModeActive || !gossipItems(inst).length) return '';
       const gLis = gossipItems(inst).map(g => proseLi(`${g.headline}.`, escapeHtml([proseEnd(g.said), gossipAttribution(g), g.response ? 'The response: ' + proseEnd(g.response) : '', g.outcome ? 'The outcome: ' + proseEnd(g.outcome) : '', g.status === 'stale' ? 'Old talk; nothing since.' : g.status === 'denied' ? 'Denied.' : g.status === 'confirmed' ? 'Later confirmed.' : ''].filter(Boolean).join(' ')) + proseCite(g.urls, 4), true));
-      return proseRows([proseRow('Gossip', GOSSIP_NOTE, gLis, { tone: 'flag', gossip: true })], 'Gossip', true);
+      return proseRows([proseRow('Gossip', '', gLis, { tone: 'flag', gossip: true })], 'Gossip', true);
     }
     function proseBodyHtml(inst) {
       const d = inst.details || {};
@@ -13017,7 +13018,6 @@ return maplibregl$1;
     }
     // The gossip items: talk collected from the internet by the rules in notes/gossip-criteria.md, written onto the record by
     // tools/attach_gossip.py as gossip_data.gossip, newest first, stale ones last. Each names who says it, where, when and its sources.
-    const GOSSIP_NOTE = 'Talk collected from the internet, with its sources. Unverified unless marked confirmed or resolved.';
     const GOSSIP_WHO = { press: 'reported by', court_or_regulator: 'on record at', union: 'said by', open_letter: 'in an open letter at', campaign: 'said by a campaign at', social_named: 'posted by a named account on', social_anonymous: 'said by anonymous posters on', review_platform: 'said in reviews on', institution: 'said by the space on' };
     function gossipItems(inst, fresh) {
       const all = ((inst && inst.gossip_data || {}).gossip || []).filter(g => g && g.headline);
@@ -15854,7 +15854,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
               if (aiRes.gossip || aiRes.none) {
                 // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
-                appendCuratorMessage(aiRes.none ? aiHtml : `<div class="space-y-3" data-gossip="ai">${aiHtml}<p class="no-indent ai-note">AI-written from the gossip items and records. ${GOSSIP_NOTE}</p></div>`, []);
+                appendCuratorMessage(aiRes.none ? aiHtml : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, []);
                 return true;
               }
               let thinkingData = null;
@@ -15867,11 +15867,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              // The note names what the answer was written from: the records, or in Gossip mode the gossip items too. A one-line
-              // "no record" reply was written from nothing, so it carries no note.
-              const noRecord = /^\s*(?:<p>)?\s*The Atlas (?:has|holds) no record\b[^<]*(?:<\/p>)?\s*$/i.test(aiHtml);
-              const aiNote = noRecord ? '' : `<p class="no-indent ai-note">${isGossipModeActive ? `AI-written from the gossip items and records. ${GOSSIP_NOTE}` : 'AI-written from the records on this page.'}</p>`;
-              appendCuratorMessage(linkifyInstNames(aiHtml) + aiNote, [], webIntel, thinkingData);
+              // Answers carry no note about what they were written from, in Gossip mode or out of it.
+              appendCuratorMessage(linkifyInstNames(aiHtml), [], webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -16469,7 +16466,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       };
       closeChatBtn?.addEventListener('click', () => window.atlasCloseChat());
       document.getElementById('phoneChatCloseBtn')?.addEventListener('click', () => window.atlasCloseChat());
-      document.getElementById('phoneChatListenBtn')?.addEventListener('click', () => { if (typeof toggleCuratorVoice === 'function') toggleCuratorVoice(); });
+      document.getElementById('phoneChatDetailsBtn')?.addEventListener('click', () => { if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails(); });
 
       // Pull down to close, on both phone chat views (the chat sheet, and the chat that answers fill): from the top bar of the
       // view, or from the conversation when it is already scrolled to its top. The view follows the finger, so the pull never
