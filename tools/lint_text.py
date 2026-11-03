@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Text-slop lint for institutions.json: the rules in sponsor-atlas/work/ubatch/SLOP.md, run over every shown text field.
 
+The prose fields get every rule; the visit fields (amenities, accessibility, transit tips, curatorial focus) get the filler and
+dash rules only. A sweep is recorded in data/slop_runs/<date>/changes.json (25 Oct and 3 Nov 2026).
+
 Usage: python3 tools/lint_text.py [--json report.json] [--fix]
 Without --fix it only reports. --fix applies the mechanical repairs (dashes, curly/straight quote mix, a lower-case first letter,
 stat padding in funding) and leaves everything that needs a source to a human or to a research pass.
@@ -16,6 +19,11 @@ PATH = ROOT / 'institutions.json'
 
 PROSE = ['funding', 'watch', 'records_note', 'finances_note', 'affiliations_note', 'critique_note', 'why_flagged', 'other_findings',
          'highlight']
+# The visit fields are short lists, not prose, so they get only the filler and dash checks (the 3 Nov 2026 sweep found
+# "world-class bookshop", "spacious elevators", "panoramic terrace" and "premier bookshop" living there untouched).
+VISIT = ['amenities', 'accessibility', 'transit_tips', 'curatorial_focus']
+# Words that are subjects or names in those fields, not praise: a landscape programme, a monumental nave, Grassroots Assemblies.
+VISIT_LITERAL = re.compile(r'^(landscape|monumental|navigat\w+|grassroots)$', re.I)
 LIMIT = {'funding': 30, 'watch': 25}
 # Dossier fields under record['details'] that the lint also reads: (section, key) -> record['details'][section][key] or [section] if key is None
 DETAILS = [('press', 'overall'), ('bottom_line', None)]
@@ -23,8 +31,10 @@ DETAILS = [('press', 'overall'), ('bottom_line', None)]
 HEDGE = re.compile(r"\b((?-i:may)(?! \d)|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|are said to|believed to|likely|some say|"
                    r"it could be argued|probably|possibly|perhaps)\b", re.I)
 FILLER = re.compile(r"\b(vibrant|rich|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|"
-                    r"tapestry|testament to|nestled|boasts?|showcas\w+|fosters?|underscores?|delve|navigat\w+|landscape|ecosystem|"
+                    r"tapestry|testament to|nestled|boasts?|showcas\w+|fosters?|underscores?|delve|navigat\w+|landscape(?! architect| park| garden| design)|ecosystem|"
                     r"epic|monumental|energetic|towering|luminous|urgent|tackling|stunning|breathtaking|"
+                    r"premier|legendary|world-renowned|internationally renowned|award-winning|spacious|expansive|panoramic|picturesque|futuristic|"
+                    r"artisanal?|welcoming|innovative|"
                     r"hub of|heart of|spirit of|pure \w+ energy|grassroots|Grassroots|co-optation|self-sustaining)\b|(?<![\w.])0% ")
 EMPTY = re.compile(r"plays? a (crucial|key|vital) role|it is worth noting|in the realm of|a diverse range of|a variety of|among others|"
                    r"and more\b|not only .{1,60} but also|a wide range of|numerous|various (donors|funders|sponsors|partners)", re.I)
@@ -73,7 +83,9 @@ def problems(rec):
         if m:
             found.append('frame: ' + m.group(0))
         m = VAGUE.search(t)
-        if m and len(re.findall(r"(?<=[a-z,;:] )[A-Z][\w&'.-]+", t)) < 3:
+        # records_note describes what the site posts ("names 32 corporate partners"), so an unnamed roster there is a fact
+        # about the page, not a vague funder claim; the rule stays on the funding fields.
+        if m and f != 'records_note' and len(re.findall(r"(?<=[a-z,;:] )[A-Z][\w&'.-]+", t)) < 3:
             found.append('vague: ' + m.group(0))
         if f in LIMIT and words(t) > LIMIT[f]:
             found.append(f'over {LIMIT[f]} words ({words(t)})')
@@ -81,10 +93,21 @@ def problems(rec):
             found.append('visitor count in funding')
         if f == 'records_note' and NOSITE.search(t):
             found.append('no-site boilerplate')
-        if re.match(r"[a-z]", t.strip()) and not re.match(r"(la|le|el|de|van|von|der|den|di|da|du|al|ibn|bin|e-flux|[a-z]+[A-Z])\b", t.strip()):
+        if re.match(r"[a-z]", t.strip()) and not re.match(r"(la|le|el|de|van|von|der|den|di|da|du|al|ibn|bin|[a-z]+[A-Z])\b", t.strip()):
             found.append('lower-case start')
         for p in found:
             out.append((f, p))
+    for f in VISIT:
+        t = rec.get(f)
+        if isinstance(t, list):
+            t = ' | '.join(x for x in t if isinstance(x, str))
+        if not isinstance(t, str) or not t.strip():
+            continue
+        if MEDIAL.search(t):
+            out.append((f, 'dash'))
+        m = next((m for m in FILLER.finditer(t) if not VISIT_LITERAL.match(m.group(0))), None)
+        if m:
+            out.append((f, 'filler: ' + m.group(0)))
     det = rec.get('details') or {}
     for sec, key in DETAILS:
         t = det.get(sec)
