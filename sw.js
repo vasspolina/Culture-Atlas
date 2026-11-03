@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v453';
+const CACHE_NAME = 'culture-atlas-v455';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -23,6 +23,7 @@ const ASSETS_TO_CACHE = [
   './assets/config.js',
   './assets/typeset.js',
   './assets/subtopic.js',
+  './assets/names.js',
   './assets/grounding.js'
 ];
 

@@ -35,9 +35,10 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=452">
+  <link rel="stylesheet" href="assets/atlas.css?v=454">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
+  <script src="assets/names.js?v=1"></script>
   <script src="assets/grounding.js?v=447"></script>
   <script>
 /**
@@ -9975,11 +9976,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v453';
+    const ATLAS_RELEASE = 'culture-atlas-v455';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=453').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=455').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15040,6 +15041,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return false;
       });
       if (direct) return direct;
+      // A name spelled in another language or another order ("Jewish museum berlin" for the Jüdisches Museum Berlin) is that
+      // record, whatever its tier, before "museum" plus a city is read as a request for every space in the city.
+      if (!contextual && window.AtlasNames) {
+        const named = AtlasNames.findNamedSpace(text, ALL_INSTITUTIONS);
+        if (named) return named;
+      }
       // A question about spaces in general or a comparison names no one space, so a near-miss on its words is not a guess worth making.
       const aboutMany = /\b(spaces|museums|galleries|institutions|cities|countries|compare|versus)\b/.test(t)
         || (/\b(museum|space|gallery|institution)\b/.test(t) && [...ALL_CITIES_REGISTRY, ...ALL_COUNTRIES_REGISTRY].some(c => c && c.name && new RegExp('\\b' + c.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(t)));
@@ -15661,6 +15668,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!t) return false;
       const names = [inst.name, ...(inst.aliases || [])].map(clean);
       if (names.includes(t)) return true;
+      // The name in another language or order ("Jewish museum berlin") is still a request for this record.
+      if (window.AtlasNames && AtlasNames.findNamedSpace(t, ALL_INSTITUTIONS) === inst) {
+        const own = AtlasNames.stems([inst.name, ...(inst.aliases || []), inst.city, inst.country].filter(Boolean).join(' '));
+        if (AtlasNames.stems(t).every(w => own.includes(w))) return true;
+      }
       const place = [inst.city, inst.country].map(clean).filter(Boolean);
       if (place.includes(t)) return false;
       const isPlace = (typeof ALL_CITIES !== 'undefined' && ALL_CITIES.some(c => clean(c) === t)) ||
@@ -15851,7 +15863,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              appendCuratorMessage(linkifyInstNames(aiHtml) + '<p class="no-indent ai-note">AI-written from the gossip items and records. ${GOSSIP_NOTE}</p>', [], webIntel, thinkingData);
+              // The note names what the answer was written from: the records, or in Gossip mode the gossip items too. A one-line
+              // "no record" reply was written from nothing, so it carries no note.
+              const noRecord = /^\s*(?:<p>)?\s*The Atlas (?:has|holds) no record\b[^<]*(?:<\/p>)?\s*$/i.test(aiHtml);
+              const aiNote = noRecord ? '' : `<p class="no-indent ai-note">${isGossipModeActive ? `AI-written from the gossip items and records. ${GOSSIP_NOTE}` : 'AI-written from the records on this page.'}</p>`;
+              appendCuratorMessage(linkifyInstNames(aiHtml) + aiNote, [], webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
