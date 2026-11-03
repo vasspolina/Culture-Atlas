@@ -2227,7 +2227,7 @@ div:has(>#topThemeBtn){column-gap:0}
    the right in ruled rows with the label in the accent colour. Narrower than 620px the actions run in a row under the title and the rows take the full width. */
 :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-grid{display:block}
 :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main{min-width:0;margin-top:var(--L)}
-:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main>.institution-summary{font-size:var(--fs-l)!important;line-height:1.25!important;margin:0 0 var(--L)!important;text-indent:0;max-width:none;text-wrap:balance}
+:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main>.institution-summary{font-size:var(--fs-l)!important;line-height:1.25!important;margin:0 0 var(--L)!important;text-indent:0;max-width:none;text-wrap:wrap}
 :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-rows{margin:0}
 :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-row{counter-increment:none}
 :root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main .d-rows h3.d-row-title::before{content:none}
