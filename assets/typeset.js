@@ -310,3 +310,49 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
+
+// No orphans (user, 3 Nov 2026: "do not leave one word in a line, mobile or desktop"). The last two words of a paragraph, list item, row or title are
+// joined by a non-breaking space, so a line never ends on a word alone. CSS text-wrap:pretty does the same only in the newest browsers. Only the last
+// text node of a block is touched, and only when it holds a space of its own; a block that already ends on a non-breaking space is left as it is.
+(function () {
+  var SEL = 'p,li,dd,dt,h1,h2,h3,h4,h5,h6,figcaption,.lede,.meta,.kicker,.institution-summary,.d-row-sub,.d-row-title,.record-action,.layer-desc,.curator-message-wrap div,.curator-section-hdr';
+  var pending = [], timer = 0;
+  function lastText(el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n, last = null;
+    while ((n = w.nextNode())) { if (/\S/.test(n.nodeValue)) last = n; }
+    return last;
+  }
+  function bind(el) {
+    if (el.closest('input,textarea,script,style,code,pre,svg,[data-no-orphan],.chat-pending,[contenteditable]')) return;
+    var t = lastText(el);
+    if (!t) return;
+    var v = t.nodeValue;
+    if (v === el.__orph) return;
+    var m = /^([\s\S]*?\S)[ \t\n]+(\S+)([ \t\n]*)$/.exec(v);
+    if (!m) return;
+    var next = m[1] + ' ' + m[2] + m[3];
+    t.nodeValue = next;
+    el.__orph = next;
+  }
+  function mark(root) {
+    var list = root.matches && root.matches(SEL) ? [root] : [];
+    list = list.concat([].slice.call(root.querySelectorAll(SEL)));
+    list.forEach(bind);
+  }
+  function flush() {
+    timer = 0;
+    var batch = pending; pending = [];
+    batch.forEach(function (n) { if (n.isConnected) mark(n); });
+  }
+  function later(n) { pending.push(n); if (!timer) timer = setTimeout(flush, 16); }
+  function start() {
+    later(document.body);
+    new MutationObserver(function (list) {
+      list.forEach(function (m) {
+        m.addedNodes.forEach(function (a) { var el = a.nodeType === 1 ? a : a.parentElement; if (el) later(el); });
+      });
+    }).observe(document.body, { childList: true, subtree: true });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { later(document.body); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
