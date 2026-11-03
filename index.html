@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=462">
+  <link rel="stylesheet" href="assets/atlas.css?v=463">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -473,8 +473,9 @@ return maplibregl$1;
           <span class="sheet-grabber" aria-hidden="true"></span>
           <div></div>
           <div class="flex items-center space-x-2">
+            <button id="chatSheetDetailsBtn" type="button" class="px-2 py-0_5 hidden" aria-label="Space details">Details</button>
             <button id="curatorDrawerListenBtn" type="button" class="px-2 py-0_5">Listen</button>
-            <button class="px-1" id="close-chat-view-btn" type="button">Close</button>
+            <button class="px-1" id="close-chat-view-btn" type="button" aria-label="Close the chat"><span>Close</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
           </div>
         </div>
         <!-- Chat Transcript Message Area -->
@@ -728,7 +729,7 @@ return maplibregl$1;
           <span class="sheet-grabber" aria-hidden="true"></span>
           <span class="flex-1"></span>
           <button id="phoneChatDetailsBtn" type="button" class="hidden" aria-label="Space details">Details</button>
-          <button id="phoneChatCloseBtn" type="button" aria-label="Close the chat and go back to the map">Close</button>
+          <button id="phoneChatCloseBtn" type="button" aria-label="Close the chat and go back to the map"><span>Close</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
         </div>
 
         <!-- The width of the chat: drag either edge of the column, or focus the handle and use the arrow keys -->
@@ -9986,11 +9987,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v461';
+    const ATLAS_RELEASE = 'culture-atlas-v463';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=461').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=463').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12291,8 +12292,11 @@ return maplibregl$1;
         badgeWrap.classList.remove('flex');
       }
       if (badgeName) badgeName.textContent = '';
-      document.getElementById('mobileDetailsBtn')?.classList.add('hidden');   // no space, no Details button on the phone
-      document.getElementById('phoneChatDetailsBtn')?.classList.add('hidden');
+      // A space the chat has named keeps the Details button on the phone; with none, there is nothing to open.
+      const keptInst = (typeof curatorContext !== 'undefined' && curatorContext.lastInst) ? curatorContext.lastInst : null;
+      document.getElementById('mobileDetailsBtn')?.classList.toggle('hidden', !keptInst);
+      document.getElementById('phoneChatDetailsBtn')?.classList.toggle('hidden', !keptInst);
+      document.getElementById('chatSheetDetailsBtn')?.classList.toggle('hidden', !keptInst);
 
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) floatingCard.classList.add('hidden');
@@ -12349,6 +12353,7 @@ return maplibregl$1;
       }
       document.getElementById('mobileDetailsBtn')?.classList.remove('hidden');   // the phone header gets its Details button once a space is selected
       document.getElementById('phoneChatDetailsBtn')?.classList.remove('hidden');   // and so does the top of the chat, beside Close
+      document.getElementById('chatSheetDetailsBtn')?.classList.remove('hidden');   // and so does the top of the chat, beside Close
       if (typeof curatorContext !== 'undefined' && inst) {
         const prevInst = curatorContext.activeFocusInst || curatorContext.lastInst;
         const isNewFocus = !prevInst || prevInst.id !== inst.id || prevInst.name !== inst.name;
@@ -14445,6 +14450,9 @@ return maplibregl$1;
         if (!prevTarget || prevTarget.id !== mentionedInst.id) {
           curatorContext.activeFocusInst = mentionedInst;
           curatorContext.lastInst = mentionedInst;
+          document.getElementById('mobileDetailsBtn')?.classList.remove('hidden');   // the chat named a space: Details can open it
+          document.getElementById('phoneChatDetailsBtn')?.classList.remove('hidden');
+          document.getElementById('chatSheetDetailsBtn')?.classList.remove('hidden');
           if (mentionedInst.city) curatorContext.lastCity = mentionedInst.city;
           curatorContext.activeEntityHistory = [];
         }
@@ -14582,6 +14590,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
    - Do not claim facts about the intended institution beyond what its record and cited sources support.
 </system_instructions>`;
 
+      // A model that does not answer in 30 seconds gives way to the record answer, so "Thinking" never hangs.
+      const chatSignal = () => (typeof AbortSignal !== 'undefined' && AbortSignal.timeout) ? AbortSignal.timeout(30000) : undefined;
+
       const startTime = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
       try {
         let rawText = '';
@@ -14589,6 +14600,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (prov === 'anthropic') {
           const res = await fetch(useProxy ? ATLAS_AI_PROXY_URL : 'https://api.anthropic.com/v1/messages', {
             method: 'POST',
+            signal: chatSignal(),
             headers: useProxy ? { 'Content-Type': 'application/json' } : {
               'Content-Type': 'application/json',
               'x-api-key': activeKey,
@@ -14620,6 +14632,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         } else if (prov === 'openai') {
           const res = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
+            signal: chatSignal(),
             headers: {
               'Content-Type': 'application/json',
               'Authorization': `Bearer ${activeKey}`
@@ -14641,6 +14654,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           // Google Gemini
           const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${activeKey}`, {
             method: 'POST',
+            signal: chatSignal(),
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               systemInstruction: { parts: [{ text: criticalSystemPrompt }] },
@@ -15488,6 +15502,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         curatorContext.lastInst = null;
         curatorContext.lastCity = null;
         curatorContext.history = [];
+        if (!selectedInstitution) { document.getElementById('mobileDetailsBtn')?.classList.add('hidden'); document.getElementById('phoneChatDetailsBtn')?.classList.add('hidden'); document.getElementById('chatSheetDetailsBtn')?.classList.add('hidden'); }
         curatorContext.activeEntityHistory = [];
       }
       const workInput = document.getElementById('workInput');
@@ -16534,10 +16549,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // The header's Details button: the record sheet of the selected space, from wherever the phone is (the chat, the record
       // page, or the map with the sheet closed). It is the phone's counterpart of the desktop Details tab.
       window.atlasOpenPhoneDetails = function () {
-        if (window.innerWidth >= 768 || typeof selectedInstitution === 'undefined' || !selectedInstitution) return;
+        const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || (typeof curatorContext !== 'undefined' && curatorContext.lastInst) || null;
+        if (window.innerWidth >= 768 || !inst) return;
         if (isChatInputMode && typeof exitChatInputMode === 'function') exitChatInputMode(true);
         window.atlasCloseChat();                       // the chat and the record page give way to the map
-        if (typeof updateMobileDossier === 'function') updateMobileDossier(selectedInstitution);
+        if (typeof updateMobileDossier === 'function') updateMobileDossier(inst);
         if (tabDossier) tabDossier.click();            // shows the sheet over the map
         else bottomSheet?.classList.remove('hidden');
       };
@@ -16549,6 +16565,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       closeChatBtn?.addEventListener('click', () => window.atlasCloseChat());
       document.getElementById('phoneChatCloseBtn')?.addEventListener('click', () => window.atlasCloseChat());
       document.getElementById('phoneChatDetailsBtn')?.addEventListener('click', () => { if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails(); });
+      document.getElementById('chatSheetDetailsBtn')?.addEventListener('click', () => { if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails(); });
 
       // Pull down to close, on both phone chat views (the chat sheet, and the chat that answers fill): from the top bar of the
       // view, or from the conversation when it is already scrolled to its top. The view follows the finger, so the pull never
@@ -20389,7 +20406,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=430"></script>
+<script src="assets/typeset.js?v=463"></script>
 <script src="assets/layers.js?v=447"></script>
 <script src="assets/hq-detail.js?v=447"></script>
 <script src="assets/bubbles.js?v=430" defer></script>

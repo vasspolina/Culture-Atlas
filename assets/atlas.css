@@ -2989,3 +2989,19 @@ div:has(>#topThemeBtn){column-gap:0}
   #dossier-bottom-sheet .sheet-close{top:0!important;right:var(--m-s4)!important;width:48px!important;height:48px!important;background:var(--grey)!important;color:var(--ink)!important}
   #dossier-bottom-sheet .sheet-close svg{width:32px;height:32px;stroke-width:1.1;stroke-linecap:butt}
 }
+
+/* Phone chat Close carries a cross, as the record sheet's does (user, 3 Nov 2026). */
+@media (max-width:767px){
+  :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #phoneChatCloseBtn,
+  #close-chat-view-btn{display:inline-flex;align-items:center;gap:6px}
+  #phoneChatCloseBtn svg,#close-chat-view-btn svg{flex:0 0 auto;width:16px;height:16px}
+}
+
+/* No single word on a last line, where the browser can see to it itself; typeset.js binds the last two words for the rest (user, 3 Nov 2026). */
+:root :is(p,li,dd,figcaption,.d-row-sub,.institution-summary){text-wrap:pretty}
+
+/* The phone's title wraps to two lines when Details, Chat and the rest crowd the bar, instead of ending in "..." (user, 3 Nov 2026). */
+@media (max-width:767px){
+  :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileTopBrandBtn>div{overflow:visible!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileTopBrandBtn>div>span:first-child{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.15!important;text-wrap:balance}
+}
