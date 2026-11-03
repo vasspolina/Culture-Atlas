@@ -3240,3 +3240,64 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel .head-grid>*{margin:0!important;padding:0!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel .head-main .d-row{padding-top:0!important}
 }
+
+/* ==== PHONE: ALERTS, SOURCES SAID OUTRIGHT, LOCATION CHIPS, ONE RECORD VIEW (user, 3 Nov 2026) ====
+   From assets/phone-maps.js (topStory, locationChips, oneRecordView). Alerts are red, the one place on the page that colour
+   means "now"; black text on it measures 6.4:1. */
+#gmToast,.gm-alert-mark{display:none}
+@media (max-width:767px){
+  :root{--gm-alert:#ff5a4e}
+  /* The Full record button goes: the sheet's tabs hold the whole record. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #dossier-sheet-audit-btn{display:none!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #gmFull{margin-top:var(--m-s2,8px)}
+
+  /* The strip in alert colours while there is an alert now. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert .gm-strip-label{background:var(--gm-alert)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert .gm-strip-label i{animation:gm-blink 1.6s ease-in-out infinite}
+
+  /* Alert marks on the map: a red ring with an exclamation mark, pulsing, over the space. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-alert-mark{display:flex;position:absolute;left:-12px;top:-12px;z-index:16;width:24px;height:24px;min-height:24px;padding:0!important;align-items:center;justify-content:center;border:2px solid #000!important;border-radius:50%!important;background:var(--gm-alert)!important;color:#000!important;font:300 14px/1 var(--sans)!important;visibility:hidden;box-shadow:0 0 0 0 var(--gm-alert);animation:gm-ring 2s ease-out infinite}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-alert-mark.is-on{visibility:visible}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-alert-mark::after{content:"";position:absolute;inset:-10px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-alert-mark:focus-visible{outline:3px solid var(--focus)!important;outline-offset:3px}
+  :root.gm-sheet .gm-alert-mark{z-index:14}
+
+  /* The feed's live line, the bell, the alert sections and the source line on every card. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-feed-live{display:flex;align-items:center;gap:8px;margin:0;padding:0 16px 8px;font:300 14px/20px var(--sans)!important;color:var(--ink)!important;text-indent:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-feed-live i{flex:none;width:8px;height:8px;border-radius:50%;background:#2fbf71;box-shadow:0 0 0 1px var(--ink);animation:gm-blink 2s ease-in-out infinite}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-bell{display:inline-flex;align-items:center;gap:6px;height:36px;min-height:36px;padding:0 12px!important;border:.8px solid var(--ink)!important;border-radius:18px;background:transparent!important;color:var(--ink)!important;font:300 14px/1 var(--sans)!important;white-space:nowrap}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-bell svg{width:18px;height:18px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-bell[aria-pressed="true"]{background:var(--ink)!important;color:var(--paper)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-bell:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-feed-head h2{min-width:0}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-feed-sec.is-alert{border-top:0;margin-top:8px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-feed-sec.is-alert svg{color:var(--ink);background:var(--gm-alert);border-radius:50%;padding:2px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-poster.is-alert .gm-poster-pill{background:var(--gm-alert)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-alert-tag{display:inline-block;padding:0 8px;margin-right:4px;border-radius:4px;background:var(--gm-alert);color:#000;font:300 14px/22px var(--sans)!important;vertical-align:2px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-story.is-focus{box-shadow:inset 4px 0 0 var(--gm-alert)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-story-prov{margin:10px 0 0;padding:8px 10px;border-left:3px solid var(--ink);font:300 14px/20px var(--sans)!important;color:var(--ink)!important;text-indent:0!important;background:color-mix(in srgb,var(--ink) 5%,var(--paper))}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-story-prov.is-user{border-left-color:var(--gm-talk);background:color-mix(in srgb,var(--gm-talk) 18%,var(--paper))}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-story-prov b{font-weight:inherit;text-decoration:underline;text-underline-offset:3px}
+
+  /* The toast that says a new report or alert has come in. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmToast{display:block;position:fixed;left:var(--gm-gap);right:var(--gm-gap);top:calc(var(--safe-t,0px) + 12px);z-index:90;margin:0;padding:12px 16px;border-radius:12px;background:var(--ink);color:var(--paper);font:300 14px/20px var(--sans);opacity:0;transform:translateY(-8px);transition:opacity .2s,transform .2s;pointer-events:none;box-shadow:var(--gm-shadow)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmToast.is-on{opacity:1;transform:none}
+
+  /* The place the chips are about, as their first chip. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .gm-loc-label{gap:6px;background:var(--ink)!important;color:var(--paper)!important;pointer-events:none}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .gm-loc-label::before{content:"";width:14px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s-7-6.6-7-12a7 7 0 0 1 14 0c0 5.4-7 12-7 12zm0-9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 22s-7-6.6-7-12a7 7 0 0 1 14 0c0 5.4-7 12-7 12zm0-9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'/%3E%3C/svg%3E") center/contain no-repeat}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip.is-alert{background:var(--gm-alert)!important;color:#000!important}
+}
+@keyframes gm-ring{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--gm-alert) 70%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
+@keyframes gm-blink{50%{opacity:.3}}
+@media (prefers-reduced-motion:reduce){.gm-alert-mark,#gmStoryStrip i,#gmFeed .gm-feed-live i{animation:none!important}}
+/* The record's gossip cards say what kind of source each rests on (gossipProvenance in index.html). */
+.gossip-provenance{display:inline-block;margin-top:2px}
+
+/* Under a tab the record does not repeat the tab's own name, and its sections sit one line apart, not at the desktop's 45px. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #gmFull section.d-row{padding-top:16px!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #gmFull,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #gmFull>*,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #gmFull .d-rows,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #gmFull .space-y-3>*{margin-top:0!important;padding-top:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #gmFull section.d-row.gm-same-as-tab>.d-row-head{display:none!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #gmFull section.d-row.gm-same-as-tab{padding-top:4px!important}
+}
