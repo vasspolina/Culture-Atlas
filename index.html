@@ -9978,11 +9978,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v459';
+    const ATLAS_RELEASE = 'culture-atlas-v461';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=459').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=461').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15867,10 +15867,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              // The note names what the answer was written from: the records, or in Gossip mode the gossip items too. A one-line
-              // "no record" reply was written from nothing, so it carries no note.
+              // Only Gossip mode carries a note (what the gossip was written from, and that it is unverified). A plain answer
+              // carries none. A one-line "no record" reply was written from nothing, so it carries no note either.
               const noRecord = /^\s*(?:<p>)?\s*The Atlas (?:has|holds) no record\b[^<]*(?:<\/p>)?\s*$/i.test(aiHtml);
-              const aiNote = noRecord ? '' : `<p class="no-indent ai-note">${isGossipModeActive ? `AI-written from the gossip items and records. ${GOSSIP_NOTE}` : 'AI-written from the records on this page.'}</p>`;
+              const aiNote = (noRecord || !isGossipModeActive) ? '' : `<p class="no-indent ai-note">AI-written from the gossip items and records. ${GOSSIP_NOTE}</p>`;
               appendCuratorMessage(linkifyInstNames(aiHtml) + aiNote, [], webIntel, thinkingData);
               return true;
             }
