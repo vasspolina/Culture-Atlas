@@ -184,14 +184,14 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 .source-citation-pill svg{flex:none}
 /* The name is a flex item, so it would take the paragraph's first-line indent; it sits against the icon instead. */
 .source-citation-pill span{text-indent:0}
-.inst-link,.city-link,.dossier-link{text-decoration:underline;cursor:pointer}
+.inst-link,.space-web-link,.city-link,.dossier-link{text-decoration:underline;cursor:pointer}
 /* Bold and capitals belong to one thing only: the name of a space (user's instruction, 19 Oct 2026). Everything else is in
    the roman, in normal case, and a heading is told by its size and the space around it (Hochuli p.44: capitals and bold
    are restless in running text). In running text a name keeps the text's leading and is set a step smaller, as capitals
    are (p.44, fig 54), so it does not shout over the line. */
-.inst-link,.space-name{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.02em}
-:is(.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#floatingCard) .inst-link,.record-popup-line .space-name{line-height:inherit}
-.inst-link:hover,.city-link:hover,.dossier-link:hover{background:var(--peri)}
+.inst-link,.space-web-link,.space-name{font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.02em}
+:is(.curator-message-wrap,#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#floatingCard) :is(.inst-link,.space-web-link),.record-popup-line .space-name{line-height:inherit}
+.inst-link:hover,.space-web-link:hover,.city-link:hover,.dossier-link:hover{background:var(--peri)}
 
 /* ---- chat ---- */
 #curatorIntelligenceColumn{background:var(--paper)}
