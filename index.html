@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=473">
+  <link rel="stylesheet" href="assets/atlas.css?v=475">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -16507,31 +16507,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         else if (name === 'chat') tabChat?.click();
       };
 
-      // Record sheet detents: medium (about half the map) and large. Tap the grabber, or drag it up or down 40px, to switch;
-      // dragging down from medium closes, like a SwiftUI sheet. Scrolling the record up from medium also opens it to large.
-      (function () {
-        const sheet = document.getElementById('dossier-bottom-sheet');
-        const chrome = document.getElementById('sheet-drag-handle');
-        const sizeBtn = document.getElementById('sheet-size-btn');
-        if (!sheet || !chrome) return;
-        const setLarge = (on) => {
-          sheet.classList.toggle('is-large', on);
-          if (sizeBtn) { sizeBtn.setAttribute('aria-expanded', String(on)); sizeBtn.setAttribute('aria-label', on ? 'Shrink space details' : 'Expand space details'); }
-        };
-        sizeBtn?.addEventListener('click', () => setLarge(!sheet.classList.contains('is-large')));
-        let y0 = null;
-        chrome.addEventListener('touchstart', (e) => { if (!e.target.closest('#close-sheet-btn')) y0 = e.touches[0].clientY; }, { passive: true });
-        chrome.addEventListener('touchend', (e) => {
-          if (y0 === null) return;
-          const dy = e.changedTouches[0].clientY - y0; y0 = null;
-          // One height on a phone (user, 2 Nov 2026): the sheet always covers the map, so dragging the bar down closes it.
-          if (dy > 40) document.getElementById('close-sheet-btn')?.click();
-        }, { passive: true });
-        // A new record opens full, scrolled to its title.
-        new MutationObserver(() => { if (sheet.classList.contains('hidden')) { sheet.scrollTop = 0; } else { setLarge(true); } }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
-        const name = document.getElementById('dossier-sheet-name');
-        if (name) new MutationObserver(() => { sheet.scrollTop = 0; }).observe(name, { childList: true, characterData: true, subtree: true });
-      })();
+      // Record sheet heights (peek, half, full), dragging and the grabber: assets/phone-maps.js (user, 3 Nov 2026, after a maps app).
 
       closeSheetBtn?.addEventListener('click', () => {
         bottomSheet?.classList.add('hidden');
@@ -20421,5 +20397,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/layers.js?v=473"></script>
 <script src="assets/hq-detail.js?v=473"></script>
 <script src="assets/bubbles.js?v=430" defer></script>
+<script src="assets/phone-maps.js?v=475"></script>
 </body>
 </html>
