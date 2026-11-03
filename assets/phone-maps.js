@@ -54,6 +54,16 @@
       input.setAttribute('aria-label', input.getAttribute('placeholder') || 'Ask about a space, its funders or controversies');
       input.setAttribute('placeholder', 'Search the atlas');
 
+      // Chat stays one tap away on the map (user, 3 Nov 2026: "keep features like chat"): a button in the box opens
+      // the conversation where it was left, or a fresh one when there is none yet. The menu's New chat starts over.
+      const chatBtn = document.createElement('button');
+      chatBtn.type = 'button';
+      chatBtn.id = 'gmChatBtn';
+      chatBtn.setAttribute('aria-label', 'Open the chat');
+      chatBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Chat</span>';
+      chatBtn.addEventListener('click', openChat);
+      card.appendChild(chatBtn);
+
       menuBtn = document.createElement('button');
       menuBtn.type = 'button';
       menuBtn.id = 'gmMenuBtn';
@@ -78,7 +88,7 @@
         ['mobileThemeBtn'],
         ['mobileStickyShareBtn'],
         ['mobileStickyVoiceBtn', 'Read answers aloud'],
-        ['reset-state-btn', 'Chat'],
+        ['reset-state-btn', 'New chat'],
       ];
       const buildMenu = () => {
         menu.innerHTML = '';
@@ -114,6 +124,18 @@
         if (menu && !menu.hidden && !menu.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) closeMenu(false);
       });
     }
+    function openChat() {
+      closeMenu(false);
+      const hasTalk = !!document.querySelector('#curatorMessages > *:not(#curatorHeroGreeting):not(#curatorStarterPrompts)');
+      if (!hasTalk && typeof window.resetToNewChat === 'function') window.resetToNewChat();
+      chatDrawer && chatDrawer.classList.add('hidden');
+      sheet && sheet.classList.add('hidden');
+      if (typeof window.setMobileViewMode === 'function') window.setMobileViewMode('chat');
+      document.getElementById('tab-chat')?.classList.add('is-on');
+      const box = $('workInput');
+      if (box) setTimeout(() => { try { box.focus({ preventScroll: true }); } catch (_) { box.focus(); } }, 60);
+    }
+    window.atlasOpenPhoneChat = openChat;
     function closeMenu(refocus) {
       if (!menu || menu.hidden) return;
       menu.hidden = true;
