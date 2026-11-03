@@ -2531,6 +2531,18 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileStickySendBtn svg{width:18px!important;height:18px!important;color:#000!important}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileStickySendBtn::after{content:"";position:absolute;inset:-4px}
 @media (hover:hover){:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions :is(#mobileStickyShareBtn,#mobileStickyVoiceBtn):hover{background:#fff204!important;color:#000!important}}
+
+/* Phone, record open (user, 3 Nov 2026: "I can't read whistleblower accounts because of chat … the chat on mobile can be one line"):
+   while the record drawer is up, the composer is one line — the input and the send button side by side, Share, Voice and the starter chips
+   hidden — so the record gets the screen. Tapping into the input brings the full composer back; the main-view composer is unchanged. */
+@media (max-width:767px){
+  :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus)){gap:0!important;padding-top:6px!important;padding-bottom:max(6px,env(safe-area-inset-bottom))!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus))>#mobileSuggestChips{display:none!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus))>#mobileComposerCard{display:flex!important;align-items:center!important;gap:8px!important;min-height:48px!important;padding:6px 6px 6px 16px!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus)) #mobileComposerCard #chat-input{flex:1 1 auto!important;min-width:0!important;width:auto!important;height:24px!important;min-height:24px!important;max-height:24px!important;margin:0!important;overflow:hidden!important;white-space:nowrap!important;text-overflow:ellipsis!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus)) #mobileComposerCard #mobileComposerActions{flex:0 0 auto!important;gap:0!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus)) #mobileComposerActions :is(#mobileStickyShareBtn,#mobileStickyVoiceBtn,#mobileKbCloseBtn,span){display:none!important}
+}
 :root:root:root:root:root:root:root:root:root:root:root:root #layersBtn{height:34px!important;min-height:34px!important;padding:0 10px 0 12px!important;border-radius:0!important}
 
 /* Phone chat: your messages sit right in a rounded bubble, answers stay plain text — as in the Claude app */
