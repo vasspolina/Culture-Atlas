@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=468">
+  <link rel="stylesheet" href="assets/atlas.css?v=470">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -9987,11 +9987,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v469';
+    const ATLAS_RELEASE = 'culture-atlas-v470';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=469').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=470').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12699,7 +12699,8 @@ return maplibregl$1;
       opts = opts || {};
       let list = (lis || []).filter(Boolean);
       let subtitle = sub || '';
-      if (subtitle && !isSubtitle(subtitle)) { list = [`<li${opts.gossip ? ' data-gossip="item"' : ''}>${subtitle}</li>`].concat(list); subtitle = ''; }
+      // A subtitle too long for the head leads the points instead, as a line of its own without a bullet.
+      if (subtitle && !isSubtitle(subtitle)) { list = [`<li class="d-row-lead"${opts.gossip ? ' data-gossip="item"' : ''}>${subtitle}</li>`].concat(list); subtitle = ''; }
       if (opts.box) list = list.concat([`<li>${opts.box}</li>`]);
       const items = list.join('');
       if (!title || (!items && !subtitle)) return '';
@@ -12864,7 +12865,9 @@ return maplibregl$1;
         if (!said && !it.title) return '';
         return proseLi('', `${o}${it.title ? ', ' + escapeHtml(proseEnd(it.title)) + ' ' : escapeHtml(when) + ': '}${escapeHtml(said)}`);
       }).filter(Boolean);
-      rows.push(proseRow('In the art press', press.overall ? escapeHtml(proseEnd(press.overall)) : '', pressLis));
+      // The overview sits as the subtitle when it fits; one too long for that would only repeat the pieces as a bullet of its own, so it goes.
+      const pressSub = press.overall ? escapeHtml(proseEnd(press.overall)) : '';
+      rows.push(proseRow('In the art press', pressLis.length && !isSubtitle(pressSub) ? '' : pressSub, pressLis));
       if (inst.critique_note) rows.push(proseRow('What the field says', '', [proseLi('', escapeHtml(proseEnd(inst.critique_note)))]));
       const caseLis = (inst.case_notes || []).map(n => proseLi(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3), true));
       rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true }));
@@ -20391,8 +20394,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
   
   </script>
 <script src="assets/typeset.js?v=463"></script>
-<script src="assets/layers.js?v=469"></script>
-<script src="assets/hq-detail.js?v=466"></script>
+<script src="assets/layers.js?v=470"></script>
+<script src="assets/hq-detail.js?v=470"></script>
 <script src="assets/bubbles.js?v=430" defer></script>
 </body>
 </html>
