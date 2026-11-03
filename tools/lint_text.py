@@ -81,7 +81,7 @@ def problems(rec):
             found.append('visitor count in funding')
         if f == 'records_note' and NOSITE.search(t):
             found.append('no-site boilerplate')
-        if re.match(r"[a-z]", t.strip()) and not re.match(r"(la|le|el|de|van|von|der|den|di|da|du|al|ibn|bin|[a-z]+[A-Z])\b", t.strip()):
+        if re.match(r"[a-z]", t.strip()) and not re.match(r"(la|le|el|de|van|von|der|den|di|da|du|al|ibn|bin|e-flux|[a-z]+[A-Z])\b", t.strip()):
             found.append('lower-case start')
         for p in found:
             out.append((f, p))
