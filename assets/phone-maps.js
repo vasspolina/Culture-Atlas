@@ -515,6 +515,8 @@
           btn.removeAttribute('aria-busy');
           btn.classList.add('is-on');
           here = { lat: pos.coords.latitude, lon: pos.coords.longitude };
+          window.atlasHere = here;
+          document.dispatchEvent(new CustomEvent('atlas:here'));
           const flyTo = g('flyTo'), cityR = g('getCityTargetRadius');
           const near = nearestCity(here.lat, here.lon);
           let r = null;
@@ -538,6 +540,205 @@
         dot.classList.toggle('is-on', !!p.front);
         if (p.front) dot.style.transform = 'translate(' + (rect.left - vr.left + p.x) + 'px,' + (rect.top - vr.top + p.y) + 'px)';
       })();
+    })();
+
+    // ---- Top story: the latest reports about the spaces, as a news app's feed (user, 3 Nov 2026) ----
+    // Built only from what the records hold, never written here: the dated items in gossip_data.gossip (each with its
+    // headline, what is said, who says it, where, when, its sources and any reply) and the dated case_notes. The rules of
+    // notes/gossip-criteria.md hold: outside Gossip mode the feed shows only what is on record as confirmed or resolved,
+    // and the documented cases; in Gossip mode it adds talk and denials, each labelled as what it is, with the reply.
+    // Stale items never lead. A strip over the chips shows the newest headline; a tap opens the feed as a sheet.
+    (function topStory() {
+      const g = (name) => { try { return (0, eval)(name); } catch (_) { return undefined; } };
+      const bar = $('mobileStickyInputBar');
+      if (!bar) return;
+      const esc = (t) => String(t == null ? '' : t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      const gossipOn = () => !!window.isGossipModeActive;
+      const STATUS = { confirmed: 'Confirmed', resolved: 'Resolved', talk: 'Talk, not confirmed', denied: 'Denied', stale: 'Old talk', documented: 'On record' };
+      const KIND = { dispute: 'Dispute', report: 'Report', departure: 'Departure', money: 'Money', allegation: 'Allegation', leak: 'Leak', rumour: 'Rumour', case: 'Case' };
+      const WHO = { press: 'Press', court_or_regulator: 'Court or regulator', union: 'Union', open_letter: 'Open letter', campaign: 'Campaign', social_named: 'Named account', social_anonymous: 'Anonymous posts', review_platform: 'Review site' };
+      const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const parse = (w) => { const m = /^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(String(w || '')); return m ? { d: new Date(Date.UTC(+m[1], +m[2] - 1, m[3] ? +m[3] : 1)), day: !!m[3] } : null; };
+      const dateText = (w) => { const p = parse(w); if (!p) return ''; const d = p.d; return (p.day ? d.getUTCDate() + ' ' : '') + MONTHS[d.getUTCMonth()] + ' ' + d.getUTCFullYear(); };
+      const ago = (w) => {
+        const p = parse(w); if (!p) return '';
+        const days = Math.floor((Date.now() - p.d.getTime()) / 864e5);
+        if (!p.day || days > 60) return dateText(w);
+        if (days <= 0) return 'today';
+        if (days === 1) return 'yesterday';
+        if (days < 14) return days + ' days ago';
+        return Math.round(days / 7) + ' weeks ago';
+      };
+
+      function items() {
+        const A = g('ALL_INSTITUTIONS') || [];
+        const on = gossipOn(), out = [];
+        A.forEach((inst) => {
+          ((inst.gossip_data || {}).gossip || []).forEach((it) => {
+            if (!it || !it.headline || !parse(it.when)) return;
+            const st = it.status || 'talk';
+            if (!on && st !== 'confirmed' && st !== 'resolved') return;
+            out.push({ inst, when: it.when, head: it.headline, said: it.said, where: it.where, who: WHO[it.who_says] || '', urls: it.urls || [], status: st, kind: KIND[it.kind] || 'Report', reply: it.response || '', outcome: it.outcome || '' });
+          });
+          (inst.case_notes || []).forEach((c) => {
+            if (!c || !c.title || !parse(c.meta)) return;
+            const urls = (c.sources || []).map((u) => (typeof u === 'string' ? u : u && u.url)).filter(Boolean);
+            let where = '';
+            try { where = urls[0] ? new URL(urls[0]).hostname.replace(/^www\./, '') : ''; } catch (_) { where = ''; }
+            out.push({ inst, when: c.meta, head: c.title, said: c.text, where, who: '', urls, status: 'documented', kind: 'Case', reply: '', outcome: '' });
+          });
+        });
+        out.sort((a, b) => String(b.when).localeCompare(String(a.when)));
+        return out;
+      }
+      const placeOf = (inst) => [inst.city, inst.country].filter(Boolean).join(', ');
+      const shareUrl = (inst) => location.origin + location.pathname + '?inst=' + encodeURIComponent(inst.id || inst.name);
+
+      // The strip on the map.
+      const strip = document.createElement('button');
+      strip.type = 'button';
+      strip.id = 'gmStoryStrip';
+      bar.appendChild(strip);
+      function paintStrip() {
+        const top = items().find((x) => x.status !== 'stale');
+        strip.hidden = !top;
+        if (!top) return;
+        strip.innerHTML = '<span class="gm-strip-label"><i aria-hidden="true"></i>Top story</span><span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(top.inst.name) + ' · ' + esc(ago(top.when)) + '</span>';
+        strip.setAttribute('aria-label', 'Top story: ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + '. Open the latest reports');
+      }
+
+      // The feed.
+      const feed = document.createElement('section');
+      feed.id = 'gmFeed';
+      feed.hidden = true;
+      feed.setAttribute('role', 'dialog');
+      feed.setAttribute('aria-modal', 'true');
+      feed.setAttribute('aria-labelledby', 'gmFeedTitle');
+      document.body.appendChild(feed);
+      let lastFocus = null;
+
+      const ICO = {
+        globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/>',
+        link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+        reply: '<path d="M4 5h16v11H9l-5 4z"/>',
+        share: '<path d="M14 5l6 6-6 6"/><path d="M20 11H11a7 7 0 0 0-7 7"/>',
+        pin: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+      };
+      const svg = (b) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + b + '</svg>';
+
+      function card(x, i, top) {
+        const n = x.urls.length;
+        const src = n ? '<a class="gm-stat" href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + svg(ICO.link) + n + (n === 1 ? ' source' : ' sources') + '</a>' : '';
+        const reply = x.status === 'documented' ? '' : '<span class="gm-stat">' + svg(ICO.reply) + (x.reply && !/^no reply/i.test(x.reply) ? 'Reply on record' : 'No reply found') + '</span>';
+        const poster = top ? '<div class="gm-poster" aria-hidden="true"><p class="gm-poster-pill">' + esc(x.kind) + ' · ' + esc(dateText(x.when)) + '</p><p class="gm-poster-name">' + esc(x.inst.name) + '</p><p class="gm-poster-place">' + esc(placeOf(x.inst)) + '</p><p class="gm-poster-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</p></div>' : '';
+        return '<article class="gm-story' + (top ? ' is-top' : '') + '" data-i="' + i + '">' + poster
+          + '<p class="gm-story-src"><span class="gm-story-mark" aria-hidden="true">' + esc((x.where || x.inst.name).trim().charAt(0).toUpperCase()) + '</span>' + esc(x.where || 'The record') + (x.who && x.who !== 'Press' ? ' · ' + esc(x.who) : '') + '</p>'
+          + '<h3 class="gm-story-head"><button type="button" class="gm-open" data-i="' + i + '">' + esc(x.head) + '</button></h3>'
+          + '<p class="gm-story-when">' + (x.status === 'documented' ? 'On record' : 'Reported') + ' ' + esc(ago(x.when)) + ' · ' + esc(x.inst.name) + (placeOf(x.inst) ? ', ' + esc(x.inst.city || x.inst.country) : '') + '</p>'
+          + (x.said ? '<p class="gm-story-said">' + esc(x.said) + '</p>' : '')
+          + (x.reply && x.status !== 'documented' ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
+          + (x.outcome ? '<p class="gm-story-reply"><span>Outcome</span> ' + esc(x.outcome) + '</p>' : '')
+          + '<div class="gm-story-stats">' + src + reply + '<span class="gm-stat gm-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</span>'
+          + '<button type="button" class="gm-share" data-i="' + i + '">' + svg(ICO.share) + 'Share</button></div></article>';
+      }
+
+      let list = [];
+      function render() {
+        list = items();
+        const fresh = list.filter((x) => x.status !== 'stale');
+        const top = fresh[0];
+        const rest = list.filter((x) => x !== top);
+        const here = window.atlasHere;
+        let near = [];
+        if (here) {
+          const R = Math.PI / 180;
+          const km = (i) => (typeof i.lat === 'number' && typeof i.lon === 'number') ? 6371 * Math.acos(Math.min(1, Math.sin(here.lat * R) * Math.sin(i.lat * R) + Math.cos(here.lat * R) * Math.cos(i.lat * R) * Math.cos((here.lon - i.lon) * R))) : Infinity;
+          near = rest.filter((x) => km(x.inst) < 400);
+        }
+        const world = rest.filter((x) => !near.includes(x)).slice(0, 40);
+        const month = list.filter((x) => { const p = parse(x.when); return p && Date.now() - p.d.getTime() < 30 * 864e5; }).length;
+        const sec = (title, meta, arr) => arr.length ? '<h2 class="gm-feed-sec">' + svg(title === 'Near you' ? ICO.pin : ICO.globe) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x) => card(x, list.indexOf(x), false)).join('') : '';
+        feed.innerHTML = '<div class="gm-feed-grab" aria-hidden="true"></div>'
+          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(ICO.globe) + '<span>Top story</span></h2><small>' + (month ? month + ' in the past 30 days' : 'Latest') + '</small>'
+          + '<button type="button" class="gm-feed-close" aria-label="Close the reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5 5 19M5 5l14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></header>'
+          + '<p class="gm-feed-note">' + (gossipOn() ? 'Gossip mode: talk and denials are included, each marked for what it is. Talk is what people say, not a finding.' : 'Reports on record as confirmed or resolved, and documented cases. Turn on Gossip mode to include talk.') + '</p>'
+          + (top ? card(top, list.indexOf(top), true) : '<p class="gm-feed-note">No dated reports on record yet.</p>')
+          + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near)
+          + sec('Worldwide', 'Newest first', world);
+      }
+      function open() {
+        lastFocus = document.activeElement;
+        render();
+        feed.hidden = false;
+        root.classList.add('gm-feed-open');
+        feed.scrollTop = 0;
+        const c = feed.querySelector('.gm-feed-close'); if (c) c.focus();
+      }
+      function close(refocus) {
+        if (feed.hidden) return;
+        feed.hidden = true;
+        root.classList.remove('gm-feed-open');
+        if (refocus !== false && lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      window.atlasOpenTopStory = open;
+      strip.addEventListener('click', open);
+      // Escape closes the feed wherever the focus is; caught first, so the app's own Escape handling does not take it.
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !feed.hidden) { e.preventDefault(); e.stopPropagation(); close(); }
+      }, true);
+      feed.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab') return;
+        const f = [...feed.querySelectorAll('button, a[href]')].filter((el) => el.offsetParent !== null);
+        if (!f.length) return;
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      });
+      feed.addEventListener('click', (e) => {
+        if (e.target.closest('.gm-feed-close')) { close(); return; }
+        const sh = e.target.closest('.gm-share');
+        if (sh) {
+          const x = list[+sh.dataset.i]; if (!x) return;
+          const url = shareUrl(x.inst), title = x.head;
+          if (navigator.share) navigator.share({ title, text: x.inst.name + ': ' + title, url }).catch(() => {});
+          else if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => { sh.lastChild.textContent = 'Link copied'; setTimeout(() => { sh.lastChild.textContent = 'Share'; }, 2000); }).catch(() => {});
+          return;
+        }
+        if (e.target.closest('a')) return;
+        const art = e.target.closest('.gm-story');
+        if (!art) return;
+        const x = list[+art.dataset.i]; if (!x) return;
+        close(false);
+        if (typeof window.selectInstitution === 'function') window.selectInstitution(x.inst, false);
+        const fly = g('flyTo');
+        if (typeof fly === 'function' && typeof x.inst.lon === 'number') fly(x.inst.lon, x.inst.lat);
+      });
+      // Pull the feed down from its top to close it.
+      let y0 = null;
+      feed.addEventListener('touchstart', (e) => { y0 = (feed.scrollTop <= 0 && e.touches.length === 1) ? e.touches[0].clientY : null; }, { passive: true });
+      feed.addEventListener('touchmove', (e) => {
+        if (y0 === null) return;
+        const d = e.touches[0].clientY - y0;
+        if (d < 0) { y0 = null; feed.style.transform = ''; return; }
+        if (e.cancelable) e.preventDefault();
+        feed.style.transform = 'translateY(' + d + 'px)';
+      }, { passive: false });
+      feed.addEventListener('touchend', (e) => {
+        if (y0 === null) return;
+        const d = e.changedTouches[0].clientY - y0; y0 = null;
+        feed.style.transform = '';
+        if (d > 110) close();
+      }, { passive: true });
+
+      // Gossip mode and a known location change what is shown.
+      const gb = $('mobileGossipBtn');
+      if (gb) new MutationObserver(() => { paintStrip(); if (!feed.hidden) render(); }).observe(gb, { attributes: true, attributeFilter: ['aria-pressed'] });
+      document.addEventListener('atlas:here', () => { if (!feed.hidden) render(); });
+      // The feed is a phone screen; on a wider window it closes.
+      window.addEventListener('resize', () => { if (!PHONE()) close(false); });
+      paintStrip();
+
+      // The bottom stack's height, for the buttons that sit over it.
+      if (window.ResizeObserver) new ResizeObserver(() => root.style.setProperty('--gm-stack-h', bar.offsetHeight + 'px')).observe(bar);
     })();
 
     syncState();
