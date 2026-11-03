@@ -3222,3 +3222,21 @@ div:has(>#topThemeBtn){column-gap:0}
 }
 @keyframes gm-rise{from{transform:translateY(40px);opacity:.4}}
 @media (prefers-reduced-motion:reduce){#gmFeed{animation:none!important}}
+
+/* A funder's record in the sheet (assets/hq-detail.js) is not the space's: the space's name, grade line, actions and tabs give way to it,
+   as the actions did when they sat inside the space's own pane. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet :is(.sheet-title-block,.gm-actions,.gm-tabs){display:none!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel{padding-right:48px}
+}
+
+/* Peek fits the title and the description (user, 3 Nov 2026). The space's description sits under its place and is three lines at peek;
+   a funder's record keeps its name to the heading size (24px, the largest of the page's three) so its first paragraph fits too. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-title-block .gm-desc{margin:8px 0 0!important;padding:0!important;font:300 18px/24px var(--sans)!important;color:var(--ink)!important;text-indent:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet[data-detent="peek"] .sheet-title-block .gm-desc{display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel h2{font:300 24px/30px var(--sans)!important;margin:4px 0 0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel .head-grid{display:flex!important;flex-direction:column!important;align-items:flex-start;gap:12px!important;margin:0!important;padding-top:12px!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel .head-grid>*{margin:0!important;padding:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel .head-main .d-row{padding-top:0!important}
+}

@@ -181,10 +181,23 @@
         const h = room();
         if (d === 'full') return h;
         if (d === 'half') return Math.round(h * 0.55);
-        // Peek: down to the end of the row of actions, never more than 45% of the map, never less than 168px.
-        let end = 168;
-        if (actions && titleBlock) end = actions.offsetTop + actions.offsetHeight + 16;
-        return Math.max(168, Math.min(end, Math.round(h * 0.45)));
+        // Peek holds the title and the description (user, 3 Nov 2026: "bottom drawer needs to fit title and description"):
+        // for a space, its name, grade, place and actions down to the end of its summary; for a funder's record (assets/hq-detail.js),
+        // its head block (kind, name, place, source). Never more than 70% of the map, so some map stays in sight, never less than 168px.
+        const bottomOf = (el) => (el && el.offsetParent !== null ? el.getBoundingClientRect().bottom - sheet.getBoundingClientRect().top + sheet.scrollTop : 0);
+        let end = 0;
+        if (sheet.classList.contains('is-hq-sheet')) {
+          // A funder's record opens with a head block: its kind, its name, Ask in chat, its place and its source. That is its
+          // title and description, so peek ends under it.
+          const panel = $('hqPanel');
+          const head = panel && (panel.querySelector('.record-head') || panel.querySelector('h2'));
+          end = bottomOf(head);
+        } else {
+          // The description now sits in the title block, above the actions, so the actions' end is the end of both.
+          end = bottomOf(actions) || bottomOf(titleBlock);
+        }
+        end = end ? end + 20 : 168;
+        return Math.max(168, Math.min(Math.round(end), Math.round(h * 0.7)));
       }
       function setDetent(d, animate) {
         detent = d;
@@ -206,12 +219,13 @@
       sizeBtn?.addEventListener('click', () => setDetent(detent === 'peek' ? 'half' : detent === 'half' ? 'full' : 'peek'));
 
       // A new record opens at peek, scrolled to its name, so the space stays in sight on the map above it.
-      let wasHidden = sheet.classList.contains('hidden');
+      // A funder's record opening in the sheet, or giving way to the space again, starts at peek too.
+      let wasHidden = sheet.classList.contains('hidden'), wasHq = sheet.classList.contains('is-hq-sheet');
       new MutationObserver(() => {
-        const hidden = sheet.classList.contains('hidden');
+        const hidden = sheet.classList.contains('hidden'), hq = sheet.classList.contains('is-hq-sheet');
         if (hidden) { sheet.scrollTop = 0; sheet.style.removeProperty('--gm-h'); }
-        else if (wasHidden && PHONE()) requestAnimationFrame(() => setDetent('peek', false));
-        wasHidden = hidden;
+        else if ((wasHidden || hq !== wasHq) && PHONE()) requestAnimationFrame(() => setDetent('peek', false));
+        wasHidden = hidden; wasHq = hq;
       }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
       const name = $('dossier-sheet-name');
       if (name) new MutationObserver(() => {
@@ -219,6 +233,15 @@
         if (PHONE() && !sheet.classList.contains('hidden')) requestAnimationFrame(() => setDetent(detent === 'full' ? 'full' : 'peek', false));
       }).observe(name, { childList: true, characterData: true, subtree: true });
       window.addEventListener('resize', () => { if (PHONE() && !sheet.classList.contains('hidden')) setDetent(detent, false); });
+      // While at peek, a record that fills in after it opened (a funder's record waits for assets/hq.json) is measured again.
+      let remeasure = 0;
+      const body = $('dossier-sheet-scrollable-body');
+      if (body) new MutationObserver(() => {
+        if (!PHONE() || sheet.classList.contains('hidden') || detent !== 'peek') return;
+        cancelAnimationFrame(remeasure);
+        remeasure = requestAnimationFrame(() => setDetent('peek', false));
+      }).observe(body, { childList: true, subtree: true });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (PHONE() && !sheet.classList.contains('hidden') && detent === 'peek') setDetent('peek', false); });
 
       // Dragging. Below full the whole sheet moves with the finger; at full the record scrolls, and only a pull down
       // from its top moves the sheet. On release it snaps to the nearest height, a flick goes one further, and a pull
@@ -332,10 +355,13 @@
       const info = document.createElement('ul');
       info.className = 'gm-info';
       info.dataset.tab = 'overview';
-      const summary = $('dossier-sheet-summary');
-      (summary || pane.firstChild) ? (summary ? summary.insertAdjacentElement('afterend', info) : pane.prepend(info)) : pane.appendChild(info);
+      pane.prepend(info);
 
-      const blockTab = { 'dossier-sheet-summary': 'overview', 'dossier-sheet-visit': 'visit', 'dossier-sheet-funding': 'funding', 'dossier-sheet-record': 'record', 'dossier-sheet-sources': 'sources' };
+      // The description sits under the name and place, before the actions, as a place card's does: it is the first thing read, at
+      // every height. At peek it is cut to three lines (atlas.css); higher up it is whole.
+      const summaryEl = $('dossier-sheet-summary');
+      if (summaryEl) { summaryEl.classList.add('gm-desc'); titleBlock.appendChild(summaryEl); }
+      const blockTab = { 'dossier-sheet-visit': 'visit', 'dossier-sheet-funding': 'funding', 'dossier-sheet-record': 'record', 'dossier-sheet-sources': 'sources' };
       let current = 'overview';
       const filled = (el) => !!el && !el.classList.contains('hidden') && el.textContent.trim().length > 0;
       function setTab(key) {
