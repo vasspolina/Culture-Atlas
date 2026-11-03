@@ -12763,7 +12763,11 @@ return maplibregl$1;
       rows.push(proseBureaucracyRow(inst));
       const note = (lead, t) => t ? proseLi(lead, escapeHtml(proseEnd(t))) : '';
       rows.push(fundingCritiqueRow(inst));
-      rows.push(proseRow('Records', '', [note('Publishes:', inst.records_note), note('Accounts:', inst.finances_note), note('Affiliations:', inst.affiliations_note)]));
+      // What it publishes: the institution's own paper trail. The accounts note is left out when the Scale and money row already
+      // carries the filing's figures, so the same year's income is not said twice.
+      const f = inst.finance || {};
+      const moneyShown = typeof f.income === 'number' && f.income > 0 && f.currency;
+      rows.push(proseRow('What it publishes', '', [note('Publishes:', inst.records_note), moneyShown ? '' : note('Accounts:', inst.finances_note), note('Affiliations:', inst.affiliations_note)]));
       return proseRows(rows, 'Overview and funding');
     }
     // What is flagged, the art press, wider context, the bottom line and the sources: the report's points with the archive's cases beside them.
