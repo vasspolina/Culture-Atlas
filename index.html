@@ -15808,7 +15808,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       let target = explicit || active;
       // A name the visitor types on its own ("moma", "show me MoMA") is a request for that record, so it opens as a click on its pin does:
       // the Details tab with the record, and the map flown in to the space. A question about a space still keeps you in the chat.
-      if (typedByVisitor && explicit && isNameRequest(query, explicit)) {
+      const nameOnly = typedByVisitor && explicit && isNameRequest(query, explicit);
+      if (nameOnly) {
         selectInstitution(explicit, true);
         if (window.innerWidth >= 768 && typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
       }
@@ -16194,6 +16195,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (region && !explicit && !target) {
         const here = ALL_INSTITUTIONS.filter(i => inScope(i)).sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
         listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(region.name)}, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
+        return;
+      }
+      // A name typed on its own ("eflux") is answered from its record at once. Its Details page is already open with the
+      // record, so the chat does not wait for a web scrape and a model call (10–20 seconds) to say the same thing.
+      if (nameOnly && target && !isGossipModeActive) {
+        focus(target);
+        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${fact('', target.watch)}${fact('Funding: ', target.funding)}${target.year_founded ? `<p>Founded ${escapeHtml(String(target.year_founded))}.</p>` : ''}${sourcesHtml(target)}`);
         return;
       }
       if (await askModel()) return;
