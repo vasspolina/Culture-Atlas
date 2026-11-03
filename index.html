@@ -34,8 +34,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=426">
-  <script src="assets/config.js?v=426"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=427">
+  <script src="assets/config.js?v=427"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -9938,11 +9938,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v426';
+    const ATLAS_RELEASE = 'culture-atlas-v427';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=426').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=427').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11632,43 +11632,8 @@ return maplibregl$1;
       const state = v && v.status === 'verified' ? `Checked on ${escapeHtml(v.checked_on)}: a source outside the museum names the funders this record cites.`
         : v && v.status === 'partial' ? `Partly checked on ${escapeHtml(v.checked_on)}: the sources name the museum but not every funder this record cites.`
         : '';
-      // Where a founding year and an address came from, one clause per field, one link per host within a field.
-      const fs = inst.field_sources || {};
-      const fieldLabel = {
-        year_founded: f => (/^(first )?(opened|inaugurat)/i.test(f.basis || '') ? 'Opening year' : 'Founding year'),
-        address: () => 'Address',
-      };
-      const site = (h) => { const parts = h.split('.'); const n = /^(co|com|org|gov|ac|net|gob|edu)$/.test(parts[parts.length - 2] || '') ? 3 : 2; return parts.slice(-n).join('.'); };
-      const linksFor = (urls) => {
-        const seen = new Set();
-        const out = [...new Set(urls)].map(u => {
-          let h = '';
-          try { h = site(new URL(u).hostname.replace(/^www\./, '')); } catch (e) { h = u; }
-          if (seen.has(h)) return '';
-          seen.add(h);
-          return `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(h)}</a>`;
-        }).filter(Boolean).slice(0, 3);
-        out.sites = [...seen].slice(0, 3).join();
-        return out;
-      };
-      const fieldParts = ['year_founded', 'address'].map(k => fs[k] && (fs[k].urls || []).length ? { label: fieldLabel[k](fs[k]), links: linksFor(fs[k].urls) } : null).filter(Boolean);
-      const join = (a) => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
-      let foundHtml = '';
-      if (fieldParts.length === 2 && fieldParts[0].links.sites === fieldParts[1].links.sites) {
-        foundHtml = `${fieldParts[0].label} and address from ${join(fieldParts[0].links)}.`;
-      } else if (fieldParts.length) {
-        foundHtml = `${fieldParts.map(f => `${f.label} from ${join(f.links)}`).join('. ')}.`;
-      }
-      // As a row (the record page): one bullet per field, or one for both when they share their sources.
-      if (asRow) {
-        const lis = fieldParts.length === 2 && fieldParts[0].links.sites === fieldParts[1].links.sites ? [`${fieldParts[0].label} and address from ${join(fieldParts[0].links)}.`]
-          : fieldParts.map(f => `${f.label} from ${join(f.links)}.`);
-        return lis.length ? proseRows([proseRow('Where the basics come from', '', lis.map(t => `<li>${t}</li>`))], 'Where the basics come from') : '';
-      }
-      // A bare "Founding year from ..." line read as stray prose between two blocks: it carries a label, like the blocks around it.
-      if (foundHtml) foundHtml = `<div class="py-3" role="group" aria-label="Where the basics come from"><span class="kicker block">Where the basics come from</span><p class="no-indent source-note">${foundHtml}</p></div>`;
-      if (fieldsOnly) return foundHtml;
-      return `${links.length ? `<p class="no-indent source-note">${links.join(', ')}${state ? '. ' + state : ''}</p>` : ''}${foundHtml}`;
+      if (asRow || fieldsOnly) return '';
+      return `${links.length ? `<p class="no-indent source-note">${links.join(', ')}${state ? '. ' + state : ''}</p>` : ''}`;
     }
     // What studies say about this space, and the funders it shares with other institutions on the map.
     function researchContextHtml(inst) {
@@ -19935,9 +19900,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=426"></script>
-<script src="assets/layers.js?v=426"></script>
-<script src="assets/hq-detail.js?v=426"></script>
-<script src="assets/bubbles.js?v=426" defer></script>
+<script src="assets/typeset.js?v=427"></script>
+<script src="assets/layers.js?v=427"></script>
+<script src="assets/hq-detail.js?v=427"></script>
+<script src="assets/bubbles.js?v=427" defer></script>
 </body>
 </html>
