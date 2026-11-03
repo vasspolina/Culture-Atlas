@@ -6693,6 +6693,11 @@ return maplibregl$1;
     let cityVectorMap = null;
     let cityVectorMarkers = [];
     let isCityStreetViewActive = false;
+    // True while openCityStreetView aligns the dossier to the city's first institution: that selection
+    // must not move the camera (it was flying to one building and cancelling the fit over the whole city,
+    // so every pin in the city bunched up at the horizon) and must not re-enter openCityStreetView
+    // (which doubled every pin).
+    let suppressSelectFly = false;
 
     // Backward-compatible compatibility proxies for external harness / test assertions
     let cityMarkersLayer = {
@@ -8117,14 +8122,6 @@ return maplibregl$1;
 
       cityMarkersLayer.clearLayers();
 
-      // State Synchronization: Automatically align active entity state and dossier to target city
-      if (cityInsts.length > 0) {
-        const isCurrentInCity = selectedInstitution && matchC(selectedInstitution.city, cityName);
-        if (!isCurrentInCity) {
-          selectInstitution(cityInsts[0], false);
-        }
-      }
-
       cityInsts.forEach(inst => {
         const isA = inst.tier === 'A';
         const isB = inst.tier === 'B';
@@ -8206,6 +8203,17 @@ return maplibregl$1;
 
         cityVectorMarkers.push(marker);
       });
+
+      // State Synchronization: Automatically align active entity state and dossier to target city.
+      // Runs after the pins are on the map, with the camera held still: entering a city shows the
+      // whole city (the fitBounds above), not the first institution's building.
+      if (cityInsts.length > 0) {
+        const isCurrentInCity = selectedInstitution && matchC(selectedInstitution.city, cityName);
+        if (!isCurrentInCity) {
+          suppressSelectFly = true;
+          try { selectInstitution(cityInsts[0], false); } finally { suppressSelectFly = false; }
+        }
+      }
 
       if (typeof resolveCityMarkerCollisions === 'function') {
         setTimeout(resolveCityMarkerCollisions, 60);
@@ -12507,7 +12515,10 @@ return maplibregl$1;
         flyTo(inst.lon, inst.lat, zoomTarget);
       } else {
         if (isCityStreetViewActive) {
-          if (inst.city && !matchC(selectedCityFilter, inst.city)) {
+          if (suppressSelectFly) {
+            // Selection made by openCityStreetView itself while it lays out the whole city: sync the
+            // dossier only, leave the camera on the city fit and do not re-enter the street view.
+          } else if (inst.city && !matchC(selectedCityFilter, inst.city)) {
             openCityStreetView(inst.city, inst.lat, inst.lon);
           } else if (cityVectorMap && inst.lon && inst.lat) {
             cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: Math.max(cityVectorMap.getZoom() || 14, 17.2), pitch: 55, duration: 700, offset: (typeof xrayFlyOffset === 'function') ? xrayFlyOffset() : [0, 0] });
