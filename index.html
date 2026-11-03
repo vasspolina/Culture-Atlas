@@ -9986,11 +9986,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v465';
+    const ATLAS_RELEASE = 'culture-atlas-v466';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=465').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=466').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12859,7 +12859,9 @@ return maplibregl$1;
         if (!said && !it.title) return '';
         return proseLi('', `${o}${it.title ? ', ' + escapeHtml(proseEnd(it.title)) + ' ' : escapeHtml(when) + ': '}${escapeHtml(said)}`);
       }).filter(Boolean);
-      rows.push(proseRow('In the art press', press.overall ? escapeHtml(proseEnd(press.overall)) : '', pressLis));
+      // The overview sits as the subtitle when it fits; one too long for that would only repeat the pieces as a bullet of its own, so it goes.
+      const pressSub = press.overall ? escapeHtml(proseEnd(press.overall)) : '';
+      rows.push(proseRow('In the art press', pressLis.length && !isSubtitle(pressSub) ? '' : pressSub, pressLis));
       if (inst.critique_note) rows.push(proseRow('What the field says', '', [proseLi('', escapeHtml(proseEnd(inst.critique_note)))]));
       const caseLis = (inst.case_notes || []).map(n => proseLi(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3), true));
       rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true }));
