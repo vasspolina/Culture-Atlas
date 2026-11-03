@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=470">
+  <link rel="stylesheet" href="assets/atlas.css?v=471">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -1061,7 +1061,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=461"></script>
+  <script src="assets/institutions.js?v=471"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9987,11 +9987,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v470';
+    const ATLAS_RELEASE = 'culture-atlas-v471';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=470').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=471').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13006,7 +13006,7 @@ return maplibregl$1;
       dossierInst = inst;
       // On the note screen, opening another record makes it the institution of the note.
       if (isChatInputMode) { const noteInstitution = document.getElementById('noteInstitution'); if (noteInstitution) { noteInstitution.value = inst.name || ''; syncNoteReady(); } }
-      const html = recordHtml(inst);
+      const html = linkRecordSpaces(recordHtml(inst), inst);
       const phoneBody = document.getElementById('detailBody');
       if (phoneBody) phoneBody.innerHTML = html;
       const page = document.getElementById('desktopDossierRecordBody');
@@ -13189,6 +13189,76 @@ return maplibregl$1;
           a.href = '#';
           a.className = 'inst-link';
           a.setAttribute('data-name', entry.name);
+          a.textContent = m[0];
+          frag.appendChild(a);
+          last = m.index + m[0].length;
+        }
+        if (!hit) return;
+        frag.appendChild(doc.createTextNode(text.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+      return doc.body.innerHTML;
+    }
+
+    // A record names other spaces in its text. The first mention of each in a section becomes a link: to its own record when the atlas has one,
+    // to its website when the record carries one in `links` (a space with no record of its own). Matching here is stricter than in
+    // chat, since the text is ours and a wrong link reads as a claim: the name as written (case kept), never a lowercase alias, never
+    // a common word (Collective, Chapter), and only the whole name, so "Scottish National Gallery" does not link "National Gallery".
+    const RECORD_LINK_STOP = new Set(['Collective', 'Chapter', 'Baltic', 'Void', 'Enjoy', 'Bloc', 'Kiosk', 'Guggenheim', 'National Gallery', 'Visual', 'Basis', 'Fire Station', 'National Theatre']);
+    let recordLinkIndex = null;
+    function linkRecordSpaces(html, inst) {
+      if (!html || !inst) return html;
+      if (!recordLinkIndex) {
+        recordLinkIndex = new Map();
+        [...ALL_INSTITUTIONS, ...(typeof EXCLUDED_INSTITUTIONS !== 'undefined' ? EXCLUDED_INSTITUTIONS : [])].forEach(i => {
+          [i.name, ...(i.aliases || [])].forEach(label => {
+            const t = String(label || '').replace(/\s*\([^)]*\)\s*$/, '').replace(/\s*:.*$/, '').trim();
+            if (t.length < 4 || t === t.toLowerCase() || RECORD_LINK_STOP.has(t) || recordLinkIndex.has(t)) return;
+            recordLinkIndex.set(t, { name: i.name });
+          });
+        });
+      }
+      const esc = (n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const reFor = (keys) => new RegExp('(?<![\\p{L}\\p{N}-])(?:' + [...keys].sort((a, b) => b.length - a.length).map(esc).join('|') + ')(?![\\p{L}\\p{N}-])', 'gu');
+      // The pattern of every name is built once; a record with website links of its own gets one with those added.
+      if (!recordLinkIndex.re) recordLinkIndex.re = reFor(recordLinkIndex.keys());
+      const own = String(inst.name || '');
+      let labels = recordLinkIndex, re = recordLinkIndex.re;
+      // A website link is written once, as the record spells the name; "BEPPU PROJECT" also links "Beppu Project".
+      const titleCase = (t) => t.toLowerCase().replace(/(^|[\s-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase());
+      const web = Object.entries(inst.links || {}).filter(([, url]) => /^https?:\/\//.test(url));
+      if (web.length) {
+        labels = new Map(recordLinkIndex);
+        web.forEach(([t, url]) => [t, titleCase(t)].forEach(v => labels.set(v, { url })));
+        re = reFor(labels.keys());
+      }
+      const before = /\p{Lu}[\p{L}\p{N}'’.&-]* $/u, after = /^ (?:\p{Lu}|(?:of|de|del|der|di|du|des|für|for|voor|van) )/u;
+      const doc = new DOMParser().parseFromString('<body>' + html + '</body>', 'text/html');
+      const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+        if (!n.parentElement.closest('a, button, h1, h2, h3, .d-row-title, .kicker, .d-cite')) nodes.push(n);
+      }
+      const done = new Map();
+      nodes.forEach(node => {
+        const text = node.nodeValue;
+        const section = node.parentElement.closest('.d-row') || node.parentElement.closest('section, [role="region"]') || doc.body;
+        if (!done.has(section)) done.set(section, new Set());
+        const seen = done.get(section);
+        let last = 0, hit = false;
+        const frag = doc.createDocumentFragment();
+        re.lastIndex = 0;
+        for (let m = re.exec(text); m; m = re.exec(text)) {
+          const entry = labels.get(m[0]);
+          const key = entry.url || entry.name;
+          if (!entry.url && (entry.name === own || own.includes(m[0]))) continue;
+          if (seen.has(key) || before.test(text.slice(Math.max(0, m.index - 40), m.index)) || after.test(text.slice(m.index + m[0].length, m.index + m[0].length + 6))) continue;
+          seen.add(key);
+          hit = true;
+          frag.appendChild(doc.createTextNode(text.slice(last, m.index)));
+          const a = doc.createElement('a');
+          if (entry.url) { a.href = entry.url; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.className = 'space-web-link'; }
+          else { a.href = '#'; a.className = 'inst-link record-space-link'; a.setAttribute('data-name', entry.name); }
           a.textContent = m[0];
           frag.appendChild(a);
           last = m.index + m[0].length;
@@ -18571,6 +18641,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     };
     curatorMessages.addEventListener('click', onCuratorMessagesClick);
     document.getElementById('curatorDrawerLiveStream')?.addEventListener('click', onCuratorMessagesClick);
+    // A space named in a record's text opens that space's record, as the same link does in chat.
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a.record-space-link');
+      if (!a) return;
+      e.preventDefault();
+      const name = a.getAttribute('data-name');
+      const inst = ALL_INSTITUTIONS.find(i => i.name === name);
+      if (inst) { selectInstitution(inst, true); return; }
+      const exInst = typeof EXCLUDED_INSTITUTIONS !== 'undefined' ? EXCLUDED_INSTITUTIONS.find(i => i.name === name) : null;
+      if (exInst) openDossier(exInst);
+    });
 
     // Tab Switching: Curator Guide vs Catalog
     const tabCuratorBtn = document.getElementById('tabCuratorBtn');
