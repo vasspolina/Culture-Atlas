@@ -15755,8 +15755,19 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const words = t.split(' ');
       if (!words.some(w => w.length >= 3 && !GENERIC.has(w))) return false;
       const bagOf = i => new Set(clean([i.name, ...(i.aliases || [])].join(' ')).split(' '));
-      if (!words.every(w => bagOf(inst).has(w))) return false;
-      return ALL_INSTITUTIONS.every(i => i === inst || i.id === inst.id || !words.every(w => bagOf(i).has(w)));
+      if (words.every(w => bagOf(inst).has(w))) {
+        return ALL_INSTITUTIONS.every(i => i === inst || i.id === inst.id || !words.every(w => bagOf(i).has(w)));
+      }
+      // A name typed with a slip in it ("guggenhiem", "e flux jornal") is still a request for the record it is closest to,
+      // as long as the words are a name and not a question, and the closest record is this one by a clear margin.
+      if (words.length > 5) return false;
+      if (/\b(who|what|why|how|when|where|which|does|do|is|are|was|were|can|has|have|fund|funds|funded|funding|hours|open|opening|flag|flagged|compare|versus|vs)\b/.test(t)) return false;
+      if (typeof findFuzzyInstitutionMatch !== 'function') return false;
+      const near = findFuzzyInstitutionMatch(t, 0.78);
+      if (!near || !near.isClean || !near.inst || (near.inst !== inst && near.inst.id !== inst.id)) return false;
+      // Every typed word must be close to some word of this record's name or aliases, so a stray word is not opened as a record.
+      const own = clean([inst.name, ...(inst.aliases || [])].join(' ')).split(' ').filter(Boolean);
+      return words.every(w => w.length < 3 || GENERIC.has(w) || own.some(o => o === w || o.includes(w) || w.includes(o) || (typeof computeWordSimilarity === 'function' && computeWordSimilarity(w, o) >= 0.75)));
     }
 
     async function handleCuratorQuery(query) {
@@ -16692,6 +16703,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const q = chatInput.value.trim();
         if (!q) return;
         chatInput.value = '';
+        window.atlasTypedQuery = true;   // typed by the visitor: a bare name opens the record and its Details button, as on the desktop
         sendFromPhoneComposer(q);
       }
 
