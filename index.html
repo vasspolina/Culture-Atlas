@@ -12737,10 +12737,11 @@ return maplibregl$1;
     }
     // Bureaucracy: the level (1 to 5) tools/grade_bureaucracy.py works out from the administration facts a source states (inst.bureaucracy),
     // then the facts themselves, then a reported finding on red tape (inst.red_tape) where a document says so. Nothing is estimated.
+    // The chapter reports bureaucratic issues, so it appears only where a document reports one; the level and facts alone do not earn it.
     const BUREAUCRACY = { 1: 'Independent', 2: 'Light oversight', 3: 'Supervised', 4: 'Administered', 5: 'State-run' };
     function proseBureaucracyRow(inst) {
       const b = inst.bureaucracy, r = inst.red_tape, lis = [];
-      if (!b && !r) return '';
+      if (!r || !r.note) return '';
       if (b) {
         const said = (lead, t) => t ? lis.push(proseLi(lead, escapeHtml(proseEnd(proseCap(t))))) : 0;
         said('Legal form:', b.legal_form + (b.parent ? ', under ' + b.parent : ''));
