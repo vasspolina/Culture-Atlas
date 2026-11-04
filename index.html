@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=529">
-  <script src="assets/config.js?v=528"></script>
-  <script src="assets/subtopic.js?v=528"></script>
-  <script src="assets/names.js?v=528"></script>
-  <script src="assets/grounding.js?v=528"></script>
-  <script src="assets/repeats.js?v=528"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=530">
+  <script src="assets/config.js?v=530"></script>
+  <script src="assets/subtopic.js?v=530"></script>
+  <script src="assets/names.js?v=530"></script>
+  <script src="assets/grounding.js?v=530"></script>
+  <script src="assets/repeats.js?v=530"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -274,9 +274,9 @@ return maplibregl$1;
           <section class="layers-section">
             <h2 class="layers-section-title">Spaces on the map</h2>
             <div class="layers-key layers-tier-key">
-              <span><i class="shape-dot" style="--marker-color:#9ae3e8"></i>Clean: a source is cited</span>
-              <span><i class="shape-dot" style="--marker-color:#e79a3a"></i>Flagged: a recorded reason</span>
-              <span><i class="shape-dot" style="--marker-color:#c6c6c6"></i>Unverified</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-a)"></i>Clean: a source is cited</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-b)"></i>Flagged: a recorded reason</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-u)"></i>Unverified</span>
             </div>
           </section>
           <section class="layers-section">
@@ -1073,7 +1073,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=528"></script>
+  <script src="assets/institutions.js?v=530"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -8133,9 +8133,6 @@ return maplibregl$1;
       cityMarkersLayer.clearLayers();
 
       cityInsts.forEach(inst => {
-        const isA = inst.tier === 'A';
-        const isB = inst.tier === 'B';
-        const markerColor = isA ? '#10b981' : (isB ? '#be95ff' : '#08bdba');
 
         const pinEl = document.createElement('div');
         pinEl.className = 'custom-inst-pin';
@@ -8185,7 +8182,7 @@ return maplibregl$1;
         dotEl.style.height = '15px';
         dotEl.style.borderRadius = '50%';
         dotEl.style.background = 'transparent';
-        dotEl.style.border = '1px solid #000'; // a hollow black ring on the white drawing; the tier is on the label
+        dotEl.style.border = `1px solid var(--tier-${inst.tier === 'A' || inst.tier === 'B' ? inst.tier.toLowerCase() : 'u'})`; // a hollow ring in the tier's colour, like its label
         dotEl.style.boxShadow = 'none';
 
         pinEl.appendChild(labelEl);
@@ -9996,11 +9993,16 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v529';
+    // One colour per kind of space, from Displaay's colour tokens (displaay.net, user 4 Nov 2026): blue clean, red flagged,
+    // pigeon grey unverified. The dot, its name's type and the name's outline all take it. The dark theme swaps blue for menthol.
+    // assets/atlas.css carries the same values as --tier-a, --tier-b and --tier-u for the city map and the Layers key.
+    const TIER_INK = { light: { A: '#000dff', B: '#ff351a', U: '#76756f' }, dark: { A: '#b8fbff', B: '#ff351a', U: '#898a90' } };
+    function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
+    const ATLAS_RELEASE = 'culture-atlas-v530';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=528').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=530').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10768,7 +10770,7 @@ return maplibregl$1;
           return { fill, ink: darkLabel ? '#ffffff' : '#000000' };
         };
         // The type and outline colour of a city label, and of the card it opens into.
-        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
+        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : tierInk(tier, GLOBE_LIGHT);
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = active ? atlasSelFont() : atlasMonoFont();
@@ -11132,8 +11134,8 @@ return maplibregl$1;
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
             ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : (GLOBE_LIGHT ? '#713f12' : '#884c16'))
-            : (d.inst.tier === 'A' ? (GLOBE_LIGHT ? '#0a8f68' : '#10b981') : d.inst.tier === 'B' ? (GLOBE_LIGHT ? '#7a52d6' : '#be95ff') : (GLOBE_LIGHT ? '#008a87' : '#08bdba'));
-          // Hollow rings, colored by tier; the selected one is filled. In gossip mode a space with gossip is a filled yellow dot, and only it is yellow.
+            : tierInk(d.inst.tier, GLOBE_LIGHT);
+          // Hollow rings in the tier's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled yellow dot, and only it is yellow.
           ctx.lineWidth = 0.8;
           if (isSel || (isGossipModeActive && hasGossip(d.inst))) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
           ctx.stroke();
@@ -20587,12 +20589,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=528"></script>
-<script src="assets/layers.js?v=528"></script>
-<script src="assets/hq-detail.js?v=528"></script>
-<script src="assets/bubbles.js?v=528" defer></script>
-<script src="assets/phone-maps.js?v=528"></script>
-<script src="assets/desktop-maps.js?v=528"></script>
-<script src="assets/chat-resize.js?v=529"></script>
+<script src="assets/typeset.js?v=530"></script>
+<script src="assets/layers.js?v=530"></script>
+<script src="assets/hq-detail.js?v=530"></script>
+<script src="assets/bubbles.js?v=530" defer></script>
+<script src="assets/phone-maps.js?v=530"></script>
+<script src="assets/desktop-maps.js?v=530"></script>
+<script src="assets/chat-resize.js?v=530"></script>
 </body>
 </html>
