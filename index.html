@@ -45,7 +45,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=524">
+  <link rel="stylesheet" href="assets/atlas.css?v=525">
   <script src="assets/config.js?v=524"></script>
   <script src="assets/subtopic.js?v=524"></script>
   <script src="assets/names.js?v=524"></script>
@@ -10848,7 +10848,8 @@ return maplibregl$1;
           // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
           const textCol = pillTextColor(tier);
           ctx.beginPath();
-          ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 0);
+          // Rounded 8px (user, 4 Nov 2026: the square labels were the old design), like the Displaay-style controls around the map.
+          ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 8);
           if (active) { ctx.fillStyle = pc.fill; ctx.fill(); }
           else { ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : '#000000'; ctx.fill(); ctx.strokeStyle = textCol; ctx.globalAlpha = 0.55; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
           ctx.fillStyle = active ? pc.ink : textCol;
@@ -11291,7 +11292,8 @@ return maplibregl$1;
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
               const countTxt = `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`;
               const linkTxt = 'Click to explore';
-              const cardInk = cardText;
+              // Ink and paper like the space's card (user, 4 Nov 2026: the square city card was the old design): plain type, not the tier's colour.
+              const cardInk = GLOBE_LIGHT ? '#000000' : '#ffffff';
 
               ctx.font = ATLAS_CARD_TITLE_FONT;
               const twCity = ctx.measureText(cityTxt).width;
@@ -11329,15 +11331,14 @@ return maplibregl$1;
 
               // Flat block in the colour of the city's badge (cyan, orange or grey by tier). No rounding, no outline, no shadow.
               // Drawn like the city labels: no block, a thin soft rounded outline and the type in the tier's colour.
+              // Rounded 20px with a solid 1px outline, as the space's card is drawn (the square, half-faded box was the old design).
               ctx.beginPath();
-              ctx.roundRect(cardX, cardY, cardW, cardH, 0);
+              ctx.roundRect(cardX, cardY, cardW, cardH, 20);
               ctx.fillStyle = cardBg;
               ctx.fill();
-              ctx.globalAlpha = 0.55;
-              ctx.strokeStyle = cardText;
+              ctx.strokeStyle = cardInk;
               ctx.lineWidth = 1;
               ctx.stroke();
-              ctx.globalAlpha = 1;
 
               // Line 1: city name, in the roman
               ctx.font = ATLAS_CARD_TITLE_FONT;
@@ -11357,9 +11358,9 @@ return maplibregl$1;
               // Action: a tint of the type colour at rest, solid type colour with card-coloured text on hover.
               ctx.save();
               ctx.beginPath();
-              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 0);
+              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 10);
               if (isHoveringCityExploreLink) { ctx.fillStyle = cardInk; ctx.fill(); }
-              else { ctx.globalAlpha = 0.55; ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
+              else { ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); }
               ctx.font = atlasMonoFont();
               ctx.fillStyle = isHoveringCityExploreLink ? cardBg : cardInk;
               ctx.textAlign = 'center';
@@ -12840,7 +12841,7 @@ return maplibregl$1;
       const parts = [['public', 'public funding'], ['private', 'donations, grants and memberships'], ['earned', 'earned income']]
         .filter(([k]) => base && typeof f[k] === 'number' && f[k] >= 0 && f[k] <= base)
         .map(([k, label]) => `${f[k] / base * 100 < 0.5 ? 'under 1' : 'about ' + Math.round(f[k] / base * 100)} percent ${label} (${proseMoney(cur, f[k])})`);
-      if (parts.length) lis.push(proseLi('Where the income comes from:', escapeHtml(proseEnd(parts.join(', ')))));
+      if (parts.length) lis.push(proseLi('Income:', escapeHtml(proseEnd(parts.join(', ')))));
       if (typeof f.net_assets === 'number' && f.net_assets > 0 && cur) lis.push(proseLi('Net assets:', escapeHtml(`${proseMoney(cur, f.net_assets)} at the end of the year.`)));
       if (sc.visitors) lis.push(proseLi('Visitors:', escapeHtml(`${proseCount(sc.visitors)}${sc.visitors_year ? ' in ' + sc.visitors_year : ''}.`)));
       if (sc.staff) lis.push(proseLi('Staff:', escapeHtml(`${proseCount(sc.staff)}${sc.staff_kind && sc.staff_kind !== 'staff' ? ' ' + sc.staff_kind : ''}${sc.staff_year ? ', ' + sc.staff_year : ''}.`)));
