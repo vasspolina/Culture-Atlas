@@ -121,3 +121,22 @@ Four checker agents re-opened every cited source for the 29 records that held a 
 - Corrected: Manege area is the institution's total of three buildings, 9,500 m2 (9,499.8), not one building; MUNCH staff
   relabelled 2026 (count on 1 January 2026).
 - Kept at an older labelled year: Bergen International Festival (2023; the 2024 report is a Canva page).
+
+# Stage 7 review (f062 to f071)
+
+Four checker agents re-opened every cited source for the 38 records that held a figure.
+- Dropped as an edition count, not a year of visits: Busan Biennale and Changwon Sculpture Biennale visitors (2018 ministry release,
+  one edition each, eight years old).
+- Dropped as wider scope: Es Baluard visitors (the statistics cover the museum and the whole cultural complex), Tabakalera visitors
+  (building visitors across six bodies), Chillida Leku area (a whole-hectare garden figure, and the garden is not the site).
+- Dropped as a draft or an unclean period: MMCA staff (a business plan marked draft, civil-service posts only), Kunst Halle
+  Sankt Gallen visitors (five shows from November 2023 to March 2025, not a calendar year), Fondation Beyeler earned (only the
+  tickets and events line, not total earned income).
+- Corrected: Fundacio Joan Miro visitors now its 2025 report (311,704) and staff 81 from the 2024 report's dated count (the 118 came
+  from an environmental chart that includes collaborators); Centro Botin visitors now the 142,582 who attended exhibitions (the
+  184,727 headline adds 42,145 activity participants).
+- Kept with a note: Slovak National Gallery area (5,385 m2 is the Bratislava complex; visitors and staff cover all its sites);
+  HEK, Museum Tinguely, Kunsthaus Baselland and Fondation Beyeler visitors come from the Basel-Stadt and Basel-Landschaft museum
+  visit tables (official cantonal statistics, "Angaben der einzelnen Museen"; Kunstmuseum Basel's own report differs from the table,
+  so its own figure is used); CaixaForum Madrid stays at 2024 (no 2025 release found); Moderna Galerija stays at 2023 (the 2024
+  report is a scan); Fondation Beyeler finance is FY2022, the latest accounts that could be opened.
