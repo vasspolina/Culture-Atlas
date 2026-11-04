@@ -3430,3 +3430,16 @@ div:has(>#topThemeBtn){column-gap:0}
 }
 @keyframes gem-spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){ :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #curatorMessages>.curator-message-wrap.chat-pending::before{animation:none} }
+
+
+/* One chat button on the record sheet (user, 4 Nov 2026: of "Ask in chat" and "Plan visit in chat", keep "Ask in chat"). Both opened the
+   chat; a visit is planned there by asking ("Plan my visit to …"). */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #dossier-sheet-plan-btn{display:none!important}
+}
+
+
+/* One box for asking and finding: the separate Chat button goes (the box is the chat's, and returns to a conversation under way). */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #gmChatBtn,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard:not(:has(#chat-input:placeholder-shown)) #gmChatBtn{display:none!important}
+}
