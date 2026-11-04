@@ -41,7 +41,9 @@
     var startX = 0, startW = 0, dragging = false;
     handle.addEventListener('pointerdown', function (e) {
       if (e.button !== 0) return;
-      dragging = true; startX = e.clientX; startW = current();
+      // A drag is the visitor's own width from its first move: apply() fires a resize for the globe on every move, and the resize
+      // listener below put a width nobody had chosen back to the default, so the column snapped back and could not be dragged.
+      dragging = true; userSet = true; startX = e.clientX; startW = current();
       handle.setPointerCapture(e.pointerId); root.classList.add('chat-resizing'); e.preventDefault();
     });
     handle.addEventListener('pointermove', function (e) { if (dragging) apply(startW + (startX - e.clientX), false); });
