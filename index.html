@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=540">
-  <script src="assets/config.js?v=540"></script>
-  <script src="assets/subtopic.js?v=540"></script>
-  <script src="assets/names.js?v=540"></script>
-  <script src="assets/grounding.js?v=540"></script>
-  <script src="assets/repeats.js?v=540"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=548">
+  <script src="assets/config.js?v=548"></script>
+  <script src="assets/subtopic.js?v=548"></script>
+  <script src="assets/names.js?v=548"></script>
+  <script src="assets/grounding.js?v=548"></script>
+  <script src="assets/repeats.js?v=548"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=542"></script>
+  <script src="assets/institutions.js?v=548"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10019,11 +10019,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v547';
+    const ATLAS_RELEASE = 'culture-atlas-v548';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=540').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=548').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12273,7 +12273,16 @@ return maplibregl$1;
         const why = !inst.why_flagged || sameAsFunding || sayAlreadyInDetails(inst, inst.why_flagged) ? '' : escapeHtml(inst.why_flagged);
         // The statement and the reason are one paragraph, set in the body size with no title or tag above it.
         const lead = [flagStatement(inst), why].filter(Boolean).join(' ');
-        blocks.push(item('', '', (lead ? `<p class="t-lead">${lead}</p>` : '') + more.map(d => p('', d.text)).join(''),
+        // The report's points under each flag, the account itself: who did what, the money, who says it. Without them the chat
+        // said only "Zoma Museum has ties to Prime Minister Abiy Ahmed's government", which is a label, not an account (user,
+        // 4 Nov 2026: "this gossip is not sophisticated, make it real text"). A clean result among the points is left out;
+        // a point that opens "Unity Park: ..." keeps its label in bold.
+        const told = ((inst.details || {}).red_flags || []).flatMap(f => (f && f.points || []).filter(pt => pt && !isCleanResult(pt)));
+        const point = (raw) => {
+          const m = String(raw).match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s);
+          return m ? `<li><strong>${escapeHtml(m[1])}:</strong> ${escapeHtml(proseEnd(m[2]))}</li>` : `<li>${escapeHtml(proseEnd(String(raw)))}</li>`;
+        };
+        blocks.push(item('', '', (lead ? `<p class="t-lead">${lead}</p>` : '') + list(...told.map(point)) + more.map(d => p('', d.text)).join(''),
           [...new Set((inst.sources || []).concat(more.map(d => d.url)))]));
       }
       (inst.epstein_records || []).forEach(e => blocks.push(item(e.person || 'Epstein-related record', '',
@@ -20844,13 +20853,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=540"></script>
-<script src="assets/funding-views.js?v=540"></script>
-<script src="assets/layers.js?v=542"></script>
-<script src="assets/hq-detail.js?v=540"></script>
-<script src="assets/bubbles.js?v=540" defer></script>
-<script src="assets/phone-maps.js?v=540"></script>
-<script src="assets/desktop-maps.js?v=540"></script>
-<script src="assets/chat-resize.js?v=540"></script>
+<script src="assets/typeset.js?v=548"></script>
+<script src="assets/funding-views.js?v=548"></script>
+<script src="assets/layers.js?v=548"></script>
+<script src="assets/hq-detail.js?v=548"></script>
+<script src="assets/bubbles.js?v=548" defer></script>
+<script src="assets/phone-maps.js?v=548"></script>
+<script src="assets/desktop-maps.js?v=548"></script>
+<script src="assets/chat-resize.js?v=548"></script>
 </body>
 </html>
