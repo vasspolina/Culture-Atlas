@@ -647,13 +647,15 @@
       const esc = (t) => String(t == null ? '' : t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
       const gossipOn = () => !!window.isGossipModeActive;
       const store = { get(k) { try { return localStorage.getItem(k); } catch (_) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (_) {} } };
-      const STATUS = { confirmed: 'Confirmed', resolved: 'Resolved', talk: 'Talk, not confirmed', denied: 'Denied', stale: 'Old talk', documented: 'Documented case' };
-      const KIND = { dispute: 'Dispute', report: 'Report', departure: 'Departure', money: 'Money', allegation: 'Allegation', leak: 'Leak', rumour: 'Rumour', case: 'Case' };
+      const STATUS = { confirmed: 'Confirmed', resolved: 'Resolved', talk: 'Talk, not confirmed', denied: 'Denied', stale: 'Old talk', documented: 'On record', user: 'User post, not verified' };
+      const KIND = { dispute: 'Dispute', report: 'Report', departure: 'Departure', money: 'Money', allegation: 'Allegation', leak: 'Leak', rumour: 'Rumour', case: 'Case', account: 'Staff or visitor post' };
       // What the item rests on, said outright. The two user-generated kinds say so.
       const SOURCE = {
         press: ['Press report, named outlet', false], court_or_regulator: ['Court or regulator record', false], union: ['Union statement', false],
         open_letter: ['Open letter, named signatories', false], campaign: ['Named campaign', false], social_named: ['Post by a named person', false],
         social_anonymous: ['Anonymous posts online', true], review_platform: ['Reviews posted by users', true], case: ['Documented case', false],
+        // Not every item is the press: posts by staff and visitors, and leaked documents, are on the record too.
+        user_post: ['Staff or visitor post', true], leak: ['Leaked document', false],
       };
       const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       const parse = (w) => { const m = /^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(String(w || '')); return m ? { d: new Date(Date.UTC(+m[1], +m[2] - 1, m[3] ? +m[3] : 1)), day: !!m[3] } : null; };
@@ -678,7 +680,7 @@
         if (live) {
           live.items.forEach((x) => {
             const inst = recordOf(x.inst) || { id: x.inst, name: x.name, city: x.city, country: x.country, lat: x.lat, lon: x.lon };
-            out.push({ key: x.type + ':' + (x.id || x.headline), inst, type: x.type, when: x.when, head: x.headline, said: x.said, where: x.where, who: x.type === 'case' ? 'case' : x.who_says, urls: (x.urls || []).filter(http), status: x.status, kind: x.kind, reply: x.response, outcome: x.outcome, checked: x.checked });
+            out.push({ key: x.type + ':' + (x.id || x.headline) + (x.type === 'leak' || x.type === 'account' ? ':' + x.inst + ':' + String(x.said).length : ''), inst, type: x.type, when: x.when, head: x.headline, said: x.said, where: x.where, who: x.type === 'case' ? 'case' : x.who_says, urls: (x.urls || []).filter(http), status: x.status, kind: x.kind, reply: x.response, outcome: x.outcome, checked: x.checked, role: x.role || '', dated: x.dated || '' });
           });
         } else {
           (g('ALL_INSTITUTIONS') || []).forEach((inst) => {
@@ -687,6 +689,26 @@
               // The same test as tools/build_live_feed.py: nothing without a date, an address, a named source and a check date.
               if (!it || !it.headline || !parse(it.when) || !urls.length || !it.who_says || !it.where || !/^\d{4}-\d{2}-\d{2}$/.test(it.retrieved_on || '')) return;
               out.push({ key: 'gossip:' + (it.id || it.headline), inst, type: 'gossip', when: it.when, head: it.headline, said: it.said, where: it.where, who: it.who_says, urls, status: it.status || 'talk', kind: it.kind || 'report', reply: it.response || '', outcome: it.outcome || '', checked: it.retrieved_on });
+            });
+            // Staff and visitor posts, read as the record reads them (accountView), with the date from the post's own fields.
+            ((inst.gossip_data || {}).accounts || []).forEach((a) => {
+              const urls = (a && a.sources || []).map((u) => (typeof u === 'string' ? u : u && u.url)).filter(http);
+              const F = {}; (a && a.fields || []).forEach((f) => { F[f[0]] = f[1]; });
+              const part = (v, k) => String(v || '').split(/\s*·\s*/)[k] || '';
+              const date = F['Original post date'] || (F['Subreddit / post date'] ? part(F['Subreddit / post date'], 1) : '') || part(F['Posted · self-described role'], 0) || part(F['Posting date and claimed role'], 0);
+              let v = null; try { v = typeof accountView === 'function' ? accountView(a, inst) : null; } catch (_) { v = null; }
+              if (!v || !v.summary || !/^\d{4}-\d{2}(-\d{2})?$/.test(date) || !urls.length) return;
+              const first = (v.summary.match(/^.+?[.!?](?=\s|$)/) || [v.summary])[0];
+              const head = first.length > 160 ? first.slice(0, 157).replace(/\s+\S*$/, '') + '…' : first;
+              const [where, role] = v.title.split(' · ');
+              out.push({ key: 'account:' + (a.id || head) + ':' + (inst.id || inst.name) + ':' + v.summary.length, inst, type: 'account', when: date, head, said: v.summary, where: where.replace(/ review$/, ''), who: 'user_post', urls, status: 'user', kind: 'account', reply: '', outcome: '', checked: '', role: role || '' });
+            });
+            // Leaked documents on the record.
+            (inst.wikileaks_records || []).forEach((w) => {
+              const urls = (w && w.sources || []).filter(http);
+              const months = String(w && w.date || '').match(/\d{4}-\d{2}/g);
+              if (!w || !months || !w.what_shows || !urls.length) return;
+              out.push({ key: 'leak:' + (w.doc_id || '') + ':' + (inst.id || inst.name) + ':' + w.what_shows.length, inst, type: 'leak', when: months[months.length - 1], head: w.doc_id || 'Leaked document', said: w.what_shows, where: 'WikiLeaks', who: 'leak', urls, status: 'documented', kind: 'leak', reply: '', outcome: '', checked: '', dated: String(w.date) });
             });
             (inst.case_notes || []).forEach((c, i) => {
               const urls = (c && c.sources || []).map((u) => (typeof u === 'string' ? u : u && u.url)).filter(http);
@@ -700,7 +722,8 @@
         return out;
       }
       // What the visitor may see in the current mode.
-      const shown = (x) => gossipOn() || x.status === 'confirmed' || x.status === 'resolved' || x.status === 'documented';
+      // Posts by staff and visitors are on the record outside Gossip mode too (its Personal accounts), always marked as user posts.
+      const shown = (x) => gossipOn() || x.status === 'confirmed' || x.status === 'resolved' || x.status === 'documented' || x.status === 'user';
       function items() { return allItems().filter(shown); }
 
       // Alerts: a scandal or protest at a space now. Reported in the last 60 days, not resolved or stale, and about a protest,
@@ -712,6 +735,8 @@
         const p = parse(x.when);
         if (!p || Date.now() - p.d.getTime() > ALERT_DAYS * 864e5) return false;
         if (x.status === 'resolved' || x.status === 'stale') return false;
+        // A user post or an old document does not raise an alert outside Gossip mode, and a document never does.
+        if (x.type === 'leak' || (x.status === 'user' && !gossipOn())) return false;
         return ['dispute', 'allegation', 'leak'].includes(x.kind) || TOPIC.test(x.head + ' ' + (x.said || ''));
       }
       const placeOf = (inst) => [inst.city, inst.country].filter(Boolean).join(', ');
@@ -760,25 +785,32 @@
       };
       const svg = (b) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + b + '</svg>';
 
+      // A post's headline is its own first sentence, so its text below starts after it and does not say it twice.
+      const saidRest = (x) => {
+        const said = String(x.said || ''), head = String(x.head || '').replace(/…$/, '');
+        if (x.type === 'account' && head && said.startsWith(head)) return said.slice(head.length).replace(/^[\s.;,]+/, '');
+        return said;
+      };
+      const monthsText = (t) => String(t || '').replace(/\d{4}-\d{2}(?:-\d{2})?/g, (m) => dateText(m));
       let list = [];
       function card(x, poster, alert) {
         const i = list.indexOf(x);
         const n = x.urls.length;
         const src = SOURCE[x.who] || ['Source type not recorded', false];
         const links = '<a class="gm-stat" href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + svg(ICO.link) + n + (n === 1 ? ' source' : ' sources') + '</a>';
-        const reply = x.type === 'case' ? '' : '<span class="gm-stat">' + svg(ICO.reply) + (x.reply && !/^no reply/i.test(x.reply) ? 'Reply on record' : 'No reply found') + '</span>';
+        const reply = x.type !== 'gossip' ? '' : '<span class="gm-stat">' + svg(ICO.reply) + (x.reply && !/^no reply/i.test(x.reply) ? 'Reply on record' : 'No reply found') + '</span>';
         const posterHtml = poster ? '<div class="gm-poster' + (alert ? ' is-alert' : '') + '" aria-hidden="true"><p class="gm-poster-pill">' + esc(alert ? 'Alert · ' : '') + esc(KIND[x.kind] || 'Report') + ' · ' + esc(dateText(x.when)) + '</p><p class="gm-poster-name">' + esc(x.inst.name) + '</p><p class="gm-poster-place">' + esc(placeOf(x.inst)) + '</p><p class="gm-poster-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</p></div>' : '';
         // Where this comes from, in words: the kind of source, whether it is user-generated, who published it and when, and
         // the day the atlas last opened its addresses.
         const prov = '<p class="gm-story-prov' + (src[1] ? ' is-user' : '') + '">' + (src[1] ? '<b>User-generated, not verified</b> · ' : '') + esc(src[0])
-          + (x.where ? ' · ' + esc(x.where) : '') + ' · published ' + esc(dateText(x.when))
+          + (x.where ? ' · ' + esc(x.where) : '') + (x.role ? ' · ' + esc(x.role) : '') + (x.type === 'leak' ? ' · dated ' + esc(monthsText(x.dated) || dateText(x.when)) : x.type === 'account' ? ' · posted ' + esc(dateText(x.when)) : ' · published ' + esc(dateText(x.when)))
           + (x.checked ? ' · links checked by the atlas ' + esc(dateText(x.checked)) : '') + '</p>';
         return '<article class="gm-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">' + posterHtml
-          + '<p class="gm-story-src"><span class="gm-story-mark" aria-hidden="true">' + esc((x.where || x.inst.name).trim().charAt(0).toUpperCase()) + '</span>' + esc(x.where || 'The record') + '</p>'
+          + '<p class="gm-story-src"><span class="gm-story-mark" aria-hidden="true">' + esc((x.where || x.inst.name).trim().charAt(0).toUpperCase()) + '</span>' + esc(x.where || 'The record') + (x.role ? ' · ' + esc(x.role) : '') + '</p>'
           + '<h3 class="gm-story-head"><button type="button" class="gm-open" data-i="' + i + '">' + (alert && !poster ? '<span class="gm-alert-tag">Alert</span> ' : '') + esc(x.head) + '</button></h3>'
-          + '<p class="gm-story-when">' + (x.type === 'case' ? 'On record' : 'Reported') + ' ' + esc(ago(x.when)) + ' · ' + esc(x.inst.name) + (x.inst.city || x.inst.country ? ', ' + esc(x.inst.city || x.inst.country) : '') + '</p>'
-          + (x.said ? '<p class="gm-story-said">' + esc(x.said) + '</p>' : '')
-          + (x.reply && x.type !== 'case' ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
+          + '<p class="gm-story-when">' + ({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported') + ' ' + esc(ago(x.when)) + ' · ' + esc(x.inst.name) + (x.inst.city || x.inst.country ? ', ' + esc(x.inst.city || x.inst.country) : '') + '</p>'
+          + (saidRest(x) ? '<p class="gm-story-said">' + esc(saidRest(x)) + '</p>' : '')
+          + (x.reply && x.type === 'gossip' ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
           + (x.outcome ? '<p class="gm-story-reply"><span>Outcome</span> ' + esc(x.outcome) + '</p>' : '')
           + prov
           + '<div class="gm-story-stats">' + links + reply + '<span class="gm-stat gm-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</span>'
@@ -800,7 +832,11 @@
         const fresh = list.filter((x) => x.status !== 'stale');
         const top = alertList.length ? null : take(fresh.slice(0, 1))[0];
         const near = here ? take(list.filter((x) => km(x.inst) < 400)) : [];
-        const world = take(list).slice(0, 40);
+        // Reports and documented cases first; posts by staff and visitors and leaked documents in sections of their own, so
+        // the press is not drowned out by visitor comments and every kind of source is told apart at a glance.
+        const world = take(list.filter((x) => x.type === 'gossip' || x.type === 'case')).slice(0, 30);
+        const posts = take(list.filter((x) => x.type === 'account')).slice(0, 15);
+        const docs = take(list.filter((x) => x.type === 'leak')).slice(0, 10);
         const month = list.filter((x) => { const p = parse(x.when); return p && Date.now() - p.d.getTime() < 30 * 864e5; }).length;
         const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '">' + svg(icon) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x, k) => card(x, alert && k === 0, alert)).join('') : '';
         const bellOn = store.get('atlas-alerts') === 'on';
@@ -818,6 +854,8 @@
           + (top ? card(top, true, false) : '')
           + sec('Near you', ICO.pin, near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', ICO.globe, month ? month + ' in the past 30 days' : 'Newest first', world, false)
+          + (posts.length ? '<h2 class="gm-feed-sec">' + svg(ICO.reply) + '<span>From staff and visitors</span><small>User posts</small></h2><p class="gm-feed-note">Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person\u2019s experience each, not checked as fact.</p>' + posts.map((x) => card(x, false, false)).join('') : '')
+          + (docs.length ? '<h2 class="gm-feed-sec">' + svg(ICO.link) + '<span>From leaked documents</span><small>' + docs.length + ' on record</small></h2>' + docs.map((x) => card(x, false, false)).join('') : '')
           + (!list.length ? '<p class="gm-feed-note">No dated reports on record yet.</p>' : '');
       }
       function liveLine() {
