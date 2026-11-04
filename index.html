@@ -23,7 +23,17 @@
     (function () {
       var root = document.documentElement;
       root.classList.add('atlas-held');
-      setTimeout(function () { root.classList.remove('atlas-held'); }, 10000); // never leave the globe hidden
+      // Never leave the page hidden, but never show it before it is laid out either. assets/institutions.js is 11 MB and on
+      // a slow phone connection takes longer than 10 s: this used to clear the hold while it was still loading, and showed
+      // the page before assets/phone-maps.js and assets/desktop-maps.js had run (the old layout) until it arrived. Now,
+      // while the page is still loading, it waits for DOMContentLoaded and gives the main script's own release 2 s more.
+      (function () {
+        function unhold() { root.classList.remove('atlas-held'); root.classList.add('fog-ready'); }
+        setTimeout(function () {
+          if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(unhold, 2000); }, { once: true });
+          else unhold();
+        }, 10000);
+      })();
       window.__atlasLiveRelease = Promise.resolve(null);
       if (!('serviceWorker' in navigator) || !window.fetch) return;
       var ctl = window.AbortController ? new AbortController() : null;
@@ -35,11 +45,11 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=507">
-  <script src="assets/config.js?v=503"></script>
-  <script src="assets/subtopic.js?v=503"></script>
-  <script src="assets/names.js?v=503"></script>
-  <script src="assets/grounding.js?v=503"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=513">
+  <script src="assets/config.js?v=508"></script>
+  <script src="assets/subtopic.js?v=508"></script>
+  <script src="assets/names.js?v=508"></script>
+  <script src="assets/grounding.js?v=508"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -248,17 +258,17 @@ return maplibregl$1;
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Funder types</h2>
-            <p class="layers-note">Show or hide each kind of funder on the funder layers. Point at a funder around a space to see every other space it funds.</p>
-            <div class="layers-kinds">
-              <label class="kind-chip" style="--marker-color:#818cf8"><input type="checkbox" data-kind="gov" checked> <i class="shape-dot"></i><span class="layer-name">Public funding</span></label>
-              <label class="kind-chip" style="--marker-color:#f472b6"><input type="checkbox" data-kind="found" checked> <i class="shape-dot"></i><span class="layer-name">Foundations</span></label>
-              <label class="kind-chip" style="--marker-color:#38bdf8"><input type="checkbox" data-kind="corp" checked> <i class="shape-dot"></i><span class="layer-name">Companies</span></label>
+            <p class="layers-note">Filter the funder layers by kind of funder. Point at a funder around a space to see every other space it funds.</p>
+            <div class="layers-filters">
+              <label class="filter-row" style="--marker-color:#818cf8"><i class="shape-dot"></i><span class="layer-name">Public funding</span><input type="checkbox" role="switch" data-kind="gov" checked></label>
+              <label class="filter-row" style="--marker-color:#f472b6"><i class="shape-dot"></i><span class="layer-name">Foundations</span><input type="checkbox" role="switch" data-kind="found" checked></label>
+              <label class="filter-row" style="--marker-color:#38bdf8"><i class="shape-dot"></i><span class="layer-name">Companies</span><input type="checkbox" role="switch" data-kind="corp" checked></label>
             </div>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Widest-reaching funders</h2>
-            <p class="layers-note">The funders named on the most spaces. Point at one to draw every space it funds; click to pin it, and click again or press Esc to let go.</p>
-            <div id="topFunders" class="layers-top" role="group" aria-label="Widest-reaching funders"></div>
+            <p class="layers-note">The funders named on the most spaces. Point at one to preview every space it funds; switch it on to keep it drawn. Several can be on at once.</p>
+            <div id="topFunders" class="layers-filters layers-top" role="group" aria-label="Widest-reaching funders"></div>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Spaces on the map</h2>
@@ -966,8 +976,9 @@ return maplibregl$1;
       <div class="space-y-1_5">
         <label class="block">Model</label>
         <select id="aiModelSelect" class="w-full px-3_5 py-2 meta">
-          <option value="claude-haiku-4-5-20251001">Anthropic Haiku 4.5 (Fast & Articulate - Recommended)</option>
-          <option value="claude-sonnet-4-5-20250929">Anthropic Sonnet 4.5 (Deep Critical Reasoning)</option>
+          <option value="claude-sonnet-5-5">Anthropic Sonnet 5.5 (Recommended)</option>
+          <option value="claude-opus-5-5">Anthropic Opus 5.5 (Deepest reasoning)</option>
+          <option value="claude-haiku-5-5">Anthropic Haiku 5.5 (Fast and cheap)</option>
         </select>
       </div>
 
@@ -1026,7 +1037,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=503"></script>
+  <script src="assets/institutions.js?v=508"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9962,11 +9973,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v499';
+    const ATLAS_RELEASE = 'culture-atlas-v512';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=499').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=508').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10087,9 +10098,14 @@ return maplibregl$1;
       width = Math.round(rect.width) || canvas.parentElement.clientWidth || 800;
       height = Math.round(rect.height) || canvas.parentElement.clientHeight || 600;
 
-      // Double/triple buffer dimensions for razor-sharp Retina displays
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
+      // Double/triple buffer dimensions for razor-sharp Retina displays.
+      // Setting a canvas's size clears it to black (the context has no alpha), so it is set only when it changes, and a
+      // globe already on screen is drawn again at once: on load the layout scripts send several resizes, and each used to
+      // show a black pane for a frame.
+      const bw = Math.round(width * dpr), bh = Math.round(height * dpr);
+      const resized = canvas.width !== bw || canvas.height !== bh;
+      if (canvas.width !== bw) canvas.width = bw;
+      if (canvas.height !== bh) canvas.height = bh;
 
       // Logical layout display dimensions
       canvas.style.width = width + 'px';
@@ -10104,6 +10120,7 @@ return maplibregl$1;
       if (cityVectorMap) {
         cityVectorMap.resize();
       }
+      if (resized && window.__atlasGlobeLive) render(performance.now());
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
@@ -10375,8 +10392,12 @@ return maplibregl$1;
     function atlasReleasePaint() {
       if (!atlasPaintHeld) return;
       atlasPaintHeld = false;
+      window.__atlasGlobeLive = true;
+      resizeCanvas(); // measured in the final layout, so no resize after this clears the first frame
       render(performance.now()); // drawn first, shown after: the canvas stays hidden until it holds a finished frame
       document.documentElement.classList.remove('atlas-held');
+      // The fog over the globe (assets/atlas.css, FOG ON THE MAP) comes on once the page has painted, not with it.
+      requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('fog-ready')));
     }
     let renderFrameId = 0;
     let lastRenderTs = 0;
@@ -10539,11 +10560,6 @@ return maplibregl$1;
         ctx.strokeStyle = G_LINE;
         ctx.lineWidth = 0.8;
         ctx.stroke();
-        // The fog over the globe's rim (atlas.css, FOG AND DEPTH) follows the globe: hand it the centre and radius, in CSS px,
-        // only when they change.
-        { const gx = Math.round(cx), gy = Math.round(cy), gr = Math.round(r), gk = gx + ',' + gy + ',' + gr;
-          if (gk !== window.__globeFogKey) { window.__globeFogKey = gk; const gv = canvas.parentElement;
-            gv.style.setProperty('--globe-x', gx + 'px'); gv.style.setProperty('--globe-y', gy + 'px'); gv.style.setProperty('--globe-r', gr + 'px'); } }
 
         // Clip all globe surface features strictly to the spherical limb
         ctx.save();
@@ -11424,7 +11440,10 @@ return maplibregl$1;
         if (ready === null) return;
         // The deferred scripts (assets/bubbles.js draws the hairlines in) have run by DOMContentLoaded, and they look
         // for the hold being cleared: release only once they are there to see it.
-        if (domReady) atlasReleasePaint(); else document.addEventListener('DOMContentLoaded', atlasReleasePaint, { once: true });
+        // In a task of its own: this promise can settle between two DOMContentLoaded listeners, before
+        // assets/desktop-maps.js and assets/phone-maps.js have laid the page out, and the page then showed and changed layout.
+        const release = () => setTimeout(atlasReleasePaint, 0);
+        if (domReady) release(); else document.addEventListener('DOMContentLoaded', release, { once: true });
       });
       setTimeout(atlasReleasePaint, 8000); // the waits above are capped; this is for an error in them
     })();
@@ -12632,7 +12651,7 @@ return maplibregl$1;
       const year = f.fy ? (/^\d{4}/.test(f.fy) ? 'FY' + f.fy : f.fy) : '';
       const parts = [['public', 'public funding'], ['private', 'donations, grants and memberships'], ['earned', 'earned income']]
         .filter(([k]) => base && typeof f[k] === 'number' && f[k] >= 0 && f[k] <= base)
-        .map(([k, label]) => `about ${Math.round(f[k] / base * 100)} percent ${label} (${proseMoney(cur, f[k])})`);
+        .map(([k, label]) => `${f[k] / base * 100 < 0.5 ? 'under 1' : 'about ' + Math.round(f[k] / base * 100)} percent ${label} (${proseMoney(cur, f[k])})`);
       if (parts.length) lis.push(proseLi('Where the income comes from:', escapeHtml(proseEnd(parts.join(', ')))));
       if (typeof f.net_assets === 'number' && f.net_assets > 0 && cur) lis.push(proseLi('Net assets:', escapeHtml(`${proseMoney(cur, f.net_assets)} at the end of the year.`)));
       if (sc.visitors) lis.push(proseLi('Visitors:', escapeHtml(`${proseCount(sc.visitors)}${sc.visitors_year ? ' in ' + sc.visitors_year : ''}.`)));
@@ -13186,12 +13205,16 @@ return maplibregl$1;
 
     let aiApiKey = localStorage.getItem('atlas_ai_api_key') || localStorage.getItem('atlas_gemini_api_key') || _SYS_KEY;
     let aiProvider = localStorage.getItem('atlas_ai_provider') || 'anthropic';
-    let aiModel = localStorage.getItem('atlas_ai_model') || 'claude-haiku-4-5-20251001';
+    // A model saved in settings before the 5.5 models (Nov 2026) moves to its successor.
+    const RETIRED_MODELS = { 'claude-haiku-4-5-20251001': 'claude-haiku-5-5', 'claude-sonnet-4-5-20250929': 'claude-sonnet-5-5' };
+    const savedModel = () => { const m = localStorage.getItem('atlas_ai_model'); return RETIRED_MODELS[m] || m; };
+    let aiModel = savedModel() || 'claude-sonnet-5-5';
 
     const PROVIDER_MODELS = {
       anthropic: [
-        { id: 'claude-haiku-4-5-20251001', name: 'Anthropic Haiku 4.5 (Fast & Articulate - Recommended)' },
-        { id: 'claude-sonnet-4-5-20250929', name: 'Anthropic Sonnet 4.5 (Deep Critical Reasoning)' }
+        { id: 'claude-sonnet-5-5', name: 'Anthropic Sonnet 5.5 (Recommended)' },
+        { id: 'claude-opus-5-5', name: 'Anthropic Opus 5.5 (Deepest reasoning)' },
+        { id: 'claude-haiku-5-5', name: 'Anthropic Haiku 5.5 (Fast and cheap)' }
       ],
       openai: [
         { id: 'gpt-4o-mini', name: 'gpt-4o-mini (Fast & Versatile)' },
@@ -13220,10 +13243,10 @@ return maplibregl$1;
     function getEffectiveModel() {
       if (aiModel) return aiModel;
       const p = getEffectiveProvider();
-      if (p === 'anthropic') return 'claude-haiku-4-5-20251001';
+      if (p === 'anthropic') return 'claude-sonnet-5-5';
       if (p === 'openai') return 'gpt-4o-mini';
       if (p === 'gemini') return 'gemini-2.5-flash';
-      return 'claude-haiku-4-5-20251001';
+      return 'claude-sonnet-5-5';
     }
 
     let currentSelectedProvider = getEffectiveProvider();
@@ -13337,7 +13360,7 @@ return maplibregl$1;
       const storedKey = localStorage.getItem('atlas_ai_api_key') || localStorage.getItem('atlas_gemini_api_key');
       aiApiKey = storedKey || _SYS_KEY;
       aiProvider = localStorage.getItem('atlas_ai_provider') || (storedKey ? detectProvider(storedKey) : 'anthropic');
-      aiModel = localStorage.getItem('atlas_ai_model') || (aiProvider === 'anthropic' ? 'claude-haiku-4-5-20251001' : getEffectiveModel());
+      aiModel = savedModel() || (aiProvider === 'anthropic' ? 'claude-sonnet-5-5' : getEffectiveModel());
 
       const topDot = document.getElementById('topStatusDot');
       const topLabel = document.getElementById('topStatusLabel');
@@ -14334,8 +14357,8 @@ return maplibregl$1;
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
       if (!activeKey && !useProxy) return null;
       const prov = useProxy ? 'anthropic' : getEffectiveProvider();
-      // Through the Worker the page asks for Sonnet 4.5 (user's choice, 2 Nov 2026); a visitor's own key uses the model chosen in settings.
-      const model = useProxy ? 'claude-sonnet-4-5-20250929' : getEffectiveModel();
+      // Through the Worker the page asks for Sonnet 5.5 (Sonnet since 2 Nov 2026, 5.5 since 4 Nov); a visitor's own key uses the model chosen in settings.
+      const model = useProxy ? 'claude-sonnet-5-5' : getEffectiveModel();
 
       // A short reply to the chat's own question ("yes that one", "the second") means what the last answer offered, so it is
       // read together with that answer. A bare name that no record carries is an unknown name, not a question about the open space.
@@ -14424,7 +14447,7 @@ return maplibregl$1;
       // 4. Assemble XML Structured User Prompt with Explicit Constraints and Investigative Journalism Directives
       const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || GOSSIP_ASK.test(userPrompt);
       const gossipDirective = isGossipMode
-        ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the space: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\n</gossip_mode>`
+        ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the space: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\nVOICE: deliver it as a professional academic investigator and art-market analyst briefing a colleague, and push that register hard: the forensic cadence of a case file, the vocabulary of provenance research, due diligence and funding analysis (the paper trail, the board minutes, the filing, the follow-the-money line, the reputational exposure, the trustee's other holdings), short declarative sentences that land, and a sharp, knowing, dramatic edge. Heighten the delivery, never the facts: every claim is still one the items carry, still attributed to whoever says it, talk still stays talk, and no verdict word appears without its named event, date and actor. The case file is a manner of speaking: never cite the atlas's own item numbers or codes (G76, R31) and never call an item a row, an entry or a field. Never remark on the file itself: no line saying a trail is thin, a quote cuts off or the record goes quiet; end a cut-off quotation at its last full sentence.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
       const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a detail is absent from the record, leave it out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated"; answer with what the record holds and stop there. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
@@ -14441,7 +14464,7 @@ return maplibregl$1;
       const criticalSystemPrompt = `<system_instructions>
 ANSWER AND TONE:
 - Answer the user's specific question directly in the first sentence. Never dismiss or redirect it with phrases such as "What matters more is..." or lecture the visitor about what they should ask.
-- Use a neutral, precise investigative tone. Present funding, public coffers, foundation grants, grades, governance and criticism as recorded information, not moral verdicts or promotional copy. Avoid partisan language, theatrical jokes, sneering comparisons and unsupported praise.
+- Use a neutral, precise investigative tone (in gossip mode, the heightened investigator's voice its own block describes). Present funding, public coffers, foundation grants, grades, governance and criticism as recorded information, not moral verdicts or promotional copy. Avoid partisan language, theatrical jokes, sneering comparisons and unsupported praise.
 - State what the record says and distinguish it from inference, allegation or missing information. Do not invent details that no record supplies.
 - If a requested detail appears in the record, state it clearly and do not also say that it is unavailable. If it is not in the record, leave it out; only when the visitor asked for exactly that detail, say so in one plain sentence. Never append a web address, a link line, a "Sources:" line or a "for more information" line to an answer; the record's links are shown elsewhere.
 - For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name critics, publications, reviews or controversies only when present in the supplied record or cited sources. If none are recorded, do not write about critics at all unless asked; when asked, one plain sentence, and do not substitute a generic theory passage or introduce it with phrases such as "One critical frame applies."
@@ -14462,6 +14485,7 @@ CHARACTER & VOICE GUIDELINES:
 
 2. CURATORIAL TONE:
    - Use informed precision and neutral language; distinguish recorded facts from interpretation.
+   - Speak the working language of the American and British art worlds, the way a curator, critic or arts-funding analyst talks, wherever a term names what the record states: institution, kunsthalle, non-collecting space, artist-run space, project space, blue-chip, mega-gallery, primary and secondary market, programming, commission, survey show, retrospective, acquisitions fund, deaccessioning, provenance, restitution, board seat, trustee, patrons' circle, naming rights, endowment, artwashing, soft power. Use the register of the space's own country: for a US space, board of trustees, donor, 501(c)(3), endowment draw, capital campaign, opening; for a UK space, Arts Council England National Portfolio Organisation, DCMS, registered charity, Gift Aid, Friends scheme, private view. A term carries a fact from the record or it is left out; jargon never replaces a name, a year or an amount, and the NO SLOP list below still applies.
    - Avoid promotional, partisan or moralizing comparisons.
    - Keep observations grounded in the records and their cited sources.
 
@@ -14549,7 +14573,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             },
             body: JSON.stringify({
               model: model,
-              max_tokens: 1024,
+              max_tokens: 3000,
+              ...(/-5-5$/.test(model) ? { output_config: { effort: /haiku/.test(model) ? 'low' : 'medium' } } : {}),
               system: criticalSystemPrompt,
               messages: [...conversationTurns(), { role: 'user', content: structuredUserPrompt }]
             })
@@ -14682,7 +14707,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               'anthropic-dangerous-direct-browser-access': 'true'
             },
             body: JSON.stringify({
-              model: model || 'claude-haiku-4-5-20251001',
+              model: model || 'claude-haiku-5-5',
               max_tokens: 10,
               messages: [{ role: 'user', content: 'Respond with OK' }]
             })
@@ -18272,7 +18297,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       } else {
         aiApiKey = _SYS_KEY;
         aiProvider = 'anthropic';
-        aiModel = 'claude-haiku-4-5-20251001';
+        aiModel = 'claude-sonnet-5-5';
         localStorage.removeItem('atlas_ai_api_key');
         localStorage.removeItem('atlas_gemini_api_key');
         localStorage.removeItem('atlas_ai_provider');
@@ -18285,7 +18310,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('clearApiKeyBtn')?.addEventListener('click', () => {
       aiApiKey = _SYS_KEY;
       aiProvider = 'anthropic';
-      aiModel = 'claude-haiku-4-5-20251001';
+      aiModel = 'claude-sonnet-5-5';
       if (aiApiKeyInput) aiApiKeyInput.value = '';
       localStorage.removeItem('atlas_ai_api_key');
       localStorage.removeItem('atlas_gemini_api_key');
@@ -20015,12 +20040,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=503"></script>
-<script src="assets/layers.js?v=503"></script>
-<script src="assets/hq-detail.js?v=503"></script>
-<script src="assets/bubbles.js?v=503" defer></script>
-<script src="assets/phone-maps.js?v=503"></script>
-<script src="assets/desktop-maps.js?v=503"></script>
-<script src="assets/chat-resize.js?v=503"></script>
+<script src="assets/typeset.js?v=508"></script>
+<script src="assets/layers.js?v=508"></script>
+<script src="assets/hq-detail.js?v=511"></script>
+<script src="assets/bubbles.js?v=508" defer></script>
+<script src="assets/phone-maps.js?v=508"></script>
+<script src="assets/desktop-maps.js?v=508"></script>
+<script src="assets/chat-resize.js?v=508"></script>
 </body>
 </html>

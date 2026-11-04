@@ -201,6 +201,20 @@
       syncSearch();
     });
 
+    // ---- The page's name, above the layer chips -----------------------------------------------------------------
+    // The header's brand button is hidden in this layout, so its name is set again here; a click does what that button did.
+    if (!$('gmdTitle')) {
+      const title = document.createElement('h1');
+      title.id = 'gmdTitle';
+      const tb = document.createElement('button');
+      tb.type = 'button';
+      tb.textContent = 'Leaving it on the table';
+      tb.title = 'Back to the world view';
+      tb.addEventListener('click', () => { const b = $('topBrandLogoBtn'); if (b) b.click(); });
+      title.appendChild(tb);
+      document.body.appendChild(title);
+    }
+
     // ---- Layer chips beside the box ------------------------------------------------------------------------------
     // Each chip is a map layer from the Layers menu and presses that layer's own switch, so the two always agree.
     const chips = document.createElement('div');
