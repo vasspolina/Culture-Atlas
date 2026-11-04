@@ -3572,3 +3572,10 @@ div:has(>#topThemeBtn){column-gap:0}
   background:linear-gradient(to bottom,color-mix(in srgb,var(--paper) 55%,transparent) 0,transparent 34%),
              radial-gradient(ellipse 72% 68% at 50% 56%,transparent 58%,color-mix(in srgb,var(--paper) 45%,transparent) 100%)}
 @media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
+
+/* The curator's mark beside each answer is the pink disc with a square (user's file, 4 Nov 2026), in place of the Gemini spark.
+   It does not spin while an answer is coming: a pending answer pulses instead. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap:not(.has-bubble):not(#curatorHeroGreeting)::before{background:url("icons/chat-mark.svg") center/contain no-repeat!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap.chat-pending::before{animation:chat-mark-pulse 1.2s ease-in-out infinite alternate!important}
+@keyframes chat-mark-pulse{from{opacity:1}to{opacity:.35}}
+@media (prefers-reduced-motion:reduce){ :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap.chat-pending::before{animation:none!important} }

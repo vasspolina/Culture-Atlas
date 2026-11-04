@@ -10,6 +10,7 @@ const ASSETS_TO_CACHE = [
   './assets/icons/icon-512.png',
   './assets/icons/icon-512-maskable.png',
   './assets/icons/apple-touch-icon-180.png',
+  './assets/icons/chat-mark.svg',
   './assets/atlas.css',
   './assets/maplibre-gl.css',
   './assets/layers.js',
