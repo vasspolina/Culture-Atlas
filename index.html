@@ -45,11 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=513">
-  <script src="assets/config.js?v=508"></script>
-  <script src="assets/subtopic.js?v=508"></script>
-  <script src="assets/names.js?v=508"></script>
-  <script src="assets/grounding.js?v=508"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=516">
+  <script src="assets/config.js?v=514"></script>
+  <script src="assets/subtopic.js?v=514"></script>
+  <script src="assets/names.js?v=514"></script>
+  <script src="assets/grounding.js?v=514"></script>
+  <script src="assets/repeats.js?v=514"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1037,7 +1038,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=508"></script>
+  <script src="assets/institutions.js?v=514"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9973,11 +9974,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v512';
+    const ATLAS_RELEASE = 'culture-atlas-v515';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=508').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=514').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10272,9 +10273,17 @@ return maplibregl$1;
     // Label type is regular on the light theme and light on the dark one.
     const atlasLabelWeight = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
     const atlasMonoFont = () => atlasLabelWeight() + ' 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    // The selected space's label is set larger than the rest, with its whole name (user, 4 Nov 2026: "make selected bigger").
+    const atlasSelFont = () => atlasLabelWeight() + ' 20px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const ATLAS_SEL_H = 32, ATLAS_SEL_PAD = 36;
+    const atlasLabelName = (name, sel) => sel ? (name.length > 44 ? name.substring(0, 42) + '…' : name) : (name.length > 24 ? name.substring(0, 22) + '…' : name);
+    // The hover card's description is set in Serrif Light, as Displaay sets the info text on displaay.net/typeface/cassette.
+    const ATLAS_CARD_DESC_FONT = '300 18px "Serrif", Georgia, "Times New Roman", serif';
+    const ATLAS_CARD_LABEL_FONT = '400 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
       document.fonts.load(ATLAS_CARD_NAME_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
+      document.fonts.load(ATLAS_CARD_DESC_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
     }
 
     function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {
@@ -10285,82 +10294,106 @@ return maplibregl$1;
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${domain}`;
 
-      // A white block with the name in capitals, facts in the grotesque, the website as a grey block.
-      const nameText = inst.name;
-      const nameUpper = nameText.toUpperCase();
-      const locText = [inst.city, inst.country].filter(Boolean).join(', ');
-      const subText = locText + (inst.curatorial_focus ? ', ' + inst.curatorial_focus : (inst.neighborhood ? ', ' + inst.neighborhood : ''));
+      // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
+      // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
+      // label over a 1px rule; the name in capitals; the description in Serrif Light 18px on a 1.2 line, up to three lines; the
+      // website as a button with the buttons' 10px corners and 1px edge.
+      const nameUpper = inst.name.toUpperCase();
+      const locText = [inst.city, inst.country].filter(Boolean).join(', ').toUpperCase();
+      const ov = inst.details && Array.isArray(inst.details.overview) ? inst.details.overview.find(t => t && String(t).trim()) : '';
+      const descText = String(ov || inst.curatorial_focus || inst.neighborhood || '').replace(/\s+/g, ' ').trim();
 
-      ctx.font = ATLAS_CARD_NAME_FONT;
-      const nameW = ctx.measureText(nameUpper).width;
-      ctx.font = atlasMonoFont();
-      const subW = ctx.measureText(subText).width;
-      const webW = ctx.measureText(domainPillText).width;
+      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const cardInk = cardDark ? '#ffffff' : '#000000';
+      const cardPaper = cardDark ? '#000000' : '#ffffff';
+      const padX = 18, padY = 16;
+      const cardW = Math.min(360, width - 28);
+      const maxTextW = cardW - padX * 2;
+      const fit = (str) => {
+        let t = str;
+        if (ctx.measureText(t).width > maxTextW) {
+          while (t.length > 5 && ctx.measureText(t + '…').width > maxTextW) t = t.slice(0, -1);
+          t += '…';
+        }
+        return t;
+      };
+      // Words onto lines of the measure; the last line carries an ellipsis when the text runs on.
+      const wrap = (str, maxLines) => {
+        const words = str.split(' '), lines = [];
+        let line = '', i = 0;
+        for (; i < words.length; i++) {
+          const t = line ? line + ' ' + words[i] : words[i];
+          if (!line || ctx.measureText(t).width <= maxTextW) { line = t; continue; }
+          lines.push(line); line = words[i];
+          if (lines.length === maxLines) break;
+        }
+        if (lines.length < maxLines) { if (line) lines.push(line); i = words.length; }
+        if (i < words.length) {
+          let last = lines[maxLines - 1];
+          while (last.length > 1 && ctx.measureText(last + '…').width > maxTextW) last = last.slice(0, -1);
+          lines[maxLines - 1] = last.replace(/[\s,;:.]+$/, '') + '…';
+        }
+        return lines.map(fit);
+      };
 
-      const barW = 0;
-      const padX = 16;
-      const cardW = Math.max(260, Math.min(400, Math.max(nameW, subW, webW + 28) + barW + padX * 2));
-      const pillH = 26;
-      const cardH = webUrl ? 116 : 74;
+      ctx.font = ATLAS_CARD_DESC_FONT;
+      const descLines = descText ? wrap(descText, 3) : [];
+      const DESC_LH = 21.6;
+      const webUrl2 = webUrl;
+      const LABEL_Y = padY, RULE_Y = padY + 22, NAME_Y = RULE_Y + 12, DESC_Y = NAME_Y + 36;
+      const descEnd = DESC_Y + descLines.length * DESC_LH;
+      const btnH = 30;
+      const cardH = (webUrl2 ? descEnd + 14 + btnH : descEnd) + padY;
 
       let cardX = px - cardW / 2;
       cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
-
       let cardY = py - cardH - 16;
       if (cardY < 14) cardY = py + 20;
 
-      // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode. Gossip mode does not change it: yellow is for gossip alone.
-      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const cardInk = cardDark ? '#ffffff' : '#000000';
-      // Drawn like the city labels: a thin soft rounded outline, no block.
       ctx.beginPath();
-      ctx.roundRect(cardX, cardY, cardW, cardH, 0);
-      ctx.fillStyle = cardDark ? '#000000' : '#ffffff';
+      ctx.roundRect(cardX, cardY, cardW, cardH, 20);
+      ctx.fillStyle = cardPaper;
       ctx.fill();
-      ctx.globalAlpha = 0.45;
       ctx.strokeStyle = cardInk;
       ctx.lineWidth = 1;
       ctx.stroke();
-      ctx.globalAlpha = 1;
 
-      const textX = cardX + barW + padX;
-      const maxTextW = cardW - barW - padX * 2;
-      const fit = (str) => {
-        let s = str;
-        if (ctx.measureText(s).width > maxTextW) {
-          while (s.length > 5 && ctx.measureText(s + '…').width > maxTextW) s = s.slice(0, -1);
-          s += '…';
-        }
-        return s;
-      };
-
+      const textX = cardX + padX;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillStyle = cardInk;
+
+      ctx.font = ATLAS_CARD_LABEL_FONT;
+      try { ctx.letterSpacing = '0.04em'; } catch (e) {}
+      if (locText) ctx.fillText(fit(locText), textX, cardY + LABEL_Y);
+      try { ctx.letterSpacing = '0px'; } catch (e) {}
+      ctx.fillRect(textX, cardY + RULE_Y, maxTextW, 1);
+
       ctx.font = ATLAS_CARD_NAME_FONT;
-      ctx.fillText(fit(nameUpper), textX, cardY + 14);
+      ctx.fillText(fit(nameUpper), textX, cardY + NAME_Y);
 
-      ctx.font = atlasMonoFont();
-      ctx.fillText(fit(subText), textX, cardY + 48);
+      ctx.font = ATLAS_CARD_DESC_FONT;
+      descLines.forEach((ln, i) => ctx.fillText(ln, textX, cardY + DESC_Y + i * DESC_LH));
 
-      if (webUrl) {
+      if (webUrl2) {
+        ctx.font = ATLAS_CARD_LABEL_FONT;
+        try { ctx.letterSpacing = '0.02em'; } catch (e) {}
+        const webW = ctx.measureText(domainPillText).width;
         const btnX = textX;
-        const btnY = cardY + 74;
-        const btnW = Math.min(maxTextW, webW + 24);
-        const btnH = pillH;
-
+        const btnY = cardY + descEnd + 14;
+        const btnW = Math.min(maxTextW, webW + 28);
         ctx.beginPath();
-        ctx.roundRect(btnX, btnY, btnW, btnH, 0);
-        ctx.globalAlpha = 0.45;
+        ctx.roundRect(btnX, btnY, btnW, btnH, 10);
         ctx.strokeStyle = cardInk;
+        ctx.lineWidth = 1;
         ctx.stroke();
-        ctx.globalAlpha = 1;
         ctx.fillStyle = cardInk;
         ctx.textBaseline = 'middle';
-        ctx.fillText(fit(domainPillText), btnX + 12, btnY + btnH / 2 + 0.5);
+        ctx.fillText(fit(domainPillText), btnX + 14, btnY + btnH / 2 + 0.5);
+        try { ctx.letterSpacing = '0px'; } catch (e) {}
 
         hoveredMicroCardHitbox = {
-          inst: inst, webUrl: webUrl,
+          inst: inst, webUrl: webUrl2,
           btnX: btnX, btnY: btnY, btnW: btnW, btnH: btnH,
           cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
         };
@@ -10382,6 +10415,9 @@ return maplibregl$1;
     let cityClusterHitboxes = [];
     let cityBadgeHitboxes = [];
     let visibleDots = [];
+    // Where the selected space's dot was drawn last frame, after the dots that share a city were spread apart: its label's
+    // place is kept from there, as the projected point alone sat up to 12px off and let a neighbour's label run under it.
+    let lastSelDotAt = null;
     let cityMuseumHitboxes = [];
 
     // One draw loop only. Every caller asks through scheduleRender(), which
@@ -10712,8 +10748,8 @@ return maplibregl$1;
         const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
-          ctx.font = atlasMonoFont();
-          const w = ctx.measureText(text).width + 28, h = 22;
+          ctx.font = active ? atlasSelFont() : atlasMonoFont();
+          const w = ctx.measureText(text).width + (active ? ATLAS_SEL_PAD : 28), h = active ? ATLAS_SEL_H : 22;
           const pc = pillColors(active, tier);
           // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
           const textCol = pillTextColor(tier);
@@ -10744,14 +10780,15 @@ return maplibregl$1;
         }
         // The selected space's label always draws, so city names give way to it rather than sit under it.
         if (selectedInstitution && !isCityStreetViewActive) {
-          const sp = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
+          const sp0 = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
+          const sp = (lastSelDotAt && lastSelDotAt.name === selectedInstitution.name) ? { x: lastSelDotAt.x, y: lastSelDotAt.y, front: sp0.front } : sp0;
           if (sp.front) {
             ctx.save();
-            ctx.font = atlasMonoFont();
-            const sn = selectedInstitution.name.length > 24 ? selectedInstitution.name.substring(0, 22) + '…' : selectedInstitution.name;
-            const sw = ctx.measureText(sn).width + 28;
+            ctx.font = atlasSelFont();
+            const sn = atlasLabelName(selectedInstitution.name, true);
+            const sw = ctx.measureText(sn).width + ATLAS_SEL_PAD;
             ctx.restore();
-            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - 18, w: sw, h: 22 });
+            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - ATLAS_SEL_H - 6, w: sw, h: ATLAS_SEL_H });
           }
         }
         try {
@@ -11092,11 +11129,12 @@ return maplibregl$1;
             ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
-            const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
-            ctx.font = atlasMonoFont();
+            if (isSel) lastSelDotAt = { name: d.inst.name, x: d.x, y: d.y };
+            const nameTxt = atlasLabelName(d.inst.name, isSel);
+            ctx.font = isSel ? atlasSelFont() : atlasMonoFont();
             const tw = ctx.measureText(nameTxt).width;
-            const bw = tw + 28;
-            const bh = 22;
+            const bw = tw + (isSel ? ATLAS_SEL_PAD : 28);
+            const bh = isSel ? ATLAS_SEL_H : 22;
             const bx = d.x - bw / 2;
             // A label drawn last frame keeps its place unless it truly overlaps; a new one needs air.
             const wasShownInst = lastShownInstLabels.has(d.inst.name);
@@ -11106,7 +11144,7 @@ return maplibregl$1;
             });
             // Above the dot; below it when the city's own badge sits there. A country with one city draws the badge on its spaces,
             // and the space's name was dropped as a collision, so a click on the country showed a badge and no space.
-            let by = d.y - 18;
+            let by = isSel ? d.y - ATLAS_SEL_H - 6 : d.y - 18;
             if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, d.y + 8)) by = d.y + 8;
             const collidesWithOtherLabel = clashes(drawnInstLabelBoxes, by);
             const collidesWithCity = clashes(drawnCityBoxes, by);
@@ -12115,6 +12153,9 @@ return maplibregl$1;
         record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : ''));
         record.classList.toggle('hidden', !record.innerHTML);
       }
+      // The summary, the funding row and the reported items are filled apart; what one says, the next does not say again.
+      if (window.AtlasRepeats) window.AtlasRepeats.dedupeDom(document.getElementById('dossier-sheet-verified-pane'));
+      if (record) record.classList.toggle('hidden', !record.innerHTML.trim());
       const webLink = document.getElementById('dossier-sheet-link-web');
       const webUrl = getValidWebUrl(inst);
       if (webLink) {
@@ -12901,7 +12942,8 @@ return maplibregl$1;
           ${isClean ? visitingRowsHtml([
             ['Opening hours', escapeHtml(inst.opening_hours || '')],
             ['Admission', escapeHtml(inst.admission_fee || '')],
-            ['Address', escapeHtml(inst.address || inst.location || '') + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '')],
+            // The city and country head the record already; with no street address there is no Address row to repeat them.
+            ['Address', inst.address ? escapeHtml(inst.address) + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '') : ''],
             ['Suggested duration', escapeHtml(inst.visit_duration || '')],
             ['Getting there', escapeHtml(inst.transit_tips || '')],
             ['Accessibility', escapeHtml(inst.accessibility || '')],
@@ -12919,7 +12961,8 @@ return maplibregl$1;
       if (!inst) return;
       dossierInst = inst;
       // On the note screen, opening another record makes it the institution of the note.
-      const html = linkRecordSpaces(recordHtml(inst), inst);
+      // Every statement once: a sentence two fields share is printed where it first comes (assets/repeats.js).
+      const html = dedupeView(linkRecordSpaces(recordHtml(inst), inst));
       const phoneBody = document.getElementById('detailBody');
       if (phoneBody) phoneBody.innerHTML = html;
       const page = document.getElementById('desktopDossierRecordBody');
@@ -14529,6 +14572,7 @@ ${groundedCatalogText}${placeText}
 ${communityGrounding}
 ${webIntelGrounding}
 
+- NO REPETITION. Say each fact once in an answer. Do not restate a sentence, a figure, a funder or a list item already given, in other words or the same words; do not end with a summary of what you just said; do not repeat what an earlier answer in this conversation already told the visitor unless asked again. The page removes any sentence it finds twice.
 - NO SLOP. Never write hedges (may, might, reportedly, allegedly, appears to, seems, arguably, likely, is said to, believed to): state what the record states and attribute it to its source, or leave it out. Never write filler or promo words (vibrant, rich, renowned, prestigious, world-class, iconic, landmark, dynamic, thriving, pivotal, tapestry, testament to, nestled, boasts, showcases, fosters, underscores, delve, landscape, ecosystem, legacy). Never write "plays a crucial role", "it is worth noting", "a diverse range of", "among others", "and more", or "not only X but also Y". Do not pad with lists of three. Do not use verdict words (controversial, problematic, troubling, concerning) without a named event, date and actor. Use active voice, past tense for events, present tense for current funding.
 - Avoid pompous marketing fluff ("cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "sublime", "epistemologies", or "palliative").
 - Avoid promotional language, unsupported praise or criticism, canned phrasing and prompt meta-commentary. Keep answers concise and evidence-based.
@@ -14665,6 +14709,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           if (themed && !isGossipMode) rawText = rawText.replace(/^\s*The Atlas (?:holds|records|has)[^.]*\d[^.]*\.\s*(?:(?:Their|The) grades are[^.]*\.\s*)?/i, '');
           if (themed && !isGossipMode) rawText = `The Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} for this question. Grades: ${themed.tallyText}.\n\n${rawText}`;
           rawText = dropAbsenceLines(rawText);
+          // The model does not say a thing twice: a sentence or list item it already gave is taken out (assets/repeats.js).
+          if (window.AtlasRepeats) rawText = window.AtlasRepeats.dropRepeatedText(rawText);
           if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing is reported for this space in the records.</p>', gossip: false, none: true };
           return isGossipMode ? { html: renderCuratorMarkdown(rawText), gossip: true } : renderCuratorMarkdown(rawText);
         }
@@ -14692,6 +14738,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }).filter((line, i, arr) => line.trim() !== '' || (arr[i - 1] || '').trim() !== '').join('\n').trim();
     }
     window.dropAbsenceLines = dropAbsenceLines;
+    // The view-level repeat pass; a no-op if assets/repeats.js did not load.
+    function dedupeView(html) { return window.AtlasRepeats && typeof html === 'string' ? window.AtlasRepeats.dedupeHtml(html) : html; }
+    window.dedupeView = dedupeView;
 
     async function testAPIConnection(prov, key, model) {
       const activeKey = key || aiApiKey || _SYS_KEY;
@@ -15682,6 +15731,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (typeof htmlContent === 'string') {
         processedContent = renderCuratorMarkdown(htmlContent);
       }
+      // A turn built from several records or fields says each statement once (assets/repeats.js).
+      processedContent = dedupeView(processedContent);
 
       div.innerHTML = `
         <div class="space-y-2_5">
@@ -20040,12 +20091,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=508"></script>
-<script src="assets/layers.js?v=508"></script>
-<script src="assets/hq-detail.js?v=511"></script>
-<script src="assets/bubbles.js?v=508" defer></script>
-<script src="assets/phone-maps.js?v=508"></script>
-<script src="assets/desktop-maps.js?v=508"></script>
-<script src="assets/chat-resize.js?v=508"></script>
+<script src="assets/typeset.js?v=514"></script>
+<script src="assets/layers.js?v=514"></script>
+<script src="assets/hq-detail.js?v=514"></script>
+<script src="assets/bubbles.js?v=514" defer></script>
+<script src="assets/phone-maps.js?v=514"></script>
+<script src="assets/desktop-maps.js?v=514"></script>
+<script src="assets/chat-resize.js?v=514"></script>
 </body>
 </html>
