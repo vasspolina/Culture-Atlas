@@ -7,6 +7,11 @@ h1,h2,h3,h4,p{margin:0}
 /* Culture Atlas: plain CSS, no framework. Flat colour blocks, hairlines, one grotesque family.
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
+/* Dazzed (Displaay, https://displaay.net/typeface/dazzed) for the badges only (user, 4 Nov 2026). The files are not in the repository yet:
+   drop Dazzed-Regular.woff2 (and Dazzed-Medium.woff2 if wanted) into fonts/ and the badges take it; until then they fall back to Jokker.
+   Displaay's trial licence does not cover a public site: buy a web licence before it ships. */
+@font-face{font-family:"Dazzed";src:url("../fonts/Dazzed-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Dazzed";src:url("../fonts/Dazzed-Medium.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 
 :root{
@@ -3600,4 +3605,18 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.chat-resizing,:root.chat-resizing *{cursor:col-resize!important;user-select:none!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #globeViewport:not(#x){transition:none}
   :root.chat-wide #gmdChips,:root.chat-wide #gmdMapCtl,:root.chat-wide #layersControl{display:none!important}
+
+}
+
+/* Badges (user, 4 Nov 2026: "delete dot from top story badge, use typography for badges from Dazzed, mobile version"): no dot; set in
+   Dazzed; a soft filled label with 8px corners, as on Displaay's own mobile pages, instead of an outlined pill. On the beige strip and
+   poster the fill is paper; in the feed the beige grey. Black on both measures over 17:1. */
+@media (max-width:767px){
+  :root{--gm-badge-font:"Dazzed","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label i{display:none!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#gmStoryStrip .gm-strip-label,#gmFeed .gm-poster-pill,#gmFeed .gm-poster-status,#gmFeed .gm-alert-tag){font-family:var(--gm-badge-font)!important;font-weight:400!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert .gm-strip-label{gap:0!important;padding:4px 10px!important;border-radius:8px!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:none!important;letter-spacing:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-poster .gm-poster-pill,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-poster.is-alert .gm-poster-pill{border-radius:8px!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:none!important;text-transform:none!important;letter-spacing:0!important;padding:4px 10px!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-poster .gm-poster-status{border-radius:8px!important;box-shadow:none!important;padding:4px 10px!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-alert-tag{border-radius:8px!important;background:var(--gm-top-ground,#eeece6)!important;color:var(--ink)!important;box-shadow:none!important}
 }

@@ -76,6 +76,10 @@
         const names = (i) => [i.name].concat(i.aliases || []).map(fold);
         const exact = A.filter((i) => names(i).includes(f));
         if (exact.length === 1) return { inst: exact[0] };
+        // One word on its own finds a space only by its full name or a recorded short name: a word that only starts a name
+        // ("tate" for Tate Modern) goes to the chat, which can say what is on the atlas under that word (user, 4 Nov 2026).
+        const oneWord = f.split(' ').length === 1;
+        if (oneWord) return null;
         const prefix = A.filter((i) => names(i).some((n) => n.startsWith(f + ' ') || n === f));
         if (prefix.length === 1) return { inst: prefix[0] };
         let m = null;
