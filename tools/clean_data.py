@@ -194,10 +194,15 @@ def clean(records, report=None):
             kept.append(r)                     # the keeper is not in the data; the record stays as it is
             bump('duplicate_keeper_missing')
     records[:] = kept
+    # A value with a cited source for that field (field_sources) is not filler, however many records share it:
+    # "Free" or "Tue–Sun 10:00–18:00; closed Mon" read from a museum's own OpenStreetMap entry is true of many museums.
+    # Cited values are left out of the count too, so they cannot push an uncited one over the line.
+    def cited(r, f):
+        return bool(((r.get('field_sources') or {}).get(f) or {}).get('urls'))
     for f in TEXT:
-        counts = collections.Counter(norm(r[f], r) for r in records if r.get(f))
+        counts = collections.Counter(norm(r[f], r) for r in records if r.get(f) and not cited(r, f))
         for r in records:
-            if r.get(f) and counts[norm(r[f], r)] >= 5:
+            if r.get(f) and not cited(r, f) and counts[norm(r[f], r)] >= 5:
                 del r[f]
                 bump(f)
     for r in records:
