@@ -4273,6 +4273,7 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea){color:var(--dp-ink)!important;caret-color:var(--dp-ink)!important;border-radius:0!important}
 @media (max-width:520px){
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock){padding:14px 0 12px!important}
+}
 
 /* ---- SHARE INFORMATION IN THE PHONE'S CHAT (user, 4 Nov 2026: "show Share information button in phone chat") ----
    The phone composer (html.gm-chat) hid Share information and Voice. Share information comes back, Voice stays in the menu. It
