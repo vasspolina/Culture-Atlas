@@ -3450,3 +3450,9 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-group :is(.maplibregl-ctrl-zoom-in,.maplibregl-ctrl-zoom-out){display:none!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-group .maplibregl-ctrl-compass{width:44px!important;height:44px!important;border:0!important;border-radius:50%!important;background-color:var(--paper)!important;box-shadow:var(--gm-shadow)!important}
 }
+
+/* The alert mark on the map is neutral too (user, 4 Nov 2026: "red alert ring needs to be neutral"): a paper dot with an ink edge and an
+   ink "!", no red and no pulse, in light and dark. It still says where an alert is; its colour no longer says it is bad. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-alert-mark{background:var(--paper)!important;color:var(--ink)!important;border:1.5px solid var(--ink)!important;box-shadow:var(--gm-shadow)!important;animation:none!important}
+}
