@@ -35,11 +35,11 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=496">
-  <script src="assets/config.js?v=496"></script>
-  <script src="assets/subtopic.js?v=496"></script>
-  <script src="assets/names.js?v=496"></script>
-  <script src="assets/grounding.js?v=496"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=497">
+  <script src="assets/config.js?v=497"></script>
+  <script src="assets/subtopic.js?v=497"></script>
+  <script src="assets/names.js?v=497"></script>
+  <script src="assets/grounding.js?v=497"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -230,6 +230,32 @@ return maplibregl$1;
               <label><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Spaces graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
               <label><input type="checkbox" data-layer="artist"> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
             </div>
+          </section>
+          <section class="layers-section">
+            <h2 class="layers-section-title">Funding views</h2>
+            <p class="layers-note">Other ways to draw the same funding data. Each works alone or beside the layers above, and follows the funder types below. Point at a line, a ring or an area to name it; click to ask the chat.</p>
+            <div class="layers-list">
+              <label><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type. Pairs with one link show when you zoom in</span><span class="layers-count" data-count="bundle"></span></label>
+              <label><input type="checkbox" data-layer="flows"> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
+              <label><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country by the share of its spaces&rsquo; funders based abroad, or by its main funder type</span><span class="layers-count" data-count="choro"></span></label>
+              <label><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for. Point at a funder anywhere to see its own</span></label>
+              <label><input type="checkbox" data-layer="glyphs"> <span class="layer-name">Funding mix on each space</span><span class="layer-desc">A ring around each space, split by its public, foundation and company funders</span></label>
+              <label><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share. No lines</span></label>
+              <label><input type="checkbox" data-layer="lifted"> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more spaces they fund, with a line down to each</span></label>
+              <label><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices. The flag is on the space</span><span class="layers-count" data-count="flagged"></span></label>
+            </div>
+            <div class="layers-kinds layers-choro" role="radiogroup" aria-label="Countries shaded by">
+              <label class="kind-chip"><input type="radio" name="choroMode" data-choro="abroad" checked> <span class="layer-name">Funders abroad</span></label>
+              <label class="kind-chip"><input type="radio" name="choroMode" data-choro="kind"> <span class="layer-name">Main funder type</span></label>
+            </div>
+            <div class="layers-choro-legend" data-choro-legend><span>None abroad</span><i aria-hidden="true"></i><span>All abroad</span></div>
+            <div class="layers-years">
+              <label><input type="checkbox" data-years-on> <span class="layer-name">Decade</span></label>
+              <input type="range" data-years min="1950" max="2020" step="10" value="2010" aria-label="Decade">
+              <output data-years-out>2010s</output>
+              <span class="layers-count" data-count="years"></span>
+            </div>
+            <p class="layers-note">The decade keeps the spaces whose funding line names a year in it, on every funding layer and view. Funding lines give no start or end dates, so this is the year a line mentions, not the years a grant ran.</p>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Propaganda periods</h2>
@@ -1061,7 +1087,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=496"></script>
+  <script src="assets/institutions.js?v=497"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9987,11 +10013,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v496';
+    const ATLAS_RELEASE = 'culture-atlas-v497';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=496').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=497').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10593,7 +10619,8 @@ return maplibregl$1;
             if (dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
           }
 
-          ctx.fillStyle = isCActive ? G_ACTIVE : G_GROUND;
+          // Countries shaded by the funding views (assets/funding-views.js) take their fill from there.
+          ctx.fillStyle = isCActive ? G_ACTIVE : ((window.atlasCountryFill && window.atlasCountryFill(country.n, G_GROUND)) || G_GROUND);
 
           for (let j = 0; j < country.r.length; j++) {
             const ring = country.r[j];
@@ -20408,11 +20435,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=496"></script>
-<script src="assets/layers.js?v=496"></script>
-<script src="assets/hq-detail.js?v=496"></script>
-<script src="assets/bubbles.js?v=496" defer></script>
-<script src="assets/phone-maps.js?v=496"></script>
-<script src="assets/desktop-maps.js?v=496"></script>
+<script src="assets/typeset.js?v=497"></script>
+<script src="assets/funding-views.js?v=497"></script>
+<script src="assets/layers.js?v=497"></script>
+<script src="assets/hq-detail.js?v=497"></script>
+<script src="assets/bubbles.js?v=497" defer></script>
+<script src="assets/phone-maps.js?v=497"></script>
+<script src="assets/desktop-maps.js?v=497"></script>
 </body>
 </html>
