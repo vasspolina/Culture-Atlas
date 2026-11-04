@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=548">
-  <script src="assets/config.js?v=548"></script>
-  <script src="assets/subtopic.js?v=548"></script>
-  <script src="assets/names.js?v=548"></script>
-  <script src="assets/grounding.js?v=548"></script>
-  <script src="assets/repeats.js?v=548"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=549">
+  <script src="assets/config.js?v=549"></script>
+  <script src="assets/subtopic.js?v=549"></script>
+  <script src="assets/names.js?v=549"></script>
+  <script src="assets/grounding.js?v=549"></script>
+  <script src="assets/repeats.js?v=549"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=548"></script>
+  <script src="assets/institutions.js?v=549"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10019,11 +10019,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v548';
+    const ATLAS_RELEASE = 'culture-atlas-v549';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=548').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=549').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12201,8 +12201,8 @@ return maplibregl$1;
     // The reported items as the chat sets them, after displaay.net/about (user, 4 Nov 2026: "gossip mode typeset as
     // displaay.net/about"): each item is a row under a 1px rule, its name, date and sources as a small uppercase label in the
     // left third, what is said as large, tight lead text in the other two thirds; each group ("Related reporting") a large
-    // heading over its rows. On a narrow chat the label sits above the text, as Displaay's own phone layout does. Only the
-    // chat is regrouped: the Details page keeps documentedRecordHtml's markup, which its own rules are written against.
+    // heading over its rows. On a narrow chat the label sits above the text, as Displaay's own phone layout does. The chat and,
+    // in Gossip mode, the phone's Record tab are regrouped; the desktop Details page keeps documentedRecordHtml's markup.
     function chatReportingHtml(html) {
       if (!html) return html;
       const t = document.createElement('template');
@@ -12482,7 +12482,8 @@ return maplibregl$1;
       if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b)], 'Sources') : ''; }
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
+        // In Gossip mode the Record tab sets its reported items as the chat does (displaay.net/about, user 4 Nov 2026).
+        record.innerHTML = ((reported && isGossipModeActive ? chatReportingHtml(reported) : reported) || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
         record.classList.toggle('hidden', !record.innerHTML);
       }
       // The summary, the funding row and the reported items are filled apart; what one says, the next does not say again.
@@ -20853,13 +20854,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=548"></script>
-<script src="assets/funding-views.js?v=548"></script>
-<script src="assets/layers.js?v=548"></script>
-<script src="assets/hq-detail.js?v=548"></script>
-<script src="assets/bubbles.js?v=548" defer></script>
-<script src="assets/phone-maps.js?v=548"></script>
-<script src="assets/desktop-maps.js?v=548"></script>
-<script src="assets/chat-resize.js?v=548"></script>
+<script src="assets/typeset.js?v=549"></script>
+<script src="assets/funding-views.js?v=549"></script>
+<script src="assets/layers.js?v=549"></script>
+<script src="assets/hq-detail.js?v=549"></script>
+<script src="assets/bubbles.js?v=549" defer></script>
+<script src="assets/phone-maps.js?v=549"></script>
+<script src="assets/desktop-maps.js?v=549"></script>
+<script src="assets/chat-resize.js?v=549"></script>
 </body>
 </html>
