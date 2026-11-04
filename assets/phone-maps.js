@@ -890,7 +890,7 @@
         const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '">' + svg(icon) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x) => card(x, false, alert)).join('') : '';
         const bellOn = store.get('atlas-alerts') === 'on';
         feed.innerHTML = '<div class="gm-feed-grab" aria-hidden="true"></div>'
-          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(topIsAlert ? ICO.alert : ICO.globe) + '<span>Top story</span></h2>'
+          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(ICO.globe) + '<span>Top story</span></h2>'
           + ('Notification' in window ? '<button type="button" class="gm-bell" aria-pressed="' + bellOn + '">' + svg(ICO.bell) + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
           + '<button type="button" class="gm-feed-close" aria-label="Close the reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5 5 19M5 5l14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></header>'
           + '<p class="gm-feed-live"><i aria-hidden="true"></i><span class="gm-feed-checked">' + liveLine() + '</span></p>'
