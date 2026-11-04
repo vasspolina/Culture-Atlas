@@ -3443,3 +3443,115 @@ div:has(>#topThemeBtn){column-gap:0}
 @media (max-width:767px){
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #gmChatBtn,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard:not(:has(#chat-input:placeholder-shown)) #gmChatBtn{display:none!important}
 }
+
+
+/* ---- BUTTONS AND CORNERS: DISPLAAY (user's instruction, 4 Nov 2026) ----
+   After displaay.net/typeface/dazzed, measured there on 4 Nov 2026: a button is a rounded rectangle with 10px corners and a 1px
+   ink edge, flat, no shadow; the primary action is solid ink with paper text; on hover a button fills with
+   ink and its text turns paper, over .3s cubic-bezier(.4,0,.2,1). Displaay fills to 50% ink, which leaves white text at 3.9:1 on
+   the light ground; 80% ink measures about 10:1 here, so that is the step used.
+   One scale of corners: 10px for what you press, 14px for a bar that holds buttons 4px in (so its corners run concentric with
+   theirs), 20px for panels, sheets, popups and modals. Circles stay only for the small dot marks (an alert's "!").
+   The shadows go: everything that floated over the map on a shadow now has the same 1px edge, drawn as a ring (box-shadow) so
+   no size or position moves. Buttons that had no shadow take the ring inset.
+   The phone and desktop maps layers above carry up to 12 ids of specificity, so every rule here is prefixed with
+   :is(#displaay ×14, html), which matches the root element and lends 14 ids, and nothing else. Sizes are left as they were. */
+:root,:root[data-theme="dark"]{--gm-shadow:0 0 0 1px var(--ink);--gm-shadow-up:0 0 0 1px var(--ink);--gmd-shadow:0 0 0 1px var(--ink);
+  --btn-r:10px;--bar-r:14px;--panel-r:20px;--btn-ease:background-color .3s cubic-bezier(.4,0,.2,1),color .3s cubic-bezier(.4,0,.2,1),border-color .3s cubic-bezier(.4,0,.2,1);
+  --btn-hover:color-mix(in srgb,var(--ink) 80%,var(--paper))}
+
+/* What you press: 10px corners. Rows, inline citations, drag handles, text links and the brand are not buttons to the eye. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(button,[role=button],a.record-action,.record-popup-actions a,#desktopDossierWebLink,select,.maplibregl-ctrl-group):not(.gm-alert-mark,.sheet-size,.curator-thought-toggle,.source-citation-pill,.underline,.top-funder,#topBrandLogoBtn,#mobileTopBrandBtn,#layersPanel *,.layers-row,[data-layer]){border-radius:var(--btn-r)!important}
+
+/* Buttons that stand on their own take the 1px edge and lose any tinted fill: transparent on whatever they sit on. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn,#curatorVoiceToggleBtn,.starter-prompt,.curator-followup-pill,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,#testConnectionBtn,#clearApiKeyBtn,.atlas-pill-btn,.layers-reset,.fa-focus-inst-btn,#exitStreetViewBtn,#backToWorldBtn,#backToCountryBtn,#hudWorldBtn,#hudSpinBtn,#hudExpandBtn,#hudEuropeBtn,#hudAsiaBtn,#hudAmericasBtn,#dossier-bottom-sheet .gm-tabs button){background:transparent!important;color:var(--ink)!important;border:0!important;box-shadow:inset 0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
+/* Over the map a button needs a ground to be read on: paper, with the ring. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,#mobileSuggestChips .curator-suggest-chip,.curator-suggest-chip,#layersControl #layersBtn,#gmdMapCtl>button,#gmdMapCtl #gmLocateBtn,#gmLocateBtn,#cityMapContainer .maplibregl-ctrl-group){box-shadow:0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl .gmd-zoom{border-radius:var(--btn-r)!important;box-shadow:0 0 0 1px var(--ink)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl .gmd-zoom>button{border-radius:0!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl .gmd-zoom>button+button{border-top:1px solid var(--ink)!important}
+
+/* The top bar clips what is drawn outside it, so its two buttons take the ring inside. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdTopBar :is(#topGossipBtn,#topThemeBtn){box-shadow:inset 0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
+/* The composer is flat: paper, with the edge, no tint. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workInputCard,#mobileComposerCard){background:var(--paper)!important}
+
+/* The primary action is solid ink: Send, the record's first action, Save. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workSendBtn,#mobileStickySendBtn,#saveApiKeyBtn,#dossier-bottom-sheet .record-action-row.gm-actions .record-action:first-child,#dossier-sheet-ask-btn){background:var(--ink)!important;color:var(--paper)!important;box-shadow:inset 0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
+
+/* What is chosen is solid ink, as Displaay marks its current page: the open tab, a control that is on. Gossip mode keeps its own
+   orange, the one colour that says it is on. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat).is-on,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat)[aria-selected="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet .gm-tabs button[aria-selected="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.provider-tab-btn,#curatorVoiceToggleBtn,#hudSpinBtn,#hudExpandBtn)[aria-pressed="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.provider-tab-btn).is-on,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .provider-tab-btn.active{background:var(--ink)!important;color:var(--paper)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet .gm-tabs button[aria-selected="true"]::after{display:none!important}
+
+/* Hover: every button fills with ink and its text turns paper. */
+@media (hover:hover){
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn,#curatorVoiceToggleBtn,.starter-prompt,.curator-followup-pill,.curator-suggest-chip,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,#testConnectionBtn,#clearApiKeyBtn,#saveApiKeyBtn,.atlas-pill-btn,.layers-reset,.fa-focus-inst-btn,#exitStreetViewBtn,#backToWorldBtn,#backToCountryBtn,[id^="hud"],.gmd-chip,#gmdTopBar #topThemeBtn,#gmdTopBar #topGossipBtn:not([aria-pressed="true"]),#layersControl #layersBtn,#gmdMapCtl button,#gmLocateBtn,#workSendBtn,#mobileStickySendBtn,#dossier-bottom-sheet .gm-tabs button,#dossier-bottom-sheet .record-action):is(:hover,:focus-visible){background:var(--btn-hover)!important;color:var(--paper)!important;border-color:var(--btn-hover)!important;filter:none!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.starter-prompt,.curator-suggest-chip,.curator-followup-pill):is(:hover,:focus-visible) *{background:transparent!important;color:inherit!important}
+}
+
+/* A bar that holds buttons 4px in: 14px, so the corners run concentric. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#gmdSearch,#mobileStickyInputBar>#mobileComposerCard,#mobileComposerCard,#gmStoryStrip,#cityViewControlBanner:not(.hidden)){border-radius:var(--bar-r)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body:not(.chat-input-mode-active) #workViewContainer #workInputCard,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workInputCard{border-radius:var(--panel-r)!important;box-shadow:0 0 0 1px var(--ink)!important}
+
+/* Panels, popups, menus and modals: 20px. A sheet that rises from the bottom rounds its top corners only. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#layersControl #layersPanel,#gmMenu,.atlas-record-popup .maplibregl-popup-content,.maplibregl-popup-content,#curatorSettingsModal>div,#settingsModal>div,.modal-card){border-radius:var(--panel-r)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#globeViewport #dossier-bottom-sheet,#layersControl #layersPanel:not([hidden]),#gmFeed:not([hidden])){border-radius:var(--panel-r) var(--panel-r) 0 0!important}
+@media (min-width:768px){ :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #layersControl #layersPanel:not([hidden]){border-radius:var(--panel-r)!important} }
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmToast{border-radius:var(--btn-r)!important}
+/* The small labels in a feed card are words, not buttons: Displaay's 8px for small marks. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmFeed .gm-poster-pill{border-radius:8px!important}
+
+/* Displaay's type for buttons: 15px at 1.3, tracked +0.02em (their Saans 15px/19.5px/0.3px). The one size outside 14/18/24. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.curator-suggest-chip,.curator-followup-pill,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,.atlas-pill-btn,#gmdTopBar #topGossipBtn,#gmdTopBar #topThemeBtn,#dossier-bottom-sheet .gm-tabs button){font-size:15px!important;line-height:1.3!important;letter-spacing:.02em!important}
+
+/* "Ask the curator": no gradient (user, 4 Nov 2026), and on one line (user, same day: no title is broken into lines). Each word
+   takes a colour of Displaay's own, as three flat bands clipped to the letters with hard stops, so nothing blends. The stops sit
+   in the word spaces, measured in Jokker Regular at this setting: "Ask " ends at 1.865em, "Ask the " at 3.646em.
+   Light ground: their blue #000dff (8.6:1 on white), alert red #ff351a (3.6:1, 32px is large text), dark green #317934 (5.4:1).
+   Dark ground: their dark-theme yellow #fff200, magenta #ff5eff and menthol #b8fbff (all above 7:1 on black). */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #curatorHeroGreeting::before{content:"Ask the curator"!important;white-space:nowrap!important;display:inline-block!important;font:400 32px/1.15 var(--sans)!important;letter-spacing:-.01em!important;
+  background:linear-gradient(90deg,var(--ac1) 0 1.75em,var(--ac2) 1.75em 3.52em,var(--ac3) 3.52em)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+  --ac1:#000dff;--ac2:#ff351a;--ac3:#317934}
+:root[data-theme="dark"]:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #curatorHeroGreeting::before{--ac1:#fff200;--ac2:#ff5eff;--ac3:#b8fbff}
+
+/* The suggested questions are sentences: shown whole, never cut with an ellipsis (user, 4 Nov 2026). A long one wraps inside its
+   button. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt *{white-space:normal!important;text-wrap:wrap!important;overflow:visible!important;text-overflow:clip!important;height:auto!important;min-height:34px!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{padding:7px 12px!important;text-align:left!important}
+
+/* Titles stay on one line and are never cut (user, 4 Nov 2026): no wrap, no ellipsis; assets/typeset.js fitTitles() sets a long
+   one smaller until it fits, down to 18px. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-sheet-name,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #floatingCardTitle{white-space:nowrap!important;text-wrap:nowrap!important;overflow:visible!important;text-overflow:clip!important}
+
+/* No search box on the desktop map (user, 4 Nov 2026): the layer chips move to its place. A place is found by asking the chat. */
+@media (min-width:768px){
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdSearch{display:none!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdChips{left:var(--gmd-gap,16px)!important}
+}
+
+/* ---- DETAILS IN SERRIF (user's instruction, 4 Nov 2026) ----
+   The record is set like the Info block on displaay.net/typeface/dazzed: its text in Serrif Light (a Displaay trial file, with a
+   Light cut only, so it never needs a bold or an italic; check the trial terms before it ships as more than a study), each
+   section title as a small uppercase label over a 1px rule, the name of the space large and tight. Displaay sets Serrif at
+   21px/1.15, +0.01em; at 16 and 18px here the leading opens to 1.3 so the long lines of a record still read. */
+@font-face{font-family:"Serrif";src:url("../fonts/Serrif-TRIAL-Light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,blockquote,dd,dt,figcaption,.institution-summary,.lead-in,.abbr,.nb,.d-row-sub,mark){font-family:"Serrif",Georgia,serif!important;font-weight:300!important;letter-spacing:.01em!important;font-synthesis:none}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(p,li,dd,.d-row-sub){line-height:1.3!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .institution-summary{line-height:1.15!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-rows h3.d-row-title,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) h3.d-row-title{font:400 15px/1.3 var(--sans)!important;letter-spacing:.02em!important;text-transform:uppercase!important;color:var(--ink)!important;padding:0 0 4px!important;border-bottom:1px solid var(--ink)!important;margin:0 0 10px!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#desktopDossierRecordBody,#detailBody) .dossier-main-heading{line-height:.95!important;letter-spacing:-.02em!important}
+/* At 15px the open tab and New Query met; keep them apart. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workspaceNewChatBtn{margin-left:6px!important}
+/* The record's description on the phone's peek sheet is the same prose, so it is in Serrif too. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet #dossier-sheet-summary{font-family:"Serrif",Georgia,serif!important;font-weight:300!important;letter-spacing:.01em!important;line-height:1.3!important}
+
+/* The Top story badge is a newspaper drawn in the strip's ink, no dot and no word (user, 4 Nov 2026), in a 10px-cornered square. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmStoryStrip .gm-strip-label{width:36px!important;height:36px!important;padding:0!important;justify-content:center!important;border-radius:var(--btn-r)!important;box-shadow:inset 0 0 0 1px var(--gm-top-ink,var(--ink))!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmStoryStrip .gm-strip-label svg{display:block;width:22px;height:22px}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmStoryStrip .gm-strip-label i{display:none!important}
+/* At 15px the chips and the tabs grew and met. The chips take 12px: the hairlines assets/bubbles.js draws round them sit a little outside each box. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdChips{gap:12px!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workspaceTabChat{margin-left:6px!important}
+/* The three tabs over the chat do not fit their column at 15px; they keep 14px, and the space between them. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn){font-size:14px!important;letter-spacing:0!important}

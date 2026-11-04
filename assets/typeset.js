@@ -356,3 +356,25 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
+
+/* Titles stay on one line and are never cut (user, 4 Nov 2026). A title wider than its box is set smaller, a pixel at a time,
+   down to 18px; atlas.css keeps it from wrapping. Runs when a record is drawn and when the window changes size. */
+(function () {
+  var SEL = '#desktopDossierRecordBody .dossier-main-heading, #detailBody .dossier-main-heading, #dossier-sheet-name, #floatingCardTitle';
+  function fit(el) {
+    if (!el.isConnected || !el.clientWidth) return;
+    el.style.removeProperty('font-size');
+    var size = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth > el.clientWidth + 1 && size > 18) { size -= 1; el.style.setProperty('font-size', size + 'px', 'important'); }
+  }
+  var timer = 0;
+  function fitAll() { timer = 0; document.querySelectorAll(SEL).forEach(fit); }
+  function later() { if (!timer) timer = setTimeout(fitAll, 50); }
+  function start() {
+    new MutationObserver(later).observe(document.body, { childList: true, subtree: true, characterData: true });
+    window.addEventListener('resize', later);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
+    later();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
