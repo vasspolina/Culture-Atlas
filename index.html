@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=529">
-  <script src="assets/config.js?v=529"></script>
-  <script src="assets/subtopic.js?v=529"></script>
-  <script src="assets/names.js?v=529"></script>
-  <script src="assets/grounding.js?v=529"></script>
-  <script src="assets/repeats.js?v=529"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=537">
+  <script src="assets/config.js?v=537"></script>
+  <script src="assets/subtopic.js?v=537"></script>
+  <script src="assets/names.js?v=537"></script>
+  <script src="assets/grounding.js?v=537"></script>
+  <script src="assets/repeats.js?v=537"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -219,6 +219,8 @@ return maplibregl$1;
     <div id="globeViewport" class="relative w-full md-w-_55 h-full flex-1 min-h-0 flex flex-col justify-between overflow-hidden">
       
       <canvas id="globeCanvas" class="absolute inset-0 w-full h-full block"></canvas>
+      <!-- The hover cards, drawn on their own layer over the fog (assets/atlas.css, FOG ON THE MAP) so the fog never greys them. -->
+      <canvas id="globeCardCanvas" class="absolute inset-0 w-full h-full block" aria-hidden="true"></canvas>
 
       <!-- Layers: overlays on the map, like a map app's layer menu -->
       <div id="layersControl">
@@ -241,6 +243,32 @@ return maplibregl$1;
               <label><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Spaces graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
               <label><input type="checkbox" data-layer="artist"> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
             </div>
+          </section>
+          <section class="layers-section" data-no-chips>
+            <h2 class="layers-section-title">Funding views</h2>
+            <p class="layers-note">Other ways to draw the same funding data. Each works alone or beside the layers above, and follows the funder types below. Point at a line, a ring or an area to name it; click to ask the chat.</p>
+            <div class="layers-list">
+              <label><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type. Pairs with one link show when you zoom in</span><span class="layers-count" data-count="bundle"></span></label>
+              <label><input type="checkbox" data-layer="flows" data-chip> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
+              <label><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country by the share of its spaces&rsquo; funders based abroad, or by its main funder type</span><span class="layers-count" data-count="choro"></span></label>
+              <label><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for. Point at a funder anywhere to see its own</span></label>
+              <label><input type="checkbox" data-layer="glyphs"> <span class="layer-name">Funding mix on each space</span><span class="layer-desc">A ring around each space, split by its public, foundation and company funders</span></label>
+              <label><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share. No lines</span></label>
+              <label><input type="checkbox" data-layer="lifted" data-chip> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more spaces they fund, with a line down to each</span></label>
+              <label><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices. The flag is on the space</span><span class="layers-count" data-count="flagged"></span></label>
+            </div>
+            <div class="layers-kinds layers-choro" role="radiogroup" aria-label="Countries shaded by">
+              <label class="kind-chip"><input type="radio" name="choroMode" data-choro="abroad" checked> <span class="layer-name">Funders abroad</span></label>
+              <label class="kind-chip"><input type="radio" name="choroMode" data-choro="kind"> <span class="layer-name">Main funder type</span></label>
+            </div>
+            <div class="layers-choro-legend" data-choro-legend><span>None abroad</span><i aria-hidden="true"></i><span>All abroad</span></div>
+            <div class="layers-years">
+              <label><input type="checkbox" data-years-on> <span class="layer-name">Decade</span></label>
+              <input type="range" data-years min="1950" max="2020" step="10" value="2010" aria-label="Decade">
+              <output data-years-out>2010s</output>
+              <span class="layers-count" data-count="years"></span>
+            </div>
+            <p class="layers-note">The decade keeps the spaces whose funding line names a year in it, on every funding layer and view. Funding lines give no start or end dates, so this is the year a line mentions, not the years a grant ran.</p>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Propaganda periods</h2>
@@ -274,9 +302,9 @@ return maplibregl$1;
           <section class="layers-section">
             <h2 class="layers-section-title">Spaces on the map</h2>
             <div class="layers-key layers-tier-key">
-              <span><i class="shape-dot" style="--marker-color:#9ae3e8"></i>Clean: a source is cited</span>
-              <span><i class="shape-dot" style="--marker-color:#e79a3a"></i>Flagged: a recorded reason</span>
-              <span><i class="shape-dot" style="--marker-color:#c6c6c6"></i>Unverified</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-a)"></i>Clean: a source is cited</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-b)"></i>Flagged: a recorded reason</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-u)"></i>Unverified</span>
             </div>
           </section>
           <section class="layers-section">
@@ -1073,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=529"></script>
+  <script src="assets/institutions.js?v=537"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7129,7 +7157,7 @@ return maplibregl$1;
               </a>
             </div>
           ` : ''}
-        `, ['Getting There', 'Admission Policy', 'Ethical Governance Audit', `More in ${inst.city}`]);
+        `, chipsAbout(inst, 4));
       }
     };
 
@@ -8133,9 +8161,6 @@ return maplibregl$1;
       cityMarkersLayer.clearLayers();
 
       cityInsts.forEach(inst => {
-        const isA = inst.tier === 'A';
-        const isB = inst.tier === 'B';
-        const markerColor = isA ? '#10b981' : (isB ? '#be95ff' : '#08bdba');
 
         const pinEl = document.createElement('div');
         pinEl.className = 'custom-inst-pin';
@@ -8185,7 +8210,7 @@ return maplibregl$1;
         dotEl.style.height = '15px';
         dotEl.style.borderRadius = '50%';
         dotEl.style.background = 'transparent';
-        dotEl.style.border = '1px solid #000'; // a hollow black ring on the white drawing; the tier is on the label
+        dotEl.style.border = `1px solid var(--tier-${inst.tier === 'A' || inst.tier === 'B' ? inst.tier.toLowerCase() : 'u'})`; // a hollow ring in the tier's colour, like its label
         dotEl.style.boxShadow = 'none';
 
         pinEl.appendChild(labelEl);
@@ -9995,12 +10020,18 @@ return maplibregl$1;
       `;
     }
 
+    // One colour per kind of space, from Displaay's colour tokens (displaay.net, user 4 Nov 2026): menthol clean, magenta flagged,
+    // yellow unverified. The dot, its name's type and the name's outline all take it. On the light theme each is darkened to
+    // 5:1 or better on white (user, 4 Nov 2026), so the names stay readable.
+    // assets/atlas.css carries the same values as --tier-a, --tier-b and --tier-u for the city map and the Layers key.
+    const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
+    function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v529';
+    const ATLAS_RELEASE = 'culture-atlas-v537';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=529').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=537').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10037,6 +10068,9 @@ return maplibregl$1;
     // Canvas & 3D Math Setup with Native Retina / High-DPI Support
     const canvas = document.getElementById('globeCanvas');
     const ctx = canvas.getContext('2d', { alpha: false });
+    // The hover cards' layer: transparent, above the fog, takes no pointer (the globe canvas under it handles every hover and click).
+    const cardCanvas = document.getElementById('globeCardCanvas');
+    const cardCtx = cardCanvas ? cardCanvas.getContext('2d') : ctx;
     
     let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
     let width = 800;
@@ -10311,20 +10345,35 @@ return maplibregl$1;
 
     function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {
       if (!inst) return;
-      ctx.save();
-
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
-      const domainPillText = `${domain}`;
-
-      // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
-      // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
-      // label over a 1px rule; the name in capitals; the description in Serrif Light 21px on a 24px line, up to three lines; the
-      // website as a button with the buttons' 10px corners and 1px edge.
-      const nameUpper = inst.name.toUpperCase();
-      const locText = [inst.city, inst.country].filter(Boolean).join(', ').toUpperCase();
       const ov = inst.details && Array.isArray(inst.details.overview) ? inst.details.overview.find(t => t && String(t).trim()) : '';
-      const descText = String(ov || inst.curatorial_focus || inst.neighborhood || '').replace(/\s+/g, ' ').trim();
+      const g = drawAtlasCard(ctx, {
+        label: [inst.city, inst.country].filter(Boolean).join(', '),
+        name: inst.name,
+        desc: String(ov || inst.curatorial_focus || inst.neighborhood || ''),
+        btn: webUrl ? domain : ''
+      }, px, py, width);
+      hoveredMicroCardHitbox = {
+        inst: inst, webUrl: webUrl || null,
+        btnX: webUrl ? g.btnX : 0, btnY: webUrl ? g.btnY : 0, btnW: webUrl ? g.btnW : 0, btnH: webUrl ? g.btnH : 0,
+        cardX: g.cardX, cardY: g.cardY, cardW: g.cardW, cardH: g.cardH
+      };
+      window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
+    }
+
+    // One card for every hover on the map, a space's and a city's alike (user, 4 Nov 2026: "make sure all have same new design").
+    // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
+    // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
+    // label over a 1px rule; the name in capitals; the description in Serrif Light 21px on a 24px line, up to three lines; the
+    // action as a button with the buttons' 10px corners and 1px edge, stretched across the card's measure ("button can be
+    // stretched"), filled with ink while the pointer is on it. Returns where the card and its button were drawn.
+    function drawAtlasCard(ctx, card, px, py, width) {
+      ctx.save();
+      const locText = String(card.label || '').toUpperCase();
+      const nameUpper = String(card.name || '').toUpperCase();
+      const descText = String(card.desc || '').replace(/\s+/g, ' ').trim();
+      const btnText = card.btn || '';
 
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const cardInk = cardDark ? '#ffffff' : '#000000';
@@ -10362,11 +10411,10 @@ return maplibregl$1;
       ctx.font = ATLAS_CARD_DESC_FONT;
       const descLines = descText ? wrap(descText, 3) : [];
       const DESC_LH = 24;
-      const webUrl2 = webUrl;
       const LABEL_Y = padY, RULE_Y = padY + 22, NAME_Y = RULE_Y + 12, DESC_Y = NAME_Y + 36;
       const descEnd = DESC_Y + descLines.length * DESC_LH;
       const btnH = 30;
-      const cardH = (webUrl2 ? descEnd + 14 + btnH : descEnd) + padY;
+      const cardH = (btnText ? descEnd + 14 + btnH : descEnd) + padY;
 
       let cardX = px - cardW / 2;
       cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
@@ -10398,38 +10446,23 @@ return maplibregl$1;
       ctx.font = ATLAS_CARD_DESC_FONT;
       descLines.forEach((ln, i) => ctx.fillText(ln, textX, cardY + DESC_Y + i * DESC_LH));
 
-      if (webUrl2) {
+      const btnX = textX, btnY = cardY + descEnd + 14, btnW = maxTextW;
+      if (btnText) {
         ctx.font = ATLAS_CARD_LABEL_FONT;
         try { ctx.letterSpacing = '0.02em'; } catch (e) {}
-        const webW = ctx.measureText(domainPillText).width;
-        const btnX = textX;
-        const btnY = cardY + descEnd + 14;
-        const btnW = Math.min(maxTextW, webW + 28);
         ctx.beginPath();
         ctx.roundRect(btnX, btnY, btnW, btnH, 10);
+        if (card.btnHover) { ctx.fillStyle = cardInk; ctx.fill(); }
         ctx.strokeStyle = cardInk;
         ctx.lineWidth = 1;
         ctx.stroke();
-        ctx.fillStyle = cardInk;
+        ctx.fillStyle = card.btnHover ? cardPaper : cardInk;
         ctx.textBaseline = 'middle';
-        ctx.fillText(fit(domainPillText), btnX + 14, btnY + btnH / 2 + 0.5);
+        ctx.fillText(fit(btnText), btnX + 14, btnY + btnH / 2 + 0.5);
         try { ctx.letterSpacing = '0px'; } catch (e) {}
-
-        hoveredMicroCardHitbox = {
-          inst: inst, webUrl: webUrl2,
-          btnX: btnX, btnY: btnY, btnW: btnW, btnH: btnH,
-          cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
-        };
-      } else {
-        hoveredMicroCardHitbox = {
-          inst: inst, webUrl: null,
-          btnX: 0, btnY: 0, btnW: 0, btnH: 0,
-          cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
-        };
       }
-      window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
-
       ctx.restore();
+      return { cardX, cardY, cardW, cardH, btnX, btnY, btnW: btnText ? btnW : 0, btnH: btnText ? btnH : 0 };
     }
 
     let hoveredMicroCardHitbox = null;
@@ -10487,6 +10520,16 @@ return maplibregl$1;
       // Scale coordinates to high-DPI hardware buffer for crystal-clear Retina rendering
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, width, height);
+      if (cardCanvas) {
+        const cbw = Math.round(width * dpr), cbh = Math.round(height * dpr);
+        if (cardCanvas.width !== cbw) cardCanvas.width = cbw;
+        if (cardCanvas.height !== cbh) cardCanvas.height = cbh;
+        cardCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cardCtx.clearRect(0, 0, width, height);
+        // The street map (z 10) covered the cards when they were drawn on the globe; their layer is hidden there the same way.
+        const cardVis = isCityStreetViewActive ? 'hidden' : '';
+        if (cardCanvas.style.visibility !== cardVis) cardCanvas.style.visibility = cardVis;
+      }
       // The canvas has no alpha channel, so a cleared frame is black: paint the theme's ground under everything.
       ctx.fillStyle = G_GROUND;
       ctx.fillRect(0, 0, width, height);
@@ -10648,7 +10691,8 @@ return maplibregl$1;
             if (dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
           }
 
-          ctx.fillStyle = isCActive ? G_ACTIVE : G_GROUND;
+          // Countries shaded by the funding views (assets/funding-views.js) take their fill from there.
+          ctx.fillStyle = isCActive ? G_ACTIVE : ((window.atlasCountryFill && window.atlasCountryFill(country.n, G_GROUND)) || G_GROUND);
 
           for (let j = 0; j < country.r.length; j++) {
             const ring = country.r[j];
@@ -10768,7 +10812,7 @@ return maplibregl$1;
           return { fill, ink: darkLabel ? '#ffffff' : '#000000' };
         };
         // The type and outline colour of a city label, and of the card it opens into.
-        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
+        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : tierInk(tier, GLOBE_LIGHT);
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = active ? atlasSelFont() : atlasMonoFont();
@@ -11132,8 +11176,8 @@ return maplibregl$1;
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
             ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : (GLOBE_LIGHT ? '#713f12' : '#884c16'))
-            : (d.inst.tier === 'A' ? (GLOBE_LIGHT ? '#0a8f68' : '#10b981') : d.inst.tier === 'B' ? (GLOBE_LIGHT ? '#7a52d6' : '#be95ff') : (GLOBE_LIGHT ? '#008a87' : '#08bdba'));
-          // Hollow rings, colored by tier; the selected one is filled. In gossip mode a space with gossip is a filled yellow dot, and only it is yellow.
+            : tierInk(d.inst.tier, GLOBE_LIGHT);
+          // Hollow rings in the tier's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled yellow dot, and only it is yellow.
           ctx.lineWidth = 0.8;
           if (isSel || (isGossipModeActive && hasGossip(d.inst))) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
           ctx.stroke();
@@ -11214,33 +11258,16 @@ return maplibregl$1;
               ctx.fill();
               ctx.stroke();
 
-              // Card dimensions & multi-line layout: a flat colour block, like the fair's tabs.
-              // The name is set large in capitals; the rest is Regular; the action is a pill.
-              const cityTxt = hMeta.name;
-              const countryTxt = hMeta.country ? hMeta.country.trim() : '';
+              // The same card as a space's (drawAtlasCard), on the card layer over the fog: the country as the label, the city's
+              // name in capitals, the count as the line under it, and the explore button.
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
-              const countTxt = `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`;
-              const linkTxt = 'Click to explore';
-              // Ink and paper like the space's card (user, 4 Nov 2026: the square city card was the old design): plain type, not the tier's colour.
-              const cardInk = GLOBE_LIGHT ? '#000000' : '#ffffff';
-
-              ctx.font = ATLAS_CARD_TITLE_FONT;
-              const twCity = ctx.measureText(cityTxt).width;
-              ctx.font = atlasMonoFont();
-              const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
-              const twCount = ctx.measureText(countTxt).width;
-              const twLink = ctx.measureText(linkTxt).width;
-
-              const linkBtnW = twLink + 28;
-              const linkBtnH = 28;
-
-              const cardW = Math.max(twCity, twCountry, twCount, linkBtnW) + 32;
-              const cardH = countryTxt ? 138 : 114;
-              const cardX = Math.max(14, Math.min(width - cardW - 14, hPt.x - cardW / 2));
-              const cardY = hPt.y > cardH + 20 ? hPt.y - cardH - 16 : hPt.y + 18;
-
-              const linkBtnX = cardX + 16;
-              const linkBtnY = cardY + cardH - linkBtnH - 14;
+              const g = drawAtlasCard(cardCtx, {
+                label: hMeta.country ? hMeta.country.trim() : '',
+                name: hMeta.name,
+                desc: `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`,
+                btn: 'Click to explore',
+                btnHover: isHoveringCityExploreLink
+              }, hPt.x, hPt.y, width);
 
               // Register interactive hover & click hitbox for the card and link
               hoveredCityCardHitbox = {
@@ -11248,54 +11275,15 @@ return maplibregl$1;
                 country: hMeta.country || '',
                 pinX: hPt.x,
                 pinY: hPt.y,
-                cardX: cardX,
-                cardY: cardY,
-                cardW: cardW,
-                cardH: cardH,
-                linkX: linkBtnX,
-                linkY: linkBtnY,
-                linkW: linkBtnW,
-                linkH: linkBtnH
+                cardX: g.cardX,
+                cardY: g.cardY,
+                cardW: g.cardW,
+                cardH: g.cardH,
+                linkX: g.btnX,
+                linkY: g.btnY,
+                linkW: g.btnW,
+                linkH: g.btnH
               };
-
-              // Flat block in the colour of the city's badge (cyan, orange or grey by tier). No rounding, no outline, no shadow.
-              // Drawn like the city labels: no block, a thin soft rounded outline and the type in the tier's colour.
-              // Rounded 20px with a solid 1px outline, as the space's card is drawn (the square, half-faded box was the old design).
-              ctx.beginPath();
-              ctx.roundRect(cardX, cardY, cardW, cardH, 20);
-              ctx.fillStyle = cardBg;
-              ctx.fill();
-              ctx.strokeStyle = cardInk;
-              ctx.lineWidth = 1;
-              ctx.stroke();
-
-              // Line 1: city name, in the roman
-              ctx.font = ATLAS_CARD_TITLE_FONT;
-              ctx.fillStyle = cardInk;
-              ctx.textAlign = 'left';
-              ctx.textBaseline = 'top';
-              ctx.fillText(cityTxt, cardX + 16, cardY + 14);
-
-              let currentY = cardY + 46;
-              ctx.font = atlasMonoFont();
-              if (countryTxt) {
-                ctx.fillText(countryTxt, cardX + 16, currentY);
-                currentY += 20;
-              }
-              ctx.fillText(countTxt, cardX + 16, currentY);
-
-              // Action: a tint of the type colour at rest, solid type colour with card-coloured text on hover.
-              ctx.save();
-              ctx.beginPath();
-              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 10);
-              if (isHoveringCityExploreLink) { ctx.fillStyle = cardInk; ctx.fill(); }
-              else { ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); }
-              ctx.font = atlasMonoFont();
-              ctx.fillStyle = isHoveringCityExploreLink ? cardBg : cardInk;
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'middle';
-              ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2 + 0.5);
-              ctx.restore();
 
               ctx.restore();
             }
@@ -11307,7 +11295,7 @@ return maplibregl$1;
 
         // 8.6 Render Active Institution Micro Card at top layer of 3D globe (above all dots, labels, and city cards)
         if (activeMicroDot) {
-          drawInstitutionMicroCard(ctx, activeMicroDot.inst, activeMicroDot.x, activeMicroDot.y, width, height);
+          drawInstitutionMicroCard(cardCtx, activeMicroDot.inst, activeMicroDot.x, activeMicroDot.y, width, height);
         } else if (!hoveredInstitution) {
           hoveredMicroCardHitbox = null;
         }
@@ -12105,7 +12093,10 @@ return maplibregl$1;
         || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
+        // "Epstein link · Crown Princess Mette-Marit: ..." is titled with the person; the flag sentence above already says it is an Epstein link.
+        const ep = m ? null : part.match(/^Epstein link\s*·\s*([^:·]+?):\s*(.+)$/s);
         if (m) blocks.push(item(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}`, m[3].replace(/^(\w)/, c => c.toUpperCase()), p('', m[4]), []));
+        else if (ep) blocks.push(item(ep[1], '', p('', ep[2]), []));
         else blocks.push(item('', '', p('', part.replace(/^([^:]{1,60}?, )(\d{4}-\d{2}-\d{2}):/, (_, who, d) => `${who}${humanDate(d)}:`)), []));
       });
       const relatedReports = (inst.case_notes || []).map(n => `
@@ -12928,7 +12919,9 @@ return maplibregl$1;
         || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
+        const ep = m ? null : part.match(/^Epstein link\s*·\s*([^:·]+?):\s*(.+)$/s);
         if (m) items.push(proseLi(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}, ${m[3].toLowerCase()}.`, escapeHtml(proseEnd(m[4])), true));
+        else if (ep) items.push(proseLi(`${ep[1]}.`, escapeHtml(proseEnd(ep[2])), true));
         else items.push(proseLi('', escapeHtml(proseEnd(part)), true));
       });
       if (inst.case_study) {
@@ -14631,7 +14624,7 @@ return maplibregl$1;
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the space: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\nVOICE: deliver it as a professional academic investigator and art-market analyst briefing a colleague, and push that register hard: the forensic cadence of a case file, the vocabulary of provenance research, due diligence and funding analysis (the paper trail, the board minutes, the filing, the follow-the-money line, the reputational exposure, the trustee's other holdings), short declarative sentences that land, and a sharp, knowing, dramatic edge. Heighten the delivery, never the facts: every claim is still one the items carry, still attributed to whoever says it, talk still stays talk, and no verdict word appears without its named event, date and actor. The case file is a manner of speaking: never cite the atlas's own item numbers or codes (G76, R31) and never call an item a row, an entry or a field. Never remark on the file itself: no line saying a trail is thin, a quote cuts off or the record goes quiet; end a cut-off quotation at its last full sentence.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a detail is absent from the record, leave it out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated"; answer with what the record holds and stop there. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a detail is absent from the record, leave it out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated"; answer with what the record holds and stop there. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring space or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst, true)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -14819,6 +14812,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
         }
 
+        // The follow-up questions the model wrote for this answer (<next>a | b | c</next>) leave the text and go under it as chips.
+        queryAI.lastNext = [];
+        rawText = String(rawText || '').replace(/<next>([\s\S]*?)(?:<\/next>|$)/i, (m, body) => { queryAI.lastNext = body.split(/\s*(?:\||\n)\s*/); return ''; }).trim();
         // Cleanly separate thinking tokens and blocks from the final response block before rendering to the UI
         // A. Isolate XML thinking tags (<thinking>...</thinking>, <thought>...</thought>)
         const xmlThinkingRegex = /<(?:thinking|thought)>([\s\S]*?)<\/(?:thinking|thought)>/gi;
@@ -15851,7 +15847,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // In Gossip mode the follow-ups are gossip questions too: chips about money, grades or critics give way to
       // questions about reported items and employee accounts at named spaces, drawn from the gossip pool (questionCloud).
-      if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && followUps && followUps.length) {
+      if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && followUps && followUps.length && !followUps.fromModel) {
         const isGossipChip = (q) => /\b(gossip|reported|report|employees|staff|workers|accounts|protests?|boycotts?|scandals?|rumou?rs?|unions?)\b/i.test(q);
         const keep = followUps.filter(isGossipChip);
         const want = Math.min(3, Math.max(2, followUps.length));
@@ -16063,7 +16059,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (isGossipModeActive) return t
           ? ['What is reported about this space?', 'Who are its flagged funders?', t.city ? `Which spaces in ${t.city} are flagged?` : 'Which spaces are flagged?']
           : ['Which spaces are flagged?', 'Which spaces are linked to Epstein?', 'What do employees report?'];
-        if (!t) return freshChips(2);
+        if (!t) return freshChips(3);
         const out = [];
         const nm = t.name && findMentionedInst(t.name) === t ? t.name : '';
         if (t.funding || t.funder_links) out.push(nm ? `Who funds ${nm}?` : 'Who funds this museum?');
@@ -16071,7 +16067,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (t.grade) out.push(nm ? `What is the funding rating of ${nm}?` : 'What is its funding rating?');
         if (t.opening_hours) out.push(nm ? `Opening hours of ${nm}` : 'Opening hours');
         if (t.city) out.push(`Find cultural spaces in ${t.city}`);
-        return out;
+        // The record's own questions (its flag, funders, critics, Epstein record) come first; the generic ones fill in behind them.
+        const own = chipsAbout(t, 4, out);
+        return [...own.slice(0, 2), ...out, ...own.slice(2)].filter((q, i, a) => a.indexOf(q) === i).slice(0, 4);
       };
       // gossip: the whole reply is reported, unverified items (a list of flagged spaces); a plain record, a city list or a status line is not.
       const answer = (html, follow, gossip) => appendCuratorMessage(`<div class="space-y-3"${gossip ? ' data-gossip="list"' : ''}>${html}</div>`, follow || followFor());
@@ -16129,7 +16127,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
               if (aiRes.gossip || aiRes.none) {
                 // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
-                appendCuratorMessage(aiRes.none ? aiHtml : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, []);
+                appendCuratorMessage(aiRes.none ? aiHtml : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
                 return true;
               }
               let thinkingData = null;
@@ -16143,7 +16141,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 };
               }
               // Answers carry no note about what they were written from, in Gossip mode or out of it.
-              appendCuratorMessage(linkifyInstNames(aiHtml), [], webIntel, thinkingData);
+              appendCuratorMessage(linkifyInstNames(aiHtml), modelChips(target, query), webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -19154,6 +19152,42 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (out.length < n) out.push(...freshChips(n - out.length, [...out, ...avoid.filter(a => typeof a === 'string')]));
       return out.slice(0, n);
     }
+    // The chips under a model answer (user's instruction, 4 Nov 2026: more of them, very specific, under every answer). The model
+    // writes three questions about the names and figures in its own answer (<next> in queryAI); the record's own questions fill
+    // the rest, so there are always four. A chip already asked, longer than 120 characters, without a question mark, or carrying an
+    // item code (G76, R31) is dropped. fromModel tells the gossip filter in appendCuratorMessage to keep them as written.
+    function modelChips(inst, asked, n = 4) {
+      const norm = (s) => String(s).toLowerCase().replace(/[?\s]+$/, '').trim();
+      const prior = new Set(((typeof curatorContext !== 'undefined' && curatorContext.history) || []).filter(m => m.role === 'user').map(m => norm(m.content)));
+      prior.add(norm(asked || ''));
+      const mine = ((typeof queryAI !== 'undefined' && queryAI.lastNext) || [])
+        .map(q => String(q).replace(/^[\s\d.)*•-]+/, '').replace(/^["“']|["”']$/g, '').trim())
+        .filter(q => q.length >= 8 && q.length <= 120 && /\?$/.test(q) && !/\b[A-Z]{1,2}\d{1,3}\b/.test(q) && !/[<>]/.test(q) && !prior.has(norm(q)))
+        .filter((q, i, a) => a.findIndex(o => norm(o) === norm(q)) === i)
+        .slice(0, 3);
+      if (typeof queryAI !== 'undefined') queryAI.lastNext = [];
+      let fill = [];
+      try { fill = inst ? chipsAbout(inst, n, mine) : freshChips(n, mine); } catch (e) { fill = []; }
+      const out = [...mine, ...fill.filter(q => !prior.has(norm(q)) && !mine.some(m => norm(m) === norm(q)))].slice(0, n);
+      out.fromModel = mine.length > 0;
+      return out;
+    }
+    // The chips under a city or country notice: questions the cloud holds about spaces there, then the pool.
+    function chipsForPlace(name, isCountry, n = 3) {
+      let pool = [];
+      try { pool = questionCloud(); } catch (e) { pool = []; }
+      const here = (x) => (x.inst && matchC(isCountry ? x.inst.country : x.inst.city, name)) || x.q.includes(name);
+      const shape = (q) => q.toLowerCase().split(/\s+/).slice(0, 2).join(' ');
+      const out = [];
+      for (const x of shuffledList(pool.filter(here))) {
+        if (out.length >= n) break;
+        if (out.includes(x.q) || out.some(o => shape(o) === shape(x.q))) continue;
+        if (x.inst && !resolvesTo(x.q, x.inst)) continue;
+        out.push(x.q);
+      }
+      if (out.length < n) out.push(...freshChips(n - out.length, out));
+      return out;
+    }
     const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}"><span class="sp-text">${escapeHtml(noBreakHyphens(x.q))}</span></button>`;
     function renderStarterPrompts() {
       let list = [];
@@ -19487,7 +19521,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const topInsts = cityMatches.slice(0, 3).map(i => formatInstLink(i, {noCity: true})).join(', ');
         appendCuratorMessage(`
           <p class="no-indent">${cityMatches.length} ${cityMatches.length === 1 ? 'space' : 'spaces'} in <a href="#" class="city-link" data-city="${escapeHtml(cityName)}">${escapeHtml(cityName)}</a>: ${topInsts}${cityMatches.length > 3 ? ', and ' + (cityMatches.length - 3) + ' more' : ''}.</p>
-        `);
+        `, chipsForPlace(cityName));
       }
     }
 
@@ -19516,7 +19550,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, countryName));
       if (countryMatches.length > 0) {
         const names = countryMatches.slice(0, 12).map(i => formatInstLink(i)).join(', ');
-        appendCuratorMessage(`<p class="">${countryMatches.length} ${countryMatches.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(countryName)}${countryMatches.length > 12 ? ', the first 12' : ''}: ${names}.</p>`);
+        appendCuratorMessage(`<p class="">${countryMatches.length} ${countryMatches.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(countryName)}${countryMatches.length > 12 ? ', the first 12' : ''}: ${names}.</p>`, chipsForPlace(countryName, true));
       }
     }
 
@@ -20587,12 +20621,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=529"></script>
-<script src="assets/layers.js?v=529"></script>
-<script src="assets/hq-detail.js?v=529"></script>
-<script src="assets/bubbles.js?v=529" defer></script>
-<script src="assets/phone-maps.js?v=529"></script>
-<script src="assets/desktop-maps.js?v=529"></script>
-<script src="assets/chat-resize.js?v=529"></script>
+<script src="assets/typeset.js?v=537"></script>
+<script src="assets/funding-views.js?v=537"></script>
+<script src="assets/layers.js?v=537"></script>
+<script src="assets/hq-detail.js?v=537"></script>
+<script src="assets/bubbles.js?v=537" defer></script>
+<script src="assets/phone-maps.js?v=537"></script>
+<script src="assets/desktop-maps.js?v=537"></script>
+<script src="assets/chat-resize.js?v=537"></script>
 </body>
 </html>
