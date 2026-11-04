@@ -1027,19 +1027,6 @@ abbr[title]{text-decoration:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,figcaption,a,.quote-hang){font-size:16px!important;line-height:1.4!important}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-asks{font:400 var(--fs-m)/var(--lh) var(--sans);margin:var(--L) 0 0;text-indent:0;max-width:34em}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-actions{margin-top:var(--L)}
-/* Facts as a table, after the user's reference (19 Oct 2026): the block's name, a rule, one row per fact with the label
-   in a left column about two fifths wide and the value beside it, everything at the text size and colour, rows set
-   solid with no space between them, and a rule to close the block. A value that runs on stays in its own column. */
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts{margin:0;padding:var(--L) 0 0;border:0}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-title{font:400 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0;margin:0;padding:0 0 6px;border-bottom:.8px solid var(--line)}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);column-gap:1em;margin:0;padding:14px 0 12px;border-bottom:.8px solid var(--line)}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dt,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dd{margin:0;font:400 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0;color:var(--ink);text-indent:0;min-width:0;overflow-wrap:break-word;hyphens:manual}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dd{grid-column:2}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dt{grid-column:1}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-text{margin:0;padding:4px 0 6px;border-bottom:.8px solid var(--line);font:400 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0;color:var(--ink);text-indent:0;overflow-wrap:break-word;hyphens:manual}
-/* A section that ends in a table closes on the table's rule, not a second one. */
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .py-3.rule-b:has(+ .facts){border-bottom:0}
-#desktopDossierInside .facts:first-child{padding-top:var(--L)}
 /* One highlight: black text on a flat tint, padded evenly, square, never glued to the line above or below. */
 :is(#desktopDossierColumn,#detailBody,#dossier-sheet-scrollable-body) :is(.grade-mark,.flag-epstein){display:inline;padding:.06em .3em;border-radius:0;color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 

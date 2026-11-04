@@ -7346,7 +7346,7 @@ return maplibregl$1;
     // =========================================================================
     //  BUILDING X-RAY. The selected building's own outline from the map data (OpenStreetMap via the vector tiles), drawn as a
     //  translucent shell, with one slab inside for each kind of material the record actually holds. No outline means no shell;
-    //  every label is a count of what the record has; facts from Wikidata say so and how they were matched.
+    //  every label is a count of what the record has. Wikidata is used only for the building's photograph and links.
     // =========================================================================
     const XRAY = { inst: null, building: null, wikidata: {}, waiting: false, mode: 'xray' };
     // The three ways of looking at the building. Each is a camera on the same outline; Plan draws the contents as nested outlines
@@ -7356,7 +7356,7 @@ return maplibregl$1;
       plan:    { zoom: 18.0, pitch: 0,  bearing: 0 },
       section: { zoom: 18.0, pitch: 60, bearing: 90 }
     };
-    const XRAY_COLOURS = { flag: '#fa4d56', funding: '#08bdba', reported: '#ff7eb6', accounts: '#be95ff', sources: '#42be65', visiting: '#f1c21b', studies: '#009d9a', facts: '#ff832b' };
+    const XRAY_COLOURS = { flag: '#fa4d56', funding: '#08bdba', reported: '#ff7eb6', accounts: '#be95ff', sources: '#42be65', visiting: '#f1c21b', studies: '#009d9a' };
     const WIKIDATA_SPARQL = 'https://query.wikidata.org/sparql';
     const WIKIDATA_CANDIDATES = 60;
     let cityStreetViewCity = '';
@@ -7416,11 +7416,6 @@ return maplibregl$1;
       if (accounts) cats.push({ key: 'accounts', label: `Individual accounts (${accounts})`, lines: [xrayAccountsLine(inst)] });
       if (sources.length) cats.push({ key: 'sources', label: `Sources (${sources.length})`, lines: sources.map(xrayHost).filter(Boolean) });
       if (visiting.length) cats.push({ key: 'visiting', label: 'Visiting', lines: visiting });
-      const wd = XRAY.wikidata[inst.id || inst.name];
-      if (wd && wd.status === 'matched') {
-        const lines = xrayWikidataLines(wd);
-        if (lines.length) cats.push({ key: 'facts', label: 'Facts from Wikidata', lines: ['Wikidata item: ' + (wd.label || wd.item)].concat(lines) });
-      }
       return cats;
     }
 
@@ -7888,16 +7883,9 @@ return maplibregl$1;
 
     // Wikidata, in two steps. First the items with coordinates within 250 m of the record's point, nearest first, one row per
     // item; a match needs the record's website domain or its name (or an alias of two or more words), and more than one
-    // candidate meeting the test is reported as ambiguous rather than guessed. Then the facts of that one item, with the
-    // precision of each date, so a decade is never shown as a year.
-    function xrayWikidataLines(wd) {
-      const l = [];
-      if (wd.inception) l.push('Opened or founded: ' + wd.inception);
-      if (wd.architects.length) l.push('Architect: ' + wd.architects.join(', '));
-      if (wd.collection) l.push('Collection size: ' + wd.collection);
-      if (wd.archivesAt.length) l.push('Archives at: ' + wd.archivesAt.join(', '));
-      return l;
-    }
+    // candidate meeting the test is reported as ambiguous rather than guessed. Then that one item's photograph and Wikipedia
+    // article. Its facts (a founding year, an architect, a collection size) are not shown: a table restating the record's name
+    // and one year added nothing (user's instruction, 4 Nov 2026).
     async function xrayWikidataQuery(q, ctrl) {
       const res = await fetch(WIKIDATA_SPARQL + '?format=json&query=' + encodeURIComponent(q), { headers: { 'Accept': 'application/sparql-results+json' }, signal: ctrl ? ctrl.signal : undefined });
       if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -7929,15 +7917,10 @@ return maplibregl$1;
     }
     function xrayFactsQuery(itemUri) {
       const id = String(itemUri).replace(/^.*\//, '');
-      return `SELECT ?architectLabel ?inception ?prec ?collection ?archivesAtLabel ?article ?image WHERE {
-  OPTIONAL { wd:${id} wdt:P84 ?architect . }
+      return `SELECT ?article ?image WHERE {
   OPTIONAL { wd:${id} wdt:P18 ?image . }
-  OPTIONAL { wd:${id} p:P571/psv:P571 ?t . ?t wikibase:timeValue ?inception ; wikibase:timePrecision ?prec . }
-  OPTIONAL { wd:${id} wdt:P1436 ?collection . }
-  OPTIONAL { wd:${id} wdt:P485 ?archivesAt . }
   OPTIONAL { ?article schema:about wd:${id} ; schema:isPartOf <https://en.wikipedia.org/> . }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,mul" . }
-} LIMIT 200`;
+} LIMIT 20`;
     }
     function fetchWikidataFacts(inst) {
       const key = inst.id || inst.name;
@@ -7981,7 +7964,7 @@ return maplibregl$1;
       const nameOf = c => [xrayNorm(c.label)].concat(c.alts);
       const byName = cands.filter(c => nameOf(c).some(n => names.includes(n)));
       const byAlias = cands.filter(c => nameOf(c).some(n => aliases.includes(n)));
-      const result = (pick, how) => ({ status: 'matched', how, item: pick.item, label: pick.label, architects: [], inception: '', collection: '', archivesAt: [], article: '', checked: cands.length });
+      const result = (pick, how) => ({ status: 'matched', how, item: pick.item, label: pick.label, article: '', checked: cands.length });
       if (byHost.length === 1) return result(byHost[0], byName.includes(byHost[0]) ? 'website and name' : 'website');
       if (byHost.length > 1) {
         const both = byHost.filter(c => byName.includes(c));
@@ -7995,21 +7978,10 @@ return maplibregl$1;
       return { status: 'none', checked: cands.length };
     }
     function xrayApplyFacts(out, rows) {
-      const architects = new Set(), archivesAt = new Set(), years = new Set(), collections = new Set();
-      let coarse = false;
       rows.forEach(r => {
-        if (r.architectLabel) architects.add(r.architectLabel.value);
-        if (r.archivesAtLabel) archivesAt.add(r.archivesAtLabel.value);
-        if (r.collection) collections.add(r.collection.value);
-        if (r.inception) { const p = r.prec ? Number(r.prec.value) : 0; if (p >= 9) years.add(String(r.inception.value).replace(/^\+/, '').slice(0, 4)); else coarse = true; }
         if (r.article && !out.article) out.article = r.article.value;
         if (r.image && !out.image) out.image = r.image.value;
       });
-      out.architects = [...architects];
-      out.archivesAt = [...archivesAt];
-      // One value only: several dates or several sizes on Wikidata are left out rather than picked between.
-      out.inception = (years.size === 1 && !coarse) ? [...years][0] : '';
-      out.collection = collections.size === 1 ? [...collections][0] : '';
     }
 
     function renderBuildingInsidePanel(inst) {
@@ -8018,25 +7990,18 @@ return maplibregl$1;
       const e = escapeHtml, cats = xrayCategories(inst), wd = XRAY.wikidata[inst.id || inst.name];
       const site = xraySite(inst);
       const wdHtml = wd && wd.status === 'matched'
-        ? `<p class="no-indent source-note"><a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}</p>` : '';
+        ? `<p class="no-indent source-note"><a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">Wikidata</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}</p>` : '';
       const siteHtml = site ? `<p class="no-indent source-note"><a class="domain" href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a></p>` : '';
-      const archivesHtml = wd && wd.status === 'matched' && wd.archivesAt.length ? `<p class="no-indent source-note">Archives held at ${e(wd.archivesAt.join(', '))}, according to Wikidata.</p>` : '';
       const ph = wd && wd.status === 'matched' && wd.photo;
       const photoHtml = ph ? `<figure class="xray-photo"><img src="${e(ph.src)}" alt="${e(inst.name)}" loading="lazy"><figcaption class="no-indent">Photo: ${ph.artist ? e(ph.artist) + ', ' : ''}${ph.licenceUrl ? `<a href="${e(ph.licenceUrl)}" target="_blank" rel="noopener noreferrer">${e(ph.licence)}</a>` : e(ph.licence)}${ph.page ? `, <a href="${e(ph.page)}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>` : ', Wikimedia Commons'}</figcaption></figure>` : '';
       // On a desktop the information goes to the right column, under the record; the map keeps only the labels on the building.
       const inside = document.getElementById('desktopDossierInside');
       const col = document.getElementById('desktopDossierColumn');
       if (window.innerWidth >= 768 && inside && col) {
-        // Visiting is on the record already (hours, admission, address), so the column does not set it a second time.
-        const onRecord = new Set(['flag', 'funding', 'reported', 'accounts', 'sources', 'visiting']);
-        const rest = cats.filter(c => !onRecord.has(c.key));
-        // In the record column each part is a table of facts like the record's own Visiting block, with no colour key
-        // (the map has its own); a line that reads "Label: value" puts the label in the left column.
-        const factRow = l => { const m = String(l).match(/^([^:]{2,28}):\s+(.+)$/); return m ? [m[1], e(m[2])] : ['', e(l)]; };
-        const restHtml = rest.map(c => factsTableHtml(c.label, c.lines.slice(0, 8).map(factRow), ` id="xray-cat-${c.key}"`)).join('');
-        const linksHtml = siteHtml || archivesHtml || wdHtml ? `<div class="py-3 rule-b xray-record-part">${siteHtml}${archivesHtml}${wdHtml}</div>` : '';
-        if (!photoHtml && !restHtml && !linksHtml) { inside.innerHTML = ''; inside.classList.add('hidden'); panel.classList.add('hidden'); return; }
-        inside.innerHTML = photoHtml + restHtml + linksHtml;
+        // Everything the categories hold is on the record already, so the column adds only the photograph and the links.
+        const linksHtml = siteHtml || wdHtml ? `<div class="py-3 rule-b xray-record-part">${siteHtml}${wdHtml}</div>` : '';
+        if (!photoHtml && !linksHtml) { inside.innerHTML = ''; inside.classList.add('hidden'); panel.classList.add('hidden'); return; }
+        inside.innerHTML = photoHtml + linksHtml;
         inside.classList.remove('hidden');
         panel.classList.add('hidden');
         if (col.classList.contains('hidden') && typeof toggleDesktopDossier === 'function') toggleDesktopDossier(true);
@@ -11602,21 +11567,13 @@ return maplibregl$1;
       if (!cache.has(inst)) { try { cache.set(inst, !!recordFact(inst, true)); } catch (e) { return false; } }
       return cache.get(inst);
     }
-    // A block of facts set as a table (the user's reference, 19 Oct 2026): its name on a line, a rule, then one row per
-    // fact, the label in the left column and the value in the right, all at the text size, and a rule to close it.
-    // rows: [label, html] pairs; a row with no value is left out. Values are passed as HTML, already escaped.
-    // The record page's Visiting and Highlight, set as rows like the rest of Details (the other panels keep factsTableHtml).
+    // The record page's Visiting and Highlight, set as rows like the rest of Details.
     // Set like the font foundry's footer columns (user, 26 Oct 2026): each fact is a small grey capital label with its words under it, no bullet and
     // no bold, the facts in two columns beside the row title.
     function visitingRowsHtml(rows) {
       const items = (rows || []).filter(x => x && x[1]).map(([k, v]) => `<div class="visit-item"><dt>${escapeHtml(k)}</dt><dd>${v}</dd></div>`);
       if (!items.length) return '';
       return `<div class="prose-part d-rows" role="region" aria-label="Visiting"><section class="d-row d-row-visit"><div class="d-row-head"><h3 class="d-row-title">Visiting</h3></div><dl class="visit-cols">${items.join('')}</dl></section></div>`;
-    }
-    function factsTableHtml(title, rows, attrs = '') {
-      const r = (rows || []).filter(x => x && x[1]);
-      if (!r.length) return '';
-      return `<section class="facts"${attrs}><h3 class="facts-title">${escapeHtml(title)}</h3><dl class="facts-table">${r.map(([k, v]) => `<dt>${escapeHtml(k)}</dt><dd>${v}</dd>`).join('')}</dl></section>`;
     }
     // The Details card text researched with data/details_prompt.md and stored as inst.details by
     // tools/import_details_reports.py. Overview sits under the title; red flags, not related, criticism in art
