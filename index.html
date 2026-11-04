@@ -9996,7 +9996,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v524';
+    const ATLAS_RELEASE = 'culture-atlas-v525';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10070,6 +10070,12 @@ return maplibregl$1;
     // Slower Cinematic Motion Physics
     let rotLon = -45;
     let rotLat = 35;
+    // The globe has no up. Like Fuller's Dymaxion map, north is one direction among others: the view is a free
+    // rotation (centre longitude, centre latitude, and a roll of the picture about its centre), dragging turns it
+    // as a trackball would, and nothing pulls it back to north-up. It opens tilted by the Earth's axial tilt;
+    // the compass shows where north is and a click on it brings north back to the top.
+    let rotRoll = 23.4;
+    let rollTarget = null;            // set by the compass: the roll eases to it, then is cleared
     let isAutoSpinning = true;
     let isPointerOverGlobe = false;   // a mouse over the globe holds the slow rotation still; it resumes when the cursor leaves
     let isDragging = false;
@@ -10099,6 +10105,10 @@ return maplibregl$1;
     Object.defineProperty(window, 'rotLat', {
       get() { return rotLat; },
       set(v) { rotLat = v; }
+    });
+    Object.defineProperty(window, 'rotRoll', {
+      get() { return rotRoll; },
+      set(v) { rotRoll = v; }
     });
     Object.defineProperty(window, 'targetRotLon', {
       get() { return targetRotLon; },
@@ -10157,9 +10167,13 @@ return maplibregl$1;
       const theta = toRad(rotLat);
 
       const cosPhi = Math.cos(phi);
-      const x = r * cosPhi * Math.sin(lambda);
-      const y = r * (Math.cos(theta) * Math.sin(phi) - Math.sin(theta) * cosPhi * Math.cos(lambda));
+      const x0 = r * cosPhi * Math.sin(lambda);
+      const y0 = r * (Math.cos(theta) * Math.sin(phi) - Math.sin(theta) * cosPhi * Math.cos(lambda));
       const z = r * (Math.sin(theta) * Math.sin(phi) + Math.cos(theta) * cosPhi * Math.cos(lambda));
+      // Roll: the picture turns about its centre, so north need not be up.
+      const rho = toRad(rotRoll), cr = Math.cos(rho), sr = Math.sin(rho);
+      const x = x0 * cr - y0 * sr;
+      const y = x0 * sr + y0 * cr;
 
       return {
         x: cx + x,
@@ -10175,8 +10189,11 @@ return maplibregl$1;
     function limbFade(depth, gate) { return Math.max(0, Math.min(1, (depth - gate) / 0.14)); }
 
     function unproject(px, py, r, cx, cy) {
-      const x = (px - cx) / r;
-      const y = -(py - cy) / r;
+      const xs = (px - cx) / r;
+      const ys = -(py - cy) / r;
+      const rho = toRad(rotRoll), cr = Math.cos(rho), sr = Math.sin(rho);
+      const x = xs * cr + ys * sr;
+      const y = -xs * sr + ys * cr;
       const d2 = x * x + y * y;
       if (d2 > 1) return null;
       const z = Math.sqrt(Math.max(0, 1 - d2));
@@ -10196,6 +10213,60 @@ return maplibregl$1;
         lon: (toDeg(lambda) + rotLon + 540) % 360 - 180
       };
     }
+
+    // The view as a rotation matrix. World axes: X = cos(lat) sin(lon), Y = sin(lat) (north), Z = cos(lat) cos(lon).
+    // View axes: x right, y up, z toward the viewer. viewToWorld(v) and its inverse are the same three steps as project().
+    function worldToView(X, Y, Z) {
+      const l0 = toRad(rotLon), th = toRad(rotLat), rho = toRad(rotRoll);
+      const Xs = X * Math.cos(l0) - Z * Math.sin(l0);
+      const Zs = X * Math.sin(l0) + Z * Math.cos(l0);
+      const y0 = Math.cos(th) * Y - Math.sin(th) * Zs;
+      const z = Math.sin(th) * Y + Math.cos(th) * Zs;
+      return [Xs * Math.cos(rho) - y0 * Math.sin(rho), Xs * Math.sin(rho) + y0 * Math.cos(rho), z];
+    }
+    function viewMatrix() {
+      const a = worldToView(1, 0, 0), b = worldToView(0, 1, 0), c = worldToView(0, 0, 1);
+      return [[a[0], b[0], c[0]], [a[1], b[1], c[1]], [a[2], b[2], c[2]]];
+    }
+    // Reads centre longitude, latitude and roll back out of a matrix. The centre is the world point on the view's
+    // z axis (row 3); the roll is where the north pole points on screen (column 2).
+    function setViewFromMatrix(m) {
+      const cX = m[2][0], cY = m[2][1], cZ = m[2][2];
+      rotLat = toDeg(Math.asin(Math.max(-1, Math.min(1, cY))));
+      if (Math.hypot(cX, cZ) > 1e-9) rotLon = toDeg(Math.atan2(cX, cZ));
+      if (Math.hypot(m[0][1], m[1][1]) > 1e-9) rotRoll = toDeg(Math.atan2(-m[0][1], m[1][1]));
+    }
+    // Turns the view about an axis given in view space (x right, y up, z toward the viewer), by deg degrees.
+    function turnView(ax, ay, az, deg) {
+      const n = Math.hypot(ax, ay, az);
+      if (n < 1e-12 || !deg) return;
+      ax /= n; ay /= n; az /= n;
+      const t = toRad(deg), c = Math.cos(t), s = Math.sin(t), k = 1 - c;
+      const q = [
+        [c + ax * ax * k, ax * ay * k - az * s, ax * az * k + ay * s],
+        [ay * ax * k + az * s, c + ay * ay * k, ay * az * k - ax * s],
+        [az * ax * k - ay * s, az * ay * k + ax * s, c + az * az * k]
+      ];
+      const m = viewMatrix(), out = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+      for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) out[i][j] = q[i][0] * m[0][j] + q[i][1] * m[1][j] + q[i][2] * m[2][j];
+      setViewFromMatrix(out);
+    }
+    // A drag of (dx, dy) screen pixels, scaled to degrees: the surface under the pointer follows it in any
+    // direction, over the poles too. Right turns about the view's up axis, down about its right axis.
+    function dragView(dxDeg, dyDeg) {
+      const d = Math.hypot(dxDeg, dyDeg);
+      if (d > 0) turnView(dyDeg, dxDeg, 0, d);
+    }
+    // The point under a canvas position, as a unit vector in view space (null off the disc).
+    function screenToView(px, py, r, cx, cy) {
+      const x = (px - cx) / r, y = -(py - cy) / r, d2 = x * x + y * y;
+      return d2 > 1 ? null : [x, y, Math.sqrt(1 - d2)];
+    }
+    function geoToView(lon, lat) {
+      const phi = toRad(lat), lam = toRad(lon);
+      return worldToView(Math.cos(phi) * Math.sin(lam), Math.sin(phi), Math.cos(phi) * Math.cos(lam));
+    }
+    window.atlasTurnGlobe = turnView;
 
 
     function pointInPolygon(px, py, poly) {
@@ -10496,13 +10567,22 @@ return maplibregl$1;
       if (!isDragging && !isFlying) {
         if (Math.abs(velLon) > 0.001 || Math.abs(velLat) > 0.001) {
           const frames = dt * 60;
-          rotLon = (rotLon - velLon * frames) % 360;
-          rotLat = Math.max(-82, Math.min(82, rotLat + velLat * frames));
+          // velLon / velLat are the last drag's screen steps (right, down) in degrees a frame.
+          dragView(velLon * frames, velLat * frames);
           const decay = Math.pow(0.91, frames);
           velLon *= decay;
           velLat *= decay;
         } else if (isAutoSpinning && !isPointerOverGlobe) {
           rotLon = (rotLon + AUTO_SPIN_DEG_PER_SEC * dt) % 360;
+        }
+      }
+
+      if (rollTarget !== null) {
+        if (isDragging) rollTarget = null;
+        else {
+          const dR = ((rollTarget - rotRoll) % 360 + 540) % 360 - 180;
+          if (Math.abs(dR) < 0.05) { rotRoll = rollTarget; rollTarget = null; }
+          else rotRoll += dR * (1 - Math.exp(-dt * 6));
         }
       }
 
@@ -10541,22 +10621,13 @@ return maplibregl$1;
           const acx = width / 2, acy = height / 2;
           const before = unproject(zoomAnchor.x, zoomAnchor.y, prevR, acx, acy);
           if (before) {
-            // Two passes: the longitude offset and the latitude tilt are coupled, and one pass left
-            // 0.1 degrees of drift a step, which over a long zoom walked the pin out from under the wheel.
-            for (let pass = 0; pass < 2; pass++) {
-              const after = unproject(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
-              if (!after) break;
-              rotLon = (rotLon + (before.lon - after.lon) + 540) % 360 - 180;
-              // Latitude is a tilt, not an offset: a Newton step on the tilt.
-              const probe = 0.5, keep = rotLat;
-              rotLat = Math.max(-82, Math.min(82, keep + probe));
-              const tilted = unproject(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
-              rotLat = keep;
-              const mid = unproject(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
-              if (tilted && mid) {
-                const slope = (tilted.lat - mid.lat) / probe;
-                if (Math.abs(slope) > 1e-3) rotLat = Math.max(-82, Math.min(82, keep + (before.lat - mid.lat) / slope));
-              }
+            // The point that was under the wheel, where it is now, turned straight back to under the wheel.
+            const a = geoToView(before.lon, before.lat);
+            const b = screenToView(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
+            if (b) {
+              const ax = a[1] * b[2] - a[2] * b[1], ay = a[2] * b[0] - a[0] * b[2], az = a[0] * b[1] - a[1] * b[0];
+              const ang = toDeg(Math.atan2(Math.hypot(ax, ay, az), a[0] * b[0] + a[1] * b[1] + a[2] * b[2]));
+              turnView(ax, ay, az, ang);
             }
           }
         }
@@ -10645,7 +10716,7 @@ return maplibregl$1;
             if (country.b[3] < minVisLat || country.b[2] > maxVisLat) continue;
             const cLon = (country.b[0] + country.b[1]) / 2;
             const dLon = Math.abs((cLon - rotLon + 540) % 360 - 180);
-            if (dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
+            if (Math.abs(rotLat) + viewAngleSpan < 80 && dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
           }
 
           ctx.fillStyle = isCActive ? G_ACTIVE : G_GROUND;
@@ -11401,6 +11472,11 @@ return maplibregl$1;
         ctx.fill();
         ctx.stroke();
 
+        // The needle points where north is on screen: the roll turns it.
+        ctx.save();
+        ctx.translate(compassX, compassY);
+        ctx.rotate(-toRad(rotRoll));
+        ctx.translate(-compassX, -compassY);
         ctx.fillStyle = compassInk;
         ctx.beginPath();
         ctx.moveTo(compassX, compassY - 11);
@@ -11416,12 +11492,15 @@ return maplibregl$1;
         ctx.lineTo(compassX - 4.5, compassY);
         ctx.closePath();
         ctx.stroke();
+        ctx.restore();
 
+        // The N rides the ring at the needle's tip and stays upright, so it reads at any roll.
+        const nAng = toRad(rotRoll);
         ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
         ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
-        ctx.textBaseline = 'bottom';
-        ctx.fillText('N', compassX, compassY - 21);
+        ctx.textBaseline = 'middle';
+        ctx.fillText('N', compassX - Math.sin(nAng) * 27, compassY - Math.cos(nAng) * 27);
         ctx.restore();
       }
 
@@ -11468,7 +11547,7 @@ return maplibregl$1;
 
       // The view moved under a still pointer (zoom, flight, spin): pick again where the pointer is,
       // so the card and the cursor belong to what is under it now, not to where it was.
-      const viewKey = currentRadius.toFixed(2) + '|' + rotLon.toFixed(3) + '|' + rotLat.toFixed(3) + '|' + width + 'x' + height;
+      const viewKey = currentRadius.toFixed(2) + '|' + rotLon.toFixed(3) + '|' + rotLat.toFixed(3) + '|' + rotRoll.toFixed(3) + '|' + width + 'x' + height;
       if (viewKey !== lastViewKey) {
         lastViewKey = viewKey;
         if (lastPointer && !isDragging && typeof updateHoverCursor === 'function') updateHoverCursor(lastPointer.x, lastPointer.y);
@@ -19635,8 +19714,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      // Check Compass Rose click to re-orient North
+      // Check Compass Rose click to re-orient North: the roll eases back to north-up, and the centre to 35°N.
       if (Math.hypot(mx - (width - 38), my - 38) < 22) {
+        rollTarget = 0;
         flyTo(rotLon, 35);
         return;
       }
@@ -19766,7 +19846,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.getHoveredCity = () => hoveredCity;
     window.getSelectedCityFilter = () => selectedCityFilter;
     window.getLabelCounts = () => ({ inst: visibleDots.filter(d => d.labelBox).length, country: lastShownCountryLabels.size, city: cityBadgeHitboxes.length });
-    window.getView = () => ({ r: currentRadius, target: targetRadius, lon: rotLon, lat: rotLat });
+    window.getView = () => ({ r: currentRadius, target: targetRadius, lon: rotLon, lat: rotLat, roll: rotRoll });
     window.__unproject = (x, y) => unproject(x, y, currentRadius, width / 2, height / 2);
     window.__project = (lon, lat) => project(lon, lat, currentRadius, width / 2, height / 2);
     window.handleGlobeClick = handleGlobeClick;
@@ -20006,19 +20086,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
         isAutoSpinning = false;
-        rotLon = (rotLon + 6) % 360;
+        dragView(-6, 0);
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
         isAutoSpinning = false;
-        rotLon = (rotLon - 6) % 360;
+        dragView(6, 0);
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         isAutoSpinning = false;
-        rotLat = Math.min(82, rotLat + 5);
+        dragView(0, 5);
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
         isAutoSpinning = false;
-        rotLat = Math.max(-82, rotLat - 5);
+        dragView(0, -5);
+      } else if ((e.key === '[' || e.key === ']') && !isCityStreetViewActive) {
+        // The globe has no up: [ and ] turn the picture about its centre.
+        e.preventDefault();
+        isAutoSpinning = false;
+        rollTarget = null;
+        turnView(0, 0, 1, e.key === '[' ? 10 : -10);
       } else if (e.key === 'Escape') {
         const drawer = document.getElementById('detailDrawer');
         const auditModal = document.getElementById('momaAuditModal');
@@ -20299,6 +20385,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // 4. Smoothly reset camera zoom and orientation to global planetary overview
       targetRadius = baseRadius;
       currentRadius = baseRadius;
+      rollTarget = 23.4;   // back to the opening tilt, not to north-up: the globe has no up
       if (typeof flyTo === 'function') {
         flyTo(0, 20, baseRadius);
       } else {
@@ -20371,6 +20458,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Touch & Pointer Drag for Globe
     let touchDistance = 0;
     let initialZoomRadius = 0;
+    let touchAngle = 0;               // two fingers twisting turn the globe about the screen's centre
 
     canvas.addEventListener('touchstart', e => {
       if (e.touches.length === 2) {
@@ -20379,6 +20467,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           e.touches[0].clientY - e.touches[1].clientY
         );
         initialZoomRadius = targetRadius;
+        touchAngle = Math.atan2(e.touches[1].clientY - e.touches[0].clientY, e.touches[1].clientX - e.touches[0].clientX);
+        rollTarget = null;
         // Two fingers zoom; neither of them drags. Without this each finger's move also turned
         // the globe, and a pinch jittered.
         pinching = true;
@@ -20401,6 +20491,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - trect.left;
         const my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - trect.top;
         zoomAnchor = unproject(mx, my, currentRadius, width / 2, height / 2) ? { x: mx, y: my } : null;
+        // A twist of the two fingers turns the picture with them: the globe has no up.
+        const ang = Math.atan2(e.touches[1].clientY - e.touches[0].clientY, e.touches[1].clientX - e.touches[0].clientX);
+        let dA = ang - touchAngle;
+        if (dA > Math.PI) dA -= 2 * Math.PI;
+        if (dA < -Math.PI) dA += 2 * Math.PI;
+        touchAngle = ang;
+        if (Math.abs(dA) > 0.002) { isAutoSpinning = false; turnView(0, 0, 1, -toDeg(dA)); }
       }
     }, { passive: true });
 
@@ -20442,13 +20539,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         lastX = e.clientX;
         lastY = e.clientY;
         const dragSens = (baseRadius / Math.max(baseRadius, currentRadius)) * 0.18;
-        const cosLat = Math.max(0.25, Math.cos(toRad(rotLat)));
-        const dLonStep = (dx * dragSens) / cosLat;
-        const dLatStep = dy * dragSens;
-        rotLon = (rotLon - dLonStep) % 360;
-        rotLat = Math.max(-82, Math.min(82, rotLat + dLatStep));
-        velLon = velLon * 0.35 + dLonStep * 0.65;
-        velLat = velLat * 0.35 + dLatStep * 0.65;
+        // A trackball: the globe turns the way the pointer goes, in any direction and over the poles,
+        // with no latitude limit and no pull back to north-up.
+        const dXStep = dx * dragSens;
+        const dYStep = dy * dragSens;
+        dragView(dXStep, dYStep);
+        velLon = velLon * 0.35 + dXStep * 0.65;
+        velLat = velLat * 0.35 + dYStep * 0.65;
       }
     });
 
