@@ -12087,7 +12087,16 @@ return maplibregl$1;
         const why = !inst.why_flagged || sameAsFunding || sayAlreadyInDetails(inst, inst.why_flagged) ? '' : escapeHtml(inst.why_flagged);
         // The statement and the reason are one paragraph, set in the body size with no title or tag above it.
         const lead = [flagStatement(inst), why].filter(Boolean).join(' ');
-        blocks.push(item('', '', (lead ? `<p class="t-lead">${lead}</p>` : '') + more.map(d => p('', d.text)).join(''),
+        // The report's points under each flag, the account itself: who did what, the money, who says it. Without them the chat
+        // said only "Zoma Museum has ties to Prime Minister Abiy Ahmed's government", which is a label, not an account (user,
+        // 4 Nov 2026: "this gossip is not sophisticated, make it real text"). A clean result among the points is left out;
+        // a point that opens "Unity Park: ..." keeps its label in bold.
+        const told = ((inst.details || {}).red_flags || []).flatMap(f => (f && f.points || []).filter(pt => pt && !isCleanResult(pt)));
+        const point = (raw) => {
+          const m = String(raw).match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s);
+          return m ? `<li><strong>${escapeHtml(m[1])}:</strong> ${escapeHtml(proseEnd(m[2]))}</li>` : `<li>${escapeHtml(proseEnd(String(raw)))}</li>`;
+        };
+        blocks.push(item('', '', (lead ? `<p class="t-lead">${lead}</p>` : '') + list(...told.map(point)) + more.map(d => p('', d.text)).join(''),
           [...new Set((inst.sources || []).concat(more.map(d => d.url)))]));
       }
       (inst.epstein_records || []).forEach(e => blocks.push(item(e.person || 'Epstein-related record', '',
