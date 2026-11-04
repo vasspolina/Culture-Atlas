@@ -9974,7 +9974,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v515';
+    const ATLAS_RELEASE = 'culture-atlas-v516';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10278,7 +10278,8 @@ return maplibregl$1;
     const ATLAS_SEL_H = 32, ATLAS_SEL_PAD = 36;
     const atlasLabelName = (name, sel) => sel ? (name.length > 44 ? name.substring(0, 42) + '…' : name) : (name.length > 24 ? name.substring(0, 22) + '…' : name);
     // The hover card's description is set in Serrif Light, as Displaay sets the info text on displaay.net/typeface/cassette.
-    const ATLAS_CARD_DESC_FONT = '300 18px "Serrif", Georgia, "Times New Roman", serif';
+    // 21px on a 24px line, Displaay's own size for it (user, 4 Nov 2026: "make the hover card description bigger"; it was 18px).
+    const ATLAS_CARD_DESC_FONT = '300 21px "Serrif", Georgia, "Times New Roman", serif';
     const ATLAS_CARD_LABEL_FONT = '400 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
@@ -10296,7 +10297,7 @@ return maplibregl$1;
 
       // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
       // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
-      // label over a 1px rule; the name in capitals; the description in Serrif Light 18px on a 1.2 line, up to three lines; the
+      // label over a 1px rule; the name in capitals; the description in Serrif Light 21px on a 24px line, up to three lines; the
       // website as a button with the buttons' 10px corners and 1px edge.
       const nameUpper = inst.name.toUpperCase();
       const locText = [inst.city, inst.country].filter(Boolean).join(', ').toUpperCase();
@@ -10307,7 +10308,7 @@ return maplibregl$1;
       const cardInk = cardDark ? '#ffffff' : '#000000';
       const cardPaper = cardDark ? '#000000' : '#ffffff';
       const padX = 18, padY = 16;
-      const cardW = Math.min(360, width - 28);
+      const cardW = Math.min(400, width - 28);
       const maxTextW = cardW - padX * 2;
       const fit = (str) => {
         let t = str;
@@ -10338,7 +10339,7 @@ return maplibregl$1;
 
       ctx.font = ATLAS_CARD_DESC_FONT;
       const descLines = descText ? wrap(descText, 3) : [];
-      const DESC_LH = 21.6;
+      const DESC_LH = 24;
       const webUrl2 = webUrl;
       const LABEL_Y = padY, RULE_Y = padY + 22, NAME_Y = RULE_Y + 12, DESC_Y = NAME_Y + 36;
       const descEnd = DESC_Y + descLines.length * DESC_LH;
