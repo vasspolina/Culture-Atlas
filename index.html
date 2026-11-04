@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=531">
-  <script src="assets/config.js?v=531"></script>
-  <script src="assets/subtopic.js?v=531"></script>
-  <script src="assets/names.js?v=531"></script>
-  <script src="assets/grounding.js?v=531"></script>
-  <script src="assets/repeats.js?v=531"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=540">
+  <script src="assets/config.js?v=540"></script>
+  <script src="assets/subtopic.js?v=540"></script>
+  <script src="assets/names.js?v=540"></script>
+  <script src="assets/grounding.js?v=540"></script>
+  <script src="assets/repeats.js?v=540"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -219,6 +219,8 @@ return maplibregl$1;
     <div id="globeViewport" class="relative w-full md-w-_55 h-full flex-1 min-h-0 flex flex-col justify-between overflow-hidden">
       
       <canvas id="globeCanvas" class="absolute inset-0 w-full h-full block"></canvas>
+      <!-- The hover cards, drawn on their own layer over the fog (assets/atlas.css, FOG ON THE MAP) so the fog never greys them. -->
+      <canvas id="globeCardCanvas" class="absolute inset-0 w-full h-full block" aria-hidden="true"></canvas>
 
       <!-- Layers: overlays on the map, like a map app's layer menu -->
       <div id="layersControl">
@@ -241,6 +243,32 @@ return maplibregl$1;
               <label><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Spaces graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
               <label><input type="checkbox" data-layer="artist"> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
             </div>
+          </section>
+          <section class="layers-section" data-no-chips>
+            <h2 class="layers-section-title">Funding views</h2>
+            <p class="layers-note">Other ways to draw the same funding data. Each works alone or beside the layers above, and follows the funder types below. Point at a line, a ring or an area to name it; click to ask the chat.</p>
+            <div class="layers-list">
+              <label><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type. Pairs with one link show when you zoom in</span><span class="layers-count" data-count="bundle"></span></label>
+              <label><input type="checkbox" data-layer="flows" data-chip> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
+              <label><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country by the share of its spaces&rsquo; funders based abroad, or by its main funder type</span><span class="layers-count" data-count="choro"></span></label>
+              <label><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for. Point at a funder anywhere to see its own</span></label>
+              <label><input type="checkbox" data-layer="glyphs"> <span class="layer-name">Funding mix on each space</span><span class="layer-desc">A ring around each space, split by its public, foundation and company funders</span></label>
+              <label><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share. No lines</span></label>
+              <label><input type="checkbox" data-layer="lifted" data-chip> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more spaces they fund, with a line down to each</span></label>
+              <label><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices. The flag is on the space</span><span class="layers-count" data-count="flagged"></span></label>
+            </div>
+            <div class="layers-kinds layers-choro" role="radiogroup" aria-label="Countries shaded by">
+              <label class="kind-chip"><input type="radio" name="choroMode" data-choro="abroad" checked> <span class="layer-name">Funders abroad</span></label>
+              <label class="kind-chip"><input type="radio" name="choroMode" data-choro="kind"> <span class="layer-name">Main funder type</span></label>
+            </div>
+            <div class="layers-choro-legend" data-choro-legend><span>None abroad</span><i aria-hidden="true"></i><span>All abroad</span></div>
+            <div class="layers-years">
+              <label><input type="checkbox" data-years-on> <span class="layer-name">Decade</span></label>
+              <input type="range" data-years min="1950" max="2020" step="10" value="2010" aria-label="Decade">
+              <output data-years-out>2010s</output>
+              <span class="layers-count" data-count="years"></span>
+            </div>
+            <p class="layers-note">The decade keeps the spaces whose funding line names a year in it, on every funding layer and view. Funding lines give no start or end dates, so this is the year a line mentions, not the years a grant ran.</p>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Propaganda periods</h2>
@@ -274,9 +302,9 @@ return maplibregl$1;
           <section class="layers-section">
             <h2 class="layers-section-title">Spaces on the map</h2>
             <div class="layers-key layers-tier-key">
-              <span><i class="shape-dot" style="--marker-color:#9ae3e8"></i>Clean: a source is cited</span>
-              <span><i class="shape-dot" style="--marker-color:#e79a3a"></i>Flagged: a recorded reason</span>
-              <span><i class="shape-dot" style="--marker-color:#c6c6c6"></i>Unverified</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-a)"></i>Clean: a source is cited</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-b)"></i>Flagged: a recorded reason</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-u)"></i>Unverified</span>
             </div>
           </section>
           <section class="layers-section">
@@ -1073,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=531"></script>
+  <script src="assets/institutions.js?v=540"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -8125,9 +8153,6 @@ return maplibregl$1;
       cityMarkersLayer.clearLayers();
 
       cityInsts.forEach(inst => {
-        const isA = inst.tier === 'A';
-        const isB = inst.tier === 'B';
-        const markerColor = isA ? '#10b981' : (isB ? '#be95ff' : '#08bdba');
 
         const pinEl = document.createElement('div');
         pinEl.className = 'custom-inst-pin';
@@ -8177,7 +8202,7 @@ return maplibregl$1;
         dotEl.style.height = '15px';
         dotEl.style.borderRadius = '50%';
         dotEl.style.background = 'transparent';
-        dotEl.style.border = '1px solid #000'; // a hollow black ring on the white drawing; the tier is on the label
+        dotEl.style.border = `1px solid var(--tier-${inst.tier === 'A' || inst.tier === 'B' ? inst.tier.toLowerCase() : 'u'})`; // a hollow ring in the tier's colour, like its label
         dotEl.style.boxShadow = 'none';
 
         pinEl.appendChild(labelEl);
@@ -9987,12 +10012,18 @@ return maplibregl$1;
       `;
     }
 
+    // One colour per kind of space, from Displaay's colour tokens (displaay.net, user 4 Nov 2026): menthol clean, magenta flagged,
+    // yellow unverified. The dot, its name's type and the name's outline all take it. On the light theme each is darkened to
+    // 5:1 or better on white (user, 4 Nov 2026), so the names stay readable.
+    // assets/atlas.css carries the same values as --tier-a, --tier-b and --tier-u for the city map and the Layers key.
+    const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
+    function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v531';
+    const ATLAS_RELEASE = 'culture-atlas-v540';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=531').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=540').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10029,6 +10060,9 @@ return maplibregl$1;
     // Canvas & 3D Math Setup with Native Retina / High-DPI Support
     const canvas = document.getElementById('globeCanvas');
     const ctx = canvas.getContext('2d', { alpha: false });
+    // The hover cards' layer: transparent, above the fog, takes no pointer (the globe canvas under it handles every hover and click).
+    const cardCanvas = document.getElementById('globeCardCanvas');
+    const cardCtx = cardCanvas ? cardCanvas.getContext('2d') : ctx;
     
     let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
     let width = 800;
@@ -10303,20 +10337,35 @@ return maplibregl$1;
 
     function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {
       if (!inst) return;
-      ctx.save();
-
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
-      const domainPillText = `${domain}`;
-
-      // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
-      // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
-      // label over a 1px rule; the name in capitals; the description in Serrif Light 21px on a 24px line, up to three lines; the
-      // website as a button with the buttons' 10px corners and 1px edge.
-      const nameUpper = inst.name.toUpperCase();
-      const locText = [inst.city, inst.country].filter(Boolean).join(', ').toUpperCase();
       const ov = inst.details && Array.isArray(inst.details.overview) ? inst.details.overview.find(t => t && String(t).trim()) : '';
-      const descText = String(ov || inst.curatorial_focus || inst.neighborhood || '').replace(/\s+/g, ' ').trim();
+      const g = drawAtlasCard(ctx, {
+        label: [inst.city, inst.country].filter(Boolean).join(', '),
+        name: inst.name,
+        desc: String(ov || inst.curatorial_focus || inst.neighborhood || ''),
+        btn: webUrl ? domain : ''
+      }, px, py, width);
+      hoveredMicroCardHitbox = {
+        inst: inst, webUrl: webUrl || null,
+        btnX: webUrl ? g.btnX : 0, btnY: webUrl ? g.btnY : 0, btnW: webUrl ? g.btnW : 0, btnH: webUrl ? g.btnH : 0,
+        cardX: g.cardX, cardY: g.cardY, cardW: g.cardW, cardH: g.cardH
+      };
+      window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
+    }
+
+    // One card for every hover on the map, a space's and a city's alike (user, 4 Nov 2026: "make sure all have same new design").
+    // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
+    // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
+    // label over a 1px rule; the name in capitals; the description in Serrif Light 21px on a 24px line, up to three lines; the
+    // action as a button with the buttons' 10px corners and 1px edge, stretched across the card's measure ("button can be
+    // stretched"), filled with ink while the pointer is on it. Returns where the card and its button were drawn.
+    function drawAtlasCard(ctx, card, px, py, width) {
+      ctx.save();
+      const locText = String(card.label || '').toUpperCase();
+      const nameUpper = String(card.name || '').toUpperCase();
+      const descText = String(card.desc || '').replace(/\s+/g, ' ').trim();
+      const btnText = card.btn || '';
 
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const cardInk = cardDark ? '#ffffff' : '#000000';
@@ -10354,11 +10403,10 @@ return maplibregl$1;
       ctx.font = ATLAS_CARD_DESC_FONT;
       const descLines = descText ? wrap(descText, 3) : [];
       const DESC_LH = 24;
-      const webUrl2 = webUrl;
       const LABEL_Y = padY, RULE_Y = padY + 22, NAME_Y = RULE_Y + 12, DESC_Y = NAME_Y + 36;
       const descEnd = DESC_Y + descLines.length * DESC_LH;
       const btnH = 30;
-      const cardH = (webUrl2 ? descEnd + 14 + btnH : descEnd) + padY;
+      const cardH = (btnText ? descEnd + 14 + btnH : descEnd) + padY;
 
       let cardX = px - cardW / 2;
       cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
@@ -10390,38 +10438,23 @@ return maplibregl$1;
       ctx.font = ATLAS_CARD_DESC_FONT;
       descLines.forEach((ln, i) => ctx.fillText(ln, textX, cardY + DESC_Y + i * DESC_LH));
 
-      if (webUrl2) {
+      const btnX = textX, btnY = cardY + descEnd + 14, btnW = maxTextW;
+      if (btnText) {
         ctx.font = ATLAS_CARD_LABEL_FONT;
         try { ctx.letterSpacing = '0.02em'; } catch (e) {}
-        const webW = ctx.measureText(domainPillText).width;
-        const btnX = textX;
-        const btnY = cardY + descEnd + 14;
-        const btnW = Math.min(maxTextW, webW + 28);
         ctx.beginPath();
         ctx.roundRect(btnX, btnY, btnW, btnH, 10);
+        if (card.btnHover) { ctx.fillStyle = cardInk; ctx.fill(); }
         ctx.strokeStyle = cardInk;
         ctx.lineWidth = 1;
         ctx.stroke();
-        ctx.fillStyle = cardInk;
+        ctx.fillStyle = card.btnHover ? cardPaper : cardInk;
         ctx.textBaseline = 'middle';
-        ctx.fillText(fit(domainPillText), btnX + 14, btnY + btnH / 2 + 0.5);
+        ctx.fillText(fit(btnText), btnX + 14, btnY + btnH / 2 + 0.5);
         try { ctx.letterSpacing = '0px'; } catch (e) {}
-
-        hoveredMicroCardHitbox = {
-          inst: inst, webUrl: webUrl2,
-          btnX: btnX, btnY: btnY, btnW: btnW, btnH: btnH,
-          cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
-        };
-      } else {
-        hoveredMicroCardHitbox = {
-          inst: inst, webUrl: null,
-          btnX: 0, btnY: 0, btnW: 0, btnH: 0,
-          cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
-        };
       }
-      window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
-
       ctx.restore();
+      return { cardX, cardY, cardW, cardH, btnX, btnY, btnW: btnText ? btnW : 0, btnH: btnText ? btnH : 0 };
     }
 
     let hoveredMicroCardHitbox = null;
@@ -10479,6 +10512,16 @@ return maplibregl$1;
       // Scale coordinates to high-DPI hardware buffer for crystal-clear Retina rendering
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, width, height);
+      if (cardCanvas) {
+        const cbw = Math.round(width * dpr), cbh = Math.round(height * dpr);
+        if (cardCanvas.width !== cbw) cardCanvas.width = cbw;
+        if (cardCanvas.height !== cbh) cardCanvas.height = cbh;
+        cardCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cardCtx.clearRect(0, 0, width, height);
+        // The street map (z 10) covered the cards when they were drawn on the globe; their layer is hidden there the same way.
+        const cardVis = isCityStreetViewActive ? 'hidden' : '';
+        if (cardCanvas.style.visibility !== cardVis) cardCanvas.style.visibility = cardVis;
+      }
       // The canvas has no alpha channel, so a cleared frame is black: paint the theme's ground under everything.
       ctx.fillStyle = G_GROUND;
       ctx.fillRect(0, 0, width, height);
@@ -10640,7 +10683,8 @@ return maplibregl$1;
             if (dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
           }
 
-          ctx.fillStyle = isCActive ? G_ACTIVE : G_GROUND;
+          // Countries shaded by the funding views (assets/funding-views.js) take their fill from there.
+          ctx.fillStyle = isCActive ? G_ACTIVE : ((window.atlasCountryFill && window.atlasCountryFill(country.n, G_GROUND)) || G_GROUND);
 
           for (let j = 0; j < country.r.length; j++) {
             const ring = country.r[j];
@@ -10760,7 +10804,7 @@ return maplibregl$1;
           return { fill, ink: darkLabel ? '#ffffff' : '#000000' };
         };
         // The type and outline colour of a city label, and of the card it opens into.
-        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2f6b12' : '#e2f86c') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
+        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2f6b12' : '#e2f86c') : tierInk(tier, GLOBE_LIGHT);
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = active ? atlasSelFont() : atlasMonoFont();
@@ -11124,8 +11168,8 @@ return maplibregl$1;
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
             ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#3d7a0f' : '#e2f86c') : (GLOBE_LIGHT ? '#1e4d2b' : '#7d9a3a'))
-            : (d.inst.tier === 'A' ? (GLOBE_LIGHT ? '#0a8f68' : '#10b981') : d.inst.tier === 'B' ? (GLOBE_LIGHT ? '#7a52d6' : '#be95ff') : (GLOBE_LIGHT ? '#008a87' : '#08bdba'));
-          // Hollow rings, colored by tier; the selected one is filled. In gossip mode a space with gossip is a filled green dot (lime on the dark theme).
+            : tierInk(d.inst.tier, GLOBE_LIGHT);
+          // Hollow rings in the tier's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled green dot (lime on the dark theme).
           ctx.lineWidth = 0.8;
           if (isSel || (isGossipModeActive && hasGossip(d.inst))) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
           ctx.stroke();
@@ -11206,33 +11250,16 @@ return maplibregl$1;
               ctx.fill();
               ctx.stroke();
 
-              // Card dimensions & multi-line layout: a flat colour block, like the fair's tabs.
-              // The name is set large in capitals; the rest is Regular; the action is a pill.
-              const cityTxt = hMeta.name;
-              const countryTxt = hMeta.country ? hMeta.country.trim() : '';
+              // The same card as a space's (drawAtlasCard), on the card layer over the fog: the country as the label, the city's
+              // name in capitals, the count as the line under it, and the explore button.
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
-              const countTxt = `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`;
-              const linkTxt = 'Click to explore';
-              // Ink and paper like the space's card (user, 4 Nov 2026: the square city card was the old design): plain type, not the tier's colour.
-              const cardInk = GLOBE_LIGHT ? '#000000' : '#ffffff';
-
-              ctx.font = ATLAS_CARD_TITLE_FONT;
-              const twCity = ctx.measureText(cityTxt).width;
-              ctx.font = atlasMonoFont();
-              const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
-              const twCount = ctx.measureText(countTxt).width;
-              const twLink = ctx.measureText(linkTxt).width;
-
-              const linkBtnW = twLink + 28;
-              const linkBtnH = 28;
-
-              const cardW = Math.max(twCity, twCountry, twCount, linkBtnW) + 32;
-              const cardH = countryTxt ? 138 : 114;
-              const cardX = Math.max(14, Math.min(width - cardW - 14, hPt.x - cardW / 2));
-              const cardY = hPt.y > cardH + 20 ? hPt.y - cardH - 16 : hPt.y + 18;
-
-              const linkBtnX = cardX + 16;
-              const linkBtnY = cardY + cardH - linkBtnH - 14;
+              const g = drawAtlasCard(cardCtx, {
+                label: hMeta.country ? hMeta.country.trim() : '',
+                name: hMeta.name,
+                desc: `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`,
+                btn: 'Click to explore',
+                btnHover: isHoveringCityExploreLink
+              }, hPt.x, hPt.y, width);
 
               // Register interactive hover & click hitbox for the card and link
               hoveredCityCardHitbox = {
@@ -11240,54 +11267,15 @@ return maplibregl$1;
                 country: hMeta.country || '',
                 pinX: hPt.x,
                 pinY: hPt.y,
-                cardX: cardX,
-                cardY: cardY,
-                cardW: cardW,
-                cardH: cardH,
-                linkX: linkBtnX,
-                linkY: linkBtnY,
-                linkW: linkBtnW,
-                linkH: linkBtnH
+                cardX: g.cardX,
+                cardY: g.cardY,
+                cardW: g.cardW,
+                cardH: g.cardH,
+                linkX: g.btnX,
+                linkY: g.btnY,
+                linkW: g.btnW,
+                linkH: g.btnH
               };
-
-              // Flat block in the colour of the city's badge (cyan, orange or grey by tier). No rounding, no outline, no shadow.
-              // Drawn like the city labels: no block, a thin soft rounded outline and the type in the tier's colour.
-              // Rounded 20px with a solid 1px outline, as the space's card is drawn (the square, half-faded box was the old design).
-              ctx.beginPath();
-              ctx.roundRect(cardX, cardY, cardW, cardH, 20);
-              ctx.fillStyle = cardBg;
-              ctx.fill();
-              ctx.strokeStyle = cardInk;
-              ctx.lineWidth = 1;
-              ctx.stroke();
-
-              // Line 1: city name, in the roman
-              ctx.font = ATLAS_CARD_TITLE_FONT;
-              ctx.fillStyle = cardInk;
-              ctx.textAlign = 'left';
-              ctx.textBaseline = 'top';
-              ctx.fillText(cityTxt, cardX + 16, cardY + 14);
-
-              let currentY = cardY + 46;
-              ctx.font = atlasMonoFont();
-              if (countryTxt) {
-                ctx.fillText(countryTxt, cardX + 16, currentY);
-                currentY += 20;
-              }
-              ctx.fillText(countTxt, cardX + 16, currentY);
-
-              // Action: a tint of the type colour at rest, solid type colour with card-coloured text on hover.
-              ctx.save();
-              ctx.beginPath();
-              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 10);
-              if (isHoveringCityExploreLink) { ctx.fillStyle = cardInk; ctx.fill(); }
-              else { ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); }
-              ctx.font = atlasMonoFont();
-              ctx.fillStyle = isHoveringCityExploreLink ? cardBg : cardInk;
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'middle';
-              ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2 + 0.5);
-              ctx.restore();
 
               ctx.restore();
             }
@@ -11299,7 +11287,7 @@ return maplibregl$1;
 
         // 8.6 Render Active Institution Micro Card at top layer of 3D globe (above all dots, labels, and city cards)
         if (activeMicroDot) {
-          drawInstitutionMicroCard(ctx, activeMicroDot.inst, activeMicroDot.x, activeMicroDot.y, width, height);
+          drawInstitutionMicroCard(cardCtx, activeMicroDot.inst, activeMicroDot.x, activeMicroDot.y, width, height);
         } else if (!hoveredInstitution) {
           hoveredMicroCardHitbox = null;
         }
@@ -11501,6 +11489,20 @@ return maplibregl$1;
       });
       setTimeout(atlasReleasePaint, 8000); // the waits above are capped; this is for an error in them
     })();
+
+    // Where a record sits on the globe. The data writes 0, 0 for a record with no coordinates (no pin, no building view: 19 records
+    // on 4 Nov 2026, Victoria Gallery in Samara among them). Flying to that closed in on the empty ocean at 0°, 0° with the funder
+    // web drawn there, and the map read as blank. A record with no pin falls back to its city's centre (exact: false), or to nothing.
+    function atlasPinOf(inst) {
+      if (!inst) return null;
+      const lat = Number(inst.lat), lon = Number(inst.lon);
+      if (isFinite(lat) && isFinite(lon) && (lat !== 0 || lon !== 0)) return { lat, lon, exact: true };
+      const city = inst.city || (typeof inst.c === 'string' ? inst.c.split(',')[0].trim() : '');
+      const meta = city ? ALL_CITIES_REGISTRY.find(c => matchC(c.name, city) && (!inst.country || !c.country || matchC(c.country, inst.country))) || ALL_CITIES_REGISTRY.find(c => matchC(c.name, city)) : null;
+      if (meta && isFinite(meta.lat) && isFinite(meta.lon) && (meta.lat !== 0 || meta.lon !== 0)) return { lat: meta.lat, lon: meta.lon, exact: false };
+      return null;
+    }
+    window.atlasPinOf = atlasPinOf;
 
     // Camera Navigation
     function flyTo(lon, lat, targetZoom = null) {
@@ -12097,7 +12099,10 @@ return maplibregl$1;
         || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
+        // "Epstein link · Crown Princess Mette-Marit: ..." is titled with the person; the flag sentence above already says it is an Epstein link.
+        const ep = m ? null : part.match(/^Epstein link\s*·\s*([^:·]+?):\s*(.+)$/s);
         if (m) blocks.push(item(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}`, m[3].replace(/^(\w)/, c => c.toUpperCase()), p('', m[4]), []));
+        else if (ep) blocks.push(item(ep[1], '', p('', ep[2]), []));
         else blocks.push(item('', '', p('', part.replace(/^([^:]{1,60}?, )(\d{4}-\d{2}-\d{2}):/, (_, who, d) => `${who}${humanDate(d)}:`)), []));
       });
       const relatedReports = (inst.case_notes || []).map(n => `
@@ -12576,8 +12581,8 @@ return maplibregl$1;
           }
         }
         const zoomTarget = getCityTargetRadius(inst.city);
-        targetRadius = zoomTarget;
-        flyTo(inst.lon, inst.lat, zoomTarget);
+        const pin = atlasPinOf(inst);
+        if (pin) { targetRadius = zoomTarget; flyTo(pin.lon, pin.lat, zoomTarget); }
       } else {
         if (isCityStreetViewActive) {
           if (suppressSelectFly) {
@@ -12591,8 +12596,8 @@ return maplibregl$1;
           }
         } else {
           const zoomTarget = Math.min(getMaxRadius(), Math.max(currentRadius * 1.35, baseRadius * 3.8));
-          targetRadius = zoomTarget;
-          flyTo(inst.lon, inst.lat, zoomTarget);
+          const pin = atlasPinOf(inst);
+          if (pin) { targetRadius = zoomTarget; flyTo(pin.lon, pin.lat, zoomTarget); }
         }
       }
       if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && typeof setCardMode === 'function') {
@@ -12920,7 +12925,9 @@ return maplibregl$1;
         || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
+        const ep = m ? null : part.match(/^Epstein link\s*·\s*([^:·]+?):\s*(.+)$/s);
         if (m) items.push(proseLi(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}, ${m[3].toLowerCase()}.`, escapeHtml(proseEnd(m[4])), true));
+        else if (ep) items.push(proseLi(`${ep[1]}.`, escapeHtml(proseEnd(ep[2])), true));
         else items.push(proseLi('', escapeHtml(proseEnd(part)), true));
       });
       if (inst.case_study) {
@@ -19500,7 +19507,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (cty) {
         flyTo(cty.lon, cty.lat, targetZoom);
       } else {
-        const inst = ALL_INSTITUTIONS.find(i => matchC(i.city, cityName));
+        const inst = ALL_INSTITUTIONS.find(i => matchC(i.city, cityName) && atlasPinOf(i) && atlasPinOf(i).exact);
         if (inst) flyTo(inst.lon, inst.lat, targetZoom);
       }
 
@@ -20620,12 +20627,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=531"></script>
-<script src="assets/layers.js?v=531"></script>
-<script src="assets/hq-detail.js?v=531"></script>
-<script src="assets/bubbles.js?v=531" defer></script>
-<script src="assets/phone-maps.js?v=531"></script>
-<script src="assets/desktop-maps.js?v=531"></script>
-<script src="assets/chat-resize.js?v=531"></script>
+<script src="assets/typeset.js?v=540"></script>
+<script src="assets/funding-views.js?v=540"></script>
+<script src="assets/layers.js?v=540"></script>
+<script src="assets/hq-detail.js?v=540"></script>
+<script src="assets/bubbles.js?v=540" defer></script>
+<script src="assets/phone-maps.js?v=540"></script>
+<script src="assets/desktop-maps.js?v=540"></script>
+<script src="assets/chat-resize.js?v=540"></script>
 </body>
 </html>

@@ -12,6 +12,15 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC=os.path.join(ROOT,'institutions.json')
 OUT=os.path.join(ROOT,'assets','money-maps.json')
 d=json.load(open(SRC,encoding='utf-8'))
+# A record whose Epstein tie is written only in its notes ("Epstein link · Crown Princess Mette-Marit: ...") has no
+# epstein_records; the person is read from that note, so the map names who links the space, not "Jeffrey Epstein".
+def epstein_of(x):
+    if x.get('epstein_records'): return x['epstein_records']
+    out=[]
+    for part in re.split(r"\s+\|\s+",(x.get('other_findings') or '').strip()):
+        m=re.match(r"^Epstein link\s*·\s*([^:·]+?):\s*(.+)$",part,re.S)
+        if m and m.group(1).strip().lower()!='jeffrey epstein': out.append({'person':m.group(1).strip(),'summary':m.group(2).strip(),'status':'documented'})
+    return out
 GOV=re.compile(r"\b(dcms|statutory|grant-in-aid|ministry|ministerio|ministère|government|govt|council|state|city|municipal|municipality|federal|national endowment|lottery|lotto|culture fund|cultural affairs|department|commission|agency|region|regional|province|provincial|county|kommune|länder|land |bund|crown|canton|cantonal|kanton|generalitat|junta|comune|commune|gemeente|ayuntamiento|municipio|prefecture|diputaci[oó]n|treasury|european union|\bEU\b|creative europe|arts council|heritage fund|canada council|ville de|stadt|gemeente|prefecture|republic|embassy|consulate|parliament|senate|congress)\b",re.I)
 FOUND=re.compile(r"\b(foundations?|funds?|fonds|fondation|fondazione|stiftung|fundación|trusts?|family|philanthrop\w*|endowments?|society|friends|patrons?|board|trustees?|donors?|bequest|legacy|charit\w*|institute|association)\b",re.I)
 GENERIC=set(x.lower() for x in """Admissions Admission Tickets Ticket Donations Donation Memberships Membership Sponsorship Sponsors Sponsor Visitors Earned income Individual donors Grants Grant Revenue Public funding Private donors Private funding Corporate sponsors Retail Shop Events Rentals Fundraising Income Budget Operating budget Endowment Mostly Mainly Plus Also Other Others Various Several Some Many Free Funding Support Supported Founded""".split('\n')[0].split())
@@ -157,7 +166,7 @@ for x in d:
     why=(x.get('why_flagged') or '').strip()
     for i,fg in enumerate(flags):
         ns.append(dict(label=fg,cat='flag',tier=2,note=why if i==0 and why else 'Flag recorded on this record',key='',src='flag'))
-    for e in x.get('epstein_records') or []:
+    for e in epstein_of(x):
         ns.append(dict(label=e.get('person','Epstein record'),cat='flag',tier=3,note=(e.get('link','')+': ' if e.get('link') else '')+(e.get('summary','') or '')[:420],key='',src='epstein'))
     for w in (x.get('wikileaks_records') or [])[:3]:
         ns.append(dict(label='WikiLeaks '+str(w.get('doc_id','cable')),cat='flag',tier=1,note=(w.get('what_shows','') or '')[:300],key='',src='wikileaks'))
@@ -193,7 +202,7 @@ for x in d:
             oi=id2[o]; nodes.append([oi['name'],'link',2,oi['location'],o]); edges.append([i+1,len(nodes),'also funds'])
     rec=dict(id=x['id'],n=x['name'],c=x['location'],co=x['country'],t=x['tier'],s=x.get('size') or '',lat=x['lat'],lon=x['lon'],
         f=x.get('funding') or '',w=x.get('watch') or '',fl=x.get('flags') or [],why=(x.get('why_flagged') or '')[:300],tn=(x.get('tier_note') or '')[:200],
-        u=(x.get('sources') or [])[:6],ep=[{'p':e.get('person',''),'l':e.get('link',''),'s':e.get('status',''),'t':(e.get('summary','') or '')[:320]} for e in (x.get('epstein_records') or [])],web=x.get('website') or '',nodes=nodes,edges=edges)
+        u=(x.get('sources') or [])[:6],ep=[{'p':e.get('person',''),'l':e.get('link',''),'s':e.get('status',''),'t':(e.get('summary','') or '')[:320]} for e in epstein_of(x)],web=x.get('website') or '',nodes=nodes,edges=edges)
     out.append(rec)
 # A donor named only in a record's own text (not parsed as a sponsor) still becomes a node on that record.
 src_by_id={x['id']:x for x in d}
