@@ -100462,8 +100462,8 @@
     "sources": [
       "https://www.si.edu/newsdesk/releases/national-air-and-space-museum-receives-30-million-boeing"
     ],
-    "lat": 38.9072,
-    "lon": -77.0369,
+    "lat": 38.8881,
+    "lon": -77.0199,
     "country": "USA",
     "city": "Washington",
     "website": "https://airandspace.si.edu/",
@@ -100691,7 +100691,42 @@
           "https://hyperallergic.com/smithsonian-complies-with-trumps-document-requests"
         ]
       }
-    ]
+    ],
+    "address": "650 Jefferson Drive SW, Washington, DC",
+    "neighborhood": "National Mall",
+    "opening_hours": "Daily 10:00\u201317:30; closed 25 December",
+    "admission_fee": "Free; a free timed-entry pass is required",
+    "admission_details": "Part of the museum is closed while renovation is completed. The second site, the Steven F. Udvar-Hazy Center at 14390 Air and Space Museum Parkway, Chantilly, VA 20151, keeps the same hours, is free and needs no pass.",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://airandspace.si.edu/visit"
+        ],
+        "basis": "address",
+        "retrieved": "2026-11-04"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://airandspace.si.edu/visit"
+        ],
+        "basis": "opening_hours",
+        "retrieved": "2026-11-04"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://airandspace.si.edu/visit"
+        ],
+        "basis": "admission_fee",
+        "retrieved": "2026-11-04"
+      },
+      "admission_details": {
+        "urls": [
+          "https://airandspace.si.edu/visit"
+        ],
+        "basis": "admission_details",
+        "retrieved": "2026-11-04"
+      }
+    }
   },
   {
     "id": "dk-rozy-st-petersburg",
