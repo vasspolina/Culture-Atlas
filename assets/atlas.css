@@ -13,6 +13,7 @@ h1,h2,h3,h4,p{margin:0}
 @font-face{font-family:"Dazzed";src:url("../fonts/Dazzed-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"Dazzed";src:url("../fonts/Dazzed-Medium.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:"PP Museum";src:url("../fonts/PPMuseum-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
 
 :root{
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
@@ -291,7 +292,8 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 .provider-tab-btn[aria-pressed=true]{background:var(--cobalt);color:#fff}
 
 /* ---- map pins and labels (functional, restyled) ---- */
-.custom-inst-pin{cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .25s var(--ease)}
+/* absolute, as .maplibregl-marker is: "relative" here (this sheet loads after MapLibre's) put every pin in the flow, each 32px below the last. No transition on transform: MapLibre moves the pin with it, so a transition made the pins trail the map and the label collision pass measured them mid-slide. */
+.custom-inst-pin{cursor:pointer;position:absolute;display:flex;align-items:center;justify-content:center;user-select:none;transition:none}
 .custom-inst-pin:hover{transform:scale(1.12);z-index:9999!important}
 .pin-pulse-aura,.brand-city-dot-aura,.brand-city-dot-ping{display:none!important}
 .inst-pin-label{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:0 14px;height:22px;background:#c6c6c6;color:#000;border:0;font:400 var(--fs-s)/22px var(--sans);white-space:nowrap;cursor:pointer;z-index:20;transition:opacity .25s var(--ease)}
@@ -4328,3 +4330,53 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn .note-close-cross{width:28px!important;height:28px!important;color:inherit!important}
 :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible){background:transparent!important;color:var(--dp-ink)!important}
 :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible) .note-close-cross{color:var(--dp-ink)!important;stroke-width:2!important}
+
+/* ===== STREET MAP CLOSE IN: THE PRINTED GALLERY MAP (user, 4 Nov 2026) =====
+   From zoom 14 (POSTER_ZOOM in index.html) the street map is set like Fraser Muggeridge studio's Bloomsbury Art Galleries
+   map: stippled blocks, paper streets between ink edges and serif capitals are the map style's poster_ layers; here are the
+   pins, the name tags, the frame and the title box. #cityMapContainer.street-poster is set by the map's zoom handler.
+   Each space is a solid red mark in its tier's shape (circle clean, square flagged, triangle unverified), so the tier is still
+   told by shape and not by colour. Its name is a black tag with paper text and a pointer at the mark.
+   Measured: #d71920 on #fff 5.3:1, #ff5a52 on #262524 5.6:1, #d71920 on the gossip lime #e2f86c 4.9:1, #ff5a52 on the dark
+   gossip #1e4d2b 3.6:1 (marks need 3:1); tag text 18:1 or better in every mode. */
+#cityMapContainer{--wc-ground:#fff;--wc-ink:#000;--wc-red:#d71920}
+:root[data-theme="dark"] #cityMapContainer{--wc-ground:#262524;--wc-ink:#f4f4f4;--wc-red:#ff5a52}
+body.gossip-mode-active #cityMapContainer{--wc-ground:#e2f86c;--wc-ink:#000;--wc-red:#d71920}
+:root[data-theme="dark"] body.gossip-mode-active #cityMapContainer{--wc-ground:#1e4d2b;--wc-ink:#e2f86c;--wc-red:#ff5a52}
+
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin .inst-pin-dot{width:18px!important;height:18px!important;border:0!important;border-radius:50%!important;background:var(--wc-red)!important;box-shadow:none!important}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin[data-tier="B"] .inst-pin-dot{width:16px!important;height:16px!important;border-radius:0!important}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin[data-tier="U"] .inst-pin-dot{width:22px!important;height:19px!important;border-radius:0!important;clip-path:polygon(50% 0,100% 100%,0 100%)}
+
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label{--lc:var(--wc-ground);height:auto!important;padding:4px 7px 3px!important;gap:0!important;background:var(--wc-ink)!important;color:var(--wc-ground)!important;border:0!important;border-radius:0!important;box-shadow:none!important;font:700 14px/1.15 var(--sans)!important;letter-spacing:.01em!important;text-transform:none!important}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name{font:inherit!important;letter-spacing:inherit!important;color:inherit!important;text-transform:none!important}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label.label-pos-top,
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label:not(.label-pos-bottom):not(.label-pos-left):not(.label-pos-right){bottom:calc(100% + 4px)!important}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label.label-pos-bottom{top:calc(100% + 4px)!important}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label.label-pos-right{left:calc(100% + 6px)!important}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label.label-pos-left{right:calc(100% + 6px)!important}
+/* The pointer: a small ink wedge from the tag's edge toward the mark, on whichever side the tag was placed. */
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label::after{content:"";position:absolute;left:50%;top:100%;width:12px;height:7px;margin-left:-6px;background:var(--wc-ink);clip-path:polygon(0 0,100% 0,50% 100%);pointer-events:none}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label.label-pos-bottom::after{top:auto;bottom:100%;clip-path:polygon(50% 0,100% 100%,0 100%)}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label.label-pos-right::after{left:auto;right:100%;top:50%;width:7px;height:12px;margin:-6px 0 0;clip-path:polygon(100% 0,100% 100%,0 50%)}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .inst-pin-label.label-pos-left::after{left:100%;top:50%;width:7px;height:12px;margin:-6px 0 0;clip-path:polygon(0 0,100% 50%,0 100%)}
+
+/* The frame: a paper margin and a 1px ink line round the map, as the print is framed. Over the map, under its controls. */
+#cityMapContainer .street-poster-frame{display:none}
+#cityMapContainer.street-poster .street-poster-frame{display:block;position:absolute;inset:8px;z-index:1;pointer-events:none;border:1px solid var(--wc-ink);box-shadow:0 0 0 8px var(--wc-ground)}
+/* The title box: the place and what the map shows, in PP Museum, ruled off from the map on its open sides. Desktop only:
+   on a phone the top of the map belongs to the search box and the place bar. */
+#cityMapContainer .street-poster-title{display:none}
+@media (min-width:768px){
+  #cityMapContainer.street-poster .street-poster-title{display:flex;flex-direction:column;position:absolute;top:118px;right:9px;z-index:1;padding:8px 14px 10px;border-top:1px solid var(--wc-ink);background:var(--wc-ground);color:var(--wc-ink);border-left:1px solid var(--wc-ink);border-bottom:1px solid var(--wc-ink);font:400 24px/1.1 "PP Museum",Georgia,serif;letter-spacing:0;white-space:nowrap;pointer-events:none}
+  #cityMapContainer.street-poster .street-poster-title:empty{display:none}
+  /* A page-wide rule sets every element in the map to Jokker; the title keeps the serif. */
+  :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .street-poster-title,
+  :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .street-poster-title span{font:400 24px/1.1 "PP Museum",Georgia,serif!important;letter-spacing:0!important}
+}
+/* The scale bar, set as the print's: an ink rule with its ticks, the figure in 14px. Close in only. */
+#cityMapContainer .maplibregl-ctrl-scale{display:none}
+/* It sits at the bottom right, left of the map's own buttons and above the Top story strip, clear of Layers. */
+#cityMapContainer.street-poster .maplibregl-ctrl-bottom-left{left:auto;right:72px;bottom:80px}
+@media (max-width:767px){#cityMapContainer.street-poster .maplibregl-ctrl-scale{display:none!important}}
+#cityMapContainer.street-poster .maplibregl-ctrl-scale{display:block;background:transparent!important;border:1px solid var(--wc-ink)!important;border-top:0!important;color:var(--wc-ink)!important;font:400 14px/1.2 var(--sans)!important;padding:0 6px!important;box-shadow:none!important}
