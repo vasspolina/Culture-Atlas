@@ -84,6 +84,8 @@
   // One picked from the list of widest-reaching funders can be pinned, and then stays until it is picked again or Esc is pressed.
   let STREET = false;   // true while the layers are being drawn over the street map
   let REACH = null, reachTimer = 0;
+  // The widest-reaching funders switched on in the Layers panel: each stays drawn until its switch is turned off or Reset all.
+  const FILTERS = new Set();
   const repaint = () => { if (typeof scheduleRender === 'function') scheduleRender(); svSchedule(); };
   function clearReach() { clearTimeout(reachTimer); reachTimer = 0; if (!REACH) return; REACH = null; if (typeof renderTop === 'function') renderTop(); repaint(); }
   function setReach(m) {
@@ -308,14 +310,19 @@
 
   // The funder under the pointer: a line from its space to every other space that names it, an end dot on each.
   function drawReach(ctx, project, r, cx, cy) {
-    if (!REACH || !recById || !kindOn(REACH.kind)) return;
-    const home = REACH.space, ends = [], lc = lineCol(COL[REACH.kind]), dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (!recById) return;
+    FILTERS.forEach(t => { if (!(REACH && REACH.top === t)) drawOneReach(ctx, project, r, cx, cy, { key: t.keys[0], keys: t.keys, kind: t.kind, space: hubOf(t), name: t.name, top: t }); });
+    if (REACH) drawOneReach(ctx, project, r, cx, cy, REACH);
+  }
+  function drawOneReach(ctx, project, r, cx, cy, R) {
+    if (!kindOn(R.kind)) return;
+    const home = R.space, ends = [], lc = lineCol(COL[R.kind]), dark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (!home || typeof home.lat !== 'number') return;
     ctx.save(); ctx.lineCap = 'round'; ctx.lineWidth = 0.8; ctx.globalAlpha = 0.9; ctx.strokeStyle = lc;
-    const ids = new Set(); (REACH.keys || [REACH.key]).forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
+    const ids = new Set(); (R.keys || [R.key]).forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
     ids.forEach(id => {
       const o = recById.get(id); if (!o || o === home || typeof o.lat !== 'number') return;
-      arc(project, home, o, r, cx, cy, ctx, { key: REACH.key, kind: REACH.kind, a: home, b: o }); ends.push(o);
+      arc(project, home, o, r, cx, cy, ctx, { key: R.key, kind: R.kind, a: home, b: o }); ends.push(o);
     });
     ctx.globalAlpha = 1;
     ends.forEach(o => {
@@ -323,7 +330,7 @@
       const hot = LM_HOV && LM_HOV.rec === o;
       ctx.beginPath(); ctx.arc(pt.x, pt.y, hot ? 6.5 : 4.5, 0, Math.PI * 2); ctx.fillStyle = lc; ctx.fill();
       ctx.lineWidth = 0.8; ctx.strokeStyle = dark ? '#000' : '#fff'; ctx.stroke();
-      LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: COL[REACH.kind], key: REACH.key, kind: REACH.kind, space: home, name: REACH.name, label: o.n, sub: `Funded by ${REACH.name}`, ask: `Who funds ${o.n}?` });
+      LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: COL[R.kind], key: R.key, kind: R.kind, space: home, name: R.name, label: o.n, sub: `Funded by ${R.name}`, ask: `Who funds ${o.n}?` });
     });
     ctx.restore();
   }
@@ -915,6 +922,8 @@
     // The line hover and the funder whose web is lit, for checking from a test script.
     lineHover: () => (LM_HOV && LM_HOV.line ? { key: LM_HOV.key, label: LM_HOV.label, sub: LM_HOV.sub, sub2: LM_HOV.sub2, tip: LM_HOV.tip } : null),
     reach: () => (REACH ? { key: REACH.key, keys: REACH.keys, name: REACH.name, pinned: !!REACH.pinned } : null),
+    // The widest-reaching funders switched on as filters in the Layers panel.
+    filters: () => [...FILTERS].map(t => ({ name: t.name, keys: t.keys, n: t.n })),
     lines: () => LINES.length,
     // Pointer moved: a mark that stands alone takes the hover (true, so the page shows a pointer); a mark on a space's dot does not.
     hover(mx, my, dots) {
@@ -1106,34 +1115,50 @@
     renderTop();
   }
   function hubOf(t) { return t.hub || recById.get([...(keyIndex.get(t.keys[0]) || [])][0]); }
-  function pickTop(t, pin) {
-    if (REACH && REACH.pinned && !pin) return;
+  // Pointing at a funder in the list previews its web; its switch turns it on as a filter, and several can be on at once.
+  function previewTop(t) {
+    if (REACH && (REACH.pinned || REACH.tapped)) return;
     clearTimeout(reachTimer); reachTimer = 0;
-    const same = REACH && REACH.top === t;
-    if (pin && same && REACH.pinned) { clearReach(); return; }
-    REACH = { key: t.keys[0], keys: t.keys, kind: t.kind, space: hubOf(t), name: t.name, top: t, pinned: !!pin };
-    if (pin && typeof window.flyTo === 'function' && REACH.space && typeof REACH.space.lat === 'number') {
-      const base = window.getBaseRadius ? window.getBaseRadius() : 276;
-      window.flyTo(REACH.space.lon, REACH.space.lat, base * 1.6);
+    REACH = { key: t.keys[0], keys: t.keys, kind: t.kind, space: hubOf(t), name: t.name, top: t };
+    repaint();
+  }
+  function toggleTop(t) {
+    const on = !FILTERS.has(t);
+    if (on) FILTERS.add(t); else FILTERS.delete(t);
+    if (on && FILTERS.size === 1 && typeof window.flyTo === 'function') {
+      const home = hubOf(t);
+      if (home && typeof home.lat === 'number') window.flyTo(home.lon, home.lat, (window.getBaseRadius ? window.getBaseRadius() : 276) * 1.6);
     }
     renderTop(); repaint();
   }
+  // The rows are built again only when the list changes (a funder type switched off); a switch changing only updates its row,
+  // so the row under the pointer or with focus stays where it is.
+  let topShown = [];
   function renderTop() {
     const box = document.getElementById('topFunders'); if (!box || !TOP) return;
-    const list = TOP.filter(t => kindOn(t.kind)).slice(0, 10), max = list.length ? list[0].n : 1;
-    box.textContent = '';
-    list.forEach(t => {
-      const b = document.createElement('button'); b.type = 'button'; b.className = 'top-funder';
-      b.setAttribute('aria-pressed', String(!!(REACH && REACH.pinned && REACH.top === t)));
-      b.innerHTML = `<i class="shape-${KIND_SHAPE[t.kind]}" style="--marker-color:${COL[t.kind]}"></i><span class="tf-name"></span><span class="tf-bar"><b style="width:${Math.round(100 * t.n / max)}%"></b></span><span class="tf-n">${t.n}</span>`;
-      b.querySelector('.tf-name').textContent = t.name;
-      b.title = `${t.name}: named on ${t.n} spaces. Click to pin its connections on the map.`;
-      b.addEventListener('mouseenter', () => pickTop(t, false));
-      b.addEventListener('focus', () => pickTop(t, false));
-      b.addEventListener('mouseleave', () => { if (REACH && !REACH.pinned && REACH.top === t) clearReach(); });
-      b.addEventListener('blur', () => { if (REACH && !REACH.pinned && REACH.top === t) clearReach(); });
-      b.addEventListener('click', () => pickTop(t, true));
-      box.appendChild(b);
+    const list = TOP.filter(t => kindOn(t.kind)).slice(0, 10);
+    if (list.length !== topShown.length || list.some((t, i) => t !== topShown[i]) || box.children.length !== list.length) {
+      topShown = list;
+      box.textContent = '';
+      list.forEach(t => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'top-funder filter-row';
+        b.setAttribute('role', 'switch');
+        b.innerHTML = `<i class="shape-${KIND_SHAPE[t.kind]}" style="--marker-color:${COL[t.kind]}"></i><span class="tf-name"></span><span class="tf-n"></span><span class="filter-switch" aria-hidden="true"></span>`;
+        b.querySelector('.tf-name').textContent = t.name;
+        b.querySelector('.tf-n').textContent = plural(t.n, 'space');
+        b.addEventListener('mouseenter', () => previewTop(t));
+        b.addEventListener('focus', () => previewTop(t));
+        const leave = () => { if (REACH && !REACH.pinned && REACH.top === t) clearReach(); };
+        b.addEventListener('mouseleave', leave);
+        b.addEventListener('blur', leave);
+        b.addEventListener('click', () => toggleTop(t));
+        box.appendChild(b);
+      });
+    }
+    [...box.children].forEach((b, i) => {
+      const t = list[i], on = FILTERS.has(t);
+      b.setAttribute('aria-checked', String(on));
+      b.title = `${t.name}: named on ${t.n} spaces. ${on ? 'Switch off to hide' : 'Switch on to keep'} its connections on the map.`;
     });
   }
 
@@ -1181,6 +1206,7 @@
       box.querySelectorAll('input[data-layer]').forEach(input => setBox(input, false));
       box.querySelectorAll('input[data-kind]').forEach(input => { input.checked = true; L.kinds[input.dataset.kind] = true; });
       box.querySelectorAll('input[data-pkind]').forEach(input => { input.checked = true; L.pkinds[input.dataset.pkind] = true; });
+      FILTERS.clear(); renderTop();
       clearReach();
       repaint();
     });

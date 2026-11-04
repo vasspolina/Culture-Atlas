@@ -7,6 +7,11 @@ h1,h2,h3,h4,p{margin:0}
 /* Culture Atlas: plain CSS, no framework. Flat colour blocks, hairlines, one grotesque family.
    Layout helpers (.flex, .hidden, .md-flex …) are generated below the design layer. */
 
+/* Dazzed (Displaay, https://displaay.net/typeface/dazzed) for the badges only (user, 4 Nov 2026). The files are not in the repository yet:
+   drop Dazzed-Regular.woff2 (and Dazzed-Medium.woff2 if wanted) into fonts/ and the badges take it; until then they fall back to Jokker.
+   Displaay's trial licence does not cover a public site: buy a web licence before it ships. */
+@font-face{font-family:"Dazzed";src:url("../fonts/Dazzed-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Dazzed";src:url("../fonts/Dazzed-Medium.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:"Jokker";src:url("../fonts/JokkerVF-TRIAL.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 
 :root{
@@ -95,6 +100,17 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #globeCanvas{cursor:grab;touch-action:none}
 /* Held until the page is final: the first frame is drawn, then shown (see settleBeforeFirstPaint in index.html). */
 html.atlas-held #globeCanvas{visibility:hidden}
+/* The whole page is held too, on plain paper. assets/institutions.js (11 MB) loads in the middle of the body, and the browser
+   paints the markup above it while it waits: that is the page before assets/phone-maps.js and assets/desktop-maps.js lay it
+   out, so it showed the old layout and then jumped to the new one (user, 4 Nov 2026: "on load the atlas shows old layout
+   first then transforms in new one"). Held, nothing shows until the layout is final and the globe has its first frame. */
+html.atlas-held{background:var(--paper)}
+/* Every descendant too: a mark that sets visibility:visible for itself (the alert ring, the location dot) showed on the paper. */
+html.atlas-held body,html.atlas-held body *{visibility:hidden!important}
+/* While it is held, a slow connection gets a word instead of a blank screen. It appears only after 1.5 s, so a fast load
+   never shows it. */
+html.atlas-held::after{content:"Loading the atlas\2026";position:fixed;inset:0;display:grid;place-items:center;font-family:var(--sans);font-size:15px;line-height:1.3;letter-spacing:.02em;color:var(--ink);opacity:0;animation:atlas-loading-note 0s linear 1.5s forwards;pointer-events:none}
+@keyframes atlas-loading-note{to{opacity:1}}
 /* The same held state keeps the real hairlines off the first paint; assets/bubbles.js draws them in once the hold is cleared. */
 html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard,#mobileStickyComposer){border-color:transparent!important}
 #globeCanvas.dragging{cursor:grabbing}
@@ -3757,25 +3773,20 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The three tabs over the chat do not fit their column at 15px; they keep 14px, and the space between them. */
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn){font-size:14px!important;letter-spacing:0!important}
 
-/* ---- FOG AND DEPTH ON THE MAP (user's instruction, 4 Nov 2026) ----
-   Only what is in perspective goes soft, never the part you look at (user, same day: "blur just parts that are in perspective,
-   not the main visible focus part"). On the globe that is its rim, where the surface turns away: the globe hands its centre and radius
-   to the pane as --globe-x, --globe-y and --globe-r (index.html, where the limb is drawn), and the blur starts at 78% of that
-   radius and is full at the limb, so it follows the globe as it zooms and moves.
-   On the street map it is the far side of the tilt: the top quarter of the pane, and nothing else. Two layers over the map,
-   under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every control and
-   card): ::after blurs what is behind it through a mask, ::before lays a thin paper haze in the same place. Neither takes a
-   pointer, so the map is dragged and clicked as before. */
-#globeViewport::before,#globeViewport::after{content:"";position:absolute;inset:0;z-index:18;pointer-events:none}
-#globeViewport::after{
-  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
-  -webkit-mask-image:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 78%,#000 100%);
-  mask-image:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 78%,#000 100%)}
-#globeViewport::before{background:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 80%,color-mix(in srgb,var(--paper) 50%,transparent) 102%)}
-#globeViewport:has(#cityMapContainer:not(.hidden))::after{
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,transparent 26%);mask-image:linear-gradient(to bottom,#000 0,transparent 26%)}
-#globeViewport:has(#cityMapContainer:not(.hidden))::before{background:linear-gradient(to bottom,color-mix(in srgb,var(--paper) 50%,transparent) 0,transparent 24%)}
-@media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
+/* ---- FOG ON THE MAP (user's instruction, 4 Nov 2026, replacing the blur the same day) ----
+   No blur anywhere: it softened the labels and the cards drawn on the map ("do not blur the labels and dont blur middle of
+   map, oly top and bottom, actually just fog it like its becoming tiny transparent, on top and bottom"). The map fades into
+   the paper at its top and bottom edges, on the globe and on the street map alike, and the middle is left as it is. One layer
+   over the map, under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every
+   control and card); it takes no pointer, so the map is dragged and clicked as before. */
+#globeViewport::before{content:"";position:absolute;inset:0;z-index:18;pointer-events:none;
+  background:linear-gradient(to bottom,
+    color-mix(in srgb,var(--paper) 92%,transparent) 0,transparent 16%,
+    transparent 84%,color-mix(in srgb,var(--paper) 92%,transparent) 100%)}
+@media (prefers-reduced-transparency:reduce){#globeViewport::before{display:none}}
+/* The fog waits for the page's first frames (html.fog-ready, set two frames after the hold is cleared in index.html), as the
+   blur it replaces had to. */
+html:not(.fog-ready) #globeViewport::before{display:none}
 
 /* The curator's mark beside each answer is the pink disc with a square (user's file, 4 Nov 2026), in place of the Gemini spark.
    It does not spin while an answer is coming: a pending answer pulses instead. */
@@ -3796,4 +3807,93 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.chat-resizing,:root.chat-resizing *{cursor:col-resize!important;user-select:none!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #globeViewport:not(#x){transition:none}
   :root.chat-wide #gmdChips,:root.chat-wide #gmdMapCtl,:root.chat-wide #layersControl{display:none!important}
+
 }
+
+/* Badges (user, 4 Nov 2026: "delete dot from top story badge, use typography for badges from Dazzed, mobile version"): no dot; set in
+   Dazzed; a soft filled label with 8px corners, as on Displaay's own mobile pages, instead of an outlined pill. On the beige strip and
+   poster the fill is paper; in the feed the beige grey. Black on both measures over 17:1. */
+@media (max-width:767px){
+  :root{--gm-badge-font:"Dazzed","Jokker","Helvetica Neue",Helvetica,Arial,sans-serif}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label i{display:none!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#gmStoryStrip .gm-strip-label,#gmFeed .gm-poster-pill,#gmFeed .gm-poster-status,#gmFeed .gm-alert-tag){font-family:var(--gm-badge-font)!important;font-weight:400!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert .gm-strip-label{gap:0!important;padding:4px 10px!important;border-radius:8px!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:none!important;letter-spacing:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-poster .gm-poster-pill,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-poster.is-alert .gm-poster-pill{border-radius:8px!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:none!important;text-transform:none!important;letter-spacing:0!important;padding:4px 10px!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-poster .gm-poster-status{border-radius:8px!important;box-shadow:none!important;padding:4px 10px!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-alert-tag{border-radius:8px!important;background:var(--gm-top-ground,#eeece6)!important;color:var(--ink)!important;box-shadow:none!important}
+}
+
+/* ==== LAYERS: FUNDER FILTERS (user, 4 Nov 2026: "make these into filters, keep in layers drawer") ====
+   Funder types and the widest-reaching funders are rows of switches, set after a type foundry's stylistic-set panel: a flat
+   ground row, the name on the left, the switch on the right, two to a line where the drawer is wide enough. The state is told
+   by the knob's side and fill, not by colour; the funder's colour dot stays as the key to its lines on the map. */
+#layersPanel#layersPanel#layersPanel .layers-filters{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px!important;flex-direction:initial}
+#layersPanel#layersPanel#layersPanel .filter-row{display:grid!important;grid-template-columns:11px minmax(0,1fr) auto auto!important;align-items:center!important;column-gap:10px!important;row-gap:0!important;min-height:44px;padding:8px 12px!important;border:0;border-radius:0!important;background:var(--row)!important;color:var(--row-ink)!important;font:400 var(--fs-s)/1.25 var(--sans)!important;text-align:left;cursor:pointer;flex:initial}
+#layersPanel#layersPanel#layersPanel label.filter-row{grid-template-columns:11px minmax(0,1fr) auto!important}
+#layersPanel#layersPanel#layersPanel .filter-row>*{grid-column:auto!important;grid-row:auto!important;margin:0!important;white-space:normal!important}
+#layersPanel#layersPanel#layersPanel .filter-row:hover{background:var(--row-hover)!important;color:#000!important}
+#layersPanel#layersPanel#layersPanel .filter-row:focus-visible,#layersPanel#layersPanel#layersPanel .filter-row:has(input:focus-visible){outline:2px solid var(--focus);outline-offset:2px}
+#layersPanel#layersPanel#layersPanel .filter-row>i{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--marker-color)}
+#layersPanel#layersPanel#layersPanel .filter-row .layer-name,#layersPanel#layersPanel#layersPanel .filter-row .tf-name{min-width:0;font:400 var(--fs-s)/1.25 var(--sans)!important;overflow-wrap:anywhere;overflow:visible;text-overflow:clip}
+#layersPanel#layersPanel#layersPanel .filter-row .tf-n{color:var(--row-dim);font-variant-numeric:tabular-nums;white-space:nowrap!important}
+#layersPanel#layersPanel#layersPanel .filter-row:hover .tf-n{color:#3d3d3d}
+/* The switch: a 36 by 20 track on a 1px edge, its knob left when off and right, filled, when on. */
+#layersPanel#layersPanel#layersPanel .filter-row input,#layersPanel#layersPanel#layersPanel .filter-switch{appearance:none;position:relative;display:block;flex:none;width:36px;height:20px;margin:0;padding:0;border:1px solid currentColor;border-radius:10px;background:transparent;cursor:inherit}
+#layersPanel#layersPanel#layersPanel .filter-row input::after,#layersPanel#layersPanel#layersPanel .filter-switch::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:transparent;box-shadow:inset 0 0 0 1px currentColor;transition:transform .15s var(--ease)}
+#layersPanel#layersPanel#layersPanel .filter-row input:checked,#layersPanel#layersPanel#layersPanel .filter-row[aria-checked="true"] .filter-switch{background:currentColor}
+#layersPanel#layersPanel#layersPanel .filter-row input:checked::after,#layersPanel#layersPanel#layersPanel .filter-row[aria-checked="true"] .filter-switch::after{transform:translateX(16px);background:var(--row);box-shadow:none}
+#layersPanel#layersPanel#layersPanel .filter-row:hover input:checked::after,#layersPanel#layersPanel#layersPanel .filter-row[aria-checked="true"]:hover .filter-switch::after{background:var(--row-hover)}
+#layersPanel#layersPanel#layersPanel .filter-row input:focus-visible{outline:0}
+@media (prefers-reduced-motion:reduce){#layersPanel#layersPanel#layersPanel :is(.filter-row input,.filter-switch)::after{transition:none}}
+
+/* ==== DESKTOP: THE PAGE'S NAME (user, 4 Nov 2026: "add a title back to a page above layer tags on top of page") ====
+   The maps-app layout had dropped the name; it is back at the top left, one line over the layer chips, set plain and large like
+   a foundry page's section title. A click returns the globe to the world view, as the old brand button did. */
+#gmdTitle{display:none}
+@media (min-width:768px){
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle{display:block;position:fixed;top:var(--gmd-gap);left:var(--gmd-gap);right:calc(var(--gmd-w) + var(--gmd-gap));z-index:45;margin:0;padding:0;pointer-events:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button{pointer-events:auto;display:inline-block;max-width:100%;height:auto;min-height:0;padding:0;margin:0;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;color:var(--ink)!important;font:400 28px/1.15 var(--sans)!important;letter-spacing:-.005em;text-shadow:0 0 3px var(--paper),0 0 6px var(--paper),0 0 10px var(--paper);text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
+  /* The chips move down one line to sit under the name, and the open Layers drawer stops short of them. */
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdChips{top:calc(var(--gmd-gap) + 44px)!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #layersControl #layersPanel{max-height:calc(100vh - 230px)!important}
+}
+/* A question that wraps keeps the same space above and below its words as one that fits on a line (user, 4 Nov 2026). These
+   buttons had no vertical padding and a 34px minimum height, so one line sat centred with room round it and two lines touched
+   the edges. Now the room is padding: half of 34px less one line, so a one-line button is still 34px and every extra line adds
+   only its own height. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.curator-followup-pill,.starter-prompt,.curator-suggest-chip,.work-suggestion-card){min-height:0!important;height:auto!important;padding-block:max(4px,calc((34px - 1lh) / 2))!important}
+
+/* New Query's plus is the layers panel's cross turned upright (user, 4 Nov 2026): two 1px lines, 16px across, drawn from the
+   current text colour so hover and dark mode carry it. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workspaceNewChatBtn::before{content:""!important;flex:none;width:16px!important;height:16px!important;margin-right:8px!important;font-size:0!important;background:currentColor!important;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0v16M0 8h16' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") center/16px 16px no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0v16M0 8h16' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") center/16px 16px no-repeat}
+
+/* In the street view its bar takes the top left of the map, where the chips moved when the search went; the chips step down
+   under it (12px + its 38px + 12px). */
+@media (min-width:768px){ :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):has(#cityViewControlBanner:not(.hidden)) #gmdChips{top:62px!important} }
+
+/* The top bar clips what is drawn outside it, which chipped the focus ring off Gossip mode and Dark: draw the ring inside. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdTopBar :is(#topGossipBtn,#topThemeBtn):focus-visible{outline:2px solid var(--focus)!important;outline-offset:-4px!important}
+
+/* Exit, World and the country in the street-view bar are words in a bar, not buttons on their own: no edge of their own. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityViewControlBanner :is(#exitStreetViewBtn,#backToWorldBtn,#backToCountryBtn){box-shadow:none!important}
+
+/* The street map's credit is one line of small text at the bottom right, no "i" button and no box (user, 4 Nov 2026). It stays:
+   the OpenStreetMap licence asks for a visible credit. On a white plate in both themes, as before, so its links read 21:1. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityMapContainer .maplibregl-ctrl-attrib{border:0!important;box-shadow:none!important;border-radius:0!important;min-height:0!important;padding:0 4px!important;margin:0 8px 6px 0!important;background:rgba(255,255,255,.85)!important;color:#000!important;font:400 14px/1.3 var(--sans)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityMapContainer .maplibregl-ctrl-attrib a{color:#000!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityMapContainer .maplibregl-ctrl-attrib-button{display:none!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityMapContainer .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-inner{display:block!important;visibility:visible!important}
+
+/* The street view's bar takes the top left where the page's name sits, so the name steps aside while it is open. */
+@media (min-width:768px){ :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):has(#cityViewControlBanner:not(.hidden)) #gmdTitle{display:none!important} }
+
+/* The close mark on a funder's office record (assets/hq-detail.js; user, 4 Nov 2026: "fix this cross, too small and not centered
+   on hover"). A drawn 22px cross centred in a 44px square with the buttons' 10px corners; on hover the square fills with ink
+   and the cross turns paper, as every button does. Set here, after the Displaay block, so its padding and ring do not move it. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-width:44px!important;padding:0!important;line-height:0!important;border-radius:var(--btn-r,10px)!important;box-shadow:none!important;background:transparent!important;color:var(--ink)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close svg{display:block;width:22px;height:22px;flex:none}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close:is(:hover,:focus-visible){background:var(--ink)!important;color:var(--paper)!important}
