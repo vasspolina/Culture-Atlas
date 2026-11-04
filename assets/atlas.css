@@ -3200,8 +3200,8 @@ div:has(>#topThemeBtn){column-gap:0}
    presence, the status and Share. The three sizes only: 14, 18 and 24px. */
 #gmStoryStrip,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed{display:none}
 @media (max-width:767px){
-  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1 (user, 4 Nov 2026). */
-  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#a7f0ba}
+  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1; "Documented" is the palette pink, black type 8.9:1, so it is not a second green next to it (user, 4 Nov 2026). */
+  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#ff7eb6}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]){display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"label head" "label meta";column-gap:12px;align-items:center;margin:0 var(--gm-gap)!important;padding:8px 16px 8px 12px!important;min-height:56px;border:0!important;border-radius:16px!important;background:var(--ink)!important;color:var(--paper)!important;text-align:left;box-shadow:var(--gm-shadow)}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label{grid-area:label;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:12px;background:var(--gm-talk);color:#000;font:400 14px/20px var(--sans)!important;white-space:nowrap}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label i{width:8px;height:8px;border-radius:50%;background:#000}
@@ -4009,8 +4009,8 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
   :root{--gm-gap:12px;--gm-card:52px;--gm-shadow:0 1px 2px rgba(0,0,0,.28),0 2px 8px rgba(0,0,0,.14);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.16),0 -4px 16px rgba(0,0,0,.14)}
   :root[data-theme="dark"]{--gm-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 10px rgba(0,0,0,.45);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.5),0 -4px 16px rgba(0,0,0,.4)}
   :root{--gm-tonal:color-mix(in srgb,var(--ink) 9%,var(--grey))}
-  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1 (user, 4 Nov 2026). */
-  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#a7f0ba}
+  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1; "Documented" is the palette pink, black type 8.9:1, so it is not a second green next to it (user, 4 Nov 2026). */
+  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#ff7eb6}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]){display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"label head" "label meta";column-gap:12px;align-items:center;margin:0 var(--gm-gap)!important;padding:8px 16px 8px 12px!important;min-height:56px;border:0!important;border-radius:16px!important;background:var(--ink)!important;color:var(--paper)!important;text-align:left;box-shadow:var(--gm-shadow)}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label{grid-area:label;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:12px;background:var(--gm-talk);color:#000;font:400 14px/20px var(--sans)!important;white-space:nowrap}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label i{width:8px;height:8px;border-radius:50%;background:#000}
@@ -4317,3 +4317,14 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main :is(p,li,ul){font-size:15px!important;line-height:1.3!important;letter-spacing:.01em!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main>:first-child,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main>ul:first-child>li:first-child{font-size:20px!important;line-height:1.15!important;letter-spacing:-.01em!important}
 }
+/* ---- THE NOTE FORM HAS NO FRAME, AND CLOSE IS ITS CROSS (user, 4 Nov 2026: "keep inputs and delete the outline, also close looks
+   like a button but can be just a cross") ----
+   The card loses the 1px ink ring the Displaay layer draws on #workInputCard (a box-shadow, not a border); the fields keep their
+   ruled lines, so the form still reads as a sheet. Close is the cross alone in a 44px touch square, no edge and no fill, at every
+   width; the word stays in the markup but is set at 0, and the button keeps its aria-label. Hover and focus thicken the cross's
+   strokes; keyboard focus also keeps the site's own outline. */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body.chat-input-mode-active #workInputCard.is-mode{box-shadow:none!important;border:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn{width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;gap:0!important;justify-content:center!important;font-size:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn .note-close-cross{width:28px!important;height:28px!important;color:inherit!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible){background:transparent!important;color:var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible) .note-close-cross{color:var(--dp-ink)!important;stroke-width:2!important}
