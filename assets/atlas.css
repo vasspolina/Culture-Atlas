@@ -689,6 +689,8 @@ body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 .xray-photo figcaption{font-size:var(--fs-s);line-height:1.25;margin-top:6px}
 
 /* "Share information" is highlighted in pink */
+#hudControlsBar #hudContributeBtn,#hudContributeBtn,#chatContributeBtn,#mapFloatingContributeBtn{background:var(--pink);color:#000;border-radius:0}
+#hudControlsBar #hudContributeBtn:hover{background:#000;color:var(--pink)}
 
 /* Map popups: a grey block with a thin yellow top rule, the name in bold capitals, a large close mark. */
 .atlas-record-popup .maplibregl-popup-content{background:#a3a3a3;color:#000;border-radius:0;box-shadow:none;border-top:0;padding:18px 20px;min-width:260px}
@@ -847,7 +849,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 :root[data-theme="dark"] .record-popup-category,:root[data-theme="dark"] .institution-category-pill,:root[data-theme="dark"] .critical-lens-label{background:#2e2d2b;border-color:#6a655e;color:#e6e1d8}
 /* Theme switch in the header */
 /* Colour that carries meaning keeps black text in both modes */
-#curatorHeroGreeting h1 .lbl,.curator-hero-title .lbl,.starter-prompt:nth-of-type(2),.starter-prompt:nth-of-type(3),.starter-prompt:nth-of-type(4){color:#000}
+#curatorHeroGreeting h1 .lbl,.curator-hero-title .lbl,.starter-prompt:nth-of-type(2),.starter-prompt:nth-of-type(3),.starter-prompt:nth-of-type(4),#chatContributeBtn,#hudContributeBtn,#mapFloatingContributeBtn{color:#000}
 .starter-prompt:hover{background:var(--ink);color:var(--paper)}
 #globeViewport .record-action{color:var(--ink)}
 #globeViewport .record-action:hover{color:var(--paper)}
@@ -1213,8 +1215,21 @@ html.lines-drawing :is(header,#workspaceContextTabBar,#globeSplitter,#workInputC
 .custom-inst-pin:hover{transform:none}
 
 /* Writing a note: the earlier conversation steps aside and the whole chat, conversation and input, turns gold with black text, in light and dark. */
+body.chat-input-mode-active{--gold:var(--mint)}
+body.chat-input-mode-active #workInput.is-good{background:var(--mint-10)}
+body.chat-input-mode-active #workInput:focus{outline:2px solid #000;outline-offset:-2px}
+body.chat-input-mode-active #curatorMessages>.before-note{display:none}
+body.chat-input-mode-active #workInputCard.is-mode{background:transparent}
+body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #workBottomDock{background:var(--gold)}
+body.chat-input-mode-active #curatorScrollArea,body.chat-input-mode-active #curatorScrollArea *,body.chat-input-mode-active #curatorScrollArea *::before,body.chat-input-mode-active #workBottomDock,body.chat-input-mode-active #workBottomDock *{color:#000!important;border-color:#000!important}
+body.chat-input-mode-active #curatorScrollArea a:hover,body.chat-input-mode-active #workBottomDock a:hover{background:#000;color:var(--gold)!important;text-decoration:none}
 /* Voice and Listen read chat answers aloud; they have nothing to do while a note is written. */
+body.chat-input-mode-active #curatorVoiceToggleBtn{display:none!important}
+body.chat-input-mode-active #workBottomDock button:hover,body.chat-input-mode-active #curatorScrollArea button:hover{text-decoration:underline}
 /* Writing a note: the page behind is mint with black type forced on everything. A hovered button went black on black in light mode (the generic hover fill is ink), and in dark mode the blue focus ring measured 2.4:1 on the mint. */
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(button,summary):is(:hover,:active){background:#000!important;color:var(--gold)!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(button,summary):is(:hover,:active) *{color:var(--gold)!important}
+body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCard){--focus:var(--cobalt)}
 /* Thinking state: the reply's content waits while three dots pulse. */
 .is-thinking>*:not(.bubble-svg):not(.thinking){display:none!important}
 .thinking{display:inline-flex;align-items:baseline;gap:.12em;font:400 var(--fs-m)/var(--lh) var(--sans);color:inherit}
@@ -1615,14 +1630,45 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
    label inside at the top and the text under it: dark slate blocks with white type (11:1), 14px corners, 10px between blocks, a block for
    the confirm box, and one large Send for review block, grey until the form could be sent and blue after. Sizes are the page's scale. */
 /* The note's textarea is the chat's own input, so its block stays; only the form's extras and the "Your note" label wait for the note screen. */
+:is(#noteFormFields,#noteInputLabel,#noteAckRow){display:none}
+body.chat-input-mode-active :is(#noteFormFields,#noteInputLabel,#noteAckRow){display:block}
+#noteFormTitle{font:400 var(--fs-l)/1.15 var(--sans);margin:0 0 8px}
+#noteFormIntro{font:400 var(--fs-m)/1.4 var(--sans);margin:0 0 20px;max-width:60ch}
+body.chat-input-mode-active :is(.nf-field,#noteInputBlock,.nf-check){display:block;box-sizing:border-box;width:100%;margin:0 0 10px;padding:14px 22px 14px;border-radius:0;background:#2f3452;color:#fff}
+body.chat-input-mode-active :is(.nf-field>span,#noteInputLabel){display:block;margin:0 0 8px;font:400 var(--fs-m)/1.2 var(--sans);color:#fff}
+body.chat-input-mode-active :is(.nf-field input,#noteInputBlock textarea){display:block;width:100%;box-sizing:border-box;margin:0;padding:0;border:0;border-radius:0;outline:0;background:transparent!important;color:#fff!important;font:400 var(--fs-m)/1.4 var(--sans);box-shadow:none}
+body.chat-input-mode-active #noteInputBlock textarea{min-height:7em;resize:vertical}
+body.chat-input-mode-active :is(.nf-field input,#noteInputBlock textarea)::placeholder{color:#b4b9d6;opacity:1}
+body.chat-input-mode-active .nf-field input::-webkit-calendar-picker-indicator{display:none!important}
+body.chat-input-mode-active :is(.nf-field,#noteInputBlock,.nf-check):focus-within{outline:2px solid #fff;outline-offset:2px}
+body.chat-input-mode-active #noteAckRow{margin-top:20px}
+body.chat-input-mode-active #noteAckRow .nf-check{display:flex;align-items:center;gap:14px;cursor:pointer;font:400 var(--fs-m)/1.3 var(--sans)}
+body.chat-input-mode-active #noteAckRow .nf-check input{appearance:none;-webkit-appearance:none;flex:none;position:relative;width:26px;height:26px;margin:0;border:.8px solid #fff!important;border-radius:0;background:transparent;cursor:pointer}
+body.chat-input-mode-active #noteAckRow .nf-check input:checked{background:#fff}
+body.chat-input-mode-active #noteAckRow .nf-check input:checked::after{content:"";position:absolute;left:7px;top:2px;width:7px;height:13px;border:solid #2f3452;border-width:0 .8px .8px 0;transform:rotate(45deg)}
+body.chat-input-mode-active #noteFormStatus{display:none;margin:0 0 10px;font:400 var(--fs-m)/1.4 var(--sans)}
+body.chat-input-mode-active #noteFormStatus:not(:empty){display:block}
 /* The toolbar under the form: the large Send for review block first, the Share information switch below it. */
+body.chat-input-mode-active #workInputCard>div.justify-between{flex-direction:column-reverse;align-items:stretch;flex-wrap:nowrap;gap:10px}
+body.chat-input-mode-active #workInputCard>div.justify-between>div{width:100%;justify-content:flex-start}
+:root[data-theme] body.chat-input-mode-active #workInputCard #workSendBtn.is-on{display:flex;align-items:flex-start;justify-content:flex-start;width:100%!important;min-height:88px;box-sizing:border-box;padding:20px 22px!important;border:0!important;border-radius:0;background:#3a3a3a!important;color:#9a9a9a!important;font:400 var(--fs-l)/1.15 var(--sans);text-align:left;white-space:normal}
+:root[data-theme] body.chat-input-mode-active #workInputCard #workSendBtn.is-on[data-ready="true"]{background:var(--cobalt)!important;color:#fff!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard #workSendBtn.is-on:hover{background:#fff!important;color:#000!important;text-decoration:none}
+:root[data-theme] body.chat-input-mode-active #workInputCard #workSendBtn.is-on:focus-visible{outline:2px solid #fff;outline-offset:2px}
 
 /* ---- the chat in the dark theme (releases 238 and 239) ----
    The atlas has one switch, :root[data-theme], and the chat already followed it except in two places that stayed bright: the note
    (a mint slab with black type) and the gossip balloon (a green to pink wash with black type). In the dark theme both now sit on the
    page's own dark ground with light type; the mode shows in a hairline instead of a fill (mint for a note, the gossip orange for a balloon).
    The light theme is untouched. Measured: every pair below is at least 7:1 for text and 3:1 for outlines and rings. */
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock){background:var(--paper)}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorScrollArea,#curatorScrollArea *,#curatorScrollArea *::before,#workBottomDock,#workBottomDock *,#workInputCard.is-mode,#workInputCard.is-mode *,#workInputCard.is-mode *::before,#workInputCard.is-mode *::after){color:var(--ink)!important;border-color:var(--mint)!important}
+:root[data-theme="dark"] body.chat-input-mode-active #workInput.is-good{background:var(--grey);color:var(--ink)}
+:root[data-theme="dark"] body.chat-input-mode-active #workInput:focus{outline:2px solid var(--focus);outline-offset:-2px}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCard){--focus:#618cff}
 :root[data-theme="dark"] #workInputCard.is-mode ::placeholder{color:var(--ink);opacity:.7}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active){background:var(--mint)!important;color:#000!important}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active) *{color:#000!important}
 /* The balloon: dark fill, no outline, gossip yellow type (user's instruction, 24 Oct 2026). bubbles.js draws the fill and outline as SVG paint; a presentation rule outranks its attributes. */
 :root[data-theme="dark"] .bubble-svg .bubble-fill{fill:var(--grey)}
 :root[data-theme="dark"] .bubble-svg .bubble-line{stroke:none}
@@ -1634,6 +1680,7 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 
 /* ---- release 239 ---- */
 /* The note box has an inner margin: its text no longer touches the box edge or the focus ring drawn inside it. Only while a note is written; the plain input line stays flush with its hairline. */
+body.chat-input-mode-active #workInput{padding:.75em}
 /* Share information, wherever it shows, is bold capitals. The text stays "Share information" in the markup. Jokker is a variable font, so 700 is a real cut. */
 /* (the rule itself is last in this file, after the chat's light-theme copies of the dark rules, which also set text-transform) */
 
@@ -1643,9 +1690,17 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
    inside them goes dark; the rules below are the chat's own dark-theme rules above, repeated for the light theme (same specificity, later, so they win).
    Measured in both themes. */
 :root[data-theme="dark"] :is(#curatorIntelligenceColumn,#curator-chat-drawer,#curatorSettingsModal){color-scheme:dark;--focus:#618cff;--ink:#fff;--paper:#000;--grey:#1c1c1c;--block:#2f2f2f;--line:#fff;background:var(--paper);color:var(--ink)}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock){background:var(--paper)}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#curatorScrollArea,#curatorScrollArea *,#curatorScrollArea *::before,#workBottomDock,#workBottomDock *,#workInputCard.is-mode,#workInputCard.is-mode *,#workInputCard.is-mode *::before,#workInputCard.is-mode *::after){color:var(--ink)!important;border-color:var(--mint)!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active #workInput.is-good{background:var(--grey);color:var(--ink)}
+:root:not([data-theme="dark"]) body.chat-input-mode-active #workInput:focus{outline:2px solid var(--focus);outline-offset:-2px}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#curatorScrollArea,#workBottomDock,#workInputCard){--focus:#618cff}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active){background:var(--mint)!important;color:#000!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active :is(#workBottomDock,#curatorScrollArea,#workInputCard.is-mode) :is(a,button,summary):is(:hover,:active) *{color:#000!important}
 /* In a note the Share information button is mint; hovered it is black on mint like the other buttons there (the mint rule outranked the hover's black and left mint on periwinkle, 1.5:1). */
 
 /* Share information in bold capitals, in both themes; last so the dark rules copied above do not turn it back to sentence case. */
+#hudContributeBtn,#mapFloatingContributeBtn{text-transform:uppercase;font-weight:700;letter-spacing:.04em}
 
 /* The footnote's gold on the chat's dark green: the dark theme's #cb9440 measures 5.7:1 there, this one 7.3:1. */
 :root[data-theme] body :is(#curatorMessages,#curatorDrawerLiveStream) p.ai-note{--fn:#deab55}
@@ -1672,8 +1727,17 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 }
 
 /* Share information is a toggle and is drawn like the Details and AI Chat tabs (same type, 22px regular): square, paper with ink type, ink with paper type on hover, cobalt with white type while the note is open. No blocks of mint or periwinkle behind it, in either theme or in a note. */
+:root[data-theme] #workInputCard #chatShareBtn{background:var(--paper);color:var(--ink);border:.8px solid var(--line);border-radius:0;box-shadow:none;height:auto;padding:8px 16px;display:inline-flex;align-items:center;font:400 var(--fs-l)/1 var(--sans);text-transform:none;letter-spacing:0;text-decoration:none}
+:root[data-theme] #workInputCard #chatShareBtn:hover{background:var(--ink);color:var(--paper)}
+:root[data-theme] #workInputCard #chatShareBtn.is-on{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
+:root[data-theme] #workInputCard #chatShareBtn.is-on:hover{background:var(--cobalt);color:#fff;filter:brightness(.85)}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn{background:var(--paper)!important;color:var(--ink)!important;box-shadow:none!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover{background:var(--ink)!important;color:var(--paper)!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn.is-on{background:var(--cobalt)!important;color:#fff!important}
 
 /* The chat follows the theme: white in light, black in dark. Green is only the note (whistleblower mode), in both themes, a darker green than release 240 used for the whole chat. */
+body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer){color-scheme:dark;--focus:#618cff;--ink:#fff;--paper:#0a1d14;--grey:#10291e;--block:#1a3a2b;--line:#fff;background:var(--paper);color:var(--ink)}
+:root body.chat-input-mode-active #workInputCard.is-mode #workInput::placeholder{color:var(--ink);opacity:.7}
 
 
 /* Every button in the chat is drawn like the Details and AI Chat tabs: square, 22px regular, ink on paper with a hairline, inverted on hover, cobalt while it is on (Voice). The send arrow is the same square with an arrow in it. */
@@ -1683,6 +1747,8 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 :root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on:hover{background:var(--cobalt);color:#fff!important;filter:brightness(.85)}
 :root[data-theme] #workInputCard #workSendBtn svg{width:20px;height:20px;color:inherit}
 :root[data-theme] #workInputCard #curatorVoiceToggleLabel{font:inherit}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn{background:var(--paper)!important;color:var(--ink)!important;border:.8px solid var(--line)!important;box-shadow:none!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn:hover{background:var(--ink)!important;color:var(--paper)!important}
 
 /* The header's buttons run the full height of the bar, so their vertical lines meet the rules above and below with no gap (they were 44px tall in a 55px bar). */
 #topThemeBtn,#topGossipBtn{height:auto;align-self:stretch}
@@ -1705,9 +1771,13 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .prose-part a.domain{white-space:normal}
 
 /* Share information, on: no outline */
+#workInputCard #chatShareBtn.is-on{outline:0}
+:root[data-theme] #workInputCard #chatShareBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn.is-on{border-color:transparent!important}
 /* In the chat, Send is the main button: larger than the rest. Share information is a plain button until a note is open. */
 :root[data-theme] #workInputCard #workSendBtn:not(.is-on){min-width:48px;min-height:48px;padding:0}
 :root[data-theme] #workInputCard #workSendBtn:not(.is-on) svg{width:24px;height:24px}
+:root[data-theme] #workInputCard #chatShareBtn:not(.is-on){border-color:transparent;padding-left:0;padding-right:0;font-size:var(--fs-m)}
+:root[data-theme] #workInputCard #chatShareBtn:not(.is-on):hover{background:transparent;color:inherit;text-decoration:underline}
 /* One pattern for the switches: the label stays, the button is highlighted while on (aria-pressed). Gossip mode keeps its own colour. */
 :root[data-theme] #topThemeBtn[aria-pressed=true],:root[data-theme] #mobileThemeBtn[aria-pressed=true],:root[data-theme] #mobileStickyVoiceBtn[aria-pressed=true]{background:var(--cobalt);color:#fff}
 /* The record's actions as rounded pills (user's instruction, 26 Oct 2026, after the outlined pills of a font-licence page): 16px type, a
@@ -1815,8 +1885,9 @@ div:has(>#topThemeBtn){column-gap:0}
   #workInputCard,#workInputCard>div,#workInputCard>div>div{display:contents!important}
   #workInput{grid-area:input;min-height:var(--m-tap)!important;max-height:120px;padding:var(--m-s3) 0!important;border:0!important;background:none}
   #workSendBtn{grid-area:send;align-self:end;width:var(--m-tap);height:var(--m-tap);min-height:var(--m-tap);border-radius:0}
+  #chatShareBtn{grid-area:share}
   #curatorVoiceToggleBtn{grid-area:voice}
-  #curatorVoiceToggleBtn,#chatRecordsInfo>summary{min-height:var(--m-tap-2);padding:0!important;border:0!important;background:none!important;color:var(--m-secondary)!important;display:inline-flex;align-items:center;white-space:nowrap}
+  #chatShareBtn,#curatorVoiceToggleBtn,#chatRecordsInfo>summary{min-height:var(--m-tap-2);padding:0!important;border:0!important;background:none!important;color:var(--m-secondary)!important;display:inline-flex;align-items:center;white-space:nowrap}
   /* Voice "on" reads in the primary colour, "off" in secondary; the old blue fill is gone, so its white text must go too. */
   :root:root body #workBottomDock #curatorVoiceToggleBtn.is-on,:root:root body #workBottomDock #curatorVoiceToggleBtn.is-on *{color:var(--ink)!important}
   :root:root body #workBottomDock #curatorVoiceToggleBtn:not(.is-on),:root:root body #workBottomDock #curatorVoiceToggleBtn:not(.is-on) *{color:var(--m-secondary)!important}
@@ -1931,6 +2002,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #workSendBtn:not(.is-on){height:var(--bar);min-height:var(--bar);box-sizing:border-box;padding:0 16px}
   :root[data-theme] #workInputCard #workSendBtn:not(.is-on){width:var(--bar);min-width:var(--bar);padding:0}
   :root[data-theme] #workInputCard #workSendBtn:not(.is-on) svg{width:20px;height:20px}
+  :root[data-theme] #workInputCard #chatShareBtn.is-on{height:var(--bar);box-sizing:border-box;padding:0 16px}
   #workspaceNewChatBtn{font:400 var(--fs-l)/1 var(--sans)!important}
 }
 
@@ -1944,7 +2016,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root{--row-rule:color-mix(in srgb,var(--ink) 30%,transparent);--row-accent:#0045fc;--row-accent-flag:#b83c00}
 :root[data-theme="dark"]{--row-accent:var(--cyan);--row-accent-flag:var(--orange)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-rows{display:block;padding:0;margin:0;border:0}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:calc(2 * var(--L));align-items:baseline;margin:0;padding:var(--L) 0 calc(2 * var(--L));border-top:.8px solid var(--row-rule)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:calc(2 * var(--L));align-items:baseline;margin:0;padding:var(--L) 0 calc(2 * var(--L));border-top:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row.is-flag{--row-accent:var(--row-accent-flag)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-head{min-width:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-title{margin:0;padding:0;font:600 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0;word-spacing:normal;text-transform:none;color:var(--row-accent);text-wrap:balance;overflow-wrap:break-word}
@@ -2046,18 +2118,46 @@ div:has(>#topThemeBtn){column-gap:0}
 :root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{display:flex!important;padding-top:10px;justify-content:flex-start;gap:10px}
 :root[data-theme] #workInputCard:not(.is-mode)>div.justify-between>div{display:flex!important;align-items:center;gap:10px}
 :root[data-theme] #curatorVoiceToggleIcon:empty{display:none!important}
-:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn),:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn):not(.is-on),:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn).is-on,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{border:0!important;border-radius:0!important;box-shadow:none!important;height:44px!important;min-height:44px!important;padding:0 18px!important;gap:0!important;font:400 var(--fs-m)/1 var(--sans)!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;text-decoration:none!important;transition:filter .15s}
-:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #curatorVoiceToggleBtn:not(.is-on),:root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{background:transparent!important;color:var(--ink)!important;border:.8px solid var(--ink)!important;border-color:var(--ink)!important;box-sizing:border-box!important;width:auto!important}
-:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(svg,span),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn *{color:inherit!important}
-:root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn:hover{background:#fff204!important;color:#000!important;border-color:#fff204!important;text-decoration:none!important}
-:root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover :is(svg,span),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn:hover *{color:#000!important}
-:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#workSendBtn):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn),:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):not(.is-on),:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn).is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#chatShareBtn.is-on,#curatorVoiceToggleBtn,#curatorVoiceToggleBtn.is-on),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{border:0!important;border-radius:0!important;box-shadow:none!important;height:44px!important;min-height:44px!important;padding:0 18px!important;gap:0!important;font:400 var(--fs-m)/1 var(--sans)!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;text-decoration:none!important;transition:filter .15s}
+:root[data-theme] #workInputCard #chatShareBtn,:root[data-theme] #workInputCard #chatShareBtn:not(.is-on),:root[data-theme] #workInputCard #chatShareBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#chatShareBtn.is-on){background:#420401!important;color:#fff!important;width:auto!important;align-self:flex-start}
+:root[data-theme] #workInputCard #chatShareBtn :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn :is(svg,span){color:#fff!important}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root[data-theme] #workInputCard #curatorVoiceToggleBtn:not(.is-on),:root[data-theme] #workInputCard #curatorVoiceToggleBtn.is-on,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn:not(.is-on),#curatorVoiceToggleBtn.is-on),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn{background:transparent!important;color:var(--ink)!important;border:.8px solid var(--ink)!important;border-color:var(--ink)!important;box-sizing:border-box!important;width:auto!important}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn :is(svg,span),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn *{color:inherit!important}
+:root[data-theme] #workInputCard #chatShareBtn:hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:hover{filter:brightness(1.25);text-decoration:none!important}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn:hover,:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn:hover{background:#fff204!important;color:#000!important;border-color:#fff204!important;text-decoration:none!important}
+:root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn:hover :is(svg,span),:root[data-theme] #mobileStickyInputBar #mobileStickyVoiceBtn:hover *{color:#000!important}
+:root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 /* Desktop details: 15px is the smallest size (user, 25 Oct 2026). The small size --fs-s is 14px everywhere else; inside the record panels on a wide screen it is 15px, so the
    lists, sources, quotations' credits, links and buttons all follow. The phone keeps 14px. */
 @media (min-width:768px){
   :root :is(#desktopDossierRecordBody,#detailBody){--fs-s:15px}
 }
 /* Share information form after the displaay.net Stay in the Loop form (25 Oct 2026): stays on the theme's ground, #2d3352 navy field blocks with white labels and #9aa0c4 placeholders, single-line #3a3839 Send for review block with #898a8f type, and Back to chat + Voice side-by-side below it. */
+:root[data-theme] body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer){--paper:#fff;--ink:#000;--line:#000;background:var(--paper)!important;color:var(--ink)!important}
+:root[data-theme="dark"] body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer){--paper:#000;--ink:#fff;--line:#fff;background:#000!important;color:#fff!important}
+:root[data-theme] body.chat-input-mode-active #curatorScrollArea{display:none!important}
+:root[data-theme] body.chat-input-mode-active #workBottomDock{flex:1 1 auto;overflow-y:auto;justify-content:flex-start;padding-top:14px!important;background:var(--paper)!important;color:var(--ink)!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode{background:transparent!important;border:0 solid transparent!important;padding:0!important;color:var(--ink)!important}
+:root[data-theme] body.chat-input-mode-active :is(#noteFormTitle,#noteFormIntro){color:var(--ink)!important}
+:root[data-theme] body.chat-input-mode-active #noteFormIntro{margin:0 0 12px!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field,#noteInputBlock,#noteAckRow .nf-check){background:#2d3352!important;color:#fff!important;border:.8px solid transparent!important;border-radius:0!important;padding:12px 20px!important;margin:0 0 8px!important;outline:0!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #noteInputBlock textarea{min-height:4.5em!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #noteAckRow{margin-top:0!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field,#noteInputBlock,#noteAckRow .nf-check):focus-within{border-color:#fff204!important;outline:0!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field>span,#noteInputLabel,#noteAckRow .nf-check span){color:#fff!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea,#workInput.is-good){background:transparent!important;color:#fff!important;border:0!important;padding:0!important;outline:0!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea)::placeholder{color:#9aa0c4!important;opacity:1!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #noteAckRow .nf-check input{border:.8px solid #fff!important;border-color:#fff!important;border-radius:0!important;background:transparent!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #noteAckRow .nf-check input:checked{background:#fff!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode>div.justify-between{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;gap:10px!important;padding-top:4px!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode>div.justify-between>div{display:contents!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn.is-on{order:-1!important;flex:0 0 100%!important;display:flex!important;align-items:center!important;justify-content:flex-start!important;width:100%!important;min-height:0!important;height:auto!important;box-sizing:border-box!important;padding:15px 22px!important;border:0!important;border-radius:0!important;background:#3a3839!important;color:#fff!important;font:400 var(--fs-l)/1.15 var(--sans)!important;text-align:left!important;white-space:normal!important;transition:background .15s var(--ease),color .15s var(--ease)}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn.is-on *{color:inherit!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn.is-on:is(:hover,:active,[data-ready="true"]){background:#fff204!important;color:#000!important;text-decoration:none!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #workSendBtn.is-on:is(:hover,:active,[data-ready="true"]) *{color:#000!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn{order:1!important}
+:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn{order:2!important}
+:root[data-theme] body.chat-input-mode-active #chatRecordsInfo{border-color:var(--line)!important}
 
 /* ---- Text at 16px, small print at 14px, all regular (user, 26 Oct 2026), after the Displaay pages the user showed ----
    The chat answer, the licence, the discount pages and the font-support answer all do the same few things, and this block does them in the chat and
@@ -2280,9 +2380,12 @@ div:has(>#topThemeBtn){column-gap:0}
 @media (min-width:768px){
   :root[data-theme] #workBottomDock>div:has(>#workInputCard:not(.is-mode)){gap:12px!important}
   :root[data-theme] #workInputCard:not(.is-mode)>div.justify-between{padding-top:12px!important;gap:12px!important}
-  :root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)){box-sizing:border-box!important;height:52px!important;min-height:52px!important;padding:0 24px!important;border:.8px solid transparent!important;border-radius:0!important;gap:10px!important;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),transform .1s var(--ease)!important}
-  :root[data-theme] #workInputCard #curatorVoiceToggleBtn:is(.is-on,:not(.is-on)){border-color:var(--ink)!important}
-  :root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)):active{transform:translateY(1px)}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode :is(#chatShareBtn,#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)){box-sizing:border-box!important;height:52px!important;min-height:52px!important;padding:0 24px!important;border:.8px solid transparent!important;border-radius:0!important;gap:10px!important;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),transform .1s var(--ease)!important}
+  :root[data-theme] #workInputCard #chatShareBtn:is(.is-on,:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:is(.is-on,:not(.is-on)){border-color:#420401!important}
+  :root[data-theme] #workInputCard #curatorVoiceToggleBtn:is(.is-on,:not(.is-on)),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #curatorVoiceToggleBtn:is(.is-on,:not(.is-on)){border-color:var(--ink)!important}
+  :root[data-theme] #workInputCard #chatShareBtn:is(.is-on,:not(.is-on)):hover,:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:is(.is-on,:not(.is-on)):hover{filter:none!important;background:#fff204!important;border-color:#fff204!important;color:#000!important}
+  :root[data-theme] #workInputCard #chatShareBtn:is(.is-on,:not(.is-on)):hover :is(svg,span),:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn:is(.is-on,:not(.is-on)):hover :is(svg,span){color:#000!important}
+  :root[data-theme] #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn):is(.is-on,:not(.is-on)):active{transform:translateY(1px)}
   :root[data-theme] #workInputCard #curatorVoiceToggleBtn::before{content:"";flex:0 0 auto;width:9px;height:9px;box-sizing:border-box;border:.8px solid var(--ink);border-radius:50%;background:transparent;transition:background-color .15s var(--ease)}
   :root[data-theme] #workInputCard #curatorVoiceToggleBtn[aria-pressed="true"]::before{background:var(--ink)}
   :root[data-theme] #workInputCard #curatorVoiceToggleBtn:hover::before{border-color:#000;background:transparent}
@@ -2327,7 +2430,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #chatRecordsInfo>summary,:root[data-theme] #chatRecordsInfo>summary:hover,:root[data-theme] #chatRecordsInfo>summary:focus-visible{text-decoration:none!important;padding:0 24px!important}
 }
 /* The outline of the Voice and Share information buttons is 1px, in the dark red of the Share information button, #420401 (user, 26 Oct 2026: "the outline can be 0.8px" and "this color"). */
-:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn),:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn):is(.is-on,:hover,:focus-visible){border-width:.8px!important}
+:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn),:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#chatShareBtn):is(.is-on,:hover,:focus-visible){border-width:.8px!important}
 :root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn,:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn:is(.is-on,:hover,:focus-visible){border-color:#ec69f9!important}
 
 /* 5px between the question box and the buttons under it (user, 26 Oct 2026: "make 5px space between buttons and chat"); the two buttons stay 3px apart. */
@@ -2337,6 +2440,7 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* Share information has no fill: the button is an outline, 1px (user, 26 Oct 2026: "make outlines 1px"), in #a06f46 read from the swatch the user sent (26 Oct 2026: "this button can have this color outline and no fill").
    The older rules fill it #420401 with ids and !important in every state, so this one carries more classes than any of them. */
+:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#chatShareBtn,#chatShareBtn.is-on,#chatShareBtn:hover,#chatShareBtn:focus-visible,#chatShareBtn:active){background:transparent!important;border-color:#a06f46!important;border-width:.8px!important}
 
 /* No "Visiting" title (user, 26 Oct 2026: "drop visiting title"). The row keeps its place in the two columns (the empty head holds the left cell, so the facts stay where
    they are) and its region still carries the label "Visiting" for screen readers. */
@@ -2351,6 +2455,7 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* ---- Share information on hover (user, 26 Oct 2026: "fix hover") ----
    The older hover rule turned its type to the page colour, which is black on the dark page, so the label vanished once the fill was gone. On hover or focus the type stays white and the outline turns yellow. */
+:root:root:root:root:root:root:root:root[data-theme] #workInputCard :is(#chatShareBtn:hover,#chatShareBtn:focus-visible,#chatShareBtn:active,#chatShareBtn.is-on:hover){background:transparent!important;color:#fff!important;border-color:#fff204!important}
 
 /* ---- The gossip balloon, padded on all four sides (user, 26 Oct 2026: "gossip bubble looks weird") ----
    A rule for every chat turn took the left padding off (padding-left:0!important), so inside the balloon the text touched its left edge and had 20px on the right. The balloon is drawn round
@@ -2366,7 +2471,7 @@ div:has(>#topThemeBtn){column-gap:0}
    (a rule for the phone had made it the secondary grey, so it nearly vanished), and none of the three controls underlines its text. */
 :root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary,:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary::after{text-decoration:none!important}
 :root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){background:transparent!important;color:#fff204!important;text-decoration:none!important}
-:root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn *){text-decoration:none!important}
+:root:root:root:root:root:root[data-theme] #workInputCard :is(#curatorVoiceToggleBtn,#curatorVoiceToggleBtn *,#chatShareBtn,#chatShareBtn:hover){text-decoration:none!important}
 :root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #curatorVoiceToggleBtn :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon){color:#fff!important}
 
 /* Mobile composer: box (input + Send) on top; Voice, Share information and suggested questions underneath */
@@ -2375,11 +2480,11 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #chat-input{flex:1 1 auto!important;min-width:0!important;width:auto!important;padding-right:0!important}
 :root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickySendBtn{position:static!important;inset:auto!important;transform:none!important;flex:0 0 auto!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
 :root:root:root:root:root:root:root:root:root:root #mobileComposerActions{display:flex;gap:8px;align-items:center}
-:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn){box-sizing:border-box!important;height:44px!important;min-height:44px!important;padding:0 16px!important;border:.8px solid var(--ink)!important;border-radius:0!important;background:transparent!important;color:var(--ink)!important;font:400 var(--fs-s)/1 var(--sans)!important;display:inline-flex!important;align-items:center!important;gap:8px!important;white-space:nowrap}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileStickyShareBtn){box-sizing:border-box!important;height:44px!important;min-height:44px!important;padding:0 16px!important;border:.8px solid var(--ink)!important;border-radius:0!important;background:transparent!important;color:var(--ink)!important;font:400 var(--fs-s)/1 var(--sans)!important;display:inline-flex!important;align-items:center!important;gap:8px!important;white-space:nowrap}
 :root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn::before{content:""!important;display:block!important;flex:0 0 auto;width:9px;height:9px;box-sizing:border-box;border:.8px solid currentColor;border-radius:50%;background:transparent}
 :root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn[aria-pressed="true"]::before{background:currentColor}
 :root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn::after{content:none!important}
-@media (hover:hover){:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn):hover{background:#fff204!important;color:#000!important;border-color:#fff204!important}}
+@media (hover:hover){:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileStickyShareBtn):hover{background:#fff204!important;color:#000!important;border-color:#fff204!important}}
 :root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>#mobileSuggestChips{display:flex!important;gap:8px!important;overflow-x:auto!important;scrollbar-width:none;margin:0 calc(-1 * var(--m-s4,16px))!important;padding:0 var(--m-s4,16px) 2px!important;scroll-padding-inline:var(--m-s4,16px);scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}}
 :root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip{scroll-snap-align:start}
 :root:root:root:root:root:root:root:root:root:root #mobileSuggestChips::after{content:"";flex:0 0 1px}
@@ -2391,10 +2496,10 @@ div:has(>#topThemeBtn){column-gap:0}
 /* SwiftUI control metrics on phone. Voice/Share = .bordered, controlSize .regular (34pt tall, 12pt side padding, 8pt corners);
    Voice on = .borderedProminent (filled). Send = .borderedProminent icon button, 34pt. Suggestions = .bordered capsule,
    controlSize .small (28pt). Each keeps a 44pt hit area (HIG) through an invisible ::after. */
-:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn){position:relative!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-radius:0!important;gap:0!important}
+:root:root:root:root:root:root:root:root:root:root #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileStickyShareBtn){position:relative!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-radius:0!important;gap:0!important}
 :root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn::before{content:none!important;display:none!important}
 :root:root:root:root:root:root:root:root:root:root #mobileComposerActions #mobileStickyVoiceBtn[aria-pressed="true"]{background:var(--ink)!important;color:var(--paper)!important;border-color:var(--ink)!important}
-:root:root:root:root:root:root:root:root:root:root :is(#mobileComposerActions #mobileStickyVoiceBtn,#mobileSuggestChips .curator-suggest-chip)::after{content:""!important;position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%);background:none!important}
+:root:root:root:root:root:root:root:root:root:root :is(#mobileComposerActions #mobileStickyVoiceBtn,#mobileComposerActions #mobileStickyShareBtn,#mobileSuggestChips .curator-suggest-chip)::after{content:""!important;position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%);background:none!important}
 :root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickySendBtn{width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;border-radius:0!important}
 :root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar #mobileStickySendBtn svg{width:17px!important;height:17px!important}
 :root:root:root:root:root:root:root:root:root:root #mobileSuggestChips .curator-suggest-chip{position:relative;height:28px!important;min-height:28px!important;padding:0 10px!important;border-radius:0!important}
@@ -2407,6 +2512,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar>#mobileComposerCard{display:block!important;box-sizing:border-box!important;width:100%!important;min-height:0!important;padding:14px 12px 10px 16px!important;border-radius:0!important;border:.8px solid rgba(255,255,255,.10)!important}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #chat-input{display:block!important;width:100%!important;min-height:24px!important;margin:0 0 10px!important;padding:0 4px 0 0!important;resize:none;font:400 var(--fs-m)/1.35 var(--sans)!important}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions{display:flex!important;align-items:center!important;gap:8px!important}
+:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions #mobileStickyShareBtn{height:36px!important;min-height:36px!important;padding:0 14px!important;border-radius:0!important;border:0!important;background:rgba(255,255,255,.10)!important;color:#fff!important}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions #mobileStickyVoiceBtn{width:36px!important;height:36px!important;min-width:36px!important;padding:0!important;border-radius:0!important;border:0!important;background:rgba(255,255,255,.10)!important;color:#fff!important;justify-content:center!important}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions #mobileStickyVoiceBtn svg{width:19px;height:19px}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions #mobileStickyVoiceBtn[aria-pressed="true"]{background:#fff!important;color:#000!important}
@@ -2414,7 +2520,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileStickySendBtn{position:relative!important;inset:auto!important;transform:none!important;flex:0 0 auto!important;width:36px!important;height:36px!important;min-width:36px!important;min-height:36px!important;padding:0!important;border-radius:0!important;background:#fff!important;color:#000!important;border:0!important;display:flex!important;align-items:center!important;justify-content:center!important}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileStickySendBtn svg{width:18px!important;height:18px!important;color:#000!important}
 :root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileStickySendBtn::after{content:"";position:absolute;inset:-4px}
-@media (hover:hover){:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions :is(#mobileStickyVoiceBtn):hover{background:#fff204!important;color:#000!important}}
+@media (hover:hover){:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileComposerActions :is(#mobileStickyShareBtn,#mobileStickyVoiceBtn):hover{background:#fff204!important;color:#000!important}}
 
 /* Phone, record open (user, 3 Nov 2026: "I can't read whistleblower accounts because of chat … the chat on mobile can be one line"):
    while the record drawer is up, the composer is one line — the input and the send button side by side, Share, Voice and the starter chips
@@ -2425,7 +2531,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus))>#mobileComposerCard{display:flex!important;align-items:center!important;gap:8px!important;min-height:48px!important;padding:6px 6px 6px 16px!important}
   :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus)) #mobileComposerCard #chat-input{flex:1 1 auto!important;min-width:0!important;width:auto!important;height:24px!important;min-height:24px!important;max-height:24px!important;margin:0!important;overflow:hidden!important;white-space:nowrap!important;text-overflow:ellipsis!important}
   :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus)) #mobileComposerCard #mobileComposerActions{flex:0 0 auto!important;gap:0!important}
-  :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus)) #mobileComposerActions :is(#mobileStickyVoiceBtn,#mobileKbCloseBtn,span){display:none!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(:has(#chat-input:focus)) #mobileComposerActions :is(#mobileStickyShareBtn,#mobileStickyVoiceBtn,#mobileKbCloseBtn,span){display:none!important}
 }
 :root:root:root:root:root:root:root:root:root:root:root:root #layersBtn{height:34px!important;min-height:34px!important;padding:0 10px 0 12px!important;border-radius:0!important}
 
@@ -2471,7 +2577,7 @@ div:has(>#topThemeBtn){column-gap:0}
 /* "Share information" and "Voice" under the chat box at the displaay.net/typeface/dazzed button size (user's instruction, 26 Oct 2026): 34px high, 14px type,
    12px side padding, a .8px outline, a 10px radius. Colours, fills and states stay as they were. The send arrow is not changed. The ids and 13 :root
    beat the id rules above (:root x7 to x8 with !important). */
-:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard :is(#curatorVoiceToggleBtn){box-sizing:border-box!important;width:auto!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-width:.8px!important;border-style:solid!important;border-radius:0!important;font-size:14px!important;line-height:1!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard :is(#chatShareBtn,#curatorVoiceToggleBtn){box-sizing:border-box!important;width:auto!important;height:34px!important;min-height:34px!important;padding:0 12px!important;border-width:.8px!important;border-style:solid!important;border-radius:0!important;font-size:14px!important;line-height:1!important}
 
 /* "How the records work", after the displaay.net FAQ rows (user's instruction, 26 Oct 2026): a heavy rule on top (the one line on the web that is not 0.8px,
    as in the reference), a solid triangle that points right when closed and down when open, the question in 18px, the answer in 14px set in under the question.
@@ -2513,14 +2619,27 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* "Share information" is stretched across the full width under the chat box, in 17px type (user's instruction, 26 Oct 2026); it keeps the 34px height, the
    10px radius and its outline. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) div:has(>#chatShareBtn){flex:1 1 100%!important;width:100%!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #chatShareBtn{width:100%!important;font-size:17px!important;justify-content:center!important;text-align:center!important}
 
 /* Send us a tip (was Share information) is drawn as a consent bar: a navy rounded bar with a checkbox and a sentence-case label, full width in the chat. The box is ticked while the note is open; pressing the bar again returns to the chat. The repeated id outranks the earlier button rules above. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{background:#30344f!important;color:#fff!important;border:0!important;border-radius:0!important;box-sizing:border-box!important;width:auto!important;height:auto!important;min-height:0!important;padding:14px 30px!important;gap:18px!important;display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;font:400 22px/1.2 var(--sans)!important;text-decoration:none!important;filter:none!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:hover{background:#3d426a!important;color:#fff!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workInputCard:not(.is-mode) #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{width:100%!important}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn::before{content:"";flex:none;width:26px;height:26px;box-sizing:border-box;border:2px solid #fff;border-radius:0;background:transparent center/18px no-repeat}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{background-color:#fff;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M3 9.500l4 4 8-9' fill='none' stroke='%2330344f' stroke-width='2.500'/%3E%3C/svg%3E")}
 
 /* While the note is open the bar reads Back to chat with an arrow in front, not a ticked box. */
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{width:22px;height:22px;border:0;border-radius:0;background-color:#fff;background-image:none;-webkit-mask:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M20 10h-14l5-5-1.500-1.500-8 8 8 8 1.500-1.500-5-5h14z'/%3E%3C/svg%3E") center/100% no-repeat;mask:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Cpath d='M20 10h-14l5-5-1.500-1.500-8 8 8 8 1.500-1.500-5-5h14z'/%3E%3C/svg%3E") center/100% no-repeat}
 
 /* Share information is back to its name and is drawn in the grey of the Purchasing Fonts button: grey fill, black type and a black box or arrow. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{background:#86878b!important;color:#000!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:hover{background:#9b9ca0!important;color:#000!important}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn::before{border-color:#000}
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{background-color:#000}
 
 /* No checkbox: Share information is plain grey text; only Back to chat keeps its arrow. */
+#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:not(.is-on)::before{display:none}
 
 
 /* The prompt suggestions are drawn like the registry line in a record: a thin soft outline, rounded, the type unchanged; the outline firms up on hover. */
@@ -2532,8 +2651,11 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #chatRecordsInfo,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetHandleBar,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetSummaryStrip{border-color:#e2f86c!important}
 
 /* Share information is regular weight (400, it was light 300) and turns yellow with black type on hover and focus. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-weight:400!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible){background:#fff204!important;color:#000!important}
 
 /* The site sets every face to weight 300 with eight ids; Share information alone is regular, so it outranks that with twelve. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #chatShareBtn,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #chatShareBtn::before{font-weight:400!important}
 
 /* The suggested questions in the chat (the chips and the follow-up pills) are drawn like the registry line in a record: a thin soft outline, rounded, quiet type. They fill yellow on hover. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] .curator-suggest-chip,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] .curator-followup-pill,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #mobileSuggestChips .curator-suggest-chip{background:transparent!important;color:color-mix(in srgb,var(--ink) 75%,transparent)!important;border:1px solid color-mix(in srgb,var(--ink) 30%,transparent)!important;border-radius:0!important;box-shadow:none!important}
@@ -2543,6 +2665,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.gossip-mode-active) #chatRecordsInfo{border-top-color:#86878b!important}
 
 /* The left edges line up: the question text, Share information and How the records work all start 23px in from the card's edge. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{padding-left:23px!important;justify-content:flex-start!important;text-align:left!important}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary{padding-left:23px!important}
 
 /* Gossip mode: every divider line (the token the rules and borders draw with) and the Gossip button turn the lime yellow. */
@@ -2591,8 +2714,15 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn,:root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn :is(svg,span){background:#e8e8ee!important;color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn :is(svg,span){background:transparent!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:hover{background:#d9dae4!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard#workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{background:#ece4e3!important;color:#420401!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn :is(svg,span){color:#420401!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:hover{background:#dfd3d1!important;filter:none!important}
 :root:not([data-theme="dark"]) #curatorMessages#curatorMessages :is(.user-bubble,.justify-end>div),:root:not([data-theme="dark"]) #curatorDrawerLiveStream#curatorDrawerLiveStream :is(.user-bubble,.justify-end>div){background:#e6e8f4!important;color:#2d3352!important}
 :root:not([data-theme="dark"]) #curatorMessages#curatorMessages :is(.user-bubble,.justify-end>div) *,:root:not([data-theme="dark"]) #curatorDrawerLiveStream#curatorDrawerLiveStream :is(.user-bubble,.justify-end>div) *{color:#2d3352!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard#workInputCard.is-mode :is(.nf-field,#noteInputBlock,#noteAckRow .nf-check){background:#e6e8f4!important;color:#2d3352!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard#workInputCard.is-mode :is(.nf-field,#noteInputBlock,#noteAckRow .nf-check) :is(label,input,textarea,span){color:#2d3352!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard#workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea)::placeholder{color:#5a6086!important}
+:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard#workInputCard.is-mode #workSendBtn#workSendBtn.is-on:not([data-ready="true"]){background:#e8e8ee!important;color:#5b5b66!important}
 
 /* Light detail pills (user, 26 Oct 2026): in the light theme Ask in chat, Plan visit in chat, Building view and Money map are pale tints of their dark colours with dark type; Website keeps its outline. */
 :root:root:root:root:not([data-theme="dark"]) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side button.record-action{--pill:#d9dcec!important;--pill-hover:#c3c7df!important;background:var(--pill)!important;color:#2d3352!important}
@@ -2603,12 +2733,19 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Light hovers (user, 26 Oct 2026: "fix light version hover and chat, it need to go light"): in the light theme the yellow hover of the starter questions, follow-up pills, suggestion chips, Share information, the records summary and the Voice and Send buttons becomes the pale navy tint with navy type. The dark theme keeps its yellow. */
 :root:root:root:root:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible) .sp-text{background:#d9dcec!important;color:#2d3352!important}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) :is(.curator-suggest-chip,.curator-followup-pill):is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #mobileSuggestChips .curator-suggest-chip:is(:hover,:focus-visible){background:#d9dcec!important;color:#2d3352!important;border-color:#d9dcec!important}
+:root:not([data-theme="dark"]) #workInputCard#workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible),:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard#workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible){background:#dfd3d1!important;color:#420401!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:is(:hover,:focus-visible,:active){background:#d9dae4!important;color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard #curatorVoiceToggleBtn#curatorVoiceToggleBtn#curatorVoiceToggleBtn:is(:hover,:focus-visible,:active) :is(#curatorVoiceToggleLabel,#curatorVoiceToggleIcon,svg,span){background:transparent!important;color:#2d3352!important}
 :root:not([data-theme="dark"]) #workInputCard#workInputCard.is-mode #workSendBtn#workSendBtn.is-on:is(:hover,:active,[data-ready="true"]){background:#d9dcec!important;color:#2d3352!important}
 :root:root:root:root:root:root:root:root:not([data-theme="dark"]) #chatRecordsInfo>summary:is(:hover,:focus-visible,:active){color:#2d3352!important;background:#e6e8f4!important}
 
 /* Light theme: Share information is blue with cream type; hovered or focused it turns cream with blue type. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{background:#3e7bf6!important;color:#f2f0e7!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible),:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible){background:#f2f0e7!important;color:#3e7bf6!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn::before{border-color:#f2f0e7}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on::before{background-color:#f2f0e7}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn:is(:hover,:focus-visible)::before{border-color:#3e7bf6}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn.is-on:is(:hover,:focus-visible)::before{background-color:#3e7bf6}
 
 /* Starter questions: the whole pill fills on hover and keyboard focus, not only the text inside it. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:not([data-theme="dark"]) :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){background:#d9dcec!important;border-color:#d9dcec!important}
@@ -2626,12 +2763,43 @@ div:has(>#topThemeBtn){column-gap:0}
 :root[data-theme="dark"] #topThemeBtn[aria-pressed=true],:root[data-theme="dark"] #mobileThemeBtn[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)!important}
 
 /* Mobile composer Share button (user, 29 Oct 2026): it kept the white-on-dark styling from the old dark composer, so on the light lavender card it read as an empty field. In light mode it now matches the mic and send buttons: white ground, black text. */
+:root:not([data-theme="dark"]) #mobileComposerCard #mobileComposerActions #mobileStickyShareBtn#mobileStickyShareBtn{background:#fff!important;color:#000!important}
 
 /* Share information on phones (user, 29 Oct 2026): the phone composer lays the chat input out as a grid, which scattered the note form's title, fields and checkbox across its cells. While a note is open the dock now stacks the form in one column, as on desktop: fields, Send for review across the full width, then Back to chat and Voice. */
+@media (max-width:767px){
+  body.chat-input-mode-active #workBottomDock>div{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:var(--m-s2)!important}
+  body.chat-input-mode-active #workBottomDock #workInputCard{display:flex!important;flex-direction:column!important;gap:var(--m-s2)!important;width:100%!important;padding-top:var(--m-s2)!important}
+  body.chat-input-mode-active #workBottomDock #workInputCard>:is(#noteFormFields,#noteInputBlock,#noteAckRow,#noteFormStatus){display:block!important;width:100%!important}
+  body.chat-input-mode-active #workBottomDock #noteFormFields{display:flex!important;flex-direction:column!important;gap:var(--m-s2)!important}
+  body.chat-input-mode-active #workBottomDock #noteFormFields>.nf-field{display:flex!important;flex-direction:column!important;width:100%!important;box-sizing:border-box}
+  body.chat-input-mode-active #workBottomDock #noteFormFields>.nf-field input{width:100%!important;min-width:0}
+  body.chat-input-mode-active #workBottomDock #noteFormFields>p{width:auto!important;margin:0!important}
+  body.chat-input-mode-active #workBottomDock #noteInputBlock{padding:var(--m-s3) var(--m-s4)!important}
+  body.chat-input-mode-active #workBottomDock #workInput{width:100%!important;padding:var(--m-s1) 0!important}
+  body.chat-input-mode-active #workBottomDock #noteAckRow .nf-check{display:flex!important;align-items:center;gap:var(--m-s3);width:100%!important;box-sizing:border-box}
+  body.chat-input-mode-active #workBottomDock #workInputCard>div.justify-between{display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:var(--m-s2)!important;padding-top:0!important}
+  body.chat-input-mode-active #workBottomDock #workInputCard>div.justify-between>div{display:contents!important}
+  body.chat-input-mode-active #workBottomDock #workSendBtn{order:-1;flex:1 1 100%!important;width:100%!important;height:var(--m-tap)!important;justify-content:flex-start!important;padding:0 var(--m-s4)!important}
+  body.chat-input-mode-active #workBottomDock #chatRecordsInfo{display:none!important}
+}
 
 /* Close for the note form (user, 29 Oct 2026): Back to chat sat below the whole form, so on a phone the note looked as if it had no way out. A Close button now sits beside the title. */
+#noteFormHead{display:flex!important;align-items:center;justify-content:space-between;gap:12px;width:100%}
+#noteFormHead #noteFormTitle{margin:0!important}
+:root:root:root #noteFormHead #noteFormCloseBtn{flex:none;min-height:44px;padding:0 4px 0 12px!important;border:0!important;background:none!important;color:var(--ink)!important;font:400 var(--fs-m)/1 var(--sans)!important;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+:root:root:root #noteFormHead #noteFormCloseBtn .note-close-cross{display:block;flex:none;width:28px;height:28px;color:inherit}
+:root:root:root #noteFormHead #noteFormCloseBtn:is(:hover,:focus-visible){text-decoration:underline}
 /* The dock-wide hover rule turns every child black; the cross must keep the button's own colour or it vanishes on the dark theme. */
+:root:root:root:root[data-theme] body #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible) :is(.note-close-cross,.note-close-cross *){color:inherit!important}
+@media (max-width:767px){
+  body.chat-input-mode-active #workBottomDock #noteFormFields>#noteFormHead{display:flex!important;flex-direction:row!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body.chat-input-mode-active #workBottomDock #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-size:var(--fs-m)!important;height:var(--m-tap)!important;min-height:var(--m-tap)!important;padding:0 var(--m-s4)!important}
+}
 /* Phone chat view (user, 29 Oct 2026): the composer grid set the note form to display:contents, which overrode its hidden state, so the title, fields and checkbox showed in the chat even with no note open. They now show only while a note is open. The Share button in the chat row also drops to the composer's text size. */
+@media (max-width:767px){
+  body:not(.chat-input-mode-active) #workBottomDock :is(#noteFormFields,#noteAckRow,#noteFormStatus,#noteInputLabel){display:none!important}
+  :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body #workBottomDock #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-size:var(--fs-m)!important;height:var(--m-tap)!important;min-height:var(--m-tap)!important;padding:0 var(--m-s4)!important}
+}
 
 /* Details sheet typesetting (user, 29 Oct 2026): the close button is a 56px grey square but its bar was only 24px tall, so scrolling text slid under the square and was cut off ("Posts by staff and visitors on review sites and Re…"). The bar is now as tall as the button and solid, the title sits beside the button at the top, and text scrolls cleanly under the bar. */
 @media (max-width:767px){
@@ -2665,6 +2833,10 @@ div:has(>#topThemeBtn){column-gap:0}
 }
 
 /* Share form with the keyboard open (user, 29 Oct 2026): the app is sized to the area the keyboard leaves free, and the form gets room below its last control, so every field can be scrolled to. */
+@media (max-width:767px){
+  body.chat-input-mode-active #workBottomDock{overflow-y:auto!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;padding-bottom:max(var(--m-s6,24px),env(safe-area-inset-bottom))!important}
+  body.chat-input-mode-active #workBottomDock :is(#noteInstitution,#noteAuthor,#workInput){scroll-margin:16px 0}
+}
 
 /* Top buttons (user, 29 Oct 2026): the title fits with room to spare, so the buttons get up to 8px of air on each side (4px on the narrowest phones) instead of a flat 4px. */
 @media (max-width:767px){
@@ -2744,7 +2916,15 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:not([data-theme="dark"]) #chat-input#chat-input#chat-input#chat-input#chat-input#chat-input,
 :root:not([data-theme="dark"]) #chat-input#chat-input#chat-input#chat-input#chat-input#chat-input:focus,
 :root:not([data-theme="dark"]) #chat-input#chat-input#chat-input#chat-input#chat-input#chat-input:not(:placeholder-shown),
-:root:not([data-theme="dark"]) #chat-input#chat-input#chat-input#chat-input#chat-input#chat-input:focus:not(:placeholder-shown){caret-color:#000!important}
+:root:not([data-theme="dark"]) #chat-input#chat-input#chat-input#chat-input#chat-input#chat-input:focus:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields textarea,
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields textarea:focus,
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields textarea:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields textarea:focus:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input,
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input:focus,
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input:not(:placeholder-shown),
+:root:not([data-theme="dark"]) #noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields#noteFormFields input:focus:not(:placeholder-shown){caret-color:#000!important}
 /* Pulling a phone chat down (user, 29 Oct 2026): the page itself must not be dragged or left shifted by Safari's bounce, and the
    top bars take the pull whole. The chat view follows the finger (index.html, attachPullToClose). */
 @media (max-width:767px){
@@ -2753,6 +2933,7 @@ div:has(>#topThemeBtn){column-gap:0}
   #chatSheetHead,#phoneChatHead{touch-action:none}
 }
 /* Share note on a phone: the keyboard arrow stays out of the note (it sat on the note's Close); the note's own Close and Back to chat lead out. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body.chat-input-mode-active #workKbCloseBtn#workKbCloseBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body.chat-input-mode-active #mobileKbCloseBtn#mobileKbCloseBtn{display:none!important}
 /* Swipe up on the composer opens the chat, swipe down closes it, and the sheet rises into place. The grabber strip that sat on the
    composer is gone (user, 2 Nov 2026: "the bottom window right above chat input is not needed"); the gesture is unchanged. */
 @media (max-width:767px){
