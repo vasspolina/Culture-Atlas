@@ -4307,3 +4307,15 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard>.flex.items-center.justify-between>div:has(>#chatShareBtn){order:3;flex:1 1 100%!important;width:100%!important;display:flex!important;justify-content:flex-start!important;margin:0!important;padding:0!important}
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard #chatShareBtn{display:inline-flex!important}
 }
+
+/* ---- THE NOTE FORM HAS NO FRAME, AND CLOSE IS ITS CROSS (user, 4 Nov 2026: "keep inputs and delete the outline, also close looks
+   like a button but can be just a cross") ----
+   The card loses the 1px ink ring the Displaay layer draws on #workInputCard (a box-shadow, not a border); the fields keep their
+   ruled lines, so the form still reads as a sheet. Close is the cross alone in a 44px touch square, no edge and no fill, at every
+   width; the word stays in the markup but is set at 0, and the button keeps its aria-label. Hover and focus thicken the cross's
+   strokes; keyboard focus also keeps the site's own outline. */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body.chat-input-mode-active #workInputCard.is-mode{box-shadow:none!important;border:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn{width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;gap:0!important;justify-content:center!important;font-size:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn .note-close-cross{width:28px!important;height:28px!important;color:inherit!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible){background:transparent!important;color:var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible) .note-close-cross{color:var(--dp-ink)!important;stroke-width:2!important}
