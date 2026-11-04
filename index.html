@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=540">
-  <script src="assets/config.js?v=540"></script>
-  <script src="assets/subtopic.js?v=540"></script>
-  <script src="assets/names.js?v=540"></script>
-  <script src="assets/grounding.js?v=540"></script>
-  <script src="assets/repeats.js?v=540"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=542">
+  <script src="assets/config.js?v=542"></script>
+  <script src="assets/subtopic.js?v=542"></script>
+  <script src="assets/names.js?v=542"></script>
+  <script src="assets/grounding.js?v=542"></script>
+  <script src="assets/repeats.js?v=542"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=540"></script>
+  <script src="assets/institutions.js?v=542"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10019,11 +10019,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v541';
+    const ATLAS_RELEASE = 'culture-atlas-v542';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=540').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=542').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12000,33 +12000,6 @@ return maplibregl$1;
       }).join(' ');
     }
     // Reported items. Each one carries the sources recorded for it. None is independently verified.
-    // The reported items as the chat sets them, after displaay.net/about (user, 4 Nov 2026: "gossip mode typeset as
-    // displaay.net/about"): each item is a row under a 1px rule, its name, date and sources as a small uppercase label in the
-    // left third, what is said as large, tight lead text in the other two thirds; each group ("Related reporting") a large
-    // heading over its rows. On a narrow chat the label sits above the text, as Displaay's own phone layout does. Only the
-    // chat is regrouped: the Details page keeps documentedRecordHtml's markup, which its own rules are written against.
-    function chatReportingHtml(html) {
-      if (!html) return html;
-      const t = document.createElement('template');
-      t.innerHTML = html;
-      t.content.querySelectorAll('[data-gossip="items"]').forEach(r => r.classList.add('dp-set'));
-      t.content.querySelectorAll('.dp-set .record-card').forEach(card => {
-        const side = document.createElement('div'), main = document.createElement('div');
-        side.className = 'dp-side'; main.className = 'dp-main';
-        [...card.children].forEach(ch => {
-          // The label column: the title and date lines, and the line of source links.
-          const head = ch.classList.contains('kicker') || (!!ch.querySelector('.kicker') && !ch.querySelector('p'));
-          const sources = ch.classList.contains('account-source-links')
-            || (ch.tagName === 'DIV' && ch.classList.contains('no-indent') && !!ch.querySelector('a') && !ch.querySelector('p'));
-          // In the narrow label column the sources go one to a line, as Displaay's lists do, so a comma never starts a line.
-          if (sources) { [...ch.childNodes].forEach(n => { if (n.nodeType === 3 && /^[\s,]*$/.test(n.textContent)) n.remove(); }); ch.classList.add('dp-sources'); }
-          (head || sources ? side : main).appendChild(ch);
-        });
-        card.classList.add('dp-row');
-        card.append(side, main);
-      });
-      return t.innerHTML;
-    }
     function documentedRecordHtml(inst) {
       if (!inst) return '';
       const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'source'; } };
@@ -16504,7 +16477,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
-        const reported = chatReportingHtml(documentedRecordHtml(target));
+        const reported = documentedRecordHtml(target);
         // Asked for gossip: the reported items alone, no title line, rating or source list around them.
         if (isGossipModeActive || GOSSIP_ASK.test(query)) {
           // A record with no reported items can still carry a watch flag or a flagged funder: that line is its gossip.
@@ -20627,13 +20600,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=540"></script>
-<script src="assets/funding-views.js?v=540"></script>
-<script src="assets/layers.js?v=540"></script>
-<script src="assets/hq-detail.js?v=540"></script>
-<script src="assets/bubbles.js?v=540" defer></script>
-<script src="assets/phone-maps.js?v=540"></script>
-<script src="assets/desktop-maps.js?v=540"></script>
-<script src="assets/chat-resize.js?v=540"></script>
+<script src="assets/typeset.js?v=542"></script>
+<script src="assets/funding-views.js?v=542"></script>
+<script src="assets/layers.js?v=542"></script>
+<script src="assets/hq-detail.js?v=542"></script>
+<script src="assets/bubbles.js?v=542" defer></script>
+<script src="assets/phone-maps.js?v=542"></script>
+<script src="assets/desktop-maps.js?v=542"></script>
+<script src="assets/chat-resize.js?v=542"></script>
 </body>
 </html>
