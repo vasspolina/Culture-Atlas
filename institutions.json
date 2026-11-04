@@ -131815,8 +131815,8 @@
     "sources": [
       "https://gallery-victoria.ru/about/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 53.191597,
+    "lon": 50.086121,
     "country": "Russia",
     "city": "Samara",
     "website": "https://gallery-victoria.ru/about/",
@@ -131940,6 +131940,24 @@
       ],
       "website": "https://gallery-victoria.ru/ (checked 2026-10-24; loads)",
       "retrieved": "2026-10-24"
+    },
+    "address": "Ulitsa Nekrasovskaya 2, Samara 443028, Russia",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.openstreetmap.org/node/14017803967",
+          "https://gallery-victoria.ru/contacts/"
+        ],
+        "basis": "OpenStreetMap, gallery \"Victoria\" at 2, Nekrasovskaya ulitsa, Samara 443028, inside the three-storey building way/163313695; the address is the one the gallery gives on its contacts page (g. Samara, ul. Nekrasovskaya, 2)",
+        "retrieved": "2026-11-04"
+      },
+      "address": {
+        "urls": [
+          "https://gallery-victoria.ru/contacts/"
+        ],
+        "basis": "Gallery contacts page: g. Samara, ul. Nekrasovskaya, 2",
+        "retrieved": "2026-11-04"
+      }
     }
   },
   {

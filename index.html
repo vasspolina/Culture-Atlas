@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=542">
-  <script src="assets/config.js?v=542"></script>
-  <script src="assets/subtopic.js?v=542"></script>
-  <script src="assets/names.js?v=542"></script>
-  <script src="assets/grounding.js?v=542"></script>
-  <script src="assets/repeats.js?v=542"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=548">
+  <script src="assets/config.js?v=548"></script>
+  <script src="assets/subtopic.js?v=548"></script>
+  <script src="assets/names.js?v=548"></script>
+  <script src="assets/grounding.js?v=548"></script>
+  <script src="assets/repeats.js?v=548"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=542"></script>
+  <script src="assets/institutions.js?v=548"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10019,11 +10019,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v542';
+    const ATLAS_RELEASE = 'culture-atlas-v548';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=542').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=548').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10096,6 +10096,12 @@ return maplibregl$1;
     // Slower Cinematic Motion Physics
     let rotLon = -45;
     let rotLat = 35;
+    // The globe has no up. Like Fuller's Dymaxion map, north is one direction among others: the view is a free
+    // rotation (centre longitude, centre latitude, and a roll of the picture about its centre), dragging turns it
+    // as a trackball would, and nothing pulls it back to north-up. It opens tilted by the Earth's axial tilt;
+    // the compass shows where north is and a click on it brings north back to the top.
+    let rotRoll = 23.4;
+    let rollTarget = null;            // set by the compass: the roll eases to it, then is cleared
     let isAutoSpinning = true;
     let isPointerOverGlobe = false;   // a mouse over the globe holds the slow rotation still; it resumes when the cursor leaves
     let isDragging = false;
@@ -10125,6 +10131,10 @@ return maplibregl$1;
     Object.defineProperty(window, 'rotLat', {
       get() { return rotLat; },
       set(v) { rotLat = v; }
+    });
+    Object.defineProperty(window, 'rotRoll', {
+      get() { return rotRoll; },
+      set(v) { rotRoll = v; }
     });
     Object.defineProperty(window, 'targetRotLon', {
       get() { return targetRotLon; },
@@ -10177,15 +10187,110 @@ return maplibregl$1;
     function toRad(deg) { return deg * Math.PI / 180; }
     function toDeg(rad) { return rad * 180 / Math.PI; }
 
+    // =========================================================
+    //  WINKEL TRIPEL (user's instruction, 4 Nov 2026)
+    // =========================================================
+    // The world is drawn flat, in Winkel tripel (Winkel 1921; National Geographic's world map since 1998): the
+    // average of an equirectangular map on the standard parallel acos(2/π) and Aitoff, so no one of area, direction
+    // or distance is badly wrong. It is oblique: the free rotation (centre longitude, latitude and roll, see rotRoll)
+    // turns the sphere first, and the map is drawn about whatever is at the centre, so there is still no up and the
+    // seam (the meridian behind the centre) moves as the world turns. The whole world shows at once: no far side.
+    // Set WINKEL to false to go back to the orthographic globe; every caller goes through project() / unproject().
+    const WINKEL = true;
+    const WT_COS1 = 2 / Math.PI;
+    const WT_W = 2 + Math.PI;          // full width of the unit map, at the equator from -π to π
+    const WT_H = Math.PI;              // full height, pole to pole
+    const WT_CENTRE_SCALE = 0.905;     // px per radian at the centre, per unit of scale: sqrt(0.818 across x 1 up)
+    function wtRaw(lam, phi) {
+      const cphi = Math.cos(phi);
+      const alpha = Math.acos(Math.max(-1, Math.min(1, cphi * Math.cos(lam / 2))));
+      const sinc = alpha < 1e-9 ? 1 : Math.sin(alpha) / alpha;
+      return [0.5 * (lam * WT_COS1 + 2 * cphi * Math.sin(lam / 2) / sinc), 0.5 * (phi + Math.sin(phi) / sinc)];
+    }
+    // No closed form back: Newton's method on the two equations, with a numeric Jacobian. It starts from the
+    // equirectangular guess and converges in a handful of steps everywhere on the map; off the map it fails the test.
+    function wtInverse(X, Y) {
+      if (Math.abs(Y) > WT_H / 2 + 1e-6 || Math.abs(X) > WT_W / 2 + 1e-6) return null;
+      let lam = Math.max(-Math.PI, Math.min(Math.PI, X / 0.8183)), phi = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, Y));
+      const h = 1e-6;
+      for (let i = 0; i < 30; i++) {
+        const f = wtRaw(lam, phi);
+        const ex = f[0] - X, ey = f[1] - Y;
+        if (Math.abs(ex) < 1e-9 && Math.abs(ey) < 1e-9) break;
+        const fl = wtRaw(lam + h, phi), fp = wtRaw(lam, phi + h);
+        const a = (fl[0] - f[0]) / h, b = (fp[0] - f[0]) / h, c = (fl[1] - f[1]) / h, d = (fp[1] - f[1]) / h;
+        const det = a * d - b * c;
+        if (Math.abs(det) < 1e-12) break;
+        lam -= (d * ex - b * ey) / det;
+        phi -= (a * ey - c * ex) / det;
+        lam = Math.max(-Math.PI, Math.min(Math.PI, lam));
+        phi = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, phi));
+      }
+      const f = wtRaw(lam, phi);
+      if (Math.hypot(f[0] - X, f[1] - Y) > 1e-4) return null;
+      return [lam, phi];
+    }
+    // Pixels per unit of the map: at the base zoom the whole world fits the pane with a small margin; zooming
+    // scales it as the globe's radius did, so every r threshold in the page still means the same zoom.
+    function wtScale(r) {
+      return r * Math.min(width * 0.94 / WT_W, height * 0.9 / WT_H) / Math.max(1, baseRadius);
+    }
+    // The map's outline, unit coordinates: the seam meridian on both edges, pole to pole.
+    const WT_OUTLINE = (() => {
+      const pts = [];
+      for (let i = 0; i <= 90; i++) pts.push(wtRaw(Math.PI, -Math.PI / 2 + Math.PI * i / 90));
+      for (let i = 0; i <= 90; i++) pts.push(wtRaw(-Math.PI, Math.PI / 2 - Math.PI * i / 90));
+      return pts;
+    })();
+    function wtOutlinePath(r, cx, cy) {
+      const k = wtScale(r);
+      ctx.beginPath();
+      WT_OUTLINE.forEach((q, i) => { const x = cx + q[0] * k, y = cy - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+      ctx.closePath();
+    }
+    // The view matrix, cached: project() runs for every coastline point of every frame.
+    let viewMatKey = '', viewMat = null;
+    function currentViewMatrix() {
+      const key = rotLon + '|' + rotLat + '|' + rotRoll;
+      if (key !== viewMatKey) { viewMat = viewMatrix(); viewMatKey = key; }
+      return viewMat;
+    }
+    function projectWinkel(lon, lat, r, cx, cy) {
+      const m = currentViewMatrix();
+      const phi0 = toRad(lat), lam0 = toRad(lon), cp = Math.cos(phi0);
+      const X = cp * Math.sin(lam0), Y = Math.sin(phi0), Z = cp * Math.cos(lam0);
+      const vx = m[0][0] * X + m[0][1] * Y + m[0][2] * Z;
+      const vy = m[1][0] * X + m[1][1] * Y + m[1][2] * Z;
+      const vz = m[2][0] * X + m[2][1] * Y + m[2][2] * Z;
+      const lam = Math.atan2(vx, vz), phi = Math.asin(Math.max(-1, Math.min(1, vy)));
+      const q = wtRaw(lam, phi), k = wtScale(r);
+      // Everything is on the map, so everything is "front" at full depth; lam is the oblique longitude,
+      // which the coastline drawing uses to break a line where it crosses the seam.
+      return { x: cx + q[0] * k, y: cy - q[1] * k, z: r, front: true, depth: 1, lam };
+    }
+    // A canvas point to the oblique view vector under it (x right, y up, z toward the viewer), or null off the map.
+    function winkelScreenToView(px, py, r, cx, cy) {
+      const k = wtScale(r);
+      const inv = wtInverse((px - cx) / k, -(py - cy) / k);
+      if (!inv) return null;
+      const cp = Math.cos(inv[1]);
+      return [cp * Math.sin(inv[0]), Math.sin(inv[1]), cp * Math.cos(inv[0])];
+    }
+
     function project(lon, lat, r, cx, cy) {
+      if (WINKEL) return projectWinkel(lon, lat, r, cx, cy);
       const lambda = toRad(lon - rotLon);
       const phi = toRad(lat);
       const theta = toRad(rotLat);
 
       const cosPhi = Math.cos(phi);
-      const x = r * cosPhi * Math.sin(lambda);
-      const y = r * (Math.cos(theta) * Math.sin(phi) - Math.sin(theta) * cosPhi * Math.cos(lambda));
+      const x0 = r * cosPhi * Math.sin(lambda);
+      const y0 = r * (Math.cos(theta) * Math.sin(phi) - Math.sin(theta) * cosPhi * Math.cos(lambda));
       const z = r * (Math.sin(theta) * Math.sin(phi) + Math.cos(theta) * cosPhi * Math.cos(lambda));
+      // Roll: the picture turns about its centre, so north need not be up.
+      const rho = toRad(rotRoll), cr = Math.cos(rho), sr = Math.sin(rho);
+      const x = x0 * cr - y0 * sr;
+      const y = x0 * sr + y0 * cr;
 
       return {
         x: cx + x,
@@ -10201,8 +10306,20 @@ return maplibregl$1;
     function limbFade(depth, gate) { return Math.max(0, Math.min(1, (depth - gate) / 0.14)); }
 
     function unproject(px, py, r, cx, cy) {
-      const x = (px - cx) / r;
-      const y = -(py - cy) / r;
+      if (WINKEL) {
+        const v = winkelScreenToView(px, py, r, cx, cy);
+        if (!v) return null;
+        const m = currentViewMatrix();   // a rotation: its inverse is its transpose
+        const X = m[0][0] * v[0] + m[1][0] * v[1] + m[2][0] * v[2];
+        const Y = m[0][1] * v[0] + m[1][1] * v[1] + m[2][1] * v[2];
+        const Z = m[0][2] * v[0] + m[1][2] * v[1] + m[2][2] * v[2];
+        return { lat: toDeg(Math.asin(Math.max(-1, Math.min(1, Y)))), lon: toDeg(Math.atan2(X, Z)) };
+      }
+      const xs = (px - cx) / r;
+      const ys = -(py - cy) / r;
+      const rho = toRad(rotRoll), cr = Math.cos(rho), sr = Math.sin(rho);
+      const x = xs * cr + ys * sr;
+      const y = -xs * sr + ys * cr;
       const d2 = x * x + y * y;
       if (d2 > 1) return null;
       const z = Math.sqrt(Math.max(0, 1 - d2));
@@ -10222,6 +10339,61 @@ return maplibregl$1;
         lon: (toDeg(lambda) + rotLon + 540) % 360 - 180
       };
     }
+
+    // The view as a rotation matrix. World axes: X = cos(lat) sin(lon), Y = sin(lat) (north), Z = cos(lat) cos(lon).
+    // View axes: x right, y up, z toward the viewer. viewToWorld(v) and its inverse are the same three steps as project().
+    function worldToView(X, Y, Z) {
+      const l0 = toRad(rotLon), th = toRad(rotLat), rho = toRad(rotRoll);
+      const Xs = X * Math.cos(l0) - Z * Math.sin(l0);
+      const Zs = X * Math.sin(l0) + Z * Math.cos(l0);
+      const y0 = Math.cos(th) * Y - Math.sin(th) * Zs;
+      const z = Math.sin(th) * Y + Math.cos(th) * Zs;
+      return [Xs * Math.cos(rho) - y0 * Math.sin(rho), Xs * Math.sin(rho) + y0 * Math.cos(rho), z];
+    }
+    function viewMatrix() {
+      const a = worldToView(1, 0, 0), b = worldToView(0, 1, 0), c = worldToView(0, 0, 1);
+      return [[a[0], b[0], c[0]], [a[1], b[1], c[1]], [a[2], b[2], c[2]]];
+    }
+    // Reads centre longitude, latitude and roll back out of a matrix. The centre is the world point on the view's
+    // z axis (row 3); the roll is where the north pole points on screen (column 2).
+    function setViewFromMatrix(m) {
+      const cX = m[2][0], cY = m[2][1], cZ = m[2][2];
+      rotLat = toDeg(Math.asin(Math.max(-1, Math.min(1, cY))));
+      if (Math.hypot(cX, cZ) > 1e-9) rotLon = toDeg(Math.atan2(cX, cZ));
+      if (Math.hypot(m[0][1], m[1][1]) > 1e-9) rotRoll = toDeg(Math.atan2(-m[0][1], m[1][1]));
+    }
+    // Turns the view about an axis given in view space (x right, y up, z toward the viewer), by deg degrees.
+    function turnView(ax, ay, az, deg) {
+      const n = Math.hypot(ax, ay, az);
+      if (n < 1e-12 || !deg) return;
+      ax /= n; ay /= n; az /= n;
+      const t = toRad(deg), c = Math.cos(t), s = Math.sin(t), k = 1 - c;
+      const q = [
+        [c + ax * ax * k, ax * ay * k - az * s, ax * az * k + ay * s],
+        [ay * ax * k + az * s, c + ay * ay * k, ay * az * k - ax * s],
+        [az * ax * k - ay * s, az * ay * k + ax * s, c + az * az * k]
+      ];
+      const m = viewMatrix(), out = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+      for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) out[i][j] = q[i][0] * m[0][j] + q[i][1] * m[1][j] + q[i][2] * m[2][j];
+      setViewFromMatrix(out);
+    }
+    // A drag of (dx, dy) screen pixels, scaled to degrees: the surface under the pointer follows it in any
+    // direction, over the poles too. Right turns about the view's up axis, down about its right axis.
+    function dragView(dxDeg, dyDeg) {
+      const d = Math.hypot(dxDeg, dyDeg);
+      if (d > 0) turnView(dyDeg, dxDeg, 0, d);
+    }
+    // The point under a canvas position, as a unit vector in view space (null off the disc).
+    function screenToView(px, py, r, cx, cy) {
+      if (WINKEL) return winkelScreenToView(px, py, r, cx, cy);
+      const x = (px - cx) / r, y = -(py - cy) / r, d2 = x * x + y * y;
+      return d2 > 1 ? null : [x, y, Math.sqrt(1 - d2)];
+    }
+    function geoToView(lon, lat) {
+      const phi = toRad(lat), lam = toRad(lon);
+      return worldToView(Math.cos(phi) * Math.sin(lam), Math.sin(phi), Math.cos(phi) * Math.cos(lam));
+    }
+    window.atlasTurnGlobe = turnView;
 
 
     function pointInPolygon(px, py, poly) {
@@ -10531,13 +10703,22 @@ return maplibregl$1;
       if (!isDragging && !isFlying) {
         if (Math.abs(velLon) > 0.001 || Math.abs(velLat) > 0.001) {
           const frames = dt * 60;
-          rotLon = (rotLon - velLon * frames) % 360;
-          rotLat = Math.max(-82, Math.min(82, rotLat + velLat * frames));
+          // velLon / velLat are the last drag's screen steps (right, down) in degrees a frame.
+          dragView(velLon * frames, velLat * frames);
           const decay = Math.pow(0.91, frames);
           velLon *= decay;
           velLat *= decay;
         } else if (isAutoSpinning && !isPointerOverGlobe) {
           rotLon = (rotLon + AUTO_SPIN_DEG_PER_SEC * dt) % 360;
+        }
+      }
+
+      if (rollTarget !== null) {
+        if (isDragging) rollTarget = null;
+        else {
+          const dR = ((rollTarget - rotRoll) % 360 + 540) % 360 - 180;
+          if (Math.abs(dR) < 0.05) { rotRoll = rollTarget; rollTarget = null; }
+          else rotRoll += dR * (1 - Math.exp(-dt * 6));
         }
       }
 
@@ -10576,22 +10757,13 @@ return maplibregl$1;
           const acx = width / 2, acy = height / 2;
           const before = unproject(zoomAnchor.x, zoomAnchor.y, prevR, acx, acy);
           if (before) {
-            // Two passes: the longitude offset and the latitude tilt are coupled, and one pass left
-            // 0.1 degrees of drift a step, which over a long zoom walked the pin out from under the wheel.
-            for (let pass = 0; pass < 2; pass++) {
-              const after = unproject(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
-              if (!after) break;
-              rotLon = (rotLon + (before.lon - after.lon) + 540) % 360 - 180;
-              // Latitude is a tilt, not an offset: a Newton step on the tilt.
-              const probe = 0.5, keep = rotLat;
-              rotLat = Math.max(-82, Math.min(82, keep + probe));
-              const tilted = unproject(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
-              rotLat = keep;
-              const mid = unproject(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
-              if (tilted && mid) {
-                const slope = (tilted.lat - mid.lat) / probe;
-                if (Math.abs(slope) > 1e-3) rotLat = Math.max(-82, Math.min(82, keep + (before.lat - mid.lat) / slope));
-              }
+            // The point that was under the wheel, where it is now, turned straight back to under the wheel.
+            const a = geoToView(before.lon, before.lat);
+            const b = screenToView(zoomAnchor.x, zoomAnchor.y, currentRadius, acx, acy);
+            if (b) {
+              const ax = a[1] * b[2] - a[2] * b[1], ay = a[2] * b[0] - a[0] * b[2], az = a[0] * b[1] - a[1] * b[0];
+              const ang = toDeg(Math.atan2(Math.hypot(ax, ay, az), a[0] * b[0] + a[1] * b[1] + a[2] * b[2]));
+              turnView(ax, ay, az, ang);
             }
           }
         }
@@ -10647,8 +10819,8 @@ return maplibregl$1;
 
         // 0. Clean Off-Black Universal Space Canvas (Starfield disabled per user request)
         // 1. The globe is a black disc with a single hairline limb: lines only, no fills, no shading.
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        // On the Winkel tripel map the limb is the map's own outline.
+        if (WINKEL) wtOutlinePath(r, cx, cy); else { ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); }
         ctx.fillStyle = G_GROUND;
         ctx.fill();
         ctx.strokeStyle = G_LINE;
@@ -10657,15 +10829,15 @@ return maplibregl$1;
 
         // Clip all globe surface features strictly to the spherical limb
         ctx.save();
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        if (WINKEL) wtOutlinePath(r, cx, cy); else { ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); }
         ctx.clip();
 
         // 3. No graticule and no degree labels: the coastlines and borders are the only lines.
 
         // 4. Land Polygons with Anti-Glitch Horizon Edge Clipping
         const cosRotLat = Math.max(0.15, Math.cos(toRad(rotLat)));
-        const viewAngleSpan = Math.min(1.8, Math.max(0.08, (Math.max(width, height) / r))) * (180 / Math.PI) + 12;
+        const spanScale = WINKEL ? wtScale(r) * WT_CENTRE_SCALE * 0.6 : r;   // 0.6: the edges of the map are stretched
+        const viewAngleSpan = Math.min(WINKEL ? Math.PI : 1.8, Math.max(0.08, (Math.max(width, height) / spanScale))) * (180 / Math.PI) + 12;
         const minVisLat = rotLat - viewAngleSpan;
         const maxVisLat = rotLat + viewAngleSpan;
         const lonAngleSpan = viewAngleSpan / cosRotLat + 15;
@@ -10680,7 +10852,7 @@ return maplibregl$1;
             if (country.b[3] < minVisLat || country.b[2] > maxVisLat) continue;
             const cLon = (country.b[0] + country.b[1]) / 2;
             const dLon = Math.abs((cLon - rotLon + 540) % 360 - 180);
-            if (dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
+            if (Math.abs(rotLat) + viewAngleSpan < 80 && dLon > lonAngleSpan + (country.b[1] - country.b[0]) / 2) continue;
           }
 
           // Countries shaded by the funding views (assets/funding-views.js) take their fill from there.
@@ -10702,7 +10874,25 @@ return maplibregl$1;
 
             if (!anyFront) continue;
 
-            if (allFront) {
+            // Winkel tripel: a ring that crosses the seam would draw a line across the whole map. It is drawn as
+            // its pieces, pen up at each crossing, and not filled.
+            let crossesSeam = false;
+            if (WINKEL) {
+              for (let k = 0; k < proj.length; k++) {
+                if (Math.abs(proj[k].lam - proj[(k + 1) % proj.length].lam) > Math.PI) { crossesSeam = true; break; }
+              }
+            }
+            if (crossesSeam) {
+              ctx.beginPath();
+              ctx.moveTo(proj[0].x, proj[0].y);
+              for (let k = 1; k <= proj.length; k++) {
+                const a = proj[k - 1], b = proj[k % proj.length];
+                if (Math.abs(a.lam - b.lam) > Math.PI) ctx.moveTo(b.x, b.y); else ctx.lineTo(b.x, b.y);
+              }
+              ctx.strokeStyle = G_LINE;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            } else if (allFront) {
               ctx.beginPath();
               ctx.moveTo(proj[0].x, proj[0].y);
               for (let k = 1; k < proj.length; k++) {
@@ -11297,7 +11487,7 @@ return maplibregl$1;
       // Live Cartographic HUD (Scale Bar, Coordinates, Interactive Compass Rose)
       if (r > baseRadius * 1.3) {
         ctx.save();
-        const actualKmPerPx = 6371 / r;
+        const actualKmPerPx = 6371 / (WINKEL ? wtScale(r) * WT_CENTRE_SCALE : r);
         const targetPx = 90;
         const rawKm = actualKmPerPx * targetPx;
         let scaleVal = 1, scaleUnit = 'km', barPx = targetPx;
@@ -11382,6 +11572,11 @@ return maplibregl$1;
         ctx.fill();
         ctx.stroke();
 
+        // The needle points where north is on screen: the roll turns it.
+        ctx.save();
+        ctx.translate(compassX, compassY);
+        ctx.rotate(-toRad(rotRoll));
+        ctx.translate(-compassX, -compassY);
         ctx.fillStyle = compassInk;
         ctx.beginPath();
         ctx.moveTo(compassX, compassY - 11);
@@ -11397,12 +11592,15 @@ return maplibregl$1;
         ctx.lineTo(compassX - 4.5, compassY);
         ctx.closePath();
         ctx.stroke();
+        ctx.restore();
 
+        // The N rides the ring at the needle's tip and stays upright, so it reads at any roll.
+        const nAng = toRad(rotRoll);
         ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
         ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
-        ctx.textBaseline = 'bottom';
-        ctx.fillText('N', compassX, compassY - 21);
+        ctx.textBaseline = 'middle';
+        ctx.fillText('N', compassX - Math.sin(nAng) * 27, compassY - Math.cos(nAng) * 27);
         ctx.restore();
       }
 
@@ -11449,7 +11647,7 @@ return maplibregl$1;
 
       // The view moved under a still pointer (zoom, flight, spin): pick again where the pointer is,
       // so the card and the cursor belong to what is under it now, not to where it was.
-      const viewKey = currentRadius.toFixed(2) + '|' + rotLon.toFixed(3) + '|' + rotLat.toFixed(3) + '|' + width + 'x' + height;
+      const viewKey = currentRadius.toFixed(2) + '|' + rotLon.toFixed(3) + '|' + rotLat.toFixed(3) + '|' + rotRoll.toFixed(3) + '|' + width + 'x' + height;
       if (viewKey !== lastViewKey) {
         lastViewKey = viewKey;
         if (lastPointer && !isDragging && typeof updateHoverCursor === 'function') updateHoverCursor(lastPointer.x, lastPointer.y);
@@ -19737,8 +19935,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
-      // Check Compass Rose click to re-orient North
+      // Check Compass Rose click to re-orient North: the roll eases back to north-up, and the centre to 35°N.
       if (Math.hypot(mx - (width - 38), my - 38) < 22) {
+        rollTarget = 0;
         flyTo(rotLon, 35);
         return;
       }
@@ -19868,7 +20067,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.getHoveredCity = () => hoveredCity;
     window.getSelectedCityFilter = () => selectedCityFilter;
     window.getLabelCounts = () => ({ inst: visibleDots.filter(d => d.labelBox).length, country: lastShownCountryLabels.size, city: cityBadgeHitboxes.length });
-    window.getView = () => ({ r: currentRadius, target: targetRadius, lon: rotLon, lat: rotLat });
+    window.getView = () => ({ r: currentRadius, target: targetRadius, lon: rotLon, lat: rotLat, roll: rotRoll });
     window.__unproject = (x, y) => unproject(x, y, currentRadius, width / 2, height / 2);
     window.__project = (lon, lat) => project(lon, lat, currentRadius, width / 2, height / 2);
     window.handleGlobeClick = handleGlobeClick;
@@ -20108,19 +20307,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
         isAutoSpinning = false;
-        rotLon = (rotLon + 6) % 360;
+        dragView(-6, 0);
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
         isAutoSpinning = false;
-        rotLon = (rotLon - 6) % 360;
+        dragView(6, 0);
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         isAutoSpinning = false;
-        rotLat = Math.min(82, rotLat + 5);
+        dragView(0, 5);
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
         isAutoSpinning = false;
-        rotLat = Math.max(-82, rotLat - 5);
+        dragView(0, -5);
+      } else if ((e.key === '[' || e.key === ']') && !isCityStreetViewActive) {
+        // The globe has no up: [ and ] turn the picture about its centre.
+        e.preventDefault();
+        isAutoSpinning = false;
+        rollTarget = null;
+        turnView(0, 0, 1, e.key === '[' ? 10 : -10);
       } else if (e.key === 'Escape') {
         const drawer = document.getElementById('detailDrawer');
         const auditModal = document.getElementById('momaAuditModal');
@@ -20401,6 +20606,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // 4. Smoothly reset camera zoom and orientation to global planetary overview
       targetRadius = baseRadius;
       currentRadius = baseRadius;
+      rollTarget = 23.4;   // back to the opening tilt, not to north-up: the globe has no up
       if (typeof flyTo === 'function') {
         flyTo(0, 20, baseRadius);
       } else {
@@ -20473,6 +20679,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Touch & Pointer Drag for Globe
     let touchDistance = 0;
     let initialZoomRadius = 0;
+    let touchAngle = 0;               // two fingers twisting turn the globe about the screen's centre
 
     canvas.addEventListener('touchstart', e => {
       if (e.touches.length === 2) {
@@ -20481,6 +20688,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           e.touches[0].clientY - e.touches[1].clientY
         );
         initialZoomRadius = targetRadius;
+        touchAngle = Math.atan2(e.touches[1].clientY - e.touches[0].clientY, e.touches[1].clientX - e.touches[0].clientX);
+        rollTarget = null;
         // Two fingers zoom; neither of them drags. Without this each finger's move also turned
         // the globe, and a pinch jittered.
         pinching = true;
@@ -20503,6 +20712,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - trect.left;
         const my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - trect.top;
         zoomAnchor = unproject(mx, my, currentRadius, width / 2, height / 2) ? { x: mx, y: my } : null;
+        // A twist of the two fingers turns the picture with them: the globe has no up.
+        const ang = Math.atan2(e.touches[1].clientY - e.touches[0].clientY, e.touches[1].clientX - e.touches[0].clientX);
+        let dA = ang - touchAngle;
+        if (dA > Math.PI) dA -= 2 * Math.PI;
+        if (dA < -Math.PI) dA += 2 * Math.PI;
+        touchAngle = ang;
+        if (Math.abs(dA) > 0.002) { isAutoSpinning = false; turnView(0, 0, 1, -toDeg(dA)); }
       }
     }, { passive: true });
 
@@ -20543,14 +20759,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const dy = e.clientY - lastY;
         lastX = e.clientX;
         lastY = e.clientY;
-        const dragSens = (baseRadius / Math.max(baseRadius, currentRadius)) * 0.18;
-        const cosLat = Math.max(0.25, Math.cos(toRad(rotLat)));
-        const dLonStep = (dx * dragSens) / cosLat;
-        const dLatStep = dy * dragSens;
-        rotLon = (rotLon - dLonStep) % 360;
-        rotLat = Math.max(-82, Math.min(82, rotLat + dLatStep));
-        velLon = velLon * 0.35 + dLonStep * 0.65;
-        velLat = velLat * 0.35 + dLatStep * 0.65;
+        // On the flat map a pixel at the centre is 1 / (scale x 0.905) radians: the land under the pointer follows it.
+        const dragSens = WINKEL ? toDeg(1 / (wtScale(currentRadius) * WT_CENTRE_SCALE)) : (baseRadius / Math.max(baseRadius, currentRadius)) * 0.18;
+        // A trackball: the globe turns the way the pointer goes, in any direction and over the poles,
+        // with no latitude limit and no pull back to north-up.
+        const dXStep = dx * dragSens;
+        const dYStep = dy * dragSens;
+        dragView(dXStep, dYStep);
+        velLon = velLon * 0.35 + dXStep * 0.65;
+        velLat = velLat * 0.35 + dYStep * 0.65;
       }
     });
 
@@ -20628,13 +20845,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=542"></script>
-<script src="assets/funding-views.js?v=542"></script>
-<script src="assets/layers.js?v=542"></script>
-<script src="assets/hq-detail.js?v=542"></script>
-<script src="assets/bubbles.js?v=542" defer></script>
-<script src="assets/phone-maps.js?v=542"></script>
-<script src="assets/desktop-maps.js?v=542"></script>
-<script src="assets/chat-resize.js?v=542"></script>
+<script src="assets/typeset.js?v=548"></script>
+<script src="assets/funding-views.js?v=548"></script>
+<script src="assets/layers.js?v=548"></script>
+<script src="assets/hq-detail.js?v=548"></script>
+<script src="assets/bubbles.js?v=548" defer></script>
+<script src="assets/phone-maps.js?v=548"></script>
+<script src="assets/desktop-maps.js?v=548"></script>
+<script src="assets/chat-resize.js?v=548"></script>
 </body>
 </html>
