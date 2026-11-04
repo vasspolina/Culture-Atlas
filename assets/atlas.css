@@ -3620,3 +3620,40 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-poster .gm-poster-status{border-radius:8px!important;box-shadow:none!important;padding:4px 10px!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed .gm-alert-tag{border-radius:8px!important;background:var(--gm-top-ground,#eeece6)!important;color:var(--ink)!important;box-shadow:none!important}
 }
+
+/* ==== LAYERS: FUNDER FILTERS (user, 4 Nov 2026: "make these into filters, keep in layers drawer") ====
+   Funder types and the widest-reaching funders are rows of switches, set after a type foundry's stylistic-set panel: a flat
+   ground row, the name on the left, the switch on the right, two to a line where the drawer is wide enough. The state is told
+   by the knob's side and fill, not by colour; the funder's colour dot stays as the key to its lines on the map. */
+#layersPanel#layersPanel#layersPanel .layers-filters{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px!important;flex-direction:initial}
+#layersPanel#layersPanel#layersPanel .filter-row{display:grid!important;grid-template-columns:11px minmax(0,1fr) auto auto!important;align-items:center!important;column-gap:10px!important;row-gap:0!important;min-height:44px;padding:8px 12px!important;border:0;border-radius:0!important;background:var(--row)!important;color:var(--row-ink)!important;font:400 var(--fs-s)/1.25 var(--sans)!important;text-align:left;cursor:pointer;flex:initial}
+#layersPanel#layersPanel#layersPanel label.filter-row{grid-template-columns:11px minmax(0,1fr) auto!important}
+#layersPanel#layersPanel#layersPanel .filter-row>*{grid-column:auto!important;grid-row:auto!important;margin:0!important;white-space:normal!important}
+#layersPanel#layersPanel#layersPanel .filter-row:hover{background:var(--row-hover)!important;color:#000!important}
+#layersPanel#layersPanel#layersPanel .filter-row:focus-visible,#layersPanel#layersPanel#layersPanel .filter-row:has(input:focus-visible){outline:2px solid var(--focus);outline-offset:2px}
+#layersPanel#layersPanel#layersPanel .filter-row>i{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--marker-color)}
+#layersPanel#layersPanel#layersPanel .filter-row .layer-name,#layersPanel#layersPanel#layersPanel .filter-row .tf-name{min-width:0;font:400 var(--fs-s)/1.25 var(--sans)!important;overflow-wrap:anywhere;overflow:visible;text-overflow:clip}
+#layersPanel#layersPanel#layersPanel .filter-row .tf-n{color:var(--row-dim);font-variant-numeric:tabular-nums;white-space:nowrap!important}
+#layersPanel#layersPanel#layersPanel .filter-row:hover .tf-n{color:#3d3d3d}
+/* The switch: a 36 by 20 track on a 1px edge, its knob left when off and right, filled, when on. */
+#layersPanel#layersPanel#layersPanel .filter-row input,#layersPanel#layersPanel#layersPanel .filter-switch{appearance:none;position:relative;display:block;flex:none;width:36px;height:20px;margin:0;padding:0;border:1px solid currentColor;border-radius:10px;background:transparent;cursor:inherit}
+#layersPanel#layersPanel#layersPanel .filter-row input::after,#layersPanel#layersPanel#layersPanel .filter-switch::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:transparent;box-shadow:inset 0 0 0 1px currentColor;transition:transform .15s var(--ease)}
+#layersPanel#layersPanel#layersPanel .filter-row input:checked,#layersPanel#layersPanel#layersPanel .filter-row[aria-checked="true"] .filter-switch{background:currentColor}
+#layersPanel#layersPanel#layersPanel .filter-row input:checked::after,#layersPanel#layersPanel#layersPanel .filter-row[aria-checked="true"] .filter-switch::after{transform:translateX(16px);background:var(--row);box-shadow:none}
+#layersPanel#layersPanel#layersPanel .filter-row:hover input:checked::after,#layersPanel#layersPanel#layersPanel .filter-row[aria-checked="true"]:hover .filter-switch::after{background:var(--row-hover)}
+#layersPanel#layersPanel#layersPanel .filter-row input:focus-visible{outline:0}
+@media (prefers-reduced-motion:reduce){#layersPanel#layersPanel#layersPanel :is(.filter-row input,.filter-switch)::after{transition:none}}
+
+/* ==== DESKTOP: THE PAGE'S NAME (user, 4 Nov 2026: "add a title back to a page above layer tags on top of page") ====
+   The maps-app layout had dropped the name; it is back at the top left, one line over the layer chips, set plain and large like
+   a foundry page's section title. A click returns the globe to the world view, as the old brand button did. */
+#gmdTitle{display:none}
+@media (min-width:768px){
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle{display:block;position:fixed;top:var(--gmd-gap);left:var(--gmd-gap);right:calc(var(--gmd-w) + var(--gmd-gap));z-index:45;margin:0;padding:0;pointer-events:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button{pointer-events:auto;display:inline-block;max-width:100%;height:auto;min-height:0;padding:0;margin:0;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;color:var(--ink)!important;font:400 28px/1.15 var(--sans)!important;letter-spacing:-.005em;text-shadow:0 0 3px var(--paper),0 0 6px var(--paper),0 0 10px var(--paper);text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
+  /* The chips move down one line to sit under the name, and the open Layers drawer stops short of them. */
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdChips{top:calc(var(--gmd-gap) + 44px)!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #layersControl #layersPanel{max-height:calc(100vh - 230px)!important}
+}

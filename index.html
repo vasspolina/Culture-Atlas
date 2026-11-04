@@ -248,17 +248,17 @@ return maplibregl$1;
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Funder types</h2>
-            <p class="layers-note">Show or hide each kind of funder on the funder layers. Point at a funder around a space to see every other space it funds.</p>
-            <div class="layers-kinds">
-              <label class="kind-chip" style="--marker-color:#818cf8"><input type="checkbox" data-kind="gov" checked> <i class="shape-dot"></i><span class="layer-name">Public funding</span></label>
-              <label class="kind-chip" style="--marker-color:#f472b6"><input type="checkbox" data-kind="found" checked> <i class="shape-dot"></i><span class="layer-name">Foundations</span></label>
-              <label class="kind-chip" style="--marker-color:#38bdf8"><input type="checkbox" data-kind="corp" checked> <i class="shape-dot"></i><span class="layer-name">Companies</span></label>
+            <p class="layers-note">Filter the funder layers by kind of funder. Point at a funder around a space to see every other space it funds.</p>
+            <div class="layers-filters">
+              <label class="filter-row" style="--marker-color:#818cf8"><i class="shape-dot"></i><span class="layer-name">Public funding</span><input type="checkbox" role="switch" data-kind="gov" checked></label>
+              <label class="filter-row" style="--marker-color:#f472b6"><i class="shape-dot"></i><span class="layer-name">Foundations</span><input type="checkbox" role="switch" data-kind="found" checked></label>
+              <label class="filter-row" style="--marker-color:#38bdf8"><i class="shape-dot"></i><span class="layer-name">Companies</span><input type="checkbox" role="switch" data-kind="corp" checked></label>
             </div>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Widest-reaching funders</h2>
-            <p class="layers-note">The funders named on the most spaces. Point at one to draw every space it funds; click to pin it, and click again or press Esc to let go.</p>
-            <div id="topFunders" class="layers-top" role="group" aria-label="Widest-reaching funders"></div>
+            <p class="layers-note">The funders named on the most spaces. Point at one to preview every space it funds; switch it on to keep it drawn. Several can be on at once.</p>
+            <div id="topFunders" class="layers-filters layers-top" role="group" aria-label="Widest-reaching funders"></div>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Spaces on the map</h2>
