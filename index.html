@@ -23,7 +23,17 @@
     (function () {
       var root = document.documentElement;
       root.classList.add('atlas-held');
-      setTimeout(function () { root.classList.remove('atlas-held'); root.classList.add('fog-ready'); }, 10000); // never leave the globe hidden
+      // Never leave the page hidden, but never show it before it is laid out either. assets/institutions.js is 11 MB and on
+      // a slow phone connection takes longer than 10 s: this used to clear the hold while it was still loading, and showed
+      // the page before assets/phone-maps.js and assets/desktop-maps.js had run (the old layout) until it arrived. Now,
+      // while the page is still loading, it waits for DOMContentLoaded and gives the main script's own release 2 s more.
+      (function () {
+        function unhold() { root.classList.remove('atlas-held'); root.classList.add('fog-ready'); }
+        setTimeout(function () {
+          if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { setTimeout(unhold, 2000); }, { once: true });
+          else unhold();
+        }, 10000);
+      })();
       window.__atlasLiveRelease = Promise.resolve(null);
       if (!('serviceWorker' in navigator) || !window.fetch) return;
       var ctl = window.AbortController ? new AbortController() : null;
@@ -35,7 +45,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=508">
+  <link rel="stylesheet" href="assets/atlas.css?v=509">
   <script src="assets/config.js?v=508"></script>
   <script src="assets/subtopic.js?v=508"></script>
   <script src="assets/names.js?v=508"></script>
@@ -9963,7 +9973,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v508';
+    const ATLAS_RELEASE = 'culture-atlas-v509';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
