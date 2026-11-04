@@ -30,12 +30,16 @@
       const onMap = PHONE() && mode !== 'chat' && mode !== 'split'
         && !(chatDrawer && !chatDrawer.classList.contains('hidden'))
         && !(detailDrawer && !detailDrawer.classList.contains('hidden'));
-      const changed = root.classList.contains('gm-map') !== onMap;
+      // gm-chat: the phone's chat, set as a sheet over the map like the record (user, 4 Nov 2026: "make chat part of the app,
+      // same as the map"). The map stays drawn behind it.
+      const onChat = PHONE() && mode === 'chat' && !(detailDrawer && !detailDrawer.classList.contains('hidden'));
+      const changed = root.classList.contains('gm-map') !== onMap || root.classList.contains('gm-chat') !== onChat;
+      root.classList.toggle('gm-chat', onChat);
       root.classList.toggle('gm-map', onMap);
       // The bar at the top comes and goes with this, so the map's height changes: let the globe redraw to fit.
       if (changed) requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
       root.classList.toggle('gm-sheet', onMap && !!sheet && !sheet.classList.contains('hidden'));
-      if (!onMap) closeMenu();
+      if (!onMap && !onChat) closeMenu();
     }
     const watch = new MutationObserver(syncState);
     watch.observe(body, { attributes: true, attributeFilter: ['data-mobile-mode', 'class'] });
@@ -43,7 +47,7 @@
     window.addEventListener('resize', syncState);
 
     // ---- Search box: a magnifier at the start, a menu at the end ------------------------------------------------
-    let menuBtn = null, menu = null;
+    let menuBtn = null, menu = null, anchorBtn = null;
     if (card && input) {
       const lens = document.createElement('span');
       lens.className = 'gm-lens';
@@ -79,7 +83,8 @@
       menu.setAttribute('role', 'menu');
       menu.setAttribute('aria-label', 'Menu');
       menu.hidden = true;
-      card.parentNode.insertBefore(menu, card.nextSibling);
+      // The menu is the page's own, not the search box's: the map's box and the chat's header both open it.
+      document.body.appendChild(menu);
 
       // The menu holds the controls the top bar holds on the other screens, and calls the same buttons, so their
       // labels and pressed states are always the bar's own.
@@ -104,12 +109,36 @@
           b.addEventListener('click', () => { closeMenu(true); src.click(); });
           menu.appendChild(b);
         });
+        // The way back to the whole globe, from a city, a country or the street map. On a phone it was two buttons in the
+        // street map's old bar (Exit and World) and the brand button in the top bar; now it is here, once.
+        const g = (n) => { try { return (0, eval)(n); } catch (_) { return undefined; } };
+        const zoomedIn = g('isCityStreetViewActive') || (g('selectedCityFilter') && g('selectedCityFilter') !== 'all') || (g('selectedCountryFilter') && g('selectedCountryFilter') !== 'all') || (g('currentRadius') > g('baseRadius') * 1.3);
+        if (zoomedIn) {
+          const w = document.createElement('button');
+          w.type = 'button';
+          w.setAttribute('role', 'menuitem');
+          w.textContent = 'Whole world';
+          w.addEventListener('click', () => {
+            closeMenu(true);
+            const back = $('backToWorldBtn');
+            if (g('isCityStreetViewActive') && back) back.click();
+            else if (typeof window.resetGlobeView === 'function') window.resetGlobeView();
+          });
+          menu.insertBefore(w, menu.firstChild);
+        }
       };
-      menuBtn.addEventListener('click', () => (menu.hidden ? openMenu() : closeMenu(true)));
-      function openMenu() {
+      menuBtn.addEventListener('click', () => (menu.hidden ? openMenu(menuBtn) : closeMenu(true)));
+      window.atlasToggleMenu = (anchor) => (menu.hidden ? openMenu(anchor) : closeMenu(true));
+      function openMenu(anchor) {
         buildMenu();
+        anchorBtn = anchor || menuBtn;
+        // Under the button when it is in the top half of the screen, over it when in the bottom half.
+        const r = anchorBtn.getBoundingClientRect();
+        menu.style.right = Math.max(12, window.innerWidth - r.right) + 'px';
+        if (r.top > window.innerHeight / 2) { menu.style.top = 'auto'; menu.style.bottom = (window.innerHeight - r.top + 6) + 'px'; }
+        else { menu.style.bottom = 'auto'; menu.style.top = (r.bottom + 6) + 'px'; }
         menu.hidden = false;
-        menuBtn.setAttribute('aria-expanded', 'true');
+        anchorBtn.setAttribute('aria-expanded', 'true');
         const first = menu.querySelector('button');
         if (first) first.focus();
       }
@@ -121,7 +150,7 @@
         else if (e.key === 'ArrowUp') { e.preventDefault(); list[(i - 1 + list.length) % list.length].focus(); }
       });
       document.addEventListener('pointerdown', (e) => {
-        if (menu && !menu.hidden && !menu.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) closeMenu(false);
+        if (menu && !menu.hidden && !menu.contains(e.target) && !(anchorBtn && anchorBtn.contains(e.target))) closeMenu(false);
       });
     }
     function openChat() {
@@ -139,8 +168,41 @@
     function closeMenu(refocus) {
       if (!menu || menu.hidden) return;
       menu.hidden = true;
-      menuBtn.setAttribute('aria-expanded', 'false');
-      if (refocus) menuBtn.focus();
+      const a = anchorBtn || menuBtn;
+      a.setAttribute('aria-expanded', 'false');
+      if (refocus) a.focus();
+    }
+
+    // ---- The chat's header, as the record sheet's: a title, the same menu, and one cross ----------------------------
+    const chatHead = $('phoneChatHead');
+    if (chatHead) {
+      const title = chatHead.querySelector('.flex-1');
+      if (title) { title.classList.add('gm-chat-title'); title.textContent = 'Chat'; }
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.id = 'gmChatMenuBtn';
+      b.setAttribute('aria-label', 'Menu');
+      b.setAttribute('aria-haspopup', 'true');
+      b.setAttribute('aria-expanded', 'false');
+      b.setAttribute('aria-controls', 'gmMenu');
+      b.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>';
+      b.addEventListener('click', () => { if (window.atlasToggleMenu) window.atlasToggleMenu(b); });
+      const close = $('phoneChatCloseBtn');
+      chatHead.insertBefore(b, close || null);
+    }
+
+    // ---- The street map's bar: one back button and the place's name -------------------------------------------------
+    // The old bar held Exit, World, the country and the place in a square box; Exit and World both left the street map. On a
+    // phone it is a round back button (what Exit did: back to the globe at this place) beside the place's name, and Whole
+    // world is in the menu.
+    const exitBtn = $('exitStreetViewBtn');
+    if (exitBtn) {
+      exitBtn.setAttribute('aria-label', 'Back to the globe');
+      const ico = document.createElement('span');
+      ico.className = 'gm-back-ico';
+      ico.setAttribute('aria-hidden', 'true');
+      ico.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
+      exitBtn.insertBefore(ico, exitBtn.firstChild);
     }
 
     // ---- Layers: a round button; the panel is a sheet from the bottom --------------------------------------------
@@ -179,6 +241,16 @@
       // !important, which an inline height cannot beat (atlas.css, "PHONE: MAPS APP").
       // The heights are measured against the map the sheet sits in, so they hold with the keyboard and on any phone.
       const room = () => (sheet.parentElement ? sheet.parentElement.clientHeight : window.innerHeight);
+      const safeBottom = (() => {
+        let v = null;
+        return () => {
+          if (v !== null) return v;
+          const probe = document.createElement('div');
+          probe.style.cssText = 'position:fixed;left:0;bottom:0;width:1px;height:env(safe-area-inset-bottom,0px);visibility:hidden;pointer-events:none';
+          document.body.appendChild(probe); v = probe.offsetHeight || 0; probe.remove();
+          return v;
+        };
+      })();
       function heightOf(d) {
         const h = room();
         if (d === 'full') return h;
@@ -198,7 +270,9 @@
           // The description now sits in the title block, above the actions, so the actions' end is the end of both.
           end = bottomOf(actions) || bottomOf(titleBlock);
         }
-        end = end ? end + 20 : 168;
+        // The iPhone's home strip covers the page's bottom edge (the page runs under it, viewport-fit=cover), so peek leaves
+        // room for it, or the actions sat under it (user, 4 Nov 2026: text overlapped at the bottom when a space was opened).
+        end = end ? end + 20 + safeBottom() : 168;
         return Math.max(168, Math.min(Math.round(end), Math.round(h * 0.7)));
       }
       function setDetent(d, animate) {
@@ -647,13 +721,15 @@
       const esc = (t) => String(t == null ? '' : t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
       const gossipOn = () => !!window.isGossipModeActive;
       const store = { get(k) { try { return localStorage.getItem(k); } catch (_) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (_) {} } };
-      const STATUS = { confirmed: 'Confirmed', resolved: 'Resolved', talk: 'Talk, not confirmed', denied: 'Denied', stale: 'Old talk', documented: 'Documented case' };
-      const KIND = { dispute: 'Dispute', report: 'Report', departure: 'Departure', money: 'Money', allegation: 'Allegation', leak: 'Leak', rumour: 'Rumour', case: 'Case' };
+      const STATUS = { confirmed: 'Confirmed', resolved: 'Resolved', talk: 'Talk, not confirmed', denied: 'Denied', stale: 'Old talk', documented: 'On record', user: 'User post, not verified' };
+      const KIND = { dispute: 'Dispute', report: 'Report', departure: 'Departure', money: 'Money', allegation: 'Allegation', leak: 'Leak', rumour: 'Rumour', case: 'Case', account: 'Staff or visitor post' };
       // What the item rests on, said outright. The two user-generated kinds say so.
       const SOURCE = {
         press: ['Press report, named outlet', false], court_or_regulator: ['Court or regulator record', false], union: ['Union statement', false],
         open_letter: ['Open letter, named signatories', false], campaign: ['Named campaign', false], social_named: ['Post by a named person', false],
         social_anonymous: ['Anonymous posts online', true], review_platform: ['Reviews posted by users', true], case: ['Documented case', false],
+        // Not every item is the press: posts by staff and visitors, and leaked documents, are on the record too.
+        user_post: ['Staff or visitor post', true], leak: ['Leaked document', false],
       };
       const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       const parse = (w) => { const m = /^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(String(w || '')); return m ? { d: new Date(Date.UTC(+m[1], +m[2] - 1, m[3] ? +m[3] : 1)), day: !!m[3] } : null; };
@@ -678,7 +754,7 @@
         if (live) {
           live.items.forEach((x) => {
             const inst = recordOf(x.inst) || { id: x.inst, name: x.name, city: x.city, country: x.country, lat: x.lat, lon: x.lon };
-            out.push({ key: x.type + ':' + (x.id || x.headline), inst, type: x.type, when: x.when, head: x.headline, said: x.said, where: x.where, who: x.type === 'case' ? 'case' : x.who_says, urls: (x.urls || []).filter(http), status: x.status, kind: x.kind, reply: x.response, outcome: x.outcome, checked: x.checked });
+            out.push({ key: x.type + ':' + (x.id || x.headline) + (x.type === 'leak' || x.type === 'account' ? ':' + x.inst + ':' + String(x.said).length : ''), inst, type: x.type, when: x.when, head: x.headline, said: x.said, where: x.where, who: x.type === 'case' ? 'case' : x.who_says, urls: (x.urls || []).filter(http), status: x.status, kind: x.kind, reply: x.response, outcome: x.outcome, checked: x.checked, role: x.role || '', dated: x.dated || '' });
           });
         } else {
           (g('ALL_INSTITUTIONS') || []).forEach((inst) => {
@@ -687,6 +763,26 @@
               // The same test as tools/build_live_feed.py: nothing without a date, an address, a named source and a check date.
               if (!it || !it.headline || !parse(it.when) || !urls.length || !it.who_says || !it.where || !/^\d{4}-\d{2}-\d{2}$/.test(it.retrieved_on || '')) return;
               out.push({ key: 'gossip:' + (it.id || it.headline), inst, type: 'gossip', when: it.when, head: it.headline, said: it.said, where: it.where, who: it.who_says, urls, status: it.status || 'talk', kind: it.kind || 'report', reply: it.response || '', outcome: it.outcome || '', checked: it.retrieved_on });
+            });
+            // Staff and visitor posts, read as the record reads them (accountView), with the date from the post's own fields.
+            ((inst.gossip_data || {}).accounts || []).forEach((a) => {
+              const urls = (a && a.sources || []).map((u) => (typeof u === 'string' ? u : u && u.url)).filter(http);
+              const F = {}; (a && a.fields || []).forEach((f) => { F[f[0]] = f[1]; });
+              const part = (v, k) => String(v || '').split(/\s*·\s*/)[k] || '';
+              const date = F['Original post date'] || (F['Subreddit / post date'] ? part(F['Subreddit / post date'], 1) : '') || part(F['Posted · self-described role'], 0) || part(F['Posting date and claimed role'], 0);
+              let v = null; try { v = typeof accountView === 'function' ? accountView(a, inst) : null; } catch (_) { v = null; }
+              if (!v || !v.summary || !/^\d{4}-\d{2}(-\d{2})?$/.test(date) || !urls.length) return;
+              const first = (v.summary.match(/^.+?[.!?](?=\s|$)/) || [v.summary])[0];
+              const head = first.length > 160 ? first.slice(0, 157).replace(/\s+\S*$/, '') + '…' : first;
+              const [where, role] = v.title.split(' · ');
+              out.push({ key: 'account:' + (a.id || head) + ':' + (inst.id || inst.name) + ':' + v.summary.length, inst, type: 'account', when: date, head, said: v.summary, where: where.replace(/ review$/, ''), who: 'user_post', urls, status: 'user', kind: 'account', reply: '', outcome: '', checked: '', role: role || '' });
+            });
+            // Leaked documents on the record.
+            (inst.wikileaks_records || []).forEach((w) => {
+              const urls = (w && w.sources || []).filter(http);
+              const months = String(w && w.date || '').match(/\d{4}-\d{2}/g);
+              if (!w || !months || !w.what_shows || !urls.length) return;
+              out.push({ key: 'leak:' + (w.doc_id || '') + ':' + (inst.id || inst.name) + ':' + w.what_shows.length, inst, type: 'leak', when: months[months.length - 1], head: w.doc_id || 'Leaked document', said: w.what_shows, where: 'WikiLeaks', who: 'leak', urls, status: 'documented', kind: 'leak', reply: '', outcome: '', checked: '', dated: String(w.date) });
             });
             (inst.case_notes || []).forEach((c, i) => {
               const urls = (c && c.sources || []).map((u) => (typeof u === 'string' ? u : u && u.url)).filter(http);
@@ -700,7 +796,8 @@
         return out;
       }
       // What the visitor may see in the current mode.
-      const shown = (x) => gossipOn() || x.status === 'confirmed' || x.status === 'resolved' || x.status === 'documented';
+      // Posts by staff and visitors are on the record outside Gossip mode too (its Personal accounts), always marked as user posts.
+      const shown = (x) => gossipOn() || x.status === 'confirmed' || x.status === 'resolved' || x.status === 'documented' || x.status === 'user';
       function items() { return allItems().filter(shown); }
 
       // Alerts: a scandal or protest at a space now. Reported in the last 60 days, not resolved or stale, and about a protest,
@@ -712,6 +809,8 @@
         const p = parse(x.when);
         if (!p || Date.now() - p.d.getTime() > ALERT_DAYS * 864e5) return false;
         if (x.status === 'resolved' || x.status === 'stale') return false;
+        // A user post or an old document does not raise an alert outside Gossip mode, and a document never does.
+        if (x.type === 'leak' || (x.status === 'user' && !gossipOn())) return false;
         return ['dispute', 'allegation', 'leak'].includes(x.kind) || TOPIC.test(x.head + ' ' + (x.said || ''));
       }
       const placeOf = (inst) => [inst.city, inst.country].filter(Boolean).join(', ');
@@ -727,9 +826,13 @@
         strip.hidden = !top;
         if (!top) return;
         strip.classList.toggle('is-alert', !!alerts.length);
-        const label = alerts.length ? (alerts.length === 1 ? '1 alert now' : alerts.length + ' alerts now') : 'Top story';
-        strip.innerHTML = '<span class="gm-strip-label"><i aria-hidden="true"></i>' + esc(label) + '</span><span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(top.inst.name) + ' · ' + esc(ago(top.when)) + '</span>';
-        strip.setAttribute('aria-label', label + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + '. Open the latest reports');
+        // An alert now is the top story (user, 4 Nov 2026: "make alert to be a top story"): the strip keeps its name, takes the
+        // alert's colour and headline, and says the report is an alert, and how many more there are.
+        const label = 'Top story';
+        const more = alerts.length > 1 ? ' · ' + (alerts.length - 1) + ' more alert' + (alerts.length > 2 ? 's' : '') : '';
+        const meta = (alerts.length ? 'Alert · ' : '') + top.inst.name + ' · ' + ago(top.when) + more;
+        strip.innerHTML = '<span class="gm-strip-label"><i aria-hidden="true"></i>' + esc(label) + '</span><span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
+        strip.setAttribute('aria-label', label + (alerts.length ? ', an alert now' : '') + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + more + '. Open the latest reports');
       }
 
       // The feed.
@@ -760,25 +863,32 @@
       };
       const svg = (b) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + b + '</svg>';
 
+      // A post's headline is its own first sentence, so its text below starts after it and does not say it twice.
+      const saidRest = (x) => {
+        const said = String(x.said || ''), head = String(x.head || '').replace(/…$/, '');
+        if (x.type === 'account' && head && said.startsWith(head)) return said.slice(head.length).replace(/^[\s.;,]+/, '');
+        return said;
+      };
+      const monthsText = (t) => String(t || '').replace(/\d{4}-\d{2}(?:-\d{2})?/g, (m) => dateText(m));
       let list = [];
       function card(x, poster, alert) {
         const i = list.indexOf(x);
         const n = x.urls.length;
         const src = SOURCE[x.who] || ['Source type not recorded', false];
         const links = '<a class="gm-stat" href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + svg(ICO.link) + n + (n === 1 ? ' source' : ' sources') + '</a>';
-        const reply = x.type === 'case' ? '' : '<span class="gm-stat">' + svg(ICO.reply) + (x.reply && !/^no reply/i.test(x.reply) ? 'Reply on record' : 'No reply found') + '</span>';
+        const reply = x.type !== 'gossip' ? '' : '<span class="gm-stat">' + svg(ICO.reply) + (x.reply && !/^no reply/i.test(x.reply) ? 'Reply on record' : 'No reply found') + '</span>';
         const posterHtml = poster ? '<div class="gm-poster' + (alert ? ' is-alert' : '') + '" aria-hidden="true"><p class="gm-poster-pill">' + esc(alert ? 'Alert · ' : '') + esc(KIND[x.kind] || 'Report') + ' · ' + esc(dateText(x.when)) + '</p><p class="gm-poster-name">' + esc(x.inst.name) + '</p><p class="gm-poster-place">' + esc(placeOf(x.inst)) + '</p><p class="gm-poster-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</p></div>' : '';
         // Where this comes from, in words: the kind of source, whether it is user-generated, who published it and when, and
         // the day the atlas last opened its addresses.
         const prov = '<p class="gm-story-prov' + (src[1] ? ' is-user' : '') + '">' + (src[1] ? '<b>User-generated, not verified</b> · ' : '') + esc(src[0])
-          + (x.where ? ' · ' + esc(x.where) : '') + ' · published ' + esc(dateText(x.when))
+          + (x.where ? ' · ' + esc(x.where) : '') + (x.role ? ' · ' + esc(x.role) : '') + (x.type === 'leak' ? ' · dated ' + esc(monthsText(x.dated) || dateText(x.when)) : x.type === 'account' ? ' · posted ' + esc(dateText(x.when)) : ' · published ' + esc(dateText(x.when)))
           + (x.checked ? ' · links checked by the atlas ' + esc(dateText(x.checked)) : '') + '</p>';
         return '<article class="gm-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">' + posterHtml
-          + '<p class="gm-story-src"><span class="gm-story-mark" aria-hidden="true">' + esc((x.where || x.inst.name).trim().charAt(0).toUpperCase()) + '</span>' + esc(x.where || 'The record') + '</p>'
+          + '<p class="gm-story-src"><span class="gm-story-mark" aria-hidden="true">' + esc((x.where || x.inst.name).trim().charAt(0).toUpperCase()) + '</span>' + esc(x.where || 'The record') + (x.role ? ' · ' + esc(x.role) : '') + '</p>'
           + '<h3 class="gm-story-head"><button type="button" class="gm-open" data-i="' + i + '">' + (alert && !poster ? '<span class="gm-alert-tag">Alert</span> ' : '') + esc(x.head) + '</button></h3>'
-          + '<p class="gm-story-when">' + (x.type === 'case' ? 'On record' : 'Reported') + ' ' + esc(ago(x.when)) + ' · ' + esc(x.inst.name) + (x.inst.city || x.inst.country ? ', ' + esc(x.inst.city || x.inst.country) : '') + '</p>'
-          + (x.said ? '<p class="gm-story-said">' + esc(x.said) + '</p>' : '')
-          + (x.reply && x.type !== 'case' ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
+          + '<p class="gm-story-when">' + ({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported') + ' ' + esc(ago(x.when)) + ' · ' + esc(x.inst.name) + (x.inst.city || x.inst.country ? ', ' + esc(x.inst.city || x.inst.country) : '') + '</p>'
+          + (saidRest(x) ? '<p class="gm-story-said">' + esc(saidRest(x)) + '</p>' : '')
+          + (x.reply && x.type === 'gossip' ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
           + (x.outcome ? '<p class="gm-story-reply"><span>Outcome</span> ' + esc(x.outcome) + '</p>' : '')
           + prov
           + '<div class="gm-story-stats">' + links + reply + '<span class="gm-stat gm-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</span>'
@@ -796,16 +906,22 @@
         const here = window.atlasHere;
         const R = Math.PI / 180;
         const km = (i) => (here && typeof i.lat === 'number' && typeof i.lon === 'number') ? 6371 * Math.acos(Math.min(1, Math.sin(here.lat * R) * Math.sin(i.lat * R) + Math.cos(here.lat * R) * Math.cos(i.lat * R) * Math.cos((here.lon - i.lon) * R))) : Infinity;
-        const alertList = take(alerts);
+        // The top story is the first alert now when there is one, else the newest report; the other alerts follow it.
         const fresh = list.filter((x) => x.status !== 'stale');
-        const top = alertList.length ? null : take(fresh.slice(0, 1))[0];
+        const top = take(alerts.length ? alerts.slice(0, 1) : fresh.slice(0, 1))[0];
+        const topIsAlert = !!(top && alerts.includes(top));
+        const alertList = take(alerts);
         const near = here ? take(list.filter((x) => km(x.inst) < 400)) : [];
-        const world = take(list).slice(0, 40);
+        // Reports and documented cases first; posts by staff and visitors and leaked documents in sections of their own, so
+        // the press is not drowned out by visitor comments and every kind of source is told apart at a glance.
+        const world = take(list.filter((x) => x.type === 'gossip' || x.type === 'case')).slice(0, 30);
+        const posts = take(list.filter((x) => x.type === 'account')).slice(0, 15);
+        const docs = take(list.filter((x) => x.type === 'leak')).slice(0, 10);
         const month = list.filter((x) => { const p = parse(x.when); return p && Date.now() - p.d.getTime() < 30 * 864e5; }).length;
-        const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '">' + svg(icon) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x, k) => card(x, alert && k === 0, alert)).join('') : '';
+        const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '">' + svg(icon) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x) => card(x, false, alert)).join('') : '';
         const bellOn = store.get('atlas-alerts') === 'on';
         feed.innerHTML = '<div class="gm-feed-grab" aria-hidden="true"></div>'
-          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(alertList.length ? ICO.alert : ICO.globe) + '<span>' + (alertList.length ? 'Latest reports' : 'Top story') + '</span></h2>'
+          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(ICO.globe) + '<span>Top story</span></h2>'
           + ('Notification' in window ? '<button type="button" class="gm-bell" aria-pressed="' + bellOn + '">' + svg(ICO.bell) + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
           + '<button type="button" class="gm-feed-close" aria-label="Close the reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5 5 19M5 5l14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></header>'
           + '<p class="gm-feed-live"><i aria-hidden="true"></i><span class="gm-feed-checked">' + liveLine() + '</span></p>'
@@ -813,11 +929,13 @@
             ? 'Gossip mode: talk and denials are included, each marked for what it is. Talk is what people say, not a finding. Items from anonymous posts or user reviews say so.'
             : 'Reports on record as confirmed or resolved, and documented cases. Turn on Gossip mode to include talk.')
             + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.</p>'
-          + (alertList.length ? '<p class="gm-feed-note">An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.</p>' : '')
-          + sec('Alerts now', ICO.alert, alertList.length + (alertList.length === 1 ? ' active' : ' active'), alertList, true)
-          + (top ? card(top, true, false) : '')
+          + (topIsAlert ? '<p class="gm-feed-note">An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.</p>' : '')
+          + (top ? card(top, true, topIsAlert) : '')
+          + sec(topIsAlert ? 'More alerts now' : 'Alerts now', ICO.alert, alertList.length + ' active', alertList, true)
           + sec('Near you', ICO.pin, near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', ICO.globe, month ? month + ' in the past 30 days' : 'Newest first', world, false)
+          + (posts.length ? '<h2 class="gm-feed-sec">' + svg(ICO.reply) + '<span>From staff and visitors</span><small>User posts</small></h2><p class="gm-feed-note">Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person\u2019s experience each, not checked as fact.</p>' + posts.map((x) => card(x, false, false)).join('') : '')
+          + (docs.length ? '<h2 class="gm-feed-sec">' + svg(ICO.link) + '<span>From leaked documents</span><small>' + docs.length + ' on record</small></h2>' + docs.map((x) => card(x, false, false)).join('') : '')
           + (!list.length ? '<p class="gm-feed-note">No dated reports on record yet.</p>' : '');
       }
       function liveLine() {
@@ -1064,7 +1182,11 @@
         const spaces = (g('ALL_INSTITUTIONS') || []).filter((i) => i.city === C);
         const big = spaces.slice().sort((a, b) => ({ L: 3, M: 2, S: 1 }[b.size] || 0) - ({ L: 3, M: 2, S: 1 }[a.size] || 0) || ((b.gossip_data ? 1 : 0) - (a.gossip_data ? 1 : 0)))[0];
         const alerts = (typeof window.atlasAlerts === 'function' ? window.atlasAlerts() : []).filter((x) => x.inst.city === C);
-        const chips = [chip(C + (p.why === 'near you' ? ', near you' : ''), '', 'gm-loc-label')];
+        const label = chip(C + (p.why === 'near you' ? ', near you' : ''), '', 'gm-loc-label');
+        // The place chip looked like a button and did nothing; now it takes the map to the place.
+        label.setAttribute('aria-label', 'Show ' + C + ' on the map');
+        label.addEventListener('click', () => { const f = g('filterByCity'); if (typeof f === 'function') f(C, true, false); });
+        const chips = [label];
         if (alerts[0]) chips.push(chip('What is happening at ' + alerts[0].inst.name + '?', 'What is happening at ' + alerts[0].inst.name + '?', 'is-alert'));
         if (big) chips.push(chip('Who funds ' + big.name + '?', 'Who funds ' + big.name + '?'));
         chips.push(chip('Flagged in ' + C, 'Which spaces in ' + C + ' are flagged, and why?'));

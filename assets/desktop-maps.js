@@ -392,8 +392,16 @@
     ctl.appendChild(zoom);
     app.appendChild(ctl);
     // The location button is the phone's (assets/phone-maps.js); here it joins the stack, over the zoom.
+    // On a phone it goes back where phone-maps.js put it, so the phone layout keeps it.
     const locate = $('gmLocateBtn');
-    if (locate) ctl.insertBefore(locate, ctl.firstChild);
+    const locateHome = locate && locate.parentNode;
+    function placeLocate() {
+      if (!locate) return;
+      if (DESK()) { if (locate.parentNode !== ctl) ctl.insertBefore(locate, ctl.firstChild); }
+      else if (locateHome && locate.parentNode !== locateHome) locateHome.appendChild(locate);
+    }
+    placeLocate();
+    window.addEventListener('resize', placeLocate);
 
     // ---- Keys: / puts the cursor in the search box, as on a maps site ----------------------------------------------
     window.addEventListener('keydown', (e) => {
