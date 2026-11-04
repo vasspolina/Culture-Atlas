@@ -2691,7 +2691,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#4f5a12!important}
 
 /* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (Displaay menthol clean, magenta flagged, yellow unverified; orange in Gossip mode). */
-:root{--tier-a:#b8fbff;--tier-b:#ff5eff;--tier-u:#ffff3c}
+:root{--tier-a:#007a80;--tier-b:#b000b0;--tier-u:#7a7000}
 :root[data-theme="dark"]{--tier-a:#b8fbff;--tier-b:#ff5eff;--tier-u:#ffff3c}
 :root:root:root:root:root:root[data-theme] .inst-pin-label{--lc:var(--tier-u);background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:0}
 :root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="A"]{--lc:var(--tier-a)}
