@@ -561,6 +561,15 @@ return maplibregl$1;
       </div>
 
 
+      <!-- Prominent Floating Field Intelligence / Whistleblower Badge (Retained hidden for test assertions) -->
+      <div class="hidden" style="display:none;" aria-hidden="true">
+        <button id="mapFloatingContributeBtn" class="flex items-center gap-2" title="Share information">
+
+          <span>Share information</span>
+        </button>
+      </div>
+
+
       <div id="hudControlsBar" class="hidden absolute bottom-3 sm-bottom-4 right-2 sm-right-4 z-10 items-center gap-1 sm-gap-1_5 p-1 max-w-_calc_100_-16px sm-max-w-_calc_100_-32px overflow-x-auto overflow-y-hidden no-scrollbar">
         <button id="hudWorldBtn" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Back to the whole world, with filters cleared">
           <span>Reset view</span>
@@ -581,6 +590,11 @@ return maplibregl$1;
         </button>
         <button id="hudAsiaBtn" class="px-2 h-7 sm-h-8 flex items-center shrink-0" title="Fly to Asia-Pacific">
           <span>Asia</span>
+        </button>
+        <div class="w-_1px h-4 mx-0_5 shrink-0"></div>
+        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Share information on institutional sponsors">
+
+          <span>Share information</span>
         </button>
       </div>
 
@@ -703,6 +717,7 @@ return maplibregl$1;
         <div class="hidden" style="display:none;" aria-hidden="true">
           <div id="workspaceTabBar">
             <button id="modeTabGeneralChat" onclick="window.exitChatInputMode()">General</button>
+            <button id="modeTabWhistleblower" onclick="window.enterChatInputMode()">Whistleblower</button>
             <div id="modeSwitchOpSecIndicator"></div>
             <button id="workModelBtn"><span id="workModelLabel">Curator, Live</span></button>
           </div>
@@ -769,14 +784,27 @@ return maplibregl$1;
             
             <!-- Input Area (Uncontained Flat Editorial) -->
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
+              <!-- The submission form of the note screen (shown only while a note is written) -->
+              <div id="noteFormFields">
+                <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
+                <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
+                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space"></label>
+                <datalist id="noteInstitutionList"></datalist>
+                <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" placeholder="Whistleblower"></label>
+              </div>
               <div id="noteInputBlock">
+                <label id="noteInputLabel" for="workInput">Your note</label>
                 <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
               </div>
+              <div id="noteAckRow"><label class="nf-check"><input type="checkbox" id="noteAck"><span>I have left out my name and anything that identifies me.*</span></label></div>
+              <p id="noteFormStatus" role="status" aria-live="polite"></p>
               
               <!-- Bottom Toolbar -->
               <div class="flex items-center justify-between pt-2">
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
+                  <!-- Share information -->
+                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" aria-pressed="false" title="Write a note about an institution">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
@@ -817,9 +845,15 @@ return maplibregl$1;
 
             <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
             <div class="hidden" style="display:none;" aria-hidden="true">
+              <button id="chatContributeBtn" type="button" onclick="window.triggerInChatContributeFlow()">
+                <span class=""></span>
+                <span>Contribute</span>
+                <span>Share information</span>
+              </button>
               <div id="chatModeSegmentedSwitch"></div>
               <button id="inputModeToggleBtn"></button>
               <button id="inputModeAttachBtn"></button>
+              <input type="file" id="whistleblowerFileInput" />
               <button id="inputModeCancelBtn"></button>
               <div id="workInputModeBadge"></div>
               <button id="fullWidthInputModeBtn"></button>
@@ -858,6 +892,7 @@ return maplibregl$1;
     <div id="mobileComposerCard" class="relative">
       <textarea class="w-full" id="chat-input" rows="1" placeholder="Ask about a space, its funders or controversies…"></textarea>
       <div id="mobileComposerActions">
+        <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Write a note about an institution">Share information</button>
         <span class="flex-1"></span>
         <button id="mobileStickyVoiceBtn" type="button" aria-pressed="true" aria-label="Voice: read answers aloud" title="Read answers aloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
         <button id="mobileKbCloseBtn" class="kb-close-btn" type="button" aria-label="Close the keyboard" title="Close the keyboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -9952,7 +9987,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v499';
+    const ATLAS_RELEASE = 'culture-atlas-v503';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11754,7 +11789,35 @@ return maplibregl$1;
     function critiqueQuoteLine(q) {
       return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
     }
+    // A whistleblower note is written on the note screen (Share information) and goes to the report API (server/).
+    // The record no longer lists reviews (user, 3 Nov 2026): the section was removed from the place view.
     let dossierInst = null;
+    const ATLAS_REPORT_API_URL = (window.ATLAS_REPORT_API_URL || '').replace(/\/+$/, '');
+    const REVIEW_LIMITS = { min: 10, max: 2000, name: 40 };
+    // Send for review looks ready (blue) once the form could be sent: an institution from the atlas, a note long enough, the box ticked.
+    function syncNoteReady() {
+      const sendBtn = document.getElementById('workSendBtn');
+      if (!sendBtn) return;
+      const wanted = (document.getElementById('noteInstitution').value || '').trim().toLowerCase();
+      const known = wanted && ALL_INSTITUTIONS.some(i => i.id && i.name && i.name.toLowerCase() === wanted);
+      const longEnough = (document.getElementById('workInput').value || '').trim().length >= REVIEW_LIMITS.min;
+      const ready = Boolean(known && longEnough && document.getElementById('noteAck').checked);
+      if (ready) sendBtn.dataset.ready = 'true'; else delete sendBtn.dataset.ready;
+    }
+    document.addEventListener('input', (e) => {
+      if (e.target.matches && e.target.matches('#noteInstitution, #workInput')) syncNoteReady();
+    });
+    document.addEventListener('change', (e) => {
+      if (e.target.matches && e.target.matches('#noteInstitution, #noteAck')) syncNoteReady();
+    });
+    // On a phone the list is built the first time the Institution box is used.
+    document.addEventListener('focusin', (e) => { if (e.target && e.target.id === 'noteInstitution') { try { fillNoteInstitutions(); } catch (err) { atlasDebugLog('fillNoteInstitutions', err); } } });
+    // Fills the institution list of the note form once, from the atlas records.
+    function fillNoteInstitutions() {
+      const list = document.getElementById('noteInstitutionList');
+      if (!list || list.childElementCount) return;
+      list.innerHTML = ALL_INSTITUTIONS.filter(i => i.id && i.name).map(i => `<option value="${escapeHtml(i.name)}"></option>`).join('');
+    }
     // Dates as people read them (25 Sept 2025), not as the research table stores them. A year or year-month stays as given.
     function humanDate(d) {
       const m = String(d || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
@@ -12890,6 +12953,7 @@ return maplibregl$1;
       if (!inst) return;
       dossierInst = inst;
       // On the note screen, opening another record makes it the institution of the note.
+      if (isChatInputMode) { const noteInstitution = document.getElementById('noteInstitution'); if (noteInstitution) { noteInstitution.value = inst.name || ''; syncNoteReady(); } }
       const html = linkRecordSpaces(recordHtml(inst), inst);
       const phoneBody = document.getElementById('detailBody');
       if (phoneBody) phoneBody.innerHTML = html;
@@ -16443,6 +16507,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         window.visualViewport.addEventListener('scroll', fitVisible);
         fitVisible();
       }
+      document.addEventListener('focusin', (e) => {
+        if (window.innerWidth >= 768 || !e.target.closest || !e.target.closest('#noteFormFields, #noteInputBlock, #noteAckRow')) return;
+        setTimeout(() => { try { e.target.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (_) {} }, 300);
+      });
+
       function setActiveMobileTab(activeEl) {
         [tabAtlas, tabDossier, tabChat].forEach(el => {
           if (!el) return;
@@ -16578,7 +16647,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Keyboard arrow: shown while a chat box has the focus on a phone; a tap puts the keyboard away and leaves the text as it is.
       (function () {
         const root = document.documentElement;
-        const boxes = '#chat-input, #workInput';
+        const boxes = '#chat-input, #workInput, #noteFormFields textarea, #noteFormFields input';
         document.addEventListener('focusin', (e) => { if (e.target.matches && e.target.matches(boxes)) root.classList.add('kb-typing'); });
         document.addEventListener('focusout', (e) => { if (e.target.matches && e.target.matches(boxes)) setTimeout(() => { if (!(document.activeElement && document.activeElement.matches && document.activeElement.matches(boxes))) root.classList.remove('kb-typing'); }, 0); });
         document.querySelectorAll('.kb-close-btn').forEach((b) => {
@@ -16973,6 +17042,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('chatAddKeyBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('workModelBtn')?.addEventListener('click', openSettingsModal);
 
+    document.getElementById('chatContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('topContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('mobileContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('mapFloatingContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('hudContributeBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      triggerInChatContributeFlow();
+    });
+
     // Curatorial Itinerary HUD & Modal event listeners
     document.getElementById('hudRouteBtn')?.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -17128,14 +17206,336 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
 
 
-    // The note form (Share information) was removed (user, 3 Nov 2026). The chat composer only asks the curator now.
-    // These stay as no-ops so old links and deep links (?mode=whistleblower) do nothing instead of throwing.
-    const isChatInputMode = false;
-    function exitChatInputMode() {}
-    window.triggerInChatContributeFlow = () => {};
-    window.enterChatInputMode = () => {};
+    let isChatInputMode = false;
+    let preInputModeGlobeWidth = '';
+
+    // The only note a reader can write is a whistleblower note. It goes to the report API and appears only once approved.
+    const chatInputKind = 'whistleblower';
+    const INPUT_KIND_TEXT = {};
+    INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
+        banner: 'Whistleblower: choose the institution and write your note. It is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
+        placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
+      } : {
+        banner: 'Whistleblower reports cannot be sent because the report service is not configured. This is not a secure channel, so leave out your name and anything that identifies you.',
+        placeholder: 'The report service is not configured. Your report will not be saved.'
+      };
+
+    // Share information is a switch like Dark, Gossip mode, Voice and Rotate: the button is highlighted while the note is open and then reads Back to chat; pressing it returns to the chat.
+    function setChatShareOn(on) {
+      const b = document.getElementById('chatShareBtn');
+      if (!b) return;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', String(on));
+      b.textContent = on ? 'Back to chat' : 'Share information';
+      b.title = on ? 'Leave the note and go back to the chat' : 'Write a note about an institution';
+    }
+    function toggleChatShare() {
+      if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
+    }
+    // Clicking another tab (Details, or on a phone Atlas and Dossier) closes the note screen; the chat is left as it was, with no message.
+    document.addEventListener('click', (e) => {
+      if (isChatInputMode && e.target.closest && e.target.closest('#workspaceTabDossier, #tab-atlas, #tab-dossier')) exitChatInputMode(true);
+    }, true);
+
+    function enterChatInputMode(kindOrTopic = '') {
+      // Share information, a record's link and the old information and gossip links all open the whistleblower note.
+      const defaultTopic = ['information', 'gossip', 'whistleblower'].includes(kindOrTopic) ? '' : kindOrTopic;
+      isChatInputMode = true;
+      setChatShareOn(true);
+      // The conversation so far steps aside while a note is written; it comes back with Back to chat (the Share information button, which reads that while the note is open).
+      document.querySelectorAll('#curatorMessages > *').forEach(m => m.classList.add('before-note'));
+
+      // 1. Activate whole-chat full-width mode via body class & collapse globe if needed
+      document.body.classList.add('chat-input-mode-active');
+      if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {
+        setMobileViewMode('chat');
+      } else if (window.innerWidth >= 768) {
+        const g = document.getElementById('globeViewport');
+        if (g) {
+          preInputModeGlobeWidth = g.style.width || '';
+          setTimeout(resizeCanvas, 40);
+        }
+      }
+
+      // 2. Update Segmented Switcher tabs
+      const tabGeneral = document.getElementById('modeTabGeneralChat');
+      if (tabGeneral) {
+        tabGeneral.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const tabWhistleblower = document.getElementById('modeTabWhistleblower');
+      if (tabWhistleblower) {
+        tabWhistleblower.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const opsecInd = document.getElementById('modeSwitchOpSecIndicator');
+      if (opsecInd) {
+        opsecInd.classList.remove('hidden');
+        opsecInd.classList.add('flex');
+      }
+
+      // Update Input Card Mode Toggle Button
+      const modeToggleBtn = document.getElementById('inputModeToggleBtn');
+      if (modeToggleBtn) {
+        modeToggleBtn.innerHTML = '<span class="flex items-center gap-1_5"><span>Return to Chat</span></span>';
+        modeToggleBtn.className = 'py-1 meta flex items-center';
+        modeToggleBtn.title = 'Switch back to General Chat mode';
+      }
+      const chatContributeBtn = document.getElementById('chatContributeBtn');
+      if (chatContributeBtn) {
+        chatContributeBtn.classList.add('hidden');
+      }
+
+      // 3. Show Attached Secure Mode Banner inside/above container
+      const secureBanner = document.getElementById('secureIntakeModeBanner');
+      if (secureBanner) {
+        secureBanner.classList.remove('hidden');
+        secureBanner.classList.add('flex');
+      }
+
+      // 4. Expand input textarea with generous room to breathe & focused placeholder
+      const workInput = document.getElementById('workInput');
+      if (workInput) {
+        workInput.rows = 4;
+        workInput.classList.remove('min-h-_34px', 'sm-min-h-_42px', 'max-h-36');
+        workInput.classList.add('min-h-_110px', 'sm-min-h-_130px', 'max-h-60', 'is-good');
+        workInput.placeholder = INPUT_KIND_TEXT[chatInputKind].placeholder;
+        if (defaultTopic) {
+          workInput.value = defaultTopic;
+        }
+        if (window.atlasSyncInert) window.atlasSyncInert();
+        // The form: the institution is the open record's, or chosen from the atlas's list.
+        // Each step is guarded: an error in one must never leave the note half open (the conversation hidden and nothing in its place).
+        // On a phone the list of 1,400 places is built when the Institution box is first used, and the keyboard is not raised on its own:
+        // the form opens at once and is read first, and a tap on a box brings the keyboard up.
+        const phone = window.innerWidth < 768;
+        const noteInstitution = document.getElementById('noteInstitution');
+        try { if (!phone) fillNoteInstitutions(); } catch (err) { atlasDebugLog('fillNoteInstitutions', err); }
+        try { if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || ''; } catch (err) { atlasDebugLog('institution', err); }
+        try {
+          const noteStatus = document.getElementById('noteFormStatus');
+          if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not configured. A note cannot be sent.';
+          syncNoteReady();
+        } catch (err) { atlasDebugLog('syncNoteReady', err); }
+        try { if (!phone) (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus(); } catch (err) { atlasDebugLog('focus', err); }
+      }
+
+      // 5. Hide redundant full-width input mode button if present
+      const fwBtn = document.getElementById('fullWidthInputModeBtn');
+      if (fwBtn) fwBtn.classList.add('hidden');
+
+      // 6. Hide suggestions & hero greeting to focus on secure intake
+      const heroGreeting = document.getElementById('curatorHeroGreeting');
+      if (heroGreeting) {
+        heroGreeting.classList.add('hidden');
+        heroGreeting.style.display = 'none';
+      }
+
+      // 7. Style primary input container with secure dark-emerald theme (#061b12)
+      const inputCard = document.getElementById('workInputCard');
+      if (inputCard) {
+        inputCard.classList.add('is-mode');
+      }
+
+      // 8. Toggle action bar: show Attach & Cancel buttons and the OpSec badge
+      const cancelBtn = document.getElementById('inputModeCancelBtn');
+      if (cancelBtn) {
+        cancelBtn.classList.remove('hidden');
+        cancelBtn.classList.add('flex');
+      }
+
+      const inputBadge = document.getElementById('workInputModeBadge');
+      if (inputBadge) {
+        inputBadge.classList.remove('hidden');
+        inputBadge.classList.add('flex');
+      }
+
+      // 9. Style primary CTA: clean emerald button as sole accent
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) {
+        sendBtn.classList.add('is-on');
+        sendBtn.innerHTML = `
+          <span>${ATLAS_REPORT_API_URL ? 'Send for review' : 'Unavailable'}</span>
+        `;
+        sendBtn.title = ATLAS_REPORT_API_URL ? 'Send this note to the editor for review' : 'The report service is not configured';
+      }
+
+
+      scrollChatToBottom(true);
+    }
+
+    function exitChatInputMode(quiet = false) {
+      isChatInputMode = false;
+      setChatShareOn(false);
+      document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
+
+      // 1. Deactivate whole-chat full-width mode
+      document.body.classList.remove('chat-input-mode-active');
+      if (typeof resizeCanvas === 'function') {
+        setTimeout(resizeCanvas, 360);
+      }
+
+      // 2. Update Segmented Switcher tabs
+      const tabGeneral = document.getElementById('modeTabGeneralChat');
+      if (tabGeneral) {
+        tabGeneral.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const tabWhistleblower = document.getElementById('modeTabWhistleblower');
+      if (tabWhistleblower) {
+        tabWhistleblower.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const opsecInd = document.getElementById('modeSwitchOpSecIndicator');
+      if (opsecInd) {
+        opsecInd.classList.remove('flex');
+        opsecInd.classList.add('hidden');
+      }
+
+      // Restore Input Card Mode Toggle Button & Contribute Intel
+      const modeToggleBtn = document.getElementById('inputModeToggleBtn');
+      if (modeToggleBtn) {
+        modeToggleBtn.innerHTML = '<span class="flex items-center gap-1_5"><span>Intake</span></span>';
+        modeToggleBtn.className = 'py-1 meta flex items-center';
+        modeToggleBtn.title = 'Add information';
+      }
+      const chatContributeBtn = document.getElementById('chatContributeBtn');
+      if (chatContributeBtn) {
+        chatContributeBtn.classList.remove('hidden');
+      }
+
+      // 3. Hide Attached Secure Mode Banner
+      const secureBanner = document.getElementById('secureIntakeModeBanner');
+      if (secureBanner) {
+        secureBanner.classList.remove('flex');
+        secureBanner.classList.add('hidden');
+      }
+
+      // 4. Restore input card styling & padding
+      const inputCard = document.getElementById('workInputCard');
+      if (inputCard) {
+        inputCard.classList.remove('is-mode');
+      }
+
+      // 5. Restore action bar: hide attach, cancel & metadata
+      const attachBtn = document.getElementById('inputModeAttachBtn');
+      if (attachBtn) {
+        attachBtn.classList.add('hidden');
+        attachBtn.classList.remove('flex');
+      }
+
+      const cancelBtn = document.getElementById('inputModeCancelBtn');
+      if (cancelBtn) {
+        cancelBtn.classList.add('hidden');
+        cancelBtn.classList.remove('flex');
+      }
+
+      const inputBadge = document.getElementById('workInputModeBadge');
+      if (inputBadge) {
+        inputBadge.classList.add('hidden');
+        inputBadge.classList.remove('flex');
+      }
+
+      // 7. Restore Send button
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) {
+        sendBtn.className = 'flex items-center justify-center shrink-0';
+        sendBtn.innerHTML = '<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+        sendBtn.title = 'Send message';
+      }
+
+      // 8. Restore placeholder & row height
+      const workInput = document.getElementById('workInput');
+      if (workInput) {
+        workInput.rows = 2;
+        workInput.classList.remove('min-h-_110px', 'sm-min-h-_130px', 'max-h-60', 'is-good');
+        workInput.classList.add('min-h-_34px', 'sm-min-h-_42px', 'max-h-36');
+        workInput.placeholder = 'Ask about a space, its funders or controversies…';
+      }
+
+      // 9. Restore suggestions and hero greeting
+      const heroGreeting = document.getElementById('curatorHeroGreeting');
+      if (heroGreeting) {
+        heroGreeting.classList.remove('hidden');
+        heroGreeting.style.display = '';
+      }
+
+      // 10. Desktop split view restoration if previously minimized
+      if (window.innerWidth >= 768) {
+        const g = document.getElementById('globeViewport');
+        if (g && (g.style.width === '240px' || preInputModeGlobeWidth)) {
+          g.style.width = preInputModeGlobeWidth || '50%';
+          g.style.flex = preInputModeGlobeWidth ? `1 1 ${preInputModeGlobeWidth}` : '1 1 50%';
+          setTimeout(resizeCanvas, 40);
+        }
+      }
+
+      if (!quiet) {
+        appendCuratorMessage(`
+          <div>
+            <p class="no-indent">Returned to chat. How can I help you explore cultural spaces?</p>
+            <div class="curator-followups mt-3 flex flex-col items-start gap-1">
+              <button type="button" class="curator-followup-pill text-left py-1" onclick="window.enterChatInputMode('whistleblower')">Whistleblower note</button>
+            </div>
+          </div>
+        `, [], null, null, false);
+        scrollChatToBottom(true);
+      }
+    }
+
+
+
+
+    function triggerInChatContributeFlow(defaultTopic = '') {
+      enterChatInputMode(defaultTopic);
+    }
+    window.triggerInChatContributeFlow = triggerInChatContributeFlow;
+    window.enterChatInputMode = enterChatInputMode;
     window.exitChatInputMode = exitChatInputMode;
-    window.toggleChatShare = () => {};
+    window.toggleChatShare = toggleChatShare;
+
+    // Sends the note screen's form to the report API. Nothing is kept in this browser: a note that is not sent stays in the form.
+    async function submitNoteForm() {
+      const status = document.getElementById('noteFormStatus');
+      const input = document.getElementById('workInput');
+      const institutionBox = document.getElementById('noteInstitution');
+      const fail = (message, focusEl) => { status.textContent = message; if (focusEl) focusEl.focus(); };
+      if (!ATLAS_REPORT_API_URL) return fail('The report service is not configured. The note was not sent.');
+      const wanted = (institutionBox.value || '').trim().toLowerCase();
+      const place = wanted && ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === wanted);
+      if (!place) return fail('Choose the institution from the list. It must be a space on the atlas.', institutionBox);
+      const content = (input.value || '').trim();
+      if (content.length < REVIEW_LIMITS.min) return fail(`Write at least ${REVIEW_LIMITS.min} characters.`, input);
+      const ack = document.getElementById('noteAck');
+      if (!ack.checked) return fail('Tick the box to confirm you have left out anything that identifies you.', ack);
+      const body = { content };
+      const label = (document.getElementById('noteAuthor').value || '').trim();
+      if (label) body.authorLabel = label;
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) sendBtn.disabled = true;
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || 'The server did not take it.');
+        input.value = '';
+        document.getElementById('noteAuthor').value = '';
+        ack.checked = false;
+        syncNoteReady();
+        status.textContent = '';
+        appendCuratorMessage(`
+          <div class="space-y-1">
+            <p class="no-indent">Sent to the editor for review. It appears on the record of ${escapeHtml(place.name)}, as a review, only once it is approved.</p>
+            <p class="no-indent"><a href="#" onclick="event.preventDefault();window.enterChatInputMode('whistleblower')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
+          </div>
+        `, [], null, null, false);
+        scrollChatToBottom(true);
+      } catch (err) {
+        status.textContent = `Not sent: ${err.message || 'no connection'}. Your note is still in the box.`;
+      } finally {
+        if (sendBtn) sendBtn.disabled = false;
+      }
+    }
 
     document.addEventListener('click', (e) => {
       const quickPill = e.target.closest('.contribute-quick-pill');
@@ -17160,7 +17560,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     //  Bulletproof Capture-Phase Event Delegation for Map HUD Quick Buttons (Fiscal, Victories, 990s, Boards, Crawls, Rail, Intel)
     document.addEventListener('click', (e) => {
-      const btn = e.target && e.target.closest ? e.target.closest('#hudFiscalBtn, #hudTimelineBtn, #hudFilingsBtn, #hudTrusteesBtn, #hudRouteBtn, #hudRailToggle') : null;
+      const btn = e.target && e.target.closest ? e.target.closest('#hudFiscalBtn, #hudTimelineBtn, #hudFilingsBtn, #hudTrusteesBtn, #hudRouteBtn, #hudRailToggle, #hudContributeBtn') : null;
       if (!btn) return;
       e.stopPropagation();
       if (btn.id === 'hudFiscalBtn') {
@@ -17173,6 +17573,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (typeof window.openTrusteeConflictNetworkModal === 'function') window.openTrusteeConflictNetworkModal();
       } else if (btn.id === 'hudRouteBtn') {
         if (typeof window.openCuratorialItineraryModal === 'function') window.openCuratorialItineraryModal();
+      } else if (btn.id === 'hudContributeBtn') {
+        if (typeof window.triggerInChatContributeFlow === 'function') window.triggerInChatContributeFlow();
       }
     }, true);
     document.getElementById('closeFiscalModalBtn')?.addEventListener('click', closeFiscalAnalyticsHUD);
@@ -17194,6 +17596,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const workSendBtn = document.getElementById('workSendBtn');
 
     async function handleWorkSend() {
+      if (isChatInputMode) { await submitNoteForm(); return; }
       const text = (workInput?.value || '').trim();
       if (!text) return;
       workInput.value = '';
@@ -17208,7 +17611,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     workSendBtn?.addEventListener('click', handleWorkSend);
     workInput?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
+      // On the note screen Enter starts a new line; only the Send for review button sends.
+      if (e.key === 'Enter' && !e.shiftKey && !isChatInputMode) {
         e.preventDefault();
         handleWorkSend();
       }
@@ -19979,6 +20383,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       if (targetGossip === '1' || targetGossip === 'true' || targetMode === 'gossip') {
         toggleGossipMode(true);
+      }
+
+      if (targetMode === 'whistleblower' || params.get('whistleblower') === '1' || params.get('intake') === '1') {
+        enterChatInputMode('whistleblower');
       }
 
       if (targetInst) {
