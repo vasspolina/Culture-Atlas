@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=503">
+  <link rel="stylesheet" href="assets/atlas.css?v=505">
   <script src="assets/config.js?v=503"></script>
   <script src="assets/subtopic.js?v=503"></script>
   <script src="assets/names.js?v=503"></script>
@@ -152,7 +152,7 @@ return maplibregl$1;
     <div class="flex items-center space-x-1_5 shrink-0">
       <!-- New Chat / Reset Quick Actions -->
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
-      <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" aria-pressed="false">Dark</button>
+      <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" >Dark</button>
       <!-- Details: the record of the selected space, as the desktop's Details tab. Shown once a space is selected, so the sheet can be reopened after Close. -->
       <button id="mobileDetailsBtn" type="button" class="whitespace-nowrap hidden" onclick="if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails();" aria-label="Space details">Details</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
@@ -173,7 +173,7 @@ return maplibregl$1;
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Gossip mode</button>
-      <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Dark</button>
+      <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" >Dark</button>
 
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
       <div class="hidden" style="display:none;" aria-hidden="true">
@@ -6692,8 +6692,16 @@ return maplibregl$1;
           pitch: 35,
           bearing: 0,
           antialias: true,
-          attributionControl: { compact: true }
+          attributionControl: { compact: false } /* the credit as one line of small text, no "i" button (user, 4 Nov 2026; the OpenStreetMap licence asks for a visible credit) */
         });
+
+        // The credit is a <details>; keep it open so its one line shows, and the CSS hides the toggle (atlas.css).
+        // MapLibre closes it again on resize, so an observer reopens it whenever that happens.
+        { const keepOpen = () => { const d = document.querySelector('#cityMapContainer details.maplibregl-ctrl-attrib'); if (!d) return false;
+            if (!d.open) d.open = true;
+            if (!d.dataset.keepOpen) { d.dataset.keepOpen = '1'; new MutationObserver(() => { if (!d.open) d.open = true; }).observe(d, { attributes: true, attributeFilter: ['open'] }); }
+            return true; };
+          if (!keepOpen()) cityVectorMap.once('load', keepOpen); cityVectorMap.on('resize', keepOpen); }
 
         // The compass turns with the bearing and nothing else. With visualizePitch on, MapLibre also tilts the arrow (rotateX) and
         // scales it by 1 + pitch/90 (1.13 at the 38 degrees the street map opens at, 1.32 at the 55 a record flies to), so the
@@ -7099,7 +7107,9 @@ return maplibregl$1;
     // Light and dark mode: one switch in the header, remembered, following the system until it is set.
     function syncThemeButtons() {
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-      ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.setAttribute('aria-pressed', String(dark)); } });
+      // The button names the mode it switches to (user, 4 Nov 2026): "Light" in dark mode, "Dark" in light mode. It is an action,
+      // not a toggle that stays pressed, so it carries no aria-pressed.
+      ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = dark ? 'Light' : 'Dark'; b.removeAttribute('aria-pressed'); b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode'); } });
       const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#262524' : '#ffffff');
     }
     function toggleTheme(force) {
