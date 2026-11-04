@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=530">
-  <script src="assets/config.js?v=530"></script>
-  <script src="assets/subtopic.js?v=530"></script>
-  <script src="assets/names.js?v=530"></script>
-  <script src="assets/grounding.js?v=530"></script>
-  <script src="assets/repeats.js?v=530"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=531">
+  <script src="assets/config.js?v=531"></script>
+  <script src="assets/subtopic.js?v=531"></script>
+  <script src="assets/names.js?v=531"></script>
+  <script src="assets/grounding.js?v=531"></script>
+  <script src="assets/repeats.js?v=531"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1075,7 +1075,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=530"></script>
+  <script src="assets/institutions.js?v=531"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9998,11 +9998,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v530';
+    const ATLAS_RELEASE = 'culture-atlas-v531';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=530').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=531').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12063,7 +12063,10 @@ return maplibregl$1;
         || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
+        // "Epstein link · Crown Princess Mette-Marit: ..." is titled with the person; the flag sentence above already says it is an Epstein link.
+        const ep = m ? null : part.match(/^Epstein link\s*·\s*([^:·]+?):\s*(.+)$/s);
         if (m) blocks.push(item(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}`, m[3].replace(/^(\w)/, c => c.toUpperCase()), p('', m[4]), []));
+        else if (ep) blocks.push(item(ep[1], '', p('', ep[2]), []));
         else blocks.push(item('', '', p('', part.replace(/^([^:]{1,60}?, )(\d{4}-\d{2}-\d{2}):/, (_, who, d) => `${who}${humanDate(d)}:`)), []));
       });
       const relatedReports = (inst.case_notes || []).map(n => `
@@ -12886,7 +12889,9 @@ return maplibregl$1;
         || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
+        const ep = m ? null : part.match(/^Epstein link\s*·\s*([^:·]+?):\s*(.+)$/s);
         if (m) items.push(proseLi(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}, ${m[3].toLowerCase()}.`, escapeHtml(proseEnd(m[4])), true));
+        else if (ep) items.push(proseLi(`${ep[1]}.`, escapeHtml(proseEnd(ep[2])), true));
         else items.push(proseLi('', escapeHtml(proseEnd(part)), true));
       });
       if (inst.case_study) {
@@ -20586,12 +20591,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=530"></script>
-<script src="assets/layers.js?v=530"></script>
-<script src="assets/hq-detail.js?v=530"></script>
-<script src="assets/bubbles.js?v=530" defer></script>
-<script src="assets/phone-maps.js?v=530"></script>
-<script src="assets/desktop-maps.js?v=530"></script>
-<script src="assets/chat-resize.js?v=530"></script>
+<script src="assets/typeset.js?v=531"></script>
+<script src="assets/layers.js?v=531"></script>
+<script src="assets/hq-detail.js?v=531"></script>
+<script src="assets/bubbles.js?v=531" defer></script>
+<script src="assets/phone-maps.js?v=531"></script>
+<script src="assets/desktop-maps.js?v=531"></script>
+<script src="assets/chat-resize.js?v=531"></script>
 </body>
 </html>
