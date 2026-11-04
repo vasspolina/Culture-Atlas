@@ -35,11 +35,11 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=496">
-  <script src="assets/config.js?v=496"></script>
-  <script src="assets/subtopic.js?v=496"></script>
-  <script src="assets/names.js?v=496"></script>
-  <script src="assets/grounding.js?v=496"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=497">
+  <script src="assets/config.js?v=497"></script>
+  <script src="assets/subtopic.js?v=497"></script>
+  <script src="assets/names.js?v=497"></script>
+  <script src="assets/grounding.js?v=497"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1001,8 +1001,9 @@ return maplibregl$1;
       <div class="space-y-1_5">
         <label class="block">Model</label>
         <select id="aiModelSelect" class="w-full px-3_5 py-2 meta">
-          <option value="claude-haiku-4-5-20251001">Anthropic Haiku 4.5 (Fast & Articulate - Recommended)</option>
-          <option value="claude-sonnet-4-5-20250929">Anthropic Sonnet 4.5 (Deep Critical Reasoning)</option>
+          <option value="claude-sonnet-5-5">Anthropic Sonnet 5.5 (Recommended)</option>
+          <option value="claude-opus-5-5">Anthropic Opus 5.5 (Deepest reasoning)</option>
+          <option value="claude-haiku-5-5">Anthropic Haiku 5.5 (Fast and cheap)</option>
         </select>
       </div>
 
@@ -1061,7 +1062,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=496"></script>
+  <script src="assets/institutions.js?v=497"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9987,11 +9988,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v496';
+    const ATLAS_RELEASE = 'culture-atlas-v497';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=496').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=497').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13235,12 +13236,16 @@ return maplibregl$1;
 
     let aiApiKey = localStorage.getItem('atlas_ai_api_key') || localStorage.getItem('atlas_gemini_api_key') || _SYS_KEY;
     let aiProvider = localStorage.getItem('atlas_ai_provider') || 'anthropic';
-    let aiModel = localStorage.getItem('atlas_ai_model') || 'claude-haiku-4-5-20251001';
+    // A model saved in settings before the 5.5 models (Nov 2026) moves to its successor.
+    const RETIRED_MODELS = { 'claude-haiku-4-5-20251001': 'claude-haiku-5-5', 'claude-sonnet-4-5-20250929': 'claude-sonnet-5-5' };
+    const savedModel = () => { const m = localStorage.getItem('atlas_ai_model'); return RETIRED_MODELS[m] || m; };
+    let aiModel = savedModel() || 'claude-sonnet-5-5';
 
     const PROVIDER_MODELS = {
       anthropic: [
-        { id: 'claude-haiku-4-5-20251001', name: 'Anthropic Haiku 4.5 (Fast & Articulate - Recommended)' },
-        { id: 'claude-sonnet-4-5-20250929', name: 'Anthropic Sonnet 4.5 (Deep Critical Reasoning)' }
+        { id: 'claude-sonnet-5-5', name: 'Anthropic Sonnet 5.5 (Recommended)' },
+        { id: 'claude-opus-5-5', name: 'Anthropic Opus 5.5 (Deepest reasoning)' },
+        { id: 'claude-haiku-5-5', name: 'Anthropic Haiku 5.5 (Fast and cheap)' }
       ],
       openai: [
         { id: 'gpt-4o-mini', name: 'gpt-4o-mini (Fast & Versatile)' },
@@ -13269,10 +13274,10 @@ return maplibregl$1;
     function getEffectiveModel() {
       if (aiModel) return aiModel;
       const p = getEffectiveProvider();
-      if (p === 'anthropic') return 'claude-haiku-4-5-20251001';
+      if (p === 'anthropic') return 'claude-sonnet-5-5';
       if (p === 'openai') return 'gpt-4o-mini';
       if (p === 'gemini') return 'gemini-2.5-flash';
-      return 'claude-haiku-4-5-20251001';
+      return 'claude-sonnet-5-5';
     }
 
     let currentSelectedProvider = getEffectiveProvider();
@@ -13386,7 +13391,7 @@ return maplibregl$1;
       const storedKey = localStorage.getItem('atlas_ai_api_key') || localStorage.getItem('atlas_gemini_api_key');
       aiApiKey = storedKey || _SYS_KEY;
       aiProvider = localStorage.getItem('atlas_ai_provider') || (storedKey ? detectProvider(storedKey) : 'anthropic');
-      aiModel = localStorage.getItem('atlas_ai_model') || (aiProvider === 'anthropic' ? 'claude-haiku-4-5-20251001' : getEffectiveModel());
+      aiModel = savedModel() || (aiProvider === 'anthropic' ? 'claude-sonnet-5-5' : getEffectiveModel());
 
       const topDot = document.getElementById('topStatusDot');
       const topLabel = document.getElementById('topStatusLabel');
@@ -14383,8 +14388,8 @@ return maplibregl$1;
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
       if (!activeKey && !useProxy) return null;
       const prov = useProxy ? 'anthropic' : getEffectiveProvider();
-      // Through the Worker the page asks for Sonnet 4.5 (user's choice, 2 Nov 2026); a visitor's own key uses the model chosen in settings.
-      const model = useProxy ? 'claude-sonnet-4-5-20250929' : getEffectiveModel();
+      // Through the Worker the page asks for Sonnet 5.5 (Sonnet since 2 Nov 2026, 5.5 since 4 Nov); a visitor's own key uses the model chosen in settings.
+      const model = useProxy ? 'claude-sonnet-5-5' : getEffectiveModel();
 
       // A short reply to the chat's own question ("yes that one", "the second") means what the last answer offered, so it is
       // read together with that answer. A bare name that no record carries is an unknown name, not a question about the open space.
@@ -14598,7 +14603,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             },
             body: JSON.stringify({
               model: model,
-              max_tokens: 1024,
+              max_tokens: 3000,
+              ...(/-5-5$/.test(model) ? { output_config: { effort: /haiku/.test(model) ? 'low' : 'medium' } } : {}),
               system: criticalSystemPrompt,
               messages: [...conversationTurns(), { role: 'user', content: structuredUserPrompt }]
             })
@@ -14731,7 +14737,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               'anthropic-dangerous-direct-browser-access': 'true'
             },
             body: JSON.stringify({
-              model: model || 'claude-haiku-4-5-20251001',
+              model: model || 'claude-haiku-5-5',
               max_tokens: 10,
               messages: [{ role: 'user', content: 'Respond with OK' }]
             })
@@ -18661,7 +18667,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       } else {
         aiApiKey = _SYS_KEY;
         aiProvider = 'anthropic';
-        aiModel = 'claude-haiku-4-5-20251001';
+        aiModel = 'claude-sonnet-5-5';
         localStorage.removeItem('atlas_ai_api_key');
         localStorage.removeItem('atlas_gemini_api_key');
         localStorage.removeItem('atlas_ai_provider');
@@ -18674,7 +18680,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('clearApiKeyBtn')?.addEventListener('click', () => {
       aiApiKey = _SYS_KEY;
       aiProvider = 'anthropic';
-      aiModel = 'claude-haiku-4-5-20251001';
+      aiModel = 'claude-sonnet-5-5';
       if (aiApiKeyInput) aiApiKeyInput.value = '';
       localStorage.removeItem('atlas_ai_api_key');
       localStorage.removeItem('atlas_gemini_api_key');
@@ -20408,11 +20414,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=496"></script>
-<script src="assets/layers.js?v=496"></script>
-<script src="assets/hq-detail.js?v=496"></script>
-<script src="assets/bubbles.js?v=496" defer></script>
-<script src="assets/phone-maps.js?v=496"></script>
-<script src="assets/desktop-maps.js?v=496"></script>
+<script src="assets/typeset.js?v=497"></script>
+<script src="assets/layers.js?v=497"></script>
+<script src="assets/hq-detail.js?v=497"></script>
+<script src="assets/bubbles.js?v=497" defer></script>
+<script src="assets/phone-maps.js?v=497"></script>
+<script src="assets/desktop-maps.js?v=497"></script>
 </body>
 </html>
