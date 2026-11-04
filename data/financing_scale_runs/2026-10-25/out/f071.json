@@ -1,0 +1,205 @@
+[
+  {
+    "id": "schaulager",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "kunsthalle-bern-bern",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "kunstmuseum-bern",
+    "scale": {
+      "visitors": 93879,
+      "visitors_year": "2025",
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://www.kunstmuseumbern.ch/de/api/files/2026-04/2025_Jahresbericht-Kunstmuseum-Bern.pdf"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the 2025 annual report (PDF page 34, Statistik) gives 93,879 as total visitors to the exhibitions of the Kunstmuseum Bern, which includes 2,974 at the Museumsnacht."
+  },
+  {
+    "id": "friart-kunsthalle-fribourg",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "centre-art-contemporain-geneva",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "usine-kugler-geneva",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "kunsthaus-baselland-münchenstein",
+    "scale": {
+      "visitors": 26802,
+      "visitors_year": "2025",
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://media.bs.ch/original_file/b67c5ac592f009d9d213e589d444ba8aece26204/2021-2025-statistikvgl-museen-basel-bl-d-260319.pdf"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the Museen Basel statistics for museums outside Basel-Stadt 2021 to 2025 (PDF page 1, row Kunsthaus Baselland, Münchenstein) give 26,802 visitors for 2025 as reported by the museum, which moved into its new building in 2024."
+  },
+  {
+    "id": "can-centre-dart-neuchatel",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "fondation-beyeler",
+    "scale": {
+      "visitors": 508870,
+      "visitors_year": "2025",
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://media.bs.ch/original_file/cb566860452fb2c8305e7a3df16b454e76f79aca/2021-2025-statistikvgl-museen-basel-bs-260319.pdf",
+        "https://grosserrat.bs.ch/dokumente/100405/000000405724.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2022",
+      "currency": "CHF",
+      "income": 23970051,
+      "expenditure": 29199017,
+      "public": null,
+      "private": null,
+      "earned": null,
+      "sponsorship": null,
+      "net_assets": 1000000,
+      "source_kind": "other",
+      "url": "https://grosserrat.bs.ch/dokumente/100405/000000405724.pdf"
+    },
+    "basis": "Scale: the Basel-Stadt visitor statistics for museums 2021 to 2025 (PDF page 1, row Fondation Beyeler, Riehen) give 508,870 admissions for 2025 as reported by the museum. Finance: the Basel-Stadt government's subsidy proposal for 2024 to 2027 (Erfolgsrechnung 2022 on page 4) shows total income CHF 23,970,051 and total expenditure CHF 29,199,017, and net assets meaning the equity of CHF 1,000,000 on the 2022 balance sheet (page 5); the loss of CHF 5,228,966 is covered by a Beyeler Foundation grant not counted in income."
+  },
+  {
+    "id": "kunst-halle-sankt-gallen-st-gallen",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://live.kunsthallesanktgallen.ch/asset/1029/17942/Jahresbericht_KunstHalleSanktGallen_2024.pdf"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the 2024 annual report (PDF page 7) totals exhibition visitors at 4,611 as of 31 December 2024, summed over five exhibitions that run from 4 November 2023 to 2 March 2025."
+  },
+  {
+    "id": "fotomuseum-winterthur-winterthur",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "kunsthalle-z-rich",
+    "scale": {
+      "visitors": 23033,
+      "visitors_year": "2025",
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://www.kunsthallezurich.ch/files/2026_05_25_KZ_Annual_Report_Single_Pages.pdf"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the 2025 annual report (PDF page 85, facts and figures spread) prints 23,033 visitors for the year."
+  }
+]

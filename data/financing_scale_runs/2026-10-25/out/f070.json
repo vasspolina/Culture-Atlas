@@ -1,0 +1,192 @@
+[
+ {
+  "id": "bonniers-konsthall-stockholm",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "index-foundation-stockholm",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "konsthall-c-stockholm",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "magasin-iii",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "moderna-museet",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 128,
+   "staff_kind": "full-time equivalent",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.modernamuseet.se/app/uploads/2026/06/Moderna-Museet-Arsredovisning-2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: staff is the 'Årsarbetskrafter' line (128, 2025) in Table 15 and the personnel key figures of the 2025 annual report (PDF page 35), covering Stockholm and Malmö."
+ },
+ {
+  "id": "tensta-konsthall-stockholm",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "bildmuseet-umeå",
+  "scale": {
+   "visitors": 76173,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://bildmuseet.umu.se/siteassets/pdfer---bildmuseet/bildmuseet_2024.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 'Totalt 76173 besökare på Bildmuseet år 2024' line of the 2024 annual report (PDF page 27, printed page 25)."
+ },
+ {
+  "id": "hek-haus-der-elektronischen-k-nste-basel",
+  "scale": {
+   "visitors": 18178,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://media.bs.ch/original_file/cb566860452fb2c8305e7a3df16b454e76f79aca/2021-2025-statistikvgl-museen-basel-bs-260319.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the HEK row (18'178, 2025) of the Basel-Stadt canton table of museum visits 2021 to 2025, compiled from figures supplied by each museum (PDF page 1)."
+ },
+ {
+  "id": "kaskadenkondensator-basel",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kunsthalle-basel",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kunstmuseum-basel",
+  "scale": {
+   "visitors": 275852,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://kunstmuseumbasel.ch/en/file/9147/561b43d3/Kunstmuseum+Basel+Jahresbericht+2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 'Total Besuchende 275'852' line of the 2025 annual report (PDF page 62)."
+ },
+ {
+  "id": "museum-tinguely",
+  "scale": {
+   "visitors": 166133,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://media.bs.ch/original_file/cb566860452fb2c8305e7a3df16b454e76f79aca/2021-2025-statistikvgl-museen-basel-bs-260319.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the Museum Tinguely row (166'133, 2025) of the Basel-Stadt canton table of museum visits 2021 to 2025, compiled from figures supplied by each museum (PDF page 1)."
+ }
+]
