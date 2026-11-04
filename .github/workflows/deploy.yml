@@ -22,6 +22,13 @@ jobs:
 
       # The latest reports (assets/live.json and its stamp) are rebuilt from institutions.json on every deploy, so the
       # file open pages check every minute is never behind the records.
+      # No statement twice: a record that repeats a sentence across its fields, or a broken repeat filter, stops the deploy.
+      # Fix with python3 tools/check_repetition.py --fix, then re-embed (tools/embed_data.py).
+      - name: Check the records and the repeat filter for repetition
+        run: |
+          python3 tools/check_repetition.py --max 0
+          node --test tests/repeats.test.mjs
+
       - name: Rebuild the latest-reports feed from the records
         run: python3 tools/build_live_feed.py
 

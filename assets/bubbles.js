@@ -272,7 +272,12 @@
       if (!el) return;
       var r = el.getBoundingClientRect(), cs = getComputedStyle(el);
       if (!r.width || !r.height) return;
-      var colour = cs['border' + s[1].charAt(0).toUpperCase() + s[1].slice(1) + 'Color'];
+      var side = 'border' + s[1].charAt(0).toUpperCase() + s[1].slice(1);
+      var colour = cs[side + 'Color'];
+      // Only a rule the page really has is drawn in. The list above is the old layout's, and the desktop and phone layouts
+      // since have dropped most of these borders: drawing them anyway showed lines of the old version for a second on load.
+      var w = parseFloat(cs[side + 'Width']) || 0, style = cs[side + 'Style'];
+      if (!w || style === 'none' || style === 'hidden' || /^(transparent|rgba\([^)]*,\s*0\))$/.test(colour)) return;
       lines.push({ s: s, r: r, colour: colour, i: i });
     });
     if (!lines.length) return;

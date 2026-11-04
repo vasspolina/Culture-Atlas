@@ -106,3 +106,18 @@ Four checker agents re-opened every cited source for the 40 records that held a 
   Mudam keeps 4,000 m2 without a kind.
 - Kept at an older labelled year where a newer report exists but could not be read: Het Concertgebouw staff (FY2025 is a scan),
   Mudam visitors (2024), Sonic Acts visitors (2024), Museum Beelden aan Zee (2024; the 2025 report says "over 102,000").
+
+# Stage 6 review (f052 to f061)
+
+Four checker agents re-opened every cited source for the 29 records that held a figure.
+- Dropped as operating lines or a total budget: Fotogalleriet and UKS finance (operating lines before financial items), BWA Wroclaw
+  finance (a year-end total budget, not income).
+- Dropped as a draft or a press source: Serralves visitors and staff (the report cover reads "pre-design version"), Hermitage and
+  Russian Museum visitors (a press survey on a third party's host), MAC/CCB visitors (a press note quoting a survey),
+  Ayala Museum visitors (a counter widget), Oman staff (a news report of a media briefing), Kistefos visitors (a sector
+  association table; the museum's own figure is round).
+- Dropped as agent-made or unstated: Museum of Islamic Art area (a sum of two lines; the page is the interior designer's),
+  Erarta area (a round figure of unstated kind).
+- Corrected: Manege area is the institution's total of three buildings, 9,500 m2 (9,499.8), not one building; MUNCH staff
+  relabelled 2026 (count on 1 January 2026).
+- Kept at an older labelled year: Bergen International Festival (2023; the 2024 report is a Canva page).

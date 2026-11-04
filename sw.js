@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v499';
+const CACHE_NAME = 'culture-atlas-v530';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const ASSETS_TO_CACHE = [
   './assets/icons/icon-512.png',
   './assets/icons/icon-512-maskable.png',
   './assets/icons/apple-touch-icon-180.png',
+  './assets/icons/chat-mark.svg',
   './assets/atlas.css',
   './assets/maplibre-gl.css',
   './assets/funding-views.js',
@@ -25,9 +26,11 @@ const ASSETS_TO_CACHE = [
   './assets/typeset.js',
   './assets/phone-maps.js',
   './assets/desktop-maps.js',
+  './assets/chat-resize.js',
   './assets/subtopic.js',
   './assets/names.js',
-  './assets/grounding.js'
+  './assets/grounding.js',
+  './assets/repeats.js'
 ];
 
 self.addEventListener('install', (event) => {
