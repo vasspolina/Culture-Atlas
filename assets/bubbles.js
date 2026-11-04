@@ -163,7 +163,7 @@
     // blob fill, blob outline, then the tail fill over the rim, then the tail outline
     var body = fill(s.fill[0]) + line(s.line[0]) + (s.fill[1] ? fill(s.fill[1]) + line(s.line[1]) : '') + s.extra.replace(/GRAD/g, id);
     svg.innerHTML = '<defs><linearGradient id="' + id + '" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="' + h + '">' +
-      '<stop offset="0" stop-color="#7be04a"/><stop offset=".52" stop-color="#e0a23a"/><stop offset="1" stop-color="#ff2fa8"/></linearGradient></defs>' + body;
+      '<stop offset="0" stop-color="#d6f2b0"/><stop offset=".36" stop-color="#f1ecb0"/><stop offset=".68" stop-color="#f9d2b0"/><stop offset="1" stop-color="#fdc1dc"/></linearGradient></defs>' + body;
     if (!old) el.insertBefore(svg, el.firstChild);
     el.classList.add('has-bubble');
     el.style.marginBottom = (s.tail + 18) + 'px';

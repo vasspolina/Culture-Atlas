@@ -804,6 +804,24 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 @media (max-width:640px){#layersPanel .layers-studies a{grid-template-columns:minmax(0,1fr);row-gap:2px}}
 @media (max-width:640px){#layersPanel label.kind-chip{flex:1 1 auto;padding:6px 8px;gap:6px}}
 #layersPanel label.kind-chip i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal;border-radius:50%}
+/* Funding views (assets/funding-views.js): the shading key, the two ways to shade, and the decade. */
+#layersPanel .layers-choro{margin-top:6px}
+#layersPanel input[type=radio]{border-radius:50%}
+#layersPanel input[type=radio]:checked::after{border-radius:50%}
+#layersPanel .layers-choro-legend{display:flex;align-items:center;gap:8px;margin:6px 0 2px;color:var(--row-dim);font:400 var(--fs-s)/1.25 var(--sans)}
+#layersPanel .layers-choro-legend[hidden]{display:none}
+#layersPanel .layers-choro-legend i{flex:1 1 auto;height:10px;background:linear-gradient(90deg,rgba(45,212,191,.12),rgba(45,212,191,.6) 25%,#2dd4bf)}
+:root:not([data-theme="dark"]) #layersPanel .layers-choro-legend i{background:linear-gradient(90deg,rgba(13,148,136,.12),#0d9488)}
+#layersPanel .layers-years{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:8px 0 6px;padding:8px 14px;background:var(--row);color:var(--row-ink)}
+#layersPanel .layers-years label{display:flex;align-items:center;gap:8px;min-height:0;padding:0;background:none;color:inherit}
+#layersPanel .layers-years:has(input[data-years-on]:checked){background:var(--row-on);color:var(--row-on-ink);--row-dim:var(--row-on-dim)}
+#layersPanel .layers-years label:has(input:checked){background:none;color:inherit}
+/* The two ways to shade and their key only while the countries are shaded. */
+#layersPanel section:not(:has(input[data-layer="choro"]:checked)) :is(.layers-choro,.layers-choro-legend){display:none}
+#layersPanel .layers-years input[type=range]{appearance:auto;-webkit-appearance:auto;flex:1 1 140px;width:auto;height:auto;border:0;accent-color:currentColor;cursor:pointer}
+#layersPanel .layers-years input[type=range]::after{content:none}
+#layersPanel .layers-years output{min-width:3.5em;font:700 var(--fs-s)/1.25 var(--display);font-variant-numeric:tabular-nums}
+#layersPanel .layers-years .layers-count{flex-basis:100%;text-align:left}
 #layersPanel .layers-top{display:flex;flex-direction:column;gap:2px}
 #layersPanel .top-funder{display:grid;grid-template-columns:11px minmax(0,13em) minmax(40px,1fr) 2.5em;align-items:center;column-gap:10px;min-height:32px;padding:4px 10px;border:0;border-radius:0;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.2 var(--sans);text-align:left;cursor:pointer}
 #layersPanel .top-funder:hover{background:var(--row-hover);color:#000}
@@ -1192,7 +1210,7 @@ body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBo
 /* A turn that holds gossip, in Gossip mode or not, is a comic balloon: only that turn is. The reply builder marks such a turn .is-gossip (its reported, unverified items carry data-gossip);
    a plain record, a city list, the status line and the reader's own questions are set exactly as in normal mode. assets/bubbles.js draws a hairline outline and a
    green to orange to pink wash that fit the text, with the tail part of the same path; until it runs, a plain wash stands in. Black type, left aligned, no speaker marks. */
-:is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{position:relative;display:block;box-sizing:border-box;width:fit-content;max-width:80%;margin:0 0 1.4em;padding:.85em 1.3em;border-radius:0;background:linear-gradient(180deg,#7be04a 0%,#cfa83c 52%,#ff2fa8 100%);color:#000;text-align:left;text-indent:0}
+:is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{position:relative;display:block;box-sizing:border-box;width:fit-content;max-width:80%;margin:0 0 1.4em;padding:.85em 1.3em;border-radius:0;background:linear-gradient(180deg,#d6f2b0 0%,#f1ecb0 36%,#f9d2b0 68%,#fdc1dc 100%);color:#000;text-align:left;text-indent:0}
 :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none;border-radius:0}
 :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip::before{content:none!important}
 .bubble-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:0}
@@ -2690,13 +2708,15 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Gossip mode on the dark theme: the globe's ground is a dark yellow, the Gossip button's lime (#e2f86c) darkened. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#4f5a12!important}
 
-/* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (teal clean, orange flagged, grey unverified; orange in Gossip mode). */
-:root:root:root:root:root:root[data-theme] .inst-pin-label{--lc:#6f6f6f;background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:0}
-:root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="A"]{--lc:#007d79}
-:root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="B"]{--lc:#ba4e00}
-:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{--lc:#a8a8a8;background:#000}
-:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="A"]{--lc:#3ddbd9}
-:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="B"]{--lc:#ff832b}
+/* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (Displaay menthol clean, magenta flagged, yellow unverified; orange in Gossip mode). */
+:root{--tier-a:#007a80;--tier-b:#b000b0;--tier-u:#7a7000}
+:root[data-theme="dark"]{--tier-a:#b8fbff;--tier-b:#ff5eff;--tier-u:#ffff3c}
+:root:root:root:root:root:root[data-theme] .inst-pin-label{--lc:var(--tier-u);background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:0}
+:root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="A"]{--lc:var(--tier-a)}
+:root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="B"]{--lc:var(--tier-b)}
+:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{--lc:var(--tier-u);background:#000}
+:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="A"]{--lc:var(--tier-a)}
+:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="B"]{--lc:var(--tier-b)}
 :root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#ba4e00}
 :root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#ff832b}
 
@@ -3760,34 +3780,7 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The three tabs over the chat do not fit their column at 15px; they keep 14px, and the space between them. */
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn){font-size:14px!important;letter-spacing:0!important}
 
-/* ---- FOG ON THE MAP (user's instruction, 4 Nov 2026, replacing the blur the same day) ----
-   No blur anywhere: it softened the labels and the cards drawn on the map ("do not blur the labels and dont blur middle of
-   map, oly top and bottom, actually just fog it like its becoming tiny transparent, on top and bottom"). The map fades into
-   the paper at its top and bottom edges, on the globe and on the street map alike, and the middle is left as it is. One layer
-   over the map, under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every
-   control and card); it takes no pointer, so the map is dragged and clicked as before. */
-#globeViewport::before{content:"";position:absolute;inset:0;z-index:18;pointer-events:none;
-  /* Lighter (user, 4 Nov 2026: "fade less at the bottom and top"), after "stronger at the edges" the same day: at most 60% paper at
-     the very edge, eased out over the outer 12%, so the map thins toward the edges without vanishing into the page. */
-  /* And a tiny fade at the left and right (user, 4 Nov 2026: "fade on left and right a tiny bit"): at most 30% paper at the very side,
-     gone by 5% in. */
-  background:linear-gradient(to right,
-    color-mix(in srgb,var(--paper) 30%,transparent) 0,color-mix(in srgb,var(--paper) 10%,transparent) 2.5%,transparent 5%,
-    transparent 95%,color-mix(in srgb,var(--paper) 10%,transparent) 97.5%,color-mix(in srgb,var(--paper) 30%,transparent) 100%),
-    linear-gradient(to bottom,
-    color-mix(in srgb,var(--paper) 60%,transparent) 0,color-mix(in srgb,var(--paper) 30%,transparent) 5%,color-mix(in srgb,var(--paper) 10%,transparent) 9%,transparent 12%,
-    transparent 88%,color-mix(in srgb,var(--paper) 10%,transparent) 91%,color-mix(in srgb,var(--paper) 30%,transparent) 95%,color-mix(in srgb,var(--paper) 60%,transparent) 100%)}
-/* And a blur under the fade, in the same two bands only (user, 4 Nov 2026: "add some blur"): 1.5px at the very edge (lighter with the
-   fade), eased out through a mask so it is gone by 10% in and nothing in the middle of the map is touched. It sits under the paper fade (z 17),
-   takes no pointer, and waits for fog-ready like the fade (a backdrop blur switched on with the first paint drew black). */
-#globeViewport::after{content:"";position:absolute;inset:0;z-index:17;pointer-events:none;
-  -webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px);
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.5) 4%,transparent 10%,transparent 90%,rgba(0,0,0,.5) 96%,#000 100%);
-  mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.5) 4%,transparent 10%,transparent 90%,rgba(0,0,0,.5) 96%,#000 100%)}
-@media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
-/* The fog waits for the page's first frames (html.fog-ready, set two frames after the hold is cleared in index.html), as the
-   blur it replaces had to. */
-html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport::after{display:none}
+/* No fog, fade or blur on any edge of the map (user, 4 Nov 2026: "do not darken top and bottom of map", then the left and right too). */
 
 /* The curator's mark beside each answer is the pink disc with a square cut out of it (user's file, 4 Nov 2026), in place of the Gemini spark.
    It does not spin while an answer is coming: a pending answer pulses instead. */
@@ -3926,13 +3919,19 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:hover,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#chatRecordsInfo,#chatRecordsInfoMobile)>summary:hover{color:color-mix(in srgb,var(--ink) 72%,var(--paper))!important}
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:focus-visible{outline:3px solid var(--focus)!important;outline-offset:4px}
 
+/* The hover cards' layer (index.html, #globeCardCanvas): over the fog at z 18 so a card near the top or bottom of the map is
+   never greyed by it (user, 4 Nov 2026: "make sure its appears above the fog"), under the head-office marks at 25 and every
+   control. It takes no pointer: the globe canvas under it handles the hover and the clicks on the card's button. */
+#globeCardCanvas{z-index:19;pointer-events:none}
+html.atlas-held #globeCardCanvas{visibility:hidden}
+
 /* ---- GOSSIP IN THE CHAT, SET AS DISPLAAY.NET/ABOUT (user's instruction, 4 Nov 2026) ----
    chatReportingHtml (index.html) regroups each reported item into .dp-side (name, date, sources) and .dp-main (what is said).
    Measured on displaay.net/about at 1440px: a three-column grid, 15px gutter, the label in one column and the text across the
    other two; the label is uppercase at 19px/1.15 +0.01em, the lead 28px/1.1 -0.01em, a group heading ("Studio") about 48px over
    a 1px rule, 30px between blocks. Scaled to the chat's measure: label 15px +0.04em (the extra tracking stands in for Displaay's
-   semibold, since the Atlas sets one weight), lead 24px/1.12 -0.01em, headings 36px/1.05. The balloon takes the chat's full width
-   while it holds the set, so the set can be a size container; below 480px the label goes above the text and the lead drops to 20px.
+   semibold, since the Atlas sets one weight), headings 36px/1.05. What is said is set at the chat's body size (user, 4 Nov 2026: "text needs to be normal size"). The balloon takes the chat's full width
+   while it holds the set, so the set can be a size container; below 480px the label goes above the text.
    The desktop chat column opens at 48% of the screen (420 to 860px; DESKTOP MAPS, --gmd-w) so the grid shows from a 1280px screen
    up (user, 4 Nov 2026: "make the chat wider so the grid shows"). */
 :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip:has(.dp-set){width:auto!important;max-width:none!important}
@@ -3950,16 +3949,32 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>:is(.no-indent,.account-source-links):last-child{margin-top:8px!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main{display:flex;flex-direction:column;gap:12px}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main>*{margin:0!important;padding-left:0}
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main :is(p,li,ul){font-size:24px!important;line-height:1.12!important;letter-spacing:-.01em!important;text-indent:0!important;overflow-wrap:break-word;hyphens:auto}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main :is(p,li,ul){font-size:var(--fs-m)!important;line-height:var(--lh)!important;letter-spacing:0!important;text-indent:0!important;overflow-wrap:break-word;hyphens:auto}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main ul{padding-left:1em!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main .account-note{font-size:15px!important;line-height:1.3!important;letter-spacing:.01em!important}
 @container dp-set (max-width:480px){
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .record-card.dp-row{grid-template-columns:minmax(0,1fr)}
-  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main :is(p,li,ul){font-size:20px!important;line-height:1.15!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set>h3.kicker{font-size:30px!important}
 }
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side .dp-sources{display:flex!important;flex-direction:column;align-items:flex-start;gap:2px}
 
+
+/* The chat's drag handle as a grip, not a box (user, 4 Nov 2026: "restyle the chat drag handle"). It was a 6x40 outlined capsule that read as
+   an empty box. At rest: a slim solid pill in a soft ink. On hover, while dragging and with keyboard focus: full ink and a little wider, and a
+   hairline down the whole column edge shows where it splits. */
+@media (min-width:768px){
+  :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle{width:16px!important;left:-8px!important;background:transparent!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle::before{left:7.5px!important;width:1px!important;background:color-mix(in srgb,var(--ink) 35%,transparent)!important;opacity:0!important;transition:opacity .15s ease!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle::after{left:6px!important;width:4px!important;height:44px!important;margin-top:-22px!important;border-radius:2px!important;background:color-mix(in srgb,var(--ink) 45%,var(--paper))!important;box-shadow:0 0 0 3px var(--paper)!important;transition:background-color .15s ease,width .15s ease,left .15s ease!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle:is(:hover,:focus-visible)::before,:root.chat-resizing:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle::before{opacity:1!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle:is(:hover,:focus-visible)::after,:root.chat-resizing:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle::after{left:5px!important;width:6px!important;border-radius:3px!important;background:var(--ink)!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle:focus-visible{outline:none!important}
+  :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle:focus-visible::after{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--focus)!important}
+}
+@media (prefers-reduced-motion:reduce){#chatResizeHandle::before,#chatResizeHandle::after{transition:none!important}}
+
+/* The question cloud sits two or more to a line when they fit (user, 4 Nov 2026): the questions flow in rows and wrap, instead of one per line. */
+:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){flex-direction:row!important;flex-wrap:wrap!important;align-items:flex-start!important;align-content:flex-start!important;justify-content:flex-start!important}
 /* ---- THE NOTE FORM AND SHARE INFORMATION, SET AS DISPLAAY.NET/TYPEFACES (user's instruction, 4 Nov 2026) ----
    Measured on displaay.net/typefaces at 1280px: every control is a 10px-cornered rectangle, 34px high, 4px 12px padding, 15px
    type, with a 1px ink edge (Filter & Sort, Hover Pictures, Night Shift). Actions are solid fills with no edge: Trials black,
