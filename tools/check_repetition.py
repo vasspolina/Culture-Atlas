@@ -30,7 +30,8 @@ MIN_WORDS, CONTAIN_WORDS, NEAR_WORDS, NEAR = 5, 8, 10, 0.9
 
 # The order a reader meets a record's text in. A path is dotted; [] walks a list. Anything not named here is not compared.
 FIELDS = [
-    'highlight', 'watch', 'funding', 'note', 'grade_basis',   # note: the research batches' name for watch 'tier_note', 'records_note', 'finances_note', 'affiliations_note', 'critique_note',
+    'highlight', 'watch', 'funding', 'note', 'grade_basis',   # note: the research batches' name for watch
+    'tier_note', 'records_note', 'finances_note', 'affiliations_note', 'critique_note',
     'details.overview[]', 'details.funding_verdict', 'details.funding[]', 'details.red_flags[].points[]', 'details.wider_context[]',
     'details.not_related[]', 'details.press.overall', 'details.press.items[].points[]', 'details.bottom_line',
     'epstein_records[].summary', 'epstein_records[].tie', 'epstein_records[].consequence', 'wikileaks_records[].what_shows',
@@ -49,6 +50,7 @@ ITEM_LISTS = {'details.overview', 'details.funding', 'details.wider_context', 'd
 
 ABBR = re.compile(r"(?:^|[\s(])(?:[A-Z]|[A-Z]\.[A-Z]|[A-Z]\.[A-Z]\.[A-Z]|Mr|Mrs|Ms|Dr|Prof|St|Ste|Mt|Inc|Ltd|Co|Corp|Jr|Sr|No|Nos|Nr|"
                   r"vs|etc|e\.g|i\.e|approx|ca|cf|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec|U\.S|U\.K)\.$")
+TAIL_CITE = re.compile(r"\s*\((?:[^()]|\([^()]*\))*\)\s*[.!?]*[\"'’”\]]*\s*$")
 PIECE = re.compile(r"[^.!?]*(?:[.!?]+[\"'’”)\]]*\s*|$)")
 
 
@@ -79,19 +81,23 @@ def sentences(text):
 class Seen:
     def __init__(self):
         self.exact, self.long = set(), []
+        self.first, self.cite = {}, []   # first: key -> (holder, key, sentence); cite: citations to move onto a first copy
 
     def has(self, k):
+        """The earlier key k repeats (truthy), or None."""
         if k in self.exact:
-            return True
+            return k
         n = len(k.split())
-        if n >= CONTAIN_WORDS and any(len(o) > len(k) and f' {k} ' in f' {o} ' for o, _ in self.long):
-            return True
+        if n >= CONTAIN_WORDS:
+            for o, _ in self.long:
+                if len(o) > len(k) and f' {k} ' in f' {o} ':
+                    return o
         if n >= NEAR_WORDS:
             mine = set(k.split())
-            for _, words in self.long:
+            for o, words in self.long:
                 if len(words) >= NEAR_WORDS and len(mine & words) / max(len(mine), len(words)) >= NEAR:
-                    return True
-        return False
+                    return o
+        return None
 
     def add(self, k):
         if k not in self.exact:
@@ -99,14 +105,22 @@ class Seen:
             if len(k.split()) >= CONTAIN_WORDS:
                 self.long.append((k, set(k.split())))
 
-    def check(self, s):
-        """True when s was said already; otherwise s is remembered."""
+    def check(self, s, where=None):
+        """True when s was said already; otherwise s is remembered (with where, the (holder, key) it sits in)."""
         if not is_statement(s):
             return False
-        k = norm(s)
-        if self.has(k):
+        k = norm(TAIL_CITE.sub('', str(s))) or norm(s)   # a closing "(English Wikipedia)." is the source, not the statement
+        hit = self.has(k)
+        if hit:
+            first = self.first.get(hit)
+            # The same sentence, cited here and uncited where it was first said: the source moves onto the first copy, so the one
+            # copy kept is the cited one.
+            if first and where and TAIL_CITE.search(str(s)) and not TAIL_CITE.search(first[2]):
+                self.cite.append((first, first[2].rstrip().rstrip('.!?') + TAIL_CITE.search(str(s)).group(0).rstrip()))
             return True
         self.add(k)
+        if where:
+            self.first[k] = (where[0], where[1], str(s))
         return False
 
 
@@ -145,7 +159,7 @@ LABEL = re.compile(r"^([^.:|]{1,80}:\s+)")              # "Epstein link · Leon 
 CITE = re.compile(r"(\s*\((?:[^()]|\([^()]*\))*\))\s*$")   # "(Cablegate 10RIYADH31; Saudi Cables)" closes one
 
 
-def clean_text(text, seen, found, label):
+def clean_text(text, seen, found, label, where=None):
     """text with its repeats taken out. A field of items joined by ' | ' (other_findings) is read item by item: an item whose
     statements were all said before goes whole, with its label and its citation, so no stub such as "(Cablegate 09CANBERRA221)" is
     left behind."""
@@ -159,7 +173,7 @@ def clean_text(text, seen, found, label):
         tail = tail.group(1) if tail else ''
         body = body[:len(body) - len(tail)] if tail else body
         parts = sentences(body)
-        said = [seen.check(x) for x in parts]
+        said = [seen.check(x, where) for x in parts]
         statements = [x for x in parts if is_statement(x)]
         for x, rep in zip(parts, said):
             if rep:
@@ -180,7 +194,7 @@ def check_record(rec, fix=False):
             if not isinstance(text, str) or not text.strip():
                 continue
             before = len(found)
-            new = clean_text(text, seen, found, label)
+            new = clean_text(text, seen, found, label, (holder, key))
             if fix and len(found) != before:
                 if new:
                     holder[key] = new
@@ -191,6 +205,11 @@ def check_record(rec, fix=False):
                 else:
                     drop_items.append((holder, key))
     if fix:
+        for (holder, key, first), cited in seen.cite:
+            text = holder[key] if isinstance(holder, (dict, list)) and (isinstance(holder, list) or key in holder) else None
+            body = first.strip()
+            if isinstance(text, str) and text.count(body) == 1:
+                holder[key] = text.replace(body, cited)
         # Items emptied by the pass go, last index first so the others keep their place.
         for holder, key in sorted(drop_items, key=lambda x: (id(x[0]), -x[1])):
             del holder[key]

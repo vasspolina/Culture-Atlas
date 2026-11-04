@@ -74,9 +74,13 @@
     this.exact.add(k);
     if (wordCount(k) >= CONTAIN_WORDS) this.long.push({ key: k, padded: ' ' + k + ' ', words: new Set(k.split(' ')) });
   };
+  // The words compared: a source in brackets closing the sentence ("(English Wikipedia).") is not part of what it says, so the
+  // same sentence cited once and uncited once is still one sentence.
+  var TAIL_CITE = /\s*\((?:[^()]|\([^()]*\))*\)\s*[.!?]*["'’”\]]*\s*$/;
+  function key(s) { var k = norm(String(s || '').replace(TAIL_CITE, '')); return k || norm(s); }
   // True when the sentence was said already; otherwise it is remembered and false comes back.
   Seen.prototype.check = function (s) {
-    var k = norm(s);
+    var k = key(s);
     if (!isStatement(s)) return false;
     if (this.has(k)) { this.dropped.push(String(s).trim()); return true; }
     this.add(k);

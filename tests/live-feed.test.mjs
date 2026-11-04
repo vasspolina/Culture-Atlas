@@ -25,6 +25,13 @@ test('every item has a date and at least one web address', () => {
   }
 });
 
+test('a post by staff or visitors is marked as one, never as press', () => {
+  for (const x of live.items.filter((i) => i.type === 'account')) {
+    assert.equal(x.who_says, 'user_post', x.id);
+    assert.equal(x.status, 'user', x.id);
+  }
+});
+
 test('every gossip item names its source and the day its addresses were last opened', () => {
   for (const x of live.items.filter((i) => i.type === 'gossip')) {
     assert.ok(x.who_says && x.where, x.headline);
@@ -43,6 +50,16 @@ test('every item is a record’s own, word for word', () => {
       assert.equal(x.where, g.where);
       assert.equal(x.when, g.when);
       assert.equal(x.status, g.status || 'talk');
+    } else if (x.type === 'account') {
+      // A staff or visitor post: one of the record's accounts, at the same address, posted on the same day.
+      const a = ((inst.gossip_data || {}).accounts || []).find((i) => i.id === x.id && (i.sources || []).some((s) => s && s.url === x.urls[0]));
+      assert.ok(a, 'no such account on the record: ' + x.id);
+      assert.ok(JSON.stringify(a.fields).includes(x.when), 'the post date is not the record’s: ' + x.id);
+    } else if (x.type === 'leak') {
+      // One cable can carry two findings about a space, so the entry is found by its id, address and words together.
+      const w = (inst.wikileaks_records || []).find((i) => i.doc_id === x.id && (i.sources || []).includes(x.urls[0]) && i.what_shows === x.said);
+      assert.ok(w, 'no such document on the record: ' + x.id);
+      assert.ok(String(w.date).includes(x.when));
     } else {
       // Several case notes share a title ("Democracy Now! report"), so the note is found by title, date and text together.
       const c = (inst.case_notes || []).find((i) => i.title === x.headline && i.meta === x.when && (i.text || '') === x.said);

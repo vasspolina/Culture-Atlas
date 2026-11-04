@@ -40,3 +40,9 @@ test('headings and tables keep their shape; distinct text is untouched', () => {
   const t = '## Funding\n\n| a | b |\n|---|---|\n\nThe city funds it.\n\n## Funding';
   assert.equal(dropRepeatedText(t), t);
 });
+
+test('a source in brackets closing a sentence is not part of what it says', () => {
+  const t = 'It is one of the theatres of the April Spring Friendship Art Festival (English Wikipedia).\n\n'
+    + 'It is one of the theatres of the April Spring Friendship Art Festival.';
+  assert.equal(dropRepeatedText(t), 'It is one of the theatres of the April Spring Friendship Art Festival (English Wikipedia).');
+});
