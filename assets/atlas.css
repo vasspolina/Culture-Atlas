@@ -4307,3 +4307,13 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard>.flex.items-center.justify-between>div:has(>#chatShareBtn){order:3;flex:1 1 100%!important;width:100%!important;display:flex!important;justify-content:flex-start!important;margin:0!important;padding:0!important}
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard #chatShareBtn{display:inline-flex!important}
 }
+
+/* ---- THE PHONE'S CHAT: GOSSIP SET AS THE PHONE'S DETAILS SHEET (user's instruction, 4 Nov 2026: "do the same for the chat on the
+   phone", then "match Details sheet") ---- On a phone only, the gossip items in a chat balloon take the Details sheet's layout
+   (GOSSIP MODE: THE PHONE'S DETAILS SHEET, above): a 1px rule over each item, the first paragraph of what is said at 20px/1.15
+   -0.01em and the rest at 15px/1.3. The desktop chat keeps its own setting: no rule and the chat's body size (user, 4 Nov 2026). */
+@media (max-width:767px){
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .record-card.dp-row{border-top:1px solid currentColor!important;padding-top:10px!important;margin-bottom:24px!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main :is(p,li,ul){font-size:15px!important;line-height:1.3!important;letter-spacing:.01em!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main>:first-child,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main>ul:first-child>li:first-child{font-size:20px!important;line-height:1.15!important;letter-spacing:-.01em!important}
+}
