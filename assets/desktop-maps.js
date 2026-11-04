@@ -222,7 +222,8 @@
     chips.setAttribute('role', 'toolbar');
     chips.setAttribute('aria-label', 'Map layers');
     document.body.appendChild(chips);
-    const layerInputs = () => [...document.querySelectorAll('#layersControl input[data-layer]')];
+    // A section marked data-no-chips (the funding views) stays in the Layers menu only.
+    const layerInputs = () => [...document.querySelectorAll('#layersControl input[data-layer]')].filter((cb) => !cb.closest('[data-no-chips]'));
     function buildChips() {
       const list = layerInputs();
       if (!list.length) return false;
