@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=520">
-  <script src="assets/config.js?v=520"></script>
-  <script src="assets/subtopic.js?v=520"></script>
-  <script src="assets/names.js?v=520"></script>
-  <script src="assets/grounding.js?v=520"></script>
-  <script src="assets/repeats.js?v=520"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=521">
+  <script src="assets/config.js?v=521"></script>
+  <script src="assets/subtopic.js?v=521"></script>
+  <script src="assets/names.js?v=521"></script>
+  <script src="assets/grounding.js?v=521"></script>
+  <script src="assets/repeats.js?v=521"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1073,7 +1073,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=520"></script>
+  <script src="assets/institutions.js?v=521"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6724,6 +6724,8 @@ return maplibregl$1;
       }
     };
     let cityLeafletMap = null;
+    // The glyph ranges cut from PP Neue Gstaad into assets/glyphs. Add a range here when its file is added.
+    const CITY_MAP_LOCAL_GLYPHS = new Set(['0-255', '256-511', '7680-7935', '8192-8447', '8448-8703']);
 
     function initCityMapIfNeeded() {
       if (cityVectorMap) return;
@@ -6739,6 +6741,15 @@ return maplibregl$1;
           pitch: 35,
           bearing: 0,
           antialias: true,
+          // Glyph ranges the label font does not have are fetched from OpenFreeMap's Noto Sans. Without this, a tile with one
+          // label outside assets/glyphs (Arabic in Baghdad, from zoom 14 in) hit a 404, MapLibre dropped the whole tile, and the
+          // street map went blank as soon as it was zoomed in.
+          transformRequest: (url, type) => {
+            if (type !== 'Glyphs') return { url };
+            const m = url.match(/\/assets\/glyphs\/[^/]+\/(\d+-\d+)\.pbf$/);
+            if (!m || CITY_MAP_LOCAL_GLYPHS.has(m[1])) return { url };
+            return { url: 'https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/' + m[1] + '.pbf' };
+          },
           attributionControl: { compact: false } /* the credit as one line of small text, no "i" button (user, 4 Nov 2026; the OpenStreetMap licence asks for a visible credit) */
         });
 
@@ -9974,11 +9985,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v520';
+    const ATLAS_RELEASE = 'culture-atlas-v521';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=520').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=521').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -20470,12 +20481,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=520"></script>
-<script src="assets/layers.js?v=520"></script>
-<script src="assets/hq-detail.js?v=520"></script>
-<script src="assets/bubbles.js?v=520" defer></script>
-<script src="assets/phone-maps.js?v=520"></script>
-<script src="assets/desktop-maps.js?v=520"></script>
-<script src="assets/chat-resize.js?v=520"></script>
+<script src="assets/typeset.js?v=521"></script>
+<script src="assets/layers.js?v=521"></script>
+<script src="assets/hq-detail.js?v=521"></script>
+<script src="assets/bubbles.js?v=521" defer></script>
+<script src="assets/phone-maps.js?v=521"></script>
+<script src="assets/desktop-maps.js?v=521"></script>
+<script src="assets/chat-resize.js?v=521"></script>
 </body>
 </html>
