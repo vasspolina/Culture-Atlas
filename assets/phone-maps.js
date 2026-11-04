@@ -934,22 +934,28 @@
         const n = x.urls.length;
         const src = SOURCE[x.who] || ['Source type not recorded', false];
         const links = '<a class="gm-stat" href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + svg(ICO.link) + n + (n === 1 ? ' source' : ' sources') + '</a>';
-        const reply = x.type !== 'gossip' ? '' : '<span class="gm-stat">' + svg(ICO.reply) + (x.reply && !/^no reply/i.test(x.reply) ? 'Reply on record' : 'No reply found') + '</span>';
-        const posterHtml = poster ? '<div class="gm-poster' + (alert ? ' is-alert' : '') + '" aria-hidden="true"><p class="gm-poster-pill">' + esc(alert ? 'Alert · ' : '') + esc(KIND[x.kind] || 'Report') + ' · ' + esc(dateText(x.when)) + '</p><p class="gm-poster-name">' + esc(x.inst.name) + '</p><p class="gm-poster-place">' + esc(placeOf(x.inst)) + '</p><p class="gm-poster-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</p></div>' : '';
-        // Where this comes from, in words: the kind of source, whether it is user-generated, who published it and when, and
-        // the day the atlas last opened its addresses.
+        // A reply printed in full below is not announced again as "Reply on record"; only its absence is a stat.
+        const hasReply = x.type === 'gossip' && x.reply && !/^no reply/i.test(x.reply);
+        const reply = x.type !== 'gossip' || hasReply ? '' : '<span class="gm-stat">' + svg(ICO.reply) + 'No reply found</span>';
+        const posterHtml = poster ? '<div class="gm-poster' + (alert ? ' is-alert' : '') + '" aria-hidden="true"><p class="gm-poster-pill">' + esc(alert ? 'Alert · ' : '') + esc(KIND[x.kind] || 'Report') + '</p><p class="gm-poster-name">' + esc(x.inst.name) + '</p><p class="gm-poster-place">' + esc(placeOf(x.inst)) + '</p><p class="gm-poster-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</p></div>' : '';
+        // Where this comes from, in words: the kind of source, whether it is user-generated, and the day the atlas last opened its
+        // addresses. Each fact is printed once on the card (user, 4 Nov 2026: "remove all repetition"): the outlet and role are the
+        // line above the headline, the date is the "Reported"/"Posted"/"Dated" line with the day beside it, and on the poster card the
+        // space, its place and the status are the poster's, so the lines below do not say them again. A leak's own dating (months)
+        // is kept when it says more than the day.
+        const leakDated = x.type === 'leak' && x.dated ? monthsText(x.dated) : '';
         const prov = '<p class="gm-story-prov' + (src[1] ? ' is-user' : '') + '">' + (src[1] ? '<b>User-generated, not verified</b> · ' : '') + esc(src[0])
-          + (x.where ? ' · ' + esc(x.where) : '') + (x.role ? ' · ' + esc(x.role) : '') + (x.type === 'leak' ? ' · dated ' + esc(monthsText(x.dated) || dateText(x.when)) : x.type === 'account' ? ' · posted ' + esc(dateText(x.when)) : ' · published ' + esc(dateText(x.when)))
+          + (leakDated && leakDated !== dateText(x.when) ? ' · dated ' + esc(leakDated) : '')
           + (x.checked ? ' · links checked by the atlas ' + esc(dateText(x.checked)) : '') + '</p>';
         return '<article class="gm-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">' + posterHtml
           + '<p class="gm-story-src"><span class="gm-story-mark" aria-hidden="true">' + esc((x.where || x.inst.name).trim().charAt(0).toUpperCase()) + '</span>' + esc(x.where || 'The record') + (x.role ? ' · ' + esc(x.role) : '') + '</p>'
           + '<h3 class="gm-story-head"><button type="button" class="gm-open" data-i="' + i + '">' + (alert && !poster ? '<span class="gm-alert-tag">Alert</span> ' : '') + esc(x.head) + '</button></h3>'
-          + '<p class="gm-story-when">' + ({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported') + ' ' + esc(ago(x.when)) + ' · ' + esc(x.inst.name) + (x.inst.city || x.inst.country ? ', ' + esc(x.inst.city || x.inst.country) : '') + '</p>'
+          + '<p class="gm-story-when">' + ({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported') + ' ' + esc(ago(x.when)) + (ago(x.when) !== dateText(x.when) && dateText(x.when) ? ' (' + esc(dateText(x.when)) + ')' : '') + (poster ? '' : ' · ' + esc(x.inst.name) + (x.inst.city || x.inst.country ? ', ' + esc(x.inst.city || x.inst.country) : '')) + '</p>'
           + (saidRest(x) ? '<p class="gm-story-said">' + esc(saidRest(x)) + '</p>' : '')
-          + (x.reply && x.type === 'gossip' ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
+          + (hasReply ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
           + (x.outcome ? '<p class="gm-story-reply"><span>Outcome</span> ' + esc(x.outcome) + '</p>' : '')
           + prov
-          + '<div class="gm-story-stats">' + links + reply + '<span class="gm-stat gm-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</span>'
+          + '<div class="gm-story-stats">' + links + reply + (poster ? '' : '<span class="gm-stat gm-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</span>')
           + '<button type="button" class="gm-share" data-i="' + i + '">' + svg(ICO.share) + 'Share</button></div></article>';
       }
 

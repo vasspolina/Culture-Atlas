@@ -313,8 +313,14 @@ def clean(records, report=None):
         for field, text in (corrections.get(r['id']) or {}).items():
             r[field] = text
             bump('corrected_after_checking')
-    # The Clean Funding Grade is computed last, from the cleaned flags and sources (tools/grade_funding.py).
     sys.path.insert(0, str(Path(__file__).resolve().parent))
+    # No statement twice in a record: a sentence another field already gives is taken out of the later field (tools/check_repetition.py).
+    import check_repetition
+    for r in records:
+        n = len(check_repetition.check_record(r, fix=True))
+        if n:
+            report['repeated_statement'] = report.get('repeated_statement', 0) + n
+    # The Clean Funding Grade is computed last, from the cleaned flags and sources (tools/grade_funding.py).
     import grade_funding
     for k, n in grade_funding.apply(records).items():
         report['grade ' + k] = n
