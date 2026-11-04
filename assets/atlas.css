@@ -3601,9 +3601,9 @@ div:has(>#topThemeBtn){column-gap:0}
    blur it replaces had to. */
 html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport::after{display:none}
 
-/* The curator's mark beside each answer is the pink disc with a square (user's file, 4 Nov 2026), in place of the Gemini spark.
+/* The curator's mark beside each answer is the pink disc with a square cut out of it (user's file, 4 Nov 2026), in place of the Gemini spark.
    It does not spin while an answer is coming: a pending answer pulses instead. */
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap:not(.has-bubble):not(#curatorHeroGreeting)::before{background:url("icons/chat-mark.svg") center/contain no-repeat!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap:not(.has-bubble):not(#curatorHeroGreeting)::before{background:url("icons/chat-mark.svg?v=2") center/contain no-repeat!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap.chat-pending::before{animation:chat-mark-pulse 1.2s ease-in-out infinite alternate!important}
 @keyframes chat-mark-pulse{from{opacity:1}to{opacity:.35}}
 @media (prefers-reduced-motion:reduce){ :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap.chat-pending::before{animation:none!important} }
