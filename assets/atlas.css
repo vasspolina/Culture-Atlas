@@ -3710,3 +3710,10 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-width:44px!important;padding:0!important;line-height:0!important;border-radius:var(--btn-r,10px)!important;box-shadow:none!important;background:transparent!important;color:var(--ink)!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close svg{display:block;width:22px;height:22px;flex:none}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close:is(:hover,:focus-visible){background:var(--ink)!important;color:var(--paper)!important}
+
+/* Zoom in and out are one joined box: the box has the 10px corners and the edge, the two buttons inside are square, with one
+   rule between them. The generic button rule above carries more ids (its :not() list holds some), so this repeats the
+   control's id to win; without it the minus drew its own rounded box, and its hover fill showed rounded corners inside the
+   square-cornered pair (user, 4 Nov 2026). */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl#gmdMapCtl#gmdMapCtl .gmd-zoom>button{border-radius:0!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl#gmdMapCtl#gmdMapCtl .gmd-zoom>button:focus-visible{outline:2px solid var(--focus)!important;outline-offset:-4px!important}
