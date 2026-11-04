@@ -196971,7 +196971,13 @@
       "https://www.e-flux.com/directory/73849",
       "https://www.e-flux.com/directory/112642",
       "https://www.e-flux.com/directory/2471",
-      "https://www.e-flux.com/directory/8155/nieuwe-instituut"
+      "https://www.e-flux.com/directory/8155/nieuwe-instituut",
+      "https://en.wikipedia.org/wiki/Roman_Abramovich",
+      "https://ria.ru/20220208/vystavka-1771626506.html",
+      "https://artistsatrisk.org/2022/02/28/press-a-letter-for-ukraine-by-e-flux/?lang=en",
+      "https://garagemca.org/en/event/anton-vidokle-this-is-cosmos",
+      "https://www.e-flux.com/events/636302/if-i-loved-life-i-wouldn-t-make-movies-part-iv-and-be-careful-if-cinema-intervenes-the-film-projects-of-groupe-cinthique",
+      "https://www.e-flux.com/events/655772/launch-of-e-flux-journal-issue-152-on-paralysis-with-evan-calder-williams-and-brian-kuan-wood"
     ],
     "curatorial_focus": "Art publishing and announcements, critical theory (e-flux journal, Notes, Criticism, Architecture), screenings, talks and exhibitions",
     "year_founded": 1998,
@@ -196985,7 +196991,7 @@
     ],
     "address": "172 Classon Avenue, Brooklyn, NY 11205, United States",
     "neighborhood": "Clinton Hill / Bedford-Stuyvesant",
-    "opening_hours": "Open for screenings, talks and events; see the programme online",
+    "opening_hours": "Open for scheduled screenings, talks and launches at the Screening Room, 172 Classon Avenue",
     "transit_tips": "Subway G to Classon Av; bus B54 along Myrtle Ave.",
     "amenities": [
       "100-seat e-flux Screening Room",
@@ -197007,6 +197013,30 @@
         ],
         "basis": "OpenStreetMap, address lookup: 172, Classon Avenue, Clinton Hill, Brooklyn, Kings County, New York, 11205, United States",
         "retrieved": "2026-11-03"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.e-flux.com/events/636302/if-i-loved-life-i-wouldn-t-make-movies-part-iv-and-be-careful-if-cinema-intervenes-the-film-projects-of-groupe-cinthique",
+          "https://www.e-flux.com/events/655772/launch-of-e-flux-journal-issue-152-on-paralysis-with-evan-calder-williams-and-brian-kuan-wood"
+        ],
+        "basis": "admission_fee",
+        "retrieved": "2026-11-03"
+      },
+      "accessibility": {
+        "urls": [
+          "https://www.e-flux.com/events/636302/if-i-loved-life-i-wouldn-t-make-movies-part-iv-and-be-careful-if-cinema-intervenes-the-film-projects-of-groupe-cinthique",
+          "https://www.e-flux.com/events/655772/launch-of-e-flux-journal-issue-152-on-paralysis-with-evan-calder-williams-and-brian-kuan-wood"
+        ],
+        "basis": "accessibility",
+        "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.e-flux.com/events/636302/if-i-loved-life-i-wouldn-t-make-movies-part-iv-and-be-careful-if-cinema-intervenes-the-film-projects-of-groupe-cinthique",
+          "https://www.e-flux.com/events/655772/launch-of-e-flux-journal-issue-152-on-paralysis-with-evan-calder-williams-and-brian-kuan-wood"
+        ],
+        "basis": "opening_hours",
+        "retrieved": "2026-11-03"
       }
     },
     "bureaucracy": {
@@ -197017,7 +197047,7 @@
       "year": "2026",
       "sources": [
         "https://fnewsmagazine.com/2011/03/getting-paid-part-ii-how-they-do-it-in-new-york/",
-        "https://www.govcb.com/government-vendors/profile-SAM00000000001474495-e-flux-inc-New-York-NY.htm"
+        "https://data.ny.gov/resource/n9v6-gdp6.json?$where=dos_id%20in(%272331997%27,%273375706%27,%274735982%27,%274695458%27)"
       ],
       "level": 1,
       "level_basis": ""
@@ -197038,13 +197068,12 @@
       "funding_verdict": "e-flux: self-financed commercial platform: paid announcements bought by art institutions, including Russian, Chinese and Gulf state bodies, plus publishing, the bar and $394,309 in forgiven US federal PPP loans",
       "funding": [
         "e-flux began as a for-profit listserv; Vidokle said it turned profitable and that this lets it stay fully independent of market, government and sponsor influence (F Newsmagazine, Ania Szremski, 14 March 2011).",
-        "Its website names museums, biennials, art fairs and publishers as users of its announcement services and says to contact e-flux for rates; it publishes no price list and lists no supporters or funders (e-flux website, retrieved 3 November 2026).",
-        "A US government vendor registry lists E-FLUX, INC., then at 311 East Broadway, under the advertising-agency code NAICS 541810 (govcb.com).",
+        "Its website names museums, biennials, art fairs and publishers as users of its announcement services and asks them to contact e-flux for rates (e-flux website, retrieved 3 November 2026).",
         "Income also comes from books, the quarterly e-flux Index, sold by institutional and individual subscription and as PDFs, and Bar Laika (e-flux website).",
         "In-kind support: Marianne Goebl, Artek and Vitra donated Alvar Aalto lighting and helped with seating for Bar Laika (e-flux announcement, 12 October 2018).",
         "US federal Paycheck Protection Program: E-FLUX, INC. took $196,727 on 16 April 2020 and $197,582 on 7 February 2021 from JPMorgan Chase, reporting 16 jobs each time; both were forgiven, $396,698 with interest. ART DOMAIN, LLC (Bar Laika) took $54,402 in April 2020 for 7 jobs (SBA data via NY Open Data).",
         "Property: E-FLUX REALTY, LLC bought 224 Greene Avenue, the Bar Laika building, for $2,950,000 in December 2015, with mortgages of $1,125,000 from JPMorgan Chase, $975,000 from NYBDC Local Development Corporation and $1,004,000 from Empire State Certified Development Corp, the last assigned to the US Small Business Administration (ACRIS).",
-        "Government money reaches e-flux as announcement fees from state museums, ministries, national pavilions and biennials in Russia until February 2022, and in China, the Gulf, Central Asia and elsewhere since (e-flux directory). The fees paid are not public."
+        "Government money reaches e-flux as announcement fees from state museums, ministries, national pavilions and biennials in Russia until February 2022, and in China, the Gulf, Central Asia and elsewhere since (e-flux directory)."
       ],
       "red_flags": [
         {
@@ -197054,7 +197083,7 @@
             "Moscow International Biennale for Young Art: 10 announcements from September 2011 to December 2021; its 2020 open call names the federal State Museum and Exhibition Center ROSIZO and Moscow city's MMOMA as organisers (e-flux directory and announcement).",
             "Pushkin State Museum of Fine Arts: 3 announcements, April 2017 to November 2020. MMOMA: 2, May and December 2013 (e-flux directory).",
             "State Tretyakov Gallery: 2 announcements, the last on 1 February 2022 for Vidokle's own 'Citizens of the Cosmos' there (e-flux directory).",
-            "Garage Museum (Zhukova and Abramovich): 41 announcements from December 2008 to November 2021. Strelka Institute: 17 from May 2011 to December 2021. V-A-C Foundation (Mikhelson, Novatek): 1 in April 2014. Abramovich was sanctioned by the UK, EU and Canada in March 2022 (e-flux directory; Artnet).",
+            "Garage Museum (founded 2008 by Dasha Zhukova and Roman Abramovich): 41 announcements from December 2008 to November 2021. Strelka Institute: 17 from May 2011 to December 2021. V-A-C Foundation (Mikhelson, Novatek): 1 in April 2014. Abramovich was sanctioned by the UK, EU and Canada in March 2022 (e-flux directory; Artnet).",
             "More Russian clients: State Hermitage 2 (2020); Moscow's Committee of Architecture 1 (2014); Moscow's Manege exhibition hall 2 (December 2020 and January 2022); the Russian Pavilion in Venice 3 (2010 to 2012, commissioner Stella Kesaeva); and 'Open', the 2021 Russian Pavilion commissioned by V-A-C's director, 28 (December 2019 to April 2021) (e-flux directory).",
             "None of these clients has posted since the invasion of Ukraine on 24 February 2022 (e-flux directory)."
           ]
@@ -197062,8 +197091,8 @@
         {
           "heading": "Founder's work at Russian state and oligarch venues",
           "points": [
-            "Vidokle's 'Citizens of the Cosmos' opened at the state New Tretyakov Gallery on 8 February 2022. After the invasion he asked the museum to end it, and e-flux published a letter for Ukraine on 28 February 2022 (Artnet; RIA).",
-            "His cosmism films were screened at Garage in 2015.",
+            "Vidokle's 'Citizens of the Cosmos' opened at the state New Tretyakov Gallery on 8 February 2022, curated by Kirill Svetlyakov. After the invasion he asked the museum to end it, and e-flux published a letter for Ukraine on 28 February 2022 (Artnet; RIA).",
+            "Garage screened his 'This Is Cosmos!' (2014) in its 2015 show 'Field Research: A Progress Report' and, with Ad Marginem, published Boris Groys's cosmism anthology for it (Garage).",
             "Time/Food, the Moscow stop of Aranda and Vidokle's Time/Bank, was hosted in May 2012 by the Stella Art Foundation of Stella Kesaeva, wife of Igor Kesaev, sanctioned by the EU, UK and Canada in 2022 and the US in May 2023 (Artchronika; The Art Newspaper; Wikipedia)."
           ]
         },
@@ -197425,6 +197454,21 @@
         },
         {
           "url": "https://www.e-flux.com/directory/8155/nieuwe-instituut"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Abramovich"
+        },
+        {
+          "url": "https://artistsatrisk.org/2022/02/28/press-a-letter-for-ukraine-by-e-flux/?lang=en"
+        },
+        {
+          "url": "https://garagemca.org/en/event/anton-vidokle-this-is-cosmos"
+        },
+        {
+          "url": "https://www.e-flux.com/events/636302/if-i-loved-life-i-wouldn-t-make-movies-part-iv-and-be-careful-if-cinema-intervenes-the-film-projects-of-groupe-cinthique"
+        },
+        {
+          "url": "https://www.e-flux.com/events/655772/launch-of-e-flux-journal-issue-152-on-paralysis-with-evan-calder-williams-and-brian-kuan-wood"
         }
       ],
       "website": "https://www.e-flux.com",
@@ -197433,28 +197477,6 @@
     "grade": 2,
     "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "case_notes": [
-      {
-        "title": "Oligarch-funded clients on e-flux",
-        "meta": "2008 to 2021",
-        "text": "e-flux's directory lists 41 paid announcements by the Garage Museum of Contemporary Art, Moscow (founded 2008 by Dasha Zhukova and Roman Abramovich, by its own text) from 'Moscow on the Move' (10 December 2008) to 'Space 1520' (29 November 2021); 17 by Strelka Institute from 23 May 2011 to 7 December 2021; and one by V-A-C Foundation, 'Moscow exhibitions 2014' (5 April 2014). None is dated after February 2022. Abramovich was sanctioned by the UK, EU and Canada in March 2022; Mikhelson was not sanctioned by the US or EU as of May 2022 (Artnet). The fees are not public.",
-        "sources": [
-          "https://www.e-flux.com/directory/12669/garage-museum-of-contemporary-art",
-          "https://www.e-flux.com/directory/69632/strelka-institute-for-media-architecture-and-design",
-          "https://www.e-flux.com/announcements/31304/moscow-exhibitions-2014/",
-          "https://news.artnet.com/art-world-archives/v-a-c-foundation-occupied-ukraine-2115417",
-          "https://en.wikipedia.org/wiki/Roman_Abramovich"
-        ]
-      },
-      {
-        "title": "Vidokle at the Tretyakov during the invasion",
-        "meta": "2022-02",
-        "text": "'Citizens of the Cosmos', Vidokle's film trilogy on Russian cosmism, opened at the New Tretyakov Gallery on 8 February 2022, curated by Kirill Svetlyakov, with a book from Ad Marginem. Artnet reported that Vidokle, who has Russian and Ukrainian relatives, first argued that closing it would play into the government's hands, then asked the museum to end the show; the museum had not answered. e-flux published 'A letter for Ukraine' on 28 February 2022.",
-        "sources": [
-          "https://news.artnet.com/art-world-archives/international-artists-russia-ukraine-2078595",
-          "https://ria.ru/20220208/vystavka-1771626506.html",
-          "https://artistsatrisk.org/2022/02/28/press-a-letter-for-ukraine-by-e-flux/?lang=en"
-        ]
-      },
       {
         "title": "e-flux journal in Russian on syg.ma",
         "meta": "2021-08-03",
@@ -197474,25 +197496,6 @@
         ]
       },
       {
-        "title": "Time/Food at the Stella Art Foundation, Moscow",
-        "meta": "2012-05-24",
-        "text": "Irina Kulik reviewed Time/Food, the pop-up restaurant of Aranda and Vidokle's Time/Bank, at the Stella Art Foundation on Skaryatinsky Lane, Moscow, curated by Ekaterina Degot, where a meal cost 30 minutes of promised work; she called it a 'micro-utopia' and said a field kitchen beside the protest camp would have been the more radical gesture. The foundation was set up in 2004 by Stella Kesaeva, wife of Igor Kesaev (The Art Newspaper, John Varoli, 1 December 2008); Kesaev's Mercury Group owns the tobacco distributor Megapolis, and he was sanctioned by the EU, UK and Canada in 2022 and the US in May 2023 (Wikipedia).",
-        "sources": [
-          "https://artchronika.ru/vystavki/e-flux-context/",
-          "https://www.theartnewspaper.com/2008/12/01/collector-stella-kesaevas-plans-for-a-new-gallery-in-her-garage",
-          "https://en.wikipedia.org/wiki/Igor_Kesaev"
-        ]
-      },
-      {
-        "title": "German public money behind the cosmism programme",
-        "meta": "2017-09",
-        "text": "HKW Berlin's 'Art Without Death: Russian Cosmism' (1 September to 3 October 2017), with Vidokle's film trilogy, Boris Groys's conference and exhibition and Arseny Zhilyaev's installation, ran under '100 Years of Now', supported by the Federal Government Commissioner for Culture and the Media by a ruling of the Bundestag; HKW itself is funded by that office and the Federal Foreign Office. Earlier, unitednationsplaza in east Berlin (2006 to 2007) grew out of the cancelled Manifesta 6 and was paid for by e-flux, with the Ford Foundation the only funder that did not withdraw (e-flux project page).",
-        "sources": [
-          "https://www.e-flux.com/announcements/92561/art-without-death-russian-cosmism",
-          "https://www.e-flux.com/projects/548898/unitednationsplaza"
-        ]
-      },
-      {
         "title": "Berlin open letter carried by e-flux",
         "meta": "2022-02-17",
         "text": "Monopol reported that the open letter by Hito Steyerl, Clemens von Wedemeyer and J\u00f6rg Heiser against the Berlin Senate's support for Walter Smerling's private 'Kunsthalle Berlin' at Tempelhof was circulated 'among other channels via the platform e-flux', which hosted it in English and German on e-flux Notes; signatories included Maria Eichhorn, Kader Attia and Krist Gruijthuijsen (KW).",
@@ -197502,18 +197505,12 @@
         ]
       }
     ],
-    "funder_links": [
-      {
-        "funder": "Garage Museum",
-        "institutions": 1
-      },
-      {
-        "funder": "V-A-C Foundation",
-        "institutions": 1
-      }
-    ],
     "records_note": "E-FLUX, INC. is a private company and posts no accounts or rates; its directory lists each client's announcements by date.",
-    "affiliations_note": "Owned and directed by founder Anton Vidokle through E-FLUX, INC.; E-FLUX REALTY owns the Bar Laika building; e-flux Architecture has partnered US, Korean, Portuguese, British and Swiss pavilions in Venice."
+    "affiliations_note": "Owned and directed by founder Anton Vidokle through E-FLUX, INC.; E-FLUX REALTY owns the Bar Laika building; e-flux Architecture has partnered US, Korean, Portuguese, British and Swiss pavilions in Venice.",
+    "website": "https://www.e-flux.com",
+    "visit_url": "https://www.e-flux.com/events",
+    "admission_fee": "Screenings from $5; journal and book launches often free",
+    "accessibility": "Two flights of stairs to the front entrance; a freight elevator by 180 Classon Avenue on request by RSVP; a ramp inside and a step-free ADA bathroom."
   },
   {
     "name": "AfricaMuseum (Royal Museum for Central Africa)",
