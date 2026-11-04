@@ -12,6 +12,7 @@ What is written, and only where the record has nothing for that field:
                  ("Tue, Wed, Fri 10:00–18:00; Thu 10:00–21:00; closed Mon"). Only the plain form is read: days, times and "off". A value
                  with months, dates, week numbers, holidays other than "PH off", sunrise or sunset, or a comment is left
                  out rather than half-read. "24/7" is not taken for a museum: on these objects it means the grounds.
+                 Only hours a mapper has confirmed since 2024 (check_date or check_date:opening_hours) are taken.
   admission_fee  "Free" where the object is tagged fee=no, or the price where a charge tag states one.
                  fee=yes on its own says only that there is a charge, which is no help to a visitor, so it is skipped.
 Each value records the OSM object under field_sources with the date it was read. OSM is kept by volunteers: the
@@ -190,18 +191,24 @@ if not apply:
 
 cache = json.load(open(cache_path, encoding='utf-8'))
 filled = {'opening_hours': [], 'admission_fee': []}
-unread = []
+unread, stale = [], []
+# Hours go out of date: of 462 objects with opening_hours, 294 had never been checked, and the Hermitage's read
+# Tue–Sun 12:00–21:00 against its real 10:30 opening. Only hours a mapper confirmed (check_date) from 2024 on are taken.
+RECENT = '2024-01-01'
 for r in records:
     k, url = osm_of(r)
     tags = cache.get(k) if k else None
     if not tags:
         continue
     fs = r.setdefault('field_sources', {})
-    if not r.get('opening_hours') and tags.get('opening_hours'):
+    checked = (tags.get('check_date:opening_hours') or tags.get('check_date') or '')[:10]
+    if not r.get('opening_hours') and tags.get('opening_hours') and checked < RECENT:
+        stale.append((r['id'], tags['opening_hours'], checked or 'never'))
+    elif not r.get('opening_hours') and tags.get('opening_hours'):
         h = hours(tags['opening_hours'])
         if h:
             r['opening_hours'] = h
-            fs['opening_hours'] = {'urls': [url], 'basis': 'OpenStreetMap opening_hours: ' + tags['opening_hours'], 'retrieved': date}
+            fs['opening_hours'] = {'urls': [url], 'basis': f"OpenStreetMap opening_hours, checked by a mapper {checked}: " + tags['opening_hours'], 'retrieved': date}
             filled['opening_hours'].append((r['id'], tags['opening_hours'], h))
         else:
             unread.append((r['id'], tags['opening_hours']))
@@ -213,7 +220,7 @@ for r in records:
             filled['admission_fee'].append((r['id'], a))
     if not fs:
         del r['field_sources']
-print('opening hours written:', len(filled['opening_hours']), '| left unread:', len(unread),
+print('opening hours written:', len(filled['opening_hours']), '| not checked since 2024:', len(stale), '| left unread:', len(unread),
       '| admission written:', len(filled['admission_fee']))
 if dry:
     for x in filled['opening_hours'][:40]:
@@ -222,7 +229,7 @@ if dry:
     print('admission:', [a[1] for a in filled['admission_fee'][:30]])
     sys.exit()
 (ROOT / 'data' / 'web_research' / f'osm_visiting_decisions_{date}.json').write_text(
-    json.dumps({'written': filled, 'unread': unread}, ensure_ascii=False, indent=1), encoding='utf-8')
+    json.dumps({'written': filled, 'unread': unread, 'stale': stale}, ensure_ascii=False, indent=1), encoding='utf-8')
 path.write_text(json.dumps(records, ensure_ascii=False, indent=1), encoding='utf-8')
 subprocess.run([sys.executable, str(ROOT / 'tools' / 'clean_data.py')], check=True, stdout=subprocess.DEVNULL)
 subprocess.run([sys.executable, str(ROOT / 'tools' / 'embed_data.py')], check=True)

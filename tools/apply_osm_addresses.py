@@ -16,6 +16,7 @@ Usage: python3 tools/apply_osm_addresses.py [data/web_research/osm_addresses_202
 """
 import json
 import math
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -63,8 +64,14 @@ def compose(a, country, own_city):
     if cc in NO_STREET_ADDRESSES:
         return None
     num = (a.get('house_number') or '').split(';')[0].strip()
+    num = re.sub(r'^(\d+)号$', r'\1', num)            # 200号 is "No. 200"
     road = (a.get('road') or a.get('pedestrian') or '').strip()
-    if not num or not road:
+    # A street signed in two scripts ("Rue Tissa زنقة تيسة") keeps its Latin name; one in Chinese characters only, or
+    # a house number that is still in them, is left out rather than set beside English words it cannot be read with.
+    # Cyrillic and Greek street names stay: that is how the street is signed.
+    if re.search(r'[A-Za-z]', road):
+        road = re.sub(r'\s*[\u0600-\u06FF][\u0600-\u06FF\s]*', ' ', road).strip()
+    if not num or not road or re.search(r'[\u3000-\u9FFF]', road + num):
         return None
     street = f'{num} {road}' if cc in NUMBER_FIRST else f'{road} {num}'
     city = a.get('city') or a.get('town') or a.get('village') or a.get('municipality') or a.get('hamlet') or ''
@@ -72,6 +79,8 @@ def compose(a, country, own_city):
     # the record's own city is used then.
     if not city or city.startswith('Greater ') or city.endswith(' District') or city.endswith(' Ward'):
         city = own_city or city
+    if city.isupper():
+        city = city.title()                                  # RABAT
     if city and country and city.lower() == country.lower():   # Hong Kong, Hong Kong; Singapore, Singapore
         country = ''
     pc = (a.get('postcode') or '').split(';')[0].strip()
@@ -86,7 +95,19 @@ def compose(a, country, own_city):
     return ', '.join(x for x in [street, place, country] if x)
 
 
-written, moved, review, skipped = [], [], [], {'no house number or street': 0, 'not found': 0}
+# A name search can land on a namesake: NEON (Athens) found a travel agency, Kingston Creative a guest house,
+# Anadolu Kültür a school. A name match is taken only when the object is a venue of the kind the atlas records.
+PLACE_TYPES = {'museum', 'gallery', 'arts_centre', 'theatre', 'attraction', 'community_centre', 'civic', 'public',
+               'yes', 'building', 'concert_hall', 'exhibition_centre', 'library'}
+# Checked by hand on 4 Nov 2026 and wrong, though the type passes:
+REJECTED = {
+    'international-center-of-photography-new-york': '1133 Fifth Avenue is the old building; ICP moved to 79 Essex Street',
+    'national-gallery-prague': 'the hit is one branch (Schwarzenberg Palace), not the institution',
+    'long-museum-shanghai': 'the house number is in Chinese and reads as part of the street',
+    'eyebeam-new-york': 'not confirmed that Eyebeam is still at 199 Cook Street',
+}
+written, moved, review, skipped = [], [], [], {'no house number or street': 0, 'not found': 0,
+                                               'name match not a venue, or checked and wrong': 0}
 for r in records:
     f = found.get(r['id'])
     if r.get('address') or not f:
@@ -100,6 +121,9 @@ for r in records:
         continue
     url = 'https://www.openstreetmap.org/' + f['osm']
     move = None
+    if f['how'] == 'name search' and (f.get('type') not in PLACE_TYPES or r['id'] in REJECTED):
+        skipped['name match not a venue, or checked and wrong'] += 1
+        continue
     if f['how'] == 'name search':
         lat, lon = r.get('lat'), r.get('lon')
         if lat is not None and lon is not None:
@@ -125,8 +149,10 @@ print('addresses written:', len(written), '| pins moved:', len(moved), '| held f
 print('skipped:', skipped)
 report = ROOT / 'data' / 'web_research' / f'osm_addresses_decisions_{date}.json'
 if dry:
-    for w in written[:40]:
-        print(' ', w['address'])
+    for w in [w for w in written if found[w['id']]['how'] == 'name search']:
+        print(' ', w['id'], '|', w['address'])
+    print('review:', review)
+    print('moved:', moved)
     sys.exit()
 report.write_text(json.dumps({'written': written, 'moved': moved, 'review': review, 'skipped': skipped},
                              ensure_ascii=False, indent=1), encoding='utf-8')
