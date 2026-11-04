@@ -12762,7 +12762,7 @@ return maplibregl$1;
       const parts = [['public', 'public funding'], ['private', 'donations, grants and memberships'], ['earned', 'earned income']]
         .filter(([k]) => base && typeof f[k] === 'number' && f[k] >= 0 && f[k] <= base)
         .map(([k, label]) => `${f[k] / base * 100 < 0.5 ? 'under 1' : 'about ' + Math.round(f[k] / base * 100)} percent ${label} (${proseMoney(cur, f[k])})`);
-      if (parts.length) lis.push(proseLi('Where the income comes from:', escapeHtml(proseEnd(parts.join(', ')))));
+      if (parts.length) lis.push(proseLi('Income:', escapeHtml(proseEnd(parts.join(', ')))));
       if (typeof f.net_assets === 'number' && f.net_assets > 0 && cur) lis.push(proseLi('Net assets:', escapeHtml(`${proseMoney(cur, f.net_assets)} at the end of the year.`)));
       if (sc.visitors) lis.push(proseLi('Visitors:', escapeHtml(`${proseCount(sc.visitors)}${sc.visitors_year ? ' in ' + sc.visitors_year : ''}.`)));
       if (sc.staff) lis.push(proseLi('Staff:', escapeHtml(`${proseCount(sc.staff)}${sc.staff_kind && sc.staff_kind !== 'staff' ? ' ' + sc.staff_kind : ''}${sc.staff_year ? ', ' + sc.staff_year : ''}.`)));
