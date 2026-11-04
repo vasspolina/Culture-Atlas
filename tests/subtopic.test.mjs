@@ -30,3 +30,21 @@ test('record with the topic: only those lines are given', () => {
   assert.equal(a.text, 'Holds a film archive of 4,000 reels.');
   assert.match(subTopicBlock(t, withArchive), /- Holds a film archive/);
 });
+
+const yemisi = { name: 'Yemisi Shyllon Museum of Art', funding: 'University museum opened 2019, endowed by collector Prince Yemisi Shyllon.', watch: 'On the Pan-Atlantic University campus.', highlight: 'Designed by the architect Jess Castellote.' };
+test('anything else asked about a space is a free topic, answered from its lines or not at all', () => {
+  const { detectFreeTopic } = globalThis.AtlasSubTopic;
+  const sym = detectFreeTopic('symbol of the museum', yemisi);
+  assert.equal(sym.label, 'symbol');
+  const a = subTopicRecordAnswer(sym, yemisi);
+  assert.equal(a.held, false);
+  assert.match(a.text, /no record on the symbol of Yemisi Shyllon Museum of Art/);
+  assert.doesNotMatch(a.text, /Funding|endowed|Pan-Atlantic/);
+  const arch = subTopicRecordAnswer(detectFreeTopic('who is the architect of the Yemisi Shyllon Museum of Art?', yemisi), yemisi);
+  assert.equal(arch.held, true);
+  assert.equal(arch.text, 'Designed by the architect Jess Castellote.');
+});
+test('a question about the space as a whole is not a free topic', () => {
+  const { detectFreeTopic } = globalThis.AtlasSubTopic;
+  for (const q of ['tell me about Yemisi Shyllon Museum of Art', 'what is this museum?', 'tell me more about it', 'Yemisi Shyllon Museum of Art']) assert.equal(detectFreeTopic(q, yemisi), null, q);
+});
