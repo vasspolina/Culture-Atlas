@@ -45,7 +45,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=509">
+  <link rel="stylesheet" href="assets/atlas.css?v=510">
   <script src="assets/config.js?v=508"></script>
   <script src="assets/subtopic.js?v=508"></script>
   <script src="assets/names.js?v=508"></script>
@@ -9973,7 +9973,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v509';
+    const ATLAS_RELEASE = 'culture-atlas-v510';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10396,7 +10396,7 @@ return maplibregl$1;
       resizeCanvas(); // measured in the final layout, so no resize after this clears the first frame
       render(performance.now()); // drawn first, shown after: the canvas stays hidden until it holds a finished frame
       document.documentElement.classList.remove('atlas-held');
-      // The fog over the globe (assets/atlas.css, FOG AND DEPTH) comes on once the page has painted, not with it.
+      // The fog over the globe (assets/atlas.css, FOG ON THE MAP) comes on once the page has painted, not with it.
       requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('fog-ready')));
     }
     let renderFrameId = 0;
@@ -10560,11 +10560,6 @@ return maplibregl$1;
         ctx.strokeStyle = G_LINE;
         ctx.lineWidth = 0.8;
         ctx.stroke();
-        // The fog over the globe's rim (atlas.css, FOG AND DEPTH) follows the globe: hand it the centre and radius, in CSS px,
-        // only when they change.
-        { const gx = Math.round(cx), gy = Math.round(cy), gr = Math.round(r), gk = gx + ',' + gy + ',' + gr;
-          if (gk !== window.__globeFogKey) { window.__globeFogKey = gk; const gv = canvas.parentElement;
-            gv.style.setProperty('--globe-x', gx + 'px'); gv.style.setProperty('--globe-y', gy + 'px'); gv.style.setProperty('--globe-r', gr + 'px'); } }
 
         // Clip all globe surface features strictly to the spherical limb
         ctx.save();
