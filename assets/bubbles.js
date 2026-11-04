@@ -264,6 +264,10 @@
     ];
     var lines = [];
     spec.forEach(function (s, i) {
+      // The phone's map screen has no bar at the top (assets/phone-maps.js), so it has no rule under one to draw.
+      // It can run before that script has hidden the bar, so it goes by the screen: a phone opens on the map.
+      var mm = document.body.dataset.mobileMode;
+      if (s[0] === 'header' && window.innerWidth < 768 && mm !== 'chat' && mm !== 'split') return;
       var el = [].slice.call(document.querySelectorAll(s[0])).filter(function (e) { var b = e.getBoundingClientRect(); return b.width && b.height; })[0];
       if (!el) return;
       var r = el.getBoundingClientRect(), cs = getComputedStyle(el);

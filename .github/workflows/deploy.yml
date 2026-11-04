@@ -20,6 +20,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # The latest reports (assets/live.json and its stamp) are rebuilt from institutions.json on every deploy, so the
+      # file open pages check every minute is never behind the records.
+      - name: Rebuild the latest-reports feed from the records
+        run: python3 tools/build_live_feed.py
+
       - name: Assemble the files the site loads at runtime
         run: |
           mkdir _site

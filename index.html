@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=473">
+  <link rel="stylesheet" href="assets/atlas.css?v=485">
   <script src="assets/config.js?v=430"></script>
   <script src="assets/subtopic.js?v=430"></script>
   <script src="assets/names.js?v=1"></script>
@@ -1061,7 +1061,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=475"></script>
+  <script src="assets/institutions.js?v=486"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9987,11 +9987,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v475';
+    const ATLAS_RELEASE = 'culture-atlas-v486';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=475').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=486').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11933,7 +11933,7 @@ return maplibregl$1;
       // it and where, the response, the outcome, its sources. Stale items come after everything else. Outside Gossip mode they are
       // not shown here: the chat does not volunteer gossip, and the desktop record has its own row for them in Gossip mode.
       const gossipOn = typeof isGossipModeActive !== 'undefined' && isGossipModeActive;
-      const gossipCard = (g) => item(g.headline, { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span>` },
+      const gossipCard = (g) => item(g.headline, { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span><br><span class="meta gossip-provenance">${escapeHtml(gossipProvenance(g))}</span>` },
         p('', g.said) + list(li('Response: ', g.response), li('Outcome: ', g.outcome), li('', { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Resolved.', stale: 'Old talk; nothing since.' }[g.status] || '')),
         g.urls);
       if (gossipOn) gossipItems(inst, true).forEach(g => blocks.push(gossipCard(g).replace('<div class="record-card', '<div data-gossip="item" class="record-card')));
@@ -11995,7 +11995,7 @@ return maplibregl$1;
         const pc = /^Praises (.+?); criticises (.+?)\.?$/.exec((a.fields || []).find(f => f[0] === 'Account in brief')?.[1] || '');
         const body = pc ? `<p class="t-lead no-indent"><strong>Pros:</strong> ${escapeHtml(pc[1])}.</p><p class="t-lead no-indent"><strong>Cons:</strong> ${escapeHtml(pc[2])}.</p>` : p('', v.summary);
         return `<div class="record-card account-report-card space-y-1_5">
-          <div class="kicker no-indent">${escapeHtml(v.title)}</div>
+          <div class="kicker no-indent">User post · ${escapeHtml(v.title)}</div>
           ${v.date ? `<div class="kicker no-indent">${escapeHtml(v.date)}</div>` : ''}
           ${body}
           ${v.note ? `<p class="no-indent account-note">Context: ${escapeHtml(v.note)}</p>` : ''}
@@ -12010,7 +12010,7 @@ return maplibregl$1;
         ${blocks.join('')}
         ${stale.length ? `<h3 class="kicker">Older talk</h3>${stale.join('')}` : ''}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
-        ${accounts.length ? `<h3 class="kicker">Personal accounts (${accounts.length})</h3><p class="no-indent account-note">Posts by staff and visitors on review sites and Reddit. One person's experience each, not verified findings about the institution.</p>${accounts.join('')}` : ''}
+        ${accounts.length ? `<h3 class="kicker">Personal accounts (${accounts.length})</h3><p class="no-indent account-note">User-generated: posts by staff and visitors on review sites and Reddit, quoted as posted. One person's experience each, not checked as fact and not findings about the institution.</p>${accounts.join('')}` : ''}
       </div>`;
     }
 
@@ -12835,13 +12835,13 @@ return maplibregl$1;
     function proseVoicesHtml(inst) {
       const rows = [];
       const accounts = (inst.gossip_data || {}).accounts || [];
-      if (accounts.length) rows.push(proseRow(`Personal accounts (${accounts.length})`, 'Posts by staff and visitors on review sites and Reddit. One person’s experience each, not verified findings about the institution.', accounts.map(a => {
+      if (accounts.length) rows.push(proseRow(`Personal accounts (${accounts.length})`, 'User-generated: posts by staff and visitors on review sites and Reddit, quoted as posted. One person’s experience each, not checked as fact and not findings about the institution.', accounts.map(a => {
         const v = accountView(a, inst);
         const urls = (a.sources || []).map(x => x && x.url);
         const pc = /^Praises (.+?); criticises (.+?)\.?$/.exec((a.fields || []).find(f => f[0] === 'Account in brief')?.[1] || '');
         const what = pc ? `Pros: ${proseEnd(pc[1])} Cons: ${proseEnd(pc[2])}` : proseEnd(v.summary);
         const who = [v.title.replace(/\s·\s/g, ', '), /unknown/i.test(v.date) ? '' : v.date].filter(Boolean).join(', ');
-        return proseLi(`${who}.`, escapeHtml([what, v.note ? 'Context: ' + proseEnd(v.note) : '', v.alsoAbout.length ? 'Also about ' + v.alsoAbout.join(', ') + '.' : ''].filter(Boolean).join(' ')) + proseCite(urls, 1), true);
+        return proseLi(`User post, ${who}.`, escapeHtml([what, v.note ? 'Context: ' + proseEnd(v.note) : '', v.alsoAbout.length ? 'Also about ' + v.alsoAbout.join(', ') + '.' : ''].filter(Boolean).join(' ')) + proseCite(urls, 1), true);
       }), { tone: 'flag', gossip: true }));
       // Reader notes and whistleblower notes are no longer posted from the page (release 243): the note screen's form is the only way in, and the record does not list reviews.
       return proseRows(rows, 'Accounts and notes', true);
@@ -13001,6 +13001,21 @@ return maplibregl$1;
       const who = GOSSIP_WHO[g.who_says] || 'said on';
       const when = g.when ? (/^\d{4}-\d{2}-\d{2}$/.test(g.when) ? humanDate(g.when) : g.when) : '';
       return `${who.replace(/^(\w)/, c => c.toUpperCase())} ${g.where || 'the internet'}${when ? ', ' + when : ''}.`;
+    }
+    // What kind of source an item rests on, said outright (user, 3 Nov 2026: "make gossip data more explicit about user input"):
+    // whether it is a named outlet or body, or something members of the public posted (user-generated, not checked as fact),
+    // its status, and the day the editor last opened its addresses. Shown on the record's gossip cards; the chat's text is unchanged.
+    const GOSSIP_SOURCE_TYPE = {
+      press: 'Press report from a named outlet', court_or_regulator: 'Court or regulator record', union: 'Union statement',
+      open_letter: 'Open letter with named signatories', campaign: 'Statement by a named campaign', social_named: 'Post by a named person online',
+      social_anonymous: 'Anonymous posts online: user-generated, not verified', review_platform: 'Reviews posted by users: user-generated, not verified',
+      institution: 'Statement by the space itself'
+    };
+    function gossipProvenance(g) {
+      const type = GOSSIP_SOURCE_TYPE[g.who_says] || 'Source type not recorded';
+      const status = { talk: 'Talk, not confirmed', denied: 'Denied', confirmed: 'Confirmed', resolved: 'Resolved', stale: 'Old talk, nothing since' }[g.status] || '';
+      const checked = /^\d{4}-\d{2}-\d{2}$/.test(g.retrieved_on || '') ? `Links checked by the atlas ${humanDate(g.retrieved_on)}` : 'Links not yet rechecked';
+      return [type, status, checked].filter(Boolean).join(' · ') + '.';
     }
     // One item as plain text for the chat's record answers: the headline, what is said, who says it, the response, its status.
     function gossipItemText(g) {
@@ -16507,31 +16522,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         else if (name === 'chat') tabChat?.click();
       };
 
-      // Record sheet detents: medium (about half the map) and large. Tap the grabber, or drag it up or down 40px, to switch;
-      // dragging down from medium closes, like a SwiftUI sheet. Scrolling the record up from medium also opens it to large.
-      (function () {
-        const sheet = document.getElementById('dossier-bottom-sheet');
-        const chrome = document.getElementById('sheet-drag-handle');
-        const sizeBtn = document.getElementById('sheet-size-btn');
-        if (!sheet || !chrome) return;
-        const setLarge = (on) => {
-          sheet.classList.toggle('is-large', on);
-          if (sizeBtn) { sizeBtn.setAttribute('aria-expanded', String(on)); sizeBtn.setAttribute('aria-label', on ? 'Shrink space details' : 'Expand space details'); }
-        };
-        sizeBtn?.addEventListener('click', () => setLarge(!sheet.classList.contains('is-large')));
-        let y0 = null;
-        chrome.addEventListener('touchstart', (e) => { if (!e.target.closest('#close-sheet-btn')) y0 = e.touches[0].clientY; }, { passive: true });
-        chrome.addEventListener('touchend', (e) => {
-          if (y0 === null) return;
-          const dy = e.changedTouches[0].clientY - y0; y0 = null;
-          // One height on a phone (user, 2 Nov 2026): the sheet always covers the map, so dragging the bar down closes it.
-          if (dy > 40) document.getElementById('close-sheet-btn')?.click();
-        }, { passive: true });
-        // A new record opens full, scrolled to its title.
-        new MutationObserver(() => { if (sheet.classList.contains('hidden')) { sheet.scrollTop = 0; } else { setLarge(true); } }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
-        const name = document.getElementById('dossier-sheet-name');
-        if (name) new MutationObserver(() => { sheet.scrollTop = 0; }).observe(name, { childList: true, characterData: true, subtree: true });
-      })();
+      // Record sheet heights (peek, half, full), dragging and the grabber: assets/phone-maps.js (user, 3 Nov 2026, after a maps app).
 
       closeSheetBtn?.addEventListener('click', () => {
         bottomSheet?.classList.add('hidden');
@@ -20420,6 +20411,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/typeset.js?v=463"></script>
 <script src="assets/layers.js?v=473"></script>
 <script src="assets/hq-detail.js?v=473"></script>
-<script src="assets/bubbles.js?v=430" defer></script>
+<script src="assets/bubbles.js?v=476" defer></script>
+<script src="assets/phone-maps.js?v=485"></script>
 </body>
 </html>
