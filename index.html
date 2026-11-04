@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=518">
-  <script src="assets/config.js?v=518"></script>
-  <script src="assets/subtopic.js?v=518"></script>
-  <script src="assets/names.js?v=518"></script>
-  <script src="assets/grounding.js?v=518"></script>
-  <script src="assets/repeats.js?v=518"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=519">
+  <script src="assets/config.js?v=519"></script>
+  <script src="assets/subtopic.js?v=519"></script>
+  <script src="assets/names.js?v=519"></script>
+  <script src="assets/grounding.js?v=519"></script>
+  <script src="assets/repeats.js?v=519"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1038,7 +1038,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=518"></script>
+  <script src="assets/institutions.js?v=519"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9974,11 +9974,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v518';
+    const ATLAS_RELEASE = 'culture-atlas-v519';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=518').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=519').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14709,7 +14709,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           // A gossip request answers with the gossip alone. NO_GOSSIP is the model's word for "the records report nothing", which the chat says in its own plain sentence.
           if (themed && !isGossipMode) rawText = rawText.replace(/^\s*The Atlas (?:holds|records|has)[^.]*\d[^.]*\.\s*(?:(?:Their|The) grades are[^.]*\.\s*)?/i, '');
           if (themed && !isGossipMode) rawText = `The Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} for this question. Grades: ${themed.tallyText}.\n\n${rawText}`;
+          // An answer that is only an absence ("The record does not describe a logo for the museum.") is the answer to the question
+          // asked: emptied, the chat fell back to printing the whole record again. Its first paragraph is kept instead.
+          const beforeAbsence = rawText;
           rawText = dropAbsenceLines(rawText);
+          if (!rawText.trim() && beforeAbsence.trim()) rawText = beforeAbsence.split(/\n\s*\n/)[0].trim();
           // The model does not say a thing twice: a sentence or list item it already gave is taken out (assets/repeats.js).
           if (window.AtlasRepeats) rawText = window.AtlasRepeats.dropRepeatedText(rawText);
           if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing is reported for this space in the records.</p>', gossip: false, none: true };
@@ -16383,6 +16387,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
         answer(`<p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no outside source, or no reason.</p>
           <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>`);
+        return;
+      }
+      // Anything else asked about the space ("symbol of the museum") is answered from the record lines that mention it, or the
+      // answer says the Atlas holds nothing on it; the whole record again is an answer to a different question (user, 4 Nov 2026).
+      const freeTopicQ = target && !nameOnly && window.AtlasSubTopic && AtlasSubTopic.detectFreeTopic ? AtlasSubTopic.detectFreeTopic(query, target) : null;
+      if (freeTopicQ) {
+        focus(target);
+        const sub = AtlasSubTopic.subTopicRecordAnswer(freeTopicQ, target);
+        answer(`<p>${sub.held ? formatInstLink(target) + '.</p><p>' + escapeHtml(sub.text) : escapeHtml(sub.text)}</p>${sub.held ? sourcesHtml(target) : ''}`);
         return;
       }
       if (target) {
@@ -20092,12 +20105,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=518"></script>
-<script src="assets/layers.js?v=518"></script>
-<script src="assets/hq-detail.js?v=518"></script>
-<script src="assets/bubbles.js?v=518" defer></script>
-<script src="assets/phone-maps.js?v=518"></script>
-<script src="assets/desktop-maps.js?v=518"></script>
-<script src="assets/chat-resize.js?v=518"></script>
+<script src="assets/typeset.js?v=519"></script>
+<script src="assets/layers.js?v=519"></script>
+<script src="assets/hq-detail.js?v=519"></script>
+<script src="assets/bubbles.js?v=519" defer></script>
+<script src="assets/phone-maps.js?v=519"></script>
+<script src="assets/desktop-maps.js?v=519"></script>
+<script src="assets/chat-resize.js?v=519"></script>
 </body>
 </html>
