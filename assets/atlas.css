@@ -2690,9 +2690,9 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Gossip mode on the dark theme: the globe's ground is a dark yellow, the Gossip button's lime (#e2f86c) darkened. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#4f5a12!important}
 
-/* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (Displaay blue clean, red flagged, grey unverified; orange in Gossip mode). */
-:root{--tier-a:#000dff;--tier-b:#ff351a;--tier-u:#76756f}
-:root[data-theme="dark"]{--tier-a:#b8fbff;--tier-b:#ff351a;--tier-u:#898a90}
+/* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (Displaay menthol clean, magenta flagged, yellow unverified; orange in Gossip mode). */
+:root{--tier-a:#b8fbff;--tier-b:#ff5eff;--tier-u:#ffff3c}
+:root[data-theme="dark"]{--tier-a:#b8fbff;--tier-b:#ff5eff;--tier-u:#ffff3c}
 :root:root:root:root:root:root[data-theme] .inst-pin-label{--lc:var(--tier-u);background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:0}
 :root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="A"]{--lc:var(--tier-a)}
 :root:root:root:root:root:root[data-theme] .inst-pin-label[data-tier="B"]{--lc:var(--tier-b)}

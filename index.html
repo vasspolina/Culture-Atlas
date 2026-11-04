@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=530">
-  <script src="assets/config.js?v=530"></script>
-  <script src="assets/subtopic.js?v=530"></script>
-  <script src="assets/names.js?v=530"></script>
-  <script src="assets/grounding.js?v=530"></script>
-  <script src="assets/repeats.js?v=530"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=531">
+  <script src="assets/config.js?v=531"></script>
+  <script src="assets/subtopic.js?v=531"></script>
+  <script src="assets/names.js?v=531"></script>
+  <script src="assets/grounding.js?v=531"></script>
+  <script src="assets/repeats.js?v=531"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1073,7 +1073,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=530"></script>
+  <script src="assets/institutions.js?v=531"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9993,16 +9993,16 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    // One colour per kind of space, from Displaay's colour tokens (displaay.net, user 4 Nov 2026): blue clean, red flagged,
-    // pigeon grey unverified. The dot, its name's type and the name's outline all take it. The dark theme swaps blue for menthol.
+    // One colour per kind of space, from Displaay's colour tokens (displaay.net, user 4 Nov 2026): menthol clean, magenta flagged,
+    // yellow unverified, on both themes. The dot, its name's type and the name's outline all take it.
     // assets/atlas.css carries the same values as --tier-a, --tier-b and --tier-u for the city map and the Layers key.
-    const TIER_INK = { light: { A: '#000dff', B: '#ff351a', U: '#76756f' }, dark: { A: '#b8fbff', B: '#ff351a', U: '#898a90' } };
+    const TIER_INK = { light: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
-    const ATLAS_RELEASE = 'culture-atlas-v530';
+    const ATLAS_RELEASE = 'culture-atlas-v531';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=530').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=531').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -20589,12 +20589,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=530"></script>
-<script src="assets/layers.js?v=530"></script>
-<script src="assets/hq-detail.js?v=530"></script>
-<script src="assets/bubbles.js?v=530" defer></script>
-<script src="assets/phone-maps.js?v=530"></script>
-<script src="assets/desktop-maps.js?v=530"></script>
-<script src="assets/chat-resize.js?v=530"></script>
+<script src="assets/typeset.js?v=531"></script>
+<script src="assets/layers.js?v=531"></script>
+<script src="assets/hq-detail.js?v=531"></script>
+<script src="assets/bubbles.js?v=531" defer></script>
+<script src="assets/phone-maps.js?v=531"></script>
+<script src="assets/desktop-maps.js?v=531"></script>
+<script src="assets/chat-resize.js?v=531"></script>
 </body>
 </html>
