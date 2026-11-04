@@ -1,5 +1,8 @@
 """Write assets/live.json, the latest reports on the spaces, from institutions.json.
 
+Besides the press, the file carries the records' other dated, sourced material: posts by staff and visitors
+(gossip_data.accounts, user-generated) and leaked documents (wikileaks_records), each marked for what it is.
+
 The phone page (assets/phone-maps.js) reads this file when it opens and again every minute, so a report the editor adds
 reaches an open page without a reload once the site is deployed. Nothing here is written by this script: every item is a
 record's own dated gossip item (gossip_data.gossip, written by tools/attach_gossip.py under notes/gossip-criteria.md) or
@@ -32,6 +35,45 @@ def urls_of(values):
         if isinstance(u, str) and re.match(r'^https?://', u.strip()) and u.strip() not in out:
             out.append(u.strip())
     return out
+
+
+def account_view(a):
+    """The date, platform, role and words of a staff or visitor post, read as accountView in index.html reads them."""
+    f = {}
+    for pair in a.get('fields') or []:
+        if isinstance(pair, list) and len(pair) == 2:
+            f[pair[0]] = pair[1]
+    split = lambda v: [x.strip() for x in re.split(r'\s*·\s*', str(v or ''))] + ['', '']
+    date = role = forum = ''
+    if f.get('Posted · self-described role'): date, role = split(f['Posted · self-described role'])[:2]
+    if f.get('Posting date and claimed role'): date, role = split(f['Posting date and claimed role'])[:2]
+    if f.get('Subreddit / post date'): forum, date = split(f['Subreddit / post date'])[:2]
+    if f.get('Original post date'): date = f['Original post date']
+    if f.get('Subreddit / evidence role'): forum, role = split(f['Subreddit / evidence role'])[:2]
+    if f.get('Evidence type'): role = f['Evidence type']
+    summary = f.get('Account in brief') or f.get('What the excerpt supports') or f.get('What was retained') or f.get('Retained narrative') or ''
+    summary = re.split(r'\s*Timing / scope:\s*', summary)[0]
+    summary = re.sub(r'[\s.;,]*\bS\d+(?:\s*[;,]\s*S\d+)*\b', '', summary).strip()
+    summary = re.sub(r'^\s*Unverified platform sentiment:\s*', '', summary, flags=re.I).strip()
+    summary = re.sub(r"\s*(?:The account(?:'s)?|Employment)[^.]*not independently verified\.?\s*$", '', summary, flags=re.I).strip()
+    if not DATE.match(date) or not summary:
+        return None
+    summary = summary[0].upper() + summary[1:]
+    if not re.search(r'[.!?]$', summary):
+        summary += '.'
+    url = ''
+    for src in a.get('sources') or []:
+        if isinstance(src, dict) and str(src.get('url', '')).startswith('http'):
+            url = src['url']; break
+    host = re.sub(r'^www\.', '', re.sub(r'^https?://([^/]+).*$', r'\1', url)) if url else ''
+    site = 'Glassdoor' if 'glassdoor.' in host else 'Reddit' if 'reddit.' in host else 'Indeed' if 'indeed.' in host else 'kununu' if 'kununu.' in host else (host or 'Post')
+    where = 'Reddit, %s' % forum if site == 'Reddit' and forum else ('%s, %s' % (site, forum) if forum and site != 'Glassdoor' else site)
+    # The headline is the post's own words, cut at the end of its first sentence.
+    first = re.match(r'^.+?[.!?](?=\s|$)', summary)
+    head = (first.group(0) if first else summary)
+    if len(head) > 160:
+        head = head[:157].rsplit(' ', 1)[0] + '…'
+    return {'when': date, 'headline': head, 'said': summary, 'where': where, 'role': role}
 
 
 def main():
@@ -67,6 +109,27 @@ def main():
                               kind=g.get('kind') or 'report', status=g.get('status') or 'talk',
                               response=g.get('response') or '', outcome=g.get('outcome') or '',
                               checked=g['retrieved_on']))
+        # Posts by staff and visitors (gossip_data.accounts: Glassdoor, Reddit and the like). Not the press: user-generated,
+        # quoted as posted, and labelled so on the page. Read as index.html's accountView reads them.
+        for a in ((inst.get('gossip_data') or {}).get('accounts') or []):
+            view = account_view(a)
+            if not view:
+                skip('account: no date or no summary'); continue
+            urls = urls_of(a.get('sources'))
+            if not urls:
+                skip('account: no source address'); continue
+            items.append(dict(base, type='account', id=a.get('id') or '', when=view['when'], headline=view['headline'],
+                              said=view['said'], who_says='user_post', where=view['where'], urls=urls, kind='account',
+                              status='user', response='', outcome='', checked='', role=view['role']))
+        # Leaked documents on the record (wikileaks_records): the document's own date, what it shows, and its address.
+        for w in (inst.get('wikileaks_records') or []):
+            months = re.findall(r'\d{4}-\d{2}', str(w.get('date') or ''))
+            urls = urls_of(w.get('sources'))
+            if not months or not w.get('what_shows') or not urls:
+                skip('leak: no month date, text or address'); continue
+            items.append(dict(base, type='leak', id=w.get('doc_id') or '', when=months[-1], headline=w.get('doc_id') or 'Leaked document',
+                              said=w['what_shows'], who_says='leak', where='WikiLeaks', urls=urls, kind='leak',
+                              status='documented', response='', outcome='', checked='', dated=str(w.get('date'))))
         for i, c in enumerate(inst.get('case_notes') or []):
             if not isinstance(c, dict) or not c.get('title'):
                 skip('case: no title'); continue
