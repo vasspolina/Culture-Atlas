@@ -3660,7 +3660,8 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
 @media (prefers-reduced-motion:reduce){#layersPanel#layersPanel#layersPanel :is(.filter-row input,.filter-switch)::after{transition:none}}
 
 /* ==== DESKTOP: THE PAGE'S NAME (user, 4 Nov 2026: "add a title back to a page above layer tags on top of page") ====
-   The maps-app layout had dropped the name; it is back at the top left, one line over the layer chips, set plain and large like
+   The maps-app layout had dropped the name; it is back at the top left, one line under the layer chips (it was over them
+   until the user's "switch around" the same day), set plain and large like
    a foundry page's section title. A click returns the globe to the world view, as the old brand button did. */
 #gmdTitle{display:none}
 @media (min-width:768px){
@@ -3668,8 +3669,11 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button{pointer-events:auto;display:inline-block;max-width:100%;height:auto;min-height:0;padding:0;margin:0;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;color:var(--ink)!important;font:400 28px/1.15 var(--sans)!important;letter-spacing:-.005em;text-shadow:0 0 3px var(--paper),0 0 6px var(--paper),0 0 10px var(--paper);text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
-  /* The chips move down one line to sit under the name, and the open Layers drawer stops short of them. */
-  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdChips{top:calc(var(--gmd-gap) + 44px)!important}
+  /* Switched around (user, 4 Nov 2026: "switch around", pills above title): the chips take the top line and the name sits
+     one chip row under them. A chip row is 36px plus its 2px top and 8px bottom padding (#gmdChips above), so the name
+     starts 50px down, the same 8px clear of the chips' shadow-free bottom that the chips had under the name. */
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdChips{top:var(--gmd-gap)!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdTitle{top:calc(var(--gmd-gap) + 50px)!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #layersControl #layersPanel{max-height:calc(100vh - 230px)!important}
 }
 /* A question that wraps keeps the same space above and below its words as one that fits on a line (user, 4 Nov 2026). These

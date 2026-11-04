@@ -201,7 +201,7 @@
       syncSearch();
     });
 
-    // ---- The page's name, above the layer chips -----------------------------------------------------------------
+    // ---- The page's name, under the layer chips -----------------------------------------------------------------
     // The header's brand button is hidden in this layout, so its name is set again here; a click does what that button did.
     if (!$('gmdTitle')) {
       const title = document.createElement('h1');
