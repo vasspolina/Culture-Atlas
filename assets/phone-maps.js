@@ -690,7 +690,7 @@
       // The dot follows the globe.
       (function follow() {
         requestAnimationFrame(follow);
-        if (!here || !PHONE()) { dot.classList.remove('is-on'); return; }
+        if (!here) { dot.classList.remove('is-on'); return; }
         const project = g('project'), r = g('currentRadius'), w = g('width'), h = g('height');
         if (typeof project !== 'function' || g('isCityStreetViewActive')) { dot.classList.remove('is-on'); return; }
         const p = project(here.lon, here.lat, r, w / 2, h / 2);

@@ -3451,6 +3451,131 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-group .maplibregl-ctrl-compass{width:44px!important;height:44px!important;border:0!important;border-radius:50%!important;background-color:var(--paper)!important;box-shadow:var(--gm-shadow)!important}
 }
 
+/* ==== DESKTOP: MAPS APP (user, 4 Nov 2026: "make the desktop version of atlas now function like google map, keep features") ====
+   Set by assets/desktop-maps.js: html.gmd is a window 768px or wider, html.gmd-panel the side panel open. The globe fills
+   the window; the search box, the layer chips, the top-right buttons and the map buttons float over it; the old right
+   column (Details and Chat) is the side panel on the left. Every rule starts with a long run of :root so it wins over the
+   two-column rules above without touching them. */
+#gmdSearch,#gmdChips,#gmdFold,#gmdMapCtl{display:none}
+@media (min-width:768px){
+  :root{--gmd-w:420px;--gmd-gap:16px;--gmd-h:48px;--gmd-shadow:0 1px 2px rgba(0,0,0,.3),0 2px 6px rgba(0,0,0,.15);--gmd-shadow-panel:0 0 16px rgba(0,0,0,.22)}
+  :root[data-theme="dark"]{--gmd-shadow:0 1px 2px rgba(0,0,0,.7),0 2px 8px rgba(0,0,0,.5);--gmd-shadow-panel:0 0 18px rgba(0,0,0,.6)}
+
+  /* The map fills the window. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #mainAppContainer{position:fixed!important;inset:0!important;display:block!important;height:auto!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #globeViewport{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #globeSplitter{display:none!important}
+
+  /* The page's bar: its name moves into the menu; Gossip mode and Dark float at the top right as pills. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar{position:fixed!important;top:var(--gmd-gap)!important;right:var(--gmd-gap)!important;left:auto!important;width:auto!important;height:auto!important;min-height:0!important;z-index:46!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;pointer-events:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar #topBrandLogoBtn{display:none!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar>div{gap:8px!important;pointer-events:auto}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar :is(#topGossipBtn,#topThemeBtn){height:var(--gmd-h)!important;min-height:0!important;padding:0 18px!important;border:0!important;border-radius:calc(var(--gmd-h) / 2)!important;font:400 15px/1 var(--sans)!important;background:var(--paper);color:var(--ink);box-shadow:var(--gmd-shadow)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar :is(#topGossipBtn,#topThemeBtn):hover{background:color-mix(in srgb,var(--ink) 8%,var(--paper))}
+  :root.gmd:root:root:root:root:root:root:root:root:root body.gossip-mode-active #gmdTopBar #topGossipBtn{background:var(--gossip)!important;color:#000!important}
+
+  /* The side panel: the Details and Chat column, at the left, under the search box. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #workViewContainer{display:flex!important;position:absolute!important;top:0!important;bottom:0!important;left:0!important;width:var(--gmd-w)!important;max-width:calc(100vw - 32px)!important;z-index:35!important;padding-top:calc(var(--gmd-gap) + var(--gmd-h) + 12px)!important;border:0!important;background:var(--paper)!important;box-shadow:var(--gmd-shadow-panel);transform:translateX(calc(-100% - 24px));visibility:hidden;transition:transform .22s ease,visibility 0s linear .22s}
+  :root.gmd:root:root:root:root:root:root:root:root:root.gmd-panel #workViewContainer{transform:none;visibility:visible;transition:transform .22s ease}
+  /* No sliding while the page sets itself up: the panel would be seen leaving on load. */
+  :root.gmd:root:root:root:root:root:root:root:root:root:not(.gmd-ready) :is(#workViewContainer,#gmdChips,#gmdFold,#gmdFold svg,#layersControl){transition:none!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #workViewContainer .chat-width-handle{display:none!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #workspaceContextTabBar{display:flex!important}
+
+  /* In the panel's width the tabs and New Query keep to one line. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #workspaceContextTabBar{flex-wrap:nowrap!important;min-height:0!important}
+  /* A record's name at the panel's width: smaller than the old column's, so a long word stays whole. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #workViewContainer .dossier-main-heading{font-size:30px!important;line-height:1.15!important;overflow-wrap:normal!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #workspaceContextTabBar>div{flex-wrap:nowrap!important;min-width:0}
+  :root.gmd:root:root:root:root:root:root:root:root:root #workspaceContextTabBar button{white-space:nowrap!important;font-size:15px!important;padding-left:12px!important;padding-right:12px!important}
+  /* The street map's own zoom buttons give way to the ones at the bottom right; its compass stays, under the top-right pills. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #globeViewport .maplibregl-ctrl-top-right{top:calc(var(--gmd-gap) + var(--gmd-h) + 12px)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #globeViewport :is(.maplibregl-ctrl-zoom-in,.maplibregl-ctrl-zoom-out){display:none!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #globeViewport .maplibregl-ctrl-bottom-right{right:64px!important}
+
+  /* The search box. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdSearch{display:flex;align-items:center;position:fixed;top:var(--gmd-gap);left:var(--gmd-gap);z-index:47;width:calc(var(--gmd-w) - 2 * var(--gmd-gap));height:var(--gmd-h);padding:0 4px;border-radius:calc(var(--gmd-h) / 2);background:var(--paper);color:var(--ink);box-shadow:var(--gmd-shadow)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdSearch.has-results{border-radius:calc(var(--gmd-h) / 2) calc(var(--gmd-h) / 2) 0 0}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdSearch .gmd-ico-btn{flex:none;display:flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdSearch .gmd-ico-btn:hover{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdSearch .gmd-ico-btn:focus-visible{outline:3px solid var(--focus,#1d4ed8);outline-offset:-2px}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdSearch .gmd-ico-btn svg{width:22px;height:22px}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdSearch .gmd-ico-btn[hidden]{display:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChatBtn{color:var(--ink)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdInput{flex:1 1 auto;min-width:0;height:100%;margin:0 2px;padding:0 4px;border:0;outline:0;background:transparent;color:var(--ink);font:400 17px/1 var(--sans)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdInput::placeholder{color:color-mix(in srgb,var(--ink) 62%,transparent)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdSearch .gmd-sep{flex:none;width:1px;height:24px;margin:0 2px;background:color-mix(in srgb,var(--ink) 22%,transparent)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdResults{position:absolute;top:100%;left:0;right:0;margin:0;padding:6px 0 8px;list-style:none;background:var(--paper);border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent);border-radius:0 0 calc(var(--gmd-h) / 2) calc(var(--gmd-h) / 2);box-shadow:0 4px 8px rgba(0,0,0,.18);max-height:calc(100vh - 120px);overflow-y:auto}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdResults[hidden]{display:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt{display:flex;align-items:center;gap:14px;padding:8px 18px;cursor:pointer;color:var(--ink)}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt[aria-selected="true"]{background:color-mix(in srgb,var(--ink) 8%,transparent)}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt-ico{flex:none;display:flex;width:32px;height:32px;align-items:center;justify-content:center;border-radius:50%;background:color-mix(in srgb,var(--ink) 9%,transparent)}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt-ico svg{width:18px;height:18px}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt-text{display:flex;flex-direction:column;min-width:0;gap:2px}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt-label{font:400 15px/1.25 var(--sans);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt.is-ask .gmd-opt-label{white-space:normal}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt-sub{font:400 13px/1.25 var(--sans);color:color-mix(in srgb,var(--ink) 66%,transparent);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMenu{position:absolute;top:calc(100% + 8px);left:0;min-width:240px;display:flex;flex-direction:column;padding:6px 0;background:var(--paper);border-radius:12px;box-shadow:var(--gmd-shadow)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMenu[hidden]{display:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMenu .gmd-menu-head{margin:0;padding:10px 18px 10px;font:400 15px/1.2 var(--sans);border-bottom:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMenu button{display:block;width:100%;text-align:left;padding:11px 18px;border:0;background:transparent;color:var(--ink);font:400 15px/1.2 var(--sans);cursor:pointer}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMenu button:is(:hover,:focus-visible){background:color-mix(in srgb,var(--ink) 8%,transparent);outline:0}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMenu button[aria-checked="true"]::after{content:" ✓"}
+
+  /* Layer chips, beside the box; with the panel open they start after it. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips{display:flex;gap:8px;position:fixed;top:calc(var(--gmd-gap) + (var(--gmd-h) - 36px) / 2);left:calc(var(--gmd-w) - var(--gmd-gap) + 12px);right:var(--gmd-right,300px);z-index:45;overflow-x:auto;scrollbar-width:none;padding:2px 4px 8px;transition:left .22s ease}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips::-webkit-scrollbar{display:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root.gmd-panel #gmdChips{left:calc(var(--gmd-w) + 12px)}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip{flex:none;height:36px;padding:0 16px;border:0;border-radius:18px;background:var(--paper);color:var(--ink);font:400 14px/1 var(--sans);white-space:nowrap;box-shadow:var(--gmd-shadow);cursor:pointer}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip:hover{background:color-mix(in srgb,var(--ink) 8%,var(--paper))}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip:focus-visible{outline:3px solid var(--focus,#1d4ed8);outline-offset:2px}
+
+  /* The fold tab at the panel's edge. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdFold{display:flex;align-items:center;justify-content:center;position:absolute;top:calc(var(--gmd-gap) + var(--gmd-h) + 24px);left:0;z-index:36;width:24px;height:48px;padding:0;border:0;border-radius:0 8px 8px 0;background:var(--paper);color:var(--ink);box-shadow:2px 0 4px rgba(0,0,0,.2);cursor:pointer;transition:left .22s ease}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdFold svg{width:18px;height:18px;transform:rotate(180deg);transition:transform .22s}
+  :root.gmd:root:root:root:root:root:root:root:root:root.gmd-panel #gmdFold{left:var(--gmd-w)}
+  :root.gmd:root:root:root:root:root:root:root:root:root.gmd-panel #gmdFold svg{transform:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdFold[hidden]{display:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdFold:focus-visible{outline:3px solid var(--focus,#1d4ed8);outline-offset:2px}
+
+  /* Layers: a square tile at the bottom left, its menu opening above it. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #layersControl{left:var(--gmd-gap)!important;right:auto!important;bottom:28px!important;width:min(360px,calc(100vw - 2 * var(--gmd-gap)))!important;align-items:flex-start!important;z-index:34!important;transition:left .22s ease}
+  :root.gmd:root:root:root:root:root:root:root:root:root.gmd-panel #layersControl{left:calc(var(--gmd-w) + var(--gmd-gap))!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #layersControl #layersPanel{max-width:calc(100vw - 2 * var(--gmd-gap))!important;max-height:calc(100vh - 186px)!important;overflow-y:auto!important;border-radius:12px;box-shadow:var(--gmd-shadow)}
+  :root.gmd:root:root:root:root:root:root:root:root:root.gmd-panel #layersControl #layersPanel{max-width:calc(100vw - var(--gmd-w) - 2 * var(--gmd-gap))!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #layersControl #layersBtn{flex-direction:column!important;justify-content:center!important;gap:4px!important;width:72px!important;height:72px!important;padding:0!important;border:0!important;border-radius:10px!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:var(--gmd-shadow)!important;font:400 12px/1 var(--sans)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #layersControl #layersBtn::after{display:none!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #layersControl #layersBtn .gmd-layers-icon{display:flex}
+  :root.gmd:root:root:root:root:root:root:root:root:root #layersControl #layersBtn .gmd-layers-icon svg{width:26px;height:26px}
+  :root.gmd:root:root:root:root:root:root:root:root:root #layersControl #layersBtn:is(:hover,[aria-expanded="true"]){background:var(--ink)!important;color:var(--paper)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root #layersControl #layersBtn .gm-layers-icon{display:none!important}
+
+  /* Map buttons at the bottom right. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl{display:flex;flex-direction:column;align-items:center;gap:10px;position:absolute;right:var(--gmd-gap);bottom:28px;z-index:34}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl>button,:root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl #gmLocateBtn{display:flex!important;position:static!important;align-items:center;justify-content:center;width:40px!important;height:40px!important;padding:0;border:0;border-radius:50%!important;background:var(--paper);color:var(--ink);box-shadow:var(--gmd-shadow);cursor:pointer}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl .gmd-zoom{display:flex;flex-direction:column;border-radius:8px;background:var(--paper);box-shadow:var(--gmd-shadow);overflow:hidden}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl .gmd-zoom button{display:flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:0;background:transparent;color:var(--ink);cursor:pointer}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl .gmd-zoom button+button{border-top:1px solid color-mix(in srgb,var(--ink) 16%,transparent)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl button:hover{background:color-mix(in srgb,var(--ink) 8%,var(--paper))}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl button:focus-visible{outline:3px solid var(--focus,#1d4ed8);outline-offset:2px}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl svg{width:20px;height:20px}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl #gmLocateBtn.is-on{color:var(--focus,#1d4ed8)}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdMapCtl #gmLocateBtn[aria-busy="true"] svg{animation:gm-pulse 1s ease-in-out infinite}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmLocateNote{display:block;position:fixed;right:72px;bottom:28px;z-index:44;max-width:360px;margin:0;padding:10px 14px;border-radius:8px;background:var(--ink);color:var(--paper);font:400 14px/20px var(--sans);opacity:0;transform:translateY(6px);transition:opacity .2s,transform .2s;pointer-events:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmLocateNote.is-on{opacity:1;transform:none}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmHereDot{display:block;position:absolute;left:-9px;top:-9px;z-index:15;width:18px;height:18px;border-radius:50%;background:var(--focus,#1d4ed8);border:3px solid var(--paper);box-shadow:0 0 0 1px var(--focus,#1d4ed8),0 0 0 8px color-mix(in srgb,var(--focus,#1d4ed8) 22%,transparent);pointer-events:none;visibility:hidden}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmHereDot.is-on{visibility:visible}
+}
+@media (min-width:768px) and (prefers-reduced-motion:reduce){
+  :root.gmd:root:root:root:root:root:root:root:root:root :is(#workViewContainer,#gmdChips,#gmdFold,#gmdFold svg,#layersControl){transition:none!important}
+}
+@media (min-width:768px) and (max-width:1023px){
+  :root{--gmd-w:360px}
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips{right:var(--gmd-gap);top:calc(var(--gmd-gap) + var(--gmd-h) + 12px);left:var(--gmd-gap)}
+  :root.gmd:root:root:root:root:root:root:root:root:root.gmd-panel #gmdChips{left:calc(var(--gmd-w) + 12px)}
+}
+
 /* The alert mark on the map is neutral too (user, 4 Nov 2026: "red alert ring needs to be neutral"): a paper dot with an ink edge and an
    ink "!", no red and no pulse, in light and dark. It still says where an alert is; its colour no longer says it is bad. */
 @media (max-width:767px){
