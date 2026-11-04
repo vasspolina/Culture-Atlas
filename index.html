@@ -11804,7 +11804,7 @@ return maplibregl$1;
       const state = PLACE_REVIEWS.get(placeId);
       // A row that only says the reviews failed to load, or that there are none, carries no information (user, 3 Nov 2026): it is hidden instead.
       if (state === 'failed' || (Array.isArray(state) && !state.length)) return '';
-      if (!Array.isArray(state)) return '<p class="no-indent">Loading reviews…</p>';
+      if (!Array.isArray(state)) return '';
       return `<h4 class="kicker review-count">${state.length} ${state.length === 1 ? 'review' : 'reviews'}</h4>${state.map(r => {
         const label = (r.authorLabel || '').trim() || 'Whistleblower';
         const d = reviewDate(r.createdAt);
@@ -11817,13 +11817,12 @@ return maplibregl$1;
         </article>`;
       }).join('')}`;
     }
-    // Only the list is drawn again when the reviews arrive, so a review being written is never lost.
+    // The section is drawn only once approved reviews have arrived; until then, and when there are none, its slot is empty.
     function refreshPlaceReviewLists(placeId) {
       document.querySelectorAll('.place-reviews').forEach(box => {
         if (box.dataset.place !== placeId) return;
-        const list = box.querySelector('.review-list');
-        if (list) list.innerHTML = placeReviewListHtml(placeId);
-        box.classList.toggle('hidden', !(list && list.innerHTML));
+        box.innerHTML = placeReviewsSectionHtml(placeId);
+        box.classList.toggle('hidden', !box.innerHTML);
       });
     }
     function loadPlaceReviews(placeId) {
@@ -11835,20 +11834,22 @@ return maplibregl$1;
         .catch(() => { PLACE_REVIEWS.set(placeId, 'failed'); })
         .then(() => refreshPlaceReviewLists(placeId));
     }
-    // The reviews of a place, under its record. They are only listed here; a review is written on the note screen (Share information).
-    function placeReviewsHtml(inst) {
-      if (!inst || !inst.id) return '';
-      // Without the API, or with nothing loaded to read, there is no row at all (user, 3 Nov 2026): a row that only says reviews
-      // are unavailable carries no information. The box is rendered while loading and hidden by the refresh if nothing comes.
-      if (!ATLAS_REPORT_API_URL) return '';
-      const cached = PLACE_REVIEWS.get(inst.id);
-      if (cached === 'failed' || (Array.isArray(cached) && !cached.length)) return '';
-      loadPlaceReviews(inst.id);
-      return `<div class="prose-part d-rows place-reviews" data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews"><section class="d-row">
+    // The approved reviews of a place, under its record. A review is written on the note screen (Share information).
+    // No placeholder text (user, 4 Nov 2026): no heading, no note about who writes reviews and no "Loading reviews…".
+    // The slot stays empty while they load and when there are none, and the section is drawn only when there is a review to show.
+    function placeReviewsSectionHtml(placeId) {
+      const list = placeReviewListHtml(placeId);
+      if (!list || !Array.isArray(PLACE_REVIEWS.get(placeId))) return '';
+      return `<section class="d-row">
         <div class="d-row-head"><h3 class="d-row-title">Whistleblower reviews</h3></div>
-        <div class="d-row-list"><p class="no-indent">Written by people who say they know this place from inside. The editor reads every review before it appears. None is checked against a source.</p>
-        <div class="review-list d-row-list" aria-live="polite">${placeReviewListHtml(inst.id)}</div></div>
-      </section></div>`;
+        <div class="review-list d-row-list">${list}</div>
+      </section>`;
+    }
+    function placeReviewsHtml(inst) {
+      if (!inst || !inst.id || !ATLAS_REPORT_API_URL) return '';
+      loadPlaceReviews(inst.id);
+      const section = placeReviewsSectionHtml(inst.id);
+      return `<div class="prose-part d-rows place-reviews${section ? '' : ' hidden'}" data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews" aria-live="polite">${section}</div>`;
     }
     // Send for review looks ready (blue) once the form could be sent: an institution from the atlas, a note long enough, the box ticked.
     function syncNoteReady() {
