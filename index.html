@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=520">
-  <script src="assets/config.js?v=519"></script>
-  <script src="assets/subtopic.js?v=519"></script>
-  <script src="assets/names.js?v=519"></script>
-  <script src="assets/grounding.js?v=519"></script>
-  <script src="assets/repeats.js?v=519"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=521">
+  <script src="assets/config.js?v=521"></script>
+  <script src="assets/subtopic.js?v=521"></script>
+  <script src="assets/names.js?v=521"></script>
+  <script src="assets/grounding.js?v=521"></script>
+  <script src="assets/repeats.js?v=521"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1038,7 +1038,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=519"></script>
+  <script src="assets/institutions.js?v=521"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7083,7 +7083,7 @@ return maplibregl$1;
               </a>
             </div>
           ` : ''}
-        `, ['Getting There', 'Admission Policy', 'Ethical Governance Audit', `More in ${inst.city}`]);
+        `, chipsAbout(inst, 4));
       }
     };
 
@@ -9950,11 +9950,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v520';
+    const ATLAS_RELEASE = 'culture-atlas-v521';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=519').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=521').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14462,7 +14462,7 @@ return maplibregl$1;
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the space: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\nVOICE: deliver it as a professional academic investigator and art-market analyst briefing a colleague, and push that register hard: the forensic cadence of a case file, the vocabulary of provenance research, due diligence and funding analysis (the paper trail, the board minutes, the filing, the follow-the-money line, the reputational exposure, the trustee's other holdings), short declarative sentences that land, and a sharp, knowing, dramatic edge. Heighten the delivery, never the facts: every claim is still one the items carry, still attributed to whoever says it, talk still stays talk, and no verdict word appears without its named event, date and actor. The case file is a manner of speaking: never cite the atlas's own item numbers or codes (G76, R31) and never call an item a row, an entry or a field. Never remark on the file itself: no line saying a trail is thin, a quote cuts off or the record goes quiet; end a cut-off quotation at its last full sentence.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a detail is absent from the record, leave it out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated"; answer with what the record holds and stop there. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a detail is absent from the record, leave it out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated"; answer with what the record holds and stop there. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring space or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst, true)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -14650,6 +14650,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
         }
 
+        // The follow-up questions the model wrote for this answer (<next>a | b | c</next>) leave the text and go under it as chips.
+        queryAI.lastNext = [];
+        rawText = String(rawText || '').replace(/<next>([\s\S]*?)(?:<\/next>|$)/i, (m, body) => { queryAI.lastNext = body.split(/\s*(?:\||\n)\s*/); return ''; }).trim();
         // Cleanly separate thinking tokens and blocks from the final response block before rendering to the UI
         // A. Isolate XML thinking tags (<thinking>...</thinking>, <thought>...</thought>)
         const xmlThinkingRegex = /<(?:thinking|thought)>([\s\S]*?)<\/(?:thinking|thought)>/gi;
@@ -15682,7 +15685,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // In Gossip mode the follow-ups are gossip questions too: chips about money, grades or critics give way to
       // questions about reported items and employee accounts at named spaces, drawn from the gossip pool (questionCloud).
-      if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && followUps && followUps.length) {
+      if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && followUps && followUps.length && !followUps.fromModel) {
         const isGossipChip = (q) => /\b(gossip|reported|report|employees|staff|workers|accounts|protests?|boycotts?|scandals?|rumou?rs?|unions?)\b/i.test(q);
         const keep = followUps.filter(isGossipChip);
         const want = Math.min(3, Math.max(2, followUps.length));
@@ -15894,7 +15897,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (isGossipModeActive) return t
           ? ['What is reported about this space?', 'Who are its flagged funders?', t.city ? `Which spaces in ${t.city} are flagged?` : 'Which spaces are flagged?']
           : ['Which spaces are flagged?', 'Which spaces are linked to Epstein?', 'What do employees report?'];
-        if (!t) return freshChips(2);
+        if (!t) return freshChips(3);
         const out = [];
         const nm = t.name && findMentionedInst(t.name) === t ? t.name : '';
         if (t.funding || t.funder_links) out.push(nm ? `Who funds ${nm}?` : 'Who funds this museum?');
@@ -15902,7 +15905,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (t.grade) out.push(nm ? `What is the funding rating of ${nm}?` : 'What is its funding rating?');
         if (t.opening_hours) out.push(nm ? `Opening hours of ${nm}` : 'Opening hours');
         if (t.city) out.push(`Find cultural spaces in ${t.city}`);
-        return out;
+        // The record's own questions (its flag, funders, critics, Epstein record) come first; the generic ones fill in behind them.
+        const own = chipsAbout(t, 4, out);
+        return [...own.slice(0, 2), ...out, ...own.slice(2)].filter((q, i, a) => a.indexOf(q) === i).slice(0, 4);
       };
       // gossip: the whole reply is reported, unverified items (a list of flagged spaces); a plain record, a city list or a status line is not.
       const answer = (html, follow, gossip) => appendCuratorMessage(`<div class="space-y-3"${gossip ? ' data-gossip="list"' : ''}>${html}</div>`, follow || followFor());
@@ -15959,7 +15964,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
               if (aiRes.gossip || aiRes.none) {
                 // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
-                appendCuratorMessage(aiRes.none ? aiHtml : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, []);
+                appendCuratorMessage(aiRes.none ? aiHtml : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
                 return true;
               }
               let thinkingData = null;
@@ -15973,7 +15978,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                 };
               }
               // Answers carry no note about what they were written from, in Gossip mode or out of it.
-              appendCuratorMessage(linkifyInstNames(aiHtml), [], webIntel, thinkingData);
+              appendCuratorMessage(linkifyInstNames(aiHtml), modelChips(target, query), webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -18644,6 +18649,42 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (out.length < n) out.push(...freshChips(n - out.length, [...out, ...avoid.filter(a => typeof a === 'string')]));
       return out.slice(0, n);
     }
+    // The chips under a model answer (user's instruction, 4 Nov 2026: more of them, very specific, under every answer). The model
+    // writes three questions about the names and figures in its own answer (<next> in queryAI); the record's own questions fill
+    // the rest, so there are always four. A chip already asked, longer than 120 characters, without a question mark, or carrying an
+    // item code (G76, R31) is dropped. fromModel tells the gossip filter in appendCuratorMessage to keep them as written.
+    function modelChips(inst, asked, n = 4) {
+      const norm = (s) => String(s).toLowerCase().replace(/[?\s]+$/, '').trim();
+      const prior = new Set(((typeof curatorContext !== 'undefined' && curatorContext.history) || []).filter(m => m.role === 'user').map(m => norm(m.content)));
+      prior.add(norm(asked || ''));
+      const mine = ((typeof queryAI !== 'undefined' && queryAI.lastNext) || [])
+        .map(q => String(q).replace(/^[\s\d.)*•-]+/, '').replace(/^["“']|["”']$/g, '').trim())
+        .filter(q => q.length >= 8 && q.length <= 120 && /\?$/.test(q) && !/\b[A-Z]{1,2}\d{1,3}\b/.test(q) && !/[<>]/.test(q) && !prior.has(norm(q)))
+        .filter((q, i, a) => a.findIndex(o => norm(o) === norm(q)) === i)
+        .slice(0, 3);
+      if (typeof queryAI !== 'undefined') queryAI.lastNext = [];
+      let fill = [];
+      try { fill = inst ? chipsAbout(inst, n, mine) : freshChips(n, mine); } catch (e) { fill = []; }
+      const out = [...mine, ...fill.filter(q => !prior.has(norm(q)) && !mine.some(m => norm(m) === norm(q)))].slice(0, n);
+      out.fromModel = mine.length > 0;
+      return out;
+    }
+    // The chips under a city or country notice: questions the cloud holds about spaces there, then the pool.
+    function chipsForPlace(name, isCountry, n = 3) {
+      let pool = [];
+      try { pool = questionCloud(); } catch (e) { pool = []; }
+      const here = (x) => (x.inst && matchC(isCountry ? x.inst.country : x.inst.city, name)) || x.q.includes(name);
+      const shape = (q) => q.toLowerCase().split(/\s+/).slice(0, 2).join(' ');
+      const out = [];
+      for (const x of shuffledList(pool.filter(here))) {
+        if (out.length >= n) break;
+        if (out.includes(x.q) || out.some(o => shape(o) === shape(x.q))) continue;
+        if (x.inst && !resolvesTo(x.q, x.inst)) continue;
+        out.push(x.q);
+      }
+      if (out.length < n) out.push(...freshChips(n - out.length, out));
+      return out;
+    }
     const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}"><span class="sp-text">${escapeHtml(noBreakHyphens(x.q))}</span></button>`;
     function renderStarterPrompts() {
       let list = [];
@@ -18977,7 +19018,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const topInsts = cityMatches.slice(0, 3).map(i => formatInstLink(i, {noCity: true})).join(', ');
         appendCuratorMessage(`
           <p class="no-indent">${cityMatches.length} ${cityMatches.length === 1 ? 'space' : 'spaces'} in <a href="#" class="city-link" data-city="${escapeHtml(cityName)}">${escapeHtml(cityName)}</a>: ${topInsts}${cityMatches.length > 3 ? ', and ' + (cityMatches.length - 3) + ' more' : ''}.</p>
-        `);
+        `, chipsForPlace(cityName));
       }
     }
 
@@ -19006,7 +19047,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countryMatches = ALL_INSTITUTIONS.filter(i => matchC(i.country, countryName));
       if (countryMatches.length > 0) {
         const names = countryMatches.slice(0, 12).map(i => formatInstLink(i)).join(', ');
-        appendCuratorMessage(`<p class="">${countryMatches.length} ${countryMatches.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(countryName)}${countryMatches.length > 12 ? ', the first 12' : ''}: ${names}.</p>`);
+        appendCuratorMessage(`<p class="">${countryMatches.length} ${countryMatches.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(countryName)}${countryMatches.length > 12 ? ', the first 12' : ''}: ${names}.</p>`, chipsForPlace(countryName, true));
       }
     }
 
@@ -20073,12 +20114,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=519"></script>
-<script src="assets/layers.js?v=519"></script>
-<script src="assets/hq-detail.js?v=519"></script>
-<script src="assets/bubbles.js?v=519" defer></script>
-<script src="assets/phone-maps.js?v=519"></script>
-<script src="assets/desktop-maps.js?v=519"></script>
-<script src="assets/chat-resize.js?v=519"></script>
+<script src="assets/typeset.js?v=521"></script>
+<script src="assets/layers.js?v=521"></script>
+<script src="assets/hq-detail.js?v=521"></script>
+<script src="assets/bubbles.js?v=521" defer></script>
+<script src="assets/phone-maps.js?v=521"></script>
+<script src="assets/desktop-maps.js?v=521"></script>
+<script src="assets/chat-resize.js?v=521"></script>
 </body>
 </html>
