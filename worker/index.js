@@ -14,8 +14,12 @@
 // KV layout:
 //   chat:<hash>    answers sent to one address in the current hour (expires on its own)
 
-const CHAT_MODELS = ['claude-haiku-4-5-20251001', 'claude-sonnet-4-5-20250929'];
-const CHAT_MAX_TOKENS = 1500;
+// The first model is the default, and also what a cached page asking for a retired model gets.
+const CHAT_MODELS = ['claude-sonnet-5-5', 'claude-opus-5-5', 'claude-haiku-5-5'];
+// These models always think before they answer, and the thinking counts against max_tokens, so the cap leaves room
+// for it and the effort is set per model: medium for Sonnet and Opus, low for the quick Haiku lookups.
+const CHAT_EFFORT = { 'claude-sonnet-5-5': 'medium', 'claude-opus-5-5': 'medium', 'claude-haiku-5-5': 'low' };
+const CHAT_MAX_TOKENS = 4000;
 const CHAT_MAX_TURNS = 16;
 const CHAT_MAX_CHARS = 150000;
 const CHATS_PER_HOUR = 30;
@@ -65,13 +69,13 @@ async function chat(request, env) {
   if (await overLimit(request, env, 'chat:', CHATS_PER_HOUR)) return json({ error: 'Too many questions from here this hour. Try again later.' }, 429);
 
   const model = CHAT_MODELS.includes(body.model) ? body.model : CHAT_MODELS[0];
-  const maxTokens = Math.min(Math.max(parseInt(body.max_tokens, 10) || 1024, 64), CHAT_MAX_TOKENS);
+  const maxTokens = Math.min(Math.max(parseInt(body.max_tokens, 10) || 3000, 256), CHAT_MAX_TOKENS);
   let res;
   try {
     res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-api-key': env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model, max_tokens: maxTokens, system, messages }),
+      body: JSON.stringify({ model, max_tokens: maxTokens, output_config: { effort: CHAT_EFFORT[model] }, system, messages }),
       signal: AbortSignal.timeout(60000)
     });
   } catch (e) {

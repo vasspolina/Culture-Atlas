@@ -1,0 +1,70 @@
+/* The desktop chat and record column can be dragged wider, up to the whole screen (user, 4 Nov 2026).
+   A handle on the column's left edge sets --gmd-w on the root, which the map pane, the column, the chips and the map
+   controls all read (atlas.css, DESKTOP MAPS). Drag it, or focus it and use the arrow keys (Shift for bigger steps), Home
+   for the narrowest and End for full screen; a double-click goes between the usual width and full screen. The width is
+   kept for the next visit. While the map is left narrower than 240px its own controls are hidden, so none sit over the chat. */
+(function () {
+  var MIN = 360, DEF = 420, KEY = 'atlasChatWidth';
+  var mq = window.matchMedia('(min-width: 768px)');
+  var root = document.documentElement, handle = null, raf = 0;
+
+  function maxW() { return window.innerWidth; }
+  function clamp(w) { return Math.round(Math.min(maxW(), Math.max(MIN, w))); }
+  function current() { var v = parseFloat(getComputedStyle(root).getPropertyValue('--gmd-w')); return isNaN(v) ? DEF : v; }
+  function apply(w, save) {
+    w = clamp(w);
+    root.style.setProperty('--gmd-w', w + 'px');
+    root.classList.toggle('chat-wide', window.innerWidth - w < 240);
+    root.classList.toggle('chat-full', w >= maxW());
+    if (handle) { handle.setAttribute('aria-valuenow', String(w)); handle.setAttribute('aria-valuemax', String(maxW())); handle.setAttribute('aria-valuetext', w >= maxW() ? 'Full screen' : w + ' pixels wide'); }
+    if (save) { try { localStorage.setItem(KEY, String(w)); } catch (e) {} }
+    // The globe draws to its pane's size on resize; tell it once a frame.
+    if (!raf) raf = requestAnimationFrame(function () { raf = 0; window.dispatchEvent(new Event('resize')); });
+  }
+
+  function build() {
+    var col = document.getElementById('workViewContainer');
+    if (!col || handle) return;
+    handle = document.createElement('div');
+    handle.id = 'chatResizeHandle';
+    handle.setAttribute('role', 'separator');
+    handle.setAttribute('aria-orientation', 'vertical');
+    handle.setAttribute('aria-label', 'Chat width: drag, or use the arrow keys; End for full screen');
+    handle.setAttribute('aria-controls', 'workViewContainer');
+    handle.setAttribute('aria-valuemin', String(MIN));
+    handle.tabIndex = 0;
+    col.appendChild(handle);
+
+    var startX = 0, startW = 0, dragging = false;
+    handle.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0) return;
+      dragging = true; startX = e.clientX; startW = current();
+      handle.setPointerCapture(e.pointerId); root.classList.add('chat-resizing'); e.preventDefault();
+    });
+    handle.addEventListener('pointermove', function (e) { if (dragging) apply(startW + (startX - e.clientX), false); });
+    function end(e) { if (!dragging) return; dragging = false; root.classList.remove('chat-resizing'); apply(current(), true); }
+    handle.addEventListener('pointerup', end);
+    handle.addEventListener('pointercancel', end);
+    handle.addEventListener('dblclick', function () { apply(current() >= maxW() ? DEF : maxW(), true); });
+    handle.addEventListener('keydown', function (e) {
+      var step = e.shiftKey ? 120 : 24, w = current();
+      if (e.key === 'ArrowLeft') w += step; else if (e.key === 'ArrowRight') w -= step;
+      else if (e.key === 'Home') w = MIN; else if (e.key === 'End') w = maxW(); else return;
+      e.preventDefault(); apply(w, true);
+    });
+  }
+
+  function start() {
+    if (!mq.matches) return;
+    build();
+    var saved = 0;
+    try { saved = parseFloat(localStorage.getItem(KEY)) || 0; } catch (e) {}
+    if (saved) apply(saved, false); else if (handle) apply(current(), false);
+  }
+  window.addEventListener('resize', function () {
+    if (!mq.matches || !handle) return;
+    var w = current(); if (w > maxW() || root.classList.contains('chat-full')) { root.style.setProperty('--gmd-w', maxW() + 'px'); root.classList.toggle('chat-wide', true); }
+  });
+  mq.addEventListener('change', function () { if (mq.matches) start(); else { root.style.removeProperty('--gmd-w'); root.classList.remove('chat-wide', 'chat-full'); } });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();

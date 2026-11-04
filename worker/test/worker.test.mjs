@@ -49,8 +49,9 @@ test('chat forwards a trimmed conversation to Claude with the secret key and ref
     assert.deepEqual((await ok.json()).content, [{ type: 'text', text: 'Hello.' }]);
     const sent = JSON.parse(seen[0].init.body);
     assert.equal(seen[0].init.headers['x-api-key'], 'sk-test');
-    assert.equal(sent.model, 'claude-haiku-4-5-20251001');
-    assert.equal(sent.max_tokens, 1500);
+    assert.equal(sent.model, 'claude-sonnet-5-5');
+    assert.equal(sent.max_tokens, 4000);
+    assert.deepEqual(sent.output_config, { effort: 'medium' });
     assert.deepEqual(sent.messages, [{ role: 'user', content: 'Who funds Tate?' }]);
 
     assert.equal((await call(e, 'POST', '/chat', { messages: [] })).status, 400);
