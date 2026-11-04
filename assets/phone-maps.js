@@ -30,12 +30,16 @@
       const onMap = PHONE() && mode !== 'chat' && mode !== 'split'
         && !(chatDrawer && !chatDrawer.classList.contains('hidden'))
         && !(detailDrawer && !detailDrawer.classList.contains('hidden'));
-      const changed = root.classList.contains('gm-map') !== onMap;
+      // gm-chat: the phone's chat, set as a sheet over the map like the record (user, 4 Nov 2026: "make chat part of the app,
+      // same as the map"). The map stays drawn behind it.
+      const onChat = PHONE() && mode === 'chat' && !(detailDrawer && !detailDrawer.classList.contains('hidden'));
+      const changed = root.classList.contains('gm-map') !== onMap || root.classList.contains('gm-chat') !== onChat;
+      root.classList.toggle('gm-chat', onChat);
       root.classList.toggle('gm-map', onMap);
       // The bar at the top comes and goes with this, so the map's height changes: let the globe redraw to fit.
       if (changed) requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
       root.classList.toggle('gm-sheet', onMap && !!sheet && !sheet.classList.contains('hidden'));
-      if (!onMap) closeMenu();
+      if (!onMap && !onChat) closeMenu();
     }
     const watch = new MutationObserver(syncState);
     watch.observe(body, { attributes: true, attributeFilter: ['data-mobile-mode', 'class'] });
@@ -43,7 +47,7 @@
     window.addEventListener('resize', syncState);
 
     // ---- Search box: a magnifier at the start, a menu at the end ------------------------------------------------
-    let menuBtn = null, menu = null;
+    let menuBtn = null, menu = null, anchorBtn = null;
     if (card && input) {
       const lens = document.createElement('span');
       lens.className = 'gm-lens';
@@ -79,7 +83,8 @@
       menu.setAttribute('role', 'menu');
       menu.setAttribute('aria-label', 'Menu');
       menu.hidden = true;
-      card.parentNode.insertBefore(menu, card.nextSibling);
+      // The menu is the page's own, not the search box's: the map's box and the chat's header both open it.
+      document.body.appendChild(menu);
 
       // The menu holds the controls the top bar holds on the other screens, and calls the same buttons, so their
       // labels and pressed states are always the bar's own.
@@ -105,11 +110,18 @@
           menu.appendChild(b);
         });
       };
-      menuBtn.addEventListener('click', () => (menu.hidden ? openMenu() : closeMenu(true)));
-      function openMenu() {
+      menuBtn.addEventListener('click', () => (menu.hidden ? openMenu(menuBtn) : closeMenu(true)));
+      window.atlasToggleMenu = (anchor) => (menu.hidden ? openMenu(anchor) : closeMenu(true));
+      function openMenu(anchor) {
         buildMenu();
+        anchorBtn = anchor || menuBtn;
+        // Under the button when it is in the top half of the screen, over it when in the bottom half.
+        const r = anchorBtn.getBoundingClientRect();
+        menu.style.right = Math.max(12, window.innerWidth - r.right) + 'px';
+        if (r.top > window.innerHeight / 2) { menu.style.top = 'auto'; menu.style.bottom = (window.innerHeight - r.top + 6) + 'px'; }
+        else { menu.style.bottom = 'auto'; menu.style.top = (r.bottom + 6) + 'px'; }
         menu.hidden = false;
-        menuBtn.setAttribute('aria-expanded', 'true');
+        anchorBtn.setAttribute('aria-expanded', 'true');
         const first = menu.querySelector('button');
         if (first) first.focus();
       }
@@ -121,7 +133,7 @@
         else if (e.key === 'ArrowUp') { e.preventDefault(); list[(i - 1 + list.length) % list.length].focus(); }
       });
       document.addEventListener('pointerdown', (e) => {
-        if (menu && !menu.hidden && !menu.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) closeMenu(false);
+        if (menu && !menu.hidden && !menu.contains(e.target) && !(anchorBtn && anchorBtn.contains(e.target))) closeMenu(false);
       });
     }
     function openChat() {
@@ -139,8 +151,27 @@
     function closeMenu(refocus) {
       if (!menu || menu.hidden) return;
       menu.hidden = true;
-      menuBtn.setAttribute('aria-expanded', 'false');
-      if (refocus) menuBtn.focus();
+      const a = anchorBtn || menuBtn;
+      a.setAttribute('aria-expanded', 'false');
+      if (refocus) a.focus();
+    }
+
+    // ---- The chat's header, as the record sheet's: a title, the same menu, and one cross ----------------------------
+    const chatHead = $('phoneChatHead');
+    if (chatHead) {
+      const title = chatHead.querySelector('.flex-1');
+      if (title) { title.classList.add('gm-chat-title'); title.textContent = 'Chat'; }
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.id = 'gmChatMenuBtn';
+      b.setAttribute('aria-label', 'Menu');
+      b.setAttribute('aria-haspopup', 'true');
+      b.setAttribute('aria-expanded', 'false');
+      b.setAttribute('aria-controls', 'gmMenu');
+      b.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>';
+      b.addEventListener('click', () => { if (window.atlasToggleMenu) window.atlasToggleMenu(b); });
+      const close = $('phoneChatCloseBtn');
+      chatHead.insertBefore(b, close || null);
     }
 
     // ---- Layers: a round button; the panel is a sheet from the bottom --------------------------------------------
@@ -179,6 +210,16 @@
       // !important, which an inline height cannot beat (atlas.css, "PHONE: MAPS APP").
       // The heights are measured against the map the sheet sits in, so they hold with the keyboard and on any phone.
       const room = () => (sheet.parentElement ? sheet.parentElement.clientHeight : window.innerHeight);
+      const safeBottom = (() => {
+        let v = null;
+        return () => {
+          if (v !== null) return v;
+          const probe = document.createElement('div');
+          probe.style.cssText = 'position:fixed;left:0;bottom:0;width:1px;height:env(safe-area-inset-bottom,0px);visibility:hidden;pointer-events:none';
+          document.body.appendChild(probe); v = probe.offsetHeight || 0; probe.remove();
+          return v;
+        };
+      })();
       function heightOf(d) {
         const h = room();
         if (d === 'full') return h;
@@ -198,7 +239,9 @@
           // The description now sits in the title block, above the actions, so the actions' end is the end of both.
           end = bottomOf(actions) || bottomOf(titleBlock);
         }
-        end = end ? end + 20 : 168;
+        // The iPhone's home strip covers the page's bottom edge (the page runs under it, viewport-fit=cover), so peek leaves
+        // room for it, or the actions sat under it (user, 4 Nov 2026: text overlapped at the bottom when a space was opened).
+        end = end ? end + 20 + safeBottom() : 168;
         return Math.max(168, Math.min(Math.round(end), Math.round(h * 0.7)));
       }
       function setDetent(d, animate) {
