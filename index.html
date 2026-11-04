@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=520">
-  <script src="assets/config.js?v=519"></script>
-  <script src="assets/subtopic.js?v=519"></script>
-  <script src="assets/names.js?v=519"></script>
-  <script src="assets/grounding.js?v=519"></script>
-  <script src="assets/repeats.js?v=519"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=521">
+  <script src="assets/config.js?v=521"></script>
+  <script src="assets/subtopic.js?v=521"></script>
+  <script src="assets/names.js?v=521"></script>
+  <script src="assets/grounding.js?v=521"></script>
+  <script src="assets/repeats.js?v=521"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1038,7 +1038,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=519"></script>
+  <script src="assets/institutions.js?v=521"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9950,11 +9950,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v520';
+    const ATLAS_RELEASE = 'culture-atlas-v521';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=519').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=521').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13007,15 +13007,18 @@ return maplibregl$1;
     // gossip: what is reported, from the item that names its own sources first. Otherwise: who funds it. Null when the record has nothing to say.
     function recordFact(inst, gossip) {
       const own = hostOf(ownSiteUrl(inst));
+      // The sources outside the space's own site, one per host, each a link to the page itself (user, 4 Nov 2026: "link sources").
       const hosts = (urls) => {
         const out = [];
-        (urls || []).forEach(u => {
-          const h = hostOf(typeof u === 'string' ? u : (u && u.url) || '');
-          if (h && !(own && (h === own || h.endsWith('.' + own) || own.endsWith('.' + h))) && !/wikipedia|wikimedia/.test(h) && !out.includes(h)) out.push(h);
+        (urls || []).forEach(x => {
+          const u = typeof x === 'string' ? x : (x && x.url) || '';
+          const h = /^https?:\/\//.test(u) ? hostOf(u) : '';
+          if (h && !(own && (h === own || h.endsWith('.' + own) || own.endsWith('.' + h))) && !/wikipedia|wikimedia/.test(h) && !out.some(o => o.h === h)) out.push({ h, u });
         });
         return out;
       };
-      const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.join(', ')}.` : ''; };
+      // HTML: the links are built here, so callers print it as it is.
+      const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.map(o => `<a href="${escapeHtml(o.u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(o.h)}</a>`).join(', ')}.` : ''; };
       if (gossip) {
         // The gossip items first (notes/gossip-criteria.md §7): the newest one that is not stale, with who says it and where.
         const g = gossipItems(inst, true)[0];
@@ -13031,7 +13034,7 @@ return maplibregl$1;
         if (w && w.what_shows) return { text: firstSentence(`${w.date ? w.date + ': ' : ''}${w.what_shows}`), src: src(hosts(w.sources), 1) };
         // Flagged or not, a watch line is gossip by the shared test; a clean result is not. full: a past tie is stated with what
         // the record says now ("No current gambling funding found"), so one space's answer prints a short line whole.
-        if (watchIsGossip(inst.watch)) return { text: firstSentence(inst.watch), full: inst.watch.length <= 280 ? inst.watch.trim() : '', src: src(hosts(inst.sources), 2) };
+        if (watchIsGossip(inst.watch)) return { text: firstSentence(inst.watch), full: inst.watch.length <= 300 ? inst.watch.trim() : '', src: src(hosts(inst.sources), 2) };
         const why = String(inst.why_flagged || '').split(/(?<=[.!?])\s+(?=[A-Z])/).filter(x => !/\bnot (?:at|here)\b/i.test(x)).join(' ');
         if (why) return { text: firstSentence(`${(inst.flags || []).length ? inst.flags.join(', ') + ': ' : ''}${why}`), src: src(hosts(inst.sources), 2) };
         const of = typeof inst.other_findings === 'string' ? inst.other_findings.split(' | ')[0] : '';
@@ -13049,7 +13052,12 @@ return maplibregl$1;
       const url = ownSiteUrl(inst), dom = hostOf(url);
       const site = dom ? ` (<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${escapeHtml(dom)}</a>)` : '';
       const g = inst.grade && GRADE[inst.grade] ? ` Grade ${gradeLetter(inst.grade)}.` : '';
-      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a> in ${escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}${g}</p>`;
+      // The whole account when it is short enough (who did what, and the answer to it), not its first sentence alone.
+      let text = f.full && f.full.length <= 300 ? f.full : f.text;
+      // A grade D or F line states the funder that set the grade too, when the reported item is about something else.
+      const why = String(inst.why_flagged || '').trim();
+      if (gossip && inst.grade >= 4 && why && why.length <= 200 && !text.includes(why.slice(0, 40))) text = `${proseEnd(why)} ${text}`;
+      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a> in ${escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(text)}${f.src ? ' ' + f.src : ''}${g}</p>`;
     }
     // A list of more than 12 pages itself: the link, the chip and typing "more" all show the next 12.
     window.atlasListMore = null;
@@ -16336,7 +16344,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           // A record with no reported items can still carry a watch flag or a flagged funder: that line is its gossip.
           const f = reported ? null : recordFact(target, true);
           if (reported) answer(reported, [], true);
-          else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}</p>`, [], true);
+          else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + f.src : ''}</p>`, [], true);
           else answer('<p>Nothing is reported for this space in the records.</p>', []);
           return;
         }
@@ -20073,12 +20081,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=519"></script>
-<script src="assets/layers.js?v=519"></script>
-<script src="assets/hq-detail.js?v=519"></script>
-<script src="assets/bubbles.js?v=519" defer></script>
-<script src="assets/phone-maps.js?v=519"></script>
-<script src="assets/desktop-maps.js?v=519"></script>
-<script src="assets/chat-resize.js?v=519"></script>
+<script src="assets/typeset.js?v=521"></script>
+<script src="assets/layers.js?v=521"></script>
+<script src="assets/hq-detail.js?v=521"></script>
+<script src="assets/bubbles.js?v=521" defer></script>
+<script src="assets/phone-maps.js?v=521"></script>
+<script src="assets/desktop-maps.js?v=521"></script>
+<script src="assets/chat-resize.js?v=521"></script>
 </body>
 </html>
