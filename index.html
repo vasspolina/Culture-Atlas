@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=521">
-  <script src="assets/config.js?v=521"></script>
-  <script src="assets/subtopic.js?v=521"></script>
-  <script src="assets/names.js?v=521"></script>
-  <script src="assets/grounding.js?v=521"></script>
-  <script src="assets/repeats.js?v=521"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=530">
+  <script src="assets/config.js?v=530"></script>
+  <script src="assets/subtopic.js?v=530"></script>
+  <script src="assets/names.js?v=530"></script>
+  <script src="assets/grounding.js?v=530"></script>
+  <script src="assets/repeats.js?v=530"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -572,6 +572,15 @@ return maplibregl$1;
       </div>
 
 
+      <!-- Prominent Floating Field Intelligence / Whistleblower Badge (Retained hidden for test assertions) -->
+      <div class="hidden" style="display:none;" aria-hidden="true">
+        <button id="mapFloatingContributeBtn" class="flex items-center gap-2" title="Share information">
+
+          <span>Share information</span>
+        </button>
+      </div>
+
+
       <div id="hudControlsBar" class="hidden absolute bottom-3 sm-bottom-4 right-2 sm-right-4 z-10 items-center gap-1 sm-gap-1_5 p-1 max-w-_calc_100_-16px sm-max-w-_calc_100_-32px overflow-x-auto overflow-y-hidden no-scrollbar">
         <button id="hudWorldBtn" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Back to the whole world, with filters cleared">
           <span>Reset view</span>
@@ -592,6 +601,11 @@ return maplibregl$1;
         </button>
         <button id="hudAsiaBtn" class="px-2 h-7 sm-h-8 flex items-center shrink-0" title="Fly to Asia-Pacific">
           <span>Asia</span>
+        </button>
+        <div class="w-_1px h-4 mx-0_5 shrink-0"></div>
+        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Share information on institutional sponsors">
+
+          <span>Share information</span>
         </button>
       </div>
 
@@ -714,6 +728,7 @@ return maplibregl$1;
         <div class="hidden" style="display:none;" aria-hidden="true">
           <div id="workspaceTabBar">
             <button id="modeTabGeneralChat" onclick="window.exitChatInputMode()">General</button>
+            <button id="modeTabWhistleblower" onclick="window.enterChatInputMode()">Whistleblower</button>
             <div id="modeSwitchOpSecIndicator"></div>
             <button id="workModelBtn"><span id="workModelLabel">Curator, Live</span></button>
           </div>
@@ -780,14 +795,27 @@ return maplibregl$1;
             
             <!-- Input Area (Uncontained Flat Editorial) -->
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
+              <!-- The submission form of the note screen (shown only while a note is written) -->
+              <div id="noteFormFields">
+                <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
+                <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
+                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space"></label>
+                <datalist id="noteInstitutionList"></datalist>
+                <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" placeholder="Whistleblower"></label>
+              </div>
               <div id="noteInputBlock">
+                <label id="noteInputLabel" for="workInput">Your note</label>
                 <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
               </div>
+              <div id="noteAckRow"><label class="nf-check"><input type="checkbox" id="noteAck"><span>I have left out my name and anything that identifies me.*</span></label></div>
+              <p id="noteFormStatus" role="status" aria-live="polite"></p>
               
               <!-- Bottom Toolbar -->
               <div class="flex items-center justify-between pt-2">
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
+                  <!-- Share information -->
+                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" aria-pressed="false" title="Write a note about an institution">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
@@ -828,9 +856,15 @@ return maplibregl$1;
 
             <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
             <div class="hidden" style="display:none;" aria-hidden="true">
+              <button id="chatContributeBtn" type="button" onclick="window.triggerInChatContributeFlow()">
+                <span class=""></span>
+                <span>Contribute</span>
+                <span>Share information</span>
+              </button>
               <div id="chatModeSegmentedSwitch"></div>
               <button id="inputModeToggleBtn"></button>
               <button id="inputModeAttachBtn"></button>
+              <input type="file" id="whistleblowerFileInput" />
               <button id="inputModeCancelBtn"></button>
               <div id="workInputModeBadge"></div>
               <button id="fullWidthInputModeBtn"></button>
@@ -869,6 +903,7 @@ return maplibregl$1;
     <div id="mobileComposerCard" class="relative">
       <textarea class="w-full" id="chat-input" rows="1" placeholder="Ask about a space, its funders or controversies…"></textarea>
       <div id="mobileComposerActions">
+        <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Write a note about an institution">Share information</button>
         <span class="flex-1"></span>
         <button id="mobileStickyVoiceBtn" type="button" aria-pressed="true" aria-label="Voice: read answers aloud" title="Read answers aloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
         <button id="mobileKbCloseBtn" class="kb-close-btn" type="button" aria-label="Close the keyboard" title="Close the keyboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1038,7 +1073,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=521"></script>
+  <script src="assets/institutions.js?v=530"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7059,22 +7094,33 @@ return maplibregl$1;
         appendUserMessage(q);
         curatorContext.lastInst = inst;
         curatorContext.lastCity = inst.city;
-        const webUrl = getValidWebUrl(inst);
-        const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl;
+        // The visitor link is the space's own visit page or website, never a source: getValidWebUrl falls back to the first
+        // source, which put a ProPublica search behind "Open Official Visitor / Ticket Page" on records with no site.
+        const httpUrl = u => (typeof u === 'string' && /^https?:\/\//.test(u.trim())) ? u.trim() : '';
+        const visitUrl = httpUrl(inst.visit_url) || httpUrl(inst.website);
+        // Only what the record states. A missing value used to be filled in: "not stated" for the hours, "Subsidized admission"
+        // for any space with no fee on record, and the city and country standing in for an address. None of that is a fact
+        // about the space, so a missing row is left out and the card says once what the record does not hold.
+        const admission = [inst.admission_fee || inst.admission_policy, inst.admission_details].filter(Boolean).join('. ');
+        const missing = [inst.address ? '' : 'a street address', inst.opening_hours ? '' : 'opening hours', admission ? '' : 'admission'].filter(Boolean);
+        const missingLine = missing.length
+          ? `<p class="pt-1 rule-t meta">The record does not state ${missing.length > 1 ? missing.slice(0, -1).join(', ') + ' or ' + missing[missing.length - 1] : missing[0]}.${visitUrl ? ' Check the official visitor page below.' : ''}</p>`
+          : '';
         appendCuratorMessage(`
           <p class="">
-            Visitor Itinerary & Planning Guide: <strong>${formatInstLink(inst)}</strong> (${escapeHtml(inst.city)}, ${escapeHtml(inst.country)})
+            Visitor Itinerary & Planning Guide: <strong>${formatInstLink(inst)}</strong>
           </p>
           <div class="py-2_5 rule-t space-y-1_5">
-            <div><strong class="meta block">Opening Hours</strong> ${escapeHtml(inst.opening_hours || 'not stated')}</div>
-            <div class="pt-1 rule-t"><strong class="meta block">Admission & Tickets</strong> ${escapeHtml(inst.admission_policy)} (${escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')})</div>
-            <div class="pt-1 rule-t"><strong class="meta block">Address & Neighborhood</strong> ${escapeHtml(inst.address || inst.location)} ${inst.neighborhood ? `<span class="meta">${escapeHtml(inst.neighborhood)}</span>` : ''}</div>
+            ${inst.address ? `<div><strong class="meta block">Address</strong> ${escapeHtml(inst.address)}${inst.neighborhood ? ` <span class="meta">${escapeHtml(inst.neighborhood)}</span>` : ''}</div>` : ''}
+            ${inst.opening_hours ? `<div class="pt-1 rule-t"><strong class="meta block">Opening Hours</strong> ${escapeHtml(inst.opening_hours)}</div>` : ''}
+            ${admission ? `<div class="pt-1 rule-t"><strong class="meta block">Admission & Tickets</strong> ${escapeHtml(admission)}</div>` : ''}
             ${inst.transit_tips ? `<div class="pt-1 rule-t"><strong class="meta block">Getting There & Transit</strong> ${escapeHtml(inst.transit_tips)}</div>` : ''}
             ${inst.visit_duration ? `<div class="pt-1 rule-t"><strong class="meta block">Suggested Duration</strong> ${escapeHtml(inst.visit_duration)}</div>` : ''}
             ${inst.highlight ? `<div class="pt-1 rule-t"><strong class="meta block">Known for</strong> ${escapeHtml(inst.highlight)}</div>` : ''}
             ${inst.accessibility ? `<div class="pt-1 rule-t"><strong class="meta block">Accessibility</strong> ${escapeHtml(inst.accessibility)}</div>` : ''}
             ${inst.amenities ? `<div class="pt-1 rule-t"><strong class="meta block">Amenities</strong> ${escapeHtml((inst.amenities).toString().split(',').map(x => x.trim()).filter(Boolean).join(', '))}</div>` : ''}
           </div>
+          ${missingLine}
           ${visitUrl ? `
             <div class="pt-2 rule-t">
               <a href="${escapeHtml(visitUrl)}" target="_blank" rel="noopener noreferrer" class="meta flex items-center gap-1">
@@ -9950,11 +9996,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v521';
+    const ATLAS_RELEASE = 'culture-atlas-v530';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=521').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=530').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10731,7 +10777,8 @@ return maplibregl$1;
           // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
           const textCol = pillTextColor(tier);
           ctx.beginPath();
-          ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 0);
+          // Rounded 8px (user, 4 Nov 2026: the square labels were the old design), like the Displaay-style controls around the map.
+          ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 8);
           if (active) { ctx.fillStyle = pc.fill; ctx.fill(); }
           else { ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : '#000000'; ctx.fill(); ctx.strokeStyle = textCol; ctx.globalAlpha = 0.55; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
           ctx.fillStyle = active ? pc.ink : textCol;
@@ -11174,7 +11221,8 @@ return maplibregl$1;
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
               const countTxt = `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`;
               const linkTxt = 'Click to explore';
-              const cardInk = cardText;
+              // Ink and paper like the space's card (user, 4 Nov 2026: the square city card was the old design): plain type, not the tier's colour.
+              const cardInk = GLOBE_LIGHT ? '#000000' : '#ffffff';
 
               ctx.font = ATLAS_CARD_TITLE_FONT;
               const twCity = ctx.measureText(cityTxt).width;
@@ -11212,15 +11260,14 @@ return maplibregl$1;
 
               // Flat block in the colour of the city's badge (cyan, orange or grey by tier). No rounding, no outline, no shadow.
               // Drawn like the city labels: no block, a thin soft rounded outline and the type in the tier's colour.
+              // Rounded 20px with a solid 1px outline, as the space's card is drawn (the square, half-faded box was the old design).
               ctx.beginPath();
-              ctx.roundRect(cardX, cardY, cardW, cardH, 0);
+              ctx.roundRect(cardX, cardY, cardW, cardH, 20);
               ctx.fillStyle = cardBg;
               ctx.fill();
-              ctx.globalAlpha = 0.55;
-              ctx.strokeStyle = cardText;
+              ctx.strokeStyle = cardInk;
               ctx.lineWidth = 1;
               ctx.stroke();
-              ctx.globalAlpha = 1;
 
               // Line 1: city name, in the roman
               ctx.font = ATLAS_CARD_TITLE_FONT;
@@ -11240,9 +11287,9 @@ return maplibregl$1;
               // Action: a tint of the type colour at rest, solid type colour with card-coloured text on hover.
               ctx.save();
               ctx.beginPath();
-              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 0);
+              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 10);
               if (isHoveringCityExploreLink) { ctx.fillStyle = cardInk; ctx.fill(); }
-              else { ctx.globalAlpha = 0.55; ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
+              else { ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); }
               ctx.font = atlasMonoFont();
               ctx.fillStyle = isHoveringCityExploreLink ? cardBg : cardInk;
               ctx.textAlign = 'center';
@@ -11790,7 +11837,92 @@ return maplibregl$1;
     function critiqueQuoteLine(q) {
       return `${quotedText(q.text)} ${q.author}, ${q.title}, ${[q.publication, q.date].filter(Boolean).join(', ')}.`;
     }
+    // Whistleblower reviews, set out like the reviews on a Google Maps place and shown under the record they are about.
+    // They come from the report API (server/), one request per place, approved reviews only, and are written only with
+    // the form on the note screen (Share information). Nothing is kept in this browser. A review has no rating.
     let dossierInst = null;
+    const ATLAS_REPORT_API_URL = (window.ATLAS_REPORT_API_URL || '').replace(/\/+$/, '');
+    const PLACE_REVIEWS = new Map();   // place id -> an array of reviews, or 'loading', or 'failed'
+    const REVIEW_LIMITS = { min: 10, max: 2000, name: 40 };
+    const reviewDate = (iso) => {
+      const d = new Date(iso);
+      return Number.isNaN(d.getTime()) ? null : { iso: d.toISOString().slice(0, 10), text: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) };
+    };
+    function placeReviewListHtml(placeId) {
+      const state = PLACE_REVIEWS.get(placeId);
+      // A row that only says the reviews failed to load, or that there are none, carries no information (user, 3 Nov 2026): it is hidden instead.
+      if (state === 'failed' || (Array.isArray(state) && !state.length)) return '';
+      if (!Array.isArray(state)) return '';
+      return `<h4 class="kicker review-count">${state.length} ${state.length === 1 ? 'review' : 'reviews'}</h4>${state.map(r => {
+        const label = (r.authorLabel || '').trim() || 'Whistleblower';
+        const d = reviewDate(r.createdAt);
+        return `<article class="review">
+          <div class="review-head">
+            <span class="review-avatar" aria-hidden="true">${escapeHtml(label.charAt(0).toUpperCase())}</span>
+            <div><span class="review-name">${escapeHtml(label)}</span>${d ? `<time class="review-date" datetime="${d.iso}">${d.text}</time>` : ''}</div>
+          </div>
+          <p class="t-lead no-indent review-text">${escapeHtml(r.content)}</p>
+        </article>`;
+      }).join('')}`;
+    }
+    // The section is drawn only once approved reviews have arrived; until then, and when there are none, its slot is empty.
+    function refreshPlaceReviewLists(placeId) {
+      document.querySelectorAll('.place-reviews').forEach(box => {
+        if (box.dataset.place !== placeId) return;
+        box.innerHTML = placeReviewsSectionHtml(placeId);
+        box.classList.toggle('hidden', !box.innerHTML);
+      });
+    }
+    function loadPlaceReviews(placeId) {
+      if (!ATLAS_REPORT_API_URL || (PLACE_REVIEWS.has(placeId) && PLACE_REVIEWS.get(placeId) !== 'failed')) return;
+      PLACE_REVIEWS.set(placeId, 'loading');
+      fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(placeId)}/reviews`)
+        .then(r => { if (!r.ok) throw new Error(`Report API returned ${r.status}.`); return r.json(); })
+        .then(rows => { PLACE_REVIEWS.set(placeId, Array.isArray(rows) ? rows : []); })
+        .catch(() => { PLACE_REVIEWS.set(placeId, 'failed'); })
+        .then(() => refreshPlaceReviewLists(placeId));
+    }
+    // The approved reviews of a place, under its record. A review is written on the note screen (Share information).
+    // No placeholder text (user, 4 Nov 2026): no heading, no note about who writes reviews and no "Loading reviews…".
+    // The slot stays empty while they load and when there are none, and the section is drawn only when there is a review to show.
+    function placeReviewsSectionHtml(placeId) {
+      const list = placeReviewListHtml(placeId);
+      if (!list || !Array.isArray(PLACE_REVIEWS.get(placeId))) return '';
+      return `<section class="d-row">
+        <div class="d-row-head"><h3 class="d-row-title">Whistleblower reviews</h3></div>
+        <div class="review-list d-row-list">${list}</div>
+      </section>`;
+    }
+    function placeReviewsHtml(inst) {
+      if (!inst || !inst.id || !ATLAS_REPORT_API_URL) return '';
+      loadPlaceReviews(inst.id);
+      const section = placeReviewsSectionHtml(inst.id);
+      return `<div class="prose-part d-rows place-reviews${section ? '' : ' hidden'}" data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews" aria-live="polite">${section}</div>`;
+    }
+    // Send for review looks ready (blue) once the form could be sent: an institution from the atlas, a note long enough, the box ticked.
+    function syncNoteReady() {
+      const sendBtn = document.getElementById('workSendBtn');
+      if (!sendBtn) return;
+      const wanted = (document.getElementById('noteInstitution').value || '').trim().toLowerCase();
+      const known = wanted && ALL_INSTITUTIONS.some(i => i.id && i.name && i.name.toLowerCase() === wanted);
+      const longEnough = (document.getElementById('workInput').value || '').trim().length >= REVIEW_LIMITS.min;
+      const ready = Boolean(known && longEnough && document.getElementById('noteAck').checked);
+      if (ready) sendBtn.dataset.ready = 'true'; else delete sendBtn.dataset.ready;
+    }
+    document.addEventListener('input', (e) => {
+      if (e.target.matches && e.target.matches('#noteInstitution, #workInput')) syncNoteReady();
+    });
+    document.addEventListener('change', (e) => {
+      if (e.target.matches && e.target.matches('#noteInstitution, #noteAck')) syncNoteReady();
+    });
+    // On a phone the list is built the first time the Institution box is used.
+    document.addEventListener('focusin', (e) => { if (e.target && e.target.id === 'noteInstitution') { try { fillNoteInstitutions(); } catch (err) { atlasDebugLog('fillNoteInstitutions', err); } } });
+    // Fills the institution list of the note form once, from the atlas records.
+    function fillNoteInstitutions() {
+      const list = document.getElementById('noteInstitutionList');
+      if (!list || list.childElementCount) return;
+      list.innerHTML = ALL_INSTITUTIONS.filter(i => i.id && i.name).map(i => `<option value="${escapeHtml(i.name)}"></option>`).join('');
+    }
     // Dates as people read them (25 Sept 2025), not as the research table stores them. A year or year-month stays as given.
     function humanDate(d) {
       const m = String(d || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
@@ -11874,6 +12006,33 @@ return maplibregl$1;
       }).join(' ');
     }
     // Reported items. Each one carries the sources recorded for it. None is independently verified.
+    // The reported items as the chat sets them, after displaay.net/about (user, 4 Nov 2026: "gossip mode typeset as
+    // displaay.net/about"): each item is a row under a 1px rule, its name, date and sources as a small uppercase label in the
+    // left third, what is said as large, tight lead text in the other two thirds; each group ("Related reporting") a large
+    // heading over its rows. On a narrow chat the label sits above the text, as Displaay's own phone layout does. Only the
+    // chat is regrouped: the Details page keeps documentedRecordHtml's markup, which its own rules are written against.
+    function chatReportingHtml(html) {
+      if (!html) return html;
+      const t = document.createElement('template');
+      t.innerHTML = html;
+      t.content.querySelectorAll('[data-gossip="items"]').forEach(r => r.classList.add('dp-set'));
+      t.content.querySelectorAll('.dp-set .record-card').forEach(card => {
+        const side = document.createElement('div'), main = document.createElement('div');
+        side.className = 'dp-side'; main.className = 'dp-main';
+        [...card.children].forEach(ch => {
+          // The label column: the title and date lines, and the line of source links.
+          const head = ch.classList.contains('kicker') || (!!ch.querySelector('.kicker') && !ch.querySelector('p'));
+          const sources = ch.classList.contains('account-source-links')
+            || (ch.tagName === 'DIV' && ch.classList.contains('no-indent') && !!ch.querySelector('a') && !ch.querySelector('p'));
+          // In the narrow label column the sources go one to a line, as Displaay's lists do, so a comma never starts a line.
+          if (sources) { [...ch.childNodes].forEach(n => { if (n.nodeType === 3 && /^[\s,]*$/.test(n.textContent)) n.remove(); }); ch.classList.add('dp-sources'); }
+          (head || sources ? side : main).appendChild(ch);
+        });
+        card.classList.add('dp-row');
+        card.append(side, main);
+      });
+      return t.innerHTML;
+    }
     function documentedRecordHtml(inst) {
       if (!inst) return '';
       const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'source'; } };
@@ -12119,7 +12278,7 @@ return maplibregl$1;
       if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b)], 'Sources') : ''; }
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : ''));
+        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
         record.classList.toggle('hidden', !record.innerHTML);
       }
       // The summary, the funding row and the reported items are filled apart; what one says, the next does not say again.
@@ -12662,7 +12821,7 @@ return maplibregl$1;
       const parts = [['public', 'public funding'], ['private', 'donations, grants and memberships'], ['earned', 'earned income']]
         .filter(([k]) => base && typeof f[k] === 'number' && f[k] >= 0 && f[k] <= base)
         .map(([k, label]) => `${f[k] / base * 100 < 0.5 ? 'under 1' : 'about ' + Math.round(f[k] / base * 100)} percent ${label} (${proseMoney(cur, f[k])})`);
-      if (parts.length) lis.push(proseLi('Where the income comes from:', escapeHtml(proseEnd(parts.join(', ')))));
+      if (parts.length) lis.push(proseLi('Income:', escapeHtml(proseEnd(parts.join(', ')))));
       if (typeof f.net_assets === 'number' && f.net_assets > 0 && cur) lis.push(proseLi('Net assets:', escapeHtml(`${proseMoney(cur, f.net_assets)} at the end of the year.`)));
       if (sc.visitors) lis.push(proseLi('Visitors:', escapeHtml(`${proseCount(sc.visitors)}${sc.visitors_year ? ' in ' + sc.visitors_year : ''}.`)));
       if (sc.staff) lis.push(proseLi('Staff:', escapeHtml(`${proseCount(sc.staff)}${sc.staff_kind && sc.staff_kind !== 'staff' ? ' ' + sc.staff_kind : ''}${sc.staff_year ? ', ' + sc.staff_year : ''}.`)));
@@ -12824,7 +12983,7 @@ return maplibregl$1;
         const who = [v.title.replace(/\s·\s/g, ', '), /unknown/i.test(v.date) ? '' : v.date].filter(Boolean).join(', ');
         return proseLi(`User post, ${who}.`, escapeHtml([what, v.note ? 'Context: ' + proseEnd(v.note) : '', v.alsoAbout.length ? 'Also about ' + v.alsoAbout.join(', ') + '.' : ''].filter(Boolean).join(' ')) + proseCite(urls, 1), true);
       }), { tone: 'flag', gossip: true }));
-      // Reader notes and whistleblower notes are no longer posted from the page (release 243): the note screen's form is the only way in, and the record does not list reviews.
+      // Reader notes and whistleblower notes are no longer posted from the page (release 243): reviews are the place view's own section, placeReviewsHtml().
       return proseRows(rows, 'Accounts and notes', true);
     }
 
@@ -12905,6 +13064,7 @@ return maplibregl$1;
           ])], 'Community research submission') : ''}
 
           ${proseVoicesHtml(inst)}
+          ${isCommunity ? '' : placeReviewsHtml(inst)}
 
 
           ${isClean && inst.highlight ? proseRows([proseRow('Highlight', '', [proseLi('', escapeHtml(inst.highlight))])], 'Highlight') : ''}
@@ -12930,6 +13090,7 @@ return maplibregl$1;
       if (!inst) return;
       dossierInst = inst;
       // On the note screen, opening another record makes it the institution of the note.
+      if (isChatInputMode) { const noteInstitution = document.getElementById('noteInstitution'); if (noteInstitution) { noteInstitution.value = inst.name || ''; syncNoteReady(); } }
       // Every statement once: a sentence two fields share is printed where it first comes (assets/repeats.js).
       const html = dedupeView(linkRecordSpaces(recordHtml(inst), inst));
       const phoneBody = document.getElementById('detailBody');
@@ -13007,15 +13168,18 @@ return maplibregl$1;
     // gossip: what is reported, from the item that names its own sources first. Otherwise: who funds it. Null when the record has nothing to say.
     function recordFact(inst, gossip) {
       const own = hostOf(ownSiteUrl(inst));
+      // The sources outside the space's own site, one per host, each a link to the page itself (user, 4 Nov 2026: "link sources").
       const hosts = (urls) => {
         const out = [];
-        (urls || []).forEach(u => {
-          const h = hostOf(typeof u === 'string' ? u : (u && u.url) || '');
-          if (h && !(own && (h === own || h.endsWith('.' + own) || own.endsWith('.' + h))) && !/wikipedia|wikimedia/.test(h) && !out.includes(h)) out.push(h);
+        (urls || []).forEach(x => {
+          const u = typeof x === 'string' ? x : (x && x.url) || '';
+          const h = /^https?:\/\//.test(u) ? hostOf(u) : '';
+          if (h && !(own && (h === own || h.endsWith('.' + own) || own.endsWith('.' + h))) && !/wikipedia|wikimedia/.test(h) && !out.some(o => o.h === h)) out.push({ h, u });
         });
         return out;
       };
-      const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.join(', ')}.` : ''; };
+      // HTML: the links are built here, so callers print it as it is.
+      const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.map(o => `<a href="${escapeHtml(o.u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(o.h)}</a>`).join(', ')}.` : ''; };
       if (gossip) {
         // The gossip items first (notes/gossip-criteria.md §7): the newest one that is not stale, with who says it and where.
         const g = gossipItems(inst, true)[0];
@@ -13031,7 +13195,7 @@ return maplibregl$1;
         if (w && w.what_shows) return { text: firstSentence(`${w.date ? w.date + ': ' : ''}${w.what_shows}`), src: src(hosts(w.sources), 1) };
         // Flagged or not, a watch line is gossip by the shared test; a clean result is not. full: a past tie is stated with what
         // the record says now ("No current gambling funding found"), so one space's answer prints a short line whole.
-        if (watchIsGossip(inst.watch)) return { text: firstSentence(inst.watch), full: inst.watch.length <= 280 ? inst.watch.trim() : '', src: src(hosts(inst.sources), 2) };
+        if (watchIsGossip(inst.watch)) return { text: firstSentence(inst.watch), full: inst.watch.length <= 300 ? inst.watch.trim() : '', src: src(hosts(inst.sources), 2) };
         const why = String(inst.why_flagged || '').split(/(?<=[.!?])\s+(?=[A-Z])/).filter(x => !/\bnot (?:at|here)\b/i.test(x)).join(' ');
         if (why) return { text: firstSentence(`${(inst.flags || []).length ? inst.flags.join(', ') + ': ' : ''}${why}`), src: src(hosts(inst.sources), 2) };
         const of = typeof inst.other_findings === 'string' ? inst.other_findings.split(' | ')[0] : '';
@@ -13049,7 +13213,12 @@ return maplibregl$1;
       const url = ownSiteUrl(inst), dom = hostOf(url);
       const site = dom ? ` (<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${escapeHtml(dom)}</a>)` : '';
       const g = inst.grade && GRADE[inst.grade] ? ` Grade ${gradeLetter(inst.grade)}.` : '';
-      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a> in ${escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}${g}</p>`;
+      // The whole account when it is short enough (who did what, and the answer to it), not its first sentence alone.
+      let text = f.full && f.full.length <= 300 ? f.full : f.text;
+      // A grade D or F line states the funder that set the grade too, when the reported item is about something else.
+      const why = String(inst.why_flagged || '').trim();
+      if (gossip && inst.grade >= 4 && why && why.length <= 200 && !text.includes(why.slice(0, 40))) text = `${proseEnd(why)} ${text}`;
+      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a> in ${escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(text)}${f.src ? ' ' + f.src : ''}${g}</p>`;
     }
     // A list of more than 12 pages itself: the link, the chip and typing "more" all show the next 12.
     window.atlasListMore = null;
@@ -15915,12 +16084,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
       let target = explicit || active;
-      // A name the visitor types on its own ("moma", "show me MoMA") is a request for that record, so it opens as a click on its pin does:
-      // the Details tab with the record, and the map flown in to the space. A question about a space still keeps you in the chat.
+      // A name the visitor types on its own ("moma", "tell me about MoMA") flies the map in to the space, as a click on its pin does,
+      // but the answer stays in the chat: the Details tab does not open over it (user, 4 Nov 2026: "if I ask chat about a space it
+      // jumps to details, keep it in chat"). Details opens from a click on the space's name in the answer, or its pin.
       const nameOnly = typedByVisitor && explicit && isNameRequest(query, explicit);
       if (nameOnly) {
-        selectInstitution(explicit, true);
-        if (window.innerWidth >= 768 && typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
+        window.atlasKeepTab = true;
+        try { selectInstitution(explicit, true); } finally { window.atlasKeepTab = false; }
       }
       // Asking about a space in the chat keeps you in the chat: the record is selected on the map, but the Details tab does not open over the answer.
       const focus = (inst) => {
@@ -16306,8 +16476,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(region.name)}, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
-      // A name typed on its own ("eflux") is answered from its record at once. Its Details page is already open with the
-      // record, so the chat does not wait for a web scrape and a model call (10–20 seconds) to say the same thing.
+      // A name typed on its own ("eflux") is answered from its record at once, in the chat: the chat does not wait for a web
+      // scrape and a model call (10–20 seconds) to say what the record already says.
       if (nameOnly && target && !isGossipModeActive) {
         focus(target);
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${fact('', target.watch)}${fact('Funding: ', target.funding)}${target.year_founded ? `<p>Founded ${escapeHtml(String(target.year_founded))}.</p>` : ''}${sourcesHtml(target)}`);
@@ -16335,13 +16505,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
-        const reported = documentedRecordHtml(target);
+        const reported = chatReportingHtml(documentedRecordHtml(target));
         // Asked for gossip: the reported items alone, no title line, rating or source list around them.
         if (isGossipModeActive || GOSSIP_ASK.test(query)) {
           // A record with no reported items can still carry a watch flag or a flagged funder: that line is its gossip.
           const f = reported ? null : recordFact(target, true);
           if (reported) answer(reported, [], true);
-          else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}</p>`, [], true);
+          else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + f.src : ''}</p>`, [], true);
           else answer('<p>Nothing is reported for this space in the records.</p>', []);
           return;
         }
@@ -16516,6 +16686,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         window.visualViewport.addEventListener('scroll', fitVisible);
         fitVisible();
       }
+      document.addEventListener('focusin', (e) => {
+        if (window.innerWidth >= 768 || !e.target.closest || !e.target.closest('#noteFormFields, #noteInputBlock, #noteAckRow')) return;
+        setTimeout(() => { try { e.target.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (_) {} }, 300);
+      });
+
       function setActiveMobileTab(activeEl) {
         [tabAtlas, tabDossier, tabChat].forEach(el => {
           if (!el) return;
@@ -16651,7 +16826,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Keyboard arrow: shown while a chat box has the focus on a phone; a tap puts the keyboard away and leaves the text as it is.
       (function () {
         const root = document.documentElement;
-        const boxes = '#chat-input, #workInput';
+        const boxes = '#chat-input, #workInput, #noteFormFields textarea, #noteFormFields input';
         document.addEventListener('focusin', (e) => { if (e.target.matches && e.target.matches(boxes)) root.classList.add('kb-typing'); });
         document.addEventListener('focusout', (e) => { if (e.target.matches && e.target.matches(boxes)) setTimeout(() => { if (!(document.activeElement && document.activeElement.matches && document.activeElement.matches(boxes))) root.classList.remove('kb-typing'); }, 0); });
         document.querySelectorAll('.kb-close-btn').forEach((b) => {
@@ -17046,6 +17221,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('chatAddKeyBtn')?.addEventListener('click', openSettingsModal);
     document.getElementById('workModelBtn')?.addEventListener('click', openSettingsModal);
 
+    document.getElementById('chatContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('topContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('mobileContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('mapFloatingContributeBtn')?.addEventListener('click', () => triggerInChatContributeFlow());
+    document.getElementById('hudContributeBtn')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      triggerInChatContributeFlow();
+    });
+
     // Curatorial Itinerary HUD & Modal event listeners
     document.getElementById('hudRouteBtn')?.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -17201,14 +17385,336 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
 
 
-    // The note form (Share information) was removed (user, 3 Nov 2026). The chat composer only asks the curator now.
-    // These stay as no-ops so old links and deep links (?mode=whistleblower) do nothing instead of throwing.
-    const isChatInputMode = false;
-    function exitChatInputMode() {}
-    window.triggerInChatContributeFlow = () => {};
-    window.enterChatInputMode = () => {};
+    let isChatInputMode = false;
+    let preInputModeGlobeWidth = '';
+
+    // The only note a reader can write is a whistleblower note. It goes to the report API and appears only once approved.
+    const chatInputKind = 'whistleblower';
+    const INPUT_KIND_TEXT = {};
+    INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
+        banner: 'Whistleblower: choose the institution and write your note. It is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
+        placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
+      } : {
+        banner: 'Whistleblower reports cannot be sent because the report service is not configured. This is not a secure channel, so leave out your name and anything that identifies you.',
+        placeholder: 'The report service is not configured. Your report will not be saved.'
+      };
+
+    // Share information is a switch like Dark, Gossip mode, Voice and Rotate: the button is highlighted while the note is open and then reads Back to chat; pressing it returns to the chat.
+    function setChatShareOn(on) {
+      const b = document.getElementById('chatShareBtn');
+      if (!b) return;
+      b.classList.toggle('is-on', on);
+      b.setAttribute('aria-pressed', String(on));
+      b.textContent = on ? 'Back to chat' : 'Share information';
+      b.title = on ? 'Leave the note and go back to the chat' : 'Write a note about an institution';
+    }
+    function toggleChatShare() {
+      if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
+    }
+    // Clicking another tab (Details, or on a phone Atlas and Dossier) closes the note screen; the chat is left as it was, with no message.
+    document.addEventListener('click', (e) => {
+      if (isChatInputMode && e.target.closest && e.target.closest('#workspaceTabDossier, #tab-atlas, #tab-dossier')) exitChatInputMode(true);
+    }, true);
+
+    function enterChatInputMode(kindOrTopic = '') {
+      // Share information, a record's link and the old information and gossip links all open the whistleblower note.
+      const defaultTopic = ['information', 'gossip', 'whistleblower'].includes(kindOrTopic) ? '' : kindOrTopic;
+      isChatInputMode = true;
+      setChatShareOn(true);
+      // The conversation so far steps aside while a note is written; it comes back with Back to chat (the Share information button, which reads that while the note is open).
+      document.querySelectorAll('#curatorMessages > *').forEach(m => m.classList.add('before-note'));
+
+      // 1. Activate whole-chat full-width mode via body class & collapse globe if needed
+      document.body.classList.add('chat-input-mode-active');
+      if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') {
+        setMobileViewMode('chat');
+      } else if (window.innerWidth >= 768) {
+        const g = document.getElementById('globeViewport');
+        if (g) {
+          preInputModeGlobeWidth = g.style.width || '';
+          setTimeout(resizeCanvas, 40);
+        }
+      }
+
+      // 2. Update Segmented Switcher tabs
+      const tabGeneral = document.getElementById('modeTabGeneralChat');
+      if (tabGeneral) {
+        tabGeneral.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const tabWhistleblower = document.getElementById('modeTabWhistleblower');
+      if (tabWhistleblower) {
+        tabWhistleblower.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const opsecInd = document.getElementById('modeSwitchOpSecIndicator');
+      if (opsecInd) {
+        opsecInd.classList.remove('hidden');
+        opsecInd.classList.add('flex');
+      }
+
+      // Update Input Card Mode Toggle Button
+      const modeToggleBtn = document.getElementById('inputModeToggleBtn');
+      if (modeToggleBtn) {
+        modeToggleBtn.innerHTML = '<span class="flex items-center gap-1_5"><span>Return to Chat</span></span>';
+        modeToggleBtn.className = 'py-1 meta flex items-center';
+        modeToggleBtn.title = 'Switch back to General Chat mode';
+      }
+      const chatContributeBtn = document.getElementById('chatContributeBtn');
+      if (chatContributeBtn) {
+        chatContributeBtn.classList.add('hidden');
+      }
+
+      // 3. Show Attached Secure Mode Banner inside/above container
+      const secureBanner = document.getElementById('secureIntakeModeBanner');
+      if (secureBanner) {
+        secureBanner.classList.remove('hidden');
+        secureBanner.classList.add('flex');
+      }
+
+      // 4. Expand input textarea with generous room to breathe & focused placeholder
+      const workInput = document.getElementById('workInput');
+      if (workInput) {
+        workInput.rows = 4;
+        workInput.classList.remove('min-h-_34px', 'sm-min-h-_42px', 'max-h-36');
+        workInput.classList.add('min-h-_110px', 'sm-min-h-_130px', 'max-h-60', 'is-good');
+        workInput.placeholder = INPUT_KIND_TEXT[chatInputKind].placeholder;
+        if (defaultTopic) {
+          workInput.value = defaultTopic;
+        }
+        if (window.atlasSyncInert) window.atlasSyncInert();
+        // The form: the institution is the open record's, or chosen from the atlas's list.
+        // Each step is guarded: an error in one must never leave the note half open (the conversation hidden and nothing in its place).
+        // On a phone the list of 1,400 places is built when the Institution box is first used, and the keyboard is not raised on its own:
+        // the form opens at once and is read first, and a tap on a box brings the keyboard up.
+        const phone = window.innerWidth < 768;
+        const noteInstitution = document.getElementById('noteInstitution');
+        try { if (!phone) fillNoteInstitutions(); } catch (err) { atlasDebugLog('fillNoteInstitutions', err); }
+        try { if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || ''; } catch (err) { atlasDebugLog('institution', err); }
+        try {
+          const noteStatus = document.getElementById('noteFormStatus');
+          if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not configured. A note cannot be sent.';
+          syncNoteReady();
+        } catch (err) { atlasDebugLog('syncNoteReady', err); }
+        try { if (!phone) (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus(); } catch (err) { atlasDebugLog('focus', err); }
+      }
+
+      // 5. Hide redundant full-width input mode button if present
+      const fwBtn = document.getElementById('fullWidthInputModeBtn');
+      if (fwBtn) fwBtn.classList.add('hidden');
+
+      // 6. Hide suggestions & hero greeting to focus on secure intake
+      const heroGreeting = document.getElementById('curatorHeroGreeting');
+      if (heroGreeting) {
+        heroGreeting.classList.add('hidden');
+        heroGreeting.style.display = 'none';
+      }
+
+      // 7. Style primary input container with secure dark-emerald theme (#061b12)
+      const inputCard = document.getElementById('workInputCard');
+      if (inputCard) {
+        inputCard.classList.add('is-mode');
+      }
+
+      // 8. Toggle action bar: show Attach & Cancel buttons and the OpSec badge
+      const cancelBtn = document.getElementById('inputModeCancelBtn');
+      if (cancelBtn) {
+        cancelBtn.classList.remove('hidden');
+        cancelBtn.classList.add('flex');
+      }
+
+      const inputBadge = document.getElementById('workInputModeBadge');
+      if (inputBadge) {
+        inputBadge.classList.remove('hidden');
+        inputBadge.classList.add('flex');
+      }
+
+      // 9. Style primary CTA: clean emerald button as sole accent
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) {
+        sendBtn.classList.add('is-on');
+        sendBtn.innerHTML = `
+          <span>${ATLAS_REPORT_API_URL ? 'Send for review' : 'Unavailable'}</span>
+        `;
+        sendBtn.title = ATLAS_REPORT_API_URL ? 'Send this note to the editor for review' : 'The report service is not configured';
+      }
+
+
+      scrollChatToBottom(true);
+    }
+
+    function exitChatInputMode(quiet = false) {
+      isChatInputMode = false;
+      setChatShareOn(false);
+      document.querySelectorAll('#curatorMessages > .before-note').forEach(m => m.classList.remove('before-note'));
+
+      // 1. Deactivate whole-chat full-width mode
+      document.body.classList.remove('chat-input-mode-active');
+      if (typeof resizeCanvas === 'function') {
+        setTimeout(resizeCanvas, 360);
+      }
+
+      // 2. Update Segmented Switcher tabs
+      const tabGeneral = document.getElementById('modeTabGeneralChat');
+      if (tabGeneral) {
+        tabGeneral.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const tabWhistleblower = document.getElementById('modeTabWhistleblower');
+      if (tabWhistleblower) {
+        tabWhistleblower.className = 'py-1 t-strong flex items-center gap-1';
+      }
+      const opsecInd = document.getElementById('modeSwitchOpSecIndicator');
+      if (opsecInd) {
+        opsecInd.classList.remove('flex');
+        opsecInd.classList.add('hidden');
+      }
+
+      // Restore Input Card Mode Toggle Button & Contribute Intel
+      const modeToggleBtn = document.getElementById('inputModeToggleBtn');
+      if (modeToggleBtn) {
+        modeToggleBtn.innerHTML = '<span class="flex items-center gap-1_5"><span>Intake</span></span>';
+        modeToggleBtn.className = 'py-1 meta flex items-center';
+        modeToggleBtn.title = 'Add information';
+      }
+      const chatContributeBtn = document.getElementById('chatContributeBtn');
+      if (chatContributeBtn) {
+        chatContributeBtn.classList.remove('hidden');
+      }
+
+      // 3. Hide Attached Secure Mode Banner
+      const secureBanner = document.getElementById('secureIntakeModeBanner');
+      if (secureBanner) {
+        secureBanner.classList.remove('flex');
+        secureBanner.classList.add('hidden');
+      }
+
+      // 4. Restore input card styling & padding
+      const inputCard = document.getElementById('workInputCard');
+      if (inputCard) {
+        inputCard.classList.remove('is-mode');
+      }
+
+      // 5. Restore action bar: hide attach, cancel & metadata
+      const attachBtn = document.getElementById('inputModeAttachBtn');
+      if (attachBtn) {
+        attachBtn.classList.add('hidden');
+        attachBtn.classList.remove('flex');
+      }
+
+      const cancelBtn = document.getElementById('inputModeCancelBtn');
+      if (cancelBtn) {
+        cancelBtn.classList.add('hidden');
+        cancelBtn.classList.remove('flex');
+      }
+
+      const inputBadge = document.getElementById('workInputModeBadge');
+      if (inputBadge) {
+        inputBadge.classList.add('hidden');
+        inputBadge.classList.remove('flex');
+      }
+
+      // 7. Restore Send button
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) {
+        sendBtn.className = 'flex items-center justify-center shrink-0';
+        sendBtn.innerHTML = '<svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+        sendBtn.title = 'Send message';
+      }
+
+      // 8. Restore placeholder & row height
+      const workInput = document.getElementById('workInput');
+      if (workInput) {
+        workInput.rows = 2;
+        workInput.classList.remove('min-h-_110px', 'sm-min-h-_130px', 'max-h-60', 'is-good');
+        workInput.classList.add('min-h-_34px', 'sm-min-h-_42px', 'max-h-36');
+        workInput.placeholder = 'Ask about a space, its funders or controversies…';
+      }
+
+      // 9. Restore suggestions and hero greeting
+      const heroGreeting = document.getElementById('curatorHeroGreeting');
+      if (heroGreeting) {
+        heroGreeting.classList.remove('hidden');
+        heroGreeting.style.display = '';
+      }
+
+      // 10. Desktop split view restoration if previously minimized
+      if (window.innerWidth >= 768) {
+        const g = document.getElementById('globeViewport');
+        if (g && (g.style.width === '240px' || preInputModeGlobeWidth)) {
+          g.style.width = preInputModeGlobeWidth || '50%';
+          g.style.flex = preInputModeGlobeWidth ? `1 1 ${preInputModeGlobeWidth}` : '1 1 50%';
+          setTimeout(resizeCanvas, 40);
+        }
+      }
+
+      if (!quiet) {
+        appendCuratorMessage(`
+          <div>
+            <p class="no-indent">Returned to chat. How can I help you explore cultural spaces?</p>
+            <div class="curator-followups mt-3 flex flex-col items-start gap-1">
+              <button type="button" class="curator-followup-pill text-left py-1" onclick="window.enterChatInputMode('whistleblower')">Whistleblower note</button>
+            </div>
+          </div>
+        `, [], null, null, false);
+        scrollChatToBottom(true);
+      }
+    }
+
+
+
+
+    function triggerInChatContributeFlow(defaultTopic = '') {
+      enterChatInputMode(defaultTopic);
+    }
+    window.triggerInChatContributeFlow = triggerInChatContributeFlow;
+    window.enterChatInputMode = enterChatInputMode;
     window.exitChatInputMode = exitChatInputMode;
-    window.toggleChatShare = () => {};
+    window.toggleChatShare = toggleChatShare;
+
+    // Sends the note screen's form to the report API. Nothing is kept in this browser: a note that is not sent stays in the form.
+    async function submitNoteForm() {
+      const status = document.getElementById('noteFormStatus');
+      const input = document.getElementById('workInput');
+      const institutionBox = document.getElementById('noteInstitution');
+      const fail = (message, focusEl) => { status.textContent = message; if (focusEl) focusEl.focus(); };
+      if (!ATLAS_REPORT_API_URL) return fail('The report service is not configured. The note was not sent.');
+      const wanted = (institutionBox.value || '').trim().toLowerCase();
+      const place = wanted && ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === wanted);
+      if (!place) return fail('Choose the institution from the list. It must be a space on the atlas.', institutionBox);
+      const content = (input.value || '').trim();
+      if (content.length < REVIEW_LIMITS.min) return fail(`Write at least ${REVIEW_LIMITS.min} characters.`, input);
+      const ack = document.getElementById('noteAck');
+      if (!ack.checked) return fail('Tick the box to confirm you have left out anything that identifies you.', ack);
+      const body = { content };
+      const label = (document.getElementById('noteAuthor').value || '').trim();
+      if (label) body.authorLabel = label;
+      const sendBtn = document.getElementById('workSendBtn');
+      if (sendBtn) sendBtn.disabled = true;
+      status.textContent = 'Sending…';
+      try {
+        const res = await fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const out = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(out.error || 'The server did not take it.');
+        input.value = '';
+        document.getElementById('noteAuthor').value = '';
+        ack.checked = false;
+        syncNoteReady();
+        status.textContent = '';
+        appendCuratorMessage(`
+          <div class="space-y-1">
+            <p class="no-indent">Sent to the editor for review. It appears on the record of ${escapeHtml(place.name)}, as a review, only once it is approved.</p>
+            <p class="no-indent"><a href="#" onclick="event.preventDefault();window.enterChatInputMode('whistleblower')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
+          </div>
+        `, [], null, null, false);
+        scrollChatToBottom(true);
+      } catch (err) {
+        status.textContent = `Not sent: ${err.message || 'no connection'}. Your note is still in the box.`;
+      } finally {
+        if (sendBtn) sendBtn.disabled = false;
+      }
+    }
 
     document.addEventListener('click', (e) => {
       const quickPill = e.target.closest('.contribute-quick-pill');
@@ -17233,7 +17739,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     //  Bulletproof Capture-Phase Event Delegation for Map HUD Quick Buttons (Fiscal, Victories, 990s, Boards, Crawls, Rail, Intel)
     document.addEventListener('click', (e) => {
-      const btn = e.target && e.target.closest ? e.target.closest('#hudFiscalBtn, #hudTimelineBtn, #hudFilingsBtn, #hudTrusteesBtn, #hudRouteBtn, #hudRailToggle') : null;
+      const btn = e.target && e.target.closest ? e.target.closest('#hudFiscalBtn, #hudTimelineBtn, #hudFilingsBtn, #hudTrusteesBtn, #hudRouteBtn, #hudRailToggle, #hudContributeBtn') : null;
       if (!btn) return;
       e.stopPropagation();
       if (btn.id === 'hudFiscalBtn') {
@@ -17246,6 +17752,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (typeof window.openTrusteeConflictNetworkModal === 'function') window.openTrusteeConflictNetworkModal();
       } else if (btn.id === 'hudRouteBtn') {
         if (typeof window.openCuratorialItineraryModal === 'function') window.openCuratorialItineraryModal();
+      } else if (btn.id === 'hudContributeBtn') {
+        if (typeof window.triggerInChatContributeFlow === 'function') window.triggerInChatContributeFlow();
       }
     }, true);
     document.getElementById('closeFiscalModalBtn')?.addEventListener('click', closeFiscalAnalyticsHUD);
@@ -17267,6 +17775,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const workSendBtn = document.getElementById('workSendBtn');
 
     async function handleWorkSend() {
+      if (isChatInputMode) { await submitNoteForm(); return; }
       const text = (workInput?.value || '').trim();
       if (!text) return;
       workInput.value = '';
@@ -17281,7 +17790,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     workSendBtn?.addEventListener('click', handleWorkSend);
     workInput?.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
+      // On the note screen Enter starts a new line; only the Send for review button sends.
+      if (e.key === 'Enter' && !e.shiftKey && !isChatInputMode) {
         e.preventDefault();
         handleWorkSend();
       }
@@ -20090,6 +20600,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         toggleGossipMode(true);
       }
 
+      if (targetMode === 'whistleblower' || params.get('whistleblower') === '1' || params.get('intake') === '1') {
+        enterChatInputMode('whistleblower');
+      }
+
       if (targetInst) {
         const t = targetInst.toLowerCase();
         const matched = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === t) || ALL_INSTITUTIONS.find(i => i.name.toLowerCase().includes(t));
@@ -20114,12 +20628,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=521"></script>
-<script src="assets/layers.js?v=521"></script>
-<script src="assets/hq-detail.js?v=521"></script>
-<script src="assets/bubbles.js?v=521" defer></script>
-<script src="assets/phone-maps.js?v=521"></script>
-<script src="assets/desktop-maps.js?v=521"></script>
-<script src="assets/chat-resize.js?v=521"></script>
+<script src="assets/typeset.js?v=530"></script>
+<script src="assets/layers.js?v=530"></script>
+<script src="assets/hq-detail.js?v=530"></script>
+<script src="assets/bubbles.js?v=530" defer></script>
+<script src="assets/phone-maps.js?v=530"></script>
+<script src="assets/desktop-maps.js?v=530"></script>
+<script src="assets/chat-resize.js?v=530"></script>
 </body>
 </html>

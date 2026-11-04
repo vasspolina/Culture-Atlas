@@ -26,7 +26,7 @@ Contrast is measured, not assumed (WCAG 2.2: 4.5:1 for text under 24px, 3:1 for 
 
 **Buttons and corners after Displaay** (displaay.net/typeface/dazzed, 4 Nov 2026): every button is a rounded rectangle with 10px corners and a 1px ink edge, flat, no shadow, its label at 15px/1.3 +0.02em; the primary action is solid ink; what is chosen is solid ink; hover fills with 80% ink and paper text. Bars that hold buttons have 14px corners, panels, sheets and popups 20px. The shadows over the map are now the same 1px edge. "Ask the curator" is one line in one Displaay colour, a different one at each load. The record (Details) is set in Serrif Light (`fonts/Serrif-TRIAL-Light.woff2`, a Displaay trial file: check the terms before it ships for good), with section titles as small uppercase labels over a 1px rule. Titles stay on one line and are never cut: `fitTitles` in `assets/typeset.js` sets a long one smaller. Only the top and bottom edges of the map are fogged: they blur and fade into the paper, solid at the very edge and gone a quarter of the way in, on the globe and the street map alike, and the middle stays as it is ("FOG ON THE MAP" in `assets/atlas.css`). The selected space's label on the globe is set at 20px with its whole name. The card that opens over a space on hover is set like the info block on displaay.net/typeface/cassette: a paper card with a 1px ink edge and 20px corners, the place as a small uppercase label over a 1px rule, the name in capitals, the first line of the record's overview in Serrif Light 21px on a 24px line (up to three lines), and the website as a 10px-cornered button. The desktop chat column can be dragged wider by its left edge, up to full screen (double-click the edge to toggle; `assets/chat-resize.js`). The desktop map has no search box; the Top story badge is a newspaper. The rules are the "BUTTONS AND CORNERS: DISPLAAY" block at the end of `assets/atlas.css`.
 
-The Details panel is the full record, with no separate record page on desktop. The page has no form for notes or reviews (removed 3 Nov 2026). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the approved reviews of a place are listed at the foot of its record (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ---
 
@@ -40,6 +40,7 @@ python3 -m http.server 8080
 
 Then open [http://localhost:8080](http://localhost:8080).
 
+To try the Share information form against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
 
 ---
 
@@ -59,9 +60,13 @@ check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
 ## Whistleblower reviews
 
-The page no longer takes or shows notes (3 Nov 2026): the Share information form and the reviews under a record were both removed. The report API and `reports-admin.html` below are kept for the reviews already stored.
+The only notes the atlas holds are whistleblower reviews. They are written on one screen and read in one place.
 
-A review the API held is moderated on `reports-admin.html`. Reviews are not posted to Google Maps.
+**Writing:** Share information (in the chat composer, and on the map's control bar) opens the note screen, which is a form of filled blocks: the institution (the open record's, or chosen from the list of every space on the atlas), an optional name to show (blank shows "Whistleblower"), the note (10 to 2000 characters), and a box confirming that the sender has left out their name and anything that identifies them. Send for review is grey until the form could be sent and blue after; it posts to the report API. Enter inside the note starts a new line. If it cannot be sent, everything stays in the form and nothing is kept in the reader's browser. The page has no other way to add a note. There are no star ratings.
+
+**Reading:** under the record of the space they are about, approved reviews are laid out like the reviews of a place on Google Maps: the count, then one entry per review with the name, date and text, newest first. The record only lists reviews; it has no form. Nothing is shown before they arrive or when there are none: no heading, no note on who writes them and no loading line (4 Nov 2026).
+
+A review is sent to the report API below, held as waiting, and shows on the record only after the editor approves it on `reports-admin.html`. The map pin's hover card is drawn on the canvas and has no room for a list, so reviews appear on the record only. Reviews are not posted to Google Maps.
 
 The Cloudflare Worker in `worker/` serves only the chat proxy (`/chat`). It takes no notes and no reviews; its setup is kept below.
 
