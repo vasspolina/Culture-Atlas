@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=539">
-  <script src="assets/config.js?v=539"></script>
-  <script src="assets/subtopic.js?v=539"></script>
-  <script src="assets/names.js?v=539"></script>
-  <script src="assets/grounding.js?v=539"></script>
-  <script src="assets/repeats.js?v=539"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=540">
+  <script src="assets/config.js?v=540"></script>
+  <script src="assets/subtopic.js?v=540"></script>
+  <script src="assets/names.js?v=540"></script>
+  <script src="assets/grounding.js?v=540"></script>
+  <script src="assets/repeats.js?v=540"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=539"></script>
+  <script src="assets/institutions.js?v=540"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6778,16 +6778,10 @@ return maplibregl$1;
             if (!m || CITY_MAP_LOCAL_GLYPHS.has(m[1])) return { url };
             return { url: 'https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/' + m[1] + '.pbf' };
           },
-          attributionControl: { compact: false } /* the credit as one line of small text, no "i" button (user, 4 Nov 2026; the OpenStreetMap licence asks for a visible credit) */
+          // No credit line on the street map (user, 4 Nov 2026: "delete text about OpenFreeMap"). The OpenStreetMap licence
+          // (ODbL) still asks for a visible credit somewhere a reader can find it; the source keeps its attribution string for that.
+          attributionControl: false
         });
-
-        // The credit is a <details>; keep it open so its one line shows, and the CSS hides the toggle (atlas.css).
-        // MapLibre closes it again on resize, so an observer reopens it whenever that happens.
-        { const keepOpen = () => { const d = document.querySelector('#cityMapContainer details.maplibregl-ctrl-attrib'); if (!d) return false;
-            if (!d.open) d.open = true;
-            if (!d.dataset.keepOpen) { d.dataset.keepOpen = '1'; new MutationObserver(() => { if (!d.open) d.open = true; }).observe(d, { attributes: true, attributeFilter: ['open'] }); }
-            return true; };
-          if (!keepOpen()) cityVectorMap.once('load', keepOpen); cityVectorMap.on('resize', keepOpen); }
 
         // The compass turns with the bearing and nothing else. With visualizePitch on, MapLibre also tilts the arrow (rotateX) and
         // scales it by 1 + pitch/90 (1.13 at the 38 degrees the street map opens at, 1.32 at the 55 a record flies to), so the
@@ -6797,12 +6791,9 @@ return maplibregl$1;
           visualizePitch: false
         }), 'top-right');
 
-        // The map credit stays on the page, closed to a small square "i" until it is opened.
         cityVectorMap.once('load', () => {
           applyCityMapGossip();
           cityStreetLinesInit();
-          const credit = document.querySelector('#cityMapContainer .maplibregl-ctrl-attrib');
-          if (credit) { credit.classList.remove('maplibregl-compact-show'); credit.removeAttribute('open'); }
         });
 
       } catch (e) {
@@ -7186,8 +7177,9 @@ return maplibregl$1;
       let layers = [];
       try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const ground = isGossipModeActive ? '#e79a3a' : dark ? '#262524' : '#ffffff';
-      const line = isGossipModeActive ? '#000000' : dark ? '#f4f4f4' : '#161616';
+      // Gossip mode: Displaay's lime with black lines; on the dark theme a dark green with lime lines (user, 4 Nov 2026).
+      const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#e2f86c') : dark ? '#262524' : '#ffffff';
+      const line = isGossipModeActive ? (dark ? '#e2f86c' : '#000000') : dark ? '#f4f4f4' : '#161616';
       layers.forEach(l => {
         if (l.id && l.id.indexOf('xray') === 0) return; // the building view keeps its own colours
         try {
@@ -10027,11 +10019,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v539';
+    const ATLAS_RELEASE = 'culture-atlas-v540';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=539').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=540').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10509,9 +10501,9 @@ return maplibregl$1;
       const now = (typeof ts === 'number') ? ts : performance.now();
       // The globe follows the theme: white ground and dark hairlines in light mode, black ground and light hairlines in dark.
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
-      // Gossip mode on the dark ground: the globe's ground is the Gossip button's yellow, darkened.
+      // Gossip mode on the dark ground: the globe's ground is the Gossip button's dark green.
       const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#4f5a12' : '#000000'), G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : (GOSSIP_DARK ? 'rgba(79, 90, 18, 0.95)' : 'rgba(0, 0, 0, 0.95)'), G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#1e4d2b' : '#000000'), G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : (GOSSIP_DARK ? 'rgba(30, 77, 43, 0.95)' : 'rgba(0, 0, 0, 0.95)'), G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
         const TIER_SHAPE_SIZE = { circle: 3 };
@@ -10808,11 +10800,11 @@ return maplibregl$1;
         // A badge's fill and type colour. The city hover card takes the same pair, so it reads as the badge opened out.
         const pillColors = (active, tier) => {
           const darkLabel = !GLOBE_LIGHT && !active;
-          const fill = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? TIER_FILL_DARK.B : '#e79a3a')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
+          const fill = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? '#1e4d2b' : '#e2f86c')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
           return { fill, ink: darkLabel ? '#ffffff' : '#000000' };
         };
         // The type and outline colour of a city label, and of the card it opens into.
-        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : tierInk(tier, GLOBE_LIGHT);
+        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2f6b12' : '#e2f86c') : tierInk(tier, GLOBE_LIGHT);
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = active ? atlasSelFont() : atlasMonoFont();
@@ -11175,9 +11167,9 @@ return maplibregl$1;
             : (isVisualCritiqueOnly && hasVc)
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
-            ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#a16207' : '#facc15') : (GLOBE_LIGHT ? '#713f12' : '#884c16'))
+            ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#3d7a0f' : '#e2f86c') : (GLOBE_LIGHT ? '#1e4d2b' : '#7d9a3a'))
             : tierInk(d.inst.tier, GLOBE_LIGHT);
-          // Hollow rings in the tier's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled yellow dot, and only it is yellow.
+          // Hollow rings in the tier's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled green dot (lime on the dark theme).
           ctx.lineWidth = 0.8;
           if (isSel || (isGossipModeActive && hasGossip(d.inst))) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
           ctx.stroke();
@@ -20635,13 +20627,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=539"></script>
-<script src="assets/funding-views.js?v=539"></script>
-<script src="assets/layers.js?v=539"></script>
-<script src="assets/hq-detail.js?v=539"></script>
-<script src="assets/bubbles.js?v=539" defer></script>
-<script src="assets/phone-maps.js?v=539"></script>
-<script src="assets/desktop-maps.js?v=539"></script>
-<script src="assets/chat-resize.js?v=539"></script>
+<script src="assets/typeset.js?v=540"></script>
+<script src="assets/funding-views.js?v=540"></script>
+<script src="assets/layers.js?v=540"></script>
+<script src="assets/hq-detail.js?v=540"></script>
+<script src="assets/bubbles.js?v=540" defer></script>
+<script src="assets/phone-maps.js?v=540"></script>
+<script src="assets/desktop-maps.js?v=540"></script>
+<script src="assets/chat-resize.js?v=540"></script>
 </body>
 </html>

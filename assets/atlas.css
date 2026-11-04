@@ -18,7 +18,9 @@ h1,h2,h3,h4,p{margin:0}
   --ink:#000; --paper:#fff; --grey:#e8e8e8; --block:#d9d9d9; --line:#000;
   --ease:cubic-bezier(.32,.72,0,1); --dur:.45s; --mint:#a7f0ba; --mint-10:#defbe6;
   --cobalt:#0045fc; --focus:var(--cobalt); --blue:#527fe6; --orange:#e79a3a; --brick:#a0705e; --navy:#223f85;
-  --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600; --gossip:#e79a3a;
+  --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600;
+  /* Gossip mode is Displaay's lime with black type; on the dark theme a dark green with the lime as its type (8.3:1) (user, 4 Nov 2026). */
+  --gossip:#e2f86c; --gossip-ink:#000; --gossip-text:#2f6b12;
   --sans:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --display:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --display-xl:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -91,7 +93,7 @@ header>button:first-child{border-right:.8px solid var(--line)}
 #topGossipBtn,#topShareBtn{border-left:.8px solid var(--line);border-right:0}
 header>div:last-child{align-self:stretch;display:flex}
 header>div:last-child>button{border-right:0;border-left:.8px solid var(--line)}
-body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:#000}
+body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:var(--gossip-ink)}
 
 /* ---- the two halves ---- */
 #mainAppContainer{background:var(--paper);min-height:0}
@@ -163,8 +165,8 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 #floatingCard>div:last-child{padding:12px 16px 16px;border-top:.8px solid rgba(255,255,255,.55)}
 #floatingCard>div:last-child a,#floatingCard>div:last-child button{border-radius:0;padding:9px 16px;font:400 var(--fs-s)/1 var(--sans);text-align:center;text-decoration:none;justify-content:center}
 #floatingCardDirectAuditBtn,#floatingCardDirectPlanBtn,#floatingCardDirectWebBtn{background:var(--block);color:var(--ink)!important;border:0}
-#floatingCard.gossip-active-card,#floatingCard.gossip-yellow-card{background:var(--gossip);color:#000}
-#floatingCard.gossip-active-card *,#floatingCard.gossip-yellow-card *{color:#000}
+#floatingCard.gossip-active-card,#floatingCard.gossip-yellow-card{background:var(--gossip);color:var(--gossip-ink)}
+#floatingCard.gossip-active-card *,#floatingCard.gossip-yellow-card *{color:var(--gossip-ink)}
 
 /* ---- right column tabs ---- */
 #workspaceContextTabBar{background:var(--paper);border-bottom:.8px solid var(--line);padding:0;min-height:var(--bar);align-items:stretch}
@@ -748,8 +750,8 @@ body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 /* The map credit button is a white square on a white map, so it takes the same black rule. */
 .maplibregl-ctrl-attrib.maplibregl-compact{border:.8px solid var(--ink)}
 
-/* Gossip mode: the menu bar keeps its colours (yellow is for gossip alone); the Gossip mode button turns orange and the street map ground goes orange. */
-body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:#000}
+/* Gossip mode: the menu bar keeps its colours (yellow is for gossip alone); the Gossip mode button and the street map ground turn lime (dark green on the dark theme). */
+body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:var(--gossip-ink)}
 body.gossip-mode-active #topGossipBtn:hover,body.gossip-mode-active #mobileGossipBtn:hover{background:#000;color:#fff}
 body.gossip-mode-active #cityMapContainer{background:var(--gossip)}
 /* In the street view the globe's own controls would sit behind the street-view bar and poke out at its ends. */
@@ -855,7 +857,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersControl{z-index:40}
 
 /* Dark mode: the same ink-and-paper system on a warm charcoal ground with bone-white ink, not pure black and white. The globe stays black in both. */
-:root[data-theme="dark"]{color-scheme:dark;--focus:#7fa3ff;--ink:#f1ede6;--paper:#262524;--grey:#302f2d;--block:#403d3a;--line:#cfc8bb}
+:root[data-theme="dark"]{color-scheme:dark;--focus:#7fa3ff;--ink:#f1ede6;--paper:#262524;--grey:#302f2d;--block:#403d3a;--line:#cfc8bb;--gossip:#1e4d2b;--gossip-ink:#e2f86c;--gossip-text:#e2f86c}
 :root[data-theme="dark"] #floatingCard{color:var(--ink)}
 :root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-content{background:#34322f;color:var(--ink)}
 :root[data-theme="dark"] .record-popup,:root[data-theme="dark"] .record-popup-line,:root[data-theme="dark"] .record-popup-name,:root[data-theme="dark"] #globeViewport .record-popup a,:root[data-theme="dark"] #globeViewport a.record-popup-name{color:var(--ink)}
@@ -1147,7 +1149,7 @@ a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:u
 /* Gossip mode: only the gossip is yellow (a deep gold on a white page, so it still reads): the reported items in the record, which carry
    data-gossip. Everything else in the record, and the chat, keeps the normal ink. */
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip],
-body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:#6e5300}
+body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:var(--gossip-text)}
 :root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip],
 :root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:#e2f86c}
 /* The marker highlights (green, blue) keep black text inside the reported items, in either theme: yellow on green is 1.5:1. */
@@ -2117,7 +2119,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #mobileTopBar>div:last-child{gap:8px;padding-right:16px;align-items:center}
   :root[data-theme] #mobileTopBar>div:last-child :is(#mobileThemeBtn,#mobileGossipBtn,#reset-state-btn){height:40px;padding:0 16px!important;border:.8px solid var(--ink)!important;border-radius:0;background:transparent;color:var(--ink);align-self:center}
   :root[data-theme] #mobileTopBar>div:last-child #mobileThemeBtn[aria-pressed=true]{background:var(--cobalt);border-color:var(--cobalt)!important;color:#fff;border-radius:0}
-  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:var(--gossip)!important;color:#000;border-radius:0}
+  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:#e2f86c!important;color:var(--gossip-ink);border-radius:0}
 }
 
 /* The chat after the displaay.net Albert chat, keeping the existing starter-prompt highlights (user's instruction, 25 Oct 2026): the question box is a rounded navy field (#2d3352) with a yellow ring (#fff204) while in use, plum (#410043) with yellow type once the reader has typed, and a white square send button inside it; Share information (#420401) and Voice (#410043) sit below the box as solid rounded buttons after the Trials / Tester / Buy row; the starter questions stay as coloured highlight strips; the reader's lines are grey bubbles, the reply a dark box. */
@@ -2700,15 +2702,15 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* Gossip mode: every divider line (the token the rules and borders draw with) and the Gossip button turn the lime yellow. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active{--line:#e2f86c}
-:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #topGossipBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #mobileGossipBtn{background:#e2f86c!important;border-color:#e2f86c!important;color:#000!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #topGossipBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #mobileGossipBtn{background:var(--gossip)!important;border-color:#e2f86c!important;color:var(--gossip-ink)!important}
 
 /* A record's name fills each line to the edge and breaks only where the line ends (it was balanced into two short lines). */
 :root:root:root:root:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading,h2.dossier-main-heading){text-wrap:wrap!important;max-width:none!important;width:auto!important}
 
-/* Gossip mode on the dark theme: the globe's ground is a dark yellow, the Gossip button's lime (#e2f86c) darkened. */
-:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#4f5a12!important}
+/* Gossip mode on the dark theme: the globe's ground is the dark green of the Gossip button. */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#1e4d2b!important}
 
-/* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (Displaay menthol clean, magenta flagged, yellow unverified; orange in Gossip mode). */
+/* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (Displaay menthol clean, magenta flagged, yellow unverified; green in Gossip mode). */
 :root{--tier-a:#007a80;--tier-b:#b000b0;--tier-u:#7a7000}
 :root[data-theme="dark"]{--tier-a:#b8fbff;--tier-b:#ff5eff;--tier-u:#ffff3c}
 :root:root:root:root:root:root[data-theme] .inst-pin-label{--lc:var(--tier-u);background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:0}
@@ -2717,8 +2719,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{--lc:var(--tier-u);background:#000}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="A"]{--lc:var(--tier-a)}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="B"]{--lc:var(--tier-b)}
-:root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#ba4e00}
-:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#ff832b}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#2f6b12}
+:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#e2f86c}
 
 /* The header's Dark and Gossip mode buttons run to the right edge of the screen (the header had 24px of padding there). */
 :root:root:root:root:root:root:root:root header.rule-b{padding-right:0!important}
@@ -3508,7 +3510,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar>div{gap:8px!important;pointer-events:auto}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar :is(#topGossipBtn,#topThemeBtn){height:var(--gmd-h)!important;min-height:0!important;padding:0 18px!important;border:0!important;border-radius:calc(var(--gmd-h) / 2)!important;font:400 15px/1 var(--sans)!important;background:var(--paper);color:var(--ink);box-shadow:var(--gmd-shadow)!important}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar :is(#topGossipBtn,#topThemeBtn):hover{background:color-mix(in srgb,var(--ink) 8%,var(--paper))}
-  :root.gmd:root:root:root:root:root:root:root:root:root body.gossip-mode-active #gmdTopBar #topGossipBtn{background:var(--gossip)!important;color:#000!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root body.gossip-mode-active #gmdTopBar #topGossipBtn{background:var(--gossip)!important;color:var(--gossip-ink)!important}
 
   /* The side panel: the Details and Chat column, at the right, under Gossip mode and Dark. */
   :root.gmd:root:root:root:root:root:root:root:root:root #workViewContainer{display:flex!important;position:absolute!important;top:0!important;bottom:0!important;left:auto!important;right:0!important;width:var(--gmd-w)!important;max-width:calc(100vw - 32px)!important;z-index:35!important;padding-top:calc(var(--gmd-gap) + var(--gmd-h) + 12px)!important;border:0!important;border-left:1px solid color-mix(in srgb,var(--ink) 14%,transparent)!important;background:var(--paper)!important}
@@ -3699,7 +3701,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workSendBtn,#mobileStickySendBtn,#saveApiKeyBtn,#dossier-bottom-sheet .record-action-row.gm-actions .record-action:first-child,#dossier-sheet-ask-btn){background:var(--ink)!important;color:var(--paper)!important;box-shadow:inset 0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
 
 /* What is chosen is solid ink, as Displaay marks its current page: the open tab, a control that is on. Gossip mode keeps its own
-   orange, the one colour that says it is on. */
+   lime (dark green on the dark theme), the one colour that says it is on. */
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat).is-on,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat)[aria-selected="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet .gm-tabs button[aria-selected="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.provider-tab-btn,#curatorVoiceToggleBtn,#hudSpinBtn,#hudExpandBtn)[aria-pressed="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.provider-tab-btn).is-on,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .provider-tab-btn.active{background:var(--ink)!important;color:var(--paper)!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet .gm-tabs button[aria-selected="true"]::after{display:none!important}
 
