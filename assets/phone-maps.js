@@ -752,9 +752,13 @@
         strip.hidden = !top;
         if (!top) return;
         strip.classList.toggle('is-alert', !!alerts.length);
-        const label = alerts.length ? (alerts.length === 1 ? '1 alert now' : alerts.length + ' alerts now') : 'Top story';
-        strip.innerHTML = '<span class="gm-strip-label"><i aria-hidden="true"></i>' + esc(label) + '</span><span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(top.inst.name) + ' · ' + esc(ago(top.when)) + '</span>';
-        strip.setAttribute('aria-label', label + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + '. Open the latest reports');
+        // An alert now is the top story (user, 4 Nov 2026: "make alert to be a top story"): the strip keeps its name, takes the
+        // alert's colour and headline, and says the report is an alert, and how many more there are.
+        const label = 'Top story';
+        const more = alerts.length > 1 ? ' · ' + (alerts.length - 1) + ' more alert' + (alerts.length > 2 ? 's' : '') : '';
+        const meta = (alerts.length ? 'Alert · ' : '') + top.inst.name + ' · ' + ago(top.when) + more;
+        strip.innerHTML = '<span class="gm-strip-label"><i aria-hidden="true"></i>' + esc(label) + '</span><span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
+        strip.setAttribute('aria-label', label + (alerts.length ? ', an alert now' : '') + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + more + '. Open the latest reports');
       }
 
       // The feed.
@@ -828,9 +832,11 @@
         const here = window.atlasHere;
         const R = Math.PI / 180;
         const km = (i) => (here && typeof i.lat === 'number' && typeof i.lon === 'number') ? 6371 * Math.acos(Math.min(1, Math.sin(here.lat * R) * Math.sin(i.lat * R) + Math.cos(here.lat * R) * Math.cos(i.lat * R) * Math.cos((here.lon - i.lon) * R))) : Infinity;
-        const alertList = take(alerts);
+        // The top story is the first alert now when there is one, else the newest report; the other alerts follow it.
         const fresh = list.filter((x) => x.status !== 'stale');
-        const top = alertList.length ? null : take(fresh.slice(0, 1))[0];
+        const top = take(alerts.length ? alerts.slice(0, 1) : fresh.slice(0, 1))[0];
+        const topIsAlert = !!(top && alerts.includes(top));
+        const alertList = take(alerts);
         const near = here ? take(list.filter((x) => km(x.inst) < 400)) : [];
         // Reports and documented cases first; posts by staff and visitors and leaked documents in sections of their own, so
         // the press is not drowned out by visitor comments and every kind of source is told apart at a glance.
@@ -838,10 +844,10 @@
         const posts = take(list.filter((x) => x.type === 'account')).slice(0, 15);
         const docs = take(list.filter((x) => x.type === 'leak')).slice(0, 10);
         const month = list.filter((x) => { const p = parse(x.when); return p && Date.now() - p.d.getTime() < 30 * 864e5; }).length;
-        const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '">' + svg(icon) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x, k) => card(x, alert && k === 0, alert)).join('') : '';
+        const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '">' + svg(icon) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x) => card(x, false, alert)).join('') : '';
         const bellOn = store.get('atlas-alerts') === 'on';
         feed.innerHTML = '<div class="gm-feed-grab" aria-hidden="true"></div>'
-          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(alertList.length ? ICO.alert : ICO.globe) + '<span>' + (alertList.length ? 'Latest reports' : 'Top story') + '</span></h2>'
+          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(topIsAlert ? ICO.alert : ICO.globe) + '<span>Top story</span></h2>'
           + ('Notification' in window ? '<button type="button" class="gm-bell" aria-pressed="' + bellOn + '">' + svg(ICO.bell) + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
           + '<button type="button" class="gm-feed-close" aria-label="Close the reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5 5 19M5 5l14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></header>'
           + '<p class="gm-feed-live"><i aria-hidden="true"></i><span class="gm-feed-checked">' + liveLine() + '</span></p>'
@@ -849,9 +855,9 @@
             ? 'Gossip mode: talk and denials are included, each marked for what it is. Talk is what people say, not a finding. Items from anonymous posts or user reviews say so.'
             : 'Reports on record as confirmed or resolved, and documented cases. Turn on Gossip mode to include talk.')
             + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.</p>'
-          + (alertList.length ? '<p class="gm-feed-note">An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.</p>' : '')
-          + sec('Alerts now', ICO.alert, alertList.length + (alertList.length === 1 ? ' active' : ' active'), alertList, true)
-          + (top ? card(top, true, false) : '')
+          + (topIsAlert ? '<p class="gm-feed-note">An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.</p>' : '')
+          + (top ? card(top, true, topIsAlert) : '')
+          + sec(topIsAlert ? 'More alerts now' : 'Alerts now', ICO.alert, alertList.length + ' active', alertList, true)
           + sec('Near you', ICO.pin, near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', ICO.globe, month ? month + ' in the past 30 days' : 'Newest first', world, false)
           + (posts.length ? '<h2 class="gm-feed-sec">' + svg(ICO.reply) + '<span>From staff and visitors</span><small>User posts</small></h2><p class="gm-feed-note">Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person\u2019s experience each, not checked as fact.</p>' + posts.map((x) => card(x, false, false)).join('') : '')
