@@ -804,6 +804,24 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 @media (max-width:640px){#layersPanel .layers-studies a{grid-template-columns:minmax(0,1fr);row-gap:2px}}
 @media (max-width:640px){#layersPanel label.kind-chip{flex:1 1 auto;padding:6px 8px;gap:6px}}
 #layersPanel label.kind-chip i{display:inline-block;flex:0 0 11px;width:11px;height:11px;background:var(--marker-color);font-style:normal;border-radius:50%}
+/* Funding views (assets/funding-views.js): the shading key, the two ways to shade, and the decade. */
+#layersPanel .layers-choro{margin-top:6px}
+#layersPanel input[type=radio]{border-radius:50%}
+#layersPanel input[type=radio]:checked::after{border-radius:50%}
+#layersPanel .layers-choro-legend{display:flex;align-items:center;gap:8px;margin:6px 0 2px;color:var(--row-dim);font:400 var(--fs-s)/1.25 var(--sans)}
+#layersPanel .layers-choro-legend[hidden]{display:none}
+#layersPanel .layers-choro-legend i{flex:1 1 auto;height:10px;background:linear-gradient(90deg,rgba(45,212,191,.12),rgba(45,212,191,.6) 25%,#2dd4bf)}
+:root:not([data-theme="dark"]) #layersPanel .layers-choro-legend i{background:linear-gradient(90deg,rgba(13,148,136,.12),#0d9488)}
+#layersPanel .layers-years{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:8px 0 6px;padding:8px 14px;background:var(--row);color:var(--row-ink)}
+#layersPanel .layers-years label{display:flex;align-items:center;gap:8px;min-height:0;padding:0;background:none;color:inherit}
+#layersPanel .layers-years:has(input[data-years-on]:checked){background:var(--row-on);color:var(--row-on-ink);--row-dim:var(--row-on-dim)}
+#layersPanel .layers-years label:has(input:checked){background:none;color:inherit}
+/* The two ways to shade and their key only while the countries are shaded. */
+#layersPanel section:not(:has(input[data-layer="choro"]:checked)) :is(.layers-choro,.layers-choro-legend){display:none}
+#layersPanel .layers-years input[type=range]{appearance:auto;-webkit-appearance:auto;flex:1 1 140px;width:auto;height:auto;border:0;accent-color:currentColor;cursor:pointer}
+#layersPanel .layers-years input[type=range]::after{content:none}
+#layersPanel .layers-years output{min-width:3.5em;font:700 var(--fs-s)/1.25 var(--display);font-variant-numeric:tabular-nums}
+#layersPanel .layers-years .layers-count{flex-basis:100%;text-align:left}
 #layersPanel .layers-top{display:flex;flex-direction:column;gap:2px}
 #layersPanel .top-funder{display:grid;grid-template-columns:11px minmax(0,13em) minmax(40px,1fr) 2.5em;align-items:center;column-gap:10px;min-height:32px;padding:4px 10px;border:0;border-radius:0;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.2 var(--sans);text-align:left;cursor:pointer}
 #layersPanel .top-funder:hover{background:var(--row-hover);color:#000}
@@ -3928,13 +3946,19 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:hover,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#chatRecordsInfo,#chatRecordsInfoMobile)>summary:hover{color:color-mix(in srgb,var(--ink) 72%,var(--paper))!important}
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:focus-visible{outline:3px solid var(--focus)!important;outline-offset:4px}
 
+/* The hover cards' layer (index.html, #globeCardCanvas): over the fog at z 18 so a card near the top or bottom of the map is
+   never greyed by it (user, 4 Nov 2026: "make sure its appears above the fog"), under the head-office marks at 25 and every
+   control. It takes no pointer: the globe canvas under it handles the hover and the clicks on the card's button. */
+#globeCardCanvas{z-index:19;pointer-events:none}
+html.atlas-held #globeCardCanvas{visibility:hidden}
+
 /* ---- GOSSIP IN THE CHAT, SET AS DISPLAAY.NET/ABOUT (user's instruction, 4 Nov 2026) ----
    chatReportingHtml (index.html) regroups each reported item into .dp-side (name, date, sources) and .dp-main (what is said).
    Measured on displaay.net/about at 1440px: a three-column grid, 15px gutter, the label in one column and the text across the
    other two; the label is uppercase at 19px/1.15 +0.01em, the lead 28px/1.1 -0.01em, a group heading ("Studio") about 48px over
    a 1px rule, 30px between blocks. Scaled to the chat's measure: label 15px +0.04em (the extra tracking stands in for Displaay's
-   semibold, since the Atlas sets one weight), lead 24px/1.12 -0.01em, headings 36px/1.05. The balloon takes the chat's full width
-   while it holds the set, so the set can be a size container; below 480px the label goes above the text and the lead drops to 20px.
+   semibold, since the Atlas sets one weight), headings 36px/1.05. What is said is set at the chat's body size (user, 4 Nov 2026: "text needs to be normal size"). The balloon takes the chat's full width
+   while it holds the set, so the set can be a size container; below 480px the label goes above the text.
    The desktop chat column opens at 48% of the screen (420 to 860px; DESKTOP MAPS, --gmd-w) so the grid shows from a 1280px screen
    up (user, 4 Nov 2026: "make the chat wider so the grid shows"). */
 :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip:has(.dp-set){width:auto!important;max-width:none!important}
@@ -3952,12 +3976,11 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>:is(.no-indent,.account-source-links):last-child{margin-top:8px!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main{display:flex;flex-direction:column;gap:12px}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main>*{margin:0!important;padding-left:0}
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main :is(p,li,ul){font-size:24px!important;line-height:1.12!important;letter-spacing:-.01em!important;text-indent:0!important;overflow-wrap:break-word;hyphens:auto}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main :is(p,li,ul){font-size:var(--fs-m)!important;line-height:var(--lh)!important;letter-spacing:0!important;text-indent:0!important;overflow-wrap:break-word;hyphens:auto}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main ul{padding-left:1em!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main .account-note{font-size:15px!important;line-height:1.3!important;letter-spacing:.01em!important}
 @container dp-set (max-width:480px){
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .record-card.dp-row{grid-template-columns:minmax(0,1fr)}
-  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main :is(p,li,ul){font-size:20px!important;line-height:1.15!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set>h3.kicker{font-size:30px!important}
 }
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side .dp-sources{display:flex!important;flex-direction:column;align-items:flex-start;gap:2px}
@@ -3976,3 +3999,6 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
   :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle:focus-visible::after{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--focus)!important}
 }
 @media (prefers-reduced-motion:reduce){#chatResizeHandle::before,#chatResizeHandle::after{transition:none!important}}
+
+/* The question cloud sits two or more to a line when they fit (user, 4 Nov 2026): the questions flow in rows and wrap, instead of one per line. */
+:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){flex-direction:row!important;flex-wrap:wrap!important;align-items:flex-start!important;align-content:flex-start!important;justify-content:flex-start!important}
