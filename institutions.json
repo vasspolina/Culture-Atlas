@@ -1228,6 +1228,13 @@
           "retrieved_on": "2026-11-02"
         }
       ]
+    },
+    "scale": {
+      "visitors": 200225,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.macba.cat/uploads/transparencia/2025-compte-general.pdf"
+      ]
     }
   },
   {
@@ -1751,6 +1758,13 @@
           "retrieved_on": "2026-11-02"
         }
       ]
+    },
+    "scale": {
+      "visitors": 275852,
+      "visitors_year": "2025",
+      "sources": [
+        "https://kunstmuseumbasel.ch/en/file/9147/561b43d3/Kunstmuseum+Basel+Jahresbericht+2025.pdf"
+      ]
     }
   },
   {
@@ -1857,6 +1871,13 @@
       ],
       "website": "https://www.tinguely.ch",
       "retrieved": "2026-10-25"
+    },
+    "scale": {
+      "visitors": 166133,
+      "visitors_year": "2025",
+      "sources": [
+        "https://media.bs.ch/original_file/cb566860452fb2c8305e7a3df16b454e76f79aca/2021-2025-statistikvgl-museen-basel-bs-260319.pdf"
+      ]
     }
   },
   {
@@ -3591,6 +3612,13 @@
       "net_assets": 2246966,
       "source_kind": "annual report",
       "url": "https://www.kunstmuseumbern.ch/de/api/files/2026-04/2025_Jahresbericht-Kunstmuseum-Bern.pdf"
+    },
+    "scale": {
+      "visitors": 93879,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.kunstmuseumbern.ch/de/api/files/2026-04/2025_Jahresbericht-Kunstmuseum-Bern.pdf"
+      ]
     }
   },
   {
@@ -6323,6 +6351,13 @@
         "basis": "OpenStreetMap, address lookup: Table Mountain Yellow Frame (Silo District), Fish Quay Road, Foreshore, Cape Town Ward 115, Cape Town, City of Cape Town, Western Cape, 8001, South Africa",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 134068,
+      "visitors_year": "2023-24",
+      "sources": [
+        "https://zeitzmocaa.museum/wp-content/uploads/2025/07/Zeitz-MOCAA-Annual-Report-2023-2024_FINAL.pdf"
+      ]
     }
   },
   {
@@ -16884,6 +16919,13 @@
       ],
       "level": 4,
       "level_basis": "Bound by public procurement law and state audit office."
+    },
+    "scale": {
+      "visitors": 1601732,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.museoreinasofia.es/prensa/nota-de-prensa/la-cifra-de-visitantes-la-sede-principal-del-museo-reina-sofia-crece-mas-de/"
+      ]
     }
   },
   {
@@ -24444,6 +24486,23 @@
         "basis": "OpenStreetMap, address lookup: 101, Baselstrasse, Riehen, Basel-Stadt, 4125, Schweiz / Suisse / Svizzera / Svizra",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 508870,
+      "visitors_year": "2025",
+      "sources": [
+        "https://media.bs.ch/original_file/cb566860452fb2c8305e7a3df16b454e76f79aca/2021-2025-statistikvgl-museen-basel-bs-260319.pdf",
+        "https://grosserrat.bs.ch/dokumente/100405/000000405724.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2022",
+      "currency": "CHF",
+      "income": 23970051,
+      "expenditure": 29199017,
+      "net_assets": 1000000,
+      "source_kind": "other",
+      "url": "https://grosserrat.bs.ch/dokumente/100405/000000405724.pdf"
     }
   },
   {
@@ -27267,7 +27326,15 @@
       }
     },
     "opening_hours": "Tue, Fri 10:00\u201320:00; Wed, Thu, Sat, Sun 10:00\u201318:00; closed Mon",
-    "admission_fee": "Free"
+    "admission_fee": "Free",
+    "scale": {
+      "staff": 128,
+      "staff_year": "2025",
+      "staff_kind": "full-time equivalent",
+      "sources": [
+        "https://www.modernamuseet.se/app/uploads/2026/06/Moderna-Museet-Arsredovisning-2025.pdf"
+      ]
+    }
   },
   {
     "name": "Museum of Contemporary Art Australia (MCA)",
@@ -30882,7 +30949,14 @@
       }
     },
     "address": "Limmatstrasse 270, 8005 Zurich, Switzerland",
-    "opening_hours": "Tue, Wed, Fri\u2013Sun 11:00\u201318:00; Thu 11:00\u201320:00; closed Mon"
+    "opening_hours": "Tue, Wed, Fri\u2013Sun 11:00\u201318:00; Thu 11:00\u201320:00; closed Mon",
+    "scale": {
+      "visitors": 23033,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.kunsthallezurich.ch/files/2026_05_25_KZ_Annual_Report_Single_Pages.pdf"
+      ]
+    }
   },
   {
     "name": "Migros Museum",
@@ -34393,6 +34467,17 @@
         "basis": "OpenStreetMap, name lookup: Fundaci\u00f3 Joan Mir\u00f3, Escales del Generalife, Satalia, el Poble-sec, Sants-Montju\u00efc, Barcelona, Barcelon\u00e8s, Barcelona, Catalunya, 08038, Espa\u00f1a",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 311704,
+      "visitors_year": "2025",
+      "staff": 81,
+      "staff_year": "2024",
+      "staff_kind": "staff",
+      "sources": [
+        "https://www.fmirobcn.org/media/upload/arxius/fundacio/mem%C3%B2ries%20anuals/Memoria%20anual%202025.pdf",
+        "https://www.fmirobcn.org/media/upload/arxius/fundacio/mem%C3%B2ries%20anuals/ENG_FMiro%20Memoria%202024_Digital_compressed.pdf"
+      ]
     }
   },
   {
@@ -42944,6 +43029,15 @@
         "basis": "OpenStreetMap, address lookup: Cankarjeva cesta, Vrta\u010da, Grajski gri\u010d, \u010cetrtna skupnost Center, Ljubljana, Upravna Enota Ljubljana, 1000, Slovenija",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 61745,
+      "visitors_year": "2023",
+      "area_m2": 3852,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.mg-lj.si/media/6d4868ad84/LETNO%20PORO%C4%8CILO%20za%202023_dr%C5%BEavni_muzeji_MG1.pdf"
+      ]
     }
   },
   {
@@ -74740,6 +74834,13 @@
       ],
       "level": 4,
       "level_basis": "Bound by public procurement law and state audit office."
+    },
+    "scale": {
+      "visitors": 24193,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://www.iziko.org.za/wp-content/uploads/2026/03/IZIKO-AR-CD-LOW-RES-FINAL.pdf"
+      ]
     }
   },
   {
@@ -75644,7 +75745,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "10 Sanggal-ro, Yongin-si 17068, South Korea"
+    "address": "10 Sanggal-ro, Yongin-si 17068, South Korea",
+    "scale": {
+      "visitors": 168727,
+      "visitors_year": "2025",
+      "sources": [
+        "https://cms.ggcf.kr/attachment/78869/download"
+      ]
+    }
   },
   {
     "name": "Colomboscope",
@@ -94725,7 +94833,14 @@
       "level": 2,
       "level_basis": ""
     },
-    "address": "Abandoibarra etorbidea 2, 48009 Bilbao, Spain"
+    "address": "Abandoibarra etorbidea 2, 48009 Bilbao, Spain",
+    "scale": {
+      "visitors": 1305003,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.guggenheim-bilbao.eus/en/press-room/press-releases/1305003-people-visited-the-guggenheim-museum-bilbao-in-2025"
+      ]
+    }
   },
   {
     "name": "Kunsthaus Z\u00fcrich",
@@ -120268,6 +120383,13 @@
         "basis": "Wikidata Q4174318 coordinate location (P625): Yekaterinburg Museum of Fine Arts",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 237103,
+      "visitors_year": "2024",
+      "sources": [
+        "https://i-z-o.art/uploads/gallery/10/%D0%BE%D1%82%D1%87%D0%B5%D1%82_2024_%D1%81%D0%B0%D0%B9%D1%82_.pdf"
+      ]
     }
   },
   {
@@ -120715,7 +120837,14 @@
     },
     "address": "1 Saint Andrew's Road, Singapore 178957",
     "opening_hours": "Daily 10:00\u201319:00",
-    "admission_fee": "20 SGD"
+    "admission_fee": "20 SGD",
+    "scale": {
+      "visitors": 1979190,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://www.nationalgallery.sg/content/dam/about/annual-reports/reports/FY2024-National-Gallery-AR.pdf"
+      ]
+    }
   },
   {
     "name": "MGLC International Centre of Graphic Arts",
@@ -121558,6 +121687,16 @@
       ],
       "level": 3,
       "level_basis": "It is bound by public procurement law and freedom of information law."
+    },
+    "scale": {
+      "visitors": 41421,
+      "visitors_year": "2025",
+      "staff": 25,
+      "staff_year": "2025",
+      "staff_kind": "staff",
+      "sources": [
+        "https://museutapies.org/wp-content/uploads/2026/06/Balanc_Social_Any_2025_Museu_Tapies.pdf"
+      ]
     }
   },
   {
@@ -122403,7 +122542,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "\u00d6stra Strandgatan 30 B, 903 33 Ume\u00e5, Sweden"
+    "address": "\u00d6stra Strandgatan 30 B, 903 33 Ume\u00e5, Sweden",
+    "scale": {
+      "visitors": 76173,
+      "visitors_year": "2024",
+      "sources": [
+        "https://bildmuseet.umu.se/siteassets/pdfer---bildmuseet/bildmuseet_2024.pdf"
+      ]
+    }
   },
   {
     "name": "Kunsthalle Bern",
@@ -122774,7 +122920,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Helsinki-Strasse 5, 4142 M\u00fcnchenstein, Switzerland"
+    "address": "Helsinki-Strasse 5, 4142 M\u00fcnchenstein, Switzerland",
+    "scale": {
+      "visitors": 26802,
+      "visitors_year": "2025",
+      "sources": [
+        "https://media.bs.ch/original_file/b67c5ac592f009d9d213e589d444ba8aece26204/2021-2025-statistikvgl-museen-basel-bl-d-260319.pdf"
+      ]
+    }
   },
   {
     "name": "Kunst Halle Sankt Gallen",
@@ -131662,8 +131815,8 @@
     "sources": [
       "https://gallery-victoria.ru/about/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 53.191597,
+    "lon": 50.086121,
     "country": "Russia",
     "city": "Samara",
     "website": "https://gallery-victoria.ru/about/",
@@ -131787,6 +131940,24 @@
       ],
       "website": "https://gallery-victoria.ru/ (checked 2026-10-24; loads)",
       "retrieved": "2026-10-24"
+    },
+    "address": "Ulitsa Nekrasovskaya 2, Samara 443028, Russia",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.openstreetmap.org/node/14017803967",
+          "https://gallery-victoria.ru/contacts/"
+        ],
+        "basis": "OpenStreetMap, gallery \"Victoria\" at 2, Nekrasovskaya ulitsa, Samara 443028, inside the three-storey building way/163313695; the address is the one the gallery gives on its contacts page (g. Samara, ul. Nekrasovskaya, 2)",
+        "retrieved": "2026-11-04"
+      },
+      "address": {
+        "urls": [
+          "https://gallery-victoria.ru/contacts/"
+        ],
+        "basis": "Gallery contacts page: g. Samara, ul. Nekrasovskaya, 2",
+        "retrieved": "2026-11-04"
+      }
     }
   },
   {
@@ -135242,6 +135413,16 @@
       ],
       "level": 5,
       "level_basis": ""
+    },
+    "scale": {
+      "staff": 32,
+      "staff_year": "2026",
+      "staff_kind": "staff",
+      "area_m2": 5696,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://art.busan.go.kr/index.nm?menuCd=32"
+      ]
     }
   },
   {
@@ -135395,6 +135576,13 @@
       ],
       "level": 5,
       "level_basis": ""
+    },
+    "scale": {
+      "area_m2": 5911,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.busan.go.kr/moca/aboutMoCA01"
+      ]
     }
   },
   {
@@ -135508,7 +135696,14 @@
       "level": 5,
       "level_basis": ""
     },
-    "admission_fee": "Free"
+    "admission_fee": "Free",
+    "scale": {
+      "area_m2": 5886,
+      "area_kind": "building",
+      "sources": [
+        "https://ca2m.org/el-museo/sobre-nosotros"
+      ]
+    }
   },
   {
     "id": "bonniers-konsthall-stockholm",
@@ -144006,6 +144201,13 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "scale": {
+      "visitors": 18178,
+      "visitors_year": "2025",
+      "sources": [
+        "https://media.bs.ch/original_file/cb566860452fb2c8305e7a3df16b454e76f79aca/2021-2025-statistikvgl-museen-basel-bs-260319.pdf"
+      ]
     }
   },
   {
@@ -144553,6 +144755,13 @@
         "basis": "OpenStreetMap, name lookup: LABoral Centro de Arte y Creaci\u00f3n Industrial, Acceso Centro de Arte Universidad Laboral, Cabue\u00f1es, La Pontica, Gij\u00f3n, Asturias / Asturies, 33394, Espa\u00f1a",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 16657,
+      "visitors_year": "2025",
+      "sources": [
+        "https://laboralcentrodearte.org/wp-content/uploads/2026/10/77833.pdf"
+      ]
     }
   },
   {
@@ -156811,7 +157020,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Paseo del Prado 36, 28014 Madrid, Spain"
+    "address": "Paseo del Prado 36, 28014 Madrid, Spain",
+    "scale": {
+      "visitors": 947642,
+      "visitors_year": "2024",
+      "sources": [
+        "https://mediahub.fundacionlacaixa.org/en/culture/exhibitions/2025-01-02/visitors-2024-exhibitions-activities-caixaforum-cosmocaixa-6697.html"
+      ]
+    }
   },
   {
     "name": "Museo Nacional Thyssen-Bornemisza",
@@ -157033,6 +157249,16 @@
       ],
       "level": 3,
       "level_basis": ""
+    },
+    "scale": {
+      "visitors": 1003455,
+      "visitors_year": "2025",
+      "staff": 180,
+      "staff_year": "2025",
+      "staff_kind": "employees",
+      "sources": [
+        "https://www.museothyssen.org/sites/default/files/document/2026-04/cuentas_anuales_2025.pdf"
+      ]
     }
   },
   {
@@ -171537,7 +171763,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "\u0423\u0448\u045b\u0435 10, 11070 Belgrade, Serbia"
+    "address": "\u0423\u0448\u045b\u0435 10, 11070 Belgrade, Serbia",
+    "scale": {
+      "area_m2": 5055,
+      "area_kind": "building",
+      "sources": [
+        "https://msub.org.rs/zgrada/"
+      ]
+    }
   },
   {
     "name": "Slovak National Gallery",
@@ -171700,6 +171933,18 @@
         "basis": "Wikidata Q1744024 coordinate location (P625): Slovak National Gallery",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 116304,
+      "visitors_year": "2025",
+      "staff": 217,
+      "staff_year": "2025",
+      "staff_kind": "employees",
+      "area_m2": 5385,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://sng.sk/storage/10559/HXGVu7TmOc7lbBeX6jDhq8HWuToFN0ZFRGfCwOkj.pdf"
+      ]
     }
   },
   {
@@ -171908,6 +172153,14 @@
         "basis": "OpenStreetMap, name lookup: Kunsthalle, N\u00e1mestie SNP, Kr\u00e1sna Ves, Oblas\u0165 Obchodn\u00e1, Bratislava, okres Bratislava I, Bratislava, Bratislavsk\u00fd kraj, 811 06, Slovensko",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "staff": 11,
+      "staff_year": "2023",
+      "staff_kind": "employees",
+      "sources": [
+        "https://kunsthallebratislava.sk/wp-content/uploads/2023/08/KHB_Sprava_o_cinnosti_a_hospodareni_I.polrok_2023_final.pdf"
+      ]
     }
   },
   {
@@ -176716,6 +176969,13 @@
         "basis": "OpenStreetMap, name lookup: Centro Bot\u00edn, Muelle de Albareda, Ensanche, Tetu\u00e1n, Santander, Cantabria, 39004, Espa\u00f1a",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 142582,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.centrobotin.org/en/more-visitors-more-contributors-and-record-local-engagement-in-2025-represent-a-successful-year-for-centro-botin/"
+      ]
     }
   },
   {
@@ -176840,6 +177100,13 @@
       ],
       "level": 4,
       "level_basis": "Bound by public procurement law and civil service rules."
+    },
+    "scale": {
+      "visitors": 202258,
+      "visitors_year": "2025",
+      "sources": [
+        "https://ivam.es/wp-content/uploads/IVAM-MEMORIA-ACTIVIDADES-2025-_compressed.pdf"
+      ]
     }
   },
   {

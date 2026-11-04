@@ -150,6 +150,11 @@
     fetch('assets/money-maps.json').then(r => r.json()).then(D => {
       recById = new Map(); keyIndex = new Map(); keyKind = new Map();
       D.forEach(rec => {
+        // 0, 0 is the data's "no coordinates". Draw such a space at its city (or not at all), not in the ocean at 0°, 0°.
+        if (rec.lat === 0 && rec.lon === 0) {
+          const pin = typeof window.atlasPinOf === 'function' ? window.atlasPinOf(rec) : null;
+          if (pin) { rec.lat = pin.lat; rec.lon = pin.lon; } else { delete rec.lat; delete rec.lon; }
+        }
         recById.set(rec.id, rec);
         rec.nodes.forEach(n => {
           if (!FUNDER(n) || !n[5]) return;
@@ -578,7 +583,7 @@
   // opposite the space's own name block. A funder that fits nowhere keeps the best angle and its name, rather than losing the name.
   // Sets x, y, box (the name's block) on each item, and adds the blocks to `boxes` so later drawing keeps clear of them.
   function placeRing(d, items, R, boxes, W, H, pref) {
-    const STEP = Math.PI / 18, TAU = Math.PI * 2, H_ = 22, GAPS = [1, 1.4, 1.8, 2.3];
+    const STEP = Math.PI / 18, TAU = Math.PI * 2, H_ = 24, GAPS = [1, 1.4, 1.8, 2.3];
     const reachBox = R * GAPS[GAPS.length - 1] + 260;
     const near = boxes.filter(b => b.x < d.x + reachBox && b.x + b.w > d.x - reachBox && b.y < d.y + reachBox && b.y + b.h > d.y - reachBox);
     const angles = []; for (let k = 0; k < 36; k++) angles.push(-Math.PI / 2 + k * STEP);
@@ -731,8 +736,9 @@
       if (!recById) { ctx.restore(); return; }
       const byKey = new Map(), rings = [];
       // A selected space with no dot of its own (folded into a cluster) still gets its funders.
-      if (sel && typeof sel.lat === 'number' && typeof sel.lon === 'number' && !dots.some(d => sameInst(d.inst, sel))) {
-        const pt = project(sel.lon, sel.lat, r, cx, cy); if (pt.front) dots = dots.concat([{ inst: sel, x: pt.x, y: pt.y }]);
+      const selPin = sel && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(sel) : null;
+      if (selPin && !dots.some(d => sameInst(d.inst, sel))) {
+        const pt = project(selPin.lon, selPin.lat, r, cx, cy); if (pt.front) dots = dots.concat([{ inst: sel, x: pt.x, y: pt.y }]);
       }
       const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
       // First pass: where every funder of the focused space goes, and where its name goes. Each spoke and each name must stay
@@ -747,8 +753,10 @@
         const zoomK = Math.max(0.4, Math.min(1, r / (baseRadius * 12)));
         const N = Math.min(nodes.length, 10), R = 64 * zoomK;
         const items = nodes.slice(0, N).map(n => {
-          const reach = reachOf(n[5]), word = KIND_WORD[n[1]], text = (n[0].length > 28 ? n[0].slice(0, 26) + '…' : n[0]) + (word ? ' \u00b7 ' + word : '');
-          return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, w: ctx.measureText(text).width + 28 };
+          // Two pills, as on displaay.net/typefaces: the name filled in its kind's colour, the kind word in an outline beside it.
+          const reach = reachOf(n[5]), word = KIND_WORD[n[1]] || '', text = n[0].length > 28 ? n[0].slice(0, 26) + '…' : n[0];
+          const nw = ctx.measureText(text).width + 2 * PILL_PAD, ww = word ? ctx.measureText(word).width + 2 * PILL_PAD : 0;
+          return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, word, nw, ww, w: nw + (word ? PILL_GAP + ww : 0) };
         });
         placeRing(d, items, R, boxes, W, H, d.labelBox ? Math.PI / 2 : -Math.PI / 2);
         rings.push({ d, rec, items });
@@ -773,12 +781,9 @@
             ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
         });
       });
-      // Funder names on flat blocks, in the funder's colour, at the spot the layout found for each.
+      // Funder names as pills at the spot the layout found for each: the name on the funder's colour, then the kind word.
       ctx.globalAlpha = 1; ctx.textAlign = 'left';
-      rings.forEach(({ items }) => items.forEach(it => {
-        const b = it.box; drawTag(ctx, b.x, b.y, b.w, b.h, COL[it.n[1]]);
-        ctx.fillStyle = '#000'; ctx.fillText(it.text, b.x + 14, b.y + b.h / 2 + 0.5);
-      }));
+      rings.forEach(({ items }) => items.forEach(it => drawFunderPills(ctx, it, dark)));
     }
     TIP_BOXES = boxes;
     ctx.restore();
@@ -790,6 +795,26 @@
     if (streetUp()) return;
     ctx.save(); drawMarkTip(ctx, TIP_BOXES); ctx.restore();
   };
+  // The funder badges take their form from displaay.net/typefaces: a pill (fully rounded ends), a 1px edge in the colour of
+  // its text, 10px of air either side of the words. The name pill is filled in the kind's colour with black text (the pale
+  // fills measure 7:1 or better against black); the kind pill is an outline on the map's own ground, so it reads as a tag
+  // to the name and not a second name. The box the layout placed (it.box) holds both, with a 4px gap between them.
+  const PILL_PAD = 10, PILL_GAP = 4;
+  function pill(ctx, x, y, w, h, fill, edge) {
+    ctx.beginPath(); ctx.roundRect(x + 0.5, y + 0.5, w - 1, h - 1, (h - 1) / 2);
+    ctx.fillStyle = fill; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = edge; ctx.stroke();
+  }
+  function drawFunderPills(ctx, it, dark) {
+    const b = it.box, mid = b.y + b.h / 2 + 0.5, ink = dark ? '#fff' : '#000', paper = dark ? '#000' : '#fff';
+    // A pill on the left of its mark puts the name next to the mark, so the kind word goes on the outside.
+    const left = it.x > b.x + b.w / 2 && it.word;
+    const nx = left ? b.x + it.ww + PILL_GAP : b.x, wx = left ? b.x : b.x + it.nw + PILL_GAP;
+    ctx.save();
+    pill(ctx, nx, b.y, it.nw, b.h, COL[it.n[1]], '#000');
+    ctx.fillStyle = '#000'; ctx.fillText(it.text, nx + PILL_PAD, mid);
+    if (it.word) { pill(ctx, wx, b.y, it.ww, b.h, paper, ink); ctx.fillStyle = ink; ctx.fillText(it.word, wx + PILL_PAD, mid); }
+    ctx.restore();
+  }
   // A label, cut like the city labels (rounded, 22 high, 14 either side) but filled in the mark's colour.
   function drawTag(ctx, x, y, w, h, col) {
     ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 0); ctx.fillStyle = col; ctx.fill(); ctx.restore();
@@ -804,18 +829,28 @@
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
     const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.tip || (m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat'))].filter(Boolean);
     ctx.save(); ctx.font = LW() + ' 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 28, h = 22, pad = 6;
+    // A stack of pills, as the funder names are (displaay.net/typefaces): the name filled in the mark's colour, what it is in
+    // outlined pills under it, and what a click does as a solid ink pill, as Displaay sets its one action. Each pill is as
+    // wide as its own words; the stack hangs from the side nearest the mark.
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark', ink = dark ? '#fff' : '#000', paper = dark ? '#000' : '#fff';
+    const h = 24, gap = 4, ws = lines.map(t => ctx.measureText(t).width + 2 * PILL_PAD), w = Math.max(...ws);
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
     // ring belongs to first, so the ring's other names stay readable.
-    const H = ctx.canvas.clientHeight || 1e9, th = h * lines.length + pad * 2, away = m.ox !== undefined ? Math.sign(m.x - m.ox) || 1 : 1;
+    const H = ctx.canvas.clientHeight || 1e9, th = h * lines.length + gap * (lines.length - 1), away = m.ox !== undefined ? Math.sign(m.x - m.ox) || 1 : 1;
     const cand = [[away > 0 ? m.x + 12 : m.x - 12 - w, m.y - th / 2], [away > 0 ? m.x - 12 - w : m.x + 12, m.y - th / 2], [m.x - w / 2, m.y - 12 - th], [m.x - w / 2, m.y + 12]]
       .map(([x, y]) => ({ x: Math.max(4, Math.min(x, W - w - 4)), y: Math.max(4, Math.min(y, H - th - 4)), w, h: th }));
     const spot = cand.find(c => !collides(c, boxes || [])) || cand[0], bx = spot.x, by = spot.y;
-    drawTag(ctx, bx, by, w, th, m.col || '#fff');
-    ctx.fillStyle = '#000';
+    const right = bx + w / 2 < m.x;   // the stack sits left of the mark, so its pills line up on their right ends
+    // A halo of the map's ground under each pill closes the gaps between them, so no label under the stack shows through.
+    const at = k => ({ pw: ws[k], px: right ? bx + w - ws[k] : bx, py: by + k * (h + gap) });
+    ctx.fillStyle = paper;
+    lines.forEach((t, k) => { const { pw, px, py } = at(k), e = gap / 2 + 1; ctx.beginPath(); ctx.roundRect(px - e, py - e, pw + 2 * e, h + 2 * e, h / 2 + e); ctx.fill(); });
     lines.forEach((t, k) => {
-      if (k === lines.length - 1 && lines.length > 1) { ctx.globalAlpha = 0.35; ctx.fillRect(bx + 14, by + pad + h * k, w - 28, 1); ctx.globalAlpha = 1; }
-      ctx.fillText(t, bx + 14, by + pad + h * k + h / 2 + 0.5);
+      const { pw, px, py } = at(k);
+      const first = k === 0, act = k === lines.length - 1 && lines.length > 1;
+      const fill = first ? (m.col || '#fff') : act ? ink : paper, text = first ? '#000' : act ? paper : ink;
+      pill(ctx, px, py, pw, h, fill, first ? '#000' : ink);
+      ctx.fillStyle = text; ctx.fillText(t, px + PILL_PAD, py + h / 2 + 0.5);
     });
     ctx.restore();
   }
@@ -1002,10 +1037,12 @@
     // On a phone the record sheet would cover the funders; it steps aside, and a tap on the space brings it back.
     if (window.innerWidth < 768) { const sheet = document.getElementById('dossier-bottom-sheet'); if (sheet) sheet.classList.add('hidden'); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('atlas'); }
     // Close in on the space, so its funders sit around it in its own city rather than across the continent.
-    if (inst && typeof inst.lat === 'number' && typeof inst.lon === 'number' && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
+    // A space with no coordinates (stored as 0, 0) closes in on its city instead; flying to 0, 0 showed an empty ocean.
+    const pin = inst && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(inst) : null;
+    if (pin && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
       const z = window.getMaxRadius();
       if (typeof window.setTargetRadius === 'function') window.setTargetRadius(z);
-      window.flyTo(inst.lon, inst.lat, z);
+      window.flyTo(pin.lon, pin.lat, z);
     }
     repaint();
   };
