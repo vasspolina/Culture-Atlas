@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=537">
-  <script src="assets/config.js?v=537"></script>
-  <script src="assets/subtopic.js?v=537"></script>
-  <script src="assets/names.js?v=537"></script>
-  <script src="assets/grounding.js?v=537"></script>
-  <script src="assets/repeats.js?v=537"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=538">
+  <script src="assets/config.js?v=538"></script>
+  <script src="assets/subtopic.js?v=538"></script>
+  <script src="assets/names.js?v=538"></script>
+  <script src="assets/grounding.js?v=538"></script>
+  <script src="assets/repeats.js?v=538"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=537"></script>
+  <script src="assets/institutions.js?v=538"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10027,11 +10027,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v537';
+    const ATLAS_RELEASE = 'culture-atlas-v538';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=537').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=538').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11498,6 +11498,20 @@ return maplibregl$1;
       setTimeout(atlasReleasePaint, 8000); // the waits above are capped; this is for an error in them
     })();
 
+    // Where a record sits on the globe. The data writes 0, 0 for a record with no coordinates (no pin, no building view: 19 records
+    // on 4 Nov 2026, Victoria Gallery in Samara among them). Flying to that closed in on the empty ocean at 0°, 0° with the funder
+    // web drawn there, and the map read as blank. A record with no pin falls back to its city's centre (exact: false), or to nothing.
+    function atlasPinOf(inst) {
+      if (!inst) return null;
+      const lat = Number(inst.lat), lon = Number(inst.lon);
+      if (isFinite(lat) && isFinite(lon) && (lat !== 0 || lon !== 0)) return { lat, lon, exact: true };
+      const city = inst.city || (typeof inst.c === 'string' ? inst.c.split(',')[0].trim() : '');
+      const meta = city ? ALL_CITIES_REGISTRY.find(c => matchC(c.name, city) && (!inst.country || !c.country || matchC(c.country, inst.country))) || ALL_CITIES_REGISTRY.find(c => matchC(c.name, city)) : null;
+      if (meta && isFinite(meta.lat) && isFinite(meta.lon) && (meta.lat !== 0 || meta.lon !== 0)) return { lat: meta.lat, lon: meta.lon, exact: false };
+      return null;
+    }
+    window.atlasPinOf = atlasPinOf;
+
     // Camera Navigation
     function flyTo(lon, lat, targetZoom = null) {
       isAutoSpinning = false;
@@ -12575,8 +12589,8 @@ return maplibregl$1;
           }
         }
         const zoomTarget = getCityTargetRadius(inst.city);
-        targetRadius = zoomTarget;
-        flyTo(inst.lon, inst.lat, zoomTarget);
+        const pin = atlasPinOf(inst);
+        if (pin) { targetRadius = zoomTarget; flyTo(pin.lon, pin.lat, zoomTarget); }
       } else {
         if (isCityStreetViewActive) {
           if (suppressSelectFly) {
@@ -12590,8 +12604,8 @@ return maplibregl$1;
           }
         } else {
           const zoomTarget = Math.min(getMaxRadius(), Math.max(currentRadius * 1.35, baseRadius * 3.8));
-          targetRadius = zoomTarget;
-          flyTo(inst.lon, inst.lat, zoomTarget);
+          const pin = atlasPinOf(inst);
+          if (pin) { targetRadius = zoomTarget; flyTo(pin.lon, pin.lat, zoomTarget); }
         }
       }
       if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && typeof setCardMode === 'function') {
@@ -19501,7 +19515,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (cty) {
         flyTo(cty.lon, cty.lat, targetZoom);
       } else {
-        const inst = ALL_INSTITUTIONS.find(i => matchC(i.city, cityName));
+        const inst = ALL_INSTITUTIONS.find(i => matchC(i.city, cityName) && atlasPinOf(i) && atlasPinOf(i).exact);
         if (inst) flyTo(inst.lon, inst.lat, targetZoom);
       }
 
@@ -20621,13 +20635,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=537"></script>
-<script src="assets/funding-views.js?v=537"></script>
-<script src="assets/layers.js?v=537"></script>
-<script src="assets/hq-detail.js?v=537"></script>
-<script src="assets/bubbles.js?v=537" defer></script>
-<script src="assets/phone-maps.js?v=537"></script>
-<script src="assets/desktop-maps.js?v=537"></script>
-<script src="assets/chat-resize.js?v=537"></script>
+<script src="assets/typeset.js?v=538"></script>
+<script src="assets/funding-views.js?v=538"></script>
+<script src="assets/layers.js?v=538"></script>
+<script src="assets/hq-detail.js?v=538"></script>
+<script src="assets/bubbles.js?v=538" defer></script>
+<script src="assets/phone-maps.js?v=538"></script>
+<script src="assets/desktop-maps.js?v=538"></script>
+<script src="assets/chat-resize.js?v=538"></script>
 </body>
 </html>
