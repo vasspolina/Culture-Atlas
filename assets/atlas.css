@@ -3950,7 +3950,7 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>*,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side :is(.flex,.kicker,strong){display:block!important;margin:0!important;padding:0!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side :is(.kicker,strong,.meta,span,a){font-size:15px!important;line-height:1.25!important;letter-spacing:.01em!important;text-transform:none!important;overflow-wrap:break-word}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>.kicker:first-child,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>:first-child strong.kicker{letter-spacing:.04em!important;text-transform:uppercase!important;hyphens:auto}
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side a{white-space:nowrap}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side a{white-space:normal;overflow-wrap:anywhere}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>:is(.no-indent,.account-source-links):last-child{margin-top:8px!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main{display:flex;flex-direction:column;gap:12px}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main>*{margin:0!important;padding-left:0}
@@ -4274,6 +4274,23 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode>div.justify-between{padding-top:28px!important}}
 @media (max-width:360px){
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormHead #noteFormTitle{font-size:22px!important}
+}
+
+/* ---- THE NOTE FORM'S FIELDS ARE RULED LINES, NOT TILES (user's instruction, 4 Nov 2026: "it doesnt need to be a bubble inside the
+   bubble") ----
+   The card is already the rounded frame, so the fields inside it lose their filled, 10px-cornered tiles. Each field is the label
+   and what is typed, on the card's own ground, between 1px ink rules: one above the first field and one under each, like a form
+   on a sheet of paper. Focus is the field's bottom rule turned into a 3px bar of the focus colour, square, so focus still shows
+   without drawing a box inside the box. The typed text and the placeholder keep the --dp-ink / --dp-hint colours measured above
+   (the hint was set for the paler tile, and on the card's white or black ground it measures higher still). */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock),
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock):hover{margin:0!important;padding:16px 0 14px!important;border:0!important;border-bottom:1px solid var(--dp-ink)!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormFields>.nf-field:first-of-type{border-top:1px solid var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock):focus-within{border-radius:0!important;background:transparent!important;outline:0!important;box-shadow:inset 0 -3px 0 var(--focus)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field>span,#noteInputLabel){color:var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea){color:var(--dp-ink)!important;caret-color:var(--dp-ink)!important;border-radius:0!important}
+@media (max-width:520px){
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock){padding:14px 0 12px!important}
 }
 
 /* ---- SHARE INFORMATION IN THE PHONE'S CHAT (user, 4 Nov 2026: "show Share information button in phone chat") ----
