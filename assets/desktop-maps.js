@@ -69,6 +69,7 @@
       return !!g('selectedInstitution') || talk || root.classList.contains('gmd-panel');
     }
     function setPanel(open) {
+      open = true; // always open on the right
       const was = root.classList.contains('gmd-panel');
       root.classList.toggle('gmd-panel', !!open);
       fold.setAttribute('aria-label', open ? 'Collapse side panel' : 'Expand side panel');
@@ -76,7 +77,8 @@
       fold.hidden = !hasContent();
       if (was !== !!open) syncSearch();
     }
-    setPanel(false);
+    // The panel is on the right and always open (user, 4 Nov 2026: "just move this to the right and keep it open").
+    root.classList.add('gmd-panel');
 
     // A record opening in the Details column opens the panel.
     if (dossierCol) {
@@ -118,8 +120,8 @@
       if (open) dismissed = null;
       const onRecord = inst && inst !== dismissed && dossierCol && dossierCol.style.display !== 'none' && !dossierCol.classList.contains('hidden');
       if (!typed && document.activeElement !== input) input.value = onRecord ? (inst.name || '') : '';
-      clearBtn.hidden = !(open || input.value);
-      clearBtn.setAttribute('aria-label', open ? 'Close the side panel' : 'Clear the search');
+      clearBtn.hidden = !input.value;
+      clearBtn.setAttribute('aria-label', 'Clear the search');
       fold.hidden = !hasContent();
     }
 
@@ -254,7 +256,6 @@
     });
     clearBtn.addEventListener('click', () => {
       typed = false;
-      if (root.classList.contains('gmd-panel')) setPanel(false);
       dismissed = g('selectedInstitution') || null;
       input.value = '';
       syncSearch();
