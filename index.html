@@ -10183,6 +10183,9 @@ return maplibregl$1;
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
+    // The bars are laid out by later scripts: measure the free height once they are in, and on every resize.
+    window.addEventListener('resize', () => { measureWtPhoneRoom(); if (window.__atlasGlobeLive) render(performance.now()); });
+    window.addEventListener('load', () => { measureWtPhoneRoom(); setTimeout(measureWtPhoneRoom, 600); });
 
     function toRad(deg) { return deg * Math.PI / 180; }
     function toDeg(rad) { return rad * 180 / Math.PI; }
@@ -10232,8 +10235,30 @@ return maplibregl$1;
     }
     // Pixels per unit of the map: at the base zoom the whole world fits the pane with a small margin; zooming
     // scales it as the globe's radius did, so every r threshold in the page still means the same zoom.
+    // On a phone (user's instruction, 4 Nov 2026: "make map bigger on phone") the map is fitted to the height that is
+    // free between the top bar and the chat bar, not to the width: fitted to 390px it was 367 x 224, a strip in a
+    // 664px screen. The sides run off the screen, and a drag turns any of it to the centre. It is capped at 1.6
+    // screen widths so a tall, narrow phone does not crop away most of the world.
+    // The map is centred in that free band, not on the canvas (which runs under both bars): wtOffsetY moves it,
+    // and every drawing and hit test goes through projectWinkel / winkelScreenToView / wtOutlinePath, which add it.
+    let wtPhoneHalfH = 0;   // half the free height, in CSS px; 0 = not measured, or not a phone
+    let wtOffsetY = 0;      // the free band's middle less the canvas's middle, in CSS px
+    function measureWtPhoneRoom() {
+      wtPhoneHalfH = 0; wtOffsetY = 0;
+      if (window.innerWidth >= 768) return;
+      const cRect = canvas.getBoundingClientRect();
+      const topBar = document.getElementById('mobileTopBar'), dock = document.getElementById('mobileStickyInputBar');
+      const tb = topBar ? topBar.getBoundingClientRect() : null, db = dock ? dock.getBoundingClientRect() : null;
+      const top = Math.max(cRect.top, tb && tb.height ? tb.bottom : cRect.top) + 12;
+      const bottom = Math.min(cRect.bottom, db && db.height ? db.top : cRect.bottom) - 12;
+      if (bottom - top < 120) return;
+      wtPhoneHalfH = (bottom - top) / 2;
+      wtOffsetY = (top + bottom) / 2 - (cRect.top + cRect.height / 2);
+    }
     function wtScale(r) {
-      return r * Math.min(width * 0.94 / WT_W, height * 0.9 / WT_H) / Math.max(1, baseRadius);
+      let fit = Math.min(width * 0.94 / WT_W, height * 0.9 / WT_H);
+      if (wtPhoneHalfH > 0) fit = Math.max(fit, Math.min(2 * wtPhoneHalfH / WT_H, width * 1.6 / WT_W));
+      return r * fit / Math.max(1, baseRadius);
     }
     // The map's outline, unit coordinates: the seam meridian on both edges, pole to pole.
     const WT_OUTLINE = (() => {
@@ -10245,7 +10270,7 @@ return maplibregl$1;
     function wtOutlinePath(r, cx, cy) {
       const k = wtScale(r);
       ctx.beginPath();
-      WT_OUTLINE.forEach((q, i) => { const x = cx + q[0] * k, y = cy - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+      WT_OUTLINE.forEach((q, i) => { const x = cx + q[0] * k, y = cy + wtOffsetY - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
       ctx.closePath();
     }
     // The view matrix, cached: project() runs for every coastline point of every frame.
@@ -10266,12 +10291,12 @@ return maplibregl$1;
       const q = wtRaw(lam, phi), k = wtScale(r);
       // Everything is on the map, so everything is "front" at full depth; lam is the oblique longitude,
       // which the coastline drawing uses to break a line where it crosses the seam.
-      return { x: cx + q[0] * k, y: cy - q[1] * k, z: r, front: true, depth: 1, lam };
+      return { x: cx + q[0] * k, y: cy + wtOffsetY - q[1] * k, z: r, front: true, depth: 1, lam };
     }
     // A canvas point to the oblique view vector under it (x right, y up, z toward the viewer), or null off the map.
     function winkelScreenToView(px, py, r, cx, cy) {
       const k = wtScale(r);
-      const inv = wtInverse((px - cx) / k, -(py - cy) / k);
+      const inv = wtInverse((px - cx) / k, -(py - cy - wtOffsetY) / k);
       if (!inv) return null;
       const cp = Math.cos(inv[1]);
       return [cp * Math.sin(inv[0]), Math.sin(inv[1]), cp * Math.cos(inv[0])];
@@ -11548,7 +11573,7 @@ return maplibregl$1;
         ctx.textAlign = 'center';
 
         // Coordinates HUD
-        const centerCoord = unproject(cx, cy, r, cx, cy) || { lat: rotLat, lon: rotLon };
+        const centerCoord = unproject(cx, cy + (WINKEL ? wtOffsetY : 0), r, cx, cy) || { lat: rotLat, lon: rotLon };
         const latTxt = `${Math.abs(centerCoord.lat).toFixed(4)}° ${centerCoord.lat >= 0 ? 'N' : 'S'}`;
         const lonTxt = `${Math.abs(centerCoord.lon).toFixed(4)}° ${centerCoord.lon >= 0 ? 'E' : 'W'}`;
         const coordTxt = `${latTxt}  ${lonTxt}`;
