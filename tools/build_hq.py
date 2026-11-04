@@ -143,10 +143,54 @@ for k, (n, kind, city, ctry, addr) in ORG.items():
 people = {}
 for n, (assoc, city, ctry, addr) in PEOPLE.items():
     lat, lon = C[city]; people[n] = {'n': n, 'w': assoc, 'c': city, 'co': ctry, 'lat': lat, 'lon': lon, **({'a': addr} if addr else {})}
+# Funder notes: what the funder says about why it gives to culture, with the page it rests on. Shown as the Note row of the
+# funder's record (assets/hq-detail.js). Keep each to what the source states.
+NOTES = {
+ 'opensociety': (
+  "George Soros's grant-making network, named after Karl Popper's idea of the open society; it spent $1.2 billion in 2024, "
+  "almost $700 million of it in grants, and $24.2 billion since it began (Devex). Its arts giving began in the Soros Center "
+  "for Contemporary Art, opened in Budapest in 1985 as a documentation centre, and grew from 1992 into a network of about "
+  "twenty Soros Centers for Contemporary Art across Central and Eastern Europe, the former Soviet Union and Central Asia "
+  "(Budapest, Prague, Warsaw, Moscow, Kyiv, Sarajevo, Almaty and others), which ran exhibitions, catalogues and training "
+  "before being spun off as independent organisations in 1999 and 2000. The foundation's stated reason is that art and "
+  "culture carry open-society values and shape public attitudes, yet get too little recognition and money from governments, "
+  "so its Arts and Culture Program set out to build an independent, innovative arts sector and to change cultural policy "
+  "where states controlled culture; its culture team today puts it as art being an essential driver of social change. "
+  "Later programmes followed the same line: the Documentary Photography Project and its Moving Walls shows, the Soros Arts "
+  "Fellowship for socially engaged artists (from 2018; $100,000 unrestricted to each of 18 fellows in 2023), a $15 million "
+  "four-year initiative from 2019 to speed the restitution of African objects after France's Sarr-Savoy report, and a "
+  "$180,000 grant in 2024 to The Africa Institute in Sharjah for a fellowship on African heritage and repatriation. Critics, "
+  "among them Octavian Esanu (\u201cthe managed avant-garde\u201d) and Aaron Moulton (\u201cThe Influencing Machine\u201d), read "
+  "the centres as having set a Western-facing agenda for post-socialist art. Alexander Soros took control in June 2023; the "
+  "network then cut about 40 per cent of its staff, closed offices from Kampala to Almaty and folded its programmes into "
+  "four areas (climate justice, equity, expression, justice). National foundations in the network (Kosova Foundation for "
+  "Open Society, the Open Society Initiative for West Africa, FOKAL in Haiti, the Mongolian Foundation for an Open Society) "
+  "are counted here under the one network; several were closed or given a final package in 2024.",
+  "https://www.e-flux.com/directory/203562/open-society-foundations"),
+}
+for k, (note, src) in NOTES.items():
+    out[k]['w'] = note; out[k]['s'] = src
 here = os.path.dirname(os.path.abspath(__file__))
 # Funders researched against public sources (tools/hq_extra.json): each carries its source page in `s`.
 extra = json.load(open(os.path.join(here, 'hq_extra.json')))
+# Their `w` is the researcher's working note ('Label read as the local council'), kept in the file but not published.
 for k, v in extra.items():
-    out.setdefault(k, v)
+    out.setdefault(k, {f: x for f, x in v.items() if f != 'w'})
+# Offices keyed to an older spelling of a funding line take today's keys from tools/hq_aliases.json ({office: [funding keys]};
+# `drop` lists offices that repeat another office). An office no funding line names is left off the map: its record would be empty.
+aliases = json.load(open(os.path.join(here, 'hq_aliases.json')))
+for k in aliases.pop('drop', []): out.pop(k, None)
+for k, ks in aliases.items():
+    if k in out and ks: out[k]['also'] = ks
+lines = [n for r in json.load(open(os.path.join(here, '..', 'assets', 'money-maps.json'))) for n in r['nodes'] if len(n) > 5 and n[5]]
+used = {n[5] for n in lines}
+# An office whose keys no line uses also takes the keys of the lines that spell its name ('LINZ AG' and 'Linz AG').
+by_name = {}
+for n in lines: by_name.setdefault(n[0].lower(), set()).add(n[5])
+for k, o in out.items():
+    if not ({k, *o.get('also', [])} & used) and o['n'].lower() in by_name: o['also'] = o.get('also', []) + sorted(by_name[o['n'].lower()])
+unused = sorted(k for k, o in out.items() if not ({k, *o.get('also', [])} & used))
+for k in unused: del out[k]
+print(len(unused), 'offices no funding line names, left off')
 json.dump({'org': out, 'people': people}, open(os.path.join(here, '..', 'assets', 'hq.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 print(len(out), 'organisations,', len(people), 'people')

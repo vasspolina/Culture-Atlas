@@ -1,0 +1,104 @@
+[
+ {
+  "id": "acca",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "biennale-of-sydney-sydney",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "buku-larrnggay-mulka-centre-yirrkala",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-wittgenstein-bulgarian-cultural-institute",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "Article 17(1) of the Law on the Protection and Development of Culture (lex.bg, text amended to 2026) says Bulgarian cultural institutes abroad are state cultural institutes run methodically and financially by the Ministry of Culture. It is a rule for the class and names no institute, no city and no Haus Wittgenstein. The BTA article of 2 December 2024 only says an exhibition opened at the Bulgarian Cultural Institute in Haus Wittgenstein in Vienna, reported by the institute and the Ministry, and calls the project one of an Austrian initiative supported by both culture ministries. No cited page states that this institute is one of the institutes the article covers or that the ministry runs it, so the form rests on the name.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent / budget_set_by / controls",
+    "stored": "Ministry of Culture of Bulgaria / legislature or ministry / approval of programme, loans or disposals by a ministry or council",
+    "page says": "Same Article 17 text, general to the class; no cited page ties it to this house. With legal_form unsupported the block drops. (Aside: Art. 17(2) says annual programmes are approved by the minister, not loans or disposals.)",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "haus-wittgenstein-bulgarian-cultural-institute",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "rak-art-foundation-ras-al-khaimah",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The foundation's own About page describes it as a non-profit organization housed in the family home of its founder Rashid Al Khalifa.",
+    "page says": "The About page says 'A non-profit organization, the RAK Art Foundation' and that it exists within the home where Rashid Al Khalifa was raised. It does not say 'family home' or call him the founder of the foundation (it says he founded the Bahrain Arts Society in 1983).",
+    "fix": "The foundation's own About page describes it as a non-profit organization located in the converted house where Rashid Al Khalifa was raised."
+   }
+  ],
+  "corrected": {
+   "id": "rak-art-foundation-ras-al-khaimah",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.rakartfoundation.com/about"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The foundation's own About page describes it as a non-profit organization located in the converted house where Rashid Al Khalifa was raised."
+  }
+ },
+ {
+  "id": "barbados-museum-and-historical-society",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The society's own history page records that the legislature passed an Act of Incorporation of the Society on 31 May 1933 and that members of the Society elect its council.",
+    "page says": "The history timeline (ends 1993) says the Act of Incorporation was passed on 31 May 1933 and that at the first General Meeting 'The Council and Officers for 1933 are elected'. It does not say that members elect the council. The BMHS Act PDF on the Acts & Regulations page is an image scan with no text, so it cannot prove more.",
+    "fix": "The society's own history page records that the legislature passed an Act of Incorporation of the Society on 31 May 1933 and that its council and officers are elected at the general meeting of the Society."
+   }
+  ],
+  "corrected": {
+   "id": "barbados-museum-and-historical-society",
+   "governance": {
+    "legal_form": "association",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://barbmuse.org.bb/About/History"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The society's own history page records that the legislature passed an Act of Incorporation of the Society on 31 May 1933 and that its council and officers are elected at the general meeting of the Society."
+  }
+ },
+ {
+  "id": "art-belarus-gallery-belgazprombank-corporate-collection-minsk",
+  "verdict": "ok",
+  "faults": []
+ }
+]

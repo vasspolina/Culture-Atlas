@@ -1,0 +1,59 @@
+[
+ {
+  "id": "fespaco-ouagadougou",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "contemporary-calgary",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "Annual report 2024-2025 page 4: the board co-chairs write 'as Co-Chairs of the Contemporary Calgary Arts Society'. The governance page lists the board and says only that a co-chair 'served as the first co-chair of the newly formed society'. Neither page, nor any other page of the report, says the society is a non-profit, a charity or a registered entity; 'private nonprofit' is inferred from the word 'Society' in the name.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "contemporary-calgary",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "confederation-centre-of-the-arts-charlottetown",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-gallery-of-hamilton-hamilton",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "The cited PDF is a draft marked 'For Approval' in its file name. Its closing block reads 'Enacted _______________, 2025.' and Schedule A reads '[insert a copy of the Articles of Amendment at later date]'. The text does not show the bylaw was adopted or is in force, so it cannot prove the form in force today.",
+    "fix": null
+   },
+   {
+    "field": "governance.director_appointed_by",
+    "stored": "board",
+    "page says": "Section 5.01 (page 7) says the Board 'may appoint' a president, and Schedule B (page 14) says 'If appointed, the president shall be the chief executive officer'. The CEO role is set out only in the unsigned draft, and the page that states it is Schedule B on page 14, not section 5.01 alone.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "art-gallery-of-hamilton-hamilton",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "musée-dart-de-joliette-joliette",
+  "verdict": "ok",
+  "faults": []
+ }
+]

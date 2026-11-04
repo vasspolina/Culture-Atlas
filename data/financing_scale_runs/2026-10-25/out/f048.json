@@ -1,0 +1,223 @@
+[
+ {
+  "id": "van-gogh-museum-amsterdam",
+  "scale": {
+   "visitors": 1867342,
+   "visitors_year": "2025",
+   "staff": 389,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.vangoghmuseum.nl/assets/722992a8-c59f-4f20-992b-3799ded053c6/Annual%20Report%20Van%20Gogh%20Museum%202025?c=4cc0ca29e2da8965169319286a432a0ccc11184e4e6c25b464b3905ba3938940"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors is the 1,867,342 count of visitors in 2025 on PDF page 8 of the 2025 annual report, and staff is the 389 employees (334.28 FTE) of the Van Gogh Museum Foundation on 31 December 2025 in the staff overview on PDF page 36 (printed page 69)."
+ },
+ {
+  "id": "w139-amsterdam",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 769911,
+   "expenditure": 742014,
+   "public": 606750,
+   "private": null,
+   "earned": 31305,
+   "sponsorship": 46200,
+   "net_assets": null,
+   "source_kind": "other",
+   "url": "https://w139.nl/wp-content/uploads/2026/07/standaardform-pubplicht-anbi-algemeen-jaarrekening-2025.pdf"
+  },
+  "basis": "Finance: the ANBI publication form for 2025 published by Stichting W139, section 3 Staat van baten en lasten on PDF page 5: Som van alle baten 769,911, Som van de lasten 742,014, Subsidies van overheden 606,750 (public), Baten sponsorbijdragen 46,200 and the turnover line (earned) 31,305."
+ },
+ {
+  "id": "museum-arnhem-arnhem",
+  "scale": {
+   "visitors": 103234,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.museumarnhem.nl/media/pages/over-ons/jaarverslag/d971775f08-1778083200/jaarverslag-museum-arnhem-2024.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors is the 103,234 visitors in 2024 on PDF page 13 of the jaarverslag 2024; the free visits to the Erfgoedcentrum are listed separately and not included."
+ },
+ {
+  "id": "van-abbemuseum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "groninger-museum-groningen",
+  "scale": {
+   "visitors": 147484,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://groninger-museum.files.prepr.io/48m9ffsxslm7/jaarverslag-groninger-museum-2025.pdf",
+    "https://groninger-museum.files.prepr.io/jgd4kbk48ra/downloadsfactsheet-groninger-museum-2026.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors is the 147,484 total of visitors to the physical exhibitions and collections in 2025 on PDF page 31 of the jaarverslag 2025, and staff is the 92 employees ('in dienst van het GM') on page 2 of the factsheet titled 2026, which gives no count date, so the staff year and the visitor year differ."
+ },
+ {
+  "id": "fries-museum-leeuwarden",
+  "scale": {
+   "visitors": 132255,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.friesmuseum.nl/over-het-museum/organisatie/missie-visie-en-beleid/jaarverslag-2024"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors is the 132,255 people who visited the museum in 2024, as stated in the opening text of the online Jaarverslag 2024 page."
+ },
+ {
+  "id": "museum-de-lakenhal-leiden",
+  "scale": {
+   "visitors": 88918,
+   "visitors_year": "2025",
+   "staff": 41,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://storage.googleapis.com/production-attachments/919086a04ceca237328fba85fa42151b14b92e7a.pdf?1788979789"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors is the 88,918 visitors in 2025 on PDF page 33 of the jaarverslag 2025, and staff is the 41 employees in service (35 FTE) on 31 December 2025 on PDF page 62."
+ },
+ {
+  "id": "bonnefanten",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "marres-maastricht",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 10,
+   "staff_kind": "staff",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://marres.org/wp-content/uploads/2026/05/Jaarverslagjaarrekening_2025-gecomprimeerd.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 1425817,
+   "expenditure": 1376700,
+   "public": 1183139,
+   "private": 90627,
+   "earned": null,
+   "sponsorship": 10000,
+   "net_assets": 113904,
+   "source_kind": "annual report",
+   "url": "https://marres.org/wp-content/uploads/2026/05/Jaarverslagjaarrekening_2025-gecomprimeerd.pdf"
+  },
+  "basis": "Scale: visitors is the 14,519 visitors received in the house and at projects on location in 2025 on PDF page 4 of the 2025 annual report, and staff is the 10 team members (7.26 FTE) at year end on PDF page 6, a count that leaves out 2 trainees, 32 volunteers and freelancers. Finance: the Jaarrekening 2025 in the same PDF, Exploitatierekening on pages 66 and 67 (Totale baten 1,425,817, Totale lasten 1,376,700, Totaal subsidies 1,183,139 as public, Totale bijdragen uit private middelen 90,627, Sponsorinkomsten 10,000) and Totaal eigen vermogen 113,904 on the balance on page 65."
+ },
+ {
+  "id": "vleeshal-middelburg",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "kr-ller-m-ller-museum",
+  "scale": {
+   "visitors": 290563,
+   "visitors_year": "2025",
+   "staff": 132,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://cdn.sanity.io/files/ex28vlu5/production/bd045b225fea65c1448ca73888286b684c82a340.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors is the 290,563 count for 2025 in the 'in cijfers' table on PDF page 11 of the jaarrapport 2025, and staff is the 132 employees (101.23 FTE) at the end of 2025 on PDF page 9, where the report states all staff including guards, guides, cleaners and shop are employed by the museum."
+ },
+ {
+  "id": "kunstinstituut-melly",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 27,
+   "staff_kind": "employees",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.kunstinstituutmelly.nl/files/2025_Jaarverslag.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: staff is the 27 employees in service (17.65 FTE; 8 permanent and 19 temporary contracts) at the end of 2025 on PDF page 42 of the jaarverslag 2025."
+ }
+]

@@ -1,0 +1,62 @@
+[
+ {
+  "id": "skowhegan-school-of-painting-sculpture-skowhegan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "john-f-kennedy-center-for-the-performing-arts",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-portrait-gallery-smithsonian",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "smithsonian-air-and-space-washington",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-phillips-collection-washington",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "parrish-art-museum-water-mill",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "secca-winston-salem",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "municipal or regional body",
+    "page says": "The archived about page says only that the North Carolina Museum of Art is an agency of the State of North Carolina (in the NCMA Foundation footer note). It never says that NCMA Winston-Salem is a unit of that agency, and its history line says the site opened in 1956 as a non-profit visual arts organization. The form for this space is inferred from its name.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "North Carolina Museum of Art",
+    "page says": "The page names the site 'North Carolina Museum of Art, Winston-Salem (formerly SECCA)' but states no parent or ownership link.",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "The about page names the site North Carolina Museum of Art, Winston-Salem (formerly SECCA) and calls the North Carolina Museum of Art an agency of the State of North Carolina.",
+    "page says": "The page calls NCMA a state agency but does not state this space's own legal form.",
+    "fix": ""
+   }
+  ],
+  "corrected": {
+   "id": "secca-winston-salem",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ }
+]

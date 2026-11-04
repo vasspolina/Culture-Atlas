@@ -34,7 +34,9 @@ ROLE_RE=re.compile(r"\s+as\s+(?:the\s+|an?\s+|its\s+)?[a-z].*$")
 # A sum glued to a name ('Intesa Sanpaolo 464k', 'Ministry of Culture 2.9M', 'Enel 600k as a promoter member') is cut off
 # at the sum; a number without a unit ('Fonds 21', 'Tequila 1800', 'WDR 3') is part of the name and stays.
 TRAIL_SUM_RE=re.compile(r"\s+\d[\d.,]*\s?(?:[kKmMbB]|million|billion|thousand|mn|bn)\b.*$")
-ALIAS={'warhol':'andywarhol','nea':'nationalendowmentforarts','canadacouncil':'canadacouncilforarts','nycdcla':'nycdepartmentofculturalaffairs','artscouncilenglandnationalportfolio':'artscouncilengland'}  # values are norm() forms
+ALIAS={'warhol':'andywarhol','nea':'nationalendowmentforarts','canadacouncil':'canadacouncilforarts','nycdcla':'nycdepartmentofculturalaffairs','artscouncilenglandnationalportfolio':'artscouncilengland',
+       # Open Society's national and regional foundations and its old names are one network (George Soros).
+       'opensocietyinstitute':'opensociety','soros':'opensociety','sorosfoundations':'opensociety','kosovaforopensociety':'opensociety','opensocietyinitiativeforwestafrica':'opensociety','osiwa':'opensociety','mongolianforanopensociety':'opensociety','openinstitute':'opensociety'}  # values are norm() forms
 GENERIC_GOV={'city government','state government','regional government','government','ministry of culture','county government','local authority','federal government','regional state'}
 def clean_label(nm):
     nm=TRAIL_SUM_RE.sub('',LEAD_RE.sub('',ROLE_RE.sub('',SUFFIX_RE.sub('',nm)))).strip(' .,;-')

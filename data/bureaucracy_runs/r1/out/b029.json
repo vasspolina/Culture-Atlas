@@ -1,0 +1,206 @@
+[
+ {
+  "id": "badischer-kunstverein-karlsruhe",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.badischer-kunstverein.de/index.php?Direction=Wir%20ueber%20uns",
+    "https://www.badischer-kunstverein.de/index.php?Direction=Impressum"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The 'Wir über uns' page describes about 1200 members and a Vorstand, and the Impressum gives register number VR590 and non-profit recognition under section 51 ff. AO."
+ },
+ {
+  "id": "zkm-center-for-art-and-media-karlsruhe",
+  "governance": {
+   "legal_form": "public foundation",
+   "parent": "State of Baden-Württemberg and City of Karlsruhe",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "state audit office"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://zkm.de/en/organization",
+    "https://zkm.de/en/imprint",
+    "https://rechnungshof.baden-wuerttemberg.de/fileadmin/Denkschriften/Denkschrift_2017_-_Beitrag_Nr._22.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Organization page and the Impressum call the ZKM a foundation under public law with the state and the city as sponsors; the Rechnungshof Baden-Württemberg Denkschrift 2017, Beitrag Nr. 22, reports its audit of the ZKM's budget and management."
+ },
+ {
+  "id": "fridericianum-kassel",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": "City of Kassel and State of Hesse (shareholders)",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://fridericianum.org/legal-info/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The imprint on fridericianum.org names documenta und Museum Fridericianum gGmbH (AG Kassel, HRB 2154) and says the City of Kassel and the State of Hesse are its shareholders."
+ },
+ {
+  "id": "e-werk-luckenwalde-luckenwalde",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.kunststrom.com/legalnotice.html",
+    "https://www.kunststrom.com/info-en.html"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The legal notice names Performance Electrics gGmbH as the responsible party for the E-WERK Luckenwalde site, and the Info page calls E-WERK a not-for-profit institution."
+ },
+ {
+  "id": "kunsthalle-mainz-mainz",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.kunsthalle-mainz.de/de/visit/about",
+    "https://www.kunsthalle-mainz.de/de/imprint"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The About page says Stiftung Kunsthalle Mainz was recognised on 12 February 2007, was created by Stadtwerke Mainz AG as founder and is the Trägerin of the Kunsthalle; the Impressum names the foundation as Träger."
+ },
+ {
+  "id": "kunsthalle-mannheim",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "City of Mannheim",
+   "director_appointed_by": "city or region",
+   "staff_status": "mixed",
+   "budget_set_by": "city or regional council",
+   "controls": [
+    "approval of programme, loans or disposals by a ministry or council"
+   ],
+   "year": "2025",
+   "sources": [
+    "https://www.mannheim.de/sites/default/files/2026-01/s08-05.pdf",
+    "https://www.kuma.art/en/imprint"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Betriebssatzung für den Eigenbetrieb Kunsthalle Mannheim (in force from 14 November 2025), section 1 and section 5 numbers 2, 3, 6, 8, 9 and 11, makes it a city Eigenbetrieb whose Gemeinderat appoints the director, sets the Wirtschaftsplan and decides loans and disposals above set values; section 5 number 3 refers to its employees and civil servants."
+ },
+ {
+  "id": "die-neue-sammlung-the-design-museum-munich",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.die-neue-sammlung.de/impressum/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Impressum says Die Neue Sammlung is a state museum (staatliches Museum) and part of the Bayerische Staatliche Museen."
+ },
+ {
+  "id": "haus-der-kunst",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.hausderkunst.de/en/imprint",
+    "https://www.hausderkunst.de/en/about-us/support"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The imprint names Stiftung Haus der Kunst München, gemeinnützige Betriebsgesellschaft mbH (Munich HRB 100018) as the responsible body, and the support page lists the Free State of Bavaria as a shareholder."
+ },
+ {
+  "id": "kunstverein-munchen",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": "board",
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2021",
+   "sources": [
+    "https://www.kunstverein-muenchen.de/en/institution/statutes"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The statutes of the Kunstverein München e.V. adopted on 19 August 2021, section 1 (register of associations) and section 9 paragraph 4, say the Board may employ and dismiss a Director and other employees."
+ },
+ {
+  "id": "lenbachhaus",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.lenbachhaus.de/en/museum/about-us"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The museum's About us page describes the Lenbachhaus as a municipal museum."
+ },
+ {
+  "id": "lothringer-13-halle-munich",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Kulturreferat of the City of Munich",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://stadt.muenchen.de/infos/lothringer13-kunstraum.html"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The City of Munich page says the Lothringer 13 Halle is a cultural institution of the Kulturreferat of the Landeshauptstadt München."
+ },
+ {
+  "id": "museum-abteiberg-monchengladbach",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ }
+]

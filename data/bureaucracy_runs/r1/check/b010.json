@@ -1,0 +1,46 @@
+[
+ {
+  "id": "pinacoteca-de-s-o-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pivo-sao-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fespaco-ouagadougou",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "The only source for the form is a Sidwaya newspaper write-up of the 6 Nov 2024 Council of Ministers; it reports the decrees adopted (statutes approved under the general status of administrative public establishments) but is a news article, not the decree, statutes or a governance page of the agency. fespaco.bf states no legal form.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Ministry of Communication, Culture, Arts and Tourism",
+    "page says": "The article only lists the ABCA statutes decree under that ministry's heading; the creation decree is reported under the Economy and Finance heading. No page states a supervising ministry for the agency.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "fespaco-ouagadougou",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "doualart-douala",
+  "verdict": "ok",
+  "faults": []
+ }
+]

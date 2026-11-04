@@ -1,0 +1,76 @@
+[
+ {
+  "id": "fringe-world-perth",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pica-perth",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "shepparton-art-museum-shepparton",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bundanon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "4a-centre-for-contemporary-asian-art-sydney",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artbank-sydney",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artspace-sydney",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The 2023 annual report calls Artspace an independent, not-for-profit contemporary art space (PDF page 3) and refers to the company's surplus (page 5) and its Company Secretary (page 35).",
+    "page says": "The sentence 'Artspace is a leading independent, not-for-profit contemporary art space' is on PDF page 4 (About us); page 3 holds only the contents list and a press quote",
+    "fix": "The 2023 annual report calls Artspace an independent, not-for-profit contemporary art space (PDF page 4) and refers to the company's surplus (page 5) and its Company Secretary (page 35)."
+   }
+  ],
+  "corrected": {
+   "id": "artspace-sydney",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2023",
+    "sources": [
+     "https://www.artspace.org.au/media/pages/about-artspace/b6fd484f1d-1716179627/2023-annual-report-design-web-res.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The 2023 annual report calls Artspace an independent, not-for-profit contemporary art space (PDF page 4) and refers to the company's surplus (page 5) and its Company Secretary (page 35)."
+  }
+ },
+ {
+  "id": "museum-of-contemporary-art-australia-mca",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tarrawarra-museum-of-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthaus-bregenz",
+  "verdict": "ok",
+  "faults": []
+ }
+]

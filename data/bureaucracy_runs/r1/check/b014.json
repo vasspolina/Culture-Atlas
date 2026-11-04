@@ -1,0 +1,72 @@
+[
+ {
+  "id": "museo-de-arte-contemporáneo-de-santiago-santiago",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-la-memoria-y-los-derechos-humanos",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-la-solidaridad-salvador-allende",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-museum-of-fine-arts-of-chile-mnba",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-the-communist-party-of-china",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The 6 March 2026 recruitment notice names 中国共产党历史展览馆 (Exhibition Hall of CPC History) among 17 units directly under the Central Publicity Department; it does not name the Museum of the Communist Party of China and states no legal form for it",
+    "fix": null
+   },
+   {
+    "field": "governance.staff_status",
+    "stored": "public employees",
+    "page says": "The notice says units other than two named companies are public institutions on the state public-institution pay system, but the museum is not named, so the fact is inferred from a list the page does not give",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Publicity Department of the CPC Central Committee",
+    "page says": "Only the unnamed '17 units' are said to be directly under the Department; the museum is not listed on the page",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "museum-of-the-communist-party-of-china",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "museum-of-the-war-of-chinese-people-s-resistance-against-japanese-aggression",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-art-museum-of-china",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-museum-of-china",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ucca-center-for-contemporary-art",
+  "verdict": "ok",
+  "faults": []
+ }
+]

@@ -1,0 +1,101 @@
+[
+ {
+  "id": "iziko-south-african-national-gallery-cape-town",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "norval-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "zeitz-mocaa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bag-factory-johannesburg",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2025",
+    "page says": "The About Us page was last modified 2024-09-05 and the Board page 2026-10-13 (page metadata); neither is a 2025 document",
+    "fix": "2026"
+   }
+  ],
+  "corrected": {
+   "id": "bag-factory-johannesburg",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.bagfactoryart.org.za/about-us/",
+     "https://www.bagfactoryart.org.za/about-us/board/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The About Us page calls the Bag Factory a non-profit contemporary visual art organisation and the Board page lists its chairperson and board."
+  }
+ },
+ {
+  "id": "johannesburg-art-gallery-johannesburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-arts-festival",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2025",
+    "page says": "The About Us page was last modified 2026-09-11 (page metadata) and shows a 2026 copyright; nothing on it is dated 2025",
+    "fix": "2026"
+   }
+  ],
+  "corrected": {
+   "id": "national-arts-festival",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://nationalartsfestival.co.za/about/about-us/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The About Us page says the Festival is produced by the National Arts Festival Company, a non-profit organisation, and that its Board provides strategic leadership, governance and fiduciary oversight."
+  }
+ },
+ {
+  "id": "javett-art-centre-at-the-university-of-pretoria-javett-up",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "busan-biennale-busan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "busan-museum-of-art-busan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "busan-museum-of-contemporary-art-busan",
+  "verdict": "ok",
+  "faults": []
+ }
+]

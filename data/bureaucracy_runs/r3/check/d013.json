@@ -1,0 +1,89 @@
+[
+ {
+  "id": "mambo-bologna",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centrale-fies-dro",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private company",
+    "page says": "About Us: the project was started in 1999 with the Cooperativa il Gaviale; the footer names IL GAVIALE societa cooperativa (CF/P.IVA, REA TN-128433) as the site's entity; Transparency lists the cooperative's 2025 public contributions. No page states that the cooperative is the legal entity of the venue or that it runs Centrale Fies; the same inference was rejected in first_pass_rulings.json and this researcher cites no page that closes that gap",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Il Gaviale societa cooperativa",
+    "page says": "no page says the cooperative owns or sits above Centrale Fies",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "centrale-fies-dro",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "gallerie-d-italia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pirelli-hangarbicocca",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "official-unofficial-belarus-belarus-at-the-venice-biennale-2026-collateral-event-venice",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "... registered 2012, with 9 trustees.",
+    "page says": "The count of 9 trustees sits on the register's Trustees page, which is not among the cited urls (governance and governing-document pages are cited). All governance values (private nonprofit, charity regulator control, BFT as organiser per e-flux and the register page about BFT itself) are supported.",
+    "fix": "drop the trustee count from the basis sentence"
+   }
+  ],
+  "corrected": {
+   "id": "official-unofficial-belarus-belarus-at-the-venice-biennale-2026-collateral-event-venice",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "charity or foundation regulator"
+    ],
+    "year": "2026",
+    "sources": [
+     "https://www.e-flux.com/announcements/6787189/official-unofficial-belarus",
+     "https://register-of-charities.charitycommission.gov.uk/en/constituency-search/-/charity-details/5025151/governance",
+     "https://register-of-charities.charitycommission.gov.uk/en/constituency-search/-/charity-details/5025151/governing-document"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The e-flux announcement says Belarus Free Theatre (BFT) presents the event, and the Charity Commission register page for Belarus Free Theatre lists it as a charitable company, registered 2012, with a memorandum and articles incorporated 2012."
+  }
+ },
+ {
+  "id": "peggy-guggenheim-collection-venice",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kingston-creative",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "verdict": "ok",
+  "faults": []
+ }
+]

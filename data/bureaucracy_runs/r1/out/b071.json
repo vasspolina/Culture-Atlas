@@ -1,0 +1,177 @@
+[
+ {
+  "id": "malmö-konsthall-malmö",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Kulturförvaltningen, Malmö stad",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://malmokonsthall.se/om-oss/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The about page says Malmö Konsthall is part of the cultural administration of the City of Malmö."
+ },
+ {
+  "id": "bonniers-konsthall-stockholm",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "index-foundation-stockholm",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://indexfoundation.se/about"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The about page calls Index a non-profit foundation and says it has had the form of a foundation since 1998."
+ },
+ {
+  "id": "konsthall-c-stockholm",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "magasin-iii",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "moderna-museet",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": "Swedish government",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.modernamuseet.se/app/uploads/2026/06/Moderna-Museet-Arsredovisning-2025.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The 2025 annual report describes Moderna museet as a state authority working under a government instruction and appropriation letter, with a board since 1 January 2026."
+ },
+ {
+  "id": "tensta-konsthall-stockholm",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://tenstakonsthall.se/om-konsthallen"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Swedish about page says the konsthall has been a private foundation since 2000, with Stiftelsen Tensta konsthall as its legal name."
+ },
+ {
+  "id": "bildmuseet-umeå",
+  "governance": {
+   "legal_form": "university unit",
+   "parent": "Umeå universitet",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2024",
+   "sources": [
+    "https://www.bildmuseet.umu.se/om-bildmuseet/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The about page, last updated 2024-02-28, says Bildmuseet is part of Umeå University."
+ },
+ {
+  "id": "hek-haus-der-elektronischen-k-nste-basel",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2022",
+   "sources": [
+    "https://grosserrat.bs.ch/dokumente/100402/000000402730.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Section 2.3 of the 2022 cantonal expenditure report says the Stiftung Haus für elektronische Künste Basel, founded in early 2011, carries the HEK and has a Stiftungsrat."
+ },
+ {
+  "id": "kaskadenkondensator-basel",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.kasko.ch/info/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Info page says Kasko has existed since 1994 and is organised as a Verein."
+ },
+ {
+  "id": "kunsthalle-basel",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2023",
+   "sources": [
+    "https://grosserrat.bs.ch/dokumente/100405/000000405436.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Section 2.2 of the 2023 cantonal report says the Basler Kunstverein, founded in 1839, carries the Kunsthalle Basel and has a Vorstand and a Mitgliederversammlung."
+ },
+ {
+  "id": "kunstmuseum-basel",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Präsidialdepartement of the Canton of Basel-Stadt",
+   "director_appointed_by": "government or ministry",
+   "staff_status": null,
+   "budget_set_by": "legislature or ministry",
+   "controls": [
+    "approval of programme, loans or disposals by a ministry or council"
+   ],
+   "year": "2025",
+   "sources": [
+    "https://bs.lexwork.naz.ch/de/dta/451.100.pdf",
+    "https://bs.lexwork.naz.ch/de/dta/451.110.pdf",
+    "https://kunstmuseumbasel.ch/en/museum/lendersdonorssponsors"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Museumsgesetz sections 5, 6 and 9 (Stand 1 February 2025) and Museumsverordnung sections 1 and 2 cover the legal form, the Grosser Rat credit, and the department head as employing authority; the museum page names the Öffentliche Kunstsammlung Basel as its legal entity."
+ }
+]

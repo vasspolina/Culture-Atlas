@@ -1,0 +1,167 @@
+[
+ {
+  "id": "chapter",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pallant-house-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "firstsite-colchester",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "grizedale-arts-coniston",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "https://findthatcharity.uk/orgid/GB-CHC-1076662",
+    "page says": "Find that Charity is a third-party aggregator that republishes Charity Commission data (its own text: 'This organisation record is based on data from Registered charities in England and Wales'); it is a mirror, not the register entry. The register page for 1076662 returned 'Sorry, there was an issue displaying this content' on three tries.",
+    "fix": null
+   },
+   {
+    "field": "governance.controls",
+    "stored": [
+     "charity or foundation regulator"
+    ],
+    "page says": "The only primary cited page (Companies House) states a private company limited by guarantee and does not state charity regulation; the charity fact rests on the mirror.",
+    "fix": []
+   },
+   {
+    "field": "basis",
+    "stored": "Companies House shows company 03776969 as a private company limited by guarantee and the Find that Charity record from the Charity Commission register lists charity 1076662.",
+    "page says": "Companies House is the only primary page cited that holds the stated facts.",
+    "fix": "Companies House shows company 03776969 as a private company limited by guarantee."
+   }
+  ],
+  "corrected": {
+   "id": "grizedale-arts-coniston",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://find-and-update.company-information.service.gov.uk/company/03776969"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Companies House shows company 03776969 as a private company limited by guarantee."
+  }
+ },
+ {
+  "id": "void-derry",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dundee-contemporary-arts",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "towner-eastbourne",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "https://opencharities.uk/ew/1156762/files/2025-03-31-accounts.html",
+    "page says": "OpenCharities is a third-party site showing an OCR copy of the filed accounts (text reads 'Governlng document', 'chariiy'); it is a mirror, not the Charity Commission or Towner document. Its text does say the charity is a company limited by guarantee governed by its Memorandum and Articles.",
+    "fix": null
+   },
+   {
+    "field": "governance.year",
+    "stored": "2025",
+    "page says": "With the mirror dropped, the remaining cited page (Companies House) is dated 2026.",
+    "fix": "2026"
+   },
+   {
+    "field": "basis",
+    "stored": "The trustees' report in the accounts to 31 March 2025 says the charity is a company limited by guarantee governed by its Memorandum and Articles, and Companies House lists company 08803625 as a private company limited by guarantee.",
+    "page says": "The accounts sentence rests on the mirror.",
+    "fix": "Companies House lists company 08803625 as a private company limited by guarantee."
+   }
+  ],
+  "corrected": {
+   "id": "towner-eastbourne",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://find-and-update.company-information.service.gov.uk/company/08803625"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Companies House lists company 08803625 as a private company limited by guarantee."
+  }
+ },
+ {
+  "id": "collective-edinburgh",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "edinburgh-international-book-festival-edinburgh",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fruitmarket-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "inverleith-house-royal-botanic-garden",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "framework document of 14 June 2021 is the form 'in force today', with no page cited showing it is current",
+    "page says": "The corporate information page (https://www.rbge.org.uk/about-us/corporate-information/) links this framework PDF as RBGE's framework document; that page is the one showing it is still the current text and is not among the cited urls. All stored facts match the PDF text (body corporate under the 1985 Act, executive NDPB, registered charity, Auditor General audit, Ministers agree budget and grant in aid, staff pay remit under SG Pay Policy, Ministerial consent for borrowing and disposal of land) and the Arts Working Group report links Inverleith House to RBGE.",
+    "fix": "add https://www.rbge.org.uk/about-us/corporate-information/"
+   }
+  ],
+  "corrected": {
+   "id": "inverleith-house-royal-botanic-garden",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Royal Botanic Garden Edinburgh",
+    "director_appointed_by": null,
+    "staff_status": "public employees",
+    "budget_set_by": "legislature or ministry",
+    "controls": [
+     "state audit office",
+     "charity or foundation regulator",
+     "approval of programme, loans or disposals by a ministry or council"
+    ],
+    "year": "2021",
+    "sources": [
+     "https://www.rbge.org.uk/media/fuch4xry/royal-botanic-garden-edinburgh-framework-document-14-june-2021.pdf",
+     "https://www.rbge.org.uk/about-us/who-we-are/",
+     "https://www.rbge.org.uk/media/8002/arts-working-group-report.pdf",
+     "https://www.rbge.org.uk/about-us/corporate-information/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Inverleith House is a space of the Royal Botanic Garden Edinburgh (2017 Arts Working Group report); the form comes from the Scottish Government framework document of 14 June 2021, linked from RBGE's corporate information page, which says RBGE is a body corporate under the National Heritage (Scotland) Act 1985 and an executive NDPB, and the who-we-are page says Scottish Ministers appoint its Board."
+  }
+ },
+ {
+  "id": "national-galleries-of-scotland",
+  "verdict": "ok",
+  "faults": []
+ }
+]

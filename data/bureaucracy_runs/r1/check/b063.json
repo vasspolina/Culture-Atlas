@@ -1,0 +1,107 @@
+[
+ {
+  "id": "kramskoi-voronezh-regional-art-museum-voronezh",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.parent",
+    "stored": "Department of Culture of Voronezh Oblast",
+    "page says": "The 2023 amendment (order 744-OD of 23.11.2023, item 1) rewrites charter clause 1.3 so that the founder's powers are exercised by the Ministry of Culture of Voronezh Oblast, and item 3 replaces 'Department' with 'Ministry' throughout",
+    "fix": "Ministry of Culture of Voronezh Oblast"
+   },
+   {
+    "field": "governance.year",
+    "stored": "2017",
+    "page says": "The charter text in force is the 2017 charter as amended by the order of 23.11.2023",
+    "fix": "2023"
+   },
+   {
+    "field": "governance.sources",
+    "stored": [
+     "https://mkram.ru/wp-content/uploads/Ustav-1.pdf"
+    ],
+    "page says": "The page that proves the current founder (the 2023 amendment PDF) is not cited",
+    "fix": [
+     "https://mkram.ru/wp-content/uploads/Ustav-1.pdf",
+     "https://mkram.ru/wp-content/uploads/Izmeneniya-v-Ustav.-2023-1.pdf"
+    ]
+   },
+   {
+    "field": "basis",
+    "stored": "The museum's charter (a scan on its documents page) names it a state budgetary institution of Voronezh Oblast whose founder's powers are exercised by the regional Department of Culture, which approves its financial plan and agrees disposals of valuable property (sections 1, 5.11 and 6).",
+    "page says": "Names the Department of Culture as founder; superseded by the 2023 amendment. Section 1 and 5.11 and 6 do not state the Department approves 'disposals' in 5.11 (write-off approval is in 5.10)",
+    "fix": "The museum's charter (a scan on its documents page) names it a state budgetary institution of Voronezh Oblast whose founder's powers, and approval of its financial plan and of write-offs of valuable property, sit with the regional culture authority (sections 1.1, 1.3, 5.10, 5.11 and 6); the order of 23 November 2023 amending the charter names the Ministry of Culture of Voronezh Oblast as that founder in place of the Department of Culture."
+   }
+  ],
+  "corrected": {
+   "id": "kramskoi-voronezh-regional-art-museum-voronezh",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "Ministry of Culture of Voronezh Oblast",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": "legislature or ministry",
+    "controls": [
+     "approval of programme, loans or disposals by a ministry or council"
+    ],
+    "year": "2023",
+    "sources": [
+     "https://mkram.ru/wp-content/uploads/Ustav-1.pdf",
+     "https://mkram.ru/wp-content/uploads/Izmeneniya-v-Ustav.-2023-1.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The museum's charter (a scan on its documents page) names it a state budgetary institution of Voronezh Oblast whose founder's powers, and approval of its financial plan and of write-offs of valuable property, sit with the regional culture authority (sections 1.1, 1.3, 5.10, 5.11 and 6); the order of 23 November 2023 amending the charter names the Ministry of Culture of Voronezh Oblast as that founder in place of the Department of Culture."
+  }
+ },
+ {
+  "id": "vyksa-festival-art-ovrag-vyksa",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The festival's about page says the charitable foundation OMK-Uchastie runs it with OMK, and the foundation's about page says it was founded on the initiative of OMK's owners and lists OMK as founder; the form given is that of the organising foundation.",
+    "page says": "The foundation page says it was founded on the initiative of Irina and Anatoly Sedykh and the footer says 'Учредитель ОМК'; it does not call the Sedykhs OMK's owners",
+    "fix": "The festival's about page says the charitable foundation OMK-Uchastie runs it with OMK, and the foundation's about page says it was founded on the initiative of Irina and Anatoly Sedykh and its footer names OMK as founder; the form given is that of the organising foundation."
+   }
+  ],
+  "corrected": {
+   "id": "vyksa-festival-art-ovrag-vyksa",
+   "governance": {
+    "legal_form": "private foundation",
+    "parent": "United Metallurgical Company (OMK)",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://vyksafest.com/about",
+     "https://omk-uchastie.ru/about/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The festival's about page says the charitable foundation OMK-Uchastie runs it with OMK, and the foundation's about page says it was founded on the initiative of Irina and Anatoly Sedykh and its footer names OMK as founder; the form given is that of the organising foundation."
+  }
+ },
+ {
+  "id": "yekaterinburg-museum-of-fine-arts-yekaterinburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "yeltsin-center-yekaterinburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "rwanda-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arts-alula-and-desert-x-alula",
+  "verdict": "ok",
+  "faults": []
+ }
+]

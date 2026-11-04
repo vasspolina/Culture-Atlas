@@ -1,0 +1,75 @@
+[
+ {
+  "id": "kunsthalle-münster-münster",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-für-medienkunst-oldenburg-oldenburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-recklinghausen-recklinghausen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "akademie-schloss-solitude-stuttgart",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kuenstlerhaus-stuttgart",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.director_appointed_by",
+    "stored": "board",
+    "page says": "Statutes section 7(2): the Beirat forms, with at most one representative of each Gemeinderat faction and one representative of the city's culture administration, a Findungskommission that is responsible for hiring the artistic direction; contract extensions are decided by the Beirat. Section 9(2): the managing director is hired by the Beirat in agreement with the city.",
+    "fix": null
+   },
+   {
+    "field": "governance.sources[1]",
+    "stored": "https://www.domino1.stuttgart.de/web/ksd/KSDRedSystem.nsf/0/67F93D9CE229A7BAC1258B5B004233F1/$File/Anlage1zuGRDrs170_2024.pdf",
+    "page says": "A Gemeinderat funding rationale (GRDrs 170/2024) on raising the institutional grant to 650,000 EUR; it states no legal form, appointment or budget fact used in the record.",
+    "fix": "drop it from sources; the statutes PDF alone proves the legal form (section 1) and budget (sections 7, 10)"
+   }
+  ]
+ },
+ {
+  "id": "wuerttembergischer-kunstverein-stuttgart",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2026",
+    "page says": "The statutes page is marked 'Stand: November 2016' (last restated by the members on 26 November 2007, in force from 1 January 2008).",
+    "fix": "2016"
+   },
+   {
+    "field": "governance.staff_status",
+    "stored": "employees of the institution",
+    "page says": "Section 12(3): the directors hire and dismiss the other staff of the office up to pay group 9 TV-L within the staffing plan. The staff are paid under a public pay scale (TV-L) and no civil-service status is stated, which the brief defines as 'public employees'.",
+    "fix": "public employees"
+   }
+  ]
+ },
+ {
+  "id": "vitra-design-museum-weil-am-rhein",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstmuseum-wolfsburg-wolfsburg",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "https://web.archive.org/web/20251208044849/https://www.kunstmuseum.de/en/imprint/ and https://web.archive.org/web/20251213162457/https://www.kunstmuseum.de/en/about-us/",
+    "page says": "Both are Internet Archive copies of the museum's imprint and about pages. The text matches the facts stored (Kunststiftung Volkswagen, foundation with legal capacity under civil law, supervising authority Office for regional land development Braunschweig, 'privately-sponsored museum supported by the non-profit Kunststiftung Volkswagen'), but the cited urls are mirrors, not the documents.",
+    "fix": "https://www.kunstmuseum.de/en/imprint/ and https://www.kunstmuseum.de/en/about-us/ (the live pages redirected to a ticketing host under curl, so not re-read here)"
+   }
+  ]
+ }
+]

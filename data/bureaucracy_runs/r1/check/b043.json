@@ -1,0 +1,51 @@
+[
+ {
+  "id": "contemporary-art-platform-cap-kuwait-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kim-contemporary-art-centre-riga",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "latvian-national-museum-of-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arab-image-foundation-beirut",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ashkal-alwan-beirut",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "beirut-art-center-bac",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "association",
+    "page says": "The About page history says only: 2005 - Establishment of Beirut Art Center Association project, initiated by Sandra Dagher and Lamia Joreige. It does not state the legal form in force today (no registration, statute or 'is an association' line).",
+    "fix": null
+   },
+   {
+    "field": "governance.sources",
+    "stored": "https://web.archive.org/web/2024/https://beirutartcenter.org/about/",
+    "page says": "The live page https://beirutartcenter.org/about/ loads and carries the same text, so the archive copy is not needed",
+    "fix": "https://beirutartcenter.org/about/"
+   }
+  ],
+  "corrected": {
+   "id": "beirut-art-center-bac",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ }
+]

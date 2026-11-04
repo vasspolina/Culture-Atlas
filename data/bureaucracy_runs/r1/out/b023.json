@@ -1,0 +1,190 @@
+[
+ {
+  "id": "le-19-crac-montbéliard",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "la-station-nice",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.lastation.org/l-association/projet-la-station/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the association page says La Station is run by the association Starter and is a structure associative."
+ },
+ {
+  "id": "villa-arson-nice",
+  "governance": {
+   "legal_form": "statutory public body",
+   "parent": "Ministry of Culture",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": "board",
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://villa-arson.fr/villa-arson/etablissement/gouvernance/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the governance page calls it a public administrative establishment under the Ministry of Culture and gives the board the budget."
+ },
+ {
+  "id": "frac-centre-val-de-loire",
+  "governance": {
+   "legal_form": "statutory public body",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://www.frac-centre.fr/wp-content/uploads/2025/01/Poste-Administrateur.pdf",
+    "https://www.prefectures-regions.gouv.fr/centre-val-de-loire/centre-val-de-loire/irecontenu/telechargement/15866/109909/file/Arrêté de création  EPCC.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: pages 1 of the 2025 job notice and of the 2015 prefectoral creation order state the public cultural cooperation body (EPCC) of the State, Region and City of Orléans; the notice states staff are on contracts under the ECLAT agreement."
+ },
+ {
+  "id": "betonsalon-paris",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://www.betonsalon.net/wp-content/uploads/2025/03/cdi-administrateurice-betonsalon-2025.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: pages 1 to 3 of the 2025 job notice describe a non-profit association with a president, a board and staff paid under the Eclat agreement."
+ },
+ {
+  "id": "centre-pompidou",
+  "governance": {
+   "legal_form": "statutory public body",
+   "parent": null,
+   "director_appointed_by": "government or ministry",
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.centrepompidou.fr/fr/le-centre-pompidou/organisation"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the organisation page calls it a national public administrative establishment and says the President of the Republic names its president on the culture minister's proposal."
+ },
+ {
+  "id": "cit-internationale-des-arts-paris",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.citeinternationaledesarts.fr/en/about-us/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the about-us page calls it a nonprofit private foundation recognised as public-benefit."
+ },
+ {
+  "id": "fondation-cartier",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "fondation-louis-vuitton-paris",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "charity or foundation regulator"
+   ],
+   "year": "2022",
+   "sources": [
+    "https://www.conseil-etat.fr/content/download/176289/document/Communiqu%C3%A9%20de%20presse%20-%20Section%20du%20contentieux%20du%2023%20septembre%202022%20-%20web.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Conseil d'Etat press release of 7 October 2022 (pages 1 and 2) treats the foundation as a corporate foundation that sends its accounts to the prefect each year."
+ },
+ {
+  "id": "grand-palais-paris",
+  "governance": {
+   "legal_form": "statutory public body",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://grandpalaisrmn.fr/sites/default/files/media/files/Rapport_annuel_activites_2025_0.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the 2025 annual report calls the GrandPalaisRmn a cultural public establishment (page 5) and lists its board (page 135)."
+ },
+ {
+  "id": "institut-du-monde-arabe-paris",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": "board",
+   "controls": [
+    "public procurement law",
+    "state audit office"
+   ],
+   "year": "2024",
+   "sources": [
+    "https://www.ccomptes.fr/sites/default/files/2024-12/20241206-S2024-1394-Institut-du-monde-arabe.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Cour des comptes report of December 2024 calls it a private foundation under French law (summary), says its board adopts its budget and that it is bound by the public procurement code (section 3.3)."
+ },
+ {
+  "id": "jeu-de-paume-paris",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": "board",
+   "controls": [],
+   "year": "2020",
+   "sources": [
+    "https://jeudepaume.org/wp-content/uploads/2023/07/statuts-jdp-2-juillet-2020.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the statutes of 2 July 2020 (preamble, articles 8 and 9) make it an association under the law of 1901 whose board approves the budget."
+ }
+]

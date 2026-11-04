@@ -1,0 +1,80 @@
+[
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The organisational structure page says the museum operates under the supervision of the Ministry of Culture and Islamic Guidance and lists its internal sections. It does not say the museum is a department of the ministry or give any legal form.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "tehran-museum-of-contemporary-art-tmoca",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "national-museum-of-iraq",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.controls",
+    "stored": [
+     "approval of programme, loans or disposals by a ministry or council"
+    ],
+    "page says": "The cited UNESCO text of Law No. 55 of 2002 is 6 pages and ends at Article 14; Article 21 is not in it, and no page there puts export or exchange of artifacts under the minister or the Council of Ministers.",
+    "fix": []
+   },
+   {
+    "field": "governance.sources[3]",
+    "stored": "https://www.iraqheritage.org/pdf/antiquities.pdf",
+    "page says": "The PDF states no fact about this museum's form, parent or controls once the Article 21 control is dropped.",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "The State Board of Antiquities and Heritage museums page says the Iraq Museum is under the Ministry of Culture through the Board, and Article 21 of Law No. 55 of 2002 (UNESCO text) puts taking artifacts abroad under the minister and exchanges under the Council of Ministers.",
+    "page says": "The Article 21 clause is not on the cited PDF; the SBAH home page says the Board manages the National Museums of Iraq.",
+    "fix": "The State Board of Antiquities and Heritage museums page says the Iraq Museum is under the Ministry of Culture through the Board, and its home page says the Board manages the National Museums of Iraq."
+   }
+  ],
+  "corrected": {
+   "id": "national-museum-of-iraq",
+   "governance": {
+    "legal_form": "national government body",
+    "parent": "State Board of Antiquities and Heritage, Ministry of Culture",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://sbah.gov.iq/museums/",
+     "https://sbah.gov.iq/sbah-structure/",
+     "https://sbah.gov.iq"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The State Board of Antiquities and Heritage museums page says the Iraq Museum is under the Ministry of Culture through the Board, and its home page says the Board manages the National Museums of Iraq."
+  }
+ },
+ {
+  "id": "hugh-lane-gallery-dublin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "israel-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tel-aviv-museum-of-art",
+  "verdict": "ok",
+  "faults": []
+ }
+]

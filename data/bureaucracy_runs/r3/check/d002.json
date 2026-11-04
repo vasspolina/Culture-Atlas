@@ -1,0 +1,40 @@
+[
+ {
+  "id": "braemhuis-renaat-braem-huis",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "The Herita page says only that Herita has worked with Stad Antwerpen since 2024 to open the house to the public and is studying restoration needs; it does not say Herita owns or runs the Braemhuis. KBO 0454.452.225 describes Herita as a Vereniging zonder winstoogmerk and contracting authority, which is a fact about Herita, not about the house. This is the inference the first-pass checker already rejected, and no cited page states the missing owner or operator link.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "braemhuis-renaat-braem-huis",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "fondation-cab-brussels",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wiels-contemporary-art-centre",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "imal-brussels",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ciap-genk",
+  "verdict": "ok",
+  "faults": []
+ }
+]

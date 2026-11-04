@@ -1,0 +1,51 @@
+[
+ {
+  "id": "museo-de-arte-de-ponce-ponce",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The 2023-24 annual report (copyright page) calls the museum a nonprofit, tax-exempt organization and has a message from the President of the Board of Trustees.",
+    "page says": "Museo de Arte de Ponce is a public, nonprofit, tax-exempt organization, accredited by the American Alliance of Museums ... privately and publicly funded",
+    "fix": "The 2023-24 annual report (copyright page) calls the museum a public, nonprofit, tax-exempt organization funded privately and publicly, and has a message from the President of the Board of Trustees."
+   }
+  ],
+  "corrected": {
+   "id": "museo-de-arte-de-ponce-ponce",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://museoarteponce.org/wp-content/uploads/2026/09/MAP_Reporte-Anual_23-24-web.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The 2023-24 annual report (copyright page) calls the museum a public, nonprofit, tax-exempt organization funded privately and publicly, and has a message from the President of the Board of Trustees."
+  }
+ },
+ {
+  "id": "beta-local-san-juan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-contemporáneo-de-puerto-rico-san-juan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-de-puerto-rico",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tranzit-ro-bucharest",
+  "verdict": "ok",
+  "faults": []
+ }
+]

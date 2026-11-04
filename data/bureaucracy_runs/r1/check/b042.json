@@ -1,0 +1,75 @@
+[
+ {
+  "id": "jordan-national-gallery-of-fine-arts",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "almaty-museum-of-arts-almaty",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private foundation",
+    "page says": "The cited 2024 fund-use report names the organization Korporativnyi fond \"Almaty Museum of Arts\", non-profit activity, with founder contributions; it does not say private foundation or name the founder",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "The museum's 2024 report on use of funds names it Korporativnyi fond Almaty Museum of Arts, a non-profit activity funded by founder contributions, and the 2021 report names its earlier form as Chastnyi fond (private foundation).",
+    "page says": "The cited PDF is one page for 2024 and has no 2021 report or Chastnyi fond wording",
+    "fix": ""
+   }
+  ],
+  "corrected": {
+   "id": "almaty-museum-of-arts-almaty",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "national-museum-of-the-republic-of-kazakhstan-astana",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The history page only recounts Resolution No. 675 of 2 July 2013 creating the republican state institution; it does not show that form is still in force (Government Resolution No. 1439 of 31 Dec 2014 reorganised the institution, so the 2013 text is superseded and the replacing text is not cited)",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Ministry of Culture of the Republic of Kazakhstan",
+    "page says": "Same 2013 text; current subordination not shown",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "national-museum-of-the-republic-of-kazakhstan-astana",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "circle-art-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nairobi-contemporary-art-institute-nairobi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nairobi-national-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "stacion-cca-prishtina",
+  "verdict": "ok",
+  "faults": []
+ }
+]

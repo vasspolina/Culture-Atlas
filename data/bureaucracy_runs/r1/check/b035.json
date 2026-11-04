@@ -1,0 +1,57 @@
+[
+ {
+  "id": "national-museum-of-the-islamic-revolution-and-holy-defense",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "Article 1 of the 2017 statute (Official Gazette text) gives the museum legal personality with financial and administrative independence under a statute approved by the Supreme Leader, with a board of trustees chaired by the Chief of the Armed Forces General Staff; the 2021 amendment, which gives Tehran Municipality the duty to provide budget and staff, is in force.",
+    "page says": "Both cited pages are edalatsara.com, a law-information site that reprints the statute and the 2021 amendment under the Presidential Office covering letters asking for Official Gazette publication; neither page is the Official Gazette, and neither shows the amendment is still in force today.",
+    "fix": "Article 1 of the 2017 statute, as reproduced on edalatsara.com, gives the museum legal personality with financial and administrative independence under a statute approved by the Supreme Leader, with a board of trustees chaired by the Chief of the Armed Forces General Staff; the 2021 amendment, reproduced on the same site, gives Tehran Municipality the duty to provide budget and staff."
+   }
+  ],
+  "corrected": {
+   "id": "national-museum-of-the-islamic-revolution-and-holy-defense",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2021",
+    "sources": [
+     "https://www.edalatsara.com/paper/%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87-%D8%B1%D8%B3%D9%85%DB%8C-%DA%A9%D8%B4%D9%88%D8%B1-%D8%A7%D8%B3%D8%A7%D8%B3%D9%86%D8%A7%D9%85%D9%87-%D9%85%D9%88%D8%B2%D9%87-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%DB%8C-%D9%88-%D8%AF%D9%81%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%B3",
+     "https://www.edalatsara.com/paper/%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87-%D8%B1%D8%B3%D9%85%DB%8C-%DA%A9%D8%B4%D9%88%D8%B1-%D8%A7%D8%B5%D9%84%D8%A7%D8%AD-%D8%A7%D8%B3%D8%A7%D8%B3%D9%86%D8%A7%D9%85%D9%87-%D9%85%D9%88%D8%B2%D9%87-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%DB%8C-%D9%88-%D8%AF%D9%81%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%B3"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Article 1 of the 2017 statute, as reproduced on edalatsara.com, gives the museum legal personality with financial and administrative independence under a statute approved by the Supreme Leader, with a board of trustees chaired by the Chief of the Armed Forces General Staff; the 2021 amendment, reproduced on the same site, gives Tehran Municipality the duty to provide budget and staff."
+  }
+ },
+ {
+  "id": "ruya-foundation-baghdad",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "visual",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "crawford-art-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-glucksman-cork",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "douglas-hyde-gallery-dublin",
+  "verdict": "ok",
+  "faults": []
+ }
+]

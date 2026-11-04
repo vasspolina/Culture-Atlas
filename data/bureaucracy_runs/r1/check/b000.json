@@ -1,0 +1,114 @@
+[
+ {
+  "id": "national-gallery-of-arts-tirana",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The Shqiptarja article never states a legal form. It calls the Ministry of Culture the superior institution (institucioni epror) of the Gallery and says directors are chosen by Council of Ministers decision; no statute or law page is cited.",
+    "fix": null
+   },
+   {
+    "field": "red_tape",
+    "stored": "press report note about the gallery director call waiting for the staff reorganisation analysis because state procedures have legal deadlines",
+    "page says": "The quoted deadline remark by the ministry chief of cabinet is about the Opera and Ballet theatre (TKOB) reorganisation, not the Gallery. For the Gallery the same official says the call waits until restoration works start and staff moves are organised. The quote is an official citing that procedures have deadlines, and no audit, review or journalist finding says approvals are slow or layered.",
+    "fix": null
+   }
+  ]
+ },
+ {
+  "id": "tirana-art-lab",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-national-des-beaux-arts-d-alger-algiers",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.budget_set_by",
+    "stored": "legislature or ministry",
+    "page says": "Decree 11-352 (2011), Art. 13 and 21, says the conseil d'orientation deliberates on draft budgets and lists budget contents; Art. 17 only sends minutes to the tutelle for approval. No 2011 article names who sets the budget. Art. 15 of decree 85-277 (1985, same cited PDF, Journal officiel 13 Nov 1985 p. 1192) says the budget goes to the tutelle and the finance minister for approval after the council adopts it, but the stored year is 2011 and that older text's current force is not shown.",
+    "fix": "null, or keep the value with year 1985 and cite decree 85-277 Art. 15"
+   },
+   {
+    "field": "basis",
+    "stored": "decree 85-278 'created this museum under the ministry of culture's statute-type'",
+    "page says": "Decree 85-278 only creates the museum under decree 85-277 and names no ministry. The tutelle of the culture minister and the establishment public a caractere administratif form are in Art. 1 of decree 85-277 (1985 PDF, p. 1191), which the basis does not name.",
+    "fix": "Name decree 85-277 Art. 1 as the page for parent and form"
+   }
+  ]
+ },
+ {
+  "id": "mus-e-public-national-d-art-moderne-et-contemporain-mama-algiers",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.parent",
+    "stored": "Ministry of Culture",
+    "page says": "Le Matin d'Algerie (an opinion piece) says the museum is under the triple statutory tutelle of the ministries of Culture, Moudjahidine and Religious Affairs. The Gradhiva page does not name any supervising ministry; its host served a bot check to curl and WebFetch returned only that it cites decree 06-263 of 8 Aug 2006 with the title 'portant creation du Musee national d'art moderne et contemporain'. Decree 11-352 does not name this museum.",
+    "fix": null
+   },
+   {
+    "field": "governance.legal_form, budget_set_by, controls",
+    "stored": "statutory public body; legislature or ministry; approval of programme, loans or disposals",
+    "page says": "These rest on Art. 36 of decree 11-352, which makes a museum a national public museum only if it is a ministry-of-culture museum created by regulation before 2011. No cited page shows that for this museum (the creating decree 06-263 was not read, Gradhiva was behind a bot check, and Le Matin names three ministries). The budget point also has the same gap as the other Algiers record: the 2011 text does not say who sets the budget.",
+    "fix": null
+   },
+   {
+    "field": "governance.sources",
+    "stored": "journals.openedition.org/gradhiva/6494 and lematindalgerie.com piece",
+    "page says": "Gradhiva is behind an Anubis bot check and cannot be read; Le Matin is a commentary on a plagiarism dispute, not a governance document. The creating decree is not among the sources.",
+    "fix": "Read decree 06-263 (Journal officiel, 9 Aug 2006) and cite it"
+   }
+  ]
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private foundation",
+    "page says": "Presidential Decree 79/11 says the Fundacao Sindika Dokolo was constituted by public deed before a Luanda notary on 7 May 2006 (published in Diario da Republica no. 84, 3rd series, 13 July 2007) and is declared of public utility under Art. 20 of Law 14/91 on associations. It does not say who founded or funds it or that it is private; 'private foundation' is inferred from the name and the deed. Year 2011 is also not the form in force today.",
+    "fix": null
+   }
+  ]
+ },
+ {
+  "id": "nesr-art-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "coleccion-de-arte-amalia-lacroze-de-fortabat",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundación-proa-buenos-aires",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-nacional-de-bellas-artes-buenos-aires",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-latinoamericano-de-buenos-aires-malba",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-moderno-de-buenos-aires-buenos-aires",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "verdict": "ok",
+  "faults": []
+ }
+]

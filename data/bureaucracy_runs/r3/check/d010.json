@@ -1,0 +1,68 @@
+[
+ {
+  "id": "momus-thessaloniki",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "The 2021 director call (page 1) names law 4572/2018 as its founding law and calls MOMus a public legal person (N.P.I.D., a private-law entity) supervised by the Ministry of Culture and Sports. It does not say the board is government-appointed or give any form from the list; the director is chosen by the board and appointed by ministerial decision (pp. 17-18).",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "momus-thessaloniki",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "museo-nacional-de-arte-moderno-carlos-m-rida-munam-guatemala-city",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The ministry page is the museum's visitor page (hours, tariffs, history). It says the museum was in 1975 part of the Instituto de Antropologia e Historia of the Viceministerio de Cultura of the Ministerio de Educacion, now the Ministerio de Cultura y Deportes. It does not state the museum's present legal form or call it a ministry service.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Ministerio de Cultura y Deportes",
+    "page says": "Only a past-tense history line; no statement of a present parent.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "museo-nacional-de-arte-moderno-carlos-m-rida-munam-guatemala-city",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "mus-e-national-de-guin-e-sandervalia-conakry",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The ministry page lists the Musee National de Guinee under 'Les Services Rattaches' with no statement of legal form. The 30 March 2026 news item says only that the finance minister cited the state's commitment to transform the museum into an etablissement public administratif; it does not state the form in force today.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Ministere de la Culture, du Tourisme et de l'Artisanat",
+    "page says": "A list of attached services does not state a parent-body relationship in legal terms.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "mus-e-national-de-guin-e-sandervalia-conakry",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ }
+]

@@ -1,0 +1,76 @@
+[
+ {
+  "id": "flux-factory-queens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "printed-matter-new-york",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2025",
+    "page says": "The cited web.archive.org URL redirects to the 2026-01-01 capture (web/20260101040733); the page read is dated 2026",
+    "fix": "2026"
+   }
+  ],
+  "corrected": {
+   "id": "printed-matter-new-york",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://web.archive.org/web/2025/https://www.printedmatter.org/about"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the Mission and History page, read as a web.archive.org copy because the live page refuses automated requests, calls it a non-profit organization."
+  }
+ },
+ {
+  "id": "recess-brooklyn-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "smack-mellon-brooklyn",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "storefront-art-architecture-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "triple-canopy-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "white-columns-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artpace-san-antonio",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "galeria-de-la-raza-san-francisco",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "southern-exposure-san-francisco",
+  "verdict": "ok",
+  "faults": []
+ }
+]

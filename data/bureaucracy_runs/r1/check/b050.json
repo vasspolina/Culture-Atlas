@@ -1,0 +1,81 @@
+[
+ {
+  "id": "v2-lab-unstable-media-rotterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstmuseum-den-haag",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-beelden-aan-zee-the-hague",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "stroom-den-haag",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2026",
+    "page says": "The ANBI page carries no date; its latest dated items are the Multi-Year Policy Plan 2025-2028 and the ANBI Form 2025",
+    "fix": "2025"
+   }
+  ],
+  "corrected": {
+   "id": "stroom-den-haag",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://www.stroom.nl/en/anbi-algemeen-nut-beogende-instelling-wnt-wet-normering-topinkomens"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The ANBI page gives the statutory name Stichting Stroom Den Haag, its Articles of Association and a Board that sets the directors' salaries."
+  }
+ },
+ {
+  "id": "west-den-haag",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "de-pont",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bak-utrecht",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "casco-art-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centraal-museum-utrecht",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "het-hem-zaandam",
+  "verdict": "ok",
+  "faults": []
+ }
+]

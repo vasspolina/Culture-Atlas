@@ -1,0 +1,118 @@
+[
+ {
+  "id": "van-abbemuseum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-schijndel-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstfort-bij-vijfhuizen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-dowse-art-museum-lower-hutt",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "govett-brewster-len-lye-centre-new-plymouth",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-doesburg-rinsemahuis",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "2025 annual report: the house is 'ondergebracht in een aparte stichting' while Museum Dr8888 runs exploitation and programming; no legal form (private nonprofit, private foundation) is stated. Same inference rejected in first_pass_rulings.json",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "van-doesburg-rinsemahuis",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "auckland-art-gallery-toi-o-t-maki",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "municipal or regional body",
+    "page says": "Annual review and about page say Tataki Auckland Unlimited is an Auckland Council-controlled organisation that owns and operates the gallery; the gallery is not said to be a Council unit and no legal form is stated for the CCO",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "auckland-art-gallery-toi-o-t-maki",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "dunedin-public-art-gallery-dunedin",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "municipal or regional body",
+    "page says": "The DCC leadership page only lists the gallery among a General Manager's responsibilities; no page says the gallery is a Council unit (NZ council precedent)",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "dunedin-public-art-gallery-dunedin",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "christchurch-art-gallery",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.controls",
+    "stored": [
+     "state audit office"
+    ],
+    "page says": "Plan p.31: 'In terms of the specific requirements associated with the AMP, we must satisfy the expectations of Audit New Zealand and the Office of the Auditor General'; this concerns the plan document, not a stated audit of the gallery",
+    "fix": []
+   },
+   {
+    "field": "basis",
+    "stored": "The Council's 2020 asset management plan for the gallery treats it as a Council activity with Council-owned building, internal Council service units, and Audit New Zealand and Auditor-General expectations.",
+    "page says": "audit clause removed with the control",
+    "fix": "The Council's 2020 asset management plan for the gallery treats it as a Council activity with a Council-owned building and internal Council service units."
+   }
+  ],
+  "corrected": {
+   "id": "christchurch-art-gallery",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "Christchurch City Council",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2020",
+    "sources": [
+     "https://web.archive.org/web/20240702082426/https://www.ccc.govt.nz/assets/Documents/The-Council/Plans-Strategies-Policies-Bylaws/Plans/Long-Term-Plan/ltp2021/AMP-Christchurch-Art-Gallery-Draft-LTP-2021-2031.PDF"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Council's 2020 asset management plan for the gallery treats it as a Council activity with a Council-owned building and internal Council service units."
+  }
+ }
+]

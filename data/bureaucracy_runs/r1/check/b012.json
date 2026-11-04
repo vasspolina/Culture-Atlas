@@ -1,0 +1,89 @@
+[
+ {
+  "id": "galerie-de-luqam-montréal",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mac-montr-al",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "phi-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-polygon-gallery-north-vancouver",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "oakville-galleries",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "musée-national-des-beaux-arts-du-québec-quebec-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mackenzie-art-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "owens-art-gallery-sackville",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "remai-modern",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-rooms-st-johns",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "https://www.assembly.nl.ca/legislation/sr/annualstatutes/2016/r15-2.c16.htm",
+    "page says": "The cited page is the 2016 act as assented, with commencement 'on a day to be proclaimed' and no sign it is in force today; the 2023-2024 annual report (p.93) still describes the corporation as established under the Rooms Act on May 19, 2005, the act that section 36 repeals. The consolidated text at the fix url shows the act as amended to 2021 and carries the same sections 3, 5, 10, 13 and 20.",
+    "fix": "https://www.assembly.nl.ca/legislation/sr/statutes/r15-2.htm"
+   }
+  ],
+  "corrected": {
+   "id": "the-rooms-st-johns",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Department of Tourism, Culture, Arts and Recreation of Newfoundland and Labrador",
+    "director_appointed_by": "government or ministry",
+    "staff_status": null,
+    "budget_set_by": "legislature or ministry",
+    "controls": [
+     "state audit office"
+    ],
+    "year": "2024",
+    "sources": [
+     "https://www.assembly.nl.ca/legislation/sr/statutes/r15-2.htm",
+     "https://www.gov.nl.ca/tcar/files/TheRoomsAnnualReport2023-2024.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Rooms Act (2016, chapter R-15.2, consolidated text amended to 2021) sections 3, 5, 10, 13 and 20 continue the corporation as an agent of the Crown, have the Lieutenant-Governor in Council appoint the chief executive officer, tie staffing to the budget approved by the minister and appoint the auditor general as auditor, and the 2023-2024 annual report on PDF pages 51 and 93 confirms the Crown corporation status and government-appointed board."
+  }
+ },
+ {
+  "id": "art-metropole-toronto",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mercer-union-toronto",
+  "verdict": "ok",
+  "faults": []
+ }
+]

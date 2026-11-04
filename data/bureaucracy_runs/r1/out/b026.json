@@ -1,0 +1,215 @@
+[
+ {
+  "id": "deutsches-spionagemuseum-berlin",
+  "governance": {
+   "legal_form": "private company",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.deutsches-spionagemuseum.de/impressum",
+    "https://www.deutsches-spionagemuseum.de/agb"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the imprint names Deutsches Spionage Museum DSM GmbH as responsible for the site and the terms page says DSM sells tickets to its exhibitions."
+ },
+ {
+  "id": "flutgraben-berlin",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://flutgraben.org/en/web/about",
+    "https://flutgraben.org/en/web/impressum"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the association page calls Flutgraben e.V. a non-profit, self-organized association and the imprint gives its Vereinsregister entry VR 16563 B."
+ },
+ {
+  "id": "gropius-bau",
+  "governance": {
+   "legal_form": "private company",
+   "parent": "Kulturveranstaltungen des Bundes in Berlin (KBB) GmbH, whose sole shareholder is the Federal Republic of Germany",
+   "director_appointed_by": null,
+   "staff_status": "public employees",
+   "budget_set_by": null,
+   "controls": [
+    "public procurement law"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://www.kbb.eu/en/ueber-die-kbb/struktur",
+    "https://www.berlinerfestspiele.de/en/service/impressum",
+    "https://www.kbb.eu/magnoliaPublic/dam/jcr:cb3b0a16-2bcb-47c2-a85d-c238543b65cb/kbb-eu/Downloads/Governance/50_KBB-PCGK-Bericht-2025_final.pdf",
+    "https://www.kbb.eu/en/stellenangebote/kbb-als-arbeitgeberin",
+    "https://www.kbb.eu/en/ausschreibungen"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Berliner Festspiele imprint lists Gropius Bau with the Berliner Festspiele, a division of KBB GmbH, the KBB structure and 2025 corporate governance report page 1 name the Federal Republic as sole shareholder, the KBB employer page gives pay under TVöD Bund, and the KBB tenders page says KBB is subject to public procurement rules."
+ },
+ {
+  "id": "hamburger-bahnhof-berlin",
+  "governance": {
+   "legal_form": "public foundation",
+   "parent": "Stiftung Preußischer Kulturbesitz",
+   "director_appointed_by": null,
+   "staff_status": "public employees",
+   "budget_set_by": "legislature or ministry",
+   "controls": [
+    "state audit office"
+   ],
+   "year": "2025",
+   "sources": [
+    "https://www.gesetze-im-internet.de/stiftpkg/BJNR0650A0025.html",
+    "https://www.smb.museum/en/about-us/profile/",
+    "https://www.smb.museum/museen-einrichtungen/hamburger-bahnhof/ueber-uns/profil/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: sections 1, 12 and 14 of the Stiftung Preußischer Kulturbesitz law (in force from 1 December 2025) give the public foundation form, ministry approval of the budget, Bundesrechnungshof audit and federal pay scales, and the SMB pages place the Hamburger Bahnhof as a house of the Nationalgalerie within the Staatliche Museen under the foundation."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "governance": {
+   "legal_form": "private company",
+   "parent": "Kulturveranstaltungen des Bundes in Berlin (KBB) GmbH, whose sole shareholder is the Federal Republic of Germany",
+   "director_appointed_by": null,
+   "staff_status": "public employees",
+   "budget_set_by": null,
+   "controls": [
+    "public procurement law"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://www.kbb.eu/en/ueber-die-kbb/struktur",
+    "https://www.berlinerfestspiele.de/en/service/impressum",
+    "https://www.kbb.eu/magnoliaPublic/dam/jcr:cb3b0a16-2bcb-47c2-a85d-c238543b65cb/kbb-eu/Downloads/Governance/50_KBB-PCGK-Bericht-2025_final.pdf",
+    "https://www.kbb.eu/en/stellenangebote/kbb-als-arbeitgeberin",
+    "https://www.kbb.eu/en/ausschreibungen"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Berliner Festspiele imprint lists Haus der Kulturen der Welt as a KBB business division, the KBB structure and 2025 corporate governance report page 1 name the Federal Republic as sole shareholder, the KBB employer page gives pay under TVöD Bund, and the KBB tenders page says KBB is subject to public procurement rules."
+ },
+ {
+  "id": "humboldt-forum-berlin",
+  "governance": {
+   "legal_form": "public foundation",
+   "parent": "German federal government, which founded the foundation",
+   "director_appointed_by": "board",
+   "staff_status": "employees of the institution",
+   "budget_set_by": "board",
+   "controls": [
+    "charity or foundation regulator"
+   ],
+   "year": "2023",
+   "sources": [
+    "https://www.humboldtforum.org/wp-content/uploads/2023/03/20230314_Satzung.pdf",
+    "https://www.humboldtforum.org/en/stiftung-humboldt-forum-im-berliner-schloss/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the statute (version amended 14 March 2023) pages 3, 5, 6 and 8 to 9 give the foundation form, council appointment of the board, council approval of the Wirtschaftsplan and Berlin foundation supervision, and the foundation page says the federal government founded it in 2009 on a Bundestag decision."
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "juedisches-museum-berlin",
+  "governance": {
+   "legal_form": "public foundation",
+   "parent": "German federal government",
+   "director_appointed_by": "board",
+   "staff_status": "public employees",
+   "budget_set_by": "board",
+   "controls": [
+    "public procurement law",
+    "state audit office"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://www.jmberlin.de/en/about-the-organisation",
+    "https://www.gesetze-im-internet.de/jmbstiftg/__1.html",
+    "https://www.gesetze-im-internet.de/jmbstiftg/__6.html",
+    "https://www.gesetze-im-internet.de/jmbstiftg/__8.html",
+    "https://www.gesetze-im-internet.de/jmbstiftg/__11.html",
+    "https://www.gesetze-im-internet.de/jmbstiftg/__12.html"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the Jewish Museum Berlin Foundation law sections 1, 6, 8, 11 and 12 give the federal public foundation form, council appointment of the director and council decision on the budget plan, Bundesrechnungshof audit and federal pay agreements, and the museum's organisation page says it is under federal government control and that public procurement law applies."
+ },
+ {
+  "id": "kw-institute-for-contemporary-art",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.kw-berlin.de/en/about/board",
+    "https://www.kw-berlin.de/en/about/mission-history"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the board and history pages say KUNST-WERKE BERLIN e. V. brings KW Institute for Contemporary Art and the Berlin Biennale together under one roof."
+ },
+ {
+  "id": "kunstraum-kreuzberg-bethanien",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Fachbereich Kultur und Geschichte of the Bezirksamt Friedrichshain-Kreuzberg von Berlin",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://kunstraumkreuzberg.de/impressum/",
+    "https://kunstraumkreuzberg.de/kunstraum-kreuzberg/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the imprint says Kunstraum Kreuzberg/Bethanien is an Einrichtung of the Fachbereich Kultur und Geschichte of the Bezirksamt Friedrichshain-Kreuzberg."
+ },
+ {
+  "id": "k-nstlerhaus-bethanien-berlin",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": "Akademie der Künste Berlin and the DAAD Berlin Artists-in-Residence programme, named as trustees",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://bethanien.de/en/imprint/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Governance: the imprint calls Künstlerhaus Bethanien GmbH a non-profit limited liability company and names the Akademie der Künste and the DAAD programme as its trustees."
+ },
+ {
+  "id": "museum-fur-deutsche-geschichte",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ }
+]

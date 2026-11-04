@@ -1,0 +1,50 @@
+[
+  {"id": "national-asian-culture-center-acc-gwangju", "verdict": "ok", "faults": []},
+  {"id": "alternative-space-loop-seoul", "verdict": "ok", "faults": []},
+  {
+    "id": "amorepacific-museum-of-art-seoul",
+    "verdict": "fault",
+    "faults": [
+      {
+        "field": "governance.legal_form",
+        "stored": "private company",
+        "page says": "The footer lists the museum as \"㈜아모레퍼시픽 미술관\" with a placeholder business number (123-45-67890) above the separate Amorepacific Corp company block. No page states the legal form of the museum or that a company runs it; the form is read from the name prefix.",
+        "fix": null
+      },
+      {
+        "field": "governance.parent",
+        "stored": "Amorepacific Corp",
+        "page says": "No cited text states that Amorepacific Corp owns or runs the museum.",
+        "fix": null
+      },
+      {
+        "field": "basis",
+        "stored": "The museum site footer lists the museum under the Amorepacific Corp company details and names Amorepacific Corp as host.",
+        "page says": "The footer line is \"호스팅제공자 : (주)아모레퍼시픽\", which names the web hosting provider of the site, not the host of the museum.",
+        "fix": ""
+      }
+    ],
+    "corrected": {"id": "amorepacific-museum-of-art-seoul", "governance": null, "red_tape": null, "basis": ""}
+  },
+  {
+    "id": "arko-art-center-seoul",
+    "verdict": "fault",
+    "faults": [
+      {
+        "field": "governance.legal_form",
+        "stored": "statutory public body",
+        "page says": "The About page calls ARKO \"a national organization for the arts and culture established in 1973\"; the History page says it began as a foundation in 1973 and was restructured in 2005 as a consensus-based decision-making body of practising artists. Neither page states ARKO's legal form today, a government-appointed board, or a statute that makes it a public body.",
+        "fix": null
+      },
+      {
+        "field": "basis",
+        "stored": "The ARKO history page says the council descends from a foundation set up in 1973 under the Culture and Arts Promotion Act and was refounded when the Act was revised in 2005; its organisation chart lists ARKO Art Center as one of its units.",
+        "page says": "The organisation chart is on the About page, not the History page, and no cited page states the form of the body.",
+        "fix": ""
+      }
+    ],
+    "corrected": {"id": "arko-art-center-seoul", "governance": null, "red_tape": null, "basis": ""}
+  },
+  {"id": "ilmin-museum-of-art-seoul", "verdict": "ok", "faults": []},
+  {"id": "national-museum-of-modern-and-contemporary-art-mmca", "verdict": "ok", "faults": []}
+]

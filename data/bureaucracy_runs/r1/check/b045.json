@@ -1,0 +1,66 @@
+[
+ {
+  "id": "festival-internacional-cervantino",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The directory lists the Gobierno de México, Secretaría de Cultura, Guanajuato state government, Universidad de Guanajuato, a programming committee, an advisory council and the festival's own coordinator and directors as separate blocks. It does not say the festival is a body or unit of the Secretaría; the footer only names the Secretaría as rights holder.",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "The festival's own directory lists its executive coordinator and staff under the Dirección General de Circuitos y Festivales of the Secretaría de Cultura, and its footer names the Secretaría de Cultura del Gobierno de México.",
+    "page says": "The festival's staff are listed under their own heading, not under the Dirección General de Circuitos y Festivales, which has a separate block with other staff.",
+    "fix": ""
+   }
+  ],
+  "corrected": {
+   "id": "festival-internacional-cervantino",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "muac-mexico-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-experimental-el-eco-mexico-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-jumex",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-soumaya",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-tamayo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-universitario-del-chopo-mexico-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-la-ciudad-de-méxico-mexico-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "soma-mexico-city",
+  "verdict": "ok",
+  "faults": []
+ }
+]

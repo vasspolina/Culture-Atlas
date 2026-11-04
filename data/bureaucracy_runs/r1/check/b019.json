@@ -1,0 +1,158 @@
+[
+ {
+  "id": "ordrupgaard-charlottenlund",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "copenhagen-contemporary-copenhagen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "den-frie-centre-copenhagen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "designmuseum-danmark-copenhagen",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "Governance: the 2023 annual report says Designmuseum Danmark is a state-recognised museum and a selvejende institution with a board elected by a representative assembly (PDF pages 30 and 31).",
+    "page says": "The selvejende institution sentence and the state-recognised museum sentence are on PDF page 28 of the cited PDF (acknowledgements page); PDF page 30 is about building funders. The board and representative assembly are on PDF page 31.",
+    "fix": "cite PDF pages 28 and 31"
+   }
+  ],
+  "corrected": {
+   "id": "designmuseum-danmark-copenhagen",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2023",
+    "sources": [
+     "https://designmuseum.dk/wp-content/uploads/2024/06/Aarsrapport_2023_spread_WEB.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the 2023 annual report says Designmuseum Danmark is a state-recognised museum and a selvejende institution (PDF page 28) and that its board is elected by a representative assembly (PDF page 31)."
+  }
+ },
+ {
+  "id": "kunsthal-charlottenborg",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "university unit",
+    "page says": "The 2024 annual report (PDF page 7) calls the Academy an institution under Kulturministeriet and a higher education institution with its own act and Finance Act appropriation; it never calls it a university or a unit of one, and states no other form.",
+    "fix": "national government body"
+   }
+  ],
+  "corrected": {
+   "id": "kunsthal-charlottenborg",
+   "governance": {
+    "legal_form": "national government body",
+    "parent": "Det Kongelige Danske Kunstakademis Billedkunstskoler",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "state audit office"
+    ],
+    "year": "2024",
+    "sources": [
+     "https://kunstakademiet.dk/assets/uploads/Demo/arsrapport_2024_billedkunstskolerne_final_20_03_25_m_underskrift.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the Academy's 2024 annual report says the Academy institution under the Ministry of Culture must run the exhibition hall at Charlottenborg and that its accounts go to the Rigsrevisionen (PDF pages 5 and 7)."
+  }
+ },
+ {
+  "id": "ny-carlsberg-glyptotek",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "o-overgaden-copenhagen",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.budget_set_by",
+    "stored": "board",
+    "page says": "Bylaws 7.1 say expenses follow 'de årlige godkendte budgetter' (yearly approved budgets) at the board's discretion; no section names who approves the budget. Section 8.1 has the accounts approved by Statens Kunstfonds Projektstøtteudvalg.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "o-overgaden-copenhagen",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": "board",
+    "staff_status": "employees of the institution",
+    "budget_set_by": null,
+    "controls": [
+     "freedom of information law"
+    ],
+    "year": "2020",
+    "sources": [
+     "https://cms.overgaden.org/media/pages/about/90445d7932-1741685854/vedtagter-overgaden-2020.pdf",
+     "https://overgaden.org/en/about"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the 2020 bylaws, published on the about page, make it a selvejende institution (section 1), the board hires and dismisses the leader (5.6), the leader hires other staff (6.1), the activity falls under the Freedom of Information Act (6.3), and the board spends under yearly approved budgets (7.1)."
+  }
+ },
+ {
+  "id": "heart-herning-herning",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "louisiana-museum-of-modern-art",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2026",
+    "page says": "The cited page carries a modified date of 2025-04-30 and no 2026 date; year is the date of the document read.",
+    "fix": "2025"
+   }
+  ],
+  "corrected": {
+   "id": "louisiana-museum-of-modern-art",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://louisiana.dk/om-louisiana-info/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the museum's own page on statutes and organisation says Louisiana is a selvejende institution and a private state-recognised museum under the Museum Act."
+  }
+ },
+ {
+  "id": "trapholt-kolding",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centro-león-santiago-de-los-caballeros",
+  "verdict": "ok",
+  "faults": []
+ }
+]

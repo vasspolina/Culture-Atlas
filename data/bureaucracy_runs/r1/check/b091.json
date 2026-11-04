@@ -1,0 +1,66 @@
+[
+ {
+  "id": "sculpturecenter",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "solomon-r-guggenheim-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The 2020 audited financial statements (note 1 on PDF page 9, income tax status on PDF page 10) say the Foundation owns and operates the Museum and is exempt under Section 501(c)(3), with a Board of Trustees.",
+    "page says": "The Income Tax Status paragraph (501(c)(3) exemption) sits on PDF page 15, not PDF page 10; PDF page 10 is the start of the accounting policies note.",
+    "fix": "The 2020 audited financial statements (note 1 on PDF page 9, income tax status on PDF page 15) say the Foundation owns and operates the Museum and is exempt under Section 501(c)(3), with a Board of Trustees."
+   }
+  ],
+  "corrected": {
+   "id": "solomon-r-guggenheim-museum",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2020",
+    "sources": [
+     "https://www.guggenheim.org/wp-content/uploads/2021/06/guggenheim-audited-financial-statements-2020.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The 2020 audited financial statements (note 1 on PDF page 9, income tax status on PDF page 15) say the Foundation owns and operates the Museum and is exempt under Section 501(c)(3), with a Board of Trustees."
+  }
+ },
+ {
+  "id": "swiss-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-drawing-center-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-kitchen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "whitney-museum-of-american-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "oakland-museum-of-california-oakland",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bemis-center",
+  "verdict": "ok",
+  "faults": []
+ }
+]

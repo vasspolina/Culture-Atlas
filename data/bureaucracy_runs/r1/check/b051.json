@@ -1,0 +1,64 @@
+[
+ {
+  "id": "tjibaou-cultural-centre-adck-noum-a",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artspace-aotearoa-auckland",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "te-uru-waitakere-contemporary-gallery-auckland",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "Charities Register CC41215 gives the legal structure as Incorporated Society; the About page lists an elected member and the gallery page offers membership. The brief reserves private nonprofit for a trust or charity with an independent board and association for a membership body.",
+    "fix": "association"
+   }
+  ],
+  "corrected": {
+   "id": "te-uru-waitakere-contemporary-gallery-auckland",
+   "governance": {
+    "legal_form": "association",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "charity or foundation regulator"
+    ],
+    "year": "2026",
+    "sources": [
+     "https://register.charities.govt.nz/Charity/CC41215",
+     "https://teuru.org.nz/pages/about"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the Charities Register entry CC41215 lists Te Uru Waitakere Contemporary Gallery Incorporated as a registered charity with the legal structure Incorporated Society, and the gallery's About page lists its governance committee."
+  }
+ },
+ {
+  "id": "city-gallery-wellington-wellington",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "enjoy-contemporary-art-space-wellington",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "te-papa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "toi-m-ori-aotearoa-wellington",
+  "verdict": "ok",
+  "faults": []
+ }
+]

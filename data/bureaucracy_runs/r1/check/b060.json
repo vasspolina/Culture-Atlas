@@ -1,0 +1,80 @@
+[
+ {
+  "id": "smena-centre-for-contemporary-culture-kazan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "typography-center-krasnodar",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2022",
+    "page says": "The page states the legal entity ANO KCSI Tipografiya ceased work in March 2023, so the document dates from 2023 or later, not 2022",
+    "fix": "2023"
+   }
+  ],
+  "corrected": {
+   "id": "typography-center-krasnodar",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2023",
+    "sources": [
+     "https://typography-online.ru"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the centre's own site names it as the autonomous non-profit organisation (ANO) Krasnodar Centre for Contemporary Art Typography and says it closed on 12 May 2022."
+  }
+ },
+ {
+  "id": "ges-2-house-of-culture-moscow",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2026",
+    "page says": "The V-A-C about page carries no date or copyright year (latest date on it is the 4 December 2021 opening), so 2026 is the fetch year, not the document's",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "ges-2-house-of-culture-moscow",
+   "governance": {
+    "legal_form": "private foundation",
+    "parent": "V-A-C Foundation",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": null,
+    "sources": [
+     "https://v-a-c.org/en/about"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the V-A-C about page says Leonid Mikhelson established the Foundation in Moscow in 2009 and calls GES-2 House of Culture its platform."
+  }
+ },
+ {
+  "id": "garage-museum-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "jewish-museum-and-tolerance-center-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "moscow-museum-of-modern-art-mmoma-moscow",
+  "verdict": "ok",
+  "faults": []
+ }
+]

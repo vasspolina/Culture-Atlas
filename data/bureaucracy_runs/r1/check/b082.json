@@ -1,0 +1,112 @@
+[
+ {
+  "id": "whitechapel-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "home-manchester",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "manchester-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-whitworth",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.year",
+    "stored": "2025",
+    "page says": "The cited web.archive.org URL resolves to the capture of 1 January 2026 (web/20260101025552/), so the document read is dated 2026",
+    "fix": "2026"
+   }
+  ],
+  "corrected": {
+   "id": "the-whitworth",
+   "governance": {
+    "legal_form": "university unit",
+    "parent": "University of Manchester",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://web.archive.org/web/2025/https://www.whitworth.manchester.ac.uk/about/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Whitworth's own about page, read in a web.archive.org copy, says it is part of The University of Manchester."
+  }
+ },
+ {
+  "id": "the-crab-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "turner-contemporary-margate",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mima",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mk-gallery-milton-keynes",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "new-art-exchange-nottingham",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nottingham-contemporary",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "https://www.nottinghamcontemporary.org/about-us/",
+    "page says": "The page is a 404 Not Found error page (only the site footer says registered charity no. 1116670); it states no governance fact. The 2024-25 accounts alone state the company limited by guarantee form, the elected and coopted trustees and the charity registration",
+    "fix": "drop the about-us url from sources"
+   }
+  ],
+  "corrected": {
+   "id": "nottingham-contemporary",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "charity or foundation regulator"
+    ],
+    "year": "2025",
+    "sources": [
+     "https://opencharities.uk/ew/1116670/files/2025-03-31-accounts.html"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The 2024-25 trustees' report says it is a charitable company limited by guarantee with trustees elected and coopted under its articles."
+  }
+ },
+ {
+  "id": "modern-art-oxford",
+  "verdict": "ok",
+  "faults": []
+ }
+]

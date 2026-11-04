@@ -1,0 +1,100 @@
+[
+ {
+  "id": "stills-edinburgh",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "talbot-rice-gallery-edinburgh",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "baltic-centre-for-contemporary-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "goma-glasgow",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "The GoMA page on glasgowlife.org.uk says only that GoMA is one of the Glasgow Life museums. The OSCR entry SC037844 gives the form (Company, registered with Companies House) for Culture and Sport Glasgow, the operator. No cited page states GoMA's own legal form, so the operator's form is carried over to the venue by inference.",
+    "fix": null
+   },
+   {
+    "field": "governance",
+    "stored": "whole block (parent Glasgow Life, controls freedom of information law and charity regulator, year 2026)",
+    "page says": "The parent, the OSCR entry and the Publication Scheme text are stated for Glasgow Life / Culture and Sport Glasgow, not for GoMA. The FOI page names no GoMA. With legal_form unsupported the brief (step 6) makes governance null.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "goma-glasgow",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "the-common-guild-glasgow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hay-festival-hay-on-wye",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "compton-verney-kineton",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "henry-moore-institute-leeds",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "charleston",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": "two Charity Commission register tabs for charity 1107313",
+    "page says": "Both pages are about The Charleston Trust (Bloomsbury in Sussex): organisation type Charitable company, memorandum and articles incorporated 2004. Neither page mentions the Charleston venue at Lewes, its website or its address, and the venue's own site (charleston.org.uk) refuses fetching, so no cited page ties the Trust to the venue. The form is taken from a name match.",
+    "fix": null
+   },
+   {
+    "field": "governance",
+    "stored": "whole block (private nonprofit, charity regulator, year 2026)",
+    "page says": "legal_form of the venue is unsupported by a page that links it to the register entry, so governance is null under step 6.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "charleston",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "bluecoat-liverpool",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fact-liverpool",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mostyn",
+  "verdict": "ok",
+  "faults": []
+ }
+]

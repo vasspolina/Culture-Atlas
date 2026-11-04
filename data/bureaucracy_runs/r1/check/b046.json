@@ -1,0 +1,72 @@
+[
+ {
+  "id": "museo-amparo-puebla",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundación-casa-wabi-puerto-escondido",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centro-cultural-tijuana-tijuana",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "The 2018-2024 management report names the entity Compañía Operadora del Centro Cultural y Turístico de Tijuana, S.A. de C.V. and lists the Ley General de Sociedades Mercantiles and its acta constitutiva among its framework; no cited page states a statutory public body or a law creating it",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Secretaría de Cultura",
+    "page says": "The budget report shows only 'SECTOR: 48 Cultura'; the management report names the Programa Sectorial de Cultura. Neither names the Secretaría de Cultura as owner or parent",
+    "fix": null
+   },
+   {
+    "field": "governance.controls",
+    "stored": [
+     "public procurement law",
+     "state audit office",
+     "freedom of information law"
+    ],
+    "page says": "The report lists the procurement law and the transparency law in its legal framework; no page names the Auditoría Superior de la Federación or a state audit office",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "calls the S.A. de C.V. a majority state-owned enterprise of Ramo 48 Cultura ... (page 14)",
+    "page says": "The report has 10 pages; none says 'majority state-owned' or 'Ramo 48'; the sentence is not on the cited pages",
+    "fix": ""
+   }
+  ],
+  "corrected": {
+   "id": "centro-cultural-tijuana-tijuana",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "museo-de-arte-de-zapopan-zapopan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ulaanbaatar-international-media-art-festival-ubimaf",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "zanabazar-museum-of-fine-art-ulaanbaatar",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondation-ifitry-essaouira",
+  "verdict": "ok",
+  "faults": []
+ }
+]

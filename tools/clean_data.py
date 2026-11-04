@@ -29,6 +29,7 @@ DROP = ['financial_data', 'temporary_shows', 'floor_plans', 'archives_and_collec
         'curator_recommendation']   # written by the model, never shown
 AGGREGATORS = {'propublica.org', 'findthatcharity.uk', 'charitycommission.gov.uk', 'web.archive.org', 'e-flux.com',
                'facebook.com', 'instagram.com', 'linkedin.com', 'twitter.com', 'x.com', 'wikipedia.org'}
+OWN_SITE = {'e-flux-new-york': 'e-flux.com'}   # an aggregator that is itself on the atlas keeps its own site
 
 
 LOST_AMOUNT = re.compile(r'(?<![\w$€£¥])\.\d+\s?[BMK]\b|(?<![\w$€£¥])M\+|^\s*\d+(?:\.\d+)?\s?[BMK]\.')
@@ -205,8 +206,8 @@ def clean(records, report=None):
                 del r[k]
                 bump(k)
         g = r.get('gossip_data')
-        if g is not None:                      # keep sourced case files only
-            keep = {k: g[k] for k in ('real_cases', 'accounts') if g.get(k)}
+        if g is not None:                      # keep sourced case files, accounts and the gossip items (notes/gossip-criteria.md) only
+            keep = {k: g[k] for k in ('real_cases', 'accounts', 'gossip') if g.get(k)}
             if keep:
                 r['gossip_data'] = keep
             else:
@@ -222,7 +223,7 @@ def clean(records, report=None):
         if not isinstance(r.get('year_founded'), int):
             r.pop('year_founded', None)
         for key in ('website', 'visit_url'):   # a registry page is not the museum's website
-            if r.get(key) and host_of(r[key]) in AGGREGATORS:
+            if r.get(key) and host_of(r[key]) in AGGREGATORS and host_of(r[key]) != OWN_SITE.get(r.get('id')):
                 del r[key]
                 bump(key + '_was_a_registry_page')
         for key in ('audit_dossier_url', 'statutory_filings_url'):

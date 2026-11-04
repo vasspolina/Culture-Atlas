@@ -1,0 +1,89 @@
+[
+ {
+  "id": "ein-haus-woba",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-le-lac",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-duldeck-rudolf-steiner-archiv",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "turn-end",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-hill-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "picker-house",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": [
+     "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/271185/governing-document"
+    ],
+    "page says": "The cited Charity Commission entry describes the Stanley Picker Trust (271185, trust deed 8 March 1976) and never mentions Picker House. The page that ties the house to the Trust, https://www.stanleypickertrust.org/about ('Stanley Picker died in 1982 leaving his house, the pavilion gallery and art collection in trust', Registered Charity No. 271185), is not cited.",
+    "fix": [
+     "https://www.stanleypickertrust.org/about",
+     "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/271185/governing-document"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "picker-house",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "charity or foundation regulator"
+    ],
+    "year": "2026",
+    "sources": [
+     "https://www.stanleypickertrust.org/about",
+     "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/271185/governing-document"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Stanley Picker Trust about page says Stanley Picker left the house, pavilion gallery and collection in trust and shows Registered Charity No. 271185, and the Charity Commission register entry for charity 271185 gives a trust deed dated 8 March 1976."
+  }
+ },
+ {
+  "id": "isokon-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "78-derngate",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "longhouse-reserve",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fay-and-gus-jones-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "takaezu-studio",
+  "verdict": "ok",
+  "faults": []
+ }
+]

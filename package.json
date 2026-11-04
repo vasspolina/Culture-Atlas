@@ -6,7 +6,7 @@
     "start": "node server/index.js",
     "dev": "node --watch server/index.js",
     "db:push": "prisma db push",
-    "test": "node --test server/test/*.test.mjs"
+    "test": "node --test server/test/*.test.mjs tests/*.test.mjs"
   },
   "dependencies": {
     "@prisma/client": "^6.19.0",

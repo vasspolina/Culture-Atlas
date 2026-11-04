@@ -1,0 +1,94 @@
+[
+ {
+  "id": "cultuurhuis-bergeijk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "de-nollen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-doesburg-rinsemahuis",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "The 2025 annual report of Museum Dr8888 says only that the house is held in a separate stichting while Museum Dr8888 runs exploitation and programming and a change of direction is being prepared with Gemeente Smallingerland. It does not say who founded the stichting, that its board is independent, or that it is private or a charity. The report is about another institution (the museum).",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "van-doesburg-rinsemahuis",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "jachthuis-sint-hubertus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cuypershuis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chabot-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The 2025 annual report sections 2, 3 and 4 say Stichting Hendrik Chabot was founded in 1992, is a cultural ANBI, runs a supervisory board model since March 2023 and pays its employees under the museum CAO.",
+    "page says": "The CAO sentence on paying employees sits in section 5 (Fair Practice Code), not in sections 2, 3 or 4; section 3 does not hold the cited facts.",
+    "fix": "The 2025 annual report sections 2 and 4 say Stichting Hendrik Chabot was founded in 1992, is a cultural ANBI and runs a supervisory board model since March 2023, and section 5 says employees are paid under the museum CAO."
+   }
+  ],
+  "corrected": {
+   "id": "chabot-museum",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": "employees of the institution",
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://chabotmuseum.nl/wp-content/uploads/2026/06/Stichting-Hendrik-Chabot-JVJR2025_website.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The 2025 annual report sections 2 and 4 say Stichting Hendrik Chabot was founded in 1992, is a cultural ANBI and runs a supervisory board model since March 2023, and section 5 says employees are paid under the museum CAO."
+  }
+ },
+ {
+  "id": "kijk-kubus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sonneveld-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "huis-jan-de-jong",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vigeland-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "munchs-hus",
+  "verdict": "ok",
+  "faults": []
+ }
+]

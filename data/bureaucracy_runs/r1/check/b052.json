@@ -1,0 +1,87 @@
+[
+ {
+  "id": "sarjeant-gallery-whanganui",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources / legal_form",
+    "stored": "municipal or regional body, sourced to a Museums Aotearoa job-board listing",
+    "page says": "The listing is a Council recruitment advertisement hosted on museumsaotearoa.org.nz; it says 'As a part of the Whanganui District Council, Te Whare o Rehua Sarjeant Gallery contributes to the Council's vision'. It is not a statute, register entry or the gallery's own governance page, and the gallery's own About page (sarjeant.org.nz/about) does not state its legal form.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "sarjeant-gallery-whanganui",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "History page: in 1987 two individuals acquired the house and 'create the Foundation Casa de los Tres Mundos'. Confidencial (12 Feb 2026): the foundation was outlawed by the Executive on 19 Aug 2024 and the building was seized by the State. No cited page shows a form in force today; a donor-founded foundation would in any case be 'private foundation', not 'private nonprofit'.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "centro-de-arte-fundaci-n-ortiz-gurdi-n-le-n",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-west-african-art-mowaa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cca-lagos",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "g-a-s-foundation-guest-artists-space",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "About page: G.A.S. Foundation was 'established in 2019 by the eminent British-Nigerian artist Yinka Shonibare' and 'is a non-profit' governed by a board of trustees. Under the brief a foundation set up by a private donor is 'private foundation'; 'private nonprofit' is for a trust or charity with an independent board, and here governance is directed by the Yinka Shonibare Foundation.",
+    "fix": "private foundation"
+   }
+  ],
+  "corrected": {
+   "id": "g-a-s-foundation-guest-artists-space",
+   "governance": {
+    "legal_form": "private foundation",
+    "parent": "Yinka Shonibare Foundation",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.guestartistsspace.com/About"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The About Us page says G.A.S. Foundation is a non-profit governed by a board of trustees, with governance and oversight directed by the Yinka Shonibare Foundation."
+  }
+ },
+ {
+  "id": "national-museum-lagos-lagos",
+  "verdict": "ok",
+  "faults": []
+ }
+]

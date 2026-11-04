@@ -1,0 +1,96 @@
+[
+ {
+  "id": "imma-dublin",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "public foundation",
+    "page says": "The governance page says IMMA is a Public Body and a Company Limited by Guarantee; the memorandum page says it is a Company Limited by Guarantee with charitable status. No cited page calls it a foundation.",
+    "fix": "private nonprofit"
+   },
+   {
+    "field": "basis",
+    "stored": "...the public foundation form is chosen because the state controls the board of this company.",
+    "page says": "The pages state company limited by guarantee, public body and ministerial appointment of directors; the foundation form is the researcher's inference.",
+    "fix": "IMMA's governance page says it is a Public Body and a Company Limited by Guarantee whose Board directors the Minister for Tourism, Culture, Arts, Gaeltacht, Sport & Media appoints, and its memorandum page says it has charitable status approved by the Charities Regulator; a charitable company limited by guarantee is a private nonprofit."
+   }
+  ],
+  "corrected": {
+   "id": "imma-dublin",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": "Department of Tourism, Culture, Arts, Gaeltacht, Sport & Media",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "charity or foundation regulator"
+    ],
+    "year": "2024",
+    "sources": [
+     "https://imma.ie/about/overview/governance/",
+     "https://imma.ie/about/overview/governance/board-members/",
+     "https://imma.ie/about/overview/governance/memorandum-and-articles-of-association/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "IMMA's governance page says it is a Public Body and a Company Limited by Guarantee whose Board directors the Minister for Tourism, Culture, Arts, Gaeltacht, Sport & Media appoints, and its memorandum page says it has charitable status approved by the Charities Regulator; a charitable company limited by guarantee is a private nonprofit."
+  }
+ },
+ {
+  "id": "pallas-projects-dublin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "project-arts-centre-dublin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "temple-bar-gallery-studios",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-model",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haifa-museum-of-art",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "public foundation",
+    "page says": "The ad calls the company a public benefit company (hevra letoelet hatsibur) and a municipal corporation wholly owned by Haifa Municipality. It never says foundation.",
+    "fix": "municipal or regional body"
+   },
+   {
+    "field": "basis",
+    "stored": "The company's own job advertisement ... calls Haifa Museums a public benefit company and municipal corporation ...",
+    "page says": "The ad is hosted on the Israel Museums Association (ICOM Israel) site, not on the company's own site.",
+    "fix": "The Haifa Museums company's job advertisement, section Job description, as posted on the Israel Museums Association (ICOM Israel) site, calls the company a public benefit company and a municipal corporation wholly owned by Haifa Municipality that runs the city's museums, including the Haifa Museum of Art; a municipal corporation owned by the city is a municipal or regional body."
+   }
+  ],
+  "corrected": {
+   "id": "haifa-museum-of-art",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "Haifa Municipality",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "http://icom.org.il/node/4325"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Haifa Museums company's job advertisement, section Job description, as posted on the Israel Museums Association (ICOM Israel) site, calls the company a public benefit company and a municipal corporation wholly owned by Haifa Municipality that runs the city's museums, including the Haifa Museum of Art; a municipal corporation owned by the city is a municipal or regional body."
+  }
+ }
+]

@@ -1,0 +1,96 @@
+[
+ {
+  "id": "ekkm-tallinn",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.director_appointed_by",
+    "stored": "members",
+    "page says": "Section 4.3.2 gives the general meeting the appointment of the juhataja (head), but section 5.1 says the six board members elect the juhataja for one year, so the statute names two bodies",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "Governance: the statute (amended 31 August 2015), section 2.1 on the legal form, section 3.1 on membership, and section 4.3.2 which gives the general meeting the appointment of the head.",
+    "page says": "The sentence rests on section 4.3.2 alone and omits section 5.1",
+    "fix": "Governance: the statute (amended 31 August 2015), section 2.1 on the legal form and section 3.1 on membership."
+   }
+  ],
+  "corrected": {
+   "id": "ekkm-tallinn",
+   "governance": {
+    "legal_form": "association",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2015",
+    "sources": [
+     "https://admin.ekkm.ee/wp-content/uploads/2021/09/MT%C3%9C_Eesti_Kaasaegse_Kunsti_Muuseum_p%C3%B5hikiri.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the statute (amended 31 August 2015), section 2.1 on the legal form and section 3.1 on membership."
+  }
+ },
+ {
+  "id": "kumu-art-museum-tallinn",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tallinna-kunstihoone-tallinn",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fiji-museum-suva",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "oceania-centre-for-arts-culture-and-pacific-studies-usp-suva",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "Governance: the Centre's own About page (archived copy of 15 August 2025, as the live page refuses automated requests) says it began as a special project of the University Council and became a section of the University in the 2008 restructure.",
+    "page says": "Established in 1997 as a special project of the University Council; in 2008 the Pacific Studies Programme integrated into the section, so the Centre did not become a section in 2008",
+    "fix": "Governance: the Centre's own About page (archived copy of 15 August 2025, as the live page refuses automated requests) says it was established in 1997 as a special project of the University Council and calls itself a section of the University."
+   }
+  ],
+  "corrected": {
+   "id": "oceania-centre-for-arts-culture-and-pacific-studies-usp-suva",
+   "governance": {
+    "legal_form": "university unit",
+    "parent": "University of the South Pacific",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2025",
+    "sources": [
+     "https://web.archive.org/web/20250815081839/https://www.usp.ac.fj/oceania-centre-for-arts-culture-and-pacific-studies/home/about/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the Centre's own About page (archived copy of 15 August 2025, as the live page refuses automated requests) says it was established in 1997 as a special project of the University Council and calls itself a section of the University."
+  }
+ },
+ {
+  "id": "amos-rex",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hiap-helsinki",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kiasma-museum-of-contemporary-art",
+  "verdict": "ok",
+  "faults": []
+ }
+]

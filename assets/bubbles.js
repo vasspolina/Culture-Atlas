@@ -1,5 +1,5 @@
-/* Chat motion: gossip speech bubbles drawn as SVG that fit their text, a typing reveal for new replies,
-   and the app's hairlines drawn in on load. No dependencies; every effect is skipped under reduced motion. */
+/* Chat motion: gossip speech bubbles drawn as SVG that fit their text, and the app's hairlines drawn in on load.
+   No dependencies; the hairline draw is skipped under reduced motion. The typing of a reply is in index.html (typeReveal). */
 (function () {
   'use strict';
   var NS = 'http://www.w3.org/2000/svg';
@@ -199,163 +199,17 @@
     delete el.dataset.kind;
   }
 
-  /* Typing: the reply's text nodes are emptied and refilled in reading order, and the reply grows as the text
-     lands, the chat following the tip. The pace is 15 ms a character, slowing on a long answer so that none takes
-     more than twelve seconds of typing, and the reply pauses on three dots after each paragraph, as if thinking
-     about the next (user's ask, 18 Oct 2026). In gossip mode the balloon keeps its final height instead, so its
-     shape is drawn once and not on every frame. The outline is drawn once the last character lands. */
-  function textNodes(root) {
-    var out = [], skip = '.curator-suggest-chip,[data-exclude-speech],button,script,style,svg,.bubble-svg,.thinking';
-    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-      acceptNode: function (n) {
-        if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
-        var p = n.parentElement;
-        var hit = p && p.closest(skip);
-        return hit && root.contains(hit) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
-      }
-    });
-    while (walker.nextNode()) out.push(walker.currentNode);
-    return out;
-  }
-
-  // The paragraph a text node belongs to: its nearest block inside the reply, or the reply itself.
-  function blockOf(node, root) {
-    var b = node.parentElement && node.parentElement.closest('p,li,h1,h2,h3,h4,blockquote,dt,dd,pre');
-    return b && root.contains(b) && b !== root ? b : root;
-  }
-
-  /* Thinking: before a reply types, the turn holds three pulsing dots and the word, then opens into the reply.
-     The hold is put on in the mutation callback, before the reply is ever painted: the app appends the whole
-     answer at once, and without this the reader saw it flash in full, collapse to the word, and type again. */
-  function hold(el, force) {
-    if (reduce || el.dataset.held) return;
-    if (!force && (!el.classList.contains('curator-message-wrap') || !el.getClientRects().length)) return;
-    var tag = document.createElement('span');
-    tag.className = 'thinking';
-    tag.setAttribute('role', 'status');
-    tag.innerHTML = 'Thinking<i></i><i></i><i></i>';
-    el.classList.add('is-thinking');
-    el.appendChild(tag);
-    el.dataset.held = String(performance.now());
-  }
-
-  function release(el) {
-    if (!el.dataset.held) return;
-    var tag = el.querySelector(':scope>.thinking');
-    if (tag) tag.remove();
-    el.classList.remove('is-thinking');
-    delete el.dataset.held;
-  }
-
-  function think(el, then) {
-    if (reduce) { then(); return; }
-    hold(el, true);
-    var left = Math.max(0, 1000 - (performance.now() - +el.dataset.held));
-    setTimeout(function () { release(el); then(); }, left);
-  }
-
-  // Scroll the chat itself, vertically only (scrollIntoView would also nudge the panels around it sideways).
-  function follow(node) {
-    var sc = node.closest('#curatorScrollArea,#curatorDrawerChatBody');
-    if (!sc) return;
-    var a = node.getBoundingClientRect(), b = sc.getBoundingClientRect();
-    if (a.bottom > b.bottom - 12) sc.scrollTop += a.bottom - b.bottom + 12;
-    else if (a.top < b.top + 12) sc.scrollTop -= b.top - a.top + 12;
-  }
-
-  function typeIn(el, done, tries) {
-    tries = tries || 0;
-    var nodes = textNodes(el);
-    var full = nodes.map(function (n) { return n.nodeValue; });
-    var total = full.reduce(function (a, s) { return a + s.length; }, 0);
-    if (!total || reduce) { done(); return; }
-    // The paragraphs, in order: runs of text nodes that share a block.
-    var paras = [];
-    nodes.forEach(function (n, i) {
-      var b = blockOf(n, el), last = paras[paras.length - 1];
-      if (last && last.block === b) { last.chars += full[i].length; }
-      else paras.push({ block: b, chars: full[i].length });
-    });
-    var pace = Math.min(15, 12000 / total), t = 0;
-    paras.forEach(function (p, k) {
-      p.t0 = t; p.t1 = t + p.chars * pace;
-      // a short pause after each paragraph but the last, longer after a long one
-      p.pause = k < paras.length - 1 ? Math.min(600, 150 + p.chars * 4) : 0;
-      t = p.t1 + p.pause;
-    });
-    var endAt = t;
-    if (el.dataset.bubble) el.style.minHeight = el.offsetHeight + 'px';   // only a drawn balloon keeps its final height
-    el.classList.add('is-typing');
-    var after = el.nextElementSibling;   // follow-up chips sit beside the reply, not in it
-    var chips = after && after.querySelector && after.querySelector('.curator-suggest-chip') ? after : null;
-    if (chips) chips.style.visibility = 'hidden';
-    nodes.forEach(function (n) { n.nodeValue = ''; });
-    var dots = null, dotsAfter = null;
-    function showDots(block) {
-      if (dots && dotsAfter === block) return;
-      hideDots();
-      dots = document.createElement('span');
-      dots.className = 'thinking';
-      dots.setAttribute('aria-hidden', 'true');
-      dots.innerHTML = '<i></i><i></i><i></i>';
-      if (block === el) el.appendChild(dots); else block.insertAdjacentElement('afterend', dots);
-      dotsAfter = block;
-      follow(dots);
-    }
-    function hideDots() { if (dots) { dots.remove(); dots = null; dotsAfter = null; } }
-    function finish() { hideDots(); el.classList.remove('is-typing'); el.style.minHeight = ''; if (chips) chips.style.visibility = ''; done(); }
-    var start = performance.now(), shown = -1;
-    function frame(now) {
-      // The app may rewrite a reply's markup once it has arrived; when the nodes being typed are gone, start over on the new ones.
-      if (nodes.length && !nodes[0].isConnected) {
-        hideDots(); el.classList.remove('is-typing'); el.style.minHeight = '';
-        if (tries < 3) setTimeout(function () { typeIn(el, done, tries + 1); }, 120); else done();
-        return;
-      }
-      var e = now - start, upto = 0, pausing = null;
-      for (var k = 0; k < paras.length; k++) {
-        var p = paras[k];
-        if (e >= p.t1) { upto += p.chars; if (p.pause && e < p.t1 + p.pause) { pausing = p.block; break; } }
-        else if (e > p.t0) { upto += Math.ceil((e - p.t0) / pace); break; }
-        else break;
-      }
-      upto = Math.min(total, upto);
-      if (upto !== shown) {
-        shown = upto;
-        var left = upto, tip = null;
-        for (var i = 0; i < nodes.length; i++) {
-          var n = Math.max(0, Math.min(full[i].length, left));
-          if (nodes[i].nodeValue.length !== n) nodes[i].nodeValue = full[i].slice(0, n);
-          if (n > 0 && n < full[i].length) tip = nodes[i].parentElement;
-          left -= full[i].length;
-        }
-        // Follow the text as it is typed so the reader is never looking at an empty bubble.
-        if (tip) follow(tip);
-      }
-      if (pausing) showDots(pausing); else hideDots();
-      if (e < endAt) requestAnimationFrame(frame); else finish();
-    }
-    requestAnimationFrame(frame);
-  }
-
+  /* The typing of a reply is done by typeReveal() in index.html, the one place that writes an answer out. This file once
+     typed the reply too, on its own clock, so the two refilled the same text nodes at different lengths and the answer
+     flickered; it now only draws the balloons. */
   function arrive(list) {
     var fresh = list.filter(function (el) { return !el.dataset.arrived; });
     fresh.forEach(function (el) { el.dataset.arrived = '1'; bubble(el); });
-    if (!fresh.length) return;
-    // The newest reply that is on screen after a beat is typed (the phone drawer keeps a hidden copy of every reply);
-    // a whole restored history, or the earlier turns of a batch, appear at once.
-    var many = fresh.length > 6;
-    setTimeout(function () {
-      var live = fresh.filter(function (el) { return el.isConnected; });
-      var shown = live.filter(function (el) { return el.getClientRects().length; });
-      var replies = shown.filter(function (el) { return el.classList.contains('curator-message-wrap'); });
-      var target = many ? null : replies[replies.length - 1];
-      live.forEach(function (el) {
-        if (el === target) think(el, function () { typeIn(el, function () { outline(el); }); });
-        else { release(el); outline(el); }
-      });
-    }, 160);
+    // The outline is drawn once the reply has been written out (index.html calls atlasBubbleOutline then); a turn
+    // that is not typed, such as a restored history, is outlined now.
+    fresh.forEach(function (el) { if (!el.dataset.typing) outline(el); });
   }
+  window.atlasBubbleOutline = outline;
 
   function scan() {
     var all = [].slice.call(document.querySelectorAll(SEL));
@@ -378,7 +232,7 @@
     var mo = new MutationObserver(function (muts) {
       muts.forEach(function (m) {
         [].forEach.call(m.addedNodes, function (n) {
-          if (n.nodeType === 1 && n.matches && n.matches(SEL)) { n.dataset.born = '1'; pending.push(n); hold(n); }
+          if (n.nodeType === 1 && n.matches && n.matches(SEL)) { n.dataset.born = '1'; pending.push(n); }
         });
       });
       if (pending.length) requestAnimationFrame(flush);
@@ -410,6 +264,10 @@
     ];
     var lines = [];
     spec.forEach(function (s, i) {
+      // The phone's map screen has no bar at the top (assets/phone-maps.js), so it has no rule under one to draw.
+      // It can run before that script has hidden the bar, so it goes by the screen: a phone opens on the map.
+      var mm = document.body.dataset.mobileMode;
+      if (s[0] === 'header' && window.innerWidth < 768 && mm !== 'chat' && mm !== 'split') return;
       var el = [].slice.call(document.querySelectorAll(s[0])).filter(function (e) { var b = e.getBoundingClientRect(); return b.width && b.height; })[0];
       if (!el) return;
       var r = el.getBoundingClientRect(), cs = getComputedStyle(el);

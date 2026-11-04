@@ -1,0 +1,156 @@
+[
+ {
+  "id": "state-museum-of-the-history-of-religion",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pro-arte-foundation-st-petersburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pushkinskaya-10-art-centre-st-petersburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "manege-central-exhibition-hall-st-petersburg",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "Governance: the institution's activity report as of 1 January 2026 on its official documents page names it a Saint Petersburg state budgetary institution of culture with the Committee for Culture of Saint Petersburg exercising founder functions; the site now calls it the Museum and Exhibition Complex Manege.",
+    "page says": "The cited report names the Saint Petersburg state budgetary institution of culture Central Exhibition Hall Manege and the Committee for Culture as founder-function body; it says nothing about the site now calling it the Museum and Exhibition Complex Manege.",
+    "fix": "Governance: the institution's activity report as of 1 January 2026 on its official documents page names it a Saint Petersburg state budgetary institution of culture with the Committee for Culture of Saint Petersburg exercising founder functions."
+   }
+  ],
+  "corrected": {
+   "id": "manege-central-exhibition-hall-st-petersburg",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "Committee for Culture of Saint Petersburg",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://manege.spb.ru/documents/official/otchet_o_rezultatah_deyatelnosti_uchrezhdeniya.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the institution's activity report as of 1 January 2026 on its official documents page names it a Saint Petersburg state budgetary institution of culture with the Committee for Culture of Saint Petersburg exercising founder functions."
+  }
+ },
+ {
+  "id": "state-hermitage-museum-spb",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": [
+     "https://rulaws.ru/amp/goverment/Postanovlenie-Pravitelstva-RF-ot-29.11.2011-N-984/",
+     "https://rulaws.ru/goverment/Postanovlenie-Pravitelstva-RF-ot-14.03.2020-N-282/"
+    ],
+    "page says": "The cited page is the 2011 charter in the edition of 3 September 2019 on a third-party legal-text site (rulaws.ru); it does not show the text is still in force. Decree No. 282 of 14 March 2020 amended points 6, 7, 25 and 26 (adding a president, appointed by the Government on the Ministry's proposal), so the cited edition is superseded and the amending text is not cited.",
+    "fix": [
+     "https://rulaws.ru/amp/goverment/Postanovlenie-Pravitelstva-RF-ot-29.11.2011-N-984/",
+     "https://rulaws.ru/goverment/Postanovlenie-Pravitelstva-RF-ot-14.03.2020-N-282/"
+    ]
+   },
+   {
+    "field": "governance.year",
+    "stored": "2019",
+    "page says": "The latest text read is the 14 March 2020 amending decree.",
+    "fix": "2020"
+   },
+   {
+    "field": "basis",
+    "stored": "Governance: points 2 to 7 of the charter approved by Government decree No. 984 of 29 November 2011 (edition of 3 September 2019) give the Russian Federation as founder, the Government appointing the general director, and the Ministry of Culture approving large transactions and disposals of property. Red tape: the Delovoy Peterburg article of 23 May 2019 reporting the Accounts Chamber inspection.",
+    "page says": "Names the 2019 edition as the text in force; the director clause now sits in point 25 as amended in 2020.",
+    "fix": "Governance: points 1 to 7 of the charter approved by Government decree No. 984 of 29 November 2011 give the Russian Federation as founder and the Ministry of Culture's approval of large transactions and disposals, and point 25 as amended by decree No. 282 of 14 March 2020 has the Government appoint the general director on the Ministry's proposal. Red tape: the Delovoy Peterburg article of 23 May 2019 reporting the Accounts Chamber inspection."
+   }
+  ],
+  "corrected": {
+   "id": "state-hermitage-museum-spb",
+   "governance": {
+    "legal_form": "national government body",
+    "parent": "Ministry of Culture of the Russian Federation",
+    "director_appointed_by": "government or ministry",
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "approval of programme, loans or disposals by a ministry or council"
+    ],
+    "year": "2020",
+    "sources": [
+     "https://rulaws.ru/amp/goverment/Postanovlenie-Pravitelstva-RF-ot-29.11.2011-N-984/",
+     "https://rulaws.ru/goverment/Postanovlenie-Pravitelstva-RF-ot-14.03.2020-N-282/"
+    ]
+   },
+   "red_tape": {
+    "note": "Delovoy Peterburg reported that Accounts Chamber auditors who inspected the Hermitage in March 2019 gave long waits by contractors for permits to work on a heritage site as the reason only 39.5 percent of its capital investment subsidies had been spent.",
+    "kind": "press report",
+    "date": "2019-05-23",
+    "url": "https://www.dp.ru/a/2019/05/22/Auditori_poshli_v_muzej"
+   },
+   "basis": "Governance: points 1 to 7 of the charter approved by Government decree No. 984 of 29 November 2011 give the Russian Federation as founder and the Ministry of Culture's approval of large transactions and disposals, and point 25 as amended by decree No. 282 of 14 March 2020 has the Government appoint the general director on the Ministry's proposal. Red tape: the Delovoy Peterburg article of 23 May 2019 reporting the Accounts Chamber inspection."
+  }
+ },
+ {
+  "id": "state-hermitage-museum-st-petersburg",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": [
+     "https://rulaws.ru/amp/goverment/Postanovlenie-Pravitelstva-RF-ot-29.11.2011-N-984/",
+     "https://rulaws.ru/goverment/Postanovlenie-Pravitelstva-RF-ot-14.03.2020-N-282/"
+    ],
+    "page says": "The cited page is the 2011 charter in the edition of 3 September 2019 on a third-party legal-text site (rulaws.ru); it does not show the text is still in force. Decree No. 282 of 14 March 2020 amended points 6, 7, 25 and 26 (adding a president, appointed by the Government on the Ministry's proposal), so the cited edition is superseded and the amending text is not cited.",
+    "fix": [
+     "https://rulaws.ru/amp/goverment/Postanovlenie-Pravitelstva-RF-ot-29.11.2011-N-984/",
+     "https://rulaws.ru/goverment/Postanovlenie-Pravitelstva-RF-ot-14.03.2020-N-282/"
+    ]
+   },
+   {
+    "field": "governance.year",
+    "stored": "2019",
+    "page says": "The latest text read is the 14 March 2020 amending decree.",
+    "fix": "2020"
+   },
+   {
+    "field": "basis",
+    "stored": "Governance: points 2 to 7 of the charter approved by Government decree No. 984 of 29 November 2011 (edition of 3 September 2019) give the Russian Federation as founder, the Government appointing the general director, and the Ministry of Culture approving large transactions and disposals of property. Red tape: the Delovoy Peterburg article of 23 May 2019 reporting the Accounts Chamber inspection.",
+    "page says": "Names the 2019 edition as the text in force; the director clause now sits in point 25 as amended in 2020.",
+    "fix": "Governance: points 1 to 7 of the charter approved by Government decree No. 984 of 29 November 2011 give the Russian Federation as founder and the Ministry of Culture's approval of large transactions and disposals, and point 25 as amended by decree No. 282 of 14 March 2020 has the Government appoint the general director on the Ministry's proposal. Red tape: the Delovoy Peterburg article of 23 May 2019 reporting the Accounts Chamber inspection."
+   }
+  ],
+  "corrected": {
+   "id": "state-hermitage-museum-st-petersburg",
+   "governance": {
+    "legal_form": "national government body",
+    "parent": "Ministry of Culture of the Russian Federation",
+    "director_appointed_by": "government or ministry",
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "approval of programme, loans or disposals by a ministry or council"
+    ],
+    "year": "2020",
+    "sources": [
+     "https://rulaws.ru/amp/goverment/Postanovlenie-Pravitelstva-RF-ot-29.11.2011-N-984/",
+     "https://rulaws.ru/goverment/Postanovlenie-Pravitelstva-RF-ot-14.03.2020-N-282/"
+    ]
+   },
+   "red_tape": {
+    "note": "Delovoy Peterburg reported that Accounts Chamber auditors who inspected the Hermitage in March 2019 gave long waits by contractors for permits to work on a heritage site as the reason only 39.5 percent of its capital investment subsidies had been spent.",
+    "kind": "press report",
+    "date": "2019-05-23",
+    "url": "https://www.dp.ru/a/2019/05/22/Auditori_poshli_v_muzej"
+   },
+   "basis": "Governance: points 1 to 7 of the charter approved by Government decree No. 984 of 29 November 2011 give the Russian Federation as founder and the Ministry of Culture's approval of large transactions and disposals, and point 25 as amended by decree No. 282 of 14 March 2020 has the Government appoint the general director on the Ministry's proposal. Red tape: the Delovoy Peterburg article of 23 May 2019 reporting the Accounts Chamber inspection."
+  }
+ }
+]

@@ -1,0 +1,87 @@
+[
+ {
+  "id": "liljestrand-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "san-carlos-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-frank-lloyd-wright-house-in-ebsworth-park",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "frelinghuysen-morris-house-studio",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hollyhock-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "frank-lloyd-wright-houses-at-the-currier-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The Currier's about page says the museum, chartered by the state legislature in 1919, is governed by a Board of Trustees and owns the two houses, and the ProPublica register entry lists it as a 501(c)(3).",
+    "page says": "The about page does not say the museum is governed by a Board of Trustees (the words appear only as a menu link) and does not say it owns the houses in those words; it says the Zimmerman House was bequeathed to the museum in 1988 and the Kalil House was purchased by the museum in 2019. Legal form private nonprofit is supported by the ProPublica 501(c)(3) entry.",
+    "fix": "The Currier's about page says the museum was chartered by the state legislature in 1919 and that the Zimmerman House was bequeathed to it in 1988 and the Kalil House purchased in 2019, and the ProPublica register entry lists it as a 501(c)(3)."
+   }
+  ],
+  "corrected": {
+   "id": "frank-lloyd-wright-houses-at-the-currier-museum",
+   "governance": {
+    "legal_form": "private nonprofit",
+    "parent": "Currier Museum of Art",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.currier.org/aboutus",
+     "https://projects.propublica.org/nonprofits/organizations/320745696"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The Currier's about page says the museum was chartered by the state legislature in 1919 and that the Zimmerman House was bequeathed to it in 1988 and the Kalil House purchased in 2019, and the ProPublica register entry lists it as a 501(c)(3)."
+  }
+ },
+ {
+  "id": "american-museum-of-the-cuban-diaspora",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vizcaya-museum-and-gardens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fallingwater",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "alice-austen-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "center-for-cuban-studies",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "modulightor-building-paul-rudolph-institute",
+  "verdict": "ok",
+  "faults": []
+ }
+]

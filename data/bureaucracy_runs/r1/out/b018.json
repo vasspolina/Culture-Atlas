@@ -1,0 +1,158 @@
+[
+ {
+  "id": "tranzit-cz-prague",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://web.archive.org/web/2025/https://cz.tranzit.org/cz/kontakt/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Legal form from the invoicing line of the contact page, which names the seat as tranzit.cz, z.s. (archived copy, since the live site refuses curl)."
+ },
+ {
+  "id": "dox-centre-for-contemporary-art-prague",
+  "governance": {
+   "legal_form": "private company",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.dox.cz/en/contact-us"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Legal form from the invoicing block of the contact page, which names DOX PRAGUE, a. s. as registered in the Commercial Register at the Municipal court in Prague."
+ },
+ {
+  "id": "galerie-rudolfinum-prague",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": "Česká filharmonie",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://www.galerierudolfinum.cz/cs/o-galerii/o-galerii/",
+    "https://www.galerierudolfinum.cz/wp-content/uploads/Galerie_Rudolfinum_2025_vyrocni_zprava_CZ.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The about page says the gallery was founded in 1994 as a state institution within the Czech Philharmonic, is its own cost centre and falls under the Ministry of Culture, and the 2025 annual report calls it a public institution established by the Ministry of Culture."
+ },
+ {
+  "id": "kunsthalle-praha-prague",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": "Nadace The Pudil Family Foundation",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://www.kunsthallepraha.org/files/kunsthalle-praha-vz-2025.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Annual report 2025, PDF page 6 (basic data: Kunsthalle Praha, nadační fond, founder The Pudil Family Foundation) and PDF page 41 (legal form nadační fond, register entry N 1290)."
+ },
+ {
+  "id": "national-gallery-prague",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": "Ministry of Culture",
+   "director_appointed_by": "government or ministry",
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "state audit office",
+    "public procurement law"
+   ],
+   "year": "2023",
+   "sources": [
+    "https://admin.www.ngprague.cz/storage/6482/Statut-uplne_zneni_EN.pdf",
+    "https://www.nku.cz/cz/pro-media/tiskove-zpravy/obchazeni-zakona--smlouvy-uzavrene-bez-souteze-i-selhani-vnitrniho-kontrolniho-systemu--nku-zkontroloval-hospodareni-prispevkovych-organizaci-minister-id12659/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The 2023 statute, Article I (state institution in the position of a state contribution organization, founded by the Ministry of Culture) and Article III (General Director appointed and dismissed by the Minister of Culture); the 2022 Supreme Audit Office press release reports its audit of the gallery and the gallery's breach of the public procurement act."
+ },
+ {
+  "id": "fondation-donwahi-abidjan",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "musee-des-cultures-contemporaines-adama-toungara-mucat",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "kin-artstudio-kinshasa",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "texaf-bilembo",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "picha-lubumbashi-biennale-lubumbashi",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "kunsten-museum-of-modern-art-aalborg-aalborg",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": "board",
+   "staff_status": "employees of the institution",
+   "budget_set_by": "board",
+   "controls": [
+    "approval of programme, loans or disposals by a ministry or council"
+   ],
+   "year": "2018",
+   "sources": [
+    "https://kunsten.dk/en/node/243"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Statutes in force from 1 January 2018: section 1.1 (selvejende institution), 10.1 (board employs the director), 10.2 (director employs the staff), 12.1 (board approves the budget), 7.3 (disposals need approval from Slots- og Kulturstyrelsen)."
+ },
+ {
+  "id": "aros",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": "board",
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.aros.dk/media/guppr3bc/a-rsrapport_2025_2.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Annual report 2025, PDF page 9 (governance in selvejende kulturinstitutioner, board of seven with one member named by Aarhus Kommune) and PDF page 24 (budget approved by the board)."
+ }
+]

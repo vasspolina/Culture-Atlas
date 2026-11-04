@@ -1,0 +1,66 @@
+[
+ {
+  "id": "ch-teau-de-versailles",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-de-tahiti-et-des-les-te-fare-iamanaha-punaauia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "center-of-contemporary-art-tbilisi-tbilisi-triennial-tbilisi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "georgian-national-museum-tbilisi",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "The matsne page for order no. 110/n of 18 June 2019 shows a loss-of-force date of 01/08/2025, so the cited statute is no longer in force; it names a legal entity of public law in Article 1 point 6, but the text that replaced it was not cited or readable.",
+    "fix": null
+   },
+   {
+    "field": "governance.sources[0]",
+    "stored": "https://matsne.gov.ge/ka/document/view/4591799",
+    "page says": "Superseded text (not in force since 2025-08-01); curl is refused (Access Denied) and only WebFetch could read it.",
+    "fix": "drop it; governance null until the replacing statute is read"
+   }
+  ],
+  "corrected": {
+   "id": "georgian-national-museum-tbilisi",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "tbilisi-photography-multimedia-museum-tpmm-tbilisi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "berlinische-galerie",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "c-o-berlin-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ddr-museum-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "deutsches-historisches-museum-berlin",
+  "verdict": "ok",
+  "faults": []
+ }
+]

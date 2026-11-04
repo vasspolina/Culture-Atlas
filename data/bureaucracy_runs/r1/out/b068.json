@@ -1,0 +1,198 @@
+[
+ {
+  "id": "songeun-seoul",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": ["https://songeun.or.kr/ko/foundation"]
+  },
+  "red_tape": null,
+  "basis": "The foundation page of the Songeun Cultural Foundation says it was set up in 1989 with the private funds of its founder."
+ },
+ {
+  "id": "seoul-museum-of-art-seoul",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Seoul Metropolitan Government",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://sema.seoul.go.kr/common/fileDownload?FILE_PATH=%2Fadmin%2FINA01%2F2025%2F&FILE_NM=20250820111602_efdddb8487e84563ad9c511088d5409f_b82604b5c71b4f07a3b7e67cb602dd87&FILE_ORG_NM=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%EB%A6%BD%EB%AF%B8%EC%88%A0%EA%B4%80_%EA%B4%80%EB%A6%AC_%EB%B0%8F_%EC%9A%B4%EC%98%81_%EC%A1%B0%EB%A1%80%28%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%EC%A1%B0%EB%A1%80%29%28%EC%A0%9C9736%ED%98%B8%29%2820250714%29.hwp",
+    "https://sema.seoul.go.kr/kr/sema/landing"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Seoul city ordinance on the museum (No. 9736, in force 14 July 2025) vests its permits and approvals in the Seoul mayor, and the museum's own regulations page lists the ordinance."
+ },
+ {
+  "id": "whanki-museum-seoul",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": "Whanki Foundation",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": ["http://whankimuseum.org/foundation/info/"]
+  },
+  "red_tape": null,
+  "basis": "The foundation page of the museum describes the Whanki Foundation as a non-profit public-interest foundation corporation founded by Kim Hyang-an, the artist's widow, which runs the museum."
+ },
+ {
+  "id": "nam-june-paik-art-center-yongin",
+  "governance": {
+   "legal_form": "public foundation",
+   "parent": "Gyeonggi Cultural Foundation",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.ggcf.kr/pages/organization_chart",
+    "https://www.ggcf.kr/pages/milestones",
+    "https://njp.ggcf.kr/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The foundation's organisation chart lists the art center as one of its affiliated institutions and its history page calls the foundation a public cultural foundation."
+ },
+ {
+  "id": "fundació-antoni-tàpies-barcelona",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "public procurement law",
+    "freedom of information law",
+    "charity or foundation regulator"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://museutapies.org/en/regulations/",
+    "https://museutapies.org/en/board-of-trustees/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The museum's regulations page lists the statutes of the Fundació Privada Antoni Tàpies together with the Catalan foundation protectorate law, the public sector contracts law and the transparency laws."
+ },
+ {
+  "id": "fundaci-joan-mir",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "freedom of information law",
+    "charity or foundation regulator"
+   ],
+   "year": "2025",
+   "sources": [
+    "https://web.archive.org/web/20260115074402/https://www.fmirobcn.org/en/transparencia/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The foundation's transparency page, read as a web.archive.org copy because the live site refuses curl, calls it a private civil foundation under the protectorate of the Generalitat de Catalunya and subject to Law 19/2013."
+ },
+ {
+  "id": "hangar-barcelona",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2024",
+   "sources": [
+    "https://hangar.org/en/",
+    "http://hangar.org/wp-content/uploads/2026/07/Certificat-inscripcio-al-Registre-de-Fundacions-de-la-Generalitat.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Hangar's site says it has been managed by Fundació Privada AAVC since 2003 and the Generalitat's foundation register certificate of 26 April 2024 confirms that foundation's registration."
+ },
+ {
+  "id": "la-virreina-barcelona",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Institut de Cultura de Barcelona (Barcelona City Council)",
+   "director_appointed_by": null,
+   "staff_status": "mixed",
+   "budget_set_by": "city or regional council",
+   "controls": [
+    "public procurement law",
+    "approval of programme, loans or disposals by a ministry or council"
+   ],
+   "year": "2005",
+   "sources": [
+    "https://ajuntament.barcelona.cat/lavirreina/en/center",
+    "https://w123.bcn.cat/APPS/egaseta/cercaAvancada.do?reqCode=downloadFile&publicacionsId=24743",
+    "http://www.bcn.cat/cultura/docs/estatutsicb15112005.830.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "A Barcelona city gazette agreement says the Institut de Cultura de Barcelona programmes La Virreina, and the Institute's 2005 statutes (articles 18, 21 and 27) set staff, contracting, and council approval of budget, credit operations and property disposals."
+ },
+ {
+  "id": "macba-museu-d-art-contemporani-de-barcelona",
+  "governance": {
+   "legal_form": "statutory public body",
+   "parent": "Barcelona City Council",
+   "director_appointed_by": "board",
+   "staff_status": "mixed",
+   "budget_set_by": "board",
+   "controls": [
+    "public procurement law"
+   ],
+   "year": "2015",
+   "sources": [
+    "https://img.macba.cat/public/document/2019-11/estatuts_MACBA2015_CAS.pdf",
+    "https://www.macba.cat/en/institutional-and-organizational-information/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The consortium statutes published in July 2015 and listed on MACBA's own page make it a local public-law body attached to the City Council (article 1), with the General Council naming the director (11h), approving the budget (23.1), staffing it with seconded civil servants and own labour staff (22) and tendering under public sector contracts law (26.2)."
+ },
+ {
+  "id": "sonar-festival",
+  "governance": {
+   "legal_form": "private company",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": ["https://sonar.es/en/legal-terms"]
+  },
+  "red_tape": null,
+  "basis": "The legal notice of sonar.es names Advanced Music, S.L., entered in the Barcelona company registry, as the company that carries out and sells the Sónar activities."
+ },
+ {
+  "id": "azkuna-zentroa-bilbao",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "bulegoa-zb-bilbao",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ }
+]

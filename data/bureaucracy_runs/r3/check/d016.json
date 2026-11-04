@@ -1,0 +1,72 @@
+[
+ {
+  "id": "galeri-petronas",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private company",
+    "page says": "The About page says only that the gallery was established on 12 August 1992 and founded in line with PETRONAS' commitment; its footer reads '© 2026 GALERI PETRONAS · Petroliam Nasional Berhad'. The media release is PETRONAS' own news, with the (20076-K) registration number belonging to PETRONAS. Neither page states the gallery's own legal form or that it is a unit of PETRONAS; the form is inferred from a copyright line and a name, as the basis sentence itself admits ('has no entity of its own').",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Petroliam Nasional Berhad (PETRONAS)",
+    "page says": "No cited page states an ownership or reporting link, only 'in line with PETRONAS commitment' and a copyright notice.",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "The gallery has no entity of its own: its About page credits Petroliam Nasional Berhad as copyright holder and says it was founded in line with PETRONAS' commitment, and the PETRONAS media release of 7 August 2026 announces the gallery's relocation as PETRONAS news.",
+    "page says": "Describes an inference, not a statement of form; no governance block remains.",
+    "fix": ""
+   }
+  ],
+  "corrected": {
+   "id": "galeri-petronas",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "micas-malta-international-contemporary-art-space",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "festival-internacional-cervantino",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "The directory lists the Gobierno de Mexico, Secretaria de Cultura, Guanajuato state government, Universidad de Guanajuato, a programming committee, an advisory council and the festival's own staff under separate headings, with the Direccion General de Circuitos y Festivales as a separate block; it never says the festival is a unit of the Secretaria. The new cited page, the privacy notice (updated 08/06/2023), says only that the Secretaria de Cultura, through the Direccion General de Promocion y Festivales Culturales, is responsible for personal data collected by the festival's registration system, under Art. 20 of the Secretaria's Reglamento Interior; it does not say the festival is a body or unit of the Secretaria or give any legal form. The footer '© 2026 Festival Internacional Cervantino. Secretaria de Cultura del Gobierno de Mexico' is a copyright line. Same inference as the first-pass ruling; the researcher cites no page stating what that checker found missing.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Secretaría de Cultura del Gobierno de México",
+    "page says": "No cited page states that the festival is a unit of, or subordinate to, the Secretaria de Cultura.",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "The festival's privacy notice names the Secretaría de Cultura, through its Dirección General de Promoción y Festivales Culturales, as the body responsible for the festival's registrations, and its 2026 directory lists the festival under the Secretaría de Cultura and its Dirección General de Circuitos y Festivales.",
+    "page says": "The directory does not list the festival under the Direccion General de Circuitos y Festivales (festival staff have their own heading); the privacy notice names a different office, the Direccion General de Promocion y Festivales Culturales, as data controller, which is not a statement of legal form.",
+    "fix": ""
+   }
+  ],
+  "corrected": {
+   "id": "festival-internacional-cervantino",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "museo-de-los-pintores-oaxaqueños-oaxaca",
+  "verdict": "ok",
+  "faults": []
+ }
+]

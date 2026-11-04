@@ -1,0 +1,20 @@
+[
+ {
+  "id": "rockbund-art-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "The about-us page says the museum was inaugurated in 2010 and is a non-profit arts institution registered in Shanghai (Chinese: 上海市注册的非营利性艺术机构), a non-profit arts organization in English. It does not say the body is private, name an owner or independent board, or give a registered legal form. Non-profit status alone does not show private nonprofit.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "rockbund-art-museum",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ }
+]

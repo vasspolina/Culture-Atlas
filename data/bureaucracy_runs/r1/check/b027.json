@@ -1,0 +1,209 @@
+[
+ {
+  "id": "museum-fuer-naturkunde-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "neue-nationalgalerie-berlin",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.director_appointed_by",
+    "stored": "parent institution",
+    "page says": "Statut III.1 (PDF p.4) and StiftPKG s.7 have the Stiftungsrat appoint the heads of the museums and Einrichtungen; the Wissenschaftsrat footnote (PDF p.17) shows the Neue Nationalgalerie head is a Leitung one level below the Nationalgalerie director. No cited page says who appoints the Neue Nationalgalerie's own head.",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "the Statut page 4 has the Stiftungsrat appoint museum directors",
+    "page says": "that sentence concerns museum directors (the Nationalgalerie director), not the Neue Nationalgalerie head",
+    "fix": "drop the clause; cite Statut page 2 for employer of staff"
+   }
+  ],
+  "corrected": {
+   "id": "neue-nationalgalerie-berlin",
+   "governance": {
+    "legal_form": "public foundation",
+    "parent": "Staatliche Museen zu Berlin, Stiftung Preußischer Kulturbesitz",
+    "director_appointed_by": null,
+    "staff_status": "mixed",
+    "budget_set_by": "legislature or ministry",
+    "controls": [
+     "state audit office"
+    ],
+    "year": "2025",
+    "sources": [
+     "https://www.gesetze-im-internet.de/stiftpkg/__1.html",
+     "https://www.gesetze-im-internet.de/stiftpkg/__7.html",
+     "https://www.gesetze-im-internet.de/stiftpkg/__12.html",
+     "https://www.gesetze-im-internet.de/stiftpkg/__14.html",
+     "https://www.preussischer-kulturbesitz.de/ueber-uns/stiftungsrat.html",
+     "https://www.smb.museum/fileadmin/website/SMB_allgemein/SMB_Statut.pdf",
+     "https://www.smb.museum/en/museums-institutions/neue-nationalgalerie/home/"
+    ]
+   },
+   "red_tape": {
+    "note": "A 2020 Wissenschaftsrat review of the Prussian Cultural Heritage Foundation says deep hierarchies and unclear decision structures make processes lengthy and opaque, most clearly at the Staatliche Museen, and a footnote adds that the Nationalgalerie, which includes the Neue Nationalgalerie, has further hierarchy levels.",
+    "kind": "official review",
+    "date": "2020-07-10",
+    "url": "https://www.wissenschaftsrat.de/download/2020/8520-20.pdf?__blob=publicationFile"
+   },
+   "basis": "Governance: StiftPKG section 1 makes the Stiftung Preußischer Kulturbesitz a public-law foundation, its section 7 and 12 give the Stiftungsrat the budget and the ministries approval and the Bundesrechnungshof audit, and the Statut page 2 makes the foundation employer of all staff of the Staatliche Museen; red tape: Wissenschaftsrat report Drs. 8520-20, section C.II.4, PDF pages 16 to 18."
+  }
+ },
+ {
+  "id": "neuer-berliner-kunstverein",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private nonprofit",
+    "page says": "Imprint: \"Der Neue Berliner Kunstverein (n.b.k.) ist ein eingetragener Verein\"; the gGmbH is only named as its 100 percent subsidiary. A Kunstverein is an association under the brief.",
+    "fix": "association"
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Neuer Berliner Kunstverein e. V.",
+    "page says": "the e.V. is the space itself, not a body above it",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "imprint lists the gGmbH as a 100 percent subsidiary",
+    "page says": "does not support a private nonprofit form for the space",
+    "fix": "rewritten around the eingetragener Verein sentence"
+   }
+  ],
+  "corrected": {
+   "id": "neuer-berliner-kunstverein",
+   "governance": {
+    "legal_form": "association",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.nbk.org/de/impressum",
+     "https://www.nbk.org/en/institution"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the imprint says the Neuer Berliner Kunstverein (n.b.k.) is an eingetragener Verein, registered at Amtsgericht Berlin-Charlottenburg."
+  }
+ },
+ {
+  "id": "oyoun-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "savvy-contemporary-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "staatliche-museen-zu-berlin",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "StiftPKG section 1 in force since 1 December 2025",
+    "page says": "the cited StiftPKG pages (s.1, 7, 12, 14) give no date or entry-into-force information",
+    "fix": "drop the 'in force since 1 December 2025' clause"
+   }
+  ],
+  "corrected": {
+   "id": "staatliche-museen-zu-berlin",
+   "governance": {
+    "legal_form": "public foundation",
+    "parent": "Stiftung Preußischer Kulturbesitz",
+    "director_appointed_by": "parent institution",
+    "staff_status": "mixed",
+    "budget_set_by": "legislature or ministry",
+    "controls": [
+     "state audit office"
+    ],
+    "year": "2025",
+    "sources": [
+     "https://www.gesetze-im-internet.de/stiftpkg/__1.html",
+     "https://www.gesetze-im-internet.de/stiftpkg/__7.html",
+     "https://www.gesetze-im-internet.de/stiftpkg/__12.html",
+     "https://www.gesetze-im-internet.de/stiftpkg/__14.html",
+     "https://www.preussischer-kulturbesitz.de/ueber-uns/stiftungsrat.html",
+     "https://www.smb.museum/fileadmin/website/SMB_allgemein/SMB_Statut.pdf"
+    ]
+   },
+   "red_tape": {
+    "note": "A 2020 Wissenschaftsrat review of the Prussian Cultural Heritage Foundation says deep hierarchies and unclear decision structures make processes lengthy and opaque, shows this most clearly at the Staatliche Museen with their three leadership levels, and calls the six to eight months it takes the foundation to hire staff clearly too long.",
+    "kind": "official review",
+    "date": "2020-07-10",
+    "url": "https://www.wissenschaftsrat.de/download/2020/8520-20.pdf?__blob=publicationFile"
+   },
+   "basis": "Governance: the Staatliche Museen are part of the Stiftung Preußischer Kulturbesitz, a public-law foundation under StiftPKG section 1, whose Stiftungsrat appoints institution heads and whose budget needs ministry approval and Bundesrechnungshof audit; red tape: Wissenschaftsrat report Drs. 8520-20, section C.II.4, PDF pages 16 to 18."
+  }
+ },
+ {
+  "id": "stiftung-stadtmuseum-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "daadgalerie-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "transmediale-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstverein-bielefeld-bielefeld",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.director_appointed_by",
+    "stored": "board",
+    "page says": "Satzung section 11: the Vorstand \"kann\" employ and dismiss a Geschäftsführer*in who is responsible to it. It does not call this person the director, and the imprint names Katharina Klang and a second person as content-responsible without a title; no cited page says who appoints the director.",
+    "fix": null
+   },
+   {
+    "field": "basis",
+    "stored": "section 11 of the Satzung lets the Vorstand hire and dismiss a Geschäftsführer",
+    "page says": "supports an optional Geschäftsführer, not the director",
+    "fix": "rewritten to the register entry only"
+   }
+  ],
+  "corrected": {
+   "id": "kunstverein-bielefeld-bielefeld",
+   "governance": {
+    "legal_form": "association",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2020",
+    "sources": [
+     "https://www.kunstverein-bielefeld.de/de/kvb/imprint",
+     "https://www.kunstverein-bielefeld.de/media/pages/kvb/membership/members/67c3adcf4a-1715144860/kb-satzung-2020.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the imprint gives Bielefelder Kunstverein e.V. in the Vereinsregister, and section 1 of the Satzung confirms the entry in the Vereinsregister."
+  }
+ },
+ {
+  "id": "bonner-kunstverein-bonn",
+  "verdict": "ok",
+  "faults": []
+ }
+]

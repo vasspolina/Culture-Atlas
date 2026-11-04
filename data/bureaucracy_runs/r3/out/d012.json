@@ -1,0 +1,134 @@
+[
+ {
+  "id": "ruang-mes-56-yogyakarta",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "pejman-foundation-argo-factory",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": "Ministry of Culture and Islamic Guidance",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://tmoca.com/about-us/organizational-structure/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The museum's own organisational structure page says it operates under the Ministry of Culture and Islamic Guidance."
+ },
+ {
+  "id": "national-museum-of-iraq",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": "State Board of Antiquities and Heritage, Ministry of Culture",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "approval of programme, loans or disposals by a ministry or council"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://sbah.gov.iq/museums/",
+    "https://sbah.gov.iq/sbah-structure/",
+    "https://sbah.gov.iq",
+    "https://www.iraqheritage.org/pdf/antiquities.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The State Board of Antiquities and Heritage museums page says the Iraq Museum is under the Ministry of Culture through the Board, and Article 21 of Law No. 55 of 2002 (UNESCO text) puts taking artifacts abroad under the minister and exchanges under the Council of Ministers."
+ },
+ {
+  "id": "basic-space-dublin",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "hugh-lane-gallery-dublin",
+  "governance": {
+   "legal_form": "municipal or regional body",
+   "parent": "Dublin City Council",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://www.dublincity.ie/sites/default/files/2026-05/annual-service-delivery-plan-progress-report-2025.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Dublin City Council's 2025 service delivery plan lists the gallery under its Culture, Community, Leisure and Area Services department (Libraries and Culture) and calls the refurbishment the Council's own."
+ },
+ {
+  "id": "ormston-house-limerick",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "lismore-castle-arts",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "arab-hebrew-theatre-of-jaffa-al-saraya",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "israel-museum",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://data.gov.il/api/3/action/datastore_search?resource_id=be5b7935-3922-45d4-9638-08871b17ec95&q=520028275"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Israeli register of registered associations on data.gov.il lists the Israel Museum as an active public benefit company (company number 520028275)."
+ },
+ {
+  "id": "petach-tikva-museum-of-art",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "tel-aviv-museum-of-art",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://data.gov.il/api/3/action/datastore_search?resource_id=be5b7935-3922-45d4-9638-08871b17ec95&q=520002320"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The Israeli register of registered associations on data.gov.il lists the Tel Aviv Museum of Art as an active public benefit company, marked CC (company number 520002320)."
+ }
+]

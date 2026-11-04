@@ -1,4 +1,4 @@
-# Culture Atlas
+# Leaving it on the table
 
 A globe and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
 
@@ -9,9 +9,12 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 - **Money maps.** Each record has a map of what it states about its funding: the space in the middle, a circle for each funder, flag or documented tie, and lines between them. Circles that name the same funder link to other spaces. Open it from a record's Money map button, or go to `money-maps.html#<record id>`; `money-maps.html` on its own shows the big map of every space and sponsor. Drag to turn the map in 3D, pinch or scroll to fly through it, touch to make the circles sway. See "Money maps" below.
 - **Typography.** Set after Jost Hochuli's *Detail in Typography*: kerning, ligatures and capital-height punctuation on; measure held to about 66 characters with a soft ragged right and no lone last words; leading rises with line length; tracking tightens as size grows; quotes, apostrophes, ellipses, en dashes and year ranges are corrected in the chat and the record by `assets/typeset.js`; acronyms are set a step smaller. Emphasis is set in Regular Italic. Bold and capitals are kept for one thing, the name of a space: the record's headline in Compressed Bold, the name on a map card, pop-up or street-map label and in a chat answer in Compact Bold, always in capitals. Every other heading and label is in the Regular, in normal case, and is told by its size and the space around it. In a record, the info text and the chat on a phone, the first paragraph of a run is flush and each one after it is indented one em, with no blank line; a source list or registry line is a break, so the paragraph after it starts flush. The desktop chat keeps its transcript setting, where every paragraph is indented. The fonts carry no small caps or old-style figures.
 - **Street map.** Drawn in the same hairlines as the globe (0.8px, one ink, the same in light and dark), with its place names still set in PP Neue Gstaad Regular (the glyph files in assets/glyphs were made from it; the rest of the page is Jokker). The map host serves only its own fonts, so the glyphs for the Latin ranges are generated from the font file and kept in `assets/glyphs/` (regenerate them if the font changes). The Building view button appears only on records with a street address.
+- **On a phone, like a maps app.** The globe fills the screen. The search and chat box floats over it at the bottom. A question typed there goes to the chat, the Chat button beside it opens the conversation where it was left, and its menu holds Gossip mode, Dark, Share information, Read answers aloud and New chat. The suggested questions sit over it as a row of chips that scrolls sideways. Layers is a round button at the top right that opens as a sheet from the bottom. A space's record is a sheet with three heights: peek, half and full. Peek holds the title and the description: for a space, its name, grade, place, the first three lines of its description and its actions; for a funder's record, its head (kind, name, place, source). It is set like a Google Maps place card: the name, a rating line (the funding grade's letter in a dot of its colour, with its words), the place, a row of pill actions with icons (the first filled), then tabs (Overview, Funding, Record, Sources) with the open one underlined; Overview lists the address, hours, admission and website as rows with an icon each. It follows the finger and snaps to the nearest height, a flick goes one height further, and a pull down from peek closes it. The map answers as a maps app does: drag to turn it, pinch to zoom, double-tap to zoom in where you tap, tap with two fingers to zoom out, and panning it lowers a half-open record to its peek. A location button at the bottom right flies to where you are and marks it with a blue dot. A Top story strip over the chips shows the newest dated report and opens a feed of the latest reports on the spaces, laid out after a news app: the top story with a poster block (kind and date, the space's name in capitals, its place and the report's status), the outlet, headline, when and where, what is said, the reply and outcome, a row of the sources and the status, and Share; then Near you (once the location is known) and Worldwide. It is built only from the dated items in each record's `gossip_data.gossip` and `case_notes` and follows `notes/gossip-criteria.md`: outside Gossip mode only what is confirmed or resolved, and the documented cases; in Gossip mode talk and denials too, each marked for what it is. On a phone the record has one view: the sheet's tabs (Overview, Funding, Record, Sources) hold the whole record, sorted by subject, and the separate Full record page opens the sheet instead. The suggested questions follow the place: the visitor's city once the location button has found them, or the city the map is zoomed into. Alerts mark a protest, strike, dispute, allegation or similar at a space now (reported in the last 60 days and not resolved; outside Gossip mode only confirmed ones) with a red ring on the map and a section in the feed; Alert me sends a browser notification for a new one while the atlas is open. Every report says what kind of source it rests on and when the atlas last opened its links, and says outright when it is user-generated (anonymous posts, user reviews, the Personal accounts). The feed is checked every minute: `tools/build_live_feed.py` writes the records' dated, sourced items to `assets/live.json` and `assets/live-stamp.json` on every deploy, the page polls the stamp, and loads the new items without a reload. It is as current as the records, never ahead of them: an item reaches the page once the editor has checked it and it is deployed, and nothing without a date, a source address and a check date is shown (`tests/live-feed.test.mjs`). The code is in `assets/phone-maps.js`, and the look is the "PHONE: MAPS APP" block at the end of `assets/atlas.css`.
 - **Offline.** Installable as an app; the service worker caches the page.
 
 Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. See "What the page may show" below. Funding transparency ratings, A to F, summarize what each record shows about funding; see "Funding transparency ratings".
+
+The Layers panel on the map has five boxes: **Funding connections** (one box for the lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices), **Epstein connections** (spaces whose funders or people appear in the files, and those people's offices), **Propaganda**, **Independent** and **Artist-run**. The records carry no field for the last two, so `assets/layers.js` reads each record's own words (summary, watch note, funding note, focus, name): "independent art space", "remains independent", "artist-run", "founded by artists" and the like. "Independently verified" or "independent audit" does not count.
 
 ## Design
 
@@ -21,7 +24,7 @@ The look follows the It's a book fair site: a white page, a strip of tabs on hai
 
 Contrast is measured, not assumed (WCAG 2.2: 4.5:1 for text under 24px, 3:1 for large text, UI components, focus rings and the marks that carry data). A mark is never told only by colour: a space's tier is a circle (clean), square (flagged) or triangle (unverified) on its pin and on its city and museum label; a funding grade is its letter inside the dot; funders on the money map are squares (public funding), hexagons (companies) and triangles (foundations); right-wing and Epstein-file marks are a shield and a star, the key shows each. On the white ground of light mode the pale layer colours are drawn as a deeper step of the same hue (`LINE_LIGHT` in `assets/layers.js`), and the pale originals stay as the fills of the name blocks, where the text on them is black. The focus ring is `--focus` (cobalt on light, a lighter blue on dark).
 
-The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the approved reviews of a place are listed at the foot of its record (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the editor reads them on `reports-admin.html` (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ---
 
@@ -59,9 +62,9 @@ The only notes the atlas holds are whistleblower reviews. They are written on on
 
 **Writing:** Share information (in the chat composer, and on the map's control bar) opens the note screen, which is a form of filled blocks: the institution (the open record's, or chosen from the list of every space on the atlas), an optional name to show (blank shows "Whistleblower"), the note (10 to 2000 characters), and a box confirming that the sender has left out their name and anything that identifies them. Send for review is grey until the form could be sent and blue after; it posts to the report API. Enter inside the note starts a new line. If it cannot be sent, everything stays in the form and nothing is kept in the reader's browser. The page has no other way to add a note. There are no star ratings.
 
-**Reading:** under the record of the space they are about, approved reviews are laid out like the reviews of a place on Google Maps: the count, then one entry per review with the name, date and text, newest first. The record only lists reviews; it has no form.
+**Reading:** the record does not list reviews (removed 3 Nov 2026). Approved reviews are read on `reports-admin.html`.
 
-A review is sent to the report API below, held as waiting, and shows on the record only after the editor approves it on `reports-admin.html`. The map pin's hover card is drawn on the canvas and has no room for a list, so reviews appear on the record only. Reviews are not posted to Google Maps.
+A review is sent to the report API below, held as waiting, and the editor approves or deletes it on `reports-admin.html`. Reviews are not posted to Google Maps.
 
 The Cloudflare Worker in `worker/` serves only the chat proxy (`/chat`). It takes no notes and no reviews; its setup is kept below.
 
@@ -125,12 +128,14 @@ Last step: set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to `https://<
 
 With a model connected the chat holds a conversation: every question that is not a plain list of spaces goes to Claude, with the earlier turns of the chat and the records on the page as grounding. Without one, it answers from the records alone.
 
+What the model is given is written by `assets/grounding.js`. The record the question is about goes in full, in labelled sections (status, funding and audited figures, governance, overview, every reported case with its date and sources, employee and visitor accounts, critics and studies, visiting, sources), within a 14,000-character budget; the other records found for the question go in a 3,200-character form. A question about a city or country as a whole also gets a `<place_summary>`: the count, the grade tally, each flagged space with its reason, the funders named most and the largest audited incomes, counted on the page so the model does not count. Comparisons of places, a place asked about as a whole, employee accounts, critics and the reason for a grade go to the model first and fall back to the record answers when it is off or fails; plain lists and counts are always answered on the page. Tests: `node --test tests/grounding.test.mjs`.
+
 The Cloudflare Worker in `worker/` serves it at `POST /chat`. The Anthropic key stays in the Worker and never reaches the browser. The Worker needs one KV namespace, bound as `SUBMISSIONS`, that holds only the hourly rate counters, and the variable `ALLOWED_ORIGINS` (`https://vasspolina.github.io`). From a terminal, in `worker/`: `npx wrangler kv namespace create SUBMISSIONS`, paste the id into `wrangler.toml`, then `npx wrangler deploy`. Tests: `node --test worker/test/*.test.mjs`.
 
 1. In `worker/`, `npx wrangler secret put ANTHROPIC_API_KEY` and paste the key from console.anthropic.com. (In the dashboard: the Worker's **Settings → Variables and Secrets**.)
 2. Put the Worker's address plus `/chat` in `assets/config.js`: `window.ATLAS_AI_PROXY_URL = 'https://culture-atlas-submissions.<you>.workers.dev/chat';` and push to `main`.
 
-The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
+The page asks the Worker for Claude Sonnet 4.5 (`queryAI` in `index.html`; a visitor's own key uses the model chosen in settings). The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
 
 ## Studies
 
@@ -159,9 +164,17 @@ Controls: one finger or a mouse drag turns the map; two fingers or the scroll wh
 
 ## Editing the page
 
-`index.html` is edited directly. No script regenerates it: the data inside it
-is rewritten by `tools/clean_data.py` then `tools/embed_data.py`, and everything
-else is changed in the file itself.
+`index.html` is edited directly. No script regenerates it. The records are not
+in it: they live in `assets/institutions.js`, which `tools/clean_data.py` then
+`tools/embed_data.py` rewrite from `institutions.json` (bump the `?v=` on its
+script tag in `index.html` after a rewrite). Keeping them in their own file means a
+new release of the page does not make every phone download the 10 MB of records
+again, and the service worker caches them on their own. Everything else is
+changed in the file itself.
+
+A release is three numbers kept equal: `CACHE_NAME` in `sw.js`, `ATLAS_RELEASE`
+in `index.html` and the `?v=` on the `sw.js` registration. If they drift apart,
+every first visit reloads the page once before it draws.
 
 The design tool's generator, patch and test scripts that used to sit in the
 repository root were removed on 13 October 2026: the page had been edited
@@ -191,13 +204,21 @@ re-running it replaces them:
 
 Three **critical frames** on cultural institutions sit beside the artists' critiques on the records they speak to: the museum as archive turned stage, philanthropy as the gift that follows the taking, and art the powerful should fear. They are paraphrases of published theory and, by the editor's decision, the page names no author and shows no citation; the works each frame rests on are listed in `data/research_attach/institutional_critiques.json` under `rests_on`. `tools/attach_critiques.py` writes them (as `visual_critiques` entries of kind `theory`) by rules in that file: by name or focus and size, by funding transparency rating, or by host city; re-running replaces them. The chat answers "What do critics say?" and "What critics say about this space?".
 
-The chat also answers "What do employees report?" with a summary of the 127 paraphrased accounts the records carry from Glassdoor, Kununu and Reddit (58 institutions, eight countries): what they praise, what they report against, what a few allege, and how to read them. It is the constant `EMPLOYEE_REPORT` in `index.html`, dated 17 October 2026; rewrite it when the accounts change.
+The chat also answers "What do employees report?" with a summary of the 127 paraphrased accounts the records carry from Glassdoor, Kununu and Reddit (57 institutions, six countries): what they praise, what they report against, what a few allege, and how to read them. It is the constant `EMPLOYEE_REPORT` in `index.html`, dated 17 October 2026; rewrite it when the accounts change.
 - `funder_links`: funders and trustees the map names at three or more
   institutions, only where the record's own text names them (230 links; 55
   where it does not are left out).
 
 Notes saved in this browser are read back inside the chat ("Notes saved in this
 browser" in the chat reply opens nothing).
+
+## Gossip mode
+
+Gossip mode shows what people are actually saying about a space on the internet: in the arts press, on Reddit, on accounts that collect staff complaints, in open letters, union statements and court filings, and in the comments under them. The rules for what counts, what never goes in, which sources are trusted and how an item is written are in `notes/gossip-criteria.md`; read them before adding anything.
+
+The items live in `data/gossip_items.json`, one object each (schema in the rules, §4). `tools/attach_gossip.py` checks every item against the mechanical rules, marks `talk` items older than 36 months `stale`, drops rumours older than a year that no outlet picked up, and writes the rest onto the records as `gossip_data.gossip`, newest first; then `clean_data.py` and `embed_data.py` as usual. Re-running replaces the field. Items are reopened at least once a year; `retrieved_on` is the proof.
+
+In Gossip mode the record page leads with the items (desktop: the Gossip row; phone: the cards at the top of the record), the globe marks a space with at least one item that is not stale, and the chat answers from the items first, naming who says each one and ending any item about a named person with the response line. The model gets them as the GOSSIP section of the grounding (`assets/grounding.js`) with the same instruction. Outside Gossip mode the items are not volunteered; asked directly, the chat answers from them with the same rules. Every gossip answer carries the line "Talk collected from the internet, with its sources. Unverified unless marked confirmed or resolved."
 
 ## What the page may show
 
@@ -269,7 +290,7 @@ Each record with an independently sourced funder roster carries a rating from A 
 | D | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
 | F | Multiple flagged funders, or a flagged funder with a disputed record | More than one flagged funder category, or a flagged funder plus a documented objection |
 
-Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating on its colour block with the sentence that decided it (`grade_basis`); the Layers panel has a Funding transparency ratings layer that fills each rated dot with its colour; the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
+Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating on its colour block with the sentence that decided it (`grade_basis`); the map has no layer for the rating (removed 2 Nov 2026); the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
 
 ## Verification & Methodology
 

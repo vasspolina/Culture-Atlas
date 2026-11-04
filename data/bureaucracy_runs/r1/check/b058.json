@@ -1,0 +1,72 @@
+[
+ {
+  "id": "ujazdowski-castle-cca-warsaw",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "zachęta-national-gallery-of-art-warsaw",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bwa-wrocław-wrocław",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "muzeum-sztuki-lodz",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "calouste-gulbenkian-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "culturgest-lisbon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ze-dos-bois-zdb-lisbon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hangar-lisboa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "maat-lisbon",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.parent",
+    "stored": "EDP, Energias de Portugal, S.A. (founder)",
+    "page says": "The 2017 Fundação EDP report (page 12) says the foundation was created by EDP in December 2004; section 6.3 (page 22) and the MAAT About page present the museum as the foundation's own, so the body above MAAT is Fundação EDP, and EDP S.A. is the founder of that foundation, not of MAAT",
+    "fix": "Fundação EDP"
+   }
+  ],
+  "corrected": {
+   "id": "maat-lisbon",
+   "governance": {
+    "legal_form": "private foundation",
+    "parent": "Fundação EDP",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2017",
+    "sources": [
+     "https://www.fundacaoedp.pt/sites/edpfundacao/files/2018-04/R%26C%20Fundac%CC%A7a%CC%83o%20EDP%202017%20PT12.pdf",
+     "https://www.maat.pt/en/about"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The 2017 report of Fundação EDP (page 12) says the foundation is a private non-profit institution created by EDP in 2004 and presents MAAT as its museum; the MAAT About page places the museum within the foundation's patronage and names the foundation as holder of its collections."
+  }
+ }
+]

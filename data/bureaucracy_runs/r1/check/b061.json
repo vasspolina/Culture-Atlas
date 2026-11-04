@@ -1,0 +1,58 @@
+[
+ {
+  "id": "multimedia-art-museum-moscow-mamm-moscow",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources",
+    "stored": ["https://mamm.art/assets/mamm/docs/vypiska-iz-egryul-2026-06-09.pdf"],
+    "page says": "The extract names only the legal entity 'Мультимедийный комплекс актуальных искусств' (state budgetary institution of the city of Moscow, founder Moscow acting through the Department of Culture); it never names the Multimedia Art Museum. The tie between that entity and MAMM sits on https://mamm.art/museum/documents/, which is not cited.",
+    "fix": ["https://mamm.art/museum/documents/", "https://mamm.art/assets/mamm/docs/vypiska-iz-egryul-2026-06-09.pdf"]
+   },
+   {
+    "field": "basis",
+    "stored": "The ЕГРЮЛ extract of 9 June 2026 on the museum's documents page names the operator as a state budgetary institution of the city of Moscow and lists the City of Moscow as founder, acting through the Department of Culture (extract pages 1 to 3).",
+    "page says": "The documents page names the institution as the state budgetary institution of Moscow 'Multimedia Complex of Contemporary Arts' under the Department of Culture and links the extract; the extract (pages 1 to 3) gives the full name and the founder (Moscow, acting through the Department of Culture). The documents page is not in sources.",
+    "fix": "The museum's documents page names the state budgetary institution of the city of Moscow 'Multimedia Complex of Contemporary Arts' as the institution under the Department of Culture of Moscow, and its ЕГРЮЛ extract of 9 June 2026 lists the City of Moscow as founder, acting through the Department of Culture (extract pages 1 to 3)."
+   }
+  ],
+  "corrected": {
+   "id": "multimedia-art-museum-moscow-mamm-moscow",
+   "governance": {
+    "legal_form": "municipal or regional body",
+    "parent": "City of Moscow, through the Department of Culture of the City of Moscow",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://mamm.art/museum/documents/",
+     "https://mamm.art/assets/mamm/docs/vypiska-iz-egryul-2026-06-09.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The museum's documents page names the state budgetary institution of the city of Moscow 'Multimedia Complex of Contemporary Arts' as the institution under the Department of Culture of Moscow, and its ЕГРЮЛ extract of 9 June 2026 lists the City of Moscow as founder, acting through the Department of Culture (extract pages 1 to 3)."
+  }
+ },
+ {
+  "id": "pushkin-state-museum-of-fine-arts-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ruarts-foundation-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arsenal-volga-vyatka-branch-of-the-pushkin-museum-nizhny-novgorod",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "perm-state-art-gallery-perm",
+  "verdict": "ok",
+  "faults": []
+ }
+]

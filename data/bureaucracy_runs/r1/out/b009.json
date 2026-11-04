@@ -1,0 +1,149 @@
+[
+ {
+  "id": "capacete-rio-de-janeiro",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "casa-frança-brasil-rio-de-janeiro",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "instituto-tunga-rio-de-janeiro",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": "board",
+   "staff_status": null,
+   "budget_set_by": "board",
+   "controls": [],
+   "year": "2019",
+   "sources": [
+    "https://mam.rio/sobre-o-mam/estatuto/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The statute page gives the legal form in article 1, the board's election of the executive board in articles 20 and 22, and its approval of the annual budget in article 20; the page is dated 2019 and marks the statute as in registration."
+ },
+ {
+  "id": "museu-do-amanha",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "museu-de-arte-moderna-da-bahia-salvador",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": null,
+   "director_appointed_by": "board",
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [
+    "charity or foundation regulator"
+   ],
+   "year": "2025",
+   "sources": [
+    "https://bienal.org.br/fundacao/",
+    "https://bienal.org.br/transparencia/",
+    "https://bienal.org.br/wp-content/uploads/2023/06/ffb888af9068ff2ba1876a88c5c16906-1.pdf",
+    "https://bienal.org.br/wp-content/uploads/2026/05/bienal_-_regimento_interno_-_proposta_de_aperfeicoamento_2025_-_sem_marcas-docx.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The foundation page gives the private nonprofit form and the businessman founder, the 2018 statute page 12 gives the Ministério Público approval of statute changes, and the June 2025 internal rules give the board's elections and the staff as employees of the Bienal."
+ },
+ {
+  "id": "instituto-tomie-ohtake",
+  "governance": null,
+  "red_tape": null,
+  "basis": ""
+ },
+ {
+  "id": "masp-são-paulo",
+  "governance": {
+   "legal_form": "association",
+   "parent": null,
+   "director_appointed_by": "board",
+   "staff_status": "employees of the institution",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2021",
+   "sources": [
+    "https://www.masp.org.br/en/about",
+    "https://assets.masp.org.br/uploads/about-governance-items/A9s7LBeGqeRJ9Uajv7XX0BB8uPC1OPW4.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The statute of 14 April 2021 gives the association form in article 1, the artistic director's appointment by the statutory board in article 15 e, and the salaried staff in article 15."
+ },
+ {
+  "id": "museu-lasar-segall-são-paulo",
+  "governance": {
+   "legal_form": "national government body",
+   "parent": "Instituto Brasileiro de Museus (Ibram), Ministério da Cultura",
+   "director_appointed_by": null,
+   "staff_status": "civil servants",
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2025",
+   "sources": [
+    "https://www.gov.br/museus/pt-br/acesso-a-informacao/institucional/sobre-o-orgao/trabalhe-conosco/curriculo-e-oportunidades/edital-n1301_2025-processo-seletivo-lasar-segall.pdf"
+   ]
+  },
+  "red_tape": null,
+  "basis": "Ibram's notice 1301/2025, section 1, calls the museum a federal body and a unit of Ibram, and its vacancies require effective federal civil servants."
+ },
+ {
+  "id": "museu-de-arte-brasileira-da-faap-são-paulo",
+  "governance": {
+   "legal_form": "private foundation",
+   "parent": "Fundação Armando Alvares Penteado (FAAP)",
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [],
+   "year": "2026",
+   "sources": [
+    "https://www.faap.br/mab/",
+    "https://www.faap.br/institucional/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The MAB page says the foundation was instituted in 1947 from Armando Alvares Penteado's wish and opened the museum in 1961, and the institutional page says FAAP maintains the MAB."
+ },
+ {
+  "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+  "governance": {
+   "legal_form": "private nonprofit",
+   "parent": null,
+   "director_appointed_by": null,
+   "staff_status": null,
+   "budget_set_by": null,
+   "controls": [
+    "freedom of information law"
+   ],
+   "year": "2026",
+   "sources": [
+    "https://mam.org.br/institucional/"
+   ]
+  },
+  "red_tape": null,
+  "basis": "The institutional page, section on transparency and governance, calls the museum a private nonprofit entity and says it publishes its documents under the access to information law 12.527/2011."
+ }
+]

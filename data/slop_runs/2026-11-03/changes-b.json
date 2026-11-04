@@ -1,0 +1,184 @@
+[
+ {
+  "id": "dia-beacon",
+  "name": "Dia Beacon",
+  "field": "visit_duration",
+  "before": "2.5 – 4 hours (Half-day excursion)",
+  "after": "2.5 to 4 hours"
+ },
+ {
+  "id": "zeitz-mocaa",
+  "name": "Zeitz MOCAA",
+  "field": "transit_tips",
+  "before": "MyCiTi bus lines 104, 108, or 109 to Waterfront, or convenient taxi drop-off directly at Silo District.",
+  "after": "MyCiTi bus lines 104, 108, or 109 to Waterfront, or taxi drop-off at Silo District."
+ },
+ {
+  "id": "louisiana-museum-of-modern-art",
+  "name": "Louisiana Museum of Modern Art",
+  "field": "visit_duration",
+  "before": "3 – 5 hours (Half-day to full-day excursion)",
+  "after": null
+ },
+ {
+  "id": "chisenhale-gallery",
+  "name": "Chisenhale Gallery",
+  "field": "visit_duration",
+  "before": "45 min – 1.5 hours",
+  "after": "45 min to 1.5 hours"
+ },
+ {
+  "id": "museo-tamayo",
+  "name": "Museo Tamayo",
+  "field": "amenities",
+  "before": "Restaurante Tamayo with open-air terrace overlooking the forest, specialized design boutique & bookshop.",
+  "after": "Restaurante Tamayo with open-air terrace overlooking the forest, design shop & bookshop."
+ },
+ {
+  "id": "storm-king-art-center",
+  "name": "Storm King Art Center",
+  "field": "visit_duration",
+  "before": "3 – 5 hours (Half-day excursion)",
+  "after": null
+ },
+ {
+  "id": "mass-moca",
+  "name": "MASS MoCA",
+  "field": "visit_duration",
+  "before": "3 – 6 hours (Full day excursion)",
+  "after": null
+ },
+ {
+  "id": "kr-ller-m-ller-museum",
+  "name": "Kröller-Müller Museum",
+  "field": "visit_duration",
+  "before": "3 – 5 hours (Full day excursion recommended)",
+  "after": null
+ },
+ {
+  "id": "serralves-museum-of-contemporary-art",
+  "name": "Serralves Museum of Contemporary Art",
+  "field": "visit_duration",
+  "before": "3 – 5 hours (Half-day excursion)",
+  "after": null
+ },
+ {
+  "id": "castello-di-rivoli-museo-d-arte-contemporanea",
+  "name": "Castello di Rivoli Museo d Arte Contemporanea",
+  "field": "visit_duration",
+  "before": "2.5 – 4 hours (Half-day trip from Turin)",
+  "after": "2.5 to 4 hours"
+ },
+ {
+  "id": "te-papa",
+  "name": "Te Papa",
+  "field": "transit_tips",
+  "before": "15-minute walk from Wellington Railway Station; numerous bus routes stop at Courtenay Place (2-min walk).",
+  "after": "15-minute walk from Wellington Railway Station; buses stop at Courtenay Place (2-min walk)."
+ },
+ {
+  "id": "serpentine-galleries",
+  "name": "Serpentine Galleries",
+  "field": "transit_tips",
+  "before": "Lancaster Gate or Queensway (Central line), South Kensington (Piccadilly, Circle, District), 10-min scenic walk across the royal park.",
+  "after": "Lancaster Gate or Queensway (Central line), South Kensington (Piccadilly, Circle, District), 10-min walk across the park."
+ },
+ {
+  "id": "kunstinstituut-melly",
+  "name": "Kunstinstituut Melly",
+  "field": "amenities",
+  "before": "MELLY café and reading room, curated bookstore, event auditorium.",
+  "after": "MELLY café and reading room, bookstore, event auditorium."
+ },
+ {
+  "id": "white-columns-new-york",
+  "name": "White Columns",
+  "field": "amenities",
+  "before": "White Room archive, audio resource center, curated publications desk.",
+  "after": "White Room archive, audio resource center, publications desk."
+ },
+ {
+  "id": "villa-arson-nice",
+  "name": "Villa Arson",
+  "field": "transit_tips",
+  "before": "Tram Line L1 to Le Ray stop; 10 min scenic uphill walk via Avenue Stephen Liegeard.",
+  "after": "Tram Line L1 to Le Ray stop; 10 min uphill walk via Avenue Stephen Liegeard."
+ },
+ {
+  "id": "hiap-helsinki",
+  "name": "HIAP (Helsinki International Artist Programme)",
+  "field": "transit_tips",
+  "before": "Municipal HSL Ferry from Kauppatori (Market Square) to Suomenlinna Main Pier (15 min scenic boat ride; standard HSL ticket covers it).",
+  "after": "Municipal HSL Ferry from Kauppatori (Market Square) to Suomenlinna Main Pier (15 min boat ride; standard HSL ticket covers it)."
+ },
+ {
+  "id": "hiap-helsinki",
+  "name": "HIAP (Helsinki International Artist Programme)",
+  "field": "visit_duration",
+  "before": "2 - 3 hours (including island walk)",
+  "after": "2 to 3 hours, including the island walk"
+ },
+ {
+  "id": "mediamatic-amsterdam",
+  "name": "Mediamatic",
+  "field": "transit_tips",
+  "before": "12 min scenic waterfront walk east from Amsterdam Centraal Station past NEMO Science Center to Dijksgracht.",
+  "after": "12 min waterfront walk east from Amsterdam Centraal Station past NEMO Science Center to Dijksgracht."
+ },
+ {
+  "id": "museum-abteiberg-monchengladbach",
+  "name": "Museum Abteiberg",
+  "field": "transit_tips",
+  "before": "Train to Mönchengladbach Hauptbahnhof; 10 min scenic walk up through the old town to the Abteiberg hill.",
+  "after": "Train to Mönchengladbach Hauptbahnhof; 10 min walk up through the old town to the Abteiberg hill."
+ },
+ {
+  "id": "salzburger-kunstverein",
+  "name": "Salzburger Kunstverein",
+  "field": "transit_tips",
+  "before": "Obus (trolleybus) lines 3, 5, 8 to Justizgebäude or Mozartsteg; 5 min scenic walk along the river.",
+  "after": "Obus (trolleybus) lines 3, 5, 8 to Justizgebäude or Mozartsteg; 5 min walk along the river."
+ },
+ {
+  "id": "artspace-sydney",
+  "name": "Artspace Sydney",
+  "field": "transit_tips",
+  "before": "Train to Kings Cross or St James; 12 min scenic walk down through the Domain to Woolloomooloo Bay.",
+  "after": "Train to Kings Cross or St James; 12 min walk down through the Domain to Woolloomooloo Bay."
+ },
+ {
+  "id": "kling-og-bang-reykjavik",
+  "name": "Kling & Bang",
+  "field": "transit_tips",
+  "before": "Strætó bus line 14 to Grandagarður; 15 min scenic harbor walk from Harpa Concert Hall.",
+  "after": "Strætó bus line 14 to Grandagarður; 15 min harbor walk from Harpa Concert Hall."
+ },
+ {
+  "id": "cafesjian-center-for-the-arts-yerevan",
+  "name": "Cafesjian Center for the Arts",
+  "field": "highlight",
+  "before": "The center held its grand opening in November 2009. Its sculpture garden has works by Fernando Botero and Jaume Plensa.",
+  "after": "The center opened in November 2009. Its sculpture garden has works by Fernando Botero and Jaume Plensa."
+ },
+ {
+  "id": "alula-arts-cultural-oasis",
+  "name": "AlUla Arts & Cultural Oasis",
+  "field": "amenities",
+  "before": "Maraya concert hall, luxury desert resorts.",
+  "after": "Maraya concert hall, desert resorts."
+ },
+ {
+  "id": "nmacc-mumbai",
+  "name": "Nita Mukesh Ambani Cultural Centre (NMACC)",
+  "field": "amenities",
+  "before": "Grand Theatre, Studio Theatre, The Cube, Art House, luxury restaurants.",
+  "after": "Grand Theatre, Studio Theatre, The Cube, Art House, restaurants."
+ },
+ {
+  "id": "barbican-centre-london",
+  "name": "Barbican Centre",
+  "field": "admission_details",
+  "before": "Foyers, conservatory, and public library always free; curated art gallery exhibitions ticketed €14–€16.",
+  "after": "Foyers, conservatory, and public library always free; art gallery exhibitions ticketed €14–€16."
+ }
+]

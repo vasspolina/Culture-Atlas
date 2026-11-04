@@ -92,3 +92,17 @@ f031 to f034 checked:
   state were removed for CHAT and Museum MACAN; the numbers stay.
 - The Reykjavik Art Museum record's website field points to the National Gallery of Iceland (a different body);
   the museum's site is listasafnreykjavikur.is. Not changed here.
+
+# Stage 5 review (f042 to f051)
+
+Four checker agents re-opened every cited source for the 40 records that held a figure.
+- Dropped as users of several services, attendees or wider scope: Mediamatic visitors, V2_ visitors (activity
+  attendees including partner events), Marres visitors (includes projects on location), Cervantino festival attendance
+  (a press release is the only source).
+- Dropped as operating lines or conflicting totals: Het Concertgebouw finance (operating lines before interest), Framer Framed
+  finance (the form's table and narrative disagree on total income), Mediamatic public (one unclear line).
+- Dropped for an undated, unstated or narrower area or count: Groninger Museum staff (the factsheet gives no date), Te Papa
+  area (public floor space, not building area), MOWAA area (one building of the campus), Museo Soumaya area (no kind).
+  Mudam keeps 4,000 m2 without a kind.
+- Kept at an older labelled year where a newer report exists but could not be read: Het Concertgebouw staff (FY2025 is a scan),
+  Mudam visitors (2024), Sonic Acts visitors (2024), Museum Beelden aan Zee (2024; the 2025 report says "over 102,000").

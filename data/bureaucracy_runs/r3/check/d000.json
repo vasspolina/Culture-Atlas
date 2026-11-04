@@ -1,0 +1,95 @@
+[
+ {
+  "id": "mus-e-public-national-d-art-moderne-et-contemporain-mama-algiers",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private foundation",
+    "page says": "Presidential Decree 79/11 says only that the Fundação Sindika Dokolo was constituted by public deed on 7 May 2006 and is declared of public utility under the associations law (Lei 14/91). It names no founder, donor or company, so it does not show the foundation was set up by a private donor; the founder is inferred from the name.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "fundação-sindika-dokolo-luanda",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "modern-art-museum-of-yerevan-yerevan",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "municipal or regional body",
+    "page says": "The yerevan.am page is a directory of 'Yerevan museums' under City economy, Culture. It gives address, director and history for the Yerevan Museum of Modern Art, but says nothing about its owner, founder body or legal form; a listing on the city site is not a statement that the city owns or runs it. The museum's own site (mamy.am) also states no legal form or owner.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Yerevan Municipality",
+    "page says": "No ownership or subordination wording for this museum on the cited page.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "modern-art-museum-of-yerevan-yerevan",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "art-gallery-of-south-australia-adelaide",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "Governance: the 2024-25 annual report (pages 3, 11 and 41) is submitted to the Minister for Arts under the Art Gallery Act 1939, names the Art Gallery Board under that Act, and says the financial statements go to the Audit Office of South Australia.",
+    "page says": "Page 41 of the PDF is about complaints management and says nothing on audit. The sentence that the financial statements are submitted to the Audit Office of South Australia is on page 37 (and the Audit Office attending the Board is on page 36). Every governance value itself is supported.",
+    "fix": "Cite pages 3, 11 and 37."
+   }
+  ],
+  "corrected": {
+   "id": "art-gallery-of-south-australia-adelaide",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Minister for Arts, South Australia",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [
+     "state audit office"
+    ],
+    "year": "2025",
+    "sources": [
+     "https://agsa-prod.s3.amazonaws.com/media/dd/files/Art_Gallery_of_South_Australia_2024-25_Annual_Report_-_FINAL.1718fee.pdf"
+    ]
+   },
+   "red_tape": null,
+   "basis": "Governance: the 2024-25 annual report (pages 3, 11 and 37) is submitted to the Minister for Arts under the Art Gallery Act 1939, names the Art Gallery Board under that Act, and says the financial statements go to the Audit Office of South Australia."
+  }
+ },
+ {
+  "id": "tandanya-national-aboriginal-cultural-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-gallery-of-ballarat-ballarat",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "darwin-festival-darwin",
+  "verdict": "ok",
+  "faults": []
+ }
+]

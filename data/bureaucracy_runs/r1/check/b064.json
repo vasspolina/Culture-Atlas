@@ -1,0 +1,40 @@
+[
+ {
+  "id": "misk-art-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dakart-biennale-dakar",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "national government body",
+    "page says": "Rules article 1: the Biennale is 'placée sous l'égide du ministère en charge de la Culture'; Biennale page: 'instituée par l'État du Sénégal' in 1989. Neither states a legal form or that it is a ministry department; the ministry's own Biennale page was not cited and also gives no form.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "dakart-biennale-dakar",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "musee-boribana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ntu-centre-for-contemporary-art-singapore-singapore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-singapore-singapore",
+  "verdict": "ok",
+  "faults": []
+ }
+]

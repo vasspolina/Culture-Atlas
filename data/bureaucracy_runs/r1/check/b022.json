@@ -1,0 +1,98 @@
+[
+ {
+  "id": "muu-helsinki",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "serlachius-museums-mänttä",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondation-vincent-van-gogh-arles",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "luma-arles",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "private company",
+    "page says": "The about page says LUMA Arles was created in 2013 as an endowment organization under French law, operating on a nonprofit basis; the legal notice only names SAS LUMA/Arles as publisher of the website, not as the legal form of the space",
+    "fix": "private foundation"
+   },
+   {
+    "field": "governance.sources",
+    "stored": [
+     "https://luma.org/en/arles/legal-notice",
+     "https://luma.org/en/arles/about"
+    ],
+    "page says": "The legal notice states only who publishes the site, so it does not prove the legal form",
+    "fix": [
+     "https://luma.org/en/arles/about"
+    ]
+   },
+   {
+    "field": "basis",
+    "stored": "The legal notice names SAS LUMA/Arles, a simplified joint-stock company, as publisher of the site, and the about page says the LUMA Foundation created LUMA Arles in 2013.",
+    "page says": "Describes the legal notice's website publisher as the legal form",
+    "fix": "The about page says the LUMA Foundation, its parent organization, created LUMA Arles in 2013 as a nonprofit endowment organization under French law."
+   }
+  ],
+  "corrected": {
+   "id": "luma-arles",
+   "governance": {
+    "legal_form": "private foundation",
+    "parent": "LUMA Foundation",
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://luma.org/en/arles/about"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The about page says the LUMA Foundation, its parent organization, created LUMA Arles in 2013 as a nonprofit endowment organization under French law."
+  }
+ },
+ {
+  "id": "capc-mus-e-d-art-contemporain",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "frac-des-pays-de-la-loire-carquefou",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "le-consortium",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "s-ries-mania-lille",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "la-friche-la-belle-de-mai",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "triangle-asterides-marseille",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "49-nord-6-est-frac-lorraine-metz",
+  "verdict": "ok",
+  "faults": []
+ }
+]

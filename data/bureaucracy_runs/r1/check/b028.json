@@ -1,0 +1,76 @@
+[
+ {
+  "id": "kunstverein-braunschweig",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-bremen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-ludwig",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hmkv-hartware-medienkunstverein-dortmund",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "basis",
+    "stored": "The imprint names Hartware MedienKunstVerein e.V., registered at the Dortmund local court (VR4833), as the operator of Kunsthalle Dortmund.",
+    "page says": "The imprint names HMKV Hartware MedienKunstVerein e.V., eingetragen beim Amtsgericht Dortmund, VR4833, and gives the Kunsthalle Dortmund address; it does not call the association the operator of the Kunsthalle",
+    "fix": "The imprint names Hartware MedienKunstVerein e.V. (HMKV), registered at the Dortmund local court (VR4833)."
+   }
+  ],
+  "corrected": {
+   "id": "hmkv-hartware-medienkunstverein-dortmund",
+   "governance": {
+    "legal_form": "association",
+    "parent": null,
+    "director_appointed_by": null,
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.kunsthalledortmund.de/impressum"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The imprint names Hartware MedienKunstVerein e.V. (HMKV), registered at the Dortmund local court (VR4833)."
+  }
+ },
+ {
+  "id": "kunstverein-für-die-rheinlande-und-westfalen-düsseldorf",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-folkwang-essen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "portikus-frankfurt",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "basis-frankfurt",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthaus-hamburg-hamburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kestner-gesellschaft-hannover",
+  "verdict": "ok",
+  "faults": []
+ }
+]

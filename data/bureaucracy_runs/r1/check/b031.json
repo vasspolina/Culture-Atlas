@@ -1,0 +1,122 @@
+[
+ {
+  "id": "deste-foundation-for-contemporary-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "emst-national-museum-of-contemporary-art-athens",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.sources[1]",
+    "stored": "https://www.emst.gr/en/download/esoterikos-kanonismos-leitoyrgias-emst",
+    "page says": "The cited page is only a download landing page (title, version, file size, date). The facts it is cited for (private-law staff contracts in art. 23, board approval of the budget in art. 29(2), public procurement rule in art. 34(2)) sit in the PDF of Presidential Decree 78, Government Gazette A 108 of 1 August 2017, which the page links as ?wpdmdl=72536.",
+    "fix": "https://www.emst.gr/en/download/esoterikos-kanonismos-leitoyrgias-emst?wpdmdl=72536"
+   }
+  ],
+  "corrected": {
+   "id": "emst-national-museum-of-contemporary-art-athens",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": "Hellenic Ministry of Culture",
+    "director_appointed_by": "government or ministry",
+    "staff_status": "employees of the institution",
+    "budget_set_by": "board",
+    "controls": [
+     "public procurement law"
+    ],
+    "year": "2017",
+    "sources": [
+     "https://www.emst.gr/en/the-museum/administration-personnel",
+     "https://www.emst.gr/en/download/esoterikos-kanonismos-leitoyrgias-emst?wpdmdl=72536"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The museum's administration page says Law 2557 of 1997 founded it as a private-law non-profit entity supervised and financed by the Ministry of Culture and Sports, with the board and the director appointed by the Minister; articles 23, 29 and 34 of the internal regulation in the Government Gazette of 1 August 2017 give the private-law staff contracts, the board's approval of the budget and the public procurement rule."
+  }
+ },
+ {
+  "id": "neon-athens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-alexandros-soutzos-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.parent",
+    "stored": "Hellenic Ministry of Culture",
+    "page says": "The introduction page says it is a public law entity governed by a nine-member Board and that the Minister of Culture appoints the Director; it does not say a ministry supervises or sits above the gallery.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "national-gallery-alexandros-soutzos-museum",
+   "governance": {
+    "legal_form": "statutory public body",
+    "parent": null,
+    "director_appointed_by": "government or ministry",
+    "staff_status": null,
+    "budget_set_by": null,
+    "controls": [],
+    "year": "2026",
+    "sources": [
+     "https://www.nationalgallery.gr/en/parousiasi/"
+    ]
+   },
+   "red_tape": null,
+   "basis": "The gallery's introduction page says it is a public law entity governed by a nine-member board and that the Minister of Culture appoints the director for a five-year term."
+  }
+ },
+ {
+  "id": "state-of-concept-athens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tavros-athens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "momus-thessaloniki",
+  "verdict": "fault",
+  "faults": [
+   {
+    "field": "governance.legal_form",
+    "stored": "statutory public body",
+    "page says": "The Ministry's portal page says MOMus was founded in 2018 as a legal entity of private law under the supervision of the Ministry of Culture. It does not say who appoints the board or director, who funds it, or give any other fact that fits the statutory public body definition; the form is inferred.",
+    "fix": null
+   },
+   {
+    "field": "governance.parent",
+    "stored": "Hellenic Ministry of Culture",
+    "page says": "Supervision by the Ministry is stated, but with the legal form unsupported the governance block drops.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "momus-thessaloniki",
+   "governance": null,
+   "red_tape": null,
+   "basis": ""
+  }
+ },
+ {
+  "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "katuaq-greenland-cultural-centre-nuuk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nuuk-art-museum-nuuk-kunstmuseum-nuuk",
+  "verdict": "ok",
+  "faults": []
+ }
+]
