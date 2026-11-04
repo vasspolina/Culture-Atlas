@@ -3728,3 +3728,12 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
    prevented by the non-breaking space typeset.js puts between a title's last two words. :where keeps it at zero specificity, so the few
    !important wrap rules already in this file still win. */
 :where(h1,h2,h3,h4,h5,h6,.t-title,.lede,.curator-section-hdr,.critique-title,.starter-prompt,.dossier-main-heading,.d-row-title,#floatingCardTitle,.record-popup-name,#desktopDossierName,#dossier-sheet-name){text-wrap-style:auto!important}
+
+/* No underline on hover (user, 4 Nov 2026: "do not underline and check button hovers, they need to work properly"): the title (back to the
+   world view) and "How the records work" showed an underline on hover; they now dim slightly instead, like the other quiet controls, and
+   keep the pointer. Every other button's hover was measured after its transition, in light and dark: each changes and keeps 9.4:1 or more. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:is(:hover,:focus-visible,:active),
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#chatRecordsInfo,#chatRecordsInfoMobile)>summary,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#chatRecordsInfo,#chatRecordsInfoMobile)>summary:is(:hover,:focus-visible,:active){text-decoration:none!important}
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button{cursor:pointer;transition:color .15s ease}
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:hover,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#chatRecordsInfo,#chatRecordsInfoMobile)>summary:hover{color:color-mix(in srgb,var(--ink) 72%,var(--paper))!important}
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:focus-visible{outline:3px solid var(--focus)!important;outline-offset:4px}
