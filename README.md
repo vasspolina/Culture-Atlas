@@ -24,7 +24,7 @@ The look follows the It's a book fair site: a white page, a strip of tabs on hai
 
 Contrast is measured, not assumed (WCAG 2.2: 4.5:1 for text under 24px, 3:1 for large text, UI components, focus rings and the marks that carry data). A mark is never told only by colour: a space's tier is a circle (clean), square (flagged) or triangle (unverified) on its pin and on its city and museum label; a funding grade is its letter inside the dot; funders on the money map are squares (public funding), hexagons (companies) and triangles (foundations); right-wing and Epstein-file marks are a shield and a star, the key shows each. On the white ground of light mode the pale layer colours are drawn as a deeper step of the same hue (`LINE_LIGHT` in `assets/layers.js`), and the pale originals stay as the fills of the name blocks, where the text on them is black. The focus ring is `--focus` (cobalt on light, a lighter blue on dark).
 
-The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the editor reads them on `reports-admin.html` (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+The Details panel is the full record, with no separate record page on desktop. The page has no form for notes or reviews (removed 3 Nov 2026). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ---
 
@@ -38,7 +38,6 @@ python3 -m http.server 8080
 
 Then open [http://localhost:8080](http://localhost:8080).
 
-To try the Share information form against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
 
 ---
 
@@ -58,13 +57,9 @@ check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
 ## Whistleblower reviews
 
-The only notes the atlas holds are whistleblower reviews. They are written on one screen and read in one place.
+The page no longer takes or shows notes (3 Nov 2026): the Share information form and the reviews under a record were both removed. The report API and `reports-admin.html` below are kept for the reviews already stored.
 
-**Writing:** Share information (in the chat composer, and on the map's control bar) opens the note screen, which is a form of filled blocks: the institution (the open record's, or chosen from the list of every space on the atlas), an optional name to show (blank shows "Whistleblower"), the note (10 to 2000 characters), and a box confirming that the sender has left out their name and anything that identifies them. Send for review is grey until the form could be sent and blue after; it posts to the report API. Enter inside the note starts a new line. If it cannot be sent, everything stays in the form and nothing is kept in the reader's browser. The page has no other way to add a note. There are no star ratings.
-
-**Reading:** the record does not list reviews (removed 3 Nov 2026). Approved reviews are read on `reports-admin.html`.
-
-A review is sent to the report API below, held as waiting, and the editor approves or deletes it on `reports-admin.html`. Reviews are not posted to Google Maps.
+A review the API held is moderated on `reports-admin.html`. Reviews are not posted to Google Maps.
 
 The Cloudflare Worker in `worker/` serves only the chat proxy (`/chat`). It takes no notes and no reviews; its setup is kept below.
 

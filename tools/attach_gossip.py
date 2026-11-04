@@ -3,7 +3,8 @@
 
 The rules are in notes/gossip-criteria.md. This tool applies the mechanical ones and refuses the file when an item breaks them:
 every required field present and of the right shape, `institution` matching one record (by name, id or alias), `urls` http(s)
-addresses, `when` a date, `who_says`/`kind`/`status` from the lists, `headline` under 90 characters, `response` present when the
+addresses, `when` a date, `who_says`/`kind`/`status` from the lists, `headline` under 90 characters and free of
+violent or criminal verbs of the editor's own (LOADED, outside quotation marks), `response` present when the
 item names a person (any capitalised two-word name in `said` or `headline` — a rough net, so the editor checks §5 by hand).
 
 Age (§6): an item whose `when` is more than 36 months before the run date and whose status is still `talk` is written with
@@ -27,6 +28,11 @@ WHO = {'press', 'court_or_regulator', 'union', 'open_letter', 'campaign', 'socia
 KIND = {'rumour', 'report', 'allegation', 'dispute', 'departure', 'money', 'leak'}
 STATUS = {'talk', 'denied', 'confirmed', 'resolved', 'stale'}
 RANK12 = {'press', 'court_or_regulator'}
+# Verbs that make a decision or a dispute sound like violence or a crime. A headline may carry one only inside a quotation.
+# Crime terms a court, prosecutor or regulator uses (stolen, looting, seizures) are reported, not the editor's, so not listed.
+LOADED = re.compile(r"\b(kill(?:s|ed|ing)?|axe[sd]?|axing|gut(?:s|ted|ting)?|slam(?:s|med|ming)?|blast(?:s|ed|ing)?|"
+                    r"torpedo(?:es|ed|ing)?|destroy(?:s|ed|ing)?|wreck(?:s|ed|ing)?|sabotag\w*|hijack\w*|purge[sd]?|"
+                    r"crack(?:s|ed)? down|crackdown|war on|bombshell)\b", re.I)
 OUT_FIELDS = ('id', 'headline', 'said', 'who_says', 'where', 'when', 'urls', 'kind', 'status', 'response', 'outcome', 'retrieved_on')
 
 
@@ -78,6 +84,13 @@ def main(check_only=False):
             errors.append(f'{iid}: status {it.get("status")!r} not in {sorted(STATUS)}')
         if len(str(it.get('headline', ''))) > 90:
             errors.append(f'{iid}: headline over 90 characters')
+        # A headline is said in the source's own register (user, 4 Nov 2026: "do not make alerts criminal, the article has
+        # neutral language"): no violent or criminal verb of the editor's own. Words inside quotation marks are the source's.
+        unquoted = re.sub(r"(?<!\w)'[^']*'(?!\w)|\"[^\"]*\"|‘[^’]*’|“[^”]*”", '', str(it.get('headline', '')))
+        loaded = LOADED.findall(unquoted)
+        if loaded:
+            errors.append(f'{iid}: headline uses {", ".join(sorted(set(w.lower() for w in loaded)))!r}; say what the source says '
+                          '(scraps, cancels, halts, ends), or quote whoever used the word')
         urls = it.get('urls') or []
         if not isinstance(urls, list) or not 1 <= len(urls) <= 4 or any(not re.match(r'https?://', str(u)) for u in urls):
             errors.append(f'{iid}: urls must be one to four http(s) addresses')
