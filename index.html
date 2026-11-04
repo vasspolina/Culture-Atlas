@@ -45,11 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=512">
-  <script src="assets/config.js?v=508"></script>
-  <script src="assets/subtopic.js?v=508"></script>
-  <script src="assets/names.js?v=508"></script>
-  <script src="assets/grounding.js?v=508"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=513">
+  <script src="assets/config.js?v=513"></script>
+  <script src="assets/subtopic.js?v=513"></script>
+  <script src="assets/names.js?v=513"></script>
+  <script src="assets/grounding.js?v=513"></script>
+  <script src="assets/repeats.js?v=513"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1037,7 +1038,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=508"></script>
+  <script src="assets/institutions.js?v=513"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9973,11 +9974,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v512';
+    const ATLAS_RELEASE = 'culture-atlas-v513';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=508').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=513').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12115,6 +12116,9 @@ return maplibregl$1;
         record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : ''));
         record.classList.toggle('hidden', !record.innerHTML);
       }
+      // The summary, the funding row and the reported items are filled apart; what one says, the next does not say again.
+      if (window.AtlasRepeats) window.AtlasRepeats.dedupeDom(document.getElementById('dossier-sheet-verified-pane'));
+      if (record) record.classList.toggle('hidden', !record.innerHTML.trim());
       const webLink = document.getElementById('dossier-sheet-link-web');
       const webUrl = getValidWebUrl(inst);
       if (webLink) {
@@ -12901,7 +12905,8 @@ return maplibregl$1;
           ${isClean ? visitingRowsHtml([
             ['Opening hours', escapeHtml(inst.opening_hours || '')],
             ['Admission', escapeHtml(inst.admission_fee || '')],
-            ['Address', escapeHtml(inst.address || inst.location || '') + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '')],
+            // The city and country head the record already; with no street address there is no Address row to repeat them.
+            ['Address', inst.address ? escapeHtml(inst.address) + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '') : ''],
             ['Suggested duration', escapeHtml(inst.visit_duration || '')],
             ['Getting there', escapeHtml(inst.transit_tips || '')],
             ['Accessibility', escapeHtml(inst.accessibility || '')],
@@ -12919,7 +12924,8 @@ return maplibregl$1;
       if (!inst) return;
       dossierInst = inst;
       // On the note screen, opening another record makes it the institution of the note.
-      const html = linkRecordSpaces(recordHtml(inst), inst);
+      // Every statement once: a sentence two fields share is printed where it first comes (assets/repeats.js).
+      const html = dedupeView(linkRecordSpaces(recordHtml(inst), inst));
       const phoneBody = document.getElementById('detailBody');
       if (phoneBody) phoneBody.innerHTML = html;
       const page = document.getElementById('desktopDossierRecordBody');
@@ -14529,6 +14535,7 @@ ${groundedCatalogText}${placeText}
 ${communityGrounding}
 ${webIntelGrounding}
 
+- NO REPETITION. Say each fact once in an answer. Do not restate a sentence, a figure, a funder or a list item already given, in other words or the same words; do not end with a summary of what you just said; do not repeat what an earlier answer in this conversation already told the visitor unless asked again. The page removes any sentence it finds twice.
 - NO SLOP. Never write hedges (may, might, reportedly, allegedly, appears to, seems, arguably, likely, is said to, believed to): state what the record states and attribute it to its source, or leave it out. Never write filler or promo words (vibrant, rich, renowned, prestigious, world-class, iconic, landmark, dynamic, thriving, pivotal, tapestry, testament to, nestled, boasts, showcases, fosters, underscores, delve, landscape, ecosystem, legacy). Never write "plays a crucial role", "it is worth noting", "a diverse range of", "among others", "and more", or "not only X but also Y". Do not pad with lists of three. Do not use verdict words (controversial, problematic, troubling, concerning) without a named event, date and actor. Use active voice, past tense for events, present tense for current funding.
 - Avoid pompous marketing fluff ("cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "sublime", "epistemologies", or "palliative").
 - Avoid promotional language, unsupported praise or criticism, canned phrasing and prompt meta-commentary. Keep answers concise and evidence-based.
@@ -14665,6 +14672,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           if (themed && !isGossipMode) rawText = rawText.replace(/^\s*The Atlas (?:holds|records|has)[^.]*\d[^.]*\.\s*(?:(?:Their|The) grades are[^.]*\.\s*)?/i, '');
           if (themed && !isGossipMode) rawText = `The Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} for this question. Grades: ${themed.tallyText}.\n\n${rawText}`;
           rawText = dropAbsenceLines(rawText);
+          // The model does not say a thing twice: a sentence or list item it already gave is taken out (assets/repeats.js).
+          if (window.AtlasRepeats) rawText = window.AtlasRepeats.dropRepeatedText(rawText);
           if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing is reported for this space in the records.</p>', gossip: false, none: true };
           return isGossipMode ? { html: renderCuratorMarkdown(rawText), gossip: true } : renderCuratorMarkdown(rawText);
         }
@@ -14692,6 +14701,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }).filter((line, i, arr) => line.trim() !== '' || (arr[i - 1] || '').trim() !== '').join('\n').trim();
     }
     window.dropAbsenceLines = dropAbsenceLines;
+    // The view-level repeat pass; a no-op if assets/repeats.js did not load.
+    function dedupeView(html) { return window.AtlasRepeats && typeof html === 'string' ? window.AtlasRepeats.dedupeHtml(html) : html; }
+    window.dedupeView = dedupeView;
 
     async function testAPIConnection(prov, key, model) {
       const activeKey = key || aiApiKey || _SYS_KEY;
@@ -15682,6 +15694,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (typeof htmlContent === 'string') {
         processedContent = renderCuratorMarkdown(htmlContent);
       }
+      // A turn built from several records or fields says each statement once (assets/repeats.js).
+      processedContent = dedupeView(processedContent);
 
       div.innerHTML = `
         <div class="space-y-2_5">
@@ -20040,12 +20054,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=508"></script>
-<script src="assets/layers.js?v=508"></script>
-<script src="assets/hq-detail.js?v=511"></script>
-<script src="assets/bubbles.js?v=508" defer></script>
-<script src="assets/phone-maps.js?v=508"></script>
-<script src="assets/desktop-maps.js?v=508"></script>
-<script src="assets/chat-resize.js?v=508"></script>
+<script src="assets/typeset.js?v=513"></script>
+<script src="assets/layers.js?v=513"></script>
+<script src="assets/hq-detail.js?v=513"></script>
+<script src="assets/bubbles.js?v=513" defer></script>
+<script src="assets/phone-maps.js?v=513"></script>
+<script src="assets/desktop-maps.js?v=513"></script>
+<script src="assets/chat-resize.js?v=513"></script>
 </body>
 </html>
