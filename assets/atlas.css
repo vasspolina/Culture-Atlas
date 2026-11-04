@@ -4273,4 +4273,18 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea){color:var(--dp-ink)!important;caret-color:var(--dp-ink)!important;border-radius:0!important}
 @media (max-width:520px){
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock){padding:14px 0 12px!important}
+
+/* ---- SHARE INFORMATION IN THE PHONE'S CHAT (user, 4 Nov 2026: "show Share information button in phone chat") ----
+   The phone composer (html.gm-chat) hid Share information and Voice. Share information comes back, Voice stays in the menu. It
+   sits on a second line inside the composer pill, under the text and the send button, as on a desktop: in one row with them it
+   left the text about 130px wide. The toolbar becomes display:contents, so its two groups become items of the pill: the send
+   group stays beside the text, and the Share group wraps onto its own line. The button keeps the chat's Displaay look (menthol
+   #b8fbff, 34px, 10px corners, 15px). Leaves the note form (chat-input-mode-active) alone. */
+@media (max-width:767px){
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard{flex-wrap:wrap!important;row-gap:4px!important;column-gap:8px!important;padding:4px 4px 10px 18px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard #noteInputBlock{flex:1 1 0!important;order:1}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard>.flex.items-center.justify-between{display:contents!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard>.flex.items-center.justify-between>div:not(:has(>#chatShareBtn)){order:2;flex:none!important;align-self:center}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard>.flex.items-center.justify-between>div:has(>#chatShareBtn){order:3;flex:1 1 100%!important;width:100%!important;display:flex!important;justify-content:flex-start!important;margin:0!important;padding:0!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard #chatShareBtn{display:inline-flex!important}
 }
