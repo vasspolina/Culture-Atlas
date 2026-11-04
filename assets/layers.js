@@ -62,7 +62,9 @@
   }
   window.atlasShapePath = shapePath;
   const RIGHT = n => typeof n[5] === 'string' && n[5].indexOf('right:') === 0;
-  const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? ['Jeffrey Epstein'] : []);
+  // The people who tie a space to the Epstein files; a flagged space with no named person is labelled with its own name,
+  // since a tag that says only "Jeffrey Epstein" tells nothing about the pin it sits on.
+  const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? [rec.n] : []);
   const FUNDER = n => n[1] === 'gov' || n[1] === 'corp' || n[1] === 'found';
   const rad = Math.PI / 180;
   const kindOn = k => L.kinds[k] !== false;
