@@ -3778,26 +3778,7 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The three tabs over the chat do not fit their column at 15px; they keep 14px, and the space between them. */
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn){font-size:14px!important;letter-spacing:0!important}
 
-/* ---- FOG ON THE MAP (user's instruction, 4 Nov 2026, replacing the blur the same day) ----
-   No blur anywhere: it softened the labels and the cards drawn on the map ("do not blur the labels and dont blur middle of
-   map, oly top and bottom, actually just fog it like its becoming tiny transparent, on top and bottom"). The map fades into
-   the paper at its top and bottom edges, on the globe and on the street map alike, and the middle is left as it is. One layer
-   over the map, under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every
-   control and card); it takes no pointer, so the map is dragged and clicked as before. */
-#globeViewport::before{content:"";position:absolute;inset:0;z-index:18;pointer-events:none;
-  /* Lighter (user, 4 Nov 2026: "fade less at the bottom and top"), after "stronger at the edges" the same day: at most 60% paper at
-     the very edge, eased out over the outer 12%, so the map thins toward the edges without vanishing into the page. */
-  /* And a tiny fade at the left and right (user, 4 Nov 2026: "fade on left and right a tiny bit"): at most 30% paper at the very side,
-     gone by 5% in. */
-  background:linear-gradient(to right,
-    color-mix(in srgb,var(--paper) 30%,transparent) 0,color-mix(in srgb,var(--paper) 10%,transparent) 2.5%,transparent 5%,
-    transparent 95%,color-mix(in srgb,var(--paper) 10%,transparent) 97.5%,color-mix(in srgb,var(--paper) 30%,transparent) 100%)}
-/* No fade and no blur at the top and bottom (user, 4 Nov 2026: "do not darken top and bottom of map"): the paper is dark, so the
-   bands darkened the map there. Only the slight left and right fade above is kept. */
-@media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
-/* The fog waits for the page's first frames (html.fog-ready, set two frames after the hold is cleared in index.html), as the
-   blur it replaces had to. */
-html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport::after{display:none}
+/* No fog, fade or blur on any edge of the map (user, 4 Nov 2026: "do not darken top and bottom of map", then the left and right too). */
 
 /* The curator's mark beside each answer is the pink disc with a square cut out of it (user's file, 4 Nov 2026), in place of the Gemini spark.
    It does not spin while an answer is coming: a pending answer pulses instead. */
