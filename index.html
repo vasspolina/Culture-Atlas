@@ -10376,8 +10376,10 @@ return maplibregl$1;
       const btnText = card.btn || '';
 
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const cardInk = cardDark ? '#ffffff' : '#000000';
-      const cardPaper = cardDark ? '#000000' : '#ffffff';
+      // A card that is itself the button (card.action, the city card) turns over to ink while the pointer is on it.
+      const cardInk = (cardDark !== !!card.hover) ? '#ffffff' : '#000000';
+      const cardPaper = (cardDark !== !!card.hover) ? '#000000' : '#ffffff';
+      const actionText = card.action ? String(card.action).toUpperCase() + ' \u2192' : '';
       const padX = 18, padY = 16;
       const cardW = Math.min(400, width - 28);
       const maxTextW = cardW - padX * 2;
@@ -10436,7 +10438,23 @@ return maplibregl$1;
 
       ctx.font = ATLAS_CARD_LABEL_FONT;
       try { ctx.letterSpacing = '0.04em'; } catch (e) {}
-      if (locText) ctx.fillText(fit(locText), textX, cardY + LABEL_Y);
+      // The action sits on the label line, set flush right against the place on the left.
+      let actionW = 0;
+      if (actionText) {
+        actionW = ctx.measureText(actionText).width;
+        ctx.textAlign = 'right';
+        ctx.fillText(actionText, textX + maxTextW, cardY + LABEL_Y);
+        ctx.textAlign = 'left';
+      }
+      if (locText) {
+        let lt = locText;
+        const room = maxTextW - (actionW ? actionW + 16 : 0);
+        if (ctx.measureText(lt).width > room) {
+          while (lt.length > 3 && ctx.measureText(lt + '…').width > room) lt = lt.slice(0, -1);
+          lt += '…';
+        }
+        ctx.fillText(lt, textX, cardY + LABEL_Y);
+      }
       try { ctx.letterSpacing = '0px'; } catch (e) {}
       ctx.fillRect(textX, cardY + RULE_Y, maxTextW, 1);
 
@@ -11265,8 +11283,8 @@ return maplibregl$1;
                 label: hMeta.country ? hMeta.country.trim() : '',
                 name: hMeta.name,
                 desc: `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`,
-                btn: 'Click to explore',
-                btnHover: isHoveringCityExploreLink
+                action: 'Click to explore',
+                hover: isHoveringCityExploreLink
               }, hPt.x, hPt.y, width);
 
               // Register interactive hover & click hitbox for the card and link
@@ -11279,10 +11297,10 @@ return maplibregl$1;
                 cardY: g.cardY,
                 cardW: g.cardW,
                 cardH: g.cardH,
-                linkX: g.btnX,
-                linkY: g.btnY,
-                linkW: g.btnW,
-                linkH: g.btnH
+                linkX: g.cardX,
+                linkY: g.cardY,
+                linkW: g.cardW,
+                linkH: g.cardH
               };
 
               ctx.restore();
@@ -19946,7 +19964,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const hb = hoveredCityCardHitbox;
         const insideCard = mx >= hb.cardX && mx <= hb.cardX + hb.cardW && my >= hb.cardY && my <= hb.cardY + hb.cardH;
         if (insideCard) {
-          const insideLink = mx >= hb.linkX - 4 && mx <= hb.linkX + hb.linkW + 4 && my >= hb.linkY - 4 && my <= hb.linkY + hb.linkH + 4;
+          // The whole card is the button, so the pointer anywhere on it lights it.
+          const insideLink = true;
           const wasLinkHovered = isHoveringCityExploreLink;
           isHoveringCityExploreLink = insideLink;
           canvas.style.cursor = 'pointer';
