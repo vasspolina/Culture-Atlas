@@ -27,7 +27,7 @@ test('a sentence held whole in an earlier one is a repeat; a short label is neve
 test('near-identical sentences (nine words in ten) count as one', () => {
   const t = 'The museum received EUR 30.6M in project funds from the federal state in 2024.\n'
     + 'The museum received EUR 30.6M in project funds from the federal state during 2024.';
-  assert.deepEqual(repeats(t), ['The museum received EUR 30.6M in project funds from the federal state during 2024.']);
+  assert.deepEqual(Array.from(repeats(t)), ['The museum received EUR 30.6M in project funds from the federal state during 2024.']);
 });
 
 test('initials, abbreviations and decimals do not split a sentence', () => {
