@@ -3780,17 +3780,26 @@ div:has(>#topThemeBtn){column-gap:0}
    over the map, under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every
    control and card); it takes no pointer, so the map is dragged and clicked as before. */
 #globeViewport::before{content:"";position:absolute;inset:0;z-index:18;pointer-events:none;
+  /* Stronger at the edges (user, 4 Nov 2026: "make the fog stronger at the edges"): solid paper at the very edge, eased out
+     over the outer 24% so the map seems to vanish into the page rather than stop at a line. */
   background:linear-gradient(to bottom,
-    color-mix(in srgb,var(--paper) 92%,transparent) 0,transparent 16%,
-    transparent 84%,color-mix(in srgb,var(--paper) 92%,transparent) 100%)}
-@media (prefers-reduced-transparency:reduce){#globeViewport::before{display:none}}
+    var(--paper) 0,color-mix(in srgb,var(--paper) 85%,transparent) 5%,color-mix(in srgb,var(--paper) 55%,transparent) 11%,color-mix(in srgb,var(--paper) 25%,transparent) 17%,transparent 24%,
+    transparent 76%,color-mix(in srgb,var(--paper) 25%,transparent) 83%,color-mix(in srgb,var(--paper) 55%,transparent) 89%,color-mix(in srgb,var(--paper) 85%,transparent) 95%,var(--paper) 100%)}
+/* And a blur under the fade, in the same two bands only (user, 4 Nov 2026: "add some blur"): 3px at the very edge, eased out
+   through a mask so it is gone by 20% in and nothing in the middle of the map is touched. It sits under the paper fade (z 17),
+   takes no pointer, and waits for fog-ready like the fade (a backdrop blur switched on with the first paint drew black). */
+#globeViewport::after{content:"";position:absolute;inset:0;z-index:17;pointer-events:none;
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.6) 8%,transparent 20%,transparent 80%,rgba(0,0,0,.6) 92%,#000 100%);
+  mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.6) 8%,transparent 20%,transparent 80%,rgba(0,0,0,.6) 92%,#000 100%)}
+@media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
 /* The fog waits for the page's first frames (html.fog-ready, set two frames after the hold is cleared in index.html), as the
    blur it replaces had to. */
-html:not(.fog-ready) #globeViewport::before{display:none}
+html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport::after{display:none}
 
-/* The curator's mark beside each answer is the pink disc with a square (user's file, 4 Nov 2026), in place of the Gemini spark.
+/* The curator's mark beside each answer is the pink disc with a square cut out of it (user's file, 4 Nov 2026), in place of the Gemini spark.
    It does not spin while an answer is coming: a pending answer pulses instead. */
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap:not(.has-bubble):not(#curatorHeroGreeting)::before{background:url("icons/chat-mark.svg") center/contain no-repeat!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap:not(.has-bubble):not(#curatorHeroGreeting)::before{background:url("icons/chat-mark.svg?v=2") center/contain no-repeat!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap.chat-pending::before{animation:chat-mark-pulse 1.2s ease-in-out infinite alternate!important}
 @keyframes chat-mark-pulse{from{opacity:1}to{opacity:.35}}
 @media (prefers-reduced-motion:reduce){ :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workViewContainer #curatorMessages>.curator-message-wrap.chat-pending::before{animation:none!important} }
@@ -3847,7 +3856,8 @@ html:not(.fog-ready) #globeViewport::before{display:none}
 @media (prefers-reduced-motion:reduce){#layersPanel#layersPanel#layersPanel :is(.filter-row input,.filter-switch)::after{transition:none}}
 
 /* ==== DESKTOP: THE PAGE'S NAME (user, 4 Nov 2026: "add a title back to a page above layer tags on top of page") ====
-   The maps-app layout had dropped the name; it is back at the top left, one line over the layer chips, set plain and large like
+   The maps-app layout had dropped the name; it is back at the top left, one line under the layer chips (it was over them
+   until the user's "switch around" the same day), set plain and large like
    a foundry page's section title. A click returns the globe to the world view, as the old brand button did. */
 #gmdTitle{display:none}
 @media (min-width:768px){
@@ -3855,8 +3865,11 @@ html:not(.fog-ready) #globeViewport::before{display:none}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button{pointer-events:auto;display:inline-block;max-width:100%;height:auto;min-height:0;padding:0;margin:0;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;color:var(--ink)!important;font:400 28px/1.15 var(--sans)!important;letter-spacing:-.005em;text-shadow:0 0 3px var(--paper),0 0 6px var(--paper),0 0 10px var(--paper);text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
-  /* The chips move down one line to sit under the name, and the open Layers drawer stops short of them. */
-  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdChips{top:calc(var(--gmd-gap) + 44px)!important}
+  /* Switched around (user, 4 Nov 2026: "switch around", pills above title): the chips take the top line and the name sits
+     one chip row under them. A chip row is 36px plus its 2px top and 8px bottom padding (#gmdChips above), so the name
+     starts 50px down, the same 8px clear of the chips' shadow-free bottom that the chips had under the name. */
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdChips{top:var(--gmd-gap)!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdTitle{top:calc(var(--gmd-gap) + 50px)!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #layersControl #layersPanel{max-height:calc(100vh - 230px)!important}
 }
 /* A question that wraps keeps the same space above and below its words as one that fits on a line (user, 4 Nov 2026). These
@@ -3897,3 +3910,17 @@ html:not(.fog-ready) #globeViewport::before{display:none}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-width:44px!important;padding:0!important;line-height:0!important;border-radius:var(--btn-r,10px)!important;box-shadow:none!important;background:transparent!important;color:var(--ink)!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close svg{display:block;width:22px;height:22px;flex:none}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close:is(:hover,:focus-visible){background:var(--ink)!important;color:var(--paper)!important}
+
+/* Zoom in and out are one joined box: the box has the 10px corners and the edge, the two buttons inside are square, with one
+   rule between them. The generic button rule above carries more ids (its :not() list holds some), so this repeats the
+   control's id to win; without it the minus drew its own rounded box, and its hover fill showed rounded corners inside the
+   square-cornered pair (user, 4 Nov 2026). */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl#gmdMapCtl#gmdMapCtl .gmd-zoom>button{border-radius:0!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl#gmdMapCtl#gmdMapCtl .gmd-zoom>button:focus-visible{outline:2px solid var(--focus)!important;outline-offset:-4px!important}
+
+/* Titles run to the margin (user, 4 Nov 2026: "the text line is broken ... it needs to run up until margin"). text-wrap:balance evened the
+   lines of every title, so "04—Archaeologists' protest over the 2009 reopening" broke after "protest" with the measure half empty. Only the
+   style longhand is reset, so a title held to one line (white-space:nowrap, text-wrap:nowrap) keeps its mode; a lone last word is still
+   prevented by the non-breaking space typeset.js puts between a title's last two words. :where keeps it at zero specificity, so the few
+   !important wrap rules already in this file still win. */
+:where(h1,h2,h3,h4,h5,h6,.t-title,.lede,.curator-section-hdr,.critique-title,.starter-prompt,.dossier-main-heading,.d-row-title,#floatingCardTitle,.record-popup-name,#desktopDossierName,#dossier-sheet-name){text-wrap-style:auto!important}
