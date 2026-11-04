@@ -3694,3 +3694,10 @@ html:not(.fog-ready) #globeViewport::before{display:none}
 
 /* The street view's bar takes the top left where the page's name sits, so the name steps aside while it is open. */
 @media (min-width:768px){ :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):has(#cityViewControlBanner:not(.hidden)) #gmdTitle{display:none!important} }
+
+/* The close mark on a funder's office record (assets/hq-detail.js; user, 4 Nov 2026: "fix this cross, too small and not centered
+   on hover"). A drawn 22px cross centred in a 44px square with the buttons' 10px corners; on hover the square fills with ink
+   and the cross turns paper, as every button does. Set here, after the Displaay block, so its padding and ring do not move it. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-width:44px!important;padding:0!important;line-height:0!important;border-radius:var(--btn-r,10px)!important;box-shadow:none!important;background:transparent!important;color:var(--ink)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close svg{display:block;width:22px;height:22px;flex:none}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #hqPanel .hq-close:is(:hover,:focus-visible){background:var(--ink)!important;color:var(--paper)!important}
