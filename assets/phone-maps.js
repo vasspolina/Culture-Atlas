@@ -91,7 +91,6 @@
       const items = [
         ['mobileGossipBtn'],
         ['mobileThemeBtn'],
-        ['mobileStickyShareBtn'],
         ['mobileStickyVoiceBtn', 'Read answers aloud'],
         ['reset-state-btn', 'New chat'],
       ];
