@@ -3555,3 +3555,20 @@ div:has(>#topThemeBtn){column-gap:0}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workspaceTabChat{margin-left:6px!important}
 /* The three tabs over the chat do not fit their column at 15px; they keep 14px, and the space between them. */
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn){font-size:14px!important;letter-spacing:0!important}
+
+/* ---- FOG AND DEPTH ON THE MAP (user's instruction, 4 Nov 2026) ----
+   Parts of the map go soft, as if seen in perspective and a little fog: sharp in the middle, where you look, blurred toward the
+   rim of the globe and most at the top of the pane, the far side of a tilted street map. Two layers over the map, under its
+   marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every control and card):
+   ::after blurs what is behind it through a mask, ::before lays a thin paper haze in the same places. Neither takes a pointer,
+   so the map is dragged and clicked as before. The marks and labels stay readable because the middle is clear. */
+#globeViewport::before,#globeViewport::after{content:"";position:absolute;inset:0;z-index:18;pointer-events:none}
+#globeViewport::after{
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  -webkit-mask-image:radial-gradient(ellipse 62% 58% at 50% 56%,transparent 50%,#000 100%),linear-gradient(to bottom,#000 0,transparent 38%);
+  mask-image:radial-gradient(ellipse 62% 58% at 50% 56%,transparent 50%,#000 100%),linear-gradient(to bottom,#000 0,transparent 38%);
+  -webkit-mask-composite:source-over;mask-composite:add}
+#globeViewport::before{
+  background:linear-gradient(to bottom,color-mix(in srgb,var(--paper) 55%,transparent) 0,transparent 34%),
+             radial-gradient(ellipse 72% 68% at 50% 56%,transparent 58%,color-mix(in srgb,var(--paper) 45%,transparent) 100%)}
+@media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
