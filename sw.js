@@ -23,6 +23,7 @@ const ASSETS_TO_CACHE = [
   './assets/config.js',
   './assets/typeset.js',
   './assets/phone-maps.js',
+  './assets/desktop-maps.js',
   './assets/subtopic.js',
   './assets/names.js',
   './assets/grounding.js'
