@@ -878,6 +878,14 @@
       strip.type = 'button';
       strip.id = 'gmStoryStrip';
       bar.appendChild(strip);
+      // On desktop the same strip, feed, toast and alert marks serve the wide window (user, 4 Nov 2026: "add notifications same
+      // as on mobile on desktop"). The strip and the toast float over the globe there, so they move into its viewport; the feed
+      // opens as a panel at the left of the globe. The look is in assets/atlas.css, "DESKTOP: TOP STORY AND ALERTS".
+      const placeStrip = () => {
+        const home = PHONE() ? bar : ($('globeViewport') || document.body);
+        if (strip.parentNode !== home) home.appendChild(strip);
+        const th = PHONE() ? document.body : home; if (toast.parentNode !== th) th.appendChild(toast);
+      };
       function paintStrip(list, alerts) {
         const top = alerts[0] || list.find((x) => x.status !== 'stale');
         strip.hidden = !top;
@@ -906,6 +914,7 @@
       toast.setAttribute('role', 'status');
       toast.setAttribute('aria-live', 'polite');
       document.body.appendChild(toast);
+      placeStrip();
       let toastTimer = 0;
       const say = (t) => { toast.textContent = t; toast.classList.toggle('is-on', !!t); clearTimeout(toastTimer); if (t) toastTimer = setTimeout(() => say(''), 6000); };
       let lastFocus = null;
@@ -1038,7 +1047,7 @@
         requestAnimationFrame(follow);
         if (!marks.size) return;
         const project = g('project'), r = g('currentRadius'), w = g('width'), h = g('height');
-        const ok = PHONE() && root.classList.contains('gm-map') && typeof project === 'function' && !g('isCityStreetViewActive') && canvas;
+        const ok = (PHONE() ? root.classList.contains('gm-map') : root.classList.contains('gmd')) && typeof project === 'function' && !g('isCityStreetViewActive') && canvas;
         const rect = ok ? canvas.getBoundingClientRect() : null, vr = ok ? viewport.getBoundingClientRect() : null;
         marks.forEach((el) => {
           const x = el._x;
@@ -1167,7 +1176,7 @@
       });
       // Pull the feed down from its top to close it.
       let y0 = null;
-      feed.addEventListener('touchstart', (e) => { y0 = (feed.scrollTop <= 0 && e.touches.length === 1) ? e.touches[0].clientY : null; }, { passive: true });
+      feed.addEventListener('touchstart', (e) => { y0 = (PHONE() && feed.scrollTop <= 0 && e.touches.length === 1) ? e.touches[0].clientY : null; }, { passive: true });
       feed.addEventListener('touchmove', (e) => {
         if (y0 === null) return;
         const d = e.touches[0].clientY - y0;
@@ -1186,7 +1195,14 @@
       const gb = $('mobileGossipBtn');
       if (gb) new MutationObserver(() => { refresh(); }).observe(gb, { attributes: true, attributeFilter: ['aria-pressed'] });
       document.addEventListener('atlas:here', () => { if (!feed.hidden) render(); });
-      window.addEventListener('resize', () => { if (!PHONE()) close(false); });
+      // Crossing between the phone and desktop layouts closes the feed, since it is a sheet on one and a panel on the other.
+      let wasPhone = PHONE();
+      window.addEventListener('resize', () => { if (PHONE() !== wasPhone) { wasPhone = PHONE(); close(false); placeStrip(); } });
+      // On desktop a click on the map or the panel beside the feed closes it, as a click off a dialog does.
+      document.addEventListener('pointerdown', (e) => {
+        if (PHONE() || feed.hidden || feed.contains(e.target) || strip.contains(e.target) || e.target.closest('.gm-alert-mark')) return;
+        close(false);
+      }, true);
       window.atlasAlerts = () => list.filter(isAlert);
       announce(refresh(), true);
       check();
