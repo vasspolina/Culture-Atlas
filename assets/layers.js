@@ -571,7 +571,7 @@
   // opposite the space's own name block. A funder that fits nowhere keeps the best angle and its name, rather than losing the name.
   // Sets x, y, box (the name's block) on each item, and adds the blocks to `boxes` so later drawing keeps clear of them.
   function placeRing(d, items, R, boxes, W, H, pref) {
-    const STEP = Math.PI / 18, TAU = Math.PI * 2, H_ = 22, GAPS = [1, 1.4, 1.8, 2.3];
+    const STEP = Math.PI / 18, TAU = Math.PI * 2, H_ = 24, GAPS = [1, 1.4, 1.8, 2.3];
     const reachBox = R * GAPS[GAPS.length - 1] + 260;
     const near = boxes.filter(b => b.x < d.x + reachBox && b.x + b.w > d.x - reachBox && b.y < d.y + reachBox && b.y + b.h > d.y - reachBox);
     const angles = []; for (let k = 0; k < 36; k++) angles.push(-Math.PI / 2 + k * STEP);
@@ -739,8 +739,10 @@
         const zoomK = Math.max(0.4, Math.min(1, r / (baseRadius * 12)));
         const N = Math.min(nodes.length, 10), R = 64 * zoomK;
         const items = nodes.slice(0, N).map(n => {
-          const reach = reachOf(n[5]), word = KIND_WORD[n[1]], text = (n[0].length > 28 ? n[0].slice(0, 26) + '…' : n[0]) + (word ? ' \u00b7 ' + word : '');
-          return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, w: ctx.measureText(text).width + 28 };
+          // Two pills, as on displaay.net/typefaces: the name filled in its kind's colour, the kind word in an outline beside it.
+          const reach = reachOf(n[5]), word = KIND_WORD[n[1]] || '', text = n[0].length > 28 ? n[0].slice(0, 26) + '…' : n[0];
+          const nw = ctx.measureText(text).width + 2 * PILL_PAD, ww = word ? ctx.measureText(word).width + 2 * PILL_PAD : 0;
+          return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, word, nw, ww, w: nw + (word ? PILL_GAP + ww : 0) };
         });
         placeRing(d, items, R, boxes, W, H, d.labelBox ? Math.PI / 2 : -Math.PI / 2);
         rings.push({ d, rec, items });
@@ -765,12 +767,9 @@
             ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
         });
       });
-      // Funder names on flat blocks, in the funder's colour, at the spot the layout found for each.
+      // Funder names as pills at the spot the layout found for each: the name on the funder's colour, then the kind word.
       ctx.globalAlpha = 1; ctx.textAlign = 'left';
-      rings.forEach(({ items }) => items.forEach(it => {
-        const b = it.box; drawTag(ctx, b.x, b.y, b.w, b.h, COL[it.n[1]]);
-        ctx.fillStyle = '#000'; ctx.fillText(it.text, b.x + 14, b.y + b.h / 2 + 0.5);
-      }));
+      rings.forEach(({ items }) => items.forEach(it => drawFunderPills(ctx, it, dark)));
     }
     TIP_BOXES = boxes;
     ctx.restore();
@@ -782,6 +781,26 @@
     if (streetUp()) return;
     ctx.save(); drawMarkTip(ctx, TIP_BOXES); ctx.restore();
   };
+  // The funder badges take their form from displaay.net/typefaces: a pill (fully rounded ends), a 1px edge in the colour of
+  // its text, 10px of air either side of the words. The name pill is filled in the kind's colour with black text (the pale
+  // fills measure 7:1 or better against black); the kind pill is an outline on the map's own ground, so it reads as a tag
+  // to the name and not a second name. The box the layout placed (it.box) holds both, with a 4px gap between them.
+  const PILL_PAD = 10, PILL_GAP = 4;
+  function pill(ctx, x, y, w, h, fill, edge) {
+    ctx.beginPath(); ctx.roundRect(x + 0.5, y + 0.5, w - 1, h - 1, (h - 1) / 2);
+    ctx.fillStyle = fill; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = edge; ctx.stroke();
+  }
+  function drawFunderPills(ctx, it, dark) {
+    const b = it.box, mid = b.y + b.h / 2 + 0.5, ink = dark ? '#fff' : '#000', paper = dark ? '#000' : '#fff';
+    // A pill on the left of its mark puts the name next to the mark, so the kind word goes on the outside.
+    const left = it.x > b.x + b.w / 2 && it.word;
+    const nx = left ? b.x + it.ww + PILL_GAP : b.x, wx = left ? b.x : b.x + it.nw + PILL_GAP;
+    ctx.save();
+    pill(ctx, nx, b.y, it.nw, b.h, COL[it.n[1]], '#000');
+    ctx.fillStyle = '#000'; ctx.fillText(it.text, nx + PILL_PAD, mid);
+    if (it.word) { pill(ctx, wx, b.y, it.ww, b.h, paper, ink); ctx.fillStyle = ink; ctx.fillText(it.word, wx + PILL_PAD, mid); }
+    ctx.restore();
+  }
   // A label, cut like the city labels (rounded, 22 high, 14 either side) but filled in the mark's colour.
   function drawTag(ctx, x, y, w, h, col) {
     ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 0); ctx.fillStyle = col; ctx.fill(); ctx.restore();
