@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=519">
-  <script src="assets/config.js?v=518"></script>
-  <script src="assets/subtopic.js?v=518"></script>
-  <script src="assets/names.js?v=518"></script>
-  <script src="assets/grounding.js?v=518"></script>
-  <script src="assets/repeats.js?v=518"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=527">
+  <script src="assets/config.js?v=524"></script>
+  <script src="assets/subtopic.js?v=524"></script>
+  <script src="assets/names.js?v=524"></script>
+  <script src="assets/grounding.js?v=524"></script>
+  <script src="assets/repeats.js?v=524"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1073,7 +1073,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=518"></script>
+  <script src="assets/institutions.js?v=524"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6724,6 +6724,8 @@ return maplibregl$1;
       }
     };
     let cityLeafletMap = null;
+    // The glyph ranges cut from PP Neue Gstaad into assets/glyphs. Add a range here when its file is added.
+    const CITY_MAP_LOCAL_GLYPHS = new Set(['0-255', '256-511', '7680-7935', '8192-8447', '8448-8703']);
 
     function initCityMapIfNeeded() {
       if (cityVectorMap) return;
@@ -6739,6 +6741,15 @@ return maplibregl$1;
           pitch: 35,
           bearing: 0,
           antialias: true,
+          // Glyph ranges the label font does not have are fetched from OpenFreeMap's Noto Sans. Without this, a tile with one
+          // label outside assets/glyphs (Arabic in Baghdad, from zoom 14 in) hit a 404, MapLibre dropped the whole tile, and the
+          // street map went blank as soon as it was zoomed in.
+          transformRequest: (url, type) => {
+            if (type !== 'Glyphs') return { url };
+            const m = url.match(/\/assets\/glyphs\/[^/]+\/(\d+-\d+)\.pbf$/);
+            if (!m || CITY_MAP_LOCAL_GLYPHS.has(m[1])) return { url };
+            return { url: 'https://tiles.openfreemap.org/fonts/Noto%20Sans%20Regular/' + m[1] + '.pbf' };
+          },
           attributionControl: { compact: false } /* the credit as one line of small text, no "i" button (user, 4 Nov 2026; the OpenStreetMap licence asks for a visible credit) */
         });
 
@@ -7083,22 +7094,33 @@ return maplibregl$1;
         appendUserMessage(q);
         curatorContext.lastInst = inst;
         curatorContext.lastCity = inst.city;
-        const webUrl = getValidWebUrl(inst);
-        const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl;
+        // The visitor link is the space's own visit page or website, never a source: getValidWebUrl falls back to the first
+        // source, which put a ProPublica search behind "Open Official Visitor / Ticket Page" on records with no site.
+        const httpUrl = u => (typeof u === 'string' && /^https?:\/\//.test(u.trim())) ? u.trim() : '';
+        const visitUrl = httpUrl(inst.visit_url) || httpUrl(inst.website);
+        // Only what the record states. A missing value used to be filled in: "not stated" for the hours, "Subsidized admission"
+        // for any space with no fee on record, and the city and country standing in for an address. None of that is a fact
+        // about the space, so a missing row is left out and the card says once what the record does not hold.
+        const admission = [inst.admission_fee || inst.admission_policy, inst.admission_details].filter(Boolean).join('. ');
+        const missing = [inst.address ? '' : 'a street address', inst.opening_hours ? '' : 'opening hours', admission ? '' : 'admission'].filter(Boolean);
+        const missingLine = missing.length
+          ? `<p class="pt-1 rule-t meta">The record does not state ${missing.length > 1 ? missing.slice(0, -1).join(', ') + ' or ' + missing[missing.length - 1] : missing[0]}.${visitUrl ? ' Check the official visitor page below.' : ''}</p>`
+          : '';
         appendCuratorMessage(`
           <p class="">
-            Visitor Itinerary & Planning Guide: <strong>${formatInstLink(inst)}</strong> (${escapeHtml(inst.city)}, ${escapeHtml(inst.country)})
+            Visitor Itinerary & Planning Guide: <strong>${formatInstLink(inst)}</strong>
           </p>
           <div class="py-2_5 rule-t space-y-1_5">
-            <div><strong class="meta block">Opening Hours</strong> ${escapeHtml(inst.opening_hours || 'not stated')}</div>
-            <div class="pt-1 rule-t"><strong class="meta block">Admission & Tickets</strong> ${escapeHtml(inst.admission_policy)} (${escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')})</div>
-            <div class="pt-1 rule-t"><strong class="meta block">Address & Neighborhood</strong> ${escapeHtml(inst.address || inst.location)} ${inst.neighborhood ? `<span class="meta">${escapeHtml(inst.neighborhood)}</span>` : ''}</div>
+            ${inst.address ? `<div><strong class="meta block">Address</strong> ${escapeHtml(inst.address)}${inst.neighborhood ? ` <span class="meta">${escapeHtml(inst.neighborhood)}</span>` : ''}</div>` : ''}
+            ${inst.opening_hours ? `<div class="pt-1 rule-t"><strong class="meta block">Opening Hours</strong> ${escapeHtml(inst.opening_hours)}</div>` : ''}
+            ${admission ? `<div class="pt-1 rule-t"><strong class="meta block">Admission & Tickets</strong> ${escapeHtml(admission)}</div>` : ''}
             ${inst.transit_tips ? `<div class="pt-1 rule-t"><strong class="meta block">Getting There & Transit</strong> ${escapeHtml(inst.transit_tips)}</div>` : ''}
             ${inst.visit_duration ? `<div class="pt-1 rule-t"><strong class="meta block">Suggested Duration</strong> ${escapeHtml(inst.visit_duration)}</div>` : ''}
             ${inst.highlight ? `<div class="pt-1 rule-t"><strong class="meta block">Known for</strong> ${escapeHtml(inst.highlight)}</div>` : ''}
             ${inst.accessibility ? `<div class="pt-1 rule-t"><strong class="meta block">Accessibility</strong> ${escapeHtml(inst.accessibility)}</div>` : ''}
             ${inst.amenities ? `<div class="pt-1 rule-t"><strong class="meta block">Amenities</strong> ${escapeHtml((inst.amenities).toString().split(',').map(x => x.trim()).filter(Boolean).join(', '))}</div>` : ''}
           </div>
+          ${missingLine}
           ${visitUrl ? `
             <div class="pt-2 rule-t">
               <a href="${escapeHtml(visitUrl)}" target="_blank" rel="noopener noreferrer" class="meta flex items-center gap-1">
@@ -7381,7 +7403,7 @@ return maplibregl$1;
     // =========================================================================
     //  BUILDING X-RAY. The selected building's own outline from the map data (OpenStreetMap via the vector tiles), drawn as a
     //  translucent shell, with one slab inside for each kind of material the record actually holds. No outline means no shell;
-    //  every label is a count of what the record has; facts from Wikidata say so and how they were matched.
+    //  every label is a count of what the record has. Wikidata is used only for the building's photograph and links.
     // =========================================================================
     const XRAY = { inst: null, building: null, wikidata: {}, waiting: false, mode: 'xray' };
     // The three ways of looking at the building. Each is a camera on the same outline; Plan draws the contents as nested outlines
@@ -7391,7 +7413,7 @@ return maplibregl$1;
       plan:    { zoom: 18.0, pitch: 0,  bearing: 0 },
       section: { zoom: 18.0, pitch: 60, bearing: 90 }
     };
-    const XRAY_COLOURS = { flag: '#fa4d56', funding: '#08bdba', reported: '#ff7eb6', accounts: '#be95ff', sources: '#42be65', visiting: '#f1c21b', studies: '#009d9a', facts: '#ff832b' };
+    const XRAY_COLOURS = { flag: '#fa4d56', funding: '#08bdba', reported: '#ff7eb6', accounts: '#be95ff', sources: '#42be65', visiting: '#f1c21b', studies: '#009d9a' };
     const WIKIDATA_SPARQL = 'https://query.wikidata.org/sparql';
     const WIKIDATA_CANDIDATES = 60;
     let cityStreetViewCity = '';
@@ -7451,11 +7473,6 @@ return maplibregl$1;
       if (accounts) cats.push({ key: 'accounts', label: `Individual accounts (${accounts})`, lines: [xrayAccountsLine(inst)] });
       if (sources.length) cats.push({ key: 'sources', label: `Sources (${sources.length})`, lines: sources.map(xrayHost).filter(Boolean) });
       if (visiting.length) cats.push({ key: 'visiting', label: 'Visiting', lines: visiting });
-      const wd = XRAY.wikidata[inst.id || inst.name];
-      if (wd && wd.status === 'matched') {
-        const lines = xrayWikidataLines(wd);
-        if (lines.length) cats.push({ key: 'facts', label: 'Facts from Wikidata', lines: ['Wikidata item: ' + (wd.label || wd.item)].concat(lines) });
-      }
       return cats;
     }
 
@@ -7923,16 +7940,9 @@ return maplibregl$1;
 
     // Wikidata, in two steps. First the items with coordinates within 250 m of the record's point, nearest first, one row per
     // item; a match needs the record's website domain or its name (or an alias of two or more words), and more than one
-    // candidate meeting the test is reported as ambiguous rather than guessed. Then the facts of that one item, with the
-    // precision of each date, so a decade is never shown as a year.
-    function xrayWikidataLines(wd) {
-      const l = [];
-      if (wd.inception) l.push('Opened or founded: ' + wd.inception);
-      if (wd.architects.length) l.push('Architect: ' + wd.architects.join(', '));
-      if (wd.collection) l.push('Collection size: ' + wd.collection);
-      if (wd.archivesAt.length) l.push('Archives at: ' + wd.archivesAt.join(', '));
-      return l;
-    }
+    // candidate meeting the test is reported as ambiguous rather than guessed. Then that one item's photograph and Wikipedia
+    // article. Its facts (a founding year, an architect, a collection size) are not shown: a table restating the record's name
+    // and one year added nothing (user's instruction, 4 Nov 2026).
     async function xrayWikidataQuery(q, ctrl) {
       const res = await fetch(WIKIDATA_SPARQL + '?format=json&query=' + encodeURIComponent(q), { headers: { 'Accept': 'application/sparql-results+json' }, signal: ctrl ? ctrl.signal : undefined });
       if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -7964,15 +7974,10 @@ return maplibregl$1;
     }
     function xrayFactsQuery(itemUri) {
       const id = String(itemUri).replace(/^.*\//, '');
-      return `SELECT ?architectLabel ?inception ?prec ?collection ?archivesAtLabel ?article ?image WHERE {
-  OPTIONAL { wd:${id} wdt:P84 ?architect . }
+      return `SELECT ?article ?image WHERE {
   OPTIONAL { wd:${id} wdt:P18 ?image . }
-  OPTIONAL { wd:${id} p:P571/psv:P571 ?t . ?t wikibase:timeValue ?inception ; wikibase:timePrecision ?prec . }
-  OPTIONAL { wd:${id} wdt:P1436 ?collection . }
-  OPTIONAL { wd:${id} wdt:P485 ?archivesAt . }
   OPTIONAL { ?article schema:about wd:${id} ; schema:isPartOf <https://en.wikipedia.org/> . }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en,mul" . }
-} LIMIT 200`;
+} LIMIT 20`;
     }
     function fetchWikidataFacts(inst) {
       const key = inst.id || inst.name;
@@ -8016,7 +8021,7 @@ return maplibregl$1;
       const nameOf = c => [xrayNorm(c.label)].concat(c.alts);
       const byName = cands.filter(c => nameOf(c).some(n => names.includes(n)));
       const byAlias = cands.filter(c => nameOf(c).some(n => aliases.includes(n)));
-      const result = (pick, how) => ({ status: 'matched', how, item: pick.item, label: pick.label, architects: [], inception: '', collection: '', archivesAt: [], article: '', checked: cands.length });
+      const result = (pick, how) => ({ status: 'matched', how, item: pick.item, label: pick.label, article: '', checked: cands.length });
       if (byHost.length === 1) return result(byHost[0], byName.includes(byHost[0]) ? 'website and name' : 'website');
       if (byHost.length > 1) {
         const both = byHost.filter(c => byName.includes(c));
@@ -8030,21 +8035,10 @@ return maplibregl$1;
       return { status: 'none', checked: cands.length };
     }
     function xrayApplyFacts(out, rows) {
-      const architects = new Set(), archivesAt = new Set(), years = new Set(), collections = new Set();
-      let coarse = false;
       rows.forEach(r => {
-        if (r.architectLabel) architects.add(r.architectLabel.value);
-        if (r.archivesAtLabel) archivesAt.add(r.archivesAtLabel.value);
-        if (r.collection) collections.add(r.collection.value);
-        if (r.inception) { const p = r.prec ? Number(r.prec.value) : 0; if (p >= 9) years.add(String(r.inception.value).replace(/^\+/, '').slice(0, 4)); else coarse = true; }
         if (r.article && !out.article) out.article = r.article.value;
         if (r.image && !out.image) out.image = r.image.value;
       });
-      out.architects = [...architects];
-      out.archivesAt = [...archivesAt];
-      // One value only: several dates or several sizes on Wikidata are left out rather than picked between.
-      out.inception = (years.size === 1 && !coarse) ? [...years][0] : '';
-      out.collection = collections.size === 1 ? [...collections][0] : '';
     }
 
     function renderBuildingInsidePanel(inst) {
@@ -8053,25 +8047,18 @@ return maplibregl$1;
       const e = escapeHtml, cats = xrayCategories(inst), wd = XRAY.wikidata[inst.id || inst.name];
       const site = xraySite(inst);
       const wdHtml = wd && wd.status === 'matched'
-        ? `<p class="no-indent source-note"><a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">${e(wd.label || 'Wikidata item')}</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}</p>` : '';
+        ? `<p class="no-indent source-note"><a href="${e(wd.item)}" target="_blank" rel="noopener noreferrer">Wikidata</a>${wd.article ? `, <a href="${e(wd.article)}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ''}</p>` : '';
       const siteHtml = site ? `<p class="no-indent source-note"><a class="domain" href="${e(site)}" target="_blank" rel="noopener noreferrer">${e(xrayHost(site) || site)}</a></p>` : '';
-      const archivesHtml = wd && wd.status === 'matched' && wd.archivesAt.length ? `<p class="no-indent source-note">Archives held at ${e(wd.archivesAt.join(', '))}, according to Wikidata.</p>` : '';
       const ph = wd && wd.status === 'matched' && wd.photo;
       const photoHtml = ph ? `<figure class="xray-photo"><img src="${e(ph.src)}" alt="${e(inst.name)}" loading="lazy"><figcaption class="no-indent">Photo: ${ph.artist ? e(ph.artist) + ', ' : ''}${ph.licenceUrl ? `<a href="${e(ph.licenceUrl)}" target="_blank" rel="noopener noreferrer">${e(ph.licence)}</a>` : e(ph.licence)}${ph.page ? `, <a href="${e(ph.page)}" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>` : ', Wikimedia Commons'}</figcaption></figure>` : '';
       // On a desktop the information goes to the right column, under the record; the map keeps only the labels on the building.
       const inside = document.getElementById('desktopDossierInside');
       const col = document.getElementById('desktopDossierColumn');
       if (window.innerWidth >= 768 && inside && col) {
-        // Visiting is on the record already (hours, admission, address), so the column does not set it a second time.
-        const onRecord = new Set(['flag', 'funding', 'reported', 'accounts', 'sources', 'visiting']);
-        const rest = cats.filter(c => !onRecord.has(c.key));
-        // In the record column each part is a table of facts like the record's own Visiting block, with no colour key
-        // (the map has its own); a line that reads "Label: value" puts the label in the left column.
-        const factRow = l => { const m = String(l).match(/^([^:]{2,28}):\s+(.+)$/); return m ? [m[1], e(m[2])] : ['', e(l)]; };
-        const restHtml = rest.map(c => factsTableHtml(c.label, c.lines.slice(0, 8).map(factRow), ` id="xray-cat-${c.key}"`)).join('');
-        const linksHtml = siteHtml || archivesHtml || wdHtml ? `<div class="py-3 rule-b xray-record-part">${siteHtml}${archivesHtml}${wdHtml}</div>` : '';
-        if (!photoHtml && !restHtml && !linksHtml) { inside.innerHTML = ''; inside.classList.add('hidden'); panel.classList.add('hidden'); return; }
-        inside.innerHTML = photoHtml + restHtml + linksHtml;
+        // Everything the categories hold is on the record already, so the column adds only the photograph and the links.
+        const linksHtml = siteHtml || wdHtml ? `<div class="py-3 rule-b xray-record-part">${siteHtml}${wdHtml}</div>` : '';
+        if (!photoHtml && !linksHtml) { inside.innerHTML = ''; inside.classList.add('hidden'); panel.classList.add('hidden'); return; }
+        inside.innerHTML = photoHtml + linksHtml;
         inside.classList.remove('hidden');
         panel.classList.add('hidden');
         if (col.classList.contains('hidden') && typeof toggleDesktopDossier === 'function') toggleDesktopDossier(true);
@@ -10009,11 +9996,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v519';
+    const ATLAS_RELEASE = 'culture-atlas-v527';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=518').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=524').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10790,7 +10777,8 @@ return maplibregl$1;
           // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
           const textCol = pillTextColor(tier);
           ctx.beginPath();
-          ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 0);
+          // Rounded 8px (user, 4 Nov 2026: the square labels were the old design), like the Displaay-style controls around the map.
+          ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 8);
           if (active) { ctx.fillStyle = pc.fill; ctx.fill(); }
           else { ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : '#000000'; ctx.fill(); ctx.strokeStyle = textCol; ctx.globalAlpha = 0.55; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
           ctx.fillStyle = active ? pc.ink : textCol;
@@ -11233,7 +11221,8 @@ return maplibregl$1;
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
               const countTxt = `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`;
               const linkTxt = 'Click to explore';
-              const cardInk = cardText;
+              // Ink and paper like the space's card (user, 4 Nov 2026: the square city card was the old design): plain type, not the tier's colour.
+              const cardInk = GLOBE_LIGHT ? '#000000' : '#ffffff';
 
               ctx.font = ATLAS_CARD_TITLE_FONT;
               const twCity = ctx.measureText(cityTxt).width;
@@ -11271,15 +11260,14 @@ return maplibregl$1;
 
               // Flat block in the colour of the city's badge (cyan, orange or grey by tier). No rounding, no outline, no shadow.
               // Drawn like the city labels: no block, a thin soft rounded outline and the type in the tier's colour.
+              // Rounded 20px with a solid 1px outline, as the space's card is drawn (the square, half-faded box was the old design).
               ctx.beginPath();
-              ctx.roundRect(cardX, cardY, cardW, cardH, 0);
+              ctx.roundRect(cardX, cardY, cardW, cardH, 20);
               ctx.fillStyle = cardBg;
               ctx.fill();
-              ctx.globalAlpha = 0.55;
-              ctx.strokeStyle = cardText;
+              ctx.strokeStyle = cardInk;
               ctx.lineWidth = 1;
               ctx.stroke();
-              ctx.globalAlpha = 1;
 
               // Line 1: city name, in the roman
               ctx.font = ATLAS_CARD_TITLE_FONT;
@@ -11299,9 +11287,9 @@ return maplibregl$1;
               // Action: a tint of the type colour at rest, solid type colour with card-coloured text on hover.
               ctx.save();
               ctx.beginPath();
-              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 0);
+              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 10);
               if (isHoveringCityExploreLink) { ctx.fillStyle = cardInk; ctx.fill(); }
-              else { ctx.globalAlpha = 0.55; ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
+              else { ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); }
               ctx.font = atlasMonoFont();
               ctx.fillStyle = isHoveringCityExploreLink ? cardBg : cardInk;
               ctx.textAlign = 'center';
@@ -11637,21 +11625,13 @@ return maplibregl$1;
       if (!cache.has(inst)) { try { cache.set(inst, !!recordFact(inst, true)); } catch (e) { return false; } }
       return cache.get(inst);
     }
-    // A block of facts set as a table (the user's reference, 19 Oct 2026): its name on a line, a rule, then one row per
-    // fact, the label in the left column and the value in the right, all at the text size, and a rule to close it.
-    // rows: [label, html] pairs; a row with no value is left out. Values are passed as HTML, already escaped.
-    // The record page's Visiting and Highlight, set as rows like the rest of Details (the other panels keep factsTableHtml).
+    // The record page's Visiting and Highlight, set as rows like the rest of Details.
     // Set like the font foundry's footer columns (user, 26 Oct 2026): each fact is a small grey capital label with its words under it, no bullet and
     // no bold, the facts in two columns beside the row title.
     function visitingRowsHtml(rows) {
       const items = (rows || []).filter(x => x && x[1]).map(([k, v]) => `<div class="visit-item"><dt>${escapeHtml(k)}</dt><dd>${v}</dd></div>`);
       if (!items.length) return '';
       return `<div class="prose-part d-rows" role="region" aria-label="Visiting"><section class="d-row d-row-visit"><div class="d-row-head"><h3 class="d-row-title">Visiting</h3></div><dl class="visit-cols">${items.join('')}</dl></section></div>`;
-    }
-    function factsTableHtml(title, rows, attrs = '') {
-      const r = (rows || []).filter(x => x && x[1]);
-      if (!r.length) return '';
-      return `<section class="facts"${attrs}><h3 class="facts-title">${escapeHtml(title)}</h3><dl class="facts-table">${r.map(([k, v]) => `<dt>${escapeHtml(k)}</dt><dd>${v}</dd>`).join('')}</dl></section>`;
     }
     // The Details card text researched with data/details_prompt.md and stored as inst.details by
     // tools/import_details_reports.py. Overview sits under the title; red flags, not related, criticism in art
@@ -12026,6 +12006,31 @@ return maplibregl$1;
       }).join(' ');
     }
     // Reported items. Each one carries the sources recorded for it. None is independently verified.
+    // The reported items as the chat sets them, after displaay.net/about (user, 4 Nov 2026: "gossip mode typeset as
+    // displaay.net/about"): each item is a row under a 1px rule, its name, date and sources as a small uppercase label in the
+    // left third, what is said as large, tight lead text in the other two thirds; each group ("Related reporting") a large
+    // heading over its rows. On a narrow chat the label sits above the text, as Displaay's own phone layout does. Only the
+    // chat is regrouped: the Details page keeps documentedRecordHtml's markup, which its own rules are written against.
+    function chatReportingHtml(html) {
+      if (!html) return html;
+      const t = document.createElement('template');
+      t.innerHTML = html;
+      t.content.querySelectorAll('[data-gossip="items"]').forEach(r => r.classList.add('dp-set'));
+      t.content.querySelectorAll('.dp-set .record-card').forEach(card => {
+        const side = document.createElement('div'), main = document.createElement('div');
+        side.className = 'dp-side'; main.className = 'dp-main';
+        [...card.children].forEach(ch => {
+          // The label column: the title and date lines, and the line of source links.
+          const head = ch.classList.contains('kicker') || (!!ch.querySelector('.kicker') && !ch.querySelector('p'));
+          const sources = ch.classList.contains('account-source-links')
+            || (ch.tagName === 'DIV' && ch.classList.contains('no-indent') && !!ch.querySelector('a') && !ch.querySelector('p'));
+          (head || sources ? side : main).appendChild(ch);
+        });
+        card.classList.add('dp-row');
+        card.append(side, main);
+      });
+      return t.innerHTML;
+    }
     function documentedRecordHtml(inst) {
       if (!inst) return '';
       const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'source'; } };
@@ -12814,7 +12819,7 @@ return maplibregl$1;
       const parts = [['public', 'public funding'], ['private', 'donations, grants and memberships'], ['earned', 'earned income']]
         .filter(([k]) => base && typeof f[k] === 'number' && f[k] >= 0 && f[k] <= base)
         .map(([k, label]) => `${f[k] / base * 100 < 0.5 ? 'under 1' : 'about ' + Math.round(f[k] / base * 100)} percent ${label} (${proseMoney(cur, f[k])})`);
-      if (parts.length) lis.push(proseLi('Where the income comes from:', escapeHtml(proseEnd(parts.join(', ')))));
+      if (parts.length) lis.push(proseLi('Income:', escapeHtml(proseEnd(parts.join(', ')))));
       if (typeof f.net_assets === 'number' && f.net_assets > 0 && cur) lis.push(proseLi('Net assets:', escapeHtml(`${proseMoney(cur, f.net_assets)} at the end of the year.`)));
       if (sc.visitors) lis.push(proseLi('Visitors:', escapeHtml(`${proseCount(sc.visitors)}${sc.visitors_year ? ' in ' + sc.visitors_year : ''}.`)));
       if (sc.staff) lis.push(proseLi('Staff:', escapeHtml(`${proseCount(sc.staff)}${sc.staff_kind && sc.staff_kind !== 'staff' ? ' ' + sc.staff_kind : ''}${sc.staff_year ? ', ' + sc.staff_year : ''}.`)));
@@ -13083,6 +13088,7 @@ return maplibregl$1;
       if (!inst) return;
       dossierInst = inst;
       // On the note screen, opening another record makes it the institution of the note.
+      if (isChatInputMode) { const noteInstitution = document.getElementById('noteInstitution'); if (noteInstitution) { noteInstitution.value = inst.name || ''; syncNoteReady(); } }
       // Every statement once: a sentence two fields share is printed where it first comes (assets/repeats.js).
       const html = dedupeView(linkRecordSpaces(recordHtml(inst), inst));
       const phoneBody = document.getElementById('detailBody');
@@ -13160,15 +13166,18 @@ return maplibregl$1;
     // gossip: what is reported, from the item that names its own sources first. Otherwise: who funds it. Null when the record has nothing to say.
     function recordFact(inst, gossip) {
       const own = hostOf(ownSiteUrl(inst));
+      // The sources outside the space's own site, one per host, each a link to the page itself (user, 4 Nov 2026: "link sources").
       const hosts = (urls) => {
         const out = [];
-        (urls || []).forEach(u => {
-          const h = hostOf(typeof u === 'string' ? u : (u && u.url) || '');
-          if (h && !(own && (h === own || h.endsWith('.' + own) || own.endsWith('.' + h))) && !/wikipedia|wikimedia/.test(h) && !out.includes(h)) out.push(h);
+        (urls || []).forEach(x => {
+          const u = typeof x === 'string' ? x : (x && x.url) || '';
+          const h = /^https?:\/\//.test(u) ? hostOf(u) : '';
+          if (h && !(own && (h === own || h.endsWith('.' + own) || own.endsWith('.' + h))) && !/wikipedia|wikimedia/.test(h) && !out.some(o => o.h === h)) out.push({ h, u });
         });
         return out;
       };
-      const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.join(', ')}.` : ''; };
+      // HTML: the links are built here, so callers print it as it is.
+      const src = (hs, n) => { const h = hs.slice(0, n); return h.length ? `${h.length > 1 ? 'Sources' : 'Source'}: ${h.map(o => `<a href="${escapeHtml(o.u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(o.h)}</a>`).join(', ')}.` : ''; };
       if (gossip) {
         // The gossip items first (notes/gossip-criteria.md §7): the newest one that is not stale, with who says it and where.
         const g = gossipItems(inst, true)[0];
@@ -13184,7 +13193,7 @@ return maplibregl$1;
         if (w && w.what_shows) return { text: firstSentence(`${w.date ? w.date + ': ' : ''}${w.what_shows}`), src: src(hosts(w.sources), 1) };
         // Flagged or not, a watch line is gossip by the shared test; a clean result is not. full: a past tie is stated with what
         // the record says now ("No current gambling funding found"), so one space's answer prints a short line whole.
-        if (watchIsGossip(inst.watch)) return { text: firstSentence(inst.watch), full: inst.watch.length <= 280 ? inst.watch.trim() : '', src: src(hosts(inst.sources), 2) };
+        if (watchIsGossip(inst.watch)) return { text: firstSentence(inst.watch), full: inst.watch.length <= 300 ? inst.watch.trim() : '', src: src(hosts(inst.sources), 2) };
         const why = String(inst.why_flagged || '').split(/(?<=[.!?])\s+(?=[A-Z])/).filter(x => !/\bnot (?:at|here)\b/i.test(x)).join(' ');
         if (why) return { text: firstSentence(`${(inst.flags || []).length ? inst.flags.join(', ') + ': ' : ''}${why}`), src: src(hosts(inst.sources), 2) };
         const of = typeof inst.other_findings === 'string' ? inst.other_findings.split(' | ')[0] : '';
@@ -13202,7 +13211,12 @@ return maplibregl$1;
       const url = ownSiteUrl(inst), dom = hostOf(url);
       const site = dom ? ` (<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${escapeHtml(dom)}</a>)` : '';
       const g = inst.grade && GRADE[inst.grade] ? ` Grade ${gradeLetter(inst.grade)}.` : '';
-      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a> in ${escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}${g}</p>`;
+      // The whole account when it is short enough (who did what, and the answer to it), not its first sentence alone.
+      let text = f.full && f.full.length <= 300 ? f.full : f.text;
+      // A grade D or F line states the funder that set the grade too, when the reported item is about something else.
+      const why = String(inst.why_flagged || '').trim();
+      if (gossip && inst.grade >= 4 && why && why.length <= 200 && !text.includes(why.slice(0, 40))) text = `${proseEnd(why)} ${text}`;
+      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a> in ${escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(text)}${f.src ? ' ' + f.src : ''}${g}</p>`;
     }
     // A list of more than 12 pages itself: the link, the chip and typing "more" all show the next 12.
     window.atlasListMore = null;
@@ -14830,7 +14844,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           // A gossip request answers with the gossip alone. NO_GOSSIP is the model's word for "the records report nothing", which the chat says in its own plain sentence.
           if (themed && !isGossipMode) rawText = rawText.replace(/^\s*The Atlas (?:holds|records|has)[^.]*\d[^.]*\.\s*(?:(?:Their|The) grades are[^.]*\.\s*)?/i, '');
           if (themed && !isGossipMode) rawText = `The Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} for this question. Grades: ${themed.tallyText}.\n\n${rawText}`;
+          // An answer that is only an absence ("The record does not describe a logo for the museum.") is the answer to the question
+          // asked: emptied, the chat fell back to printing the whole record again. Its first paragraph is kept instead.
+          const beforeAbsence = rawText;
           rawText = dropAbsenceLines(rawText);
+          if (!rawText.trim() && beforeAbsence.trim()) rawText = beforeAbsence.split(/\n\s*\n/)[0].trim();
           // The model does not say a thing twice: a sentence or list item it already gave is taken out (assets/repeats.js).
           if (window.AtlasRepeats) rawText = window.AtlasRepeats.dropRepeatedText(rawText);
           if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing is reported for this space in the records.</p>', gossip: false, none: true };
@@ -16059,12 +16077,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
       let target = explicit || active;
-      // A name the visitor types on its own ("moma", "show me MoMA") is a request for that record, so it opens as a click on its pin does:
-      // the Details tab with the record, and the map flown in to the space. A question about a space still keeps you in the chat.
+      // A name the visitor types on its own ("moma", "tell me about MoMA") flies the map in to the space, as a click on its pin does,
+      // but the answer stays in the chat: the Details tab does not open over it (user, 4 Nov 2026: "if I ask chat about a space it
+      // jumps to details, keep it in chat"). Details opens from a click on the space's name in the answer, or its pin.
       const nameOnly = typedByVisitor && explicit && isNameRequest(query, explicit);
       if (nameOnly) {
-        selectInstitution(explicit, true);
-        if (window.innerWidth >= 768 && typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
+        window.atlasKeepTab = true;
+        try { selectInstitution(explicit, true); } finally { window.atlasKeepTab = false; }
       }
       // Asking about a space in the chat keeps you in the chat: the record is selected on the map, but the Details tab does not open over the answer.
       const focus = (inst) => {
@@ -16450,8 +16469,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(region.name)}, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
-      // A name typed on its own ("eflux") is answered from its record at once. Its Details page is already open with the
-      // record, so the chat does not wait for a web scrape and a model call (10–20 seconds) to say the same thing.
+      // A name typed on its own ("eflux") is answered from its record at once, in the chat: the chat does not wait for a web
+      // scrape and a model call (10–20 seconds) to say what the record already says.
       if (nameOnly && target && !isGossipModeActive) {
         focus(target);
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${fact('', target.watch)}${fact('Funding: ', target.funding)}${target.year_founded ? `<p>Founded ${escapeHtml(String(target.year_founded))}.</p>` : ''}${sourcesHtml(target)}`);
@@ -16479,13 +16498,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
-        const reported = documentedRecordHtml(target);
+        const reported = chatReportingHtml(documentedRecordHtml(target));
         // Asked for gossip: the reported items alone, no title line, rating or source list around them.
         if (isGossipModeActive || GOSSIP_ASK.test(query)) {
           // A record with no reported items can still carry a watch flag or a flagged funder: that line is its gossip.
           const f = reported ? null : recordFact(target, true);
           if (reported) answer(reported, [], true);
-          else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + escapeHtml(f.src) : ''}</p>`, [], true);
+          else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + f.src : ''}</p>`, [], true);
           else answer('<p>Nothing is reported for this space in the records.</p>', []);
           return;
         }
@@ -16504,6 +16523,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
         answer(`<p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no outside source, or no reason.</p>
           <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>`);
+        return;
+      }
+      // Anything else asked about the space ("symbol of the museum") is answered from the record lines that mention it, or the
+      // answer says the Atlas holds nothing on it; the whole record again is an answer to a different question (user, 4 Nov 2026).
+      const freeTopicQ = target && !nameOnly && window.AtlasSubTopic && AtlasSubTopic.detectFreeTopic ? AtlasSubTopic.detectFreeTopic(query, target) : null;
+      if (freeTopicQ) {
+        focus(target);
+        const sub = AtlasSubTopic.subTopicRecordAnswer(freeTopicQ, target);
+        answer(`<p>${sub.held ? formatInstLink(target) + '.</p><p>' + escapeHtml(sub.text) : escapeHtml(sub.text)}</p>${sub.held ? sourcesHtml(target) : ''}`);
         return;
       }
       if (target) {
@@ -20557,12 +20585,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=518"></script>
-<script src="assets/layers.js?v=518"></script>
-<script src="assets/hq-detail.js?v=518"></script>
-<script src="assets/bubbles.js?v=518" defer></script>
-<script src="assets/phone-maps.js?v=519"></script>
-<script src="assets/desktop-maps.js?v=518"></script>
-<script src="assets/chat-resize.js?v=518"></script>
+<script src="assets/typeset.js?v=524"></script>
+<script src="assets/layers.js?v=524"></script>
+<script src="assets/hq-detail.js?v=524"></script>
+<script src="assets/bubbles.js?v=526" defer></script>
+<script src="assets/phone-maps.js?v=527"></script>
+<script src="assets/desktop-maps.js?v=524"></script>
+<script src="assets/chat-resize.js?v=524"></script>
 </body>
 </html>

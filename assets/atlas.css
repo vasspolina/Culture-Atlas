@@ -1029,19 +1029,6 @@ abbr[title]{text-decoration:none}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .standalone-quote :is(blockquote,figcaption,a,.quote-hang){font-size:16px!important;line-height:1.4!important}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-asks{font:400 var(--fs-m)/var(--lh) var(--sans);margin:var(--L) 0 0;text-indent:0;max-width:34em}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .critique-actions{margin-top:var(--L)}
-/* Facts as a table, after the user's reference (19 Oct 2026): the block's name, a rule, one row per fact with the label
-   in a left column about two fifths wide and the value beside it, everything at the text size and colour, rows set
-   solid with no space between them, and a rule to close the block. A value that runs on stays in its own column. */
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts{margin:0;padding:var(--L) 0 0;border:0}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-title{font:400 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0;margin:0;padding:0 0 6px;border-bottom:.8px solid var(--line)}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);column-gap:1em;margin:0;padding:14px 0 12px;border-bottom:.8px solid var(--line)}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dt,:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dd{margin:0;font:400 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0;color:var(--ink);text-indent:0;min-width:0;overflow-wrap:break-word;hyphens:manual}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dd{grid-column:2}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-table>dt{grid-column:1}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .facts-text{margin:0;padding:4px 0 6px;border-bottom:.8px solid var(--line);font:400 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0;color:var(--ink);text-indent:0;overflow-wrap:break-word;hyphens:manual}
-/* A section that ends in a table closes on the table's rule, not a second one. */
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#desktopDossierInside) .py-3.rule-b:has(+ .facts){border-bottom:0}
-#desktopDossierInside .facts:first-child{padding-top:var(--L)}
 /* One highlight: black text on a flat tint, padded evenly, square, never glued to the line above or below. */
 :is(#desktopDossierColumn,#detailBody,#dossier-sheet-scrollable-body) :is(.grade-mark,.flag-epstein){display:inline;padding:.06em .3em;border-radius:0;color:#000;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 
@@ -2040,7 +2027,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root{--row-rule:color-mix(in srgb,var(--ink) 30%,transparent);--row-accent:#0045fc;--row-accent-flag:#b83c00}
 :root[data-theme="dark"]{--row-accent:var(--cyan);--row-accent-flag:var(--orange)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-rows{display:block;padding:0;margin:0;border:0}
-:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:calc(2 * var(--L));align-items:baseline;margin:0;padding:var(--L) 0 calc(2 * var(--L));border-top:.8px solid var(--row-rule)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:calc(2 * var(--L));align-items:baseline;margin:0;padding:var(--L) 0 calc(2 * var(--L));border-top:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row.is-flag{--row-accent:var(--row-accent-flag)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-head{min-width:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-title{margin:0;padding:0;font:600 var(--fs-m)/var(--lh) var(--sans);letter-spacing:0;word-spacing:normal;text-transform:none;color:var(--row-accent);text-wrap:balance;overflow-wrap:break-word}
@@ -3780,18 +3767,23 @@ div:has(>#topThemeBtn){column-gap:0}
    over the map, under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every
    control and card); it takes no pointer, so the map is dragged and clicked as before. */
 #globeViewport::before{content:"";position:absolute;inset:0;z-index:18;pointer-events:none;
-  /* Stronger at the edges (user, 4 Nov 2026: "make the fog stronger at the edges"): solid paper at the very edge, eased out
-     over the outer 24% so the map seems to vanish into the page rather than stop at a line. */
-  background:linear-gradient(to bottom,
-    var(--paper) 0,color-mix(in srgb,var(--paper) 85%,transparent) 5%,color-mix(in srgb,var(--paper) 55%,transparent) 11%,color-mix(in srgb,var(--paper) 25%,transparent) 17%,transparent 24%,
-    transparent 76%,color-mix(in srgb,var(--paper) 25%,transparent) 83%,color-mix(in srgb,var(--paper) 55%,transparent) 89%,color-mix(in srgb,var(--paper) 85%,transparent) 95%,var(--paper) 100%)}
-/* And a blur under the fade, in the same two bands only (user, 4 Nov 2026: "add some blur"): 3px at the very edge, eased out
-   through a mask so it is gone by 20% in and nothing in the middle of the map is touched. It sits under the paper fade (z 17),
+  /* Lighter (user, 4 Nov 2026: "fade less at the bottom and top"), after "stronger at the edges" the same day: at most 60% paper at
+     the very edge, eased out over the outer 12%, so the map thins toward the edges without vanishing into the page. */
+  /* And a tiny fade at the left and right (user, 4 Nov 2026: "fade on left and right a tiny bit"): at most 30% paper at the very side,
+     gone by 5% in. */
+  background:linear-gradient(to right,
+    color-mix(in srgb,var(--paper) 30%,transparent) 0,color-mix(in srgb,var(--paper) 10%,transparent) 2.5%,transparent 5%,
+    transparent 95%,color-mix(in srgb,var(--paper) 10%,transparent) 97.5%,color-mix(in srgb,var(--paper) 30%,transparent) 100%),
+    linear-gradient(to bottom,
+    color-mix(in srgb,var(--paper) 60%,transparent) 0,color-mix(in srgb,var(--paper) 30%,transparent) 5%,color-mix(in srgb,var(--paper) 10%,transparent) 9%,transparent 12%,
+    transparent 88%,color-mix(in srgb,var(--paper) 10%,transparent) 91%,color-mix(in srgb,var(--paper) 30%,transparent) 95%,color-mix(in srgb,var(--paper) 60%,transparent) 100%)}
+/* And a blur under the fade, in the same two bands only (user, 4 Nov 2026: "add some blur"): 1.5px at the very edge (lighter with the
+   fade), eased out through a mask so it is gone by 10% in and nothing in the middle of the map is touched. It sits under the paper fade (z 17),
    takes no pointer, and waits for fog-ready like the fade (a backdrop blur switched on with the first paint drew black). */
 #globeViewport::after{content:"";position:absolute;inset:0;z-index:17;pointer-events:none;
-  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.6) 8%,transparent 20%,transparent 80%,rgba(0,0,0,.6) 92%,#000 100%);
-  mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.6) 8%,transparent 20%,transparent 80%,rgba(0,0,0,.6) 92%,#000 100%)}
+  -webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.5) 4%,transparent 10%,transparent 90%,rgba(0,0,0,.5) 96%,#000 100%);
+  mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.5) 4%,transparent 10%,transparent 90%,rgba(0,0,0,.5) 96%,#000 100%)}
 @media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
 /* The fog waits for the page's first frames (html.fog-ready, set two frames after the hold is cleared in index.html), as the
    blur it replaces had to. */
@@ -3924,3 +3916,43 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
    prevented by the non-breaking space typeset.js puts between a title's last two words. :where keeps it at zero specificity, so the few
    !important wrap rules already in this file still win. */
 :where(h1,h2,h3,h4,h5,h6,.t-title,.lede,.curator-section-hdr,.critique-title,.starter-prompt,.dossier-main-heading,.d-row-title,#floatingCardTitle,.record-popup-name,#desktopDossierName,#dossier-sheet-name){text-wrap-style:auto!important}
+
+/* No underline on hover (user, 4 Nov 2026: "do not underline and check button hovers, they need to work properly"): the title (back to the
+   world view) and "How the records work" showed an underline on hover; they now dim slightly instead, like the other quiet controls, and
+   keep the pointer. Every other button's hover was measured after its transition, in light and dark: each changes and keeps 9.4:1 or more. */
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:is(:hover,:focus-visible,:active),
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#chatRecordsInfo,#chatRecordsInfoMobile)>summary,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#chatRecordsInfo,#chatRecordsInfoMobile)>summary:is(:hover,:focus-visible,:active){text-decoration:none!important}
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button{cursor:pointer;transition:color .15s ease}
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:hover,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#chatRecordsInfo,#chatRecordsInfoMobile)>summary:hover{color:color-mix(in srgb,var(--ink) 72%,var(--paper))!important}
+:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:focus-visible{outline:3px solid var(--focus)!important;outline-offset:4px}
+
+/* ---- GOSSIP IN THE CHAT, SET AS DISPLAAY.NET/ABOUT (user's instruction, 4 Nov 2026) ----
+   chatReportingHtml (index.html) regroups each reported item into .dp-side (name, date, sources) and .dp-main (what is said).
+   Measured on displaay.net/about at 1440px: a three-column grid, 15px gutter, the label in one column and the text across the
+   other two; the label is uppercase at 19px/1.15 +0.01em, the lead 28px/1.1 -0.01em, a group heading ("Studio") about 48px over
+   a 1px rule, 30px between blocks. Scaled to the chat's measure: label 15px +0.04em (the extra tracking stands in for Displaay's
+   semibold, since the Atlas sets one weight), lead 24px/1.12 -0.01em, headings 36px/1.05. The balloon takes its full 80% while
+   it holds the set, so the set can be a size container; below 520px the label goes above the text and the lead drops to 20px. */
+:is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip:has(.dp-set){width:80%!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set{container:dp-set/inline-size;padding:0!important;border:0!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set>h3.kicker{display:block;font-size:36px!important;line-height:1.05!important;letter-spacing:-.01em!important;text-transform:none!important;margin:48px 0 16px!important;padding:0!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set>h3.kicker:first-child{margin-top:0!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set>.account-note{font-size:15px!important;line-height:1.3!important;margin:0 0 16px!important;max-width:40em}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .record-card.dp-row{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:15px;row-gap:8px;align-items:start;border:0!important;border-top:1px solid currentColor!important;background:none!important;padding:10px 0 0!important;margin:0 0 30px!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-row>*{margin:0!important;min-width:0}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side{display:flex;flex-direction:column;gap:4px}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>*,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side :is(.flex,.kicker,strong){display:block!important;margin:0!important;padding:0!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side :is(.kicker,strong,.meta,span,a){font-size:15px!important;line-height:1.25!important;letter-spacing:.01em!important;text-transform:none!important;overflow-wrap:break-word}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>.kicker:first-child,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>:first-child strong.kicker{letter-spacing:.04em!important;text-transform:uppercase!important;hyphens:auto}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side a{white-space:nowrap}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>:is(.no-indent,.account-source-links):last-child{margin-top:8px!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main{display:flex;flex-direction:column;gap:12px}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main>*{margin:0!important;padding-left:0}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main :is(p,li,ul){font-size:24px!important;line-height:1.12!important;letter-spacing:-.01em!important;text-indent:0!important;overflow-wrap:break-word;hyphens:auto}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main ul{padding-left:1em!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main .account-note{font-size:15px!important;line-height:1.3!important;letter-spacing:.01em!important}
+@container dp-set (max-width:520px){
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .record-card.dp-row{grid-template-columns:minmax(0,1fr)}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main :is(p,li,ul){font-size:20px!important;line-height:1.15!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set>h3.kicker{font-size:30px!important}
+}

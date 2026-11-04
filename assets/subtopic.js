@@ -30,6 +30,38 @@
     return null;
   }
 
+  // Any other thing asked about a space ("symbol of the museum", "who is the director at MoMA"): the words left once the space's
+  // name and the question's own words are cut out. Only the record answer's last branch uses it, after funding, hours, flags and
+  // the rest have had their turn, so the visitor gets an answer to what was asked and not the whole record again (user, 4 Nov 2026).
+  // A question with nothing left ("tell me about it", "what is this museum") is about the space as a whole and gets null.
+  var STOP = new Set(('a an the of at in on for to from by with and or about tell me us more show give find what whats what\'s who whos ' +
+    'is are was were be does do did has have had can could would should will it its it\'s this that these those there here please ' +
+    'info information detail details record records overview summary story history describe explain know learn say says said ' +
+    'museum museums space spaces gallery galleries institution institutions place venue foundation centre center kunsthalle ' +
+    'how where when why which any some their they them his her i you your my our we').split(' '));
+  var SYNONYMS = { symbol: 'symbol|logo|emblem|insignia|mascot', logo: 'symbol|logo|emblem|insignia', emblem: 'symbol|logo|emblem|insignia' };
+  function stripNames(query, inst) {
+    var q = String(query || '');
+    var names = [];
+    if (inst && inst.name) {
+      names.push(inst.name);
+      var m = /\(([^)]+)\)/.exec(inst.name);
+      if (m) names.push(m[1]);
+      names.push(inst.name.replace(/\s*\([^)]*\)/, ''));
+    }
+    names.sort(function (a, b) { return b.length - a.length; }).forEach(function (n) {
+      if (n && n.length > 2) q = q.replace(new RegExp(n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'ig'), ' ');
+    });
+    return q;
+  }
+  function detectFreeTopic(query, inst) {
+    var words = stripNames(query, inst).toLowerCase().replace(/[’']s\b/g, '').match(/[a-zÀ-ɏ][a-zÀ-ɏ-]*/g) || [];
+    words = words.filter(function (w) { return w.length > 2 && !STOP.has(w); });
+    if (!words.length || words.length > 4) return null;
+    var stems = words.map(function (w) { return SYNONYMS[w] || (w.length > 5 ? w.slice(0, w.length - 2) : w); });
+    return { key: 'free', label: words.join(' '), ask: new RegExp('\\b(' + stems.join('|') + ')', 'i'), held: new RegExp('\\b(' + stems.join('|') + ')', 'i') };
+  }
+
   // The sentences of the record that mention the sub-topic: all the model, or the record answer, may say about it.
   function heldSentences(topic, inst) {
     if (!topic || !inst) return [];
@@ -62,7 +94,7 @@
       : { held: false, text: 'The Atlas holds no record on the ' + topic.label + ' of ' + inst.name + '.' };
   }
 
-  var api = { detectSubTopic: detectSubTopic, heldSentences: heldSentences, subTopicBlock: subTopicBlock, subTopicRecordAnswer: subTopicRecordAnswer };
+  var api = { detectSubTopic: detectSubTopic, detectFreeTopic: detectFreeTopic, heldSentences: heldSentences, subTopicBlock: subTopicBlock, subTopicRecordAnswer: subTopicRecordAnswer };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   root.AtlasSubTopic = api;
 })(typeof window !== 'undefined' ? window : globalThis);
