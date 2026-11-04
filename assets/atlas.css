@@ -91,7 +91,7 @@ header>button:first-child{border-right:.8px solid var(--line)}
 #topGossipBtn,#topShareBtn{border-left:.8px solid var(--line);border-right:0}
 header>div:last-child{align-self:stretch;display:flex}
 header>div:last-child>button{border-right:0;border-left:.8px solid var(--line)}
-body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:#000}
+body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:#e2f86c;color:#000}
 
 /* ---- the two halves ---- */
 #mainAppContainer{background:var(--paper);min-height:0}
@@ -748,10 +748,10 @@ body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 /* The map credit button is a white square on a white map, so it takes the same black rule. */
 .maplibregl-ctrl-attrib.maplibregl-compact{border:.8px solid var(--ink)}
 
-/* Gossip mode: the menu bar keeps its colours (yellow is for gossip alone); the Gossip mode button turns orange and the street map ground goes orange. */
-body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:#000}
+/* Gossip mode: the menu bar keeps its colours (yellow is for gossip alone); the Gossip mode button and the street map ground take the gossip yellow. */
+body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:#e2f86c;color:#000}
 body.gossip-mode-active #topGossipBtn:hover,body.gossip-mode-active #mobileGossipBtn:hover{background:#000;color:#fff}
-body.gossip-mode-active #cityMapContainer{background:var(--gossip)}
+body.gossip-mode-active #cityMapContainer{background:#e2f86c}
 /* In the street view the globe's own controls would sit behind the street-view bar and poke out at its ends. */
 body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
 body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
@@ -2117,7 +2117,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #mobileTopBar>div:last-child{gap:8px;padding-right:16px;align-items:center}
   :root[data-theme] #mobileTopBar>div:last-child :is(#mobileThemeBtn,#mobileGossipBtn,#reset-state-btn){height:40px;padding:0 16px!important;border:.8px solid var(--ink)!important;border-radius:0;background:transparent;color:var(--ink);align-self:center}
   :root[data-theme] #mobileTopBar>div:last-child #mobileThemeBtn[aria-pressed=true]{background:var(--cobalt);border-color:var(--cobalt)!important;color:#fff;border-radius:0}
-  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:var(--gossip)!important;color:#000;border-radius:0}
+  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:#e2f86c;border-color:#e2f86c!important;color:#000;border-radius:0}
 }
 
 /* The chat after the displaay.net Albert chat, keeping the existing starter-prompt highlights (user's instruction, 25 Oct 2026): the question box is a rounded navy field (#2d3352) with a yellow ring (#fff204) while in use, plum (#410043) with yellow type once the reader has typed, and a white square send button inside it; Share information (#420401) and Voice (#410043) sit below the box as solid rounded buttons after the Trials / Tester / Buy row; the starter questions stay as coloured highlight strips; the reader's lines are grey bubbles, the reply a dark box. */
@@ -3508,7 +3508,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar>div{gap:8px!important;pointer-events:auto}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar :is(#topGossipBtn,#topThemeBtn){height:var(--gmd-h)!important;min-height:0!important;padding:0 18px!important;border:0!important;border-radius:calc(var(--gmd-h) / 2)!important;font:400 15px/1 var(--sans)!important;background:var(--paper);color:var(--ink);box-shadow:var(--gmd-shadow)!important}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTopBar :is(#topGossipBtn,#topThemeBtn):hover{background:color-mix(in srgb,var(--ink) 8%,var(--paper))}
-  :root.gmd:root:root:root:root:root:root:root:root:root body.gossip-mode-active #gmdTopBar #topGossipBtn{background:var(--gossip)!important;color:#000!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root body.gossip-mode-active #gmdTopBar #topGossipBtn{background:#e2f86c!important;color:#000!important}
 
   /* The side panel: the Details and Chat column, at the right, under Gossip mode and Dark. */
   :root.gmd:root:root:root:root:root:root:root:root:root #workViewContainer{display:flex!important;position:absolute!important;top:0!important;bottom:0!important;left:auto!important;right:0!important;width:var(--gmd-w)!important;max-width:calc(100vw - 32px)!important;z-index:35!important;padding-top:calc(var(--gmd-gap) + var(--gmd-h) + 12px)!important;border:0!important;border-left:1px solid color-mix(in srgb,var(--ink) 14%,transparent)!important;background:var(--paper)!important}
