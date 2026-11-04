@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=551">
-  <script src="assets/config.js?v=551"></script>
-  <script src="assets/subtopic.js?v=551"></script>
-  <script src="assets/names.js?v=551"></script>
-  <script src="assets/grounding.js?v=551"></script>
-  <script src="assets/repeats.js?v=551"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=552">
+  <script src="assets/config.js?v=552"></script>
+  <script src="assets/subtopic.js?v=552"></script>
+  <script src="assets/names.js?v=552"></script>
+  <script src="assets/grounding.js?v=552"></script>
+  <script src="assets/repeats.js?v=552"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=551"></script>
+  <script src="assets/institutions.js?v=552"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6608,6 +6608,76 @@ return maplibregl$1;
           type: 'background',
           paint: { 'background-color': '#ffffff' }
         },
+        // ---- Close in, the street map is set like a printed gallery map (user, 4 Nov 2026, after Fraser Muggeridge studio's
+        // Bloomsbury Art Galleries map): the blocks a fine stipple of dots, the streets left as paper between 1px ink edges, the
+        // squares and water plain paper, street names in serif capitals along the street. Every poster_ layer fades in between
+        // zoom 13.5 and 14.5 (POSTER_ZOOM), so the city view keeps its hairlines and only the zoomed-in map changes. The colours
+        // here are the light theme's; applyCityMapGossip repaints them for dark and gossip mode, and posterImages redraws the dots.
+        {
+          id: 'poster_ground',
+          type: 'background',
+          minzoom: 13.5,
+          paint: { 'background-pattern': 'poster-dots', 'background-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1] }
+        },
+        {
+          id: 'poster_park_fill',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'park',
+          minzoom: 13.5,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1] }
+        },
+        {
+          id: 'poster_grass_fill',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landcover',
+          filter: ['match', ['get', 'class'], ['grass', 'wood'], true, false],
+          minzoom: 13.5,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1] }
+        },
+        {
+          id: 'poster_water_fill',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'water',
+          minzoom: 13.5,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1] }
+        },
+        // The streets: an ink casing under a paper fill, every class casing first and fill after, so the junctions open into
+        // each other as they do on the printed map. Paths and tracks are left out: on the print a footpath is not a street.
+        {
+          id: 'poster_road_casing',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
+          minzoom: 13.5,
+          layout: { 'line-join': 'round', 'line-cap': 'round' },
+          paint: {
+            'line-color': '#000000',
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1],
+            'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
+              14, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 8, ['secondary', 'tertiary'], 6.5, 'service', 3, 4.5],
+              18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 58, ['secondary', 'tertiary'], 46, 'service', 16, 32]]
+          }
+        },
+        {
+          id: 'poster_road_fill',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
+          minzoom: 13.5,
+          layout: { 'line-join': 'round', 'line-cap': 'round' },
+          paint: {
+            'line-color': '#ffffff',
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1],
+            'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
+              14, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 6, ['secondary', 'tertiary'], 4.5, 'service', 1.5, 2.5],
+              18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 56, ['secondary', 'tertiary'], 44, 'service', 14, 30]]
+          }
+        },
         {
           id: 'landcover_grass',
           type: 'line',
@@ -6717,9 +6787,10 @@ return maplibregl$1;
           minzoom: 8,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
-            'text-font': ['PP Neue Gstaad Regular'],
+            // Close in, the district names join the printed map's serif capitals.
+            'text-font': ['step', ['zoom'], ['literal', ['PP Neue Gstaad Regular']], 14, ['literal', ['PP Museum Regular']]],
             'text-size': 14,
-            'text-transform': 'none',
+            'text-transform': ['step', ['zoom'], 'none', 14, 'uppercase'],
             'text-letter-spacing': 0
           },
           paint: {
@@ -6727,9 +6798,94 @@ return maplibregl$1;
             'text-halo-color': '#ffffff',
             'text-halo-width': 1.5
           }
+        },
+        // Street names in PP Museum Regular capitals, spaced, along the street (glyphs in assets/glyphs/PP Museum Regular).
+        {
+          id: 'poster_street_label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'transportation_name',
+          filter: ['match', ['get', 'class'], ['minor', 'tertiary', 'secondary', 'primary', 'trunk'], true, false],
+          minzoom: 14,
+          layout: {
+            'symbol-placement': 'line',
+            'symbol-spacing': 320,
+            'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
+            'text-font': ['PP Museum Regular'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 14, 14, 18, 16],
+            'text-transform': 'uppercase',
+            'text-letter-spacing': 0.08,
+            'text-max-angle': 30,
+            'text-padding': 4
+          },
+          paint: { 'text-color': '#000000', 'text-halo-color': '#ffffff', 'text-halo-width': 2, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, 1] }
+        },
+        // The squares and the big museums, named in the middle of the block, as RUSSELL SQUARE and THE BRITISH MUSEUM are.
+        {
+          id: 'poster_area_label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'poi',
+          filter: ['all', ['has', 'name'], ['match', ['get', 'class'], ['park', 'garden'], true, false], ['<=', ['coalesce', ['get', 'rank'], 99], 20]],
+          minzoom: 14,
+          layout: {
+            'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
+            'text-font': ['PP Museum Regular'],
+            'text-size': 14,
+            'text-transform': 'uppercase',
+            'text-letter-spacing': 0.06,
+            'text-line-height': 1.1,
+            'text-max-width': 7,
+            'text-padding': 6
+          },
+          // A wide halo: these names sit inside the squares, over their path hairlines.
+          paint: { 'text-color': '#000000', 'text-halo-color': '#ffffff', 'text-halo-width': 3.5, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, 1] }
+        },
+        // Stations in a paper box with a 1px ink edge, as EUSTON SQUARE and HOLBORN are on the print.
+        {
+          id: 'poster_station_label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'poi',
+          filter: ['all', ['has', 'name'], ['==', ['get', 'class'], 'railway'], ['match', ['get', 'subclass'], ['station', 'subway', 'halt'], true, false]],
+          minzoom: 14,
+          layout: {
+            'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
+            'text-font': ['PP Museum Regular'],
+            'text-size': 14,
+            'text-transform': 'uppercase',
+            'text-letter-spacing': 0.06,
+            'text-max-width': 12,
+            'icon-image': 'poster-box',
+            'icon-text-fit': 'both',
+            'icon-text-fit-padding': [3, 7, 2, 7],
+            'text-padding': 6
+          },
+          paint: { 'text-color': '#000000', 'text-opacity': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, 1], 'icon-opacity': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, 1] }
         }
       ]
     };
+    // Where the street map turns from hairlines into the printed gallery map (the poster_ layers above).
+    const POSTER_ZOOM = 14;
+    // The stipple and the station box, drawn for the map's current ground and ink: 6 CSS pixels a tile, two dots a tile set
+    // on a diagonal, as a halftone is. Redrawn whenever the theme or gossip mode changes the two colours.
+    function posterImages(map, ground, ink) {
+      if (!map || typeof map.addImage !== 'function' || typeof document === 'undefined') return;
+      const R = 2, put = (id, w, h, draw, opts) => {
+        const c = document.createElement('canvas'); c.width = w * R; c.height = h * R;
+        const g = c.getContext('2d'); g.scale(R, R); draw(g);
+        const img = g.getImageData(0, 0, c.width, c.height);
+        try { if (map.hasImage(id)) map.removeImage(id); map.addImage(id, img, Object.assign({ pixelRatio: R }, opts || {})); } catch (e) { /* style not ready */ }
+      };
+      put('poster-dots', 6, 6, g => {
+        g.fillStyle = ground; g.fillRect(0, 0, 6, 6);
+        g.fillStyle = ink; [[1.5, 1.5], [4.5, 4.5]].forEach(([x, y]) => { g.beginPath(); g.arc(x, y, 0.6, 0, Math.PI * 2); g.fill(); });
+      });
+      put('poster-box', 12, 12, g => {
+        g.fillStyle = ink; g.fillRect(0, 0, 12, 12);
+        g.fillStyle = ground; g.fillRect(1, 1, 10, 10);
+      }, { stretchX: [[2 * R, 10 * R]], stretchY: [[2 * R, 10 * R]], content: [2 * R, 2 * R, 10 * R, 10 * R] });
+    }
 
     let cityVectorMap = null;
     let cityVectorMarkers = [];
@@ -6753,6 +6909,7 @@ return maplibregl$1;
     };
     let cityLeafletMap = null;
     // The glyph ranges cut from PP Neue Gstaad into assets/glyphs. Add a range here when its file is added.
+    // PP Museum Regular (the street names close in) is cut over the same ranges, from fonts/PPMuseum-Regular.otf.
     const CITY_MAP_LOCAL_GLYPHS = new Set(['0-255', '256-511', '7680-7935', '8192-8447', '8448-8703']);
 
     function initCityMapIfNeeded() {
@@ -6795,6 +6952,27 @@ return maplibregl$1;
           applyCityMapGossip();
           cityStreetLinesInit();
         });
+        // The dots and the box are images, so a style that asks for them before they are added gets them here.
+        cityVectorMap.on('styleimagemissing', e => { if (e.id === 'poster-dots' || e.id === 'poster-box') applyCityMapGossip(); });
+        // The printed look holds only close in: a class on the container lets the pins and the frame follow it, and crossing the
+        // zoom rebuilds the hairlines, which leave the streets and buildings to the poster layers there.
+        let posterWas = null;
+        const posterSync = () => {
+          const on = cityVectorMap.getZoom() >= POSTER_ZOOM;
+          if (on === posterWas) return;
+          posterWas = on;
+          mapEl.classList.toggle('street-poster', on);
+          if (typeof streetLinesSchedule === 'function') streetLinesSchedule();
+        };
+        cityVectorMap.on('zoom', posterSync);
+        cityVectorMap.on('load', posterSync);
+        // The title in a ruled box, as the print has "Bloomsbury Art Galleries"; the frame and the scale bar. Shown close in.
+        if (!document.getElementById('streetPosterTitle')) {
+          const frame = document.createElement('div'); frame.className = 'street-poster-frame'; frame.setAttribute('aria-hidden', 'true');
+          const title = document.createElement('div'); title.id = 'streetPosterTitle'; title.className = 'street-poster-title'; title.setAttribute('aria-hidden', 'true');
+          mapEl.appendChild(frame); mapEl.appendChild(title);
+        }
+        cityVectorMap.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
 
       } catch (e) {
         console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
@@ -7004,6 +7182,10 @@ return maplibregl$1;
       cityVectorMap.on('move', () => {
         if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
       });
+      // Once more where the camera comes to rest, so the tags are placed from where the pins finally are.
+      cityVectorMap.on('moveend', () => {
+        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
+      });
       cityVectorMap.on('rotate', () => {
       });
       cityVectorMap.on('pitch', () => {
@@ -7180,8 +7362,20 @@ return maplibregl$1;
       // Gossip mode: Displaay's lime with black lines; on the dark theme a dark green with lime lines (user, 4 Nov 2026).
       const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#e2f86c') : dark ? '#262524' : '#ffffff';
       const line = isGossipModeActive ? (dark ? '#e2f86c' : '#000000') : dark ? '#f4f4f4' : '#161616';
+      // The printed map close in: dots of ink on the ground, streets in the ground between ink edges, the pins in its red.
+      posterImages(map, ground, line);
       layers.forEach(l => {
         if (l.id && l.id.indexOf('xray') === 0) return; // the building view keeps its own colours
+        if (l.id && l.id.indexOf('poster_') === 0) {
+          try {
+            if (l.id === 'poster_ground') map.setPaintProperty(l.id, 'background-pattern', 'poster-dots');
+            else if (l.id === 'poster_road_casing') map.setPaintProperty(l.id, 'line-color', line);
+            else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', ground);
+            else if (l.type === 'fill') map.setPaintProperty(l.id, 'fill-color', ground);
+            else if (l.type === 'symbol') { map.setPaintProperty(l.id, 'text-color', line); if (l.id !== 'poster_station_label') map.setPaintProperty(l.id, 'text-halo-color', ground); }
+          } catch (e) { /* a layer this map does not have */ }
+          return;
+        }
         try {
           if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', ground);
           else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', line);
@@ -7788,7 +7982,7 @@ return maplibregl$1;
       if (!map || !layer) return;
       const sc = map.style && map.style.sourceCaches && map.style.sourceCaches[STREET_SOURCE];
       if (!sc || typeof sc.getRenderableIds !== 'function') return;
-      const view = map.getBounds(), zoom = map.getZoom();
+      const view = map.getBounds(), zoom = map.getZoom(), poster = zoom >= POSTER_ZOOM;
       const padX = (view.getEast() - view.getWest()) * 0.6, padY = (view.getNorth() - view.getSouth()) * 0.6;
       const box = { w: view.getWest() - padX, e: view.getEast() + padX, s: view.getSouth() - padY, n: view.getNorth() + padY };
       const out = []; let n = 0;
@@ -7808,6 +8002,9 @@ return maplibregl$1;
         };
         for (const def of STREET_FEATURES) {
           if (def.minzoom && zoom < def.minzoom) continue;
+          // Close in the streets are the poster's paper bands and the blocks its dots: the hairlines keep only the edges of the
+          // squares and the water, which the print draws as a line.
+          if (poster && (def.layer === 'transportation' || def.layer === 'building')) continue;
           const feats = [];
           try { tile.querySourceFeatures(feats, { sourceLayer: def.layer }); } catch (e) { continue; }
           for (const f of feats) {
@@ -8142,6 +8339,9 @@ return maplibregl$1;
       if (titleEl) {
         titleEl.innerHTML = `${escapeHtml(cityName)}<span class="sr-only">${escapeHtml(cityName.toUpperCase())}</span>, ${cityInsts.length} ${cityInsts.length === 1 ? 'space' : 'spaces'}`;
       }
+      // The printed map's title box: the place, then what the map shows, two lines in the serif.
+      const posterTitle = document.getElementById('streetPosterTitle');
+      if (posterTitle) posterTitle.innerHTML = `<span>${escapeHtml(cityName)}</span><span>Spaces and Sponsors</span>`;
       const backCountryBtn = document.getElementById('backToCountryBtn');
       const backCountryText = document.getElementById('backToCountryText');
       const countryName = cMeta ? cMeta.country : (cityInsts.length > 0 ? cityInsts[0].country : null);
@@ -8158,7 +8358,8 @@ return maplibregl$1;
         pinEl.className = 'custom-inst-pin';
         pinEl.setAttribute('data-entity-id', inst.id || inst.name);
         pinEl.setAttribute('data-name', inst.name);
-        pinEl.style.position = 'relative';
+        // No inline position: MapLibre's .maplibregl-marker is position:absolute, and an inline "relative" put every pin in the
+        // flow, so each one sat 32px lower than the one before it, hundreds of pixels off its address.
         pinEl.style.width = '32px';
         pinEl.style.height = '32px';
         pinEl.style.display = 'flex';
@@ -8197,6 +8398,8 @@ return maplibregl$1;
         auraEl.style.background = 'transparent';
 
         const dotEl = document.createElement('div');
+        dotEl.className = 'inst-pin-dot';   // a hollow ring; close in, a solid red circle, square or triangle (atlas.css)
+        pinEl.setAttribute('data-tier', inst.tier === 'A' || inst.tier === 'B' ? inst.tier : 'U');
         dotEl.style.position = 'relative';
         dotEl.style.width = '15px';
         dotEl.style.height = '15px';
@@ -8536,7 +8739,7 @@ return maplibregl$1;
           const pinEl = document.createElement('div');
           pinEl.className = 'curatorial-route-stop-pin';
           pinEl.setAttribute('data-stop-idx', String(idx));
-          pinEl.style.position = 'relative';
+          // position comes from .maplibregl-marker (absolute); see the city pins above.
           pinEl.style.width = '36px';
           pinEl.style.height = '36px';
           pinEl.style.display = 'flex';
@@ -10019,11 +10222,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v551';
+    const ATLAS_RELEASE = 'culture-atlas-v552';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=551').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=552').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -20879,13 +21082,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=551"></script>
-<script src="assets/funding-views.js?v=551"></script>
-<script src="assets/layers.js?v=551"></script>
-<script src="assets/hq-detail.js?v=551"></script>
-<script src="assets/bubbles.js?v=551" defer></script>
-<script src="assets/phone-maps.js?v=551"></script>
-<script src="assets/desktop-maps.js?v=551"></script>
-<script src="assets/chat-resize.js?v=551"></script>
+<script src="assets/typeset.js?v=552"></script>
+<script src="assets/funding-views.js?v=552"></script>
+<script src="assets/layers.js?v=552"></script>
+<script src="assets/hq-detail.js?v=552"></script>
+<script src="assets/bubbles.js?v=552" defer></script>
+<script src="assets/phone-maps.js?v=552"></script>
+<script src="assets/desktop-maps.js?v=552"></script>
+<script src="assets/chat-resize.js?v=552"></script>
 </body>
 </html>
