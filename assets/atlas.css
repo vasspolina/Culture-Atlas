@@ -3722,6 +3722,12 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl#gmdMapCtl#gmdMapCtl .gmd-zoom>button{border-radius:0!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl#gmdMapCtl#gmdMapCtl .gmd-zoom>button:focus-visible{outline:2px solid var(--focus)!important;outline-offset:-4px!important}
 
+/* Titles run to the margin (user, 4 Nov 2026: "the text line is broken ... it needs to run up until margin"). text-wrap:balance evened the
+   lines of every title, so "04—Archaeologists' protest over the 2009 reopening" broke after "protest" with the measure half empty. Only the
+   style longhand is reset, so a title held to one line (white-space:nowrap, text-wrap:nowrap) keeps its mode; a lone last word is still
+   prevented by the non-breaking space typeset.js puts between a title's last two words. :where keeps it at zero specificity, so the few
+   !important wrap rules already in this file still win. */
+:where(h1,h2,h3,h4,h5,h6,.t-title,.lede,.curator-section-hdr,.critique-title,.starter-prompt,.dossier-main-heading,.d-row-title,#floatingCardTitle,.record-popup-name,#desktopDossierName,#dossier-sheet-name){text-wrap-style:auto!important}
 
 /* No underline on hover (user, 4 Nov 2026: "do not underline and check button hovers, they need to work properly"): the title (back to the
    world view) and "How the records work" showed an underline on hover; they now dim slightly instead, like the other quiet controls, and
