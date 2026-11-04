@@ -1,11 +1,10 @@
 // Desktop layout after a maps app (user, 4 Nov 2026: "make the desktop version of atlas now function like google map,
-// keep features"). The globe fills the window. A search box floats at the top left: it finds spaces and cities as you
-// type and flies to them, and anything else goes to the curator as a question. The layers sit as chips beside it and as
-// a square Layers tile at the bottom left. The record and the chat open in a side panel on the left, which a tab at its
-// edge folds away and brings back, the way a place panel does. Zoom, your location and the world view are buttons at
-// the bottom right. Every control of the old two-column page is still on the page: the Details and Chat tabs, New
-// Query, Gossip mode, Dark, the chat box with Voice and Share information. Only windows 768px and wider are touched;
-// the phone keeps assets/phone-maps.js. The look is in assets/atlas.css, "DESKTOP: MAPS APP".
+// keep features"). The globe fills the window left of the Details and Chat panel, which sits at the right edge and
+// stays open ("just move this to the right and keep it open"). A search box floats at the top left: it finds spaces
+// and cities as you type and flies to them, and anything else goes to the curator as a question. The layers sit as
+// chips beside it and as a square Layers tile at the bottom left. Zoom, your location and the world view are buttons
+// at the bottom right. Gossip mode and Dark are pills at the top of the panel. Only windows 768px and wider are
+// touched; the phone keeps assets/phone-maps.js. The look is in assets/atlas.css, "DESKTOP: MAPS APP".
 (function () {
   'use strict';
   const DESK = () => window.innerWidth >= 768;
@@ -15,17 +14,14 @@
   const g = (name) => { try { return (0, eval)(name); } catch (_) { return undefined; } };
   const svg = (body, sw) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (sw || 1.8) + '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + body + '</svg>';
   const ICON = {
-    menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
     lens: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/>',
     close: '<path d="M6 6l12 12M18 6 6 18"/>',
-    chat: '<path d="M4 5h16v11H9l-5 4z"/>',
     pin: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
     city: '<path d="M4 20V9l5-3v14M9 20V4l6 3v13M15 20v-9l5 2v7M3 20h18"/>',
     ask: '<path d="M4 5h16v11H9l-5 4z"/><path d="M10 9.2a2 2 0 1 1 2.6 1.9c-.5.2-.6.5-.6 1M12 13.6v.1"/>',
     plus: '<path d="M12 5v14M5 12h14"/>',
     minus: '<path d="M5 12h14"/>',
     globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/>',
-    fold: '<path d="M14.5 6 8.5 12l6 6"/>',
     layers: '<path d="M12 3 2.5 8.5 12 14l9.5-5.5z"/><path d="m4.6 12.3-2.1 1.2L12 19l9.5-5.5-2.1-1.2"/>',
   };
 
@@ -54,43 +50,10 @@
     }
     window.addEventListener('resize', syncDesk);
 
-    // ---- The side panel -------------------------------------------------------------------------------------------
-    // Open: html.gmd-panel. It opens when a record opens, when a question goes to the curator and from the Chat button;
-    // the fold tab at its edge and the search box's cross put it away. What it holds stays as it was.
-    const fold = document.createElement('button');
-    fold.type = 'button';
-    fold.id = 'gmdFold';
-    fold.innerHTML = svg(ICON.fold, 2);
-    fold.addEventListener('click', () => setPanel(!root.classList.contains('gmd-panel')));
-    app.appendChild(fold);
-
-    function hasContent() {
-      const talk = !!document.querySelector('#curatorMessages > *:not(#curatorHeroGreeting):not(#curatorStarterPrompts)');
-      return !!g('selectedInstitution') || talk || root.classList.contains('gmd-panel');
-    }
-    function setPanel(open) {
-      open = true; // always open on the right
-      const was = root.classList.contains('gmd-panel');
-      root.classList.toggle('gmd-panel', !!open);
-      fold.setAttribute('aria-label', open ? 'Collapse side panel' : 'Expand side panel');
-      fold.setAttribute('aria-expanded', String(!!open));
-      fold.hidden = !hasContent();
-      if (was !== !!open) syncSearch();
-    }
-    // The panel is on the right and always open (user, 4 Nov 2026: "just move this to the right and keep it open").
-    root.classList.add('gmd-panel');
-
-    // A record opening in the Details column opens the panel.
-    if (dossierCol) {
-      let shown = false;
-      new MutationObserver(() => {
-        const now = dossierCol.style.display !== 'none' && !dossierCol.classList.contains('hidden');
-        if (now && !shown && DESK()) setPanel(true);
-        shown = now;
-        syncSearch();
-      }).observe(dossierCol, { attributes: true, attributeFilter: ['style', 'class'] });
-    }
-    // A new record while the panel is open shows its name in the box, as a place does.
+    // ---- The side panel: always open on the right; the search box follows the record it shows ------------------------
+    const detailsShown = () => !!dossierCol && dossierCol.style.display !== 'none' && !dossierCol.classList.contains('hidden');
+    if (dossierCol) new MutationObserver(() => syncSearch()).observe(dossierCol, { attributes: true, attributeFilter: ['style', 'class'] });
+    // A new record shows its name in the box, as a place does.
     const recName = $('desktopDossierRecordBody') || dossierCol;
     if (recName) new MutationObserver(() => syncSearch()).observe(recName, { childList: true });
 
@@ -99,30 +62,20 @@
     box.id = 'gmdSearch';
     box.setAttribute('role', 'search');
     box.innerHTML =
-      '<button type="button" id="gmdMenuBtn" class="gmd-ico-btn" aria-label="Menu" aria-haspopup="true" aria-expanded="false" aria-controls="gmdMenu">' + svg(ICON.menu) + '</button>' +
       '<input id="gmdInput" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gmdResults" placeholder="Search the atlas" aria-label="Search spaces and cities, or ask the curator">' +
       '<button type="button" id="gmdGo" class="gmd-ico-btn" aria-label="Search">' + svg(ICON.lens) + '</button>' +
-      '<span class="gmd-sep" aria-hidden="true"></span>' +
-      '<button type="button" id="gmdClear" class="gmd-ico-btn" aria-label="Close" hidden>' + svg(ICON.close) + '</button>' +
-      '<button type="button" id="gmdChatBtn" class="gmd-ico-btn" aria-label="Open the chat with the curator">' + svg(ICON.chat) + '</button>' +
-      '<ul id="gmdResults" role="listbox" aria-label="Results" hidden></ul>' +
-      '<div id="gmdMenu" role="menu" aria-label="Menu" hidden></div>';
+      '<button type="button" id="gmdClear" class="gmd-ico-btn" aria-label="Clear the search" hidden>' + svg(ICON.close) + '</button>' +
+      '<ul id="gmdResults" role="listbox" aria-label="Results" hidden></ul>';
     document.body.appendChild(box);
     const input = $('gmdInput'), results = $('gmdResults'), clearBtn = $('gmdClear');
-    const menuBtn = $('gmdMenuBtn'), menu = $('gmdMenu');
 
-    // The box shows the open record's name, as a maps app shows the place, also while the panel is folded away. Its cross
-    // closes the panel and clears the box; the fold tab brings the record back.
+    // The box shows the open record's name, as a maps app shows the place. Its cross clears the box; the record stays.
     let typed = false, dismissed = null;
     function syncSearch() {
-      const open = root.classList.contains('gmd-panel');
       const inst = g('selectedInstitution');
-      if (open) dismissed = null;
-      const onRecord = inst && inst !== dismissed && dossierCol && dossierCol.style.display !== 'none' && !dossierCol.classList.contains('hidden');
+      const onRecord = inst && inst !== dismissed && detailsShown();
       if (!typed && document.activeElement !== input) input.value = onRecord ? (inst.name || '') : '';
       clearBtn.hidden = !input.value;
-      clearBtn.setAttribute('aria-label', 'Clear the search');
-      fold.hidden = !hasContent();
     }
 
     // Searching: spaces by name, alias, city or country; cities by name. A question goes to the curator.
@@ -159,17 +112,11 @@
       out.sort((a, b) => a.s - b.s || a.label.localeCompare(b.label));
       return out.slice(0, 7);
     }
-    // With the box empty, the list holds the curator's suggested questions, as a maps app lists recent searches.
-    function starters() {
-      const seen = new Set();
-      return [...document.querySelectorAll('.starter-prompt[data-query]')].map((b) => b.dataset.query).filter((q) => q && !seen.has(q) && seen.add(q)).slice(0, 5);
-    }
     let items = [], active = -1;
     function render() {
       const q = input.value.trim();
       items = q ? find(q) : [];
       if (q) items.push({ kind: 'ask', label: q, sub: 'Ask the curator' });
-      else starters().forEach((s) => items.push({ kind: 'ask', label: s, sub: 'Suggested question' }));
       active = q && items.length > 1 ? 0 : -1;
       results.innerHTML = '';
       items.forEach((it, k) => {
@@ -206,7 +153,6 @@
         input.blur();
         const sel = g('selectInstitution');
         if (typeof sel === 'function') sel(it.x, true);
-        setPanel(true);
       } else if (it.kind === 'city') {
         input.value = it.x.name;
         input.blur();
@@ -220,7 +166,8 @@
     }
     // A question goes into the chat's own box and is sent with its own button, so it is answered as one typed there.
     function ask(q) {
-      openChat(false);
+      const sw = window.setWorkspaceTab || g('setWorkspaceTab');
+      if (typeof sw === 'function') sw('chat');
       input.value = '';
       input.blur();
       const w = $('workInput'), send = $('workSendBtn');
@@ -229,15 +176,8 @@
       w.dispatchEvent(new Event('input', { bubbles: true }));
       setTimeout(() => { if (send && !send.disabled) send.click(); else w.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })); }, 30);
     }
-    function openChat(focus) {
-      const sw = window.setWorkspaceTab || g('setWorkspaceTab');
-      if (typeof sw === 'function') sw('chat');
-      setPanel(true);
-      if (focus) setTimeout(() => { const w = $('workInput'); if (w) w.focus(); }, 60);
-    }
-    window.atlasOpenDesktopChat = openChat;
 
-    input.addEventListener('focus', () => { closeMenu(false); render(); });
+    input.addEventListener('focus', render);
     input.addEventListener('input', () => { typed = true; clearBtn.hidden = false; render(); });
     input.addEventListener('blur', () => setTimeout(() => { showResults(false); typed = !!input.value && typed; syncSearch(); }, 120));
     input.addEventListener('keydown', (e) => {
@@ -259,60 +199,6 @@
       dismissed = g('selectedInstitution') || null;
       input.value = '';
       syncSearch();
-    });
-    $('gmdChatBtn').addEventListener('click', () => openChat(true));
-
-    // ---- The menu: the page's name (back to the world view) and a new chat --------------------------------------
-    function buildMenu() {
-      menu.innerHTML = '';
-      const brand = $('topBrandLogoBtn');
-      const head = document.createElement('p');
-      head.className = 'gmd-menu-head';
-      head.textContent = brand ? brand.textContent.trim() : document.title;
-      menu.appendChild(head);
-      const entries = [
-        ['World view', () => brand && brand.click()],
-        ['New chat', () => { const b = $('workspaceNewChatBtn'); if (b) b.click(); openChat(true); }],
-        ['topGossipBtn'],
-        ['topThemeBtn'],
-      ];
-      entries.forEach(([a, fn]) => {
-        const src = fn ? null : $(a);
-        if (!fn && !src) return;
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.setAttribute('role', 'menuitem');
-        b.textContent = fn ? a : src.textContent.trim();
-        const pressed = src && src.getAttribute('aria-pressed');
-        if (pressed !== null && pressed !== undefined) { b.setAttribute('role', 'menuitemcheckbox'); b.setAttribute('aria-checked', pressed); }
-        b.addEventListener('click', () => { closeMenu(true); fn ? fn() : src.click(); });
-        menu.appendChild(b);
-      });
-    }
-    function openMenu() {
-      showResults(false);
-      buildMenu();
-      menu.hidden = false;
-      menuBtn.setAttribute('aria-expanded', 'true');
-      const first = menu.querySelector('button');
-      if (first) first.focus();
-    }
-    function closeMenu(refocus) {
-      if (menu.hidden) return;
-      menu.hidden = true;
-      menuBtn.setAttribute('aria-expanded', 'false');
-      if (refocus) menuBtn.focus();
-    }
-    menuBtn.addEventListener('click', () => (menu.hidden ? openMenu() : closeMenu(true)));
-    menu.addEventListener('keydown', (e) => {
-      const list = [...menu.querySelectorAll('button')];
-      const i = list.indexOf(document.activeElement);
-      if (e.key === 'Escape') { e.preventDefault(); closeMenu(true); }
-      else if (e.key === 'ArrowDown') { e.preventDefault(); list[(i + 1) % list.length].focus(); }
-      else if (e.key === 'ArrowUp') { e.preventDefault(); list[(i - 1 + list.length) % list.length].focus(); }
-    });
-    document.addEventListener('pointerdown', (e) => {
-      if (!menu.hidden && !menu.contains(e.target) && !menuBtn.contains(e.target)) closeMenu(false);
     });
 
     // ---- Layer chips beside the box ------------------------------------------------------------------------------
@@ -412,18 +298,7 @@
       if (e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); input.focus(); }
     });
 
-    // The chips stop short of the buttons at the top right, whatever their labels' width.
-    function fitChips() {
-      if (!DESK() || !topBar) return;
-      const r = topBar.getBoundingClientRect();
-      if (r.width) root.style.setProperty('--gmd-right', Math.round(window.innerWidth - r.left + 12) + 'px');
-    }
-    window.addEventListener('resize', fitChips);
-    if (window.ResizeObserver && topBar) new ResizeObserver(fitChips).observe(topBar);
-
     syncDesk();
     syncSearch();
-    fitChips();
-    setTimeout(() => root.classList.add('gmd-ready'), 400);
   });
 })();
