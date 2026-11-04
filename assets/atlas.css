@@ -1192,7 +1192,7 @@ body.gossip-mode-active :is(#curatorMessages,#desktopDossierRecordBody,#detailBo
 /* A turn that holds gossip, in Gossip mode or not, is a comic balloon: only that turn is. The reply builder marks such a turn .is-gossip (its reported, unverified items carry data-gossip);
    a plain record, a city list, the status line and the reader's own questions are set exactly as in normal mode. assets/bubbles.js draws a hairline outline and a
    green to orange to pink wash that fit the text, with the tail part of the same path; until it runs, a plain wash stands in. Black type, left aligned, no speaker marks. */
-:is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{position:relative;display:block;box-sizing:border-box;width:fit-content;max-width:80%;margin:0 0 1.4em;padding:.85em 1.3em;border-radius:0;background:linear-gradient(180deg,#7be04a 0%,#cfa83c 52%,#ff2fa8 100%);color:#000;text-align:left;text-indent:0}
+:is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{position:relative;display:block;box-sizing:border-box;width:fit-content;max-width:80%;margin:0 0 1.4em;padding:.85em 1.3em;border-radius:0;background:linear-gradient(180deg,#d6f2b0 0%,#f1ecb0 36%,#f9d2b0 68%,#fdc1dc 100%);color:#000;text-align:left;text-indent:0}
 :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none;border-radius:0}
 :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip::before{content:none!important}
 .bubble-svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:0}
