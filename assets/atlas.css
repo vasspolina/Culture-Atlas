@@ -3944,6 +3944,12 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:hover,:root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) :is(#chatRecordsInfo,#chatRecordsInfoMobile)>summary:hover{color:color-mix(in srgb,var(--ink) 72%,var(--paper))!important}
 :root:root:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmdTitle button:focus-visible{outline:3px solid var(--focus)!important;outline-offset:4px}
 
+/* The hover cards' layer (index.html, #globeCardCanvas): over the fog at z 18 so a card near the top or bottom of the map is
+   never greyed by it (user, 4 Nov 2026: "make sure its appears above the fog"), under the head-office marks at 25 and every
+   control. It takes no pointer: the globe canvas under it handles the hover and the clicks on the card's button. */
+#globeCardCanvas{z-index:19;pointer-events:none}
+html.atlas-held #globeCardCanvas{visibility:hidden}
+
 /* ---- GOSSIP IN THE CHAT, SET AS DISPLAAY.NET/ABOUT (user's instruction, 4 Nov 2026) ----
    chatReportingHtml (index.html) regroups each reported item into .dp-side (name, date, sources) and .dp-main (what is said).
    Measured on displaay.net/about at 1440px: a three-column grid, 15px gutter, the label in one column and the text across the
@@ -3992,3 +3998,6 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
   :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle:focus-visible::after{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--focus)!important}
 }
 @media (prefers-reduced-motion:reduce){#chatResizeHandle::before,#chatResizeHandle::after{transition:none!important}}
+
+/* The question cloud sits two or more to a line when they fit (user, 4 Nov 2026): the questions flow in rows and wrap, instead of one per line. */
+:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){flex-direction:row!important;flex-wrap:wrap!important;align-items:flex-start!important;align-content:flex-start!important;justify-content:flex-start!important}
