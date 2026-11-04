@@ -148,6 +148,11 @@
     fetch('assets/money-maps.json').then(r => r.json()).then(D => {
       recById = new Map(); keyIndex = new Map(); keyKind = new Map();
       D.forEach(rec => {
+        // 0, 0 is the data's "no coordinates". Draw such a space at its city (or not at all), not in the ocean at 0°, 0°.
+        if (rec.lat === 0 && rec.lon === 0) {
+          const pin = typeof window.atlasPinOf === 'function' ? window.atlasPinOf(rec) : null;
+          if (pin) { rec.lat = pin.lat; rec.lon = pin.lon; } else { delete rec.lat; delete rec.lon; }
+        }
         recById.set(rec.id, rec);
         rec.nodes.forEach(n => {
           if (!FUNDER(n) || !n[5]) return;
@@ -723,8 +728,9 @@
       if (!recById) { ctx.restore(); return; }
       const byKey = new Map(), rings = [];
       // A selected space with no dot of its own (folded into a cluster) still gets its funders.
-      if (sel && typeof sel.lat === 'number' && typeof sel.lon === 'number' && !dots.some(d => sameInst(d.inst, sel))) {
-        const pt = project(sel.lon, sel.lat, r, cx, cy); if (pt.front) dots = dots.concat([{ inst: sel, x: pt.x, y: pt.y }]);
+      const selPin = sel && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(sel) : null;
+      if (selPin && !dots.some(d => sameInst(d.inst, sel))) {
+        const pt = project(selPin.lon, selPin.lat, r, cx, cy); if (pt.front) dots = dots.concat([{ inst: sel, x: pt.x, y: pt.y }]);
       }
       const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
       // First pass: where every funder of the focused space goes, and where its name goes. Each spoke and each name must stay
@@ -986,10 +992,12 @@
     // On a phone the record sheet would cover the funders; it steps aside, and a tap on the space brings it back.
     if (window.innerWidth < 768) { const sheet = document.getElementById('dossier-bottom-sheet'); if (sheet) sheet.classList.add('hidden'); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('atlas'); }
     // Close in on the space, so its funders sit around it in its own city rather than across the continent.
-    if (inst && typeof inst.lat === 'number' && typeof inst.lon === 'number' && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
+    // A space with no coordinates (stored as 0, 0) closes in on its city instead; flying to 0, 0 showed an empty ocean.
+    const pin = inst && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(inst) : null;
+    if (pin && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
       const z = window.getMaxRadius();
       if (typeof window.setTargetRadius === 'function') window.setTargetRadius(z);
-      window.flyTo(inst.lon, inst.lat, z);
+      window.flyTo(pin.lon, pin.lat, z);
     }
     repaint();
   };

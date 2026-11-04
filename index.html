@@ -9996,7 +9996,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v527';
+    const ATLAS_RELEASE = 'culture-atlas-v528';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11510,6 +11510,20 @@ return maplibregl$1;
       setTimeout(atlasReleasePaint, 8000); // the waits above are capped; this is for an error in them
     })();
 
+    // Where a record sits on the globe. The data writes 0, 0 for a record with no coordinates (no pin, no building view: 19 records
+    // on 4 Nov 2026, Victoria Gallery in Samara among them). Flying to that closed in on the empty ocean at 0°, 0° with the funder
+    // web drawn there, and the map read as blank. A record with no pin falls back to its city's centre (exact: false), or to nothing.
+    function atlasPinOf(inst) {
+      if (!inst) return null;
+      const lat = Number(inst.lat), lon = Number(inst.lon);
+      if (isFinite(lat) && isFinite(lon) && (lat !== 0 || lon !== 0)) return { lat, lon, exact: true };
+      const city = inst.city || (typeof inst.c === 'string' ? inst.c.split(',')[0].trim() : '');
+      const meta = city ? ALL_CITIES_REGISTRY.find(c => matchC(c.name, city) && (!inst.country || !c.country || matchC(c.country, inst.country))) || ALL_CITIES_REGISTRY.find(c => matchC(c.name, city)) : null;
+      if (meta && isFinite(meta.lat) && isFinite(meta.lon) && (meta.lat !== 0 || meta.lon !== 0)) return { lat: meta.lat, lon: meta.lon, exact: false };
+      return null;
+    }
+    window.atlasPinOf = atlasPinOf;
+
     // Camera Navigation
     function flyTo(lon, lat, targetZoom = null) {
       isAutoSpinning = false;
@@ -12582,8 +12596,8 @@ return maplibregl$1;
           }
         }
         const zoomTarget = getCityTargetRadius(inst.city);
-        targetRadius = zoomTarget;
-        flyTo(inst.lon, inst.lat, zoomTarget);
+        const pin = atlasPinOf(inst);
+        if (pin) { targetRadius = zoomTarget; flyTo(pin.lon, pin.lat, zoomTarget); }
       } else {
         if (isCityStreetViewActive) {
           if (suppressSelectFly) {
@@ -12597,8 +12611,8 @@ return maplibregl$1;
           }
         } else {
           const zoomTarget = Math.min(getMaxRadius(), Math.max(currentRadius * 1.35, baseRadius * 3.8));
-          targetRadius = zoomTarget;
-          flyTo(inst.lon, inst.lat, zoomTarget);
+          const pin = atlasPinOf(inst);
+          if (pin) { targetRadius = zoomTarget; flyTo(pin.lon, pin.lat, zoomTarget); }
         }
       }
       if (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && typeof setCardMode === 'function') {
@@ -19465,7 +19479,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (cty) {
         flyTo(cty.lon, cty.lat, targetZoom);
       } else {
-        const inst = ALL_INSTITUTIONS.find(i => matchC(i.city, cityName));
+        const inst = ALL_INSTITUTIONS.find(i => matchC(i.city, cityName) && atlasPinOf(i) && atlasPinOf(i).exact);
         if (inst) flyTo(inst.lon, inst.lat, targetZoom);
       }
 
@@ -20586,7 +20600,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
   
   </script>
 <script src="assets/typeset.js?v=524"></script>
-<script src="assets/layers.js?v=524"></script>
+<script src="assets/layers.js?v=528"></script>
 <script src="assets/hq-detail.js?v=524"></script>
 <script src="assets/bubbles.js?v=526" defer></script>
 <script src="assets/phone-maps.js?v=527"></script>
