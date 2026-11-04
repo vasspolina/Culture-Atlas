@@ -3974,3 +3974,6 @@ html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport:
   :root:root:not(#t):not(#t):not(#t):not(#t) #chatResizeHandle:focus-visible::after{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--focus)!important}
 }
 @media (prefers-reduced-motion:reduce){#chatResizeHandle::before,#chatResizeHandle::after{transition:none!important}}
+
+/* The question cloud sits two or more to a line when they fit (user, 4 Nov 2026): the questions flow in rows and wrap, instead of one per line. */
+:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){flex-direction:row!important;flex-wrap:wrap!important;align-items:flex-start!important;align-content:flex-start!important;justify-content:flex-start!important}
