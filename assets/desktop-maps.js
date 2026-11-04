@@ -222,8 +222,8 @@
     chips.setAttribute('role', 'toolbar');
     chips.setAttribute('aria-label', 'Map layers');
     document.body.appendChild(chips);
-    // A section marked data-no-chips (the funding views) stays in the Layers menu only.
-    const layerInputs = () => [...document.querySelectorAll('#layersControl input[data-layer]')].filter((cb) => !cb.closest('[data-no-chips]'));
+    // A section marked data-no-chips (the funding views) stays in the Layers menu only, except a switch marked data-chip.
+    const layerInputs = () => [...document.querySelectorAll('#layersControl input[data-layer]')].filter((cb) => cb.hasAttribute('data-chip') || !cb.closest('[data-no-chips]'));
     function buildChips() {
       const list = layerInputs();
       if (!list.length) return false;
