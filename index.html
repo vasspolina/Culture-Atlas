@@ -219,6 +219,8 @@ return maplibregl$1;
     <div id="globeViewport" class="relative w-full md-w-_55 h-full flex-1 min-h-0 flex flex-col justify-between overflow-hidden">
       
       <canvas id="globeCanvas" class="absolute inset-0 w-full h-full block"></canvas>
+      <!-- The hover cards, drawn on their own layer over the fog (assets/atlas.css, FOG ON THE MAP) so the fog never greys them. -->
+      <canvas id="globeCardCanvas" class="absolute inset-0 w-full h-full block" aria-hidden="true"></canvas>
 
       <!-- Layers: overlays on the map, like a map app's layer menu -->
       <div id="layersControl">
@@ -10161,6 +10163,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // Canvas & 3D Math Setup with Native Retina / High-DPI Support
     const canvas = document.getElementById('globeCanvas');
     const ctx = canvas.getContext('2d', { alpha: false });
+    // The hover cards' layer: transparent, above the fog, takes no pointer (the globe canvas under it handles every hover and click).
+    const cardCanvas = document.getElementById('globeCardCanvas');
+    const cardCtx = cardCanvas ? cardCanvas.getContext('2d') : ctx;
     
     let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
     let width = 800;
@@ -10435,20 +10440,35 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
     function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {
       if (!inst) return;
-      ctx.save();
-
       const webUrl = getValidWebUrl(inst);
       const domain = getDisplayDomain(webUrl) || 'website';
-      const domainPillText = `${domain}`;
-
-      // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
-      // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
-      // label over a 1px rule; the name in capitals; the description in Serrif Light 21px on a 24px line, up to three lines; the
-      // website as a button with the buttons' 10px corners and 1px edge.
-      const nameUpper = inst.name.toUpperCase();
-      const locText = [inst.city, inst.country].filter(Boolean).join(', ').toUpperCase();
       const ov = inst.details && Array.isArray(inst.details.overview) ? inst.details.overview.find(t => t && String(t).trim()) : '';
-      const descText = String(ov || inst.curatorial_focus || inst.neighborhood || '').replace(/\s+/g, ' ').trim();
+      const g = drawAtlasCard(ctx, {
+        label: [inst.city, inst.country].filter(Boolean).join(', '),
+        name: inst.name,
+        desc: String(ov || inst.curatorial_focus || inst.neighborhood || ''),
+        btn: webUrl ? domain : ''
+      }, px, py, width);
+      hoveredMicroCardHitbox = {
+        inst: inst, webUrl: webUrl || null,
+        btnX: webUrl ? g.btnX : 0, btnY: webUrl ? g.btnY : 0, btnW: webUrl ? g.btnW : 0, btnH: webUrl ? g.btnH : 0,
+        cardX: g.cardX, cardY: g.cardY, cardW: g.cardW, cardH: g.cardH
+      };
+      window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
+    }
+
+    // One card for every hover on the map, a space's and a city's alike (user, 4 Nov 2026: "make sure all have same new design").
+    // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
+    // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
+    // label over a 1px rule; the name in capitals; the description in Serrif Light 21px on a 24px line, up to three lines; the
+    // action as a button with the buttons' 10px corners and 1px edge, stretched across the card's measure ("button can be
+    // stretched"), filled with ink while the pointer is on it. Returns where the card and its button were drawn.
+    function drawAtlasCard(ctx, card, px, py, width) {
+      ctx.save();
+      const locText = String(card.label || '').toUpperCase();
+      const nameUpper = String(card.name || '').toUpperCase();
+      const descText = String(card.desc || '').replace(/\s+/g, ' ').trim();
+      const btnText = card.btn || '';
 
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const cardInk = cardDark ? '#ffffff' : '#000000';
@@ -10486,11 +10506,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       ctx.font = ATLAS_CARD_DESC_FONT;
       const descLines = descText ? wrap(descText, 3) : [];
       const DESC_LH = 24;
-      const webUrl2 = webUrl;
       const LABEL_Y = padY, RULE_Y = padY + 22, NAME_Y = RULE_Y + 12, DESC_Y = NAME_Y + 36;
       const descEnd = DESC_Y + descLines.length * DESC_LH;
       const btnH = 30;
-      const cardH = (webUrl2 ? descEnd + 14 + btnH : descEnd) + padY;
+      const cardH = (btnText ? descEnd + 14 + btnH : descEnd) + padY;
 
       let cardX = px - cardW / 2;
       cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
@@ -10522,38 +10541,23 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       ctx.font = ATLAS_CARD_DESC_FONT;
       descLines.forEach((ln, i) => ctx.fillText(ln, textX, cardY + DESC_Y + i * DESC_LH));
 
-      if (webUrl2) {
+      const btnX = textX, btnY = cardY + descEnd + 14, btnW = maxTextW;
+      if (btnText) {
         ctx.font = ATLAS_CARD_LABEL_FONT;
         try { ctx.letterSpacing = '0.02em'; } catch (e) {}
-        const webW = ctx.measureText(domainPillText).width;
-        const btnX = textX;
-        const btnY = cardY + descEnd + 14;
-        const btnW = Math.min(maxTextW, webW + 28);
         ctx.beginPath();
         ctx.roundRect(btnX, btnY, btnW, btnH, 10);
+        if (card.btnHover) { ctx.fillStyle = cardInk; ctx.fill(); }
         ctx.strokeStyle = cardInk;
         ctx.lineWidth = 1;
         ctx.stroke();
-        ctx.fillStyle = cardInk;
+        ctx.fillStyle = card.btnHover ? cardPaper : cardInk;
         ctx.textBaseline = 'middle';
-        ctx.fillText(fit(domainPillText), btnX + 14, btnY + btnH / 2 + 0.5);
+        ctx.fillText(fit(btnText), btnX + 14, btnY + btnH / 2 + 0.5);
         try { ctx.letterSpacing = '0px'; } catch (e) {}
-
-        hoveredMicroCardHitbox = {
-          inst: inst, webUrl: webUrl2,
-          btnX: btnX, btnY: btnY, btnW: btnW, btnH: btnH,
-          cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
-        };
-      } else {
-        hoveredMicroCardHitbox = {
-          inst: inst, webUrl: null,
-          btnX: 0, btnY: 0, btnW: 0, btnH: 0,
-          cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
-        };
       }
-      window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
-
       ctx.restore();
+      return { cardX, cardY, cardW, cardH, btnX, btnY, btnW: btnText ? btnW : 0, btnH: btnText ? btnH : 0 };
     }
 
     let hoveredMicroCardHitbox = null;
@@ -10611,6 +10615,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // Scale coordinates to high-DPI hardware buffer for crystal-clear Retina rendering
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, width, height);
+      if (cardCanvas) {
+        const cbw = Math.round(width * dpr), cbh = Math.round(height * dpr);
+        if (cardCanvas.width !== cbw) cardCanvas.width = cbw;
+        if (cardCanvas.height !== cbh) cardCanvas.height = cbh;
+        cardCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        cardCtx.clearRect(0, 0, width, height);
+        // The street map (z 10) covered the cards when they were drawn on the globe; their layer is hidden there the same way.
+        const cardVis = isCityStreetViewActive ? 'hidden' : '';
+        if (cardCanvas.style.visibility !== cardVis) cardCanvas.style.visibility = cardVis;
+      }
       // The canvas has no alpha channel, so a cleared frame is black: paint the theme's ground under everything.
       ctx.fillStyle = G_GROUND;
       ctx.fillRect(0, 0, width, height);
@@ -11338,33 +11352,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               ctx.fill();
               ctx.stroke();
 
-              // Card dimensions & multi-line layout: a flat colour block, like the fair's tabs.
-              // The name is set large in capitals; the rest is Regular; the action is a pill.
-              const cityTxt = hMeta.name;
-              const countryTxt = hMeta.country ? hMeta.country.trim() : '';
+              // The same card as a space's (drawAtlasCard), on the card layer over the fog: the country as the label, the city's
+              // name in capitals, the count as the line under it, and the explore button.
               const countVal = hMeta.count || (ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name)).length);
-              const countTxt = `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`;
-              const linkTxt = 'Click to explore';
-              // Ink and paper like the space's card (user, 4 Nov 2026: the square city card was the old design): plain type, not the tier's colour.
-              const cardInk = GLOBE_LIGHT ? '#000000' : '#ffffff';
-
-              ctx.font = ATLAS_CARD_TITLE_FONT;
-              const twCity = ctx.measureText(cityTxt).width;
-              ctx.font = atlasMonoFont();
-              const twCountry = countryTxt ? ctx.measureText(countryTxt).width : 0;
-              const twCount = ctx.measureText(countTxt).width;
-              const twLink = ctx.measureText(linkTxt).width;
-
-              const linkBtnW = twLink + 28;
-              const linkBtnH = 28;
-
-              const cardW = Math.max(twCity, twCountry, twCount, linkBtnW) + 32;
-              const cardH = countryTxt ? 138 : 114;
-              const cardX = Math.max(14, Math.min(width - cardW - 14, hPt.x - cardW / 2));
-              const cardY = hPt.y > cardH + 20 ? hPt.y - cardH - 16 : hPt.y + 18;
-
-              const linkBtnX = cardX + 16;
-              const linkBtnY = cardY + cardH - linkBtnH - 14;
+              const g = drawAtlasCard(cardCtx, {
+                label: hMeta.country ? hMeta.country.trim() : '',
+                name: hMeta.name,
+                desc: `${countVal} cultural space${countVal === 1 ? '' : 's'} on record`,
+                btn: 'Click to explore',
+                btnHover: isHoveringCityExploreLink
+              }, hPt.x, hPt.y, width);
 
               // Register interactive hover & click hitbox for the card and link
               hoveredCityCardHitbox = {
@@ -11372,54 +11369,15 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                 country: hMeta.country || '',
                 pinX: hPt.x,
                 pinY: hPt.y,
-                cardX: cardX,
-                cardY: cardY,
-                cardW: cardW,
-                cardH: cardH,
-                linkX: linkBtnX,
-                linkY: linkBtnY,
-                linkW: linkBtnW,
-                linkH: linkBtnH
+                cardX: g.cardX,
+                cardY: g.cardY,
+                cardW: g.cardW,
+                cardH: g.cardH,
+                linkX: g.btnX,
+                linkY: g.btnY,
+                linkW: g.btnW,
+                linkH: g.btnH
               };
-
-              // Flat block in the colour of the city's badge (cyan, orange or grey by tier). No rounding, no outline, no shadow.
-              // Drawn like the city labels: no block, a thin soft rounded outline and the type in the tier's colour.
-              // Rounded 20px with a solid 1px outline, as the space's card is drawn (the square, half-faded box was the old design).
-              ctx.beginPath();
-              ctx.roundRect(cardX, cardY, cardW, cardH, 20);
-              ctx.fillStyle = cardBg;
-              ctx.fill();
-              ctx.strokeStyle = cardInk;
-              ctx.lineWidth = 1;
-              ctx.stroke();
-
-              // Line 1: city name, in the roman
-              ctx.font = ATLAS_CARD_TITLE_FONT;
-              ctx.fillStyle = cardInk;
-              ctx.textAlign = 'left';
-              ctx.textBaseline = 'top';
-              ctx.fillText(cityTxt, cardX + 16, cardY + 14);
-
-              let currentY = cardY + 46;
-              ctx.font = atlasMonoFont();
-              if (countryTxt) {
-                ctx.fillText(countryTxt, cardX + 16, currentY);
-                currentY += 20;
-              }
-              ctx.fillText(countTxt, cardX + 16, currentY);
-
-              // Action: a tint of the type colour at rest, solid type colour with card-coloured text on hover.
-              ctx.save();
-              ctx.beginPath();
-              ctx.roundRect(linkBtnX, linkBtnY, linkBtnW, linkBtnH, 10);
-              if (isHoveringCityExploreLink) { ctx.fillStyle = cardInk; ctx.fill(); }
-              else { ctx.strokeStyle = cardInk; ctx.lineWidth = 1; ctx.stroke(); }
-              ctx.font = atlasMonoFont();
-              ctx.fillStyle = isHoveringCityExploreLink ? cardBg : cardInk;
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'middle';
-              ctx.fillText(linkTxt, linkBtnX + linkBtnW / 2, linkBtnY + linkBtnH / 2 + 0.5);
-              ctx.restore();
 
               ctx.restore();
             }
@@ -11431,7 +11389,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         // 8.6 Render Active Institution Micro Card at top layer of 3D globe (above all dots, labels, and city cards)
         if (activeMicroDot) {
-          drawInstitutionMicroCard(ctx, activeMicroDot.inst, activeMicroDot.x, activeMicroDot.y, width, height);
+          drawInstitutionMicroCard(cardCtx, activeMicroDot.inst, activeMicroDot.x, activeMicroDot.y, width, height);
         } else if (!hoveredInstitution) {
           hoveredMicroCardHitbox = null;
         }
@@ -12229,7 +12187,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
+        // "Epstein link · Crown Princess Mette-Marit: ..." is titled with the person; the flag sentence above already says it is an Epstein link.
+        const ep = m ? null : part.match(/^Epstein link\s*·\s*([^:·]+?):\s*(.+)$/s);
         if (m) blocks.push(item(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}`, m[3].replace(/^(\w)/, c => c.toUpperCase()), p('', m[4]), []));
+        else if (ep) blocks.push(item(ep[1], '', p('', ep[2]), []));
         else blocks.push(item('', '', p('', part.replace(/^([^:]{1,60}?, )(\d{4}-\d{2}-\d{2}):/, (_, who, d) => `${who}${humanDate(d)}:`)), []));
       });
       const relatedReports = (inst.case_notes || []).map(n => `
@@ -13052,7 +13013,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         || saidAcrossRecord(inst, of);
       if (of && !repeated) of.split(/\s+\|\s+/).filter(part => !sayAlreadyInDetails(inst, part)).forEach(part => {
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
+        const ep = m ? null : part.match(/^Epstein link\s*·\s*([^:·]+?):\s*(.+)$/s);
         if (m) items.push(proseLi(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}, ${m[3].toLowerCase()}.`, escapeHtml(proseEnd(m[4])), true));
+        else if (ep) items.push(proseLi(`${ep[1]}.`, escapeHtml(proseEnd(ep[2])), true));
         else items.push(proseLi('', escapeHtml(proseEnd(part)), true));
       });
       if (inst.case_study) {
