@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=524">
-  <script src="assets/config.js?v=523"></script>
-  <script src="assets/subtopic.js?v=523"></script>
-  <script src="assets/names.js?v=523"></script>
-  <script src="assets/grounding.js?v=523"></script>
-  <script src="assets/repeats.js?v=523"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=525">
+  <script src="assets/config.js?v=524"></script>
+  <script src="assets/subtopic.js?v=524"></script>
+  <script src="assets/names.js?v=524"></script>
+  <script src="assets/grounding.js?v=524"></script>
+  <script src="assets/repeats.js?v=524"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1073,7 +1073,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=523"></script>
+  <script src="assets/institutions.js?v=524"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7094,22 +7094,33 @@ return maplibregl$1;
         appendUserMessage(q);
         curatorContext.lastInst = inst;
         curatorContext.lastCity = inst.city;
-        const webUrl = getValidWebUrl(inst);
-        const visitUrl = (inst.visit_url && (inst.visit_url.startsWith('http://') || inst.visit_url.startsWith('https://'))) ? inst.visit_url : webUrl;
+        // The visitor link is the space's own visit page or website, never a source: getValidWebUrl falls back to the first
+        // source, which put a ProPublica search behind "Open Official Visitor / Ticket Page" on records with no site.
+        const httpUrl = u => (typeof u === 'string' && /^https?:\/\//.test(u.trim())) ? u.trim() : '';
+        const visitUrl = httpUrl(inst.visit_url) || httpUrl(inst.website);
+        // Only what the record states. A missing value used to be filled in: "not stated" for the hours, "Subsidized admission"
+        // for any space with no fee on record, and the city and country standing in for an address. None of that is a fact
+        // about the space, so a missing row is left out and the card says once what the record does not hold.
+        const admission = [inst.admission_fee || inst.admission_policy, inst.admission_details].filter(Boolean).join('. ');
+        const missing = [inst.address ? '' : 'a street address', inst.opening_hours ? '' : 'opening hours', admission ? '' : 'admission'].filter(Boolean);
+        const missingLine = missing.length
+          ? `<p class="pt-1 rule-t meta">The record does not state ${missing.length > 1 ? missing.slice(0, -1).join(', ') + ' or ' + missing[missing.length - 1] : missing[0]}.${visitUrl ? ' Check the official visitor page below.' : ''}</p>`
+          : '';
         appendCuratorMessage(`
           <p class="">
-            Visitor Itinerary & Planning Guide: <strong>${formatInstLink(inst)}</strong> (${escapeHtml(inst.city)}, ${escapeHtml(inst.country)})
+            Visitor Itinerary & Planning Guide: <strong>${formatInstLink(inst)}</strong>
           </p>
           <div class="py-2_5 rule-t space-y-1_5">
-            <div><strong class="meta block">Opening Hours</strong> ${escapeHtml(inst.opening_hours || 'not stated')}</div>
-            <div class="pt-1 rule-t"><strong class="meta block">Admission & Tickets</strong> ${escapeHtml(inst.admission_policy)} (${escapeHtml(inst.admission_details || inst.admission_fee || 'Subsidized admission')})</div>
-            <div class="pt-1 rule-t"><strong class="meta block">Address & Neighborhood</strong> ${escapeHtml(inst.address || inst.location)} ${inst.neighborhood ? `<span class="meta">${escapeHtml(inst.neighborhood)}</span>` : ''}</div>
+            ${inst.address ? `<div><strong class="meta block">Address</strong> ${escapeHtml(inst.address)}${inst.neighborhood ? ` <span class="meta">${escapeHtml(inst.neighborhood)}</span>` : ''}</div>` : ''}
+            ${inst.opening_hours ? `<div class="pt-1 rule-t"><strong class="meta block">Opening Hours</strong> ${escapeHtml(inst.opening_hours)}</div>` : ''}
+            ${admission ? `<div class="pt-1 rule-t"><strong class="meta block">Admission & Tickets</strong> ${escapeHtml(admission)}</div>` : ''}
             ${inst.transit_tips ? `<div class="pt-1 rule-t"><strong class="meta block">Getting There & Transit</strong> ${escapeHtml(inst.transit_tips)}</div>` : ''}
             ${inst.visit_duration ? `<div class="pt-1 rule-t"><strong class="meta block">Suggested Duration</strong> ${escapeHtml(inst.visit_duration)}</div>` : ''}
             ${inst.highlight ? `<div class="pt-1 rule-t"><strong class="meta block">Known for</strong> ${escapeHtml(inst.highlight)}</div>` : ''}
             ${inst.accessibility ? `<div class="pt-1 rule-t"><strong class="meta block">Accessibility</strong> ${escapeHtml(inst.accessibility)}</div>` : ''}
             ${inst.amenities ? `<div class="pt-1 rule-t"><strong class="meta block">Amenities</strong> ${escapeHtml((inst.amenities).toString().split(',').map(x => x.trim()).filter(Boolean).join(', '))}</div>` : ''}
           </div>
+          ${missingLine}
           ${visitUrl ? `
             <div class="pt-2 rule-t">
               <a href="${escapeHtml(visitUrl)}" target="_blank" rel="noopener noreferrer" class="meta flex items-center gap-1">
@@ -9985,11 +9996,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v524';
+    const ATLAS_RELEASE = 'culture-atlas-v525';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=523').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=524').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -20516,12 +20527,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=523"></script>
-<script src="assets/layers.js?v=523"></script>
-<script src="assets/hq-detail.js?v=523"></script>
-<script src="assets/bubbles.js?v=523" defer></script>
-<script src="assets/phone-maps.js?v=523"></script>
-<script src="assets/desktop-maps.js?v=523"></script>
-<script src="assets/chat-resize.js?v=523"></script>
+<script src="assets/typeset.js?v=524"></script>
+<script src="assets/layers.js?v=524"></script>
+<script src="assets/hq-detail.js?v=524"></script>
+<script src="assets/bubbles.js?v=524" defer></script>
+<script src="assets/phone-maps.js?v=524"></script>
+<script src="assets/desktop-maps.js?v=524"></script>
+<script src="assets/chat-resize.js?v=524"></script>
 </body>
 </html>
