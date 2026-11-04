@@ -3569,21 +3569,22 @@ div:has(>#topThemeBtn){column-gap:0}
 /* ---- FOG AND DEPTH ON THE MAP (user's instruction, 4 Nov 2026) ----
    Only what is in perspective goes soft, never the part you look at (user, same day: "blur just parts that are in perspective,
    not the main visible focus part"). On the globe that is its rim, where the surface turns away: the globe hands its centre and radius
-   to the pane as --globe-x, --globe-y and --globe-r (index.html, where the limb is drawn), and the blur starts at 78% of that
+   to the pane as --globe-x, --globe-y and --globe-r (index.html, where the limb is drawn), and the blur starts at 84% of that
    radius and is full at the limb, so it follows the globe as it zooms and moves.
    On the street map it is the far side of the tilt: the top quarter of the pane, and nothing else. Two layers over the map,
    under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every control and
-   card): ::after blurs what is behind it through a mask, ::before lays a thin paper haze in the same place. Neither takes a
+   card): ::after blurs what is behind it through a mask (1.5px: 3px was too much, user 4 Nov 2026), ::before lays a thin
+   paper haze (22%) in the same place. Neither takes a
    pointer, so the map is dragged and clicked as before. */
 #globeViewport::before,#globeViewport::after{content:"";position:absolute;inset:0;z-index:18;pointer-events:none}
 #globeViewport::after{
-  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
-  -webkit-mask-image:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 78%,#000 100%);
-  mask-image:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 78%,#000 100%)}
-#globeViewport::before{background:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 80%,color-mix(in srgb,var(--paper) 50%,transparent) 102%)}
+  -webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px);
+  -webkit-mask-image:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 84%,#000 100%);
+  mask-image:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 84%,#000 100%)}
+#globeViewport::before{background:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 86%,color-mix(in srgb,var(--paper) 22%,transparent) 102%)}
 #globeViewport:has(#cityMapContainer:not(.hidden))::after{
   -webkit-mask-image:linear-gradient(to bottom,#000 0,transparent 26%);mask-image:linear-gradient(to bottom,#000 0,transparent 26%)}
-#globeViewport:has(#cityMapContainer:not(.hidden))::before{background:linear-gradient(to bottom,color-mix(in srgb,var(--paper) 50%,transparent) 0,transparent 24%)}
+#globeViewport:has(#cityMapContainer:not(.hidden))::before{background:linear-gradient(to bottom,color-mix(in srgb,var(--paper) 22%,transparent) 0,transparent 24%)}
 @media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
 
 /* The curator's mark beside each answer is the pink disc with a square (user's file, 4 Nov 2026), in place of the Gemini spark.
@@ -3657,3 +3658,34 @@ div:has(>#topThemeBtn){column-gap:0}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdChips{top:calc(var(--gmd-gap) + 44px)!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #layersControl #layersPanel{max-height:calc(100vh - 230px)!important}
 }
+/* A question that wraps keeps the same space above and below its words as one that fits on a line (user, 4 Nov 2026). These
+   buttons had no vertical padding and a 34px minimum height, so one line sat centred with room round it and two lines touched
+   the edges. Now the room is padding: half of 34px less one line, so a one-line button is still 34px and every extra line adds
+   only its own height. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.curator-followup-pill,.starter-prompt,.curator-suggest-chip,.work-suggestion-card){min-height:0!important;height:auto!important;padding-block:max(4px,calc((34px - 1lh) / 2))!important}
+
+/* New Query's plus is the layers panel's cross turned upright (user, 4 Nov 2026): two 1px lines, 16px across, drawn from the
+   current text colour so hover and dark mode carry it. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #workspaceNewChatBtn::before{content:""!important;flex:none;width:16px!important;height:16px!important;margin-right:8px!important;font-size:0!important;background:currentColor!important;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0v16M0 8h16' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") center/16px 16px no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0v16M0 8h16' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E") center/16px 16px no-repeat}
+
+/* In the street view its bar takes the top left of the map, where the chips moved when the search went; the chips step down
+   under it (12px + its 38px + 12px). */
+@media (min-width:768px){ :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):has(#cityViewControlBanner:not(.hidden)) #gmdChips{top:62px!important} }
+
+/* The top bar clips what is drawn outside it, which chipped the focus ring off Gossip mode and Dark: draw the ring inside. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdTopBar :is(#topGossipBtn,#topThemeBtn):focus-visible{outline:2px solid var(--focus)!important;outline-offset:-4px!important}
+
+/* Exit, World and the country in the street-view bar are words in a bar, not buttons on their own: no edge of their own. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityViewControlBanner :is(#exitStreetViewBtn,#backToWorldBtn,#backToCountryBtn){box-shadow:none!important}
+
+/* The street map's credit is one line of small text at the bottom right, no "i" button and no box (user, 4 Nov 2026). It stays:
+   the OpenStreetMap licence asks for a visible credit. On a white plate in both themes, as before, so its links read 21:1. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityMapContainer .maplibregl-ctrl-attrib{border:0!important;box-shadow:none!important;border-radius:0!important;min-height:0!important;padding:0 4px!important;margin:0 8px 6px 0!important;background:rgba(255,255,255,.85)!important;color:#000!important;font:400 14px/1.3 var(--sans)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityMapContainer .maplibregl-ctrl-attrib a{color:#000!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityMapContainer .maplibregl-ctrl-attrib-button{display:none!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #cityMapContainer .maplibregl-ctrl-attrib .maplibregl-ctrl-attrib-inner{display:block!important;visibility:visible!important}
+
+/* The street view's bar takes the top left where the page's name sits, so the name steps aside while it is open. */
+@media (min-width:768px){ :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):has(#cityViewControlBanner:not(.hidden)) #gmdTitle{display:none!important} }
