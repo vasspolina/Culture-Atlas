@@ -943,10 +943,9 @@
         const i = list.indexOf(x);
         const n = x.urls.length;
         const src = SOURCE[x.who] || ['Source type not recorded', false];
-        const links = '<a class="gm-stat" href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + svg(ICO.link) + n + (n === 1 ? ' source' : ' sources') + '</a>';
-        // A reply printed in full below is not announced again as "Reply on record"; only its absence is a stat.
+        const links = '<a class="gm-stat" href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + n + (n === 1 ? ' source' : ' sources') + '</a>';
+        // A reply printed in full below is not announced again as "Reply on record".
         const hasReply = x.type === 'gossip' && x.reply && !/^no reply/i.test(x.reply);
-        const reply = x.type !== 'gossip' || hasReply ? '' : '<span class="gm-stat">' + svg(ICO.reply) + 'No reply found</span>';
         const posterHtml = poster ? '<div class="gm-poster' + (alert ? ' is-alert' : '') + '" aria-hidden="true"><p class="gm-poster-pill">' + esc(alert ? 'Alert · ' : '') + esc(KIND[x.kind] || 'Report') + '</p><p class="gm-poster-name">' + esc(x.inst.name) + '</p><p class="gm-poster-place">' + esc(placeOf(x.inst)) + '</p><p class="gm-poster-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</p></div>' : '';
         // Where this comes from, in words: the kind of source, whether it is user-generated, and the day the atlas last opened its
         // addresses. Each fact is printed once on the card (user, 4 Nov 2026: "remove all repetition"): the outlet and role are the
@@ -958,15 +957,15 @@
           + (leakDated && leakDated !== dateText(x.when) ? ' · dated ' + esc(leakDated) : '')
           + (x.checked ? ' · links checked by the atlas ' + esc(dateText(x.checked)) : '') + '</p>';
         return '<article class="gm-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">' + posterHtml
-          + '<p class="gm-story-src"><span class="gm-story-mark" aria-hidden="true">' + esc((x.where || x.inst.name).trim().charAt(0).toUpperCase()) + '</span>' + esc(x.where || 'The record') + (x.role ? ' · ' + esc(x.role) : '') + '</p>'
-          + '<h3 class="gm-story-head"><button type="button" class="gm-open" data-i="' + i + '">' + (alert && !poster ? '<span class="gm-alert-tag">Alert</span> ' : '') + esc(x.head) + '</button></h3>'
+          + '<p class="gm-story-src">' + esc(x.where || 'The record') + (x.role ? ' · ' + esc(x.role) : '') + '</p>'
+          + '<h3 class="gm-story-head"><button type="button" class="gm-open" data-i="' + i + '">' + (alert && !poster ? 'Alert: ' : '') + esc(x.head) + '</button></h3>'
           + '<p class="gm-story-when">' + ({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported') + ' ' + esc(ago(x.when)) + (ago(x.when) !== dateText(x.when) && dateText(x.when) ? ' (' + esc(dateText(x.when)) + ')' : '') + (poster ? '' : ' · ' + esc(x.inst.name) + (x.inst.city || x.inst.country ? ', ' + esc(x.inst.city || x.inst.country) : '')) + '</p>'
           + (saidRest(x) ? '<p class="gm-story-said">' + esc(saidRest(x)) + '</p>' : '')
           + (hasReply ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
           + (x.outcome ? '<p class="gm-story-reply"><span>Outcome</span> ' + esc(x.outcome) + '</p>' : '')
           + prov
-          + '<div class="gm-story-stats">' + links + reply + (poster ? '' : '<span class="gm-stat gm-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</span>')
-          + '<button type="button" class="gm-share" data-i="' + i + '">' + svg(ICO.share) + 'Share</button></div></article>';
+          + '<div class="gm-story-stats">' + links + (poster ? '' : '<span class="gm-stat gm-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</span>')
+          + '<button type="button" class="gm-share" data-i="' + i + '">Share</button></div></article>';
       }
 
       // Checking for new reports.
@@ -992,13 +991,13 @@
         const posts = take(list.filter((x) => x.type === 'account')).slice(0, 15);
         const docs = take(list.filter((x) => x.type === 'leak')).slice(0, 10);
         const month = list.filter((x) => { const p = parse(x.when); return p && Date.now() - p.d.getTime() < 30 * 864e5; }).length;
-        const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '">' + svg(icon) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x) => card(x, false, alert)).join('') : '';
+        const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '"><span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x) => card(x, false, alert)).join('') : '';
         const bellOn = store.get('atlas-alerts') === 'on';
         feed.innerHTML = '<div class="gm-feed-grab" aria-hidden="true"></div>'
-          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(ICO.news) + '<span>Top story</span></h2>'
-          + ('Notification' in window ? '<button type="button" class="gm-bell" aria-pressed="' + bellOn + '">' + svg(ICO.bell) + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
+          + '<header class="gm-feed-head"><h2 id="gmFeedTitle"><span>Top story</span></h2>'
+          + ('Notification' in window ? '<button type="button" class="gm-bell" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
           + '<button type="button" class="gm-feed-close" aria-label="Close the reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5 5 19M5 5l14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></header>'
-          + '<p class="gm-feed-live"><i aria-hidden="true"></i><span class="gm-feed-checked">' + liveLine() + '</span></p>'
+          + '<p class="gm-feed-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
           + '<p class="gm-feed-note">' + (gossipOn()
             ? 'Gossip mode: talk and denials are included, each marked for what it is. Talk is what people say, not a finding. Items from anonymous posts or user reviews say so.'
             : 'Reports on record as confirmed or resolved, and documented cases. Turn on Gossip mode to include talk.')
@@ -1008,8 +1007,8 @@
           + sec(topIsAlert ? 'More alerts now' : 'Alerts now', ICO.alert, alertList.length + ' active', alertList, true)
           + sec('Near you', ICO.pin, near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', ICO.globe, month ? month + ' in the past 30 days' : 'Newest first', world, false)
-          + (posts.length ? '<h2 class="gm-feed-sec">' + svg(ICO.reply) + '<span>From staff and visitors</span><small>User posts</small></h2><p class="gm-feed-note">Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person\u2019s experience each, not checked as fact.</p>' + posts.map((x) => card(x, false, false)).join('') : '')
-          + (docs.length ? '<h2 class="gm-feed-sec">' + svg(ICO.link) + '<span>From leaked documents</span><small>' + docs.length + ' on record</small></h2>' + docs.map((x) => card(x, false, false)).join('') : '')
+          + (posts.length ? '<h2 class="gm-feed-sec"><span>From staff and visitors</span><small>User posts</small></h2><p class="gm-feed-note">Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person\u2019s experience each, not checked as fact.</p>' + posts.map((x) => card(x, false, false)).join('') : '')
+          + (docs.length ? '<h2 class="gm-feed-sec"><span>From leaked documents</span><small>' + docs.length + ' on record</small></h2>' + docs.map((x) => card(x, false, false)).join('') : '')
           + (!list.length ? '<p class="gm-feed-note">No dated reports on record yet.</p>' : '');
       }
       function liveLine() {
