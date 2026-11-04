@@ -3665,3 +3665,9 @@ div:has(>#topThemeBtn){column-gap:0}
 @media (max-width:767px){
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #dossier-sheet-plan-btn{display:none!important}
 }
+
+
+/* One box for asking and finding: the separate Chat button goes (the box is the chat's, and returns to a conversation under way). */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #gmChatBtn,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard:not(:has(#chat-input:placeholder-shown)) #gmChatBtn{display:none!important}
+}

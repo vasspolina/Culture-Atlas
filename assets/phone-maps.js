@@ -52,11 +52,64 @@
       const lens = document.createElement('span');
       lens.className = 'gm-lens';
       lens.setAttribute('aria-hidden', 'true');
-      lens.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>';
+      // One box for asking and finding (user, 4 Nov 2026: "no need for search, combine it with chat, search behaviour"): a
+      // speech mark, not a magnifier, since what is typed is mostly a question.
+      lens.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>';
       card.insertBefore(lens, card.firstChild);
       // One line, as a maps app's box: the long prompt wrapped to two lines in it. The full prompt is the box's name.
-      input.setAttribute('aria-label', input.getAttribute('placeholder') || 'Ask about a space, its funders or controversies');
-      input.setAttribute('placeholder', 'Search the atlas');
+      input.setAttribute('aria-label', 'Ask the atlas, or type a space or a city to find it on the map');
+      input.setAttribute('placeholder', 'Ask the atlas');
+
+      // Finding: a space's or a city's name on its own goes to the map (the record opens, or the map flies to the city)
+      // instead of the chat. It is a find only when it has no question mark, is six words or fewer and names exactly one
+      // space (the page's own matcher, or a name that starts with it) or one city; anything else is a question for the chat.
+      const fold = (t) => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+      function findOnMap(q) {
+        const raw = String(q || '').trim();
+        if (!raw || /\?/.test(raw) || raw.split(/\s+/).length > 6) return null;
+        const A = window.ALL_INSTITUTIONS || (typeof ALL_INSTITUTIONS !== 'undefined' ? ALL_INSTITUTIONS : []);
+        const f = fold(raw);
+        if (f.length < 3) return null;
+        const cities = window.ALL_CITIES_REGISTRY || (() => { try { return (0, eval)('ALL_CITIES_REGISTRY'); } catch (_) { return []; } })();
+        const city = (cities || []).find((c) => fold(c.name) === f);
+        if (city) return { city };
+        const names = (i) => [i.name].concat(i.aliases || []).map(fold);
+        const exact = A.filter((i) => names(i).includes(f));
+        if (exact.length === 1) return { inst: exact[0] };
+        const prefix = A.filter((i) => names(i).some((n) => n.startsWith(f + ' ') || n === f));
+        if (prefix.length === 1) return { inst: prefix[0] };
+        let m = null;
+        try { m = window.AtlasNames && window.AtlasNames.findNamedSpace ? window.AtlasNames.findNamedSpace(raw, A) : null; } catch (_) { m = null; }
+        // The matcher also finds a name inside a sentence; a find is the name alone, so its words must be most of the query.
+        if (m && fold(m.name).split(' ').length >= f.split(' ').length - 1) return { inst: m };
+        return null;
+      }
+      function find(e) {
+        if (!PHONE() || !root.classList.contains('gm-map')) return;
+        const hit = findOnMap(input.value);
+        if (!hit) return;
+        e.preventDefault(); e.stopImmediatePropagation();
+        input.value = '';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        try { input.blur(); } catch (_) {}
+        const g = (n) => { try { return (0, eval)(n); } catch (_) { return undefined; } };
+        if (hit.city) { const fc = g('filterByCity'); if (typeof fc === 'function') fc(hit.city.name, true, false); return; }
+        if (typeof window.selectInstitution === 'function') window.selectInstitution(hit.inst, false);
+        const fly = g('flyTo'), base = g('baseRadius');
+        if (typeof fly === 'function' && typeof hit.inst.lon === 'number') fly(hit.inst.lon, hit.inst.lat, typeof base === 'number' ? base * 6 : null);
+      }
+      // Caught first, before the page's own send, so a find never reaches the chat.
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) find(e); }, true);
+      const sendBtn = $('mobileStickySendBtn');
+      if (sendBtn) sendBtn.addEventListener('click', find, true);
+      window.atlasFindOnMap = findOnMap;
+
+      // The box is the chat's: with a conversation under way, a tap on the empty box goes back to it.
+      input.addEventListener('focus', () => {
+        if (!PHONE() || input.value.trim()) return;
+        const hasTalk = !!document.querySelector('#curatorMessages > *:not(#curatorHeroGreeting):not(#curatorStarterPrompts)');
+        if (hasTalk) { input.blur(); openChat(); }
+      });
 
       // Chat stays one tap away on the map (user, 3 Nov 2026: "keep features like chat"): a button in the box opens
       // the conversation where it was left, or a fresh one when there is none yet. The menu's New chat starts over.
