@@ -9973,7 +9973,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v512';
+    const ATLAS_RELEASE = 'culture-atlas-v513';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10272,9 +10272,17 @@ return maplibregl$1;
     // Label type is regular on the light theme and light on the dark one.
     const atlasLabelWeight = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
     const atlasMonoFont = () => atlasLabelWeight() + ' 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    // The selected space's label is set larger than the rest, with its whole name (user, 4 Nov 2026: "make selected bigger").
+    const atlasSelFont = () => atlasLabelWeight() + ' 20px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const ATLAS_SEL_H = 32, ATLAS_SEL_PAD = 36;
+    const atlasLabelName = (name, sel) => sel ? (name.length > 44 ? name.substring(0, 42) + '…' : name) : (name.length > 24 ? name.substring(0, 22) + '…' : name);
+    // The hover card's description is set in Serrif Light, as Displaay sets the info text on displaay.net/typeface/cassette.
+    const ATLAS_CARD_DESC_FONT = '300 18px "Serrif", Georgia, "Times New Roman", serif';
+    const ATLAS_CARD_LABEL_FONT = '400 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
       document.fonts.load(ATLAS_CARD_NAME_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
+      document.fonts.load(ATLAS_CARD_DESC_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
     }
 
     function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {
@@ -10285,82 +10293,106 @@ return maplibregl$1;
       const domain = getDisplayDomain(webUrl) || 'website';
       const domainPillText = `${domain}`;
 
-      // A white block with the name in capitals, facts in the grotesque, the website as a grey block.
-      const nameText = inst.name;
-      const nameUpper = nameText.toUpperCase();
-      const locText = [inst.city, inst.country].filter(Boolean).join(', ');
-      const subText = locText + (inst.curatorial_focus ? ', ' + inst.curatorial_focus : (inst.neighborhood ? ', ' + inst.neighborhood : ''));
+      // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
+      // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
+      // label over a 1px rule; the name in capitals; the description in Serrif Light 18px on a 1.2 line, up to three lines; the
+      // website as a button with the buttons' 10px corners and 1px edge.
+      const nameUpper = inst.name.toUpperCase();
+      const locText = [inst.city, inst.country].filter(Boolean).join(', ').toUpperCase();
+      const ov = inst.details && Array.isArray(inst.details.overview) ? inst.details.overview.find(t => t && String(t).trim()) : '';
+      const descText = String(ov || inst.curatorial_focus || inst.neighborhood || '').replace(/\s+/g, ' ').trim();
 
-      ctx.font = ATLAS_CARD_NAME_FONT;
-      const nameW = ctx.measureText(nameUpper).width;
-      ctx.font = atlasMonoFont();
-      const subW = ctx.measureText(subText).width;
-      const webW = ctx.measureText(domainPillText).width;
+      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const cardInk = cardDark ? '#ffffff' : '#000000';
+      const cardPaper = cardDark ? '#000000' : '#ffffff';
+      const padX = 18, padY = 16;
+      const cardW = Math.min(360, width - 28);
+      const maxTextW = cardW - padX * 2;
+      const fit = (str) => {
+        let t = str;
+        if (ctx.measureText(t).width > maxTextW) {
+          while (t.length > 5 && ctx.measureText(t + '…').width > maxTextW) t = t.slice(0, -1);
+          t += '…';
+        }
+        return t;
+      };
+      // Words onto lines of the measure; the last line carries an ellipsis when the text runs on.
+      const wrap = (str, maxLines) => {
+        const words = str.split(' '), lines = [];
+        let line = '', i = 0;
+        for (; i < words.length; i++) {
+          const t = line ? line + ' ' + words[i] : words[i];
+          if (!line || ctx.measureText(t).width <= maxTextW) { line = t; continue; }
+          lines.push(line); line = words[i];
+          if (lines.length === maxLines) break;
+        }
+        if (lines.length < maxLines) { if (line) lines.push(line); i = words.length; }
+        if (i < words.length) {
+          let last = lines[maxLines - 1];
+          while (last.length > 1 && ctx.measureText(last + '…').width > maxTextW) last = last.slice(0, -1);
+          lines[maxLines - 1] = last.replace(/[\s,;:.]+$/, '') + '…';
+        }
+        return lines.map(fit);
+      };
 
-      const barW = 0;
-      const padX = 16;
-      const cardW = Math.max(260, Math.min(400, Math.max(nameW, subW, webW + 28) + barW + padX * 2));
-      const pillH = 26;
-      const cardH = webUrl ? 116 : 74;
+      ctx.font = ATLAS_CARD_DESC_FONT;
+      const descLines = descText ? wrap(descText, 3) : [];
+      const DESC_LH = 21.6;
+      const webUrl2 = webUrl;
+      const LABEL_Y = padY, RULE_Y = padY + 22, NAME_Y = RULE_Y + 12, DESC_Y = NAME_Y + 36;
+      const descEnd = DESC_Y + descLines.length * DESC_LH;
+      const btnH = 30;
+      const cardH = (webUrl2 ? descEnd + 14 + btnH : descEnd) + padY;
 
       let cardX = px - cardW / 2;
       cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
-
       let cardY = py - cardH - 16;
       if (cardY < 14) cardY = py + 20;
 
-      // The card follows the theme only: white block and black text in light mode, the dark popup colours in dark mode. Gossip mode does not change it: yellow is for gossip alone.
-      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const cardInk = cardDark ? '#ffffff' : '#000000';
-      // Drawn like the city labels: a thin soft rounded outline, no block.
       ctx.beginPath();
-      ctx.roundRect(cardX, cardY, cardW, cardH, 0);
-      ctx.fillStyle = cardDark ? '#000000' : '#ffffff';
+      ctx.roundRect(cardX, cardY, cardW, cardH, 20);
+      ctx.fillStyle = cardPaper;
       ctx.fill();
-      ctx.globalAlpha = 0.45;
       ctx.strokeStyle = cardInk;
       ctx.lineWidth = 1;
       ctx.stroke();
-      ctx.globalAlpha = 1;
 
-      const textX = cardX + barW + padX;
-      const maxTextW = cardW - barW - padX * 2;
-      const fit = (str) => {
-        let s = str;
-        if (ctx.measureText(s).width > maxTextW) {
-          while (s.length > 5 && ctx.measureText(s + '…').width > maxTextW) s = s.slice(0, -1);
-          s += '…';
-        }
-        return s;
-      };
-
+      const textX = cardX + padX;
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillStyle = cardInk;
+
+      ctx.font = ATLAS_CARD_LABEL_FONT;
+      try { ctx.letterSpacing = '0.04em'; } catch (e) {}
+      if (locText) ctx.fillText(fit(locText), textX, cardY + LABEL_Y);
+      try { ctx.letterSpacing = '0px'; } catch (e) {}
+      ctx.fillRect(textX, cardY + RULE_Y, maxTextW, 1);
+
       ctx.font = ATLAS_CARD_NAME_FONT;
-      ctx.fillText(fit(nameUpper), textX, cardY + 14);
+      ctx.fillText(fit(nameUpper), textX, cardY + NAME_Y);
 
-      ctx.font = atlasMonoFont();
-      ctx.fillText(fit(subText), textX, cardY + 48);
+      ctx.font = ATLAS_CARD_DESC_FONT;
+      descLines.forEach((ln, i) => ctx.fillText(ln, textX, cardY + DESC_Y + i * DESC_LH));
 
-      if (webUrl) {
+      if (webUrl2) {
+        ctx.font = ATLAS_CARD_LABEL_FONT;
+        try { ctx.letterSpacing = '0.02em'; } catch (e) {}
+        const webW = ctx.measureText(domainPillText).width;
         const btnX = textX;
-        const btnY = cardY + 74;
-        const btnW = Math.min(maxTextW, webW + 24);
-        const btnH = pillH;
-
+        const btnY = cardY + descEnd + 14;
+        const btnW = Math.min(maxTextW, webW + 28);
         ctx.beginPath();
-        ctx.roundRect(btnX, btnY, btnW, btnH, 0);
-        ctx.globalAlpha = 0.45;
+        ctx.roundRect(btnX, btnY, btnW, btnH, 10);
         ctx.strokeStyle = cardInk;
+        ctx.lineWidth = 1;
         ctx.stroke();
-        ctx.globalAlpha = 1;
         ctx.fillStyle = cardInk;
         ctx.textBaseline = 'middle';
-        ctx.fillText(fit(domainPillText), btnX + 12, btnY + btnH / 2 + 0.5);
+        ctx.fillText(fit(domainPillText), btnX + 14, btnY + btnH / 2 + 0.5);
+        try { ctx.letterSpacing = '0px'; } catch (e) {}
 
         hoveredMicroCardHitbox = {
-          inst: inst, webUrl: webUrl,
+          inst: inst, webUrl: webUrl2,
           btnX: btnX, btnY: btnY, btnW: btnW, btnH: btnH,
           cardX: cardX, cardY: cardY, cardW: cardW, cardH: cardH
         };
@@ -10382,6 +10414,9 @@ return maplibregl$1;
     let cityClusterHitboxes = [];
     let cityBadgeHitboxes = [];
     let visibleDots = [];
+    // Where the selected space's dot was drawn last frame, after the dots that share a city were spread apart: its label's
+    // place is kept from there, as the projected point alone sat up to 12px off and let a neighbour's label run under it.
+    let lastSelDotAt = null;
     let cityMuseumHitboxes = [];
 
     // One draw loop only. Every caller asks through scheduleRender(), which
@@ -10712,8 +10747,8 @@ return maplibregl$1;
         const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#ba4e00' : '#ff832b') : (GLOBE_LIGHT ? ({ A: '#007d79', B: '#ba4e00' }[tier] || '#6f6f6f') : ({ A: '#3ddbd9', B: '#ff832b' }[tier] || '#a8a8a8'));
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
-          ctx.font = atlasMonoFont();
-          const w = ctx.measureText(text).width + 28, h = 22;
+          ctx.font = active ? atlasSelFont() : atlasMonoFont();
+          const w = ctx.measureText(text).width + (active ? ATLAS_SEL_PAD : 28), h = active ? ATLAS_SEL_H : 22;
           const pc = pillColors(active, tier);
           // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
           const textCol = pillTextColor(tier);
@@ -10744,14 +10779,15 @@ return maplibregl$1;
         }
         // The selected space's label always draws, so city names give way to it rather than sit under it.
         if (selectedInstitution && !isCityStreetViewActive) {
-          const sp = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
+          const sp0 = project(selectedInstitution.lon, selectedInstitution.lat, r, cx, cy);
+          const sp = (lastSelDotAt && lastSelDotAt.name === selectedInstitution.name) ? { x: lastSelDotAt.x, y: lastSelDotAt.y, front: sp0.front } : sp0;
           if (sp.front) {
             ctx.save();
-            ctx.font = atlasMonoFont();
-            const sn = selectedInstitution.name.length > 24 ? selectedInstitution.name.substring(0, 22) + '…' : selectedInstitution.name;
-            const sw = ctx.measureText(sn).width + 28;
+            ctx.font = atlasSelFont();
+            const sn = atlasLabelName(selectedInstitution.name, true);
+            const sw = ctx.measureText(sn).width + ATLAS_SEL_PAD;
             ctx.restore();
-            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - 18, w: sw, h: 22 });
+            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - ATLAS_SEL_H - 6, w: sw, h: ATLAS_SEL_H });
           }
         }
         try {
@@ -11092,11 +11128,12 @@ return maplibregl$1;
             ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
-            const nameTxt = d.inst.name.length > 24 ? d.inst.name.substring(0, 22) + '…' : d.inst.name;
-            ctx.font = atlasMonoFont();
+            if (isSel) lastSelDotAt = { name: d.inst.name, x: d.x, y: d.y };
+            const nameTxt = atlasLabelName(d.inst.name, isSel);
+            ctx.font = isSel ? atlasSelFont() : atlasMonoFont();
             const tw = ctx.measureText(nameTxt).width;
-            const bw = tw + 28;
-            const bh = 22;
+            const bw = tw + (isSel ? ATLAS_SEL_PAD : 28);
+            const bh = isSel ? ATLAS_SEL_H : 22;
             const bx = d.x - bw / 2;
             // A label drawn last frame keeps its place unless it truly overlaps; a new one needs air.
             const wasShownInst = lastShownInstLabels.has(d.inst.name);
@@ -11106,7 +11143,7 @@ return maplibregl$1;
             });
             // Above the dot; below it when the city's own badge sits there. A country with one city draws the badge on its spaces,
             // and the space's name was dropped as a collision, so a click on the country showed a badge and no space.
-            let by = d.y - 18;
+            let by = isSel ? d.y - ATLAS_SEL_H - 6 : d.y - 18;
             if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, d.y + 8)) by = d.y + 8;
             const collidesWithOtherLabel = clashes(drawnInstLabelBoxes, by);
             const collidesWithCity = clashes(drawnCityBoxes, by);
