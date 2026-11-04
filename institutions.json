@@ -25616,7 +25616,7 @@
     "tier": "A",
     "size": "S",
     "funding": "Charles and Emma Frye's bequest runs the museum as a private operating foundation. FY2025 revenue: investment distributions 75.6 percent ($6.9M), donations 16.9 percent, store and events 8.1 percent.",
-    "watch": "The Art Workers Union picketed on 10 April 2020 and petitioned after the museum laid off 21 part-time workers. The director denied union motives.",
+    "watch": "The museum laid off 21 part-time and on-call workers on 10 April 2020. The Art Workers Union picketed that day, saying two of its bargaining-committee members were targeted, and petitioned for reinstatement. Director Joseph Rosa said union membership had no bearing on the lay-offs.",
     "sources": [
       "https://hyperallergic.com/554727/frye-art-museum-covid-19/",
       "https://fryemuseum.org/sites/default/files/2026-10/AnnualReport_FY2025_1000626.pdf",
@@ -84314,11 +84314,12 @@
     "location": "Seattle, USA",
     "tier": "B",
     "size": "L",
-    "funding": "Expenses $44.4M (FY2025). Trustees, members, tech fortunes and institutional partners Boeing, Bloomberg Philanthropies and Honeywell.",
-    "watch": "Boeing (arms) and Bloomberg Philanthropies are current institutional partners; Honeywell also listed. No protest found at SAM itself.",
+    "funding": "Expenses $44.4M (FY2025 Form 990). Institutional partners on the corporate-support page archived 26 May 2026 include Amazon, Alaska Airlines and Bloomberg Philanthropies.",
+    "watch": "In January 2022 Decolonize SAM, an anonymous staff collective, called for a boycott over stone bollards installed in June 2021 and private guards hired to keep unhoused people off the museum grounds. The museum said the guards were hired after violent incidents around the building.",
     "sources": [
-      "https://projects.propublica.org/nonprofits/organizations/910640788",
-      "http://web.archive.org/web/20260526053950/https://www.seattleartmuseum.org/get-involved/corporate-support/institutional-partners"
+      "https://hyperallergic.com/sam-staff-call-for-a-boycott-in-response-to-museums-response-to-unhoused-community/",
+      "http://web.archive.org/web/20260526053950/https://www.seattleartmuseum.org/get-involved/corporate-support/institutional-partners",
+      "https://projects.propublica.org/nonprofits/organizations/910640788"
     ],
     "lat": 47.607701,
     "lon": -122.338557,
@@ -84332,14 +84333,13 @@
     "visit_url": "https://www.seattleartmuseum.org/visit",
     "flags": [
       "Arms and defence",
-      "Campaigned name",
       "Protest or boycott"
     ],
-    "why_flagged": "Boeing (arms) and Bloomberg Philanthropies are current institutional partners; Honeywell also listed. No protest found at SAM itself.",
+    "why_flagged": "Boeing and Honeywell, both US defence contractors, are named as institutional partners on the museum's corporate-support page.",
     "audit_dossier_url": "https://projects.propublica.org/nonprofits/search?q=Seattle%20Art%20Museum",
     "statutory_filings_url": "https://projects.propublica.org/nonprofits/search?q=Seattle%20Art%20Museum",
     "grade": 5,
-    "grade_basis": "A funder tied to arms. Also on record: a campaign against a funder's name and protests or a boycott.",
+    "grade_basis": "A funder tied to arms. Also on record: protests or a boycott.",
     "visual_critiques": [
       {
         "kind": "theory",
