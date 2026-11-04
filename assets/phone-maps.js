@@ -109,6 +109,23 @@
           b.addEventListener('click', () => { closeMenu(true); src.click(); });
           menu.appendChild(b);
         });
+        // The way back to the whole globe, from a city, a country or the street map. On a phone it was two buttons in the
+        // street map's old bar (Exit and World) and the brand button in the top bar; now it is here, once.
+        const g = (n) => { try { return (0, eval)(n); } catch (_) { return undefined; } };
+        const zoomedIn = g('isCityStreetViewActive') || (g('selectedCityFilter') && g('selectedCityFilter') !== 'all') || (g('selectedCountryFilter') && g('selectedCountryFilter') !== 'all') || (g('currentRadius') > g('baseRadius') * 1.3);
+        if (zoomedIn) {
+          const w = document.createElement('button');
+          w.type = 'button';
+          w.setAttribute('role', 'menuitem');
+          w.textContent = 'Whole world';
+          w.addEventListener('click', () => {
+            closeMenu(true);
+            const back = $('backToWorldBtn');
+            if (g('isCityStreetViewActive') && back) back.click();
+            else if (typeof window.resetGlobeView === 'function') window.resetGlobeView();
+          });
+          menu.insertBefore(w, menu.firstChild);
+        }
       };
       menuBtn.addEventListener('click', () => (menu.hidden ? openMenu(menuBtn) : closeMenu(true)));
       window.atlasToggleMenu = (anchor) => (menu.hidden ? openMenu(anchor) : closeMenu(true));
@@ -172,6 +189,20 @@
       b.addEventListener('click', () => { if (window.atlasToggleMenu) window.atlasToggleMenu(b); });
       const close = $('phoneChatCloseBtn');
       chatHead.insertBefore(b, close || null);
+    }
+
+    // ---- The street map's bar: one back button and the place's name -------------------------------------------------
+    // The old bar held Exit, World, the country and the place in a square box; Exit and World both left the street map. On a
+    // phone it is a round back button (what Exit did: back to the globe at this place) beside the place's name, and Whole
+    // world is in the menu.
+    const exitBtn = $('exitStreetViewBtn');
+    if (exitBtn) {
+      exitBtn.setAttribute('aria-label', 'Back to the globe');
+      const ico = document.createElement('span');
+      ico.className = 'gm-back-ico';
+      ico.setAttribute('aria-hidden', 'true');
+      ico.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
+      exitBtn.insertBefore(ico, exitBtn.firstChild);
     }
 
     // ---- Layers: a round button; the panel is a sheet from the bottom --------------------------------------------
@@ -1151,7 +1182,11 @@
         const spaces = (g('ALL_INSTITUTIONS') || []).filter((i) => i.city === C);
         const big = spaces.slice().sort((a, b) => ({ L: 3, M: 2, S: 1 }[b.size] || 0) - ({ L: 3, M: 2, S: 1 }[a.size] || 0) || ((b.gossip_data ? 1 : 0) - (a.gossip_data ? 1 : 0)))[0];
         const alerts = (typeof window.atlasAlerts === 'function' ? window.atlasAlerts() : []).filter((x) => x.inst.city === C);
-        const chips = [chip(C + (p.why === 'near you' ? ', near you' : ''), '', 'gm-loc-label')];
+        const label = chip(C + (p.why === 'near you' ? ', near you' : ''), '', 'gm-loc-label');
+        // The place chip looked like a button and did nothing; now it takes the map to the place.
+        label.setAttribute('aria-label', 'Show ' + C + ' on the map');
+        label.addEventListener('click', () => { const f = g('filterByCity'); if (typeof f === 'function') f(C, true, false); });
+        const chips = [label];
         if (alerts[0]) chips.push(chip('What is happening at ' + alerts[0].inst.name + '?', 'What is happening at ' + alerts[0].inst.name + '?', 'is-alert'));
         if (big) chips.push(chip('Who funds ' + big.name + '?', 'Who funds ' + big.name + '?'));
         chips.push(chip('Flagged in ' + C, 'Which spaces in ' + C + ' are flagged, and why?'));
