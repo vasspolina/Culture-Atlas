@@ -9996,7 +9996,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v528';
+    const ATLAS_RELEASE = 'culture-atlas-v529';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10161,7 +10161,98 @@ return maplibregl$1;
     function toRad(deg) { return deg * Math.PI / 180; }
     function toDeg(rad) { return rad * 180 / Math.PI; }
 
+    // =========================================================
+    //  WINKEL TRIPEL (user's instruction, 4 Nov 2026)
+    // =========================================================
+    // The world is drawn flat, in Winkel tripel (Winkel 1921; National Geographic's world map since 1998): the
+    // average of an equirectangular map on the standard parallel acos(2/π) and Aitoff, so no one of area, direction
+    // or distance is badly wrong. It is oblique: the free rotation (centre longitude, latitude and roll, see rotRoll)
+    // turns the sphere first, and the map is drawn about whatever is at the centre, so there is still no up and the
+    // seam (the meridian behind the centre) moves as the world turns. The whole world shows at once: no far side.
+    // Set WINKEL to false to go back to the orthographic globe; every caller goes through project() / unproject().
+    const WINKEL = true;
+    const WT_COS1 = 2 / Math.PI;
+    const WT_W = 2 + Math.PI;          // full width of the unit map, at the equator from -π to π
+    const WT_H = Math.PI;              // full height, pole to pole
+    const WT_CENTRE_SCALE = 0.905;     // px per radian at the centre, per unit of scale: sqrt(0.818 across x 1 up)
+    function wtRaw(lam, phi) {
+      const cphi = Math.cos(phi);
+      const alpha = Math.acos(Math.max(-1, Math.min(1, cphi * Math.cos(lam / 2))));
+      const sinc = alpha < 1e-9 ? 1 : Math.sin(alpha) / alpha;
+      return [0.5 * (lam * WT_COS1 + 2 * cphi * Math.sin(lam / 2) / sinc), 0.5 * (phi + Math.sin(phi) / sinc)];
+    }
+    // No closed form back: Newton's method on the two equations, with a numeric Jacobian. It starts from the
+    // equirectangular guess and converges in a handful of steps everywhere on the map; off the map it fails the test.
+    function wtInverse(X, Y) {
+      if (Math.abs(Y) > WT_H / 2 + 1e-6 || Math.abs(X) > WT_W / 2 + 1e-6) return null;
+      let lam = Math.max(-Math.PI, Math.min(Math.PI, X / 0.8183)), phi = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, Y));
+      const h = 1e-6;
+      for (let i = 0; i < 30; i++) {
+        const f = wtRaw(lam, phi);
+        const ex = f[0] - X, ey = f[1] - Y;
+        if (Math.abs(ex) < 1e-9 && Math.abs(ey) < 1e-9) break;
+        const fl = wtRaw(lam + h, phi), fp = wtRaw(lam, phi + h);
+        const a = (fl[0] - f[0]) / h, b = (fp[0] - f[0]) / h, c = (fl[1] - f[1]) / h, d = (fp[1] - f[1]) / h;
+        const det = a * d - b * c;
+        if (Math.abs(det) < 1e-12) break;
+        lam -= (d * ex - b * ey) / det;
+        phi -= (a * ey - c * ex) / det;
+        lam = Math.max(-Math.PI, Math.min(Math.PI, lam));
+        phi = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, phi));
+      }
+      const f = wtRaw(lam, phi);
+      if (Math.hypot(f[0] - X, f[1] - Y) > 1e-4) return null;
+      return [lam, phi];
+    }
+    // Pixels per unit of the map: at the base zoom the whole world fits the pane with a small margin; zooming
+    // scales it as the globe's radius did, so every r threshold in the page still means the same zoom.
+    function wtScale(r) {
+      return r * Math.min(width * 0.94 / WT_W, height * 0.9 / WT_H) / Math.max(1, baseRadius);
+    }
+    // The map's outline, unit coordinates: the seam meridian on both edges, pole to pole.
+    const WT_OUTLINE = (() => {
+      const pts = [];
+      for (let i = 0; i <= 90; i++) pts.push(wtRaw(Math.PI, -Math.PI / 2 + Math.PI * i / 90));
+      for (let i = 0; i <= 90; i++) pts.push(wtRaw(-Math.PI, Math.PI / 2 - Math.PI * i / 90));
+      return pts;
+    })();
+    function wtOutlinePath(r, cx, cy) {
+      const k = wtScale(r);
+      ctx.beginPath();
+      WT_OUTLINE.forEach((q, i) => { const x = cx + q[0] * k, y = cy - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+      ctx.closePath();
+    }
+    // The view matrix, cached: project() runs for every coastline point of every frame.
+    let viewMatKey = '', viewMat = null;
+    function currentViewMatrix() {
+      const key = rotLon + '|' + rotLat + '|' + rotRoll;
+      if (key !== viewMatKey) { viewMat = viewMatrix(); viewMatKey = key; }
+      return viewMat;
+    }
+    function projectWinkel(lon, lat, r, cx, cy) {
+      const m = currentViewMatrix();
+      const phi0 = toRad(lat), lam0 = toRad(lon), cp = Math.cos(phi0);
+      const X = cp * Math.sin(lam0), Y = Math.sin(phi0), Z = cp * Math.cos(lam0);
+      const vx = m[0][0] * X + m[0][1] * Y + m[0][2] * Z;
+      const vy = m[1][0] * X + m[1][1] * Y + m[1][2] * Z;
+      const vz = m[2][0] * X + m[2][1] * Y + m[2][2] * Z;
+      const lam = Math.atan2(vx, vz), phi = Math.asin(Math.max(-1, Math.min(1, vy)));
+      const q = wtRaw(lam, phi), k = wtScale(r);
+      // Everything is on the map, so everything is "front" at full depth; lam is the oblique longitude,
+      // which the coastline drawing uses to break a line where it crosses the seam.
+      return { x: cx + q[0] * k, y: cy - q[1] * k, z: r, front: true, depth: 1, lam };
+    }
+    // A canvas point to the oblique view vector under it (x right, y up, z toward the viewer), or null off the map.
+    function winkelScreenToView(px, py, r, cx, cy) {
+      const k = wtScale(r);
+      const inv = wtInverse((px - cx) / k, -(py - cy) / k);
+      if (!inv) return null;
+      const cp = Math.cos(inv[1]);
+      return [cp * Math.sin(inv[0]), Math.sin(inv[1]), cp * Math.cos(inv[0])];
+    }
+
     function project(lon, lat, r, cx, cy) {
+      if (WINKEL) return projectWinkel(lon, lat, r, cx, cy);
       const lambda = toRad(lon - rotLon);
       const phi = toRad(lat);
       const theta = toRad(rotLat);
@@ -10189,6 +10280,15 @@ return maplibregl$1;
     function limbFade(depth, gate) { return Math.max(0, Math.min(1, (depth - gate) / 0.14)); }
 
     function unproject(px, py, r, cx, cy) {
+      if (WINKEL) {
+        const v = winkelScreenToView(px, py, r, cx, cy);
+        if (!v) return null;
+        const m = currentViewMatrix();   // a rotation: its inverse is its transpose
+        const X = m[0][0] * v[0] + m[1][0] * v[1] + m[2][0] * v[2];
+        const Y = m[0][1] * v[0] + m[1][1] * v[1] + m[2][1] * v[2];
+        const Z = m[0][2] * v[0] + m[1][2] * v[1] + m[2][2] * v[2];
+        return { lat: toDeg(Math.asin(Math.max(-1, Math.min(1, Y)))), lon: toDeg(Math.atan2(X, Z)) };
+      }
       const xs = (px - cx) / r;
       const ys = -(py - cy) / r;
       const rho = toRad(rotRoll), cr = Math.cos(rho), sr = Math.sin(rho);
@@ -10259,6 +10359,7 @@ return maplibregl$1;
     }
     // The point under a canvas position, as a unit vector in view space (null off the disc).
     function screenToView(px, py, r, cx, cy) {
+      if (WINKEL) return winkelScreenToView(px, py, r, cx, cy);
       const x = (px - cx) / r, y = -(py - cy) / r, d2 = x * x + y * y;
       return d2 > 1 ? null : [x, y, Math.sqrt(1 - d2)];
     }
@@ -10683,8 +10784,8 @@ return maplibregl$1;
 
         // 0. Clean Off-Black Universal Space Canvas (Starfield disabled per user request)
         // 1. The globe is a black disc with a single hairline limb: lines only, no fills, no shading.
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        // On the Winkel tripel map the limb is the map's own outline.
+        if (WINKEL) wtOutlinePath(r, cx, cy); else { ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); }
         ctx.fillStyle = G_GROUND;
         ctx.fill();
         ctx.strokeStyle = G_LINE;
@@ -10693,15 +10794,15 @@ return maplibregl$1;
 
         // Clip all globe surface features strictly to the spherical limb
         ctx.save();
-        ctx.beginPath();
-        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        if (WINKEL) wtOutlinePath(r, cx, cy); else { ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); }
         ctx.clip();
 
         // 3. No graticule and no degree labels: the coastlines and borders are the only lines.
 
         // 4. Land Polygons with Anti-Glitch Horizon Edge Clipping
         const cosRotLat = Math.max(0.15, Math.cos(toRad(rotLat)));
-        const viewAngleSpan = Math.min(1.8, Math.max(0.08, (Math.max(width, height) / r))) * (180 / Math.PI) + 12;
+        const spanScale = WINKEL ? wtScale(r) * WT_CENTRE_SCALE * 0.6 : r;   // 0.6: the edges of the map are stretched
+        const viewAngleSpan = Math.min(WINKEL ? Math.PI : 1.8, Math.max(0.08, (Math.max(width, height) / spanScale))) * (180 / Math.PI) + 12;
         const minVisLat = rotLat - viewAngleSpan;
         const maxVisLat = rotLat + viewAngleSpan;
         const lonAngleSpan = viewAngleSpan / cosRotLat + 15;
@@ -10737,7 +10838,25 @@ return maplibregl$1;
 
             if (!anyFront) continue;
 
-            if (allFront) {
+            // Winkel tripel: a ring that crosses the seam would draw a line across the whole map. It is drawn as
+            // its pieces, pen up at each crossing, and not filled.
+            let crossesSeam = false;
+            if (WINKEL) {
+              for (let k = 0; k < proj.length; k++) {
+                if (Math.abs(proj[k].lam - proj[(k + 1) % proj.length].lam) > Math.PI) { crossesSeam = true; break; }
+              }
+            }
+            if (crossesSeam) {
+              ctx.beginPath();
+              ctx.moveTo(proj[0].x, proj[0].y);
+              for (let k = 1; k <= proj.length; k++) {
+                const a = proj[k - 1], b = proj[k % proj.length];
+                if (Math.abs(a.lam - b.lam) > Math.PI) ctx.moveTo(b.x, b.y); else ctx.lineTo(b.x, b.y);
+              }
+              ctx.strokeStyle = G_LINE;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            } else if (allFront) {
               ctx.beginPath();
               ctx.moveTo(proj[0].x, proj[0].y);
               for (let k = 1; k < proj.length; k++) {
@@ -11388,7 +11507,7 @@ return maplibregl$1;
       // Live Cartographic HUD (Scale Bar, Coordinates, Interactive Compass Rose)
       if (r > baseRadius * 1.3) {
         ctx.save();
-        const actualKmPerPx = 6371 / r;
+        const actualKmPerPx = 6371 / (WINKEL ? wtScale(r) * WT_CENTRE_SCALE : r);
         const targetPx = 90;
         const rawKm = actualKmPerPx * targetPx;
         let scaleVal = 1, scaleUnit = 'km', barPx = targetPx;
@@ -20597,7 +20716,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const dy = e.clientY - lastY;
         lastX = e.clientX;
         lastY = e.clientY;
-        const dragSens = (baseRadius / Math.max(baseRadius, currentRadius)) * 0.18;
+        // On the flat map a pixel at the centre is 1 / (scale x 0.905) radians: the land under the pointer follows it.
+        const dragSens = WINKEL ? toDeg(1 / (wtScale(currentRadius) * WT_CENTRE_SCALE)) : (baseRadius / Math.max(baseRadius, currentRadius)) * 0.18;
         // A trackball: the globe turns the way the pointer goes, in any direction and over the poles,
         // with no latitude limit and no pull back to north-up.
         const dXStep = dx * dragSens;
