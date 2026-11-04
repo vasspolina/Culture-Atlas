@@ -3584,13 +3584,22 @@ div:has(>#topThemeBtn){column-gap:0}
    over the map, under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every
    control and card); it takes no pointer, so the map is dragged and clicked as before. */
 #globeViewport::before{content:"";position:absolute;inset:0;z-index:18;pointer-events:none;
+  /* Stronger at the edges (user, 4 Nov 2026: "make the fog stronger at the edges"): solid paper at the very edge, eased out
+     over the outer 24% so the map seems to vanish into the page rather than stop at a line. */
   background:linear-gradient(to bottom,
-    color-mix(in srgb,var(--paper) 92%,transparent) 0,transparent 16%,
-    transparent 84%,color-mix(in srgb,var(--paper) 92%,transparent) 100%)}
-@media (prefers-reduced-transparency:reduce){#globeViewport::before{display:none}}
+    var(--paper) 0,color-mix(in srgb,var(--paper) 85%,transparent) 5%,color-mix(in srgb,var(--paper) 55%,transparent) 11%,color-mix(in srgb,var(--paper) 25%,transparent) 17%,transparent 24%,
+    transparent 76%,color-mix(in srgb,var(--paper) 25%,transparent) 83%,color-mix(in srgb,var(--paper) 55%,transparent) 89%,color-mix(in srgb,var(--paper) 85%,transparent) 95%,var(--paper) 100%)}
+/* And a blur under the fade, in the same two bands only (user, 4 Nov 2026: "add some blur"): 3px at the very edge, eased out
+   through a mask so it is gone by 20% in and nothing in the middle of the map is touched. It sits under the paper fade (z 17),
+   takes no pointer, and waits for fog-ready like the fade (a backdrop blur switched on with the first paint drew black). */
+#globeViewport::after{content:"";position:absolute;inset:0;z-index:17;pointer-events:none;
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.6) 8%,transparent 20%,transparent 80%,rgba(0,0,0,.6) 92%,#000 100%);
+  mask-image:linear-gradient(to bottom,#000 0,rgba(0,0,0,.6) 8%,transparent 20%,transparent 80%,rgba(0,0,0,.6) 92%,#000 100%)}
+@media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
 /* The fog waits for the page's first frames (html.fog-ready, set two frames after the hold is cleared in index.html), as the
    blur it replaces had to. */
-html:not(.fog-ready) #globeViewport::before{display:none}
+html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport::after{display:none}
 
 /* The curator's mark beside each answer is the pink disc with a square (user's file, 4 Nov 2026), in place of the Gemini spark.
    It does not spin while an answer is coming: a pending answer pulses instead. */
