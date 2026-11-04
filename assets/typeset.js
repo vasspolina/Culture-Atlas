@@ -378,3 +378,14 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
+
+/* "Ask the curator" takes one of Displaay's colours, a different one at each load (user, 4 Nov 2026). atlas.css holds the
+   colours for each theme; this only picks which. */
+(function () {
+  try {
+    var last = +(sessionStorage.getItem('heroTone') || -1), n = 4, t = Math.floor(Math.random() * n);
+    if (t === last) t = (t + 1) % n;
+    sessionStorage.setItem('heroTone', String(t));
+    document.documentElement.setAttribute('data-hero-tone', String(t));
+  } catch (e) { document.documentElement.setAttribute('data-hero-tone', String(Math.floor(Math.random() * 4))); }
+})();

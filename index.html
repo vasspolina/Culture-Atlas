@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=501">
+  <link rel="stylesheet" href="assets/atlas.css?v=502">
   <script src="assets/config.js?v=500"></script>
   <script src="assets/subtopic.js?v=500"></script>
   <script src="assets/names.js?v=500"></script>
@@ -10529,6 +10529,11 @@ return maplibregl$1;
         ctx.strokeStyle = G_LINE;
         ctx.lineWidth = 0.8;
         ctx.stroke();
+        // The fog over the globe's rim (atlas.css, FOG AND DEPTH) follows the globe: hand it the centre and radius, in CSS px,
+        // only when they change.
+        { const gx = Math.round(cx), gy = Math.round(cy), gr = Math.round(r), gk = gx + ',' + gy + ',' + gr;
+          if (gk !== window.__globeFogKey) { window.__globeFogKey = gk; const gv = canvas.parentElement;
+            gv.style.setProperty('--globe-x', gx + 'px'); gv.style.setProperty('--globe-y', gy + 'px'); gv.style.setProperty('--globe-r', gr + 'px'); } }
 
         // Clip all globe surface features strictly to the spherical limb
         ctx.save();
@@ -20000,11 +20005,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=501"></script>
+<script src="assets/typeset.js?v=502"></script>
 <script src="assets/layers.js?v=500"></script>
 <script src="assets/hq-detail.js?v=500"></script>
 <script src="assets/bubbles.js?v=500" defer></script>
 <script src="assets/phone-maps.js?v=501"></script>
 <script src="assets/desktop-maps.js?v=500"></script>
+<script src="assets/chat-resize.js?v=502"></script>
 </body>
 </html>
