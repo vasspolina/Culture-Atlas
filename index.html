@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=522">
-  <script src="assets/config.js?v=522"></script>
-  <script src="assets/subtopic.js?v=522"></script>
-  <script src="assets/names.js?v=522"></script>
-  <script src="assets/grounding.js?v=522"></script>
-  <script src="assets/repeats.js?v=522"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=523">
+  <script src="assets/config.js?v=523"></script>
+  <script src="assets/subtopic.js?v=523"></script>
+  <script src="assets/names.js?v=523"></script>
+  <script src="assets/grounding.js?v=523"></script>
+  <script src="assets/repeats.js?v=523"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1073,7 +1073,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=522"></script>
+  <script src="assets/institutions.js?v=523"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9985,11 +9985,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v522';
+    const ATLAS_RELEASE = 'culture-atlas-v523';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=522').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=523').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11937,6 +11937,31 @@ return maplibregl$1;
       }).join(' ');
     }
     // Reported items. Each one carries the sources recorded for it. None is independently verified.
+    // The reported items as the chat sets them, after displaay.net/about (user, 4 Nov 2026: "gossip mode typeset as
+    // displaay.net/about"): each item is a row under a 1px rule, its name, date and sources as a small uppercase label in the
+    // left third, what is said as large, tight lead text in the other two thirds; each group ("Related reporting") a large
+    // heading over its rows. On a narrow chat the label sits above the text, as Displaay's own phone layout does. Only the
+    // chat is regrouped: the Details page keeps documentedRecordHtml's markup, which its own rules are written against.
+    function chatReportingHtml(html) {
+      if (!html) return html;
+      const t = document.createElement('template');
+      t.innerHTML = html;
+      t.content.querySelectorAll('[data-gossip="items"]').forEach(r => r.classList.add('dp-set'));
+      t.content.querySelectorAll('.dp-set .record-card').forEach(card => {
+        const side = document.createElement('div'), main = document.createElement('div');
+        side.className = 'dp-side'; main.className = 'dp-main';
+        [...card.children].forEach(ch => {
+          // The label column: the title and date lines, and the line of source links.
+          const head = ch.classList.contains('kicker') || (!!ch.querySelector('.kicker') && !ch.querySelector('p'));
+          const sources = ch.classList.contains('account-source-links')
+            || (ch.tagName === 'DIV' && ch.classList.contains('no-indent') && !!ch.querySelector('a') && !ch.querySelector('p'));
+          (head || sources ? side : main).appendChild(ch);
+        });
+        card.classList.add('dp-row');
+        card.append(side, main);
+      });
+      return t.innerHTML;
+    }
     function documentedRecordHtml(inst) {
       if (!inst) return '';
       const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'source'; } };
@@ -15974,12 +15999,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
       let target = explicit || active;
-      // A name the visitor types on its own ("moma", "show me MoMA") is a request for that record, so it opens as a click on its pin does:
-      // the Details tab with the record, and the map flown in to the space. A question about a space still keeps you in the chat.
+      // A name the visitor types on its own ("moma", "tell me about MoMA") flies the map in to the space, as a click on its pin does,
+      // but the answer stays in the chat: the Details tab does not open over it (user, 4 Nov 2026: "if I ask chat about a space it
+      // jumps to details, keep it in chat"). Details opens from a click on the space's name in the answer, or its pin.
       const nameOnly = typedByVisitor && explicit && isNameRequest(query, explicit);
       if (nameOnly) {
-        selectInstitution(explicit, true);
-        if (window.innerWidth >= 768 && typeof setWorkspaceTab === 'function') setWorkspaceTab('dossier');
+        window.atlasKeepTab = true;
+        try { selectInstitution(explicit, true); } finally { window.atlasKeepTab = false; }
       }
       // Asking about a space in the chat keeps you in the chat: the record is selected on the map, but the Details tab does not open over the answer.
       const focus = (inst) => {
@@ -16365,8 +16391,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         listOf(here, `${plural(here.length, 'space', 'spaces')} in ${escapeHtml(region.name)}, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
-      // A name typed on its own ("eflux") is answered from its record at once. Its Details page is already open with the
-      // record, so the chat does not wait for a web scrape and a model call (10–20 seconds) to say the same thing.
+      // A name typed on its own ("eflux") is answered from its record at once, in the chat: the chat does not wait for a web
+      // scrape and a model call (10–20 seconds) to say what the record already says.
       if (nameOnly && target && !isGossipModeActive) {
         focus(target);
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${fact('', target.watch)}${fact('Funding: ', target.funding)}${target.year_founded ? `<p>Founded ${escapeHtml(String(target.year_founded))}.</p>` : ''}${sourcesHtml(target)}`);
@@ -16394,7 +16420,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
-        const reported = documentedRecordHtml(target);
+        const reported = chatReportingHtml(documentedRecordHtml(target));
         // Asked for gossip: the reported items alone, no title line, rating or source list around them.
         if (isGossipModeActive || GOSSIP_ASK.test(query)) {
           // A record with no reported items can still carry a watch flag or a flagged funder: that line is its gossip.
@@ -20481,12 +20507,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=522"></script>
-<script src="assets/layers.js?v=522"></script>
-<script src="assets/hq-detail.js?v=522"></script>
-<script src="assets/bubbles.js?v=522" defer></script>
-<script src="assets/phone-maps.js?v=522"></script>
-<script src="assets/desktop-maps.js?v=522"></script>
-<script src="assets/chat-resize.js?v=522"></script>
+<script src="assets/typeset.js?v=523"></script>
+<script src="assets/layers.js?v=523"></script>
+<script src="assets/hq-detail.js?v=523"></script>
+<script src="assets/bubbles.js?v=523" defer></script>
+<script src="assets/phone-maps.js?v=523"></script>
+<script src="assets/desktop-maps.js?v=523"></script>
+<script src="assets/chat-resize.js?v=523"></script>
 </body>
 </html>
