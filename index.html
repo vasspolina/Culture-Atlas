@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=530">
-  <script src="assets/config.js?v=530"></script>
-  <script src="assets/subtopic.js?v=530"></script>
-  <script src="assets/names.js?v=530"></script>
-  <script src="assets/grounding.js?v=530"></script>
-  <script src="assets/repeats.js?v=530"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=531">
+  <script src="assets/config.js?v=531"></script>
+  <script src="assets/subtopic.js?v=531"></script>
+  <script src="assets/names.js?v=531"></script>
+  <script src="assets/grounding.js?v=531"></script>
+  <script src="assets/repeats.js?v=531"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1073,7 +1073,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=530"></script>
+  <script src="assets/institutions.js?v=531"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7196,14 +7196,138 @@ return maplibregl$1;
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
       ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) b.setAttribute('aria-pressed', String(isGossipModeActive)); });
-      if (typeof appendCuratorMessage === 'function') {
-        appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces people are talking about. Every item is talk collected from the internet, with who says it, where, when and its source; nothing is verified unless marked confirmed or resolved.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
-      }
+      if (typeof appendCuratorMessage === 'function') gossipGreeting(isGossipModeActive);
       applyCityMapGossip();
       if (typeof render === 'function') render();
       if (selectedInstitution && typeof updateDesktopDossier === 'function') updateDesktopDossier(selectedInstitution);
     }
     window.toggleGossipMode = toggleGossipMode;
+
+    // Switching Gossip mode on opens a conversation, not a notice (user, 4 Nov 2026: "if i click gossip mode is on say
+    // something different ... proper conversational dialogue but based on real data"). Each time it leads with a different
+    // real item from the records (gossip_data.gossip, under notes/gossip-criteria.md): its headline, who says it, where and when,
+    // and what it is (talk, denied, confirmed, settled). With the chat Worker or a visitor's Anthropic key the model retells
+    // that item in a chatty voice from the item's own fields alone; otherwise, or if it is slow or strays, the page says it.
+    // The chips under it are specific questions about named spaces, a city and a kind of story the records hold.
+    const gossipShown = new Set();
+    let gossipGreetSeq = 0;
+    function gossipPool() {
+      const out = [];
+      ALL_INSTITUTIONS.forEach(inst => gossipItems(inst, true).forEach(g => {
+        if (g.headline && g.when && (g.urls || []).length && g.kind !== 'leak') out.push({ inst, g });
+      }));
+      return out.sort((a, b) => String(b.g.when).localeCompare(String(a.g.when)));
+    }
+    const pickOne = (arr) => arr[Math.floor(Math.random() * arr.length)];
+    function pickGossip(pool, avoidInst) {
+      // The newest stories first: a random one of the 40 newest not yet shown in this visit, then any not yet shown.
+      const unseen = pool.filter(x => !gossipShown.has(x.g.id || x.g.headline) && (!avoidInst || x.inst !== avoidInst));
+      const pick = pickOne(unseen.slice(0, 40)) || pickOne(unseen) || pickOne(pool);
+      if (pick) gossipShown.add(pick.g.id || pick.g.headline);
+      return pick;
+    }
+    const GOSSIP_STATUS_LINE = {
+      talk: 'It is talk, not a finding.',
+      denied: 'The other side denies it.',
+      confirmed: 'This one is confirmed.',
+      resolved: 'It has since been settled.'
+    };
+    const gossipStatusLine = (x) => GOSSIP_STATUS_LINE[x.g.status] || '';
+    const KIND_CHIP = {
+      dispute: ['Which museums are fighting with their staff?', 'Where are the union disputes in the gossip?'],
+      departure: ['Which directors left under a cloud?', 'Who quit a museum job and why, in the gossip?'],
+      money: ['Where is the money gossip?', 'Which spaces had a donor scandal?'],
+      allegation: ['Which spaces face allegations right now?'],
+      report: ['What are the newest reports people are talking about?']
+    };
+    function gossipChips(main, other, pool) {
+      const chips = [];
+      const add = (q, inst) => { if (q && !chips.includes(q) && (!inst || typeof resolvesTo !== 'function' || resolvesTo(q, inst))) chips.push(q); };
+      add(`What is the gossip about ${main.inst.name}?`, main.inst);
+      if (other) add(`What are people saying about ${other.inst.name}?`, other.inst);
+      const kinds = [...new Set(pool.slice(0, 60).map(x => x.g.kind).filter(k => KIND_CHIP[k] && k !== main.g.kind))];
+      const k = pickOne(kinds) || main.g.kind;
+      if (KIND_CHIP[k]) add(pickOne(KIND_CHIP[k]));
+      const city = main.inst.city || (other && other.inst.city);
+      if (city) add(`What's the gossip at spaces in ${city}?`);
+      const out = chips.slice(0, 4);
+      out.fromModel = true;   // kept as written: the gossip-mode chip filter would swap them for generic ones
+      return out;
+    }
+    const GOSSIP_OPENERS = [
+      'Gossip mode is on. Pull up a chair.',
+      'Gossip mode is on, and the art world has been busy.',
+      'Gossip mode is on. Here is what is going round.',
+      'Gossip mode is on. Lean in.',
+      'Gossip mode is on. Fresh off the internet:'
+    ];
+    const GOSSIP_HOOKS = [
+      'Want the whole story, or shall we try somewhere else?',
+      'Shall I tell you the rest?',
+      'Ask me about any space and I will tell you what people say about it.',
+      'Want more, or another city?'
+    ];
+    const GOSSIP_OFF = [
+      'Gossip mode is off. Back to the record: funders, grades and sources.',
+      'Gossip mode is off. The talk stays here when you want it back.',
+      'Gossip mode is off. Ask me who funds a space and I will answer from the record.'
+    ];
+    let lastOpener = '';
+    function gossipTemplate(main, other) {
+      let opener = pickOne(GOSSIP_OPENERS.filter(o => o !== lastOpener)); lastOpener = opener;
+      const head = (x) => x.g.headline.replace(/\.$/, '');
+      const said = `The story at ${main.inst.name}: ${head(main)}.`;
+      const more = other ? `Meanwhile at ${other.inst.name}: ${head(other)}. ${gossipAttribution(other.g)}` : '';
+      return [opener, said, `${gossipAttribution(main.g)} ${gossipStatusLine(main)}`.trim(), more, pickOne(GOSSIP_HOOKS)].filter(Boolean).map(s => `<p class="no-indent">${escapeHtml(s)}</p>`).join('');
+    }
+    // The model's version, from the items' own fields only. Null when no model is reachable, it is slow, or the text strays
+    // (a name not given, a dash, a heading, a list), so the page falls back to its own sentences.
+    async function gossipModelGreeting(main, other) {
+      const key = aiApiKey || _SYS_KEY;
+      const useProxy = !key && !!ATLAS_AI_PROXY_URL;
+      if (!useProxy && !(key && getEffectiveProvider() === 'anthropic')) return null;
+      const item = (x) => [
+        `Space: ${x.inst.name} (${[x.inst.city, x.inst.country].filter(Boolean).join(', ')})`,
+        `Headline: ${x.g.headline}`, `What is said: ${x.g.said}`, `Source: ${gossipAttribution(x.g)}`,
+        `Status: ${x.g.status}`, x.g.response ? `Response: ${x.g.response}` : '', x.g.outcome ? `Outcome: ${x.g.outcome}` : ''
+      ].filter(Boolean).join('\n');
+      const system = `You are the gossip voice of a cultural atlas that records who funds museums and art spaces. The visitor just switched Gossip mode on. Greet them like a well-informed friend leaning in across a table, in 3 or 4 short sentences of plain spoken English, under 90 words in all, then end with one question inviting them to ask for more.
+Rules: use only the facts in the ITEMS. Name who says each thing and when, in reported speech ("Hyperallergic reported in March 2024 that..."). Never state talk, a rumour or an allegation as fact. If an item is denied, say who denies it; if confirmed or resolved, say so. Name each space exactly as given. Do not invent people, figures, dates or quotes. No dashes, no headings, no lists, no emoji, no hedging filler. Do not say what is unknown or not found. Start with the words "Gossip mode is on".`;
+      const user = `ITEMS\n\nMain story:\n${item(main)}${other ? `\n\nA second story to tease in one sentence:\n${item(other)}` : ''}`;
+      const ctl = typeof AbortController === 'function' ? new AbortController() : null;
+      const timer = ctl ? setTimeout(() => ctl.abort(), 9000) : null;
+      try {
+        const res = await fetch(useProxy ? ATLAS_AI_PROXY_URL : 'https://api.anthropic.com/v1/messages', {
+          method: 'POST', signal: ctl ? ctl.signal : undefined,
+          headers: useProxy ? { 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
+          body: JSON.stringify({ model: 'claude-haiku-5-5', max_tokens: 1200, output_config: { effort: 'low' }, system, messages: [{ role: 'user', content: user }] })
+        });
+        if (!res.ok) return null;
+        const data = await res.json();
+        let text = (Array.isArray(data.content) ? data.content.filter(b => b.type === 'text').map(b => b.text).join('') : String(data.content || '')).trim();
+        text = text.replace(/\s*[—–]\s*/g, ', ').replace(/\s+-\s+/g, ', ');
+        if (typeof dropAbsenceLines === 'function') text = dropAbsenceLines(text);
+        if (!text || text.length > 1200 || /^\s*(#|[-*]\s|\d+\.\s)/m.test(text) || !text.includes(main.inst.name) || !/^Gossip mode is on/i.test(text)) return null;
+        return text.split(/\n{2,}/).map(p => `<p class="no-indent">${escapeHtml(p.replace(/\s*\n\s*/g, ' '))}</p>`).join('');
+      } catch (e) { return null; } finally { if (timer) clearTimeout(timer); }
+    }
+    async function gossipGreeting(on) {
+      const seq = ++gossipGreetSeq;
+      if (!on) { appendCuratorMessage(`<p class="no-indent">${escapeHtml(pickOne(GOSSIP_OFF))}</p>`, [], null, null, false); return; }
+      const pool = gossipPool();
+      const main = pickGossip(pool);
+      if (!main) { appendCuratorMessage('<p class="no-indent">Gossip mode is on. Ask about a space, or ask which spaces people are talking about.</p>', [], null, null, false); return; }
+      const other = pickGossip(pool, main.inst);
+      const chips = gossipChips(main, other, pool);
+      const typing = document.getElementById('curatorTyping');
+      if (typing) typing.classList.remove('hidden');
+      const html = await gossipModelGreeting(main, other);
+      if (typing) typing.classList.add('hidden');
+      // A second click while the model was writing: only the latest switch speaks.
+      if (seq !== gossipGreetSeq || !isGossipModeActive) return;
+      // data-gossip: the turn is talk, so it is drawn as a balloon and set in the gossip colour.
+      appendCuratorMessage(`<div data-gossip="greeting">${html || gossipTemplate(main, other)}</div>`, chips, null, null, false);
+    }
 
     let currentCardMode = 'info';
     // Gossip mode only colours the card. The record itself is one view and is never swapped for a pane.
@@ -9996,11 +10120,11 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v530';
+    const ATLAS_RELEASE = 'culture-atlas-v531';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=530').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=531').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -20628,12 +20752,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=530"></script>
-<script src="assets/layers.js?v=530"></script>
-<script src="assets/hq-detail.js?v=530"></script>
-<script src="assets/bubbles.js?v=530" defer></script>
-<script src="assets/phone-maps.js?v=530"></script>
-<script src="assets/desktop-maps.js?v=530"></script>
-<script src="assets/chat-resize.js?v=530"></script>
+<script src="assets/typeset.js?v=531"></script>
+<script src="assets/layers.js?v=531"></script>
+<script src="assets/hq-detail.js?v=531"></script>
+<script src="assets/bubbles.js?v=531" defer></script>
+<script src="assets/phone-maps.js?v=531"></script>
+<script src="assets/desktop-maps.js?v=531"></script>
+<script src="assets/chat-resize.js?v=531"></script>
 </body>
 </html>
