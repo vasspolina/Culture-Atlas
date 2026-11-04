@@ -100,6 +100,13 @@ body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{b
 #globeCanvas{cursor:grab;touch-action:none}
 /* Held until the page is final: the first frame is drawn, then shown (see settleBeforeFirstPaint in index.html). */
 html.atlas-held #globeCanvas{visibility:hidden}
+/* The whole page is held too, on plain paper. assets/institutions.js (11 MB) loads in the middle of the body, and the browser
+   paints the markup above it while it waits: that is the page before assets/phone-maps.js and assets/desktop-maps.js lay it
+   out, so it showed the old layout and then jumped to the new one (user, 4 Nov 2026: "on load the atlas shows old layout
+   first then transforms in new one"). Held, nothing shows until the layout is final and the globe has its first frame. */
+html.atlas-held{background:var(--paper)}
+/* Every descendant too: a mark that sets visibility:visible for itself (the alert ring, the location dot) showed on the paper. */
+html.atlas-held body,html.atlas-held body *{visibility:hidden!important}
 /* The same held state keeps the real hairlines off the first paint; assets/bubbles.js draws them in once the hold is cleared. */
 html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard,#mobileStickyComposer){border-color:transparent!important}
 #globeCanvas.dragging{cursor:grabbing}
@@ -3586,6 +3593,10 @@ div:has(>#topThemeBtn){column-gap:0}
   -webkit-mask-image:linear-gradient(to bottom,#000 0,transparent 26%);mask-image:linear-gradient(to bottom,#000 0,transparent 26%)}
 #globeViewport:has(#cityMapContainer:not(.hidden))::before{background:linear-gradient(to bottom,color-mix(in srgb,var(--paper) 22%,transparent) 0,transparent 24%)}
 @media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
+/* The fog waits for the page's first frames (html.fog-ready, set two frames after the hold is cleared in index.html). A
+   backdrop blur switched on in the same frame the page becomes visible has nothing painted behind it yet, and Chrome drew it
+   as a black disc on a dark grey pane for a frame before the globe: part of the jump on load. */
+html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport::after{display:none}
 
 /* The curator's mark beside each answer is the pink disc with a square (user's file, 4 Nov 2026), in place of the Gemini spark.
    It does not spin while an answer is coming: a pending answer pulses instead. */

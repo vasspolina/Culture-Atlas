@@ -23,7 +23,7 @@
     (function () {
       var root = document.documentElement;
       root.classList.add('atlas-held');
-      setTimeout(function () { root.classList.remove('atlas-held'); }, 10000); // never leave the globe hidden
+      setTimeout(function () { root.classList.remove('atlas-held'); root.classList.add('fog-ready'); }, 10000); // never leave the globe hidden
       window.__atlasLiveRelease = Promise.resolve(null);
       if (!('serviceWorker' in navigator) || !window.fetch) return;
       var ctl = window.AbortController ? new AbortController() : null;
@@ -35,7 +35,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=505">
+  <link rel="stylesheet" href="assets/atlas.css?v=506">
   <script src="assets/config.js?v=503"></script>
   <script src="assets/subtopic.js?v=503"></script>
   <script src="assets/names.js?v=503"></script>
@@ -9962,7 +9962,7 @@ return maplibregl$1;
     }
 
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v499';
+    const ATLAS_RELEASE = 'culture-atlas-v506';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10087,9 +10087,14 @@ return maplibregl$1;
       width = Math.round(rect.width) || canvas.parentElement.clientWidth || 800;
       height = Math.round(rect.height) || canvas.parentElement.clientHeight || 600;
 
-      // Double/triple buffer dimensions for razor-sharp Retina displays
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
+      // Double/triple buffer dimensions for razor-sharp Retina displays.
+      // Setting a canvas's size clears it to black (the context has no alpha), so it is set only when it changes, and a
+      // globe already on screen is drawn again at once: on load the layout scripts send several resizes, and each used to
+      // show a black pane for a frame.
+      const bw = Math.round(width * dpr), bh = Math.round(height * dpr);
+      const resized = canvas.width !== bw || canvas.height !== bh;
+      if (canvas.width !== bw) canvas.width = bw;
+      if (canvas.height !== bh) canvas.height = bh;
 
       // Logical layout display dimensions
       canvas.style.width = width + 'px';
@@ -10104,6 +10109,7 @@ return maplibregl$1;
       if (cityVectorMap) {
         cityVectorMap.resize();
       }
+      if (resized && window.__atlasGlobeLive) render(performance.now());
     }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
@@ -10375,8 +10381,12 @@ return maplibregl$1;
     function atlasReleasePaint() {
       if (!atlasPaintHeld) return;
       atlasPaintHeld = false;
+      window.__atlasGlobeLive = true;
+      resizeCanvas(); // measured in the final layout, so no resize after this clears the first frame
       render(performance.now()); // drawn first, shown after: the canvas stays hidden until it holds a finished frame
       document.documentElement.classList.remove('atlas-held');
+      // The fog over the globe (assets/atlas.css, FOG AND DEPTH) comes on once the page has painted, not with it.
+      requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('fog-ready')));
     }
     let renderFrameId = 0;
     let lastRenderTs = 0;
@@ -11424,7 +11434,10 @@ return maplibregl$1;
         if (ready === null) return;
         // The deferred scripts (assets/bubbles.js draws the hairlines in) have run by DOMContentLoaded, and they look
         // for the hold being cleared: release only once they are there to see it.
-        if (domReady) atlasReleasePaint(); else document.addEventListener('DOMContentLoaded', atlasReleasePaint, { once: true });
+        // In a task of its own: this promise can settle between two DOMContentLoaded listeners, before
+        // assets/desktop-maps.js and assets/phone-maps.js have laid the page out, and the page then showed and changed layout.
+        const release = () => setTimeout(atlasReleasePaint, 0);
+        if (domReady) release(); else document.addEventListener('DOMContentLoaded', release, { once: true });
       });
       setTimeout(atlasReleasePaint, 8000); // the waits above are capped; this is for an error in them
     })();
