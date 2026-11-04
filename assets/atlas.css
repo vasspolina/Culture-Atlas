@@ -1623,6 +1623,17 @@ body:has(#detailDrawer:not(.hidden)) #layersControl{display:none}
 /* In a card the date-and-status line sits under the title, smaller and quieter, so the title leads. */
 :is(#desktopDossierRecordBody,#detailBody) .record-card>.kicker+.kicker{font-size:var(--fs-s);line-height:1.35;opacity:.8;margin-top:2px}
 
+/* Whistleblower reviews under a record, laid out the way Google Maps lists the reviews of a place: the count, then one
+   entry each with the reviewer's line, the date and the text, newest first. Black and white, the page's own type. */
+.review-list{margin:0;padding:0}
+.review-list .review-count{margin:0 0 4px}
+.review{border-top:.8px solid var(--line);padding:12px 0}
+.review-head{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+.review-avatar{flex:none;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--paper);font:400 var(--fs-m)/1 var(--sans)}
+.review-name{display:block;font:400 var(--fs-m)/1.2 var(--sans)}
+.review-date{display:block;font:400 var(--fs-s)/1.2 var(--sans)}
+.review-text{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+
 /* The submission form of the note screen, shown only while a note is written (Share information). Every field is a filled block with its
    label inside at the top and the text under it: dark slate blocks with white type (11:1), 14px corners, 10px between blocks, a block for
    the confirm box, and one large Send for review block, grey until the form could be sent and blue after. Sizes are the page's scale. */
@@ -2029,6 +2040,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li>.d-cite:first-child{margin-bottom:calc(var(--H) / 4)}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-media{display:block;width:100%;max-width:20em;height:9em;object-fit:cover;margin:var(--H) 0 0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-action{margin-top:var(--H)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list.review-list{list-style:none}
 /* On a phone each row is a numbered section set like the licence page (user, 25 Oct 2026): the title in the accent colour at the larger size, numbered
    01, 02 and so on with an em dash, no rule under it; the words at the reading size with a blank line between paragraphs and the lead-ins bold in the line.
    One column, no bullets. A row of reported, unverified items keeps its flag colour, which the accent variable already carries. */

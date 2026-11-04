@@ -26,7 +26,7 @@ Contrast is measured, not assumed (WCAG 2.2: 4.5:1 for text under 24px, 3:1 for 
 
 **Buttons and corners after Displaay** (displaay.net/typeface/dazzed, 4 Nov 2026): every button is a rounded rectangle with 10px corners and a 1px ink edge, flat, no shadow, its label at 15px/1.3 +0.02em; the primary action is solid ink; what is chosen is solid ink; hover fills with 80% ink and paper text. Bars that hold buttons have 14px corners, panels, sheets and popups 20px. The shadows over the map are now the same 1px edge. "Ask the curator" is one line in one Displaay colour, a different one at each load. The record (Details) is set in Serrif Light (`fonts/Serrif-TRIAL-Light.woff2`, a Displaay trial file: check the terms before it ships for good), with section titles as small uppercase labels over a 1px rule. Titles stay on one line and are never cut: `fitTitles` in `assets/typeset.js` sets a long one smaller. Only the parts of the map in perspective go soft, a 3px blur and a thin paper haze: the globe's rim, and the far (top) side of the tilted street map; the part in focus stays sharp ("FOG AND DEPTH ON THE MAP" in `assets/atlas.css`). The desktop chat column can be dragged wider by its left edge, up to full screen (double-click the edge to toggle; `assets/chat-resize.js`). The desktop map has no search box; the Top story badge is a newspaper. The rules are the "BUTTONS AND CORNERS: DISPLAAY" block at the end of `assets/atlas.css`.
 
-The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the editor reads them on `reports-admin.html` (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the approved reviews of a place are listed at the foot of its record (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ---
 
@@ -64,9 +64,9 @@ The only notes the atlas holds are whistleblower reviews. They are written on on
 
 **Writing:** Share information (in the chat composer, and on the map's control bar) opens the note screen, which is a form of filled blocks: the institution (the open record's, or chosen from the list of every space on the atlas), an optional name to show (blank shows "Whistleblower"), the note (10 to 2000 characters), and a box confirming that the sender has left out their name and anything that identifies them. Send for review is grey until the form could be sent and blue after; it posts to the report API. Enter inside the note starts a new line. If it cannot be sent, everything stays in the form and nothing is kept in the reader's browser. The page has no other way to add a note. There are no star ratings.
 
-**Reading:** the record does not list reviews (removed 3 Nov 2026). Approved reviews are read on `reports-admin.html`.
+**Reading:** under the record of the space they are about, approved reviews are laid out like the reviews of a place on Google Maps: the count, then one entry per review with the name, date and text, newest first. The record only lists reviews; it has no form.
 
-A review is sent to the report API below, held as waiting, and the editor approves or deletes it on `reports-admin.html`. Reviews are not posted to Google Maps.
+A review is sent to the report API below, held as waiting, and shows on the record only after the editor approves it on `reports-admin.html`. The map pin's hover card is drawn on the canvas and has no room for a list, so reviews appear on the record only. Reviews are not posted to Google Maps.
 
 The Cloudflare Worker in `worker/` serves only the chat proxy (`/chat`). It takes no notes and no reviews; its setup is kept below.
 
