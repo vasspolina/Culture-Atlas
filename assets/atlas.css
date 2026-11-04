@@ -3200,8 +3200,8 @@ div:has(>#topThemeBtn){column-gap:0}
    presence, the status and Share. The three sizes only: 14, 18 and 24px. */
 #gmStoryStrip,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed{display:none}
 @media (max-width:767px){
-  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1 (user, 4 Nov 2026). */
-  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#a7f0ba}
+  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1; "Documented" is the palette pink, black type 8.9:1, so it is not a second green next to it (user, 4 Nov 2026). */
+  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#ff7eb6}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]){display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"label head" "label meta";column-gap:12px;align-items:center;margin:0 var(--gm-gap)!important;padding:8px 16px 8px 12px!important;min-height:56px;border:0!important;border-radius:16px!important;background:var(--ink)!important;color:var(--paper)!important;text-align:left;box-shadow:var(--gm-shadow)}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label{grid-area:label;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:12px;background:var(--gm-talk);color:#000;font:400 14px/20px var(--sans)!important;white-space:nowrap}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label i{width:8px;height:8px;border-radius:50%;background:#000}
@@ -4009,8 +4009,8 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
   :root{--gm-gap:12px;--gm-card:52px;--gm-shadow:0 1px 2px rgba(0,0,0,.28),0 2px 8px rgba(0,0,0,.14);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.16),0 -4px 16px rgba(0,0,0,.14)}
   :root[data-theme="dark"]{--gm-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 10px rgba(0,0,0,.45);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.5),0 -4px 16px rgba(0,0,0,.4)}
   :root{--gm-tonal:color-mix(in srgb,var(--ink) 9%,var(--grey))}
-  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1 (user, 4 Nov 2026). */
-  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#a7f0ba}
+  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1; "Documented" is the palette pink, black type 8.9:1, so it is not a second green next to it (user, 4 Nov 2026). */
+  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#ff7eb6}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]){display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"label head" "label meta";column-gap:12px;align-items:center;margin:0 var(--gm-gap)!important;padding:8px 16px 8px 12px!important;min-height:56px;border:0!important;border-radius:16px!important;background:var(--ink)!important;color:var(--paper)!important;text-align:left;box-shadow:var(--gm-shadow)}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label{grid-area:label;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:12px;background:var(--gm-talk);color:#000;font:400 14px/20px var(--sans)!important;white-space:nowrap}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label i{width:8px;height:8px;border-radius:50%;background:#000}
