@@ -3577,30 +3577,20 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The three tabs over the chat do not fit their column at 15px; they keep 14px, and the space between them. */
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn){font-size:14px!important;letter-spacing:0!important}
 
-/* ---- FOG AND DEPTH ON THE MAP (user's instruction, 4 Nov 2026) ----
-   Only what is in perspective goes soft, never the part you look at (user, same day: "blur just parts that are in perspective,
-   not the main visible focus part"). On the globe that is its rim, where the surface turns away: the globe hands its centre and radius
-   to the pane as --globe-x, --globe-y and --globe-r (index.html, where the limb is drawn), and the blur starts at 84% of that
-   radius and is full at the limb, so it follows the globe as it zooms and moves.
-   On the street map it is the far side of the tilt: the top quarter of the pane, and nothing else. Two layers over the map,
-   under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every control and
-   card): ::after blurs what is behind it through a mask (1.5px: 3px was too much, user 4 Nov 2026), ::before lays a thin
-   paper haze (22%) in the same place. Neither takes a
-   pointer, so the map is dragged and clicked as before. */
-#globeViewport::before,#globeViewport::after{content:"";position:absolute;inset:0;z-index:18;pointer-events:none}
-#globeViewport::after{
-  -webkit-backdrop-filter:blur(1.5px);backdrop-filter:blur(1.5px);
-  -webkit-mask-image:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 84%,#000 100%);
-  mask-image:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 84%,#000 100%)}
-#globeViewport::before{background:radial-gradient(circle var(--globe-r,40vmin) at var(--globe-x,50%) var(--globe-y,52%),transparent 86%,color-mix(in srgb,var(--paper) 22%,transparent) 102%)}
-#globeViewport:has(#cityMapContainer:not(.hidden))::after{
-  -webkit-mask-image:linear-gradient(to bottom,#000 0,transparent 26%);mask-image:linear-gradient(to bottom,#000 0,transparent 26%)}
-#globeViewport:has(#cityMapContainer:not(.hidden))::before{background:linear-gradient(to bottom,color-mix(in srgb,var(--paper) 22%,transparent) 0,transparent 24%)}
-@media (prefers-reduced-transparency:reduce){#globeViewport::before,#globeViewport::after{display:none}}
-/* The fog waits for the page's first frames (html.fog-ready, set two frames after the hold is cleared in index.html). A
-   backdrop blur switched on in the same frame the page becomes visible has nothing painted behind it yet, and Chrome drew it
-   as a black disc on a dark grey pane for a frame before the globe: part of the jump on load. */
-html:not(.fog-ready) #globeViewport::before,html:not(.fog-ready) #globeViewport::after{display:none}
+/* ---- FOG ON THE MAP (user's instruction, 4 Nov 2026, replacing the blur the same day) ----
+   No blur anywhere: it softened the labels and the cards drawn on the map ("do not blur the labels and dont blur middle of
+   map, oly top and bottom, actually just fog it like its becoming tiny transparent, on top and bottom"). The map fades into
+   the paper at its top and bottom edges, on the globe and on the street map alike, and the middle is left as it is. One layer
+   over the map, under its marks and controls (z 18: above the street map at 10, below the head-office marks at 25 and every
+   control and card); it takes no pointer, so the map is dragged and clicked as before. */
+#globeViewport::before{content:"";position:absolute;inset:0;z-index:18;pointer-events:none;
+  background:linear-gradient(to bottom,
+    color-mix(in srgb,var(--paper) 92%,transparent) 0,transparent 16%,
+    transparent 84%,color-mix(in srgb,var(--paper) 92%,transparent) 100%)}
+@media (prefers-reduced-transparency:reduce){#globeViewport::before{display:none}}
+/* The fog waits for the page's first frames (html.fog-ready, set two frames after the hold is cleared in index.html), as the
+   blur it replaces had to. */
+html:not(.fog-ready) #globeViewport::before{display:none}
 
 /* The curator's mark beside each answer is the pink disc with a square (user's file, 4 Nov 2026), in place of the Gemini spark.
    It does not spin while an answer is coming: a pending answer pulses instead. */
