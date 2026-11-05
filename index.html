@@ -7217,7 +7217,7 @@ return maplibregl$1;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
       ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) b.setAttribute('aria-pressed', String(isGossipModeActive)); });
       if (typeof appendCuratorMessage === 'function') {
-        appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on. Ask about a space, or ask which spaces people are talking about. Every item is talk collected from the internet, with who says it, where, when and its source; nothing is verified unless marked confirmed or resolved.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
+        appendCuratorMessage(`<p class="no-indent">${isGossipModeActive ? 'Gossip mode is on.' : 'Gossip mode is off.'}</p>`, [], null, null, false);
       }
       applyCityMapGossip();
       if (typeof render === 'function') render();
