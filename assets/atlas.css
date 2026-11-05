@@ -3200,8 +3200,8 @@ div:has(>#topThemeBtn){column-gap:0}
    presence, the status and Share. The three sizes only: 14, 18 and 24px. */
 #gmStoryStrip,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmFeed{display:none}
 @media (max-width:767px){
-  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1 (user, 4 Nov 2026). */
-  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#a7f0ba}
+  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1; "Documented" is the palette pink, black type 8.9:1, so it is not a second green next to it (user, 4 Nov 2026). */
+  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#ff7eb6}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]){display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"label head" "label meta";column-gap:12px;align-items:center;margin:0 var(--gm-gap)!important;padding:8px 16px 8px 12px!important;min-height:56px;border:0!important;border-radius:16px!important;background:var(--ink)!important;color:var(--paper)!important;text-align:left;box-shadow:var(--gm-shadow)}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label{grid-area:label;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:12px;background:var(--gm-talk);color:#000;font:400 14px/20px var(--sans)!important;white-space:nowrap}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label i{width:8px;height:8px;border-radius:50%;background:#000}
@@ -3950,7 +3950,7 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>*,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side :is(.flex,.kicker,strong){display:block!important;margin:0!important;padding:0!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side :is(.kicker,strong,.meta,span,a){font-size:15px!important;line-height:1.25!important;letter-spacing:.01em!important;text-transform:none!important;overflow-wrap:break-word}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>.kicker:first-child,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>:first-child strong.kicker{letter-spacing:.04em!important;text-transform:uppercase!important;hyphens:auto}
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side a{white-space:nowrap}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side a{white-space:normal;overflow-wrap:anywhere}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-side>:is(.no-indent,.account-source-links):last-child{margin-top:8px!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main{display:flex;flex-direction:column;gap:12px}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .dp-set .dp-main>*{margin:0!important;padding-left:0}
@@ -4009,8 +4009,8 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
   :root{--gm-gap:12px;--gm-card:52px;--gm-shadow:0 1px 2px rgba(0,0,0,.28),0 2px 8px rgba(0,0,0,.14);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.16),0 -4px 16px rgba(0,0,0,.14)}
   :root[data-theme="dark"]{--gm-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 10px rgba(0,0,0,.45);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.5),0 -4px 16px rgba(0,0,0,.4)}
   :root{--gm-tonal:color-mix(in srgb,var(--ink) 9%,var(--grey))}
-  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1 (user, 4 Nov 2026). */
-  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#a7f0ba}
+  /* "Talk, not confirmed" is the gossip lime, black type 17.9:1; "Documented" is the palette pink, black type 8.9:1, so it is not a second green next to it (user, 4 Nov 2026). */
+  :root{--gm-talk:#e2f86c;--gm-ok:#9ae3e8;--gm-done:#c8b85a;--gm-no:#9bb6ff;--gm-doc:#ff7eb6}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]){display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"label head" "label meta";column-gap:12px;align-items:center;margin:0 var(--gm-gap)!important;padding:8px 16px 8px 12px!important;min-height:56px;border:0!important;border-radius:16px!important;background:var(--ink)!important;color:var(--paper)!important;text-align:left;box-shadow:var(--gm-shadow)}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label{grid-area:label;display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:12px;background:var(--gm-talk);color:#000;font:400 14px/20px var(--sans)!important;white-space:nowrap}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip .gm-strip-label i{width:8px;height:8px;border-radius:50%;background:#000}
@@ -4132,6 +4132,22 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 }
 @keyframes gmd-in{from{transform:translateX(-12px);opacity:.4}}
 @media (prefers-reduced-motion:reduce){:root.gmd #gmFeed,:root.gmd #gmToast{animation:none!important;transition:none!important}}
+
+/* ---- GOSSIP MODE: THE PHONE'S DETAILS SHEET SET AS DISPLAAY.NET/ABOUT (user's instruction, 4 Nov 2026: "do the same for the phone
+   details sheet") ---- The desktop Details layout above at a phone's width, which is Displaay's own phone layout: each row under a 1px
+   rule, its title as a small uppercase label over its points, the first point as lead text (20px/1.15, -0.01em) and the rest at
+   15px/1.3, in the Atlas's sans. The Record tab's reported items are regrouped as the chat's are (chatReportingHtml) and take the
+   same sans. Gossip mode only; outside it the sheet keeps DETAILS IN SERRIF. */
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .d-rows:not(.record-head .d-rows)>section.d-row{border:0!important;border-top:1px solid var(--ink)!important;padding:10px 0 0!important;margin:0 0 24px!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .d-rows:not(.record-head .d-rows)>section.d-row>.d-row-list:not([data-gm-off]){display:flex!important;flex-direction:column;gap:10px;margin:0!important;padding:0!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .d-rows:not(.record-head .d-rows)>section.d-row h3.d-row-title{font:400 15px/1.25 var(--sans)!important;letter-spacing:.04em!important;text-transform:uppercase!important;border:0!important;padding:0!important;margin:0 0 8px!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .d-rows:not(.record-head .d-rows)>section.d-row .d-row-sub{font-family:var(--sans)!important;font-size:15px!important;line-height:1.25!important;letter-spacing:.01em!important;margin:0 0 8px!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .d-rows:not(.record-head .d-rows)>section.d-row>.d-row-list>li,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .d-rows:not(.record-head .d-rows)>section.d-row>.d-row-list>li :is(p,li,span,a,.lead-in,mark,.abbr,.nb){font-family:var(--sans)!important;font-size:15px!important;line-height:1.3!important;letter-spacing:.01em!important;margin:0!important;text-indent:0!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .d-rows:not(.record-head .d-rows)>section.d-row>.d-row-list>li:first-child,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .d-rows:not(.record-head .d-rows)>section.d-row>.d-row-list>li:first-child :is(p,li,span,a,.lead-in,mark,.abbr,.nb){font-size:20px!important;line-height:1.15!important;letter-spacing:-.01em!important;overflow-wrap:break-word;hyphens:auto}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .dp-set :is(p,li,span,a,strong,.kicker,.meta,.lead-in,mark){font-family:var(--sans)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .dp-set .dp-main :is(p,li,ul){font-size:20px!important;line-height:1.15!important;letter-spacing:-.01em!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .dp-set .dp-main .account-note{font-size:15px!important;line-height:1.3!important;letter-spacing:.01em!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) body.gossip-mode-active #dossier-sheet-scrollable-body .dp-set>h3.kicker{font-family:var(--sans)!important;font-size:30px!important;line-height:1.05!important}
 /* ---- THE NOTE FORM AND SHARE INFORMATION, SET AS DISPLAAY.NET/TYPEFACES (user's instruction, 4 Nov 2026) ----
    Measured on displaay.net/typefaces at 1280px: every control is a 10px-cornered rectangle, 34px high, 4px 12px padding, 15px
    type, with a 1px ink edge (Filter & Sort, Hover Pictures, Night Shift). Actions are solid fills with no edge: Trials black,
@@ -4260,6 +4276,23 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormHead #noteFormTitle{font-size:22px!important}
 }
 
+/* ---- THE NOTE FORM'S FIELDS ARE RULED LINES, NOT TILES (user's instruction, 4 Nov 2026: "it doesnt need to be a bubble inside the
+   bubble") ----
+   The card is already the rounded frame, so the fields inside it lose their filled, 10px-cornered tiles. Each field is the label
+   and what is typed, on the card's own ground, between 1px ink rules: one above the first field and one under each, like a form
+   on a sheet of paper. Focus is the field's bottom rule turned into a 3px bar of the focus colour, square, so focus still shows
+   without drawing a box inside the box. The typed text and the placeholder keep the --dp-ink / --dp-hint colours measured above
+   (the hint was set for the paler tile, and on the card's white or black ground it measures higher still). */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock),
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock):hover{margin:0!important;padding:16px 0 14px!important;border:0!important;border-bottom:1px solid var(--dp-ink)!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormFields>.nf-field:first-of-type{border-top:1px solid var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock):focus-within{border-radius:0!important;background:transparent!important;outline:0!important;box-shadow:inset 0 -3px 0 var(--focus)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field>span,#noteInputLabel){color:var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea){color:var(--dp-ink)!important;caret-color:var(--dp-ink)!important;border-radius:0!important}
+@media (max-width:520px){
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock){padding:14px 0 12px!important}
+}
+
 /* ---- SHARE INFORMATION IN THE PHONE'S CHAT (user, 4 Nov 2026: "show Share information button in phone chat") ----
    The phone composer (html.gm-chat) hid Share information and Voice. Share information comes back, Voice stays in the menu. It
    sits on a second line inside the composer pill, under the text and the send button, as on a desktop: in one row with them it
@@ -4274,3 +4307,56 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard>.flex.items-center.justify-between>div:has(>#chatShareBtn){order:3;flex:1 1 100%!important;width:100%!important;display:flex!important;justify-content:flex-start!important;margin:0!important;padding:0!important}
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html.gm-chat) body:not(.chat-input-mode-active) #workInputCard #chatShareBtn{display:inline-flex!important}
 }
+
+/* ---- THE PHONE'S CHAT: GOSSIP SET AS THE PHONE'S DETAILS SHEET (user's instruction, 4 Nov 2026: "do the same for the chat on the
+   phone", then "match Details sheet") ---- On a phone only, the gossip items in a chat balloon take the Details sheet's layout
+   (GOSSIP MODE: THE PHONE'S DETAILS SHEET, above): a 1px rule over each item, the first paragraph of what is said at 20px/1.15
+   -0.01em and the rest at 15px/1.3. The desktop chat keeps its own setting: no rule and the chat's body size (user, 4 Nov 2026). */
+@media (max-width:767px){
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .record-card.dp-row{border-top:1px solid currentColor!important;padding-top:10px!important;margin-bottom:24px!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main :is(p,li,ul){font-size:15px!important;line-height:1.3!important;letter-spacing:.01em!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main>:first-child,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main>ul:first-child>li:first-child{font-size:20px!important;line-height:1.15!important;letter-spacing:-.01em!important}
+}
+/* ---- THE NOTE FORM HAS NO FRAME, AND CLOSE IS ITS CROSS (user, 4 Nov 2026: "keep inputs and delete the outline, also close looks
+   like a button but can be just a cross") ----
+   The card loses the 1px ink ring the Displaay layer draws on #workInputCard (a box-shadow, not a border); the fields keep their
+   ruled lines, so the form still reads as a sheet. Close is the cross alone in a 44px touch square, no edge and no fill, at every
+   width; the word stays in the markup but is set at 0, and the button keeps its aria-label. Hover and focus thicken the cross's
+   strokes; keyboard focus also keeps the site's own outline. */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body.chat-input-mode-active #workInputCard.is-mode{box-shadow:none!important;border:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn{width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;gap:0!important;justify-content:center!important;font-size:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn .note-close-cross{width:28px!important;height:28px!important;color:inherit!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible){background:transparent!important;color:var(--dp-ink)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible) .note-close-cross{color:var(--dp-ink)!important;stroke-width:2!important}
+
+/* ==== NOTIFICATIONS AS TYPOGRAPHY (user's instruction, 5 Nov 2026: "design mobile notifications as detailed typography") ====
+   The toast for a new report or alert (#gmToast, assets/phone-maps.js say()) is a small piece of typesetting, read top to bottom
+   in one glance, the way a newspaper sets a bulletin:
+   1. The kicker: what kind of notice it is, in Jokker 14px capitals tracked +0.08em (capitals need air that lower case does not),
+      with how long ago hung right in tabular figures, over a 1px rule in the toast's own ink. Its mark is a shape, so it reads
+      without colour: a solid dot for a report, a hollow ring for talk, a triangle in the alert red for an alert.
+   2. The name of the space: Jokker 24px at 1.05, -0.01em, balanced so a two-line name breaks evenly.
+   3. The headline: Serrif Light 18px at 1.3, +0.01em, the Details prose face, with a soft rag (text-wrap: pretty, hyphens on).
+   4. The meta line: status first, then the source and the place, Jokker Light 14px at 1.3 with tabular figures, the parts
+      joined by a middle dot after a no-break space so a dot never starts a line.
+   The rules carry twelve :not(#t) and !important, as the badges do, to clear the blanket Jokker 300 rule
+   (PHONE TYPE, :is(*) at eight ids). The last word of the name and the headline is tied to the one before it, so neither ends on a widow. The sizes are the
+   atlas's own 14/18/24; nothing is cut with an ellipsis. A plain message (Alerts on, blocked) is the headline voice alone. */
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast{padding:12px 16px 14px!important;font:300 18px/1.3 "Serrif",Georgia,serif!important;letter-spacing:.01em!important;font-kerning:normal!important;font-variant-ligatures:common-ligatures!important;font-synthesis:none!important;text-align:left!important;text-indent:0!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast p{margin:0!important;padding:0!important;text-indent:0!important;color:inherit!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-text{font:300 18px/1.3 "Serrif",Georgia,serif!important;letter-spacing:.01em!important;text-wrap:pretty!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-kick{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:baseline!important;column-gap:8px!important;padding-bottom:7px!important;margin-bottom:10px!important;border-bottom:1px solid currentColor!important;font:400 14px/1.2 var(--sans)!important;letter-spacing:.08em!important;text-transform:uppercase!important;font-variant-numeric:tabular-nums!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-label{min-width:0!important;overflow-wrap:break-word!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-when{letter-spacing:.02em!important;text-transform:none!important;white-space:nowrap!important;font-weight:300!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-mark{display:inline-block!important;width:8px!important;height:8px!important;border-radius:50%!important;background:currentColor!important;align-self:center!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-mark[data-tone="talk"]{background:transparent!important;box-shadow:inset 0 0 0 1.5px currentColor!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-mark[data-tone="alert"]{width:11px!important;height:10px!important;border-radius:0!important;background:var(--gm-alert,#ff5a4e)!important;clip-path:polygon(50% 0,100% 100%,0 100%)!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-name{font:400 24px/1.05 var(--sans)!important;letter-spacing:-.01em!important;text-wrap:balance!important;overflow-wrap:break-word!important;hyphens:manual!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-head{margin-top:6px!important;font:300 18px/1.3 "Serrif",Georgia,serif!important;letter-spacing:.01em!important;text-wrap:pretty!important;hyphens:auto!important;hyphenate-limit-chars:7 3 3!important;overflow-wrap:break-word!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-meta{margin-top:10px!important;font:300 14px/1.3 var(--sans)!important;letter-spacing:.01em!important;font-variant-numeric:tabular-nums!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-dot{white-space:pre!important}
+/* A part of the meta line moves to the next line whole ("Press report, named outlet" is one fact); only a part longer than the line breaks inside. */
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-meta>span{display:inline-block!important;max-width:100%!important}
+/* On the desktop the toast is max-content wide; a notice of four lines takes one steady measure instead. */
+:root.gmd:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #globeViewport>#gmToast.is-rich{width:min(420px,calc(100% - 2 * var(--gmd-gap,16px)))!important}
+@media (prefers-reduced-motion:reduce){:root.gm-map #gmToast{transition:none!important}}
