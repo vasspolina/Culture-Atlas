@@ -4413,3 +4413,5 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-note{margin:16px 0 0!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts :is(button,a):focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px!important}
 @media (max-width:767px){:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{font-size:32px!important}}
+/* The Top story strip has no icon (user, 5 Nov 2026: "delete icon"): one column, the headline over the meta line, on the phone and on desktop. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmStoryStrip:not([hidden]){grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"head" "meta"!important;column-gap:0!important;padding-left:16px!important}

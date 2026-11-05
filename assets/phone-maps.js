@@ -895,9 +895,10 @@
         // alert's colour and headline, and says the report is an alert, and how many more there are.
         const label = 'Top story';
         const more = alerts.length > 1 ? ' · ' + (alerts.length - 1) + ' more alert' + (alerts.length > 2 ? 's' : '') : '';
-        const meta = (alerts.length ? 'Alert · ' : '') + top.inst.name + ' · ' + ago(top.when) + more;
-        // The badge is a newspaper, not a dot and a word (user, 4 Nov 2026); the strip's aria-label still says "Top story".
-        strip.innerHTML = '<span class="gm-strip-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h12.5v13a1.5 1.5 0 0 0 1.5 1.5H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M16.5 9H20v9.5a1.5 1.5 0 0 1-3 0"/><path d="M7 9h6.5M7 12.5h6.5M7 16h4"/></svg></span><span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
+        // No "Alert" word on the strip either (user, 5 Nov 2026): the meta line is the space, when, and how many more.
+        const meta = top.inst.name + ' · ' + ago(top.when) + more;
+        // No badge: the strip is its headline and meta line only (user, 5 Nov 2026: "delete icon"); its aria-label still says "Top story".
+        strip.innerHTML = '<span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
         strip.setAttribute('aria-label', label + (alerts.length ? ', an alert now' : '') + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + more + '. Open the latest reports');
       }
 
