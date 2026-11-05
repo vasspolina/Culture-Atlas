@@ -8171,10 +8171,19 @@ return maplibregl$1;
         labelEl.className = 'inst-pin-label';
         labelEl.setAttribute('data-entity-id', inst.id || inst.name);
         labelEl.setAttribute('data-name', inst.name);
+        // A badge is a button: it takes focus, answers Enter and Space, and names the whole space for a screen reader.
+        labelEl.setAttribute('role', 'button');
+        labelEl.setAttribute('tabindex', '0');
+        labelEl.setAttribute('aria-label', inst.name);
         labelEl.addEventListener('click', (e) => {
           e.stopPropagation();
           selectedInstitution = inst;
           if (typeof selectInstitution === 'function') selectInstitution(inst, false);
+        });
+        labelEl.addEventListener('keydown', (e) => {
+          if (e.key !== 'Enter' && e.key !== ' ') return;
+          e.preventDefault();
+          labelEl.click();
         });
 
         const tierDot = document.createElement('span');
@@ -8185,7 +8194,9 @@ return maplibregl$1;
 
         const nameSpan = document.createElement('span');
         nameSpan.className = 'inst-pin-label-name';
-        nameSpan.textContent = inst.name.length > 24 ? inst.name.substring(0, 22) + '…' : inst.name;   // as on the globe
+        // The whole name is in the badge; the CSS cuts it at 22ch with an ellipsis and opens it out on hover, focus and selection.
+        nameSpan.textContent = inst.name;
+        nameSpan.setAttribute('aria-hidden', 'true');
         if (inst.tier === 'A' || inst.tier === 'B') labelEl.setAttribute('data-tier', inst.tier);
 
         labelEl.appendChild(tierDot);
@@ -8205,6 +8216,7 @@ return maplibregl$1;
         dotEl.style.border = `1px solid var(--tier-${inst.tier === 'A' || inst.tier === 'B' ? inst.tier.toLowerCase() : 'u'})`; // a hollow ring in the tier's colour, like its label
         dotEl.style.boxShadow = 'none';
 
+        if (selectedInstitution && selectedInstitution.name === inst.name) pinEl.classList.add('popup-active');
         pinEl.appendChild(labelEl);
         pinEl.appendChild(auraEl);
         pinEl.appendChild(dotEl);
@@ -12559,8 +12571,8 @@ return maplibregl$1;
       if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b)], 'Sources') : ''; }
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        // In Gossip mode the Record tab sets its reported items as the chat does (displaay.net/about, user 4 Nov 2026).
-        record.innerHTML = ((reported && isGossipModeActive ? chatReportingHtml(reported) : reported) || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
+        // Gossip mode keeps the Details design (user, 5 Nov 2026); only the reported items turn yellow.
+        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
         record.classList.toggle('hidden', !record.innerHTML);
       }
       // The summary, the funding row and the reported items are filled apart; what one says, the next does not say again.
@@ -12605,6 +12617,7 @@ return maplibregl$1;
     function deselectInstitution() {
       if (typeof window.atlasHqClose === 'function') window.atlasHqClose();   // a funder's record in the Details tab gives way to the space
       selectedInstitution = null;
+      document.querySelectorAll('.custom-inst-pin.popup-active').forEach(p => p.classList.remove('popup-active'));
       if (typeof renderStarterPrompts === 'function') renderStarterPrompts();
       if (typeof hideBuildingXray === 'function') hideBuildingXray();
       if (typeof curatorContext !== 'undefined') {
@@ -12659,6 +12672,8 @@ return maplibregl$1;
       }
       if (typeof XRAY !== 'undefined' && XRAY.inst && XRAY.inst !== inst && typeof hideBuildingXray === 'function') hideBuildingXray();
       selectedInstitution = inst;
+      // The street map's badge for this space is drawn as selected, as the globe draws its own.
+      document.querySelectorAll('.custom-inst-pin').forEach(p => p.classList.toggle('popup-active', p.getAttribute('data-name') === inst.name));
       renderStarterPrompts();
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) {
