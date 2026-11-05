@@ -906,10 +906,20 @@
       const feed = document.createElement('section');
       feed.id = 'gmFeed';
       feed.hidden = true;
-      feed.setAttribute('role', 'dialog');
-      feed.setAttribute('aria-modal', 'true');
+      // Not modal (user, 5 Nov 2026: "make this notification UI work like google map"): the feed is a maps app's results
+      // panel, so the map stays in sight and in use beside it or above it, and focus is not held inside it.
+      feed.setAttribute('role', 'region');
       feed.setAttribute('aria-labelledby', 'gmFeedTitle');
       document.body.appendChild(feed);
+      // On desktop the panel has a tab on its right edge, as the maps app's side panel does, that folds it away to the left
+      // and brings it back. It sits outside the feed, since the feed scrolls and would clip it.
+      const tab = document.createElement('button');
+      tab.type = 'button';
+      tab.id = 'gmFeedTab';
+      tab.hidden = true;
+      tab.setAttribute('aria-controls', 'gmFeed');
+      tab.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg>';
+      document.body.appendChild(tab);
       const toast = document.createElement('div');
       toast.id = 'gmToast';
       toast.setAttribute('role', 'status');
@@ -1037,7 +1047,7 @@
           + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.';
         const alertRule = 'An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.';
         feed.innerHTML = '<div class="ts">'
-          + '<header class="gm-feed-head ts-bar"><h2 id="gmFeedTitle" class="ts-title">Top story</h2>'
+          + '<header class="gm-feed-head ts-bar"><button type="button" class="ts-grab" aria-label="' + grabLabel() + '"></button><h2 id="gmFeedTitle" class="ts-title">Top story</h2>'
           + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
           + '<button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>'
           + '<p class="ts-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
@@ -1161,37 +1171,133 @@
       setInterval(check, 60000);
       document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') check(); });
 
+      // ---- The feed as a maps app's results panel (user, 5 Nov 2026: "make this notification UI work like google map") ----
+      // On a phone it is a bottom sheet with three heights, as the maps app's list is: peek (the title and the top story's
+      // headline, with the map in sight above), half, and full, where the reports scroll. It follows the finger and snaps to
+      // the nearest height, a flick goes one further, and a pull down from peek closes it; the grabber, tapped, steps up a
+      // height and from full goes back to peek. Tapping a report puts the list away and opens that space's record on the map;
+      // when the record is closed the list comes back where it was, as the maps app's Back to results does. On desktop it is
+      // the side panel: the full height of the map at its left edge, folded away and back by the tab on its edge.
+      const DETENTS = ['peek', 'half', 'full'];
+      let detent = 'peek', collapsed = false, parked = null;
+      const safe = (() => {
+        const v = {};
+        return (side) => {
+          if (v[side] != null) return v[side];
+          const probe = document.createElement('div');
+          probe.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:env(safe-area-inset-' + side + ',0px);visibility:hidden;pointer-events:none';
+          document.body.appendChild(probe); v[side] = probe.offsetHeight || 0; probe.remove();
+          return v[side];
+        };
+      })();
+      const room = () => window.innerHeight - safe('top') - 8;
+      function grabLabel() {
+        return detent === 'full' ? 'Shrink the reports to the top story' : detent === 'half' ? 'Expand the reports to full screen' : 'Expand the reports';
+      }
+      function heightOf(d) {
+        const h = room();
+        if (d === 'full') return h;
+        if (d === 'half') return Math.round(h * 0.55);
+        // Peek ends under the top story's headline, so its alert and its words are read with the map still in sight; never
+        // more than 70% of the screen and never less than the head alone.
+        const fr = feed.getBoundingClientRect();
+        const head = feed.querySelector('.is-top .ts-headline') || feed.querySelector('.ts-bar');
+        const end = head ? head.getBoundingClientRect().bottom - fr.top + feed.scrollTop + 24 + safe('bottom') : 0;
+        return Math.max(160, Math.min(Math.round(end) || 160, Math.round(h * 0.7), Math.round(h * 0.55) - 1));
+      }
+      function setDetent(d, animate) {
+        if (!PHONE()) return;
+        detent = d;
+        feed.dataset.detent = d;
+        feed.classList.toggle('gm-still', animate === false);
+        if (animate === false) requestAnimationFrame(() => requestAnimationFrame(() => feed.classList.remove('gm-still')));
+        feed.style.setProperty('--ts-h', heightOf(d) + 'px');
+        if (d !== 'full') feed.scrollTop = 0;
+        const g = feed.querySelector('.ts-grab');
+        if (g) { g.setAttribute('aria-label', grabLabel()); g.setAttribute('aria-expanded', String(d === 'full')); }
+      }
+      function setCollapsed(c) {
+        collapsed = !!c && !PHONE();
+        root.classList.toggle('ts-collapsed', collapsed);
+        feed.inert = collapsed;
+        tab.setAttribute('aria-expanded', String(!collapsed));
+        tab.setAttribute('aria-label', collapsed ? 'Show the reports panel' : 'Hide the reports panel');
+      }
+      function layout(animate) {
+        tab.hidden = feed.hidden || PHONE();
+        if (feed.hidden) return;
+        if (PHONE()) { setCollapsed(false); setDetent(detent, animate); }
+        else { feed.style.removeProperty('--ts-h'); delete feed.dataset.detent; }
+      }
+
       function open(focusKey) {
         lastFocus = document.activeElement;
+        parked = null;
         render();
         feed.hidden = false;
         root.classList.add('gm-feed-open');
+        setCollapsed(false);
         feed.scrollTop = 0;
         check();
         const target = focusKey && feed.querySelector('.gm-story[data-key="' + (window.CSS && CSS.escape ? CSS.escape(focusKey) : focusKey) + '"]');
+        // From an alert mark the sheet opens full at that alert; from the strip it opens at peek, on the top story.
+        detent = target ? 'full' : 'peek';
+        layout(false);
+        // The headline is plain text now, so the report itself takes the focus.
         if (target) { target.scrollIntoView({ block: 'start' }); target.classList.add('is-focus'); target.tabIndex = -1; target.focus({ preventScroll: true }); }
-        else { const c = feed.querySelector('.gm-feed-close'); if (c) c.focus(); }
+        else { const c = feed.querySelector('.gm-feed-close'); if (c) c.focus({ preventScroll: true }); }
       }
       function close(refocus) {
+        parked = null;
         if (feed.hidden) return;
         feed.hidden = true;
         root.classList.remove('gm-feed-open');
+        setCollapsed(false);
+        layout();
         if (refocus !== false && lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      // Put the list away while a space's record is up, and bring it back, at the same height and place, when it closes.
+      function park() {
+        parked = { detent, top: feed.scrollTop };
+        feed.hidden = true;
+        root.classList.remove('gm-feed-open');
+        layout();
+      }
+      const dossier = $('dossier-bottom-sheet');
+      if (dossier) {
+        let was = dossier.classList.contains('hidden');
+        new MutationObserver(() => {
+          const now = dossier.classList.contains('hidden');
+          if (now && !was && parked && PHONE()) {
+            const p = parked; parked = null;
+            feed.hidden = false;
+            root.classList.add('gm-feed-open');
+            detent = p.detent;
+            layout(false);
+            feed.scrollTop = p.top;
+          }
+          was = now;
+        }).observe(dossier, { attributes: true, attributeFilter: ['class'] });
       }
       window.atlasOpenTopStory = open;
       strip.addEventListener('click', () => open());
+      tab.addEventListener('click', () => {
+        setCollapsed(!collapsed);
+        if (!collapsed) { const c = feed.querySelector('.gm-feed-close'); if (c) c.focus({ preventScroll: true }); }
+      });
+      window.addEventListener('resize', () => { layout(false); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!feed.hidden && detent === 'peek') layout(false); });
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !feed.hidden) { e.preventDefault(); e.stopPropagation(); close(); }
+        if (e.key === 'Escape' && !feed.hidden && feed.contains(document.activeElement)) { e.preventDefault(); e.stopPropagation(); close(); }
       }, true);
-      feed.addEventListener('keydown', (e) => {
-        if (e.key !== 'Tab') return;
-        const f = [...feed.querySelectorAll('button, a[href]')].filter((el) => el.offsetParent !== null);
-        if (!f.length) return;
-        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
-        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      // Below full the sheet does not scroll, so a key that moves focus to a report under its edge raises it to full first.
+      feed.addEventListener('focusin', (e) => {
+        if (!PHONE() || detent === 'full' || e.target.closest('.ts-bar')) return;
+        if (e.target.getBoundingClientRect().bottom > feed.getBoundingClientRect().bottom) setDetent('full');
       });
       feed.addEventListener('click', async (e) => {
         if (e.target.closest('.gm-feed-close')) { close(); return; }
+        if (e.target.closest('.ts-grab')) { setDetent(detent === 'peek' ? 'half' : detent === 'half' ? 'full' : 'peek'); return; }
         const bell = e.target.closest('.gm-bell');
         if (bell) {
           if (store.get('atlas-alerts') === 'on') { store.set('atlas-alerts', 'off'); }
@@ -1214,30 +1320,56 @@
           else if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => { sh.lastChild.textContent = 'Link copied'; setTimeout(() => { sh.lastChild.textContent = 'Share'; }, 2000); }).catch(() => {});
           return;
         }
+        // Only the space's name in the Space line opens the space (user, 5 Nov 2026: "Headline stops being a link").
         const go = e.target.closest('.gm-open');
         if (!go) return;
         const x = list[+go.dataset.i]; if (!x) return;
-        close(false);
-        if (typeof window.selectInstitution === 'function' && recordOf(x.inst.id || x.inst.name)) window.selectInstitution(x.inst, false);
+        const hasRecord = typeof window.selectInstitution === 'function' && !!recordOf(x.inst.id || x.inst.name);
+        // As in the maps app: on a phone the list steps aside for the space's record (or drops to peek when there is no
+        // record, so the map shows the place); on desktop the panel stays beside the map.
+        if (PHONE()) { if (hasRecord) park(); else setDetent('peek'); }
+        if (hasRecord) window.selectInstitution(x.inst, false);
         const fly = g('flyTo');
         if (typeof fly === 'function' && typeof x.inst.lon === 'number') fly(x.inst.lon, x.inst.lat);
       });
-      // Pull the feed down from its top to close it.
-      let y0 = null;
-      feed.addEventListener('touchstart', (e) => { y0 = (PHONE() && feed.scrollTop <= 0 && e.touches.length === 1) ? e.touches[0].clientY : null; }, { passive: true });
+      // Dragging the sheet (phone). Below full the whole sheet follows the finger; at full the reports scroll, and only a
+      // pull down from their top, or a drag on the grabber, moves the sheet.
+      let y0 = null, h0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
+      feed.addEventListener('touchstart', (e) => {
+        if (!PHONE() || e.touches.length !== 1) { y0 = null; return; }
+        if (e.target.closest('a, button:not(.ts-grab)')) { y0 = null; return; }
+        y0 = lastY = e.touches[0].clientY; lastT = Date.now(); h0 = feed.offsetHeight; vel = 0; dragging = false;
+      }, { passive: true });
       feed.addEventListener('touchmove', (e) => {
         if (y0 === null) return;
-        const d = e.touches[0].clientY - y0;
-        if (d < 0) { y0 = null; feed.style.transform = ''; return; }
+        const y = e.touches[0].clientY, d = y - y0, now = Date.now();
+        if (!dragging) {
+          if (Math.abs(d) < 6) return;
+          if (detent === 'full' && !e.target.closest('.ts-grab') && (d < 0 || feed.scrollTop > 0)) { y0 = null; return; }
+          dragging = true;
+          feed.classList.add('gm-still');
+        }
         if (e.cancelable) e.preventDefault();
-        feed.style.transform = 'translateY(' + d + 'px)';
+        vel = (y - lastY) / Math.max(1, now - lastT);
+        lastY = y; lastT = now;
+        feed.style.setProperty('--ts-h', Math.max(64, Math.min(room(), h0 - d)) + 'px');
       }, { passive: false });
-      feed.addEventListener('touchend', (e) => {
+      const dragEnd = () => {
         if (y0 === null) return;
-        const d = e.changedTouches[0].clientY - y0; y0 = null;
-        feed.style.transform = '';
-        if (d > 110) close();
-      }, { passive: true });
+        y0 = null;
+        if (!dragging) return;
+        dragging = false;
+        feed.classList.remove('gm-still');
+        const h = feed.offsetHeight;
+        const hs = DETENTS.map(heightOf);
+        if (h < hs[0] * 0.6 || (vel > 0.9 && detent === 'peek')) { close(false); return; }
+        let i;
+        if (Math.abs(vel) > 0.6) i = Math.max(0, Math.min(2, DETENTS.indexOf(detent) + (vel < 0 ? 1 : -1)));
+        else i = hs.reduce((best, v, k) => (Math.abs(v - h) < Math.abs(hs[best] - h) ? k : best), 0);
+        setDetent(DETENTS[i]);
+      };
+      feed.addEventListener('touchend', dragEnd, { passive: true });
+      feed.addEventListener('touchcancel', dragEnd, { passive: true });
 
       // Gossip mode and a known location change what is shown.
       const gb = $('mobileGossipBtn');
@@ -1246,11 +1378,8 @@
       // Crossing between the phone and desktop layouts closes the feed, since it is a sheet on one and a panel on the other.
       let wasPhone = PHONE();
       window.addEventListener('resize', () => { if (PHONE() !== wasPhone) { wasPhone = PHONE(); close(false); placeStrip(); } });
-      // On desktop a click on the map or the panel beside the feed closes it, as a click off a dialog does.
-      document.addEventListener('pointerdown', (e) => {
-        if (PHONE() || feed.hidden || feed.contains(e.target) || strip.contains(e.target) || e.target.closest('.gm-alert-mark')) return;
-        close(false);
-      }, true);
+      // A click on the map no longer closes the feed (user, 5 Nov 2026: "work like google map"): the panel stays beside the
+      // map while it is panned and zoomed, and is folded away by its tab or closed by Close.
       window.atlasAlerts = () => list.filter(isAlert);
       announce(refresh(), true);
       check();
