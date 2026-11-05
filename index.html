@@ -12559,8 +12559,8 @@ return maplibregl$1;
       if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b)], 'Sources') : ''; }
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        // In Gossip mode the Record tab sets its reported items as the chat does (displaay.net/about, user 4 Nov 2026).
-        record.innerHTML = ((reported && isGossipModeActive ? chatReportingHtml(reported) : reported) || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
+        // Gossip mode keeps the Details design (user, 5 Nov 2026); only the reported items turn yellow.
+        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
         record.classList.toggle('hidden', !record.innerHTML);
       }
       // The summary, the funding row and the reported items are filled apart; what one says, the next does not say again.
