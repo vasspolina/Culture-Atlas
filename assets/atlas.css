@@ -4389,8 +4389,7 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-headline .gm-open{display:block!important;width:100%!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;text-align:left!important;font:300 24px/1.15 "Serrif",Georgia,serif!important;text-transform:none!important;text-wrap:pretty;hyphens:auto;overflow-wrap:break-word;cursor:pointer}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-headline .gm-open:hover,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story.is-focus .ts-headline .gm-open{text-decoration:underline;text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-prose{margin:16px 0 0!important;font:300 18px/1.3 "Serrif",Georgia,serif!important;text-wrap:pretty;hyphens:auto;overflow-wrap:break-word;display:block!important;-webkit-line-clamp:unset!important;overflow:visible!important}
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story:not(.is-top)>.ts-prose{display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:4!important;overflow:hidden!important}
-/* Under the top story a report's words, reply and outcome are cut at four lines; the headline opens the space. */
+/* No report is cut short (user, 5 Nov 2026): every report shows its words in full and the feed scrolls. */
 /* The facts: key and value, the key hung in a column, a 1px rule under the last line. */
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-rows{display:block!important;margin:12px 0 0!important;padding:0 0 12px!important;border-bottom:1px solid var(--ink)!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-row{display:grid!important;grid-template-columns:8.5em minmax(0,1fr);column-gap:12px;font:400 14px/1.45 var(--sans)!important}
@@ -4414,3 +4413,8 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 @media (max-width:767px){:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{font-size:32px!important}}
 /* The Top story strip has no icon (user, 5 Nov 2026: "delete icon"): one column, the headline over the meta line, on the phone and on desktop. */
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmStoryStrip:not([hidden]){grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"head" "meta"!important;column-gap:0!important;padding-left:16px!important}
+/* The feed closes with a cross, a 44px circle, and the head keeps 8px clear on the right so the buttons and their focus ring
+   stand off the panel edge (user, 5 Nov 2026: "add right margin and add cross to exit"). */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{padding-right:8px!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x{width:44px!important;height:44px!important;min-height:44px!important;padding:0!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x svg{display:block;width:20px;height:20px}

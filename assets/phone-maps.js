@@ -1038,7 +1038,7 @@
         feed.innerHTML = '<div class="ts">'
           + '<header class="gm-feed-head ts-bar"><h2 id="gmFeedTitle" class="ts-title">Top story</h2>'
           + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
-          + '<button type="button" class="gm-feed-close ts-btn" aria-label="Close the reports">Close</button></header>'
+          + '<button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>'
           + '<p class="ts-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
           + (top ? card(top, true, topIsAlert) : '')
           + sec(topIsAlert ? 'More stories' : 'Alerts now', alertList.length + ' active', alertList, true)
