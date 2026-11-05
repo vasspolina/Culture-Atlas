@@ -13043,6 +13043,16 @@ return maplibregl$1;
     // Details rows carry a title and their points, nothing under the title (user, 5 Nov 2026: "delete all the subtext").
     // Callers still pass a second argument; it is ignored, so no subtitle, verdict line or caption is drawn, long or short.
     const FOLD_WORDS = 120, FOLD_MIN_WORDS = 40;
+    // One source per run (user, 5 Nov 2026: "show each source once per run"). Two thirds of the report's lines close on the source
+    // in brackets, "(Wikipedia)", often the same one five lines running. Where consecutive points of a row close on the same source,
+    // it is said once, on the last of them, as a citation closes a passage; a different source or a line without one ends the run.
+    // The visible points and the folded ones are runs of their own, so a line on screen never leans on a source hidden behind
+    // "N more". A bracket of figures or a date alone ("(2024)") is not a source and is left where it is.
+    const SRC_TAIL = /\s*\(([^()<>]{2,80})\)(\.?)<\/li>$/;
+    function oneSourcePerRun(lis) {
+      const tag = lis.map(h => { const m = String(h).match(SRC_TAIL); return m && !/^[\d\s,.:\/–-]+$/.test(m[1]) ? m[1].trim().toLowerCase() : null; });
+      return lis.map((h, i) => tag[i] && tag[i] === tag[i + 1] ? String(h).replace(SRC_TAIL, '</li>').replace(/([.!?…]["”’')\]]?)?<\/li>$/, (m, p) => (p || '.') + '</li>') : h);
+    }
     function proseRow(title, _sub, lis, opts) {
       opts = opts || {};
       let list = (lis || []).filter(Boolean);
@@ -13056,8 +13066,9 @@ return maplibregl$1;
         let keep = 0, seen = 0;
         while (keep < list.length && keep < opts.fold && (keep === 0 || seen + wc(list[keep]) <= FOLD_WORDS)) seen += wc(list[keep++]);
         const rest = list.slice(keep);
-        if (rest.length >= 2 || (rest.length === 1 && wc(rest[0]) >= FOLD_MIN_WORDS)) list = list.slice(0, keep).concat([`<li class="d-row-fold"><details><summary><span class="fold-closed">${rest.length} more</span><span class="fold-open">Fewer</span></summary><ul class="d-row-list">${rest.join('')}</ul></details></li>`]);
-      }
+        if (rest.length >= 2 || (rest.length === 1 && wc(rest[0]) >= FOLD_MIN_WORDS)) list = oneSourcePerRun(list.slice(0, keep)).concat([`<li class="d-row-fold"><details><summary><span class="fold-closed">${rest.length} more</span><span class="fold-open">Fewer</span></summary><ul class="d-row-list">${oneSourcePerRun(rest).join('')}</ul></details></li>`]);
+        else list = oneSourcePerRun(list);
+      } else list = oneSourcePerRun(list);
       if (opts.box) list = list.concat([`<li>${opts.box}</li>`]);
       const items = list.join('');
       if (!title || !items) return '';
