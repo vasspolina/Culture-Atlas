@@ -12550,10 +12550,8 @@ return maplibregl$1;
         const vh = visitingRowsHtml([['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')], ['Address', escapeHtml(inst.address || '')]]);
         vBox.className = vh ? '' : 'hidden'; vBox.innerHTML = vh;
       }
-      if (isGossipModeActive) {
-        toggle('dossier-sheet-funding', false);
-        toggle('dossier-sheet-visit', false);
-      }
+      // Gossip mode shows the Funding block too (user, 5 Nov 2026); the visit stays hidden.
+      if (isGossipModeActive) toggle('dossier-sheet-visit', false);
 
       const srcBox = document.getElementById('dossier-sheet-sources');
       if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b)], 'Sources') : ''; }
@@ -13232,7 +13230,7 @@ return maplibregl$1;
       const caseLis = (inst.case_notes || []).map(n => proseLi(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3), true));
       rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true }));
       rows.push(proseRow('Wider context', '', proseChunks(d.wider_context, 0).map(t => proseLi('', escapeHtml(t)))));
-      if (!isGossipModeActive) rows.push(proseRow('Studies', '', (inst.study_notes || []).map(s => proseLi(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : '')))));
+      rows.push(proseRow('Studies', '', (inst.study_notes || []).map(s => proseLi(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : '')))));
       if (d.bottom_line && !bottomLineRestates(inst)) rows.push(proseRow('Bottom line', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
       // Sources: every source the report and the record name, one bullet per site; the date it was researched is the subtitle, and the
       // registry and the filings sit in the box under the title.
