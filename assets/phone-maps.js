@@ -1041,7 +1041,7 @@
           + '<button type="button" class="gm-feed-close ts-btn" aria-label="Close the reports">Close</button></header>'
           + '<p class="ts-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
           + (top ? card(top, true, topIsAlert) : '')
-          + sec(topIsAlert ? 'More alerts now' : 'Alerts now', alertList.length + ' active', alertList, true)
+          + sec(topIsAlert ? 'More stories' : 'Alerts now', alertList.length + ' active', alertList, true)
           + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', month ? month + ' in the past 30 days' : 'Newest first', world, false)
           + sec('From staff and visitors', 'User posts', posts, false, 'Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person’s experience each, not checked as fact.')
