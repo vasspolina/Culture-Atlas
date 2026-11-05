@@ -4395,3 +4395,34 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-note{margin:16px 0 0!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts :is(button,a):focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px!important}
 @media (max-width:767px){:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{font-size:32px!important}}
+
+/* ==== TOP STORY AS A MAPS APP'S RESULTS PANEL (user, 5 Nov 2026: "make this notification UI work like google map") ====
+   With topStory() in assets/phone-maps.js. On a phone the feed is a bottom sheet with three heights set by --ts-h (peek, half,
+   full), with a grabber at its top; below full it does not scroll and the map stays in sight and in use above it. On desktop it
+   is the side panel: flush to the left edge for the map's full height, square, with a tab on its right edge that folds it away
+   (html.ts-collapsed) and brings it back. Ink and paper only, as the Displaay block above. */
+@media (max-width:767px){
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed:not([hidden]){top:auto!important;height:var(--ts-h,50vh)!important;max-height:calc(100vh - var(--safe-t,0px) - 8px)!important;overflow-y:hidden!important;border-radius:16px 16px 0 0!important;transform:none!important;transition:height .28s cubic-bezier(.2,.8,.2,1)!important}
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed[data-detent="full"]:not([hidden]){overflow-y:auto!important}
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed.gm-still:not([hidden]){transition:none!important}
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{padding-top:0!important}
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar .ts-grab{order:-1;flex:0 0 100%;display:flex!important;align-items:center;justify-content:center;height:28px!important;min-height:28px!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;cursor:grab;touch-action:none}
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar .ts-grab::after{content:"";width:40px;height:4px;border-radius:2px;background:var(--ink)}
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar::before{margin-top:4px!important}
+  /* At peek the top story shows its label and the first two lines of its headline, as a maps app's list shows its first result. */
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed[data-detent="peek"] .is-top .ts-headline .gm-open{display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+}
+@media (min-width:768px){
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-grab{display:none!important}
+  :root{--ts-w:min(440px,calc(100vw - var(--gmd-w,0px) - 48px))}
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed:not([hidden]){left:0!important;top:0!important;bottom:0!important;right:auto!important;width:var(--ts-w)!important;border-radius:0!important;box-shadow:var(--gmd-shadow,var(--gm-shadow))!important;transition:transform .24s cubic-bezier(.2,.8,.2,1),visibility 0s!important}
+  :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html.ts-collapsed) #gmFeed:not([hidden]){transform:translateX(-100%)!important;visibility:hidden!important;box-shadow:none!important;transition:transform .24s cubic-bezier(.2,.8,.2,1),visibility 0s .24s!important}
+  #gmFeedTab:not([hidden]){position:fixed;z-index:81;left:var(--ts-w);top:50%;display:flex;align-items:center;justify-content:center;width:24px;height:48px;min-height:48px;margin:-24px 0 0;padding:0;border:1px solid var(--ink);border-left:0;border-radius:0 8px 8px 0;background:var(--paper);color:var(--ink);box-shadow:var(--gm-shadow);cursor:pointer;transition:left .24s cubic-bezier(.2,.8,.2,1)}
+  :root.ts-collapsed #gmFeedTab:not([hidden]){left:0}
+  #gmFeedTab svg{width:18px;height:18px;transition:transform .24s}
+  :root.ts-collapsed #gmFeedTab svg{transform:rotate(180deg)}
+  #gmFeedTab:hover{background:var(--ink);color:var(--paper)}
+  #gmFeedTab:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+}
+#gmFeedTab[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeedTab,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeedTab svg{transition:none!important;animation:none!important}}
