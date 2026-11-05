@@ -11939,6 +11939,22 @@ return maplibregl$1;
           && /[€$£¥₹₩₺₽]\s?\d|\d\s?[€$£]|\b[A-Z]{3}\s?\d|\d\s?(euros?|dollars?|pesos?|pounds|yen|kr|kronor|kroner|zł|lei|reais)\b|\bfree\b/i.test(s)),
       };
     }
+    // A Bottom line that only restates the record is not printed (user, 5 Nov 2026). It goes when nine in ten of its words (over three
+    // letters) and every figure in it are already in the report's other parts. A bottom line that judges ("the weak point is", "worth
+    // watching") carries words the rest does not, so it stays; 96 of the 1,403 bottom lines went when this was written.
+    function bottomLineRestates(inst) {
+      const d = (inst && inst.details) || {};
+      if (!d.bottom_line) return false;
+      const press = d.press || {};
+      const rest = [].concat(d.overview || [], d.funding_verdict || '', d.funding || [], ...(d.red_flags || []).map(f => [f.heading || ''].concat(f.points || [])),
+        d.wider_context || [], d.not_related || [], press.overall || '', ...(press.items || []).map(x => x.points || [])).join(' ');
+      const words = (t) => String(t || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').match(/[a-z0-9$€£]+/g) || [];
+      const mine = [...new Set(words(d.bottom_line).filter(w => w.length > 3))];
+      if (mine.length < 4) return false;
+      if ((String(d.bottom_line).match(/\d[\d,.]*/g) || []).some(f => !rest.includes(f.replace(/[,.]+$/, '')))) return false;
+      const have = new Set(words(rest));
+      return mine.filter(w => have.has(w)).length / mine.length >= 0.9;
+    }
     // An Affiliations note loses each sentence the Overview already says.
     function affiliationsNotInOverview(inst, note) {
       if (!note) return '';
@@ -13217,7 +13233,7 @@ return maplibregl$1;
       rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true }));
       rows.push(proseRow('Wider context', '', proseChunks(d.wider_context, 0).map(t => proseLi('', escapeHtml(t)))));
       if (!isGossipModeActive) rows.push(proseRow('Studies', '', (inst.study_notes || []).map(s => proseLi(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : '')))));
-      if (d.bottom_line) rows.push(proseRow('Bottom line', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
+      if (d.bottom_line && !bottomLineRestates(inst)) rows.push(proseRow('Bottom line', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
       // Sources: every source the report and the record name, one bullet per site; the date it was researched is the subtitle, and the
       // registry and the filings sit in the box under the title.
       const urls = [].concat((d.sources || []).map(s => s && s.url), inst.sources || []);
