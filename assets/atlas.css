@@ -4420,3 +4420,10 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x svg{display:block;width:20px;height:20px}
 /* The head scrolls away with the reports instead of staying on top of them (user, 5 Nov 2026: "scroll header"). */
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{position:static!important}
+/* The headline is plain text, set as the old headline button was: Serrif Light 24px/1.15, no underline, no pointer. The Space
+   line's name is the link to the place on the map (user, 5 Nov 2026: "Headline stops being a link"). */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-headline{font:300 24px/1.15 "Serrif",Georgia,serif!important;text-wrap:pretty;hyphens:auto;overflow-wrap:break-word}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story{cursor:auto!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story:focus{outline:none}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-row .ts-space{display:inline!important;width:auto!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;font:inherit!important;text-align:left!important;cursor:pointer;text-decoration:underline;text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-row .ts-space:hover{text-decoration-thickness:2px}

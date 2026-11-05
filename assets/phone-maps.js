@@ -981,7 +981,8 @@
         const leakDated = x.type === 'leak' && x.dated ? monthsText(x.dated) : '';
         const said = saidRest(x);
         const facts = '<dl class="ts-rows">'
-          + row('Space', esc(x.inst.name))
+          // The headline is plain text (user, 5 Nov 2026); the space's name is the one way from a report to its place on the map.
+          + row('Space', '<button type="button" class="gm-open ts-space" data-i="' + i + '">' + esc(x.inst.name) + '</button>')
           + row('Place', esc(placeOf(x.inst)))
           + row('Status', esc(STATUS[x.status] || ''))
           + row({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported', esc(when))
@@ -994,7 +995,7 @@
           + '</dl>';
         return '<article class="gm-story ts-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">'
           + '<p class="ts-label">' + esc((alert ? 'Alert · ' : '') + (KIND[x.kind] || 'Report')) + '</p>'
-          + '<h3 class="ts-headline"><button type="button" class="gm-open" data-i="' + i + '">' + esc(x.head) + '</button></h3>'
+          + '<h3 class="ts-headline">' + esc(x.head) + '</h3>'
           + (said ? '<p class="ts-prose">' + esc(said) + '</p>' : '')
           + (hasReply ? '<p class="ts-label">Reply</p><p class="ts-prose">' + esc(x.reply) + '</p>' : '')
           + (x.outcome ? '<p class="ts-label">Outcome</p><p class="ts-prose">' + esc(x.outcome) + '</p>' : '')
@@ -1168,7 +1169,7 @@
         feed.scrollTop = 0;
         check();
         const target = focusKey && feed.querySelector('.gm-story[data-key="' + (window.CSS && CSS.escape ? CSS.escape(focusKey) : focusKey) + '"]');
-        if (target) { target.scrollIntoView({ block: 'start' }); target.classList.add('is-focus'); const b = target.querySelector('.gm-open'); if (b) b.focus(); }
+        if (target) { target.scrollIntoView({ block: 'start' }); target.classList.add('is-focus'); target.tabIndex = -1; target.focus({ preventScroll: true }); }
         else { const c = feed.querySelector('.gm-feed-close'); if (c) c.focus(); }
       }
       function close(refocus) {
@@ -1213,10 +1214,9 @@
           else if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => { sh.lastChild.textContent = 'Link copied'; setTimeout(() => { sh.lastChild.textContent = 'Share'; }, 2000); }).catch(() => {});
           return;
         }
-        if (e.target.closest('a')) return;
-        const art = e.target.closest('.gm-story');
-        if (!art) return;
-        const x = list[+art.dataset.i]; if (!x) return;
+        const go = e.target.closest('.gm-open');
+        if (!go) return;
+        const x = list[+go.dataset.i]; if (!x) return;
         close(false);
         if (typeof window.selectInstitution === 'function' && recordOf(x.inst.id || x.inst.name)) window.selectInstitution(x.inst, false);
         const fly = g('flyTo');
