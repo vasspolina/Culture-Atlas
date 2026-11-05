@@ -4360,3 +4360,53 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 /* On the desktop the toast is max-content wide; a notice of four lines takes one steady measure instead. */
 :root.gmd:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #globeViewport>#gmToast.is-rich{width:min(420px,calc(100% - 2 * var(--gmd-gap,16px)))!important}
 @media (prefers-reduced-motion:reduce){:root.gm-map #gmToast{transition:none!important}}
+
+/* ==== TOP STORY: DISPLAAY INFO (user, 5 Nov 2026: "design top story now, layout needs to be similar to this and use serif
+   font, delete slop like icons, greyed out text etc, badges", with displaay.net/typeface/documan) ====
+   The feed from topStory() in assets/phone-maps.js, on the phone and on desktop, set as the foundry's Info block: a 4px ink
+   rule and a large plain title; each part of a report under a 14px uppercase label with a 1px rule under it; the headline
+   and the words in Serrif Light; the facts as key and value lines with the key hung in a column, closed by a 1px rule; the
+   main action a large black rounded button, like "Download Free Full Trials". No icons, no pills or status colours, no grey
+   type and no tinted panels: everything is var(--ink) on var(--paper), so it follows the theme. The markup uses its own
+   ts- classes, so none of the older gm-feed, gm-poster or gm-stat rules reach it; the 20 ids out-rank the Displaay layer. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed:not([hidden]){padding:0!important;background:var(--paper)!important;color:var(--ink)!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts{padding:0 20px 48px;color:var(--ink);font-family:var(--sans)}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts *{letter-spacing:0!important;text-indent:0!important;color:var(--ink)!important;font-synthesis:none}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts p,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts h2,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts h3,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts dl{margin:0;padding:0}
+/* The head: the rule, then the title with Alert me and Close beside it. It stays at the top while the reports scroll. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{position:sticky!important;top:0;z-index:2;display:flex!important;flex-wrap:wrap;align-items:center!important;gap:8px!important;margin:0!important;padding:20px 0 12px!important;background:var(--paper)!important;box-shadow:-20px 0 0 var(--paper),20px 0 0 var(--paper)!important;border:0!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar::before{content:"";flex:0 0 100%;height:4px;margin:0 0 24px;background:var(--ink)}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{display:block!important;flex:1 1 auto;min-width:0;margin:0!important;font:500 40px/1 var(--sans)!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share{display:inline-flex!important;align-items:center;justify-content:center;width:auto!important;height:36px!important;min-height:36px!important;margin:0;padding:0 14px!important;border:1px solid var(--ink)!important;border-radius:999px!important;background:transparent!important;box-shadow:none!important;font:400 14px/1 var(--sans)!important;text-transform:none!important;cursor:pointer}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn:hover,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn[aria-pressed="true"],:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share:not(.is-main):hover{background:var(--ink)!important;color:var(--paper)!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-live{margin:4px 0 0!important;font:400 14px/1.3 var(--sans)!important}
+/* A report. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story{margin:48px 0 0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;cursor:pointer}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-label{margin:32px 0 0!important;padding:0 0 10px!important;border:0!important;border-bottom:1px solid var(--ink)!important;background:none!important;font:400 14px/1.2 var(--sans)!important;text-transform:uppercase}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story>.ts-label:first-child{margin-top:0!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-headline{margin:16px 0 0!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-headline .gm-open{display:block!important;width:100%!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;text-align:left!important;font:300 24px/1.15 "Serrif",Georgia,serif!important;text-transform:none!important;text-wrap:pretty;hyphens:auto;overflow-wrap:break-word;cursor:pointer}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .is-top .ts-headline .gm-open{font-size:32px!important;line-height:1.1!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-headline .gm-open:hover,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story.is-focus .ts-headline .gm-open{text-decoration:underline;text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-prose{margin:16px 0 0!important;font:300 18px/1.3 "Serrif",Georgia,serif!important;text-wrap:pretty;hyphens:auto;overflow-wrap:break-word;display:block!important;-webkit-line-clamp:unset!important;overflow:visible!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .is-top .ts-prose{font-size:20px!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story:not(.is-top)>.ts-prose{display:-webkit-box!important;-webkit-box-orient:vertical;-webkit-line-clamp:4!important;overflow:hidden!important}
+/* Under the top story a report's words, reply and outcome are cut at four lines; the headline opens the space. */
+/* The facts: key and value, the key hung in a column, a 1px rule under the last line. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-rows{display:block!important;margin:12px 0 0!important;padding:0 0 12px!important;border-bottom:1px solid var(--ink)!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-row{display:grid!important;grid-template-columns:8.5em minmax(0,1fr);column-gap:12px;font:400 14px/1.45 var(--sans)!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-row dt,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-row dd{margin:0!important;padding:0!important;font:inherit!important;overflow-wrap:anywhere}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-row a{text-decoration:underline;text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share{margin:16px 0 0!important}
+/* The top story's Share is the block's one large button: solid ink, paper type, 20px corners, as the foundry's Download. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share.is-main{display:flex!important;width:100%!important;height:auto!important;min-height:72px!important;margin:24px 0 0!important;padding:16px!important;border-radius:20px!important;background:var(--ink)!important;color:var(--paper)!important;font:400 24px/1.1 var(--sans)!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share.is-main:hover{text-decoration:underline;text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
+/* A section: its title on a 4px ink rule, the count beside it. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec{margin:72px 0 0!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec-title{display:flex!important;align-items:baseline;gap:12px;margin:0!important;padding:20px 0 0!important;border:0!important;border-top:4px solid var(--ink)!important;background:none!important;font:500 24px/1.1 var(--sans)!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec-title>span:first-child{flex:1 1 auto;min-width:0}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec-meta{font:400 14px/1.2 var(--sans)!important;white-space:nowrap}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec .ts-story{margin-top:40px!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-note{margin:16px 0 0!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts :is(button,a):focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px!important}
+@media (max-width:767px){:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{font-size:32px!important}}

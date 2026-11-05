@@ -952,17 +952,6 @@
       });
       let lastFocus = null;
 
-      const ICO = {
-        news: '<path d="M4 5.5h12.5v13a1.5 1.5 0 0 0 1.5 1.5H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M16.5 9H20v9.5a1.5 1.5 0 0 1-3 0"/><path d="M7 9h6.5M7 12.5h6.5M7 16h4"/>',
-        globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/>',
-        alert: '<path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.2v.3"/>',
-        link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
-        reply: '<path d="M4 5h16v11H9l-5 4z"/>',
-        share: '<path d="M14 5l6 6-6 6"/><path d="M20 11H11a7 7 0 0 0-7 7"/>',
-        pin: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
-        bell: '<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
-      };
-      const svg = (b) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + b + '</svg>';
 
       // A post's headline is its own first sentence, so its text below starts after it and does not say it twice.
       const saidRest = (x) => {
@@ -972,34 +961,44 @@
       };
       const monthsText = (t) => String(t || '').replace(/\d{4}-\d{2}(?:-\d{2})?/g, (m) => dateText(m));
       let list = [];
+      // The feed is set as the Info block on displaay.net/typeface/documan (user, 5 Nov 2026: "layout needs to be similar to
+      // this and use serif font, delete slop like icons, greyed out text etc, badges"). A 4px ink rule and a large plain title;
+      // each part of a report under a small uppercase label with a 1px rule beneath it; the headline and the words in Serrif;
+      // the facts as key and value lines, the key hung in a column. No icons, no pills, no status colours, no grey type: the
+      // status is a line in the facts, said in words. Ink and paper only. The look is "TOP STORY: DISPLAAY INFO" in atlas.css.
+      const row = (k, v) => v ? '<div class="ts-row"><dt>' + esc(k) + '</dt><dd>' + v + '</dd></div>' : '';
       function card(x, poster, alert) {
         const i = list.indexOf(x);
         const n = x.urls.length;
         const src = SOURCE[x.who] || ['Source type not recorded', false];
-        const links = '<a class="gm-stat" href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + svg(ICO.link) + n + (n === 1 ? ' source' : ' sources') + '</a>';
-        // A reply printed in full below is not announced again as "Reply on record"; only its absence is a stat.
+        // A reply printed in full is its own part; only its absence is a line in the facts.
         const hasReply = x.type === 'gossip' && x.reply && !/^no reply/i.test(x.reply);
-        const reply = x.type !== 'gossip' || hasReply ? '' : '<span class="gm-stat">' + svg(ICO.reply) + 'No reply found</span>';
-        const posterHtml = poster ? '<div class="gm-poster' + (alert ? ' is-alert' : '') + '" aria-hidden="true"><p class="gm-poster-pill">' + esc(alert ? 'Alert · ' : '') + esc(KIND[x.kind] || 'Report') + '</p><p class="gm-poster-name">' + esc(x.inst.name) + '</p><p class="gm-poster-place">' + esc(placeOf(x.inst)) + '</p><p class="gm-poster-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</p></div>' : '';
-        // Where this comes from, in words: the kind of source, whether it is user-generated, and the day the atlas last opened its
-        // addresses. Each fact is printed once on the card (user, 4 Nov 2026: "remove all repetition"): the outlet and role are the
-        // line above the headline, the date is the "Reported"/"Posted"/"Dated" line with the day beside it, and on the poster card the
-        // space, its place and the status are the poster's, so the lines below do not say them again. A leak's own dating (months)
-        // is kept when it says more than the day.
+        // Each fact is said once (user, 4 Nov 2026: "remove all repetition"). A leak's own dating (months) is kept when it says
+        // more than the day.
+        const day = dateText(x.when), rel = ago(x.when);
+        const when = day && rel && rel !== day ? day + ', ' + rel : (day || rel);
         const leakDated = x.type === 'leak' && x.dated ? monthsText(x.dated) : '';
-        const prov = '<p class="gm-story-prov' + (src[1] ? ' is-user' : '') + '">' + (src[1] ? '<b>User-generated, not verified</b> · ' : '') + esc(src[0])
-          + (leakDated && leakDated !== dateText(x.when) ? ' · dated ' + esc(leakDated) : '')
-          + (x.checked ? ' · links checked by the atlas ' + esc(dateText(x.checked)) : '') + '</p>';
-        return '<article class="gm-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">' + posterHtml
-          + '<p class="gm-story-src"><span class="gm-story-mark" aria-hidden="true">' + esc((x.where || x.inst.name).trim().charAt(0).toUpperCase()) + '</span>' + esc(x.where || 'The record') + (x.role ? ' · ' + esc(x.role) : '') + '</p>'
-          + '<h3 class="gm-story-head"><button type="button" class="gm-open" data-i="' + i + '">' + (alert && !poster ? '<span class="gm-alert-tag">Alert</span> ' : '') + esc(x.head) + '</button></h3>'
-          + '<p class="gm-story-when">' + ({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported') + ' ' + esc(ago(x.when)) + (ago(x.when) !== dateText(x.when) && dateText(x.when) ? ' (' + esc(dateText(x.when)) + ')' : '') + (poster ? '' : ' · ' + esc(x.inst.name) + (x.inst.city || x.inst.country ? ', ' + esc(x.inst.city || x.inst.country) : '')) + '</p>'
-          + (saidRest(x) ? '<p class="gm-story-said">' + esc(saidRest(x)) + '</p>' : '')
-          + (hasReply ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
-          + (x.outcome ? '<p class="gm-story-reply"><span>Outcome</span> ' + esc(x.outcome) + '</p>' : '')
-          + prov
-          + '<div class="gm-story-stats">' + links + reply + (poster ? '' : '<span class="gm-stat gm-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</span>')
-          + '<button type="button" class="gm-share" data-i="' + i + '">' + svg(ICO.share) + 'Share</button></div></article>';
+        const said = saidRest(x);
+        const facts = '<dl class="ts-rows">'
+          + row('Space', esc(x.inst.name))
+          + row('Place', esc(placeOf(x.inst)))
+          + row('Status', esc(STATUS[x.status] || ''))
+          + row({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported', esc(when))
+          + row('Source', esc(x.where || 'The record') + (x.role ? ', ' + esc(x.role) : ''))
+          + row('Basis', (src[1] ? 'User-generated, not verified. ' : '') + esc(src[0]))
+          + (leakDated && leakDated !== day ? row('Document', 'dated ' + esc(leakDated)) : '')
+          + (x.type === 'gossip' && !hasReply ? row('Reply', 'None found') : '')
+          + (x.checked ? row('Links checked', esc(dateText(x.checked))) : '')
+          + row(n === 1 ? 'Link' : 'Links', '<a href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + n + (n === 1 ? ' source' : ' sources') + '</a>')
+          + '</dl>';
+        return '<article class="gm-story ts-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">'
+          + '<p class="ts-label">' + esc((alert ? 'Alert · ' : '') + (KIND[x.kind] || 'Report')) + '</p>'
+          + '<h3 class="ts-headline"><button type="button" class="gm-open" data-i="' + i + '">' + esc(x.head) + '</button></h3>'
+          + (said ? '<p class="ts-prose">' + esc(said) + '</p>' : '')
+          + (hasReply ? '<p class="ts-label">Reply</p><p class="ts-prose">' + esc(x.reply) + '</p>' : '')
+          + (x.outcome ? '<p class="ts-label">Outcome</p><p class="ts-prose">' + esc(x.outcome) + '</p>' : '')
+          + '<p class="ts-label">Details</p>' + facts
+          + '<button type="button" class="gm-share ts-share' + (poster ? ' is-main' : '') + '" data-i="' + i + '">Share</button></article>';
       }
 
       // Checking for new reports.
@@ -1025,25 +1024,32 @@
         const posts = take(list.filter((x) => x.type === 'account')).slice(0, 15);
         const docs = take(list.filter((x) => x.type === 'leak')).slice(0, 10);
         const month = list.filter((x) => { const p = parse(x.when); return p && Date.now() - p.d.getTime() < 30 * 864e5; }).length;
-        const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '">' + svg(icon) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x) => card(x, false, alert)).join('') : '';
+        // A section is a plain title on a 4px ink rule with its count beside it, the reports under it.
+        const sec = (title, meta, arr, alert, note) => arr.length ? '<section class="ts-sec"><h2 class="ts-sec-title"><span>' + title + '</span>' + (meta ? '<span class="ts-sec-meta">' + meta + '</span>' : '') + '</h2>'
+          + (note ? '<p class="ts-prose ts-note">' + note + '</p>' : '') + arr.map((x) => card(x, false, alert)).join('') + '</section>' : '';
         const bellOn = store.get('atlas-alerts') === 'on';
-        feed.innerHTML = '<div class="gm-feed-grab" aria-hidden="true"></div>'
-          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(ICO.news) + '<span>Top story</span></h2>'
-          + ('Notification' in window ? '<button type="button" class="gm-bell" aria-pressed="' + bellOn + '">' + svg(ICO.bell) + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
-          + '<button type="button" class="gm-feed-close" aria-label="Close the reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5 5 19M5 5l14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></header>'
-          + '<p class="gm-feed-live"><i aria-hidden="true"></i><span class="gm-feed-checked">' + liveLine() + '</span></p>'
-          + '<p class="gm-feed-note">' + (gossipOn()
+        // What the feed holds, and the rule for an alert, are said once, at the foot, in the same ink as the rest.
+        const about = (gossipOn()
             ? 'Gossip mode: talk and denials are included, each marked for what it is. Talk is what people say, not a finding. Items from anonymous posts or user reviews say so.'
             : 'Reports on record as confirmed or resolved, and documented cases. Turn on Gossip mode to include talk.')
-            + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.</p>'
-          + (topIsAlert ? '<p class="gm-feed-note">An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.</p>' : '')
+          + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.';
+        const alertRule = 'An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.';
+        feed.innerHTML = '<div class="ts">'
+          + '<header class="gm-feed-head ts-bar"><h2 id="gmFeedTitle" class="ts-title">Top story</h2>'
+          + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
+          + '<button type="button" class="gm-feed-close ts-btn" aria-label="Close the reports">Close</button></header>'
+          + '<p class="ts-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
           + (top ? card(top, true, topIsAlert) : '')
-          + sec(topIsAlert ? 'More alerts now' : 'Alerts now', ICO.alert, alertList.length + ' active', alertList, true)
-          + sec('Near you', ICO.pin, near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
-          + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', ICO.globe, month ? month + ' in the past 30 days' : 'Newest first', world, false)
-          + (posts.length ? '<h2 class="gm-feed-sec">' + svg(ICO.reply) + '<span>From staff and visitors</span><small>User posts</small></h2><p class="gm-feed-note">Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person\u2019s experience each, not checked as fact.</p>' + posts.map((x) => card(x, false, false)).join('') : '')
-          + (docs.length ? '<h2 class="gm-feed-sec">' + svg(ICO.link) + '<span>From leaked documents</span><small>' + docs.length + ' on record</small></h2>' + docs.map((x) => card(x, false, false)).join('') : '')
-          + (!list.length ? '<p class="gm-feed-note">No dated reports on record yet.</p>' : '');
+          + sec(topIsAlert ? 'More alerts now' : 'Alerts now', alertList.length + ' active', alertList, true)
+          + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
+          + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', month ? month + ' in the past 30 days' : 'Newest first', world, false)
+          + sec('From staff and visitors', 'User posts', posts, false, 'Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person’s experience each, not checked as fact.')
+          + sec('From leaked documents', docs.length + ' on record', docs, false)
+          + '<section class="ts-sec"><h2 class="ts-sec-title"><span>About these reports</span></h2>'
+          + (!list.length ? '<p class="ts-prose ts-note">No dated reports on record yet.</p>' : '')
+          + '<p class="ts-prose ts-note">' + about + '</p>'
+          + (alertList.length || topIsAlert ? '<p class="ts-prose ts-note">' + alertRule + '</p>' : '')
+          + '</section></div>';
       }
       function liveLine() {
         if (checkFailed) return 'Could not check for new reports just now. Showing what was loaded.';
