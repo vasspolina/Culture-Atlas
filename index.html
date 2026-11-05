@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=555">
-  <script src="assets/config.js?v=555"></script>
-  <script src="assets/subtopic.js?v=555"></script>
-  <script src="assets/names.js?v=555"></script>
-  <script src="assets/grounding.js?v=555"></script>
-  <script src="assets/repeats.js?v=555"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=556">
+  <script src="assets/config.js?v=556"></script>
+  <script src="assets/subtopic.js?v=556"></script>
+  <script src="assets/names.js?v=556"></script>
+  <script src="assets/grounding.js?v=556"></script>
+  <script src="assets/repeats.js?v=556"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=555"></script>
+  <script src="assets/institutions.js?v=556"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10019,11 +10019,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v555';
+    const ATLAS_RELEASE = 'culture-atlas-v556';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=555').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=556').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11939,6 +11939,22 @@ return maplibregl$1;
           && /[€$£¥₹₩₺₽]\s?\d|\d\s?[€$£]|\b[A-Z]{3}\s?\d|\d\s?(euros?|dollars?|pesos?|pounds|yen|kr|kronor|kroner|zł|lei|reais)\b|\bfree\b/i.test(s)),
       };
     }
+    // A Bottom line that only restates the record is not printed (user, 5 Nov 2026). It goes when nine in ten of its words (over three
+    // letters) and every figure in it are already in the report's other parts. A bottom line that judges ("the weak point is", "worth
+    // watching") carries words the rest does not, so it stays; 96 of the 1,403 bottom lines went when this was written.
+    function bottomLineRestates(inst) {
+      const d = (inst && inst.details) || {};
+      if (!d.bottom_line) return false;
+      const press = d.press || {};
+      const rest = [].concat(d.overview || [], d.funding_verdict || '', d.funding || [], ...(d.red_flags || []).map(f => [f.heading || ''].concat(f.points || [])),
+        d.wider_context || [], d.not_related || [], press.overall || '', ...(press.items || []).map(x => x.points || [])).join(' ');
+      const words = (t) => String(t || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').match(/[a-z0-9$€£]+/g) || [];
+      const mine = [...new Set(words(d.bottom_line).filter(w => w.length > 3))];
+      if (mine.length < 4) return false;
+      if ((String(d.bottom_line).match(/\d[\d,.]*/g) || []).some(f => !rest.includes(f.replace(/[,.]+$/, '')))) return false;
+      const have = new Set(words(rest));
+      return mine.filter(w => have.has(w)).length / mine.length >= 0.9;
+    }
     // An Affiliations note loses each sentence the Overview already says.
     function affiliationsNotInOverview(inst, note) {
       if (!note) return '';
@@ -13217,7 +13233,7 @@ return maplibregl$1;
       rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true }));
       rows.push(proseRow('Wider context', '', proseChunks(d.wider_context, 0).map(t => proseLi('', escapeHtml(t)))));
       if (!isGossipModeActive) rows.push(proseRow('Studies', '', (inst.study_notes || []).map(s => proseLi(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : '')))));
-      if (d.bottom_line) rows.push(proseRow('Bottom line', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
+      if (d.bottom_line && !bottomLineRestates(inst)) rows.push(proseRow('Bottom line', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
       // Sources: every source the report and the record name, one bullet per site; the date it was researched is the subtitle, and the
       // registry and the filings sit in the box under the title.
       const urls = [].concat((d.sources || []).map(s => s && s.url), inst.sources || []);
@@ -20915,13 +20931,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=555"></script>
-<script src="assets/funding-views.js?v=555"></script>
-<script src="assets/layers.js?v=555"></script>
-<script src="assets/hq-detail.js?v=555"></script>
-<script src="assets/bubbles.js?v=555" defer></script>
-<script src="assets/phone-maps.js?v=555"></script>
-<script src="assets/desktop-maps.js?v=555"></script>
-<script src="assets/chat-resize.js?v=555"></script>
+<script src="assets/typeset.js?v=556"></script>
+<script src="assets/funding-views.js?v=556"></script>
+<script src="assets/layers.js?v=556"></script>
+<script src="assets/hq-detail.js?v=556"></script>
+<script src="assets/bubbles.js?v=556" defer></script>
+<script src="assets/phone-maps.js?v=556"></script>
+<script src="assets/desktop-maps.js?v=556"></script>
+<script src="assets/chat-resize.js?v=556"></script>
 </body>
 </html>
