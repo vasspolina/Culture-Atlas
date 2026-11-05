@@ -895,9 +895,10 @@
         // alert's colour and headline, and says the report is an alert, and how many more there are.
         const label = 'Top story';
         const more = alerts.length > 1 ? ' · ' + (alerts.length - 1) + ' more alert' + (alerts.length > 2 ? 's' : '') : '';
-        const meta = (alerts.length ? 'Alert · ' : '') + top.inst.name + ' · ' + ago(top.when) + more;
-        // The badge is a newspaper, not a dot and a word (user, 4 Nov 2026); the strip's aria-label still says "Top story".
-        strip.innerHTML = '<span class="gm-strip-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h12.5v13a1.5 1.5 0 0 0 1.5 1.5H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M16.5 9H20v9.5a1.5 1.5 0 0 1-3 0"/><path d="M7 9h6.5M7 12.5h6.5M7 16h4"/></svg></span><span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
+        // No "Alert" word on the strip either (user, 5 Nov 2026): the meta line is the space, when, and how many more.
+        const meta = top.inst.name + ' · ' + ago(top.when) + more;
+        // No badge: the strip is its headline and meta line only (user, 5 Nov 2026: "delete icon"); its aria-label still says "Top story".
+        strip.innerHTML = '<span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
         strip.setAttribute('aria-label', label + (alerts.length ? ', an alert now' : '') + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + more + '. Open the latest reports');
       }
 
@@ -990,7 +991,8 @@
         const leakDated = x.type === 'leak' && x.dated ? monthsText(x.dated) : '';
         const said = saidRest(x);
         const facts = '<dl class="ts-rows">'
-          + row('Space', esc(x.inst.name))
+          // The headline is plain text (user, 5 Nov 2026); the space's name is the one way from a report to its place on the map.
+          + row('Space', '<button type="button" class="gm-open ts-space" data-i="' + i + '">' + esc(x.inst.name) + '</button>')
           + row('Place', esc(placeOf(x.inst)))
           + row('Status', esc(STATUS[x.status] || ''))
           + row({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported', esc(when))
@@ -1003,7 +1005,7 @@
           + '</dl>';
         return '<article class="gm-story ts-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">'
           + '<p class="ts-label">' + esc((alert ? 'Alert · ' : '') + (KIND[x.kind] || 'Report')) + '</p>'
-          + '<h3 class="ts-headline"><button type="button" class="gm-open" data-i="' + i + '">' + esc(x.head) + '</button></h3>'
+          + '<h3 class="ts-headline">' + esc(x.head) + '</h3>'
           + (said ? '<p class="ts-prose">' + esc(said) + '</p>' : '')
           + (hasReply ? '<p class="ts-label">Reply</p><p class="ts-prose">' + esc(x.reply) + '</p>' : '')
           + (x.outcome ? '<p class="ts-label">Outcome</p><p class="ts-prose">' + esc(x.outcome) + '</p>' : '')
@@ -1047,10 +1049,10 @@
         feed.innerHTML = '<div class="ts">'
           + '<header class="gm-feed-head ts-bar"><button type="button" class="ts-grab" aria-label="' + grabLabel() + '"></button><h2 id="gmFeedTitle" class="ts-title">Top story</h2>'
           + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
-          + '<button type="button" class="gm-feed-close ts-btn" aria-label="Close the reports">Close</button></header>'
+          + '<button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>'
           + '<p class="ts-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
           + (top ? card(top, true, topIsAlert) : '')
-          + sec(topIsAlert ? 'More alerts now' : 'Alerts now', alertList.length + ' active', alertList, true)
+          + sec(topIsAlert ? 'More stories' : 'Alerts now', alertList.length + ' active', alertList, true)
           + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', month ? month + ' in the past 30 days' : 'Newest first', world, false)
           + sec('From staff and visitors', 'User posts', posts, false, 'Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person’s experience each, not checked as fact.')
@@ -1241,7 +1243,8 @@
         // From an alert mark the sheet opens full at that alert; from the strip it opens at peek, on the top story.
         detent = target ? 'full' : 'peek';
         layout(false);
-        if (target) { target.scrollIntoView({ block: 'start' }); target.classList.add('is-focus'); const b = target.querySelector('.gm-open'); if (b) b.focus({ preventScroll: true }); }
+        // The headline is plain text now, so the report itself takes the focus.
+        if (target) { target.scrollIntoView({ block: 'start' }); target.classList.add('is-focus'); target.tabIndex = -1; target.focus({ preventScroll: true }); }
         else { const c = feed.querySelector('.gm-feed-close'); if (c) c.focus({ preventScroll: true }); }
       }
       function close(refocus) {
@@ -1317,10 +1320,10 @@
           else if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => { sh.lastChild.textContent = 'Link copied'; setTimeout(() => { sh.lastChild.textContent = 'Share'; }, 2000); }).catch(() => {});
           return;
         }
-        if (e.target.closest('a')) return;
-        const art = e.target.closest('.gm-story');
-        if (!art) return;
-        const x = list[+art.dataset.i]; if (!x) return;
+        // Only the space's name in the Space line opens the space (user, 5 Nov 2026: "Headline stops being a link").
+        const go = e.target.closest('.gm-open');
+        if (!go) return;
+        const x = list[+go.dataset.i]; if (!x) return;
         const hasRecord = typeof window.selectInstitution === 'function' && !!recordOf(x.inst.id || x.inst.name);
         // As in the maps app: on a phone the list steps aside for the space's record (or drops to peek when there is no
         // record, so the map shows the place); on desktop the panel stays beside the map.
