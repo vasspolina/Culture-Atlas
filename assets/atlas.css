@@ -4328,3 +4328,35 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn .note-close-cross{width:28px!important;height:28px!important;color:inherit!important}
 :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible){background:transparent!important;color:var(--dp-ink)!important}
 :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) body #workInputCard #noteFormHead #noteFormCloseBtn:is(:hover,:active,:focus-visible) .note-close-cross{color:var(--dp-ink)!important;stroke-width:2!important}
+
+/* ==== NOTIFICATIONS AS TYPOGRAPHY (user's instruction, 5 Nov 2026: "design mobile notifications as detailed typography") ====
+   The toast for a new report or alert (#gmToast, assets/phone-maps.js say()) is a small piece of typesetting, read top to bottom
+   in one glance, the way a newspaper sets a bulletin:
+   1. The kicker: what kind of notice it is, in Jokker 14px capitals tracked +0.08em (capitals need air that lower case does not),
+      with how long ago hung right in tabular figures, over a 1px rule in the toast's own ink. Its mark is a shape, so it reads
+      without colour: a solid dot for a report, a hollow ring for talk, a triangle in the alert red for an alert.
+   2. The name of the space: Jokker 24px at 1.05, -0.01em, balanced so a two-line name breaks evenly.
+   3. The headline: Serrif Light 18px at 1.3, +0.01em, the Details prose face, with a soft rag (text-wrap: pretty, hyphens on).
+   4. The meta line: status first, then the source and the place, Jokker Light 14px at 1.3 with tabular figures, the parts
+      joined by a middle dot after a no-break space so a dot never starts a line.
+   The rules carry twelve :not(#t) and !important, as the badges do, to clear the blanket Jokker 300 rule
+   (PHONE TYPE, :is(*) at eight ids). The last word of the name and the headline is tied to the one before it, so neither ends on a widow. The sizes are the
+   atlas's own 14/18/24; nothing is cut with an ellipsis. A plain message (Alerts on, blocked) is the headline voice alone. */
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast{padding:12px 16px 14px!important;font:300 18px/1.3 "Serrif",Georgia,serif!important;letter-spacing:.01em!important;font-kerning:normal!important;font-variant-ligatures:common-ligatures!important;font-synthesis:none!important;text-align:left!important;text-indent:0!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast p{margin:0!important;padding:0!important;text-indent:0!important;color:inherit!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-text{font:300 18px/1.3 "Serrif",Georgia,serif!important;letter-spacing:.01em!important;text-wrap:pretty!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-kick{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:baseline!important;column-gap:8px!important;padding-bottom:7px!important;margin-bottom:10px!important;border-bottom:1px solid currentColor!important;font:400 14px/1.2 var(--sans)!important;letter-spacing:.08em!important;text-transform:uppercase!important;font-variant-numeric:tabular-nums!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-label{min-width:0!important;overflow-wrap:break-word!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-when{letter-spacing:.02em!important;text-transform:none!important;white-space:nowrap!important;font-weight:300!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-mark{display:inline-block!important;width:8px!important;height:8px!important;border-radius:50%!important;background:currentColor!important;align-self:center!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-mark[data-tone="talk"]{background:transparent!important;box-shadow:inset 0 0 0 1.5px currentColor!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-mark[data-tone="alert"]{width:11px!important;height:10px!important;border-radius:0!important;background:var(--gm-alert,#ff5a4e)!important;clip-path:polygon(50% 0,100% 100%,0 100%)!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-name{font:400 24px/1.05 var(--sans)!important;letter-spacing:-.01em!important;text-wrap:balance!important;overflow-wrap:break-word!important;hyphens:manual!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-head{margin-top:6px!important;font:300 18px/1.3 "Serrif",Georgia,serif!important;letter-spacing:.01em!important;text-wrap:pretty!important;hyphens:auto!important;hyphenate-limit-chars:7 3 3!important;overflow-wrap:break-word!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-meta{margin-top:10px!important;font:300 14px/1.3 var(--sans)!important;letter-spacing:.01em!important;font-variant-numeric:tabular-nums!important}
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-dot{white-space:pre!important}
+/* A part of the meta line moves to the next line whole ("Press report, named outlet" is one fact); only a part longer than the line breaks inside. */
+:root:is(.gm-map,.gmd):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #gmToast .gm-toast-meta>span{display:inline-block!important;max-width:100%!important}
+/* On the desktop the toast is max-content wide; a notice of four lines takes one steady measure instead. */
+:root.gmd:not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t):not(#t) #globeViewport>#gmToast.is-rich{width:min(420px,calc(100% - 2 * var(--gmd-gap,16px)))!important}
+@media (prefers-reduced-motion:reduce){:root.gm-map #gmToast{transition:none!important}}
