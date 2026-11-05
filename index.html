@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=556">
-  <script src="assets/config.js?v=556"></script>
-  <script src="assets/subtopic.js?v=556"></script>
-  <script src="assets/names.js?v=556"></script>
-  <script src="assets/grounding.js?v=556"></script>
-  <script src="assets/repeats.js?v=556"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=557">
+  <script src="assets/config.js?v=557"></script>
+  <script src="assets/subtopic.js?v=557"></script>
+  <script src="assets/names.js?v=557"></script>
+  <script src="assets/grounding.js?v=557"></script>
+  <script src="assets/repeats.js?v=557"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=556"></script>
+  <script src="assets/institutions.js?v=557"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10019,11 +10019,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v556';
+    const ATLAS_RELEASE = 'culture-atlas-v557';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=556').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=557').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13042,9 +13042,22 @@ return maplibregl$1;
     const proseTitle = (t) => String(t || '').replace(/\s+/g, ' ').trim().replace(/[.:…]+$/, '');
     // Details rows carry a title and their points, nothing under the title (user, 5 Nov 2026: "delete all the subtext").
     // Callers still pass a second argument; it is ignored, so no subtitle, verdict line or caption is drawn, long or short.
+    const FOLD_WORDS = 120, FOLD_MIN_WORDS = 40;
     function proseRow(title, _sub, lis, opts) {
       opts = opts || {};
       let list = (lis || []).filter(Boolean);
+      // A long row shows its first points and keeps the rest behind one control, so a record opens on what matters and the
+      // remainder is a click away (user, 5 Nov 2026: "check for abundance of text and fix it"). Nothing is dropped: the rest is in
+      // the page, and find-in-page opens it. A row shows at most `fold` points, and stops sooner once FOLD_WORDS are shown (always
+      // at least one), because some rows are four points of 150 words each. What is folded must be worth the click: two or more
+      // points, or one of FOLD_MIN_WORDS or more, so the control never hides a short last line.
+      if (opts.fold && list.length > 1) {
+        const wc = (h) => String(h).replace(/<[^>]*>/g, ' ').split(/\s+/).filter(Boolean).length;
+        let keep = 0, seen = 0;
+        while (keep < list.length && keep < opts.fold && (keep === 0 || seen + wc(list[keep]) <= FOLD_WORDS)) seen += wc(list[keep++]);
+        const rest = list.slice(keep);
+        if (rest.length >= 2 || (rest.length === 1 && wc(rest[0]) >= FOLD_MIN_WORDS)) list = list.slice(0, keep).concat([`<li class="d-row-fold"><details><summary><span class="fold-closed">${rest.length} more</span><span class="fold-open">Fewer</span></summary><ul class="d-row-list">${rest.join('')}</ul></details></li>`]);
+      }
       if (opts.box) list = list.concat([`<li>${opts.box}</li>`]);
       const items = list.join('');
       if (!title || !items) return '';
@@ -13061,7 +13074,7 @@ return maplibregl$1;
       const hasReport = d.funding_verdict || (d.funding || []).length;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
       const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
-      return proseRow('Funding', escapeHtml(verdict), proseChunks(funding, 0).map(t => proseLi('', escapeHtml(t))));
+      return proseRow('Funding', escapeHtml(verdict), proseChunks(funding, 0).map(t => proseLi('', escapeHtml(t))), { fold: 4 });
     }
     // Scale and money: the accounts figures a filing states (inst.finance) and the size figures a source states (inst.scale), nothing estimated.
     // Shares are worked out here from the stored amounts, against the same year's income, and only where the amount is below it.
@@ -13117,7 +13130,7 @@ return maplibregl$1;
     function proseIntroHtml(inst) {
       const d = inst.details || {};
       const rows = [];
-      rows.push(proseRow('Overview', '', proseChunks(d.overview, 0).map(t => proseLi('', escapeHtml(t)))));
+      rows.push(proseRow('Overview', '', proseChunks(d.overview, 0).map(t => proseLi('', escapeHtml(t))), { fold: 3 }));
       rows.push(proseFundingRow(inst));
       rows.push(proseScaleRow(inst));
       rows.push(proseBureaucracyRow(inst));
@@ -13152,7 +13165,7 @@ return maplibregl$1;
           const m = f.points.length >= 3 ? pt.match(/^([A-Z][^:.]{1,38}):\s+(.+)$/s) : null;
           return proseLi(m ? `${m[1]}:` : '', escapeHtml(proseEnd(m ? m[2] : pt)), !isCleanResult(pt));
         });
-        rows.push(proseRow(markFlag(proseTitle(f.heading)), '', lis, { tone: 'flag', gossip: told.length > 0 }));
+        rows.push(proseRow(markFlag(proseTitle(f.heading)), '', lis, { tone: 'flag', gossip: told.length > 0, fold: 3 }));
       });
       const more = (inst.flag_details || []).filter(x => x && x.text).map(x => x.text);
       const sameAsFunding = [inst.watch && watchIsAboutMoney(inst.watch) ? inst.watch : '', inst.funding].some(t => t && String(t).trim() === String(inst.why_flagged || '').trim());
@@ -13197,7 +13210,7 @@ return maplibregl$1;
         const c = inst.case_study;
         items.push(proseLi(`${c.title}${c.kick ? ' (' + c.kick + ')' : ''}.`, escapeHtml([proseSay(c.summary), proseSay(c.bullets), (c.timeline || []).map(t => `${t.date}: ${proseEnd(t.event)}`).join(' ')].filter(Boolean).join(' ')), true));
       }
-      if (items.some(Boolean)) rows.push(proseRow('Reported items', 'Each item names its sources.', items, { tone: 'flag', gossip: true }));
+      if (items.some(Boolean)) rows.push(proseRow('Reported items', 'Each item names its sources.', items, { tone: 'flag', gossip: true, fold: 3 }));
       // Propaganda: each documented use by a state or regime, with its period and sources.
       const propLis = (inst.propaganda || []).map(p => proseLi(`${p.kind === 'today' ? 'Now' : 'In the past'}, ${proseDates(p.period)}.`, escapeHtml(proseEnd(p.summary)) + proseCite(p.sources, 3)));
       rows.push(proseRow('Propaganda', '', propLis));
@@ -13211,11 +13224,11 @@ return maplibregl$1;
         if (!said && !it.title) return '';
         return proseLi('', `${o}${it.title ? ', ' + escapeHtml(proseEnd(it.title)) + ' ' : escapeHtml(when) + ': '}${escapeHtml(said)}`);
       }).filter(Boolean);
-      rows.push(proseRow('In the art press', '', pressLis));
+      rows.push(proseRow('In the art press', '', pressLis, { fold: 2 }));
       if (inst.critique_note) rows.push(proseRow('What the field says', '', [proseLi('', escapeHtml(proseEnd(inst.critique_note)))]));
       const caseLis = (inst.case_notes || []).map(n => proseLi(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3), true));
-      rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true }));
-      rows.push(proseRow('Wider context', '', proseChunks(d.wider_context, 0).map(t => proseLi('', escapeHtml(t)))));
+      rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true, fold: 3 }));
+      rows.push(proseRow('Wider context', '', proseChunks(d.wider_context, 0).map(t => proseLi('', escapeHtml(t))), { fold: 2 }));
       if (!isGossipModeActive) rows.push(proseRow('Studies', '', (inst.study_notes || []).map(s => proseLi(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : '')))));
       if (d.bottom_line) rows.push(proseRow('Bottom line', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
       // Sources: every source the report and the record name, one bullet per site; the date it was researched is the subtitle, and the
@@ -13228,7 +13241,7 @@ return maplibregl$1;
       if (fil && fil !== reg) regLinks.push(`Filings: ${link(fil, registryName(fil))}`);
       // Where the founding year and the address came from leads the list; the registry and the filings close it.
       const basics = sourcesHtml(inst, true, true) || [];
-      rows.push(proseRow('Sources', d.retrieved ? `Researched ${escapeHtml(humanDate(d.retrieved))}` : '', basics.concat(proseLinkList(urls, 12).map(a => `<li>${a}</li>`), regLinks.length ? [`<li>${regLinks.join(' · ')}</li>`] : [])));
+      rows.push(proseRow('Sources', d.retrieved ? `Researched ${escapeHtml(humanDate(d.retrieved))}` : '', basics.concat(proseLinkList(urls, 12).map(a => `<li>${a}</li>`), regLinks.length ? [`<li>${regLinks.join(' · ')}</li>`] : []), { fold: 6 }));
       return proseRows(rows, 'Reporting and context');
     }
     // Accounts from review sites and Reddit, and what readers sent in: the same rows, the caution said once as the subtitle.
@@ -13470,17 +13483,34 @@ return maplibregl$1;
       if (inst.watch) return { text: firstSentence(inst.watch), src: '' };
       return { text: 'No funders on record.', src: '' };
     }
-    function chatLineHtml(inst, gossip) {
+    function chatLineHtml(inst, gossip, same) {
+      same = same || {};
       const f = recordFact(inst, gossip) || { text: 'Reported items are on its record page.', src: '' };
       const url = ownSiteUrl(inst), dom = hostOf(url);
       const site = dom ? ` (<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${escapeHtml(dom)}</a>)` : '';
-      const g = inst.grade && GRADE[inst.grade] ? ` Grade ${gradeLetter(inst.grade)}.` : '';
+      const g = !same.grade && inst.grade && GRADE[inst.grade] ? ` Grade ${gradeLetter(inst.grade)}.` : '';
       // The whole account when it is short enough (who did what, and the answer to it), not its first sentence alone.
       let text = f.full && f.full.length <= 300 ? f.full : f.text;
       // A grade D or F line states the funder that set the grade too, when the reported item is about something else.
       const why = String(inst.why_flagged || '').trim();
       if (gossip && inst.grade >= 4 && why && why.length <= 200 && !text.includes(why.slice(0, 40))) text = `${proseEnd(why)} ${text}`;
-      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a> in ${escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(text)}${f.src ? ' ' + f.src : ''}${g}</p>`;
+      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a>${same.place ? '' : ' in ' + escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(text)}${f.src ? ' ' + f.src : ''}${g}</p>`;
+    }
+    // What every line of a list would repeat: the place, when all its spaces share one and the list's title names it, and the grade,
+    // when all share one and the title says it. Each line then gives only what is its own (user, 5 Nov 2026: too much text). A list
+    // with no title says both on every line, as before.
+    function listSame(st) {
+      if (st.same) return st.same;
+      const title = String(st.title || '').replace(/<[^>]*>/g, ' ').toLowerCase();
+      const items = st.items || [];
+      const one = (f) => items.length > 1 && items.every(i => f(i) && f(i) === f(items[0])) ? f(items[0]) : '';
+      const place = one(i => placeLabel(i)), city = items[0] ? String(items[0].city || '').toLowerCase() : '';
+      const grade = one(i => (i.grade && GRADE[i.grade] ? gradeLetter(i.grade) : ''));
+      st.same = {
+        place: !!(title && place && city && title.includes(city)),
+        grade: !!(title && grade && new RegExp('\\bgrade ' + String(grade).toLowerCase() + '\\b').test(title)),
+      };
+      return st.same;
     }
     // A list of more than 12 pages itself: the link, the chip and typing "more" all show the next 12.
     window.atlasListMore = null;
@@ -13490,7 +13520,7 @@ return maplibregl$1;
       const left = st.items.length - st.offset;
       window.atlasListMore = left > 0 ? st : null;
       const more = left > 0 ? `<p class="no-indent">${left} more. <a href="#" class="list-more">Show the next ${Math.min(12, left)}</a>, or ask for one grade to narrow it.</p>` : '';
-      return page.map(i => chatLineHtml(i, st.gossip)).join('') + more;
+      return page.map(i => chatLineHtml(i, st.gossip, listSame(st))).join('') + more;
     }
     function showMoreList() {
       const st = window.atlasListMore;
@@ -16367,7 +16397,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I answer only from the records on this page: who funds a space, what is reported about it, hours and prices where they are recorded, and the sources.</p><p>${countA} spaces have a source outside the museum, ${countB} are flagged with a reason, and ${countU} are unverified.</p>`);
       const listOf = (items, title, gossip) => {
         if (!items.length) { answer('<p>None are recorded.</p>', undefined, false); return; }
-        const st = { items, gossip: !!gossip, offset: 0 };
+        const st = { items, gossip: !!gossip, offset: 0, title };
         answer(`<p>${title}</p>${renderListPage(st)}`, window.atlasListMore ? ['Show more', ...followFor(true)].slice(0, 3) : followFor(true), !!gossip);
       };
 
@@ -20915,13 +20945,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=556"></script>
-<script src="assets/funding-views.js?v=556"></script>
-<script src="assets/layers.js?v=556"></script>
-<script src="assets/hq-detail.js?v=556"></script>
-<script src="assets/bubbles.js?v=556" defer></script>
-<script src="assets/phone-maps.js?v=556"></script>
-<script src="assets/desktop-maps.js?v=556"></script>
-<script src="assets/chat-resize.js?v=556"></script>
+<script src="assets/typeset.js?v=557"></script>
+<script src="assets/funding-views.js?v=557"></script>
+<script src="assets/layers.js?v=557"></script>
+<script src="assets/hq-detail.js?v=557"></script>
+<script src="assets/bubbles.js?v=557" defer></script>
+<script src="assets/phone-maps.js?v=557"></script>
+<script src="assets/desktop-maps.js?v=557"></script>
+<script src="assets/chat-resize.js?v=557"></script>
 </body>
 </html>
