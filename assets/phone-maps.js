@@ -1326,8 +1326,10 @@
         const x = list[+go.dataset.i]; if (!x) return;
         const hasRecord = typeof window.selectInstitution === 'function' && !!recordOf(x.inst.id || x.inst.name);
         // As in the maps app: on a phone the list steps aside for the space's record (or drops to peek when there is no
-        // record, so the map shows the place); on desktop the panel stays beside the map.
+        // record, so the map shows the place). On desktop the panel closes, so the space's record and the map have the room
+        // (user, 5 Nov 2026: "close panel on desktop too when opening museum").
         if (PHONE()) { if (hasRecord) park(); else setDetent('peek'); }
+        else close(false);
         if (hasRecord) window.selectInstitution(x.inst, false);
         const fly = g('flyTo');
         if (typeof fly === 'function' && typeof x.inst.lon === 'number') fly(x.inst.lon, x.inst.lat);
