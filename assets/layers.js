@@ -754,7 +754,7 @@
         const N = Math.min(nodes.length, 10), R = 64 * zoomK;
         const items = nodes.slice(0, N).map(n => {
           // Two pills, as on displaay.net/typefaces: the name filled in its kind's colour, the kind word in an outline beside it.
-          const reach = reachOf(n[5]), word = KIND_WORD[n[1]] || '', text = n[0].length > 28 ? n[0].slice(0, 26) + '…' : n[0];
+          const reach = reachOf(n[5]), word = KIND_WORD[n[1]] || '', text = fitWords(n[0], 40);
           const nw = ctx.measureText(text).width + 2 * PILL_PAD, ww = word ? ctx.measureText(word).width + 2 * PILL_PAD : 0;
           return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, word, nw, ww, w: nw + (word ? PILL_GAP + ww : 0) };
         });
@@ -800,6 +800,13 @@
   // fills measure 7:1 or better against black); the kind pill is an outline on the map's own ground, so it reads as a tag
   // to the name and not a second name. The box the layout placed (it.box) holds both, with a 4px gap between them.
   const PILL_PAD = 10, PILL_GAP = 4;
+  // A name too long for its pill is cut at the last whole word that fits, never inside a word ("Federal Culture Incentive ..."
+  // read as a different law); the hover block then gives the name in full.
+  function fitWords(t, n) {
+    if (t.length <= n) return t;
+    const cut = t.slice(0, n - 1), sp = cut.lastIndexOf(' ');
+    return (sp > n / 2 ? cut.slice(0, sp) : cut).replace(/[\s,;:.\-–]+$/, '') + '…';
+  }
   function pill(ctx, x, y, w, h, fill, edge) {
     ctx.beginPath(); ctx.roundRect(x + 0.5, y + 0.5, w - 1, h - 1, (h - 1) / 2);
     ctx.fillStyle = fill; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = edge; ctx.stroke();
@@ -827,7 +834,13 @@
     const m = LM_HOV.line ? LM_HOV : (LM.find(q => q.ask === LM_HOV.ask && q.rec === LM_HOV.rec && !q.pass) || null); if (!m) return;
     const W = ctx.canvas.clientWidth || 1e9;
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
-    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.tip || (m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat'))].filter(Boolean);
+    const act = m.tip || (m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat'));
+    // A funder in a ring already has its name and kind on the map in its own pills, and its spoke says whose funder it is,
+    // so the block does not say them again: it adds only what the pills do not (the full name when the pill cut it, how far
+    // the funder reaches) and hangs from the pill, as one more line of it, not as a second label piled beside the mark.
+    const pinned = !!m.lbox;
+    const named = !pinned || fitWords(m.label, 40) !== m.label;
+    const lines = [named ? clip(m.label) : null, !pinned && m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, act].filter(Boolean);
     ctx.save(); ctx.font = LW() + ' 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     // A stack of pills, as the funder names are (displaay.net/typefaces): the name filled in the mark's colour, what it is in
     // outlined pills under it, and what a click does as a solid ink pill, as Displaay sets its one action. Each pill is as
@@ -837,17 +850,25 @@
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
     // ring belongs to first, so the ring's other names stay readable.
     const H = ctx.canvas.clientHeight || 1e9, th = h * lines.length + gap * (lines.length - 1), away = m.ox !== undefined ? Math.sign(m.x - m.ox) || 1 : 1;
-    const cand = [[away > 0 ? m.x + 12 : m.x - 12 - w, m.y - th / 2], [away > 0 ? m.x - 12 - w : m.x + 12, m.y - th / 2], [m.x - w / 2, m.y - 12 - th], [m.x - w / 2, m.y + 12]]
+    const lb = m.lbox, lbLeft = lb && lb.x + lb.w / 2 < m.x;
+    const cand = (pinned
+      // Under the pill, then over it, lined up on the pill's outer end.
+      ? [[lbLeft ? lb.x + lb.w - w : lb.x, lb.y + lb.h + gap], [lbLeft ? lb.x + lb.w - w : lb.x, lb.y - gap - th], [lbLeft ? lb.x - 12 - w : lb.x + lb.w + 12, lb.y]]
+      : [[away > 0 ? m.x + 12 : m.x - 12 - w, m.y - th / 2], [away > 0 ? m.x - 12 - w : m.x + 12, m.y - th / 2], [m.x - w / 2, m.y - 12 - th], [m.x - w / 2, m.y + 12]])
       .map(([x, y]) => ({ x: Math.max(4, Math.min(x, W - w - 4)), y: Math.max(4, Math.min(y, H - th - 4)), w, h: th }));
-    const spot = cand.find(c => !collides(c, boxes || [])) || cand[0], bx = spot.x, by = spot.y;
-    const right = bx + w / 2 < m.x;   // the stack sits left of the mark, so its pills line up on their right ends
+    // Where every spot covers something, the one that covers least, not simply the first: the first was what put the block
+    // over the space's own name.
+    const others = (boxes || []).filter(o => o !== lb);
+    const cover = c => others.reduce((t, o) => t + Math.max(0, Math.min(c.x + c.w, o.x + o.w) - Math.max(c.x, o.x)) * Math.max(0, Math.min(c.y + c.h, o.y + o.h) - Math.max(c.y, o.y)), 0);
+    const spot = cand.find(c => !collides(c, others)) || cand.slice().sort((a, b) => cover(a) - cover(b))[0], bx = spot.x, by = spot.y;
+    const right = pinned ? lbLeft : bx + w / 2 < m.x;   // the stack sits left of the mark, so its pills line up on their right ends
     // A halo of the map's ground under each pill closes the gaps between them, so no label under the stack shows through.
     const at = k => ({ pw: ws[k], px: right ? bx + w - ws[k] : bx, py: by + k * (h + gap) });
     ctx.fillStyle = paper;
     lines.forEach((t, k) => { const { pw, px, py } = at(k), e = gap / 2 + 1; ctx.beginPath(); ctx.roundRect(px - e, py - e, pw + 2 * e, h + 2 * e, h / 2 + e); ctx.fill(); });
     lines.forEach((t, k) => {
       const { pw, px, py } = at(k);
-      const first = k === 0, act = k === lines.length - 1 && lines.length > 1;
+      const first = k === 0 && named, act = k === lines.length - 1 && (lines.length > 1 || pinned);
       const fill = first ? (m.col || '#fff') : act ? ink : paper, text = first ? '#000' : act ? paper : ink;
       pill(ctx, px, py, pw, h, fill, first ? '#000' : ink);
       ctx.fillStyle = text; ctx.fillText(t, px + PILL_PAD, py + h / 2 + 0.5);
