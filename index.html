@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=552">
-  <script src="assets/config.js?v=552"></script>
-  <script src="assets/subtopic.js?v=552"></script>
-  <script src="assets/names.js?v=552"></script>
-  <script src="assets/grounding.js?v=552"></script>
-  <script src="assets/repeats.js?v=552"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=555">
+  <script src="assets/config.js?v=555"></script>
+  <script src="assets/subtopic.js?v=555"></script>
+  <script src="assets/names.js?v=555"></script>
+  <script src="assets/grounding.js?v=555"></script>
+  <script src="assets/repeats.js?v=555"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=552"></script>
+  <script src="assets/institutions.js?v=555"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10019,11 +10019,11 @@ return maplibregl$1;
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v552';
+    const ATLAS_RELEASE = 'culture-atlas-v555';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=552').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=555').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13040,22 +13040,16 @@ return maplibregl$1;
     // is tone "flag" and carries data-gossip, so Gossip mode still sets it, and only it, in the gossip colour.
     const proseLi = (lead, html, gossip) => html ? `<li${gossip ? ' data-gossip="item"' : ''}>${lead ? proseLead(lead) : ''}${html}</li>` : '';
     const proseTitle = (t) => String(t || '').replace(/\s+/g, ' ').trim().replace(/[.:…]+$/, '');
-    // The left column holds the title and a subtitle only (user, 3 Nov 2026): a subtitle is one short line, such as "Founded 1998",
-    // "Level 1 of 5, Independent" or "Researched 3 Nov 2026". Anything longer than that, or a box of links, is text and goes to the
-    // right column as the first (or, for the box, the last) line of the list.
-    const SUB_MAX = 72;
-    const isSubtitle = (s) => { const t = String(s || '').replace(/<[^>]+>/g, '').trim(); return t.length <= SUB_MAX && !/[.!?;]\s+\S/.test(t); };
-    function proseRow(title, sub, lis, opts) {
+    // Details rows carry a title and their points, nothing under the title (user, 5 Nov 2026: "delete all the subtext").
+    // Callers still pass a second argument; it is ignored, so no subtitle, verdict line or caption is drawn, long or short.
+    function proseRow(title, _sub, lis, opts) {
       opts = opts || {};
       let list = (lis || []).filter(Boolean);
-      let subtitle = sub || '';
-      // A subtitle too long for the head leads the points instead, as a line of its own without a bullet.
-      if (subtitle && !isSubtitle(subtitle)) { list = [`<li class="d-row-lead"${opts.gossip ? ' data-gossip="item"' : ''}>${subtitle}</li>`].concat(list); subtitle = ''; }
       if (opts.box) list = list.concat([`<li>${opts.box}</li>`]);
       const items = list.join('');
-      if (!title || (!items && !subtitle)) return '';
+      if (!title || !items) return '';
       const g = opts.gossip ? ' data-gossip="item"' : '';
-      return `<section class="d-row${opts.tone ? ' is-' + opts.tone : ''}"><div class="d-row-head"><h3 class="d-row-title"${g}>${title}</h3>${subtitle ? `<p class="d-row-sub no-indent"${g}>${subtitle}</p>` : ''}${opts.after || ''}</div>${items ? `<ul class="d-row-list">${items}</ul>` : ''}</section>`;
+      return `<section class="d-row${opts.tone ? ' is-' + opts.tone : ''}"><div class="d-row-head"><h3 class="d-row-title"${g}>${title}</h3>${opts.after || ''}</div><ul class="d-row-list">${items}</ul></section>`;
     }
     const proseRows = (rows, label, gossip) => { const body = rows.filter(Boolean).join(''); return body ? `<div class="prose-part d-rows" role="region" aria-label="${label}"${gossip ? ' data-gossip="items"' : ''}>${body}</div>` : ''; };
     // Overview and funding: what the space is, then who pays for it, from the report where there is one and from the archive otherwise.
@@ -13207,7 +13201,7 @@ return maplibregl$1;
       // Propaganda: each documented use by a state or regime, with its period and sources.
       const propLis = (inst.propaganda || []).map(p => proseLi(`${p.kind === 'today' ? 'Now' : 'In the past'}, ${proseDates(p.period)}.`, escapeHtml(proseEnd(p.summary)) + proseCite(p.sources, 3)));
       rows.push(proseRow('Propaganda', '', propLis));
-      // The art press: the report's overview as the subtitle, one bullet per piece, the outlet linked to the piece; then what the archive adds.
+      // The art press: one bullet per piece, the outlet linked to the piece; then what the archive adds.
       const press = d.press || {};
       const pressLis = (press.items || []).map(it => {
         const o = /^https?:\/\//.test(it.url || '') ? `<a href="${escapeHtml(it.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(it.outlet)}</a>` : escapeHtml(it.outlet);
@@ -13217,9 +13211,7 @@ return maplibregl$1;
         if (!said && !it.title) return '';
         return proseLi('', `${o}${it.title ? ', ' + escapeHtml(proseEnd(it.title)) + ' ' : escapeHtml(when) + ': '}${escapeHtml(said)}`);
       }).filter(Boolean);
-      // The overview sits as the subtitle when it fits; one too long for that would only repeat the pieces as a bullet of its own, so it goes.
-      const pressSub = press.overall ? escapeHtml(proseEnd(press.overall)) : '';
-      rows.push(proseRow('In the art press', pressLis.length && !isSubtitle(pressSub) ? '' : pressSub, pressLis));
+      rows.push(proseRow('In the art press', '', pressLis));
       if (inst.critique_note) rows.push(proseRow('What the field says', '', [proseLi('', escapeHtml(proseEnd(inst.critique_note)))]));
       const caseLis = (inst.case_notes || []).map(n => proseLi(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3), true));
       rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true }));
@@ -20923,13 +20915,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=552"></script>
-<script src="assets/funding-views.js?v=552"></script>
-<script src="assets/layers.js?v=552"></script>
-<script src="assets/hq-detail.js?v=552"></script>
-<script src="assets/bubbles.js?v=552" defer></script>
-<script src="assets/phone-maps.js?v=552"></script>
-<script src="assets/desktop-maps.js?v=552"></script>
-<script src="assets/chat-resize.js?v=552"></script>
+<script src="assets/typeset.js?v=555"></script>
+<script src="assets/funding-views.js?v=555"></script>
+<script src="assets/layers.js?v=555"></script>
+<script src="assets/hq-detail.js?v=555"></script>
+<script src="assets/bubbles.js?v=555" defer></script>
+<script src="assets/phone-maps.js?v=555"></script>
+<script src="assets/desktop-maps.js?v=555"></script>
+<script src="assets/chat-resize.js?v=555"></script>
 </body>
 </html>
