@@ -6597,7 +6597,8 @@ return maplibregl$1;
           minzoom: 0
         }
       },
-      // Street-map labels are set in PP Neue Gstaad Regular: glyphs generated from the font file (assets/glyphs), not the map host's Noto Sans.
+      // Street-map labels are set in Serrif Light (user's instruction, 5 Nov 2026): glyphs generated from fonts/Serrif-TRIAL-Light.woff2 into
+      // assets/glyphs/Serrif Light, not the map host's Noto Sans. The museum tag is an HTML marker and stays in Jokker.
       glyphs: location.href.replace(/[?#].*$/, '').replace(/[^/]*$/, '') + 'assets/glyphs/{fontstack}/{range}.pbf',
       layers: [
         // The street map is a line drawing: every edge (water, parks, landcover, buildings, roads, boundaries) is a 1px line
@@ -6717,7 +6718,7 @@ return maplibregl$1;
           minzoom: 8,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
-            'text-font': ['PP Neue Gstaad Regular'],
+            'text-font': ['Serrif Light'],
             'text-size': 14,
             'text-transform': 'none',
             'text-letter-spacing': 0
@@ -6752,7 +6753,7 @@ return maplibregl$1;
       }
     };
     let cityLeafletMap = null;
-    // The glyph ranges cut from PP Neue Gstaad into assets/glyphs. Add a range here when its file is added.
+    // The glyph ranges cut from Serrif Light (and earlier PP Neue Gstaad) into assets/glyphs. Add a range here when its file is added.
     const CITY_MAP_LOCAL_GLYPHS = new Set(['0-255', '256-511', '7680-7935', '8192-8447', '8448-8703']);
 
     function initCityMapIfNeeded() {
