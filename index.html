@@ -19253,7 +19253,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       ALL_INSTITUTIONS.forEach(i => funderOf(i).forEach(f => { funders[f.funder] = (funders[f.funder] || 0) + 1; }));
       pools.funder = shuffled(Object.keys(funders).filter(f => funders[f] >= 3)).map(f => plain(`Which institutions does ${article(f)} fund?`)).filter(Boolean).slice(0, 2);
       const order = shuffled(Object.keys(pools).filter(k => pools[k].length));
-      const want = 18 + Math.floor(Math.random() * 10);
+      const want = 8 + Math.floor(Math.random() * 5);
       const out = [];
       for (let round = 0; round < 2 && out.length < want; round++) {
         for (const k of order) {
@@ -19465,6 +19465,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (out.length < n) out.push(...freshChips(n - out.length, out));
       return out;
     }
+    // The empty chat asks eight to twelve questions, not a page of them (user, 5 Nov 2026: too much text). The number is drawn once
+    // per load, so a resize or a new chat does not change it; the desktop panel still shows fewer when fewer fit.
+    const STARTER_SHOWN = 8 + Math.floor(Math.random() * 5);
     const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}"><span class="sp-text">${escapeHtml(noBreakHyphens(x.q))}</span></button>`;
     function renderStarterPrompts() {
       let list = [];
@@ -19483,10 +19486,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       });
       const desk = document.getElementById('curatorStarterPrompts');
-      if (desk) desk.innerHTML = list.map(promptButton).join('');
-      // The phone drawer scrolls, so it takes eighty and no more.
+      // Four times the questions shown, so the ones too long for one line can go and the panel still fills.
+      if (desk) desk.innerHTML = list.slice(0, STARTER_SHOWN * 4).map(promptButton).join('');
+      // The phone drawer takes the same eight to twelve.
       const drawer = document.getElementById('curatorDrawerStarterPrompts');
-      if (drawer) drawer.innerHTML = list.slice(0, 120).map(promptButton).join('');
+      if (drawer) drawer.innerHTML = list.slice(0, STARTER_SHOWN).map(promptButton).join('');
       fitQuestionCloud();
       verifyShown(list);
     }
@@ -19502,6 +19506,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const wide = [].slice.call(box.children).filter(k => { const s = k.querySelector('.sp-text'); return s && s.getBoundingClientRect().width > room + 0.5; });
         wide.forEach(k => k.remove());
       }
+      // No more than eight to twelve, however tall the panel.
+      while (box.children.length > STARTER_SHOWN) box.lastElementChild.remove();
       if (g.scrollHeight <= g.clientHeight) return;
       // The cloud holds about a thousand questions and a dozen fit. Taking them off one at a time re-laid the page out after
       // every one (seconds on load). All the bottoms are read in one pass, the ones past the foot go together, and the
