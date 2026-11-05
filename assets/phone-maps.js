@@ -909,14 +909,47 @@
       feed.setAttribute('aria-modal', 'true');
       feed.setAttribute('aria-labelledby', 'gmFeedTitle');
       document.body.appendChild(feed);
-      const toast = document.createElement('p');
+      const toast = document.createElement('div');
       toast.id = 'gmToast';
       toast.setAttribute('role', 'status');
       toast.setAttribute('aria-live', 'polite');
       document.body.appendChild(toast);
       placeStrip();
-      let toastTimer = 0;
-      const say = (t) => { toast.textContent = t; toast.classList.toggle('is-on', !!t); clearTimeout(toastTimer); if (t) toastTimer = setTimeout(() => say(''), 6000); };
+      // The notice is set as typography, not as a line of text (user, 5 Nov 2026: "design mobile notifications as detailed
+      // typography"). A plain message (Alerts on, blocked) is one line of Serrif. A report or an alert is four lines, each in its
+      // own voice: a kicker in tracked capitals over a hairline (what kind of notice, with how long ago hung on the right in
+      // tabular figures), the name of the space large and tight in Jokker, the headline in Serrif Light, and a meta line of
+      // status, source and place. The look is in assets/atlas.css, "NOTIFICATIONS AS TYPOGRAPHY". It stays up longer the more
+      // there is to read: 6s, plus a quarter second a word past the first twelve, to 12s.
+      let toastTimer = 0, toastClear = 0;
+      const nb = (t) => esc(t).replace(/ (\S+)$/, '\u00a0$1');
+      const dot = '<span class="gm-toast-dot" aria-hidden="true">\u00a0\u00b7 </span>';
+      const noteHtml = (n) => '<p class="gm-toast-kick"><span class="gm-toast-mark" data-tone="' + esc(n.tone || 'report') + '" aria-hidden="true"></span>'
+        + '<span class="gm-toast-label">' + n.label.map(esc).join(dot) + '</span>'
+        + (n.when ? '<span class="gm-toast-when">' + esc(n.when) + '</span>' : '') + '</p>'
+        + '<p class="gm-toast-name">' + nb(n.name) + '</p>'
+        + (n.head ? '<p class="gm-toast-head">' + nb(n.head) + '</p>' : '')
+        + (n.meta && n.meta.length ? '<p class="gm-toast-meta">' + n.meta.map((m, i, a) => '<span>' + esc(m) + (i < a.length - 1 ? '<span class="gm-toast-dot" aria-hidden="true">\u00a0\u00b7</span>' : '') + '</span>').join(' ') + '</p>' : '');
+      const say = (t) => {
+        clearTimeout(toastTimer); clearTimeout(toastClear);
+        if (!t) { toast.classList.remove('is-on'); toastClear = setTimeout(() => { toast.innerHTML = ''; }, 250); return; }
+        const rich = typeof t === 'object';
+        toast.classList.toggle('is-rich', rich);
+        toast.dataset.tone = rich ? (t.tone || 'report') : '';
+        toast.innerHTML = rich ? noteHtml(t) : '<p class="gm-toast-text">' + nb(t) + '</p>';
+        toast.classList.add('is-on');
+        const words = toast.textContent.trim().split(/\s+/).length;
+        toastTimer = setTimeout(() => say(''), Math.min(12000, 6000 + Math.max(0, words - 12) * 250));
+      };
+      // One report or alert as a notice. The meta line names the status first, so talk is never read as a finding.
+      const note = (x, alert) => ({
+        tone: alert ? 'alert' : (x.status === 'talk' || x.status === 'user' ? 'talk' : 'report'),
+        label: [alert ? 'New alert' : 'New report', KIND[x.kind] || ''].filter(Boolean),
+        when: ago(x.when),
+        name: x.inst.name,
+        head: x.head,
+        meta: [STATUS[x.status], (SOURCE[x.who] || [''])[0], x.where, placeOf(x.inst)].filter(Boolean),
+      });
       let lastFocus = null;
 
       const ICO = {
@@ -1075,9 +1108,12 @@
         store.set('atlas-alerts-seen', JSON.stringify(alerts.map((x) => x.key).concat(seenKeys).slice(0, 300)));
         if (quiet || !fresh.length) return;
         const x = fresh[0];
-        say('New alert: ' + x.inst.name + '. ' + x.head);
+        say(note(x, true));
+        // The system notification cannot be styled, so its text carries the same order: the space as the title, then the
+        // kicker, the headline, and status, source and place, each on its own line.
         if (notifyOn()) {
-          try { new Notification('Alert: ' + x.inst.name, { body: x.head + ' (' + (SOURCE[x.who] || ['Source'])[0] + ', ' + (x.where || 'record') + ')', tag: x.key }); } catch (_) {}
+          const n = note(x, true);
+          try { new Notification(n.name, { body: n.label.join(' \u00b7 ') + ' \u00b7 ' + n.when + '\n' + n.head + '\n' + n.meta.join(' \u00b7 '), tag: x.key }); } catch (_) {}
         }
       }
 
@@ -1099,7 +1135,12 @@
                 live = data; liveDigest = s.digest;
                 const alerts = refresh();
                 const added = items().filter((x) => !before.has(x.key));
-                if (added.length) say(added.length === 1 ? 'New report: ' + added[0].inst.name + '. ' + added[0].head : added.length + ' new reports on the record.');
+                if (added.length === 1) say(note(added[0], false));
+                else if (added.length) {
+                  const names = [...new Set(added.map((y) => y.inst.name))];
+                  const shown = names.slice(0, 2).join(', ') + (names.length > 2 ? ' and ' + (names.length - 2) + ' more' : '');
+                  say({ tone: 'report', label: ['New reports'], when: 'now', name: added.length + ' new reports', head: shown, meta: ['On the record', 'Open Top story to read them'] });
+                }
                 announce(alerts, false);
                 if (!feed.hidden) { const sc = feed.scrollTop; render(); feed.scrollTop = sc; }
                 return;
