@@ -4402,11 +4402,14 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share.is-main{display:flex!important;width:100%!important;height:auto!important;min-height:72px!important;margin:24px 0 0!important;padding:16px!important;border-radius:20px!important;background:var(--ink)!important;color:var(--paper)!important;font:400 24px/1.1 var(--sans)!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share.is-main:hover{text-decoration:underline;text-decoration-thickness:var(--ul-w);text-underline-offset:var(--ul-off)}
 /* A section: its title on a 4px ink rule, the count beside it. */
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec{margin:72px 0 0!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec{margin:128px 0 0!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec-title{display:flex!important;align-items:baseline;gap:12px;margin:0!important;padding:20px 0 0!important;border:0!important;border-top:4px solid var(--ink)!important;background:none!important;font:500 24px/1.1 var(--sans)!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec-title>span:first-child{flex:1 1 auto;min-width:0}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec-meta{font:400 14px/1.2 var(--sans)!important;white-space:nowrap}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec .ts-story{margin-top:40px!important}
+/* More air between one report and the next (user, 5 Nov 2026): 96px, twice the gap above the top story, so each report reads as
+   its own article; sections open 128px apart so they stay further apart than the reports inside them. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-sec .ts-story+.ts-story{margin-top:96px!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-note{margin:16px 0 0!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts :is(button,a):focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px!important}
 @media (max-width:767px){:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{font-size:32px!important}}
