@@ -26,7 +26,7 @@
   // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
   // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
   // the data are drawn in a deeper step of the same hue there: 3.05:1 or better against white at the 0.8 alpha they are drawn at.
-  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#9caf7d': '#889e9a', '#9ae3e8': '#1f8b93', '#2dd4bf': '#0d9488', '#ff3dd1': '#d4109f' };
+  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#9caf7d': '#5f7d35', '#9ae3e8': '#1f8b93', '#2dd4bf': '#0d9488', '#ff3dd1': '#d4109f' };
   const lineCol = c => (document.documentElement.getAttribute('data-theme') === 'dark' ? c : (LINE_LIGHT[c] || c));
   // A hex colour with an alpha, for the halos.
   const hexA = (h, a) => `rgba(${parseInt(h.slice(1, 3), 16)}, ${parseInt(h.slice(3, 5), 16)}, ${parseInt(h.slice(5, 7), 16)}, ${Math.max(0, Math.min(1, a)).toFixed(3)})`;
