@@ -246,6 +246,27 @@
       b.addEventListener('click', () => { if (window.atlasToggleMenu) window.atlasToggleMenu(b); });
       const close = $('phoneChatCloseBtn');
       chatHead.insertBefore(b, close || null);
+      // Details is a toggle (user, 6 Nov 2026): it opens the record, and the record's own Details button, pressed, closes it.
+      $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
+    }
+
+    // ---- One of each in the chat (user, 6 Nov 2026: "make chat window not repeating buttons") ----
+    // Share information is in the chat's ⋮ menu, so on a phone the composer holds only the box and Send, as the Claude app's
+    // does. The keyboard's own close key does what the composer's chevron did, and the chevron sat over the words being typed,
+    // so it goes too. On the note screen itself both stay: there Share is the way back out of the form.
+    const shareBtn = $('chatShareBtn');
+    if (shareBtn) {
+      const syncShare = () => {
+        const off = PHONE() && !body.classList.contains('chat-input-mode-active');
+        [shareBtn, $('workKbCloseBtn')].forEach((el) => {
+          if (!el) return;
+          if (off) el.style.setProperty('display', 'none', 'important');
+          else el.style.removeProperty('display');
+        });
+      };
+      new MutationObserver(syncShare).observe(body, { attributes: true, attributeFilter: ['class'] });
+      window.addEventListener('resize', syncShare);
+      syncShare();
     }
 
     // ---- The street map's bar: one back button and the place's name -------------------------------------------------
@@ -333,6 +354,7 @@
         return Math.max(168, Math.min(Math.round(end), Math.round(h * 0.7)));
       }
       function setDetent(d, animate) {
+        if (root.classList.contains('gm-from-chat')) d = 'full';   // opened from the chat: a page of its own, always full
         detent = d;
         sheet.dataset.detent = d;
         sheet.classList.toggle('is-large', d === 'full');
@@ -357,7 +379,7 @@
       new MutationObserver(() => {
         const hidden = sheet.classList.contains('hidden'), hq = sheet.classList.contains('is-hq-sheet');
         if (hidden) { sheet.scrollTop = 0; sheet.style.removeProperty('--gm-h'); }
-        else if ((wasHidden || hq !== wasHq) && PHONE()) requestAnimationFrame(() => setDetent('peek', false));
+        else if ((wasHidden || hq !== wasHq) && PHONE()) requestAnimationFrame(() => setDetent(root.classList.contains('gm-from-chat') ? 'full' : 'peek', false));
         wasHidden = hidden; wasHq = hq;
       }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
       const name = $('dossier-sheet-name');
@@ -381,7 +403,8 @@
       // well below peek closes it.
       let y0 = null, h0 = 0, t0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
       sheet.addEventListener('touchstart', (e) => {
-        if (!PHONE() || e.touches.length !== 1) { y0 = null; return; }
+        // Opened from the chat, the record is a page of its own at full height: it only scrolls, it is never dragged.
+        if (!PHONE() || e.touches.length !== 1 || root.classList.contains('gm-from-chat')) { y0 = null; return; }
         if (e.target.closest('button, a, input, textarea, select, summary, label') && !(chrome && chrome.contains(e.target) && !e.target.closest('#close-sheet-btn'))) { y0 = null; return; }
         y0 = lastY = e.touches[0].clientY; t0 = lastT = Date.now(); h0 = sheet.offsetHeight; vel = 0; dragging = false;
       }, { passive: true });
@@ -422,6 +445,67 @@
       };
       sheet.addEventListener('touchend', end, { passive: true });
       sheet.addEventListener('touchcancel', end, { passive: true });
+
+      // ---- Details from the chat, as the Claude app opens an artifact (user, 6 Nov 2026: "make details button on chat window
+      // a toggle", "function more like Claude with details toggle and back button") ----
+      // The chat's Details button opens the record as a page of its own: full height, scrolling, never dragged, with a back
+      // button to the chat at the top left and the same Details button, pressed, at the top right. Either one goes back to the
+      // conversation where it was left, scrolled where it was. The sheet's grabber and cross and its Ask in chat button are
+      // put away while it is open, so no control is on screen twice.
+      const fromChatBar = document.createElement('div');
+      fromChatBar.className = 'gm-from-chat-bar';
+      fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" aria-label="Back to the chat">'
+        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'
+        + '<span>Chat</span></button>'
+        + '<button type="button" id="gmDetailsToggleBtn" aria-pressed="true" aria-label="Space details">Details</button>';
+      fromChatBar.hidden = true;
+      if (chrome) chrome.appendChild(fromChatBar);
+      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn, $('dossier-sheet-ask-btn')].filter(Boolean);
+      let chatScrollTop = 0;
+      function markFromChat() {
+        if (!PHONE()) return;
+        const sc = $('curatorScrollArea');
+        chatScrollTop = sc ? sc.scrollTop : 0;
+        root.classList.add('gm-from-chat');
+        fromChatBar.hidden = false;
+        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'true');
+        // Inline and !important: the sheet's controls are drawn by rules that are themselves !important (atlas.css).
+        putAway().forEach((el) => el.style.setProperty('display', 'none', 'important'));
+      }
+      function clearFromChat() {
+        if (!root.classList.contains('gm-from-chat')) return;
+        root.classList.remove('gm-from-chat');
+        fromChatBar.hidden = true;
+        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
+        putAway().forEach((el) => el.style.removeProperty('display'));
+      }
+      function backToChat() {
+        clearFromChat();
+        sheet.classList.add('hidden');
+        $('tab-dossier')?.classList.remove('is-on');
+        if (typeof window.setMobileViewMode === 'function') window.setMobileViewMode('chat');
+        $('tab-chat')?.classList.add('is-on');
+        // The conversation comes back where it was left, and focus returns to the button that opened the record.
+        // The chat is laid out again once it is shown, so the scroll is put back over a few frames.
+        const restore = () => { const sc = $('curatorScrollArea'); if (sc) sc.scrollTop = chatScrollTop; };
+        requestAnimationFrame(() => requestAnimationFrame(restore));
+        setTimeout(() => {
+          restore();
+          const d = $('phoneChatDetailsBtn');
+          if (d && d.offsetParent !== null) { try { d.focus({ preventScroll: true }); } catch (_) { d.focus(); } }
+        }, 120);
+      }
+      window.atlasMarkDetailsFromChat = markFromChat;
+      window.atlasDetailsBackToChat = backToChat;
+      $('gmDetailsBackBtn')?.addEventListener('click', backToChat);
+      $('gmDetailsToggleBtn')?.addEventListener('click', backToChat);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && root.classList.contains('gm-from-chat') && !sheet.classList.contains('hidden')) { e.preventDefault(); backToChat(); }
+      });
+      // Anything else that closes the record (a link to another screen, the map's own controls) ends the mode too.
+      new MutationObserver(() => { if (sheet.classList.contains('hidden')) clearFromChat(); })
+        .observe(sheet, { attributes: true, attributeFilter: ['class'] });
+      window.addEventListener('resize', () => { if (!PHONE()) clearFromChat(); });
     }
 
     // ---- The record as a maps app's place card (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ----
