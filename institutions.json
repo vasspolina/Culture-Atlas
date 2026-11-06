@@ -87328,8 +87328,8 @@
     "sources": [
       "https://www.theglobeandmail.com/arts/art-and-architecture/meet-3-people-who-are-making-calgary-canadas-hottest-arts-hub/article4396622/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 51.0423127,
+    "lon": -114.0386676,
     "country": "Canada",
     "city": "Calgary",
     "website": "https://eskerfoundation.com/",
@@ -87484,6 +87484,16 @@
       "earned": 7977,
       "source_kind": "CRA",
       "url": "https://open.canada.ca/data/dataset/80c00cdb-1358-415c-bb8b-0de7f12675b8/resource/e545170c-3689-4833-b2a8-e9e83100ab59/download/financial_d_and_schedule_6_2024_updated.csv"
+    },
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.openstreetmap.org/way/207539303",
+          "https://en.wikipedia.org/wiki/Calgary"
+        ],
+        "basis": "OpenStreetMap: Atlantic Avenue Art Block, 1011 9 Avenue SE, Inglewood, Calgary; Wikipedia (Calgary) places the Esker Foundation in Inglewood",
+        "retrieved": "2026-11-06"
+      }
     }
   },
   {
@@ -94393,8 +94403,8 @@
     "sources": [
       "https://songeun.or.kr/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 37.5241194,
+    "lon": 127.0443146,
     "country": "South Korea",
     "city": "Seoul",
     "website": "https://songeun.or.kr/",
@@ -94538,6 +94548,16 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.openstreetmap.org/node/10129601318",
+          "https://www.songeun.or.kr/en/"
+        ],
+        "basis": "OpenStreetMap: SongEun, Dosan-daero, Cheongdam-dong, Gangnam-gu, Seoul 06016; SONGEUN gives its address as 441 Dosan-daero, Seoul 06016",
+        "retrieved": "2026-11-06"
+      }
     }
   },
   {
@@ -130203,8 +130223,8 @@
       "https://www.afar.com/places/centro-leon-santiago-de-los-caballeros",
       "https://fundacionleon.org.do/en/nuestrosproyectos/eduardo-leon-jimenes-cultural-center/"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 19.4632769,
+    "lon": -70.6706827,
     "country": "Dominican Republic",
     "city": "Santiago de los Caballeros",
     "website": "https://centroleon.org.do",
@@ -130342,6 +130362,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.openstreetmap.org/way/191565997"
+        ],
+        "basis": "OpenStreetMap: Centro Cultural Eduardo Le\u00f3n Jimenes, Avenida 27 de Febrero, Santiago de los Caballeros",
+        "retrieved": "2026-11-06"
+      }
     }
   },
   {
@@ -130939,8 +130968,8 @@
       "https://koryogroup.com/blog/north-korea-guide-kaesong-koryo-museum",
       "https://web.archive.org/web/20161117190052/http://whc.unesco.org/en/list/1278"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 37.9911921,
+    "lon": 126.5706831,
     "country": "North Korea",
     "city": "Kaesong",
     "website": "https://koryogroup.com/blog/north-korea-guide-kaesong-koryo-museum",
@@ -131049,7 +131078,16 @@
       "website": "https://koryogroup.com/blog/north-korea-guide-kaesong-koryo-museum (checked 2026-10-24; a visitor guide by the tour company Koryo Tours, published 11 December 2018, not a site of the museum; no site of the museum itself found)",
       "retrieved": "2026-10-24"
     },
-    "affiliations_note": "Occupies the Songgyungwan academy, one of 12 components of the UNESCO World Heritage property Historic Monuments and Sites in Kaesong, managed by the Kaesong People's Committee."
+    "affiliations_note": "Occupies the Songgyungwan academy, one of 12 components of the UNESCO World Heritage property Historic Monuments and Sites in Kaesong, managed by the Kaesong People's Committee.",
+    "field_sources": {
+      "coordinates": {
+        "urls": [
+          "https://www.openstreetmap.org/way/1097281033"
+        ],
+        "basis": "OpenStreetMap: \uace0\ub824\ubc15\ubb3c\uad00 (Koryo Museum), Kaesong",
+        "retrieved": "2026-11-06"
+      }
+    }
   },
   {
     "name": "Sinchon Museum of American War Atrocities",
@@ -133837,8 +133875,8 @@
       "https://en.wikipedia.org/wiki/Ko%C3%A7_Holding",
       "https://en.wikipedia.org/wiki/Otokar"
     ],
-    "lat": 0.0,
-    "lon": 0.0,
+    "lat": 41.0408994,
+    "lon": 28.9787641,
     "country": "Turkey",
     "city": "Istanbul",
     "website": "https://www.arter.org.tr",
@@ -133861,6 +133899,13 @@
         ],
         "basis": "address",
         "retrieved": "2026-10-14"
+      },
+      "coordinates": {
+        "urls": [
+          "https://www.openstreetmap.org/node/9698150917"
+        ],
+        "basis": "OpenStreetMap, address lookup: ARTER, 13 Irmak Caddesi, Beyo\u011flu, Istanbul 34435",
+        "retrieved": "2026-11-06"
       }
     },
     "grade": 5,
