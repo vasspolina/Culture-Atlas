@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=572">
-  <script src="assets/config.js?v=572"></script>
-  <script src="assets/subtopic.js?v=572"></script>
-  <script src="assets/names.js?v=572"></script>
-  <script src="assets/grounding.js?v=572"></script>
-  <script src="assets/repeats.js?v=572"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=573">
+  <script src="assets/config.js?v=573"></script>
+  <script src="assets/subtopic.js?v=573"></script>
+  <script src="assets/names.js?v=573"></script>
+  <script src="assets/grounding.js?v=573"></script>
+  <script src="assets/repeats.js?v=573"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=572"></script>
+  <script src="assets/institutions.js?v=573"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6584,6 +6584,11 @@ return maplibregl$1;
       set: (v) => { isGossipModeActive = v; }
     });
 
+    // The lines fade in as you zoom (user, 6 Nov 2026): none at zoom 12 and below, where the whole city is in view and the map is
+    // plain ground under the museum labels, full 50% grey from zoom 15, the street level. Linear between, so nothing pops in.
+    const CITY_LINE_FADE = ['interpolate', ['linear'], ['zoom'], 12, 0, 15, 1];
+    // The same ramp for the screen-space street layer (xray-streets), which draws these lines in place of MapLibre's own.
+    const cityLineFadeAt = z => Math.max(0, Math.min(1, (z - 12) / 3));
     // City map style: a line drawing like the globe. White ground, 1px lines in 50% grey (#808080; user, 6 Nov 2026: the near-black lines made the map busy), no fills, no 3D. OpenFreeMap vector tiles.
     const CITY_MAP_LINE_STYLE = {
       version: 8,
@@ -6601,6 +6606,7 @@ return maplibregl$1;
       // assets/glyphs/Serrif Light, not the map host's Noto Sans. The museum tag is an HTML marker and stays in Jokker.
       glyphs: location.href.replace(/[?#].*$/, '').replace(/[^/]*$/, '') + 'assets/glyphs/{fontstack}/{range}.pbf',
       layers: [
+        // Every line fades in with the zoom (CITY_LINE_FADE, above): none on the whole-city view, full grey at street level.
         // The street map is a line drawing: every edge (water, parks, landcover, buildings, roads, boundaries) is a 1px line
         // in the map's line colour, and nothing carries a fill. The building fill and the context extrusion below draw nothing;
         // they stay only so the building under a record's point can be found.
@@ -6614,28 +6620,28 @@ return maplibregl$1;
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'landcover',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'park',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'park',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'water',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'water',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'waterway',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'building',
@@ -6667,7 +6673,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 13,
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_minor',
@@ -6676,7 +6682,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
           minzoom: 12,
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_secondary',
@@ -6684,7 +6690,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_primary',
@@ -6692,7 +6698,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_motorway',
@@ -6700,7 +6706,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'boundary_country',
@@ -6708,7 +6714,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-dasharray': [3, 2] }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-dasharray': [3, 2], 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'place_label',
@@ -7786,6 +7792,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       return {
         id, type: 'custom', renderingMode: '3d',
         color: [22 / 255, 22 / 255, 22 / 255, 1], data: null, count: 0, origin: null, dirty: false,
+        fade: null,   // optional zoom -> 0..1; the street layer fades in with the zoom, the building view does not
         onAdd(map, gl) {
           this.map = map;
           const shader = (type, src) => { const sh = gl.createShader(type); gl.shaderSource(sh, src); gl.compileShader(sh); return sh; };
@@ -7842,7 +7849,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           gl.uniformMatrix4fv(this.u.matrix, false, new Float32Array(t));
           gl.uniform2f(this.u.res, gl.drawingBufferWidth, gl.drawingBufferHeight);
           gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH * dpr / 2 + 0.75); // half the width plus three quarters of a device pixel, the feather
-          gl.uniform4fv(this.u.color, this.color);
+          // The colour is premultiplied (the blend is ONE, ONE_MINUS_SRC_ALPHA), so the fade scales all four channels.
+          const k = typeof this.fade === 'function' ? this.fade(map.getZoom()) : 1;
+          if (k <= 0) return;
+          gl.uniform4fv(this.u.color, this.color.map(v => v * k));
           gl.bindBuffer(gl.ARRAY_BUFFER, this.buffer);
           if (this.dirty) { gl.bufferData(gl.ARRAY_BUFFER, this.data, gl.STATIC_DRAW); this.dirty = false; }
           const stride = 7 * 4;
@@ -7959,7 +7969,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (!map || typeof map.addLayer !== 'function' || typeof maplibregl === 'undefined' || map.getLayer(STREET_LINE_ID)) return;
       const sc = map.style && map.style.sourceCaches && map.style.sourceCaches[STREET_SOURCE];
       if (!sc || typeof sc.getRenderableIds !== 'function') return; // the tile cache is out of reach: MapLibre's own lines stay
-      map.addLayer(screenLineLayer(STREET_LINE_ID), map.getLayer('place_label') ? 'place_label' : undefined);
+      const streets = screenLineLayer(STREET_LINE_ID);
+      streets.fade = cityLineFadeAt;
+      map.addLayer(streets, map.getLayer('place_label') ? 'place_label' : undefined);
       applyCityMapGossip();
       map.on('moveend', streetLinesSchedule);
       map.on('sourcedata', e => { if (e.sourceId === STREET_SOURCE && e.isSourceLoaded) streetLinesSchedule(); });
@@ -21137,13 +21149,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=572"></script>
-<script src="assets/funding-views.js?v=572"></script>
-<script src="assets/layers.js?v=572"></script>
-<script src="assets/hq-detail.js?v=572"></script>
-<script src="assets/bubbles.js?v=572" defer></script>
-<script src="assets/phone-maps.js?v=572"></script>
-<script src="assets/desktop-maps.js?v=572"></script>
-<script src="assets/chat-resize.js?v=572"></script>
+<script src="assets/typeset.js?v=573"></script>
+<script src="assets/funding-views.js?v=573"></script>
+<script src="assets/layers.js?v=573"></script>
+<script src="assets/hq-detail.js?v=573"></script>
+<script src="assets/bubbles.js?v=573" defer></script>
+<script src="assets/phone-maps.js?v=573"></script>
+<script src="assets/desktop-maps.js?v=573"></script>
+<script src="assets/chat-resize.js?v=573"></script>
 </body>
 </html>
