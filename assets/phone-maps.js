@@ -654,13 +654,18 @@
         let status = '';
         try { status = typeof tierName === 'function' ? tierName(inst) : ''; } catch (_) { status = ''; }
         if (g) {
-          rating.innerHTML = '<span class="gm-grade-dot" style="--gm-dot:' + esc(g.col) + '" aria-hidden="true">' + esc(g.letter) + '</span>'
+          rating.innerHTML = '<span class="gm-grade-dot" style="--gm-dot:' + esc(g.mark || g.col) + '" aria-hidden="true">' + esc(g.letter) + '</span>'
             // One line, as a rating is: the label up to its first clause ("Funders listed; no funders flagged" reads
             // "Funders listed"), and the whole label is the line's title.
             + '<span class="gm-grade-text" title="' + esc(g.label) + '">Grade ' + esc(g.letter) + ' · ' + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
         } else {
           rating.innerHTML = status ? '<span class="gm-grade-text">' + esc(status) + '</span>' : '';
         }
+        // The i button on the rating line opens how grades work, this space's grade marked (user, 6 Nov 2026).
+        const parts = typeof window.atlasGradeInfoParts === 'function' && rating.innerHTML ? window.atlasGradeInfoParts(inst) : null;
+        const oldPanel = rating.nextElementSibling && rating.nextElementSibling.classList.contains('grade-info') ? rating.nextElementSibling : null;
+        if (oldPanel) oldPanel.remove();
+        if (parts) { rating.insertAdjacentHTML('beforeend', parts.btn); rating.insertAdjacentHTML('afterend', parts.panel); }
         rating.hidden = !rating.innerHTML;
         // Visiting rows.
         let web = '';

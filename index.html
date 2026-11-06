@@ -527,12 +527,12 @@ return maplibregl$1;
           <details id="chatRecordsInfoMobile" class="chat-info">
             <summary>How the records work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
-            <ul class="grade-list">
-              <li>A: the record shows how much money came in, and no funder is flagged.</li>
-              <li>B: funders are named without amounts, and none is flagged.</li>
-              <li>C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</li>
-              <li>D: one funder is flagged, such as an oil, tobacco, gambling or arms company.</li>
-              <li>F: two or more funders are flagged, or one flagged funder and a complaint on record.</li>
+            <ul class="grade-list grade-scale">
+              <li><span class="grade-dot" style="--grade-dot:#34d399">A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
+              <li><span class="grade-dot" style="--grade-dot:#2dd4bf">B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
+              <li><span class="grade-dot" style="--grade-dot:#facc15">C</span><span class="grade-scale-text">no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</span></li>
+              <li><span class="grade-dot" style="--grade-dot:#fb923c">D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
+              <li><span class="grade-dot" style="--grade-dot:#f87171">F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
             </ul>
             <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
           </details>
@@ -872,12 +872,12 @@ return maplibregl$1;
             <details id="chatRecordsInfo" class="chat-info">
               <summary>How the records work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
-            <ul class="grade-list">
-              <li>A: the record shows how much money came in, and no funder is flagged.</li>
-              <li>B: funders are named without amounts, and none is flagged.</li>
-              <li>C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</li>
-              <li>D: one funder is flagged, such as an oil, tobacco, gambling or arms company.</li>
-              <li>F: two or more funders are flagged, or one flagged funder and a complaint on record.</li>
+            <ul class="grade-list grade-scale">
+              <li><span class="grade-dot" style="--grade-dot:#34d399">A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
+              <li><span class="grade-dot" style="--grade-dot:#2dd4bf">B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
+              <li><span class="grade-dot" style="--grade-dot:#facc15">C</span><span class="grade-scale-text">no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</span></li>
+              <li><span class="grade-dot" style="--grade-dot:#fb923c">D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
+              <li><span class="grade-dot" style="--grade-dot:#f87171">F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
             </ul>
               <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
             </details>
@@ -12637,12 +12637,48 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (!place && !rest) return '';
       return `<p class="no-indent head-fact">${place ? `<strong class="lead-in">${escapeHtml(place)}</strong> ` : ''}${escapeHtml(rest)}</p>`;
     }
+    // Grading brought back into the record (user, 6 Nov 2026: "bring grading back. I don't see grading in the details, and explain it also
+    // on the info button on each space, and the grading should be also colour coded"). A grade is its letter in a dot of its colour, black
+    // on every fill (each measures 7:1 or better against black), with a 1px ink edge so the pale fills still show on white; the letter, not
+    // the colour, carries the grade. Every space has an i button beside it that opens the scale, this space's step marked, and the sentence
+    // that decided it (grade_basis). The same mark heads the Funding section and the phone sheet's rating line.
+    const gradeDotHtml = (n, decorative) => GRADE[n] ? `<span class="grade-dot" style="--grade-dot:${GRADE[n].mark || GRADE[n].col}"${decorative ? ' aria-hidden="true"' : ''}>${GRADE[n].letter}</span>` : '';
+    const gradeShortLabel = (n) => GRADE[n] ? String(GRADE[n].label).split(/;| or /)[0].trim() : '';
+    function gradeScaleHtml(current) {
+      return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeDotHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This space</span>' : ''}</span></li>`).join('')}</ul>`;
+    }
+    let gradeInfoSeq = 0;
+    // The i button and the panel it opens, for a graded space or an unrated one.
+    function gradeInfoParts(inst) {
+      const id = `grade-info-${++gradeInfoSeq}`;
+      const n = inst.grade && GRADE[inst.grade] ? inst.grade : 0;
+      const head = n
+        ? `<p class="no-indent">${escapeHtml(inst.name || 'This space')} is grade ${gradeLetter(n)}: ${escapeHtml(GRADE[n].label.toLowerCase())}.${inst.grade_basis ? ' ' + escapeHtml(proseEnd(inst.grade_basis)) : ''}</p>`
+        : `<p class="no-indent">${escapeHtml(inst.name || 'This space')} is not graded: its funders are not yet confirmed by a source independent of the space.</p>`;
+      const panel = `<div class="grade-info" id="${id}" role="region" aria-label="How funding grades work" data-repeat-ok hidden>${head}<p class="no-indent">${GRADE_INTRO} Each grade comes from what the record proves and nothing else.</p>${gradeScaleHtml(n)}<p class="no-indent">Public money alone is never a flag, so a wholly public museum sits at A or B.</p></div>`;
+      const btn = `<button type="button" class="grade-info-btn" aria-expanded="false" aria-controls="${id}" aria-label="How funding grades work"><span aria-hidden="true">i</span></button>`;
+      return { btn, panel };
+    }
+    window.atlasGradeInfoParts = gradeInfoParts;
+    window.atlasGradeDotHtml = gradeDotHtml;
+    // One handler for every i button, wherever the record is drawn (desktop column, detail page, phone sheet).
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest && e.target.closest('.grade-info-btn');
+      if (!b) return;
+      e.preventDefault(); e.stopPropagation();
+      const panel = document.getElementById(b.getAttribute('aria-controls'));
+      if (!panel) return;
+      const open = b.getAttribute('aria-expanded') !== 'true';
+      b.setAttribute('aria-expanded', String(open));
+      panel.hidden = !open;
+    }, true);
     function gradeLineHtml(inst) {
+      const { btn, panel } = gradeInfoParts(inst);
       if (inst.grade && GRADE[inst.grade]) {
-        const g = GRADE[inst.grade];
-        return `<p class="no-indent grade-line"><span class="grade-mark" style="--grade-col:${g.col};--grade-ink:${gradeInk(g.col)}">Grade ${gradeLetter(inst.grade)}</span></p>`;
+        const n = inst.grade;
+        return `<p class="no-indent grade-line">${gradeDotHtml(n, true)}<span class="grade-name">Grade ${gradeLetter(n)}</span><span class="grade-label">${escapeHtml(gradeShortLabel(n))}</span>${btn}</p>${panel}`;
       }
-      return '';
+      return `<p class="no-indent grade-line is-unrated"><span class="grade-name">Not graded</span>${btn}</p>${panel}`;
     }
 
     // The head of a record as the rows below it: the place and its founding, then the programme, each a row of its own (user, 26 Oct 2026, after a font
@@ -13244,6 +13280,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         else list = oneSourcePerRun(list);
       } else list = oneSourcePerRun(list);
       if (opts.box) list = list.concat([`<li>${opts.box}</li>`]);
+      if (opts.lead) list = [opts.lead].concat(list);   // a first line kept out of the fold, e.g. the Funding row's grade
       const items = list.join('');
       if (!title || !items) return '';
       const g = opts.gossip ? ' data-gossip="item"' : '';
@@ -13259,7 +13296,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const hasReport = d.funding_verdict || (d.funding || []).length;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
       const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
-      return proseRow('Funding', escapeHtml(verdict), proseChunks(funding, 0).map(t => proseLi('', escapeHtml(t))), { fold: 4 });
+      // The grade leads the Funding section, in its colour, with the sentence that decided it.
+      const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund">${gradeDotHtml(inst.grade, true)}<span>Grade ${gradeLetter(inst.grade)}: ${escapeHtml(GRADE[inst.grade].label.toLowerCase())}.${inst.grade_basis ? ' ' + escapeHtml(proseEnd(inst.grade_basis)) : ''}</span></li>` : '';
+      return proseRow('Funding', escapeHtml(verdict), proseChunks(funding, 0).map(t => proseLi('', escapeHtml(t))), { fold: 4, lead });
     }
     // Scale and money: the accounts figures a filing states (inst.finance) and the size figures a source states (inst.scale), nothing estimated.
     // Shares are worked out here from the stored amounts, against the same year's income, and only where the amount is below it.
@@ -16882,7 +16921,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
         const n = {};
         ALL_INSTITUTIONS.forEach(i => { if (i.grade) n[i.grade] = (n[i.grade] || 0) + 1; });
-        answer(`<p>${GRADE_INTRO}</p><ul class="grade-list">${GRADE_ROWS.map(r => `<li>${r}</li>`).join('')}</ul><p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} unrated. Ask for grade A spaces in a city to compare their funding transparency.</p>`, ['Show grade A spaces', 'Show grade F spaces', 'How are spaces assessed?']);
+        answer(`<p>${GRADE_INTRO}</p>${gradeScaleHtml(0)}<p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} unrated. Ask for grade A spaces in a city to compare their funding transparency.</p>`, ['Show grade A spaces', 'Show grade F spaces', 'How are spaces assessed?']);
         return;
       }
       if (!explicit && asks(/epstein/)) {
