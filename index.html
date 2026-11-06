@@ -10156,7 +10156,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v570';
+    const ATLAS_RELEASE = 'culture-atlas-v571';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -12705,17 +12705,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const vh = visitingRowsHtml([['Opening hours', escapeHtml(inst.opening_hours || '')], ['Admission', escapeHtml(inst.admission_fee || inst.admission_policy || '')], ['Address', escapeHtml(inst.address || '')]]);
         vBox.className = vh ? '' : 'hidden'; vBox.innerHTML = vh;
       }
-      if (isGossipModeActive) {
-        toggle('dossier-sheet-funding', false);
-        toggle('dossier-sheet-visit', false);
-      }
+      // Gossip mode shows Funding and Visiting as Details does (user, 5–6 Nov 2026).
 
       const srcBox = document.getElementById('dossier-sheet-sources');
       if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b)], 'Sources') : ''; }
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
-        // In Gossip mode the Record tab sets its reported items as the chat does (displaay.net/about, user 4 Nov 2026).
-        record.innerHTML = ((reported && isGossipModeActive ? chatReportingHtml(reported) : reported) || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
+        // Gossip mode keeps the Details design (user, 5 Nov 2026); only the reported items turn yellow.
+        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
         record.classList.toggle('hidden', !record.innerHTML);
       }
       // The summary, the funding row and the reported items are filled apart; what one says, the next does not say again.
@@ -13414,7 +13411,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const caseLis = (inst.case_notes || []).map(n => proseLi(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3), true));
       rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true, fold: 3 }));
       rows.push(proseRow('Wider context', '', proseChunks(d.wider_context, 0).map(t => proseLi('', escapeHtml(t))), { fold: 2 }));
-      if (!isGossipModeActive) rows.push(proseRow('Studies', '', (inst.study_notes || []).map(s => proseLi(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : '')))));
+      rows.push(proseRow('Studies', '', (inst.study_notes || []).map(s => proseLi(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : '')))));
       if (d.bottom_line && !bottomLineRestates(inst)) rows.push(proseRow('Bottom line', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
       // Sources: every source the report and the record name, one bullet per site; the date it was researched is the subtitle, and the
       // registry and the filings sit in the box under the title.
