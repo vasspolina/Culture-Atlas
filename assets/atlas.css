@@ -4438,3 +4438,14 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 }
 #gmFeedTab[hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeedTab,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeedTab svg{transition:none!important;animation:none!important}}
+/* FOLDED ROWS (5 Nov 2026, "check for abundance of text and fix it"). A long record row shows its first points and keeps the rest
+   behind one plain control: the count in words, underlined like a link, no box. Open, it says "Fewer" and the rest follow at the
+   row's own spacing, so the list reads as one. */
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-list>li.d-row-fold{margin-top:var(--H)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-fold>details>summary{display:inline-block;list-style:none;cursor:pointer;color:var(--ink);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-fold>details>summary::-webkit-details-marker{display:none}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-fold>details>summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-fold>details>.d-row-list{margin-top:var(--H)}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-fold .fold-open,
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-fold details[open]>summary .fold-closed{display:none}
+:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .d-row-fold details[open]>summary .fold-open{display:inline}
