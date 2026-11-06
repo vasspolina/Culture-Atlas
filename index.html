@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=571">
-  <script src="assets/config.js?v=571"></script>
-  <script src="assets/subtopic.js?v=571"></script>
-  <script src="assets/names.js?v=571"></script>
-  <script src="assets/grounding.js?v=571"></script>
-  <script src="assets/repeats.js?v=571"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=572">
+  <script src="assets/config.js?v=572"></script>
+  <script src="assets/subtopic.js?v=572"></script>
+  <script src="assets/names.js?v=572"></script>
+  <script src="assets/grounding.js?v=572"></script>
+  <script src="assets/repeats.js?v=572"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=571"></script>
+  <script src="assets/institutions.js?v=572"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6584,7 +6584,7 @@ return maplibregl$1;
       set: (v) => { isGossipModeActive = v; }
     });
 
-    // City map style: a line drawing like the globe. Black ground, 0.8px off-white lines, no fills, no 3D. OpenFreeMap vector tiles.
+    // City map style: a line drawing like the globe. White ground, 1px lines in 50% grey (#808080; user, 6 Nov 2026: the near-black lines made the map busy), no fills, no 3D. OpenFreeMap vector tiles.
     const CITY_MAP_LINE_STYLE = {
       version: 8,
       name: 'Culture Atlas line drawing',
@@ -6614,28 +6614,28 @@ return maplibregl$1;
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'landcover',
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'park',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'park',
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'water',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'water',
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'waterway',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'building',
@@ -6644,7 +6644,7 @@ return maplibregl$1;
           'source-layer': 'building',
           minzoom: 13,
           // Hit-testing only: the edge is drawn once, by building_line below, so an outline here would double it.
-          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#161616', 'fill-antialias': false }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#808080', 'fill-antialias': false }
         },
         {
           id: 'building-3d-city-context',
@@ -6667,7 +6667,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 13,
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'road_minor',
@@ -6676,7 +6676,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
           minzoom: 12,
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'road_secondary',
@@ -6684,7 +6684,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'road_primary',
@@ -6692,7 +6692,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'road_motorway',
@@ -6700,7 +6700,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-opacity': 1 }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': 1 }
         },
         {
           id: 'boundary_country',
@@ -6708,7 +6708,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
-          paint: { 'line-color': '#161616', 'line-width': 1, 'line-dasharray': [3, 2] }
+          paint: { 'line-color': '#808080', 'line-width': 1, 'line-dasharray': [3, 2] }
         },
         {
           id: 'place_label',
@@ -7180,7 +7180,10 @@ return maplibregl$1;
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
       // Gossip mode: Displaay's lime with black lines; on the dark theme a dark green with lime lines (user, 4 Nov 2026).
       const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#e2f86c') : dark ? '#262524' : '#ffffff';
-      const line = isGossipModeActive ? (dark ? '#e2f86c' : '#000000') : dark ? '#f4f4f4' : '#161616';
+      // Outside gossip mode the lines are 50% grey in both themes (user, 6 Nov 2026: near-black lines made the map busy). They are
+      // decoration, not text: the place names keep full ink (`label`), as before.
+      const line = isGossipModeActive ? (dark ? '#e2f86c' : '#000000') : '#808080';
+      const label = isGossipModeActive ? line : dark ? '#f4f4f4' : '#161616';
       layers.forEach(l => {
         if (l.id && l.id.indexOf('xray') === 0) return; // the building view keeps its own colours
         try {
@@ -7188,7 +7191,7 @@ return maplibregl$1;
           else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', line);
           else if (l.type === 'fill') { map.setPaintProperty(l.id, 'fill-outline-color', line); map.setPaintProperty(l.id, 'fill-color', ground); }
           else if (l.type === 'fill-extrusion') map.setPaintProperty(l.id, 'fill-extrusion-color', ground);
-          else if (l.type === 'symbol') { map.setPaintProperty(l.id, 'text-halo-color', ground); map.setPaintProperty(l.id, 'text-color', line); }
+          else if (l.type === 'symbol') { map.setPaintProperty(l.id, 'text-halo-color', ground); map.setPaintProperty(l.id, 'text-color', label); }
         } catch (e) { /* a layer this map does not have */ }
       });
       // The building view is lines in the same colour as the rest of the map's lines.
@@ -21134,13 +21137,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=571"></script>
-<script src="assets/funding-views.js?v=571"></script>
-<script src="assets/layers.js?v=571"></script>
-<script src="assets/hq-detail.js?v=571"></script>
-<script src="assets/bubbles.js?v=571" defer></script>
-<script src="assets/phone-maps.js?v=571"></script>
-<script src="assets/desktop-maps.js?v=571"></script>
-<script src="assets/chat-resize.js?v=571"></script>
+<script src="assets/typeset.js?v=572"></script>
+<script src="assets/funding-views.js?v=572"></script>
+<script src="assets/layers.js?v=572"></script>
+<script src="assets/hq-detail.js?v=572"></script>
+<script src="assets/bubbles.js?v=572" defer></script>
+<script src="assets/phone-maps.js?v=572"></script>
+<script src="assets/desktop-maps.js?v=572"></script>
+<script src="assets/chat-resize.js?v=572"></script>
 </body>
 </html>
