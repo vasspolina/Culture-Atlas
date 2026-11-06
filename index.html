@@ -10796,13 +10796,15 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         try { ctx.letterSpacing = '0.02em'; } catch (e) {}
         ctx.beginPath();
         ctx.roundRect(btnX, btnY, btnW, btnH, 10);
-        if (card.btnHover) { ctx.fillStyle = cardInk; ctx.fill(); }
-        ctx.strokeStyle = cardInk;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-        ctx.fillStyle = card.btnHover ? cardPaper : cardInk;
+        // The link button is a filled off-black pill, not a white outline, with its text centred (user, 5 Nov 2026).
+        // Off-black #1f1f1f under white text measures 16.7:1; hover still inverts to ink.
+        ctx.fillStyle = card.btnHover ? cardInk : '#1f1f1f';
+        ctx.fill();
+        ctx.fillStyle = card.btnHover && cardDark ? '#000000' : '#ffffff';
         ctx.textBaseline = 'middle';
-        ctx.fillText(fit(btnText), btnX + 14, btnY + btnH / 2 + 0.5);
+        ctx.textAlign = 'center';
+        ctx.fillText(fit(btnText), btnX + btnW / 2, btnY + btnH / 2 + 0.5);
+        ctx.textAlign = 'left';
         try { ctx.letterSpacing = '0px'; } catch (e) {}
       }
       ctx.restore();
