@@ -4493,3 +4493,21 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn svg,:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn svg *{width:26px!important;height:26px!important;stroke:currentColor!important;stroke-width:1.4!important;color:inherit!important;fill:none!important}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn:hover{background:var(--cc-paper)!important;color:var(--cc-ink)!important}
 }
+
+/* ==== CHAT DETAILS, LIKE CLAUDE (user, 6 Nov 2026: "make details button on chat window a toggle", "make chat window not
+   repeating buttons and function more like Claude with details toggle and back button") ====
+   From the chat, Details opens the record as a page of its own (assets/phone-maps.js, gm-from-chat): full height, it only
+   scrolls, and its top row is a back button to the chat on the left and the Details button, pressed, on the right, where
+   the chat's own Details button sits. The sheet's grabber, cross and Ask in chat are put away by the script. */
+@media (max-width:767px){
+  #dossier-bottom-sheet .gm-from-chat-bar[hidden]{display:none!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar:not([hidden]){position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 8px 0 4px;background:var(--paper);pointer-events:auto}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar button{display:inline-flex!important;align-items:center;gap:4px;height:36px!important;min-height:36px!important;margin:0!important;padding:0 14px!important;border:0!important;border-radius:18px!important;background:transparent!important;color:var(--ink)!important;font:300 15px/1 var(--sans)!important;letter-spacing:.01em!important;text-transform:none!important;box-shadow:none!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar #gmDetailsBackBtn{padding-left:6px!important;height:44px!important;min-height:44px!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar #gmDetailsBackBtn svg{width:22px;height:22px;flex:none}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar #gmDetailsToggleBtn[aria-pressed="true"]{background:var(--ink)!important;color:var(--paper)!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar button:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
+  /* The chat's Details button is a toggle too: pressed while the record is open (it is then under the record's own). */
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead #phoneChatDetailsBtn[aria-pressed="true"]:not(.hidden){background:var(--ink)!important;color:var(--paper)!important}
+}
+
