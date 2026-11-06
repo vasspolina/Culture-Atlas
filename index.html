@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=573">
-  <script src="assets/config.js?v=573"></script>
-  <script src="assets/subtopic.js?v=573"></script>
-  <script src="assets/names.js?v=573"></script>
-  <script src="assets/grounding.js?v=573"></script>
-  <script src="assets/repeats.js?v=573"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=574">
+  <script src="assets/config.js?v=574"></script>
+  <script src="assets/subtopic.js?v=574"></script>
+  <script src="assets/names.js?v=574"></script>
+  <script src="assets/grounding.js?v=574"></script>
+  <script src="assets/repeats.js?v=574"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -274,8 +274,8 @@ return maplibregl$1;
             <h2 class="layers-section-title">Propaganda periods</h2>
             <p class="layers-note">Show or hide the spaces used for propaganda now and those used in a past period. A space with a documented use in both shows both marks.</p>
             <div class="layers-kinds">
-              <label class="kind-chip" style="--marker-color:#ff3dd1"><input type="checkbox" data-pkind="today" checked> <i class="shape-dot shape-glow"></i><span class="layer-name">Now</span></label>
-              <label class="kind-chip" style="--marker-color:#ff3dd1"><input type="checkbox" data-pkind="historical" checked> <i class="shape-ring shape-glow"></i><span class="layer-name">In the past</span></label>
+              <label class="kind-chip" style="--marker-color:#ff5fa0"><input type="checkbox" data-pkind="today" checked> <i class="shape-dot shape-glow"></i><span class="layer-name">Now</span></label>
+              <label class="kind-chip" style="--marker-color:#ff5fa0"><input type="checkbox" data-pkind="historical" checked> <i class="shape-ring shape-glow"></i><span class="layer-name">In the past</span></label>
             </div>
           </section>
           <section class="layers-section">
@@ -289,9 +289,9 @@ return maplibregl$1;
             <h2 class="layers-section-title">Funder types</h2>
             <p class="layers-note">Filter the funder layers by kind of funder. Point at a funder around a space to see every other space it funds.</p>
             <div class="layers-filters">
-              <label class="filter-row" style="--marker-color:#818cf8"><i class="shape-dot"></i><span class="layer-name">Public funding</span><input type="checkbox" role="switch" data-kind="gov" checked></label>
-              <label class="filter-row" style="--marker-color:#f472b6"><i class="shape-dot"></i><span class="layer-name">Foundations</span><input type="checkbox" role="switch" data-kind="found" checked></label>
-              <label class="filter-row" style="--marker-color:#38bdf8"><i class="shape-dot"></i><span class="layer-name">Companies</span><input type="checkbox" role="switch" data-kind="corp" checked></label>
+              <label class="filter-row" style="--marker-color:#7c9bff"><i class="shape-dot"></i><span class="layer-name">Public funding</span><input type="checkbox" role="switch" data-kind="gov" checked></label>
+              <label class="filter-row" style="--marker-color:#ffa3c8"><i class="shape-dot"></i><span class="layer-name">Foundations</span><input type="checkbox" role="switch" data-kind="found" checked></label>
+              <label class="filter-row" style="--marker-color:#63c4fd"><i class="shape-dot"></i><span class="layer-name">Companies</span><input type="checkbox" role="switch" data-kind="corp" checked></label>
             </div>
           </section>
           <section class="layers-section">
@@ -311,16 +311,16 @@ return maplibregl$1;
             <h2 class="layers-section-title">Marks on the map</h2>
             <p class="layers-note">Every mark is a dot, and its name on the map says what it is.</p>
             <div class="layers-key layers-entity-key">
-              <span><i class="shape-dot" style="--marker-color:#818cf8"></i>Public funding</span>
-              <span><i class="shape-dot" style="--marker-color:#f472b6"></i>Foundation or individual donor</span>
-              <span><i class="shape-dot" style="--marker-color:#38bdf8"></i>Company</span>
-              <span><i class="shape-dot" style="--marker-color:#fb7185"></i>Right-wing funder</span>
-              <span><i class="shape-dot" style="--marker-color:#a78bfa"></i>Mentioned in the Epstein files</span>
-              <span><i class="shape-dot shape-glow" style="--marker-color:#ff3dd1"></i>Used for propaganda now</span>
-              <span><i class="shape-ring shape-glow" style="--marker-color:#ff3dd1"></i>Used for propaganda in the past</span>
-              <span><i class="shape-dot shape-glow-green" style="--marker-color:#9caf7d"></i>Independent space</span>
-              <span><i class="shape-dot" style="--marker-color:#ffd600"></i>Artist-run space</span>
-              <span><i class="shape-dot shape-glow-cyan" style="--marker-color:#9ae3e8"></i>Open books: clean grade</span>
+              <span><i class="shape-dot" style="--marker-color:#7c9bff"></i>Public funding</span>
+              <span><i class="shape-dot" style="--marker-color:#ffa3c8"></i>Foundation or individual donor</span>
+              <span><i class="shape-dot" style="--marker-color:#63c4fd"></i>Company</span>
+              <span><i class="shape-dot shape-glow-right" style="--marker-color:#ff7b6e"></i>Right-wing funder</span>
+              <span><i class="shape-dot shape-glow-epstein" style="--marker-color:#d39bff"></i>Mentioned in the Epstein files</span>
+              <span><i class="shape-dot shape-glow" style="--marker-color:#ff5fa0"></i>Used for propaganda now</span>
+              <span><i class="shape-ring shape-glow" style="--marker-color:#ff5fa0"></i>Used for propaganda in the past</span>
+              <span><i class="shape-dot shape-glow-green" style="--marker-color:#3fe05a"></i>Independent space</span>
+              <span><i class="shape-dot" style="--marker-color:#b7d40c"></i>Artist-run space</span>
+              <span><i class="shape-dot shape-glow-cyan" style="--marker-color:#0af0b0"></i>Open books: clean grade</span>
             </div>
           </section>
         </div>
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=573"></script>
+  <script src="assets/institutions.js?v=574"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10171,7 +10171,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v571';
+    const ATLAS_RELEASE = 'culture-atlas-v574';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -21149,13 +21149,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=573"></script>
-<script src="assets/funding-views.js?v=573"></script>
-<script src="assets/layers.js?v=573"></script>
-<script src="assets/hq-detail.js?v=573"></script>
-<script src="assets/bubbles.js?v=573" defer></script>
-<script src="assets/phone-maps.js?v=573"></script>
-<script src="assets/desktop-maps.js?v=573"></script>
-<script src="assets/chat-resize.js?v=573"></script>
+<script src="assets/typeset.js?v=574"></script>
+<script src="assets/funding-views.js?v=574"></script>
+<script src="assets/layers.js?v=574"></script>
+<script src="assets/hq-detail.js?v=574"></script>
+<script src="assets/bubbles.js?v=574" defer></script>
+<script src="assets/phone-maps.js?v=574"></script>
+<script src="assets/desktop-maps.js?v=574"></script>
+<script src="assets/chat-resize.js?v=574"></script>
 </body>
 </html>

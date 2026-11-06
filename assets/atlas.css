@@ -843,15 +843,20 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .shape-dot{border-radius:50%}
 #layersPanel .layers-kinds .shape-ring,#layersPanel .layers-key .shape-ring{box-sizing:border-box;border-radius:50%;background:transparent!important;border:.8px solid var(--marker-color)}
 #layersPanel .shape-ring::after{display:none!important}
-:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#d4109f}
-/* The propaganda marks glow on the map; the key echoes it with a soft halo of the same pink (a deeper step on the light ground). */
-#layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(255,61,209,.55)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(212,16,159,.4)}
-/* The independent mark glows green on the map; the key echoes it (a deeper step on the light ground). */
-#layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(156,175,125,.6)}
-#layersPanel .shape-glow-cyan{box-shadow:0 0 6px 2px rgba(154,227,232,.6)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow-cyan{--marker-color:#1f8b93;box-shadow:0 0 6px 2px rgba(31,139,147,.45)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#889e9a;box-shadow:0 0 6px 2px rgba(136,158,154,.5)}
+:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#df0050}
+/* Every flagged layer glows on the map (propaganda, right-wing funders, the Epstein files; user, 6 Nov 2026); the key echoes it
+   with a soft halo of the mark's colour, a deeper step on the light ground. Colours as COL and LINE_LIGHT in assets/layers.js. */
+#layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(255,95,160,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(223,0,80,.45)}
+#layersPanel .shape-glow-right{box-shadow:0 0 6px 2px rgba(255,123,110,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-right{box-shadow:0 0 6px 2px rgba(208,22,10,.45)}
+#layersPanel .shape-glow-epstein{box-shadow:0 0 6px 2px rgba(211,155,255,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-epstein{box-shadow:0 0 6px 2px rgba(155,48,232,.45)}
+/* The independent and open-books marks glow on the map too; the key echoes them (a deeper step on the light ground). */
+#layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(63,224,90,.6)}
+#layersPanel .shape-glow-cyan{box-shadow:0 0 6px 2px rgba(10,240,176,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-cyan{--marker-color:#0a7a48;box-shadow:0 0 6px 2px rgba(10,122,72,.45)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#0a8a1f;box-shadow:0 0 6px 2px rgba(10,138,31,.45)}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}
