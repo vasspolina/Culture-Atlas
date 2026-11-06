@@ -55,7 +55,7 @@
   // A question that only puts the words of a space's name in another order or language ("Jewish museum berlin",
   // "berlin jewish museum") resolves to that one space. Every content word of the question must be in the name,
   // and the name's own words must mostly be in the question, so "museum berlin" never picks one of many.
-  var ASK_WORDS = /^(?:what about|tell me about|about|show me|show|how about|go to|open|find|visit|who funds|what is|where is)\s+/;
+  var ASK_WORDS = /^(?:(?:please|can you|could you|now)\s+)*(?:(?:what about|tell me about|about|show me|show|how about|go to|go back to|take me to|bring me to|fly me to|fly to|move to|jump to|head to|navigate to|zoom(?: back)?(?: in| out)?(?: to| on| onto| into| over)?|center on|centre on|focus on|open|find|visit|who funds|what is|where is)\s+)+/;
   // Words that name a kind of space rather than one space; a question made only of these and a place names no one record.
   var GENERIC = { museum: 1, gallery: 1, art: 1, arts: 1, modern: 1, contemporary: 1, national: 1, state: 1, city: 1, center: 1, house: 1,
     foundation: 1, institute: 1, collection: 1, history: 1, fine: 1, new: 1, old: 1, kunsthalle: 1, kunstverein: 1, palace: 1, design: 1,
