@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=574">
-  <script src="assets/config.js?v=574"></script>
-  <script src="assets/subtopic.js?v=574"></script>
-  <script src="assets/names.js?v=574"></script>
-  <script src="assets/grounding.js?v=574"></script>
-  <script src="assets/repeats.js?v=574"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=575">
+  <script src="assets/config.js?v=575"></script>
+  <script src="assets/subtopic.js?v=575"></script>
+  <script src="assets/names.js?v=575"></script>
+  <script src="assets/grounding.js?v=575"></script>
+  <script src="assets/repeats.js?v=575"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1101,7 +1101,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=574"></script>
+  <script src="assets/institutions.js?v=575"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10171,11 +10171,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v574';
+    const ATLAS_RELEASE = 'culture-atlas-v575';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=570').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=575').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -20616,6 +20616,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
       const geo = unproject(mx, my, currentRadius, width / 2, height / 2);
+      if (globeAtMaxZoom() && zoomPastGlobe(mx, my)) return;
       if (geo && isFinite(geo.lon) && isFinite(geo.lat)) {
         flyTo(geo.lon, geo.lat, currentRadius * 1.7);
       } else {
@@ -20632,7 +20633,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         e.preventDefault();
         if (isCityStreetViewActive && cityVectorMap) {
           cityVectorMap.zoomIn({}, { originalEvent: e });
-        } else {
+        } else if (!(globeAtMaxZoom() && zoomPastGlobe(null, null))) {
           isAutoSpinning = false;
           targetRadius = Math.min(getMaxRadius(), targetRadius * 1.35);
         }
@@ -20820,6 +20821,45 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
     });
 
+    // Zooming in past the globe's closest view goes on into the street map. The globe stops at getMaxRadius() (about the
+    // width of central Europe), and before this every zoom-in there was clamped away: over Berlin the map simply stopped
+    // and the buildings were only reachable by clicking the city. Now a zoom-in at the limit opens the street map of the
+    // nearest city with spaces, the way a click on that city does; zooming out of the street map past z8 comes back.
+    const GLOBE_HANDOVER_KM = 80;
+    function globeAtMaxZoom() {
+      return !isCityStreetViewActive && targetRadius >= getMaxRadius() * 0.999;
+    }
+    function zoomPastGlobe(px, py) {
+      if (isCityStreetViewActive) return false;
+      const spots = [];
+      if (px != null && py != null) spots.push(unproject(px, py, currentRadius, width / 2, height / 2));
+      spots.push(unproject(width / 2, height / 2, currentRadius, width / 2, height / 2));
+      const toRad = Math.PI / 180;
+      for (const geo of spots) {
+        if (!geo || !isFinite(geo.lat) || !isFinite(geo.lon)) continue;
+        let best = null, bestKm = Infinity;
+        for (const c of ALL_CITIES_REGISTRY) {
+          if (!c || !(c.count > 0) || !isFinite(c.lat) || !isFinite(c.lon)) continue;
+          const dLat = (c.lat - geo.lat) * toRad, dLon = (c.lon - geo.lon) * toRad;
+          const h = Math.sin(dLat / 2) ** 2 + Math.cos(geo.lat * toRad) * Math.cos(c.lat * toRad) * Math.sin(dLon / 2) ** 2;
+          const km = 12742 * Math.asin(Math.min(1, Math.sqrt(h)));
+          if (km < bestKm) { bestKm = km; best = c; }
+        }
+        if (best && bestKm <= GLOBE_HANDOVER_KM) {
+          isAutoSpinning = false;
+          zoomAnchor = null;
+          filterByCity(best.name, true, false);
+          return true;
+        }
+      }
+      return false;
+    }
+    window.zoomPastGlobe = zoomPastGlobe;
+
+    // The wheel asks for a little more than one notch past the limit before it hands over, so a trackpad flick that only
+    // meant to reach the closest globe view does not drop into the street map; it resets once the wheel zooms out again.
+    let globeOverZoom = 1;
+
     // Smooth, Gradual Exponential Wheel & Trackpad Zoom (Predictable & Stable)
     canvas.addEventListener('wheel', e => {
       e.preventDefault();
@@ -20829,6 +20869,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Gentle exponential scaling factor bounded per event (approx 1% - 6% gradual change)
       const factor = Math.exp(-delta * 0.0016);
       const clampedFactor = Math.max(0.91, Math.min(1.09, factor));
+
+      if (clampedFactor > 1 && globeAtMaxZoom()) {
+        globeOverZoom *= clampedFactor;
+        if (globeOverZoom >= 1.25) {
+          globeOverZoom = 1;
+          const hr = canvas.getBoundingClientRect();
+          if (zoomPastGlobe(e.clientX - hr.left, e.clientY - hr.top)) return;
+        }
+      } else if (clampedFactor < 1) {
+        globeOverZoom = 1;
+      }
 
       targetRadius = Math.max(getMinRadius(), Math.min(getMaxRadius(), targetRadius * clampedFactor));
       // Zoom about the place under the wheel, when the wheel is over the globe.
@@ -20888,7 +20939,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     document.getElementById('zoomInBtn')?.addEventListener('click', (e) => {
       if (isCityStreetViewActive && cityVectorMap) {
         cityVectorMap.zoomIn({}, { originalEvent: e });
-      } else {
+      } else if (!(globeAtMaxZoom() && zoomPastGlobe(null, null))) {
         isAutoSpinning = false;
         zoomAnchor = null;
         targetRadius = Math.min(getMaxRadius(), targetRadius * 1.35);
@@ -21054,6 +21105,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const trect = canvas.getBoundingClientRect();
         const mx = (e.touches[0].clientX + e.touches[1].clientX) / 2 - trect.left;
         const my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - trect.top;
+        // Spreading on past the globe's limit, by a quarter again, goes on into the street map.
+        if (initialZoomRadius * scale >= getMaxRadius() * 1.25 && globeAtMaxZoom() && zoomPastGlobe(mx, my)) { touchDistance = 0; return; }
         zoomAnchor = unproject(mx, my, currentRadius, width / 2, height / 2) ? { x: mx, y: my } : null;
         // A twist of the two fingers turns the picture with them: the globe has no up.
         const ang = Math.atan2(e.touches[1].clientY - e.touches[0].clientY, e.touches[1].clientX - e.touches[0].clientX);
@@ -21188,13 +21241,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=574"></script>
-<script src="assets/funding-views.js?v=574"></script>
-<script src="assets/layers.js?v=574"></script>
-<script src="assets/hq-detail.js?v=574"></script>
-<script src="assets/bubbles.js?v=574" defer></script>
-<script src="assets/phone-maps.js?v=574"></script>
-<script src="assets/desktop-maps.js?v=574"></script>
-<script src="assets/chat-resize.js?v=574"></script>
+<script src="assets/typeset.js?v=575"></script>
+<script src="assets/funding-views.js?v=575"></script>
+<script src="assets/layers.js?v=575"></script>
+<script src="assets/hq-detail.js?v=575"></script>
+<script src="assets/bubbles.js?v=575" defer></script>
+<script src="assets/phone-maps.js?v=575"></script>
+<script src="assets/desktop-maps.js?v=575"></script>
+<script src="assets/chat-resize.js?v=575"></script>
 </body>
 </html>
