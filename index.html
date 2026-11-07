@@ -237,11 +237,12 @@ return maplibregl$1;
             <p class="layers-note">One at a time: the map shows only the spaces the filter is about. The same six are the row of filters over the map. Untick the one on, or pick All spaces there, to show every space again.</p>
             <div class="layers-list">
               <!-- One box can turn on several drawn layers: data-layer names the box, data-layers the layers it holds.
-                   These six are the filters (assets/layers.js, SPACE_TEST): one on at a time. -->
-              <label style="--layer-color:#fb923c"><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
-              <label style="--layer-color:#a78bfa"><input type="checkbox" data-layer="epstein" data-layers="epstein people"> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
-              <label style="--layer-color:#ff5cd8"><input type="checkbox" data-layer="propaganda"> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
-              <label style="--layer-color:#9caf7d"><input type="checkbox" data-layer="independent"> <span class="layer-name">Independent</span><span class="layer-desc">Spaces whose record describes them as an independent space or institution</span><span class="layers-count" data-count="independent"></span></label>
+                   These six are the filters (assets/layers.js, SPACE_TEST): one on at a time. Only the four marked data-chip
+                   get a chip in the row over the map (user, 7 Nov 2026: "only keep these 4 on top"); the other two are in this menu only. -->
+              <label style="--layer-color:#fb923c"><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right" data-chip> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
+              <label style="--layer-color:#a78bfa"><input type="checkbox" data-layer="epstein" data-layers="epstein people" data-chip> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
+              <label style="--layer-color:#ff5cd8"><input type="checkbox" data-layer="propaganda" data-chip> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
+              <label style="--layer-color:#9caf7d"><input type="checkbox" data-layer="independent" data-chip> <span class="layer-name">Independent</span><span class="layer-desc">Spaces whose record describes them as an independent space or institution</span><span class="layers-count" data-count="independent"></span></label>
               <label style="--layer-color:#9ae3e8"><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Spaces graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
               <label style="--layer-color:#ffd600"><input type="checkbox" data-layer="artist"> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
             </div>
@@ -885,8 +886,9 @@ return maplibregl$1;
 
                   <!-- Upward Arrow Send Button -->
                   <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message">
+                    <!-- A triangle pointing up, drawn as an outline (user, 7 Nov 2026: "the chat symbol can be triangle"). -->
                     <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 19V5M5 12l7-7 7 7"/>
+                      <path d="M12 4.5l8.5 15h-17z"/>
                     </svg>
                   </button>
                 </div>

@@ -143,9 +143,9 @@
     refilter();
   }
   window.atlasSetSpaceFilter = function (key) { if (window.atlasSpaceFilter() !== key) applySpaceFilter(key); };
-  // The row of filters over the map, built by the phone and desktop layouts into their own strip: All spaces, then one
-  // chip per filter in its colour from the Layers menu. The pressed chip is the filter on; All spaces is pressed when none
-  // is. Returns false until the Layers menu is in the page.
+  // The row of filters over the map, built by the phone and desktop layouts into their own strip: one chip per marked
+  // filter in its colour from the Layers menu. The pressed chip is the filter on; none is pressed when no filter is on.
+  // Returns false until the Layers menu is in the page.
   window.atlasFilterChips = function (host, cls) {
     const list = spaceBoxes(); if (!list.length) return false;
     host.setAttribute('role', 'toolbar'); host.setAttribute('aria-label', 'Show only');
@@ -158,11 +158,12 @@
       b.addEventListener('click', () => window.atlasSetSpaceFilter(key && window.atlasSpaceFilter() === key ? null : key));
       host.appendChild(b);
     };
-    mk(null, 'All spaces', '', 'Show every space');
-    list.forEach(inp => {
+    // Only a box marked data-chip gets a chip, and there is no All spaces chip (the four in index.html; user, 7 Nov 2026:
+    // "only keep these 4 on top"): pressing the chip that is on shows every space again, and the row fits beside the box.
+    list.filter(inp => inp.hasAttribute('data-chip')).forEach(inp => {
       const label = inp.closest('label'), nm = label && label.querySelector('.layer-name');
       const name = (nm ? nm.textContent : inp.dataset.layer).trim();
-      mk(inp.dataset.layer, name, label ? label.style.getPropertyValue('--layer-color') : '', `Show only ${name}`);
+      mk(inp.dataset.layer, name, label ? label.style.getPropertyValue('--layer-color') : '', `Show only ${name}; press again to show every space`);
     });
     const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer ? b.dataset.layer === on : !on))); };
     paint(); document.addEventListener('atlas:filter', paint);
