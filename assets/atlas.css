@@ -2728,19 +2728,19 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#e2f86c}
 
 /* The street map's badge, designed (user, 5 Nov 2026: "the museum badges on zoom have to be designed and there is no hover").
-   At rest it is the globe's label: the ground behind, a 1px outline in the tier's colour at 55%, 8px corners (7px since 5 Nov 2026), Jokker 12px (user, 5 Nov 2026: "the badge font should be smaller"; was 14px) in the
+   At rest it is the globe's label: the ground behind, a 1px outline in the tier's colour at 55%, 8px corners, Jokker 12px with 7px above and below and 12px at the sides (user, 7 Nov 2026: "the badges should have more padding"; was 1px and 8px) (user, 5 Nov 2026: "the badge font should be smaller"; was 14px) in the
    tier's colour (Regular on light, Light on dark, as atlasLabelWeight). A long name stops at 22ch with an ellipsis.
    Hover and keyboard focus fill the badge with the tier's colour and set the type in the ground's colour: the same pair turned
    over, so the contrast is what it was at rest (tier ink on white 5:1 or better, on black 11:1 or better), and the whole name opens out.
-   Selected is a step larger (13px, 22px tall; user, 6 Nov 2026: "the selected badge should be smaller too"; was 15px, before that 18px) and solid, ink on paper turned over, black on white in the dark. */
-:root:root:root:root:root:root[data-theme] .inst-pin-label{height:20px;padding:0 8px;gap:0;border-radius:7px;font:400 12px/18px var(--sans);letter-spacing:.01em;box-sizing:border-box;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),opacity .25s var(--ease)}
+   Selected is a step larger (13px, 28px tall with 14px sides; user, 6 Nov 2026: "the selected badge should be smaller too"; was 15px, before that 18px) and solid, ink on paper turned over, black on white in the dark. */
+:root:root:root:root:root:root[data-theme] .inst-pin-label{height:26px;padding:0 12px;gap:0;border-radius:8px;font:400 12px/24px var(--sans);letter-spacing:.01em;box-sizing:border-box;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),opacity .25s var(--ease)}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{font-weight:300}
 :root:root:root:root:root:root[data-theme] .inst-pin-label .inst-pin-label-name{display:block;max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 :root:root:root:root:root:root[data-theme] .inst-pin-label:hover,:root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible,:root:root:root:root:root:root[data-theme] .custom-inst-pin:hover .inst-pin-label{background:var(--lc);border-color:var(--lc);color:#fff}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label:hover,:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label:focus-visible,:root:root:root:root:root:root[data-theme="dark"] .custom-inst-pin:hover .inst-pin-label{color:#000}
 :root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible{outline:2px solid var(--lc);outline-offset:2px}
 :root:root:root:root:root:root[data-theme] .inst-pin-label:hover .inst-pin-label-name,:root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible .inst-pin-label-name,:root:root:root:root:root:root[data-theme] .custom-inst-pin:hover .inst-pin-label-name,:root:root:root:root:root:root[data-theme] .custom-inst-pin.popup-active .inst-pin-label-name{max-width:none}
-:root:root:root:root:root:root[data-theme] .custom-inst-pin.popup-active .inst-pin-label{height:22px;padding:0 10px;font-size:13px;line-height:20px;background:#000;border-color:#000;color:#fff;opacity:1;pointer-events:auto;z-index:9998}
+:root:root:root:root:root:root[data-theme] .custom-inst-pin.popup-active .inst-pin-label{height:28px;padding:0 14px;font-size:13px;line-height:26px;background:#000;border-color:#000;color:#fff;opacity:1;pointer-events:auto;z-index:9998}
 :root:root:root:root:root:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label{background:#fff;border-color:#fff;color:#000}
 :root:root:root:root:root:root[data-theme] .custom-inst-pin:hover .inst-pin-label,:root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible{z-index:9999}
 
