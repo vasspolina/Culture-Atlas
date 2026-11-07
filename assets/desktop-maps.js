@@ -237,6 +237,9 @@
         b.className = 'gmd-chip';
         b.dataset.layer = cb.dataset.layer;
         b.textContent = name.length > 28 ? cb.dataset.layer : name;
+        // The chip wears its layer's colour, the same one as its row in the Layers menu.
+        const col = label && label.style.getPropertyValue('--layer-color');
+        if (col) { b.style.setProperty('--layer-color', col); b.classList.add('has-color'); }
         b.addEventListener('click', () => {
           const cur = document.querySelector('#layersControl input[data-layer="' + cb.dataset.layer + '"]');
           if (cur) cur.click();
