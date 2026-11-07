@@ -4517,6 +4517,32 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 }
 
 
+/* ---- Coloured filters (user's instruction, 6 Nov 2026) ----
+   Every filter wears its own colour: the layer chips over the map, the rows of the Layers menu, the funder types and the
+   widest-reaching funders. Off, a filter is a pale wash of its colour with a dot of the full colour; on, it is filled with
+   the colour and its dot turns black, so the state is said by more than the hue (and by aria-pressed / the checkbox).
+   Text on the full colours is black in both themes: every fill measures 7:1 or better against #000. The chips sit under a
+   rule sixteen ids deep because the button layer above (#displaay x14) would otherwise paint them ink when pressed. */
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color{display:inline-flex!important;align-items:center;gap:8px;background:color-mix(in srgb,var(--layer-color) 22%,var(--paper))!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink)!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--layer-color);box-shadow:0 0 0 1px var(--ink)}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color:is(:hover,:focus-visible){background:color-mix(in srgb,var(--layer-color) 55%,var(--paper))!important;color:var(--ink)!important;border-color:var(--ink)!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]{background:var(--layer-color)!important;color:#000!important;box-shadow:0 0 0 2px #000!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]::before{background:#000;box-shadow:none}
+
+html body #layersPanel#layersPanel label[style*="--layer-color"]{background:color-mix(in srgb,var(--layer-color) 18%,var(--paper))!important;color:var(--ink)!important;box-shadow:inset 4px 0 0 var(--layer-color)}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:hover{background:color-mix(in srgb,var(--layer-color) 40%,var(--paper))!important}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:has(input:checked){background:var(--layer-color)!important;color:#000!important;box-shadow:inset 4px 0 0 #000}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:has(input:checked) :is(.layer-name,.layer-desc,.layers-count){color:#000!important}
+html body #layersPanel#layersPanel label[style*="--layer-color"] input{accent-color:#000}
+
+/* The funder types and the widest-reaching funders: the same wash and fill, in the funder kind's colour. */
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row{background:color-mix(in srgb,var(--marker-color,var(--row)) 18%,var(--paper))!important;color:var(--ink)!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]){background:var(--marker-color)!important;color:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]) :is(.tf-n,.layer-name,.tf-name){color:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"])>i{background:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:hover{background:color-mix(in srgb,var(--marker-color,var(--row)) 45%,var(--paper))!important;color:var(--ink)!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]):hover{background:var(--marker-color)!important;color:#000!important}
+
 /* ===== GRADING BROUGHT BACK (user, 6 Nov 2026: "bring grading back ... explain it also on the info button on each space ... colour coded") =====
    The grade is its letter in a dot of its colour: black type on every fill (each 7:1 or better against black), and a 1px ink edge so the
    pale fills still read on white (the letter carries the grade, the colour codes it). The i button beside it opens the scale. Set after

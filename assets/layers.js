@@ -116,6 +116,44 @@
     } else if (REACH) clearReach();
   }
   let recById = null, keyIndex = null, keyKind = null, web = null, loading = false;
+
+  // ---- The filters narrow the spaces on the map (user's instruction, 6 Nov 2026) ----
+  // A map layer about spaces (the six under "Map layers") is also a filter: with one or more on, the map draws only the spaces
+  // at least one of them is about, over every grade, since the grade switch alone would hide most of them (a propaganda
+  // space is rarely graded clean). A widest-reaching funder switched on narrows that further, to the spaces it funds. With
+  // nothing on, the map is as it was.
+  const SPACE_TEST = {
+    funding: i => { const rec = recById && recById.get(i.id); return !!(rec && rec.nodes.some(FUNDER)); },
+    epstein: i => { const rec = recById && recById.get(i.id); return !!(rec && epsteinOf(rec).length); },
+    propaganda: i => !!(i.propaganda && i.propaganda.length),
+    independent: i => selfKinds(i).independent,
+    openbooks: i => isOpenBooks(i),
+    artist: i => selfKinds(i).artist
+  };
+  const spaceLayersOn = () => Object.keys(SPACE_TEST).filter(k => { const inp = document.querySelector(`#layersPanel input[data-layer="${k}"]`); return !!(inp && inp.checked); });
+  window.atlasLayerKeep = function () {
+    const on = spaceLayersOn();
+    let funded = null;
+    if (FILTERS.size && keyIndex) { funded = new Set(); FILTERS.forEach(t => t.keys.forEach(k => (keyIndex.get(k) || []).forEach(id => funded.add(id)))); }
+    if (!on.length && !funded) return null;
+    // Funding and Epstein read the funding maps; until they are in, those two keep nothing, and the map fills in once they load.
+    if (on.some(k => k === 'funding' || k === 'epstein') && !recById) loadMoney();
+    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id));
+  };
+  let pinIndex = null;
+  function refilter() {
+    if (typeof applyFilters === 'function') { try { applyFilters(); } catch (e) { /* the page's own filter state is not ready yet */ } }
+    // The street map's pins are built once per city, so a filter changed while a city is open shows or hides them in place.
+    const keep = window.atlasLayerKeep();
+    const pins = document.querySelectorAll('.custom-inst-pin[data-entity-id]');
+    if (pins.length && typeof ALL_INSTITUTIONS !== 'undefined') {
+      if (!pinIndex) { pinIndex = new Map(); ALL_INSTITUTIONS.forEach(i => pinIndex.set(i.id || i.name, i)); }
+      pins.forEach(el => { const i = pinIndex.get(el.dataset.entityId); el.style.display = !keep || !i || keep(i) ? '' : 'none'; });
+    }
+    if (typeof window.atlasLayersFiltered === 'function') window.atlasLayersFiltered();
+    repaint();
+  }
+  window.atlasRefilter = refilter;
   // Label type is regular on the light theme and light on the dark one.
   const LW = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
   let cityFlags = null;
@@ -187,7 +225,7 @@
       loading = false;
       updateCounts();
       if (cb) cb();
-      repaint();
+      if (window.atlasLayerKeep()) refilter(); else repaint();
     }).catch(() => { loading = false; });
   }
 
@@ -1144,9 +1182,10 @@
     const base = 240, r = base * Math.pow(2, map.getZoom() - 7);
     // Points behind the camera on a tilted map project to nonsense; anything far off the canvas is treated as not in front.
     const project = (lon, lat) => { const p = map.project([lon, lat]); return { x: p.x, y: p.y, front: Math.abs(p.x - W / 2) < 6 * W && Math.abs(p.y - H / 2) < 6 * H, depth: 1 }; };
-    const dots = [], list = [], pad = 40;
+    const dots = [], list = [], pad = 40, keep = window.atlasLayerKeep();
     ALL_INSTITUTIONS.forEach(i => {
       if (typeof i.lat !== 'number' || typeof i.lon !== 'number') return;
+      if (keep && !keep(i)) return;
       const p = project(i.lon, i.lat); if (!p.front) return;
       list.push(i);
       if (p.x > -pad && p.x < W + pad && p.y > -pad && p.y < H + pad) dots.push({ inst: i, x: p.x, y: p.y });
@@ -1235,7 +1274,7 @@
       const home = hubOf(t);
       if (home && typeof home.lat === 'number') window.flyTo(home.lon, home.lat, (window.getBaseRadius ? window.getBaseRadius() : 276) * 1.6);
     }
-    renderTop(); repaint();
+    renderTop(); refilter();
   }
   // The rows are built again only when the list changes (a funder type switched off); a switch changing only updates its row,
   // so the row under the pointer or with focus stays where it is.
@@ -1248,6 +1287,7 @@
       box.textContent = '';
       list.forEach(t => {
         const b = document.createElement('button'); b.type = 'button'; b.className = 'top-funder filter-row';
+        b.style.setProperty('--marker-color', COL[t.kind]);
         b.setAttribute('role', 'switch');
         b.innerHTML = `<i class="shape-${KIND_SHAPE[t.kind]}" style="--marker-color:${COL[t.kind]}"></i><span class="tf-name"></span><span class="tf-n"></span><span class="filter-switch" aria-hidden="true"></span>`;
         b.querySelector('.tf-name').textContent = t.name;
@@ -1284,7 +1324,7 @@
   }
   function turnOn(k) {
     const inp = boxes().find(i => keysOfBox(i).includes(k));
-    if (inp) setBox(inp, true); else L[k] = true;
+    if (inp) { const was = inp.checked; setBox(inp, true); if (!was) refilter(); } else L[k] = true;
   }
 
   function init() {
@@ -1316,14 +1356,14 @@
       const cDef = box.querySelector('input[data-choro="abroad"]'); if (cDef) { cDef.checked = true; L.choroMode = 'abroad'; }
       FILTERS.clear(); renderTop();
       clearReach();
-      repaint();
+      refilter();
     });
     document.addEventListener('click', e => { if (!panel.hidden && !box.contains(e.target)) setOpen(false); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { clearReach(); if (!panel.hidden) setOpen(false); } });
     window.addEventListener('resize', () => { if (!panel.hidden) placePanel(); });
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
       setBox(inp, inp.checked);
-      repaint();
+      refilter();
     }));
     box.querySelectorAll('input[data-kind]').forEach(inp => inp.addEventListener('change', () => {
       L.kinds[inp.dataset.kind] = inp.checked;

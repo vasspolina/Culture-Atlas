@@ -236,26 +236,26 @@ return maplibregl$1;
             <h2 class="layers-section-title">Map layers</h2>
             <div class="layers-list">
               <!-- One box can turn on several drawn layers: data-layer names the box, data-layers the layers it holds. -->
-              <label><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
-              <label><input type="checkbox" data-layer="epstein" data-layers="epstein people"> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
-              <label><input type="checkbox" data-layer="propaganda"> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
-              <label><input type="checkbox" data-layer="independent"> <span class="layer-name">Independent</span><span class="layer-desc">Spaces whose record describes them as an independent space or institution</span><span class="layers-count" data-count="independent"></span></label>
-              <label><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Spaces graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
-              <label><input type="checkbox" data-layer="artist"> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
+              <label style="--layer-color:#fb923c"><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
+              <label style="--layer-color:#a78bfa"><input type="checkbox" data-layer="epstein" data-layers="epstein people"> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
+              <label style="--layer-color:#ff5cd8"><input type="checkbox" data-layer="propaganda"> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
+              <label style="--layer-color:#9caf7d"><input type="checkbox" data-layer="independent"> <span class="layer-name">Independent</span><span class="layer-desc">Spaces whose record describes them as an independent space or institution</span><span class="layers-count" data-count="independent"></span></label>
+              <label style="--layer-color:#9ae3e8"><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Spaces graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
+              <label style="--layer-color:#ffd600"><input type="checkbox" data-layer="artist"> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
             </div>
           </section>
           <section class="layers-section" data-no-chips>
             <h2 class="layers-section-title">Funding views</h2>
             <p class="layers-note">Other ways to draw the same funding data. Each works alone or beside the layers above, and follows the funder types below. Point at a line, a ring or an area to name it; click to ask the chat.</p>
             <div class="layers-list">
-              <label><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type. Pairs with one link show when you zoom in</span><span class="layers-count" data-count="bundle"></span></label>
-              <label><input type="checkbox" data-layer="flows" data-chip> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
-              <label><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country by the share of its spaces&rsquo; funders based abroad, or by its main funder type</span><span class="layers-count" data-count="choro"></span></label>
-              <label><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for. Point at a funder anywhere to see its own</span></label>
-              <label><input type="checkbox" data-layer="glyphs"> <span class="layer-name">Funding mix on each space</span><span class="layer-desc">A ring around each space, split by its public, foundation and company funders</span></label>
-              <label><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share. No lines</span></label>
-              <label><input type="checkbox" data-layer="lifted" data-chip> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more spaces they fund, with a line down to each</span></label>
-              <label><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices. The flag is on the space</span><span class="layers-count" data-count="flagged"></span></label>
+              <label style="--layer-color:#818cf8"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type. Pairs with one link show when you zoom in</span><span class="layers-count" data-count="bundle"></span></label>
+              <label style="--layer-color:#38bdf8"><input type="checkbox" data-layer="flows" data-chip> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
+              <label style="--layer-color:#86efac"><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country by the share of its spaces&rsquo; funders based abroad, or by its main funder type</span><span class="layers-count" data-count="choro"></span></label>
+              <label style="--layer-color:#f9a8d4"><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for. Point at a funder anywhere to see its own</span></label>
+              <label style="--layer-color:#fde68a"><input type="checkbox" data-layer="glyphs"> <span class="layer-name">Funding mix on each space</span><span class="layer-desc">A ring around each space, split by its public, foundation and company funders</span></label>
+              <label style="--layer-color:#c4b5fd"><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share. No lines</span></label>
+              <label style="--layer-color:#fca5a5"><input type="checkbox" data-layer="lifted" data-chip> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more spaces they fund, with a line down to each</span></label>
+              <label style="--layer-color:#f59e0b"><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices. The flag is on the space</span><span class="layers-count" data-count="flagged"></span></label>
             </div>
             <div class="layers-kinds layers-choro" role="radiogroup" aria-label="Countries shaded by">
               <label class="kind-chip"><input type="radio" name="choroMode" data-choro="abroad" checked> <span class="layer-name">Funders abroad</span></label>
@@ -8291,6 +8291,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       }
 
       cityMarkersLayer.clearLayers();
+      const cityPinKeep = typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
 
       cityInsts.forEach(inst => {
 
@@ -8299,6 +8300,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         pinEl.setAttribute('data-entity-id', inst.id || inst.name);
         pinEl.setAttribute('data-name', inst.name);
         pinEl.style.position = 'relative';
+        if (cityPinKeep && !cityPinKeep(inst)) pinEl.style.display = 'none';   // hidden, not left out: the filter can be switched off here
         pinEl.style.width = '32px';
         pinEl.style.height = '32px';
         pinEl.style.display = 'flex';
@@ -19898,6 +19900,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const isVisualCritiqueOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
       const isCleanOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('A');
       const isFlaggedOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('B');
+      // A map layer or a funder switched on in the Layers menu keeps only its own spaces, over every grade (assets/layers.js).
+      const layerKeep = typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
 
       let baseSource;
       if (isCommunityOnly) {
@@ -19910,6 +19914,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           }
           return true;
         });
+      } else if (layerKeep) {
+        baseSource = ALL_INSTITUTIONS;
       } else if (isCleanOnly) {
         baseSource = ALL_INSTITUTIONS.filter(i => i.tier === 'A');
       } else if (isFlaggedOnly) {
@@ -19920,7 +19926,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       filteredList = baseSource.filter(inst => {
         if (!isCommunityOnly && !isVisualCritiqueOnly) {
-          if (!selectedTierFilter.has(inst.tier) && !selectedTierFilter.has('all') && !/^grade[1-5]$/.test(selectedCategoryFilter)) return false;
+          if (!layerKeep && !selectedTierFilter.has(inst.tier) && !selectedTierFilter.has('all') && !/^grade[1-5]$/.test(selectedCategoryFilter)) return false;
+          if (layerKeep && !layerKeep(inst)) return false;
           if (inst.isCommunityLayer || inst.tier === 'COMMUNITY') return false; // Strictly filtered out of actual research results
         }
 
