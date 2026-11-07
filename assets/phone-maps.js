@@ -231,6 +231,14 @@
     }
 
     // ---- The chat's header, as the record sheet's: a title, the same menu, and one cross ----------------------------
+    // The chat's box is one line too, as the map's: its long prompt wrapped to two lines in the pill (user, 7 Nov 2026,
+    // the phone's look after the foundry's site). The full prompt stays as the box's name. Only on a phone: the desktop's panel keeps it.
+    const work = $('workInput');
+    if (work && PHONE()) {
+      work.setAttribute('aria-label', work.getAttribute('placeholder') || 'Ask about a space, its funders or controversies');
+      work.setAttribute('placeholder', 'Ask about a space or a funder');
+    }
+
     const chatHead = $('phoneChatHead');
     if (chatHead) {
       const title = chatHead.querySelector('.flex-1');

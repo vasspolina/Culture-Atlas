@@ -4613,3 +4613,44 @@ body:has(#detailDrawer:not(.hidden)) #mapColourKey,
   #mapColourKey#mapColourKey#mapColourKey{position:fixed;top:calc(var(--safe-t,0px) + 72px);left:12px;right:auto;z-index:44;max-width:calc(100vw - 92px);padding:8px 10px}
   #mapColourKey#mapColourKey#mapColourKey .mck-body{max-height:40vh}
 }
+
+/* ==== PHONE: FIXES UNDER THE DISPLAAY LAYER (user, 7 Nov 2026: "fix mobile based on visual design and library from displaay.net and
+   the UI from Google Maps") ====
+   The look is the Displaay layer above (1px ink ring, 10/14/20px corners, no shadows). These are the phone things it did not reach:
+   the record sheet on paper rather than the page's grey, its cross without a grey plate, hairlines between the menu's items, the
+   street map's old bar kept off the chat sheet, and the chat's box as one line with the keyboard's arrow beside Send instead of over
+   the text. The tokens: --gm-line (the same 1px ink edge as a border, where a ring cannot be drawn) and --gm-plate (the pressed ground). */
+@media (max-width:767px){
+  :root{--gm-line:1px solid var(--ink);--gm-plate:#e3e3e3}
+  :root[data-theme="dark"]{--gm-plate:var(--block)}
+  :root:is(.gm-map,.gm-chat):root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmMenu button+button{border-top:.8px solid var(--line)!important}
+  :root:is(.gm-map,.gm-chat):root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmMenu button{min-height:44px!important;font:400 14px/20px var(--sans)!important}
+  /* The record's body is the sheet's own paper, not the page's grey. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet{background:var(--paper)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet :is(#dossier-sheet-scrollable-body,.sheet-title-block,.sheet-chrome,.gm-tabs){background:var(--paper)!important}
+  /* The sheet's cross sits on the paper, not on a grey plate; it takes the plate only while pressed. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-close{background:transparent!important;border-radius:var(--btn-r,10px)!important;color:var(--ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-close:is(:hover,:active){background:var(--gm-plate)!important}
+  /* The street map's old bar (Exit, World, the country, the place) has no place over the chat sheet. */
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityViewControlBanner{display:none!important}
+  /* The chat's box is one line until typed into (rows=2 made it two lines high when empty), and the keyboard's arrow is a square
+     beside Send, with the same edge as the rest, in both boxes; it no longer sits over the text. */
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.chat-input-mode-active) #workViewContainer #workInputCard #noteInputBlock{min-height:0!important}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.chat-input-mode-active) #workViewContainer #workInputCard #workInput{height:48px;min-height:0!important}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.chat-input-mode-active) #workViewContainer #workInputCard #workKbCloseBtn{position:static!important;top:auto!important;right:auto!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;margin:0!important;border:var(--gm-line)!important;border-radius:var(--btn-r,10px)!important;background:var(--paper)!important;color:var(--ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileKbCloseBtn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;border:var(--gm-line)!important;border-radius:var(--btn-r,10px)!important;background:var(--paper)!important;color:var(--ink)!important}
+}
+
+/* The Top story strip was black with black type on it, on the phone and on the desktop: the rule that sets it on the light ground
+   (TOP STORY, 4 Nov 2026, "white or light beige grey") loses to the strip's first rule, whose selector carries :not([hidden]). The
+   same selector here, later, lets the light ground win. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]),:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert:not([hidden]){background:var(--gm-top-ground)!important;color:var(--gm-top-ink)!important;box-shadow:var(--gm-shadow)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-head{color:var(--gm-top-ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-meta{color:var(--gm-top-soft)!important}
+}
+@media (min-width:768px){
+  :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]),:root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert:not([hidden]){background:var(--gm-top-ground)!important;color:var(--gm-top-ink)!important;box-shadow:var(--gm-shadow)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-head{color:var(--gm-top-ink)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-meta{color:var(--gm-top-soft)!important}
+}
