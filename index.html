@@ -327,6 +327,29 @@ return maplibregl$1;
         <button id="layersBtn" type="button" aria-expanded="false" aria-controls="layersPanel">Layers</button>
       </div>
 
+      <!-- The colour key, always on the map (user, 6 Nov 2026): what the colour of a space's or a city's name says about how
+           its record is graded. The same three colours as the labels (--tier-a, --tier-b, --tier-u in assets/atlas.css,
+           TIER_INK below), drawn as the labels are: the word in its colour, outlined, on the map's ground. The rules are
+           those of "What the page may show" in README.md; a city's colour is the tier most of its spaces have (cityTier). -->
+      <section id="mapColourKey" aria-labelledby="mapColourKeyTitle">
+        <h2 id="mapColourKeyTitle" class="mck-title">Colour key</h2>
+        <ul class="mck-list">
+          <li><span class="mck-pill" data-tier="A">Clean</span><span class="mck-desc">a source is cited</span></li>
+          <li><span class="mck-pill" data-tier="B">Flagged</span><span class="mck-desc">a recorded reason</span></li>
+          <li><span class="mck-pill" data-tier="U">Unverified</span><span class="mck-desc">no outside source yet</span></li>
+        </ul>
+        <details class="mck-more">
+          <summary>How spaces are graded</summary>
+          <div class="mck-body">
+            <p>The colour of a name on the map is the grade of its record. It says how well the record is sourced, not a verdict on the space.</p>
+            <p><b class="mck-word" data-tier="A">Clean</b> needs at least one source outside the space&rsquo;s own website.</p>
+            <p><b class="mck-word" data-tier="B">Flagged</b> needs a recorded reason, such as a flagged funder or a protest over its funding.</p>
+            <p><b class="mck-word" data-tier="U">Unverified</b> is every other space: its record cites no source outside the space&rsquo;s own website yet.</p>
+            <p>A city takes the colour most of its spaces have. Open a space to read its record and the sources behind its grade.</p>
+          </div>
+        </details>
+      </section>
+
 
 
 
@@ -10173,11 +10196,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v575';
+    const ATLAS_RELEASE = 'culture-atlas-v576';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=575').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=576').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
