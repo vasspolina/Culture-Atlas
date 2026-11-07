@@ -3059,7 +3059,7 @@ div:has(>#topThemeBtn){column-gap:0}
    three heights (peek, half, full). Every rule here starts with :root.gm-map and a long run of :root, because the phone rules above escalate
    to 26 of them; so none of this reaches the chat, the record page or the desktop. */
 /* The icons phone-maps.js adds are the phone's only. */
-.gm-layers-icon,.gm-lens,#gmMenuBtn,#gmChatBtn,#gmMenu{display:none}
+.gm-layers-icon,.gm-lens,#gmMenuBtn,#gmChatBtn,#gmMenu,#gmChips{display:none}
 @media (max-width:767px){
   :root{--gm-gap:12px;--gm-card:52px;--gm-shadow:0 1px 2px rgba(0,0,0,.28),0 2px 8px rgba(0,0,0,.14);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.16),0 -4px 16px rgba(0,0,0,.14)}
   :root[data-theme="dark"]{--gm-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 10px rgba(0,0,0,.45);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.5),0 -4px 16px rgba(0,0,0,.4)}
@@ -3122,6 +3122,16 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn[aria-expanded="true"]{background:var(--ink)!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn[aria-expanded="true"] .gm-layers-icon{color:var(--paper)}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
+
+  /* The filter row at the top (user, 7 Nov 2026: "make filters above instead of layers, so if clicked it only shows what clicked"):
+     All spaces and the six filters from the Layers menu, one at a time, scrolling sideways. The Layers button sits under
+     it at the right. With a city's banner at the top left, the row steps down beside that button and clears it. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips{display:flex;gap:8px;position:fixed;top:calc(var(--safe-t,0px) + 12px);left:var(--gm-gap);right:var(--gm-gap);z-index:44;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0;padding:2px 4px 8px;scroll-padding:0 4px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips::-webkit-scrollbar{display:none}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#cityViewControlBanner:not(.hidden)) #gmChips{top:calc(var(--safe-t,0px) + 72px);right:calc(var(--gm-gap) + 56px)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-filter-chip{flex:none;height:36px;padding:0 14px;border:0;border-radius:18px;background:var(--paper);color:var(--ink);font:400 14px/1 var(--sans);white-space:nowrap;box-shadow:var(--gm-shadow);cursor:pointer}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-filter-chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-filter-chip:focus-visible{outline:3px solid var(--focus,#1d4ed8);outline-offset:2px}
   /* The layers menu: a sheet from the bottom edge, over the map. */
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersPanel:not([hidden]){position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:auto!important;max-width:none!important;max-height:72vh!important;max-height:72dvh!important;margin:0!important;overflow-y:auto!important;overscroll-behavior:contain;padding-bottom:calc(16px + var(--safe-b,0px))!important;border:0!important;border-radius:16px 16px 0 0!important;box-shadow:var(--gm-shadow-up)!important;z-index:60!important}
 
@@ -3572,7 +3582,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt.is-ask .gmd-opt-label{white-space:normal}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt-sub{font:400 13px/1.25 var(--sans);color:color-mix(in srgb,var(--ink) 66%,transparent);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-  /* Layer chips, beside the box, stopping short of the panel. */
+  /* The filter row, beside the box, stopping short of the panel. */
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips{display:flex;gap:8px;position:fixed;top:calc(var(--gmd-gap) + (var(--gmd-h) - 36px) / 2);left:calc(var(--gmd-w) - var(--gmd-gap) + 12px);right:calc(var(--gmd-w) + 12px);z-index:45;overflow-x:auto;scrollbar-width:none;padding:2px 4px 8px}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips::-webkit-scrollbar{display:none}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip{flex:none;height:36px;padding:0 16px;border:0;border-radius:18px;background:var(--paper);color:var(--ink);font:400 14px/1 var(--sans);white-space:nowrap;box-shadow:var(--gmd-shadow);cursor:pointer}
@@ -3710,7 +3720,7 @@ div:has(>#topThemeBtn){column-gap:0}
 /* Buttons that stand on their own take the 1px edge and lose any tinted fill: transparent on whatever they sit on. */
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn,#curatorVoiceToggleBtn,.starter-prompt,.curator-followup-pill,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,#testConnectionBtn,#clearApiKeyBtn,.atlas-pill-btn,.layers-reset,.fa-focus-inst-btn,#exitStreetViewBtn,#backToWorldBtn,#backToCountryBtn,#hudWorldBtn,#hudSpinBtn,#hudExpandBtn,#hudEuropeBtn,#hudAsiaBtn,#hudAmericasBtn,#dossier-bottom-sheet .gm-tabs button){background:transparent!important;color:var(--ink)!important;border:0!important;box-shadow:inset 0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
 /* Over the map a button needs a ground to be read on: paper, with the ring. */
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,#mobileSuggestChips .curator-suggest-chip,.curator-suggest-chip,#layersControl #layersBtn,#gmdMapCtl>button,#gmdMapCtl #gmLocateBtn,#gmLocateBtn,#cityMapContainer .maplibregl-ctrl-group){box-shadow:0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.gm-filter-chip,#mobileSuggestChips .curator-suggest-chip,.curator-suggest-chip,#layersControl #layersBtn,#gmdMapCtl>button,#gmdMapCtl #gmLocateBtn,#gmLocateBtn,#cityMapContainer .maplibregl-ctrl-group){box-shadow:0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl .gmd-zoom{border-radius:var(--btn-r)!important;box-shadow:0 0 0 1px var(--ink)!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl .gmd-zoom>button{border-radius:0!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl .gmd-zoom>button+button{border-top:1px solid var(--ink)!important}
@@ -3747,7 +3757,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmFeed .gm-poster-pill{border-radius:8px!important}
 
 /* Displaay's type for buttons: 15px at 1.3, tracked +0.02em (their Saans 15px/19.5px/0.3px). The one size outside 14/18/24. */
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.curator-suggest-chip,.curator-followup-pill,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,.atlas-pill-btn,#gmdTopBar #topGossipBtn,#gmdTopBar #topThemeBtn,#dossier-bottom-sheet .gm-tabs button){font-size:15px!important;line-height:1.3!important;letter-spacing:.02em!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.gm-filter-chip,.curator-suggest-chip,.curator-followup-pill,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,.atlas-pill-btn,#gmdTopBar #topGossipBtn,#gmdTopBar #topThemeBtn,#dossier-bottom-sheet .gm-tabs button){font-size:15px!important;line-height:1.3!important;letter-spacing:.02em!important}
 
 /* "Ask the curator": no gradient, on one line (user, 4 Nov 2026), in one colour that changes from load to load (user, same day:
    "different colors on load, not each word a different colour"). assets/typeset.js picks a tone at load and sets
@@ -4528,7 +4538,7 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 
 
 /* ---- Coloured filters (user's instruction, 6 Nov 2026) ----
-   Every filter wears its own colour: the layer chips over the map, the rows of the Layers menu, the funder types and the
+   Every filter wears its own colour: the filter chips over the map (desktop #gmdChips, phone #gmChips), the rows of the Layers menu, the funder types and the
    widest-reaching funders. Off, a filter is a pale wash of its colour; on, it is filled with the colour and its edge thickens
    to 2px, so the state is said by more than the hue (and by aria-pressed / the checkbox). The chips had a dot of the full
    colour until 7 Nov 2026 (user: "delete dots from filters").
@@ -4537,6 +4547,9 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 #gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color{display:inline-flex!important;align-items:center;background:color-mix(in srgb,var(--layer-color) 22%,var(--paper))!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink)!important}
 #gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color:is(:hover,:focus-visible){background:color-mix(in srgb,var(--layer-color) 55%,var(--paper))!important;color:var(--ink)!important;border-color:var(--ink)!important}
 #gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]{background:var(--layer-color)!important;color:#000!important;box-shadow:0 0 0 2px #000!important}
+#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip.has-color{display:inline-flex!important;align-items:center;background:color-mix(in srgb,var(--layer-color) 22%,var(--paper))!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink)!important}
+#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip.has-color:is(:hover,:focus-visible){background:color-mix(in srgb,var(--layer-color) 55%,var(--paper))!important;color:var(--ink)!important;border-color:var(--ink)!important}
+#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip.has-color[aria-pressed="true"]{background:var(--layer-color)!important;color:#000!important;box-shadow:0 0 0 2px #000!important}
 
 html body #layersPanel#layersPanel label[style*="--layer-color"]{background:color-mix(in srgb,var(--layer-color) 18%,var(--paper))!important;color:var(--ink)!important;box-shadow:inset 4px 0 0 var(--layer-color)}
 html body #layersPanel#layersPanel label[style*="--layer-color"]:hover{background:color-mix(in srgb,var(--layer-color) 40%,var(--paper))!important}
@@ -4720,4 +4733,41 @@ body:has(#detailDrawer:not(.hidden)) #mapColourKey,
 @media (max-width:767px){
   :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #curatorHeroGreeting, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #curatorHeroGreeting::before{font-family:var(--sans)!important;font-weight:400!important;font-size:28px!important;line-height:1.1!important;letter-spacing:-.28px!important}
   :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .starter-prompt, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .starter-prompt *{font-family:var(--sans)!important;font-weight:400!important;font-size:17px!important;line-height:1.15!important;letter-spacing:.21px!important}
+}
+
+/* ---- THE NOTE FORM: PROPER FIELDS, HALF THE AIR, A BACK BUTTON (user, 7 Nov 2026: "do proper form field and make margin 50%
+   less, add back button with arrow back") ----
+   Each input is a field of its own again: a 1px ink edge with 10px corners (the Displaay button's), 44px tall, the typed words
+   inside it, in place of the ruled lines of 4 Nov. The label stays over the field at 15px. Focus is the site's 2px outline
+   around the field itself, not a bar under the block. Every distance of the 5 Nov layer is halved: the card's padding
+   (56/64 to 28/32, 28/24 on a phone to 14/12), the head's 16 to 8, the intro's 40 to 20 (28 to 14 on a phone), the
+   checkbox's 32 to 16, the toolbar's 40 to 20. Back is a Displaay button with an arrow, over the title; it does what the
+   cross does (toggleChatShare), so the chat comes back whichever is pressed. 16 ids, after the layers it replaces. */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode{padding:28px 32px 32px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormHead{margin:0 0 8px!important;gap:12px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormIntro{margin:0 0 20px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock),
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock):is(:hover,:focus-within){margin:0 0 12px!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormFields>.nf-field:first-of-type{border-top:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field>span,#noteInputLabel){margin:0 0 6px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea){display:block;width:100%!important;box-sizing:border-box!important;min-height:44px!important;margin:0!important;padding:10px 12px!important;border:1px solid var(--dp-ink)!important;border-radius:10px!important;background:var(--dp-paper)!important;color:var(--dp-ink)!important;box-shadow:none!important;outline:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteInputBlock textarea{min-height:7em!important;resize:vertical!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea):focus-visible{outline:2px solid var(--focus)!important;outline-offset:2px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteAckRow{margin:16px 0 0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormStatus{margin:8px 0 0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode>div.justify-between{padding-top:20px!important}
+/* Back: the arrow and the word, a Displaay button, 34px, 10px corners, a 1px ink edge; hover and press fill it with ink. It is
+   the first thing in the form so a screen reader meets it before the title, as a back control is met on a phone. */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn{display:inline-flex!important;align-items:center;gap:8px;align-self:flex-start;box-sizing:border-box;height:34px!important;min-height:34px!important;width:auto!important;margin:0 0 16px!important;padding:0 12px 0 10px!important;border:1px solid var(--dp-ink)!important;border-radius:10px!important;background:transparent!important;color:var(--dp-ink)!important;font:400 15px/1.3 var(--sans)!important;letter-spacing:.02em!important;text-decoration:none!important;cursor:pointer;transition:var(--btn-ease)}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn .note-back-arrow{display:block;flex:none;width:16px;height:16px;color:inherit}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn:is(:hover,:active){background:var(--dp-ink)!important;color:var(--dp-paper)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn:focus-visible{outline:2px solid var(--focus)!important;outline-offset:2px!important}
+body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!important}
+@media (max-width:520px){
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode{padding:14px 12px 16px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormIntro{margin:0 0 14px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock){padding:0!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteAckRow{margin:12px 0 0!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode>div.justify-between{padding-top:14px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn{margin:0 0 12px!important}
 }

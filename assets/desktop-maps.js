@@ -201,7 +201,7 @@
       syncSearch();
     });
 
-    // ---- The page's name, under the layer chips -----------------------------------------------------------------
+    // ---- The page's name, under the filter row -----------------------------------------------------------------
     // The header's brand button is hidden in this layout, so its name is set again here; a click does what that button did.
     if (!$('gmdTitle')) {
       const title = document.createElement('h1');
@@ -215,55 +215,19 @@
       document.body.appendChild(title);
     }
 
-    // ---- Layer chips beside the box ------------------------------------------------------------------------------
-    // Each chip is a map layer from the Layers menu and presses that layer's own switch, so the two always agree.
+    // ---- The filter row beside the box ---------------------------------------------------------------------------
+    // All spaces, then one chip per filter from the Layers menu, one at a time (user, 7 Nov 2026: "make filters above
+    // instead of layers, so if clicked it only shows what clicked"). assets/layers.js builds the row and owns the rule, so
+    // the chips and the menu's boxes always agree; the funding views stay in the menu, they draw lines and are not filters.
     const chips = document.createElement('div');
     chips.id = 'gmdChips';
-    chips.setAttribute('role', 'toolbar');
-    chips.setAttribute('aria-label', 'Map layers');
     document.body.appendChild(chips);
-    // Only a switch marked data-chip becomes a chip: the four in index.html (Funding connections, Epstein connections,
-    // Propaganda, Independent; user, 7 Nov 2026: "only keep these 4 on top"). Every other layer stays in the Layers menu only.
-    const layerInputs = () => [...document.querySelectorAll('#layersControl input[data-layer][data-chip]')];
-    function buildChips() {
-      const list = layerInputs();
-      if (!list.length) return false;
-      chips.innerHTML = '';
-      list.forEach((cb) => {
-        const label = cb.closest('label');
-        const title = label && (label.querySelector('strong, b, .layer-name, span') || label);
-        const name = (title ? title.textContent : cb.dataset.layer).trim().split('\n')[0].trim();
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'gmd-chip';
-        b.dataset.layer = cb.dataset.layer;
-        b.textContent = name.length > 28 ? cb.dataset.layer : name;
-        // The chip wears its layer's colour, the same one as its row in the Layers menu.
-        const col = label && label.style.getPropertyValue('--layer-color');
-        if (col) { b.style.setProperty('--layer-color', col); b.classList.add('has-color'); }
-        b.addEventListener('click', () => {
-          const cur = document.querySelector('#layersControl input[data-layer="' + cb.dataset.layer + '"]');
-          if (cur) cur.click();
-          paintChips();
-        });
-        chips.appendChild(b);
-      });
-      paintChips();
-      return true;
-    }
-    function paintChips() {
-      chips.querySelectorAll('.gmd-chip').forEach((b) => {
-        const cb = document.querySelector('#layersControl input[data-layer="' + b.dataset.layer + '"]');
-        b.setAttribute('aria-pressed', String(!!(cb && cb.checked)));
-      });
-    }
+    const buildChips = () => typeof window.atlasFilterChips === 'function' && window.atlasFilterChips(chips, 'gmd-chip');
     if (!buildChips()) {
-      // The layer switches are built once the page's data is in.
+      // The filter boxes are built once the page's data is in.
       const t = setInterval(() => { if (buildChips()) clearInterval(t); }, 500);
       setTimeout(() => clearInterval(t), 20000);
     }
-    document.addEventListener('change', (e) => { if (e.target && e.target.closest && e.target.closest('#layersControl')) paintChips(); });
-    document.addEventListener('click', (e) => { if (e.target && e.target.closest && e.target.closest('#layersControl')) setTimeout(paintChips, 0); });
 
     // ---- Layers: a square tile at the bottom left ----------------------------------------------------------------
     const layersBtn = $('layersBtn');
