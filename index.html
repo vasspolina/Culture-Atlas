@@ -11597,9 +11597,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           }
         });
 
-        // 8.1 Spatial Blossom / Anti-Overlap for Co-located Institutions in Same City
-        // When zoomed in onto a country or region, ensure adjacent institutions in the same city (e.g. 3 in Rome, 4 in Milan)
-        // separate into non-overlapping clickable spots with generous hitboxes
+        // 8.1 No spreading of a city's dots (user, 7 Nov 2026: "dont do these circles", then "leave pyongyang dots at true
+        // positions too"). Same-city dots that fell within 26px of each other used to be fanned out: a group of up to six on a
+        // circle of 16 to 24px (the "Spatial Blossom", a wreath of marks around Pyongyang with the propaganda halos under it),
+        // a bigger one on a sunflower disk (Havana's 33 spaces; Pyongyang has 32, so no count told them apart). Every dot now
+        // stays where its space is; close ones overlap until the view is near enough to part them, as on any map, and the city
+        // badge already carries the count. The groups are still found, so a city whose spaces knot together keeps its label
+        // off that knot (lastCityDisks below, now the box of the dots at their true places).
         const proximityGroups = [];
         const visitedDots = new Set();
         for (let i = 0; i < visibleDots.length; i++) {
@@ -11618,40 +11622,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             proximityGroups.push(group);
           }
         }
-
-        proximityGroups.forEach(grp => {
-          const N = grp.length;
-          const cX = grp.reduce((acc, d) => acc + d.origX, 0) / N;
-          const cY = grp.reduce((acc, d) => acc + d.origY, 0) / N;
-          // No ring of dots (user, 7 Nov 2026: "dont do these circles"). A group of up to six used to be fanned out on a
-          // circle of 16 to 24px around its centre, which drew a wreath of marks around Pyongyang with the propaganda halos
-          // under it. Such a group's dots now stay where their spaces are; close ones overlap until the view is near enough to
-          // part them, as on any map, and the city badge already carries the count. Only a big group takes the disk below.
-          if (N <= 6) return;
-          // A big group (Havana's 30-odd spaces) on that 24px ring put the dots on top of each other and
-          // of the labels. It fills a sunflower disk instead, about 11px between dots, the spaces nearest the
-          // group's centre in the middle and each keeping its own side of it.
-          const byDist = grp.slice().sort((a, b) => Math.hypot(a.origX - cX, a.origY - cY) - Math.hypot(b.origX - cX, b.origY - cY));
-          const slots = byDist.map((_, k) => {
-            const rr = 6.2 * Math.sqrt(k + 0.5), th = k * 2.399963;
-            return { x: cX + rr * Math.cos(th), y: cY + rr * Math.sin(th) };
-          });
-          const free = slots.slice();
-          byDist.forEach(d => {
-            // Outer slots are taken last; each dot takes the free slot in its own direction from the centre.
-            const want = Math.atan2(d.origY - cY, d.origX - cX);
-            let best = 0, bestCost = Infinity;
-            free.forEach((sl, n) => {
-              const rad = Math.hypot(sl.x - cX, sl.y - cY);
-              const da = Math.abs(((Math.atan2(sl.y - cY, sl.x - cX) - want + 3 * Math.PI) % (2 * Math.PI)) - Math.PI);
-              const cost = rad + da * 4;
-              if (cost < bestCost) { bestCost = cost; best = n; }
-            });
-            const sl = free.splice(best, 1)[0];
-            d.x = Math.round(sl.x); d.y = Math.round(sl.y);
-          });
-        });
-        // Where every dot sits once spread, so a space's label is not laid over another space's dot.
+        // Where a big group's dots sit, so the city's label clears them and a space's label is not laid over another space's dot.
         lastCityDisks = new Map();
         proximityGroups.forEach(grp => {
           if (grp.length <= 6) return;
