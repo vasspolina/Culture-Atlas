@@ -676,12 +676,14 @@
         let status = '';
         try { status = typeof tierName === 'function' ? tierName(inst) : ''; } catch (_) { status = ''; }
         if (g) {
-          rating.innerHTML = '<span class="gm-grade-dot" style="--gm-dot:' + esc(g.mark || g.col) + '" aria-hidden="true">' + esc(g.letter) + '</span>'
-            // One line, as a rating is: the label up to its first clause ("Funders listed; no funders flagged" reads
-            // "Funders listed"), and the whole label is the line's title.
-            // The letter is in the dot already, so the words beside it do not say it again (user, 7 Nov 2026: "delete slop");
-            // a screen reader still hears the grade.
-            + '<span class="gm-grade-text" title="' + esc(g.label) + '"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Grade ' + esc(g.letter) + '. </span>' + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
+          // The grade as Google Maps writes a place's standing ("Open" in green, "Closed" in red): the words
+          // "Grade F" in the grade's colour, a dot, then the label up to its first clause. No letter in a circle
+          // (user, 7 Nov 2026: "Don't do F in circles on mobile. Just say grade F"; "make color coding note UI
+          // like on Google Maps"). The whole label is the line's title.
+          rating.innerHTML = '<span class="gm-grade-text" title="' + esc(g.label) + '">'
+            + '<span class="gm-grade-word" data-grade="' + esc(g.letter) + '">Grade ' + esc(g.letter) + '</span>'
+            + '<span aria-hidden="true"> \u22c5 </span>'
+            + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
         } else {
           rating.innerHTML = status ? '<span class="gm-grade-text">' + esc(status) + '</span>' : '';
         }
