@@ -231,6 +231,14 @@
     }
 
     // ---- The chat's header, as the record sheet's: a title, the same menu, and one cross ----------------------------
+    // The chat's box is one line too, as the map's: its long prompt wrapped to two lines in the pill (user, 7 Nov 2026,
+    // the phone's look after the foundry's site). The full prompt stays as the box's name. Only on a phone: the desktop's panel keeps it.
+    const work = $('workInput');
+    if (work && PHONE()) {
+      work.setAttribute('aria-label', work.getAttribute('placeholder') || 'Ask about a space, its funders or controversies');
+      work.setAttribute('placeholder', 'Ask about a space or a funder');
+    }
+
     const chatHead = $('phoneChatHead');
     if (chatHead) {
       const title = chatHead.querySelector('.flex-1');
@@ -450,8 +458,8 @@
       // a toggle", "function more like Claude with details toggle and back button") ----
       // The chat's Details button opens the record as a page of its own: full height, scrolling, never dragged, with a back
       // button to the chat at the top left and the same Details button, pressed, at the top right. Either one goes back to the
-      // conversation where it was left, scrolled where it was. The sheet's grabber and cross and its Ask in chat button are
-      // put away while it is open, so no control is on screen twice.
+      // conversation where it was left, scrolled where it was. The sheet's grabber and cross are put away while it is open, so
+      // no control is on screen twice; Ask in chat stays, pressed, and is a third way back (see the toggles below).
       const fromChatBar = document.createElement('div');
       fromChatBar.className = 'gm-from-chat-bar';
       fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" aria-label="Back to the chat">'
@@ -460,7 +468,7 @@
         + '<button type="button" id="gmDetailsToggleBtn" aria-pressed="true" aria-label="Space details">Details</button>';
       fromChatBar.hidden = true;
       if (chrome) chrome.appendChild(fromChatBar);
-      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn, $('dossier-sheet-ask-btn')].filter(Boolean);
+      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn].filter(Boolean);
       let chatScrollTop = 0;
       function markFromChat() {
         if (!PHONE()) return;
@@ -469,6 +477,7 @@
         root.classList.add('gm-from-chat');
         fromChatBar.hidden = false;
         $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'true');
+        $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'true');
         // Inline and !important: the sheet's controls are drawn by rules that are themselves !important (atlas.css).
         putAway().forEach((el) => el.style.setProperty('display', 'none', 'important'));
       }
@@ -477,6 +486,7 @@
         root.classList.remove('gm-from-chat');
         fromChatBar.hidden = true;
         $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
+        $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'false');
         putAway().forEach((el) => el.style.removeProperty('display'));
       }
       function backToChat() {
@@ -506,29 +516,48 @@
       new MutationObserver(() => { if (sheet.classList.contains('hidden')) clearFromChat(); })
         .observe(sheet, { attributes: true, attributeFilter: ['class'] });
       window.addEventListener('resize', () => { if (!PHONE()) clearFromChat(); });
+
+      // ---- The record's actions as toggles (user, 7 Nov 2026: "make buttons toggles") ----
+      // Ask in chat is pressed while the record is open over the chat, and pressing it then goes back to the chat. Money map is
+      // pressed while the money layers (the funders and their ties) are on, and pressing it then turns them off; off, it opens
+      // the money map as before. The record's own click handlers run only when a button is not pressed: this listener sits on
+      // the sheet in the capture phase, so it is reached first.
+      const askBtn = $('dossier-sheet-ask-btn'), moneyBtn = $('dossier-sheet-moneymap-btn');
+      // A layer box holds several keys (the Funding box is money and ties), so the layers' own API says which box is which.
+      const api = () => window.atlasLayersAPI || null;
+      const layerBox = (k) => { const a = api(); return a && a.boxes ? a.boxes().find((i) => a.keysOfBox(i).includes(k)) : null; };
+      const moneyOn = () => { const a = api(); return !!(a && a.L && a.L.money); };
+      function syncToggles() {
+        if (!PHONE()) return;
+        if (moneyBtn) moneyBtn.setAttribute('aria-pressed', String(moneyOn()));
+        if (askBtn) askBtn.setAttribute('aria-pressed', String(root.classList.contains('gm-from-chat')));
+      }
+      sheet.addEventListener('click', (e) => {
+        if (!PHONE()) return;
+        const t = e.target.closest('button');
+        if (!t || t.getAttribute('aria-pressed') !== 'true') return;
+        if (t === askBtn) { e.preventDefault(); e.stopPropagation(); backToChat(); }
+        if (t === moneyBtn) {
+          e.preventDefault(); e.stopPropagation();
+          ['money', 'ties'].forEach((k) => { const b = layerBox(k); if (b && b.checked) { b.checked = false; b.dispatchEvent(new Event('change', { bubbles: true })); } });
+          syncToggles();
+        }
+      }, true);
+      document.getElementById('layersPanel')?.addEventListener('change', syncToggles);
+      new MutationObserver(syncToggles).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+      syncToggles();
     }
 
     // ---- The record as a maps app's place card (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ----
     // Under the name, a rating line: the funding grade as its letter in a dot of its colour, where a place card has stars.
-    // The actions are pills with icons, the first one filled. Then tabs (Overview, Funding, Record, Sources) with the
-    // open one underlined, and on Overview the visiting facts as rows with an icon each: address, hours, admission, website.
+    // The actions are pills of words, the first one filled. Then tabs (Overview, Funding, Record, Sources) with the
+    // open one underlined, and on Overview the visiting facts as rows: address, hours, admission, website. No icons on the
+    // pills or the rows, and no Website pill while the website is one of the rows (user, 7 Nov 2026: "delete slop").
     // The record's own blocks are moved into the tabs, never copied, so everything the sheet showed is still in it.
     function buildPlaceCard(sheet, titleBlock, actions) {
       const pane = $('dossier-sheet-verified-pane');
       const name = $('dossier-sheet-name');
       if (!pane || !titleBlock || !name) return;
-      const ICON = {
-        'dossier-sheet-ask-btn': '<path d="M4 5h16v11H9l-5 4z"/>',
-        'dossier-sheet-audit-btn': '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>',
-        'dossier-sheet-plan-btn': '<rect x="4" y="5" width="16" height="15"/><path d="M4 10h16M9 3v4M15 3v4"/>',
-        'dossier-sheet-moneymap-btn': '<circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="20" r="2"/><path d="M10.2 10.4 6.5 7.3M13.8 10.4l3.7-3.1M12 14.5V18"/>',
-        'dossier-sheet-link-web': '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/>',
-      };
-      const svg = (body) => '<svg class="gm-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + body + '</svg>';
-      if (actions) actions.querySelectorAll('.record-action').forEach((a) => {
-        if (ICON[a.id] && !a.querySelector('.gm-ico')) a.insertAdjacentHTML('afterbegin', svg(ICON[a.id]));
-      });
-
       // Rating line, between the name and the place.
       const rating = document.createElement('p');
       rating.className = 'gm-rating';
@@ -638,13 +667,6 @@
       }
 
       const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-      const ROW_ICON = {
-        place: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
-        hours: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
-        ticket: '<path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="1.5 2"/>',
-        web: ICON['dossier-sheet-link-web'],
-        grade: '<path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/>',
-      };
       function fill() {
         const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
         if (!inst) return;
@@ -654,25 +676,42 @@
         let status = '';
         try { status = typeof tierName === 'function' ? tierName(inst) : ''; } catch (_) { status = ''; }
         if (g) {
-          rating.innerHTML = '<span class="gm-grade-dot" style="--gm-dot:' + esc(g.col) + '" aria-hidden="true">' + esc(g.letter) + '</span>'
-            // One line, as a rating is: the label up to its first clause ("Funders listed; no funders flagged" reads
-            // "Funders listed"), and the whole label is the line's title.
-            + '<span class="gm-grade-text" title="' + esc(g.label) + '">Grade ' + esc(g.letter) + ' · ' + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
+          // The grade as Google Maps writes a place's standing ("Open" in green, "Closed" in red): the words
+          // "Grade F" in the grade's colour, a dot, then the label up to its first clause. No letter in a circle
+          // (user, 7 Nov 2026: "Don't do F in circles on mobile. Just say grade F"; "make color coding note UI
+          // like on Google Maps"). The whole label is the line's title.
+          rating.innerHTML = '<span class="gm-grade-text" title="' + esc(g.label) + '">'
+            + '<span class="gm-grade-word" data-grade="' + esc(g.letter) + '">Grade ' + esc(g.letter) + '</span>'
+            + '<span aria-hidden="true"> \u22c5 </span>'
+            + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
         } else {
           rating.innerHTML = status ? '<span class="gm-grade-text">' + esc(status) + '</span>' : '';
         }
+        // The i button on the rating line opens how grades work, this space's grade marked (user, 6 Nov 2026).
+        const parts = typeof window.atlasGradeInfoParts === 'function' && rating.innerHTML ? window.atlasGradeInfoParts(inst) : null;
+        const oldPanel = rating.nextElementSibling && rating.nextElementSibling.classList.contains('grade-info') ? rating.nextElementSibling : null;
+        if (oldPanel) oldPanel.remove();
+        if (parts) { rating.insertAdjacentHTML('beforeend', parts.btn); rating.insertAdjacentHTML('afterend', parts.panel); }
         rating.hidden = !rating.innerHTML;
         // Visiting rows.
         let web = '';
         try { web = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || ''); } catch (_) { web = inst.website || ''; }
-        const place = inst.address || [inst.location || inst.city, inst.country].filter(Boolean).join(', ');
+        // The address row is the street address only: without one it would say the place line again (and "Windhoek, Namibia,
+        // Namibia", since the location already names the country). And when the record's overview opens with the street itself
+        // ("Natural history museum at 200 Central Park West in Theodore Roosevelt Park ..."), the row would say it twice over.
+        const street = String(inst.address || '').split(',')[0].trim();
+        const overview = (((inst.details || {}).overview) || []).slice(0, 2).join(' ');
+        const place = street.length > 4 && overview.includes(street) ? '' : (inst.address || '');
         const rows = [
           ['place', place],
           ['hours', inst.opening_hours],
           ['ticket', inst.admission_fee || inst.admission_policy],
           ['web', web ? '<a href="' + esc(web) + '" target="_blank" rel="noopener noreferrer">' + esc(web.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')) + '</a>' : '', true],
         ].filter((r) => r[1]);
-        const rowsHtml = rows.map(([k, v, html]) => '<li>' + svg(ROW_ICON[k]) + '<span>' + (html ? v : esc(v)) + '</span></li>').join('');
+        const rowsHtml = rows.map(([k, v, html]) => '<li><span>' + (html ? v : esc(v)) + '</span></li>').join('');
+        // The website is one of the rows, so the Website pill would say it twice.
+        const webBtn = $('dossier-sheet-link-web');
+        if (webBtn) webBtn.toggleAttribute('data-gm-off', !!web);
         // Only when it differs (against what was last written: the browser serializes it back differently), since writing
         // the rows is a change in the pane, which this function is listening to.
         if (info.dataset.src !== rowsHtml) { info.dataset.src = rowsHtml; info.innerHTML = rowsHtml; }
@@ -1136,7 +1175,7 @@
           + '<button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>'
           + '<p class="ts-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
           + (top ? card(top, true, topIsAlert) : '')
-          + sec(topIsAlert ? 'More stories' : 'Alerts now', alertList.length + ' active', alertList, true)
+          + sec(topIsAlert ? 'More stories' : 'Alerts now', '', alertList, true)
           + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', month ? month + ' in the past 30 days' : 'Newest first', world, false)
           + sec('From staff and visitors', 'User posts', posts, false, 'Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person’s experience each, not checked as fact.')
