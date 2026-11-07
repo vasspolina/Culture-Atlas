@@ -8256,6 +8256,18 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const lat = targetLat || (cMeta ? cMeta.lat : (cityInsts.length > 0 ? cityInsts[0].lat : 0));
       const lon = targetLon || (cMeta ? cMeta.lon : (cityInsts.length > 0 ? cityInsts[0].lon : 0));
 
+      // The street map keeps the camera of the last city it showed. Flying from there to a city far away arcs out to zoom 2 or
+      // 3 on the way, and a wheel or pinch during the flight then ends a zoom below 8, which reads as "zoomed out of the city"
+      // and exits to the world view: zooming in from the globe on Tokyo after New York threw the reader back out. A city more
+      // than about 50 km from the last view is jumped to at a city zoom first, so only the short fit over the city animates.
+      if (typeof cityVectorMap.getCenter === 'function' && typeof cityVectorMap.jumpTo === 'function' && isFinite(lat) && isFinite(lon)) {
+        const was = cityVectorMap.getCenter();
+        if (was && (Math.abs(was.lat - lat) > 0.5 || Math.abs(((was.lng - lon + 540) % 360) - 180) > 0.5)) {
+          cityVectorMap.stop && cityVectorMap.stop();
+          cityVectorMap.jumpTo({ center: [lon, lat], zoom: 11 });
+        }
+      }
+
       if (cityInsts.length > 1 && !targetLat) {
         const bounds = new maplibregl.LngLatBounds();
         cityInsts.forEach(i => bounds.extend([i.lon, i.lat]));
@@ -20824,35 +20836,31 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Zooming in past the globe's closest view goes on into the street map. The globe stops at getMaxRadius() (about the
     // width of central Europe), and before this every zoom-in there was clamped away: over Berlin the map simply stopped
     // and the buildings were only reachable by clicking the city. Now a zoom-in at the limit opens the street map of the
-    // nearest city with spaces, the way a click on that city does; zooming out of the street map past z8 comes back.
-    const GLOBE_HANDOVER_KM = 80;
+    // city with spaces nearest the zoom, the way a click on that city does; zooming out of the street map past z8 comes back.
+    // The city is chosen on screen, not by distance on the ground: it is the one whose pin is in view and nearest the pointer
+    // or the fingers (the view centre for the + key and button). A first version took only a city within 80 km of that
+    // point, which at this zoom is about 60px: a pinch a thumb's width off Berlin, or a phone view whose centre sits below
+    // the place it flew to (to leave room for the record sheet), found nothing and the map was stuck again. Only a view
+    // with no city in it at all, open sea, stays on the globe.
     function globeAtMaxZoom() {
       return !isCityStreetViewActive && targetRadius >= getMaxRadius() * 0.999;
     }
     function zoomPastGlobe(px, py) {
       if (isCityStreetViewActive) return false;
-      const spots = [];
-      if (px != null && py != null) spots.push(unproject(px, py, currentRadius, width / 2, height / 2));
-      spots.push(unproject(width / 2, height / 2, currentRadius, width / 2, height / 2));
-      const toRad = Math.PI / 180;
-      for (const geo of spots) {
-        if (!geo || !isFinite(geo.lat) || !isFinite(geo.lon)) continue;
-        let best = null, bestKm = Infinity;
-        for (const c of ALL_CITIES_REGISTRY) {
-          if (!c || !(c.count > 0) || !isFinite(c.lat) || !isFinite(c.lon)) continue;
-          const dLat = (c.lat - geo.lat) * toRad, dLon = (c.lon - geo.lon) * toRad;
-          const h = Math.sin(dLat / 2) ** 2 + Math.cos(geo.lat * toRad) * Math.cos(c.lat * toRad) * Math.sin(dLon / 2) ** 2;
-          const km = 12742 * Math.asin(Math.min(1, Math.sqrt(h)));
-          if (km < bestKm) { bestKm = km; best = c; }
-        }
-        if (best && bestKm <= GLOBE_HANDOVER_KM) {
-          isAutoSpinning = false;
-          zoomAnchor = null;
-          filterByCity(best.name, true, false);
-          return true;
-        }
+      const ax = px != null ? px : width / 2, ay = py != null ? py : height / 2;
+      let best = null, bestD = Infinity;
+      for (const c of ALL_CITIES_REGISTRY) {
+        if (!c || !(c.count > 0) || !isFinite(c.lat) || !isFinite(c.lon)) continue;
+        const pt = project(c.lon, c.lat, currentRadius, width / 2, height / 2);
+        if (!pt || pt.front === false || pt.x < 0 || pt.y < 0 || pt.x > width || pt.y > height) continue;
+        const d = Math.hypot(pt.x - ax, pt.y - ay);
+        if (d < bestD) { bestD = d; best = c; }
       }
-      return false;
+      if (!best) return false;
+      isAutoSpinning = false;
+      zoomAnchor = null;
+      filterByCity(best.name, true, false);
+      return true;
     }
     window.zoomPastGlobe = zoomPastGlobe;
 
