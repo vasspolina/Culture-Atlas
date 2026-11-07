@@ -233,9 +233,11 @@ return maplibregl$1;
             </div>
           </div>
           <section class="layers-section">
-            <h2 class="layers-section-title">Map layers</h2>
+            <h2 class="layers-section-title">Filters</h2>
+            <p class="layers-note">One at a time: the map shows only the spaces the filter is about. The same six are the row of filters over the map. Untick the one on, or pick All spaces there, to show every space again.</p>
             <div class="layers-list">
-              <!-- One box can turn on several drawn layers: data-layer names the box, data-layers the layers it holds. -->
+              <!-- One box can turn on several drawn layers: data-layer names the box, data-layers the layers it holds.
+                   These six are the filters (assets/layers.js, SPACE_TEST): one on at a time. -->
               <label style="--layer-color:#fb923c"><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
               <label style="--layer-color:#a78bfa"><input type="checkbox" data-layer="epstein" data-layers="epstein people"> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
               <label style="--layer-color:#ff5cd8"><input type="checkbox" data-layer="propaganda"> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
@@ -246,15 +248,15 @@ return maplibregl$1;
           </section>
           <section class="layers-section" data-no-chips>
             <h2 class="layers-section-title">Funding views</h2>
-            <p class="layers-note">Other ways to draw the same funding data. Each works alone or beside the layers above, and follows the funder types below. Point at a line, a ring or an area to name it; click to ask the chat.</p>
+            <p class="layers-note">Other ways to draw the same funding data. Each works alone or beside a filter above, and follows the funder types below. Point at a line, a ring or an area to name it; click to ask the chat.</p>
             <div class="layers-list">
               <label style="--layer-color:#818cf8"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type. Pairs with one link show when you zoom in</span><span class="layers-count" data-count="bundle"></span></label>
-              <label style="--layer-color:#38bdf8"><input type="checkbox" data-layer="flows" data-chip> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
+              <label style="--layer-color:#38bdf8"><input type="checkbox" data-layer="flows"> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
               <label style="--layer-color:#86efac"><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country by the share of its spaces&rsquo; funders based abroad, or by its main funder type</span><span class="layers-count" data-count="choro"></span></label>
               <label style="--layer-color:#f9a8d4"><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for. Point at a funder anywhere to see its own</span></label>
               <label style="--layer-color:#fde68a"><input type="checkbox" data-layer="glyphs"> <span class="layer-name">Funding mix on each space</span><span class="layer-desc">A ring around each space, split by its public, foundation and company funders</span></label>
               <label style="--layer-color:#c4b5fd"><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share. No lines</span></label>
-              <label style="--layer-color:#fca5a5"><input type="checkbox" data-layer="lifted" data-chip> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more spaces they fund, with a line down to each</span></label>
+              <label style="--layer-color:#fca5a5"><input type="checkbox" data-layer="lifted"> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more spaces they fund, with a line down to each</span></label>
               <label style="--layer-color:#f59e0b"><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices. The flag is on the space</span><span class="layers-count" data-count="flagged"></span></label>
             </div>
             <div class="layers-kinds layers-choro" role="radiogroup" aria-label="Countries shaded by">
@@ -848,6 +850,7 @@ return maplibregl$1;
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
               <!-- The submission form of the note screen (shown only while a note is written) -->
               <div id="noteFormFields">
+                <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
                 <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
                 <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space"></label>
@@ -11620,15 +11623,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           const N = grp.length;
           const cX = grp.reduce((acc, d) => acc + d.origX, 0) / N;
           const cY = grp.reduce((acc, d) => acc + d.origY, 0) / N;
-          if (N <= 6) {
-            const spreadR = Math.min(24, Math.max(16, 12 + N * 3));
-            grp.forEach((d, idx) => {
-              const angle = (2 * Math.PI * idx) / N - Math.PI / 2;
-              d.x = Math.round(cX + spreadR * Math.cos(angle));
-              d.y = Math.round(cY + spreadR * Math.sin(angle));
-            });
-            return;
-          }
+          // No ring of dots (user, 7 Nov 2026: "dont do these circles"). A group of up to six used to be fanned out on a
+          // circle of 16 to 24px around its centre, which drew a wreath of marks around Pyongyang with the propaganda halos
+          // under it. Such a group's dots now stay where their spaces are; close ones overlap until the view is near enough to
+          // part them, as on any map, and the city badge already carries the count. Only a big group takes the disk below.
+          if (N <= 6) return;
           // A big group (Havana's 30-odd spaces) on that 24px ring put the dots on top of each other and
           // of the labels. It fills a sunflower disk instead, about 11px between dots, the spaces nearest the
           // group's centre in the middle and each keeping its own side of it.
