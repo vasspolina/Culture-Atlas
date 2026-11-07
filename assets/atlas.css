@@ -843,15 +843,20 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .shape-dot{border-radius:50%}
 #layersPanel .layers-kinds .shape-ring,#layersPanel .layers-key .shape-ring{box-sizing:border-box;border-radius:50%;background:transparent!important;border:.8px solid var(--marker-color)}
 #layersPanel .shape-ring::after{display:none!important}
-:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#d4109f}
-/* The propaganda marks glow on the map; the key echoes it with a soft halo of the same pink (a deeper step on the light ground). */
-#layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(255,61,209,.55)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(212,16,159,.4)}
-/* The independent mark glows green on the map; the key echoes it (a deeper step on the light ground). */
-#layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(156,175,125,.6)}
-#layersPanel .shape-glow-cyan{box-shadow:0 0 6px 2px rgba(154,227,232,.6)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow-cyan{--marker-color:#1f8b93;box-shadow:0 0 6px 2px rgba(31,139,147,.45)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#889e9a;box-shadow:0 0 6px 2px rgba(136,158,154,.5)}
+:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#df0050}
+/* Every flagged layer glows on the map (propaganda, right-wing funders, the Epstein files; user, 6 Nov 2026); the key echoes it
+   with a soft halo of the mark's colour, a deeper step on the light ground. Colours as COL and LINE_LIGHT in assets/layers.js. */
+#layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(255,95,160,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(223,0,80,.45)}
+#layersPanel .shape-glow-right{box-shadow:0 0 6px 2px rgba(255,123,110,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-right{box-shadow:0 0 6px 2px rgba(208,22,10,.45)}
+#layersPanel .shape-glow-epstein{box-shadow:0 0 6px 2px rgba(211,155,255,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-epstein{box-shadow:0 0 6px 2px rgba(155,48,232,.45)}
+/* The independent and open-books marks glow on the map too; the key echoes them (a deeper step on the light ground). */
+#layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(63,224,90,.6)}
+#layersPanel .shape-glow-cyan{box-shadow:0 0 6px 2px rgba(10,240,176,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-cyan{--marker-color:#0a7a48;box-shadow:0 0 6px 2px rgba(10,122,72,.45)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#0a8a1f;box-shadow:0 0 6px 2px rgba(10,138,31,.45)}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}
@@ -4492,4 +4497,218 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn{grid-column:3!important;grid-row:1 / span 2!important;align-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;margin:0!important;padding:0!important;border:1px solid var(--cc-ink)!important;border-radius:12px!important;background:var(--cc-ink)!important;box-shadow:none!important;color:var(--cc-paper)!important}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn svg,:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn svg *{width:26px!important;height:26px!important;stroke:currentColor!important;stroke-width:1.4!important;color:inherit!important;fill:none!important}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn:hover{background:var(--cc-paper)!important;color:var(--cc-ink)!important}
+}
+
+/* ==== CHAT DETAILS, LIKE CLAUDE (user, 6 Nov 2026: "make details button on chat window a toggle", "make chat window not
+   repeating buttons and function more like Claude with details toggle and back button") ====
+   From the chat, Details opens the record as a page of its own (assets/phone-maps.js, gm-from-chat): full height, it only
+   scrolls, and its top row is a back button to the chat on the left and the Details button, pressed, on the right, where
+   the chat's own Details button sits. The sheet's grabber, cross and Ask in chat are put away by the script. */
+@media (max-width:767px){
+  #dossier-bottom-sheet .gm-from-chat-bar[hidden]{display:none!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar:not([hidden]){position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 8px 0 4px;background:var(--paper);pointer-events:auto}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar button{display:inline-flex!important;align-items:center;gap:4px;height:36px!important;min-height:36px!important;margin:0!important;padding:0 14px!important;border:0!important;border-radius:18px!important;background:transparent!important;color:var(--ink)!important;font:300 15px/1 var(--sans)!important;letter-spacing:.01em!important;text-transform:none!important;box-shadow:none!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar #gmDetailsBackBtn{padding-left:6px!important;height:44px!important;min-height:44px!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar #gmDetailsBackBtn svg{width:22px;height:22px;flex:none}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar #gmDetailsToggleBtn[aria-pressed="true"]{background:var(--ink)!important;color:var(--paper)!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar button:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
+  /* The chat's Details button is a toggle too: pressed while the record is open (it is then under the record's own). */
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead #phoneChatDetailsBtn[aria-pressed="true"]:not(.hidden){background:var(--ink)!important;color:var(--paper)!important}
+}
+
+
+/* ---- Coloured filters (user's instruction, 6 Nov 2026) ----
+   Every filter wears its own colour: the layer chips over the map, the rows of the Layers menu, the funder types and the
+   widest-reaching funders. Off, a filter is a pale wash of its colour with a dot of the full colour; on, it is filled with
+   the colour and its dot turns black, so the state is said by more than the hue (and by aria-pressed / the checkbox).
+   Text on the full colours is black in both themes: every fill measures 7:1 or better against #000. The chips sit under a
+   rule sixteen ids deep because the button layer above (#displaay x14) would otherwise paint them ink when pressed. */
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color{display:inline-flex!important;align-items:center;gap:8px;background:color-mix(in srgb,var(--layer-color) 22%,var(--paper))!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink)!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--layer-color);box-shadow:0 0 0 1px var(--ink)}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color:is(:hover,:focus-visible){background:color-mix(in srgb,var(--layer-color) 55%,var(--paper))!important;color:var(--ink)!important;border-color:var(--ink)!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]{background:var(--layer-color)!important;color:#000!important;box-shadow:0 0 0 2px #000!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]::before{background:#000;box-shadow:none}
+
+html body #layersPanel#layersPanel label[style*="--layer-color"]{background:color-mix(in srgb,var(--layer-color) 18%,var(--paper))!important;color:var(--ink)!important;box-shadow:inset 4px 0 0 var(--layer-color)}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:hover{background:color-mix(in srgb,var(--layer-color) 40%,var(--paper))!important}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:has(input:checked){background:var(--layer-color)!important;color:#000!important;box-shadow:inset 4px 0 0 #000}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:has(input:checked) :is(.layer-name,.layer-desc,.layers-count){color:#000!important}
+html body #layersPanel#layersPanel label[style*="--layer-color"] input{accent-color:#000}
+
+/* The funder types and the widest-reaching funders: the same wash and fill, in the funder kind's colour. */
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row{background:color-mix(in srgb,var(--marker-color,var(--row)) 18%,var(--paper))!important;color:var(--ink)!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]){background:var(--marker-color)!important;color:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]) :is(.tf-n,.layer-name,.tf-name){color:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"])>i{background:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:hover{background:color-mix(in srgb,var(--marker-color,var(--row)) 45%,var(--paper))!important;color:var(--ink)!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]):hover{background:var(--marker-color)!important;color:#000!important}
+
+/* ===== GRADING BROUGHT BACK (user, 6 Nov 2026: "bring grading back ... explain it also on the info button on each space ... colour coded") =====
+   The grade is its letter in a dot of its colour: black type on every fill (each 7:1 or better against black), and a 1px ink edge so the
+   pale fills still read on white (the letter carries the grade, the colour codes it). The i button beside it opens the scale. Set after
+   every other layer, with the ids the record is drawn in, so the older .grade-line and list rules do not reach in. */
+:root:root:root:root body .grade-dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.6em;height:1.6em;border-radius:50%;background:var(--grade-dot);color:#000!important;border:1px solid var(--ink);font-weight:400;font-size:.8em;line-height:1;letter-spacing:0;text-transform:none;text-indent:0;vertical-align:middle}
+:root:root:root:root body p.grade-line{display:flex!important;align-items:center;flex-wrap:wrap;gap:.25em .5em;text-indent:0}
+:root:root:root:root body p.grade-line .grade-dot{font-size:1em}
+:root:root:root:root body p.grade-line .grade-name{text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+:root:root:root:root body p.grade-line .grade-label{color:var(--ink)}
+:root:root:root:root body .grade-info-btn{display:inline-flex;align-items:center;justify-content:center;flex:none;width:24px;height:24px;min-width:24px;border-radius:50%;border:1px solid var(--ink);background:transparent;color:var(--ink);font:400 14px/1 var(--sans);font-style:normal;padding:0;margin:0;cursor:pointer;text-transform:none;letter-spacing:0}
+:root:root:root:root body .grade-info-btn:hover,:root:root:root:root body .grade-info-btn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
+:root:root:root:root body .grade-info-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+:root:root:root:root body .grade-info{margin:.6em 0 0;padding:.75em;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.3;text-indent:0;max-width:40em}
+:root:root:root:root body .grade-info[hidden]{display:none!important}
+:root:root:root:root body .grade-info>p{margin:0 0 .6em;text-indent:0}
+:root:root:root:root body .grade-info>p:last-child{margin-bottom:0}
+:root:root:root:root body ul.grade-scale{list-style:none!important;margin:.2em 0 .6em!important;padding:0!important}
+:root:root:root:root body ul.grade-scale>li{display:flex!important;align-items:flex-start;gap:.6em;margin:0 0 .35em!important;padding:0!important;text-indent:0!important}
+:root:root:root:root body ul.grade-scale>li::before{content:none!important;display:none!important}
+:root:root:root:root body ul.grade-scale>li .grade-dot{font-size:14px;margin-top:-.1em}
+:root:root:root:root body ul.grade-scale>li.is-this .grade-dot{outline:2px solid var(--ink);outline-offset:2px}
+:root:root:root:root body ul.grade-scale .grade-this{display:inline-block;margin-left:.3em;padding:0 .4em;border:1px solid var(--ink);border-radius:999px;font-size:14px;line-height:1.4;white-space:nowrap}
+:root:root:root:root body li.grade-fund{display:flex!important;align-items:flex-start;gap:.5em;text-indent:0!important}
+:root:root:root:root body li.grade-fund::before{content:none!important;display:none!important}
+:root:root:root:root body li.grade-fund .grade-dot{font-size:14px;margin-top:.05em}
+/* Phone sheet: the i button sits at the end of the rating line, the panel under it. */
+:root:root:root:root body #dossier-bottom-sheet .gm-rating .grade-info-btn{margin-left:6px;width:24px;height:24px}
+:root:root:root:root body #dossier-bottom-sheet .gm-rating+.grade-info{margin:6px 0 8px}
+
+/* ===================================================================================================================
+   COLOUR KEY ON THE MAP (user, 6 Nov 2026). What a name's colour says, always visible over the globe, with the rules
+   behind the grades a tap away. The pills are drawn as the map's labels are (.inst-pin-label above): the word in its
+   tier's colour, a 1px edge of the same colour at 55%, on white in light and black in dark. Desktop: top right of the
+   map, under the chip row. Phone: top left, level with the round Layers button. Hidden wherever the Layers control is.
+   =================================================================================================================== */
+#mapColourKey#mapColourKey#mapColourKey{position:absolute;top:116px;right:16px;z-index:30;box-sizing:border-box;width:max-content;max-width:min(300px,calc(100% - 32px));padding:10px 12px;background:var(--paper);color:var(--ink);border:.8px solid var(--line);border-radius:0;font:400 14px/1.3 var(--sans);letter-spacing:0}
+#mapColourKey#mapColourKey#mapColourKey .mck-title{margin:0 0 8px;font:400 14px/1.2 var(--sans);letter-spacing:0;color:var(--ink)}
+#mapColourKey#mapColourKey#mapColourKey .mck-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;row-gap:6px;align-items:center}
+#mapColourKey#mapColourKey#mapColourKey .mck-list li{display:contents}
+#mapColourKey#mapColourKey#mapColourKey .mck-pill{--lc:var(--tier-u);justify-self:start;display:inline-block;padding:3px 8px;background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:0;font:400 14px/1.2 var(--sans);white-space:nowrap}
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word)[data-tier="A"]{--lc:var(--tier-a)}
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word)[data-tier="B"]{--lc:var(--tier-b)}
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word)[data-tier="U"]{--lc:var(--tier-u)}
+:root[data-theme="dark"] #mapColourKey#mapColourKey#mapColourKey .mck-pill{background:#000}
+#mapColourKey#mapColourKey#mapColourKey .mck-desc{min-width:0;color:var(--ink)}
+/* The page's global type rules reach spans, headings and paragraphs with !important; the key keeps one size, 14px. */
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-title,.mck-pill,.mck-desc,summary,p,b){font-size:14px!important;line-height:1.3!important;letter-spacing:0!important;font-weight:400!important}
+#mapColourKey#mapColourKey#mapColourKey .mck-more{margin-top:8px}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary{display:flex;align-items:center;gap:6px;min-height:28px;padding:0;background:transparent!important;color:var(--ink)!important;border:0;cursor:pointer;font:400 14px/1.2 var(--sans);text-decoration:underline;text-underline-offset:3px;list-style:none}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary::-webkit-details-marker{display:none}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary::before{content:"+";display:inline-block;width:1ch;text-decoration:none}
+#mapColourKey#mapColourKey#mapColourKey .mck-more[open] summary::before{content:"\2212"}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary:hover{text-decoration-thickness:2px}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+#mapColourKey#mapColourKey#mapColourKey .mck-body{max-height:min(46vh,360px);overflow-y:auto;padding-top:4px}
+#mapColourKey#mapColourKey#mapColourKey .mck-body p{margin:6px 0 0;font:400 14px/1.35 var(--sans);color:var(--ink)}
+#mapColourKey#mapColourKey#mapColourKey .mck-word{font-weight:400;color:var(--lc)}
+/* Wherever the Layers control steps aside (the chat over the map, an open record, the wide chat, the feed), so does the key. */
+body:has(#curator-chat-drawer:not(.hidden)) #mapColourKey,
+body:has(#detailDrawer:not(.hidden)) #mapColourKey,
+:root.chat-wide #mapColourKey,
+:root.gm-sheet #mapColourKey,
+:root.gm-chat #mapColourKey,
+:root.gm-feed-open #mapColourKey{display:none!important}
+@media (max-width:767px){
+  body:has(#dossier-bottom-sheet:not(.hidden)) #mapColourKey{display:none!important}
+  /* Phone: level with the round Layers button (top right, 72px down), on the other side, and narrower. */
+  #mapColourKey#mapColourKey#mapColourKey{position:fixed;top:calc(var(--safe-t,0px) + 72px);left:12px;right:auto;z-index:44;max-width:calc(100vw - 92px);padding:8px 10px}
+  #mapColourKey#mapColourKey#mapColourKey .mck-body{max-height:40vh}
+}
+
+/* ==== PHONE: FIXES UNDER THE DISPLAAY LAYER (user, 7 Nov 2026: "fix mobile based on visual design and library from displaay.net and
+   the UI from Google Maps") ====
+   The look is the Displaay layer above (1px ink ring, 10/14/20px corners, no shadows). These are the phone things it did not reach:
+   the record sheet on paper rather than the page's grey, its cross without a grey plate, hairlines between the menu's items, the
+   street map's old bar kept off the chat sheet, and the chat's box as one line with the keyboard's arrow beside Send instead of over
+   the text. The tokens: --gm-line (the same 1px ink edge as a border, where a ring cannot be drawn) and --gm-plate (the pressed ground). */
+@media (max-width:767px){
+  :root{--gm-line:1px solid var(--ink);--gm-plate:#e3e3e3}
+  :root[data-theme="dark"]{--gm-plate:var(--block)}
+  :root:is(.gm-map,.gm-chat):root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmMenu button+button{border-top:.8px solid var(--line)!important}
+  :root:is(.gm-map,.gm-chat):root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmMenu button{min-height:44px!important;font:400 14px/20px var(--sans)!important}
+  /* The record's body is the sheet's own paper, not the page's grey. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet{background:var(--paper)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet :is(#dossier-sheet-scrollable-body,.sheet-title-block,.sheet-chrome,.gm-tabs){background:var(--paper)!important}
+  /* The sheet's cross sits on the paper, not on a grey plate; it takes the plate only while pressed. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-close{background:transparent!important;border-radius:var(--btn-r,10px)!important;color:var(--ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-close:is(:hover,:active){background:var(--gm-plate)!important}
+  /* The street map's old bar (Exit, World, the country, the place) has no place over the chat sheet. */
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityViewControlBanner{display:none!important}
+  /* The chat's box is one line until typed into (rows=2 made it two lines high when empty), and the keyboard's arrow is a square
+     beside Send, with the same edge as the rest, in both boxes; it no longer sits over the text. */
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.chat-input-mode-active) #workViewContainer #workInputCard #noteInputBlock{min-height:0!important}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.chat-input-mode-active) #workViewContainer #workInputCard #workInput{height:48px;min-height:0!important}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.chat-input-mode-active) #workViewContainer #workInputCard #workKbCloseBtn{position:static!important;top:auto!important;right:auto!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;margin:0!important;border:var(--gm-line)!important;border-radius:var(--btn-r,10px)!important;background:var(--paper)!important;color:var(--ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileKbCloseBtn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;border:var(--gm-line)!important;border-radius:var(--btn-r,10px)!important;background:var(--paper)!important;color:var(--ink)!important}
+}
+
+/* The Top story strip was black with black type on it, on the phone and on the desktop: the rule that sets it on the light ground
+   (TOP STORY, 4 Nov 2026, "white or light beige grey") loses to the strip's first rule, whose selector carries :not([hidden]). The
+   same selector here, later, lets the light ground win. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]),:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert:not([hidden]){background:var(--gm-top-ground)!important;color:var(--gm-top-ink)!important;box-shadow:var(--gm-shadow)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-head{color:var(--gm-top-ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-meta{color:var(--gm-top-soft)!important}
+}
+@media (min-width:768px){
+  :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]),:root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert:not([hidden]){background:var(--gm-top-ground)!important;color:var(--gm-top-ink)!important;box-shadow:var(--gm-shadow)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-head{color:var(--gm-top-ink)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-meta{color:var(--gm-top-soft)!important}
+}
+
+/* The record sheet without slop (user, 7 Nov 2026: "delete slop"): the place under the grade in ink, not grey; the action pills are
+   words with even padding now that their icons are gone; the Overview rows start at the text. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-title-block #dossier-sheet-meta{color:var(--ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .record-action-row.gm-actions .record-action{padding:0 14px!important;gap:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-info li{gap:0}
+  /* A pill put away (the Website pill while the website is a row) stays away: the pills' own display rule outranked the data-gm-off rule. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .record-action-row.gm-actions .record-action[data-gm-off]{display:none!important}
+}
+
+/* The record's actions are toggles (user, 7 Nov 2026: "make buttons toggles"): outlined when off, filled ink when pressed. Ask in chat is
+   pressed while the record is open over the chat; Money map while the money layers are on. The Displaay layer above fills Ask in chat
+   as the first pill with 14 ids; the 16 here let the pressed state decide instead. */
+@media (max-width:767px){
+  :is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action:not([aria-pressed="true"]),:is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-sheet-ask-btn:not([aria-pressed="true"]){background:var(--paper)!important;color:var(--ink)!important}
+  :is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action[aria-pressed="true"]{background:var(--ink)!important;color:var(--paper)!important}
+  :is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action:not([aria-pressed="true"]):is(:hover,:active){background:var(--gm-plate)!important;color:var(--ink)!important}
+}
+
+/* =====================================================================================================
+   PHONE: DISPLAAY MOBILE TYPE SCALE (user, 7 Nov 2026: "make sure the typography is taken from the mobile
+   version of displaay.net"). Their phone sizes, read from displaay.net/assets/root-*.css with html at 10px:
+   smS 14px/130%/.3px, s and body 15px/130% (139% for paragraphs)/.3px, smM 17px/115%/.21px, m 21px/115%/.21px,
+   l 28px/110%/-.28px; weight 400 throughout (they have no light), uppercase labels tracked .02em at 1.1;
+   buttons 34px tall, 15px type, 12px side padding. Jokker stands in for Saans, Serrif Light for Serrif. The
+   search field is 17px, not 15px, so iOS does not zoom the page on focus. Long Serrif prose takes 1.25, not
+   their 1.15, which they use for a two-line paragraph only. 24 ids, so it outranks every layer above.
+   ===================================================================================================== */
+@media (max-width:767px){
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet #dossier-sheet-meta, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-rating .gm-grade-text, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-info li, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-info li span, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmMenu button, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmToast, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmToast .gm-toast-text, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmToast .gm-toast-name, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmToast .gm-toast-meta, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmLocateNote, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #cityViewControlBanner #cityViewTitleBadge, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-fe, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-live, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-alert-tag, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-prov, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed small, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-note, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-poster-place, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-poster-status, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-src, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-when, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-said, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-reply, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-stat, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-prose, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-note, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-row, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-sec-meta, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workspaceContextTabBar button{font-family:var(--sans)!important;font-weight:400!important;font-size:15px!important;line-height:1.3!important;letter-spacing:.3px!important;text-transform:none!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-sheet-ask-btn, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-from-chat-bar button, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-tabs button, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) .curator-suggest-chip, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) .gm-loc-chip{font-family:var(--sans)!important;font-weight:400!important;font-size:15px!important;line-height:1.3!important;letter-spacing:.3px!important;text-transform:none!important;height:34px!important;min-height:34px!important;padding-top:0!important;padding-bottom:0!important;padding-left:12px!important;padding-right:12px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .d-rows h3.d-row-title, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .kicker:not(#dossier-sheet-meta), :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-label, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-sec-title, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-poster-pill, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmStoryStrip .gm-strip-label{font-family:var(--sans)!important;font-weight:400!important;font-size:15px!important;line-height:1.1!important;letter-spacing:.02em!important;text-transform:uppercase!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmStoryStrip .gm-strip-head, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmStoryStrip .gm-strip-meta, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-mark, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-share, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-bell, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) .gm-alert-mark, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #layersControl #layersBtn, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-toast-when{font-family:var(--sans)!important;font-weight:400!important;font-size:14px!important;line-height:1.3!important;letter-spacing:.3px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main :is(p,li,ul), :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .account-note, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-side :is(.kicker,strong,.meta,span,a){font-family:var(--sans)!important;font-weight:400!important;font-size:15px!important;line-height:1.39!important;letter-spacing:.3px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet #dossier-sheet-scrollable-body :is(p,li,blockquote,dd,dt,figcaption), :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet #dossier-sheet-summary, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .institution-summary{font-family:"Serrif",Georgia,serif!important;font-weight:300!important;letter-spacing:.21px!important;font-size:17px!important;line-height:1.25!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-desc{font-family:"Serrif",Georgia,serif!important;font-weight:300!important;letter-spacing:.21px!important;font-size:17px!important;line-height:1.15!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet #dossier-sheet-name, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet.is-hq-sheet #hqPanel h2, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-head h2, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-sec, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .is-top .gm-open, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .is-top .gm-story-said, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-poster-name, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main>:first-child{font-family:var(--sans)!important;font-weight:400!important;font-size:21px!important;line-height:1.15!important;letter-spacing:.21px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts .ts-headline .gm-open{font-family:"Serrif",Georgia,serif!important;font-weight:300!important;font-size:21px!important;line-height:1.15!important;letter-spacing:.21px!important;text-transform:none!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-open{font-family:var(--sans)!important;font-weight:400!important;font-size:17px!important;line-height:1.15!important;letter-spacing:.21px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) body:not(.chat-input-mode-active) #workInputCard .gm-chat-greeting, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .gm-chat-title, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .dossier-main-heading, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-head .gm-feed-title, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) .dp-set>h3.kicker{font-family:var(--sans)!important;font-weight:400!important;font-size:28px!important;line-height:1.1!important;letter-spacing:-.28px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workInput, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workInput::placeholder{font-family:var(--sans)!important;font-weight:400!important;font-size:17px!important;line-height:1.15!important;letter-spacing:.21px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-rating .gm-grade-text{display:block!important;min-width:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;color:var(--ink)!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word{font:inherit!important;letter-spacing:inherit!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word:is([data-grade="A"],[data-grade="B"]){color:#188038!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word[data-grade="C"]{color:#b06000!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word[data-grade="D"]{color:#d93025!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word[data-grade="F"]{color:#a50e0e!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html)[data-theme="dark"] #dossier-bottom-sheet .gm-grade-word:is([data-grade="A"],[data-grade="B"]){color:#81c995!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html)[data-theme="dark"] #dossier-bottom-sheet .gm-grade-word[data-grade="C"]{color:#fdd663!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html)[data-theme="dark"] #dossier-bottom-sheet .gm-grade-word[data-grade="D"]{color:#f28b82!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html)[data-theme="dark"] #dossier-bottom-sheet .gm-grade-word[data-grade="F"]{color:#ee675c!important}
+}
+/* The chat sheet on the same scale: "Ask the curator" at their l (28px/110%/-.28px), the suggested questions at smM (17px/115%/.21px). */
+@media (max-width:767px){
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #curatorHeroGreeting, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #curatorHeroGreeting::before{font-family:var(--sans)!important;font-weight:400!important;font-size:28px!important;line-height:1.1!important;letter-spacing:-.28px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .starter-prompt, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .starter-prompt *{font-family:var(--sans)!important;font-weight:400!important;font-size:17px!important;line-height:1.15!important;letter-spacing:.21px!important}
 }
