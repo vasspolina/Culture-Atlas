@@ -843,15 +843,20 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .shape-dot{border-radius:50%}
 #layersPanel .layers-kinds .shape-ring,#layersPanel .layers-key .shape-ring{box-sizing:border-box;border-radius:50%;background:transparent!important;border:.8px solid var(--marker-color)}
 #layersPanel .shape-ring::after{display:none!important}
-:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#d4109f}
-/* The propaganda marks glow on the map; the key echoes it with a soft halo of the same pink (a deeper step on the light ground). */
-#layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(255,61,209,.55)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(212,16,159,.4)}
-/* The independent mark glows green on the map; the key echoes it (a deeper step on the light ground). */
-#layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(156,175,125,.6)}
-#layersPanel .shape-glow-cyan{box-shadow:0 0 6px 2px rgba(154,227,232,.6)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow-cyan{--marker-color:#1f8b93;box-shadow:0 0 6px 2px rgba(31,139,147,.45)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#889e9a;box-shadow:0 0 6px 2px rgba(136,158,154,.5)}
+:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#df0050}
+/* Every flagged layer glows on the map (propaganda, right-wing funders, the Epstein files; user, 6 Nov 2026); the key echoes it
+   with a soft halo of the mark's colour, a deeper step on the light ground. Colours as COL and LINE_LIGHT in assets/layers.js. */
+#layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(255,95,160,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(223,0,80,.45)}
+#layersPanel .shape-glow-right{box-shadow:0 0 6px 2px rgba(255,123,110,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-right{box-shadow:0 0 6px 2px rgba(208,22,10,.45)}
+#layersPanel .shape-glow-epstein{box-shadow:0 0 6px 2px rgba(211,155,255,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-epstein{box-shadow:0 0 6px 2px rgba(155,48,232,.45)}
+/* The independent and open-books marks glow on the map too; the key echoes them (a deeper step on the light ground). */
+#layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(63,224,90,.6)}
+#layersPanel .shape-glow-cyan{box-shadow:0 0 6px 2px rgba(10,240,176,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-cyan{--marker-color:#0a7a48;box-shadow:0 0 6px 2px rgba(10,122,72,.45)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#0a8a1f;box-shadow:0 0 6px 2px rgba(10,138,31,.45)}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}
@@ -4537,3 +4542,32 @@ html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(i
 html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"])>i{background:#000!important}
 html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:hover{background:color-mix(in srgb,var(--marker-color,var(--row)) 45%,var(--paper))!important;color:var(--ink)!important}
 html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]):hover{background:var(--marker-color)!important;color:#000!important}
+
+/* ===== GRADING BROUGHT BACK (user, 6 Nov 2026: "bring grading back ... explain it also on the info button on each space ... colour coded") =====
+   The grade is its letter in a dot of its colour: black type on every fill (each 7:1 or better against black), and a 1px ink edge so the
+   pale fills still read on white (the letter carries the grade, the colour codes it). The i button beside it opens the scale. Set after
+   every other layer, with the ids the record is drawn in, so the older .grade-line and list rules do not reach in. */
+:root:root:root:root body .grade-dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.6em;height:1.6em;border-radius:50%;background:var(--grade-dot);color:#000!important;border:1px solid var(--ink);font-weight:400;font-size:.8em;line-height:1;letter-spacing:0;text-transform:none;text-indent:0;vertical-align:middle}
+:root:root:root:root body p.grade-line{display:flex!important;align-items:center;flex-wrap:wrap;gap:.25em .5em;text-indent:0}
+:root:root:root:root body p.grade-line .grade-dot{font-size:1em}
+:root:root:root:root body p.grade-line .grade-name{text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+:root:root:root:root body p.grade-line .grade-label{color:var(--ink)}
+:root:root:root:root body .grade-info-btn{display:inline-flex;align-items:center;justify-content:center;flex:none;width:24px;height:24px;min-width:24px;border-radius:50%;border:1px solid var(--ink);background:transparent;color:var(--ink);font:400 14px/1 var(--sans);font-style:normal;padding:0;margin:0;cursor:pointer;text-transform:none;letter-spacing:0}
+:root:root:root:root body .grade-info-btn:hover,:root:root:root:root body .grade-info-btn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
+:root:root:root:root body .grade-info-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+:root:root:root:root body .grade-info{margin:.6em 0 0;padding:.75em;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.3;text-indent:0;max-width:40em}
+:root:root:root:root body .grade-info[hidden]{display:none!important}
+:root:root:root:root body .grade-info>p{margin:0 0 .6em;text-indent:0}
+:root:root:root:root body .grade-info>p:last-child{margin-bottom:0}
+:root:root:root:root body ul.grade-scale{list-style:none!important;margin:.2em 0 .6em!important;padding:0!important}
+:root:root:root:root body ul.grade-scale>li{display:flex!important;align-items:flex-start;gap:.6em;margin:0 0 .35em!important;padding:0!important;text-indent:0!important}
+:root:root:root:root body ul.grade-scale>li::before{content:none!important;display:none!important}
+:root:root:root:root body ul.grade-scale>li .grade-dot{font-size:14px;margin-top:-.1em}
+:root:root:root:root body ul.grade-scale>li.is-this .grade-dot{outline:2px solid var(--ink);outline-offset:2px}
+:root:root:root:root body ul.grade-scale .grade-this{display:inline-block;margin-left:.3em;padding:0 .4em;border:1px solid var(--ink);border-radius:999px;font-size:14px;line-height:1.4;white-space:nowrap}
+:root:root:root:root body li.grade-fund{display:flex!important;align-items:flex-start;gap:.5em;text-indent:0!important}
+:root:root:root:root body li.grade-fund::before{content:none!important;display:none!important}
+:root:root:root:root body li.grade-fund .grade-dot{font-size:14px;margin-top:.05em}
+/* Phone sheet: the i button sits at the end of the rating line, the panel under it. */
+:root:root:root:root body #dossier-bottom-sheet .gm-rating .grade-info-btn{margin-left:6px;width:24px;height:24px}
+:root:root:root:root body #dossier-bottom-sheet .gm-rating+.grade-info{margin:6px 0 8px}
