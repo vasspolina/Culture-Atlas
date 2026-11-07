@@ -118,10 +118,13 @@
   let recById = null, keyIndex = null, keyKind = null, web = null, loading = false;
 
   // ---- The filters narrow the spaces on the map (user's instruction, 6 Nov 2026) ----
-  // A map layer about spaces (the six under "Map layers") is also a filter: with one or more on, the map draws only the spaces
-  // at least one of them is about, over every grade, since the grade switch alone would hide most of them (a propaganda
-  // space is rarely graded clean). A widest-reaching funder switched on narrows that further, to the spaces it funds. With
-  // nothing on, the map is as it was.
+  // A map layer about spaces (the six under "Filters") is also a filter: with one on, the map draws only the spaces it is
+  // about, over every grade, since the grade switch alone would hide most of them (a propaganda space is rarely graded
+  // clean). A widest-reaching funder switched on narrows that further, to the spaces it funds. With nothing on, the map is
+  // as it was.
+  // One at a time (user, 7 Nov 2026: "make filters above instead of layers, so if clicked it only shows what clicked"): the
+  // six are a row of filters over the map, and picking one shows only what it is about. Picking the one that is on, or
+  // All spaces, shows every space again. The boxes in the Layers menu are the same six, so they follow the same rule.
   const SPACE_TEST = {
     funding: i => { const rec = recById && recById.get(i.id); return !!(rec && rec.nodes.some(FUNDER)); },
     epstein: i => { const rec = recById && recById.get(i.id); return !!(rec && epsteinOf(rec).length); },
@@ -131,6 +134,40 @@
     artist: i => selfKinds(i).artist
   };
   const spaceLayersOn = () => Object.keys(SPACE_TEST).filter(k => { const inp = document.querySelector(`#layersPanel input[data-layer="${k}"]`); return !!(inp && inp.checked); });
+  const spaceBoxes = () => Object.keys(SPACE_TEST).map(k => document.querySelector(`#layersPanel input[data-layer="${k}"]`)).filter(Boolean);
+  // The filter on, or null for every space.
+  window.atlasSpaceFilter = () => spaceLayersOn()[0] || null;
+  // Make `key` the one filter on (null: none), and redraw.
+  function applySpaceFilter(key) {
+    spaceBoxes().forEach(inp => setBox(inp, inp.dataset.layer === key));
+    refilter();
+  }
+  window.atlasSetSpaceFilter = function (key) { if (window.atlasSpaceFilter() !== key) applySpaceFilter(key); };
+  // The row of filters over the map, built by the phone and desktop layouts into their own strip: All spaces, then one
+  // chip per filter in its colour from the Layers menu. The pressed chip is the filter on; All spaces is pressed when none
+  // is. Returns false until the Layers menu is in the page.
+  window.atlasFilterChips = function (host, cls) {
+    const list = spaceBoxes(); if (!list.length) return false;
+    host.setAttribute('role', 'toolbar'); host.setAttribute('aria-label', 'Show only');
+    host.replaceChildren();
+    const mk = (key, name, col, title) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = cls; b.textContent = name; b.title = title;
+      if (key) b.dataset.layer = key; else b.dataset.all = '';
+      if (col) { b.style.setProperty('--layer-color', col); b.classList.add('has-color'); }
+      b.addEventListener('click', () => window.atlasSetSpaceFilter(key && window.atlasSpaceFilter() === key ? null : key));
+      host.appendChild(b);
+    };
+    mk(null, 'All spaces', '', 'Show every space');
+    list.forEach(inp => {
+      const label = inp.closest('label'), nm = label && label.querySelector('.layer-name');
+      const name = (nm ? nm.textContent : inp.dataset.layer).trim();
+      mk(inp.dataset.layer, name, label ? label.style.getPropertyValue('--layer-color') : '', `Show only ${name}`);
+    });
+    const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer ? b.dataset.layer === on : !on))); };
+    paint(); document.addEventListener('atlas:filter', paint);
+    return true;
+  };
   window.atlasLayerKeep = function () {
     const on = spaceLayersOn();
     let funded = null;
@@ -152,6 +189,8 @@
     }
     if (typeof window.atlasLayersFiltered === 'function') window.atlasLayersFiltered();
     repaint();
+    // The filter rows over the map repaint from this, whichever way the filter was changed.
+    document.dispatchEvent(new CustomEvent('atlas:filter'));
   }
   window.atlasRefilter = refilter;
   // Label type is regular on the light theme and light on the dark one.
@@ -1326,7 +1365,10 @@
   }
   function turnOn(k) {
     const inp = boxes().find(i => keysOfBox(i).includes(k));
-    if (inp) { const was = inp.checked; setBox(inp, true); if (!was) refilter(); } else L[k] = true;
+    if (!inp) { L[k] = true; return; }
+    // A filter box (funding, epstein) becomes the one filter on, so the others go off with it.
+    if (SPACE_TEST[inp.dataset.layer]) { window.atlasSetSpaceFilter(inp.dataset.layer); return; }
+    const was = inp.checked; setBox(inp, true); if (!was) refilter();
   }
 
   function init() {
@@ -1364,6 +1406,8 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { clearReach(); if (!panel.hidden) setOpen(false); } });
     window.addEventListener('resize', () => { if (!panel.hidden) placePanel(); });
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
+      // The six filters are one at a time: ticking one unticks the others; unticking the one on shows every space.
+      if (SPACE_TEST[inp.dataset.layer]) { applySpaceFilter(inp.checked ? inp.dataset.layer : null); return; }
       setBox(inp, inp.checked);
       refilter();
     }));
