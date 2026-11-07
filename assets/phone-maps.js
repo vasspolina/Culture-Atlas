@@ -1,6 +1,6 @@
 // Phone layout after a maps app (user, 3 Nov 2026: "make the cultural atlas work like the Google app on mobile").
 // The globe fills the screen; the search and chat box floats over it at the bottom (user, 3 Nov 2026: "add a chat at the
-// bottom not on top") with the suggested questions as a row of chips over it; Layers is a round button at the top right that opens its menu as a sheet; a space's record is a sheet with three heights
+// bottom not on top") with the suggested questions as a row of chips over it; a row of filters sits at the top, one at a time; Layers is a round button under it at the right that opens its menu as a sheet; a space's record is a sheet with three heights
 // (peek, half, full) that follows the finger and snaps to the nearest one, and a pull down from peek closes it.
 // Only phones (under 768px) are touched. The look itself is in assets/atlas.css, "PHONE: MAPS APP".
 (function () {
@@ -300,6 +300,21 @@
       icon.setAttribute('aria-hidden', 'true');
       icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3 2.5 8.5 12 14l9.5-5.5z"/><path d="m4.6 12.3-2.1 1.2L12 19l9.5-5.5-2.1-1.2"/></svg>';
       layersBtn.insertBefore(icon, layersBtn.firstChild);
+    }
+
+    // ---- The filter row at the top of the map --------------------------------------------------------------------
+    // All spaces, then one chip per filter from the Layers menu, one at a time (user, 7 Nov 2026: "make filters above
+    // instead of layers, so if clicked it only shows what clicked"). assets/layers.js builds the row and owns the rule.
+    // The look is in assets/atlas.css under PHONE: MAPS APP (#gmChips); it shows on the map screen only.
+    if (!$('gmChips')) {
+      const row = document.createElement('div');
+      row.id = 'gmChips';
+      body.appendChild(row);
+      const build = () => typeof window.atlasFilterChips === 'function' && window.atlasFilterChips(row, 'gm-filter-chip');
+      if (!build()) {
+        const t = setInterval(() => { if (build()) clearInterval(t); }, 500);
+        setTimeout(() => clearInterval(t), 20000);
+      }
     }
 
     // ---- Record sheet: peek, half and full, like a maps app's place sheet -----------------------------------------
