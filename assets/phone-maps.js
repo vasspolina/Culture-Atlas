@@ -518,25 +518,14 @@
 
     // ---- The record as a maps app's place card (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ----
     // Under the name, a rating line: the funding grade as its letter in a dot of its colour, where a place card has stars.
-    // The actions are pills with icons, the first one filled. Then tabs (Overview, Funding, Record, Sources) with the
-    // open one underlined, and on Overview the visiting facts as rows with an icon each: address, hours, admission, website.
+    // The actions are pills of words, the first one filled. Then tabs (Overview, Funding, Record, Sources) with the
+    // open one underlined, and on Overview the visiting facts as rows: address, hours, admission, website. No icons on the
+    // pills or the rows, and no Website pill while the website is one of the rows (user, 7 Nov 2026: "delete slop").
     // The record's own blocks are moved into the tabs, never copied, so everything the sheet showed is still in it.
     function buildPlaceCard(sheet, titleBlock, actions) {
       const pane = $('dossier-sheet-verified-pane');
       const name = $('dossier-sheet-name');
       if (!pane || !titleBlock || !name) return;
-      const ICON = {
-        'dossier-sheet-ask-btn': '<path d="M4 5h16v11H9l-5 4z"/>',
-        'dossier-sheet-audit-btn': '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>',
-        'dossier-sheet-plan-btn': '<rect x="4" y="5" width="16" height="15"/><path d="M4 10h16M9 3v4M15 3v4"/>',
-        'dossier-sheet-moneymap-btn': '<circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="20" r="2"/><path d="M10.2 10.4 6.5 7.3M13.8 10.4l3.7-3.1M12 14.5V18"/>',
-        'dossier-sheet-link-web': '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/>',
-      };
-      const svg = (body) => '<svg class="gm-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + body + '</svg>';
-      if (actions) actions.querySelectorAll('.record-action').forEach((a) => {
-        if (ICON[a.id] && !a.querySelector('.gm-ico')) a.insertAdjacentHTML('afterbegin', svg(ICON[a.id]));
-      });
-
       // Rating line, between the name and the place.
       const rating = document.createElement('p');
       rating.className = 'gm-rating';
@@ -646,13 +635,6 @@
       }
 
       const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-      const ROW_ICON = {
-        place: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
-        hours: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
-        ticket: '<path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="1.5 2"/>',
-        web: ICON['dossier-sheet-link-web'],
-        grade: '<path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/>',
-      };
       function fill() {
         const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
         if (!inst) return;
@@ -678,14 +660,19 @@
         // Visiting rows.
         let web = '';
         try { web = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || ''); } catch (_) { web = inst.website || ''; }
-        const place = inst.address || [inst.location || inst.city, inst.country].filter(Boolean).join(', ');
+        // The address row is the street address only: without one it would say the place line again (and "Windhoek, Namibia,
+        // Namibia", since the location already names the country).
+        const place = inst.address || '';
         const rows = [
           ['place', place],
           ['hours', inst.opening_hours],
           ['ticket', inst.admission_fee || inst.admission_policy],
           ['web', web ? '<a href="' + esc(web) + '" target="_blank" rel="noopener noreferrer">' + esc(web.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')) + '</a>' : '', true],
         ].filter((r) => r[1]);
-        const rowsHtml = rows.map(([k, v, html]) => '<li>' + svg(ROW_ICON[k]) + '<span>' + (html ? v : esc(v)) + '</span></li>').join('');
+        const rowsHtml = rows.map(([k, v, html]) => '<li><span>' + (html ? v : esc(v)) + '</span></li>').join('');
+        // The website is one of the rows, so the Website pill would say it twice.
+        const webBtn = $('dossier-sheet-link-web');
+        if (webBtn) webBtn.toggleAttribute('data-gm-off', !!web);
         // Only when it differs (against what was last written: the browser serializes it back differently), since writing
         // the rows is a change in the pane, which this function is listening to.
         if (info.dataset.src !== rowsHtml) { info.dataset.src = rowsHtml; info.innerHTML = rowsHtml; }

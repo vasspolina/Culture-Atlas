@@ -4654,3 +4654,13 @@ body:has(#detailDrawer:not(.hidden)) #mapColourKey,
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-head{color:var(--gm-top-ink)!important}
   :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-meta{color:var(--gm-top-soft)!important}
 }
+
+/* The record sheet without slop (user, 7 Nov 2026: "delete slop"): the place under the grade in ink, not grey; the action pills are
+   words with even padding now that their icons are gone; the Overview rows start at the text. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-title-block #dossier-sheet-meta{color:var(--ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .record-action-row.gm-actions .record-action{padding:0 14px!important;gap:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-info li{gap:0}
+  /* A pill put away (the Website pill while the website is a row) stays away: the pills' own display rule outranked the data-gm-off rule. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .record-action-row.gm-actions .record-action[data-gm-off]{display:none!important}
+}
