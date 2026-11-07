@@ -1177,7 +1177,7 @@
           + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
           + '</header>'
           + (top ? card(top, true, topIsAlert) : '')
-          + sec(topIsAlert ? 'More stories' : 'Alerts now', alertList.length + ' active', alertList, true)
+          + sec(topIsAlert ? 'More stories' : 'Alerts now', '', alertList, true)
           + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           // No count beside Latest (user, 7 Nov 2026: "delete 1 in the past 30 days").
           + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', '', world, false)
