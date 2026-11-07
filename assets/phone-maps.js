@@ -1158,7 +1158,6 @@
         const world = take(list.filter((x) => x.type === 'gossip' || x.type === 'case')).slice(0, 30);
         const posts = take(list.filter((x) => x.type === 'account')).slice(0, 15);
         const docs = take(list.filter((x) => x.type === 'leak')).slice(0, 10);
-        const month = list.filter((x) => { const p = parse(x.when); return p && Date.now() - p.d.getTime() < 30 * 864e5; }).length;
         // A section is a plain title on a 4px ink rule with its count beside it, the reports under it.
         const sec = (title, meta, arr, alert, note) => arr.length ? '<section class="ts-sec"><h2 class="ts-sec-title"><span>' + title + '</span>' + (meta ? '<span class="ts-sec-meta">' + meta + '</span>' : '') + '</h2>'
           + (note ? '<p class="ts-prose ts-note">' + note + '</p>' : '') + arr.map((x) => card(x, false, alert)).join('') + '</section>' : '';
@@ -1169,15 +1168,19 @@
             : 'Reports on record as confirmed or resolved, and documented cases. Turn on Gossip mode to include talk.')
           + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.';
         const alertRule = 'An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.';
+        // The close is the record's big thin cross, two 1.1px lines on a paper square with no circle (user, 7 Nov 2026: "make proper
+        // cross like big one with no outline"). It sits before the head in a sticky holder of no height, so the head scrolls away with
+        // the reports and the cross alone stays at the top right (user, 7 Nov 2026: "keep cross on scroll").
         feed.innerHTML = '<div class="ts">'
+          + '<div class="ts-pin"><button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>'
           + '<header class="gm-feed-head ts-bar"><button type="button" class="ts-grab" aria-label="' + grabLabel() + '"></button><h2 id="gmFeedTitle" class="ts-title">Top story</h2>'
           + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
-          + '<button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>'
-          + '<p class="ts-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
+          + '</header>'
           + (top ? card(top, true, topIsAlert) : '')
           + sec(topIsAlert ? 'More stories' : 'Alerts now', alertList.length + ' active', alertList, true)
           + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
-          + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', month ? month + ' in the past 30 days' : 'Newest first', world, false)
+          // No count beside Latest (user, 7 Nov 2026: "delete 1 in the past 30 days").
+          + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', '', world, false)
           + sec('From staff and visitors', 'User posts', posts, false, 'Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person’s experience each, not checked as fact.')
           + sec('From leaked documents', docs.length + ' on record', docs, false)
           + '<section class="ts-sec"><h2 class="ts-sec-title"><span>About these reports</span></h2>'
@@ -1186,12 +1189,8 @@
           + (alertList.length || topIsAlert ? '<p class="ts-prose ts-note">' + alertRule + '</p>' : '')
           + '</section></div>';
       }
-      function liveLine() {
-        if (checkFailed) return 'Could not check for new reports just now. Showing what was loaded.';
-        const n = live ? live.newest : (list[0] && list[0].when);
-        return (checkedAt ? 'Checked for new reports ' + since(checkedAt) : 'Checking for new reports…') + (n ? ' · newest on record ' + esc(dateText(n)) : '');
-      }
-      setInterval(() => { const el = feed.querySelector('.gm-feed-checked'); if (el && !feed.hidden) el.innerHTML = liveLine(); }, 5000);
+      // The line that said when the reports were last checked and the newest date on record is gone (user, 7 Nov 2026:
+      // "delete this text Checked for new reports 41 s ago · newest on record 28 Oct 2026"); the check itself still runs.
 
       // Map marks for the alerts: a ring at each space with an alert now, which opens the alert.
       const marks = new Map();
@@ -1289,7 +1288,6 @@
             }
           }
         } catch (_) { checkFailed = true; }
-        const el = feed.querySelector('.gm-feed-checked'); if (el) el.innerHTML = liveLine();
       }
       setInterval(check, 60000);
       document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') check(); });

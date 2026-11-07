@@ -4365,7 +4365,6 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{display:block!important;flex:1 1 auto;min-width:0;margin:0!important;font:500 40px/1 var(--sans)!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share{display:inline-flex!important;align-items:center;justify-content:center;width:auto!important;height:36px!important;min-height:36px!important;margin:0;padding:0 14px!important;border:1px solid var(--ink)!important;border-radius:999px!important;background:transparent!important;box-shadow:none!important;font:400 14px/1 var(--sans)!important;text-transform:none!important;cursor:pointer}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn:hover,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn[aria-pressed="true"],:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share:not(.is-main):hover{background:var(--ink)!important;color:var(--paper)!important}
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-live{margin:4px 0 0!important;font:400 14px/1.3 var(--sans)!important}
 /* A report. */
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story{margin:48px 0 0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;cursor:pointer}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-label{margin:32px 0 0!important;padding:0 0 10px!important;border:0!important;border-bottom:1px solid var(--ink)!important;background:none!important;font:400 14px/1.2 var(--sans)!important;text-transform:uppercase}
@@ -4399,11 +4398,16 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 @media (max-width:767px){:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{font-size:32px!important}}
 /* The Top story strip has no icon (user, 5 Nov 2026: "delete icon"): one column, the headline over the meta line, on the phone and on desktop. */
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmStoryStrip:not([hidden]){grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"head" "meta"!important;column-gap:0!important;padding-left:16px!important}
-/* The feed closes with a cross, a 44px circle, and the head keeps 8px clear on the right so the buttons and their focus ring
-   stand off the panel edge (user, 5 Nov 2026: "add right margin and add cross to exit"). */
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{padding-right:8px!important}
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x{width:44px!important;height:44px!important;min-height:44px!important;padding:0!important}
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x svg{display:block;width:20px;height:20px}
+/* The feed closes with the record's big thin cross: 28px, 1.1px lines, on a 44px paper square with no circle and no edge
+   (user, 7 Nov 2026: "make proper cross like big one with no outline"; the 44px circle was 5 Nov 2026). Hover and press
+   keep the square paper: only the focus ring marks it. It sits in .ts-pin, a sticky holder of no height before the head, so
+   the head scrolls away and the cross stays at the top right over whatever passes under it (user, 7 Nov 2026: "keep cross
+   on scroll"); the head keeps 52px clear on the right so Alert me never sits under it. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-pin{position:sticky!important;top:0;z-index:3;display:flex;justify-content:flex-end;height:0!important;margin:0!important;padding:0!important;overflow:visible;pointer-events:none}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{padding-right:52px!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x{flex:none;width:44px!important;height:44px!important;min-height:44px!important;margin:18px -8px 0 0!important;padding:0!important;border:0!important;border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important;pointer-events:auto}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x:is(:hover,:active){background:var(--paper)!important;color:var(--ink)!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x svg{display:block;width:28px;height:28px}
 /* The head scrolls away with the reports instead of staying on top of them (user, 5 Nov 2026: "scroll header"). */
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{position:static!important}
 /* The headline is plain text, set as the old headline button was: Serrif Light 24px/1.15, no underline, no pointer. The Space
@@ -4458,6 +4462,9 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 /* ---- THE CHAT COMPOSER, CALM (user, 5 Nov 2026: "design this chat better, now it's out of it; use Displaay buttons and make
    outlines grey, so they look thin", with two references: an idle field on a warm ground, and the same field green while typing
    with a large black send square on the right).
+   Since 7 Nov 2026 (user: "do not use color when not clicked in and make button just an outline") the field has no ground
+   until it has focus, and then it is the green; the send square is an outline in the same grey hairline as the other two
+   buttons, with the triangle in ink, and fills with ink on hover.
    Desktop only, and only the chat: the note form (.is-mode, chat-input-mode-active) and the phone composer keep their own rules.
    One grid: what you type spans the first two columns, Share information and Voice sit under it; send sits in the right column across
    both rows, centred, so it no longer floats above the text. Every edge is a 1px grey hairline, not ink.
@@ -4465,10 +4472,10 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
    it 9.6:1. The grey edges are the field's boundary, so they keep 3:1 (WCAG 1.4.11): #8a8a8a on #fff 3.5:1, #8a8a8a on #f2f0e6
    3.0:1, #6e6e6e on #000 4.0:1. The prefix carries 17 ids, one more than the Displaay layer above. */
 @media (min-width:768px){
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){--cc-ink:#000;--cc-paper:#fff;--cc-ground:#f2f0e6;--cc-hint:#5f5e58;--cc-line:#8a8a8a;--cc-typing:#cffcc6}
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html[data-theme="dark"]) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){--cc-ink:#fff;--cc-paper:#000;--cc-ground:#161616;--cc-hint:#b6b6b6;--cc-line:#6e6e6e}
-/* While there is text the field turns green, and green carries black text in both themes. */
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):has(#workInput:not(:placeholder-shown)){--cc-ink:#000;--cc-paper:#fff;--cc-ground:var(--cc-typing);--cc-hint:#3c4a39;--cc-line:#5e7a59}
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){--cc-ink:#000;--cc-paper:#fff;--cc-ground:transparent;--cc-hint:#5f5e58;--cc-line:#8a8a8a;--cc-typing:#cffcc6}
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html[data-theme="dark"]) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){--cc-ink:#fff;--cc-paper:#000;--cc-ground:transparent;--cc-hint:#b6b6b6;--cc-line:#6e6e6e}
+/* While the field has focus it turns green, and green carries black text in both themes. */
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):focus-within{--cc-ink:#000;--cc-paper:#fff;--cc-ground:var(--cc-typing);--cc-hint:#3c4a39;--cc-line:#5e7a59}
 
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;grid-template-rows:auto auto!important;align-items:center!important;column-gap:8px!important;row-gap:14px!important;box-sizing:border-box!important;padding:22px 20px 18px 28px!important;margin:0!important;border:1px solid var(--cc-line)!important;border-radius:14px!important;background:var(--cc-ground)!important;box-shadow:none!important;outline:0!important;transition:background-color .15s,border-color .15s}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):focus-within{border-color:var(--focus)!important}
@@ -4493,10 +4500,10 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #curatorVoiceToggleBtn{grid-column:2!important;grid-row:2!important;position:static!important;inset:auto!important}
 
-/* Send: a 56px square of solid ink with 12px corners, in the right column across both rows. */
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn{grid-column:3!important;grid-row:1 / span 2!important;align-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;margin:0!important;padding:0!important;border:1px solid var(--cc-ink)!important;border-radius:12px!important;background:var(--cc-ink)!important;box-shadow:none!important;color:var(--cc-paper)!important}
+/* Send: a 56px outlined square with 12px corners, in the right column across both rows; the triangle is ink, hover fills with ink. */
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn{grid-column:3!important;grid-row:1 / span 2!important;align-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;margin:0!important;padding:0!important;border:1px solid var(--cc-line)!important;border-radius:12px!important;background:transparent!important;box-shadow:none!important;color:var(--cc-ink)!important}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn svg,:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn svg *{width:26px!important;height:26px!important;stroke:currentColor!important;stroke-width:1.4!important;color:inherit!important;fill:none!important}
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn:hover{background:var(--cc-paper)!important;color:var(--cc-ink)!important}
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn:hover{background:var(--cc-ink)!important;border-color:var(--cc-ink)!important;color:var(--cc-paper)!important}
 }
 
 /* ==== CHAT DETAILS, LIKE CLAUDE (user, 6 Nov 2026: "make details button on chat window a toggle", "make chat window not
@@ -4519,15 +4526,14 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 
 /* ---- Coloured filters (user's instruction, 6 Nov 2026) ----
    Every filter wears its own colour: the layer chips over the map, the rows of the Layers menu, the funder types and the
-   widest-reaching funders. Off, a filter is a pale wash of its colour with a dot of the full colour; on, it is filled with
-   the colour and its dot turns black, so the state is said by more than the hue (and by aria-pressed / the checkbox).
+   widest-reaching funders. Off, a filter is a pale wash of its colour; on, it is filled with the colour and its edge thickens
+   to 2px, so the state is said by more than the hue (and by aria-pressed / the checkbox). The chips had a dot of the full
+   colour until 7 Nov 2026 (user: "delete dots from filters").
    Text on the full colours is black in both themes: every fill measures 7:1 or better against #000. The chips sit under a
    rule sixteen ids deep because the button layer above (#displaay x14) would otherwise paint them ink when pressed. */
-#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color{display:inline-flex!important;align-items:center;gap:8px;background:color-mix(in srgb,var(--layer-color) 22%,var(--paper))!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink)!important}
-#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--layer-color);box-shadow:0 0 0 1px var(--ink)}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color{display:inline-flex!important;align-items:center;background:color-mix(in srgb,var(--layer-color) 22%,var(--paper))!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink)!important}
 #gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color:is(:hover,:focus-visible){background:color-mix(in srgb,var(--layer-color) 55%,var(--paper))!important;color:var(--ink)!important;border-color:var(--ink)!important}
 #gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]{background:var(--layer-color)!important;color:#000!important;box-shadow:0 0 0 2px #000!important}
-#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]::before{background:#000;box-shadow:none}
 
 html body #layersPanel#layersPanel label[style*="--layer-color"]{background:color-mix(in srgb,var(--layer-color) 18%,var(--paper))!important;color:var(--ink)!important;box-shadow:inset 4px 0 0 var(--layer-color)}
 html body #layersPanel#layersPanel label[style*="--layer-color"]:hover{background:color-mix(in srgb,var(--layer-color) 40%,var(--paper))!important}

@@ -222,8 +222,9 @@
     chips.setAttribute('role', 'toolbar');
     chips.setAttribute('aria-label', 'Map layers');
     document.body.appendChild(chips);
-    // A section marked data-no-chips (the funding views) stays in the Layers menu only, except a switch marked data-chip.
-    const layerInputs = () => [...document.querySelectorAll('#layersControl input[data-layer]')].filter((cb) => cb.hasAttribute('data-chip') || !cb.closest('[data-no-chips]'));
+    // Only a switch marked data-chip becomes a chip: the four in index.html (Funding connections, Epstein connections,
+    // Propaganda, Independent; user, 7 Nov 2026: "only keep these 4 on top"). Every other layer stays in the Layers menu only.
+    const layerInputs = () => [...document.querySelectorAll('#layersControl input[data-layer][data-chip]')];
     function buildChips() {
       const list = layerInputs();
       if (!list.length) return false;
