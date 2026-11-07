@@ -1129,6 +1129,8 @@
   // What assets/funding-views.js draws with.
   window.atlasLayersAPI = {
     L, COL, lineCol, hexA, kindOn, FUNDER, RIGHT, collides, repaint, loadMoney, loadHq,
+    // The layer boxes and the keys each one holds, for the record's Money map toggle (assets/phone-maps.js).
+    boxes: () => boxes(), keysOfBox: (inp) => keysOfBox(inp),
     data: () => ({ recById, keyIndex, keyKind, HQ, web }),
     top: () => TOP,
     reach: () => REACH,

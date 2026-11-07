@@ -458,8 +458,8 @@
       // a toggle", "function more like Claude with details toggle and back button") ----
       // The chat's Details button opens the record as a page of its own: full height, scrolling, never dragged, with a back
       // button to the chat at the top left and the same Details button, pressed, at the top right. Either one goes back to the
-      // conversation where it was left, scrolled where it was. The sheet's grabber and cross and its Ask in chat button are
-      // put away while it is open, so no control is on screen twice.
+      // conversation where it was left, scrolled where it was. The sheet's grabber and cross are put away while it is open, so
+      // no control is on screen twice; Ask in chat stays, pressed, and is a third way back (see the toggles below).
       const fromChatBar = document.createElement('div');
       fromChatBar.className = 'gm-from-chat-bar';
       fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" aria-label="Back to the chat">'
@@ -468,7 +468,7 @@
         + '<button type="button" id="gmDetailsToggleBtn" aria-pressed="true" aria-label="Space details">Details</button>';
       fromChatBar.hidden = true;
       if (chrome) chrome.appendChild(fromChatBar);
-      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn, $('dossier-sheet-ask-btn')].filter(Boolean);
+      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn].filter(Boolean);
       let chatScrollTop = 0;
       function markFromChat() {
         if (!PHONE()) return;
@@ -477,6 +477,7 @@
         root.classList.add('gm-from-chat');
         fromChatBar.hidden = false;
         $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'true');
+        $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'true');
         // Inline and !important: the sheet's controls are drawn by rules that are themselves !important (atlas.css).
         putAway().forEach((el) => el.style.setProperty('display', 'none', 'important'));
       }
@@ -485,6 +486,7 @@
         root.classList.remove('gm-from-chat');
         fromChatBar.hidden = true;
         $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
+        $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'false');
         putAway().forEach((el) => el.style.removeProperty('display'));
       }
       function backToChat() {
@@ -514,6 +516,36 @@
       new MutationObserver(() => { if (sheet.classList.contains('hidden')) clearFromChat(); })
         .observe(sheet, { attributes: true, attributeFilter: ['class'] });
       window.addEventListener('resize', () => { if (!PHONE()) clearFromChat(); });
+
+      // ---- The record's actions as toggles (user, 7 Nov 2026: "make buttons toggles") ----
+      // Ask in chat is pressed while the record is open over the chat, and pressing it then goes back to the chat. Money map is
+      // pressed while the money layers (the funders and their ties) are on, and pressing it then turns them off; off, it opens
+      // the money map as before. The record's own click handlers run only when a button is not pressed: this listener sits on
+      // the sheet in the capture phase, so it is reached first.
+      const askBtn = $('dossier-sheet-ask-btn'), moneyBtn = $('dossier-sheet-moneymap-btn');
+      // A layer box holds several keys (the Funding box is money and ties), so the layers' own API says which box is which.
+      const api = () => window.atlasLayersAPI || null;
+      const layerBox = (k) => { const a = api(); return a && a.boxes ? a.boxes().find((i) => a.keysOfBox(i).includes(k)) : null; };
+      const moneyOn = () => { const a = api(); return !!(a && a.L && a.L.money); };
+      function syncToggles() {
+        if (!PHONE()) return;
+        if (moneyBtn) moneyBtn.setAttribute('aria-pressed', String(moneyOn()));
+        if (askBtn) askBtn.setAttribute('aria-pressed', String(root.classList.contains('gm-from-chat')));
+      }
+      sheet.addEventListener('click', (e) => {
+        if (!PHONE()) return;
+        const t = e.target.closest('button');
+        if (!t || t.getAttribute('aria-pressed') !== 'true') return;
+        if (t === askBtn) { e.preventDefault(); e.stopPropagation(); backToChat(); }
+        if (t === moneyBtn) {
+          e.preventDefault(); e.stopPropagation();
+          ['money', 'ties'].forEach((k) => { const b = layerBox(k); if (b && b.checked) { b.checked = false; b.dispatchEvent(new Event('change', { bubbles: true })); } });
+          syncToggles();
+        }
+      }, true);
+      document.getElementById('layersPanel')?.addEventListener('change', syncToggles);
+      new MutationObserver(syncToggles).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+      syncToggles();
     }
 
     // ---- The record as a maps app's place card (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ----
