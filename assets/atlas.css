@@ -4517,6 +4517,32 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 }
 
 
+/* ---- Coloured filters (user's instruction, 6 Nov 2026) ----
+   Every filter wears its own colour: the layer chips over the map, the rows of the Layers menu, the funder types and the
+   widest-reaching funders. Off, a filter is a pale wash of its colour with a dot of the full colour; on, it is filled with
+   the colour and its dot turns black, so the state is said by more than the hue (and by aria-pressed / the checkbox).
+   Text on the full colours is black in both themes: every fill measures 7:1 or better against #000. The chips sit under a
+   rule sixteen ids deep because the button layer above (#displaay x14) would otherwise paint them ink when pressed. */
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color{display:inline-flex!important;align-items:center;gap:8px;background:color-mix(in srgb,var(--layer-color) 22%,var(--paper))!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink)!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--layer-color);box-shadow:0 0 0 1px var(--ink)}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color:is(:hover,:focus-visible){background:color-mix(in srgb,var(--layer-color) 55%,var(--paper))!important;color:var(--ink)!important;border-color:var(--ink)!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]{background:var(--layer-color)!important;color:#000!important;box-shadow:0 0 0 2px #000!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]::before{background:#000;box-shadow:none}
+
+html body #layersPanel#layersPanel label[style*="--layer-color"]{background:color-mix(in srgb,var(--layer-color) 18%,var(--paper))!important;color:var(--ink)!important;box-shadow:inset 4px 0 0 var(--layer-color)}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:hover{background:color-mix(in srgb,var(--layer-color) 40%,var(--paper))!important}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:has(input:checked){background:var(--layer-color)!important;color:#000!important;box-shadow:inset 4px 0 0 #000}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:has(input:checked) :is(.layer-name,.layer-desc,.layers-count){color:#000!important}
+html body #layersPanel#layersPanel label[style*="--layer-color"] input{accent-color:#000}
+
+/* The funder types and the widest-reaching funders: the same wash and fill, in the funder kind's colour. */
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row{background:color-mix(in srgb,var(--marker-color,var(--row)) 18%,var(--paper))!important;color:var(--ink)!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]){background:var(--marker-color)!important;color:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]) :is(.tf-n,.layer-name,.tf-name){color:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"])>i{background:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:hover{background:color-mix(in srgb,var(--marker-color,var(--row)) 45%,var(--paper))!important;color:var(--ink)!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]):hover{background:var(--marker-color)!important;color:#000!important}
+
 /* ===== GRADING BROUGHT BACK (user, 6 Nov 2026: "bring grading back ... explain it also on the info button on each space ... colour coded") =====
    The grade is its letter in a dot of its colour: black type on every fill (each 7:1 or better against black), and a 1px ink edge so the
    pale fills still read on white (the letter carries the grade, the colour codes it). The i button beside it opens the scale. Set after
@@ -4545,3 +4571,45 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 /* Phone sheet: the i button sits at the end of the rating line, the panel under it. */
 :root:root:root:root body #dossier-bottom-sheet .gm-rating .grade-info-btn{margin-left:6px;width:24px;height:24px}
 :root:root:root:root body #dossier-bottom-sheet .gm-rating+.grade-info{margin:6px 0 8px}
+
+/* ===================================================================================================================
+   COLOUR KEY ON THE MAP (user, 6 Nov 2026). What a name's colour says, always visible over the globe, with the rules
+   behind the grades a tap away. The pills are drawn as the map's labels are (.inst-pin-label above): the word in its
+   tier's colour, a 1px edge of the same colour at 55%, on white in light and black in dark. Desktop: top right of the
+   map, under the chip row. Phone: top left, level with the round Layers button. Hidden wherever the Layers control is.
+   =================================================================================================================== */
+#mapColourKey#mapColourKey#mapColourKey{position:absolute;top:116px;right:16px;z-index:30;box-sizing:border-box;width:max-content;max-width:min(300px,calc(100% - 32px));padding:10px 12px;background:var(--paper);color:var(--ink);border:.8px solid var(--line);border-radius:0;font:400 14px/1.3 var(--sans);letter-spacing:0}
+#mapColourKey#mapColourKey#mapColourKey .mck-title{margin:0 0 8px;font:400 14px/1.2 var(--sans);letter-spacing:0;color:var(--ink)}
+#mapColourKey#mapColourKey#mapColourKey .mck-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;row-gap:6px;align-items:center}
+#mapColourKey#mapColourKey#mapColourKey .mck-list li{display:contents}
+#mapColourKey#mapColourKey#mapColourKey .mck-pill{--lc:var(--tier-u);justify-self:start;display:inline-block;padding:3px 8px;background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:0;font:400 14px/1.2 var(--sans);white-space:nowrap}
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word)[data-tier="A"]{--lc:var(--tier-a)}
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word)[data-tier="B"]{--lc:var(--tier-b)}
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word)[data-tier="U"]{--lc:var(--tier-u)}
+:root[data-theme="dark"] #mapColourKey#mapColourKey#mapColourKey .mck-pill{background:#000}
+#mapColourKey#mapColourKey#mapColourKey .mck-desc{min-width:0;color:var(--ink)}
+/* The page's global type rules reach spans, headings and paragraphs with !important; the key keeps one size, 14px. */
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-title,.mck-pill,.mck-desc,summary,p,b){font-size:14px!important;line-height:1.3!important;letter-spacing:0!important;font-weight:400!important}
+#mapColourKey#mapColourKey#mapColourKey .mck-more{margin-top:8px}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary{display:flex;align-items:center;gap:6px;min-height:28px;padding:0;background:transparent!important;color:var(--ink)!important;border:0;cursor:pointer;font:400 14px/1.2 var(--sans);text-decoration:underline;text-underline-offset:3px;list-style:none}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary::-webkit-details-marker{display:none}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary::before{content:"+";display:inline-block;width:1ch;text-decoration:none}
+#mapColourKey#mapColourKey#mapColourKey .mck-more[open] summary::before{content:"\2212"}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary:hover{text-decoration-thickness:2px}
+#mapColourKey#mapColourKey#mapColourKey .mck-more summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+#mapColourKey#mapColourKey#mapColourKey .mck-body{max-height:min(46vh,360px);overflow-y:auto;padding-top:4px}
+#mapColourKey#mapColourKey#mapColourKey .mck-body p{margin:6px 0 0;font:400 14px/1.35 var(--sans);color:var(--ink)}
+#mapColourKey#mapColourKey#mapColourKey .mck-word{font-weight:400;color:var(--lc)}
+/* Wherever the Layers control steps aside (the chat over the map, an open record, the wide chat, the feed), so does the key. */
+body:has(#curator-chat-drawer:not(.hidden)) #mapColourKey,
+body:has(#detailDrawer:not(.hidden)) #mapColourKey,
+:root.chat-wide #mapColourKey,
+:root.gm-sheet #mapColourKey,
+:root.gm-chat #mapColourKey,
+:root.gm-feed-open #mapColourKey{display:none!important}
+@media (max-width:767px){
+  body:has(#dossier-bottom-sheet:not(.hidden)) #mapColourKey{display:none!important}
+  /* Phone: level with the round Layers button (top right, 72px down), on the other side, and narrower. */
+  #mapColourKey#mapColourKey#mapColourKey{position:fixed;top:calc(var(--safe-t,0px) + 72px);left:12px;right:auto;z-index:44;max-width:calc(100vw - 92px);padding:8px 10px}
+  #mapColourKey#mapColourKey#mapColourKey .mck-body{max-height:40vh}
+}
