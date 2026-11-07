@@ -166,6 +166,13 @@
     });
     const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer ? b.dataset.layer === on : !on))); };
     paint(); document.addEventListener('atlas:filter', paint);
+    // The row wraps rather than scrolls (user, 7 Nov 2026: "make the filters row not scroll, fit all on screen"), so its
+    // height varies with the width. It is published as --<id>-h on the root, and what sits under the row (the page's name
+    // on the desktop, the Layers button and the colour key on a phone) is placed from it in assets/atlas.css.
+    if (host.id && 'ResizeObserver' in window) {
+      const tell = () => document.documentElement.style.setProperty(`--${host.id}-h`, `${host.offsetHeight}px`);
+      new ResizeObserver(tell).observe(host); tell();
+    }
     return true;
   };
   window.atlasLayerKeep = function () {

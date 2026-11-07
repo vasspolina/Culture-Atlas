@@ -3113,7 +3113,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#layersPanel:not([hidden])) #mobileStickyInputBar{display:none!important}
 
   /* Layers: a round button at the top right, under the globe's compass (drawn on the canvas at 38px, 38px). */
-  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl{position:fixed!important;top:calc(var(--safe-t,0px) + 72px)!important;right:var(--gm-gap)!important;left:auto!important;bottom:auto!important;z-index:44!important;align-items:flex-end!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl{position:fixed!important;top:calc(var(--safe-t,0px) + 26px + var(--gmChips-h,46px))!important;right:var(--gm-gap)!important;left:auto!important;bottom:auto!important;z-index:44!important;align-items:flex-end!important}
   :root.gm-sheet #layersControl{display:none!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn{position:relative;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;padding:0!important;border-radius:50%!important;border:0!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:var(--gm-shadow)!important;font-size:0!important;line-height:0!important;color:transparent!important;justify-content:center!important;gap:0!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn::after{display:none!important}
@@ -3124,11 +3124,15 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
 
   /* The filter row at the top (user, 7 Nov 2026: "make filters above instead of layers, so if clicked it only shows what clicked"):
-     All spaces and the six filters from the Layers menu, one at a time, scrolling sideways. The Layers button sits under
-     it at the right. With a city's banner at the top left, the row steps down beside that button and clears it. */
-  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips{display:flex;gap:8px;position:fixed;top:calc(var(--safe-t,0px) + 12px);left:var(--gm-gap);right:var(--gm-gap);z-index:44;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0;padding:2px 4px 8px;scroll-padding:0 4px}
-  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips::-webkit-scrollbar{display:none}
-  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#cityViewControlBanner:not(.hidden)) #gmChips{top:calc(var(--safe-t,0px) + 72px);right:calc(var(--gm-gap) + 56px)}
+     All spaces and the six filters from the Layers menu, one at a time. The row wraps so every chip is on screen (user, same
+     day: "make the filters row not scroll, fit all on screen"); its height is --gmChips-h, set by assets/layers.js, and the
+     Layers button, the colour key and the street map's controls sit under it from that. One row is 46px (36px chips, 2px
+     over, 8px under), which puts the Layers button where it was, 72px down. With a city's banner at the top left, the row
+     steps down under the banner (12px + its 52px + 8px). */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips{display:flex;flex-wrap:wrap;gap:8px;position:fixed;top:calc(var(--safe-t,0px) + 12px);left:var(--gm-gap);right:var(--gm-gap);z-index:44;margin:0;padding:2px 4px 8px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#cityViewControlBanner:not(.hidden)) #gmChips{top:calc(var(--safe-t,0px) + 72px)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#cityViewControlBanner:not(.hidden)) #layersControl{top:calc(var(--safe-t,0px) + 86px + var(--gmChips-h,46px))!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#cityViewControlBanner:not(.hidden)) #mapColourKey{top:calc(var(--safe-t,0px) + 86px + var(--gmChips-h,46px))}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-filter-chip{flex:none;height:36px;padding:0 14px;border:0;border-radius:18px;background:var(--paper);color:var(--ink);font:400 14px/1 var(--sans);white-space:nowrap;box-shadow:var(--gm-shadow);cursor:pointer}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-filter-chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-filter-chip:focus-visible{outline:3px solid var(--focus,#1d4ed8);outline-offset:2px}
@@ -3515,7 +3519,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityViewControlBanner #cityViewTitleBadge{min-width:0;flex:1 1 auto;max-width:none!important;color:var(--ink)!important;font:300 14px/20px var(--sans)!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityViewControlBanner #cityViewTitleBadge span{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:inherit!important;color:inherit!important}
   /* Street map controls: no zoom buttons; the compass a round button under Layers. */
-  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-top-right{top:calc(var(--safe-t,0px) + 72px + 44px + 12px)!important;right:var(--gm-gap)!important;margin:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-top-right{top:calc(var(--safe-t,0px) + 86px + var(--gmChips-h,46px) + 56px)!important;right:var(--gm-gap)!important;margin:0!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-top-right .maplibregl-ctrl-group{margin:0!important;background:transparent!important;box-shadow:none!important;border:0!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-group :is(.maplibregl-ctrl-zoom-in,.maplibregl-ctrl-zoom-out){display:none!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-group .maplibregl-ctrl-compass{width:44px!important;height:44px!important;border:0!important;border-radius:50%!important;background-color:var(--paper)!important;box-shadow:var(--gm-shadow)!important}
@@ -3582,9 +3586,9 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt.is-ask .gmd-opt-label{white-space:normal}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt-sub{font:400 13px/1.25 var(--sans);color:color-mix(in srgb,var(--ink) 66%,transparent);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-  /* The filter row, beside the box, stopping short of the panel. */
-  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips{display:flex;gap:8px;position:fixed;top:calc(var(--gmd-gap) + (var(--gmd-h) - 36px) / 2);left:calc(var(--gmd-w) - var(--gmd-gap) + 12px);right:calc(var(--gmd-w) + 12px);z-index:45;overflow-x:auto;scrollbar-width:none;padding:2px 4px 8px}
-  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips::-webkit-scrollbar{display:none}
+  /* The filter row, beside the box, stopping short of the panel. It wraps rather than scrolls (user, 7 Nov 2026: "fit all on
+     screen"); assets/layers.js sets --gmdChips-h to its height, and the page's name and the colour key are placed from it. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips{display:flex;flex-wrap:wrap;gap:8px;position:fixed;top:calc(var(--gmd-gap) + (var(--gmd-h) - 36px) / 2);left:calc(var(--gmd-w) - var(--gmd-gap) + 12px);right:calc(var(--gmd-w) + 12px);z-index:45;padding:2px 4px 8px}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip{flex:none;height:36px;padding:0 16px;border:0;border-radius:18px;background:var(--paper);color:var(--ink);font:400 14px/1 var(--sans);white-space:nowrap;box-shadow:var(--gmd-shadow);cursor:pointer}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip:hover{background:color-mix(in srgb,var(--ink) 8%,var(--paper))}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
@@ -3886,10 +3890,11 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
   /* Switched around (user, 4 Nov 2026: "switch around", pills above title): the chips take the top line and the name sits
-     one chip row under them. A chip row is 36px plus its 2px top and 8px bottom padding (#gmdChips above), so the name
-     starts 50px down, the same 8px clear of the chips' shadow-free bottom that the chips had under the name. */
+     under them. The chips wrap, so the name is placed from the row's measured height (--gmdChips-h, 46px for one row of
+     36px chips with their 2px top and 8px bottom padding) plus 4px, the same 8px clear of the chips' shadow-free bottom
+     that the chips had under the name. */
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdChips{top:var(--gmd-gap)!important}
-  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdTitle{top:calc(var(--gmd-gap) + 50px)!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdTitle{top:calc(var(--gmd-gap) + 4px + var(--gmdChips-h,46px))!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #layersControl #layersPanel{max-height:calc(100vh - 230px)!important}
 }
 /* A question that wraps keeps the same space above and below its words as one that fits on a line (user, 4 Nov 2026). These
@@ -4596,7 +4601,7 @@ html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(i
    tier's colour, a 1px edge of the same colour at 55%, on white in light and black in dark. Desktop: top right of the
    map, under the chip row. Phone: top left, level with the round Layers button. Hidden wherever the Layers control is.
    =================================================================================================================== */
-#mapColourKey#mapColourKey#mapColourKey{position:absolute;top:116px;right:16px;z-index:30;box-sizing:border-box;width:max-content;max-width:min(300px,calc(100% - 32px));padding:10px 12px;background:var(--paper);color:var(--ink);border:.8px solid var(--line);border-radius:0;font:400 14px/1.3 var(--sans);letter-spacing:0}
+#mapColourKey#mapColourKey#mapColourKey{position:absolute;top:calc(70px + var(--gmdChips-h,46px));right:16px;z-index:30;box-sizing:border-box;width:max-content;max-width:min(300px,calc(100% - 32px));padding:10px 12px;background:var(--paper);color:var(--ink);border:.8px solid var(--line);border-radius:0;font:400 14px/1.3 var(--sans);letter-spacing:0}
 #mapColourKey#mapColourKey#mapColourKey .mck-title{margin:0 0 8px;font:400 14px/1.2 var(--sans);letter-spacing:0;color:var(--ink)}
 #mapColourKey#mapColourKey#mapColourKey .mck-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;row-gap:6px;align-items:center}
 #mapColourKey#mapColourKey#mapColourKey .mck-list li{display:contents}
@@ -4628,7 +4633,7 @@ body:has(#detailDrawer:not(.hidden)) #mapColourKey,
 @media (max-width:767px){
   body:has(#dossier-bottom-sheet:not(.hidden)) #mapColourKey{display:none!important}
   /* Phone: level with the round Layers button (top right, 72px down), on the other side, and narrower. */
-  #mapColourKey#mapColourKey#mapColourKey{position:fixed;top:calc(var(--safe-t,0px) + 72px);left:12px;right:auto;z-index:44;max-width:calc(100vw - 92px);padding:8px 10px}
+  #mapColourKey#mapColourKey#mapColourKey{position:fixed;top:calc(var(--safe-t,0px) + 26px + var(--gmChips-h,46px));left:12px;right:auto;z-index:44;max-width:calc(100vw - 92px);padding:8px 10px}
   #mapColourKey#mapColourKey#mapColourKey .mck-body{max-height:40vh}
 }
 
