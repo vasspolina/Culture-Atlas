@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=584">
-  <script src="assets/config.js?v=584"></script>
-  <script src="assets/subtopic.js?v=584"></script>
-  <script src="assets/names.js?v=584"></script>
-  <script src="assets/grounding.js?v=584"></script>
-  <script src="assets/repeats.js?v=584"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=585">
+  <script src="assets/config.js?v=585"></script>
+  <script src="assets/subtopic.js?v=585"></script>
+  <script src="assets/names.js?v=585"></script>
+  <script src="assets/grounding.js?v=585"></script>
+  <script src="assets/repeats.js?v=585"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -848,6 +848,7 @@ return maplibregl$1;
             <div id="workInputCard" class="w-full rule-t pt-3 pb-2 flex flex-col justify-between">
               <!-- The submission form of the note screen (shown only while a note is written) -->
               <div id="noteFormFields">
+                <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
                 <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
                 <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space"></label>
@@ -1124,7 +1125,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=584"></script>
+  <script src="assets/institutions.js?v=585"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10208,11 +10209,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v584';
+    const ATLAS_RELEASE = 'culture-atlas-v585';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=584').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=585').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11520,39 +11521,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           }
         });
 
-        // 8.1 Spatial Blossom / Anti-Overlap for Co-located Institutions in Same City
-        // When zoomed in onto a country or region, ensure adjacent institutions in the same city (e.g. 3 in Rome, 4 in Milan)
-        // separate into non-overlapping clickable spots with generous hitboxes
-        const proximityGroups = [];
-        const visitedDots = new Set();
-        for (let i = 0; i < visibleDots.length; i++) {
-          if (visitedDots.has(i)) continue;
-          const group = [visibleDots[i]];
-          visitedDots.add(i);
-          for (let j = i + 1; j < visibleDots.length; j++) {
-            if (visitedDots.has(j)) continue;
-            const sameCity = visibleDots[i].inst && visibleDots[j].inst && matchC(visibleDots[i].inst.city, visibleDots[j].inst.city);
-            if (sameCity && Math.hypot(visibleDots[i].origX - visibleDots[j].origX, visibleDots[i].origY - visibleDots[j].origY) < 26) {
-              group.push(visibleDots[j]);
-              visitedDots.add(j);
-            }
-          }
-          if (group.length >= 2) {
-            proximityGroups.push(group);
-          }
-        }
-
-        proximityGroups.forEach(grp => {
-          const N = grp.length;
-          const cX = grp.reduce((acc, d) => acc + d.origX, 0) / N;
-          const cY = grp.reduce((acc, d) => acc + d.origY, 0) / N;
-          const spreadR = Math.min(24, Math.max(16, 12 + N * 3));
-          grp.forEach((d, idx) => {
-            const angle = (2 * Math.PI * idx) / N - Math.PI / 2;
-            d.x = Math.round(cX + spreadR * Math.cos(angle));
-            d.y = Math.round(cY + spreadR * Math.sin(angle));
-          });
-        });
+        // 8.1 No ring of dots (user, 7 Nov 2026: "dont do these circles"). Same-city dots that fell within 26px of each other used
+        // to be fanned out on a circle of 16 to 24px around their centre (the "Spatial Blossom"), which drew a wreath of ten marks
+        // around Pyongyang with the propaganda halos under it. Each dot now stays where its space is; close ones overlap until the
+        // view is near enough to part them, as on any map, and the city badge already carries the count.
 
         let activeMicroDot = null;
         const drawnInstLabelBoxes = [];
@@ -21279,13 +21251,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=584"></script>
-<script src="assets/funding-views.js?v=584"></script>
-<script src="assets/layers.js?v=584"></script>
-<script src="assets/hq-detail.js?v=584"></script>
-<script src="assets/bubbles.js?v=584" defer></script>
-<script src="assets/phone-maps.js?v=584"></script>
-<script src="assets/desktop-maps.js?v=584"></script>
-<script src="assets/chat-resize.js?v=584"></script>
+<script src="assets/typeset.js?v=585"></script>
+<script src="assets/funding-views.js?v=585"></script>
+<script src="assets/layers.js?v=585"></script>
+<script src="assets/hq-detail.js?v=585"></script>
+<script src="assets/bubbles.js?v=585" defer></script>
+<script src="assets/phone-maps.js?v=585"></script>
+<script src="assets/desktop-maps.js?v=585"></script>
+<script src="assets/chat-resize.js?v=585"></script>
 </body>
 </html>

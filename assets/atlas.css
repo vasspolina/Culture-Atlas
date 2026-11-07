@@ -4715,3 +4715,40 @@ body:has(#detailDrawer:not(.hidden)) #mapColourKey,
   :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #curatorHeroGreeting, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #curatorHeroGreeting::before{font-family:var(--sans)!important;font-weight:400!important;font-size:28px!important;line-height:1.1!important;letter-spacing:-.28px!important}
   :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .starter-prompt, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .starter-prompt *{font-family:var(--sans)!important;font-weight:400!important;font-size:17px!important;line-height:1.15!important;letter-spacing:.21px!important}
 }
+
+/* ---- THE NOTE FORM: PROPER FIELDS, HALF THE AIR, A BACK BUTTON (user, 7 Nov 2026: "do proper form field and make margin 50%
+   less, add back button with arrow back") ----
+   Each input is a field of its own again: a 1px ink edge with 10px corners (the Displaay button's), 44px tall, the typed words
+   inside it, in place of the ruled lines of 4 Nov. The label stays over the field at 15px. Focus is the site's 2px outline
+   around the field itself, not a bar under the block. Every distance of the 5 Nov layer is halved: the card's padding
+   (56/64 to 28/32, 28/24 on a phone to 14/12), the head's 16 to 8, the intro's 40 to 20 (28 to 14 on a phone), the
+   checkbox's 32 to 16, the toolbar's 40 to 20. Back is a Displaay button with an arrow, over the title; it does what the
+   cross does (toggleChatShare), so the chat comes back whichever is pressed. 16 ids, after the layers it replaces. */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode{padding:28px 32px 32px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormHead{margin:0 0 8px!important;gap:12px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormIntro{margin:0 0 20px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock),
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock):is(:hover,:focus-within){margin:0 0 12px!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormFields>.nf-field:first-of-type{border-top:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field>span,#noteInputLabel){margin:0 0 6px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea){display:block;width:100%!important;box-sizing:border-box!important;min-height:44px!important;margin:0!important;padding:10px 12px!important;border:1px solid var(--dp-ink)!important;border-radius:10px!important;background:var(--dp-paper)!important;color:var(--dp-ink)!important;box-shadow:none!important;outline:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteInputBlock textarea{min-height:7em!important;resize:vertical!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea):focus-visible{outline:2px solid var(--focus)!important;outline-offset:2px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteAckRow{margin:16px 0 0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormStatus{margin:8px 0 0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode>div.justify-between{padding-top:20px!important}
+/* Back: the arrow and the word, a Displaay button, 34px, 10px corners, a 1px ink edge; hover and press fill it with ink. It is
+   the first thing in the form so a screen reader meets it before the title, as a back control is met on a phone. */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn{display:inline-flex!important;align-items:center;gap:8px;align-self:flex-start;box-sizing:border-box;height:34px!important;min-height:34px!important;width:auto!important;margin:0 0 16px!important;padding:0 12px 0 10px!important;border:1px solid var(--dp-ink)!important;border-radius:10px!important;background:transparent!important;color:var(--dp-ink)!important;font:400 15px/1.3 var(--sans)!important;letter-spacing:.02em!important;text-decoration:none!important;cursor:pointer;transition:var(--btn-ease)}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn .note-back-arrow{display:block;flex:none;width:16px;height:16px;color:inherit}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn:is(:hover,:active){background:var(--dp-ink)!important;color:var(--dp-paper)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn:focus-visible{outline:2px solid var(--focus)!important;outline-offset:2px!important}
+body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!important}
+@media (max-width:520px){
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode{padding:14px 12px 16px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormIntro{margin:0 0 14px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock){padding:0!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteAckRow{margin:12px 0 0!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode>div.justify-between{padding-top:14px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn{margin:0 0 12px!important}
+}
