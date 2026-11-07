@@ -140,3 +140,22 @@ Four checker agents re-opened every cited source for the 38 records that held a 
   visit tables (official cantonal statistics, "Angaben der einzelnen Museen"; Kunstmuseum Basel's own report differs from the table,
   so its own figure is used); CaixaForum Madrid stays at 2024 (no 2025 release found); Moderna Galerija stays at 2023 (the 2024
   report is a scan); Fondation Beyeler finance is FY2022, the latest accounts that could be opened.
+
+# Stage 8 review (f072 to f081)
+
+Four checker agents re-opened every cited source for the 52 records that held a figure.
+- Dropped as an average or FTE count of staff (the accounts label the line "average", "average monthly" or "FTE"): Kunsthaus Zurich,
+  De La Warr Pavilion, Pallant House, Grizedale Arts, Towner, BALTIC, Compton Verney, Charleston, FACT, Mostyn, Autograph, Camden Art
+  Centre, Delfina, Design Museum, Dulwich Picture Gallery, English National Ballet, British Museum, National Gallery, National Portrait
+  Gallery, Somerset House, Zabludowicz, HOME, Turner Contemporary, MK Gallery, New Art Exchange and Nottingham Contemporary.
+- Dropped as a trade-body table only: GoMA and the Whitworth visitors (ALVA league table, no figure from Glasgow Life or the University).
+- Dropped as rounded or not clean: Science Museum visitors (every cell of the table ends in 000), Arter area (18.000 m2), Shedhalle
+  visitors (includes off-site event attendees), Kettle's Yard (total attendance across concerts and learning), C-LAB area (a 7.15 hectare
+  site shared with other tenants), Nottingham Contemporary area (the architect's credit gives no kind).
+- Corrected to a newer report: Tate Modern 4,538,061 (2025-26), V&A South Kensington 3,349,300 (2025-26), Taipei Fine Arts Museum
+  1,001,773 (2025), SALT 606,666 (2025, both buildings), Chisenhale staff 13 (2025-26, salaried employees).
+- Kept with a note: The MAC (door count of the building, 2025), Towner (the report also calls the number visitors and participants),
+  Henry Moore Institute (a year shortened by closure until 12 July 2024), Manchester Museum (University of Manchester release, Museum
+  alone), Modern Art Oxford staff 40 (trustees' report staff demographics, 21 full-time and 19 part-time), National Galleries of Scotland
+  (2023-24 exact figure; the 2024-25 report gives only 2.63 million), Gasworks (2023-24; later reports give rounded figures), National
+  Portrait Gallery (exact value of a table in thousands).
