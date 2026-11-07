@@ -4664,3 +4664,12 @@ body:has(#detailDrawer:not(.hidden)) #mapColourKey,
   /* A pill put away (the Website pill while the website is a row) stays away: the pills' own display rule outranked the data-gm-off rule. */
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .record-action-row.gm-actions .record-action[data-gm-off]{display:none!important}
 }
+
+/* The record's actions are toggles (user, 7 Nov 2026: "make buttons toggles"): outlined when off, filled ink when pressed. Ask in chat is
+   pressed while the record is open over the chat; Money map while the money layers are on. The Displaay layer above fills Ask in chat
+   as the first pill with 14 ids; the 16 here let the pressed state decide instead. */
+@media (max-width:767px){
+  :is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action:not([aria-pressed="true"]),:is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-sheet-ask-btn:not([aria-pressed="true"]){background:var(--paper)!important;color:var(--ink)!important}
+  :is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action[aria-pressed="true"]{background:var(--ink)!important;color:var(--paper)!important}
+  :is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action:not([aria-pressed="true"]):is(:hover,:active){background:var(--gm-plate)!important;color:var(--ink)!important}
+}
