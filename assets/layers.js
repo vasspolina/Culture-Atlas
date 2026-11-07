@@ -7,8 +7,11 @@
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, independent: false, artist: false, openbooks: false, kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
-  const COL = { gov: '#818cf8', corp: '#38bdf8', found: '#f472b6', flag: '#f59e0b', right: '#fb7185', epstein: '#a78bfa', person: '#e5e7eb', prop: '#ff3dd1', indep: '#9caf7d', artist: '#ffd600', open: '#9ae3e8' };
+  const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, independent: false, artist: false, openbooks: false, bundle: false, flows: false, hulls: false, choro: false, glyphs: false, halos: false, lifted: false, flagged: false, years: null, choroMode: 'abroad', kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
+  // No two layers share a colour, and none repeats a tier colour of the pins (menthol clean, magenta flagged, yellow unverified)
+  // (user, 6 Nov 2026). Open books was the clean tier's cyan and propaganda sat beside the flagged magenta. Every pair below,
+  // and every layer against each tier colour and the person grey, is 21 or more apart in CIELAB (dE76) on both grounds.
+  const COL = { gov: '#7c9bff', corp: '#63c4fd', found: '#ffa3c8', flag: '#f9ab30', right: '#ff7b6e', epstein: '#d39bff', person: '#e5e7eb', prop: '#ff5fa0', indep: '#3fe05a', artist: '#b7d40c', open: '#0af0b0' };
   // Open books: the clean grade (tier A) — filings linked, no flagged funder or funding protest on record.
   const isOpenBooks = i => i.tier === 'A';
   // Independent and artist-run: the records carry no field for either, so the two layers read the record's own words
@@ -26,7 +29,7 @@
   // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
   // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
   // the data are drawn in a deeper step of the same hue there: 3.05:1 or better against white at the 0.8 alpha they are drawn at.
-  const LINE_LIGHT = { '#818cf8': '#5e6cf6', '#38bdf8': '#0785bd', '#f472b6': '#ef3295', '#f59e0b': '#ab6e07', '#fb7185': '#f93451', '#a78bfa': '#865ff8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#ffd600': '#8f7800', '#9caf7d': '#889e9a', '#9ae3e8': '#1f8b93', '#2dd4bf': '#0d9488', '#ff3dd1': '#d4109f' };
+  const LINE_LIGHT = { '#7c9bff': '#2f5de0', '#63c4fd': '#026caa', '#ffa3c8': '#b04f95', '#f9ab30': '#a36504', '#ff7b6e': '#d0160a', '#d39bff': '#9b30e8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#b7d40c': '#557f00', '#3fe05a': '#0a8a1f', '#0af0b0': '#0a7a48', '#2dd4bf': '#0d9488', '#ff5fa0': '#df0050' };
   const lineCol = c => (document.documentElement.getAttribute('data-theme') === 'dark' ? c : (LINE_LIGHT[c] || c));
   // A hex colour with an alpha, for the halos.
   const hexA = (h, a) => `rgba(${parseInt(h.slice(1, 3), 16)}, ${parseInt(h.slice(3, 5), 16)}, ${parseInt(h.slice(5, 7), 16)}, ${Math.max(0, Math.min(1, a)).toFixed(3)})`;
@@ -36,9 +39,22 @@
   const REDUCE = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const propGlow = () => (REDUCE() ? 1 : 0.975 + 0.175 * Math.sin(performance.now() / 3200 * Math.PI * 2));
   let propTimer = 0;
+  // Every flagged layer glows (user, 6 Nov 2026): flagged spaces, right-wing funders, the Epstein files and propaganda.
+  const GLOWING = () => L.propaganda || L.flags || L.right || L.epstein;
   function propPulse() {
     if (REDUCE() || propTimer) return;
-    propTimer = setTimeout(() => { propTimer = 0; if (!L.propaganda) return; if (window.scheduleRender) window.scheduleRender(); svSchedule(); }, 80);
+    propTimer = setTimeout(() => { propTimer = 0; if (!GLOWING()) return; if (window.scheduleRender) window.scheduleRender(); svSchedule(); }, 80);
+  }
+  // The flagged layers' halo: a radial fade from the mark's colour to nothing, breathing with propGlow. The deeper step of the
+  // colour on the light ground, where the pale one would vanish into white.
+  // The funder marks (right-wing, Epstein) stack in big cities, so theirs is softer than a lone flagged space's.
+  function flagHalo(ctx, x, y, col, R0, a0) {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark', halo = dark ? col : lineCol(col), glow = propGlow();
+    const R = R0 * glow, g = ctx.createRadialGradient(x, y, 2, x, y, R);
+    g.addColorStop(0, hexA(halo, a0 * glow));
+    g.addColorStop(0.5, hexA(halo, a0 * 0.4 * glow));
+    g.addColorStop(1, hexA(halo, 0));
+    ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
   }
   // Colour is never the only cue (WCAG 1.4.1): each kind of mark has its own outline, the same ones the key in the layers panel shows.
   const SHAPES = {
@@ -62,7 +78,9 @@
   }
   window.atlasShapePath = shapePath;
   const RIGHT = n => typeof n[5] === 'string' && n[5].indexOf('right:') === 0;
-  const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? ['Jeffrey Epstein'] : []);
+  // The people who tie a space to the Epstein files; a flagged space with no named person is labelled with its own name,
+  // since a tag that says only "Jeffrey Epstein" tells nothing about the pin it sits on.
+  const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? [rec.n] : []);
   const FUNDER = n => n[1] === 'gov' || n[1] === 'corp' || n[1] === 'found';
   const rad = Math.PI / 180;
   const kindOn = k => L.kinds[k] !== false;
@@ -84,6 +102,8 @@
   // One picked from the list of widest-reaching funders can be pinned, and then stays until it is picked again or Esc is pressed.
   let STREET = false;   // true while the layers are being drawn over the street map
   let REACH = null, reachTimer = 0;
+  // The widest-reaching funders switched on in the Layers panel: each stays drawn until its switch is turned off or Reset all.
+  const FILTERS = new Set();
   const repaint = () => { if (typeof scheduleRender === 'function') scheduleRender(); svSchedule(); };
   function clearReach() { clearTimeout(reachTimer); reachTimer = 0; if (!REACH) return; REACH = null; if (typeof renderTop === 'function') renderTop(); repaint(); }
   function setReach(m) {
@@ -96,6 +116,44 @@
     } else if (REACH) clearReach();
   }
   let recById = null, keyIndex = null, keyKind = null, web = null, loading = false;
+
+  // ---- The filters narrow the spaces on the map (user's instruction, 6 Nov 2026) ----
+  // A map layer about spaces (the six under "Map layers") is also a filter: with one or more on, the map draws only the spaces
+  // at least one of them is about, over every grade, since the grade switch alone would hide most of them (a propaganda
+  // space is rarely graded clean). A widest-reaching funder switched on narrows that further, to the spaces it funds. With
+  // nothing on, the map is as it was.
+  const SPACE_TEST = {
+    funding: i => { const rec = recById && recById.get(i.id); return !!(rec && rec.nodes.some(FUNDER)); },
+    epstein: i => { const rec = recById && recById.get(i.id); return !!(rec && epsteinOf(rec).length); },
+    propaganda: i => !!(i.propaganda && i.propaganda.length),
+    independent: i => selfKinds(i).independent,
+    openbooks: i => isOpenBooks(i),
+    artist: i => selfKinds(i).artist
+  };
+  const spaceLayersOn = () => Object.keys(SPACE_TEST).filter(k => { const inp = document.querySelector(`#layersPanel input[data-layer="${k}"]`); return !!(inp && inp.checked); });
+  window.atlasLayerKeep = function () {
+    const on = spaceLayersOn();
+    let funded = null;
+    if (FILTERS.size && keyIndex) { funded = new Set(); FILTERS.forEach(t => t.keys.forEach(k => (keyIndex.get(k) || []).forEach(id => funded.add(id)))); }
+    if (!on.length && !funded) return null;
+    // Funding and Epstein read the funding maps; until they are in, those two keep nothing, and the map fills in once they load.
+    if (on.some(k => k === 'funding' || k === 'epstein') && !recById) loadMoney();
+    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id));
+  };
+  let pinIndex = null;
+  function refilter() {
+    if (typeof applyFilters === 'function') { try { applyFilters(); } catch (e) { /* the page's own filter state is not ready yet */ } }
+    // The street map's pins are built once per city, so a filter changed while a city is open shows or hides them in place.
+    const keep = window.atlasLayerKeep();
+    const pins = document.querySelectorAll('.custom-inst-pin[data-entity-id]');
+    if (pins.length && typeof ALL_INSTITUTIONS !== 'undefined') {
+      if (!pinIndex) { pinIndex = new Map(); ALL_INSTITUTIONS.forEach(i => pinIndex.set(i.id || i.name, i)); }
+      pins.forEach(el => { const i = pinIndex.get(el.dataset.entityId); el.style.display = !keep || !i || keep(i) ? '' : 'none'; });
+    }
+    if (typeof window.atlasLayersFiltered === 'function') window.atlasLayersFiltered();
+    repaint();
+  }
+  window.atlasRefilter = refilter;
   // Label type is regular on the light theme and light on the dark one.
   const LW = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
   let cityFlags = null;
@@ -146,6 +204,11 @@
     fetch('assets/money-maps.json').then(r => r.json()).then(D => {
       recById = new Map(); keyIndex = new Map(); keyKind = new Map();
       D.forEach(rec => {
+        // 0, 0 is the data's "no coordinates". Draw such a space at its city (or not at all), not in the ocean at 0°, 0°.
+        if (rec.lat === 0 && rec.lon === 0) {
+          const pin = typeof window.atlasPinOf === 'function' ? window.atlasPinOf(rec) : null;
+          if (pin) { rec.lat = pin.lat; rec.lon = pin.lon; } else { delete rec.lat; delete rec.lon; }
+        }
         recById.set(rec.id, rec);
         rec.nodes.forEach(n => {
           if (!FUNDER(n) || !n[5]) return;
@@ -162,7 +225,7 @@
       loading = false;
       updateCounts();
       if (cb) cb();
-      repaint();
+      if (window.atlasLayerKeep()) refilter(); else repaint();
     }).catch(() => { loading = false; });
   }
 
@@ -244,6 +307,7 @@
     return best;
   }
 
+  const fvOn = () => !!(window.atlasFundingViews && window.atlasFundingViews.any(L));
   const sameInst = (a, b) => !!a && !!b && (a.id ? a.id === b.id : a.name === b.name);
 
   // Under the dots: the funding ties.
@@ -251,6 +315,8 @@
   window.atlasLayersDraw = function (ctx, project, r, cx, cy, list, sel, hov, baseRadius) {
     if (streetUp()) return;   // the street map is in front: its own frame draws the layers
     LM = []; LINES = [];
+    // The funding views (assets/funding-views.js): bundles, flows, territories, flagged money and funders above the globe.
+    if (window.atlasFundingViews) window.atlasFundingViews.under(ctx, project, r, cx, cy, sel, hov, baseRadius);
     if (!L.ties) { drawReach(ctx, project, r, cx, cy); return; }
     if (!recById) { loadMoney(); return; }
     const focus = hov || sel, rec = focus && recById.get(focus.id);
@@ -259,13 +325,15 @@
     // The whole web, faint when a space is in focus.
     ctx.lineWidth = 0.8;
     // The whole web is a world-view picture: with a space in focus, or zoomed in, only that space's own ties are drawn.
-    const showWeb = !rec && !HQ_HOV && r < baseRadius * 8;
+    // With the bundled lines on, the bundles stand for the web.
+    const showWeb = !rec && !HQ_HOV && r < baseRadius * 8 && !L.bundle;
+    const inYears = window.atlasFundingViews ? window.atlasFundingViews.recInWindow : () => true;
     ctx.globalAlpha = 0.35;
     const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
     // The funder under the pointer, or pinned: its whole chain is drawn bright, on top of the rest of the web.
     const hotKeys = REACH ? new Set(REACH.keys || [REACH.key]) : null, hot = [];
     if (showWeb) web.forEach(([a, b, kind, key]) => {
-      if (!kindOn(kind)) return;
+      if (!kindOn(kind) || !inYears(a) || !inYears(b)) return;
       const pa = project(a.lon, a.lat, r, cx, cy), pb = project(b.lon, b.lat, r, cx, cy);
       if (!pa.front && !pb.front) return;
       if ((pa.x < -W || pa.x > 2 * W) && (pb.x < -W || pb.x > 2 * W)) return;
@@ -308,14 +376,19 @@
 
   // The funder under the pointer: a line from its space to every other space that names it, an end dot on each.
   function drawReach(ctx, project, r, cx, cy) {
-    if (!REACH || !recById || !kindOn(REACH.kind)) return;
-    const home = REACH.space, ends = [], lc = lineCol(COL[REACH.kind]), dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (!recById) return;
+    FILTERS.forEach(t => { if (!(REACH && REACH.top === t)) drawOneReach(ctx, project, r, cx, cy, { key: t.keys[0], keys: t.keys, kind: t.kind, space: hubOf(t), name: t.name, top: t }); });
+    if (REACH) drawOneReach(ctx, project, r, cx, cy, REACH);
+  }
+  function drawOneReach(ctx, project, r, cx, cy, R) {
+    if (!kindOn(R.kind)) return;
+    const home = R.space, ends = [], lc = lineCol(COL[R.kind]), dark = document.documentElement.getAttribute('data-theme') === 'dark';
     if (!home || typeof home.lat !== 'number') return;
     ctx.save(); ctx.lineCap = 'round'; ctx.lineWidth = 0.8; ctx.globalAlpha = 0.9; ctx.strokeStyle = lc;
-    const ids = new Set(); (REACH.keys || [REACH.key]).forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
+    const ids = new Set(); (R.keys || [R.key]).forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
     ids.forEach(id => {
       const o = recById.get(id); if (!o || o === home || typeof o.lat !== 'number') return;
-      arc(project, home, o, r, cx, cy, ctx, { key: REACH.key, kind: REACH.kind, a: home, b: o }); ends.push(o);
+      arc(project, home, o, r, cx, cy, ctx, { key: R.key, kind: R.kind, a: home, b: o }); ends.push(o);
     });
     ctx.globalAlpha = 1;
     ends.forEach(o => {
@@ -323,7 +396,7 @@
       const hot = LM_HOV && LM_HOV.rec === o;
       ctx.beginPath(); ctx.arc(pt.x, pt.y, hot ? 6.5 : 4.5, 0, Math.PI * 2); ctx.fillStyle = lc; ctx.fill();
       ctx.lineWidth = 0.8; ctx.strokeStyle = dark ? '#000' : '#fff'; ctx.stroke();
-      LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: COL[REACH.kind], key: REACH.key, kind: REACH.kind, space: home, name: REACH.name, label: o.n, sub: `Funded by ${REACH.name}`, ask: `Who funds ${o.n}?` });
+      LM.push({ x: pt.x, y: pt.y, r: 9, rec: o, col: COL[R.kind], key: R.key, kind: R.kind, space: home, name: R.name, label: o.n, sub: `Funded by ${R.name}`, ask: `Who funds ${o.n}?` });
     });
     ctx.restore();
   }
@@ -341,7 +414,7 @@
 
   // Over the dots and labels: flag marks and the money network.
   // A square on each space the funding map names for this highlight, and its names on blocks when in focus or close.
-  function drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, col, namesOf, dx, shape, what, askOf) {
+  function drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, col, namesOf, dx, shape, what, askOf, glows) {
     const close = r >= baseRadius * 22;
     const marks = [];
     recById.forEach(rec => {
@@ -352,6 +425,7 @@
       marks.push([pt, names, focus, mk]); LM.push(mk);
     });
     ctx.lineWidth = 0.8;
+    if (glows && marks.length) { marks.forEach(([pt]) => flagHalo(ctx, pt.x + dx, pt.y, col, 20, 0.5)); propPulse(); }
     marks.forEach(([pt]) => { shapePath(ctx, shape, pt.x + dx, pt.y, 6.5); ctx.fillStyle = col; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); });
     ctx.textAlign = 'left';
     marks.forEach(([pt, names, focus, mk]) => {
@@ -564,7 +638,7 @@
   // opposite the space's own name block. A funder that fits nowhere keeps the best angle and its name, rather than losing the name.
   // Sets x, y, box (the name's block) on each item, and adds the blocks to `boxes` so later drawing keeps clear of them.
   function placeRing(d, items, R, boxes, W, H, pref) {
-    const STEP = Math.PI / 18, TAU = Math.PI * 2, H_ = 22, GAPS = [1, 1.4, 1.8, 2.3];
+    const STEP = Math.PI / 18, TAU = Math.PI * 2, H_ = 24, GAPS = [1, 1.4, 1.8, 2.3];
     const reachBox = R * GAPS[GAPS.length - 1] + 260;
     const near = boxes.filter(b => b.x < d.x + reachBox && b.x + b.w > d.x - reachBox && b.y < d.y + reachBox && b.y + b.h > d.y - reachBox);
     const angles = []; for (let k = 0; k < 36; k++) angles.push(-Math.PI / 2 + k * STEP);
@@ -603,7 +677,7 @@
     });
   }
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
-    if (!REACH && !L.flags && !L.money && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties && !L.independent && !L.artist && !L.openbooks) return;
+    if (!REACH && !L.flags && !L.money && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties && !L.independent && !L.artist && !L.openbooks && !fvOn()) return;
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
@@ -613,7 +687,7 @@
     ctx.font = font; ctx.textBaseline = 'middle';
 
     if (L.openbooks) {
-      // Open-books spaces: the space's own dot glows cyan, the clean colour of the tier key.
+      // Open-books spaces: the space's own dot glows mint (no longer the clean tier's cyan, so the two never read as one).
       const openCol = lineCol(COL.open);
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
@@ -629,7 +703,7 @@
     }
     if (L.independent || L.artist) {
       // Independent spaces: the space's own dot glows green (a soft halo under a filled green dot with the usual ink outline).
-      // Artist-run spaces: a small yellow dot just above the space's own dot (the propaganda marks sit below it).
+      // Artist-run spaces: a small lime dot just above the space's own dot (the propaganda marks sit below it).
       const indepCol = lineCol(COL.indep);
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
@@ -652,15 +726,18 @@
       });
     }
     if (L.flags) {
-      // Each flagged space: a filled orange dot over its ring.
+      // Each flagged space: a filled orange dot over its ring, glowing like the other flagged layers.
       ctx.lineWidth = 0.8;
+      let flagged = 0;
       dots.forEach(d => {
         const i = d.inst; if (!i || !i.flags || !i.flags.length) return;
         LM.push({ x: d.x, y: d.y, r: 8, pass: true, rec: i, ask: `What is reported about ${i.name}?` });
+        flagHalo(ctx, d.x, d.y, COL.flag, 22, 0.75); flagged++;
         shapePath(ctx, 'circle', d.x, d.y, 4.6);
         ctx.fillStyle = COL.flag; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.stroke();
       });
+      if (flagged) propPulse();
       // Each city cluster: the number of flagged spaces in it, on an orange block after the city's label.
       if (!STREET && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
         const byCity = flaggedByCity();
@@ -707,17 +784,19 @@
     }
 
     // Both highlights on: the Epstein square sits to the right of the right-wing one, so a space in both shows both.
-    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'circle', 'Right-wing funder', rec => `Who funds ${rec.n}?`);
-    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'circle', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`);
+    if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'circle', 'Right-wing funder', rec => `Who funds ${rec.n}?`, true);
+    if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'circle', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`, true);
 
     if (L.hq || L.people) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
+    if (window.atlasFundingViews && recById) window.atlasFundingViews.over(ctx, dots, r, baseRadius, sel, hov, project, cx, cy, boxes);
 
     if (L.money) {
       if (!recById) { ctx.restore(); return; }
       const byKey = new Map(), rings = [];
       // A selected space with no dot of its own (folded into a cluster) still gets its funders.
-      if (sel && typeof sel.lat === 'number' && typeof sel.lon === 'number' && !dots.some(d => sameInst(d.inst, sel))) {
-        const pt = project(sel.lon, sel.lat, r, cx, cy); if (pt.front) dots = dots.concat([{ inst: sel, x: pt.x, y: pt.y }]);
+      const selPin = sel && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(sel) : null;
+      if (selPin && !dots.some(d => sameInst(d.inst, sel))) {
+        const pt = project(selPin.lon, selPin.lat, r, cx, cy); if (pt.front) dots = dots.concat([{ inst: sel, x: pt.x, y: pt.y }]);
       }
       const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
       // First pass: where every funder of the focused space goes, and where its name goes. Each spoke and each name must stay
@@ -732,8 +811,10 @@
         const zoomK = Math.max(0.4, Math.min(1, r / (baseRadius * 12)));
         const N = Math.min(nodes.length, 10), R = 64 * zoomK;
         const items = nodes.slice(0, N).map(n => {
-          const reach = reachOf(n[5]), word = KIND_WORD[n[1]], text = (n[0].length > 28 ? n[0].slice(0, 26) + '…' : n[0]) + (word ? ' \u00b7 ' + word : '');
-          return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, w: ctx.measureText(text).width + 28 };
+          // Two pills, as on displaay.net/typefaces: the name filled in its kind's colour, the kind word in an outline beside it.
+          const reach = reachOf(n[5]), word = KIND_WORD[n[1]] || '', text = fitWords(n[0], 40);
+          const nw = ctx.measureText(text).width + 2 * PILL_PAD, ww = word ? ctx.measureText(word).width + 2 * PILL_PAD : 0;
+          return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, word, nw, ww, w: nw + (word ? PILL_GAP + ww : 0) };
         });
         placeRing(d, items, R, boxes, W, H, d.labelBox ? Math.PI / 2 : -Math.PI / 2);
         rings.push({ d, rec, items });
@@ -758,12 +839,9 @@
             ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
         });
       });
-      // Funder names on flat blocks, in the funder's colour, at the spot the layout found for each.
+      // Funder names as pills at the spot the layout found for each: the name on the funder's colour, then the kind word.
       ctx.globalAlpha = 1; ctx.textAlign = 'left';
-      rings.forEach(({ items }) => items.forEach(it => {
-        const b = it.box; drawTag(ctx, b.x, b.y, b.w, b.h, COL[it.n[1]]);
-        ctx.fillStyle = '#000'; ctx.fillText(it.text, b.x + 14, b.y + b.h / 2 + 0.5);
-      }));
+      rings.forEach(({ items }) => items.forEach(it => drawFunderPills(ctx, it, dark)));
     }
     TIP_BOXES = boxes;
     ctx.restore();
@@ -775,6 +853,33 @@
     if (streetUp()) return;
     ctx.save(); drawMarkTip(ctx, TIP_BOXES); ctx.restore();
   };
+  // The funder badges take their form from displaay.net/typefaces: a pill (fully rounded ends), a 1px edge in the colour of
+  // its text, 10px of air either side of the words. The name pill is filled in the kind's colour with black text (the pale
+  // fills measure 7:1 or better against black); the kind pill is an outline on the map's own ground, so it reads as a tag
+  // to the name and not a second name. The box the layout placed (it.box) holds both, with a 4px gap between them.
+  const PILL_PAD = 10, PILL_GAP = 4;
+  // A name too long for its pill is cut at the last whole word that fits, never inside a word ("Federal Culture Incentive ..."
+  // read as a different law); the hover block then gives the name in full.
+  function fitWords(t, n) {
+    if (t.length <= n) return t;
+    const cut = t.slice(0, n - 1), sp = cut.lastIndexOf(' ');
+    return (sp > n / 2 ? cut.slice(0, sp) : cut).replace(/[\s,;:.\-–]+$/, '') + '…';
+  }
+  function pill(ctx, x, y, w, h, fill, edge) {
+    ctx.beginPath(); ctx.roundRect(x + 0.5, y + 0.5, w - 1, h - 1, (h - 1) / 2);
+    ctx.fillStyle = fill; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = edge; ctx.stroke();
+  }
+  function drawFunderPills(ctx, it, dark) {
+    const b = it.box, mid = b.y + b.h / 2 + 0.5, ink = dark ? '#fff' : '#000', paper = dark ? '#000' : '#fff';
+    // A pill on the left of its mark puts the name next to the mark, so the kind word goes on the outside.
+    const left = it.x > b.x + b.w / 2 && it.word;
+    const nx = left ? b.x + it.ww + PILL_GAP : b.x, wx = left ? b.x : b.x + it.nw + PILL_GAP;
+    ctx.save();
+    pill(ctx, nx, b.y, it.nw, b.h, COL[it.n[1]], '#000');
+    ctx.fillStyle = '#000'; ctx.fillText(it.text, nx + PILL_PAD, mid);
+    if (it.word) { pill(ctx, wx, b.y, it.ww, b.h, paper, ink); ctx.fillStyle = ink; ctx.fillText(it.word, wx + PILL_PAD, mid); }
+    ctx.restore();
+  }
   // A label, cut like the city labels (rounded, 22 high, 14 either side) but filled in the mark's colour.
   function drawTag(ctx, x, y, w, h, col) {
     ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 0); ctx.fillStyle = col; ctx.fill(); ctx.restore();
@@ -782,23 +887,49 @@
   // The mark under the pointer: its name on a block in its colour, and that a click asks the chat.
   function drawMarkTip(ctx, boxes) {
     if (!LM_HOV) return;
+    // A bundle, flow or flagged tie that is no longer drawn (its view turned off, or the globe turned it away) has no block.
+    if (LM_HOV.agg && !LINES.some(run => run.tag && run.tag.id === LM_HOV.aggId)) return;
     const m = LM_HOV.line ? LM_HOV : (LM.find(q => q.ask === LM_HOV.ask && q.rec === LM_HOV.rec && !q.pass) || null); if (!m) return;
     const W = ctx.canvas.clientWidth || 1e9;
     const clip = t => t.length > 64 ? t.slice(0, 62) + '…' : t;
-    const lines = [clip(m.label), m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, m.tip || (m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat'))].filter(Boolean);
+    const act = m.tip || (m.go ? 'Click to zoom in' : (REACH && REACH.tapped && m.key && !m.rec ? 'Tap again to ask the chat' : 'Click to ask the chat'));
+    // A funder in a ring already has its name and kind on the map in its own pills, and its spoke says whose funder it is,
+    // so the block does not say them again: it adds only what the pills do not (the full name when the pill cut it, how far
+    // the funder reaches) and hangs from the pill, as one more line of it, not as a second label piled beside the mark.
+    const pinned = !!m.lbox;
+    const named = !pinned || fitWords(m.label, 40) !== m.label;
+    const lines = [named ? clip(m.label) : null, !pinned && m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, act].filter(Boolean);
     ctx.save(); ctx.font = LW() + ' 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    const w = Math.max(...lines.map(t => ctx.measureText(t).width)) + 28, h = 22, pad = 6;
+    // A stack of pills, as the funder names are (displaay.net/typefaces): the name filled in the mark's colour, what it is in
+    // outlined pills under it, and what a click does as a solid ink pill, as Displaay sets its one action. Each pill is as
+    // wide as its own words; the stack hangs from the side nearest the mark.
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark', ink = dark ? '#fff' : '#000', paper = dark ? '#000' : '#fff';
+    const h = 24, gap = 4, ws = lines.map(t => ctx.measureText(t).width + 2 * PILL_PAD), w = Math.max(...ws);
     // The block goes where it covers the fewest labels: beside the mark, or above or below it; away from the space a funder
     // ring belongs to first, so the ring's other names stay readable.
-    const H = ctx.canvas.clientHeight || 1e9, th = h * lines.length + pad * 2, away = m.ox !== undefined ? Math.sign(m.x - m.ox) || 1 : 1;
-    const cand = [[away > 0 ? m.x + 12 : m.x - 12 - w, m.y - th / 2], [away > 0 ? m.x - 12 - w : m.x + 12, m.y - th / 2], [m.x - w / 2, m.y - 12 - th], [m.x - w / 2, m.y + 12]]
+    const H = ctx.canvas.clientHeight || 1e9, th = h * lines.length + gap * (lines.length - 1), away = m.ox !== undefined ? Math.sign(m.x - m.ox) || 1 : 1;
+    const lb = m.lbox, lbLeft = lb && lb.x + lb.w / 2 < m.x;
+    const cand = (pinned
+      // Under the pill, then over it, lined up on the pill's outer end.
+      ? [[lbLeft ? lb.x + lb.w - w : lb.x, lb.y + lb.h + gap], [lbLeft ? lb.x + lb.w - w : lb.x, lb.y - gap - th], [lbLeft ? lb.x - 12 - w : lb.x + lb.w + 12, lb.y]]
+      : [[away > 0 ? m.x + 12 : m.x - 12 - w, m.y - th / 2], [away > 0 ? m.x - 12 - w : m.x + 12, m.y - th / 2], [m.x - w / 2, m.y - 12 - th], [m.x - w / 2, m.y + 12]])
       .map(([x, y]) => ({ x: Math.max(4, Math.min(x, W - w - 4)), y: Math.max(4, Math.min(y, H - th - 4)), w, h: th }));
-    const spot = cand.find(c => !collides(c, boxes || [])) || cand[0], bx = spot.x, by = spot.y;
-    drawTag(ctx, bx, by, w, th, m.col || '#fff');
-    ctx.fillStyle = '#000';
+    // Where every spot covers something, the one that covers least, not simply the first: the first was what put the block
+    // over the space's own name.
+    const others = (boxes || []).filter(o => o !== lb);
+    const cover = c => others.reduce((t, o) => t + Math.max(0, Math.min(c.x + c.w, o.x + o.w) - Math.max(c.x, o.x)) * Math.max(0, Math.min(c.y + c.h, o.y + o.h) - Math.max(c.y, o.y)), 0);
+    const spot = cand.find(c => !collides(c, others)) || cand.slice().sort((a, b) => cover(a) - cover(b))[0], bx = spot.x, by = spot.y;
+    const right = pinned ? lbLeft : bx + w / 2 < m.x;   // the stack sits left of the mark, so its pills line up on their right ends
+    // A halo of the map's ground under each pill closes the gaps between them, so no label under the stack shows through.
+    const at = k => ({ pw: ws[k], px: right ? bx + w - ws[k] : bx, py: by + k * (h + gap) });
+    ctx.fillStyle = paper;
+    lines.forEach((t, k) => { const { pw, px, py } = at(k), e = gap / 2 + 1; ctx.beginPath(); ctx.roundRect(px - e, py - e, pw + 2 * e, h + 2 * e, h / 2 + e); ctx.fill(); });
     lines.forEach((t, k) => {
-      if (k === lines.length - 1 && lines.length > 1) { ctx.globalAlpha = 0.35; ctx.fillRect(bx + 14, by + pad + h * k, w - 28, 1); ctx.globalAlpha = 1; }
-      ctx.fillText(t, bx + 14, by + pad + h * k + h / 2 + 0.5);
+      const { pw, px, py } = at(k);
+      const first = k === 0 && named, act = k === lines.length - 1 && (lines.length > 1 || pinned);
+      const fill = first ? (m.col || '#fff') : act ? ink : paper, text = first ? '#000' : act ? paper : ink;
+      pill(ctx, px, py, pw, h, fill, first ? '#000' : ink);
+      ctx.fillStyle = text; ctx.fillText(t, px + PILL_PAD, py + h / 2 + 0.5);
     });
     ctx.restore();
   }
@@ -915,12 +1046,19 @@
     // The line hover and the funder whose web is lit, for checking from a test script.
     lineHover: () => (LM_HOV && LM_HOV.line ? { key: LM_HOV.key, label: LM_HOV.label, sub: LM_HOV.sub, sub2: LM_HOV.sub2, tip: LM_HOV.tip } : null),
     reach: () => (REACH ? { key: REACH.key, keys: REACH.keys, name: REACH.name, pinned: !!REACH.pinned } : null),
+    // The widest-reaching funders switched on as filters in the Layers panel.
+    filters: () => [...FILTERS].map(t => ({ name: t.name, keys: t.keys, n: t.n })),
     lines: () => LINES.length,
     // Pointer moved: a mark that stands alone takes the hover (true, so the page shows a pointer); a mark on a space's dot does not.
     hover(mx, my, dots) {
       const m = markAt(mx, my), alone = m && !m.pass ? m : null;
       // No mark under the pointer: a funding line may be. Its funder's whole web lights up, and a block names the funder.
-      const tag = !m ? lineAt(mx, my, dots) : null, f = tag && funderOf(tag.key);
+      const tag = !m ? lineAt(mx, my, dots) : null, f = tag && !tag.agg && funderOf(tag.key);
+      // A bundle, a flow or a flagged tie stands for many funders or one tie: its block says what it carries, and a click asks the chat.
+      if (tag && tag.agg) {
+        if (!(LM_HOV && LM_HOV.aggId === tag.id)) { LM_HOV = { line: true, agg: true, aggId: tag.id, x: mx, y: my, col: tag.col, label: tag.label, sub: tag.sub, sub2: tag.sub2, tip: 'Click to ask the chat' }; repaint(); }
+        return true;
+      }
       if (f) {
         const same = LM_HOV && LM_HOV.line && LM_HOV.key === f.key;
         if (!same) {
@@ -942,7 +1080,8 @@
       const m = markAt(mx, my);
       if (!m) {
         // A click on a funding line pins its funder's web on the map and opens the funder's record in the Details tab.
-        const tag = lineAt(mx, my, dots), f = tag && funderOf(tag.key);
+        const tag = lineAt(mx, my, dots), f = tag && !tag.agg && funderOf(tag.key);
+        if (tag && tag.agg) { askChat(tag.ask); return true; }
         if (f) {
           clearTimeout(reachTimer); reachTimer = 0;
           REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, pinned: true, line: true };
@@ -977,12 +1116,25 @@
     // On a phone the record sheet would cover the funders; it steps aside, and a tap on the space brings it back.
     if (window.innerWidth < 768) { const sheet = document.getElementById('dossier-bottom-sheet'); if (sheet) sheet.classList.add('hidden'); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('atlas'); }
     // Close in on the space, so its funders sit around it in its own city rather than across the continent.
-    if (inst && typeof inst.lat === 'number' && typeof inst.lon === 'number' && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
+    // A space with no coordinates (stored as 0, 0) closes in on its city instead; flying to 0, 0 showed an empty ocean.
+    const pin = inst && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(inst) : null;
+    if (pin && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
       const z = window.getMaxRadius();
       if (typeof window.setTargetRadius === 'function') window.setTargetRadius(z);
-      window.flyTo(inst.lon, inst.lat, z);
+      window.flyTo(pin.lon, pin.lat, z);
     }
     repaint();
+  };
+
+  // What assets/funding-views.js draws with.
+  window.atlasLayersAPI = {
+    L, COL, lineCol, hexA, kindOn, FUNDER, RIGHT, collides, repaint, loadMoney, loadHq,
+    data: () => ({ recById, keyIndex, keyKind, HQ, web }),
+    top: () => TOP,
+    reach: () => REACH,
+    pushRun: run => LINES.push(run),
+    pushMark: m => LM.push(m),
+    funderName: key => { const f = funderOf(key); return f ? f.name : null; }
   };
 
   // What each layer holds, as a count after its name.
@@ -1009,6 +1161,7 @@
       const rightRecs = [...recById.values()].filter(rec => rec.nodes.some(RIGHT));
       set('right', `${formatCount(rightRecs.length)}\u00a0spaces`);
       set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)}\u00a0spaces`);
+      if (window.atlasFundingViews) window.atlasFundingViews.counts(set);
     }
   }
 
@@ -1025,13 +1178,14 @@
     if (!W || !H) return;
     if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); cv.style.width = W + 'px'; cv.style.height = H + 'px'; }
     const ctx = cv.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    if (!(REACH || L.flags || L.money || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties || L.independent || L.artist || L.openbooks)) { SV.dots = []; LM = []; return; }
+    if (!(REACH || L.flags || L.money || L.right || L.epstein || L.hq || L.people || L.propaganda || L.ties || L.independent || L.artist || L.openbooks || fvOn())) { SV.dots = []; LM = []; return; }
     const base = 240, r = base * Math.pow(2, map.getZoom() - 7);
     // Points behind the camera on a tilted map project to nonsense; anything far off the canvas is treated as not in front.
     const project = (lon, lat) => { const p = map.project([lon, lat]); return { x: p.x, y: p.y, front: Math.abs(p.x - W / 2) < 6 * W && Math.abs(p.y - H / 2) < 6 * H, depth: 1 }; };
-    const dots = [], list = [], pad = 40;
+    const dots = [], list = [], pad = 40, keep = window.atlasLayerKeep();
     ALL_INSTITUTIONS.forEach(i => {
       if (typeof i.lat !== 'number' || typeof i.lon !== 'number') return;
+      if (keep && !keep(i)) return;
       const p = project(i.lon, i.lat); if (!p.front) return;
       list.push(i);
       if (p.x > -pad && p.x < W + pad && p.y > -pad && p.y < H + pad) dots.push({ inst: i, x: p.x, y: p.y });
@@ -1106,34 +1260,51 @@
     renderTop();
   }
   function hubOf(t) { return t.hub || recById.get([...(keyIndex.get(t.keys[0]) || [])][0]); }
-  function pickTop(t, pin) {
-    if (REACH && REACH.pinned && !pin) return;
+  // Pointing at a funder in the list previews its web; its switch turns it on as a filter, and several can be on at once.
+  function previewTop(t) {
+    if (REACH && (REACH.pinned || REACH.tapped)) return;
     clearTimeout(reachTimer); reachTimer = 0;
-    const same = REACH && REACH.top === t;
-    if (pin && same && REACH.pinned) { clearReach(); return; }
-    REACH = { key: t.keys[0], keys: t.keys, kind: t.kind, space: hubOf(t), name: t.name, top: t, pinned: !!pin };
-    if (pin && typeof window.flyTo === 'function' && REACH.space && typeof REACH.space.lat === 'number') {
-      const base = window.getBaseRadius ? window.getBaseRadius() : 276;
-      window.flyTo(REACH.space.lon, REACH.space.lat, base * 1.6);
-    }
-    renderTop(); repaint();
+    REACH = { key: t.keys[0], keys: t.keys, kind: t.kind, space: hubOf(t), name: t.name, top: t };
+    repaint();
   }
+  function toggleTop(t) {
+    const on = !FILTERS.has(t);
+    if (on) FILTERS.add(t); else FILTERS.delete(t);
+    if (on && FILTERS.size === 1 && typeof window.flyTo === 'function') {
+      const home = hubOf(t);
+      if (home && typeof home.lat === 'number') window.flyTo(home.lon, home.lat, (window.getBaseRadius ? window.getBaseRadius() : 276) * 1.6);
+    }
+    renderTop(); refilter();
+  }
+  // The rows are built again only when the list changes (a funder type switched off); a switch changing only updates its row,
+  // so the row under the pointer or with focus stays where it is.
+  let topShown = [];
   function renderTop() {
     const box = document.getElementById('topFunders'); if (!box || !TOP) return;
-    const list = TOP.filter(t => kindOn(t.kind)).slice(0, 10), max = list.length ? list[0].n : 1;
-    box.textContent = '';
-    list.forEach(t => {
-      const b = document.createElement('button'); b.type = 'button'; b.className = 'top-funder';
-      b.setAttribute('aria-pressed', String(!!(REACH && REACH.pinned && REACH.top === t)));
-      b.innerHTML = `<i class="shape-${KIND_SHAPE[t.kind]}" style="--marker-color:${COL[t.kind]}"></i><span class="tf-name"></span><span class="tf-bar"><b style="width:${Math.round(100 * t.n / max)}%"></b></span><span class="tf-n">${t.n}</span>`;
-      b.querySelector('.tf-name').textContent = t.name;
-      b.title = `${t.name}: named on ${t.n} spaces. Click to pin its connections on the map.`;
-      b.addEventListener('mouseenter', () => pickTop(t, false));
-      b.addEventListener('focus', () => pickTop(t, false));
-      b.addEventListener('mouseleave', () => { if (REACH && !REACH.pinned && REACH.top === t) clearReach(); });
-      b.addEventListener('blur', () => { if (REACH && !REACH.pinned && REACH.top === t) clearReach(); });
-      b.addEventListener('click', () => pickTop(t, true));
-      box.appendChild(b);
+    const list = TOP.filter(t => kindOn(t.kind)).slice(0, 10);
+    if (list.length !== topShown.length || list.some((t, i) => t !== topShown[i]) || box.children.length !== list.length) {
+      topShown = list;
+      box.textContent = '';
+      list.forEach(t => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'top-funder filter-row';
+        b.style.setProperty('--marker-color', COL[t.kind]);
+        b.setAttribute('role', 'switch');
+        b.innerHTML = `<i class="shape-${KIND_SHAPE[t.kind]}" style="--marker-color:${COL[t.kind]}"></i><span class="tf-name"></span><span class="tf-n"></span><span class="filter-switch" aria-hidden="true"></span>`;
+        b.querySelector('.tf-name').textContent = t.name;
+        b.querySelector('.tf-n').textContent = plural(t.n, 'space');
+        b.addEventListener('mouseenter', () => previewTop(t));
+        b.addEventListener('focus', () => previewTop(t));
+        const leave = () => { if (REACH && !REACH.pinned && REACH.top === t) clearReach(); };
+        b.addEventListener('mouseleave', leave);
+        b.addEventListener('blur', leave);
+        b.addEventListener('click', () => toggleTop(t));
+        box.appendChild(b);
+      });
+    }
+    [...box.children].forEach((b, i) => {
+      const t = list[i], on = FILTERS.has(t);
+      b.setAttribute('aria-checked', String(on));
+      b.title = `${t.name}: named on ${t.n} spaces. ${on ? 'Switch off to hide' : 'Switch on to keep'} its connections on the map.`;
     });
   }
 
@@ -1149,11 +1320,11 @@
     if (!on) return;
     const ks = keysOfBox(inp);
     if (ks.some(k => k !== 'flags' && k !== 'propaganda' && k !== 'independent' && k !== 'artist' && k !== 'openbooks')) loadMoney();
-    if (ks.some(k => k === 'hq' || k === 'people')) loadHq();
+    if (ks.some(k => k === 'hq' || k === 'people' || k === 'flows' || k === 'choro' || k === 'lifted' || k === 'flagged' || k === 'hulls')) loadHq();
   }
   function turnOn(k) {
     const inp = boxes().find(i => keysOfBox(i).includes(k));
-    if (inp) setBox(inp, true); else L[k] = true;
+    if (inp) { const was = inp.checked; setBox(inp, true); if (!was) refilter(); } else L[k] = true;
   }
 
   function init() {
@@ -1181,15 +1352,18 @@
       box.querySelectorAll('input[data-layer]').forEach(input => setBox(input, false));
       box.querySelectorAll('input[data-kind]').forEach(input => { input.checked = true; L.kinds[input.dataset.kind] = true; });
       box.querySelectorAll('input[data-pkind]').forEach(input => { input.checked = true; L.pkinds[input.dataset.pkind] = true; });
+      const yOn = box.querySelector('input[data-years-on]'); if (yOn) { yOn.checked = false; L.years = null; }
+      const cDef = box.querySelector('input[data-choro="abroad"]'); if (cDef) { cDef.checked = true; L.choroMode = 'abroad'; }
+      FILTERS.clear(); renderTop();
       clearReach();
-      repaint();
+      refilter();
     });
     document.addEventListener('click', e => { if (!panel.hidden && !box.contains(e.target)) setOpen(false); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') { clearReach(); if (!panel.hidden) setOpen(false); } });
     window.addEventListener('resize', () => { if (!panel.hidden) placePanel(); });
     box.querySelectorAll('input[data-layer]').forEach(inp => inp.addEventListener('change', () => {
       setBox(inp, inp.checked);
-      repaint();
+      refilter();
     }));
     box.querySelectorAll('input[data-kind]').forEach(inp => inp.addEventListener('change', () => {
       L.kinds[inp.dataset.kind] = inp.checked;
@@ -1200,6 +1374,27 @@
       L.pkinds[inp.dataset.pkind] = inp.checked;
       repaint();
     }));
+    // Countries shaded: by the share of funding from abroad, or by the main funder type.
+    box.querySelectorAll('input[data-choro]').forEach(inp => inp.addEventListener('change', () => {
+      if (!inp.checked) return;
+      L.choroMode = inp.dataset.choro;
+      const legend = box.querySelector('[data-choro-legend]'); if (legend) legend.hidden = L.choroMode !== 'abroad';
+      repaint();
+    }));
+    // Years: a decade, over the years the funding lines name.
+    const yOn = box.querySelector('input[data-years-on]'), ySl = box.querySelector('input[data-years]'), yOut = box.querySelector('[data-years-out]');
+    if (yOn && ySl) {
+      const setYears = () => {
+        const y0 = Number(ySl.value);
+        if (yOut) yOut.textContent = `${y0}s`;
+        ySl.setAttribute('aria-valuetext', `${y0}s`);
+        L.years = yOn.checked ? [y0, y0 + 9] : null;
+        if (yOn.checked) loadMoney();
+        updateCounts(); repaint();
+      };
+      yOn.addEventListener('change', setYears);
+      ySl.addEventListener('input', () => { if (!yOn.checked) yOn.checked = true; setYears(); });
+    }
     updateCounts();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

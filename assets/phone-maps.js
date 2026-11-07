@@ -52,11 +52,68 @@
       const lens = document.createElement('span');
       lens.className = 'gm-lens';
       lens.setAttribute('aria-hidden', 'true');
-      lens.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>';
+      // One box for asking and finding (user, 4 Nov 2026: "no need for search, combine it with chat, search behaviour"): a
+      // speech mark, not a magnifier, since what is typed is mostly a question.
+      lens.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>';
       card.insertBefore(lens, card.firstChild);
       // One line, as a maps app's box: the long prompt wrapped to two lines in it. The full prompt is the box's name.
-      input.setAttribute('aria-label', input.getAttribute('placeholder') || 'Ask about a space, its funders or controversies');
-      input.setAttribute('placeholder', 'Search the atlas');
+      input.setAttribute('aria-label', 'Ask the atlas, or type a space or a city to find it on the map');
+      input.setAttribute('placeholder', 'Ask the atlas');
+
+      // Finding: a space's or a city's name on its own goes to the map (the record opens, or the map flies to the city)
+      // instead of the chat. It is a find only when it has no question mark, is six words or fewer and names exactly one
+      // space (the page's own matcher, or a name that starts with it) or one city; anything else is a question for the chat.
+      const fold = (t) => String(t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+      function findOnMap(q) {
+        const raw = String(q || '').trim();
+        if (!raw || /\?/.test(raw) || raw.split(/\s+/).length > 6) return null;
+        const A = window.ALL_INSTITUTIONS || (typeof ALL_INSTITUTIONS !== 'undefined' ? ALL_INSTITUTIONS : []);
+        const f = fold(raw);
+        if (f.length < 3) return null;
+        const cities = window.ALL_CITIES_REGISTRY || (() => { try { return (0, eval)('ALL_CITIES_REGISTRY'); } catch (_) { return []; } })();
+        const city = (cities || []).find((c) => fold(c.name) === f);
+        if (city) return { city };
+        const names = (i) => [i.name].concat(i.aliases || []).map(fold);
+        const exact = A.filter((i) => names(i).includes(f));
+        if (exact.length === 1) return { inst: exact[0] };
+        // One word on its own finds a space only by its full name or a recorded short name: a word that only starts a name
+        // ("tate" for Tate Modern) goes to the chat, which can say what is on the atlas under that word (user, 4 Nov 2026).
+        const oneWord = f.split(' ').length === 1;
+        if (oneWord) return null;
+        const prefix = A.filter((i) => names(i).some((n) => n.startsWith(f + ' ') || n === f));
+        if (prefix.length === 1) return { inst: prefix[0] };
+        let m = null;
+        try { m = window.AtlasNames && window.AtlasNames.findNamedSpace ? window.AtlasNames.findNamedSpace(raw, A) : null; } catch (_) { m = null; }
+        // The matcher also finds a name inside a sentence; a find is the name alone, so its words must be most of the query.
+        if (m && fold(m.name).split(' ').length >= f.split(' ').length - 1) return { inst: m };
+        return null;
+      }
+      function find(e) {
+        if (!PHONE() || !root.classList.contains('gm-map')) return;
+        const hit = findOnMap(input.value);
+        if (!hit) return;
+        e.preventDefault(); e.stopImmediatePropagation();
+        input.value = '';
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        try { input.blur(); } catch (_) {}
+        const g = (n) => { try { return (0, eval)(n); } catch (_) { return undefined; } };
+        if (hit.city) { const fc = g('filterByCity'); if (typeof fc === 'function') fc(hit.city.name, true, false); return; }
+        if (typeof window.selectInstitution === 'function') window.selectInstitution(hit.inst, false);
+        const fly = g('flyTo'), base = g('baseRadius');
+        if (typeof fly === 'function' && typeof hit.inst.lon === 'number') fly(hit.inst.lon, hit.inst.lat, typeof base === 'number' ? base * 6 : null);
+      }
+      // Caught first, before the page's own send, so a find never reaches the chat.
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) find(e); }, true);
+      const sendBtn = $('mobileStickySendBtn');
+      if (sendBtn) sendBtn.addEventListener('click', find, true);
+      window.atlasFindOnMap = findOnMap;
+
+      // The box is the chat's: with a conversation under way, a tap on the empty box goes back to it.
+      input.addEventListener('focus', () => {
+        if (!PHONE() || input.value.trim()) return;
+        const hasTalk = !!document.querySelector('#curatorMessages > *:not(#curatorHeroGreeting):not(#curatorStarterPrompts)');
+        if (hasTalk) { input.blur(); openChat(); }
+      });
 
       // Chat stays one tap away on the map (user, 3 Nov 2026: "keep features like chat"): a button in the box opens
       // the conversation where it was left, or a fresh one when there is none yet. The menu's New chat starts over.
@@ -197,6 +254,27 @@
       b.addEventListener('click', () => { if (window.atlasToggleMenu) window.atlasToggleMenu(b); });
       const close = $('phoneChatCloseBtn');
       chatHead.insertBefore(b, close || null);
+      // Details is a toggle (user, 6 Nov 2026): it opens the record, and the record's own Details button, pressed, closes it.
+      $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
+    }
+
+    // ---- One of each in the chat (user, 6 Nov 2026: "make chat window not repeating buttons") ----
+    // Share information is in the chat's ⋮ menu, so on a phone the composer holds only the box and Send, as the Claude app's
+    // does. The keyboard's own close key does what the composer's chevron did, and the chevron sat over the words being typed,
+    // so it goes too. On the note screen itself both stay: there Share is the way back out of the form.
+    const shareBtn = $('chatShareBtn');
+    if (shareBtn) {
+      const syncShare = () => {
+        const off = PHONE() && !body.classList.contains('chat-input-mode-active');
+        [shareBtn, $('workKbCloseBtn')].forEach((el) => {
+          if (!el) return;
+          if (off) el.style.setProperty('display', 'none', 'important');
+          else el.style.removeProperty('display');
+        });
+      };
+      new MutationObserver(syncShare).observe(body, { attributes: true, attributeFilter: ['class'] });
+      window.addEventListener('resize', syncShare);
+      syncShare();
     }
 
     // ---- The street map's bar: one back button and the place's name -------------------------------------------------
@@ -284,6 +362,7 @@
         return Math.max(168, Math.min(Math.round(end), Math.round(h * 0.7)));
       }
       function setDetent(d, animate) {
+        if (root.classList.contains('gm-from-chat')) d = 'full';   // opened from the chat: a page of its own, always full
         detent = d;
         sheet.dataset.detent = d;
         sheet.classList.toggle('is-large', d === 'full');
@@ -308,7 +387,7 @@
       new MutationObserver(() => {
         const hidden = sheet.classList.contains('hidden'), hq = sheet.classList.contains('is-hq-sheet');
         if (hidden) { sheet.scrollTop = 0; sheet.style.removeProperty('--gm-h'); }
-        else if ((wasHidden || hq !== wasHq) && PHONE()) requestAnimationFrame(() => setDetent('peek', false));
+        else if ((wasHidden || hq !== wasHq) && PHONE()) requestAnimationFrame(() => setDetent(root.classList.contains('gm-from-chat') ? 'full' : 'peek', false));
         wasHidden = hidden; wasHq = hq;
       }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
       const name = $('dossier-sheet-name');
@@ -332,7 +411,8 @@
       // well below peek closes it.
       let y0 = null, h0 = 0, t0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
       sheet.addEventListener('touchstart', (e) => {
-        if (!PHONE() || e.touches.length !== 1) { y0 = null; return; }
+        // Opened from the chat, the record is a page of its own at full height: it only scrolls, it is never dragged.
+        if (!PHONE() || e.touches.length !== 1 || root.classList.contains('gm-from-chat')) { y0 = null; return; }
         if (e.target.closest('button, a, input, textarea, select, summary, label') && !(chrome && chrome.contains(e.target) && !e.target.closest('#close-sheet-btn'))) { y0 = null; return; }
         y0 = lastY = e.touches[0].clientY; t0 = lastT = Date.now(); h0 = sheet.offsetHeight; vel = 0; dragging = false;
       }, { passive: true });
@@ -373,6 +453,67 @@
       };
       sheet.addEventListener('touchend', end, { passive: true });
       sheet.addEventListener('touchcancel', end, { passive: true });
+
+      // ---- Details from the chat, as the Claude app opens an artifact (user, 6 Nov 2026: "make details button on chat window
+      // a toggle", "function more like Claude with details toggle and back button") ----
+      // The chat's Details button opens the record as a page of its own: full height, scrolling, never dragged, with a back
+      // button to the chat at the top left and the same Details button, pressed, at the top right. Either one goes back to the
+      // conversation where it was left, scrolled where it was. The sheet's grabber and cross and its Ask in chat button are
+      // put away while it is open, so no control is on screen twice.
+      const fromChatBar = document.createElement('div');
+      fromChatBar.className = 'gm-from-chat-bar';
+      fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" aria-label="Back to the chat">'
+        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'
+        + '<span>Chat</span></button>'
+        + '<button type="button" id="gmDetailsToggleBtn" aria-pressed="true" aria-label="Space details">Details</button>';
+      fromChatBar.hidden = true;
+      if (chrome) chrome.appendChild(fromChatBar);
+      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn, $('dossier-sheet-ask-btn')].filter(Boolean);
+      let chatScrollTop = 0;
+      function markFromChat() {
+        if (!PHONE()) return;
+        const sc = $('curatorScrollArea');
+        chatScrollTop = sc ? sc.scrollTop : 0;
+        root.classList.add('gm-from-chat');
+        fromChatBar.hidden = false;
+        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'true');
+        // Inline and !important: the sheet's controls are drawn by rules that are themselves !important (atlas.css).
+        putAway().forEach((el) => el.style.setProperty('display', 'none', 'important'));
+      }
+      function clearFromChat() {
+        if (!root.classList.contains('gm-from-chat')) return;
+        root.classList.remove('gm-from-chat');
+        fromChatBar.hidden = true;
+        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
+        putAway().forEach((el) => el.style.removeProperty('display'));
+      }
+      function backToChat() {
+        clearFromChat();
+        sheet.classList.add('hidden');
+        $('tab-dossier')?.classList.remove('is-on');
+        if (typeof window.setMobileViewMode === 'function') window.setMobileViewMode('chat');
+        $('tab-chat')?.classList.add('is-on');
+        // The conversation comes back where it was left, and focus returns to the button that opened the record.
+        // The chat is laid out again once it is shown, so the scroll is put back over a few frames.
+        const restore = () => { const sc = $('curatorScrollArea'); if (sc) sc.scrollTop = chatScrollTop; };
+        requestAnimationFrame(() => requestAnimationFrame(restore));
+        setTimeout(() => {
+          restore();
+          const d = $('phoneChatDetailsBtn');
+          if (d && d.offsetParent !== null) { try { d.focus({ preventScroll: true }); } catch (_) { d.focus(); } }
+        }, 120);
+      }
+      window.atlasMarkDetailsFromChat = markFromChat;
+      window.atlasDetailsBackToChat = backToChat;
+      $('gmDetailsBackBtn')?.addEventListener('click', backToChat);
+      $('gmDetailsToggleBtn')?.addEventListener('click', backToChat);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && root.classList.contains('gm-from-chat') && !sheet.classList.contains('hidden')) { e.preventDefault(); backToChat(); }
+      });
+      // Anything else that closes the record (a link to another screen, the map's own controls) ends the mode too.
+      new MutationObserver(() => { if (sheet.classList.contains('hidden')) clearFromChat(); })
+        .observe(sheet, { attributes: true, attributeFilter: ['class'] });
+      window.addEventListener('resize', () => { if (!PHONE()) clearFromChat(); });
     }
 
     // ---- The record as a maps app's place card (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ----
@@ -521,13 +662,18 @@
         let status = '';
         try { status = typeof tierName === 'function' ? tierName(inst) : ''; } catch (_) { status = ''; }
         if (g) {
-          rating.innerHTML = '<span class="gm-grade-dot" style="--gm-dot:' + esc(g.col) + '" aria-hidden="true">' + esc(g.letter) + '</span>'
+          rating.innerHTML = '<span class="gm-grade-dot" style="--gm-dot:' + esc(g.mark || g.col) + '" aria-hidden="true">' + esc(g.letter) + '</span>'
             // One line, as a rating is: the label up to its first clause ("Funders listed; no funders flagged" reads
             // "Funders listed"), and the whole label is the line's title.
             + '<span class="gm-grade-text" title="' + esc(g.label) + '">Grade ' + esc(g.letter) + ' · ' + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
         } else {
           rating.innerHTML = status ? '<span class="gm-grade-text">' + esc(status) + '</span>' : '';
         }
+        // The i button on the rating line opens how grades work, this space's grade marked (user, 6 Nov 2026).
+        const parts = typeof window.atlasGradeInfoParts === 'function' && rating.innerHTML ? window.atlasGradeInfoParts(inst) : null;
+        const oldPanel = rating.nextElementSibling && rating.nextElementSibling.classList.contains('grade-info') ? rating.nextElementSibling : null;
+        if (oldPanel) oldPanel.remove();
+        if (parts) { rating.insertAdjacentHTML('beforeend', parts.btn); rating.insertAdjacentHTML('afterend', parts.panel); }
         rating.hidden = !rating.innerHTML;
         // Visiting rows.
         let web = '';
@@ -829,6 +975,14 @@
       strip.type = 'button';
       strip.id = 'gmStoryStrip';
       bar.appendChild(strip);
+      // On desktop the same strip, feed, toast and alert marks serve the wide window (user, 4 Nov 2026: "add notifications same
+      // as on mobile on desktop"). The strip and the toast float over the globe there, so they move into its viewport; the feed
+      // opens as a panel at the left of the globe. The look is in assets/atlas.css, "DESKTOP: TOP STORY AND ALERTS".
+      const placeStrip = () => {
+        const home = PHONE() ? bar : ($('globeViewport') || document.body);
+        if (strip.parentNode !== home) home.appendChild(strip);
+        const th = PHONE() ? document.body : home; if (toast.parentNode !== th) th.appendChild(toast);
+      };
       function paintStrip(list, alerts) {
         const top = alerts[0] || list.find((x) => x.status !== 'stale');
         strip.hidden = !top;
@@ -838,8 +992,10 @@
         // alert's colour and headline, and says the report is an alert, and how many more there are.
         const label = 'Top story';
         const more = alerts.length > 1 ? ' · ' + (alerts.length - 1) + ' more alert' + (alerts.length > 2 ? 's' : '') : '';
-        const meta = (alerts.length ? 'Alert · ' : '') + top.inst.name + ' · ' + ago(top.when) + more;
-        strip.innerHTML = '<span class="gm-strip-label"><i aria-hidden="true"></i>' + esc(label) + '</span><span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
+        // No "Alert" word on the strip either (user, 5 Nov 2026): the meta line is the space, when, and how many more.
+        const meta = top.inst.name + ' · ' + ago(top.when) + more;
+        // No badge: the strip is its headline and meta line only (user, 5 Nov 2026: "delete icon"); its aria-label still says "Top story".
+        strip.innerHTML = '<span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
         strip.setAttribute('aria-label', label + (alerts.length ? ', an alert now' : '') + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + more + '. Open the latest reports');
       }
 
@@ -847,29 +1003,63 @@
       const feed = document.createElement('section');
       feed.id = 'gmFeed';
       feed.hidden = true;
-      feed.setAttribute('role', 'dialog');
-      feed.setAttribute('aria-modal', 'true');
+      // Not modal (user, 5 Nov 2026: "make this notification UI work like google map"): the feed is a maps app's results
+      // panel, so the map stays in sight and in use beside it or above it, and focus is not held inside it.
+      feed.setAttribute('role', 'region');
       feed.setAttribute('aria-labelledby', 'gmFeedTitle');
       document.body.appendChild(feed);
-      const toast = document.createElement('p');
+      // On desktop the panel has a tab on its right edge, as the maps app's side panel does, that folds it away to the left
+      // and brings it back. It sits outside the feed, since the feed scrolls and would clip it.
+      const tab = document.createElement('button');
+      tab.type = 'button';
+      tab.id = 'gmFeedTab';
+      tab.hidden = true;
+      tab.setAttribute('aria-controls', 'gmFeed');
+      tab.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6l-6 6 6 6"/></svg>';
+      document.body.appendChild(tab);
+      const toast = document.createElement('div');
       toast.id = 'gmToast';
       toast.setAttribute('role', 'status');
       toast.setAttribute('aria-live', 'polite');
       document.body.appendChild(toast);
-      let toastTimer = 0;
-      const say = (t) => { toast.textContent = t; toast.classList.toggle('is-on', !!t); clearTimeout(toastTimer); if (t) toastTimer = setTimeout(() => say(''), 6000); };
+      placeStrip();
+      // The notice is set as typography, not as a line of text (user, 5 Nov 2026: "design mobile notifications as detailed
+      // typography"). A plain message (Alerts on, blocked) is one line of Serrif. A report or an alert is four lines, each in its
+      // own voice: a kicker in tracked capitals over a hairline (what kind of notice, with how long ago hung on the right in
+      // tabular figures), the name of the space large and tight in Jokker, the headline in Serrif Light, and a meta line of
+      // status, source and place. The look is in assets/atlas.css, "NOTIFICATIONS AS TYPOGRAPHY". It stays up longer the more
+      // there is to read: 6s, plus a quarter second a word past the first twelve, to 12s.
+      let toastTimer = 0, toastClear = 0;
+      const nb = (t) => esc(t).replace(/ (\S+)$/, '\u00a0$1');
+      const dot = '<span class="gm-toast-dot" aria-hidden="true">\u00a0\u00b7 </span>';
+      const noteHtml = (n) => '<p class="gm-toast-kick"><span class="gm-toast-mark" data-tone="' + esc(n.tone || 'report') + '" aria-hidden="true"></span>'
+        + '<span class="gm-toast-label">' + n.label.map(esc).join(dot) + '</span>'
+        + (n.when ? '<span class="gm-toast-when">' + esc(n.when) + '</span>' : '') + '</p>'
+        + '<p class="gm-toast-name">' + nb(n.name) + '</p>'
+        + (n.head ? '<p class="gm-toast-head">' + nb(n.head) + '</p>' : '')
+        + (n.meta && n.meta.length ? '<p class="gm-toast-meta">' + n.meta.map((m, i, a) => '<span>' + esc(m) + (i < a.length - 1 ? '<span class="gm-toast-dot" aria-hidden="true">\u00a0\u00b7</span>' : '') + '</span>').join(' ') + '</p>' : '');
+      const say = (t) => {
+        clearTimeout(toastTimer); clearTimeout(toastClear);
+        if (!t) { toast.classList.remove('is-on'); toastClear = setTimeout(() => { toast.innerHTML = ''; }, 250); return; }
+        const rich = typeof t === 'object';
+        toast.classList.toggle('is-rich', rich);
+        toast.dataset.tone = rich ? (t.tone || 'report') : '';
+        toast.innerHTML = rich ? noteHtml(t) : '<p class="gm-toast-text">' + nb(t) + '</p>';
+        toast.classList.add('is-on');
+        const words = toast.textContent.trim().split(/\s+/).length;
+        toastTimer = setTimeout(() => say(''), Math.min(12000, 6000 + Math.max(0, words - 12) * 250));
+      };
+      // One report or alert as a notice. The meta line names the status first, so talk is never read as a finding.
+      const note = (x, alert) => ({
+        tone: alert ? 'alert' : (x.status === 'talk' || x.status === 'user' ? 'talk' : 'report'),
+        label: [alert ? 'New alert' : 'New report', KIND[x.kind] || ''].filter(Boolean),
+        when: ago(x.when),
+        name: x.inst.name,
+        head: x.head,
+        meta: [STATUS[x.status], (SOURCE[x.who] || [''])[0], x.where, placeOf(x.inst)].filter(Boolean),
+      });
       let lastFocus = null;
 
-      const ICO = {
-        globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/>',
-        alert: '<path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.2v.3"/>',
-        link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
-        reply: '<path d="M4 5h16v11H9l-5 4z"/>',
-        share: '<path d="M14 5l6 6-6 6"/><path d="M20 11H11a7 7 0 0 0-7 7"/>',
-        pin: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
-        bell: '<path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
-      };
-      const svg = (b) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + b + '</svg>';
 
       // A post's headline is its own first sentence, so its text below starts after it and does not say it twice.
       const saidRest = (x) => {
@@ -879,28 +1069,45 @@
       };
       const monthsText = (t) => String(t || '').replace(/\d{4}-\d{2}(?:-\d{2})?/g, (m) => dateText(m));
       let list = [];
+      // The feed is set as the Info block on displaay.net/typeface/documan (user, 5 Nov 2026: "layout needs to be similar to
+      // this and use serif font, delete slop like icons, greyed out text etc, badges"). A 4px ink rule and a large plain title;
+      // each part of a report under a small uppercase label with a 1px rule beneath it; the headline and the words in Serrif;
+      // the facts as key and value lines, the key hung in a column. No icons, no pills, no status colours, no grey type: the
+      // status is a line in the facts, said in words. Ink and paper only. The look is "TOP STORY: DISPLAAY INFO" in atlas.css.
+      const row = (k, v) => v ? '<div class="ts-row"><dt>' + esc(k) + '</dt><dd>' + v + '</dd></div>' : '';
       function card(x, poster, alert) {
         const i = list.indexOf(x);
         const n = x.urls.length;
         const src = SOURCE[x.who] || ['Source type not recorded', false];
-        const links = '<a class="gm-stat" href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + svg(ICO.link) + n + (n === 1 ? ' source' : ' sources') + '</a>';
-        const reply = x.type !== 'gossip' ? '' : '<span class="gm-stat">' + svg(ICO.reply) + (x.reply && !/^no reply/i.test(x.reply) ? 'Reply on record' : 'No reply found') + '</span>';
-        const posterHtml = poster ? '<div class="gm-poster' + (alert ? ' is-alert' : '') + '" aria-hidden="true"><p class="gm-poster-pill">' + esc(alert ? 'Alert · ' : '') + esc(KIND[x.kind] || 'Report') + ' · ' + esc(dateText(x.when)) + '</p><p class="gm-poster-name">' + esc(x.inst.name) + '</p><p class="gm-poster-place">' + esc(placeOf(x.inst)) + '</p><p class="gm-poster-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</p></div>' : '';
-        // Where this comes from, in words: the kind of source, whether it is user-generated, who published it and when, and
-        // the day the atlas last opened its addresses.
-        const prov = '<p class="gm-story-prov' + (src[1] ? ' is-user' : '') + '">' + (src[1] ? '<b>User-generated, not verified</b> · ' : '') + esc(src[0])
-          + (x.where ? ' · ' + esc(x.where) : '') + (x.role ? ' · ' + esc(x.role) : '') + (x.type === 'leak' ? ' · dated ' + esc(monthsText(x.dated) || dateText(x.when)) : x.type === 'account' ? ' · posted ' + esc(dateText(x.when)) : ' · published ' + esc(dateText(x.when)))
-          + (x.checked ? ' · links checked by the atlas ' + esc(dateText(x.checked)) : '') + '</p>';
-        return '<article class="gm-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">' + posterHtml
-          + '<p class="gm-story-src"><span class="gm-story-mark" aria-hidden="true">' + esc((x.where || x.inst.name).trim().charAt(0).toUpperCase()) + '</span>' + esc(x.where || 'The record') + (x.role ? ' · ' + esc(x.role) : '') + '</p>'
-          + '<h3 class="gm-story-head"><button type="button" class="gm-open" data-i="' + i + '">' + (alert && !poster ? '<span class="gm-alert-tag">Alert</span> ' : '') + esc(x.head) + '</button></h3>'
-          + '<p class="gm-story-when">' + ({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported') + ' ' + esc(ago(x.when)) + ' · ' + esc(x.inst.name) + (x.inst.city || x.inst.country ? ', ' + esc(x.inst.city || x.inst.country) : '') + '</p>'
-          + (saidRest(x) ? '<p class="gm-story-said">' + esc(saidRest(x)) + '</p>' : '')
-          + (x.reply && x.type === 'gossip' ? '<p class="gm-story-reply"><span>Reply</span> ' + esc(x.reply) + '</p>' : '')
-          + (x.outcome ? '<p class="gm-story-reply"><span>Outcome</span> ' + esc(x.outcome) + '</p>' : '')
-          + prov
-          + '<div class="gm-story-stats">' + links + reply + '<span class="gm-stat gm-status" data-status="' + esc(x.status) + '">' + esc(STATUS[x.status] || '') + '</span>'
-          + '<button type="button" class="gm-share" data-i="' + i + '">' + svg(ICO.share) + 'Share</button></div></article>';
+        // A reply printed in full is its own part; only its absence is a line in the facts.
+        const hasReply = x.type === 'gossip' && x.reply && !/^no reply/i.test(x.reply);
+        // Each fact is said once (user, 4 Nov 2026: "remove all repetition"). A leak's own dating (months) is kept when it says
+        // more than the day.
+        const day = dateText(x.when), rel = ago(x.when);
+        const when = day && rel && rel !== day ? day + ', ' + rel : (day || rel);
+        const leakDated = x.type === 'leak' && x.dated ? monthsText(x.dated) : '';
+        const said = saidRest(x);
+        const facts = '<dl class="ts-rows">'
+          // The headline is plain text (user, 5 Nov 2026); the space's name is the one way from a report to its place on the map.
+          + row('Space', '<button type="button" class="gm-open ts-space" data-i="' + i + '">' + esc(x.inst.name) + '</button>')
+          + row('Place', esc(placeOf(x.inst)))
+          + row('Status', esc(STATUS[x.status] || ''))
+          + row({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported', esc(when))
+          + row('Source', esc(x.where || 'The record') + (x.role ? ', ' + esc(x.role) : ''))
+          + row('Basis', (src[1] ? 'User-generated, not verified. ' : '') + esc(src[0]))
+          + (leakDated && leakDated !== day ? row('Document', 'dated ' + esc(leakDated)) : '')
+          + (x.type === 'gossip' && !hasReply ? row('Reply', 'None found') : '')
+          + (x.checked ? row('Links checked', esc(dateText(x.checked))) : '')
+          + row(n === 1 ? 'Link' : 'Links', '<a href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + n + (n === 1 ? ' source' : ' sources') + '</a>')
+          + '</dl>';
+        return '<article class="gm-story ts-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">'
+          + '<p class="ts-label">' + esc((alert ? 'Alert · ' : '') + (KIND[x.kind] || 'Report')) + '</p>'
+          + '<h3 class="ts-headline">' + esc(x.head) + '</h3>'
+          + (said ? '<p class="ts-prose">' + esc(said) + '</p>' : '')
+          + (hasReply ? '<p class="ts-label">Reply</p><p class="ts-prose">' + esc(x.reply) + '</p>' : '')
+          + (x.outcome ? '<p class="ts-label">Outcome</p><p class="ts-prose">' + esc(x.outcome) + '</p>' : '')
+          + '<p class="ts-label">Details</p>' + facts
+          + '<button type="button" class="gm-share ts-share' + (poster ? ' is-main' : '') + '" data-i="' + i + '">Share</button></article>';
       }
 
       // Checking for new reports.
@@ -926,25 +1133,32 @@
         const posts = take(list.filter((x) => x.type === 'account')).slice(0, 15);
         const docs = take(list.filter((x) => x.type === 'leak')).slice(0, 10);
         const month = list.filter((x) => { const p = parse(x.when); return p && Date.now() - p.d.getTime() < 30 * 864e5; }).length;
-        const sec = (title, icon, meta, arr, alert) => arr.length ? '<h2 class="gm-feed-sec' + (alert ? ' is-alert' : '') + '">' + svg(icon) + '<span>' + title + '</span><small>' + meta + '</small></h2>' + arr.map((x) => card(x, false, alert)).join('') : '';
+        // A section is a plain title on a 4px ink rule with its count beside it, the reports under it.
+        const sec = (title, meta, arr, alert, note) => arr.length ? '<section class="ts-sec"><h2 class="ts-sec-title"><span>' + title + '</span>' + (meta ? '<span class="ts-sec-meta">' + meta + '</span>' : '') + '</h2>'
+          + (note ? '<p class="ts-prose ts-note">' + note + '</p>' : '') + arr.map((x) => card(x, false, alert)).join('') + '</section>' : '';
         const bellOn = store.get('atlas-alerts') === 'on';
-        feed.innerHTML = '<div class="gm-feed-grab" aria-hidden="true"></div>'
-          + '<header class="gm-feed-head"><h2 id="gmFeedTitle">' + svg(ICO.globe) + '<span>Top story</span></h2>'
-          + ('Notification' in window ? '<button type="button" class="gm-bell" aria-pressed="' + bellOn + '">' + svg(ICO.bell) + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
-          + '<button type="button" class="gm-feed-close" aria-label="Close the reports"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5 5 19M5 5l14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></header>'
-          + '<p class="gm-feed-live"><i aria-hidden="true"></i><span class="gm-feed-checked">' + liveLine() + '</span></p>'
-          + '<p class="gm-feed-note">' + (gossipOn()
+        // What the feed holds, and the rule for an alert, are said once, at the foot, in the same ink as the rest.
+        const about = (gossipOn()
             ? 'Gossip mode: talk and denials are included, each marked for what it is. Talk is what people say, not a finding. Items from anonymous posts or user reviews say so.'
             : 'Reports on record as confirmed or resolved, and documented cases. Turn on Gossip mode to include talk.')
-            + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.</p>'
-          + (topIsAlert ? '<p class="gm-feed-note">An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.</p>' : '')
+          + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.';
+        const alertRule = 'An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.';
+        feed.innerHTML = '<div class="ts">'
+          + '<header class="gm-feed-head ts-bar"><button type="button" class="ts-grab" aria-label="' + grabLabel() + '"></button><h2 id="gmFeedTitle" class="ts-title">Top story</h2>'
+          + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
+          + '<button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>'
+          + '<p class="ts-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
           + (top ? card(top, true, topIsAlert) : '')
-          + sec(topIsAlert ? 'More alerts now' : 'Alerts now', ICO.alert, alertList.length + ' active', alertList, true)
-          + sec('Near you', ICO.pin, near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
-          + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', ICO.globe, month ? month + ' in the past 30 days' : 'Newest first', world, false)
-          + (posts.length ? '<h2 class="gm-feed-sec">' + svg(ICO.reply) + '<span>From staff and visitors</span><small>User posts</small></h2><p class="gm-feed-note">Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person\u2019s experience each, not checked as fact.</p>' + posts.map((x) => card(x, false, false)).join('') : '')
-          + (docs.length ? '<h2 class="gm-feed-sec">' + svg(ICO.link) + '<span>From leaked documents</span><small>' + docs.length + ' on record</small></h2>' + docs.map((x) => card(x, false, false)).join('') : '')
-          + (!list.length ? '<p class="gm-feed-note">No dated reports on record yet.</p>' : '');
+          + sec(topIsAlert ? 'More stories' : 'Alerts now', alertList.length + ' active', alertList, true)
+          + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
+          + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', month ? month + ' in the past 30 days' : 'Newest first', world, false)
+          + sec('From staff and visitors', 'User posts', posts, false, 'Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person’s experience each, not checked as fact.')
+          + sec('From leaked documents', docs.length + ' on record', docs, false)
+          + '<section class="ts-sec"><h2 class="ts-sec-title"><span>About these reports</span></h2>'
+          + (!list.length ? '<p class="ts-prose ts-note">No dated reports on record yet.</p>' : '')
+          + '<p class="ts-prose ts-note">' + about + '</p>'
+          + (alertList.length || topIsAlert ? '<p class="ts-prose ts-note">' + alertRule + '</p>' : '')
+          + '</section></div>';
       }
       function liveLine() {
         if (checkFailed) return 'Could not check for new reports just now. Showing what was loaded.';
@@ -981,7 +1195,7 @@
         requestAnimationFrame(follow);
         if (!marks.size) return;
         const project = g('project'), r = g('currentRadius'), w = g('width'), h = g('height');
-        const ok = PHONE() && root.classList.contains('gm-map') && typeof project === 'function' && !g('isCityStreetViewActive') && canvas;
+        const ok = (PHONE() ? root.classList.contains('gm-map') : root.classList.contains('gmd')) && typeof project === 'function' && !g('isCityStreetViewActive') && canvas;
         const rect = ok ? canvas.getBoundingClientRect() : null, vr = ok ? viewport.getBoundingClientRect() : null;
         marks.forEach((el) => {
           const x = el._x;
@@ -1009,9 +1223,12 @@
         store.set('atlas-alerts-seen', JSON.stringify(alerts.map((x) => x.key).concat(seenKeys).slice(0, 300)));
         if (quiet || !fresh.length) return;
         const x = fresh[0];
-        say('New alert: ' + x.inst.name + '. ' + x.head);
+        say(note(x, true));
+        // The system notification cannot be styled, so its text carries the same order: the space as the title, then the
+        // kicker, the headline, and status, source and place, each on its own line.
         if (notifyOn()) {
-          try { new Notification('Alert: ' + x.inst.name, { body: x.head + ' (' + (SOURCE[x.who] || ['Source'])[0] + ', ' + (x.where || 'record') + ')', tag: x.key }); } catch (_) {}
+          const n = note(x, true);
+          try { new Notification(n.name, { body: n.label.join(' \u00b7 ') + ' \u00b7 ' + n.when + '\n' + n.head + '\n' + n.meta.join(' \u00b7 '), tag: x.key }); } catch (_) {}
         }
       }
 
@@ -1033,7 +1250,12 @@
                 live = data; liveDigest = s.digest;
                 const alerts = refresh();
                 const added = items().filter((x) => !before.has(x.key));
-                if (added.length) say(added.length === 1 ? 'New report: ' + added[0].inst.name + '. ' + added[0].head : added.length + ' new reports on the record.');
+                if (added.length === 1) say(note(added[0], false));
+                else if (added.length) {
+                  const names = [...new Set(added.map((y) => y.inst.name))];
+                  const shown = names.slice(0, 2).join(', ') + (names.length > 2 ? ' and ' + (names.length - 2) + ' more' : '');
+                  say({ tone: 'report', label: ['New reports'], when: 'now', name: added.length + ' new reports', head: shown, meta: ['On the record', 'Open Top story to read them'] });
+                }
                 announce(alerts, false);
                 if (!feed.hidden) { const sc = feed.scrollTop; render(); feed.scrollTop = sc; }
                 return;
@@ -1046,37 +1268,133 @@
       setInterval(check, 60000);
       document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') check(); });
 
+      // ---- The feed as a maps app's results panel (user, 5 Nov 2026: "make this notification UI work like google map") ----
+      // On a phone it is a bottom sheet with three heights, as the maps app's list is: peek (the title and the top story's
+      // headline, with the map in sight above), half, and full, where the reports scroll. It follows the finger and snaps to
+      // the nearest height, a flick goes one further, and a pull down from peek closes it; the grabber, tapped, steps up a
+      // height and from full goes back to peek. Tapping a report puts the list away and opens that space's record on the map;
+      // when the record is closed the list comes back where it was, as the maps app's Back to results does. On desktop it is
+      // the side panel: the full height of the map at its left edge, folded away and back by the tab on its edge.
+      const DETENTS = ['peek', 'half', 'full'];
+      let detent = 'peek', collapsed = false, parked = null;
+      const safe = (() => {
+        const v = {};
+        return (side) => {
+          if (v[side] != null) return v[side];
+          const probe = document.createElement('div');
+          probe.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:env(safe-area-inset-' + side + ',0px);visibility:hidden;pointer-events:none';
+          document.body.appendChild(probe); v[side] = probe.offsetHeight || 0; probe.remove();
+          return v[side];
+        };
+      })();
+      const room = () => window.innerHeight - safe('top') - 8;
+      function grabLabel() {
+        return detent === 'full' ? 'Shrink the reports to the top story' : detent === 'half' ? 'Expand the reports to full screen' : 'Expand the reports';
+      }
+      function heightOf(d) {
+        const h = room();
+        if (d === 'full') return h;
+        if (d === 'half') return Math.round(h * 0.55);
+        // Peek ends under the top story's headline, so its alert and its words are read with the map still in sight; never
+        // more than 70% of the screen and never less than the head alone.
+        const fr = feed.getBoundingClientRect();
+        const head = feed.querySelector('.is-top .ts-headline') || feed.querySelector('.ts-bar');
+        const end = head ? head.getBoundingClientRect().bottom - fr.top + feed.scrollTop + 24 + safe('bottom') : 0;
+        return Math.max(160, Math.min(Math.round(end) || 160, Math.round(h * 0.7), Math.round(h * 0.55) - 1));
+      }
+      function setDetent(d, animate) {
+        if (!PHONE()) return;
+        detent = d;
+        feed.dataset.detent = d;
+        feed.classList.toggle('gm-still', animate === false);
+        if (animate === false) requestAnimationFrame(() => requestAnimationFrame(() => feed.classList.remove('gm-still')));
+        feed.style.setProperty('--ts-h', heightOf(d) + 'px');
+        if (d !== 'full') feed.scrollTop = 0;
+        const g = feed.querySelector('.ts-grab');
+        if (g) { g.setAttribute('aria-label', grabLabel()); g.setAttribute('aria-expanded', String(d === 'full')); }
+      }
+      function setCollapsed(c) {
+        collapsed = !!c && !PHONE();
+        root.classList.toggle('ts-collapsed', collapsed);
+        feed.inert = collapsed;
+        tab.setAttribute('aria-expanded', String(!collapsed));
+        tab.setAttribute('aria-label', collapsed ? 'Show the reports panel' : 'Hide the reports panel');
+      }
+      function layout(animate) {
+        tab.hidden = feed.hidden || PHONE();
+        if (feed.hidden) return;
+        if (PHONE()) { setCollapsed(false); setDetent(detent, animate); }
+        else { feed.style.removeProperty('--ts-h'); delete feed.dataset.detent; }
+      }
+
       function open(focusKey) {
         lastFocus = document.activeElement;
+        parked = null;
         render();
         feed.hidden = false;
         root.classList.add('gm-feed-open');
+        setCollapsed(false);
         feed.scrollTop = 0;
         check();
         const target = focusKey && feed.querySelector('.gm-story[data-key="' + (window.CSS && CSS.escape ? CSS.escape(focusKey) : focusKey) + '"]');
-        if (target) { target.scrollIntoView({ block: 'start' }); target.classList.add('is-focus'); const b = target.querySelector('.gm-open'); if (b) b.focus(); }
-        else { const c = feed.querySelector('.gm-feed-close'); if (c) c.focus(); }
+        // From an alert mark the sheet opens full at that alert; from the strip it opens at peek, on the top story.
+        detent = target ? 'full' : 'peek';
+        layout(false);
+        // The headline is plain text now, so the report itself takes the focus.
+        if (target) { target.scrollIntoView({ block: 'start' }); target.classList.add('is-focus'); target.tabIndex = -1; target.focus({ preventScroll: true }); }
+        else { const c = feed.querySelector('.gm-feed-close'); if (c) c.focus({ preventScroll: true }); }
       }
       function close(refocus) {
+        parked = null;
         if (feed.hidden) return;
         feed.hidden = true;
         root.classList.remove('gm-feed-open');
+        setCollapsed(false);
+        layout();
         if (refocus !== false && lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      // Put the list away while a space's record is up, and bring it back, at the same height and place, when it closes.
+      function park() {
+        parked = { detent, top: feed.scrollTop };
+        feed.hidden = true;
+        root.classList.remove('gm-feed-open');
+        layout();
+      }
+      const dossier = $('dossier-bottom-sheet');
+      if (dossier) {
+        let was = dossier.classList.contains('hidden');
+        new MutationObserver(() => {
+          const now = dossier.classList.contains('hidden');
+          if (now && !was && parked && PHONE()) {
+            const p = parked; parked = null;
+            feed.hidden = false;
+            root.classList.add('gm-feed-open');
+            detent = p.detent;
+            layout(false);
+            feed.scrollTop = p.top;
+          }
+          was = now;
+        }).observe(dossier, { attributes: true, attributeFilter: ['class'] });
       }
       window.atlasOpenTopStory = open;
       strip.addEventListener('click', () => open());
+      tab.addEventListener('click', () => {
+        setCollapsed(!collapsed);
+        if (!collapsed) { const c = feed.querySelector('.gm-feed-close'); if (c) c.focus({ preventScroll: true }); }
+      });
+      window.addEventListener('resize', () => { layout(false); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (!feed.hidden && detent === 'peek') layout(false); });
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !feed.hidden) { e.preventDefault(); e.stopPropagation(); close(); }
+        if (e.key === 'Escape' && !feed.hidden && feed.contains(document.activeElement)) { e.preventDefault(); e.stopPropagation(); close(); }
       }, true);
-      feed.addEventListener('keydown', (e) => {
-        if (e.key !== 'Tab') return;
-        const f = [...feed.querySelectorAll('button, a[href]')].filter((el) => el.offsetParent !== null);
-        if (!f.length) return;
-        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
-        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      // Below full the sheet does not scroll, so a key that moves focus to a report under its edge raises it to full first.
+      feed.addEventListener('focusin', (e) => {
+        if (!PHONE() || detent === 'full' || e.target.closest('.ts-bar')) return;
+        if (e.target.getBoundingClientRect().bottom > feed.getBoundingClientRect().bottom) setDetent('full');
       });
       feed.addEventListener('click', async (e) => {
         if (e.target.closest('.gm-feed-close')) { close(); return; }
+        if (e.target.closest('.ts-grab')) { setDetent(detent === 'peek' ? 'half' : detent === 'half' ? 'full' : 'peek'); return; }
         const bell = e.target.closest('.gm-bell');
         if (bell) {
           if (store.get('atlas-alerts') === 'on') { store.set('atlas-alerts', 'off'); }
@@ -1099,37 +1417,68 @@
           else if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => { sh.lastChild.textContent = 'Link copied'; setTimeout(() => { sh.lastChild.textContent = 'Share'; }, 2000); }).catch(() => {});
           return;
         }
-        if (e.target.closest('a')) return;
-        const art = e.target.closest('.gm-story');
-        if (!art) return;
-        const x = list[+art.dataset.i]; if (!x) return;
-        close(false);
-        if (typeof window.selectInstitution === 'function' && recordOf(x.inst.id || x.inst.name)) window.selectInstitution(x.inst, false);
+        // Only the space's name in the Space line opens the space (user, 5 Nov 2026: "Headline stops being a link").
+        const go = e.target.closest('.gm-open');
+        if (!go) return;
+        const x = list[+go.dataset.i]; if (!x) return;
+        const hasRecord = typeof window.selectInstitution === 'function' && !!recordOf(x.inst.id || x.inst.name);
+        // As in the maps app: on a phone the list steps aside for the space's record (or drops to peek when there is no
+        // record, so the map shows the place). On desktop the panel closes, so the space's record and the map have the room
+        // (user, 5 Nov 2026: "close panel on desktop too when opening museum").
+        if (PHONE()) { if (hasRecord) park(); else setDetent('peek'); }
+        else close(false);
+        if (hasRecord) window.selectInstitution(x.inst, false);
         const fly = g('flyTo');
         if (typeof fly === 'function' && typeof x.inst.lon === 'number') fly(x.inst.lon, x.inst.lat);
       });
-      // Pull the feed down from its top to close it.
-      let y0 = null;
-      feed.addEventListener('touchstart', (e) => { y0 = (feed.scrollTop <= 0 && e.touches.length === 1) ? e.touches[0].clientY : null; }, { passive: true });
+      // Dragging the sheet (phone). Below full the whole sheet follows the finger; at full the reports scroll, and only a
+      // pull down from their top, or a drag on the grabber, moves the sheet.
+      let y0 = null, h0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
+      feed.addEventListener('touchstart', (e) => {
+        if (!PHONE() || e.touches.length !== 1) { y0 = null; return; }
+        if (e.target.closest('a, button:not(.ts-grab)')) { y0 = null; return; }
+        y0 = lastY = e.touches[0].clientY; lastT = Date.now(); h0 = feed.offsetHeight; vel = 0; dragging = false;
+      }, { passive: true });
       feed.addEventListener('touchmove', (e) => {
         if (y0 === null) return;
-        const d = e.touches[0].clientY - y0;
-        if (d < 0) { y0 = null; feed.style.transform = ''; return; }
+        const y = e.touches[0].clientY, d = y - y0, now = Date.now();
+        if (!dragging) {
+          if (Math.abs(d) < 6) return;
+          if (detent === 'full' && !e.target.closest('.ts-grab') && (d < 0 || feed.scrollTop > 0)) { y0 = null; return; }
+          dragging = true;
+          feed.classList.add('gm-still');
+        }
         if (e.cancelable) e.preventDefault();
-        feed.style.transform = 'translateY(' + d + 'px)';
+        vel = (y - lastY) / Math.max(1, now - lastT);
+        lastY = y; lastT = now;
+        feed.style.setProperty('--ts-h', Math.max(64, Math.min(room(), h0 - d)) + 'px');
       }, { passive: false });
-      feed.addEventListener('touchend', (e) => {
+      const dragEnd = () => {
         if (y0 === null) return;
-        const d = e.changedTouches[0].clientY - y0; y0 = null;
-        feed.style.transform = '';
-        if (d > 110) close();
-      }, { passive: true });
+        y0 = null;
+        if (!dragging) return;
+        dragging = false;
+        feed.classList.remove('gm-still');
+        const h = feed.offsetHeight;
+        const hs = DETENTS.map(heightOf);
+        if (h < hs[0] * 0.6 || (vel > 0.9 && detent === 'peek')) { close(false); return; }
+        let i;
+        if (Math.abs(vel) > 0.6) i = Math.max(0, Math.min(2, DETENTS.indexOf(detent) + (vel < 0 ? 1 : -1)));
+        else i = hs.reduce((best, v, k) => (Math.abs(v - h) < Math.abs(hs[best] - h) ? k : best), 0);
+        setDetent(DETENTS[i]);
+      };
+      feed.addEventListener('touchend', dragEnd, { passive: true });
+      feed.addEventListener('touchcancel', dragEnd, { passive: true });
 
       // Gossip mode and a known location change what is shown.
       const gb = $('mobileGossipBtn');
       if (gb) new MutationObserver(() => { refresh(); }).observe(gb, { attributes: true, attributeFilter: ['aria-pressed'] });
       document.addEventListener('atlas:here', () => { if (!feed.hidden) render(); });
-      window.addEventListener('resize', () => { if (!PHONE()) close(false); });
+      // Crossing between the phone and desktop layouts closes the feed, since it is a sheet on one and a panel on the other.
+      let wasPhone = PHONE();
+      window.addEventListener('resize', () => { if (PHONE() !== wasPhone) { wasPhone = PHONE(); close(false); placeStrip(); } });
+      // A click on the map no longer closes the feed (user, 5 Nov 2026: "work like google map"): the panel stays beside the
+      // map while it is panned and zoomed, and is folded away by its tab or closed by Close.
       window.atlasAlerts = () => list.filter(isAlert);
       announce(refresh(), true);
       check();

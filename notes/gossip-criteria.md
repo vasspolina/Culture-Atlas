@@ -44,7 +44,7 @@ Every item has these fields. The tool rejects an item missing any of the first s
 | --- | --- |
 | `id` | `G` plus a number, unique in the file. Never reused after deletion. |
 | `institution` | The record's `name` or `id` in `institutions.json`, exact. One item, one space; a story about two spaces is two items. |
-| `headline` | One line, under 90 characters, in the present tense of what is being said: "Staff say the director's exit was not voluntary". Not a verdict. |
+| `headline` | One line, under 90 characters, in the present tense of what is being said: "Staff say the director's exit was not voluntary". Not a verdict. In the source's own register: a government that "scraps" a plan is not said to "kill" it. No violent or criminal verb (kills, axes, guts, slams, torpedoes, wrecks) unless it is quoted from someone on record; a crime word only as a court, prosecutor or regulator uses it. |
 | `said` | What is being said, in two to four sentences, in reported speech. Starts with who says it. Dates inside the text. No adjectives the source did not use. The editor's own view does not appear. |
 | `who_says` | One of: `press`, `court_or_regulator`, `union`, `open_letter`, `campaign`, `social_named` (a named person on social media), `social_anonymous` (Reddit, staff-complaint accounts, anonymous posts), `review_platform`, `institution` (the space's own reply, only ever as `response`). |
 | `where` | The outlet, platform or document, as a reader would name it: "The Art Newspaper", "r/museumpros", "@changethemuseum", "Employment Tribunal judgment". |

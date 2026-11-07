@@ -1,0 +1,1708 @@
+{
+ "written": [
+  {
+   "id": "amon-carter-museum",
+   "address": "3501 Camp Bowie Boulevard, Fort Worth, TX 76107, USA",
+   "osm": "https://www.openstreetmap.org/way/178613283"
+  },
+  {
+   "id": "art-gallery-of-nova-scotia",
+   "address": "1741 Hollis Street, Halifax, NS B3J 1V8, Canada",
+   "osm": "https://www.openstreetmap.org/way/553574590"
+  },
+  {
+   "id": "para-site",
+   "address": "677 King's Road, Hong Kong",
+   "osm": "https://www.openstreetmap.org/node/4141975772"
+  },
+  {
+   "id": "kamloops-art-gallery",
+   "address": "101 - 465 Victoria Street, Kamloops, BC V2C 2A9, Canada",
+   "osm": "https://www.openstreetmap.org/node/1032630870"
+  },
+  {
+   "id": "ilham-gallery",
+   "address": "8 Jalan Binjai, Kuala Lumpur 50450, Malaysia",
+   "osm": "https://www.openstreetmap.org/node/4703275089"
+  },
+  {
+   "id": "south-london-gallery",
+   "address": "65-67 Peckham Road, London SE5 8UH, UK",
+   "osm": "https://www.openstreetmap.org/way/67163594"
+  },
+  {
+   "id": "studio-voltaire",
+   "address": "1A Nelson's Row, London SW4 7JR, UK",
+   "osm": "https://www.openstreetmap.org/node/4723196972"
+  },
+  {
+   "id": "wellcome-collection",
+   "address": "183 Euston Road, London NW1 2BE, UK",
+   "osm": "https://www.openstreetmap.org/node/2617821322"
+  },
+  {
+   "id": "hammer-museum",
+   "address": "10899 Wilshire Boulevard, Los Angeles, CA 90024, USA",
+   "osm": "https://www.openstreetmap.org/relation/6317798"
+  },
+  {
+   "id": "museum-of-jurassic-technology",
+   "address": "9341 Venice Boulevard, Culver City, CA 90232, USA",
+   "osm": "https://www.openstreetmap.org/way/323743997"
+  },
+  {
+   "id": "judd-foundation",
+   "address": "104 South Highland Street, Marfa, TX 79843, USA",
+   "osm": "https://www.openstreetmap.org/way/294564816"
+  },
+  {
+   "id": "acca",
+   "address": "111 Sturt Street, Melbourne, VIC 3006, Australia",
+   "osm": "https://www.openstreetmap.org/way/45461060"
+  },
+  {
+   "id": "heide-museum-of-modern-art",
+   "address": "7 Templestowe Road, Melbourne, VIC 3105, Australia",
+   "osm": "https://www.openstreetmap.org/way/991822693"
+  },
+  {
+   "id": "lenbachhaus",
+   "address": "Luisenstraße 33, 80333 Munich, Germany",
+   "osm": "https://www.openstreetmap.org/way/237426208"
+  },
+  {
+   "id": "ogden-museum",
+   "address": "925 Camp Street, New Orleans, LA 70130, USA",
+   "osm": "https://www.openstreetmap.org/node/4146220592"
+  },
+  {
+   "id": "noguchi-museum",
+   "address": "9-01 33rd Road, New York, NY 11106, USA",
+   "osm": "https://www.openstreetmap.org/way/383689939"
+  },
+  {
+   "id": "swiss-institute",
+   "address": "38 Saint Marks Place, New York, NY 10003, USA",
+   "osm": "https://www.openstreetmap.org/node/9039752089"
+  },
+  {
+   "id": "oakville-galleries",
+   "address": "1306 Lakeshore Road East, Oakville, ON L6J 1L6, Canada",
+   "osm": "https://www.openstreetmap.org/way/205861612"
+  },
+  {
+   "id": "pica-portland",
+   "address": "15 Northeast Hancock Street, Portland, OR 97212, USA",
+   "osm": "https://www.openstreetmap.org/way/41080647"
+  },
+  {
+   "id": "mackenzie-art-gallery",
+   "address": "3475 Albert Street, Regina, SK S4S 3R1, Canada",
+   "osm": "https://www.openstreetmap.org/way/250073980"
+  },
+  {
+   "id": "instituto-tomie-ohtake",
+   "address": "Rua Coropé 88, São Paulo 05426-010, Brazil",
+   "osm": "https://www.openstreetmap.org/node/4470687916"
+  },
+  {
+   "id": "remai-modern",
+   "address": "102 Spadina Crescent, Saskatoon, SK S7K 0L3, Canada",
+   "osm": "https://www.openstreetmap.org/way/298718480"
+  },
+  {
+   "id": "frye-art-museum",
+   "address": "704 Terry Avenue, Seattle, WA 98104, USA",
+   "osm": "https://www.openstreetmap.org/relation/3185569"
+  },
+  {
+   "id": "henry-art-gallery",
+   "address": "4100 15th Avenue Northeast, Seattle, WA 98195, USA",
+   "osm": "https://www.openstreetmap.org/way/54029687"
+  },
+  {
+   "id": "national-museum-of-modern-and-contemporary-art-mmca",
+   "address": "30 Samcheong-ro, Seoul 03062, South Korea",
+   "osm": "https://www.openstreetmap.org/way/421742876"
+  },
+  {
+   "id": "singapore-art-museum-sam",
+   "address": "39 Keppel Road, Singapore 089065",
+   "osm": "https://www.openstreetmap.org/node/11508097286"
+  },
+  {
+   "id": "kunstmuseum-den-haag",
+   "address": "Stadhouderslaan 41, 2517 HV The Hague, Netherlands",
+   "osm": "https://www.openstreetmap.org/way/615840702"
+  },
+  {
+   "id": "de-pont",
+   "address": "Wilhelminapark 1, 5041 EA Tilburg, Netherlands",
+   "osm": "https://www.openstreetmap.org/node/251309454"
+  },
+  {
+   "id": "the-power-plant-contemporary-art-gallery",
+   "address": "231 Queens Quay West, Toronto, ON M5J 2Y6, Canada",
+   "osm": "https://www.openstreetmap.org/node/1593379560"
+  },
+  {
+   "id": "fondazione-sandretto-re-rebaudengo",
+   "address": "Via Modane 16, 10141 Turin, Italy",
+   "osm": "https://www.openstreetmap.org/node/1783770816"
+  },
+  {
+   "id": "contemporary-art-gallery-cag",
+   "address": "555 Nelson Street, Vancouver, BC V6B 6R5, Canada",
+   "osm": "https://www.openstreetmap.org/node/2490635043"
+  },
+  {
+   "id": "venice-biennale",
+   "address": "Calle de le Ancore 1044, 30122 Venice, Italy",
+   "osm": "https://www.openstreetmap.org/node/10561952509"
+  },
+  {
+   "id": "kunsthalle-wien",
+   "address": "Museumsplatz 1, 1070 Vienna, Austria",
+   "osm": "https://www.openstreetmap.org/way/277816743"
+  },
+  {
+   "id": "audain-art-museum",
+   "address": "4350 Blackcomb Way, Whistler, BC V0N 1B4, Canada",
+   "osm": "https://www.openstreetmap.org/way/499207972"
+  },
+  {
+   "id": "kunsthalle-z-rich",
+   "address": "Limmatstrasse 270, 8005 Zurich, Switzerland",
+   "osm": "https://www.openstreetmap.org/node/2800733826"
+  },
+  {
+   "id": "migros-museum",
+   "address": "Limmatstrasse 270, 8005 Zurich, Switzerland",
+   "osm": "https://www.openstreetmap.org/node/4845833740"
+  },
+  {
+   "id": "moma-the-museum-of-modern-art",
+   "address": "11 West 53rd Street, New York, NY 10019, USA",
+   "osm": "https://www.openstreetmap.org/way/278346578"
+  },
+  {
+   "id": "the-metropolitan-museum-of-art-the-met",
+   "address": "1000 5th Avenue, New York, NY 10075, USA",
+   "osm": "https://www.openstreetmap.org/relation/3698894"
+  },
+  {
+   "id": "whitney-museum-of-american-art",
+   "address": "99 Gansevoort Street, New York, NY 10014, USA",
+   "osm": "https://www.openstreetmap.org/way/288749896"
+  },
+  {
+   "id": "solomon-r-guggenheim-museum",
+   "address": "1071 5th Avenue, New York, NY 10128, USA",
+   "osm": "https://www.openstreetmap.org/way/170149134"
+  },
+  {
+   "id": "centre-pompidou",
+   "address": "19 Rue Beaubourg, 75004 Paris, France",
+   "osm": "https://www.openstreetmap.org/way/55503397"
+  },
+  {
+   "id": "museo-nacional-de-bellas-artes-buenos-aires",
+   "address": "Avenida Del Libertador 1473, C1425AAA Buenos Aires, Argentina",
+   "osm": "https://www.openstreetmap.org/way/54041468"
+  },
+  {
+   "id": "palacio-libertad-buenos-aires",
+   "address": "Sarmiento 151, C1043AAN Buenos Aires, Argentina",
+   "osm": "https://www.openstreetmap.org/way/17444532"
+  },
+  {
+   "id": "cafesjian-center-for-the-arts-yerevan",
+   "address": "Tamanyan street 10, 0009 Yerevan, Armenia",
+   "osm": "https://www.openstreetmap.org/node/984598940"
+  },
+  {
+   "id": "murray-art-museum-albury-albury",
+   "address": "546 Dean Street, Albury, NSW 2640, Australia",
+   "osm": "https://www.openstreetmap.org/node/2456379053"
+  },
+  {
+   "id": "art-gallery-of-ballarat-ballarat",
+   "address": "40 Lydiard Street North, Ballarat, VIC 3350, Australia",
+   "osm": "https://www.openstreetmap.org/way/42180358"
+  },
+  {
+   "id": "bendigo-art-gallery-bendigo",
+   "address": "42 View Street, Bendigo, VIC 3550, Australia",
+   "osm": "https://www.openstreetmap.org/way/37555667"
+  },
+  {
+   "id": "cairns-art-gallery-cairns",
+   "address": "40 Abbott Street, Cairns, QLD 4870, Australia",
+   "osm": "https://www.openstreetmap.org/way/305861918"
+  },
+  {
+   "id": "geelong-gallery-geelong",
+   "address": "55 Little Malop Street, Geelong, VIC 3220, Australia",
+   "osm": "https://www.openstreetmap.org/way/1251489847"
+  },
+  {
+   "id": "buxton-contemporary-melbourne",
+   "address": "156 Southbank Boulevard, Melbourne, VIC 3006, Australia",
+   "osm": "https://www.openstreetmap.org/relation/17140476"
+  },
+  {
+   "id": "gertrude-contemporary-melbourne",
+   "address": "21-31 High Street, Melbourne, VIC 3072, Australia",
+   "osm": "https://www.openstreetmap.org/node/6017236262"
+  },
+  {
+   "id": "monash-university-museum-of-art-melbourne",
+   "address": "900 Dandenong Road, Melbourne, VIC 3145, Australia",
+   "osm": "https://www.openstreetmap.org/node/2720762500"
+  },
+  {
+   "id": "shepparton-art-museum-shepparton",
+   "address": "530 Wyndham Street, Shepparton, VIC 3630, Australia",
+   "osm": "https://www.openstreetmap.org/node/9576656547"
+  },
+  {
+   "id": "artbank-sydney",
+   "address": "222 Young Street, Sydney, NSW 2017, Australia",
+   "osm": "https://www.openstreetmap.org/way/554399640"
+  },
+  {
+   "id": "argos-brussels",
+   "address": "Rue du Chantier - Werfstraat 13, 1000 Brussels, Belgium",
+   "osm": "https://www.openstreetmap.org/node/12599692329"
+  },
+  {
+   "id": "museum-dhondt-dhaenens-deurle",
+   "address": "Museumlaan 14, 9831 Sint-Martens-Latem, Belgium",
+   "osm": "https://www.openstreetmap.org/way/1059023499"
+  },
+  {
+   "id": "casa-frança-brasil-rio-de-janeiro",
+   "address": "Rua Visconde de Itaboraí 78, Rio de Janeiro 20041-000, Brazil",
+   "osm": "https://www.openstreetmap.org/way/1052066211"
+  },
+  {
+   "id": "museu-lasar-segall-são-paulo",
+   "address": "Rua Berta 111, São Paulo 04120-040, Brazil",
+   "osm": "https://www.openstreetmap.org/way/428901231"
+  },
+  {
+   "id": "confederation-centre-of-the-arts-charlottetown",
+   "address": "130 Queen Street, Charlottetown, PE C1A 1J1, Canada",
+   "osm": "https://www.openstreetmap.org/way/28325849"
+  },
+  {
+   "id": "art-gallery-of-hamilton-hamilton",
+   "address": "123 King Street West, Hamilton, ON L8P 4S8, Canada",
+   "osm": "https://www.openstreetmap.org/node/1620733257"
+  },
+  {
+   "id": "the-polygon-gallery-north-vancouver",
+   "address": "101 Carrie Cates Court, North Vancouver, BC V7M 2E4, Canada",
+   "osm": "https://www.openstreetmap.org/way/641420422"
+  },
+  {
+   "id": "musée-national-des-beaux-arts-du-québec-quebec-city",
+   "address": "179 Grande Allée Ouest, Quebec, QC G1R 2H1, Canada",
+   "osm": "https://www.openstreetmap.org/relation/3616083"
+  },
+  {
+   "id": "owens-art-gallery-sackville",
+   "address": "61 York Street, Sackville Parish, NB E4L 1E1, Canada",
+   "osm": "https://www.openstreetmap.org/way/149812980"
+  },
+  {
+   "id": "the-rooms-st-johns",
+   "address": "9 Bonaventure Avenue, St. John's, NL A1C 5P9, Canada",
+   "osm": "https://www.openstreetmap.org/way/39694944"
+  },
+  {
+   "id": "art-gallery-of-greater-victoria-victoria",
+   "address": "1040 Moss Street, Victoria, BC V8S 2A5, Canada",
+   "osm": "https://www.openstreetmap.org/way/1280087704"
+  },
+  {
+   "id": "museo-de-arte-contemporáneo-de-santiago-santiago",
+   "address": "Ismael Valdés Vergara 506, 8320000 Santiago, Chile",
+   "osm": "https://www.openstreetmap.org/node/8197637769"
+  },
+  {
+   "id": "power-station-of-art-shanghai",
+   "address": "200 Huayanggang Road, Shanghai 200011, China",
+   "osm": "https://www.openstreetmap.org/way/298132744"
+  },
+  {
+   "id": "contemporary-image-collective-cairo",
+   "address": "Talaat Harb Street 27, 11956 Cairo, Egypt",
+   "osm": "https://www.openstreetmap.org/node/10024425991"
+  },
+  {
+   "id": "selasar-sunaryo-art-space-bandung",
+   "address": "Jalan Bukit Pakar Tmur 100, Ciburial 40119, Indonesia",
+   "osm": "https://www.openstreetmap.org/node/12015613211"
+  },
+  {
+   "id": "hugh-lane-gallery-dublin",
+   "address": "22 Parnell Square North, Dublin, Ireland",
+   "osm": "https://www.openstreetmap.org/way/357707494"
+  },
+  {
+   "id": "nederlands-fotomuseum-rotterdam",
+   "address": "Brede Hilledijk 95, 3072 KD Rotterdam, Netherlands",
+   "osm": "https://www.openstreetmap.org/node/250735558"
+  },
+  {
+   "id": "museum-beelden-aan-zee-the-hague",
+   "address": "Harteveltstraat 1, 2586 CJ The Hague, Netherlands",
+   "osm": "https://www.openstreetmap.org/node/250127546"
+  },
+  {
+   "id": "centraal-museum-utrecht",
+   "address": "Agnietenstraat 1, 3512 PP Utrecht, Netherlands",
+   "osm": "https://www.openstreetmap.org/relation/6636453"
+  },
+  {
+   "id": "sarjeant-gallery-whanganui",
+   "address": "4 Pukenamu Drive, Whanganui 4500, New Zealand",
+   "osm": "https://www.openstreetmap.org/way/87977398"
+  },
+  {
+   "id": "arario-museum-in-space-seoul",
+   "address": "83 Yulgok-ro, Seoul 03058, South Korea",
+   "osm": "https://www.openstreetmap.org/node/4243951690"
+  },
+  {
+   "id": "seoul-museum-of-art-seoul",
+   "address": "61 Deoksugung-gil, Seoul 04515, South Korea",
+   "osm": "https://www.openstreetmap.org/way/626112515"
+  },
+  {
+   "id": "nam-june-paik-art-center-yongin",
+   "address": "10 Sanggal-ro, Yongin-si 17068, South Korea",
+   "osm": "https://www.openstreetmap.org/way/456148873"
+  },
+  {
+   "id": "kaohsiung-museum-of-fine-arts-kaohsiung",
+   "address": "80 Meishuguan Road, Kaohsiung 80460, Taiwan",
+   "osm": "https://www.openstreetmap.org/way/87243043"
+  },
+  {
+   "id": "hong-gah-museum-taipei",
+   "address": "166 Daye Road, Taipei 11268, Taiwan",
+   "osm": "https://www.openstreetmap.org/node/3798720606"
+  },
+  {
+   "id": "taipei-fine-arts-museum-taipei",
+   "address": "181 Section 3, Zhongshan North Road, Taipei 10461, Taiwan",
+   "osm": "https://www.openstreetmap.org/relation/11736180"
+  },
+  {
+   "id": "henry-moore-institute-leeds",
+   "address": "74 The Headrow, Leeds LS1 3AH, UK",
+   "osm": "https://www.openstreetmap.org/way/78507133"
+  },
+  {
+   "id": "fact-liverpool",
+   "address": "88 Wood Street, Liverpool L1 4DQ, UK",
+   "osm": "https://www.openstreetmap.org/way/196580458"
+  },
+  {
+   "id": "home-manchester",
+   "address": "2 Tony Wilson Place, Manchester M15 4FN, UK",
+   "osm": "https://www.openstreetmap.org/way/431832634"
+  },
+  {
+   "id": "new-art-exchange-nottingham",
+   "address": "39 Gregory Boulevard, Nottingham NG7 6BE, UK",
+   "osm": "https://www.openstreetmap.org/way/209377353"
+  },
+  {
+   "id": "pier-arts-centre-stromness",
+   "address": "34 + 36 Victoria Street, Stromness KW16 3AA, UK",
+   "osm": "https://www.openstreetmap.org/way/352691941"
+  },
+  {
+   "id": "atlanta-contemporary-atlanta",
+   "address": "535 Means Street Northwest, Atlanta, GA 30318, USA",
+   "osm": "https://www.openstreetmap.org/node/6375928185"
+  },
+  {
+   "id": "blanton-museum-of-art-austin",
+   "address": "200 East Martin Luther King Jr Boulevard, Austin, TX 78705, USA",
+   "osm": "https://www.openstreetmap.org/relation/20972967"
+  },
+  {
+   "id": "the-contemporary-austin-austin",
+   "address": "700 Congress Avenue, Austin, TX 78701, USA",
+   "osm": "https://www.openstreetmap.org/way/929864020"
+  },
+  {
+   "id": "birmingham-museum-of-art-birmingham",
+   "address": "2000 Reverend Abraham Woods Jr Boulevard, Birmingham, AL 35203, USA",
+   "osm": "https://www.openstreetmap.org/way/1360138469"
+  },
+  {
+   "id": "boise-art-museum-boise",
+   "address": "670 West Julia Davis Drive, Boise, ID 83702, USA",
+   "osm": "https://www.openstreetmap.org/way/449008123"
+  },
+  {
+   "id": "ackland-art-museum-chapel-hill",
+   "address": "101 South Columbia Street, Chapel Hill, NC 27514, USA",
+   "osm": "https://www.openstreetmap.org/way/44342484"
+  },
+  {
+   "id": "gibbes-museum-of-art-charleston",
+   "address": "135 Meeting Street, Charleston, SC 29401, USA",
+   "osm": "https://www.openstreetmap.org/way/173699965"
+  },
+  {
+   "id": "orange-county-museum-of-art-costa-mesa",
+   "address": "3333 Avenue of the Arts, Costa Mesa, CA 92626, USA",
+   "osm": "https://www.openstreetmap.org/way/1098117616"
+  },
+  {
+   "id": "dallas-contemporary-dallas",
+   "address": "161 Glass Street, Dallas, TX 75207, USA",
+   "osm": "https://www.openstreetmap.org/way/465671555"
+  },
+  {
+   "id": "clyfford-still-museum-denver",
+   "address": "1250 Bannock Street, Denver, CO 80204, USA",
+   "osm": "https://www.openstreetmap.org/way/315709021"
+  },
+  {
+   "id": "denver-art-museum-denver",
+   "address": "100 West 14th Avenue Parkway, Denver, CO 80204, USA",
+   "osm": "https://www.openstreetmap.org/way/35205743"
+  },
+  {
+   "id": "modern-art-museum-of-fort-worth-fort-worth",
+   "address": "3200 Darnell Street, Fort Worth, TX 76107, USA",
+   "osm": "https://www.openstreetmap.org/way/141506526"
+  },
+  {
+   "id": "museum-of-contemporary-art-san-diego-la-jolla",
+   "address": "700 Prospect Street, San Diego, CA 92037, USA",
+   "osm": "https://www.openstreetmap.org/node/368173981"
+  },
+  {
+   "id": "craft-contemporary-los-angeles",
+   "address": "5814 Wilshire Boulevard, Los Angeles, CA 90036, USA",
+   "osm": "https://www.openstreetmap.org/node/9982332940"
+  },
+  {
+   "id": "new-orleans-museum-of-art-new-orleans",
+   "address": "1 Collins Diboll Circle, New Orleans, LA 70019, USA",
+   "osm": "https://www.openstreetmap.org/way/325825515"
+  },
+  {
+   "id": "oakland-museum-of-california-oakland",
+   "address": "1000 Oak Street, Oakland, CA 94607, USA",
+   "osm": "https://www.openstreetmap.org/relation/6431998"
+  },
+  {
+   "id": "palm-springs-art-museum-palm-springs",
+   "address": "101 North Museum Drive, Palm Springs, CA 92262, USA",
+   "osm": "https://www.openstreetmap.org/way/316849790"
+  },
+  {
+   "id": "heard-museum-phoenix",
+   "address": "2301 North Central Avenue, Phoenix, AZ 85004, USA",
+   "osm": "https://www.openstreetmap.org/relation/1983722"
+  },
+  {
+   "id": "phoenix-art-museum-phoenix",
+   "address": "1625 North Central Avenue, Phoenix, AZ 85004, USA",
+   "osm": "https://www.openstreetmap.org/relation/2048105"
+  },
+  {
+   "id": "nevada-museum-of-art-reno",
+   "address": "160 West Liberty Street, Reno, NV 89501, USA",
+   "osm": "https://www.openstreetmap.org/way/369728721"
+  },
+  {
+   "id": "utah-museum-of-contemporary-art-salt-lake-city",
+   "address": "20 West Temple, Salt Lake City, UT 84101, USA",
+   "osm": "https://www.openstreetmap.org/node/2363167405"
+  },
+  {
+   "id": "mcnay-art-museum-san-antonio",
+   "address": "6000 North New Braunfels Avenue, San Antonio, TX 78209, USA",
+   "osm": "https://www.openstreetmap.org/way/30446984"
+  },
+  {
+   "id": "asian-art-museum-san-francisco",
+   "address": "200 Larkin Street, San Francisco, CA 94102, USA",
+   "osm": "https://www.openstreetmap.org/way/24588037"
+  },
+  {
+   "id": "georgia-okeeffe-museum-santa-fe",
+   "address": "217 Johnson Street, Santa Fe, NM 87501, USA",
+   "osm": "https://www.openstreetmap.org/way/461696666"
+  },
+  {
+   "id": "telfair-museums-savannah",
+   "address": "121 Barnard Street, Savannah, GA 31412, USA",
+   "osm": "https://www.openstreetmap.org/way/130209226"
+  },
+  {
+   "id": "seattle-art-museum-seattle",
+   "address": "1300 1st Avenue, Seattle, WA 98101, USA",
+   "osm": "https://www.openstreetmap.org/node/1851741441"
+  },
+  {
+   "id": "secca-winston-salem",
+   "address": "750 Marguerite Drive, Winston-Salem, NC 27106, USA",
+   "osm": "https://www.openstreetmap.org/way/31295942"
+  },
+  {
+   "id": "fundación-proa-buenos-aires",
+   "address": "Avenida Don Pedro de Mendoza 1929, C1169AAD Buenos Aires, Argentina",
+   "osm": "https://www.openstreetmap.org/way/151077351"
+  },
+  {
+   "id": "museo-de-arte-moderno-de-buenos-aires-buenos-aires",
+   "address": "Avenida San Juan 350, C1147AAO Buenos Aires, Argentina",
+   "osm": "https://www.openstreetmap.org/way/239518532"
+  },
+  {
+   "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+   "address": "Avenida Infante Dom Henrique 85, Rio de Janeiro 20021-140, Brazil",
+   "osm": "https://www.openstreetmap.org/relation/13767188"
+  },
+  {
+   "id": "glenbow-calgary",
+   "address": "130 9 Avenue SE, Calgary, AB T2G 0P3, Canada",
+   "osm": "https://www.openstreetmap.org/way/207829988"
+  },
+  {
+   "id": "tai-kwun-hong-kong",
+   "address": "10 Laundry Steps, Hong Kong, China",
+   "osm": "https://www.openstreetmap.org/way/591035975"
+  },
+  {
+   "id": "musée-dorsay-paris",
+   "address": "1 Rue de la Légion d'Honneur, 75007 Paris, France",
+   "osm": "https://www.openstreetmap.org/way/63178753"
+  },
+  {
+   "id": "van-gogh-museum-amsterdam",
+   "address": "Paulus Potterstraat 7, 1071 CX Amsterdam, Netherlands",
+   "osm": "https://www.openstreetmap.org/relation/6577680"
+  },
+  {
+   "id": "groninger-museum-groningen",
+   "address": "Museumeiland 1, 9711 ME Groningen, Netherlands",
+   "osm": "https://www.openstreetmap.org/relation/8736528"
+  },
+  {
+   "id": "govett-brewster-len-lye-centre-new-plymouth",
+   "address": "42 Queen Street, New Plymouth 4310, New Zealand",
+   "osm": "https://www.openstreetmap.org/way/1099645155"
+  },
+  {
+   "id": "garage-museum-moscow",
+   "address": "Krymskiy Val St 9 с32, Moscow 119049, Russia",
+   "osm": "https://www.openstreetmap.org/way/48503927"
+  },
+  {
+   "id": "guggenheim-bilbao-bilbao",
+   "address": "Abandoibarra etorbidea 2, 48009 Bilbao, Spain",
+   "osm": "https://www.openstreetmap.org/node/4385670349"
+  },
+  {
+   "id": "kunsthaus-zürich-zürich",
+   "address": "Heimplatz 1, 8001 Zurich, Switzerland",
+   "osm": "https://www.openstreetmap.org/relation/3768127"
+  },
+  {
+   "id": "bangkok-art-and-culture-centre-bangkok",
+   "address": "939 Rama I Road, Bangkok 10330, Thailand",
+   "osm": "https://www.openstreetmap.org/way/48966995"
+  },
+  {
+   "id": "louvre-abu-dhabi-abu-dhabi",
+   "address": "Jacques Chirac Street 133, 22600 Abu Dhabi, UAE",
+   "osm": "https://www.openstreetmap.org/way/498046180"
+  },
+  {
+   "id": "collective-edinburgh",
+   "address": "38 Calton Hill, City of Edinburgh EH7 5AA, UK",
+   "osm": "https://www.openstreetmap.org/node/10117511077"
+  },
+  {
+   "id": "stills-edinburgh",
+   "address": "23 Cockburn Street, City of Edinburgh EH1 1BP, UK",
+   "osm": "https://www.openstreetmap.org/node/2934543737"
+  },
+  {
+   "id": "design-museum-london",
+   "address": "224-238 Kensington High Street, London W8 6AG, UK",
+   "osm": "https://www.openstreetmap.org/way/640554759"
+  },
+  {
+   "id": "dulwich-picture-gallery-london",
+   "address": "14 Gallery Road, London SE21 7AD, UK",
+   "osm": "https://www.openstreetmap.org/way/4961350"
+  },
+  {
+   "id": "zabludowicz-collection-london",
+   "address": "176 Prince of Wales Road, London NW5 3PT, UK",
+   "osm": "https://www.openstreetmap.org/way/85252923"
+  },
+  {
+   "id": "menil-collection-houston",
+   "address": "1533 Sul Ross Street, Houston, TX 77006, USA",
+   "osm": "https://www.openstreetmap.org/relation/21270446"
+  },
+  {
+   "id": "kemper-museum-kansas-city",
+   "address": "4420 East 45th Street, Kansas City, MO 64111, USA",
+   "osm": "https://www.openstreetmap.org/way/132574831"
+  },
+  {
+   "id": "speed-art-museum-louisville",
+   "address": "2035 South 3rd Street, Louisville, KY 40208, USA",
+   "osm": "https://www.openstreetmap.org/way/334900781"
+  },
+  {
+   "id": "pérez-art-museum-miami-miami",
+   "address": "1103 Biscayne Boulevard, Miami, FL 33132, USA",
+   "osm": "https://www.openstreetmap.org/way/484587327"
+  },
+  {
+   "id": "frist-art-museum-nashville",
+   "address": "919 Broadway, Nashville, TN 37203, USA",
+   "osm": "https://www.openstreetmap.org/way/130905893"
+  },
+  {
+   "id": "american-museum-of-natural-history-new-york",
+   "address": "200 Central Park West, New York, NY 10024, USA",
+   "osm": "https://www.openstreetmap.org/way/388436810"
+  },
+  {
+   "id": "brooklyn-museum-new-york",
+   "address": "200 Eastern Parkway, New York, NY 11238, USA",
+   "osm": "https://www.openstreetmap.org/way/1432069915"
+  },
+  {
+   "id": "dallas-museum-of-art-dallas",
+   "address": "1717 North Harwood Street, Dallas, TX 75201, USA",
+   "osm": "https://www.openstreetmap.org/relation/6942581"
+  },
+  {
+   "id": "portland-art-museum-portland",
+   "address": "1219 Southwest Park Avenue, Portland, OR 97205, USA",
+   "osm": "https://www.openstreetmap.org/way/1453455016"
+  },
+  {
+   "id": "art-institute-of-chicago-chicago",
+   "address": "111 South Michigan Avenue, Chicago, IL 60603, USA",
+   "osm": "https://www.openstreetmap.org/relation/1870546"
+  },
+  {
+   "id": "taxispalais-kunsthalle-tirol-innsbruck",
+   "address": "Maria-Theresien-Straße 45, 6020 Innsbruck, Austria",
+   "osm": "https://www.openstreetmap.org/node/11962754815"
+  },
+  {
+   "id": "kumu-art-museum-tallinn",
+   "address": "August Weizenbergi 34, 15050 Tallinn, Estonia",
+   "osm": "https://www.openstreetmap.org/way/26882906"
+  },
+  {
+   "id": "emma-espoo-museum-of-modern-art-espoo",
+   "address": "Ahertajantie 5, 02100 Espoo, Finland",
+   "osm": "https://www.openstreetmap.org/node/656236911"
+  },
+  {
+   "id": "serlachius-museums-mänttä",
+   "address": "Joenniementie 47, 35800 Mänttä-Vilppula, Finland",
+   "osm": "https://www.openstreetmap.org/node/1228315466"
+  },
+  {
+   "id": "kunstverein-bielefeld-bielefeld",
+   "address": "Welle 61, 33602 Bielefeld, Germany",
+   "osm": "https://www.openstreetmap.org/node/4311889290"
+  },
+  {
+   "id": "bonner-kunstverein-bonn",
+   "address": "Hochstadenring 22-24, 53119 Bonn, Germany",
+   "osm": "https://www.openstreetmap.org/way/20993069"
+  },
+  {
+   "id": "kunstverein-für-die-rheinlande-und-westfalen-düsseldorf",
+   "address": "Grabbeplatz 4, 40213 Dusseldorf, Germany",
+   "osm": "https://www.openstreetmap.org/node/1577235480"
+  },
+  {
+   "id": "e-werk-luckenwalde-luckenwalde",
+   "address": "Rudolf-Breitscheid-Straße 73, 14943 Luckenwalde, Germany",
+   "osm": "https://www.openstreetmap.org/way/148379909"
+  },
+  {
+   "id": "kunsthalle-recklinghausen-recklinghausen",
+   "address": "Große-Perdekamp-Straße 25-27, 45657 Recklinghausen, Germany",
+   "osm": "https://www.openstreetmap.org/way/266089234"
+  },
+  {
+   "id": "reykjavík-art-museum-reykjavík",
+   "address": "Tryggvagata 17, 101 Reykjavik, Iceland",
+   "osm": "https://www.openstreetmap.org/node/688998258"
+  },
+  {
+   "id": "zolak-vilnius",
+   "address": "Vytenio g. 50D, 03202 Vilnius, Lithuania",
+   "osm": "https://www.openstreetmap.org/node/12922174649"
+  },
+  {
+   "id": "museo-de-la-ciudad-de-méxico-mexico-city",
+   "address": "Avenida José María Pino Suárez 30, 06060 Mexico City, Mexico",
+   "osm": "https://www.openstreetmap.org/way/217324707"
+  },
+  {
+   "id": "fundação-fernando-leite-couto-maputo",
+   "address": "Av. Kim Il Sung 961, 0101-11 Maputo, Mozambique",
+   "osm": "https://www.openstreetmap.org/way/470130499"
+  },
+  {
+   "id": "bwa-wrocław-wrocław",
+   "address": "Marszałka Józefa Piłsudskiego 105, 50-085 Wrocław, Poland",
+   "osm": "https://www.openstreetmap.org/node/8849082277"
+  },
+  {
+   "id": "perm-state-art-gallery-perm",
+   "address": "Комсомольский проспект 4, Perm 614600, Russia",
+   "osm": "https://www.openstreetmap.org/way/45897469"
+  },
+  {
+   "id": "ntu-centre-for-contemporary-art-singapore-singapore",
+   "address": "43 Malan Road, Singapore 109443",
+   "osm": "https://www.openstreetmap.org/way/351313175"
+  },
+  {
+   "id": "national-gallery-singapore-singapore",
+   "address": "1 Saint Andrew's Road, Singapore 178957",
+   "osm": "https://www.openstreetmap.org/node/4759240362"
+  },
+  {
+   "id": "artium-museoa-vitoria-gasteiz",
+   "address": "Frantzia kalea 24, 01002 Vitoria-Gasteiz, Spain",
+   "osm": "https://www.openstreetmap.org/relation/17770250"
+  },
+  {
+   "id": "museum-of-modern-and-contemporary-art-sri-lanka-colombo",
+   "address": "117 Sir Chittampalam A. Gardiner Mawatha, Colombo 00200, Sri Lanka",
+   "osm": "https://www.openstreetmap.org/node/14262283001"
+  },
+  {
+   "id": "lunds-konsthall-lund",
+   "address": "Mårtenstorget 3B, 223 51 Lund, Sweden",
+   "osm": "https://www.openstreetmap.org/relation/1364131"
+  },
+  {
+   "id": "malmö-konsthall-malmö",
+   "address": "Sankt Johannesgatan 7, 205 80 Malmö, Sweden",
+   "osm": "https://www.openstreetmap.org/way/28482240"
+  },
+  {
+   "id": "bildmuseet-umeå",
+   "address": "Östra Strandgatan 30 B, 903 33 Umeå, Sweden",
+   "osm": "https://www.openstreetmap.org/way/203876134"
+  },
+  {
+   "id": "kunsthalle-bern-bern",
+   "address": "Helvetiaplatz 1, 3005 Bern, Switzerland",
+   "osm": "https://www.openstreetmap.org/way/40422384"
+  },
+  {
+   "id": "kunsthaus-baselland-münchenstein",
+   "address": "Helsinki-Strasse 5, 4142 Münchenstein, Switzerland",
+   "osm": "https://www.openstreetmap.org/node/12324355503"
+  },
+  {
+   "id": "national-taiwan-museum-of-fine-arts-taichung",
+   "address": "2 Sec. 1, Wuquan W. Rd., Taichung 40359, Taiwan",
+   "osm": "https://www.openstreetmap.org/way/240137720"
+  },
+  {
+   "id": "taiwan-contemporary-culture-lab-c-lab-taipei",
+   "address": "177 Jianguo South Road Section 1, Taipei 10655, Taiwan",
+   "osm": "https://www.openstreetmap.org/relation/5233670"
+  },
+  {
+   "id": "pera-museum-istanbul",
+   "address": "Meşrutiyet Caddesi 141, 34443 Beyoğlu, Turkey",
+   "osm": "https://www.openstreetmap.org/way/112676117"
+  },
+  {
+   "id": "mosaic-rooms-london",
+   "address": "226 Cromwell Road, London SW5 0SW, UK",
+   "osm": "https://www.openstreetmap.org/node/7715719671"
+  },
+  {
+   "id": "bronx-museum-of-the-arts-bronx",
+   "address": "1040 Grand Concourse, New York, NY 10456, USA",
+   "osm": "https://www.openstreetmap.org/node/368061518"
+  },
+  {
+   "id": "columbus-museum-of-art-columbus",
+   "address": "480 East Broad Street, Columbus, OH 43215, USA",
+   "osm": "https://www.openstreetmap.org/way/293476179"
+  },
+  {
+   "id": "madison-museum-of-contemporary-art-madison",
+   "address": "227 State Street, Madison, WI 53703, USA",
+   "osm": "https://www.openstreetmap.org/node/2708002125"
+  },
+  {
+   "id": "el-museo-del-barrio-new-york",
+   "address": "1230 5th Avenue, New York, NY 10029, USA",
+   "osm": "https://www.openstreetmap.org/way/271274003"
+  },
+  {
+   "id": "morgan-library-museum-new-york",
+   "address": "225 Madison Avenue, New York, NY 10016, USA",
+   "osm": "https://www.openstreetmap.org/node/4462440249"
+  },
+  {
+   "id": "museum-of-arts-and-design-new-york",
+   "address": "2 Columbus Circle, New York, NY 10107, USA",
+   "osm": "https://www.openstreetmap.org/way/109269297"
+  },
+  {
+   "id": "neue-galerie-new-york-new-york",
+   "address": "1048 5th Avenue, New York, NY 10028, USA",
+   "osm": "https://www.openstreetmap.org/way/266934254"
+  },
+  {
+   "id": "the-drawing-center-new-york",
+   "address": "35 Wooster Street, New York, NY 10013, USA",
+   "osm": "https://www.openstreetmap.org/way/249664327"
+  },
+  {
+   "id": "chrysler-museum-of-art-norfolk",
+   "address": "1 Memorial Place, Norfolk, VA 23510, USA",
+   "osm": "https://www.openstreetmap.org/way/407401697"
+  },
+  {
+   "id": "joslyn-art-museum-omaha",
+   "address": "2200 Dodge Street, Omaha, NE 68102, USA",
+   "osm": "https://www.openstreetmap.org/way/256985023"
+  },
+  {
+   "id": "portland-museum-of-art-portland-maine",
+   "address": "7 High Street, Portland, ME 04101, USA",
+   "osm": "https://www.openstreetmap.org/relation/20195397"
+  },
+  {
+   "id": "aldrich-contemporary-art-museum-ridgefield",
+   "address": "258 Main Street, Ridgefield, CT 06877, USA",
+   "osm": "https://www.openstreetmap.org/way/216577708"
+  },
+  {
+   "id": "the-phillips-collection-washington",
+   "address": "1600 21st Street Northwest, Washington, DC 20009, USA",
+   "osm": "https://www.openstreetmap.org/way/1527304874"
+  },
+  {
+   "id": "parrish-art-museum-water-mill",
+   "address": "279 Montauk Highway, Town of Southampton, NY 11976, USA",
+   "osm": "https://www.openstreetmap.org/way/353079604"
+  },
+  {
+   "id": "fridericianum-kassel",
+   "address": "Friedrichsplatz 18, 34117 Kassel, Germany",
+   "osm": "https://www.openstreetmap.org/way/61690067"
+  },
+  {
+   "id": "zachęta-national-gallery-of-art-warsaw",
+   "address": "Plac Stanisława Małachowskiego 3, 00-063 Warsaw, Poland",
+   "osm": "https://www.openstreetmap.org/way/28894938"
+  },
+  {
+   "id": "state-hermitage-museum-st-petersburg",
+   "address": "Palace Embankment 38 литА, Saint Petersburg 191186, Russia",
+   "osm": "https://www.openstreetmap.org/relation/8092294"
+  },
+  {
+   "id": "yeltsin-center-yekaterinburg",
+   "address": "Boris Yeltsin Street 3, Yekaterinburg 620990, Russia",
+   "osm": "https://www.openstreetmap.org/way/97946956"
+  },
+  {
+   "id": "artscience-museum-singapore",
+   "address": "6 Bayfront Avenue, Singapore 018974",
+   "osm": "https://www.openstreetmap.org/node/11361584770"
+  },
+  {
+   "id": "moscow-museum-of-modern-art-mmoma-moscow",
+   "address": "Petrovka Street 25 с1, Moscow 107031, Russia",
+   "osm": "https://www.openstreetmap.org/way/47138172"
+  },
+  {
+   "id": "museum-of-russian-impressionism-moscow",
+   "address": "Ленинградский проспект (дублёр) 15 с11, Moscow 125040, Russia",
+   "osm": "https://www.openstreetmap.org/way/160527076"
+  },
+  {
+   "id": "singapore-art-museum-singapore",
+   "address": "39 Keppel Road, Singapore 089065",
+   "osm": "https://www.openstreetmap.org/node/11508097286"
+  },
+  {
+   "id": "mus-e-mohammed-vi-d-art-moderne-et-contemporain-mmvi-rabat",
+   "address": "Rue Tissa 2, 10020 Rabat, Morocco",
+   "osm": "https://www.openstreetmap.org/node/13630526273"
+  },
+  {
+   "id": "fotomuseum-winterthur-winterthur",
+   "address": "Grüzenstrasse 44, 8400 Winterthur, Switzerland",
+   "osm": "https://www.openstreetmap.org/way/14107036"
+  },
+  {
+   "id": "ars-electronica-center-linz",
+   "address": "Hauptstraße 2, 4040 Linz, Austria",
+   "osm": "https://www.openstreetmap.org/way/31340724"
+  },
+  {
+   "id": "center-of-contemporary-art-tbilisi-tbilisi-triennial-tbilisi",
+   "address": "Dodo Abashidze Street 10, 0102 Tbilisi, Georgia",
+   "osm": "https://www.openstreetmap.org/node/917391799"
+  },
+  {
+   "id": "le-32bis-tunis",
+   "address": "Rue Ali Ben Ghedhahem 32, 1001 Tunis, Tunisia",
+   "osm": "https://www.openstreetmap.org/node/9148150382"
+  },
+  {
+   "id": "mus-e-national-des-beaux-arts-d-alger-algiers",
+   "address": "Rue Docteur Laveran 178, 16000 Algiers, Algeria",
+   "osm": "https://www.openstreetmap.org/way/264333156"
+  },
+  {
+   "id": "museo-nacional-de-etnograf-a-y-folklore-musef-la-paz",
+   "address": "Calle Ingavi 916, La Paz, Bolivia",
+   "osm": "https://www.openstreetmap.org/way/438877668"
+  },
+  {
+   "id": "museo-de-arte-costarricense-mac-san-jos",
+   "address": "Calle 42 Libertad de Prensa 0004, 10108 San José, Costa Rica",
+   "osm": "https://www.openstreetmap.org/way/38934051"
+  },
+  {
+   "id": "museo-larco-lima",
+   "address": "Simon Bolivar Avenue 1515, 15084 Pueblo Libre, Peru",
+   "osm": "https://www.openstreetmap.org/way/387071625"
+  },
+  {
+   "id": "bishop-museum-bernice-pauahi-bishop-museum-honolulu",
+   "address": "1525 Bernice Street, Honolulu, HI 96817, USA",
+   "osm": "https://www.openstreetmap.org/way/360437606"
+  },
+  {
+   "id": "vitra-design-museum-weil-am-rhein",
+   "address": "Charles-Eames-Straße 2, 79576 Weil am Rhein, Germany",
+   "osm": "https://www.openstreetmap.org/way/208410276"
+  },
+  {
+   "id": "corning-museum-of-glass-corning",
+   "address": "1 Museum Way, City of Corning, NY 14830, USA",
+   "osm": "https://www.openstreetmap.org/relation/9535785"
+  },
+  {
+   "id": "k-nstlerhaus-bethanien-berlin",
+   "address": "Kottbusser Straße 10, 10999 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/node/5498079821"
+  },
+  {
+   "id": "akademie-schloss-solitude-stuttgart",
+   "address": "Solitude 3, 70197 Stuttgart, Germany",
+   "osm": "https://www.openstreetmap.org/node/12662260777"
+  },
+  {
+   "id": "cit-internationale-des-arts-paris",
+   "address": "18 Rue de l'Hôtel de Ville, 75004 Paris, France",
+   "osm": "https://www.openstreetmap.org/relation/3514193"
+  },
+  {
+   "id": "serralves-foundation-porto",
+   "address": "Rua de Dom João de Castro 210, 4150-417 Porto, Portugal",
+   "osm": "https://www.openstreetmap.org/node/9560987799"
+  },
+  {
+   "id": "jewish-museum-and-tolerance-center-moscow",
+   "address": "улица Образцова 11 с1А, Moscow 103030, Russia",
+   "osm": "https://www.openstreetmap.org/node/6307571438"
+  },
+  {
+   "id": "multimedia-art-museum-moscow-mamm-moscow",
+   "address": "улица Остоженка 16, Moscow 119034, Russia",
+   "osm": "https://www.openstreetmap.org/way/193498236"
+  },
+  {
+   "id": "anchorage-museum-anchorage",
+   "address": "625 C Street, Anchorage, AK 99501, USA",
+   "osm": "https://www.openstreetmap.org/way/285248750"
+  },
+  {
+   "id": "nuuk-art-museum-nuuk-kunstmuseum-nuuk",
+   "address": "Kisserneqqortuunnguaq 5, 3900 Nuuk, Greenland",
+   "osm": "https://www.openstreetmap.org/way/253675197"
+  },
+  {
+   "id": "eiteljorg-museum-of-american-indians-and-western-art-indianapolis",
+   "address": "500 West Washington Street, Indianapolis, IN 46204, USA",
+   "osm": "https://www.openstreetmap.org/way/113050097"
+  },
+  {
+   "id": "c-o-berlin-berlin",
+   "address": "Hardenbergstraße 22-24, 10623 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/node/2959465154"
+  },
+  {
+   "id": "le-bal-paris",
+   "address": "6 Impasse de la Défense, 75018 Paris, France",
+   "osm": "https://www.openstreetmap.org/way/76031543"
+  },
+  {
+   "id": "listasavn-f-roya-national-gallery-of-the-faroe-islands-t-rshavn",
+   "address": "Gundadalsvegur 9, J9, 100 Tórshavn, Faroe Islands",
+   "osm": "https://www.openstreetmap.org/node/4287461193"
+  },
+  {
+   "id": "new-york-academy-of-art-new-york",
+   "address": "111 Franklin Street, New York, NY 10013, USA",
+   "osm": "https://www.openstreetmap.org/way/250052737"
+  },
+  {
+   "id": "interlochen-center-for-the-arts-interlochen",
+   "address": "4000 J Maddy Parkway, Interlochen, MI 49643, USA",
+   "osm": "https://www.openstreetmap.org/relation/13066326"
+  },
+  {
+   "id": "black-family-visual-arts-center-dartmouth-hanover",
+   "address": "22 Lebanon Street, Hanover, NH 03755, USA",
+   "osm": "https://www.openstreetmap.org/way/262924500"
+  },
+  {
+   "id": "bard-college-annandale-on-hudson",
+   "address": "30 Campus Road, Town of Red Hook, NY 12504, USA",
+   "osm": "https://www.openstreetmap.org/way/316442756"
+  },
+  {
+   "id": "english-national-ballet-london",
+   "address": "41 Hopewell Square, London E14 0SY, UK",
+   "osm": "https://www.openstreetmap.org/way/660934090"
+  },
+  {
+   "id": "nyu-tisch-school-of-the-arts-new-york",
+   "address": "113 2nd Avenue, New York, NY 10003, USA",
+   "osm": "https://www.openstreetmap.org/node/11389386379"
+  },
+  {
+   "id": "milwaukee-symphony-orchestra-milwaukee",
+   "address": "929 North Water Street, Milwaukee, WI 53202, USA",
+   "osm": "https://www.openstreetmap.org/node/5714414216"
+  },
+  {
+   "id": "american-folk-art-museum",
+   "address": "2 Columbus Avenue, New York, NY 10023, United States",
+   "osm": "https://www.openstreetmap.org/node/3224793125"
+  },
+  {
+   "id": "neue-nationalgalerie-berlin",
+   "address": "Potsdamer Straße 50, 10785 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/way/25652321"
+  },
+  {
+   "id": "hamburger-bahnhof-berlin",
+   "address": "Invalidenstraße 50-51, 10557 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/node/1860480265"
+  },
+  {
+   "id": "caixaforum-madrid",
+   "address": "Paseo del Prado 36, 28014 Madrid, Spain",
+   "osm": "https://www.openstreetmap.org/way/286816147"
+  },
+  {
+   "id": "new-museum-new-york",
+   "address": "235 Bowery, New York, NY 10002, United States",
+   "osm": "https://www.openstreetmap.org/node/13732385972"
+  },
+  {
+   "id": "berlinische-galerie",
+   "address": "Alte Jakobstraße 124-128, 10969 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/way/33743630"
+  },
+  {
+   "id": "museum-fuer-naturkunde-berlin",
+   "address": "Invalidenstraße 43, 10115 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/node/538692583"
+  },
+  {
+   "id": "juedisches-museum-berlin",
+   "address": "Lindenstraße 9-14, 10969 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/way/24649550"
+  },
+  {
+   "id": "deutsches-historisches-museum-berlin",
+   "address": "Unter den Linden 2, 10117 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/node/3203167561"
+  },
+  {
+   "id": "deutsches-spionagemuseum-berlin",
+   "address": "Leipziger Platz 9, 10117 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/node/3749451170"
+  },
+  {
+   "id": "ddr-museum-berlin",
+   "address": "Karl-Liebknecht-Straße 1, 10178 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/way/175149971"
+  },
+  {
+   "id": "john-f-kennedy-center-for-the-performing-arts",
+   "address": "2700 F Street Northwest, Washington, DC 20566, USA",
+   "osm": "https://www.openstreetmap.org/way/66418634"
+  },
+  {
+   "id": "national-museum-of-american-history-smithsonian",
+   "address": "1300 Constitution Avenue Northwest, Washington, DC 20423, USA",
+   "osm": "https://www.openstreetmap.org/way/445808462"
+  },
+  {
+   "id": "national-museum-of-natural-history-smithsonian",
+   "address": "1000 Madison Drive Northwest, Washington, DC 20560, USA",
+   "osm": "https://www.openstreetmap.org/way/66418787"
+  },
+  {
+   "id": "lincoln-center-for-the-performing-arts",
+   "address": "10 Jaffe Drive, New York, NY 10023, USA",
+   "osm": "https://www.openstreetmap.org/way/86216911"
+  },
+  {
+   "id": "pinchukartcentre",
+   "address": "Baseina Street 2, Kyiv 01003, Ukraine",
+   "osm": "https://www.openstreetmap.org/node/742273893"
+  },
+  {
+   "id": "coleccion-de-arte-amalia-lacroze-de-fortabat",
+   "address": "Pierina Dealessi 141, C1107CCC Buenos Aires, Argentina",
+   "osm": "https://www.openstreetmap.org/way/53638821"
+  },
+  {
+   "id": "museo-nacional-de-artes-visuales",
+   "address": "Avenida Tomás Giribaldi 2283, 11311 Montevideo, Uruguay",
+   "osm": "https://www.openstreetmap.org/way/175956021"
+  },
+  {
+   "id": "kharkiv-municipal-gallery",
+   "address": "Chernyshevska Street 15, Kharkiv 61057, Ukraine",
+   "osm": "https://www.openstreetmap.org/node/1699479298"
+  },
+  {
+   "id": "mystetskyi-arsenal",
+   "address": "Ivana Mazepy Street 10-12, Kyiv 01010, Ukraine",
+   "osm": "https://www.openstreetmap.org/relation/8818397"
+  },
+  {
+   "id": "national-art-museum-of-ukraine",
+   "address": "Mykhaila Hrushevskoho Street 6, Kyiv 01001, Ukraine",
+   "osm": "https://www.openstreetmap.org/way/62805191"
+  },
+  {
+   "id": "museo-de-arte-de-puerto-rico",
+   "address": "299 Avenida de Diego, San Juan, PR 00909, Puerto Rico",
+   "osm": "https://www.openstreetmap.org/way/196598864"
+  },
+  {
+   "id": "bienal-de-cuenca",
+   "address": "Simón Bolívar 13-81, 010208 Cuenca, Ecuador",
+   "osm": "https://www.openstreetmap.org/way/1184900130"
+  },
+  {
+   "id": "pinto-art-museum",
+   "address": "1 Sierra Madre Street, Antipolo 1880, Philippines",
+   "osm": "https://www.openstreetmap.org/node/12455411743"
+  },
+  {
+   "id": "west-bund-museum",
+   "address": "2600 Longteng Avenue, Shanghai 200232, China",
+   "osm": "https://www.openstreetmap.org/way/745277168"
+  },
+  {
+   "id": "national-visual-arts-gallery",
+   "address": "2 Jalan Temerloh, Kuala Lumpur 53200, Malaysia",
+   "osm": "https://www.openstreetmap.org/way/428954061"
+  },
+  {
+   "id": "national-art-museum-of-china",
+   "address": "1 May 4th Street, Beijing 100010, China",
+   "osm": "https://www.openstreetmap.org/way/131710744"
+  },
+  {
+   "id": "bangkok-kunsthalle",
+   "address": "599 Soi Phantha Chit, Bangkok 10100, Thailand",
+   "osm": "https://www.openstreetmap.org/node/13955697790"
+  },
+  {
+   "id": "istanbul-modern",
+   "address": "Tophane İskele Caddesi 1/1, 34433 Beyoğlu, Turkey",
+   "osm": "https://www.openstreetmap.org/node/5640069827"
+  },
+  {
+   "id": "bengal-foundation",
+   "address": "Bengal Shilpalay, House 42 Road 16, Dhaka 1209, Bangladesh",
+   "osm": "https://www.openstreetmap.org/node/3127514952"
+  },
+  {
+   "id": "israel-museum",
+   "address": "11 Victor and Andrea Carter Promenade, 9218812 Jerusalem, Israel",
+   "osm": "https://www.openstreetmap.org/way/44307909"
+  },
+  {
+   "id": "tel-aviv-museum-of-art",
+   "address": "27 Shaul HaMelekh, 6423806 Tel-Aviv, Israel",
+   "osm": "https://www.openstreetmap.org/relation/15690216"
+  },
+  {
+   "id": "haifa-museum-of-art",
+   "address": "26 Shabtai Levi, 3505526 Haifa, Israel",
+   "osm": "https://www.openstreetmap.org/node/8583546417"
+  },
+  {
+   "id": "sofia-city-art-gallery",
+   "address": "Gen. Gurko 1, 1000 Sofia, Bulgaria",
+   "osm": "https://www.openstreetmap.org/way/166213221"
+  },
+  {
+   "id": "museum-of-contemporary-art-belgrade",
+   "address": "Ушће 10, 11070 Belgrade, Serbia",
+   "osm": "https://www.openstreetmap.org/way/36005092"
+  },
+  {
+   "id": "latvian-national-museum-of-art",
+   "address": "Krišjāņa Valdemāra iela 1, LV-1010 Riga, Latvia",
+   "osm": "https://www.openstreetmap.org/way/87971760"
+  },
+  {
+   "id": "riga-international-biennial-of-contemporary-art-riboca",
+   "address": "Ausekļa iela 2, LV-1010 Riga, Latvia",
+   "osm": "https://www.openstreetmap.org/node/8947363151"
+  },
+  {
+   "id": "museu-do-amanha",
+   "address": "Praça Mauá 1, Rio de Janeiro 20081-262, Brazil",
+   "osm": "https://www.openstreetmap.org/way/372720167"
+  },
+  {
+   "id": "museo-de-la-memoria-y-los-derechos-humanos",
+   "address": "Matucana 501, 8500000 Santiago, Chile",
+   "osm": "https://www.openstreetmap.org/way/80216503"
+  },
+  {
+   "id": "museo-de-la-palabra-y-la-imagen-mupi",
+   "address": "27 Avenida Norte 1140, 1102 San Salvador, El Salvador",
+   "osm": "https://www.openstreetmap.org/way/630810329"
+  },
+  {
+   "id": "gallerie-d-italia",
+   "address": "Piazza della Scala 6, 20121 Milan, Italy",
+   "osm": "https://www.openstreetmap.org/node/2324825968"
+  },
+  {
+   "id": "galleria-nazionale-d-arte-moderna-e-contemporanea",
+   "address": "Viale delle Belle Arti 131, 00197 Rome, Italy",
+   "osm": "https://www.openstreetmap.org/relation/2980622"
+  },
+  {
+   "id": "onassis-stegi",
+   "address": "Πάροδος Συγγρού 107-109, 117 45 Athens, Greece",
+   "osm": "https://www.openstreetmap.org/way/233898764"
+  },
+  {
+   "id": "deste-foundation-for-contemporary-art",
+   "address": "Εμμανουήλ Παππά 11, 142 34 Municipality of Nea Ionia, Greece",
+   "osm": "https://www.openstreetmap.org/way/721706039"
+  },
+  {
+   "id": "nicosia-municipal-arts-centre-nimac",
+   "address": "19 Palias Ilektrikis, 1016 Nicosia, Cyprus",
+   "osm": "https://www.openstreetmap.org/way/977529307"
+  },
+  {
+   "id": "national-gallery-alexandros-soutzos-museum",
+   "address": "Βασιλέως Κωνσταντίνου 50, 116 34 Athens, Greece",
+   "osm": "https://www.openstreetmap.org/way/60438321"
+  },
+  {
+   "id": "franco-namibian-cultural-centre-fncc",
+   "address": "Robert Mugabe Avenue 118, 10005 Windhoek, Namibia",
+   "osm": "https://www.openstreetmap.org/way/751007763"
+  },
+  {
+   "id": "national-museum-of-china",
+   "address": "16 East Chang'an Street, Beijing 100006, China",
+   "osm": "https://www.openstreetmap.org/relation/8607825"
+  },
+  {
+   "id": "tuol-sleng-genocide-museum",
+   "address": "Street 113 13, 120104 Khan Boeng Keng Kang, Cambodia",
+   "osm": "https://www.openstreetmap.org/way/222235363"
+  },
+  {
+   "id": "museo-casa-sobre-el-arroyo-casa-del-puente",
+   "address": "Quintana 3998, B7602GGC Mar del Plata, Argentina",
+   "osm": "https://www.openstreetmap.org/node/3444725428"
+  },
+  {
+   "id": "villa-beer",
+   "address": "Wenzgasse 12, 1130 Vienna, Austria",
+   "osm": "https://www.openstreetmap.org/way/219244649"
+  },
+  {
+   "id": "domenig-steinhaus",
+   "address": "Uferweg 31, 9552 Stiegl, Austria",
+   "osm": "https://www.openstreetmap.org/way/151692618"
+  },
+  {
+   "id": "brummel-house-adolf-loos-in-pilsen",
+   "address": "Husova 741/58, 301 00 Pilsen, Czechia",
+   "osm": "https://www.openstreetmap.org/node/9893929195"
+  },
+  {
+   "id": "villa-muller",
+   "address": "Nad Hradním vodojemem 642/14, 162 00 Prague, Czechia",
+   "osm": "https://www.openstreetmap.org/way/31985572"
+  },
+  {
+   "id": "villa-tugendhat",
+   "address": "Černopolní 237/45, 613 00 Brno, Czechia",
+   "osm": "https://www.openstreetmap.org/way/50555386"
+  },
+  {
+   "id": "gallen-kallela-museum",
+   "address": "Gallen-Kallelan tie 27, 02600 Espoo, Finland",
+   "osm": "https://www.openstreetmap.org/way/29421642"
+  },
+  {
+   "id": "didrichsen-art-museum",
+   "address": "Kuusilahdenkuja 1, 00340 Helsinki, Finland",
+   "osm": "https://www.openstreetmap.org/way/31984997"
+  },
+  {
+   "id": "hvittrask",
+   "address": "Hvitträskintie 166, 02440 Kirkkonummi, Finland",
+   "osm": "https://www.openstreetmap.org/way/282791819"
+  },
+  {
+   "id": "muuratsalo-experimental-house",
+   "address": "Melalammentie 2, 40900 Jyväskylä, Finland",
+   "osm": "https://www.openstreetmap.org/way/1341918201"
+  },
+  {
+   "id": "villa-mairea",
+   "address": "Pikkukoivukuja 20, 29600 Pori, Finland",
+   "osm": "https://www.openstreetmap.org/way/959169859"
+  },
+  {
+   "id": "villa-skeppet",
+   "address": "Snäcksundsvägen 8, 10600 Raseborg, Finland",
+   "osm": "https://www.openstreetmap.org/way/455936875"
+  },
+  {
+   "id": "villa-savoye",
+   "address": "82 Rue de Villiers, 78300 Poissy, France",
+   "osm": "https://www.openstreetmap.org/way/38327851"
+  },
+  {
+   "id": "villa-cavrois",
+   "address": "60 Avenue John Fitzgerald Kennedy, 59170 Croix, France",
+   "osm": "https://www.openstreetmap.org/way/85286611"
+  },
+  {
+   "id": "haus-rabe",
+   "address": "Ebertstraße 26, 04442 Zwenkau, Germany",
+   "osm": "https://www.openstreetmap.org/node/6661599286"
+  },
+  {
+   "id": "skulpturenpark-waldfrieden",
+   "address": "Hirschstraße 12, 42285 Wuppertal, Germany",
+   "osm": "https://www.openstreetmap.org/way/1491805264"
+  },
+  {
+   "id": "villa-esche",
+   "address": "Parkstraße 58, 09120 Chemnitz, Germany",
+   "osm": "https://www.openstreetmap.org/way/66062584"
+  },
+  {
+   "id": "georg-kolbe-museum",
+   "address": "Sensburger Allee 25, 14055 Berlin, Germany",
+   "osm": "https://www.openstreetmap.org/way/72509827"
+  },
+  {
+   "id": "hohenhof-osthaus-museum-hagen",
+   "address": "Stirnband 10, 58093 Hagen, Germany",
+   "osm": "https://www.openstreetmap.org/node/9779424475"
+  },
+  {
+   "id": "walter-rozsi-villa",
+   "address": "Bajza utca 10, 1071 Budapest, Hungary",
+   "osm": "https://www.openstreetmap.org/way/1054240860"
+  },
+  {
+   "id": "plecnik-house",
+   "address": "Karunova ulica 4-6, 1000 Ljubljana, Slovenia",
+   "osm": "https://www.openstreetmap.org/way/178573747"
+  },
+  {
+   "id": "la-pedrera-casa-mila",
+   "address": "Carrer de Provença 261-265, 08008 Barcelona, Spain",
+   "osm": "https://www.openstreetmap.org/relation/8974896"
+  },
+  {
+   "id": "casa-broner",
+   "address": "Carrer de sa Penya 15, 07800 Ibiza, Spain",
+   "osm": "https://www.openstreetmap.org/node/3774731211"
+  },
+  {
+   "id": "villa-le-lac",
+   "address": "Route de Lavaux 21, 1802 Corseaux, Switzerland",
+   "osm": "https://www.openstreetmap.org/way/202071515"
+  },
+  {
+   "id": "van-eesteren-museum",
+   "address": "Noordzijde 31, 1064 GV Amsterdam, Netherlands",
+   "osm": "https://www.openstreetmap.org/node/5567846282"
+  },
+  {
+   "id": "museum-het-schip",
+   "address": "Oostzaanstraat 45, 1013 WG Amsterdam, Netherlands",
+   "osm": "https://www.openstreetmap.org/node/441327444"
+  },
+  {
+   "id": "chabot-museum",
+   "address": "Museumpark 11, 3015 LB Rotterdam, Netherlands",
+   "osm": "https://www.openstreetmap.org/way/54087760"
+  },
+  {
+   "id": "cuypershuis",
+   "address": "Pierre Cuypersstraat 1, 6041 XG Roermond, Netherlands",
+   "osm": "https://www.openstreetmap.org/node/514305154"
+  },
+  {
+   "id": "kijk-kubus",
+   "address": "Overblaak 70, 3011 MH Rotterdam, Netherlands",
+   "osm": "https://www.openstreetmap.org/node/2610271467"
+  },
+  {
+   "id": "huis-van-zessen",
+   "address": "West Kinderdijk 89, 2953 XP Alblasserdam, Netherlands",
+   "osm": "https://www.openstreetmap.org/way/281932442"
+  },
+  {
+   "id": "the-frank-lloyd-wright-house-in-ebsworth-park",
+   "address": "120 North Ballas Road, Kirkwood, MO 63122, USA",
+   "osm": "https://www.openstreetmap.org/way/377745185"
+  },
+  {
+   "id": "longhouse-reserve",
+   "address": "133 Hands Creek Road, Town of East Hampton, NY 11937, USA",
+   "osm": "https://www.openstreetmap.org/way/472768011"
+  },
+  {
+   "id": "alice-austen-house",
+   "address": "2 Hylan Boulevard, New York, NY 10305, USA",
+   "osm": "https://www.openstreetmap.org/way/244060305"
+  },
+  {
+   "id": "liljestrand-house",
+   "address": "3300 Tantalus Drive, East Honolulu, HI 96822, USA",
+   "osm": "https://www.openstreetmap.org/way/486891894"
+  },
+  {
+   "id": "the-gamble-house",
+   "address": "4 Westmoreland Place, Pasadena, CA 91103, USA",
+   "osm": "https://www.openstreetmap.org/way/386045870"
+  },
+  {
+   "id": "renee-chaim-gross-foundation",
+   "address": "526 LaGuardia Place, New York, NY 10012, USA",
+   "osm": "https://www.openstreetmap.org/node/5509996164"
+  },
+  {
+   "id": "78-derngate",
+   "address": "78 Derngate, Northampton NN1 1UH, UK",
+   "osm": "https://www.openstreetmap.org/way/506664677"
+  },
+  {
+   "id": "museo-napoleonico-de-la-habana",
+   "address": "San Miguel 1159, 10400 Havana, Cuba",
+   "osm": "https://www.openstreetmap.org/way/23905399"
+  },
+  {
+   "id": "museo-nacional-de-la-musica",
+   "address": "Capdevila 1, 10202 Havana, Cuba",
+   "osm": "https://www.openstreetmap.org/way/23945173"
+  },
+  {
+   "id": "museo-de-arte-colonial",
+   "address": "San Ignacio 61, 10102 Havana, Cuba",
+   "osm": "https://www.openstreetmap.org/way/39328021"
+  },
+  {
+   "id": "museo-nacional-de-artes-decorativas",
+   "address": "Calle 17 502, 10424 Havana, Cuba",
+   "osm": "https://www.openstreetmap.org/way/230116692"
+  },
+  {
+   "id": "fundacion-ludwig-de-cuba",
+   "address": "Calle 13 509, 10424 Havana, Cuba",
+   "osm": "https://www.openstreetmap.org/node/3494658850"
+  },
+  {
+   "id": "museo-de-la-ciudad-de-la-habana",
+   "address": "Tacón 1, 10102 Havana, Cuba",
+   "osm": "https://www.openstreetmap.org/relation/161499"
+  },
+  {
+   "id": "egrem",
+   "address": "3ra (Rotonda de Miramar) 1008, 11300 Havana, Cuba",
+   "osm": "https://www.openstreetmap.org/node/4269938704"
+  },
+  {
+   "id": "museo-provincial-emilio-bacardi-moreau",
+   "address": "Pío Rosado (Carnicería) 552, 90109 Santiago de Cuba, Cuba",
+   "osm": "https://www.openstreetmap.org/way/39075239"
+  },
+  {
+   "id": "museo-romantico-de-trinidad",
+   "address": "Calle Fernando Hernández Echerri (Cristo) 52, 62600 Trinidad, Cuba",
+   "osm": "https://www.openstreetmap.org/node/13639389704"
+  },
+  {
+   "id": "american-museum-of-the-cuban-diaspora",
+   "address": "1200 Southwest 22nd Street, Miami, FL 33145, USA",
+   "osm": "https://www.openstreetmap.org/way/435738306"
+  },
+  {
+   "id": "victory-museum-central-museum-of-the-great-patriotic-war",
+   "address": "площадь Победы 3, Moscow 121293, Russia",
+   "osm": "https://www.openstreetmap.org/relation/2219994"
+  },
+  {
+   "id": "house-of-terror-terror-haza",
+   "address": "Andrássy út 60, 1062 Budapest, Hungary",
+   "osm": "https://www.openstreetmap.org/relation/2203495"
+  },
+  {
+   "id": "museum-of-the-second-world-war",
+   "address": "Plac Władysława Bartoszewskiego 1, 80-862 Gdańsk, Poland",
+   "osm": "https://www.openstreetmap.org/relation/6808053"
+  },
+  {
+   "id": "war-remnants-museum",
+   "address": "28 Vo Van Tan Street, Ho Chi Minh City 72421, Vietnam",
+   "osm": "https://www.openstreetmap.org/way/186249226"
+  },
+  {
+   "id": "ho-chi-minh-museum",
+   "address": "19 Ngoc Ha Street, Hà Nội 11120, Vietnam",
+   "osm": "https://www.openstreetmap.org/way/37629143"
+  },
+  {
+   "id": "palazzo-delle-esposizioni",
+   "address": "Via Nazionale 194, 00184 Rome, Italy",
+   "osm": "https://www.openstreetmap.org/way/51930840"
+  },
+  {
+   "id": "chiang-kai-shek-memorial-hall",
+   "address": "21 Zhongshan South Road, Taipei 10048, Taiwan",
+   "osm": "https://www.openstreetmap.org/way/1052759757"
+  },
+  {
+   "id": "national-museum-of-the-history-of-ukraine-in-the-second-world-war",
+   "address": "Novonavodnytska Street 24-27, Kyiv 01051, Ukraine",
+   "osm": "https://www.openstreetmap.org/way/158427185"
+  },
+  {
+   "id": "deutsches-hygiene-museum",
+   "address": "Lingnerplatz 1, 01069 Dresden, Germany",
+   "osm": "https://www.openstreetmap.org/relation/5651"
+  },
+  {
+   "id": "museum-of-yugoslavia",
+   "address": "Михаила Мике Јанковића 6, 11000 Belgrade, Serbia",
+   "osm": "https://www.openstreetmap.org/way/603893007"
+  },
+  {
+   "id": "national-history-museum",
+   "address": "Skanderbeg Square 7, 1001 Tirana, Albania",
+   "osm": "https://www.openstreetmap.org/relation/21804933"
+  },
+  {
+   "id": "museo-de-america",
+   "address": "Avenida de los Reyes Católicos 6, 28040 Madrid, Spain",
+   "osm": "https://www.openstreetmap.org/relation/1621002"
+  },
+  {
+   "id": "military-museum-of-the-chinese-people-s-revolution",
+   "address": "9 Fuxing Road, Beijing 100038, China",
+   "osm": "https://www.openstreetmap.org/relation/963097"
+  },
+  {
+   "id": "vietnam-military-history-museum",
+   "address": "Km 6+500 Thang Long Avenue, Hà Nội 12008, Vietnam",
+   "osm": "https://www.openstreetmap.org/way/1148571536"
+  },
+  {
+   "id": "wereldmuseum-amsterdam-former-tropenmuseum",
+   "address": "Linnaeusstraat 2, 1092 CK Amsterdam, Netherlands",
+   "osm": "https://www.openstreetmap.org/node/26611707"
+  },
+  {
+   "id": "national-palace-museum",
+   "address": "221 Zhishan Road Section 2, Taipei 111, Taiwan",
+   "osm": "https://www.openstreetmap.org/way/827791918"
+  },
+  {
+   "id": "an-tkabir-ataturk-mausoleum-and-museum",
+   "address": "Akdeniz Caddesi 31, 06570 Ankara, Turkey",
+   "osm": "https://www.openstreetmap.org/relation/15087280"
+  },
+  {
+   "id": "museum-of-the-macedonian-struggle",
+   "address": "Iljo Vojvoda 1, 1000 Skopje, North Macedonia",
+   "osm": "https://www.openstreetmap.org/way/172180530"
+  }
+ ],
+ "moved": [
+  {
+   "id": "moscow-museum-of-modern-art-mmoma-moscow",
+   "km": 0.08
+  },
+  {
+   "id": "center-of-contemporary-art-tbilisi-tbilisi-triennial-tbilisi",
+   "km": 3.0
+  },
+  {
+   "id": "latvian-national-museum-of-art",
+   "km": 0.06
+  },
+  {
+   "id": "museum-of-the-second-world-war",
+   "km": 0.18
+  }
+ ],
+ "review": [],
+ "skipped": {
+  "no house number or street": 308,
+  "not found": 387,
+  "name match not a venue, or checked and wrong": 9
+ }
+}

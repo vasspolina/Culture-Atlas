@@ -1,0 +1,192 @@
+[
+ {
+  "id": "kistefos",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 18,
+   "staff_kind": "full-time equivalent",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://museumsforbundet.no/wp-content/uploads/2026/03/Tidligstatistikk-museumsbesok-2025.pdf",
+    "https://www.kistefosmuseum.com/uploads/documents/05564-Kistefos-Museum-arsrapport-2025-SKJERM.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors come from the Norwegian Museum Association early statistics table (page 1, Kistefos-Museet, 2025: 89,300), which is stored in place of the rounded 90,000 in the museum's annual report 2025 (PDF page 31); staff is the 18 \"antall utførte årsverk\" in note 3 of the annual report 2025 (PDF page 35), a full-time equivalent count for the foundation."
+ },
+ {
+  "id": "riddoduottarmuseat-karasjok",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": 24,
+   "staff_kind": "full-time equivalent",
+   "staff_year": "2025",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://rdm.no/wp-content/uploads/2026/04/Arsregnskap-og-styrets-beretning-2025-2.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "The board report 2025 (PDF page 5) states that RDM grew to 24 årsverk, counted for the whole organisation with its six sites."
+ },
+ {
+  "id": "s-mi-center-for-contemporary-art-s-mi-d-iddaguovdd-karasjok",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "amandus-festival-lillehammer",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "astrup-fearnley-museet",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "fotogalleriet-oslo",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": "Finance: the audited accounts 2025 in the annual report (PDF page 58, a scanned page) give sum driftsinntekter 6,102,525, sum driftskostnader 6,142,970 and egne inntekter 417,875, all operating lines because financial income of 43,483 and costs of 5,945 are listed separately."
+ },
+ {
+  "id": "kunstnernes-hus-oslo",
+  "scale": {
+   "visitors": 76982,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://kunstnernesh-site.files.svdcdn.com/production/A%CC%8Arsrapport-2024-FINAL.pdf?dm=1746015823"
+   ]
+  },
+  "finance": null,
+  "basis": "The annual report 2024 key figures table (PDF page 12) gives \"Besøk totalt\" 76,982 visits for 2024, counted as visits to the house including exhibitions, cinema and events."
+ },
+ {
+  "id": "munch-oslo",
+  "scale": {
+   "visitors": 774556,
+   "visitors_year": "2025",
+   "staff": 239,
+   "staff_kind": "employees",
+   "staff_year": "2026",
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.munch.no/globalassets/arsberetninger/504-munchmuseet-arsberetning-2025.pdf",
+    "https://museumsforbundet.no/wp-content/uploads/2026/03/Tidligstatistikk-museumsbesok-2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Visitors are the 774,556 visitors with a ticket in 2025 (annual report 2025, PDF page 11 table, matching the Museum Association table), not the nearly 1,150,000 who entered the building; staff is the 239 employees counted on 1 January 2026 (PDF page 7), which includes engasjement and hourly contracts."
+ },
+ {
+  "id": "nasjonalmuseet-national-museum-of-norway",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "uks-unge-kunstneres-samfund-oslo",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": "Finance: the Regnskapsregisteret entry for org. nr 940426987 (named on uks.no/about) lists 2025 sumDriftsinntekter 8,494,701, sumDriftskostnad 8,514,412 and sumEgenkapital 863,925, operating lines with financial items of 451 and 717 separate."
+ },
+ {
+  "id": "kunsthall-stavanger-stavanger",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "nordnorsk-kunstmuseum-troms",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

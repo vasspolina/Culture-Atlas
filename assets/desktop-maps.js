@@ -201,6 +201,20 @@
       syncSearch();
     });
 
+    // ---- The page's name, under the layer chips -----------------------------------------------------------------
+    // The header's brand button is hidden in this layout, so its name is set again here; a click does what that button did.
+    if (!$('gmdTitle')) {
+      const title = document.createElement('h1');
+      title.id = 'gmdTitle';
+      const tb = document.createElement('button');
+      tb.type = 'button';
+      tb.textContent = 'Leaving it on the table';
+      tb.title = 'Back to the world view';
+      tb.addEventListener('click', () => { const b = $('topBrandLogoBtn'); if (b) b.click(); });
+      title.appendChild(tb);
+      document.body.appendChild(title);
+    }
+
     // ---- Layer chips beside the box ------------------------------------------------------------------------------
     // Each chip is a map layer from the Layers menu and presses that layer's own switch, so the two always agree.
     const chips = document.createElement('div');
@@ -208,7 +222,8 @@
     chips.setAttribute('role', 'toolbar');
     chips.setAttribute('aria-label', 'Map layers');
     document.body.appendChild(chips);
-    const layerInputs = () => [...document.querySelectorAll('#layersControl input[data-layer]')];
+    // A section marked data-no-chips (the funding views) stays in the Layers menu only, except a switch marked data-chip.
+    const layerInputs = () => [...document.querySelectorAll('#layersControl input[data-layer]')].filter((cb) => cb.hasAttribute('data-chip') || !cb.closest('[data-no-chips]'));
     function buildChips() {
       const list = layerInputs();
       if (!list.length) return false;
@@ -222,6 +237,9 @@
         b.className = 'gmd-chip';
         b.dataset.layer = cb.dataset.layer;
         b.textContent = name.length > 28 ? cb.dataset.layer : name;
+        // The chip wears its layer's colour, the same one as its row in the Layers menu.
+        const col = label && label.style.getPropertyValue('--layer-color');
+        if (col) { b.style.setProperty('--layer-color', col); b.classList.add('has-color'); }
         b.addEventListener('click', () => {
           const cur = document.querySelector('#layersControl input[data-layer="' + cb.dataset.layer + '"]');
           if (cur) cur.click();

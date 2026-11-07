@@ -1,10 +1,16 @@
 # Publishes the site to the gh-pages branch on every push to main, so the live
-# site can never fall behind main. Pages keeps serving gh-pages as before.
+# site can never fall behind main, and once a day on a schedule, so the latest-reports feed and the alerts it raises
+# (assets/live.json, assets/live-stamp.json) are rebuilt every day even when nothing was pushed. Pages keeps serving
+# gh-pages as before.
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
+  # Every day at 05:17 UTC (off the hour, where GitHub's scheduled runs queue). A scheduled run builds main, the
+  # default branch. GitHub pauses scheduled workflows after 60 days with no activity in the repository.
+  schedule:
+    - cron: '17 5 * * *'
   workflow_dispatch:
 
 permissions:
@@ -20,8 +26,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # The latest reports (assets/live.json and its stamp) are rebuilt from institutions.json on every deploy, so the
-      # file open pages check every minute is never behind the records.
+      # The latest reports (assets/live.json and its stamp) are rebuilt from institutions.json on every deploy, and the
+      # daily scheduled run repeats it, so the file open pages check every minute is never behind the records and its
+      # stamp moves at least once a day.
+      # No statement twice: a record that repeats a sentence across its fields, or a broken repeat filter, stops the deploy.
+      # Fix with python3 tools/check_repetition.py --fix, then re-embed (tools/embed_data.py).
+      - name: Check the records and the repeat filter for repetition
+        run: |
+          python3 tools/check_repetition.py --max 0
+          node --test tests/repeats.test.mjs
+
       - name: Rebuild the latest-reports feed from the records
         run: python3 tools/build_live_feed.py
 

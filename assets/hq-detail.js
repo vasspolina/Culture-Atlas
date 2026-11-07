@@ -191,7 +191,9 @@
 
   function fill(e) {
     const p = panel, ready = hq().loaded();
-    const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this record' }, '×');
+    const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this record' });
+    // A drawn cross, not the × character: the glyph sat low and small in its box and the hover square was off its centre.
+    close.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
     close.addEventListener('click', () => closeRecord(true));
     const title = h('div', { class: 'hq-head' }, h('div', null, h('p', { class: 'hq-kind', text: hq().kindLabel(e) }), h('h2', { id: 'hqPanelTitle', class: 'dossier-main-heading', text: e.n })), close);
     const ask = h('button', { type: 'button', class: 'record-action', text: 'Ask in chat' });

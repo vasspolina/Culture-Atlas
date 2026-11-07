@@ -194,10 +194,15 @@ def clean(records, report=None):
             kept.append(r)                     # the keeper is not in the data; the record stays as it is
             bump('duplicate_keeper_missing')
     records[:] = kept
+    # A value with a cited source for that field (field_sources) is not filler, however many records share it:
+    # "Free" or "Tue–Sun 10:00–18:00; closed Mon" read from a museum's own OpenStreetMap entry is true of many museums.
+    # Cited values are left out of the count too, so they cannot push an uncited one over the line.
+    def cited(r, f):
+        return bool(((r.get('field_sources') or {}).get(f) or {}).get('urls'))
     for f in TEXT:
-        counts = collections.Counter(norm(r[f], r) for r in records if r.get(f))
+        counts = collections.Counter(norm(r[f], r) for r in records if r.get(f) and not cited(r, f))
         for r in records:
-            if r.get(f) and counts[norm(r[f], r)] >= 5:
+            if r.get(f) and not cited(r, f) and counts[norm(r[f], r)] >= 5:
                 del r[f]
                 bump(f)
     for r in records:
@@ -313,8 +318,14 @@ def clean(records, report=None):
         for field, text in (corrections.get(r['id']) or {}).items():
             r[field] = text
             bump('corrected_after_checking')
-    # The Clean Funding Grade is computed last, from the cleaned flags and sources (tools/grade_funding.py).
     sys.path.insert(0, str(Path(__file__).resolve().parent))
+    # No statement twice in a record: a sentence another field already gives is taken out of the later field (tools/check_repetition.py).
+    import check_repetition
+    for r in records:
+        n = len(check_repetition.check_record(r, fix=True))
+        if n:
+            report['repeated_statement'] = report.get('repeated_statement', 0) + n
+    # The Clean Funding Grade is computed last, from the cleaned flags and sources (tools/grade_funding.py).
     import grade_funding
     for k, n in grade_funding.apply(records).items():
         report['grade ' + k] = n
