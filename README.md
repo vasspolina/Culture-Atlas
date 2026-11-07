@@ -292,7 +292,7 @@ Each record with an independently sourced funder roster carries a rating from A 
 | D | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
 | F | Multiple flagged funders, or a flagged funder with a disputed record | More than one flagged funder category, or a flagged funder plus a documented objection |
 
-Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating on its colour block with the sentence that decided it (`grade_basis`); the map has no layer for the rating (removed 2 Nov 2026); the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
+Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating at its head as the letter in a dot of the grade's colour (green A, teal B, yellow C, orange D, red F; black letters, a 1px ink edge), and the Funding section opens with the same mark, the grade's meaning and the sentence that decided it (`grade_basis`). Every space, rated or not, has an i button beside its grade that opens the A to F scale with this space's step marked (6 Nov 2026); the phone sheet's rating line has it too. The map has no layer for the rating (removed 2 Nov 2026); the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
 
 ## Verification & Methodology
 
