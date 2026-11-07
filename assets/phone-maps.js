@@ -647,7 +647,9 @@
           rating.innerHTML = '<span class="gm-grade-dot" style="--gm-dot:' + esc(g.mark || g.col) + '" aria-hidden="true">' + esc(g.letter) + '</span>'
             // One line, as a rating is: the label up to its first clause ("Funders listed; no funders flagged" reads
             // "Funders listed"), and the whole label is the line's title.
-            + '<span class="gm-grade-text" title="' + esc(g.label) + '">Grade ' + esc(g.letter) + ' · ' + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
+            // The letter is in the dot already, so the words beside it do not say it again (user, 7 Nov 2026: "delete slop");
+            // a screen reader still hears the grade.
+            + '<span class="gm-grade-text" title="' + esc(g.label) + '"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Grade ' + esc(g.letter) + '. </span>' + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
         } else {
           rating.innerHTML = status ? '<span class="gm-grade-text">' + esc(status) + '</span>' : '';
         }
@@ -661,8 +663,11 @@
         let web = '';
         try { web = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || ''); } catch (_) { web = inst.website || ''; }
         // The address row is the street address only: without one it would say the place line again (and "Windhoek, Namibia,
-        // Namibia", since the location already names the country).
-        const place = inst.address || '';
+        // Namibia", since the location already names the country). And when the record's overview opens with the street itself
+        // ("Natural history museum at 200 Central Park West in Theodore Roosevelt Park ..."), the row would say it twice over.
+        const street = String(inst.address || '').split(',')[0].trim();
+        const overview = (((inst.details || {}).overview) || []).slice(0, 2).join(' ');
+        const place = street.length > 4 && overview.includes(street) ? '' : (inst.address || '');
         const rows = [
           ['place', place],
           ['hours', inst.opening_hours],
