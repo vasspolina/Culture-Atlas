@@ -2732,7 +2732,7 @@ div:has(>#topThemeBtn){column-gap:0}
    tier's colour (Regular on light, Light on dark, as atlasLabelWeight). A long name stops at 22ch with an ellipsis.
    Hover and keyboard focus fill the badge with the tier's colour and set the type in the ground's colour: the same pair turned
    over, so the contrast is what it was at rest (tier ink on white 5:1 or better, on black 11:1 or better), and the whole name opens out.
-   Selected is larger (15px, 26px tall; was 18px) and solid, ink on paper turned over, black on white in the dark. */
+   Selected is a step larger (13px, 22px tall; user, 6 Nov 2026: "the selected badge should be smaller too"; was 15px, before that 18px) and solid, ink on paper turned over, black on white in the dark. */
 :root:root:root:root:root:root[data-theme] .inst-pin-label{height:20px;padding:0 8px;gap:0;border-radius:7px;font:400 12px/18px var(--sans);letter-spacing:.01em;box-sizing:border-box;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),opacity .25s var(--ease)}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{font-weight:300}
 :root:root:root:root:root:root[data-theme] .inst-pin-label .inst-pin-label-name{display:block;max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -2740,7 +2740,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label:hover,:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label:focus-visible,:root:root:root:root:root:root[data-theme="dark"] .custom-inst-pin:hover .inst-pin-label{color:#000}
 :root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible{outline:2px solid var(--lc);outline-offset:2px}
 :root:root:root:root:root:root[data-theme] .inst-pin-label:hover .inst-pin-label-name,:root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible .inst-pin-label-name,:root:root:root:root:root:root[data-theme] .custom-inst-pin:hover .inst-pin-label-name,:root:root:root:root:root:root[data-theme] .custom-inst-pin.popup-active .inst-pin-label-name{max-width:none}
-:root:root:root:root:root:root[data-theme] .custom-inst-pin.popup-active .inst-pin-label{height:26px;padding:0 12px;font-size:15px;line-height:24px;background:#000;border-color:#000;color:#fff;opacity:1;pointer-events:auto;z-index:9998}
+:root:root:root:root:root:root[data-theme] .custom-inst-pin.popup-active .inst-pin-label{height:22px;padding:0 10px;font-size:13px;line-height:20px;background:#000;border-color:#000;color:#fff;opacity:1;pointer-events:auto;z-index:9998}
 :root:root:root:root:root:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label{background:#fff;border-color:#fff;color:#000}
 :root:root:root:root:root:root[data-theme] .custom-inst-pin:hover .inst-pin-label,:root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible{z-index:9999}
 
@@ -4469,6 +4469,9 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html[data-theme="dark"]) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){--cc-ink:#fff;--cc-paper:#000;--cc-ground:#161616;--cc-hint:#b6b6b6;--cc-line:#6e6e6e}
 /* While there is text the field turns green, and green carries black text in both themes. */
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):has(#workInput:not(:placeholder-shown)){--cc-ink:#000;--cc-paper:#fff;--cc-ground:var(--cc-typing);--cc-hint:#3c4a39;--cc-line:#5e7a59}
+/* Dark stays dark (user, 6 Nov 2026: "make it dark mode on dark"): while typing the field is a deep green with white text, and
+   send is a white square with a black arrow. Measured: #fff on #0f2a14 15.4:1, placeholder #b6c9b8 on it 8.8:1; edge #4f7a55 on #000 4.2:1. */
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html[data-theme="dark"]) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):has(#workInput:not(:placeholder-shown)){--cc-ink:#fff;--cc-paper:#000;--cc-ground:#0f2a14;--cc-hint:#b6c9b8;--cc-line:#4f7a55}
 
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;grid-template-rows:auto auto!important;align-items:center!important;column-gap:8px!important;row-gap:14px!important;box-sizing:border-box!important;padding:22px 20px 18px 28px!important;margin:0!important;border:1px solid var(--cc-line)!important;border-radius:14px!important;background:var(--cc-ground)!important;box-shadow:none!important;outline:0!important;transition:background-color .15s,border-color .15s}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):focus-within{border-color:var(--focus)!important}
