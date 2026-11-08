@@ -4586,6 +4586,10 @@ html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(i
 :root:root:root:root body .grade-info[hidden]{display:none!important}
 :root:root:root:root body .grade-info>p{margin:0 0 .6em;text-indent:0}
 :root:root:root:root body .grade-info>p:last-child{margin-bottom:0}
+:root:root:root:root body .grade-info>details.grade-scale-more{margin:0}
+:root:root:root:root body .grade-info>details.grade-scale-more>summary{cursor:pointer;padding:.2em 0;text-decoration:underline;text-underline-offset:.2em}
+:root:root:root:root body .grade-info>details.grade-scale-more>summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+:root:root:root:root body .grade-info>details.grade-scale-more[open]>summary{margin-bottom:.4em}
 :root:root:root:root body ul.grade-scale{list-style:none!important;margin:.2em 0 .6em!important;padding:0!important}
 :root:root:root:root body ul.grade-scale>li{display:flex!important;align-items:flex-start;gap:.6em;margin:0 0 .35em!important;padding:0!important;text-indent:0!important}
 :root:root:root:root body ul.grade-scale>li::before{content:none!important;display:none!important}

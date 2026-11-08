@@ -12793,10 +12793,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     function gradeInfoParts(inst) {
       const id = `grade-info-${++gradeInfoSeq}`;
       const n = inst.grade && GRADE[inst.grade] ? inst.grade : 0;
+      // The grade line above already says "Grade D, one flagged funder", so the panel leads with the evidence behind it (the funder and
+      // what it did, from why_flagged on a flagged record, else the deciding sentence) and keeps the A-F scale one tap further down.
+      const evidence = (n >= 4 && inst.why_flagged) || inst.grade_basis || '';
       const head = n
-        ? `<p class="no-indent">${escapeHtml(inst.name || 'This space')} is grade ${gradeLetter(n)}: ${escapeHtml(GRADE[n].label.toLowerCase())}.${inst.grade_basis ? ' ' + escapeHtml(proseEnd(inst.grade_basis)) : ''}</p>`
+        ? (evidence ? `<p class="no-indent">${escapeHtml(proseEnd(evidence))}</p>` : '')
         : `<p class="no-indent">${escapeHtml(inst.name || 'This space')} is not graded: its funders are not yet confirmed by a source independent of the space.</p>`;
-      const panel = `<div class="grade-info" id="${id}" role="region" aria-label="How funding grades work" data-repeat-ok hidden>${head}<p class="no-indent">${GRADE_INTRO} Each grade comes from what the record proves and nothing else.</p>${gradeScaleHtml(n)}<p class="no-indent">Public money alone is never a flag, so a wholly public museum sits at A or B.</p></div>`;
+      const panel = `<div class="grade-info" id="${id}" role="region" aria-label="How funding grades work" data-repeat-ok hidden>${head}<p class="no-indent">Flagged means an oil, tobacco, gambling or arms funder. Public money alone never counts.</p><details class="grade-scale-more"><summary>All grades, A to F</summary>${gradeScaleHtml(n)}</details></div>`;
       const btn = `<button type="button" class="grade-info-btn" aria-expanded="false" aria-controls="${id}" aria-label="How funding grades work"><span aria-hidden="true">i</span></button>`;
       return { btn, panel };
     }
