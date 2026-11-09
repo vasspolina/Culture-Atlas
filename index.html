@@ -7050,11 +7050,32 @@ return maplibregl$1;
 
       // Zooming out past the city exits it. Only a zoom the user made counts: a flyTo between distant cities arcs the
       // zoom out and back in, and one interrupted by a second flyTo ends mid-arc, which is not a request to leave.
-      cityVectorMap.on('zoomend', (e) => {
-        if (e && e.originalEvent && cityVectorMap.getZoom() <= 8 && isCityStreetViewActive) {
-          exitCityStreetView();
-        }
-      });
+      // The world map takes over where the street map left off (7 Nov 2026): at its closest view, over the place the
+      // street map was centred on, still, so the zoom-out carries on from the city. Before this the exit dropped the
+      // reader onto the whole world at its opening size with the slow turn running, from a street-map view of one
+      // city, while zooming in had handed over to the city in view: the way in was continuous and the way out was not.
+      // It leaves on the first zoom event under 8, not on zoomend: a run of wheel notches is one zoom to MapLibre,
+      // which ends only when the wheel stops, so the street map had gone on out to zoom 0.8 (the whole world, where
+      // MapLibre pins the centre to the equator) before zoomend came, and the hand-over landed in the Gulf of Guinea.
+      const leaveCityOnZoomOut = (e) => {
+        if (!(e && e.originalEvent && cityVectorMap.getZoom() <= 8 && isCityStreetViewActive)) return;
+        const was = typeof cityVectorMap.getCenter === 'function' ? cityVectorMap.getCenter() : null;
+        if (typeof cityVectorMap.stop === 'function') cityVectorMap.stop();
+        const cMeta = cityStreetViewCity ? ALL_CITIES_REGISTRY.find(c => matchC(c.name, cityStreetViewCity)) : null;
+        const lat = was && isFinite(was.lat) ? was.lat : (cMeta ? cMeta.lat : NaN);
+        const lon = was && isFinite(was.lng) ? was.lng : (cMeta ? cMeta.lon : NaN);
+        exitCityStreetView();
+        if (!isFinite(lat) || !isFinite(lon)) return;
+        isFlying = false;
+        rotLon = ((lon + 540) % 360) - 180;
+        rotLat = Math.max(-89, Math.min(89, lat));
+        currentRadius = targetRadius = getMaxRadius();
+        zoomAnchor = null;
+        isAutoSpinning = false;
+        globeOverZoom = 1;
+      };
+      cityVectorMap.on('zoom', leaveCityOnZoomOut);
+      cityVectorMap.on('zoomend', leaveCityOnZoomOut);
     }
 
     function resolveInstitutionByIdOrName(queryOrObj) {
@@ -10208,7 +10229,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v582';
+    const ATLAS_RELEASE = 'culture-atlas-v583';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
