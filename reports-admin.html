@@ -43,9 +43,13 @@
     </form>
     <p id="loginError" class="hidden" role="alert"></p>
     <section id="queue" class="hidden">
+      <div class="actions" role="group" aria-label="Kind of submission">
+        <button type="button" class="btn" data-kind="notes" aria-pressed="true">Reviews</button>
+        <button type="button" class="btn" data-kind="edits" aria-pressed="false">Suggested edits</button>
+      </div>
       <div class="actions" role="group" aria-label="Show notes">
         <button type="button" class="btn" data-view="PENDING" aria-pressed="true">Waiting</button>
-        <button type="button" class="btn" data-view="APPROVED" aria-pressed="false">On the atlas</button>
+        <button type="button" class="btn" data-view="APPROVED" aria-pressed="false" id="approvedViewBtn">On the atlas</button>
         <button type="button" class="btn" data-view="REJECTED" aria-pressed="false">Rejected</button>
       </div>
       <div class="actions">

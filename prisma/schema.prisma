@@ -34,3 +34,23 @@ model WhistleblowerReport {
   @@index([city])
   @@index([placeId, status])
 }
+
+// One reader's suggested change to what a record says. `field` is which part of the record it is about (funding or
+// publishes), `original` the text as the reader saw it, `proposed` their version, `source` where they learned it.
+// A suggestion changes nothing on the atlas by itself: the editor reads it and edits the record.
+model EditSuggestion {
+  id          String       @id @default(cuid())
+  placeId     String
+  institution String?
+  field       String
+  original    String
+  proposed    String
+  source      String?
+  authorLabel String?
+  status      ReportStatus @default(PENDING)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([status])
+  @@index([placeId, status])
+}

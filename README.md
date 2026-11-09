@@ -58,6 +58,12 @@ Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a f
 Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
 check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
 
+## Suggested edits
+
+Under a record's Funding, **Know something different? Edit this info** opens the record's own text in boxes (Funders, and Board and sponsors), already filled in. The reader changes what is wrong, says where they learned it (a link, or "plaque in the lobby"), may add a name for credit, and sends it. **Reset to original** puts the text back. Nothing is kept in the browser.
+
+An edit goes to the report API (`POST /api/places/:id/edits`, `EditSuggestion` in `prisma/schema.prisma`) stored PENDING, with the original text as the reader saw it, their version, the source and the time. It changes nothing on the atlas: the editor reads it on `reports-admin.html` under **Suggested edits**, edits the record in `institutions.json` if it holds up, and marks the suggestion Applied or Rejected. Edits are rate limited per sender, apart from reviews. The button stays hidden until the live API's `/healthz` answers `edits: true`, so the page can be deployed before the API is.
+
 ## Whistleblower reviews
 
 The only notes the atlas holds are whistleblower reviews. They are written on one screen and read in one place.
