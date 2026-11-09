@@ -4835,3 +4835,7 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #mobileSuggestChips .curator-suggest-chip{height:36px!important;min-height:36px!important;padding:0 14px!important;font-size:15px!important}
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #gmLocateBtn{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
 }
+
+/* The "Looking at" row the chat leaves when a record is opened mid-conversation (offerBrowseChips in index.html): a small
+   label over the record's questions, in the secondary ink, at the 14px floor. */
+#curatorMessages .curator-browse-label{margin:0 0 4px;font-size:14px;line-height:1.3;color:color-mix(in srgb,var(--ink) 65%,transparent);text-indent:0}
