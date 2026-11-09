@@ -4864,3 +4864,63 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet.is-hq-sheet #hqPanel .hq-close{display:none!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel .hq-sheet{padding-bottom:16px!important;margin-bottom:0!important}
 }
+/* ==== DESKTOP: THE CHAT LIKE THE CLAUDE DESKTOP APP (user, 9 Nov 2026: "make chat design like in Claude desktop app with same
+   sizing, keep share information button") ====
+   Replaces the Gemini look above. Sizes are the Claude app's: the conversation at 16px on a 1.6 line, your questions in a soft
+   rounded bubble at the right (16px, 16px corners), the answers as plain text with no spark, the suggestions as 14px
+   outlined pills, and a prompt card with a 20px corner and a 1px hairline: the box at 16px on top, a tool row under it with
+   Share information at the left (a quiet text button, kept) and Voice and a 32px round send button at the right.
+   The selectors open with :is() of thirty ids, so they outrank the id-stacked layers above (the deepest, #claude, is twenty-six).
+   The tab bar wraps instead of overlapping when the chat column is dragged narrow (user, 9 Nov 2026: "buttons on top
+   overlap when i resize the chat window"): the older rule set it to nowrap, and "Chat with the curator" ran under New Query. */
+@media (min-width:768px){
+  :root{--cl-line:color-mix(in srgb,var(--ink) 16%,var(--paper));--cl-bubble:#f0eee6;--cl-hover:#f5f4ee;--cl-2:#5d5b55}
+  :root[data-theme="dark"]{--cl-line:color-mix(in srgb,var(--ink) 20%,var(--paper));--cl-bubble:#2b2a27;--cl-hover:#262522;--cl-2:#b9b6ad}
+
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceContextTabBar{flex-wrap:wrap!important;row-gap:4px!important;column-gap:8px!important;padding:4px 12px 8px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceContextTabBar>div{flex-wrap:wrap!important;min-width:0!important;row-gap:4px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceContextTabBar>div:last-child{margin-left:auto}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceContextTabBar button{flex:none!important;max-width:100%!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceNewChatBtn{margin-left:0!important}
+
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorScrollArea{padding:8px 20px 16px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages{gap:0!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages :is(p,li){font-size:16px!important;line-height:1.6!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages>.curator-message-wrap:not(.has-bubble):not(#curatorHeroGreeting){margin:8px 0 20px!important;padding:0!important;font-size:16px!important;line-height:1.6!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages>.curator-message-wrap:not(.has-bubble):not(#curatorHeroGreeting)::before{content:none!important;display:none!important;animation:none!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages>.justify-end:not(.has-bubble){margin:16px 0 8px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages .user-bubble{max-width:85%!important;padding:10px 16px!important;border:0!important;border-radius:16px!important;background:var(--cl-bubble)!important;color:var(--ink)!important;font:400 16px/1.5 var(--sans)!important;box-shadow:none!important}
+
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorHeroGreeting::before{font:400 32px/1.15 var(--sans)!important;letter-spacing:-.01em!important;background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;color:var(--ink)!important;margin:0 0 20px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) .starter-prompt{border:1px solid var(--cl-line)!important;border-radius:12px!important;background:transparent!important;color:var(--ink)!important;padding:8px 14px!important;font:400 14px/1.4 var(--sans)!important;box-shadow:none!important;text-align:left!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) .starter-prompt:hover{background:var(--cl-hover)!important}
+
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workBottomDock{padding:0 16px 12px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard{padding:14px 14px 10px!important;border:1px solid var(--cl-line)!important;border-radius:20px!important;background:var(--paper)!important;box-shadow:0 4px 20px rgba(0,0,0,.05)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard:focus-within{border-color:color-mix(in srgb,var(--ink) 30%,var(--paper))!important;background:var(--paper)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #noteInputBlock{padding:0 4px 8px!important;background:transparent!important;border:0!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #workInput{min-height:48px!important;font:400 16px/1.5 var(--sans)!important;color:var(--ink)!important;background:transparent!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #chatShareBtn{height:32px!important;min-height:0!important;margin:0!important;padding:0 10px!important;border:0!important;border-radius:8px!important;background:transparent!important;color:var(--cl-2)!important;font:400 14px/1 var(--sans)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #chatShareBtn:hover,:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #chatShareBtn[aria-pressed="true"]{background:var(--cl-bubble)!important;color:var(--ink)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #curatorVoiceToggleBtn{height:32px!important;min-height:0!important;padding:0 10px!important;border:0!important;border-radius:8px!important;background:transparent!important;color:var(--cl-2)!important;font:400 14px/1 var(--sans)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #curatorVoiceToggleBtn:hover{background:var(--cl-bubble)!important;color:var(--ink)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #workSendBtn{width:32px!important;height:32px!important;min-width:32px!important;min-height:0!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--ink)!important;color:var(--paper)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #workSendBtn svg{width:14px!important;height:14px!important}
+}
+
+/* The colour key, set as the grade a museum shows under its round i button (user, 9 Nov 2026: "color key info is weird, made
+   it like on each museum tag under info button"): the grade words are plain coloured words, as .grade-word is on a record,
+   with no outlined box, and the rules open in the record's panel (.grade-info: a 1px ink box) with the scale as a list. */
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-list{column-gap:14px!important;row-gap:4px!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word){padding:0!important;border:0!important;background:transparent!important;color:var(--lc)!important;text-transform:uppercase!important;letter-spacing:1pt!important;font-weight:400!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info{margin:8px 0 0!important;padding:.75em!important;border:1px solid var(--ink)!important;background:var(--paper)!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info ul.mck-scale{margin:.4em 0 .6em!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info ul.mck-scale>li{gap:.8em!important;margin:0 0 .4em!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info ul.mck-scale>li>.mck-word{flex:none;min-width:6.6em;white-space:nowrap}
+
+@media (min-width:768px){
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #workSendBtn{top:auto!important;bottom:0!important;right:14px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard>div.justify-between{justify-content:space-between!important;align-items:center!important;padding:0 44px 0 0!important}
+}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info :is(ul.mck-scale,ul.mck-scale>li,ul.mck-scale>li>span){font-size:14px!important;line-height:1.35!important;font-weight:400!important;letter-spacing:0!important;text-indent:0!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info ul.mck-scale>li>.mck-word{letter-spacing:1pt!important;min-width:6.2em}
