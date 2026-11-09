@@ -4851,3 +4851,10 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
   @media (hover:hover){:is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:hover{background:var(--ink)!important;color:var(--paper)!important}}
 }
+
+/* The phone chat's send button is round, as in the Claude app (user, 9 Nov 2026: the triangle in a black square "looks like
+   slop"): a 40px ink circle with the up arrow in paper, 20px. The desktop keeps its Displaay corners. */
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workSendBtn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--ink)!important;color:var(--paper)!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workSendBtn svg{width:20px!important;height:20px!important}
+}
