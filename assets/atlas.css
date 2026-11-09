@@ -4773,3 +4773,27 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode>div.justify-between{padding-top:14px!important}
   :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn{margin:0 0 12px!important}
 }
+
+/* ==== PHONE: LAYERS SHEET AND COLOUR KEY (9 Nov 2026) ====
+   The Layers sheet opened under the filter chips and the colour key: #layersControl is a stacking context of its own (fixed,
+   z 44), so the sheet's z-index of 60 never reached the chips and the key beside it at 44. And the key, open by default,
+   covered the map: at 320px wide it left 31px of map between its foot and the composer. Now the sheet is the only thing up,
+   over a scrim, and the key is folded to a button of its three colours (assets/phone-maps.js adds it) until it is tapped. */
+#gmKeyBtn{display:none}
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#layersPanel:not([hidden])) #gmChips,:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#layersPanel:not([hidden])) #mapColourKey{display:none!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl:has(#layersPanel:not([hidden]))::before{content:"";position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.32)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl:has(#layersPanel:not([hidden])) #layersBtn{visibility:hidden}
+  /* Folded: the box is gone, only the button, the same 44px as Layers, with the three tier colours as dots. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey#mapColourKey#mapColourKey:not([data-gm-open]){width:44px;max-width:44px;padding:0;border:0;background:transparent;box-shadow:none}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey#mapColourKey#mapColourKey:not([data-gm-open]) :is(.mck-title,.mck-list,.mck-more){display:none!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey #gmKeyBtn{display:flex;align-items:center;justify-content:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;background:var(--paper);color:var(--ink);box-shadow:0 0 0 1px var(--ink);cursor:pointer}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey #gmKeyBtn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey .gm-key-dots{display:grid;grid-template-columns:1fr 1fr;gap:3px;width:19px;height:19px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey .gm-key-dots i{display:block;width:8px;height:8px;border-radius:50%;background:var(--tier-u)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey .gm-key-dots i[data-tier="A"]{background:var(--tier-a)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey .gm-key-dots i[data-tier="B"]{background:var(--tier-b)}
+  /* Open: the key as it was, the button in its top right corner, smaller and without its edge, to fold it again. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey#mapColourKey#mapColourKey[data-gm-open]{padding-right:44px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mapColourKey#mapColourKey#mapColourKey[data-gm-open] #gmKeyBtn{position:absolute;top:6px;right:6px;width:32px;height:32px;min-width:32px;min-height:32px;box-shadow:none;background:transparent}
+}

@@ -302,6 +302,38 @@
       layersBtn.insertBefore(icon, layersBtn.firstChild);
     }
 
+    // The sheet's scrim is #layersControl's own ::before (atlas.css, PHONE: LAYERS SHEET AND COLOUR KEY), so a tap on it lands
+    // on the control itself, which the menu's own outside-tap rule counts as inside: it closes the sheet here instead.
+    const layersControl = $('layersControl');
+    layersControl?.addEventListener('click', (e) => {
+      if (e.target === layersControl && PHONE()) layersControl.querySelector('.layers-close')?.click();
+    });
+
+    // ---- Colour key: folded to a round button at the top left, open on a tap (9 Nov 2026) --------------------------
+    // Open by default it covered the map on a phone: at 320px wide it left 31px of map between its foot and the composer.
+    // Folded it is the three tier colours in a button level with Layers, on the other side; a tap opens the key as it was,
+    // and a tap outside, Escape, Layers opening, or a record or the chat coming up folds it again. The desktop is untouched:
+    // the button and the folding are drawn only under html.gm-map (atlas.css).
+    const key = $('mapColourKey');
+    if (key) {
+      const keyBtn = document.createElement('button');
+      keyBtn.type = 'button';
+      keyBtn.id = 'gmKeyBtn';
+      keyBtn.setAttribute('aria-expanded', 'false');
+      keyBtn.setAttribute('aria-label', 'Colour key');
+      keyBtn.innerHTML = '<span class="gm-key-dots" aria-hidden="true"><i data-tier="A"></i><i data-tier="B"></i><i data-tier="U"></i></span>';
+      key.insertBefore(keyBtn, key.firstChild);
+      const isOpen = () => key.hasAttribute('data-gm-open');
+      const setKey = (open) => { key.toggleAttribute('data-gm-open', open); keyBtn.setAttribute('aria-expanded', String(open)); };
+      keyBtn.addEventListener('click', () => setKey(!isOpen()));
+      // On pointerdown, not click: the globe takes the touch and no click follows a tap on the map.
+      document.addEventListener('pointerdown', (e) => { if (isOpen() && !key.contains(e.target)) setKey(false); }, true);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen() && PHONE()) { setKey(false); keyBtn.focus(); } });
+      layersBtn?.addEventListener('click', () => setKey(false));
+      new MutationObserver(() => { if (isOpen() && (!root.classList.contains('gm-map') || root.classList.contains('gm-sheet'))) setKey(false); })
+        .observe(root, { attributes: true, attributeFilter: ['class'] });
+    }
+
     // ---- The filter row at the top of the map --------------------------------------------------------------------
     // All spaces, then one chip per filter from the Layers menu, one at a time (user, 7 Nov 2026: "make filters above
     // instead of layers, so if clicked it only shows what clicked"). assets/layers.js builds the row and owns the rule.
@@ -368,8 +400,11 @@
           const head = panel && (panel.querySelector('.record-head') || panel.querySelector('h2'));
           end = bottomOf(head);
         } else {
-          // The description now sits in the title block, above the actions, so the actions' end is the end of both.
-          end = bottomOf(actions) || bottomOf(titleBlock);
+          // The description sits in the title block, above the actions, and the tabs (Overview, Funding, Record, Sources) under
+          // them: peek ends under the tabs, whole, so the row is never cut in half at the fold and can be tapped from peek
+          // (9 Nov 2026); without tabs, under the actions or the title block.
+          const tabs = sheet.querySelector('.gm-tabs');
+          end = (tabs && !tabs.hidden ? bottomOf(tabs) : 0) || bottomOf(actions) || bottomOf(titleBlock);
         }
         // The iPhone's home strip covers the page's bottom edge (the page runs under it, viewport-fit=cover), so peek leaves
         // room for it, or the actions sat under it (user, 4 Nov 2026: text overlapped at the bottom when a space was opened).
@@ -683,7 +718,13 @@
 
       const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
       function fill() {
-        const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        // The space the sheet is about is the one its name says: the chat writes a space into the sheet without selecting it,
+        // and the selected space is then another one (9 Nov 2026: the sheet said MoMA over ARoS's grade and sources). The
+        // selected space is the fallback, for a sheet whose name is not a space's (a funder's record).
+        const sel = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        const nameText = name.textContent.trim();
+        const all = window.ALL_INSTITUTIONS || (typeof ALL_INSTITUTIONS !== 'undefined' ? ALL_INSTITUTIONS : []);
+        const inst = (sel && sel.name === nameText ? sel : null) || (nameText && all.find((i) => i.name === nameText)) || sel;
         if (!inst) return;
         // Rating line.
         let g = null;
