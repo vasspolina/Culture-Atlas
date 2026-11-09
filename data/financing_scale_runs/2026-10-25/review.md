@@ -201,4 +201,4 @@ Four checker agents re-opened every cited source for the 41 records that held a 
   range, matched to each organisation by EIN, name, address and website, and re-read by the checker. Storefront and Smack Mellon use the
   amended returns of record. Where the batch listed a ProPublica page, `finance.url` is that page; otherwise it is the IRS zip, and the
   basis names the XML object.
-- Across the stage: 9 more records with scale (5 with visitors, 4 with an area, no staff), 21 more finance blocks (12 UK, 9 US); f100 (Vietnam, Zambia, Zimbabwe) held no figure. 301 records with scale and 492 with finance in all.
+- Across the stage: 9 more records with scale (5 with visitors, 4 with an area, no staff), 21 more finance blocks (11 UK, 10 US); f100 (Vietnam, Zambia, Zimbabwe) held no figure. 301 records with scale and 492 with finance in all.
