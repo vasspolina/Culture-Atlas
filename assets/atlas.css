@@ -4857,6 +4857,13 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workSendBtn svg{width:20px!important;height:20px!important}
 }
 
+/* ==== PHONE: THE FUNDER'S RECORD IN THE SHEET (user, 9 Nov 2026: "Slop") ====
+   The sheet's cross is the only one on a funder's record (PHONE: MAPS APP hides .hq-close), but the Displaay button layer drew it
+   again with fourteen ids, so two crosses sat one under the other. And the head kept the desktop's two lines of air under it. */
+@media (max-width:767px){
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet.is-hq-sheet #hqPanel .hq-close{display:none!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel .hq-sheet{padding-bottom:16px!important;margin-bottom:0!important}
+}
 /* ==== DESKTOP: THE CHAT LIKE THE CLAUDE DESKTOP APP (user, 9 Nov 2026: "make chat design like in Claude desktop app with same
    sizing, keep share information button") ====
    Replaces the Gemini look above. Sizes are the Claude app's: the conversation at 16px on a 1.6 line, your questions in a soft
