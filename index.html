@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=590">
-  <script src="assets/config.js?v=590"></script>
-  <script src="assets/subtopic.js?v=590"></script>
-  <script src="assets/names.js?v=590"></script>
-  <script src="assets/grounding.js?v=590"></script>
-  <script src="assets/repeats.js?v=590"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=591">
+  <script src="assets/config.js?v=591"></script>
+  <script src="assets/subtopic.js?v=591"></script>
+  <script src="assets/names.js?v=591"></script>
+  <script src="assets/grounding.js?v=591"></script>
+  <script src="assets/repeats.js?v=591"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1132,7 +1132,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=590"></script>
+  <script src="assets/institutions.js?v=591"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10281,11 +10281,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v590';
+    const ATLAS_RELEASE = 'culture-atlas-v591';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=590').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=591').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17378,14 +17378,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // The header's Details button: the record sheet of the selected space, from wherever the phone is (the chat, the record
       // page, or the map with the sheet closed). It is the phone's counterpart of the desktop Details tab.
       window.atlasOpenPhoneDetails = function () {
-        const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || (typeof curatorContext !== 'undefined' && curatorContext.lastInst) || null;
-        if (window.innerWidth >= 768 || !inst) return;
+        if (window.innerWidth >= 768) return;
         // From the chat the record opens as a page of its own with a back button to the conversation (assets/phone-maps.js).
         const fromChat = document.body.dataset.mobileMode === 'chat' || (chatDrawer && !chatDrawer.classList.contains('hidden'));
+        // Which space: from the chat, the one the conversation is about (the space it last named, or was asked about), since
+        // that is what the Details button at the top of the chat promises; from the map, the selected one. The chat names a
+        // space without selecting it, so the two can differ, and the sheet was then filled for both at once (9 Nov 2026: it
+        // said MoMA over ARoS's grade, tabs and sources). Selecting the space first makes the name, the grade and the tabs one.
+        const chatInst = (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || null;
+        const sel = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        const inst = (fromChat && chatInst) || sel || chatInst;
+        if (!inst) return;
         if (isChatInputMode && typeof exitChatInputMode === 'function') exitChatInputMode(true);
         if (fromChat && typeof window.atlasMarkDetailsFromChat === 'function') window.atlasMarkDetailsFromChat();
         window.atlasCloseChat();                       // the chat and the record page give way to the map
-        if (typeof updateMobileDossier === 'function') updateMobileDossier(inst);
+        if (inst !== sel && typeof window.selectInstitution === 'function') window.selectInstitution(inst, false);
+        else if (typeof updateMobileDossier === 'function') updateMobileDossier(inst);
         if (tabDossier) tabDossier.click();            // shows the sheet over the map
         else bottomSheet?.classList.remove('hidden');
       };
@@ -21365,13 +21373,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=590"></script>
-<script src="assets/funding-views.js?v=590"></script>
-<script src="assets/layers.js?v=590"></script>
-<script src="assets/hq-detail.js?v=590"></script>
-<script src="assets/bubbles.js?v=590" defer></script>
-<script src="assets/phone-maps.js?v=590"></script>
-<script src="assets/desktop-maps.js?v=590"></script>
-<script src="assets/chat-resize.js?v=590"></script>
+<script src="assets/typeset.js?v=591"></script>
+<script src="assets/funding-views.js?v=591"></script>
+<script src="assets/layers.js?v=591"></script>
+<script src="assets/hq-detail.js?v=591"></script>
+<script src="assets/bubbles.js?v=591" defer></script>
+<script src="assets/phone-maps.js?v=591"></script>
+<script src="assets/desktop-maps.js?v=591"></script>
+<script src="assets/chat-resize.js?v=591"></script>
 </body>
 </html>
