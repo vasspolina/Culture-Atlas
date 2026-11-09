@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=595">
-  <script src="assets/config.js?v=595"></script>
-  <script src="assets/subtopic.js?v=595"></script>
-  <script src="assets/names.js?v=595"></script>
-  <script src="assets/grounding.js?v=595"></script>
-  <script src="assets/repeats.js?v=595"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=601">
+  <script src="assets/config.js?v=601"></script>
+  <script src="assets/subtopic.js?v=601"></script>
+  <script src="assets/names.js?v=601"></script>
+  <script src="assets/grounding.js?v=601"></script>
+  <script src="assets/repeats.js?v=601"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -336,24 +336,26 @@ return maplibregl$1;
       <!-- The colour key, always on the map (user, 6 Nov 2026): what the colour of a space's or a city's name says about how
            its record is graded. The same three colours as the labels (--tier-a, --tier-b, --tier-u in assets/atlas.css,
            TIER_INK below), drawn as the labels are: the word in its colour, outlined, on the map's ground. The rules are
-           those of "What the page may show" in README.md; a city's colour is the tier most of its spaces have (cityTier). -->
+           those of "What the page may show" in README.md; a city's colour is the tier most of its spaces have (cityTier).
+           The rules open from the round i button by the title, the same control and panel as the funding grade in a
+           record (.grade-info-btn / .grade-info, one click handler for both, near gradeInfoParts below). -->
       <section id="mapColourKey" aria-labelledby="mapColourKeyTitle">
-        <h2 id="mapColourKeyTitle" class="mck-title">Colour key</h2>
+        <div class="mck-head">
+          <h2 id="mapColourKeyTitle" class="mck-title">Colour key</h2>
+          <button type="button" class="grade-info-btn mck-info-btn" aria-expanded="false" aria-controls="mapColourKeyInfo" aria-label="How spaces are graded" title="How spaces are graded"><span aria-hidden="true">i</span></button>
+        </div>
         <ul class="mck-list">
           <li><span class="mck-pill" data-tier="A">Clean</span><span class="mck-desc">a source is cited</span></li>
           <li><span class="mck-pill" data-tier="B">Flagged</span><span class="mck-desc">a recorded reason</span></li>
           <li><span class="mck-pill" data-tier="U">Unverified</span><span class="mck-desc">no outside source yet</span></li>
         </ul>
-        <details class="mck-more">
-          <summary>How spaces are graded</summary>
-          <div class="mck-body">
-            <p>The colour of a name on the map is the grade of its record. It says how well the record is sourced, not a verdict on the space.</p>
-            <p><b class="mck-word" data-tier="A">Clean</b> needs at least one source outside the space&rsquo;s own website.</p>
-            <p><b class="mck-word" data-tier="B">Flagged</b> needs a recorded reason, such as a flagged funder or a protest over its funding.</p>
-            <p><b class="mck-word" data-tier="U">Unverified</b> is every other space: its record cites no source outside the space&rsquo;s own website yet.</p>
-            <p>A city takes the colour most of its spaces have. Open a space to read its record and the sources behind its grade.</p>
-          </div>
-        </details>
+        <div class="grade-info mck-info" id="mapColourKeyInfo" role="region" aria-label="How spaces are graded" data-repeat-ok hidden>
+          <p>The colour of a name on the map is the grade of its record. It says how well the record is sourced, not a verdict on the space.</p>
+          <p><b class="mck-word" data-tier="A">Clean</b> needs at least one source outside the space&rsquo;s own website.</p>
+          <p><b class="mck-word" data-tier="B">Flagged</b> needs a recorded reason, such as a flagged funder or a protest over its funding.</p>
+          <p><b class="mck-word" data-tier="U">Unverified</b> is every other space: its record cites no source outside the space&rsquo;s own website yet.</p>
+          <p>A city takes the colour most of its spaces have. Open a space to read its record and the sources behind its grade.</p>
+        </div>
       </section>
 
 
@@ -888,10 +890,11 @@ return maplibregl$1;
                   <button id="workKbCloseBtn" class="kb-close-btn" type="button" aria-label="Close the keyboard" title="Close the keyboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
 
                   <!-- Upward Arrow Send Button -->
-                  <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message">
-                    <!-- A triangle pointing up, drawn as an outline (user, 7 Nov 2026: "the chat symbol can be triangle"). -->
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 4.5l8.5 15h-17z"/>
+                  <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message" aria-label="Send message">
+                    <!-- An arrow pointing up, the same mark as the map box's send button (user, 9 Nov 2026, of the outline triangle
+                         that stood here since 7 Nov: "looks like slop"). -->
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 19V5M5 12l7-7 7 7"/>
                     </svg>
                   </button>
                 </div>
@@ -1132,7 +1135,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=595"></script>
+  <script src="assets/institutions.js?v=601"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10281,11 +10284,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v595';
+    const ATLAS_RELEASE = 'culture-atlas-v601';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=595').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=601').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12785,11 +12788,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // circle, this is slop"). Every space has an i button beside it that opens the scale, this space's step marked, and the sentence that
     // decided it (grade_basis). The same words head the Funding section and the phone sheet's rating line.
     const gradeWordHtml = (n) => GRADE[n] ? `<span class="grade-word grade-word-${n}">Grade ${GRADE[n].letter}</span>` : '';
-    const gradeShortLabel = (n) => GRADE[n] ? String(GRADE[n].label).split(/;| or /)[0].trim() : '';
-    // The grade and the sentence that decided it, as one line. The basis already says what the label says ("funders listed; no funders
-    // flagged" and then "Funders are named; amounts are not"), so where a basis is on record the label is left out (user, 7 Nov 2026:
-    // "there is also repetition in text"); the label stands in only where no basis is recorded.
-    const gradeReasonHtml = (inst, n) => inst.grade_basis ? `${gradeWordHtml(n)}. ${escapeHtml(proseEnd(inst.grade_basis))}` : `${gradeWordHtml(n)}: ${escapeHtml(GRADE[n].label.toLowerCase())}.`;
+    // The grade alone, "Grade B", and no sentence after it (user, 9 Nov 2026: "Grade B. No flagged funder or funding protest on record.
+    // Funders are named; amounts are not." - "only keep grade b"). What decided it is behind the i button.
     function gradeScaleHtml(current) {
       return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeWordHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This space</span>' : ''}</span></li>`).join('')}</ul>`;
     }
@@ -12798,10 +12798,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     function gradeInfoParts(inst) {
       const id = `grade-info-${++gradeInfoSeq}`;
       const n = inst.grade && GRADE[inst.grade] ? inst.grade : 0;
+      // The grade line above already says "Grade D, one flagged funder", so the panel leads with the evidence behind it (the funder and
+      // what it did, from why_flagged on a flagged record, else the deciding sentence) and keeps the A-F scale one tap further down.
+      const evidence = (n >= 4 && inst.why_flagged) || inst.grade_basis || '';
       const head = n
-        ? `<p class="no-indent">${escapeHtml(inst.name || 'This space')}: ${gradeReasonHtml(inst, n)}</p>`
+        ? (evidence ? `<p class="no-indent">${escapeHtml(proseEnd(evidence))}</p>` : '')
         : `<p class="no-indent">${escapeHtml(inst.name || 'This space')} is not graded: its funders are not yet confirmed by a source independent of the space.</p>`;
-      const panel = `<div class="grade-info" id="${id}" role="region" aria-label="How funding grades work" data-repeat-ok hidden>${head}<p class="no-indent">${GRADE_INTRO} Each grade comes from what the record proves and nothing else.</p>${gradeScaleHtml(n)}<p class="no-indent">Public money alone is never a flag, so a wholly public museum sits at A or B.</p></div>`;
+      const panel = `<div class="grade-info" id="${id}" role="region" aria-label="How funding grades work" data-repeat-ok hidden>${head}<p class="no-indent">Flagged means an oil, tobacco, gambling or arms funder. Public money alone never counts.</p><details class="grade-scale-more"><summary>All grades, A to F</summary>${gradeScaleHtml(n)}</details></div>`;
       const btn = `<button type="button" class="grade-info-btn" aria-expanded="false" aria-controls="${id}" aria-label="How funding grades work"><span aria-hidden="true">i</span></button>`;
       return { btn, panel };
     }
@@ -12822,7 +12825,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const { btn, panel } = gradeInfoParts(inst);
       if (inst.grade && GRADE[inst.grade]) {
         const n = inst.grade;
-        return `<p class="no-indent grade-line"><span class="grade-name">${gradeWordHtml(n)}</span><span class="grade-label">${escapeHtml(gradeShortLabel(n))}</span>${btn}</p>${panel}`;
+        return `<p class="no-indent grade-line"><span class="grade-name">${gradeWordHtml(n)}</span>${btn}</p>${panel}`;
       }
       return `<p class="no-indent grade-line is-unrated"><span class="grade-name">Not graded</span>${btn}</p>${panel}`;
     }
@@ -12992,6 +12995,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         deselectInstitution();
         return;
       }
+      offerBrowseChips(inst);
       if (typeof XRAY !== 'undefined' && XRAY.inst && XRAY.inst !== inst && typeof hideBuildingXray === 'function') hideBuildingXray();
       selectedInstitution = inst;
       // The street map's badge for this space is drawn as selected, as the globe draws its own.
@@ -13439,8 +13443,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const hasReport = d.funding_verdict || (d.funding || []).length;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
       const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
-      // The grade leads the Funding section, in its colour, with the sentence that decided it (once: the label is left out where a basis says the same).
-      const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund"><span>${gradeReasonHtml(inst, inst.grade)}</span></li>` : '';
+      // The grade leads the Funding section in its colour, on its own.
+      const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund"><span>${gradeWordHtml(inst.grade)}</span></li>` : '';
       return proseRow('Funding', escapeHtml(verdict), proseChunks(funding, 0).map(t => proseLi('', escapeHtml(t))), { fold: 4, lead });
     }
     // Scale and money: the accounts figures a filing states (inst.finance) and the size figures a source states (inst.scale), nothing estimated.
@@ -16044,6 +16048,36 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (chatStickToBottom) area.scrollTop = chatFollowTop(area); }).observe(list);
     })();
 
+    // An arrow down over the composer, as in the Claude app (user, 9 Nov 2026: "Add arrow down button to mobile chat"). It shows once
+    // the reader has scrolled more than a screenful's worth of lines up from the end, and takes the chat back to the newest line. The
+    // look, and that it is a phone's alone, is in assets/atlas.css under "CHAT: ARROW DOWN".
+    (function () {
+      const area = document.getElementById('curatorScrollArea');
+      const dock = document.getElementById('workBottomDock');
+      if (!area || !dock || document.getElementById('chatJumpBtn')) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.id = 'chatJumpBtn';
+      btn.setAttribute('aria-label', 'Scroll to the newest message');
+      btn.hidden = true;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>';
+      dock.appendChild(btn);
+      let raf = 0;
+      const update = () => { raf = 0; btn.hidden = area.scrollHeight - area.scrollTop - area.clientHeight < 160; };
+      const soon = () => { if (!raf) raf = requestAnimationFrame(update); };
+      area.addEventListener('scroll', soon, { passive: true });
+      if (typeof ResizeObserver === 'function') {
+        const ro = new ResizeObserver(soon);
+        ro.observe(area);
+        const list = document.getElementById('curatorScrollContent');
+        if (list) ro.observe(list);   // a long answer that runs on below the screen shows the arrow without a scroll
+      }
+      btn.addEventListener('click', () => {
+        chatStickToBottom = true;
+        area.scrollTo({ top: area.scrollHeight, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      });
+    })();
+
     // Where the chat rests while the newest answer is on screen. A short answer ends at the bottom. On a phone, an answer taller than the screen
     // keeps the question it answers at the top, so its first line is never cut off under the header (the Claude app does the same).
     function chatFollowTop(area) {
@@ -16366,7 +16400,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     // Removes the follow-up chips from every earlier answer, in the main chat and the phone drawer.
     function retireFollowUps() {
-      document.querySelectorAll('#curatorMessages .curator-followups, #curatorDrawerLiveStream .curator-followups').forEach(el => el.remove());
+      document.querySelectorAll('#curatorMessages .curator-followups, #curatorDrawerLiveStream .curator-followups, #curatorMessages .curator-browse-suggest').forEach(el => el.remove());
     }
     function appendUserMessage(text) {
       if (typeof curatorContext !== 'undefined') {
@@ -19836,6 +19870,43 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (out.length < n) out.push(...freshChips(n - out.length, [...out, ...avoid.filter(a => typeof a === 'string')]));
       return out.slice(0, n);
     }
+    // Suggestions while the visitor looks around (user, 9 Nov 2026: "Add suggestions to chat when someone is going around checking
+    // info with chat assistant"). Once a conversation is under way, opening a space's record from the map or the globe leaves a
+    // short "Looking at" row at the foot of the chat: the record's own questions (chipsAbout) and, when another space was opened
+    // just before, a question comparing the two, which the chat answers when two spaces are named. Only the latest row stands: a
+    // new record replaces it, and a new question retires it with the follow-ups (retireFollowUps). A space the chat itself put on
+    // the map (atlasKeepTab) gets none, since its answer already carries its chips. Clicks go through the follow-up pill handler.
+    let browseChipsTimer = 0, browseChipsLast = null;
+    function offerBrowseChips(inst) {
+      if (!inst || window.atlasKeepTab) return;
+      clearTimeout(browseChipsTimer);
+      browseChipsTimer = setTimeout(() => {
+        const hist = (typeof curatorContext !== 'undefined' && curatorContext.history) || [];
+        if (!curatorMessages || !hist.some(m => m.role === 'user')) return;
+        if (typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id !== inst.id) return;
+        if (browseChipsLast && browseChipsLast.id === inst.id) return;
+        const prev = browseChipsLast;
+        browseChipsLast = inst;
+        const lastTalk = hist.slice(-1)[0];
+        if (lastTalk && lastTalk.role === 'assistant' && typeof lastTalk.content === 'string' && lastTalk.content.includes(inst.name)) return;   // the answer above is already about this space
+        let qs = [];
+        try { qs = chipsAbout(inst, 3); } catch (e) { qs = []; }
+        if (prev && prev.id !== inst.id) qs.push(`Compare ${inst.name} and ${prev.name}`);
+        qs = qs.filter((q, i, a) => q && a.indexOf(q) === i).slice(0, 4);
+        if (!qs.length) return;
+        curatorMessages.querySelectorAll('.curator-browse-suggest').forEach(el => el.remove());
+        const div = document.createElement('div');
+        div.className = 'curator-message-wrap curator-browse-suggest my-3 w-full';
+        div.setAttribute('data-exclude-speech', 'true');
+        div.innerHTML = `
+          <div class="curator-followups mt-3 flex flex-col items-start gap-1" role="group" aria-label="Questions about ${escapeHtml(inst.name)}">
+            <p class="curator-browse-label no-indent">Looking at ${escapeHtml(inst.name)}</p>
+            ${qs.map(q => `<button type="button" class="curator-followup-pill text-left py-1" data-query="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join('')}
+          </div>`;
+        curatorMessages.appendChild(div);
+        if (typeof scrollChatToBottom === 'function') scrollChatToBottom(false);
+      }, 700);
+    }
     // The chips under a model answer (user's instruction, 4 Nov 2026: more of them, very specific, under every answer). The model
     // writes three questions about the names and figures in its own answer (<next> in queryAI); the record's own questions fill
     // the rest, so there are always four. A chip already asked, longer than 120 characters, without a question mark, or carrying an
@@ -21385,13 +21456,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=595"></script>
-<script src="assets/funding-views.js?v=595"></script>
-<script src="assets/layers.js?v=595"></script>
-<script src="assets/hq-detail.js?v=595"></script>
-<script src="assets/bubbles.js?v=595" defer></script>
-<script src="assets/phone-maps.js?v=595"></script>
-<script src="assets/desktop-maps.js?v=595"></script>
-<script src="assets/chat-resize.js?v=595"></script>
+<script src="assets/typeset.js?v=601"></script>
+<script src="assets/funding-views.js?v=601"></script>
+<script src="assets/layers.js?v=601"></script>
+<script src="assets/hq-detail.js?v=601"></script>
+<script src="assets/bubbles.js?v=601" defer></script>
+<script src="assets/phone-maps.js?v=601"></script>
+<script src="assets/desktop-maps.js?v=601"></script>
+<script src="assets/chat-resize.js?v=601"></script>
 </body>
 </html>
