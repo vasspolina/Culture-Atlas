@@ -4800,3 +4800,54 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   #layersPanel #mapColourKey#mapColourKey#mapColourKey .mck-title{margin:0;font:400 var(--fs-s)/1.2 var(--sans)!important}
   #layersPanel #mapColourKey#mapColourKey#mapColourKey .mck-info{max-height:none}
 }
+
+/* ---- Phone: a slimmer filter row, and the question chips in from the edge (user, 9 Nov 2026: "Fix mobile version design,
+   tabs are too big on top and need to scroll and bottom buttons get cut off") ----
+   The filters wrapped to three rows of 36px pills at 15px, 134px of the top of a 390px screen, with the first city labels
+   under them. They are now one row that scrolls sideways, as the suggested questions at the bottom do: 30px pills at 14px
+   (still over the 24px target size of WCAG 2.2), 12px in from each edge, so the row is 38px and the Layers button and the
+   colour key move up with it through --gmChips-h. At the bottom, an older rule (#mobileStickyInputBar>#mobileSuggestChips,
+   two ids) pulled the question row 16px past the screen's edge and padded it back by 16px, which put the first chip on
+   the very edge and cut it; the row now sits in the bar and starts on the same 12px line as the box under it. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips#gmChips#gmChips{flex-wrap:nowrap;left:0;right:0;padding:2px var(--gm-gap,12px) 6px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scroll-padding-inline:var(--gm-gap,12px);gap:6px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips#gmChips#gmChips::-webkit-scrollbar{display:none}
+  #gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip{flex:none!important;height:30px!important;min-height:30px!important;padding:0 12px!important;font-size:14px!important;line-height:1!important;border-radius:15px!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar#mobileStickyInputBar>#mobileSuggestChips#mobileSuggestChips{margin:0!important;padding:2px var(--gm-gap,12px) 6px!important;scroll-padding-inline:var(--gm-gap,12px)}
+}
+
+/* ---- Phone: sizes closer to the Claude app on a phone (user, 9 Nov 2026: "Make sizing on mobile closer to Claude on
+   mobile") ----
+   Measured before at 390px: the chat answers were 14px on a 20px line, your questions 14px, the map box 18px, the
+   filters 30px at 14px, the question chips 34px, the location button 52px. The Claude app sets its conversation at
+   about 17px on a line of about 1.45, the box at 17px, its chips about 36px at 15px and its round controls about 44px.
+   The selectors open with :is() of twenty-six ids so they outrank the id-stacked layers above (the deepest, #ty, is twenty-four). */
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream){font-size:17px!important;line-height:1.45!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,li,blockquote,dd,dt,td,th){font-size:17px!important;line-height:1.45!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,li) :is(span,a,em,strong):not(.abbr):not(.grade-word){font-size:inherit!important;line-height:inherit!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) .abbr{font-size:.9em!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,ul,ol){margin-bottom:12px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble{font-size:17px!important;line-height:1.35!important;padding:10px 16px!important;border-radius:20px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) .thinking{font-size:15px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#workInput,#chat-input){font-size:17px!important}
+  #gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip{height:32px!important;min-height:32px!important;padding:0 14px!important;font-size:15px!important;border-radius:16px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #mobileSuggestChips .curator-suggest-chip{height:36px!important;min-height:36px!important;padding:0 14px!important;font-size:15px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #gmLocateBtn{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
+}
+
+/* The "Looking at" row the chat leaves when a record is opened mid-conversation (offerBrowseChips in index.html): a small
+   label over the record's questions, in the secondary ink, at the 14px floor. */
+#curatorMessages .curator-browse-label{margin:0 0 4px;font-size:14px;line-height:1.3;color:color-mix(in srgb,var(--ink) 65%,transparent);text-indent:0}
+
+/* ---- CHAT: ARROW DOWN (user, 9 Nov 2026: "Add arrow down button to mobile chat") ----
+   The round button over the phone's composer that takes the chat back to the newest line once the reader has scrolled up
+   (index.html, #chatJumpBtn). A 40px circle on paper with a 1px ink edge, centred just above the box; the desktop has no
+   such button. hidden is set by the script while the end of the chat is in view. */
+#chatJumpBtn{display:none}
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workBottomDock{position:relative}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:not([hidden]){display:flex!important;align-items:center;justify-content:center;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink),0 2px 8px rgba(0,0,0,.12)!important;z-index:5;cursor:pointer}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
+  @media (hover:hover){:is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:hover{background:var(--ink)!important;color:var(--paper)!important}}
+}

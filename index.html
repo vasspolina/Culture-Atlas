@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=596">
-  <script src="assets/config.js?v=596"></script>
-  <script src="assets/subtopic.js?v=596"></script>
-  <script src="assets/names.js?v=596"></script>
-  <script src="assets/grounding.js?v=596"></script>
-  <script src="assets/repeats.js?v=596"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=600">
+  <script src="assets/config.js?v=600"></script>
+  <script src="assets/subtopic.js?v=600"></script>
+  <script src="assets/names.js?v=600"></script>
+  <script src="assets/grounding.js?v=600"></script>
+  <script src="assets/repeats.js?v=600"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1134,7 +1134,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=596"></script>
+  <script src="assets/institutions.js?v=600"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10304,11 +10304,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v596';
+    const ATLAS_RELEASE = 'culture-atlas-v600';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=596').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=600').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13018,6 +13018,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         deselectInstitution();
         return;
       }
+      offerBrowseChips(inst);
       if (typeof XRAY !== 'undefined' && XRAY.inst && XRAY.inst !== inst && typeof hideBuildingXray === 'function') hideBuildingXray();
       selectedInstitution = inst;
       // The street map's badge for this space is drawn as selected, as the globe draws its own.
@@ -16070,6 +16071,36 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (chatStickToBottom) area.scrollTop = chatFollowTop(area); }).observe(list);
     })();
 
+    // An arrow down over the composer, as in the Claude app (user, 9 Nov 2026: "Add arrow down button to mobile chat"). It shows once
+    // the reader has scrolled more than a screenful's worth of lines up from the end, and takes the chat back to the newest line. The
+    // look, and that it is a phone's alone, is in assets/atlas.css under "CHAT: ARROW DOWN".
+    (function () {
+      const area = document.getElementById('curatorScrollArea');
+      const dock = document.getElementById('workBottomDock');
+      if (!area || !dock || document.getElementById('chatJumpBtn')) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.id = 'chatJumpBtn';
+      btn.setAttribute('aria-label', 'Scroll to the newest message');
+      btn.hidden = true;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>';
+      dock.appendChild(btn);
+      let raf = 0;
+      const update = () => { raf = 0; btn.hidden = area.scrollHeight - area.scrollTop - area.clientHeight < 160; };
+      const soon = () => { if (!raf) raf = requestAnimationFrame(update); };
+      area.addEventListener('scroll', soon, { passive: true });
+      if (typeof ResizeObserver === 'function') {
+        const ro = new ResizeObserver(soon);
+        ro.observe(area);
+        const list = document.getElementById('curatorScrollContent');
+        if (list) ro.observe(list);   // a long answer that runs on below the screen shows the arrow without a scroll
+      }
+      btn.addEventListener('click', () => {
+        chatStickToBottom = true;
+        area.scrollTo({ top: area.scrollHeight, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      });
+    })();
+
     // Where the chat rests while the newest answer is on screen. A short answer ends at the bottom. On a phone, an answer taller than the screen
     // keeps the question it answers at the top, so its first line is never cut off under the header (the Claude app does the same).
     function chatFollowTop(area) {
@@ -16392,7 +16423,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     // Removes the follow-up chips from every earlier answer, in the main chat and the phone drawer.
     function retireFollowUps() {
-      document.querySelectorAll('#curatorMessages .curator-followups, #curatorDrawerLiveStream .curator-followups').forEach(el => el.remove());
+      document.querySelectorAll('#curatorMessages .curator-followups, #curatorDrawerLiveStream .curator-followups, #curatorMessages .curator-browse-suggest').forEach(el => el.remove());
     }
     function appendUserMessage(text) {
       if (typeof curatorContext !== 'undefined') {
@@ -19862,6 +19893,43 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (out.length < n) out.push(...freshChips(n - out.length, [...out, ...avoid.filter(a => typeof a === 'string')]));
       return out.slice(0, n);
     }
+    // Suggestions while the visitor looks around (user, 9 Nov 2026: "Add suggestions to chat when someone is going around checking
+    // info with chat assistant"). Once a conversation is under way, opening a space's record from the map or the globe leaves a
+    // short "Looking at" row at the foot of the chat: the record's own questions (chipsAbout) and, when another space was opened
+    // just before, a question comparing the two, which the chat answers when two spaces are named. Only the latest row stands: a
+    // new record replaces it, and a new question retires it with the follow-ups (retireFollowUps). A space the chat itself put on
+    // the map (atlasKeepTab) gets none, since its answer already carries its chips. Clicks go through the follow-up pill handler.
+    let browseChipsTimer = 0, browseChipsLast = null;
+    function offerBrowseChips(inst) {
+      if (!inst || window.atlasKeepTab) return;
+      clearTimeout(browseChipsTimer);
+      browseChipsTimer = setTimeout(() => {
+        const hist = (typeof curatorContext !== 'undefined' && curatorContext.history) || [];
+        if (!curatorMessages || !hist.some(m => m.role === 'user')) return;
+        if (typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id !== inst.id) return;
+        if (browseChipsLast && browseChipsLast.id === inst.id) return;
+        const prev = browseChipsLast;
+        browseChipsLast = inst;
+        const lastTalk = hist.slice(-1)[0];
+        if (lastTalk && lastTalk.role === 'assistant' && typeof lastTalk.content === 'string' && lastTalk.content.includes(inst.name)) return;   // the answer above is already about this space
+        let qs = [];
+        try { qs = chipsAbout(inst, 3); } catch (e) { qs = []; }
+        if (prev && prev.id !== inst.id) qs.push(`Compare ${inst.name} and ${prev.name}`);
+        qs = qs.filter((q, i, a) => q && a.indexOf(q) === i).slice(0, 4);
+        if (!qs.length) return;
+        curatorMessages.querySelectorAll('.curator-browse-suggest').forEach(el => el.remove());
+        const div = document.createElement('div');
+        div.className = 'curator-message-wrap curator-browse-suggest my-3 w-full';
+        div.setAttribute('data-exclude-speech', 'true');
+        div.innerHTML = `
+          <div class="curator-followups mt-3 flex flex-col items-start gap-1" role="group" aria-label="Questions about ${escapeHtml(inst.name)}">
+            <p class="curator-browse-label no-indent">Looking at ${escapeHtml(inst.name)}</p>
+            ${qs.map(q => `<button type="button" class="curator-followup-pill text-left py-1" data-query="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join('')}
+          </div>`;
+        curatorMessages.appendChild(div);
+        if (typeof scrollChatToBottom === 'function') scrollChatToBottom(false);
+      }, 700);
+    }
     // The chips under a model answer (user's instruction, 4 Nov 2026: more of them, very specific, under every answer). The model
     // writes three questions about the names and figures in its own answer (<next> in queryAI); the record's own questions fill
     // the rest, so there are always four. A chip already asked, longer than 120 characters, without a question mark, or carrying an
@@ -21411,13 +21479,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=596"></script>
-<script src="assets/funding-views.js?v=596"></script>
-<script src="assets/layers.js?v=596"></script>
-<script src="assets/hq-detail.js?v=596"></script>
-<script src="assets/bubbles.js?v=596" defer></script>
-<script src="assets/phone-maps.js?v=596"></script>
-<script src="assets/desktop-maps.js?v=596"></script>
-<script src="assets/chat-resize.js?v=596"></script>
+<script src="assets/typeset.js?v=600"></script>
+<script src="assets/funding-views.js?v=600"></script>
+<script src="assets/layers.js?v=600"></script>
+<script src="assets/hq-detail.js?v=600"></script>
+<script src="assets/bubbles.js?v=600" defer></script>
+<script src="assets/phone-maps.js?v=600"></script>
+<script src="assets/desktop-maps.js?v=600"></script>
+<script src="assets/chat-resize.js?v=600"></script>
 </body>
 </html>
