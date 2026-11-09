@@ -172,7 +172,8 @@ n_cs = 0
 for key in ('moma', 'teargas'):
     c = cases[key]
     body = {k: c[k] for k in ('title', 'kick', 'summary', 'bullets', 'timeline', 'stats', 'sources') if c.get(k)}
-    rid = [r['id'] for r in by_name[norm(c['inst'])] if norm(r['name']) == norm(c['inst'])][0]
+    hits = by_name[norm(c['inst'])]           # the record's name, or an alias once the record was renamed (MoMA, Whitney Museum)
+    rid = ([r['id'] for r in hits if norm(r['name']) == norm(c['inst'])] or [r['id'] for r in hits])[0]
     for t in targets(rid):
         t['case_study'] = body
     n_cs += 1
