@@ -4924,3 +4924,16 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
 }
 #mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info :is(ul.mck-scale,ul.mck-scale>li,ul.mck-scale>li>span){font-size:14px!important;line-height:1.35!important;font-weight:400!important;letter-spacing:0!important;text-indent:0!important}
 #mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info ul.mck-scale>li>.mck-word{letter-spacing:1pt!important;min-width:6.2em}
+
+/* ---- Phone: the Layers button (user, 9 Nov 2026: "Fix the layers button on mobile, it looks too big") ----
+   It held two icons, the phone's (.gm-layers-icon) and the desktop's (.gmd-layers-icon, a 0px span whose drawing spilled
+   out of it), and the pair sat 12px left of the button, so the button read as an empty 44px rounded square with the mark
+   hanging off its edge; the word Layers, invisible but 45px wide, pushed them there. On a phone the word is set at 0px (it
+   stays the button's accessible name), the desktop icon is dropped, the phone's is centred at 20px, and the button is a 40px
+   circle, as the README has it ("a round button at the top right") and as the Claude app draws its round controls. */
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn{display:flex!important;align-items:center!important;justify-content:center!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;gap:0!important;border-radius:50%!important;font-size:0!important;line-height:0!important;letter-spacing:0!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gmd-layers-icon{display:none!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gm-layers-icon{display:flex!important;width:20px!important;height:20px!important;margin:0!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gm-layers-icon svg{width:20px!important;height:20px!important}
+}

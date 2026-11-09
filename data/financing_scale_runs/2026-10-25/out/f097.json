@@ -1,0 +1,200 @@
+[
+  {
+    "id": "site-gallery-sheffield",
+    "scale": {
+      "visitors": 44081,
+      "visitors_year": "2024-25",
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://opencharities.uk/ew/510322/files/2025-03-31-accounts.html"
+      ]
+    },
+    "finance": null,
+    "basis": "Visitors are the 44,081 visits to the gallery stated in the Reach section of the trustees' report in the accounts for the year ended 31 March 2025."
+  },
+  {
+    "id": "john-hansard-gallery-southampton",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "coaxial-arts-foundation-la",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "human-resources-la",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "lace-los-angeles",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": 358,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://welcometolace.org/about/"
+      ]
+    },
+    "finance": null,
+    "basis": "The about page states a 3,500 sq ft gallery storefront space and a 350 sq ft Project Room gallery; the two are summed to 3,850 sq ft and converted at 0.0929 to 358 m2."
+  },
+  {
+    "id": "redcat-los-angeles",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "abc-no-rio-new-york",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "american-folk-art-museum",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "apexart-new-york",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "bam-new-york",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": {
+      "fy": "2022-23",
+      "currency": "USD",
+      "income": 46585680,
+      "expenditure": 51862473,
+      "public": null,
+      "private": null,
+      "earned": null,
+      "sponsorship": null,
+      "net_assets": 138635189,
+      "source_kind": "Form 990",
+      "url": "https://www.bam.org/globalassets/about/annual-reports/990s/fy23-bam-990fy23.pdf"
+    },
+    "basis": "BAM's own copy of its Form 990 for the year July 2022 to June 2023 (PDF header reads Form 990 (2022)): total revenue on PDF page 11 (Part VIII), total expenses on page 12 (Part IX), net assets at end of year in Part X."
+  },
+  {
+    "id": "cue-art-foundation-new-york",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "flux-factory-queens",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": 130,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.fluxfactory.org/mission-history/"
+      ]
+    },
+    "finance": null,
+    "basis": "The mission and history page states a 1400 sq ft gallery within the 9000 sq ft main building; the gallery figure is converted at 0.0929 to 130 m2."
+  }
+]

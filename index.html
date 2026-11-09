@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=603">
-  <script src="assets/config.js?v=603"></script>
-  <script src="assets/subtopic.js?v=603"></script>
-  <script src="assets/names.js?v=603"></script>
-  <script src="assets/grounding.js?v=603"></script>
-  <script src="assets/repeats.js?v=603"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=609">
+  <script src="assets/config.js?v=609"></script>
+  <script src="assets/subtopic.js?v=609"></script>
+  <script src="assets/names.js?v=609"></script>
+  <script src="assets/grounding.js?v=609"></script>
+  <script src="assets/repeats.js?v=609"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -252,14 +252,14 @@ return maplibregl$1;
           <section class="layers-section" data-no-chips>
             <h2 class="layers-section-title">Funding views</h2>
             <div class="layers-list">
-              <label style="--layer-color:#96a960"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type. Pairs with one link show when you zoom in</span><span class="layers-count" data-count="bundle"></span></label>
+              <label style="--layer-color:#96a960"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type</span><span class="layers-count" data-count="bundle"></span></label>
               <label style="--layer-color:#f8ff94"><input type="checkbox" data-layer="flows"> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
               <label style="--layer-color:#41aa87"><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country by the share of its spaces&rsquo; funders based abroad, or by its main funder type</span><span class="layers-count" data-count="choro"></span></label>
-              <label style="--layer-color:#ffc694"><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for. Point at a funder anywhere to see its own</span></label>
+              <label style="--layer-color:#ffc694"><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for</span></label>
               <label style="--layer-color:#1bff0a"><input type="checkbox" data-layer="glyphs"> <span class="layer-name">Funding mix on each space</span><span class="layer-desc">A ring around each space, split by its public, foundation and company funders</span></label>
-              <label style="--layer-color:#ab9cc9"><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share. No lines</span></label>
+              <label style="--layer-color:#ab9cc9"><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share</span></label>
               <label style="--layer-color:#c2ffc6"><input type="checkbox" data-layer="lifted"> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more spaces they fund, with a line down to each</span></label>
-              <label style="--layer-color:#ff6c0a"><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices. The flag is on the space</span><span class="layers-count" data-count="flagged"></span></label>
+              <label style="--layer-color:#ff6c0a"><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices</span><span class="layers-count" data-count="flagged"></span></label>
             </div>
             <div class="layers-kinds layers-choro" role="radiogroup" aria-label="Countries shaded by">
               <label class="kind-chip"><input type="radio" name="choroMode" data-choro="abroad" checked> <span class="layer-name">Funders abroad</span></label>
@@ -391,10 +391,6 @@ return maplibregl$1;
         </div>
 
         <!-- Retained for swipe gesture compatibility & test assertions -->
-        <div id="floatingCardSwipeHint" class="hidden" style="display:none;" aria-hidden="true">
-          <span>Swipe ↔ Gossip Mode</span>
-          <span>Swipe ↑ Full Dossier</span>
-        </div>
 
         <!--  VERIFIED INFO PANE -->
         <div id="floatingCardInfoPane" class="space-y-2">
@@ -560,7 +556,6 @@ return maplibregl$1;
               <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
               <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
             </ul>
-            <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
         </div>
@@ -762,7 +757,7 @@ return maplibregl$1;
                 <span>Ask in Chat</span>
               </button>
               <button id="mobileSheetViewDossierBtn" type="button" class="flex-1 py-2 px-3 text-center min-h-_44px flex items-center justify-center gap-1_5">
-                <span>View Dossier</span>
+                <span>Details</span>
               </button>
             </div>
           </div>
@@ -808,9 +803,6 @@ return maplibregl$1;
             <!-- Hero Greeting (Stitch title style) -->
             <div id="curatorHeroGreeting" class="curator-message-wrap w-full flex flex-col items-center justify-center text-center py-6">
               <h1 id="curatorHeroTitle">Who funds this cultural institution?</h1>
-              <p class="max-w-lg">
-                Explore who funds cultural spaces and what’s been reported about them. Follow the sources.
-              </p>
               <div id="curatorStarterPrompts" class="starter-prompts"></div>
             </div>
 
@@ -908,7 +900,6 @@ return maplibregl$1;
               <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
               <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
             </ul>
-              <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
             </details>
 
             <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
@@ -938,7 +929,7 @@ return maplibregl$1;
       <div id="detailDrawer" class="hidden absolute inset-0 z-30 w-full h-full flex flex-col overflow-hidden">
         <div class="px-4 py-2_5 flex items-center justify-end shrink-0 detail-bar">
           <div class="flex items-center gap-2">
-            <button id="closeDetailBtn" aria-label="Close record" type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="p-1" title="Close Dossier">
+            <button id="closeDetailBtn" aria-label="Close record" type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="p-1" title="Close record">
               <svg class="detail-bar-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg>
             </button>
           </div>
@@ -988,7 +979,7 @@ return maplibregl$1;
     </button>
     <!-- Nav Item: Dossier -->
     <button class="flex flex-col items-center space-y-1" id="tab-dossier" type="button">
-      <span class="t-strong">Dossier</span>
+      <span class="t-strong">Record</span>
     </button>
     <!-- Nav Item: Curator AI -->
     <button class="flex flex-col items-center space-y-1 relative" id="tab-chat" type="button">
@@ -1015,7 +1006,6 @@ return maplibregl$1;
         <div class="flex items-center gap-2_5">
           <div>
             <h3 class="t-lead">AI Model Settings</h3>
-            <p class="">Answers come from the records; where they have nothing, the model fills the gap and says so. A key has your own model answer in the browser.</p>
           </div>
         </div>
         <button id="closeSettingsModalBtn" class="atlas-pill-btn pill-sm" title="Close"><span>Close</span></button>
@@ -1069,9 +1059,9 @@ return maplibregl$1;
       <div class="space-y-1_5">
         <label class="block">Model</label>
         <select id="aiModelSelect" class="w-full px-3_5 py-2 meta">
-          <option value="claude-sonnet-5-5">Anthropic Sonnet 5.5 (Recommended)</option>
-          <option value="claude-opus-5-5">Anthropic Opus 5.5 (Deepest reasoning)</option>
-          <option value="claude-haiku-5-5">Anthropic Haiku 5.5 (Fast and cheap)</option>
+          <option value="claude-sonnet-5-5">Anthropic Sonnet 5.5</option>
+          <option value="claude-opus-5-5">Anthropic Opus 5.5</option>
+          <option value="claude-haiku-5-5">Anthropic Haiku 5.5</option>
         </select>
       </div>
 
@@ -1079,13 +1069,6 @@ return maplibregl$1;
       <div id="connectionTestBox" class="hidden p-3 flex items-center gap-2">
         <span id="testStatusIcon"></span>
         <span id="testStatusMsg" class="meta">Testing connection...</span>
-      </div>
-
-      <!-- Privacy Assurance -->
-      <div class="p-3">
-        <p>
-          <strong>Your key stays in this browser:</strong> it is saved in your local browser's <code class="meta">localStorage</code>. Requests are sent directly from your browser to the provider's API. No intermediate backend logs your keys.
-        </p>
       </div>
 
       <!-- Action Buttons -->
@@ -1130,7 +1113,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=603"></script>
+  <script src="assets/institutions.js?v=609"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6683,7 +6666,25 @@ return maplibregl$1;
     const CITY_LINE_FADE = ['interpolate', ['linear'], ['zoom'], 12, 0, 15, 1];
     // The same ramp for the screen-space street layer (xray-streets), which draws these lines in place of MapLibre's own.
     const cityLineFadeAt = z => Math.max(0, Math.min(1, (z - 12) / 3));
-    // City map style: a line drawing like the globe. White ground, 1px lines in 50% grey (#808080; user, 6 Nov 2026: the near-black lines made the map busy), no fills, no 3D. OpenFreeMap vector tiles.
+    // Every line of the street map is one device pixel wide (user, 9 Nov 2026: "1 px thickness"). MapLibre's line-width is in CSS
+    // pixels, so on a 2x screen a width of 1 was two device pixels; this is the width that draws as one. The screen-space layer
+    // that normally draws these lines (screenLineLayer, XRAY_LINE_WIDTH) is in device pixels already.
+    const CITY_HAIRLINE = 1 / (window.devicePixelRatio || 1);
+    // WHAT SHOWS AT WHICH ZOOM (user, 9 Nov 2026: "make map less busy on zoom"). At the neighbourhood zooms (14 to 16) every
+    // building footprint, path and patch of grass drew at the same weight as the streets, and the map read as one grey texture.
+    // The street structure stays; the fine detail waits for the closest zooms. Both lists below (the MapLibre layers and
+    // STREET_FEATURES, which draws the same lines in screen space) follow this table, and every change goes in both:
+    //   water, waterway, park        every zoom (fading in from 12 to 15 with CITY_LINE_FADE)
+    //   roads: motorway, trunk, primary, secondary, tertiary   every zoom (same fade)
+    //   roads: minor (residential)  from 12
+    //   boundary (country)          every zoom, dashed
+    //   place names                 from 8
+    //   building outlines           from 16 (was 13): the record's own building is drawn by the Building view from 17.2
+    //   landcover (grass, wood, sand) from 16 (was every zoom)
+    //   service roads, tracks, paths  from 16 (was 12)
+    // Not drawn at all: landuse, aeroway, rail. The invisible building fill and extrusion below keep their own minzooms (13, 14):
+    // they are hit-testing for xrayFindBuilding, not drawing.
+    // City map style: a line drawing like the globe. White ground, one-device-pixel lines in 50% grey (#808080; user, 6 Nov 2026: the near-black lines made the map busy), no fills, no 3D. OpenFreeMap vector tiles.
     const CITY_MAP_LINE_STYLE = {
       version: 8,
       name: 'Culture Atlas line drawing',
@@ -6701,8 +6702,8 @@ return maplibregl$1;
       glyphs: location.href.replace(/[?#].*$/, '').replace(/[^/]*$/, '') + 'assets/glyphs/{fontstack}/{range}.pbf',
       layers: [
         // Every line fades in with the zoom (CITY_LINE_FADE, above): none on the whole-city view, full grey at street level.
-        // The street map is a line drawing: every edge (water, parks, landcover, buildings, roads, boundaries) is a 1px line
-        // in the map's line colour, and nothing carries a fill. The building fill and the context extrusion below draw nothing;
+        // The street map is a line drawing: every edge (water, parks, landcover, buildings, roads, boundaries) is a line one device
+        // pixel wide (CITY_HAIRLINE) in the map's line colour, and nothing carries a fill. The building fill and the context extrusion below draw nothing;
         // they stay only so the building under a record's point can be found.
         {
           id: 'background',
@@ -6714,28 +6715,29 @@ return maplibregl$1;
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'landcover',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          minzoom: 16,
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'park',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'park',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'water',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'water',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'waterway',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'building',
@@ -6766,17 +6768,26 @@ return maplibregl$1;
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'building',
-          minzoom: 13,
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          minzoom: 16,
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_minor',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'transportation',
-          filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
+          filter: ['==', ['get', 'class'], 'minor'],
           minzoom: 12,
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+        },
+        {
+          id: 'road_service',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['match', ['get', 'class'], ['service', 'track', 'path'], true, false],
+          minzoom: 16,
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_secondary',
@@ -6784,7 +6795,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_primary',
@@ -6792,7 +6803,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_motorway',
@@ -6800,7 +6811,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'boundary_country',
@@ -6808,7 +6819,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-dasharray': [3, 2], 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-dasharray': [3, 2], 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'place_label',
@@ -7862,13 +7873,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
     // The building is drawn as lines and nothing else: every edge of the shell and of the parts inside it, standing at its
     // height, in the street lines' own weight, which is one thickness at every distance.
-    // Every line of the city map is drawn at one thickness (XRAY_LINE_WIDTH screen pixels) at every distance. MapLibre's own line
+    // Every line of the city map is drawn at one thickness (XRAY_LINE_WIDTH device pixels, one: user, 9 Nov 2026) at every distance. MapLibre's own line
     // layers widen each line on the ground and then project it, so under the tilted camera they thin out toward the horizon;
     // here each segment is projected first and then widened on the screen, square to the segment as it appears. That serves the
     // building's edges (including the standing ones, which have no ground direction) and the street map itself (below). The
-    // quad is feathered over a pixel and a half on each side. Positions are kept relative to the
+    // quad is feathered over one device pixel on each side. Positions are kept relative to the
     // first point (float32 cannot hold a whole Mercator coordinate to the centimetre); the matrix carries the offset.
-    const XRAY_LINE_WIDTH = 1;
+    const XRAY_LINE_WIDTH = 1;      // device pixels, not CSS pixels: a hairline on a 2x screen
+    const XRAY_LINE_FEATHER = 1.0;  // device pixels: coverage falls from full to none over this distance, centred on the line's edge
     function screenLineLayer(id) {
       const VS = [
         'attribute vec3 a_pos; attribute vec3 a_other; attribute float a_side;',
@@ -7895,12 +7907,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       ].join('\n');
       const FS = [
         'precision mediump float;',
-        'uniform vec4 u_color; uniform mediump float u_half_px;',
+        'uniform vec4 u_color; uniform mediump float u_half_px; uniform mediump float u_feather;',
         'varying float v_side;',
         'void main() {',
-        // Coverage falls from full to none over a pixel and a half centred on the line's edge: a wider, smoother ramp than a pixel's own
-        // gives, so a line at a slant is a soft edge and not a run of steps.
-        '  float c = clamp((u_half_px - abs(v_side) * u_half_px) / 1.5, 0.0, 1.0);',
+        // Coverage falls from full to none over u_feather (one device pixel) centred on the line's edge, with a smoothstep, so a line
+        // at a slant is a soft edge and not a run of steps. A wider ramp (a pixel and a half, until 9 Nov 2026) never let a one-pixel
+        // line reach full ink at its centre and spread it over two and a half pixels of grey.
+        '  float c = clamp((u_half_px - abs(v_side) * u_half_px) / u_feather, 0.0, 1.0);',
         '  gl_FragColor = u_color * (c * c * (3.0 - 2.0 * c));',
         '}'
       ].join('\n');
@@ -7916,7 +7929,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           gl.attachShader(this.program, shader(gl.FRAGMENT_SHADER, FS));
           gl.linkProgram(this.program);
           this.a = { pos: gl.getAttribLocation(this.program, 'a_pos'), other: gl.getAttribLocation(this.program, 'a_other'), side: gl.getAttribLocation(this.program, 'a_side') };
-          this.u = { matrix: gl.getUniformLocation(this.program, 'u_matrix'), res: gl.getUniformLocation(this.program, 'u_res'), halfPx: gl.getUniformLocation(this.program, 'u_half_px'), color: gl.getUniformLocation(this.program, 'u_color') };
+          this.u = { matrix: gl.getUniformLocation(this.program, 'u_matrix'), res: gl.getUniformLocation(this.program, 'u_res'), halfPx: gl.getUniformLocation(this.program, 'u_half_px'), feather: gl.getUniformLocation(this.program, 'u_feather'), color: gl.getUniformLocation(this.program, 'u_color') };
           this.buffer = gl.createBuffer();
           this.dirty = true;
         },
@@ -7959,11 +7972,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           t[13] = m[1] * o.x + m[5] * o.y + m[9] * o.z + m[13];
           t[14] = m[2] * o.x + m[6] * o.y + m[10] * o.z + m[14];
           t[15] = m[3] * o.x + m[7] * o.y + m[11] * o.z + m[15];
-          const map = this.map, dpr = typeof map.getPixelRatio === 'function' ? map.getPixelRatio() : (window.devicePixelRatio || 1);
+          const map = this.map;
           gl.useProgram(this.program);
           gl.uniformMatrix4fv(this.u.matrix, false, new Float32Array(t));
           gl.uniform2f(this.u.res, gl.drawingBufferWidth, gl.drawingBufferHeight);
-          gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH * dpr / 2 + 0.75); // half the width plus three quarters of a device pixel, the feather
+          // Half the width plus half the feather, in device pixels: the line is XRAY_LINE_WIDTH device pixels wide whatever the screen's
+          // density (dpr is not a factor here on purpose; it was, until 9 Nov 2026, and made the line a CSS pixel wide).
+          gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH / 2 + XRAY_LINE_FEATHER / 2);
+          gl.uniform1f(this.u.feather, XRAY_LINE_FEATHER);
           // The colour is premultiplied (the blend is ONE, ONE_MINUS_SRC_ALPHA), so the fade scales all four channels.
           const k = typeof this.fade === 'function' ? this.fade(map.getZoom()) : 1;
           if (k <= 0) return;
@@ -7992,13 +8008,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // MapLibre's own copies of those layers are hidden. Segments that only run along the edge of a tile's overlap (the clip
     // that the stencil hides in MapLibre) are left out. If the tile cache cannot be reached, MapLibre's layers stay as they are.
     const STREET_SOURCE = 'openmaptiles', STREET_LINE_ID = 'xray-streets', STREET_SEGMENT_CAP = 300000;
+    // The zooms are the table above CITY_MAP_LINE_STYLE ("WHAT SHOWS AT WHICH ZOOM"): change them there and here together.
     const STREET_FEATURES = [
-      { layer: 'landcover' }, { layer: 'park' }, { layer: 'water' }, { layer: 'waterway' },
-      { layer: 'building', minzoom: 13 },
-      { layer: 'transportation', classes: ['minor', 'service', 'track', 'path'], minzoom: 12 },
-      { layer: 'transportation', classes: ['secondary', 'tertiary', 'primary', 'trunk', 'motorway'] }
+      { layer: 'park' }, { layer: 'water' }, { layer: 'waterway' },
+      { layer: 'transportation', classes: ['secondary', 'tertiary', 'primary', 'trunk', 'motorway'] },
+      { layer: 'transportation', classes: ['minor'], minzoom: 12 },
+      { layer: 'building', minzoom: 16 },
+      { layer: 'landcover', minzoom: 16 },
+      { layer: 'transportation', classes: ['service', 'track', 'path'], minzoom: 16 }
     ];
-    const STREET_NATIVE_LAYERS = ['landcover_grass', 'park', 'water', 'waterway', 'building_line', 'road_minor', 'road_secondary', 'road_primary', 'road_motorway'];
+    const STREET_NATIVE_LAYERS = ['landcover_grass', 'park', 'water', 'waterway', 'building_line', 'road_minor', 'road_service', 'road_secondary', 'road_primary', 'road_motorway'];
     let streetTimer = null;
     function streetTileBounds(z, x, y) {
       const n = Math.pow(2, z), lat = ty => Math.atan(Math.sinh(Math.PI * (1 - 2 * ty / n))) * 180 / Math.PI;
@@ -9928,7 +9947,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               <span>Focus Connected Spaces on Atlas Map</span>
             </button>
             <button type="button" onclick="askCuratorAboutTrustee('${escapeHtml(node.name)}')" class="w-full py-1_5 px-3 flex items-center justify-center gap-1">
-              <span>Ask Curator Dossier</span>
+              <span>Ask in chat</span>
             </button>
           </div>
         </div>
@@ -10293,11 +10312,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v603';
+    const ATLAS_RELEASE = 'culture-atlas-v609';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=603').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=609').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14065,17 +14084,17 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
     const PROVIDER_MODELS = {
       anthropic: [
-        { id: 'claude-sonnet-5-5', name: 'Anthropic Sonnet 5.5 (Recommended)' },
-        { id: 'claude-opus-5-5', name: 'Anthropic Opus 5.5 (Deepest reasoning)' },
-        { id: 'claude-haiku-5-5', name: 'Anthropic Haiku 5.5 (Fast and cheap)' }
+        { id: 'claude-sonnet-5-5', name: 'Anthropic Sonnet 5.5' },
+        { id: 'claude-opus-5-5', name: 'Anthropic Opus 5.5' },
+        { id: 'claude-haiku-5-5', name: 'Anthropic Haiku 5.5' }
       ],
       openai: [
-        { id: 'gpt-4o-mini', name: 'gpt-4o-mini (Fast & Versatile)' },
-        { id: 'gpt-4o', name: 'gpt-4o (Full Reasoning)' }
+        { id: 'gpt-4o-mini', name: 'gpt-4o-mini' },
+        { id: 'gpt-4o', name: 'gpt-4o' }
       ],
       gemini: [
-        { id: 'gemini-2.5-flash', name: 'gemini-2.5-flash (Fast & Multimodal)' },
-        { id: 'gemini-1.5-flash', name: 'gemini-1.5-flash (Reliable Fallback)' }
+        { id: 'gemini-2.5-flash', name: 'gemini-2.5-flash' },
+        { id: 'gemini-1.5-flash', name: 'gemini-1.5-flash' }
       ]
     };
 
@@ -14135,19 +14154,19 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const providerTip = document.getElementById('providerTip');
       const providerGetKeyLink = document.getElementById('providerGetKeyLink');
       if (prov === 'anthropic') {
-        if (providerTip) providerTip.innerHTML = 'Recommended: <strong>Anthropic</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.';
+        if (providerTip) providerTip.textContent = 'Keys are sent only to the provider you pick.';
         if (providerGetKeyLink) {
           providerGetKeyLink.href = 'https://console.anthropic.com/settings/keys';
           providerGetKeyLink.textContent = 'Get Anthropic Key';
         }
       } else if (prov === 'openai') {
-        if (providerTip) providerTip.innerHTML = 'OpenAI <strong>GPT-4o / GPT-4o-mini</strong> provides fast conversational guidance across the catalog.';
+        if (providerTip) providerTip.textContent = 'Keys are sent only to the provider you pick.';
         if (providerGetKeyLink) {
           providerGetKeyLink.href = 'https://platform.openai.com/api-keys';
           providerGetKeyLink.textContent = 'Get OpenAI Key';
         }
       } else {
-        if (providerTip) providerTip.innerHTML = 'Google <strong>Gemini 2.5 Flash</strong> provides responsive real-time multimodal reasoning with a generous free tier.';
+        if (providerTip) providerTip.textContent = 'Keys are sent only to the provider you pick.';
         if (providerGetKeyLink) {
           providerGetKeyLink.href = 'https://aistudio.google.com/app/apikey';
           providerGetKeyLink.textContent = 'Get Gemini Key (Free)';
@@ -16255,85 +16274,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const q = (query || '').toLowerCase().trim();
       const effMode = mode || getChatModeConfig(query);
       return { mode: effMode, thought: '', step: 'Reading the records' };
-
-      if (/crawl|itinerary|route|tour/i.test(q) && !/power\s*plant/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Mapping pedestrian corridors, verified public hours, and transit connections between independent spaces.`,
-          step: `Synthesizing Curatorial Itinerary & Transit Nodes`
-        };
-      }
-
-      const city = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
-      const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
-      const qNorm = (query || '').toLowerCase();
-      const isExactInst = inst && (
-        (inst.name && qNorm.includes(inst.name.toLowerCase())) ||
-        (inst.shortName && qNorm.includes(inst.shortName.toLowerCase())) ||
-        (inst.aliases && inst.aliases.some(a => a && a.length > 3 && qNorm.includes(a.toLowerCase())))
-      );
-
-      if (isExactInst) {
-        return {
-          mode: effMode,
-          thought: `Auditing governance filings, Form 990 disclosures, and institutional underwriting records for ${inst.name}.`,
-          step: `Auditing Form 990 & Trustee Interlocks for ${inst.name}`
-        };
-      }
-
-      if (city) {
-        return {
-          mode: effMode,
-          thought: `Reviewing verified independent art spaces, civic institutions, and cultural registries in ${city}.`,
-          step: `Scanning Independent Arts Corpus for ${city}`
-        };
-      }
-
-      if (inst) {
-        return {
-          mode: effMode,
-          thought: `Auditing governance filings, Form 990 disclosures, and institutional underwriting records for ${inst.name}.`,
-          step: `Auditing Form 990 & Trustee Interlocks for ${inst.name}`
-        };
-      }
-
-      if (/budget|financ|form\s*990|filing|schedule\s*l|endow/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Analyzing Form 990 statutory disclosures, program expenditure ratios, and endowment governance.`,
-          step: `Extracting Statutory Filings & Executive Compensation Records`
-        };
-      }
-
-      if (/trustee|board|interlock|conflict|director/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Examining board interlocks, corporate affiliations, and potential fiduciary conflicts of interest.`,
-          step: `Traversing Institutional Directorate Network`
-        };
-      }
-
-      if (/material|research|online|unethical|whistleblower/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Cross-referencing open-source investigative dossiers, statutory filings, and verified primary-source records.`,
-          step: `Cross-Referencing Statutory Filing Disclosures & FOI Leaks`
-        };
-      }
-
-      if (/timeline|boycott|protest|resistance|sackler/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Reviewing cultural divestment milestones, artist actions, and institutional policy changes.`,
-          step: `Querying Cultural Resistance & Divestment Timeline`
-        };
-      }
-
-      return {
-        mode: effMode,
-        thought: `Matching the question to the records and their sources.`,
-        step: `Reading the records`
-      };
     }
 
 
@@ -16373,12 +16313,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         hero = document.createElement('div');
         hero.id = 'curatorHeroGreeting';
         hero.className = 'curator-message-wrap w-full flex flex-col py-6';
-        hero.setAttribute('data-speech', 'Welcome to Leaving it on the table. Explore who funds cultural spaces and what’s been reported about them. Follow the sources.');
+        hero.setAttribute('data-speech', 'Leaving it on the table.');
         hero.innerHTML = `
           <h1 id="curatorHeroTitle">${escapeHtml(HERO_TITLE)}</h1>
-          <p class="max-w-lg">
-            Explore who funds cultural spaces and what’s been reported about them. Follow the sources.
-          </p>
           <div id="curatorStarterPrompts" class="starter-prompts"></div>
         `;
         contentWrap.insertBefore(hero, curatorMessages);
@@ -17237,8 +17174,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
-        answer(`<p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no outside source, or no reason.</p>
-          <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>`);
+        answer(`<p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no outside source, or no reason.</p>`);
         return;
       }
       // Anything else asked about the space ("symbol of the museum") is answered from the record lines that mention it, or the
@@ -21465,13 +21401,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=603"></script>
-<script src="assets/funding-views.js?v=603"></script>
-<script src="assets/layers.js?v=603"></script>
-<script src="assets/hq-detail.js?v=603"></script>
-<script src="assets/bubbles.js?v=603" defer></script>
-<script src="assets/phone-maps.js?v=603"></script>
-<script src="assets/desktop-maps.js?v=603"></script>
-<script src="assets/chat-resize.js?v=603"></script>
+<script src="assets/typeset.js?v=609"></script>
+<script src="assets/funding-views.js?v=609"></script>
+<script src="assets/layers.js?v=609"></script>
+<script src="assets/hq-detail.js?v=609"></script>
+<script src="assets/bubbles.js?v=609" defer></script>
+<script src="assets/phone-maps.js?v=609"></script>
+<script src="assets/desktop-maps.js?v=609"></script>
+<script src="assets/chat-resize.js?v=609"></script>
 </body>
 </html>
