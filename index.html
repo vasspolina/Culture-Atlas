@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=594">
-  <script src="assets/config.js?v=594"></script>
-  <script src="assets/subtopic.js?v=594"></script>
-  <script src="assets/names.js?v=594"></script>
-  <script src="assets/grounding.js?v=594"></script>
-  <script src="assets/repeats.js?v=594"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=595">
+  <script src="assets/config.js?v=595"></script>
+  <script src="assets/subtopic.js?v=595"></script>
+  <script src="assets/names.js?v=595"></script>
+  <script src="assets/grounding.js?v=595"></script>
+  <script src="assets/repeats.js?v=595"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -336,24 +336,26 @@ return maplibregl$1;
       <!-- The colour key, always on the map (user, 6 Nov 2026): what the colour of a space's or a city's name says about how
            its record is graded. The same three colours as the labels (--tier-a, --tier-b, --tier-u in assets/atlas.css,
            TIER_INK below), drawn as the labels are: the word in its colour, outlined, on the map's ground. The rules are
-           those of "What the page may show" in README.md; a city's colour is the tier most of its spaces have (cityTier). -->
+           those of "What the page may show" in README.md; a city's colour is the tier most of its spaces have (cityTier).
+           The rules open from the round i button by the title, the same control and panel as the funding grade in a
+           record (.grade-info-btn / .grade-info, one click handler for both, near gradeInfoParts below). -->
       <section id="mapColourKey" aria-labelledby="mapColourKeyTitle">
-        <h2 id="mapColourKeyTitle" class="mck-title">Colour key</h2>
+        <div class="mck-head">
+          <h2 id="mapColourKeyTitle" class="mck-title">Colour key</h2>
+          <button type="button" class="grade-info-btn mck-info-btn" aria-expanded="false" aria-controls="mapColourKeyInfo" aria-label="How spaces are graded" title="How spaces are graded"><span aria-hidden="true">i</span></button>
+        </div>
         <ul class="mck-list">
           <li><span class="mck-pill" data-tier="A">Clean</span><span class="mck-desc">a source is cited</span></li>
           <li><span class="mck-pill" data-tier="B">Flagged</span><span class="mck-desc">a recorded reason</span></li>
           <li><span class="mck-pill" data-tier="U">Unverified</span><span class="mck-desc">no outside source yet</span></li>
         </ul>
-        <details class="mck-more">
-          <summary>How spaces are graded</summary>
-          <div class="mck-body">
-            <p>The colour of a name on the map is the grade of its record. It says how well the record is sourced, not a verdict on the space.</p>
-            <p><b class="mck-word" data-tier="A">Clean</b> needs at least one source outside the space&rsquo;s own website.</p>
-            <p><b class="mck-word" data-tier="B">Flagged</b> needs a recorded reason, such as a flagged funder or a protest over its funding.</p>
-            <p><b class="mck-word" data-tier="U">Unverified</b> is every other space: its record cites no source outside the space&rsquo;s own website yet.</p>
-            <p>A city takes the colour most of its spaces have. Open a space to read its record and the sources behind its grade.</p>
-          </div>
-        </details>
+        <div class="grade-info mck-info" id="mapColourKeyInfo" role="region" aria-label="How spaces are graded" data-repeat-ok hidden>
+          <p>The colour of a name on the map is the grade of its record. It says how well the record is sourced, not a verdict on the space.</p>
+          <p><b class="mck-word" data-tier="A">Clean</b> needs at least one source outside the space&rsquo;s own website.</p>
+          <p><b class="mck-word" data-tier="B">Flagged</b> needs a recorded reason, such as a flagged funder or a protest over its funding.</p>
+          <p><b class="mck-word" data-tier="U">Unverified</b> is every other space: its record cites no source outside the space&rsquo;s own website yet.</p>
+          <p>A city takes the colour most of its spaces have. Open a space to read its record and the sources behind its grade.</p>
+        </div>
       </section>
 
 
@@ -1132,7 +1134,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=594"></script>
+  <script src="assets/institutions.js?v=595"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10281,11 +10283,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v594';
+    const ATLAS_RELEASE = 'culture-atlas-v595';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=594').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=595').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -21388,13 +21390,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=594"></script>
-<script src="assets/funding-views.js?v=594"></script>
-<script src="assets/layers.js?v=594"></script>
-<script src="assets/hq-detail.js?v=594"></script>
-<script src="assets/bubbles.js?v=594" defer></script>
-<script src="assets/phone-maps.js?v=594"></script>
-<script src="assets/desktop-maps.js?v=594"></script>
-<script src="assets/chat-resize.js?v=594"></script>
+<script src="assets/typeset.js?v=595"></script>
+<script src="assets/funding-views.js?v=595"></script>
+<script src="assets/layers.js?v=595"></script>
+<script src="assets/hq-detail.js?v=595"></script>
+<script src="assets/bubbles.js?v=595" defer></script>
+<script src="assets/phone-maps.js?v=595"></script>
+<script src="assets/desktop-maps.js?v=595"></script>
+<script src="assets/chat-resize.js?v=595"></script>
 </body>
 </html>
