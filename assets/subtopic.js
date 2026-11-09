@@ -81,7 +81,7 @@
     return '<sub_topic>\nThe visitor asked about the ' + topic.label + ' of ' + inst.name + ', not about the space as a whole. Answer about the ' + topic.label + ' in the first sentence. ' +
       (held.length
         ? 'The record text that mentions it, and all you may say about it:\n' + held.map(function (s) { return '- ' + s; }).join('\n') + '\nDo not add funders, amounts, dates or claims that these lines do not hold, and do not fall back on the space\'s grade or general record.'
-        : 'The record text holds nothing on it. Say so plainly in one or two sentences, for example that the Atlas has no record on the ' + topic.label + ' of ' + inst.name + '. Do not give the space\'s grade, funding or general record in its place, and never invent a funder, amount or claim.') +
+        : 'The record text holds nothing on it. Say so in one sentence (the atlas has no record on the ' + topic.label + ' of ' + inst.name + '), then answer about the ' + topic.label + ' from your own knowledge, opening that part with the words "From general knowledge," and giving no figure, date or name you are not sure of (user, 9 Nov 2026: the model fills the gap). Do not give the space\'s grade, funding or general record in its place.') +
       '\n</sub_topic>\n\n';
   }
 
