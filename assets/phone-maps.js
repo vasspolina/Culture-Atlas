@@ -784,7 +784,11 @@
         ['dossier-sheet-funding', 'dossier-sheet-record', 'dossier-sheet-sources'].forEach((id) => {
           const el = $(id); if (el && el.hasAttribute('data-gm-dup') !== hasFull) el.toggleAttribute('data-gm-dup', hasFull);
         });
-        const inFull = (t) => !!full.querySelector('[data-tab="' + t + '"]');
+        // A tab is offered only when something can be read under it: an element tagged for it with words or a picture in it. The
+        // reviews list is tagged Record and is empty until a place has approved reviews, so a record with nothing else under
+        // Record offered an empty tab (user, 9 Nov 2026, Hamhung Grand Theatre: "Slop"). When reviews arrive the pane changes
+        // and the tabs are filled again, so the tab appears then.
+        const inFull = (t) => [...full.querySelectorAll('[data-tab="' + t + '"]')].some((el) => el.textContent.trim().length > 0 || el.querySelector('img, svg, figure, video'));
         // A tab with nothing in it is not offered; the open one falls back to Overview.
         const has = hasFull
           ? { overview: true, funding: inFull('funding'), record: inFull('record'), sources: inFull('sources') }
