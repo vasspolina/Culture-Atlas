@@ -795,7 +795,6 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-count{text-align:right;white-space:normal;color:var(--row-dim);font:400 var(--fs-s)/1.25 var(--sans);letter-spacing:0;text-transform:none;font-variant-numeric:tabular-nums}
 #layersPanel .layers-count:empty{display:none}
 @media (max-width:640px){#layersPanel label{grid-template-columns:auto minmax(0,1fr) auto;row-gap:2px}#layersPanel .layer-name{white-space:normal}#layersPanel .layer-desc{grid-column:2/-1}}
-#layersPanel .layers-note{margin:0 0 8px;color:var(--row-dim);font:400 var(--fs-s)/1.4 var(--sans)}
 #layersPanel .layers-kinds{display:flex;flex-wrap:wrap;gap:4px}
 #layersPanel label.kind-chip{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;flex:1 1 150px}
 #layersPanel label.kind-chip .layer-name{white-space:nowrap}
@@ -4584,7 +4583,6 @@ html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(i
    .grade-line and list rules do not reach in. */
 :root:root:root:root body p.grade-line{display:flex!important;align-items:center;flex-wrap:wrap;gap:.25em .5em;text-indent:0}
 :root:root:root:root body p.grade-line .grade-name{text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
-:root:root:root:root body p.grade-line .grade-label{color:var(--ink)}
 :root:root:root:root body .grade-info-btn{display:inline-flex;align-items:center;justify-content:center;flex:none;width:24px;height:24px;min-width:24px;border-radius:50%;border:1px solid var(--ink);background:transparent;color:var(--ink);font:400 14px/1 var(--sans);font-style:normal;padding:0;margin:0;cursor:pointer;text-transform:none;letter-spacing:0}
 :root:root:root:root body .grade-info-btn:hover,:root:root:root:root body .grade-info-btn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
 :root:root:root:root body .grade-info-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
@@ -4836,6 +4834,28 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #gmLocateBtn{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
 }
 
+/* The "Looking at" row the chat leaves when a record is opened mid-conversation (offerBrowseChips in index.html): a small
+   label over the record's questions, in the secondary ink, at the 14px floor. */
+#curatorMessages .curator-browse-label{margin:0 0 4px;font-size:14px;line-height:1.3;color:color-mix(in srgb,var(--ink) 65%,transparent);text-indent:0}
+
+/* ---- CHAT: ARROW DOWN (user, 9 Nov 2026: "Add arrow down button to mobile chat") ----
+   The round button over the phone's composer that takes the chat back to the newest line once the reader has scrolled up
+   (index.html, #chatJumpBtn). A 40px circle on paper with a 1px ink edge, centred just above the box; the desktop has no
+   such button. hidden is set by the script while the end of the chat is in view. */
+#chatJumpBtn{display:none}
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workBottomDock{position:relative}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:not([hidden]){display:flex!important;align-items:center;justify-content:center;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink),0 2px 8px rgba(0,0,0,.12)!important;z-index:5;cursor:pointer}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
+  @media (hover:hover){:is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:hover{background:var(--ink)!important;color:var(--paper)!important}}
+}
+
+/* The phone chat's send button is round, as in the Claude app (user, 9 Nov 2026: the triangle in a black square "looks like
+   slop"): a 40px ink circle with the up arrow in paper, 20px. The desktop keeps its Displaay corners. */
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workSendBtn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--ink)!important;color:var(--paper)!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workSendBtn svg{width:20px!important;height:20px!important}
+}
 
 /* ==== DESKTOP: THE CHAT LIKE THE CLAUDE DESKTOP APP (user, 9 Nov 2026: "make chat design like in Claude desktop app with same
    sizing, keep share information button") ====
