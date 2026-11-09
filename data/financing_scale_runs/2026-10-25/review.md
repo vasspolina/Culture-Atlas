@@ -177,3 +177,28 @@ Two checker agents re-opened every cited source for the 20 records that held a f
   Wave Hill (28 acres stated three times in its own report), The Bass and Madison Museum of Contemporary Art (areas in square feet
   that are not round thousands).
 - Across the stage: staff counts were almost all dropped before checking (averages, FTE, "nearly" or undated); no finance blocks.
+
+# Stage 10 review (f092 to f100, the last batches)
+
+Four checker agents re-opened every cited source for the 41 records that held a figure. The IRS e-file route (below) was reproduced.
+- Dropped before checking under the standing rules: all nine Form 990 "individuals employed in the year" staff counts (cumulative, not a
+  dated headcount), Telfair Museums visitors (2020), American Folk Art Museum visitors (2017-18), Skowhegan site area (350 acres, round).
+- Dropped by the checkers: REDCAT exhibition area (3,000 sq ft, round thousand); Royal Academy area (18,365 m2 is the denominator of a
+  carbon ratio over the main buildings and warehouses, several sites); NewBridge Project visitors (exhibitions only, counted per
+  exhibition, other programmes counted apart); the four Barbican Centre lines (a management table that leaves Barbican Renewal out of
+  public funding and buildings, unaudited, and a department of the City of London with no separate accounts); New Museum and Galeria de la
+  Raza "earned" (mostly membership councils, and a "Misc income" line).
+- Corrected to a newer filing: Transmission Gallery 2025-26 (OSCR), The NewBridge Project 2025-26 (Companies House, filed 14 Oct 2026),
+  Primary 2024-25 (Charity Commission copy, image only, read from the rendered pages), The Showroom income 408,830 (the trustees' review
+  prints 408,290, a digit slip), Printed Matter earned 277,502, Catalyst Arts source (Companies House copy of the accounts).
+- Kept with a note: ICA and London Museum finance are group accounts (the ICA charity alone reports gross income 3,791,092; London Museum
+  income includes 106.6M of New Museum project funding); Raven Row 31,396 visitors is stated for its exhibitions, which are its programme;
+  Phillips Collection 135,301 (the report does not say whether the Phillips@THEARC site is included; it holds 620 gallery visitors);
+  BAM FY2022-23 (the newest year on bam.org; 990 totals differ from the audited operating lines, net assets agree); EAC Montevideo 1,400 m2
+  from a 2016 presentation (no newer source could be opened).
+- IRS e-file route: ProPublica serves a bot check on every 990 PDF, so the nine US blocks (New Museum, Printed Matter, Recess, Smack Mellon,
+  Storefront, Triple Canopy, Artpace, Galeria de la Raza, Southern Exposure) were read from the IRS bulk e-file XML (apps.irs.gov) by byte
+  range, matched to each organisation by EIN, name, address and website, and re-read by the checker. Storefront and Smack Mellon use the
+  amended returns of record. Where the batch listed a ProPublica page, `finance.url` is that page; otherwise it is the IRS zip, and the
+  basis names the XML object.
+- Across the stage: 9 more records with scale (5 with visitors, 4 with an area, no staff), 21 more finance blocks (12 UK, 9 US); f100 (Vietnam, Zambia, Zimbabwe) held no figure. 301 records with scale and 492 with finance in all.

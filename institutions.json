@@ -26092,7 +26092,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "4100 15th Avenue Northeast, Seattle, WA 98195, USA"
+    "address": "4100 15th Avenue Northeast, Seattle, WA 98195, USA",
+    "scale": {
+      "visitors": 65492,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://henryart.org/assets/img/FY25-Impact-Report.pdf"
+      ]
+    }
   },
   {
     "name": "Art Sonje Center",
@@ -37831,7 +37838,16 @@
         "retrieved": "2026-11-04"
       }
     },
-    "admission_fee": "Free"
+    "admission_fee": "Free",
+    "finance": {
+      "fy": "2024-25",
+      "currency": "GBP",
+      "income": 408830,
+      "expenditure": 349095,
+      "net_assets": 218173,
+      "source_kind": "Charity Commission",
+      "url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1055262/accounts-and-annual-returns"
+    }
   },
   {
     "id": "raven-row-london",
@@ -37969,6 +37985,13 @@
         "basis": "OpenStreetMap, address lookup: 56, Artillery Lane, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E1 7LS, United Kingdom",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 31396,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/4023600/accounts-and-annual-returns"
+      ]
     }
   },
   {
@@ -38069,6 +38092,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "GBP",
+      "income": 212107,
+      "expenditure": 259272,
+      "net_assets": 94784,
+      "source_kind": "Companies House",
+      "url": "https://files.opencharities.uk/ew/1151979/2025-03-31-accounts.pdf"
     }
   },
   {
@@ -38168,6 +38200,16 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "GBP",
+      "income": 349867,
+      "expenditure": 458661,
+      "earned": 166079,
+      "net_assets": 169142,
+      "source_kind": "Companies House",
+      "url": "https://files.opencharities.uk/ew/1049653/2025-03-31-accounts.pdf"
     }
   },
   {
@@ -38273,6 +38315,15 @@
         "basis": "OpenStreetMap, address lookup: King Street, Merchant City, City Centre, Glasgow, Glasgow City, Alba / Scotland, G1 5QP, United Kingdom",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2025-26",
+      "currency": "GBP",
+      "income": 82630,
+      "expenditure": 90930,
+      "net_assets": 33164,
+      "source_kind": "OSCR",
+      "url": "https://files.opencharities.uk/sc/SC016442/2026-03-31-accounts.pdf"
     }
   },
   {
@@ -39854,6 +39905,17 @@
         "basis": "OpenStreetMap, address lookup: Printed Matter Inc., 231, 11th Avenue, Chelsea District, Manhattan Community Board 4, Manhattan, New York County, New York, 10199, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "USD",
+      "income": 2004640,
+      "expenditure": 2686955,
+      "public": 108625,
+      "earned": 277502,
+      "net_assets": 464049,
+      "source_kind": "Form 990",
+      "url": "https://projects.propublica.org/nonprofits/organizations/132890539"
     }
   },
   {
@@ -40150,7 +40212,18 @@
       }
     },
     "opening_hours": "Wed\u2013Sat 12:00\u201318:00; closed Mon, Tue, Sun",
-    "admission_fee": "Free"
+    "admission_fee": "Free",
+    "finance": {
+      "fy": "2024-25",
+      "currency": "USD",
+      "income": 1086726,
+      "expenditure": 1549730,
+      "public": 102065,
+      "earned": 12500,
+      "net_assets": 1498968,
+      "source_kind": "Form 990",
+      "url": "https://projects.propublica.org/nonprofits/organizations/133180295"
+    }
   },
   {
     "id": "soma-mexico-city",
@@ -41402,6 +41475,13 @@
         "basis": "OpenStreetMap, address lookup: 6522, Hollywood Boulevard, Yucca Corridor, Hollywood, Los Angeles, Los Angeles County, California, 90028, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "area_m2": 358,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://welcometolace.org/about/"
+      ]
     }
   },
   {
@@ -51339,6 +51419,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2025-26",
+      "currency": "GBP",
+      "income": 633322,
+      "expenditure": 576850,
+      "net_assets": 383334,
+      "source_kind": "Charity Commission",
+      "url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1031721/accounts-and-annual-returns"
     }
   },
   {
@@ -51938,6 +52027,15 @@
         "basis": "OpenStreetMap, name lookup: Catalyst Arts, 6, Joy's Entry, Smithfield, Cathedral Quarter, Belfast City District, County Antrim, Northern Ireland / Tuaisceart \u00c9ireann, BT1 4DR, United Kingdom",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "GBP",
+      "income": 51275,
+      "expenditure": 54144,
+      "net_assets": 28030,
+      "source_kind": "Companies House",
+      "url": "https://find-and-update.company-information.service.gov.uk/company/NI028068/filing-history/MzQ5MjU4NzE5NmFkaXF6a2N4/document?format=pdf&download=0"
     }
   },
   {
@@ -52165,6 +52263,13 @@
         "basis": "OpenStreetMap, address lookup: Site Gallery, 1, Brown Street, Moorhead, Cultural Industries Quarter, City Centre, Sheffield, South Yorkshire, England, S1 2BS, United Kingdom",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 44081,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://opencharities.uk/ew/510322/files/2025-03-31-accounts.html"
+      ]
     }
   },
   {
@@ -52274,6 +52379,15 @@
         "basis": "OpenStreetMap, address lookup: 33, Seely Road, The Park, City of Nottingham, East Midlands, England, NG7 1NU, United Kingdom",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "GBP",
+      "income": 281873,
+      "expenditure": 380828,
+      "net_assets": 714015,
+      "source_kind": "Charity Commission",
+      "url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5004121/accounts-and-annual-returns"
     }
   },
   {
@@ -55020,6 +55134,17 @@
         "basis": "OpenStreetMap, address lookup: 46, Washington Avenue, Brooklyn, Kings County, New York, 11205, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 647315,
+      "expenditure": 1925488,
+      "public": 107840,
+      "earned": 3000,
+      "net_assets": 3949129,
+      "source_kind": "Form 990",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2025/2025_TEOS_XML_11A.zip"
     }
   },
   {
@@ -55105,6 +55230,17 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "USD",
+      "income": 706944,
+      "expenditure": 921787,
+      "public": 108666,
+      "earned": 34534,
+      "net_assets": 379186,
+      "source_kind": "Form 990",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2026/2026_TEOS_XML_05A.zip"
     }
   },
   {
@@ -55429,6 +55565,16 @@
         "basis": "OpenStreetMap, address lookup: Artpace, 445, North Main Avenue, Downtown, San Antonio, Bexar County, Texas, 78205, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "USD",
+      "income": 1648130,
+      "expenditure": 1447940,
+      "public": 329505,
+      "net_assets": 6415254,
+      "source_kind": "Form 990",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2026/2026_TEOS_XML_06A.zip"
     }
   },
   {
@@ -59237,6 +59383,15 @@
         "basis": "OpenStreetMap, address lookup: Eyre Lane, Moorhead, Cultural Industries Quarter, City Centre, Sheffield, South Yorkshire, England, S1 4RB, United Kingdom",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "GBP",
+      "income": 105892,
+      "expenditure": 118885,
+      "net_assets": 18496,
+      "source_kind": "Charity Commission",
+      "url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5138877/accounts-and-annual-returns"
     }
   },
   {
@@ -59329,6 +59484,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2025-26",
+      "currency": "GBP",
+      "income": 683211,
+      "expenditure": 639097,
+      "net_assets": 419656,
+      "source_kind": "Charity Commission",
+      "url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5098852/accounts-and-annual-returns"
     }
   },
   {
@@ -61655,6 +61819,16 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 735010,
+      "expenditure": 791030,
+      "public": 160435,
+      "net_assets": 575107,
+      "source_kind": "Form 990",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2026/2026_TEOS_XML_06A.zip"
     }
   },
   {
@@ -61772,6 +61946,13 @@
         "basis": "OpenStreetMap, address lookup: Flux Factory, 39-31, 29th Street, Court Square, Long Island City, Queens, Queens County, New York, 11106, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "area_m2": 130,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.fluxfactory.org/mission-history/"
+      ]
     }
   },
   {
@@ -62096,6 +62277,17 @@
         "basis": "OpenStreetMap, address lookup: 3030, 20th Street, Potrero Hill, Mission, San Francisco, California, 94110, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 661784,
+      "expenditure": 902546,
+      "public": 163534,
+      "earned": 190721,
+      "net_assets": 123116,
+      "source_kind": "Form 990",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2025/2025_TEOS_XML_11B.zip"
     }
   },
   {
@@ -62206,6 +62398,16 @@
         "basis": "OpenStreetMap, address lookup: 1468;1470;1472;1474, Valencia Street, Mission, San Francisco, California, 94110, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 1814748,
+      "expenditure": 1242133,
+      "public": 1432549,
+      "net_assets": 1797050,
+      "source_kind": "Form 990",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2025/2025_TEOS_XML_11B.zip"
     }
   },
   {
@@ -62492,7 +62694,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "admission_fee": "Free"
+    "admission_fee": "Free",
+    "scale": {
+      "area_m2": 1400,
+      "area_kind": "gallery space",
+      "sources": [
+        "https://www.cultura.gov.py/wp-content/uploads/2015/12/ANEXO-II-Presentaci%C3%B3n-EAC_2015.pdf"
+      ]
+    }
   },
   {
     "id": "proyecto-martadero-cochabamba",
@@ -127746,7 +127955,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "1600 21st Street Northwest, Washington, DC 20009, USA"
+    "address": "1600 21st Street Northwest, Washington, DC 20009, USA",
+    "scale": {
+      "visitors": 135301,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://www.phillipscollection.org/sites/default/files/2025-12/fy25-annual-report.pdf"
+      ]
+    }
   },
   {
     "name": "Parrish Art Museum",
@@ -153825,6 +154041,13 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "scale": {
+      "area_m2": 2359317,
+      "area_kind": "site",
+      "sources": [
+        "https://djerassi.org/about/facilities/"
+      ]
     }
   },
   {
@@ -155979,6 +156202,22 @@
       ],
       "level": 3,
       "level_basis": ""
+    },
+    "scale": {
+      "visitors": 340616,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://media.londonmuseum.org.uk/documents/Annual-Report-Financial-Statements-2025.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "GBP",
+      "income": 128542000,
+      "expenditure": 26770000,
+      "net_assets": 188614000,
+      "source_kind": "annual report",
+      "url": "https://media.londonmuseum.org.uk/documents/Annual-Report-Financial-Statements-2025.pdf"
     }
   },
   {
@@ -158643,6 +158882,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2025-26",
+      "currency": "GBP",
+      "income": 4078745,
+      "expenditure": 4205872,
+      "net_assets": 1523794,
+      "source_kind": "Charity Commission",
+      "url": "https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/236848/accounts-and-annual-returns"
     }
   },
   {
@@ -158919,7 +159167,17 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "235 Bowery, New York, NY 10002, United States"
+    "address": "235 Bowery, New York, NY 10002, United States",
+    "finance": {
+      "fy": "2024-25",
+      "currency": "USD",
+      "income": 25693478,
+      "expenditure": 18744121,
+      "public": 1236166,
+      "net_assets": 121840246,
+      "source_kind": "Form 990",
+      "url": "https://projects.propublica.org/nonprofits/organizations/132986881"
+    }
   },
   {
     "name": "Brooklyn Academy of Music (BAM)",
@@ -159077,6 +159335,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2022-23",
+      "currency": "USD",
+      "income": 46585680,
+      "expenditure": 51862473,
+      "net_assets": 138635189,
+      "source_kind": "Form 990",
+      "url": "https://www.bam.org/globalassets/about/annual-reports/990s/fy23-bam-990fy23.pdf"
     }
   },
   {
