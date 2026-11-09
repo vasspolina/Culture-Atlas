@@ -241,8 +241,25 @@
 
     const chatHead = $('phoneChatHead');
     if (chatHead) {
+      // Chat and Details are tabs (user, 9 Nov 2026: "chat details into tab"), as the Claude app sets Chat and Preview over
+      // an artifact: a strip at the left of the head, the open one underlined, the ⋮ menu and the cross at the right. In
+      // the chat the Chat tab is the open one and does nothing; Details opens the record as a page of its own, whose own
+      // strip (below) has Details open and Chat as the way back. Details is there only once a space is known.
       const title = chatHead.querySelector('.flex-1');
-      if (title) { title.classList.add('gm-chat-title'); title.textContent = 'Chat'; }
+      const strip = document.createElement('div');
+      strip.className = 'gm-head-tabs';
+      strip.setAttribute('role', 'tablist');
+      strip.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      const chatTab = document.createElement('button');
+      chatTab.type = 'button';
+      chatTab.id = 'gmChatTab';
+      chatTab.setAttribute('role', 'tab');
+      chatTab.setAttribute('aria-selected', 'true');
+      chatTab.textContent = 'Chat';
+      strip.appendChild(chatTab);
+      const det = $('phoneChatDetailsBtn');
+      if (det) { det.setAttribute('role', 'tab'); det.setAttribute('aria-selected', 'false'); strip.appendChild(det); }
+      if (title) title.replaceWith(strip); else chatHead.insertBefore(strip, chatHead.firstElementChild ? chatHead.firstElementChild.nextSibling : null);
       const b = document.createElement('button');
       b.type = 'button';
       b.id = 'gmChatMenuBtn';
@@ -254,8 +271,6 @@
       b.addEventListener('click', () => { if (window.atlasToggleMenu) window.atlasToggleMenu(b); });
       const close = $('phoneChatCloseBtn');
       chatHead.insertBefore(b, close || null);
-      // Details is a toggle (user, 6 Nov 2026): it opens the record, and the record's own Details button, pressed, closes it.
-      $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
     }
 
     // ---- One of each in the chat (user, 6 Nov 2026: "make chat window not repeating buttons") ----
@@ -309,29 +324,23 @@
       if (e.target === layersControl && PHONE()) layersControl.querySelector('.layers-close')?.click();
     });
 
-    // ---- Colour key: folded to a round button at the top left, open on a tap (9 Nov 2026) --------------------------
-    // Open by default it covered the map on a phone: at 320px wide it left 31px of map between its foot and the composer.
-    // Folded it is the three tier colours in a button level with Layers, on the other side; a tap opens the key as it was,
-    // and a tap outside, Escape, Layers opening, or a record or the chat coming up folds it again. The desktop is untouched:
-    // the button and the folding are drawn only under html.gm-map (atlas.css).
-    const key = $('mapColourKey');
-    if (key) {
-      const keyBtn = document.createElement('button');
-      keyBtn.type = 'button';
-      keyBtn.id = 'gmKeyBtn';
-      keyBtn.setAttribute('aria-expanded', 'false');
-      keyBtn.setAttribute('aria-label', 'Colour key');
-      keyBtn.innerHTML = '<span class="gm-key-dots" aria-hidden="true"><i data-tier="A"></i><i data-tier="B"></i><i data-tier="U"></i></span>';
-      key.insertBefore(keyBtn, key.firstChild);
-      const isOpen = () => key.hasAttribute('data-gm-open');
-      const setKey = (open) => { key.toggleAttribute('data-gm-open', open); keyBtn.setAttribute('aria-expanded', String(open)); };
-      keyBtn.addEventListener('click', () => setKey(!isOpen()));
-      // On pointerdown, not click: the globe takes the touch and no click follows a tap on the map.
-      document.addEventListener('pointerdown', (e) => { if (isOpen() && !key.contains(e.target)) setKey(false); }, true);
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isOpen() && PHONE()) { setKey(false); keyBtn.focus(); } });
-      layersBtn?.addEventListener('click', () => setKey(false));
-      new MutationObserver(() => { if (isOpen() && (!root.classList.contains('gm-map') || root.classList.contains('gm-sheet'))) setKey(false); })
-        .observe(root, { attributes: true, attributeFilter: ['class'] });
+    // ---- Colour key: in the Layers sheet, not on the map (user, 9 Nov 2026: "rethink the color key") --------------
+    // On a phone the key is the first section of the Layers sheet, whose title already says legend: the map carries only the
+    // Layers and location buttons, as a maps app does, and what the colours mean is read where the layers are chosen. Open on
+    // the map by default it had covered it (at 320px wide it left 31px of map between its foot and the composer), and folded
+    // to a button of three dots, earlier the same day, it was a mark that said nothing. The desktop key stays on the map: the
+    // section goes back to its place when the window grows past a phone.
+    const key = $('mapColourKey'), layersPanel = $('layersPanel');
+    if (key && layersPanel) {
+      const home = key.parentNode, after = key.nextSibling;
+      const head = layersPanel.querySelector('.layers-header');
+      const place = () => {
+        const inPanel = key.parentNode === layersPanel;
+        if (PHONE() && !inPanel) { key.classList.add('layers-section'); if (head) head.insertAdjacentElement('afterend', key); else layersPanel.prepend(key); }
+        else if (!PHONE() && inPanel) { key.classList.remove('layers-section'); home.insertBefore(key, after); }
+      };
+      place();
+      window.addEventListener('resize', place);
     }
 
     // ---- The filter row at the top of the map --------------------------------------------------------------------
@@ -504,18 +513,18 @@
       sheet.addEventListener('touchend', end, { passive: true });
       sheet.addEventListener('touchcancel', end, { passive: true });
 
-      // ---- Details from the chat, as the Claude app opens an artifact (user, 6 Nov 2026: "make details button on chat window
-      // a toggle", "function more like Claude with details toggle and back button") ----
-      // The chat's Details button opens the record as a page of its own: full height, scrolling, never dragged, with a back
-      // button to the chat at the top left and the same Details button, pressed, at the top right. Either one goes back to the
-      // conversation where it was left, scrolled where it was. The sheet's grabber and cross are put away while it is open, so
-      // no control is on screen twice; Ask in chat stays, pressed, and is a third way back (see the toggles below).
+      // ---- Details from the chat, as the Claude app opens an artifact (user, 6 Nov 2026: "function more like Claude with
+      // details toggle and back button"; 9 Nov 2026: "chat details into tab") ----
+      // The chat's Details tab opens the record as a page of its own: full height, scrolling, never dragged, with the same
+      // strip of two tabs at its top as the chat's head, Chat and Details, Details now the open one. Chat goes back to the
+      // conversation where it was left, scrolled where it was. The sheet's grabber and cross are put away while it is open,
+      // so no control is on screen twice; Ask in chat stays, pressed, and is a second way back (see the toggles below).
       const fromChatBar = document.createElement('div');
       fromChatBar.className = 'gm-from-chat-bar';
-      fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" aria-label="Back to the chat">'
-        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'
-        + '<span>Chat</span></button>'
-        + '<button type="button" id="gmDetailsToggleBtn" aria-pressed="true" aria-label="Space details">Details</button>';
+      fromChatBar.setAttribute('role', 'tablist');
+      fromChatBar.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" role="tab" aria-selected="false">Chat</button>'
+        + '<button type="button" id="gmDetailsToggleBtn" role="tab" aria-selected="true">Details</button>';
       fromChatBar.hidden = true;
       if (chrome) chrome.appendChild(fromChatBar);
       const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn].filter(Boolean);
@@ -526,7 +535,6 @@
         chatScrollTop = sc ? sc.scrollTop : 0;
         root.classList.add('gm-from-chat');
         fromChatBar.hidden = false;
-        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'true');
         $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'true');
         // Inline and !important: the sheet's controls are drawn by rules that are themselves !important (atlas.css).
         putAway().forEach((el) => el.style.setProperty('display', 'none', 'important'));
@@ -535,7 +543,6 @@
         if (!root.classList.contains('gm-from-chat')) return;
         root.classList.remove('gm-from-chat');
         fromChatBar.hidden = true;
-        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
         $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'false');
         putAway().forEach((el) => el.style.removeProperty('display'));
       }
@@ -557,8 +564,7 @@
       }
       window.atlasMarkDetailsFromChat = markFromChat;
       window.atlasDetailsBackToChat = backToChat;
-      $('gmDetailsBackBtn')?.addEventListener('click', backToChat);
-      $('gmDetailsToggleBtn')?.addEventListener('click', backToChat);
+      $('gmDetailsBackBtn')?.addEventListener('click', backToChat);   // the open tab, Details, does nothing
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && root.classList.contains('gm-from-chat') && !sheet.classList.contains('hidden')) { e.preventDefault(); backToChat(); }
       });
@@ -733,13 +739,12 @@
         try { status = typeof tierName === 'function' ? tierName(inst) : ''; } catch (_) { status = ''; }
         if (g) {
           // The grade as Google Maps writes a place's standing ("Open" in green, "Closed" in red): the words
-          // "Grade F" in the grade's colour, a dot, then the label up to its first clause. No letter in a circle
-          // (user, 7 Nov 2026: "Don't do F in circles on mobile. Just say grade F"; "make color coding note UI
-          // like on Google Maps"). The whole label is the line's title.
-          rating.innerHTML = '<span class="gm-grade-text" title="' + esc(g.label) + '">'
-            + '<span class="gm-grade-word" data-grade="' + esc(g.letter) + '">Grade ' + esc(g.letter) + '</span>'
-            + '<span aria-hidden="true"> \u22c5 </span>'
-            + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
+          // "Grade F" in the grade's colour, and nothing after them. No letter in a circle (user, 7 Nov 2026: "Don't do F in
+          // circles on mobile. Just say grade F"), and no phrase from the grade's label after a dot ("One flagged funder":
+          // user, 9 Nov 2026, "do not add phrases like 1 flagged funder, this is slop"). What the grade means is the i
+          // button's panel beside it.
+          rating.innerHTML = '<span class="gm-grade-text">'
+            + '<span class="gm-grade-word" data-grade="' + esc(g.letter) + '">Grade ' + esc(g.letter) + '</span></span>';
         } else {
           rating.innerHTML = status ? '<span class="gm-grade-text">' + esc(status) + '</span>' : '';
         }
