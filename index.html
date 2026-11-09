@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=590">
-  <script src="assets/config.js?v=590"></script>
-  <script src="assets/subtopic.js?v=590"></script>
-  <script src="assets/names.js?v=590"></script>
-  <script src="assets/grounding.js?v=590"></script>
-  <script src="assets/repeats.js?v=590"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=594">
+  <script src="assets/config.js?v=594"></script>
+  <script src="assets/subtopic.js?v=594"></script>
+  <script src="assets/names.js?v=594"></script>
+  <script src="assets/grounding.js?v=594"></script>
+  <script src="assets/repeats.js?v=594"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -557,11 +557,11 @@ return maplibregl$1;
             <summary>How the records work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
             <ul class="grade-list grade-scale">
-              <li><span class="grade-dot" style="--grade-dot:#34d399">A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
-              <li><span class="grade-dot" style="--grade-dot:#2dd4bf">B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><span class="grade-dot" style="--grade-dot:#facc15">C</span><span class="grade-scale-text">no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</span></li>
-              <li><span class="grade-dot" style="--grade-dot:#fb923c">D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><span class="grade-dot" style="--grade-dot:#f87171">F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
+              <li><span class="grade-word grade-word-1">Grade A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
+              <li><span class="grade-word grade-word-2">Grade B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
+              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</span></li>
+              <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
+              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
             </ul>
             <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
           </details>
@@ -904,11 +904,11 @@ return maplibregl$1;
               <summary>How the records work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
             <ul class="grade-list grade-scale">
-              <li><span class="grade-dot" style="--grade-dot:#34d399">A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
-              <li><span class="grade-dot" style="--grade-dot:#2dd4bf">B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><span class="grade-dot" style="--grade-dot:#facc15">C</span><span class="grade-scale-text">no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</span></li>
-              <li><span class="grade-dot" style="--grade-dot:#fb923c">D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><span class="grade-dot" style="--grade-dot:#f87171">F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
+              <li><span class="grade-word grade-word-1">Grade A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
+              <li><span class="grade-word grade-word-2">Grade B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
+              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</span></li>
+              <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
+              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
             </ul>
               <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
             </details>
@@ -1017,7 +1017,7 @@ return maplibregl$1;
         <div class="flex items-center gap-2_5">
           <div>
             <h3 class="t-lead">AI Model Settings</h3>
-            <p class="">Answers come from the records. A key turns on open-ended replies.</p>
+            <p class="">Answers come from the records; where they have nothing, the model fills the gap and says so. A key has your own model answer in the browser.</p>
           </div>
         </div>
         <button id="closeSettingsModalBtn" class="atlas-pill-btn pill-sm" title="Close"><span>Close</span></button>
@@ -1132,7 +1132,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=590"></script>
+  <script src="assets/institutions.js?v=594"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10281,11 +10281,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v590';
+    const ATLAS_RELEASE = 'culture-atlas-v594';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=590').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=594').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12779,14 +12779,19 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       return `<p class="no-indent head-fact">${place ? `<strong class="lead-in">${escapeHtml(place)}</strong> ` : ''}${escapeHtml(rest)}</p>`;
     }
     // Grading brought back into the record (user, 6 Nov 2026: "bring grading back. I don't see grading in the details, and explain it also
-    // on the info button on each space, and the grading should be also colour coded"). A grade is its letter in a dot of its colour, black
-    // on every fill (each measures 7:1 or better against black), with a 1px ink edge so the pale fills still show on white; the letter, not
-    // the colour, carries the grade. Every space has an i button beside it that opens the scale, this space's step marked, and the sentence
-    // that decided it (grade_basis). The same mark heads the Funding section and the phone sheet's rating line.
-    const gradeDotHtml = (n, decorative) => GRADE[n] ? `<span class="grade-dot" style="--grade-dot:${GRADE[n].mark || GRADE[n].col}"${decorative ? ' aria-hidden="true"' : ''}>${GRADE[n].letter}</span>` : '';
+    // on the info button on each space, and the grading should be also colour coded"). A grade is the words "Grade B" in the grade's own
+    // colour (the .grade-word colours, measured against paper and ink), never a letter in a circle: the circle went from the phone sheet on
+    // 7 Nov 2026 ("Don't do F in circles on mobile. Just say grade F") and from the record and the scale the same day ("delete this b in
+    // circle, this is slop"). Every space has an i button beside it that opens the scale, this space's step marked, and the sentence that
+    // decided it (grade_basis). The same words head the Funding section and the phone sheet's rating line.
+    const gradeWordHtml = (n) => GRADE[n] ? `<span class="grade-word grade-word-${n}">Grade ${GRADE[n].letter}</span>` : '';
     const gradeShortLabel = (n) => GRADE[n] ? String(GRADE[n].label).split(/;| or /)[0].trim() : '';
+    // The grade and the sentence that decided it, as one line. The basis already says what the label says ("funders listed; no funders
+    // flagged" and then "Funders are named; amounts are not"), so where a basis is on record the label is left out (user, 7 Nov 2026:
+    // "there is also repetition in text"); the label stands in only where no basis is recorded.
+    const gradeReasonHtml = (inst, n) => inst.grade_basis ? `${gradeWordHtml(n)}. ${escapeHtml(proseEnd(inst.grade_basis))}` : `${gradeWordHtml(n)}: ${escapeHtml(GRADE[n].label.toLowerCase())}.`;
     function gradeScaleHtml(current) {
-      return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeDotHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This space</span>' : ''}</span></li>`).join('')}</ul>`;
+      return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeWordHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This space</span>' : ''}</span></li>`).join('')}</ul>`;
     }
     let gradeInfoSeq = 0;
     // The i button and the panel it opens, for a graded space or an unrated one.
@@ -12804,7 +12809,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       return { btn, panel };
     }
     window.atlasGradeInfoParts = gradeInfoParts;
-    window.atlasGradeDotHtml = gradeDotHtml;
+    window.atlasGradeWordHtml = gradeWordHtml;
     // One handler for every i button, wherever the record is drawn (desktop column, detail page, phone sheet).
     document.addEventListener('click', (e) => {
       const b = e.target.closest && e.target.closest('.grade-info-btn');
@@ -12820,7 +12825,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const { btn, panel } = gradeInfoParts(inst);
       if (inst.grade && GRADE[inst.grade]) {
         const n = inst.grade;
-        return `<p class="no-indent grade-line">${gradeDotHtml(n, true)}<span class="grade-name">Grade ${gradeLetter(n)}</span><span class="grade-label">${escapeHtml(gradeShortLabel(n))}</span>${btn}</p>${panel}`;
+        return `<p class="no-indent grade-line"><span class="grade-name">${gradeWordHtml(n)}</span><span class="grade-label">${escapeHtml(gradeShortLabel(n))}</span>${btn}</p>${panel}`;
       }
       return `<p class="no-indent grade-line is-unrated"><span class="grade-name">Not graded</span>${btn}</p>${panel}`;
     }
@@ -13437,8 +13442,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const hasReport = d.funding_verdict || (d.funding || []).length;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
       const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
-      // The grade leads the Funding section, in its colour, with the sentence that decided it.
-      const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund">${gradeDotHtml(inst.grade, true)}<span>Grade ${gradeLetter(inst.grade)}: ${escapeHtml(GRADE[inst.grade].label.toLowerCase())}.${inst.grade_basis ? ' ' + escapeHtml(proseEnd(inst.grade_basis)) : ''}</span></li>` : '';
+      // The grade leads the Funding section, in its colour, with the sentence that decided it (once: the label is left out where a basis says the same).
+      const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund"><span>${gradeReasonHtml(inst, inst.grade)}</span></li>` : '';
       return proseRow('Funding', escapeHtml(verdict), proseChunks(funding, 0).map(t => proseLi('', escapeHtml(t))), { fold: 4, lead });
     }
     // Scale and money: the accounts figures a filing states (inst.finance) and the size figures a source states (inst.scale), nothing estimated.
@@ -15242,8 +15247,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const followUpNote = ambiguousFollowUp
         ? `<follow_up>\nThe visitor is answering your last reply, which named ${namedInReply.map(i => i.name).join(' and ')}. Their words do not say which. Ask which one in a single sentence and say nothing else.\n</follow_up>\n\n`
         : '';
+      // A name no record carries (user, 9 Nov 2026: "when atlas has no record just use llm model to fill in the gap"): the model
+      // says so in one sentence, then answers from its own knowledge, with that part opened "From general knowledge," so the
+      // reader can tell it from the record. A record that is really near the name is offered as the atlas's own.
       const nameLookup = unknownName
-        ? `<name_lookup>\nThe question is the name "${userPrompt.trim()}". No record carries that name${nearest && nearest.inst ? `; the nearest is ${nearest.inst.name} (${nearest.inst.city || nearest.inst.location || 'no city recorded'})` : ' and none is near it'}. Say in one sentence that the Atlas has no record under that name${nearest && nearest.inst ? ', then name that nearest record in one sentence' : ''}. Do not describe the space that happens to be open on the map, do not guess what the name might be, and do not ask the visitor to clarify.\n</name_lookup>\n\n`
+        ? `<name_lookup>\nThe question is the name "${userPrompt.trim()}". No record carries that name${nearest && nearest.inst ? `; the nearest is ${nearest.inst.name} (${nearest.inst.city || nearest.inst.location || 'no city recorded'})` : ' and none is near it'}. ${nearest && nearest.inst ? 'If that record is the same space under another spelling, answer from it as the atlas\'s record. Otherwise, s' : 'S'}ay in one sentence that the atlas has no record of it ("The atlas has no record of …"), then answer about it from your own knowledge, opening that part with the words "From general knowledge," once; keep to what you know well and give no figure, date or name you are not sure of. Do not describe the space that happens to be open on the map, and do not ask the visitor to clarify.\n</name_lookup>\n\n`
         : '';
 
       if (mentionedInst && typeof curatorContext !== 'undefined') {
@@ -15288,7 +15296,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the space: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\nVOICE: deliver it as a professional academic investigator and art-market analyst briefing a colleague, and push that register hard: the forensic cadence of a case file, the vocabulary of provenance research, due diligence and funding analysis (the paper trail, the board minutes, the filing, the follow-the-money line, the reputational exposure, the trustee's other holdings), short declarative sentences that land, and a sharp, knowing, dramatic edge. Heighten the delivery, never the facts: every claim is still one the items carry, still attributed to whoever says it, talk still stays talk, and no verdict word appears without its named event, date and actor. The case file is a manner of speaking: never cite the atlas's own item numbers or codes (G76, R31) and never call an item a row, an entry or a field. Never remark on the file itself: no line saying a trail is thin, a quote cuts off or the record goes quiet; end a cut-off quotation at its last full sentence.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'If a detail is absent from the record, leave it out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated"; answer with what the record holds and stop there. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring space or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'A detail the visitor did not ask for and the record does not hold is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold is answered from your own knowledge, in a sentence that opens "From general knowledge," so it is told from the record. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring space or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst, true)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -15303,8 +15311,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 ANSWER AND TONE:
 - Answer the user's specific question directly in the first sentence. Never dismiss or redirect it with phrases such as "What matters more is..." or lecture the visitor about what they should ask.
 - Use a neutral, precise investigative tone (in gossip mode, the heightened investigator's voice its own block describes). Present funding, public coffers, foundation grants, grades, governance and criticism as recorded information, not moral verdicts or promotional copy. Avoid partisan language, theatrical jokes, sneering comparisons and unsupported praise.
-- State what the record says and distinguish it from inference, allegation or missing information. Do not invent details that no record supplies.
-- If a requested detail appears in the record, state it clearly and do not also say that it is unavailable. If it is not in the record, leave it out; only when the visitor asked for exactly that detail, say so in one plain sentence. Never append a web address, a link line, a "Sources:" line or a "for more information" line to an answer; the record's links are shown elsewhere.
+- State what the record says and distinguish it from inference, allegation or missing information. Where no record supplies a detail the visitor asked for, give it from your own knowledge under the GENERAL KNOWLEDGE rule below, never as the record's.
+- If a requested detail appears in the record, state it clearly and do not also say that it is unavailable. If it is not in the record and was not asked for, leave it out; when the visitor asked for exactly that detail, answer it from general knowledge, marked as such (GENERAL KNOWLEDGE below). Never append a web address, a link line, a "Sources:" line or a "for more information" line to an answer; the record's links are shown elsewhere.
 - For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name critics, publications, reviews or controversies only when present in the supplied record or cited sources. If none are recorded, do not write about critics at all unless asked; when asked, one plain sentence, and do not substitute a generic theory passage or introduce it with phrases such as "One critical frame applies."
 - Across all spaces, treat attached visual critiques or theory passages as interpretive lenses, not evidence of what critics, visitors or the press have said. Label them as theoretical when relevant, and do not present a general lens as a space-specific finding unless the record or a cited source supports that connection.
 - Preserve conversational context, but do not add a greeting, repeat the question, append an unsolicited conclusion or offer, or pivot to another issue.
@@ -15337,8 +15345,8 @@ CHARACTER & VOICE GUIDELINES:
    - Every answer is about the space, place or funder the visitor asked about, built from that record's own lines: its audited figures and the year they are for, the funders it names, the dates of each reported case, the legal form, the critic and publication quoted, the hours and prices. A sentence that could be written about any museum is not an answer; replace it with what this record states.
    - The records are written in labelled sections (STATUS, FUNDING AND FINANCES, GOVERNANCE, ABOUT, REPORTED ON THE RECORD, EMPLOYEE AND VISITOR ACCOUNTS, CRITICS AND STUDIES, VISITING, SOURCES). Draw on the section the question is about; a question about money is answered from FUNDING AND FINANCES, one about a protest or a sponsor from REPORTED ON THE RECORD, one about getting there from VISITING. Do not pad with sections the visitor did not ask about.
    - When a <place_summary> block is supplied the question is about that city or country as a whole: use its count, its grade tally, its flagged spaces and reasons, and the funders named most, and name specific spaces from it rather than describing the place in general.
-   - Give concrete details only when they appear in the supplied records or their cited sources. Never fill gaps with assumed artworks, histories, controversies or governance facts.
-   - State recorded admission, price and hours details exactly. Name the funder, the year and the amount whenever the record has them; never write "a major donor" or "various funders" when a name is supplied. If a requested detail is missing, leave it out, or say so in one sentence when it was asked for. No web address or source line at the end of an answer.
+   - Give the record's details as the record's, from the supplied records and their cited sources. Where the record has nothing on what was asked, fill the gap from your own knowledge under the GENERAL KNOWLEDGE rule, marked, and never pass it off as the record.
+   - State recorded admission, price and hours details exactly. Name the funder, the year and the amount whenever the record has them; never write "a major donor" or "various funders" when a name is supplied. A requested detail the record does not hold is answered from general knowledge, marked. No web address or source line at the end of an answer.
 
 5. FORMATTING RULES & OUTPUT CONSTRAINTS:
 <formatting_rules>
@@ -15372,18 +15380,20 @@ ${webIntelGrounding}
 - Avoid pompous marketing fluff ("cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "sublime", "epistemologies", or "palliative").
 - Avoid promotional language, unsupported praise or criticism, canned phrasing and prompt meta-commentary. Keep answers concise and evidence-based.
 
-NAMES THAT HAVE NO RECORD: When the visitor names a space and no supplied record carries that name, say in one sentence that the Atlas has no record under that name. Then, only if a supplied record is clearly near the name, name that one record. Never answer about the space open on the map in its place, never offer a space from your own memory, and never ask the visitor to clarify. When the visitor answers one of your questions with "yes", "that one" or "the second", take it as the space you last named and answer about that space from its record; if you named no space that has a record, say so in one sentence.
+GENERAL KNOWLEDGE (the gap rule): The records come first, and what they hold is given as theirs. Where the atlas has no record of the space, place or funder asked about, or the record has nothing on the detail asked for, answer from your own knowledge rather than stop. Open that part with the words "From general knowledge," once, so the reader can tell it from the record; keep to what you know well; give no figure, date or name you are not sure of; and never present it as the atlas's record, never give it the atlas's grade, and never attach the record's sources to it. What the record does hold on the question is still given first and as the record's.
+
+NAMES THAT HAVE NO RECORD: When the visitor names a space and no supplied record carries that name, say in one sentence that the atlas has no record of it ("The atlas has no record of …"), then answer about it from general knowledge as the rule above says. If a supplied record is clearly the same space under another spelling, answer from that record instead and name it. Never answer about the space open on the map in its place, and never ask the visitor to clarify. When the visitor answers one of your questions with "yes", "that one" or "the second", take it as the space you last named and answer about that space from its record; if you named no space that has a record, say so in one sentence.
 
 GRADE REASONS: The reason for a grade is its Grade Basis line. State that reason and no other; never explain a grade by transparency, documentation or disclosure unless the Grade Basis line says so. When the Watch Line says a tie with a funder has ended, say so in the same sentence as the grade. When a record's Governance Classification is Unverified, say once that the Atlas has not verified it.
 
 LIST QUESTIONS: When a <matching_records> block is supplied it holds the records the Atlas has for the question, and says how many there are. Name only spaces listed there, give the count, and say when the list is cut off. The page prints the count and the grade tally as the first line of your answer, so write no number of spaces and no sentence about how many spaces hold a grade or how many did something; start with the groups or the names. A space's own grade is the one on its own line. Never name a space as carrying a flag unless its own Recorded Flags line or Grade Basis line carries it, and never infer a flag from a funder's industry. Use the verb a record uses (refused, returned, removed, dropped); do not say a space accepted money when its line says it refused or returned it, and do not call a record ungraded when its Governance Classification shows a grade.
 
-GROUNDING: Answer only from the records supplied with each question. Quote a figure only if it appears in a record or its cited source, and name that source. If the records do not say, give what they do say and stop; never write a sentence about what they do not say. Do not recall studies, cases, budgets or dates from memory.
+GROUNDING: Answer from the records supplied with each question first. A figure given as the record's must appear in a record or its cited source, with that source named. Where the records have nothing on what was asked, give what they do hold, then fill the gap from general knowledge under the GENERAL KNOWLEDGE rule; never write a sentence about what the records do not say, other than the one sentence that opens a general-knowledge answer about a space with no record.
 
 FORMATTING & DOSSIER PRESENTATION RULES:
 1. Answer the user's specific question in the first sentence; do not force a template, headings, comparison or unrequested conclusion.
 2. Keep paragraphs short and use a blank line between distinct points. Separate visitor logistics from governance or financial analysis using separate paragraphs, each opening with the topic in plain words, with no bold.
-3. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. If a detail is absent from the record, leave it out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated"; answer with what the record holds and stop there. Never end an answer with a web address, a link or a "Sources:" line.
+3. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. A detail the record does not hold and the visitor did not ask for is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold comes from general knowledge, marked. Never end an answer with a web address, a link or a "Sources:" line.
 4. For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name a critic, publication, review or controversy only when it is present in the supplied record or cited sources. If none is recorded, say nothing about critics unless asked; when asked, one plain sentence. Do not substitute a generic theory passage.
 5. Attribute allegations and assessments to their source. Do not imply that a source independently verifies more than it does.
 6. Use standard Markdown; never output raw markup. Name a funding transparency rating as one letter, A to F (Grade D or Grade F), never as a number, presented as an informational record field rather than an endorsement or condemnation.
@@ -15527,7 +15537,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // name in it is kept even when it is phrased in the negative, so "Leon Black is no longer a trustee" stays.
     const ABSENCE_RE = /^(?:the\s+)?(?:records?|atlas|sources?|filing|entry|dossier|data|it)\s+(?:do|does|did)\s+not\s+(?:list|name|state|say|mention|give|include|identify|record|show|hold|specify|provide|report|disclose|indicate|contain)\b|^(?:no|nothing)\s+(?:further|more|else|other|additional|such|specific)?\s*[\w\s,-]{0,40}?\b(?:is|are|was|were)\s+(?:recorded|listed|named|given|stated|mentioned|found|held|available|provided|disclosed|reported|documented|identified|included)\b|^(?:there\s+(?:is|are)\s+no\s+(?:record|mention|information|detail|data|figure|note|entry)s?\b)|^[\w\s,'’()-]{0,60}?\b(?:is|are)\s+not\s+(?:recorded|listed|stated|named|given|mentioned|available|documented|specified|disclosed|provided|included|noted)\b(?:\s+in\s+the\s+(?:record|atlas|sources?|filing))?\s*[.!]?$/i;
     // A sentence goes only when the whole of it is the absence: one that carries on ("..., but the treasurer is ...") or holds a figure stays.
-    const absent = (p) => ABSENCE_RE.test(p.trim()) && !/\d|USD|EUR|GBP|£|\$|€/.test(p) && !/[,;:]\s*(?:but|however|though|although|while|whereas|and|yet)\b|\b(?:but|however|although|whereas)\b/i.test(p);
+    // A sentence that marks a general-knowledge answer ("From general knowledge, …", or the one that opens it, "The atlas has no
+    // record of …") stays: it is what tells the reader that what follows is the model's and not the record's (user, 9 Nov 2026).
+    const absent = (p) => ABSENCE_RE.test(p.trim()) && !/general knowledge|atlas has no record of/i.test(p) && !/\d|USD|EUR|GBP|£|\$|€/.test(p) && !/[,;:]\s*(?:but|however|though|although|while|whereas|and|yet)\b|\b(?:but|however|although|whereas)\b/i.test(p);
     function dropAbsenceLines(text) {
       if (!text || typeof text !== 'string') return text;
       return text.split('\n').map((line) => {
@@ -17381,14 +17393,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // The header's Details button: the record sheet of the selected space, from wherever the phone is (the chat, the record
       // page, or the map with the sheet closed). It is the phone's counterpart of the desktop Details tab.
       window.atlasOpenPhoneDetails = function () {
-        const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || (typeof curatorContext !== 'undefined' && curatorContext.lastInst) || null;
-        if (window.innerWidth >= 768 || !inst) return;
+        if (window.innerWidth >= 768) return;
         // From the chat the record opens as a page of its own with a back button to the conversation (assets/phone-maps.js).
         const fromChat = document.body.dataset.mobileMode === 'chat' || (chatDrawer && !chatDrawer.classList.contains('hidden'));
+        // Which space: from the chat, the one the conversation is about (the space it last named, or was asked about), since
+        // that is what the Details button at the top of the chat promises; from the map, the selected one. The chat names a
+        // space without selecting it, so the two can differ, and the sheet was then filled for both at once (9 Nov 2026: it
+        // said MoMA over ARoS's grade, tabs and sources). Selecting the space first makes the name, the grade and the tabs one.
+        const chatInst = (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || null;
+        const sel = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        const inst = (fromChat && chatInst) || sel || chatInst;
+        if (!inst) return;
         if (isChatInputMode && typeof exitChatInputMode === 'function') exitChatInputMode(true);
         if (fromChat && typeof window.atlasMarkDetailsFromChat === 'function') window.atlasMarkDetailsFromChat();
         window.atlasCloseChat();                       // the chat and the record page give way to the map
-        if (typeof updateMobileDossier === 'function') updateMobileDossier(inst);
+        if (inst !== sel && typeof window.selectInstitution === 'function') window.selectInstitution(inst, false);
+        else if (typeof updateMobileDossier === 'function') updateMobileDossier(inst);
         if (tabDossier) tabDossier.click();            // shows the sheet over the map
         else bottomSheet?.classList.remove('hidden');
       };
@@ -21368,13 +21388,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=590"></script>
-<script src="assets/funding-views.js?v=590"></script>
-<script src="assets/layers.js?v=590"></script>
-<script src="assets/hq-detail.js?v=590"></script>
-<script src="assets/bubbles.js?v=590" defer></script>
-<script src="assets/phone-maps.js?v=590"></script>
-<script src="assets/desktop-maps.js?v=590"></script>
-<script src="assets/chat-resize.js?v=590"></script>
+<script src="assets/typeset.js?v=594"></script>
+<script src="assets/funding-views.js?v=594"></script>
+<script src="assets/layers.js?v=594"></script>
+<script src="assets/hq-detail.js?v=594"></script>
+<script src="assets/bubbles.js?v=594" defer></script>
+<script src="assets/phone-maps.js?v=594"></script>
+<script src="assets/desktop-maps.js?v=594"></script>
+<script src="assets/chat-resize.js?v=594"></script>
 </body>
 </html>

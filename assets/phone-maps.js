@@ -241,8 +241,25 @@
 
     const chatHead = $('phoneChatHead');
     if (chatHead) {
+      // Chat and Details are tabs (user, 9 Nov 2026: "chat details into tab"), as the Claude app sets Chat and Preview over
+      // an artifact: a strip at the left of the head, the open one underlined, the ⋮ menu and the cross at the right. In
+      // the chat the Chat tab is the open one and does nothing; Details opens the record as a page of its own, whose own
+      // strip (below) has Details open and Chat as the way back. Details is there only once a space is known.
       const title = chatHead.querySelector('.flex-1');
-      if (title) { title.classList.add('gm-chat-title'); title.textContent = 'Chat'; }
+      const strip = document.createElement('div');
+      strip.className = 'gm-head-tabs';
+      strip.setAttribute('role', 'tablist');
+      strip.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      const chatTab = document.createElement('button');
+      chatTab.type = 'button';
+      chatTab.id = 'gmChatTab';
+      chatTab.setAttribute('role', 'tab');
+      chatTab.setAttribute('aria-selected', 'true');
+      chatTab.textContent = 'Chat';
+      strip.appendChild(chatTab);
+      const det = $('phoneChatDetailsBtn');
+      if (det) { det.setAttribute('role', 'tab'); det.setAttribute('aria-selected', 'false'); strip.appendChild(det); }
+      if (title) title.replaceWith(strip); else chatHead.insertBefore(strip, chatHead.firstElementChild ? chatHead.firstElementChild.nextSibling : null);
       const b = document.createElement('button');
       b.type = 'button';
       b.id = 'gmChatMenuBtn';
@@ -254,8 +271,6 @@
       b.addEventListener('click', () => { if (window.atlasToggleMenu) window.atlasToggleMenu(b); });
       const close = $('phoneChatCloseBtn');
       chatHead.insertBefore(b, close || null);
-      // Details is a toggle (user, 6 Nov 2026): it opens the record, and the record's own Details button, pressed, closes it.
-      $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
     }
 
     // ---- One of each in the chat (user, 6 Nov 2026: "make chat window not repeating buttons") ----
@@ -300,6 +315,32 @@
       icon.setAttribute('aria-hidden', 'true');
       icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3 2.5 8.5 12 14l9.5-5.5z"/><path d="m4.6 12.3-2.1 1.2L12 19l9.5-5.5-2.1-1.2"/></svg>';
       layersBtn.insertBefore(icon, layersBtn.firstChild);
+    }
+
+    // The sheet's scrim is #layersControl's own ::before (atlas.css, PHONE: LAYERS SHEET AND COLOUR KEY), so a tap on it lands
+    // on the control itself, which the menu's own outside-tap rule counts as inside: it closes the sheet here instead.
+    const layersControl = $('layersControl');
+    layersControl?.addEventListener('click', (e) => {
+      if (e.target === layersControl && PHONE()) layersControl.querySelector('.layers-close')?.click();
+    });
+
+    // ---- Colour key: in the Layers sheet, not on the map (user, 9 Nov 2026: "rethink the color key") --------------
+    // On a phone the key is the first section of the Layers sheet, whose title already says legend: the map carries only the
+    // Layers and location buttons, as a maps app does, and what the colours mean is read where the layers are chosen. Open on
+    // the map by default it had covered it (at 320px wide it left 31px of map between its foot and the composer), and folded
+    // to a button of three dots, earlier the same day, it was a mark that said nothing. The desktop key stays on the map: the
+    // section goes back to its place when the window grows past a phone.
+    const key = $('mapColourKey'), layersPanel = $('layersPanel');
+    if (key && layersPanel) {
+      const home = key.parentNode, after = key.nextSibling;
+      const head = layersPanel.querySelector('.layers-header');
+      const place = () => {
+        const inPanel = key.parentNode === layersPanel;
+        if (PHONE() && !inPanel) { key.classList.add('layers-section'); if (head) head.insertAdjacentElement('afterend', key); else layersPanel.prepend(key); }
+        else if (!PHONE() && inPanel) { key.classList.remove('layers-section'); home.insertBefore(key, after); }
+      };
+      place();
+      window.addEventListener('resize', place);
     }
 
     // ---- The filter row at the top of the map --------------------------------------------------------------------
@@ -368,8 +409,11 @@
           const head = panel && (panel.querySelector('.record-head') || panel.querySelector('h2'));
           end = bottomOf(head);
         } else {
-          // The description now sits in the title block, above the actions, so the actions' end is the end of both.
-          end = bottomOf(actions) || bottomOf(titleBlock);
+          // The description sits in the title block, above the actions, and the tabs (Overview, Funding, Record, Sources) under
+          // them: peek ends under the tabs, whole, so the row is never cut in half at the fold and can be tapped from peek
+          // (9 Nov 2026); without tabs, under the actions or the title block.
+          const tabs = sheet.querySelector('.gm-tabs');
+          end = (tabs && !tabs.hidden ? bottomOf(tabs) : 0) || bottomOf(actions) || bottomOf(titleBlock);
         }
         // The iPhone's home strip covers the page's bottom edge (the page runs under it, viewport-fit=cover), so peek leaves
         // room for it, or the actions sat under it (user, 4 Nov 2026: text overlapped at the bottom when a space was opened).
@@ -469,18 +513,18 @@
       sheet.addEventListener('touchend', end, { passive: true });
       sheet.addEventListener('touchcancel', end, { passive: true });
 
-      // ---- Details from the chat, as the Claude app opens an artifact (user, 6 Nov 2026: "make details button on chat window
-      // a toggle", "function more like Claude with details toggle and back button") ----
-      // The chat's Details button opens the record as a page of its own: full height, scrolling, never dragged, with a back
-      // button to the chat at the top left and the same Details button, pressed, at the top right. Either one goes back to the
-      // conversation where it was left, scrolled where it was. The sheet's grabber and cross are put away while it is open, so
-      // no control is on screen twice; Ask in chat stays, pressed, and is a third way back (see the toggles below).
+      // ---- Details from the chat, as the Claude app opens an artifact (user, 6 Nov 2026: "function more like Claude with
+      // details toggle and back button"; 9 Nov 2026: "chat details into tab") ----
+      // The chat's Details tab opens the record as a page of its own: full height, scrolling, never dragged, with the same
+      // strip of two tabs at its top as the chat's head, Chat and Details, Details now the open one. Chat goes back to the
+      // conversation where it was left, scrolled where it was. The sheet's grabber and cross are put away while it is open,
+      // so no control is on screen twice; Ask in chat stays, pressed, and is a second way back (see the toggles below).
       const fromChatBar = document.createElement('div');
       fromChatBar.className = 'gm-from-chat-bar';
-      fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" aria-label="Back to the chat">'
-        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'
-        + '<span>Chat</span></button>'
-        + '<button type="button" id="gmDetailsToggleBtn" aria-pressed="true" aria-label="Space details">Details</button>';
+      fromChatBar.setAttribute('role', 'tablist');
+      fromChatBar.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" role="tab" aria-selected="false">Chat</button>'
+        + '<button type="button" id="gmDetailsToggleBtn" role="tab" aria-selected="true">Details</button>';
       fromChatBar.hidden = true;
       if (chrome) chrome.appendChild(fromChatBar);
       const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn].filter(Boolean);
@@ -491,7 +535,6 @@
         chatScrollTop = sc ? sc.scrollTop : 0;
         root.classList.add('gm-from-chat');
         fromChatBar.hidden = false;
-        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'true');
         $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'true');
         // Inline and !important: the sheet's controls are drawn by rules that are themselves !important (atlas.css).
         putAway().forEach((el) => el.style.setProperty('display', 'none', 'important'));
@@ -500,7 +543,6 @@
         if (!root.classList.contains('gm-from-chat')) return;
         root.classList.remove('gm-from-chat');
         fromChatBar.hidden = true;
-        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
         $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'false');
         putAway().forEach((el) => el.style.removeProperty('display'));
       }
@@ -522,8 +564,7 @@
       }
       window.atlasMarkDetailsFromChat = markFromChat;
       window.atlasDetailsBackToChat = backToChat;
-      $('gmDetailsBackBtn')?.addEventListener('click', backToChat);
-      $('gmDetailsToggleBtn')?.addEventListener('click', backToChat);
+      $('gmDetailsBackBtn')?.addEventListener('click', backToChat);   // the open tab, Details, does nothing
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && root.classList.contains('gm-from-chat') && !sheet.classList.contains('hidden')) { e.preventDefault(); backToChat(); }
       });
@@ -564,7 +605,7 @@
     }
 
     // ---- The record as a maps app's place card (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ----
-    // Under the name, a rating line: the funding grade as its letter in a dot of its colour, where a place card has stars.
+    // Under the name, a rating line: the funding grade as the words "Grade B" in its colour, where a place card has stars.
     // The actions are pills of words, the first one filled. Then tabs (Overview, Funding, Record, Sources) with the
     // open one underlined, and on Overview the visiting facts as rows: address, hours, admission, website. No icons on the
     // pills or the rows, and no Website pill while the website is one of the rows (user, 7 Nov 2026: "delete slop").
@@ -683,7 +724,13 @@
 
       const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
       function fill() {
-        const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        // The space the sheet is about is the one its name says: the chat writes a space into the sheet without selecting it,
+        // and the selected space is then another one (9 Nov 2026: the sheet said MoMA over ARoS's grade and sources). The
+        // selected space is the fallback, for a sheet whose name is not a space's (a funder's record).
+        const sel = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        const nameText = name.textContent.trim();
+        const all = window.ALL_INSTITUTIONS || (typeof ALL_INSTITUTIONS !== 'undefined' ? ALL_INSTITUTIONS : []);
+        const inst = (sel && sel.name === nameText ? sel : null) || (nameText && all.find((i) => i.name === nameText)) || sel;
         if (!inst) return;
         // Rating line.
         let g = null;
@@ -692,13 +739,12 @@
         try { status = typeof tierName === 'function' ? tierName(inst) : ''; } catch (_) { status = ''; }
         if (g) {
           // The grade as Google Maps writes a place's standing ("Open" in green, "Closed" in red): the words
-          // "Grade F" in the grade's colour, a dot, then the label up to its first clause. No letter in a circle
-          // (user, 7 Nov 2026: "Don't do F in circles on mobile. Just say grade F"; "make color coding note UI
-          // like on Google Maps"). The whole label is the line's title.
-          rating.innerHTML = '<span class="gm-grade-text" title="' + esc(g.label) + '">'
-            + '<span class="gm-grade-word" data-grade="' + esc(g.letter) + '">Grade ' + esc(g.letter) + '</span>'
-            + '<span aria-hidden="true"> \u22c5 </span>'
-            + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
+          // "Grade F" in the grade's colour, and nothing after them. No letter in a circle (user, 7 Nov 2026: "Don't do F in
+          // circles on mobile. Just say grade F"), and no phrase from the grade's label after a dot ("One flagged funder":
+          // user, 9 Nov 2026, "do not add phrases like 1 flagged funder, this is slop"). What the grade means is the i
+          // button's panel beside it.
+          rating.innerHTML = '<span class="gm-grade-text">'
+            + '<span class="gm-grade-word" data-grade="' + esc(g.letter) + '">Grade ' + esc(g.letter) + '</span></span>';
         } else {
           rating.innerHTML = status ? '<span class="gm-grade-text">' + esc(status) + '</span>' : '';
         }
@@ -738,7 +784,11 @@
         ['dossier-sheet-funding', 'dossier-sheet-record', 'dossier-sheet-sources'].forEach((id) => {
           const el = $(id); if (el && el.hasAttribute('data-gm-dup') !== hasFull) el.toggleAttribute('data-gm-dup', hasFull);
         });
-        const inFull = (t) => !!full.querySelector('[data-tab="' + t + '"]');
+        // A tab is offered only when something can be read under it: an element tagged for it with words or a picture in it. The
+        // reviews list is tagged Record and is empty until a place has approved reviews, so a record with nothing else under
+        // Record offered an empty tab (user, 9 Nov 2026, Hamhung Grand Theatre: "Slop"). When reviews arrive the pane changes
+        // and the tabs are filled again, so the tab appears then.
+        const inFull = (t) => [...full.querySelectorAll('[data-tab="' + t + '"]')].some((el) => el.textContent.trim().length > 0 || el.querySelector('img, svg, figure, video'));
         // A tab with nothing in it is not offered; the open one falls back to Overview.
         const has = hasFull
           ? { overview: true, funding: inFull('funding'), record: inFull('record'), sources: inFull('sources') }
