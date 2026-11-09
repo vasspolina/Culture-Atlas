@@ -3158,8 +3158,8 @@ div:has(>#topThemeBtn){column-gap:0}
 }
 
 /* ==== PHONE: THE RECORD AS A PLACE CARD (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ====
-   Built by buildPlaceCard in assets/phone-maps.js: the name, a rating line (the grade's letter in a dot of its colour, with
-   its words), the place, a row of pill actions with icons (the first filled, the rest tonal), tabs with the open one
+   Built by buildPlaceCard in assets/phone-maps.js: the name, a rating line (the words "Grade B" in the grade's colour, then
+   its label), the place, a row of pill actions with icons (the first filled, the rest tonal), tabs with the open one
    underlined, and on Overview the visiting facts as rows with an icon each. */
 @media (max-width:767px){
   :root{--gm-tonal:color-mix(in srgb,var(--ink) 9%,var(--grey))}
@@ -4571,12 +4571,11 @@ html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:hover{bac
 html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]):hover{background:var(--marker-color)!important;color:#000!important}
 
 /* ===== GRADING BROUGHT BACK (user, 6 Nov 2026: "bring grading back ... explain it also on the info button on each space ... colour coded") =====
-   The grade is its letter in a dot of its colour: black type on every fill (each 7:1 or better against black), and a 1px ink edge so the
-   pale fills still read on white (the letter carries the grade, the colour codes it). The i button beside it opens the scale. Set after
-   every other layer, with the ids the record is drawn in, so the older .grade-line and list rules do not reach in. */
-:root:root:root:root body .grade-dot{display:inline-flex;align-items:center;justify-content:center;flex:none;width:1.6em;height:1.6em;border-radius:50%;background:var(--grade-dot);color:#000!important;border:1px solid var(--ink);font-weight:400;font-size:.8em;line-height:1;letter-spacing:0;text-transform:none;text-indent:0;vertical-align:middle}
+   The grade is the words "Grade B" in the grade's colour (.grade-word, the same colours the chat's answers use), never a letter in a
+   circle: the circle went from the phone sheet and then from the record and the scale on 7 Nov 2026 ("delete this b in circle, this is
+   slop"). The i button beside it opens the scale. Set after every other layer, with the ids the record is drawn in, so the older
+   .grade-line and list rules do not reach in. */
 :root:root:root:root body p.grade-line{display:flex!important;align-items:center;flex-wrap:wrap;gap:.25em .5em;text-indent:0}
-:root:root:root:root body p.grade-line .grade-dot{font-size:1em}
 :root:root:root:root body p.grade-line .grade-name{text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 :root:root:root:root body p.grade-line .grade-label{color:var(--ink)}
 :root:root:root:root body .grade-info-btn{display:inline-flex;align-items:center;justify-content:center;flex:none;width:24px;height:24px;min-width:24px;border-radius:50%;border:1px solid var(--ink);background:transparent;color:var(--ink);font:400 14px/1 var(--sans);font-style:normal;padding:0;margin:0;cursor:pointer;text-transform:none;letter-spacing:0}
@@ -4589,12 +4588,10 @@ html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(i
 :root:root:root:root body ul.grade-scale{list-style:none!important;margin:.2em 0 .6em!important;padding:0!important}
 :root:root:root:root body ul.grade-scale>li{display:flex!important;align-items:flex-start;gap:.6em;margin:0 0 .35em!important;padding:0!important;text-indent:0!important}
 :root:root:root:root body ul.grade-scale>li::before{content:none!important;display:none!important}
-:root:root:root:root body ul.grade-scale>li .grade-dot{font-size:14px;margin-top:-.1em}
-:root:root:root:root body ul.grade-scale>li.is-this .grade-dot{outline:2px solid var(--ink);outline-offset:2px}
+:root:root:root:root body ul.grade-scale>li>.grade-word{flex:none;min-width:4.6em;white-space:nowrap}
 :root:root:root:root body ul.grade-scale .grade-this{display:inline-block;margin-left:.3em;padding:0 .4em;border:1px solid var(--ink);border-radius:999px;font-size:14px;line-height:1.4;white-space:nowrap}
 :root:root:root:root body li.grade-fund{display:flex!important;align-items:flex-start;gap:.5em;text-indent:0!important}
 :root:root:root:root body li.grade-fund::before{content:none!important;display:none!important}
-:root:root:root:root body li.grade-fund .grade-dot{font-size:14px;margin-top:.05em}
 /* Phone sheet: the i button sits at the end of the rating line, the panel under it. */
 :root:root:root:root body #dossier-bottom-sheet .gm-rating .grade-info-btn{margin-left:6px;width:24px;height:24px}
 :root:root:root:root body #dossier-bottom-sheet .gm-rating+.grade-info{margin:6px 0 8px}

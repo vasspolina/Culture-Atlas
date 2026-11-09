@@ -599,7 +599,7 @@
     }
 
     // ---- The record as a maps app's place card (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ----
-    // Under the name, a rating line: the funding grade as its letter in a dot of its colour, where a place card has stars.
+    // Under the name, a rating line: the funding grade as the words "Grade B" in its colour, where a place card has stars.
     // The actions are pills of words, the first one filled. Then tabs (Overview, Funding, Record, Sources) with the
     // open one underlined, and on Overview the visiting facts as rows: address, hours, admission, website. No icons on the
     // pills or the rows, and no Website pill while the website is one of the rows (user, 7 Nov 2026: "delete slop").
