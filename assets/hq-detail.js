@@ -213,12 +213,14 @@
     // A row is shown only when it has something in it: no 'no other name', 'no space', 'None' lines (user, 3 Nov 2026).
     if (!ready) rows.append(row('hqConnT', 'Connections', 'Loading…'));
     else {
-      const all = hq().names(e);
-      if (all.length > 1) rows.append(row('hqNamesT', 'Names', 'The others are how spaces’ funding lines spell the same funder.',
-        h('ul', { class: 'd-row-list hq-names' }, all.map(n => h('li', { text: n })))));
+      // The other spellings only: the funder's own name is the title above, and the sentence that explained the list is gone
+      // (user, 9 Nov 2026: "Slop"). No row when every funding line spells it as the title does.
+      const others = hq().names(e).filter(n => n !== e.n);
+      if (others.length) rows.append(row('hqNamesT', 'Also written', '', h('ul', { class: 'd-row-list hq-names' }, others.map(n => h('li', { text: n })))));
       const sp = hq().spaces(e), rel = hq().related(e);
       const group = (id, title, list, build) => { if (list.length) rows.append(row(id, title, '', listOf(list, build, LIST_SHOWN))); };
-      group('hqConnSpaces', e.kind === 'org' ? `Funds ${sp.length} ${sp.length === 1 ? 'space' : 'spaces'}` : `Named on ${sp.length} ${sp.length === 1 ? 'space' : 'spaces'}`, sp, spaceRow);
+      // The row's title is the relation, not a count ("Funds 1 space": user, 9 Nov 2026, "Slop"); the list under it is the count.
+      group('hqConnSpaces', e.kind === 'org' ? 'Funds' : 'Named on', sp, spaceRow);
       if (e.kind === 'org') {
         group('hqConnFunders', 'Funds alongside', rel.funders, r => officeRow(r.e, r.shared));
         group('hqConnPeople', 'People the files tie to these spaces', rel.people, r => officeRow(r.e, r.shared));

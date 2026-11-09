@@ -4796,3 +4796,11 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   #layersPanel #mapColourKey#mapColourKey#mapColourKey .mck-title{margin:0 0 8px;font:400 var(--fs-s)/1.2 var(--sans)!important}
   #layersPanel #mapColourKey#mapColourKey#mapColourKey .mck-body{max-height:none}
 }
+
+/* ==== PHONE: THE FUNDER'S RECORD IN THE SHEET (user, 9 Nov 2026: "Slop") ====
+   The sheet's cross is the only one on a funder's record (PHONE: MAPS APP hides .hq-close), but the Displaay button layer drew it
+   again with fourteen ids, so two crosses sat one under the other. And the head kept the desktop's two lines of air under it. */
+@media (max-width:767px){
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet.is-hq-sheet #hqPanel .hq-close{display:none!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel .hq-sheet{padding-bottom:16px!important;margin-bottom:0!important}
+}
