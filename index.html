@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=602">
-  <script src="assets/config.js?v=602"></script>
-  <script src="assets/subtopic.js?v=602"></script>
-  <script src="assets/names.js?v=602"></script>
-  <script src="assets/grounding.js?v=602"></script>
-  <script src="assets/repeats.js?v=602"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=603">
+  <script src="assets/config.js?v=603"></script>
+  <script src="assets/subtopic.js?v=603"></script>
+  <script src="assets/names.js?v=603"></script>
+  <script src="assets/grounding.js?v=603"></script>
+  <script src="assets/repeats.js?v=603"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -252,14 +252,14 @@ return maplibregl$1;
           <section class="layers-section" data-no-chips>
             <h2 class="layers-section-title">Funding views</h2>
             <div class="layers-list">
-              <label style="--layer-color:#96a960"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type. Pairs with one link show when you zoom in</span><span class="layers-count" data-count="bundle"></span></label>
+              <label style="--layer-color:#96a960"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type</span><span class="layers-count" data-count="bundle"></span></label>
               <label style="--layer-color:#f8ff94"><input type="checkbox" data-layer="flows"> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
               <label style="--layer-color:#41aa87"><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country by the share of its spaces&rsquo; funders based abroad, or by its main funder type</span><span class="layers-count" data-count="choro"></span></label>
-              <label style="--layer-color:#ffc694"><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for. Point at a funder anywhere to see its own</span></label>
+              <label style="--layer-color:#ffc694"><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the spaces each of the six widest-reaching funders pays for</span></label>
               <label style="--layer-color:#1bff0a"><input type="checkbox" data-layer="glyphs"> <span class="layer-name">Funding mix on each space</span><span class="layer-desc">A ring around each space, split by its public, foundation and company funders</span></label>
-              <label style="--layer-color:#ab9cc9"><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share. No lines</span></label>
+              <label style="--layer-color:#ab9cc9"><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a space in focus, every space that shares a funder with it glows, brighter the more they share</span></label>
               <label style="--layer-color:#c2ffc6"><input type="checkbox" data-layer="lifted"> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more spaces they fund, with a line down to each</span></label>
-              <label style="--layer-color:#ff6c0a"><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices. The flag is on the space</span><span class="layers-count" data-count="flagged"></span></label>
+              <label style="--layer-color:#ff6c0a"><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged spaces, and from spaces with a right-wing funder, to their funders&rsquo; head offices</span><span class="layers-count" data-count="flagged"></span></label>
             </div>
             <div class="layers-kinds layers-choro" role="radiogroup" aria-label="Countries shaded by">
               <label class="kind-chip"><input type="radio" name="choroMode" data-choro="abroad" checked> <span class="layer-name">Funders abroad</span></label>
@@ -391,10 +391,6 @@ return maplibregl$1;
         </div>
 
         <!-- Retained for swipe gesture compatibility & test assertions -->
-        <div id="floatingCardSwipeHint" class="hidden" style="display:none;" aria-hidden="true">
-          <span>Swipe ↔ Gossip Mode</span>
-          <span>Swipe ↑ Full Dossier</span>
-        </div>
 
         <!--  VERIFIED INFO PANE -->
         <div id="floatingCardInfoPane" class="space-y-2">
@@ -560,7 +556,6 @@ return maplibregl$1;
               <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
               <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
             </ul>
-            <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
         </div>
@@ -762,7 +757,7 @@ return maplibregl$1;
                 <span>Ask in Chat</span>
               </button>
               <button id="mobileSheetViewDossierBtn" type="button" class="flex-1 py-2 px-3 text-center min-h-_44px flex items-center justify-center gap-1_5">
-                <span>View Dossier</span>
+                <span>Details</span>
               </button>
             </div>
           </div>
@@ -808,9 +803,6 @@ return maplibregl$1;
             <!-- Hero Greeting (Stitch title style) -->
             <div id="curatorHeroGreeting" class="curator-message-wrap w-full flex flex-col items-center justify-center text-center py-6">
               <h1 id="curatorHeroTitle">Who funds this cultural institution?</h1>
-              <p class="max-w-lg">
-                Explore who funds cultural spaces and what’s been reported about them. Follow the sources.
-              </p>
               <div id="curatorStarterPrompts" class="starter-prompts"></div>
             </div>
 
@@ -908,7 +900,6 @@ return maplibregl$1;
               <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
               <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
             </ul>
-              <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>
             </details>
 
             <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
@@ -938,7 +929,7 @@ return maplibregl$1;
       <div id="detailDrawer" class="hidden absolute inset-0 z-30 w-full h-full flex flex-col overflow-hidden">
         <div class="px-4 py-2_5 flex items-center justify-end shrink-0 detail-bar">
           <div class="flex items-center gap-2">
-            <button id="closeDetailBtn" aria-label="Close record" type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="p-1" title="Close Dossier">
+            <button id="closeDetailBtn" aria-label="Close record" type="button" onclick="document.getElementById('detailDrawer')?.classList.add('hidden');" class="p-1" title="Close record">
               <svg class="detail-bar-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg>
             </button>
           </div>
@@ -988,7 +979,7 @@ return maplibregl$1;
     </button>
     <!-- Nav Item: Dossier -->
     <button class="flex flex-col items-center space-y-1" id="tab-dossier" type="button">
-      <span class="t-strong">Dossier</span>
+      <span class="t-strong">Record</span>
     </button>
     <!-- Nav Item: Curator AI -->
     <button class="flex flex-col items-center space-y-1 relative" id="tab-chat" type="button">
@@ -1015,7 +1006,6 @@ return maplibregl$1;
         <div class="flex items-center gap-2_5">
           <div>
             <h3 class="t-lead">AI Model Settings</h3>
-            <p class="">Answers come from the records; where they have nothing, the model fills the gap and says so. A key has your own model answer in the browser.</p>
           </div>
         </div>
         <button id="closeSettingsModalBtn" class="atlas-pill-btn pill-sm" title="Close"><span>Close</span></button>
@@ -1069,9 +1059,9 @@ return maplibregl$1;
       <div class="space-y-1_5">
         <label class="block">Model</label>
         <select id="aiModelSelect" class="w-full px-3_5 py-2 meta">
-          <option value="claude-sonnet-5-5">Anthropic Sonnet 5.5 (Recommended)</option>
-          <option value="claude-opus-5-5">Anthropic Opus 5.5 (Deepest reasoning)</option>
-          <option value="claude-haiku-5-5">Anthropic Haiku 5.5 (Fast and cheap)</option>
+          <option value="claude-sonnet-5-5">Anthropic Sonnet 5.5</option>
+          <option value="claude-opus-5-5">Anthropic Opus 5.5</option>
+          <option value="claude-haiku-5-5">Anthropic Haiku 5.5</option>
         </select>
       </div>
 
@@ -1079,13 +1069,6 @@ return maplibregl$1;
       <div id="connectionTestBox" class="hidden p-3 flex items-center gap-2">
         <span id="testStatusIcon"></span>
         <span id="testStatusMsg" class="meta">Testing connection...</span>
-      </div>
-
-      <!-- Privacy Assurance -->
-      <div class="p-3">
-        <p>
-          <strong>Your key stays in this browser:</strong> it is saved in your local browser's <code class="meta">localStorage</code>. Requests are sent directly from your browser to the provider's API. No intermediate backend logs your keys.
-        </p>
       </div>
 
       <!-- Action Buttons -->
@@ -1130,7 +1113,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=602"></script>
+  <script src="assets/institutions.js?v=603"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9907,7 +9890,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               <span>Focus Connected Spaces on Atlas Map</span>
             </button>
             <button type="button" onclick="askCuratorAboutTrustee('${escapeHtml(node.name)}')" class="w-full py-1_5 px-3 flex items-center justify-center gap-1">
-              <span>Ask Curator Dossier</span>
+              <span>Ask in chat</span>
             </button>
           </div>
         </div>
@@ -10272,11 +10255,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v602';
+    const ATLAS_RELEASE = 'culture-atlas-v603';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=602').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=603').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14044,17 +14027,17 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
     const PROVIDER_MODELS = {
       anthropic: [
-        { id: 'claude-sonnet-5-5', name: 'Anthropic Sonnet 5.5 (Recommended)' },
-        { id: 'claude-opus-5-5', name: 'Anthropic Opus 5.5 (Deepest reasoning)' },
-        { id: 'claude-haiku-5-5', name: 'Anthropic Haiku 5.5 (Fast and cheap)' }
+        { id: 'claude-sonnet-5-5', name: 'Anthropic Sonnet 5.5' },
+        { id: 'claude-opus-5-5', name: 'Anthropic Opus 5.5' },
+        { id: 'claude-haiku-5-5', name: 'Anthropic Haiku 5.5' }
       ],
       openai: [
-        { id: 'gpt-4o-mini', name: 'gpt-4o-mini (Fast & Versatile)' },
-        { id: 'gpt-4o', name: 'gpt-4o (Full Reasoning)' }
+        { id: 'gpt-4o-mini', name: 'gpt-4o-mini' },
+        { id: 'gpt-4o', name: 'gpt-4o' }
       ],
       gemini: [
-        { id: 'gemini-2.5-flash', name: 'gemini-2.5-flash (Fast & Multimodal)' },
-        { id: 'gemini-1.5-flash', name: 'gemini-1.5-flash (Reliable Fallback)' }
+        { id: 'gemini-2.5-flash', name: 'gemini-2.5-flash' },
+        { id: 'gemini-1.5-flash', name: 'gemini-1.5-flash' }
       ]
     };
 
@@ -14114,19 +14097,19 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const providerTip = document.getElementById('providerTip');
       const providerGetKeyLink = document.getElementById('providerGetKeyLink');
       if (prov === 'anthropic') {
-        if (providerTip) providerTip.innerHTML = 'Recommended: <strong>Anthropic</strong> excels at art theory, <em>Beyond Objecthood</em>, e-flux criticism, and institutional analysis.';
+        if (providerTip) providerTip.textContent = 'Keys are sent only to the provider you pick.';
         if (providerGetKeyLink) {
           providerGetKeyLink.href = 'https://console.anthropic.com/settings/keys';
           providerGetKeyLink.textContent = 'Get Anthropic Key';
         }
       } else if (prov === 'openai') {
-        if (providerTip) providerTip.innerHTML = 'OpenAI <strong>GPT-4o / GPT-4o-mini</strong> provides fast conversational guidance across the catalog.';
+        if (providerTip) providerTip.textContent = 'Keys are sent only to the provider you pick.';
         if (providerGetKeyLink) {
           providerGetKeyLink.href = 'https://platform.openai.com/api-keys';
           providerGetKeyLink.textContent = 'Get OpenAI Key';
         }
       } else {
-        if (providerTip) providerTip.innerHTML = 'Google <strong>Gemini 2.5 Flash</strong> provides responsive real-time multimodal reasoning with a generous free tier.';
+        if (providerTip) providerTip.textContent = 'Keys are sent only to the provider you pick.';
         if (providerGetKeyLink) {
           providerGetKeyLink.href = 'https://aistudio.google.com/app/apikey';
           providerGetKeyLink.textContent = 'Get Gemini Key (Free)';
@@ -16234,85 +16217,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const q = (query || '').toLowerCase().trim();
       const effMode = mode || getChatModeConfig(query);
       return { mode: effMode, thought: '', step: 'Reading the records' };
-
-      if (/crawl|itinerary|route|tour/i.test(q) && !/power\s*plant/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Mapping pedestrian corridors, verified public hours, and transit connections between independent spaces.`,
-          step: `Synthesizing Curatorial Itinerary & Transit Nodes`
-        };
-      }
-
-      const city = (typeof findMentionedCity === 'function') ? findMentionedCity(query) : null;
-      const inst = (typeof findMentionedInst === 'function') ? findMentionedInst(query) : null;
-      const qNorm = (query || '').toLowerCase();
-      const isExactInst = inst && (
-        (inst.name && qNorm.includes(inst.name.toLowerCase())) ||
-        (inst.shortName && qNorm.includes(inst.shortName.toLowerCase())) ||
-        (inst.aliases && inst.aliases.some(a => a && a.length > 3 && qNorm.includes(a.toLowerCase())))
-      );
-
-      if (isExactInst) {
-        return {
-          mode: effMode,
-          thought: `Auditing governance filings, Form 990 disclosures, and institutional underwriting records for ${inst.name}.`,
-          step: `Auditing Form 990 & Trustee Interlocks for ${inst.name}`
-        };
-      }
-
-      if (city) {
-        return {
-          mode: effMode,
-          thought: `Reviewing verified independent art spaces, civic institutions, and cultural registries in ${city}.`,
-          step: `Scanning Independent Arts Corpus for ${city}`
-        };
-      }
-
-      if (inst) {
-        return {
-          mode: effMode,
-          thought: `Auditing governance filings, Form 990 disclosures, and institutional underwriting records for ${inst.name}.`,
-          step: `Auditing Form 990 & Trustee Interlocks for ${inst.name}`
-        };
-      }
-
-      if (/budget|financ|form\s*990|filing|schedule\s*l|endow/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Analyzing Form 990 statutory disclosures, program expenditure ratios, and endowment governance.`,
-          step: `Extracting Statutory Filings & Executive Compensation Records`
-        };
-      }
-
-      if (/trustee|board|interlock|conflict|director/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Examining board interlocks, corporate affiliations, and potential fiduciary conflicts of interest.`,
-          step: `Traversing Institutional Directorate Network`
-        };
-      }
-
-      if (/material|research|online|unethical|whistleblower/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Cross-referencing open-source investigative dossiers, statutory filings, and verified primary-source records.`,
-          step: `Cross-Referencing Statutory Filing Disclosures & FOI Leaks`
-        };
-      }
-
-      if (/timeline|boycott|protest|resistance|sackler/i.test(q)) {
-        return {
-          mode: effMode,
-          thought: `Reviewing cultural divestment milestones, artist actions, and institutional policy changes.`,
-          step: `Querying Cultural Resistance & Divestment Timeline`
-        };
-      }
-
-      return {
-        mode: effMode,
-        thought: `Matching the question to the records and their sources.`,
-        step: `Reading the records`
-      };
     }
 
 
@@ -16352,12 +16256,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         hero = document.createElement('div');
         hero.id = 'curatorHeroGreeting';
         hero.className = 'curator-message-wrap w-full flex flex-col py-6';
-        hero.setAttribute('data-speech', 'Welcome to Leaving it on the table. Explore who funds cultural spaces and what’s been reported about them. Follow the sources.');
+        hero.setAttribute('data-speech', 'Leaving it on the table.');
         hero.innerHTML = `
           <h1 id="curatorHeroTitle">${escapeHtml(HERO_TITLE)}</h1>
-          <p class="max-w-lg">
-            Explore who funds cultural spaces and what’s been reported about them. Follow the sources.
-          </p>
           <div id="curatorStarterPrompts" class="starter-prompts"></div>
         `;
         contentWrap.insertBefore(hero, curatorMessages);
@@ -17216,8 +17117,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
-        answer(`<p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no outside source, or no reason.</p>
-          <p>Hours, prices and addresses appear only where the record has them. Check the museum's own page before you visit.</p>`);
+        answer(`<p>${countA} spaces have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no outside source, or no reason.</p>`);
         return;
       }
       // Anything else asked about the space ("symbol of the museum") is answered from the record lines that mention it, or the
@@ -21444,13 +21344,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=602"></script>
-<script src="assets/funding-views.js?v=602"></script>
-<script src="assets/layers.js?v=602"></script>
-<script src="assets/hq-detail.js?v=602"></script>
-<script src="assets/bubbles.js?v=602" defer></script>
-<script src="assets/phone-maps.js?v=602"></script>
-<script src="assets/desktop-maps.js?v=602"></script>
-<script src="assets/chat-resize.js?v=602"></script>
+<script src="assets/typeset.js?v=603"></script>
+<script src="assets/funding-views.js?v=603"></script>
+<script src="assets/layers.js?v=603"></script>
+<script src="assets/hq-detail.js?v=603"></script>
+<script src="assets/bubbles.js?v=603" defer></script>
+<script src="assets/phone-maps.js?v=603"></script>
+<script src="assets/desktop-maps.js?v=603"></script>
+<script src="assets/chat-resize.js?v=603"></script>
 </body>
 </html>
