@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=600">
-  <script src="assets/config.js?v=600"></script>
-  <script src="assets/subtopic.js?v=600"></script>
-  <script src="assets/names.js?v=600"></script>
-  <script src="assets/grounding.js?v=600"></script>
-  <script src="assets/repeats.js?v=600"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=603">
+  <script src="assets/config.js?v=603"></script>
+  <script src="assets/subtopic.js?v=603"></script>
+  <script src="assets/names.js?v=603"></script>
+  <script src="assets/grounding.js?v=603"></script>
+  <script src="assets/repeats.js?v=603"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -234,7 +234,6 @@ return maplibregl$1;
           </div>
           <section class="layers-section">
             <h2 class="layers-section-title">Filters</h2>
-            <p class="layers-note">One at a time: the map shows only the spaces the filter is about. The same six are the row of filters over the map. Untick the one on, or pick All spaces there, to show every space again.</p>
             <div class="layers-list">
               <!-- Button colours (user, 6 Nov 2026: no colour coding repeats). Each filter takes the colour of the marks it turns on
                    (COL in assets/layers.js); the funding views below take eight more, each 31 or more apart in CIELAB from every mark,
@@ -252,7 +251,6 @@ return maplibregl$1;
           </section>
           <section class="layers-section" data-no-chips>
             <h2 class="layers-section-title">Funding views</h2>
-            <p class="layers-note">Other ways to draw the same funding data. Each works alone or beside a filter above, and follows the funder types below. Point at a line, a ring or an area to name it; click to ask the chat.</p>
             <div class="layers-list">
               <label style="--layer-color:#96a960"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type. Pairs with one link show when you zoom in</span><span class="layers-count" data-count="bundle"></span></label>
               <label style="--layer-color:#f8ff94"><input type="checkbox" data-layer="flows"> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each space it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
@@ -274,11 +272,9 @@ return maplibregl$1;
               <output data-years-out>2010s</output>
               <span class="layers-count" data-count="years"></span>
             </div>
-            <p class="layers-note">The decade keeps the spaces whose funding line names a year in it, on every funding layer and view. Funding lines give no start or end dates, so this is the year a line mentions, not the years a grant ran.</p>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Propaganda periods</h2>
-            <p class="layers-note">Show or hide the spaces used for propaganda now and those used in a past period. A space with a documented use in both shows both marks.</p>
             <div class="layers-kinds">
               <label class="kind-chip" style="--marker-color:#ff5fa0"><input type="checkbox" data-pkind="today" checked> <i class="shape-dot shape-glow"></i><span class="layer-name">Now</span></label>
               <label class="kind-chip" style="--marker-color:#ff5fa0"><input type="checkbox" data-pkind="historical" checked> <i class="shape-ring shape-glow"></i><span class="layer-name">In the past</span></label>
@@ -293,7 +289,6 @@ return maplibregl$1;
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Funder types</h2>
-            <p class="layers-note">Filter the funder layers by kind of funder. Point at a funder around a space to see every other space it funds.</p>
             <div class="layers-filters">
               <label class="filter-row" style="--marker-color:#7c9bff"><i class="shape-dot"></i><span class="layer-name">Public funding</span><input type="checkbox" role="switch" data-kind="gov" checked></label>
               <label class="filter-row" style="--marker-color:#ffa3c8"><i class="shape-dot"></i><span class="layer-name">Foundations</span><input type="checkbox" role="switch" data-kind="found" checked></label>
@@ -302,7 +297,6 @@ return maplibregl$1;
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Widest-reaching funders</h2>
-            <p class="layers-note">The funders named on the most spaces. Point at one to preview every space it funds; switch it on to keep it drawn. Several can be on at once.</p>
             <div id="topFunders" class="layers-filters layers-top" role="group" aria-label="Widest-reaching funders"></div>
           </section>
           <section class="layers-section">
@@ -315,7 +309,6 @@ return maplibregl$1;
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Marks on the map</h2>
-            <p class="layers-note">Every mark is a dot, and its name on the map says what it is.</p>
             <div class="layers-key layers-entity-key">
               <span><i class="shape-dot" style="--marker-color:#7c9bff"></i>Public funding</span>
               <span><i class="shape-dot" style="--marker-color:#ffa3c8"></i>Foundation or individual donor</span>
@@ -351,9 +344,11 @@ return maplibregl$1;
         </ul>
         <div class="grade-info mck-info" id="mapColourKeyInfo" role="region" aria-label="How spaces are graded" data-repeat-ok hidden>
           <p>The colour of a name on the map is the grade of its record. It says how well the record is sourced, not a verdict on the space.</p>
-          <p><b class="mck-word" data-tier="A">Clean</b> needs at least one source outside the space&rsquo;s own website.</p>
-          <p><b class="mck-word" data-tier="B">Flagged</b> needs a recorded reason, such as a flagged funder or a protest over its funding.</p>
-          <p><b class="mck-word" data-tier="U">Unverified</b> is every other space: its record cites no source outside the space&rsquo;s own website yet.</p>
+          <ul class="grade-scale mck-scale">
+            <li><span class="mck-word" data-tier="A">Clean</span><span>needs at least one source outside the space&rsquo;s own website.</span></li>
+            <li><span class="mck-word" data-tier="B">Flagged</span><span>needs a recorded reason, such as a flagged funder or a protest over its funding.</span></li>
+            <li><span class="mck-word" data-tier="U">Unverified</span><span>is every other space: its record cites no source outside the space&rsquo;s own website yet.</span></li>
+          </ul>
           <p>A city takes the colour most of its spaces have. Open a space to read its record and the sources behind its grade.</p>
         </div>
       </section>
@@ -890,10 +885,11 @@ return maplibregl$1;
                   <button id="workKbCloseBtn" class="kb-close-btn" type="button" aria-label="Close the keyboard" title="Close the keyboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
 
                   <!-- Upward Arrow Send Button -->
-                  <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message">
-                    <!-- A triangle pointing up, drawn as an outline (user, 7 Nov 2026: "the chat symbol can be triangle"). -->
-                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 4.5l8.5 15h-17z"/>
+                  <button id="workSendBtn" class="flex items-center justify-center shrink-0" title="Send message" aria-label="Send message">
+                    <!-- An arrow pointing up, the same mark as the map box's send button (user, 9 Nov 2026, of the outline triangle
+                         that stood here since 7 Nov: "looks like slop"). -->
+                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 19V5M5 12l7-7 7 7"/>
                     </svg>
                   </button>
                 </div>
@@ -1134,7 +1130,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=600"></script>
+  <script src="assets/institutions.js?v=603"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9771,59 +9767,52 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               <div class="flex items-center gap-2">
                 
                 <div>
-                  <h4 class="t-strong">Interlocking Board Forensics</h4>
-                  <p class="meta">Click any node in the graph to inspect board seats</p>
+                  <h4 class="t-strong">Shared board members</h4>
                 </div>
               </div>
-              <p class="">
-                Cultural institutions in New York, London, and Paris share corporate board directors managing defense contractors, predatory private equity, and fossil fuel conglomerates.
-              </p>
             </div>
 
             <div class="space-y-2">
-              <div class="meta t-strong">Priority Interlock Dossiers:</div>
+              <div class="meta t-strong">People and companies</div>
               <div class="space-y-1_5">
                 <button type="button" onclick="selectTrusteeGraphNode('sackler_family')" class="w-full text-left p-2_5 flex items-center justify-between">
                   <div>
                     <span class="t-strong block">Sackler Dynasty (Purdue Pharma)</span>
-                    <span class="meta">6 Interlocked Museums, OxyContin Epidemic</span>
+                    <span class="meta">6 museums</span>
                   </div>
                   <span class="">Inspect</span>
                 </button>
                 <button type="button" onclick="selectTrusteeGraphNode('leon_black')" class="w-full text-left p-2_5 flex items-center justify-between">
                   <div>
                     <span class="t-strong block">Leon Black (Apollo Global)</span>
-                    <span class="meta">MoMA & The Met, Epstein Financial Disclosures</span>
+                    <span class="meta">MoMA, The Met</span>
                   </div>
                   <span class="">Inspect</span>
                 </button>
                 <button type="button" onclick="selectTrusteeGraphNode('warren_kanders')" class="w-full text-left p-2_5 flex items-center justify-between">
                   <div>
                     <span class="t-strong block">Warren Kanders (Safariland)</span>
-                    <span class="meta">Whitney Museum, Border Tear Gas Deployment</span>
+                    <span class="meta">Whitney Museum</span>
                   </div>
                   <span class="">Inspect</span>
                 </button>
                 <button type="button" onclick="selectTrusteeGraphNode('bp')" class="w-full text-left p-2_5 flex items-center justify-between">
                   <div>
                     <span class="t-strong block">BP (British Petroleum)</span>
-                    <span class="meta">British Museum, Tate, NPG, Fossil Social Licensing</span>
+                    <span class="meta">British Museum, Tate, NPG</span>
                   </div>
                   <span class="">Inspect</span>
                 </button>
                 <button type="button" onclick="selectTrusteeGraphNode('larry_fink')" class="w-full text-left p-2_5 flex items-center justify-between">
                   <div>
                     <span class="t-strong block">Larry Fink (BlackRock)</span>
-                    <span class="meta">MoMA Trustee, $10 Trillion Extractive Asset Manager</span>
+                    <span class="meta">MoMA trustee</span>
                   </div>
                   <span class="">Inspect</span>
                 </button>
               </div>
             </div>
 
-            <div class="p-3">
-              <em>Tip: Use the sector filter pills above to isolate Defense contractors, Fossil fuel underwriters, or Private equity interlocks.</em>
-            </div>
           </div>
         `;
         return;
@@ -10304,11 +10293,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v600';
+    const ATLAS_RELEASE = 'culture-atlas-v603';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=600').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=603').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12808,11 +12797,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // circle, this is slop"). Every space has an i button beside it that opens the scale, this space's step marked, and the sentence that
     // decided it (grade_basis). The same words head the Funding section and the phone sheet's rating line.
     const gradeWordHtml = (n) => GRADE[n] ? `<span class="grade-word grade-word-${n}">Grade ${GRADE[n].letter}</span>` : '';
-    const gradeShortLabel = (n) => GRADE[n] ? String(GRADE[n].label).split(/;| or /)[0].trim() : '';
-    // The grade and the sentence that decided it, as one line. The basis already says what the label says ("funders listed; no funders
-    // flagged" and then "Funders are named; amounts are not"), so where a basis is on record the label is left out (user, 7 Nov 2026:
-    // "there is also repetition in text"); the label stands in only where no basis is recorded.
-    const gradeReasonHtml = (inst, n) => inst.grade_basis ? `${gradeWordHtml(n)}. ${escapeHtml(proseEnd(inst.grade_basis))}` : `${gradeWordHtml(n)}: ${escapeHtml(GRADE[n].label.toLowerCase())}.`;
+    // The grade alone, "Grade B", and no sentence after it (user, 9 Nov 2026: "Grade B. No flagged funder or funding protest on record.
+    // Funders are named; amounts are not." - "only keep grade b"). What decided it is behind the i button.
     function gradeScaleHtml(current) {
       return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeWordHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This space</span>' : ''}</span></li>`).join('')}</ul>`;
     }
@@ -12848,7 +12834,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const { btn, panel } = gradeInfoParts(inst);
       if (inst.grade && GRADE[inst.grade]) {
         const n = inst.grade;
-        return `<p class="no-indent grade-line"><span class="grade-name">${gradeWordHtml(n)}</span><span class="grade-label">${escapeHtml(gradeShortLabel(n))}</span>${btn}</p>${panel}`;
+        return `<p class="no-indent grade-line"><span class="grade-name">${gradeWordHtml(n)}</span>${btn}</p>${panel}`;
       }
       return `<p class="no-indent grade-line is-unrated"><span class="grade-name">Not graded</span>${btn}</p>${panel}`;
     }
@@ -13466,8 +13452,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const hasReport = d.funding_verdict || (d.funding || []).length;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
       const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
-      // The grade leads the Funding section, in its colour, with the sentence that decided it (once: the label is left out where a basis says the same).
-      const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund"><span>${gradeReasonHtml(inst, inst.grade)}</span></li>` : '';
+      // The grade leads the Funding section in its colour, on its own.
+      const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund"><span>${gradeWordHtml(inst.grade)}</span></li>` : '';
       return proseRow('Funding', escapeHtml(verdict), proseChunks(funding, 0).map(t => proseLi('', escapeHtml(t))), { fold: 4, lead });
     }
     // Scale and money: the accounts figures a filing states (inst.finance) and the size figures a source states (inst.scale), nothing estimated.
@@ -21479,13 +21465,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=600"></script>
-<script src="assets/funding-views.js?v=600"></script>
-<script src="assets/layers.js?v=600"></script>
-<script src="assets/hq-detail.js?v=600"></script>
-<script src="assets/bubbles.js?v=600" defer></script>
-<script src="assets/phone-maps.js?v=600"></script>
-<script src="assets/desktop-maps.js?v=600"></script>
-<script src="assets/chat-resize.js?v=600"></script>
+<script src="assets/typeset.js?v=603"></script>
+<script src="assets/funding-views.js?v=603"></script>
+<script src="assets/layers.js?v=603"></script>
+<script src="assets/hq-detail.js?v=603"></script>
+<script src="assets/bubbles.js?v=603" defer></script>
+<script src="assets/phone-maps.js?v=603"></script>
+<script src="assets/desktop-maps.js?v=603"></script>
+<script src="assets/chat-resize.js?v=603"></script>
 </body>
 </html>
