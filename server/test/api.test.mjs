@@ -79,7 +79,7 @@ after(async () => {
 test('health check answers without touching the database', async () => {
   const res = await call('/healthz');
   assert.equal(res.status, 200);
-  assert.deepEqual(await res.json(), { ok: true });
+  assert.deepEqual(await res.json(), { ok: true, edits: true });
 });
 
 describe('submitting a review', () => {
@@ -320,5 +320,70 @@ describe('cleanText', () => {
     assert.equal(cleanText('<style>p{}</style>text<!-- x -->'), 'text');
     assert.equal(cleanText('1 < 2 and 3 > 2'), '1 2 and 3 2');
     assert.equal(cleanText(null), '');
+  });
+});
+
+describe('suggesting an edit', () => {
+  const editPath = id => `/api/places/${encodeURIComponent(id)}/edits`;
+  const EDIT = { field: 'funding', original: 'City fund.', proposed: 'City fund and a private foundation.', source: 'Plaque in the lobby', authorLabel: 'A visitor' };
+  const postEdit = (body, id = place.id) => call(editPath(id), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+
+  test('stores it as PENDING with the original, the new text and the source, and shows it nowhere public', async () => {
+    const res = await postEdit(EDIT);
+    assert.equal(res.status, 201);
+    const { id } = await res.json();
+    const row = await prisma.editSuggestion.findUnique({ where: { id } });
+    assert.equal(row.status, 'PENDING');
+    assert.equal(row.placeId, place.id);
+    assert.equal(row.institution, place.name);
+    assert.equal(row.field, 'funding');
+    assert.equal(row.original, EDIT.original);
+    assert.equal(row.proposed, EDIT.proposed);
+    assert.equal(row.source, EDIT.source);
+    assert.equal(row.authorLabel, 'A visitor');
+    assert.ok((await (await admin('/api/admin/edits')).json()).some(e => e.id === id));
+    assert.equal((await call(editPath(place.id))).status, 404);
+  });
+
+  test('refuses an unknown place, an unknown field, an unchanged text and text that is too short', async () => {
+    assert.equal((await postEdit(EDIT, 'no-such-place')).status, 404);
+    assert.equal((await postEdit({ ...EDIT, field: 'name' })).status, 400);
+    assert.equal((await postEdit({ ...EDIT, proposed: EDIT.original })).status, 400);
+    assert.equal((await postEdit({ ...EDIT, proposed: 'a' })).status, 400);
+    assert.equal((await postEdit({ ...EDIT, proposed: 'x'.repeat(2001) })).status, 400);
+  });
+
+  test('strips markup from every text field', async () => {
+    const res = await postEdit({ ...EDIT, proposed: 'Gift <script>alert(1)</script>from a trust', source: '<b>Annual report</b>' });
+    const row = await prisma.editSuggestion.findUnique({ where: { id: (await res.json()).id } });
+    assert.equal(row.proposed, 'Gift from a trust');
+    assert.equal(row.source, 'Annual report');
+  });
+
+  test('the admin routes need the secret, and the editor can mark an edit applied or rejected', async () => {
+    assert.equal((await call('/api/admin/edits')).status, 401);
+    const { id } = await (await postEdit(EDIT)).json();
+    assert.equal((await call(`/api/admin/edits/${id}/status`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ status: 'APPROVED' }) })).status, 401);
+    const ok = await admin(`/api/admin/edits/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status: 'APPROVED' }) });
+    assert.equal(ok.status, 200);
+    assert.equal((await prisma.editSuggestion.findUnique({ where: { id } })).status, 'APPROVED');
+    assert.equal((await admin(`/api/admin/edits/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status: 'NOPE' }) })).status, 400);
+    assert.equal((await admin(`/api/admin/edits/${id}`, { method: 'DELETE' })).status, 200);
+    assert.equal((await admin(`/api/admin/edits/${id}`, { method: 'DELETE' })).status, 404);
+  });
+
+  test('is rate limited per sender, apart from reviews', async () => {
+    stop();
+    start({ max: 1, windowMs: 60_000 });
+    try {
+      assert.equal((await postEdit(EDIT)).status, 201);
+      const again = await postEdit(EDIT);
+      assert.equal(again.status, 429);
+      assert.ok(again.headers.get('retry-after'));
+      assert.equal((await post({ content: NOTE })).status, 201);
+    } finally {
+      stop();
+      start({ max: 1000, windowMs: 60_000 });
+    }
   });
 });

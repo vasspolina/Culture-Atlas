@@ -1,6 +1,9 @@
 import { readFileSync } from 'node:fs';
 
-export const LIMITS = { content: 2000, minContent: 10, label: 40, placeId: 120 };
+export const LIMITS = { content: 2000, minContent: 10, label: 40, placeId: 120, edit: 2000, minEdit: 3, source: 300 };
+
+// The parts of a record a reader may suggest a change to.
+export const EDIT_FIELDS = ['funding', 'publishes'];
 
 // Plain text only. Tags (and what a script or style tag holds), control characters and stray angle brackets are
 // removed, runs of spaces collapse, and no more than one blank line survives. The page escapes the text again.
@@ -58,4 +61,39 @@ export function validateReview(body, place) {
   }
 
   return { data: { content, authorLabel, placeId: place.id, institution: place.name, city: place.city || 'Unspecified' } };
+}
+
+// Returns { error } or { data } for a suggested edit. The text is cleaned the same way as a review; a suggestion that
+// changes nothing is refused, so the editor's queue holds only real changes.
+export function validateEdit(body, place) {
+  const source = body && typeof body === 'object' ? body : {};
+  if (!EDIT_FIELDS.includes(source.field)) return { error: 'Say which part of the record the edit is about.' };
+  const proposed = cleanText(source.proposed);
+  const original = cleanText(source.original);
+  if (proposed.length < LIMITS.minEdit) return { error: `The edit must be at least ${LIMITS.minEdit} characters.` };
+  if (proposed.length > LIMITS.edit) return { error: `The edit cannot be longer than ${LIMITS.edit} characters.` };
+  if (original.length > LIMITS.edit) return { error: 'The original text is too long.' };
+  if (proposed === original) return { error: 'Change the text first.' };
+
+  let where = null;
+  if (source.source != null && source.source !== '') {
+    if (typeof source.source !== 'string' || source.source.length > LIMITS.source * 4) {
+      return { error: `The source must be text no longer than ${LIMITS.source} characters.` };
+    }
+    where = cleanText(source.source).replace(/\s+/g, ' ');
+    if (where.length > LIMITS.source) return { error: `The source must be text no longer than ${LIMITS.source} characters.` };
+    where = where || null;
+  }
+
+  let authorLabel = null;
+  if (source.authorLabel != null && source.authorLabel !== '') {
+    if (typeof source.authorLabel !== 'string' || source.authorLabel.length > LIMITS.label * 4) {
+      return { error: `The name must be text no longer than ${LIMITS.label} characters.` };
+    }
+    authorLabel = cleanText(source.authorLabel).replace(/\s+/g, ' ');
+    if (authorLabel.length > LIMITS.label) return { error: `The name must be text no longer than ${LIMITS.label} characters.` };
+    authorLabel = authorLabel || null;
+  }
+
+  return { data: { placeId: place.id, institution: place.name, field: source.field, original, proposed, source: where, authorLabel } };
 }

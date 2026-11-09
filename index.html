@@ -10283,7 +10283,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v599';
+    const ATLAS_RELEASE = 'culture-atlas-v600';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -12295,9 +12295,100 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (reg) regLinks.push(`Registry: ${link(reg, registryName(reg))}`);
       if (fil && fil !== reg) regLinks.push(`Filings: ${link(fil, registryName(fil))}`);
       if (regLinks.length) rows.push(`<p class="t-lead no-indent source-note">${regLinks.join(' · ')}</p>`);
-      if (!rows.length) return '';
-      return `<div class="py-3 rule-b space-y-2" role="region" aria-label="Funding"><span class="kicker block">Funding</span>${rows.join('')}</div>`;
+      const edit = editInfoHtml(inst);
+      if (!rows.length) return edit ? `<div class="py-3 rule-b space-y-2">${edit}</div>` : '';
+      return `<div class="py-3 rule-b space-y-2" role="region" aria-label="Funding"><span class="kicker block">Funding</span>${rows.join('')}${edit}</div>`;
     }
+    // Suggested edits. A reader changes the text of a record in a form already filled with what the record says, adds
+    // where they learned it, and sends it to the editor with the report API (POST /api/places/:id/edits). Nothing
+    // changes on the atlas until the editor has read it and edited the record, and nothing is kept in this browser.
+    const EDIT_FIELDS = [
+      { key: 'funding', label: 'Funders', rows: 6, hint: 'Who pays, and how much if you know' },
+      { key: 'publishes', label: 'Board and sponsors', rows: 4, hint: 'Names on a wall, in a report or on a website' }
+    ];
+    function editFieldText(inst, key) {
+      if (key === 'publishes') return String(inst.records_note || '').trim();
+      const dt = inst.details || {};
+      const parts = [];
+      if (dt.funding_verdict) parts.push(dt.funding_verdict);
+      (dt.funding || []).filter(Boolean).forEach(t => parts.push(proseUnlabel(t)));
+      if (!parts.length && inst.funding) parts.push(inst.funding);
+      return parts.join('\n\n').trim();
+    }
+    function editInfoHtml(inst) {
+      if (!inst || !inst.id || !ATLAS_REPORT_API_URL) return '';
+      return `<div class="edit-info" data-place="${escapeHtml(inst.id)}"><button type="button" class="edit-info-btn" aria-expanded="false">Know something different? Edit this info</button></div>`;
+    }
+    function openEditInfo(box) {
+      const inst = ALL_INSTITUTIONS.find(i => i.id === box.dataset.place);
+      if (!inst) return;
+      const id = escapeHtml(inst.id);
+      box.innerHTML = `<form class="edit-info-form" novalidate data-place="${id}">
+        <p class="no-indent edit-info-lead">Here is what the atlas has. Fix anything that is wrong or add what is missing.</p>
+        ${EDIT_FIELDS.map(f => `<label class="edit-info-label" for="edit-${id}-${f.key}">${f.label}</label>
+        <textarea id="edit-${id}-${f.key}" name="${f.key}" rows="${f.rows}" maxlength="2000" placeholder="${escapeHtml(f.hint)}" data-original="${escapeHtml(editFieldText(inst, f.key))}">${escapeHtml(editFieldText(inst, f.key))}</textarea>`).join('')}
+        <label class="edit-info-label" for="edit-${id}-source">Where did you learn this?</label>
+        <input id="edit-${id}-source" name="source" type="text" maxlength="300" autocomplete="off" placeholder="A link, or plaque in the lobby">
+        <label class="edit-info-label" for="edit-${id}-name">Shown as, if you want credit</label>
+        <input id="edit-${id}-name" name="authorLabel" type="text" maxlength="40" autocomplete="off">
+        <p class="edit-info-status" role="status" aria-live="polite"></p>
+        <div class="edit-info-actions">
+          <button type="submit" class="edit-info-send">Send for review</button>
+          <button type="button" class="edit-info-reset">Reset to original</button>
+          <button type="button" class="edit-info-cancel">Cancel</button>
+        </div>
+        <p class="no-indent edit-info-note">It goes to the editor. The record stays as it is until the edit is checked.</p>
+      </form>`;
+      const first = box.querySelector('textarea');
+      if (first) first.focus();
+    }
+    document.addEventListener('click', (e) => {
+      const open = e.target.closest && e.target.closest('.edit-info-btn');
+      if (open) { openEditInfo(open.closest('.edit-info')); return; }
+      const form = e.target.closest && e.target.closest('.edit-info-form');
+      if (!form) return;
+      if (e.target.closest('.edit-info-reset')) {
+        form.querySelectorAll('textarea').forEach(t => { t.value = t.dataset.original || ''; });
+        form.querySelector('.edit-info-status').textContent = '';
+      } else if (e.target.closest('.edit-info-cancel')) {
+        const box = form.closest('.edit-info');
+        const inst = ALL_INSTITUTIONS.find(i => i.id === box.dataset.place);
+        box.outerHTML = editInfoHtml(inst);
+      }
+    });
+    document.addEventListener('submit', async (e) => {
+      const form = e.target.closest && e.target.closest('.edit-info-form');
+      if (!form) return;
+      e.preventDefault();
+      const status = form.querySelector('.edit-info-status');
+      const send = form.querySelector('.edit-info-send');
+      const changed = [...form.querySelectorAll('textarea')].filter(t => t.value.trim() !== (t.dataset.original || '').trim());
+      if (!changed.length) { status.textContent = 'Change the text first.'; form.querySelector('textarea').focus(); return; }
+      const tooShort = changed.find(t => t.value.trim().length < 3);
+      if (tooShort) { status.textContent = 'Write at least 3 characters, or reset that box.'; tooShort.focus(); return; }
+      const source = form.elements.source.value.trim();
+      const authorLabel = form.elements.authorLabel.value.trim();
+      send.disabled = true;
+      status.textContent = 'Sending…';
+      try {
+        for (const t of changed) {
+          const body = { field: t.name, original: t.dataset.original || '', proposed: t.value.trim() };
+          if (source) body.source = source;
+          if (authorLabel) body.authorLabel = authorLabel;
+          const res = await fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(form.dataset.place)}/edits`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+          });
+          const out = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(out.error || 'The server did not take it.');
+          t.dataset.original = t.value.trim();
+        }
+        const box = form.closest('.edit-info');
+        box.innerHTML = '<p class="no-indent edit-info-done" role="status">Sent to the editor. The record changes once the edit is checked.</p>';
+      } catch (err) {
+        status.textContent = `Not sent: ${err.message || 'no connection'}. Your edit is still in the box.`;
+        send.disabled = false;
+      }
+    });
 
     // Links to the sources recorded for a space. Recording a source is not verifying it, and the page says so.
     // With fieldsOnly the funding sources are left to the Funding block and only the field clauses remain.
@@ -12409,6 +12500,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // the form on the note screen (Share information). Nothing is kept in this browser. A review has no rating.
     let dossierInst = null;
     const ATLAS_REPORT_API_URL = (window.ATLAS_REPORT_API_URL || '').replace(/\/+$/, '');
+    // The Edit this info button stays hidden until the live report API says it takes edits (its /healthz carries edits: true).
+    if (ATLAS_REPORT_API_URL) {
+      fetch(`${ATLAS_REPORT_API_URL}/healthz`).then(r => (r.ok ? r.json() : null))
+        .then(h => { if (h && h.edits === true) document.documentElement.classList.add('edits-ready'); })
+        .catch(() => {});
+    }
     const PLACE_REVIEWS = new Map();   // place id -> an array of reviews, or 'loading', or 'failed'
     const REVIEW_LIMITS = { min: 10, max: 2000, name: 40 };
     const reviewDate = (iso) => {

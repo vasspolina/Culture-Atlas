@@ -4851,3 +4851,26 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
   @media (hover:hover){:is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:hover{background:var(--ink)!important;color:var(--paper)!important}}
 }
+
+/* ---- SUGGEST AN EDIT (9 Nov 2026) ----
+   The Edit this info button under a record's Funding, and the form it opens: the record's own text in a box, a source, and
+   Send for review. Buttons take the Displaay rules above (10px corners, 1px ink edge); the boxes match them. Text is 16px so a
+   phone does not zoom in on focus. */
+.edit-info{display:none;margin-top:12px}
+.edits-ready .edit-info{display:block}
+.edit-info-form{display:flex;flex-direction:column;gap:6px}
+.edit-info-lead,.edit-info-note{margin:0 0 4px}
+.edit-info-note,.edit-info-status{color:var(--row-dim,#595959);font-size:14px;line-height:1.35}
+.edit-info-status{min-height:1.35em;margin:0}
+.edit-info-label{margin-top:8px;font-size:14px;line-height:1.3}
+.edit-info-form textarea,.edit-info-form input[type=text]{display:block;width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--ink);border-radius:10px;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.4}
+.edit-info-form textarea{min-height:5.5em;resize:vertical}
+.edit-info-form textarea:focus-visible,.edit-info-form input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.edit-info-form ::placeholder{color:#595959;opacity:1}
+.edit-info-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.edit-info-actions button{min-height:44px;padding:0 16px}
+.edit-info-send{background:var(--ink)!important;color:var(--paper)!important}
+.edit-info-btn{min-height:44px;padding:0 16px;text-align:center}
+.edit-info-done{margin:0}
+:root[data-theme="dark"] .edit-info-form ::placeholder{color:#b3ada1}
+:root[data-theme="dark"] .edit-info-note,:root[data-theme="dark"] .edit-info-status{color:#b3ada1}

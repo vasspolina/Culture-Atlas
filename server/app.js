@@ -2,7 +2,7 @@ import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import cors from 'cors';
 import express from 'express';
 import { Prisma } from '@prisma/client';
-import { findPlace, validateReview } from './validate.js';
+import { findPlace, validateEdit, validateReview } from './validate.js';
 
 const STATUSES = ['PENDING', 'APPROVED', 'REJECTED'];
 const MAX_PUBLIC_REVIEWS = 200;
@@ -46,7 +46,8 @@ export function createApp({
   if (!adminSecret) throw new Error('ADMIN_SECRET_KEY must be set before starting the report API.');
   const app = express();
   const limiter = createRateLimiter(rateLimit);
-  app.locals.stop = () => limiter.stop();
+  const editLimiter = createRateLimiter(rateLimit);
+  app.locals.stop = () => { limiter.stop(); editLimiter.stop(); };
 
   app.disable('x-powered-by');
   if (trustProxy) app.set('trust proxy', trustProxy);
@@ -69,7 +70,8 @@ export function createApp({
   }
 
   // For the host's health check. Touches nothing.
-  app.get('/healthz', (_req, res) => res.json({ ok: true }));
+  // `edits` tells the page this server takes suggested edits, so the Edit this info button shows only once it can work.
+  app.get('/healthz', (_req, res) => res.json({ ok: true, edits: true }));
 
   // The only way a review enters the system. It is stored PENDING; nothing public reads PENDING rows.
   app.post('/api/places/:placeId/reviews', async (req, res, next) => {
@@ -116,6 +118,70 @@ export function createApp({
       res.set('Cache-Control', 'no-store');
       return res.json(reviews);
     } catch (error) {
+      return next(error);
+    }
+  });
+
+  // A reader's suggested change to what a record says. Stored PENDING and read by nobody but the editor; the atlas's
+  // records change only when the editor edits them.
+  app.post('/api/places/:placeId/edits', async (req, res, next) => {
+    const place = findPlace(req.params.placeId, institutions);
+    if (!place) return res.status(404).json({ error: 'That place is not on the atlas.' });
+    const result = validateEdit(req.body, place);
+    if (result.error) return res.status(400).json({ error: result.error });
+
+    const turn = editLimiter.take(req.ip);
+    if (!turn.ok) {
+      res.set('Retry-After', String(turn.retryAfter));
+      return res.status(429).json({ error: 'Too many edits from here. Try again later.' });
+    }
+
+    try {
+      const edit = await prisma.editSuggestion.create({
+        data: { ...result.data, status: 'PENDING' },
+        select: { id: true }
+      });
+      return res.status(201).json({ message: 'Edit sent for the editor to read.', id: edit.id });
+    } catch (error) {
+      return next(error);
+    }
+  });
+
+  app.get('/api/admin/edits', requireAdminAuth, async (req, res, next) => {
+    const status = String(req.query.status || 'PENDING').toUpperCase();
+    if (!STATUSES.includes(status)) return res.status(400).json({ error: 'Status must be PENDING, APPROVED or REJECTED.' });
+    try {
+      const edits = await prisma.editSuggestion.findMany({ where: { status }, orderBy: { createdAt: 'desc' } });
+      res.set('Cache-Control', 'no-store');
+      return res.json(edits);
+    } catch (error) {
+      return next(error);
+    }
+  });
+
+  // APPROVED means the editor has applied the edit to the record; it does not change the record by itself.
+  app.patch('/api/admin/edits/:id/status', requireAdminAuth, async (req, res, next) => {
+    const { status } = req.body || {};
+    if (!STATUSES.includes(status)) return res.status(400).json({ error: 'Status must be PENDING, APPROVED or REJECTED.' });
+    try {
+      const edit = await prisma.editSuggestion.update({ where: { id: req.params.id }, data: { status } });
+      return res.json({ message: `Edit marked as ${status}.`, edit });
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
+        return res.status(404).json({ error: 'Edit not found.' });
+      }
+      return next(error);
+    }
+  });
+
+  app.delete('/api/admin/edits/:id', requireAdminAuth, async (req, res, next) => {
+    try {
+      await prisma.editSuggestion.delete({ where: { id: req.params.id } });
+      return res.json({ message: 'Edit deleted.' });
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
+        return res.status(404).json({ error: 'Edit not found.' });
+      }
       return next(error);
     }
   });
