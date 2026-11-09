@@ -159,3 +159,21 @@ Four checker agents re-opened every cited source for the 52 records that held a 
   alone), Modern Art Oxford staff 40 (trustees' report staff demographics, 21 full-time and 19 part-time), National Galleries of Scotland
   (2023-24 exact figure; the 2024-25 report gives only 2.63 million), Gasworks (2023-24; later reports give rounded figures), National
   Portrait Gallery (exact value of a table in thousands).
+
+# Stage 9 review (f082 to f091)
+
+Two checker agents re-opened every cited source for the 20 records that held a figure.
+- Dropped as a round figure: The Broad area (120,000 sq ft on both its own page and the architect's), Yorkshire Sculpture Park site
+  area (the accounts say "500 acres" throughout).
+- Dropped as not a clean count: ICP staff (376 individuals employed during calendar 2023, a cumulative count with no dated snapshot),
+  Eskenazi Museum area (119,318 gross sq ft is the building before the 2018 renovation and includes space taken from another body).
+- Dropped as stale: New Orleans Museum of Art visitors (2019, and the museum's later reports could not be opened).
+- Corrected to a newer report: Kemper Museum visitors 52,461 (2025), Ackland Art Museum visitors 52,745 (2025-26), Amon Carter Museum
+  year label (fiscal year 2024-25, not calendar 2025).
+- Joslyn Art Museum: the impact page calls 206,546 "total attendance"; the museum's own By the Numbers sheet calls it visitors to the
+  museum and counts program participants separately, so it is kept and cites the sheet.
+- Kept with a note: Walker Art Center (132,300 gallery visits; garden and event attendance are separate lines), Frist Art Museum
+  (208,350 guests read as visits), Birmingham Museum of Art (2022-23; the museum's site blocked the check for a newer report),
+  Wave Hill (28 acres stated three times in its own report), The Bass and Madison Museum of Contemporary Art (areas in square feet
+  that are not round thousands).
+- Across the stage: staff counts were almost all dropped before checking (averages, FTE, "nearly" or undated); no finance blocks.
