@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=605">
-  <script src="assets/config.js?v=605"></script>
-  <script src="assets/subtopic.js?v=605"></script>
-  <script src="assets/names.js?v=605"></script>
-  <script src="assets/grounding.js?v=605"></script>
-  <script src="assets/repeats.js?v=605"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=608">
+  <script src="assets/config.js?v=608"></script>
+  <script src="assets/subtopic.js?v=608"></script>
+  <script src="assets/names.js?v=608"></script>
+  <script src="assets/grounding.js?v=608"></script>
+  <script src="assets/repeats.js?v=608"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1113,7 +1113,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=605"></script>
+  <script src="assets/institutions.js?v=608"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6666,7 +6666,25 @@ return maplibregl$1;
     const CITY_LINE_FADE = ['interpolate', ['linear'], ['zoom'], 12, 0, 15, 1];
     // The same ramp for the screen-space street layer (xray-streets), which draws these lines in place of MapLibre's own.
     const cityLineFadeAt = z => Math.max(0, Math.min(1, (z - 12) / 3));
-    // City map style: a line drawing like the globe. White ground, 1px lines in 50% grey (#808080; user, 6 Nov 2026: the near-black lines made the map busy), no fills, no 3D. OpenFreeMap vector tiles.
+    // Every line of the street map is one device pixel wide (user, 9 Nov 2026: "1 px thickness"). MapLibre's line-width is in CSS
+    // pixels, so on a 2x screen a width of 1 was two device pixels; this is the width that draws as one. The screen-space layer
+    // that normally draws these lines (screenLineLayer, XRAY_LINE_WIDTH) is in device pixels already.
+    const CITY_HAIRLINE = 1 / (window.devicePixelRatio || 1);
+    // WHAT SHOWS AT WHICH ZOOM (user, 9 Nov 2026: "make map less busy on zoom"). At the neighbourhood zooms (14 to 16) every
+    // building footprint, path and patch of grass drew at the same weight as the streets, and the map read as one grey texture.
+    // The street structure stays; the fine detail waits for the closest zooms. Both lists below (the MapLibre layers and
+    // STREET_FEATURES, which draws the same lines in screen space) follow this table, and every change goes in both:
+    //   water, waterway, park        every zoom (fading in from 12 to 15 with CITY_LINE_FADE)
+    //   roads: motorway, trunk, primary, secondary, tertiary   every zoom (same fade)
+    //   roads: minor (residential)  from 12
+    //   boundary (country)          every zoom, dashed
+    //   place names                 from 8
+    //   building outlines           from 16 (was 13): the record's own building is drawn by the Building view from 17.2
+    //   landcover (grass, wood, sand) from 16 (was every zoom)
+    //   service roads, tracks, paths  from 16 (was 12)
+    // Not drawn at all: landuse, aeroway, rail. The invisible building fill and extrusion below keep their own minzooms (13, 14):
+    // they are hit-testing for xrayFindBuilding, not drawing.
+    // City map style: a line drawing like the globe. White ground, one-device-pixel lines in 50% grey (#808080; user, 6 Nov 2026: the near-black lines made the map busy), no fills, no 3D. OpenFreeMap vector tiles.
     const CITY_MAP_LINE_STYLE = {
       version: 8,
       name: 'Culture Atlas line drawing',
@@ -6684,8 +6702,8 @@ return maplibregl$1;
       glyphs: location.href.replace(/[?#].*$/, '').replace(/[^/]*$/, '') + 'assets/glyphs/{fontstack}/{range}.pbf',
       layers: [
         // Every line fades in with the zoom (CITY_LINE_FADE, above): none on the whole-city view, full grey at street level.
-        // The street map is a line drawing: every edge (water, parks, landcover, buildings, roads, boundaries) is a 1px line
-        // in the map's line colour, and nothing carries a fill. The building fill and the context extrusion below draw nothing;
+        // The street map is a line drawing: every edge (water, parks, landcover, buildings, roads, boundaries) is a line one device
+        // pixel wide (CITY_HAIRLINE) in the map's line colour, and nothing carries a fill. The building fill and the context extrusion below draw nothing;
         // they stay only so the building under a record's point can be found.
         {
           id: 'background',
@@ -6697,28 +6715,29 @@ return maplibregl$1;
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'landcover',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          minzoom: 16,
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'park',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'park',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'water',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'water',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'waterway',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'building',
@@ -6749,17 +6768,26 @@ return maplibregl$1;
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'building',
-          minzoom: 13,
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          minzoom: 16,
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_minor',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'transportation',
-          filter: ['match', ['get', 'class'], ['minor', 'service', 'track', 'path'], true, false],
+          filter: ['==', ['get', 'class'], 'minor'],
           minzoom: 12,
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+        },
+        {
+          id: 'road_service',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['match', ['get', 'class'], ['service', 'track', 'path'], true, false],
+          minzoom: 16,
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_secondary',
@@ -6767,7 +6795,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_primary',
@@ -6775,7 +6803,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_motorway',
@@ -6783,7 +6811,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'boundary_country',
@@ -6791,7 +6819,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
-          paint: { 'line-color': '#808080', 'line-width': 1, 'line-dasharray': [3, 2], 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-dasharray': [3, 2], 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'place_label',
@@ -7824,13 +7852,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
     // The building is drawn as lines and nothing else: every edge of the shell and of the parts inside it, standing at its
     // height, in the street lines' own weight, which is one thickness at every distance.
-    // Every line of the city map is drawn at one thickness (XRAY_LINE_WIDTH screen pixels) at every distance. MapLibre's own line
+    // Every line of the city map is drawn at one thickness (XRAY_LINE_WIDTH device pixels, one: user, 9 Nov 2026) at every distance. MapLibre's own line
     // layers widen each line on the ground and then project it, so under the tilted camera they thin out toward the horizon;
     // here each segment is projected first and then widened on the screen, square to the segment as it appears. That serves the
     // building's edges (including the standing ones, which have no ground direction) and the street map itself (below). The
-    // quad is feathered over a pixel and a half on each side. Positions are kept relative to the
+    // quad is feathered over one device pixel on each side. Positions are kept relative to the
     // first point (float32 cannot hold a whole Mercator coordinate to the centimetre); the matrix carries the offset.
-    const XRAY_LINE_WIDTH = 1;
+    const XRAY_LINE_WIDTH = 1;      // device pixels, not CSS pixels: a hairline on a 2x screen
+    const XRAY_LINE_FEATHER = 1.0;  // device pixels: coverage falls from full to none over this distance, centred on the line's edge
     function screenLineLayer(id) {
       const VS = [
         'attribute vec3 a_pos; attribute vec3 a_other; attribute float a_side;',
@@ -7857,12 +7886,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       ].join('\n');
       const FS = [
         'precision mediump float;',
-        'uniform vec4 u_color; uniform mediump float u_half_px;',
+        'uniform vec4 u_color; uniform mediump float u_half_px; uniform mediump float u_feather;',
         'varying float v_side;',
         'void main() {',
-        // Coverage falls from full to none over a pixel and a half centred on the line's edge: a wider, smoother ramp than a pixel's own
-        // gives, so a line at a slant is a soft edge and not a run of steps.
-        '  float c = clamp((u_half_px - abs(v_side) * u_half_px) / 1.5, 0.0, 1.0);',
+        // Coverage falls from full to none over u_feather (one device pixel) centred on the line's edge, with a smoothstep, so a line
+        // at a slant is a soft edge and not a run of steps. A wider ramp (a pixel and a half, until 9 Nov 2026) never let a one-pixel
+        // line reach full ink at its centre and spread it over two and a half pixels of grey.
+        '  float c = clamp((u_half_px - abs(v_side) * u_half_px) / u_feather, 0.0, 1.0);',
         '  gl_FragColor = u_color * (c * c * (3.0 - 2.0 * c));',
         '}'
       ].join('\n');
@@ -7878,7 +7908,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           gl.attachShader(this.program, shader(gl.FRAGMENT_SHADER, FS));
           gl.linkProgram(this.program);
           this.a = { pos: gl.getAttribLocation(this.program, 'a_pos'), other: gl.getAttribLocation(this.program, 'a_other'), side: gl.getAttribLocation(this.program, 'a_side') };
-          this.u = { matrix: gl.getUniformLocation(this.program, 'u_matrix'), res: gl.getUniformLocation(this.program, 'u_res'), halfPx: gl.getUniformLocation(this.program, 'u_half_px'), color: gl.getUniformLocation(this.program, 'u_color') };
+          this.u = { matrix: gl.getUniformLocation(this.program, 'u_matrix'), res: gl.getUniformLocation(this.program, 'u_res'), halfPx: gl.getUniformLocation(this.program, 'u_half_px'), feather: gl.getUniformLocation(this.program, 'u_feather'), color: gl.getUniformLocation(this.program, 'u_color') };
           this.buffer = gl.createBuffer();
           this.dirty = true;
         },
@@ -7921,11 +7951,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           t[13] = m[1] * o.x + m[5] * o.y + m[9] * o.z + m[13];
           t[14] = m[2] * o.x + m[6] * o.y + m[10] * o.z + m[14];
           t[15] = m[3] * o.x + m[7] * o.y + m[11] * o.z + m[15];
-          const map = this.map, dpr = typeof map.getPixelRatio === 'function' ? map.getPixelRatio() : (window.devicePixelRatio || 1);
+          const map = this.map;
           gl.useProgram(this.program);
           gl.uniformMatrix4fv(this.u.matrix, false, new Float32Array(t));
           gl.uniform2f(this.u.res, gl.drawingBufferWidth, gl.drawingBufferHeight);
-          gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH * dpr / 2 + 0.75); // half the width plus three quarters of a device pixel, the feather
+          // Half the width plus half the feather, in device pixels: the line is XRAY_LINE_WIDTH device pixels wide whatever the screen's
+          // density (dpr is not a factor here on purpose; it was, until 9 Nov 2026, and made the line a CSS pixel wide).
+          gl.uniform1f(this.u.halfPx, XRAY_LINE_WIDTH / 2 + XRAY_LINE_FEATHER / 2);
+          gl.uniform1f(this.u.feather, XRAY_LINE_FEATHER);
           // The colour is premultiplied (the blend is ONE, ONE_MINUS_SRC_ALPHA), so the fade scales all four channels.
           const k = typeof this.fade === 'function' ? this.fade(map.getZoom()) : 1;
           if (k <= 0) return;
@@ -7954,13 +7987,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // MapLibre's own copies of those layers are hidden. Segments that only run along the edge of a tile's overlap (the clip
     // that the stencil hides in MapLibre) are left out. If the tile cache cannot be reached, MapLibre's layers stay as they are.
     const STREET_SOURCE = 'openmaptiles', STREET_LINE_ID = 'xray-streets', STREET_SEGMENT_CAP = 300000;
+    // The zooms are the table above CITY_MAP_LINE_STYLE ("WHAT SHOWS AT WHICH ZOOM"): change them there and here together.
     const STREET_FEATURES = [
-      { layer: 'landcover' }, { layer: 'park' }, { layer: 'water' }, { layer: 'waterway' },
-      { layer: 'building', minzoom: 13 },
-      { layer: 'transportation', classes: ['minor', 'service', 'track', 'path'], minzoom: 12 },
-      { layer: 'transportation', classes: ['secondary', 'tertiary', 'primary', 'trunk', 'motorway'] }
+      { layer: 'park' }, { layer: 'water' }, { layer: 'waterway' },
+      { layer: 'transportation', classes: ['secondary', 'tertiary', 'primary', 'trunk', 'motorway'] },
+      { layer: 'transportation', classes: ['minor'], minzoom: 12 },
+      { layer: 'building', minzoom: 16 },
+      { layer: 'landcover', minzoom: 16 },
+      { layer: 'transportation', classes: ['service', 'track', 'path'], minzoom: 16 }
     ];
-    const STREET_NATIVE_LAYERS = ['landcover_grass', 'park', 'water', 'waterway', 'building_line', 'road_minor', 'road_secondary', 'road_primary', 'road_motorway'];
+    const STREET_NATIVE_LAYERS = ['landcover_grass', 'park', 'water', 'waterway', 'building_line', 'road_minor', 'road_service', 'road_secondary', 'road_primary', 'road_motorway'];
     let streetTimer = null;
     function streetTileBounds(z, x, y) {
       const n = Math.pow(2, z), lat = ty => Math.atan(Math.sinh(Math.PI * (1 - 2 * ty / n))) * 180 / Math.PI;
@@ -10255,11 +10291,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v605';
+    const ATLAS_RELEASE = 'culture-atlas-v608';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=605').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=608').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -21344,13 +21380,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=605"></script>
-<script src="assets/funding-views.js?v=605"></script>
-<script src="assets/layers.js?v=605"></script>
-<script src="assets/hq-detail.js?v=605"></script>
-<script src="assets/bubbles.js?v=605" defer></script>
-<script src="assets/phone-maps.js?v=605"></script>
-<script src="assets/desktop-maps.js?v=605"></script>
-<script src="assets/chat-resize.js?v=605"></script>
+<script src="assets/typeset.js?v=608"></script>
+<script src="assets/funding-views.js?v=608"></script>
+<script src="assets/layers.js?v=608"></script>
+<script src="assets/hq-detail.js?v=608"></script>
+<script src="assets/bubbles.js?v=608" defer></script>
+<script src="assets/phone-maps.js?v=608"></script>
+<script src="assets/desktop-maps.js?v=608"></script>
+<script src="assets/chat-resize.js?v=608"></script>
 </body>
 </html>
