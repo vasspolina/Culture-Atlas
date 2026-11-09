@@ -4839,3 +4839,15 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
 /* The "Looking at" row the chat leaves when a record is opened mid-conversation (offerBrowseChips in index.html): a small
    label over the record's questions, in the secondary ink, at the 14px floor. */
 #curatorMessages .curator-browse-label{margin:0 0 4px;font-size:14px;line-height:1.3;color:color-mix(in srgb,var(--ink) 65%,transparent);text-indent:0}
+
+/* ---- CHAT: ARROW DOWN (user, 9 Nov 2026: "Add arrow down button to mobile chat") ----
+   The round button over the phone's composer that takes the chat back to the newest line once the reader has scrolled up
+   (index.html, #chatJumpBtn). A 40px circle on paper with a 1px ink edge, centred just above the box; the desktop has no
+   such button. hidden is set by the script while the end of the chat is in view. */
+#chatJumpBtn{display:none}
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workBottomDock{position:relative}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:not([hidden]){display:flex!important;align-items:center;justify-content:center;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink),0 2px 8px rgba(0,0,0,.12)!important;z-index:5;cursor:pointer}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
+  @media (hover:hover){:is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:hover{background:var(--ink)!important;color:var(--paper)!important}}
+}

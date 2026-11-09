@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=598">
-  <script src="assets/config.js?v=598"></script>
-  <script src="assets/subtopic.js?v=598"></script>
-  <script src="assets/names.js?v=598"></script>
-  <script src="assets/grounding.js?v=598"></script>
-  <script src="assets/repeats.js?v=598"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=599">
+  <script src="assets/config.js?v=599"></script>
+  <script src="assets/subtopic.js?v=599"></script>
+  <script src="assets/names.js?v=599"></script>
+  <script src="assets/grounding.js?v=599"></script>
+  <script src="assets/repeats.js?v=599"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1134,7 +1134,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=598"></script>
+  <script src="assets/institutions.js?v=599"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10283,11 +10283,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v598';
+    const ATLAS_RELEASE = 'culture-atlas-v599';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=598').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=599').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -16050,6 +16050,36 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (chatStickToBottom) area.scrollTop = chatFollowTop(area); }).observe(list);
     })();
 
+    // An arrow down over the composer, as in the Claude app (user, 9 Nov 2026: "Add arrow down button to mobile chat"). It shows once
+    // the reader has scrolled more than a screenful's worth of lines up from the end, and takes the chat back to the newest line. The
+    // look, and that it is a phone's alone, is in assets/atlas.css under "CHAT: ARROW DOWN".
+    (function () {
+      const area = document.getElementById('curatorScrollArea');
+      const dock = document.getElementById('workBottomDock');
+      if (!area || !dock || document.getElementById('chatJumpBtn')) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.id = 'chatJumpBtn';
+      btn.setAttribute('aria-label', 'Scroll to the newest message');
+      btn.hidden = true;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>';
+      dock.appendChild(btn);
+      let raf = 0;
+      const update = () => { raf = 0; btn.hidden = area.scrollHeight - area.scrollTop - area.clientHeight < 160; };
+      const soon = () => { if (!raf) raf = requestAnimationFrame(update); };
+      area.addEventListener('scroll', soon, { passive: true });
+      if (typeof ResizeObserver === 'function') {
+        const ro = new ResizeObserver(soon);
+        ro.observe(area);
+        const list = document.getElementById('curatorScrollContent');
+        if (list) ro.observe(list);   // a long answer that runs on below the screen shows the arrow without a scroll
+      }
+      btn.addEventListener('click', () => {
+        chatStickToBottom = true;
+        area.scrollTo({ top: area.scrollHeight, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      });
+    })();
+
     // Where the chat rests while the newest answer is on screen. A short answer ends at the bottom. On a phone, an answer taller than the screen
     // keeps the question it answers at the top, so its first line is never cut off under the header (the Claude app does the same).
     function chatFollowTop(area) {
@@ -21428,13 +21458,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=598"></script>
-<script src="assets/funding-views.js?v=598"></script>
-<script src="assets/layers.js?v=598"></script>
-<script src="assets/hq-detail.js?v=598"></script>
-<script src="assets/bubbles.js?v=598" defer></script>
-<script src="assets/phone-maps.js?v=598"></script>
-<script src="assets/desktop-maps.js?v=598"></script>
-<script src="assets/chat-resize.js?v=598"></script>
+<script src="assets/typeset.js?v=599"></script>
+<script src="assets/funding-views.js?v=599"></script>
+<script src="assets/layers.js?v=599"></script>
+<script src="assets/hq-detail.js?v=599"></script>
+<script src="assets/bubbles.js?v=599" defer></script>
+<script src="assets/phone-maps.js?v=599"></script>
+<script src="assets/desktop-maps.js?v=599"></script>
+<script src="assets/chat-resize.js?v=599"></script>
 </body>
 </html>
