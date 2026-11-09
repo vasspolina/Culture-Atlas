@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=599">
-  <script src="assets/config.js?v=599"></script>
-  <script src="assets/subtopic.js?v=599"></script>
-  <script src="assets/names.js?v=599"></script>
-  <script src="assets/grounding.js?v=599"></script>
-  <script src="assets/repeats.js?v=599"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=600">
+  <script src="assets/config.js?v=600"></script>
+  <script src="assets/subtopic.js?v=600"></script>
+  <script src="assets/names.js?v=600"></script>
+  <script src="assets/grounding.js?v=600"></script>
+  <script src="assets/repeats.js?v=600"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1134,7 +1134,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=599"></script>
+  <script src="assets/institutions.js?v=600"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10283,11 +10283,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v599';
+    const ATLAS_RELEASE = 'culture-atlas-v600';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=599').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=600').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12787,11 +12787,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // circle, this is slop"). Every space has an i button beside it that opens the scale, this space's step marked, and the sentence that
     // decided it (grade_basis). The same words head the Funding section and the phone sheet's rating line.
     const gradeWordHtml = (n) => GRADE[n] ? `<span class="grade-word grade-word-${n}">Grade ${GRADE[n].letter}</span>` : '';
-    const gradeShortLabel = (n) => GRADE[n] ? String(GRADE[n].label).split(/;| or /)[0].trim() : '';
-    // The grade and the sentence that decided it, as one line. The basis already says what the label says ("funders listed; no funders
-    // flagged" and then "Funders are named; amounts are not"), so where a basis is on record the label is left out (user, 7 Nov 2026:
-    // "there is also repetition in text"); the label stands in only where no basis is recorded.
-    const gradeReasonHtml = (inst, n) => inst.grade_basis ? `${gradeWordHtml(n)}. ${escapeHtml(proseEnd(inst.grade_basis))}` : `${gradeWordHtml(n)}: ${escapeHtml(GRADE[n].label.toLowerCase())}.`;
+    // The grade alone, "Grade B", and no sentence after it (user, 9 Nov 2026: "Grade B. No flagged funder or funding protest on record.
+    // Funders are named; amounts are not." - "only keep grade b"). What decided it is behind the i button.
     function gradeScaleHtml(current) {
       return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeWordHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This space</span>' : ''}</span></li>`).join('')}</ul>`;
     }
@@ -12827,7 +12824,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const { btn, panel } = gradeInfoParts(inst);
       if (inst.grade && GRADE[inst.grade]) {
         const n = inst.grade;
-        return `<p class="no-indent grade-line"><span class="grade-name">${gradeWordHtml(n)}</span><span class="grade-label">${escapeHtml(gradeShortLabel(n))}</span>${btn}</p>${panel}`;
+        return `<p class="no-indent grade-line"><span class="grade-name">${gradeWordHtml(n)}</span>${btn}</p>${panel}`;
       }
       return `<p class="no-indent grade-line is-unrated"><span class="grade-name">Not graded</span>${btn}</p>${panel}`;
     }
@@ -13445,8 +13442,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const hasReport = d.funding_verdict || (d.funding || []).length;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
       const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
-      // The grade leads the Funding section, in its colour, with the sentence that decided it (once: the label is left out where a basis says the same).
-      const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund"><span>${gradeReasonHtml(inst, inst.grade)}</span></li>` : '';
+      // The grade leads the Funding section in its colour, on its own.
+      const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund"><span>${gradeWordHtml(inst.grade)}</span></li>` : '';
       return proseRow('Funding', escapeHtml(verdict), proseChunks(funding, 0).map(t => proseLi('', escapeHtml(t))), { fold: 4, lead });
     }
     // Scale and money: the accounts figures a filing states (inst.finance) and the size figures a source states (inst.scale), nothing estimated.
@@ -21458,13 +21455,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=599"></script>
-<script src="assets/funding-views.js?v=599"></script>
-<script src="assets/layers.js?v=599"></script>
-<script src="assets/hq-detail.js?v=599"></script>
-<script src="assets/bubbles.js?v=599" defer></script>
-<script src="assets/phone-maps.js?v=599"></script>
-<script src="assets/desktop-maps.js?v=599"></script>
-<script src="assets/chat-resize.js?v=599"></script>
+<script src="assets/typeset.js?v=600"></script>
+<script src="assets/funding-views.js?v=600"></script>
+<script src="assets/layers.js?v=600"></script>
+<script src="assets/hq-detail.js?v=600"></script>
+<script src="assets/bubbles.js?v=600" defer></script>
+<script src="assets/phone-maps.js?v=600"></script>
+<script src="assets/desktop-maps.js?v=600"></script>
+<script src="assets/chat-resize.js?v=600"></script>
 </body>
 </html>
