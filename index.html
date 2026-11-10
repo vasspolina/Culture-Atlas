@@ -45,12 +45,13 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=610">
-  <script src="assets/config.js?v=610"></script>
-  <script src="assets/subtopic.js?v=610"></script>
-  <script src="assets/names.js?v=610"></script>
-  <script src="assets/grounding.js?v=610"></script>
-  <script src="assets/repeats.js?v=610"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=611">
+  <link rel="stylesheet" href="assets/palace.css?v=611">
+  <script src="assets/config.js?v=611"></script>
+  <script src="assets/subtopic.js?v=611"></script>
+  <script src="assets/names.js?v=611"></script>
+  <script src="assets/grounding.js?v=611"></script>
+  <script src="assets/repeats.js?v=611"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1113,7 +1114,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=610"></script>
+  <script src="assets/institutions.js?v=611"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6716,28 +6717,28 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'landcover',
           minzoom: 16,
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'park',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'park',
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'water',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'water',
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'waterway',
           type: 'line',
           source: 'openmaptiles',
           'source-layer': 'waterway',
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'building',
@@ -6746,7 +6747,7 @@ return maplibregl$1;
           'source-layer': 'building',
           minzoom: 13,
           // Hit-testing only: the edge is drawn once, by building_line below, so an outline here would double it.
-          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#808080', 'fill-antialias': false }
+          paint: { 'fill-color': '#ffffff', 'fill-opacity': 0, 'fill-outline-color': '#787878', 'fill-antialias': false }
         },
         {
           id: 'building-3d-city-context',
@@ -6769,7 +6770,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 16,
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_minor',
@@ -6778,7 +6779,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'minor'],
           minzoom: 12,
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_service',
@@ -6787,7 +6788,7 @@ return maplibregl$1;
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['service', 'track', 'path'], true, false],
           minzoom: 16,
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_secondary',
@@ -6795,7 +6796,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['secondary', 'tertiary'], true, false],
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_primary',
@@ -6803,7 +6804,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['primary', 'trunk'], true, false],
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'road_motorway',
@@ -6811,7 +6812,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'motorway'],
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'boundary_country',
@@ -6819,7 +6820,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'boundary',
           filter: ['==', ['get', 'admin_level'], 2],
-          paint: { 'line-color': '#808080', 'line-width': CITY_HAIRLINE, 'line-dasharray': [3, 2], 'line-opacity': CITY_LINE_FADE }
+          paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-dasharray': [3, 2], 'line-opacity': CITY_LINE_FADE }
         },
         {
           id: 'place_label',
@@ -6830,8 +6831,8 @@ return maplibregl$1;
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Serrif Light'],
-            'text-size': 14,
-            'text-transform': 'none',
+            'text-size': 15,
+            'text-transform': 'lowercase',
             'text-letter-spacing': 0
           },
           paint: {
@@ -7290,11 +7291,12 @@ return maplibregl$1;
       try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
       // Gossip mode: Displaay's lime with black lines; on the dark theme a dark green with lime lines (user, 4 Nov 2026).
-      const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#e2f86c') : dark ? '#262524' : '#ffffff';
+      // THE PALACE SHEET: the sheet's paper and its grey rule (#787878), in both themes.
+      const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#e2f86c') : dark ? '#151412' : '#ffffff';
       // Outside gossip mode the lines are 50% grey in both themes (user, 6 Nov 2026: near-black lines made the map busy). They are
       // decoration, not text: the place names keep full ink (`label`), as before.
-      const line = isGossipModeActive ? (dark ? '#e2f86c' : '#000000') : '#808080';
-      const label = isGossipModeActive ? line : dark ? '#f4f4f4' : '#161616';
+      const line = isGossipModeActive ? (dark ? '#e2f86c' : '#000000') : '#787878';
+      const label = isGossipModeActive ? line : dark ? '#e6e1d7' : '#000000';
       layers.forEach(l => {
         if (l.id && l.id.indexOf('xray') === 0) return; // the building view keeps its own colours
         try {
@@ -9615,7 +9617,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         // Icon or Initial in center
         trusteeCtx.fillStyle = '#ffffff';
-        trusteeCtx.font = '300 14px "Jokker", sans-serif';
+        trusteeCtx.font = '400 15px ' + ATLAS_SERIF;
         trusteeCtx.textAlign = 'center';
         trusteeCtx.textBaseline = 'middle';
         const glyph = n.type === 'institution' ? (n.tier === 'A' ? 'SOURCED' : 'INST') : 'CONFLICT';
@@ -9634,14 +9636,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           trusteeCtx.stroke();
 
           trusteeCtx.fillStyle = '#ffffff';
-          trusteeCtx.font = '300 14px "Jokker", sans-serif';
+          trusteeCtx.font = '400 15px ' + ATLAS_SERIF;
           trusteeCtx.fillText(`${n.interlocks}`, badgeX, badgeY);
         }
 
         // Text Label
         if (!isDimmed || isFocus) {
           const label = n.shortName || n.name;
-          trusteeCtx.font = isFocus ? '300 16px "Jokker", sans-serif' : '300 14px "Jokker", sans-serif';
+          trusteeCtx.font = isFocus ? '400 15px ' + ATLAS_SERIF : '400 15px ' + ATLAS_SERIF;
           const tw = trusteeCtx.measureText(label).width;
           const ly = n.y + r + 12;
 
@@ -10323,11 +10325,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v610';
+    const ATLAS_RELEASE = 'culture-atlas-v611';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=610').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=611').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10596,7 +10598,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const q = wtRaw(lam, phi), k = wtScale(r);
       // Everything is on the map, so everything is "front" at full depth; lam is the oblique longitude,
       // which the coastline drawing uses to break a line where it crosses the seam.
-      return { x: cx + q[0] * k, y: cy + wtOffsetY - q[1] * k, z: r, front: true, depth: 1, lam };
+      return { x: cx + q[0] * k, y: cy + wtOffsetY - q[1] * k, z: r, front: true, depth: 1, lam, phi };
     }
     // A canvas point to the oblique view vector under it (x right, y up, z toward the viewer), or null off the map.
     function winkelScreenToView(px, py, r, cx, cy) {
@@ -10818,19 +10820,33 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
 
     // Canvas type for the cards: Jokker Thin for names (a space's in capitals, a city's in normal case), Jokker Regular for facts.
-    const ATLAS_CARD_TITLE_FONT = '300 24px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
-    const ATLAS_CARD_NAME_FONT = '300 24px "Jokker", sans-serif';
-    // Label type is regular on the light theme and light on the dark one.
-    const atlasLabelWeight = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
-    const atlasMonoFont = () => atlasLabelWeight() + ' 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    // THE PALACE SHEET (assets/palace.css; user, 10 Nov 2026): the map is set in the sheet's serif, in its two sizes, 15px for
+    // every name and 28px for the name on a card, one weight, lower case.
+    const ATLAS_SERIF = '"Atlas Serif", "EB Garamond", "Garamond Premier Pro", Garamond, "Iowan Old Style", Georgia, serif';
+    const ATLAS_CARD_TITLE_FONT = '400 28px ' + ATLAS_SERIF;
+    const ATLAS_CARD_NAME_FONT = '400 28px ' + ATLAS_SERIF;
+    const atlasLabelWeight = () => 400;
+    const atlasMonoFont = () => '400 15px ' + ATLAS_SERIF;
     // The selected space's label is set larger than the rest, with its whole name (user, 4 Nov 2026: "make selected bigger").
-    const atlasSelFont = () => atlasLabelWeight() + ' 20px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const atlasSelFont = () => '400 20px ' + ATLAS_SERIF;
+    // Every word on the map is in lower case, as on the sheet. Measuring and drawing both pass through here, so a label's
+    // box is the size of what is drawn. A card's description is a sentence and keeps its capitals (atlasCaseAsWritten).
+    let atlasCaseAsWritten = false;
+    const atlasLower = (t) => (atlasCaseAsWritten || typeof t !== 'string') ? t : t.toLowerCase().replace(/i\u0307/g, 'i');
+    [ctx, cardCtx].forEach((c) => {
+      if (!c || c.atlasLowered) return;
+      c.atlasLowered = true;
+      const m = c.measureText.bind(c), f = c.fillText.bind(c), k = c.strokeText.bind(c);
+      c.measureText = (t) => m(atlasLower(t));
+      c.fillText = (t, ...a) => f(atlasLower(t), ...a);
+      c.strokeText = (t, ...a) => k(atlasLower(t), ...a);
+    });
     const ATLAS_SEL_H = 32, ATLAS_SEL_PAD = 36;
     const atlasLabelName = (name, sel) => sel ? (name.length > 44 ? name.substring(0, 42) + '…' : name) : (name.length > 24 ? name.substring(0, 22) + '…' : name);
     // The hover card's description is set in Serrif Light, as Displaay sets the info text on displaay.net/typeface/cassette.
     // 21px on a 24px line, Displaay's own size for it (user, 4 Nov 2026: "make the hover card description bigger"; it was 18px).
-    const ATLAS_CARD_DESC_FONT = '300 21px "Serrif", Georgia, "Times New Roman", serif';
-    const ATLAS_CARD_LABEL_FONT = '400 14px "Jokker", "Helvetica Neue", Helvetica, Arial, sans-serif';
+    const ATLAS_CARD_DESC_FONT = '400 15px ' + ATLAS_SERIF;
+    const ATLAS_CARD_LABEL_FONT = '400 15px ' + ATLAS_SERIF;
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
       document.fonts.load(ATLAS_CARD_NAME_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
@@ -10863,19 +10879,24 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // action as a button with the buttons' 10px corners and 1px edge, stretched across the card's measure ("button can be
     // stretched"), filled with ink while the pointer is on it. Returns where the card and its button were drawn.
     function drawAtlasCard(ctx, card, px, py, width) {
+      // THE PALACE SHEET (user, 10 Nov 2026): the card is a piece of the sheet. The place is centred on a stone band, as the
+      // sheet's section heads are; the name is in the large size; the description is in the text size on its 19px line, up
+      // to three lines, with its capitals; the link is a line that opens with an en dash and goes stone under the pointer.
+      // A square edge in the sheet's grey rule, no corners, no button.
       ctx.save();
-      const locText = String(card.label || '').toUpperCase();
-      const nameUpper = String(card.name || '').toUpperCase();
+      const locText = String(card.label || '');
+      const nameText = String(card.name || '');
       const descText = String(card.desc || '').replace(/\s+/g, ' ').trim();
       const btnText = card.btn || '';
 
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      // A card that is itself the button (card.action, the city card) turns over to ink while the pointer is on it.
-      const cardInk = (cardDark !== !!card.hover) ? '#ffffff' : '#000000';
-      const cardPaper = (cardDark !== !!card.hover) ? '#000000' : '#ffffff';
-      const actionText = card.action ? String(card.action).toUpperCase() + ' \u2192' : '';
-      const padX = 18, padY = 16;
-      const cardW = Math.min(400, width - 28);
+      const cardInk = cardDark ? '#e6e1d7' : '#000000';
+      const cardStone = cardDark ? '#2b2925' : '#e6e1d7', cardFaint = cardDark ? '#6f695d' : '#d0c8b8', cardRule = '#787878';
+      // A card that is itself the button (card.action, the city card) goes stone while the pointer is on it.
+      const cardPaper = card.hover ? cardStone : (cardDark ? '#151412' : '#ffffff');
+      const actionText = card.action ? String(card.action) + ' \u2192' : '';
+      const padX = 16, padY = 16;
+      const cardW = Math.min(360, width - 28);
       const maxTextW = cardW - padX * 2;
       const fit = (str) => {
         let t = str;
@@ -10905,73 +10926,66 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       };
 
       ctx.font = ATLAS_CARD_DESC_FONT;
+      atlasCaseAsWritten = true;
       const descLines = descText ? wrap(descText, 3) : [];
-      const DESC_LH = 24;
-      const LABEL_Y = padY, RULE_Y = padY + 22, NAME_Y = RULE_Y + 12, DESC_Y = NAME_Y + 36;
+      atlasCaseAsWritten = false;
+      const DESC_LH = 19, BAND_H = 15;
+      const LABEL_Y = padY, NAME_Y = padY + BAND_H + 6, DESC_Y = NAME_Y + 32 + (descLines.length ? 6 : 0);
       const descEnd = DESC_Y + descLines.length * DESC_LH;
-      const btnH = 30;
-      const cardH = (btnText ? descEnd + 14 + btnH : descEnd) + padY;
+      const btnH = 19;
+      const cardH = (btnText ? descEnd + 6 + btnH : descEnd) + padY;
 
       let cardX = px - cardW / 2;
-      cardX = Math.max(14, Math.min(width - cardW - 14, cardX));
-      let cardY = py - cardH - 16;
-      if (cardY < 14) cardY = py + 20;
+      cardX = Math.round(Math.max(14, Math.min(width - cardW - 14, cardX)));
+      let cardY = Math.round(py - cardH - 16);
+      if (cardY < 14) cardY = Math.round(py + 20);
 
-      ctx.beginPath();
-      ctx.roundRect(cardX, cardY, cardW, cardH, 20);
       ctx.fillStyle = cardPaper;
-      ctx.fill();
-      ctx.strokeStyle = cardInk;
+      ctx.fillRect(cardX, cardY, cardW, cardH);
+      ctx.strokeStyle = cardRule;
       ctx.lineWidth = 1;
-      ctx.stroke();
+      ctx.strokeRect(cardX + 0.5, cardY + 0.5, cardW - 1, cardH - 1);
 
       const textX = cardX + padX;
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'top';
+      // The stone band, with the place centred on it and the action at its right.
+      ctx.fillStyle = card.hover ? cardFaint : cardStone;
+      ctx.fillRect(textX, cardY + LABEL_Y, maxTextW, BAND_H);
       ctx.fillStyle = cardInk;
-
       ctx.font = ATLAS_CARD_LABEL_FONT;
-      try { ctx.letterSpacing = '0.04em'; } catch (e) {}
-      // The action sits on the label line, set flush right against the place on the left.
+      ctx.textBaseline = 'middle';
       let actionW = 0;
       if (actionText) {
         actionW = ctx.measureText(actionText).width;
         ctx.textAlign = 'right';
-        ctx.fillText(actionText, textX + maxTextW, cardY + LABEL_Y);
-        ctx.textAlign = 'left';
+        ctx.fillText(actionText, textX + maxTextW - 4, cardY + LABEL_Y + BAND_H / 2);
       }
       if (locText) {
         let lt = locText;
-        const room = maxTextW - (actionW ? actionW + 16 : 0);
+        const room = maxTextW - (actionW ? 2 * (actionW + 12) : 8);
         if (ctx.measureText(lt).width > room) {
           while (lt.length > 3 && ctx.measureText(lt + '…').width > room) lt = lt.slice(0, -1);
           lt += '…';
         }
-        ctx.fillText(lt, textX, cardY + LABEL_Y);
+        ctx.textAlign = 'center';
+        ctx.fillText(lt, textX + maxTextW / 2, cardY + LABEL_Y + BAND_H / 2);
       }
-      try { ctx.letterSpacing = '0px'; } catch (e) {}
-      ctx.fillRect(textX, cardY + RULE_Y, maxTextW, 1);
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
 
       ctx.font = ATLAS_CARD_NAME_FONT;
-      ctx.fillText(fit(nameUpper), textX, cardY + NAME_Y);
+      ctx.fillText(fit(nameText), textX, cardY + NAME_Y + 2);
 
       ctx.font = ATLAS_CARD_DESC_FONT;
-      descLines.forEach((ln, i) => ctx.fillText(ln, textX, cardY + DESC_Y + i * DESC_LH));
+      atlasCaseAsWritten = true;
+      descLines.forEach((ln, i) => ctx.fillText(ln, textX, cardY + DESC_Y + 2 + i * DESC_LH));
+      atlasCaseAsWritten = false;
 
-      const btnX = textX, btnY = cardY + descEnd + 14, btnW = maxTextW;
+      const btnX = textX, btnY = cardY + descEnd + 6, btnW = maxTextW;
       if (btnText) {
         ctx.font = ATLAS_CARD_LABEL_FONT;
-        try { ctx.letterSpacing = '0.02em'; } catch (e) {}
-        ctx.beginPath();
-        ctx.roundRect(btnX, btnY, btnW, btnH, 10);
-        if (card.btnHover) { ctx.fillStyle = cardInk; ctx.fill(); }
-        ctx.strokeStyle = cardInk;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-        ctx.fillStyle = card.btnHover ? cardPaper : cardInk;
+        ctx.fillStyle = card.btnHover ? cardFaint : cardInk;
         ctx.textBaseline = 'middle';
-        ctx.fillText(fit(btnText), btnX + 14, btnY + btnH / 2 + 0.5);
-        try { ctx.letterSpacing = '0px'; } catch (e) {}
+        ctx.fillText(fit('\u2013 ' + btnText), btnX, btnY + btnH / 2 + 0.5);
       }
       ctx.restore();
       return { cardX, cardY, cardW, cardH, btnX, btnY, btnW: btnText ? btnW : 0, btnH: btnText ? btnH : 0 };
@@ -11023,7 +11037,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
       // Gossip mode on the dark ground: the globe's ground is the Gossip button's dark green.
       const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#1e4d2b' : '#000000'), G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : (GOSSIP_DARK ? 'rgba(30, 77, 43, 0.95)' : 'rgba(0, 0, 0, 0.95)'), G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+      // THE PALACE SHEET: white water, stone land, the sheet's grey rule for every line, black names. The dark sheet is the same stone turned over.
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#1e4d2b' : '#151412'), G_LAND = GLOBE_LIGHT ? '#e6e1d7' : (GOSSIP_DARK ? '#275c36' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#9db8a4' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#d0c8b8' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e6e1d7' : '#2b2925';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
         const TIER_SHAPE_SIZE = { circle: 3 };
@@ -11172,7 +11187,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ctx.fillStyle = G_GROUND;
         ctx.fill();
         ctx.strokeStyle = G_LINE;
-        ctx.lineWidth = 0.8;
+        ctx.lineWidth = 1;
         ctx.stroke();
 
         // Clip all globe surface features strictly to the spherical limb
@@ -11204,7 +11219,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           }
 
           // Countries shaded by the funding views (assets/funding-views.js) take their fill from there.
-          ctx.fillStyle = isCActive ? G_ACTIVE : ((window.atlasCountryFill && window.atlasCountryFill(country.n, G_GROUND)) || G_GROUND);
+          ctx.fillStyle = isCActive ? G_ACTIVE : ((window.atlasCountryFill && window.atlasCountryFill(country.n, G_LAND)) || G_LAND);
 
           for (let j = 0; j < country.r.length; j++) {
             const ring = country.r[j];
@@ -11231,6 +11246,37 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               }
             }
             if (crossesSeam) {
+              // The land is filled (THE PALACE SHEET), so a ring over the seam is filled too: its oblique longitudes are
+              // unwound into one run, and the run is drawn once for each edge of the map, held at the edge where it leaves.
+              // A ring that goes right round (the land at a pole) is closed along the pole's line.
+              const nP = proj.length, run = new Array(nP), TAU = Math.PI * 2, kS = wtScale(r);
+              const wrapD = (d) => d > Math.PI ? d - TAU : d < -Math.PI ? d + TAU : d;
+              run[0] = proj[0].lam;
+              for (let k = 1; k < nP; k++) run[k] = run[k - 1] + wrapD(proj[k].lam - proj[k - 1].lam);
+              const turn = run[nP - 1] + wrapD(proj[0].lam - proj[nP - 1].lam) - run[0];
+              const put = (lam, phi, first) => {
+                const q = wtRaw(Math.max(-Math.PI, Math.min(Math.PI, lam)), phi);
+                if (first) ctx.moveTo(cx + q[0] * kS, cy + wtOffsetY - q[1] * kS); else ctx.lineTo(cx + q[0] * kS, cy + wtOffsetY - q[1] * kS);
+              };
+              if (Math.abs(turn) < 1) {
+                for (let sft = -1; sft <= 1; sft++) {
+                  ctx.beginPath();
+                  for (let k = 0; k < nP; k++) put(run[k] + sft * TAU, proj[k].phi, k === 0);
+                  ctx.closePath();
+                  ctx.fill();
+                }
+              } else {
+                const dir = turn > 0 ? 1 : -1;
+                let sumPhi = 0;
+                for (let k = 0; k < nP; k++) sumPhi += proj[k].phi;
+                const pole = sumPhi < 0 ? -Math.PI / 2 : Math.PI / 2;
+                ctx.beginPath();
+                for (let sft = -1; sft <= 1; sft++) for (let k = 0; k < nP; k++) put(run[k] + sft * dir * TAU, proj[k].phi, sft === -1 && k === 0);
+                put(dir * Math.PI, pole, false);
+                put(-dir * Math.PI, pole, false);
+                ctx.closePath();
+                ctx.fill();
+              }
               ctx.beginPath();
               ctx.moveTo(proj[0].x, proj[0].y);
               for (let k = 1; k <= proj.length; k++) {
@@ -11238,7 +11284,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                 if (Math.abs(a.lam - b.lam) > Math.PI) ctx.moveTo(b.x, b.y); else ctx.lineTo(b.x, b.y);
               }
               ctx.strokeStyle = G_LINE;
-              ctx.lineWidth = 0.8;
+              ctx.lineWidth = 0.5;
               ctx.stroke();
             } else if (allFront) {
               ctx.beginPath();
@@ -11249,7 +11295,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               ctx.closePath();
               ctx.fill();
               ctx.strokeStyle = G_LINE;
-              ctx.lineWidth = isCActive || isCHovered ? 0.8 : 0.8;
+              ctx.lineWidth = isCActive || isCHovered ? 1 : 0.5;
               ctx.stroke();
             } else {
               // Ring crosses horizon: clip edges strictly at the horizon plane
@@ -11302,7 +11348,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                   }
                 }
                 ctx.strokeStyle = G_LINE;
-                ctx.lineWidth = isCActive || isCHovered ? 0.8 : 0.8;
+                ctx.lineWidth = isCActive || isCHovered ? 1 : 0.5;
                 ctx.stroke();
               }
             }
@@ -11343,22 +11389,26 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         };
         // The type and outline colour of a city label, and of the card it opens into.
         const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2f6b12' : '#e2f86c') : tierInk(tier, GLOBE_LIGHT);
+        // THE PALACE SHEET: no pill and no outline. A name is black type on a strip of the sheet's paper, with a dot in the
+        // colour of its grade before it; the selected name sits on a stone band with the grey rule round it. The strip is the
+        // size the old pill was (the name's width + 28, or + ATLAS_SEL_PAD; 22 or ATLAS_SEL_H high), so every hit box holds.
         const drawPillLabel = (text, cx0, cy0, active, tier) => {
           ctx.save();
           ctx.font = active ? atlasSelFont() : atlasMonoFont();
           const w = ctx.measureText(text).width + (active ? ATLAS_SEL_PAD : 28), h = active ? ATLAS_SEL_H : 22;
-          const pc = pillColors(active, tier);
-          // Like the prompt suggestions: no block, a thin soft rounded outline and the type in the tier's colour; a selected label stays a white block with black type.
-          const textCol = pillTextColor(tier);
+          const x0 = Math.round(cx0 - w / 2), y0 = Math.round(cy0 - h / 2);
+          ctx.fillStyle = active ? G_STONE : G_GROUND;
+          ctx.fillRect(x0, y0, w, h);
+          if (active) { ctx.strokeStyle = G_LINE; ctx.lineWidth = 1; ctx.strokeRect(x0 + 0.5, y0 + 0.5, w - 1, h - 1); }
+          const dotR = active ? 4 : 3.5, padL = active ? 13 : 9;
           ctx.beginPath();
-          // Rounded 8px (user, 4 Nov 2026: the square labels were the old design), like the Displaay-style controls around the map.
-          ctx.roundRect(cx0 - w / 2, cy0 - h / 2, w, h, 8);
-          if (active) { ctx.fillStyle = pc.fill; ctx.fill(); }
-          else { ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : '#000000'; ctx.fill(); ctx.strokeStyle = textCol; ctx.globalAlpha = 0.55; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1; }
-          ctx.fillStyle = active ? pc.ink : textCol;
-          ctx.textAlign = 'center';
+          ctx.arc(x0 + padL + dotR - 1, y0 + h / 2 + 0.5, dotR, 0, Math.PI * 2);
+          ctx.fillStyle = pillTextColor(tier);
+          ctx.fill();
+          ctx.fillStyle = G_TEXT;
+          ctx.textAlign = 'left';
           ctx.textBaseline = 'middle';
-          ctx.fillText(text, cx0, cy0 + 0.5);
+          ctx.fillText(text, x0 + padL + dotR * 2 + 3, y0 + h / 2 + 0.5);
           ctx.restore();
         };
         // 6. City labels (all cities in the selected country or the top cities worldwide)
@@ -11400,7 +11450,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         } catch (e) {}
         const shownCityLabels = new Set();
         const isClusterZoom = r < baseRadius * 2.2 && selectedCountryFilter === 'all' && selectedCityFilter === 'all';
-        ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
+        ctx.font = atlasMonoFont();
         
         let candidateCities = [];
         if (selectedCountryFilter !== 'all') {
@@ -11500,7 +11550,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               ctx.globalAlpha = badgeAlpha;
 
               if (isClustered) {
-                ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
+                ctx.font = atlasMonoFont();
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 deferredPills.push([city.name + ' ' + countTxt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name), badgeAlpha]);
@@ -11512,14 +11562,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
               } else {
-                ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
+                ctx.font = atlasMonoFont();
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 deferredPills.push([txt, pt.x, by + bh / 2, !!isSelected, cityTier(city.name), badgeAlpha]);
 
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
-                if (isSelected) { ctx.fillStyle = '#e79a3a'; ctx.fill(); }
+                ctx.fillStyle = isSelected ? G_TEXT : G_GROUND; ctx.fill();
                 ctx.strokeStyle = G_LINE;
                 ctx.lineWidth = 0.8;
                 ctx.stroke();
@@ -11538,7 +11588,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
+          ctx.font = atlasMonoFont();
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -11584,7 +11634,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   ctx.fillStyle = isSel 
-                    ? (GLOBE_LIGHT ? '#007a78' : '#08bdba') 
+                    ? G_TEXT 
                     : isHov
                     ? G_TEXT
                     : G_TEXT;
@@ -11720,7 +11770,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             : tierInk(d.inst.tier, GLOBE_LIGHT);
           // Hollow rings in the tier's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled green dot (lime on the dark theme).
           ctx.lineWidth = 0.8;
-          if (isSel || (isGossipModeActive && hasGossip(d.inst))) { ctx.fillStyle = ctx.strokeStyle; ctx.fill(); }
+          // On the stone land a ring is filled with paper, so it reads as a ring.
+          ctx.fillStyle = (isSel || (isGossipModeActive && hasGossip(d.inst))) ? ctx.strokeStyle : G_GROUND; ctx.fill();
+          ctx.lineWidth = 1;
           ctx.stroke();
           ctx.restore();
 
@@ -11735,7 +11787,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
           if (shouldDrawGlobeLabel && !isHov) {
             ctx.save();
-            ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
+            ctx.font = atlasMonoFont();
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             if (isSel) lastSelDotAt = { name: d.inst.name, x: d.x, y: d.y };
@@ -11796,7 +11848,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               ctx.arc(hPt.x, hPt.y, 6.5, 0, Math.PI * 2);
               const cardColors = pillColors(false, cityTier(hMeta.name));
               const cardText = pillTextColor(cityTier(hMeta.name));
-              const cardBg = GLOBE_LIGHT ? '#ffffff' : '#000000';
+              const cardBg = G_GROUND;
               ctx.fillStyle = cardText;
               ctx.strokeStyle = cardBg;
               ctx.lineWidth = 0.8;
@@ -11901,7 +11953,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ctx.lineTo(hudX + barPx, hudY);
         ctx.stroke();
 
-        ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
+        ctx.font = atlasMonoFont();
         ctx.textAlign = 'center';
         ctx.textBaseline = 'bottom';
         // "0" over the left tick, the distance over the right one, so the figures line up with the bar at any length.
@@ -11927,7 +11979,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const compassY = 38;
         // Ring, then a needle: the north half filled, the south half outlined, all in the globe's line colour.
         const compassInk = G_LINE;
-        ctx.fillStyle = GLOBE_LIGHT ? '#ffffff' : 'rgba(0, 0, 0, 0)';
+        ctx.fillStyle = G_GROUND;
         ctx.strokeStyle = compassInk;
         ctx.lineWidth = 0.8;
         ctx.beginPath();
@@ -11959,7 +12011,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         // The N rides the ring at the needle's tip and stays upright, so it reads at any roll.
         const nAng = toRad(rotRoll);
-        ctx.font = atlasLabelWeight() + ' 14px "Jokker", sans-serif';
+        ctx.font = atlasMonoFont();
         ctx.fillStyle = compassInk;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -21434,13 +21486,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=610"></script>
-<script src="assets/funding-views.js?v=610"></script>
-<script src="assets/layers.js?v=610"></script>
-<script src="assets/hq-detail.js?v=610"></script>
-<script src="assets/bubbles.js?v=610" defer></script>
-<script src="assets/phone-maps.js?v=610"></script>
-<script src="assets/desktop-maps.js?v=610"></script>
-<script src="assets/chat-resize.js?v=610"></script>
+<script src="assets/typeset.js?v=611"></script>
+<script src="assets/funding-views.js?v=611"></script>
+<script src="assets/layers.js?v=611"></script>
+<script src="assets/hq-detail.js?v=611"></script>
+<script src="assets/bubbles.js?v=611" defer></script>
+<script src="assets/phone-maps.js?v=611"></script>
+<script src="assets/desktop-maps.js?v=611"></script>
+<script src="assets/chat-resize.js?v=611"></script>
 </body>
 </html>

@@ -355,7 +355,7 @@
   }
 
   function drawLiftedNodes(ctx, A, r, baseRadius, boxes, dark) {
-    ctx.save(); ctx.font = (dark ? 300 : 400) + ' 13px "Jokker", sans-serif'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
+    ctx.save(); ctx.font = '400 15px "Atlas Serif", "EB Garamond", "Garamond Premier Pro", Garamond, "Iowan Old Style", Georgia, serif'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
     LIFTED.forEach(({ f, x, y, hot }) => {
       const s = 4 + Math.min(6, Math.sqrt(f.n)), col = A.COL[f.kind];
       ctx.beginPath(); ctx.arc(x, y, s, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = hot ? 1.6 : 0.8; ctx.strokeStyle = dark ? '#fff' : '#000'; ctx.stroke();

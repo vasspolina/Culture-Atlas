@@ -628,13 +628,13 @@
       const k = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0], col = KIND[k] || COL.corp;
       ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 0.8; ctx.fillStyle = col; ctx.strokeStyle = '#000';
       ctx.beginPath(); ctx.arc(px, py, s, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = LW() + ' 10px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '400 11px "Atlas Serif", "EB Garamond", "Garamond Premier Pro", Garamond, "Iowan Old Style", Georgia, serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       if (!small) ctx.fillText(String(n), px, py + 0.5);
       const names = list.slice(0, 3).map(e => e.n).join(', ') + (n > 3 ? ` and ${n - 3} more` : '');
       LM.push({ x: px, y: py, r: s + 3, col, label: `${e0.c}, ${e0.co}`, sub: `${n} funder offices`, sub2: names, ask: `Which funders are headquartered in ${e0.c}?`,
         go() { if (typeof window.flyTo === 'function') window.flyTo(mlon, mlat, baseRadius * (CLUSTER_AT + 1.5)); } });
     });
-    ctx.font = LW() + ' 14px "Jokker", sans-serif';
+    ctx.font = '400 15px "Atlas Serif", "EB Garamond", "Garamond Premier Pro", Garamond, "Iowan Old Style", Georgia, serif';
     // Names: on blocks for the focused space's own funders and people. With nothing in focus, only a very close view names them,
     // as plain text on a halo, so the map is not covered in blocks.
     const veryClose = !rec && r >= baseRadius * 30;
@@ -728,7 +728,7 @@
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const font = LW() + ' 14px "Jokker", sans-serif';
+    const font = '400 15px "Atlas Serif", "EB Garamond", "Garamond Premier Pro", Garamond, "Iowan Old Style", Georgia, serif';
     const boxes = labelBoxesOnScreen(dots);
     ctx.save();
     ctx.font = font; ctx.textBaseline = 'middle';
@@ -946,7 +946,7 @@
     const pinned = !!m.lbox;
     const named = !pinned || fitWords(m.label, 40) !== m.label;
     const lines = [named ? clip(m.label) : null, !pinned && m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, act].filter(Boolean);
-    ctx.save(); ctx.font = LW() + ' 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.save(); ctx.font = '400 15px "Atlas Serif", "EB Garamond", "Garamond Premier Pro", Garamond, "Iowan Old Style", Georgia, serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     // A stack of pills, as the funder names are (displaay.net/typefaces): the name filled in the mark's colour, what it is in
     // outlined pills under it, and what a click does as a solid ink pill, as Displaay sets its one action. Each pill is as
     // wide as its own words; the stack hangs from the side nearest the mark.

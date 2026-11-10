@@ -7,17 +7,19 @@
   // The usual width is 48% of the screen, 420 to 860px, as --gmd-w in atlas.css says: wide enough for the reported items' two
   // columns (user, 4 Nov 2026). The CSS value is a clamp(), which reads back unresolved, so the same sum is done here.
   var MIN = 360, KEY = 'atlasChatWidth', userSet = false;
-  function DEFW() { return window.innerWidth < 1024 ? 360 : Math.round(Math.min(860, Math.max(420, window.innerWidth * 0.48))); }
+  function DEFW() { return window.innerWidth < 1024 ? 360 : Math.round(Math.min(860, Math.max(360, window.innerWidth * 0.375))); }
   var mq = window.matchMedia('(min-width: 768px)');
   var root = document.documentElement, handle = null, raf = 0;
 
+  // The index column at the left (assets/palace.css, --pe-col): a quarter of a window 1080px or wider.
+  function indexW() { return window.innerWidth >= 1080 ? window.innerWidth * 0.25 : 0; }
   function maxW() { return window.innerWidth; }
   function clamp(w) { return Math.round(Math.min(maxW(), Math.max(MIN, w))); }
   function current() { var v = parseFloat(getComputedStyle(root).getPropertyValue('--gmd-w')); return isNaN(v) ? DEFW() : v; }
   function apply(w, save) {
     w = clamp(w);
     root.style.setProperty('--gmd-w', w + 'px');
-    root.classList.toggle('chat-wide', window.innerWidth - w < 240);
+    root.classList.toggle('chat-wide', window.innerWidth - w - indexW() < 240);
     root.classList.toggle('chat-full', w >= maxW());
     if (handle) { handle.setAttribute('aria-valuenow', String(w)); handle.setAttribute('aria-valuemax', String(maxW())); handle.setAttribute('aria-valuetext', w >= maxW() ? 'Full screen' : w + ' pixels wide'); }
     if (save) { userSet = true; try { localStorage.setItem(KEY, String(w)); } catch (e) {} }

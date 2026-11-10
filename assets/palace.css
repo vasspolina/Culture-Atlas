@@ -1,0 +1,424 @@
+/* ==== THE PALACE SHEET (user, 10 Nov 2026: "make cultural atlas design like this https://palace-enterprise.com/presents-tonic/
+   including map restyle and all elements") ====
+   The reference is a gallery's site set as one sheet: a single old-style serif in two sizes (15 on 19 and 28 on 32), every
+   label in lower case, black on white, two stone bars (30px at the head, 50px at the foot), 1px grey rules between columns
+   a quarter of the window wide, lists that open with an en dash, and no boxes, corners, shadows or bold anywhere.
+
+   How this file works: everything is inside @layer palace and every declaration is !important. An important declaration
+   in a layer wins over every unlayered one, important or not, whatever its selector, so this sheet restyles atlas.css
+   without touching it. Take the <link> out and the old look is back. Inside the layer the usual rules hold: the later
+   and the more specific rule wins.
+
+   The typeface: the reference uses JJannon (Optimo, a paid licence). No file of it is here. "Atlas Serif" below takes
+   JJannon or a Garamond installed on the reader's machine; put a licensed web font in fonts/ and add its url() first
+   in the two src lists. */
+@font-face{font-family:"Atlas Serif";font-style:normal;font-weight:400;font-display:swap;
+  src:local("JJannon"),local("JJannon-Regular"),local("EB Garamond"),local("EBGaramond-Regular"),local("Garamond Premier Pro"),local("GaramondPremrPro"),local("Adobe Garamond Pro"),local("AGaramondPro-Regular"),local("Garamond")}
+@font-face{font-family:"Atlas Serif";font-style:italic;font-weight:400;font-display:swap;
+  src:local("JJannon Italic"),local("JJannon-Italic"),local("EB Garamond Italic"),local("EBGaramond-Italic"),local("Garamond Premier Pro Italic"),local("GaramondPremrPro-It"),local("Adobe Garamond Pro Italic"),local("AGaramondPro-Italic"),local("Garamond Italic")}
+
+@layer palace{
+
+/* ---- the sheet's own measures ---- */
+:root{
+  --pe-paper:#fff; --pe-ink:#000; --pe-stone:#e6e1d7; --pe-stone-2:#d0c8b8; --pe-rule:#787878;
+  --pe-s:15px; --pe-s-lh:19px; --pe-l:28px; --pe-l-lh:32px;
+  --pe-pad:16px; --pe-indent:20px; --pe-dash:13px;
+  --pe-head:30px; --pe-foot:50px; --pe-col:0px;
+  --pe-serif:"Atlas Serif","JJannon","EB Garamond","Garamond Premier Pro","Adobe Garamond Pro",Garamond,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  /* The atlas's own tokens, so whatever still reads them lands on the sheet. */
+  --ink:var(--pe-ink)!important; --paper:var(--pe-paper)!important; --grey:var(--pe-stone)!important; --block:var(--pe-stone-2)!important; --line:var(--pe-rule)!important;
+  --sans:var(--pe-serif)!important; --display:var(--pe-serif)!important; --display-xl:var(--pe-serif)!important; --gm-badge-font:var(--pe-serif)!important;
+  --fs-s:var(--pe-s)!important; --fs-m:var(--pe-s)!important; --fs-l:var(--pe-l)!important;
+  --lh:1.2667!important; --L:19px!important; --H:9.5px!important;
+  --focus:var(--pe-ink)!important; --ul-w:1px!important; --ul-off:.2em!important;
+  --gmd-gap:16px!important; --gmd-shadow:none!important;
+}
+/* The dark sheet: the same stone, turned over. */
+:root[data-theme="dark"]{--pe-paper:#151412; --pe-ink:#e6e1d7; --pe-stone:#2b2925; --pe-stone-2:#6f695d; --pe-rule:#787878}
+@media (min-width:1080px){:root.gmd{--pe-col:25vw}}
+
+/* ---- one face, one weight, no corners, no shadows ---- */
+*,*::before,*::after{font-family:var(--pe-serif)!important;font-weight:400!important;letter-spacing:0!important;word-spacing:0!important;
+  font-feature-settings:normal!important;font-variant:normal!important;font-stretch:normal!important;text-shadow:none!important;box-shadow:none!important}
+*:not(i,[class*="shape-"],[class*="dot"],[class*="Dot"],[class*="swatch"],[class*="marker"],[class*="maplibregl"],[class*="pin"],[class*="pin"] *,[class*="marker"] *,[class*="key"] *),
+*::before,*::after{border-radius:0!important}
+/* The paper is on html, so the two bars (body's ::before and ::after, z-index -1) lie on it and under everything else. */
+html{background:var(--pe-paper)!important}
+body{background:transparent!important}
+html,body{color:var(--pe-ink)!important}
+body,body *{font-size:var(--pe-s)!important;line-height:var(--pe-s-lh)!important;text-transform:lowercase!important}
+/* What a reader types, and what the records say in sentences, keep their capitals. */
+body :is(input,textarea,[contenteditable]){text-transform:none!important}
+body :is(input,textarea)::placeholder{text-transform:lowercase!important}
+em,i:not([class]),cite{font-style:italic!important}
+a,button,summary,[role="button"],[role="tab"],[role="option"]{transition:color .2s,opacity .2s!important}
+:focus-visible{outline:1px solid var(--pe-ink)!important;outline-offset:2px!important}
+::selection{background:var(--pe-stone-2);color:#000}
+hr{border:0!important;border-top:1px solid var(--pe-rule)!important}
+
+/* ---- the two stone bars ---- */
+@media (min-width:768px){
+  :root.gmd body::before,:root.gmd body::after{content:""!important;display:block!important;position:fixed!important;left:0!important;right:0!important;z-index:-1!important;background:var(--pe-stone)!important;pointer-events:none!important}
+  :root.gmd body::before{top:0!important;height:var(--pe-head)!important;border-bottom:1px solid var(--pe-rule)!important}
+  :root.gmd body::after{bottom:0!important;height:var(--pe-foot)!important;border-top:1px solid var(--pe-rule)!important}
+
+  /* The sheet between them: index | map | record and chat. */
+  :root.gmd #mainAppContainer{inset:calc(var(--pe-head) + 1px) 0 calc(var(--pe-foot) + 1px) 0!important;background:var(--pe-paper)!important}
+  :root.gmd #globeViewport{inset:0 var(--gmd-w) 0 var(--pe-col)!important;background:var(--pe-paper)!important;border-left:1px solid var(--pe-rule)!important}
+  :root.gmd #workViewContainer{padding-top:0!important;border:0!important;border-left:1px solid var(--pe-rule)!important;background:var(--pe-paper)!important}
+}
+@media (min-width:768px) and (max-width:1079px){:root.gmd #globeViewport{border-left:0!important}}
+
+/* ---- black on white, and stone ---- */
+/* Every word takes the sheet's ink: colour is kept for the marks on the map and the dots that key them. */
+body *:not(svg,svg *,i,[class*="shape-"],[class*="maplibregl"],[class*="maplibregl"] *){color:inherit!important;-webkit-text-fill-color:currentColor!important}
+body *:not(i,[class*="shape-"],[class*="dot"],[class*="Dot"],[class*="swatch"],[class*="marker"],[class*="maplibregl"],[class*="pin"],[class*="pin"] *,[class*="marker"] *,[class*="key"] *,canvas){border-color:var(--pe-rule)!important}
+:is(button,[role="button"],[role="tab"],summary,label,input,textarea,select,a,h1,h2,h3,h4,p,li,ul,ol,blockquote,figure,figcaption,details,form,header,nav,footer){background-color:transparent!important;background-image:none!important}
+:is(button,[role="button"],[role="tab"],summary,select){border:0!important;padding:0!important;min-height:0!important;height:auto!important;cursor:pointer!important;text-align:left!important}
+:is(a,button,summary,[role="button"],[role="tab"],[role="option"],label:has(input)):hover{color:var(--pe-stone-2)!important;opacity:1!important}
+:is(button,[role="tab"],[role="option"]):is([aria-pressed="true"],[aria-selected="true"],[aria-current],.is-on){font-style:italic!important}
+:is(button,input,textarea,select):disabled{opacity:.4!important;cursor:default!important}
+a{text-decoration-thickness:1px!important;text-underline-offset:.2em!important}
+::placeholder{color:var(--pe-rule)!important;opacity:1!important}
+summary{list-style:none!important}
+summary::-webkit-details-marker{display:none!important}
+summary::marker{content:""!important}
+svg{stroke-width:1.2px!important}
+
+/* The two large lines: a name, and nothing else. */
+:is(#gmdTitle,#curatorHeroGreeting h1,#curatorDrawerGreeting h1,.dossier-main-heading,#desktopDossierName,#dossier-sheet-name,.space-name),
+:is(#gmdTitle,#curatorHeroGreeting h1,#curatorDrawerGreeting h1,.dossier-main-heading,#desktopDossierName,#dossier-sheet-name,.space-name) *{font-size:var(--pe-l)!important;line-height:var(--pe-l-lh)!important}
+
+@media (min-width:768px){
+  /* ---- the head bar: the theme and gossip at the left, where you are over the map, the panel's two pages at the right ---- */
+  :root.gmd #gmdTopBar{position:fixed!important;top:0!important;left:0!important;right:auto!important;width:max(var(--pe-col),260px)!important;height:var(--pe-head)!important;padding:0!important;margin:0!important;border:0!important;background:transparent!important;overflow:visible!important;pointer-events:auto!important;z-index:46!important}
+  :root.gmd #gmdTopBar>div{display:flex!important;width:100%!important;height:100%!important;gap:0!important}
+  :root.gmd #gmdTopBar :is(#topGossipBtn,#topThemeBtn){display:block!important;flex:1 1 0!important;height:var(--pe-head)!important;line-height:var(--pe-head)!important;padding:0!important;text-align:center!important;background:transparent!important;color:inherit!important;border:0!important}
+  :root.gmd body.gossip-mode-active #gmdTopBar #topGossipBtn{background:transparent!important;font-style:italic!important}
+
+  :root.gmd #workspaceContextTabBar{position:fixed!important;top:0!important;right:0!important;left:auto!important;width:var(--gmd-w)!important;height:var(--pe-head)!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;display:flex!important;gap:0!important;z-index:46!important}
+  :root.gmd #workspaceContextTabBar>div{display:contents!important}
+  :root.gmd #workspaceContextTabBar button{display:block!important;flex:1 1 0!important;min-width:0!important;height:var(--pe-head)!important;line-height:var(--pe-head)!important;padding:0 4px!important;text-align:center!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  :root.gmd #workspaceContextTabBar button *{line-height:var(--pe-head)!important;display:inline!important}
+  :root.gmd #workspaceContextTabBar button svg{display:none!important}
+
+  :root.gmd #cityViewControlBanner{position:fixed!important;top:0!important;left:max(var(--pe-col),260px)!important;right:var(--gmd-w)!important;width:auto!important;max-width:none!important;height:var(--pe-head)!important;margin:0!important;padding:0 var(--pe-pad)!important;border:0!important;background:transparent!important;justify-content:center!important;gap:var(--pe-indent)!important;overflow:hidden!important;white-space:nowrap!important;z-index:46!important}
+  :root.gmd #cityViewControlBanner :is(button,div,span){line-height:var(--pe-head)!important;max-width:none!important}
+  :root.gmd #cityViewControlBanner button::before{content:"‹ "}
+  :root.gmd #cityViewControlBanner .gm-back-ico{display:none!important}
+
+  /* ---- the foot bar: the atlas's name, and the latest report beside it ---- */
+  :root.gmd #gmdTitle{position:fixed!important;top:auto!important;bottom:0!important;left:0!important;right:auto!important;width:max(25vw,340px)!important;height:var(--pe-foot)!important;margin:0!important;padding:0!important;text-align:center!important;white-space:nowrap!important;z-index:46!important;pointer-events:auto!important}
+  :root.gmd #gmdTitle button{display:inline!important;line-height:46px!important;font-size:var(--pe-l)!important;text-align:center!important}
+  :root.gmd #gmdTitle button:hover{color:inherit!important;opacity:.6!important}
+  :root.gmd #gmStoryStrip{position:fixed!important;top:auto!important;bottom:0!important;left:max(25vw,340px)!important;right:var(--gmd-w)!important;width:auto!important;max-width:none!important;height:var(--pe-foot)!important;margin:0!important;padding:6px var(--pe-pad)!important;background:transparent!important;border:0!important;overflow:hidden!important;z-index:46!important;transform:none!important}
+  :root.gmd #gmStoryStrip span{display:block!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;opacity:1!important}
+  :root.gmd #gmStoryStrip .gm-strip-meta{padding-left:var(--pe-indent)!important}
+
+  /* ---- the index column: the filters as a list, the layers, the colour key at its foot ---- */
+  :root.gmd #gmdChips{display:block!important;position:fixed!important;top:calc(var(--pe-head) + 1px + var(--pe-pad))!important;left:var(--pe-pad)!important;right:auto!important;width:calc(max(var(--pe-col),260px) - 2 * var(--pe-pad))!important;padding:0!important;margin:0!important;gap:0!important;background:transparent!important;z-index:45!important}
+  :root.gmd .gmd-chip{display:block!important;width:100%!important;height:var(--pe-s-lh)!important;padding:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;background:transparent!important}
+  :root.gmd .gmd-chip::before{content:"– "}
+  :root.gmd .gmd-chip.has-color::after{content:""!important;display:inline-block!important;width:7px!important;height:7px!important;margin-left:7px!important;border-radius:50%!important;background:var(--layer-color)!important;vertical-align:1px!important}
+  :root.gmd .gmd-chip[aria-pressed="true"]{background:var(--pe-stone)!important;font-style:normal!important}
+  :root.gmd .gmd-chip[aria-pressed="true"]:hover{color:inherit!important}
+
+  :root.gmd #gmdMapCtl{right:calc(var(--gmd-w) + var(--pe-pad))!important;bottom:var(--pe-pad)!important;gap:0!important}
+  :root.gmd #gmdMapCtl>button,:root.gmd #gmdMapCtl #gmLocateBtn,:root.gmd #gmdMapCtl .gmd-zoom button{width:30px!important;height:30px!important;background:var(--pe-paper)!important;border:0!important}
+  :root.gmd #gmdMapCtl .gmd-zoom{background:transparent!important;border:0!important}
+  :root.gmd #gmdMapCtl .gmd-zoom button+button{border:0!important}
+  :root.gmd #gmdMapCtl svg{width:16px!important;height:16px!important}
+}
+@media (min-width:1080px){
+  :root.gmd #layersControl{position:fixed!important;left:var(--pe-pad)!important;right:auto!important;top:calc(var(--pe-head) + 1px + var(--pe-pad) + var(--gmdChips-h,76px))!important;bottom:auto!important;width:calc(var(--pe-col) - 2 * var(--pe-pad))!important;display:block!important;z-index:45!important}
+  :root.gmd #mapColourKey{position:fixed!important;left:var(--pe-pad)!important;right:auto!important;top:auto!important;bottom:calc(var(--pe-foot) + 1px + var(--pe-pad))!important;width:calc(var(--pe-col) - 2 * var(--pe-pad))!important;max-width:none!important;z-index:44!important}
+}
+@media (min-width:768px) and (max-width:1079px){
+  :root.gmd #gmdTitle{text-align:left!important;padding-left:calc(2 * var(--pe-pad))!important;width:auto!important}
+  :root.gmd #gmStoryStrip{display:none!important}
+}
+
+/* ---- the layers button, the colour key ---- */
+#layersControl #layersBtn{display:block!important;width:auto!important;height:var(--pe-s-lh)!important;padding:0!important;background:transparent!important;border:0!important}
+#layersControl #layersBtn::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+#layersControl #layersBtn::after{display:none!important}
+#layersControl #layersBtn :is(.gmd-layers-icon,.gm-layers-icon,svg){display:none!important}
+#layersControl #layersBtn:is([aria-expanded="true"]){background:var(--pe-stone)!important;color:inherit!important}
+
+#mapColourKey{background:var(--pe-paper)!important;border:0!important;padding:0!important}
+#mapColourKey .mck-head{display:block!important;position:relative!important;margin:0 0 4px!important;padding:0!important}
+#mapColourKey .mck-title{background:var(--pe-stone)!important;text-align:center!important;height:15px!important;line-height:12px!important;margin:0!important}
+#mapColourKey .mck-info-btn{position:absolute!important;right:4px!important;top:0!important;width:auto!important;height:15px!important;line-height:12px!important;border:0!important;background:transparent!important;font-style:italic!important}
+#mapColourKey .mck-info-btn *{line-height:12px!important}
+#mapColourKey :is(.mck-list,.mck-scale){list-style:none!important;margin:0!important;padding:0!important;display:block!important}
+#mapColourKey :is(.mck-list,.mck-scale) li{display:block!important;margin:0!important;padding:0 0 0 var(--pe-dash)!important;position:relative!important}
+#mapColourKey :is(.mck-pill,.mck-word){display:inline!important;padding:0!important;border:0!important;background:transparent!important;min-width:0!important}
+#mapColourKey :is(.mck-pill,.mck-word)::before{content:""!important;position:absolute!important;left:0!important;top:7px!important;width:7px!important;height:7px!important;border-radius:50%!important;background:var(--pe-rule)!important}
+#mapColourKey [data-tier="A"]::before{background:var(--tier-a,#007a80)!important}
+#mapColourKey [data-tier="B"]::before{background:var(--tier-b,#b000b0)!important}
+#mapColourKey [data-tier="U"]::before{background:var(--tier-u,#7a7000)!important}
+#mapColourKey :is(.mck-pill,.mck-word)::after{content:", "}
+#mapColourKey .mck-info{margin-top:var(--pe-s-lh)!important;padding:0!important;border:0!important;background:transparent!important}
+#mapColourKey .mck-info p{text-transform:none!important}
+
+/* ---- the panel: ask the curator ---- */
+#curatorIntelligenceColumn,#curatorScrollArea,#workBottomDock,#workspacePanelsWrapper,#desktopDossierColumn{background:var(--pe-paper)!important}
+#curatorScrollContent{padding:var(--pe-pad)!important;align-items:stretch!important;max-width:none!important}
+#curatorHeroGreeting,#curatorDrawerGreeting{padding:0!important;margin:0!important;max-width:none!important;align-items:stretch!important}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{margin:0 0 var(--pe-s-lh)!important;padding:0!important}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:block!important;margin:0!important;padding:0!important;gap:0!important}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{display:block!important;width:100%!important;margin:0!important;padding:0 0 0 var(--pe-dash)!important;text-indent:calc(-1 * var(--pe-dash))!important;border:0!important;background:transparent!important;white-space:normal!important;text-align:left!important}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt *{text-decoration:none!important}
+
+#workBottomDock{padding:0 var(--pe-pad) var(--pe-pad)!important}
+#workBottomDock>div{max-width:none!important;width:100%!important;margin:0!important;padding:0!important}
+#workInputCard{border:0!important;border-top:1px solid var(--pe-rule)!important;background:var(--pe-paper)!important;padding:var(--pe-pad) 0 0!important;margin:0!important}
+#workInput{display:block!important;width:100%!important;padding:0 0 2px!important;margin:0!important;border:0!important;border-bottom:1px solid var(--pe-rule)!important;background:transparent!important;min-height:calc(3 * var(--pe-s-lh) + 3px)!important;outline:0!important}
+#workSendBtn{background:transparent!important;color:inherit!important;border:0!important;width:auto!important;height:var(--pe-s-lh)!important}
+#workSendBtn svg{width:15px!important;height:15px!important}
+details.chat-info{margin:var(--pe-s-lh) 0 0!important;padding:0!important;border:0!important}
+details.chat-info>summary{display:block!important;padding:0!important}
+details.chat-info>summary::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;border:0!important;width:auto!important;height:auto!important;transform:none!important}
+details.chat-info[open]>summary{background:var(--pe-stone)!important}
+
+/* ---- sentences keep their capitals: what a record says, what the curator answers ---- */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet,#desktopDossierInside,#curatorMessages,#curatorDrawerLiveStream,#noteFormFields,.grade-info,.record-popup,#gmFeed,#gmMenu) :is(p,li,dd,blockquote,figcaption,td):not(.kicker,.meta),
+:is(#desktopDossierRecordBody,#detailBody,#dossier-bottom-sheet,#desktopDossierInside,#curatorMessages,#curatorDrawerLiveStream,#noteFormFields,.grade-info,.record-popup,#gmFeed,#gmMenu) :is(p,li,dd,blockquote,figcaption,td):not(.kicker,.meta) *:not(button,summary,button *,summary *){text-transform:none!important}
+
+/* ---- a record: the name large, the summary indented, the actions as a list, every section under a stone band ---- */
+#desktopDossierBody{padding:var(--pe-pad)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head{border:0!important;padding:0!important;margin:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.dossier-main-heading,#desktopDossierName,#dossier-sheet-name){border:0!important;padding:0!important;margin:0!important;hyphens:none!important;text-wrap:balance}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-grid{display:flex!important;flex-direction:column!important;gap:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-main{order:1!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-side{order:2!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .institution-summary{padding:0 0 0 var(--pe-indent)!important;margin:0!important;max-width:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row{display:block!important;margin:var(--pe-s-lh) 0 0!important;padding:0!important;border:0!important;gap:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action{display:block!important;width:auto!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;text-decoration:none!important;text-align:left!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action::after{content:none!important}
+
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(.d-rows,.d-row,.prose-part){border:0!important;padding:0!important;margin:0!important;display:block!important;background:transparent!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-head{display:block!important;margin:var(--pe-s-lh) 0 4px!important;padding:0!important;border:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-title,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages,#curatorDrawerLiveStream) .kicker{display:block!important;background:var(--pe-stone)!important;text-align:center!important;min-height:15px!important;line-height:15px!important;margin:0!important;padding:0 var(--pe-pad)!important;border:0!important;text-wrap:balance}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-title *{line-height:15px!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(ul,ol).d-row-list{list-style:none!important;margin:0!important;padding:0!important;display:block!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li{display:block!important;margin:0!important;padding:0 0 var(--pe-s-lh)!important;border:0!important;text-indent:0!important;max-width:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li:last-child{padding-bottom:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li::before{content:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(p,li,dd,blockquote,figcaption){margin-top:0!important;margin-bottom:0!important;text-indent:0!important;max-width:none!important;hyphens:manual!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details>summary{display:block!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details>summary::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;border:0!important;width:auto!important;height:auto!important;transform:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details>summary *{text-decoration:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details[open]>summary{padding-bottom:var(--pe-s-lh)!important}
+/* A quotation: italic, its source indented under it. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote){margin:var(--pe-s-lh) 0 0!important;padding:0!important;border:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote) blockquote,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote) blockquote *{font-style:italic!important;font-size:var(--pe-s)!important;line-height:var(--pe-s-lh)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote) :is(figcaption,figcaption *){padding-left:var(--pe-indent)!important;opacity:1!important;font-size:var(--pe-s)!important;line-height:var(--pe-s-lh)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote) figcaption *{padding-left:0!important}
+/* The grade, and the small i that explains it. */
+.grade-info-btn{display:inline!important;width:auto!important;height:auto!important;margin-left:.5em!important;border:0!important;background:transparent!important;font-style:italic!important}
+.grade-info{margin:var(--pe-s-lh) 0 0!important;padding:0 0 0 var(--pe-indent)!important;border:0!important;background:transparent!important}
+.grade-scale,.grade-list{list-style:none!important;margin:0!important;padding:0!important}
+.grade-scale li,.grade-list li{display:block!important;margin:0!important;padding:0 0 0 var(--pe-indent)!important;text-indent:calc(-1 * var(--pe-indent))!important}
+.grade-scale .grade-word::after,.grade-list .grade-word::after{content:": "}
+.grade-word,.grade-mark{background:transparent!important;padding:0!important;border:0!important}
+/* Visiting: the label in italic, the fact after it. */
+.visit-cols,.visit-rows{display:block!important;margin:0!important;padding:0!important}
+.visit-item{display:block!important;margin:0!important;padding:0 0 0 var(--pe-indent)!important;text-indent:calc(-1 * var(--pe-indent))!important;border:0!important}
+.visit-item dt{display:inline!important;font-style:italic!important;margin:0!important}
+.visit-item dt::after{content:": "}
+.visit-item dd{display:inline!important;margin:0!important}
+
+/* ---- the street map: a name is black type on a strip of paper; its dot keeps the grade's colour ---- */
+.inst-pin-label{height:var(--pe-s-lh)!important;padding:0 5px!important;border:0!important;background:var(--pe-paper)!important;color:var(--pe-ink)!important}
+.inst-pin-label *{color:var(--pe-ink)!important;line-height:var(--pe-s-lh)!important}
+.custom-inst-pin:hover .inst-pin-label,.inst-pin-label:hover,.inst-pin-label:focus-visible{background:var(--pe-stone)!important;color:var(--pe-ink)!important}
+.custom-inst-pin.popup-active .inst-pin-label{background:var(--pe-stone)!important;border:1px solid var(--pe-rule)!important;color:var(--pe-ink)!important;height:calc(var(--pe-s-lh) + 2px)!important}
+.maplibregl-ctrl-attrib,.maplibregl-ctrl-attrib *{font-size:11px!important;line-height:15px!important;text-transform:none!important}
+.maplibregl-ctrl-group,.maplibregl-ctrl-attrib{background:var(--pe-paper)!important;border:0!important}
+
+/* ---- the conversation: a question is a stone band, as a section's head is; the answer is the text under it ---- */
+#curatorMessages{margin:0!important;padding:0!important}
+#curatorMessages>*{margin-left:0!important;margin-right:0!important;max-width:none!important}
+#curatorMessages>.justify-end,#curatorMessages>div:has(>.user-bubble){display:block!important;margin:var(--pe-s-lh) 0 4px!important;padding:0!important}
+#curatorMessages>div:first-child{margin-top:0!important}
+#curatorMessages .user-bubble{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 var(--pe-pad)!important;border:0!important;background:var(--pe-stone)!important;text-align:center!important;min-height:15px!important;line-height:15px!important;white-space:normal!important;text-wrap:balance}
+#curatorMessages>.justify-end::before,#curatorMessages>.justify-end::after{content:none!important}
+.curator-message-wrap{margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+.curator-message-wrap>svg{display:none!important}
+.curator-message-wrap>div,.curator-message-wrap>div>div{margin:0!important;padding:0!important;max-width:none!important;background:transparent!important;border:0!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap :is(p,ul,ol,blockquote){margin:0 0 var(--pe-s-lh)!important;padding:0!important;text-indent:0!important;max-width:none!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap p:empty{display:none!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap :is(ul,ol){list-style:none!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap li{margin:0!important;padding:0 0 0 var(--pe-dash)!important;text-indent:calc(-1 * var(--pe-dash))!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap li::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+/* What is hearsay is set in italic. */
+:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{font-style:italic!important}
+.curator-followups{display:block!important;margin:0 0 var(--pe-s-lh)!important;padding:0!important;gap:0!important}
+.curator-followup-pill{display:block!important;width:100%!important;margin:0!important;padding:0 0 0 var(--pe-dash)!important;text-indent:calc(-1 * var(--pe-dash))!important;border:0!important;background:transparent!important;white-space:normal!important}
+.curator-followup-pill::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+#chatScrollBufferSpacer{height:var(--pe-s-lh)!important}
+/* Cards the curator shows in an answer: no box, a rule over each. */
+:is(#curatorMessages,#curatorDrawerLiveStream) .record-card{border:0!important;border-top:1px solid var(--pe-rule)!important;background:transparent!important;padding:4px 0 0!important;margin:0 0 var(--pe-s-lh)!important}
+
+/* ---- small corrections ---- */
+.inst-pin-label{border-radius:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .space-y-3>*{margin-top:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) details>summary,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) details>summary *{text-decoration:none!important}
+#desktopDossierRecordBody,#desktopDossierRecordBody>div{padding:0!important;margin:0!important}
+#curatorScrollArea{padding:0!important}
+#curatorIntelligenceColumn{padding:0!important}
+
+/* ---- the layers menu: a list under its button, each section under a stone band ---- */
+#layersPanel{background:var(--pe-paper)!important;border:0!important;padding:0!important;margin:0!important}
+#layersPanel .layers-header{display:flex!important;justify-content:space-between!important;align-items:baseline!important;margin:0!important;padding:0 0 0 var(--pe-dash)!important;border:0!important;position:static!important;background:var(--pe-paper)!important}
+#layersPanel .layers-title{margin:0!important;padding:0!important}
+#layersPanel .layers-actions{display:flex!important;gap:var(--pe-dash)!important}
+#layersPanel .layers-section{margin:0!important;padding:0!important;border:0!important}
+#layersPanel .layers-section-title{display:block!important;background:var(--pe-stone)!important;text-align:center!important;height:15px!important;line-height:12px!important;margin:var(--pe-s-lh) 0 4px!important;padding:0!important;border:0!important}
+#layersPanel :is(.layers-list,.layers-kinds,.layers-filters,.layers-years){display:block!important;margin:0!important;padding:0!important;gap:0!important;border:0!important}
+#layersPanel label,#layersPanel .layers-studies a{display:block!important;position:relative!important;margin:0!important;padding:0 0 0 var(--pe-dash)!important;border:0!important;background:transparent!important;min-height:0!important;text-decoration:none!important;cursor:pointer!important}
+#layersPanel .layers-studies a::before{content:"–";position:absolute;left:0}
+#layersPanel input:is([type="checkbox"],[type="radio"]){-webkit-appearance:none!important;appearance:none!important;position:absolute!important;left:0!important;top:5px!important;width:9px!important;height:9px!important;margin:0!important;padding:0!important;border:1px solid var(--pe-rule)!important;background:var(--pe-paper)!important;border-radius:0!important;cursor:pointer!important}
+#layersPanel input[type="radio"]{border-radius:50%!important}
+#layersPanel input:is([type="checkbox"],[type="radio"]):checked{background:var(--pe-ink)!important;border-color:var(--pe-ink)!important}
+#layersPanel input:is([type="checkbox"],[type="radio"])::before,#layersPanel input:is([type="checkbox"],[type="radio"])::after{content:none!important}
+#layersPanel input[type="range"]{accent-color:var(--pe-ink);width:100%!important;margin:0!important}
+#layersPanel .layer-name{display:inline!important;padding:0!important;background:transparent!important}
+#layersPanel label[style*="--layer-color"] .layer-name::after{content:""!important;display:inline-block!important;width:7px!important;height:7px!important;margin-left:7px!important;border-radius:50%!important;background:var(--layer-color)!important;vertical-align:1px!important}
+#layersPanel :is(.layer-desc,.layers-count){display:block!important;padding:0 0 0 var(--pe-indent)!important;margin:0!important;opacity:1!important;background:transparent!important}
+#layersPanel .layers-count{font-style:italic!important}
+#layersPanel .layers-count:empty{display:none!important}
+#layersPanel :is(.kind-chip,.filter-row){display:block!important}
+#layersPanel :is(.kind-chip,.filter-row) i{display:inline-block!important;margin:0 6px 0 0!important;vertical-align:0!important}
+#layersPanel .layers-choro-legend{display:flex!important;align-items:center!important;gap:6px!important;padding:0 0 0 var(--pe-dash)!important}
+#layersPanel .layers-choro-legend i{flex:1!important;height:7px!important}
+@media (min-width:1080px){
+  :root.gmd #layersControl{display:flex!important;flex-direction:column!important;align-items:stretch!important}
+  :root.gmd #layersControl #layersBtn{order:0!important;align-self:flex-start!important;width:100%!important}
+  :root.gmd #layersControl #layersPanel:not([hidden]){order:1!important;position:static!important;width:100%!important;max-width:none!important;margin-top:4px!important;overflow-y:auto!important;
+    max-height:calc(100vh - var(--pe-head) - var(--pe-foot) - 2px - 2 * var(--pe-pad) - var(--gmdChips-h,76px) - var(--pe-s-lh) - 4px)!important}
+  /* The menu has its own key, so the colour key gives it the column while it is open. */
+  :root.gmd:has(#layersPanel:not([hidden])) #mapColourKey{display:none!important}
+}
+@media (max-width:1079px){
+  #layersPanel:not([hidden]){border:1px solid var(--pe-rule)!important;padding:var(--pe-pad)!important}
+  #mapColourKey{padding:var(--pe-pad)!important;border:1px solid var(--pe-rule)!important}
+}
+
+#layersPanel .layers-header{padding:0!important;margin:4px 0 0!important}
+#layersPanel .layers-close{width:auto!important;height:auto!important}
+#layersPanel .layers-close::before,#layersPanel .layers-close::after{content:none!important}
+#layersPanel :is(.layers-reset,.layers-close){text-decoration:none!important}
+
+@media (min-width:768px){
+  :root.gmd #gmdTitle{display:block!important;visibility:visible!important;opacity:1!important}
+}
+
+/* ---- the phone: the filters are the head bar, the question box is the foot bar ---- */
+@media (max-width:767px){
+  :root{--pe-pad:10px}
+  #gmChips{top:0!important;left:0!important;right:0!important;height:calc(var(--pe-head) + 1px)!important;margin:0!important;padding:0 var(--pe-pad)!important;gap:var(--pe-indent)!important;background:var(--pe-stone)!important;border:0!important;border-bottom:1px solid var(--pe-rule)!important;align-items:center!important;flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:none}
+  #gmChips::-webkit-scrollbar{display:none}
+  #gmChips .gm-filter-chip{flex:none!important;height:var(--pe-head)!important;line-height:var(--pe-head)!important;padding:0!important;white-space:nowrap!important;background:transparent!important}
+  #gmChips .gm-filter-chip.has-color::after{content:""!important;display:inline-block!important;width:7px!important;height:7px!important;margin-left:6px!important;border-radius:50%!important;background:var(--layer-color)!important;vertical-align:1px!important}
+  :root.gm-map #layersControl{top:calc(var(--pe-head) + 1px + var(--pe-pad))!important;right:var(--pe-pad)!important}
+  #mobileStickyInputBar{background:var(--pe-paper)!important;border:0!important;border-top:1px solid var(--pe-rule)!important;padding:var(--pe-pad) 0 0!important}
+  #mobileStickyInputBar #gmStoryStrip{display:block;width:100%!important;margin:0!important;padding:0 var(--pe-pad)!important;background:transparent!important;border:0!important}
+  #mobileStickyInputBar #gmStoryStrip span{display:block!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;opacity:1!important}
+  #mobileStickyInputBar #gmStoryStrip .gm-strip-meta{padding-left:var(--pe-indent)!important}
+  #mobileSuggestChips{margin:var(--pe-pad) 0 0!important;padding:0 var(--pe-pad)!important;gap:var(--pe-indent)!important;background:transparent!important}
+  .curator-suggest-chip{padding:0!important;background:transparent!important;border:0!important}
+  .curator-suggest-chip::before{content:"– "}
+  #mobileComposerCard{margin:var(--pe-pad) 0 0!important;padding:0 var(--pe-pad)!important;min-height:var(--pe-foot)!important;background:var(--pe-stone)!important;border:0!important;border-top:1px solid var(--pe-rule)!important;align-items:center!important}
+  #mobileComposerCard textarea{background:transparent!important;border:0!important}
+  #mobileTopBar{background:var(--pe-stone)!important;border:0!important;border-bottom:1px solid var(--pe-rule)!important}
+  #dossier-bottom-sheet{background:var(--pe-paper)!important;border:0!important;border-top:1px solid var(--pe-rule)!important}
+}
+
+/* ---- the phone's record sheet ---- */
+#dossier-bottom-sheet .sheet-title-block{padding:0 var(--pe-pad)!important;margin:0!important}
+#dossier-bottom-sheet .sheet-title-block>*{margin:0!important}
+#dossier-bottom-sheet :is(#dossier-sheet-meta,.gm-rating){padding-left:var(--pe-indent)!important;background:transparent!important;text-align:left!important}
+#dossier-bottom-sheet #dossier-sheet-summary{margin-top:var(--pe-s-lh)!important}
+#dossier-bottom-sheet .record-action-row{padding:0 var(--pe-pad)!important;margin:var(--pe-s-lh) 0!important}
+#dossier-bottom-sheet .record-action-row .record-action span{padding:0!important;margin:0!important}
+#dossier-bottom-sheet .gm-tabs{display:flex!important;gap:0!important;margin:0!important;padding:0!important;height:calc(var(--pe-head) + 2px)!important;background:var(--pe-stone)!important;border:0!important;border-top:1px solid var(--pe-rule)!important;border-bottom:1px solid var(--pe-rule)!important;overflow:hidden!important}
+#dossier-bottom-sheet .gm-tabs [role="tab"]{flex:1 1 0!important;height:var(--pe-head)!important;line-height:var(--pe-head)!important;text-align:center!important;padding:0!important;background:transparent!important;border:0!important}
+#dossier-bottom-sheet .gm-tabs [role="tab"]::after,#dossier-bottom-sheet .gm-tabs [role="tab"]::before{content:none!important}
+#dossier-bottom-sheet #dossier-sheet-scrollable-body{padding:var(--pe-pad)!important}
+#dossier-bottom-sheet .gm-info{list-style:none!important;margin:0!important;padding:0!important}
+#dossier-bottom-sheet .gm-info li{margin:0!important;padding:0 0 0 var(--pe-indent)!important;border:0!important;min-height:0!important}
+#dossier-bottom-sheet .gm-info li svg{display:none!important}
+#dossier-bottom-sheet .sheet-close svg{width:16px!important;height:16px!important}
+
+/* ---- the reports: they take the index column, each part under a stone band ---- */
+#gmFeed{background:var(--pe-paper)!important;border:0!important;padding:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#gmFeed .ts{background:var(--pe-paper)!important;padding:var(--pe-pad)!important;margin:0!important;width:auto!important;max-width:none!important;border:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#gmFeed .ts-bar{display:flex!important;align-items:baseline!important;justify-content:space-between!important;gap:var(--pe-pad)!important;margin:0!important;padding:0!important;border:0!important;background:var(--pe-paper)!important}
+#gmFeed .ts-grab{display:none!important}
+#gmFeed :is(.ts-title,.ts-title *){font-size:var(--pe-l)!important;line-height:var(--pe-l-lh)!important;margin:0!important}
+#gmFeed .ts-pin{position:absolute!important;top:var(--pe-pad)!important;right:var(--pe-pad)!important;left:auto!important;margin:0!important;padding:0!important;background:transparent!important}
+#gmFeed .ts-bar .gm-bell{margin-right:calc(16px + var(--pe-pad))!important}
+#gmFeed .ts-x svg{width:14px!important;height:14px!important}
+#gmFeed .ts-story{margin:0!important;padding:0!important;border:0!important}
+#gmFeed .ts-label{display:block!important;background:var(--pe-stone)!important;text-align:center!important;height:15px!important;line-height:12px!important;margin:var(--pe-s-lh) 0 4px!important;padding:0!important;border:0!important;text-transform:lowercase!important}
+#gmFeed :is(.ts-headline,.ts-prose){margin:0!important;padding:0!important;border:0!important;text-transform:none!important;max-width:none!important;hyphens:manual!important}
+#gmFeed .ts-headline{font-style:italic!important}
+#gmFeed .ts-rows{display:block!important;margin:0!important;padding:0!important;border:0!important}
+#gmFeed .ts-row{display:block!important;margin:0!important;padding:0 0 0 var(--pe-indent)!important;text-indent:calc(-1 * var(--pe-indent))!important;border:0!important}
+#gmFeed .ts-row dt{display:inline!important;font-style:italic!important;margin:0!important;padding:0!important;width:auto!important}
+#gmFeed .ts-row dt::after{content:": "}
+#gmFeed .ts-row dd{display:inline!important;margin:0!important;padding:0!important;text-transform:none!important}
+#gmFeed .ts-row dd *{text-transform:none!important;display:inline!important}
+#gmFeed hr,#gmFeed .ts-rule{display:none!important}
+@media (min-width:768px){
+  :root.gmd body #gmFeed:not([hidden]){position:fixed!important;top:calc(var(--pe-head) + 1px)!important;bottom:calc(var(--pe-foot) + 1px)!important;left:0!important;right:auto!important;width:max(var(--pe-col),340px)!important;max-width:none!important;height:auto!important;max-height:none!important;overflow-y:auto!important;border-right:1px solid var(--pe-rule)!important;z-index:47!important;transform:none!important}
+}
+
+/* ---- what lies over the sheet: notes, pop-ups, dialogs, the search list. Paper, the grey rule round it, nothing else ---- */
+#gmToast,#gmLocateNote,.gm-toast{background:var(--pe-stone)!important;color:var(--pe-ink)!important;border:1px solid var(--pe-rule)!important;padding:0 var(--pe-pad)!important;line-height:var(--pe-head)!important}
+#gmToast:empty,#gmLocateNote:empty{border:0!important;padding:0!important}
+.atlas-record-popup .maplibregl-popup-content{background:var(--pe-paper)!important;color:var(--pe-ink)!important;border:1px solid var(--pe-rule)!important;border-radius:0!important;padding:var(--pe-pad)!important;box-shadow:none!important}
+.atlas-record-popup .maplibregl-popup-tip{display:none!important}
+.atlas-record-popup .maplibregl-popup-close-button{font-size:var(--pe-s)!important;color:var(--pe-ink)!important;background:transparent!important;border:0!important;right:4px!important;top:0!important}
+.record-popup,.record-popup *{color:var(--pe-ink)!important;font-family:var(--pe-serif)!important;font-size:var(--pe-s)!important;line-height:var(--pe-s-lh)!important;font-weight:400!important;letter-spacing:0!important;border-radius:0!important}
+.record-popup :is(.record-popup-name,.record-popup-name *){font-size:var(--pe-l)!important;line-height:var(--pe-l-lh)!important;text-decoration:none!important;text-transform:lowercase!important}
+.record-popup-rule{display:none!important}
+.record-popup :is(.record-popup-category,.institution-category-pill){display:block!important;background:var(--pe-stone)!important;border:0!important;text-align:center!important;height:15px!important;line-height:12px!important;padding:0!important;margin:0 0 4px!important;text-transform:lowercase!important}
+.record-popup-actions{display:block!important;margin:var(--pe-s-lh) 0 0!important;padding:0!important;gap:0!important}
+.record-popup-actions :is(a,button){display:block!important;padding:0!important;margin:0!important;border:0!important;background:transparent!important;text-decoration:none!important;text-transform:lowercase!important;text-align:left!important}
+.record-popup-actions :is(a,button)::before{content:"– "}
+.record-popup-actions :is(a,button):hover{background:transparent!important;color:var(--pe-stone-2)!important}
+:is([role="dialog"],[aria-modal="true"],.modal-panel,.modal-card){background:var(--pe-paper)!important;color:var(--pe-ink)!important;border:1px solid var(--pe-rule)!important;border-radius:0!important}
+#gmdSearch{background:var(--pe-paper)!important;border:0!important;border-bottom:1px solid var(--pe-rule)!important;height:auto!important;padding:0!important}
+#gmdResults{background:var(--pe-paper)!important;border:1px solid var(--pe-rule)!important;padding:var(--pe-pad)!important}
+.gmd-opt{display:block!important;padding:0!important;background:transparent!important}
+.gmd-opt[aria-selected="true"]{background:var(--pe-stone)!important;font-style:normal!important}
+.gmd-opt-ico{display:none!important}
+.gmd-opt-sub{padding-left:var(--pe-indent)!important}
+#gmMenu,.gm-menu{background:var(--pe-paper)!important;border:1px solid var(--pe-rule)!important}
+/* The note to the editor: a label, a line to write on. */
+#noteFormFields .nf-field{display:block!important;margin:0 0 var(--pe-s-lh)!important;padding:0!important;border:0!important}
+#noteFormFields .nf-field span{display:block!important}
+#noteFormFields input{display:block!important;width:100%!important;padding:0 0 2px!important;border:0!important;border-bottom:1px solid var(--pe-rule)!important;background:transparent!important}
+#noteFormFields :is(#noteFormTitle,#noteFormTitle *){font-size:var(--pe-l)!important;line-height:var(--pe-l-lh)!important}
+#noteFormHead{display:flex!important;justify-content:space-between!important;align-items:baseline!important;border:0!important;padding:0!important;margin:0 0 var(--pe-s-lh)!important}
+#noteFormIntro{margin:0 0 var(--pe-s-lh)!important;padding-left:var(--pe-indent)!important}
+
+/* ---- the studies page (studies.html): the same sheet, read as one column ---- */
+main#main :is(p,li,dd,blockquote,figcaption,td),main#main :is(p,li,dd,blockquote,figcaption,td) *{text-transform:none!important}
+main#main :is(h1,h1 *){font-size:var(--pe-l)!important;line-height:var(--pe-l-lh)!important}
+main#main :is(h2,h3){background:var(--pe-stone)!important;text-align:center!important;min-height:15px!important;line-height:15px!important;margin:var(--pe-s-lh) 0 4px!important;padding:0 var(--pe-pad)!important;border:0!important}
+main#main .toc li{text-transform:lowercase!important}
+main#main .toc li *{text-transform:lowercase!important}
+main#main .study{border:0!important}
+#noteConsentRow,.nf-consent,#noteFormFields~* label:has(input[type="checkbox"]){border:0!important;padding:0!important;background:transparent!important}
+}
