@@ -291,7 +291,7 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 .provider-tab-btn[aria-pressed=true]{background:var(--cobalt);color:#fff}
 
 /* ---- map pins and labels (functional, restyled) ---- */
-.custom-inst-pin{cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .25s var(--ease)}
+.custom-inst-pin{cursor:pointer;position:absolute;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .25s var(--ease)}
 .custom-inst-pin:hover{transform:scale(1.12);z-index:9999!important}
 .pin-pulse-aura,.brand-city-dot-aura,.brand-city-dot-ping{display:none!important}
 .inst-pin-label{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:0 14px;height:22px;background:#c6c6c6;color:#000;border:0;font:400 var(--fs-s)/22px var(--sans);white-space:nowrap;cursor:pointer;z-index:20;transition:opacity .25s var(--ease)}
