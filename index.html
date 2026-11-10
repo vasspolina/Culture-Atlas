@@ -45,13 +45,13 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=611">
-  <link rel="stylesheet" href="assets/palace.css?v=611">
-  <script src="assets/config.js?v=611"></script>
-  <script src="assets/subtopic.js?v=611"></script>
-  <script src="assets/names.js?v=611"></script>
-  <script src="assets/grounding.js?v=611"></script>
-  <script src="assets/repeats.js?v=611"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=612">
+  <link rel="stylesheet" href="assets/palace.css?v=612">
+  <script src="assets/config.js?v=612"></script>
+  <script src="assets/subtopic.js?v=612"></script>
+  <script src="assets/names.js?v=612"></script>
+  <script src="assets/grounding.js?v=612"></script>
+  <script src="assets/repeats.js?v=612"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1114,7 +1114,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=611"></script>
+  <script src="assets/institutions.js?v=612"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10325,11 +10325,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v611';
+    const ATLAS_RELEASE = 'culture-atlas-v612';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=611').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=612').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10849,6 +10849,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const ATLAS_CARD_LABEL_FONT = '400 15px ' + ATLAS_SERIF;
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
+      // The serif comes in subsets (assets/palace.css). The Latin ones are asked for now, with the italic; any other loads when
+      // a name first needs it, and the map is drawn again when it arrives, so no name stays in the fallback face.
+      document.fonts.load(atlasMonoFont(), 'a\u00e3\u0142').catch(() => {});
+      document.fonts.load('italic ' + atlasMonoFont()).catch(() => {});
+      if (document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', () => { if (window.scheduleRender) window.scheduleRender(); });
       document.fonts.load(ATLAS_CARD_NAME_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
       document.fonts.load(ATLAS_CARD_DESC_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
     }
@@ -21486,13 +21491,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=611"></script>
-<script src="assets/funding-views.js?v=611"></script>
-<script src="assets/layers.js?v=611"></script>
-<script src="assets/hq-detail.js?v=611"></script>
-<script src="assets/bubbles.js?v=611" defer></script>
-<script src="assets/phone-maps.js?v=611"></script>
-<script src="assets/desktop-maps.js?v=611"></script>
-<script src="assets/chat-resize.js?v=611"></script>
+<script src="assets/typeset.js?v=612"></script>
+<script src="assets/funding-views.js?v=612"></script>
+<script src="assets/layers.js?v=612"></script>
+<script src="assets/hq-detail.js?v=612"></script>
+<script src="assets/bubbles.js?v=612" defer></script>
+<script src="assets/phone-maps.js?v=612"></script>
+<script src="assets/desktop-maps.js?v=612"></script>
+<script src="assets/chat-resize.js?v=612"></script>
 </body>
 </html>
