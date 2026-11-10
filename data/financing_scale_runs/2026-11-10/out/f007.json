@@ -1,0 +1,223 @@
+[
+ {
+  "id": "villa-muller",
+  "scale": {
+   "visitors": 8001,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://muzeumprahy.cz/file/4673",
+    "https://www.muzeumprahy.cz/file/5387"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the Prague City Museum annual report 2024 (PDF page 29, table of visits by building) gives 8001 visits for the Müller Villa in 2024, its last full year, since the 2025 report (PDF page 32) shows 602 visits in January 2025 and the villa closed for reconstruction from February 2025; accounts and staff are reported for the whole museum, so they are empty."
+ },
+ {
+  "id": "villa-rothmayer",
+  "scale": {
+   "visitors": 2812,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.muzeumprahy.cz/file/5387"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the Prague City Museum annual report 2025 (PDF page 32, table of visits by building) gives 2812 visits for the Rothmayer Villa in 2025; accounts and staff are reported for the whole museum, so they are empty."
+ },
+ {
+  "id": "bata-villa-thomas-bata-foundation",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "zikmund-villa",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "6th-of-october-war-panorama",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "villa-skeppet",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "gallen-kallela-museum",
+  "scale": {
+   "visitors": 31635,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv",
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 878978,
+   "expenditure": 873754,
+   "public": null,
+   "private": null,
+   "earned": 352687,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "other",
+   "url": "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
+  },
+  "basis": "Scale: visitors are the 31,635 total visits (paid and free) on the Gallen-Kallelan Museo line of the Finnish Heritage Agency museum statistics 2025, and staff there is given only in person-years, so staff is empty. Finance: the same statistics line gives Tulot yhteensä 878,978, Menot yhteensä 873,754 and Omat tulot yhteensä 352,687 for 2025, a statistical return and not a filed account."
+ },
+ {
+  "id": "didrichsen-art-museum",
+  "scale": {
+   "visitors": 145283,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv",
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 1776718,
+   "expenditure": 2094079,
+   "public": 208867,
+   "private": null,
+   "earned": 1567851,
+   "sponsorship": 0,
+   "net_assets": null,
+   "source_kind": "other",
+   "url": "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
+  },
+  "basis": "Scale: visitors are the 145,283 total visits (paid and free) on the Didrichsenin taidemuseo line of the Finnish Heritage Agency museum statistics 2025, and staff there is given only in person-years, so staff is empty. Finance: the same line gives Tulot yhteensä 1,776,718, Menot yhteensä 2,094,079, Omat tulot yhteensä 1,567,851, the state share 208,867 with every other public grant line at 0, and Sponsorituki 0, a statistical return and not a filed account."
+ },
+ {
+  "id": "muuratsalo-experimental-house",
+  "scale": {
+   "visitors": 2237,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 2,237 total visits on the Koetalo site line (Alvar Aalto -museo, Jyväskylä) of the Finnish Heritage Agency site visits file 2025; accounts are reported for the Alvar Aalto Museum as a whole, so finance is empty."
+ },
+ {
+  "id": "villa-kokkonen",
+  "scale": {
+   "visitors": 7514,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 7,514 total visits on the Villa Kokkonen site line (Järvenpään taidemuseo) of the Finnish Heritage Agency site visits file 2025; accounts are reported for the city's art museum as a whole, so finance is empty."
+ },
+ {
+  "id": "hvittrask",
+  "scale": {
+   "visitors": 17805,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: visitors are the 17,805 total visits on the Hvitträsk site line (Suomen kansallismuseo) of the Finnish Heritage Agency site visits file 2025; accounts are reported for the National Museum of Finland as a whole, so finance is empty."
+ },
+ {
+  "id": "villa-mairea",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

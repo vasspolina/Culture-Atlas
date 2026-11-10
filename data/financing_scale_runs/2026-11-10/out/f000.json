@@ -1,0 +1,198 @@
+[
+  {
+    "id": "national-history-museum",
+    "scale": {
+      "visitors": 99796,
+      "visitors_year": "2023",
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://akt.gov.al/wp-content/uploads/2024/03/BULETINI-I-TURIZMIT-DHJETOR-2023.pdf"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the National Tourism Agency (AKT) tourism bulletin for December 2023, cultural tourism table (PDF page 7), gives 99,796 visitors to Muzeu Historik Kombëtar for January to December 2023. The museum closed for reconstruction in May 2024, so 2023 is its last full year."
+  },
+  {
+    "id": "musee-national-du-moudjahid",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "agostinho-neto-memorial-memorial-dr-antonio-agostinho-neto",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "museo-casa-sobre-el-arroyo-casa-del-puente",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "boyd-house-ii-robin-boyd-foundation",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": {
+      "fy": "2023-24",
+      "currency": "AUD",
+      "income": 435438,
+      "expenditure": 400191,
+      "public": null,
+      "private": null,
+      "earned": null,
+      "sponsorship": null,
+      "net_assets": 1334903,
+      "source_kind": "annual report",
+      "url": "https://robinboyd.org.au/wp-content/uploads/2025/07/RBF2023-24.pdf"
+    },
+    "basis": "Finance: Statement of Financial Performance (PDF page 4) gives revenue and expenses for the year ended 30 June 2024, and the Statement of Financial Position (PDF page 5) gives net assets; the grants line mixes government and other grants, so public is not split out."
+  },
+  {
+    "id": "rose-seidler-house",
+    "scale": {
+      "visitors": 2574,
+      "visitors_year": "2024-25",
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://cdn.sanity.io/files/zl9du87e/production/4d8c3cbc3fb090bb54e4880bc7670389fc81b8d4.pdf"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the Museums of History NSW Annual Report 2024-25, table \"Visitation by property 2024-25\" (PDF page 59), gives 2,574 general admissions to Rose Seidler House for July 2024 to June 2025, a count of visits that leaves out the 20 hospitality admissions."
+  },
+  {
+    "id": "domenig-steinhaus",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "das-rote-wien-im-waschsalon-karl-marx-hof",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "haus-wittgenstein-bulgarian-cultural-institute",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "margarete-schutte-lihotzky-zentrum",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "villa-beer",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "military-trophy-park",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  }
+]
