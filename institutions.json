@@ -187553,6 +187553,13 @@
         "basis": "OpenStreetMap, name lookup: Cultuurhuis Bergeijk, Domineestraat, Loo, Bergeijk, Noord-Brabant, Nederland, 5571 EJ, Nederland",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 1538,
+      "visitors_year": "2025",
+      "sources": [
+        "https://cultuurhuisbergeijk.nl/images/Downloads/Jaarrekening-en-verslag-Cultuurhuis-2025.pdf"
+      ]
     }
   },
   {
@@ -187646,6 +187653,14 @@
         "basis": "OpenStreetMap, name lookup: Munchs hus, Edvard Munchs gate, Dam\u00e5sen, Nyg\u00e5rd, \u00c5sg\u00e5rdstrand, Horten, Vestfold, 3179, Norge",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 12252,
+      "visitors_year": "2025",
+      "sources": [
+        "https://ems.dimu.org/file/069ELhfh9odNu",
+        "https://vestfoldmuseene.no/arsrapporter/"
+      ]
     }
   },
   {
@@ -187746,6 +187761,13 @@
         "basis": "OpenStreetMap, name lookup: Vigelandmuseet, Halvdan Svartes gate, Schaftel\u00f8kken, Frogner, Oslo, 0267, Norge",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 28082,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.oslo.kommune.no/get-file/461074/fe30d35434851381874410aed6c119882fea8fca9b27ae2e2ddff0f0a41429fd"
+      ]
     }
   },
   {
@@ -187824,6 +187846,17 @@
         "basis": "OpenStreetMap, name lookup: Muzeum Sopotu, Ksi\u0119cia J\u00f3zefa Poniatowskiego, Karlikowo, Sopot, wojew\u00f3dztwo pomorskie, 81-724, Polska",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2023",
+      "currency": "PLN",
+      "income": 2588252,
+      "expenditure": 2532818,
+      "public": 2430217,
+      "earned": 158035,
+      "net_assets": 5900631,
+      "source_kind": "financial statements",
+      "url": "https://bip.muzeumsopotu.pl/wp-content/uploads/2025/01/Rachunek-zyskow-i-strat-wariant-porownawczy-2023.xls"
     }
   },
   {
@@ -188090,7 +188123,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Karunova ulica 4-6, 1000 Ljubljana, Slovenia"
+    "address": "Karunova ulica 4-6, 1000 Ljubljana, Slovenia",
+    "scale": {
+      "visitors": 16518,
+      "visitors_year": "2024",
+      "sources": [
+        "https://mgml.si/media/witlof/attachments/2025/11/19/14/39/31/Poro%C4%8Dilo_o_delu_2024.pdf"
+      ]
+    }
   },
   {
     "name": "Casa Mas\u00f3",
@@ -188264,6 +188304,13 @@
       ],
       "level": 5,
       "level_basis": ""
+    },
+    "scale": {
+      "visitors": 6040,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.bcn.cat/museuhistoriaciutat/docs/memoria_MUSEU_HISTORIA%20BARCELONA_2024.pdf"
+      ]
     }
   },
   {
@@ -188457,6 +188504,13 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "scale": {
+      "visitors": 11265,
+      "visitors_year": "2024",
+      "sources": [
+        "https://masmiro.com/wp-content/uploads/2026/01/Memo_FMM_2024.pdf"
+      ]
     }
   },
   {
@@ -188590,7 +188644,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Carrer de Proven\u00e7a 261-265, 08008 Barcelona, Spain"
+    "address": "Carrer de Proven\u00e7a 261-265, 08008 Barcelona, Spain",
+    "scale": {
+      "visitors": 909061,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.fundaciocatalunya-lapedrera.com/sites/default/files/2026-06/MEM%C3%92RIA%20FCLP%202025.pdf"
+      ]
+    }
   },
   {
     "name": "Museo Casa Botines Gaud\u00ed",
@@ -189027,7 +189088,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Route de Lavaux 21, 1802 Corseaux, Switzerland"
+    "address": "Route de Lavaux 21, 1802 Corseaux, Switzerland",
+    "scale": {
+      "area_m2": 64,
+      "area_kind": "building",
+      "sources": [
+        "https://www.villalelac.ch/fr/"
+      ]
+    }
   },
   {
     "name": "Van Eesteren Museum",
@@ -189152,7 +189220,27 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Noordzijde 31, 1064 GV Amsterdam, Netherlands"
+    "address": "Noordzijde 31, 1064 GV Amsterdam, Netherlands",
+    "scale": {
+      "visitors": 13420,
+      "visitors_year": "2025",
+      "sources": [
+        "https://cdn.prod.website-files.com/6543df8e17f7c1839eb1201e/6a44da7b4673f13974bb9f28_VEM_jaarverslag%202025.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 608596,
+      "expenditure": 592955,
+      "public": 394063,
+      "private": 91500,
+      "earned": 112490,
+      "sponsorship": 8000,
+      "net_assets": 49876,
+      "source_kind": "annual report",
+      "url": "https://cdn.prod.website-files.com/6543df8e17f7c1839eb1201e/6a44cfe92490a4a6a6389c6a_Financie%CC%88le%20verantwoording%202025%20ANBI%20Algemeen.pdf"
+    }
   },
   {
     "name": "Atelier Volten",
@@ -189261,6 +189349,13 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "scale": {
+      "visitors": 1153,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.ateliervolten.nl/s/Jaarverslag-Stichting-Andre-Volten-2025.pdf"
+      ]
     }
   },
   {
@@ -189391,6 +189486,13 @@
         "basis": "OpenStreetMap, name lookup: De Nollen, Burgemeester Ritmeesterweg, Dirksz Admiraal, Nieuw Den Helder-Oost, Den Helder, Noord-Holland, Nederland, 1784 PA, Nederland",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 7584,
+      "visitors_year": "2025",
+      "sources": [
+        "https://projectdenollen.nl/wp-content/uploads/2026/03/Jaarrekening-en-jaarverslag-2025-Stichting-De-Nollen.pdf"
+      ]
     }
   },
   {
@@ -189836,7 +189938,20 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Museumpark 11, 3015 LB Rotterdam, Netherlands"
+    "address": "Museumpark 11, 3015 LB Rotterdam, Netherlands",
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 1175815,
+      "expenditure": 1150491,
+      "public": 204650,
+      "private": 780870,
+      "earned": 144237,
+      "sponsorship": 26219,
+      "net_assets": 179592,
+      "source_kind": "annual report",
+      "url": "https://chabotmuseum.nl/wp-content/uploads/2026/06/Stichting-Hendrik-Chabot-JVJR2025_website.pdf"
+    }
   },
   {
     "name": "Van Doesburg-Rinsemahuis",
@@ -190428,6 +190543,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 26292,
+      "expenditure": 107109,
+      "net_assets": 41972,
+      "source_kind": "Form 990-PF",
+      "url": "https://projects.propublica.org/nonprofits/organizations/874280049"
     }
   },
   {
@@ -190526,7 +190650,24 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "120 North Ballas Road, Kirkwood, MO 63122, USA"
+    "address": "120 North Ballas Road, Kirkwood, MO 63122, USA",
+    "scale": {
+      "area_m2": 177,
+      "area_kind": "building",
+      "sources": [
+        "https://ebsworthpark.org/history/about-the-house/"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 793606,
+      "expenditure": 326120,
+      "public": 25000,
+      "net_assets": 3210102,
+      "source_kind": "Form 990",
+      "url": "https://projects.propublica.org/nonprofits/organizations/431727003"
+    }
   },
   {
     "name": "LongHouse Reserve",
@@ -190624,7 +190765,18 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "133 Hands Creek Road, Town of East Hampton, NY 11937, USA"
+    "address": "133 Hands Creek Road, Town of East Hampton, NY 11937, USA",
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 1964699,
+      "expenditure": 2249339,
+      "public": 20000,
+      "earned": 317908,
+      "net_assets": 9547934,
+      "source_kind": "Form 990",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2025/2025_TEOS_XML_10A.zip"
+    }
   },
   {
     "name": "Fay and Gus Jones House",
@@ -191154,7 +191306,17 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "2 Hylan Boulevard, New York, NY 10305, USA"
+    "address": "2 Hylan Boulevard, New York, NY 10305, USA",
+    "finance": {
+      "fy": "2024-25",
+      "currency": "USD",
+      "income": 550244,
+      "expenditure": 772873,
+      "public": 348636,
+      "net_assets": 704151,
+      "source_kind": "Form 990",
+      "url": "https://projects.propublica.org/nonprofits/organizations/133248928"
+    }
   },
   {
     "name": "Marcel Breuer House at Pocantico",
@@ -191340,6 +191502,15 @@
         "basis": "Wikidata Q111942987 coordinate location (P625): Modulightor Building",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 273001,
+      "expenditure": 388946,
+      "net_assets": 7023311,
+      "source_kind": "Form 990-PF",
+      "url": "https://projects.propublica.org/nonprofits/organizations/472007079"
     }
   },
   {
@@ -191480,6 +191651,16 @@
         "basis": "OpenStreetMap, name lookup: Vizcaya Museum and Gardens, Brickell Hammock, Miami, Miami-Dade County, Florida, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "USD",
+      "income": 45234945,
+      "expenditure": 25542417,
+      "public": 8217625,
+      "net_assets": 33147319,
+      "source_kind": "Form 990",
+      "url": "https://projects.propublica.org/nonprofits/organizations/471711491"
     }
   },
   {
@@ -191580,7 +191761,16 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "3300 Tantalus Drive, East Honolulu, HI 96822, USA"
+    "address": "3300 Tantalus Drive, East Honolulu, HI 96822, USA",
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 602205,
+      "expenditure": 583317,
+      "net_assets": 3800628,
+      "source_kind": "Form 990-PF",
+      "url": "https://projects.propublica.org/nonprofits/organizations/261319784"
+    }
   },
   {
     "name": "Sunnylands",
@@ -191678,6 +191868,22 @@
         "basis": "OpenStreetMap, name lookup: Sunnylands, Rancho Mirage, Riverside County, California, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 134277,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://apps.irs.gov/pub/epostcard/990/xml/2026/2026_TEOS_XML_05A.zip"
+      ]
+    },
+    "finance": {
+      "fy": "2024-25",
+      "currency": "USD",
+      "income": 40466392,
+      "expenditure": 26487429,
+      "net_assets": 691291459,
+      "source_kind": "Form 990-PF",
+      "url": "https://projects.propublica.org/nonprofits/organizations/256774871"
     }
   },
   {
@@ -191786,7 +191992,17 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "4 Westmoreland Place, Pasadena, CA 91103, USA"
+    "address": "4 Westmoreland Place, Pasadena, CA 91103, USA",
+    "finance": {
+      "fy": "2024-25",
+      "currency": "USD",
+      "income": 2290873,
+      "expenditure": 1616411,
+      "earned": 476503,
+      "net_assets": 13911856,
+      "source_kind": "Form 990",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2026/2026_TEOS_XML_08A.zip"
+    }
   },
   {
     "name": "Hollyhock House",
@@ -192012,7 +192228,16 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "526 LaGuardia Place, New York, NY 10012, USA"
+    "address": "526 LaGuardia Place, New York, NY 10012, USA",
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 248604,
+      "expenditure": 638648,
+      "net_assets": 7337153,
+      "source_kind": "Form 990-PF",
+      "url": "https://projects.propublica.org/nonprofits/organizations/133490010"
+    }
   },
   {
     "name": "Frank Lloyd Wright Trust",
@@ -192135,6 +192360,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "USD",
+      "income": 4631533,
+      "expenditure": 4521924,
+      "net_assets": 11125012,
+      "source_kind": "Form 990",
+      "url": "https://projects.propublica.org/nonprofits/organizations/237414937"
     }
   },
   {
@@ -192205,7 +192439,16 @@
     "records_note": "Files a Form 990-EZ (on ProPublica for 2019 to 2025) and names its directors and executive director on its about page.",
     "affiliations_note": "Run by the Schweikher House Preservation Trust, a 501(c)(3) the Village Board approved in 2009, whose board the village president appointed in 2010. The Village of Schaumburg owns the house, bought in 1999 from the Metropolitan Water Reclamation District. Listed in the Iconic Houses network.",
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "finance": {
+      "fy": "2024-25",
+      "currency": "USD",
+      "income": 104119,
+      "expenditure": 45667,
+      "net_assets": 269352,
+      "source_kind": "Form 990-EZ",
+      "url": "https://projects.propublica.org/nonprofits/organizations/271367303"
+    }
   },
   {
     "name": "Frelinghuysen Morris House & Studio",
@@ -192292,6 +192535,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 4309123,
+      "expenditure": 1140287,
+      "net_assets": 42585998,
+      "source_kind": "Form 990-PF",
+      "url": "https://apps.irs.gov/pub/epostcard/990/xml/2025/2025_TEOS_XML_11B.zip"
     }
   },
   {
@@ -192481,7 +192733,23 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "78 Derngate, Northampton NN1 1UH, UK"
+    "address": "78 Derngate, Northampton NN1 1UH, UK",
+    "scale": {
+      "visitors": 5170,
+      "visitors_year": "2025",
+      "sources": [
+        "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/3945986/accounts-and-annual-returns"
+      ]
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "GBP",
+      "income": 146334,
+      "expenditure": 178283,
+      "net_assets": 3430207,
+      "source_kind": "Charity Commission",
+      "url": "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/3945986/accounts-and-annual-returns"
+    }
   },
   {
     "name": "Turn End",
@@ -192590,6 +192858,14 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "GBP",
+      "income": 16070,
+      "expenditure": 24693,
+      "source_kind": "Charity Commission",
+      "url": "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5056612/accounts-and-annual-returns"
     }
   },
   {
@@ -192686,7 +192962,18 @@
         "retrieved": "2026-11-04"
       }
     },
-    "admission_fee": "Free"
+    "admission_fee": "Free",
+    "finance": {
+      "fy": "2025",
+      "currency": "GBP",
+      "income": 48894,
+      "expenditure": 39348,
+      "private": 9720,
+      "earned": 39120,
+      "net_assets": 57549,
+      "source_kind": "Charity Commission",
+      "url": "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5052630/accounts-and-annual-returns"
+    }
   },
   {
     "name": "The Hill House",
@@ -201105,7 +201392,17 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "1200 Southwest 22nd Street, Miami, FL 33145, USA"
+    "address": "1200 Southwest 22nd Street, Miami, FL 33145, USA",
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 933495,
+      "expenditure": 1142164,
+      "public": 550000,
+      "net_assets": 7396935,
+      "source_kind": "Form 990",
+      "url": "https://projects.propublica.org/nonprofits/organizations/650729730"
+    }
   },
   {
     "name": "San Carlos Institute",
@@ -201449,6 +201746,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 296120,
+      "expenditure": 378092,
+      "net_assets": 355316,
+      "source_kind": "Form 990",
+      "url": "https://projects.propublica.org/nonprofits/organizations/237092461"
     }
   },
   {
@@ -201949,7 +202255,15 @@
       }
     },
     "address": "19 Ngoc Ha Street, H\u00e0 N\u1ed9i 11120, Vietnam",
-    "admission_fee": "40000 VND"
+    "admission_fee": "40000 VND",
+    "scale": {
+      "staff": 124,
+      "staff_year": "2025",
+      "staff_kind": "staff",
+      "sources": [
+        "https://baotanghochiminh.vn/bao-tang-ho-chi-minh-to-chuc-hoi-nghi-tong-ket-cong-tac-nam-2025-trien-khai-nhiem-vu-nam-2026.htm"
+      ]
+    }
   },
   {
     "name": "Panorama 1453 History Museum",
@@ -201990,6 +202304,13 @@
         "basis": "OpenStreetMap, name lookup: Panorama 1453 Tarih M\u00fczesi, Topkap\u0131 Kav\u015fa\u011f\u0131, Merkezefendi Mahallesi, Zeytinburnu, \u0130stanbul, Marmara B\u00f6lgesi, 34015, T\u00fcrkiye",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 196326,
+      "visitors_year": "2025",
+      "sources": [
+        "https://kultur.istanbul/gorsel/2025/04/2025-Kultur-AS-Faaliyet-Raporu.pdf"
+      ]
     }
   },
   {
@@ -202079,7 +202400,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Via Nazionale 194, 00184 Rome, Italy"
+    "address": "Via Nazionale 194, 00184 Rome, Italy",
+    "scale": {
+      "visitors": 98035,
+      "visitors_year": "2023",
+      "sources": [
+        "https://www.agenzia.roma.it/documenti/schede/ra_2024_08_cultura.pdf"
+      ]
+    }
   },
   {
     "name": "Chiang Kai-shek Memorial Hall",
@@ -202136,7 +202464,17 @@
       }
     },
     "address": "21 Zhongshan South Road, Taipei 10048, Taiwan",
-    "admission_fee": "Free"
+    "admission_fee": "Free",
+    "finance": {
+      "fy": "2025",
+      "currency": "TWD",
+      "income": 260288824,
+      "expenditure": 287997764,
+      "public": 192742093,
+      "net_assets": 388201630,
+      "source_kind": "government final account",
+      "url": "https://www.cksmh.gov.tw/download_table.aspx?n=9689&sms=16349"
+    }
   },
   {
     "name": "Cuartel de la Monta\u00f1a 4F (Ch\u00e1vez Mausoleum)",
@@ -202388,7 +202726,14 @@
       }
     },
     "address": "\u041c\u0438\u0445\u0430\u0438\u043b\u0430 \u041c\u0438\u043a\u0435 \u0408\u0430\u043d\u043a\u043e\u0432\u0438\u045b\u0430 6, 11000 Belgrade, Serbia",
-    "opening_hours": "Tue\u2013Sun 10:00\u201318:00; closed Mon"
+    "opening_hours": "Tue\u2013Sun 10:00\u201318:00; closed Mon",
+    "scale": {
+      "area_m2": 5362,
+      "area_kind": "building",
+      "sources": [
+        "https://muzej-jugoslavije.org/wp-content/uploads/2024/04/Izvestaj-o-radu-za-2023.-godinu.pdf"
+      ]
+    }
   },
   {
     "name": "National History Museum",
@@ -202646,7 +202991,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Avenida de los Reyes Cat\u00f3licos 6, 28040 Madrid, Spain"
+    "address": "Avenida de los Reyes Cat\u00f3licos 6, 28040 Madrid, Spain",
+    "scale": {
+      "visitors": 89077,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/cultura/paginas/2026/020126-visitantes-2025-museos-cultura.aspx"
+      ]
+    }
   },
   {
     "name": "Quadriennale di Roma",
@@ -202770,7 +203122,15 @@
           "https://www.timeout.pt/lisboa/pt/museus/museu-de-arte-popular"
         ]
       }
-    ]
+    ],
+    "scale": {
+      "visitors": 7656,
+      "visitors_year": "2025",
+      "sources": [
+        "https://backend.museusemonumentos.pt/uploads/Quadros_Estatisticas_MMP_2025_efca086a8a.pdf",
+        "https://www.museusemonumentos.pt/pt/pagina/estatisticas"
+      ]
+    }
   },
   {
     "name": "Military Museum of the Chinese People's Revolution",
@@ -204003,7 +204363,14 @@
       }
     ],
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "scale": {
+      "visitors": 184795,
+      "visitors_year": "2025",
+      "sources": [
+        "https://egeac.pt/wp-content/uploads/2026/04/rc2025-final.pdf"
+      ]
+    }
   },
   {
     "name": "Voortrekker Monument",
@@ -204143,7 +204510,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Akdeniz Caddesi 31, 06570 Ankara, Turkey"
+    "address": "Akdeniz Caddesi 31, 06570 Ankara, Turkey",
+    "scale": {
+      "visitors": 8242170,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.anitkabir.tsk.tr/05_etkinlikler_duyurular/anitkabir_ziyaretci_sayilari.html"
+      ]
+    }
   },
   {
     "name": "VDNKh (Exhibition of Achievements of National Economy)",
@@ -204209,7 +204583,23 @@
       }
     ],
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "scale": {
+      "visitors": 76141,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.mnir.ro/wp-content/uploads/2026/05/Raport-de-activitate-pentru-anul-2025-al-MNIR-1.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "RON",
+      "income": 23537910,
+      "expenditure": 23101257,
+      "earned": 3671865,
+      "source_kind": "budget execution account",
+      "url": "https://www.mnir.ro/wp-content/uploads/2026/03/Cont-de-executie-venituri.pdf"
+    }
   },
   {
     "name": "Museum of the Macedonian Struggle",
