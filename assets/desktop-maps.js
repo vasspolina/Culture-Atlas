@@ -215,13 +215,47 @@
       document.body.appendChild(title);
     }
 
+    // ---- The Mesma sheet (user, 10 Nov 2026: "design this web like this poster", the "mesmarize" sheet) ------------------
+    // The poster's top line runs the width of the sheet: the wordmark, then the date and place in a serif. Here the page's name
+    // is the wordmark and the filter chips run after it in the serif, so the two share one row that wraps; its measured height
+    // is --sheet-top, which places the map and the panel under it. Down the left margin, as on the sheet, a small swirl, one
+    // line of serif turned to read upwards (the page's own description: real text, so a screen reader reads it) and a stepped
+    // bracket. The swirl and the bracket are drawings only. The look is in assets/atlas.css, "THE MESMA SHEET".
+    const sheetTop = document.createElement('div');
+    sheetTop.id = 'gmdSheetTop';
+    document.body.appendChild(sheetTop);
+    sheetTop.appendChild($('gmdTitle'));
+    const measureSheet = () => {
+      const h = DESK() ? Math.ceil(sheetTop.getBoundingClientRect().height) : 0;
+      if (h) root.style.setProperty('--sheet-top', h + 'px');
+    };
+    if (window.ResizeObserver) new ResizeObserver(measureSheet).observe(sheetTop);
+    window.addEventListener('resize', measureSheet);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureSheet);
+    if (!$('gmdSheetMargin')) {
+      const margin = document.createElement('div');
+      margin.id = 'gmdSheetMargin';
+      let blades = '';
+      for (let i = 0; i < 9; i++) {
+        const a = (i / 9) * Math.PI * 2, pt = (r, t) => (20 + r * Math.cos(a + t)).toFixed(2) + ' ' + (20 + r * Math.sin(a + t)).toFixed(2);
+        // One curved blade: out from near the centre, sweeping round, and back on a tighter curve, so it tapers.
+        blades += '<path d="M' + pt(4, 0) + 'Q' + pt(15, 0.35) + ' ' + pt(19, 1.25) + 'Q' + pt(12, 0.55) + ' ' + pt(4, 0) + 'Z"/>';
+      }
+      const desc = (document.querySelector('meta[name="description"]') || {}).content || '';
+      const side = desc.replace(/^[^:]*:\s*/, '').replace(/\.$/, '');
+      margin.innerHTML = '<svg class="sheet-swirl" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><g fill="currentColor">' + blades + '</g></svg>' +
+        (side ? '<p class="sheet-side">' + side.charAt(0).toUpperCase() + side.slice(1) + '</p>' : '') +
+        '<svg class="sheet-bracket" viewBox="0 0 14 120" aria-hidden="true" focusable="false"><path d="M12 2H3v22h8v24H3v24h8v24H3v22h9" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="miter"/></svg>';
+      document.body.appendChild(margin);
+    }
+
     // ---- The filter row beside the box ---------------------------------------------------------------------------
     // All spaces, then one chip per filter from the Layers menu, one at a time (user, 7 Nov 2026: "make filters above
     // instead of layers, so if clicked it only shows what clicked"). assets/layers.js builds the row and owns the rule, so
     // the chips and the menu's boxes always agree; the funding views stay in the menu, they draw lines and are not filters.
     const chips = document.createElement('div');
     chips.id = 'gmdChips';
-    document.body.appendChild(chips);
+    sheetTop.appendChild(chips);
     const buildChips = () => typeof window.atlasFilterChips === 'function' && window.atlasFilterChips(chips, 'gmd-chip');
     if (!buildChips()) {
       // The filter boxes are built once the page's data is in.

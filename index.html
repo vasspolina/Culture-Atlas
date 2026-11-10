@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#e6e4df" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230046ff'/%3E%3Crect x='6' y='6' width='9' height='20' fill='%23000'/%3E%3Crect x='17' y='6' width='9' height='20' fill='%23ff6119'/%3E%3C/svg%3E">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon-180.png">
   <link rel="manifest" href="manifest.json?v=450">
@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=610">
-  <script src="assets/config.js?v=610"></script>
-  <script src="assets/subtopic.js?v=610"></script>
-  <script src="assets/names.js?v=610"></script>
-  <script src="assets/grounding.js?v=610"></script>
-  <script src="assets/repeats.js?v=610"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=611">
+  <script src="assets/config.js?v=611"></script>
+  <script src="assets/subtopic.js?v=611"></script>
+  <script src="assets/names.js?v=611"></script>
+  <script src="assets/grounding.js?v=611"></script>
+  <script src="assets/repeats.js?v=611"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1113,7 +1113,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=610"></script>
+  <script src="assets/institutions.js?v=611"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6708,7 +6708,7 @@ return maplibregl$1;
         {
           id: 'background',
           type: 'background',
-          paint: { 'background-color': '#ffffff' }
+          paint: { 'background-color': '#e6e4df' }
         },
         {
           id: 'landcover_grass',
@@ -7290,7 +7290,7 @@ return maplibregl$1;
       try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
       // Gossip mode: Displaay's lime with black lines; on the dark theme a dark green with lime lines (user, 4 Nov 2026).
-      const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#e2f86c') : dark ? '#262524' : '#ffffff';
+      const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#e2f86c') : dark ? '#262524' : '#e6e4df'; // light: the Mesma sheet's paper
       // Outside gossip mode the lines are 50% grey in both themes (user, 6 Nov 2026: near-black lines made the map busy). They are
       // decoration, not text: the place names keep full ink (`label`), as before.
       const line = isGossipModeActive ? (dark ? '#e2f86c' : '#000000') : '#808080';
@@ -7314,7 +7314,7 @@ return maplibregl$1;
       // The button names the mode it switches to (user, 4 Nov 2026): "Light" in dark mode, "Dark" in light mode. It is an action,
       // not a toggle that stays pressed, so it carries no aria-pressed.
       ['topThemeBtn', 'mobileThemeBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.textContent = dark ? 'Light' : 'Dark'; b.removeAttribute('aria-pressed'); b.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode'); } });
-      const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#262524' : '#ffffff');
+      const meta = document.querySelector('meta[name="theme-color"]'); if (meta) meta.setAttribute('content', dark ? '#000000' : '#e6e4df');
     }
     function toggleTheme(force) {
       const cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
@@ -10323,11 +10323,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v610';
+    const ATLAS_RELEASE = 'culture-atlas-v611';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=610').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=611').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11015,6 +11015,61 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     window.scheduleRender = scheduleRender;
 
+    // ---- THE MESMA SHEET (user, 10 Nov 2026: "design this web like this poster", the "mesmarize" sheet for Mesma Records) ----
+    // The poster's picture is a soft four-pointed star, blue with a mauve and pink edge and a dark core, filling the sheet behind
+    // the type. Here it sits behind the map: drawn once per size and theme on its own canvas, then laid on each frame's ground
+    // before the map's outline is filled, so the map floats on it and no line or label is ever drawn over the blur. The blur is
+    // a shadow cast from a shape drawn off the canvas, which every browser's 2D canvas draws (ctx.filter is not everywhere).
+    const SHEET_PAPER = '#e6e4df';
+    // Drawn once per theme for a map 400px wide each side of its centre, then scaled to the map on each frame, so it follows the
+    // map's centre and size (the phone pans the map up; a zoom grows it) without being drawn again.
+    const SHEET_HW = 400;
+    let sheetGlowCanvas = null, sheetGlowKey = '', sheetMapHalf = null;
+    function sheetGlow(dark) {
+      if (!sheetMapHalf) { let x = 0, y = 0; WT_OUTLINE.forEach(q => { x = Math.max(x, Math.abs(q[0])); y = Math.max(y, Math.abs(q[1])); }); sheetMapHalf = [x, y]; }
+      const key = dark ? 'd' : 'l';
+      if (sheetGlowCanvas && sheetGlowKey === key) return sheetGlowCanvas;
+      const HW = SHEET_HW, HH = HW * sheetMapHalf[1] / sheetMapHalf[0];
+      // The star's points reach a quarter past the map's sides and nearly the map's height again above and below it.
+      const ax = HW * 1.25, ay = HH * 1.95, waist = HH * 0.75, blurMax = HW * 0.16, OFF = 20000;
+      const c = sheetGlowCanvas || document.createElement('canvas');
+      c.width = Math.ceil(2 * (ax + 2.5 * blurMax)); c.height = Math.ceil(2 * (ay + 2.5 * blurMax));
+      const g = c.getContext('2d');
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.clearRect(0, 0, c.width, c.height);
+      const cx = c.width / 2, cy = c.height / 2;
+      // A star with four points (right, down, left, up) whose sides curve in towards the centre.
+      const star = (sx, sy, sw) => {
+        g.beginPath();
+        g.moveTo(cx + sx, cy);
+        g.quadraticCurveTo(cx + sw, cy + sw, cx, cy + sy);
+        g.quadraticCurveTo(cx - sw, cy + sw, cx - sx, cy);
+        g.quadraticCurveTo(cx - sw, cy - sw, cx, cy - sy);
+        g.quadraticCurveTo(cx + sw, cy - sw, cx + sx, cy);
+        g.closePath();
+      };
+      const layer = (scale, colour, blur) => {
+        g.save();
+        g.translate(-OFF, 0); // the shape is drawn OFF px to the left of the canvas ...
+        g.shadowOffsetX = OFF; g.shadowOffsetY = 0; // ... and only its shadow lands on it
+        g.shadowBlur = blur; g.shadowColor = colour; g.fillStyle = '#000';
+        star(ax * scale, ay * scale, waist * scale);
+        g.fill();
+        g.restore();
+      };
+      // Outermost first: the mauve and pink fringe, the blue body, then the dark core (under the map at the world view).
+      layer(1.0, dark ? 'rgba(176, 92, 124, 0.9)' : 'rgba(206, 132, 152, 0.85)', blurMax);
+      layer(0.84, dark ? 'rgba(60, 120, 220, 0.95)' : 'rgba(92, 152, 236, 0.95)', HW * 0.12);
+      layer(0.4, dark ? 'rgba(40, 30, 34, 1)' : 'rgba(80, 66, 70, 0.95)', HW * 0.12);
+      sheetGlowCanvas = c; sheetGlowKey = key;
+      return c;
+    }
+    function drawSheetGlow(r, cx, cy, dark) {
+      const glow = sheetGlow(dark);
+      const s = sheetMapHalf[0] * wtScale(r) / SHEET_HW, w = glow.width * s, h = glow.height * s;
+      ctx.drawImage(glow, cx - w / 2, cy + wtOffsetY - h / 2, w, h);
+    }
+
     function render(ts) {
       if (atlasPaintHeld) return;
       if (typeof syncGlobeControls === 'function') syncGlobeControls();
@@ -11023,7 +11078,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
       // Gossip mode on the dark ground: the globe's ground is the Gossip button's dark green.
       const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#1e4d2b' : '#000000'), G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(255, 255, 255, 0.95)' : (GOSSIP_DARK ? 'rgba(30, 77, 43, 0.95)' : 'rgba(0, 0, 0, 0.95)'), G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
+      // The light ground is the Mesma sheet's warm paper (user, 10 Nov 2026: "design this web like this poster"), not white.
+      const G_GROUND = GLOBE_LIGHT ? SHEET_PAPER : (GOSSIP_DARK ? '#1e4d2b' : '#000000'), G_LINE = GLOBE_LIGHT ? '#161616' : '#f4f4f4', G_HALO = GLOBE_LIGHT ? 'rgba(230, 228, 223, 0.95)' : (GOSSIP_DARK ? 'rgba(30, 77, 43, 0.95)' : 'rgba(0, 0, 0, 0.95)'), G_TEXT = GLOBE_LIGHT ? '#161616' : '#ffffff', G_ACTIVE = GLOBE_LIGHT ? '#d8f1f2' : '#004144';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
         const TIER_SHAPE_SIZE = { circle: 3 };
@@ -11168,6 +11224,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // 0. Clean Off-Black Universal Space Canvas (Starfield disabled per user request)
         // 1. The globe is a black disc with a single hairline limb: lines only, no fills, no shading.
         // On the Winkel tripel map the limb is the map's own outline.
+        // The poster's blurred star, behind the map (THE MESMA SHEET above): the map's outline is filled with the ground next, so
+        // only its points and glow show, round the map's edge. Not in gossip mode, which has its own ground.
+        if (WINKEL && !isGossipModeActive) drawSheetGlow(r, cx, cy, !GLOBE_LIGHT);
         if (WINKEL) wtOutlinePath(r, cx, cy); else { ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); }
         ctx.fillStyle = G_GROUND;
         ctx.fill();
@@ -21434,13 +21493,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=610"></script>
-<script src="assets/funding-views.js?v=610"></script>
-<script src="assets/layers.js?v=610"></script>
-<script src="assets/hq-detail.js?v=610"></script>
-<script src="assets/bubbles.js?v=610" defer></script>
-<script src="assets/phone-maps.js?v=610"></script>
-<script src="assets/desktop-maps.js?v=610"></script>
-<script src="assets/chat-resize.js?v=610"></script>
+<script src="assets/typeset.js?v=611"></script>
+<script src="assets/funding-views.js?v=611"></script>
+<script src="assets/layers.js?v=611"></script>
+<script src="assets/hq-detail.js?v=611"></script>
+<script src="assets/bubbles.js?v=611" defer></script>
+<script src="assets/phone-maps.js?v=611"></script>
+<script src="assets/desktop-maps.js?v=611"></script>
+<script src="assets/chat-resize.js?v=611"></script>
 </body>
 </html>
