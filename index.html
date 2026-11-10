@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=611">
-  <script src="assets/config.js?v=611"></script>
-  <script src="assets/subtopic.js?v=611"></script>
-  <script src="assets/names.js?v=611"></script>
-  <script src="assets/grounding.js?v=611"></script>
-  <script src="assets/repeats.js?v=611"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=612">
+  <script src="assets/config.js?v=612"></script>
+  <script src="assets/subtopic.js?v=612"></script>
+  <script src="assets/names.js?v=612"></script>
+  <script src="assets/grounding.js?v=612"></script>
+  <script src="assets/repeats.js?v=612"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1113,7 +1113,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=611"></script>
+  <script src="assets/institutions.js?v=612"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10344,11 +10344,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v611';
+    const ATLAS_RELEASE = 'culture-atlas-v612';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=611').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=612').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -21081,8 +21081,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       const delta = e.deltaY * (e.deltaMode === 1 ? 18 : e.deltaMode === 2 ? 260 : 1);
       // Gentle exponential scaling factor bounded per event (approx 1% - 6% gradual change)
-      const factor = Math.exp(-delta * 0.0016);
-      const clampedFactor = Math.max(0.91, Math.min(1.09, factor));
+      // A pinch on a laptop trackpad comes as wheel events with ctrlKey set, whose deltaY adds up to -100 times the
+      // log of the pinch's scale (measured 10 Nov 2026 in Chromium: a pinch to twice the size sent 15 events summing
+      // to -69.3, and ln 2 is 0.693). At the wheel's rate that pinch zoomed the map 1.12 times, so spreading two fingers
+      // across the whole trackpad barely moved it, while the same pinch on the street map zoomed 1.4 times. The pinch now
+      // takes exactly the scale of the fingers, exp(-deltaY / 100), within a wider bound per event than a wheel notch.
+      const isPinch = e.ctrlKey && e.deltaMode === 0;
+      const factor = Math.exp(-delta * (isPinch ? 0.01 : 0.0016));
+      const clampedFactor = isPinch ? Math.max(0.6, Math.min(1.6, factor)) : Math.max(0.91, Math.min(1.09, factor));
 
       if (clampedFactor > 1 && globeAtMaxZoom()) {
         globeOverZoom *= clampedFactor;
@@ -21455,13 +21461,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=611"></script>
-<script src="assets/funding-views.js?v=611"></script>
-<script src="assets/layers.js?v=611"></script>
-<script src="assets/hq-detail.js?v=611"></script>
-<script src="assets/bubbles.js?v=611" defer></script>
-<script src="assets/phone-maps.js?v=611"></script>
-<script src="assets/desktop-maps.js?v=611"></script>
-<script src="assets/chat-resize.js?v=611"></script>
+<script src="assets/typeset.js?v=612"></script>
+<script src="assets/funding-views.js?v=612"></script>
+<script src="assets/layers.js?v=612"></script>
+<script src="assets/hq-detail.js?v=612"></script>
+<script src="assets/bubbles.js?v=612" defer></script>
+<script src="assets/phone-maps.js?v=612"></script>
+<script src="assets/desktop-maps.js?v=612"></script>
+<script src="assets/chat-resize.js?v=612"></script>
 </body>
 </html>
