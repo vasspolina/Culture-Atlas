@@ -1,0 +1,185 @@
+[
+ {
+  "id": "museum-fur-deutsche-geschichte",
+  "name": "Museum für Deutsche Geschichte",
+  "city": "Berlin",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.dhm.de/en/museum/about-us/history",
+   "https://www.dhm.de/archiv/magazine/zeughaus/Museum_fuer_Deutsche_Geschichte.html",
+   "https://www.bpb.de/shop/zeitschriften/apuz/archiv/536958/die-gruendung-des-museums-fuer-deutsche-geschichte-in-der-ddr/"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "villa-esche",
+  "name": "Villa Esche",
+  "city": "Chemnitz",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.c3-chemnitz.de/unsere-haeuser/villa-esche",
+   "https://collections.kunstsammlungen-chemnitz.de/houses/henry-van-de-velde-museum/",
+   "https://www.messen.de/de/3381/veranstalter/c3-chemnitzer-veranstaltungszentren-gmbh/messen"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "haus-ungers-ungers-archiv-fur-architekturwissenschaft",
+  "name": "Haus Ungers (Ungers Archiv für Architekturwissenschaft)",
+  "city": "Cologne",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.ungersarchiv.de/index.php/Instandsetzung.html",
+   "https://www.ungersarchiv.de/index.php/sponsoren.html",
+   "https://www.ungersarchiv.de/index.php/freundeskreis.html"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "deutsches-hygiene-museum",
+  "name": "Deutsches Hygiene-Museum",
+  "city": "Dresden",
+  "country": "Germany",
+  "website": null,
+  "size": "M",
+  "year_founded": null,
+  "sources": [
+   "https://www.dhmd.de/en/the-museum/the-foundation",
+   "https://www.dhmd.de/en/about-us/supporters",
+   "https://www.aerztezeitung.de/Panorama/75-Jahre-Deutsches-Hygiene-Museum-328421.html"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "mayhaus",
+  "name": "mayhaus",
+  "city": "Frankfurt",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://ernst-may-gesellschaft.de",
+   "https://ernst-may-gesellschaft.de/mayhaus/musterhaus",
+   "https://ernst-may-gesellschaft.de/maygesellschaft"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "hohenhof-osthaus-museum-hagen",
+  "name": "Hohenhof (Osthaus Museum Hagen)",
+  "city": "Hagen",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "http://www.osthausmuseum.de/web/de/keom/hohenhofhagenerimpuls/hohenhofhagenerimpuls.html",
+   "http://www.osthausmuseum.de/web/de/keom/freunde/freunde.html",
+   "https://de.wikipedia.org/wiki/Hohenhof"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "haus-der-kunst",
+  "name": "Haus der Kunst",
+  "city": "Munich",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.hausderkunst.de/en/about-us/support",
+   "https://www.hausderkunst.de/uploads/newsroom/Aktuelles/HDK_Pressemeldung_Rekordjahr_DE.pdf",
+   "https://hausderkunst.de/en/about-us/history"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "weissenhofmuseum-im-haus-le-corbusier",
+  "name": "Weissenhofmuseum im Haus Le Corbusier",
+  "city": "Stuttgart",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://weissenhofmuseum.de/en/museum/",
+   "https://www.domino1.stuttgart.de/web/ksd/KSDRedSystem.nsf/0/69C4D4BB6DF58284C1258B5B00371FCA/$File/93DE62C6CF7C1FF0C1258AD3003227DD.pdf",
+   "https://weissenhofmuseum.de/en/kontakt-2/"
+  ],
+  "needs_finance": true,
+  "finances_note": "City of Stuttgart grant to the association: EUR 375,000 a year for 2024 and 2025, of which EUR 75,000 is fixed-term to 2027 (council paper GRDrs 182/2024, 12 July 2024). It was EUR 220,000 a year in 2022 (GRDrs 365/2022)."
+ },
+ {
+  "id": "haus-hohe-pappeln",
+  "name": "Haus Hohe Pappeln",
+  "city": "Weimar",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.klassik-stiftung.de/haus-hohe-pappeln/",
+   "https://www.klassik-stiftung.de/assets/Dokumente/KOEM/Jahresberichte/2025_02_KSWJahresbericht_dig.pdf",
+   "https://www.klassik-stiftung.de/en/about-us/your-support/the-bauhaus-museum-weimar/"
+  ],
+  "needs_finance": true,
+  "finances_note": "Klassik Stiftung Weimar, the operator, had institutional funding and own income of EUR 36.8M in 2024: federal 14.6M, Thuringia 14.6M, City of Weimar 5.6M, own income 2.0M. A further EUR 30.6M came as project funds (Jahresbericht 2024)."
+ },
+ {
+  "id": "haus-am-horn",
+  "name": "Haus am Horn",
+  "city": "Weimar",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://www.klassik-stiftung.de/assets/Dokumente/KOEM/Jahresberichte/2025_02_KSWJahresbericht_dig.pdf",
+   "https://www.klassik-stiftung.de/en/about-us/your-support/the-bauhaus-museum-weimar/",
+   "https://www.lotto-thueringen.de/impressum/impressum.html"
+  ],
+  "needs_finance": true,
+  "finances_note": "Klassik Stiftung Weimar, the operator, had institutional funding and own income of EUR 36.8M in 2024: federal 14.6M, Thuringia 14.6M, City of Weimar 5.6M, own income 2.0M. A further EUR 30.6M came as project funds (Jahresbericht 2024)."
+ },
+ {
+  "id": "skulpturenpark-waldfrieden",
+  "name": "Skulpturenpark Waldfrieden",
+  "city": "Wuppertal",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://skulpturenpark-waldfrieden.de/en/sculpture-park/cragg-foundation",
+   "https://skulpturenpark-waldfrieden.de/en/your-visit/admission-and-times",
+   "https://de.wikipedia.org/wiki/Skulpturenpark_Waldfrieden"
+  ],
+  "needs_finance": true
+ },
+ {
+  "id": "haus-rabe",
+  "name": "Haus Rabe",
+  "city": "Zwenkau",
+  "country": "Germany",
+  "website": null,
+  "size": "S",
+  "year_founded": null,
+  "sources": [
+   "https://haus-rabe.space/en/about-us/",
+   "https://haus-rabe.space/en/visit/",
+   "https://www.l-iz.de/melder/wortmelder/2021/09/zum-tag-des-offenen-denkmals-wurde-auch-in-zwenkau-geschichte-lebendig-410609"
+  ],
+  "needs_finance": true
+ }
+]
