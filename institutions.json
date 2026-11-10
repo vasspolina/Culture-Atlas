@@ -181881,7 +181881,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "16 East Chang'an Street, Beijing 100006, China"
+    "address": "16 East Chang'an Street, Beijing 100006, China",
+    "scale": {
+      "visitors": 6956830,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.chnmuseum.cn/shxg/zlxz/pdfdown/202503/t20250320_271313.shtml"
+      ]
+    }
   },
   {
     "name": "Nanjing Massacre Memorial Hall",
@@ -181958,7 +181965,17 @@
           "https://www.politics.ox.ac.uk/publication/behind-scenes-museum-nationalism-history-and-memory-beijing-war-resistance-museum-1987"
         ]
       }
-    ]
+    ],
+    "finance": {
+      "fy": "2025",
+      "currency": "CNY",
+      "income": 809671366,
+      "expenditure": 792705714,
+      "public": 809295064,
+      "earned": 0,
+      "source_kind": "city budget",
+      "url": "https://www.beijing.gov.cn/gongkai/caizheng/czzt/2025js/202608/W020260830640589327892.pdf"
+    }
   },
   {
     "name": "Liu Manor Museum (Rent Collection Courtyard)",
@@ -182380,6 +182397,13 @@
         "basis": "OpenStreetMap, name lookup: Rose Seidler House, 71, Wahroonga, Upper North Shore, Sydney, New South Wales, 2076, Australia",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 2574,
+      "visitors_year": "2024-25",
+      "sources": [
+        "https://cdn.sanity.io/files/zl9du87e/production/4d8c3cbc3fb090bb54e4880bc7670389fc81b8d4.pdf"
+      ]
     }
   },
   {
@@ -182466,6 +182490,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2023-24",
+      "currency": "AUD",
+      "income": 435438,
+      "expenditure": 400191,
+      "net_assets": 1334903,
+      "source_kind": "annual report",
+      "url": "https://robinboyd.org.au/wp-content/uploads/2025/07/RBF2023-24.pdf"
     }
   },
   {
@@ -183074,6 +183107,15 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "CAD",
+      "income": 476868,
+      "expenditure": 66664,
+      "public": 101879,
+      "source_kind": "CRA",
+      "url": "https://open.canada.ca/data/dataset/80c00cdb-1358-415c-bb8b-0de7f12675b8/resource/e545170c-3689-4833-b2a8-e9e83100ab59"
     }
   },
   {
@@ -183263,6 +183305,13 @@
       ],
       "level": 5,
       "level_basis": ""
+    },
+    "scale": {
+      "visitors": 18483,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.npu.cz/portal/o-nas/npu-a-pamatkova-pece/npu-jako-instituce/povinne-zverejnovane-informace/vyrocni-zpravy/vz-npu-2025-final-web.pdf"
+      ]
     }
   },
   {
@@ -183625,6 +183674,14 @@
       ],
       "level": 5,
       "level_basis": ""
+    },
+    "scale": {
+      "visitors": 10118,
+      "visitors_year": "2025",
+      "sources": [
+        "https://moravska-galerie.cz/wp-content/uploads/2026/06/vyrocni_zprava_2025_jednostranka_VK.pdf",
+        "https://moravska-galerie.cz/wp-content/uploads/2025/07/Vyrocni_zprava_MG_2024.pdf"
+      ]
     }
   },
   {
@@ -183701,6 +183758,13 @@
       ],
       "level": 5,
       "level_basis": ""
+    },
+    "scale": {
+      "visitors": 7344,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.zpc-galerie.cz/sites/default/files/2026-05/ZCG_vyrocni_zprava_2025.pdf"
+      ]
     }
   },
   {
@@ -183973,7 +184037,15 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Nad Hradn\u00edm vodojemem 642/14, 162 00 Prague, Czechia"
+    "address": "Nad Hradn\u00edm vodojemem 642/14, 162 00 Prague, Czechia",
+    "scale": {
+      "visitors": 8001,
+      "visitors_year": "2024",
+      "sources": [
+        "https://muzeumprahy.cz/file/4673",
+        "https://www.muzeumprahy.cz/file/5387"
+      ]
+    }
   },
   {
     "name": "Villa Rothmayer",
@@ -184057,6 +184129,13 @@
         "basis": "OpenStreetMap, name lookup: Rothmayerova vila, U P\u00e1t\u00e9 baterie, Na Bateri\u00edch, Praha 6, obvod Praha 6, Praha, 169 02, \u010cesko",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 2812,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.muzeumprahy.cz/file/5387"
+      ]
     }
   },
   {
@@ -184194,7 +184273,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "\u010cernopoln\u00ed 237/45, 613 00 Brno, Czechia"
+    "address": "\u010cernopoln\u00ed 237/45, 613 00 Brno, Czechia",
+    "scale": {
+      "visitors": 57036,
+      "visitors_year": "2025",
+      "sources": [
+        "https://static.viaaurea.eu//d/muzeumbrna.cz/files/15063.pdf/s-1b6a64e27438?fn=V%C3%BDro%C4%8Dn%C3%AD+zpr%C3%A1va+MuMB+2025"
+      ]
+    }
   },
   {
     "name": "Zikmund Villa",
@@ -184387,7 +184473,24 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Gallen-Kallelan tie 27, 02600 Espoo, Finland"
+    "address": "Gallen-Kallelan tie 27, 02600 Espoo, Finland",
+    "scale": {
+      "visitors": 31635,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv",
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+      ]
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 878978,
+      "expenditure": 873754,
+      "earned": 352687,
+      "source_kind": "other",
+      "url": "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
+    }
   },
   {
     "name": "Villa Kokkonen",
@@ -184501,6 +184604,13 @@
         "basis": "OpenStreetMap, name lookup: Villa Kokkonen, Tuulimyllyntie, Vanhakyl\u00e4, J\u00e4rvenp\u00e4\u00e4, Helsingin seutukunta, Uusimaa, Manner-Suomi, 04400, Suomi / Finland",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 7514,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+      ]
     }
   },
   {
@@ -184606,7 +184716,26 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Kuusilahdenkuja 1, 00340 Helsinki, Finland"
+    "address": "Kuusilahdenkuja 1, 00340 Helsinki, Finland",
+    "scale": {
+      "visitors": 145283,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv",
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+      ]
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 1776718,
+      "expenditure": 2094079,
+      "public": 208867,
+      "earned": 1567851,
+      "sponsorship": 0,
+      "source_kind": "other",
+      "url": "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
+    }
   },
   {
     "name": "Hvittr\u00e4sk",
@@ -184707,7 +184836,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Hvittr\u00e4skintie 166, 02440 Kirkkonummi, Finland"
+    "address": "Hvittr\u00e4skintie 166, 02440 Kirkkonummi, Finland",
+    "scale": {
+      "visitors": 17805,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+      ]
+    }
   },
   {
     "name": "Muuratsalo Experimental House",
@@ -184827,7 +184963,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Melalammentie 2, 40900 Jyv\u00e4skyl\u00e4, Finland"
+    "address": "Melalammentie 2, 40900 Jyv\u00e4skyl\u00e4, Finland",
+    "scale": {
+      "visitors": 2237,
+      "visitors_year": "2025",
+      "sources": [
+        "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/K%C3%A4ynnit%20ja%20avoinnaolo%20museokohteittain%202025.csv"
+      ]
+    }
   },
   {
     "name": "Villa Mairea",
@@ -185359,6 +185502,13 @@
         "basis": "OpenStreetMap, name lookup: Appartement t\u00e9moin Perret, Place de l'H\u00f4tel de Ville, Les Gobelins, Le Havre, Seine-Maritime, Normandie, France m\u00e9tropolitaine, 76620, France",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "area_m2": 100,
+      "area_kind": "building",
+      "sources": [
+        "https://www.lehavreseine-patrimoine.fr/patrimoines/le-havre-patrimoine-mondial/appartement-temoin-perret"
+      ]
     }
   },
   {
@@ -185581,6 +185731,13 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "scale": {
+      "area_m2": 240,
+      "area_kind": "building",
+      "sources": [
+        "https://www.fondationlecorbusier.fr/en/visit/appartement-le-corbusier-paris/"
+      ]
     }
   },
   {
@@ -185866,7 +186023,15 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "60 Avenue John Fitzgerald Kennedy, 59170 Croix, France"
+    "address": "60 Avenue John Fitzgerald Kennedy, 59170 Croix, France",
+    "scale": {
+      "area_m2": 2800,
+      "area_kind": "building",
+      "sources": [
+        "https://www.villa-cavrois.fr/en/discover/history-of-the-villa-cavrois",
+        "https://www.villa-cavrois.fr/decouvrir/histoire-de-la-villa-cavrois"
+      ]
+    }
   },
   {
     "name": "Cap Moderne (Villa E-1027 and Le Cabanon)",
@@ -186078,6 +186243,14 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 90321,
+      "public": 63168,
+      "source_kind": "other",
+      "url": "https://vandoesburghuis.com/wp-content/uploads/2026/03/financial-report-2025.pdf"
     }
   },
   {
@@ -186666,6 +186839,13 @@
       ],
       "level": 2,
       "level_basis": ""
+    },
+    "scale": {
+      "area_m2": 88,
+      "area_kind": "building",
+      "sources": [
+        "https://ernst-may-gesellschaft.de/mayhaus/musterhaus"
+      ]
     }
   },
   {
@@ -187032,7 +187212,14 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "Sensburger Allee 25, 14055 Berlin, Germany"
+    "address": "Sensburger Allee 25, 14055 Berlin, Germany",
+    "scale": {
+      "visitors": 24964,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.berlin.de/sen/kultgz/aktuelles/pressemitteilungen/2026/2026_pm_besucher-innenzahlen-2025_anhang.pdf"
+      ]
+    }
   },
   {
     "name": "Hohenhof (Osthaus Museum Hagen)",
@@ -201152,7 +201339,16 @@
     "finances_note": "2024 income $95,283 and spending $95,283; the income was a donation from Estudio Bruguera (INSTAR 2024 finance report).",
     "affiliations_note": "Member of the CIVICUS network since 2020 and part of documenta fifteen's lumbung network. Allies named on its site include the 27N platform, PEN America's Artists at Risk Connection, GAPAC, Rialta and Haus der Kulturen der Welt.",
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "finance": {
+      "fy": "2024",
+      "currency": "USD",
+      "income": 95283,
+      "expenditure": 95283,
+      "private": 95283,
+      "source_kind": "annual report",
+      "url": "https://www.instar.org/pag/instituto/PDF/anuario%20pdf%20web%202024%20finanzas%20ok.pdf"
+    }
   },
   {
     "name": "Center for Cuban Studies",
@@ -202234,6 +202430,13 @@
         "basis": "OpenStreetMap, name search: National History Museum",
         "retrieved": "2026-11-04"
       }
+    },
+    "scale": {
+      "visitors": 99796,
+      "visitors_year": "2023",
+      "sources": [
+        "https://akt.gov.al/wp-content/uploads/2024/03/BULETINI-I-TURIZMIT-DHJETOR-2023.pdf"
+      ]
     }
   },
   {
@@ -202388,6 +202591,13 @@
         "basis": "OpenStreetMap, name lookup: \u9999\u6e2f\u6297\u6230\u53ca\u6d77\u9632\u535a\u7269\u9928 Hong Kong Museum of the War of Resistance and Coastal Defence, 175, \u6771\u5340\u8d70\u5eca Island Eastern Corridor, \u7b72\u7b95\u7063 Shau Kei Wan, \u6771\u5340 Eastern District, \u9999\u6e2f\u5cf6 Hong Kong Island, \u9999\u6e2f Hong Kong, \u4e2d\u56fd",
         "retrieved": "2026-11-03"
       }
+    },
+    "scale": {
+      "visitors": 174722,
+      "visitors_year": "2025-26",
+      "sources": [
+        "https://www.info.gov.hk/gia/general/202606/17/P2026061700569.htm"
+      ]
     }
   },
   {
@@ -203634,7 +203844,22 @@
         "doi": "10.1017/asr.2022.153",
         "text": "The paper examines the Mus\u00e9e du Quai Branly, the AfricaMuseum, the British Museum and the Humboldt Forum as one spectrum of changing strategies on the restitution of African cultural heritage. It finds biases in retentionist arguments on security, accessibility, law and ethics, and shortcomings in restitutionist discourse on provenance research and the use of heritage for economic gain or post-colonial rebranding. In its conclusion it sorts the four into retentionists, rhetorical restitutionists or reformed restitutionists."
       }
-    ]
+    ],
+    "scale": {
+      "visitors": 106077,
+      "visitors_year": "2024",
+      "sources": [
+        "https://www.africamuseum.be/sites/default/files/media/about-us/annual-reports/doc/AFRICAMUSEUM_Jaarverslag2024_EN_web.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "EUR",
+      "income": 24086000,
+      "expenditure": 21746000,
+      "source_kind": "annual report",
+      "url": "https://www.africamuseum.be/sites/default/files/media/about-us/annual-reports/doc/AFRICAMUSEUM_Jaarverslag2024_EN_web.pdf"
+    }
   },
   {
     "name": "Palais de la Porte Dor\u00e9e (Mus\u00e9e national de l'histoire de l'immigration)",
@@ -203667,7 +203892,27 @@
       }
     ],
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "scale": {
+      "visitors": 208704,
+      "visitors_year": "2024",
+      "staff": 108,
+      "staff_year": "2024",
+      "staff_kind": "employees",
+      "sources": [
+        "https://www.palais-portedoree.fr/sites/default/files/2025-08/Rapport_activites-2024_Palaisportedoree.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "EUR",
+      "income": 15612537,
+      "expenditure": 15608111,
+      "public": 11965636,
+      "sponsorship": 68000,
+      "source_kind": "annual report",
+      "url": "https://www.palais-portedoree.fr/sites/default/files/2025-08/Rapport_activites-2024_Palaisportedoree.pdf"
+    }
   },
   {
     "name": "Wereldmuseum Amsterdam (former Tropenmuseum)",
