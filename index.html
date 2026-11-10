@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=609">
-  <script src="assets/config.js?v=609"></script>
-  <script src="assets/subtopic.js?v=609"></script>
-  <script src="assets/names.js?v=609"></script>
-  <script src="assets/grounding.js?v=609"></script>
-  <script src="assets/repeats.js?v=609"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=610">
+  <script src="assets/config.js?v=610"></script>
+  <script src="assets/subtopic.js?v=610"></script>
+  <script src="assets/names.js?v=610"></script>
+  <script src="assets/grounding.js?v=610"></script>
+  <script src="assets/repeats.js?v=610"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1113,7 +1113,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=609"></script>
+  <script src="assets/institutions.js?v=610"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -8427,10 +8427,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // Absolute, as MapLibre sets a marker: 'relative' left each pin in the page flow, so every pin after the first sat a
         // further 32px below its place (the 42nd in London was 1300px down, off the screen) and a tap on its spot found nothing.
         pinEl.style.position = 'absolute';
-        if (cityPinKeep && !cityPinKeep(inst)) pinEl.style.display = 'none';   // hidden, not left out: the filter can be switched off here
         pinEl.style.width = '32px';
         pinEl.style.height = '32px';
-        pinEl.style.display = 'flex';
+        // Hidden, not left out: the filter can be switched off here (assets/layers.js then clears the inline display and the
+        // class gives flex). This line used to come before an inline 'flex' that undid it, so a city opened with a filter on
+        // showed every space, and the ones filtered out took the taps meant for their neighbours.
+        if (cityPinKeep && !cityPinKeep(inst)) pinEl.style.display = 'none';
         pinEl.style.alignItems = 'center';
         pinEl.style.justifyContent = 'center';
         pinEl.style.cursor = 'pointer';
@@ -8517,9 +8519,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // whole city (the fitBounds above), not the first institution's building.
       if (cityInsts.length > 0) {
         const isCurrentInCity = selectedInstitution && matchC(selectedInstitution.city, cityName);
-        if (!isCurrentInCity) {
+        // With a filter on, the record that opens is the first space the filter keeps, not one whose pin is hidden.
+        const firstKept = cityPinKeep ? cityInsts.find(i => cityPinKeep(i)) : cityInsts[0];
+        if (!isCurrentInCity && firstKept) {
           suppressSelectFly = true;
-          try { selectInstitution(cityInsts[0], false); } finally { suppressSelectFly = false; }
+          try { selectInstitution(firstKept, false); } finally { suppressSelectFly = false; }
         }
       }
 
@@ -8538,7 +8542,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // Never so much padding that less than 120px of map is left to fit into.
         if (cover > 0 && mapBox.height - 130 - cover - 30 >= 120) {
           const phoneBounds = new maplibregl.LngLatBounds();
-          cityInsts.forEach(i => phoneBounds.extend([i.lon, i.lat]));
+          const shown = cityPinKeep ? cityInsts.filter(i => cityPinKeep(i)) : cityInsts;
+          (shown.length ? shown : cityInsts).forEach(i => phoneBounds.extend([i.lon, i.lat]));
           cityVectorMap.fitBounds(phoneBounds, {
             padding: { top: 130, bottom: cover + 30, left: 40, right: 40 },
             maxZoom: 14.5,
@@ -10318,11 +10323,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v609';
+    const ATLAS_RELEASE = 'culture-atlas-v610';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=609').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=610').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -20393,6 +20398,27 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
+      // With a filter or a layer on, the map is covered in marks and funding lines, and they were asked first: a finger on
+      // "London (42)" opened a funder's record or asked the chat about a mark lying under the label, and the city never
+      // opened. A label is drawn over the marks, so a tap inside one is a tap on that label. Touch only: a mouse has the
+      // hover to say what a click will do, and that hover asks the marks first.
+      const touchTap = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
+      if (touchTap && !isCityStreetViewActive) {
+        const inBox = (b, pad) => mx >= b.x - pad && mx <= b.x + b.w + pad && my >= b.y - pad && my <= b.y + b.h + pad;
+        const cityOk = (c) => selectedCountryFilter === 'all' || !c || matchC(c, selectedCountryFilter);
+        const badge = cityBadgeHitboxes.find(b => cityOk(b.country) && inBox(b, 3));
+        if (badge) { filterByCity(badge.name, true, true); return; }
+        const cluster = cityClusterHitboxes.find(b => cityOk(b.country) && inBox(b, 4));
+        if (cluster) { filterByCity(cluster.cityName, true, true); return; }
+        let named = null, namedDist = Infinity;
+        visibleDots.forEach(d => {
+          if (!d.labelBox || !inBox(d.labelBox, 3)) return;
+          const dist = Math.hypot(d.labelBox.x + d.labelBox.w / 2 - mx, d.labelBox.y + d.labelBox.h / 2 - my);
+          if (dist < namedDist) { namedDist = dist; named = d; }
+        });
+        if (named) { selectInstitution(named.inst, false); return; }
+      }
+
       // An office mark under the click opens its record; where marks and spaces crowd, a list offers each one.
       if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.click(mx, my, clientX, clientY, visibleDots)) return;
       // The other layer marks: a click asks the chat about the mark (a flag or grade mark then goes on to its space).
@@ -20748,7 +20774,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       mapEl.addEventListener('click', (e) => {
         if (e._atlasPick || !e.isTrusted) return;
         if (e.target.closest('.maplibregl-popup, .maplibregl-ctrl, .inst-pin-label, button, a')) return;
-        const pins = Array.from(mapEl.querySelectorAll('.custom-inst-pin'));
+        // Not the pins a filter has hidden: a hidden pin has no box, so it measured as standing at the map's top left corner.
+        const pins = Array.from(mapEl.querySelectorAll('.custom-inst-pin')).filter(pn => pn.style.display !== 'none');
         if (!pins.length) return;
         const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
         const reach = 16 * (touch ? 1.6 : 1);
@@ -21407,13 +21434,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=609"></script>
-<script src="assets/funding-views.js?v=609"></script>
-<script src="assets/layers.js?v=609"></script>
-<script src="assets/hq-detail.js?v=609"></script>
-<script src="assets/bubbles.js?v=609" defer></script>
-<script src="assets/phone-maps.js?v=609"></script>
-<script src="assets/desktop-maps.js?v=609"></script>
-<script src="assets/chat-resize.js?v=609"></script>
+<script src="assets/typeset.js?v=610"></script>
+<script src="assets/funding-views.js?v=610"></script>
+<script src="assets/layers.js?v=610"></script>
+<script src="assets/hq-detail.js?v=610"></script>
+<script src="assets/bubbles.js?v=610" defer></script>
+<script src="assets/phone-maps.js?v=610"></script>
+<script src="assets/desktop-maps.js?v=610"></script>
+<script src="assets/chat-resize.js?v=610"></script>
 </body>
 </html>
