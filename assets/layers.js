@@ -1126,6 +1126,12 @@
     click(mx, my, dots) {
       const m = markAt(mx, my);
       if (!m) {
+        // A finger on a space or a city is a tap on it, not on a funding line running through it: every funded space has
+        // lines ending at its dot, and the line used to take the tap and open the funder instead. Touch only: a mouse's
+        // hover names the line before the click.
+        if ((window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') && typeof window.resolveGlobeTarget === 'function' && window.resolveGlobeTarget(mx, my)) {
+          if (REACH && REACH.tapped) clearReach(); return false;
+        }
         // A click on a funding line pins its funder's web on the map and opens the funder's record in the Details tab.
         const tag = lineAt(mx, my, dots), f = tag && !tag.agg && funderOf(tag.key);
         if (tag && tag.agg) { askChat(tag.ask); return true; }
