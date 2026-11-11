@@ -4937,3 +4937,44 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gm-layers-icon{display:flex!important;width:20px!important;height:20px!important;margin:0!important}
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gm-layers-icon svg{width:20px!important;height:20px!important}
 }
+
+/* Writing aids under the note box (assets/note-aids.js): spelling corrected as the reader types, and dictation. Shown only
+   while a note is written; they take the note box's own colours in both themes. */
+#noteAidsRow,#noteDictateInfo{display:none}
+body.chat-input-mode-active #noteAidsRow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:12px 0 0;color:inherit}
+body.chat-input-mode-active #noteAidsRow .nf-aid{display:flex;align-items:center;gap:10px;margin:0;padding:0;background:none;cursor:pointer;font:400 var(--fs-s)/1.3 var(--sans);color:inherit}
+body.chat-input-mode-active #noteAidsRow .nf-aid span{display:inline;margin:0;font:inherit;color:inherit}
+body.chat-input-mode-active #noteAidsRow .nf-aid input{flex:none;width:18px;height:18px;margin:0;accent-color:#fff204;cursor:pointer}
+body.chat-input-mode-active #noteDictateBtn{flex:none;padding:6px 14px;border:.8px solid currentColor;border-radius:0;background:transparent;color:inherit;font:400 var(--fs-s)/1.2 var(--sans);cursor:pointer}
+body.chat-input-mode-active #noteDictateBtn.is-listening{background:#fff204;border-color:#fff204;color:#000}
+body.chat-input-mode-active #noteDictateBtn[hidden]{display:none}
+body.chat-input-mode-active #noteDictateInfo:not([hidden]){display:block;margin:10px 0 0;font:400 var(--fs-s)/1.4 var(--sans);color:inherit}
+#workInputCard #noteAidsRow #noteDictateBtn{border-color:currentColor!important}
+#workInputCard #noteAidsRow #noteDictateBtn.is-listening{border-color:#fff204!important}
+
+/* Files attached to a note (assets/note-files.js): the Attach button beside Dictate, chips above the note box as a chat
+   shows them, and a dashed outline while a file is dragged over the card. */
+#noteFileList,#noteFileInfo{display:none}
+body.chat-input-mode-active #noteAidsRow .note-aid-btns{display:flex;flex-wrap:wrap;gap:8px}
+body.chat-input-mode-active #noteAttachBtn{display:inline-flex;align-items:center;gap:6px;flex:none;padding:6px 14px;border:.8px solid currentColor;border-radius:0;background:transparent;color:inherit;font:400 var(--fs-s)/1.2 var(--sans);cursor:pointer}
+body.chat-input-mode-active #noteAttachBtn svg{width:15px;height:15px;flex:none}
+body.chat-input-mode-active #noteAttachBtn:disabled{opacity:.4;cursor:default}
+#workInputCard #noteAidsRow #noteAttachBtn{border-color:currentColor!important}
+body.chat-input-mode-active #noteFileList:not([hidden]){display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 10px;padding:0}
+body.chat-input-mode-active .note-file{display:flex;align-items:center;gap:10px;max-width:100%;width:236px;padding:6px 6px 6px 6px;border:.8px solid currentColor;color:inherit}
+body.chat-input-mode-active .note-file img,body.chat-input-mode-active .note-file-tile{flex:none;width:40px;height:40px;object-fit:cover;display:flex;align-items:center;justify-content:center;background:rgba(127,127,127,.18);font:400 11px/1 var(--sans);letter-spacing:.04em}
+body.chat-input-mode-active .note-file-text{display:flex;flex-direction:column;min-width:0;flex:1;font:400 var(--fs-s)/1.25 var(--sans)}
+body.chat-input-mode-active .note-file-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.chat-input-mode-active .note-file-meta{opacity:.7}
+body.chat-input-mode-active .note-file-remove{flex:none;display:flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:0;background:transparent;color:inherit;cursor:pointer}
+body.chat-input-mode-active .note-file-remove svg{width:16px;height:16px}
+body.chat-input-mode-active #noteFileInfo:not([hidden]){display:block;margin:10px 0 0;font:400 var(--fs-s)/1.4 var(--sans);color:inherit}
+body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed currentColor;outline-offset:6px}
+
+/* Files approved with a review: photos as square thumbnails, a PDF as a labelled link. */
+.review-files{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:10px 0 0}
+.review-photo{display:block;width:96px;height:96px;border:.8px solid var(--line);overflow:hidden}
+.review-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.review-doc{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;padding:6px 12px 6px 6px;border:.8px solid var(--line);color:inherit;text-decoration:none;font:400 var(--fs-s)/1.2 var(--sans)}
+.review-doc-tile{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--ink);color:var(--paper);font:400 11px/1 var(--sans);letter-spacing:.04em}
+#workInputCard #noteFileList .note-file{border-color:currentColor!important}

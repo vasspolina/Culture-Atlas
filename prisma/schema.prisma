@@ -29,8 +29,24 @@ model WhistleblowerReport {
   status      ReportStatus @default(PENDING)
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+  files       ReportFile[]
 
   @@index([status])
   @@index([city])
   @@index([placeId, status])
+}
+
+// A photo, screenshot or PDF sent with a review (server/files.js). Shown publicly only while its review is APPROVED.
+// No file name is stored. Deleting the review deletes its files.
+model ReportFile {
+  id        String              @id @default(cuid())
+  reportId  String
+  report    WhistleblowerReport @relation(fields: [reportId], references: [id], onDelete: Cascade)
+  position  Int
+  type      String
+  size      Int
+  data      Bytes
+  createdAt DateTime            @default(now())
+
+  @@index([reportId])
 }
