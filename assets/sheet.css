@@ -1219,3 +1219,10 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   #mobileStickyInputBar:not(#sh-x){background:var(--sh-paper)!important;border-top:0!important}
 }
 }
+
+/* A funder's record or a city's place sheet in the record sheet (assets/hq-detail.js, .is-hq-sheet) is not a space's record:
+   the space's name, actions and tabs give way to it. The same rule in atlas.css is unlayered, so the important display:flex
+   on .gm-tabs and .record-action-row in this layer won over it and the last space's buttons and tabs sat over the record. */
+@layer sheet{
+  #dossier-bottom-sheet.is-hq-sheet :is(.sheet-title-block,.gm-actions,.gm-tabs){display:none!important}
+}

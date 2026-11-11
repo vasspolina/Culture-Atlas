@@ -906,10 +906,10 @@
   // The block naming the mark or line under the pointer is drawn last of all, over the city names (index.html calls this
   // after them; the street map calls it after the nodes), so nothing covers it.
   let TIP_BOXES = [];
-  window.atlasLayersDrawTip = function (ctx) {
-    if (streetUp()) return;
-    ctx.save(); drawMarkTip(ctx, TIP_BOXES); ctx.restore();
-  };
+  // No longer drawn (user, 11 Nov 2026: "delete hovers"): the map shows no card under the pointer, on the globe or the street
+  // map. A click on a mark still does what it did (asks the chat, or opens the funder's record in the sheet).
+  window.atlasLayersDrawTip = function () {};
+  void drawMarkTip; void TIP_BOXES;
   // The funder badges take their form from displaay.net/typefaces: a pill (fully rounded ends), a 1px edge in the colour of
   // its text, 10px of air either side of the words. The name pill is filled in the kind's colour with black text (the pale
   // fills measure 7:1 or better against black); the kind pill is an outline on the map's own ground, so it reads as a tag
