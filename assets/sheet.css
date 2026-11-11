@@ -35,9 +35,9 @@
 
 /* ---- the sheet's own measures ---- */
 :root{
-  /* The stone of the bars and bands is a sand, #e3d198, matched by eye to the swatch the user sent (10 Nov 2026: "change
-     this color to this", then "no to this"); it was #e6e1d7. */
-  --sh-paper:#fff; --sh-ink:#000; --sh-stone:#e3d198; --sh-stone-2:#d0c8b8; --sh-rule:#787878;
+  /* The bars and bands are lime #e2f86c and the pale stone is grey #cfcfba, both sampled from the three swatches the user
+     sent (11 Nov 2026: "use these colors for atlas instead of beige": lime, white, grey). Supersedes the sand #e3d198. */
+  --sh-paper:#fff; --sh-ink:#000; --sh-stone:#e2f86c; --sh-stone-2:#cfcfba; --sh-rule:#787878;
   /* What the pointer is on turns blue: the blue of the star on the "mesmarize" poster, sampled from the picture the user
      sent (10 Nov 2026: "make hover this blue color"). Pale stone, --sh-stone-2, stays for
      the selection and the scrollbar. */

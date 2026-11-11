@@ -45,13 +45,13 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=624">
-  <link rel="stylesheet" href="assets/sheet.css?v=624">
-  <script src="assets/config.js?v=624"></script>
-  <script src="assets/subtopic.js?v=624"></script>
-  <script src="assets/names.js?v=624"></script>
-  <script src="assets/grounding.js?v=624"></script>
-  <script src="assets/repeats.js?v=624"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=625">
+  <link rel="stylesheet" href="assets/sheet.css?v=625">
+  <script src="assets/config.js?v=625"></script>
+  <script src="assets/subtopic.js?v=625"></script>
+  <script src="assets/names.js?v=625"></script>
+  <script src="assets/grounding.js?v=625"></script>
+  <script src="assets/repeats.js?v=625"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1128,7 +1128,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=624"></script>
+  <script src="assets/institutions.js?v=625"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10341,11 +10341,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v624';
+    const ATLAS_RELEASE = 'culture-atlas-v625';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=624').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=625').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10913,7 +10913,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
       const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const cardInk = cardDark ? '#e6e1d7' : '#000000';
-      const cardStone = cardDark ? '#2b2925' : '#e3d198', cardFaint = cardDark ? '#6f695d' : '#d0c8b8', cardRule = '#787878';
+      const cardStone = cardDark ? '#2b2925' : '#e2f86c', cardFaint = cardDark ? '#6f695d' : '#cfcfba', cardRule = '#787878';
       // A card that is itself the button (card.action, the city card) goes stone while the pointer is on it.
       const cardPaper = card.hover ? cardStone : (cardDark ? '#151412' : '#ffffff');
       // The action of a card that is itself the button ("Click to explore") is the card's last line, centred, with an
@@ -11025,7 +11025,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       ctx.save();
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
       const ink = slip.hover ? '#59a0f1' : (dark ? '#e6e1d7' : '#000000');
-      const paper = dark ? '#151412' : '#ffffff', band = dark ? '#3a3732' : '#d0c8b8', rule = '#787878';
+      const paper = dark ? '#151412' : '#ffffff', band = dark ? '#3a3732' : '#cfcfba', rule = '#787878';
       const ROMAN = '400 21px ' + ATLAS_SERIF, ITALIC = 'italic 400 21px ' + ATLAS_SERIF;
       const SEP = ' | ', padX = 16, BAND_H = 8, padY = 10, LINE_H = 23;
       const maxW = Math.min(620, width - 28) - padX * 2;
@@ -11128,9 +11128,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
       // Gossip mode on the dark ground: the globe's ground is the Gossip button's dark green.
       const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
-      // THE SHEET: white water, land a light tint of the sand stone (#f4edd6, 40% of #e3d198 on white; user,
-      // 10 Nov 2026: "Land lighter"), the sheet's grey rule for every line, black names. The dark sheet is the same stone turned over.
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#1e4d2b' : '#151412'), G_LAND = GLOBE_LIGHT ? '#f4edd6' : (GOSSIP_DARK ? '#275c36' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#9db8a4' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#d0c8b8' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e3d198' : '#2b2925', G_QUIET = '#808080';
+      // THE SHEET: white water, grey land #cfcfba, a chosen country and a pressed label in the lime of the bars #e2f86c
+      // (user, 11 Nov 2026: "use these colors for atlas instead of beige", swatches lime, white, grey), the sheet's grey rule for every line, black names. The dark sheet is the same stone turned over.
+      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#1e4d2b' : '#151412'), G_LAND = GLOBE_LIGHT ? '#cfcfba' : (GOSSIP_DARK ? '#275c36' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#9db8a4' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#e2f86c' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e2f86c' : '#2b2925', G_QUIET = '#808080';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
         const TIER_SHAPE_SIZE = { circle: 3 };
@@ -21616,15 +21616,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=624"></script>
-<script src="assets/note-aids.js?v=624" defer></script>
-<script src="assets/note-files.js?v=624" defer></script>
-<script src="assets/funding-views.js?v=624"></script>
-<script src="assets/layers.js?v=624"></script>
-<script src="assets/hq-detail.js?v=624"></script>
-<script src="assets/bubbles.js?v=624" defer></script>
-<script src="assets/phone-maps.js?v=624"></script>
-<script src="assets/desktop-maps.js?v=624"></script>
-<script src="assets/chat-resize.js?v=624"></script>
+<script src="assets/typeset.js?v=625"></script>
+<script src="assets/note-aids.js?v=625" defer></script>
+<script src="assets/note-files.js?v=625" defer></script>
+<script src="assets/funding-views.js?v=625"></script>
+<script src="assets/layers.js?v=625"></script>
+<script src="assets/hq-detail.js?v=625"></script>
+<script src="assets/bubbles.js?v=625" defer></script>
+<script src="assets/phone-maps.js?v=625"></script>
+<script src="assets/desktop-maps.js?v=625"></script>
+<script src="assets/chat-resize.js?v=625"></script>
 </body>
 </html>
