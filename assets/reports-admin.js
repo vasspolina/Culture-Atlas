@@ -45,11 +45,13 @@
   const fileSize = n => n >= 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`;
   const objectUrls = [];
 
+  const filesLine = n => `${n} file${n === 1 ? '' : 's'} attached. Approved files are shown with the review; remove any that should not be.`;
+
   // The files sent with a note. They are fetched with the token (a pending file is not public) and shown from memory.
   function filesFor(report) {
     const files = report.files || [];
     if (!files.length) return '';
-    return `<p>${files.length} file${files.length === 1 ? '' : 's'} attached. Approved files are shown with the review; remove any that should not be.</p>
+    return `<p class="files-count">${filesLine(files.length)}</p>
       <div class="files">${files.map(file => `
         <figure data-file="${esc(file.id)}" data-type="${esc(file.type)}">
           <a class="file-open" href="#" target="_blank" rel="noopener">${file.type.startsWith('image/') ? '<img alt="Attached photo">' : '<span class="pdf">PDF</span>'}</a>
@@ -137,7 +139,11 @@
       removeFile.disabled = true;
       try {
         await api(`/api/admin/files/${encodeURIComponent(figure.dataset.file)}`, { method: 'DELETE' });
+        const article = figure.closest('article');
         figure.remove();
+        const left = article.querySelectorAll('figure').length;
+        if (left) article.querySelector('.files-count').textContent = filesLine(left);
+        else article.querySelectorAll('.files-count, .files').forEach(el => el.remove());
         $('status').textContent = 'File removed.';
       } catch (error) {
         $('status').textContent = error.message;

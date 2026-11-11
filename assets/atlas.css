@@ -4972,8 +4972,9 @@ body.chat-input-mode-active #noteFileInfo:not([hidden]){display:block;margin:10p
 body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed currentColor;outline-offset:6px}
 
 /* Files approved with a review: photos as square thumbnails, a PDF as a labelled link. */
-.review-files{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
+.review-files{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:10px 0 0}
 .review-photo{display:block;width:96px;height:96px;border:.8px solid var(--line);overflow:hidden}
 .review-photo img{display:block;width:100%;height:100%;object-fit:cover}
-.review-doc{display:inline-flex;align-items:center;gap:10px;padding:6px 12px 6px 6px;border:.8px solid var(--line);color:inherit;text-decoration:none;font:400 var(--fs-s)/1.2 var(--sans)}
+.review-doc{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;padding:6px 12px 6px 6px;border:.8px solid var(--line);color:inherit;text-decoration:none;font:400 var(--fs-s)/1.2 var(--sans)}
 .review-doc-tile{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--ink);color:var(--paper);font:400 11px/1 var(--sans);letter-spacing:.04em}
+#workInputCard #noteFileList .note-file{border-color:currentColor!important}
