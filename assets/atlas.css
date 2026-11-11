@@ -4937,3 +4937,17 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gm-layers-icon{display:flex!important;width:20px!important;height:20px!important;margin:0!important}
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gm-layers-icon svg{width:20px!important;height:20px!important}
 }
+
+/* Writing aids under the note box (assets/note-aids.js): spelling corrected as the reader types, and dictation. Shown only
+   while a note is written; they take the note box's own colours in both themes. */
+#noteAidsRow,#noteDictateInfo{display:none}
+body.chat-input-mode-active #noteAidsRow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:12px 0 0;color:inherit}
+body.chat-input-mode-active #noteAidsRow .nf-aid{display:flex;align-items:center;gap:10px;margin:0;padding:0;background:none;cursor:pointer;font:400 var(--fs-s)/1.3 var(--sans);color:inherit}
+body.chat-input-mode-active #noteAidsRow .nf-aid span{display:inline;margin:0;font:inherit;color:inherit}
+body.chat-input-mode-active #noteAidsRow .nf-aid input{flex:none;width:18px;height:18px;margin:0;accent-color:#fff204;cursor:pointer}
+body.chat-input-mode-active #noteDictateBtn{flex:none;padding:6px 14px;border:.8px solid currentColor;border-radius:0;background:transparent;color:inherit;font:400 var(--fs-s)/1.2 var(--sans);cursor:pointer}
+body.chat-input-mode-active #noteDictateBtn.is-listening{background:#fff204;border-color:#fff204;color:#000}
+body.chat-input-mode-active #noteDictateBtn[hidden]{display:none}
+body.chat-input-mode-active #noteDictateInfo:not([hidden]){display:block;margin:10px 0 0;font:400 var(--fs-s)/1.4 var(--sans);color:inherit}
+#workInputCard #noteAidsRow #noteDictateBtn{border-color:currentColor!important}
+#workInputCard #noteAidsRow #noteDictateBtn.is-listening{border-color:#fff204!important}

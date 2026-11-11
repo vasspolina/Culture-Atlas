@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=611">
-  <script src="assets/config.js?v=611"></script>
-  <script src="assets/subtopic.js?v=611"></script>
-  <script src="assets/names.js?v=611"></script>
-  <script src="assets/grounding.js?v=611"></script>
-  <script src="assets/repeats.js?v=611"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=612">
+  <script src="assets/config.js?v=612"></script>
+  <script src="assets/subtopic.js?v=612"></script>
+  <script src="assets/names.js?v=612"></script>
+  <script src="assets/grounding.js?v=612"></script>
+  <script src="assets/repeats.js?v=612"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -846,13 +846,19 @@ return maplibregl$1;
                 <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
                 <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
-                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space"></label>
+                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Start typing the name of the space"></label>
                 <datalist id="noteInstitutionList"></datalist>
-                <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" placeholder="Whistleblower"></label>
+                <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Whistleblower"></label>
               </div>
               <div id="noteInputBlock">
                 <label id="noteInputLabel" for="workInput">Your note</label>
-                <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+                <textarea id="workInput" rows="2" spellcheck="true" autocorrect="on" autocapitalize="sentences" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+                <!-- Writing aids, shown only while a note is written (assets/note-aids.js). Nothing is sent anywhere to check the text. -->
+                <p id="noteAidsRow">
+                  <label class="nf-aid" title="Backspace straight after a correction puts your spelling back"><input type="checkbox" id="noteAutoCorrect"><span>Correct spelling as I type</span></label>
+                  <button id="noteDictateBtn" type="button" aria-pressed="false" hidden>Dictate</button>
+                </p>
+                <p id="noteDictateInfo" role="status" aria-live="polite" hidden></p>
               </div>
               <div id="noteAckRow"><label class="nf-check"><input type="checkbox" id="noteAck"><span>I have left out my name and anything that identifies me.*</span></label></div>
               <p id="noteFormStatus" role="status" aria-live="polite"></p>
@@ -1113,7 +1119,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=611"></script>
+  <script src="assets/institutions.js?v=612"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10323,11 +10329,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v611';
+    const ATLAS_RELEASE = 'culture-atlas-v612';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=611').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=612').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -21434,13 +21440,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=611"></script>
-<script src="assets/funding-views.js?v=611"></script>
-<script src="assets/layers.js?v=611"></script>
-<script src="assets/hq-detail.js?v=611"></script>
-<script src="assets/bubbles.js?v=611" defer></script>
-<script src="assets/phone-maps.js?v=611"></script>
-<script src="assets/desktop-maps.js?v=611"></script>
-<script src="assets/chat-resize.js?v=611"></script>
+<script src="assets/typeset.js?v=612"></script>
+<script src="assets/note-aids.js?v=612" defer></script>
+<script src="assets/funding-views.js?v=612"></script>
+<script src="assets/layers.js?v=612"></script>
+<script src="assets/hq-detail.js?v=612"></script>
+<script src="assets/bubbles.js?v=612" defer></script>
+<script src="assets/phone-maps.js?v=612"></script>
+<script src="assets/desktop-maps.js?v=612"></script>
+<script src="assets/chat-resize.js?v=612"></script>
 </body>
 </html>
