@@ -4598,7 +4598,8 @@ html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(i
 :root:root:root:root body ul.grade-scale>li{display:flex!important;align-items:flex-start;gap:.6em;margin:0 0 .35em!important;padding:0!important;text-indent:0!important}
 :root:root:root:root body ul.grade-scale>li::before{content:none!important;display:none!important}
 :root:root:root:root body ul.grade-scale>li>.grade-word{flex:none;min-width:4.6em;white-space:nowrap}
-:root:root:root:root body ul.grade-scale .grade-this{display:inline-block;margin-left:.3em;padding:0 .4em;border:1px solid var(--ink);border-radius:999px;font-size:14px;line-height:1.4;white-space:nowrap}
+/* "This space" marks the record's own step as plain words: the pill around it went on 9 Nov 2026 (user: "flatten the This space pill too"). */
+:root:root:root:root body ul.grade-scale .grade-this{display:inline;margin-left:0;padding:0;border:0;border-radius:0;background:none;font-size:inherit;line-height:inherit;white-space:nowrap}
 :root:root:root:root body li.grade-fund{display:flex!important;align-items:flex-start;gap:.5em;text-indent:0!important}
 :root:root:root:root body li.grade-fund::before{content:none!important;display:none!important}
 /* Phone sheet: the i button sits at the end of the rating line, the panel under it. */
