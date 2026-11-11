@@ -1,0 +1,214 @@
+[
+ {
+  "id": "huis-van-zessen",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "atelier-volten",
+  "scale": {
+   "visitors": 1153,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.ateliervolten.nl/s/Jaarverslag-Stichting-Andre-Volten-2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the 2025 annual report (PDF page 4, results table on page 6) gives 1,153 visitors to the atelier's one exhibition of the year, 100 Jaar André Volten (19 April to 30 November 2025), counting paying and free entries; the 75 people on group tours are a separate line."
+ },
+ {
+  "id": "museum-het-schip",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "van-eesteren-museum",
+  "scale": {
+   "visitors": 13420,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://cdn.prod.website-files.com/6543df8e17f7c1839eb1201e/6a44da7b4673f13974bb9f28_VEM_jaarverslag%202025.pdf"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 608596,
+   "expenditure": 592955,
+   "public": 394063,
+   "private": 91500,
+   "earned": 112490,
+   "sponsorship": 8000,
+   "net_assets": 49876,
+   "source_kind": "annual report",
+   "url": "https://cdn.prod.website-files.com/6543df8e17f7c1839eb1201e/6a44cfe92490a4a6a6389c6a_Financie%CC%88le%20verantwoording%202025%20ANBI%20Algemeen.pdf"
+  },
+  "basis": "Scale: the 2025 annual report (PDF page 22) gives 13,420 physical visitors in 2025. Finance: the 2025 ANBI standard form (form fields on PDF pages 4 and 5) gives total income, total expenditure, government subsidies as public, sponsorship, turnover as earned and equity, and private is the contributions from private funds in note 10 of the 2025 annual report (PDF page 31)."
+ },
+ {
+  "id": "wereldmuseum-amsterdam-former-tropenmuseum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "cultuurhuis-bergeijk",
+  "scale": {
+   "visitors": 1538,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://cultuurhuisbergeijk.nl/images/Downloads/Jaarrekening-en-verslag-Cultuurhuis-2025.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the 2025 annual report bound into the accounts (scanned PDF page 29, table Bezoekersaantallen) gives 1,538 museum visitors registered at the till in 2025, a subtotal that leaves out lectures, school visits, Rietveld tours and workshops."
+ },
+ {
+  "id": "de-nollen",
+  "scale": {
+   "visitors": 7584,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://projectdenollen.nl/wp-content/uploads/2026/03/Jaarrekening-en-jaarverslag-2025-Stichting-De-Nollen.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the 2025 annual report (PDF page 15) gives 7,584 regular visitors in 2025, a count that leaves out workshop participants and exam pupils."
+ },
+ {
+  "id": "van-doesburg-rinsemahuis",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "jachthuis-sint-hubertus",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "cuypershuis",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "chabot-museum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "EUR",
+   "income": 1175815,
+   "expenditure": 1150491,
+   "public": 204650,
+   "private": 780870,
+   "earned": 144237,
+   "sponsorship": 26219,
+   "net_assets": 179592,
+   "source_kind": "annual report",
+   "url": "https://chabotmuseum.nl/wp-content/uploads/2026/06/Stichting-Hendrik-Chabot-JVJR2025_website.pdf"
+  },
+  "basis": "Finance: the accountant-compiled 2025 accounts of Stichting Hendrik Chabot in the annual report (PDF page 22) give total income, total expenditure, total subsidies (all from the Gemeente Rotterdam and one-off public grants) as public, private funds, public income as earned and sponsorship income, and the balance sheet (PDF page 21) gives equity."
+ },
+ {
+  "id": "kijk-kubus",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

@@ -1,0 +1,248 @@
+[
+ {
+  "id": "tishreen-war-panorama-october-war-panorama",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "chiang-kai-shek-memorial-hall",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "TWD",
+   "income": 260288824,
+   "expenditure": 287997764,
+   "public": 192742093,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": 388201630,
+   "source_kind": "government final account",
+   "url": "https://www.cksmh.gov.tw/download_table.aspx?n=9689&sms=16349"
+  },
+  "basis": "Finance: 2025 (ROC year 114) final account of the National Chiang Kai-shek Memorial Hall Management Office operating fund, general explanation PDF page 10 (total income NT$260,288,824, total expenditure NT$287,997,764) and page 13 (net worth NT$388,201,630); public is the income statement's other operating income line (NT$192,742,093), made up of the Ministry of Culture's cultural-institution development subsidy and other government subsidies."
+ },
+ {
+  "id": "national-palace-museum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "an-tkabir-ataturk-mausoleum-and-museum",
+  "scale": {
+   "visitors": 8242170,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.anitkabir.tsk.tr/05_etkinlikler_duyurular/anitkabir_ziyaretci_sayilari.html"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the Anıtkabir visitor numbers page on the official Anıtkabir site gives 8,242,170 visitors for 2025 (7,876,480 domestic, 365,690 foreign) in its yearly total table."
+ },
+ {
+  "id": "panorama-1453-history-museum",
+  "scale": {
+   "visitors": 196326,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://kultur.istanbul/gorsel/2025/04/2025-Kultur-AS-Faaliyet-Raporu.pdf"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: the 2025 activity report of Kültür AŞ, the Istanbul municipal company that runs the museum, gives 196,326 visitors for 2025 in the table of Panorama 1453 visitor numbers on PDF page 29, counting free entries as well."
+ },
+ {
+  "id": "turn-end",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "GBP",
+   "income": 16070,
+   "expenditure": 24693,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": null,
+   "source_kind": "Charity Commission",
+   "url": "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5056612/accounts-and-annual-returns"
+  },
+  "basis": "Finance: Turn End Trust (charity 1162076) receipts and payments accounts for the year to 31 December 2025, PDF page 3, total receipts £16,070 and total payments £24,693, matching the register's financial history."
+ },
+ {
+  "id": "the-hill-house",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "picker-house",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "isokon-gallery",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "GBP",
+   "income": 48894,
+   "expenditure": 39348,
+   "public": null,
+   "private": 9720,
+   "earned": 39120,
+   "sponsorship": null,
+   "net_assets": 57549,
+   "source_kind": "Charity Commission",
+   "url": "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5052630/accounts-and-annual-returns"
+  },
+  "basis": "Finance: Isokon Gallery Trust (charity 1161069) accounts for the year to 31 December 2025, Statement of Financial Activities on PDF page 8 (donations and legacies £9,720, shop income £39,120 under note 2) and balance sheet on PDF page 9."
+ },
+ {
+  "id": "78-derngate",
+  "scale": {
+   "visitors": 5170,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/3945986/accounts-and-annual-returns"
+   ]
+  },
+  "finance": {
+   "fy": "2025",
+   "currency": "GBP",
+   "income": 146334,
+   "expenditure": 178283,
+   "public": null,
+   "private": null,
+   "earned": null,
+   "sponsorship": null,
+   "net_assets": 3430207,
+   "source_kind": "Charity Commission",
+   "url": "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/3945986/accounts-and-annual-returns"
+  },
+  "basis": "Scale: visitor numbers of 5,170 for 2025 in the trustees' report of The 78 Derngate Northampton Trust (charity 1068270, company 03495224), printed page 4 (PDF page 6) of a scanned filing. Finance: same accounts, Statement of Financial Activities on PDF page 10 and net assets on the balance sheet, PDF page 12."
+ },
+ {
+  "id": "longhouse-reserve",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2024",
+   "currency": "USD",
+   "income": 1964699,
+   "expenditure": 2249339,
+   "public": 20000,
+   "private": null,
+   "earned": 317908,
+   "sponsorship": null,
+   "net_assets": 9547934,
+   "source_kind": "Form 990",
+   "url": "https://apps.irs.gov/pub/epostcard/990/xml/2025/2025_TEOS_XML_10A.zip"
+  },
+  "basis": "Finance: Form 990 for calendar 2024 filed by LongHouse Reserve (EIN 33-1058583, 133 Hands Creek Road, longhouse.org), IRS e-file object id 202542699349301514: Part I lines 12, 18 and 22, government grants from Part VIII line 1e, and program service revenue of admissions ($308,284) and group tours ($9,624)."
+ },
+ {
+  "id": "fay-and-gus-jones-house",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ }
+]

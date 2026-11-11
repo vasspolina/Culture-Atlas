@@ -1,0 +1,202 @@
+[
+ {
+  "id": "victorious-fatherland-liberation-war-museum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "north-pyongan-provincial-revolutionary-history-museum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "sinuiju-art-gallery",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "sinuiju-history-museum",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museum-of-the-macedonian-struggle",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "vigeland-museum",
+  "scale": {
+   "visitors": 28082,
+   "visitors_year": "2024",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://www.oslo.kommune.no/get-file/461074/fe30d35434851381874410aed6c119882fea8fca9b27ae2e2ddff0f0a41429fd"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: Kulturetaten's 2024 annual report (Årsberetning 2024, PDF page 31) gives 28,082 visits to the Vigeland Museum in 2024, with class visits on a separate line; Oslo's 2026 allocation letter to Kulturetaten repeats the figure."
+ },
+ {
+  "id": "munchs-hus",
+  "scale": {
+   "visitors": 12252,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://ems.dimu.org/file/069ELhfh9odNu",
+    "https://vestfoldmuseene.no/arsrapporter/"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: Vestfoldmuseene IKS annual report 2025, PDF page 28, table \"Antall besøkende på våre enheter gjennom året\", Munchs hus row, 12 252 visits in 2025 (11 939 in 2024)."
+ },
+ {
+  "id": "museum-of-the-second-world-war",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "muzeum-sopotu",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": {
+   "fy": "2023",
+   "currency": "PLN",
+   "income": 2588252,
+   "expenditure": 2532818,
+   "public": 2430217,
+   "private": null,
+   "earned": 158035,
+   "sponsorship": null,
+   "net_assets": 5900631,
+   "source_kind": "financial statements",
+   "url": "https://bip.muzeumsopotu.pl/wp-content/uploads/2025/01/Rachunek-zyskow-i-strat-wariant-porownawczy-2023.xls"
+  },
+  "basis": "Finance: 2023 income statement (comparative variant) on the museum's public information bulletin, line A revenue with organiser subsidy V and product sales I, line B operating costs; net assets is the own fund at 31.12.2023 in the 2023 balance sheet (https://bip.muzeumsopotu.pl/wp-content/uploads/2025/01/Bilans-jednostki-2023.xls)."
+ },
+ {
+  "id": "zofia-and-oskar-hansen-house",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "casa-das-marinhas",
+  "scale": {
+   "visitors": null,
+   "visitors_year": null,
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": []
+  },
+  "finance": null,
+  "basis": ""
+ },
+ {
+  "id": "museu-de-arte-popular",
+  "scale": {
+   "visitors": 7656,
+   "visitors_year": "2025",
+   "staff": null,
+   "staff_kind": null,
+   "staff_year": null,
+   "area_m2": null,
+   "area_kind": null,
+   "sources": [
+    "https://backend.museusemonumentos.pt/uploads/Quadros_Estatisticas_MMP_2025_efca086a8a.pdf",
+    "https://www.museusemonumentos.pt/pt/pagina/estatisticas"
+   ]
+  },
+  "finance": null,
+  "basis": "Scale: Museus e Monumentos de Portugal visitor statistics for 2025, PDF page 2, Quadro 2 \"Visitantes por equipamento\", Museu de Arte Popular row, 7 656 visitors in 2025 (9 708 in 2024)."
+ }
+]
