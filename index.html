@@ -45,13 +45,13 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=623">
-  <link rel="stylesheet" href="assets/sheet.css?v=623">
-  <script src="assets/config.js?v=623"></script>
-  <script src="assets/subtopic.js?v=623"></script>
-  <script src="assets/names.js?v=623"></script>
-  <script src="assets/grounding.js?v=623"></script>
-  <script src="assets/repeats.js?v=623"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=624">
+  <link rel="stylesheet" href="assets/sheet.css?v=624">
+  <script src="assets/config.js?v=624"></script>
+  <script src="assets/subtopic.js?v=624"></script>
+  <script src="assets/names.js?v=624"></script>
+  <script src="assets/grounding.js?v=624"></script>
+  <script src="assets/repeats.js?v=624"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1128,7 +1128,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=623"></script>
+  <script src="assets/institutions.js?v=624"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7297,7 +7297,7 @@ return maplibregl$1;
 
 
 
-    // The street map follows gossip mode: the gossip yellow ground (#e2f86c, the Gossip button's lime) and black hairlines, instead of white ground and grey hairlines.
+    // The street map follows gossip mode: the gossip beige ground (#cfcfba, the Gossip button's; lime #e2f86c until 11 Nov 2026) and black hairlines, instead of white ground and grey hairlines.
     function applyCityMapGossip() {
       const map = cityVectorMap;
       if (!map || typeof map.getStyle !== 'function' || typeof map.setPaintProperty !== 'function') return;
@@ -7306,10 +7306,10 @@ return maplibregl$1;
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
       // Gossip mode: Displaay's lime with black lines; on the dark theme a dark green with lime lines (user, 4 Nov 2026).
       // THE SHEET: the sheet's paper and its grey rule (#787878), in both themes.
-      const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#e2f86c') : dark ? '#151412' : '#ffffff';
+      const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#cfcfba') : dark ? '#151412' : '#ffffff';
       // Outside gossip mode the lines are 50% grey in both themes (user, 6 Nov 2026: near-black lines made the map busy). They are
       // decoration, not text: the place names keep full ink (`label`), as before.
-      const line = isGossipModeActive ? (dark ? '#e2f86c' : '#000000') : '#787878';
+      const line = isGossipModeActive ? (dark ? '#cfcfba' : '#000000') : '#787878';
       // The street map's own place names are 50% grey in both themes, so only the cultural spaces stand in full ink
       // (user, 10 Nov 2026: "make everything 50 % grey exept cultural spaces, map looks too crowded").
       const label = isGossipModeActive ? line : '#808080';
@@ -10341,11 +10341,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v623';
+    const ATLAS_RELEASE = 'culture-atlas-v624';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=623').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=624').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11476,11 +11476,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // A badge's fill and type colour. The city hover card takes the same pair, so it reads as the badge opened out.
         const pillColors = (active, tier) => {
           const darkLabel = !GLOBE_LIGHT && !active;
-          const fill = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? '#1e4d2b' : '#e2f86c')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
+          const fill = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? '#1e4d2b' : '#cfcfba')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
           return { fill, ink: darkLabel ? '#ffffff' : '#000000' };
         };
         // The type and outline colour of a city label, and of the card it opens into.
-        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2f6b12' : '#e2f86c') : tierInk(tier, GLOBE_LIGHT);
+        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2a6010' : '#cfcfba') : tierInk(tier, GLOBE_LIGHT);
         // THE SHEET: no pill, no outline and no dot. A name is type in the colour of its grade on a strip of the
         // sheet's paper (user, 10 Nov 2026: "just colored text ... and color spases as well"); the selected name is in ink
         // on a stone band with the grey rule round it. The strip is the size the old pill was (the name's width + 28, or
@@ -11866,7 +11866,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             : (isVisualCritiqueOnly && hasVc)
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
-            ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#3d7a0f' : '#e2f86c') : (GLOBE_LIGHT ? '#1e4d2b' : '#7d9a3a'))
+            ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#3d7a0f' : '#cfcfba') : (GLOBE_LIGHT ? '#1e4d2b' : '#7d9a3a'))
             : tierInk(d.inst.tier, GLOBE_LIGHT);
           // Hollow rings in the tier's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled green dot (lime on the dark theme).
           ctx.lineWidth = 0.8;
@@ -21616,15 +21616,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=623"></script>
-<script src="assets/note-aids.js?v=623" defer></script>
-<script src="assets/note-files.js?v=623" defer></script>
-<script src="assets/funding-views.js?v=623"></script>
-<script src="assets/layers.js?v=623"></script>
-<script src="assets/hq-detail.js?v=623"></script>
-<script src="assets/bubbles.js?v=623" defer></script>
-<script src="assets/phone-maps.js?v=623"></script>
-<script src="assets/desktop-maps.js?v=623"></script>
-<script src="assets/chat-resize.js?v=623"></script>
+<script src="assets/typeset.js?v=624"></script>
+<script src="assets/note-aids.js?v=624" defer></script>
+<script src="assets/note-files.js?v=624" defer></script>
+<script src="assets/funding-views.js?v=624"></script>
+<script src="assets/layers.js?v=624"></script>
+<script src="assets/hq-detail.js?v=624"></script>
+<script src="assets/bubbles.js?v=624" defer></script>
+<script src="assets/phone-maps.js?v=624"></script>
+<script src="assets/desktop-maps.js?v=624"></script>
+<script src="assets/chat-resize.js?v=624"></script>
 </body>
 </html>

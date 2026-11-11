@@ -20,7 +20,7 @@ h1,h2,h3,h4,p{margin:0}
   --cobalt:#0045fc; --focus:var(--cobalt); --blue:#527fe6; --orange:#e79a3a; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600;
   /* Gossip mode is Displaay's lime with black type; on the dark theme a dark green with the lime as its type (8.3:1) (user, 4 Nov 2026). */
-  --gossip:#e2f86c; --gossip-ink:#000; --gossip-text:#2f6b12;
+  --gossip:#cfcfba; /* beige, from the swatch the user sent (11 Nov 2026: "change now gossip mode"); was lime #e2f86c */ --gossip-ink:#000; --gossip-text:#2a6010; /* darkened from #2f6b12 so it clears 4.5:1 on the beige (4.78:1) */
   --sans:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --display:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --display-xl:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -753,7 +753,7 @@ body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 /* Gossip mode: the menu bar keeps its colours (yellow is for gossip alone); the Gossip mode button and the street map ground turn lime (dark green on the dark theme). */
 body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:var(--gossip-ink)}
 body.gossip-mode-active #topGossipBtn:hover,body.gossip-mode-active #mobileGossipBtn:hover{background:#000;color:#fff}
-body.gossip-mode-active #cityMapContainer{background:#e2f86c}
+body.gossip-mode-active #cityMapContainer{background:#cfcfba}
 /* In the street view the globe's own controls would sit behind the street-view bar and poke out at its ends. */
 body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
 body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
@@ -861,7 +861,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersControl{z-index:40}
 
 /* Dark mode: the same ink-and-paper system on a warm charcoal ground with bone-white ink, not pure black and white. The globe stays black in both. */
-:root[data-theme="dark"]{color-scheme:dark;--focus:#7fa3ff;--ink:#f1ede6;--paper:#262524;--grey:#302f2d;--block:#403d3a;--line:#cfc8bb;--gossip:#1e4d2b;--gossip-ink:#e2f86c;--gossip-text:#e2f86c}
+:root[data-theme="dark"]{color-scheme:dark;--focus:#7fa3ff;--ink:#f1ede6;--paper:#262524;--grey:#302f2d;--block:#403d3a;--line:#cfc8bb;--gossip:#1e4d2b;--gossip-ink:#cfcfba;--gossip-text:#cfcfba}
 :root[data-theme="dark"] #floatingCard{color:var(--ink)}
 :root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-content{background:#34322f;color:var(--ink)}
 :root[data-theme="dark"] .record-popup,:root[data-theme="dark"] .record-popup-line,:root[data-theme="dark"] .record-popup-name,:root[data-theme="dark"] #globeViewport .record-popup a,:root[data-theme="dark"] #globeViewport a.record-popup-name{color:var(--ink)}
@@ -1155,7 +1155,7 @@ a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:u
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip],
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:var(--gossip-text)}
 :root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip],
-:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:#e2f86c}
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:#cfcfba}
 /* The marker highlights (green, blue) keep black text inside the reported items, in either theme: yellow on green is 1.5:1. */
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(.is-good,.meta.t-strong,.is-good *,.meta.t-strong *){color:#000}
 
@@ -1380,7 +1380,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#9ae3e8}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#e79a3a}
 /* A gossip question (its answer is a balloon) is the one yellow label: yellow is for gossip alone. */
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#e2f86c}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#cfcfba}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c6c6c6);color:#000;text-decoration:underline;text-underline-offset:var(--ul-off);text-decoration-thickness:var(--ul-w)}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:var(--fs-s);height:22px;line-height:22px}}
@@ -1709,8 +1709,8 @@ body.chat-input-mode-active #workInputCard>div.justify-between>div{width:100%;ju
 :root[data-theme="dark"] .bubble-svg .bubble-line{stroke:none}
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
-:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:#e2f86c!important}
-:root[data-theme="dark"] .is-gossip .thinking{color:#e2f86c}
+:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:#cfcfba!important}
+:root[data-theme="dark"] .is-gossip .thinking{color:#cfcfba}
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
 
 /* ---- release 239 ---- */
@@ -1792,7 +1792,7 @@ body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer)
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{--fill:#6f6f6f}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#007d79}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#ba4e00}
-:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#e2f86c}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#cfcfba}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{color:#fff}
 
 /* The Dark and Gossip mode buttons sit edge to edge (they were 16px apart), so a hovered one fills right up to the vertical line between them. */
@@ -1828,7 +1828,7 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The chat's starter questions: 16px type, and a hover darkens the chip's own colour instead of underlining it. */
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-size:16px;line-height:1.3}
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:none;background:color-mix(in srgb,var(--fill,#c6c6c6) 68%,#000)}
-/* The gossip question keeps black type on its yellow in the dark theme too (white on #e2f86c is 1.2:1). */
+/* The gossip question keeps black type on its yellow in the dark theme too (white on #cfcfba is 1.6:1). */
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"],:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"] .sp-text,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]:hover{color:#000}
 
 /* =====================================================================
@@ -2123,7 +2123,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #mobileTopBar>div:last-child{gap:8px;padding-right:16px;align-items:center}
   :root[data-theme] #mobileTopBar>div:last-child :is(#mobileThemeBtn,#mobileGossipBtn,#reset-state-btn){height:40px;padding:0 16px!important;border:.8px solid var(--ink)!important;border-radius:0;background:transparent;color:var(--ink);align-self:center}
   :root[data-theme] #mobileTopBar>div:last-child #mobileThemeBtn[aria-pressed=true]{background:var(--cobalt);border-color:var(--cobalt)!important;color:#fff;border-radius:0}
-  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:#e2f86c!important;color:var(--gossip-ink);border-radius:0}
+  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:#cfcfba!important;color:var(--gossip-ink);border-radius:0}
 }
 
 /* The chat after the displaay.net Albert chat, keeping the existing starter-prompt highlights (user's instruction, 25 Oct 2026): the question box is a rounded navy field (#2d3352) with a yellow ring (#fff204) while in use, plum (#410043) with yellow type once the reader has typed, and a white square send button inside it; Share information (#420401) and Voice (#410043) sit below the box as solid rounded buttons after the Trials / Tester / Buy row; the starter questions stay as coloured highlight strips; the reader's lines are grey bubbles, the reply a dark box. */
@@ -2683,8 +2683,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){border-color:color-mix(in srgb,var(--ink) 70%,transparent)!important}
 
 /* In Gossip mode the chat's divider lines turn yellow. */
-:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-b,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-t{border-color:#e2f86c!important}
-:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #chatRecordsInfo,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetHandleBar,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetSummaryStrip{border-color:#e2f86c!important}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-b,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-t{border-color:#cfcfba!important}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #chatRecordsInfo,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetHandleBar,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetSummaryStrip{border-color:#cfcfba!important}
 
 /* Share information is regular weight (400, it was light 300) and turns yellow with black type on hover and focus. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-weight:400!important}
@@ -2705,8 +2705,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary{padding-left:23px!important}
 
 /* Gossip mode: every divider line (the token the rules and borders draw with) and the Gossip button turn the lime yellow. */
-:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active{--line:#e2f86c}
-:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #topGossipBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #mobileGossipBtn{background:var(--gossip)!important;border-color:#e2f86c!important;color:var(--gossip-ink)!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active{--line:#cfcfba}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #topGossipBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #mobileGossipBtn{background:var(--gossip)!important;border-color:#cfcfba!important;color:var(--gossip-ink)!important}
 
 /* A record's name fills each line to the edge and breaks only where the line ends (it was balanced into two short lines). */
 :root:root:root:root:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading,h2.dossier-main-heading){text-wrap:wrap!important;max-width:none!important;width:auto!important}
@@ -2723,8 +2723,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{--lc:var(--tier-u);background:#000}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="A"]{--lc:var(--tier-a)}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="B"]{--lc:var(--tier-b)}
-:root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#2f6b12}
-:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#e2f86c}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#2a6010}
+:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#cfcfba}
 
 /* The street map's badge, designed (user, 5 Nov 2026: "the museum badges on zoom have to be designed and there is no hover").
    At rest it is the globe's label: the ground behind, a 1px outline in the tier's colour at 55%, 8px corners, Jokker 12px with 7px above and below and 12px at the sides (user, 7 Nov 2026: "the badges should have more padding"; was 1px and 8px) (user, 5 Nov 2026: "the badge font should be smaller"; was 14px) in the
