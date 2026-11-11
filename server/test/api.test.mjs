@@ -10,6 +10,7 @@ import { PrismaClient } from '@prisma/client';
 import inject from 'light-my-request';
 import { createApp } from '../app.js';
 import { cleanText, loadInstitutions } from '../validate.js';
+import { stripJpeg, stripPng, stripWebp } from '../files.js';
 
 const root = fileURLToPath(new URL('../..', import.meta.url));
 const require = createRequire(import.meta.url);
@@ -186,7 +187,7 @@ describe('listing a place', () => {
     assert.ok(ids.includes(older) && ids.includes(newer));
     assert.ok(ids.indexOf(newer) < ids.indexOf(older));
     assert.ok(!ids.includes(elsewhere) && !ids.includes(waiting));
-    for (const r of list) assert.deepEqual(Object.keys(r).sort(), ['authorLabel', 'content', 'createdAt', 'id']);
+    for (const r of list) assert.deepEqual(Object.keys(r).sort(), ['authorLabel', 'content', 'createdAt', 'files', 'id']);
     const first = list.find(r => r.id === older);
     assert.equal(first.authorLabel, 'Visitor');
     assert.ok((await reviews(other.id)).some(r => r.id === elsewhere));
@@ -255,6 +256,140 @@ describe('moderating', () => {
   });
 });
 
+// Small files built by hand: enough structure for the type check and the metadata pass, not pictures anyone would open.
+const seg = (marker, body) => {
+  const b = Buffer.from(body, 'latin1');
+  const head = Buffer.from([0xff, marker, 0, 0]);
+  head.writeUInt16BE(b.length + 2, 2);
+  return Buffer.concat([head, b]);
+};
+const JPEG = Buffer.concat([
+  Buffer.from([0xff, 0xd8]),
+  seg(0xe0, 'JFIF\0\x01\x01\0\0\x01\0\x01\0\0'),
+  seg(0xe1, 'Exif\0\0GPSLatitude 51.5074 Canon EOS'),
+  seg(0xe1, 'http://ns.adobe.com/xap/1.0/\0<x:xmpmeta>Jane Doe</x:xmpmeta>'),
+  seg(0xe2, 'ICC_PROFILE\0\x01\x01colours'),
+  seg(0xfe, 'taken by Jane Doe'),
+  seg(0xdb, '\0' + 'q'.repeat(64)),
+  seg(0xc0, '\x08\0\x01\0\x01\x01\x01\x11\0'),
+  seg(0xda, '\x01\x01\0\0\x3f\0'),
+  Buffer.from([0x12, 0x34, 0xff, 0x00, 0x56, 0xff, 0xd9])
+]);
+const chunk = (type, body) => {
+  const b = Buffer.from(body, 'latin1');
+  const head = Buffer.alloc(8);
+  head.writeUInt32BE(b.length, 0);
+  head.write(type, 4, 'latin1');
+  return Buffer.concat([head, b, Buffer.alloc(4)]);
+};
+const PNG = Buffer.concat([
+  Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+  chunk('IHDR', '\0\0\0\x01\0\0\0\x01\x08\x02\0\0\0'),
+  chunk('tEXt', 'Author\0Jane Doe'),
+  chunk('eXIf', 'GPSLatitude'),
+  chunk('IDAT', 'pixels'),
+  chunk('IEND', '')
+]);
+const riff = (fourcc, body) => {
+  const b = Buffer.from(body, 'latin1');
+  const head = Buffer.alloc(8);
+  head.write(fourcc, 0, 'latin1');
+  head.writeUInt32LE(b.length, 4);
+  return Buffer.concat([head, b, b.length % 2 ? Buffer.alloc(1) : Buffer.alloc(0)]);
+};
+const webpBody = Buffer.concat([riff('VP8X', '\x0c\0\0\0\0\0\0\0\0\0'), riff('VP8 ', 'frame'), riff('EXIF', 'GPSLatitude'), riff('XMP ', 'Jane Doe')]);
+const WEBP = Buffer.concat([Buffer.from('RIFF'), Buffer.alloc(4), Buffer.from('WEBP'), webpBody]);
+WEBP.writeUInt32LE(WEBP.length - 8, 4);
+const PDF = Buffer.from('%PDF-1.4\n1 0 obj << >> endobj\ntrailer << >>\n%%EOF\n', 'latin1');
+const b64 = buf => buf.toString('base64');
+
+describe('attached files', () => {
+  test('photos lose camera, place and author data; the picture stays', () => {
+    const jpeg = stripJpeg(JPEG).toString('latin1');
+    for (const gone of ['Exif', 'GPSLatitude', 'Jane Doe', 'xmpmeta']) assert.ok(!jpeg.includes(gone), gone);
+    for (const kept of ['JFIF', 'ICC_PROFILE', 'q'.repeat(64)]) assert.ok(jpeg.includes(kept), kept);
+    assert.ok(stripJpeg(JPEG).subarray(-7).equals(Buffer.from([0x12, 0x34, 0xff, 0x00, 0x56, 0xff, 0xd9])));
+
+    const png = stripPng(PNG).toString('latin1');
+    assert.ok(!png.includes('Jane Doe') && !png.includes('GPSLatitude'));
+    assert.ok(png.includes('IHDR') && png.includes('pixels') && png.includes('IEND'));
+
+    const webp = stripWebp(WEBP);
+    assert.ok(!webp.toString('latin1').includes('GPSLatitude') && !webp.toString('latin1').includes('Jane Doe'));
+    assert.equal(webp.readUInt32LE(4), webp.length - 8);
+    assert.equal(webp[20] & 0x0c, 0, 'the EXIF and XMP flags are cleared');
+    assert.ok(webp.toString('latin1').includes('frame'));
+  });
+
+  test('a review keeps its files in order, cleaned, and shows them only once approved', async () => {
+    const id = await submit({ files: [{ data: b64(JPEG), name: 'IMG_jane_doe.jpg', type: 'text/html' }, { data: b64(PDF) }] });
+    const row = (await pending()).find(r => r.id === id);
+    assert.deepEqual(row.files.map(f => f.type), ['image/jpeg', 'application/pdf']);
+    assert.ok(!JSON.stringify(row).includes('jane_doe'), 'no file name is kept');
+    const [image, pdf] = row.files;
+
+    assert.equal((await call(`/api/files/${image.id}`)).status, 404, 'not public while pending');
+    const own = await inject(app, { url: `/api/admin/files/${image.id}`, headers: { Authorization: `Bearer ${SECRET}` } });
+    assert.equal(own.statusCode, 200);
+    assert.equal(own.headers['content-type'], 'image/jpeg');
+    assert.ok(!own.rawPayload.toString('latin1').includes('GPSLatitude'));
+
+    await setStatus(id, 'APPROVED');
+    const listed = (await reviews()).find(r => r.id === id);
+    assert.deepEqual(listed.files, row.files.map(({ id, type, size }) => ({ id, type, size })));
+    const shown = await inject(app, { url: `/api/files/${image.id}` });
+    assert.equal(shown.statusCode, 200);
+    assert.equal(shown.headers['x-content-type-options'], 'nosniff');
+    assert.match(shown.headers['content-security-policy'], /sandbox/);
+    assert.equal(shown.headers['cross-origin-resource-policy'], 'cross-origin');
+    assert.ok(shown.rawPayload.equals(stripJpeg(JPEG)));
+    const doc = await inject(app, { url: `/api/files/${pdf.id}` });
+    assert.equal(doc.headers['content-type'], 'application/pdf');
+    assert.ok(doc.rawPayload.equals(PDF));
+
+    await setStatus(id, 'PENDING');
+    assert.equal((await call(`/api/files/${image.id}`)).status, 404, 'hidden again when taken off the atlas');
+  });
+
+  test('the editor can remove one file, and deleting the review removes the rest', async () => {
+    const id = await submit({ files: [{ data: b64(PNG) }, { data: b64(WEBP) }] });
+    const [png, webp] = (await pending()).find(r => r.id === id).files;
+    assert.equal((await admin(`/api/admin/files/${png.id}`, { method: 'DELETE' })).status, 200);
+    assert.equal((await admin(`/api/admin/files/${png.id}`, { method: 'DELETE' })).status, 404);
+    assert.deepEqual((await pending()).find(r => r.id === id).files.map(f => f.id), [webp.id]);
+    await admin(`/api/admin/reports/${id}`, { method: 'DELETE' });
+    assert.equal(await prisma.reportFile.findUnique({ where: { id: webp.id } }), null);
+  });
+
+  test('refuses other kinds, too many, too large and broken files, and stores nothing', async () => {
+    const before = await prisma.whistleblowerReport.count();
+    const big = Buffer.concat([PDF.subarray(0, 9), Buffer.alloc(5 * 1024 * 1024), Buffer.from('%%EOF')]);
+    const cases = [
+      [{ files: [{ data: b64(Buffer.from('<html><script>alert(1)</script>')) }] }, /Only photos/],
+      [{ files: [{ data: b64(Buffer.from('GIF89a......')) }] }, /Only photos/],
+      [{ files: Array(5).fill({ data: b64(PDF) }) }, /at most 4/],
+      [{ files: [{ data: b64(big) }] }, /5 MB/],
+      [{ files: [{ data: 'not base64!' }] }, /could not be read/],
+      [{ files: [{ data: b64(PDF.subarray(0, 20)) }] }, /incomplete/],
+      [{ files: [{ data: b64(JPEG.subarray(0, 30)) }] }, /could not be read/],
+      [{ files: 'photo' }, /list/]
+    ];
+    for (const [extra, message] of cases) {
+      const res = await post({ content: NOTE, ...extra });
+      assert.equal(res.status, 400, String(message));
+      assert.match((await res.json()).error, message);
+    }
+    assert.equal(await prisma.whistleblowerReport.count(), before);
+  });
+
+  test('a review without files still works, and other routes keep the small body limit', async () => {
+    const id = await submit();
+    assert.deepEqual((await pending()).find(r => r.id === id).files, []);
+    const res = await admin(`/api/admin/reports/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status: 'APPROVED', pad: 'x'.repeat(20_000) }) });
+    assert.equal(res.status, 413);
+  });
+});
+
 describe('admin routes need the bearer token', () => {
   test('refuse a missing, wrong or malformed token', async () => {
     const id = await submit();
@@ -262,7 +397,9 @@ describe('admin routes need the bearer token', () => {
       ['GET', '/api/admin/reports/pending'],
       ['GET', '/api/admin/reports'],
       ['PATCH', `/api/admin/reports/${id}/status`],
-      ['DELETE', `/api/admin/reports/${id}`]
+      ['DELETE', `/api/admin/reports/${id}`],
+      ['GET', '/api/admin/files/x'],
+      ['DELETE', '/api/admin/files/x']
     ];
     for (const [method, route] of routes) {
       for (const authorization of [undefined, 'Bearer wrong', `Bearer ${SECRET}x`, SECRET, 'Basic abc']) {

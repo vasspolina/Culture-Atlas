@@ -25,6 +25,7 @@ const ASSETS_TO_CACHE = [
   './assets/config.js',
   './assets/typeset.js',
   './assets/note-aids.js',
+  './assets/note-files.js',
   './assets/phone-maps.js',
   './assets/desktop-maps.js',
   './assets/chat-resize.js',
