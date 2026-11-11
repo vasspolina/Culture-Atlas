@@ -1016,6 +1016,10 @@ details.chat-info[open]>summary::before{content:"– "!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x) *{font-size:inherit!important;line-height:inherit!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-stone) 85%,var(--sh-ink))!important;border:0!important;outline:0!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
+/* In gossip mode they are beige instead (user, 11 Nov 2026: "change to these beige colors on gossip mode"), the same
+   #cfcfba as the field outlines; hover the swatch's darker rule. Light only: the dark sheet's pale ink would not read on it. */
+:root:not([data-theme="dark"]) body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:not(#sh-x){background:#cfcfba!important}
+:root:not([data-theme="dark"]) body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:not(#sh-x):is(:hover,:focus-visible){background:#a9a998!important}
 
 /* The question box is a grey pill with a small darker pill inside at its right, after abcdinamo.com's "ABC Schengen /
    Explore" bar (user, 11 Nov 2026: "chat can look like this"). Send reads "Ask" in that small pill; this supersedes the
@@ -1145,8 +1149,13 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 #workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)){background:var(--sh-paper)!important;border:1px solid var(--sh-box-line)!important;
   box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(0,0,0,.06)!important}
 #workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)):focus-within{border-color:var(--sh-box-line-on)!important;box-shadow:0 1px 2px rgba(0,0,0,.05),0 6px 18px rgba(0,0,0,.08)!important}
-:root{--sh-box-line:#dcdcdc;--sh-box-line-on:#bdbdbd}
-:root[data-theme="dark"]{--sh-box-line:#3a3a3a;--sh-box-line-on:#555}
+/* The outlines of the fields are beige, the swatch the user sent (11 Nov 2026: "make outlines for input like this"):
+   #cfcfba, and under the pointer or the keyboard the darker rule under it, #a9a998. They replace the greys here and the
+   blue of release 610 on the note's fields; buttons keep their blue. Dark keeps a dim olive in the same proportion. */
+:root{--sh-box-line:#cfcfba;--sh-box-line-on:#a9a998}
+:root[data-theme="dark"]{--sh-box-line:#4a493e;--sh-box-line-on:#6d6c5a}
+:is(#noteFormFields input[type="text"],#noteFormFields input:not([type]),#workInput){border-color:var(--sh-box-line)!important}
+:is(#noteFormFields input[type="text"],#noteFormFields input:not([type]),#workInput):is(:hover,:focus){border-color:var(--sh-box-line-on)!important;outline:1px solid var(--sh-box-line-on)!important;outline-offset:0!important}
 
 /* The line over the foot bar is hidden at every width, not only past 1080px: on a phone it showed under the chat bar. */
 :root #shStrip#shStrip{display:none!important}
