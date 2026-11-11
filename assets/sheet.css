@@ -1142,4 +1142,63 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 
 /* The line over the foot bar is hidden at every width, not only past 1080px: on a phone it showed under the chat bar. */
 :root #shStrip#shStrip{display:none!important}
+
+/* The Share buttons in the reports take the fields' outline (user, 11 Nov 2026: "add outlines to these butons"): the
+   pale poster blue, 1px, 8px corners, room inside; the ring doubles under the pointer or the keyboard. */
+#gmFeed .ts .ts-share:not(#sh-x){display:inline-flex!important;align-items:center!important;justify-content:center!important;width:auto!important;
+  height:auto!important;min-height:calc(var(--sh-lead) + 12px * var(--sh-k))!important;margin:var(--sh-s-lh) 0 0!important;padding:calc(6px * var(--sh-k)) calc(10px * var(--sh-k))!important;
+  border:1px solid var(--sh-outline)!important;border-radius:8px!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;
+  font:inherit!important;text-align:center!important;text-decoration:none!important;white-space:nowrap!important}
+#gmFeed .ts .ts-share:not(#sh-x):is(:hover,:focus-visible){border-color:var(--sh-outline)!important;outline:1px solid var(--sh-outline)!important;outline-offset:0!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;text-decoration:none!important}
+
+/* Each report opens with its title, the space's name, on the stone of the bars (user, 11 Nov 2026: "add titles to top
+   story articles and color background to the titles"). Upright ink on stone, the text's size, the name the link to its
+   place on the map; a line of space above it parts one report from the last. */
+#gmFeed .ts .ts-name:not(#sh-x){display:block!important;margin:var(--sh-l-lh) 0 0!important;padding:calc(4px * var(--sh-k)) calc(8px * var(--sh-k))!important;
+  background:var(--sh-stone)!important;color:var(--sh-ink)!important;border:0!important;text-indent:0!important}
+#gmFeed .ts > .ts-story:first-of-type .ts-name:not(#sh-x){margin-top:var(--sh-s-lh)!important}
+#gmFeed .ts .ts-name .ts-space:not(#sh-x){display:inline!important;width:auto!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;
+  border:0!important;background:transparent!important;color:var(--sh-ink)!important;font:inherit!important;font-style:normal!important;text-align:left!important;text-decoration:none!important}
+#gmFeed .ts .ts-name .ts-space:not(#sh-x):hover{color:var(--sh-hover)!important}
+
+/* The alert marks on the map are an upright "!" in a ring, both the poster blue (user, 11 Nov 2026: "Fix: upright ! in a
+   ring", then "make them blue color"). The sheet takes the border off every button and sets its text italic, which had left
+   a bare slanted "!" by the pin; here the ring is back, 1.5px on paper, and the mark stands upright in its middle. */
+.gm-alert-mark:not(#sh-x):not(#sh-y){display:flex!important;align-items:center!important;justify-content:center!important;width:24px!important;height:24px!important;
+  min-height:24px!important;padding:0!important;border:1.5px solid var(--sh-hover)!important;border-radius:50%!important;background:var(--sh-paper)!important;
+  color:var(--sh-hover)!important;box-shadow:none!important;text-align:center!important}
+.gm-alert-mark:not(#sh-x):not(#sh-y) span{display:block!important;font-family:"Atlas Serif",serif!important;font-style:normal!important;font-weight:400!important;
+  font-size:16px!important;line-height:1!important;letter-spacing:0!important;color:var(--sh-hover)!important;margin:0!important;padding:0!important}
+.gm-alert-mark:not(#sh-x):not(#sh-y):is(:hover,:focus-visible){background:var(--sh-hover)!important;color:var(--sh-paper)!important;outline:0!important}
+.gm-alert-mark:not(#sh-x):not(#sh-y):is(:hover,:focus-visible) span{color:var(--sh-paper)!important}
+
+/* ---- the phone's filters and question box as on the desktop (user, 11 Nov 2026: "filters and chat need to match
+   desctop version") ---- The filters are the desktop's paper pills with a 1px ink outline, the words in their colours,
+   wrapping onto a second line rather than scrolling; the one on is an ink pill with paper text. The question box is the
+   desktop's: white, a thin grey outline, a soft shadow and round corners, with its buttons as small grey pills.
+   Supersedes the stone head bar of filter names and the stone foot bar of the question box. */
+@media (max-width:767px){
+  #gmChips:not(#sh-x){top:0!important;left:0!important;right:0!important;height:auto!important;min-height:0!important;margin:0!important;
+    padding:calc(8px + var(--safe-t,0px)) var(--sh-pad) 8px!important;display:flex!important;flex-wrap:wrap!important;gap:6px!important;overflow:visible!important;
+    background:var(--sh-paper)!important;border:0!important;box-shadow:none!important}
+  #gmChips .gm-filter-chip:not(#sh-x){flex:none!important;height:auto!important;min-height:0!important;margin:0!important;padding:.08em .55em .12em!important;
+    border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-paper)!important;box-shadow:none!important;outline:0!important;
+    font-size:calc(var(--sh-s) * .78)!important;line-height:1.25!important;white-space:nowrap!important;color:var(--sh-ink)!important}
+  #gmChips .gm-filter-chip.has-color:not(#sh-x){color:color-mix(in srgb,var(--layer-color) 62%,#000)!important}
+  #gmChips .gm-filter-chip.sh-grade-chip[data-grade="A"]:not(#sh-x){color:var(--tier-a,#007a80)!important}
+  #gmChips .gm-filter-chip.sh-grade-chip[data-grade="B"]:not(#sh-x){color:var(--tier-b,#b000b0)!important}
+  #gmChips .gm-filter-chip.sh-grade-chip[data-grade="U"]:not(#sh-x){color:var(--tier-u,#7a7000)!important}
+  #gmChips .gm-filter-chip:not(#sh-x)::after,#gmChips .gm-filter-chip:not(#sh-x)::before{content:none!important;display:none!important}
+  #gmChips .gm-filter-chip:not(#sh-x){font-style:normal!important}
+  #gmChips#gmChips .gm-filter-chip:not(#sh-x)[aria-pressed="true"]{background:var(--sh-ink)!important;border-color:var(--sh-ink)!important;color:var(--sh-paper)!important;font-style:normal!important}
+  :root.gm-map #layersControl:not(#sh-x){top:calc(var(--gmChips-h,40px) + 8px)!important}
+
+  #mobileStickyInputBar #mobileComposerCard:not(#sh-x){margin:var(--sh-pad) var(--sh-pad) 8px!important;padding:10px 12px 10px 16px!important;min-height:0!important;
+    background:var(--sh-paper)!important;border:1px solid var(--sh-box-line)!important;border-radius:22px!important;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(0,0,0,.06)!important}
+  #mobileStickyInputBar #mobileComposerCard:not(#sh-x):focus-within{border-color:var(--sh-box-line-on)!important;box-shadow:0 1px 2px rgba(0,0,0,.05),0 6px 18px rgba(0,0,0,.08)!important}
+  #mobileStickyInputBar #mobileComposerCard textarea:not(#sh-x){background:transparent!important;border:0!important;box-shadow:none!important;outline:0!important}
+  #mobileStickyInputBar #mobileComposerCard #mobileComposerActions button:not(#sh-x){border:0!important;border-radius:999px!important;background:var(--sh-pill-hover)!important;color:var(--sh-ink)!important;box-shadow:none!important}
+  #mobileStickyInputBar:not(#sh-x){background:var(--sh-paper)!important;border-top:0!important}
+}
 }
