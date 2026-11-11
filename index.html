@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=614">
-  <script src="assets/config.js?v=614"></script>
-  <script src="assets/subtopic.js?v=614"></script>
-  <script src="assets/names.js?v=614"></script>
-  <script src="assets/grounding.js?v=614"></script>
-  <script src="assets/repeats.js?v=614"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=615">
+  <script src="assets/config.js?v=615"></script>
+  <script src="assets/subtopic.js?v=615"></script>
+  <script src="assets/names.js?v=615"></script>
+  <script src="assets/grounding.js?v=615"></script>
+  <script src="assets/repeats.js?v=615"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -846,13 +846,26 @@ return maplibregl$1;
                 <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
                 <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
-                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" placeholder="Start typing the name of the space"></label>
+                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Start typing the name of the space"></label>
                 <datalist id="noteInstitutionList"></datalist>
-                <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" placeholder="Whistleblower"></label>
+                <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Whistleblower"></label>
               </div>
               <div id="noteInputBlock">
                 <label id="noteInputLabel" for="workInput">Your note</label>
-                <textarea id="workInput" rows="2" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+                <!-- Files attached to the note, as chips above the box (assets/note-files.js). -->
+                <ul id="noteFileList" aria-label="Attached files" hidden></ul>
+                <textarea id="workInput" rows="2" spellcheck="true" autocorrect="on" autocapitalize="sentences" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+                <!-- Writing aids, shown only while a note is written (assets/note-aids.js). Nothing is sent anywhere to check the text. -->
+                <p id="noteAidsRow">
+                  <label class="nf-aid" title="Backspace straight after a correction puts your spelling back"><input type="checkbox" id="noteAutoCorrect"><span>Correct spelling as I type</span></label>
+                  <span class="note-aid-btns">
+                    <button id="noteAttachBtn" type="button" title="Attach photos, screenshots or PDFs: up to 4 files, 5 MB each"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5l-8.6 8.6a5.5 5.5 0 0 1-7.8-7.8l8.6-8.6a3.7 3.7 0 0 1 5.2 5.2l-8.6 8.6a1.8 1.8 0 0 1-2.6-2.6l7.9-7.9"/></svg>Attach</button>
+                    <button id="noteDictateBtn" type="button" aria-pressed="false" hidden>Dictate</button>
+                  </span>
+                  <input id="noteFileInput" type="file" multiple accept="image/jpeg,image/png,image/webp,image/heic,image/heif,application/pdf" hidden>
+                </p>
+                <p id="noteFileInfo" role="status" aria-live="polite" hidden></p>
+                <p id="noteDictateInfo" role="status" aria-live="polite" hidden></p>
               </div>
               <div id="noteAckRow"><label class="nf-check"><input type="checkbox" id="noteAck"><span>I have left out my name and anything that identifies me.*</span></label></div>
               <p id="noteFormStatus" role="status" aria-live="polite"></p>
@@ -1113,7 +1126,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=614"></script>
+  <script src="assets/institutions.js?v=615"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10323,11 +10336,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v614';
+    const ATLAS_RELEASE = 'culture-atlas-v615';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=614').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=615').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12455,6 +12468,22 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const d = new Date(iso);
       return Number.isNaN(d.getTime()) ? null : { iso: d.toISOString().slice(0, 10), text: d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) };
     };
+    // Files the editor approved with a review: photos as thumbnails, PDFs as a link. Each opens the file in a new tab.
+    function reviewFilesHtml(files) {
+      if (!Array.isArray(files) || !files.length) return '';
+      const fileSize = (n) => n >= 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`;
+      const photos = files.filter(f => /^image\//.test(f.type)).length;
+      let photo = 0;
+      return `<div class="review-files">${files.map(f => {
+        const url = `${ATLAS_REPORT_API_URL}/api/files/${encodeURIComponent(f.id)}`;
+        if (/^image\//.test(f.type)) {
+          photo += 1;
+          const alt = photos > 1 ? `Photo ${photo} of ${photos} sent with this review` : 'Photo sent with this review';
+          return `<a class="review-file review-photo" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"><img src="${escapeHtml(url)}" alt="${alt}" loading="lazy" decoding="async"></a>`;
+        }
+        return `<a class="review-file review-doc" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"><span class="review-doc-tile" aria-hidden="true">PDF</span><span>Document, ${fileSize(Number(f.size) || 0)}</span></a>`;
+      }).join('')}</div>`;
+    }
     function placeReviewListHtml(placeId) {
       const state = PLACE_REVIEWS.get(placeId);
       // A row that only says the reviews failed to load, or that there are none, carries no information (user, 3 Nov 2026): it is hidden instead.
@@ -12469,6 +12498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             <div><span class="review-name">${escapeHtml(label)}</span>${d ? `<time class="review-date" datetime="${d.iso}">${d.text}</time>` : ''}</div>
           </div>
           <p class="t-lead no-indent review-text">${escapeHtml(r.content)}</p>
+          ${reviewFilesHtml(r.files)}
         </article>`;
       }).join('')}`;
     }
@@ -18359,10 +18389,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const body = { content };
       const label = (document.getElementById('noteAuthor').value || '').trim();
       if (label) body.authorLabel = label;
+      const noteFiles = window.atlasNoteFiles;
+      if (noteFiles && noteFiles.busy()) return fail('A file is still being prepared. Send again in a moment.');
       const sendBtn = document.getElementById('workSendBtn');
       if (sendBtn) sendBtn.disabled = true;
-      status.textContent = 'Sending…';
+      status.textContent = noteFiles && noteFiles.count() ? 'Sending the note and its files…' : 'Sending…';
       try {
+        if (noteFiles && noteFiles.count()) body.files = await noteFiles.payload();
         const res = await fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -18372,6 +18405,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (!res.ok) throw new Error(out.error || 'The server did not take it.');
         input.value = '';
         document.getElementById('noteAuthor').value = '';
+        if (noteFiles) noteFiles.clear();
         ack.checked = false;
         syncNoteReady();
         status.textContent = '';
@@ -18383,7 +18417,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         `, [], null, null, false);
         scrollChatToBottom(true);
       } catch (err) {
-        status.textContent = `Not sent: ${err.message || 'no connection'}. Your note is still in the box.`;
+        status.textContent = `Not sent: ${err.message || 'no connection'}. Your note${noteFiles && noteFiles.count() ? ' and its files are' : ' is'} still in the box.`;
       } finally {
         if (sendBtn) sendBtn.disabled = false;
       }
@@ -21440,13 +21474,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=614"></script>
-<script src="assets/funding-views.js?v=614"></script>
-<script src="assets/layers.js?v=614"></script>
-<script src="assets/hq-detail.js?v=614"></script>
-<script src="assets/bubbles.js?v=614" defer></script>
-<script src="assets/phone-maps.js?v=614"></script>
-<script src="assets/desktop-maps.js?v=614"></script>
-<script src="assets/chat-resize.js?v=614"></script>
+<script src="assets/typeset.js?v=615"></script>
+<script src="assets/note-aids.js?v=615" defer></script>
+<script src="assets/note-files.js?v=615" defer></script>
+<script src="assets/funding-views.js?v=615"></script>
+<script src="assets/layers.js?v=615"></script>
+<script src="assets/hq-detail.js?v=615"></script>
+<script src="assets/bubbles.js?v=615" defer></script>
+<script src="assets/phone-maps.js?v=615"></script>
+<script src="assets/desktop-maps.js?v=615"></script>
+<script src="assets/chat-resize.js?v=615"></script>
 </body>
 </html>
