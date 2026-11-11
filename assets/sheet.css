@@ -1008,11 +1008,13 @@ details.chat-info[open]>summary::before{content:"– "!important}
 }
 
 /* A record's action buttons are small grey pills with ink text, after abcdinamo.com's "Forgot your password?" and
-   "Register" (user, 11 Nov 2026: "make these smaller and like this"). Supersedes the ink pills of release 652 for them. */
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x){font-size:calc(var(--sh-s) * .8)!important;line-height:1.2!important;min-height:0!important;padding:.3em .65em!important;border:0!important;border-radius:999px!important;background:var(--sh-pill)!important;color:var(--sh-ink)!important;outline:0!important}
+   "Register" (user, 11 Nov 2026: "make these smaller and like this"). Supersedes the ink pills of release 652 for them.
+   Their ground is the stone of the bars, not grey (user, 11 Nov 2026: "make these this color", a swatch of the head bar);
+   hover darkens it 15% toward the ink. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x){font-size:calc(var(--sh-s) * .8)!important;line-height:1.2!important;min-height:0!important;padding:.3em .65em!important;border:0!important;border-radius:999px!important;background:var(--sh-stone)!important;color:var(--sh-ink)!important;outline:0!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x), :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x) *{color:var(--sh-ink)!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x) *{font-size:inherit!important;line-height:inherit!important}
-:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x):is(:hover,:focus-visible){background:var(--sh-pill-hover)!important;border:0!important;outline:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-stone) 85%,var(--sh-ink))!important;border:0!important;outline:0!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
 
 /* The question box is a grey pill with a small darker pill inside at its right, after abcdinamo.com's "ABC Schengen /
