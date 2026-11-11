@@ -45,13 +45,13 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=617">
-  <link rel="stylesheet" href="assets/palace.css?v=617">
-  <script src="assets/config.js?v=617"></script>
-  <script src="assets/subtopic.js?v=617"></script>
-  <script src="assets/names.js?v=617"></script>
-  <script src="assets/grounding.js?v=617"></script>
-  <script src="assets/repeats.js?v=617"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=618">
+  <link rel="stylesheet" href="assets/sheet.css?v=618">
+  <script src="assets/config.js?v=618"></script>
+  <script src="assets/subtopic.js?v=618"></script>
+  <script src="assets/names.js?v=618"></script>
+  <script src="assets/grounding.js?v=618"></script>
+  <script src="assets/repeats.js?v=618"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1128,7 +1128,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=617"></script>
+  <script src="assets/institutions.js?v=618"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7305,7 +7305,7 @@ return maplibregl$1;
       try { layers = (map.getStyle() || {}).layers || []; } catch (e) { return; }
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
       // Gossip mode: Displaay's lime with black lines; on the dark theme a dark green with lime lines (user, 4 Nov 2026).
-      // THE PALACE SHEET: the sheet's paper and its grey rule (#787878), in both themes.
+      // THE SHEET: the sheet's paper and its grey rule (#787878), in both themes.
       const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#e2f86c') : dark ? '#151412' : '#ffffff';
       // Outside gossip mode the lines are 50% grey in both themes (user, 6 Nov 2026: near-black lines made the map busy). They are
       // decoration, not text: the place names keep full ink (`label`), as before.
@@ -10341,11 +10341,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v617';
+    const ATLAS_RELEASE = 'culture-atlas-v618';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=617').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=618').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10844,10 +10844,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
 
     // Canvas type for the cards: Jokker Thin for names (a space's in capitals, a city's in normal case), Jokker Regular for facts.
-    // THE PALACE SHEET (assets/palace.css; user, 10 Nov 2026): the map is set in the sheet's serif, in its two sizes, 15px for
+    // THE SHEET (assets/sheet.css; user, 10 Nov 2026): the map is set in the sheet's serif, in its two sizes, 15px for
     // every name and 28px for the name on a card, one weight. Names keep their capitals (user, 10 Nov 2026: "bring capitals back").
     const ATLAS_SERIF = '"Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
-    // The card takes the sheet's measures: the Palace site's, times 1.4 (39 on 45 for a name, 21 on 27 for text).
+    // The card takes the sheet's measures: the sheet's, times 1.4 (39 on 45 for a name, 21 on 27 for text).
     const ATLAS_CARD_TITLE_FONT = '400 39px ' + ATLAS_SERIF;
     const ATLAS_CARD_NAME_FONT = '400 39px ' + ATLAS_SERIF;
     const atlasLabelWeight = () => 400;
@@ -10863,7 +10863,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const ATLAS_CARD_LABEL_FONT = '400 21px ' + ATLAS_SERIF;
     if (document.fonts && document.fonts.load) {
       document.fonts.load(ATLAS_CARD_TITLE_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
-      // The serif comes in subsets (assets/palace.css). The Latin ones are asked for now, with the italic; any other loads when
+      // The serif comes in subsets (assets/sheet.css). The Latin ones are asked for now, with the italic; any other loads when
       // a name first needs it, and the map is drawn again when it arrives, so no name stays in the fallback face.
       document.fonts.load(atlasMonoFont(), 'a\u00e3\u0142').catch(() => {});
       document.fonts.load('italic ' + atlasMonoFont()).catch(() => {});
@@ -10898,7 +10898,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // action as a button with the buttons' 10px corners and 1px edge, stretched across the card's measure ("button can be
     // stretched"), filled with ink while the pointer is on it. Returns where the card and its button were drawn.
     function drawAtlasCard(ctx, card, px, py, width) {
-      // THE PALACE SHEET (user, 10 Nov 2026): the card is a piece of the sheet. The place is centred on a stone band, as the
+      // THE SHEET (user, 10 Nov 2026): the card is a piece of the sheet. The place is centred on a stone band, as the
       // sheet's section heads are; the name is in the large size; the description is in the text size on its 19px line, up
       // to three lines, with its capitals; the link is a line that opens with an en dash and goes stone under the pointer.
       // A square edge in the sheet's grey rule, no corners, no button.
@@ -10916,7 +10916,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // The action of a card that is itself the button ("Click to explore") is the card's last line, centred, with an
       // arrow after it (user, 10 Nov 2026: "click to explore need to go to the bottom", then "center and add arrow").
       const actionText = card.action ? String(card.action) + ' \u2192' : '';
-      // What the pointer is on turns the poster's blue (assets/palace.css, --pe-hover).
+      // What the pointer is on turns the poster's blue (assets/sheet.css, --sh-hover).
       const cardHover = '#59a0f1';
       const padX = 22, padY = 22;
       const cardW = Math.min(460, width - 28);
@@ -11125,7 +11125,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const GLOBE_LIGHT = document.documentElement.getAttribute('data-theme') !== 'dark'; // gossip mode follows the theme: yellow on the dark ground, ink on the light one
       // Gossip mode on the dark ground: the globe's ground is the Gossip button's dark green.
       const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
-      // THE PALACE SHEET: white water, land a light tint of the sand stone (#f4edd6, 40% of #e3d198 on white; user,
+      // THE SHEET: white water, land a light tint of the sand stone (#f4edd6, 40% of #e3d198 on white; user,
       // 10 Nov 2026: "Land lighter"), the sheet's grey rule for every line, black names. The dark sheet is the same stone turned over.
       const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#1e4d2b' : '#151412'), G_LAND = GLOBE_LIGHT ? '#f4edd6' : (GOSSIP_DARK ? '#275c36' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#9db8a4' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#d0c8b8' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e3d198' : '#2b2925', G_QUIET = '#808080';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
@@ -11335,7 +11335,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               }
             }
             if (crossesSeam) {
-              // The land is filled (THE PALACE SHEET), so a ring over the seam is filled too: its oblique longitudes are
+              // The land is filled (THE SHEET), so a ring over the seam is filled too: its oblique longitudes are
               // unwound into one run, and the run is drawn once for each edge of the map, held at the edge where it leaves.
               // A ring that goes right round (the land at a pole) is closed along the pole's line.
               const nP = proj.length, run = new Array(nP), TAU = Math.PI * 2, kS = wtScale(r);
@@ -11478,7 +11478,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         };
         // The type and outline colour of a city label, and of the card it opens into.
         const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2f6b12' : '#e2f86c') : tierInk(tier, GLOBE_LIGHT);
-        // THE PALACE SHEET: no pill, no outline and no dot. A name is type in the colour of its grade on a strip of the
+        // THE SHEET: no pill, no outline and no dot. A name is type in the colour of its grade on a strip of the
         // sheet's paper (user, 10 Nov 2026: "just colored text ... and color spases as well"); the selected name is in ink
         // on a stone band with the grey rule round it. The strip is the size the old pill was (the name's width + 28, or
         // + ATLAS_SEL_PAD; 22 or ATLAS_SEL_H high), so every hit box holds.
@@ -11539,9 +11539,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         }
         try {
           const cRect = canvas.getBoundingClientRect();
-          // peTagline: the block that says what the atlas is, at the map's top right (assets/desktop-maps.js).
+          // shTagline: the block that says what the atlas is, at the map's top right (assets/desktop-maps.js).
           // gmdChips: the filter pills at the map's top left. getClientRects, not offsetParent, so fixed boxes count too.
-          ['mobileFilterChipsSection', 'desktopGlobeTopControls', 'zoomControls', 'layersControl', 'dossier-bottom-sheet', 'peTagline', 'gmdChips', 'peStrip'].forEach(id => {
+          ['mobileFilterChipsSection', 'desktopGlobeTopControls', 'zoomControls', 'layersControl', 'dossier-bottom-sheet', 'shTagline', 'gmdChips', 'shStrip'].forEach(id => {
             const el = document.getElementById(id);
             if (!el || !el.getClientRects().length) return;
             const b = el.getBoundingClientRect();
@@ -21613,15 +21613,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=617"></script>
-<script src="assets/note-aids.js?v=617" defer></script>
-<script src="assets/note-files.js?v=617" defer></script>
-<script src="assets/funding-views.js?v=617"></script>
-<script src="assets/layers.js?v=617"></script>
-<script src="assets/hq-detail.js?v=617"></script>
-<script src="assets/bubbles.js?v=617" defer></script>
-<script src="assets/phone-maps.js?v=617"></script>
-<script src="assets/desktop-maps.js?v=617"></script>
-<script src="assets/chat-resize.js?v=617"></script>
+<script src="assets/typeset.js?v=618"></script>
+<script src="assets/note-aids.js?v=618" defer></script>
+<script src="assets/note-files.js?v=618" defer></script>
+<script src="assets/funding-views.js?v=618"></script>
+<script src="assets/layers.js?v=618"></script>
+<script src="assets/hq-detail.js?v=618"></script>
+<script src="assets/bubbles.js?v=618" defer></script>
+<script src="assets/phone-maps.js?v=618"></script>
+<script src="assets/desktop-maps.js?v=618"></script>
+<script src="assets/chat-resize.js?v=618"></script>
 </body>
 </html>

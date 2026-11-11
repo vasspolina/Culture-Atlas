@@ -11,7 +11,7 @@
   var mq = window.matchMedia('(min-width: 768px)');
   var root = document.documentElement, handle = null, raf = 0;
 
-  // The index column at the left (assets/palace.css, --pe-col): a quarter of a window 1080px or wider.
+  // The index column at the left (assets/sheet.css, --sh-col): a quarter of a window 1080px or wider.
   function indexW() { return window.innerWidth >= 1080 ? window.innerWidth * 0.25 : 0; }
   function maxW() { return window.innerWidth; }
   function clamp(w) { return Math.round(Math.min(maxW(), Math.max(MIN, w))); }
@@ -76,15 +76,15 @@
   window.atlasChatToFull = toFull;
   function buildBack() {
     var bar = document.getElementById('workspaceContextTabBar');
-    if (!bar || document.getElementById('peBackToMap')) return;
+    if (!bar || document.getElementById('shBackToMap')) return;
     var b = document.createElement('button');
     b.type = 'button';
-    b.id = 'peBackToMap';
+    b.id = 'shBackToMap';
     b.textContent = '\u2039 Back to map';
     b.addEventListener('click', toMap);
     var x = document.createElement('button');
     x.type = 'button';
-    x.id = 'peExpandChat';
+    x.id = 'shExpandChat';
     x.textContent = 'Expand chat';
     x.setAttribute('aria-label', 'Expand the chat to the whole window');
     x.addEventListener('click', toFull);
