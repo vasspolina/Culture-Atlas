@@ -249,10 +249,64 @@
     panel.hidden = true; panel.replaceChildren();
     if (panel.parentElement) panel.parentElement.classList.remove('is-hq');
     const sheet = document.getElementById('dossier-bottom-sheet'); if (sheet) sheet.classList.remove('is-hq-sheet');
-    openFor = null; hq().select(null);
+    openFor = null; if (hq()) hq().select(null);
+    if (window.atlasPlacePin) { window.atlasPlacePin = null; if (window.atlasDropPinRefresh) window.atlasDropPinRefresh(); }
     if (restore && openFrom && openFrom.isConnected) openFrom.focus();
     openFrom = null;
   }
+  // ---- A city's place sheet ----
+  // A tap on a city opens its sheet, as a maps app opens a place's (user, 11 Nov 2026: "when a place or pin drops the info
+  // shows in sheet not like on hover"). It takes the funder's record's panel and host, so it sits in the Details tab: the
+  // right column on a desktop, the record sheet at its peek height on a phone. It holds what the city's hover slip held:
+  // the city, its country, and its spaces by name, the large ones first, each a button that opens that space's record.
+  const SIZE_RANK = { XL: 0, L: 1, M: 2, S: 3, XS: 4 };
+  function fillPlace(c) {
+    const p = panel;
+    const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this place' });
+    close.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    close.addEventListener('click', () => closeRecord(true));
+    const title = h('div', { class: 'hq-head' }, h('div', null, h('p', { class: 'hq-kind', text: 'City' }), h('h2', { id: 'hqPanelTitle', class: 'dossier-main-heading', text: c.name })), close);
+    const ask = h('button', { type: 'button', class: 'record-action', text: 'Ask in chat' });
+    ask.addEventListener('click', () => {
+      const fn = window.atlasAskInChat || window.atlasAskCurator;
+      if (typeof fn === 'function') fn(`What should I know about the spaces in ${c.name}?`);
+    });
+    const n = c.spaces.length;
+    const info = row('hqInfoT', c.country || 'Place', `${n} ${n === 1 ? 'space' : 'spaces'} on the atlas`, null);
+    const head = h('div', { class: 'record-head head-sheet rule-b hq-sheet' }, title,
+      h('div', { class: 'head-grid' }, h('div', { class: 'head-side record-actions record-action-row' }, ask), h('div', { class: 'head-main' }, h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Info' }, info))));
+    const rows = h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Spaces' });
+    if (n) rows.append(row('hqConnSpaces', 'Spaces', '', listOf(c.spaces, inst => {
+      const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: inst.shortName || inst.name }), h('span', { class: 'hq-s', text: [inst.neighborhood, inst.category].filter(Boolean).join(' · ') }));
+      b.addEventListener('click', () => { if (typeof window.selectInstitution === 'function') window.selectInstitution(inst, false); });
+      return h('li', null, b);
+    }, LIST_SHOWN)));
+    p.replaceChildren(head, rows);
+    p.scrollTop = 0;
+  }
+  window.atlasPlaceOpen = function (cityName) {
+    if (!cityName || cityName === 'all') return;
+    const g = n => { try { return (0, eval)(n); } catch (_) { return undefined; } };
+    const cities = g('ALL_CITIES_REGISTRY') || [], all = g('ALL_INSTITUTIONS') || [];
+    const same = (a, b) => String(a || '').trim().toLowerCase() === String(b || '').trim().toLowerCase();
+    const meta = cities.find(c => same(c.name, cityName)) || { name: cityName };
+    const spaces = all.filter(i => same(i.city, meta.name)).map((inst, k) => ({ inst, k }))
+      .sort((a, b) => ((SIZE_RANK[a.inst.size] ?? 5) - (SIZE_RANK[b.inst.size] ?? 5)) || (a.k - b.k)).map(o => o.inst);
+    const p = ensurePanel(); if (!p) return;
+    closeChooser(false);
+    openFrom = null;
+    openFor = { place: meta.name };
+    if (hq()) hq().select(null);
+    let lon = Number(meta.lon), lat = Number(meta.lat);
+    if (!isFinite(lon) || !isFinite(lat)) { const s0 = spaces.find(i => isFinite(Number(i.lon)) && isFinite(Number(i.lat))); if (s0) { lon = Number(s0.lon); lat = Number(s0.lat); } }
+    window.atlasPlacePin = isFinite(lon) && isFinite(lat) ? { name: meta.name, lon, lat } : null;
+    if (window.atlasDropPinRefresh) window.atlasDropPinRefresh();
+    fillPlace({ name: meta.name, country: meta.country ? String(meta.country).trim() : '', spaces });
+    p.hidden = false;
+    showDetails(p.parentElement);
+  };
+  window.atlasPlaceIsOpen = () => !!(openFor && openFor.place);
+
   // Choosing a space (on the map, in the chat, or from a connection in this record) puts that space's record in the tab.
   window.atlasHqClose = () => closeRecord(false);
   // A click on a funding line (assets/layers.js) opens the line's funder here, with or without a mapped office.

@@ -4978,3 +4978,15 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 .review-doc{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;padding:6px 12px 6px 6px;border:.8px solid var(--line);color:inherit;text-decoration:none;font:400 var(--fs-s)/1.2 var(--sans)}
 .review-doc-tile{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--ink);color:var(--paper);font:400 11px/1 var(--sans);letter-spacing:.04em}
 #workInputCard #noteFileList .note-file{border-color:currentColor!important}
+
+/* DROPPED PIN (user, 11 Nov 2026: "make map in cultural atlas work similar to Google Maps"). The place whose sheet is open
+   gets one pin, as a maps app drops one: on the globe it is drawn on the card layer (drawDroppedPin in index.html), on the
+   street map it is this marker. Ink with a hole in the paper and a 1px paper edge, so it reads on hairlines and land in both
+   themes; it falls into place, and with reduced motion it is simply there. It takes no clicks: the space's badge under it does. */
+.atlas-drop-pin{pointer-events:none;z-index:3;line-height:0}
+.atlas-drop-pin svg{display:block;overflow:visible}
+.atlas-drop-pin path{fill:var(--ink);stroke:var(--paper);stroke-width:1}
+.atlas-drop-pin circle{fill:var(--paper)}
+.atlas-drop-pin.is-dropping svg{animation:atlas-pin-drop .22s cubic-bezier(.3,0,.6,1) both}
+@keyframes atlas-pin-drop{from{transform:translateY(-14px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.atlas-drop-pin.is-dropping svg{animation:none}}
