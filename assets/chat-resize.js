@@ -7,17 +7,19 @@
   // The usual width is 48% of the screen, 420 to 860px, as --gmd-w in atlas.css says: wide enough for the reported items' two
   // columns (user, 4 Nov 2026). The CSS value is a clamp(), which reads back unresolved, so the same sum is done here.
   var MIN = 360, KEY = 'atlasChatWidth', userSet = false;
-  function DEFW() { return window.innerWidth < 1024 ? 360 : Math.round(Math.min(860, Math.max(420, window.innerWidth * 0.48))); }
+  function DEFW() { return window.innerWidth < 1024 ? 360 : Math.round(Math.min(860, Math.max(360, window.innerWidth * 0.25))); }
   var mq = window.matchMedia('(min-width: 768px)');
   var root = document.documentElement, handle = null, raf = 0;
 
+  // The index column at the left (assets/palace.css, --pe-col): a quarter of a window 1080px or wider.
+  function indexW() { return window.innerWidth >= 1080 ? window.innerWidth * 0.25 : 0; }
   function maxW() { return window.innerWidth; }
   function clamp(w) { return Math.round(Math.min(maxW(), Math.max(MIN, w))); }
   function current() { var v = parseFloat(getComputedStyle(root).getPropertyValue('--gmd-w')); return isNaN(v) ? DEFW() : v; }
   function apply(w, save) {
     w = clamp(w);
     root.style.setProperty('--gmd-w', w + 'px');
-    root.classList.toggle('chat-wide', window.innerWidth - w < 240);
+    root.classList.toggle('chat-wide', window.innerWidth - w - indexW() < 240);
     root.classList.toggle('chat-full', w >= maxW());
     if (handle) { handle.setAttribute('aria-valuenow', String(w)); handle.setAttribute('aria-valuemax', String(maxW())); handle.setAttribute('aria-valuetext', w >= maxW() ? 'Full screen' : w + ' pixels wide'); }
     if (save) { userSet = true; try { localStorage.setItem(KEY, String(w)); } catch (e) {} }
@@ -59,9 +61,41 @@
     });
   }
 
+  // Back to the map from a chat that covers it (user, 10 Nov 2026: "i do not see the back to map button that will lead back
+  // to full mode map"): a button at the head of the panel's pages, shown while the map is covered (html.chat-wide), puts the
+  // column back to its usual width and lets that width follow the window again.
+  function toMap() {
+    userSet = false;
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    apply(DEFW(), false);
+  }
+  window.atlasChatToMap = toMap;
+  // And the other way (user, 10 Nov 2026: "add button to expand the chat to full mode"): "Expand chat" in the same place
+  // while the map is in sight takes the column to the whole window, and the width is kept for the next visit.
+  function toFull() { apply(maxW(), true); }
+  window.atlasChatToFull = toFull;
+  function buildBack() {
+    var bar = document.getElementById('workspaceContextTabBar');
+    if (!bar || document.getElementById('peBackToMap')) return;
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.id = 'peBackToMap';
+    b.textContent = '\u2039 Back to map';
+    b.addEventListener('click', toMap);
+    var x = document.createElement('button');
+    x.type = 'button';
+    x.id = 'peExpandChat';
+    x.textContent = 'Expand chat';
+    x.setAttribute('aria-label', 'Expand the chat to the whole window');
+    x.addEventListener('click', toFull);
+    bar.insertBefore(x, bar.firstChild);
+    bar.insertBefore(b, bar.firstChild);
+  }
+
   function start() {
     if (!mq.matches) return;
     build();
+    buildBack();
     var saved = 0;
     try { saved = parseFloat(localStorage.getItem(KEY)) || 0; } catch (e) {}
     userSet = !!saved;

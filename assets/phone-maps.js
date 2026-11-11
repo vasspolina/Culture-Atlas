@@ -1302,6 +1302,9 @@
         const alerts = list.filter(isAlert);
         paintStrip(list, alerts);
         paintMarks(alerts);
+        // The reports are also listed in the desktop sheet's index column (assets/desktop-maps.js): it reads them from here.
+        window.atlasReports = list.map((x) => ({ key: x.key, head: x.head, space: x.inst && x.inst.name, when: ago(x.when), alert: isAlert(x) }));
+        document.dispatchEvent(new CustomEvent('atlas:reports'));
         return alerts;
       }
       // New alerts since the visitor last looked: said on the page, and as a notification if they asked for one. The first

@@ -273,6 +273,278 @@
     placeLocate();
     window.addEventListener('resize', placeLocate);
 
+    // ---- The index column's list of places (THE PALACE SHEET; user, 10 Nov 2026: "Yes, build both") ---------------------
+    // The column at the left is the sheet's index. Under the search line, the filters and Layers it lists the places the
+    // map is showing: every city with its count at the world view, a country's cities inside a country, a city's spaces
+    // (each with a dot in its grade's colour) inside a city. A filter that is on narrows the list as it narrows the map.
+    // A click on a city opens it as a click on its name on the map does; a click on a space opens its record.
+    const idx = document.createElement('nav');
+    idx.id = 'peIndex';
+    idx.setAttribute('aria-labelledby', 'peIndexTitle');
+    idx.innerHTML = '<h2 id="peIndexTitle" class="pe-index-title title-small"></h2><input id="peIndexFind" type="text" autocomplete="off" spellcheck="false" aria-label="Find in this list"><ul class="pe-index-list"></ul>';
+    document.body.appendChild(idx);
+    const idxTitle = idx.querySelector('h2'), idxList = idx.querySelector('ul');
+    // A line to find a name in the list (user, 10 Nov 2026: "add search here"): the list narrows as you type, Enter opens
+    // the first name left, Escape clears. It is emptied when the list changes from cities to a city's spaces or back.
+    const idxFind = idx.querySelector('input');
+    let idxQuery = '', idxScope = '';
+    idxFind.addEventListener('input', () => { idxQuery = idxFind.value; renderIndex(true); });
+    idxFind.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); const first = idxList.querySelector('.pe-index-row:not(.pe-index-back)'); if (first) first.click(); }
+      else if (e.key === 'Escape' && idxFind.value) { e.preventDefault(); idxFind.value = ''; idxQuery = ''; renderIndex(true); }
+    });
+    // (A title block stood over the list, the place in large italic with its counts; the user had it deleted, 10 Nov 2026.
+    // The list's band says what it lists and how many.)
+    const plural = (n, one, many) => n.toLocaleString('en-GB') + ' ' + (n === 1 ? one : many);
+    const low = (v) => String(v || '').toLowerCase().trim();
+    let byCity = null;
+    function cityIndex() {
+      if (byCity) return byCity;
+      const insts = g('ALL_INSTITUTIONS') || [];
+      if (!insts.length) return null;
+      byCity = new Map();
+      insts.forEach((i) => { if (!i || !i.name) return; const k = low(i.city); if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(i); });
+      return byCity;
+    }
+    const idxRow = (name, right, tier, current, fn) => {
+      const li = document.createElement('li');
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'pe-index-row';
+      if (tier) { b.dataset.tier = tier; const d = document.createElement('i'); d.className = 'pe-index-dot'; d.setAttribute('aria-hidden', 'true'); b.appendChild(d); }
+      const n = document.createElement('span'); n.className = 'pe-index-name'; n.textContent = name; b.appendChild(n);
+      if (right !== '') { const c = document.createElement('span'); c.className = 'pe-index-count'; c.textContent = right; b.appendChild(c); }
+      if (current) b.setAttribute('aria-current', 'true');
+      b.addEventListener('click', fn);
+      li.appendChild(b);
+      return li;
+    };
+    let idxKey = '';
+    function renderIndex(force) {
+      if (!DESK()) return;
+      // The colour key and the filters set where the list starts and stops; both are measured here, not observed, so the
+      // list is placed even while the window is in the background.
+      const key = $('mapColourKey'), chipsEl = $('gmdChips');
+      if (key) root.style.setProperty('--pe-key-h', key.offsetHeight + 'px');
+      if (chipsEl && chipsEl.offsetHeight) root.style.setProperty('--pe-chips-h', chipsEl.offsetHeight + 'px');
+      const map = cityIndex();
+      if (!map) return;
+      const country = g('selectedCountryFilter'), city = g('selectedCityFilter'), sel = g('selectedInstitution');
+      const filter = typeof window.atlasSpaceFilter === 'function' ? window.atlasSpaceFilter() : null;
+      const keep = typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
+      const grade = typeof window.atlasGradeFilter === 'function' ? window.atlasGradeFilter() : null;
+      const scope = country + '|' + city;
+      if (scope !== idxScope) { idxScope = scope; idxQuery = ''; idxFind.value = ''; }
+      const k = [country, city, sel && sel.name, filter, grade, keep ? 1 : 0, typeof window.atlasLayerKeep, idxQuery].join('|');
+      if (!force && k === idxKey) return;
+      idxKey = k;
+      const q = norm(idxQuery).trim();
+      const hit = (name) => !q || norm(name).includes(q);
+      const back = () => { const li = idxRow('‹ World', '', '', false, () => { const b = $('backToWorldBtn'); if (b) b.click(); }); li.firstChild.classList.add('pe-index-back'); return li; };
+      const frag = document.createDocumentFragment();
+      const inCity = city && city !== 'all', inCountry = !inCity && country && country !== 'all';
+      if (inCity) {
+        const all = (map.get(low(city)) || []).filter((i) => !keep || keep(i)).sort((a, b) => a.name.localeCompare(b.name));
+        const list = all.filter((i) => hit(i.name));
+        idxFind.placeholder = 'Find a space';
+        idxTitle.textContent = city + ', ' + plural(all.length, 'space', 'spaces');
+        if (!q) frag.appendChild(back());
+        list.forEach((i) => frag.appendChild(idxRow(i.name, '', i.tier === 'A' || i.tier === 'B' ? i.tier : 'U', !!sel && sel.name === i.name, () => {
+          const pick = g('selectInstitution'); if (typeof pick === 'function') pick(i, false);
+        })));
+      } else {
+        const match = g('matchC');
+        const same = (a, b) => typeof match === 'function' ? match(a, b) : low(a) === low(b);
+        const cities = (g('ALL_CITIES_REGISTRY') || []).filter((c) => c && c.name && (!inCountry || same(c.country, country)));
+        const rows = cities.map((c) => { const all = map.get(low(c.name)) || []; return { c, n: keep ? all.filter(keep).length : (all.length || c.count || 0) }; })
+          .filter((x) => x.n > 0).sort((a, b) => b.n - a.n || a.c.name.localeCompare(b.c.name));
+        idxTitle.textContent = (inCountry ? country + ', ' : '') + plural(rows.length, 'city', 'cities');
+        idxFind.placeholder = 'Find a city';
+        if (inCountry && !q) frag.appendChild(back());
+        rows.filter((x) => hit(x.c.name)).forEach((x) => frag.appendChild(idxRow(x.c.name, String(x.n), '', false, () => {
+          const open = g('filterByCity'); if (typeof open === 'function') open(x.c.name, true, true);
+        })));
+      }
+      idxList.replaceChildren(frag);
+      const cur = !q && idxList.querySelector('[aria-current="true"]');
+      if (cur && cur.scrollIntoView) cur.scrollIntoView({ block: 'nearest' });
+      else idxList.scrollTop = 0;
+    }
+    document.addEventListener('atlas:filter', () => renderIndex(true));
+    window.addEventListener('resize', () => renderIndex(false));
+    // The map's state (country, city, the open space) lives in the page's script and has no event: look twice a second.
+    setInterval(() => renderIndex(false), 500);
+    renderIndex(true);
+
+    // ---- The latest reports, in the index column (THE PALACE SHEET; user, 10 Nov 2026: "pull articles on the left as
+    // well, no need bottom button") ---------------------------------------------------------------------------------------
+    // The reports the foot bar's strip used to name one at a time are listed under the places, every one of them, newest
+    // first, in a list that scrolls (user, 10 Nov 2026: "reports also need to be able to scroll"): each its headline on up
+    // to two lines and, indented, how long ago and its space. A report opens the reports panel at it; the line under the
+    // list opens them all. The list comes from assets/phone-maps.js (window.atlasReports), which also keeps the panel.
+    const rep = document.createElement('nav');
+    rep.id = 'peReports';
+    rep.setAttribute('aria-labelledby', 'peReportsTitle');
+    rep.innerHTML = '<h2 id="peReportsTitle" class="pe-reports-title title-small">Latest reports</h2><ul class="pe-reports-list"></ul><div class="pe-reports-foot"></div>';
+    document.body.appendChild(rep);
+    const repList = rep.querySelector('ul'), repFoot = rep.querySelector('.pe-reports-foot');
+    const openReport = (key) => { if (typeof window.atlasOpenTopStory === 'function') window.atlasOpenTopStory(key); };
+    let repKey = '';
+    function renderReports() {
+      const all = Array.isArray(window.atlasReports) ? window.atlasReports : [];
+      rep.hidden = !all.length;
+      const k = all.map((x) => x.key).join('|');
+      if (k === repKey) return;
+      repKey = k;
+      const frag = document.createDocumentFragment();
+      all.forEach((x) => {
+        const li = document.createElement('li');
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'pe-report' + (x.alert ? ' is-alert' : '');
+        b.title = x.head;
+        const h = document.createElement('span'); h.className = 'pe-report-head'; h.textContent = x.head; b.appendChild(h);
+        const m = document.createElement('span'); m.className = 'pe-report-meta'; m.textContent = [x.when, x.space].filter(Boolean).join(', '); b.appendChild(m);
+        b.addEventListener('click', () => openReport(x.key));
+        li.appendChild(b);
+        frag.appendChild(li);
+      });
+      repList.replaceChildren(frag);
+      repList.scrollTop = 0;
+      const allBtn = document.createElement('button');
+      allBtn.type = 'button';
+      allBtn.className = 'pe-report-all';
+      allBtn.textContent = 'All reports, ' + all.length;
+      allBtn.addEventListener('click', () => openReport());
+      repFoot.replaceChildren(allBtn);
+    }
+    document.addEventListener('atlas:reports', renderReports);
+    renderReports();
+
+    // ---- What the atlas is, at the map's top right (user, 10 Nov 2026: "use this typesetting but with times to put tagline
+    // and explain what atlas does in right corner of the map space") ------------------------------------------------------
+    // Set as the "A Chess and Music Evening" poster sets its line-up, flush right: the counts underlined with a small italic
+    // "in" between them, the tagline in italic, then each thing the atlas does as a small italic lead-in before a large
+    // phrase. The counts are the atlas's own: its spaces, and the cities the list of places shows.
+    const tag = document.createElement('div');
+    tag.id = 'peTagline';
+    tag.setAttribute('role', 'note');
+    tag.setAttribute('aria-label', 'About the atlas');
+    const fmt = (n) => n.toLocaleString('en-GB');
+    const strip = document.createElement('div');
+    strip.id = 'peStrip';
+    strip.setAttribute('role', 'note');
+    strip.setAttribute('aria-label', 'What the atlas does');
+    function renderTagline() {
+      const insts = g('ALL_INSTITUTIONS') || [];
+      const map = cityIndex();
+      if (!insts.length || !map) return false;
+      const cities = (g('ALL_CITIES_REGISTRY') || []).filter((c) => c && c.name && (map.get(low(c.name)) || []).length).length;
+      // The "mesmarize" poster's top right, copied (user, 10 Nov 2026: "need to look like this"): a first line of two
+      // underlined phrases with a small joining word and a small figure after them ("Jeudi 2 novembre au Sample 19h-23h");
+      // a short paragraph whose first line steps in from the right, ending on an underlined italic credit; a small italic
+      // "with"; then three large names, each with a tiny italic tag at its top left ("Live Aja"). The atlas's name is the
+      // first line and takes the map back to the world; the credit, the curator, opens the chat; each name is one of the
+      // map's filters and turns it on or off. The counts are read from the data.
+      tag.innerHTML =
+        '<p class="pt-head"><button type="button" class="pt-name" title="Back to the world view"><span class="pt-u">Leaving it</span> <span class="pt-small">on</span> <span class="pt-u">the table</span></button> <span class="pt-time">' + fmt(insts.length) + ' spaces</span></p>' +
+        '<p class="pt-para"><span class="pt-l1">An atlas of who pays for culture:</span><span class="pt-l2">every space in ' + fmt(cities) + ' cities graded by its funders,</span>' +
+        '<span class="pt-l3">with questions answered by <button type="button" class="pt-credit">the curator.</button></span></p>' +
+        '<p class="pt-with">with</p>' +
+        '<div class="pt-lineup">' +
+        '<p class="pt-row"><button type="button" class="pt-big" data-layer="funding"><i class="pt-tag">filter</i>Funding</button></p>' +
+        '<p class="pt-row"><button type="button" class="pt-big" data-layer="epstein"><i class="pt-tag">filter</i>Epstein</button></p>' +
+        '<p class="pt-row"><button type="button" class="pt-big" data-layer="propaganda"><i class="pt-tag">filter</i>Propaganda</button></p>' +
+        '</div>';
+      tag.querySelector('.pt-credit').addEventListener('click', () => { const sw = window.setWorkspaceTab || g('setWorkspaceTab'); if (typeof sw === 'function') sw('chat'); const w = $('workInput'); if (w) w.focus(); });
+      const syncNames = () => { const on = typeof window.atlasSpaceFilter === 'function' ? window.atlasSpaceFilter() : null; document.querySelectorAll('#peTagline .pt-big, #peStrip .pt-big').forEach((b) => b.setAttribute('aria-pressed', String(on === b.dataset.layer))); };
+      tag.querySelectorAll('.pt-big').forEach((b) => b.addEventListener('click', () => { if (typeof window.atlasSetSpaceFilter === 'function') window.atlasSetSpaceFilter(window.atlasSpaceFilter() === b.dataset.layer ? null : b.dataset.layer); syncNames(); }));
+      // The paragraph, "with" and the names run on one line in a band under the map, over the foot bar (user, 11 Nov 2026: "put this below map in one
+      // line"); the name and count stay at the top right. placeChips() fits the line to the map's width.
+      strip.textContent = '';
+      tag.querySelectorAll('.pt-para, .pt-with, .pt-lineup').forEach((el) => strip.appendChild(el));
+      if (!syncNames.on) { document.addEventListener('atlas:filter', syncNames); syncNames.on = true; }
+      syncNames();
+      const vp = $('globeViewport');
+      if (vp && tag.parentNode !== vp) vp.appendChild(tag);
+      if (strip.parentNode !== document.body) document.body.appendChild(strip);
+      return true;
+    }
+    if (!renderTagline()) { const tt = setInterval(() => { if (renderTagline()) clearInterval(tt); }, 500); setTimeout(() => clearInterval(tt), 20000); }
+
+    // ---- Where the filter pills go (user, 11 Nov 2026: "these can go on top of map section") ------------------------
+    // At the map's top left, in the room the block at its top right leaves; when that room is narrower than the widest
+    // pill (a narrow window or a wide chat), they go to the map's bottom left instead. palace.css reads the variables.
+    function fitStrip() {
+      // One line: the strip's type scales down (never above 15px) until the line fits the room it has.
+      if (!strip.getClientRects().length || !strip.clientWidth) return;
+      const fs = parseFloat(strip.style.getPropertyValue('--ps-fs')) || 15;
+      const next = Math.max(8, Math.min(15, Math.floor(fs * strip.clientWidth / Math.max(1, strip.scrollWidth) * 10) / 10));
+      if (Math.abs(next - fs) >= 0.1) strip.style.setProperty('--ps-fs', next + 'px');
+    }
+    // The question box grows with what is typed, as Claude's does: one line to start, up to two fifths of the window,
+    // then it scrolls (user, 11 Nov 2026: "chat need to expand and work like claude chat UI UX"). Enter sends and
+    // Shift+Enter starts a new line already (index.html). An inline !important height beats the sheet's layered rules.
+    const wi = $('workInput');
+    function growInput() {
+      if (!wi || !wi.getClientRects().length || !window.matchMedia('(min-width:768px)').matches) return;
+      const max = Math.round(window.innerHeight * 0.4);
+      wi.style.setProperty('height', '0px', 'important');
+      const h = Math.min(wi.scrollHeight, max);
+      wi.style.setProperty('height', h + 'px', 'important');
+      wi.style.setProperty('overflow-y', wi.scrollHeight > max ? 'auto' : 'hidden', 'important');
+    }
+    if (wi) {
+      wi.addEventListener('input', growInput);
+      wi.addEventListener('keydown', (e) => { if (e.key === 'Enter') { setTimeout(growInput, 0); setTimeout(growInput, 120); } });
+      const sb = $('workSendBtn');
+      if (sb) sb.addEventListener('click', () => { setTimeout(growInput, 0); setTimeout(growInput, 120); });
+      window.addEventListener('resize', growInput);
+    }
+    // The grade filters join the filter pills at the top, after the others, and the colour key goes (user, 11 Nov 2026:
+    // "add clean flagged verified filter to the top to other filters and delete color key"). They drive the same grade
+    // filter the key's rows did (assets/layers.js atlasSetGradeFilter). Rebuilt if the row is ever redrawn.
+    const GRADES = [['A', 'Clean'], ['B', 'Flagged'], ['U', 'Unverified']];
+    function gradePills() {
+      if (typeof window.atlasSetGradeFilter !== 'function' || !chips.querySelector('button')) return;
+      if (!chips.querySelector('button[data-grade]')) {
+        GRADES.forEach(([g, name]) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'gmd-chip pe-grade-chip';
+          b.dataset.grade = g;
+          b.textContent = name;
+          b.title = `Show only ${name.toLowerCase()} spaces; press again to show every space`;
+          b.addEventListener('click', () => { window.atlasSetGradeFilter(window.atlasGradeFilter() === g ? null : g); gradePills(); });
+          chips.appendChild(b);
+        });
+      }
+      const on = typeof window.atlasGradeFilter === 'function' ? window.atlasGradeFilter() : null;
+      chips.querySelectorAll('button[data-grade]').forEach((b) => { const v = String(b.dataset.grade === on); if (b.getAttribute('aria-pressed') !== v) b.setAttribute('aria-pressed', v); });
+    }
+    function placeChips() {
+      gradePills();
+      growInput();
+      fitStrip();
+      const root = document.documentElement, vp = $('globeViewport'), tag = $('peTagline');
+      if (!vp || !chips.isConnected || !window.matchMedia('(min-width:1080px)').matches) return;
+      const v = vp.getBoundingClientRect();
+      if (!v.width) return;
+      const pad = parseFloat(getComputedStyle(root).getPropertyValue('--pe-pad')) || 22;
+      const t = tag && tag.getClientRects().length ? tag.getBoundingClientRect() : null;
+      const widest = Math.max(0, ...[...chips.querySelectorAll('button')].map((b) => b.getBoundingClientRect().width));
+      const room = (t ? t.left : v.right) - v.left - 2 * pad;
+      const top = room >= widest;
+      const set = (k, val) => { if (root.style.getPropertyValue(k) !== val) root.style.setProperty(k, val); };
+      set('--pe-chips-l', `${Math.round(v.left + pad)}px`);
+      set('--pe-chips-t', top ? `${Math.round(v.top + pad * 0.6)}px` : 'auto');
+      set('--pe-chips-b', top ? 'auto' : `${Math.round(window.innerHeight - v.bottom + pad)}px`);
+      set('--pe-chips-mw', `${Math.round(top ? room : v.width - 2 * pad - 60)}px`);
+    }
+    placeChips();
+    setInterval(placeChips, 500);
+    window.addEventListener('resize', placeChips);
+
     // ---- Keys: / puts the cursor in the search box, as on a maps site ----------------------------------------------
     window.addEventListener('keydown', (e) => {
       if (!DESK() || e.defaultPrevented) return;
