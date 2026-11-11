@@ -45,12 +45,12 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=613">
-  <script src="assets/config.js?v=613"></script>
-  <script src="assets/subtopic.js?v=613"></script>
-  <script src="assets/names.js?v=613"></script>
-  <script src="assets/grounding.js?v=613"></script>
-  <script src="assets/repeats.js?v=613"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=614">
+  <script src="assets/config.js?v=614"></script>
+  <script src="assets/subtopic.js?v=614"></script>
+  <script src="assets/names.js?v=614"></script>
+  <script src="assets/grounding.js?v=614"></script>
+  <script src="assets/repeats.js?v=614"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1113,7 +1113,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=613"></script>
+  <script src="assets/institutions.js?v=614"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10323,11 +10323,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v613';
+    const ATLAS_RELEASE = 'culture-atlas-v614';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=613').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=614').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13504,7 +13504,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const parts = [['public', 'public funding'], ['private', 'donations, grants and memberships'], ['earned', 'earned income']]
         .filter(([k]) => base && typeof f[k] === 'number' && f[k] >= 0 && f[k] <= base)
         .map(([k, label]) => `${f[k] / base * 100 < 0.5 ? 'under 1' : 'about ' + Math.round(f[k] / base * 100)} percent ${label} (${proseMoney(cur, f[k])})`);
-      if (parts.length) lis.push(proseLi('Income:', escapeHtml(proseEnd(parts.join(', ')))));
+      // The total opens the list. It was the row's subtitle until row titles lost their subtext (release 552), which left it unshown;
+      // it comes back as the first point (user, 11 Nov 2026), with the shares of income after it.
+      if (total && cur) {
+        const sum = `${proseMoney(cur, total)}${year ? ' in ' + year : ''}`;
+        lis.push(proseLi(kind === 'income' ? 'Income:' : 'Spending:', escapeHtml(proseEnd(parts.length ? `${sum}: ${parts.join(', ')}` : sum))));
+      }
       if (typeof f.net_assets === 'number' && f.net_assets > 0 && cur) lis.push(proseLi('Net assets:', escapeHtml(`${proseMoney(cur, f.net_assets)} at the end of the year.`)));
       if (sc.visitors) lis.push(proseLi('Visitors:', escapeHtml(`${proseCount(sc.visitors)}${sc.visitors_year ? ' in ' + sc.visitors_year : ''}.`)));
       if (sc.staff) lis.push(proseLi('Staff:', escapeHtml(`${proseCount(sc.staff)}${sc.staff_kind && sc.staff_kind !== 'staff' ? ' ' + sc.staff_kind : ''}${sc.staff_year ? ', ' + sc.staff_year : ''}.`)));
@@ -13513,8 +13518,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (f.note && total && cur) lis.push(proseLi('Note:', escapeHtml(proseEnd(f.note))));
       const cite = proseCite([f.url].concat(sc.sources || []), 4);
       if (lis.length && cite) lis.push(`<li>${cite.trim()}</li>`);
-      const head = total && cur ? `${proseCap(kind)} ${proseMoney(cur, total)}${year ? ', ' + year : ''}` : '';
-      return proseRow('Scale and money', escapeHtml(head), lis);
+      return proseRow('Scale and money', '', lis);
     }
     // Bureaucracy: the level (1 to 5) tools/grade_bureaucracy.py works out from the administration facts a source states (inst.bureaucracy),
     // then the facts themselves, then a reported finding on red tape (inst.red_tape) where a document says so. Nothing is estimated.
@@ -21436,13 +21440,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=613"></script>
-<script src="assets/funding-views.js?v=613"></script>
-<script src="assets/layers.js?v=613"></script>
-<script src="assets/hq-detail.js?v=613"></script>
-<script src="assets/bubbles.js?v=613" defer></script>
-<script src="assets/phone-maps.js?v=613"></script>
-<script src="assets/desktop-maps.js?v=613"></script>
-<script src="assets/chat-resize.js?v=613"></script>
+<script src="assets/typeset.js?v=614"></script>
+<script src="assets/funding-views.js?v=614"></script>
+<script src="assets/layers.js?v=614"></script>
+<script src="assets/hq-detail.js?v=614"></script>
+<script src="assets/bubbles.js?v=614" defer></script>
+<script src="assets/phone-maps.js?v=614"></script>
+<script src="assets/desktop-maps.js?v=614"></script>
+<script src="assets/chat-resize.js?v=614"></script>
 </body>
 </html>
