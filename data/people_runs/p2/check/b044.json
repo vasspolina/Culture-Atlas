@@ -1,0 +1,159 @@
+[
+ {
+  "id": "museum-arnhem-arnhem",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cultuurhuis-bergeijk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "de-nollen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-doesburg-rinsemahuis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-abbemuseum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "groninger-museum-groningen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fries-museum-leeuwarden",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Hayo Apotheker",
+    "field": "current",
+    "stored": true,
+    "page says": "The November 2025 announcement quotes Hayo Apotheker as chair, but the museum's current who is who page (which already shows Eelco van der Lingen as directeur-bestuurder, so it postdates February 2026) lists the raad van toezicht as G.A. van der Steur, A. Birnie, L.W.J.M. Janssen, A.B. de Jong, S.J. Laverman and A.J. Soepboer, without Apotheker and without naming a chair",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "fries-museum-leeuwarden",
+   "people": [
+    {
+     "name": "Eelco van der Lingen",
+     "role": "director",
+     "title": "directeur-bestuurder",
+     "current": true,
+     "since": "2026-02",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Directeur, Mondriaan Fonds (2019 to 2026)",
+      "Conservator moderne en hedendaagse kunst, Fries Museum (2017 to 2019)",
+      "Directeur en curator, Nest (until 2017)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.friesmuseum.nl/over-het-museum/organisatie/wie-is-wie",
+      "https://www.friesmuseum.nl/over-het-museum/nieuws/2025-2/eelco-van-der-lingen-nieuwe-directeur"
+     ]
+    },
+    {
+     "name": "Jeltsje Stobbe",
+     "role": "chief curator",
+     "title": "hoofd kennis & collecties",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.friesmuseum.nl/over-het-museum/organisatie/wie-is-wie"
+     ]
+    },
+    {
+     "name": "Kris Callens",
+     "role": "director",
+     "title": "directeur-bestuurder",
+     "current": false,
+     "since": "2015-08",
+     "until": "2025-01",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.friesmuseum.nl/over-het-museum/nieuws/2025-2/kris-callens-vertrekt-bij-fries-museum"
+     ]
+    }
+   ],
+   "basis": "The museum's who is who page and its November 2025 announcement name Eelco van der Lingen as director from 1 February 2026, after interim director Oeds Bijlsma; a January 2025 museum notice says Kris Callens left by mutual agreement with the board."
+  }
+ },
+ {
+  "id": "museum-de-lakenhal-leiden",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bonnefanten",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "marres-maastricht",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vleeshal-middelburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "jachthuis-sint-hubertus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kr-ller-m-ller-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cuypershuis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chabot-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kijk-kubus",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Ed.R de Graaf",
+    "field": "current",
+    "stored": true,
+    "page says": "The only mention is 'Oprichter: Ed.R de Graaf' in a contact block on the visit page that still says the house is closed for corona measures and that a face mask is required, so it dates from 2020 to 2022; no current page (homepage, history, archive, FAQ) names him or says he still runs the house, and the brief lists a founder only when the founder still runs the space",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "kijk-kubus",
+   "people": [],
+   "basis": ""
+  }
+ }
+]

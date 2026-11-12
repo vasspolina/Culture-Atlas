@@ -1,0 +1,233 @@
+[
+ {
+  "id": "void-derry",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Viviana Checchia",
+    "field": "sources",
+    "stored": [
+     "https://www.derryvoid.com/new-director-at-void-viviana-checchia-2/"
+    ],
+    "page says": "The May 2023 post only announces her appointment; that she is no longer Director (current false) rests on the About Us page listing Anne Kelly as Interim Director, which is not cited for her. No Void page gives when or why she left (a May 2026 post advertises an Interim Director role without naming her), so until and left_because stay null.",
+    "fix": [
+     "https://www.derryvoid.com/new-director-at-void-viviana-checchia-2/",
+     "https://www.derryvoid.com/about-us/"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "void-derry",
+   "people": [
+    {
+     "name": "Anne Kelly",
+     "role": "director",
+     "title": "Interim Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.derryvoid.com/about-us/"
+     ]
+    },
+    {
+     "name": "Viviana Checchia",
+     "role": "director",
+     "title": "Director",
+     "current": false,
+     "since": "2023",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Residency Curator, Delfina Foundation, London",
+      "Senior Lecturer on the MFA, HDK-Valand, University of Gothenburg",
+      "Public Engagement Curator, Centre for Contemporary Arts, Glasgow"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.derryvoid.com/new-director-at-void-viviana-checchia-2/",
+      "https://www.derryvoid.com/about-us/"
+     ]
+    },
+    {
+     "name": "Mary Scally",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.derryvoid.com/about-us/"
+     ]
+    }
+   ],
+   "basis": "Void's About Us page lists Anne Kelly as Interim Director and Mary Scally as Chair; Viviana Checchia's appointment as Director is the May 2023 news post on the same site, and no page gives the date or reason she left."
+  }
+ },
+ {
+  "id": "dundee-contemporary-arts",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "towner-eastbourne",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Martin Clark",
+    "field": "current",
+    "stored": true,
+    "page says": "Towner will welcome Martin Clark as CEO & Director in January 2027 (post of 14 August 2026); he does not hold the post on 2026-11-12, and the brief's schema has no designate state.",
+    "fix": null
+   },
+   {
+    "person": "Niamh Pearce and Clare Dobson",
+    "field": "people",
+    "stored": null,
+    "page says": "Towner's About us page (Staff): 'Interim Co-Directors: Niamh Pearce & Clare Dobson'. The vacant post's interim holders are the current heads.",
+    "fix": "add both as co-director, title 'Interim Co-Director', current true, source https://townereastbourne.org.uk/about/towner-eastbourne"
+   }
+  ],
+  "corrected": {
+   "id": "towner-eastbourne",
+   "people": [
+    {
+     "name": "Niamh Pearce",
+     "role": "co-director",
+     "title": "Interim Co-Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://townereastbourne.org.uk/about/towner-eastbourne"
+     ]
+    },
+    {
+     "name": "Clare Dobson",
+     "role": "co-director",
+     "title": "Interim Co-Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://townereastbourne.org.uk/about/towner-eastbourne"
+     ]
+    },
+    {
+     "name": "Joe Hill",
+     "role": "director",
+     "title": "CEO & Director",
+     "current": false,
+     "since": null,
+     "until": "2026",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://townereastbourne.org.uk/about/blog/martin-clark-appointed-as-new-ceo-director"
+     ]
+    },
+    {
+     "name": "Stephen Welton",
+     "role": "chair of the board",
+     "title": "Chair of Towner's Board of Trustees",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://townereastbourne.org.uk/about/blog/martin-clark-appointed-as-new-ceo-director",
+      "https://townereastbourne.org.uk/about/towner-eastbourne"
+     ]
+    }
+   ],
+   "basis": "Towner's About us page lists Niamh Pearce and Clare Dobson as Interim Co-Directors and Stephen Welton as Chair; the appointment post of 14 August 2026 says Joe Hill left in spring 2026 and that Martin Clark starts as CEO and Director in January 2027, so Clark is not yet recorded."
+  }
+ },
+ {
+  "id": "collective-edinburgh",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "edinburgh-international-book-festival-edinburgh",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fruitmarket-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "inverleith-house-royal-botanic-garden",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-galleries-of-scotland",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "stills-edinburgh",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "talbot-rice-gallery-edinburgh",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "baltic-centre-for-contemporary-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "goma-glasgow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-common-guild-glasgow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "turn-end",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hay-festival-hay-on-wye",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-hill-house",
+  "verdict": "ok",
+  "faults": []
+ }
+]
