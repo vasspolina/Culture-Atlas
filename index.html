@@ -45,13 +45,13 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=634">
-  <link rel="stylesheet" href="assets/sheet.css?v=634">
-  <script src="assets/config.js?v=634"></script>
-  <script src="assets/subtopic.js?v=634"></script>
-  <script src="assets/names.js?v=634"></script>
-  <script src="assets/grounding.js?v=634"></script>
-  <script src="assets/repeats.js?v=634"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=635">
+  <link rel="stylesheet" href="assets/sheet.css?v=635">
+  <script src="assets/config.js?v=635"></script>
+  <script src="assets/subtopic.js?v=635"></script>
+  <script src="assets/names.js?v=635"></script>
+  <script src="assets/grounding.js?v=635"></script>
+  <script src="assets/repeats.js?v=635"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1128,7 +1128,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=634"></script>
+  <script src="assets/institutions.js?v=635"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10375,11 +10375,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v634';
+    const ATLAS_RELEASE = 'culture-atlas-v635';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=634').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=635').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -16005,14 +16005,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return hit || w;
       });
     }
+    // The words that ask the map to go somewhere or the chat to talk about it, before the name of a place or a space.
+    const PLACE_LEAD_IN = /^(?:(?:please|can you|could you|now)\s+)*(?:(?:what about|tell me about|about|how about|show me|show|open|find|visit|go to|go back to|take me to|bring me to|fly me to|fly to|fly over to|move to|jump to|head to|travel to|navigate to|zoom(?: back)?(?: in| out)?(?: to| on| onto| into| over)?|zoom into|center on|centre on|focus on|let'?s go to)\s+)+(?:the city of\s+)?/;
+    window.PLACE_LEAD_IN = PLACE_LEAD_IN;
     function findMentionedInst(text) {
       if (!text) return null;
       // A name typed in full is that record, whatever its tier; otherwise the longest name found in the text wins.
       const typed = (text || '').toLowerCase().trim();
       const exact = ALL_INSTITUTIONS.find(i => i.name.toLowerCase() === typed);
       if (exact) return exact;
-      // A place named on its own ("Prague", "what about Berlin?") is the place, not a space that has the name among its aliases.
-      const bare = typed.replace(/^(?:what about|tell me about|about|show me|show|how about|go to|open)\s+/, '').replace(/[?!.\s]+$/, '');
+      // A place named on its own ("Prague", "what about Berlin?", "zoom in on Berlin") is the place, not a space that has the
+      // name among its aliases.
+      const bare = typed.replace(PLACE_LEAD_IN, '').replace(/(?:\s+please)?[?!.\s]*$/, '').replace(/^the city of\s+/, '');
       if ([...ALL_CITIES_REGISTRY, ...ALL_COUNTRIES_REGISTRY].some(c => c && c.name && c.name.toLowerCase() === bare)) return null;
       // "this museum", "here": the question is about the open record, so no guessed match from the words around it.
       const contextual = /\b(this|here|its?)\b/.test(typed);
@@ -16613,7 +16617,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // "louisiana" (words of the name that no other record shares). A bare city or country never does.
     function isNameRequest(text, inst) {
       const clean = s => String(s || '').toLowerCase().replace(/[’']/g, '').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
-      const t = clean(text).replace(/^(?:(?:please )?(?:show(?: me)?|open|find|go to|zoom (?:in )?(?:to|on)|take me to|tell me about|about|the) )+/, '');
+      const t = clean(text).replace(PLACE_LEAD_IN, '').replace(/^(?:the )+/, '').replace(/ please$/, '');
       if (!t) return false;
       const names = [inst.name, ...(inst.aliases || [])].map(clean);
       if (names.includes(t)) return true;
@@ -21526,15 +21530,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=634"></script>
-<script src="assets/note-aids.js?v=634" defer></script>
-<script src="assets/note-files.js?v=634" defer></script>
-<script src="assets/funding-views.js?v=634"></script>
-<script src="assets/layers.js?v=634"></script>
-<script src="assets/hq-detail.js?v=634"></script>
-<script src="assets/bubbles.js?v=634" defer></script>
-<script src="assets/phone-maps.js?v=634"></script>
-<script src="assets/desktop-maps.js?v=634"></script>
-<script src="assets/chat-resize.js?v=634"></script>
+<script src="assets/typeset.js?v=635"></script>
+<script src="assets/note-aids.js?v=635" defer></script>
+<script src="assets/note-files.js?v=635" defer></script>
+<script src="assets/funding-views.js?v=635"></script>
+<script src="assets/layers.js?v=635"></script>
+<script src="assets/hq-detail.js?v=635"></script>
+<script src="assets/bubbles.js?v=635" defer></script>
+<script src="assets/phone-maps.js?v=635"></script>
+<script src="assets/desktop-maps.js?v=635"></script>
+<script src="assets/chat-resize.js?v=635"></script>
 </body>
 </html>

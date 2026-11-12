@@ -13,6 +13,7 @@ const lift = (name, re) => {
   return m[0];
 };
 const src = [
+  lift('PLACE_LEAD_IN', /const PLACE_LEAD_IN = \/.*\/;\n/),
   lift('computeLevenshteinDistance', /function computeLevenshteinDistance\([^)]*\) \{[\s\S]*?\n    \}\n/),
   lift('computeWordSimilarity', /function computeWordSimilarity\(w1, w2\) \{[\s\S]*?\n    \}\n/),
   lift('normalizePhoneticString', /function normalizePhoneticString\(s\) \{[\s\S]*?\n    \}\n/),
@@ -47,4 +48,17 @@ test('a question about the space is not a name request', () => {
 test('a place on its own is not a name request', () => {
   const inst = ALL.find(i => i.city === 'Berlin');
   assert.equal(isNameRequest('Berlin', inst), false);
+});
+test('a place asked for with a map verb is not a name request', () => {
+  const co = byName('C/O Berlin');
+  for (const typed of ['zoom in on Berlin', 'zoom to Berlin', 'take me to Berlin', 'fly to Berlin', 'show me Berlin']) {
+    assert.equal(isNameRequest(typed, co), false, typed);
+  }
+  assert.equal(isNameRequest('zoom in on C/O Berlin', co), true);
+});
+test('the map verbs come off before the place check', () => {
+  const re = new RegExp(html.match(/const PLACE_LEAD_IN = \/(.*)\/;\n/)[1]);
+  for (const typed of ['zoom in on berlin', 'zoom into berlin', 'zoom to berlin', 'please zoom in on berlin', 'can you take me to berlin', 'fly to berlin', 'go to berlin', 'center on berlin', 'what about berlin']) {
+    assert.equal(typed.replace(re, ''), 'berlin', typed);
+  }
 });
