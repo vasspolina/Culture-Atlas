@@ -99,7 +99,9 @@ site.
    Artforum, ARTnews, Artnet, Monopol, e-flux announcements, the national press). Use the language of
    the country as well as English.
 2. The space's own current page is the best source that someone holds a post now. An announcement
-   is the best source for `since`. A news article older than 18 months does not prove someone is
+   is the best source for `since`, but the date of an announcement is not the start date: `since`
+   takes the month only when a page says the person started (or would start) that month, else the
+   year alone. An undated page proves no date. A news article older than 18 months does not prove someone is
    still `current`: confirm on the space's site, a page dated in the last 18 months, or leave the
    person out. If the site and a newer article disagree, the newer dated source wins and the basis
    sentence says so.
@@ -113,7 +115,8 @@ site.
    predecessor only if they left on or after 1 January 2023.
 6. Write each name, title and date from the page in front of you. Never fill a gap from a similar
    space, from memory or from a name that "must" be right. A spelling the sources disagree on takes
-   the space's own spelling.
+   the space's own spelling. Write names and titles in normal case even where a filing prints them in
+   capitals ("Nathalie de Gunzburg", "Chief Executive Officer", not "NATHALIE DE GUNZBURG").
 7. Never get past a bot check, login or paywall. If a site blocks you, try its web.archive.org copy
    (allowed as a source, with the capture date in `basis` when it is older than 12 months), then move
    on. Fetch with curl through Bash or WebFetch.
@@ -160,4 +163,5 @@ records and each fault in one line.
 
 | Run | Date | Batches | Notes |
 | --- | --- | --- | --- |
+| p2 | 2026-11-12 | every remaining space, 16 to a batch | Full run as a workflow, a checker on every batch. Brief now says normal case over a filing's capitals, and an announcement date is not a start date. |
 | p1 | 2026-11-12 | 3 (pilot: Berlin, London, New York; 36 spaces) | 35 spaces and 90 people merged. Checkers passed 28 records and corrected 8: a start date sourced to an undated page, capitals copied from Form 990s, a start month that was the announcement's, ENB's two leaders as co-directors, and one chair dropped whose only page would not open. Added pay bands (`amount_to`) and honorific stripping at merge. |
