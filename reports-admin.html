@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Leaving it on the table report moderation</title>
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
-  <link rel="stylesheet" href="assets/atlas.css?v=275">
-  <script src="assets/config.js?v=275"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=615">
+  <script src="assets/config.js?v=615"></script>
   <style>
     body.review{height:auto;min-height:100vh;overflow:auto;display:block}
     .review header{display:flex;align-items:stretch;justify-content:space-between}
@@ -24,6 +24,10 @@
     .review .btn:disabled{opacity:.4}
     .review article{padding:16px 0;border-bottom:1px solid var(--line)}
     .review .actions{display:flex;gap:8px;margin-top:12px}
+    .review .files{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+    .review figure{margin:0;width:180px}
+    .review figure img,.review figure .pdf{display:flex;align-items:center;justify-content:center;width:180px;height:180px;object-fit:cover;border:1px solid var(--line);background:var(--paper);color:var(--ink)}
+    .review figcaption{font-size:14px;margin-top:6px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
     .review [role="alert"]{padding:8px 12px;background:var(--orange);color:#000}
   </style>
 </head>
@@ -34,7 +38,7 @@
   </header>
   <main>
     <h1>Whistleblower reports</h1>
-    <p>Every review waits here until you approve it. An approved review appears under the place it was written for, as a review, with the star rating and name the sender chose, if any. Check that the name is not a real person's before approving. Delete removes a review for good.</p>
+    <p>Every review waits here until you approve it. An approved review appears under the place it was written for, with the name the sender chose, if any, and the files they attached. Check that the name is not a real person's and that no file shows who sent it before approving; remove a file to keep it off the atlas. Delete removes a review and its files for good.</p>
     <p id="noBackend" class="hidden" role="alert">Set ATLAS_REPORT_API_URL in assets/config.js to connect the report API.</p>
     <form id="loginForm">
       <label for="tokenInput">Admin bearer token</label>
@@ -56,6 +60,6 @@
       <div id="list"></div>
     </section>
   </main>
-  <script src="assets/reports-admin.js?v=275"></script>
+  <script src="assets/reports-admin.js?v=615"></script>
 </body>
 </html>

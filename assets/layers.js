@@ -142,7 +142,15 @@
     spaceBoxes().forEach(inp => setBox(inp, inp.dataset.layer === key));
     refilter();
   }
-  window.atlasSetSpaceFilter = function (key) { if (window.atlasSpaceFilter() !== key) applySpaceFilter(key); };
+  // A filter switched on tells the chat, which says what it shows and what can be learnt from it (index.html,
+  // atlasExplainFilter; user, 12 Nov 2026: "clicking filters need to pull info into chat").
+  const explain = (kind, key) => { if (key) document.dispatchEvent(new CustomEvent('atlas:filter-explain', { detail: { kind, key } })); };
+  window.atlasLayerDesc = key => {
+    const inp = document.querySelector(`#layersPanel input[data-layer="${key}"]`), label = inp && inp.closest('label');
+    const nm = label && label.querySelector('.layer-name'), ds = label && label.querySelector('.layer-desc');
+    return { name: nm ? nm.textContent.trim() : key, desc: ds ? ds.textContent.trim() : '' };
+  };
+  window.atlasSetSpaceFilter = function (key) { if (window.atlasSpaceFilter() !== key) { applySpaceFilter(key); explain('space', key); } };
   // The row of filters over the map, built by the phone and desktop layouts into their own strip: one chip per marked
   // filter in its colour from the Layers menu. The pressed chip is the filter on; none is pressed when no filter is on.
   // Returns false until the Layers menu is in the page.
@@ -176,14 +184,24 @@
     }
     return true;
   };
+  // The grade as a filter (user, 10 Nov 2026: "color key needs to be a filter as well"): the colour key's three rows are
+  // buttons, one on at a time, pressed again to show every grade. It narrows with whatever other filter is on.
+  let GRADE = null;
+  const gradeOf = i => (i.tier === 'A' || i.tier === 'B') ? i.tier : 'U';
+  const keyRows = () => document.querySelectorAll('#mapColourKey .mck-row[data-grade]');
+  const syncKey = () => keyRows().forEach(b => b.setAttribute('aria-pressed', String(GRADE === b.dataset.grade)));
+  window.atlasGradeFilter = () => GRADE;
+  window.atlasSetGradeFilter = function (g) { g = (g === 'A' || g === 'B' || g === 'U') ? g : null; if (g === GRADE) return; GRADE = g; syncKey(); refilter(); explain('grade', g); };
+  keyRows().forEach(b => b.addEventListener('click', () => window.atlasSetGradeFilter(GRADE === b.dataset.grade ? null : b.dataset.grade)));
+  syncKey();
   window.atlasLayerKeep = function () {
     const on = spaceLayersOn();
     let funded = null;
     if (FILTERS.size && keyIndex) { funded = new Set(); FILTERS.forEach(t => t.keys.forEach(k => (keyIndex.get(k) || []).forEach(id => funded.add(id)))); }
-    if (!on.length && !funded) return null;
+    if (!on.length && !funded && !GRADE) return null;
     // Funding and Epstein read the funding maps; until they are in, those two keep nothing, and the map fills in once they load.
     if (on.some(k => k === 'funding' || k === 'epstein') && !recById) loadMoney();
-    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id));
+    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id)) && (!GRADE || gradeOf(i) === GRADE);
   };
   let pinIndex = null;
   function refilter() {
@@ -628,13 +646,13 @@
       const k = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0], col = KIND[k] || COL.corp;
       ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 0.8; ctx.fillStyle = col; ctx.strokeStyle = '#000';
       ctx.beginPath(); ctx.arc(px, py, s, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = LW() + ' 10px "Jokker", sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '400 11px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       if (!small) ctx.fillText(String(n), px, py + 0.5);
       const names = list.slice(0, 3).map(e => e.n).join(', ') + (n > 3 ? ` and ${n - 3} more` : '');
       LM.push({ x: px, y: py, r: s + 3, col, label: `${e0.c}, ${e0.co}`, sub: `${n} funder offices`, sub2: names, ask: `Which funders are headquartered in ${e0.c}?`,
         go() { if (typeof window.flyTo === 'function') window.flyTo(mlon, mlat, baseRadius * (CLUSTER_AT + 1.5)); } });
     });
-    ctx.font = LW() + ' 14px "Jokker", sans-serif';
+    ctx.font = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
     // Names: on blocks for the focused space's own funders and people. With nothing in focus, only a very close view names them,
     // as plain text on a halo, so the map is not covered in blocks.
     const veryClose = !rec && r >= baseRadius * 30;
@@ -728,7 +746,7 @@
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
     if ((L.hq || L.people) && !HQ) loadHq();
     const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const font = LW() + ' 14px "Jokker", sans-serif';
+    const font = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
     const boxes = labelBoxesOnScreen(dots);
     ctx.save();
     ctx.font = font; ctx.textBaseline = 'middle';
@@ -896,10 +914,10 @@
   // The block naming the mark or line under the pointer is drawn last of all, over the city names (index.html calls this
   // after them; the street map calls it after the nodes), so nothing covers it.
   let TIP_BOXES = [];
-  window.atlasLayersDrawTip = function (ctx) {
-    if (streetUp()) return;
-    ctx.save(); drawMarkTip(ctx, TIP_BOXES); ctx.restore();
-  };
+  // No longer drawn (user, 11 Nov 2026: "delete hovers"): the map shows no card under the pointer, on the globe or the street
+  // map. A click on a mark still does what it did (asks the chat, or opens the funder's record in the sheet).
+  window.atlasLayersDrawTip = function () {};
+  void drawMarkTip; void TIP_BOXES;
   // The funder badges take their form from displaay.net/typefaces: a pill (fully rounded ends), a 1px edge in the colour of
   // its text, 10px of air either side of the words. The name pill is filled in the kind's colour with black text (the pale
   // fills measure 7:1 or better against black); the kind pill is an outline on the map's own ground, so it reads as a tag
@@ -946,7 +964,7 @@
     const pinned = !!m.lbox;
     const named = !pinned || fitWords(m.label, 40) !== m.label;
     const lines = [named ? clip(m.label) : null, !pinned && m.sub ? clip(m.sub) : null, m.sub2 ? clip(m.sub2) : null, act].filter(Boolean);
-    ctx.save(); ctx.font = LW() + ' 14px "Jokker", "PP Neue Gstaad", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.save(); ctx.font = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     // A stack of pills, as the funder names are (displaay.net/typefaces): the name filled in the mark's colour, what it is in
     // outlined pills under it, and what a click does as a solid ink pill, as Displaay sets its one action. Each pill is as
     // wide as its own words; the stack hangs from the side nearest the mark.
@@ -1412,7 +1430,7 @@
       box.querySelectorAll('input[data-pkind]').forEach(input => { input.checked = true; L.pkinds[input.dataset.pkind] = true; });
       const yOn = box.querySelector('input[data-years-on]'); if (yOn) { yOn.checked = false; L.years = null; }
       const cDef = box.querySelector('input[data-choro="abroad"]'); if (cDef) { cDef.checked = true; L.choroMode = 'abroad'; }
-      FILTERS.clear(); renderTop();
+      FILTERS.clear(); GRADE = null; syncKey(); renderTop();
       clearReach();
       refilter();
     });

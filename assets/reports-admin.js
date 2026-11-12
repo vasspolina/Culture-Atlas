@@ -42,6 +42,40 @@
     setVisible('loginError', !!message);
   }
 
+  const fileSize = n => n >= 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`;
+  const objectUrls = [];
+
+  const filesLine = n => `${n} file${n === 1 ? '' : 's'} attached. Approved files are shown with the review; remove any that should not be.`;
+
+  // The files sent with a note. They are fetched with the token (a pending file is not public) and shown from memory.
+  function filesFor(report) {
+    const files = report.files || [];
+    if (!files.length) return '';
+    return `<p class="files-count">${filesLine(files.length)}</p>
+      <div class="files">${files.map(file => `
+        <figure data-file="${esc(file.id)}" data-type="${esc(file.type)}">
+          <a class="file-open" href="#" target="_blank" rel="noopener">${file.type.startsWith('image/') ? '<img alt="Attached photo">' : '<span class="pdf">PDF</span>'}</a>
+          <figcaption>${file.type.startsWith('image/') ? 'Photo' : 'PDF'}, ${fileSize(file.size)}
+            <button type="button" class="btn" data-remove-file="1">Remove file</button></figcaption>
+        </figure>`).join('')}</div>`;
+  }
+
+  async function showFiles() {
+    for (const figure of document.querySelectorAll('#list figure[data-file]')) {
+      try {
+        const response = await fetch(`${API}/api/admin/files/${encodeURIComponent(figure.dataset.file)}`, { headers: { Authorization: `Bearer ${token}` } });
+        if (!response.ok) throw new Error(String(response.status));
+        const url = URL.createObjectURL(await response.blob());
+        objectUrls.push(url);
+        figure.querySelector('a').href = url;
+        const img = figure.querySelector('img');
+        if (img) img.src = url;
+      } catch {
+        figure.querySelector('figcaption').prepend('Could not load this file. ');
+      }
+    }
+  }
+
   function actionsFor(status) {
     return [
       status !== 'APPROVED' ? '<button type="button" class="btn approve" data-status="APPROVED">Approve</button>' : '',
@@ -54,6 +88,7 @@
   async function load() {
     $('status').textContent = 'Loading notes…';
     $('list').replaceChildren();
+    objectUrls.splice(0).forEach(url => URL.revokeObjectURL(url));
     document.querySelectorAll('[data-view]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.view === view));
     });
@@ -67,9 +102,11 @@
           <p><strong>${esc(report.institution || report.city)}</strong>${report.institution ? ` | ${esc(report.city)}` : ''} · ${esc(new Date(report.createdAt).toLocaleString())}</p>
           <p>${report.authorLabel ? `shown as “${esc(report.authorLabel)}”` : 'shown as Whistleblower'}</p>
           <p style="white-space:pre-wrap">${esc(report.content)}</p>
+          ${filesFor(report)}
           <div class="actions">${actionsFor(report.status)}</div>
         </article>
       `).join('');
+      showFiles();
     } catch (error) {
       $('status').textContent = error.message;
     }
@@ -95,6 +132,25 @@
   });
   $('signOutBtn').addEventListener('click', () => signOut());
   $('list').addEventListener('click', async event => {
+    const removeFile = event.target.closest('button[data-remove-file]');
+    if (removeFile) {
+      const figure = removeFile.closest('figure');
+      if (!window.confirm('Remove this file for good? The note stays.')) return;
+      removeFile.disabled = true;
+      try {
+        await api(`/api/admin/files/${encodeURIComponent(figure.dataset.file)}`, { method: 'DELETE' });
+        const article = figure.closest('article');
+        figure.remove();
+        const left = article.querySelectorAll('figure').length;
+        if (left) article.querySelector('.files-count').textContent = filesLine(left);
+        else article.querySelectorAll('.files-count, .files').forEach(el => el.remove());
+        $('status').textContent = 'File removed.';
+      } catch (error) {
+        $('status').textContent = error.message;
+        removeFile.disabled = false;
+      }
+      return;
+    }
     const button = event.target.closest('button[data-status], button[data-delete]');
     if (!button) return;
     const article = button.closest('article');
