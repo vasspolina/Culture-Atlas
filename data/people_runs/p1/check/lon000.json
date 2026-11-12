@@ -1,0 +1,257 @@
+[
+ {
+  "id": "autograph-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "british-museum-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "camden-art-centre",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chisenhale-gallery",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Edward Gillman",
+    "field": "since",
+    "stored": "2025-03",
+    "page says": "FAD Magazine, 12 March 2025: 'Chisenhale Gallery has announced that Edward Gillman has been appointed as Director' (announcement date, no start month); team page: 'Previous Directors include: ... 2019 – 2025: Zoé Whitley'",
+    "fix": "2025"
+   }
+  ],
+  "corrected": {
+   "id": "chisenhale-gallery",
+   "people": [
+    {
+     "name": "Edward Gillman",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": "2025",
+     "until": null,
+     "previously": [
+      "Co-Director, Auto Italia (2016 to 2018)",
+      "Director, Auto Italia (2019 to 2024)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://chisenhale.org.uk/our-team/",
+      "https://fadmagazine.com/2025/03/12/chisenhale-gallery-names-edward-gillman-as-new-director"
+     ]
+    },
+    {
+     "name": "Olivia Aherne",
+     "role": "curator",
+     "title": "Curator: Exhibitions & Events",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://chisenhale.org.uk/our-team/"
+     ]
+    },
+    {
+     "name": "May Calil",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://chisenhale.org.uk/our-team/"
+     ]
+    },
+    {
+     "name": "Zoé Whitley",
+     "role": "director",
+     "title": "Director",
+     "current": false,
+     "since": "2019",
+     "until": "2025",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://chisenhale.org.uk/our-team/"
+     ]
+    }
+   ],
+   "basis": "Chisenhale Gallery's team page, which names the director, the curator and the chair and lists previous directors with their years, and the March 2025 appointment announcement in FAD Magazine."
+  }
+ },
+ {
+  "id": "delfina-foundation-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "design-museum-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dulwich-picture-gallery-london",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Dame Janet Vitmayer, DBE",
+    "field": "name",
+    "stored": "chair of the board",
+    "page says": "the only cited page (a web.archive.org copy of the space's people page) did not open for the checker or the editor on 2026-11-12, and the live page returns 403",
+    "fix": null,
+    "by": "editor"
+   }
+  ],
+  "note": "The cited web.archive.org capture (20260216135302, confirmed to exist by the Wayback availability API) could not be opened from this sandbox (connection reset), and the live page returns 403. Jennifer Scott's name, title, April 2017 start and Holburne post (since August 2014) are confirmed by the Museums Association page; she is still Director per Apollo, 17 April 2026, and lovelondonloveculture.com, 30 May 2026. Dame Janet Vitmayer's title of Chair rests on the archive page alone and was not seen by the checker.",
+  "corrected": {
+   "id": "dulwich-picture-gallery-london",
+   "people": [
+    {
+     "name": "Jennifer Scott",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": "2017-04",
+     "until": null,
+     "previously": [
+      "Director, Holburne Museum (2014 to 2017)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://web.archive.org/web/20260216135302/https://www.dulwichpicturegallery.org.uk/about-us/our-people/",
+      "https://www.museumsassociation.org/museums-journal/news/2016/12/20122016-dulwich-picture-gallery-appoints-director/"
+     ]
+    }
+   ],
+   "basis": "The gallery's our people page, read from a web.archive.org capture of 16 February 2026 because the live site blocked automated access, and the Museums Association report of December 2016 for Jennifer Scott's start."
+  }
+ },
+ {
+  "id": "english-national-ballet-london",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Anu Giri",
+    "field": "role",
+    "stored": "director (stored as the single head of the company, beside Watkin as artistic director)",
+    "page says": "Our People page, under 'Leadership': 'Aaron S. Watkin, Artistic Director; Anu Giri, Executive Director; Grace Chan, Chief Operating Officer and Company Secretary' (Artistic Director listed first). Appointment release, 8 October 2024: Giri will be 'working alongside Artistic Director, Aaron Watkin'. No ENB page cited calls the Executive Director the head or chief executive.",
+    "fix": "co-director"
+   },
+   {
+    "person": "Aaron S. Watkin",
+    "field": "role",
+    "stored": "artistic director",
+    "page says": "Listed first under 'Leadership' with the Executive Director 'working alongside' him: the two lead the company together.",
+    "fix": "co-director"
+   },
+   {
+    "person": "Patrick Harrison",
+    "field": "role",
+    "stored": "director",
+    "page says": "'our outgoing Executive Director, Patrick Harrison'; the Executive Director post is one half of the joint leadership, not the sole head.",
+    "fix": "co-director"
+   }
+  ],
+  "corrected": {
+   "id": "english-national-ballet-london",
+   "people": [
+    {
+     "name": "Aaron S. Watkin",
+     "role": "co-director",
+     "title": "Artistic Director",
+     "current": true,
+     "since": "2023-08",
+     "until": null,
+     "previously": [
+      "Artistic Director, Semperoper Ballett, Dresden (2006 to 2023)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.ballet.org.uk/about-us/our-people/",
+      "https://www.ballet.org.uk/blog/aaron-s-watkin-announced-new-artistic-director/"
+     ]
+    },
+    {
+     "name": "Anu Giri",
+     "role": "co-director",
+     "title": "Executive Director",
+     "current": true,
+     "since": "2025-01",
+     "until": null,
+     "previously": [
+      "Director of Business and Operations, British Film Institute",
+      "Executive Director, Dance Umbrella (2014 to 2018)",
+      "Co-Director, English National Ballet School"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.ballet.org.uk/about-us/our-people/",
+      "https://www.ballet.org.uk/blog/anu-giri-appointed-as-new-executive-director/"
+     ]
+    },
+    {
+     "name": "Sir Rupert Gavin",
+     "role": "chair of the board",
+     "title": "Chair of the Board of Trustees",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.ballet.org.uk/about-us/our-people/"
+     ]
+    },
+    {
+     "name": "Patrick Harrison",
+     "role": "co-director",
+     "title": "Executive Director",
+     "current": false,
+     "since": null,
+     "until": "2024",
+     "left_because": "moved to another post",
+     "next_post": "CEO of The Royal Ballet School",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.ballet.org.uk/blog/anu-giri-appointed-as-new-executive-director/"
+     ]
+    }
+   ],
+   "basis": "English National Ballet's our people page for the leadership and board, and the company's own announcements of Aaron S. Watkin (August 2022) and Anu Giri (October 2024)."
+  }
+ },
+ {
+  "id": "gasworks",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "goldsmiths-cca-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "isokon-gallery",
+  "verdict": "ok",
+  "faults": [],
+  "note": "Empty record left as is. The Isokon site (isokon.org.uk) and isokongallery.co.uk were unreachable (connection reset, certificate mismatch). The Charity Commission trustee page for The Isokon Gallery Trust (charity 1161069, https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5052630/trustees) lists John Stewart Allan as Chair, appointed 26 March 2015; the gallery has no named head, so under rule 4 the chair alone does not qualify."
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "verdict": "ok",
+  "faults": []
+ }
+]
