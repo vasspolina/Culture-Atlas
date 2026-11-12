@@ -382,10 +382,11 @@
     // first, in a list that scrolls (user, 10 Nov 2026: "reports also need to be able to scroll"): each its headline on up
     // to two lines and, indented, how long ago and its space. A report opens the reports panel at it; the line under the
     // list opens them all. The list comes from assets/phone-maps.js (window.atlasReports), which also keeps the panel.
+    // Titled Latest, the name of the panel it opens (user, 12 Nov 2026: "rename Latest reports to Latest too").
     const rep = document.createElement('nav');
     rep.id = 'shReports';
     rep.setAttribute('aria-labelledby', 'shReportsTitle');
-    rep.innerHTML = '<h2 id="shReportsTitle" class="sh-reports-title title-small">Latest reports</h2><ul class="sh-reports-list"></ul><div class="sh-reports-foot"></div>';
+    rep.innerHTML = '<h2 id="shReportsTitle" class="sh-reports-title title-small">Latest</h2><ul class="sh-reports-list"></ul><div class="sh-reports-foot"></div>';
     document.body.appendChild(rep);
     const repList = rep.querySelector('ul'), repFoot = rep.querySelector('.sh-reports-foot');
     const openReport = (key) => { if (typeof window.atlasOpenTopStory === 'function') window.atlasOpenTopStory(key); };
