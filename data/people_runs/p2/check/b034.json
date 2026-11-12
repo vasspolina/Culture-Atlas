@@ -1,0 +1,122 @@
+[
+ {
+  "id": "arab-hebrew-theatre-of-jaffa-al-saraya",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "israel-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "petach-tikva-museum-of-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tel-aviv-museum-of-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "gamec-bergamo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mambo-bologna",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museion-bolzano",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondazione-antonio-ratti-como",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Lorenzo Benedetti",
+    "field": "name",
+    "stored": "Lorenzo Benedetti (Head of Contemporary Art and Cultural Activities)",
+    "page says": "Team list: 'Co-Director Artists' Research Laboratory' Lorenzo Benedetti; 'Head of Contemporary Art and Cultural Activities, Curator Artists' Research Laboratory' Roberto Scalmana (each title precedes its name)",
+    "fix": "Roberto Scalmana"
+   }
+  ],
+  "corrected": {
+   "id": "fondazione-antonio-ratti-como",
+   "people": [
+    {
+     "name": "Annie Ratti",
+     "role": "director",
+     "title": "Chairman",
+     "current": true,
+     "since": "2002",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://fondazioneratti.org/about"
+     ]
+    },
+    {
+     "name": "Roberto Scalmana",
+     "role": "chief curator",
+     "title": "Head of Contemporary Art and Cultural Activities",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://fondazioneratti.org/about"
+     ]
+    }
+   ],
+   "basis": "The foundation's About page, which says it has been headed by Annie Ratti, its chairman, since 2002, and names Roberto Scalmana as head of contemporary art and cultural activities."
+  }
+ },
+ {
+  "id": "centrale-fies-dro",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondazione-palazzo-strozzi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "uffizi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondazione-prada",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "gallerie-d-italia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pirelli-hangarbicocca",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "triennale-milano",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "viafarini-milan",
+  "verdict": "ok",
+  "faults": []
+ }
+]

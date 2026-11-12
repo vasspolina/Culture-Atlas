@@ -1,0 +1,203 @@
+[
+ {
+  "id": "kunsthalle-bern-bern",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstmuseum-bern",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Nina Zimmer",
+    "field": "current",
+    "stored": true,
+    "page says": "Organisation und Team page (kunstmuseumbern.ch/de/organisation): 'Direktion. Direktor ad interim: Thomas Soraperra'; the 26 March 2026 release: 'Bis Herbst 2026 bleibt Nina Zimmer Direktorin in Bern' and she takes up the Belvedere post in January 2027",
+    "fix": false
+   },
+   {
+    "person": "Nina Zimmer",
+    "field": "until",
+    "stored": null,
+    "page says": "'Bis Herbst 2026 bleibt Nina Zimmer Direktorin in Bern'",
+    "fix": "2026"
+   },
+   {
+    "person": "Nina Zimmer",
+    "field": "left_because",
+    "stored": null,
+    "page says": "'verlässt Bern nach zehn Jahren. Sie wurde zur neuen Generaldirektorin des Belvedere in Wien ernannt'",
+    "fix": "moved to another post"
+   },
+   {
+    "person": "Nina Zimmer",
+    "field": "next_post",
+    "stored": null,
+    "page says": "'zur neuen Generaldirektorin des Belvedere in Wien ernannt und übernimmt diese Funktion im Januar 2027'",
+    "fix": "Generaldirektorin des Belvedere in Wien"
+   },
+   {
+    "person": "Nina Zimmer",
+    "field": "sources",
+    "stored": [
+     "https://www.kunstmuseumbern.ch/de/api/files/2026-03/Medienmitteilung_KMB-ZPK.pdf",
+     "https://www.kunstmuseumbern.ch/de/zukunft"
+    ],
+    "page says": "the Zukunft page is undated (a campaign quote signed 'Nina Zimmer, Direktorin') and proves nothing about who holds the post now",
+    "fix": [
+     "https://www.kunstmuseumbern.ch/de/api/files/2026-03/Medienmitteilung_KMB-ZPK.pdf"
+    ]
+   },
+   {
+    "person": "Thomas Soraperra",
+    "field": "people",
+    "stored": null,
+    "page says": "Organisation und Team page: 'Direktor ad interim: Thomas Soraperra' (also 'Kaufmännischer Direktor, stv. Vorsitz der Geschäftsleitung'); the vacant head post takes the interim holder",
+    "fix": "add as director, title 'Direktor ad interim', current, source kunstmuseumbern.ch/de/organisation"
+   },
+   {
+    "person": "Kathleen Bühler",
+    "field": "people",
+    "stored": null,
+    "page says": "same page: 'Chefkuratorin, Abteilungsleitung Sammlung, Ausstellungen, Forschung Kunstmuseum Bern: Dr. Kathleen Bühler'",
+    "fix": "add as chief curator, source kunstmuseumbern.ch/de/organisation"
+   }
+  ],
+  "corrected": {
+   "id": "kunstmuseum-bern",
+   "people": [
+    {
+     "name": "Thomas Soraperra",
+     "role": "director",
+     "title": "Direktor ad interim",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.kunstmuseumbern.ch/de/organisation"
+     ]
+    },
+    {
+     "name": "Kathleen Bühler",
+     "role": "chief curator",
+     "title": "Chefkuratorin, Abteilungsleitung Sammlung, Ausstellungen, Forschung Kunstmuseum Bern",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.kunstmuseumbern.ch/de/organisation"
+     ]
+    },
+    {
+     "name": "Jonathan Gimmel",
+     "role": "chair of the board",
+     "title": "Präsident des Dachstiftungsrats",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.kunstmuseumbern.ch/de/api/files/2026-03/Medienmitteilung_KMB-ZPK.pdf"
+     ]
+    },
+    {
+     "name": "Nina Zimmer",
+     "role": "director",
+     "title": "Direktorin des Kunstmuseum Bern und Zentrum Paul Klee",
+     "current": false,
+     "since": null,
+     "until": "2026",
+     "left_because": "moved to another post",
+     "next_post": "Generaldirektorin des Belvedere in Wien",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.kunstmuseumbern.ch/de/api/files/2026-03/Medienmitteilung_KMB-ZPK.pdf"
+     ]
+    }
+   ],
+   "basis": "The museum's Organisation und Team page now lists Thomas Soraperra as Direktor ad interim and Kathleen Bühler as chief curator of the Kunstmuseum Bern; the umbrella foundation's press release of 26 March 2026 says Nina Zimmer stays director in Bern until autumn 2026 before becoming general director of the Belvedere in Vienna, and names Jonathan Gimmel as president of the umbrella foundation board."
+  }
+ },
+ {
+  "id": "villa-le-lac",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-duldeck-rudolf-steiner-archiv",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "friart-kunsthalle-fribourg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centre-art-contemporain-geneva",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "usine-kugler-geneva",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthaus-baselland-münchenstein",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "can-centre-dart-neuchatel",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondation-beyeler",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunst-halle-sankt-gallen-st-gallen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fotomuseum-winterthur-winterthur",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-z-rich",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthaus-zürich-zürich",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "migros-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "shedhalle-zurich",
+  "verdict": "ok",
+  "faults": []
+ }
+]

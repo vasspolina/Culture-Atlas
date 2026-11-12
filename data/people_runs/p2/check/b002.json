@@ -1,0 +1,336 @@
+[
+ {
+  "id": "acca",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "blak-dot-gallery-melbourne",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "boyd-house-ii-robin-boyd-foundation",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Tony Isaacson",
+    "field": "sources",
+    "stored": [
+     "https://robinboyd.org.au/about-us/"
+    ],
+    "page says": "The cited about-us page was last modified 22 December 2022, older than 18 months; the foundation's newer about page (/aboutus/, modified 18 August 2026) still lists Tony Isaacson (Chair).",
+    "fix": [
+     "https://robinboyd.org.au/aboutus/"
+    ]
+   },
+   {
+    "person": "Josephine Briginshaw",
+    "field": "people",
+    "stored": null,
+    "page says": "The current about page (modified 18 August 2026) lists under Staff: Josephine Briginshaw, Creative / Executive Director. The foundation does have a head.",
+    "fix": {
+     "name": "Josephine Briginshaw",
+     "role": "director",
+     "title": "Creative / Executive Director"
+    }
+   }
+  ],
+  "corrected": {
+   "id": "boyd-house-ii-robin-boyd-foundation",
+   "people": [
+    {
+     "name": "Josephine Briginshaw",
+     "role": "director",
+     "title": "Creative / Executive Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://robinboyd.org.au/aboutus/"
+     ]
+    },
+    {
+     "name": "Tony Isaacson",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://robinboyd.org.au/aboutus/"
+     ]
+    }
+   ],
+   "basis": "The Robin Boyd Foundation's current about page (modified August 2026), which lists the board with its chair and the staff headed by a Creative / Executive Director."
+  }
+ },
+ {
+  "id": "buxton-contemporary-melbourne",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "gertrude-contemporary-melbourne",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Tim Sligo",
+    "field": "people",
+    "stored": null,
+    "page says": "Heide's 2025 annual report (uploaded August 2026, written after April 2026 events) is signed by Lesley Harding, Artistic Director, and Tim Sligo, Executive Director, and its staff list gives both posts; the staff page as modified 24 September 2026 lists Lesley Harding as Director and no Executive Director, so the joint leadership ended in 2026.",
+    "fix": {
+     "name": "Tim Sligo",
+     "role": "co-director",
+     "title": "Executive Director",
+     "current": false,
+     "until": "2026"
+    }
+   }
+  ],
+  "corrected": {
+   "id": "heide-museum-of-modern-art",
+   "people": [
+    {
+     "name": "Lesley Harding",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.heide.com.au/staff-and-board/",
+      "https://wp.heide.com.au/app/uploads/2025/11/HEIDE-NEW-BOARD-MEMBER-MR_13_OCT.pdf"
+     ]
+    },
+    {
+     "name": "Tim Sligo",
+     "role": "co-director",
+     "title": "Executive Director",
+     "current": false,
+     "since": null,
+     "until": "2026",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://wp.heide.com.au/app/uploads/2026/08/1141.AnnualReport2025_Final_Digital.pdf",
+      "https://www.heide.com.au/staff-and-board/"
+     ]
+    },
+    {
+     "name": "Kendrah Morgan",
+     "role": "chief curator",
+     "title": "Head Curator",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.heide.com.au/staff-and-board/"
+     ]
+    },
+    {
+     "name": "Philip Crutchfield",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": "2026-01",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.heide.com.au/staff-and-board/",
+      "https://wp.heide.com.au/app/uploads/2025/11/HEIDE-NEW-BOARD-MEMBER-MR_13_OCT.pdf"
+     ]
+    }
+   ],
+   "basis": "Heide's staff and board page (modified September 2026) lists Lesley Harding as Director and Kendrah Morgan as Head Curator; the 2025 annual report, written in 2026, is signed by Harding as Artistic Director and Tim Sligo as Executive Director, who is absent from the current page; Heide's October 2025 release gives the chair's start on 1 January 2026."
+  }
+ },
+ {
+  "id": "koorie-heritage-trust-melbourne",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Tom Mosby",
+    "field": "basis",
+    "stored": "A PGAV news item dated 1 December 2025 quotes Tom Mosby as CEO of Koorie Heritage Trust; the Trust's own site blocked automated access.",
+    "page says": "The PGAV item is dated Tuesday August 26th, 2025 (1 Dec 2025 is the date of a different item in its sidebar).",
+    "fix": "A PGAV news item dated 26 August 2025 quotes Tom Mosby as CEO of Koorie Heritage Trust; the Trust's own site blocked automated access."
+   }
+  ],
+  "corrected": {
+   "id": "koorie-heritage-trust-melbourne",
+   "people": [
+    {
+     "name": "Tom Mosby",
+     "role": "director",
+     "title": "CEO",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://pgav.org.au/PGAV-announces-Gail-Harradine-as-inaugural-First-Nations-Representative~14508"
+     ]
+    }
+   ],
+   "basis": "A PGAV news item dated 26 August 2025 quotes Tom Mosby as CEO of Koorie Heritage Trust; the Trust's own site blocked automated access."
+  }
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fringe-world-perth",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Jo Thomas (predecessor)",
+    "field": "sources",
+    "stored": [
+     "https://artrage.com.au/news/artrage-appoints-new-ceo"
+    ],
+    "page says": "The release says only that she stepped back from her joint CEO / Creative Director responsibilities to focus on FRINGE WORLD 2027's creative vision; the team page is what states her current post, Creative Director, used as next_post.",
+    "fix": [
+     "https://artrage.com.au/news/artrage-appoints-new-ceo",
+     "https://artrage.com.au/our-team"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "fringe-world-perth",
+   "people": [
+    {
+     "name": "Tiffany Creasey",
+     "role": "director",
+     "title": "Acting CEO",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://artrage.com.au/our-team",
+      "https://artrage.com.au/news/artrage-appoints-new-ceo"
+     ]
+    },
+    {
+     "name": "Jo Thomas",
+     "role": "artistic director",
+     "title": "Creative Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://artrage.com.au/our-team",
+      "https://artrage.com.au/news/artrage-appoints-new-ceo"
+     ]
+    },
+    {
+     "name": "Noel Whitehead",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://artrage.com.au/our-team",
+      "https://artrage.com.au/news/artrage-appoints-new-ceo"
+     ]
+    },
+    {
+     "name": "Jo Thomas",
+     "role": "director",
+     "title": "CEO / Creative Director",
+     "current": false,
+     "since": null,
+     "until": "2026",
+     "left_because": null,
+     "next_post": "Creative Director, ARTRAGE",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://artrage.com.au/news/artrage-appoints-new-ceo",
+      "https://artrage.com.au/our-team"
+     ]
+    }
+   ],
+   "basis": "The team page of ARTRAGE, which presents FRINGE WORLD, and its 2026 release appointing Katie Henebery as CEO from 27 January 2027 (not listed as she has not started); the release says Jo Thomas stepped back from the joint CEO and Creative Director role earlier in 2026."
+  }
+ },
+ {
+  "id": "pica-perth",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "shepparton-art-museum-shepparton",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bundanon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "4a-centre-for-contemporary-asian-art-sydney",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artbank-sydney",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artspace-sydney",
+  "verdict": "ok",
+  "faults": []
+ }
+]

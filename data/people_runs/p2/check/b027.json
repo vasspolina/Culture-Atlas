@@ -1,0 +1,146 @@
+[
+ {
+  "id": "hmkv-hartware-medienkunstverein-dortmund",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "deutsches-hygiene-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstverein-für-die-rheinlande-und-westfalen-düsseldorf",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-folkwang-essen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mayhaus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "portikus-frankfurt",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "basis-frankfurt",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hohenhof-osthaus-museum-hagen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthaus-hamburg-hamburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstverein-in-hamburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kestner-gesellschaft-hannover",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "badischer-kunstverein-karlsruhe",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "zkm-center-for-art-and-media-karlsruhe",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Peter Weibel",
+    "field": "title",
+    "stored": "Leiter des ZKM",
+    "page says": "Hudson page: 'der die Einrichtung seit 1999 geleitet hatte' (no title); ZKM Weibel page: 'Von 1999 bis 2023 war Peter Weibel Vorstand des ZKM'",
+    "fix": "Vorstand"
+   },
+   {
+    "person": "Peter Weibel",
+    "field": "until",
+    "stored": "2023",
+    "page says": "The cited Hudson page gives only Hudson's start on 1 April 2023, not Weibel's end; the uncited ZKM Weibel page says 'Von 1999 bis 2023 war Peter Weibel Vorstand'",
+    "fix": "2023 (kept, with https://zkm.de/de/personen/peter-weibel added to sources)"
+   },
+   {
+    "person": "Peter Weibel",
+    "field": "left_because",
+    "stored": null,
+    "page says": "ZKM Weibel page: Vorstand 1999 to 2023, 'Am 1. März 2023 verstarb er'",
+    "fix": "died"
+   }
+  ],
+  "corrected": {
+   "id": "zkm-center-for-art-and-media-karlsruhe",
+   "people": [
+    {
+     "name": "Alistair Hudson",
+     "role": "director",
+     "title": "Wissenschaftlich-künstlerischer Vorstand",
+     "current": true,
+     "since": "2023-04",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Direktor, Manchester Art Gallery and The Whitworth (2018 to 2022)",
+      "Direktor, Middlesbrough Institute of Modern Art (from 2014)",
+      "Vizedirektor, Grizedale Arts (from 2004)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://zkm.de/de/personen/alistair-hudson",
+      "https://zkm.de/de/impressum"
+     ]
+    },
+    {
+     "name": "Peter Weibel",
+     "role": "director",
+     "title": "Vorstand",
+     "current": false,
+     "since": "1999",
+     "until": "2023",
+     "left_because": "died",
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://zkm.de/de/personen/alistair-hudson",
+      "https://zkm.de/de/personen/peter-weibel"
+     ]
+    }
+   ],
+   "basis": "The ZKM imprint and its page on Alistair Hudson, which gives his start date of 1 April 2023, his earlier posts and that he succeeded Peter Weibel; the ZKM page on Peter Weibel says he was Vorstand from 1999 to 2023 and died on 1 March 2023."
+  }
+ },
+ {
+  "id": "fridericianum-kassel",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "e-werk-luckenwalde-luckenwalde",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-mainz-mainz",
+  "verdict": "ok",
+  "faults": []
+ }
+]

@@ -1,0 +1,95 @@
+[
+ {
+  "id": "ch-teau-de-versailles",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-de-tahiti-et-des-les-te-fare-iamanaha-punaauia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "joseph-stalin-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "center-of-contemporary-art-tbilisi-tbilisi-triennial-tbilisi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "georgian-national-museum-tbilisi",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "David Lordkipanidze",
+    "field": "current",
+    "stored": true,
+    "page says": "museum.ge public-information page (m=339) is undated and the site is stale: its newest news item is 4 July 2024 and its latest annual report covers 2016 to 2017; no page dated in the last 18 months confirms he is still general director",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "georgian-national-museum-tbilisi",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "kropka-belarusian-community-space-listed-in-place-of-krokva-tbilisi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-tbilisi-tbilisi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tbilisi-photography-multimedia-museum-tpmm-tbilisi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "juedisches-museum-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kw-institute-for-contemporary-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstraum-kreuzberg-bethanien",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "k-nstlerhaus-bethanien-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-fur-deutsche-geschichte",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-fuer-naturkunde-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "neue-nationalgalerie-berlin",
+  "verdict": "ok",
+  "faults": []
+ }
+]

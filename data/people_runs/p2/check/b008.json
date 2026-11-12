@@ -1,0 +1,111 @@
+[
+ {
+  "id": "capacete-rio-de-janeiro",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "casa-frança-brasil-rio-de-janeiro",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Jocelino Pessoa",
+    "field": "role",
+    "stored": "founder",
+    "page says": "Credited under Idealização of the Projeto CASA BRASIL (the 2025 repositioning) and as Coordenador Geral; the same page says the centre opened in 1990 from a project by Pierre Castel, so it does not name him a founder of the space, and Coordenador Geral is not a listed role",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "casa-frança-brasil-rio-de-janeiro",
+   "people": [
+    {
+     "name": "Tania Queiroz",
+     "role": "director",
+     "title": "Diretora",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://casabrasil.rj.gov.br/projeto/"
+     ]
+    }
+   ],
+   "basis": "The Casa Brasil project page names Tania Queiroz as Diretora."
+  }
+ },
+ {
+  "id": "instituto-tunga-rio-de-janeiro",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-de-arte-moderna-do-rio-de-janeiro-rio-de-janeiro",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-do-amanha",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-de-arte-moderna-da-bahia-salvador",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundação-bienal-de-são-paulo-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "instituto-tomie-ohtake",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "masp-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-lasar-segall-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-de-arte-brasileira-da-faap-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-de-arte-moderna-de-são-paulo-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pinacoteca-de-s-o-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pivo-sao-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sofia-city-art-gallery",
+  "verdict": "ok",
+  "faults": []
+ }
+]

@@ -1,0 +1,388 @@
+[
+ {
+  "id": "frank-lloyd-wright-trust",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "oakland-museum-of-california-oakland",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bemis-center",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Chris Cook",
+    "field": "since",
+    "stored": "2015",
+    "page says": "About page: 'Before the siren's song of the Missouri River swept him to Omaha in 2015, he was the Executive Director of Cannonball'; it says when he moved, not when he became Executive Director",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "bemis-center",
+   "people": [
+    {
+     "name": "Chris Cook",
+     "role": "director",
+     "title": "Executive Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Executive Director, Cannonball"
+     ],
+     "pay": {
+      "amount": 167493,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation",
+      "url": "https://projects.propublica.org/nonprofits/organizations/470653927"
+     },
+     "sources": [
+      "https://www.bemiscenter.org/about",
+      "https://projects.propublica.org/nonprofits/organizations/470653927"
+     ]
+    },
+    {
+     "name": "Rachel Adams",
+     "role": "chief curator",
+     "title": "Chief Curator + Director of Programs",
+     "current": true,
+     "since": "2018",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.bemiscenter.org/about"
+     ]
+    },
+    {
+     "name": "Todd Simon",
+     "role": "chair of the board",
+     "title": "President",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.bemiscenter.org/about"
+     ]
+    }
+   ],
+   "basis": "The Bemis Center about page with its staff and board; pay from the Form 990 for 2025 on ProPublica."
+  }
+ },
+ {
+  "id": "joslyn-art-museum-omaha",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "palm-springs-art-museum-palm-springs",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Adam Lerner",
+    "field": "sources",
+    "stored": "until 2025 cited only to the 15 April 2025 release and ProPublica",
+    "page says": "The April 2025 release says only that he 'will conclude his tenure at the end of his current contract'; the 29 September 2025 release, not cited for him, says Vendredi 'has served as Interim Executive Director since April 2025', which is what dates his departure to 2025",
+    "fix": "add https://www.psmuseum.org/storage/app/media/Press%20Releases/2025/PSAM%20Announces%20Christine%20Vendredi%20as%20Executive%20Director.pdf to his sources"
+   }
+  ],
+  "corrected": {
+   "id": "palm-springs-art-museum-palm-springs",
+   "people": [
+    {
+     "name": "Christine Vendredi",
+     "role": "director",
+     "title": "JoAnn McGrath Executive Director and Chief Curator",
+     "current": true,
+     "since": "2025",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Interim Executive Director, Palm Springs Art Museum (2025)",
+      "Chief Curator, Palm Springs Art Museum (2024 to 2025)",
+      "Global Director of Art, Culture, and Heritage, Louis Vuitton"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.psmuseum.org/storage/app/media/Press%20Releases/2026/q-artcesar-garcia-alvarezpsam.pdf",
+      "https://www.psmuseum.org/storage/app/media/Press%20Releases/2025/PSAM%20Announces%20Christine%20Vendredi%20as%20Executive%20Director.pdf"
+     ]
+    },
+    {
+     "name": "Craig Hartzman",
+     "role": "chair of the board",
+     "title": "Board Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.psmuseum.org/about/institutional-information",
+      "https://www.psmuseum.org/storage/app/media/Press%20Releases/2025/PSAM%20Announces%20Christine%20Vendredi%20as%20Executive%20Director.pdf"
+     ]
+    },
+    {
+     "name": "Adam Lerner",
+     "role": "director",
+     "title": "JoAnn McGrath Executive Director / CEO",
+     "current": false,
+     "since": "2021",
+     "until": "2025",
+     "left_because": "term ended",
+     "next_post": null,
+     "previously": [],
+     "pay": {
+      "amount": 298295,
+      "currency": "USD",
+      "year": "2024",
+      "what": "reportable compensation",
+      "url": "https://projects.propublica.org/nonprofits/organizations/951809576"
+     },
+     "sources": [
+      "https://www.psmuseum.org/storage/app/media/Press%20Releases/2025/adam-lerner-palm-springs-art-museum-press-release.pdf",
+      "https://www.psmuseum.org/storage/app/media/Press%20Releases/2025/PSAM%20Announces%20Christine%20Vendredi%20as%20Executive%20Director.pdf",
+      "https://projects.propublica.org/nonprofits/organizations/951809576"
+     ]
+    }
+   ],
+   "basis": "The museum's 29 September 2025 release naming Christine Vendredi, its 17 September 2026 release giving her current title, its 15 April 2025 release on Adam Lerner not renewing his contract, and the institutional information page; pay from the Form 990 for the year to June 2024."
+  }
+ },
+ {
+  "id": "the-gamble-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "heard-museum-phoenix",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "phoenix-art-museum-phoenix",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "edith-farnsworth-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pica-portland",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Betsey Brock",
+    "field": "previously",
+    "stored": [
+     "Executive Director, On the Boards",
+     "Director of Development, Seattle Arts & Lectures"
+    ],
+    "page says": "Staff page: 'having served as Director of Development for Seattle Arts & Lectures, Executive Director at On the Boards'; the brief keeps the source's order",
+    "fix": [
+     "Director of Development, Seattle Arts & Lectures",
+     "Executive Director, On the Boards"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "pica-portland",
+   "people": [
+    {
+     "name": "Betsey Brock",
+     "role": "director",
+     "title": "Executive Director",
+     "current": true,
+     "since": "2025-11",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Director of Development, Seattle Arts & Lectures",
+      "Executive Director, On the Boards"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.pica.org/about/staff"
+     ]
+    },
+    {
+     "name": "Erin Boberg Doughton",
+     "role": "artistic director",
+     "title": "Artistic Director & Curator of Performance",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.pica.org/about/staff"
+     ]
+    },
+    {
+     "name": "Kristan Kennedy",
+     "role": "artistic director",
+     "title": "Artistic Director and Curator of Visual Art",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.pica.org/about/staff"
+     ]
+    },
+    {
+     "name": "Cristi Miles",
+     "role": "chair of the board",
+     "title": "Co-Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.pica.org/about/staff"
+     ]
+    },
+    {
+     "name": "Kevin Washington",
+     "role": "chair of the board",
+     "title": "Co-Chair and Treasurer",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.pica.org/about/staff"
+     ]
+    },
+    {
+     "name": "Reuben Roqueñi",
+     "role": "director",
+     "title": "Executive Director",
+     "current": false,
+     "since": "2023",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": {
+      "amount": 105000,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation",
+      "url": "https://projects.propublica.org/nonprofits/organizations/931177971"
+     },
+     "sources": [
+      "https://www.pica.org/about/press",
+      "https://us-west-2.graphassets.com/AXXJj1ATYQDu9CMNOruG9z/N9Lr6MBkQs2yjWv1hvO2?dl=true",
+      "https://projects.propublica.org/nonprofits/organizations/931177971"
+     ]
+    }
+   ],
+   "basis": "PICA's staff and board page; Reuben Roqueñi from the May 2023 appointment release and the Form 990 for the year to June 2025, with no page found giving the date he left."
+  }
+ },
+ {
+  "id": "portland-art-museum-portland",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Mark H.C. Bessire",
+    "field": "people",
+    "stored": [],
+    "page says": "portlandmuseum.org/board-of-trustees/ (loads without a bot check now): 'Together with Mark H.C. Bessire, the Judy and Leonard Lauder Executive Director'; officers list 'Eileen T. Gillespie, Chair'",
+    "fix": "add Bessire as current director and Gillespie as chair of the board, both sourced to the board page"
+   }
+  ],
+  "corrected": {
+   "id": "portland-museum-of-art-portland-maine",
+   "people": [
+    {
+     "name": "Mark H.C. Bessire",
+     "role": "director",
+     "title": "Judy and Leonard Lauder Executive Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.portlandmuseum.org/board-of-trustees/"
+     ]
+    },
+    {
+     "name": "Eileen T. Gillespie",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.portlandmuseum.org/board-of-trustees/"
+     ]
+    }
+   ],
+   "basis": "The museum's own Board of Trustees page, which names Mark H.C. Bessire as the Judy and Leonard Lauder Executive Director and lists the board officers."
+  }
+ },
+ {
+  "id": "glenstone",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sunnylands",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nevada-museum-of-art-reno",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "aldrich-contemporary-art-museum-ridgefield",
+  "verdict": "ok",
+  "faults": []
+ }
+]

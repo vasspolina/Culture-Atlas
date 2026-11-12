@@ -1,0 +1,121 @@
+[
+ {
+  "id": "montresso-art-foundation-jardin-rouge-marrakech",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Jean Louis Haguenauer",
+    "field": "role",
+    "stored": "founder (current)",
+    "page says": "The site only signs a quote 'Jean Louis Haguenauer -- Fondateur'; it never says he runs the foundation, and the foundation is not artist-run, so the founder rule is not met",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "montresso-art-foundation-jardin-rouge-marrakech",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "mus-e-yves-saint-laurent-marrakech-marrakech",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "l-appartement-22-rabat",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "le-cube-independent-art-room-rabat",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-mohammed-vi-d-art-moderne-et-contemporain-mmvi-rabat",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Mehdi Qotbi",
+    "field": "role",
+    "stored": "director",
+    "page says": "'Président de la Fondation Nationale des Musées', the body that manages seventeen museums; the cited page does not name him head of this museum, and no FNM page opened names the museum's own director",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "mus-e-mohammed-vi-d-art-moderne-et-contemporain-mmvi-rabat",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "contemporary-art-museum-of-the-kasbah",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Mehdi Qotbi",
+    "field": "role",
+    "stored": "director",
+    "page says": "'Président de la Fondation Nationale des Musées'; the museum page (fnm.ma/museums/33) names no one, and the FNM president is not stated to head this museum",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "contemporary-art-museum-of-the-kasbah",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "associacao-nucleo-de-arte",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundação-fernando-leite-couto-maputo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "defence-services-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "drug-elimination-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "franco-namibian-cultural-centre-fncc",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "heroes-acre-windhoek",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "independence-memorial-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-art-gallery-of-namibia-windhoek",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kathmandu-triennale-kathmandu",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "huis-van-zessen",
+  "verdict": "ok",
+  "faults": []
+ }
+]

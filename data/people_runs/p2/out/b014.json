@@ -6,8 +6,39 @@
  },
  {
   "id": "hubei-museum-of-art-wuhan",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "陈建中",
+    "role": "director",
+    "title": "湖北美术馆馆长",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://tidenews.com.cn/news.html?id=3320500"
+    ]
+   },
+   {
+    "name": "冀少峰",
+    "role": "director",
+    "title": "湖北省美术馆馆长",
+    "current": false,
+    "since": null,
+    "until": "2025",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://tidenews.com.cn/news.html?id=3199387"
+    ]
+   }
+  ],
+  "basis": "Two Tide News (Meishu Bao) reports: one dated 3 August 2025 lists Ji Shaofeng as director of the museum among guests at an opening, and one dated 10 December 2025 lists Chen Jianzhong as its director, so the post changed hands in late 2025; no appointment notice was found."
  },
  {
   "id": "yan-an-revolutionary-memorial-hall",
@@ -21,23 +52,168 @@
  },
  {
   "id": "fragmentos-espacio-de-arte-y-memoria-bogotá",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Andrés Felipe Suarez",
+    "role": "director",
+    "title": "coordinador general",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://fragmentos.gov.co/fragmentos/Paginas/default.aspx"
+    ]
+   }
+  ],
+  "basis": "The space's own About page says it is run by the Museo Nacional de Colombia for the Ministry of Culture and names Andrés Felipe Suarez as general coordinator of its coordination team."
  },
  {
   "id": "museo-de-arte-moderno-de-bogotá-bogotá",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "María Belén Sáez de Ibarra",
+    "role": "director",
+    "title": "directora artística y ejecutiva",
+    "current": true,
+    "since": "2026-09",
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [
+     "Ministerio de Cultura de Colombia (six years)",
+     "Museo de Arte, Auditorio León de Greiff and Claustro de San Agustín, Universidad Nacional de Colombia (about two decades)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.mambogota.com/news/el-museo-de-arte-moderno-de-bogota-informa-sobre-su-nueva-directora/"
+    ]
+   },
+   {
+    "name": "Martha Ortiz",
+    "role": "director",
+    "title": "directora",
+    "current": false,
+    "since": null,
+    "until": "2026",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.mambogota.com/news/el-museo-de-arte-moderno-de-bogota-informa-sobre-su-nueva-directora/"
+    ]
+   },
+   {
+    "name": "Pablo Echeverri",
+    "role": "chair of the board",
+    "title": "presidente de la Junta Directiva",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.mambogota.com/news/el-museo-de-arte-moderno-de-bogota-informa-sobre-su-nueva-directora/"
+    ]
+   }
+  ],
+  "basis": "The museum's own announcement of 19 August 2026 names María Belén Sáez de Ibarra as the new artistic and executive director from 19 September 2026, thanks the previous director Martha Ortiz, says board member Ángela Royo was acting director for the four months between them, and quotes board chair Pablo Echeverri."
  },
  {
   "id": "lugar-a-dudas-cali",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Sally Mizrachi",
+    "role": "director",
+    "title": "Directora general",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.lugaradudas.org/equipo/"
+    ]
+   },
+   {
+    "name": "Éricka Flórez",
+    "role": "artistic director",
+    "title": "Directora artística",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.lugaradudas.org/equipo/"
+    ]
+   }
+  ],
+  "basis": "The space's own team page lists its current team for 2025, with Sally Mizrachi as general director and Éricka Flórez as artistic director."
  },
  {
   "id": "museo-la-tertulia-cali",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Elena Sterenberg Carvajal",
+    "role": "director",
+    "title": "directora ejecutiva",
+    "current": true,
+    "since": "2026-01",
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [
+     "directora, Teatro Jorge Isaacs",
+     "docente, Universidad Javeriana"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.elpais.com.co/cultura/fortaleceremos-los-vinculos-culturales-con-la-comunidad-elena-sterenberg-carvajal-directora-del-museo-la-tertulia-1318.html"
+    ]
+   },
+   {
+    "name": "Melissa Aguilar",
+    "role": "curator",
+    "title": "curadora",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.elpais.com.co/cultura/fortaleceremos-los-vinculos-culturales-con-la-comunidad-elena-sterenberg-carvajal-directora-del-museo-la-tertulia-1318.html"
+    ]
+   },
+   {
+    "name": "Ana Lucía Llano",
+    "role": "director",
+    "title": "directora general",
+    "current": false,
+    "since": null,
+    "until": "2025",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.elpais.com.co/cultura/la-tertulia-celebra-con-una-gran-agenda-el-dia-internacional-de-los-museos-1503.html"
+    ]
+   }
+  ],
+  "basis": "El País Cali (14 February 2026) says Elena Sterenberg Carvajal became executive director on the first day of 2026 and names Melissa Aguilar as curator in her team; an El País piece from May 2025 still quotes Ana Lucía Llano as directora general, so she left in 2025, though no page states her leaving date."
  },
  {
   "id": "casa-tres-patios-medellin",
@@ -46,37 +222,275 @@
  },
  {
   "id": "museo-de-antioquia-medellín",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "María del Rosario Escobar",
+    "role": "director",
+    "title": "Directora",
+    "current": true,
+    "since": "2016-01",
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://museodeantioquia.co/sobre-el-museo/",
+     "https://telemedellin.tv/museo-de-antioquia-se-renueva-en-el-2026/",
+     "https://www.elcolombiano.com/cultura/debora-arango-exposicion-permanente-museo-de-antioquia-AG39486273"
+    ]
+   }
+  ],
+  "basis": "The museum's own About page carries a text signed by María del Rosario Escobar, Directora, saying she took over the general direction in January 2016; Telemedellín (10 February 2026) and El Colombiano (2026) still quote her as director."
  },
  {
   "id": "museo-de-arte-moderno-de-medell-n-mamm-medell-n",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Rafael Tamayo Franco",
+    "role": "director",
+    "title": "director",
+    "current": true,
+    "since": "2025-12",
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [
+     "Director, Museo de Memoria de Colombia",
+     "Director, Red de Bibliotecas Públicas de Bogotá (BibloRed)",
+     "Director, Bienal Internacional de Arte de Antioquia y Medellín 2025"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.elmamm.org/en/noticia/the-board-of-directors-announces-the-appointment-of-rafael-tamayo-franco-as-new-director/"
+    ]
+   },
+   {
+    "name": "María Mercedes González",
+    "role": "director",
+    "title": "director",
+    "current": false,
+    "since": null,
+    "until": "2025",
+    "left_because": "resigned",
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.elmamm.org/en/noticia/thirteen-years-of-transformation-expansion-and-internationalization-at-the-museo-de-arte-moderno-de-medellin/",
+     "https://www.elmamm.org/en/noticia/the-board-of-directors-announces-the-appointment-of-rafael-tamayo-franco-as-new-director/"
+    ]
+   }
+  ],
+  "basis": "The museum's own news pages: on 15 October 2025 the board announced María Mercedes González's resignation after thirteen years (she stays on the board), and on 31 October 2025 it named Rafael Tamayo Franco director from 1 December 2025."
  },
  {
   "id": "museo-de-arte-costarricense-mac-san-jos",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Katrin Aason Bucher",
+    "role": "director",
+    "title": "directora del MAC",
+    "current": true,
+    "since": "2026-05",
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://delfino.cr/2026/05/ministerio-de-cultura-anuncia-nuevas-direcciones-en-instituciones-adscritas",
+     "https://www.nacion.com/viva/casa-presidencial-pide-prestadas-obras-de-la/BU5RIKF3C5ACTGWOU3SPNWI5NU/story/"
+    ]
+   },
+   {
+    "name": "Esteban Calvo Campos",
+    "role": "director",
+    "title": "director del Museo de Arte Costarricense",
+    "current": false,
+    "since": "2022-05",
+    "until": "2025-12",
+    "left_because": "dismissed",
+    "next_post": null,
+    "previously": [
+     "docente y coordinador de investigación, Escuela Casa del Artista Olga Espinach Fernández (2013 to 2022)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.nacion.com/ancora/ministerio-de-cultura-destituye-al-director-del/SMEEA7D55VDSRLHKCCVEVGYBMA/story/"
+    ]
+   }
+  ],
+  "basis": "Delfino (16 May 2026) lists Katrin Aason Bucher among the Ministry of Culture's new institution heads taking office from 18 May 2026, and La Nación (1 October 2026) calls her directora del MAC; La Nación (9 December 2025) reports the minister dismissed director Esteban Calvo Campos on 5 December 2025."
  },
  {
   "id": "museo-de-arte-y-diseño-contemporáneo-san-josé",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Carola Fumero Araya",
+    "role": "director",
+    "title": "Dirección",
+    "current": true,
+    "since": "2026-05",
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://madc.cr/index.php/es/equipo-madc",
+     "https://delfino.cr/2026/05/ministerio-de-cultura-anuncia-nuevas-direcciones-en-instituciones-adscritas"
+    ]
+   },
+   {
+    "name": "Sofía Villena Araya",
+    "role": "chief curator",
+    "title": "Curadora Jefa",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://madc.cr/index.php/es/equipo-madc"
+    ]
+   }
+  ],
+  "basis": "The museum's own team page (Equipo MADC) names Carola Fumero Araya under Dirección and Sofía Villena Araya as Curadora Jefa; Delfino (16 May 2026) lists Fumero Araya among the Ministry of Culture's new institution heads taking office from 18 May 2026. The team page's list of past staff gives Paz Monge as director from 2020 to 2022, and no head between 2022 and 2026 was found."
  },
  {
   "id": "teoretica-san-jose",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Paula Piedra",
+    "role": "director",
+    "title": "Directora",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://teoretica.org/equipo/"
+    ]
+   }
+  ],
+  "basis": "The space's own team page (Equipo) names Paula Piedra as Directora; the founder Virginia Pérez-Ratton died in 2010 and is not listed."
  },
  {
   "id": "msu-zagreb",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Vesna Meštrić",
+    "role": "director",
+    "title": "ravnateljica",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [
+     "voditeljica Zbirke Richter, Muzej suvremene umjetnosti",
+     "voditeljica odjela zbirki, Muzej suvremene umjetnosti"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.novilist.hr/ostalo/kultura/izlozbe/msu-u-2025-skoro-trideset-izlozbi-i-dva-velika-gostovanja/",
+     "https://www.tportal.hr/kultura/clanak/zdenka-badovinac-odlazi-s-mjesta-ravnateljice-msu-a-evo-tko-ce-je-zamijeniti-20230913"
+    ]
+   },
+   {
+    "name": "Zdenka Badovinac",
+    "role": "director",
+    "title": "ravnateljica",
+    "current": false,
+    "since": "2022",
+    "until": "2023",
+    "left_because": "resigned",
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.tportal.hr/kultura/clanak/zdenka-badovinac-odlazi-s-mjesta-ravnateljice-msu-a-evo-tko-ce-je-zamijeniti-20230913"
+    ]
+   }
+  ],
+  "basis": "Novi list (2 January 2026) calls Vesna Meštrić the museum's ravnateljica; tportal (13 September 2023) reports Zdenka Badovinac resigned for personal reasons after a year and a half and that Meštrić, head of the Richter Collection and of the collections department, would be acting director from 1 October 2023. The page giving the date of her full appointment was not found."
  },
  {
   "id": "whw-galerija-nova-zagreb",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Ivet Ćurlin",
+    "role": "curator",
+    "title": "kustosica, članica kolektiva WHW",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [
+     "umjetnička direktorica, Kunsthalle Wien (2019 to 2024)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.whw.hr/o-nama/sto-kako-za-koga-whw/"
+    ]
+   },
+   {
+    "name": "Ana Dević",
+    "role": "curator",
+    "title": "kustosica, članica kolektiva WHW",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.whw.hr/o-nama/sto-kako-za-koga-whw/"
+    ]
+   },
+   {
+    "name": "Nataša Ilić",
+    "role": "curator",
+    "title": "kustosica, članica kolektiva WHW",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [
+     "umjetnička direktorica, Kunsthalle Wien (2019 to 2024)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.whw.hr/o-nama/sto-kako-za-koga-whw/"
+    ]
+   },
+   {
+    "name": "Sabina Sabolović",
+    "role": "curator",
+    "title": "kustosica, članica kolektiva WHW",
+    "current": true,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [
+     "umjetnička direktorica, Kunsthalle Wien (2019 to 2024)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.whw.hr/o-nama/sto-kako-za-koga-whw/"
+    ]
+   }
+  ],
+  "basis": "The collective's own About page names its four curator members; it says WHW ran Galerija Nova from 2003 to 2023 and that Ana Dević led the Zagreb programmes while the other three directed Kunsthalle Wien from June 2019 to June 2024."
  }
 ]

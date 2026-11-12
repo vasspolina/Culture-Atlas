@@ -1,0 +1,270 @@
+[
+ {
+  "id": "lunds-konsthall-lund",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "malmö-konsthall-malmö",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bonniers-konsthall-stockholm",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "index-foundation-stockholm",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Marti Manen",
+    "field": "people",
+    "stored": null,
+    "page says": "indexfoundation.se/about: 'The Directors of Index during this period included Diana Baldon (2011-14), Axel Wieder (2014-2018), Marti Manen (2018-2026), and Isabella Tjäder (Co-Director since 2024, Director in 2026)'; 'The current Director since 2026 is Övül Ö. Durmuşoğlu.' The cited page dates his departure to 2026, so the predecessor named in known is missing.",
+    "fix": {
+     "name": "Marti Manen",
+     "role": "director",
+     "current": false,
+     "since": "2018",
+     "until": "2026"
+    }
+   }
+  ],
+  "corrected": {
+   "id": "index-foundation-stockholm",
+   "people": [
+    {
+     "name": "Övül Ö. Durmuşoğlu",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": "2026-09",
+     "until": null,
+     "previously": [
+      "Curator, steirischer herbst (2018)",
+      "Guest professor, Universität der Künste Berlin Graduate School",
+      "Co-lead of the Art in Discourse programme, Braunschweig University of the Arts"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.indexfoundation.se/about",
+      "https://www.indexfoundation.se/etc/index-board-announces-oevuel-oe-durmusoglu-as-new-director-of-index"
+     ]
+    },
+    {
+     "name": "Malin Hüber",
+     "role": "chair of the board",
+     "title": "Ordf. / Chairperson",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.indexfoundation.se/about"
+     ]
+    },
+    {
+     "name": "Marti Manen",
+     "role": "director",
+     "title": "Director",
+     "current": false,
+     "since": "2018",
+     "until": "2026",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.indexfoundation.se/about"
+     ]
+    }
+   ],
+   "basis": "The Index about page names the director, the current board with Malin Hüber as chair, and the past directors with Marti Manen as director 2018 to 2026; the board's undated appointment announcement says Övül Ö. Durmuşoğlu would take up the post in September 2026 and lists an older board with Masha Taavoniku as chair, so the current about page is kept for the chair."
+  }
+ },
+ {
+  "id": "konsthall-c-stockholm",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Erik Annerborn",
+    "field": "people",
+    "stored": "director, verksamhetsledare",
+    "page says": "konsthallc.se/info/personal returns only a JavaScript shell ('Konsthall C / Loading...') to curl and a 404 to WebFetch, and has no web.archive.org copy; the cited page could not be opened, so the fact is unverified.",
+    "fix": null
+   },
+   {
+    "person": "Mariam Elnozahy",
+    "field": "people",
+    "stored": "artistic director, konstnärlig ledare",
+    "page says": "konsthallc.se/info/personal returns only a JavaScript shell ('Konsthall C / Loading...') to curl and a 404 to WebFetch, and has no web.archive.org copy; the cited page could not be opened, so the fact is unverified.",
+    "fix": null
+   },
+   {
+    "person": "Martin Ahlberg",
+    "field": "people",
+    "stored": "chair of the board, ordförande",
+    "page says": "konsthallc.se/info/personal returns only a JavaScript shell ('Konsthall C / Loading...') to curl and a 404 to WebFetch, and has no web.archive.org copy; the cited page could not be opened, so the fact is unverified.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "konsthall-c-stockholm",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "magasin-iii",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "moderna-museet",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tensta-konsthall-stockholm",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bildmuseet-umeå",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ein-haus-woba",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Benjamin Adler",
+    "field": "role",
+    "stored": "co-director",
+    "page says": "ein-haus-woba.ch/ueber-uns: 'Der Vorstand setzt sich aus folgenden Personen zusammen: Benjamin Adler ... Lukas Gruntz ... Klaus Spechtenhauser'. They are ordinary board members of a volunteer association; the page names no director, co-director or chair, and the brief admits board members only as a named chair.",
+    "fix": null
+   },
+   {
+    "person": "Lukas Gruntz",
+    "field": "role",
+    "stored": "co-director",
+    "page says": "ein-haus-woba.ch/ueber-uns: 'Der Vorstand setzt sich aus folgenden Personen zusammen: Benjamin Adler ... Lukas Gruntz ... Klaus Spechtenhauser'. They are ordinary board members of a volunteer association; the page names no director, co-director or chair, and the brief admits board members only as a named chair.",
+    "fix": null
+   },
+   {
+    "person": "Klaus Spechtenhauser",
+    "field": "role",
+    "stored": "co-director",
+    "page says": "ein-haus-woba.ch/ueber-uns: 'Der Vorstand setzt sich aus folgenden Personen zusammen: Benjamin Adler ... Lukas Gruntz ... Klaus Spechtenhauser'. They are ordinary board members of a volunteer association; the page names no director, co-director or chair, and the brief admits board members only as a named chair.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "ein-haus-woba",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "hek-haus-der-elektronischen-k-nste-basel",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Sabine Himmelsbach",
+    "field": "people",
+    "stored": "director, Direktorin",
+    "page says": "hek.ch/ueber-das-hek/team serves only a JavaScript shell (text 'HEK'); its static Nuxt state file holds a 429 error instead of the team, the English team page has no names, and web.archive.org could not be reached. The cited page could not be opened.",
+    "fix": null
+   },
+   {
+    "person": "Marlene Wenger",
+    "field": "people",
+    "stored": "chief curator, Leitung Programm",
+    "page says": "hek.ch/ueber-das-hek/team serves only a JavaScript shell (text 'HEK'); its static Nuxt state file holds a 429 error instead of the team, the English team page has no names, and web.archive.org could not be reached. The cited page could not be opened.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "hek-haus-der-elektronischen-k-nste-basel",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "kaskadenkondensator-basel",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-basel",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstmuseum-basel",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Elena Filipovic",
+    "field": "previously",
+    "stored": [
+     "Director, Kunsthalle Basel (2014 to 2024)"
+    ],
+    "page says": "Neither cited page (kunstmuseumbasel.ch contact page, Jahresbericht 2025) mentions her Kunsthalle Basel post; it is stated on kunsthallebasel.ch/en/about ('Elena Filipovic (2014–2024) became Kunsthalle Basel's first female director'), which is not among her sources here. Fact right, source added.",
+    "fix": [
+     "Director, Kunsthalle Basel (2014 to 2024)"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "kunstmuseum-basel",
+   "people": [
+    {
+     "name": "Elena Filipovic",
+     "role": "director",
+     "title": "Direktorin",
+     "current": true,
+     "since": "2024",
+     "until": null,
+     "previously": [
+      "Director, Kunsthalle Basel (2014 to 2024)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://kunstmuseumbasel.ch/de/museum/kontakt",
+      "https://kunstmuseumbasel.ch/de/file/9147/561b43d3/Kunstmuseum+Basel+Jahresbericht+2025.pdf",
+      "https://www.kunsthallebasel.ch/en/about"
+     ]
+    },
+    {
+     "name": "Felix Uhlmann",
+     "role": "chair of the board",
+     "title": "Präsident der Kunstkommission",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://kunstmuseumbasel.ch/de/file/9147/561b43d3/Kunstmuseum+Basel+Jahresbericht+2025.pdf"
+     ]
+    }
+   ],
+   "basis": "The Kunstmuseum Basel contact page and the 2025 annual report, which calls 2025 her second year in office and names the president of the Kunstkommission; her Kunsthalle Basel dates are from the Kunsthalle Basel about page."
+  }
+ },
+ {
+  "id": "museum-tinguely",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "schaulager",
+  "verdict": "ok",
+  "faults": []
+ }
+]

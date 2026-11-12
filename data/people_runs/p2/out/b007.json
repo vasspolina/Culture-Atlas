@@ -7,12 +7,13 @@
     "role": "director",
     "title": "General & Artistic director",
     "current": true,
-    "since": null,
+    "since": "2020-01",
     "until": null,
     "previously": [],
     "pay": null,
     "sources": [
-     "https://www.z33.be/en/about/organisation/team-members/"
+     "https://www.z33.be/en/about/organisation/team-members/",
+     "https://www.z33.be/en/2020/01/12/adinda-van-geystelen-devient-directrice-artistique-de-z/"
     ]
    },
    {
@@ -29,7 +30,7 @@
     ]
    }
   ],
-  "basis": "Z33's own team members page, read through a fetch tool because the site blocks plain requests."
+  "basis": "Z33's own team members page, read through a fetch tool because the site blocks plain requests, and its January 2020 announcement that Adinda Van Geystelen would become artistic director on 20 January 2020."
  },
  {
   "id": "contour-biennale-mechelen",
@@ -117,13 +118,43 @@
  },
  {
   "id": "image-factory-art-foundation-imagination-factory-belize-city",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Yasser Musa",
+    "role": "director",
+    "title": "director of the Imagination Factri",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [
+     "President, National Institute of Culture and History (NICH)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://amandala.com.bz/news/imagineastories/"
+    ]
+   }
+  ],
+  "basis": "An Amandala report of June 2025 says Yasser Musa founded the Imagination Factri in June 1995 and continues to work as its director."
  },
  {
   "id": "festival-international-des-arts-du-benin-finab",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Ulrich Adjovi",
+    "role": "founder",
+    "title": "promoteur du FInAB",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://lanouvelletribune.info/2026/02/benin-ulrich-adjovi-et-son-equipe-presentent-le-finab-2026/"
+    ]
+   }
+  ],
+  "basis": "La Nouvelle Tribune's February 2026 report on the press launch of the 2026 edition, where Ulrich Adjovi, the festival's promoter, told how he created it; no separate festival director is named."
  },
  {
   "id": "fondation-zinsou-cotonou",
@@ -165,18 +196,89 @@
  },
  {
   "id": "espacio-cultural-patino",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Nicolas Joray",
+    "role": "director",
+    "title": "Directeur général",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://patino.org/wp-content/uploads/2026/06/Fondation-Patino_Rapport-activites-2025.pdf"
+    ]
+   },
+   {
+    "name": "Benoît Merkt",
+    "role": "chair of the board",
+    "title": "Président, Conseil de Fondation",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://patino.org/wp-content/uploads/2026/06/Fondation-Patino_Rapport-activites-2025.pdf"
+    ]
+   }
+  ],
+  "basis": "The Fondation Simón I. Patiño 2025 activity report, page 26, which names the foundation's director general and council president at 31 December 2025; it names no separate head of the La Paz space."
  },
  {
   "id": "museo-nacional-de-arte-de-bolivia-la-paz",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Aida Rada Hervas",
+    "role": "director",
+    "title": "Directora del Museo Nacional de Arte",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://cienciaycultura.ucb.edu.bo/a/article/download/1423/1466/2577",
+     "https://www.prensa-latina.cu/2026/06/26/artista-de-bolivia-asombra-y-cautiva-con-muestra-la-mascara-nos-mira/"
+    ]
+   },
+   {
+    "name": "Claribel Arandia",
+    "role": "director",
+    "title": "directora del Museo Nacional de Arte (MNA) de Bolivia",
+    "current": false,
+    "since": null,
+    "until": null,
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.prensa-latina.cu/2025/08/23/invidentes-de-bolivia-pueden-ver-obras-en-exposicion/"
+    ]
+   }
+  ],
+  "basis": "Her own article in Ciencia y Cultura (June 2026) and a Prensa Latina report of 26 June 2026 name the current director; Prensa Latina named Claribel Arandia director in August 2025, and no page found gives the date she left."
  },
  {
   "id": "museo-nacional-de-etnograf-a-y-folklore-musef-la-paz",
-  "people": [],
-  "basis": ""
+  "people": [
+   {
+    "name": "Elvira Espejo Ayca",
+    "role": "director",
+    "title": "directora del MUSEF",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.fundacionculturalbcb.gob.bo/notas-de-prensa-musef/2025/np-musef-7-2025.php"
+    ]
+   }
+  ],
+  "basis": "A MUSEF press note of October 2025 on the FC-BCB site, which quotes Elvira Espejo Ayca as the museum's director."
  },
  {
   "id": "museo-de-la-revolucion-democratica-y-cultural",

@@ -1,0 +1,295 @@
+[
+ {
+  "id": "kunstnernes-hus-oslo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "munch-oslo",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Tone Hansen",
+    "field": "sources",
+    "stored": [
+     "https://www.munch.no/globalassets/arsberetninger/504-munchmuseet-arsberetning-2025.pdf"
+    ],
+    "page says": "The 2025 annual report only shows her as Direktør on 5 February 2026; that she has left the post is shown by the current contact page, which lists Henrik Svalheim as Konstituert Direktør, and that page is not cited for her.",
+    "fix": [
+     "https://www.munch.no/globalassets/arsberetninger/504-munchmuseet-arsberetning-2025.pdf",
+     "https://www.munch.no/om-oss/kontakt/"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "munch-oslo",
+   "people": [
+    {
+     "name": "Henrik Svalheim",
+     "role": "director",
+     "title": "Konstituert Direktør MUNCH og Avdelingsdirektør administrasjon",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.munch.no/om-oss/kontakt/"
+     ]
+    },
+    {
+     "name": "Kasper Teglgaard Koch",
+     "role": "chief curator",
+     "title": "Avdelingsdirektør utstilling",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.munch.no/om-oss/kontakt/"
+     ]
+    },
+    {
+     "name": "Caroline Ugelstad",
+     "role": "chief curator",
+     "title": "Avdelingsdirektør samling",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.munch.no/om-oss/kontakt/"
+     ]
+    },
+    {
+     "name": "Tone Hansen",
+     "role": "director",
+     "title": "Direktør",
+     "current": false,
+     "since": null,
+     "until": "2026",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.munch.no/globalassets/arsberetninger/504-munchmuseet-arsberetning-2025.pdf",
+      "https://www.munch.no/om-oss/kontakt/"
+     ]
+    }
+   ],
+   "basis": "The museum's contact page lists its management with Henrik Svalheim as acting director and the heads of exhibitions and collection; the 2025 annual report is signed by Tone Hansen as Direktør on 5 February 2026, so she left the post in 2026, and no page opened gives a reason."
+  }
+ },
+ {
+  "id": "nasjonalmuseet-national-museum-of-norway",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Karin Hindsbo",
+    "field": "until",
+    "stored": "2023-06",
+    "page says": "Hun hadde sin siste arbeidsdag 26. mai (2023 annual report); no page says 1 June",
+    "fix": "2023-05"
+   }
+  ],
+  "corrected": {
+   "id": "nasjonalmuseet-national-museum-of-norway",
+   "people": [
+    {
+     "name": "Ingrid Røynesdal",
+     "role": "director",
+     "title": "Direktør",
+     "current": true,
+     "since": "2023-10",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Administrerende direktør, Oslo-filharmonien"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.nasjonalmuseet.no/globalassets/bilder/artikler/forskning/fearnleys-tegninger/arsmelding-nasjonalmuseet-2023_140824.pdf",
+      "https://www.nasjonalmuseet.no/globalassets/dokumenter/arsmeldinger/arsmelding-2025-ny.final.pdf"
+     ]
+    },
+    {
+     "name": "Karin Hindsbo",
+     "role": "director",
+     "title": "Direktør",
+     "current": false,
+     "since": null,
+     "until": "2023-05",
+     "left_because": "moved to another post",
+     "next_post": "direktør for Tate Modern",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.nasjonalmuseet.no/globalassets/bilder/artikler/forskning/fearnleys-tegninger/arsmelding-nasjonalmuseet-2023_140824.pdf"
+     ]
+    }
+   ],
+   "basis": "The 2023 annual report says Karin Hindsbo did not seek a new term, had her last working day on 26 May 2023 and moved on to direct Tate Modern, and that Ingrid Røynesdal took up the post on 2 October 2023 after ten years running the Oslo Philharmonic; the 2025 annual report is signed by her as director."
+  }
+ },
+ {
+  "id": "uks-unge-kunstneres-samfund-oslo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vigeland-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthall-stavanger-stavanger",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nordnorsk-kunstmuseum-troms",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "munchs-hus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bait-al-zubair-muscat",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-museum-of-oman",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "karachi-biennale-trust-karachi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mohatta-palace-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Nasreen Askari",
+    "field": "current",
+    "stored": true,
+    "page says": "The only cited page is undated; the site's newest linked accounts are for 2018 and its home page's newest exhibition dates from December 2019, the trustee list is plainly old, and no page from the last 18 months confirms her (no web searches were left to look for one).",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "mohatta-palace-museum",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "vasl-artists-association",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "lahore-biennale-foundation-lahore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dar-jacir-for-art-and-research",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "palestinian-museum-birzeit",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Amer Shomali",
+    "field": "since",
+    "stored": null,
+    "page says": "3 October 2023 appointment news: he 'will begin his tenure on the 4th of October 2023'",
+    "fix": "2023-10"
+   },
+   {
+    "person": "Adila Laïdi-Hanieh",
+    "field": "people (predecessor missing)",
+    "stored": null,
+    "page says": "Director General since September 2018 (10 May 2023 news), still Director General on 14 June 2023, succeeded by Shomali from 4 October 2023; she left after 1 January 2023 so is listed as predecessor",
+    "fix": "Adila Laïdi-Hanieh, Director General, 2018-09 to 2023"
+   }
+  ],
+  "corrected": {
+   "id": "palestinian-museum-birzeit",
+   "people": [
+    {
+     "name": "Amer Shomali",
+     "role": "director",
+     "title": "Director General",
+     "current": true,
+     "since": "2023-10",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.palmuseum.org/en/about/the-museum",
+      "https://palmuseum.org/en/about/press-and-media/news/amer-shomali-appointed-director-general-palestinian-museum"
+     ]
+    },
+    {
+     "name": "Adila Laïdi-Hanieh",
+     "role": "director",
+     "title": "Director General",
+     "current": false,
+     "since": "2018-09",
+     "until": "2023",
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Founding director, Khalil Sakakini Cultural Centre (1996 to 2005)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://palmuseum.org/en/about/press-and-media/news/palestinian-museum-director-general-adila-laidi-hanieh-phd-awarded",
+      "https://palmuseum.org/en/about/press-and-media/news/historians-johnny-mansour-and-ilan-pappe-visit-palestinian-museum",
+      "https://palmuseum.org/en/about/press-and-media/news/dr-adila-laidi-hanieh-director-general-palestinian-museum",
+      "https://palmuseum.org/en/about/press-and-media/news/amer-shomali-appointed-director-general-palestinian-museum"
+     ]
+    },
+    {
+     "name": "Luay Khoury",
+     "role": "chair of the board",
+     "title": "Chair of the Board",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.palmuseum.org/en/about/the-museum",
+      "https://www.palmuseum.org/en/about/press-and-media/news/palestinian-museum-welcomes-new-board-and-announces-forthcoming-expert"
+     ]
+    }
+   ],
+   "basis": "The museum's about page lists Amer Shomali as Director General and Luay Khoury as Chair of the Board, and a 31 July 2026 news item says Khoury chairs the new board for 2026 to 2029; a 3 October 2023 news item says Shomali would begin his tenure on 4 October 2023, and May and June 2023 news items name Adila Laïdi-Hanieh as Director General since September 2018, so she left the post in 2023, with no reason given."
+  }
+ }
+]

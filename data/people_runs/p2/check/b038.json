@@ -1,0 +1,122 @@
+[
+ {
+  "id": "yokohama-museum-of-art-yokohama",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "amman-design-week",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "darat-al-funun-amman",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "jordan-national-gallery-of-fine-arts",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "makan-art-space-amman",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "a-kasteyev-state-museum-of-arts-almaty",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "almaty-museum-of-arts-almaty",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tselinny-center-of-contemporary-culture-almaty",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Kairat Boranbayev",
+    "field": "role",
+    "stored": "founder (Founder, current)",
+    "page says": "The team page lists 'Kairat Boranbayev Founder' above 'Gulnara Sattybaeva Director' and 'Alima Kairat Artistic Director'; nothing says he runs the centre, which has its own director, and Tselinny is not artist-run, so the brief's founder rule (a founder only when he still runs the space) is not met.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "tselinny-center-of-contemporary-culture-almaty",
+   "people": [
+    {
+     "name": "Gulnara Sattybaeva",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.tselinny.org/en/team"
+     ]
+    },
+    {
+     "name": "Alima Kairat",
+     "role": "artistic director",
+     "title": "Artistic Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.tselinny.org/en/team"
+     ]
+    }
+   ],
+   "basis": "The centre's own team page."
+  }
+ },
+ {
+  "id": "national-museum-of-the-republic-of-kazakhstan-astana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "circle-art-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kuona-collective-nairobi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nairobi-contemporary-art-institute-nairobi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nairobi-national-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "stacion-cca-prishtina",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "contemporary-art-platform-cap-kuwait-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dar-al-athar-al-islamiyyah",
+  "verdict": "ok",
+  "faults": []
+ }
+]

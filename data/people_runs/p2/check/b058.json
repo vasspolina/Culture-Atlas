@@ -1,0 +1,132 @@
+[
+ {
+  "id": "pro-arte-foundation-st-petersburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pushkinskaya-10-art-centre-st-petersburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "state-hermitage-museum-st-petersburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "state-russian-museum-st-petersburg",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Алла Манилова",
+    "field": "previously",
+    "stored": "вице-губернатор Санкт-Петербурга (2008 to 2012)",
+    "page says": "rusmuseum.ru/pages/director: 'В июне 2008 года заняла пост вице-губернатора Петербурга ... Покинула пост в сентябре 2011 года'",
+    "fix": "вице-губернатор Санкт-Петербурга (2008 to 2011)"
+   }
+  ],
+  "corrected": {
+   "id": "state-russian-museum-st-petersburg",
+   "people": [
+    {
+     "name": "Алла Манилова",
+     "role": "director",
+     "title": "Генеральный директор",
+     "current": true,
+     "since": "2023-04",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "статс-секретарь — заместитель министра культуры Российской Федерации (2018 to 2023)",
+      "заместитель министра культуры Российской Федерации (2012 to 2018)",
+      "вице-губернатор Санкт-Петербурга (2008 to 2011)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://rusmuseum.ru/pages/director",
+      "https://rusmuseum.ru/news/alla-manilova-vstupila-v-dolzhnost-generalnogo-direktora-gosudarstvennogo-russkogo-muzeya/",
+      "https://rusmuseum.ru/pages/about/"
+     ]
+    },
+    {
+     "name": "Владимир Гусев",
+     "role": "director",
+     "title": "директор",
+     "current": false,
+     "since": null,
+     "until": "2023-04",
+     "left_because": "moved to another post",
+     "next_post": "президент Русского музея",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://rusmuseum.ru/news/alla-manilova-vstupila-v-dolzhnost-generalnogo-direktora-gosudarstvennogo-russkogo-muzeya/"
+     ]
+    }
+   ],
+   "basis": "The museum's General Director page says Alla Manilova was appointed general director on 25 April 2023 and lists her earlier posts; the museum's news item of 27 April 2023 says she succeeded Vladimir Gusev, who had led the museum for 35 years and became its president."
+  }
+ },
+ {
+  "id": "zarya-centre-for-contemporary-art-vladivostok",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kramskoi-voronezh-regional-art-museum-voronezh",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vyksa-festival-art-ovrag-vyksa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ural-industrial-biennial-of-contemporary-art-yekaterinburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "yekaterinburg-museum-of-fine-arts-yekaterinburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "yeltsin-center-yekaterinburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "inema-arts-center",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "rwanda-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "alula-arts-cultural-oasis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arts-alula-and-desert-x-alula",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "diriyah-biennale-foundation",
+  "verdict": "ok",
+  "faults": []
+ }
+]

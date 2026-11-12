@@ -1,0 +1,95 @@
+[
+ {
+  "id": "bengal-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "britto-arts-trust-dhaka",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dhaka-art-summit-dhaka",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "barbados-museum-and-historical-society",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fresh-milk-art-platform-st-george",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kx-space-kryly-khalopa-theatre-prastora-kx-closed-2021-brest",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-belarus-gallery-belgazprombank-corporate-collection-minsk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-siadziba-minsk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "belarusian-state-museum-of-the-history-of-the-great-patriotic-war-minsk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-modern-belarusian-statehood",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-art-museum-belarus-minsk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-centre-for-contemporary-arts-minsk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ok16-cultural-hub-minsk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "y-gallery-minsk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "netwerk-aalst",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "braemhuis-renaat-braem-huis",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Matthias Francken",
+    "field": "role",
+    "stored": "director (Algemeen directeur, current head of the Braemhuis)",
+    "page says": "Herita's who is who page names Matthias Francken Algemeen directeur of Herita (and lists Dimitri Stevens as Algemeen directeur ad interim); the Braemhuis page says only that Herita has worked with the City of Antwerp since 2024 to open the house. Neither page names anyone as head of the Braemhuis",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "braemhuis-renaat-braem-huis",
+   "people": [],
+   "basis": ""
+  }
+ }
+]
