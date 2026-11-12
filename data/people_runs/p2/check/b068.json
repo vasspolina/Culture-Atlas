@@ -1,0 +1,102 @@
+[
+ {
+  "id": "nafasi-art-space-dar-es-salaam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bangkok-art-biennale-bangkok",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bangkok-art-and-culture-centre-bangkok",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bangkok-kunsthalle",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "jim-thompson-art-center-bangkok",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "moca-bangkok",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "maiiam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "thailand-biennale-phuket",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Arin Rungjang",
+    "field": "current",
+    "stored": true,
+    "page says": "The only cited page (TAT, 20 August 2025) names Arin Rungjang, David Teh, Marisa Phandharakrajadej and Hera Chan as the curatorial team of the fourth edition, held in Phuket from November 2025 to April 2026; that edition has closed and no page names a current curator or lead among the four",
+    "fix": null
+   },
+   {
+    "person": "David Teh",
+    "field": "current",
+    "stored": true,
+    "page says": "The only cited page (TAT, 20 August 2025) names Arin Rungjang, David Teh, Marisa Phandharakrajadej and Hera Chan as the curatorial team of the fourth edition, held in Phuket from November 2025 to April 2026; that edition has closed and no page names a current curator or lead among the four",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "thailand-biennale-phuket",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "palais-de-lomé-lomé",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "alice-yard-port-of-spain",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bocas-lit-fest",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "b7l9-art-centre-tunis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "b7l9-art-centre-kamel-lazaar-foundation-tunis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "le-32bis-tunis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-national-du-bardo-tunis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "an-tkabir-ataturk-mausoleum-and-museum",
+  "verdict": "ok",
+  "faults": []
+ }
+]

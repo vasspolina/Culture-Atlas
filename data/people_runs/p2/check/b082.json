@@ -1,0 +1,290 @@
+[
+ {
+  "id": "utah-museum-of-contemporary-art-salt-lake-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mcnay-art-museum-san-antonio",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "asian-art-museum-san-francisco",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sfmoma-san-francisco",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wattis-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "yerba-buena-center-for-the-arts-san-francisco",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "georgia-okeeffe-museum-santa-fe",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Cody Hartley",
+    "field": "previously",
+    "stored": [
+     "Acting Director, Georgia O'Keeffe Museum",
+     "Senior Director of Collections and Interpretation, Georgia O'Keeffe Museum",
+     "Director of Curatorial Affairs, Georgia O'Keeffe Museum"
+    ],
+    "page says": "He previously served as the Museum's Director of Curatorial Affairs, its Senior Director of Collections and Interpretation, and, most recently, its Acting Director.",
+    "fix": [
+     "Director of Curatorial Affairs, Georgia O'Keeffe Museum",
+     "Senior Director of Collections and Interpretation, Georgia O'Keeffe Museum",
+     "Acting Director, Georgia O'Keeffe Museum"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "georgia-okeeffe-museum-santa-fe",
+   "people": [
+    {
+     "name": "Cody Hartley",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": "2019",
+     "until": null,
+     "previously": [
+      "Director of Curatorial Affairs, Georgia O'Keeffe Museum",
+      "Senior Director of Collections and Interpretation, Georgia O'Keeffe Museum",
+      "Acting Director, Georgia O'Keeffe Museum"
+     ],
+     "pay": {
+      "amount": 371516,
+      "currency": "USD",
+      "year": "2024",
+      "what": "reportable compensation from the organization",
+      "url": "https://projects.propublica.org/nonprofits/organizations/850437114/202502839349301625/full"
+     },
+     "sources": [
+      "https://www.okeeffemuseum.org/board-staff/",
+      "https://www.okeeffemuseum.org/news/the-georgia-okeeffe-museum-welcomes-director-cody-hartley-2/",
+      "https://projects.propublica.org/nonprofits/organizations/850437114/202502839349301625/full"
+     ]
+    },
+    {
+     "name": "Laura Wertheim Joseph",
+     "role": "chief curator",
+     "title": "Director of Curatorial Affairs",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.okeeffemuseum.org/board-staff/"
+     ]
+    },
+    {
+     "name": "David Warnock",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.okeeffemuseum.org/board-staff/"
+     ]
+    }
+   ],
+   "basis": "The museum's Board and Leadership page, its May 2019 release naming Hartley director, and its Form 990 for 2024 for pay."
+  }
+ },
+ {
+  "id": "iaia-museum-of-contemporary-native-arts-santa-fe",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "new-mexico-museum-of-art-santa-fe",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "site-santa-fe",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "telfair-museums-savannah",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Caitlín Doherty",
+    "field": "since",
+    "stored": null,
+    "page says": "Telfair news, 18 August 2026 (not cited): appointment of Caitlín Doherty as the Museum's new Executive Director. She will begin her new role in October 2026. Susan Willetts, Chair of the Board of Trustees and Interim Executive Director, is quoted.",
+    "fix": "2026-10"
+   }
+  ],
+  "corrected": {
+   "id": "telfair-museums-savannah",
+   "people": [
+    {
+     "name": "Caitlín Doherty",
+     "role": "director",
+     "title": "Chief Executive Officer / Executive Director",
+     "current": true,
+     "since": "2026-10",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.telfair.org/about/staff/",
+      "https://www.telfair.org/news/telfair-museums-appoints-new-executive-director/"
+     ]
+    },
+    {
+     "name": "Elyse Gerstenecker",
+     "role": "chief curator",
+     "title": "Director of Curatorial Affairs & Curator of Decorative Arts",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.telfair.org/about/staff/"
+     ]
+    },
+    {
+     "name": "David Brenneman",
+     "role": "director",
+     "title": "CEO/Executive Director",
+     "current": false,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": {
+      "amount": 105400,
+      "currency": "USD",
+      "year": "2024",
+      "what": "reportable compensation from the organization",
+      "url": "https://projects.propublica.org/nonprofits/organizations/580610074/202513219349327666/full"
+     },
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/580610074/202513219349327666/full"
+     ]
+    }
+   ],
+   "basis": "Telfair's staff page and its August 2026 release name Doherty, starting October 2026, after board chair Susan Willetts served as interim executive director; its Form 990 for calendar 2024, signed by Brenneman as executive director on 17 November 2025, lists him as CEO/Executive Director, and no page gives the month he left."
+  }
+ },
+ {
+  "id": "schweikher-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "scottsdale-museum-of-contemporary-art-scottsdale",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "frye-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "henry-art-gallery",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Sylvia Wolf",
+    "field": "until",
+    "stored": "2023-07",
+    "page says": "The release carries no date: Kris will begin work at the Henry on August 8, 2023. Kris succeeds Sylvia Wolf, who retired as the Henry's director earlier this month.",
+    "fix": "2023"
+   }
+  ],
+  "corrected": {
+   "id": "henry-art-gallery",
+   "people": [
+    {
+     "name": "Kris Lewis",
+     "role": "director",
+     "title": "John S. Behnke Director",
+     "current": true,
+     "since": "2023-08",
+     "until": null,
+     "previously": [
+      "Director of development, Fowler Museum at UCLA",
+      "Director of government and foundation relations, Los Angeles County Museum of Art",
+      "Associate director of development, Museum of Contemporary Art, Los Angeles"
+     ],
+     "pay": null,
+     "sources": [
+      "https://henryart.org/about/people",
+      "https://henryart.org/press/kris-lewis-announced-as-new-director-of-the-henry-art-gallery-at-the-university-of-washington"
+     ]
+    },
+    {
+     "name": "Nina Bozicnik",
+     "role": "curator",
+     "title": "Senior Curator",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://henryart.org/about/people"
+     ]
+    },
+    {
+     "name": "Jamie Fish",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://henryart.org/about/people"
+     ]
+    },
+    {
+     "name": "Sylvia Wolf",
+     "role": "director",
+     "title": "Director",
+     "current": false,
+     "since": null,
+     "until": "2023",
+     "left_because": "retired",
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://henryart.org/press/kris-lewis-announced-as-new-director-of-the-henry-art-gallery-at-the-university-of-washington"
+     ]
+    }
+   ],
+   "basis": "The Henry's People page and its undated 2023 release: Lewis to begin 8 August 2023, succeeding Sylvia Wolf, who retired that year."
+  }
+ },
+ {
+  "id": "seattle-art-museum-seattle",
+  "verdict": "ok",
+  "faults": []
+ }
+]
