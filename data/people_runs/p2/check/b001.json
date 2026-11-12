@@ -1,0 +1,230 @@
+[
+ {
+  "id": "armenian-center-for-contemporary-experimental-art-accea-npak-yerevan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cafesjian-center-for-the-arts-yerevan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "modern-art-museum-of-yerevan-yerevan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-of-armenia-yerevan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-gallery-of-south-australia-adelaide",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Jason Smith",
+    "field": "previously",
+    "stored": "Director & CEO, Geelong Gallery (2016 to 2025)",
+    "page says": "PGAV 26 Nov 2024: 'After nine years as Director & CEO of Geelong Gallery' and 'lead Geelong Gallery since 2016'; no cited page states the year he left Geelong (InDaily 26 Nov 2024 calls him the current director there)",
+    "fix": "Director & CEO, Geelong Gallery (from 2016)"
+   }
+  ],
+  "corrected": {
+   "id": "art-gallery-of-south-australia-adelaide",
+   "people": [
+    {
+     "name": "Jason Smith",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": "2025-02",
+     "until": null,
+     "previously": [
+      "Director & CEO, Geelong Gallery (from 2016)",
+      "Director and CEO, Heide Museum of Modern Art (five years to 2014)",
+      "Curator of contemporary art, National Gallery of Victoria (1997 to 2007)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.agsa.sa.gov.au/about/key-people/",
+      "https://pgav.org.au/Jason-Smith-appointed-as-the-new-Director-of-the-Art-Gallery-of-South-Australia~13179",
+      "https://www.indailysa.com.au/news/just-in/2024/11/26/new-director-announced-for-art-gallery-of-south-australia"
+     ]
+    },
+    {
+     "name": "Tansy Curtin",
+     "role": "chief curator",
+     "title": "Assistant Director, Artistic Programs",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.agsa.sa.gov.au/about/key-people/"
+     ]
+    },
+    {
+     "name": "Sandy Verschoor",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.agsa.sa.gov.au/about/key-people/"
+     ]
+    },
+    {
+     "name": "Rhana Devenport",
+     "role": "director",
+     "title": "Director",
+     "current": false,
+     "since": "2018",
+     "until": "2024-07",
+     "left_because": "term ended",
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.indailysa.com.au/news/archive/2024/03/22/rhana-devenport-art-gallery-boss-quits-after-six-years",
+      "https://www.agsa.sa.gov.au/documents/1302/MEDIA_RELEASE_Rhana_Devenport_announces_end_of_tenure_at_AGSA_after_six_years_of_artistic_success.4a42361.pdf",
+      "https://www.indailysa.com.au/news/just-in/2024/11/26/new-director-announced-for-art-gallery-of-south-australia"
+     ]
+    }
+   ],
+   "basis": "The gallery's key people page, Jason Smith's start in February 2025 from the PGAV and InDaily announcements of 26 November 2024, and the gallery's release and InDaily report of 22 March 2024 that Rhana Devenport would leave on 7 July 2024 as her contract ended."
+  }
+ },
+ {
+  "id": "samstag-museum-of-art-adelaide",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tandanya-national-aboriginal-cultural-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "murray-art-museum-albury-albury",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-gallery-of-ballarat-ballarat",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bendigo-art-gallery-bendigo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "institute-of-modern-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "qagoma-brisbane",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cairns-art-gallery-cairns",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-of-australia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "darwin-festival-darwin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "geelong-gallery-geelong",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Jason Smith",
+    "field": "until",
+    "stored": "2025",
+    "page says": "PGAV 26 Nov 2024 says he will start at AGSA 'commencing February 2025'; PGAV 27 Feb 2025 says only 'following the departure of Jason Smith'; neither states when he left Geelong",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "geelong-gallery-geelong",
+   "people": [
+    {
+     "name": "Humphrey Clegg",
+     "role": "director",
+     "title": "Director & CEO",
+     "current": true,
+     "since": "2025-04",
+     "until": null,
+     "previously": [
+      "Assistant Director - Engagement, Art Gallery of Ballarat (2021 to 2025)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://geelonggallery.org.au/people-careers/board-and-staff/",
+      "https://pgav.org.au/Humphrey-Clegg-to-lead-Geelong-Gallery~13765"
+     ]
+    },
+    {
+     "name": "Lisa Sullivan",
+     "role": "chief curator",
+     "title": "Assistant Director, Curatorial",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://geelonggallery.org.au/people-careers/board-and-staff/"
+     ]
+    },
+    {
+     "name": "Chien Ho",
+     "role": "chair of the board",
+     "title": "President",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://geelonggallery.org.au/people-careers/board-and-staff/"
+     ]
+    },
+    {
+     "name": "Jason Smith",
+     "role": "director",
+     "title": "Director & CEO",
+     "current": false,
+     "since": "2016",
+     "until": null,
+     "left_because": "moved to another post",
+     "next_post": "Director of the Art Gallery of South Australia",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://pgav.org.au/Jason-Smith-appointed-as-the-new-Director-of-the-Art-Gallery-of-South-Australia~13179",
+      "https://pgav.org.au/Humphrey-Clegg-to-lead-Geelong-Gallery~13765"
+     ]
+    }
+   ],
+   "basis": "The gallery's board and staff page and PGAV news of 26 November 2024 and 27 February 2025 on Jason Smith's move to Adelaide and Humphrey Clegg's start on 7 April 2025."
+  }
+ }
+]

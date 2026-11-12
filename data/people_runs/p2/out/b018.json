@@ -1,0 +1,108 @@
+[
+ {"id": "jurkovic-villa",
+  "people": [
+   {"name": "Jan Press", "role": "director", "title": "ředitel Moravské galerie v Brně", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://moravska-galerie.cz/kontakt/lide/"]}
+  ],
+  "basis": "The villa is a branch of the Moravian Gallery in Brno and its own contact page names no head, so the gallery's director is taken from the gallery's people page."},
+ {"id": "villa-stiassni",
+  "people": [
+   {"name": "Kateřina Konečná", "role": "director", "title": "správce objektu - kastelán", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.vila-stiassni.cz/cs/informace-pro-navstevniky/kontakt"]}
+  ],
+  "basis": "The villa's contact page on its National Heritage Institute site names the castellan who runs the building."},
+ {"id": "villa-tugendhat",
+  "people": [
+   {"name": "Iveta Černá", "role": "director", "title": "Vedoucí vily Tugendhat", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.vilatugendhat.cz/kontakt/"]},
+   {"name": "Neli Hejduk", "role": "curator", "title": "kurátorka", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.vilatugendhat.cz/kontakt/"]}
+  ],
+  "basis": "The villa's contact page, as a department of the Brno City Museum, names the head of the villa and its one curator."},
+ {"id": "bauer-villa", "people": [], "basis": ""},
+ {"id": "brummel-house-adolf-loos-in-pilsen",
+  "people": [
+   {"name": "Magdalena Černá", "role": "director", "title": "vedoucí projektu Adolf Loos Plzeň", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://brummeluvdum.cz/kontakt/"]}
+  ],
+  "basis": "The Brummel House contact page names the head of the Adolf Loos Plzeň project at the operator, Plzeň TURISMUS."},
+ {"id": "semler-residence",
+  "people": [
+   {"name": "Roman Musil", "role": "director", "title": "Ředitel galerie", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.zpc-galerie.cz/cs/kontakty"]},
+   {"name": "Ivana Skálová", "role": "chief curator", "title": "Náměstek pro odbornou činnost, kurátor sbírek a výstav", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.zpc-galerie.cz/cs/kontakty"]}
+  ],
+  "basis": "The residence is run by the Gallery of West Bohemia, whose contact page names its director and its deputy for collections and exhibitions."},
+ {"id": "dox-centre-for-contemporary-art-prague",
+  "people": [
+   {"name": "Leoš Válka", "role": "director", "title": "ředitel a zakladatel Centra současného umění DOX", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.dox.cz/o-nas"]},
+   {"name": "Michaela Šilpochová", "role": "artistic director", "title": "umělecká ředitelka", "current": true, "since": "2019", "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.dox.cz/o-nas"]},
+   {"name": "Otto M. Urban", "role": "chief curator", "title": "hlavní kurátor", "current": true, "since": "2020", "until": null,
+    "previously": ["ředitel Sbírky umění 19. století a klasické moderny, Národní galerie Praha (2018 to 2019)", "kurátor, Národní galerie Praha (2017)", "vedoucí Katedry teorie a dějin umění, AVU (2012 to 2016)"], "pay": null,
+    "sources": ["https://www.dox.cz/o-nas"]}
+  ],
+  "basis": "The DOX about page lists its director and founder, artistic director and chief curator with the years they took up their posts."},
+ {"id": "galerie-rudolfinum-prague",
+  "people": [
+   {"name": "Julia Bailey", "role": "director", "title": "ředitelka galerie", "current": true, "since": "2024", "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.galerierudolfinum.cz/cs/kontakty/", "https://www.galerierudolfinum.cz/wp-content/uploads/Galerie_Rudolfinum_Zprava_o_cinnosti_2024_WEB.pdf"]},
+   {"name": "Eva Drexlerová", "role": "curator", "title": "kurátorka", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.galerierudolfinum.cz/cs/kontakty/"]},
+   {"name": "Petr Nedoma", "role": "director", "title": "ředitel Galerie Rudolfinum", "current": false, "since": null, "until": "2024", "left_because": null, "next_post": null, "previously": [], "pay": null,
+    "sources": ["https://www.galerierudolfinum.cz/wp-content/uploads/vyrocni_zprava_23_elektronicka_verze_mala.pdf", "https://www.galerierudolfinum.cz/wp-content/uploads/Galerie_Rudolfinum_Zprava_o_cinnosti_2024_WEB.pdf"]}
+  ],
+  "basis": "The gallery's contacts page names the director and curator; the 2024 activity report says Bailey took over in 2024 from the founding director Petr Nedoma, who signed the 2023 report."},
+ {"id": "kunsthalle-praha-prague",
+  "people": [
+   {"name": "Ivana Goossen", "role": "director", "title": "Director", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.kunsthallepraha.org/en/about-us"]},
+   {"name": "Christelle Havranek", "role": "chief curator", "title": "Chief Curator", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.kunsthallepraha.org/en/about-us", "https://www.kunsthallepraha.org/en/contact"]},
+   {"name": "Petr Pudil", "role": "chair of the board", "title": "Chairman of the Board of Directors", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.kunsthallepraha.org/en/about-us"]}
+  ],
+  "basis": "The Kunsthalle Praha about page lists its team and board of directors."},
+ {"id": "national-gallery-prague",
+  "people": [
+   {"name": "Olga Kotková", "role": "director", "title": "General Director", "current": true, "since": "2026", "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.ngprague.cz/en/about/people", "https://www.ngprague.cz/en/about/news/Change-in-Leadership-at-the%20National-Gallery-Prague"]},
+   {"name": "Alicja Knast", "role": "director", "title": "General Director", "current": false, "since": "2021", "until": "2026", "left_because": "dismissed", "next_post": null, "previously": [], "pay": null,
+    "sources": ["https://www.ngprague.cz/en/about/news/Change-in-Leadership-at-the%20National-Gallery-Prague"]}
+  ],
+  "basis": "The gallery's people page names Kotková as General Director and its leadership news item says the Minister of Culture dismissed Knast, who led the gallery from 2021 to 2026, and that Kotková serves until a selection process is completed."},
+ {"id": "villa-bilek", "people": [], "basis": ""},
+ {"id": "villa-muller",
+  "people": [
+   {"name": "Eliška Zlatohlávková", "role": "director", "title": "Vedoucí oddělení vil", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.muzeumprahy.cz/kontakty/"]}
+  ],
+  "basis": "The City of Prague Museum contacts page names the head of its villas department, which runs Villa Müller."},
+ {"id": "villa-rothmayer",
+  "people": [
+   {"name": "Eliška Zlatohlávková", "role": "director", "title": "Vedoucí oddělení vil", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.muzeumprahy.cz/kontakty/"]}
+  ],
+  "basis": "The City of Prague Museum contacts page names the head of its villas department, which runs Villa Rothmayer."},
+ {"id": "bata-villa-thomas-bata-foundation",
+  "people": [
+   {"name": "Gabriela Končitíková", "role": "director", "title": "ředitelka", "current": true, "since": "2023", "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.nadacetomasebati.cz/kontakt", "https://www.nadacetomasebati.cz/o-nadaci"]},
+   {"name": "Rosemarie Bata-Blyth", "role": "chair of the board", "title": "předsedkyně správní rady nadace", "current": true, "since": "2013", "until": null, "previously": [], "pay": null,
+    "sources": ["https://www.nadacetomasebati.cz/o-nadaci"]},
+   {"name": "Pavel Velev", "role": "director", "title": "ředitel Nadace Tomáše Bati", "current": false, "since": "1998", "until": "2023", "left_because": null, "next_post": null, "previously": [], "pay": null,
+    "sources": ["https://www.nadacetomasebati.cz/o-nadaci"]}
+  ],
+  "basis": "The Thomas Bata Foundation's contact page names its director, and its about page gives the 2023 change from Pavel Velev and the board chair since 2013."},
+ {"id": "zikmund-villa",
+  "people": [
+   {"name": "Dagmar Výlupková", "role": "director", "title": "ředitelka nadačního fondu zikmundova vila", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://zikmundovavila.cz/nadacni-fond", "https://zikmundovavila.cz/kontakt"]},
+   {"name": "Čestmír Vančura", "role": "chair of the board", "title": "zakladatel a předseda fondu", "current": true, "since": null, "until": null, "previously": [], "pay": null,
+    "sources": ["https://zikmundovavila.cz/nadacni-fond"]}
+  ],
+  "basis": "The foundation page on the villa's own site names the board, led by its founder and chair, and the director of the foundation."},
+ {"id": "fondation-donwahi-abidjan", "people": [], "basis": ""}
+]

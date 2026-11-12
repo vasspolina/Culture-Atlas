@@ -1,0 +1,256 @@
+[
+ {
+  "id": "primary-nottingham",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bloc-projects-sheffield",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "site-gallery-sheffield",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "john-hansard-gallery-southampton",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "coaxial-arts-foundation-la",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Eva Aguila",
+    "field": "until",
+    "stored": null,
+    "page says": "ProPublica's Form 990 extract for the fiscal year ending June 2025 lists 'Eva Aguila Fansler (Board President)'; the about page's 'Coaxial Board FY25-26' (from July 2025) lists Shannon Kennedy as Board President and does not name Aguila on staff or board",
+    "fix": "2025"
+   },
+   {
+    "person": "Eva Aguila",
+    "field": "role",
+    "stored": "founder",
+    "page says": "home page: 'introduction by Director & Founder Eva Aguila'; she is entered as the previous head (current false), and a founder who no longer runs the space is listed only as the head's predecessor",
+    "fix": "director"
+   },
+   {
+    "person": "Eva Aguila",
+    "field": "sources",
+    "stored": [
+     "https://coaxialarts.org/",
+     "https://projects.propublica.org/nonprofits/organizations/473355354"
+    ],
+    "page says": "the page showing she is no longer on the FY25-26 staff or board is the about page, which was not cited for her",
+    "fix": [
+     "https://coaxialarts.org/",
+     "https://projects.propublica.org/nonprofits/organizations/473355354",
+     "https://coaxialarts.org/about/"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "coaxial-arts-foundation-la",
+   "people": [
+    {
+     "name": "Shannon Kennedy",
+     "role": "director",
+     "title": "Director of Operations",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://coaxialarts.org/about/"
+     ]
+    },
+    {
+     "name": "Shannon Kennedy",
+     "role": "chair of the board",
+     "title": "Board President",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://coaxialarts.org/about/"
+     ]
+    },
+    {
+     "name": "Eva Aguila",
+     "role": "director",
+     "title": "Director & Founder",
+     "current": false,
+     "since": null,
+     "until": "2025",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://coaxialarts.org/",
+      "https://projects.propublica.org/nonprofits/organizations/473355354",
+      "https://coaxialarts.org/about/"
+     ]
+    }
+   ],
+   "basis": "Coaxial's about page (board for FY25 to 26) names Shannon Kennedy as Director of Operations and Board President; founder Eva Aguila, called Director and Founder on the home page, is listed as Board President in the Form 990 for the year to June 2025 but is not on the FY25 to 26 staff or board list, so she left in 2025; no page gives a reason."
+  }
+ },
+ {
+  "id": "human-resources-la",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "lace-los-angeles",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "redcat-los-angeles",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "abc-no-rio-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "american-folk-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "apexart-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bam-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cue-art-foundation-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "flux-factory-queens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "new-museum-new-york",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Massimiliano Gioni",
+    "field": "since",
+    "stored": null,
+    "page says": "New Museum press release, 7 July 2026: 'Massimiliano Gioni has been appointed the Museum's next Toby Devan Lewis Director effective August 1, 2026' (page not among the cited urls)",
+    "fix": "2026-08"
+   },
+   {
+    "person": "Massimiliano Gioni",
+    "field": "sources",
+    "stored": [
+     "https://www.newmuseum.org/about/who-we-are/",
+     "https://www.newmuseum.org/person/massimiliano-gioni/"
+    ],
+    "page says": "the start date is proved only by the 7 July 2026 press release",
+    "fix": [
+     "https://www.newmuseum.org/about/who-we-are/",
+     "https://www.newmuseum.org/person/massimiliano-gioni/",
+     "https://www.newmuseum.org/press-release/new-museum-appoints-massimiliano-gioni-as-toby-devan-lewis-director/"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "new-museum-new-york",
+   "people": [
+    {
+     "name": "Massimiliano Gioni",
+     "role": "director",
+     "title": "Toby Devan Lewis Director",
+     "current": true,
+     "since": "2026-08",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Edlis Neeson Artistic Director, New Museum",
+      "Director of Special Exhibitions and Associate Director, New Museum",
+      "Curator, New Museum (from 2006)"
+     ],
+     "pay": {
+      "amount": 417070,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation as Artistic Director, fiscal year ending June 2025 (Form 990)",
+      "url": "https://projects.propublica.org/nonprofits/organizations/132986881"
+     },
+     "sources": [
+      "https://www.newmuseum.org/about/who-we-are/",
+      "https://www.newmuseum.org/person/massimiliano-gioni/",
+      "https://www.newmuseum.org/press-release/new-museum-appoints-massimiliano-gioni-as-toby-devan-lewis-director/"
+     ]
+    },
+    {
+     "name": "Gary Carrion-Murayari",
+     "role": "curator",
+     "title": "Kraus Family Senior Curator",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.newmuseum.org/about/who-we-are/"
+     ]
+    },
+    {
+     "name": "Lisa Phillips",
+     "role": "director",
+     "title": "Toby Devan Lewis Director",
+     "current": false,
+     "since": "1999",
+     "until": "2026",
+     "left_because": "retired",
+     "next_post": null,
+     "previously": [],
+     "pay": {
+      "amount": 825030,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation, fiscal year ending June 2025 (Form 990)",
+      "url": "https://projects.propublica.org/nonprofits/organizations/132986881"
+     },
+     "sources": [
+      "https://www.newmuseum.org/person/lisa-phillips/",
+      "https://projects.propublica.org/nonprofits/organizations/132986881"
+     ]
+    }
+   ],
+   "basis": "The New Museum's Who We Are page lists Massimiliano Gioni as Toby Devan Lewis Director and Gary Carrion-Murayari as Kraus Family Senior Curator; the museum's press release of 7 July 2026 appointed Gioni effective 1 August 2026; Lisa Phillips's page says she was director from 1999 until 2026 and became Director Emeritus on retiring; pay is from the Form 990 for the year to June 2025."
+  }
+ },
+ {
+  "id": "printed-matter-new-york",
+  "verdict": "ok",
+  "faults": []
+ }
+]

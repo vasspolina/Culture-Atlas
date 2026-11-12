@@ -1,0 +1,138 @@
+[
+ {
+  "id": "msn-warsaw",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ujazdowski-castle-cca-warsaw",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Anna Łazar",
+    "field": "sources",
+    "stored": [
+     "https://u-jazdowski.pl/o-nas/zespol",
+     "https://u-jazdowski.pl/en/o-nas/zespol",
+     "https://u-jazdowski.pl/press-room/komunikaty-prasowe/anna-lazar-bio"
+    ],
+    "page says": "The press room page cited holds only a download link; her earlier posts (Free Word curator 2022 to 2024, Deputy Director and Acting Director of the Polish Institutes in Kyiv and St Petersburg, curator at the Museum of Art in Łódź) are stated in the linked bio PDF, which is not cited.",
+    "fix": [
+     "https://u-jazdowski.pl/o-nas/zespol",
+     "https://u-jazdowski.pl/en/o-nas/zespol",
+     "https://u-jazdowski.pl/press-room/komunikaty-prasowe/anna-lazar-bio",
+     "https://u-jazdowski.pl/press-room/komunikaty-prasowe/anna-lazar-bio/anna-lazar-bio-wersja-w-jezyku-polskim-ukrainskim-angielskim"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "ujazdowski-castle-cca-warsaw",
+   "people": [
+    {
+     "name": "Anna Łazar",
+     "role": "director",
+     "title": "Dyrektorka Centrum Sztuki Współczesnej Zamek Ujazdowski",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [
+      "Curator of the Free Word international artistic collaboration programme, Gdańsk City of Literature (2022 to 2024)",
+      "Deputy Director and Acting Director, Polish Institutes in Kyiv and St Petersburg (Ministry of Foreign Affairs)",
+      "Curator, Museum of Art in Łódź"
+     ],
+     "pay": null,
+     "sources": [
+      "https://u-jazdowski.pl/o-nas/zespol",
+      "https://u-jazdowski.pl/en/o-nas/zespol",
+      "https://u-jazdowski.pl/press-room/komunikaty-prasowe/anna-lazar-bio",
+      "https://u-jazdowski.pl/press-room/komunikaty-prasowe/anna-lazar-bio/anna-lazar-bio-wersja-w-jezyku-polskim-ukrainskim-angielskim"
+     ]
+    },
+    {
+     "name": "Ewa Gorządek",
+     "role": "chief curator",
+     "title": "Kierowniczka Działu Projektów Artystycznych – Kuratorka",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://u-jazdowski.pl/o-nas/zespol"
+     ]
+    }
+   ],
+   "basis": "The centre's team page names the director and the head of artistic projects, and its press room biography of Anna Łazar gives her earlier posts; no dated page for her start was found."
+  }
+ },
+ {
+  "id": "zachęta-national-gallery-of-art-warsaw",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bwa-wrocław-wrocław",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "muzeum-sztuki-lodz",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "casa-das-marinhas",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "calouste-gulbenkian-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "culturgest-lisbon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ze-dos-bois-zdb-lisbon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hangar-lisboa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "maat-lisbon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mac-ccb-museu-de-arte-contemporanea-do-centro-cultural-de-belem",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museu-de-arte-popular",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "padrao-dos-descobrimentos",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "serralves-foundation-porto",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "serralves-museum-of-contemporary-art",
+  "verdict": "ok",
+  "faults": []
+ }
+]

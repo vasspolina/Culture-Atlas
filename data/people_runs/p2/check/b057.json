@@ -1,0 +1,95 @@
+[
+ {
+  "id": "state-tretyakov-gallery-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vdnkh-exhibition-of-achievements-of-national-economy",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "victory-museum-central-museum-of-the-great-patriotic-war",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "winzavod-centre-for-contemporary-art-moscow",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Софья Троценко",
+    "field": "role",
+    "stored": "founder (current)",
+    "page says": "The About page calls her founder of the Winzavod foundation that works on the centre's base and quotes her; it does not say she founded or runs the centre, and the team page names nobody, so the brief's rule that a founder is listed only while still running the space is not met",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "winzavod-centre-for-contemporary-art-moscow",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "zotov-centre-for-constructivism-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arsenal-volga-vyatka-branch-of-the-pushkin-museum-nizhny-novgorod",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tikhaya-studio-nizhny-novgorod",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "permm-museum-of-contemporary-art-perm",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "perm-state-art-gallery-perm",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dk-rozy-st-petersburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "state-museum-of-the-history-of-religion",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "state-hermitage-museum-spb",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "victoria-gallery-samara",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "erarta-museum-of-contemporary-art-st-petersburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "manege-central-exhibition-hall-st-petersburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "new-holland-island-st-petersburg",
+  "verdict": "ok",
+  "faults": []
+ }
+]

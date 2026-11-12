@@ -1,0 +1,249 @@
+[
+ {
+  "id": "pritzker-architecture-prize-chicago",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-renaissance-society",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "moca-cleveland-cleveland",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "magazzino-italian-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "columbus-museum-of-art-columbus",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Nannette Maciejunes",
+    "field": "people",
+    "stored": null,
+    "page says": "March 13, 2023 release (cited): 'Minto takes the helm of CMA on May 15, 2023, succeeding Nannette Maciejunes, who served as executive director for 20 years.' The previous head left in 2023 and the brief requires her as predecessor",
+    "fix": "add as predecessor: role director, title Executive Director, current false, until 2023, left_because null, sources the March 2023 release"
+   }
+  ],
+  "corrected": {
+   "id": "columbus-museum-of-art-columbus",
+   "people": [
+    {
+     "name": "Brooke A. Minto",
+     "role": "director",
+     "title": "Executive Director and CEO",
+     "current": true,
+     "since": "2023-05",
+     "until": null,
+     "previously": [
+      "Inaugural Executive Director, Black Trustee Alliance for Art Museums",
+      "Managing Director, Advisory Board for the Arts",
+      "Interim Co-Director and Director of Institutional Advancement, Zeitz Museum of Contemporary Art Africa"
+     ],
+     "pay": {
+      "amount": 340272,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 Part VII, fiscal year ending June 2025",
+      "url": "https://projects.propublica.org/nonprofits/organizations/314379447/202620589349301612/full"
+     },
+     "sources": [
+      "https://www.columbusmuseum.org/about-us",
+      "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-announces-brooke-a-minto-as-new-executive-director-and-ceo",
+      "https://projects.propublica.org/nonprofits/organizations/314379447/202620589349301612/full"
+     ]
+    },
+    {
+     "name": "Nannette Maciejunes",
+     "role": "director",
+     "title": "Executive Director",
+     "current": false,
+     "since": null,
+     "until": "2023",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-announces-brooke-a-minto-as-new-executive-director-and-ceo"
+     ]
+    },
+    {
+     "name": "Anna Katherine Brodbeck",
+     "role": "chief curator",
+     "title": "Deputy Director for Curatorial Affairs",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [
+      "Hoffman Family Senior Curator of Contemporary Art, Dallas Museum of Art"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-expands-curatorial-and-collections-leadership"
+     ]
+    },
+    {
+     "name": "Seanna Connor Walter",
+     "role": "chair of the board",
+     "title": "President, Board of Trustees",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.columbusmuseum.org/about-us"
+     ]
+    }
+   ],
+   "basis": "The museum's about page listing its board officers and director, its March 2023 release naming Brooke A. Minto (taking the helm on 15 May 2023) and its November 2025 release appointing Anna Katherine Brodbeck to lead the curatorial department, which says Minto succeeds Nannette Maciejunes, executive director for 20 years."
+  }
+ },
+ {
+  "id": "wexner-center-for-the-arts-columbus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "corning-museum-of-glass-corning",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Karol B. Wight",
+    "field": "current",
+    "stored": true,
+    "page says": "The 2025 Form 990 (signed 2026-05-12) names JESSICA LEVIN MARTINEZ as 'Name and address of principal officer' and its signature block reads 'JESSICA LEVIN MARTINEZ, PRESIDENT & EXEC DIRECTOR'; Wight appears only in the 2025 Part VII list",
+    "fix": false
+   },
+   {
+    "person": "Jessica Levin Martinez",
+    "field": "people",
+    "stored": null,
+    "page says": "Same filing: principal officer and signer as PRESIDENT & EXEC DIRECTOR on 2026-05-12; not in Part VII for 2025, so no start date can be read",
+    "fix": "add as current director, title 'President & Exec Director', since null, sources the 2025 Form 990 urls"
+   }
+  ],
+  "corrected": {
+   "id": "corning-museum-of-glass-corning",
+   "people": [
+    {
+     "name": "Jessica Levin Martinez",
+     "role": "director",
+     "title": "President & Exec Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/160764349/202631339349305523/full",
+      "https://projects.propublica.org/nonprofits/full_text/202631339349305523/IRS990"
+     ]
+    },
+    {
+     "name": "Karol B. Wight",
+     "role": "director",
+     "title": "President and Executive Director",
+     "current": false,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": {
+      "amount": 652189,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 Part VII, calendar year 2025 (other compensation 54,499 not included)",
+      "url": "https://projects.propublica.org/nonprofits/organizations/160764349/202631339349305523/full"
+     },
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/160764349/202631339349305523/full",
+      "https://projects.propublica.org/nonprofits/full_text/202631339349305523/IRS990"
+     ],
+     "left_because": null,
+     "next_post": null
+    },
+    {
+     "name": "Carole Ann Fabian",
+     "role": "chief curator",
+     "title": "Interim Director, Collections and Curatorial Affairs",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/160764349/202631339349305523/full",
+      "https://projects.propublica.org/nonprofits/full_text/202631339349305523/IRS990"
+     ]
+    },
+    {
+     "name": "Jeffrey W. Evenson",
+     "role": "chair of the board",
+     "title": "Chair of the Board",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/160764349/202631339349305523/full",
+      "https://projects.propublica.org/nonprofits/full_text/202631339349305523/IRS990"
+     ]
+    }
+   ],
+   "basis": "The museum's own site blocks automated visits behind a bot check, so the people come from its Form 990 for calendar year 2025 on ProPublica: Part VII lists Karol B. Wight as President and Executive Director for 2025, but the return names Jessica Levin Martinez as principal officer and she signed it on 12 May 2026 as President and Exec Director, so she is the current head; no page opened gives the month or year Wight left."
+  }
+ },
+ {
+  "id": "orange-county-museum-of-art-costa-mesa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dallas-contemporary-dallas",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dallas-museum-of-art-dallas",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nasher-sculpture-center",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "clyfford-still-museum-denver",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "denver-art-museum-denver",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mca-denver-denver",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "des-moines-art-center",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nasher-museum-of-art-at-duke-durham",
+  "verdict": "ok",
+  "faults": []
+ }
+]

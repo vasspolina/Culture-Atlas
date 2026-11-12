@@ -1,0 +1,225 @@
+[
+ {
+  "id": "johannesburg-art-gallery-johannesburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "origins-centre-johannesburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wits-art-museum-johannesburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-arts-festival",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "javett-art-centre-at-the-university-of-pretoria-javett-up",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "voortrekker-monument",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "busan-biennale-busan",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "김성연",
+    "field": "until",
+    "stored": null,
+    "page says": "Press releases of 21 Feb 2025 (idx=12322) and 14 May 2025 (idx=12341): the 14th executive director's term expired on 28 February 2025; the history page names Kim Seongyoun as the 14th (reappointed 11 March 2023).",
+    "fix": "2025-02"
+   },
+   {
+    "person": "김성연",
+    "field": "left_because",
+    "stored": null,
+    "page says": "제14대 집행위원장의 임기가 만료됨에 따라 (term expired), idx=12341",
+    "fix": "term ended"
+   },
+   {
+    "person": "김성연",
+    "field": "since",
+    "stored": null,
+    "page says": "History page: 2019 2.22 제12대 집행위원장 김성연 취임",
+    "fix": "2019-02"
+   },
+   {
+    "person": "김성연",
+    "field": "sources",
+    "stored": [
+     "http://www.busanbiennale.org/BBOCkr/index.php?pCode=history"
+    ],
+    "page says": "The leaving date and reason are stated only in the two 2025 press releases, which were not cited",
+    "fix": [
+     "http://www.busanbiennale.org/BBOCkr/index.php?pCode=history",
+     "http://www.busanbiennale.org/BBOCkr/index.php?pCode=news&mode=view&idx=12322",
+     "http://www.busanbiennale.org/BBOCkr/index.php?pCode=news&mode=view&idx=12341"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "busan-biennale-busan",
+   "people": [
+    {
+     "name": "이준",
+     "role": "director",
+     "title": "집행위원장",
+     "current": true,
+     "since": "2025-05",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "http://www.busanbiennale.org/BBOCkr/index.php?pCode=history"
+     ]
+    },
+    {
+     "name": "Evelyn Simons",
+     "role": "artistic director",
+     "title": "2026부산비엔날레 전시감독",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "http://www.busanbiennale.org/BBOCkr/index.php?pCode=news&mode=view&idx=12558"
+     ]
+    },
+    {
+     "name": "Amal Khalaf",
+     "role": "artistic director",
+     "title": "2026부산비엔날레 전시감독",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "http://www.busanbiennale.org/BBOCkr/index.php?pCode=news&mode=view&idx=12558"
+     ]
+    },
+    {
+     "name": "김성연",
+     "role": "director",
+     "title": "집행위원장",
+     "current": false,
+     "since": "2019-02",
+     "until": "2025-02",
+     "left_because": "term ended",
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "http://www.busanbiennale.org/BBOCkr/index.php?pCode=history",
+      "http://www.busanbiennale.org/BBOCkr/index.php?pCode=news&mode=view&idx=12322",
+      "http://www.busanbiennale.org/BBOCkr/index.php?pCode=news&mode=view&idx=12341"
+     ]
+    }
+   ],
+   "basis": "The Busan Biennale Organizing Committee history page (15th executive director took office 14 May 2025; Kim Seongyoun took office as 12th executive director on 22 February 2019 and was reappointed in 2021 and 2023), its press releases of 21 February and 14 May 2025 saying the 14th executive director's term expired on 28 February 2025, and its press release of 10 November 2026 on the 2026 edition."
+  }
+ },
+ {
+  "id": "busan-museum-of-art-busan",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "busan-museum-of-contemporary-art-busan",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "강승완",
+    "field": "current",
+    "stored": true,
+    "page says": "The cited greeting and history page was last updated 2025-02-10 (older than 18 months); the museum's organisation chart, updated 2026-10-16 (https://www.busan.go.kr/moca/aboutMoCA03), lists the 관장 post as (공석), vacant, with no acting holder named. No page states when he left, so he cannot be shown to have left on or after 1 January 2023.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "busan-museum-of-contemporary-art-busan",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "changwon-sculpture-biennale-changwon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cheongju-craft-biennale-cheongju",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "gwangju-biennale-gwangju",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-asian-culture-center-acc-gwangju",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Kim Sangug",
+    "field": "sources",
+    "stored": [
+     "https://www.acc.go.kr/en/contents.do?PID=0702"
+    ],
+    "page says": "The only cited page is undated and cannot prove current; ACC press release dated 2026-11-11 (idx=1951) reads 국립아시아문화전당(ACC, 전당장 김상욱) and quotes 김상욱 국립아시아문화전당장, so current holds but its proof was not cited",
+    "fix": [
+     "https://www.acc.go.kr/en/contents.do?PID=0702",
+     "https://www.acc.go.kr/main/board/board.do?PID=0703&boardID=REFERECEROOM&action=Read&idx=1951&searchType=all&searchText=&pageIndex=1"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "national-asian-culture-center-acc-gwangju",
+   "people": [
+    {
+     "name": "Kim Sangug",
+     "role": "director",
+     "title": "Executive Director, National Asian Culture Center",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.acc.go.kr/en/contents.do?PID=0702",
+      "https://www.acc.go.kr/main/board/board.do?PID=0703&boardID=REFERECEROOM&action=Read&idx=1951&searchType=all&searchText=&pageIndex=1"
+     ]
+    }
+   ],
+   "basis": "The signature of the Executive Director's Message on the ACC English site (undated), confirmed by an ACC press release of 11 November 2026 naming 전당장 김상욱 as the center's head."
+  }
+ },
+ {
+  "id": "sun-mu-studio-dmz",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "alternative-space-loop-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "amorepacific-museum-of-art-seoul",
+  "verdict": "ok",
+  "faults": []
+ }
+]

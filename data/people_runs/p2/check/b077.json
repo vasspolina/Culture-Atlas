@@ -1,0 +1,126 @@
+[
+ {
+  "id": "longhouse-reserve",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Carrie Barratt",
+    "field": "until",
+    "stored": null,
+    "page says": "The Form 990 for the year ending December 2024 lists 'Carrie Barratt, Director, 40.00 hours, 220,000'; neither it, the ProPublica organization page nor the who we are page says when or whether she left. A predecessor needs a leaving date, and no cited page gives one.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "longhouse-reserve",
+   "people": [
+    {
+     "name": "Lara Sweeney",
+     "role": "director",
+     "title": "Executive Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://longhouse.org/pages/who-we-are"
+     ]
+    },
+    {
+     "name": "Louis Bradbury",
+     "role": "chair of the board",
+     "title": "President",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://longhouse.org/pages/who-we-are"
+     ]
+    }
+   ],
+   "basis": "The LongHouse Reserve who we are page lists Lara Sweeney as executive director and Louis Bradbury as president of the board."
+  }
+ },
+ {
+  "id": "fay-and-gus-jones-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "takaezu-studio",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "amon-carter-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "modern-art-museum-of-fort-worth-fort-worth",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "black-family-visual-arts-center-dartmouth-hanover",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wadsworth-atheneum-museum-of-art-hartford",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bishop-museum-bernice-pauahi-bishop-museum-honolulu",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "liljestrand-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "contemporary-arts-museum-houston",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "menil-collection-houston",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "eiteljorg-museum-of-american-indians-and-western-art-indianapolis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "interlochen-center-for-the-arts-interlochen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kemper-museum-kansas-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "san-carlos-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-frank-lloyd-wright-house-in-ebsworth-park",
+  "verdict": "ok",
+  "faults": []
+ }
+]

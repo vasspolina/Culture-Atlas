@@ -1,0 +1,191 @@
+[
+ {
+  "id": "ayala-museum",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "green-papaya-art-projects-manila",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "museum-of-contemporary-art-and-design-mcad-manila",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "ateneo-art-gallery-quezon-city",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "metropolitan-museum-of-manila-taguig",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "kalektar-research-platform-on-belarusian-contemporary-art-białystok",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "museum-of-the-second-world-war",
+  "people": [
+   {
+    "name": "Rafał Wnuk",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [
+     "Editor-in-chief, Pamięć i Sprawiedliwość, Institute of National Remembrance (2002 to 2010)",
+     "Main Specialist, Museum of the Second World War in Gdańsk (2008 to 2017)",
+     "Head of Research Department, Museum of the Second World War in Gdańsk (2013 to 2017)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.muzeum1939.pl/en/museum/team",
+     "https://www.muzeum1939.pl/en/museum/team/rafal-wnuk-prof-phd-hab-"
+    ]
+   }
+  ],
+  "basis": "The museum's team page and its director's biography page name the director; neither gives his start date."
+ },
+ {
+  "id": "bunkier-sztuki-krakow",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "cricoteka-krakow",
+  "people": [
+   {
+    "name": "Natalia Zarzecka",
+    "role": "director",
+    "title": "Dyrektorka",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://cricoteka.pl/pl/zespol/"
+    ]
+   }
+  ],
+  "basis": "The Cricoteka team page (Zespół) names the director; it gives no start date."
+ },
+ {
+  "id": "mocak-kraków",
+  "people": [
+   {
+    "name": "Grzegorz Kuźma",
+    "role": "director",
+    "title": "p.o. dyrektora Muzeum Sztuki Współczesnej w Krakowie MOCAK",
+    "current": true,
+    "since": "2026-05",
+    "until": null,
+    "previously": [
+     "Wicedyrektor, MOCAK"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.mocak.pl/oswiadczenie-mocak-u-w-sprawie-wywiadu-z-adamem-budakiem-w-gazecie-krakowskiej-z-7-pazdziernika-2026-roku",
+     "https://radiokrakow.pl/wiadomosci/krakow/adam-budak-straci-stanowisko-dyrektora-muzeum-mocak-w-tle-oskarzenia-o-mobbing/180871",
+     "https://radiokrakow.pl/wiadomosci/krakow/sprawa-odwolania-dyrektora-mocak-u-pip-bez-podstaw-do-zawiadamiania-prokuratury/185534"
+    ]
+   },
+   {
+    "name": "Adam Budak",
+    "role": "director",
+    "title": "Dyrektor",
+    "current": false,
+    "since": "2025-07",
+    "until": "2026-05",
+    "left_because": "dismissed",
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://radiokrakow.pl/wiadomosci/krakow/adam-budak-straci-stanowisko-dyrektora-muzeum-mocak-w-tle-oskarzenia-o-mobbing/180871",
+     "https://www.mocak.pl/oswiadczenie-mocak-u-w-sprawie-wywiadu-z-adamem-budakiem-w-gazecie-krakowskiej-z-7-pazdziernika-2026-roku"
+    ]
+   }
+  ],
+  "basis": "MOCAK's own statement of 9 October 2026 is signed by the acting director, and Radio Kraków (11 May 2026) reports that the city president dismissed Adam Budak, in post since 14 July 2025, with deputy director Grzegorz Kuźma leading the museum from that Tuesday."
+ },
+ {
+  "id": "muzeum-sopotu",
+  "people": [
+   {
+    "name": "Karolina Babicz-Kaczmarek",
+    "role": "director",
+    "title": "Dyrektor",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://muzeumsopotu.pl/kontakt/"
+    ]
+   }
+  ],
+  "basis": "The museum's contact page lists the director under Dyrekcja; it gives no start date."
+ },
+ {
+  "id": "zofia-and-oskar-hansen-house",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "belarusian-council-for-culture-rada-kultury-warsaw",
+  "people": [
+   {
+    "name": "Siarhiej Budkin",
+    "role": "director",
+    "title": "CEO",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://byculture.org/en/meet-us/"
+    ]
+   }
+  ],
+  "basis": "The council's Meet us page, which mentions events of April 2026, names the CEO at the head of its team list."
+ },
+ {
+  "id": "galeria-foksal-warsaw",
+  "people": [
+   {
+    "name": "Zuzanna Mielczarek",
+    "role": "curator",
+    "title": "Kuratorka programowa",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "http://galeriafoksal.pl/kontakt/"
+    ]
+   }
+  ],
+  "basis": "The gallery's contact page names its programme curator; no director of the gallery is named there."
+ },
+ {
+  "id": "kupalaŭcy-free-kupala-theatre-in-exile-warsaw",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "museum-of-free-belarus-warsaw",
+  "people": [],
+  "basis": ""
+ }
+]

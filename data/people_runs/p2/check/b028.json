@@ -1,0 +1,165 @@
+[
+ {
+  "id": "kunsthalle-mannheim",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "die-neue-sammlung-the-design-museum-munich",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-der-kunst",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstverein-munchen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "lenbachhaus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "lothringer-13-halle-munich",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-abteiberg-monchengladbach",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-münster-münster",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-für-medienkunst-oldenburg-oldenburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-recklinghausen-recklinghausen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "akademie-schloss-solitude-stuttgart",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kuenstlerhaus-stuttgart",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Juliane Gebhardt",
+    "field": "people",
+    "stored": null,
+    "page says": "kuenstlerhaus.de/ueber-uns/, Team: 'Künstlerische Leiter*innen Tamarind Rossetti & Stephen Wright ... Geschäftsführerin Juliane Gebhardt'. The managing director is the head post under the brief (executive director, whatever it is called); the two artistic directors are the separate programme post, so the record had no head.",
+    "fix": {
+     "name": "Juliane Gebhardt",
+     "role": "director",
+     "title": "Geschäftsführerin",
+     "current": true,
+     "since": null,
+     "sources": [
+      "https://kuenstlerhaus.de/ueber-uns/"
+     ]
+    }
+   }
+  ],
+  "corrected": {
+   "id": "kuenstlerhaus-stuttgart",
+   "people": [
+    {
+     "name": "Juliane Gebhardt",
+     "role": "director",
+     "title": "Geschäftsführerin",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://kuenstlerhaus.de/ueber-uns/"
+     ]
+    },
+    {
+     "name": "Tamarind Rossetti",
+     "role": "artistic director",
+     "title": "Künstlerische Leiter*innen",
+     "current": true,
+     "since": "2024-01",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://kuenstlerhaus.de/ueber-uns/"
+     ]
+    },
+    {
+     "name": "Stephen Wright",
+     "role": "artistic director",
+     "title": "Künstlerische Leiter*innen",
+     "current": true,
+     "since": "2024-01",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://kuenstlerhaus.de/ueber-uns/"
+     ]
+    },
+    {
+     "name": "Eric Golo Stone",
+     "role": "artistic director",
+     "title": "Künstlerischer Leiter",
+     "current": false,
+     "since": "2020",
+     "until": "2023",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://kuenstlerhaus.de/ueber-uns/"
+     ]
+    }
+   ],
+   "basis": "The Künstlerhaus about page, whose team list names Juliane Gebhardt as Geschäftsführerin and Tamarind Rossetti and Stephen Wright as Künstlerische Leiter*innen, and whose list of past artistic directors gives Eric Golo Stone 2020 to 2023 and Rossetti and Wright since 1 January 2024."
+  }
+ },
+ {
+  "id": "weissenhofmuseum-im-haus-le-corbusier",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wuerttembergischer-kunstverein-stuttgart",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vitra-design-museum-weil-am-rhein",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-hohe-pappeln",
+  "verdict": "ok",
+  "faults": []
+ }
+]

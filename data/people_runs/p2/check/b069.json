@@ -1,0 +1,128 @@
+[
+ {
+  "id": "anadolu-kultur-depo-and-diyarbak-r-arts-center",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arter-istanbul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "borusan-contemporary",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "depo-istanbul",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Mert Sarısu",
+    "field": "role",
+    "stored": "curator",
+    "page says": "Program Coordinator, listed in the Depo team and, on the Anadolu Kültür page, among the project coordinators below the Direktör and Eş-Direktör; neither page calls him a curator or the head of the programme",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "depo-istanbul",
+   "people": [
+    {
+     "name": "Beril Sönmez",
+     "role": "co-director",
+     "title": "Direktör",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.anadolukultur.org/33-hakkimizda/",
+      "https://www.depoistanbul.net/en/about/"
+     ]
+    },
+    {
+     "name": "Aysu Arıcan-Meyrignac",
+     "role": "co-director",
+     "title": "Eş-Direktör",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.anadolukultur.org/33-hakkimizda/",
+      "https://www.depoistanbul.net/en/about/"
+     ]
+    }
+   ],
+   "basis": "Depo's about page says Depo is part of Anadolu Kültür Sanat Eğitim ve Araştırma Derneği, and Anadolu Kültür's about page (undated) names Beril Sönmez as Direktör and Aysu Arıcan-Meyrignac as Eş-Direktör above the Depo team, whose Program Coordinator is staff, not a curator."
+  }
+ },
+ {
+  "id": "istanbul-biennial-iksv",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "istanbul-modern",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "panorama-1453-history-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pera-museum-istanbul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "salt-galata-istanbul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "421-arts-campus-formerly-warehouse421-abu-dhabi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "guggenheim-abu-dhabi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "louvre-abu-dhabi-abu-dhabi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ishara-art-foundation-dubai",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "jameel-arts-centre",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tashkeel-dubai",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sharjah-art-foundation-sharjah",
+  "verdict": "ok",
+  "faults": []
+ }
+]

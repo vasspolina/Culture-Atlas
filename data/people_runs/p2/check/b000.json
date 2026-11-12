@@ -1,0 +1,176 @@
+[
+ {
+  "id": "national-gallery-of-arts-tirana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-history-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tirana-art-lab",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-national-des-beaux-arts-d-alger-algiers",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "musee-national-du-moudjahid",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-public-national-d-art-moderne-et-contemporain-mama-algiers",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "agostinho-neto-memorial-memorial-dr-antonio-agostinho-neto",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nesr-art-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "coleccion-de-arte-amalia-lacroze-de-fortabat",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundación-proa-buenos-aires",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-nacional-de-bellas-artes-buenos-aires",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-latinoamericano-de-buenos-aires-malba",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Rodrigo Moura",
+    "field": "people",
+    "stored": null,
+    "page says": "MALBA news, 26 January 2026: 'a partir de febrero de 2026, Rodrigo Moura dejará su cargo como Director Artístico del museo'; the November 2024 appointment says he would take on 'la dirección de las dos sedes de Malba'. The previous head, who left after 1 January 2023, is missing.",
+    "fix": {
+     "name": "Rodrigo Moura",
+     "role": "artistic director",
+     "title": "Director Artístico",
+     "current": false,
+     "since": null,
+     "until": "2026-02",
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Curador Jefe, El Museo del Barrio, Nueva York"
+     ],
+     "pay": null,
+     "sources": [
+      "https://malba.org.ar/rodrigo-moura-concluye-su-ciclo-como-director-artistico-de-malba/",
+      "https://malba.org.ar/nombramiento-rodrigo-moura/"
+     ]
+    }
+   }
+  ],
+  "corrected": {
+   "id": "museo-de-arte-latinoamericano-de-buenos-aires-malba",
+   "people": [
+    {
+     "name": "Eduardo F. Costantini",
+     "role": "founder",
+     "title": "Fundador y Presidente",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://malba.org.ar/staff/"
+     ]
+    },
+    {
+     "name": "Emilio Xarrier",
+     "role": "director",
+     "title": "Director Ejecutivo de Administración y Operaciones",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://malba.org.ar/staff/"
+     ]
+    },
+    {
+     "name": "María Amalia García",
+     "role": "chief curator",
+     "title": "Curadora en Jefe",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://malba.org.ar/staff/"
+     ]
+    },
+    {
+     "name": "Rodrigo Moura",
+     "role": "artistic director",
+     "title": "Director Artístico",
+     "current": false,
+     "since": null,
+     "until": "2026-02",
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Curador Jefe, El Museo del Barrio, Nueva York"
+     ],
+     "pay": null,
+     "sources": [
+      "https://malba.org.ar/rodrigo-moura-concluye-su-ciclo-como-director-artistico-de-malba/",
+      "https://malba.org.ar/nombramiento-rodrigo-moura/"
+     ]
+    }
+   ],
+   "basis": "MALBA's own staff page lists the founder and president, the executive director of administration and operations and the chief curator; MALBA's news of 26 January 2026 says artistic director Rodrigo Moura, appointed in November 2024, left the post from February 2026, and the staff page names no successor."
+  }
+ },
+ {
+  "id": "museo-de-arte-moderno-de-buenos-aires-buenos-aires",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-casa-sobre-el-arroyo-casa-del-puente",
+  "verdict": "ok",
+  "faults": []
+ }
+]

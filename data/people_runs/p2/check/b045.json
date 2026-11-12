@@ -1,0 +1,216 @@
+[
+ {
+  "id": "kunstinstituut-melly",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Janne Vermeulen",
+    "field": "name",
+    "stored": "Janne Vermeulen",
+    "page says": "Do Janne Vermeulen (chair)",
+    "fix": "Do Janne Vermeulen"
+   }
+  ],
+  "corrected": {
+   "id": "kunstinstituut-melly",
+   "people": [
+    {
+     "name": "Gabi Ngcobo",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": "2024-01",
+     "until": null,
+     "previously": [
+      "Curatorial Director, Javett Art Centre at the University of Pretoria"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.kunstinstituutmelly.nl/en/people/7329-gabi-ngcobo",
+      "https://www.kunstinstituutmelly.nl/en/about"
+     ]
+    },
+    {
+     "name": "Rosa de Graaf",
+     "role": "curator",
+     "title": "Curator of Exhibitions & Art Commissions",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.kunstinstituutmelly.nl/en/about"
+     ]
+    },
+    {
+     "name": "Do Janne Vermeulen",
+     "role": "chair of the board",
+     "title": "Supervisory Board (chair)",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.kunstinstituutmelly.nl/en/about"
+     ]
+    },
+    {
+     "name": "Sofía Hernández Chong Cuy",
+     "role": "director",
+     "title": "Director",
+     "current": false,
+     "since": "2018",
+     "until": "2023",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.kunstinstituutmelly.nl/en/about"
+     ]
+    }
+   ],
+   "basis": "The museum's About page (history of directors, team and supervisory board) and Gabi Ngcobo's staff page, which says she joined as director in January 2024."
+  }
+ },
+ {
+  "id": "nederlands-fotomuseum-rotterdam",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Wanda van Kerkvoorden",
+    "field": "current",
+    "stored": true,
+    "page says": "The annual report names her chair for 2025, but the museum's current team page lists the Raad van Toezicht without her and names Bart Kuppens as 'Vice Voorzitter, Waarnemend Voorzitter'",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "nederlands-fotomuseum-rotterdam",
+   "people": [
+    {
+     "name": "Zippora Elders",
+     "role": "director",
+     "title": "Algemeen en Artistiek Directeur",
+     "current": true,
+     "since": "2026-04",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://nederlandsfotomuseum.nl/team/",
+      "https://nederlandsfotomuseum.nl/en/about-us/",
+      "https://nederlandsfotomuseum.nl/nederlands-fotomuseum-jaarverslag-2025/"
+     ]
+    },
+    {
+     "name": "Bart Kuppens",
+     "role": "chair of the board",
+     "title": "Waarnemend Voorzitter, Raad van Toezicht",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://nederlandsfotomuseum.nl/team/"
+     ]
+    },
+    {
+     "name": "Birgit Donker",
+     "role": "director",
+     "title": "Directeur-bestuurder",
+     "current": false,
+     "since": null,
+     "until": "2025-07",
+     "left_because": "dismissed",
+     "next_post": null,
+     "previously": [],
+     "pay": {
+      "amount": 157191,
+      "currency": "EUR",
+      "year": "2024",
+      "what": "total remuneration (totaal bezoldiging) under the WNT, full year as director",
+      "url": "https://nederlandsfotomuseum.nl/nederlands-fotomuseum-jaarverslag-2025/"
+     },
+     "sources": [
+      "https://nederlandsfotomuseum.nl/nederlands-fotomuseum-jaarverslag-2025/"
+     ]
+    }
+   ],
+   "basis": "The museum's team and About pages and its 2025 annual report (directors, board report and WNT disclosure), which gives Zippora Elders Tahalele's start as 13 April 2026 and Birgit Donker's end as director on 18 July 2025 after the board ended the cooperation; the current team page names Bart Kuppens as vice chair and acting chair of the supervisory board."
+  }
+ },
+ {
+  "id": "sonneveld-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tent-rotterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "v2-lab-unstable-media-rotterdam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "huis-jan-de-jong",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstmuseum-den-haag",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mauritshuis-the-hague",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-beelden-aan-zee-the-hague",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "stroom-den-haag",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "west-den-haag",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "de-pont",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bak-utrecht",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "casco-art-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centraal-museum-utrecht",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-schijndel-house",
+  "verdict": "ok",
+  "faults": []
+ }
+]

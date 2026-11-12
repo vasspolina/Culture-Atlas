@@ -1,0 +1,120 @@
+[
+ {
+  "id": "haus-am-horn",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstmuseum-wolfsburg-wolfsburg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "skulpturenpark-waldfrieden",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-rabe",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chale-wote-street-art-festival-accra",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "gallery-1957",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Marwan Zakhem",
+    "field": "sources",
+    "stored": [
+     "https://gallery1957.com/contact/",
+     "https://gallery1957.com/news/85-marwan-zakhem-featured-in-art-review-power-100/"
+    ],
+    "page says": "The cited pages are an undated contact page (launched by Marwan Zakhem in 2016) and a news item of 1 Dec 2023, older than 18 months, so neither proves he is current. The gallery's news item of 11 Sep 2026 says the 2026 Cultural Week exhibition is curated by Gallery 1957 Founder Marwan Zakhem.",
+    "fix": [
+     "https://gallery1957.com/contact/",
+     "https://gallery1957.com/news/85-marwan-zakhem-featured-in-art-review-power-100/",
+     "https://gallery1957.com/news/118-gallery-1957-featured-in-architectural-digest/"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "gallery-1957",
+   "people": [
+    {
+     "name": "Marwan Zakhem",
+     "role": "founder",
+     "title": "Founder",
+     "current": true,
+     "since": "2016",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://gallery1957.com/contact/",
+      "https://gallery1957.com/news/85-marwan-zakhem-featured-in-art-review-power-100/",
+      "https://gallery1957.com/news/118-gallery-1957-featured-in-architectural-digest/"
+     ]
+    }
+   ],
+   "basis": "The gallery's own contact page says it was launched by Marwan Zakhem in 2016, and a gallery news item dated 11 September 2026 names Gallery 1957 Founder Marwan Zakhem as curator of its 2026 Cultural Week exhibition; no page names a separate director."
+  }
+ },
+ {
+  "id": "nubuke-foundation-accra",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "blaxtarlines-kumasi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "savannah-centre-for-contemporary-art-scca-tamale-tamale",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "deste-foundation-for-contemporary-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "emst-national-museum-of-contemporary-art-athens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "neon-athens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-alexandros-soutzos-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "onassis-stegi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "state-of-concept-athens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tavros-athens",
+  "verdict": "ok",
+  "faults": []
+ }
+]

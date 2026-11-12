@@ -1,0 +1,411 @@
+[
+ {
+  "id": "jeu-de-paume-paris",
+  "people": [
+   {
+    "name": "Quentin Bajac",
+    "role": "director",
+    "title": "Directeur",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://jeudepaume.org/a-propos/equipe/",
+     "https://jeudepaume.org/a-propos/gouvernance/"
+    ]
+   },
+   {
+    "name": "Alain Dominique Perrin",
+    "role": "chair of the board",
+    "title": "Président",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://jeudepaume.org/a-propos/gouvernance/"
+    ]
+   }
+  ],
+  "basis": "The Jeu de Paume's own team page and governance page, which name the director and the president of the association."
+ },
+ {
+  "id": "le-bal-paris",
+  "people": [
+   {
+    "name": "Diane Dufour",
+    "role": "artistic director",
+    "title": "Fondatrice et directrice artistique",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.le-bal.fr/lequipe"
+    ]
+   },
+   {
+    "name": "Christine Vidal",
+    "role": "director",
+    "title": "Directrice",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.le-bal.fr/lequipe"
+    ]
+   }
+  ],
+  "basis": "Le Bal's own team page."
+ },
+ {
+  "id": "louvre-paris",
+  "people": [
+   {
+    "name": "Christophe Leribault",
+    "role": "director",
+    "title": "Président-Directeur du musée du Louvre",
+    "current": true,
+    "since": "2026-02",
+    "until": null,
+    "previously": [
+     "Président, Château de Versailles (2024 to 2026)",
+     "Président, Musée d'Orsay et de l'Orangerie (2021 to 2024)",
+     "Directeur, Petit Palais (2012 to 2021)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.louvre.fr/l-etablissement-public/gouvernance",
+     "https://www.franceinfo.fr/culture/arts-expos/louvre/le-nouveau-president-du-louvre-christophe-leribault-confirme-le-projet-de-grands-travaux-du-musee_7986854.html",
+     "https://www.franceinfo.fr/culture/arts-expos/louvre/qui-est-christophe-leribault-l-historien-de-l-art-choisi-pour-prendre-la-direction-du-louvre_7828697.html"
+    ]
+   },
+   {
+    "name": "Laurence des Cars",
+    "role": "director",
+    "title": "Présidente du Louvre",
+    "current": false,
+    "since": "2021",
+    "until": "2026-02",
+    "left_because": "resigned",
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.franceinfo.fr/culture/arts-expos/louvre/la-presidente-du-louvre-laurence-des-cars-a-remis-sa-demission-a-emmanuel-macron-qui-l-a-acceptee_7827170.html"
+    ]
+   }
+  ],
+  "basis": "The Louvre's governance page names the current president-director; Franceinfo articles of 24 and 25 February and 6 May 2026 give his start date, earlier posts and his predecessor's resignation."
+ },
+ {
+  "id": "musée-dorsay-paris",
+  "people": [
+   {
+    "name": "Annick Lemoine",
+    "role": "director",
+    "title": "à la tête du musée d'Orsay et de l'Orangerie",
+    "current": true,
+    "since": "2026-03",
+    "until": null,
+    "previously": [
+     "Directrice, Petit Palais (2022 to 2026)",
+     "Directrice, Musée Cognacq-Jay (from 2018)",
+     "Responsable du département d'histoire de l'art, Académie de France à Rome (from 2010)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.franceinfo.fr/culture/arts-expos/musee-orsay/annick-lemoine-directrice-du-petit-palais-prend-la-tete-du-musee-d-orsay_7828886.html"
+    ]
+   },
+   {
+    "name": "Sylvain Amic",
+    "role": "director",
+    "title": "Président du musée d'Orsay",
+    "current": false,
+    "since": null,
+    "until": "2025-08",
+    "left_because": "died",
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.franceinfo.fr/culture/arts-expos/musee-orsay/annick-lemoine-directrice-du-petit-palais-prend-la-tete-du-musee-d-orsay_7828886.html",
+     "https://www.franceinfo.fr/culture/arts-expos/musee-orsay/"
+    ]
+   }
+  ],
+  "basis": "A Franceinfo and AFP report of 25 February 2026 on Annick Lemoine's appointment, which gives her start date of 19 March 2026 and her predecessor's death; the Orsay site refused the request."
+ },
+ {
+  "id": "mus-e-de-la-chasse-et-de-la-nature",
+  "people": [
+   {
+    "name": "Alban de Loisy",
+    "role": "director",
+    "title": "Directeur général, Fondation François Sommer",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.chassenature.org/mentions-legales",
+     "https://www.chassenature.org/storage/1177/MCN%E2%80%94Dossier-de-presse-Institutionnel_pp.pdf"
+    ]
+   },
+   {
+    "name": "Christine Germain-Donnat",
+    "role": "director",
+    "title": "Directrice du musée",
+    "current": false,
+    "since": "2019",
+    "until": "2024",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.chassenature.org/storage/1177/MCN%E2%80%94Dossier-de-presse-Institutionnel_pp.pdf"
+    ]
+   }
+  ],
+  "basis": "The museum site's legal notice names the director general of the Fondation François Sommer, which runs the museum; the museum's 2024 press kit names the museum's director from 2019 to 2024, and no page found names a museum director after her."
+ },
+ {
+  "id": "palais-de-tokyo",
+  "people": [
+   {
+    "name": "Guillaume Désanges",
+    "role": "director",
+    "title": "Président du Palais de Tokyo",
+    "current": true,
+    "since": "2022",
+    "until": null,
+    "previously": [
+     "Commissaire invité, Le Plateau-Frac Ile-de-France (2009 to 2011)",
+     "Programme artistique, La Verrière, Fondation d'entreprise Hermès, Brussels (from 2013)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://palaisdetokyo.com/mentions-legales/",
+     "https://www.culture.gouv.fr/Presse/Communiques-de-presse/Nomination-de-Guillaume-Desanges-a-la-presidence-du-Palais-de-Tokyo"
+    ]
+   }
+  ],
+  "basis": "The Palais de Tokyo's own legal notice names him as president; the Ministry of Culture press release of 10 January 2022 announces the appointment and his earlier posts."
+ },
+ {
+  "id": "palais-de-la-porte-doree-musee-national-de-l-histoire-de-l-immigration",
+  "people": [
+   {
+    "name": "Constance Rivière",
+    "role": "director",
+    "title": "Directrice Générale du Palais de la Porte Dorée",
+    "current": true,
+    "since": "2022-09",
+    "until": null,
+    "previously": [
+     "Secrétaire générale, Défenseur des droits (to 2022)",
+     "Conseillère spéciale en charge de la culture et de la citoyenneté, cabinet du président de la République (2012 to 2017)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.palais-portedoree.fr/sites/default/files/2026-11/DP_exposition_histoire_cinema-FR.pdf",
+     "https://www.culture.gouv.fr/Presse/Communiques-de-presse/Constance-Riviere-nommee-directrice-generale-de-l-etablissement-public-du-Palais-de-la-Porte-Doree-Musee-national-de-l-histoire-de-l-immigration-e"
+    ]
+   }
+  ],
+  "basis": "The Palais de la Porte Doree press kit of November 2026 names the director general; the Ministry of Culture release of 24 August 2022 gives her start on 12 September 2022 and her earlier posts."
+ },
+ {
+  "id": "paris-musees-reseau",
+  "people": [
+   {
+    "name": "Anne-Sophie de Gasquet",
+    "role": "director",
+    "title": "Directrice générale",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.parismusees.paris.fr/sites/default/files/medias/fichiers/2026-06/CP%20Oph%C3%A9lie%20Ferlier%20Bouat%20nomm%C3%A9e%20%C3%A0%20la%20direction%20du%20Petit%20Palais.pdf"
+    ]
+   },
+   {
+    "name": "Florian Sitbon",
+    "role": "chair of the board",
+    "title": "Président du Conseil d'Administration de Paris Musées",
+    "current": true,
+    "since": "2026",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.parismusees.paris.fr/sites/default/files/medias/fichiers/2026-06/CP%20Election%20Pr%C3%A9sident%20PM_V10.pdf",
+     "https://www.parismusees.paris.fr/sites/default/files/medias/fichiers/2026-06/CP%20Oph%C3%A9lie%20Ferlier%20Bouat%20nomm%C3%A9e%20%C3%A0%20la%20direction%20du%20Petit%20Palais.pdf"
+    ]
+   }
+  ],
+  "basis": "Two Paris Musees press releases of June 2026: one names the director general and the board president, the other announces the board president's election."
+ },
+ {
+  "id": "pinault-collection-bourse-de-commerce-paris",
+  "people": [
+   {
+    "name": "Emma Lavigne",
+    "role": "director",
+    "title": "Directrice Générale de la Collection, Conservatrice Générale",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.pinaultcollection.com/fr/une-equipe-pinault-collection-entre-paris-et-venise"
+    ]
+   },
+   {
+    "name": "François Pinault",
+    "role": "founder",
+    "title": "Président",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.pinaultcollection.com/fr/une-equipe-pinault-collection-entre-paris-et-venise"
+    ]
+   }
+  ],
+  "basis": "The Pinault Collection's own team page for Paris and Venice."
+ },
+ {
+  "id": "villa-savoye",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "le-confort-moderne-poitiers",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "cap-moderne-villa-e-1027-and-le-cabanon",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "ceaac-strasbourg",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "crac-occitanie-sète",
+  "people": [
+   {
+    "name": "Marie Cozette",
+    "role": "director",
+    "title": "Direction",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://crac.laregion.fr/l-equipe-du-CRAC"
+    ]
+   }
+  ],
+  "basis": "The Crac Occitanie team page."
+ },
+ {
+  "id": "le-fresnoy-studio-national-des-arts-contemporains",
+  "people": [
+   {
+    "name": "Isabelle Gaudefroy",
+    "role": "director",
+    "title": "Directrice",
+    "current": true,
+    "since": "2026-02",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.lefresnoy.net/institution/lequipe/",
+     "https://www.lefresnoy.net/institution/une-institution-unique/"
+    ]
+   },
+   {
+    "name": "Bruno Racine",
+    "role": "chair of the board",
+    "title": "Président",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.lefresnoy.net/institution/lequipe/"
+    ]
+   },
+   {
+    "name": "Alain Fleischer",
+    "role": "director",
+    "title": "Direction artistique et pédagogique",
+    "current": false,
+    "since": null,
+    "until": "2024-12",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.lefresnoy.net/institution/une-institution-unique/"
+    ]
+   }
+  ],
+  "basis": "Le Fresnoy's own team page and institution page, which give the new director's start in February 2026 and her predecessor's tenure to December 2024."
+ },
+ {
+  "id": "pictanovo-tourcoing",
+  "people": [
+   {
+    "name": "Godefroy Vujicic",
+    "role": "director",
+    "title": "Directeur Général",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.pictanovo.com/a-propos/"
+    ]
+   },
+   {
+    "name": "Grégory Tempremant",
+    "role": "chair of the board",
+    "title": "Président de Pictanovo",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.pictanovo.com/a-propos/"
+    ]
+   }
+  ],
+  "basis": "Pictanovo's own about page, which names the president and the director general."
+ }
+]

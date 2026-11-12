@@ -1,0 +1,399 @@
+[
+ {
+  "id": "alice-austen-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Sean M Decatur",
+    "field": "since",
+    "stored": "2023",
+    "page says": "The cited NNPA repost of the AP story carries no date and says only that Decatur 'will succeed Ellen Futter in April of next year'; the Form 990 gives no start date. Hyperallergic, 7 December 2022 (not cited): 'Decatur will assume his new post in April 2023.'",
+    "fix": "2023-04"
+   },
+   {
+    "person": "Sean M Decatur",
+    "field": "sources",
+    "stored": "990 and the undated NNPA page",
+    "page says": "The year 2023 is proved only by a dated page not among the cited urls; add Hyperallergic's 7 December 2022 report.",
+    "fix": [
+     "https://projects.propublica.org/nonprofits/organizations/136162659/202641179349300744/full",
+     "https://nnpa.org/american-museum-of-natural-history-names-first-black-president/",
+     "https://hyperallergic.com/sean-decatur-appointed-president-american-museum-of-natural-history"
+    ]
+   },
+   {
+    "person": "Ellen Futter",
+    "field": "until",
+    "stored": "2023",
+    "page says": "The cited NNPA page is undated ('stepping down in March', 'April of next year'); Hyperallergic, 7 December 2022 (not cited): 'In April, Decatur will take over from Ellen Futter'. Value right, proof not cited.",
+    "fix": "2023"
+   }
+  ],
+  "corrected": {
+   "id": "american-museum-of-natural-history-new-york",
+   "people": [
+    {
+     "name": "Sean M Decatur",
+     "role": "director",
+     "title": "President & Ex Officio Trustee",
+     "current": true,
+     "since": "2023-04",
+     "until": null,
+     "previously": [
+      "President, Kenyon College"
+     ],
+     "pay": {
+      "amount": 1216070,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+      "url": "https://projects.propublica.org/nonprofits/organizations/136162659/202641179349300744/full"
+     },
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/136162659/202641179349300744/full",
+      "https://nnpa.org/american-museum-of-natural-history-names-first-black-president/",
+      "https://hyperallergic.com/sean-decatur-appointed-president-american-museum-of-natural-history"
+     ]
+    },
+    {
+     "name": "Scott L Bok",
+     "role": "chair of the board",
+     "title": "Chairman",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/136162659/202641179349300744/full"
+     ]
+    },
+    {
+     "name": "Ellen Futter",
+     "role": "director",
+     "title": "President",
+     "current": false,
+     "since": null,
+     "until": "2023",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://nnpa.org/american-museum-of-natural-history-names-first-black-president/",
+      "https://hyperallergic.com/sean-decatur-appointed-president-american-museum-of-natural-history"
+     ]
+    }
+   ],
+   "basis": "The museum's Form 990 for the year to June 2025, filed April 2026 (ProPublica), names the president and chairman; Hyperallergic's 7 December 2022 report on the appointment says Decatur would take over from Ellen Futter in April 2023, and an undated AP report reposted by NNPA calls Futter the museum's president of 30 years; amnh.org blocked access."
+  }
+ },
+ {
+  "id": "artists-space",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "brooklyn-museum-new-york",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Catherine Futter",
+    "field": "title",
+    "stored": "Director Of Curatorial Affairs",
+    "page says": "Form 990 Part VII: 'DIRECTOR OF CURATORIAL AFFAIRS' (capitalised wrongly when converted from capitals)",
+    "fix": "Director of Curatorial Affairs"
+   }
+  ],
+  "corrected": {
+   "id": "brooklyn-museum-new-york",
+   "people": [
+    {
+     "name": "Anne Pasternak",
+     "role": "director",
+     "title": "Shelby White & Leon Levy Director",
+     "current": true,
+     "since": "2015-09",
+     "until": null,
+     "previously": [
+      "President and Artistic Director, Creative Time (1994 to 2015)"
+     ],
+     "pay": {
+      "amount": 705906,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+      "url": "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full"
+     },
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full",
+      "https://www.theartnewspaper.com/2015/05/20/anne-pasternak-to-lead-the-brooklyn-museum",
+      "https://hyperallergic.com/creative-times-anne-pasternak-will-take-the-helm-at-the-brooklyn-museum"
+     ]
+    },
+    {
+     "name": "Catherine Futter",
+     "role": "chief curator",
+     "title": "Director of Curatorial Affairs",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": {
+      "amount": 181967,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+      "url": "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full"
+     },
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full"
+     ]
+    },
+    {
+     "name": "Barbara M Vogelstein",
+     "role": "chair of the board",
+     "title": "Board Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full"
+     ]
+    }
+   ],
+   "basis": "The Brooklyn Institute of Arts and Sciences (Brooklyn Museum) Form 990 for the year to June 2025, filed May 2026, names the director, curatorial head and board chair; May 2015 reports in The Art Newspaper and Hyperallergic give the 1 September 2015 start; the museum's site refused requests."
+  }
+ },
+ {
+  "id": "center-for-cuban-studies",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dia-chelsea",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Humberto Moro Pinedo",
+    "field": "title",
+    "stored": "Deputy Director Of Program",
+    "page says": "Form 990 Part VII: 'DEPUTY DIRECTOR OF PROGRAM'",
+    "fix": "Deputy Director of Program"
+   },
+   {
+    "person": "Nathalie De Gunzburg",
+    "field": "name",
+    "stored": "Nathalie De Gunzburg",
+    "page says": "The 990 is in capitals; the cited Tate release writes 'Nathalie de Gunzburg' (in Morgan's title)",
+    "fix": "Nathalie de Gunzburg"
+   }
+  ],
+  "corrected": {
+   "id": "dia-chelsea",
+   "people": [
+    {
+     "name": "Jessica Morgan",
+     "role": "director",
+     "title": "Nathalie de Gunzburg Director",
+     "current": true,
+     "since": "2015",
+     "until": null,
+     "previously": [
+      "The Daskalopoulos Curator, International Art, Tate Modern (2010 to 2014)",
+      "Curator, Tate (2002 to 2010)",
+      "Chief Curator, Institute of Contemporary Art, Boston"
+     ],
+     "pay": {
+      "amount": 814423,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+      "url": "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+     },
+     "sources": [
+      "https://www.tate.org.uk/press/press-releases/jessica-morgan-appointed-director-of-tate",
+      "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+     ]
+    },
+    {
+     "name": "Humberto Moro Pinedo",
+     "role": "chief curator",
+     "title": "Deputy Director of Program",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": {
+      "amount": 212550,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+      "url": "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+     },
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+     ]
+    },
+    {
+     "name": "Nathalie de Gunzburg",
+     "role": "chair of the board",
+     "title": "Chairman",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+     ]
+    }
+   ],
+   "basis": "Dia Chelsea is run by Dia Art Foundation (filing as Dia Center for the Arts); its Form 990 filed March 2026 names the director, programme head and chairman, and Tate's 22 July 2026 release says Morgan, Dia's director since 2015, becomes Tate's director on 1 January 2027; diaart.org refused requests."
+  }
+ },
+ {
+  "id": "el-museo-del-barrio-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "eyebeam-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "international-center-of-photography-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Mariko Silver",
+    "field": "title",
+    "stored": "President And Ceo As Of 9/16/24",
+    "page says": "Form 990 Part VII: 'PRESIDENT AND CEO AS OF 9/16/24'; the date is a note, kept in since",
+    "fix": "President and CEO"
+   },
+   {
+    "person": "Shannon Shanta Thake-kriegsmann",
+    "field": "name",
+    "stored": "Shannon Shanta Thake-kriegsmann",
+    "page says": "Form 990 Part VII: 'SHANNON SHANTA THAKE-KRIEGSMANN'",
+    "fix": "Shannon Shanta Thake-Kriegsmann"
+   },
+   {
+    "person": "Shannon Shanta Thake-kriegsmann",
+    "field": "title",
+    "stored": "Evp, Chief Artistic Officer",
+    "page says": "Form 990 Part VII: 'EVP, CHIEF ARTISTIC OFFICER'",
+    "fix": "EVP, Chief Artistic Officer"
+   },
+   {
+    "person": "Henry Timms",
+    "field": "title",
+    "stored": "President And Ceo Thru 8/1/24",
+    "page says": "Form 990 Part VII: 'PRESIDENT AND CEO THRU 8/1/24'; the date is a note, kept in until",
+    "fix": "President and CEO"
+   }
+  ],
+  "corrected": {
+   "id": "lincoln-center-for-the-performing-arts",
+   "people": [
+    {
+     "name": "Mariko Silver",
+     "role": "director",
+     "title": "President and CEO",
+     "current": true,
+     "since": "2024-09",
+     "until": null,
+     "previously": [],
+     "pay": {
+      "amount": 389933,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025 (from 16 September 2024)",
+      "url": "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+     },
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+     ]
+    },
+    {
+     "name": "Shannon Shanta Thake-Kriegsmann",
+     "role": "artistic director",
+     "title": "EVP, Chief Artistic Officer",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": {
+      "amount": 696545,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+      "url": "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+     },
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+     ]
+    },
+    {
+     "name": "Steven R Swartz",
+     "role": "chair of the board",
+     "title": "Chairman",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+     ]
+    },
+    {
+     "name": "Henry Timms",
+     "role": "director",
+     "title": "President and CEO",
+     "current": false,
+     "since": null,
+     "until": "2024-08",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": {
+      "amount": 2247343,
+      "currency": "USD",
+      "year": "2025",
+      "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+      "url": "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+     },
+     "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+     ]
+    }
+   ],
+   "basis": "Lincoln Center's Form 990 for the year to June 2025, filed May 2026 (ProPublica), lists Henry Timms as president and CEO through 1 August 2024 and Mariko Silver from 16 September 2024, with the chief artistic officer and chairman; lincolncenter.org was not reached."
+  }
+ },
+ {
+  "id": "moma-the-museum-of-modern-art",
+  "verdict": "ok",
+  "faults": []
+ }
+]

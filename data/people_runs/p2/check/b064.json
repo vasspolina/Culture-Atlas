@@ -1,0 +1,281 @@
+[
+ {
+  "id": "museo-thyssen-bornemisza",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Evelio Acevedo",
+    "field": "pay",
+    "stored": {
+     "amount": 62060.6,
+     "currency": "EUR",
+     "year": "2025",
+     "what": "basic pay (retribución básica mínima obligatoria); a post supplement of up to 60% and a variable supplement of up to 40% of it come on top",
+     "url": "https://www.museothyssen.org/transparencia/informacion-economica-contratos/informacion-economica"
+    },
+    "page says": "The transparency page gives only the statutory floor: pay for the Director Artístico and Director Gerente is 'compuestos por una retribución básica mínima obligatoria de 62.060,60 euros, un complemento de puesto ... como máximo el 60 por ciento ... y un complemento variable ... como máximo un 40%'. It is not an amount paid. The 2025 annual accounts (note 25) print only a joint figure: 'El importe total de los salarios correspondientes al Director Artístico y al Director Gerente, en el ejercicio del 2025, ha ascendido a 247.129,52€ brutos', which cannot be split per person.",
+    "fix": null
+   },
+   {
+    "person": "Guillermo Solana",
+    "field": "pay",
+    "stored": {
+     "amount": 62060.6,
+     "currency": "EUR",
+     "year": "2025",
+     "what": "basic pay (retribución básica mínima obligatoria); a post supplement of up to 60% and a variable supplement of up to 40% of it come on top",
+     "url": "https://www.museothyssen.org/transparencia/informacion-economica-contratos/informacion-economica"
+    },
+    "page says": "The transparency page gives only the statutory floor: pay for the Director Artístico and Director Gerente is 'compuestos por una retribución básica mínima obligatoria de 62.060,60 euros, un complemento de puesto ... como máximo el 60 por ciento ... y un complemento variable ... como máximo un 40%'. It is not an amount paid. The 2025 annual accounts (note 25) print only a joint figure: 'El importe total de los salarios correspondientes al Director Artístico y al Director Gerente, en el ejercicio del 2025, ha ascendido a 247.129,52€ brutos', which cannot be split per person.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "museo-thyssen-bornemisza",
+   "people": [
+    {
+     "name": "Evelio Acevedo",
+     "role": "director",
+     "title": "Director Gerente",
+     "current": true,
+     "since": "2012",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Director de Responsabilidad Corporativa, Grupo Barclays en España (2004 to 2012)",
+      "Director Gerente, Fundación Barclays (2004 to 2012)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.museothyssen.org/transparencia/informacion-institucional-organizativa/organizativa/directiva"
+     ]
+    },
+    {
+     "name": "Guillermo Solana",
+     "role": "artistic director",
+     "title": "Director Artístico",
+     "current": true,
+     "since": "2005",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Profesor Titular de Estética y Teoría de las Artes, Universidad Autónoma de Madrid"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.museothyssen.org/transparencia/informacion-institucional-organizativa/organizativa/directiva"
+     ]
+    }
+   ],
+   "basis": "The museum's transparency portal (directiva page, updated 12 November 2026) names the managing and artistic directors with their careers; the 2025 accounts print only their joint pay, so no pay is stored per person."
+  }
+ },
+ {
+  "id": "museo-reina-sof-a",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-america",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-del-prado",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "teatro-real-madrid",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mas-miro",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Elena Juncosa",
+    "field": "current/until (predecessor)",
+    "stored": {
+     "current": false,
+     "until": null
+    },
+    "page says": "The cited 2023 annual report shows her only as director in 2023 (Direcció: Elena Juncosa Vecchierini); it does not show she left or that she was the director before Cèlia del Diego. The foundation's news item of 11 February 2026 opens the competition for the director post and 'destaca la tasca duta a terme per Elena Juncosa durant el seu mandat'; the press release of 28 April 2026 names Cèlia del Diego as the new director.",
+    "fix": {
+     "until": "2026",
+     "sources": [
+      "https://masmiro.com/wp-content/uploads/2026/01/Memoria_MasMiro_2023_compressed.pdf",
+      "https://masmiro.com/noticies/mas-miro-convoca-concurs-per-la-placa-de-direccio/"
+     ]
+    }
+   },
+   {
+    "person": "Cèlia del Diego",
+    "field": "since/previously",
+    "stored": {
+     "since": null,
+     "previously": []
+    },
+    "page says": "Press release, Mont-roig del Camp, 28 April 2026: 'La Fundació Mas Miró ha nomenat Cèlia del Diego Thomas com a nova directora de la institució'; she has held 'la direcció del Centre d'Art la Panera de Lleida i del CA Tarragona Centre d'Art, i recentment ha exercit com a responsable de relacions institucionals al Museu d'Art Contemporani de Barcelona (MACBA)'.",
+    "fix": {
+     "since": "2026",
+     "previously": [
+      "Directora, Centre d'Art la Panera, Lleida",
+      "Directora, CA Tarragona Centre d'Art",
+      "Responsable de relacions institucionals, Museu d'Art Contemporani de Barcelona (MACBA)"
+     ],
+     "sources add": "https://masmiro.com/wp-content/uploads/2026/05/NdP-Nova-direccio-Fundacio-Mas-Miro.pdf"
+    }
+   }
+  ],
+  "corrected": {
+   "id": "mas-miro",
+   "people": [
+    {
+     "name": "Cèlia del Diego",
+     "role": "director",
+     "title": "directora de la Fundació Mas Miró",
+     "current": true,
+     "since": "2026",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Directora, Centre d'Art la Panera, Lleida",
+      "Directora, CA Tarragona Centre d'Art",
+      "Responsable de relacions institucionals, Museu d'Art Contemporani de Barcelona (MACBA)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://masmiro.com/noticies/primera-trobada-de-les-directores-del-triangle-miro/",
+      "https://masmiro.com/wp-content/uploads/2026/05/NdP-Nova-direccio-Fundacio-Mas-Miro.pdf"
+     ]
+    },
+    {
+     "name": "Elena Juncosa",
+     "role": "director",
+     "title": "directora de la Fundació",
+     "current": false,
+     "since": null,
+     "until": "2026",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://masmiro.com/wp-content/uploads/2026/01/Memoria_MasMiro_2023_compressed.pdf",
+      "https://masmiro.com/noticies/mas-miro-convoca-concurs-per-la-placa-de-direccio/"
+     ]
+    }
+   ],
+   "basis": "A Mas Miró press release of 28 April 2026 names Cèlia del Diego as the new director and her earlier posts, confirmed by a news item of 10 November 2026; the foundation's February 2026 notice of the director competition credits Elena Juncosa's mandate, and its 2023 report names her as director."
+  }
+ },
+ {
+  "id": "ca2m-centro-de-arte-dos-de-mayo-m-stoles",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "es-baluard-museu-palma",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tabakalera-donostia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centro-botin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ivam-institut-valencia-d-art-modern",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Nuria Enguita",
+    "field": "until",
+    "stored": null,
+    "page says": "The cited IVAM news item names her only last in the list of earlier directors ('després de Tomás Llorens ... José Miguel G. Cortés i Nuria Enguita') with no date, so it does not show she left on or after 1 January 2023. The Generalitat's PresOberta record for 'NURIA ENGUITA MAYO, Instituto Valenciano de Arte Moderno (IVAM)', linked from IVAM's transparency page as 'Directora Nuria Enguita', carries her official agenda as director to 22 March 2024. No page opened states the February 2024 resignation, so left_because stays null.",
+    "fix": "2024"
+   },
+   {
+    "person": "Nuria Enguita",
+    "field": "title",
+    "stored": "directora de l'IVAM",
+    "page says": "IVAM transparency page, Retribucions del personal directiu / ADAC: 'Directora Nuria Enguita'; the news item does not give her a title in those words.",
+    "fix": "Directora"
+   }
+  ],
+  "corrected": {
+   "id": "ivam-institut-valencia-d-art-modern",
+   "people": [
+    {
+     "name": "Blanca de la Torre",
+     "role": "director",
+     "title": "Directora",
+     "current": true,
+     "since": "2025-04",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://ivam.es/equip-del-museu/",
+      "https://ivam.es/noticias/el-pleno-del-consell-nombra-a-blanca-de-la-torre-como-nueva-directora-del-ivam/"
+     ]
+    },
+    {
+     "name": "Nuria Enguita",
+     "role": "director",
+     "title": "Directora",
+     "current": false,
+     "since": null,
+     "until": "2024",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://ivam.es/noticias/el-pleno-del-consell-nombra-a-blanca-de-la-torre-como-nueva-directora-del-ivam/",
+      "https://ivam.es/ivam-obert-portal-de-transparencia-4/informacio-corporativa/",
+      "https://presoberta.gva.es/presoberta/ficha/cargo/7319?theme=orange&width=full&lang=es"
+     ]
+    }
+   ],
+   "basis": "The IVAM team page lists Blanca de la Torre as director; an IVAM news item of 4 April 2025 reports her appointment effective 1 April 2025 and names Nuria Enguita as the previous director, whose official agenda as director on the Generalitat's PresOberta record runs to March 2024."
+  }
+ },
+ {
+  "id": "artium-museoa-vitoria-gasteiz",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "colomboscope-colombo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-modern-and-contemporary-art-sri-lanka-colombo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "theertha-artists-collective-colombo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-muse-multi-studios",
+  "verdict": "ok",
+  "faults": []
+ }
+]

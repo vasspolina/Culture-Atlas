@@ -1,0 +1,138 @@
+[
+ {
+  "id": "south-london-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "studio-voltaire",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tate-modern",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "va-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wellcome-collection",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "whitechapel-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "home-manchester",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "manchester-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-whitworth",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-crab-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Ned Suesat-Williams",
+    "field": "since",
+    "stored": null,
+    "page says": "Companies House officers for Crab Museum CIC (12227892): '3 officers / 0 resignations', all three active directors (Chase John Coley, Rachada Edmund Suesat-Williams, Satakalet Bertie Suesat-Williams) 'Appointed on 26 September 2019'. The team page names Ned as a Director beside Bertie and Chase, so whichever CH entry is Ned (by elimination Rachada Edmund), his appointment is September 2019; the Companies House page should be cited for him as for the other two.",
+    "fix": "2019-09"
+   }
+  ],
+  "corrected": {
+   "id": "the-crab-museum",
+   "people": [
+    {
+     "name": "Ned Suesat-Williams",
+     "role": "co-director",
+     "title": "Director",
+     "current": true,
+     "since": "2019-09",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.crabmuseum.org/theteam",
+      "https://find-and-update.company-information.service.gov.uk/company/12227892/officers"
+     ]
+    },
+    {
+     "name": "Bertie Suesat-Williams",
+     "role": "co-director",
+     "title": "Director",
+     "current": true,
+     "since": "2019-09",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.crabmuseum.org/theteam",
+      "https://find-and-update.company-information.service.gov.uk/company/12227892/officers"
+     ]
+    },
+    {
+     "name": "Chase Coley",
+     "role": "co-director",
+     "title": "Director",
+     "current": true,
+     "since": "2019-09",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.crabmuseum.org/theteam",
+      "https://find-and-update.company-information.service.gov.uk/company/12227892/officers"
+     ]
+    }
+   ],
+   "basis": "The museum's team page names the three as directors, and Companies House lists them as the directors of Crab Museum CIC appointed on 26 September 2019."
+  }
+ },
+ {
+  "id": "turner-contemporary-margate",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mima",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mk-gallery-milton-keynes",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "78-derngate",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "new-art-exchange-nottingham",
+  "verdict": "ok",
+  "faults": []
+ }
+]
