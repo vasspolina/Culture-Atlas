@@ -1,6 +1,6 @@
 // Phone layout after a maps app (user, 3 Nov 2026: "make the cultural atlas work like the Google app on mobile").
 // The globe fills the screen; the search and chat box floats over it at the bottom (user, 3 Nov 2026: "add a chat at the
-// bottom not on top") with the suggested questions as a row of chips over it; Layers is a round button at the top right that opens its menu as a sheet; a space's record is a sheet with three heights
+// bottom not on top") with the suggested questions as a row of chips over it; a row of filters sits at the top, one at a time; Layers is a round button under it at the right that opens its menu as a sheet; a space's record is a sheet with three heights
 // (peek, half, full) that follows the finger and snaps to the nearest one, and a pull down from peek closes it.
 // Only phones (under 768px) are touched. The look itself is in assets/atlas.css, "PHONE: MAPS APP".
 (function () {
@@ -231,10 +231,35 @@
     }
 
     // ---- The chat's header, as the record sheet's: a title, the same menu, and one cross ----------------------------
+    // The chat's box is one line too, as the map's: its long prompt wrapped to two lines in the pill (user, 7 Nov 2026,
+    // the phone's look after the foundry's site). The full prompt stays as the box's name. Only on a phone: the desktop's panel keeps it.
+    const work = $('workInput');
+    if (work && PHONE()) {
+      work.setAttribute('aria-label', work.getAttribute('placeholder') || 'Ask about a space, its funders or controversies');
+      work.setAttribute('placeholder', 'Ask about a space or a funder');
+    }
+
     const chatHead = $('phoneChatHead');
     if (chatHead) {
+      // Chat and Details are tabs (user, 9 Nov 2026: "chat details into tab"), as the Claude app sets Chat and Preview over
+      // an artifact: a strip at the left of the head, the open one underlined, the ⋮ menu and the cross at the right. In
+      // the chat the Chat tab is the open one and does nothing; Details opens the record as a page of its own, whose own
+      // strip (below) has Details open and Chat as the way back. Details is there only once a space is known.
       const title = chatHead.querySelector('.flex-1');
-      if (title) { title.classList.add('gm-chat-title'); title.textContent = 'Chat'; }
+      const strip = document.createElement('div');
+      strip.className = 'gm-head-tabs';
+      strip.setAttribute('role', 'tablist');
+      strip.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      const chatTab = document.createElement('button');
+      chatTab.type = 'button';
+      chatTab.id = 'gmChatTab';
+      chatTab.setAttribute('role', 'tab');
+      chatTab.setAttribute('aria-selected', 'true');
+      chatTab.textContent = 'Chat';
+      strip.appendChild(chatTab);
+      const det = $('phoneChatDetailsBtn');
+      if (det) { det.setAttribute('role', 'tab'); det.setAttribute('aria-selected', 'false'); strip.appendChild(det); }
+      if (title) title.replaceWith(strip); else chatHead.insertBefore(strip, chatHead.firstElementChild ? chatHead.firstElementChild.nextSibling : null);
       const b = document.createElement('button');
       b.type = 'button';
       b.id = 'gmChatMenuBtn';
@@ -246,8 +271,6 @@
       b.addEventListener('click', () => { if (window.atlasToggleMenu) window.atlasToggleMenu(b); });
       const close = $('phoneChatCloseBtn');
       chatHead.insertBefore(b, close || null);
-      // Details is a toggle (user, 6 Nov 2026): it opens the record, and the record's own Details button, pressed, closes it.
-      $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
     }
 
     // ---- One of each in the chat (user, 6 Nov 2026: "make chat window not repeating buttons") ----
@@ -292,6 +315,67 @@
       icon.setAttribute('aria-hidden', 'true');
       icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3 2.5 8.5 12 14l9.5-5.5z"/><path d="m4.6 12.3-2.1 1.2L12 19l9.5-5.5-2.1-1.2"/></svg>';
       layersBtn.insertBefore(icon, layersBtn.firstChild);
+    }
+
+    // The sheet's scrim is #layersControl's own ::before (atlas.css, PHONE: LAYERS SHEET AND COLOUR KEY), so a tap on it lands
+    // on the control itself, which the menu's own outside-tap rule counts as inside: it closes the sheet here instead.
+    const layersControl = $('layersControl');
+    layersControl?.addEventListener('click', (e) => {
+      if (e.target === layersControl && PHONE()) layersControl.querySelector('.layers-close')?.click();
+    });
+
+    // ---- Colour key: in the Layers sheet, not on the map (user, 9 Nov 2026: "rethink the color key") --------------
+    // On a phone the key is the first section of the Layers sheet, whose title already says legend: the map carries only the
+    // Layers and location buttons, as a maps app does, and what the colours mean is read where the layers are chosen. Open on
+    // the map by default it had covered it (at 320px wide it left 31px of map between its foot and the composer), and folded
+    // to a button of three dots, earlier the same day, it was a mark that said nothing. The desktop key stays on the map: the
+    // section goes back to its place when the window grows past a phone.
+    const key = $('mapColourKey'), layersPanel = $('layersPanel');
+    if (key && layersPanel) {
+      const home = key.parentNode, after = key.nextSibling;
+      const head = layersPanel.querySelector('.layers-header');
+      const place = () => {
+        const inPanel = key.parentNode === layersPanel;
+        if (PHONE() && !inPanel) { key.classList.add('layers-section'); if (head) head.insertAdjacentElement('afterend', key); else layersPanel.prepend(key); }
+        else if (!PHONE() && inPanel) { key.classList.remove('layers-section'); home.insertBefore(key, after); }
+      };
+      place();
+      window.addEventListener('resize', place);
+    }
+
+    // ---- The filter row at the top of the map --------------------------------------------------------------------
+    // All spaces, then one chip per filter from the Layers menu, one at a time (user, 7 Nov 2026: "make filters above
+    // instead of layers, so if clicked it only shows what clicked"). assets/layers.js builds the row and owns the rule.
+    // The look is in assets/atlas.css under PHONE: MAPS APP (#gmChips); it shows on the map screen only.
+    if (!$('gmChips')) {
+      const row = document.createElement('div');
+      row.id = 'gmChips';
+      body.appendChild(row);
+      // Clean, Flagged and Unverified follow the other filters, as on the desktop (user, 11 Nov 2026: "filters and chat need
+      // to match desktop version"). They drive the grade filter in assets/layers.js; one at a time, pressed again for all.
+      const GRADES = [['A', 'Clean'], ['B', 'Flagged'], ['U', 'Unverified']];
+      const gradeChips = () => {
+        if (typeof window.atlasSetGradeFilter !== 'function' || !row.querySelector('button')) return;
+        if (!row.querySelector('button[data-grade]')) GRADES.forEach(([g, name]) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'gm-filter-chip sh-grade-chip';
+          b.dataset.grade = g;
+          b.textContent = name;
+          b.title = `Show only ${name.toLowerCase()} spaces; press again to show every space`;
+          b.addEventListener('click', () => window.atlasSetGradeFilter(window.atlasGradeFilter() === g ? null : g));
+          row.appendChild(b);
+        });
+        const on = window.atlasGradeFilter();
+        row.querySelectorAll('button[data-grade]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.grade === on)));
+      };
+      // After assets/layers.js has repainted the row, which marks every chip without a layer as "All".
+      document.addEventListener('atlas:filter', () => setTimeout(gradeChips));
+      const build = () => typeof window.atlasFilterChips === 'function' && window.atlasFilterChips(row, 'gm-filter-chip') && (gradeChips(), true);
+      if (!build()) {
+        const t = setInterval(() => { if (build()) clearInterval(t); }, 500);
+        setTimeout(() => clearInterval(t), 20000);
+      }
     }
 
     // ---- Record sheet: peek, half and full, like a maps app's place sheet -----------------------------------------
@@ -345,8 +429,11 @@
           const head = panel && (panel.querySelector('.record-head') || panel.querySelector('h2'));
           end = bottomOf(head);
         } else {
-          // The description now sits in the title block, above the actions, so the actions' end is the end of both.
-          end = bottomOf(actions) || bottomOf(titleBlock);
+          // The description sits in the title block, above the actions, and the tabs (Overview, Funding, Record, Sources) under
+          // them: peek ends under the tabs, whole, so the row is never cut in half at the fold and can be tapped from peek
+          // (9 Nov 2026); without tabs, under the actions or the title block.
+          const tabs = sheet.querySelector('.gm-tabs');
+          end = (tabs && !tabs.hidden ? bottomOf(tabs) : 0) || bottomOf(actions) || bottomOf(titleBlock);
         }
         // The iPhone's home strip covers the page's bottom edge (the page runs under it, viewport-fit=cover), so peek leaves
         // room for it, or the actions sat under it (user, 4 Nov 2026: text overlapped at the bottom when a space was opened).
@@ -401,18 +488,23 @@
       // Dragging. Below full the whole sheet moves with the finger; at full the record scrolls, and only a pull down
       // from its top moves the sheet. On release it snaps to the nearest height, a flick goes one further, and a pull
       // well below peek closes it.
-      let y0 = null, h0 = 0, t0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
+      // A drag may start anywhere but a text field (12 Nov 2026). It used to skip buttons and links, and below full the sheet
+      // does not scroll, so a swipe that began on the actions, the tabs, the Overview rows or a city's list of spaces moved
+      // nothing at all. A tap is still a tap: only a move past 6px becomes a drag, and a drag is never read as a click.
+      // A sideways move is left to the rows that scroll sideways (the actions, the tabs).
+      let x0 = 0, y0 = null, h0 = 0, t0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
       sheet.addEventListener('touchstart', (e) => {
         // Opened from the chat, the record is a page of its own at full height: it only scrolls, it is never dragged.
         if (!PHONE() || e.touches.length !== 1 || root.classList.contains('gm-from-chat')) { y0 = null; return; }
-        if (e.target.closest('button, a, input, textarea, select, summary, label') && !(chrome && chrome.contains(e.target) && !e.target.closest('#close-sheet-btn'))) { y0 = null; return; }
-        y0 = lastY = e.touches[0].clientY; t0 = lastT = Date.now(); h0 = sheet.offsetHeight; vel = 0; dragging = false;
+        if (e.target.closest('input, textarea, select, [contenteditable="true"]')) { y0 = null; return; }
+        x0 = e.touches[0].clientX; y0 = lastY = e.touches[0].clientY; t0 = lastT = Date.now(); h0 = sheet.offsetHeight; vel = 0; dragging = false;
       }, { passive: true });
       sheet.addEventListener('touchmove', (e) => {
         if (y0 === null) return;
         const y = e.touches[0].clientY, d = y - y0, now = Date.now();
         if (!dragging) {
-          if (Math.abs(d) < 6) return;
+          if (Math.abs(d) < 6) { if (Math.abs(e.touches[0].clientX - x0) >= 6) y0 = null; return; }
+          if (Math.abs(e.touches[0].clientX - x0) > Math.abs(d)) { y0 = null; return; }
           const inChrome = chrome && chrome.contains(e.target);
           // At full, the record scrolls unless the pull starts from the grabber or from the top of the record going down.
           if (detent === 'full' && !inChrome && (d < 0 || sheet.scrollTop > 0)) { y0 = null; return; }
@@ -446,21 +538,21 @@
       sheet.addEventListener('touchend', end, { passive: true });
       sheet.addEventListener('touchcancel', end, { passive: true });
 
-      // ---- Details from the chat, as the Claude app opens an artifact (user, 6 Nov 2026: "make details button on chat window
-      // a toggle", "function more like Claude with details toggle and back button") ----
-      // The chat's Details button opens the record as a page of its own: full height, scrolling, never dragged, with a back
-      // button to the chat at the top left and the same Details button, pressed, at the top right. Either one goes back to the
-      // conversation where it was left, scrolled where it was. The sheet's grabber and cross and its Ask in chat button are
-      // put away while it is open, so no control is on screen twice.
+      // ---- Details from the chat, as the Claude app opens an artifact (user, 6 Nov 2026: "function more like Claude with
+      // details toggle and back button"; 9 Nov 2026: "chat details into tab") ----
+      // The chat's Details tab opens the record as a page of its own: full height, scrolling, never dragged, with the same
+      // strip of two tabs at its top as the chat's head, Chat and Details, Details now the open one. Chat goes back to the
+      // conversation where it was left, scrolled where it was. The sheet's grabber and cross are put away while it is open,
+      // so no control is on screen twice; Ask in chat stays, pressed, and is a second way back (see the toggles below).
       const fromChatBar = document.createElement('div');
       fromChatBar.className = 'gm-from-chat-bar';
-      fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" aria-label="Back to the chat">'
-        + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'
-        + '<span>Chat</span></button>'
-        + '<button type="button" id="gmDetailsToggleBtn" aria-pressed="true" aria-label="Space details">Details</button>';
+      fromChatBar.setAttribute('role', 'tablist');
+      fromChatBar.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" role="tab" aria-selected="false">Chat</button>'
+        + '<button type="button" id="gmDetailsToggleBtn" role="tab" aria-selected="true">Details</button>';
       fromChatBar.hidden = true;
       if (chrome) chrome.appendChild(fromChatBar);
-      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn, $('dossier-sheet-ask-btn')].filter(Boolean);
+      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn].filter(Boolean);
       let chatScrollTop = 0;
       function markFromChat() {
         if (!PHONE()) return;
@@ -468,7 +560,7 @@
         chatScrollTop = sc ? sc.scrollTop : 0;
         root.classList.add('gm-from-chat');
         fromChatBar.hidden = false;
-        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'true');
+        $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'true');
         // Inline and !important: the sheet's controls are drawn by rules that are themselves !important (atlas.css).
         putAway().forEach((el) => el.style.setProperty('display', 'none', 'important'));
       }
@@ -476,7 +568,7 @@
         if (!root.classList.contains('gm-from-chat')) return;
         root.classList.remove('gm-from-chat');
         fromChatBar.hidden = true;
-        $('phoneChatDetailsBtn')?.setAttribute('aria-pressed', 'false');
+        $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'false');
         putAway().forEach((el) => el.style.removeProperty('display'));
       }
       function backToChat() {
@@ -497,8 +589,7 @@
       }
       window.atlasMarkDetailsFromChat = markFromChat;
       window.atlasDetailsBackToChat = backToChat;
-      $('gmDetailsBackBtn')?.addEventListener('click', backToChat);
-      $('gmDetailsToggleBtn')?.addEventListener('click', backToChat);
+      $('gmDetailsBackBtn')?.addEventListener('click', backToChat);   // the open tab, Details, does nothing
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && root.classList.contains('gm-from-chat') && !sheet.classList.contains('hidden')) { e.preventDefault(); backToChat(); }
       });
@@ -506,29 +597,48 @@
       new MutationObserver(() => { if (sheet.classList.contains('hidden')) clearFromChat(); })
         .observe(sheet, { attributes: true, attributeFilter: ['class'] });
       window.addEventListener('resize', () => { if (!PHONE()) clearFromChat(); });
+
+      // ---- The record's actions as toggles (user, 7 Nov 2026: "make buttons toggles") ----
+      // Ask in chat is pressed while the record is open over the chat, and pressing it then goes back to the chat. Money map is
+      // pressed while the money layers (the funders and their ties) are on, and pressing it then turns them off; off, it opens
+      // the money map as before. The record's own click handlers run only when a button is not pressed: this listener sits on
+      // the sheet in the capture phase, so it is reached first.
+      const askBtn = $('dossier-sheet-ask-btn'), moneyBtn = $('dossier-sheet-moneymap-btn');
+      // A layer box holds several keys (the Funding box is money and ties), so the layers' own API says which box is which.
+      const api = () => window.atlasLayersAPI || null;
+      const layerBox = (k) => { const a = api(); return a && a.boxes ? a.boxes().find((i) => a.keysOfBox(i).includes(k)) : null; };
+      const moneyOn = () => { const a = api(); return !!(a && a.L && a.L.money); };
+      function syncToggles() {
+        if (!PHONE()) return;
+        if (moneyBtn) moneyBtn.setAttribute('aria-pressed', String(moneyOn()));
+        if (askBtn) askBtn.setAttribute('aria-pressed', String(root.classList.contains('gm-from-chat')));
+      }
+      sheet.addEventListener('click', (e) => {
+        if (!PHONE()) return;
+        const t = e.target.closest('button');
+        if (!t || t.getAttribute('aria-pressed') !== 'true') return;
+        if (t === askBtn) { e.preventDefault(); e.stopPropagation(); backToChat(); }
+        if (t === moneyBtn) {
+          e.preventDefault(); e.stopPropagation();
+          ['money', 'ties'].forEach((k) => { const b = layerBox(k); if (b && b.checked) { b.checked = false; b.dispatchEvent(new Event('change', { bubbles: true })); } });
+          syncToggles();
+        }
+      }, true);
+      document.getElementById('layersPanel')?.addEventListener('change', syncToggles);
+      new MutationObserver(syncToggles).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+      syncToggles();
     }
 
     // ---- The record as a maps app's place card (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ----
-    // Under the name, a rating line: the funding grade as its letter in a dot of its colour, where a place card has stars.
-    // The actions are pills with icons, the first one filled. Then tabs (Overview, Funding, Record, Sources) with the
-    // open one underlined, and on Overview the visiting facts as rows with an icon each: address, hours, admission, website.
+    // Under the name, a rating line: the funding grade as the words "Grade B" in its colour, where a place card has stars.
+    // The actions are pills of words, the first one filled. Then tabs (Overview, Funding, Record, Sources) with the
+    // open one underlined, and on Overview the visiting facts as rows: address, hours, admission, website. No icons on the
+    // pills or the rows, and no Website pill while the website is one of the rows (user, 7 Nov 2026: "delete slop").
     // The record's own blocks are moved into the tabs, never copied, so everything the sheet showed is still in it.
     function buildPlaceCard(sheet, titleBlock, actions) {
       const pane = $('dossier-sheet-verified-pane');
       const name = $('dossier-sheet-name');
       if (!pane || !titleBlock || !name) return;
-      const ICON = {
-        'dossier-sheet-ask-btn': '<path d="M4 5h16v11H9l-5 4z"/>',
-        'dossier-sheet-audit-btn': '<path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/>',
-        'dossier-sheet-plan-btn': '<rect x="4" y="5" width="16" height="15"/><path d="M4 10h16M9 3v4M15 3v4"/>',
-        'dossier-sheet-moneymap-btn': '<circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="20" r="2"/><path d="M10.2 10.4 6.5 7.3M13.8 10.4l3.7-3.1M12 14.5V18"/>',
-        'dossier-sheet-link-web': '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/>',
-      };
-      const svg = (body) => '<svg class="gm-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + body + '</svg>';
-      if (actions) actions.querySelectorAll('.record-action').forEach((a) => {
-        if (ICON[a.id] && !a.querySelector('.gm-ico')) a.insertAdjacentHTML('afterbegin', svg(ICON[a.id]));
-      });
-
       // Rating line, between the name and the place.
       const rating = document.createElement('p');
       rating.className = 'gm-rating';
@@ -638,15 +748,14 @@
       }
 
       const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-      const ROW_ICON = {
-        place: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
-        hours: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
-        ticket: '<path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="1.5 2"/>',
-        web: ICON['dossier-sheet-link-web'],
-        grade: '<path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/>',
-      };
       function fill() {
-        const inst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        // The space the sheet is about is the one its name says: the chat writes a space into the sheet without selecting it,
+        // and the selected space is then another one (9 Nov 2026: the sheet said MoMA over ARoS's grade and sources). The
+        // selected space is the fallback, for a sheet whose name is not a space's (a funder's record).
+        const sel = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
+        const nameText = name.textContent.trim();
+        const all = window.ALL_INSTITUTIONS || (typeof ALL_INSTITUTIONS !== 'undefined' ? ALL_INSTITUTIONS : []);
+        const inst = (sel && sel.name === nameText ? sel : null) || (nameText && all.find((i) => i.name === nameText)) || sel;
         if (!inst) return;
         // Rating line.
         let g = null;
@@ -654,25 +763,41 @@
         let status = '';
         try { status = typeof tierName === 'function' ? tierName(inst) : ''; } catch (_) { status = ''; }
         if (g) {
-          rating.innerHTML = '<span class="gm-grade-dot" style="--gm-dot:' + esc(g.col) + '" aria-hidden="true">' + esc(g.letter) + '</span>'
-            // One line, as a rating is: the label up to its first clause ("Funders listed; no funders flagged" reads
-            // "Funders listed"), and the whole label is the line's title.
-            + '<span class="gm-grade-text" title="' + esc(g.label) + '">Grade ' + esc(g.letter) + ' · ' + esc(String(g.label).split(/;|,| or /)[0].trim()) + '</span>';
+          // The grade as Google Maps writes a place's standing ("Open" in green, "Closed" in red): the words
+          // "Grade F" in the grade's colour, and nothing after them. No letter in a circle (user, 7 Nov 2026: "Don't do F in
+          // circles on mobile. Just say grade F"), and no phrase from the grade's label after a dot ("One flagged funder":
+          // user, 9 Nov 2026, "do not add phrases like 1 flagged funder, this is slop"). What the grade means is the i
+          // button's panel beside it.
+          rating.innerHTML = '<span class="gm-grade-text">'
+            + '<span class="gm-grade-word" data-grade="' + esc(g.letter) + '">Grade ' + esc(g.letter) + '</span></span>';
         } else {
           rating.innerHTML = status ? '<span class="gm-grade-text">' + esc(status) + '</span>' : '';
         }
+        // The i button on the rating line opens how grades work, this space's grade marked (user, 6 Nov 2026).
+        const parts = typeof window.atlasGradeInfoParts === 'function' && rating.innerHTML ? window.atlasGradeInfoParts(inst) : null;
+        const oldPanel = rating.nextElementSibling && rating.nextElementSibling.classList.contains('grade-info') ? rating.nextElementSibling : null;
+        if (oldPanel) oldPanel.remove();
+        if (parts) { rating.insertAdjacentHTML('beforeend', parts.btn); rating.insertAdjacentHTML('afterend', parts.panel); }
         rating.hidden = !rating.innerHTML;
         // Visiting rows.
         let web = '';
         try { web = typeof getValidWebUrl === 'function' ? getValidWebUrl(inst) : (inst.website || ''); } catch (_) { web = inst.website || ''; }
-        const place = inst.address || [inst.location || inst.city, inst.country].filter(Boolean).join(', ');
+        // The address row is the street address only: without one it would say the place line again (and "Windhoek, Namibia,
+        // Namibia", since the location already names the country). And when the record's overview opens with the street itself
+        // ("Natural history museum at 200 Central Park West in Theodore Roosevelt Park ..."), the row would say it twice over.
+        const street = String(inst.address || '').split(',')[0].trim();
+        const overview = (((inst.details || {}).overview) || []).slice(0, 2).join(' ');
+        const place = street.length > 4 && overview.includes(street) ? '' : (inst.address || '');
         const rows = [
           ['place', place],
           ['hours', inst.opening_hours],
           ['ticket', inst.admission_fee || inst.admission_policy],
           ['web', web ? '<a href="' + esc(web) + '" target="_blank" rel="noopener noreferrer">' + esc(web.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')) + '</a>' : '', true],
         ].filter((r) => r[1]);
-        const rowsHtml = rows.map(([k, v, html]) => '<li>' + svg(ROW_ICON[k]) + '<span>' + (html ? v : esc(v)) + '</span></li>').join('');
+        const rowsHtml = rows.map(([k, v, html]) => '<li><span>' + (html ? v : esc(v)) + '</span></li>').join('');
+        // The website is one of the rows, so the Website pill would say it twice.
+        const webBtn = $('dossier-sheet-link-web');
+        if (webBtn) webBtn.toggleAttribute('data-gm-off', !!web);
         // Only when it differs (against what was last written: the browser serializes it back differently), since writing
         // the rows is a change in the pane, which this function is listening to.
         if (info.dataset.src !== rowsHtml) { info.dataset.src = rowsHtml; info.innerHTML = rowsHtml; }
@@ -684,7 +809,11 @@
         ['dossier-sheet-funding', 'dossier-sheet-record', 'dossier-sheet-sources'].forEach((id) => {
           const el = $(id); if (el && el.hasAttribute('data-gm-dup') !== hasFull) el.toggleAttribute('data-gm-dup', hasFull);
         });
-        const inFull = (t) => !!full.querySelector('[data-tab="' + t + '"]');
+        // A tab is offered only when something can be read under it: an element tagged for it with words or a picture in it. The
+        // reviews list is tagged Record and is empty until a place has approved reviews, so a record with nothing else under
+        // Record offered an empty tab (user, 9 Nov 2026, Hamhung Grand Theatre: "Slop"). When reviews arrive the pane changes
+        // and the tabs are filled again, so the tab appears then.
+        const inFull = (t) => [...full.querySelectorAll('[data-tab="' + t + '"]')].some((el) => el.textContent.trim().length > 0 || el.querySelector('img, svg, figure, video'));
         // A tab with nothing in it is not offered; the open one falls back to Overview.
         const has = hasFull
           ? { overview: true, funding: inFull('funding'), record: inFull('record'), sources: inFull('sources') }
@@ -977,11 +1106,13 @@
         strip.classList.toggle('is-alert', !!alerts.length);
         // An alert now is the top story (user, 4 Nov 2026: "make alert to be a top story"): the strip keeps its name, takes the
         // alert's colour and headline, and says the report is an alert, and how many more there are.
-        const label = 'Top story';
+        // The panel is called Latest (user, 12 Nov 2026, picked from a list of names; Recent news since 11 Nov 2026), and so is
+        // the strip that opens it.
+        const label = 'Latest';
         const more = alerts.length > 1 ? ' · ' + (alerts.length - 1) + ' more alert' + (alerts.length > 2 ? 's' : '') : '';
         // No "Alert" word on the strip either (user, 5 Nov 2026): the meta line is the space, when, and how many more.
         const meta = top.inst.name + ' · ' + ago(top.when) + more;
-        // No badge: the strip is its headline and meta line only (user, 5 Nov 2026: "delete icon"); its aria-label still says "Top story".
+        // No badge: the strip is its headline and meta line only (user, 5 Nov 2026: "delete icon"); its aria-label still says "Latest".
         strip.innerHTML = '<span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
         strip.setAttribute('aria-label', label + (alerts.length ? ', an alert now' : '') + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + more + '. Open the latest reports');
       }
@@ -1075,8 +1206,6 @@
         const leakDated = x.type === 'leak' && x.dated ? monthsText(x.dated) : '';
         const said = saidRest(x);
         const facts = '<dl class="ts-rows">'
-          // The headline is plain text (user, 5 Nov 2026); the space's name is the one way from a report to its place on the map.
-          + row('Space', '<button type="button" class="gm-open ts-space" data-i="' + i + '">' + esc(x.inst.name) + '</button>')
           + row('Place', esc(placeOf(x.inst)))
           + row('Status', esc(STATUS[x.status] || ''))
           + row({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported', esc(when))
@@ -1087,7 +1216,11 @@
           + (x.checked ? row('Links checked', esc(dateText(x.checked))) : '')
           + row(n === 1 ? 'Link' : 'Links', '<a href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + n + (n === 1 ? ' source' : ' sources') + '</a>')
           + '</dl>';
+        // Each article opens with a title, the space's name on a stone band (user, 11 Nov 2026: "add titles to top story
+        // articles and color background to the titles"). The name is the way from a report to its place on the map, so the
+        // Space line in the facts is gone and the name is not said twice.
         return '<article class="gm-story ts-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">'
+          + '<p class="ts-name"><button type="button" class="gm-open ts-space" data-i="' + i + '">' + esc(x.inst.name) + '</button></p>'
           + '<p class="ts-label">' + esc((alert ? 'Alert · ' : '') + (KIND[x.kind] || 'Report')) + '</p>'
           + '<h3 class="ts-headline">' + esc(x.head) + '</h3>'
           + (said ? '<p class="ts-prose">' + esc(said) + '</p>' : '')
@@ -1119,7 +1252,6 @@
         const world = take(list.filter((x) => x.type === 'gossip' || x.type === 'case')).slice(0, 30);
         const posts = take(list.filter((x) => x.type === 'account')).slice(0, 15);
         const docs = take(list.filter((x) => x.type === 'leak')).slice(0, 10);
-        const month = list.filter((x) => { const p = parse(x.when); return p && Date.now() - p.d.getTime() < 30 * 864e5; }).length;
         // A section is a plain title on a 4px ink rule with its count beside it, the reports under it.
         const sec = (title, meta, arr, alert, note) => arr.length ? '<section class="ts-sec"><h2 class="ts-sec-title"><span>' + title + '</span>' + (meta ? '<span class="ts-sec-meta">' + meta + '</span>' : '') + '</h2>'
           + (note ? '<p class="ts-prose ts-note">' + note + '</p>' : '') + arr.map((x) => card(x, false, alert)).join('') + '</section>' : '';
@@ -1130,16 +1262,21 @@
             : 'Reports on record as confirmed or resolved, and documented cases. Turn on Gossip mode to include talk.')
           + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.';
         const alertRule = 'An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.';
+        // The close is the record's big thin cross, two 1.1px lines on a paper square with no circle (user, 7 Nov 2026: "make proper
+        // cross like big one with no outline"). It sits before the head in a sticky holder of no height, so the head scrolls away with
+        // the reports and the cross alone stays at the top right (user, 7 Nov 2026: "keep cross on scroll").
         feed.innerHTML = '<div class="ts">'
-          + '<header class="gm-feed-head ts-bar"><button type="button" class="ts-grab" aria-label="' + grabLabel() + '"></button><h2 id="gmFeedTitle" class="ts-title">Top story</h2>'
+          + '<div class="ts-pin"><button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>'
+          + '<header class="gm-feed-head ts-bar"><button type="button" class="ts-grab" aria-label="' + grabLabel() + '"></button><h2 id="gmFeedTitle" class="ts-title">Latest</h2>'
           + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
-          + '<button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></header>'
-          + '<p class="ts-live"><span class="gm-feed-checked">' + liveLine() + '</span></p>'
+          + '</header>'
           + (top ? card(top, true, topIsAlert) : '')
-          + sec(topIsAlert ? 'More stories' : 'Alerts now', alertList.length + ' active', alertList, true)
+          + sec(topIsAlert ? 'More stories' : 'Alerts now', '', alertList, true)
           + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
-          + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', month ? month + ' in the past 30 days' : 'Newest first', world, false)
-          + sec('From staff and visitors', 'User posts', posts, false, 'Posts by staff and visitors on review sites and Reddit, quoted as posted. User-generated: one person’s experience each, not checked as fact.')
+          // No count beside Latest (user, 7 Nov 2026: "delete 1 in the past 30 days").
+          // Worldwide in every case now that the panel itself is called Latest (12 Nov 2026); it was Latest after alerts or Near you.
+          + sec('Worldwide', '', world, false)
+          + sec('From staff and visitors', 'User posts', posts, false, 'Quoted unedited from review sites and Reddit, and not checked.')
           + sec('From leaked documents', docs.length + ' on record', docs, false)
           + '<section class="ts-sec"><h2 class="ts-sec-title"><span>About these reports</span></h2>'
           + (!list.length ? '<p class="ts-prose ts-note">No dated reports on record yet.</p>' : '')
@@ -1147,12 +1284,8 @@
           + (alertList.length || topIsAlert ? '<p class="ts-prose ts-note">' + alertRule + '</p>' : '')
           + '</section></div>';
       }
-      function liveLine() {
-        if (checkFailed) return 'Could not check for new reports just now. Showing what was loaded.';
-        const n = live ? live.newest : (list[0] && list[0].when);
-        return (checkedAt ? 'Checked for new reports ' + since(checkedAt) : 'Checking for new reports…') + (n ? ' · newest on record ' + esc(dateText(n)) : '');
-      }
-      setInterval(() => { const el = feed.querySelector('.gm-feed-checked'); if (el && !feed.hidden) el.innerHTML = liveLine(); }, 5000);
+      // The line that said when the reports were last checked and the newest date on record is gone (user, 7 Nov 2026:
+      // "delete this text Checked for new reports 41 s ago · newest on record 28 Oct 2026"); the check itself still runs.
 
       // Map marks for the alerts: a ring at each space with an alert now, which opens the alert.
       const marks = new Map();
@@ -1199,6 +1332,9 @@
         const alerts = list.filter(isAlert);
         paintStrip(list, alerts);
         paintMarks(alerts);
+        // The reports are also listed in the desktop sheet's index column (assets/desktop-maps.js): it reads them from here.
+        window.atlasReports = list.map((x) => ({ key: x.key, head: x.head, space: x.inst && x.inst.name, when: ago(x.when), alert: isAlert(x) }));
+        document.dispatchEvent(new CustomEvent('atlas:reports'));
         return alerts;
       }
       // New alerts since the visitor last looked: said on the page, and as a notification if they asked for one. The first
@@ -1241,7 +1377,7 @@
                 else if (added.length) {
                   const names = [...new Set(added.map((y) => y.inst.name))];
                   const shown = names.slice(0, 2).join(', ') + (names.length > 2 ? ' and ' + (names.length - 2) + ' more' : '');
-                  say({ tone: 'report', label: ['New reports'], when: 'now', name: added.length + ' new reports', head: shown, meta: ['On the record', 'Open Top story to read them'] });
+                  say({ tone: 'report', label: ['New reports'], when: 'now', name: added.length + ' new reports', head: shown, meta: ['On the record', 'Open Latest to read them'] });
                 }
                 announce(alerts, false);
                 if (!feed.hidden) { const sc = feed.scrollTop; render(); feed.scrollTop = sc; }
@@ -1250,7 +1386,6 @@
             }
           }
         } catch (_) { checkFailed = true; }
-        const el = feed.querySelector('.gm-feed-checked'); if (el) el.innerHTML = liveLine();
       }
       setInterval(check, 60000);
       document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') check(); });
@@ -1404,7 +1539,7 @@
           else if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => { sh.lastChild.textContent = 'Link copied'; setTimeout(() => { sh.lastChild.textContent = 'Share'; }, 2000); }).catch(() => {});
           return;
         }
-        // Only the space's name in the Space line opens the space (user, 5 Nov 2026: "Headline stops being a link").
+        // Only the space's name, the article's title, opens the space (user, 5 Nov 2026: "Headline stops being a link").
         const go = e.target.closest('.gm-open');
         if (!go) return;
         const x = list[+go.dataset.i]; if (!x) return;
@@ -1420,17 +1555,19 @@
       });
       // Dragging the sheet (phone). Below full the whole sheet follows the finger; at full the reports scroll, and only a
       // pull down from their top, or a drag on the grabber, moves the sheet.
-      let y0 = null, h0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
+      // As on the record sheet, a drag may start on a headline, a space's name or Share as well (12 Nov 2026); a tap stays a tap.
+      let x0 = 0, y0 = null, h0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
       feed.addEventListener('touchstart', (e) => {
         if (!PHONE() || e.touches.length !== 1) { y0 = null; return; }
-        if (e.target.closest('a, button:not(.ts-grab)')) { y0 = null; return; }
-        y0 = lastY = e.touches[0].clientY; lastT = Date.now(); h0 = feed.offsetHeight; vel = 0; dragging = false;
+        if (e.target.closest('input, textarea, select, [contenteditable="true"]')) { y0 = null; return; }
+        x0 = e.touches[0].clientX; y0 = lastY = e.touches[0].clientY; lastT = Date.now(); h0 = feed.offsetHeight; vel = 0; dragging = false;
       }, { passive: true });
       feed.addEventListener('touchmove', (e) => {
         if (y0 === null) return;
         const y = e.touches[0].clientY, d = y - y0, now = Date.now();
         if (!dragging) {
-          if (Math.abs(d) < 6) return;
+          if (Math.abs(d) < 6) { if (Math.abs(e.touches[0].clientX - x0) >= 6) y0 = null; return; }
+          if (Math.abs(e.touches[0].clientX - x0) > Math.abs(d)) { y0 = null; return; }
           if (detent === 'full' && !e.target.closest('.ts-grab') && (d < 0 || feed.scrollTop > 0)) { y0 = null; return; }
           dragging = true;
           feed.classList.add('gm-still');

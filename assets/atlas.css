@@ -20,7 +20,7 @@ h1,h2,h3,h4,p{margin:0}
   --cobalt:#0045fc; --focus:var(--cobalt); --blue:#527fe6; --orange:#e79a3a; --brick:#a0705e; --navy:#223f85;
   --sage:#6f9486; --mustard:#c8b85a; --peri:#9bb6ff; --magenta:#ff3df0; --cyan:#9ae3e8; --peach:#eab0a0; --pink:#ff7eb6; --yellow:#ffd600;
   /* Gossip mode is Displaay's lime with black type; on the dark theme a dark green with the lime as its type (8.3:1) (user, 4 Nov 2026). */
-  --gossip:#e2f86c; --gossip-ink:#000; --gossip-text:#2f6b12;
+  --gossip:#cfcfba; /* beige, from the swatch the user sent (11 Nov 2026: "change now gossip mode"); was lime #e2f86c */ --gossip-ink:#000; --gossip-text:#2a6010; /* darkened from #2f6b12 so it clears 4.5:1 on the beige (4.78:1) */
   --sans:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --display:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
   --display-xl:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -291,7 +291,7 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 .provider-tab-btn[aria-pressed=true]{background:var(--cobalt);color:#fff}
 
 /* ---- map pins and labels (functional, restyled) ---- */
-.custom-inst-pin{cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .25s var(--ease)}
+.custom-inst-pin{cursor:pointer;position:absolute;display:flex;align-items:center;justify-content:center;user-select:none;transition:transform .25s var(--ease)}
 .custom-inst-pin:hover{transform:scale(1.12);z-index:9999!important}
 .pin-pulse-aura,.brand-city-dot-aura,.brand-city-dot-ping{display:none!important}
 .inst-pin-label{position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:5px;padding:0 14px;height:22px;background:#c6c6c6;color:#000;border:0;font:400 var(--fs-s)/22px var(--sans);white-space:nowrap;cursor:pointer;z-index:20;transition:opacity .25s var(--ease)}
@@ -753,7 +753,7 @@ body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 /* Gossip mode: the menu bar keeps its colours (yellow is for gossip alone); the Gossip mode button and the street map ground turn lime (dark green on the dark theme). */
 body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:var(--gossip-ink)}
 body.gossip-mode-active #topGossipBtn:hover,body.gossip-mode-active #mobileGossipBtn:hover{background:#000;color:#fff}
-body.gossip-mode-active #cityMapContainer{background:#e2f86c}
+body.gossip-mode-active #cityMapContainer{background:#cfcfba}
 /* In the street view the globe's own controls would sit behind the street-view bar and poke out at its ends. */
 body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
 body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
@@ -795,7 +795,6 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-count{text-align:right;white-space:normal;color:var(--row-dim);font:400 var(--fs-s)/1.25 var(--sans);letter-spacing:0;text-transform:none;font-variant-numeric:tabular-nums}
 #layersPanel .layers-count:empty{display:none}
 @media (max-width:640px){#layersPanel label{grid-template-columns:auto minmax(0,1fr) auto;row-gap:2px}#layersPanel .layer-name{white-space:normal}#layersPanel .layer-desc{grid-column:2/-1}}
-#layersPanel .layers-note{margin:0 0 8px;color:var(--row-dim);font:400 var(--fs-s)/1.4 var(--sans)}
 #layersPanel .layers-kinds{display:flex;flex-wrap:wrap;gap:4px}
 #layersPanel label.kind-chip{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;flex:1 1 150px}
 #layersPanel label.kind-chip .layer-name{white-space:nowrap}
@@ -843,21 +842,26 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .shape-dot{border-radius:50%}
 #layersPanel .layers-kinds .shape-ring,#layersPanel .layers-key .shape-ring{box-sizing:border-box;border-radius:50%;background:transparent!important;border:.8px solid var(--marker-color)}
 #layersPanel .shape-ring::after{display:none!important}
-:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#d4109f}
-/* The propaganda marks glow on the map; the key echoes it with a soft halo of the same pink (a deeper step on the light ground). */
-#layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(255,61,209,.55)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(212,16,159,.4)}
-/* The independent mark glows green on the map; the key echoes it (a deeper step on the light ground). */
-#layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(156,175,125,.6)}
-#layersPanel .shape-glow-cyan{box-shadow:0 0 6px 2px rgba(154,227,232,.6)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow-cyan{--marker-color:#1f8b93;box-shadow:0 0 6px 2px rgba(31,139,147,.45)}
-:root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#889e9a;box-shadow:0 0 6px 2px rgba(136,158,154,.5)}
+:root:not([data-theme="dark"]) #layersPanel .shape-ring{border-color:#df0050}
+/* Every flagged layer glows on the map (propaganda, right-wing funders, the Epstein files; user, 6 Nov 2026); the key echoes it
+   with a soft halo of the mark's colour, a deeper step on the light ground. Colours as COL and LINE_LIGHT in assets/layers.js. */
+#layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(255,95,160,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow{box-shadow:0 0 6px 2px rgba(223,0,80,.45)}
+#layersPanel .shape-glow-right{box-shadow:0 0 6px 2px rgba(255,123,110,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-right{box-shadow:0 0 6px 2px rgba(208,22,10,.45)}
+#layersPanel .shape-glow-epstein{box-shadow:0 0 6px 2px rgba(211,155,255,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-epstein{box-shadow:0 0 6px 2px rgba(155,48,232,.45)}
+/* The independent and open-books marks glow on the map too; the key echoes them (a deeper step on the light ground). */
+#layersPanel .shape-glow-green{box-shadow:0 0 6px 2px rgba(63,224,90,.6)}
+#layersPanel .shape-glow-cyan{box-shadow:0 0 6px 2px rgba(10,240,176,.6)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-cyan{--marker-color:#0a7a48;box-shadow:0 0 6px 2px rgba(10,122,72,.45)}
+:root:not([data-theme="dark"]) #layersPanel .shape-glow-green{--marker-color:#0a8a1f;box-shadow:0 0 6px 2px rgba(10,138,31,.45)}
 #layersPanel .layers-tier-key{grid-template-columns:1fr}
 #desktopGlobeTopControls,#mobileFilterChipsSection{z-index:20}
 #layersControl{z-index:40}
 
 /* Dark mode: the same ink-and-paper system on a warm charcoal ground with bone-white ink, not pure black and white. The globe stays black in both. */
-:root[data-theme="dark"]{color-scheme:dark;--focus:#7fa3ff;--ink:#f1ede6;--paper:#262524;--grey:#302f2d;--block:#403d3a;--line:#cfc8bb;--gossip:#1e4d2b;--gossip-ink:#e2f86c;--gossip-text:#e2f86c}
+:root[data-theme="dark"]{color-scheme:dark;--focus:#7fa3ff;--ink:#f1ede6;--paper:#262524;--grey:#302f2d;--block:#403d3a;--line:#cfc8bb;--gossip:#1e4d2b;--gossip-ink:#cfcfba;--gossip-text:#cfcfba}
 :root[data-theme="dark"] #floatingCard{color:var(--ink)}
 :root[data-theme="dark"] .atlas-record-popup .maplibregl-popup-content{background:#34322f;color:var(--ink)}
 :root[data-theme="dark"] .record-popup,:root[data-theme="dark"] .record-popup-line,:root[data-theme="dark"] .record-popup-name,:root[data-theme="dark"] #globeViewport .record-popup a,:root[data-theme="dark"] #globeViewport a.record-popup-name{color:var(--ink)}
@@ -1151,7 +1155,7 @@ a:not(.record-action):not(.starter-prompt):not([class*="btn"]){text-decoration:u
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip],
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:var(--gossip-text)}
 :root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip],
-:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:#e2f86c}
+:root[data-theme="dark"] body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(p,li,a,span,div){color:#cfcfba}
 /* The marker highlights (green, blue) keep black text inside the reported items, in either theme: yellow on green is 1.5:1. */
 body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) [data-gossip] :is(.is-good,.meta.t-strong,.is-good *,.meta.t-strong *){color:#000}
 
@@ -1376,7 +1380,7 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#9ae3e8}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#e79a3a}
 /* A gossip question (its answer is a balloon) is the one yellow label: yellow is for gossip alone. */
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#e2f86c}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#cfcfba}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{background:var(--fill,#c6c6c6);color:#000;text-decoration:underline;text-underline-offset:var(--ul-off);text-decoration-thickness:var(--ul-w)}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 @media (max-width:520px){:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n){font-size:var(--fs-s);height:22px;line-height:22px}}
@@ -1705,8 +1709,8 @@ body.chat-input-mode-active #workInputCard>div.justify-between>div{width:100%;ju
 :root[data-theme="dark"] .bubble-svg .bubble-line{stroke:none}
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip{background:var(--grey);color:var(--ink)}
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream)>.curator-message-wrap.is-gossip.has-bubble{background:none}
-:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:#e2f86c!important}
-:root[data-theme="dark"] .is-gossip .thinking{color:#e2f86c}
+:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap.is-gossip :is(p,li,span,div,a):not(.curator-suggest-chip){color:#cfcfba!important}
+:root[data-theme="dark"] .is-gossip .thinking{color:#cfcfba}
 :root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip .record-card{background:var(--grey);border-color:var(--line)}
 
 /* ---- release 239 ---- */
@@ -1788,7 +1792,7 @@ body.chat-input-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer)
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{--fill:#6f6f6f}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="A"]{--fill:#007d79}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="B"]{--fill:#ba4e00}
-:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#e2f86c}
+:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]{--fill:#cfcfba}
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n):hover{color:#fff}
 
 /* The Dark and Gossip mode buttons sit edge to edge (they were 16px apart), so a hovered one fills right up to the vertical line between them. */
@@ -1824,7 +1828,7 @@ div:has(>#topThemeBtn){column-gap:0}
 /* The chat's starter questions: 16px type, and a hover darkens the chip's own colour instead of underlining it. */
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt,:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:nth-of-type(n),:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt .sp-text{font-size:16px;line-height:1.3}
 :root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:hover .sp-text{text-decoration:none;background:color-mix(in srgb,var(--fill,#c6c6c6) 68%,#000)}
-/* The gossip question keeps black type on its yellow in the dark theme too (white on #e2f86c is 1.2:1). */
+/* The gossip question keeps black type on its yellow in the dark theme too (white on #cfcfba is 1.6:1). */
 :root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"],:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"] .sp-text,:root[data-theme="dark"] :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt[data-tier="G"]:hover{color:#000}
 
 /* =====================================================================
@@ -2119,7 +2123,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root[data-theme] #mobileTopBar>div:last-child{gap:8px;padding-right:16px;align-items:center}
   :root[data-theme] #mobileTopBar>div:last-child :is(#mobileThemeBtn,#mobileGossipBtn,#reset-state-btn){height:40px;padding:0 16px!important;border:.8px solid var(--ink)!important;border-radius:0;background:transparent;color:var(--ink);align-self:center}
   :root[data-theme] #mobileTopBar>div:last-child #mobileThemeBtn[aria-pressed=true]{background:var(--cobalt);border-color:var(--cobalt)!important;color:#fff;border-radius:0}
-  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:#e2f86c!important;color:var(--gossip-ink);border-radius:0}
+  :root[data-theme] body.gossip-mode-active #mobileTopBar>div:last-child #mobileGossipBtn{background:var(--gossip);border-color:#cfcfba!important;color:var(--gossip-ink);border-radius:0}
 }
 
 /* The chat after the displaay.net Albert chat, keeping the existing starter-prompt highlights (user's instruction, 25 Oct 2026): the question box is a rounded navy field (#2d3352) with a yellow ring (#fff204) while in use, plum (#410043) with yellow type once the reader has typed, and a white square send button inside it; Share information (#420401) and Voice (#410043) sit below the box as solid rounded buttons after the Trials / Tester / Buy row; the starter questions stay as coloured highlight strips; the reader's lines are grey bubbles, the reply a dark box. */
@@ -2679,8 +2683,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt:is(:hover,:focus-visible){border-color:color-mix(in srgb,var(--ink) 70%,transparent)!important}
 
 /* In Gossip mode the chat's divider lines turn yellow. */
-:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-b,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-t{border-color:#e2f86c!important}
-:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #chatRecordsInfo,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetHandleBar,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetSummaryStrip{border-color:#e2f86c!important}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-b,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn .rule-t{border-color:#cfcfba!important}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #chatRecordsInfo,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetHandleBar,:root:root:root:root:root:root[data-theme] body.gossip-mode-active #curatorIntelligenceColumn #mobileSheetSummaryStrip{border-color:#cfcfba!important}
 
 /* Share information is regular weight (400, it was light 300) and turns yellow with black type on hover and focus. */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #workInputCard #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.chat-input-mode-active #workInputCard.is-mode #chatShareBtn#chatShareBtn#chatShareBtn#chatShareBtn{font-weight:400!important}
@@ -2701,8 +2705,8 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] #chatRecordsInfo>summary{padding-left:23px!important}
 
 /* Gossip mode: every divider line (the token the rules and borders draw with) and the Gossip button turn the lime yellow. */
-:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active{--line:#e2f86c}
-:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #topGossipBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #mobileGossipBtn{background:var(--gossip)!important;border-color:#e2f86c!important;color:var(--gossip-ink)!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active{--line:#cfcfba}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #topGossipBtn,:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme] body.gossip-mode-active #mobileGossipBtn{background:var(--gossip)!important;border-color:#cfcfba!important;color:var(--gossip-ink)!important}
 
 /* A record's name fills each line to the edge and breaks only where the line ends (it was balanced into two short lines). */
 :root:root:root:root:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading,h2.dossier-main-heading){text-wrap:wrap!important;max-width:none!important;width:auto!important}
@@ -2719,23 +2723,23 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{--lc:var(--tier-u);background:#000}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="A"]{--lc:var(--tier-a)}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label[data-tier="B"]{--lc:var(--tier-b)}
-:root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#2f6b12}
-:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#e2f86c}
+:root:root:root:root:root:root[data-theme] body.gossip-mode-active .inst-pin-label{--lc:#2a6010}
+:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active .inst-pin-label{--lc:#cfcfba}
 
 /* The street map's badge, designed (user, 5 Nov 2026: "the museum badges on zoom have to be designed and there is no hover").
-   At rest it is the globe's label: the ground behind, a 1px outline in the tier's colour at 55%, 8px corners (7px since 5 Nov 2026), Jokker 12px (user, 5 Nov 2026: "the badge font should be smaller"; was 14px) in the
+   At rest it is the globe's label: the ground behind, a 1px outline in the tier's colour at 55%, 8px corners, Jokker 12px with 7px above and below and 12px at the sides (user, 7 Nov 2026: "the badges should have more padding"; was 1px and 8px) (user, 5 Nov 2026: "the badge font should be smaller"; was 14px) in the
    tier's colour (Regular on light, Light on dark, as atlasLabelWeight). A long name stops at 22ch with an ellipsis.
    Hover and keyboard focus fill the badge with the tier's colour and set the type in the ground's colour: the same pair turned
    over, so the contrast is what it was at rest (tier ink on white 5:1 or better, on black 11:1 or better), and the whole name opens out.
-   Selected is larger (15px, 26px tall; was 18px) and solid, ink on paper turned over, black on white in the dark. */
-:root:root:root:root:root:root[data-theme] .inst-pin-label{height:20px;padding:0 8px;gap:0;border-radius:7px;font:400 12px/18px var(--sans);letter-spacing:.01em;box-sizing:border-box;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),opacity .25s var(--ease)}
+   Selected is a step larger (13px, 28px tall with 14px sides; user, 6 Nov 2026: "the selected badge should be smaller too"; was 15px, before that 18px) and solid, ink on paper turned over, black on white in the dark. */
+:root:root:root:root:root:root[data-theme] .inst-pin-label{height:26px;padding:0 12px;gap:0;border-radius:8px;font:400 12px/24px var(--sans);letter-spacing:.01em;box-sizing:border-box;transition:background-color .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),opacity .25s var(--ease)}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label{font-weight:300}
 :root:root:root:root:root:root[data-theme] .inst-pin-label .inst-pin-label-name{display:block;max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 :root:root:root:root:root:root[data-theme] .inst-pin-label:hover,:root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible,:root:root:root:root:root:root[data-theme] .custom-inst-pin:hover .inst-pin-label{background:var(--lc);border-color:var(--lc);color:#fff}
 :root:root:root:root:root:root[data-theme="dark"] .inst-pin-label:hover,:root:root:root:root:root:root[data-theme="dark"] .inst-pin-label:focus-visible,:root:root:root:root:root:root[data-theme="dark"] .custom-inst-pin:hover .inst-pin-label{color:#000}
 :root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible{outline:2px solid var(--lc);outline-offset:2px}
 :root:root:root:root:root:root[data-theme] .inst-pin-label:hover .inst-pin-label-name,:root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible .inst-pin-label-name,:root:root:root:root:root:root[data-theme] .custom-inst-pin:hover .inst-pin-label-name,:root:root:root:root:root:root[data-theme] .custom-inst-pin.popup-active .inst-pin-label-name{max-width:none}
-:root:root:root:root:root:root[data-theme] .custom-inst-pin.popup-active .inst-pin-label{height:26px;padding:0 12px;font-size:15px;line-height:24px;background:#000;border-color:#000;color:#fff;opacity:1;pointer-events:auto;z-index:9998}
+:root:root:root:root:root:root[data-theme] .custom-inst-pin.popup-active .inst-pin-label{height:28px;padding:0 14px;font-size:13px;line-height:26px;background:#000;border-color:#000;color:#fff;opacity:1;pointer-events:auto;z-index:9998}
 :root:root:root:root:root:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label{background:#fff;border-color:#fff;color:#000}
 :root:root:root:root:root:root[data-theme] .custom-inst-pin:hover .inst-pin-label,:root:root:root:root:root:root[data-theme] .inst-pin-label:focus-visible{z-index:9999}
 
@@ -3054,7 +3058,7 @@ div:has(>#topThemeBtn){column-gap:0}
    three heights (peek, half, full). Every rule here starts with :root.gm-map and a long run of :root, because the phone rules above escalate
    to 26 of them; so none of this reaches the chat, the record page or the desktop. */
 /* The icons phone-maps.js adds are the phone's only. */
-.gm-layers-icon,.gm-lens,#gmMenuBtn,#gmChatBtn,#gmMenu{display:none}
+.gm-layers-icon,.gm-lens,#gmMenuBtn,#gmChatBtn,#gmMenu,#gmChips{display:none}
 @media (max-width:767px){
   :root{--gm-gap:12px;--gm-card:52px;--gm-shadow:0 1px 2px rgba(0,0,0,.28),0 2px 8px rgba(0,0,0,.14);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.16),0 -4px 16px rgba(0,0,0,.14)}
   :root[data-theme="dark"]{--gm-shadow:0 1px 2px rgba(0,0,0,.6),0 2px 10px rgba(0,0,0,.45);--gm-shadow-up:0 -1px 2px rgba(0,0,0,.5),0 -4px 16px rgba(0,0,0,.4)}
@@ -3108,7 +3112,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#layersPanel:not([hidden])) #mobileStickyInputBar{display:none!important}
 
   /* Layers: a round button at the top right, under the globe's compass (drawn on the canvas at 38px, 38px). */
-  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl{position:fixed!important;top:calc(var(--safe-t,0px) + 72px)!important;right:var(--gm-gap)!important;left:auto!important;bottom:auto!important;z-index:44!important;align-items:flex-end!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl{position:fixed!important;top:calc(var(--safe-t,0px) + 26px + var(--gmChips-h,46px))!important;right:var(--gm-gap)!important;left:auto!important;bottom:auto!important;z-index:44!important;align-items:flex-end!important}
   :root.gm-sheet #layersControl{display:none!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn{position:relative;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;padding:0!important;border-radius:50%!important;border:0!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:var(--gm-shadow)!important;font-size:0!important;line-height:0!important;color:transparent!important;justify-content:center!important;gap:0!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn::after{display:none!important}
@@ -3117,6 +3121,20 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn[aria-expanded="true"]{background:var(--ink)!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn[aria-expanded="true"] .gm-layers-icon{color:var(--paper)}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersBtn:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
+
+  /* The filter row at the top (user, 7 Nov 2026: "make filters above instead of layers, so if clicked it only shows what clicked"):
+     All spaces and the six filters from the Layers menu, one at a time. The row wraps so every chip is on screen (user, same
+     day: "make the filters row not scroll, fit all on screen"); its height is --gmChips-h, set by assets/layers.js, and the
+     Layers button, the colour key and the street map's controls sit under it from that. One row is 46px (36px chips, 2px
+     over, 8px under), which puts the Layers button where it was, 72px down. With a city's banner at the top left, the row
+     steps down under the banner (12px + its 52px + 8px). */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips{display:flex;flex-wrap:wrap;gap:8px;position:fixed;top:calc(var(--safe-t,0px) + 12px);left:var(--gm-gap);right:var(--gm-gap);z-index:44;margin:0;padding:2px 4px 8px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#cityViewControlBanner:not(.hidden)) #gmChips{top:calc(var(--safe-t,0px) + 72px)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#cityViewControlBanner:not(.hidden)) #layersControl{top:calc(var(--safe-t,0px) + 86px + var(--gmChips-h,46px))!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#cityViewControlBanner:not(.hidden)) #mapColourKey{top:calc(var(--safe-t,0px) + 86px + var(--gmChips-h,46px))}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-filter-chip{flex:none;height:36px;padding:0 14px;border:0;border-radius:18px;background:var(--paper);color:var(--ink);font:400 14px/1 var(--sans);white-space:nowrap;box-shadow:var(--gm-shadow);cursor:pointer}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-filter-chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root .gm-filter-chip:focus-visible{outline:3px solid var(--focus,#1d4ed8);outline-offset:2px}
   /* The layers menu: a sheet from the bottom edge, over the map. */
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl #layersPanel:not([hidden]){position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;width:auto!important;max-width:none!important;max-height:72vh!important;max-height:72dvh!important;margin:0!important;overflow-y:auto!important;overscroll-behavior:contain;padding-bottom:calc(16px + var(--safe-b,0px))!important;border:0!important;border-radius:16px 16px 0 0!important;box-shadow:var(--gm-shadow-up)!important;z-index:60!important}
 
@@ -3139,8 +3157,8 @@ div:has(>#topThemeBtn){column-gap:0}
 }
 
 /* ==== PHONE: THE RECORD AS A PLACE CARD (user, 3 Nov 2026: "make it look like Google Maps when it pulls info") ====
-   Built by buildPlaceCard in assets/phone-maps.js: the name, a rating line (the grade's letter in a dot of its colour, with
-   its words), the place, a row of pill actions with icons (the first filled, the rest tonal), tabs with the open one
+   Built by buildPlaceCard in assets/phone-maps.js: the name, a rating line (the words "Grade B" in the grade's colour, then
+   its label), the place, a row of pill actions with icons (the first filled, the rest tonal), tabs with the open one
    underlined, and on Overview the visiting facts as rows with an icon each. */
 @media (max-width:767px){
   :root{--gm-tonal:color-mix(in srgb,var(--ink) 9%,var(--grey))}
@@ -3167,7 +3185,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-tabs{position:sticky;top:24px;z-index:2;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;padding:0 4px;background:var(--grey);border-bottom:.8px solid var(--line)}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-tabs[hidden]{display:none}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-tabs::-webkit-scrollbar{display:none}
-  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-tabs button{flex:none;position:relative;height:48px!important;min-height:48px!important;padding:0 14px!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--m-secondary)!important;font:400 14px/1 var(--sans)!important;white-space:nowrap}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-tabs button{flex:none;position:relative;height:48px!important;min-height:48px!important;padding:0 12px!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--m-secondary)!important;font:400 15px/1 var(--sans)!important;letter-spacing:.02em!important;white-space:nowrap}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-tabs button[hidden]{display:none}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-tabs button[aria-selected="true"]{color:var(--ink)!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-tabs button[aria-selected="true"]::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--ink)}
@@ -3414,7 +3432,13 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead{display:flex!important;position:relative;align-items:center;gap:4px;height:56px!important;min-height:56px!important;padding:8px 8px 0 16px!important;border:0!important;background:transparent!important}
   :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead .sheet-grabber{position:absolute!important;left:50%!important;top:8px!important;width:36px!important;height:4px!important;margin-left:-18px!important;border-radius:2px!important;background:var(--ink)!important;opacity:.4!important}
   :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead .gm-chat-title{flex:1 1 auto;font:300 24px/30px var(--sans)!important;color:var(--ink)!important}
-  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead #phoneChatDetailsBtn:not(.hidden){display:inline-flex!important;align-items:center;height:36px!important;min-height:36px!important;padding:0 14px!important;border:0!important;border-radius:18px!important;background:var(--gm-tonal,color-mix(in srgb,var(--ink) 9%,var(--paper)))!important;color:var(--ink)!important;font:300 14px/1 var(--sans)!important}
+  /* Chat and Details as tabs (user, 9 Nov 2026), as the Claude app sets Chat and Preview over an artifact: the open one underlined. */
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead .gm-head-tabs{display:flex;flex:1 1 auto;align-self:stretch;align-items:flex-end;gap:0;min-width:0;margin-left:-12px}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn:not(.hidden)){display:inline-flex!important;position:relative;align-items:center;height:48px!important;min-height:48px!important;padding:0 12px!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--m-secondary,var(--ink))!important;font:400 15px/1 var(--sans)!important;letter-spacing:.02em!important;text-decoration:none!important;box-shadow:none!important}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn)[aria-selected="true"]{color:var(--ink)!important}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn)[aria-selected="true"]::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--ink)}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn):focus-visible{outline:3px solid var(--focus)!important;outline-offset:-3px!important}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead{border-bottom:.8px solid var(--line)!important}
   :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead :is(#gmChatMenuBtn,#phoneChatCloseBtn){display:flex!important;align-items:center;justify-content:center;width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;border:0!important;border-radius:50%!important;background:transparent!important;color:var(--ink)!important}
   :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead #gmChatMenuBtn svg{width:20px;height:20px}
   :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead #phoneChatCloseBtn span{display:none!important}
@@ -3500,7 +3524,7 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityViewControlBanner #cityViewTitleBadge{min-width:0;flex:1 1 auto;max-width:none!important;color:var(--ink)!important;font:300 14px/20px var(--sans)!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityViewControlBanner #cityViewTitleBadge span{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:inherit!important;color:inherit!important}
   /* Street map controls: no zoom buttons; the compass a round button under Layers. */
-  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-top-right{top:calc(var(--safe-t,0px) + 72px + 44px + 12px)!important;right:var(--gm-gap)!important;margin:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-top-right{top:calc(var(--safe-t,0px) + 86px + var(--gmChips-h,46px) + 56px)!important;right:var(--gm-gap)!important;margin:0!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-top-right .maplibregl-ctrl-group{margin:0!important;background:transparent!important;box-shadow:none!important;border:0!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-group :is(.maplibregl-ctrl-zoom-in,.maplibregl-ctrl-zoom-out){display:none!important}
   :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityMapContainer .maplibregl-ctrl-group .maplibregl-ctrl-compass{width:44px!important;height:44px!important;border:0!important;border-radius:50%!important;background-color:var(--paper)!important;box-shadow:var(--gm-shadow)!important}
@@ -3514,7 +3538,7 @@ div:has(>#topThemeBtn){column-gap:0}
    run of :root so it wins over the two-column rules above without touching them. */
 #gmdSearch,#gmdChips,#gmdMapCtl{display:none}
 @media (min-width:768px){
-  :root{--gmd-w:clamp(420px,48vw,860px);--gmd-gap:16px;--gmd-h:48px;--gmd-shadow:0 1px 2px rgba(0,0,0,.3),0 2px 6px rgba(0,0,0,.15)}
+  :root{--gmd-w:clamp(360px,25vw,860px);--gmd-gap:16px;--gmd-h:48px;--gmd-shadow:0 1px 2px rgba(0,0,0,.3),0 2px 6px rgba(0,0,0,.15)}
   :root[data-theme="dark"]{--gmd-shadow:0 1px 2px rgba(0,0,0,.7),0 2px 8px rgba(0,0,0,.5)}
 
   /* The map fills the window left of the panel. */
@@ -3567,9 +3591,9 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt.is-ask .gmd-opt-label{white-space:normal}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-opt-sub{font:400 13px/1.25 var(--sans);color:color-mix(in srgb,var(--ink) 66%,transparent);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-  /* Layer chips, beside the box, stopping short of the panel. */
-  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips{display:flex;gap:8px;position:fixed;top:calc(var(--gmd-gap) + (var(--gmd-h) - 36px) / 2);left:calc(var(--gmd-w) - var(--gmd-gap) + 12px);right:calc(var(--gmd-w) + 12px);z-index:45;overflow-x:auto;scrollbar-width:none;padding:2px 4px 8px}
-  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips::-webkit-scrollbar{display:none}
+  /* The filter row, beside the box, stopping short of the panel. It wraps rather than scrolls (user, 7 Nov 2026: "fit all on
+     screen"); assets/layers.js sets --gmdChips-h to its height, and the page's name and the colour key are placed from it. */
+  :root.gmd:root:root:root:root:root:root:root:root:root #gmdChips{display:flex;flex-wrap:wrap;gap:8px;position:fixed;top:calc(var(--gmd-gap) + (var(--gmd-h) - 36px) / 2);left:calc(var(--gmd-w) - var(--gmd-gap) + 12px);right:calc(var(--gmd-w) + 12px);z-index:45;padding:2px 4px 8px}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip{flex:none;height:36px;padding:0 16px;border:0;border-radius:18px;background:var(--paper);color:var(--ink);font:400 14px/1 var(--sans);white-space:nowrap;box-shadow:var(--gmd-shadow);cursor:pointer}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip:hover{background:color-mix(in srgb,var(--ink) 8%,var(--paper))}
   :root.gmd:root:root:root:root:root:root:root:root:root .gmd-chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
@@ -3703,9 +3727,9 @@ div:has(>#topThemeBtn){column-gap:0}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(button,[role=button],a.record-action,.record-popup-actions a,#desktopDossierWebLink,select,.maplibregl-ctrl-group):not(.gm-alert-mark,.sheet-size,.curator-thought-toggle,.source-citation-pill,.underline,.top-funder,#topBrandLogoBtn,#mobileTopBrandBtn,#layersPanel *,.layers-row,[data-layer]){border-radius:var(--btn-r)!important}
 
 /* Buttons that stand on their own take the 1px edge and lose any tinted fill: transparent on whatever they sit on. */
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn,#curatorVoiceToggleBtn,.starter-prompt,.curator-followup-pill,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,#testConnectionBtn,#clearApiKeyBtn,.atlas-pill-btn,.layers-reset,.fa-focus-inst-btn,#exitStreetViewBtn,#backToWorldBtn,#backToCountryBtn,#hudWorldBtn,#hudSpinBtn,#hudExpandBtn,#hudEuropeBtn,#hudAsiaBtn,#hudAmericasBtn,#dossier-bottom-sheet .gm-tabs button){background:transparent!important;color:var(--ink)!important;border:0!important;box-shadow:inset 0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn,#curatorVoiceToggleBtn,.starter-prompt,.curator-followup-pill,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,#testConnectionBtn,#clearApiKeyBtn,.atlas-pill-btn,.layers-reset,.fa-focus-inst-btn,#exitStreetViewBtn,#backToWorldBtn,#backToCountryBtn,#hudWorldBtn,#hudSpinBtn,#hudExpandBtn,#hudEuropeBtn,#hudAsiaBtn,#hudAmericasBtn){background:transparent!important;color:var(--ink)!important;border:0!important;box-shadow:inset 0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
 /* Over the map a button needs a ground to be read on: paper, with the ring. */
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,#mobileSuggestChips .curator-suggest-chip,.curator-suggest-chip,#layersControl #layersBtn,#gmdMapCtl>button,#gmdMapCtl #gmLocateBtn,#gmLocateBtn,#cityMapContainer .maplibregl-ctrl-group){box-shadow:0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.gm-filter-chip,#mobileSuggestChips .curator-suggest-chip,.curator-suggest-chip,#layersControl #layersBtn,#gmdMapCtl>button,#gmdMapCtl #gmLocateBtn,#gmLocateBtn,#cityMapContainer .maplibregl-ctrl-group){box-shadow:0 0 0 1px var(--ink)!important;transition:var(--btn-ease)!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl .gmd-zoom{border-radius:var(--btn-r)!important;box-shadow:0 0 0 1px var(--ink)!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl .gmd-zoom>button{border-radius:0!important}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmdMapCtl .gmd-zoom>button+button{border-top:1px solid var(--ink)!important}
@@ -3720,12 +3744,13 @@ div:has(>#topThemeBtn){column-gap:0}
 
 /* What is chosen is solid ink, as Displaay marks its current page: the open tab, a control that is on. Gossip mode keeps its own
    lime (dark green on the dark theme), the one colour that says it is on. */
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat).is-on,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat)[aria-selected="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet .gm-tabs button[aria-selected="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.provider-tab-btn,#curatorVoiceToggleBtn,#hudSpinBtn,#hudExpandBtn)[aria-pressed="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.provider-tab-btn).is-on,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .provider-tab-btn.active{background:var(--ink)!important;color:var(--paper)!important}
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet .gm-tabs button[aria-selected="true"]::after{display:none!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat).is-on,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat)[aria-selected="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.provider-tab-btn,#curatorVoiceToggleBtn,#hudSpinBtn,#hudExpandBtn)[aria-pressed="true"],:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.provider-tab-btn).is-on,:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) .provider-tab-btn.active{background:var(--ink)!important;color:var(--paper)!important}
+/* The record sheet's tabs (Overview, Funding, Record, Sources) are tabs, not buttons: words with the open one underlined (PHONE: MAPS APP),
+   so they are in none of these lists (user, 9 Nov 2026: "make buttons overview funding and records into tabs"). */
 
 /* Hover: every button fills with ink and its text turns paper. */
 @media (hover:hover){
-  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn,#curatorVoiceToggleBtn,.starter-prompt,.curator-followup-pill,.curator-suggest-chip,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,#testConnectionBtn,#clearApiKeyBtn,#saveApiKeyBtn,.atlas-pill-btn,.layers-reset,.fa-focus-inst-btn,#exitStreetViewBtn,#backToWorldBtn,#backToCountryBtn,[id^="hud"],.gmd-chip,#gmdTopBar #topThemeBtn,#gmdTopBar #topGossipBtn:not([aria-pressed="true"]),#layersControl #layersBtn,#gmdMapCtl button,#gmLocateBtn,#workSendBtn,#mobileStickySendBtn,#dossier-bottom-sheet .gm-tabs button,#dossier-bottom-sheet .record-action):is(:hover,:focus-visible){background:var(--btn-hover)!important;color:var(--paper)!important;border-color:var(--btn-hover)!important;filter:none!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(#workspaceTabDossier,#workspaceTabChat,#workspaceNewChatBtn,#curatorVoiceToggleBtn,.starter-prompt,.curator-followup-pill,.curator-suggest-chip,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,#testConnectionBtn,#clearApiKeyBtn,#saveApiKeyBtn,.atlas-pill-btn,.layers-reset,.fa-focus-inst-btn,#exitStreetViewBtn,#backToWorldBtn,#backToCountryBtn,[id^="hud"],.gmd-chip,#gmdTopBar #topThemeBtn,#gmdTopBar #topGossipBtn:not([aria-pressed="true"]),#layersControl #layersBtn,#gmdMapCtl button,#gmLocateBtn,#workSendBtn,#mobileStickySendBtn,#dossier-bottom-sheet .record-action):is(:hover,:focus-visible){background:var(--btn-hover)!important;color:var(--paper)!important;border-color:var(--btn-hover)!important;filter:none!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.starter-prompt,.curator-suggest-chip,.curator-followup-pill):is(:hover,:focus-visible) *{background:transparent!important;color:inherit!important}
 }
 
@@ -3742,7 +3767,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #gmFeed .gm-poster-pill{border-radius:8px!important}
 
 /* Displaay's type for buttons: 15px at 1.3, tracked +0.02em (their Saans 15px/19.5px/0.3px). The one size outside 14/18/24. */
-:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.curator-suggest-chip,.curator-followup-pill,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,.atlas-pill-btn,#gmdTopBar #topGossipBtn,#gmdTopBar #topThemeBtn,#dossier-bottom-sheet .gm-tabs button){font-size:15px!important;line-height:1.3!important;letter-spacing:.02em!important}
+:is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) :is(.gmd-chip,.gm-filter-chip,.curator-suggest-chip,.curator-followup-pill,.record-action,#desktopDossierWebLink,.record-popup-actions a,.record-popup-actions button,.provider-tab-btn,.atlas-pill-btn,#gmdTopBar #topGossipBtn,#gmdTopBar #topThemeBtn){font-size:15px!important;line-height:1.3!important;letter-spacing:.02em!important}
 
 /* "Ask the curator": no gradient, on one line (user, 4 Nov 2026), in one colour that changes from load to load (user, same day:
    "different colors on load, not each word a different colour"). assets/typeset.js picks a tone at load and sets
@@ -3871,10 +3896,11 @@ div:has(>#topThemeBtn){column-gap:0}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
   :root.gmd:root:root:root:root:root:root:root:root:root #gmdTitle button:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
   /* Switched around (user, 4 Nov 2026: "switch around", pills above title): the chips take the top line and the name sits
-     one chip row under them. A chip row is 36px plus its 2px top and 8px bottom padding (#gmdChips above), so the name
-     starts 50px down, the same 8px clear of the chips' shadow-free bottom that the chips had under the name. */
+     under them. The chips wrap, so the name is placed from the row's measured height (--gmdChips-h, 46px for one row of
+     36px chips with their 2px top and 8px bottom padding) plus 4px, the same 8px clear of the chips' shadow-free bottom
+     that the chips had under the name. */
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdChips{top:var(--gmd-gap)!important}
-  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdTitle{top:calc(var(--gmd-gap) + 50px)!important}
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #gmdTitle{top:calc(var(--gmd-gap) + 4px + var(--gmdChips-h,46px))!important}
   :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html):root.gmd #layersControl #layersPanel{max-height:calc(100vh - 230px)!important}
 }
 /* A question that wraps keeps the same space above and below its words as one that fits on a line (user, 4 Nov 2026). These
@@ -4360,7 +4386,6 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{display:block!important;flex:1 1 auto;min-width:0;margin:0!important;font:500 40px/1 var(--sans)!important}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share{display:inline-flex!important;align-items:center;justify-content:center;width:auto!important;height:36px!important;min-height:36px!important;margin:0;padding:0 14px!important;border:1px solid var(--ink)!important;border-radius:999px!important;background:transparent!important;box-shadow:none!important;font:400 14px/1 var(--sans)!important;text-transform:none!important;cursor:pointer}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn:hover,:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn[aria-pressed="true"],:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-share:not(.is-main):hover{background:var(--ink)!important;color:var(--paper)!important}
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-live{margin:4px 0 0!important;font:400 14px/1.3 var(--sans)!important}
 /* A report. */
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-story{margin:48px 0 0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;cursor:pointer}
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts .ts-label{margin:32px 0 0!important;padding:0 0 10px!important;border:0!important;border-bottom:1px solid var(--ink)!important;background:none!important;font:400 14px/1.2 var(--sans)!important;text-transform:uppercase}
@@ -4394,11 +4419,16 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 @media (max-width:767px){:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-title{font-size:32px!important}}
 /* The Top story strip has no icon (user, 5 Nov 2026: "delete icon"): one column, the headline over the meta line, on the phone and on desktop. */
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmStoryStrip:not([hidden]){grid-template-columns:minmax(0,1fr)!important;grid-template-areas:"head" "meta"!important;column-gap:0!important;padding-left:16px!important}
-/* The feed closes with a cross, a 44px circle, and the head keeps 8px clear on the right so the buttons and their focus ring
-   stand off the panel edge (user, 5 Nov 2026: "add right margin and add cross to exit"). */
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{padding-right:8px!important}
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x{width:44px!important;height:44px!important;min-height:44px!important;padding:0!important}
-:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x svg{display:block;width:20px;height:20px}
+/* The feed closes with the record's big thin cross: 28px, 1.1px lines, on a 44px paper square with no circle and no edge
+   (user, 7 Nov 2026: "make proper cross like big one with no outline"; the 44px circle was 5 Nov 2026). Hover and press
+   keep the square paper: only the focus ring marks it. It sits in .ts-pin, a sticky holder of no height before the head, so
+   the head scrolls away and the cross stays at the top right over whatever passes under it (user, 7 Nov 2026: "keep cross
+   on scroll"); the head keeps 52px clear on the right so Alert me never sits under it. */
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-pin{position:sticky!important;top:0;z-index:3;display:flex;justify-content:flex-end;height:0!important;margin:0!important;padding:0!important;overflow:visible;pointer-events:none}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{padding-right:52px!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x{flex:none;width:44px!important;height:44px!important;min-height:44px!important;margin:18px -8px 0 0!important;padding:0!important;border:0!important;border-radius:0!important;background:var(--paper)!important;color:var(--ink)!important;pointer-events:auto}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x:is(:hover,:active){background:var(--paper)!important;color:var(--ink)!important}
+:is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-btn.ts-x svg{display:block;width:28px;height:28px}
 /* The head scrolls away with the reports instead of staying on top of them (user, 5 Nov 2026: "scroll header"). */
 :is(#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts#ts,html) #gmFeed .ts-bar{position:static!important}
 /* The headline is plain text, set as the old headline button was: Serrif Light 24px/1.15, no underline, no pointer. The Space
@@ -4453,6 +4483,9 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 /* ---- THE CHAT COMPOSER, CALM (user, 5 Nov 2026: "design this chat better, now it's out of it; use Displaay buttons and make
    outlines grey, so they look thin", with two references: an idle field on a warm ground, and the same field green while typing
    with a large black send square on the right).
+   Since 7 Nov 2026 (user: "do not use color when not clicked in and make button just an outline") the field has no ground
+   until it has focus, and then it is the green; the send square is an outline in the same grey hairline as the other two
+   buttons, with the triangle in ink, and fills with ink on hover.
    Desktop only, and only the chat: the note form (.is-mode, chat-input-mode-active) and the phone composer keep their own rules.
    One grid: what you type spans the first two columns, Share information and Voice sit under it; send sits in the right column across
    both rows, centred, so it no longer floats above the text. Every edge is a 1px grey hairline, not ink.
@@ -4460,10 +4493,13 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
    it 9.6:1. The grey edges are the field's boundary, so they keep 3:1 (WCAG 1.4.11): #8a8a8a on #fff 3.5:1, #8a8a8a on #f2f0e6
    3.0:1, #6e6e6e on #000 4.0:1. The prefix carries 17 ids, one more than the Displaay layer above. */
 @media (min-width:768px){
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){--cc-ink:#000;--cc-paper:#fff;--cc-ground:#f2f0e6;--cc-hint:#5f5e58;--cc-line:#8a8a8a;--cc-typing:#cffcc6}
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html[data-theme="dark"]) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){--cc-ink:#fff;--cc-paper:#000;--cc-ground:#161616;--cc-hint:#b6b6b6;--cc-line:#6e6e6e}
-/* While there is text the field turns green, and green carries black text in both themes. */
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):has(#workInput:not(:placeholder-shown)){--cc-ink:#000;--cc-paper:#fff;--cc-ground:var(--cc-typing);--cc-hint:#3c4a39;--cc-line:#5e7a59}
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){--cc-ink:#000;--cc-paper:#fff;--cc-ground:transparent;--cc-hint:#5f5e58;--cc-line:#8a8a8a;--cc-typing:#cffcc6}
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html[data-theme="dark"]) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){--cc-ink:#fff;--cc-paper:#000;--cc-ground:transparent;--cc-hint:#b6b6b6;--cc-line:#6e6e6e}
+/* While the field has focus it turns green, and green carries black text in both themes. */
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):focus-within{--cc-ink:#000;--cc-paper:#fff;--cc-ground:var(--cc-typing);--cc-hint:#3c4a39;--cc-line:#5e7a59}
+/* Dark stays dark (user, 6 Nov 2026: "make it dark mode on dark"): with focus the field is a deep green with white text, and
+   send is a white outline with a white triangle. Measured: #fff on #0f2a14 15.4:1, placeholder #b6c9b8 on it 8.8:1; edge #4f7a55 on #000 4.2:1. */
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html[data-theme="dark"]) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):focus-within{--cc-ink:#fff;--cc-paper:#000;--cc-ground:#0f2a14;--cc-hint:#b6c9b8;--cc-line:#4f7a55}
 
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode){display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;grid-template-rows:auto auto!important;align-items:center!important;column-gap:8px!important;row-gap:14px!important;box-sizing:border-box!important;padding:22px 20px 18px 28px!important;margin:0!important;border:1px solid var(--cc-line)!important;border-radius:14px!important;background:var(--cc-ground)!important;box-shadow:none!important;outline:0!important;transition:background-color .15s,border-color .15s}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode):focus-within{border-color:var(--focus)!important}
@@ -4488,26 +4524,469 @@ html.atlas-held #globeCardCanvas{visibility:hidden}
 
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #curatorVoiceToggleBtn{grid-column:2!important;grid-row:2!important;position:static!important;inset:auto!important}
 
-/* Send: a 56px square of solid ink with 12px corners, in the right column across both rows. */
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn{grid-column:3!important;grid-row:1 / span 2!important;align-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;margin:0!important;padding:0!important;border:1px solid var(--cc-ink)!important;border-radius:12px!important;background:var(--cc-ink)!important;box-shadow:none!important;color:var(--cc-paper)!important}
+/* Send: a 56px outlined square with 12px corners, in the right column across both rows; the triangle is ink, hover fills with ink. */
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn{grid-column:3!important;grid-row:1 / span 2!important;align-self:center!important;display:flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;width:56px!important;height:56px!important;min-width:56px!important;min-height:56px!important;margin:0!important;padding:0!important;border:1px solid var(--cc-line)!important;border-radius:12px!important;background:transparent!important;box-shadow:none!important;color:var(--cc-ink)!important}
 :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn svg,:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn svg *{width:26px!important;height:26px!important;stroke:currentColor!important;stroke-width:1.4!important;color:inherit!important;fill:none!important}
-:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn:hover{background:var(--cc-paper)!important;color:var(--cc-ink)!important}
+:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) body:not(.chat-input-mode-active) #workInputCard:not(.is-mode) #workSendBtn:hover{background:var(--cc-ink)!important;border-color:var(--cc-ink)!important;color:var(--cc-paper)!important}
 }
 
 /* ==== CHAT DETAILS, LIKE CLAUDE (user, 6 Nov 2026: "make details button on chat window a toggle", "make chat window not
    repeating buttons and function more like Claude with details toggle and back button") ====
    From the chat, Details opens the record as a page of its own (assets/phone-maps.js, gm-from-chat): full height, it only
-   scrolls, and its top row is a back button to the chat on the left and the Details button, pressed, on the right, where
+   scrolls, and its top row is the strip of two tabs the chat's head has, Chat and Details, Details the open one, where
    the chat's own Details button sits. The sheet's grabber, cross and Ask in chat are put away by the script. */
 @media (max-width:767px){
   #dossier-bottom-sheet .gm-from-chat-bar[hidden]{display:none!important}
-  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar:not([hidden]){position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 8px 0 4px;background:var(--paper);pointer-events:auto}
-  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar button{display:inline-flex!important;align-items:center;gap:4px;height:36px!important;min-height:36px!important;margin:0!important;padding:0 14px!important;border:0!important;border-radius:18px!important;background:transparent!important;color:var(--ink)!important;font:300 15px/1 var(--sans)!important;letter-spacing:.01em!important;text-transform:none!important;box-shadow:none!important}
-  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar #gmDetailsBackBtn{padding-left:6px!important;height:44px!important;min-height:44px!important}
-  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar #gmDetailsBackBtn svg{width:22px;height:22px;flex:none}
-  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar #gmDetailsToggleBtn[aria-pressed="true"]{background:var(--ink)!important;color:var(--paper)!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar:not([hidden]){position:absolute;inset:0;display:flex;align-items:stretch;justify-content:flex-start;gap:0;padding:0 4px;background:var(--paper);border-bottom:.8px solid var(--line);pointer-events:auto}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar button{display:inline-flex!important;position:relative;align-items:center;height:auto!important;min-height:44px!important;padding:0 12px!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--m-secondary,var(--ink))!important;font:400 15px/1 var(--sans)!important;letter-spacing:.02em!important;text-decoration:none!important;box-shadow:none!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar button[aria-selected="true"]{color:var(--ink)!important}
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar button[aria-selected="true"]::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--ink)}
+
   #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet .gm-from-chat-bar button:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
-  /* The chat's Details button is a toggle too: pressed while the record is open (it is then under the record's own). */
-  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #phoneChatHead #phoneChatDetailsBtn[aria-pressed="true"]:not(.hidden){background:var(--ink)!important;color:var(--paper)!important}
+
+
 }
 
+
+/* ---- Coloured filters (user's instruction, 6 Nov 2026) ----
+   Every filter wears its own colour: the filter chips over the map (desktop #gmdChips, phone #gmChips), the rows of the Layers menu, the funder types and the
+   widest-reaching funders. Off, a filter is a pale wash of its colour; on, it is filled with the colour and its edge thickens
+   to 2px, so the state is said by more than the hue (and by aria-pressed / the checkbox). The chips had a dot of the full
+   colour until 7 Nov 2026 (user: "delete dots from filters").
+   Text on the full colours is black in both themes: every fill measures 7:1 or better against #000. The chips sit under a
+   rule sixteen ids deep because the button layer above (#displaay x14) would otherwise paint them ink when pressed. */
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color{display:inline-flex!important;align-items:center;background:color-mix(in srgb,var(--layer-color) 22%,var(--paper))!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink)!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color:is(:hover,:focus-visible){background:color-mix(in srgb,var(--layer-color) 55%,var(--paper))!important;color:var(--ink)!important;border-color:var(--ink)!important}
+#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips#gmdChips .gmd-chip.has-color[aria-pressed="true"]{background:var(--layer-color)!important;color:#000!important;box-shadow:0 0 0 2px #000!important}
+#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip.has-color{display:inline-flex!important;align-items:center;background:color-mix(in srgb,var(--layer-color) 22%,var(--paper))!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink)!important}
+#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip.has-color:is(:hover,:focus-visible){background:color-mix(in srgb,var(--layer-color) 55%,var(--paper))!important;color:var(--ink)!important;border-color:var(--ink)!important}
+#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip.has-color[aria-pressed="true"]{background:var(--layer-color)!important;color:#000!important;box-shadow:0 0 0 2px #000!important}
+
+html body #layersPanel#layersPanel label[style*="--layer-color"]{background:color-mix(in srgb,var(--layer-color) 18%,var(--paper))!important;color:var(--ink)!important;box-shadow:inset 4px 0 0 var(--layer-color)}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:hover{background:color-mix(in srgb,var(--layer-color) 40%,var(--paper))!important}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:has(input:checked){background:var(--layer-color)!important;color:#000!important;box-shadow:inset 4px 0 0 #000}
+html body #layersPanel#layersPanel label[style*="--layer-color"]:has(input:checked) :is(.layer-name,.layer-desc,.layers-count){color:#000!important}
+html body #layersPanel#layersPanel label[style*="--layer-color"] input{accent-color:#000}
+
+/* The funder types and the widest-reaching funders: the same wash and fill, in the funder kind's colour. */
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row{background:color-mix(in srgb,var(--marker-color,var(--row)) 18%,var(--paper))!important;color:var(--ink)!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]){background:var(--marker-color)!important;color:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]) :is(.tf-n,.layer-name,.tf-name){color:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"])>i{background:#000!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:hover{background:color-mix(in srgb,var(--marker-color,var(--row)) 45%,var(--paper))!important;color:var(--ink)!important}
+html body #layersPanel#layersPanel#layersPanel#layersPanel .filter-row:is(:has(input:checked),[aria-checked="true"]):hover{background:var(--marker-color)!important;color:#000!important}
+
+/* ===== GRADING BROUGHT BACK (user, 6 Nov 2026: "bring grading back ... explain it also on the info button on each space ... colour coded") =====
+   The grade is the words "Grade B" in the grade's colour (.grade-word, the same colours the chat's answers use), never a letter in a
+   circle: the circle went from the phone sheet and then from the record and the scale on 7 Nov 2026 ("delete this b in circle, this is
+   slop"). The i button beside it opens the scale. Set after every other layer, with the ids the record is drawn in, so the older
+   .grade-line and list rules do not reach in. */
+:root:root:root:root body p.grade-line{display:flex!important;align-items:center;flex-wrap:wrap;gap:.25em .5em;text-indent:0}
+:root:root:root:root body p.grade-line .grade-name{text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+:root:root:root:root body .grade-info-btn{display:inline-flex;align-items:center;justify-content:center;flex:none;width:24px;height:24px;min-width:24px;border-radius:50%;border:1px solid var(--ink);background:transparent;color:var(--ink);font:400 14px/1 var(--sans);font-style:normal;padding:0;margin:0;cursor:pointer;text-transform:none;letter-spacing:0}
+:root:root:root:root body .grade-info-btn:hover,:root:root:root:root body .grade-info-btn[aria-expanded="true"]{background:var(--ink);color:var(--paper)}
+:root:root:root:root body .grade-info-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+:root:root:root:root body .grade-info{margin:.6em 0 0;padding:.75em;border:1px solid var(--ink);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.3;text-indent:0;max-width:40em}
+:root:root:root:root body .grade-info[hidden]{display:none!important}
+:root:root:root:root body .grade-info>p{margin:0 0 .6em;text-indent:0}
+:root:root:root:root body .grade-info>p:last-child{margin-bottom:0}
+:root:root:root:root body .grade-info>details.grade-scale-more{margin:0}
+:root:root:root:root body .grade-info>details.grade-scale-more>summary{cursor:pointer;padding:.2em 0;text-decoration:underline;text-underline-offset:.2em}
+:root:root:root:root body .grade-info>details.grade-scale-more>summary:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+:root:root:root:root body .grade-info>details.grade-scale-more[open]>summary{margin-bottom:.4em}
+:root:root:root:root body ul.grade-scale{list-style:none!important;margin:.2em 0 .6em!important;padding:0!important}
+:root:root:root:root body ul.grade-scale>li{display:flex!important;align-items:flex-start;gap:.6em;margin:0 0 .35em!important;padding:0!important;text-indent:0!important}
+:root:root:root:root body ul.grade-scale>li::before{content:none!important;display:none!important}
+:root:root:root:root body ul.grade-scale>li>.grade-word{flex:none;min-width:4.6em;white-space:nowrap}
+:root:root:root:root body ul.grade-scale .grade-this{display:inline-block;margin-left:.3em;padding:0 .4em;border:1px solid var(--ink);border-radius:999px;font-size:14px;line-height:1.4;white-space:nowrap}
+:root:root:root:root body li.grade-fund{display:flex!important;align-items:flex-start;gap:.5em;text-indent:0!important}
+:root:root:root:root body li.grade-fund::before{content:none!important;display:none!important}
+/* Phone sheet: the i button sits at the end of the rating line, the panel under it. */
+:root:root:root:root body #dossier-bottom-sheet .gm-rating .grade-info-btn{margin-left:6px;width:24px;height:24px}
+:root:root:root:root body #dossier-bottom-sheet .gm-rating+.grade-info{margin:6px 0 8px}
+
+/* ===================================================================================================================
+   COLOUR KEY ON THE MAP (user, 6 Nov 2026). What a name's colour says, always visible over the globe, with the rules
+   behind the grades a tap away. The pills are drawn as the map's labels are (.inst-pin-label above): the word in its
+   tier's colour, a 1px edge of the same colour at 55%, on white in light and black in dark. Desktop: top right of the
+   map, under the chip row. Phone: top left, level with the round Layers button. Hidden wherever the Layers control is.
+   The rules behind the grades open from a round i button by the title (the record's .grade-info-btn), 7 Nov 2026.
+   =================================================================================================================== */
+#mapColourKey#mapColourKey#mapColourKey{position:absolute;top:calc(70px + var(--gmdChips-h,46px));right:16px;z-index:30;box-sizing:border-box;width:max-content;max-width:min(300px,calc(100% - 32px));padding:10px 12px;background:var(--paper);color:var(--ink);border:.8px solid var(--line);border-radius:0;font:400 14px/1.3 var(--sans);letter-spacing:0}
+#mapColourKey#mapColourKey#mapColourKey .mck-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 8px}
+#mapColourKey#mapColourKey#mapColourKey .mck-title{margin:0;font:400 14px/1.2 var(--sans);letter-spacing:0;color:var(--ink)}
+#mapColourKey#mapColourKey#mapColourKey .mck-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;row-gap:6px;align-items:center}
+#mapColourKey#mapColourKey#mapColourKey .mck-list li{display:contents}
+#mapColourKey#mapColourKey#mapColourKey .mck-pill{--lc:var(--tier-u);justify-self:start;display:inline-block;padding:3px 8px;background:#fff;color:var(--lc);border:1px solid color-mix(in srgb,var(--lc) 55%,transparent);border-radius:0;font:400 14px/1.2 var(--sans);white-space:nowrap}
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word)[data-tier="A"]{--lc:var(--tier-a)}
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word)[data-tier="B"]{--lc:var(--tier-b)}
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word)[data-tier="U"]{--lc:var(--tier-u)}
+:root[data-theme="dark"] #mapColourKey#mapColourKey#mapColourKey .mck-pill{background:#000}
+#mapColourKey#mapColourKey#mapColourKey .mck-desc{min-width:0;color:var(--ink)}
+/* The page's global type rules reach spans, headings and paragraphs with !important; the key keeps one size, 14px. */
+#mapColourKey#mapColourKey#mapColourKey :is(.mck-title,.mck-pill,.mck-desc,p,b){font-size:14px!important;line-height:1.3!important;letter-spacing:0!important;font-weight:400!important}
+/* The rules behind the grades: the round i button of a record's funding grade (.grade-info-btn above), and its panel,
+   here inside the key under a hairline rather than in its own box, at the key's 14px. */
+#mapColourKey#mapColourKey#mapColourKey .mck-info-btn{width:22px;height:22px;min-width:22px;font-size:13px!important}
+:root:root:root:root body #mapColourKey#mapColourKey#mapColourKey .mck-info{margin:10px 0 0;padding:8px 0 0;border:0;border-top:1px solid var(--line);background:transparent;font-size:14px;max-height:min(46vh,360px);overflow-y:auto}
+#mapColourKey#mapColourKey#mapColourKey .mck-info p{margin:6px 0 0;font:400 14px/1.35 var(--sans);color:var(--ink);text-indent:0}
+#mapColourKey#mapColourKey#mapColourKey .mck-info p:first-child{margin-top:0}
+#mapColourKey#mapColourKey#mapColourKey .mck-word{font-weight:400;color:var(--lc)}
+/* Wherever the Layers control steps aside (the chat over the map, an open record, the wide chat, the feed), so does the key. */
+body:has(#curator-chat-drawer:not(.hidden)) #mapColourKey,
+body:has(#detailDrawer:not(.hidden)) #mapColourKey,
+:root.chat-wide #mapColourKey,
+:root.gm-sheet #mapColourKey,
+:root.gm-chat #mapColourKey,
+:root.gm-feed-open #mapColourKey{display:none!important}
+@media (max-width:767px){
+  body:has(#dossier-bottom-sheet:not(.hidden)) #mapColourKey{display:none!important}
+  /* Phone: level with the round Layers button (top right, 72px down), on the other side, and narrower. */
+  #mapColourKey#mapColourKey#mapColourKey{position:fixed;top:calc(var(--safe-t,0px) + 26px + var(--gmChips-h,46px));left:12px;right:auto;z-index:44;max-width:calc(100vw - 92px);padding:8px 10px}
+  #mapColourKey#mapColourKey#mapColourKey .mck-info{max-height:40vh}
+}
+
+/* ==== PHONE: FIXES UNDER THE DISPLAAY LAYER (user, 7 Nov 2026: "fix mobile based on visual design and library from displaay.net and
+   the UI from Google Maps") ====
+   The look is the Displaay layer above (1px ink ring, 10/14/20px corners, no shadows). These are the phone things it did not reach:
+   the record sheet on paper rather than the page's grey, its cross without a grey plate, hairlines between the menu's items, the
+   street map's old bar kept off the chat sheet, and the chat's box as one line with the keyboard's arrow beside Send instead of over
+   the text. The tokens: --gm-line (the same 1px ink edge as a border, where a ring cannot be drawn) and --gm-plate (the pressed ground). */
+@media (max-width:767px){
+  :root{--gm-line:1px solid var(--ink);--gm-plate:#e3e3e3}
+  :root[data-theme="dark"]{--gm-plate:var(--block)}
+  :root:is(.gm-map,.gm-chat):root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmMenu button+button{border-top:.8px solid var(--line)!important}
+  :root:is(.gm-map,.gm-chat):root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmMenu button{min-height:44px!important;font:400 14px/20px var(--sans)!important}
+  /* The record's body is the sheet's own paper, not the page's grey. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet{background:var(--paper)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet :is(#dossier-sheet-scrollable-body,.sheet-title-block,.sheet-chrome,.gm-tabs){background:var(--paper)!important}
+  /* The sheet's cross sits on the paper, not on a grey plate; it takes the plate only while pressed. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-close{background:transparent!important;border-radius:var(--btn-r,10px)!important;color:var(--ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-close:is(:hover,:active){background:var(--gm-plate)!important}
+  /* The street map's old bar (Exit, World, the country, the place) has no place over the chat sheet. */
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #cityViewControlBanner{display:none!important}
+  /* The chat's box is one line until typed into (rows=2 made it two lines high when empty), and the keyboard's arrow is a square
+     beside Send, with the same edge as the rest, in both boxes; it no longer sits over the text. */
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.chat-input-mode-active) #workViewContainer #workInputCard #noteInputBlock{min-height:0!important}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.chat-input-mode-active) #workViewContainer #workInputCard #workInput{height:48px;min-height:0!important}
+  :root.gm-chat:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root body:not(.chat-input-mode-active) #workViewContainer #workInputCard #workKbCloseBtn{position:static!important;top:auto!important;right:auto!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;margin:0!important;border:var(--gm-line)!important;border-radius:var(--btn-r,10px)!important;background:var(--paper)!important;color:var(--ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileComposerCard #mobileKbCloseBtn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;border:var(--gm-line)!important;border-radius:var(--btn-r,10px)!important;background:var(--paper)!important;color:var(--ink)!important}
+}
+
+/* The Top story strip was black with black type on it, on the phone and on the desktop: the rule that sets it on the light ground
+   (TOP STORY, 4 Nov 2026, "white or light beige grey") loses to the strip's first rule, whose selector carries :not([hidden]). The
+   same selector here, later, lets the light ground win. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]),:root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert:not([hidden]){background:var(--gm-top-ground)!important;color:var(--gm-top-ink)!important;box-shadow:var(--gm-shadow)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-head{color:var(--gm-top-ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-meta{color:var(--gm-top-soft)!important}
+}
+@media (min-width:768px){
+  :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]),:root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip.is-alert:not([hidden]){background:var(--gm-top-ground)!important;color:var(--gm-top-ink)!important;box-shadow:var(--gm-shadow)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-head{color:var(--gm-top-ink)!important}
+  :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmStoryStrip:not([hidden]) .gm-strip-meta{color:var(--gm-top-soft)!important}
+}
+
+/* The record sheet without slop (user, 7 Nov 2026: "delete slop"): the place under the grade in ink, not grey; the action pills are
+   words with even padding now that their icons are gone; the Overview rows start at the text. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .sheet-title-block #dossier-sheet-meta{color:var(--ink)!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .record-action-row.gm-actions .record-action{padding:0 14px!important;gap:0!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .gm-info li{gap:0}
+  /* A pill put away (the Website pill while the website is a row) stays away: the pills' own display rule outranked the data-gm-off rule. */
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet .record-action-row.gm-actions .record-action[data-gm-off]{display:none!important}
+}
+
+/* The record's actions are toggles (user, 7 Nov 2026: "make buttons toggles"): outlined when off, filled ink when pressed. Ask in chat is
+   pressed while the record is open over the chat; Money map while the money layers are on. The Displaay layer above fills Ask in chat
+   as the first pill with 14 ids; the 16 here let the pressed state decide instead. */
+@media (max-width:767px){
+  :is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action:not([aria-pressed="true"]),:is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-sheet-ask-btn:not([aria-pressed="true"]){background:var(--paper)!important;color:var(--ink)!important}
+  :is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action[aria-pressed="true"]{background:var(--ink)!important;color:var(--paper)!important}
+  :is(#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t#t,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action:not([aria-pressed="true"]):is(:hover,:active){background:var(--gm-plate)!important;color:var(--ink)!important}
+}
+
+/* =====================================================================================================
+   PHONE: DISPLAAY MOBILE TYPE SCALE (user, 7 Nov 2026: "make sure the typography is taken from the mobile
+   version of displaay.net"). Their phone sizes, read from displaay.net/assets/root-*.css with html at 10px:
+   smS 14px/130%/.3px, s and body 15px/130% (139% for paragraphs)/.3px, smM 17px/115%/.21px, m 21px/115%/.21px,
+   l 28px/110%/-.28px; weight 400 throughout (they have no light), uppercase labels tracked .02em at 1.1;
+   buttons 34px tall, 15px type, 12px side padding. Jokker stands in for Saans, Serrif Light for Serrif. The
+   search field is 17px, not 15px, so iOS does not zoom the page on focus. Long Serrif prose takes 1.25, not
+   their 1.15, which they use for a two-line paragraph only. 24 ids, so it outranks every layer above.
+   ===================================================================================================== */
+@media (max-width:767px){
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet #dossier-sheet-meta, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-rating .gm-grade-text, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-info li, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-info li span, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmMenu button, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmToast, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmToast .gm-toast-text, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmToast .gm-toast-name, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmToast .gm-toast-meta, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmLocateNote, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #cityViewControlBanner #cityViewTitleBadge, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-fe, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-live, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-alert-tag, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-prov, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed small, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-note, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-poster-place, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-poster-status, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-src, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-when, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-said, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-reply, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-stat, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-prose, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-note, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-row, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-sec-meta, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workspaceContextTabBar button{font-family:var(--sans)!important;font-weight:400!important;font-size:15px!important;line-height:1.3!important;letter-spacing:.3px!important;text-transform:none!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .record-action-row.gm-actions .record-action, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-sheet-ask-btn, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-from-chat-bar button, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-tabs button, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) .curator-suggest-chip, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) .gm-loc-chip{font-family:var(--sans)!important;font-weight:400!important;font-size:15px!important;line-height:1.3!important;letter-spacing:.3px!important;text-transform:none!important;height:34px!important;min-height:34px!important;padding-top:0!important;padding-bottom:0!important;padding-left:12px!important;padding-right:12px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .d-rows h3.d-row-title, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .kicker:not(#dossier-sheet-meta), :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-label, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts-sec-title, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-poster-pill, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmStoryStrip .gm-strip-label{font-family:var(--sans)!important;font-weight:400!important;font-size:15px!important;line-height:1.1!important;letter-spacing:.02em!important;text-transform:uppercase!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmStoryStrip .gm-strip-head, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmStoryStrip .gm-strip-meta, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-story-mark, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-share, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-bell, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) .gm-alert-mark, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #layersControl #layersBtn, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-toast-when{font-family:var(--sans)!important;font-weight:400!important;font-size:14px!important;line-height:1.3!important;letter-spacing:.3px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main :is(p,li,ul), :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .account-note, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-side :is(.kicker,strong,.meta,span,a){font-family:var(--sans)!important;font-weight:400!important;font-size:15px!important;line-height:1.39!important;letter-spacing:.3px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet #dossier-sheet-scrollable-body :is(p,li,blockquote,dd,dt,figcaption), :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet #dossier-sheet-summary, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .institution-summary{font-family:"Serrif",Georgia,serif!important;font-weight:300!important;letter-spacing:.21px!important;font-size:17px!important;line-height:1.25!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-desc{font-family:"Serrif",Georgia,serif!important;font-weight:300!important;letter-spacing:.21px!important;font-size:17px!important;line-height:1.15!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet #dossier-sheet-name, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet.is-hq-sheet #hqPanel h2, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-head h2, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-sec, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .is-top .gm-open, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .is-top .gm-story-said, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-poster-name, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) :is(#curatorMessages,#curatorDrawerLiveStream) .dp-set .dp-main>:first-child{font-family:var(--sans)!important;font-weight:400!important;font-size:21px!important;line-height:1.15!important;letter-spacing:.21px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .ts .ts-headline .gm-open{font-family:"Serrif",Georgia,serif!important;font-weight:300!important;font-size:21px!important;line-height:1.15!important;letter-spacing:.21px!important;text-transform:none!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-open{font-family:var(--sans)!important;font-weight:400!important;font-size:17px!important;line-height:1.15!important;letter-spacing:.21px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) body:not(.chat-input-mode-active) #workInputCard .gm-chat-greeting, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .gm-chat-title, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .dossier-main-heading, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #gmFeed .gm-feed-head .gm-feed-title, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) .dp-set>h3.kicker{font-family:var(--sans)!important;font-weight:400!important;font-size:28px!important;line-height:1.1!important;letter-spacing:-.28px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workInput, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workInput::placeholder{font-family:var(--sans)!important;font-weight:400!important;font-size:17px!important;line-height:1.15!important;letter-spacing:.21px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-rating .gm-grade-text{display:block!important;min-width:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;color:var(--ink)!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word{font:inherit!important;letter-spacing:inherit!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word:is([data-grade="A"],[data-grade="B"]){color:#188038!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word[data-grade="C"]{color:#b06000!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word[data-grade="D"]{color:#d93025!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #dossier-bottom-sheet .gm-grade-word[data-grade="F"]{color:#a50e0e!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html)[data-theme="dark"] #dossier-bottom-sheet .gm-grade-word:is([data-grade="A"],[data-grade="B"]){color:#81c995!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html)[data-theme="dark"] #dossier-bottom-sheet .gm-grade-word[data-grade="C"]{color:#fdd663!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html)[data-theme="dark"] #dossier-bottom-sheet .gm-grade-word[data-grade="D"]{color:#f28b82!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html)[data-theme="dark"] #dossier-bottom-sheet .gm-grade-word[data-grade="F"]{color:#ee675c!important}
+}
+/* The chat sheet on the same scale: "Ask the curator" at their l (28px/110%/-.28px), the suggested questions at smM (17px/115%/.21px). */
+@media (max-width:767px){
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #curatorHeroGreeting, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #curatorHeroGreeting::before{font-family:var(--sans)!important;font-weight:400!important;font-size:28px!important;line-height:1.1!important;letter-spacing:-.28px!important}
+  :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .starter-prompt, :is(#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty#ty,html) #workViewContainer .starter-prompt *{font-family:var(--sans)!important;font-weight:400!important;font-size:17px!important;line-height:1.15!important;letter-spacing:.21px!important}
+}
+
+/* ---- THE NOTE FORM: PROPER FIELDS, HALF THE AIR, A BACK BUTTON (user, 7 Nov 2026: "do proper form field and make margin 50%
+   less, add back button with arrow back") ----
+   Each input is a field of its own again: a 1px ink edge with 10px corners (the Displaay button's), 44px tall, the typed words
+   inside it, in place of the ruled lines of 4 Nov. The label stays over the field at 15px. Focus is the site's 2px outline
+   around the field itself, not a bar under the block. Every distance of the 5 Nov layer is halved: the card's padding
+   (56/64 to 28/32, 28/24 on a phone to 14/12), the head's 16 to 8, the intro's 40 to 20 (28 to 14 on a phone), the
+   checkbox's 32 to 16, the toolbar's 40 to 20. Back is a Displaay button with an arrow, over the title; it does what the
+   cross does (toggleChatShare), so the chat comes back whichever is pressed. 16 ids, after the layers it replaces. */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode{padding:28px 32px 32px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormHead{margin:0 0 8px!important;gap:12px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormIntro{margin:0 0 20px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock),
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock):is(:hover,:focus-within){margin:0 0 12px!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormFields>.nf-field:first-of-type{border-top:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field>span,#noteInputLabel){margin:0 0 6px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea){display:block;width:100%!important;box-sizing:border-box!important;min-height:44px!important;margin:0!important;padding:10px 12px!important;border:1px solid var(--dp-ink)!important;border-radius:10px!important;background:var(--dp-paper)!important;color:var(--dp-ink)!important;box-shadow:none!important;outline:0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteInputBlock textarea{min-height:7em!important;resize:vertical!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea):focus-visible{outline:2px solid var(--focus)!important;outline-offset:2px!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteAckRow{margin:16px 0 0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormStatus{margin:8px 0 0!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode>div.justify-between{padding-top:20px!important}
+/* Back: the arrow and the word, a Displaay button, 34px, 10px corners, a 1px ink edge; hover and press fill it with ink. It is
+   the first thing in the form so a screen reader meets it before the title, as a back control is met on a phone. */
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn{display:inline-flex!important;align-items:center;gap:8px;align-self:flex-start;box-sizing:border-box;height:34px!important;min-height:34px!important;width:auto!important;margin:0 0 16px!important;padding:0 12px 0 10px!important;border:1px solid var(--dp-ink)!important;border-radius:10px!important;background:transparent!important;color:var(--dp-ink)!important;font:400 15px/1.3 var(--sans)!important;letter-spacing:.02em!important;text-decoration:none!important;cursor:pointer;transition:var(--btn-ease)}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn .note-back-arrow{display:block;flex:none;width:16px;height:16px;color:inherit}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn:is(:hover,:active){background:var(--dp-ink)!important;color:var(--dp-paper)!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn:focus-visible{outline:2px solid var(--focus)!important;outline-offset:2px!important}
+body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!important}
+@media (max-width:520px){
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode{padding:14px 12px 16px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteFormIntro{margin:0 0 14px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode :is(.nf-field,#noteInputBlock){padding:0!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode #noteAckRow{margin:12px 0 0!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard.is-mode>div.justify-between{padding-top:14px!important}
+  :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #workInputCard #noteFormBackBtn{margin:0 0 12px!important}
+}
+
+/* ==== PHONE: THE LAYERS SHEET, WITH THE COLOUR KEY IN IT (9 Nov 2026) ====
+   The Layers sheet opened under the filter chips and the colour key: #layersControl is a stacking context of its own (fixed,
+   z 44), so the sheet's z-index of 60 never reached the chips beside it at 44. Now the sheet is the only thing up, over a scrim.
+   And the colour key is the sheet's first section on a phone (assets/phone-maps.js moves it there), not a box on the map: open
+   by default it covered the map (at 320px wide it left 31px of map between its foot and the composer), and folded to a button
+   of three dots it was a mark that said nothing (user, 9 Nov 2026: "rethink the color key"). */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:has(#layersPanel:not([hidden])) #gmChips{display:none!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl:has(#layersPanel:not([hidden]))::before{content:"";position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.32)}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #layersControl:has(#layersPanel:not([hidden])) #layersBtn{visibility:hidden}
+  /* In the sheet the key is a section like the others: in the flow, full width, no box of its own, its title as the sections' titles. */
+  #layersPanel #mapColourKey#mapColourKey#mapColourKey{position:static;top:auto;left:auto;right:auto;z-index:auto;width:auto;max-width:none;padding:10px 0 4px;border:0;background:transparent;box-shadow:none}
+  #layersPanel #mapColourKey#mapColourKey#mapColourKey .mck-head{margin:0 0 8px}
+  #layersPanel #mapColourKey#mapColourKey#mapColourKey .mck-title{margin:0;font:400 var(--fs-s)/1.2 var(--sans)!important}
+  #layersPanel #mapColourKey#mapColourKey#mapColourKey .mck-info{max-height:none}
+}
+
+/* ---- Phone: a slimmer filter row, and the question chips in from the edge (user, 9 Nov 2026: "Fix mobile version design,
+   tabs are too big on top and need to scroll and bottom buttons get cut off") ----
+   The filters wrapped to three rows of 36px pills at 15px, 134px of the top of a 390px screen, with the first city labels
+   under them. They are now one row that scrolls sideways, as the suggested questions at the bottom do: 30px pills at 14px
+   (still over the 24px target size of WCAG 2.2), 12px in from each edge, so the row is 38px and the Layers button and the
+   colour key move up with it through --gmChips-h. At the bottom, an older rule (#mobileStickyInputBar>#mobileSuggestChips,
+   two ids) pulled the question row 16px past the screen's edge and padded it back by 16px, which put the first chip on
+   the very edge and cut it; the row now sits in the bar and starts on the same 12px line as the box under it. */
+@media (max-width:767px){
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips#gmChips#gmChips{flex-wrap:nowrap;left:0;right:0;padding:2px var(--gm-gap,12px) 6px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scroll-padding-inline:var(--gm-gap,12px);gap:6px}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #gmChips#gmChips#gmChips::-webkit-scrollbar{display:none}
+  #gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip{flex:none!important;height:30px!important;min-height:30px!important;padding:0 12px!important;font-size:14px!important;line-height:1!important;border-radius:15px!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #mobileStickyInputBar#mobileStickyInputBar>#mobileSuggestChips#mobileSuggestChips{margin:0!important;padding:2px var(--gm-gap,12px) 6px!important;scroll-padding-inline:var(--gm-gap,12px)}
+}
+
+/* ---- Phone: sizes closer to the Claude app on a phone (user, 9 Nov 2026: "Make sizing on mobile closer to Claude on
+   mobile") ----
+   Measured before at 390px: the chat answers were 14px on a 20px line, your questions 14px, the map box 18px, the
+   filters 30px at 14px, the question chips 34px, the location button 52px. The Claude app sets its conversation at
+   about 17px on a line of about 1.45, the box at 17px, its chips about 36px at 15px and its round controls about 44px.
+   The selectors open with :is() of twenty-six ids so they outrank the id-stacked layers above (the deepest, #ty, is twenty-four). */
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream){font-size:17px!important;line-height:1.45!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,li,blockquote,dd,dt,td,th){font-size:17px!important;line-height:1.45!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,li) :is(span,a,em,strong):not(.abbr):not(.grade-word){font-size:inherit!important;line-height:inherit!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) .abbr{font-size:.9em!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) :is(p,ul,ol){margin-bottom:12px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) .user-bubble{font-size:17px!important;line-height:1.35!important;padding:10px 16px!important;border-radius:20px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#curatorMessages,#curatorDrawerLiveStream) .thinking{font-size:15px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) :is(#workInput,#chat-input){font-size:17px!important}
+  #gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips#gmChips .gm-filter-chip{height:32px!important;min-height:32px!important;padding:0 14px!important;font-size:15px!important;border-radius:16px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #mobileSuggestChips .curator-suggest-chip{height:36px!important;min-height:36px!important;padding:0 14px!important;font-size:15px!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #gmLocateBtn{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important}
+}
+
+/* The "Looking at" row the chat leaves when a record is opened mid-conversation (offerBrowseChips in index.html): a small
+   label over the record's questions, in the secondary ink, at the 14px floor. */
+#curatorMessages .curator-browse-label{margin:0 0 4px;font-size:14px;line-height:1.3;color:color-mix(in srgb,var(--ink) 65%,transparent);text-indent:0}
+
+/* ---- CHAT: ARROW DOWN (user, 9 Nov 2026: "Add arrow down button to mobile chat") ----
+   The round button over the phone's composer that takes the chat back to the newest line once the reader has scrolled up
+   (index.html, #chatJumpBtn). A 40px circle on paper with a 1px ink edge, centred just above the box; the desktop has no
+   such button. hidden is set by the script while the end of the chat is in view. */
+#chatJumpBtn{display:none}
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workBottomDock{position:relative}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:not([hidden]){display:flex!important;align-items:center;justify-content:center;position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--paper)!important;color:var(--ink)!important;box-shadow:0 0 0 1px var(--ink),0 2px 8px rgba(0,0,0,.12)!important;z-index:5;cursor:pointer}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:focus-visible{outline:3px solid var(--focus)!important;outline-offset:2px}
+  @media (hover:hover){:is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #chatJumpBtn:hover{background:var(--ink)!important;color:var(--paper)!important}}
+}
+
+/* The phone chat's send button is round, as in the Claude app (user, 9 Nov 2026: the triangle in a black square "looks like
+   slop"): a 40px ink circle with the up arrow in paper, 20px. The desktop keeps its Displaay corners. */
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workSendBtn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--ink)!important;color:var(--paper)!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #workSendBtn svg{width:20px!important;height:20px!important}
+}
+
+/* ==== PHONE: THE FUNDER'S RECORD IN THE SHEET (user, 9 Nov 2026: "Slop") ====
+   The sheet's cross is the only one on a funder's record (PHONE: MAPS APP hides .hq-close), but the Displaay button layer drew it
+   again with fourteen ids, so two crosses sat one under the other. And the head kept the desktop's two lines of air under it. */
+@media (max-width:767px){
+  :is(#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay#displaay,html) #dossier-bottom-sheet.is-hq-sheet #hqPanel .hq-close{display:none!important}
+  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet.is-hq-sheet #hqPanel .hq-sheet{padding-bottom:16px!important;margin-bottom:0!important}
+}
+/* ==== DESKTOP: THE CHAT LIKE THE CLAUDE DESKTOP APP (user, 9 Nov 2026: "make chat design like in Claude desktop app with same
+   sizing, keep share information button") ====
+   Replaces the Gemini look above. Sizes are the Claude app's: the conversation at 16px on a 1.6 line, your questions in a soft
+   rounded bubble at the right (16px, 16px corners), the answers as plain text with no spark, the suggestions as 14px
+   outlined pills, and a prompt card with a 20px corner and a 1px hairline: the box at 16px on top, a tool row under it with
+   Share information at the left (a quiet text button, kept) and Voice and a 32px round send button at the right.
+   The selectors open with :is() of thirty ids, so they outrank the id-stacked layers above (the deepest, #claude, is twenty-six).
+   The tab bar wraps instead of overlapping when the chat column is dragged narrow (user, 9 Nov 2026: "buttons on top
+   overlap when i resize the chat window"): the older rule set it to nowrap, and "Chat with the curator" ran under New Query. */
+@media (min-width:768px){
+  :root{--cl-line:color-mix(in srgb,var(--ink) 16%,var(--paper));--cl-bubble:#f0eee6;--cl-hover:#f5f4ee;--cl-2:#5d5b55}
+  :root[data-theme="dark"]{--cl-line:color-mix(in srgb,var(--ink) 20%,var(--paper));--cl-bubble:#2b2a27;--cl-hover:#262522;--cl-2:#b9b6ad}
+
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceContextTabBar{flex-wrap:wrap!important;row-gap:4px!important;column-gap:8px!important;padding:4px 12px 8px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceContextTabBar>div{flex-wrap:wrap!important;min-width:0!important;row-gap:4px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceContextTabBar>div:last-child{margin-left:auto}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceContextTabBar button{flex:none!important;max-width:100%!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workspaceNewChatBtn{margin-left:0!important}
+
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorScrollArea{padding:8px 20px 16px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages{gap:0!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages :is(p,li){font-size:16px!important;line-height:1.6!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages>.curator-message-wrap:not(.has-bubble):not(#curatorHeroGreeting){margin:8px 0 20px!important;padding:0!important;font-size:16px!important;line-height:1.6!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages>.curator-message-wrap:not(.has-bubble):not(#curatorHeroGreeting)::before{content:none!important;display:none!important;animation:none!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages>.justify-end:not(.has-bubble){margin:16px 0 8px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorMessages .user-bubble{max-width:85%!important;padding:10px 16px!important;border:0!important;border-radius:16px!important;background:var(--cl-bubble)!important;color:var(--ink)!important;font:400 16px/1.5 var(--sans)!important;box-shadow:none!important}
+
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #curatorHeroGreeting::before{font:400 32px/1.15 var(--sans)!important;letter-spacing:-.01em!important;background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;color:var(--ink)!important;margin:0 0 20px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) .starter-prompt{border:1px solid var(--cl-line)!important;border-radius:12px!important;background:transparent!important;color:var(--ink)!important;padding:8px 14px!important;font:400 14px/1.4 var(--sans)!important;box-shadow:none!important;text-align:left!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) .starter-prompt:hover{background:var(--cl-hover)!important}
+
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workBottomDock{padding:0 16px 12px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard{padding:14px 14px 10px!important;border:1px solid var(--cl-line)!important;border-radius:20px!important;background:var(--paper)!important;box-shadow:0 4px 20px rgba(0,0,0,.05)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard:focus-within{border-color:color-mix(in srgb,var(--ink) 30%,var(--paper))!important;background:var(--paper)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #noteInputBlock{padding:0 4px 8px!important;background:transparent!important;border:0!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #workInput{min-height:48px!important;font:400 16px/1.5 var(--sans)!important;color:var(--ink)!important;background:transparent!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #chatShareBtn{height:32px!important;min-height:0!important;margin:0!important;padding:0 10px!important;border:0!important;border-radius:8px!important;background:transparent!important;color:var(--cl-2)!important;font:400 14px/1 var(--sans)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #chatShareBtn:hover,:is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #chatShareBtn[aria-pressed="true"]{background:var(--cl-bubble)!important;color:var(--ink)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #curatorVoiceToggleBtn{height:32px!important;min-height:0!important;padding:0 10px!important;border:0!important;border-radius:8px!important;background:transparent!important;color:var(--cl-2)!important;font:400 14px/1 var(--sans)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #curatorVoiceToggleBtn:hover{background:var(--cl-bubble)!important;color:var(--ink)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #workSendBtn{width:32px!important;height:32px!important;min-width:32px!important;min-height:0!important;padding:0!important;border:0!important;border-radius:50%!important;background:var(--ink)!important;color:var(--paper)!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #workSendBtn svg{width:14px!important;height:14px!important}
+}
+
+/* The colour key, set as the grade a museum shows under its round i button (user, 9 Nov 2026: "color key info is weird, made
+   it like on each museum tag under info button"): the grade words are plain coloured words, as .grade-word is on a record,
+   with no outlined box, and the rules open in the record's panel (.grade-info: a 1px ink box) with the scale as a list. */
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-list{column-gap:14px!important;row-gap:4px!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey :is(.mck-pill,.mck-word){padding:0!important;border:0!important;background:transparent!important;color:var(--lc)!important;text-transform:uppercase!important;letter-spacing:1pt!important;font-weight:400!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info{margin:8px 0 0!important;padding:.75em!important;border:1px solid var(--ink)!important;background:var(--paper)!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info ul.mck-scale{margin:.4em 0 .6em!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info ul.mck-scale>li{gap:.8em!important;margin:0 0 .4em!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info ul.mck-scale>li>.mck-word{flex:none;min-width:6.6em;white-space:nowrap}
+
+@media (min-width:768px){
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard #workSendBtn{top:auto!important;bottom:0!important;right:14px!important}
+  :is(#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc#cc,html) #workInputCard>div.justify-between{justify-content:space-between!important;align-items:center!important;padding:0 44px 0 0!important}
+}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info :is(ul.mck-scale,ul.mck-scale>li,ul.mck-scale>li>span){font-size:14px!important;line-height:1.35!important;font-weight:400!important;letter-spacing:0!important;text-indent:0!important}
+#mapColourKey#mapColourKey#mapColourKey#mapColourKey .mck-info ul.mck-scale>li>.mck-word{letter-spacing:1pt!important;min-width:6.2em}
+
+/* ---- Phone: the Layers button (user, 9 Nov 2026: "Fix the layers button on mobile, it looks too big") ----
+   It held two icons, the phone's (.gm-layers-icon) and the desktop's (.gmd-layers-icon, a 0px span whose drawing spilled
+   out of it), and the pair sat 12px left of the button, so the button read as an empty 44px rounded square with the mark
+   hanging off its edge; the word Layers, invisible but 45px wide, pushed them there. On a phone the word is set at 0px (it
+   stays the button's accessible name), the desktop icon is dropped, the phone's is centred at 20px, and the button is a 40px
+   circle, as the README has it ("a round button at the top right") and as the Claude app draws its round controls. */
+@media (max-width:767px){
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn{display:flex!important;align-items:center!important;justify-content:center!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;gap:0!important;border-radius:50%!important;font-size:0!important;line-height:0!important;letter-spacing:0!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gmd-layers-icon{display:none!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gm-layers-icon{display:flex!important;width:20px!important;height:20px!important;margin:0!important}
+  :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gm-layers-icon svg{width:20px!important;height:20px!important}
+}
+
+/* Writing aids under the note box (assets/note-aids.js): spelling corrected as the reader types, and dictation. Shown only
+   while a note is written; they take the note box's own colours in both themes. */
+#noteAidsRow,#noteDictateInfo{display:none}
+body.chat-input-mode-active #noteAidsRow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:12px 0 0;color:inherit}
+body.chat-input-mode-active #noteAidsRow .nf-aid{display:flex;align-items:center;gap:10px;margin:0;padding:0;background:none;cursor:pointer;font:400 var(--fs-s)/1.3 var(--sans);color:inherit}
+body.chat-input-mode-active #noteAidsRow .nf-aid span{display:inline;margin:0;font:inherit;color:inherit}
+body.chat-input-mode-active #noteAidsRow .nf-aid input{flex:none;width:18px;height:18px;margin:0;accent-color:#fff204;cursor:pointer}
+body.chat-input-mode-active #noteDictateBtn{flex:none;padding:6px 14px;border:.8px solid currentColor;border-radius:0;background:transparent;color:inherit;font:400 var(--fs-s)/1.2 var(--sans);cursor:pointer}
+body.chat-input-mode-active #noteDictateBtn.is-listening{background:#fff204;border-color:#fff204;color:#000}
+body.chat-input-mode-active #noteDictateBtn[hidden]{display:none}
+body.chat-input-mode-active #noteDictateInfo:not([hidden]){display:block;margin:10px 0 0;font:400 var(--fs-s)/1.4 var(--sans);color:inherit}
+#workInputCard #noteAidsRow #noteDictateBtn{border-color:currentColor!important}
+#workInputCard #noteAidsRow #noteDictateBtn.is-listening{border-color:#fff204!important}
+
+/* Files attached to a note (assets/note-files.js): the Attach button beside Dictate, chips above the note box as a chat
+   shows them, and a dashed outline while a file is dragged over the card. */
+#noteFileList,#noteFileInfo{display:none}
+body.chat-input-mode-active #noteAidsRow .note-aid-btns{display:flex;flex-wrap:wrap;gap:8px}
+body.chat-input-mode-active #noteAttachBtn{display:inline-flex;align-items:center;gap:6px;flex:none;padding:6px 14px;border:.8px solid currentColor;border-radius:0;background:transparent;color:inherit;font:400 var(--fs-s)/1.2 var(--sans);cursor:pointer}
+body.chat-input-mode-active #noteAttachBtn svg{width:15px;height:15px;flex:none}
+body.chat-input-mode-active #noteAttachBtn:disabled{opacity:.4;cursor:default}
+#workInputCard #noteAidsRow #noteAttachBtn{border-color:currentColor!important}
+body.chat-input-mode-active #noteFileList:not([hidden]){display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 10px;padding:0}
+body.chat-input-mode-active .note-file{display:flex;align-items:center;gap:10px;max-width:100%;width:236px;padding:6px 6px 6px 6px;border:.8px solid currentColor;color:inherit}
+body.chat-input-mode-active .note-file img,body.chat-input-mode-active .note-file-tile{flex:none;width:40px;height:40px;object-fit:cover;display:flex;align-items:center;justify-content:center;background:rgba(127,127,127,.18);font:400 11px/1 var(--sans);letter-spacing:.04em}
+body.chat-input-mode-active .note-file-text{display:flex;flex-direction:column;min-width:0;flex:1;font:400 var(--fs-s)/1.25 var(--sans)}
+body.chat-input-mode-active .note-file-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.chat-input-mode-active .note-file-meta{opacity:.7}
+body.chat-input-mode-active .note-file-remove{flex:none;display:flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:0;background:transparent;color:inherit;cursor:pointer}
+body.chat-input-mode-active .note-file-remove svg{width:16px;height:16px}
+body.chat-input-mode-active #noteFileInfo:not([hidden]){display:block;margin:10px 0 0;font:400 var(--fs-s)/1.4 var(--sans);color:inherit}
+body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed currentColor;outline-offset:6px}
+
+/* Files approved with a review: photos as square thumbnails, a PDF as a labelled link. */
+.review-files{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:10px 0 0}
+.review-photo{display:block;width:96px;height:96px;border:.8px solid var(--line);overflow:hidden}
+.review-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.review-doc{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;padding:6px 12px 6px 6px;border:.8px solid var(--line);color:inherit;text-decoration:none;font:400 var(--fs-s)/1.2 var(--sans)}
+.review-doc-tile{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--ink);color:var(--paper);font:400 11px/1 var(--sans);letter-spacing:.04em}
+#workInputCard #noteFileList .note-file{border-color:currentColor!important}
+
+/* DROPPED PIN (user, 11 Nov 2026: "make map in cultural atlas work similar to Google Maps"). The place whose sheet is open
+   gets one pin, as a maps app drops one: on the globe it is drawn on the card layer (drawDroppedPin in index.html), on the
+   street map it is this marker. Ink with a hole in the paper and a 1px paper edge, so it reads on hairlines and land in both
+   themes; it falls into place, and with reduced motion it is simply there. It takes no clicks: the space's badge under it does. */
+.atlas-drop-pin{pointer-events:none;z-index:3;line-height:0}
+.atlas-drop-pin svg{display:block;overflow:visible}
+.atlas-drop-pin path{fill:var(--ink);stroke:var(--paper);stroke-width:1}
+.atlas-drop-pin circle{fill:var(--paper)}
+.atlas-drop-pin.is-dropping svg{animation:atlas-pin-drop .22s cubic-bezier(.3,0,.6,1) both}
+@keyframes atlas-pin-drop{from{transform:translateY(-14px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.atlas-drop-pin.is-dropping svg{animation:none}}

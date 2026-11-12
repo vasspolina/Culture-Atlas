@@ -1,0 +1,217 @@
+[
+  {
+    "id": "fondation-hartung-bergman",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "maison-louis-carre",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "villa-cavrois",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": 2800,
+      "area_kind": "building",
+      "sources": [
+        "https://www.villa-cavrois.fr/en/discover/history-of-the-villa-cavrois",
+        "https://www.villa-cavrois.fr/decouvrir/histoire-de-la-villa-cavrois"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the villa's own history page gives 2,800 m2 of floor space for the house."
+  },
+  {
+    "id": "appartement-temoin-perret",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": 100,
+      "area_kind": "building",
+      "sources": [
+        "https://www.lehavreseine-patrimoine.fr/patrimoines/le-havre-patrimoine-mondial/appartement-temoin-perret"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the Le Havre Seine heritage service page that runs the visits gives 100 m2 for the apartment."
+  },
+  {
+    "id": "van-doesburghuis",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": {
+      "fy": "2025",
+      "currency": "EUR",
+      "income": 90321,
+      "expenditure": null,
+      "public": 63168,
+      "private": null,
+      "earned": null,
+      "sponsorship": null,
+      "net_assets": null,
+      "source_kind": "other",
+      "url": "https://vandoesburghuis.com/wp-content/uploads/2026/03/financial-report-2025.pdf"
+    },
+    "basis": "Finance: Totaal Baten for Werkelijk 2025 in the foundation's unaudited Financieel verslag 2025 (PDF page 1, amounts including VAT), with public as line 4 Jaarlijkse bijdragen (OCW grant 34,000 plus BuZa maintenance refund 29,168); expenditure is left out because the report says the property manager's invoices for the second half of 2025 had not arrived."
+  },
+  {
+    "id": "villa-majorelle",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "appartement-atelier-le-corbusier",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": 240,
+      "area_kind": "building",
+      "sources": [
+        "https://www.fondationlecorbusier.fr/en/visit/appartement-le-corbusier-paris/"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the Fondation Le Corbusier visit page gives 240 m2 for the duplex that holds the apartment and painting studio."
+  },
+  {
+    "id": "palais-de-la-porte-doree-musee-national-de-l-histoire-de-l-immigration",
+    "scale": {
+      "visitors": 208704,
+      "visitors_year": "2024",
+      "staff": 108,
+      "staff_kind": "employees",
+      "staff_year": "2024",
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://www.palais-portedoree.fr/sites/default/files/2025-08/Rapport_activites-2024_Palaisportedoree.pdf"
+      ]
+    },
+    "finance": {
+      "fy": "2024",
+      "currency": "EUR",
+      "income": 15612537,
+      "expenditure": 15608111,
+      "public": 11965636,
+      "private": null,
+      "earned": null,
+      "sponsorship": 68000,
+      "net_assets": null,
+      "source_kind": "annual report",
+      "url": "https://www.palais-portedoree.fr/sites/default/files/2025-08/Rapport_activites-2024_Palaisportedoree.pdf"
+    },
+    "basis": "Scale: Rapport d'activites 2024, PDF page 10, gives 208,704 visitors to the museum alone in 2024 (the Palais total of 634,946 adds the Aquarium and event audiences), and PDF page 76 gives 108 agents on 31 December 2024, including 3 apprentices. Finance: Compte de resultat 2024 on PDF page 82 covers the whole Etablissement public du Palais de la Porte Doree (museum, Aquarium tropical and monument on one site), with TOTAL RECETTES, TOTAL DEPENSES, Ressources publiques and Mecenat as written."
+  },
+  {
+    "id": "villa-savoye",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "cap-moderne-villa-e-1027-and-le-cabanon",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "joseph-stalin-museum",
+    "scale": {
+      "visitors": null,
+      "visitors_year": null,
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": []
+    },
+    "finance": null,
+    "basis": ""
+  },
+  {
+    "id": "georg-kolbe-museum",
+    "scale": {
+      "visitors": 24964,
+      "visitors_year": "2024",
+      "staff": null,
+      "staff_kind": null,
+      "staff_year": null,
+      "area_m2": null,
+      "area_kind": null,
+      "sources": [
+        "https://www.berlin.de/sen/kultgz/aktuelles/pressemitteilungen/2026/2026_pm_besucher-innenzahlen-2025_anhang.pdf"
+      ]
+    },
+    "finance": null,
+    "basis": "Scale: the Senate culture department table of visitors to state-funded Berlin museums (PDF page 1, Georg Kolbe Museum row) gives 24,964 visitors for 2024 as IST, the 2025 figure in the same table being provisional."
+  }
+]
