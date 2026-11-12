@@ -1226,3 +1226,18 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 @layer sheet{
   #dossier-bottom-sheet.is-hq-sheet :is(.sheet-title-block,.gm-actions,.gm-tabs){display:none!important}
 }
+
+/* The phone chat's head (user, 12 Nov 2026: "fix title now it sits on the line"). The reset above (padding 0, height auto on every
+   button and tab) won over the head's own rules in atlas.css, which are unlayered: Chat and Details ran together as one word
+   ("ChatDetails"), dropped to the foot of the head and sat on its rule, below the menu and the cross. Here, in the layer, the
+   two tabs are separate words 20px apart, each a 44px target, centred on one line with the menu and the cross, with their
+   underline inside the tab and air between it and the rule. While the chat is open the filter chips step aside, as they do
+   for the Layers sheet: the chat is the only thing on screen. */
+@layer sheet{
+  :root.gm-chat #phoneChatHead{align-items:center!important;padding-top:10px!important;padding-bottom:6px!important;height:auto!important;min-height:60px!important}
+  :root.gm-chat #phoneChatHead .gm-head-tabs{display:flex!important;align-self:center!important;align-items:center!important;gap:20px!important;margin:0!important}
+  :root.gm-chat #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn:not(.hidden)){display:inline-flex!important;position:relative!important;align-items:center!important;height:44px!important;min-height:44px!important;padding:0!important;white-space:nowrap!important;font-style:normal!important}
+  :root.gm-chat #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn)[aria-selected="true"]::after{left:0!important;right:0!important;bottom:6px!important;height:2px!important;border-radius:0!important}
+  :root.gm-chat #phoneChatHead :is(#gmChatMenuBtn,#phoneChatCloseBtn){align-self:center!important;width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+  :root.gm-chat #gmChips:not(#sh-x):not(#sh-y){display:none!important}
+}
