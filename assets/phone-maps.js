@@ -488,18 +488,23 @@
       // Dragging. Below full the whole sheet moves with the finger; at full the record scrolls, and only a pull down
       // from its top moves the sheet. On release it snaps to the nearest height, a flick goes one further, and a pull
       // well below peek closes it.
-      let y0 = null, h0 = 0, t0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
+      // A drag may start anywhere but a text field (12 Nov 2026). It used to skip buttons and links, and below full the sheet
+      // does not scroll, so a swipe that began on the actions, the tabs, the Overview rows or a city's list of spaces moved
+      // nothing at all. A tap is still a tap: only a move past 6px becomes a drag, and a drag is never read as a click.
+      // A sideways move is left to the rows that scroll sideways (the actions, the tabs).
+      let x0 = 0, y0 = null, h0 = 0, t0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
       sheet.addEventListener('touchstart', (e) => {
         // Opened from the chat, the record is a page of its own at full height: it only scrolls, it is never dragged.
         if (!PHONE() || e.touches.length !== 1 || root.classList.contains('gm-from-chat')) { y0 = null; return; }
-        if (e.target.closest('button, a, input, textarea, select, summary, label') && !(chrome && chrome.contains(e.target) && !e.target.closest('#close-sheet-btn'))) { y0 = null; return; }
-        y0 = lastY = e.touches[0].clientY; t0 = lastT = Date.now(); h0 = sheet.offsetHeight; vel = 0; dragging = false;
+        if (e.target.closest('input, textarea, select, [contenteditable="true"]')) { y0 = null; return; }
+        x0 = e.touches[0].clientX; y0 = lastY = e.touches[0].clientY; t0 = lastT = Date.now(); h0 = sheet.offsetHeight; vel = 0; dragging = false;
       }, { passive: true });
       sheet.addEventListener('touchmove', (e) => {
         if (y0 === null) return;
         const y = e.touches[0].clientY, d = y - y0, now = Date.now();
         if (!dragging) {
-          if (Math.abs(d) < 6) return;
+          if (Math.abs(d) < 6) { if (Math.abs(e.touches[0].clientX - x0) >= 6) y0 = null; return; }
+          if (Math.abs(e.touches[0].clientX - x0) > Math.abs(d)) { y0 = null; return; }
           const inChrome = chrome && chrome.contains(e.target);
           // At full, the record scrolls unless the pull starts from the grabber or from the top of the record going down.
           if (detent === 'full' && !inChrome && (d < 0 || sheet.scrollTop > 0)) { y0 = null; return; }
@@ -1548,17 +1553,19 @@
       });
       // Dragging the sheet (phone). Below full the whole sheet follows the finger; at full the reports scroll, and only a
       // pull down from their top, or a drag on the grabber, moves the sheet.
-      let y0 = null, h0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
+      // As on the record sheet, a drag may start on a headline, a space's name or Share as well (12 Nov 2026); a tap stays a tap.
+      let x0 = 0, y0 = null, h0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
       feed.addEventListener('touchstart', (e) => {
         if (!PHONE() || e.touches.length !== 1) { y0 = null; return; }
-        if (e.target.closest('a, button:not(.ts-grab)')) { y0 = null; return; }
-        y0 = lastY = e.touches[0].clientY; lastT = Date.now(); h0 = feed.offsetHeight; vel = 0; dragging = false;
+        if (e.target.closest('input, textarea, select, [contenteditable="true"]')) { y0 = null; return; }
+        x0 = e.touches[0].clientX; y0 = lastY = e.touches[0].clientY; lastT = Date.now(); h0 = feed.offsetHeight; vel = 0; dragging = false;
       }, { passive: true });
       feed.addEventListener('touchmove', (e) => {
         if (y0 === null) return;
         const y = e.touches[0].clientY, d = y - y0, now = Date.now();
         if (!dragging) {
-          if (Math.abs(d) < 6) return;
+          if (Math.abs(d) < 6) { if (Math.abs(e.touches[0].clientX - x0) >= 6) y0 = null; return; }
+          if (Math.abs(e.touches[0].clientX - x0) > Math.abs(d)) { y0 = null; return; }
           if (detent === 'full' && !e.target.closest('.ts-grab') && (d < 0 || feed.scrollTop > 0)) { y0 = null; return; }
           dragging = true;
           feed.classList.add('gm-still');

@@ -45,13 +45,13 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=626">
-  <link rel="stylesheet" href="assets/sheet.css?v=626">
-  <script src="assets/config.js?v=626"></script>
-  <script src="assets/subtopic.js?v=626"></script>
-  <script src="assets/names.js?v=626"></script>
-  <script src="assets/grounding.js?v=626"></script>
-  <script src="assets/repeats.js?v=626"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=632">
+  <link rel="stylesheet" href="assets/sheet.css?v=632">
+  <script src="assets/config.js?v=632"></script>
+  <script src="assets/subtopic.js?v=632"></script>
+  <script src="assets/names.js?v=632"></script>
+  <script src="assets/grounding.js?v=632"></script>
+  <script src="assets/repeats.js?v=632"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1128,7 +1128,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=626"></script>
+  <script src="assets/institutions.js?v=632"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7147,11 +7147,21 @@ return maplibregl$1;
 
       // Zooming out past the city exits it. Only a zoom the user made counts: a flyTo between distant cities arcs the
       // zoom out and back in, and one interrupted by a second flyTo ends mid-arc, which is not a request to leave.
-      cityVectorMap.on('zoomend', (e) => {
-        if (e && e.originalEvent && cityVectorMap.getZoom() <= 8 && isCityStreetViewActive) {
-          exitCityStreetView();
+      // It is checked while the zoom is under way too, not only when it ends: a wheel or a pinch that keeps going only ends
+      // its zoom when it stops, so the street map went on shrinking to z6 or below before it gave way to the globe.
+      // MapLibre eases a wheel zoom, and the eased steps carry no originalEvent, so a zoom within 600ms of the reader's own
+      // wheel, pinch or button counts as theirs too; a flyTo between cities, with no input from the reader, still does not.
+      let lastMapInput = 0;
+      const mapBoxEl = document.getElementById('cityMapContainer');
+      if (mapBoxEl) ['wheel', 'touchmove', 'pointerdown'].forEach(t => mapBoxEl.addEventListener(t, () => { lastMapInput = performance.now(); }, { passive: true, capture: true }));
+      const leaveIfZoomedOut = (e) => {
+        const byReader = (e && e.originalEvent) || performance.now() - lastMapInput < 600;
+        if (byReader && cityVectorMap.getZoom() <= 8 && isCityStreetViewActive) {
+          exitCityStreetView({ keepView: true });
         }
-      });
+      };
+      cityVectorMap.on('zoom', leaveIfZoomedOut);
+      cityVectorMap.on('zoomend', leaveIfZoomedOut);
     }
 
     function resolveInstitutionByIdOrName(queryOrObj) {
@@ -8361,6 +8371,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       panel.classList.add('hidden');
     }
 
+    // True while a zoom carries the map into a city: the city opens with no sheet, as zooming a maps app opens no place.
+    let openCityQuietly = false;
     function openCityStreetView(cityName, targetLat, targetLon) {
       if (!cityName || cityName === 'all') return;
       isCityStreetViewActive = true;
@@ -8535,15 +8547,18 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // State Synchronization: Automatically align active entity state and dossier to target city.
       // Runs after the pins are on the map, with the camera held still: entering a city shows the
       // whole city (the fitBounds above), not the first institution's building.
+      // A city no longer opens its first space's record (user, 11 Nov 2026: "make map work similar to Google Maps"): it opens
+      // the city's own place sheet (assets/hq-detail.js, atlasPlaceOpen), with its spaces listed, and a space's record opens
+      // when that space is tapped. A space already open in this city keeps its record. Zooming in past the globe enters a
+      // city without opening anything, as zooming a maps app does not open a place.
       if (cityInsts.length > 0) {
         const isCurrentInCity = selectedInstitution && matchC(selectedInstitution.city, cityName);
-        // With a filter on, the record that opens is the first space the filter keeps, not one whose pin is hidden.
-        const firstKept = cityPinKeep ? cityInsts.find(i => cityPinKeep(i)) : cityInsts[0];
-        if (!isCurrentInCity && firstKept) {
-          suppressSelectFly = true;
-          try { selectInstitution(firstKept, false); } finally { suppressSelectFly = false; }
+        if (!isCurrentInCity && !openCityQuietly) {
+          if (selectedInstitution) deselectInstitution();
+          if (typeof window.atlasPlaceOpen === 'function') window.atlasPlaceOpen(cityName);
         }
       }
+      syncStreetDropPin();
 
       // On a phone the record sheet lies over the bottom of the map: London's 42 spaces were fitted to the whole map and 31
       // of them sat under the sheet, where a finger could not reach them. The city is fitted to the part of the map still in
@@ -8577,7 +8592,19 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       }
     }
 
-    function exitCityStreetView() {
+    // opts.keepView: the reader zoomed out of the street map. The globe takes over where the street map was, at its closest
+    // zoom, and whatever sheet is open stays open, as a maps app keeps the place on screen while it zooms out. Without it
+    // (World, Back, a new country) the view goes back to the whole globe and the record closes, as before.
+    function exitCityStreetView(opts) {
+      const keepView = !!(opts && opts.keepView);
+      if (keepView && cityVectorMap && typeof cityVectorMap.getCenter === 'function') {
+        const c = cityVectorMap.getCenter();
+        if (c && isFinite(c.lng) && isFinite(c.lat)) {
+          isFlying = false;
+          rotLon = targetRotLon = c.lng;
+          rotLat = targetRotLat = Math.max(-80, Math.min(80, c.lat));
+        }
+      }
       isCityStreetViewActive = false;
       if (window.atlasStreetLayers) window.atlasStreetLayers.stop();
       const mapEl = document.getElementById('cityMapContainer');
@@ -8589,12 +8616,19 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         clearCuratorialRoute();
       }
       selectedCityFilter = 'all';
-      targetRadius = baseRadius;
-      if (typeof deselectInstitution === 'function') {
-        deselectInstitution();
+      if (keepView) {
+        // A little inside the closest zoom, so the next notch out moves the globe at once.
+        currentRadius = targetRadius = getMaxRadius() * 0.9;
+        zoomAnchor = null;
+        isAutoSpinning = false;
+      } else {
+        targetRadius = baseRadius;
+        if (typeof deselectInstitution === 'function') {
+          deselectInstitution();
+        }
+        isAutoSpinning = true;
       }
       applyFilters();
-      isAutoSpinning = true;
       if (typeof render === 'function') {
         scheduleRender();
       }
@@ -10341,11 +10375,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v626';
+    const ATLAS_RELEASE = 'culture-atlas-v632';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=626').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=632').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10875,212 +10909,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       document.fonts.load(ATLAS_CARD_DESC_FONT).then(() => { if (window.scheduleRender) window.scheduleRender(); }).catch(() => {});
     }
 
-    function drawInstitutionMicroCard(ctx, inst, px, py, width, height) {
-      if (!inst) return;
-      const webUrl = getValidWebUrl(inst);
-      const domain = getDisplayDomain(webUrl) || 'website';
-      const ov = inst.details && Array.isArray(inst.details.overview) ? inst.details.overview.find(t => t && String(t).trim()) : '';
-      const g = drawAtlasCard(ctx, {
-        label: [inst.city, inst.country].filter(Boolean).join(', '),
-        name: inst.name,
-        desc: String(ov || inst.curatorial_focus || inst.neighborhood || ''),
-        btn: webUrl ? domain : ''
-      }, px, py, width);
-      hoveredMicroCardHitbox = {
-        inst: inst, webUrl: webUrl || null,
-        btnX: webUrl ? g.btnX : 0, btnY: webUrl ? g.btnY : 0, btnW: webUrl ? g.btnW : 0, btnH: webUrl ? g.btnH : 0,
-        cardX: g.cardX, cardY: g.cardY, cardW: g.cardW, cardH: g.cardH
-      };
-      window.hoveredMicroCardHitbox = hoveredMicroCardHitbox;
-    }
-
-    // One card for every hover on the map, a space's and a city's alike (user, 4 Nov 2026: "make sure all have same new design").
-    // Set like the info block on displaay.net/typeface/cassette (user, 4 Nov 2026: "typeset the pop up description text in
-    // serif and take design from displaay"): a paper card with a 1px ink edge and 20px corners; the place as a small uppercase
-    // label over a 1px rule; the name in capitals; the description in Serrif Light 21px on a 24px line, up to three lines; the
-    // action as a button with the buttons' 10px corners and 1px edge, stretched across the card's measure ("button can be
-    // stretched"), filled with ink while the pointer is on it. Returns where the card and its button were drawn.
-    function drawAtlasCard(ctx, card, px, py, width) {
-      // THE SHEET (user, 10 Nov 2026): the card is a piece of the sheet. The place is centred on a stone band, as the
-      // sheet's section heads are; the name is in the large size; the description is in the text size on its 19px line, up
-      // to three lines, with its capitals; the link is a line that opens with an en dash and goes stone under the pointer.
-      // A square edge in the sheet's grey rule, no corners, no button.
-      ctx.save();
-      const locText = String(card.label || '');
-      const nameText = String(card.name || '');
-      const descText = String(card.desc || '').replace(/\s+/g, ' ').trim();
-      const btnText = card.btn || '';
-
-      const cardDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const cardInk = cardDark ? '#e6e1d7' : '#000000';
-      const cardStone = cardDark ? '#2b2925' : '#e2f86c', cardFaint = cardDark ? '#6f695d' : '#cfcfba', cardRule = '#787878';
-      // A card that is itself the button (card.action, the city card) goes stone while the pointer is on it.
-      const cardPaper = card.hover ? cardStone : (cardDark ? '#151412' : '#ffffff');
-      // The action of a card that is itself the button ("Click to explore") is the card's last line, centred, with an
-      // arrow after it (user, 10 Nov 2026: "click to explore need to go to the bottom", then "center and add arrow").
-      const actionText = card.action ? String(card.action) + ' \u2192' : '';
-      // What the pointer is on turns the poster's blue (assets/sheet.css, --sh-hover).
-      const cardHover = '#59a0f1';
-      const padX = 22, padY = 22;
-      const cardW = Math.min(460, width - 28);
-      const maxTextW = cardW - padX * 2;
-      const fit = (str) => {
-        let t = str;
-        if (ctx.measureText(t).width > maxTextW) {
-          while (t.length > 5 && ctx.measureText(t + '…').width > maxTextW) t = t.slice(0, -1);
-          t += '…';
-        }
-        return t;
-      };
-      // Words onto lines of the measure; the last line carries an ellipsis when the text runs on.
-      const wrap = (str, maxLines) => {
-        const words = str.split(' '), lines = [];
-        let line = '', i = 0;
-        for (; i < words.length; i++) {
-          const t = line ? line + ' ' + words[i] : words[i];
-          if (!line || ctx.measureText(t).width <= maxTextW) { line = t; continue; }
-          lines.push(line); line = words[i];
-          if (lines.length === maxLines) break;
-        }
-        if (lines.length < maxLines) { if (line) lines.push(line); i = words.length; }
-        if (i < words.length) {
-          let last = lines[maxLines - 1];
-          while (last.length > 1 && ctx.measureText(last + '…').width > maxTextW) last = last.slice(0, -1);
-          lines[maxLines - 1] = last.replace(/[\s,;:.]+$/, '') + '…';
-        }
-        return lines.map(fit);
-      };
-
-      ctx.font = ATLAS_CARD_DESC_FONT;
-      const descLines = descText ? wrap(descText, 3) : [];
-      // A card's text lines are 15% under the sheet's line, as the page's are (DESC_LH; the gaps between parts stay).
-      const DESC_LH = 23, BAND_H = 21, NAME_LH = 45;
-      const LABEL_Y = padY, NAME_Y = padY + BAND_H + 6, DESC_Y = NAME_Y + NAME_LH + (descLines.length ? 6 : 0);
-      const descEnd = DESC_Y + descLines.length * DESC_LH;
-      const btnH = 27;
-      const actionY = (btnText ? descEnd + 6 + btnH : descEnd) + (actionText ? 6 : 0);
-      const cardH = actionY + (actionText ? btnH : 0) + padY;
-
-      let cardX = px - cardW / 2;
-      cardX = Math.round(Math.max(14, Math.min(width - cardW - 14, cardX)));
-      let cardY = Math.round(py - cardH - 16);
-      if (cardY < 14) cardY = Math.round(py + 20);
-
-      ctx.fillStyle = cardPaper;
-      ctx.fillRect(cardX, cardY, cardW, cardH);
-      ctx.strokeStyle = cardRule;
-      ctx.lineWidth = 1;
-      ctx.strokeRect(cardX + 0.5, cardY + 0.5, cardW - 1, cardH - 1);
-
-      const textX = cardX + padX;
-      // The stone band, with the place centred on it and the action at its right.
-      ctx.fillStyle = card.hover ? cardFaint : cardStone;
-      ctx.fillRect(textX, cardY + LABEL_Y, maxTextW, BAND_H);
-      ctx.fillStyle = cardInk;
-      ctx.font = ATLAS_CARD_LABEL_FONT;
-      ctx.textBaseline = 'middle';
-      if (locText) {
-        let lt = locText;
-        const room = maxTextW - 8;
-        if (ctx.measureText(lt).width > room) {
-          while (lt.length > 3 && ctx.measureText(lt + '…').width > room) lt = lt.slice(0, -1);
-          lt += '…';
-        }
-        ctx.textAlign = 'center';
-        ctx.fillText(lt, textX + maxTextW / 2, cardY + LABEL_Y + BAND_H / 2);
-      }
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'top';
-
-      ctx.font = ATLAS_CARD_NAME_FONT;
-      ctx.fillText(fit(nameText), textX, cardY + NAME_Y + 2);
-
-      ctx.font = ATLAS_CARD_DESC_FONT;
-      descLines.forEach((ln, i) => ctx.fillText(ln, textX, cardY + DESC_Y + 2 + i * DESC_LH));
-
-      const btnX = textX, btnY = cardY + descEnd + 6, btnW = maxTextW;
-      if (btnText) {
-        ctx.font = ATLAS_CARD_LABEL_FONT;
-        ctx.fillStyle = card.btnHover ? cardHover : cardInk;
-        ctx.textBaseline = 'middle';
-        ctx.fillText(fit('\u2013 ' + btnText), btnX, btnY + btnH / 2 + 0.5);
-      }
-      if (actionText) {
-        ctx.font = ATLAS_CARD_LABEL_FONT;
-        ctx.fillStyle = card.hover ? cardHover : cardInk;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(fit(actionText), textX + maxTextW / 2, cardY + actionY + btnH / 2 + 0.5);
-      }
-      ctx.restore();
-      return { cardX, cardY, cardW, cardH, btnX, btnY, btnW: btnText ? btnW : 0, btnH: btnText ? btnH : 0 };
-    }
-
-    // A city's hover is one line, set like an exhibition credit (user, 11 Nov 2026, with "Freja Sofie Kirk | Pastimes |
-    // O — Overgaden | 2026" as the model, of the card that only said "Perth, 2 cultural spaces on record, Click to explore":
-    // "either add more info or delete these card"): a grey band over a white slip with the sheet's grey edge, then
-    // city | country in italic | the spaces by name, as many as fit, and "and N more" for the rest. The slip is the button:
-    // its words turn the poster's blue under the pointer, and a click opens the city. Returns where the slip was drawn.
-    function drawCitySlip(ctx, slip, px, py, width) {
-      ctx.save();
-      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const ink = slip.hover ? '#59a0f1' : (dark ? '#e6e1d7' : '#000000');
-      const paper = dark ? '#151412' : '#ffffff', band = dark ? '#3a3732' : '#cfcfba', rule = '#787878';
-      const ROMAN = '400 21px ' + ATLAS_SERIF, ITALIC = 'italic 400 21px ' + ATLAS_SERIF;
-      const SEP = ' | ', padX = 16, BAND_H = 8, padY = 10, LINE_H = 23;
-      const maxW = Math.min(620, width - 28) - padX * 2;
-      const w = (t, f) => { ctx.font = f; return ctx.measureText(t).width; };
-
-      const parts = [{ t: String(slip.city || ''), f: ROMAN }];
-      if (slip.country) parts.push({ t: String(slip.country), f: ITALIC });
-      const names = (slip.names || []).filter(Boolean);
-      if (names.length) {
-        const head = parts.reduce((s, p) => s + w(p.t, p.f) + w(SEP, ROMAN), 0);
-        const room = maxW - head;
-        let list = '';
-        for (let i = 0; i < names.length; i++) {
-          const rest = names.length - i - 1;
-          const next = (list ? list + ', ' : '') + names[i];
-          const tail = rest ? ' and ' + rest + ' more' : '';
-          if (w(next + tail, ROMAN) <= room) { list = next; continue; }
-          const left = names.length - i;
-          list = list ? list + ' and ' + left + ' more' : names.length + ' spaces';
-          break;
-        }
-        parts.push({ t: list, f: ROMAN });
-      }
-
-      const textW = Math.min(maxW, parts.reduce((s, p, i) => s + w(p.t, p.f) + (i ? w(SEP, ROMAN) : 0), 0));
-      const cardW = Math.round(textW + padX * 2), cardH = BAND_H + padY * 2 + LINE_H;
-      const cardX = Math.round(Math.max(14, Math.min(width - cardW - 14, px - cardW / 2)));
-      let cardY = Math.round(py - cardH - 16);
-      if (cardY < 14) cardY = Math.round(py + 20);
-
-      ctx.fillStyle = paper;
-      ctx.fillRect(cardX, cardY, cardW, cardH);
-      ctx.fillStyle = band;
-      ctx.fillRect(cardX, cardY, cardW, BAND_H);
-      ctx.strokeStyle = rule;
-      ctx.lineWidth = 1;
-      ctx.strokeRect(cardX + 0.5, cardY + 0.5, cardW - 1, cardH - 1);
-
-      ctx.fillStyle = ink;
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'middle';
-      const baseY = cardY + BAND_H + padY + LINE_H / 2 + 0.5;
-      let x = cardX + padX;
-      const end = cardX + padX + textW;
-      parts.forEach((p, i) => {
-        if (i) { ctx.font = ROMAN; ctx.fillText(SEP, x, baseY); x += ctx.measureText(SEP).width; }
-        ctx.font = p.f;
-        let t = p.t;
-        while (t.length > 1 && x + ctx.measureText(t).width > end + 0.5) t = t.slice(0, -2) + '…';
-        ctx.fillText(t, x, baseY);
-        x += ctx.measureText(t).width;
-      });
-      ctx.restore();
-      return { cardX, cardY, cardW, cardH };
-    }
+    // The hover cards (a space's card and a city's slip) were drawn here; they are gone, and a click opens the sheet instead.
 
     let hoveredMicroCardHitbox = null;
     let hoveredCityCardHitbox = null;
@@ -11108,6 +10937,52 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // The fog over the globe (assets/atlas.css, FOG ON THE MAP) comes on once the page has painted, not with it.
       requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('fog-ready')));
     }
+    // ---- The dropped pin ----------------------------------------------------------------------------------------------
+    // One pin, on the place whose sheet is open: the selected space, or else the city whose place sheet is open
+    // (window.atlasPlacePin, set by assets/place-sheet.js). A teardrop in the ink with a hole in the ground colour and a
+    // 1px ground edge, so it reads on the hairlines and the land in both themes. It falls 14px into place when the place
+    // changes; with reduced motion it is simply there.
+    let droppedPinKey = null, droppedPinT0 = 0;
+    function droppedPinTarget() {
+      if (selectedInstitution) {
+        const pin = atlasPinOf(selectedInstitution);
+        if (pin) return { key: 'i:' + (selectedInstitution.id || selectedInstitution.name), lon: pin.lon, lat: pin.lat };
+      }
+      const place = window.atlasPlacePin;
+      if (place && isFinite(place.lon) && isFinite(place.lat)) return { key: 'c:' + place.name, lon: place.lon, lat: place.lat };
+      return null;
+    }
+    function drawDroppedPin(c2, project, r, cx, cy, now, ink, ground) {
+      const t = droppedPinTarget();
+      if (!t || isCityStreetViewActive) { droppedPinKey = t ? t.key : null; return; }
+      if (t.key !== droppedPinKey) { droppedPinKey = t.key; droppedPinT0 = now; }
+      const p = project(t.lon, t.lat, r, cx, cy);
+      if (!p || !p.front || p.depth <= 0.05) return;
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const k = reduce ? 1 : Math.min(1, (now - droppedPinT0) / 220);
+      const lift = (1 - k * k) * 14;
+      if (k < 1) scheduleRender();
+      const x = p.x, y = p.y - lift, head = 8.5, stem = 22;
+      c2.save();
+      c2.beginPath();
+      // A circle of radius `head` whose centre is `stem` above the point, joined to the point by two tangents.
+      const a = Math.asin(head / stem);
+      c2.moveTo(x, y);
+      c2.arc(x, y - stem, head, Math.PI / 2 + a, Math.PI / 2 - a);
+      c2.closePath();
+      c2.fillStyle = ink;
+      c2.strokeStyle = ground;
+      c2.lineWidth = 1;
+      c2.fill();
+      c2.stroke();
+      c2.beginPath();
+      c2.arc(x, y - stem, 3.2, 0, Math.PI * 2);
+      c2.fillStyle = ground;
+      c2.fill();
+      c2.restore();
+    }
+    window.atlasDropPinRefresh = () => scheduleRender();
+
     let renderFrameId = 0;
     let lastRenderTs = 0;
     const AUTO_SPIN_DEG_PER_SEC = 2;
@@ -11930,75 +11805,18 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         // 8.4 City labels on top of the dots
         deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4]); ctx.restore(); });
-        // The block naming the layer mark or funding line under the pointer, over everything: assets/layers.js
-        if (window.atlasLayersDrawTip) window.atlasLayersDrawTip(ctx);
+        // No hover cards on the map (user, 11 Nov 2026: "make it work similar to Google Maps ... the info shows in sheet not like
+        // on hover, delete hovers"). The city slip, the space's card and the tip over a layer mark used to open under the
+        // pointer; what they said is now in the sheet that a click or tap opens (a space's record, or a city's place sheet,
+        // assets/place-sheet.js). The hover still sets the pointer cursor and lifts the label under it, nothing more.
+        hoveredCityCardHitbox = null;
+        isHoveringCityExploreLink = false;
+        hoveredMicroCardHitbox = null;
+        void activeMicroDot;
 
-        // 8.5 Render Rich Interactive Hover Card for Hovered City on Globe
-        // Suppress city hover cards when hovering an institution or for cities outside selected country
-        if (hoveredCity && !isCityStreetViewActive && r < baseRadius * 12.0 && !hoveredInstitution) {
-          const hMeta = ALL_CITIES_REGISTRY.find(c => matchC(c.name, hoveredCity));
-          const isAllowedCity = selectedCountryFilter === 'all' || (hMeta && matchC(hMeta.country, selectedCountryFilter));
-          if (hMeta && isAllowedCity) {
-            const hPt = project(hMeta.lon, hMeta.lat, r, cx, cy);
-            if (hPt.front && hPt.depth > 0.05) {
-              ctx.save();
-              // City pin marker (clean matte, no halo)
-
-              ctx.beginPath();
-              ctx.arc(hPt.x, hPt.y, 6.5, 0, Math.PI * 2);
-              const cardColors = pillColors(false, cityTier(hMeta.name));
-              const cardText = G_TEXT;
-              const cardBg = G_GROUND;
-              ctx.fillStyle = cardText;
-              ctx.strokeStyle = cardBg;
-              ctx.lineWidth = 0.8;
-              ctx.fill();
-              ctx.stroke();
-
-              // The city's slip (drawCitySlip), on the card layer over the fog: city | country | its spaces by name, the
-              // large ones first.
-              const SIZE_RANK = { XL: 0, L: 1, M: 2, S: 3, XS: 4 };
-              const cityNames = ALL_INSTITUTIONS.filter(i => matchC(i.city, hMeta.name))
-                .map((inst, n) => ({ inst, n }))
-                .sort((a, b) => ((SIZE_RANK[a.inst.size] ?? 5) - (SIZE_RANK[b.inst.size] ?? 5)) || (a.n - b.n))
-                .map(o => o.inst.shortName || o.inst.name);
-              const g = drawCitySlip(cardCtx, {
-                city: hMeta.name,
-                country: hMeta.country ? hMeta.country.trim() : '',
-                names: cityNames,
-                hover: isHoveringCityExploreLink
-              }, hPt.x, hPt.y, width);
-
-              // Register interactive hover & click hitbox for the card and link
-              hoveredCityCardHitbox = {
-                city: hMeta.name,
-                country: hMeta.country || '',
-                pinX: hPt.x,
-                pinY: hPt.y,
-                cardX: g.cardX,
-                cardY: g.cardY,
-                cardW: g.cardW,
-                cardH: g.cardH,
-                linkX: g.cardX,
-                linkY: g.cardY,
-                linkW: g.cardW,
-                linkH: g.cardH
-              };
-
-              ctx.restore();
-            }
-          }
-        } else if (!hoveredCity) {
-          hoveredCityCardHitbox = null;
-          isHoveringCityExploreLink = false;
-        }
-
-        // 8.6 Render Active Institution Micro Card at top layer of 3D globe (above all dots, labels, and city cards)
-        if (activeMicroDot) {
-          drawInstitutionMicroCard(cardCtx, activeMicroDot.inst, activeMicroDot.x, activeMicroDot.y, width, height);
-        } else if (!hoveredInstitution) {
-          hoveredMicroCardHitbox = null;
-        }
+        // The dropped pin: the place whose sheet is open gets a pin over its dot, as a maps app drops one on the place it
+        // shows. It is drawn on the card layer, over the fog, and falls into place over 220ms when the place changes.
+        drawDroppedPin(cardCtx, project, r, cx, cy, now, G_TEXT, G_GROUND);
 
 
 
@@ -13150,9 +12968,31 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     window.toggleGlobeExpand = toggleGlobeExpand;
 
+    // The street map's dropped pin, on the selected space, as the globe draws its own (drawDroppedPin). A DOM marker, so it
+    // stays on the place through every zoom and tilt, above the space's badge, and takes no clicks.
+    let streetDropPin = null;
+    function syncStreetDropPin() {
+      const pin = selectedInstitution ? atlasPinOf(selectedInstitution) : null;
+      if (!pin || !cityVectorMap || typeof maplibregl === 'undefined' || typeof cityVectorMap.getCanvas !== 'function') {
+        if (streetDropPin) { streetDropPin.remove(); streetDropPin = null; }
+        return;
+      }
+      if (!streetDropPin) {
+        const el = document.createElement('div');
+        el.className = 'atlas-drop-pin';
+        el.setAttribute('aria-hidden', 'true');
+        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><path d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/><circle cx="12" cy="12" r="3.6"/></svg>';
+        streetDropPin = new maplibregl.Marker({ element: el, anchor: 'bottom' });
+      }
+      streetDropPin.setLngLat([pin.lon, pin.lat]).addTo(cityVectorMap);
+      const el = streetDropPin.getElement();
+      el.classList.remove('is-dropping'); void el.offsetWidth; el.classList.add('is-dropping');
+    }
+
     function deselectInstitution() {
       if (typeof window.atlasHqClose === 'function') window.atlasHqClose();   // a funder's record in the Details tab gives way to the space
       selectedInstitution = null;
+      syncStreetDropPin();
       document.querySelectorAll('.custom-inst-pin.popup-active').forEach(p => p.classList.remove('popup-active'));
       if (typeof renderStarterPrompts === 'function') renderStarterPrompts();
       if (typeof hideBuildingXray === 'function') hideBuildingXray();
@@ -13211,6 +13051,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       selectedInstitution = inst;
       // The street map's badge for this space is drawn as selected, as the globe draws its own.
       document.querySelectorAll('.custom-inst-pin').forEach(p => p.classList.toggle('popup-active', p.getAttribute('data-name') === inst.name));
+      syncStreetDropPin();
       renderStarterPrompts();
       const floatingCard = document.getElementById('floatingCard');
       if (floatingCard) {
@@ -13951,6 +13792,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
     function openDossier(inst, shouldShowDrawer = true) {
       if (!inst) return;
+      const isNewRecord = dossierInst !== inst;
       dossierInst = inst;
       // On the note screen, opening another record makes it the institution of the note.
       if (isChatInputMode) { const noteInstitution = document.getElementById('noteInstitution'); if (noteInstitution) { noteInstitution.value = inst.name || ''; syncNoteReady(); } }
@@ -13960,6 +13802,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (phoneBody) phoneBody.innerHTML = html;
       const page = document.getElementById('desktopDossierRecordBody');
       if (page) page.innerHTML = html;
+      // A different space opens at its top. The desktop column kept the last record's scroll, so the next one opened partway
+      // down, or past its own end when it was shorter (12 Nov 2026). The phone sheet resets itself (assets/phone-maps.js).
+      if (isNewRecord) { const col = document.getElementById('desktopDossierBody'); if (col) col.scrollTop = 0; }
       if (!shouldShowDrawer) return;
       if (window.innerWidth >= 768) {
         // On a desktop the record is the Details page, so there is no second page to open.
@@ -20066,6 +19911,67 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return out;
     }
     // The chips under a city or country notice: questions the cloud holds about spaces there, then the pool.
+    // A filter switched on is explained in the chat (user, 12 Nov 2026: "clicking filters need to pull info into chat
+    // educating on what user can learn from this app"). The message says what the filter shows, in the words of its own
+    // line in the Layers menu (assets/layers.js, atlasLayerDesc), how many spaces it leaves on the map and which, the
+    // largest first, and what the filter is good for; two questions follow as chips. Nothing in it is new about any space:
+    // the count and the names are the map's, the rule is the menu's.
+    const FILTER_LEARN = {
+      funding: 'Who pays for a space, and which funders reach across several. Open a space to see its funders; the lines join spaces that share one.',
+      epstein: 'Which spaces have a funder or a person named in the files, and who that is. A name in the files is a documented tie, not a finding of wrongdoing.',
+      propaganda: 'Where a state has used a cultural space to promote its line, and what the record says it did there.',
+      independent: 'Which spaces describe themselves as independent, and what their records say about how they are paid for.',
+      openbooks: 'Where the money can be checked: the filings are linked from the record.',
+      artist: 'Which spaces artists run themselves, and what their records say about how they keep going.',
+      A: 'Each of these records cites a source for its funding. The grade says how well a record is sourced, not whether the space is good.',
+      B: 'Each of these records carries a recorded reason, such as a flagged funder or a funding protest. Open one to read the reason and its source.',
+      U: 'These records have no source checked yet. Read them as leads, not as findings.'
+    };
+    const FILTER_ASK = {
+      funding: ['Which funders appear on the most spaces?'],
+      epstein: ['Which spaces have Epstein connections, and through whom?'],
+      propaganda: ['Which spaces are listed for propaganda, and why?'],
+      independent: ['How do independent spaces say they are funded?'],
+      openbooks: ['Which spaces publish their accounts?'],
+      artist: ['Which artist-run spaces are on the atlas?'],
+      A: ['What makes a record clean?'],
+      B: ['Why are spaces flagged?'],
+      U: ['What does unverified mean?']
+    };
+    const GRADE_NAME = { A: ['Clean', 'Spaces whose record cites a source for its funding'], B: ['Flagged', 'Spaces whose record carries a recorded reason, such as a flagged funder'], U: ['Unverified', 'Spaces whose record has no checked source yet'] };
+    let lastExplained = { key: null, t: 0 };
+    function explainFilter(kind, key, tries = 0) {
+      const now = Date.now();
+      if (tries === 0) { if (lastExplained.key === key && now - lastExplained.t < 2000) return; lastExplained = { key, t: now }; }
+      // The filter must still be the one on: a second tap may have switched it off while the funding maps loaded.
+      const stillOn = kind === 'grade' ? (window.atlasGradeFilter && window.atlasGradeFilter() === key) : (window.atlasSpaceFilter && window.atlasSpaceFilter() === key);
+      if (!stillOn) return;
+      const keep = typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
+      const kept = keep ? ALL_INSTITUTIONS.filter(i => { try { return keep(i); } catch (e) { return false; } }) : [];
+      // Funding and Epstein read the funding maps, which load on first use; until then they keep nothing.
+      if (!kept.length && (key === 'funding' || key === 'epstein') && tries < 10) { setTimeout(() => explainFilter(kind, key, tries + 1), 800); return; }
+      const info = kind === 'grade' ? { name: GRADE_NAME[key][0], desc: GRADE_NAME[key][1] } : (window.atlasLayerDesc ? window.atlasLayerDesc(key) : { name: key, desc: '' });
+      const RANK = { XL: 0, L: 1, M: 2, S: 3, XS: 4 };
+      const top = kept.map((inst, k) => ({ inst, k })).sort((a, b) => ((RANK[a.inst.size] ?? 5) - (RANK[b.inst.size] ?? 5)) || (a.k - b.k)).slice(0, 3).map(o => o.inst);
+      const n = kept.length;
+      const links = top.map(i => formatInstLink(i, { noDossier: true }));
+      const names = links.length > 1 ? links.slice(0, -1).join(', ') + ' and ' + links[links.length - 1] : (links[0] || '');
+      // The other filter, when one is on beside this one: the space filter and the grade narrow together.
+      const other = kind === 'grade' ? (window.atlasSpaceFilter && window.atlasSpaceFilter()) : (window.atlasGradeFilter && window.atlasGradeFilter());
+      const otherName = other ? (kind === 'grade' ? (window.atlasLayerDesc ? window.atlasLayerDesc(other).name : other) : GRADE_NAME[other][0]) : '';
+      const withOther = otherName ? ` with ${escapeHtml(otherName)} also on` : '';
+      const shown = n
+        ? `${n} ${n === 1 ? 'space is' : 'spaces are'} on the map now${withOther}${top.length ? (n > top.length ? `, among them ${names}` : `: ${names}`) : ''}.`
+        : `No space on the atlas matches it${withOther} yet.`;
+      const desc = info.desc ? `${escapeHtml(info.name)}: ${escapeHtml(info.desc.charAt(0).toLowerCase() + info.desc.slice(1))}.` : escapeHtml(info.name) + '.';
+      const lc = t => t.charAt(0).toLowerCase() + t.slice(1);
+      const learn = FILTER_LEARN[key] ? `<p>What you can learn here: ${escapeHtml(lc(FILTER_LEARN[key]))}</p>` : '';
+      const asks = (FILTER_ASK[key] || []).slice();
+      if (top[0]) asks.push(`Who funds ${top[0].shortName || top[0].name}?`);
+      appendCuratorMessage(`<p class="no-indent">${desc} ${shown}</p>${learn}<p>Press the filter again to see every space.</p>`, asks);
+    }
+    document.addEventListener('atlas:filter-explain', (e) => { const d = e.detail || {}; if (d.key) explainFilter(d.kind, d.key); });
+
     function chipsForPlace(name, isCountry, n = 3) {
       let pool = [];
       try { pool = questionCloud(); } catch (e) { pool = []; }
@@ -20662,8 +20568,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
 
-      // If clicked empty ocean or space on the globe, dismiss floating card
-      if (selectedInstitution) {
+      // A tap on empty sea closes whatever sheet is open, a space's record or a city's place sheet, as in a maps app.
+      if (selectedInstitution || (window.atlasPlaceIsOpen && window.atlasPlaceIsOpen())) {
         deselectInstitution();
       }
     }
@@ -21226,7 +21132,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!best) return false;
       isAutoSpinning = false;
       zoomAnchor = null;
-      filterByCity(best.name, true, false);
+      openCityQuietly = true;
+      try { filterByCity(best.name, true, false); } finally { openCityQuietly = false; }
       return true;
     }
     window.zoomPastGlobe = zoomPastGlobe;
@@ -21241,13 +21148,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       isAutoSpinning = false;
 
       const delta = e.deltaY * (e.deltaMode === 1 ? 18 : e.deltaMode === 2 ? 260 : 1);
-      // Gentle exponential scaling factor bounded per event (approx 1% - 6% gradual change)
-      const factor = Math.exp(-delta * 0.0016);
-      const clampedFactor = Math.max(0.91, Math.min(1.09, factor));
+      // One mouse notch (deltaY 100) zooms by 1.3, a trackpad's small deltas by a percent or two each, so a trackpad stays
+      // smooth and a wheel crosses from the whole globe to a city in about a dozen notches. It was capped at 1.09 a notch,
+      // which took some forty notches and read as the zoom not working (user, 11 Nov 2026: "make it work properly on zoom
+      // in zoom out").
+      const factor = Math.exp(-delta * 0.003);
+      const clampedFactor = Math.max(1 / 1.3, Math.min(1.3, factor));
 
       if (clampedFactor > 1 && globeAtMaxZoom()) {
         globeOverZoom *= clampedFactor;
-        if (globeOverZoom >= 1.25) {
+        if (globeOverZoom >= 1.5) {
           globeOverZoom = 1;
           const hr = canvas.getBoundingClientRect();
           if (zoomPastGlobe(e.clientX - hr.left, e.clientY - hr.top)) return;
@@ -21616,15 +21526,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=626"></script>
-<script src="assets/note-aids.js?v=626" defer></script>
-<script src="assets/note-files.js?v=626" defer></script>
-<script src="assets/funding-views.js?v=626"></script>
-<script src="assets/layers.js?v=626"></script>
-<script src="assets/hq-detail.js?v=626"></script>
-<script src="assets/bubbles.js?v=626" defer></script>
-<script src="assets/phone-maps.js?v=626"></script>
-<script src="assets/desktop-maps.js?v=626"></script>
-<script src="assets/chat-resize.js?v=626"></script>
+<script src="assets/typeset.js?v=632"></script>
+<script src="assets/note-aids.js?v=632" defer></script>
+<script src="assets/note-files.js?v=632" defer></script>
+<script src="assets/funding-views.js?v=632"></script>
+<script src="assets/layers.js?v=632"></script>
+<script src="assets/hq-detail.js?v=632"></script>
+<script src="assets/bubbles.js?v=632" defer></script>
+<script src="assets/phone-maps.js?v=632"></script>
+<script src="assets/desktop-maps.js?v=632"></script>
+<script src="assets/chat-resize.js?v=632"></script>
 </body>
 </html>

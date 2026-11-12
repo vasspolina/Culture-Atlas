@@ -1219,3 +1219,55 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   #mobileStickyInputBar:not(#sh-x){background:var(--sh-paper)!important;border-top:0!important}
 }
 }
+
+/* A funder's record or a city's place sheet in the record sheet (assets/hq-detail.js, .is-hq-sheet) is not a space's record:
+   the space's name, actions and tabs give way to it. The same rule in atlas.css is unlayered, so the important display:flex
+   on .gm-tabs and .record-action-row in this layer won over it and the last space's buttons and tabs sat over the record. */
+@layer sheet{
+  #dossier-bottom-sheet.is-hq-sheet :is(.sheet-title-block,.gm-actions,.gm-tabs){display:none!important}
+}
+
+/* The phone chat's head (user, 12 Nov 2026: "fix title now it sits on the line"). The reset above (padding 0, height auto on every
+   button and tab) won over the head's own rules in atlas.css, which are unlayered: Chat and Details ran together as one word
+   ("ChatDetails"), dropped to the foot of the head and sat on its rule, below the menu and the cross. Here, in the layer, the
+   two tabs are separate words 20px apart, each a 44px target, centred on one line with the menu and the cross, with their
+   underline inside the tab and air between it and the rule. The filter chips stay under the chat: a tap on one explains the
+   filter in the chat (index.html, explainFilter). */
+@layer sheet{
+  :root.gm-chat #phoneChatHead{align-items:center!important;padding-top:10px!important;padding-bottom:6px!important;height:auto!important;min-height:60px!important}
+  :root.gm-chat #phoneChatHead .gm-head-tabs{display:flex!important;align-self:center!important;align-items:center!important;gap:20px!important;margin:0!important}
+  :root.gm-chat #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn:not(.hidden)){display:inline-flex!important;position:relative!important;align-items:center!important;height:44px!important;min-height:44px!important;padding:0!important;white-space:nowrap!important;font-style:normal!important}
+  :root.gm-chat #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn)[aria-selected="true"]::after{left:0!important;right:0!important;bottom:6px!important;height:2px!important;border-radius:0!important}
+  :root.gm-chat #phoneChatHead :is(#gmChatMenuBtn,#phoneChatCloseBtn){align-self:center!important;width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+}
+
+/* The phone chat's composer, set as the Claude app sets its own (user, 12 Nov 2026: "optimize chat like Claude"): one rounded
+   box, the question on top across its whole width, and under it a row with a round icon on the left (Voice, read answers
+   aloud, a speaker; filled when on) and a round send button on the right, an up arrow in the ink, quiet while the box is
+   empty. The words "Voice" and "Ask" stay in the markup for a screen reader; only the eye gets the icons. Phone only. */
+@media (max-width:767px){
+@layer sheet{
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c){display:grid!important;grid-template-columns:auto 1fr auto auto!important;grid-template-areas:"field field field field" "voice . kb send"!important;align-items:center!important;row-gap:8px!important;column-gap:8px!important;padding:12px 10px 10px 16px!important;border:1px solid var(--sh-box-line)!important;border-radius:24px!important;background:var(--sh-paper)!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c)>#noteInputBlock{grid-area:field!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c)>div.flex.justify-between,
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c)>div.flex.justify-between>div{display:contents!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workKbCloseBtn:not(#a):not(#b):not(#c){grid-area:kb!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #chatShareBtn:not(#a):not(#b):not(#c){display:none!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c) #workInput{min-height:24px!important;padding:2px 6px 0 0!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c),
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c){position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:36px!important;min-width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;margin:0!important;border:0!important;border-radius:50%!important;align-self:center!important;font-size:0!important;line-height:0!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c){grid-area:send!important;justify-self:end!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;opacity:1!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c)::after{content:none!important;display:none!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c) svg{display:block!important;width:18px!important;height:18px!important;color:var(--sh-paper)!important;stroke:var(--sh-paper)!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:has(#workInput:placeholder-shown) #workSendBtn:not(#a):not(#b):not(#c){background:color-mix(in srgb,var(--sh-ink) 22%,var(--sh-paper))!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c):focus-visible,
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c){grid-area:voice!important;justify-self:start!important;background:transparent!important;color:var(--sh-ink)!important;box-shadow:inset 0 0 0 1px var(--sh-box-line)!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn[aria-pressed="true"]:not(#a):not(#b):not(#c){background:var(--sh-ink)!important;color:var(--sh-paper)!important;box-shadow:none!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c) #curatorVoiceToggleLabel{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c) #curatorVoiceToggleIcon{display:block!important;width:18px!important;height:18px!important;background:currentColor!important;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9.5h3.5L12 5.5v13l-4.5-4H4z'/%3E%3Cpath d='M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11'/%3E%3C/svg%3E") center/contain no-repeat!important;
+    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9.5h3.5L12 5.5v13l-4.5-4H4z'/%3E%3Cpath d='M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11'/%3E%3C/svg%3E") center/contain no-repeat!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c) #curatorVoiceToggleIcon *{display:none!important}
+}
+}

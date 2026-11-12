@@ -142,7 +142,15 @@
     spaceBoxes().forEach(inp => setBox(inp, inp.dataset.layer === key));
     refilter();
   }
-  window.atlasSetSpaceFilter = function (key) { if (window.atlasSpaceFilter() !== key) applySpaceFilter(key); };
+  // A filter switched on tells the chat, which says what it shows and what can be learnt from it (index.html,
+  // atlasExplainFilter; user, 12 Nov 2026: "clicking filters need to pull info into chat").
+  const explain = (kind, key) => { if (key) document.dispatchEvent(new CustomEvent('atlas:filter-explain', { detail: { kind, key } })); };
+  window.atlasLayerDesc = key => {
+    const inp = document.querySelector(`#layersPanel input[data-layer="${key}"]`), label = inp && inp.closest('label');
+    const nm = label && label.querySelector('.layer-name'), ds = label && label.querySelector('.layer-desc');
+    return { name: nm ? nm.textContent.trim() : key, desc: ds ? ds.textContent.trim() : '' };
+  };
+  window.atlasSetSpaceFilter = function (key) { if (window.atlasSpaceFilter() !== key) { applySpaceFilter(key); explain('space', key); } };
   // The row of filters over the map, built by the phone and desktop layouts into their own strip: one chip per marked
   // filter in its colour from the Layers menu. The pressed chip is the filter on; none is pressed when no filter is on.
   // Returns false until the Layers menu is in the page.
@@ -183,7 +191,7 @@
   const keyRows = () => document.querySelectorAll('#mapColourKey .mck-row[data-grade]');
   const syncKey = () => keyRows().forEach(b => b.setAttribute('aria-pressed', String(GRADE === b.dataset.grade)));
   window.atlasGradeFilter = () => GRADE;
-  window.atlasSetGradeFilter = function (g) { g = (g === 'A' || g === 'B' || g === 'U') ? g : null; if (g === GRADE) return; GRADE = g; syncKey(); refilter(); };
+  window.atlasSetGradeFilter = function (g) { g = (g === 'A' || g === 'B' || g === 'U') ? g : null; if (g === GRADE) return; GRADE = g; syncKey(); refilter(); explain('grade', g); };
   keyRows().forEach(b => b.addEventListener('click', () => window.atlasSetGradeFilter(GRADE === b.dataset.grade ? null : b.dataset.grade)));
   syncKey();
   window.atlasLayerKeep = function () {
@@ -906,10 +914,10 @@
   // The block naming the mark or line under the pointer is drawn last of all, over the city names (index.html calls this
   // after them; the street map calls it after the nodes), so nothing covers it.
   let TIP_BOXES = [];
-  window.atlasLayersDrawTip = function (ctx) {
-    if (streetUp()) return;
-    ctx.save(); drawMarkTip(ctx, TIP_BOXES); ctx.restore();
-  };
+  // No longer drawn (user, 11 Nov 2026: "delete hovers"): the map shows no card under the pointer, on the globe or the street
+  // map. A click on a mark still does what it did (asks the chat, or opens the funder's record in the sheet).
+  window.atlasLayersDrawTip = function () {};
+  void drawMarkTip; void TIP_BOXES;
   // The funder badges take their form from displaay.net/typefaces: a pill (fully rounded ends), a 1px edge in the colour of
   // its text, 10px of air either side of the words. The name pill is filled in the kind's colour with black text (the pale
   // fills measure 7:1 or better against black); the kind pill is an outline on the map's own ground, so it reads as a tag
