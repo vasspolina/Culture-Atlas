@@ -45,13 +45,13 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=626">
-  <link rel="stylesheet" href="assets/sheet.css?v=626">
-  <script src="assets/config.js?v=626"></script>
-  <script src="assets/subtopic.js?v=626"></script>
-  <script src="assets/names.js?v=626"></script>
-  <script src="assets/grounding.js?v=626"></script>
-  <script src="assets/repeats.js?v=626"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=629">
+  <link rel="stylesheet" href="assets/sheet.css?v=629">
+  <script src="assets/config.js?v=629"></script>
+  <script src="assets/subtopic.js?v=629"></script>
+  <script src="assets/names.js?v=629"></script>
+  <script src="assets/grounding.js?v=629"></script>
+  <script src="assets/repeats.js?v=629"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1128,7 +1128,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=626"></script>
+  <script src="assets/institutions.js?v=629"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10375,11 +10375,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v626';
+    const ATLAS_RELEASE = 'culture-atlas-v629';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=626').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=629').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19907,6 +19907,67 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return out;
     }
     // The chips under a city or country notice: questions the cloud holds about spaces there, then the pool.
+    // A filter switched on is explained in the chat (user, 12 Nov 2026: "clicking filters need to pull info into chat
+    // educating on what user can learn from this app"). The message says what the filter shows, in the words of its own
+    // line in the Layers menu (assets/layers.js, atlasLayerDesc), how many spaces it leaves on the map and which, the
+    // largest first, and what the filter is good for; two questions follow as chips. Nothing in it is new about any space:
+    // the count and the names are the map's, the rule is the menu's.
+    const FILTER_LEARN = {
+      funding: 'Who pays for a space, and which funders reach across several. Open a space to see its funders; the lines join spaces that share one.',
+      epstein: 'Which spaces have a funder or a person named in the files, and who that is. A name in the files is a documented tie, not a finding of wrongdoing.',
+      propaganda: 'Where a state has used a cultural space to promote its line, and what the record says it did there.',
+      independent: 'Which spaces describe themselves as independent, and what their records say about how they are paid for.',
+      openbooks: 'Where the money can be checked: the filings are linked from the record.',
+      artist: 'Which spaces artists run themselves, and what their records say about how they keep going.',
+      A: 'Each of these records cites a source for its funding. The grade says how well a record is sourced, not whether the space is good.',
+      B: 'Each of these records carries a recorded reason, such as a flagged funder or a funding protest. Open one to read the reason and its source.',
+      U: 'These records have no source checked yet. Read them as leads, not as findings.'
+    };
+    const FILTER_ASK = {
+      funding: ['Which funders appear on the most spaces?'],
+      epstein: ['Which spaces have Epstein connections, and through whom?'],
+      propaganda: ['Which spaces are listed for propaganda, and why?'],
+      independent: ['How do independent spaces say they are funded?'],
+      openbooks: ['Which spaces publish their accounts?'],
+      artist: ['Which artist-run spaces are on the atlas?'],
+      A: ['What makes a record clean?'],
+      B: ['Why are spaces flagged?'],
+      U: ['What does unverified mean?']
+    };
+    const GRADE_NAME = { A: ['Clean', 'Spaces whose record cites a source for its funding'], B: ['Flagged', 'Spaces whose record carries a recorded reason, such as a flagged funder'], U: ['Unverified', 'Spaces whose record has no checked source yet'] };
+    let lastExplained = { key: null, t: 0 };
+    function explainFilter(kind, key, tries = 0) {
+      const now = Date.now();
+      if (tries === 0) { if (lastExplained.key === key && now - lastExplained.t < 2000) return; lastExplained = { key, t: now }; }
+      // The filter must still be the one on: a second tap may have switched it off while the funding maps loaded.
+      const stillOn = kind === 'grade' ? (window.atlasGradeFilter && window.atlasGradeFilter() === key) : (window.atlasSpaceFilter && window.atlasSpaceFilter() === key);
+      if (!stillOn) return;
+      const keep = typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
+      const kept = keep ? ALL_INSTITUTIONS.filter(i => { try { return keep(i); } catch (e) { return false; } }) : [];
+      // Funding and Epstein read the funding maps, which load on first use; until then they keep nothing.
+      if (!kept.length && (key === 'funding' || key === 'epstein') && tries < 10) { setTimeout(() => explainFilter(kind, key, tries + 1), 800); return; }
+      const info = kind === 'grade' ? { name: GRADE_NAME[key][0], desc: GRADE_NAME[key][1] } : (window.atlasLayerDesc ? window.atlasLayerDesc(key) : { name: key, desc: '' });
+      const RANK = { XL: 0, L: 1, M: 2, S: 3, XS: 4 };
+      const top = kept.map((inst, k) => ({ inst, k })).sort((a, b) => ((RANK[a.inst.size] ?? 5) - (RANK[b.inst.size] ?? 5)) || (a.k - b.k)).slice(0, 3).map(o => o.inst);
+      const n = kept.length;
+      const links = top.map(i => formatInstLink(i, { noDossier: true }));
+      const names = links.length > 1 ? links.slice(0, -1).join(', ') + ' and ' + links[links.length - 1] : (links[0] || '');
+      // The other filter, when one is on beside this one: the space filter and the grade narrow together.
+      const other = kind === 'grade' ? (window.atlasSpaceFilter && window.atlasSpaceFilter()) : (window.atlasGradeFilter && window.atlasGradeFilter());
+      const otherName = other ? (kind === 'grade' ? (window.atlasLayerDesc ? window.atlasLayerDesc(other).name : other) : GRADE_NAME[other][0]) : '';
+      const withOther = otherName ? ` with ${escapeHtml(otherName)} also on` : '';
+      const shown = n
+        ? `${n} ${n === 1 ? 'space is' : 'spaces are'} on the map now${withOther}${top.length ? (n > top.length ? `, among them ${names}` : `: ${names}`) : ''}.`
+        : `No space on the atlas matches it${withOther} yet.`;
+      const desc = info.desc ? `${escapeHtml(info.name)}: ${escapeHtml(info.desc.charAt(0).toLowerCase() + info.desc.slice(1))}.` : escapeHtml(info.name) + '.';
+      const lc = t => t.charAt(0).toLowerCase() + t.slice(1);
+      const learn = FILTER_LEARN[key] ? `<p>What you can learn here: ${escapeHtml(lc(FILTER_LEARN[key]))}</p>` : '';
+      const asks = (FILTER_ASK[key] || []).slice();
+      if (top[0]) asks.push(`Who funds ${top[0].shortName || top[0].name}?`);
+      appendCuratorMessage(`<p class="no-indent">${desc} ${shown}</p>${learn}<p>Press the filter again to see every space.</p>`, asks);
+    }
+    document.addEventListener('atlas:filter-explain', (e) => { const d = e.detail || {}; if (d.key) explainFilter(d.kind, d.key); });
+
     function chipsForPlace(name, isCountry, n = 3) {
       let pool = [];
       try { pool = questionCloud(); } catch (e) { pool = []; }
@@ -21461,15 +21522,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=626"></script>
-<script src="assets/note-aids.js?v=626" defer></script>
-<script src="assets/note-files.js?v=626" defer></script>
-<script src="assets/funding-views.js?v=626"></script>
-<script src="assets/layers.js?v=626"></script>
-<script src="assets/hq-detail.js?v=626"></script>
-<script src="assets/bubbles.js?v=626" defer></script>
-<script src="assets/phone-maps.js?v=626"></script>
-<script src="assets/desktop-maps.js?v=626"></script>
-<script src="assets/chat-resize.js?v=626"></script>
+<script src="assets/typeset.js?v=629"></script>
+<script src="assets/note-aids.js?v=629" defer></script>
+<script src="assets/note-files.js?v=629" defer></script>
+<script src="assets/funding-views.js?v=629"></script>
+<script src="assets/layers.js?v=629"></script>
+<script src="assets/hq-detail.js?v=629"></script>
+<script src="assets/bubbles.js?v=629" defer></script>
+<script src="assets/phone-maps.js?v=629"></script>
+<script src="assets/desktop-maps.js?v=629"></script>
+<script src="assets/chat-resize.js?v=629"></script>
 </body>
 </html>
