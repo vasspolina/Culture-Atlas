@@ -163,5 +163,5 @@ records and each fault in one line.
 
 | Run | Date | Batches | Notes |
 | --- | --- | --- | --- |
-| p2 | 2026-11-12 | every remaining space, 16 to a batch | Full run as a workflow, a checker on every batch. Brief now says normal case over a filing's capitals, and an announcement date is not a start date. |
+| p2 | 2026-11-12 | 90 (every remaining space, 16 to a batch) | Full run as four workflows, a checker on every batch: 1,326 records passed, 103 corrected. The session's web-search allowance ran out near batch 18, so later batches worked from pages opened directly and leave more spaces empty. 1,019 spaces merged. North Korea (44) and Cuba (`.cu` hosts do not resolve here) are nearly all empty. A predecessor with no leaving year is kept only when a current head started in 2023 or later (`settle_predecessors`). |
 | p1 | 2026-11-12 | 3 (pilot: Berlin, London, New York; 36 spaces) | 35 spaces and 90 people merged. Checkers passed 28 records and corrected 8: a start date sourced to an undated page, capitals copied from Form 990s, a start month that was the announcement's, ENB's two leaders as co-directors, and one chair dropped whose only page would not open. Added pay bands (`amount_to`) and honorific stripping at merge. |

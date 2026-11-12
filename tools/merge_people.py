@@ -40,6 +40,25 @@ BANNED_HOSTS = re.compile(r'(wikipedia\.org|linkedin\.com|google\.[a-z.]+/search
 DATE = re.compile(r'^\d{4}(-\d{2})?$')
 
 
+def settle_predecessors(rec, note):
+    """A predecessor with no leaving year stays only when a current head's start of 2023 or later
+    shows they left inside the window the brief allows; otherwise that one person is dropped."""
+    heads = ('director', 'co-director', 'artistic director', 'chief curator')
+    people = rec.get('people') or []
+    started = [str(p.get('since') or '')[:4] for p in people
+               if p.get('current') and p.get('role') in heads and p.get('since')]
+    keep = []
+    for p in people:
+        if p.get('current') is False and not p.get('until'):
+            if any(y >= '2023' for y in started):
+                keep.append(p)
+                continue
+            note(f'{rec["id"]}: dropped predecessor {p.get("name")} (no leaving year, no successor start since 2023)')
+            continue
+        keep.append(p)
+    rec['people'] = keep
+
+
 def problems(rec):
     out = []
     if set(rec) - {'id', 'people', 'basis'}:
@@ -69,7 +88,7 @@ def problems(rec):
             out.append(f'{who}: current with an until date')
         if p.get('current') is False:
             if not p.get('until'):
-                out.append(f'{who}: predecessor with no until')
+                pass  # settled by settle_predecessors before validation
             elif str(p['until'])[:4] < '2023':
                 out.append(f'{who}: predecessor left before 2023')
         if p.get('left_because') not in LEFT:
@@ -124,6 +143,7 @@ def main():
                 print(f'{f.name} {rec["id"]}: not in institutions.json')
                 rejected += 1
                 continue
+            settle_predecessors(rec, print)
             bad = problems(rec)
             if bad:
                 print(f'{f.name} {rec["id"]}: ' + '; '.join(bad))
