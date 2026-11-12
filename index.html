@@ -45,13 +45,13 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=636">
-  <link rel="stylesheet" href="assets/sheet.css?v=636">
-  <script src="assets/config.js?v=636"></script>
-  <script src="assets/subtopic.js?v=636"></script>
-  <script src="assets/names.js?v=636"></script>
-  <script src="assets/grounding.js?v=636"></script>
-  <script src="assets/repeats.js?v=636"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=637">
+  <link rel="stylesheet" href="assets/sheet.css?v=637">
+  <script src="assets/config.js?v=637"></script>
+  <script src="assets/subtopic.js?v=637"></script>
+  <script src="assets/names.js?v=637"></script>
+  <script src="assets/grounding.js?v=637"></script>
+  <script src="assets/repeats.js?v=637"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1128,7 +1128,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=636"></script>
+  <script src="assets/institutions.js?v=637"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6676,11 +6676,13 @@ return maplibregl$1;
       set: (v) => { isGossipModeActive = v; }
     });
 
-    // The lines fade in as you zoom (user, 6 Nov 2026): none at zoom 12 and below, where the whole city is in view and the map is
-    // plain ground under the museum labels, full 50% grey from zoom 15, the street level. Linear between, so nothing pops in.
-    const CITY_LINE_FADE = ['interpolate', ['linear'], ['zoom'], 12, 0, 15, 1];
-    // The same ramp for the screen-space street layer (xray-streets), which draws these lines in place of MapLibre's own.
-    const cityLineFadeAt = z => Math.max(0, Math.min(1, (z - 12) / 3));
+    // The lines no longer fade with the zoom (user, 12 Nov 2026: "the map disappears on zoom"). From 6 Nov they faded to nothing at
+    // zoom 12 and below, so zooming out over a city (Cape Town at z11 to z12) left only the place names on white paper. Every line
+    // is now full 50% grey at every zoom the street map shows (it hands over to the globe below z8); the map is kept quiet at the
+    // whole-city view by what is drawn (the table below: minor roads wait for z13), not by fading it out.
+    const CITY_LINE_FADE = 1;
+    // The same for the screen-space street layer (xray-streets), which draws these lines in place of MapLibre's own.
+    const cityLineFadeAt = () => 1;
     // Every line of the street map is one device pixel wide (user, 9 Nov 2026: "1 px thickness"). MapLibre's line-width is in CSS
     // pixels, so on a 2x screen a width of 1 was two device pixels; this is the width that draws as one. The screen-space layer
     // that normally draws these lines (screenLineLayer, XRAY_LINE_WIDTH) is in device pixels already.
@@ -6689,9 +6691,9 @@ return maplibregl$1;
     // building footprint, path and patch of grass drew at the same weight as the streets, and the map read as one grey texture.
     // The street structure stays; the fine detail waits for the closest zooms. Both lists below (the MapLibre layers and
     // STREET_FEATURES, which draws the same lines in screen space) follow this table, and every change goes in both:
-    //   water, waterway, park        every zoom (fading in from 12 to 15 with CITY_LINE_FADE)
-    //   roads: motorway, trunk, primary, secondary, tertiary   every zoom (same fade)
-    //   roads: minor (residential)  from 12
+    //   water, waterway, park        every zoom, full grey (no fade since 12 Nov 2026)
+    //   roads: motorway, trunk, primary, secondary, tertiary   every zoom
+    //   roads: minor (residential)  from 13 (was 12, while z12 was faded out; drawn there it fills the whole-city view)
     //   boundary (country)          every zoom, dashed
     //   place names                 from 8
     //   building outlines           from 16 (was 13): the record's own building is drawn by the Building view from 17.2
@@ -6716,7 +6718,7 @@ return maplibregl$1;
       // assets/glyphs/Serrif Light, not the map host's Noto Sans. The museum tag is an HTML marker and stays in Jokker.
       glyphs: location.href.replace(/[?#].*$/, '').replace(/[^/]*$/, '') + 'assets/glyphs/{fontstack}/{range}.pbf',
       layers: [
-        // Every line fades in with the zoom (CITY_LINE_FADE, above): none on the whole-city view, full grey at street level.
+        // Every line is full grey at every zoom (CITY_LINE_FADE, above): what shows at which zoom is set by each layer's minzoom.
         // The street map is a line drawing: every edge (water, parks, landcover, buildings, roads, boundaries) is a line one device
         // pixel wide (CITY_HAIRLINE) in the map's line colour, and nothing carries a fill. The building fill and the context extrusion below draw nothing;
         // they stay only so the building under a record's point can be found.
@@ -6792,7 +6794,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['==', ['get', 'class'], 'minor'],
-          minzoom: 12,
+          minzoom: 13,
           paint: { 'line-color': '#787878', 'line-width': CITY_HAIRLINE, 'line-opacity': CITY_LINE_FADE }
         },
         {
@@ -8019,7 +8021,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const STREET_FEATURES = [
       { layer: 'park' }, { layer: 'water' }, { layer: 'waterway' },
       { layer: 'transportation', classes: ['secondary', 'tertiary', 'primary', 'trunk', 'motorway'] },
-      { layer: 'transportation', classes: ['minor'], minzoom: 12 },
+      { layer: 'transportation', classes: ['minor'], minzoom: 13 },
       { layer: 'building', minzoom: 16 },
       { layer: 'landcover', minzoom: 16 },
       { layer: 'transportation', classes: ['service', 'track', 'path'], minzoom: 16 }
@@ -10375,11 +10377,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v636';
+    const ATLAS_RELEASE = 'culture-atlas-v637';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=636').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=637').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -21530,15 +21532,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=636"></script>
-<script src="assets/note-aids.js?v=636" defer></script>
-<script src="assets/note-files.js?v=636" defer></script>
-<script src="assets/funding-views.js?v=636"></script>
-<script src="assets/layers.js?v=636"></script>
-<script src="assets/hq-detail.js?v=636"></script>
-<script src="assets/bubbles.js?v=636" defer></script>
-<script src="assets/phone-maps.js?v=636"></script>
-<script src="assets/desktop-maps.js?v=636"></script>
-<script src="assets/chat-resize.js?v=636"></script>
+<script src="assets/typeset.js?v=637"></script>
+<script src="assets/note-aids.js?v=637" defer></script>
+<script src="assets/note-files.js?v=637" defer></script>
+<script src="assets/funding-views.js?v=637"></script>
+<script src="assets/layers.js?v=637"></script>
+<script src="assets/hq-detail.js?v=637"></script>
+<script src="assets/bubbles.js?v=637" defer></script>
+<script src="assets/phone-maps.js?v=637"></script>
+<script src="assets/desktop-maps.js?v=637"></script>
+<script src="assets/chat-resize.js?v=637"></script>
 </body>
 </html>
