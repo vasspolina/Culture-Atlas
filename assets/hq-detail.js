@@ -124,6 +124,9 @@
   // ---- The record ----
   // The record lives in the Details tab. On a desktop that is the record body of the right column; on a phone it is the record sheet's
   // scroll body. Whatever the tab held (a space's record) is hidden, not removed, while a funder's record shows, and comes back on close.
+  // A new record opens at its top. The panel itself does not scroll: its host's column does (the desktop Details column, the
+  // phone sheet), so every scrolling box it sits in goes back to the top (12 Nov 2026: a city or funder opened partway down).
+  function toTop(p) { for (let el = p; el && el !== document.body; el = el.parentElement) if (el.scrollTop) el.scrollTop = 0; }
   function detailsHost() {
     return document.getElementById(window.innerWidth >= 768 ? 'desktopDossierRecordBody' : 'dossier-sheet-scrollable-body');
   }
@@ -227,7 +230,7 @@
       }
     }
     p.replaceChildren(head, rows);
-    p.scrollTop = 0;
+    toTop(p);
   }
 
   function openRecord(e, from, keepFocusOrigin) {
@@ -282,7 +285,7 @@
       return h('li', null, b);
     }, LIST_SHOWN)));
     p.replaceChildren(head, rows);
-    p.scrollTop = 0;
+    toTop(p);
   }
   window.atlasPlaceOpen = function (cityName) {
     if (!cityName || cityName === 'all') return;
