@@ -1106,12 +1106,13 @@
         strip.classList.toggle('is-alert', !!alerts.length);
         // An alert now is the top story (user, 4 Nov 2026: "make alert to be a top story"): the strip keeps its name, takes the
         // alert's colour and headline, and says the report is an alert, and how many more there are.
-        // The panel is called Recent news (user, 11 Nov 2026: "call it in the recent news"), and so is the strip that opens it.
-        const label = 'Recent news';
+        // The panel is called Latest (user, 12 Nov 2026, picked from a list of names; Recent news since 11 Nov 2026), and so is
+        // the strip that opens it.
+        const label = 'Latest';
         const more = alerts.length > 1 ? ' · ' + (alerts.length - 1) + ' more alert' + (alerts.length > 2 ? 's' : '') : '';
         // No "Alert" word on the strip either (user, 5 Nov 2026): the meta line is the space, when, and how many more.
         const meta = top.inst.name + ' · ' + ago(top.when) + more;
-        // No badge: the strip is its headline and meta line only (user, 5 Nov 2026: "delete icon"); its aria-label still says "Recent news".
+        // No badge: the strip is its headline and meta line only (user, 5 Nov 2026: "delete icon"); its aria-label still says "Latest".
         strip.innerHTML = '<span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
         strip.setAttribute('aria-label', label + (alerts.length ? ', an alert now' : '') + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + more + '. Open the latest reports');
       }
@@ -1266,14 +1267,15 @@
         // the reports and the cross alone stays at the top right (user, 7 Nov 2026: "keep cross on scroll").
         feed.innerHTML = '<div class="ts">'
           + '<div class="ts-pin"><button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>'
-          + '<header class="gm-feed-head ts-bar"><button type="button" class="ts-grab" aria-label="' + grabLabel() + '"></button><h2 id="gmFeedTitle" class="ts-title">Recent news</h2>'
+          + '<header class="gm-feed-head ts-bar"><button type="button" class="ts-grab" aria-label="' + grabLabel() + '"></button><h2 id="gmFeedTitle" class="ts-title">Latest</h2>'
           + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
           + '</header>'
           + (top ? card(top, true, topIsAlert) : '')
           + sec(topIsAlert ? 'More stories' : 'Alerts now', '', alertList, true)
           + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           // No count beside Latest (user, 7 Nov 2026: "delete 1 in the past 30 days").
-          + sec(alertList.length || near.length ? 'Latest' : 'Worldwide', '', world, false)
+          // Worldwide in every case now that the panel itself is called Latest (12 Nov 2026); it was Latest after alerts or Near you.
+          + sec('Worldwide', '', world, false)
           + sec('From staff and visitors', 'User posts', posts, false, 'Quoted unedited from review sites and Reddit, and not checked.')
           + sec('From leaked documents', docs.length + ' on record', docs, false)
           + '<section class="ts-sec"><h2 class="ts-sec-title"><span>About these reports</span></h2>'
@@ -1375,7 +1377,7 @@
                 else if (added.length) {
                   const names = [...new Set(added.map((y) => y.inst.name))];
                   const shown = names.slice(0, 2).join(', ') + (names.length > 2 ? ' and ' + (names.length - 2) + ' more' : '');
-                  say({ tone: 'report', label: ['New reports'], when: 'now', name: added.length + ' new reports', head: shown, meta: ['On the record', 'Open Recent news to read them'] });
+                  say({ tone: 'report', label: ['New reports'], when: 'now', name: added.length + ' new reports', head: shown, meta: ['On the record', 'Open Latest to read them'] });
                 }
                 announce(alerts, false);
                 if (!feed.hidden) { const sc = feed.scrollTop; render(); feed.scrollTop = sc; }

@@ -393,7 +393,7 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 #dossier-bottom-sheet .gm-info{list-style:none!important;margin:0!important;padding:0!important}
 #dossier-bottom-sheet .gm-info li{margin:0!important;padding:0 0 0 var(--sh-indent)!important;border:0!important;min-height:0!important}
 #dossier-bottom-sheet .gm-info li svg{display:none!important}
-#dossier-bottom-sheet .sheet-close svg{width:16px!important;height:16px!important}
+#dossier-bottom-sheet .sheet-close svg{width:28px!important;height:28px!important}
 
 /* ---- the reports: they take the index column, each part under a stone band ---- */
 #gmFeed{background:var(--sh-paper)!important;border:0!important;padding:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
@@ -401,9 +401,15 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 #gmFeed .ts-bar{display:flex!important;align-items:baseline!important;justify-content:space-between!important;gap:var(--sh-pad)!important;margin:0!important;padding:0!important;border:0!important;background:var(--sh-paper)!important}
 #gmFeed .ts-grab{display:none!important}
 #gmFeed :is(.ts-title,.ts-title *){font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important;margin:0!important}
-#gmFeed .ts-pin{position:absolute!important;top:var(--sh-pad)!important;right:var(--sh-pad)!important;left:auto!important;margin:0!important;padding:0!important;background:transparent!important}
-#gmFeed .ts-bar .gm-bell{margin-right:calc(16px + var(--sh-pad))!important}
-#gmFeed .ts-x svg{width:14px!important;height:14px!important}
+/* The head is one line (user, 12 Nov 2026: "allign this, crosses need to be bigger"): the title, Alert me and the cross all
+   centred on the title's line, which is --sh-l-lh tall and starts --sh-pad down. The cross is 28px, the size of the title's
+   capitals, on a 44px target; the target hangs 8px past the column's padding so the drawn cross ends on the padding edge.
+   Before this the cross was 14px and pinned to the panel's top corner, above the line the words sat on. */
+#gmFeed .ts-bar{align-items:center!important}
+#gmFeed .ts-pin{position:absolute!important;top:calc(var(--sh-pad) + (var(--sh-l-lh) - 44px) / 2)!important;right:calc(var(--sh-pad) - 8px)!important;left:auto!important;margin:0!important;padding:0!important;background:transparent!important}
+#gmFeed .ts-bar .gm-bell{margin-right:calc(28px + var(--sh-pad))!important}
+#gmFeed .ts-btn.ts-x{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-height:44px!important;margin:0!important;padding:0!important}
+#gmFeed .ts-x svg{width:28px!important;height:28px!important}
 #gmFeed .ts-story{margin:0!important;padding:0!important;border:0!important}
 #gmFeed .ts-label{display:block!important;background:var(--sh-stone)!important;text-align:center!important;height:var(--sh-band)!important;line-height:var(--sh-band-lh)!important;margin:var(--sh-s-lh) 0 var(--sh-gap)!important;padding:0!important;border:0!important}
 #gmFeed :is(.ts-headline,.ts-prose){margin:0!important;padding:0!important;border:0!important;text-transform:none!important;max-width:none!important;hyphens:manual!important}
@@ -568,8 +574,8 @@ main#main .study{border:0!important}
    button stays in sight at the column's top right while the reports scroll. */
 @media (min-width:768px){
   :root.gmd body #gmFeed:not([hidden]){z-index:48!important}
-  :root.gmd body #gmFeed:not([hidden]) .ts-pin{position:fixed!important;top:calc(var(--sh-head) + 1px + var(--sh-pad))!important;left:calc(max(var(--sh-col),340px) - var(--sh-pad) - 16px)!important;right:auto!important;z-index:49!important;background:var(--sh-paper)!important}
-  :root.gmd body #gmFeed:not([hidden]) .ts-bar .gm-bell{margin-right:calc(16px + var(--sh-pad))!important}
+  :root.gmd body #gmFeed:not([hidden]) .ts-pin{position:fixed!important;top:calc(var(--sh-head) + 1px + var(--sh-pad) + (var(--sh-l-lh) - 44px) / 2)!important;left:calc(max(var(--sh-col),340px) - var(--sh-pad) - 36px)!important;right:auto!important;z-index:49!important;background:transparent!important}
+  :root.gmd body #gmFeed:not([hidden]) .ts-bar .gm-bell{margin-right:calc(28px + var(--sh-pad))!important}
 }
 
 /* The search line at the head of the column is deleted (user, 10 Nov 2026: "delete search and add more to article
