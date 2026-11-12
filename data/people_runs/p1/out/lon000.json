@@ -7,12 +7,13 @@
     "role": "director",
     "title": "Director",
     "current": true,
-    "since": null,
+    "since": "1991",
     "until": null,
     "previously": [],
     "pay": null,
     "sources": [
-     "https://autograph.org.uk/about-us/autograph-staff-trustees-ambassadors/"
+     "https://autograph.org.uk/about-us/autograph-staff-trustees-ambassadors/",
+     "https://www.rencontres-arles.com/en/commissaires/view/12/mark-sealy"
     ]
    },
    {
@@ -42,7 +43,7 @@
     ]
    }
   ],
-  "basis": "Autograph's staff, trustees and ambassadors page, which names the director, the senior curator and the chair of trustees."
+  "basis": "Autograph's staff, trustees and ambassadors page for the current team and chair, and the Rencontres d'Arles curator page for the year Mark Sealy became director."
  },
  {
   "id": "british-museum-london",
@@ -59,11 +60,12 @@
      "curator of international modern art, Tate Modern (2007 to 2013)"
     ],
     "pay": {
-     "amount": "360000 to 365000",
+     "amount": 360000,
      "currency": "GBP",
      "year": "2025/26",
-     "what": "single total figure of remuneration, published as a band of 360 to 365 thousand pounds (salary band 220 to 225, bonus band 25 to 30, benefits in kind 1,200, pension benefits 113,000)",
-     "url": "https://assets.publishing.service.gov.uk/media/6a5f44bc077674c806e04a1f/E03588178_British_Museum_ARA_2025-26_Accessible_v3.pdf"
+     "what": "single total figure of remuneration (salary, bonus, benefits in kind and pension benefits), published as a band",
+     "url": "https://assets.publishing.service.gov.uk/media/6a5f44bc077674c806e04a1f/E03588178_British_Museum_ARA_2025-26_Accessible_v3.pdf",
+     "amount_to": 365000
     },
     "sources": [
      "https://assets.publishing.service.gov.uk/media/6a5f44bc077674c806e04a1f/E03588178_British_Museum_ARA_2025-26_Accessible_v3.pdf",
@@ -124,12 +126,17 @@
     "role": "director",
     "title": "Director",
     "current": true,
-    "since": null,
+    "since": "2017-09",
     "until": null,
-    "previously": [],
+    "previously": [
+     "Director, Bergen Kunsthall (2013 to 2017)",
+     "Artistic Director, Tate St Ives (2007 to 2013)"
+    ],
     "pay": null,
     "sources": [
-     "https://camdenartcentre.org/about-us/contact"
+     "https://camdenartcentre.org/about-us/contact",
+     "https://www.theartnewspaper.com/2017/05/04/camden-arts-centre-gets-first-new-director-in-almost-30-years",
+     "https://townereastbourne.org.uk/about/blog/martin-clark-appointed-as-new-ceo-director"
     ]
    },
    {
@@ -159,7 +166,7 @@
     ]
    }
   ],
-  "basis": "Camden Art Centre's contact page, which lists the team and the trustees."
+  "basis": "Camden Art Centre's contact page for the team and trustees, The Art Newspaper of May 2017 for Martin Clark's start, and Towner Eastbourne's August 2026 announcement that he joins Towner as CEO and Director in January 2027, so he is still at Camden for now."
  },
  {
   "id": "chisenhale-gallery",
@@ -169,12 +176,16 @@
     "role": "director",
     "title": "Director",
     "current": true,
-    "since": null,
+    "since": "2025-03",
     "until": null,
-    "previously": [],
+    "previously": [
+     "Co-Director, Auto Italia (2016 to 2018)",
+     "Director, Auto Italia (2019 to 2024)"
+    ],
     "pay": null,
     "sources": [
-     "https://chisenhale.org.uk/our-team/"
+     "https://chisenhale.org.uk/our-team/",
+     "https://fadmagazine.com/2025/03/12/chisenhale-gallery-names-edward-gillman-as-new-director"
     ]
    },
    {
@@ -219,7 +230,7 @@
     ]
    }
   ],
-  "basis": "Chisenhale Gallery's team page, which names the director, the curator, the chair of trustees and lists previous directors with their years."
+  "basis": "Chisenhale Gallery's team page, which names the director, the curator and the chair and lists previous directors with their years, and the March 2025 appointment announcement in FAD Magazine."
  },
  {
   "id": "delfina-foundation-london",
@@ -251,7 +262,7 @@
     "role": "director",
     "title": "Director and Chief Executive Officer",
     "current": true,
-    "since": null,
+    "since": "2020-01",
     "until": null,
     "previously": [
      "Artistic Director, Royal Academy of Arts",
@@ -259,7 +270,8 @@
     ],
     "pay": null,
     "sources": [
-     "https://designmuseum.org/about-the-museum/directorate"
+     "https://designmuseum.org/about-the-museum/directorate",
+     "https://www.dezeen.com/2019/10/07/tim-marlow-director-ceo-london-design-museum/"
     ]
    },
    {
@@ -291,7 +303,7 @@
     ]
    }
   ],
-  "basis": "The Design Museum's directorate page and trustees page."
+  "basis": "The Design Museum's directorate and trustees pages, and Dezeen's October 2019 report that Tim Marlow would take up the post in January 2020."
  },
  {
   "id": "dulwich-picture-gallery-london",
@@ -301,12 +313,15 @@
     "role": "director",
     "title": "Director",
     "current": true,
-    "since": null,
+    "since": "2017-04",
     "until": null,
-    "previously": [],
+    "previously": [
+     "Director, Holburne Museum (2014 to 2017)"
+    ],
     "pay": null,
     "sources": [
-     "https://web.archive.org/web/20260216135302/https://www.dulwichpicturegallery.org.uk/about-us/our-people/"
+     "https://web.archive.org/web/20260216135302/https://www.dulwichpicturegallery.org.uk/about-us/our-people/",
+     "https://www.museumsassociation.org/museums-journal/news/2016/12/20122016-dulwich-picture-gallery-appoints-director/"
     ]
    },
    {
@@ -323,7 +338,7 @@
     ]
    }
   ],
-  "basis": "The gallery's our people page, read from a web.archive.org capture of 16 February 2026 because the live site blocked automated access."
+  "basis": "The gallery's our people page, read from a web.archive.org capture of 16 February 2026 because the live site blocked automated access, and the Museums Association report of December 2016 for Jennifer Scott's start."
  },
  {
   "id": "english-national-ballet-london",
@@ -333,12 +348,15 @@
     "role": "artistic director",
     "title": "Artistic Director",
     "current": true,
-    "since": null,
+    "since": "2023-08",
     "until": null,
-    "previously": [],
+    "previously": [
+     "Artistic Director, Semperoper Ballett, Dresden (2006 to 2023)"
+    ],
     "pay": null,
     "sources": [
-     "https://www.ballet.org.uk/about-us/our-people/"
+     "https://www.ballet.org.uk/about-us/our-people/",
+     "https://www.ballet.org.uk/blog/aaron-s-watkin-announced-new-artistic-director/"
     ]
    },
    {
@@ -346,12 +364,17 @@
     "role": "director",
     "title": "Executive Director",
     "current": true,
-    "since": null,
+    "since": "2025-01",
     "until": null,
-    "previously": [],
+    "previously": [
+     "Director of Business and Operations, British Film Institute",
+     "Executive Director, Dance Umbrella (2014 to 2018)",
+     "Co-Director, English National Ballet School"
+    ],
     "pay": null,
     "sources": [
-     "https://www.ballet.org.uk/about-us/our-people/"
+     "https://www.ballet.org.uk/about-us/our-people/",
+     "https://www.ballet.org.uk/blog/anu-giri-appointed-as-new-executive-director/"
     ]
    },
    {
@@ -366,9 +389,24 @@
     "sources": [
      "https://www.ballet.org.uk/about-us/our-people/"
     ]
+   },
+   {
+    "name": "Patrick Harrison",
+    "role": "director",
+    "title": "Executive Director",
+    "current": false,
+    "since": null,
+    "until": "2024",
+    "left_because": "moved to another post",
+    "next_post": "CEO of The Royal Ballet School",
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.ballet.org.uk/blog/anu-giri-appointed-as-new-executive-director/"
+    ]
    }
   ],
-  "basis": "English National Ballet's our people page, which lists the leadership and the board."
+  "basis": "English National Ballet's our people page for the leadership and board, and the company's own announcements of Aaron S. Watkin (August 2022) and Anu Giri (October 2024)."
  },
  {
   "id": "gasworks",
@@ -378,12 +416,17 @@
     "role": "director",
     "title": "Director, Gasworks",
     "current": true,
-    "since": null,
+    "since": "2024-03",
     "until": null,
-    "previously": [],
+    "previously": [
+     "Director, Spike Island (2018 to 2024)",
+     "Curator and Head of Programmes, Gasworks (2011 to 2018)"
+    ],
     "pay": null,
     "sources": [
-     "https://www.gasworks.org.uk/about-us/staff/"
+     "https://www.gasworks.org.uk/about-us/staff/",
+     "https://www.theartnewspaper.com/2023/11/27/gasworks-contemporary-art-centre-in-london-appoints-robert-leckie-as-new-director",
+     "https://artreview.com/gasworks-announce-robert-leckie-will-be-its-new-director"
     ]
    },
    {
@@ -411,9 +454,25 @@
     "sources": [
      "https://www.gasworks.org.uk/about-us/staff/"
     ]
+   },
+   {
+    "name": "Alessio Antoniolli",
+    "role": "director",
+    "title": "Director",
+    "current": false,
+    "since": null,
+    "until": "2024",
+    "left_because": "moved to another post",
+    "next_post": "Director of Triangle Network",
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.theartnewspaper.com/2023/11/27/gasworks-contemporary-art-centre-in-london-appoints-robert-leckie-as-new-director",
+     "https://artreview.com/gasworks-announce-robert-leckie-will-be-its-new-director"
+    ]
    }
   ],
-  "basis": "Gasworks' staff page, which lists the staff and trustees."
+  "basis": "Gasworks' staff page for the staff and trustees, and The Art Newspaper and ArtReview reports of November 2023 on Robert Leckie succeeding Alessio Antoniolli in March 2024."
  },
  {
   "id": "goldsmiths-cca-london",
@@ -423,12 +482,16 @@
     "role": "director",
     "title": "Director",
     "current": true,
-    "since": null,
+    "since": "2017",
     "until": null,
-    "previously": [],
+    "previously": [
+     "Director, Glasgow International (2012 to 2017)",
+     "curator, Frieze Projects and Film"
+    ],
     "pay": null,
     "sources": [
-     "https://goldsmithscca.art/about/team/"
+     "https://goldsmithscca.art/about/team/",
+     "https://www.gold.ac.uk/news/sarah-mccrory-gallery-director/"
     ]
    },
    {
@@ -438,14 +501,17 @@
     "current": true,
     "since": null,
     "until": null,
-    "previously": [],
+    "previously": [
+     "curator, Witte de With Center for Contemporary Art (2014 to 2018)"
+    ],
     "pay": null,
     "sources": [
-     "https://goldsmithscca.art/about/team/"
+     "https://goldsmithscca.art/about/team/",
+     "https://www.artforum.com/news/londons-new-goldsmiths-center-contemporary-art-appoints-natasha-hoare-curator-75243"
     ]
    }
   ],
-  "basis": "Goldsmiths CCA's team page."
+  "basis": "Goldsmiths CCA's team page, Goldsmiths' January 2017 announcement of Sarah McCrory, and Artforum's May 2018 report on Natasha Hoare joining as curator."
  },
  {
   "id": "isokon-gallery",

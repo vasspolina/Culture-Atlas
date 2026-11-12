@@ -30,7 +30,8 @@ input order, and edit no other file:
 ```
 {"id": the input id,
  "people": [
-   {"name": the person's name as the source writes it,
+   {"name": the person's name as the source writes it, without honorifics or letters after it
+            (no Dr, Professor, Sir, Dame, OBE, CH): "Mark Sealy", not "Professor Mark Sealy OBE",
     "role": one of "director" | "co-director" | "artistic director" | "chief curator" |
             "curator" | "founder" | "chair of the board",
     "title": the job title in the source's own words, in its own language if not English,
@@ -45,7 +46,9 @@ input order, and edit no other file:
                   order the source gives them; [] when no source states any,
     "pay": null, or only from a public filing or annual report:
            {"amount": 245000, "currency": "USD", "year": "2023", "what": "total compensation",
-            "url": the filing},
+            "url": the filing}; "amount" is a number. Where the filing gives a band (UK
+           annual reports print "360 to 365" thousand), "amount" is the low end and
+           "amount_to" the high end, both in whole units: 360000 and 365000,
     "sources": [the urls you read that state this person's name in this post]}
  ],
  "basis": one sentence: where the people were found (the space's team page, a 2024 appointment

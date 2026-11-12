@@ -5,7 +5,7 @@ For each batch in data/people_runs/<run>/out/, a checker's file in check/ of the
 there is one, overrides the researcher's record with its `corrected` object. A batch with no
 check file is merged only with --unchecked, and its records are marked `"checked": false`.
 
-Every record is validated against the brief before it is written: roles from the list, no field
+Names lose honorifics and letters after them (Dr, Prof., Sir, Dame, OBE). Every record is validated against the brief before it is written: roles from the list, no field
 outside the schema (so nothing from "What never goes in" can ride along), at least one source per
 person, no Wikipedia or LinkedIn source, pay only with a url, no long dash in `basis`. A record
 that fails is reported and left out; the rest are merged. A record already in people.json for the
@@ -25,7 +25,17 @@ ROLES = {'director', 'co-director', 'artistic director', 'chief curator', 'curat
 LEFT = {'retired', 'term ended', 'moved to another post', 'resigned', 'dismissed', 'died', None}
 PERSON_KEYS = {'name', 'role', 'title', 'current', 'since', 'until', 'left_because', 'next_post',
                'previously', 'pay', 'sources'}
-PAY_KEYS = {'amount', 'currency', 'year', 'what', 'url'}
+PAY_KEYS = {'amount', 'amount_to', 'currency', 'year', 'what', 'url'}
+HONORIFIC = re.compile(r'^(Dr|Prof|Professor|Sir|Dame|The Rt Hon|The Hon|Lord|Lady)\.?\s+'
+                       r'|,?\s+(OBE|MBE|CBE|DBE|KBE|CH|FBA|FRS|FRSA|PhD|Hon\.? RA|RA)\b\.?')
+
+
+def plain_name(name):
+    """'Prof. Dr. Raphael Gross' -> 'Raphael Gross'; 'Dame Janet Vitmayer, DBE' -> 'Janet Vitmayer'."""
+    prev = None
+    while prev != name:
+        prev, name = name, HONORIFIC.sub('', name).strip(' ,')
+    return name
 BANNED_HOSTS = re.compile(r'(wikipedia\.org|linkedin\.com|google\.[a-z.]+/search)', re.I)
 DATE = re.compile(r'^\d{4}(-\d{2})?$')
 
@@ -74,6 +84,10 @@ def problems(rec):
         if pay is not None:
             if not isinstance(pay, dict) or set(pay) - PAY_KEYS or not pay.get('url'):
                 out.append(f'{who}: pay malformed or without a url')
+            elif not all(isinstance(pay.get(k), (int, float)) for k in ('amount',)) or \
+                    ('amount_to' in pay and not isinstance(pay['amount_to'], (int, float))):
+                out.append(f'{who}: pay amount is not a number')
+
     return out
 
 
@@ -103,6 +117,9 @@ def main():
             continue
         for rec in recs:
             rec = corrected.get(rec['id'], rec)
+            for p in rec.get('people') or []:
+                if isinstance(p.get('name'), str):
+                    p['name'] = plain_name(p['name'])
             if rec['id'] not in names:
                 print(f'{f.name} {rec["id"]}: not in institutions.json')
                 rejected += 1
@@ -139,7 +156,7 @@ def main():
                             p.get('title') or '', p['current'], p.get('since') or '',
                             p.get('until') or '', p.get('left_because') or '',
                             p.get('next_post') or '', ' | '.join(p.get('previously') or []),
-                            f'{pay["amount"]} {pay["currency"]} {pay["year"]} {pay["what"]}' if pay else '',
+                            (f'{pay["amount"]}' + (f' to {pay["amount_to"]}' if pay.get('amount_to') else '') + f' {pay["currency"]} {pay["year"]} {pay["what"]}') if pay else '',
                             ' '.join(p['sources']), r['checked']])
 
 
