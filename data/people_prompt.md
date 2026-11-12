@@ -160,4 +160,4 @@ records and each fault in one line.
 
 | Run | Date | Batches | Notes |
 | --- | --- | --- | --- |
-| p1 | 2026-11-12 | 3 (pilot) | First pass, with a checker on every batch. |
+| p1 | 2026-11-12 | 3 (pilot: Berlin, London, New York; 36 spaces) | 35 spaces and 90 people merged. Checkers passed 28 records and corrected 8: a start date sourced to an undated page, capitals copied from Form 990s, a start month that was the announcement's, ENB's two leaders as co-directors, and one chair dropped whose only page would not open. Added pay bands (`amount_to`) and honorific stripping at merge. |

@@ -1,0 +1,1826 @@
+[
+ {
+  "id": "alice-austen-house",
+  "name": "Alice Austen House",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Victoria Munro",
+    "role": "director",
+    "title": "Executive Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": {
+     "amount": 128800,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/133248928/202630139349302618/full"
+    },
+    "sources": [
+     "https://aliceausten.org/staff-and-board/",
+     "https://projects.propublica.org/nonprofits/organizations/133248928/202630139349302618/full"
+    ]
+   }
+  ],
+  "basis": "The museum's Staff and Board page (footer dated 2025) names Victoria Munro as Executive Director, and the Friends of Alice Austen House Form 990 filed January 2026 lists her pay; no source opened gives her start date.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "ambasada-kultury-berlin",
+  "name": "Ambasada Kultury",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Anna Chistoserdova",
+    "role": "founder",
+    "title": "co-founder and manager of Ambasada Kultury",
+    "current": true,
+    "since": "2021",
+    "until": null,
+    "previously": [
+     "co-owner, artistic director, manager, and curator of international culture projects, Ў gallery of contemporary art, Minsk (2009 to 2020)",
+     "co-founder and manager, Podzemka Gallery, Minsk (2004 to 2009)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://ambasada.art/Luft-suchen-I-II",
+     "https://www.cecartslink.org/participant/anna-chistoserdova/",
+     "https://berlinartweek.de/en/stream/ambasada-kultury-by/"
+    ]
+   },
+   {
+    "name": "Valentina Kiselyova",
+    "role": "founder",
+    "title": "Management",
+    "current": true,
+    "since": "2021",
+    "until": null,
+    "previously": [
+     "director and curator, gallery of contemporary art Ў, Minsk (2009 to 2020)",
+     "founder, gallery PODZEMKA (2004 to 2009)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://ambasada.art/Luft-suchen-I-II",
+     "https://berlinartweek.de/en/stream/ambasada-kultury-by/"
+    ]
+   }
+  ],
+  "basis": "The initiative's own site, whose October 2026 exhibition page names both as its management, with a Berlin Art Week 2021 page naming them founders from 2021 and Anna Chistoserdova's CEC ArtsLink profile.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "american-museum-of-natural-history-new-york",
+  "name": "American Museum of Natural History",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Sean M Decatur",
+    "role": "director",
+    "title": "President & Ex Officio Trustee",
+    "current": true,
+    "since": "2023-04",
+    "until": null,
+    "previously": [
+     "President, Kenyon College"
+    ],
+    "pay": {
+     "amount": 1216070,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/136162659/202641179349300744/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/136162659/202641179349300744/full",
+     "https://nnpa.org/american-museum-of-natural-history-names-first-black-president/",
+     "https://hyperallergic.com/sean-decatur-appointed-president-american-museum-of-natural-history"
+    ]
+   },
+   {
+    "name": "Scott L Bok",
+    "role": "chair of the board",
+    "title": "Chairman",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/136162659/202641179349300744/full"
+    ]
+   },
+   {
+    "name": "Ellen Futter",
+    "role": "director",
+    "title": "President",
+    "current": false,
+    "since": null,
+    "until": "2023",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://nnpa.org/american-museum-of-natural-history-names-first-black-president/",
+     "https://hyperallergic.com/sean-decatur-appointed-president-american-museum-of-natural-history"
+    ]
+   }
+  ],
+  "basis": "The museum's Form 990 for the year to June 2025, filed April 2026 (ProPublica), names the president and chairman; Hyperallergic's 7 December 2022 report on the appointment says Decatur would take over from Ellen Futter in April 2023, and an undated AP report reposted by NNPA calls Futter the museum's president of 30 years; amnh.org blocked access.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "artists-space",
+  "name": "Artists Space",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Jay Sanders",
+    "role": "director",
+    "title": "Executive Director & Chief Curator",
+    "current": true,
+    "since": "2017-04",
+    "until": null,
+    "previously": [
+     "Curator, Whitney Museum (2012 to 2017)"
+    ],
+    "pay": {
+     "amount": 175000,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/132749632/202621349349307017/full"
+    },
+    "sources": [
+     "https://artistsspace.org/about",
+     "https://artreview.com/news-16-feb-2017-jay-sanders-executive-director-and-chief-curator-of-artists-space",
+     "https://projects.propublica.org/nonprofits/organizations/132749632/202621349349307017/full"
+    ]
+   },
+   {
+    "name": "Danielle A. Jackson",
+    "role": "curator",
+    "title": "Curator",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://artistsspace.org/about"
+    ]
+   }
+  ],
+  "basis": "The Artists Space about page lists its staff, ArtReview's February 2017 news item gives Sanders's April 2017 start, and the Form 990 filed May 2026 gives his pay.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "autograph-london",
+  "name": "Autograph",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Mark Sealy",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": "1991",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://autograph.org.uk/about-us/autograph-staff-trustees-ambassadors/",
+     "https://www.rencontres-arles.com/en/commissaires/view/12/mark-sealy"
+    ]
+   },
+   {
+    "name": "Bindi Vora",
+    "role": "curator",
+    "title": "Senior Curator",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://autograph.org.uk/about-us/autograph-staff-trustees-ambassadors/"
+    ]
+   },
+   {
+    "name": "Pawlet Brookes",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://autograph.org.uk/about-us/autograph-staff-trustees-ambassadors/"
+    ]
+   }
+  ],
+  "basis": "Autograph's staff, trustees and ambassadors page for the current team and chair, and the Rencontres d'Arles curator page for the year Mark Sealy became director.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "berlinische-galerie",
+  "name": "Berlinische Galerie",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Thomas Köhler",
+    "role": "director",
+    "title": "Direktor; Vorstand der Stiftung öffentlichen Rechts",
+    "current": true,
+    "since": "2010",
+    "until": null,
+    "previously": [
+     "Head of Collections and of the Exhibition Programme and Deputy Director, Berlinische Galerie (2008 to 2010)",
+     "Head of Communications & Visual Education, Kunstmuseum Wolfsburg (1998 to 2008)",
+     "Programme Director for \"100 Days, 100 Guests\", documenta X (1996)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://berlinischegalerie.de/kontakt/",
+     "https://berlinischegalerie.de/berlinische-galerie/das-museum/stiftung/",
+     "https://berlinischegalerie.de/impressum/",
+     "https://myartguides.com/people/kohler-thomas/"
+    ]
+   },
+   {
+    "name": "Alexander Steinhilber",
+    "role": "chair of the board",
+    "title": "Vorsitzender des Stiftungsrats; Leiter der Abteilung Kultur, Senatsverwaltung für Kultur und Gesellschaftlichen Zusammenhalt",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://berlinischegalerie.de/berlinische-galerie/das-museum/stiftung/"
+    ]
+   }
+  ],
+  "basis": "The museum's team page and foundation page, which name the director and the chair of the Stiftungsrat; the start year and earlier posts come from his My Art Guides profile.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "british-museum-london",
+  "name": "British Museum",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Nicholas Cullinan",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": "2024-06",
+    "until": null,
+    "previously": [
+     "curator of modern and contemporary art, Metropolitan Museum of Art (2013 to 2015)",
+     "curator of international modern art, Tate Modern (2007 to 2013)"
+    ],
+    "pay": {
+     "amount": 360000,
+     "currency": "GBP",
+     "year": "2025/26",
+     "what": "single total figure of remuneration (salary, bonus, benefits in kind and pension benefits), published as a band",
+     "url": "https://assets.publishing.service.gov.uk/media/6a5f44bc077674c806e04a1f/E03588178_British_Museum_ARA_2025-26_Accessible_v3.pdf",
+     "amount_to": 365000
+    },
+    "sources": [
+     "https://assets.publishing.service.gov.uk/media/6a5f44bc077674c806e04a1f/E03588178_British_Museum_ARA_2025-26_Accessible_v3.pdf",
+     "https://apollo-magazine.com/?p=1007237"
+    ]
+   },
+   {
+    "name": "Xerxes Mazda",
+    "role": "chief curator",
+    "title": "Director of Collections",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://assets.publishing.service.gov.uk/media/6a5f44bc077674c806e04a1f/E03588178_British_Museum_ARA_2025-26_Accessible_v3.pdf"
+    ]
+   },
+   {
+    "name": "George Osborne",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://assets.publishing.service.gov.uk/media/6a5f44bc077674c806e04a1f/E03588178_British_Museum_ARA_2025-26_Accessible_v3.pdf",
+     "https://apollo-magazine.com/?p=1007237"
+    ]
+   },
+   {
+    "name": "Mark Jones",
+    "role": "director",
+    "title": "Interim Director",
+    "current": false,
+    "since": "2023-09",
+    "until": "2024-06",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://assets.publishing.service.gov.uk/media/6a5f44bc077674c806e04a1f/E03588178_British_Museum_ARA_2025-26_Accessible_v3.pdf",
+     "https://apollo-magazine.com/?p=1007237"
+    ]
+   }
+  ],
+  "basis": "The British Museum Annual Report and Accounts 2025 to 2026 (remuneration report and trustee and related party tables) and Apollo's March 2024 appointment report; the museum's own site blocked automated access.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "brooklyn-museum-new-york",
+  "name": "Brooklyn Museum",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Anne Pasternak",
+    "role": "director",
+    "title": "Shelby White & Leon Levy Director",
+    "current": true,
+    "since": "2015-09",
+    "until": null,
+    "previously": [
+     "President and Artistic Director, Creative Time (1994 to 2015)"
+    ],
+    "pay": {
+     "amount": 705906,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full",
+     "https://www.theartnewspaper.com/2015/05/20/anne-pasternak-to-lead-the-brooklyn-museum",
+     "https://hyperallergic.com/creative-times-anne-pasternak-will-take-the-helm-at-the-brooklyn-museum"
+    ]
+   },
+   {
+    "name": "Catherine Futter",
+    "role": "chief curator",
+    "title": "Director of Curatorial Affairs",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": {
+     "amount": 181967,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full"
+    ]
+   },
+   {
+    "name": "Barbara M Vogelstein",
+    "role": "chair of the board",
+    "title": "Board Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/111672743/202611349349303071/full"
+    ]
+   }
+  ],
+  "basis": "The Brooklyn Institute of Arts and Sciences (Brooklyn Museum) Form 990 for the year to June 2025, filed May 2026, names the director, curatorial head and board chair; May 2015 reports in The Art Newspaper and Hyperallergic give the 1 September 2015 start; the museum's site refused requests.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "c-o-berlin-berlin",
+  "name": "C/O Berlin",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Stephan Erfurt",
+    "role": "director",
+    "title": "Vorstandsvorsitzender",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://co-berlin.org/de/team",
+     "https://co-berlin.org/de/impressum",
+     "https://co-berlin.org/de/ueber-uns"
+    ]
+   },
+   {
+    "name": "Sophia Greiff",
+    "role": "curator",
+    "title": "Programmleitung . Kuratorin",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://co-berlin.org/de/team"
+    ]
+   },
+   {
+    "name": "Boaz Levin",
+    "role": "curator",
+    "title": "Programmleitung . Kurator",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://co-berlin.org/de/team"
+    ]
+   },
+   {
+    "name": "Katja Eichinger",
+    "role": "chair of the board",
+    "title": "Kuratorium, Vorsitzende",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://co-berlin.org/de/impressum"
+    ]
+   }
+  ],
+  "basis": "C/O Berlin's team page and imprint, which name the chair of the foundation's Vorstand, the two heads of programme and the chair of the Kuratorium; the about page names Stephan Erfurt as one of the three founders.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "camden-art-centre",
+  "name": "Camden Art Centre",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Martin Clark",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": "2017-09",
+    "until": null,
+    "previously": [
+     "Director, Bergen Kunsthall (2013 to 2017)",
+     "Artistic Director, Tate St Ives (2007 to 2013)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://camdenartcentre.org/about-us/contact",
+     "https://www.theartnewspaper.com/2017/05/04/camden-arts-centre-gets-first-new-director-in-almost-30-years",
+     "https://townereastbourne.org.uk/about/blog/martin-clark-appointed-as-new-ceo-director"
+    ]
+   },
+   {
+    "name": "Gina Buenfeld-Murley",
+    "role": "curator",
+    "title": "Senior Exhibitions Curator",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://camdenartcentre.org/about-us/contact"
+    ]
+   },
+   {
+    "name": "Jamie Fobert",
+    "role": "chair of the board",
+    "title": "Chair of Trustees",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://camdenartcentre.org/about-us/contact"
+    ]
+   }
+  ],
+  "basis": "Camden Art Centre's contact page for the team and trustees, The Art Newspaper of May 2017 for Martin Clark's start, and Towner Eastbourne's August 2026 announcement that he joins Towner as CEO and Director in January 2027, so he is still at Camden for now.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "center-for-cuban-studies",
+  "name": "Center for Cuban Studies",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Sandra Levinson",
+    "role": "director",
+    "title": "Exec. Dir/secre",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": {
+     "amount": 16640,
+     "currency": "USD",
+     "year": "2024",
+     "what": "reportable compensation from the organization, Form 990 for calendar year 2024",
+     "url": "https://projects.propublica.org/nonprofits/organizations/237092461/202523219349328122/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/237092461/202523219349328122/full",
+     "https://bedfordandbowery.com/2016/12/a-champion-of-cuban-american-cultural-exchange-grapples-with-a-state-of-flux/"
+    ]
+   }
+  ],
+  "basis": "The Center's Form 990 for 2024, filed November 2025 (ProPublica), lists Sandra Levinson as executive director and secretary (title truncated on the page); a 2016 Bedford and Bowery profile says she co-founded the Center with Saul Landau and Lee Lockwood.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "chisenhale-gallery",
+  "name": "Chisenhale Gallery",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Edward Gillman",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": "2025",
+    "until": null,
+    "previously": [
+     "Co-Director, Auto Italia (2016 to 2018)",
+     "Director, Auto Italia (2019 to 2024)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://chisenhale.org.uk/our-team/",
+     "https://fadmagazine.com/2025/03/12/chisenhale-gallery-names-edward-gillman-as-new-director"
+    ]
+   },
+   {
+    "name": "Olivia Aherne",
+    "role": "curator",
+    "title": "Curator: Exhibitions & Events",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://chisenhale.org.uk/our-team/"
+    ]
+   },
+   {
+    "name": "May Calil",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://chisenhale.org.uk/our-team/"
+    ]
+   },
+   {
+    "name": "Zoé Whitley",
+    "role": "director",
+    "title": "Director",
+    "current": false,
+    "since": "2019",
+    "until": "2025",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://chisenhale.org.uk/our-team/"
+    ]
+   }
+  ],
+  "basis": "Chisenhale Gallery's team page, which names the director, the curator and the chair and lists previous directors with their years, and the March 2025 appointment announcement in FAD Magazine.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "cooper-hewitt-smithsonian-design-museum-new-york",
+  "name": "Cooper Hewitt, Smithsonian Design Museum",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Maria Nicanor",
+    "role": "director",
+    "title": "director of the museum",
+    "current": true,
+    "since": "2022-03",
+    "until": null,
+    "previously": [
+     "Executive Director, Rice Design Alliance (2017 to 2022)",
+     "Inaugural Director, Norman Foster Foundation, Madrid",
+     "Several positions, Solomon R. Guggenheim Museum (2005 to 2013)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.cooperhewitt.org/2022/02/08/maria-nicanor-named-director-of-cooper-hewitt-smithsonian-design-museum/",
+     "https://cooperhewitt.org/2026/06/15/cooper-hewitt-unveils-permanent-collection-galleries-showcasing-a-multi-year-presentation-of-the-national-design-collection/"
+    ]
+   },
+   {
+    "name": "Matilda McQuaid",
+    "role": "chief curator",
+    "title": "acting curatorial director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://cooperhewitt.org/2026/06/15/cooper-hewitt-unveils-permanent-collection-galleries-showcasing-a-multi-year-presentation-of-the-national-design-collection/"
+    ]
+   }
+  ],
+  "basis": "Cooper Hewitt's February 2022 release names Nicanor director effective 21 March 2022, and its June 2026 release calls her director of the museum and names the acting curatorial director.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "ddr-museum-berlin",
+  "name": "DDR Museum Berlin",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Gordon von Godin",
+    "role": "director",
+    "title": "Museumsdirektor",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.ddr-museum.de/de/kontakt",
+     "https://www.ddr-museum.de/application/files/4917/7615/9959/DDRMuseum-Pressemappe-2026.pdf",
+     "https://www.ddr-museum.de/de/impressum"
+    ]
+   },
+   {
+    "name": "Sören Marotz",
+    "role": "curator",
+    "title": "Ausstellungsleiter",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.ddr-museum.de/de/kontakt",
+     "https://www.ddr-museum.de/application/files/4917/7615/9959/DDRMuseum-Pressemappe-2026.pdf"
+    ]
+   }
+  ],
+  "basis": "The museum's contact page listing its team and its 2026 press kit, which names Gordon Freiherr von Godin as Direktor and Quirin Graf Adelmann as Geschäftsführer of the operating company.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "delfina-foundation-london",
+  "name": "Delfina Foundation",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Aaron Cezar",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [
+     "Project Director, Metal",
+     "Managing Director, Metal's arts-based consultancy"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.delfinafoundation.com/about/creative-team/"
+    ]
+   }
+  ],
+  "basis": "Delfina Foundation's creative team page, which calls Aaron Cezar its founding Director.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "design-museum-london",
+  "name": "Design Museum",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Tim Marlow",
+    "role": "director",
+    "title": "Director and Chief Executive Officer",
+    "current": true,
+    "since": "2020-01",
+    "until": null,
+    "previously": [
+     "Artistic Director, Royal Academy of Arts",
+     "Director of Exhibitions, White Cube"
+    ],
+    "pay": null,
+    "sources": [
+     "https://designmuseum.org/about-the-museum/directorate",
+     "https://www.dezeen.com/2019/10/07/tim-marlow-director-ceo-london-design-museum/"
+    ]
+   },
+   {
+    "name": "Johanna Agerman Ross",
+    "role": "chief curator",
+    "title": "Conran Foundation Chief Curator",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [
+     "curator of twentieth century and contemporary furniture and product design, V&A"
+    ],
+    "pay": null,
+    "sources": [
+     "https://designmuseum.org/about-the-museum/directorate"
+    ]
+   },
+   {
+    "name": "Stuart Roden",
+    "role": "chair of the board",
+    "title": "Chair of the Board of Trustees",
+    "current": true,
+    "since": "2023-07",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://designmuseum.org/about-the-museum/trustees"
+    ]
+   }
+  ],
+  "basis": "The Design Museum's directorate and trustees pages, and Dezeen's October 2019 report that Tim Marlow would take up the post in January 2020.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "deutsches-historisches-museum-berlin",
+  "name": "Deutsches Historisches Museum",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Raphael Gross",
+    "role": "director",
+    "title": "Präsident der Stiftung Deutsches Historisches Museum",
+    "current": true,
+    "since": "2017-04",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.dhm.de/museum/team/",
+     "https://www.dhm.de/museum/ueber-uns/",
+     "https://www.dhm.de/impressum/"
+    ]
+   },
+   {
+    "name": "Dorlis Blume",
+    "role": "curator",
+    "title": "Abteilungsdirektorin Ausstellungen",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.dhm.de/museum/team/"
+    ]
+   },
+   {
+    "name": "Konrad Schmidt-Werthern",
+    "role": "chair of the board",
+    "title": "Vorsitzender des Kuratoriums; Ministerialdirektor bei dem Beauftragten der Bundesregierung für Kultur und Medien",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.dhm.de/museum/ueber-uns/"
+    ]
+   }
+  ],
+  "basis": "The museum's team page and about page, which name the president, the head of exhibitions and the chair of the Kuratorium and state that Gross took office on 15 April 2017.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "deutsches-spionagemuseum-berlin",
+  "name": "Deutsches Spionagemuseum",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Robert Rückel",
+    "role": "director",
+    "title": "Geschäftsführer",
+    "current": true,
+    "since": "2016-07",
+    "until": null,
+    "previously": [
+     "Founding Director, DDR Museum (2006 to 2016)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.deutsches-spionagemuseum.de/deutsches-spionagemuseum-fakten",
+     "https://www.deutsches-spionagemuseum.de/impressum",
+     "https://www.deutsches-spionagemuseum.de/wp-content/uploads/dsm_pressemappe_de_web_1710.pdf",
+     "https://www.deutschlandmuseum.de/en/about-us/robert-rueckel/"
+    ]
+   }
+  ],
+  "basis": "The museum's facts page and imprint naming Robert Rückel as Geschäftsführer, its press kit dating the takeover by the new operating company with him as Direktor to 15 July 2016, and his profile on the Deutschlandmuseum site.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "dia-chelsea",
+  "name": "Dia Chelsea",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Jessica Morgan",
+    "role": "director",
+    "title": "Nathalie de Gunzburg Director",
+    "current": true,
+    "since": "2015",
+    "until": null,
+    "previously": [
+     "The Daskalopoulos Curator, International Art, Tate Modern (2010 to 2014)",
+     "Curator, Tate (2002 to 2010)",
+     "Chief Curator, Institute of Contemporary Art, Boston"
+    ],
+    "pay": {
+     "amount": 814423,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+    },
+    "sources": [
+     "https://www.tate.org.uk/press/press-releases/jessica-morgan-appointed-director-of-tate",
+     "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+    ]
+   },
+   {
+    "name": "Humberto Moro Pinedo",
+    "role": "chief curator",
+    "title": "Deputy Director of Program",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": {
+     "amount": 212550,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+    ]
+   },
+   {
+    "name": "Nathalie de Gunzburg",
+    "role": "chair of the board",
+    "title": "Chairman",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/237397946/202620709349301427/full"
+    ]
+   }
+  ],
+  "basis": "Dia Chelsea is run by Dia Art Foundation (filing as Dia Center for the Arts); its Form 990 filed March 2026 names the director, programme head and chairman, and Tate's 22 July 2026 release says Morgan, Dia's director since 2015, becomes Tate's director on 1 January 2027; diaart.org refused requests.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "dulwich-picture-gallery-london",
+  "name": "Dulwich Picture Gallery",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Jennifer Scott",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": "2017-04",
+    "until": null,
+    "previously": [
+     "Director, Holburne Museum (2014 to 2017)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://web.archive.org/web/20260216135302/https://www.dulwichpicturegallery.org.uk/about-us/our-people/",
+     "https://www.museumsassociation.org/museums-journal/news/2016/12/20122016-dulwich-picture-gallery-appoints-director/"
+    ]
+   }
+  ],
+  "basis": "The gallery's our people page, read from a web.archive.org capture of 16 February 2026 because the live site blocked automated access, and the Museums Association report of December 2016 for Jennifer Scott's start.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "el-museo-del-barrio-new-york",
+  "name": "El Museo del Barrio",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Patrick Charpenel",
+    "role": "director",
+    "title": "Executive Director",
+    "current": true,
+    "since": "2017",
+    "until": null,
+    "previously": [
+     "Director, Museo Jumex, Mexico City"
+    ],
+    "pay": {
+     "amount": 354239,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/237156720/202641879349301054/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/237156720/202641879349301054/full",
+     "https://artdaily.com/news/95639/El-Museo-del-Barrio-announces-the-appointment-of-Patrick-Charpenel-as-Executive-Director"
+    ]
+   },
+   {
+    "name": "Karla Azen Harwich",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/237156720/202641879349301054/full"
+    ]
+   }
+  ],
+  "basis": "The Form 990 for the year to June 2025 filed July 2026 by Amigos del Museo del Barrio lists Charpenel as Executive Director and Karla Azen Harwich as Chair, and a May 2017 Artdaily report announced his appointment; the chief curator it lists, Rodrigo Moura, was reported leaving in March 2025 and no successor was found; elmuseo.org refused requests.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "english-national-ballet-london",
+  "name": "English National Ballet",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Aaron S. Watkin",
+    "role": "co-director",
+    "title": "Artistic Director",
+    "current": true,
+    "since": "2023-08",
+    "until": null,
+    "previously": [
+     "Artistic Director, Semperoper Ballett, Dresden (2006 to 2023)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.ballet.org.uk/about-us/our-people/",
+     "https://www.ballet.org.uk/blog/aaron-s-watkin-announced-new-artistic-director/"
+    ]
+   },
+   {
+    "name": "Anu Giri",
+    "role": "co-director",
+    "title": "Executive Director",
+    "current": true,
+    "since": "2025-01",
+    "until": null,
+    "previously": [
+     "Director of Business and Operations, British Film Institute",
+     "Executive Director, Dance Umbrella (2014 to 2018)",
+     "Co-Director, English National Ballet School"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.ballet.org.uk/about-us/our-people/",
+     "https://www.ballet.org.uk/blog/anu-giri-appointed-as-new-executive-director/"
+    ]
+   },
+   {
+    "name": "Rupert Gavin",
+    "role": "chair of the board",
+    "title": "Chair of the Board of Trustees",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.ballet.org.uk/about-us/our-people/"
+    ]
+   },
+   {
+    "name": "Patrick Harrison",
+    "role": "co-director",
+    "title": "Executive Director",
+    "current": false,
+    "since": null,
+    "until": "2024",
+    "left_because": "moved to another post",
+    "next_post": "CEO of The Royal Ballet School",
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.ballet.org.uk/blog/anu-giri-appointed-as-new-executive-director/"
+    ]
+   }
+  ],
+  "basis": "English National Ballet's our people page for the leadership and board, and the company's own announcements of Aaron S. Watkin (August 2022) and Anu Giri (October 2024).",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "eyebeam-new-york",
+  "name": "Eyebeam",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Julia Kaganskiy",
+    "role": "director",
+    "title": "Executive Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://eyebeam.org/about/"
+    ]
+   },
+   {
+    "name": "Emma Canarick",
+    "role": "chair of the board",
+    "title": "Co-Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://eyebeam.org/about/",
+     "https://projects.propublica.org/nonprofits/organizations/133952075/202611339349304806/full"
+    ]
+   },
+   {
+    "name": "Kenyatta Cheese",
+    "role": "chair of the board",
+    "title": "Co-Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://eyebeam.org/about/",
+     "https://projects.propublica.org/nonprofits/organizations/133952075/202611339349304806/full"
+    ]
+   },
+   {
+    "name": "Roderick Schrock",
+    "role": "director",
+    "title": "Executive Director",
+    "current": false,
+    "since": null,
+    "until": "2025-06",
+    "left_because": "resigned",
+    "next_post": null,
+    "previously": [],
+    "pay": {
+     "amount": 129226,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/133952075/202611339349304806/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/133952075/202611339349304806/full"
+    ]
+   }
+  ],
+  "basis": "The Eyebeam about page names the Executive Director and two board co-chairs, and the Form 990 for the year to June 2025, filed May 2026, says Roderick Schrock resigned as Executive Director on 30 June 2025.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "flutgraben-berlin",
+  "name": "Flutgraben",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Yuyu Elmi",
+    "role": "co-director",
+    "title": "Geschäftsleitung",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://flutgraben.org/en/web/about?section=structure"
+    ]
+   },
+   {
+    "name": "Matthias Krause Hamrin",
+    "role": "co-director",
+    "title": "Geschäftsleitung",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://flutgraben.org/en/web/about?section=structure"
+    ]
+   },
+   {
+    "name": "Wolfgang Schlegel",
+    "role": "co-director",
+    "title": "Geschäftsleitung",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://flutgraben.org/en/web/about?section=structure"
+    ]
+   }
+  ],
+  "basis": "The association's own structure page, which names the three members of the Geschäftsleitung of the collectively run space.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "gasworks",
+  "name": "Gasworks",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Robert Leckie",
+    "role": "director",
+    "title": "Director, Gasworks",
+    "current": true,
+    "since": "2024-03",
+    "until": null,
+    "previously": [
+     "Director, Spike Island (2018 to 2024)",
+     "Curator and Head of Programmes, Gasworks (2011 to 2018)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.gasworks.org.uk/about-us/staff/",
+     "https://www.theartnewspaper.com/2023/11/27/gasworks-contemporary-art-centre-in-london-appoints-robert-leckie-as-new-director",
+     "https://artreview.com/gasworks-announce-robert-leckie-will-be-its-new-director"
+    ]
+   },
+   {
+    "name": "Rosa Tyhurst",
+    "role": "curator",
+    "title": "Curator, Gasworks",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.gasworks.org.uk/about-us/staff/"
+    ]
+   },
+   {
+    "name": "Alexa Waley-Cohen",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.gasworks.org.uk/about-us/staff/"
+    ]
+   },
+   {
+    "name": "Alessio Antoniolli",
+    "role": "director",
+    "title": "Director",
+    "current": false,
+    "since": null,
+    "until": "2024",
+    "left_because": "moved to another post",
+    "next_post": "Director of Triangle Network",
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.theartnewspaper.com/2023/11/27/gasworks-contemporary-art-centre-in-london-appoints-robert-leckie-as-new-director",
+     "https://artreview.com/gasworks-announce-robert-leckie-will-be-its-new-director"
+    ]
+   }
+  ],
+  "basis": "Gasworks' staff page for the staff and trustees, and The Art Newspaper and ArtReview reports of November 2023 on Robert Leckie succeeding Alessio Antoniolli in March 2024.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "georg-kolbe-museum",
+  "name": "Georg Kolbe Museum",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Kathleen Reinhardt",
+    "role": "director",
+    "title": "Direktion",
+    "current": true,
+    "since": "2022-12",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://georg-kolbe-museum.de/museum/team/",
+     "https://georg-kolbe-museum.de/impressum",
+     "https://www.aica.de/wp-content/uploads/2026/02/JB-AICA-Museum-des-Jahres-2025_Jurybegruendung_20260204.pdf",
+     "https://www.tagesspiegel.de/kultur/kathleen-reinhardt-mit-prazision-und-neugier-fur-das-kolbe-museum-8987380.html",
+     "https://deeds.news/2022/08/dr-kathleen-reinhardt-becomes-the-new-director-of-the-georg-kolbe-museum/?lang=en"
+    ]
+   },
+   {
+    "name": "Elisa Tamaschke",
+    "role": "curator",
+    "title": "Kuratorin, Leitung Ausstellungen, Forschung und Publikationen",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://georg-kolbe-museum.de/museum/team/",
+     "https://www.aica.de/wp-content/uploads/2026/02/JB-AICA-Museum-des-Jahres-2025_Jurybegruendung_20260204.pdf"
+    ]
+   }
+  ],
+  "basis": "The museum's team page and imprint, a February 2026 AICA jury statement naming her as director, and an August 2022 appointment report stating she would take up the post in December 2022, which a Tagesspiegel article of 7 December 2022 confirms she had just done.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "goldsmiths-cca-london",
+  "name": "Goldsmiths CCA",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Sarah McCrory",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": "2017",
+    "until": null,
+    "previously": [
+     "Director, Glasgow International (2012 to 2017)",
+     "curator, Frieze Projects and Film"
+    ],
+    "pay": null,
+    "sources": [
+     "https://goldsmithscca.art/about/team/",
+     "https://www.gold.ac.uk/news/sarah-mccrory-gallery-director/"
+    ]
+   },
+   {
+    "name": "Natasha Hoare",
+    "role": "curator",
+    "title": "Senior Curator",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [
+     "curator, Witte de With Center for Contemporary Art (2014 to 2018)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://goldsmithscca.art/about/team/",
+     "https://www.artforum.com/news/londons-new-goldsmiths-center-contemporary-art-appoints-natasha-hoare-curator-75243"
+    ]
+   }
+  ],
+  "basis": "Goldsmiths CCA's team page, Goldsmiths' January 2017 announcement of Sarah McCrory, and Artforum's May 2018 report on Natasha Hoare joining as curator.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "gropius-bau",
+  "name": "Gropius Bau",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Jenny Schlenzka",
+    "role": "director",
+    "title": "Direktorin",
+    "current": true,
+    "since": "2023-09",
+    "until": null,
+    "previously": [
+     "Executive Artistic Director, Performance Space New York (2017 to 2023)",
+     "Associate Curator, MoMA PS1",
+     "Assistant Curator, Department of Media and Performance Art, Museum of Modern Art"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.berlinerfestspiele.de/gropius-bau/ueber-uns/kontakt",
+     "https://berlinerfestspiele.de/en/artist/cbd13b9d-badf-4e00-970d-d50dae6c42af/jenny-schlenzka",
+     "https://berlinerfestspiele.de/en/gropius-bau/ueber-uns/presse/presseinformationen/presseinformationen-allgemein/presseinformationen-schlenzka",
+     "https://artreview.com/jenny-schlenzka-to-direct-gropius-bau-in-berlin/"
+    ]
+   },
+   {
+    "name": "Patrizia Dander",
+    "role": "curator",
+    "title": "Stellvertretende kuratorische Direktorin",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.berlinerfestspiele.de/gropius-bau/ueber-uns/kontakt"
+    ]
+   }
+  ],
+  "basis": "The Gropius Bau contact page listing its team, the Berliner Festspiele biography stating she has been director since September 2023, and a March 2023 ArtReview report of the appointment.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "hamburger-bahnhof-berlin",
+  "name": "Hamburger Bahnhof – Nationalgalerie der Gegenwart",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Sam Bardaouil",
+    "role": "co-director",
+    "title": "Direktor (Hamburger Bahnhof – Nationalgalerie der Gegenwart)",
+    "current": true,
+    "since": "2022-01",
+    "until": null,
+    "previously": [
+     "Associate Curator, Gropius Bau (from 2017)",
+     "Co-founder, Art Reoriented (from 2009)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.smb.museum/museen-einrichtungen/hamburger-bahnhof/ueber-uns/mitarbeit/",
+     "https://www.preussischer-kulturbesitz.de/en/news-detail/article/2021/09/10/sam-bardaouil-and-till-fellrath-take-over-the-hamburger-bahnhof-museum-fuer-gegenwart-berlin.html"
+    ]
+   },
+   {
+    "name": "Till Fellrath",
+    "role": "co-director",
+    "title": "Direktor (Hamburger Bahnhof – Nationalgalerie der Gegenwart)",
+    "current": true,
+    "since": "2022-01",
+    "until": null,
+    "previously": [
+     "Associate Curator, Gropius Bau (from 2017)",
+     "Co-founder, Art Reoriented (from 2009)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.smb.museum/museen-einrichtungen/hamburger-bahnhof/ueber-uns/mitarbeit/",
+     "https://www.preussischer-kulturbesitz.de/en/news-detail/article/2021/09/10/sam-bardaouil-and-till-fellrath-take-over-the-hamburger-bahnhof-museum-fuer-gegenwart-berlin.html"
+    ]
+   },
+   {
+    "name": "Gabriele Knapstein",
+    "role": "curator",
+    "title": "Stellvertretende Direktorin; Sammlungsleiterin",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.smb.museum/museen-einrichtungen/hamburger-bahnhof/ueber-uns/mitarbeit/"
+    ]
+   }
+  ],
+  "basis": "The Staatliche Museen zu Berlin staff page for the museum and the Stiftung Preussischer Kulturbesitz press release of 10 September 2021 naming the two directors from 1 January 2022.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "name": "Haus der Kulturen der Welt (HKW)",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Bonaventure Soh Bejeng Ndikung",
+    "role": "director",
+    "title": "Intendant Haus der Kulturen der Welt",
+    "current": true,
+    "since": "2023-01",
+    "until": null,
+    "previously": [
+     "founder and director, Savvy Contemporary, Berlin",
+     "artistic director, Sonsbeek (2020)",
+     "artistic director, Bamako Encounters (2019)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.hkw.de/impressum",
+     "https://www.artforum.com/news/bonaventure-soh-bejeng-ndikung-to-lead-haus-der-kulturen-der-welt-250137/"
+    ]
+   }
+  ],
+  "basis": "The HKW imprint naming him as Intendant and a June 2021 Artforum report of his appointment from 1 January 2023, succeeding Bernd M. Scherer, who left before 2023.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "humboldt-forum-berlin",
+  "name": "Humboldt Forum",
+  "city": "Berlin",
+  "country": "Germany",
+  "people": [
+   {
+    "name": "Hartmut Dorgerloh",
+    "role": "director",
+    "title": "Generalintendant und Vorstandsvorsitzender",
+    "current": true,
+    "since": "2018-06",
+    "until": null,
+    "previously": [
+     "Generaldirektor, Stiftung Preußische Schlösser und Gärten Berlin-Brandenburg (2002 to 2018)",
+     "Gründungsdirektor, Haus für Brandenburgisch-Preußische Geschichte, Potsdam"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.humboldtforum.org/de/stiftung-humboldt-forum-im-berliner-schloss/",
+     "https://www.humboldtforum.org/de/impressum/",
+     "https://www.humboldtforum.org/wp-content/uploads/2023/05/20230531_PM_Verlaengerung_GI.pdf"
+    ]
+   },
+   {
+    "name": "Han Song Hiltmann",
+    "role": "curator",
+    "title": "Abteilungsleitung Programm",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.humboldtforum.org/de/stiftung-humboldt-forum-im-berliner-schloss/"
+    ]
+   }
+  ],
+  "basis": "The foundation's own page listing its Vorstand and department heads, its imprint, and its May 2023 press release stating he has held the post since June 2018 with a contract to the end of May 2028.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "international-center-of-photography-new-york",
+  "name": "International Center of Photography",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Bob Jeffrey",
+    "role": "director",
+    "title": "Chief Executive Officer",
+    "current": true,
+    "since": "2024",
+    "until": null,
+    "previously": [],
+    "pay": {
+     "amount": 270000,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/237412428/202600509349300025/full"
+    },
+    "sources": [
+     "https://www.icp.org/about",
+     "https://projects.propublica.org/nonprofits/organizations/237412428/202600509349300025/full"
+    ]
+   },
+   {
+    "name": "Caryl S Englander",
+    "role": "chair of the board",
+    "title": "Co-chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/237412428/202600509349300025/full"
+    ]
+   },
+   {
+    "name": "Almudena Legorreta",
+    "role": "chair of the board",
+    "title": "Co-chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/237412428/202600509349300025/full"
+    ]
+   },
+   {
+    "name": "David E. Little",
+    "role": "director",
+    "title": "Former Executive Director",
+    "current": false,
+    "since": null,
+    "until": "2024",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": {
+     "amount": 389210,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/237412428/202600509349300025/full"
+    },
+    "sources": [
+     "https://www.icp.org/about",
+     "https://projects.propublica.org/nonprofits/organizations/237412428/202600509349300025/full"
+    ]
+   }
+  ],
+  "basis": "The ICP about page timeline says David Little stepped down in 2024 and trustee Bob Jeffrey took over as CEO, and the Form 990 for the year to June 2025, filed February 2026, gives their titles, pay and the board co-chairs.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "name": "Lincoln Center for the Performing Arts",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Mariko Silver",
+    "role": "director",
+    "title": "President and CEO",
+    "current": true,
+    "since": "2024-09",
+    "until": null,
+    "previously": [],
+    "pay": {
+     "amount": 389933,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025 (from 16 September 2024)",
+     "url": "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+    ]
+   },
+   {
+    "name": "Shannon Shanta Thake-Kriegsmann",
+    "role": "artistic director",
+    "title": "EVP, Chief Artistic Officer",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": {
+     "amount": 696545,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+    ]
+   },
+   {
+    "name": "Steven R Swartz",
+    "role": "chair of the board",
+    "title": "Chairman",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+    ]
+   },
+   {
+    "name": "Henry Timms",
+    "role": "director",
+    "title": "President and CEO",
+    "current": false,
+    "since": null,
+    "until": "2024-08",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": {
+     "amount": 2247343,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+    },
+    "sources": [
+     "https://projects.propublica.org/nonprofits/organizations/131847137/202621329349303332/full"
+    ]
+   }
+  ],
+  "basis": "Lincoln Center's Form 990 for the year to June 2025, filed May 2026 (ProPublica), lists Henry Timms as president and CEO through 1 August 2024 and Mariko Silver from 16 September 2024, with the chief artistic officer and chairman; lincolncenter.org was not reached.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "moma-the-museum-of-modern-art",
+  "name": "MoMA (The Museum of Modern Art)",
+  "city": "New York",
+  "country": "USA",
+  "people": [
+   {
+    "name": "Christophe Cherix",
+    "role": "director",
+    "title": "The David Rockefeller Director",
+    "current": true,
+    "since": "2025-09",
+    "until": null,
+    "previously": [
+     "The Robert Lehman Foundation Chief Curator of Drawings and Prints, The Museum of Modern Art (from 2013)",
+     "Chief Curator of the Department of Prints and Illustrated Books, The Museum of Modern Art (from 2010)",
+     "Curator, Cabinet des Estampes, Musée d'art et d'histoire, Geneva"
+    ],
+    "pay": null,
+    "sources": [
+     "https://press.moma.org/news/christophe-cherix-next-director-of-moma/",
+     "https://press.moma.org/news/culturalalliance/"
+    ]
+   },
+   {
+    "name": "Glenn D. Lowry",
+    "role": "director",
+    "title": "David Rockefeller Director",
+    "current": false,
+    "since": null,
+    "until": "2025-09",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": {
+     "amount": 1656878,
+     "currency": "USD",
+     "year": "2025",
+     "what": "reportable compensation from the organization, Form 990 for the fiscal year ending June 2025",
+     "url": "https://projects.propublica.org/nonprofits/organizations/131624100/202631339349300538/full"
+    },
+    "sources": [
+     "https://press.moma.org/news/christophe-cherix-next-director-of-moma/",
+     "https://projects.propublica.org/nonprofits/organizations/131624100/202631339349300538/full"
+    ]
+   }
+  ],
+  "basis": "MoMA's 2025 appointment release names Cherix to succeed Glenn Lowry as David Rockefeller Director in September 2025, an October 2026 MoMA release gives him that title, and the Form 990 filed May 2026 gives Lowry's pay; the leadership page refused requests.",
+  "run": "p1",
+  "checked": true
+ },
+ {
+  "id": "mosaic-rooms-london",
+  "name": "Mosaic Rooms",
+  "city": "London",
+  "country": "UK",
+  "people": [
+   {
+    "name": "Pip Day",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": "2025-09",
+    "until": null,
+    "previously": [
+     "director, Leonard & Bina Ellen Art Gallery, Concordia University (2024)"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.mosaicrooms.org/about-us",
+     "https://www.theartnewspaper.com/2026/02/11/londons-mosaic-rooms-art-arab-region-reopens-after-expansion"
+    ]
+   },
+   {
+    "name": "Angelina Radaković",
+    "role": "chief curator",
+    "title": "Head of Curatorial",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.mosaicrooms.org/about-us"
+    ]
+   },
+   {
+    "name": "Selma Taysir Dabbagh",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.mosaicrooms.org/about-us"
+    ]
+   }
+  ],
+  "basis": "The Mosaic Rooms' about page for the team and trustees, and The Art Newspaper of 11 February 2026 for when Pip Day became director.",
+  "run": "p1",
+  "checked": true
+ }
+]

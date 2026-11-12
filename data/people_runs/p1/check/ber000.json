@@ -1,0 +1,107 @@
+[
+ {
+  "id": "ambasada-kultury-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "berlinische-galerie",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "c-o-berlin-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ddr-museum-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "deutsches-historisches-museum-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "deutsches-spionagemuseum-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "flutgraben-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "georg-kolbe-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Dr. Kathleen Reinhardt",
+    "field": "since",
+    "stored": "2022",
+    "page says": "The only cited page for the start, Tagesspiegel of 7 December 2022, states no start date; it calls her the new Museumschefin who has just arrived. The appointment report of 30 August 2022 (deeds.news, not cited) says she succeeds Julia Wallner and will take up the post in December 2022.",
+    "fix": "2022-12"
+   }
+  ],
+  "corrected": {
+   "id": "georg-kolbe-museum",
+   "people": [
+    {
+     "name": "Dr. Kathleen Reinhardt",
+     "role": "director",
+     "title": "Direktion",
+     "current": true,
+     "since": "2022-12",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://georg-kolbe-museum.de/museum/team/",
+      "https://georg-kolbe-museum.de/impressum",
+      "https://www.aica.de/wp-content/uploads/2026/02/JB-AICA-Museum-des-Jahres-2025_Jurybegruendung_20260204.pdf",
+      "https://www.tagesspiegel.de/kultur/kathleen-reinhardt-mit-prazision-und-neugier-fur-das-kolbe-museum-8987380.html",
+      "https://deeds.news/2022/08/dr-kathleen-reinhardt-becomes-the-new-director-of-the-georg-kolbe-museum/?lang=en"
+     ]
+    },
+    {
+     "name": "Dr. Elisa Tamaschke",
+     "role": "curator",
+     "title": "Kuratorin, Leitung Ausstellungen, Forschung und Publikationen",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://georg-kolbe-museum.de/museum/team/",
+      "https://www.aica.de/wp-content/uploads/2026/02/JB-AICA-Museum-des-Jahres-2025_Jurybegruendung_20260204.pdf"
+     ]
+    }
+   ],
+   "basis": "The museum's team page and imprint, a February 2026 AICA jury statement naming her as director, and an August 2022 appointment report stating she would take up the post in December 2022, which a Tagesspiegel article of 7 December 2022 confirms she had just done."
+  }
+ },
+ {
+  "id": "gropius-bau",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hamburger-bahnhof-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "humboldt-forum-berlin",
+  "verdict": "ok",
+  "faults": []
+ }
+]
