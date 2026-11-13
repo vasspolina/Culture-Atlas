@@ -88,3 +88,4 @@ A request from a named person or a space goes to the editor by the report form. 
 | Date | Change |
 | --- | --- |
 | 2026-11-02 | Rules written. First batch of items researched from the internet for the London, New York, Paris, Berlin, Amsterdam and Madrid spaces. |
+| 2026-11-13 | Second batch, G190 to G251: 62 items for 52 spaces, most of them tier-A spaces that had none (UK and Ireland, North America, Western, Southern, Nordic and Eastern Europe, Asia-Pacific, Latin America and Havana, Africa, Israel), plus 2026 stories at the British Museum, V&A, Kennedy Center, LACMA and Brooklyn Museum. Every address opened on the day. Left out: boycott-signatory listings resting only on the campaign's own page, a complaint resting only on the complainant's site, a lawsuit resting on a docket mirror and the space's own release, a space's own funding warnings, and items that were not about conduct, money or power. |
