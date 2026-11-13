@@ -133,12 +133,16 @@
     openbooks: i => isOpenBooks(i),
     artist: i => selfKinds(i).artist
   };
+  // Filters that may not be on together: a space filter and the grade it rules out (a state-promoting space is not graded clean).
+  const CLASH = { propaganda: 'A' };
   const spaceLayersOn = () => Object.keys(SPACE_TEST).filter(k => { const inp = document.querySelector(`#layersPanel input[data-layer="${k}"]`); return !!(inp && inp.checked); });
   const spaceBoxes = () => Object.keys(SPACE_TEST).map(k => document.querySelector(`#layersPanel input[data-layer="${k}"]`)).filter(Boolean);
   // The filter on, or null for every space.
   window.atlasSpaceFilter = () => spaceLayersOn()[0] || null;
   // Make `key` the one filter on (null: none), and redraw.
   function applySpaceFilter(key) {
+    // Propaganda and Clean cannot be on together (user, 13 Nov 2026): the newer pick wins, so the grade goes off here.
+    if (key && CLASH[key] && GRADE === CLASH[key]) { GRADE = null; syncKey(); }
     spaceBoxes().forEach(inp => setBox(inp, inp.dataset.layer === key));
     refilter();
   }
@@ -191,7 +195,10 @@
   const keyRows = () => document.querySelectorAll('#mapColourKey .mck-row[data-grade]');
   const syncKey = () => keyRows().forEach(b => b.setAttribute('aria-pressed', String(GRADE === b.dataset.grade)));
   window.atlasGradeFilter = () => GRADE;
-  window.atlasSetGradeFilter = function (g) { g = (g === 'A' || g === 'B' || g === 'U') ? g : null; if (g === GRADE) return; GRADE = g; syncKey(); refilter(); explain('grade', g); };
+  window.atlasSetGradeFilter = function (g) { g = (g === 'A' || g === 'B' || g === 'U') ? g : null; if (g === GRADE) return;
+    // Clean and Propaganda cannot be on together: the newer pick wins, so the space filter goes off (see CLASH).
+    const on = window.atlasSpaceFilter(); if (g && on && CLASH[on] === g) applySpaceFilter(null);
+    GRADE = g; syncKey(); refilter(); explain('grade', g); };
   keyRows().forEach(b => b.addEventListener('click', () => window.atlasSetGradeFilter(GRADE === b.dataset.grade ? null : b.dataset.grade)));
   syncKey();
   window.atlasLayerKeep = function () {
