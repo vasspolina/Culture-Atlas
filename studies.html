@@ -78,7 +78,7 @@
       var body = '<div class="scroll"><table><caption>' + esc(t.title) + '</caption><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>';
       return '<details class="tab"' + (t.rows.length <= 12 ? ' open' : '') + '><summary>' + esc(t.title || 'Table') + ' (' + t.rows.length + ' rows)</summary>' + body + '</details>';
     };
-    fetch('assets/studies.json?v=636').then(function (r) { return r.json(); }).then(function (S) {
+    fetch('assets/studies.json?v=657').then(function (r) { return r.json(); }).then(function (S) {
       document.getElementById('count').textContent = S.length + ' studies, naming ' + S.reduce(function (n, s) { return n + s.records.length; }, 0) + ' records on the atlas.';
       document.getElementById('toc').innerHTML = S.map(function (s) {
         return '<li><a href="#' + esc(s.key) + '">' + esc(s.title) + '</a><span class="meta">' + esc(s.kick) + '</span></li>';
