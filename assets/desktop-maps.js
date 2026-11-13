@@ -335,7 +335,11 @@
       const grade = typeof window.atlasGradeFilter === 'function' ? window.atlasGradeFilter() : null;
       const scope = country + '|' + city;
       if (scope !== idxScope) { idxScope = scope; idxQuery = ''; idxFind.value = ''; }
-      const k = [country, city, sel && sel.name, filter, grade, keep ? 1 : 0, typeof window.atlasLayerKeep, idxQuery].join('|');
+      // The spaces of a city are those near the city picked (index.html, cityPlaceFor): Cambridge is two cities, one in England
+      // and one in Massachusetts, and the list showed both under one name.
+      const near = (name, place) => { const own = map.get(low(name)) || []; return typeof window.atlasCityInsts === 'function' ? window.atlasCityInsts(name, place).filter((i) => own.includes(i)) : own; };
+      const picked = city && city !== 'all' && typeof window.atlasCityPlace === 'function' ? window.atlasCityPlace(city) : null;
+      const k = [country, city, picked ? picked.lat + ',' + picked.lon : '', sel && sel.name, filter, grade, keep ? 1 : 0, typeof window.atlasLayerKeep, idxQuery].join('|');
       if (!force && k === idxKey) return;
       idxKey = k;
       const q = norm(idxQuery).trim();
@@ -344,7 +348,7 @@
       const frag = document.createDocumentFragment();
       const inCity = city && city !== 'all', inCountry = !inCity && country && country !== 'all';
       if (inCity) {
-        const all = (map.get(low(city)) || []).filter((i) => !keep || keep(i)).sort((a, b) => a.name.localeCompare(b.name));
+        const all = near(city, picked).filter((i) => !keep || keep(i)).sort((a, b) => a.name.localeCompare(b.name));
         const list = all.filter((i) => hit(i.name));
         idxFind.placeholder = 'Find a space';
         idxTitle.textContent = city + ', ' + plural(all.length, 'space', 'spaces');
@@ -356,13 +360,13 @@
         const match = g('matchC');
         const same = (a, b) => typeof match === 'function' ? match(a, b) : low(a) === low(b);
         const cities = (g('ALL_CITIES_REGISTRY') || []).filter((c) => c && c.name && (!inCountry || same(c.country, country)));
-        const rows = cities.map((c) => { const all = map.get(low(c.name)) || []; return { c, n: keep ? all.filter(keep).length : (all.length || c.count || 0) }; })
+        const rows = cities.map((c) => { const all = near(c.name, c); return { c, n: keep ? all.filter(keep).length : (all.length || c.count || 0) }; })
           .filter((x) => x.n > 0).sort((a, b) => b.n - a.n || a.c.name.localeCompare(b.c.name));
         idxTitle.textContent = (inCountry ? country + ', ' : '') + plural(rows.length, 'city', 'cities');
         idxFind.placeholder = 'Find a city';
         if (inCountry && !q) frag.appendChild(back());
         rows.filter((x) => hit(x.c.name)).forEach((x) => frag.appendChild(idxRow(x.c.name, String(x.n), '', false, () => {
-          const open = g('filterByCity'); if (typeof open === 'function') open(x.c.name, true, true);
+          const open = g('filterByCity'); if (typeof open === 'function') open(x.c.name, true, true, x.c);
         })));
       }
       idxList.replaceChildren(frag);
