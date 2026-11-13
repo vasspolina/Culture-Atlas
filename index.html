@@ -12784,12 +12784,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       panel.hidden = !open;
     }, true);
     function gradeLineHtml(inst) {
-      const { btn, panel } = gradeInfoParts(inst);
       if (inst.grade && GRADE[inst.grade]) {
+        const { btn, panel } = gradeInfoParts(inst);
         const n = inst.grade;
         return `<p class="no-indent grade-line"><span class="grade-name">${gradeWordHtml(n)}</span>${btn}</p>${panel}`;
       }
-      return `<p class="no-indent grade-line is-unrated"><span class="grade-name">Not graded</span>${btn}</p>${panel}`;
+      // An unrated space shows no grade line at all (user, 13 Nov 2026: "do not say not graded").
+      return '';
     }
 
     // The head of a record as the rows below it: the place and its founding, then the programme, each a row of its own (user, 26 Oct 2026, after a font
