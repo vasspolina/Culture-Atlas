@@ -45,14 +45,14 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=642">
-  <link rel="stylesheet" href="assets/sheet.css?v=645">
-  <script src="assets/config.js?v=642"></script>
-  <script src="assets/subtopic.js?v=642"></script>
-  <script src="assets/names.js?v=642"></script>
-  <script src="assets/grounding.js?v=642"></script>
-  <script src="assets/repeats.js?v=642"></script>
-  <script src="assets/intro-narration.js?v=642"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=646">
+  <link rel="stylesheet" href="assets/sheet.css?v=646">
+  <script src="assets/config.js?v=646"></script>
+  <script src="assets/subtopic.js?v=646"></script>
+  <script src="assets/names.js?v=646"></script>
+  <script src="assets/grounding.js?v=646"></script>
+  <script src="assets/repeats.js?v=646"></script>
+  <script src="assets/intro-narration.js?v=646"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1121,7 +1121,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=645"></script>
+  <script src="assets/institutions.js?v=649"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10312,11 +10312,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v645';
+    const ATLAS_RELEASE = 'culture-atlas-v649';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=645').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=649').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10876,7 +10876,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     // ---- The dropped pin ----------------------------------------------------------------------------------------------
     // One pin, on the place whose sheet is open: the selected space, or else the city whose place sheet is open
-    // (window.atlasPlacePin, set by assets/place-sheet.js). A teardrop in the ink with a hole in the ground colour and a
+    // (window.atlasPlacePin, set by assets/place-sheet.js). A solid teardrop in the ink, no dot in it (user, 13 Nov 2026), with a
     // 1px ground edge, so it reads on the hairlines and the land in both themes. It falls 14px into place when the place
     // changes; with reduced motion it is simply there.
     let droppedPinKey = null, droppedPinT0 = 0;
@@ -10912,10 +10912,6 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       c2.lineWidth = 1;
       c2.fill();
       c2.stroke();
-      c2.beginPath();
-      c2.arc(x, y - stem, 3.2, 0, Math.PI * 2);
-      c2.fillStyle = ground;
-      c2.fill();
       c2.restore();
     }
     window.atlasDropPinRefresh = () => scheduleRender();
@@ -12788,12 +12784,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       panel.hidden = !open;
     }, true);
     function gradeLineHtml(inst) {
-      const { btn, panel } = gradeInfoParts(inst);
       if (inst.grade && GRADE[inst.grade]) {
+        const { btn, panel } = gradeInfoParts(inst);
         const n = inst.grade;
         return `<p class="no-indent grade-line"><span class="grade-name">${gradeWordHtml(n)}</span>${btn}</p>${panel}`;
       }
-      return `<p class="no-indent grade-line is-unrated"><span class="grade-name">Not graded</span>${btn}</p>${panel}`;
+      // An unrated space shows no grade line at all (user, 13 Nov 2026: "do not say not graded").
+      return '';
     }
 
     // The head of a record as the rows below it: the place and its founding, then the programme, each a row of its own (user, 26 Oct 2026, after a font
@@ -12918,7 +12915,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const el = document.createElement('div');
         el.className = 'atlas-drop-pin';
         el.setAttribute('aria-hidden', 'true');
-        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><path d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/><circle cx="12" cy="12" r="3.6"/></svg>';
+        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><path d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/></svg>';
         streetDropPin = new maplibregl.Marker({ element: el, anchor: 'bottom' });
       }
       streetDropPin.setLngLat([pin.lon, pin.lat]).addTo(cityVectorMap);
@@ -21449,15 +21446,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=642"></script>
-<script src="assets/note-aids.js?v=642" defer></script>
-<script src="assets/note-files.js?v=642" defer></script>
-<script src="assets/funding-views.js?v=642"></script>
-<script src="assets/layers.js?v=642"></script>
-<script src="assets/hq-detail.js?v=642"></script>
-<script src="assets/bubbles.js?v=642" defer></script>
-<script src="assets/phone-maps.js?v=643"></script>
-<script src="assets/desktop-maps.js?v=644"></script>
-<script src="assets/chat-resize.js?v=643"></script>
+<script src="assets/typeset.js?v=646"></script>
+<script src="assets/note-aids.js?v=646" defer></script>
+<script src="assets/note-files.js?v=646" defer></script>
+<script src="assets/funding-views.js?v=646"></script>
+<script src="assets/layers.js?v=646"></script>
+<script src="assets/hq-detail.js?v=646"></script>
+<script src="assets/bubbles.js?v=646" defer></script>
+<script src="assets/phone-maps.js?v=646"></script>
+<script src="assets/desktop-maps.js?v=646"></script>
+<script src="assets/chat-resize.js?v=646"></script>
 </body>
 </html>

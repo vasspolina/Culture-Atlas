@@ -3538,7 +3538,7 @@ div:has(>#topThemeBtn){column-gap:0}
    run of :root so it wins over the two-column rules above without touching them. */
 #gmdSearch,#gmdChips,#gmdMapCtl{display:none}
 @media (min-width:768px){
-  :root{--gmd-w:clamp(360px,25vw,860px);--gmd-gap:16px;--gmd-h:48px;--gmd-shadow:0 1px 2px rgba(0,0,0,.3),0 2px 6px rgba(0,0,0,.15)}
+  :root{--gmd-w:max(360px,48.5vw);--gmd-gap:16px;--gmd-h:48px;--gmd-shadow:0 1px 2px rgba(0,0,0,.3),0 2px 6px rgba(0,0,0,.15)}
   :root[data-theme="dark"]{--gmd-shadow:0 1px 2px rgba(0,0,0,.7),0 2px 8px rgba(0,0,0,.5)}
 
   /* The map fills the window left of the panel. */
@@ -4976,12 +4976,11 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 
 /* DROPPED PIN (user, 11 Nov 2026: "make map in cultural atlas work similar to Google Maps"). The place whose sheet is open
    gets one pin, as a maps app drops one: on the globe it is drawn on the card layer (drawDroppedPin in index.html), on the
-   street map it is this marker. Ink with a hole in the paper and a 1px paper edge, so it reads on hairlines and land in both
+   street map it is this marker. Solid ink, no dot in it (user, 13 Nov 2026: "dont add dot on pin"), with a 1px paper edge, so it reads on hairlines and land in both
    themes; it falls into place, and with reduced motion it is simply there. It takes no clicks: the space's badge under it does. */
 .atlas-drop-pin{pointer-events:none;z-index:3;line-height:0}
 .atlas-drop-pin svg{display:block;overflow:visible}
 .atlas-drop-pin path{fill:var(--ink);stroke:var(--paper);stroke-width:1}
-.atlas-drop-pin circle{fill:var(--paper)}
 .atlas-drop-pin.is-dropping svg{animation:atlas-pin-drop .22s cubic-bezier(.3,0,.6,1) both}
 @keyframes atlas-pin-drop{from{transform:translateY(-14px)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.atlas-drop-pin.is-dropping svg{animation:none}}
