@@ -14,11 +14,13 @@ const all = Array.isArray(items) ? items : (items.institutions || Object.values(
 const tate = all.find(i => i.id === 'tate-modern');
 
 test('a full record carries the audited figures, the cases, the governance and the sources', () => {
-  const t = formatRecord(tate, { status: 'Grade F', watchGossip: true, full: true });
+  // The case is the test's own: the record's case notes change with the research, the rule that a full record carries them does not.
+  const withCase = { ...tate, case_notes: [{ title: 'BP sponsorship ends', meta: '2016-03-11', text: 'BP ended its Tate sponsorship.', sources: ['https://example.org'] }] };
+  const t = formatRecord(withCase, { status: 'Grade F', watchGossip: true, full: true });
   assert.match(t, /Audited figures FY2025-26/);
   assert.match(t, /income GBP 194\.9 million/);
   assert.match(t, /Legal form: statutory public body/);
-  assert.match(t, /Case: Democracy Now! report, 2016-03-11/);
+  assert.match(t, /Case: BP sponsorship ends, 2016-03-11/);
   assert.match(t, /SOURCES:/);
   assert.match(t, /VISITING:/);
   assert.ok(t.length <= FULL + 200, 'within the full budget');
