@@ -390,14 +390,31 @@
     const repList = rep.querySelector('ul'), repFoot = rep.querySelector('.sh-reports-foot');
     const openReport = (key) => { if (typeof window.atlasOpenTopStory === 'function') window.atlasOpenTopStory(key); };
     let repKey = '';
+    // The reports follow the filters over the map (user, 13 Nov 2026: "make it filter reports by epstein connections"):
+    // with a filter or a grade on, only the reports about the spaces it keeps are listed, and the title names the filter.
+    // Epstein and Funding read the funding maps, which load on first use; until then the list is empty, and it fills in
+    // when layers.js fires atlas:filter again after the load.
+    const repTitle = rep.querySelector('#shReportsTitle');
     function renderReports() {
       const all = Array.isArray(window.atlasReports) ? window.atlasReports : [];
       rep.hidden = !all.length;
-      const k = all.map((x) => x.key).join('|');
+      const keep = typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
+      const filter = typeof window.atlasSpaceFilter === 'function' ? window.atlasSpaceFilter() : null;
+      const grade = typeof window.atlasGradeFilter === 'function' ? window.atlasGradeFilter() : null;
+      const shown = keep ? all.filter((x) => x.inst && keep(x.inst)) : all;
+      const k = shown.map((x) => x.key).join('|') + '#' + all.length + '#' + filter + '#' + grade;
       if (k === repKey) return;
       repKey = k;
+      const fname = filter && typeof window.atlasLayerDesc === 'function' ? window.atlasLayerDesc(filter).name : '';
+      repTitle.textContent = keep ? 'Latest reports' + (fname ? ', ' + fname : ', filtered') : 'Latest reports';
       const frag = document.createDocumentFragment();
-      all.forEach((x) => {
+      if (keep && !shown.length) {
+        const li = document.createElement('li');
+        li.className = 'sh-reports-empty sh-report-meta';
+        li.textContent = 'No reports about these spaces yet.';
+        frag.appendChild(li);
+      }
+      shown.forEach((x) => {
         const li = document.createElement('li');
         const b = document.createElement('button');
         b.type = 'button';
@@ -419,6 +436,7 @@
       repFoot.replaceChildren(allBtn);
     }
     document.addEventListener('atlas:reports', renderReports);
+    document.addEventListener('atlas:filter', renderReports);
     renderReports();
 
     // ---- Closing and opening the index column (user, 13 Nov 2026: "add cross here to close this panel and put open
