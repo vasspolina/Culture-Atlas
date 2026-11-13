@@ -45,14 +45,14 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=641">
-  <link rel="stylesheet" href="assets/sheet.css?v=641">
-  <script src="assets/config.js?v=641"></script>
-  <script src="assets/subtopic.js?v=641"></script>
-  <script src="assets/names.js?v=641"></script>
-  <script src="assets/grounding.js?v=641"></script>
-  <script src="assets/repeats.js?v=641"></script>
-  <script src="assets/intro-narration.js?v=641"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=642">
+  <link rel="stylesheet" href="assets/sheet.css?v=642">
+  <script src="assets/config.js?v=642"></script>
+  <script src="assets/subtopic.js?v=642"></script>
+  <script src="assets/names.js?v=642"></script>
+  <script src="assets/grounding.js?v=642"></script>
+  <script src="assets/repeats.js?v=642"></script>
+  <script src="assets/intro-narration.js?v=642"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -1121,7 +1121,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=641"></script>
+  <script src="assets/institutions.js?v=642"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10312,11 +10312,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v641';
+    const ATLAS_RELEASE = 'culture-atlas-v642';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=641').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=642').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -19910,6 +19910,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // The empty chat asks eight to twelve questions, not a page of them (user, 5 Nov 2026: too much text). The number is drawn once
     // per load, so a resize or a new chat does not change it; the desktop panel still shows fewer when fewer fit.
     const STARTER_SHOWN = 8 + Math.floor(Math.random() * 5);
+    const STARTER_MIN = 4;   // questions always shown under the intro narration, even when the panel then has to scroll
     const promptButton = (x, i) => `<button type="button" class="starter-prompt" data-tier="${x.tier}" data-i="${i}" data-query="${escapeHtml(x.q)}"><span class="sp-text">${escapeHtml(noBreakHyphens(x.q))}</span></button>`;
     function renderStarterPrompts() {
       let list = [];
@@ -19961,6 +19962,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const room = g.clientHeight - (g.scrollHeight - bottoms[bottoms.length - 1]);
         let cut = bottoms.findIndex(b => b > room + 0.5);
         if (cut < 0) cut = kids.length;
+        // The narration above takes room, but the questions under it never go below STARTER_MIN: past that the panel scrolls.
+        cut = Math.max(cut, Math.min(STARTER_MIN, kids.length));
         for (let i = kids.length - 1; i >= cut; i--) kids[i].remove();
         // The estimate can stop a question short of where the one-at-a-time loop stopped: put questions back while they fit.
         for (let i = cut, back = 8; i < kids.length && back-- && g.scrollHeight <= g.clientHeight; i++) {
@@ -19969,7 +19972,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
       let guard = 50;
-      while (g.scrollHeight > g.clientHeight && box.lastElementChild && guard--) box.lastElementChild.remove();
+      while (g.scrollHeight > g.clientHeight && box.children.length > STARTER_MIN && guard--) box.lastElementChild.remove();
     }
     // Each question on screen is checked, a few at a time between frames, to resolve to its record; one that does not
     // is swapped for the next candidate that does, so every label asks something the chat answers about that record.
@@ -21446,15 +21449,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=641"></script>
-<script src="assets/note-aids.js?v=641" defer></script>
-<script src="assets/note-files.js?v=641" defer></script>
-<script src="assets/funding-views.js?v=641"></script>
-<script src="assets/layers.js?v=641"></script>
-<script src="assets/hq-detail.js?v=641"></script>
-<script src="assets/bubbles.js?v=641" defer></script>
-<script src="assets/phone-maps.js?v=641"></script>
-<script src="assets/desktop-maps.js?v=641"></script>
-<script src="assets/chat-resize.js?v=641"></script>
+<script src="assets/typeset.js?v=642"></script>
+<script src="assets/note-aids.js?v=642" defer></script>
+<script src="assets/note-files.js?v=642" defer></script>
+<script src="assets/funding-views.js?v=642"></script>
+<script src="assets/layers.js?v=642"></script>
+<script src="assets/hq-detail.js?v=642"></script>
+<script src="assets/bubbles.js?v=642" defer></script>
+<script src="assets/phone-maps.js?v=642"></script>
+<script src="assets/desktop-maps.js?v=642"></script>
+<script src="assets/chat-resize.js?v=642"></script>
 </body>
 </html>
