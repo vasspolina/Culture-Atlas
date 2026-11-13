@@ -45,14 +45,14 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=656">
-  <link rel="stylesheet" href="assets/sheet.css?v=656">
-  <script src="assets/config.js?v=656"></script>
-  <script src="assets/subtopic.js?v=656"></script>
-  <script src="assets/names.js?v=656"></script>
-  <script src="assets/grounding.js?v=656"></script>
-  <script src="assets/repeats.js?v=656"></script>
-  <script src="assets/intro-narration.js?v=656"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=657">
+  <link rel="stylesheet" href="assets/sheet.css?v=657">
+  <script src="assets/config.js?v=657"></script>
+  <script src="assets/subtopic.js?v=657"></script>
+  <script src="assets/names.js?v=657"></script>
+  <script src="assets/grounding.js?v=657"></script>
+  <script src="assets/repeats.js?v=657"></script>
+  <script src="assets/intro-narration.js?v=657"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -117,8 +117,8 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image-data.js?v=656"></script>
-  <script src="assets/load-image.js?v=656"></script>
+  <script src="assets/load-image-data.js?v=657"></script>
+  <script src="assets/load-image.js?v=657"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1133,7 +1133,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=656"></script>
+  <script src="assets/institutions.js?v=657"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10377,11 +10377,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v656';
+    const ATLAS_RELEASE = 'culture-atlas-v657';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=656').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=657').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -21518,17 +21518,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=656"></script>
-<script src="assets/note-aids.js?v=656" defer></script>
-<script src="assets/note-files.js?v=656" defer></script>
-<script src="assets/funding-views.js?v=656"></script>
-<script src="assets/layers.js?v=656"></script>
-<script src="assets/critique-gallery-data.js?v=656"></script>
-<script src="assets/critique-gallery.js?v=656"></script>
-<script src="assets/hq-detail.js?v=656"></script>
-<script src="assets/bubbles.js?v=656" defer></script>
-<script src="assets/phone-maps.js?v=656"></script>
-<script src="assets/desktop-maps.js?v=656"></script>
-<script src="assets/chat-resize.js?v=656"></script>
+<script src="assets/typeset.js?v=657"></script>
+<script src="assets/note-aids.js?v=657" defer></script>
+<script src="assets/note-files.js?v=657" defer></script>
+<script src="assets/funding-views.js?v=657"></script>
+<script src="assets/layers.js?v=657"></script>
+<script src="assets/critique-gallery-data.js?v=657"></script>
+<script src="assets/critique-gallery.js?v=657"></script>
+<script src="assets/hq-detail.js?v=657"></script>
+<script src="assets/bubbles.js?v=657" defer></script>
+<script src="assets/phone-maps.js?v=657"></script>
+<script src="assets/desktop-maps.js?v=657"></script>
+<script src="assets/chat-resize.js?v=657"></script>
 </body>
 </html>
