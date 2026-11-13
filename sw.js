@@ -39,6 +39,7 @@ const ASSETS_TO_CACHE = [
   './assets/critique-gallery-data.js',
   './assets/critique-gallery.js',
   './assets/critique-collection-data.js',
+  './assets/critique-captions.js',
   './assets/load-image-data.js',
   './assets/load-image.js'
 
