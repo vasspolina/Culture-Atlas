@@ -1440,14 +1440,12 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     #critiqueGallery .cg-next{grid-row:2!important;grid-column:2!important}
   }
 
-  /* The load image: about 40% of the screen's width on a desktop, 70% on a phone, between the page's two stone bars, its
-     title in italic and the artist after it. */
+  /* The load image: about 40% of the screen's width on a desktop, 70% on a phone, alone on the paper, its title in italic and
+     the artist after it. No stone bars (user, 13 Nov 2026: "I still see two yellow stripes on load"): the two lime bars this
+     block once drew at the head and foot were the stripes. */
   #loadImage{position:fixed!important;inset:0!important;z-index:2147483000!important;display:flex!important;align-items:center!important;justify-content:center!important;
     background:var(--sh-paper)!important;cursor:pointer!important;transition:opacity .5s cubic-bezier(.4,0,.2,1)!important}
   #loadImage.is-leaving{opacity:0!important;pointer-events:none!important}
-  #loadImage::before,#loadImage::after{content:"";position:absolute;left:0;right:0;background:var(--sh-stone);border:0 solid var(--sh-rule)}
-  #loadImage::before{top:0;height:var(--sh-head);border-bottom-width:1px}
-  #loadImage::after{bottom:0;height:var(--sh-foot);border-top-width:1px}
   #loadImage figure{margin:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:calc(var(--sh-s-lh) / 2)!important;max-width:40vw!important}
   #loadImage img{display:block!important;width:40vw!important;max-height:72vh!important;height:auto!important;object-fit:contain!important}
   #loadImage figcaption{text-align:center!important}
