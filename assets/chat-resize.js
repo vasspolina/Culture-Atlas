@@ -1,5 +1,5 @@
 /* The desktop chat and record column can be dragged wider, up to the whole screen (user, 4 Nov 2026).
-   A handle on the column's left edge sets --gmd-w on the root, which the map pane, the column, the chips and the map
+   A handle on the column's right edge (between the chat and the map; sheet.css, PLACES | CHAT | MAP) sets --gmd-w on the root, which the map pane, the column, the chips and the map
    controls all read (atlas.css, DESKTOP MAPS). Drag it, or focus it and use the arrow keys (Shift for bigger steps), Home
    for the narrowest and End for full screen; a double-click goes between the usual width and full screen. The width is
    kept for the next visit. While the map is left narrower than 240px its own controls are hidden, so none sit over the chat. */
@@ -48,14 +48,14 @@
       dragging = true; userSet = true; startX = e.clientX; startW = current();
       handle.setPointerCapture(e.pointerId); root.classList.add('chat-resizing'); e.preventDefault();
     });
-    handle.addEventListener('pointermove', function (e) { if (dragging) apply(startW + (startX - e.clientX), false); });
+    handle.addEventListener('pointermove', function (e) { if (dragging) apply(startW + (e.clientX - startX), false); });
     function end(e) { if (!dragging) return; dragging = false; root.classList.remove('chat-resizing'); apply(current(), true); }
     handle.addEventListener('pointerup', end);
     handle.addEventListener('pointercancel', end);
     handle.addEventListener('dblclick', function () { apply(current() >= maxW() ? DEFW() : maxW(), true); });
     handle.addEventListener('keydown', function (e) {
       var step = e.shiftKey ? 120 : 24, w = current();
-      if (e.key === 'ArrowLeft') w += step; else if (e.key === 'ArrowRight') w -= step;
+      if (e.key === 'ArrowRight') w += step; else if (e.key === 'ArrowLeft') w -= step;
       else if (e.key === 'Home') w = MIN; else if (e.key === 'End') w = maxW(); else return;
       e.preventDefault(); apply(w, true);
     });
