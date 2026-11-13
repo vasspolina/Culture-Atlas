@@ -421,6 +421,41 @@
     document.addEventListener('atlas:reports', renderReports);
     renderReports();
 
+    // ---- Closing and opening the index column (user, 13 Nov 2026: "add cross here to close this panel and put open
+    // button on top to open it like in claude") ------------------------------------------------------------------------
+    // A cross at the column's top right closes it: the search line, the filters, Layers, the places, the reports and the
+    // colour key go, and the map takes the width. A sidebar mark at the top left of the head bar opens it again, as
+    // Claude's sidebar does. Only where the column exists (1080px and wider); the choice is remembered in this browser.
+    const COL_KEY = 'atlas.indexColumnClosed';
+    const colBtn = (id, label, icon) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.id = id;
+      b.className = 'sh-col-toggle';
+      b.setAttribute('aria-label', label);
+      b.title = label;
+      b.setAttribute('aria-controls', 'shIndex shReports gmdSearch gmdChips');
+      b.innerHTML = svg(icon, 1.6);
+      document.body.appendChild(b);
+      return b;
+    };
+    const colClose = colBtn('shColClose', 'Close the side panel', ICON.close);
+    const colOpen = colBtn('shColOpen', 'Open the side panel', '<rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M9.5 4.5v15"/>');
+    function setCol(closed, focus) {
+      root.classList.toggle('sh-col-closed', closed);
+      colClose.setAttribute('aria-expanded', String(!closed));
+      colOpen.setAttribute('aria-expanded', String(!closed));
+      try { localStorage.setItem(COL_KEY, closed ? '1' : '0'); } catch (_) {}
+      // The globe and the street map size themselves on resize.
+      window.dispatchEvent(new Event('resize'));
+      if (focus) (closed ? colOpen : colClose).focus();
+    }
+    colClose.addEventListener('click', () => setCol(true, true));
+    colOpen.addEventListener('click', () => setCol(false, true));
+    let colStart = false;
+    try { colStart = localStorage.getItem(COL_KEY) === '1'; } catch (_) {}
+    setCol(colStart, false);
+
     // ---- What the atlas is, at the map's top right (user, 10 Nov 2026: "use this typesetting but with times to put tagline
     // and explain what atlas does in right corner of the map space") ------------------------------------------------------
     // Set as the "A Chess and Music Evening" poster sets its line-up, flush right: the counts underlined with a small italic

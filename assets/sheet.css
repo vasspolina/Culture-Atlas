@@ -1277,3 +1277,135 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c) #curatorVoiceToggleIcon *{display:none!important}
 }
 }
+
+@layer sheet{
+/* ---- The reports' meta line in dark violet (user, 13 Nov 2026: "color in dark violet like from displaay fonts web", on
+   "7 weeks ago, Trafó House of Contemporary Arts"). #4b1fb3 is 10.6:1 on the white paper; #bba4ff in dark is 8.9:1 on
+   #151412. Hover still turns it --sh-hover. ---- */
+:root{--sh-violet:#4b1fb3}
+:root[data-theme="dark"]{--sh-violet:#bba4ff}
+:root.gmd #shReports .sh-report .sh-report-meta:not(#sh-x){color:var(--sh-violet)!important}
+:root.gmd #shReports .sh-report:hover .sh-report-meta:not(#sh-x){color:var(--sh-hover)!important}
+
+/* ---- Closing and opening the index column, as Claude's sidebar (user, 13 Nov 2026; assets/desktop-maps.js, setCol). A
+   cross at the column's top right in the head bar closes it; a sidebar mark at the head bar's left opens it. Closed, the
+   column is 0 wide, so the map, which starts at --sh-col, takes the width, and everything the column holds is hidden. ---- */
+.sh-col-toggle{display:none}
+@media (min-width:1080px){
+  :root.gmd .sh-col-toggle{position:fixed!important;top:0!important;width:var(--sh-head)!important;height:var(--sh-head)!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+    background:transparent!important;color:var(--sh-ink)!important;align-items:center!important;justify-content:center!important;cursor:pointer!important;z-index:48!important}
+  :root.gmd .sh-col-toggle svg{display:block!important;width:20px!important;height:20px!important}
+  :root.gmd .sh-col-toggle:hover{color:var(--sh-hover)!important}
+  :root.gmd .sh-col-toggle:focus-visible{outline:2px solid var(--sh-outline)!important;outline-offset:-4px!important}
+  :root.gmd:not(.sh-col-closed) #shColClose{display:flex!important;left:calc(var(--sh-col) - var(--sh-head))!important}
+  :root.gmd.sh-col-closed #shColOpen{display:flex!important;left:0!important}
+  :root.gmd:not(.sh-col-closed) #gmdTopBar>div{padding-right:var(--sh-head)!important;box-sizing:border-box!important}
+  :root.gmd.sh-col-closed #gmdTopBar>div{padding-left:var(--sh-head)!important;box-sizing:border-box!important}
+  /* With the chat wide or Layers open the column is already given over; the cross stays with its column. */
+  :root.gmd.chat-wide .sh-col-toggle{display:none!important}
+
+  :root.gmd.sh-col-closed{--sh-col:0px!important}
+  :root.gmd.sh-col-closed :is(#gmdSearch,#gmdChips,#layersControl,#mapColourKey,#shIndex,#shReports,#shReports:not([hidden])){display:none!important}
+}
+}
+
+@layer sheet{
+/* ==== THE CLAUDE LOOK: the chat, the details and the list of places (user, 13 Nov 2026: "change chat and details and map
+   places, so it looks like claude") ======================================================================================
+   The three panels take Claude's interface: its warm paper (#faf9f5, the side column a shade deeper, #f5f4ed), its sans
+   for the interface and its serif for the answers, rows with rounded hover grounds instead of lime bands, the question
+   in a pale rounded bubble, the box you type in as a white card with a soft shadow and a square clay send button with
+   an arrow, and the record's section titles as small grey labels. The head and foot bars, the map and its labels keep
+   the sheet. Desktop only (768px and wider); the phone keeps its layout. Every rule starts with P, four :not(#…) on body,
+   so it outranks the sheet's own escalations without touching them. Text pairs: #141413 on #faf9f5 is 18:1, the grey
+   #6b6a64 on #f5f4ed 5.1:1; in dark #faf9f5 on #262624 is 14:1, #a8a69d on #1f1e1d 7.2:1. */
+:root{--cl-bg:#faf9f5;--cl-side:#f5f4ed;--cl-card:#fff;--cl-bubble:#f0eee6;--cl-ink:#141413;--cl-muted:#6b6a64;--cl-line:#dedbd0;--cl-hover:#ebe9e0;--cl-active:#e4e1d6;--cl-clay:#c6613f;
+  --cl-sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+:root[data-theme="dark"]{--cl-bg:#262624;--cl-side:#1f1e1d;--cl-card:#30302e;--cl-bubble:#141413;--cl-ink:#faf9f5;--cl-muted:#a8a69d;--cl-line:#3e3e3a;--cl-hover:#30302e;--cl-active:#3a3a37;--cl-clay:#c6613f}
+@media (min-width:768px){
+  /* -- grounds: the side column, the chat and details panel -- */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #mainAppContainer{background:linear-gradient(to right,var(--cl-side) var(--sh-col),var(--sh-paper) var(--sh-col))!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) :is(#workViewContainer,#workspacePanelsWrapper,#workBottomDock,#curatorIntelligenceColumn,#curatorScrollArea,#curatorScrollContent,#desktopDossierColumn,#desktopDossierBody){background:var(--cl-bg)!important;color:var(--cl-ink)!important}
+
+  /* -- the list of places, as Claude's sidebar list -- */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) :is(#shIndex,#shReports),
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) :is(#shIndex,#shReports) *{font-family:var(--cl-sans)!important;font-style:normal!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex #shIndexFind{height:36px!important;padding:0 12px!important;margin:0 0 10px!important;border:1px solid var(--cl-line)!important;border-radius:10px!important;background:var(--cl-card)!important;color:var(--cl-ink)!important;font-size:15px!important;line-height:34px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex #shIndexFind:focus{border-color:var(--cl-muted)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex #shIndexFind::placeholder{color:var(--cl-muted)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex .sh-index-row{height:auto!important;align-items:center!important;gap:10px!important;padding:6px 10px!important;border-radius:8px!important;background:transparent!important;font-size:15px!important;line-height:20px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex .sh-index-row :is(.sh-index-name,.sh-index-count){color:var(--cl-ink)!important;font-size:15px!important;line-height:20px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex .sh-index-row .sh-index-count{color:var(--cl-muted)!important;font-size:13px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex .sh-index-row:hover{background:var(--cl-hover)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex .sh-index-row[aria-current="true"]{background:var(--cl-active)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex .sh-index-back .sh-index-name{color:var(--cl-muted)!important}
+  /* The grade's colour moves from the name to a dot before it, as the sidebar's text stays one colour. */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex .sh-index-dot{display:block!important;flex:none!important;width:8px!important;height:8px!important;margin:0!important;border-radius:50%!important;background:var(--tier-u,#7a7000)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex [data-tier="A"] .sh-index-dot{background:var(--tier-a,#007a80)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex [data-tier="B"] .sh-index-dot{background:var(--tier-b,#b000b0)!important}
+  /* The list's height is measured in the new rows: the find box (36px and 10px under it) and five rows of 32px. */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4){--sh-index-h:calc(46px + 5 * 32px)}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shIndex .sh-index-list{display:block!important}
+  /* Section labels, as Claude's "Recents": small, grey, flush left. */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shReports .sh-reports-title{height:auto!important;margin:0 0 4px!important;padding:0 10px!important;text-align:left!important;background:transparent!important;color:var(--cl-muted)!important;font-size:13px!important;line-height:20px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shReports .sh-reports-list li+li{margin-top:2px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shReports :is(.sh-report,.sh-report-all){padding:8px 10px!important;border-radius:8px!important;background:transparent!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shReports :is(.sh-report,.sh-report-all):hover{background:var(--cl-hover)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shReports :is(.sh-report-head,.sh-report-all){color:var(--cl-ink)!important;font-size:15px!important;line-height:20px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shReports .sh-report-meta{padding:2px 0 0!important;color:var(--sh-violet)!important;font-size:13px!important;line-height:18px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shReports .sh-report-all::before{content:none!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shReports .sh-report:hover *{color:inherit!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #shReports .sh-report:hover .sh-report-meta{color:var(--sh-violet)!important}
+
+  /* -- the chat -- */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #curatorIntelligenceColumn :is(button,textarea,input,.user-bubble,.intro-text,.intro-text *,summary,.grade-list,.grade-list *),
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #curatorIntelligenceColumn :is(button,.user-bubble) *{font-family:var(--cl-sans)!important;font-style:normal!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #curatorHeroGreeting .intro-text :is(p,span){color:var(--cl-muted)!important;font-size:17px!important;line-height:1.5!important}
+  /* The suggested questions and the follow-ups: rounded cards. */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #curatorStarterPrompts{display:flex!important;flex-direction:column!important;gap:8px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) :is(.starter-prompt,.curator-followup-pill){display:block!important;text-indent:0!important;width:100%!important;height:auto!important;padding:10px 14px!important;margin:0!important;border:1px solid var(--cl-line)!important;border-radius:12px!important;background:var(--cl-card)!important;color:var(--cl-ink)!important;text-align:left!important;font-size:15px!important;line-height:20px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) :is(.starter-prompt,.curator-followup-pill) *{color:inherit!important;font-size:inherit!important;line-height:inherit!important;white-space:normal!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) :is(.starter-prompt,.curator-followup-pill)::before{content:none!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) :is(.starter-prompt,.curator-followup-pill):hover{background:var(--cl-hover)!important;color:var(--cl-ink)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) .curator-followups{gap:8px!important;width:100%!important}
+  /* Your question: a pale rounded bubble at the right. The answer: the serif, at reading leading. */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #curatorMessages .user-bubble{padding:10px 16px!important;border-radius:16px!important;background:var(--cl-bubble)!important;color:var(--cl-ink)!important;font-size:16px!important;line-height:1.45!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #curatorMessages .curator-message-wrap :is(p,li){color:var(--cl-ink)!important;font-size:18px!important;line-height:1.55!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #curatorMessages .curator-message-wrap :is(p,li) *{font-size:inherit!important;line-height:inherit!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #curatorMessages .curator-followups .curator-followup-pill{padding:10px 14px!important;text-indent:0!important;max-width:100%!important;box-sizing:border-box!important}
+  /* The box you type in: a white card with a soft shadow. */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #workInputCard{border:1px solid var(--cl-line)!important;border-radius:20px!important;background:var(--cl-card)!important;box-shadow:0 4px 20px rgba(0,0,0,.04),0 0 0 .5px rgba(0,0,0,.02)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #workInput{color:var(--cl-ink)!important;font-size:16px!important;line-height:1.45!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #workInput::placeholder{color:var(--cl-muted)!important}
+  /* Send: a square clay button with the arrow, the word hidden. */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #workSendBtn{width:32px!important;min-width:32px!important;height:32px!important;padding:0!important;border:0!important;border-radius:8px!important;background:var(--cl-clay)!important;color:#fff!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #workSendBtn::after{content:none!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #workSendBtn svg{display:block!important;width:16px!important;height:16px!important;color:#fff!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #workSendBtn:hover{background:#a9502f!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #workSendBtn:disabled{background:var(--cl-active)!important;color:var(--cl-muted)!important}
+  /* Voice and Share information: Claude's outlined buttons, 8px corners. */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock :is(#curatorVoiceToggleBtn,#chatShareBtn){height:32px!important;padding:0 12px!important;border:1px solid var(--cl-line)!important;border-radius:8px!important;background:transparent!important;color:var(--cl-ink)!important;font-size:14px!important;line-height:30px!important;outline:0!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock :is(#curatorVoiceToggleBtn,#chatShareBtn) *{color:inherit!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #curatorVoiceToggleBtn[aria-pressed="true"]{background:var(--cl-bubble)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #chatShareBtn{height:40px!important;line-height:38px!important;background:var(--cl-card)!important;font-size:15px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock #chatShareBtn::before{content:none!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock :is(#curatorVoiceToggleBtn,#chatShareBtn):hover{background:var(--cl-hover)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #workBottomDock :is(#curatorVoiceToggleBtn,#chatShareBtn,#workSendBtn):focus-visible{outline:2px solid var(--sh-outline)!important;outline-offset:2px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #chatRecordsInfo summary{color:var(--cl-muted)!important;font-size:14px!important}
+
+  /* -- the details: the record as one of Claude's documents -- */
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody :is(.d-row-title,.d-row-title *,.record-action,dt,.domain,summary,.kicker){font-family:var(--cl-sans)!important;font-style:normal!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .dossier-main-heading{color:var(--cl-ink)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .d-row-title{margin:0 0 6px!important;padding:0!important;text-align:left!important;background:transparent!important;color:var(--cl-muted)!important;font-size:13px!important;line-height:18px!important;letter-spacing:.02em!important;text-transform:uppercase!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .d-row-title *{color:inherit!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .d-row-title::before{font-family:var(--cl-sans)!important;font-size:inherit!important;color:inherit!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .d-row{padding-top:16px!important;border-top:1px solid var(--cl-line)!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .record-head .d-row{padding-top:0!important;border-top:0!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody :is(.d-row-list li,dd){color:var(--cl-ink)!important;font-size:18px!important;line-height:1.5!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody dt{color:var(--cl-muted)!important;font-size:14px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .record-action-row{gap:8px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .record-action{height:32px!important;padding:0 12px!important;border:1px solid var(--cl-line)!important;border-radius:8px!important;background:var(--cl-card)!important;color:var(--cl-ink)!important;font-size:14px!important;line-height:30px!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .record-action *{color:inherit!important}
+  :root.gmd body:not(#c1):not(#c2):not(#c3):not(#c4) #desktopDossierRecordBody .record-action:hover{background:var(--cl-hover)!important}
+}
+}
