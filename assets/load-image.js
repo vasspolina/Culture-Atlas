@@ -20,7 +20,9 @@
   img.src = pick.src; img.width = pick.w; img.height = pick.h; img.decoding = 'async';
   img.alt = `${pick.project}, by ${pick.artist}`;
   const cap = document.createElement('figcaption');
-  cap.textContent = `${pick.project}, ${pick.artist}`;
+  const t = document.createElement('i');
+  t.textContent = pick.project;
+  cap.append(t, `, ${pick.artist}`);
   fig.append(img, cap);
   el.append(fig);
   document.body.prepend(el);

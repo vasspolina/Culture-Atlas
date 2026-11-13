@@ -5,118 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Artists’ images · Leaving it on the table</title>
   <meta name="description" content="Artists’ and designers’ work on cultural institutions, grouped by the space it names, each image open to zoom." />
-  <link rel="stylesheet" href="assets/atlas.css?v=654">
+  <link rel="stylesheet" href="assets/sheet.css?v=654">
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <style>
-    /* The atlas's current design (README, "Buttons and corners after Displaay" and the record in Serrif, 4 Nov 2026), not the
-       older tab strip of studies.html: paper and ink; every button a rounded rectangle with 10px corners and a 1px ink edge,
-       its label 15px/1.3 +0.02em, filling with 80% ink on hover; the primary action solid ink; panels 20px; the names of
-       spaces in Jokker Bold capitals; the text in Serrif Light; each section titled by a small uppercase label over a 1px rule.
-       One group per space (a work that names two spaces is shown once, under both names); each picture opens in a viewer that
-       zooms (wheel, pinch, double-click or double-tap, + and -, 0 to fit) and pans by dragging.
-       Data: assets/critique-gallery-data.js, the same file the map's Artists' images layer reads. */
-    body{height:auto;overflow:auto;background:var(--paper);color:var(--ink);font:400 var(--fs-m)/1.3 var(--sans);font-feature-settings:"ss04","ss05","tnum"}
-    .skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:8px;background:var(--paper);padding:4px 8px;outline:2px solid var(--focus);z-index:5}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:0 16px;box-sizing:border-box;font:400 15px/1.3 var(--sans);letter-spacing:.02em;
-      color:var(--ink);background:var(--paper);border:0;border-radius:var(--btn-r,10px);box-shadow:inset 0 0 0 1px var(--ink);text-decoration:none;cursor:pointer;white-space:nowrap;transition:var(--btn-ease)}
-    .btn:hover{background:var(--btn-hover);color:var(--paper)}
-    .btn.primary{background:var(--ink);color:var(--paper)}
-    .btn.primary:hover{background:var(--btn-hover)}
-    .btn[hidden]{display:none}
-    header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px}
-    header.top .crumb{font:400 15px/1.3 var(--sans);letter-spacing:.02em;text-transform:uppercase}
-    main{padding:24px 16px 96px;max-width:1600px;margin:0 auto}
-    h1{font:700 56px/.95 var(--sans);text-transform:uppercase;letter-spacing:-.01em;margin:0 0 24px}
-    .intro p{font-family:"Serrif",Georgia,serif;font-weight:300;font-size:21px;line-height:1.15;letter-spacing:.01em;max-width:36em;margin:0;text-wrap:pretty}
-    .intro p+p{margin-top:12px}
-    .label{font:400 15px/1.3 var(--sans);letter-spacing:.02em;text-transform:uppercase;padding:0 0 4px;border-bottom:1px solid var(--ink);margin:0 0 10px}
-    nav.toc{margin:48px 0 0}
-    nav.toc ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
-    .views{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:48px 0 0}
-    .label-inline{font:400 15px/1.3 var(--sans);letter-spacing:.02em;text-transform:uppercase;margin-right:8px}
-    .btn[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-    nav.toc .btn{white-space:normal;text-align:left;min-height:36px;padding:6px 12px}
-    .ai-group h2:not(.space-name){font-weight:400}
-    .missing{margin:64px 0 0;font:400 15px/1.35 var(--sans);letter-spacing:.02em;max-width:48em}
-    nav.toc{margin:32px 0 0}
-    .ai-group{margin-top:64px;scroll-margin-top:16px}
-    .ai-group .label{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-    .ai-group h2{margin:0;font:700 15px/1.3 var(--sans);letter-spacing:.02em;text-transform:uppercase}
-    .ai-group .ai-tie{font-family:"Serrif",Georgia,serif;font-weight:300;font-size:18px;line-height:1.3;letter-spacing:.01em;margin:0 0 20px;max-width:40em}
-    .ai-grid{list-style:none;margin:0;padding:0;columns:4 260px;column-gap:16px}
-    .ai-grid li{break-inside:avoid;margin:0 0 24px}
-    .ai-grid button{display:block;width:100%;padding:0;border:0;background:var(--grey);cursor:zoom-in;line-height:0;border-radius:var(--btn-r,10px);overflow:hidden;box-shadow:none}
-    .ai-grid img{display:block;width:100%;height:auto;transition:opacity .3s}
-    .ai-grid button:hover img{opacity:.85}
-    .ai-grid .ai-cap{margin:8px 0 0}
-    .ai-cap .p{display:block;font-family:"Serrif",Georgia,serif;font-weight:300;font-size:18px;line-height:1.2;letter-spacing:.01em}
-    .ai-cap .a{display:block;font:400 15px/1.3 var(--sans);letter-spacing:.02em;margin-top:2px}
-    /* The viewer: a full-screen panel on the paper. */
-    dialog.zv{position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:var(--paper);color:var(--ink)}
-    dialog.zv[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
-    dialog.zv::backdrop{background:rgb(0 0 0 / .8)}
-    .zv-top,.zv-foot{display:flex;align-items:center;gap:8px;padding:12px 16px;flex-wrap:wrap}
-    .zv-top{justify-content:space-between}
-    .zv-foot{align-items:flex-start;justify-content:space-between;padding-bottom:calc(12px + var(--safe-b))}
-    .zv-title{margin:0;font:400 15px/1.3 var(--sans);letter-spacing:.02em;text-transform:uppercase}
-    .zv-title b{font-weight:700}
-    .zv-title span{margin-left:10px}
-    .zv-tools{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-    .zv-tools .btn{min-width:40px;padding:0 12px}
-    .zv-level{display:inline-flex;align-items:center;justify-content:center;min-width:4.5em;font:400 15px/1 var(--sans);letter-spacing:.02em}
-    .zv-stage{position:relative;overflow:hidden;margin:0 16px;background:var(--grey);border-radius:var(--panel-r,20px);touch-action:none;cursor:grab;user-select:none}
-    .zv-stage.drag{cursor:grabbing}
-    .zv-stage img{position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;will-change:transform;-webkit-user-drag:none}
-    .zv-cap{max-width:60em}
-    .zv-cap p{margin:0;font:400 15px/1.35 var(--sans);letter-spacing:.02em}
-    .zv-cap .p{font-family:"Serrif",Georgia,serif;font-weight:300;font-size:21px;line-height:1.15;letter-spacing:.01em;margin-bottom:4px}
-    .zv-nav{display:flex;gap:6px}
-    @media (max-width:640px){
-      h1{font-size:40px}
-      .intro p{font-size:18px;line-height:1.3}
-      .ai-grid{columns:2;column-gap:10px}
-      .ai-group{margin-top:48px}
-      .zv-stage{margin:0 10px}
-      .zv-foot{flex-direction:column}
-      .zv-nav{width:100%}.zv-nav .btn{flex:1}
+    /* Set on the sheet (assets/sheet.css), the atlas's current design: the one serif in its two sizes, black on white, the
+       stone bars at the head and the foot, 1px grey rules, no corners, boxes or bold; actions are words, opening with an en
+       dash, that turn blue under the pointer, and the chosen one is in italic. Every rule here is inside @layer sheet and
+       !important, as in sheet.css, so it sits on top of it the same way.
+       One group per work or per space; each picture opens in a viewer that zooms (wheel, pinch, double-click or double-tap,
+       + and -, 0 to fit) and pans by dragging. Data: assets/critique-collection-data.js and assets/critique-gallery-data.js. */
+    @layer sheet{
+      html,body{height:auto!important;overflow:auto!important}
+      body{margin:0!important}
+      .skip{position:absolute!important;left:-9999px!important}.skip:focus{left:16px!important;top:8px!important;background:var(--sh-paper)!important;padding:4px 8px!important;z-index:5!important}
+      .act{color:var(--sh-ink)!important;text-decoration:none!important;cursor:pointer!important}
+      .act::before{content:"– "}
+      .act:hover{color:var(--sh-hover)!important}
+      header.top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:var(--sh-pad)!important;min-height:var(--sh-head)!important;padding:0 var(--sh-pad)!important;
+        background:var(--sh-stone)!important;border-bottom:1px solid var(--sh-rule)!important}
+      header.top .act::before{content:none}
+      main{display:block!important;padding:var(--sh-s-lh) var(--sh-pad) calc(var(--sh-s-lh) * 3)!important}
+      h1{font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important;margin:0 0 var(--sh-s-lh)!important}
+      .intro p{max-width:34em!important;margin:0!important}
+      .intro p+p{margin-top:var(--sh-s-lh)!important}
+      .views{display:flex!important;flex-wrap:wrap!important;gap:0 var(--sh-indent)!important;margin:calc(var(--sh-s-lh) * 2) 0 0!important}
+      .views button{color:var(--sh-ink)!important}
+      .views button::before{content:"– "}
+      .views button:hover{color:var(--sh-hover)!important}
+      .label-inline{margin-right:0!important}
+      nav.toc{margin:var(--sh-s-lh) 0 0!important;padding-top:var(--sh-s-lh)!important;border-top:1px solid var(--sh-rule)!important}
+      nav.toc .label{margin:0 0 calc(var(--sh-s-lh) / 2)!important}
+      nav.toc ul{list-style:none!important;margin:0!important;padding:0!important;columns:3 18em!important;column-gap:var(--sh-pad)!important}
+      nav.toc li{break-inside:avoid!important}
+      .ai-group{margin-top:calc(var(--sh-s-lh) * 2.5)!important;padding-top:calc(var(--sh-s-lh) / 2)!important;border-top:1px solid var(--sh-rule)!important;scroll-margin-top:var(--sh-pad)!important}
+      .ai-group .label{display:flex!important;justify-content:space-between!important;gap:var(--sh-pad)!important;align-items:baseline!important}
+      .ai-group h2{margin:0!important}
+      .ai-group .ai-tie{margin:0 0 var(--sh-s-lh)!important;max-width:40em!important}
+      .ai-grid{list-style:none!important;margin:0!important;padding:0!important;columns:4 260px!important;column-gap:var(--sh-pad)!important}
+      .ai-grid li{break-inside:avoid!important;margin:0 0 var(--sh-s-lh)!important}
+      .ai-grid button{display:block!important;width:100%!important;line-height:0!important;cursor:zoom-in!important;background:var(--sh-stone-2)!important}
+      .ai-grid img{display:block!important;width:100%!important;height:auto!important;transition:opacity .2s!important}
+      .ai-grid button:hover img{opacity:.8!important}
+      .ai-cap{margin:calc(var(--sh-s-lh) / 4) 0 0!important}
+      .ai-cap span{display:block!important}
+      .missing{margin:calc(var(--sh-s-lh) * 3) 0 0!important;max-width:40em!important}
+      footer.foot{display:flex!important;align-items:center!important;justify-content:center!important;min-height:var(--sh-foot)!important;background:var(--sh-stone)!important;border-top:1px solid var(--sh-rule)!important}
+      footer.foot span{font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important}
+      /* The viewer */
+      dialog.zv{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;background:var(--sh-paper)!important}
+      dialog.zv[open]{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important}
+      dialog.zv::backdrop{background:rgb(0 0 0 / .8)}
+      .zv-top,.zv-foot{display:flex!important;align-items:center!important;gap:var(--sh-pad)!important;padding:0 var(--sh-pad)!important;flex-wrap:wrap!important}
+      .zv-top{justify-content:space-between!important;min-height:var(--sh-head)!important;background:var(--sh-stone)!important;border-bottom:1px solid var(--sh-rule)!important}
+      .zv-foot{align-items:flex-start!important;justify-content:space-between!important;padding:calc(var(--sh-s-lh) / 2) var(--sh-pad) calc(var(--sh-s-lh) / 2 + var(--safe-b,0px))!important;border-top:1px solid var(--sh-rule)!important}
+      .zv-title{margin:0!important}
+      .zv-title [data-z-count]{margin-left:1em!important}
+      .zv-tools,.zv-nav{display:flex!important;gap:0 var(--sh-indent)!important;flex-wrap:wrap!important;align-items:baseline!important}
+      .zv button.act{color:var(--sh-ink)!important}
+      .zv-tools [data-z="in"]::before,.zv-tools [data-z="out"]::before{content:none}
+      .zv button.act[hidden]{display:none!important}
+      .zv-level{min-width:3.5em!important;text-align:center!important}
+      .zv-stage{position:relative!important;overflow:hidden!important;background:var(--sh-paper)!important;touch-action:none!important;cursor:grab!important;user-select:none!important}
+      .zv-stage.drag{cursor:grabbing!important}
+      .zv-stage img{position:absolute!important;left:0!important;top:0!important;transform-origin:0 0!important;max-width:none!important;will-change:transform!important;-webkit-user-drag:none}
+      .zv-cap{max-width:60em!important}
+      .zv-cap p{margin:0!important}
+      .zv-cap .p{font-style:italic!important}
+      @media (max-width:640px){.ai-grid{columns:2!important;column-gap:calc(var(--sh-pad) * .6)!important}main,header.top{padding-left:calc(var(--sh-pad) * .6)!important;padding-right:calc(var(--sh-pad) * .6)!important}.zv-foot{flex-direction:column!important}}
     }
   </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the images</a>
-<header class="top"><span class="crumb">Leaving it on the table</span><a class="btn" href="./">Back to the atlas</a></header>
+<header class="top"><span>Artists’ images</span><a class="act" href="./">Back to the atlas</a></header>
 <main id="main">
   <div class="intro">
     <h1>Artists’ images</h1>
     <p>Artists’ and designers’ work on cultural institutions: posters, publications, maps, cartoons and exhibition views from the cultural space critique collection, references 1801 to 2000. By work shows every image the atlas holds; By space shows the works that name a space on the map.</p>
     <p>Open an image to zoom: scroll or pinch, double-click or double-tap, or use + and −. Drag to move around it.</p>
   </div>
-  <div class="views" role="group" aria-label="Organise by"><span class="label-inline">Organise by</span>
-    <button type="button" class="btn" data-view="work" aria-pressed="true">By work</button>
-    <button type="button" class="btn" data-view="space" aria-pressed="false">By space</button>
+  <div class="views" role="group" aria-label="Organise by"><span class="label-inline">Organise by:</span>
+    <button type="button" class="act-v" data-view="work" aria-pressed="true">By work</button>
+    <button type="button" class="act-v" data-view="space" aria-pressed="false">By space</button>
   </div>
   <nav class="toc" aria-labelledby="tocLabel"><p class="label" id="tocLabel"></p><ul></ul></nav>
   <div id="groups"></div>
   <p class="missing" data-missing></p>
 </main>
+<footer class="foot"><span>Leaving it on the table</span></footer>
 
 <dialog class="zv" aria-labelledby="zvTitle">
   <div class="zv-top">
-    <h2 class="zv-title" id="zvTitle"><b data-z-space></b><span data-z-count></span></h2>
+    <h2 class="zv-title" id="zvTitle"><span data-z-space></span><span data-z-count></span></h2>
     <div class="zv-tools">
-      <button type="button" class="btn" data-z="out" aria-label="Zoom out">−</button>
+      <button type="button" class="act" data-z="out" aria-label="Zoom out">−</button>
       <span class="zv-level" data-z-level aria-live="polite"></span>
-      <button type="button" class="btn" data-z="in" aria-label="Zoom in">+</button>
-      <button type="button" class="btn" data-z="fit">Fit</button>
-      <button type="button" class="btn primary" data-z="close">Close</button>
+      <button type="button" class="act" data-z="in" aria-label="Zoom in">+</button>
+      <button type="button" class="act" data-z="fit">Fit</button>
+      <button type="button" class="act" data-z="close">Close</button>
     </div>
   </div>
   <div class="zv-stage" data-z-stage><img data-z-img alt=""></div>
   <div class="zv-foot">
     <div class="zv-cap" data-z-cap></div>
     <div class="zv-nav">
-      <button type="button" class="btn" data-z="prev">Previous</button>
-      <button type="button" class="btn" data-z="next">Next</button>
+      <button type="button" class="act" data-z="prev">Previous</button>
+      <button type="button" class="act" data-z="next">Next</button>
     </div>
   </div>
 </dialog>
@@ -154,10 +148,10 @@
     const seen = new Set();
     document.querySelector('nav.toc ul').innerHTML = groups.filter(g => !seen.has(g.toc) && seen.add(g.toc)).map(g => {
       const n = groups.filter(x => x.toc === g.toc).reduce((t, x) => t + x.images.length, 0);
-      return `<li><a class="btn" href="#${g.id}">${esc(g.toc)}, ${n}</a></li>`;
+      return `<li><a class="act" href="#${g.id}">${esc(g.toc)}, ${n}</a></li>`;
     }).join('');
     document.getElementById('groups').innerHTML = groups.map((g, gi) => `<section class="ai-group" id="${g.id}" aria-labelledby="h-${gi}">
-        <div class="label"><h2 id="h-${gi}"${g.space ? ' class="space-name"' : ''}>${esc(g.title)}</h2><span>${plural(g.images.length)}</span></div>
+        <div class="label"><h2 id="h-${gi}">${esc(g.title)}</h2><span>${plural(g.images.length)}</span></div>
         <p class="ai-tie">${esc(g.sub)}${g.note ? `. ${esc(g.note)}` : ''}</p>
         <ul class="ai-grid">${g.images.map((im, i) => {
           const on = g.space ? [] : spaceNames(im.n);
@@ -203,7 +197,6 @@
   function show() {
     const g = groups[G], im = g.images[I], n = g.images.length;
     dlg.querySelector('[data-z-space]').textContent = g.title;
-    dlg.querySelector('[data-z-space]').style.fontWeight = g.space ? '' : '400';
     dlg.querySelector('[data-z-count]').textContent = n > 1 ? `${I + 1} of ${n}` : '';
     dlg.querySelector('[data-z-cap]').innerHTML = `<p class="p">${esc(im.project)}</p><p>${esc(im.artist)}. ${esc(im.type)}.</p><p>${esc(im.credit)} <a href="${esc(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
     dlg.querySelectorAll('[data-z="prev"],[data-z="next"]').forEach(b => { b.hidden = n < 2; });
