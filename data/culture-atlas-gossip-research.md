@@ -424,7 +424,6 @@ Dates below are **posting dates**. Roles and employment descriptions are supplie
 | ID · employer | Posted · self-described role | Account in brief | Source |
 | --- | --- | --- | --- |
 | R04 · British Museum | 2026-06-26 · Events assistant | Values staff access and networking; criticises low pay, unstable hours, and divisions between front-of-house and other teams. | [S54](https://www.glassdoor.com/Reviews/Employee-Review-British-Museum-E36638-RVW104547155.htm) |
-| R05 · British Museum | 2026-06-29 · Anonymous employee | Describes a friendly, supportive team; mentions an age gap among colleagues. | [S55](https://www.glassdoor.com/Reviews/Employee-Review-British-Museum-E36638-RVW104572930.htm) |
 | R06 · V&A | 2026-08-22 · Visitor assistant | Praises colleagues and the collection; criticises pay and feeling undervalued. | [S56](https://www.glassdoor.com/Reviews/Employee-Review-Victoria-and-Albert-Museum-E654572-RVW105290808.htm) |
 | R07 · V&A | 2026-09-05 · Assistant curator | Describes an inclusive, diverse, supportive team; says benefits could improve. | [S57](https://www.glassdoor.com/Reviews/Employee-Review-Victoria-and-Albert-Museum-E654572-RVW105469428.htm) |
 | R15 · Science Museum Group | 2026-07-17 · Visitor experience assistant | Praises colleagues; criticises casual contracts and unreliable hours. **Timing / scope:** Site unspecified; group account. | [S65](https://www.glassdoor.co.uk/Reviews/Employee-Review-Science-Museum-Group-E37271-RVW104825936.htm) |
@@ -441,7 +440,6 @@ Dates below are **posting dates**. Roles and employment descriptions are supplie
 | R11 · Whitney Museum of American Art | 2026-01-27 · Production supervisor | Praises a supportive supervisor; raises concerns about part-time hiring and benefit access. | [S61](https://api.glassdoor.com/Reviews/Employee-Review-Whitney-Museum-E5424-RVW102514204.htm) |
 | R12 · The Noguchi Museum | 2026-02-10 · Educator | Values the exhibitions; criticises workplace culture and pay. | [S62](https://www.glassdoor.com/Reviews/Employee-Review-Noguchi-Museum-E922788-RVW102776098.htm) |
 | R13 · The Noguchi Museum | 2026-04-21 · Museum attendant | Describes a kind, understanding team and reports no drawbacks. | [S63](https://www.glassdoor.com/Reviews/Employee-Review-Noguchi-Museum-E922788-RVW103658275.htm) |
-| R14 · American Folk Art Museum | 2025-03-10 · Personal assistant | Values learning opportunities; identifies the office's remoteness as a drawback. | [S64](https://www.glassdoor.com/Reviews/Employee-Review-American-Folk-Art-Museum-E278241-RVW95694636.htm) |
 
 #### Paris
 
@@ -564,7 +562,6 @@ Dates are posting dates; roles and employment descriptions are self-reported. **
 | R46 · Royal Academy of Arts | 2026-02-15 · Administrative assistant | Praises colleagues, benefits, and feeling supported within the team; reports no drawbacks. | [S93](https://www.glassdoor.com/Reviews/Employee-Review-Royal-Academy-of-Arts-E1160171-RVW102835984.htm) |
 | R47 · Royal Academy of Arts | 2026-01-06 · Content editor | Praises staff talent; alleges wage suppression, financial mismanagement, redundancies, and reliance on employees' passion rather than adequate pay. | [S94](https://www.glassdoor.com/Reviews/Employee-Review-Royal-Academy-of-Arts-E1160171-RVW102094306.htm) |
 | R48 · Institute of Contemporary Arts | 2026-04-02 · Manager | Praises colleagues, programming, and cinema access; criticises disorganised management and pay. | [S95](https://www.glassdoor.com/Reviews/Employee-Review-Institute-of-Contemporary-Arts-E669772-RVW103417928.htm) |
-| R49 · Institute of Contemporary Arts | 2026-03-13 · Public advisor | Praises colleagues, cultural events, and a relaxed workplace; notes an ageing building that can be cold. | [S96](https://www.glassdoor.com/Reviews/Employee-Review-Institute-of-Contemporary-Arts-E669772-RVW103157264.htm) |
 
 #### New York
 
