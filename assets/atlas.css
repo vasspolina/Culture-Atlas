@@ -164,7 +164,7 @@ html.atlas-held :is(header,#workspaceContextTabBar,#globeSplitter,#workInputCard
 #floatingCardFundingText,#floatingCardHours{font-size:var(--fs-m);line-height:1.25}
 #floatingCard>div:last-child{padding:12px 16px 16px;border-top:.8px solid rgba(255,255,255,.55)}
 #floatingCard>div:last-child a,#floatingCard>div:last-child button{border-radius:0;padding:9px 16px;font:400 var(--fs-s)/1 var(--sans);text-align:center;text-decoration:none;justify-content:center}
-#floatingCardDirectAuditBtn,#floatingCardDirectPlanBtn,#floatingCardDirectWebBtn{background:var(--block);color:var(--ink)!important;border:0}
+#floatingCardDirectAuditBtn,#floatingCardDirectWebBtn{background:var(--block);color:var(--ink)!important;border:0}
 #floatingCard.gossip-active-card,#floatingCard.gossip-yellow-card{background:var(--gossip);color:var(--gossip-ink)}
 #floatingCard.gossip-active-card *,#floatingCard.gossip-yellow-card *{color:var(--gossip-ink)}
 
@@ -356,9 +356,9 @@ blockquote{background:none;padding:0;border:0;margin:12px 0}
 #workInputCard.is-mode{background:var(--gossip);padding:12px}
 #connectionTestBox{padding:8px 12px;font:400 var(--fs-s)/1.3 var(--sans)}
 /* Buttons are flat grey blocks with black text, no rounding, like the fair's tabs. */
-.record-action,#desktopDossierWebLink,#dossier-sheet-audit-btn,#dossier-sheet-plan-btn,#desktopDossierBody>div:last-child button{font:400 var(--fs-s)/1 var(--sans);background:var(--block);color:var(--ink);border:0;border-radius:0;padding:10px 14px;text-align:center;text-decoration:none;display:inline-block;white-space:nowrap;letter-spacing:0;width:auto}
+.record-action,#desktopDossierWebLink,#dossier-sheet-audit-btn,#desktopDossierBody>div:last-child button{font:400 var(--fs-s)/1 var(--sans);background:var(--block);color:var(--ink);border:0;border-radius:0;padding:10px 14px;text-align:center;text-decoration:none;display:inline-block;white-space:nowrap;letter-spacing:0;width:auto}
 .record-actions{gap:6px!important}
-.record-action:hover,#desktopDossierWebLink:hover,#dossier-sheet-audit-btn:hover,#dossier-sheet-plan-btn:hover,#desktopDossierBody>div:last-child button:hover{background:var(--ink);color:var(--paper)}
+.record-action:hover,#desktopDossierWebLink:hover,#dossier-sheet-audit-btn:hover,#desktopDossierBody>div:last-child button:hover{background:var(--ink);color:var(--paper)}
 
 #desktopDossierRecordBody{padding:0}
 #desktopDossierRecordBody>div{padding:16px}
@@ -2779,7 +2779,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard#workInputCard.is-mode :is(.nf-field input,#noteInputBlock textarea)::placeholder{color:#5a6086!important}
 :root:not([data-theme="dark"]) body.chat-input-mode-active #workInputCard#workInputCard.is-mode #workSendBtn#workSendBtn.is-on:not([data-ready="true"]){background:#e8e8ee!important;color:#5b5b66!important}
 
-/* Light detail pills (user, 26 Oct 2026): in the light theme Ask in chat, Plan visit in chat, Building view and Money map are pale tints of their dark colours with dark type; Website keeps its outline. */
+/* Light detail pills (user, 26 Oct 2026): in the light theme Ask in chat, Building view and Money map are pale tints of their dark colours with dark type; Website keeps its outline. */
 :root:root:root:root:not([data-theme="dark"]) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side button.record-action{--pill:#d9dcec!important;--pill-hover:#c3c7df!important;background:var(--pill)!important;color:#2d3352!important}
 :root:root:root:root:not([data-theme="dark"]) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side button.record-action:first-child{--pill:#ecd9d7!important;--pill-hover:#dcc2bf!important;color:#420401!important}
 :root:root:root:root:not([data-theme="dark"]) :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side button.record-action[onclick*="atlasPlanVisit"]{--pill:#e8d6ee!important;--pill-hover:#d6bce0!important;color:#3c0b52!important}
@@ -3695,11 +3695,6 @@ div:has(>#topThemeBtn){column-gap:0}
 @media (prefers-reduced-motion:reduce){ :root.gmd:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer#workViewContainer #curatorMessages>.curator-message-wrap.chat-pending::before{animation:none} }
 
 
-/* One chat button on the record sheet (user, 4 Nov 2026: of "Ask in chat" and "Plan visit in chat", keep "Ask in chat"). Both opened the
-   chat; a visit is planned there by asking ("Plan my visit to …"). */
-@media (max-width:767px){
-  :root.gm-map:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root #globeViewport #dossier-bottom-sheet #dossier-sheet-plan-btn{display:none!important}
-}
 
 
 /* One box for asking and finding: the separate Chat button goes (the box is the chat's, and returns to a conversation under way). */

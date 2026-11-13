@@ -10311,7 +10311,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v639';
+    const ATLAS_RELEASE = 'culture-atlas-v640';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -17534,7 +17534,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         });
       });
 
-      // Audit Dossier & Plan Visit buttons on Mobile Sheet
+      // Ask and Full record buttons on the mobile sheet
       document.getElementById('dossier-sheet-ask-btn')?.addEventListener('click', () => {
         if (selectedInstitution && typeof askCuratorAboutInst === 'function') {
           askCuratorAboutInst(selectedInstitution);
