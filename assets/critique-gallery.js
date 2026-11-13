@@ -24,7 +24,7 @@
     const b = box(); if (b) b.checked = on;
     if (!on) hidePop(true);
     if (typeof window.renderGlobe === 'function') window.renderGlobe();
-    document.dispatchEvent(new CustomEvent('atlas:critique', { detail: on }));   // the Images chip over the map (assets/layers.js)
+    document.dispatchEvent(new CustomEvent('atlas:critique', { detail: on }));
   }
   function wirePanel() {
     const b = box();
@@ -211,6 +211,15 @@
     ev.stopPropagation();
     openGallery(t.closest('[data-cg-row]').dataset.cgRow, +t.dataset.cgOpen || 0);
   }, true);
+
+  // The Images filter (assets/layers.js, SPACE_TEST.images) shows only these spaces; while it is on the diamonds are on too,
+  // so each image card is one point away. Switched off with the filter only if the filter switched them on.
+  let byFilter = false;
+  document.addEventListener('atlas:filter', () => {
+    const f = typeof window.atlasSpaceFilter === 'function' ? window.atlasSpaceFilter() : null;
+    if (f === 'images' && !on) { byFilter = true; setOn(true); }
+    else if (f !== 'images' && byFilter) { byFilter = false; if (on) setOn(false); }
+  });
 
   function init() { wirePanel(); wireHover(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
