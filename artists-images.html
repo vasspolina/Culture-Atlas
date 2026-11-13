@@ -54,6 +54,14 @@
       .ai-grid button:hover img{opacity:.8!important}
       .ai-cap{margin:calc(var(--sh-s-lh) / 4) 0 0!important}
       .ai-cap span{display:block!important}
+      .ai-cap .t,.zv-cap .t{font-style:italic!important}
+      /* Grid or one by one, on a phone only (user, 13 Nov 2026: "on mobile should be able to change from grid to just one
+         by one"). Two columns at 390px leave each picture about 170px wide, too small to read a poster or a map, and the
+         caption runs to four lines under it; one by one gives both the full measure. Desktop keeps its columns. */
+      .layout{display:none!important;gap:0 var(--sh-indent)!important}
+      .layout button{color:var(--sh-ink)!important}
+      .layout button::before{content:"– "}
+      .layout button:hover{color:var(--sh-hover)!important}
       .missing{margin:calc(var(--sh-s-lh) * 3) 0 0!important;max-width:40em!important}
       footer.foot{display:flex!important;align-items:center!important;justify-content:center!important;min-height:var(--sh-foot)!important;background:var(--sh-stone)!important;border-top:1px solid var(--sh-rule)!important}
       /* The name in the foot bar goes home, as the atlas's own does (user, 13 Nov 2026: "this need to return home on click"). */
@@ -79,7 +87,7 @@
       .zv-cap{max-width:60em!important}
       .zv-cap p{margin:0!important}
       .zv-cap .p{font-style:italic!important}
-      @media (max-width:640px){.ai-grid{columns:2!important;column-gap:calc(var(--sh-pad) * .6)!important}main,header.top{padding-left:calc(var(--sh-pad) * .6)!important;padding-right:calc(var(--sh-pad) * .6)!important}.zv-foot{flex-direction:column!important}}
+      @media (max-width:640px){.ai-grid{columns:2!important;column-gap:calc(var(--sh-pad) * .6)!important}.layout{display:flex!important}main.one .ai-grid{columns:1!important}main.one .ai-grid li{margin-bottom:calc(var(--sh-s-lh) * 1.5)!important}main,header.top{padding-left:calc(var(--sh-pad) * .6)!important;padding-right:calc(var(--sh-pad) * .6)!important}.zv-foot{flex-direction:column!important}}
     }
   </style>
 </head>
@@ -89,6 +97,10 @@
   <div class="views" role="group" aria-label="Organise by">
     <button type="button" class="act-v" data-view="work" aria-pressed="true">By work</button>
     <button type="button" class="act-v" data-view="space" aria-pressed="false">By space</button>
+  </div>
+  <div class="layout" role="group" aria-label="Show images">
+    <button type="button" data-layout="grid" aria-pressed="true">Grid</button>
+    <button type="button" data-layout="one" aria-pressed="false">One by one</button>
   </div>
   <a class="act" href="./">Back to the atlas</a></header>
 <main id="main">
@@ -126,12 +138,22 @@
 
 <script src="assets/critique-gallery-data.js?v=656"></script>
 <script src="assets/critique-collection-data.js?v=656"></script>
+<script src="assets/critique-captions.js?v=660"></script>
 <script>
 (function () {
   const D = window.CRITIQUE_GALLERY, C = window.CRITIQUE_COLLECTION;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const plural = n => `${n} ${n === 1 ? 'image' : 'images'}`;
   const spaceNames = n => (C.on_spaces[n] || []).map(id => D.spaces[id].name);
+  // A caption names the work, the people and the occasion (assets/critique-captions.js), then the photographer when the
+  // credit names one. Without an occasion it says what kind of work it is instead, so no line is left empty.
+  const CAP = window.CRITIQUE_CAPTIONS || {};
+  const kind = t => String(t || '').split(' / ').join(', ');
+  const caption = im => {
+    const c = CAP[im.artist + '|' + im.project] || {};
+    const photo = (/Photo(?:graph|graphy)?: ([^.]+)\./.exec(im.credit || '') || [])[1];
+    return { title: im.project, who: c.who || im.artist, occasion: c.occasion || kind(im.type), photo: photo ? `Photograph: ${photo}` : '' };
+  };
 
   // By work: one group per work, in the collection's order; the contents line lists the artists.
   const byWork = C.works.map((w, i) => ({ id: 'w' + i, title: w.project, sub: w.artist, note: w.note, toc: w.artist, images: w.images }));
@@ -164,13 +186,26 @@
         <p class="ai-tie">${esc(g.sub)}${g.note ? `. ${esc(g.note)}` : ''}</p>
         <ul class="ai-grid">${g.images.map((im, i) => {
           const on = g.space ? [] : spaceNames(im.n);
+          const c = caption(im);
           return `<li><button type="button" data-g="${gi}" data-i="${i}" aria-label="Zoom: ${esc(im.project)}, image ${i + 1} of ${g.images.length}"><img src="${esc(im.thumb)}" alt="" loading="lazy" width="${im.w}" height="${im.h}"></button>
-          <p class="ai-cap"><span class="a">${esc(g.space ? im.project : im.type)}</span>${g.space ? `<span class="a">${esc(im.artist)}</span>` : ''}${on.length ? `<span class="a">On the atlas: ${esc(on.join(', '))}</span>` : ''}</p></li>`;
+          <p class="ai-cap"><span class="t">${esc(c.title)}</span><span>${esc(c.who)}</span><span>${esc(c.occasion)}</span>${c.photo ? `<span>${esc(c.photo)}</span>` : ''}${on.length ? `<span>On the atlas: ${esc(on.join(', '))}</span>` : ''}</p></li>`;
         }).join('')}</ul>
       </section>`).join('');
   }
   document.querySelector('.views').addEventListener('click', e => { const b = e.target.closest('[data-view]'); if (b) { render(b.dataset.view); } });
   render('work');
+  // Grid or one by one: remembered on this device, where browser storage allows it.
+  const setLayout = l => {
+    document.getElementById('main').classList.toggle('one', l === 'one');
+    document.querySelectorAll('[data-layout]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layout === l)));
+  };
+  let saved = null; try { saved = localStorage.getItem('artists-images-layout'); } catch (e) {}
+  setLayout(saved === 'one' ? 'one' : 'grid');
+  document.querySelector('.layout').addEventListener('click', e => {
+    const b = e.target.closest('[data-layout]'); if (!b) return;
+    setLayout(b.dataset.layout);
+    try { localStorage.setItem('artists-images-layout', b.dataset.layout); } catch (e) {}
+  });
   // Said plainly: the references whose image could not be fetched from their source when the page was built.
   if (C.missing.length) document.querySelector('[data-missing]').textContent = `${plural(C.missing.length)} of the collection are not here yet: their source sites would not hand them over when the page was built (${[...new Set(C.missing.map(m => m.artist))].join(', ')}).`;
 
@@ -207,7 +242,8 @@
     const g = groups[G], im = g.images[I], n = g.images.length;
     dlg.querySelector('[data-z-space]').textContent = g.title;
     dlg.querySelector('[data-z-count]').textContent = n > 1 ? `${I + 1} of ${n}` : '';
-    dlg.querySelector('[data-z-cap]').innerHTML = `<p class="p">${esc(im.project)}</p><p>${esc(im.artist)}. ${esc(im.type)}.</p><p>${esc(im.credit)} <a href="${esc(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
+    const c = caption(im);
+    dlg.querySelector('[data-z-cap]').innerHTML = `<p class="t">${esc(c.title)}</p><p>${esc(c.who)}</p><p>${esc(c.occasion)}${c.occasion === kind(im.type) ? '' : `. ${esc(kind(im.type))}`}.</p><p>${esc(im.credit)} <a href="${esc(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
     dlg.querySelectorAll('[data-z="prev"],[data-z="next"]').forEach(b => { b.hidden = n < 2; });
     img.alt = `${im.project}, by ${im.artist}`;
     img.onload = toFit;
