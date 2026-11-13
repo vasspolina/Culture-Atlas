@@ -991,15 +991,16 @@
       const esc = (t) => String(t == null ? '' : t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
       const gossipOn = () => !!window.isGossipModeActive;
       const store = { get(k) { try { return localStorage.getItem(k); } catch (_) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (_) {} } };
-      const STATUS = { confirmed: 'Confirmed', resolved: 'Resolved', talk: 'Talk, not confirmed', denied: 'Denied', stale: 'Old talk', documented: 'On record', user: 'User post, not verified' };
-      const KIND = { dispute: 'Dispute', report: 'Report', departure: 'Departure', money: 'Money', allegation: 'Allegation', leak: 'Leak', rumour: 'Rumour', case: 'Case', account: 'Staff or visitor post' };
+      // Plain words, not research terms (user, 13 Nov 2026: "doesn't need to act like research, use plain language").
+      const STATUS = { confirmed: 'Confirmed', resolved: 'Resolved', talk: 'Rumour', denied: 'Denied', stale: 'Old rumour', documented: 'Documented', user: 'Unverified' };
+      const KIND = { dispute: 'Dispute', report: 'Report', departure: 'Departure', money: 'Money', allegation: 'Allegation', leak: 'Leak', rumour: 'Rumour', case: 'Case', account: 'Post' };
       // What the item rests on, said outright. The two user-generated kinds say so.
       const SOURCE = {
-        press: ['Press report, named outlet', false], court_or_regulator: ['Court or regulator record', false], union: ['Union statement', false],
-        open_letter: ['Open letter, named signatories', false], campaign: ['Named campaign', false], social_named: ['Post by a named person', false],
-        social_anonymous: ['Anonymous posts online', true], review_platform: ['Reviews posted by users', true], case: ['Documented case', false],
+        press: ['Press', false], court_or_regulator: ['Court', false], union: ['Union', false],
+        open_letter: ['Open letter', false], campaign: ['Campaign', false], social_named: ['Social media', false],
+        social_anonymous: ['Anonymous post', true], review_platform: ['Review site', true], case: ['Case file', false],
         // Not every item is the press: posts by staff and visitors, and leaked documents, are on the record too.
-        user_post: ['Staff or visitor post', true], leak: ['Leaked document', false],
+        user_post: ['Staff or visitor post', true], leak: ['Leak', false],
       };
       const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       const parse = (w) => { const m = /^(\d{4})-(\d{2})(?:-(\d{2}))?/.exec(String(w || '')); return m ? { d: new Date(Date.UTC(+m[1], +m[2] - 1, m[3] ? +m[3] : 1)), day: !!m[3] } : null; };
@@ -1201,10 +1202,8 @@
         const hasReply = x.type === 'gossip' && x.reply && !/^no reply/i.test(x.reply);
         // Each fact is said once (user, 4 Nov 2026: "remove all repetition"). A leak's own dating (months) is kept when it says
         // more than the day.
-        // The facts are the few lines a reader acts on (user, 13 Nov 2026: "Outcome and details is a slop"). The date is said
-        // once, as a date; a place whose city is its country is named once; the source's name is its link, so there is no
-        // separate "1 source" line; the basis is said only when the source's name does not already say it; when the atlas last
-        // rechecked a link is housekeeping and stays off the card.
+        // Four short lines (user, 13 Nov 2026: "Outcome and details is a slop", then "use plain language and do not be overly
+        // descriptive"): status, date, place, source. The source's name is its link; a user post says "(unverified)" and no more.
         const day = dateText(x.when);
         const leakDated = x.type === 'leak' && x.dated ? monthsText(x.dated) : '';
         const said = saidRest(x);
@@ -1213,20 +1212,15 @@
         const sourceName = esc(x.where || src[0]) + (x.role ? ', ' + esc(x.role) : '');
         const source = (n ? link(x.urls[0], sourceName) : sourceName)
           + x.urls.slice(1).map((u, k) => ', ' + link(u, String(k + 2))).join('');
-        const basis = !x.where ? (src[1] ? 'User-generated, not verified' : '')
-          : src[1] ? 'User-generated, not verified. ' + src[0]
-          : x.who === 'press' ? '' : src[0];
         const facts = '<dl class="ts-rows">'
           + row('Status', esc(STATUS[x.status] || ''))
-          + row({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported', esc(day || ago(x.when)))
-          + (leakDated && leakDated !== day ? row('Document', 'dated ' + esc(leakDated)) : '')
+          + row('Date', esc(day || ago(x.when)))
+          + (leakDated && leakDated !== day ? row('Document', esc(leakDated)) : '')
           + row('Place', esc(place))
-          + row(n > 1 ? 'Sources' : 'Source', source)
-          + row('Basis', esc(basis))
-          + (x.type === 'gossip' && !hasReply ? row('Reply', 'None found') : '')
+          + row(n > 1 ? 'Sources' : 'Source', source + (src[1] ? ' (unverified)' : ''))
           + '</dl>';
-        // An outcome that says nothing has happened yet is not an outcome; the part is left out rather than filled.
-        const outcome = /^(not yet known|no outcome found|unknown|none|pending|n\/a)\.?$/i.test(String(x.outcome || '').trim()) ? '' : x.outcome;
+        // An outcome that only says nothing is known, or what the sources did not say, is left out rather than filled.
+        const outcome = /^(not yet known|no outcome found|unknown|none|pending|n\/a)\.?$|not (yet )?(known|reported|verified|confirmed)|sources read|no .{0,40} found/i.test(String(x.outcome || '').trim()) ? '' : x.outcome;
         // Each article opens with a title, the space's name on a stone band (user, 11 Nov 2026: "add titles to top story
         // articles and color background to the titles"). The name is the way from a report to its place on the map, so the
         // Space line in the facts is gone and the name is not said twice.
@@ -1269,10 +1263,10 @@
         const bellOn = store.get('atlas-alerts') === 'on';
         // What the feed holds, and the rule for an alert, are said once, at the foot, in the same ink as the rest.
         const about = (gossipOn()
-            ? 'Gossip mode: talk and denials are included, each marked for what it is. Talk is what people say, not a finding. Items from anonymous posts or user reviews say so.'
-            : 'Reports on record as confirmed or resolved, and documented cases. Turn on Gossip mode to include talk.')
-          + ' Every item comes from the records, with its source and the day its links were last checked; nothing here is written by the atlas.';
-        const alertRule = 'An alert is a protest, strike, dispute, allegation or similar reported in the last ' + ALERT_DAYS + ' days and not resolved' + (gossipOn() ? '' : ', and confirmed') + '.';
+            ? 'Gossip mode is on, so rumours and denials are shown too.'
+            : 'Confirmed news only. Turn on Gossip mode to see rumours.')
+          + ' Each item links to its source.';
+        const alertRule = 'Alerts are protests, strikes, disputes and allegations from the last ' + ALERT_DAYS + ' days that are still open.';
         // The close is the record's big thin cross, two 1.1px lines on a paper square with no circle (user, 7 Nov 2026: "make proper
         // cross like big one with no outline"). It sits before the head in a sticky holder of no height, so the head scrolls away with
         // the reports and the cross alone stays at the top right (user, 7 Nov 2026: "keep cross on scroll").
@@ -1287,10 +1281,10 @@
           // No count beside Latest (user, 7 Nov 2026: "delete 1 in the past 30 days").
           // Worldwide in every case now that the panel itself is called Latest (12 Nov 2026); it was Latest after alerts or Near you.
           + sec('Worldwide', '', world, false)
-          + sec('From staff and visitors', 'User posts', posts, false, 'Quoted unedited from review sites and Reddit, and not checked.')
-          + sec('From leaked documents', docs.length + ' on record', docs, false)
-          + '<section class="ts-sec"><h2 class="ts-sec-title"><span>About these reports</span></h2>'
-          + (!list.length ? '<p class="ts-prose ts-note">No dated reports on record yet.</p>' : '')
+          + sec('From staff and visitors', 'User posts', posts, false, 'From review sites and Reddit. Not checked.')
+          + sec('Leaks', '', docs, false)
+          + '<section class="ts-sec"><h2 class="ts-sec-title"><span>About</span></h2>'
+          + (!list.length ? '<p class="ts-prose ts-note">No news yet.</p>' : '')
           + '<p class="ts-prose ts-note">' + about + '</p>'
           + (alertList.length || topIsAlert ? '<p class="ts-prose ts-note">' + alertRule + '</p>' : '')
           + '</section></div>';
