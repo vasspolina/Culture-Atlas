@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Artists’ images · Leaving it on the table</title>
+  <meta name="description" content="Artists’ and designers’ work on cultural institutions, grouped by the space it names, each image open to zoom." />
+  <link rel="stylesheet" href="assets/sheet.css?v=654">
+  <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
+  <style>
+    /* Set on the sheet (assets/sheet.css), the atlas's current design: the one serif in its two sizes, black on white, the
+       stone bars at the head and the foot, 1px grey rules, no corners, boxes or bold; actions are words, opening with an en
+       dash, that turn blue under the pointer, and the chosen one is in italic. Every rule here is inside @layer sheet and
+       !important, as in sheet.css, so it sits on top of it the same way.
+       One group per work or per space; each picture opens in a viewer that zooms (wheel, pinch, double-click or double-tap,
+       + and -, 0 to fit) and pans by dragging. Data: assets/critique-collection-data.js and assets/critique-gallery-data.js. */
+    @layer sheet{
+      html,body{height:auto!important;overflow:auto!important}
+      body{margin:0!important}
+      .skip{position:absolute!important;left:-9999px!important}.skip:focus{left:16px!important;top:8px!important;background:var(--sh-paper)!important;padding:4px 8px!important;z-index:5!important}
+      .act{color:var(--sh-ink)!important;text-decoration:none!important;cursor:pointer!important}
+      .act::before{content:"– "}
+      .act:hover{color:var(--sh-hover)!important}
+      header.top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:var(--sh-pad)!important;min-height:var(--sh-head)!important;padding:0 var(--sh-pad)!important;
+        background:var(--sh-stone)!important;border-bottom:1px solid var(--sh-rule)!important}
+      header.top .act::before{content:none}
+      main{display:block!important;padding:var(--sh-s-lh) var(--sh-pad) calc(var(--sh-s-lh) * 3)!important}
+      h1{font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important;margin:0 0 var(--sh-s-lh)!important}
+      .intro p{max-width:34em!important;margin:0!important}
+      .intro p+p{margin-top:var(--sh-s-lh)!important}
+      .views{display:flex!important;flex-wrap:wrap!important;gap:0 var(--sh-indent)!important;margin:calc(var(--sh-s-lh) * 2) 0 0!important}
+      .views button{color:var(--sh-ink)!important}
+      .views button::before{content:"– "}
+      .views button:hover{color:var(--sh-hover)!important}
+      .label-inline{margin-right:0!important}
+      nav.toc{margin:var(--sh-s-lh) 0 0!important;padding-top:var(--sh-s-lh)!important;border-top:1px solid var(--sh-rule)!important}
+      nav.toc .label{margin:0 0 calc(var(--sh-s-lh) / 2)!important}
+      nav.toc ul{list-style:none!important;margin:0!important;padding:0!important;columns:3 18em!important;column-gap:var(--sh-pad)!important}
+      nav.toc li{break-inside:avoid!important}
+      .ai-group{margin-top:calc(var(--sh-s-lh) * 2.5)!important;padding-top:calc(var(--sh-s-lh) / 2)!important;border-top:1px solid var(--sh-rule)!important;scroll-margin-top:var(--sh-pad)!important}
+      .ai-group .label{display:flex!important;justify-content:space-between!important;gap:var(--sh-pad)!important;align-items:baseline!important}
+      .ai-group h2{margin:0!important}
+      .ai-group .ai-tie{margin:0 0 var(--sh-s-lh)!important;max-width:40em!important}
+      .ai-grid{list-style:none!important;margin:0!important;padding:0!important;columns:4 260px!important;column-gap:var(--sh-pad)!important}
+      .ai-grid li{break-inside:avoid!important;margin:0 0 var(--sh-s-lh)!important}
+      .ai-grid button{display:block!important;width:100%!important;line-height:0!important;cursor:zoom-in!important;background:var(--sh-stone-2)!important}
+      .ai-grid img{display:block!important;width:100%!important;height:auto!important;transition:opacity .2s!important}
+      .ai-grid button:hover img{opacity:.8!important}
+      .ai-cap{margin:calc(var(--sh-s-lh) / 4) 0 0!important}
+      .ai-cap span{display:block!important}
+      .missing{margin:calc(var(--sh-s-lh) * 3) 0 0!important;max-width:40em!important}
+      footer.foot{display:flex!important;align-items:center!important;justify-content:center!important;min-height:var(--sh-foot)!important;background:var(--sh-stone)!important;border-top:1px solid var(--sh-rule)!important}
+      footer.foot span{font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important}
+      /* The viewer */
+      dialog.zv{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;background:var(--sh-paper)!important}
+      dialog.zv[open]{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important}
+      dialog.zv::backdrop{background:rgb(0 0 0 / .8)}
+      .zv-top,.zv-foot{display:flex!important;align-items:center!important;gap:var(--sh-pad)!important;padding:0 var(--sh-pad)!important;flex-wrap:wrap!important}
+      .zv-top{justify-content:space-between!important;min-height:var(--sh-head)!important;background:var(--sh-stone)!important;border-bottom:1px solid var(--sh-rule)!important}
+      .zv-foot{align-items:flex-start!important;justify-content:space-between!important;padding:calc(var(--sh-s-lh) / 2) var(--sh-pad) calc(var(--sh-s-lh) / 2 + var(--safe-b,0px))!important;border-top:1px solid var(--sh-rule)!important}
+      .zv-title{margin:0!important}
+      .zv-title [data-z-count]{margin-left:1em!important}
+      .zv-tools,.zv-nav{display:flex!important;gap:0 var(--sh-indent)!important;flex-wrap:wrap!important;align-items:baseline!important}
+      .zv button.act{color:var(--sh-ink)!important}
+      .zv-tools [data-z="in"]::before,.zv-tools [data-z="out"]::before{content:none}
+      .zv button.act[hidden]{display:none!important}
+      .zv-level{min-width:3.5em!important;text-align:center!important}
+      .zv-stage{position:relative!important;overflow:hidden!important;background:var(--sh-paper)!important;touch-action:none!important;cursor:grab!important;user-select:none!important}
+      .zv-stage.drag{cursor:grabbing!important}
+      .zv-stage img{position:absolute!important;left:0!important;top:0!important;transform-origin:0 0!important;max-width:none!important;will-change:transform!important;-webkit-user-drag:none}
+      .zv-cap{max-width:60em!important}
+      .zv-cap p{margin:0!important}
+      .zv-cap .p{font-style:italic!important}
+      @media (max-width:640px){.ai-grid{columns:2!important;column-gap:calc(var(--sh-pad) * .6)!important}main,header.top{padding-left:calc(var(--sh-pad) * .6)!important;padding-right:calc(var(--sh-pad) * .6)!important}.zv-foot{flex-direction:column!important}}
+    }
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the images</a>
+<header class="top"><span>Artists’ images</span><a class="act" href="./">Back to the atlas</a></header>
+<main id="main">
+  <div class="intro">
+    <h1>Artists’ images</h1>
+    <p>Artists’ and designers’ work on cultural institutions: posters, publications, maps, cartoons and exhibition views from the cultural space critique collection, references 1801 to 2000. By work shows every image the atlas holds; By space shows the works that name a space on the map.</p>
+    <p>Open an image to zoom: scroll or pinch, double-click or double-tap, or use + and −. Drag to move around it.</p>
+  </div>
+  <div class="views" role="group" aria-label="Organise by"><span class="label-inline">Organise by:</span>
+    <button type="button" class="act-v" data-view="work" aria-pressed="true">By work</button>
+    <button type="button" class="act-v" data-view="space" aria-pressed="false">By space</button>
+  </div>
+  <nav class="toc" aria-labelledby="tocLabel"><p class="label" id="tocLabel"></p><ul></ul></nav>
+  <div id="groups"></div>
+  <p class="missing" data-missing></p>
+</main>
+<footer class="foot"><span>Leaving it on the table</span></footer>
+
+<dialog class="zv" aria-labelledby="zvTitle">
+  <div class="zv-top">
+    <h2 class="zv-title" id="zvTitle"><span data-z-space></span><span data-z-count></span></h2>
+    <div class="zv-tools">
+      <button type="button" class="act" data-z="out" aria-label="Zoom out">−</button>
+      <span class="zv-level" data-z-level aria-live="polite"></span>
+      <button type="button" class="act" data-z="in" aria-label="Zoom in">+</button>
+      <button type="button" class="act" data-z="fit">Fit</button>
+      <button type="button" class="act" data-z="close">Close</button>
+    </div>
+  </div>
+  <div class="zv-stage" data-z-stage><img data-z-img alt=""></div>
+  <div class="zv-foot">
+    <div class="zv-cap" data-z-cap></div>
+    <div class="zv-nav">
+      <button type="button" class="act" data-z="prev">Previous</button>
+      <button type="button" class="act" data-z="next">Next</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="assets/critique-gallery-data.js?v=654"></script>
+<script src="assets/critique-collection-data.js?v=654"></script>
+<script>
+(function () {
+  const D = window.CRITIQUE_GALLERY, C = window.CRITIQUE_COLLECTION;
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const plural = n => `${n} ${n === 1 ? 'image' : 'images'}`;
+  const spaceNames = n => (C.on_spaces[n] || []).map(id => D.spaces[id].name);
+
+  // By work: one group per work, in the collection's order; the contents line lists the artists.
+  const byWork = C.works.map((w, i) => ({ id: 'w' + i, title: w.project, sub: w.artist, note: w.note, toc: w.artist, images: w.images }));
+  // An artist's works sit together, in the order the artists first appear in the collection.
+  const firstOf = {}; byWork.forEach((g, i) => { if (!(g.toc in firstOf)) firstOf[g.toc] = i; });
+  byWork.sort((a, b) => firstOf[a.toc] - firstOf[b.toc] || a.images[0].n - b.images[0].n);
+  // By space: one group per set of images, so two spaces carrying the same work (Tate Modern and the Rijksakademie) share one.
+  const bySpace = [];
+  Object.entries(D.spaces).forEach(([id, sp]) => {
+    const key = sp.images.map(i => i.n).join(',');
+    const g = bySpace.find(x => x.key === key);
+    if (g) { g.names.push(sp.name); g.ties.push(sp.tie); }
+    else bySpace.push({ key, id, names: [sp.name], ties: [sp.tie], images: sp.images });
+  });
+  bySpace.forEach(g => { g.title = g.names.join(' · '); g.sub = g.ties.join('. ') + '.'; g.toc = g.title; g.space = true; });
+  bySpace.sort((a, b) => b.images.length - a.images.length || a.title.localeCompare(b.title));
+
+  let groups = byWork;
+  function render(view) {
+    groups = view === 'space' ? bySpace : byWork;
+    document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
+    document.getElementById('tocLabel').textContent = view === 'space' ? 'Spaces' : 'Artists';
+    const seen = new Set();
+    document.querySelector('nav.toc ul').innerHTML = groups.filter(g => !seen.has(g.toc) && seen.add(g.toc)).map(g => {
+      const n = groups.filter(x => x.toc === g.toc).reduce((t, x) => t + x.images.length, 0);
+      return `<li><a class="act" href="#${g.id}">${esc(g.toc)}, ${n}</a></li>`;
+    }).join('');
+    document.getElementById('groups').innerHTML = groups.map((g, gi) => `<section class="ai-group" id="${g.id}" aria-labelledby="h-${gi}">
+        <div class="label"><h2 id="h-${gi}">${esc(g.title)}</h2><span>${plural(g.images.length)}</span></div>
+        <p class="ai-tie">${esc(g.sub)}${g.note ? `. ${esc(g.note)}` : ''}</p>
+        <ul class="ai-grid">${g.images.map((im, i) => {
+          const on = g.space ? [] : spaceNames(im.n);
+          return `<li><button type="button" data-g="${gi}" data-i="${i}" aria-label="Zoom: ${esc(im.project)}, image ${i + 1} of ${g.images.length}"><img src="${esc(im.thumb)}" alt="" loading="lazy" width="${im.w}" height="${im.h}"></button>
+          <p class="ai-cap"><span class="a">${esc(g.space ? im.project : im.type)}</span>${g.space ? `<span class="a">${esc(im.artist)}</span>` : ''}${on.length ? `<span class="a">On the atlas: ${esc(on.join(', '))}</span>` : ''}</p></li>`;
+        }).join('')}</ul>
+      </section>`).join('');
+  }
+  document.querySelector('.views').addEventListener('click', e => { const b = e.target.closest('[data-view]'); if (b) { render(b.dataset.view); } });
+  render('work');
+  // Said plainly: the references whose image could not be fetched from their source when the page was built.
+  if (C.missing.length) document.querySelector('[data-missing]').textContent = `${plural(C.missing.length)} of the collection are not here yet: their source sites would not hand them over when the page was built (${[...new Set(C.missing.map(m => m.artist))].join(', ')}).`;
+
+  // ---- The zoom viewer ----
+  const dlg = document.querySelector('dialog.zv');
+  const stage = dlg.querySelector('[data-z-stage]'), img = dlg.querySelector('[data-z-img]');
+  const MAX = 6;                       // times the fitted size
+  let G = 0, I = 0, fit = 1, s = 1, tx = 0, ty = 0, lastFocus = null;
+
+  const apply = () => {
+    img.style.transform = `translate(${tx}px,${ty}px) scale(${s})`;
+    dlg.querySelector('[data-z-level]').textContent = Math.round(s / fit * 100) + '%';
+  };
+  // Keep the picture over the stage: centred while smaller than it, edge to edge at most once larger.
+  const clamp = () => {
+    const W = stage.clientWidth, H = stage.clientHeight, w = img.naturalWidth * s, h = img.naturalHeight * s;
+    tx = w <= W ? (W - w) / 2 : Math.min(0, Math.max(W - w, tx));
+    ty = h <= H ? (H - h) / 2 : Math.min(0, Math.max(H - h, ty));
+  };
+  const toFit = () => {
+    if (!img.naturalWidth) return;
+    fit = Math.min(stage.clientWidth / img.naturalWidth, stage.clientHeight / img.naturalHeight);
+    s = fit; clamp(); apply();
+  };
+  // Zoom to scale ns about a point (px, py) of the stage, so the spot under the pointer stays put.
+  const zoomAt = (ns, px, py) => {
+    ns = Math.max(fit, Math.min(fit * MAX, ns));
+    tx = px - (px - tx) * ns / s; ty = py - (py - ty) * ns / s; s = ns;
+    clamp(); apply();
+  };
+  const centre = () => [stage.clientWidth / 2, stage.clientHeight / 2];
+
+  function show() {
+    const g = groups[G], im = g.images[I], n = g.images.length;
+    dlg.querySelector('[data-z-space]').textContent = g.title;
+    dlg.querySelector('[data-z-count]').textContent = n > 1 ? `${I + 1} of ${n}` : '';
+    dlg.querySelector('[data-z-cap]').innerHTML = `<p class="p">${esc(im.project)}</p><p>${esc(im.artist)}. ${esc(im.type)}.</p><p>${esc(im.credit)} <a href="${esc(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
+    dlg.querySelectorAll('[data-z="prev"],[data-z="next"]').forEach(b => { b.hidden = n < 2; });
+    img.alt = `${im.project}, by ${im.artist}`;
+    img.onload = toFit;
+    img.src = im.src;
+    if (img.complete && img.naturalWidth) toFit();
+    if (n > 1) new Image().src = g.images[(I + 1) % n].src;
+  }
+  function open(g, i) { lastFocus = document.activeElement; G = g; I = i; if (!dlg.open) dlg.showModal(); show(); dlg.querySelector('[data-z="close"]').focus(); }
+  function step(d) { const n = groups[G].images.length; I = (I + d + n) % n; show(); }
+
+  document.getElementById('groups').addEventListener('click', e => { const b = e.target.closest('button[data-g]'); if (b) open(+b.dataset.g, +b.dataset.i); });
+  dlg.addEventListener('click', e => {
+    const b = e.target.closest('[data-z]'); if (!b) return;
+    const a = b.dataset.z, [cx, cy] = centre();
+    if (a === 'in') zoomAt(s * 1.5, cx, cy);
+    else if (a === 'out') zoomAt(s / 1.5, cx, cy);
+    else if (a === 'fit') toFit();
+    else if (a === 'close') dlg.close();
+    else if (a === 'prev') step(-1);
+    else if (a === 'next') step(1);
+  });
+  dlg.addEventListener('close', () => { if (lastFocus) lastFocus.focus(); });
+  dlg.addEventListener('keydown', e => {
+    const [cx, cy] = centre();
+    if (e.key === '+' || e.key === '=') zoomAt(s * 1.5, cx, cy);
+    else if (e.key === '-' || e.key === '_') zoomAt(s / 1.5, cx, cy);
+    else if (e.key === '0') toFit();
+    else if (e.key === 'ArrowRight') step(1);
+    else if (e.key === 'ArrowLeft') step(-1);
+    else return;
+    e.preventDefault();
+  });
+  window.addEventListener('resize', () => { if (dlg.open) toFit(); });
+
+  // Wheel and trackpad: zoom about the pointer.
+  stage.addEventListener('wheel', e => {
+    e.preventDefault();
+    const r = stage.getBoundingClientRect();
+    zoomAt(s * Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0015)), e.clientX - r.left, e.clientY - r.top);
+  }, { passive: false });
+  // Drag to pan, two fingers to pinch, a double click or double tap to zoom in (or back to fit when zoomed).
+  const pts = new Map();
+  let pinch = null, lastTap = 0, moved = 0;
+  stage.addEventListener('pointerdown', e => {
+    stage.setPointerCapture(e.pointerId);
+    pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    moved = 0;
+    if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), s }; }
+    stage.classList.add('drag');
+  });
+  stage.addEventListener('pointermove', e => {
+    const p = pts.get(e.pointerId); if (!p) return;
+    const r = stage.getBoundingClientRect();
+    if (pts.size === 2 && pinch) {
+      p.x = e.clientX; p.y = e.clientY;
+      const [a, b] = [...pts.values()];
+      zoomAt(pinch.s * Math.hypot(a.x - b.x, a.y - b.y) / pinch.d, (a.x + b.x) / 2 - r.left, (a.y + b.y) / 2 - r.top);
+      moved += 10;
+      return;
+    }
+    const dx = e.clientX - p.x, dy = e.clientY - p.y;
+    moved += Math.abs(dx) + Math.abs(dy);
+    p.x = e.clientX; p.y = e.clientY;
+    tx += dx; ty += dy; clamp(); apply();
+  });
+  const up = e => {
+    if (!pts.has(e.pointerId)) return;
+    pts.delete(e.pointerId);
+    if (pts.size < 2) pinch = null;
+    if (!pts.size) stage.classList.remove('drag');
+    if (e.type === 'pointerup' && moved < 6 && !pts.size) {
+      const now = Date.now();
+      if (now - lastTap < 320) {
+        const r = stage.getBoundingClientRect();
+        if (s > fit * 1.05) toFit(); else zoomAt(fit * 2.5, e.clientX - r.left, e.clientY - r.top);
+        lastTap = 0;
+      } else lastTap = now;
+    }
+  };
+  stage.addEventListener('pointerup', up);
+  stage.addEventListener('pointercancel', up);
+})();
+</script>
+</body>
+</html>

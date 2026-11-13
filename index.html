@@ -45,14 +45,14 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=652">
-  <link rel="stylesheet" href="assets/sheet.css?v=652">
-  <script src="assets/config.js?v=652"></script>
-  <script src="assets/subtopic.js?v=652"></script>
-  <script src="assets/names.js?v=652"></script>
-  <script src="assets/grounding.js?v=652"></script>
-  <script src="assets/repeats.js?v=652"></script>
-  <script src="assets/intro-narration.js?v=652"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=654">
+  <link rel="stylesheet" href="assets/sheet.css?v=654">
+  <script src="assets/config.js?v=654"></script>
+  <script src="assets/subtopic.js?v=654"></script>
+  <script src="assets/names.js?v=654"></script>
+  <script src="assets/grounding.js?v=654"></script>
+  <script src="assets/repeats.js?v=654"></script>
+  <script src="assets/intro-narration.js?v=654"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -117,6 +117,8 @@ return maplibregl$1;
   </script>
 </head>
 <body>
+  <script src="assets/load-image-data.js?v=654"></script>
+  <script src="assets/load-image.js?v=654"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -253,6 +255,13 @@ return maplibregl$1;
             </div>
           </section>
           <section class="layers-section" data-no-chips>
+            <h2 class="layers-section-title">Artists</h2>
+            <div class="layers-list">
+              <!-- assets/critique-gallery.js: not a filter (every space stays on the map), so it is not a data-layer box and assets/layers.js leaves it alone. -->
+              <label style="--layer-color:#ffd600"><input type="checkbox" id="critiqueLayerBox"> <span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Spaces named in artists&rsquo; and designers&rsquo; work on cultural institutions, marked with a diamond: point at one to see its images, open them as a gallery</span><span class="layers-count" data-count="critique"></span></label>
+            </div>
+          </section>
+          <section class="layers-section" data-no-chips>
             <h2 class="layers-section-title">Funding views</h2>
             <div class="layers-list">
               <label style="--layer-color:#96a960"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between spaces that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type</span><span class="layers-count" data-count="bundle"></span></label>
@@ -287,6 +296,7 @@ return maplibregl$1;
             <h2 class="layers-section-title">Studies</h2>
             <div class="layers-list layers-studies">
               <a href="studies.html"><span class="layer-name">Studies across the atlas</span><span class="layer-desc">Epstein, Democracy Now!, Bellingcat, WikiLeaks, shared funders, Brazil's tax incentives and more</span></a>
+              <a href="artists-images.html"><span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Every image of the Artists&rsquo; images layer on one page, grouped by space, each open to zoom</span></a>
               <a href="moma-money-map.html"><span class="layer-name">MoMA Money Map</span><span class="layer-desc">Who funds and governs MoMA, drawn as one network</span></a>
             </div>
           </section>
@@ -1121,7 +1131,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=652"></script>
+  <script src="assets/institutions.js?v=654"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10365,11 +10375,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v652';
+    const ATLAS_RELEASE = 'culture-atlas-v654';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=652').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=654').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11789,6 +11799,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         lastShownInstLabels = shownInstLabels;
 
         if (window.atlasLayersDrawNodes) window.atlasLayersDrawNodes(ctx, visibleDots, r, baseRadius, selectedInstitution, hoveredInstitution, isGossipModeActive, project, cx, cy);
+        if (window.atlasCritiqueDraw) window.atlasCritiqueDraw(ctx, visibleDots, selectedInstitution, hoveredInstitution);   // assets/critique-gallery.js
 
         // 8.4 City labels on top of the dots
         deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4]); ctx.restore(); });
@@ -13742,6 +13753,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           <!-- 3.  ARTISTIC CRITIQUES & INSTITUTIONAL HISTORY (Uncontained Rich Research Section) -->
           ${quoteHtml}
           ${vcs.length > 0 && vc ? critiqueRowHtml(inst, vc, vcs, vcIdx) : ''}
+          ${window.critiqueGalleryRowHtml && window.critiqueGalleryRowHtml(inst) ? proseRows([proseRow('Artists’ images', '', [], { box: window.critiqueGalleryRowHtml(inst) })], 'Artists’ images') : ''}
 
           ${isCommunity ? proseRows([proseRow('Community research submission', 'Status: community submission, not checked', [
             proseLi('', 'This item comes from a community submission. It is kept apart from the records and has not been checked against any source.'),
@@ -20668,6 +20680,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.resolveGlobeTarget = resolveGlobeTarget;
     window.getCityBadgeHitboxes = () => cityBadgeHitboxes;
     window.getHoveredCity = () => hoveredCity;
+    window.getHoveredInstitution = () => hoveredInstitution;   // assets/critique-gallery.js: the hover card of the Artists' images layer
     window.getSelectedCityFilter = () => selectedCityFilter;
     window.getLabelCounts = () => ({ inst: visibleDots.filter(d => d.labelBox).length, country: lastShownCountryLabels.size, city: cityBadgeHitboxes.length });
     window.getView = () => ({ r: currentRadius, target: targetRadius, lon: rotLon, lat: rotLat, roll: rotRoll });
@@ -21503,15 +21516,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=652"></script>
-<script src="assets/note-aids.js?v=652" defer></script>
-<script src="assets/note-files.js?v=652" defer></script>
-<script src="assets/funding-views.js?v=652"></script>
-<script src="assets/layers.js?v=652"></script>
-<script src="assets/hq-detail.js?v=652"></script>
-<script src="assets/bubbles.js?v=652" defer></script>
-<script src="assets/phone-maps.js?v=652"></script>
-<script src="assets/desktop-maps.js?v=652"></script>
-<script src="assets/chat-resize.js?v=652"></script>
+<script src="assets/typeset.js?v=654"></script>
+<script src="assets/note-aids.js?v=654" defer></script>
+<script src="assets/note-files.js?v=654" defer></script>
+<script src="assets/funding-views.js?v=654"></script>
+<script src="assets/layers.js?v=654"></script>
+<script src="assets/critique-gallery-data.js?v=654"></script>
+<script src="assets/critique-gallery.js?v=654"></script>
+<script src="assets/hq-detail.js?v=654"></script>
+<script src="assets/bubbles.js?v=654" defer></script>
+<script src="assets/phone-maps.js?v=654"></script>
+<script src="assets/desktop-maps.js?v=654"></script>
+<script src="assets/chat-resize.js?v=654"></script>
 </body>
 </html>
