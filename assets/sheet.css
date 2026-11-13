@@ -1277,3 +1277,34 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c) #curatorVoiceToggleIcon *{display:none!important}
 }
 }
+
+@layer sheet{
+/* ---- The reports' meta line in dark violet (user, 13 Nov 2026: "color in dark violet like from displaay fonts web", on
+   "7 weeks ago, Trafó House of Contemporary Arts"). #4b1fb3 is 10.6:1 on the white paper; #bba4ff in dark is 8.9:1 on
+   #151412. Hover still turns it --sh-hover. ---- */
+:root{--sh-violet:#4b1fb3}
+:root[data-theme="dark"]{--sh-violet:#bba4ff}
+:root.gmd #shReports .sh-report .sh-report-meta:not(#sh-x){color:var(--sh-violet)!important}
+:root.gmd #shReports .sh-report:hover .sh-report-meta:not(#sh-x){color:var(--sh-hover)!important}
+
+/* ---- Closing and opening the index column, as Claude's sidebar (user, 13 Nov 2026; assets/desktop-maps.js, setCol). A
+   cross at the column's top right in the head bar closes it; a sidebar mark at the head bar's left opens it. Closed, the
+   column is 0 wide, so the map, which starts at --sh-col, takes the width, and everything the column holds is hidden. ---- */
+.sh-col-toggle{display:none}
+@media (min-width:1080px){
+  :root.gmd .sh-col-toggle{position:fixed!important;top:0!important;width:var(--sh-head)!important;height:var(--sh-head)!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+    background:transparent!important;color:var(--sh-ink)!important;align-items:center!important;justify-content:center!important;cursor:pointer!important;z-index:48!important}
+  :root.gmd .sh-col-toggle svg{display:block!important;width:20px!important;height:20px!important}
+  :root.gmd .sh-col-toggle:hover{color:var(--sh-hover)!important}
+  :root.gmd .sh-col-toggle:focus-visible{outline:2px solid var(--sh-outline)!important;outline-offset:-4px!important}
+  :root.gmd:not(.sh-col-closed) #shColClose{display:flex!important;left:calc(var(--sh-col) - var(--sh-head))!important}
+  :root.gmd.sh-col-closed #shColOpen{display:flex!important;left:0!important}
+  :root.gmd:not(.sh-col-closed) #gmdTopBar>div{padding-right:var(--sh-head)!important;box-sizing:border-box!important}
+  :root.gmd.sh-col-closed #gmdTopBar>div{padding-left:var(--sh-head)!important;box-sizing:border-box!important}
+  /* With the chat wide or Layers open the column is already given over; the cross stays with its column. */
+  :root.gmd.chat-wide .sh-col-toggle{display:none!important}
+
+  :root.gmd.sh-col-closed{--sh-col:0px!important}
+  :root.gmd.sh-col-closed :is(#gmdSearch,#gmdChips,#layersControl,#mapColourKey,#shIndex,#shReports,#shReports:not([hidden])){display:none!important}
+}
+}
