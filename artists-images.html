@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Artists’ images · Leaving it on the table</title>
   <meta name="description" content="Artists’ and designers’ work on cultural institutions, grouped by the space it names, each image open to zoom." />
-  <link rel="stylesheet" href="assets/sheet.css?v=654">
+  <link rel="stylesheet" href="assets/sheet.css?v=656">
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <style>
     /* Set on the sheet (assets/sheet.css), the atlas's current design: the one serif in its two sizes, black on white, the
@@ -15,25 +15,31 @@
        One group per work or per space; each picture opens in a viewer that zooms (wheel, pinch, double-click or double-tap,
        + and -, 0 to fit) and pans by dragging. Data: assets/critique-collection-data.js and assets/critique-gallery-data.js. */
     @layer sheet{
-      html,body{height:auto!important;overflow:auto!important}
+      html,body{height:auto!important}
+      html{overflow-y:auto!important}
+      body{overflow:visible!important}
       body{margin:0!important}
       .skip{position:absolute!important;left:-9999px!important}.skip:focus{left:16px!important;top:8px!important;background:var(--sh-paper)!important;padding:4px 8px!important;z-index:5!important}
       .act{color:var(--sh-ink)!important;text-decoration:none!important;cursor:pointer!important}
       .act::before{content:"– "}
       .act:hover{color:var(--sh-hover)!important}
-      header.top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:var(--sh-pad)!important;min-height:var(--sh-head)!important;padding:0 var(--sh-pad)!important;
+      /* The bar stays at the top while the page scrolls (user, 13 Nov 2026: "keep the top bar with buttons"), with the
+         view switch in it, as the atlas keeps its head bar. */
+      header.top{position:sticky!important;top:0!important;z-index:10!important;display:flex!important;align-items:center!important;justify-content:space-between!important;
+        gap:0 var(--sh-pad)!important;flex-wrap:wrap!important;min-height:var(--sh-head)!important;padding:0 var(--sh-pad)!important;
         background:var(--sh-stone)!important;border-bottom:1px solid var(--sh-rule)!important}
+      .ai-group{scroll-margin-top:calc(var(--sh-head) + var(--sh-pad))!important}
       header.top .act::before{content:none}
       main{display:block!important;padding:var(--sh-s-lh) var(--sh-pad) calc(var(--sh-s-lh) * 3)!important}
       h1{font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important;margin:0 0 var(--sh-s-lh)!important}
       .intro p{max-width:34em!important;margin:0!important}
       .intro p+p{margin-top:var(--sh-s-lh)!important}
-      .views{display:flex!important;flex-wrap:wrap!important;gap:0 var(--sh-indent)!important;margin:calc(var(--sh-s-lh) * 2) 0 0!important}
+      .views{display:flex!important;flex-wrap:wrap!important;gap:0 var(--sh-indent)!important;margin:0!important}
       .views button{color:var(--sh-ink)!important}
       .views button::before{content:"– "}
       .views button:hover{color:var(--sh-hover)!important}
       .label-inline{margin-right:0!important}
-      nav.toc{margin:var(--sh-s-lh) 0 0!important;padding-top:var(--sh-s-lh)!important;border-top:1px solid var(--sh-rule)!important}
+      nav.toc{margin:calc(var(--sh-s-lh) * 2) 0 0!important;padding-top:var(--sh-s-lh)!important;border-top:1px solid var(--sh-rule)!important}
       nav.toc .label{margin:0 0 calc(var(--sh-s-lh) / 2)!important}
       nav.toc ul{list-style:none!important;margin:0!important;padding:0!important;columns:3 18em!important;column-gap:var(--sh-pad)!important}
       nav.toc li{break-inside:avoid!important}
@@ -50,7 +56,9 @@
       .ai-cap span{display:block!important}
       .missing{margin:calc(var(--sh-s-lh) * 3) 0 0!important;max-width:40em!important}
       footer.foot{display:flex!important;align-items:center!important;justify-content:center!important;min-height:var(--sh-foot)!important;background:var(--sh-stone)!important;border-top:1px solid var(--sh-rule)!important}
-      footer.foot span{font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important}
+      /* The name in the foot bar goes home, as the atlas's own does (user, 13 Nov 2026: "this need to return home on click"). */
+      footer.foot a{font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important;color:var(--sh-ink)!important;text-decoration:none!important}
+      footer.foot a:hover{color:var(--sh-hover)!important}
       /* The viewer */
       dialog.zv{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;background:var(--sh-paper)!important}
       dialog.zv[open]{display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important}
@@ -77,22 +85,23 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to the images</a>
-<header class="top"><span>Artists’ images</span><a class="act" href="./">Back to the atlas</a></header>
+<header class="top"><span class="top-title">Artists’ images</span>
+  <div class="views" role="group" aria-label="Organise by">
+    <button type="button" class="act-v" data-view="work" aria-pressed="true">By work</button>
+    <button type="button" class="act-v" data-view="space" aria-pressed="false">By space</button>
+  </div>
+  <a class="act" href="./">Back to the atlas</a></header>
 <main id="main">
   <div class="intro">
     <h1>Artists’ images</h1>
-    <p>Artists’ and designers’ work on cultural institutions: posters, publications, maps, cartoons and exhibition views from the cultural space critique collection, references 1801 to 2000. By work shows every image the atlas holds; By space shows the works that name a space on the map.</p>
+    <p>Artists’ and designers’ work on cultural institutions: posters, publications, maps, cartoons and exhibition views from the cultural space critique collection, references 1801 to 2000. By work, in the bar at the top, shows every image the atlas holds; By space shows the works that name a space on the map.</p>
     <p>Open an image to zoom: scroll or pinch, double-click or double-tap, or use + and −. Drag to move around it.</p>
-  </div>
-  <div class="views" role="group" aria-label="Organise by"><span class="label-inline">Organise by:</span>
-    <button type="button" class="act-v" data-view="work" aria-pressed="true">By work</button>
-    <button type="button" class="act-v" data-view="space" aria-pressed="false">By space</button>
   </div>
   <nav class="toc" aria-labelledby="tocLabel"><p class="label" id="tocLabel"></p><ul></ul></nav>
   <div id="groups"></div>
   <p class="missing" data-missing></p>
 </main>
-<footer class="foot"><span>Leaving it on the table</span></footer>
+<footer class="foot"><a href="./" title="Back to the atlas">Leaving it on the table</a></footer>
 
 <dialog class="zv" aria-labelledby="zvTitle">
   <div class="zv-top">
@@ -115,8 +124,8 @@
   </div>
 </dialog>
 
-<script src="assets/critique-gallery-data.js?v=654"></script>
-<script src="assets/critique-collection-data.js?v=654"></script>
+<script src="assets/critique-gallery-data.js?v=656"></script>
+<script src="assets/critique-collection-data.js?v=656"></script>
 <script>
 (function () {
   const D = window.CRITIQUE_GALLERY, C = window.CRITIQUE_COLLECTION;
