@@ -206,14 +206,19 @@
       b.addEventListener('click', () => { ibox.checked = !ibox.checked; ibox.dispatchEvent(new Event('change', { bubbles: true })); });
       host.appendChild(b);
     }
-    const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.images !== undefined ? !!(ibox && ibox.checked) : b.dataset.layer ? b.dataset.layer === on : !on))); };
+    // The phone adds its grade chips to the same row (assets/phone-maps.js) and keeps their state itself, so they are left out:
+    // painted here they all showed pressed whenever the Images chip was pressed.
+    const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button:not([data-grade])').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.images !== undefined ? !!(ibox && ibox.checked) : b.dataset.layer ? b.dataset.layer === on : !on))); };
     paint(); document.addEventListener('atlas:filter', paint); document.addEventListener('atlas:critique', paint);
     // The row wraps rather than scrolls (user, 7 Nov 2026: "make the filters row not scroll, fit all on screen"), so its
     // height varies with the width. It is published as --<id>-h on the root, and what sits under the row (the page's name
     // on the desktop, the Layers button and the colour key on a phone) is placed from it in assets/atlas.css.
+    // The artists' images strip under the row, while the layer is on (assets/critique-gallery.js), counts in that height,
+    // so what is placed under the row moves down with it instead of being covered.
+    const strip = typeof window.atlasImagesStrip === 'function' ? window.atlasImagesStrip(host) : null;
     if (host.id && 'ResizeObserver' in window) {
-      const tell = () => document.documentElement.style.setProperty(`--${host.id}-h`, `${host.offsetHeight}px`);
-      new ResizeObserver(tell).observe(host); tell();
+      const tell = () => document.documentElement.style.setProperty(`--${host.id}-h`, `${host.offsetHeight + (strip && strip.offsetHeight ? strip.offsetHeight + 6 : 0)}px`);
+      const ro = new ResizeObserver(tell); ro.observe(host); if (strip) ro.observe(strip); tell();
     }
     return true;
   };
