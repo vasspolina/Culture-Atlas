@@ -1330,11 +1330,42 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gmd:not(#sh-mid) #gmdMapCtl{right:var(--sh-pad)!important}
   :root.gmd:not(#sh-mid) #gmLocateNote{right:72px!important}
   /* The resize handle on the column's right edge, between the chat and the map. */
-  :root.gmd:not(#sh-mid) #chatResizeHandle{left:auto!important;right:-8px!important}
+  :root.gmd:not(#sh-mid) #chatResizeHandle{position:fixed!important;left:calc(var(--sh-map-l) - 8px)!important;right:auto!important;top:calc(var(--sh-head) + 1px)!important;bottom:calc(var(--sh-foot) + 1px)!important;z-index:49!important}
+  :root.gmd.chat-wide:not(#sh-mid) #chatResizeHandle{left:calc(100vw - 16px)!important}
 }
 @media (min-width:768px) and (max-width:1079px){
   /* No index column: the chat starts at the window's left edge and needs no rule there. */
   :root.gmd:not(#sh-mid) #workViewContainer{border-left:0!important}
   :root.gmd:not(#sh-mid) #globeViewport{border-left:1px solid var(--sh-rule)!important}
 }
+}
+
+@layer sheet{
+/* ==== COLUMN HANDLE (user, 13 Nov 2026: "make all windows adjustable") ================================================
+   The line between the index column and the chat can be dragged as the one between the chat and the map can
+   (assets/chat-resize.js, COLUMN). Same look as #chatResizeHandle: a hairline on hover and a small grip at the middle.
+   Only where the column is: 1080px and wider, open, and the chat not over the whole window. */
+#shColResizeHandle{display:none}
+@media (min-width:1080px){
+  :root.gmd:not(.sh-col-closed):not(.chat-wide) #shColResizeHandle{display:block!important;position:fixed!important;left:calc(var(--sh-col) - 8px)!important;top:calc(var(--sh-head) + 1px)!important;bottom:calc(var(--sh-foot) + 1px)!important;width:16px!important;z-index:49!important;cursor:col-resize!important;touch-action:none!important;background:transparent!important}
+  :root.gmd #shColResizeHandle::before{content:""!important;position:absolute!important;left:7.5px!important;top:0!important;bottom:0!important;width:1px!important;background:var(--sh-ink)!important;opacity:0!important;transition:opacity .15s ease!important}
+  :root.gmd #shColResizeHandle::after{content:""!important;position:absolute!important;left:6px!important;top:50%!important;width:4px!important;height:44px!important;margin-top:-22px!important;border-radius:2px!important;background:color-mix(in srgb,var(--sh-ink) 45%,var(--sh-paper))!important;box-shadow:0 0 0 3px var(--sh-paper)!important;transition:background-color .15s ease,width .15s ease,left .15s ease!important}
+  :root.gmd #shColResizeHandle:is(:hover,:focus-visible)::before,:root.gmd.chat-resizing #shColResizeHandle::before{opacity:1!important}
+  :root.gmd #shColResizeHandle:is(:hover,:focus-visible)::after,:root.gmd.chat-resizing #shColResizeHandle::after{left:5px!important;width:6px!important;border-radius:3px!important;background:var(--sh-ink)!important}
+  :root.gmd #shColResizeHandle:focus-visible{outline:none!important}
+  :root.gmd #shColResizeHandle:focus-visible::after{box-shadow:0 0 0 3px var(--sh-paper),0 0 0 5px var(--sh-outline)!important}
+}
+@media (prefers-reduced-motion:reduce){#shColResizeHandle::before,#shColResizeHandle::after{transition:none!important}}
+
+/* ==== REPORT COLOURS (user, 13 Nov 2026: "when filter clicked, make violet color a color of filter or actually always color
+   code it") ===============================================================================================================
+   Each report's date and space are set in the colour of the filter on, or with none on, in the colour its space is coded
+   in (assets/layers.js, atlasSpaceCode): a filter chip's colour, darkened as the chip's own words are on paper, else the
+   grade's, as the Clean, Flagged and Unverified chips are. These replace the violet. */
+:root.gmd #shReports .sh-report .sh-report-meta.is-coded:not(#sh-x):not(#sh-y){color:color-mix(in srgb,var(--rep-c) 62%,#000)!important}
+:root[data-theme="dark"].gmd #shReports .sh-report .sh-report-meta.is-coded:not(#sh-x):not(#sh-y){color:var(--rep-c)!important}
+:root.gmd #shReports .sh-report .sh-report-meta[data-grade="A"]:not(#sh-x):not(#sh-y){color:var(--tier-a,#007a80)!important}
+:root.gmd #shReports .sh-report .sh-report-meta[data-grade="B"]:not(#sh-x):not(#sh-y){color:var(--tier-b,#b000b0)!important}
+:root.gmd #shReports .sh-report .sh-report-meta[data-grade="U"]:not(#sh-x):not(#sh-y){color:var(--tier-u,#7a7000)!important}
+:root.gmd #shReports .sh-report:hover .sh-report-meta:not(#sh-x):not(#sh-y){color:var(--sh-hover)!important}
 }
