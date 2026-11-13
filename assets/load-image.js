@@ -2,7 +2,7 @@
 // few more seconds for it to load, make it aprox 40% size of the screen on desktop and 70 on mobile"). One of the artists'
 // images (window.LOAD_IMAGES, written by tools/build_critique_gallery.py) at random, on the paper, with its title and artist
 // under it. It stays until the page has loaded and for at least MIN_MS (10 seconds, user, 13 Nov 2026: "make it show image for 10 sec on load") from the first paint, never longer than MAX_MS, and
-// a click, a tap or any key takes it away sooner. The size and look are the "LOAD IMAGE" block in assets/atlas.css.
+// a click, a tap or any key takes it away sooner. The size and look are the load image rules at the end of assets/sheet.css.
 // Loaded at the top of <body>, so it covers the page before anything else is drawn.
 (function () {
   const list = window.LOAD_IMAGES;
