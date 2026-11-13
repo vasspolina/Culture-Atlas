@@ -194,8 +194,20 @@
       const name = (nm ? nm.textContent : inp.dataset.layer).trim();
       mk(inp.dataset.layer, name, label ? label.style.getPropertyValue('--layer-color') : '', `Show only ${name}; press again to show every space`);
     });
-    const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer ? b.dataset.layer === on : !on))); };
-    paint(); document.addEventListener('atlas:filter', paint);
+    // Artists' images (user, 13 Nov 2026: "i dont see button for layer of images on map add it"): the layer's own box in the
+    // Layers panel, as a chip at the end of the row. Not a filter: every space stays and the diamonds are drawn over them,
+    // so it is pressed on its own, beside whichever filter is on (assets/critique-gallery.js tells it with atlas:critique).
+    const ibox = document.getElementById('critiqueLayerBox');
+    if (ibox) {
+      const b = document.createElement('button'), lab = ibox.closest('label');
+      b.type = 'button'; b.className = cls + ' has-color'; b.textContent = 'Images'; b.dataset.images = '';
+      b.title = "Artists' images: mark the spaces named in artists' work with a diamond; press again to hide them";
+      if (lab) b.style.setProperty('--layer-color', lab.style.getPropertyValue('--layer-color'));
+      b.addEventListener('click', () => { ibox.checked = !ibox.checked; ibox.dispatchEvent(new Event('change', { bubbles: true })); });
+      host.appendChild(b);
+    }
+    const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.images !== undefined ? !!(ibox && ibox.checked) : b.dataset.layer ? b.dataset.layer === on : !on))); };
+    paint(); document.addEventListener('atlas:filter', paint); document.addEventListener('atlas:critique', paint);
     // The row wraps rather than scrolls (user, 7 Nov 2026: "make the filters row not scroll, fit all on screen"), so its
     // height varies with the width. It is published as --<id>-h on the root, and what sits under the row (the page's name
     // on the desktop, the Layers button and the colour key on a phone) is placed from it in assets/atlas.css.
