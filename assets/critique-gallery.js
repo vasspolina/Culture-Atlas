@@ -24,7 +24,7 @@
     const b = box(); if (b) b.checked = on;
     if (!on) hidePop(true);
     if (typeof window.renderGlobe === 'function') window.renderGlobe();
-    document.dispatchEvent(new CustomEvent('atlas:critique', { detail: on }));   // the Images chip over the map (assets/layers.js)
+    document.dispatchEvent(new CustomEvent('atlas:critique', { detail: on }));
   }
   function wirePanel() {
     const b = box();
@@ -212,58 +212,14 @@
     openGallery(t.closest('[data-cg-row]').dataset.cgRow, +t.dataset.cgOpen || 0);
   }, true);
 
-  // ---- The images under the filters (user, 13 Nov 2026: "Add images to top filters") ----
-  // While the layer is on, a row of every image the layer carries sits under the row of filters over the map (the desktop's
-  // #gmdChips and the phone's #gmChips), scrolling sideways; a picture opens the gallery at that image. It is its own fixed
-  // element placed under the row, not a child of it: the row is a toolbar of filters, and its rules differ by layout.
-  // assets/layers.js adds the strip's height to the row's (--<id>-h), so what is placed under the row moves down with it
-  // instead of being covered. The thumbnails are fetched the first time the strip is shown, not on load.
-  const ALL = [];
-  Object.keys(SPACES).forEach(id => SPACES[id].images.forEach((im, i) => ALL.push({ id, i, im, space: SPACES[id].name })));
-  const strips = [];
-  window.atlasImagesStrip = function (host) {
-    const sid = (host.id || 'chips') + 'Images';
-    let s = document.getElementById(sid);
-    if (s) return s;
-    s = document.createElement('div');
-    s.id = sid; s.className = 'cg-strip'; s.hidden = true;
-    s.setAttribute('role', 'group'); s.setAttribute('aria-label', "Artists' images");
-    s.innerHTML = ALL.map(a => `<button type="button" data-cg-space="${e(a.id)}" data-cg-open="${a.i}" aria-label="${e(a.im.project)}, ${e(a.space)}" title="${e(a.im.project)}, ${e(a.space)}"><img data-src="${e(a.im.thumb)}" alt="" width="${Math.round(a.im.w * 56 / a.im.h)}" height="56" decoding="async"></button>`).join('');
-    s.addEventListener('click', ev => {
-      const t = ev.target.closest('button[data-cg-space]');
-      if (t) openGallery(t.dataset.cgSpace, +t.dataset.cgOpen || 0);
-    });
-    document.body.appendChild(s);
-    // Placed from the row's box every frame while shown (the row moves: chat or map on a phone, the city banner on a
-    // desktop), and written only when it changed.
-    let raf = 0, last = '';
-    const place = () => {
-      const r = host.getBoundingClientRect();
-      const hs = getComputedStyle(host);
-      const showing = on && r.width > 0 && hs.display !== 'none' && hs.visibility !== 'hidden';
-      if (s.hidden === showing) s.hidden = !showing;
-      if (showing) {
-        // on the row's own left edge and measure, inside its padding (the phone's row runs edge to edge, its chips inset)
-        const pl = parseFloat(hs.paddingLeft) || 0, pr = parseFloat(hs.paddingRight) || 0;
-        const key = `${r.bottom}|${r.left}|${r.width}|${pl}|${pr}`;
-        if (key !== last) { last = key; s.style.top = `${Math.round(r.bottom + 6)}px`; s.style.left = `${Math.round(r.left + pl)}px`; s.style.width = `${Math.round(r.width - pl - pr)}px`; }
-      }
-      raf = on ? requestAnimationFrame(place) : 0;
-    };
-    const sync = () => {
-      if (on) {
-        s.querySelectorAll('img[data-src]').forEach(img => { img.src = img.dataset.src; img.removeAttribute('data-src'); });
-        if (!raf) place();
-      } else {
-        s.hidden = true;
-        if (raf) { cancelAnimationFrame(raf); raf = 0; }
-      }
-    };
-    strips.push(sync);
-    sync();
-    return s;
-  };
-  document.addEventListener('atlas:critique', () => strips.forEach(f => f()));
+  // The Images filter (assets/layers.js, SPACE_TEST.images) shows only these spaces; while it is on the diamonds are on too,
+  // so each image card is one point away. Switched off with the filter only if the filter switched them on.
+  let byFilter = false;
+  document.addEventListener('atlas:filter', () => {
+    const f = typeof window.atlasSpaceFilter === 'function' ? window.atlasSpaceFilter() : null;
+    if (f === 'images' && !on) { byFilter = true; setOn(true); }
+    else if (f !== 'images' && byFilter) { byFilter = false; if (on) setOn(false); }
+  });
 
   function init() { wirePanel(); wireHover(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
