@@ -1,13 +1,13 @@
 // The picture the atlas shows while it loads (user, 13 Nov 2026: "make one of the image shown when website loading, maybe take
 // few more seconds for it to load, make it aprox 40% size of the screen on desktop and 70 on mobile"). One of the artists'
 // images (window.LOAD_IMAGES, written by tools/build_critique_gallery.py) at random, on the paper, with its title and artist
-// under it. It stays until the page has loaded and for at least MIN_MS from the first paint, never longer than MAX_MS, and
+// under it. It stays until the page has loaded and for at least MIN_MS (10 seconds, user, 13 Nov 2026: "make it show image for 10 sec on load") from the first paint, never longer than MAX_MS, and
 // a click, a tap or any key takes it away sooner. The size and look are the "LOAD IMAGE" block in assets/atlas.css.
 // Loaded at the top of <body>, so it covers the page before anything else is drawn.
 (function () {
   const list = window.LOAD_IMAGES;
   if (!list || !list.length) return;
-  const MIN_MS = 2500, MAX_MS = 15000;
+  const MIN_MS = 10000, MAX_MS = 15000;
   const pick = list[Math.floor(Math.random() * list.length)];
   const t0 = performance.now();
 
