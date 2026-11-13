@@ -402,7 +402,8 @@
       const filter = typeof window.atlasSpaceFilter === 'function' ? window.atlasSpaceFilter() : null;
       const grade = typeof window.atlasGradeFilter === 'function' ? window.atlasGradeFilter() : null;
       const shown = keep ? all.filter((x) => x.inst && keep(x.inst)) : all;
-      const k = shown.map((x) => x.key).join('|') + '#' + all.length + '#' + filter + '#' + grade;
+      const money = typeof window.atlasMoneyReady === 'function' && window.atlasMoneyReady();
+      const k = shown.map((x) => x.key).join('|') + '#' + all.length + '#' + filter + '#' + grade + '#' + money;
       if (k === repKey) return;
       repKey = k;
       const fname = filter && typeof window.atlasLayerDesc === 'function' ? window.atlasLayerDesc(filter).name : '';
@@ -422,6 +423,12 @@
         b.title = x.head;
         const h = document.createElement('span'); h.className = 'sh-report-head'; h.textContent = x.head; b.appendChild(h);
         const m = document.createElement('span'); m.className = 'sh-report-meta'; m.textContent = [x.when, x.space].filter(Boolean).join(', '); b.appendChild(m);
+        // The date and space are set in the colour of the filter on, or with none on, in the colour the space is coded in
+        // (assets/layers.js, atlasSpaceCode): a chip's colour, else its grade's (sheet.css, REPORT COLOURS).
+        const code = filter ? { key: filter, color: window.atlasLayerColor ? window.atlasLayerColor(filter) : '' }
+          : grade ? { grade } : (typeof window.atlasSpaceCode === 'function' ? window.atlasSpaceCode(x.inst) : null);
+        if (code && code.color) { m.classList.add('is-coded'); m.style.setProperty('--rep-c', code.color); }
+        else if (code && code.grade) m.dataset.grade = code.grade;
         b.addEventListener('click', () => openReport(x.key));
         li.appendChild(b);
         frag.appendChild(li);
@@ -437,6 +444,7 @@
     }
     document.addEventListener('atlas:reports', renderReports);
     document.addEventListener('atlas:filter', renderReports);
+    document.addEventListener('atlas:money', renderReports);
     renderReports();
 
     // ---- Closing and opening the index column (user, 13 Nov 2026: "add cross here to close this panel and put open

@@ -154,6 +154,23 @@
     const nm = label && label.querySelector('.layer-name'), ds = label && label.querySelector('.layer-desc');
     return { name: nm ? nm.textContent.trim() : key, desc: ds ? ds.textContent.trim() : '' };
   };
+  // The colour a space is coded in (user, 13 Nov 2026: "when filter clicked, make violet color a color of filter or actually
+  // always color code it"): the colour of the first chip over the map whose filter keeps it, in the chips' order (Epstein
+  // connections, Propaganda, Independent, Artist-run), else the colour of its grade (Clean, Flagged, Unverified). Epstein
+  // connections reads the funding maps, which load on first use; until then a space is coded by the other filters, and
+  // atlas:money tells the lists to code again once they are in. { key, color } for a filter, { grade } for a grade.
+  const layerColor = key => { const inp = document.querySelector(`#layersPanel input[data-layer="${key}"]`), l = inp && inp.closest('label'); return l ? l.style.getPropertyValue('--layer-color').trim() : ''; };
+  window.atlasLayerColor = layerColor;
+  window.atlasSpaceCode = i => {
+    if (!i) return null;
+    for (const inp of spaceBoxes()) {
+      const k = inp.dataset.layer;
+      if (!inp.hasAttribute('data-chip') || !SPACE_TEST[k]) continue;
+      try { if (SPACE_TEST[k](i)) return { key: k, color: layerColor(k) }; } catch (_) {}
+    }
+    return { grade: gradeOf(i) };
+  };
+  window.atlasMoneyReady = () => !!recById;
   window.atlasSetSpaceFilter = function (key) { if (window.atlasSpaceFilter() !== key) { applySpaceFilter(key); explain('space', key); } };
   // The row of filters over the map, built by the phone and desktop layouts into their own strip: one chip per marked
   // filter in its colour from the Layers menu. The pressed chip is the filter on; none is pressed when no filter is on.
@@ -296,6 +313,7 @@
       });
       loading = false;
       updateCounts();
+      document.dispatchEvent(new CustomEvent('atlas:money'));
       if (cb) cb();
       if (window.atlasLayerKeep()) refilter(); else repaint();
     }).catch(() => { loading = false; });
