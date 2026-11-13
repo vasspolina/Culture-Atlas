@@ -4,12 +4,15 @@
 The collection (gallery.html, collection_index.json, images/) was assembled outside the atlas. Only the references whose
 own metadata names a cultural space the atlas already has a record for are kept: the space is named in the image credit,
 the connection note, or is the institution whose page the image comes from. A reference that names only a commercial
-gallery, a publisher or a space the atlas has no record of is left out. The list is SPACES below, by atlas record id.
+gallery, a publisher or a space the atlas has no record of is left out of the map layer. The list is SPACES below, by atlas
+record id. artists-images.html shows every image of the collection that could be fetched, grouped by work, with the map
+layer's spaces as a second view; assets/critique-collection-data.js holds that.
 
     python3 -I tools/build_critique_gallery.py <gallery.html> <dir of downloaded images named <number>.<ext>>
 
-Writes assets/critique_gallery/<number>.jpg (at most 1600px on the long side, never enlarged), <number>_t.jpg (480px)
-and assets/critique-gallery-data.js. Re-running replaces them.
+Writes assets/critique_gallery/<number>.jpg (at most 2400px on the long side, so artists-images.html can zoom, never enlarged), <number>_t.jpg (480px)
+and assets/critique-gallery-data.js (the map layer) and assets/critique-collection-data.js (the images page). Re-running
+replaces them. A reference whose image is not in the directory is listed in the collection data as missing, with its source.
 """
 import json
 import re
@@ -20,7 +23,11 @@ from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'assets' / 'critique_gallery'
-FULL, THUMB = 1600, 480
+FULL, THUMB = 2400, 480
+# The images the atlas shows while it loads (assets/load-image.js picks one at random): strong, legible pieces at 1000px or
+# more, saved again at 1400px so the picture at 40% of a desktop screen stays sharp without the weight of the full file.
+SPLASH = [1810, 1811, 1815, 1818, 1822, 1838, 1874, 1906, 1989]
+SPLASH_SIZE = 1400
 
 # Atlas record id -> what ties the reference to the space (from the reference's own credit, note or source page), and which
 # references belong there. A reference can sit on more than one space.
@@ -43,12 +50,28 @@ SPACES = {
 }
 
 
+def build(r, img_dir):
+    n = r['number']
+    src = next(Path(img_dir).glob(f'{n}.*'))
+    im = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
+    w, h = save(im, FULL, OUT / f'{n}.jpg')
+    save(im, THUMB, OUT / f'{n}_t.jpg')
+    return item(r, w, h)
+
+
 def save(im, size, path):
     im = im.copy()
     if max(im.size) > size:
         im.thumbnail((size, size), Image.LANCZOS)
     im.save(path, 'JPEG', quality=82, optimize=True, progressive=True)
     return im.size
+
+
+def item(r, w, h):
+    n = r['number']
+    return {'n': n, 'src': f'assets/critique_gallery/{n}.jpg', 'thumb': f'assets/critique_gallery/{n}_t.jpg', 'w': w, 'h': h,
+            'artist': r['artist_or_project'], 'project': r['project'], 'type': r['type'],
+            'credit': r['image_credit'], 'source': r['source_page']}
 
 
 def main(gallery_html, img_dir):
@@ -67,29 +90,51 @@ def main(gallery_html, img_dir):
         for r in refs:
             n = r['number']
             if n not in done:
-                src = next(Path(img_dir).glob(f'{n}.*'))
-                im = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
-                w, h = save(im, FULL, OUT / f'{n}.jpg')
-                save(im, THUMB, OUT / f'{n}_t.jpg')
-                done[n] = {
-                    'n': n,
-                    'src': f'assets/critique_gallery/{n}.jpg',
-                    'thumb': f'assets/critique_gallery/{n}_t.jpg',
-                    'w': w, 'h': h,
-                    'artist': r['artist_or_project'],
-                    'project': r['project'],
-                    'type': r['type'],
-                    'credit': r['image_credit'],
-                    'source': r['source_page'],
-                }
+                done[n] = build(r, img_dir)
             items.append(done[n])
         spaces[sid] = {'name': names[sid], 'tie': tie, 'images': items}
         print(f'{sid}: {len(items)}')
+    # Every other reference, for the images page.
+    missing = []
+    for r in recs:
+        if r['number'] in done:
+            continue
+        try:
+            done[r['number']] = build(r, img_dir)
+        except StopIteration:
+            missing.append({'n': r['number'], 'artist': r['artist_or_project'], 'project': r['project'], 'source': r['source_page']})
+    works = {}
+    for r in sorted(recs, key=lambda r: r['number']):
+        if r['number'] not in done:
+            continue
+        key = (r['artist_or_project'], r['project'])
+        works.setdefault(key, {'artist': key[0], 'project': key[1], 'note': r.get('connection_note', ''), 'images': []})['images'].append(done[r['number']])
+    on = {}
+    for sid, sp in spaces.items():
+        for im in sp['images']:
+            on.setdefault(im['n'], []).append(sid)
+    coll = {'collection': 'Cultural space critique, references 1801–2000', 'retrieved': '2026-10-19',
+            'works': list(works.values()), 'on_spaces': on, 'missing': missing}
+    (ROOT / 'assets' / 'critique-collection-data.js').write_text(
+        '// Written by tools/build_critique_gallery.py; do not edit by hand.\n'
+        'window.CRITIQUE_COLLECTION = ' + json.dumps(coll, ensure_ascii=False, separators=(',', ':')) + ';\n')
+    print(f'collection: {len(done)} images in {len(works)} works, {len(missing)} missing')
+    splash = []
+    for n in SPLASH:
+        if n not in done:
+            continue
+        im = Image.open(OUT / f'{n}.jpg')
+        w, h = save(im, SPLASH_SIZE, OUT / f'splash_{n}.jpg')
+        d = done[n]
+        splash.append({'src': f'assets/critique_gallery/splash_{n}.jpg', 'w': w, 'h': h, 'project': d['project'], 'artist': d['artist']})
+    (ROOT / 'assets' / 'load-image-data.js').write_text(
+        '// Written by tools/build_critique_gallery.py; do not edit by hand.\n'
+        'window.LOAD_IMAGES = ' + json.dumps(splash, ensure_ascii=False) + ';\n')
     data = {'collection': 'Cultural space critique, references 1801–2000', 'retrieved': '2026-10-19', 'spaces': spaces}
     (ROOT / 'assets' / 'critique-gallery-data.js').write_text(
         '// Written by tools/build_critique_gallery.py; do not edit by hand.\n'
         'window.CRITIQUE_GALLERY = ' + json.dumps(data, ensure_ascii=False, indent=1) + ';\n')
-    print(f'{len(done)} images on {len(spaces)} spaces')
+    print(f'{sum(len(sp["images"]) for sp in spaces.values())} placements on {len(spaces)} spaces')
 
 
 if __name__ == '__main__':
