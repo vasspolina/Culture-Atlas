@@ -10375,7 +10375,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v636';
+    const ATLAS_RELEASE = 'culture-atlas-v638';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -13857,20 +13857,19 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // whether it is a named outlet or body, or something members of the public posted (user-generated, not checked as fact),
     // its status, and the day the editor last opened its addresses. Shown on the record's gossip cards; the chat's text is unchanged.
     const GOSSIP_SOURCE_TYPE = {
-      press: 'Press report from a named outlet', court_or_regulator: 'Court or regulator record', union: 'Union statement',
-      open_letter: 'Open letter with named signatories', campaign: 'Statement by a named campaign', social_named: 'Post by a named person online',
-      social_anonymous: 'Anonymous posts online: user-generated, not verified', review_platform: 'Reviews posted by users: user-generated, not verified',
-      institution: 'Statement by the space itself'
+      press: 'Press', court_or_regulator: 'Court', union: 'Union', open_letter: 'Open letter', campaign: 'Campaign',
+      social_named: 'Social media', social_anonymous: 'Anonymous post, unverified', review_platform: 'Review site, unverified',
+      institution: 'The space itself'
     };
     function gossipProvenance(g) {
-      const type = GOSSIP_SOURCE_TYPE[g.who_says] || 'Source type not recorded';
-      const status = { talk: 'Talk, not confirmed', denied: 'Denied', confirmed: 'Confirmed', resolved: 'Resolved', stale: 'Old talk, nothing since' }[g.status] || '';
-      const checked = /^\d{4}-\d{2}-\d{2}$/.test(g.retrieved_on || '') ? `Links checked by the atlas ${humanDate(g.retrieved_on)}` : 'Links not yet rechecked';
-      return [type, status, checked].filter(Boolean).join(' · ') + '.';
+      // Plain words, and no link-check housekeeping (user, 13 Nov 2026: "use plain language and do not be overly descriptive").
+      const type = GOSSIP_SOURCE_TYPE[g.who_says] || '';
+      const status = { talk: 'Rumour', denied: 'Denied', confirmed: 'Confirmed', resolved: 'Resolved', stale: 'Old rumour' }[g.status] || '';
+      return [type, status].filter(Boolean).join(' · ');
     }
     // One item as plain text for the chat's record answers: the headline, what is said, who says it, the response, its status.
     function gossipItemText(g) {
-      const status = { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Resolved.', stale: 'Old talk, nothing since.' }[g.status] || '';
+      const status = { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Resolved.', stale: 'Old rumour.' }[g.status] || '';
       return [g.headline + '.', g.said, gossipAttribution(g), g.response ? 'Response: ' + g.response : '', g.outcome ? 'Outcome: ' + g.outcome : '', status].filter(Boolean).join(' ').replace(/\.\./g, '.');
     }
     // gossip: what is reported, from the item that names its own sources first. Otherwise: who funds it. Null when the record has nothing to say.
