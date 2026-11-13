@@ -24,6 +24,7 @@
     const b = box(); if (b) b.checked = on;
     if (!on) hidePop(true);
     if (typeof window.renderGlobe === 'function') window.renderGlobe();
+    document.dispatchEvent(new CustomEvent('atlas:critique', { detail: on }));   // the Images chip over the map (assets/layers.js)
   }
   function wirePanel() {
     const b = box();
