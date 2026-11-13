@@ -292,8 +292,11 @@
     const g = n => { try { return (0, eval)(n); } catch (_) { return undefined; } };
     const cities = g('ALL_CITIES_REGISTRY') || [], all = g('ALL_INSTITUTIONS') || [];
     const same = (a, b) => String(a || '').trim().toLowerCase() === String(b || '').trim().toLowerCase();
-    const meta = cities.find(c => same(c.name, cityName)) || { name: cityName };
-    const spaces = all.filter(i => same(i.city, meta.name)).map((inst, k) => ({ inst, k }))
+    // One name can be two cities (Cambridge, England and Massachusetts): the sheet takes the one the map opened, and only its
+    // spaces (index.html, cityPlaceFor), so it never says "UK" over spaces in Massachusetts.
+    const meta = (window.atlasCityPlace && window.atlasCityPlace(cityName)) || cities.find(c => same(c.name, cityName)) || { name: cityName };
+    const named = all.filter(i => same(i.city, meta.name));
+    const spaces = (window.atlasCityInsts && typeof meta.lat === 'number' ? window.atlasCityInsts(meta.name, meta).filter(i => named.includes(i)) : named).map((inst, k) => ({ inst, k }))
       .sort((a, b) => ((SIZE_RANK[a.inst.size] ?? 5) - (SIZE_RANK[b.inst.size] ?? 5)) || (a.k - b.k)).map(o => o.inst);
     const p = ensurePanel(); if (!p) return;
     closeChooser(false);
