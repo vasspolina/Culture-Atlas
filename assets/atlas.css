@@ -4985,3 +4985,43 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 .atlas-drop-pin.is-dropping svg{animation:atlas-pin-drop .22s cubic-bezier(.3,0,.6,1) both}
 @keyframes atlas-pin-drop{from{transform:translateY(-14px)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.atlas-drop-pin.is-dropping svg{animation:none}}
+
+/* ---- INTRO NARRATION (user, 13 Nov 2026): the empty chat types out what the atlas does, beside a diagram that builds in
+   step with it. The script is assets/intro-narration.js. Untyped letters keep their place (visibility:hidden), so the
+   block has its final height from the first frame and the question list under it never jumps. ---- */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) .intro-narration{display:grid!important;grid-template-columns:minmax(0,1fr) 168px;gap:var(--gap);align-items:start;margin:0!important;text-align:left!important}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) .intro-narration .intro-line{margin:0 0 .6em!important;padding:0!important;text-indent:0!important;font:400 var(--fs-m)/1.4 var(--sans)!important;color:var(--ink)!important;max-width:60ch}
+/* the space under the block sits on its last line: the greeting's own rules zero the padding of every div in it */
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) .intro-narration .intro-line:last-child{margin-bottom:var(--L)!important}
+.intro-narration .intro-rest{visibility:hidden}
+/* the caret: a hairline after the letters being typed, gone once the line is done */
+.intro-narration .intro-line.is-typing .intro-typed::after{content:"";display:inline-block;width:1px;height:1em;margin-left:1px;vertical-align:-.15em;background:var(--ink);animation:intro-caret 1s steps(1) infinite}
+@keyframes intro-caret{50%{opacity:0}}
+
+.intro-visual{width:100%;height:auto;display:block;overflow:visible;color:var(--ink)}
+.intro-visual .iv-step{opacity:0;transition:opacity .5s var(--ease)}
+.intro-narration[data-step="1"] .iv-1,
+.intro-narration[data-step="2"] :is(.iv-1,.iv-2),
+.intro-narration[data-step="3"] :is(.iv-1,.iv-2,.iv-3),
+.intro-narration[data-step="4"] .iv-step{opacity:1}
+.intro-visual .iv-line{stroke:currentColor;stroke-width:1;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset .9s var(--ease)}
+.intro-narration:is([data-step="2"],[data-step="3"],[data-step="4"]) .iv-line{stroke-dashoffset:0}
+.intro-visual .iv-src path{fill:var(--paper);stroke:currentColor;stroke-width:1;stroke-linejoin:round}
+.intro-visual .iv-funders > *{fill:var(--paper);stroke:currentColor;stroke-width:1.25}
+.intro-visual .iv-space{fill:var(--tier-a,#007a80);stroke:var(--tier-a,#007a80);stroke-width:1.25;transform-origin:110px 80px;transform:scale(.4);transition:transform .6s var(--ease)}
+.intro-narration:not([data-step="0"]) .iv-space{transform:scale(1)}
+/* the grade sits on the clean colour: black on the light teal of dark mode, white on the deep teal of light mode */
+.intro-visual .iv-grade{font:700 18px/1 var(--sans);fill:#fff}
+:root[data-theme="dark"] .intro-visual .iv-grade{fill:#000}
+/* once everything is on, the map breathes: the funders drift a little toward and away from the space */
+.intro-narration.is-done .iv-funders{animation:intro-drift 6s ease-in-out infinite;transform-origin:110px 80px}
+@keyframes intro-drift{50%{transform:scale(.96)}}
+
+@media (max-width:520px){
+  :is(#curatorHeroGreeting,#curatorDrawerGreeting) .intro-narration{grid-template-columns:minmax(0,1fr)}
+  .intro-visual{width:150px;order:-1}
+}
+@media (prefers-reduced-motion:reduce){
+  .intro-visual .iv-step,.intro-visual .iv-line,.intro-visual .iv-space{transition:none}
+  .intro-narration.is-done .iv-funders,.intro-narration .intro-typed::after{animation:none}
+}
