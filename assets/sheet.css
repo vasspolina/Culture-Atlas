@@ -133,7 +133,7 @@ svg{stroke-width:1.2px!important}
   /* ---- the head bar: the theme and gossip at the left, where you are over the map, the panel's two pages at the right ---- */
   :root.gmd #gmdTopBar{position:fixed!important;top:0!important;left:0!important;right:auto!important;width:max(var(--sh-col),260px)!important;height:var(--sh-head)!important;padding:0!important;margin:0!important;border:0!important;background:transparent!important;overflow:visible!important;pointer-events:auto!important;z-index:46!important}
   :root.gmd #gmdTopBar>div{display:flex!important;width:100%!important;height:100%!important;gap:0!important}
-  :root.gmd #gmdTopBar :is(#topGossipBtn,#topThemeBtn){display:block!important;flex:1 1 0!important;height:var(--sh-head)!important;line-height:var(--sh-head)!important;padding:0!important;text-align:center!important;background:transparent!important;color:inherit!important;border:0!important}
+  :root.gmd #gmdTopBar :is(#topGossipBtn,#topThemeBtn,#topImagesBtn){display:block!important;flex:1 1 0!important;height:var(--sh-head)!important;line-height:var(--sh-head)!important;padding:0!important;text-align:center!important;background:transparent!important;color:inherit!important;border:0!important}
   :root.gmd body.gossip-mode-active #gmdTopBar #topGossipBtn{background:transparent!important;font-style:italic!important}
 
   :root.gmd #workspaceContextTabBar{position:fixed!important;top:0!important;right:0!important;left:auto!important;width:max(var(--gmd-w),600px)!important;height:var(--sh-head)!important;min-height:0!important;margin:0!important;padding:0 var(--sh-pad)!important;justify-content:space-between!important;border:0!important;background:transparent!important;display:flex!important;gap:0!important;z-index:46!important}
@@ -1382,6 +1382,9 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){top:calc(var(--gmChips-h,46px) + 4px)!important}
 }
 }
+
+/* The Images link in the head bar is a word like its neighbours, not an underlined link. */
+@layer sheet{:root.gmd #gmdTopBar #topImagesBtn{text-decoration:none!important;color:inherit!important}:root.gmd #gmdTopBar #topImagesBtn:hover{color:var(--sh-hover)!important}}
 
 /* ==== ARTISTS' IMAGES AND THE LOAD IMAGE ON THE SHEET (user, 13 Nov 2026: "the design needs to be the current one not
    the past"). assets/critique-gallery.js and assets/load-image.js were first drawn in atlas.css's Displaay look; here they
