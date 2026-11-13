@@ -151,6 +151,7 @@
         ['mobileStickyShareBtn'],
         ['mobileStickyVoiceBtn', 'Read answers aloud'],
         ['reset-state-btn', 'New chat'],
+        ['topImagesBtn', 'Artists’ images'],   // a link: its click opens artists-images.html
       ];
       const buildMenu = () => {
         menu.innerHTML = '';
