@@ -149,10 +149,7 @@
     parts.push(section('VISITING', [
       i.opening_hours ? 'Opening hours: ' + i.opening_hours : '',
       (i.admission_fee || i.admission_details || i.admission_policy) ? 'Admission: ' + [i.admission_policy, i.admission_fee, i.admission_details].filter(Boolean).join('; ') : '',
-      i.visit_duration ? 'Typical visit: ' + i.visit_duration : '',
-      i.transit_tips ? 'Getting there: ' + i.transit_tips : '',
       i.accessibility ? 'Accessibility: ' + i.accessibility : '',
-      i.amenities ? 'Amenities: ' + i.amenities : '',
       i.scale && i.scale.visitors ? 'Visitors: ' + i.scale.visitors.toLocaleString('en-GB') + (i.scale.visitors_year ? ' in ' + i.scale.visitors_year : '') : '',
       i.visit_url ? 'Visitor page: ' + i.visit_url : ''
     ]));

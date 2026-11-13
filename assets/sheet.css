@@ -642,7 +642,7 @@ details.chat-info[open]>summary::before{content:"– "!important}
 #workBottomDock #workSendBtn{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important}
 
 /* A record's actions are buttons in a row, outlined as the fields are, with no dash (user, 10 Nov 2026: "make these
-   buttons with no dashes"): Ask in chat, Plan visit in chat, Building view, Money map, Website. */
+   buttons with no dashes"): Ask in chat, Building view, Money map, Website. */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row{display:flex!important;flex-wrap:wrap!important;gap:calc(6px * var(--sh-k))!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action{
   display:inline-flex!important;align-items:center!important;justify-content:center!important;width:auto!important;
