@@ -449,11 +449,6 @@ return maplibregl$1;
                onclick="event.preventDefault(); event.stopPropagation(); if (typeof window.openDossier === 'function' && selectedInstitution) window.openDossier(selectedInstitution);">
               <span>Full record</span>
             </a>
-            <button id="floatingCardDirectPlanBtn" type="button" 
-               class="record-action text-left"
-               onclick="event.stopPropagation(); if (typeof window.atlasPlanVisit === 'function') window.atlasPlanVisit(selectedInstitution);">
-              <span>Plan visit in chat</span>
-            </button>
             <button type="button" id="floatingCardMoneyMapBtn" class="record-action text-left"
                onclick="event.stopPropagation(); window.atlasShowMoney(typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id);">
               <span>Money map</span>
@@ -509,9 +504,6 @@ return maplibregl$1;
               </button>
               <button id="dossier-sheet-audit-btn" type="button" class="record-action text-left">
                 <span>Full record</span>
-              </button>
-              <button id="dossier-sheet-plan-btn" type="button" class="record-action text-left">
-                <span>Plan visit in chat</span>
               </button>
               <button type="button" id="dossier-sheet-moneymap-btn" class="record-action text-left"
                  onclick="event.stopPropagation(); window.atlasShowMoney(typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id);">
@@ -7232,62 +7224,7 @@ return maplibregl$1;
       handleCuratorQuery(text);
     };
 
-    window.atlasPlanVisit = function(instNameOrObj) {
-      let inst = resolveInstitutionByIdOrName(instNameOrObj);
-      if (!inst) {
-        inst = selectedInstitution || (typeof curatorContext !== 'undefined' ? curatorContext.lastInst : null);
-      }
-      if (inst) {
-        // setMobileViewMode does nothing at 768px and wider, so on a desktop the answer was written into a chat tab nobody was looking at.
-        // On a phone the record page sits over the chat, so it closes first.
-        if (window.innerWidth < 768) {
-          document.getElementById('detailDrawer')?.classList.add('hidden');
-          if (typeof setMobileViewMode === 'function') setMobileViewMode('chat');
-        } else if (typeof setWorkspaceTab === 'function') {
-          setWorkspaceTab('chat');
-        }
-        const q = `Plan my visit to ${inst.name}`;
-        appendUserMessage(q);
-        curatorContext.lastInst = inst;
-        curatorContext.lastCity = inst.city;
-        // The visitor link is the space's own visit page or website, never a source: getValidWebUrl falls back to the first
-        // source, which put a ProPublica search behind "Open Official Visitor / Ticket Page" on records with no site.
-        const httpUrl = u => (typeof u === 'string' && /^https?:\/\//.test(u.trim())) ? u.trim() : '';
-        const visitUrl = httpUrl(inst.visit_url) || httpUrl(inst.website);
-        // Only what the record states. A missing value used to be filled in: "not stated" for the hours, "Subsidized admission"
-        // for any space with no fee on record, and the city and country standing in for an address. None of that is a fact
-        // about the space, so a missing row is left out and the card says once what the record does not hold.
-        const admission = [inst.admission_fee || inst.admission_policy, inst.admission_details].filter(Boolean).join('. ');
-        const missing = [inst.address ? '' : 'a street address', inst.opening_hours ? '' : 'opening hours', admission ? '' : 'admission'].filter(Boolean);
-        const missingLine = missing.length
-          ? `<p class="pt-1 rule-t meta">The record does not state ${missing.length > 1 ? missing.slice(0, -1).join(', ') + ' or ' + missing[missing.length - 1] : missing[0]}.${visitUrl ? ' Check the official visitor page below.' : ''}</p>`
-          : '';
-        appendCuratorMessage(`
-          <p class="">
-            Visitor Itinerary & Planning Guide: <strong>${formatInstLink(inst)}</strong>
-          </p>
-          <div class="py-2_5 rule-t space-y-1_5">
-            ${inst.address ? `<div><strong class="meta block">Address</strong> ${escapeHtml(inst.address)}${inst.neighborhood ? ` <span class="meta">${escapeHtml(inst.neighborhood)}</span>` : ''}</div>` : ''}
-            ${inst.opening_hours ? `<div class="pt-1 rule-t"><strong class="meta block">Opening Hours</strong> ${escapeHtml(inst.opening_hours)}</div>` : ''}
-            ${admission ? `<div class="pt-1 rule-t"><strong class="meta block">Admission & Tickets</strong> ${escapeHtml(admission)}</div>` : ''}
-            ${inst.transit_tips ? `<div class="pt-1 rule-t"><strong class="meta block">Getting There & Transit</strong> ${escapeHtml(inst.transit_tips)}</div>` : ''}
-            ${inst.visit_duration ? `<div class="pt-1 rule-t"><strong class="meta block">Suggested Duration</strong> ${escapeHtml(inst.visit_duration)}</div>` : ''}
-            ${inst.highlight ? `<div class="pt-1 rule-t"><strong class="meta block">Known for</strong> ${escapeHtml(inst.highlight)}</div>` : ''}
-            ${inst.accessibility ? `<div class="pt-1 rule-t"><strong class="meta block">Accessibility</strong> ${escapeHtml(inst.accessibility)}</div>` : ''}
-            ${inst.amenities ? `<div class="pt-1 rule-t"><strong class="meta block">Amenities</strong> ${escapeHtml((inst.amenities).toString().split(',').map(x => x.trim()).filter(Boolean).join(', '))}</div>` : ''}
-          </div>
-          ${missingLine}
-          ${visitUrl ? `
-            <div class="pt-2 rule-t">
-              <a href="${escapeHtml(visitUrl)}" target="_blank" rel="noopener noreferrer" class="meta flex items-center gap-1">
-                <span>Open Official Visitor / Ticket Page</span>
-                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
-              </a>
-            </div>
-          ` : ''}
-        `, chipsAbout(inst, 4));
-      }
-    };
+    // No visit planner: the atlas gives no tourist advice (user, 13 Nov 2026).
 
 
 
@@ -8947,7 +8884,6 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                 : 'Final stop of this route'}</div>
               <div class="record-popup-actions">
                 <button type="button" onclick="window.jumpToRouteStop(${idx})">Focus Stop</button>
-                <button type="button" onclick="window.atlasPlanVisit('${safeName}')">Plan Visit</button>
               </div>
             </div>
           `;
@@ -10375,7 +10311,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v638';
+    const ATLAS_RELEASE = 'culture-atlas-v639';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -13222,11 +13158,6 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         }
       }
 
-      const directPlanBtn = document.getElementById('floatingCardDirectPlanBtn');
-      if (directPlanBtn) {
-        directPlanBtn.style.display = 'inline-flex';
-      }
-
       const webEl = document.getElementById('floatingCardWebLink');
       const domEl = document.getElementById('floatingCardDomain');
       if (webEl && domEl) {
@@ -13728,7 +13659,6 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             <div class="head-grid">
               <div class="head-side record-actions record-action-row">
                 <button type="button" onclick="window.askCuratorAboutInst(dossierInst || selectedInstitution);" class="record-action">Ask in chat</button>
-                <button type="button" onclick="window.atlasPlanVisit(dossierInst || selectedInstitution)" class="record-action">Plan visit in chat</button>
                 ${(inst.lat && inst.lon && inst.address) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
                 ${inst.id ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
                 ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
@@ -13777,10 +13707,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             ['Admission', said.admission ? '' : escapeHtml(inst.admission_fee || '')],
             // The city and country head the record already; with no street address there is no Address row to repeat them.
             ['Address', inst.address && !said.address ? escapeHtml(inst.address) + (inst.neighborhood ? `<br>${escapeHtml(inst.neighborhood)}` : '') : ''],
-            ['Suggested duration', escapeHtml(inst.visit_duration || '')],
-            ['Getting there', escapeHtml(inst.transit_tips || '')],
             ['Accessibility', escapeHtml(inst.accessibility || '')],
-            ['Amenities', escapeHtml(inst.amenities ? inst.amenities.toString().split(',').map(x => x.trim()).filter(Boolean).join(', ') : '')],
           ]) : ''}
 
         </div>
@@ -15358,10 +15285,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the space: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the space, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the space, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\nVOICE: deliver it as a professional academic investigator and art-market analyst briefing a colleague, and push that register hard: the forensic cadence of a case file, the vocabulary of provenance research, due diligence and funding analysis (the paper trail, the board minutes, the filing, the follow-the-money line, the reputational exposure, the trustee's other holdings), short declarative sentences that land, and a sharp, knowing, dramatic edge. Heighten the delivery, never the facts: every claim is still one the items carry, still attributed to whoever says it, talk still stays talk, and no verdict word appears without its named event, date and actor. The case file is a manner of speaking: never cite the atlas's own item numbers or codes (G76, R31) and never call an item a row, an entry or a field. Never remark on the file itself: no line saying a trail is thin, a quote cuts off or the record goes quiet; end a cut-off quotation at its last full sentence.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the space, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'A detail the visitor did not ask for and the record does not hold is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold is answered from your own knowledge, in a sentence that opens "From general knowledge," so it is told from the record. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Put visitor logistics and financial/governance information in distinct paragraphs, each opening with the topic in plain words. Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring space or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'A detail the visitor did not ask for and the record does not hold is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold is answered from your own knowledge, in a sentence that opens "From general knowledge," so it is told from the record. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Give no tourist advice (NO TOURIST ADVICE in the system instructions). Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. None is a visiting, travel or itinerary question. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring space or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
-      const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst, true)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded governance, visiting information, architecture and highlights. Do not expand into unrelated history or unsupported claims.\n` : '';
+      const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific space:\n${formatInstitutionGrounding(activeInst, true)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a space, answer about ${activeInst.name}, sticking to recorded funding, governance and what is reported about it. Do not expand into unrelated history or unsupported claims.\n` : '';
 
       const communityGrounding = ''; // unchecked notes are never given to the model as facts
 
@@ -15398,17 +15325,17 @@ CHARACTER & VOICE GUIDELINES:
    - Keep observations grounded in the records and their cited sources.
 
 3. YOU ARE A VISITOR-FACING DOCENT AND RESEARCHER:
-   - You are chatting with museum visitors, art lovers, travelers, and cultural researchers.
+   - You are chatting with museum visitors, art lovers and cultural researchers about who funds cultural spaces. You are not a travel guide.
    - NEVER review, evaluate, QA, or critique the atlas database, data structure, schema, or system itself.
    - NEVER say "I've reviewed the sample atlas data you provided" or flag issues with dataset templates.
    - You are NOT a code reviewer or QA tester. If a user asks "check it for me", "can you check this", or "verify this", they are asking you to verify and explain a cultural institution or city, NOT review a database!
 
 4. BE CONCRETE AND SPECIFIC:
-   - Every answer is about the space, place or funder the visitor asked about, built from that record's own lines: its audited figures and the year they are for, the funders it names, the dates of each reported case, the legal form, the critic and publication quoted, the hours and prices. A sentence that could be written about any museum is not an answer; replace it with what this record states.
-   - The records are written in labelled sections (STATUS, FUNDING AND FINANCES, GOVERNANCE, ABOUT, REPORTED ON THE RECORD, EMPLOYEE AND VISITOR ACCOUNTS, CRITICS AND STUDIES, VISITING, SOURCES). Draw on the section the question is about; a question about money is answered from FUNDING AND FINANCES, one about a protest or a sponsor from REPORTED ON THE RECORD, one about getting there from VISITING. Do not pad with sections the visitor did not ask about.
+   - Every answer is about the space, place or funder the visitor asked about, built from that record's own lines: its audited figures and the year they are for, the funders it names, the dates of each reported case, the legal form, the critic and publication quoted. A sentence that could be written about any museum is not an answer; replace it with what this record states.
+   - The records are written in labelled sections (STATUS, FUNDING AND FINANCES, GOVERNANCE, ABOUT, REPORTED ON THE RECORD, EMPLOYEE AND VISITOR ACCOUNTS, CRITICS AND STUDIES, VISITING, SOURCES). Draw on the section the question is about; a question about money is answered from FUNDING AND FINANCES, one about a protest or a sponsor from REPORTED ON THE RECORD Do not pad with sections the visitor did not ask about.
    - When a <place_summary> block is supplied the question is about that city or country as a whole: use its count, its grade tally, its flagged spaces and reasons, and the funders named most, and name specific spaces from it rather than describing the place in general.
    - Give the record's details as the record's, from the supplied records and their cited sources. Where the record has nothing on what was asked, fill the gap from your own knowledge under the GENERAL KNOWLEDGE rule, marked, and never pass it off as the record.
-   - State recorded admission, price and hours details exactly. Name the funder, the year and the amount whenever the record has them; never write "a major donor" or "various funders" when a name is supplied. A requested detail the record does not hold is answered from general knowledge, marked. No web address or source line at the end of an answer.
+   - Name the funder, the year and the amount whenever the record has them; never write "a major donor" or "various funders" when a name is supplied. A requested detail the record does not hold is answered from general knowledge, marked. No web address or source line at the end of an answer.
 
 5. FORMATTING RULES & OUTPUT CONSTRAINTS:
 <formatting_rules>
@@ -15442,6 +15369,8 @@ ${webIntelGrounding}
 - Avoid pompous marketing fluff ("cultural sanctuaries", "clean sanctuaries", "clean sanctuary", "for quiet reflection", "for evening contemplation", "sublime", "epistemologies", or "palliative").
 - Avoid promotional language, unsupported praise or criticism, canned phrasing and prompt meta-commentary. Keep answers concise and evidence-based.
 
+NO TOURIST ADVICE (user, 13 Nov 2026): The atlas is about who funds cultural spaces, not a travel guide. Never recommend what to see, which exhibitions or works not to miss, how long to stay, when to go or avoid crowds, how to get there, where to eat, drink, shop or stay, or what else to do nearby; never plan a visit, a route, a crawl, a tour or an itinerary; never call a space worth a visit or suggest a visitor go. When asked for any of that, say in one sentence that the atlas does not give travel or visiting advice, then offer what the record holds on the space's funding, governance or reported cases. If the visitor asks for the record's own opening hours, admission or address, state them as recorded, plainly, with no tip added. The GENERAL KNOWLEDGE rule below never fills a gap with tourist advice.
+
 GENERAL KNOWLEDGE (the gap rule): The records come first, and what they hold is given as theirs. Where the atlas has no record of the space, place or funder asked about, or the record has nothing on the detail asked for, answer from your own knowledge rather than stop. Open that part with the words "From general knowledge," once, so the reader can tell it from the record; keep to what you know well; give no figure, date or name you are not sure of; and never present it as the atlas's record, never give it the atlas's grade, and never attach the record's sources to it. What the record does hold on the question is still given first and as the record's.
 
 NAMES THAT HAVE NO RECORD: When the visitor names a space and no supplied record carries that name, say in one sentence that the atlas has no record of it ("The atlas has no record of …"), then answer about it from general knowledge as the rule above says. If a supplied record is clearly the same space under another spelling, answer from that record instead and name it. Never answer about the space open on the map in its place, and never ask the visitor to clarify. When the visitor answers one of your questions with "yes", "that one" or "the second", take it as the space you last named and answer about that space from its record; if you named no space that has a record, say so in one sentence.
@@ -15454,7 +15383,7 @@ GROUNDING: Answer from the records supplied with each question first. A figure g
 
 FORMATTING & DOSSIER PRESENTATION RULES:
 1. Answer the user's specific question in the first sentence; do not force a template, headings, comparison or unrequested conclusion.
-2. Keep paragraphs short and use a blank line between distinct points. Separate visitor logistics from governance or financial analysis using separate paragraphs, each opening with the topic in plain words, with no bold.
+2. Keep paragraphs short and use a blank line between distinct points, with no bold.
 3. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. A detail the record does not hold and the visitor did not ask for is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold comes from general knowledge, marked. Never end an answer with a web address, a link or a "Sources:" line.
 4. For questions about critics or criticism, distinguish a theoretical lens from evidence of actual reception. Name a critic, publication, review or controversy only when it is present in the supplied record or cited sources. If none is recorded, say nothing about critics unless asked; when asked, one plain sentence. Do not substitute a generic theory passage.
 5. Attribute allegations and assessments to their source. Do not imply that a source independently verifies more than it does.
@@ -16266,19 +16195,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           bgClass: 'is-bad',
           haloClass: 'is-bad',
           badgeClasses: 'is-bad'
-        };
-      }
-
-      // 5. Curatorial Itinerary Mode (emerald glow dot)
-      if (/itinerary|crawl|tour|visit|route|walk|day\s*trip/i.test(q)) {
-        return {
-          id: 'itinerary',
-          name: 'Itinerary Mode',
-          color: '#34d399',
-          rgb: '52, 211, 153',
-          bgClass: 'is-good',
-          haloClass: 'is-good',
-          badgeClasses: 'is-good'
         };
       }
 
@@ -17167,6 +17083,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (await askModel()) return;
+      // No tourist advice (user, 13 Nov 2026): what to see, routes, when to go, getting there, where to eat or stay get one line, then the record's subjects.
+      if (asks(/\b(itinerar\w*|day ?trip|art crawl|walking (tour|route)|plan (my|a|the) (visit|trip|day|route)|what (should|to|can) (i |we )?see|worth (a )?visit|must[- ]see|not to miss|how (do|can) (i|we) get|getting there|where (to|should i|can i|do i) (eat|stay|drink|park)|best time to (visit|go)|how long (should|to) (i )?(spend|stay)|things to do|nearby (caf|restaurant|bar|hotel))/)) {
+        answer('<p>The atlas does not give travel or visiting advice. It records who funds each space, how it is governed and what is reported about it.</p>');
+        return;
+      }
       // A sub-topic of a space ("the archive at MoMA") is answered from the record lines that mention it, or says there are none.
       const subTopicQ = target && window.AtlasSubTopic ? AtlasSubTopic.detectSubTopic(query, target) : null;
       if (subTopicQ) {
@@ -17179,7 +17100,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         focus(target);
         const lines = [fact('Opening hours: ', target.opening_hours), fact('Admission: ', target.admission_fee || target.admission_policy), fact('Address: ', target.address)].join('');
         const page = target.visit_url || target.website;
-        answer(`<p>${formatInstLink(target)}.</p>${lines || '<p>No opening hours, prices or address are recorded for this space.</p>'}${page ? `<p class="no-indent">Check the museum's own page before you go: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
+        answer(`<p>${formatInstLink(target)}.</p>${lines || '<p>No opening hours, prices or address are recorded for this space.</p>'}${page ? `<p class="no-indent">The space's own page: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
@@ -17623,13 +17544,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const inst = selectedInstitution || (typeof ALL_INSTITUTIONS !== 'undefined' ? null : null);
         if (inst && typeof openDossier === 'function') {
           openDossier(inst);
-        }
-      });
-      document.getElementById('dossier-sheet-plan-btn')?.addEventListener('click', () => {
-        const inst = selectedInstitution || (typeof ALL_INSTITUTIONS !== 'undefined' ? null : null);
-        if (inst && typeof atlasPlanVisit === 'function') {
-          atlasPlanVisit(inst);
-          tabChat?.click();
         }
       });
       document.getElementById('dossier-sheet-full-gossip-btn')?.addEventListener('click', () => {
