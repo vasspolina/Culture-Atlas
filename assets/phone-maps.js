@@ -1201,21 +1201,32 @@
         const hasReply = x.type === 'gossip' && x.reply && !/^no reply/i.test(x.reply);
         // Each fact is said once (user, 4 Nov 2026: "remove all repetition"). A leak's own dating (months) is kept when it says
         // more than the day.
-        const day = dateText(x.when), rel = ago(x.when);
-        const when = day && rel && rel !== day ? day + ', ' + rel : (day || rel);
+        // The facts are the few lines a reader acts on (user, 13 Nov 2026: "Outcome and details is a slop"). The date is said
+        // once, as a date; a place whose city is its country is named once; the source's name is its link, so there is no
+        // separate "1 source" line; the basis is said only when the source's name does not already say it; when the atlas last
+        // rechecked a link is housekeeping and stays off the card.
+        const day = dateText(x.when);
         const leakDated = x.type === 'leak' && x.dated ? monthsText(x.dated) : '';
         const said = saidRest(x);
+        const place = x.inst.city && x.inst.city === x.inst.country ? x.inst.city : placeOf(x.inst);
+        const link = (u, t) => '<a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + t + '</a>';
+        const sourceName = esc(x.where || src[0]) + (x.role ? ', ' + esc(x.role) : '');
+        const source = (n ? link(x.urls[0], sourceName) : sourceName)
+          + x.urls.slice(1).map((u, k) => ', ' + link(u, String(k + 2))).join('');
+        const basis = !x.where ? (src[1] ? 'User-generated, not verified' : '')
+          : src[1] ? 'User-generated, not verified. ' + src[0]
+          : x.who === 'press' ? '' : src[0];
         const facts = '<dl class="ts-rows">'
-          + row('Place', esc(placeOf(x.inst)))
           + row('Status', esc(STATUS[x.status] || ''))
-          + row({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported', esc(when))
-          + row('Source', esc(x.where || 'The record') + (x.role ? ', ' + esc(x.role) : ''))
-          + row('Basis', (src[1] ? 'User-generated, not verified. ' : '') + esc(src[0]))
+          + row({ case: 'On record', account: 'Posted', leak: 'Dated' }[x.type] || 'Reported', esc(day || ago(x.when)))
           + (leakDated && leakDated !== day ? row('Document', 'dated ' + esc(leakDated)) : '')
+          + row('Place', esc(place))
+          + row(n > 1 ? 'Sources' : 'Source', source)
+          + row('Basis', esc(basis))
           + (x.type === 'gossip' && !hasReply ? row('Reply', 'None found') : '')
-          + (x.checked ? row('Links checked', esc(dateText(x.checked))) : '')
-          + row(n === 1 ? 'Link' : 'Links', '<a href="' + esc(x.urls[0]) + '" target="_blank" rel="noopener noreferrer">' + n + (n === 1 ? ' source' : ' sources') + '</a>')
           + '</dl>';
+        // An outcome that says nothing has happened yet is not an outcome; the part is left out rather than filled.
+        const outcome = /^(not yet known|no outcome found|unknown|none|pending|n\/a)\.?$/i.test(String(x.outcome || '').trim()) ? '' : x.outcome;
         // Each article opens with a title, the space's name on a stone band (user, 11 Nov 2026: "add titles to top story
         // articles and color background to the titles"). The name is the way from a report to its place on the map, so the
         // Space line in the facts is gone and the name is not said twice.
@@ -1225,8 +1236,8 @@
           + '<h3 class="ts-headline">' + esc(x.head) + '</h3>'
           + (said ? '<p class="ts-prose">' + esc(said) + '</p>' : '')
           + (hasReply ? '<p class="ts-label">Reply</p><p class="ts-prose">' + esc(x.reply) + '</p>' : '')
-          + (x.outcome ? '<p class="ts-label">Outcome</p><p class="ts-prose">' + esc(x.outcome) + '</p>' : '')
-          + '<p class="ts-label">Details</p>' + facts
+          + (outcome ? '<p class="ts-label">Outcome</p><p class="ts-prose">' + esc(outcome) + '</p>' : '')
+          + facts
           + '<button type="button" class="gm-share ts-share' + (poster ? ' is-main' : '') + '" data-i="' + i + '">Share</button></article>';
       }
 
