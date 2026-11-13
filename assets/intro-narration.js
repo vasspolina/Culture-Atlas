@@ -12,7 +12,7 @@
 
   var LINES = [
     'Leaving it on the table looks up who funds museums and cultural spaces.',
-    'Each record names the funders it can source – public money, companies and foundations – and links every fact to where it comes from.',
+    'Each record names the funders it can source, from public money, companies and foundations, and links every fact to where it comes from.',
     'A grade from A to F says how much of that money the record shows.',
     'Ask below about a space, a city or a funder.'
   ];
