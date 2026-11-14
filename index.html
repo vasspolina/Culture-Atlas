@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=664"></script>
+  <script src="assets/load-image-data.js?v=665"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -49,14 +49,14 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=664">
-  <link rel="stylesheet" href="assets/sheet.css?v=664">
-  <script src="assets/config.js?v=664"></script>
-  <script src="assets/subtopic.js?v=664"></script>
-  <script src="assets/names.js?v=664"></script>
-  <script src="assets/grounding.js?v=664"></script>
-  <script src="assets/repeats.js?v=664"></script>
-  <script src="assets/intro-narration.js?v=664"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=665">
+  <link rel="stylesheet" href="assets/sheet.css?v=665">
+  <script src="assets/config.js?v=665"></script>
+  <script src="assets/subtopic.js?v=665"></script>
+  <script src="assets/names.js?v=665"></script>
+  <script src="assets/grounding.js?v=665"></script>
+  <script src="assets/repeats.js?v=665"></script>
+  <script src="assets/intro-narration.js?v=665"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -121,7 +121,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=664"></script>
+  <script src="assets/load-image.js?v=665"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -10381,11 +10381,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v664';
+    const ATLAS_RELEASE = 'culture-atlas-v665';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=664').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=665').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12575,7 +12575,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const title = role ? `${kind} · ${role}` : kind;
       const own = String(inst.name || '').toLowerCase();
       const alsoAbout = String(a.scope || '').split(/\s*;\s*/).filter(n => n && !/work location varies/i.test(n) && n.toLowerCase() !== own && !own.includes(n.toLowerCase()) && !n.toLowerCase().includes(own));
-      return { title, date: humanDate(date), summary, note, alsoAbout };
+      // where and role are given apart too, so a card can set "User posted on Glassdoor", the role and the date on lines of
+      // their own with no middle dots (user, 13 Nov 2026: "dont do dots, when you say user post make it on different line and
+      // say user posted on ..."). title keeps the joined form for the callers that still read it.
+      return { title, where, role, date: humanDate(date), summary, note, alsoAbout };
     }
     // What each flag label says about a space, as a plain predicate: the page states it, it does not tag it.
     const FLAG_SAYS = {
@@ -12745,7 +12748,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const pc = /^Praises (.+?); criticises (.+?)\.?$/.exec((a.fields || []).find(f => f[0] === 'Account in brief')?.[1] || '');
         const body = pc ? `<p class="t-lead no-indent"><strong>Pros:</strong> ${escapeHtml(pc[1])}.</p><p class="t-lead no-indent"><strong>Cons:</strong> ${escapeHtml(pc[2])}.</p>` : p('', v.summary);
         return `<div class="record-card account-report-card space-y-1_5">
-          <div class="kicker no-indent">User post · ${escapeHtml(v.title)}</div>
+          <div class="kicker no-indent">User posted on ${escapeHtml(v.where)}</div>
+          ${v.role ? `<div class="kicker no-indent">${escapeHtml(v.role)}</div>` : ''}
           ${v.date ? `<div class="kicker no-indent">${escapeHtml(v.date)}</div>` : ''}
           ${body}
           ${v.note ? `<p class="no-indent account-note">Context: ${escapeHtml(v.note)}</p>` : ''}
@@ -13682,8 +13686,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const urls = (a.sources || []).map(x => x && x.url);
         const pc = /^Praises (.+?); criticises (.+?)\.?$/.exec((a.fields || []).find(f => f[0] === 'Account in brief')?.[1] || '');
         const what = pc ? `Pros: ${proseEnd(pc[1])} Cons: ${proseEnd(pc[2])}` : proseEnd(v.summary);
-        const who = [v.title.replace(/\s·\s/g, ', '), /unknown/i.test(v.date) ? '' : v.date].filter(Boolean).join(', ');
-        return proseLi(`User post, ${who}.`, escapeHtml([what, v.note ? 'Context: ' + proseEnd(v.note) : '', v.alsoAbout.length ? 'Also about ' + v.alsoAbout.join(', ') + '.' : ''].filter(Boolean).join(' ')) + proseCite(urls, 1), true);
+        // "User posted on Glassdoor", then the role and the date, each on a line of its own, before what was said.
+        const head = [`User posted on ${v.where}`, v.role, /unknown/i.test(v.date) ? '' : v.date].filter(Boolean).map(escapeHtml).join('<br>');
+        return proseLi('', `<span class="account-lines">${head}</span><br>` + escapeHtml([what, v.note ? 'Context: ' + proseEnd(v.note) : '', v.alsoAbout.length ? 'Also about ' + v.alsoAbout.join(', ') + '.' : ''].filter(Boolean).join(' ')) + proseCite(urls, 1), true);
       }), { tone: 'flag', gossip: true }));
       // Reader notes and whistleblower notes are no longer posted from the page (release 243): reviews are the place view's own section, placeReviewsHtml().
       return proseRows(rows, 'Accounts and notes', true);
@@ -21522,17 +21527,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=664"></script>
-<script src="assets/note-aids.js?v=664" defer></script>
-<script src="assets/note-files.js?v=664" defer></script>
-<script src="assets/funding-views.js?v=664"></script>
-<script src="assets/layers.js?v=664"></script>
-<script src="assets/critique-gallery-data.js?v=664"></script>
-<script src="assets/critique-gallery.js?v=664"></script>
-<script src="assets/hq-detail.js?v=664"></script>
-<script src="assets/bubbles.js?v=664" defer></script>
-<script src="assets/phone-maps.js?v=664"></script>
-<script src="assets/desktop-maps.js?v=664"></script>
-<script src="assets/chat-resize.js?v=664"></script>
+<script src="assets/typeset.js?v=665"></script>
+<script src="assets/note-aids.js?v=665" defer></script>
+<script src="assets/note-files.js?v=665" defer></script>
+<script src="assets/funding-views.js?v=665"></script>
+<script src="assets/layers.js?v=665"></script>
+<script src="assets/critique-gallery-data.js?v=665"></script>
+<script src="assets/critique-gallery.js?v=665"></script>
+<script src="assets/hq-detail.js?v=665"></script>
+<script src="assets/bubbles.js?v=665" defer></script>
+<script src="assets/phone-maps.js?v=665"></script>
+<script src="assets/desktop-maps.js?v=665"></script>
+<script src="assets/chat-resize.js?v=665"></script>
 </body>
 </html>

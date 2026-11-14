@@ -47,7 +47,8 @@
       .ai-group .label{display:flex!important;justify-content:space-between!important;gap:var(--sh-pad)!important;align-items:baseline!important}
       .ai-group h2{margin:0!important}
       .ai-group .ai-tie{margin:0 0 var(--sh-s-lh)!important;max-width:40em!important}
-      .ai-grid{list-style:none!important;margin:0!important;padding:0!important;columns:4 260px!important;column-gap:var(--sh-pad)!important}
+      /* Two pictures to a row (user, 13 Nov 2026: "make two per row"). */
+      .ai-grid{list-style:none!important;margin:0!important;padding:0!important;columns:2!important;column-gap:var(--sh-pad)!important}
       .ai-grid li{break-inside:avoid!important;margin:0 0 var(--sh-s-lh)!important}
       .ai-grid button{display:block!important;width:100%!important;line-height:0!important;cursor:zoom-in!important;background:var(--sh-stone-2)!important}
       .ai-grid img{display:block!important;width:100%!important;height:auto!important;transition:opacity .2s!important}
@@ -187,7 +188,7 @@
         <ul class="ai-grid">${g.images.map((im, i) => {
           const on = g.space ? [] : spaceNames(im.n);
           const c = caption(im);
-          return `<li><button type="button" data-g="${gi}" data-i="${i}" aria-label="Zoom: ${esc(im.project)}, image ${i + 1} of ${g.images.length}"><img src="${esc(im.thumb)}" alt="" loading="lazy" width="${im.w}" height="${im.h}"></button>
+          return `<li><button type="button" data-g="${gi}" data-i="${i}" aria-label="Zoom: ${esc(im.project)}, image ${i + 1} of ${g.images.length}"><img src="${esc(im.mid || im.thumb)}" srcset="${esc(im.thumb)} 480w, ${esc(im.mid || im.thumb)} ${Math.min(1200, im.w)}w" sizes="(max-width:640px) 100vw, 50vw" alt="" loading="lazy" width="${im.w}" height="${im.h}"></button>
           <p class="ai-cap"><span class="t">${esc(c.title)}</span><span>${esc(c.who)}</span><span>${esc(c.occasion)}</span>${c.photo ? `<span>${esc(c.photo)}</span>` : ''}${on.length ? `<span>On the atlas: ${esc(on.join(', '))}</span>` : ''}</p></li>`;
         }).join('')}</ul>
       </section>`).join('');
