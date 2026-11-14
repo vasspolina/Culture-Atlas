@@ -50,7 +50,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=669">
-  <link rel="stylesheet" href="assets/sheet.css?v=674">
+  <link rel="stylesheet" href="assets/sheet.css?v=675">
   <script src="assets/config.js?v=669"></script>
   <script src="assets/subtopic.js?v=669"></script>
   <script src="assets/names.js?v=669"></script>
@@ -10381,11 +10381,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v674';
+    const ATLAS_RELEASE = 'culture-atlas-v675';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=674').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=675').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
