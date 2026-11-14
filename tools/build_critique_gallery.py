@@ -35,24 +35,24 @@ SPLASH_SIZE = 1400
 # Atlas record id -> what ties the reference to the space (from the reference's own credit, note or source page), and which
 # references belong there. A reference can sit on more than one space.
 SPACES = {
-    'w139-amsterdam': ('People’s Forum, an exhibition at W139', lambda r: r['project'] == 'People’s Forum'),
-    'raven-row-london': ('The Individual and the Organisation, an exhibition at Raven Row (2012)',
+    'w139-amsterdam': ('Farida Sedoc, People’s Forum, an exhibition with Platform BK in residence', lambda r: r['project'] == 'People’s Forum'),
+    'raven-row-london': ('Artist Placement Group, The Individual and the Organisation, exhibition, 2012',
                          lambda r: r['project'] == 'The Individual and the Organisation'),
-    'salt-galata-istanbul': ('The Piracy Project, shown by SALT', lambda r: r['project'] == 'The Piracy Project'),
-    'moma-the-museum-of-modern-art': ('Disgorgement, in the collection of MoMA', lambda r: r['project'] == 'Disgorgement'),
-    'taipei-fine-arts-museum-taipei': ('Trickle Down, in the 2012 Taipei Biennial at the Taipei Fine Arts Museum',
+    'salt-galata-istanbul': ('Andrea Francke and Eva Weinmayr, The Piracy Project', lambda r: r['project'] == 'The Piracy Project'),
+    'moma-the-museum-of-modern-art': ('Cameron Rowland, Disgorgement, 2016, in the collection', lambda r: r['project'] == 'Disgorgement'),
+    'taipei-fine-arts-museum-taipei': ('Andreas Siekmann, Trickle Down, Taipei Biennial 2012',
                                        lambda r: r['project'].startswith('Trickle Down')),
-    'tate-modern': ('Museum of Contemporary African Art, shown at Tate Modern',
+    'tate-modern': ('Meschac Gaba, Museum of Contemporary African Art',
                     lambda r: r['project'] == 'Museum of Contemporary African Art'),
-    'rijksakademie-amsterdam': ('Museum of Contemporary African Art, begun after the artist studied at the Rijksakademie',
+    'rijksakademie-amsterdam': ('Meschac Gaba, Museum of Contemporary African Art, begun after his residency',
                                 lambda r: r['project'] == 'Museum of Contemporary African Art'),
-    'walker-art-center': ('MsHeresies, published in the Walker Reader',
+    'walker-art-center': ('Rietlanden Women’s Office, MsHeresies, in the Walker Reader',
                           lambda r: r['source_page'].startswith('https://www.walkerart.org/')),
     # KADIST's 30 Artoons could not be fetched (kadist.org refuses automated downloads); the space joins the layer once the
     # files are in the image directory. Until then it has no images and is left out of the layer's data.
-    'kadist-paris': ('Artoons, cartoons on the art world by Pablo Helguera, in the collection of KADIST',
+    'kadist-paris': ('Pablo Helguera, Artoons, cartoons on the art world, in the collection here',
                      lambda r: r['project'] == 'Artoons at KADIST'),
-    'museum-folkwang-essen': ('Banners for Heresies, in Rietlanden Women’s Office’s exhibition at Museum Folkwang',
+    'museum-folkwang-essen': ('Rietlanden Women’s Office, Banners for Heresies, from their exhibition here',
                               lambda r: r['source_page'].startswith('https://www.museum-folkwang.de/')),
 }
 
