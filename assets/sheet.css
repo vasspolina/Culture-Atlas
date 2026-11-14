@@ -1489,3 +1489,22 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   #gmMenu button[aria-checked="true"]::after{border-color:currentColor!important}
   #gmMenuBtn{min-width:44px!important;min-height:44px!important;display:flex!important;align-items:center!important;justify-content:center!important}
 }
+
+/* ---- The head bar's words hold still (user, 14 Nov 2026: "fix top menu so the buttons do not jump"). A word that is on
+   is set in italic, and the italic is not the roman's width (Details 67.5 to 68.7px, Chat with the curator 189.4 to
+   185.9px), so its neighbours moved each time; Dark and Light, and Expand chat and Back to map, trade places with different
+   widths too. Each button now carries every form of its word, roman and italic, as two unseen lines of no height, so it is
+   always as wide as its widest form. The lines are empty to a screen reader. ---- */
+@media (min-width:768px){
+  :root.gmd :is(#topGossipBtn,#topThemeBtn,#shExpandChat,#shBackToMap,#workspaceTabDossier,#workspaceTabChat)::before,
+  :root.gmd :is(#topGossipBtn,#topThemeBtn,#shExpandChat,#shBackToMap,#workspaceTabDossier,#workspaceTabChat)::after{
+    display:block!important;position:static!important;height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important;visibility:hidden!important;
+    white-space:pre!important;pointer-events:none!important;background:none!important;font:inherit!important;letter-spacing:inherit!important}
+  :root.gmd :is(#topGossipBtn,#topThemeBtn,#shExpandChat,#shBackToMap,#workspaceTabDossier,#workspaceTabChat)::before{font-style:normal!important}
+  :root.gmd :is(#topGossipBtn,#topThemeBtn,#shExpandChat,#shBackToMap,#workspaceTabDossier,#workspaceTabChat)::after{font-style:italic!important}
+  :root.gmd #topGossipBtn::before,:root.gmd #topGossipBtn::after{content:"Gossip mode";content:"Gossip mode" / ""}
+  :root.gmd #topThemeBtn::before,:root.gmd #topThemeBtn::after{content:"Dark\A Light";content:"Dark\A Light" / ""}
+  :root.gmd :is(#shExpandChat,#shBackToMap)::before,:root.gmd :is(#shExpandChat,#shBackToMap)::after{content:"Expand chat\A \2039  Back to map";content:"Expand chat\A \2039  Back to map" / ""}
+  :root.gmd #workspaceTabDossier::before,:root.gmd #workspaceTabDossier::after{content:"Details";content:"Details" / ""}
+  :root.gmd #workspaceTabChat::before,:root.gmd #workspaceTabChat::after{content:"Chat with the curator";content:"Chat with the curator" / ""}
+}
