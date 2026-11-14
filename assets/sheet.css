@@ -207,8 +207,9 @@ svg{stroke-width:1.2px!important}
 #curatorHeroGreeting,#curatorDrawerGreeting{padding:0!important;margin:0!important;max-width:none!important;align-items:stretch!important}
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{margin:0 0 var(--sh-s-lh)!important;padding:0!important}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:block!important;margin:0!important;padding:0!important;gap:0!important}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{display:block!important;width:100%!important;margin:0!important;padding:0 0 0 var(--sh-dash)!important;text-indent:calc(-1 * var(--sh-dash))!important;border:0!important;background:transparent!important;white-space:normal!important;text-align:left!important}
-:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+/* the questions are set as the intro's own lines (user, 14 Nov 2026): no dash, no hung indent, the same space under each */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{display:block!important;width:100%!important;margin:0 0 .6em!important;padding:0!important;text-indent:0!important;border:0!important;background:transparent!important;white-space:normal!important;text-align:left!important;max-width:60ch}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt::before{content:none!important}
 :is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt *{text-decoration:none!important}
 
 #workBottomDock{padding:0 var(--sh-pad) var(--sh-pad)!important}
