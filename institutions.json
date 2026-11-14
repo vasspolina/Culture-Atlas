@@ -203161,8 +203161,8 @@
     "location": "London, UK",
     "tier": "A",
     "size": "L",
-    "funding": "Tate Britain has no separate accounts, it is funded through the Tate group. Tate's Annual Report 2024-25 gives group income of \u00a3167,150,000, of which grant-in-aid revenue \u00a341,442,000 and grant-in-aid capital \u00a312,461,000 from government, fundraising \u00a341,679,000, trading income \u00a332,550,000, admissions \u00a39,132,000, fees and other income \u00a315,363,000 and donated works of art \u00a314,523,000. The same report names Burberry (a fashion show at Tate Britain in February and support for the Painting Conservation Studios), The Bukhman Foundation (the Tate Britain Commission), Gucci, Hyundai Motor, The Julia and Hans Rausing Trust and the Blavatnik Family Foundation among supporters.",
-    "watch": "Tate Britain is one of the four Tate galleries and part of the same body as Tate Modern, which has its own record in the atlas; the report counts 1,197,223 visitors to Tate Britain in 2024-25. Museums Journal (14 October 2025) and Novara Media (23 December 2025) report a restructure with redundancies, the closure of the staff canteens at Tate Britain and Tate Modern, and a week of strikes by PCS members over pay from 26 November to 2 December 2025.",
+    "funding": "Tate group income \u00a3167.2M (2024-25), \u00a353.9M of it government grant-in-aid. Supporters: Burberry, The Bukhman Foundation, Gucci, Hyundai Motor, The Julia and Hans Rausing Trust, Blavatnik Family Foundation.",
+    "watch": "A 2025 restructure brought redundancies and closed the staff canteens; PCS members struck over pay from 26 November to 2 December 2025.",
     "sources": [
       "https://www.tate.org.uk/visit/tate-britain",
       "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
@@ -203193,6 +203193,13 @@
           "https://nominatim.openstreetmap.org/search?q=Tate+Britain,+London"
         ],
         "basis": "OpenStreetMap, name lookup",
+        "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.tate.org.uk/visit/tate-britain"
+        ],
+        "basis": "the space's own visit page",
         "retrieved": "2026-11-14"
       }
     },
@@ -203234,15 +203241,48 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Tate Britain is one of the four Tate galleries and part of the same body as Tate Modern, which has its own record in the atlas; the report counts 1,197,223 visitors to Tate Britain in 2024-25.",
+        "Museums Journal (14 October 2025) and Novara Media (23 December 2025) report a restructure with redundancies, the closure of the staff canteens at Tate Britain and Tate Modern, and a week of strikes by PCS members over pay from 26 November to 2 December 2025."
+      ],
+      "funding": [
+        "Tate Britain has no separate accounts, it is funded through the Tate group.",
+        "Tate's Annual Report 2024-25 gives group income of \u00a3167,150,000, of which grant-in-aid revenue \u00a341,442,000 and grant-in-aid capital \u00a312,461,000 from government, fundraising \u00a341,679,000, trading income \u00a332,550,000, admissions \u00a39,132,000, fees and other income \u00a315,363,000 and donated works of art \u00a314,523,000.",
+        "The same report names Burberry (a fashion show at Tate Britain in February and support for the Painting Conservation Studios), The Bukhman Foundation (the Tate Britain Commission), Gucci, Hyundai Motor, The Julia and Hans Rausing Trust and the Blavatnik Family Foundation among supporters."
+      ],
+      "sources": [
+        {
+          "url": "https://www.tate.org.uk/visit/tate-britain"
+        },
+        {
+          "url": "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf"
+        },
+        {
+          "url": "https://www.gov.uk/government/publications/tate-gallery-annual-accounts-2024-to-2025"
+        },
+        {
+          "url": "https://www.museumsassociation.org/museums-journal/news/2025/10/strikes-loom-at-national-institutions/"
+        },
+        {
+          "url": "https://novaramedia.com/2025/12/23/some-tate-workers-salaries-are-less-than-their-directors-bonuses/"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/03/11/one-of-the-most-challenging-issues-ive-faced-tate-britain-director-on-confronting-racist-whistler-mural"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.tate.org.uk/visit/tate-britain"
+    }
   },
   {
     "name": "Museum Boijmans Van Beuningen",
     "location": "Rotterdam, Netherlands",
     "tier": "A",
     "size": "L",
-    "funding": "The museum foundation's public-benefit (ANBI) filing says its income is revenue (admission, shop, catering, loans), a subsidy from the municipality of Rotterdam and contributions from funds, companies and individuals; it reports government subsidies of \u20ac15,059 thousand in 2025 and \u20ac15,545 thousand in 2024, and lottery contributions of \u20ac225 thousand in 2025. For the renovation of the building, NOS reported on 28 June 2024 a total of about \u20ac359 million, of which the municipality would cover just over \u20ac270 million, the Droom en Daad foundation \u20ac80 million and other parties \u20ac9 million.",
-    "watch": "Municipal art museum of Rotterdam, run by a foundation; the building has been closed since 2019 and the collection is shown in the Depot, opened in 2021. The renovation budget rose from \u20ac223 million to about \u20ac359 million, DutchNews (28 June 2024) links the Droom en Daad foundation to the Van der Vorm family, and Finestre sull'Arte (29 August 2026), citing NRC, reports a prosecutor's inquiry into Rotterdam building contracts that touches the asbestos removal at the museum.",
+    "funding": "Rotterdam municipality subsidy, with \u20ac15.1M in government subsidies in 2025, plus admissions, funds and companies. The \u20ac359M renovation: city \u20ac270M, Droom en Daad foundation \u20ac80M.",
+    "watch": "Building closed since 2019. Renovation budget rose from \u20ac223M to about \u20ac359M; a prosecutor's inquiry into Rotterdam building contracts touches its asbestos removal.",
     "sources": [
       "https://www.boijmans.nl/en",
       "https://storage.boijmans.nl/uploads/2026/06/30/LSJhtdrgRixka7etfskWh3Lg3EpINsCgwdtWtEDT.pdf",
@@ -203273,6 +203313,13 @@
           "https://nominatim.openstreetmap.org/search?q=Museum+Boijmans+Van+Beuningen,+Rotterdam"
         ],
         "basis": "OpenStreetMap, name lookup",
+        "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.boijmans.nl/en"
+        ],
+        "basis": "the space's own visit page",
         "retrieved": "2026-11-14"
       }
     },
@@ -203313,15 +203360,44 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Municipal art museum of Rotterdam, run by a foundation; the building has been closed since 2019 and the collection is shown in the Depot, opened in 2021.",
+        "The renovation budget rose from \u20ac223 million to about \u20ac359 million, DutchNews (28 June 2024) links the Droom en Daad foundation to the Van der Vorm family, and Finestre sull'Arte (29 August 2026), citing NRC, reports a prosecutor's inquiry into Rotterdam building contracts that touches the asbestos removal at the museum."
+      ],
+      "funding": [
+        "The museum foundation's public-benefit (ANBI) filing says its income is revenue (admission, shop, catering, loans), a subsidy from the municipality of Rotterdam and contributions from funds, companies and individuals; it reports government subsidies of \u20ac15,059 thousand in 2025 and \u20ac15,545 thousand in 2024, and lottery contributions of \u20ac225 thousand in 2025.",
+        "For the renovation of the building, NOS reported on 28 June 2024 a total of about \u20ac359 million, of which the municipality would cover just over \u20ac270 million, the Droom en Daad foundation \u20ac80 million and other parties \u20ac9 million."
+      ],
+      "sources": [
+        {
+          "url": "https://www.boijmans.nl/en"
+        },
+        {
+          "url": "https://storage.boijmans.nl/uploads/2026/06/30/LSJhtdrgRixka7etfskWh3Lg3EpINsCgwdtWtEDT.pdf"
+        },
+        {
+          "url": "https://nos.nl/l/2526490"
+        },
+        {
+          "url": "https://dutchnews.nl/2024/06/family-foundation-bails-out-rotterdam-museum-renovation"
+        },
+        {
+          "url": "https://www.finestresullarte.info/en/news/rotterdam-the-boijmans-van-beuningen-museum-is-under-investigation-for-corruption"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.boijmans.nl/en"
+    }
   },
   {
     "name": "Kunsthistorisches Museum",
     "location": "Vienna, Austria",
     "tier": "B",
     "size": "L",
-    "funding": "The KHM-Museumsverband's annual report for 2023 lists total income of 53,601 thousand euros: 27,958 under Leistungsabgeltung, 17,094 from admissions, 3,106 from shops, 1,108 from rentals and events and 1,336 from sponsoring and donations. The same report names OMV Aktiengesellschaft as general partner of the Kunsthistorisches Museum, supporting its exhibitions. Vol.at reported on 10 November 2025 that entrance fees brought in \u20ac17.6 million in the first nine months of 2025 and that the federal government had originally promised \u20ac35 million towards a renovation costed at about \u20ac42 million.",
-    "watch": "Austrian federal museum, part of the KHM-Museumsverband with the Weltmuseum and the Theatermuseum; Jonathan Fine is director general and Paul Frey managing director (Vol.at, 10 November 2025). Its general partner OMV is an oil and gas company, and in October 2019 the appointed director Eike Schmidt withdrew a month before taking office (The Art Newspaper, 4 October 2019).",
+    "funding": "2023 income \u20ac53.6M: \u20ac28.0M federal base payment, \u20ac17.1M admissions, \u20ac1.3M sponsoring and donations. OMV is general partner.",
+    "watch": "General partner OMV is an oil and gas company. Appointed director Eike Schmidt withdrew in October 2019, a month before taking office.",
     "sources": [
       "https://www.khm.at/en/visit",
       "https://www.khm.at/fileadmin/pdf_KHM/berichte/KHM_JB_GB_2023_WEB.pdf",
@@ -203356,6 +203432,13 @@
         ],
         "basis": "OpenStreetMap, name lookup",
         "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.khm.at/en/visit"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
       }
     },
     "gossip_data": {
@@ -203380,15 +203463,45 @@
       ]
     },
     "grade": 3,
-    "grade_basis": "A funder worth knowing about, outside the flagged categories."
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
+    "details": {
+      "overview": [
+        "Austrian federal museum, part of the KHM-Museumsverband with the Weltmuseum and the Theatermuseum; Jonathan Fine is director general and Paul Frey managing director (Vol.at, 10 November 2025).",
+        "Its general partner OMV is an oil and gas company, and in October 2019 the appointed director Eike Schmidt withdrew a month before taking office (The Art Newspaper, 4 October 2019)."
+      ],
+      "funding": [
+        "The KHM-Museumsverband's annual report for 2023 lists total income of 53,601 thousand euros: 27,958 under Leistungsabgeltung, 17,094 from admissions, 3,106 from shops, 1,108 from rentals and events and 1,336 from sponsoring and donations.",
+        "The same report names OMV Aktiengesellschaft as general partner of the Kunsthistorisches Museum, supporting its exhibitions.",
+        "Vol.at reported on 10 November 2025 that entrance fees brought in \u20ac17.6 million in the first nine months of 2025 and that the federal government had originally promised \u20ac35 million towards a renovation costed at about \u20ac42 million."
+      ],
+      "sources": [
+        {
+          "url": "https://www.khm.at/en/visit"
+        },
+        {
+          "url": "https://www.khm.at/fileadmin/pdf_KHM/berichte/KHM_JB_GB_2023_WEB.pdf"
+        },
+        {
+          "url": "https://www.vol.at/record-year-for-the-khm-in-vienna-preparations-for-major-renovation/9795263"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2019/10/04/uffizis-eike-schmidt-reveals-why-he-cancelled-move-to-kunsthistorisches-museum-at-the-eleventh-hour"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2022/11/15/climate-activists-in-vienna-pour-oil-over-gustav-klimt-painting-in-vienna"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.khm.at/en"
+    }
   },
   {
     "name": "Belvedere",
     "location": "Vienna, Austria",
     "tier": "A",
     "size": "L",
-    "funding": "The Belvedere's annual accounts for 2024 show a federal base payment (Basisabgeltung) of \u20ac11,562,000.00, sales revenue of \u20ac28,925,722.00 and donations and other contributions of \u20ac906,638.60; in 2023 the base payment was \u20ac10,700,000.00 and sales revenue \u20ac26,274,562.18. The accounts do not list sponsors by name.",
-    "watch": "The \u00d6sterreichische Galerie Belvedere is a scientific institution under public law of the Austrian federal state, under the Bundesmuseen-Gesetz 2002. In July 2016 culture minister Thomas Drozda declined to renew the contract of director Agnes Husslein-Arco after an external audit confirmed breaches of the museum's compliance rules (ORF Wien, 27 July 2016; The Art Newspaper, 31 August 2016).",
+    "funding": "2024 accounts: federal base payment \u20ac11.6M, sales revenue \u20ac28.9M, donations and other contributions \u20ac0.9M. Sponsors are not listed by name.",
+    "watch": "Director Agnes Husslein-Arco's contract was not renewed in July 2016 after an external audit confirmed breaches of compliance rules.",
     "sources": [
       "https://www.belvedere.at/en/visit",
       "https://www.belvedere.at/sites/default/files/2025-09/Jahresabschluss%202024.pdf",
@@ -203420,6 +203533,13 @@
         ],
         "basis": "OpenStreetMap, name lookup",
         "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.belvedere.at/en/visit"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
       }
     },
     "gossip_data": {
@@ -203444,15 +203564,41 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "The \u00d6sterreichische Galerie Belvedere is a scientific institution under public law of the Austrian federal state, under the Bundesmuseen-Gesetz 2002.",
+        "In July 2016 culture minister Thomas Drozda declined to renew the contract of director Agnes Husslein-Arco after an external audit confirmed breaches of the museum's compliance rules (ORF Wien, 27 July 2016; The Art Newspaper, 31 August 2016)."
+      ],
+      "funding": [
+        "The Belvedere's annual accounts for 2024 show a federal base payment (Basisabgeltung) of \u20ac11,562,000.00, sales revenue of \u20ac28,925,722.00 and donations and other contributions of \u20ac906,638.60; in 2023 the base payment was \u20ac10,700,000.00 and sales revenue \u20ac26,274,562.18.",
+        "The accounts do not list sponsors by name."
+      ],
+      "sources": [
+        {
+          "url": "https://www.belvedere.at/en/visit"
+        },
+        {
+          "url": "https://www.belvedere.at/sites/default/files/2025-09/Jahresabschluss%202024.pdf"
+        },
+        {
+          "url": "https://wien.orf.at/v2/news/stories/2787836/"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2016/09/01/vienna-museum-director-departs-amid-dispute-over-expenses"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.belvedere.at/en"
+    }
   },
   {
     "name": "Pergamonmuseum",
     "location": "Berlin, Germany",
     "tier": "A",
     "size": "L",
-    "funding": "The museum belongs to the Staatliche Museen zu Berlin, and the Stiftung Preu\u00dfischer Kulturbesitz, which is financed jointly by the federal government and the German states, is responsible for the rebuilding. The Berlin Senate said on 11 February 2025 that from 2026 the federal and state contributions to the foundation rise by twelve million euros a year in total, nine million of it federal. The Staatliche Museen put the building work for the second phase at 722.4 million euros plus about 295.6 million euros for risks and price rises (28 March 2023); the pages read did not state the museum's own operating budget.",
-    "watch": "State museum on Berlin's Museum Island, closed to visitors since 23 October 2023 for a full overhaul; the north wing and the Pergamon Altar hall are due back in spring 2027 and, according to Entwicklungsstadt (27 March 2023), the south wing stays closed until 2037 with a total of 1.2 billion euros for the complex. The Pergamonmuseum. Das Panorama exhibition nearby is open in the meantime.",
+    "funding": "Part of the Staatliche Museen zu Berlin under the Stiftung Preu\u00dfischer Kulturbesitz, financed by the federal government and the states. Second-phase building work: \u20ac722.4M plus \u20ac295.6M for risks.",
+    "watch": "Closed since 23 October 2023 for a full overhaul. North wing due back in spring 2027; the south wing stays closed until 2037.",
     "sources": [
       "https://www.smb.museum/en/museums-institutions/pergamonmuseum/home/",
       "https://www.smb.museum/nachrichten/detail/pergamonmuseum-wegen-grundinstandsetzung-ab-oktober-2023-geschlossen/",
@@ -203472,7 +203618,6 @@
     "visit_url": "https://www.smb.museum/en/museums-institutions/pergamonmuseum/home/",
     "address": "Am Kupfergraben 5, 10117 Berlin",
     "flags": null,
-    "records_note": "No separate accounts seen for the museum; the pages read point to the Stiftung Preu\u00dfischer Kulturbesitz as the body responsible.",
     "research_retrieved": "2026-11-14",
     "field_sources": {
       "coordinates": {
@@ -203505,15 +203650,42 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "State museum on Berlin's Museum Island, closed to visitors since 23 October 2023 for a full overhaul; the north wing and the Pergamon Altar hall are due back in spring 2027 and, according to Entwicklungsstadt (27 March 2023), the south wing stays closed until 2037 with a total of 1.2 billion euros for the complex.",
+        "The Pergamonmuseum. Das Panorama exhibition nearby is open in the meantime."
+      ],
+      "funding": [
+        "The museum belongs to the Staatliche Museen zu Berlin, and the Stiftung Preu\u00dfischer Kulturbesitz, which is financed jointly by the federal government and the German states, is responsible for the rebuilding.",
+        "The Berlin Senate said on 11 February 2025 that from 2026 the federal and state contributions to the foundation rise by twelve million euros a year in total, nine million of it federal.",
+        "The Staatliche Museen put the building work for the second phase at 722.4 million euros plus about 295.6 million euros for risks and price rises (28 March 2023)."
+      ],
+      "sources": [
+        {
+          "url": "https://www.smb.museum/en/museums-institutions/pergamonmuseum/home/"
+        },
+        {
+          "url": "https://www.smb.museum/nachrichten/detail/pergamonmuseum-wegen-grundinstandsetzung-ab-oktober-2023-geschlossen/"
+        },
+        {
+          "url": "https://www.berlin.de/rbmskzl/aktuelles/pressemitteilungen/2025/pressemitteilung.1530288.php"
+        },
+        {
+          "url": "https://www.entwicklungsstadt.de/museumsinsel-umbau-des-pergamon-museums-wird-zum-marathon/"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.smb.museum/en/museums-institutions/pergamonmuseum/home/"
+    }
   },
   {
     "name": "Hamburger Kunsthalle",
     "location": "Hamburg, Germany",
     "tier": "A",
     "size": "L",
-    "funding": "The Hamburger Kunsthalle is a foundation under public law. Its balance sheet and income statement on the Hamburg transparency portal show sales revenue of \u20ac5,489,569.67 in 2025 and \u20ac7,168,934.32 in 2024, and other operating income of \u20ac22,824,659.82 in 2025 and \u20ac21,267,979.66 in 2024; the pages read did not state how much of that is the grant from the City of Hamburg. Its donations page names the F\u00f6rderstiftung der Hamburger Kunsthalle as a private supporters' foundation.",
-    "watch": "Art museum in Hamburg run as a public-law foundation, with a private supporters' foundation beside it. The pages read did not give a breakdown of public grant against private money.",
+    "funding": "Public-law foundation. 2025: sales revenue \u20ac5.5M, other operating income \u20ac22.8M. The F\u00f6rderstiftung der Hamburger Kunsthalle is its private supporters' foundation.",
+    "watch": "Its published accounts do not separate the City of Hamburg's grant from private money.",
     "sources": [
       "https://www.hamburger-kunsthalle.de/en/visit",
       "https://hamburger-kunsthalle.de/en/donate",
@@ -203533,7 +203705,6 @@
     "address": "Hamburger Kunsthalle, Glockengie\u00dferwall 5, 20095 Hamburg",
     "flags": null,
     "records_note": "Balance sheet and income statement are published on the Hamburg transparency portal (daten.transparenz.hamburg.de).",
-    "opening_hours": "10:00-18:00 (as shown for today, 14 November 2026)",
     "research_retrieved": "2026-11-14",
     "field_sources": {
       "coordinates": {
@@ -203545,15 +203716,38 @@
       }
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum in Hamburg run as a public-law foundation, with a private supporters' foundation beside it."
+      ],
+      "funding": [
+        "The Hamburger Kunsthalle is a foundation under public law.",
+        "Its balance sheet and income statement on the Hamburg transparency portal show sales revenue of \u20ac5,489,569.67 in 2025 and \u20ac7,168,934.32 in 2024, and other operating income of \u20ac22,824,659.82 in 2025 and \u20ac21,267,979.66 in 2024.",
+        "Its donations page names the F\u00f6rderstiftung der Hamburger Kunsthalle as a private supporters' foundation."
+      ],
+      "sources": [
+        {
+          "url": "https://www.hamburger-kunsthalle.de/en/visit"
+        },
+        {
+          "url": "https://hamburger-kunsthalle.de/en/donate"
+        },
+        {
+          "url": "https://daten.transparenz.hamburg.de/Dataport.HmbTG.ZS.Webservice.GetRessource100/GetRessource100.svc/3d1e374e-831f-45c6-8e8f-24aa7cf46755/Upload__Bilanz__GuV__Anlagevermoegen_2025.PDF"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.hamburger-kunsthalle.de/en"
+    }
   },
   {
     "name": "Pinakothek der Moderne",
     "location": "Munich, Germany",
     "tier": "A",
     "size": "L",
-    "funding": "The pages read did not state the museum's budget. Schw\u00e4bische Zeitung, reporting the Bavarian government's museum reform plans presented on 15 July 2026, says the Free State of Bavaria owns the collections and buildings and keeps supervision; the museum's site links to the Stiftung Pinakothek der Moderne and to the Friends of the Pinakothek der Moderne e.V., which it says has 900 members.",
-    "watch": "State museum in Munich's Kunstareal whose modern art collection is part of the Bavarian State Painting Collections. After S\u00fcddeutsche Zeitung reports on the handling of possible Nazi-looted art, arts minister Markus Blume removed the collections' director general Bernhard Maaz on 2 April 2025 (J\u00fcdische Allgemeine), and under the 2026 reform plan the State Painting Collections would cease to exist in their present form from 2029.",
+    "funding": "The Free State of Bavaria owns the collections and buildings. The Stiftung Pinakothek der Moderne and a friends' association of 900 members support it.",
+    "watch": "Director general Bernhard Maaz was removed on 2 April 2025 after reports on Nazi-looted art. A 2026 plan ends the State Painting Collections from 2029.",
     "sources": [
       "https://www.pinakothek-der-moderne.de/en/",
       "https://www.schwaebische.de/regional/bayern/ab-2029-bayern-strukturiert-staatsmuseen-um-4720093",
@@ -203574,7 +203768,6 @@
     "visit_url": "https://www.pinakothek-der-moderne.de/en/planning-your-visit/",
     "address": "Barer Stra\u00dfe 40, 80333 M\u00fcnchen",
     "flags": null,
-    "records_note": "No accounts seen for the museum; the pages read did not say where the Bavarian State Painting Collections publish figures.",
     "opening_hours": "Daily 10 am \u2013 6 pm, Thursday 10 am \u2013 8 pm, Monday closed",
     "research_retrieved": "2026-11-14",
     "field_sources": {
@@ -203583,6 +203776,13 @@
           "https://nominatim.openstreetmap.org/search?q=Pinakothek+der+Moderne,+M\u00fcnchen"
         ],
         "basis": "OpenStreetMap, name lookup",
+        "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.pinakothek-der-moderne.de/en/planning-your-visit/"
+        ],
+        "basis": "the space's own visit page",
         "retrieved": "2026-11-14"
       }
     },
@@ -203608,15 +203808,40 @@
       ]
     },
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "State museum in Munich's Kunstareal whose modern art collection is part of the Bavarian State Painting Collections.",
+        "After S\u00fcddeutsche Zeitung reports on the handling of possible Nazi-looted art, arts minister Markus Blume removed the collections' director general Bernhard Maaz on 2 April 2025 (J\u00fcdische Allgemeine), and under the 2026 reform plan the State Painting Collections would cease to exist in their present form from 2029."
+      ],
+      "funding": [
+        "Schw\u00e4bische Zeitung, reporting the Bavarian government's museum reform plans presented on 15 July 2026, says the Free State of Bavaria owns the collections and buildings and keeps supervision; the museum's site links to the Stiftung Pinakothek der Moderne and to the Friends of the Pinakothek der Moderne e.V., which it says has 900 members."
+      ],
+      "sources": [
+        {
+          "url": "https://www.pinakothek-der-moderne.de/en/"
+        },
+        {
+          "url": "https://www.schwaebische.de/regional/bayern/ab-2029-bayern-strukturiert-staatsmuseen-um-4720093"
+        },
+        {
+          "url": "https://www.juedische-allgemeine.de/kultur/raubkunst-debatte-sammlungschef-maaz-muss-gehen/"
+        },
+        {
+          "url": "https://www.tagesspiegel.de/kultur/ns-raubkunst-in-bayerns-staatsgemaldesammlungen-mit-funf-bildern-vier-schritte-vor-und-einer-zuruck-14269433.html"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.pinakothek-der-moderne.de/en/"
+    }
   },
   {
     "name": "Vatican Museums",
     "location": "Vatican City, Vatican City",
     "tier": "A",
     "size": "L",
-    "funding": "The pages read did not state the museums' budget or where their ticket income goes. The Art Newspaper (14 May 2024) and Crux (13 May 2024) describe them as employing about 700 people under the Governorate, the body that administers Vatican City State.",
-    "watch": "The papal museums, directed by Barbara Jatta; staff grievances go to the Governorate of Vatican City State. In May 2024, 49 employees sent a petition to the Governorate over pay, working conditions and visitor safety, which their lawyer said could lead to the first class action before a Vatican court (The Art Newspaper, 14 May 2024).",
+    "funding": "Run under the Governorate of Vatican City State, with about 700 employees.",
+    "watch": "In May 2024, 49 employees petitioned the Governorate over pay, conditions and visitor safety; their lawyer raised a first class action before a Vatican court.",
     "sources": [
       "https://www.museivaticani.va/content/museivaticani/en.html",
       "https://www.museivaticani.va/content/museivaticani/en/info/orari-musei-vaticani.html",
@@ -203636,7 +203861,6 @@
     "visit_url": "https://www.museivaticani.va/content/museivaticani/en/info/orari-musei-vaticani.html",
     "address": "Viale Vaticano, 00165 Rome",
     "flags": null,
-    "records_note": "No published accounts seen for the museums on the pages read.",
     "opening_hours": "From Monday to Saturday 08.00 a.m. \u2013 08.00 p.m. (final entry 06.00 p.m.); every last Sunday of the month 09.00 a.m. \u2013 02.00 p.m. (final entry 12.30 p.m.), free entry",
     "research_retrieved": "2026-11-14",
     "field_sources": {
@@ -203645,6 +203869,13 @@
           "https://nominatim.openstreetmap.org/search?q=Musei+Vaticani"
         ],
         "basis": "OpenStreetMap, name lookup",
+        "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.museivaticani.va/content/museivaticani/en/info/orari-musei-vaticani.html"
+        ],
+        "basis": "the space's own visit page",
         "retrieved": "2026-11-14"
       }
     },
@@ -203669,15 +203900,40 @@
       ]
     },
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "The papal museums, directed by Barbara Jatta; staff grievances go to the Governorate of Vatican City State.",
+        "In May 2024, 49 employees sent a petition to the Governorate over pay, working conditions and visitor safety, which their lawyer said could lead to the first class action before a Vatican court (The Art Newspaper, 14 May 2024)."
+      ],
+      "funding": [
+        "The Art Newspaper (14 May 2024) and Crux (13 May 2024) describe them as employing about 700 people under the Governorate, the body that administers Vatican City State."
+      ],
+      "sources": [
+        {
+          "url": "https://www.museivaticani.va/content/museivaticani/en.html"
+        },
+        {
+          "url": "https://www.museivaticani.va/content/museivaticani/en/info/orari-musei-vaticani.html"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/05/14/vatican-museums-staff-bring-legal-action-over-unfair-and-poor-working-conditions"
+        },
+        {
+          "url": "https://cruxnow.com/vatican/2024/05/vatican-museums-under-fire-from-workers-local-residents"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.museivaticani.va/content/museivaticani/en.html"
+    }
   },
   {
     "name": "Pinacoteca di Brera",
     "location": "Milan, Italy",
     "tier": "A",
     "size": "L",
-    "funding": "A state museum of the Italian Ministry of Culture, which describes it as an institute with special autonomy of major national interest; the pages read did not give its budget. The ministry's page on the opening of Palazzo Citterio (7 December 2024) cites ministry funding for the building since the 1980s without amounts, and names the Fondazione Giulio e Giovanna Sacchetti, the Amici di Brera and Salone del Mobile Milano as donors of particular works and fittings.",
-    "watch": "State picture gallery in Milan, run with Palazzo Citterio and the Biblioteca Braidense by director general Angelo Crespi. Palazzo Citterio, bought for the museum in 1972, opened on 8 December 2024 after the museum's unions had called a strike for the inauguration day and asked the minister to postpone it (Il Giorno, 3 November 2024; Il Foglio, 24 October 2024).",
+    "funding": "State museum of the Italian Ministry of Culture with special autonomy. Donors named for Palazzo Citterio: Fondazione Giulio e Giovanna Sacchetti, Amici di Brera and Salone del Mobile Milano.",
+    "watch": "Palazzo Citterio, bought in 1972, opened on 8 December 2024; the museum's unions had called a strike for the inauguration day.",
     "sources": [
       "https://pinacotecabrera.org/en/visit/",
       "https://cultura.gov.it/evento/apre-palazzo-citterio-nasce-la-grande-brera-a-milano",
@@ -203698,7 +203954,6 @@
     "visit_url": "https://pinacotecabrera.org/en/visit/",
     "address": "Via Brera, 28, 20121 Milan (Italy)",
     "flags": null,
-    "records_note": "No accounts seen on the pages read.",
     "research_retrieved": "2026-11-14",
     "field_sources": {
       "coordinates": {
@@ -203732,15 +203987,41 @@
       ]
     },
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "State picture gallery in Milan, run with Palazzo Citterio and the Biblioteca Braidense by director general Angelo Crespi.",
+        "Palazzo Citterio, bought for the museum in 1972, opened on 8 December 2024 after the museum's unions had called a strike for the inauguration day and asked the minister to postpone it (Il Giorno, 3 November 2024; Il Foglio, 24 October 2024)."
+      ],
+      "funding": [
+        "A state museum of the Italian Ministry of Culture, which describes it as an institute with special autonomy of major national interest.",
+        "The ministry's page on the opening of Palazzo Citterio (7 December 2024) cites ministry funding for the building since the 1980s without amounts, and names the Fondazione Giulio e Giovanna Sacchetti, the Amici di Brera and Salone del Mobile Milano as donors of particular works and fittings."
+      ],
+      "sources": [
+        {
+          "url": "https://pinacotecabrera.org/en/visit/"
+        },
+        {
+          "url": "https://cultura.gov.it/evento/apre-palazzo-citterio-nasce-la-grande-brera-a-milano"
+        },
+        {
+          "url": "https://www.ilgiorno.it/milano/cronaca/sindacati-grande-brera-mhkvmehr"
+        },
+        {
+          "url": "https://ilfoglio.it/gran-milano/2024/10/24/news/palazzo-citterio-un-disastro-sindacale-quasi-fatto--107562"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://pinacotecabrera.org/en/"
+    }
   },
   {
     "name": "Mus\u00e9e du quai Branly \u2013 Jacques Chirac",
     "location": "Paris, France",
     "tier": "A",
     "size": "L",
-    "funding": "A French national public institution (\u00e9tablissement public) whose president is appointed by the President of the Republic on the proposal of the Minister of Culture. The pages read did not state its state grant, own income or patrons; the Ministry of Culture's statement of 23 July 2026 says only that the president must ensure the museum's financial sustainability and counts nearly 1.4 million visitors in 2025.",
-    "watch": "National museum of the arts of Africa, Asia, Oceania and the Americas, presided over by Emmanuel Kasarh\u00e9rou, reappointed for a third term in July 2026. The ministry's statement lists the return of 26 works to Benin and of the Djidji Ay\u00f4kw\u00e9 talking drum to C\u00f4te d'Ivoire in 2025 among restitutions from its collection.",
+    "funding": "French national public institution under the Ministry of Culture; its president is appointed by the President of the Republic.",
+    "watch": "Emmanuel Kasarh\u00e9rou was reappointed president in July 2026. Returned 26 works to Benin and the Djidji Ay\u00f4kw\u00e9 drum to C\u00f4te d'Ivoire in 2025.",
     "sources": [
       "https://www.quaibranly.fr/en/",
       "https://www.quaibranly.fr/en/useful-information/come/schedules-rates-and-access",
@@ -203760,7 +204041,6 @@
     "visit_url": "https://www.quaibranly.fr/en/useful-information/come/schedules-rates-and-access",
     "address": "37 quai Jacques Chirac, 75007 Paris",
     "flags": null,
-    "records_note": "No accounts seen on the pages read.",
     "opening_hours": "Tuesday to Sunday 10:30 am to 07:00 pm, Thursday 10:30 am to 10:00 pm",
     "research_retrieved": "2026-11-14",
     "field_sources": {
@@ -203770,18 +204050,48 @@
         ],
         "basis": "OpenStreetMap, name lookup",
         "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.quaibranly.fr/en/useful-information/come/schedules-rates-and-access"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
       }
     },
-    "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "National museum of the arts of Africa, Asia, Oceania and the Americas, presided over by Emmanuel Kasarh\u00e9rou, reappointed for a third term in July 2026.",
+        "The ministry's statement lists the return of 26 works to Benin and of the Djidji Ay\u00f4kw\u00e9 talking drum to C\u00f4te d'Ivoire in 2025 among restitutions from its collection."
+      ],
+      "funding": [
+        "A French national public institution (\u00e9tablissement public) whose president is appointed by the President of the Republic on the proposal of the Minister of Culture.",
+        "The Ministry of Culture's statement of 23 July 2026 says only that the president must ensure the museum's financial sustainability and counts nearly 1.4 million visitors in 2025."
+      ],
+      "sources": [
+        {
+          "url": "https://www.quaibranly.fr/en/"
+        },
+        {
+          "url": "https://www.quaibranly.fr/en/useful-information/come/schedules-rates-and-access"
+        },
+        {
+          "url": "https://www.culture.gouv.fr/presse/communiques-de-presse/renouvellement-de-m.-emmanuel-kasarherou-a-la-presidence-de-l-etablissement-public-du-musee-du-quai-branly-jacques-chirac"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.quaibranly.fr/en/"
+    }
   },
   {
     "name": "Mucem",
     "location": "Marseille, France",
     "tier": "A",
     "size": "L",
-    "funding": "The pages read did not state who funds the museum or in what amounts. They show the French Ministry of Culture exercising authority over it: the minister suspended its president in June 2026 and sent the General Inspectorate of Cultural Affairs to audit it (The Art Newspaper, 2 July 2026; Acteurs publics).",
-    "watch": "National museum in Marseille on three sites (J4, Fort Saint-Jean and a conservation centre), whose president since November 2022, Pierre-Olivier Costa, was formerly chief of staff to Brigitte Macron. He and general manager V\u00e9ronique Hach\u00e9 were suspended from 1 July 2026 after a harassment complaint, a prosecutor's preliminary investigation and a ministry inspection; Costa denies wrongdoing (The Art Newspaper, 2 July 2026).",
+    "funding": "National museum under the authority of the French Ministry of Culture, which suspended its president in June 2026 and sent inspectors to audit it.",
+    "watch": "President Pierre-Olivier Costa and general manager V\u00e9ronique Hach\u00e9 were suspended from 1 July 2026 after a harassment complaint and a prosecutor's investigation; Costa denies wrongdoing.",
     "sources": [
       "https://www.mucem.org/en",
       "https://mucem.org/infos-pratiques/",
@@ -203802,7 +204112,6 @@
     "visit_url": "https://mucem.org/infos-pratiques/",
     "address": "7 Promenade Robert Laffont, Marseille (J4 site)",
     "flags": null,
-    "records_note": "No accounts seen on the pages read.",
     "opening_hours": "J4 and Fort Saint-Jean: tous les jours sauf le mardi, le 1 mai, le 25 d\u00e9cembre, 10h to 18h",
     "research_retrieved": "2026-11-14",
     "field_sources": {
@@ -203811,6 +204120,13 @@
           "https://nominatim.openstreetmap.org/search?q=Mucem,+Marseille"
         ],
         "basis": "OpenStreetMap, name lookup",
+        "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://mucem.org/infos-pratiques/"
+        ],
+        "basis": "the space's own visit page",
         "retrieved": "2026-11-14"
       }
     },
@@ -203836,15 +204152,40 @@
       ]
     },
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "National museum in Marseille on three sites (J4, Fort Saint-Jean and a conservation centre), whose president since November 2022, Pierre-Olivier Costa, was formerly chief of staff to Brigitte Macron.",
+        "He and general manager V\u00e9ronique Hach\u00e9 were suspended from 1 July 2026 after a harassment complaint, a prosecutor's preliminary investigation and a ministry inspection; Costa denies wrongdoing (The Art Newspaper, 2 July 2026)."
+      ],
+      "funding": [
+        "They show the French Ministry of Culture exercising authority over it: the minister suspended its president in June 2026 and sent the General Inspectorate of Cultural Affairs to audit it (The Art Newspaper, 2 July 2026; Acteurs publics)."
+      ],
+      "sources": [
+        {
+          "url": "https://www.mucem.org/en"
+        },
+        {
+          "url": "https://mucem.org/infos-pratiques/"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2026/07/02/president-and-general-manager-of-leading-marseille-art-institution-mucem-suspended-amid-workplace-allegations"
+        },
+        {
+          "url": "https://acteurspublics.fr/nomination/pierre-olivier-costa-president-du-mucem-suspendu-de-ses-fonctions/"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.mucem.org/en"
+    }
   },
   {
     "name": "Bozar, Centre for Fine Arts",
     "location": "Brussels, Belgium",
     "tier": "A",
     "size": "L",
-    "funding": "Bozar's site lists the Belgian federal government, the National Lottery, BNP Paribas Fortis, Proximus, Denys and NextGenerationEU as partners and funders; the pages read gave no amounts. The Brussels Times (6 February 2021) describes it as one of the national cultural institutions, with a federal minister leading the search for its director.",
-    "watch": "Federal arts centre in Brussels for exhibitions, concerts and film. Its board removed Paul Dujardin from the director's duties on 5 February 2021, after 18 years in the post and two staff motions of no confidence (La Libre, 5 February 2021; The Brussels Times, 6 February 2021).",
+    "funding": "Partners and funders listed: the Belgian federal government, the National Lottery, BNP Paribas Fortis, Proximus, Denys and NextGenerationEU. No amounts are given.",
+    "watch": "The board removed director Paul Dujardin on 5 February 2021 after 18 years and two staff motions of no confidence.",
     "sources": [
       "https://www.bozar.be/en",
       "https://www.bozar.be/en/your-visit",
@@ -203866,7 +204207,6 @@
     "visit_url": "https://www.bozar.be/en/your-visit",
     "address": "Bozar, Centre for Fine Arts, Rue Ravensteinstraat 23, 1000 Brussels",
     "flags": null,
-    "records_note": "No accounts seen on the pages read.",
     "research_retrieved": "2026-11-14",
     "field_sources": {
       "coordinates": {
@@ -203899,15 +204239,41 @@
       ]
     },
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "Federal arts centre in Brussels for exhibitions, concerts and film.",
+        "Its board removed Paul Dujardin from the director's duties on 5 February 2021, after 18 years in the post and two staff motions of no confidence (La Libre, 5 February 2021; The Brussels Times, 6 February 2021)."
+      ],
+      "funding": [
+        "Bozar's site lists the Belgian federal government, the National Lottery, BNP Paribas Fortis, Proximus, Denys and NextGenerationEU as partners and funders.",
+        "The Brussels Times (6 February 2021) describes it as one of the national cultural institutions, with a federal minister leading the search for its director."
+      ],
+      "sources": [
+        {
+          "url": "https://www.bozar.be/en"
+        },
+        {
+          "url": "https://www.bozar.be/en/your-visit"
+        },
+        {
+          "url": "https://www.lalibre.be/culture/politique/2021/02/05/fin-de-lere-paul-dujardin-a-bozar-ESCWH7GYYBDIPHFSZKJMOZE2VM/"
+        },
+        {
+          "url": "https://www.brusselstimes.com/153195/bozar-director-dujardin-sidelined"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.bozar.be/en"
+    }
   },
   {
     "name": "Royal Museums of Fine Arts of Belgium",
     "location": "Brussels, Belgium",
     "tier": "A",
     "size": "L",
-    "funding": "One of Belgium's federal scientific institutions, overseen by the federal science policy administration (SPP Politique scientifique) and the state secretary for science policy, according to BX1 (26 April 2024). The pages read did not give its federal grant, its own income or its sponsors.",
-    "watch": "Federal group of museums in Brussels that includes the Old Masters Museum and the Magritte Museum; Kim Oosterlinck, an ULB finance professor, was named director general from 1 July 2024. His predecessor Michel Draguet left on 30 April 2023 after a conflict with much of his staff that became public in December 2022 (The Art Newspaper France, 25 April 2023).",
+    "funding": "A Belgian federal scientific institution, overseen by the federal science policy administration and the state secretary for science policy.",
+    "watch": "Director general Michel Draguet left on 30 April 2023 after a public conflict with staff. Kim Oosterlinck took over on 1 July 2024.",
     "sources": [
       "https://fine-arts-museum.be/en",
       "https://www.artnewspaper.fr/2023/04/25/bruxelles-michel-draguet-va-quitter-la-direction-des-musees-royaux-des-beaux-arts-de-belgique",
@@ -203931,7 +204297,6 @@
     "visit_url": "https://fine-arts-museum.be/en",
     "address": "Rue de la R\u00e9gence/Regentschapsstraat 3 \u2013 1000 Brussels",
     "flags": null,
-    "records_note": "No accounts seen on the pages read.",
     "research_retrieved": "2026-11-14",
     "field_sources": {
       "coordinates": {
@@ -203964,15 +204329,37 @@
       ]
     },
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "Federal group of museums in Brussels that includes the Old Masters Museum and the Magritte Museum; Kim Oosterlinck, an ULB finance professor, was named director general from 1 July 2024.",
+        "His predecessor Michel Draguet left on 30 April 2023 after a conflict with much of his staff that became public in December 2022 (The Art Newspaper France, 25 April 2023)."
+      ],
+      "funding": [
+        "One of Belgium's federal scientific institutions, overseen by the federal science policy administration (SPP Politique scientifique) and the state secretary for science policy, according to BX1 (26 April 2024)."
+      ],
+      "sources": [
+        {
+          "url": "https://fine-arts-museum.be/en"
+        },
+        {
+          "url": "https://www.artnewspaper.fr/2023/04/25/bruxelles-michel-draguet-va-quitter-la-direction-des-musees-royaux-des-beaux-arts-de-belgique"
+        },
+        {
+          "url": "https://bx1.be/categories/news/kim-oosterlinck-vice-recteur-de-lulb-nouveau-directeur-des-musees-royaux-des-beaux-arts/"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://fine-arts-museum.be/en"
+    }
   },
   {
     "name": "Statens Museum for Kunst (SMK)",
     "location": "Copenhagen, Denmark",
     "tier": "A",
     "size": "L",
-    "funding": "A Danish state institution under the Ministry of Culture, which provides most of its income; it also raises money from foundations and sponsors for exhibitions, conservation and research (Lex.dk). The framework agreement between the ministry and the museum for 2022 to 2025 budgets, for 2024, a net appropriation of 83.3 million kroner, income of 72.7 million kroner and expenditure of 156.0 million kroner; the pages read did not name the foundations or sponsors.",
-    "watch": "Denmark's national gallery, in a building on S\u00f8lvgade opened in 1896, directed by Astrid la Cour since 2023 and advised by a museum council appointed by the ministry. More than 40 per cent of its budgeted spending is to be met from income other than the state appropriation, according to the framework agreement's own figures.",
+    "funding": "Danish state institution under the Ministry of Culture. 2024 budget: net state appropriation DKK 83.3M, other income DKK 72.7M, expenditure DKK 156.0M. Foundations and sponsors fund exhibitions and research.",
+    "watch": "More than 40 per cent of its budgeted spending must come from income other than the state appropriation.",
     "sources": [
       "https://www.smk.dk/wp-content/uploads/2022/05/Rammeaftale-for-Statens-Museum-for-Kunst-2022-2025.pdf",
       "https://lex.dk/Statens_Museum_for_Kunst"
@@ -204004,15 +204391,35 @@
       }
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Denmark's national gallery, in a building on S\u00f8lvgade opened in 1896, directed by Astrid la Cour since 2023 and advised by a museum council appointed by the ministry.",
+        "More than 40 per cent of its budgeted spending is to be met from income other than the state appropriation, according to the framework agreement's own figures."
+      ],
+      "funding": [
+        "A Danish state institution under the Ministry of Culture, which provides most of its income; it also raises money from foundations and sponsors for exhibitions, conservation and research (Lex.dk).",
+        "The framework agreement between the ministry and the museum for 2022 to 2025 budgets, for 2024, a net appropriation of 83.3 million kroner, income of 72.7 million kroner and expenditure of 156.0 million kroner."
+      ],
+      "sources": [
+        {
+          "url": "https://www.smk.dk/wp-content/uploads/2022/05/Rammeaftale-for-Statens-Museum-for-Kunst-2022-2025.pdf"
+        },
+        {
+          "url": "https://lex.dk/Statens_Museum_for_Kunst"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.smk.dk/en/"
+    }
   },
   {
     "name": "National Gallery of Ireland",
     "location": "Dublin, Ireland",
     "tier": "B",
     "size": "L",
-    "funding": "A public sector body that receives funding from the Irish government department responsible for the arts; the pages read did not give its annual grant. RT\u00c9 (25 February 2025) reports that the department's Cultural Digitisation Scheme paid for an X-ray system bought in November 2017 for \u20ac124,805, and The Irish Times (25 February 2022) puts the gallery's caf\u00e9 contract with Aramark at \u20ac7.5 million over three years.",
-    "watch": "Ireland's national art gallery on Merrion Square, bound by Irish and EU procurement law. In February 2022 artists withdrew works and more than 100 people protested over the award of the caf\u00e9 contract to Aramark, which caters for direct provision centres (The Irish Times), and in February 2025 the Taoiseach said the gallery had to explain an X-ray system left unused for eight years (RT\u00c9).",
+    "funding": "Public body funded by the Irish government department for the arts. Its caf\u00e9 contract with Aramark is worth \u20ac7.5M over three years.",
+    "watch": "Artists withdrew works and over 100 people protested the Aramark caf\u00e9 contract in February 2022. A \u20ac124,805 X-ray system sat unused for eight years.",
     "sources": [
       "https://www.irishtimes.com/news/ireland/irish-news/national-gallery-defends-awarding-contract-to-direct-provision-caterer-1.4808512",
       "https://www.irishtimes.com/news/ireland/irish-news/demonstrators-protest-national-gallery-links-to-direct-provision-caterer-1.4812395",
@@ -204037,7 +204444,7 @@
       "protest"
     ],
     "why_flagged": "The Irish Times reported on 25 February 2022 that more than 100 people protested outside the gallery, and that three artists asked for their work to be removed, over its \u20ac7.5 million caf\u00e9 contract with Aramark, a caterer to three direct provision centres.",
-    "records_note": "RT\u00c9 reports that the gallery's annual report is brought to Cabinet by the arts minister; the gallery's own site could not be opened on 14 November 2026 (HTTP 403).",
+    "records_note": "RT\u00c9 reports that the gallery's annual report is brought to Cabinet by the arts minister.",
     "research_retrieved": "2026-11-14",
     "field_sources": {
       "coordinates": {
@@ -204089,15 +204496,47 @@
       ]
     },
     "grade": 3,
-    "grade_basis": "A funder worth knowing about, outside the flagged categories."
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
+    "details": {
+      "overview": [
+        "Ireland's national art gallery on Merrion Square, bound by Irish and EU procurement law.",
+        "In February 2022 artists withdrew works and more than 100 people protested over the award of the caf\u00e9 contract to Aramark, which caters for direct provision centres (The Irish Times), and in February 2025 the Taoiseach said the gallery had to explain an X-ray system left unused for eight years (RT\u00c9)."
+      ],
+      "funding": [
+        "A public sector body that receives funding from the Irish government department responsible for the arts.",
+        "RT\u00c9 (25 February 2025) reports that the department's Cultural Digitisation Scheme paid for an X-ray system bought in November 2017 for \u20ac124,805, and The Irish Times (25 February 2022) puts the gallery's caf\u00e9 contract with Aramark at \u20ac7.5 million over three years."
+      ],
+      "sources": [
+        {
+          "url": "https://www.irishtimes.com/news/ireland/irish-news/national-gallery-defends-awarding-contract-to-direct-provision-caterer-1.4808512"
+        },
+        {
+          "url": "https://www.irishtimes.com/news/ireland/irish-news/demonstrators-protest-national-gallery-links-to-direct-provision-caterer-1.4812395"
+        },
+        {
+          "url": "https://www.thejournal.ie/article.php?id=5692239"
+        },
+        {
+          "url": "https://gcn.ie/?p=138612"
+        },
+        {
+          "url": "https://irishtimes.com/politics/2025/02/25/national-gallerys-unused-120000-under-scrutiny-ahead-of-arts-department-review"
+        },
+        {
+          "url": "https://www.rte.ie/news/politics/2025/0225/1498689-ireland-politics"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.nationalgallery.ie/"
+    }
   },
   {
     "name": "Philadelphia Museum of Art",
     "location": "Philadelphia, USA",
     "tier": "A",
     "size": "L",
-    "funding": "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Philadelphia Museum Of Art (EIN 23-1365388), reports total revenue of $114,413,997, including contributions of $43,987,025, program service revenue of $7,765,770 and investment income of $9,634,408, against expenses of $77,863,110 and net assets of $1,076,255,667. The Encyclopedia of Greater Philadelphia describes the museum as an ongoing recipient of funding from the city, which owned its building; the 1928 building opened at a cost to the city of $12 million. The pages read did not give a current city figure or name corporate sponsors.",
-    "watch": "Art museum founded in 1876 as the Pennsylvania Museum and School of Industrial Art, opened in Memorial Hall in 1877 and in its Benjamin Franklin Parkway building, on city land, in 1928. Its board dismissed director Sasha Suda on 4 November 2025, she sued, and a judge sent the case to arbitration on 30 January 2026 (WHYY, PhillyVoice, Philadelphia Inquirer); unionised staff struck in September 2022 (The Art Newspaper).",
+    "funding": "FY2023 Form 990: revenue $114.4M, contributions $44.0M, expenses $77.9M, net assets $1.08B. Ongoing funding from the City of Philadelphia, which owned the building.",
+    "watch": "The board dismissed director Sasha Suda on 4 November 2025; she sued and the case went to arbitration. Unionised staff struck in September 2022.",
     "sources": [
       "https://www.philamuseum.org/visit",
       "https://www.philamuseum.org/about",
@@ -204132,6 +204571,13 @@
           "https://nominatim.openstreetmap.org/search?q=Philadelphia+Museum+of+Art&format=json&limit=1"
         ],
         "basis": "OpenStreetMap, name lookup",
+        "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.philamuseum.org/visit"
+        ],
+        "basis": "the space's own visit page",
         "retrieved": "2026-11-14"
       }
     },
@@ -204173,15 +204619,53 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum founded in 1876 as the Pennsylvania Museum and School of Industrial Art, opened in Memorial Hall in 1877 and in its Benjamin Franklin Parkway building, on city land, in 1928.",
+        "Its board dismissed director Sasha Suda on 4 November 2025, she sued, and a judge sent the case to arbitration on 30 January 2026 (WHYY, PhillyVoice, Philadelphia Inquirer); unionised staff struck in September 2022 (The Art Newspaper)."
+      ],
+      "funding": [
+        "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Philadelphia Museum Of Art (EIN 23-1365388), reports total revenue of $114,413,997, including contributions of $43,987,025, program service revenue of $7,765,770 and investment income of $9,634,408, against expenses of $77,863,110 and net assets of $1,076,255,667.",
+        "The Encyclopedia of Greater Philadelphia describes the museum as an ongoing recipient of funding from the city, which owned its building; the 1928 building opened at a cost to the city of $12 million."
+      ],
+      "sources": [
+        {
+          "url": "https://www.philamuseum.org/visit"
+        },
+        {
+          "url": "https://www.philamuseum.org/about"
+        },
+        {
+          "url": "https://philadelphiaencyclopedia.org/essays/philadelphia-museum-of-art/"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/231365388"
+        },
+        {
+          "url": "https://whyy.org/articles/philadelphia-art-museum-sasha-suda-lawsuit-firing/"
+        },
+        {
+          "url": "https://www.phillyvoice.com/sasha-suda-lawsuit-philadelphia-art-museum-firing/"
+        },
+        {
+          "url": "https://www.inquirer.com/arts/philadelphia-art-museum-sasha-suda-lawsuit-arbitration-20260131.html"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2022/09/26/philadelphia-museum-art-workers-strike"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.philamuseum.org"
+    }
   },
   {
     "name": "Museum of Fine Arts, Boston",
     "location": "Boston, USA",
     "tier": "A",
     "size": "L",
-    "funding": "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Museum Of Fine Arts (EIN 04-2103607), reports total revenue of $99,573,924, including contributions of $62,367,673, program service revenue of $23,141,595 and investment income of $2,520,569, against expenses of $123,302,516 and net assets of $1,218,854,583. Its visit page credits support from the Massachusetts Cultural Council.",
-    "watch": "Art museum on Huntington Avenue led by director Pierre Terjanian; its own site says its first location opened in Copley Square in 1870. It laid off 33 employees, about 6.3% of staff, in January 2026, telling staff it was in an unsustainable deficit, and UAW Local 2110 said 16 of the posts were union roles (The Art Newspaper, 30 January 2026).",
+    "funding": "FY2023 Form 990: revenue $99.6M, contributions $62.4M, expenses $123.3M, net assets $1.22B. The Massachusetts Cultural Council is credited.",
+    "watch": "Laid off 33 employees, about 6.3% of staff, in January 2026, citing an unsustainable deficit; 16 posts were union roles.",
     "sources": [
       "https://www.mfa.org/visit",
       "https://www.mfa.org/about",
@@ -204213,6 +204697,13 @@
         ],
         "basis": "OpenStreetMap, name lookup",
         "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.mfa.org/visit"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
       }
     },
     "gossip_data": {
@@ -204235,15 +204726,47 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum on Huntington Avenue led by director Pierre Terjanian; its own site says its first location opened in Copley Square in 1870.",
+        "It laid off 33 employees, about 6.3% of staff, in January 2026, telling staff it was in an unsustainable deficit, and UAW Local 2110 said 16 of the posts were union roles (The Art Newspaper, 30 January 2026)."
+      ],
+      "funding": [
+        "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Museum Of Fine Arts (EIN 04-2103607), reports total revenue of $99,573,924, including contributions of $62,367,673, program service revenue of $23,141,595 and investment income of $2,520,569, against expenses of $123,302,516 and net assets of $1,218,854,583.",
+        "Its visit page credits support from the Massachusetts Cultural Council."
+      ],
+      "sources": [
+        {
+          "url": "https://www.mfa.org/visit"
+        },
+        {
+          "url": "https://www.mfa.org/about"
+        },
+        {
+          "url": "https://www.mfa.org/annual-report"
+        },
+        {
+          "url": "https://www.mfa.org/annual-report/annual-report-2025"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/42103607"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2026/01/30/museum-fine-arts-boston-layoffs-financial-hardships"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.mfa.org"
+    }
   },
   {
     "name": "Detroit Institute of Arts",
     "location": "Detroit, USA",
     "tier": "A",
     "size": "L",
-    "funding": "A 0.2 mill property tax in Macomb, Oakland and Wayne counties, first passed in 2012 and put to a 10-year renewal vote on 10 March 2020, made up about 65 percent of the operating budget, the then director told Fox 2 Detroit (4 March 2020). Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Detroit Institute Of Arts (EIN 38-1359510), reports total revenue of $71,243,439, including contributions of $54,617,133, program service revenue of $5,877,441 and investment income of $6,337,598, against expenses of $57,633,076 and net assets of $558,519,044.",
-    "watch": "Art museum founded in 1885 as the Detroit Museum of Art by citizens including James E. Scripps, opened in 1888, a city department from 1919 and an independent non-profit again from 2014 as a result of Detroit's bankruptcy (Detroit Historical Society). Whistleblower Aid complained to the IRS and the Michigan attorney general in 2020 about loans of paintings owned by the then director's family; the museum said a law firm's inquiry found no misconduct (The Art Newspaper, 14 October 2020).",
+    "funding": "A 0.2 mill property tax in three counties covered about 65% of the operating budget in 2020. FY2023 Form 990: revenue $71.2M, expenses $57.6M.",
+    "watch": "Whistleblower Aid complained in 2020 about loans of paintings owned by the then director's family; the museum said a law firm's inquiry found no misconduct.",
     "sources": [
       "https://projects.propublica.org/nonprofits/organizations/381359510",
       "https://www.fox2detroit.com/news/critic-questions-why-dia-millage-is-up-for-vote-when-current-one-runs-until-2022",
@@ -204312,15 +204835,44 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum founded in 1885 as the Detroit Museum of Art by citizens including James E. Scripps, opened in 1888, a city department from 1919 and an independent non-profit again from 2014 as a result of Detroit's bankruptcy (Detroit Historical Society).",
+        "Whistleblower Aid complained to the IRS and the Michigan attorney general in 2020 about loans of paintings owned by the then director's family; the museum said a law firm's inquiry found no misconduct (The Art Newspaper, 14 October 2020)."
+      ],
+      "funding": [
+        "A 0.2 mill property tax in Macomb, Oakland and Wayne counties, first passed in 2012 and put to a 10-year renewal vote on 10 March 2020, made up about 65 percent of the operating budget, the then director told Fox 2 Detroit (4 March 2020).",
+        "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Detroit Institute Of Arts (EIN 38-1359510), reports total revenue of $71,243,439, including contributions of $54,617,133, program service revenue of $5,877,441 and investment income of $6,337,598, against expenses of $57,633,076 and net assets of $558,519,044."
+      ],
+      "sources": [
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/381359510"
+        },
+        {
+          "url": "https://www.fox2detroit.com/news/critic-questions-why-dia-millage-is-up-for-vote-when-current-one-runs-until-2022"
+        },
+        {
+          "url": "https://detroithistorical.org/learn/encyclopedia-of-detroit/detroit-institute-arts"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/news/inquiry-into-actions-by-dia-director-and-board-chair-found-no-misconduct-museum-says"
+        },
+        {
+          "url": "https://hyperallergic.com/whistleblower-group-seeks-to-stop-re-accreditation-of-detroit-institute-of-arts"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://dia.org"
+    }
   },
   {
     "name": "Cleveland Museum of Art",
     "location": "Cleveland, USA",
     "tier": "A",
     "size": "L",
-    "funding": "Its site says it is funded in part by residents of Cuyahoga County through a public grant from Cuyahoga Arts & Culture and supported in part by the Ohio Arts Council. Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Cleveland Museum Of Art (EIN 34-0714336), reports total revenue of $102,901,148, including contributions of $53,847,003, program service revenue of $1,943,549 and investment income of $6,433,503, against expenses of $68,669,220 and net assets of $1,143,390,878. ProPublica also lists separate trusts for its benefit, among them the J H Wade trust.",
-    "watch": "Art museum incorporated in 1913 with bequests from Hinman B. Hurlbut, John Huntington and Horace Kelley, on land given by Jeptha H. Wade, and opened on 6 June 1916; general admission is free. A bronze it bought in 1986 for $1.85 million was ordered seized in 2023 by a New York judge, the Manhattan district attorney's office saying it was looted from Bubon, Turkey; the museum contested this, then agreed in February 2025 to return it (Smithsonian Magazine, 21 February 2025).",
+    "funding": "Cuyahoga Arts & Culture public grant and the Ohio Arts Council. FY2023 Form 990: revenue $102.9M, contributions $53.8M, expenses $68.7M, net assets $1.14B.",
+    "watch": "A bronze bought in 1986 was ordered seized in 2023 as looted from Bubon, Turkey; the museum agreed to return it in February 2025.",
     "sources": [
       "https://www.clevelandart.org/visit",
       "https://www.clevelandart.org/about",
@@ -204352,6 +204904,13 @@
         ],
         "basis": "OpenStreetMap, name lookup",
         "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.clevelandart.org/visit"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
       }
     },
     "gossip_data": {
@@ -204376,15 +204935,48 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum incorporated in 1913 with bequests from Hinman B. Hurlbut, John Huntington and Horace Kelley, on land given by Jeptha H. Wade, and opened on 6 June 1916; general admission is free.",
+        "A bronze it bought in 1986 for $1.85 million was ordered seized in 2023 by a New York judge, the Manhattan district attorney's office saying it was looted from Bubon, Turkey; the museum contested this, then agreed in February 2025 to return it (Smithsonian Magazine, 21 February 2025)."
+      ],
+      "funding": [
+        "Its site says it is funded in part by residents of Cuyahoga County through a public grant from Cuyahoga Arts & Culture and supported in part by the Ohio Arts Council.",
+        "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Cleveland Museum Of Art (EIN 34-0714336), reports total revenue of $102,901,148, including contributions of $53,847,003, program service revenue of $1,943,549 and investment income of $6,433,503, against expenses of $68,669,220 and net assets of $1,143,390,878.",
+        "ProPublica also lists separate trusts for its benefit, among them the J H Wade trust."
+      ],
+      "sources": [
+        {
+          "url": "https://www.clevelandart.org/visit"
+        },
+        {
+          "url": "https://www.clevelandart.org/about"
+        },
+        {
+          "url": "https://case.edu/ech/articles/c/cleveland-museum-art"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/340714336"
+        },
+        {
+          "url": "https://www.smithsonianmag.com/smart-news/a-looted-bronze-statue-that-may-depict-marcus-aurelius-is-returning-to-turkey-180986094/"
+        },
+        {
+          "url": "https://www.wosu.org/2025-02-18/cleveland-museum-of-art-will-repatriate-ancient-statue-to-turkey"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.clevelandart.org"
+    }
   },
   {
     "name": "Museum of Fine Arts, Houston",
     "location": "Houston, USA",
     "tier": "A",
     "size": "L",
-    "funding": "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Museum Of Fine Arts Houston (EIN 74-1109655), reports total revenue of $147,981,263, including contributions of $33,751,753, program service revenue of $10,401,282 and investment income of $35,285,932, against expenses of $121,303,403 and net assets of $2,037,644,642. The Handbook of Texas records gifts from the Brown Foundation (a 1970 gift and a ten-year challenge grant announced in 1977 for operations and acquisitions) and the Cullen Foundation (the sculpture garden completed in 1986).",
-    "watch": "Art museum that grew from the Public School Art League, founded in 1900 by five women led by Emma Richardson Cherry; the first part of its building opened on 12 April 1924. Heirs of Max Emden sued in 2021 for Bernardo Bellotto's The Marketplace at Pirna, and on 29 May 2024 the Fifth Circuit upheld dismissal of the claim under the act of state doctrine (The Art Newspaper, 3 June 2024).",
+    "funding": "FY2023 Form 990: revenue $148.0M, contributions $33.8M, investment income $35.3M, expenses $121.3M, net assets $2.04B. Past gifts from the Brown and Cullen foundations.",
+    "watch": "Heirs of Max Emden sued in 2021 for a Bellotto painting; the Fifth Circuit upheld dismissal of the claim on 29 May 2024.",
     "sources": [
       "https://projects.propublica.org/nonprofits/organizations/741109655",
       "https://www.tshaonline.org/handbook/entries/museum-of-fine-arts-houston",
@@ -204435,15 +205027,38 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum that grew from the Public School Art League, founded in 1900 by five women led by Emma Richardson Cherry; the first part of its building opened on 12 April 1924.",
+        "Heirs of Max Emden sued in 2021 for Bernardo Bellotto's The Marketplace at Pirna, and on 29 May 2024 the Fifth Circuit upheld dismissal of the claim under the act of state doctrine (The Art Newspaper, 3 June 2024)."
+      ],
+      "funding": [
+        "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Museum Of Fine Arts Houston (EIN 74-1109655), reports total revenue of $147,981,263, including contributions of $33,751,753, program service revenue of $10,401,282 and investment income of $35,285,932, against expenses of $121,303,403 and net assets of $2,037,644,642.",
+        "The Handbook of Texas records gifts from the Brown Foundation (a 1970 gift and a ten-year challenge grant announced in 1977 for operations and acquisitions) and the Cullen Foundation (the sculpture garden completed in 1986)."
+      ],
+      "sources": [
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/741109655"
+        },
+        {
+          "url": "https://www.tshaonline.org/handbook/entries/museum-of-fine-arts-houston"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/06/03/nazi-loot-restitution-bernardo-bellotto-museum-fine-arts-houston-lawsuit"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.mfah.org"
+    }
   },
   {
     "name": "High Museum of Art",
     "location": "Atlanta, USA",
     "tier": "A",
     "size": "L",
-    "funding": "The High is part of the Woodruff Arts Center (Atlanta Journal-Constitution, 24 February 2026). Form 990 for the fiscal year ending May 2023, as shown by ProPublica Nonprofit Explorer for Robert W Woodruff Arts Center Inc (EIN 58-0633971), reports total revenue of $99,817,852, including contributions of $67,799,819, program service revenue of $28,101,050 and investment income of $2,638,025, against expenses of $108,387,134 and net assets of $472,943,843. The New Georgia Encyclopedia records a $7.5 million challenge grant proposed in 1979 by Coca-Cola executive Robert Woodruff for the museum's building.",
-    "watch": "Art museum established in 1905 as the Atlanta Art Association and named for Harriet Harwell Wilson High, who gave her Peachtree Street house in 1926; its Richard Meier building opened in 1983. The Woodruff Arts Center said its chief operating officer, who resigned on 9 December 2025, allegedly misappropriated about $600,000, and its board voted to refer the matter to the U.S. Attorney's Office (Atlanta Journal-Constitution, 24 February 2026).",
+    "funding": "Part of the Woodruff Arts Center, whose FY2023 Form 990 shows revenue $99.8M, contributions $67.8M and expenses $108.4M.",
+    "watch": "The Woodruff Arts Center accused its former chief operating officer of misappropriating about $600,000 and referred the matter to the U.S. Attorney's Office.",
     "sources": [
       "https://high.org/visit/",
       "https://high.org/about/",
@@ -204464,7 +205079,7 @@
     "visit_url": "https://high.org/visit/",
     "address": "1280 Peachtree St NE, Atlanta, GA 30309",
     "flags": null,
-    "records_note": "No separate filing for the museum was seen; the Woodruff Arts Center files Form 990 as EIN 58-0633971.",
+    "records_note": "The Woodruff Arts Center files Form 990 as EIN 58-0633971.",
     "opening_hours": "Tue-Sat 10 a.m.-5 p.m., Sun 12 noon-5 p.m., Mon closed",
     "research_retrieved": "2026-11-14",
     "field_sources": {
@@ -204473,6 +205088,13 @@
           "https://nominatim.openstreetmap.org/search?q=High+Museum+of+Art%2C+Atlanta&format=json&limit=1"
         ],
         "basis": "OpenStreetMap, name lookup",
+        "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://high.org/visit/"
+        ],
+        "basis": "the space's own visit page",
         "retrieved": "2026-11-14"
       }
     },
@@ -204496,15 +205118,45 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum established in 1905 as the Atlanta Art Association and named for Harriet Harwell Wilson High, who gave her Peachtree Street house in 1926; its Richard Meier building opened in 1983.",
+        "The Woodruff Arts Center said its chief operating officer, who resigned on 9 December 2025, allegedly misappropriated about $600,000, and its board voted to refer the matter to the U.S. Attorney's Office (Atlanta Journal-Constitution, 24 February 2026)."
+      ],
+      "funding": [
+        "The High is part of the Woodruff Arts Center (Atlanta Journal-Constitution, 24 February 2026).",
+        "Form 990 for the fiscal year ending May 2023, as shown by ProPublica Nonprofit Explorer for Robert W Woodruff Arts Center Inc (EIN 58-0633971), reports total revenue of $99,817,852, including contributions of $67,799,819, program service revenue of $28,101,050 and investment income of $2,638,025, against expenses of $108,387,134 and net assets of $472,943,843.",
+        "The New Georgia Encyclopedia records a $7.5 million challenge grant proposed in 1979 by Coca-Cola executive Robert Woodruff for the museum's building."
+      ],
+      "sources": [
+        {
+          "url": "https://high.org/visit/"
+        },
+        {
+          "url": "https://high.org/about/"
+        },
+        {
+          "url": "https://www.georgiaencyclopedia.org/articles/arts-culture/high-museum-of-art/"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/580633971"
+        },
+        {
+          "url": "https://www.ajc.com/business/2026/02/high-museum-of-art-exec-resigns-amid-probe-into-missing-funds"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://high.org"
+    }
   },
   {
     "name": "Baltimore Museum of Art",
     "location": "Baltimore, USA",
     "tier": "A",
     "size": "L",
-    "funding": "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Baltimore Museum Of Art Inc (EIN 52-6000162), reports total revenue of $27,636,766, including contributions of $20,076,853, program service revenue of $2,025,216 and investment income of $4,290,314, against expenses of $41,560,641 and net assets of $186,913,987. The Stoneridge Foundation, founded by Amy and Marc Meadows, gave more than $10m for education, described as the largest single donation in the museum's history (The Art Newspaper, 24 October 2025). The pages read did not state what the city or the state pays.",
-    "watch": "Art museum in Baltimore led by director Asma Naeem. In October 2020 it planned to sell works by Warhol, Still and Marden for about $65m to fund collection care, acquisitions and equity work, and paused the sale hours before the auction after former trustees wrote to the Maryland attorney general and two former board chairs said they were rescinding $50m in pledged gifts (The Art Newspaper, 28 October 2020).",
+    "funding": "FY2023 Form 990: revenue $27.6M, contributions $20.1M, expenses $41.6M. The Stoneridge Foundation gave more than $10M for education in 2025.",
+    "watch": "In October 2020 it paused a planned $65M sale of works hours before auction, after former trustees objected and $50M in pledges was rescinded.",
     "sources": [
       "https://projects.propublica.org/nonprofits/organizations/526000162",
       "https://www.theartnewspaper.com/news/baltimore-museum-of-art-calls-off-sale-of-warhol-still-and-marden-after-outcry",
@@ -204555,15 +205207,41 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum in Baltimore led by director Asma Naeem.",
+        "In October 2020 it planned to sell works by Warhol, Still and Marden for about $65m to fund collection care, acquisitions and equity work, and paused the sale hours before the auction after former trustees wrote to the Maryland attorney general and two former board chairs said they were rescinding $50m in pledged gifts (The Art Newspaper, 28 October 2020)."
+      ],
+      "funding": [
+        "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Baltimore Museum Of Art Inc (EIN 52-6000162), reports total revenue of $27,636,766, including contributions of $20,076,853, program service revenue of $2,025,216 and investment income of $4,290,314, against expenses of $41,560,641 and net assets of $186,913,987.",
+        "The Stoneridge Foundation, founded by Amy and Marc Meadows, gave more than $10m for education, described as the largest single donation in the museum's history (The Art Newspaper, 24 October 2025)."
+      ],
+      "sources": [
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/526000162"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/news/baltimore-museum-of-art-calls-off-sale-of-warhol-still-and-marden-after-outcry"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/10/24/baltimore-museum-art-10m-gift-eduction-programmes"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/keywords/baltimore-museum-of-art"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://artbma.org"
+    }
   },
   {
     "name": "The Studio Museum in Harlem",
     "location": "New York, USA",
     "tier": "A",
     "size": "M",
-    "funding": "A member of New York City's Cultural Institutions Group, whose members sit on City-owned property and receive capital and operating support from the City (NYC Department of Cultural Affairs). Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for The Studio Museum In Harlem (EIN 13-2590805), reports total revenue of $47,220,609, including contributions of $42,821,762, program service revenue of $271,955 and investment income of $2,379,462, against expenses of $16,164,729 and net assets of $215,688,944. Its October 2026 gala raised $4 million, with Lafayette Square and HarbourView Equity as lead corporate sponsors (museum press release).",
-    "watch": "Museum founded in 1968, led by Thelma Golden, whose title is Ford Foundation Director and Chief Curator; it opened a new building by Adjaye Associates on 125th Street on 15 November 2025. The Art Newspaper (17 September 2024) put the project at $300m and called it a public-private initiative in partnership with the city.",
+    "funding": "City support as a Cultural Institutions Group member. FY2023 Form 990: revenue $47.2M. Its October 2026 gala raised $4M; Lafayette Square and HarbourView Equity were lead sponsors.",
+    "watch": "Opened its $300M Adjaye Associates building on 125th Street on 15 November 2025, a public-private project with the city.",
     "sources": [
       "https://www.studiomuseum.org/visit",
       "https://www.studiomuseum.org/about",
@@ -204597,18 +205275,61 @@
         ],
         "basis": "OpenStreetMap, name lookup",
         "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.studiomuseum.org/visit"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
       }
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Museum founded in 1968, led by Thelma Golden, whose title is Ford Foundation Director and Chief Curator; it opened a new building by Adjaye Associates on 125th Street on 15 November 2025.",
+        "The Art Newspaper (17 September 2024) put the project at $300m and called it a public-private initiative in partnership with the city."
+      ],
+      "funding": [
+        "A member of New York City's Cultural Institutions Group, whose members sit on City-owned property and receive capital and operating support from the City (NYC Department of Cultural Affairs).",
+        "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for The Studio Museum In Harlem (EIN 13-2590805), reports total revenue of $47,220,609, including contributions of $42,821,762, program service revenue of $271,955 and investment income of $2,379,462, against expenses of $16,164,729 and net assets of $215,688,944.",
+        "Its October 2026 gala raised $4 million, with Lafayette Square and HarbourView Equity as lead corporate sponsors (museum press release)."
+      ],
+      "sources": [
+        {
+          "url": "https://www.studiomuseum.org/visit"
+        },
+        {
+          "url": "https://www.studiomuseum.org/about"
+        },
+        {
+          "url": "https://www.studiomuseum.org/press"
+        },
+        {
+          "url": "https://www.studiomuseum.org/press/studio-museum-in-harlem-gala-celebrates-the-museums-first-year-in-its-new-home"
+        },
+        {
+          "url": "https://www.nyc.gov/site/dcla/cultural-funding/city-owned-institutions.page"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/132590805"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/09/17/inside-new-yorks-museum-building-boom"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.studiomuseum.org"
+    }
   },
   {
     "name": "The Frick Collection",
     "location": "New York, USA",
     "tier": "A",
     "size": "M",
-    "funding": "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Frick Collection (EIN 13-1624012), reports total revenue of $47,000,287, including contributions of $24,313,127, program service revenue of $1,568,094 and investment income of $1,617,720, against expenses of $29,233,056 and net assets of $538,478,857. The Art Newspaper (26 March 2025) put its renovation at $220m and did not say who paid; other figures in the same paper differ.",
-    "watch": "Museum in the house of the industrialist Henry Clay Frick, converted into a museum in 1935 and reopened on 17 April 2025 after a renovation by Selldorf Architects.",
+    "funding": "FY2023 Form 990: revenue $47.0M, contributions $24.3M, expenses $29.2M, net assets $538.5M.",
+    "watch": "Reopened on 17 April 2025 after a $220M renovation by Selldorf Architects; who paid is not stated.",
     "sources": [
       "https://projects.propublica.org/nonprofits/organizations/131624012",
       "https://www.theartnewspaper.com/2025/03/26/renewed-frick-collection-balances-tradition-and-transformation",
@@ -204642,15 +205363,43 @@
       }
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Museum in the house of the industrialist Henry Clay Frick, converted into a museum in 1935 and reopened on 17 April 2025 after a renovation by Selldorf Architects."
+      ],
+      "funding": [
+        "Form 990 for the fiscal year ending June 2023, as shown by ProPublica Nonprofit Explorer for Frick Collection (EIN 13-1624012), reports total revenue of $47,000,287, including contributions of $24,313,127, program service revenue of $1,568,094 and investment income of $1,617,720, against expenses of $29,233,056 and net assets of $538,478,857.",
+        "The Art Newspaper (26 March 2025) put its renovation at $220m and did not say who paid; other figures in the same paper differ."
+      ],
+      "sources": [
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/131624012"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/03/26/renewed-frick-collection-balances-tradition-and-transformation"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/keywords/frick-collection"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/09/17/inside-new-yorks-museum-building-boom"
+        },
+        {
+          "url": "https://www.nlrb.gov/case/02-CA-355083"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.frick.org"
+    }
   },
   {
     "name": "Hirshhorn Museum and Sculpture Garden",
     "location": "Washington, DC, USA",
     "tier": "A",
     "size": "L",
-    "funding": "A Smithsonian museum; the $68m renovation of its sculpture garden was funded through public and private support (The Art Newspaper, 26 March 2026). The pages read did not state its federal appropriation or name the private donors.",
-    "watch": "Smithsonian museum and sculpture garden in Washington, DC, opened in 1974. Director Melissa Chiu left on 31 August 2026 for the Guggenheim, with deputy director Aaron Seeto as interim director, and the sculpture garden redesigned by Hiroshi Sugimoto opened in October 2026 after objections from the Cultural Landscape Foundation (The Art Newspaper, 9 April and 30 October 2026).",
+    "funding": "A Smithsonian museum. Its $68M sculpture garden renovation was funded through public and private support.",
+    "watch": "Director Melissa Chiu left on 31 August 2026. The redesigned sculpture garden opened in October 2026 after objections from the Cultural Landscape Foundation.",
     "sources": [
       "https://www.theartnewspaper.com/2026/04/09/melissa-chiu-leaves-hirshhorn-to-take-over-new-yorks-guggenheim-museum",
       "https://www.theartnewspaper.com/2026/10/30/after-seven-years-hirshhorn-museum-opens-hiroshi-sugimoto-designed-sculpture-garden",
@@ -204703,15 +205452,40 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Smithsonian museum and sculpture garden in Washington, DC, opened in 1974.",
+        "Director Melissa Chiu left on 31 August 2026 for the Guggenheim, with deputy director Aaron Seeto as interim director, and the sculpture garden redesigned by Hiroshi Sugimoto opened in October 2026 after objections from the Cultural Landscape Foundation (The Art Newspaper, 9 April and 30 October 2026)."
+      ],
+      "funding": [
+        "A Smithsonian museum; the $68m renovation of its sculpture garden was funded through public and private support (The Art Newspaper, 26 March 2026)."
+      ],
+      "sources": [
+        {
+          "url": "https://www.theartnewspaper.com/2026/04/09/melissa-chiu-leaves-hirshhorn-to-take-over-new-yorks-guggenheim-museum"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2026/10/30/after-seven-years-hirshhorn-museum-opens-hiroshi-sugimoto-designed-sculpture-garden"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2026/03/26/hirshhorn-museum-sculpture-garden-outdoor-acquisitions"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/keywords/hirshhorn-museum-and-sculpture-garden"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://hirshhorn.si.edu"
+    }
   },
   {
     "name": "Minneapolis Institute of Art",
     "location": "Minneapolis, USA",
     "tier": "A",
     "size": "L",
-    "funding": "The pages read did not state who funds it. ProPublica Nonprofit Explorer lists a Form 990 filer named Minneapolis Society Of Fine Arts in Minneapolis (EIN 41-0693915) with total revenue of $63,903,670, contributions of $49,730,538 and expenses of $50,782,025 for the fiscal year ending June 2023; the pages read did not confirm that this is the museum's governing body.",
-    "watch": "Art museum with free admission and a collection of roughly 100,000 objects, led by director and president Katie Luber (The Art Newspaper, 17 July 2026). Nothing on its conduct or funders was found in the pages read.",
+    "funding": "A Form 990 filer named Minneapolis Society Of Fine Arts reports FY2023 revenue of $63.9M; its link to the museum is not confirmed.",
+    "watch": "Free admission, a collection of roughly 100,000 objects, led by director and president Katie Luber.",
     "sources": [
       "https://www.theartnewspaper.com/2026/07/17/minneapolis-institute-of-art-hires-kevin-tervala-to-lead-curatorial",
       "https://projects.propublica.org/nonprofits/organizations/410693915"
@@ -204741,15 +205515,34 @@
       }
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum with free admission and a collection of roughly 100,000 objects, led by director and president Katie Luber (The Art Newspaper, 17 July 2026)."
+      ],
+      "funding": [
+        "ProPublica Nonprofit Explorer lists a Form 990 filer named Minneapolis Society Of Fine Arts in Minneapolis (EIN 41-0693915) with total revenue of $63,903,670, contributions of $49,730,538 and expenses of $50,782,025 for the fiscal year ending June 2023.",
+        "That this filer is the museum's governing body is not confirmed."
+      ],
+      "sources": [
+        {
+          "url": "https://www.theartnewspaper.com/2026/07/17/minneapolis-institute-of-art-hires-kevin-tervala-to-lead-curatorial"
+        },
+        {
+          "url": "https://projects.propublica.org/nonprofits/organizations/410693915"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://new.artsmia.org"
+    }
   },
   {
     "name": "Art Gallery of Ontario",
     "location": "Toronto, Canada",
     "tier": "B",
     "size": "L",
-    "funding": "The Canadian Encyclopedia says it is partially funded by the Ontario Ministry of Culture, with further operating support from the City of Toronto, the Department of Canadian Heritage and the Canada Council for the Arts, plus memberships, fees, retail, private gifts and sponsorships; Ken Thomson gave over 2,000 works, $50 million in capital funding and a $20 million endowment commitment. A C$100m expansion includes C$35m from Canada Goose founder Dani Reiss (The Art Newspaper, 27 March 2024).",
-    "watch": "Art museum founded in 1900 as the Art Museum of Toronto, renamed the Art Gallery of Ontario in 1966; director Stephan Jost, in post since 2016, leaves on 31 December 2026. The 2023 departure of curator Wanda Nanibush drew open letters with more than 3,400 signatories, and more than 400 OPSEU Local 535 members struck from 26 March 2024, closing the gallery for more than a month (The Art Newspaper).",
+    "funding": "Ontario Ministry of Culture, City of Toronto, Department of Canadian Heritage and Canada Council for the Arts. Ken Thomson gave $50M in capital; Dani Reiss C$35M to the expansion.",
+    "watch": "Curator Wanda Nanibush's 2023 departure drew open letters with over 3,400 signatories. Over 400 OPSEU members struck in March 2024, closing it for a month.",
     "sources": [
       "https://www.thecanadianencyclopedia.ca/en/article/art-gallery-of-ontario",
       "https://www.theartnewspaper.com/2026/09/02/art-gallery-ontario-director-stephan-jost-stepping-down",
@@ -204823,15 +205616,44 @@
       ]
     },
     "grade": 3,
-    "grade_basis": "A funder worth knowing about, outside the flagged categories."
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
+    "details": {
+      "overview": [
+        "Art museum founded in 1900 as the Art Museum of Toronto, renamed the Art Gallery of Ontario in 1966; director Stephan Jost, in post since 2016, leaves on 31 December 2026.",
+        "The 2023 departure of curator Wanda Nanibush drew open letters with more than 3,400 signatories, and more than 400 OPSEU Local 535 members struck from 26 March 2024, closing the gallery for more than a month (The Art Newspaper)."
+      ],
+      "funding": [
+        "The Canadian Encyclopedia says it is partially funded by the Ontario Ministry of Culture, with further operating support from the City of Toronto, the Department of Canadian Heritage and the Canada Council for the Arts, plus memberships, fees, retail, private gifts and sponsorships; Ken Thomson gave over 2,000 works, $50 million in capital funding and a $20 million endowment commitment.",
+        "A C$100m expansion includes C$35m from Canada Goose founder Dani Reiss (The Art Newspaper, 27 March 2024)."
+      ],
+      "sources": [
+        {
+          "url": "https://www.thecanadianencyclopedia.ca/en/article/art-gallery-of-ontario"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2026/09/02/art-gallery-ontario-director-stephan-jost-stepping-down"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/03/27/art-gallery-ontario-workers-strike-museum-closes"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2023/12/01/art-gallery-ontario-wanda-nanibush-departure-letters"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/01/24/art-gallery-of-ontario-under-pressure-to-explain-indigenous-art-curators-ousting"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://ago.ca"
+    }
   },
   {
     "name": "National Gallery of Canada",
     "location": "Ottawa, Canada",
     "tier": "A",
     "size": "L",
-    "funding": "A federal Crown corporation, one of 11 in the Canadian Heritage portfolio (Government of Canada). The pages read did not state its parliamentary appropriation or name its donors and sponsors, apart from gifts of works by the collector Bob Rennie, one of 61 works valued at $16.8m (The Art Newspaper headline, 16 June 2025).",
-    "watch": "National art museum that traces its origins to 1880, incorporated by Act of Parliament in 1913, a Crown corporation since 1990, in a Moshe Safdie building opened in May 1988 (The Canadian Encyclopedia). Four senior staff, among them the chief curator and the senior curator of Indigenous art, were let go on 18 November 2022 under an interim director, and Jean-Fran\u00e7ois B\u00e9lisle was named director for a five-year term in June 2023 (The Art Newspaper).",
+    "funding": "A federal Crown corporation in the Canadian Heritage portfolio. Collector Bob Rennie gave 61 works valued at $16.8M in 2025.",
+    "watch": "Four senior staff, including the chief curator and the senior curator of Indigenous art, were let go on 18 November 2022 under an interim director.",
     "sources": [
       "https://www.thecanadianencyclopedia.ca/en/article/national-gallery-of-canada",
       "https://www.canada.ca/en/canadian-heritage/corporate/portfolio-organizations.html",
@@ -204885,15 +205707,44 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "National art museum that traces its origins to 1880, incorporated by Act of Parliament in 1913, a Crown corporation since 1990, in a Moshe Safdie building opened in May 1988 (The Canadian Encyclopedia).",
+        "Four senior staff, among them the chief curator and the senior curator of Indigenous art, were let go on 18 November 2022 under an interim director, and Jean-Fran\u00e7ois B\u00e9lisle was named director for a five-year term in June 2023 (The Art Newspaper)."
+      ],
+      "funding": [
+        "A federal Crown corporation, one of 11 in the Canadian Heritage portfolio (Government of Canada).",
+        "Gifts of works by the collector Bob Rennie include one of 61 works valued at $16.8m (The Art Newspaper headline, 16 June 2025)."
+      ],
+      "sources": [
+        {
+          "url": "https://www.thecanadianencyclopedia.ca/en/article/national-gallery-of-canada"
+        },
+        {
+          "url": "https://www.canada.ca/en/canadian-heritage/corporate/portfolio-organizations.html"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2022/11/21/national-gallery-canada-senior-staff-fired-chief-curator-indigenous-art-curator"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2023/06/08/jean-francois-belisle-to-succeed-angela-cassie-as-national-gallery-of-canada-director"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/keywords/national-gallery-of-canada"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.gallery.ca"
+    }
   },
   {
     "name": "Montreal Museum of Fine Arts",
     "location": "Montreal, Canada",
     "tier": "A",
     "size": "L",
-    "funding": "Its financial statements for the year ended March 31, 2025 show operating grants of $17,569,200, of which $16,749,200 from Quebec's Minist\u00e8re de la Culture et des Communications, $450,000 from the Canada Council for the Arts and $370,000 from the Conseil des arts de Montr\u00e9al. The same statements show donations from its Foundation of $8,473,373 and admissions and special events of $4,734,698, within total revenues of $57,724,357.",
-    "watch": "Art museum established in 1847 as the Montreal Society of Artists, renamed the Art Association of Montreal in 1860, on Sherbrooke Street since 1912 and a semipublic institution since 1972 (The Canadian Encyclopedia); its director is St\u00e9phane Aquin and some board members are appointed by the government. Its board dismissed director Nathalie Bondil in July 2020, she sued for C$2m, and the two sides settled in January 2022 on undisclosed terms (The Art Newspaper, 18 January 2022).",
+    "funding": "Year to March 2025: revenue $57.7M. Quebec's culture ministry $16.7M, Canada Council for the Arts, Conseil des arts de Montr\u00e9al, its Foundation $8.5M, admissions and events $4.7M.",
+    "watch": "The board dismissed director Nathalie Bondil in July 2020; she sued for C$2M and the sides settled in January 2022.",
     "sources": [
       "https://www.mbam.qc.ca/en/information/",
       "https://www.mbam.qc.ca/en/the-museum/",
@@ -204926,6 +205777,13 @@
         ],
         "basis": "OpenStreetMap, name lookup",
         "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.mbam.qc.ca/en/information/"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
       }
     },
     "gossip_data": {
@@ -204949,15 +205807,47 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Art museum established in 1847 as the Montreal Society of Artists, renamed the Art Association of Montreal in 1860, on Sherbrooke Street since 1912 and a semipublic institution since 1972 (The Canadian Encyclopedia); its director is St\u00e9phane Aquin and some board members are appointed by the government.",
+        "Its board dismissed director Nathalie Bondil in July 2020, she sued for C$2m, and the two sides settled in January 2022 on undisclosed terms (The Art Newspaper, 18 January 2022)."
+      ],
+      "funding": [
+        "Its financial statements for the year ended March 31, 2025 show operating grants of $17,569,200, of which $16,749,200 from Quebec's Minist\u00e8re de la Culture et des Communications, $450,000 from the Canada Council for the Arts and $370,000 from the Conseil des arts de Montr\u00e9al.",
+        "The same statements show donations from its Foundation of $8,473,373 and admissions and special events of $4,734,698, within total revenues of $57,724,357."
+      ],
+      "sources": [
+        {
+          "url": "https://www.mbam.qc.ca/en/information/"
+        },
+        {
+          "url": "https://www.mbam.qc.ca/en/the-museum/"
+        },
+        {
+          "url": "https://www.mbam.qc.ca/en/the-museum/annual-reports/"
+        },
+        {
+          "url": "https://www.mbam.qc.ca/workspace/uploads/files/mbam-rapportannuel2025_complet_final_en_web.pdf"
+        },
+        {
+          "url": "https://www.thecanadianencyclopedia.ca/en/article/montreal-museum-of-fine-arts"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2022/01/18/montreal-museum-of-fine-arts-nathalie-bondil-settle-dispute"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.mbam.qc.ca"
+    }
   },
   {
     "name": "Vancouver Art Gallery",
     "location": "Vancouver, Canada",
     "tier": "A",
     "size": "M",
-    "funding": "Its site says it is supported by members, individual donors, corporate funders, foundations, the City of Vancouver, the Province of British Columbia through the BC Arts Council and the Canada Council for the Arts; BMO and Canada Life are credited for programmes. The province gave C$887,673 in fiscal 2023-24, down from $27.5m the year before, and Michael Audain pledged C$100m for a new building on condition that a Canadian architect be hired (The Art Newspaper, 26 June and 29 September 2025).",
-    "watch": "Not-for-profit art gallery founded in 1931, led since September 2026 by co-chief executives Eva Respini and Sirish Rao. In December 2024 it scrapped a Herzog & de Meuron building after costs rose from C$400m to C$600m with C$60m spent, its director left in March 2025, and about 30 staff were laid off after a 2023-24 deficit of C$32.1m (The Art Newspaper).",
+    "funding": "City of Vancouver, Province of British Columbia, BC Arts Council and Canada Council for the Arts; BMO and Canada Life fund programmes. Michael Audain pledged C$100M for a new building.",
+    "watch": "Scrapped its Herzog & de Meuron building in December 2024 after costs reached C$600M. About 30 staff were laid off after a C$32.1M deficit.",
     "sources": [
       "https://www.vanartgallery.bc.ca/visit",
       "https://www.vanartgallery.bc.ca/about",
@@ -204989,6 +205879,13 @@
           "https://nominatim.openstreetmap.org/search?q=Vancouver+Art+Gallery&format=json&limit=1"
         ],
         "basis": "OpenStreetMap, name lookup",
+        "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.vanartgallery.bc.ca/visit"
+        ],
+        "basis": "the space's own visit page",
         "retrieved": "2026-11-14"
       }
     },
@@ -205030,15 +205927,50 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Not-for-profit art gallery founded in 1931, led since September 2026 by co-chief executives Eva Respini and Sirish Rao.",
+        "In December 2024 it scrapped a Herzog & de Meuron building after costs rose from C$400m to C$600m with C$60m spent, its director left in March 2025, and about 30 staff were laid off after a 2023-24 deficit of C$32.1m (The Art Newspaper)."
+      ],
+      "funding": [
+        "Its site says it is supported by members, individual donors, corporate funders, foundations, the City of Vancouver, the Province of British Columbia through the BC Arts Council and the Canada Council for the Arts; BMO and Canada Life are credited for programmes.",
+        "The province gave C$887,673 in fiscal 2023-24, down from $27.5m the year before, and Michael Audain pledged C$100m for a new building on condition that a Canadian architect be hired (The Art Newspaper, 26 June and 29 September 2025)."
+      ],
+      "sources": [
+        {
+          "url": "https://www.vanartgallery.bc.ca/visit"
+        },
+        {
+          "url": "https://www.vanartgallery.bc.ca/about"
+        },
+        {
+          "url": "https://www.vanartgallery.bc.ca/annual-report-2025-26/"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/03/26/vancouver-art-gallery-director-anthony-kiendl-leaves"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/06/26/vancouver-art-gallery-layoffs"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/09/29/vancouver-art-gallery-new-architects-selected"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2026/09/28/vancouver-art-gallery-co-chief-executives-eva-respini-shirish-rao"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.vanartgallery.bc.ca"
+    }
   },
   {
     "name": "Royal Ontario Museum",
     "location": "Toronto, Canada",
     "tier": "B",
     "size": "L",
-    "funding": "Its audited statements for the year ended March 31, 2025 (in thousands of dollars) show Province of Ontario grants of 41,517, of which 27,281 operating, and self-generated revenue of 46,790, including 12,553 from the Royal Ontario Museum Foundation and 15,295 in admission fees, within total revenue of 103,656. The C$130m OpenROM renovation includes C$50m from the Hennick Family Foundation (The Art Newspaper, 14 February 2024).",
-    "watch": "Museum created in 1912 by an Act of the Ontario legislature and opened on 19 March 1914; it is an agency of the Government of Ontario, and Nicholas R. Bell took over as director on 6 July 2026. In October 2023 it asked Palestinian American contributors to an exhibition on death to change wording and cropped a painting, then apologised and restored the work after an overnight sit-in (The Art Newspaper, 6 November 2023).",
+    "funding": "Year to March 2025: revenue $103.7M, Province of Ontario grants $41.5M, its Foundation $12.6M, admissions $15.3M. Hennick Family Foundation gave C$50M to OpenROM.",
+    "watch": "In October 2023 it asked Palestinian American contributors to change wording and cropped a painting, then apologised after an overnight sit-in.",
     "sources": [
       "https://www.rom.on.ca/visit",
       "https://www.rom.on.ca/about",
@@ -205077,6 +206009,13 @@
         ],
         "basis": "OpenStreetMap, name lookup",
         "retrieved": "2026-11-14"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.rom.on.ca/visit"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
       }
     },
     "gossip_data": {
@@ -205100,15 +206039,53 @@
       ]
     },
     "grade": 3,
-    "grade_basis": "A funder worth knowing about, outside the flagged categories."
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
+    "details": {
+      "overview": [
+        "Museum created in 1912 by an Act of the Ontario legislature and opened on 19 March 1914; it is an agency of the Government of Ontario, and Nicholas R. Bell took over as director on 6 July 2026.",
+        "In October 2023 it asked Palestinian American contributors to an exhibition on death to change wording and cropped a painting, then apologised and restored the work after an overnight sit-in (The Art Newspaper, 6 November 2023)."
+      ],
+      "funding": [
+        "Its audited statements for the year ended March 31, 2025 (in thousands of dollars) show Province of Ontario grants of 41,517, of which 27,281 operating, and self-generated revenue of 46,790, including 12,553 from the Royal Ontario Museum Foundation and 15,295 in admission fees, within total revenue of 103,656.",
+        "The C$130m OpenROM renovation includes C$50m from the Hennick Family Foundation (The Art Newspaper, 14 February 2024)."
+      ],
+      "sources": [
+        {
+          "url": "https://www.rom.on.ca/visit"
+        },
+        {
+          "url": "https://www.rom.on.ca/about"
+        },
+        {
+          "url": "https://www.rom.on.ca/reports-policies-public-disclosures"
+        },
+        {
+          "url": "https://www.rom.on.ca/sites/default/files/2025-08/The-Royal-Ontario-Museum-03312025-FS.pdf"
+        },
+        {
+          "url": "https://www.thecanadianencyclopedia.ca/en/article/royal-ontario-museum"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2026/03/02/royal-ontario-museum-nicholas-bell-new-leader"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/02/14/torontos-royal-ontario-museum-announces-renovation-project"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2023/11/06/royal-ontario-museum-censorship-palestinian-art-death-exhibition-israel-hamas-war"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.rom.on.ca"
+    }
   },
   {
     "name": "Art Gallery of New South Wales",
     "location": "Sydney, Australia",
     "tier": "B",
     "size": "L",
-    "funding": "Mainly public. Its 2024-25 annual report shows total revenue of $147.923 million, of which recurrent grants from the NSW Government were $54.712 million, capital grants $17.686 million and other NSW Government grants $6.491 million; donations and gifts were $27.994 million and sale of goods and services $26.822 million. Corporate partners named in the report include ANZ (presenting partner of the Archibald, Wynne and Sulman Prizes), Aqualand (naming rights to the atrium in Naala Badu), Macquarie Group, Bank of China and Optus.",
-    "watch": "The state art museum of New South Wales, a statutory body under the Art Gallery of New South Wales Act 1980 and an executive agency of the Department of Creative Industries, Tourism, Hospitality and Sport; its site says it marked its 150th anniversary in 2021. ArtAsiaPacific reported on 29 August 2025 that director Maud Page announced 51 of 382 jobs would go to save AUD 7.5 million a year, after a 2024 Treasury review found revenue had not kept pace with costs since the AUD 344 million Naala Badu building opened in 2022, and that staff protested outside the gallery.",
+    "funding": "2024-25 revenue $147.9M: NSW Government recurrent grants $54.7M, donations $28.0M. Corporate partners include ANZ, Aqualand, Macquarie Group, Bank of China and Optus.",
+    "watch": "Director Maud Page announced 51 of 382 jobs would go to save AUD 7.5 million a year; staff protested outside on 27 August 2025.",
     "sources": [
       "https://www.artgallery.nsw.gov.au/visit/",
       "https://www.artgallery.nsw.gov.au/about-us/",
@@ -205162,15 +206139,60 @@
       ]
     },
     "grade": 3,
-    "grade_basis": "A funder worth knowing about, outside the flagged categories."
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
+    "details": {
+      "overview": [
+        "The state art museum of New South Wales, a statutory body under the Art Gallery of New South Wales Act 1980 and an executive agency of the Department of Creative Industries, Tourism, Hospitality and Sport; its site says it marked its 150th anniversary in 2021.",
+        "ArtAsiaPacific reported on 29 August 2025 that director Maud Page announced 51 of 382 jobs would go to save AUD 7.5 million a year, after a 2024 Treasury review found revenue had not kept pace with costs since the AUD 344 million Naala Badu building opened in 2022, and that staff protested outside the gallery."
+      ],
+      "funding": [
+        "Mainly public.",
+        "Its 2024-25 annual report shows total revenue of $147.923 million, of which recurrent grants from the NSW Government were $54.712 million, capital grants $17.686 million and other NSW Government grants $6.491 million; donations and gifts were $27.994 million and sale of goods and services $26.822 million.",
+        "Corporate partners named in the report include ANZ (presenting partner of the Archibald, Wynne and Sulman Prizes), Aqualand (naming rights to the atrium in Naala Badu), Macquarie Group, Bank of China and Optus."
+      ],
+      "sources": [
+        {
+          "url": "https://www.artgallery.nsw.gov.au/visit/"
+        },
+        {
+          "url": "https://www.artgallery.nsw.gov.au/about-us/"
+        },
+        {
+          "url": "https://www.artgallery.nsw.gov.au/about-us/corporate-information/annual-reports/"
+        },
+        {
+          "url": "https://www.artgallery.nsw.gov.au/about-us/corporate-information/annual-reports/agnsw/"
+        },
+        {
+          "url": "https://www.datocms-assets.com/42890/1762818722-agnsw-annual-report-24-25.pdf"
+        },
+        {
+          "url": "https://www.artasiapacific.com/news/agnsw-employees-rally-against-job-losses-amid-funding-crisis/"
+        },
+        {
+          "url": "https://www.artshub.com.au/news/news/agnsw-staff-to-walk-off-in-protest-at-noon-today-28-august-2818724"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.artgallery.nsw.gov.au/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://www.artgallery.nsw.gov.au/visit/"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "National Gallery of Victoria",
     "location": "Melbourne, Australia",
     "tier": "U",
     "size": "L",
-    "funding": "Mainly public, with large earned and donated income. The 2024/25 annual report of its Council of Trustees gives operating government grants of $89.522 million and trading revenue of $62.743 million for the year to 30 June 2025. The report names Mercedes-Benz, MECCA, Telstra, Country Road, Kennedy and Deakin University among principal partners, and Macquarie Group, Qantas, HSBC Australia and EY among other partners.",
-    "watch": "The state gallery of Victoria, founded in 1861 and governed by a Council of Trustees. The Victorian Auditor-General reported in February 2025 that the Melbourne Arts Precinct Transformation Phase One, which includes the new gallery The Fox: NGV Contemporary, had risen from $1.41 billion to $1.57 billion, and named a risk that philanthropy targets may not be met; the 2024/25 annual report lists Crown Resorts Foundation, Tabcorp Holdings Limited and Rio Tinto Limited among NGV Foundation members.",
+    "funding": "Year to June 2025: government operating grants $89.5M, trading revenue $62.7M. Partners include Mercedes-Benz, MECCA, Telstra, Country Road, Deakin University, Macquarie Group, Qantas, HSBC Australia and EY.",
+    "watch": "NGV Foundation members include Crown Resorts Foundation, Tabcorp and Rio Tinto. The precinct project with its new gallery rose from $1.41B to $1.57B.",
     "sources": [
       "https://www.ngv.vic.gov.au/plan-your-visit/",
       "https://www.ngv.vic.gov.au/wp-content/uploads/2025/10/NGV_ANNUAL_REPORT_24_25.pdf",
@@ -205214,15 +206236,48 @@
         }
       ]
     },
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "details": {
+      "overview": [
+        "The state gallery of Victoria, founded in 1861 and governed by a Council of Trustees.",
+        "The Victorian Auditor-General reported in February 2025 that the Melbourne Arts Precinct Transformation Phase One, which includes the new gallery The Fox: NGV Contemporary, had risen from $1.41 billion to $1.57 billion, and named a risk that philanthropy targets may not be met; the 2024/25 annual report lists Crown Resorts Foundation, Tabcorp Holdings Limited and Rio Tinto Limited among NGV Foundation members."
+      ],
+      "funding": [
+        "Mainly public, with large earned and donated income.",
+        "The 2024/25 annual report of its Council of Trustees gives operating government grants of $89.522 million and trading revenue of $62.743 million for the year to 30 June 2025.",
+        "The report names Mercedes-Benz, MECCA, Telstra, Country Road, Kennedy and Deakin University among principal partners, and Macquarie Group, Qantas, HSBC Australia and EY among other partners."
+      ],
+      "sources": [
+        {
+          "url": "https://www.ngv.vic.gov.au/plan-your-visit/"
+        },
+        {
+          "url": "https://www.ngv.vic.gov.au/wp-content/uploads/2025/10/NGV_ANNUAL_REPORT_24_25.pdf"
+        },
+        {
+          "url": "https://audit.vic.gov.au/sites/default/files/2024-25/Major%20Projects/20250219_Major-Projects-Performance-Reporting-2024-Case-study-Melbourne-Arts-Precinct-Transformation-Project-Phase-One.pdf"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.ngv.vic.gov.au/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://www.ngv.vic.gov.au/plan-your-visit/"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "Museum of Old and New Art (MONA)",
     "location": "Hobart, Australia",
     "tier": "B",
     "size": "M",
-    "funding": "Privately funded by its founder David Walsh. The Art Newspaper (21 June 2026) describes Walsh as a multi-millionaire professional gambler who paid the A$75m cost of the original museum himself and put the new Phrontisterion wing at an estimated A$100m; Al Jazeera (25 January 2015) reported that he made his millions gambling. Earned income includes admission, which the museum's site lists at $45 for adults from outside Tasmania and free for Tasmanians; the pages read did not state any government funding for the museum.",
-    "watch": "A private museum north of Hobart, described on its own site as the playground and megaphone of David Walsh. Its festival Dark Mofo is run by DarkLab, whose parent organisation is Mona (ABC, 6 July 2021); the festival cancelled Santiago Sierra's Union Flag in March 2021 after objections from First Nations people, and the museum's women-only Ladies Lounge was the subject of a discrimination case in 2024.",
+    "funding": "Privately funded by founder David Walsh, a professional gambler, who paid the A$75M cost himself. Admission is $45 for visitors from outside Tasmania.",
+    "watch": "Its festival Dark Mofo cancelled Santiago Sierra's Union Flag in March 2021. The women-only Ladies Lounge faced a discrimination case in 2024.",
     "sources": [
       "https://mona.net.au/visit",
       "https://mona.net.au/about",
@@ -205249,7 +206304,6 @@
       "gambling"
     ],
     "why_flagged": "The Art Newspaper reported on 21 June 2026 that founder David Walsh, a professional gambler, paid the A$75m cost of the museum himself; Al Jazeera reported on 25 January 2015 that he made his millions gambling.",
-    "records_note": "The pages read did not show any published accounts.",
     "opening_hours": "Thursday to Monday, 10am to 5pm; closed Tuesday and Wednesday.",
     "research_retrieved": "2026-11-14",
     "gossip_data": {
@@ -205290,15 +206344,60 @@
       ]
     },
     "grade": 3,
-    "grade_basis": "A funder worth knowing about, outside the flagged categories."
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
+    "details": {
+      "overview": [
+        "A private museum north of Hobart, described on its own site as the playground and megaphone of David Walsh.",
+        "Its festival Dark Mofo is run by DarkLab, whose parent organisation is Mona (ABC, 6 July 2021); the festival cancelled Santiago Sierra's Union Flag in March 2021 after objections from First Nations people, and the museum's women-only Ladies Lounge was the subject of a discrimination case in 2024."
+      ],
+      "funding": [
+        "Privately funded by its founder David Walsh.",
+        "The Art Newspaper (21 June 2026) describes Walsh as a multi-millionaire professional gambler who paid the A$75m cost of the original museum himself and put the new Phrontisterion wing at an estimated A$100m; Al Jazeera (25 January 2015) reported that he made his millions gambling.",
+        "Earned income includes admission, which the museum's site lists at $45 for adults from outside Tasmania and free for Tasmanians."
+      ],
+      "sources": [
+        {
+          "url": "https://mona.net.au/visit"
+        },
+        {
+          "url": "https://mona.net.au/about"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2026/06/21/a-multi-millionaire-on-a-mission-david-walsh-expands-his-museum-of-old-and-new-art"
+        },
+        {
+          "url": "https://www.aljazeera.com/features/2015/1/25/meet-australian-who-built-a-museum-from-gambling-money"
+        },
+        {
+          "url": "https://www.abc.net.au/news/2021-06-30/dark-mofo-2021-union-flag-first-nations-boycott-impact/100252542"
+        },
+        {
+          "url": "https://pulsetasmania.com.au/news/supreme-court-quashes-ruling-on-monas-discriminatory-ladies-lounge"
+        },
+        {
+          "url": "https://artreview.com/dark-mofo-cancels-santiago-sierra-blood-soaked-british-flag"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://mona.net.au/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://mona.net.au/visit"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "Art Gallery of Western Australia",
     "location": "Perth, Australia",
     "tier": "U",
     "size": "M",
-    "funding": "Mainly public. Its FY25/26 annual report gives a service appropriation of $10.774 million within total income from State Government of $12.293 million, against a total cost of services of $19.339 million, and cash sponsorship of $570,000; it says government provides 52% of income. Wesfarmers Arts is named as principal partner, with Healthway, Seven West Media, JCDecaux and Singapore Airlines among other partners, and the AGWA Foundation raises donations and bequests.",
-    "watch": "The state art gallery of Western Australia, founded in 1895 and governed by a Board appointed under the Art Gallery Act 1959; the director is Colin Walker. Its annual report names Wesfarmers Arts as principal partner and longest-standing corporate partner, with a gallery and the daily guided tours carrying the Wesfarmers name.",
+    "funding": "FY25/26: State Government income $12.3M, 52% of the total. Wesfarmers Arts is principal partner; others include Healthway, Seven West Media, JCDecaux and Singapore Airlines.",
+    "watch": "Wesfarmers Arts, its longest-standing corporate partner, has a gallery and the daily guided tours carrying its name.",
     "sources": [
       "https://artgallery.wa.gov.au/about/",
       "https://artgallery.wa.gov.au/about/annual-reports",
@@ -205321,15 +206420,48 @@
     "records_note": "Publishes annual reports with audited financial statements on its site back to 2000-01, and separate AGWA Foundation annual reports.",
     "opening_hours": "10am to 5pm daily; closed Good Friday and Christmas Day.",
     "research_retrieved": "2026-11-14",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "details": {
+      "overview": [
+        "The state art gallery of Western Australia, founded in 1895 and governed by a Board appointed under the Art Gallery Act 1959; the director is Colin Walker.",
+        "Its annual report names Wesfarmers Arts as principal partner and longest-standing corporate partner, with a gallery and the daily guided tours carrying the Wesfarmers name."
+      ],
+      "funding": [
+        "Mainly public.",
+        "Its FY25/26 annual report gives a service appropriation of $10.774 million within total income from State Government of $12.293 million, against a total cost of services of $19.339 million, and cash sponsorship of $570,000; it says government provides 52% of income.",
+        "Wesfarmers Arts is named as principal partner, with Healthway, Seven West Media, JCDecaux and Singapore Airlines among other partners, and the AGWA Foundation raises donations and bequests."
+      ],
+      "sources": [
+        {
+          "url": "https://artgallery.wa.gov.au/about/"
+        },
+        {
+          "url": "https://artgallery.wa.gov.au/about/annual-reports"
+        },
+        {
+          "url": "https://artgallery.wa.gov.au/wp-admin/admin-ajax.php?juwpfisadmin=false&action=wpfd&task=file.download&wpfd_category_id=221&wpfd_file_id=9456&preview=1"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://artgallery.wa.gov.au/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://artgallery.wa.gov.au/about/"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "Tokyo National Museum",
     "location": "Tokyo, Japan",
     "tier": "A",
     "size": "L",
-    "funding": "A national museum, one of the museums of the National Institutes for Cultural Heritage, funded by government money and its own income from tickets and sales; the pages read did not state amounts. SoraNews24 reported on 6 March 2026, citing Kyodo, NHK and the Yomiuri Shimbun, that the Agency for Cultural Affairs wants the national museums to earn revenue equal to 65% of operating costs by 2030, about 10 points above their current level. Adult admission to the collection is 1,000 yen.",
-    "watch": "Japan's oldest national museum, which dates itself from its first exhibition in 1872, now part of the National Institutes for Cultural Heritage. SoraNews24 reported on 6 March 2026 that the government plans higher ticket prices for foreign tourists at national museums by March 2031, and that museums earning under 40% of costs at the end of fiscal 2029 would face restructuring.",
+    "funding": "National museum funded by government money and its own ticket and sales income. Adult admission is 1,000 yen.",
+    "watch": "The Agency for Cultural Affairs wants national museums to earn 65% of operating costs by 2030; those under 40% in fiscal 2029 face restructuring.",
     "sources": [
       "https://www.tnm.jp/modules/r_free_page/index.php?id=113&lang=en",
       "https://www.tnm.jp/modules/r_free_page/index.php?id=143&lang=en",
@@ -205355,16 +206487,55 @@
     "records_note": "The National Institutes for Cultural Heritage publishes a yearly booklet with a budget page on nich.go.jp.",
     "opening_hours": "9:30 a.m. to 5:00 p.m., with some later closing at 8:00 p.m. on Fridays and Saturdays as its site lists; closed Mondays (open when Monday is a holiday, then closed the next day) and 26 to 31 December 2026.",
     "research_retrieved": "2026-11-14",
-    "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "Japan's oldest national museum, which dates itself from its first exhibition in 1872, now part of the National Institutes for Cultural Heritage.",
+        "SoraNews24 reported on 6 March 2026 that the government plans higher ticket prices for foreign tourists at national museums by March 2031, and that museums earning under 40% of costs at the end of fiscal 2029 would face restructuring."
+      ],
+      "funding": [
+        "A national museum, one of the museums of the National Institutes for Cultural Heritage, funded by government money and its own income from tickets and sales.",
+        "SoraNews24 reported on 6 March 2026, citing Kyodo, NHK and the Yomiuri Shimbun, that the Agency for Cultural Affairs wants the national museums to earn revenue equal to 65% of operating costs by 2030, about 10 points above their current level.",
+        "Adult admission to the collection is 1,000 yen."
+      ],
+      "sources": [
+        {
+          "url": "https://www.tnm.jp/modules/r_free_page/index.php?id=113&lang=en"
+        },
+        {
+          "url": "https://www.tnm.jp/modules/r_free_page/index.php?id=143&lang=en"
+        },
+        {
+          "url": "https://www.nich.go.jp/en/"
+        },
+        {
+          "url": "https://www.nich.go.jp/en/booklet/133030/"
+        },
+        {
+          "url": "https://soranews24.com/2026/03/06/japanese-government-planning-higher-ticket-prices-for-foreign-tourists-at-tokyo-national-museum/"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.tnm.jp/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://www.tnm.jp/modules/r_free_page/index.php?id=113&lang=en"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "The National Art Center, Tokyo",
     "location": "Tokyo, Japan",
     "tier": "A",
     "size": "L",
-    "funding": "A national institution, the fifth established within the Independent Administrative Institution National Museum of Art, so funded by government money and its own income; the pages read did not state amounts. SoraNews24 reported on 6 March 2026 that it is among the 12 national museums the Agency for Cultural Affairs wants to earn revenue equal to 65% of operating costs by 2030.",
-    "watch": "An exhibition centre in Roppongi with no permanent collection, open since 2007, with 14,000 square metres of display space that it also provides to artist associations. The same government plan reported by SoraNews24 would bring higher prices for foreign tourists and restructuring for museums that earn under 40% of their costs by the end of fiscal 2029.",
+    "funding": "National institution under the National Museum of Art, funded by government money and its own income.",
+    "watch": "One of 12 national museums told to earn 65% of operating costs by 2030, with higher prices planned for foreign tourists.",
     "sources": [
       "https://www.nact.jp/english/information/",
       "https://ac.nact.jp/art-library/publications/media/NACT_Profile20250401.pdf",
@@ -205384,19 +206555,51 @@
     "year_founded": 2007,
     "address": "7-22-2 Roppongi, Minato-ku, Tokyo 106-8558, Japan",
     "flags": null,
-    "records_note": "Publishes an English profile and annual activity reports on its site; no financial statements were seen.",
+    "records_note": "Publishes an English profile and annual activity reports on its site.",
     "opening_hours": "10:00 a.m. to 6:00 p.m.; closed Tuesdays (open when Tuesday is a national holiday, then closed the next working day).",
     "research_retrieved": "2026-11-14",
-    "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade": 2,
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "An exhibition centre in Roppongi with no permanent collection, open since 2007, with 14,000 square metres of display space that it also provides to artist associations.",
+        "The same government plan reported by SoraNews24 would bring higher prices for foreign tourists and restructuring for museums that earn under 40% of their costs by the end of fiscal 2029."
+      ],
+      "funding": [
+        "A national institution, the fifth established within the Independent Administrative Institution National Museum of Art, so funded by government money and its own income.",
+        "SoraNews24 reported on 6 March 2026 that it is among the 12 national museums the Agency for Cultural Affairs wants to earn revenue equal to 65% of operating costs by 2030."
+      ],
+      "sources": [
+        {
+          "url": "https://www.nact.jp/english/information/"
+        },
+        {
+          "url": "https://ac.nact.jp/art-library/publications/media/NACT_Profile20250401.pdf"
+        },
+        {
+          "url": "https://soranews24.com/2026/03/06/japanese-government-planning-higher-ticket-prices-for-foreign-tourists-at-tokyo-national-museum/"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.nact.jp/english/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://www.nact.jp/english/information/"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "Leeum Museum of Art",
     "location": "Seoul, South Korea",
     "tier": "A",
     "size": "M",
-    "funding": "Privately funded through the Samsung Foundation of Culture, which runs Leeum and the Ho-Am Art Museum (Korea Times, 6 March 2017); the pages read did not state amounts. ArtAsiaPacific (6 March 2017) says it houses a family collection of more than 15,000 objects, that of the Lee family of Samsung. Some exhibitions are free and others ticketed.",
-    "watch": "A private museum in Hannam-dong opened in 2004 and long directed by Hong Ra-hee, wife of the late Samsung chairman Lee Kun-hee. She resigned in 2008 during a prosecutors' investigation into a Samsung slush fund said to have been used to buy art, returned in 2011, and resigned again on 6 March 2017 after her son Lee Jae-yong was indicted; the museum then held no special exhibitions for more than four years before reopening in October 2021.",
+    "funding": "Privately funded through the Samsung Foundation of Culture. It houses the Lee family's collection of more than 15,000 objects.",
+    "watch": "Director Hong Ra-hee resigned in 2008 during a Samsung slush fund investigation, returned in 2011 and resigned again in March 2017 after her son's indictment.",
     "sources": [
       "https://www.leeumhoam.org/leeum",
       "https://www.leeumhoam.org/leeum/info/visit",
@@ -205419,7 +206622,6 @@
     "year_founded": 2004,
     "address": "60-16 Itaewon-ro 55-gil, Yongsan-gu, Seoul, 04348",
     "flags": null,
-    "records_note": "The pages read did not show any published accounts.",
     "opening_hours": "Tuesday to Sunday, 10:00 to 18:00; closed every Monday, 1 January, and the days of Seollal and Chuseok.",
     "research_retrieved": "2026-11-14",
     "gossip_data": {
@@ -205445,15 +206647,54 @@
       ]
     },
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "A private museum in Hannam-dong opened in 2004 and long directed by Hong Ra-hee, wife of the late Samsung chairman Lee Kun-hee.",
+        "She resigned in 2008 during a prosecutors' investigation into a Samsung slush fund said to have been used to buy art, returned in 2011, and resigned again on 6 March 2017 after her son Lee Jae-yong was indicted; the museum then held no special exhibitions for more than four years before reopening in October 2021."
+      ],
+      "funding": [
+        "Privately funded through the Samsung Foundation of Culture, which runs Leeum and the Ho-Am Art Museum (Korea Times, 6 March 2017).",
+        "ArtAsiaPacific (6 March 2017) says it houses a family collection of more than 15,000 objects, that of the Lee family of Samsung.",
+        "Some exhibitions are free and others ticketed."
+      ],
+      "sources": [
+        {
+          "url": "https://www.leeumhoam.org/leeum"
+        },
+        {
+          "url": "https://www.leeumhoam.org/leeum/info/visit"
+        },
+        {
+          "url": "https://www.koreatimes.co.kr/lifestyle/arts-theater/20170306/hong-ra-hee-steps-down-from-leeum-director-post"
+        },
+        {
+          "url": "https://artasiapacific.com/news/director-of-leeum-samsung-museum-of-art-resigns"
+        },
+        {
+          "url": "https://www.koreatimes.co.kr/lifestyle/arts-theater/20211013/leeum-samsung-museum-of-art-welcomes-public-once-again-after-long-hiatus-with-new-ambition"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.leeumhoam.org/leeum"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://www.leeumhoam.org/leeum/info/visit"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "Hong Kong Museum of Art",
     "location": "Hong Kong, Hong Kong",
     "tier": "A",
     "size": "L",
-    "funding": "Public: a government museum run by the Leisure and Cultural Services Department. Its own financial figures for 2025/2026 give expenditure of HK$146,242,000 and revenue of HK$96,739,000, of which admission and hiring were HK$6,267,000. The Art Newspaper (26 November 2019) put the four-year expansion completed in 2019 at HK$934m.",
-    "watch": "Hong Kong's first public art museum, established in 1962, one of the government museums run by the Leisure and Cultural Services Department, with a collection of over 20,000 sets of items. Asked by The Art Newspaper in November 2019 whether it shows or acquires political art, a government spokesman said only that the curatorial approach is in tune with the museum's strategic positioning.",
+    "funding": "Government museum of the Leisure and Cultural Services Department. 2025/26: expenditure HK$146.2M, revenue HK$96.7M.",
+    "watch": "Asked in 2019 whether it shows political art, a government spokesman said only that curating follows the museum's strategic positioning.",
     "sources": [
       "https://hk.art.museum/en/web/ma/home.html",
       "https://hk.art.museum/en/web/ma/about-us.html",
@@ -205475,19 +206716,58 @@
     "year_founded": 1962,
     "address": "10 Salisbury Road, Tsim Sha Tsui, Kowloon, Hong Kong",
     "flags": null,
-    "records_note": "Publishes a one-year table of expenditure, revenue and visitor numbers on its site; no audited accounts were seen.",
+    "records_note": "Publishes a one-year table of expenditure, revenue and visitor numbers on its site.",
     "opening_hours": "Monday to Wednesday and Friday 10:00am to 6:00pm; Saturday, Sunday and public holidays 10:00am to 9:00pm; closed Thursdays (except public holidays) and the first two days of the Lunar New Year.",
     "research_retrieved": "2026-11-14",
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Hong Kong's first public art museum, established in 1962, one of the government museums run by the Leisure and Cultural Services Department, with a collection of over 20,000 sets of items.",
+        "Asked by The Art Newspaper in November 2019 whether it shows or acquires political art, a government spokesman said only that the curatorial approach is in tune with the museum's strategic positioning."
+      ],
+      "funding": [
+        "Public: a government museum run by the Leisure and Cultural Services Department.",
+        "Its own financial figures for 2025/2026 give expenditure of HK$146,242,000 and revenue of HK$96,739,000, of which admission and hiring were HK$6,267,000.",
+        "The Art Newspaper (26 November 2019) put the four-year expansion completed in 2019 at HK$934m."
+      ],
+      "sources": [
+        {
+          "url": "https://hk.art.museum/en/web/ma/home.html"
+        },
+        {
+          "url": "https://hk.art.museum/en/web/ma/about-us.html"
+        },
+        {
+          "url": "https://hk.art.museum/en/web/ma/visit/opening-hours-and-admission.html"
+        },
+        {
+          "url": "https://hk.art.museum/en/web/ma/about-us/financial-figures.html"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2019/11/26/hong-kong-museum-of-art-to-reopen-in-spite-of-escalating-violence-of-pro-democracy-protests"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://hk.art.museum/en/web/ma/home.html"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://hk.art.museum/en/web/ma/visit/opening-hours-and-admission.html"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "Grand Egyptian Museum",
     "location": "Giza, Egypt",
     "tier": "A",
     "size": "L",
-    "funding": "State project financed largely by Japanese loans. Ticket income is split by nationality, at EGP 200 for an Egyptian adult and EGP 1,450 for other nationalities (The Art Newspaper, 24 November 2025).",
-    "watch": "The state museum of ancient Egypt beside the Giza pyramids, proposed in 1992 under Hosni Mubarak, partly opened in October 2024 and opened to the public on 4 November 2025 after repeated delays. It is a public-private partnership: Hassan Allam runs it through its subsidiary Legacy, the Ministry of Tourism and Antiquities is responsible for the artefacts, and President Sisi appointed Major General Atef Moftah to lead the project in 2016.",
+    "funding": "State project financed largely by Japanese loans. Tickets are EGP 200 for an Egyptian adult and EGP 1,450 for other nationalities.",
+    "watch": "A public-private partnership: Hassan Allam's subsidiary Legacy runs it. President Sisi appointed Major General Atef Moftah to lead the project in 2016.",
     "sources": [
       "https://tickets.gem.eg/",
       "https://www.theartnewspaper.com/2025/10/30/tutankhamun-set-to-debut-at-delayed-grand-egyptian-museum-opening",
@@ -205508,7 +206788,6 @@
     "visit_url": "https://tickets.gem.eg/",
     "address": "Cairo-Alexandria Desert Road, Giza, Egypt",
     "flags": null,
-    "records_note": "The pages read did not show any published accounts.",
     "opening_hours": "Sunday, Monday, Tuesday, Thursday, Friday: complex 8:30 AM to 7:00 PM, galleries 9:00 AM to 6:00 PM; Wednesday and Saturday: complex 8:30 AM to 10:00 PM, galleries 9:00 AM to 9:00 PM.",
     "research_retrieved": "2026-11-14",
     "gossip_data": {
@@ -205532,15 +206811,52 @@
       ]
     },
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "The state museum of ancient Egypt beside the Giza pyramids, proposed in 1992 under Hosni Mubarak, partly opened in October 2024 and opened to the public on 4 November 2025 after repeated delays.",
+        "It is a public-private partnership: Hassan Allam runs it through its subsidiary Legacy, the Ministry of Tourism and Antiquities is responsible for the artefacts, and President Sisi appointed Major General Atef Moftah to lead the project in 2016."
+      ],
+      "funding": [
+        "Ticket income is split by nationality, at EGP 200 for an Egyptian adult and EGP 1,450 for other nationalities (The Art Newspaper, 24 November 2025)."
+      ],
+      "sources": [
+        {
+          "url": "https://tickets.gem.eg/"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/10/30/tutankhamun-set-to-debut-at-delayed-grand-egyptian-museum-opening"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/11/24/politician-demands-end-to-grand-egyptian-museum-ticketing-system-that-leaves-locals-in-secondary-category"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/06/16/grand-egyptian-museum-opening-delayed-due-to-current-regional-developments"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2020/08/07/grand-egyptian-museum-will-be-finished-this-year-behind-the-scenes-of-the-giant-dollar1bn-project"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://visit-gem.com/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://tickets.gem.eg/"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "National Museum of Qatar",
     "location": "Doha, Qatar",
     "tier": "B",
     "size": "L",
-    "funding": "Run and paid for through Qatar Museums, which operates under the patronage of the Amir, Sheikh Tamim bin Hamad Al Thani, and is chaired by Sheikha Al Mayassa bint Hamad bin Khalifa Al Thani; the pages read did not state a budget. The Art Newspaper (27 March 2019) reported that Qatar Museums Authority awarded Hyundai a $434m construction contract in 2011 and that the total cost was not disclosed. Its site names Microsoft, Cisco and droppGroup as partners on digital projects.",
-    "watch": "The national museum, in a Jean Nouvel building around the restored Palace of Sheikh Abdullah, opened on 28 March 2019 and is run by Qatar Museums, which has its own record in the atlas. Nouvel told The Art Newspaper in March 2019 that his team checked the working and living conditions of the project's employees, in the context of scrutiny of migrant labour before the 2022 World Cup.",
+    "funding": "Run and paid for through Qatar Museums, under the Amir's patronage. Hyundai won a $434M construction contract in 2011; Microsoft, Cisco and droppGroup are digital partners.",
+    "watch": "Qatar Museums is chaired by the Amir's sister, Sheikha Al Mayassa. The building's total cost was not disclosed.",
     "sources": [
       "https://nmoq.org.qa/en/",
       "https://nmoq.org.qa/en/visit/",
@@ -205565,19 +206881,57 @@
       "Gulf state body"
     ],
     "why_flagged": "Qatar Museums' own about page, read on 14 November 2026, says it operates under the patronage of the Amir and is chaired by his sister Sheikha Al Mayassa; The Art Newspaper reported on 27 March 2019 that Qatar Museums Authority let the $434m building contract.",
-    "records_note": "The pages read did not show any published accounts.",
     "opening_hours": "Sunday, Monday, Wednesday, Saturday 9am to 7pm; Tuesday closed; Thursday 9am to 9pm; Friday 1:30pm to 7pm.",
     "research_retrieved": "2026-11-14",
     "grade": 3,
-    "grade_basis": "The record holds money from a Gulf state body."
+    "grade_basis": "The record holds money from a Gulf state body.",
+    "details": {
+      "overview": [
+        "The national museum, in a Jean Nouvel building around the restored Palace of Sheikh Abdullah, opened on 28 March 2019 and is run by Qatar Museums, which has its own record in the atlas.",
+        "Nouvel told The Art Newspaper in March 2019 that his team checked the working and living conditions of the project's employees, in the context of scrutiny of migrant labour before the 2022 World Cup."
+      ],
+      "funding": [
+        "Run and paid for through Qatar Museums, which operates under the patronage of the Amir, Sheikh Tamim bin Hamad Al Thani, and is chaired by Sheikha Al Mayassa bint Hamad bin Khalifa Al Thani.",
+        "The Art Newspaper (27 March 2019) reported that Qatar Museums Authority awarded Hyundai a $434m construction contract in 2011 and that the total cost was not disclosed.",
+        "Its site names Microsoft, Cisco and droppGroup as partners on digital projects."
+      ],
+      "sources": [
+        {
+          "url": "https://nmoq.org.qa/en/"
+        },
+        {
+          "url": "https://nmoq.org.qa/en/visit/"
+        },
+        {
+          "url": "https://qm.org.qa/en/about-us/"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2019/03/27/jean-nouvel-desert-rose-qatar-museum-blooms-against-the-odds"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2019/03/27/expect-the-unexpected-at-the-new-national-museum-of-qatar"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://nmoq.org.qa/en/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://nmoq.org.qa/en/visit/"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "Chhatrapati Shivaji Maharaj Vastu Sangrahalaya",
     "location": "Mumbai, India",
     "tier": "U",
     "size": "M",
-    "funding": "By its own account an autonomous institution that is un-aided by the government and supported by public-private partnerships; the pages read did not name the partners (its sponsorship page was under maintenance) or give amounts. Earned income includes tickets, at Rs 200 for Indian adults and Rs 700 for foreign adults from 1 May 2025.",
-    "watch": "An art and history museum of about 70,000 works, formerly the Prince of Wales Museum of Western India, established by Act III of 1909 of the Bombay Legislation and governed under what is now the CSMVS Act.",
+    "funding": "By its own account an autonomous institution, un-aided by the government and supported by public-private partnerships. Tickets are Rs 200 for Indian adults, Rs 700 for foreigners.",
+    "watch": "Established by Act III of 1909 as the Prince of Wales Museum of Western India; now governed under the CSMVS Act.",
     "sources": [
       "https://csmvs.in/",
       "https://csmvs.in/who-are-we.html",
@@ -205597,18 +206951,51 @@
     "visit_url": "https://csmvs.in/visit-us.html",
     "address": "159-161 Mahatma Gandhi Road, Fort, Mumbai - 400023 Maharashtra, India",
     "flags": null,
-    "records_note": "The pages read did not show any published accounts.",
     "opening_hours": "Monday to Sunday, 10:15 am to 6:00 pm; closed 26 January, 1 May, 15 August and 2 October.",
     "research_retrieved": "2026-11-14",
-    "tier_note": "No source outside the museum is recorded."
+    "tier_note": "No source outside the museum is recorded.",
+    "details": {
+      "overview": [
+        "An art and history museum of about 70,000 works, formerly the Prince of Wales Museum of Western India, established by Act III of 1909 of the Bombay Legislation and governed under what is now the CSMVS Act."
+      ],
+      "funding": [
+        "By its own account an autonomous institution that is un-aided by the government and supported by public-private partnerships.",
+        "Earned income includes tickets, at Rs 200 for Indian adults and Rs 700 for foreign adults from 1 May 2025."
+      ],
+      "sources": [
+        {
+          "url": "https://csmvs.in/"
+        },
+        {
+          "url": "https://csmvs.in/who-are-we.html"
+        },
+        {
+          "url": "https://csmvs.in/visit-us.html"
+        },
+        {
+          "url": "https://csmvs.in/partnerships-sponsorships.html"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://csmvs.in/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://csmvs.in/visit-us.html"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "Museo Nacional de Antropolog\u00eda",
     "location": "Mexico City, Mexico",
     "tier": "A",
     "size": "L",
-    "funding": "Public: managed by the Instituto Nacional de Antropolog\u00eda e Historia (INAH), within the federal culture secretariat. The Art Newspaper (1 April 2025) reported that the reinstallation of its ethnographic galleries was paid from Chapultepec Forest: Nature and Culture, a federal project whose budget reached 10bn pesos (about $486m), with the first two sections budgeted at 14m pesos each and the money managed by INAH's National Office of Museums and Exhibitions. The pages read did not state the museum's annual budget.",
-    "watch": "Mexico's national museum of archaeology and ethnography in Chapultepec park, opened in 1964 and run by INAH; it drew 3.7 million visitors in 2024. It closed early on 3 June 2025 and reopened on 5 June after a private security firm contracted by INAH did not supply enough guards (The Art Newspaper, 6 June 2025).",
+    "funding": "Run by INAH within the federal culture secretariat. Its ethnographic galleries were reinstalled from the federal Chapultepec Forest project, whose budget reached 10bn pesos.",
+    "watch": "Closed early on 3 June 2025 and reopened on 5 June after a private security firm did not supply enough guards.",
     "sources": [
       "https://www.theartnewspaper.com/2025/06/06/national-museum-anthropology-mexico-city-reopens-security-shutdown",
       "https://www.theartnewspaper.com/2025/04/01/museo-nacional-antropologia-mexico-city-ethnographic-galleries-claudia-sheinbaum-renovation"
@@ -205627,7 +207014,6 @@
     "year_founded": 1964,
     "address": "Paseo de la Reforma, Bosque de Chapultepec 1a Secci\u00f3n, Miguel Hidalgo, Ciudad de M\u00e9xico",
     "flags": null,
-    "records_note": "The pages read did not show any published accounts for the museum.",
     "research_retrieved": "2026-11-14",
     "gossip_data": {
       "gossip": [
@@ -205649,15 +207035,35 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Mexico's national museum of archaeology and ethnography in Chapultepec park, opened in 1964 and run by INAH; it drew 3.7 million visitors in 2024.",
+        "It closed early on 3 June 2025 and reopened on 5 June after a private security firm contracted by INAH did not supply enough guards (The Art Newspaper, 6 June 2025)."
+      ],
+      "funding": [
+        "Public: managed by the Instituto Nacional de Antropolog\u00eda e Historia (INAH), within the federal culture secretariat.",
+        "The Art Newspaper (1 April 2025) reported that the reinstallation of its ethnographic galleries was paid from Chapultepec Forest: Nature and Culture, a federal project whose budget reached 10bn pesos (about $486m), with the first two sections budgeted at 14m pesos each and the money managed by INAH's National Office of Museums and Exhibitions."
+      ],
+      "sources": [
+        {
+          "url": "https://www.theartnewspaper.com/2025/06/06/national-museum-anthropology-mexico-city-reopens-security-shutdown"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/04/01/museo-nacional-antropologia-mexico-city-ethnographic-galleries-claudia-sheinbaum-renovation"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.mna.inah.gob.mx/"
+    }
   },
   {
     "name": "Museo Frida Kahlo",
     "location": "Mexico City, Mexico",
     "tier": "A",
     "size": "M",
-    "funding": "Run by the Fideicomiso Museos Diego Rivera y Frida Kahlo, a trust for which Banco de M\u00e9xico, the central bank, acts as trustee; The Art Newspaper (9 June 2025) says Diego Rivera placed the collections in the trust in 1955. Earned income comes from tickets, at $320 MXN general admission and $160 for Mexican residents; the pages read did not state the trust's budget.",
-    "watch": "Frida Kahlo's house in Coyoac\u00e1n, held with the Anahuacalli museum in a trust managed by Banco de M\u00e9xico. A former director, Hilda Trujillo Soto, alleged in April 2025 that works and diary pages had gone missing and that trustees ignored the evidence, which the trust disputes; a separate Museo Casa Kahlo, opened by the Kahlo family on 27 September 2025, is a different organisation, as is the Panama-based Frida Kahlo Corporation that holds trademarks in her name.",
+    "funding": "Run by a trust with Banco de M\u00e9xico, the central bank, as trustee. Tickets are $320 MXN general, $160 for Mexican residents.",
+    "watch": "A former director said in April 2025 that works and diary pages had gone missing and trustees ignored the evidence; the trust disputes it.",
     "sources": [
       "https://www.museofridakahlo.org.mx/visita/",
       "https://www.theartnewspaper.com/2025/06/09/alleged-frida-kahlo-works-missing-mexico-city-museum",
@@ -205678,7 +207084,6 @@
     "visit_url": "https://www.museofridakahlo.org.mx/visita/",
     "address": "Londres 247, Col. Del Carmen, Coyoac\u00e1n, 04100, CDMX, Mexico",
     "flags": null,
-    "records_note": "The pages read did not show any published accounts.",
     "opening_hours": "Monday closed; Tuesday 10:00 to 18:00; Wednesday 11:00 to 18:00; Thursday 10:00 to 21:00; Friday to Sunday 10:00 to 18:00.",
     "research_retrieved": "2026-11-14",
     "gossip_data": {
@@ -205702,15 +207107,50 @@
       ]
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "Frida Kahlo's house in Coyoac\u00e1n, held with the Anahuacalli museum in a trust managed by Banco de M\u00e9xico.",
+        "A former director, Hilda Trujillo Soto, alleged in April 2025 that works and diary pages had gone missing and that trustees ignored the evidence, which the trust disputes; a separate Museo Casa Kahlo, opened by the Kahlo family on 27 September 2025, is a different organisation, as is the Panama-based Frida Kahlo Corporation that holds trademarks in her name."
+      ],
+      "funding": [
+        "Run by the Fideicomiso Museos Diego Rivera y Frida Kahlo, a trust for which Banco de M\u00e9xico, the central bank, acts as trustee; The Art Newspaper (9 June 2025) says Diego Rivera placed the collections in the trust in 1955.",
+        "Earned income comes from tickets, at $320 MXN general admission and $160 for Mexican residents."
+      ],
+      "sources": [
+        {
+          "url": "https://www.museofridakahlo.org.mx/visita/"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/06/09/alleged-frida-kahlo-works-missing-mexico-city-museum"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2025/10/01/new-frida-kahlo-museum-museo-casa-kahlo-opens-mexico-city"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2024/03/06/frida-kahlo-corporation-files-trademark-suit-amazon-sellers"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.museofridakahlo.org.mx/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://www.museofridakahlo.org.mx/visita/"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "Instituto Moreira Salles",
     "location": "S\u00e3o Paulo, Brazil",
     "tier": "A",
     "size": "M",
-    "funding": "Privately funded from an endowment first set up by Unibanco and later enlarged by the Moreira Salles family; its site says it does not raise public or private money through sponsorship or incentive laws. Forbes's profile of board member Pedro Moreira Salles (read 14 November 2026) traces the family's wealth to Unibanco, merged in 2008 into Ita\u00fa Unibanco, and to stakes in CBMM, which it calls the world's leading niobium supplier.",
-    "watch": "A non-profit cultural institute for photography, literature, music and iconography, inaugurated in 1992 by the banker Walther Moreira Salles, with centres in S\u00e3o Paulo, Rio de Janeiro (closed for renovation) and Po\u00e7os de Caldas. Its board is chaired by Matinas Suzuki Jr and includes Pedro Moreira Salles; the endowment's income rests on the family's banking and niobium mining holdings.",
+    "funding": "Privately funded from an endowment set up by Unibanco and enlarged by the Moreira Salles family.",
+    "watch": "The family's wealth comes from Unibanco, merged into Ita\u00fa Unibanco in 2008, and stakes in niobium supplier CBMM.",
     "sources": [
       "https://ims.com.br/sobre-o-ims/",
       "https://ims.com.br/sobre-o-ims/quem-somos/",
@@ -205730,19 +207170,50 @@
     "year_founded": 1992,
     "address": "Avenida Paulista, 2424, CEP 01310-300, S\u00e3o Paulo",
     "flags": null,
-    "records_note": "The pages read did not show any published accounts.",
     "opening_hours": "IMS Paulista: Tuesday to Sunday and holidays, 10h to 20h; closed Mondays; free admission.",
     "research_retrieved": "2026-11-14",
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "A non-profit cultural institute for photography, literature, music and iconography, inaugurated in 1992 by the banker Walther Moreira Salles, with centres in S\u00e3o Paulo, Rio de Janeiro (closed for renovation) and Po\u00e7os de Caldas.",
+        "Its board is chaired by Matinas Suzuki Jr and includes Pedro Moreira Salles; the endowment's income rests on the family's banking and niobium mining holdings."
+      ],
+      "funding": [
+        "Privately funded from an endowment first set up by Unibanco and later enlarged by the Moreira Salles family; its site says it does not raise public or private money through sponsorship or incentive laws.",
+        "Forbes's profile of board member Pedro Moreira Salles (read 14 November 2026) traces the family's wealth to Unibanco, merged in 2008 into Ita\u00fa Unibanco, and to stakes in CBMM, which it calls the world's leading niobium supplier."
+      ],
+      "sources": [
+        {
+          "url": "https://ims.com.br/sobre-o-ims/"
+        },
+        {
+          "url": "https://ims.com.br/sobre-o-ims/quem-somos/"
+        },
+        {
+          "url": "https://www.forbes.com/profile/pedro-moreira-salles/"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://ims.com.br/"
+    },
+    "field_sources": {
+      "opening_hours": {
+        "urls": [
+          "https://ims.com.br/sobre-o-ims/"
+        ],
+        "basis": "the space's own visit page",
+        "retrieved": "2026-11-14"
+      }
+    }
   },
   {
     "name": "National Museum of the Philippines",
     "location": "Manila, Philippines",
     "tier": "A",
     "size": "L",
-    "funding": "Public: under Republic Act No. 11333 (2019) it is a trust of the government whose annual budget comes from the national General Appropriations Act, and it may keep its own income in a National Museum Income Fund. Section 20 of the Act sets up a National Museum Endowment Fund from annual remittances of \u20b1250 million each from the Philippine Charity Sweepstakes Office and the Philippine Amusement and Gaming Corporation for five years. General admission is free under Section 18.",
-    "watch": "The national museum system, which traces itself to the Insular Museum created on 29 October 1901, governed by a 15-member Board of Trustees with eight private-sector members appointed by the President; its central museums in Manila include the National Museum of Fine Arts in the former Legislative Building. The endowment written into its 2019 charter is fed by the state lottery and the state gaming corporation.",
+    "funding": "Budget from the national General Appropriations Act. Endowment: \u20b1250M a year each from the Philippine Charity Sweepstakes Office and the Philippine Amusement and Gaming Corporation for five years.",
+    "watch": "Its 2019 charter feeds the endowment from the state lottery and the state gaming corporation; a 15-member board has eight private-sector presidential appointees.",
     "sources": [
       "https://www.nationalmuseum.gov.ph/",
       "https://www.nationalmuseum.gov.ph/about-us/history/",
@@ -205764,18 +207235,45 @@
     "year_founded": 1901,
     "address": "P. Burgos Drive, Rizal Park, Manila",
     "flags": null,
-    "records_note": "The pages read did not show published accounts; its budget is set in the General Appropriations Act.",
+    "records_note": "Its budget is set in the General Appropriations Act.",
     "research_retrieved": "2026-11-14",
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "details": {
+      "overview": [
+        "The national museum system, which traces itself to the Insular Museum created on 29 October 1901, governed by a 15-member Board of Trustees with eight private-sector members appointed by the President; its central museums in Manila include the National Museum of Fine Arts in the former Legislative Building.",
+        "The endowment written into its 2019 charter is fed by the state lottery and the state gaming corporation."
+      ],
+      "funding": [
+        "Public: under Republic Act No. 11333 (2019) it is a trust of the government whose annual budget comes from the national General Appropriations Act, and it may keep its own income in a National Museum Income Fund.",
+        "Section 20 of the Act sets up a National Museum Endowment Fund from annual remittances of \u20b1250 million each from the Philippine Charity Sweepstakes Office and the Philippine Amusement and Gaming Corporation for five years.",
+        "General admission is free under Section 18."
+      ],
+      "sources": [
+        {
+          "url": "https://www.nationalmuseum.gov.ph/"
+        },
+        {
+          "url": "https://www.nationalmuseum.gov.ph/about-us/history/"
+        },
+        {
+          "url": "https://www.nationalmuseum.gov.ph/our-museums/national-museum-of-fine-arts/"
+        },
+        {
+          "url": "https://lawphil.net/statutes/repacts/ra2019/ra_11333_2019.html"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.nationalmuseum.gov.ph/"
+    }
   },
   {
     "name": "Museo Botero",
     "location": "Bogot\u00e1, Colombia",
     "tier": "A",
     "size": "M",
-    "funding": "Run by Banco de la Rep\u00fablica, Colombia's central bank, which received the collection as a gift from the artist; the pages read did not state a budget. Admission is free, according to the museum's Google Arts & Culture partner page.",
-    "watch": "A museum in a colonial house in La Candelaria holding the 208 works Fernando Botero donated to Banco de la Rep\u00fablica in 2000, 123 of his own and 85 by international artists. Botero died in September 2023 aged 91 (The Art Newspaper, 15 September 2023).",
+    "funding": "Run by Banco de la Rep\u00fablica, Colombia's central bank, which received the collection as a gift from the artist. Admission is free.",
+    "watch": "Holds the 208 works Fernando Botero donated to Banco de la Rep\u00fablica in 2000: 123 of his own and 85 by other artists.",
     "sources": [
       "https://www.banrepcultural.org/bogota/museo-botero",
       "https://artsandculture.google.com/partner/museo-botero-bogota",
@@ -205796,9 +207294,33 @@
     "year_founded": 2000,
     "address": "Cl. 11 #4-41, Bogot\u00e1, Colombia",
     "flags": null,
-    "records_note": "The pages read did not show any published accounts for the museum.",
     "research_retrieved": "2026-11-14",
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "details": {
+      "overview": [
+        "A museum in a colonial house in La Candelaria holding the 208 works Fernando Botero donated to Banco de la Rep\u00fablica in 2000, 123 of his own and 85 by international artists.",
+        "Botero died in September 2023 aged 91 (The Art Newspaper, 15 September 2023)."
+      ],
+      "funding": [
+        "Admission is free, according to the museum's Google Arts & Culture partner page."
+      ],
+      "sources": [
+        {
+          "url": "https://www.banrepcultural.org/bogota/museo-botero"
+        },
+        {
+          "url": "https://artsandculture.google.com/partner/museo-botero-bogota"
+        },
+        {
+          "url": "https://colombia.travel/en/bogota/botero-museum"
+        },
+        {
+          "url": "https://www.theartnewspaper.com/2023/09/15/fernando-botero-the-colombian-artist-beloved-for-his-rotund-figures-has-died-aged-91"
+        }
+      ],
+      "retrieved": "2026-11-14",
+      "website": "https://www.banrepcultural.org/bogota/museo-botero"
+    }
   }
 ]
