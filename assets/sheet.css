@@ -1493,6 +1493,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   #gmMenuBtn{min-width:44px!important;min-height:44px!important;display:flex!important;align-items:center!important;justify-content:center!important}
 }
 
+@layer sheet{
 /* ---- The head bar's words hold still (user, 14 Nov 2026: "fix top menu so the buttons do not jump"). A word that is on
    is set in italic, and the italic is not the roman's width (Details 67.5 to 68.7px, Chat with the curator 189.4 to
    185.9px), so its neighbours moved each time; Dark and Light, and Expand chat and Back to map, trade places with different
@@ -1510,4 +1511,17 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gmd :is(#shExpandChat,#shBackToMap)::before,:root.gmd :is(#shExpandChat,#shBackToMap)::after{content:"Expand chat\A \2039  Back to map";content:"Expand chat\A \2039  Back to map" / ""}
   :root.gmd #workspaceTabDossier::before,:root.gmd #workspaceTabDossier::after{content:"Details";content:"Details" / ""}
   :root.gmd #workspaceTabChat::before,:root.gmd #workspaceTabChat::after{content:"Chat with the curator";content:"Chat with the curator" / ""}
+}
+
+/* ---- The phone's Chat and Details tabs hold still (user, 14 Nov 2026: "fix the phone menu so the buttons do not jump").
+   The chat's head and the details page each draw the two tabs, and they were not set alike: in the chat, Chat at 16px and
+   Details at 75.7px, roman, 20px apart; on the details page, Chat at 4px and Details at 43.7px, touching, the open one
+   italic and wider, its underline off to one side. The details page's strip now takes the chat head's measures, so each
+   word is at the same place from the left on both, and the open tab is told by its colour and underline, not by italic.
+   Both blocks are in @layer sheet like the rest of the file: outside it their !important lost to the layer's. ---- */
+@media (max-width:767px){
+  #dossier-bottom-sheet .gm-from-chat-bar:not([hidden]){align-items:center!important;gap:20px!important;padding:0 16px!important}
+  #dossier-bottom-sheet .gm-from-chat-bar button{flex:none!important;height:44px!important;min-height:44px!important;margin:0!important;padding:0!important;white-space:nowrap!important;font-style:normal!important}
+  #dossier-bottom-sheet .gm-from-chat-bar button[aria-selected="true"]::after{left:0!important;right:0!important;bottom:6px!important;height:2px!important;border-radius:0!important}
+}
 }
