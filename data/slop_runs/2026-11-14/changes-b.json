@@ -1,0 +1,1745 @@
+[
+ {
+  "id": "aros",
+  "field": "watch",
+  "before": "Danish art museum topped by Olafur Eliasson's 'Your rainbow panorama'.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "fondation-vincent-van-gogh-arles",
+  "field": "watch",
+  "before": "Roche is a pharmaceutical group, no flag category. Maja Hoffmann also chairs the LUMA Foundation behind LUMA Arles.",
+  "after": "Maja Hoffmann also chairs the LUMA Foundation behind LUMA Arles.",
+  "why": "rule 6: 'No flag category' is a note about the map's grading, addressed to editors."
+ },
+ {
+  "id": "macba-museu-d-art-contemporani-de-barcelona",
+  "field": "funding",
+  "before": "€13.2M budget. Consortium comprising the Generalitat de Catalunya, Ajuntament de Barcelona, Spanish Ministry of Culture, and Fundació MACBA.",
+  "after": "Consortium comprising the Generalitat de Catalunya, Ajuntament de Barcelona, Spanish Ministry of Culture, and Fundació MACBA.",
+  "why": "rule 5: Looked up the budget: the record gives FY2025 income of EUR 15.0M and no 13.2M figure."
+ },
+ {
+  "id": "macba-museu-d-art-contemporani-de-barcelona",
+  "field": "why_flagged",
+  "before": "Repsol is a fossil-fuel funder; Naturgy executives on the board.",
+  "after": "Repsol is a fossil-fuel funder.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "macba-museu-d-art-contemporani-de-barcelona",
+  "field": "watch",
+  "before": "Repsol is a fossil-fuel funder; Naturgy executives on the board.",
+  "after": "Repsol is a fossil-fuel funder.",
+  "why": "rule 5: Looked up Naturgy and the board: Naturgy is nowhere in the record."
+ },
+ {
+  "id": "the-mac",
+  "field": "watch",
+  "before": "Regulated by the Charity Commission for Northern Ireland.",
+  "after": null,
+  "why": "rule 2: Generic statement that a regulator exists; says nothing found about its money or governance."
+ },
+ {
+  "id": "gropius-bau",
+  "field": "funding",
+  "before": "€12M. Berliner Festspiele, Federal Government Commissioner for Culture and the Media.",
+  "after": "Berliner Festspiele, Federal Government Commissioner for Culture and the Media.",
+  "why": "rule 5: Looked up budget and million: no EUR 12M figure in the record."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "field": "funding",
+  "before": "€18M. Federal Government Commissioner for Culture and the Media (BKM), Auswärtiges Amt.",
+  "after": "Federal Government Commissioner for Culture and the Media (BKM), Auswärtiges Amt.",
+  "why": "rule 5: Looked up budget and million: no EUR 18M figure in the record."
+ },
+ {
+  "id": "kw-institute-for-contemporary-art",
+  "field": "highlight",
+  "before": "A former margarine factory where the Berlin Biennale began. It commissions new contemporary work.",
+  "after": "A former margarine factory.",
+  "why": "rule 5: Record says the Berlin Biennale used KW as a venue and shares its association, not that it began there; the second sentence is generic."
+ },
+ {
+  "id": "staatliche-museen-zu-berlin",
+  "field": "watch",
+  "before": "Governed by the Prussian Cultural Heritage Foundation (SPK). Corporate partnerships follow federal public procurement and anti-corruption guidelines. Colonial provenance is under restitution review.",
+  "after": "Governed by the Prussian Cultural Heritage Foundation (SPK). Colonial provenance is under restitution review.",
+  "why": "rule 3: Procurement and anti-corruption compliance and a colonial provenance review are unsourced virtue claims: none of these words is in the record."
+ },
+ {
+  "id": "eastside-projects",
+  "field": "highlight",
+  "before": "An artist-run public space in Digbeth that works as collective cultural infrastructure and a community production house.",
+  "after": null,
+  "why": "rule 1: Jargon with no information ('collective cultural infrastructure', 'community production house'); what is left is only a label."
+ },
+ {
+  "id": "cranbrook-art-museum",
+  "field": "watch",
+  "before": "National Historic Landmark in Bloomfield Hills, Michigan.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "capc-mus-e-d-art-contemporain",
+  "field": "funding",
+  "before": "€3.8M. Ville de Bordeaux, DRAC Nouvelle-Aquitaine, les Amis du CAPC.",
+  "after": "Ville de Bordeaux, DRAC Nouvelle-Aquitaine, les Amis du CAPC.",
+  "why": "rule 5: Looked up budget and million: no EUR 3.8M figure in the record."
+ },
+ {
+  "id": "kunsthaus-bregenz",
+  "field": "watch",
+  "before": "State museum of Vorarlberg designed by Peter Zumthor.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "institute-of-modern-art",
+  "field": "watch",
+  "before": "Oldest independent contemporary art center in Australia (Brisbane, est. 1975).",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "museo-de-arte-latinoamericano-de-buenos-aires-malba",
+  "field": "watch",
+  "before": "Private foundation museum with banking and multinational sponsorships.",
+  "after": null,
+  "why": "rule 7: Vague 'banking and multinational sponsorships' with no names."
+ },
+ {
+  "id": "contemporary-calgary",
+  "field": "watch",
+  "before": "Housed in the historic Centennial Planetarium.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "national-gallery-of-australia",
+  "field": "watch",
+  "before": "Commonwealth cultural authority in Canberra.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "chapter",
+  "field": "watch",
+  "before": "Community arts centre and contemporary gallery in Cardiff.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "visual",
+  "field": "watch",
+  "before": "Civic center for contemporary art and performance in Carlow.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "maiiam",
+  "field": "watch",
+  "before": "First private contemporary art museum in Chiang Mai, Thailand. Founded by Jean Michel Beurdeley and Eric Bunnag Booth in memory of Chao Chom Iam.",
+  "after": "Founded by Jean Michel Beurdeley and Eric Bunnag Booth in memory of Chao Chom Iam.",
+  "why": "rule 2: Description repeating the founders; 'first' private museum in Chiang Mai is not in the record."
+ },
+ {
+  "id": "the-renaissance-society",
+  "field": "highlight",
+  "before": "A non-collecting kunsthalle on the University of Chicago campus that premieres avant-garde commissions.",
+  "after": null,
+  "why": "rule 2: 'Premieres avant-garde commissions' is filler; what is left is only a label."
+ },
+ {
+  "id": "the-renaissance-society",
+  "field": "watch",
+  "before": "University-based non-collecting kunsthalle.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "christchurch-art-gallery",
+  "field": "watch",
+  "before": "Public civic art museum in Te Wai Pounamu.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "magazzino-italian-art",
+  "field": "highlight",
+  "before": "A research institute and museum dedicated to postwar and contemporary Italian art and Arte Povera.",
+  "after": null,
+  "why": "rule 2: Description of the kind of place, with 'dedicated to'."
+ },
+ {
+  "id": "magazzino-italian-art",
+  "field": "watch",
+  "before": "Museum and research center for post-war and contemporary Italian art in Cold Spring, NY.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "museum-ludwig",
+  "field": "watch",
+  "before": "Municipal museum run by the City of Cologne's cultural administration.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "crawford-art-gallery",
+  "field": "watch",
+  "before": "National Cultural Institution of Ireland located in Cork.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "nasher-sculpture-center",
+  "field": "watch",
+  "before": "Private collection gifted to the public in Dallas's arts district.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "le-consortium",
+  "field": "watch",
+  "before": "Artist-led contemporary art center (Centre d'art contemporain d'intérêt national).",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "jameel-arts-centre",
+  "field": "watch",
+  "before": "Independent contemporary arts institution on Dubai Creek. Funded through the Jameel family philanthropic foundation; free public admission with emphasis on community learning and environmental research.",
+  "after": null,
+  "why": "rule 1: Generic description with 'emphasis on community learning'; nothing found about money or governance."
+ },
+ {
+  "id": "temple-bar-gallery-studios",
+  "field": "highlight",
+  "before": "An artist-run studio complex with a street-level gallery in Dublin's cultural quarter. It supports contemporary Irish practice.",
+  "after": "An artist-run studio complex with a street-level gallery in Dublin's cultural quarter.",
+  "why": "rule 1: 'It supports contemporary Irish practice' is filler."
+ },
+ {
+  "id": "temple-bar-gallery-studios",
+  "field": "watch",
+  "before": "Artist-founded and artist-led non-profit trust in central Dublin.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "inverleith-house-royal-botanic-garden",
+  "field": "watch",
+  "before": "Ecological research institution.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "art-gallery-of-alberta",
+  "field": "watch",
+  "before": "Civic art museum in Edmonton with city, provincial and federal funding.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "s-m-a-k",
+  "field": "watch",
+  "before": "ENGIE sells natural gas, and its S.M.A.K. partnership has run since 2012 (article of 19 December 2021). The utility rule gives Fossil fuels.",
+  "after": "ENGIE sells natural gas, and its S.M.A.K. partnership has run since 2012 (article of 19 December 2021).",
+  "why": "rule 6: 'The utility rule gives Fossil fuels' is a note about the map's grading."
+ },
+ {
+  "id": "kiasma-museum-of-contemporary-art",
+  "field": "watch",
+  "before": "State museum funded solely by national culture money; has an ethical gift policy.",
+  "after": null,
+  "why": "rule 3: 'Funded solely by national culture money' is an unsourced absence claim; the 2023 ethical funding guidelines are in the record."
+ },
+ {
+  "id": "m-museum",
+  "field": "watch",
+  "before": "Museum of visual culture in West Kowloon, designed by Herzog and de Meuron.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "contemporary-arts-museum-houston",
+  "field": "watch",
+  "before": "Non-collecting museum offering free admission to the public.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "kistefos",
+  "field": "watch",
+  "before": "Sculpture park and museum in Jevnaker featuring 'The Twist' by BIG.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "21st-century-museum-of-contemporary-art",
+  "field": "watch",
+  "before": "Attendance is widely reported above 1M a year.",
+  "after": null,
+  "why": "rule 5: Looked up visitors and attendance: no attendance figure in the record."
+ },
+ {
+  "id": "ilham-gallery",
+  "field": "watch",
+  "before": "Public art gallery in Kuala Lumpur committed to Southeast Asian contemporary art.",
+  "after": null,
+  "why": "rule 1: Label with 'committed to'."
+ },
+ {
+  "id": "lismore-castle-arts",
+  "field": "watch",
+  "before": "Non-profit contemporary exhibition space in County Waterford.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "mostyn",
+  "field": "highlight",
+  "before": "A purpose-built terracotta gallery of 1901 behind a listed Edwardian facade in North Wales. It supports contemporary Welsh artists.",
+  "after": "A purpose-built terracotta gallery of 1901 behind a listed Edwardian facade in North Wales.",
+  "why": "rule 1: 'It supports contemporary Welsh artists' is filler."
+ },
+ {
+  "id": "mostyn",
+  "field": "watch",
+  "before": "Registered Welsh charity dedicated to contemporary visual art.",
+  "after": null,
+  "why": "rule 2: Label with 'dedicated to'."
+ },
+ {
+  "id": "camden-art-centre",
+  "field": "highlight",
+  "before": "Known for solo exhibitions by emerging artists and a garden terrace.",
+  "after": null,
+  "why": "rule 1: 'Known for' praise with no sourced fact."
+ },
+ {
+  "id": "whitechapel-gallery",
+  "field": "watch",
+  "before": "Historic East London public gallery founded in 1901.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "bonnefanten",
+  "field": "watch",
+  "before": "Provincial public art museum.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "museo-reina-sof-a",
+  "field": "watch",
+  "before": "National museum of modern art in Madrid.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "kunsthalle-mannheim",
+  "field": "watch",
+  "before": "Municipal contemporary museum.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "ballroom-marfa",
+  "field": "watch",
+  "before": "Free admission.",
+  "after": null,
+  "why": "rule 2: Not a finding about money or governance."
+ },
+ {
+  "id": "chinati-foundation",
+  "field": "watch",
+  "before": "Founded by Donald Judd in Marfa, Texas. Preserves large-scale installations across 340 acres.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "judd-foundation",
+  "field": "watch",
+  "before": "Maintains Donald Judd's permanently installed living and working spaces in Marfa and 101 Spring Street, New York.",
+  "after": null,
+  "why": "rule 2: Repeats the description of the foundation; not a finding."
+ },
+ {
+  "id": "macaal",
+  "field": "watch",
+  "before": "Museum of African Contemporary Art Al Maaden in Marrakech.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "acca",
+  "field": "watch",
+  "before": "Australian Centre for Contemporary Art in Melbourne.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "heide-museum-of-modern-art",
+  "field": "watch",
+  "before": "Established at the former home of John and Sunday Reed in Bulleen, Victoria.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "museo-jumex",
+  "field": "watch",
+  "before": "Free museum in Mexico City's Polanco district. Its operating budget comes from the Grupo Jumex beverage conglomerate, under family foundation governance.",
+  "after": "Its operating budget comes from the Grupo Jumex beverage conglomerate.",
+  "why": "rule 2: Generic description repeating the funding line."
+ },
+ {
+  "id": "museo-tamayo",
+  "field": "highlight",
+  "before": "Teodoro González de León and Abraham Zabludovsky's brutalist building, with earthwork forms, is set into Chapultepec forest.",
+  "after": "Teodoro González de León and Abraham Zabludovsky's building is set into Chapultepec forest.",
+  "why": "rule 5: Looked up brutalist and earthwork: not in the record."
+ },
+ {
+  "id": "ica-miami",
+  "field": "highlight",
+  "before": "The Design District building by Aranguren & Gallegos has a perforated geometric metal facade. Admission is permanently free.",
+  "after": null,
+  "why": "rule 5: Looked up facade and perforated: the record calls the building a 'Magic Box' and gives no facade detail."
+ },
+ {
+  "id": "ica-miami",
+  "field": "watch",
+  "before": "Located in the Miami Design District with permanent free admission.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "mima",
+  "field": "watch",
+  "before": "Roster from the 2024-25 impact report.",
+  "after": null,
+  "why": "rule 6: Working note about where the roster came from."
+ },
+ {
+  "id": "pirelli-hangarbicocca",
+  "field": "watch",
+  "before": "Industrial contemporary space in Milan with Anselm Kiefer's 'The Seven Heavenly Palaces'. Admission is free. Governance is tied to Pirelli's sponsorship and executive board.",
+  "after": "Governance is tied to Pirelli's sponsorship and executive board.",
+  "why": "rule 2: Description of the place plus a vague governance sentence with no sourced fact."
+ },
+ {
+  "id": "mac-montr-al",
+  "field": "watch",
+  "before": "AtkinsRéalis (ex SNC-Lavalin) paid C$280M after its Libya fraud guilty plea in 2019. Loto-Québec, named earlier, is not in the 2024-25 report.",
+  "after": "AtkinsRéalis (ex SNC-Lavalin) paid C$280M after its Libya fraud guilty plea in 2019.",
+  "why": "rule 6: 'Named earlier' is an editor's note, and Loto-Québec is not in the record."
+ },
+ {
+  "id": "phi-foundation",
+  "field": "watch",
+  "before": "Contemporary art foundation in Old Montreal offering free public exhibitions.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "lenbachhaus",
+  "field": "watch",
+  "before": "Operated by the City of Munich as a municipal cultural institution.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "storm-king-art-center",
+  "field": "funding",
+  "before": "$9.8M. Ogden family fasteners fortune.",
+  "after": "Ogden family fasteners fortune.",
+  "why": "rule 5: Looked up 9.8, expenses and fasteners: no budget figure and no fasteners in the record, which names the Star Expansion Company."
+ },
+ {
+  "id": "artists-space",
+  "field": "watch",
+  "before": "Tribeca alternative space founded in 1972, known for artist advocacy and institutional critique.",
+  "after": null,
+  "why": "rule 1: 'Known for' praise; no sourced finding."
+ },
+ {
+  "id": "the-kitchen",
+  "field": "watch",
+  "before": "Experimental non-profit performance and media arts center founded in 1971.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "bemis-center",
+  "field": "watch",
+  "before": "No Walmart entity funds Bemis.",
+  "after": null,
+  "why": "rule 6: Editor's cross-check note; Walmart is nowhere in the record."
+ },
+ {
+  "id": "kr-ller-m-ller-museum",
+  "field": "highlight",
+  "before": "Holds the second largest Van Gogh collection in the world and a 25-hectare outdoor sculpture park with works by Dubuffet, Serra and Hepworth.",
+  "after": "Holds the second largest Van Gogh collection in the world and an outdoor sculpture park with works by Dubuffet.",
+  "why": "rule 5: Record says the garden covers more than 30 hectares, not 25, and names Rodin, Moore and Dubuffet, not Serra or Hepworth."
+ },
+ {
+  "id": "kr-ller-m-ller-museum",
+  "field": "watch",
+  "before": "Autonomous national museum inside De Hoge Veluwe national park.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "castello-di-rivoli-museo-d-arte-contemporanea",
+  "field": "funding",
+  "before": "€6.5M. Regione Piemonte, Città di Torino, Fondazione CRT, Compagnia di San Paolo.",
+  "after": "Regione Piemonte, Città di Torino, Fondazione CRT, Compagnia di San Paolo.",
+  "why": "rule 5: Looked up 6.5: the only match is a ticket price; no EUR 6.5M budget."
+ },
+ {
+  "id": "castello-di-rivoli-museo-d-arte-contemporanea",
+  "field": "watch",
+  "before": "Italian public-civic contemporary museum.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "wattis-institute",
+  "field": "watch",
+  "before": "Non-profit research institute and contemporary gallery at CCA.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "henry-art-gallery",
+  "field": "watch",
+  "before": "Museum of the University of Washington in Seattle.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "rockbund-art-museum",
+  "field": "watch",
+  "before": "Non-profit contemporary museum located in the historic Royal Asiatic Society building in Shanghai.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "singapore-art-museum-sam",
+  "field": "funding",
+  "before": "State, under Singapore's Visual Arts Cluster, plus corporate partners.",
+  "after": "State, under Singapore's Visual Arts Cluster.",
+  "why": "rule 7: 'Plus corporate partners' names no one."
+ },
+ {
+  "id": "the-model",
+  "field": "highlight",
+  "before": "A cultural centre in an 1862 model school. It holds one of Ireland's largest Jack Butler Yeats collections and runs programs with living artists.",
+  "after": "A cultural centre in an 1862 model school. It holds one of Ireland's largest Jack Butler Yeats collections.",
+  "why": "rule 1: 'Runs programs with living artists' is filler."
+ },
+ {
+  "id": "the-model",
+  "field": "watch",
+  "before": "Regional contemporary arts center in Sligo.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "pulitzer-arts-foundation",
+  "field": "watch",
+  "before": "501(c)(3) private operating foundation in St. Louis, in a building designed by Tadao Ando.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "magasin-iii",
+  "field": "watch",
+  "before": "Private museum for contemporary art in Stockholm and Jaffa.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "museum-of-contemporary-art-australia-mca",
+  "field": "watch",
+  "before": "Sydney harbourfront museum with large Australian corporate sponsors.",
+  "after": null,
+  "why": "rule 7: Label plus 'large Australian corporate sponsors' with no names."
+ },
+ {
+  "id": "mori-art-museum",
+  "field": "funding",
+  "before": "Corporate endowment from Mori Building Co., Shiseido, corporate sponsors.",
+  "after": "Corporate endowment from Mori Building Co.",
+  "why": "rule 5: Looked up Shiseido and endowment: not in the record, which says backed by the Mori family with a corporate membership programme."
+ },
+ {
+  "id": "mori-art-museum",
+  "field": "watch",
+  "before": "Cultural initiative of a real-estate developer, with a corporate circle of luxury and financial firms.",
+  "after": null,
+  "why": "rule 4: Editorial characterisation with unnamed 'luxury and financial firms'."
+ },
+ {
+  "id": "contemporary-art-gallery-cag",
+  "field": "watch",
+  "before": "The BC gaming grant is public gambling-proceeds money, which the map grades as an ordinary public funder.",
+  "after": "The BC gaming grant is public gambling-proceeds money.",
+  "why": "rule 6: 'Which the map grades as' is a note about the map's own grading."
+ },
+ {
+  "id": "kunsthalle-wien",
+  "field": "watch",
+  "before": "Municipal contemporary kunsthalle of Vienna.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "audain-art-museum",
+  "field": "watch",
+  "before": "Purpose-built museum in Whistler, BC housing British Columbia art.",
+  "after": null,
+  "why": "rule 2: Bare description of what kind of place it is, not a finding about money or governance."
+ },
+ {
+  "id": "plug-in-ica",
+  "field": "watch",
+  "before": "First non-profit Institute of Contemporary Art in Canada.",
+  "after": null,
+  "why": "rule 5: Looked up 'first': the claim is not in the record."
+ },
+ {
+  "id": "kunsthalle-z-rich",
+  "field": "watch",
+  "before": "Swiss Re and Bloomberg, named in the old note, are not on the 2025 supporter list.",
+  "after": null,
+  "why": "rule 6: 'Named in the old note' is an editor's note; Bloomberg is not in the record."
+ },
+ {
+  "id": "migros-museum",
+  "field": "funding",
+  "before": "Institution of the Migros-Kulturprozent, carried by the Migros cooperative federation, which pays a turnover-based sum into culture since 1957. The sheet lists CHF 12 tickets and no public funder.",
+  "after": "Institution of the Migros-Kulturprozent, carried by the Migros cooperative federation, which pays a turnover-based sum into culture since 1957.",
+  "why": "rule 6: 'The sheet lists' refers to the editors' data sheet."
+ },
+ {
+  "id": "whitney-museum-of-american-art",
+  "field": "highlight",
+  "before": "Renzo Piano's cantilevered building in the Meatpacking District, on the High Line, is dedicated to living American artists and hosts the Whitney Biennial.",
+  "after": "Renzo Piano's building in the Meatpacking District hosts the Whitney Biennial.",
+  "why": "rule 1: 'Dedicated to living American artists' is filler; cantilever and High Line are not in the record."
+ },
+ {
+  "id": "serpentine-galleries",
+  "field": "funding",
+  "before": "Arts Council England National Portfolio Organization (NPO), Bloomberg Philanthropies public pavilion commissions, individual patron circle.",
+  "after": "Arts Council England National Portfolio Organization (NPO), individual patron circle.",
+  "why": "rule 5: Record has Michael Bloomberg as chair and Goldman Sachs supporting the Pavilion; Bloomberg Philanthropies pavilion commissions are not in it."
+ },
+ {
+  "id": "fundaci-joan-mir",
+  "field": "highlight",
+  "before": "Josep Lluís Sert's modernist building holds Miró's large tapestries, Calder's Mercury Fountain and the Espai 13 project space.",
+  "after": "Josep Lluís Sert's modernist building holds the Espai 13 project space.",
+  "why": "rule 5: Looked up tapestries and Mercury Fountain: not in the record."
+ },
+ {
+  "id": "dia-chelsea",
+  "field": "funding",
+  "before": "Dia Art Foundation endowment ($110M), board contributions, and New York State Council on the Arts. Always free admission.",
+  "after": "Dia Art Foundation endowment, board contributions.",
+  "why": "rule 5: Looked up 110 and New York State Council: not in the record; 'Always free admission' is a virtue line, not a funder."
+ },
+ {
+  "id": "barbican-art-gallery-the-curve",
+  "field": "funding",
+  "before": "£55M operating budget. Funded directly by the City of London Corporation as founder and principal funder, alongside Arts Council England and ticket revenues.",
+  "after": "Funded directly by the City of London Corporation as founder and principal funder, alongside Arts Council England and ticket revenues.",
+  "why": "rule 5: Record gives total income of GBP 46,996,000 for 2022/23; no 55M figure."
+ },
+ {
+  "id": "barbican-art-gallery-the-curve",
+  "field": "watch",
+  "before": "Governed as a public civic corporation. The Curve gallery is permanently free to the public and hosts site-specific commissions.",
+  "after": null,
+  "why": "rule 3: Label plus 'permanently free' as a virtue; nothing found about money or governance."
+ },
+ {
+  "id": "instituto-inhotim",
+  "field": "funding",
+  "before": "R$ 60M budget. Federal Culture Incentive Law (Lei Rouanet), Vale Cultural Institute civic environmental agreements, and ticket revenues.",
+  "after": "Federal Culture Incentive Law (Lei Rouanet), Vale Cultural Institute civic environmental agreements, and ticket revenues.",
+  "why": "rule 5: Looked up 60, budget: research gives 60% incentive-law share and R$99.6M income, no R$60M budget."
+ },
+ {
+  "id": "macro-museo-d-arte-contemporanea-di-roma",
+  "field": "funding",
+  "before": "€3.5M budget. Roma Capitale municipal cultural council and Azienda Speciale Palaexpo public agency.",
+  "after": "Roma Capitale municipal cultural council and Azienda Speciale Palaexpo public agency.",
+  "why": "rule 5: Looked up 3.5, 3,5, budget: no budget figure in the record."
+ },
+ {
+  "id": "hayward-gallery-southbank-centre",
+  "field": "funding",
+  "before": "£38M Southbank Centre operating budget. Arts Council England National Portfolio Organisation (NPO), admissions, and Southbank Centre trust.",
+  "after": "Arts Council England National Portfolio Organisation (NPO), admissions, and Southbank Centre trust.",
+  "why": "rule 5: Looked up 38, million, income: no £38M operating budget in the record."
+ },
+ {
+  "id": "casco-art-institute",
+  "field": "watch",
+  "before": "Moved from an exhibition showroom to a commons-based, cooperative model. Under Binna Choi it rebuilt its governance around feminist economics, mutual care and collective unlearning.",
+  "after": null,
+  "why": "rule 5: Looked up feminist, cooperative, showroom, governance: only 'working for the commons' and Binna Choi's directorship are in the record; the narrative is not."
+ },
+ {
+  "id": "kunstinstituut-melly",
+  "field": "highlight",
+  "before": "Known for rotating critical commissions, a research publications series and Ken Lum's permanent outdoor work 'Melly Shum Hates Her Job'.",
+  "after": null,
+  "why": "rule 1: 'Known for' praise; rotating commissions, research series and 'permanent outdoor' are not in the record (only the Ken Lum facade work as the source of the name)."
+ },
+ {
+  "id": "framer-framed",
+  "field": "watch",
+  "before": "Decolonial art platform founded in 2009. The Rabo ArtLab project is in no source I opened.",
+  "after": null,
+  "why": "rule 6: Category label ('decolonial' not in record) followed by an editors' working note ('in no source I opened')."
+ },
+ {
+  "id": "vleeshal-middelburg",
+  "field": "watch",
+  "before": "The Province of Zeeland, named in the first draft, is not listed there.",
+  "after": null,
+  "why": "rule 6: Editors' note about 'the first draft'; the record in fact lists Zeeland province among subsidy sources."
+ },
+ {
+  "id": "la-loge-brussels",
+  "field": "highlight",
+  "before": "A 1934 modernist brick-and-timber Masonic lodge by Fernand Bodson that keeps its original ritual proportions.",
+  "after": "A 1934 modernist Masonic lodge by Fernand Bodson.",
+  "why": "rule 5: Looked up brick, timber, ritual, proportions: not in the record; 1934, modernist, Bodson and Masonic are."
+ },
+ {
+  "id": "the-showroom-london",
+  "field": "watch",
+  "before": "Known for its 'Communal Knowledge' program, linking international artists with local housing estates and immigrant communities.",
+  "after": null,
+  "why": "rule 5: Looked up Communal, estate, immigrant: the programme is not in the record; 'Known for' framing."
+ },
+ {
+  "id": "auto-italia-london",
+  "field": "funding",
+  "before": "Arts Council England, British Council, and non-commercial trusts. Registered Charity No. 1172824.",
+  "after": "Arts Council England, British Council, and non-commercial trusts.",
+  "why": "rule 5: Record says the number 1172824 is not the one on its own about page."
+ },
+ {
+  "id": "auto-italia-london",
+  "field": "watch",
+  "before": "Artist-run organisation supporting queer, trans, working-class and migrant voices. It began in a Peckham car showroom and remains independent.",
+  "after": "Artist-run organisation. It began in a Peckham car showroom.",
+  "why": "rule 1: 'Supporting ... voices' and 'remains independent' are unsourced mission/virtue text (looked up queer, independent: none). Note record says a squatted car garage, not showroom."
+ },
+ {
+  "id": "cubitt-london",
+  "field": "funding",
+  "before": "Arts Council England NPO, Islington Council, Outset Contemporary Art Fund, artist studio rents. Registered Charity No. 1049602.",
+  "after": "Arts Council England NPO, artist studio rents.",
+  "why": "rule 5: Looked up Outset, Islington Council, 1049602: none in the record; the record prints charity number 1049653."
+ },
+ {
+  "id": "project-arts-centre-dublin",
+  "field": "funding",
+  "before": "The Arts Council / An Chomhairle Ealaíon, Dublin City Council, non-commercial ticket sales. Registered Charity No. 20008447.",
+  "after": "The Arts Council / An Chomhairle Ealaíon, Dublin City Council, non-commercial ticket sales.",
+  "why": "rule 5: Looked up 20008447, charity: record gives CHY6465, not this number."
+ },
+ {
+  "id": "project-arts-centre-dublin",
+  "field": "watch",
+  "before": "Multidisciplinary contemporary arts institute in Temple Bar.",
+  "after": null,
+  "why": "rule 2: Bare category label in watch."
+ },
+ {
+  "id": "centre-art-contemporain-geneva",
+  "field": "funding",
+  "before": "City of Geneva (Ville de Genève), Republic and Canton of Geneva, Swiss Federal Office of Culture (OFC), Loterie Romande. Audited public accounts.",
+  "after": "City of Geneva (Ville de Genève), Republic and Canton of Geneva, Loterie Romande.",
+  "why": "rule 5: Looked up Office, OFC, Federal, audit, accounts: no federal culture office and no audited accounts in the record."
+ },
+ {
+  "id": "tensta-konsthall-stockholm",
+  "field": "watch",
+  "before": "In the modernist Stockholm suburb of Tensta; its programme deals with migration, working-class housing struggles and civic solidarity.",
+  "after": null,
+  "why": "rule 5: Looked up migration, suburb, housing, modernist: none of the description is in the record."
+ },
+ {
+  "id": "index-foundation-stockholm",
+  "field": "funding",
+  "before": "Swedish Arts Council, City of Stockholm, Region Stockholm. Non-profit foundation returns published annually.",
+  "after": "Swedish Arts Council, City of Stockholm, Region Stockholm.",
+  "why": "rule 3: Looked up annual, returns: the transparency claim is not in the record."
+ },
+ {
+  "id": "index-foundation-stockholm",
+  "field": "watch",
+  "before": "Began in 1974 as the underground photo magazine Bildtidningen. Index publishes critical theory, runs writing groups and shows conceptual work on art's role in society.",
+  "after": null,
+  "why": "rule 5: Record says it grew out of the Fotograficentrum association (1974) whose magazine was Bildtidningen; 'underground', critical theory and writing groups are not in the record."
+ },
+ {
+  "id": "ashkal-alwan-beirut",
+  "field": "watch",
+  "before": "Sharjah Art Foundation, named in the old note, is not on it.",
+  "after": null,
+  "why": "rule 6: Editors' note about 'the old note'."
+ },
+ {
+  "id": "printed-matter-new-york",
+  "field": "funding",
+  "before": "501(c)(3) non-profit organization funded through book distribution, NY & LA Art Book Fair fees, NYSCA, NEA, and individual donors. Board leadership is closely tied to multi-billion-dollar luxury real estate development.",
+  "after": "501(c)(3) non-profit organization funded through book distribution, NY & LA Art Book Fair fees, NYSCA, NEA, and individual donors.",
+  "why": "rule 4: Last sentence is an editorial verdict; looked up 'real estate', 'multi-billion': not in the record."
+ },
+ {
+  "id": "soma-mexico-city",
+  "field": "funding",
+  "before": "Civil non-profit association (Asociación Civil) funded by artist philanthropy, Fundación Jumex grants and the Prince Claus Fund.",
+  "after": null,
+  "why": "rule 5: Looked up Jumex, Claus, Asociacion: none; record says privately funded by donors, an annual benefit auction and a board of patrons."
+ },
+ {
+  "id": "raw-material-company-dakar",
+  "field": "watch",
+  "before": "Sharjah Art Foundation sits under the Government of Sharjah's Department of Culture and Information and is already flagged Gulf state body on this map.",
+  "after": "Sharjah Art Foundation sits under the Government of Sharjah's Department of Culture and Information.",
+  "why": "rule 6: 'Already flagged ... on this map' is an editors' note."
+ },
+ {
+  "id": "gudskul-ruangrupa-jakarta",
+  "field": "funding",
+  "before": "Communal resource pool (lumbung), DOEN Foundation, Arts Collaboratory, and cooperative commercial enterprises.",
+  "after": "Communal resource pool (lumbung).",
+  "why": "rule 5: Record says no reporting found of DOEN money going to Gudskul and that Arts Collaboratory does not list it; 'commercial enterprises' not found."
+ },
+ {
+  "id": "a4-arts-foundation-cape-town",
+  "field": "funding",
+  "before": "Endowed not-for-profit foundation (Wendy Fisher / Kirsh Foundation) and independent institutional partners.",
+  "after": "Endowed not-for-profit foundation (Wendy Fisher / Kirsh Foundation).",
+  "why": "rule 7: 'Independent institutional partners' names nobody; record says one patron."
+ },
+ {
+  "id": "lace-los-angeles",
+  "field": "funding",
+  "before": "California Arts Council, Andy Warhol Foundation, National Endowment for the Arts, Mike Kelley Foundation. 501(c)(3) public non-profit returns.",
+  "after": "California Arts Council, Andy Warhol Foundation.",
+  "why": "rule 5: Looked up 'National Endowment', Kelley, 501: none in the record (it names Getty and Warhol as major funders)."
+ },
+ {
+  "id": "lace-los-angeles",
+  "field": "watch",
+  "before": "Founded in 1978 by artists; the longest-running non-profit artist-run space in Los Angeles. Known for experimental performance, social justice programmes and video archives.",
+  "after": "Founded in 1978 by artists.",
+  "why": "rule 1: 'Known for' filler; looked up longest, performance, video: none in the record."
+ },
+ {
+  "id": "cue-art-foundation-new-york",
+  "field": "funding",
+  "before": "National Endowment for the Arts (NEA), NYSCA, NYC Department of Cultural Affairs, private philanthropic grants. 501(c)(3) public non-profit.",
+  "after": "National Endowment for the Arts (NEA). 501(c)(3) public non-profit.",
+  "why": "rule 5: Looked up NYSCA, 'New York State', 'Cultural Affairs': none; 'private philanthropic grants' names nobody."
+ },
+ {
+  "id": "cue-art-foundation-new-york",
+  "field": "watch",
+  "before": "Dedicated to creating opportunities for emerging and underrepresented artists of all ages.",
+  "after": null,
+  "why": "rule 1: 'Dedicated to' mission filler with no fact."
+ },
+ {
+  "id": "pivo-sao-paulo",
+  "field": "funding",
+  "before": "Federal Cultural Incentive Law (Lei Rouanet), philanthropic patron circle, international cultural foundations. Independent Brazilian non-profit audit.",
+  "after": null,
+  "why": "rule 5: Record says any Lei Rouanet link is unconfirmed; 'international cultural foundations' and the audit claim are not in the record."
+ },
+ {
+  "id": "l-appartement-22-rabat",
+  "field": "highlight",
+  "before": "A modernist apartment used as a small, independent space for critical art.",
+  "after": null,
+  "why": "rule 1: Generic description; 'modernist' and 'critical art' not in the record."
+ },
+ {
+  "id": "bag-factory-johannesburg",
+  "field": "funding",
+  "before": "National Arts Council South Africa, Triangle Network, international cultural foundations, studio rentals. Registered Non-Profit Organisation (NPO).",
+  "after": "Triangle Network, studio rentals.",
+  "why": "rule 5: Looked up 'National Arts', NPO, non-profit: none; record says no funders named beyond studio rents and unnamed international partners."
+ },
+ {
+  "id": "hangar-barcelona",
+  "field": "highlight",
+  "before": "The 19th-century Can Ricart textile factory compound is run as an open-source commons for art and critical engineering.",
+  "after": null,
+  "why": "rule 4: 'Open-source commons for art and critical engineering' is an unsourced characterisation; no clean cut leaves a sentence."
+ },
+ {
+  "id": "hangar-barcelona",
+  "field": "funding",
+  "before": "Generalitat de Catalunya Department of Culture, Ajuntament de Barcelona, European cultural research programs. Non-profit artist association.",
+  "after": "Ajuntament de Barcelona.",
+  "why": "rule 5: Looked up Generalitat, Catalunya, Europe: only city hall support is in the record, which says no funder list is published."
+ },
+ {
+  "id": "hangar-barcelona",
+  "field": "watch",
+  "before": "Artist-run center for visual arts research and production in Poblenou.",
+  "after": null,
+  "why": "rule 2: Bare category label in watch."
+ },
+ {
+  "id": "marres-maastricht",
+  "field": "highlight",
+  "before": "The historic house at Marres looks completely different with each exhibition.",
+  "after": null,
+  "why": "rule 1: Atmosphere; looked up 'different': not in the record."
+ },
+ {
+  "id": "casino-luxembourg",
+  "field": "watch",
+  "before": "Public kunsthalle dedicated to living artists, with production residencies and research.",
+  "after": null,
+  "why": "rule 2: Category label with 'dedicated to'; looked up residenc, living: none."
+ },
+ {
+  "id": "tabakalera-donostia",
+  "field": "watch",
+  "before": "Former tobacco factory.",
+  "after": null,
+  "why": "rule 2: Bare description of the building in watch; no finding."
+ },
+ {
+  "id": "thecube-project-space-taipei",
+  "field": "highlight",
+  "before": "Founded in April 2010, TheCube Project Space is a non-profit art organization dedicated to the research, promotion and presentation of contemporary art.",
+  "after": "Founded in April 2010, TheCube Project Space is a non-profit art organization.",
+  "why": "rule 1: 'Dedicated to ...' mission clause; looked up dedicated, promotion: not in the record."
+ },
+ {
+  "id": "jim-thompson-art-center-bangkok",
+  "field": "watch",
+  "before": "The foundation also supervises the Jim Thompson House Museum. The claim that house-museum income pays for the centre is not on its page.",
+  "after": "The foundation also supervises the Jim Thompson House Museum.",
+  "why": "rule 6: Second sentence is an editors' note about an earlier claim."
+ },
+ {
+  "id": "ot301-amsterdam",
+  "field": "highlight",
+  "before": "Houses the De Peper collective kitchen and the Ventilator Cinema, which shows independent underground films.",
+  "after": "Houses the Ventilator Cinema, which shows independent underground films.",
+  "why": "rule 5: Record says De Peper closed in 2023 and was replaced by Café Gilde."
+ },
+ {
+  "id": "friart-kunsthalle-fribourg",
+  "field": "highlight",
+  "before": "The rough industrial spaces of the former 19th-century Petites-Rames factory host conceptual productions.",
+  "after": null,
+  "why": "rule 1: Scene-setting; record says former cardboard factory, with no '19th-century' or 'conceptual productions'."
+ },
+ {
+  "id": "friart-kunsthalle-fribourg",
+  "field": "watch",
+  "before": "Loterie Romande is a public lottery, no flag. Partners include the University of Fribourg and Fribourg Tourisme.",
+  "after": "Loterie Romande is a public lottery. Partners include the University of Fribourg and Fribourg Tourisme.",
+  "why": "rule 6: 'No flag' is map-internal working language."
+ },
+ {
+  "id": "yyz-artists-outlet-toronto",
+  "field": "highlight",
+  "before": "YYZ Artists' Outlet is an artist-led exhibition space and publishing centre.",
+  "after": null,
+  "why": "rule 2: Bare category label in highlight."
+ },
+ {
+  "id": "dazibao-montreal",
+  "field": "highlight",
+  "before": "Dazibao is an exhibition center dedicated to the dissemination and outreach of contemporary image-based practices.",
+  "after": null,
+  "why": "rule 1: 'Dedicated to' mission statement saying only what kind of place it is."
+ },
+ {
+  "id": "artpace-san-antonio",
+  "field": "highlight",
+  "before": "Artpace San Antonio is a nonprofit residency program that supports artists in creating new work.",
+  "after": null,
+  "why": "rule 2: Bare category label in highlight."
+ },
+ {
+  "id": "teoretica-san-jose",
+  "field": "watch",
+  "before": "Supporter roster unverified.",
+  "after": null,
+  "why": "rule 6: Editors' working note."
+ },
+ {
+  "id": "the-royal-standard-liverpool",
+  "field": "highlight",
+  "before": "The Royal Standard describes itself as Liverpool's largest community of artists and offers high-quality affordable studios.",
+  "after": "The Royal Standard describes itself as Liverpool's largest community of artists.",
+  "why": "rule 1: 'High-quality affordable studios' is promotional and not in the record."
+ },
+ {
+  "id": "beirut-art-center-bac",
+  "field": "funding",
+  "before": "Independent non-profit foundation, cultural grants, community patrons.",
+  "after": null,
+  "why": "rule 7: Vague funder words with no name."
+ },
+ {
+  "id": "khalil-sakakini-cultural-center-ramallah",
+  "field": "highlight",
+  "before": "The Khalil Sakakini Cultural Center in Ramallah is named after Khalil Sakakini.",
+  "after": null,
+  "why": "rule 1: Tautology with no information."
+ },
+ {
+  "id": "32-east-ugandan-arts-trust-kampala",
+  "field": "watch",
+  "before": "Non-profit organisation dedicated to contemporary art in Uganda; newly built rammed-earth community centre in Ggaba.",
+  "after": "Newly built rammed-earth community centre in Ggaba.",
+  "why": "rule 1: First clause is a 'dedicated to' label."
+ },
+ {
+  "id": "coaxial-arts-foundation-la",
+  "field": "highlight",
+  "before": "Coaxial Arts Foundation is an art space in DTLA dedicated to experimental video, sound and performance art.",
+  "after": null,
+  "why": "rule 1: 'Dedicated to' label saying only what kind of place it is."
+ },
+ {
+  "id": "murray-art-museum-albury-albury",
+  "field": "highlight",
+  "before": "A civic art museum in the Riverina devoted to contemporary photography, regional installations and Wiradjuri cultural heritage.",
+  "after": null,
+  "why": "rule 2: Category description with 'devoted to'; Riverina and 'regional installations' are not in the record."
+ },
+ {
+  "id": "geelong-gallery-geelong",
+  "field": "watch",
+  "before": "Nearly 70,000 visitors in 2024-25. The cited partners page dates from 2020-21; the annual report is current.",
+  "after": "Nearly 70,000 visitors in 2024-25.",
+  "why": "rule 6: Second sentence is an editors' note about which source is current."
+ },
+ {
+  "id": "gertrude-contemporary-melbourne",
+  "field": "highlight",
+  "before": "A 40-year-old artist-run studio and exhibition space in Preston, Melbourne, that launches experimental Australian artists.",
+  "after": "A 40-year-old artist-run studio and exhibition space in Preston, Melbourne.",
+  "why": "rule 1: 'Launches experimental Australian artists' is praise not in the record."
+ },
+ {
+  "id": "gertrude-contemporary-melbourne",
+  "field": "watch",
+  "before": "Proclaim has sponsored the Octopus exhibition since 2002. No flagged-industry funder.",
+  "after": "Proclaim has sponsored the Octopus exhibition since 2002.",
+  "why": "rule 6: 'No flagged-industry funder' is map-internal working language."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "field": "watch",
+  "before": "Censorship row: on 25 Mar 2025 Monash indefinitely postponed Stolon Press: Flat earth (Khaled Sabsabi) under pressure; it reopened 29 May 2025.",
+  "after": "On 25 Mar 2025 Monash indefinitely postponed Stolon Press: Flat earth (Khaled Sabsabi) under pressure; it reopened 29 May 2025.",
+  "why": "rule 4: 'Censorship row' is an editorial label; note the record gives March 2025 without the day."
+ },
+ {
+  "id": "potter-museum-of-art-melbourne",
+  "field": "watch",
+  "before": "A 2024 student encampment at the University of Melbourne targeted the university's arms investments, not the museum, so it adds no flag.",
+  "after": "A 2024 student encampment at the University of Melbourne targeted the university's arms investments, not the museum.",
+  "why": "rule 6: 'So it adds no flag' is map-internal working language."
+ },
+ {
+  "id": "fondation-cab-brussels",
+  "field": "watch",
+  "before": "The founder is the sole funder. The wealth is steel (family sold its Clabecq stake in 1974) and property. Banks are partners, not under campaign.",
+  "after": "The founder is the sole funder. The wealth is steel (family sold its Clabecq stake in 1974) and property.",
+  "why": "rule 6: Last sentence is map-internal ('not under campaign') about partners the record does not contain."
+ },
+ {
+  "id": "dalhousie-art-gallery-halifax",
+  "field": "highlight",
+  "before": "Nova Scotia's oldest public gallery is on the Dalhousie University campus and is known for contemporary Atlantic Canadian printmaking and video art.",
+  "after": "Nova Scotia's oldest public gallery is on the Dalhousie University campus.",
+  "why": "rule 1: 'Known for' clause; looked up printmaking, video: none. Note record says oldest public art gallery in Halifax."
+ },
+ {
+  "id": "musée-dart-de-joliette-joliette",
+  "field": "highlight",
+  "before": "A regional museum in Lanaudière with sacred, historical and contemporary Quebec art.",
+  "after": null,
+  "why": "rule 2: Category label; 'sacred' and 'historical' are not in the record."
+ },
+ {
+  "id": "selasar-sunaryo-art-space-bandung",
+  "field": "watch",
+  "before": "Nonprofit art space in Bandung. Earlier partner names (Goethe-Institut, Japan Foundation, British Council) are not on its site.",
+  "after": null,
+  "why": "rule 6: Category label plus an editors' note about 'earlier partner names'; neither is a finding about money or governance."
+ },
+ {
+  "id": "the-glucksman-cork",
+  "field": "watch",
+  "before": "Gifts (€41k) and corporate sponsors are not named. Founding donor Lewis Glucksman was a Lehman banker; banks are allowed.",
+  "after": "Gifts (€41k) and corporate sponsors are not named. Founding donor Lewis Glucksman was a Lehman banker.",
+  "why": "rule 6: 'banks are allowed' is map-rule jargon addressed to editors."
+ },
+ {
+  "id": "nezu-museum-tokyo",
+  "field": "watch",
+  "before": "The claim that it takes no Tobu Group donations is not on its site.",
+  "after": null,
+  "why": "rule 6: Editors' note about a claim made elsewhere, not a finding for the reader."
+ },
+ {
+  "id": "fundación-casa-wabi-puerto-escondido",
+  "field": "watch",
+  "before": "Allowed money named: alcohol (Tequila 1800), retail (Home Depot), hotels/property (Grupo Habita, Punta Pájaros), banking family (Harp Helú).",
+  "after": null,
+  "why": "rule 6: 'Allowed money named' is grading jargon, and none of the sponsors listed is in the research."
+ },
+ {
+  "id": "museo-de-arte-de-zapopan-zapopan",
+  "field": "watch",
+  "before": "Free public contemporary art museum. The old domain mazmuseo.com now carries casino spam links; the municipal site is maz.zapopan.gob.mx.",
+  "after": null,
+  "why": "rule 6: Category label plus a working note about domains; looked up casino and spam, not in the research."
+ },
+ {
+  "id": "museum-de-lakenhal-leiden",
+  "field": "watch",
+  "before": "The thanks page lists all donors since founding, including the tobacco-family Niemeijer Fonds, undated, so it is not counted.",
+  "after": "The thanks page lists all donors since founding, including the tobacco-family Niemeijer Fonds, undated.",
+  "why": "rule 6: 'so it is not counted' is a grading note for editors."
+ },
+ {
+  "id": "kaohsiung-museum-of-fine-arts-kaohsiung",
+  "field": "watch",
+  "before": "Named funders, all allowed: Applied Materials Taiwan, King's Town Bank's charity foundation and Fulong shipping. The only row was a 2024 sketching ban.",
+  "after": "Named funders: Applied Materials Taiwan, King's Town Bank's charity foundation and Fulong shipping. The only row was a 2024 sketching ban.",
+  "why": "rule 6: 'all allowed' is grading jargon; Fulong shipping is not in the research ledger."
+ },
+ {
+  "id": "hospitalfield-arbroath",
+  "field": "highlight",
+  "before": "Historic artist residency house, arts trust and heritage site.",
+  "after": null,
+  "why": "rule 2: Bare category label; states no fact about the space."
+ },
+ {
+  "id": "compton-verney-kineton",
+  "field": "watch",
+  "before": "Founded 1993 by the Peter Moores Foundation (Littlewoods pools and retail fortune); its historic endowment could be read as founding gambling money.",
+  "after": "Founded 1993 by the Peter Moores Foundation (Littlewoods pools and retail fortune).",
+  "why": "rule 4: 'could be read as founding gambling money' is an editorial verdict."
+ },
+ {
+  "id": "bluecoat-liverpool",
+  "field": "watch",
+  "before": "Its trust list is from the FY2023 accounts.",
+  "after": null,
+  "why": "rule 6: Provenance note for editors; looked up FY2023, not in the research."
+ },
+ {
+  "id": "atlanta-contemporary-atlanta",
+  "field": "watch",
+  "before": "In-kind sponsors include Post Meridiem Spirit Co (alcohol) and Orange Barrel Media (advertising). Leadership turnover 2025-26, no funder controversy.",
+  "after": "In-kind sponsors include Post Meridiem Spirit Co (alcohol) and Orange Barrel Media (advertising). Leadership turnover 2025-26.",
+  "why": "rule 3: 'no funder controversy' is an unsourced absence claim."
+ },
+ {
+  "id": "the-contemporary-austin-austin",
+  "field": "watch",
+  "before": "No excluded name on its board.",
+  "after": null,
+  "why": "rule 6: Grading jargon ('excluded name') addressed to editors."
+ },
+ {
+  "id": "birmingham-museum-of-art-birmingham",
+  "field": "watch",
+  "before": "Alabama Power, a Founders Circle sponsor, runs coal plants including Miller, the largest US CO2 emitter as of 2021. Drummond is not on the list.",
+  "after": "Alabama Power, a Founders Circle sponsor, runs coal plants including Miller, the largest US CO2 emitter as of 2021.",
+  "why": "rule 6: 'Drummond is not on the list' is an editors' check; Drummond is not in the research."
+ },
+ {
+  "id": "new-orleans-museum-of-art-new-orleans",
+  "field": "watch",
+  "before": "Flag rests on the Helis Foundation (William Helis oil family), a current sponsor of free admission. Besthoff, Zemurray and bank money is not flagged.",
+  "after": "Flag rests on the Helis Foundation (William Helis oil family), a current sponsor of free admission.",
+  "why": "rule 6: Second sentence is a grading note; Zemurray is not in the research. 'Flag rests on' is still editors' wording."
+ },
+ {
+  "id": "phoenix-art-museum-phoenix",
+  "field": "watch",
+  "before": "Southwest Gas distributes natural gas in Arizona, so the utility rule applies. The page lists Desert Financial Credit Union, not Desert Diamond.",
+  "after": "Southwest Gas distributes natural gas in Arizona.",
+  "why": "rule 6: 'the utility rule applies' and the Desert Diamond correction are notes to editors."
+ },
+ {
+  "id": "moca-tucson-tucson",
+  "field": "funding",
+  "before": "Board, members, Tucson arts grants.",
+  "after": null,
+  "why": "rule 7: Names no funder: 'Board, members, Tucson arts grants.'"
+ },
+ {
+  "id": "fundación-ama-amoedo-josé-ignacio",
+  "field": "watch",
+  "before": "Wealth is inherited from the Fortabat family (cement, an allowed sector).",
+  "after": "Wealth is inherited from the Fortabat family (cement).",
+  "why": "rule 6: 'an allowed sector' is grading jargon."
+ },
+ {
+  "id": "vincom-center-for-contemporary-art-hanoi",
+  "field": "funding",
+  "before": "Non-profit centre opened 2017, developed and financed entirely by Vingroup (property, retail, autos). Its own page dates from 2019.",
+  "after": "Non-profit centre opened 2017, developed and financed entirely by Vingroup (property, retail, autos).",
+  "why": "rule 6: Working note about the page's date; looked up 2019, not in the research."
+ },
+ {
+  "id": "art-gallery-of-south-australia-adelaide",
+  "field": "highlight",
+  "before": "Known for the Elder Wing of Australian Art, extensive Aboriginal and Torres Strait Islander collections and the biannual TARNANTHI festival.",
+  "after": null,
+  "why": "rule 1: 'Known for' with 'extensive'; 'biannual' is not in the research."
+ },
+ {
+  "id": "musée-dorsay-paris",
+  "field": "why_flagged",
+  "before": "A September 2025 analysis says taxpayers bore about 90% of LVMH's gift. Epstein's 2012 visit and Leon Black's 2014 loan are not flagged.",
+  "after": "A September 2025 analysis says taxpayers bore about 90% of LVMH's gift.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "musée-dorsay-paris",
+  "field": "watch",
+  "before": "A September 2025 analysis says taxpayers bore about 90% of LVMH's gift. Epstein's 2012 visit and Leon Black's 2014 loan are not flagged.",
+  "after": "A September 2025 analysis says taxpayers bore about 90% of LVMH's gift.",
+  "why": "rule 6: 'are not flagged' is a grading note for editors."
+ },
+ {
+  "id": "dk-rozy-st-petersburg",
+  "field": "watch",
+  "before": "Dedicated to working-class education, feminist theory, and anti-war solidarity.",
+  "after": null,
+  "why": "rule 1: 'Dedicated to' mission statement with no finding."
+ },
+ {
+  "id": "state-hermitage-museum-spb",
+  "field": "watch",
+  "before": "Director Mikhail Piotrovsky explicitly weaponized museum diplomacy as 'cultural operations' in support of state military aggression.",
+  "after": null,
+  "why": "rule 4: Editorial verdict ('explicitly weaponized'); the research holds only an Art Newspaper URL."
+ },
+ {
+  "id": "state-tretyakov-gallery-moscow",
+  "field": "highlight",
+  "before": "The Russian avant-garde collection (Malevich, Kandinsky, Popova) is shown at Krymsky Val.",
+  "after": null,
+  "why": "rule 5: Looked up Malevich, Kandinsky, Popova, avant-garde: not in the research."
+ },
+ {
+  "id": "state-tretyakov-gallery-moscow",
+  "field": "funding",
+  "before": "Federal Ministry of Culture budget, state-controlled banking sponsors.",
+  "after": "Federal Ministry of Culture budget.",
+  "why": "rule 7: 'state-controlled banking sponsors' stands in for names."
+ },
+ {
+  "id": "viafarini-milan",
+  "field": "highlight",
+  "before": "The DOCVA Archive of Visual Arts documents over 40,000 Italian artists, portfolios and independent publications.",
+  "after": null,
+  "why": "rule 5: Looked up 40,000 and portfolios: not in the research."
+ },
+ {
+  "id": "san-art-ho-chi-minh-city",
+  "field": "highlight",
+  "before": "Its Reading Room and Archive preserves rare documentation of contemporary Southeast Asian art movements.",
+  "after": null,
+  "why": "rule 1: 'preserves rare documentation' is praise; the research says only that it began as a reading room."
+ },
+ {
+  "id": "tandanya-national-aboriginal-cultural-institute",
+  "field": "highlight",
+  "before": "Shows contemporary visual art and ceremonial performances by Kaurna, Anangu Pitjantjatjara Yankunytjatjara (APY) and Torres Strait Islander artists.",
+  "after": null,
+  "why": "rule 5: Looked up APY, Pitjantjatjara, ceremonial: not in the research."
+ },
+ {
+  "id": "tandanya-national-aboriginal-cultural-institute",
+  "field": "watch",
+  "before": "Australia's oldest Aboriginal-owned and governed multi-arts cultural centre, operating on Kaurna Yarta since 1989.",
+  "after": null,
+  "why": "rule 2: Description of the place, not a finding; looked up 'oldest', the research says 'first' as stated by the space."
+ },
+ {
+  "id": "dallas-museum-of-art-dallas",
+  "field": "highlight",
+  "before": "Edward Larrabee Barnes' 1984 modernist limestone complex downtown holds Wendy and Emery Reves' collection in a recreated French villa, and pre-Columbian gold. General admission is free.",
+  "after": null,
+  "why": "rule 5: Scene-setting; looked up limestone, villa, pre-Columbian, gold: not in the research."
+ },
+ {
+  "id": "fresh-milk-art-platform-st-george",
+  "field": "watch",
+  "before": "Artist-led platform in Barbados. The 2024 report does not name its restricted-grant donors.",
+  "after": "The 2024 report does not name its restricted-grant donors.",
+  "why": "rule 2: 'Artist-led platform in Barbados.' is a bare category label."
+ },
+ {
+  "id": "contour-biennale-mechelen",
+  "field": "watch",
+  "before": "The foundation's endowment is Calouste Gulbenkian's oil fortune, which the map counts as Fossil fuels. It is a 2026 partner.",
+  "after": "The foundation's endowment is Calouste Gulbenkian's oil fortune. It is a 2026 partner.",
+  "why": "rule 6: 'which the map counts as Fossil fuels' is a grading note."
+ },
+ {
+  "id": "picha-lubumbashi-biennale-lubumbashi",
+  "field": "watch",
+  "before": "Artist-led. Funding call in August 2026.",
+  "after": "Funding call in August 2026.",
+  "why": "rule 2: 'Artist-led.' is a bare label."
+ },
+ {
+  "id": "kumu-art-museum-tallinn",
+  "field": "watch",
+  "before": "No Eesti Energia link found.",
+  "after": null,
+  "why": "rule 6: Editors' check for a funder (Eesti Energia) that the research never mentions."
+ },
+ {
+  "id": "kunsthaus-hamburg-hamburg",
+  "field": "watch",
+  "before": "Municipal exhibition hall for contemporary art. The Kemmler Foundation named earlier is on none of the pages opened.",
+  "after": null,
+  "why": "rule 6: Category label plus an editors' note about a funder 'named earlier'."
+ },
+ {
+  "id": "beppu-contemporary-art-festival-beppu",
+  "field": "why_flagged",
+  "before": "Last full festival: 2015. Oita Gas, a natural-gas utility, is a current sponsor. The fossil-fuel rule alone excludes it.",
+  "after": "Last full festival: 2015. Oita Gas, a natural-gas utility, is a current sponsor.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "beppu-contemporary-art-festival-beppu",
+  "field": "watch",
+  "before": "Last full festival: 2015. Oita Gas, a natural-gas utility, is a current sponsor. The fossil-fuel rule alone excludes it.",
+  "after": "Last full festival: 2015. Oita Gas, a natural-gas utility, is a current sponsor.",
+  "why": "rule 6: 'The fossil-fuel rule alone excludes it' is a grading note."
+ },
+ {
+  "id": "karachi-biennale-trust-karachi",
+  "field": "funding",
+  "before": "Philanthropists and corporate sponsors, not itemised.",
+  "after": null,
+  "why": "rule 7: Vague funder words with no name; the record itself names sponsors (Engro, Sindh culture department), so 'not itemised' is not a research result."
+ },
+ {
+  "id": "karachi-biennale-trust-karachi",
+  "field": "why_flagged",
+  "before": "Name to know: K-Electric, Karachi's mostly thermal power utility. Engro (Thar coal) was KB22 lead partner. 2019 censorship row.",
+  "after": "K-Electric, Karachi's mostly thermal power utility. Engro (Thar coal) was KB22 lead partner. 2019 censorship row.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "karachi-biennale-trust-karachi",
+  "field": "watch",
+  "before": "Name to know: K-Electric, Karachi's mostly thermal power utility. Engro (Thar coal) was KB22 lead partner. 2019 censorship row.",
+  "after": "K-Electric, Karachi's mostly thermal power utility. Engro (Thar coal) was KB22 lead partner. 2019 censorship row.",
+  "why": "rule 6: 'Name to know:' is an editors' aside; the facts after it are in the record."
+ },
+ {
+  "id": "kalektar-research-platform-on-belarusian-contemporary-art-białystok",
+  "field": "watch",
+  "before": "Online archive, index and journal founded 2015. Co-founder and editor-in-chief Sergey Shabohin lives in Białystok, the map point, as the platform publishes no address.",
+  "after": "Online archive, index and journal founded 2015. Co-founder and editor-in-chief Sergey Shabohin lives in Białystok.",
+  "why": "rule 6: 'the map point, as the platform publishes no address' is a note about the pin, addressed to editors."
+ },
+ {
+  "id": "ujazdowski-castle-cca-warsaw",
+  "field": "watch",
+  "before": "2020-24 directorship was politically contested, not a funding issue.",
+  "after": "2020-24 directorship was politically contested.",
+  "why": "rule 6: ', not a funding issue' is an editors' grading remark."
+ },
+ {
+  "id": "zarya-centre-for-contemporary-art-vladivostok",
+  "field": "funding",
+  "before": "Private: founded 2013 by Alexander Mechetin, founder and co-owner of spirits group Novabev (ex-Beluga Group). Alcohol money, allowed.",
+  "after": "Private: founded 2013 by Alexander Mechetin, founder and co-owner of spirits group Novabev (ex-Beluga Group).",
+  "why": "rule 6: 'Alcohol money, allowed.' is an editors' grading note."
+ },
+ {
+  "id": "national-gallery-singapore-singapore",
+  "field": "watch",
+  "before": "Marina Bay Sands is a casino resort owned by Las Vegas Sands. Tote Board is a public funder, not a flag.",
+  "after": "Marina Bay Sands is a casino resort owned by Las Vegas Sands. Tote Board is a public funder.",
+  "why": "rule 6: ', not a flag' is editors' grading language."
+ },
+ {
+  "id": "arko-art-center-seoul",
+  "field": "funding",
+  "before": "State-run: operated by Arts Council Korea (national arts body, est.",
+  "after": "State-run: operated by Arts Council Korea.",
+  "why": "rule 7: The line is cut off mid-parenthesis ('national arts body, est.'); the broken fragment is dropped."
+ },
+ {
+  "id": "es-baluard-museu-palma",
+  "field": "watch",
+  "before": "Sponsor names come from the collaborators page.",
+  "after": null,
+  "why": "rule 6: A provenance note to editors, not a finding about money or governance."
+ },
+ {
+  "id": "bangkok-art-biennale-bangkok",
+  "field": "watch",
+  "before": "Alcohol money (ThaiBev, Fraser and Neave, SABECO) is no flag. Bangkok city, a partner, censored a July 2025 BACC show, not the biennale.",
+  "after": "Bangkok city, a partner, censored a July 2025 BACC show, not the biennale.",
+  "why": "rule 6: 'Alcohol money ... is no flag' is editors' grading language."
+ },
+ {
+  "id": "museum-of-russian-impressionism-moscow",
+  "field": "funding",
+  "before": "Private: founded by Boris Mints (O1 Group) in 2016; since Feb 2024 the patron-trustee is Vladimir Voronin, shareholder of property developer FSK Group (property money, allowed).",
+  "after": "Private: founded by Boris Mints (O1 Group) in 2016; since Feb 2024 the patron-trustee is Vladimir Voronin, shareholder of property developer FSK Group.",
+  "why": "rule 6: '(property money, allowed)' is an editors' grading note."
+ },
+ {
+  "id": "centro-de-arte-fundaci-n-ortiz-gurdi-n-le-n",
+  "field": "watch",
+  "before": "Banking money (Banpro/Promerica, not under campaign). Ortega regime arrested Banpro's general manager in June 2021.",
+  "after": "Banking money (Banpro/Promerica). Ortega regime arrested Banpro's general manager in June 2021.",
+  "why": "rule 6: 'not under campaign' is editors' grading language."
+ },
+ {
+  "id": "b7l9-art-centre-kamel-lazaar-foundation-tunis",
+  "field": "watch",
+  "before": "Tunisia's first non-profit contemporary art centre, in the Bhar Lazreg suburb; replaces B'chira Art Center, which has no recent record.",
+  "after": "Tunisia's first non-profit contemporary art centre, in the Bhar Lazreg suburb.",
+  "why": "rule 6: 'replaces B'chira Art Center, which has no recent record' is a note about the atlas's own records; B'chira is not in the research."
+ },
+ {
+  "id": "421-arts-campus-formerly-warehouse421-abu-dhabi",
+  "field": "watch",
+  "before": "Space for emerging artists, outside the big state museums. The backing foundation belongs to the UAE president's wife, Salama bint Hamdan.",
+  "after": "The backing foundation belongs to the UAE president's wife, Salama bint Hamdan.",
+  "why": "rule 2: First sentence is scene-setting ('outside the big state museums') that the record does not state."
+ },
+ {
+  "id": "katuaq-greenland-cultural-centre-nuuk",
+  "field": "watch",
+  "before": "A self-owning foundation; its board is appointed by the Self-Government, the municipality, Visit Greenland and EPI. Bank (not under campaign) and state airline as sponsors.",
+  "after": "A self-owning foundation; its board is appointed by the Self-Government, the municipality, Visit Greenland and EPI. Bank and state airline as sponsors.",
+  "why": "rule 6: '(not under campaign)' is editors' grading language."
+ },
+ {
+  "id": "foam-fotografiemuseum-amsterdam-amsterdam",
+  "field": "watch",
+  "before": "A lottery and a bank are the corporate names to know (partnerships page, Dec 2025).",
+  "after": null,
+  "why": "rule 7: Names nobody ('a lottery and a bank'); the names are already in the funding line."
+ },
+ {
+  "id": "ars-electronica-center-linz",
+  "field": "watch",
+  "before": "Bloomberg Philanthropies, an excluded name, is a current project partner on the Center's partners page.",
+  "after": "Bloomberg Philanthropies is a current project partner on the Center's partners page.",
+  "why": "rule 6: ', an excluded name,' is the atlas's internal classification."
+ },
+ {
+  "id": "mus-e-national-du-bardo-tunis",
+  "field": "watch",
+  "before": "Tunisia's largest museum, known for its Roman mosaics; closed July 2021 to Sept 2023.",
+  "after": "Closed July 2021 to Sept 2023.",
+  "why": "rule 1: 'known for' filler; 'Tunisia's largest museum' is also not in the record (looked up largest)."
+ },
+ {
+  "id": "riddoduottarmuseat-karasjok",
+  "field": "watch",
+  "before": "A Sámi museum foundation running several sites.",
+  "after": null,
+  "why": "rule 2: Bare category label in the watch field."
+ },
+ {
+  "id": "nordnorsk-kunstmuseum-troms",
+  "field": "watch",
+  "before": "The regional art museum for Northern Norway, with a strong Sámi programme. It opened a Bodø venue in 2025 and programmes Nordover in Longyearbyen.",
+  "after": "The regional art museum for Northern Norway. It opened a Bodø venue in 2025 and programmes Nordover in Longyearbyen.",
+  "why": "rule 1: 'with a strong Sámi programme' is praise the record does not contain."
+ },
+ {
+  "id": "ntt-intercommunication-center-icc-tokyo",
+  "field": "watch",
+  "before": "Opened in 1997 to mark the centenary of Japan's telephone service. A non-profit art and science venue, not a commercial attraction.",
+  "after": "Opened in 1997 to mark the centenary of Japan's telephone service.",
+  "why": "rule 3: 'A non-profit ... venue, not a commercial attraction' is an unsourced virtue claim; non-profit is not in the record."
+ },
+ {
+  "id": "corning-museum-of-glass-corning",
+  "field": "watch",
+  "before": "Founded 1951 by Corning Glass Works; budget is large but attendance (about 400k, 2012) is under the 500k line.",
+  "after": "Founded 1951 by Corning Glass Works.",
+  "why": "rule 6: The attendance-versus-'500k line' remark is about the atlas's own inclusion threshold."
+ },
+ {
+  "id": "african-artists-foundation-lagos",
+  "field": "why_flagged",
+  "before": "Deutsche Bank, under active campaign, is listed under 'Sponsors and Partners' on AAF's collaborators page. Undated, so it counts as a current excluded funder.",
+  "after": "Deutsche Bank is listed under 'Sponsors and Partners' on AAF's collaborators page.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "african-artists-foundation-lagos",
+  "field": "watch",
+  "before": "Deutsche Bank, under active campaign, is listed under 'Sponsors and Partners' on AAF's collaborators page. Undated, so it counts as a current excluded funder.",
+  "after": "Deutsche Bank is listed under 'Sponsors and Partners' on AAF's collaborators page.",
+  "why": "rule 6: 'under active campaign' and 'counts as a current excluded funder' are the atlas's internal grading."
+ },
+ {
+  "id": "fire-station-artist-in-residence-doha",
+  "field": "why_flagged",
+  "before": "Qatar Museums, an excluded Gulf state funder under labour critique, operates and funds it. The Peninsula (16 Nov 2025) reports QM running its residency shows.",
+  "after": "Qatar Museums, a Gulf state funder under labour critique, operates and funds it. The Peninsula (16 Nov 2025) reports QM running its residency shows.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "fire-station-artist-in-residence-doha",
+  "field": "watch",
+  "before": "Qatar Museums, an excluded Gulf state funder under labour critique, operates and funds it. The Peninsula (16 Nov 2025) reports QM running its residency shows.",
+  "after": "Qatar Museums, a Gulf state funder under labour critique, operates and funds it. The Peninsula (16 Nov 2025) reports QM running its residency shows.",
+  "why": "rule 6: 'excluded' is the atlas's internal classification."
+ },
+ {
+  "id": "c-o-berlin-berlin",
+  "field": "why_flagged",
+  "before": "GASAG, Berlin's main gas supplier, is a €5,000-a-year corporate member. E.ON, a name under campaign, owned 37% of GASAG (Dec 2020).",
+  "after": "GASAG, Berlin's main gas supplier, is a €5,000-a-year corporate member. E.ON owned 37% of GASAG (Dec 2020).",
+  "why": "same text as watch"
+ },
+ {
+  "id": "c-o-berlin-berlin",
+  "field": "watch",
+  "before": "GASAG, Berlin's main gas supplier, is a €5,000-a-year corporate member. E.ON, a name under campaign, owned 37% of GASAG (Dec 2020).",
+  "after": "GASAG, Berlin's main gas supplier, is a €5,000-a-year corporate member. E.ON owned 37% of GASAG (Dec 2020).",
+  "why": "rule 6: 'a name under campaign' is a grading note, not a fact about the space."
+ },
+ {
+  "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
+  "field": "why_flagged",
+  "before": "Current excluded funder: Augustinus Fonden, a Scandinavian Tobacco Group holder, gave DKK 4.5M for the 3-year Angerlartunnguit project and DKK 300,000 for PoTraCh (2024 report).",
+  "after": "Augustinus Fonden, a Scandinavian Tobacco Group holder, gave DKK 4.5M for the 3-year Angerlartunnguit project and DKK 300,000 for PoTraCh (2024 report).",
+  "why": "same text as watch"
+ },
+ {
+  "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
+  "field": "watch",
+  "before": "Current excluded funder: Augustinus Fonden, a Scandinavian Tobacco Group holder, gave DKK 4.5M for the 3-year Angerlartunnguit project and DKK 300,000 for PoTraCh (2024 report).",
+  "after": "Augustinus Fonden, a Scandinavian Tobacco Group holder, gave DKK 4.5M for the 3-year Angerlartunnguit project and DKK 300,000 for PoTraCh (2024 report).",
+  "why": "rule 6: 'Current excluded funder:' is a grading label addressed to editors."
+ },
+ {
+  "id": "designmuseum-danmark-copenhagen",
+  "field": "why_flagged",
+  "before": "The 2023 annual report thanks Augustinus Fonden (a Scandinavian Tobacco Group holder, an excluded funder) for the building transformation and the new Videnshus.",
+  "after": "The 2023 annual report thanks Augustinus Fonden (a Scandinavian Tobacco Group holder) for the building transformation and the new Videnshus.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "designmuseum-danmark-copenhagen",
+  "field": "watch",
+  "before": "The 2023 annual report thanks Augustinus Fonden (a Scandinavian Tobacco Group holder, an excluded funder) for the building transformation and the new Videnshus.",
+  "after": "The 2023 annual report thanks Augustinus Fonden (a Scandinavian Tobacco Group holder) for the building transformation and the new Videnshus.",
+  "why": "rule 6: 'an excluded funder' is a grading label addressed to editors."
+ },
+ {
+  "id": "the-crab-museum",
+  "field": "highlight",
+  "before": "The world's only museum dedicated to decapod crustaceans and biological satire.",
+  "after": null,
+  "why": "rule 5: Looked up 'world's only' and 'biological satire': the research quotes only 'Europe's first and only museum dedicated to the world of the decapod'."
+ },
+ {
+  "id": "the-crab-museum",
+  "field": "funding",
+  "before": "Community funded, independent cooperative.",
+  "after": null,
+  "why": "rule 5: Looked up 'cooperative': the research says it is a community interest company, not a cooperative, funded by directors' savings, donations and shop sales."
+ },
+ {
+  "id": "manchester-museum",
+  "field": "funding",
+  "before": "University of Manchester civic endowment, UK Research & Innovation funding. Free public admission.",
+  "after": "University of Manchester, UK Research & Innovation funding. Free public admission.",
+  "why": "rule 5: Looked up 'endowment': the research lists the University as a funder and has no civic endowment."
+ },
+ {
+  "id": "royal-academy-of-arts-london",
+  "field": "highlight",
+  "before": "An artist-led institution founded in 1768, known for contemporary practice, the annual Summer Exhibition and its free schools.",
+  "after": "An artist-led institution founded in 1768, known for the annual Summer Exhibition and its free schools.",
+  "why": "rule 1: 'known for contemporary practice' is praise the research does not contain."
+ },
+ {
+  "id": "deutsches-spionagemuseum-berlin",
+  "field": "highlight",
+  "before": "An interactive multimedia museum on Leipziger Platz about the history of espionage and surveillance.",
+  "after": null,
+  "why": "rule 2: A generic description of what kind of museum it is, with its address."
+ },
+ {
+  "id": "ddr-museum-berlin",
+  "field": "highlight",
+  "before": "A museum in the centre of Berlin, right on the river Spree, opposite the Berlin Cathedral.",
+  "after": null,
+  "why": "rule 2: Only says where the museum stands; no fact about it."
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "field": "funding",
+  "before": "Private Philanthropic Endowment (Julia Stoschek Foundation gGmbH).",
+  "after": null,
+  "why": "rule 5: The research says no source states how the collection is financed; 'philanthropic endowment' and 'gGmbH' are not in it."
+ },
+ {
+  "id": "lincoln-center-for-the-performing-arts",
+  "field": "watch",
+  "before": "Activists disrupted the Met Opera's Carmen on 21 November 2025, demanding Lincoln Center remove Koch names. Griffin was targeted at the Whitney, not here.",
+  "after": "Activists disrupted the Met Opera's Carmen on 21 November 2025, demanding Lincoln Center remove Koch names.",
+  "why": "rule 6: The Whitney sentence is a disambiguation note for editors and is not in the research."
+ },
+ {
+  "id": "national-museum-of-fine-arts-of-chile-mnba",
+  "field": "watch",
+  "before": "510,720 visitors in 2024, a decade high. Cancelled a León Ferrari retrospective in June 2026, citing budget cuts. Not the Buenos Aires museum.",
+  "after": "510,720 visitors in 2024, a decade high. Cancelled a León Ferrari retrospective in June 2026, citing budget cuts.",
+  "why": "rule 6: 'Not the Buenos Aires museum.' is a disambiguation note for editors."
+ },
+ {
+  "id": "national-museum-of-oman",
+  "field": "watch",
+  "before": "Its site describes it as a legal entity with financial and administrative independence. It shows Oman's heritage from earliest settlement to the present.",
+  "after": "Its site describes it as a legal entity with financial and administrative independence.",
+  "why": "rule 2: The second sentence is a generic description of the displays and is not in the research."
+ },
+ {
+  "id": "onassis-stegi",
+  "field": "why_flagged",
+  "before": "Onassis built his fortune on tankers chartered to oil majors: no flag. Teachers stopped work in February 2025 against the Foundation's Onassis Public Schools.",
+  "after": "Onassis built his fortune on tankers chartered to oil majors. Teachers stopped work in February 2025 against the Foundation's Onassis Public Schools.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "onassis-stegi",
+  "field": "watch",
+  "before": "Onassis built his fortune on tankers chartered to oil majors: no flag. Teachers stopped work in February 2025 against the Foundation's Onassis Public Schools.",
+  "after": "Onassis built his fortune on tankers chartered to oil majors. Teachers stopped work in February 2025 against the Foundation's Onassis Public Schools.",
+  "why": "rule 6: ': no flag' is a grading note to editors."
+ },
+ {
+  "id": "deste-foundation-for-contemporary-art",
+  "field": "watch",
+  "before": "Runs the Athens space and the Slaughterhouse Project Space on Hydra, granted by the island's municipality in 2008. NEON belongs to Daskalopoulos, not Joannou.",
+  "after": "Runs the Athens space and the Slaughterhouse Project Space on Hydra, granted by the island's municipality in 2008.",
+  "why": "rule 6: The NEON sentence is a disambiguation note for editors and is not in the research."
+ },
+ {
+  "id": "franco-namibian-cultural-centre-fncc",
+  "field": "watch",
+  "before": "Has a large multipurpose gallery and hosts exhibitions at 118 Robert Mugabe Avenue, Windhoek.",
+  "after": null,
+  "why": "rule 2: A generic description of the facilities with the address; no finding about money or governance."
+ },
+ {
+  "id": "haus-der-kunst",
+  "field": "watch",
+  "before": "Graded on present funders, since the museum still exists. A Bavarian ministry official chairs its supervisory board. 2024 attendance was nearly 440,000.",
+  "after": "A Bavarian ministry official chairs its supervisory board. 2024 attendance was nearly 440,000.",
+  "why": "rule 6: 'Graded on present funders…' is a grading note to editors; the remaining facts have no dossier to check against."
+ },
+ {
+  "id": "museum-fur-deutsche-geschichte",
+  "field": "watch",
+  "before": "Graded on its last owner, the GDR state, because the museum closed. The Zeughaus on Unter den Linden now houses the Deutsches Historisches Museum.",
+  "after": "The Zeughaus on Unter den Linden now houses the Deutsches Historisches Museum.",
+  "why": "rule 6: 'Graded on its last owner…' is a grading note to editors."
+ },
+ {
+  "id": "central-lenin-museum",
+  "field": "watch",
+  "before": "Graded on its last owner, the Russian state, because the museum closed. Part of the building now holds the 1812 Patriotic War museum.",
+  "after": "Part of the building now holds the 1812 Patriotic War museum.",
+  "why": "rule 6: 'Graded on its last owner…' is a grading note to editors; the remaining fact has no dossier to check against."
+ },
+ {
+  "id": "state-museum-of-the-history-of-religion",
+  "field": "watch",
+  "before": "Graded on present funders, since the museum still exists in a different form. Its antireligious displays ended in the 1990s.",
+  "after": "Its antireligious displays ended in the 1990s.",
+  "why": "rule 6: 'Graded on present funders…' is a grading note to editors."
+ },
+ {
+  "id": "zofia-and-oskar-hansen-house",
+  "field": "why_flagged",
+  "before": "B for partner E.ON Polska: the E.ON group sells gas and electricity; the Polish unit sells electricity. The museum has owned the house since 2017.",
+  "after": "Partner E.ON Polska: the E.ON group sells gas and electricity; the Polish unit sells electricity. The museum has owned the house since 2017.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "zofia-and-oskar-hansen-house",
+  "field": "watch",
+  "before": "B for partner E.ON Polska: the E.ON group sells gas and electricity; the Polish unit sells electricity. The museum has owned the house since 2017.",
+  "after": "Partner E.ON Polska: the E.ON group sells gas and electricity; the Polish unit sells electricity. The museum has owned the house since 2017.",
+  "why": "rule 6: 'B for' is the editors' tier letter, a grading note not meant for the reader."
+ },
+ {
+  "id": "takaezu-studio",
+  "field": "funding",
+  "before": "Not confirmed. Quakertown Studio Project, a New Jersey 501(c)(3) filing Form 990-PF, runs it on gifts of $166k in 2023 and $26k in 2024.",
+  "after": "Quakertown Studio Project, a New Jersey 501(c)(3) filing Form 990-PF, runs it on gifts of $166k in 2023 and $26k in 2024.",
+  "why": "rule 7: 'Not confirmed.' is a status placeholder; the research verdict is 'privately funded' and the line already states the gifts."
+ },
+ {
+  "id": "the-frank-lloyd-wright-house-in-ebsworth-park",
+  "field": "funding",
+  "before": "Not confirmed. Contributions were $570k of $794k revenue in 2024 and no donor list is published. Board chair Clare Davis and David Obedin match roof gifts up to $100k.",
+  "after": "Contributions were $570k of $794k revenue in 2024 and no donor list is published. Board chair Clare Davis and David Obedin match roof gifts up to $100k.",
+  "why": "rule 7: 'Not confirmed.' is a status placeholder; the research verdict is 'private nonprofit: gifts and tours' and the line states the facts."
+ },
+ {
+  "id": "longhouse-reserve",
+  "field": "why_flagged",
+  "before": "The list is undated. The Cordish Companies run casinos but publish no revenue split, so no Gambling flag.",
+  "after": "The list is undated. The Cordish Companies run casinos but publish no revenue split.",
+  "why": "same text as watch"
+ },
+ {
+  "id": "longhouse-reserve",
+  "field": "watch",
+  "before": "The list is undated. The Cordish Companies run casinos but publish no revenue split, so no Gambling flag.",
+  "after": "The list is undated. The Cordish Companies run casinos but publish no revenue split.",
+  "why": "rule 6: 'so no Gambling flag' is an editors' grading note."
+ }
+]
