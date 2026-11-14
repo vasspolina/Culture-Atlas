@@ -131,7 +131,10 @@
     propaganda: i => !!(i.propaganda && i.propaganda.length),
     independent: i => selfKinds(i).independent,
     openbooks: i => isOpenBooks(i),
-    artist: i => selfKinds(i).artist
+    artist: i => selfKinds(i).artist,
+    // Spaces with artists' images (user, 13 Nov 2026: "add filter that has places with images by artists"): the spaces the
+    // cultural space critique collection names, from assets/critique-gallery-data.js.
+    images: i => !!(i && window.CRITIQUE_GALLERY && window.CRITIQUE_GALLERY.spaces[i.id])
   };
   // Filters that may not be on together: a space filter and the grade it rules out (a state-promoting space is not graded clean).
   const CLASH = { propaganda: 'A' };
@@ -194,7 +197,9 @@
       const name = (nm ? nm.textContent : inp.dataset.layer).trim();
       mk(inp.dataset.layer, name, label ? label.style.getPropertyValue('--layer-color') : '', `Show only ${name}; press again to show every space`);
     });
-    const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer ? b.dataset.layer === on : !on))); };
+    // The phone adds its grade chips to the same row (assets/phone-maps.js) and keeps their state itself, so they are left out:
+    // painted here they all showed pressed whenever the Images chip was pressed.
+    const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button:not([data-grade])').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer ? b.dataset.layer === on : !on))); };
     paint(); document.addEventListener('atlas:filter', paint);
     // The row wraps rather than scrolls (user, 7 Nov 2026: "make the filters row not scroll, fit all on screen"), so its
     // height varies with the width. It is published as --<id>-h on the root, and what sits under the row (the page's name
@@ -1244,6 +1249,7 @@
       set('propaganda', `${formatCount(ALL_INSTITUTIONS.filter(i => (i.propaganda || []).length).length)}\u00a0spaces`);
       set('independent', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).independent).length)}\u00a0spaces`);
       set('artist', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).artist).length)}\u00a0spaces`);
+      if (window.CRITIQUE_GALLERY) set('images', `${formatCount(ALL_INSTITUTIONS.filter(SPACE_TEST.images).length)}\u00a0spaces`);
       set('openbooks', `${formatCount(ALL_INSTITUTIONS.filter(isOpenBooks).length)}\u00a0spaces`);
     }
     if (HQ) {

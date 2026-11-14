@@ -4993,7 +4993,11 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 /* the space under the block sits on its last line: the greeting's own rules zero the padding of every div in it */
 :is(#curatorHeroGreeting,#curatorDrawerGreeting) .intro-narration .intro-line:last-child{margin-bottom:var(--L)!important}
 .intro-narration .intro-rest{visibility:hidden}
-/* the caret: a hairline after the letters being typed, gone once the line is done */
-.intro-narration .intro-line.is-typing .intro-typed::after{content:"";display:inline-block;width:1px;height:1em;margin-left:1px;vertical-align:-.15em;background:var(--ink);animation:intro-caret 1s steps(1) infinite}
+/* the caret: a hairline after the letters being typed, gone once the line is done. It is taken out of the flow (absolute, at
+   its static place after the last letter) so it has no width and makes no break: as an inline-block it was a place to wrap
+   in the middle of a word, so on a phone a half-typed word sat at the end of one row and jumped to the next as it was
+   finished (user, 13 Nov 2026: "the typing animation is glitching on mobile"; measured at 320 to 414px, up to 11 jumps a
+   sentence, none without the caret). */
+.intro-narration .intro-line.is-typing .intro-typed::after{content:"";position:absolute;width:1px;height:1em;margin:.2em 0 0 1px;background:var(--ink);animation:intro-caret 1s steps(1) infinite;pointer-events:none}
 @keyframes intro-caret{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.intro-narration .intro-typed::after{animation:none}}

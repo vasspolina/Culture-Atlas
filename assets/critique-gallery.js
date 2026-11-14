@@ -24,6 +24,7 @@
     const b = box(); if (b) b.checked = on;
     if (!on) hidePop(true);
     if (typeof window.renderGlobe === 'function') window.renderGlobe();
+    document.dispatchEvent(new CustomEvent('atlas:critique', { detail: on }));
   }
   function wirePanel() {
     const b = box();
@@ -37,17 +38,35 @@
 
   // A diamond ring around the dot: told by its shape, not its colour, so it reads beside the tier circles, squares and
   // triangles. Ink on a paper halo, so it holds on the globe's black and on the light theme's white alike.
-  window.atlasCritiqueDraw = function (ctx, dots, sel, hov) {
+  // At world zoom the map draws one dot per city and leaves most spaces out, so a diamond tied only to the dots on
+  // screen showed nothing until a city was zoomed into (user, 13 Nov 2026: "dont see any changes"). A space with no dot
+  // drawn is placed from its own coordinates with the page's projection, on the visible side of the globe only.
+  let recs = null;
+  const recFor = id => {
+    if (!recs && typeof ALL_INSTITUTIONS !== 'undefined') { recs = new Map(); ALL_INSTITUTIONS.forEach(i => { if (i.id && SPACES[i.id]) recs.set(i.id, i); }); }
+    return recs && recs.get(id);
+  };
+  window.atlasCritiqueDraw = function (ctx, dots, sel, hov, project, r, cx, cy) {
     if (!on || !dots) return;
     const css = getComputedStyle(document.documentElement);
     const ink = css.getPropertyValue('--ink').trim() || '#000';
     const paper = css.getPropertyValue('--paper').trim() || '#fff';
-    ctx.save();
+    const marks = [], seen = new Set();
     dots.forEach(d => {
       if (!forInst(d.inst)) return;
-      const big = (sel && sel.name === d.inst.name) || (hov && hov.name === d.inst.name);
+      seen.add(d.inst.id);
+      marks.push([d.inst, d.renderX != null ? d.renderX : d.x, d.renderY != null ? d.renderY : d.y]);
+    });
+    if (typeof project === 'function') Object.keys(SPACES).forEach(id => {
+      if (seen.has(id)) return;
+      const i = recFor(id); if (!i || !isFinite(+i.lat) || !isFinite(+i.lon)) return;
+      const q = project(+i.lon, +i.lat, r, cx, cy);
+      if (q && q.front !== false && isFinite(q.x) && isFinite(q.y)) marks.push([i, q.x, q.y]);
+    });
+    ctx.save();
+    marks.forEach(([inst, x, y]) => {
+      const big = (sel && sel.name === inst.name) || (hov && hov.name === inst.name);
       const s = big ? 11 : 9;
-      const x = d.renderX != null ? d.renderX : d.x, y = d.renderY != null ? d.renderY : d.y;
       ctx.beginPath();
       ctx.moveTo(x, y - s); ctx.lineTo(x + s, y); ctx.lineTo(x, y + s); ctx.lineTo(x - s, y); ctx.closePath();
       ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.stroke();
@@ -192,6 +211,15 @@
     ev.stopPropagation();
     openGallery(t.closest('[data-cg-row]').dataset.cgRow, +t.dataset.cgOpen || 0);
   }, true);
+
+  // The Images filter (assets/layers.js, SPACE_TEST.images) shows only these spaces; while it is on the diamonds are on too,
+  // so each image card is one point away. Switched off with the filter only if the filter switched them on.
+  let byFilter = false;
+  document.addEventListener('atlas:filter', () => {
+    const f = typeof window.atlasSpaceFilter === 'function' ? window.atlasSpaceFilter() : null;
+    if (f === 'images' && !on) { byFilter = true; setOn(true); }
+    else if (f !== 'images' && byFilter) { byFilter = false; if (on) setOn(false); }
+  });
 
   function init() { wirePanel(); wireHover(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

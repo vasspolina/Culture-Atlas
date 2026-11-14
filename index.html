@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
+       (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
+  <script src="assets/load-image-data.js?v=665"></script>
+  <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230046ff'/%3E%3Crect x='6' y='6' width='9' height='20' fill='%23000'/%3E%3Crect x='17' y='6' width='9' height='20' fill='%23ff6119'/%3E%3C/svg%3E">
@@ -45,14 +49,14 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=658">
-  <link rel="stylesheet" href="assets/sheet.css?v=658">
-  <script src="assets/config.js?v=658"></script>
-  <script src="assets/subtopic.js?v=658"></script>
-  <script src="assets/names.js?v=658"></script>
-  <script src="assets/grounding.js?v=658"></script>
-  <script src="assets/repeats.js?v=658"></script>
-  <script src="assets/intro-narration.js?v=658"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=665">
+  <link rel="stylesheet" href="assets/sheet.css?v=665">
+  <script src="assets/config.js?v=665"></script>
+  <script src="assets/subtopic.js?v=665"></script>
+  <script src="assets/names.js?v=665"></script>
+  <script src="assets/grounding.js?v=665"></script>
+  <script src="assets/repeats.js?v=665"></script>
+  <script src="assets/intro-narration.js?v=665"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -117,8 +121,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image-data.js?v=658"></script>
-  <script src="assets/load-image.js?v=658"></script>
+  <script src="assets/load-image.js?v=665"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -245,15 +248,16 @@ return maplibregl$1;
                    (COL in assets/layers.js); the funding views below take eight more, each 31 or more apart in CIELAB from every mark,
                    every pin tier colour and each other. Black text on every one is 7:1 or better (the checked row is the fill).
                    One box can turn on several drawn layers: data-layer names the box, data-layers the layers it holds.
-                   These six are the filters (assets/layers.js, SPACE_TEST): one on at a time; Propaganda and Clean (the grade) also never together. Only the four marked data-chip
+                   These seven are the filters (assets/layers.js, SPACE_TEST): one on at a time; Propaganda and Clean (the grade) also never together. Only the five marked data-chip
                    get a chip in the row over the map (user, 7 Nov 2026: "only keep these 4 on top"; 11 Nov 2026: Funding connections
-                   out, Artist-run in); the other two are in this menu only. -->
+                   out, Artist-run in; 13 Nov 2026: Images in, the spaces with artists' images); the other two are in this menu only. -->
               <label style="--layer-color:#f9ab30"><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
               <label style="--layer-color:#d39bff"><input type="checkbox" data-layer="epstein" data-layers="epstein people" data-chip> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
               <label style="--layer-color:#ff5fa0"><input type="checkbox" data-layer="propaganda" data-chip> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
               <label style="--layer-color:#3fe05a"><input type="checkbox" data-layer="independent" data-chip> <span class="layer-name">Independent</span><span class="layer-desc">Spaces whose record describes them as an independent space or institution</span><span class="layers-count" data-count="independent"></span></label>
               <label style="--layer-color:#0af0b0"><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Spaces graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
               <label style="--layer-color:#b7d40c"><input type="checkbox" data-layer="artist" data-chip> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
+              <label style="--layer-color:#ffd600"><input type="checkbox" data-layer="images" data-chip> <span class="layer-name">Images</span><span class="layer-desc">Spaces named in artists&rsquo; and designers&rsquo; work on cultural institutions, with the images on their record</span><span class="layers-count" data-count="images"></span></label>
             </div>
           </section>
           <section class="layers-section" data-no-chips>
@@ -1133,7 +1137,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=658"></script>
+  <script src="assets/institutions.js?v=663"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10377,11 +10381,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v658';
+    const ATLAS_RELEASE = 'culture-atlas-v665';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=658').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=665').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11801,7 +11805,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         lastShownInstLabels = shownInstLabels;
 
         if (window.atlasLayersDrawNodes) window.atlasLayersDrawNodes(ctx, visibleDots, r, baseRadius, selectedInstitution, hoveredInstitution, isGossipModeActive, project, cx, cy);
-        if (window.atlasCritiqueDraw) window.atlasCritiqueDraw(ctx, visibleDots, selectedInstitution, hoveredInstitution);   // assets/critique-gallery.js
+        if (window.atlasCritiqueDraw) window.atlasCritiqueDraw(ctx, visibleDots, selectedInstitution, hoveredInstitution, project, r, cx, cy);   // assets/critique-gallery.js
 
         // 8.4 City labels on top of the dots
         deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4]); ctx.restore(); });
@@ -12779,7 +12783,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const GRADE = {
       1: { letter: 'A', label: 'Funding amounts disclosed; no funders flagged', col: '#34d399' },
       2: { letter: 'B', label: 'Funders listed; no funders flagged', col: '#2dd4bf' },
-      3: { letter: 'C', label: 'Funder identified; details limited', col: '#facc15' },
+      3: { letter: 'C', label: 'No funder flagged; a tie or complaint on record', col: '#facc15' },
       4: { letter: 'D', label: 'One flagged funder', col: '#fb923c' },
       5: { letter: 'F', label: 'Multiple flagged funders, or a flagged funder with a disputed record', col: '#ef4444', mark: '#f87171' },  // the mark is a lighter red, so black on it clears 7:1
     };
@@ -15446,7 +15450,7 @@ GENERAL KNOWLEDGE (the gap rule): The records come first, and what they hold is 
 
 NAMES THAT HAVE NO RECORD: When the visitor names a space and no supplied record carries that name, say in one sentence that the atlas has no record of it ("The atlas has no record of …"), then answer about it from general knowledge as the rule above says. If a supplied record is clearly the same space under another spelling, answer from that record instead and name it. Never answer about the space open on the map in its place, and never ask the visitor to clarify. When the visitor answers one of your questions with "yes", "that one" or "the second", take it as the space you last named and answer about that space from its record; if you named no space that has a record, say so in one sentence.
 
-GRADE REASONS: The reason for a grade is its Grade Basis line. State that reason and no other; never explain a grade by transparency, documentation or disclosure unless the Grade Basis line says so. When the Watch Line says a tie with a funder has ended, say so in the same sentence as the grade. When a record's Governance Classification is Unverified, say once that the Atlas has not verified it.
+GRADE REASONS: The reason for a grade is its Grade Basis line. State that reason and no other; never explain a grade by transparency, documentation or disclosure unless the Grade Basis line says so. Give the reason as the case behind it, from the Watch Line, Why flagged, the Epstein records and the reported cases: who, what and when. Never read the Grade Basis line back as a list of categories (a tie to Jeffrey Epstein, a campaign to remove a funder's name, a public protest) without the case each one stands for, never say "the basis is", and never repeat the grade's label after the letter: write "MoMA is Grade C" and go straight to the case. When the Watch Line says a tie with a funder has ended, say so in the same sentence as the grade. When a record's Governance Classification is Unverified, say once that the Atlas has not verified it.
 
 LIST QUESTIONS: When a <matching_records> block is supplied it holds the records the Atlas has for the question, and says how many there are. Name only spaces listed there, give the count, and say when the list is cut off. The page prints the count and the grade tally as the first line of your answer, so write no number of spaces and no sentence about how many spaces hold a grade or how many did something; start with the groups or the names. A space's own grade is the one on its own line. Never name a space as carrying a flag unless its own Recorded Flags line or Grade Basis line carries it, and never infer a flag from a funder's industry. Use the verb a record uses (refused, returned, removed, dropped); do not say a space accepted money when its line says it refused or returned it, and do not call a record ungraded when its Governance Classification shows a grade.
 
@@ -20121,7 +20125,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       ethical: { label: 'Source cited' },
       grade1: { label: 'Grade A, funding amounts disclosed; no funders flagged' },
       grade2: { label: 'Grade B, funders listed; no funders flagged' },
-      grade3: { label: 'Grade C, funder identified; details limited' },
+      grade3: { label: 'Grade C, no funder flagged; a tie or complaint on record' },
       grade4: { label: 'Grade D, one flagged funder' },
       grade5: { label: 'Grade F, multiple flagged funders, or a flagged funder with a disputed record' },
       artist_run: { label: 'Artist-run spaces' },
@@ -21523,17 +21527,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=658"></script>
-<script src="assets/note-aids.js?v=658" defer></script>
-<script src="assets/note-files.js?v=658" defer></script>
-<script src="assets/funding-views.js?v=658"></script>
-<script src="assets/layers.js?v=658"></script>
-<script src="assets/critique-gallery-data.js?v=658"></script>
-<script src="assets/critique-gallery.js?v=658"></script>
-<script src="assets/hq-detail.js?v=658"></script>
-<script src="assets/bubbles.js?v=658" defer></script>
-<script src="assets/phone-maps.js?v=658"></script>
-<script src="assets/desktop-maps.js?v=658"></script>
-<script src="assets/chat-resize.js?v=658"></script>
+<script src="assets/typeset.js?v=665"></script>
+<script src="assets/note-aids.js?v=665" defer></script>
+<script src="assets/note-files.js?v=665" defer></script>
+<script src="assets/funding-views.js?v=665"></script>
+<script src="assets/layers.js?v=665"></script>
+<script src="assets/critique-gallery-data.js?v=665"></script>
+<script src="assets/critique-gallery.js?v=665"></script>
+<script src="assets/hq-detail.js?v=665"></script>
+<script src="assets/bubbles.js?v=665" defer></script>
+<script src="assets/phone-maps.js?v=665"></script>
+<script src="assets/desktop-maps.js?v=665"></script>
+<script src="assets/chat-resize.js?v=665"></script>
 </body>
 </html>
