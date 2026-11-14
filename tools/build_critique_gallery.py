@@ -24,6 +24,9 @@ from PIL import Image, ImageOps
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / 'assets' / 'critique_gallery'
 FULL, THUMB = 2400, 480
+# The images page sets two pictures to a row, about 700px wide on a desktop: they take this middle size, so the grid stays
+# sharp on a high-density screen without loading the 2400px file the zoom uses.
+MID = 1200
 # The images the atlas shows while it loads (assets/load-image.js picks one at random): strong, legible pieces at 1000px or
 # more, saved again at 1400px so the picture at 40% of a desktop screen stays sharp without the weight of the full file.
 SPLASH = [1810, 1811, 1815, 1818, 1822, 1838, 1874, 1906, 1989]
@@ -56,6 +59,7 @@ def build(r, img_dir):
     im = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
     w, h = save(im, FULL, OUT / f'{n}.jpg')
     save(im, THUMB, OUT / f'{n}_t.jpg')
+    save(im, MID, OUT / f'{n}_m.jpg')
     return item(r, w, h)
 
 
@@ -69,7 +73,7 @@ def save(im, size, path):
 
 def item(r, w, h):
     n = r['number']
-    return {'n': n, 'src': f'assets/critique_gallery/{n}.jpg', 'thumb': f'assets/critique_gallery/{n}_t.jpg', 'w': w, 'h': h,
+    return {'n': n, 'src': f'assets/critique_gallery/{n}.jpg', 'thumb': f'assets/critique_gallery/{n}_t.jpg', 'mid': f'assets/critique_gallery/{n}_m.jpg', 'w': w, 'h': h,
             'artist': r['artist_or_project'], 'project': r['project'], 'type': r['type'],
             'credit': r['image_credit'], 'source': r['source_page']}
 

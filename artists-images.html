@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Artists’ images · Leaving it on the table</title>
   <meta name="description" content="Artists’ and designers’ work on cultural institutions, grouped by the space it names, each image open to zoom." />
-  <link rel="stylesheet" href="assets/sheet.css?v=664">
+  <link rel="stylesheet" href="assets/sheet.css?v=670">
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <style>
     /* Set on the sheet (assets/sheet.css), the atlas's current design: the one serif in its two sizes, black on white, the
@@ -47,7 +47,8 @@
       .ai-group .label{display:flex!important;justify-content:space-between!important;gap:var(--sh-pad)!important;align-items:baseline!important}
       .ai-group h2{margin:0!important}
       .ai-group .ai-tie{margin:0 0 var(--sh-s-lh)!important;max-width:40em!important}
-      .ai-grid{list-style:none!important;margin:0!important;padding:0!important;columns:4 260px!important;column-gap:var(--sh-pad)!important}
+      /* Two pictures to a row (user, 13 Nov 2026: "make two per row"). */
+      .ai-grid{list-style:none!important;margin:0!important;padding:0!important;columns:2!important;column-gap:var(--sh-pad)!important}
       .ai-grid li{break-inside:avoid!important;margin:0 0 var(--sh-s-lh)!important}
       .ai-grid button{display:block!important;width:100%!important;line-height:0!important;cursor:zoom-in!important;background:var(--sh-stone-2)!important}
       .ai-grid img{display:block!important;width:100%!important;height:auto!important;transition:opacity .2s!important}
@@ -136,9 +137,9 @@
   </div>
 </dialog>
 
-<script src="assets/critique-gallery-data.js?v=664"></script>
+<script src="assets/critique-gallery-data.js?v=670"></script>
 <script src="assets/critique-collection-data.js?v=656"></script>
-<script src="assets/critique-captions.js?v=660"></script>
+<script src="assets/critique-captions.js?v=670"></script>
 <script>
 (function () {
   const D = window.CRITIQUE_GALLERY, C = window.CRITIQUE_COLLECTION;
@@ -188,7 +189,7 @@
         <ul class="ai-grid">${g.images.map((im, i) => {
           const on = g.space ? [] : spaceNames(im.n);
           const c = caption(im);
-          return `<li><button type="button" data-g="${gi}" data-i="${i}" aria-label="Zoom: ${esc(im.project)}, image ${i + 1} of ${g.images.length}"><img src="${esc(im.thumb)}" alt="" loading="lazy" width="${im.w}" height="${im.h}"></button>
+          return `<li><button type="button" data-g="${gi}" data-i="${i}" aria-label="Zoom: ${esc(im.project)}, image ${i + 1} of ${g.images.length}"><img src="${esc(im.mid || im.thumb)}" srcset="${esc(im.thumb)} 480w, ${esc(im.mid || im.thumb)} ${Math.min(1200, im.w)}w" sizes="(max-width:640px) 100vw, 50vw" alt="" loading="lazy" width="${im.w}" height="${im.h}"></button>
           <p class="ai-cap"><span class="t">${esc(c.title)}</span><span>${esc(c.who)}</span><span>${esc(c.occasion)}</span>${c.photo ? `<span>${esc(c.photo)}</span>` : ''}${on.length ? `<span>On the atlas: ${esc(on.join(', '))}</span>` : ''}</p></li>`;
         }).join('')}</ul>
       </section>`).join('');
