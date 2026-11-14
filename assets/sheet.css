@@ -1,0 +1,1558 @@
+/* ==== THE SHEET (user, 10 Nov 2026) ====
+   The atlas set as one sheet: a single old-style serif in two sizes (15 on 19 and 28 on 32), every
+   label in lower case (not kept here: user, 10 Nov 2026, "bring capitals back"), black on white, two stone bars (30px at the head, 50px at the foot), 1px grey rules between columns
+   a quarter of the window wide, lists that open with an en dash, and no boxes, corners, shadows or bold anywhere.
+
+   How this file works: everything is inside @layer sheet and every declaration is !important. An important declaration
+   in a layer wins over every unlayered one, important or not, whatever its selector, so this sheet restyles atlas.css
+   without touching it. Take the <link> out and the old look is back. Inside the layer the usual rules hold: the later
+   and the more specific rule wins.
+
+   The typeface (user, 10 Nov 2026: "change font to times new roman"): "Atlas Serif" is Times New Roman, roman and
+   italic, from the reader's own machine (macOS and Windows have it). Where it is missing, Liberation Serif or Tinos
+   (both drawn to its widths, on Linux and ChromeOS) take its place, then EB Garamond (SIL Open Font License 1.1,
+   fonts/EBGaramond-OFL.txt), which also fills in anything the face lacks. No font file of it is shipped or needed.
+   Before this the face was PP Eiko, Serrif and EB Garamond; the sizes are the sheet's base measures times 1.4 whatever the face.
+   The page and the map both ask for "Atlas Serif". */
+@font-face{font-family:"Atlas Serif";font-style:normal;font-weight:400;font-display:swap;src:local("Times New Roman"),local("TimesNewRomanPSMT"),local("Liberation Serif"),local("LiberationSerif"),local("Tinos"),local("Tinos-Regular")}
+@font-face{font-family:"Atlas Serif";font-style:italic;font-weight:400;font-display:swap;src:local("Times New Roman Italic"),local("TimesNewRomanPS-ItalicMT"),local("Liberation Serif Italic"),local("LiberationSerif-Italic"),local("Tinos Italic"),local("Tinos-Italic")}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-cyrillic-ext.woff2") format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-greek-ext.woff2") format("woff2");unicode-range:U+1F00-1FFF}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-greek.woff2") format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-vietnamese.woff2") format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Italic-cyrillic-ext.woff2") format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Italic-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Italic-greek-ext.woff2") format("woff2");unicode-range:U+1F00-1FFF}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Italic-greek.woff2") format("woff2");unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Italic-vietnamese.woff2") format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Italic-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"EB Garamond";font-style:italic;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Italic-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+@layer sheet{
+
+/* ---- the sheet's own measures ---- */
+:root{
+  /* The bars and bands are lime #e2f86c and the pale stone is grey #cfcfba, both sampled from the three swatches the user
+     sent (11 Nov 2026: "use these colors for atlas instead of beige": lime, white, grey). Supersedes the sand #e3d198. */
+  --sh-paper:#fff; --sh-ink:#000; --sh-stone:#e2f86c; --sh-stone-2:#cfcfba; --sh-rule:#787878;
+  /* What the pointer is on turns blue: the blue of the star on the "mesmarize" poster, sampled from the picture the user
+     sent (10 Nov 2026: "make hover this blue color"). Pale stone, --sh-stone-2, stays for
+     the selection and the scrollbar. */
+  --sh-hover:#59a0f1;
+  /* The outlines of fields and buttons: the same blue 30% lighter, mixed with white (user, 10 Nov 2026: "make this blue
+     color 30% lighter"). The hover colour of text stays --sh-hover. */
+  --sh-outline:#8bbdf5;
+  /* The "– 4 more" / "– Fewer" folds and every other summary in the record: a deeper blue sampled from the swatch the
+     user sent (11 Nov 2026: "color these this blue"). 3.9:1 on white, under AA's 4.5:1 for text this size. Hover still
+     turns them --sh-hover. */
+  --sh-fold:#3e7bf6;
+  /* The measures are the base sheet's, each times 1.4 (user, 10 Nov 2026: "enlarge 140%"). The base: text 15 on 19,
+     a name 28 on 32, bars 30 and 50, padding 16, indent 20, dash 13, a section's band 15 high on a 12 line with 19 over it
+     and 4 under. --sh-k is the one factor; change it and the whole sheet follows. The map's own names stay at 15 on 19
+     (--sh-map), or the labels would cover the map. */
+  --sh-k:1.4;
+  --sh-s:calc(15px * var(--sh-k)); --sh-s-lh:calc(19px * var(--sh-k)); --sh-l:calc(28px * var(--sh-k)); --sh-l-lh:calc(32px * var(--sh-k));
+  /* The leading of the text is 15% under the sheet's line (user, 10 Nov 2026: "make text line height, not paragraph
+     break, 15% less"): --sh-lead is what a line of text takes, --sh-s-lh stays the space between paragraphs and blocks. */
+  --sh-lead:calc(var(--sh-s-lh) * 0.85);
+  --sh-band:calc(15px * var(--sh-k)); --sh-band-lh:calc(12px * var(--sh-k)); --sh-gap:calc(4px * var(--sh-k));
+  --sh-pad:calc(16px * var(--sh-k)); --sh-indent:calc(20px * var(--sh-k)); --sh-dash:calc(13px * var(--sh-k));
+  --sh-head:calc(30px * var(--sh-k)); --sh-foot:calc(50px * var(--sh-k)); --sh-col:0px;
+  --sh-map:15px; --sh-map-lh:19px;
+  --sh-serif:"Atlas Serif","Times New Roman",Times,"EB Garamond",serif;
+  /* The atlas's own tokens, so whatever still reads them lands on the sheet. */
+  --ink:var(--sh-ink)!important; --paper:var(--sh-paper)!important; --grey:var(--sh-stone)!important; --block:var(--sh-stone-2)!important; --line:var(--sh-rule)!important;
+  --sans:var(--sh-serif)!important; --display:var(--sh-serif)!important; --display-xl:var(--sh-serif)!important; --gm-badge-font:var(--sh-serif)!important;
+  --fs-s:var(--sh-s)!important; --fs-m:var(--sh-s)!important; --fs-l:var(--sh-l)!important;
+  --lh:1.0767!important; --L:var(--sh-s-lh)!important; --H:calc(var(--sh-s-lh) / 2)!important;
+  --focus:var(--sh-ink)!important; --ul-w:1px!important; --ul-off:.2em!important;
+  --gmd-gap:var(--sh-pad)!important; --gmd-shadow:none!important;
+}
+/* The dark sheet: the same stone, turned over. */
+:root[data-theme="dark"]{--sh-paper:#151412; --sh-ink:#e6e1d7; --sh-stone:#2b2925; --sh-stone-2:#6f695d; --sh-rule:#787878}
+@media (min-width:1080px){:root.gmd{--sh-col:25vw}}
+:root{--sh-title-w:max(25vw,calc(330px * var(--sh-k)))}
+
+/* ---- one face, one weight, no corners, no shadows ---- */
+*,*::before,*::after{font-family:var(--sh-serif)!important;font-weight:400!important;letter-spacing:0!important;word-spacing:0!important;
+  font-feature-settings:normal!important;font-variant:normal!important;font-stretch:normal!important;text-shadow:none!important;box-shadow:none!important}
+*:not(i,[class*="shape-"],[class*="dot"],[class*="Dot"],[class*="swatch"],[class*="marker"],[class*="maplibregl"],[class*="pin"],[class*="pin"] *,[class*="marker"] *,[class*="key"] *),
+*::before,*::after{border-radius:0!important}
+/* The paper is on html, so the two bars (body's ::before and ::after, z-index -1) lie on it and under everything else. */
+html{background:var(--sh-paper)!important}
+body{background:transparent!important}
+html,body{color:var(--sh-ink)!important}
+/* Every word keeps the capitals it was written with (user, 10 Nov 2026: "bring capitals back"; the first pass set the
+   whole page in lower case). text-transform is none everywhere, so no label is forced into capitals either. */
+body,body *{font-size:var(--sh-s)!important;line-height:var(--sh-lead)!important;text-transform:none!important}
+body :is(input,textarea)::placeholder{text-transform:none!important}
+em,i:not([class]),cite{font-style:italic!important}
+a,button,summary,[role="button"],[role="tab"],[role="option"]{transition:color .2s,opacity .2s!important}
+:focus-visible{outline:1px solid var(--sh-ink)!important;outline-offset:2px!important}
+::selection{background:var(--sh-stone-2);color:#000}
+hr{border:0!important;border-top:1px solid var(--sh-rule)!important}
+
+/* ---- the two stone bars ---- */
+@media (min-width:768px){
+  :root.gmd body::before,:root.gmd body::after{content:""!important;display:block!important;position:fixed!important;left:0!important;right:0!important;z-index:-1!important;background:var(--sh-stone)!important;pointer-events:none!important}
+  :root.gmd body::before{top:0!important;height:var(--sh-head)!important;border-bottom:1px solid var(--sh-rule)!important}
+  :root.gmd body::after{bottom:0!important;height:var(--sh-foot)!important;border-top:1px solid var(--sh-rule)!important}
+
+  /* The sheet between them: index | record and chat | map (the order is set in PLACES | CHAT | MAP at the end of this file). */
+  :root.gmd #mainAppContainer{inset:calc(var(--sh-head) + 1px) 0 calc(var(--sh-foot) + 1px) 0!important;background:var(--sh-paper)!important}
+  :root.gmd #globeViewport{inset:0 var(--gmd-w) 0 var(--sh-col)!important;background:var(--sh-paper)!important;border-left:1px solid var(--sh-rule)!important}
+  :root.gmd #workViewContainer{padding-top:0!important;border:0!important;border-left:1px solid var(--sh-rule)!important;background:var(--sh-paper)!important}
+}
+@media (min-width:768px) and (max-width:1079px){:root.gmd #globeViewport{border-left:0!important}}
+
+/* ---- black on white, and stone ---- */
+/* Every word takes the sheet's ink: colour is kept for the marks on the map and the dots that key them. */
+body *:not(svg,svg *,i,[class*="shape-"],[class*="maplibregl"],[class*="maplibregl"] *){color:inherit!important;-webkit-text-fill-color:currentColor!important}
+body *:not(i,[class*="shape-"],[class*="dot"],[class*="Dot"],[class*="swatch"],[class*="marker"],[class*="maplibregl"],[class*="pin"],[class*="pin"] *,[class*="marker"] *,[class*="key"] *,canvas){border-color:var(--sh-rule)!important}
+:is(button,[role="button"],[role="tab"],summary,label,input,textarea,select,a,h1,h2,h3,h4,p,li,ul,ol,blockquote,figure,figcaption,details,form,header,nav,footer){background-color:transparent!important;background-image:none!important}
+:is(button,[role="button"],[role="tab"],summary,select){border:0!important;padding:0!important;min-height:0!important;height:auto!important;cursor:pointer!important;text-align:left!important}
+:is(a,button,summary,[role="button"],[role="tab"],[role="option"],label:has(input)):hover{color:var(--sh-hover)!important;opacity:1!important}
+/* What is chosen is in italic and in the hover blue (user, 13 Nov 2026: "color blue the clicked in button"). */
+:is(button,[role="tab"],[role="option"]):is([aria-pressed="true"],[aria-selected="true"],[aria-current],.is-on){font-style:italic!important;color:var(--sh-hover)!important}
+:is(button,input,textarea,select):disabled{opacity:.4!important;cursor:default!important}
+a{text-decoration-thickness:1px!important;text-underline-offset:.2em!important}
+::placeholder{color:var(--sh-rule)!important;opacity:1!important}
+summary{list-style:none!important}
+summary::-webkit-details-marker{display:none!important}
+summary::marker{content:""!important}
+svg{stroke-width:1.2px!important}
+
+/* The two large lines: a name, and nothing else. */
+:is(#gmdTitle,#curatorHeroGreeting h1,#curatorDrawerGreeting h1,.dossier-main-heading,#desktopDossierName,#dossier-sheet-name,.space-name),
+:is(#gmdTitle,#curatorHeroGreeting h1,#curatorDrawerGreeting h1,.dossier-main-heading,#desktopDossierName,#dossier-sheet-name,.space-name) *{font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important}
+
+@media (min-width:768px){
+  /* ---- the head bar: the theme and gossip at the left, where you are over the map, the panel's two pages at the right ---- */
+  :root.gmd #gmdTopBar{position:fixed!important;top:0!important;left:0!important;right:auto!important;width:max(var(--sh-col),260px)!important;height:var(--sh-head)!important;padding:0!important;margin:0!important;border:0!important;background:transparent!important;overflow:visible!important;pointer-events:auto!important;z-index:46!important}
+  :root.gmd #gmdTopBar>div{display:flex!important;width:100%!important;height:100%!important;gap:0!important}
+  :root.gmd #gmdTopBar :is(#topGossipBtn,#topThemeBtn,#topImagesBtn){display:block!important;flex:1 1 0!important;height:var(--sh-head)!important;line-height:var(--sh-head)!important;padding:0!important;text-align:center!important;background:transparent!important;color:inherit!important;border:0!important}
+  :root.gmd body.gossip-mode-active #gmdTopBar #topGossipBtn{background:transparent!important;font-style:italic!important}
+
+  :root.gmd #workspaceContextTabBar{position:fixed!important;top:0!important;right:0!important;left:auto!important;width:max(var(--gmd-w),600px)!important;height:var(--sh-head)!important;min-height:0!important;margin:0!important;padding:0 var(--sh-pad)!important;justify-content:space-between!important;border:0!important;background:transparent!important;display:flex!important;gap:0!important;z-index:46!important}
+  :root.gmd #workspaceContextTabBar>div{display:contents!important}
+  :root.gmd #workspaceContextTabBar button{display:block!important;flex:0 1 auto!important;min-width:0!important;height:var(--sh-head)!important;line-height:var(--sh-head)!important;padding:0 4px!important;text-align:center!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  :root.gmd #workspaceContextTabBar button *{line-height:var(--sh-head)!important;display:inline!important}
+  :root.gmd #workspaceContextTabBar button svg{display:none!important}
+
+  :root.gmd #cityViewControlBanner{position:fixed!important;top:0!important;left:max(var(--sh-col),260px)!important;right:max(var(--gmd-w),600px)!important;width:auto!important;max-width:none!important;height:var(--sh-head)!important;margin:0!important;padding:0 var(--sh-pad)!important;border:0!important;background:transparent!important;justify-content:center!important;gap:var(--sh-indent)!important;overflow:hidden!important;white-space:nowrap!important;z-index:46!important}
+  :root.gmd #cityViewControlBanner :is(button,div,span){line-height:var(--sh-head)!important;max-width:none!important}
+  :root.gmd #cityViewControlBanner button::before{content:"‹ "}
+  :root.gmd #cityViewControlBanner .gm-back-ico{display:none!important}
+
+  /* ---- the foot bar: the atlas's name, and the latest report beside it ---- */
+  :root.gmd #gmdTitle{position:fixed!important;top:auto!important;bottom:0!important;left:0!important;right:auto!important;width:var(--sh-title-w)!important;height:var(--sh-foot)!important;margin:0!important;padding:0!important;text-align:center!important;white-space:nowrap!important;z-index:46!important;pointer-events:auto!important}
+  :root.gmd #gmdTitle button{display:inline!important;line-height:calc(46px * var(--sh-k))!important;font-size:var(--sh-l)!important;text-align:center!important}
+  :root.gmd #gmdTitle button:hover{color:inherit!important;opacity:.6!important}
+  :root.gmd #gmStoryStrip{position:fixed!important;top:auto!important;bottom:0!important;left:var(--sh-title-w)!important;right:var(--gmd-w)!important;width:auto!important;max-width:none!important;height:var(--sh-foot)!important;margin:0!important;padding:calc((var(--sh-foot) - 2 * var(--sh-s-lh)) / 2) var(--sh-pad) 0!important;background:transparent!important;border:0!important;overflow:hidden!important;z-index:46!important;transform:none!important}
+  :root.gmd #gmStoryStrip span{display:block!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;opacity:1!important}
+  :root.gmd #gmStoryStrip .gm-strip-meta{padding-left:var(--sh-indent)!important}
+
+  /* ---- the index column: the filters as a list, the layers, the colour key at its foot ---- */
+  :root.gmd #gmdChips{display:block!important;position:fixed!important;top:calc(var(--sh-head) + 1px + var(--sh-pad))!important;left:var(--sh-pad)!important;right:auto!important;width:calc(max(var(--sh-col),260px) - 2 * var(--sh-pad))!important;padding:0!important;margin:0!important;gap:0!important;background:transparent!important;z-index:45!important}
+  :root.gmd .gmd-chip{display:block!important;width:100%!important;height:var(--sh-lead)!important;padding:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;background:transparent!important}
+  :root.gmd .gmd-chip::before{content:"– "}
+  :root.gmd .gmd-chip.has-color::after{content:""!important;display:inline-block!important;width:7px!important;height:7px!important;margin-left:7px!important;border-radius:50%!important;background:var(--layer-color)!important;vertical-align:1px!important}
+  :root.gmd .gmd-chip[aria-pressed="true"]{background:var(--sh-stone)!important;font-style:normal!important}
+  :root.gmd .gmd-chip[aria-pressed="true"]:hover{color:inherit!important}
+
+  :root.gmd #gmdMapCtl{right:calc(var(--gmd-w) + var(--sh-pad))!important;bottom:var(--sh-pad)!important;gap:0!important}
+  :root.gmd #gmdMapCtl>button,:root.gmd #gmdMapCtl #gmLocateBtn,:root.gmd #gmdMapCtl .gmd-zoom button{width:30px!important;height:30px!important;background:var(--sh-paper)!important;border:0!important}
+  :root.gmd #gmdMapCtl .gmd-zoom{background:transparent!important;border:0!important}
+  :root.gmd #gmdMapCtl .gmd-zoom button+button{border:0!important}
+  :root.gmd #gmdMapCtl svg{width:16px!important;height:16px!important}
+}
+@media (min-width:1080px){
+  :root.gmd #layersControl{position:fixed!important;left:var(--sh-pad)!important;right:auto!important;top:calc(var(--sh-head) + 1px + var(--sh-pad) + var(--gmdChips-h,76px))!important;bottom:auto!important;width:calc(var(--sh-col) - 2 * var(--sh-pad))!important;display:block!important;z-index:45!important}
+  :root.gmd #mapColourKey{position:fixed!important;left:var(--sh-pad)!important;right:auto!important;top:auto!important;bottom:calc(var(--sh-foot) + 1px + var(--sh-pad))!important;width:calc(var(--sh-col) - 2 * var(--sh-pad))!important;max-width:none!important;z-index:44!important}
+}
+@media (min-width:768px) and (max-width:1079px){
+  :root.gmd #gmdTitle{text-align:left!important;padding-left:calc(2 * var(--sh-pad))!important;width:auto!important}
+  :root.gmd #gmStoryStrip{display:none!important}
+}
+
+/* ---- the layers button, the colour key ---- */
+#layersControl #layersBtn{display:block!important;width:auto!important;height:var(--sh-lead)!important;padding:0!important;background:transparent!important;border:0!important}
+#layersControl #layersBtn::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+#layersControl #layersBtn::after{display:none!important}
+#layersControl #layersBtn :is(.gmd-layers-icon,.gm-layers-icon,svg){display:none!important}
+#layersControl #layersBtn:is([aria-expanded="true"]){background:var(--sh-stone)!important;color:inherit!important}
+
+#mapColourKey{background:var(--sh-paper)!important;border:0!important;padding:0!important}
+#mapColourKey .mck-head{display:block!important;position:relative!important;margin:0 0 var(--sh-gap)!important;padding:0!important}
+#mapColourKey .mck-title{background:var(--sh-stone)!important;text-align:center!important;height:var(--sh-band)!important;line-height:var(--sh-band-lh)!important;margin:0!important}
+#mapColourKey .mck-info-btn{position:absolute!important;right:4px!important;top:0!important;width:auto!important;height:var(--sh-band)!important;line-height:var(--sh-band-lh)!important;border:0!important;background:transparent!important;font-style:italic!important}
+#mapColourKey .mck-info-btn *{line-height:var(--sh-band-lh)!important}
+#mapColourKey :is(.mck-list,.mck-scale){list-style:none!important;margin:0!important;padding:0!important;display:block!important}
+#mapColourKey :is(.mck-list,.mck-scale) li{display:block!important;margin:0!important;padding:0 0 0 var(--sh-dash)!important;position:relative!important}
+#mapColourKey :is(.mck-pill,.mck-word){display:inline!important;padding:0!important;border:0!important;background:transparent!important;min-width:0!important}
+#mapColourKey :is(.mck-pill,.mck-word)::before{content:""!important;position:absolute!important;left:0!important;top:calc((var(--sh-lead) - 7px) / 2 + 1px)!important;width:7px!important;height:7px!important;border-radius:50%!important;background:var(--sh-rule)!important}
+#mapColourKey [data-tier="A"]::before{background:var(--tier-a,#007a80)!important}
+#mapColourKey [data-tier="B"]::before{background:var(--tier-b,#b000b0)!important}
+#mapColourKey [data-tier="U"]::before{background:var(--tier-u,#7a7000)!important}
+#mapColourKey :is(.mck-pill,.mck-word)::after{content:", "}
+#mapColourKey .mck-info{margin-top:var(--sh-s-lh)!important;padding:0!important;border:0!important;background:transparent!important}
+#mapColourKey .mck-info p{text-transform:none!important}
+
+/* ---- the panel: ask the curator ---- */
+#curatorIntelligenceColumn,#curatorScrollArea,#workBottomDock,#workspacePanelsWrapper,#desktopDossierColumn{background:var(--sh-paper)!important}
+#curatorScrollContent{padding:var(--sh-pad)!important;align-items:stretch!important;max-width:none!important}
+#curatorHeroGreeting,#curatorDrawerGreeting{padding:0!important;margin:0!important;max-width:none!important;align-items:stretch!important}
+:is(#curatorHeroGreeting,#curatorDrawerGreeting) h1{margin:0 0 var(--sh-s-lh)!important;padding:0!important}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts){display:block!important;margin:0!important;padding:0!important;gap:0!important}
+/* the questions are set as the intro's own lines (user, 14 Nov 2026): no dash, no hung indent, the same space under each */
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt{display:block!important;width:100%!important;margin:0 0 .6em!important;padding:0!important;text-indent:0!important;border:0!important;background:transparent!important;white-space:normal!important;text-align:left!important;max-width:60ch}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt::before{content:none!important}
+:is(#curatorStarterPrompts,#curatorDrawerStarterPrompts) .starter-prompt *{text-decoration:none!important}
+
+#workBottomDock{padding:0 var(--sh-pad) var(--sh-pad)!important}
+#workBottomDock>div{max-width:none!important;width:100%!important;margin:0!important;padding:0!important}
+#workInputCard{border:0!important;border-top:1px solid var(--sh-rule)!important;background:var(--sh-paper)!important;padding:var(--sh-pad) 0 0!important;margin:0!important}
+#workInput{display:block!important;width:100%!important;padding:0 0 2px!important;margin:0!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;background:transparent!important;min-height:calc(3 * var(--sh-lead) + 3px)!important;outline:0!important}
+#workSendBtn{background:transparent!important;color:inherit!important;border:0!important;width:auto!important;height:var(--sh-lead)!important}
+#workSendBtn svg{width:15px!important;height:15px!important}
+details.chat-info{margin:var(--sh-s-lh) 0 0!important;padding:0!important;border:0!important}
+details.chat-info>summary{display:block!important;padding:0!important}
+details.chat-info>summary::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;border:0!important;width:auto!important;height:auto!important;transform:none!important}
+details.chat-info[open]>summary{background:var(--sh-stone)!important}
+
+/* ---- a record: the name large, the summary indented, the actions as a list, every section under a stone band ---- */
+#desktopDossierBody{padding:var(--sh-pad)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .record-head{border:0!important;padding:0!important;margin:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) :is(.dossier-main-heading,#desktopDossierName,#dossier-sheet-name){border:0!important;padding:0!important;margin:0!important;hyphens:none!important;text-wrap:balance}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-grid{display:flex!important;flex-direction:column!important;gap:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-main{order:1!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-side{order:2!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .institution-summary{padding:0 0 0 var(--sh-indent)!important;margin:0!important;max-width:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row{display:block!important;margin:var(--sh-s-lh) 0 0!important;padding:0!important;border:0!important;gap:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action{display:block!important;width:auto!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;text-decoration:none!important;text-align:left!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action::after{content:none!important}
+
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(.d-rows,.d-row,.prose-part){border:0!important;padding:0!important;margin:0!important;display:block!important;background:transparent!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-head{display:block!important;margin:var(--sh-s-lh) 0 var(--sh-gap)!important;padding:0!important;border:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-title,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages,#curatorDrawerLiveStream) .kicker{display:block!important;background:var(--sh-stone)!important;text-align:center!important;min-height:var(--sh-band)!important;line-height:var(--sh-band)!important;margin:0!important;padding:0 var(--sh-pad)!important;border:0!important;text-wrap:balance}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-title *{line-height:var(--sh-band)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(ul,ol).d-row-list{list-style:none!important;margin:0!important;padding:0!important;display:block!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li{display:block!important;margin:0!important;padding:0 0 var(--sh-s-lh)!important;border:0!important;text-indent:0!important;max-width:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li:last-child{padding-bottom:0!important}
+/* The Programme row is a list of short names, one per line, not paragraphs: no space between them (user, 11 Nov 2026). */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list.is-bulleted>li{padding-bottom:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li::before{content:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(p,li,dd,blockquote,figcaption){margin-top:0!important;margin-bottom:0!important;text-indent:0!important;max-width:none!important;hyphens:manual!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details>summary{display:block!important;color:var(--sh-fold)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details>summary::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;border:0!important;width:auto!important;height:auto!important;transform:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details>summary *{text-decoration:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details[open]>summary{padding-bottom:var(--sh-s-lh)!important}
+/* A quotation: italic, its source indented under it. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote){margin:var(--sh-s-lh) 0 0!important;padding:0!important;border:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote) blockquote,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote) blockquote *{font-style:italic!important;font-size:var(--sh-s)!important;line-height:var(--sh-lead)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote) :is(figcaption,figcaption *){padding-left:var(--sh-indent)!important;opacity:1!important;font-size:var(--sh-s)!important;line-height:var(--sh-lead)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages) :is(.standalone-quote,.critique-quote) figcaption *{padding-left:0!important}
+/* The grade, and the small i that explains it. */
+.grade-info-btn{display:inline!important;width:auto!important;height:auto!important;margin-left:.5em!important;border:0!important;background:transparent!important;font-style:italic!important}
+.grade-info{margin:var(--sh-s-lh) 0 0!important;padding:0 0 0 var(--sh-indent)!important;border:0!important;background:transparent!important}
+.grade-scale,.grade-list{list-style:none!important;margin:0!important;padding:0!important}
+.grade-scale li,.grade-list li{display:block!important;margin:0!important;padding:0 0 0 var(--sh-indent)!important;text-indent:calc(-1 * var(--sh-indent))!important}
+.grade-scale .grade-word::after,.grade-list .grade-word::after{content:": "}
+.grade-word,.grade-mark{background:transparent!important;padding:0!important;border:0!important}
+/* Visiting: the label in italic, the fact after it. */
+.visit-cols,.visit-rows{display:block!important;margin:0!important;padding:0!important}
+.visit-item{display:block!important;margin:0!important;padding:0 0 0 var(--sh-indent)!important;text-indent:calc(-1 * var(--sh-indent))!important;border:0!important}
+.visit-item dt{display:inline!important;font-style:italic!important;margin:0!important}
+.visit-item dt::after{content:": "}
+.visit-item dd{display:inline!important;margin:0!important}
+
+/* ---- the street map: a name is black type on a strip of paper; its dot keeps the grade's colour ---- */
+.inst-pin-label{height:var(--sh-map-lh)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important;padding:0 5px!important;border:0!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important}
+.inst-pin-label *{color:var(--sh-ink)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important}
+.custom-inst-pin:hover .inst-pin-label,.inst-pin-label:hover,.inst-pin-label:focus-visible{background:var(--sh-stone)!important;color:var(--sh-ink)!important}
+.custom-inst-pin.popup-active .inst-pin-label{background:var(--sh-stone)!important;border:1px solid var(--sh-rule)!important;color:var(--sh-ink)!important;height:calc(var(--sh-map-lh) + 2px)!important}
+.maplibregl-ctrl-attrib,.maplibregl-ctrl-attrib *{font-size:11px!important;line-height:15px!important;text-transform:none!important}
+.maplibregl-ctrl-group,.maplibregl-ctrl-attrib{background:var(--sh-paper)!important;border:0!important}
+
+/* ---- the conversation: a question is a stone band, as a section's head is; the answer is the text under it ---- */
+#curatorMessages{margin:0!important;padding:0!important}
+#curatorMessages>*{margin-left:0!important;margin-right:0!important;max-width:none!important}
+#curatorMessages>.justify-end,#curatorMessages>div:has(>.user-bubble){display:block!important;margin:var(--sh-s-lh) 0 var(--sh-gap)!important;padding:0!important}
+#curatorMessages>div:first-child{margin-top:0!important}
+#curatorMessages .user-bubble{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 var(--sh-pad)!important;border:0!important;background:var(--sh-stone)!important;text-align:center!important;min-height:var(--sh-band)!important;line-height:var(--sh-band)!important;white-space:normal!important;text-wrap:balance}
+#curatorMessages>.justify-end::before,#curatorMessages>.justify-end::after{content:none!important}
+.curator-message-wrap{margin:0!important;padding:0!important;background:transparent!important;border:0!important}
+.curator-message-wrap>svg{display:none!important}
+.curator-message-wrap>div,.curator-message-wrap>div>div{margin:0!important;padding:0!important;max-width:none!important;background:transparent!important;border:0!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap :is(p,ul,ol,blockquote){margin:0 0 var(--sh-s-lh)!important;padding:0!important;text-indent:0!important;max-width:none!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap p:empty{display:none!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap :is(ul,ol){list-style:none!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap li{margin:0!important;padding:0 0 0 var(--sh-dash)!important;text-indent:calc(-1 * var(--sh-dash))!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap li::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+/* What is hearsay is set in italic. */
+:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{font-style:italic!important}
+.curator-followups{display:block!important;margin:0 0 var(--sh-s-lh)!important;padding:0!important;gap:0!important}
+.curator-followup-pill{display:block!important;width:100%!important;margin:0!important;padding:0 0 0 var(--sh-dash)!important;text-indent:calc(-1 * var(--sh-dash))!important;border:0!important;background:transparent!important;white-space:normal!important}
+.curator-followup-pill::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
+#chatScrollBufferSpacer{height:var(--sh-lead)!important}
+/* Cards the curator shows in an answer: no box, a rule over each. */
+:is(#curatorMessages,#curatorDrawerLiveStream) .record-card{border:0!important;border-top:1px solid var(--sh-rule)!important;background:transparent!important;padding:4px 0 0!important;margin:0 0 var(--sh-s-lh)!important}
+
+/* ---- small corrections ---- */
+.inst-pin-label{border-radius:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .space-y-3>*{margin-top:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) details>summary,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) details>summary *{text-decoration:none!important}
+#desktopDossierRecordBody,#desktopDossierRecordBody>div{padding:0!important;margin:0!important}
+#curatorScrollArea{padding:0!important}
+#curatorIntelligenceColumn{padding:0!important}
+
+/* ---- the layers menu: a list under its button, each section under a stone band ---- */
+#layersPanel{background:var(--sh-paper)!important;border:0!important;padding:0!important;margin:0!important}
+#layersPanel .layers-header{display:flex!important;justify-content:space-between!important;align-items:baseline!important;margin:0!important;padding:0 0 0 var(--sh-dash)!important;border:0!important;position:static!important;background:var(--sh-paper)!important}
+#layersPanel .layers-title{margin:0!important;padding:0!important}
+#layersPanel .layers-actions{display:flex!important;gap:var(--sh-dash)!important}
+#layersPanel .layers-section{margin:0!important;padding:0!important;border:0!important}
+#layersPanel .layers-section-title{display:block!important;background:var(--sh-stone)!important;text-align:center!important;height:var(--sh-band)!important;line-height:var(--sh-band-lh)!important;margin:var(--sh-s-lh) 0 var(--sh-gap)!important;padding:0!important;border:0!important}
+#layersPanel :is(.layers-list,.layers-kinds,.layers-filters,.layers-years){display:block!important;margin:0!important;padding:0!important;gap:0!important;border:0!important}
+#layersPanel label,#layersPanel .layers-studies a{display:block!important;position:relative!important;margin:0!important;padding:0 0 0 var(--sh-dash)!important;border:0!important;background:transparent!important;min-height:0!important;text-decoration:none!important;cursor:pointer!important}
+#layersPanel .layers-studies a::before{content:"–";position:absolute;left:0}
+#layersPanel input:is([type="checkbox"],[type="radio"]){-webkit-appearance:none!important;appearance:none!important;position:absolute!important;left:0!important;top:calc((var(--sh-lead) - 9px) / 2 + 1px)!important;width:9px!important;height:9px!important;margin:0!important;padding:0!important;border:1px solid var(--sh-rule)!important;background:var(--sh-paper)!important;border-radius:0!important;cursor:pointer!important}
+#layersPanel input[type="radio"]{border-radius:50%!important}
+#layersPanel input:is([type="checkbox"],[type="radio"]):checked{background:var(--sh-ink)!important;border-color:var(--sh-ink)!important}
+#layersPanel input:is([type="checkbox"],[type="radio"])::before,#layersPanel input:is([type="checkbox"],[type="radio"])::after{content:none!important}
+#layersPanel input[type="range"]{accent-color:var(--sh-ink);width:100%!important;margin:0!important}
+#layersPanel .layer-name{display:inline!important;padding:0!important;background:transparent!important}
+#layersPanel label[style*="--layer-color"] .layer-name::after{content:""!important;display:inline-block!important;width:7px!important;height:7px!important;margin-left:7px!important;border-radius:50%!important;background:var(--layer-color)!important;vertical-align:1px!important}
+#layersPanel :is(.layer-desc,.layers-count){display:block!important;padding:0 0 0 var(--sh-indent)!important;margin:0!important;opacity:1!important;background:transparent!important}
+#layersPanel .layers-count{font-style:italic!important}
+#layersPanel .layers-count:empty{display:none!important}
+#layersPanel :is(.kind-chip,.filter-row){display:block!important}
+#layersPanel :is(.kind-chip,.filter-row) i{display:inline-block!important;margin:0 6px 0 0!important;vertical-align:0!important}
+#layersPanel .layers-choro-legend{display:flex!important;align-items:center!important;gap:6px!important;padding:0 0 0 var(--sh-dash)!important}
+#layersPanel .layers-choro-legend i{flex:1!important;height:7px!important}
+@media (min-width:1080px){
+  :root.gmd #layersControl{display:flex!important;flex-direction:column!important;align-items:stretch!important}
+  :root.gmd #layersControl #layersBtn{order:0!important;align-self:flex-start!important;width:100%!important}
+  :root.gmd #layersControl #layersPanel:not([hidden]){order:1!important;position:static!important;width:100%!important;max-width:none!important;margin-top:4px!important;overflow-y:auto!important;
+    max-height:calc(100vh - var(--sh-head) - var(--sh-foot) - 2px - 2 * var(--sh-pad) - var(--gmdChips-h,76px) - var(--sh-s-lh) - 4px)!important}
+  /* The menu has its own key, so the colour key gives it the column while it is open. */
+  :root.gmd:has(#layersPanel:not([hidden])) #mapColourKey{display:none!important}
+}
+@media (max-width:1079px){
+  #layersPanel:not([hidden]){border:1px solid var(--sh-rule)!important;padding:var(--sh-pad)!important}
+  #mapColourKey{padding:var(--sh-pad)!important;border:1px solid var(--sh-rule)!important}
+}
+
+#layersPanel .layers-header{padding:0!important;margin:4px 0 0!important}
+#layersPanel .layers-close{width:auto!important;height:auto!important}
+#layersPanel .layers-close::before,#layersPanel .layers-close::after{content:none!important}
+#layersPanel :is(.layers-reset,.layers-close){text-decoration:none!important}
+
+@media (min-width:768px){
+  :root.gmd #gmdTitle{display:block!important;visibility:visible!important;opacity:1!important}
+}
+
+/* ---- the phone: the filters are the head bar, the question box is the foot bar ---- */
+@media (max-width:767px){
+  :root{--sh-pad:calc(10px * var(--sh-k))}
+  #gmChips{top:0!important;left:0!important;right:0!important;height:calc(var(--sh-head) + 1px)!important;margin:0!important;padding:0 var(--sh-pad)!important;gap:var(--sh-indent)!important;background:var(--sh-stone)!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;align-items:center!important;flex-wrap:nowrap!important;overflow-x:auto!important;scrollbar-width:none}
+  #gmChips::-webkit-scrollbar{display:none}
+  #gmChips .gm-filter-chip{flex:none!important;height:var(--sh-head)!important;line-height:var(--sh-head)!important;padding:0!important;white-space:nowrap!important;background:transparent!important}
+  #gmChips .gm-filter-chip.has-color::after{content:""!important;display:inline-block!important;width:7px!important;height:7px!important;margin-left:6px!important;border-radius:50%!important;background:var(--layer-color)!important;vertical-align:1px!important}
+  :root.gm-map #layersControl{top:calc(var(--sh-head) + 1px + var(--sh-pad))!important;right:var(--sh-pad)!important}
+  #mobileStickyInputBar{background:var(--sh-paper)!important;border:0!important;border-top:1px solid var(--sh-rule)!important;padding:var(--sh-pad) 0 0!important}
+  #mobileStickyInputBar #gmStoryStrip{display:block;width:100%!important;margin:0!important;padding:0 var(--sh-pad)!important;background:transparent!important;border:0!important}
+  #mobileStickyInputBar #gmStoryStrip span{display:block!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;opacity:1!important}
+  #mobileStickyInputBar #gmStoryStrip .gm-strip-meta{padding-left:var(--sh-indent)!important}
+  #mobileSuggestChips{margin:var(--sh-pad) 0 0!important;padding:0 var(--sh-pad)!important;gap:var(--sh-indent)!important;background:transparent!important}
+  .curator-suggest-chip{padding:0!important;background:transparent!important;border:0!important}
+  .curator-suggest-chip::before{content:"– "}
+  #mobileComposerCard{margin:var(--sh-pad) 0 0!important;padding:0 var(--sh-pad)!important;min-height:var(--sh-foot)!important;background:var(--sh-stone)!important;border:0!important;border-top:1px solid var(--sh-rule)!important;align-items:center!important}
+  #mobileComposerCard textarea{background:transparent!important;border:0!important}
+  #mobileTopBar{background:var(--sh-stone)!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important}
+  #dossier-bottom-sheet{background:var(--sh-paper)!important;border:0!important;border-top:1px solid var(--sh-rule)!important}
+}
+
+/* ---- the phone's record sheet ---- */
+#dossier-bottom-sheet .sheet-title-block{padding:0 var(--sh-pad)!important;margin:0!important}
+#dossier-bottom-sheet .sheet-title-block>*{margin:0!important}
+#dossier-bottom-sheet :is(#dossier-sheet-meta,.gm-rating){padding-left:var(--sh-indent)!important;background:transparent!important;text-align:left!important}
+#dossier-bottom-sheet #dossier-sheet-summary{margin-top:var(--sh-s-lh)!important}
+#dossier-bottom-sheet .record-action-row{padding:0 var(--sh-pad)!important;margin:var(--sh-s-lh) 0!important}
+#dossier-bottom-sheet .record-action-row .record-action span{padding:0!important;margin:0!important}
+#dossier-bottom-sheet .gm-tabs{display:flex!important;gap:0!important;margin:0!important;padding:0!important;height:calc(var(--sh-head) + 2px)!important;background:var(--sh-stone)!important;border:0!important;border-top:1px solid var(--sh-rule)!important;border-bottom:1px solid var(--sh-rule)!important;overflow:hidden!important}
+#dossier-bottom-sheet .gm-tabs [role="tab"]{flex:1 1 0!important;height:var(--sh-head)!important;line-height:var(--sh-head)!important;text-align:center!important;padding:0!important;background:transparent!important;border:0!important}
+#dossier-bottom-sheet .gm-tabs [role="tab"]::after,#dossier-bottom-sheet .gm-tabs [role="tab"]::before{content:none!important}
+#dossier-bottom-sheet #dossier-sheet-scrollable-body{padding:var(--sh-pad)!important}
+#dossier-bottom-sheet .gm-info{list-style:none!important;margin:0!important;padding:0!important}
+#dossier-bottom-sheet .gm-info li{margin:0!important;padding:0 0 0 var(--sh-indent)!important;border:0!important;min-height:0!important}
+#dossier-bottom-sheet .gm-info li svg{display:none!important}
+#dossier-bottom-sheet .sheet-close svg{width:28px!important;height:28px!important}
+
+/* ---- the reports: they take the index column, each part under a stone band ---- */
+#gmFeed{background:var(--sh-paper)!important;border:0!important;padding:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#gmFeed .ts{background:var(--sh-paper)!important;padding:var(--sh-pad)!important;margin:0!important;width:auto!important;max-width:none!important;border:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+#gmFeed .ts-bar{display:flex!important;align-items:baseline!important;justify-content:space-between!important;gap:var(--sh-pad)!important;margin:0!important;padding:0!important;border:0!important;background:var(--sh-paper)!important}
+#gmFeed .ts-grab{display:none!important}
+#gmFeed :is(.ts-title,.ts-title *){font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important;margin:0!important}
+/* The head is one line (user, 12 Nov 2026: "allign this, crosses need to be bigger"): the title, Alert me and the cross all
+   centred on the title's line, which is --sh-l-lh tall and starts --sh-pad down. The cross is 28px, the size of the title's
+   capitals, on a 44px target; the target hangs 8px past the column's padding so the drawn cross ends on the padding edge.
+   Before this the cross was 14px and pinned to the panel's top corner, above the line the words sat on. */
+#gmFeed .ts-bar{align-items:center!important}
+#gmFeed .ts-pin{position:absolute!important;top:calc(var(--sh-pad) + (var(--sh-l-lh) - 44px) / 2)!important;right:calc(var(--sh-pad) - 8px)!important;left:auto!important;margin:0!important;padding:0!important;background:transparent!important}
+#gmFeed .ts-bar .gm-bell{margin-right:calc(28px + var(--sh-pad))!important}
+#gmFeed .ts-btn.ts-x{display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-height:44px!important;margin:0!important;padding:0!important}
+#gmFeed .ts-x svg{width:28px!important;height:28px!important}
+#gmFeed .ts-story{margin:0!important;padding:0!important;border:0!important}
+#gmFeed .ts-label{display:block!important;background:var(--sh-stone)!important;text-align:center!important;height:var(--sh-band)!important;line-height:var(--sh-band-lh)!important;margin:var(--sh-s-lh) 0 var(--sh-gap)!important;padding:0!important;border:0!important}
+#gmFeed :is(.ts-headline,.ts-prose){margin:0!important;padding:0!important;border:0!important;text-transform:none!important;max-width:none!important;hyphens:manual!important}
+#gmFeed .ts-headline{font-style:italic!important}
+#gmFeed .ts-rows{display:block!important;margin:0!important;padding:0!important;border:0!important}
+#gmFeed .ts-row{display:block!important;margin:0!important;padding:0 0 0 var(--sh-indent)!important;text-indent:calc(-1 * var(--sh-indent))!important;border:0!important}
+#gmFeed .ts-row dt{display:inline!important;font-style:italic!important;margin:0!important;padding:0!important;width:auto!important}
+#gmFeed .ts-row dt::after{content:": "}
+#gmFeed .ts-row dd{display:inline!important;margin:0!important;padding:0!important;text-transform:none!important}
+#gmFeed .ts-row dd *{text-transform:none!important;display:inline!important}
+#gmFeed hr,#gmFeed .ts-rule{display:none!important}
+@media (min-width:768px){
+  :root.gmd body #gmFeed:not([hidden]){position:fixed!important;top:calc(var(--sh-head) + 1px)!important;bottom:calc(var(--sh-foot) + 1px)!important;left:0!important;right:auto!important;width:max(var(--sh-col),340px)!important;max-width:none!important;height:auto!important;max-height:none!important;overflow-y:auto!important;border-right:1px solid var(--sh-rule)!important;z-index:47!important;transform:none!important}
+}
+
+/* ---- what lies over the sheet: notes, pop-ups, dialogs, the search list. Paper, the grey rule round it, nothing else ---- */
+#gmToast,#gmLocateNote,.gm-toast{background:var(--sh-stone)!important;color:var(--sh-ink)!important;border:1px solid var(--sh-rule)!important;padding:0 var(--sh-pad)!important;line-height:var(--sh-head)!important}
+#gmToast:empty,#gmLocateNote:empty{border:0!important;padding:0!important}
+.atlas-record-popup .maplibregl-popup-content{background:var(--sh-paper)!important;color:var(--sh-ink)!important;border:1px solid var(--sh-rule)!important;border-radius:0!important;padding:var(--sh-pad)!important;box-shadow:none!important}
+.atlas-record-popup .maplibregl-popup-tip{display:none!important}
+.atlas-record-popup .maplibregl-popup-close-button{font-size:var(--sh-s)!important;color:var(--sh-ink)!important;background:transparent!important;border:0!important;right:4px!important;top:0!important}
+.record-popup,.record-popup *{color:var(--sh-ink)!important;font-family:var(--sh-serif)!important;font-size:var(--sh-s)!important;line-height:var(--sh-lead)!important;font-weight:400!important;letter-spacing:0!important;border-radius:0!important}
+.record-popup :is(.record-popup-name,.record-popup-name *){font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important;text-decoration:none!important}
+.record-popup-rule{display:none!important}
+.record-popup :is(.record-popup-category,.institution-category-pill){display:block!important;background:var(--sh-stone)!important;border:0!important;text-align:center!important;height:var(--sh-band)!important;line-height:var(--sh-band-lh)!important;padding:0!important;margin:0 0 var(--sh-gap)!important}
+.record-popup-actions{display:block!important;margin:var(--sh-s-lh) 0 0!important;padding:0!important;gap:0!important}
+.record-popup-actions :is(a,button){display:block!important;padding:0!important;margin:0!important;border:0!important;background:transparent!important;text-decoration:none!important;text-align:left!important}
+.record-popup-actions :is(a,button)::before{content:"– "}
+.record-popup-actions :is(a,button):hover{background:transparent!important;color:var(--sh-hover)!important}
+:is([role="dialog"],[aria-modal="true"],.modal-panel,.modal-card){background:var(--sh-paper)!important;color:var(--sh-ink)!important;border:1px solid var(--sh-rule)!important;border-radius:0!important}
+#gmdSearch{background:var(--sh-paper)!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;height:auto!important;padding:0!important}
+#gmdResults{background:var(--sh-paper)!important;border:1px solid var(--sh-rule)!important;padding:var(--sh-pad)!important}
+.gmd-opt{display:block!important;padding:0!important;background:transparent!important}
+.gmd-opt[aria-selected="true"]{background:var(--sh-stone)!important;font-style:normal!important}
+.gmd-opt-ico{display:none!important}
+.gmd-opt-sub{padding-left:var(--sh-indent)!important}
+#gmMenu,.gm-menu{background:var(--sh-paper)!important;border:1px solid var(--sh-rule)!important}
+/* The note to the editor: a label, a line to write on. */
+#noteFormFields .nf-field{display:block!important;margin:0 0 var(--sh-s-lh)!important;padding:0!important;border:0!important}
+#noteFormFields .nf-field span{display:block!important}
+#noteFormFields input{display:block!important;width:100%!important;padding:0 0 2px!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;background:transparent!important}
+#noteFormFields :is(#noteFormTitle,#noteFormTitle *){font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important}
+#noteFormHead{display:flex!important;justify-content:space-between!important;align-items:baseline!important;border:0!important;padding:0!important;margin:0 0 var(--sh-s-lh)!important}
+#noteFormIntro{margin:0 0 var(--sh-s-lh)!important;padding-left:var(--sh-indent)!important}
+
+/* ---- the studies page (studies.html): the same sheet, read as one column ---- */
+main#main :is(h1,h1 *){font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important}
+main#main :is(h2,h3){background:var(--sh-stone)!important;text-align:center!important;min-height:var(--sh-band)!important;line-height:var(--sh-band)!important;margin:var(--sh-s-lh) 0 var(--sh-gap)!important;padding:0 var(--sh-pad)!important;border:0!important}
+main#main .study{border:0!important}
+#noteConsentRow,.nf-consent,#noteFormFields~* label:has(input[type="checkbox"]){border:0!important;padding:0!important;background:transparent!important}
+
+/* ---- the index column, filled (user, 10 Nov 2026: "what else needs to go in this column ... Yes, build both") ----
+   From the top: the search line, the filters, Layers, the list of places (assets/desktop-maps.js, #shIndex), the colour
+   key. The list takes what is left between Layers and the key; --sh-chips-h and --sh-key-h are measured by the script. */
+#shIndex{display:none}
+@media (max-width:1079px){
+  :root.gmd #gmdSearch{display:none!important}
+}
+@media (min-width:1080px){
+  :root.gmd{--sh-search-h:0px;--sh-place-h:0px}
+  :root.gmd #gmdSearch{display:flex!important;align-items:baseline!important;position:fixed!important;top:calc(var(--sh-head) + 1px + var(--sh-pad) + var(--sh-place-h))!important;left:var(--sh-pad)!important;right:auto!important;width:calc(var(--sh-col) - 2 * var(--sh-pad))!important;height:calc(var(--sh-lead) + 3px)!important;margin:0!important;padding:0!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;background:transparent!important;z-index:47!important}
+  :root.gmd #gmdInput{flex:1 1 auto!important;min-width:0!important;height:var(--sh-lead)!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;outline:0!important}
+  :root.gmd #gmdSearch #gmdGo{display:none!important}
+  :root.gmd #gmdSearch #gmdClear:not([hidden]){display:block!important;flex:none!important;width:auto!important;height:var(--sh-lead)!important;background:transparent!important}
+  :root.gmd #gmdSearch #gmdClear svg{width:12px!important;height:12px!important;margin-top:6px!important}
+  :root.gmd #gmdResults:not([hidden]){display:block!important;position:absolute!important;top:calc(100% + 1px)!important;left:0!important;right:0!important;margin:0!important;padding:var(--sh-pad)!important;list-style:none!important;background:var(--sh-paper)!important;border:1px solid var(--sh-rule)!important;border-top:0!important;max-height:calc(100vh - var(--sh-head) - var(--sh-foot) - 6 * var(--sh-s-lh))!important;overflow-y:auto!important}
+  :root.gmd .gmd-opt{display:block!important;margin:0!important;padding:0 0 0 var(--sh-dash)!important;text-indent:calc(-1 * var(--sh-dash))!important;cursor:pointer!important}
+  :root.gmd .gmd-opt::before{content:"– "}
+  :root.gmd .gmd-opt :is(.gmd-opt-text,.gmd-opt-label){display:inline!important;white-space:normal!important}
+  :root.gmd .gmd-opt .gmd-opt-sub{display:block!important;padding-left:calc(var(--sh-indent) - var(--sh-dash))!important;text-indent:0!important;font-style:italic!important;white-space:normal!important}
+  :root.gmd .gmd-opt:hover{color:var(--sh-hover)!important}
+  :root.gmd .gmd-opt[aria-selected="true"]:hover{color:inherit!important}
+
+  :root.gmd #gmdChips{top:calc(var(--sh-head) + 1px + var(--sh-pad) + var(--sh-place-h) + var(--sh-search-h))!important}
+  :root.gmd #layersControl{top:calc(var(--sh-head) + 1px + var(--sh-pad) + var(--sh-place-h) + var(--sh-search-h) + var(--sh-chips-h,96px))!important}
+  :root.gmd #layersControl #layersPanel:not([hidden]){max-height:calc(100vh - var(--sh-head) - var(--sh-foot) - 2px - 2 * var(--sh-pad) - var(--sh-place-h) - var(--sh-search-h) - var(--sh-chips-h,96px) - var(--sh-s-lh) - 4px)!important}
+
+  :root.gmd #shIndex{display:flex!important;flex-direction:column!important;position:fixed!important;left:var(--sh-pad)!important;width:calc(var(--sh-col) - 2 * var(--sh-pad))!important;
+    top:calc(var(--sh-head) + 1px + var(--sh-pad) + var(--sh-place-h) + var(--sh-search-h) + var(--sh-chips-h,96px) + 2 * var(--sh-s-lh))!important;
+    bottom:calc(var(--sh-foot) + 1px + var(--sh-pad) + var(--sh-key-h,100px) + var(--sh-s-lh) + var(--sh-reports-h,0px) + var(--sh-s-lh))!important;margin:0!important;padding:0!important;z-index:44!important;overflow:hidden!important}
+  :root.gmd #shIndex .sh-index-title{flex:none!important;display:block!important;background:var(--sh-stone)!important;text-align:center!important;height:var(--sh-band)!important;line-height:var(--sh-band-lh)!important;margin:0 0 var(--sh-gap)!important;padding:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  :root.gmd #shIndex .sh-index-list{flex:1 1 auto!important;min-height:0!important;list-style:none!important;margin:0!important;padding:0!important;overflow-y:auto!important;scrollbar-width:thin;scrollbar-color:var(--sh-stone-2) transparent}
+  :root.gmd #shIndex li{display:block!important;margin:0!important;padding:0!important}
+  :root.gmd #shIndex .sh-index-row{display:flex!important;align-items:baseline!important;gap:var(--sh-pad)!important;width:100%!important;height:var(--sh-lead)!important}
+  :root.gmd #shIndex .sh-index-name{flex:1 1 auto!important;min-width:0!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  :root.gmd #shIndex .sh-index-count{flex:none!important;padding-right:2px!important}
+  :root.gmd #shIndex .sh-index-dot{flex:none!important;align-self:center!important;width:7px!important;height:7px!important;margin:1px -8px 0 0!important;border-radius:50%!important;background:var(--tier-u,#7a7000)!important}
+  :root.gmd #shIndex [data-tier="A"] .sh-index-dot{background:var(--tier-a,#007a80)!important}
+  :root.gmd #shIndex [data-tier="B"] .sh-index-dot{background:var(--tier-b,#b000b0)!important}
+  :root.gmd #shIndex .sh-index-row[aria-current="true"]{background:var(--sh-stone)!important;font-style:normal!important}
+  :root.gmd #shIndex .sh-index-row[aria-current="true"]:hover{color:inherit!important}
+  /* The layers menu, and a panel dragged over the map, take the column: the list steps aside. */
+  :root.gmd:has(#layersPanel:not([hidden])) #shIndex,:root.gmd.chat-wide #shIndex,:root.gmd.chat-wide #gmdSearch{display:none!important}
+}
+
+/* (The title block that opened the index column was deleted at the user's request, 10 Nov 2026; --sh-place-h is 0.) */
+/* The colour key's rows are filters (assets/layers.js): the one that is on takes a stone band, as a filter above does. */
+#mapColourKey .mck-row{display:block!important;width:100%!important;text-align:left!important}
+#mapColourKey li:has(.mck-row[aria-pressed="true"]){background:var(--sh-stone)!important}
+#mapColourKey .mck-row[aria-pressed="true"]{font-style:normal!important}
+#mapColourKey .mck-row[aria-pressed="true"]:hover{color:inherit!important}
+/* The line that finds a name in the list of places. */
+#shIndex #shIndexFind{flex:none!important;display:block!important;width:100%!important;height:calc(var(--sh-lead) + 1px)!important;margin:0 0 var(--sh-gap)!important;padding:0!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;background:transparent!important;outline:0!important}
+
+/* ---- the grade's colour is in the words (user, 10 Nov 2026: "make it just colored text that is clickaple and color
+   spases as well") ---- The key's three rows are coloured text, no dot and no band; with one on, the other two go
+   50% grey. A space's name takes its grade's colour wherever it is listed: the list of places, the street map's
+   names, and (index.html, drawPillLabel) the names on the globe. --tier-a, -b and -u are atlas.css's own, 5:1 or
+   better on the paper in both themes. */
+#mapColourKey :is(.mck-list,.mck-scale) li{padding-left:0!important;background:transparent!important}
+#mapColourKey :is(.mck-pill,.mck-word)::before{content:none!important}
+#mapColourKey li:has(.mck-row[aria-pressed="true"]){background:transparent!important}
+#mapColourKey [data-tier="A"],#mapColourKey .mck-row[data-grade="A"],#mapColourKey .mck-row[data-grade="A"] *{color:var(--tier-a,#007a80)!important}
+#mapColourKey [data-tier="B"],#mapColourKey .mck-row[data-grade="B"],#mapColourKey .mck-row[data-grade="B"] *{color:var(--tier-b,#b000b0)!important}
+#mapColourKey [data-tier="U"],#mapColourKey .mck-row[data-grade="U"],#mapColourKey .mck-row[data-grade="U"] *{color:var(--tier-u,#7a7000)!important}
+#mapColourKey:has(.mck-row[aria-pressed="true"]) .mck-row[aria-pressed="false"],
+#mapColourKey:has(.mck-row[aria-pressed="true"]) .mck-row[aria-pressed="false"] *{color:#808080!important}
+#mapColourKey .mck-row:hover,#mapColourKey .mck-row:hover *{color:var(--sh-hover)!important}
+#mapColourKey .mck-row[aria-pressed="true"]:hover,#mapColourKey .mck-row[aria-pressed="true"]:hover *{color:var(--sh-hover)!important}
+#mapColourKey .mck-row:focus:not(:focus-visible){outline:0!important}
+
+#shIndex .sh-index-dot{display:none!important}
+#shIndex .sh-index-row[data-tier="A"] .sh-index-name{color:var(--tier-a,#007a80)!important}
+#shIndex .sh-index-row[data-tier="B"] .sh-index-name{color:var(--tier-b,#b000b0)!important}
+#shIndex .sh-index-row[data-tier="U"] .sh-index-name{color:var(--tier-u,#7a7000)!important}
+#shIndex .sh-index-row[data-tier]:hover .sh-index-name{color:var(--sh-hover)!important}
+#shIndex .sh-index-row[data-tier][aria-current="true"]:hover .sh-index-name{color:inherit!important}
+
+.inst-pin-label[data-tier="A"],.inst-pin-label[data-tier="A"] *{color:var(--tier-a,#007a80)!important}
+.inst-pin-label[data-tier="B"],.inst-pin-label[data-tier="B"] *{color:var(--tier-b,#b000b0)!important}
+.inst-pin-label[data-tier="U"],.inst-pin-label[data-tier="U"] *,.inst-pin-label:not([data-tier="A"],[data-tier="B"]),.inst-pin-label:not([data-tier="A"],[data-tier="B"]) *{color:var(--tier-u,#7a7000)!important}
+.custom-inst-pin.popup-active .inst-pin-label,.custom-inst-pin.popup-active .inst-pin-label *{color:var(--sh-ink)!important}
+
+/* The head bar had "Exit" and "World" side by side, and both lead back out of a city (user, 10 Nov 2026: "two same
+   buttons"). World stays, with the country after it; Exit is not shown on the desktop sheet. */
+@media (min-width:768px){
+  :root.gmd #cityViewControlBanner #exitStreetViewBtn{display:none!important}
+}
+
+/* ---- the latest reports, in the index column, between the places and the colour key (assets/desktop-maps.js) ----
+   The foot bar's strip that named one report goes: the foot bar holds the atlas's name alone. */
+#shReports{display:none}
+@media (min-width:768px){
+  :root.gmd #gmStoryStrip{display:none!important}
+}
+@media (min-width:1080px){
+  :root.gmd #shReports:not([hidden]){display:block!important;position:fixed!important;left:var(--sh-pad)!important;width:calc(var(--sh-col) - 2 * var(--sh-pad))!important;
+    bottom:calc(var(--sh-foot) + 1px + var(--sh-pad) + var(--sh-key-h,100px) + var(--sh-s-lh))!important;margin:0!important;padding:0!important;z-index:44!important}
+  :root.gmd #shReports .sh-reports-title{display:block!important;background:var(--sh-stone)!important;text-align:center!important;height:var(--sh-band)!important;line-height:var(--sh-band-lh)!important;margin:0 0 var(--sh-gap)!important;padding:0!important}
+  :root.gmd #shReports .sh-reports-list{list-style:none!important;margin:0!important;padding:0!important}
+  :root.gmd #shReports li{display:block!important;margin:0!important;padding:0!important}
+  :root.gmd #shReports :is(.sh-report,.sh-report-all){display:block!important;width:100%!important;text-align:left!important}
+  :root.gmd #shReports .sh-report-meta{display:block!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  :root.gmd #shReports .sh-report-head{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:2!important;line-clamp:2!important;overflow:hidden!important;white-space:normal!important}
+  :root.gmd #shReports .sh-report-meta{padding-left:var(--sh-indent)!important;font-style:italic!important}
+  :root.gmd #shReports .sh-report-all::before{content:"– "}
+  :root.gmd #shReports :is(.sh-report,.sh-report-all):hover,:root.gmd #shReports .sh-report:hover *{color:var(--sh-hover)!important}
+  :root.gmd:has(#layersPanel:not([hidden])) #shReports,:root.gmd.chat-wide #shReports{display:none!important}
+}
+
+/* The reports panel, opened from the list, lies over the whole index column, the search line included, and its close
+   button stays in sight at the column's top right while the reports scroll. */
+@media (min-width:768px){
+  :root.gmd body #gmFeed:not([hidden]){z-index:48!important}
+  :root.gmd body #gmFeed:not([hidden]) .ts-pin{position:fixed!important;top:calc(var(--sh-head) + 1px + var(--sh-pad) + (var(--sh-l-lh) - 44px) / 2)!important;left:calc(max(var(--sh-col),340px) - var(--sh-pad) - 36px)!important;right:auto!important;z-index:49!important;background:transparent!important}
+  :root.gmd body #gmFeed:not([hidden]) .ts-bar .gm-bell{margin-right:calc(28px + var(--sh-pad))!important}
+}
+
+/* The search line at the head of the column is deleted (user, 10 Nov 2026: "delete search and add more to article
+   section"); the list of places keeps its own find line, and the room goes to the reports. */
+@media (min-width:768px){
+  :root.gmd #gmdSearch{display:none!important}
+}
+
+/* The band over the list of places ("648 cities") is deleted too (user, 10 Nov 2026: "delete"); the list opens with its
+   find line. The band stays in the page, hidden, as the list's accessible name. */
+@media (min-width:1080px){
+  :root.gmd #shIndex .sh-index-title{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
+}
+
+/* ---- no foot bar; the atlas's name stands over the globe (user, 10 Nov 2026: "delet this bottom part and put it above
+   globe in 18 px font") ---- The stone bar at the foot is gone, so the sheet runs to the bottom of the window; the name is
+   centred at the top of the map's column, in 18px on a 23px line, and still takes the map back to the world. */
+@media (min-width:768px){
+  :root.gmd{--sh-foot:0px}
+  :root.gmd body::after{content:none!important;display:none!important}
+  :root.gmd #mainAppContainer{bottom:0!important}
+  :root.gmd #gmdTitle{top:calc(var(--sh-head) + 1px + var(--sh-pad))!important;bottom:auto!important;left:var(--sh-col)!important;right:var(--gmd-w)!important;width:auto!important;height:23px!important;padding:0 var(--sh-pad)!important;text-align:center!important;z-index:34!important;pointer-events:none!important}
+  :root.gmd #gmdTitle button,:root.gmd #gmdTitle button *{display:inline!important;font-size:18px!important;line-height:23px!important;pointer-events:auto!important}
+  :root.gmd #gmdTitle button:hover{opacity:1!important;color:var(--sh-hover)!important}
+  :root.gmd.chat-wide #gmdTitle{display:none!important}
+}
+
+/* "How the records work" opens with a plus, not the dash of the sheet's links (user, 10 Nov 2026: "this need to be a plus
+   instead of dash"): it folds open, and once open its plus turns to a dash, which folds it again. */
+details.chat-info>summary::before{content:"+ "!important}
+details.chat-info[open]>summary::before{content:"– "!important}
+
+/* ---- fields to write in are boxes (user, 10 Nov 2026: "make input field proper with margin and rounded cornes") ----
+   The note to the editor and the question to the curator: a 1px rule all round with 8px corners, the text set inside
+   it with room, the label above it on the left edge. The pointer or the keyboard in a field draws it in ink. */
+:is(#noteFormFields input[type="text"],#noteFormFields input:not([type]),#workInput){
+  display:block!important;width:100%!important;box-sizing:border-box!important;margin:var(--sh-gap) 0 0!important;
+  padding:calc(8px * var(--sh-k)) calc(10px * var(--sh-k))!important;
+  border:1px solid var(--sh-rule)!important;border-radius:8px!important;background:var(--sh-paper)!important;
+  outline:0!important;resize:none!important;transition:border-color .15s!important}
+#workInput{min-height:calc(3 * var(--sh-lead) + 16px * var(--sh-k) + 2px)!important}
+:is(#noteFormFields input,#workInput):hover{border-color:var(--sh-ink)!important}
+:is(#noteFormFields input,#workInput):focus{border-color:var(--sh-ink)!important;outline:1px solid var(--sh-ink)!important;outline-offset:0!important}
+#noteFormFields .nf-field{margin:0 0 var(--sh-s-lh)!important;padding:0!important}
+#noteFormFields .nf-field>span{display:block!important;margin:0!important;padding:0!important}
+#noteInputLabel{margin:0!important;padding:0!important}
+/* The note's title is large and the panel narrow: its Close goes to the line under it rather than across it. */
+#noteFormHead{flex-wrap:wrap!important;column-gap:var(--sh-pad)!important}
+#noteFormCloseBtn{margin-left:auto!important}
+#noteInputBlock{margin:0!important;padding:0!important}
+#workInputCard{border-top:0!important;padding-top:var(--sh-pad)!important}
+
+/* The buttons beside the fields take the fields' outline (user, 10 Nov 2026: "add same otline to buttons"): Share
+   information or Back to chat, Voice, and Send. A 1px rule, 8px corners, room inside; ink under the pointer. */
+#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn){
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;width:auto!important;min-width:0!important;
+  height:auto!important;min-height:calc(var(--sh-lead) + 12px * var(--sh-k))!important;padding:calc(6px * var(--sh-k)) calc(10px * var(--sh-k))!important;
+  border:1px solid var(--sh-rule)!important;border-radius:8px!important;background:var(--sh-paper)!important;white-space:nowrap!important;text-align:center!important}
+#workBottomDock #workSendBtn{min-width:calc(var(--sh-lead) + 12px * var(--sh-k))!important}
+#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):hover{border-color:var(--sh-ink)!important}
+#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):focus-visible{border-color:var(--sh-ink)!important;outline:1px solid var(--sh-ink)!important;outline-offset:0!important}
+#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):disabled:hover{border-color:var(--sh-rule)!important}
+#workBottomDock :is(#curatorVoiceToggleBtn,#workSendBtn){margin-left:calc(6px * var(--sh-k))!important}
+#workBottomDock #workSendBtn{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important}
+
+/* A record's actions are buttons in a row, outlined as the fields are, with no dash (user, 10 Nov 2026: "make these
+   buttons with no dashes"): Ask in chat, Building view, Money map, Website. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row{display:flex!important;flex-wrap:wrap!important;gap:calc(6px * var(--sh-k))!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;width:auto!important;
+  min-height:calc(var(--sh-lead) + 12px * var(--sh-k))!important;padding:calc(6px * var(--sh-k)) calc(10px * var(--sh-k))!important;
+  border:1px solid var(--sh-rule)!important;border-radius:8px!important;background:var(--sh-paper)!important;white-space:nowrap!important;text-decoration:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action::before{content:none!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:hover{border-color:var(--sh-ink)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:focus-visible{border-color:var(--sh-ink)!important;outline:1px solid var(--sh-ink)!important;outline-offset:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action *{padding:0!important;margin:0!important}
+
+/* The outlines of the fields and their buttons are the poster's blue, --sh-hover (user, 10 Nov 2026: "make outlines for
+   input and buttons also blue color"); under the pointer or the keyboard the ring doubles, still blue. */
+:is(#noteFormFields input[type="text"],#noteFormFields input:not([type]),#workInput),#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn),:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action{border-color:var(--sh-outline)!important}
+:is(#noteFormFields input[type="text"],#noteFormFields input:not([type]),#workInput):is(:hover,:focus),#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):is(:hover,:focus-visible),:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:is(:hover,:focus-visible){border-color:var(--sh-outline)!important;outline:1px solid var(--sh-outline)!important;outline-offset:0!important}
+#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn):disabled:hover{outline:0!important}
+
+/* ---- the foot of the note to the editor, set in order (user, 10 Nov 2026: "looks a bit messy") ----
+   The pledge with its box on the first line, then Send for review across the full width, then Back to chat at the left
+   edge and Voice at the right edge, every edge on the fields' edges, one line between groups and the buttons' gap inside
+   a group. The buttons are upright: their state is not shown by italic here. */
+#noteAckRow{margin:var(--sh-s-lh) 0 0!important;padding:0!important}
+#noteAckRow .nf-check{display:flex!important;align-items:flex-start!important;gap:calc(var(--sh-pad) / 2)!important;margin:0!important;padding:0!important;cursor:pointer!important}
+#noteAckRow .nf-check span{line-height:var(--sh-lead)!important}
+#noteAck{-webkit-appearance:none!important;appearance:none!important;position:static!important;flex:none!important;width:18px!important;height:18px!important;
+  margin:calc((var(--sh-lead) - 18px) / 2) 0 0!important;padding:0!important;border:1px solid var(--sh-outline)!important;border-radius:4px!important;background:var(--sh-paper)!important;cursor:pointer!important}
+#noteAck:checked{background:var(--sh-hover) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px 14px no-repeat!important;border-color:var(--sh-hover)!important}
+#noteAck:hover{outline:1px solid var(--sh-outline)!important;outline-offset:0!important}
+#noteAck::before,#noteAck::after{content:none!important}
+#workInputCard>div.flex.justify-between{display:flex!important;flex-wrap:wrap!important;align-items:center!important;justify-content:flex-start!important;gap:calc(6px * var(--sh-k))!important;margin:0!important;padding:var(--sh-s-lh) 0 0!important}
+#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn),#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn) *{font-style:normal!important}
+#workBottomDock #workSendBtn.is-on{order:-1!important;flex:1 1 100%!important;width:100%!important;margin:0!important}
+#workBottomDock #chatShareBtn{margin:0 auto 0 0!important}
+#workBottomDock #curatorVoiceToggleBtn{margin:0!important}
+/* Voice on: a light fill of the outline's blue says so, in place of the italic. */
+#workBottomDock #curatorVoiceToggleBtn[aria-pressed="true"]{background:color-mix(in srgb,var(--sh-outline) 22%,var(--sh-paper))!important}
+
+/* The note's title is the text size (user, 10 Nov 2026: "title doesnt need to be that big"), with Close on its line. */
+#noteFormFields :is(#noteFormTitle,#noteFormTitle *){font-size:var(--sh-s)!important;line-height:var(--sh-lead)!important}
+#noteFormHead{flex-wrap:nowrap!important;align-items:baseline!important}
+
+/* The question box: the field across the panel, under it Share information and Voice at the left and Send at the right
+   edge. (The card was a grid from atlas.css that left the field a sliver once the buttons were boxes.) */
+#workInputCard{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important}
+#workInputCard>#noteInputBlock{width:100%!important}
+#workBottomDock #workSendBtn:not(.is-on){order:3!important;margin:0 0 0 auto!important}
+
+/* ---- the chat at full width (user, 10 Nov 2026: "full chat mode looks like needs to be fixed") ----
+   When the panel is dragged over the map, nothing of the index column or the map stays over it; the panel's pages sit in
+   the head bar after Gossip mode and Dark; and the chat reads as one column half the window wide, centred. */
+@media (min-width:768px){
+  :root.gmd.chat-wide :is(#gmdChips,#layersControl,#mapColourKey,#gmdMapCtl,#gmLocateNote,#cityViewControlBanner){display:none!important}
+  :root.gmd.chat-wide #workspaceContextTabBar{left:max(var(--sh-col),260px)!important;right:0!important;width:auto!important}
+  :root.gmd.chat-wide :is(#curatorScrollContent,#workBottomDock>div,#desktopDossierRecordBody){max-width:max(50vw,640px)!important;margin-left:auto!important;margin-right:auto!important}
+  :root.gmd.chat-wide #workBottomDock{display:flex!important;justify-content:center!important}
+}
+/* Share information, Voice and Send fit one line in the narrowest panel (360px): a little less room at their sides. */
+#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn){padding-left:calc(7px * var(--sh-k))!important;padding-right:calc(7px * var(--sh-k))!important}
+
+/* ---- Send sits inside the question box, a solid blue square at its lower right (user, 10 Nov 2026: "this button can be
+   just this blue and inside the chat") ---- In chat mode the card is a grid: the field across the top, Send laid over
+   the field's corner, Share information and Voice on the line under it. The note to the editor keeps its own order
+   (Send for review across the full width). The arrow is ink on the outline blue, 11:1. */
+#workInputCard:has(#workSendBtn:not(.is-on)){display:grid!important;grid-template-columns:auto auto 1fr!important;grid-template-areas:"field field field" "share voice ."!important;column-gap:calc(6px * var(--sh-k))!important;row-gap:var(--sh-s-lh)!important;align-items:center!important}
+#workInputCard:has(#workSendBtn:not(.is-on))>#noteInputBlock{grid-area:field!important}
+#workInputCard:has(#workSendBtn:not(.is-on))>div.flex.justify-between{display:contents!important}
+#workInputCard:has(#workSendBtn:not(.is-on)) #chatShareBtn{grid-area:share!important;justify-self:start!important;margin:0!important}
+#workInputCard:has(#workSendBtn:not(.is-on)) #curatorVoiceToggleBtn{grid-area:voice!important;justify-self:start!important;margin:0!important}
+#workBottomDock #workSendBtn:not(.is-on){grid-area:field!important;justify-self:end!important;align-self:end!important;z-index:1!important;
+  width:34px!important;min-width:34px!important;height:34px!important;min-height:34px!important;padding:0!important;margin:0 8px 8px 0!important;
+  border:1px solid var(--sh-outline)!important;border-radius:8px!important;background:var(--sh-outline)!important;color:var(--sh-ink)!important;outline:0!important}
+#workBottomDock #workSendBtn:not(.is-on):hover,#workBottomDock #workSendBtn:not(.is-on):focus-visible{background:var(--sh-hover)!important;border-color:var(--sh-hover)!important;outline:0!important}
+#workBottomDock #workSendBtn:not(.is-on):focus-visible{outline:1px solid var(--sh-hover)!important;outline-offset:2px!important}
+#workBottomDock #workSendBtn:not(.is-on) svg{width:16px!important;height:16px!important;color:var(--sh-ink)!important}
+#workBottomDock #workSendBtn:not(.is-on):disabled{opacity:.55!important}
+#workInputCard:has(#workSendBtn:not(.is-on)) #workInput{padding-right:calc(34px + 16px + 4px)!important}
+
+/* "Back to map" leads the panel's pages in the head bar while the chat covers the map (assets/chat-resize.js), and only
+   then. */
+:root.gmd #workspaceContextTabBar #shBackToMap{display:none!important}
+:root.gmd.chat-wide #workspaceContextTabBar #shBackToMap{display:block!important;margin-right:auto!important}
+
+/* ---- what the atlas is, at the map's top right (assets/desktop-maps.js, #shTagline) ----
+   The "A Chess and Music Evening" poster's line-up, in Times: flush right; the first line in the middle size with its two
+   figures underlined and a small italic word between them; the tagline in the middle size, italic; then rows of a small
+   italic lead-in sat on the baseline of a large phrase, set tight. It sits under the atlas's name, clear of it, and lets
+   the map be dragged through it. */
+#shTagline{display:none}
+@media (min-width:1080px){
+  :root.gmd #globeViewport #shTagline{display:block!important;position:absolute!important;top:calc(var(--sh-pad) + 23px + var(--sh-pad))!important;right:var(--sh-pad)!important;left:auto!important;z-index:30!important;margin:0!important;padding:0!important;text-align:right!important;pointer-events:none!important;max-width:calc(100% - 2 * var(--sh-pad))!important}
+  :root.gmd #shTagline p{margin:0!important;padding:0!important;text-align:right!important;white-space:nowrap!important}
+  :root.gmd #shTagline :is(.pt-count,.pt-count *,.pt-sub){font-size:25px!important;line-height:29px!important}
+  :root.gmd #shTagline .pt-u{text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:4px!important}
+  :root.gmd #shTagline .pt-small{font-size:15px!important;font-style:normal!important}
+  :root.gmd #shTagline .pt-sub{font-style:italic!important;margin-bottom:10px!important}
+  :root.gmd #shTagline .pt-row{line-height:35px!important}
+  :root.gmd #shTagline .pt-label{font-size:13px!important;line-height:35px!important;font-style:italic!important;margin-right:6px!important}
+  :root.gmd #shTagline .pt-big{font-size:38px!important;line-height:35px!important;letter-spacing:-.01em!important}
+  :root.gmd.chat-wide #shTagline{display:none!important}
+}
+
+/* The reports are set apart by half a line, as paragraphs (user, 10 Nov 2026: "add paragraph spacing"). The count of
+   reports that fit is measured after this, so the list still leaves the places their rows. */
+@media (min-width:1080px){
+  :root.gmd #shReports li+li{margin-top:calc(var(--sh-s-lh) / 2)!important}
+}
+
+/* ---- the filters are chips in their own colours (user, 10 Nov 2026: "make it look like filters and colorcode text and
+   outline, no need for dots") ---- Each filter is a box with 8px corners: its outline in the filter's colour (the colour
+   its marks take on the map), its word in the same colour darkened to read on paper, no dash and no dot. The one that is
+   on is filled with a light tint of its colour. Layers is a box in the outline blue. They wrap in rows. */
+@media (min-width:768px){
+  :root.gmd #gmdChips{display:flex!important;flex-wrap:wrap!important;gap:calc(6px * var(--sh-k))!important}
+  :root.gmd .gmd-chip{display:inline-flex!important;align-items:center!important;width:auto!important;height:auto!important;min-height:calc(var(--sh-lead) + 10px * var(--sh-k))!important;
+    padding:calc(5px * var(--sh-k)) calc(9px * var(--sh-k))!important;border:1px solid var(--sh-outline)!important;border-radius:8px!important;background:var(--sh-paper)!important;overflow:visible!important}
+  :root.gmd .gmd-chip::before,:root.gmd .gmd-chip.has-color::after{content:none!important;display:none!important}
+  :root.gmd .gmd-chip.has-color{border-color:var(--layer-color)!important;color:color-mix(in srgb,var(--layer-color) 62%,#000)!important}
+  :root.gmd .gmd-chip.has-color:hover{outline:1px solid var(--layer-color)!important;outline-offset:0!important;color:color-mix(in srgb,var(--layer-color) 62%,#000)!important}
+  :root.gmd .gmd-chip[aria-pressed="true"]{background:color-mix(in srgb,var(--layer-color,var(--sh-outline)) 22%,var(--sh-paper))!important;font-style:normal!important}
+  :root[data-theme="dark"].gmd .gmd-chip.has-color,:root[data-theme="dark"].gmd .gmd-chip.has-color:hover{color:var(--layer-color)!important}
+}
+#layersControl #layersBtn{display:inline-flex!important;align-items:center!important;width:auto!important;height:auto!important;min-height:calc(var(--sh-lead) + 10px * var(--sh-k))!important;
+  padding:calc(5px * var(--sh-k)) calc(9px * var(--sh-k))!important;border:1px solid var(--sh-outline)!important;border-radius:8px!important;background:var(--sh-paper)!important}
+#layersControl #layersBtn::before{content:none!important;display:none!important}
+#layersControl #layersBtn:hover{outline:1px solid var(--sh-outline)!important;outline-offset:0!important}
+#layersControl #layersBtn[aria-expanded="true"]{background:color-mix(in srgb,var(--sh-outline) 22%,var(--sh-paper))!important}
+@media (min-width:1080px){
+  :root.gmd #layersControl{top:calc(var(--sh-head) + 1px + var(--sh-pad) + var(--sh-place-h) + var(--sh-search-h) + var(--sh-chips-h,96px) + calc(6px * var(--sh-k)))!important}
+  :root.gmd #layersControl #layersBtn{width:auto!important;align-self:flex-start!important}
+}
+
+/* ---- the column's lower half: five rows of places, then the reports, which scroll (user, 10 Nov 2026: "reports also
+   need to be able to scroll") ---- The places keep their find line and five rows (they scroll too); the reports take
+   what is left above the colour key, every report in a list that scrolls, with "All reports" fixed under it. */
+@media (min-width:1080px){
+  :root.gmd{--sh-layers-h:calc(var(--sh-lead) + 10px * var(--sh-k) + 2px);
+    --sh-index-top:calc(var(--sh-head) + 1px + var(--sh-pad) + var(--sh-chips-h,96px) + 6px * var(--sh-k) + var(--sh-layers-h) + var(--sh-s-lh));
+    --sh-index-h:calc(var(--sh-lead) + 1px + var(--sh-gap) + 5 * var(--sh-lead))}
+  :root.gmd #shIndex{top:var(--sh-index-top)!important;bottom:auto!important;height:var(--sh-index-h)!important}
+  :root.gmd #shReports:not([hidden]){display:flex!important;flex-direction:column!important;top:calc(var(--sh-index-top) + var(--sh-index-h) + var(--sh-s-lh))!important;
+    bottom:calc(var(--sh-foot) + 1px + var(--sh-pad) + var(--sh-key-h,100px) + var(--sh-s-lh))!important}
+  :root.gmd #shReports .sh-reports-title{flex:none!important}
+  :root.gmd #shReports .sh-reports-list{flex:1 1 auto!important;min-height:0!important;overflow-y:auto!important;scrollbar-width:thin;scrollbar-color:var(--sh-stone) transparent}
+  :root.gmd #shReports .sh-reports-foot{flex:none!important;margin-top:calc(var(--sh-s-lh) / 2)!important}
+  :root.gmd #shReports .sh-reports-foot .sh-report-all{display:block!important;width:100%!important;text-align:left!important}
+  :root.gmd #shReports .sh-reports-foot .sh-report-all::before{content:"– "}
+  :root.gmd #shReports .sh-reports-foot .sh-report-all:hover{color:var(--sh-hover)!important}
+}
+
+/* The block now carries the atlas's name, so it starts at the top of the map's column, and the separate centred name goes
+   (it stays where the block is not shown, under 1080px). The sizes are the poster's proportions in Times: the name and the
+   tagline 25 on 29, the line-up 34 on 31 (set tighter than its size, as the poster's names are), the lead-ins 12px. At a
+   900px-high window the whole block ends above the top of the globe. */
+@media (min-width:1080px){
+  :root.gmd #gmdTitle{display:none!important}
+  :root.gmd #globeViewport #shTagline{top:var(--sh-pad)!important}
+  :root.gmd #shTagline .pt-name{display:inline!important;pointer-events:auto!important;cursor:pointer!important;font-size:25px!important;line-height:29px!important;text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:4px!important;background:none!important;border:0!important;padding:0!important}
+  :root.gmd #shTagline .pt-name:hover{color:var(--sh-hover)!important}
+  :root.gmd #shTagline .pt-sub{margin-bottom:6px!important}
+  :root.gmd #shTagline .pt-row{line-height:31px!important}
+  :root.gmd #shTagline .pt-big{font-size:34px!important;line-height:31px!important}
+  :root.gmd #shTagline .pt-label{font-size:12px!important;line-height:31px!important;margin-right:5px!important}
+}
+@media (min-width:1080px){
+  :root.gmd #shTagline :is(.pt-count,.pt-count *,.pt-sub),:root.gmd #shTagline .pt-name{font-size:23px!important;line-height:27px!important}
+  :root.gmd #shTagline .pt-sub{margin-bottom:4px!important}
+  :root.gmd #shTagline .pt-row{line-height:28px!important}
+  :root.gmd #shTagline .pt-big{font-size:31px!important;line-height:28px!important}
+  :root.gmd #shTagline .pt-label{font-size:11px!important;line-height:28px!important}
+}
+@media (min-width:1080px){
+  :root.gmd #globeViewport #shTagline{top:calc(var(--sh-pad) * .6)!important}
+  :root.gmd #shTagline :is(.pt-row,.pt-big,.pt-label){line-height:26px!important}
+}
+
+/* ---- the poster's layout, copied (user, 10 Nov 2026: "just copy this layout") ----
+   Measured from the "A Chess and Music Evening" poster and set in Times at a base of 24px (S):
+   - the first line runs the block's width: the wordmark heavy at its left, at its right the first figure underlined, a
+     small joining word (0.45 S) on the baseline and the second figure, as "December 5, 2026 at 7 pm";
+   - the italic subtitle under it at S, right-aligned;
+   - after a gap of half S, the line-up: four rows, each a large phrase at 1.3 S set tighter than its size, with its
+     lead-in tiny and italic, centred on the phrase, as "Live Performances by Anya Tran / and Daren Ho".
+   The wordmark is the one bold word in the sheet (Times New Roman Bold, from the reader's machine). */
+@media (min-width:1080px){
+  :root.gmd #shTagline{--pt-s:24px}
+  :root.gmd #shTagline .pt-head{display:flex!important;flex-wrap:wrap!important;justify-content:space-between!important;align-items:baseline!important;column-gap:calc(var(--pt-s) * .8)!important;margin:0!important}
+  :root.gmd #shTagline .pt-name{font-weight:700!important;font-size:var(--pt-s)!important;line-height:calc(var(--pt-s) * 1.17)!important;letter-spacing:-.01em!important;text-decoration:none!important;pointer-events:auto!important;cursor:pointer!important;background:none!important;border:0!important;padding:0!important;white-space:nowrap!important}
+  :root.gmd #shTagline .pt-name:hover{color:var(--sh-hover)!important}
+  :root.gmd #shTagline .pt-when,:root.gmd #shTagline .pt-when *{font-size:var(--pt-s)!important;line-height:calc(var(--pt-s) * 1.17)!important;white-space:nowrap!important}
+  :root.gmd #shTagline .pt-when{margin-left:auto!important}
+  :root.gmd #shTagline .pt-when .pt-small{font-size:calc(var(--pt-s) * .45)!important}
+  :root.gmd #shTagline .pt-u{text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:3px!important}
+  :root.gmd #shTagline .pt-sub,:root.gmd #shTagline .pt-sub *{font-size:var(--pt-s)!important;line-height:calc(var(--pt-s) * 1.17)!important;font-style:italic!important;margin:0!important;text-align:right!important}
+  :root.gmd #shTagline .pt-lineup{margin-top:calc(var(--pt-s) * .5)!important}
+  :root.gmd #shTagline .pt-row{display:flex!important;justify-content:flex-end!important;align-items:center!important;gap:calc(var(--pt-s) * .3)!important;margin:0!important;line-height:calc(var(--pt-s) * 1.25)!important}
+  :root.gmd #shTagline .pt-big{font-size:calc(var(--pt-s) * 1.3)!important;line-height:calc(var(--pt-s) * 1.25)!important;letter-spacing:-.02em!important;white-space:nowrap!important}
+  :root.gmd #shTagline .pt-label{font-size:11px!important;line-height:1!important;font-style:italic!important;margin:0!important;white-space:nowrap!important}
+}
+
+/* ---- the map's top right after the "mesmarize" poster (user, 10 Nov 2026: "need to look like this") ----
+   Its proportions in Times, the block 0.7 of the poster's size: the first line 24px with its joining word at 14px and
+   its figure at 13px; the paragraph 15 on 19, its first line stepped in from the right by a sixth of the block; "with"
+   13px italic; the names 34px set on a 31px line, each with its tag 10px italic at its top left. Underlines thin and low,
+   as the poster's. The names and the credit can be pressed; a name that is on is underlined. */
+@media (min-width:1080px){
+  :root.gmd #shTagline .pt-head{display:block!important;margin:0!important;text-align:right!important}
+  :root.gmd #shTagline .pt-name{display:inline!important;font-weight:400!important;pointer-events:auto!important;cursor:pointer!important;background:none!important;border:0!important;padding:0!important}
+  :root.gmd #shTagline .pt-name,:root.gmd #shTagline .pt-name .pt-u{font-size:24px!important;line-height:28px!important}
+  :root.gmd #shTagline .pt-name .pt-small{font-size:14px!important;line-height:28px!important;font-style:normal!important}
+  :root.gmd #shTagline .pt-name:hover,:root.gmd #shTagline .pt-name:hover *{color:var(--sh-hover)!important}
+  :root.gmd #shTagline .pt-time{font-size:13px!important;line-height:28px!important;margin-left:4px!important}
+  :root.gmd #shTagline .pt-u{text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:4px!important}
+  :root.gmd #shTagline .pt-para{display:block!important;margin:2px 0 0!important;text-align:right!important}
+  :root.gmd #shTagline .pt-para>span{display:block!important;font-size:15px!important;line-height:19px!important;text-align:right!important}
+  :root.gmd #shTagline .pt-para .pt-l1{padding-right:calc(15px * 6)!important}
+  :root.gmd #shTagline .pt-credit{display:inline!important;font-size:15px!important;line-height:19px!important;font-style:italic!important;text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:3px!important;pointer-events:auto!important;cursor:pointer!important;background:none!important;border:0!important;padding:0!important}
+  :root.gmd #shTagline .pt-credit:hover{color:var(--sh-hover)!important}
+  :root.gmd #shTagline .pt-with{font-size:13px!important;line-height:17px!important;font-style:italic!important;margin:3px 0 0!important;text-align:right!important}
+  :root.gmd #shTagline .pt-lineup{margin:0!important}
+  :root.gmd #shTagline .pt-row{display:block!important;margin:0!important;text-align:right!important;line-height:31px!important}
+  :root.gmd #shTagline .pt-row .pt-big{display:inline-flex!important;align-items:flex-start!important;gap:5px!important;font-size:34px!important;line-height:31px!important;letter-spacing:-.02em!important;pointer-events:auto!important;cursor:pointer!important;background:none!important;border:0!important;padding:0!important;white-space:nowrap!important}
+  :root.gmd #shTagline .pt-row .pt-big:hover{color:var(--sh-hover)!important}
+  :root.gmd #shTagline .pt-row .pt-big[aria-pressed="true"]{text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:4px!important;font-style:normal!important}
+  :root.gmd #shTagline .pt-tag{font-size:10px!important;line-height:14px!important;font-style:italic!important;letter-spacing:0!important;margin-top:2px!important}
+}
+@media (min-width:1080px){
+  /* The names a little smaller so the block ends above the globe at 900px high. */
+  :root.gmd #shTagline .pt-row,:root.gmd #shTagline .pt-row .pt-big{font-size:30px!important;line-height:27px!important}
+  :root.gmd #shTagline .pt-row{font-size:inherit!important}
+}
+/* The filters' and Layers' inner margin is 15% less (user, 10 Nov 2026: "make margin on buttons 15% less"). */
+@media (min-width:768px){
+  :root.gmd .gmd-chip,#layersControl #layersBtn{padding:calc(5px * var(--sh-k) * .85) calc(9px * var(--sh-k) * .85)!important;min-height:calc(var(--sh-lead) + 10px * var(--sh-k) * .85)!important}
+}
+@media (min-width:1080px){
+  :root.gmd{--sh-layers-h:calc(var(--sh-lead) + 10px * var(--sh-k) * .85 + 2px)!important}
+}
+
+/* "Expand chat" in the head bar while the map is in sight; "Back to map" takes its place once the chat covers it. */
+:root.gmd #workspaceContextTabBar #shExpandChat{display:block!important}
+:root.gmd.chat-wide #workspaceContextTabBar #shExpandChat{display:none!important}
+
+/* The small italics of the block are 50% larger (user, 10 Nov 2026: "make cursive 50% larger"): "with" 13 to 19.5px,
+   the "filter" tags 10 to 15px. */
+@media (min-width:1080px){
+  :root.gmd #shTagline .pt-with{font-size:19.5px!important;line-height:22px!important;margin-top:1px!important}
+  :root.gmd #shTagline .pt-tag{font-size:15px!important;line-height:18px!important;margin-top:1px!important}
+}
+@media (min-width:768px){
+  /* The panel's pages, with "Expand chat" before them, keep to the one line of the head bar. */
+  :root.gmd #workspaceContextTabBar{flex-wrap:nowrap!important;column-gap:calc(var(--sh-pad) * .75)!important}
+}
+@media (min-width:768px){
+  :root.gmd #workspaceContextTabBar button{flex:none!important}
+}
+
+/* Colour key as filter buttons (user, 11 Nov 2026: "just say clean flagged unverified", "turn into filter buttons"):
+   boxed like the filter chips, outline and text in the grade colour, on = a light tint of it. */
+#mapColourKey .mck-list{display:flex!important;flex-wrap:wrap!important;gap:calc(6px * var(--sh-k))!important}
+#mapColourKey .mck-list li{padding:0!important;margin:0!important}
+#mapColourKey .mck-list .mck-pill::after{content:none!important}
+#mapColourKey .mck-row{display:inline-flex!important;align-items:center!important;width:auto!important;
+  min-height:calc(var(--sh-lead) + 10px * var(--sh-k) * .85)!important;padding:calc(5px * var(--sh-k) * .85) calc(9px * var(--sh-k) * .85)!important;
+  border:1px solid currentColor!important;border-radius:8px!important;background:var(--sh-paper)!important;line-height:var(--sh-lead)!important}
+#mapColourKey .mck-row[data-grade="A"]{border-color:var(--tier-a,#007a80)!important}
+#mapColourKey .mck-row[data-grade="B"]{border-color:var(--tier-b,#b000b0)!important}
+#mapColourKey .mck-row[data-grade="U"]{border-color:var(--tier-u,#7a7000)!important}
+#mapColourKey .mck-row[data-grade="A"][aria-pressed="true"]{background:color-mix(in srgb,var(--tier-a,#007a80) 18%,var(--sh-paper))!important}
+#mapColourKey .mck-row[data-grade="B"][aria-pressed="true"]{background:color-mix(in srgb,var(--tier-b,#b000b0) 18%,var(--sh-paper))!important}
+#mapColourKey .mck-row[data-grade="U"][aria-pressed="true"]{background:color-mix(in srgb,var(--tier-u,#7a7000) 18%,var(--sh-paper))!important}
+#mapColourKey:has(.mck-row[aria-pressed="true"]) .mck-row[aria-pressed="false"]{border-color:#808080!important}
+#mapColourKey .mck-row:hover{outline:1px solid currentColor!important;outline-offset:0!important}
+#mapColourKey .mck-row[data-grade="A"]:hover,#mapColourKey .mck-row[data-grade="A"]:hover *{color:var(--tier-a,#007a80)!important}
+#mapColourKey .mck-row[data-grade="B"]:hover,#mapColourKey .mck-row[data-grade="B"]:hover *{color:var(--tier-b,#b000b0)!important}
+#mapColourKey .mck-row[data-grade="U"]:hover,#mapColourKey .mck-row[data-grade="U"]:hover *{color:var(--tier-u,#7a7000)!important}
+
+/* Filters as pills, after abcdinamo.com's head buttons (user, 11 Nov 2026: "do filters like this but keep text color coded"):
+   a light grey pill, no outline, fully rounded; text keeps its colour; on = the pill filled with that colour, text in paper. */
+:root{--sh-pill:#e8e8e8;--sh-pill-hover:#d9d9d9}
+:root[data-theme="dark"]{--sh-pill:#2b2b2b;--sh-pill-hover:#3a3a3a}
+:root.gmd .gmd-chip,#layersControl #layersBtn,#mapColourKey .mck-row{border:0!important;border-radius:999px!important;background:var(--sh-pill)!important;outline:0!important;
+  padding:calc(5px * var(--sh-k) * .85) calc(11px * var(--sh-k) * .85)!important}
+:root.gmd .gmd-chip:hover,#layersControl #layersBtn:hover,#mapColourKey .mck-row:hover{background:var(--sh-pill-hover)!important;outline:0!important}
+:root.gmd .gmd-chip.has-color[aria-pressed="true"],:root.gmd .gmd-chip.has-color[aria-pressed="true"]:hover{background:color-mix(in srgb,var(--layer-color) 62%,#000)!important;color:var(--sh-paper)!important}
+#layersControl #layersBtn{color:var(--sh-ink)!important}
+#layersControl #layersBtn[aria-expanded="true"],#layersControl #layersBtn[aria-expanded="true"]:hover{background:var(--sh-ink)!important;color:var(--sh-paper)!important}
+#mapColourKey .mck-row[data-grade="A"][aria-pressed="true"]{background:var(--tier-a,#007a80)!important}
+#mapColourKey .mck-row[data-grade="B"][aria-pressed="true"]{background:var(--tier-b,#b000b0)!important}
+#mapColourKey .mck-row[data-grade="U"][aria-pressed="true"]{background:var(--tier-u,#7a7000)!important}
+#mapColourKey .mck-row[aria-pressed="true"],#mapColourKey .mck-row[aria-pressed="true"] *,
+#mapColourKey .mck-row[aria-pressed="true"]:hover,#mapColourKey .mck-row[aria-pressed="true"]:hover *{color:var(--sh-paper)!important}
+
+/* The filter pills sit at the map's top left, opposite the block at its top right, and Layers is gone (user, 11 Nov 2026:
+   "these can go on top of map section", "delete layers button"). They wrap in the room the block leaves. The index column
+   now starts with the places. */
+@media (min-width:1080px){
+  :root.gmd #layersControl{display:none!important}
+  /* Place and room come from assets/desktop-maps.js placeChips(): top left beside the block, or bottom left when the
+     room beside it is narrower than the widest pill. */
+  :root.gmd #gmdChips{position:fixed!important;top:var(--sh-chips-t,calc(var(--sh-head) + 1px + var(--sh-pad) * .6))!important;bottom:var(--sh-chips-b,auto)!important;
+    left:var(--sh-chips-l,calc(max(var(--sh-col),260px) + 1px + var(--sh-pad)))!important;right:auto!important;
+    width:auto!important;max-width:var(--sh-chips-mw,340px)!important;z-index:31!important}
+  :root.gmd{--sh-index-top:calc(var(--sh-head) + 1px + var(--sh-pad))}
+}
+
+/* The foot bar is back, with the atlas's name in its middle (user, 11 Nov 2026: "bring back the bottom menu and write
+   leaving it on a table in the middle"). Supersedes the no-foot rule of release 626: a stone bar the window's width,
+   the name centred in it at the names' size; it still takes the map back to the world. The reports stay in the column. */
+@media (min-width:768px){
+  :root.gmd{--sh-foot:calc(50px * var(--sh-k))}
+  :root.gmd body::after{content:""!important;display:block!important;bottom:0!important;height:var(--sh-foot)!important;border-top:1px solid var(--sh-rule)!important}
+  :root.gmd #mainAppContainer{bottom:calc(var(--sh-foot) + 1px)!important}
+  :root.gmd #gmdTitle,:root.gmd.gmd #gmdTitle{display:flex!important;align-items:center!important;justify-content:center!important;position:fixed!important;top:auto!important;bottom:0!important;left:0!important;right:0!important;
+    width:auto!important;height:var(--sh-foot)!important;margin:0!important;padding:0 var(--sh-pad)!important;text-align:center!important;z-index:46!important;pointer-events:none!important;background:transparent!important}
+  :root.gmd #gmdTitle button,:root.gmd #gmdTitle button *{display:inline!important;font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important;pointer-events:auto!important}
+  :root.gmd #gmdTitle button:hover,:root.gmd #gmdTitle button:hover *{opacity:1!important;color:var(--sh-hover)!important}
+  :root.gmd #gmStoryStrip{display:none!important}
+}
+
+/* Buttons (not filters, not the arrow) are ink pills with paper text, after abcdinamo.com's Login button (user, 11 Nov
+   2026: "make buttons look like this, buttons not filters", "exept arrow one"). The arrow Send stays the blue square.
+   Voice on is the hover blue. In dark mode ink and paper swap, so they are paper pills with ink text. */
+#workBottomDock :is(#chatShareBtn, #curatorVoiceToggleBtn, #workSendBtn.is-on), :is(#desktopDossierRecordBody, #detailBody, #dossier-sheet-scrollable-body, #dossier-bottom-sheet, #globeViewport, body) .record-action-row .record-action{border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;outline:0!important}
+#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn.is-on) *, :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action *{color:var(--sh-paper)!important}
+:is(#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn.is-on),:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-ink) 78%,var(--sh-paper))!important;border-color:color-mix(in srgb,var(--sh-ink) 78%,var(--sh-paper))!important;outline:0!important}
+:is(#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn.is-on),:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
+#workBottomDock #curatorVoiceToggleBtn[aria-pressed="true"]{background:var(--sh-hover)!important;border-color:var(--sh-hover)!important}
+#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn.is-on):disabled{opacity:.45!important}
+
+/* Share information fills the line under the question box, with Voice at its right end (user, 11 Nov 2026: "this button
+   can be full bleed"). */
+#workInputCard:has(#workSendBtn:not(.is-on)){grid-template-columns:1fr auto!important;grid-template-areas:"field field" "share voice"!important}
+#workInputCard:has(#workSendBtn:not(.is-on)) #chatShareBtn{justify-self:stretch!important;width:100%!important;justify-content:center!important;text-align:center!important}
+
+/* Share information sits in the foot bar, at its right end, centred on the bar's height (user, 11 Nov 2026: "move this
+   button on bottom menu"); Voice keeps the line under the question box, at its right. */
+@media (min-width:768px){
+  :root.gmd #workBottomDock #chatShareBtn,:root.gmd #workInputCard:has(#workSendBtn:not(.is-on)) #chatShareBtn{position:fixed!important;right:var(--sh-pad)!important;left:auto!important;top:auto!important;
+    bottom:calc((var(--sh-foot) - var(--sh-lead) - 10px * var(--sh-k) * .85) / 2)!important;width:auto!important;z-index:47!important;margin:0!important}
+  :root.gmd #workInputCard:has(#workSendBtn:not(.is-on)){grid-template-columns:1fr auto!important;grid-template-areas:"field field" ". voice"!important}
+}
+
+/* ---- the line under the map (user, 11 Nov 2026: "put this below map in one line") ----
+   The paragraph, a small italic "with" and the three filter names with their tags, on one baseline in a band the
+   window's width between the sheet and the foot bar (at the map's own width the line only fitted at 8px). --sh-foot now
+   counts the band, so everything that stood on the foot bar stands on the band; the stone bar keeps its own height
+   (--sh-bar). --ps-fs is set by assets/desktop-maps.js fitStrip() so the line never wraps (15px at most). */
+#shStrip{display:none}
+@media (min-width:1080px){
+  :root.gmd{--sh-bar:calc(50px * var(--sh-k));--sh-band2:40px;--sh-foot:calc(var(--sh-bar) + 1px + var(--sh-band2))}
+  :root.gmd body::after{height:var(--sh-bar)!important}
+  :root.gmd #gmdTitle,:root.gmd.gmd #gmdTitle{height:var(--sh-bar)!important}
+  :root.gmd #workBottomDock #chatShareBtn,:root.gmd #workInputCard:has(#workSendBtn:not(.is-on)) #chatShareBtn{bottom:calc((var(--sh-bar) - var(--sh-lead) - 10px * var(--sh-k) * .85) / 2)!important}
+  :root.gmd #shStrip{--ps-fs:15px;display:flex!important;align-items:baseline!important;justify-content:center!important;flex-wrap:nowrap!important;gap:.45em!important;position:fixed!important;
+    left:0!important;right:0!important;bottom:calc(var(--sh-bar) + 1px)!important;height:var(--sh-band2)!important;z-index:46!important;margin:0!important;padding:0 var(--sh-pad)!important;
+    border-top:1px solid var(--sh-rule)!important;background:var(--sh-paper)!important;box-sizing:border-box!important;
+    white-space:nowrap!important;overflow:hidden!important;font-size:var(--ps-fs)!important;line-height:var(--sh-band2)!important;color:var(--sh-ink)!important}
+  :root.gmd #shStrip :is(p,div,span){margin:0!important;padding:0!important;display:inline!important;font-size:1em!important;line-height:inherit!important;text-align:left!important;white-space:nowrap!important}
+  :root.gmd #shStrip .pt-para>span+span::before{content:" "}
+  :root.gmd #shStrip .pt-credit{display:inline!important;font-size:1em!important;line-height:inherit!important;font-style:italic!important;text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:3px!important;cursor:pointer!important;padding:0!important;border:0!important;background:none!important}
+  :root.gmd #shStrip .pt-with{font-style:italic!important;font-size:1.3em!important}
+  :root.gmd #shStrip .pt-lineup{display:inline-flex!important;align-items:baseline!important;gap:.4em!important}
+  :root.gmd #shStrip .pt-row{display:inline!important}
+  :root.gmd #shStrip .pt-big{display:inline-flex!important;align-items:flex-start!important;gap:.2em!important;font-size:1.6em!important;line-height:1!important;letter-spacing:-.02em!important;cursor:pointer!important;padding:0!important;border:0!important;background:none!important}
+  :root.gmd #shStrip .pt-tag{font-size:.55em!important;line-height:1.2!important;font-style:italic!important;letter-spacing:0!important}
+  :root.gmd #shStrip :is(.pt-big,.pt-credit):hover,:root.gmd #shStrip .pt-big:hover *{color:var(--sh-hover)!important}
+  :root.gmd #shStrip .pt-big[aria-pressed="true"]{text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:4px!important}
+  :root.gmd.chat-wide #shStrip{display:none!important}
+  :root.gmd.chat-wide{--sh-foot:var(--sh-bar)}
+}
+
+/* A record's action buttons are small grey pills with ink text, after abcdinamo.com's "Forgot your password?" and
+   "Register" (user, 11 Nov 2026: "make these smaller and like this"). Supersedes the ink pills of release 652 for them.
+   Their ground is the stone of the bars, not grey (user, 11 Nov 2026: "make these this color", a swatch of the head bar);
+   hover darkens it 15% toward the ink. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x){font-size:calc(var(--sh-s) * .8)!important;line-height:1.2!important;min-height:0!important;padding:.3em .65em!important;border:0!important;border-radius:999px!important;background:var(--sh-stone)!important;color:var(--sh-ink)!important;outline:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x), :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x) *{color:var(--sh-ink)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x) *{font-size:inherit!important;line-height:inherit!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-stone) 85%,var(--sh-ink))!important;border:0!important;outline:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action:not(#sh-x):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
+/* In gossip mode they are beige instead (user, 11 Nov 2026: "change to these beige colors on gossip mode"), the same
+   #cfcfba as the field outlines; hover the swatch's darker rule. Light only: the dark sheet's pale ink would not read on it. */
+:root:not([data-theme="dark"]) body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:not(#sh-x){background:#cfcfba!important}
+:root:not([data-theme="dark"]) body.gossip-mode-active :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport) .record-action-row .record-action:not(#sh-x):is(:hover,:focus-visible){background:#a9a998!important}
+
+/* The question box is a grey pill with a small darker pill inside at its right, after abcdinamo.com's "ABC Schengen /
+   Explore" bar (user, 11 Nov 2026: "chat can look like this"). Send reads "Ask" in that small pill; this supersedes the
+   blue arrow square of release 633 for the chat (the note to the editor keeps Send for review). */
+#workBottomDock #workInputCard #workInput{border:0!important;border-radius:calc(var(--sh-lead) / 2 + 14px)!important;background:var(--sh-pill)!important;outline:0!important;
+  padding:12px calc(4.2em + 12px) 12px 18px!important;min-height:calc(2 * var(--sh-lead) + 24px)!important;resize:none!important}
+#workBottomDock #workInputCard #workInput:is(:hover,:focus){border:0!important;outline:0!important;background:var(--sh-pill)!important}
+#workBottomDock #workInputCard #workInput:focus-visible{box-shadow:0 0 0 2px var(--sh-hover)!important}
+#workBottomDock #workInputCard #workSendBtn:not(.is-on){align-self:center!important;width:auto!important;min-width:0!important;height:auto!important;min-height:0!important;
+  margin:0 10px 0 0!important;padding:.3em .75em!important;border:0!important;border-radius:999px!important;background:var(--sh-pill-hover)!important;color:var(--sh-ink)!important;
+  font-size:calc(var(--sh-s) * .8)!important;line-height:1.2!important;outline:0!important}
+#workBottomDock #workInputCard #workSendBtn:not(.is-on):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-pill-hover) 80%,var(--sh-ink))!important;border:0!important}
+#workBottomDock #workInputCard #workSendBtn:not(.is-on):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
+#workBottomDock #workInputCard #workSendBtn:not(.is-on) svg{display:none!important}
+#workBottomDock #workInputCard #workSendBtn:not(.is-on)::after{content:"Ask";color:var(--sh-ink)}
+
+/* An open report (the feed) covers the index column: it stood under the places, reports and key (z-index 44-45). */
+@media (min-width:768px){ :root.gmd body #gmFeed:not([hidden]){z-index:49!important} }
+
+/* ---- the filters as result filters (user, 11 Nov 2026: "filters need to look like this", a screenshot
+   of "All results (280)", "Typeface (102)"...) ---- Paper pills with a 1px ink outline, compact (no counts: user, 11 Nov 2026, "numbers not needed");
+   on = an ink pill with paper text. The words keep their colours (the user asked twice to keep the text colour-coded).
+   Supersedes the grey pills of release 648. */
+@media (min-width:768px){
+  :root.gmd #gmdChips{gap:6px!important}
+  :root.gmd #mapColourKey .mck-list{gap:6px!important}
+  :root.gmd #gmdChips .gmd-chip,:root.gmd #mapColourKey .mck-row{min-height:0!important;height:auto!important;padding:.08em .55em .12em!important;border:1px solid var(--sh-ink)!important;border-radius:999px!important;
+    background:var(--sh-paper)!important;outline:0!important;font-size:calc(var(--sh-s) * .85)!important;line-height:1.25!important}
+  :root.gmd #mapColourKey .mck-row *{font-size:inherit!important;line-height:inherit!important}
+  :root.gmd #gmdChips .gmd-chip:hover,:root.gmd #mapColourKey .mck-row:hover{background:var(--sh-pill)!important;border-color:var(--sh-ink)!important;outline:0!important}
+  :root.gmd #gmdChips .gmd-chip[aria-pressed="true"],:root.gmd #gmdChips .gmd-chip[aria-pressed="true"]:hover,
+  :root.gmd #mapColourKey .mck-row[aria-pressed="true"],:root.gmd #mapColourKey .mck-row[aria-pressed="true"]:hover{background:var(--sh-ink)!important;border-color:var(--sh-ink)!important;color:var(--sh-paper)!important}
+  :root.gmd #gmdChips .gmd-chip[aria-pressed="true"] *,:root.gmd #mapColourKey .mck-row[aria-pressed="true"] *,:root.gmd #mapColourKey .mck-row[aria-pressed="true"]:hover *{color:var(--sh-paper)!important}
+  :root.gmd #mapColourKey:has(.mck-row[aria-pressed="true"]) .mck-row[aria-pressed="false"]{border-color:var(--sh-ink)!important}
+  :root.gmd #mapColourKey .mck-pill::after{content:none!important}
+}
+
+/* ---- the question box works like Claude's (user, 11 Nov 2026: "make voice inside chat, chat need to expand and work
+   like claude chat UI UX") ---- One rounded grey box: the text on top, growing with what is typed (assets/desktop-maps.js
+   growInput), and under it, inside the box, Voice at the left and Ask at the right, both small pills. Voice on is the
+   hover blue. Supersedes the pill field of release 658 and Voice's place under the box. */
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)){grid-template-columns:auto 1fr auto!important;grid-template-areas:"field field field" "voice . send"!important;row-gap:10px!important;column-gap:8px!important;
+  padding:14px 12px 10px 18px!important;background:var(--sh-pill)!important;border:1px solid transparent!important;border-radius:22px!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)):focus-within{border-color:var(--sh-rule)!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #workInput,#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #workInput:is(:hover,:focus){min-height:var(--sh-lead)!important;max-height:40vh!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;outline:0!important;box-shadow:none!important;resize:none!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #workInput:focus-visible{box-shadow:none!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #workSendBtn:not(.is-on),#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #curatorVoiceToggleBtn{position:static!important;align-self:end!important;width:auto!important;min-width:0!important;height:auto!important;min-height:0!important;margin:0!important;
+  padding:.3em .75em!important;border:0!important;border-radius:999px!important;font-size:calc(var(--sh-s) * .8)!important;line-height:1.2!important;outline:0!important;
+  background:var(--sh-pill-hover)!important;color:var(--sh-ink)!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #workSendBtn:not(.is-on){grid-area:send!important;justify-self:end!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #curatorVoiceToggleBtn{grid-area:voice!important;justify-self:start!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #curatorVoiceToggleBtn *{color:inherit!important;font-size:inherit!important;line-height:inherit!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) :is(#workSendBtn:not(.is-on),#curatorVoiceToggleBtn):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-pill-hover) 80%,var(--sh-ink))!important;border:0!important;color:var(--sh-ink)!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) :is(#workSendBtn:not(.is-on),#curatorVoiceToggleBtn):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #curatorVoiceToggleBtn[aria-pressed="true"],#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #curatorVoiceToggleBtn[aria-pressed="true"]:hover{background:var(--sh-hover)!important;color:var(--sh-paper)!important}
+
+/* The name and count at the map's top right are deleted (user, 11 Nov 2026: "delete", with a screenshot of
+   "Leaving it on the table 1,464 spaces"): the name is in the foot bar, the rest of the block in the line over it. */
+@media (min-width:1080px){ :root.gmd #globeViewport #shTagline,:root.gmd #shTagline{display:none!important} }
+
+/* Share information leaves the foot bar and stretches under the question box, the box's full width, an ink pill
+   (user, 11 Nov 2026: "button needs to be stretched underneath the chat"). It hangs below the grey box, which keeps
+   room for it; supersedes release 654's place in the foot bar. */
+@media (min-width:768px){
+  :root.gmd #workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)){position:relative!important;margin-bottom:54px!important}
+  :root.gmd #workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #chatShareBtn,:root.gmd #workBottomDock #workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #chatShareBtn{position:absolute!important;top:calc(100% + 12px)!important;bottom:auto!important;left:-1px!important;right:-1px!important;width:auto!important;
+    height:42px!important;min-height:0!important;margin:0!important;padding:0 1em!important;display:flex!important;align-items:center!important;justify-content:center!important;line-height:1!important;z-index:2!important}
+}
+
+/* A question in the chat is a speech bubble, as in Claude's chat (user, 11 Nov 2026: "turn this into speaking buble like
+   here in claude"): at the right, as wide as its text up to 85% of the column, a soft grey box with rounded corners,
+   text left-aligned. Supersedes the centred stone band. */
+#curatorMessages>.justify-end,#curatorMessages>div:has(>.user-bubble){display:flex!important;justify-content:flex-end!important;margin:var(--sh-s-lh) 0!important;padding:0!important}
+#curatorMessages .user-bubble.user-bubble{display:block!important;width:auto!important;max-width:85%!important;min-height:0!important;margin:0!important;padding:10px 16px!important;
+  border:0!important;border-radius:18px!important;background:var(--sh-pill)!important;color:var(--sh-ink)!important;text-align:left!important;line-height:var(--sh-lead)!important;white-space:pre-wrap!important;text-wrap:pretty}
+#curatorMessages .user-bubble.user-bubble *{line-height:inherit!important;text-align:left!important}
+
+/* Band titles lose their sand background and are set in brown (user, 11 Nov 2026: "delete background and make these
+   titles brown", on "Latest reports"): the colour key's, the reports', the record's sections, the report's labels, the
+   Layers menu's and the studies page's. The bars at the head and foot keep the sand. Brown #7a5a1f is 6.3:1 on paper (#d2b273 in dark, 9:1). */
+:root{--sh-brown:#7a5a1f}
+:root[data-theme="dark"]{--sh-brown:#d2b273}
+#mapColourKey .mck-title:not(#sh-x):not(#sh-y),
+#shReports .sh-reports-title:not(#sh-x):not(#sh-y),
+#shIndex .sh-index-title:not(#sh-x):not(#sh-y),
+#layersPanel .layers-section-title:not(#sh-x):not(#sh-y),
+#gmFeed .ts-label:not(#sh-x):not(#sh-y),
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-title:not(#sh-x):not(#sh-y),
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages,#curatorDrawerLiveStream) .kicker:not(#sh-x):not(#sh-y),
+.record-popup :is(.record-popup-category,.institution-category-pill):not(#sh-x):not(#sh-y),
+main#main :is(h2,h3):not(#sh-x):not(#sh-y){background:transparent!important;color:var(--sh-brown)!important}
+#mapColourKey .mck-title:not(#sh-x):not(#sh-y) *,
+#shReports .sh-reports-title:not(#sh-x):not(#sh-y) *,
+#shIndex .sh-index-title:not(#sh-x):not(#sh-y) *,
+#layersPanel .layers-section-title:not(#sh-x):not(#sh-y) *,
+#gmFeed .ts-label:not(#sh-x):not(#sh-y) *,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-title:not(#sh-x):not(#sh-y) *,
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages,#curatorDrawerLiveStream) .kicker:not(#sh-x):not(#sh-y) *,
+.record-popup :is(.record-popup-category,.institution-category-pill):not(#sh-x):not(#sh-y) *,
+main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
+
+/* The line over the foot bar is taken off for now (user, 11 Nov 2026: "delete this for now", the paragraph and the
+   Funding / Epstein / Propaganda names). Its band goes too: the sheet stands on the stone foot bar again. #shStrip is
+   still built by assets/desktop-maps.js, so showing it again is deleting this rule. */
+@media (min-width:1080px){
+  :root.gmd #shStrip{display:none!important}
+  :root.gmd,:root.gmd.chat-wide{--sh-foot:var(--sh-bar)}
+}
+
+/* Clean, Flagged and Unverified are pills in the top row, their words in the grade's colour, and the colour key is gone
+   (user, 11 Nov 2026: "add clean flagged verified filter to the top to other filters and delete color key"). The
+   reports run down to the foot of the column in the key's place. */
+@media (min-width:768px){
+  :root.gmd #mapColourKey{display:none!important}
+  :root.gmd #gmdChips .sh-grade-chip[data-grade="A"]{color:var(--tier-a,#007a80)!important}
+  :root.gmd #gmdChips .sh-grade-chip[data-grade="B"]{color:var(--tier-b,#b000b0)!important}
+  :root.gmd #gmdChips .sh-grade-chip[data-grade="U"]{color:var(--tier-u,#7a7000)!important}
+  :root.gmd #gmdChips .sh-grade-chip[aria-pressed="true"]{color:var(--sh-paper)!important}
+}
+@media (min-width:1080px){
+  :root.gmd #shReports:not([hidden]){bottom:calc(var(--sh-foot) + 1px + var(--sh-pad))!important}
+}
+
+/* The question box is white with a thin grey outline and a slight shadow, as in Claude's chat (user, 11 Nov 2026:
+   "delete grey background and add grey outline with slight shadow like claude"). The outline darkens while typing.
+   Voice and Ask keep their grey pills. Supersedes the grey fill above. */
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)){background:var(--sh-paper)!important;border:1px solid var(--sh-box-line)!important;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(0,0,0,.06)!important}
+#workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)):focus-within{border-color:var(--sh-box-line-on)!important;box-shadow:0 1px 2px rgba(0,0,0,.05),0 6px 18px rgba(0,0,0,.08)!important}
+/* The outlines of the fields are beige, the swatch the user sent (11 Nov 2026: "make outlines for input like this"):
+   #cfcfba, and under the pointer or the keyboard the darker rule under it, #a9a998. They replace the greys here and the
+   blue of release 610 on the note's fields; buttons keep their blue. Dark keeps a dim olive in the same proportion. */
+:root{--sh-box-line:#cfcfba;--sh-box-line-on:#a9a998}
+:root[data-theme="dark"]{--sh-box-line:#4a493e;--sh-box-line-on:#6d6c5a}
+:is(#noteFormFields input[type="text"],#noteFormFields input:not([type]),#workInput){border-color:var(--sh-box-line)!important}
+:is(#noteFormFields input[type="text"],#noteFormFields input:not([type]),#workInput):is(:hover,:focus){border-color:var(--sh-box-line-on)!important;outline:1px solid var(--sh-box-line-on)!important;outline-offset:0!important}
+
+/* The line over the foot bar is hidden at every width, not only past 1080px: on a phone it showed under the chat bar. */
+:root #shStrip#shStrip{display:none!important}
+
+/* The Share buttons in the reports take the fields' outline (user, 11 Nov 2026: "add outlines to these butons"): the
+   pale poster blue, 1px, 8px corners, room inside; the ring doubles under the pointer or the keyboard. */
+#gmFeed .ts .ts-share:not(#sh-x){display:inline-flex!important;align-items:center!important;justify-content:center!important;width:auto!important;
+  height:auto!important;min-height:calc(var(--sh-lead) + 12px * var(--sh-k))!important;margin:var(--sh-s-lh) 0 0!important;padding:calc(6px * var(--sh-k)) calc(10px * var(--sh-k))!important;
+  border:1px solid var(--sh-outline)!important;border-radius:8px!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;
+  font:inherit!important;text-align:center!important;text-decoration:none!important;white-space:nowrap!important}
+#gmFeed .ts .ts-share:not(#sh-x):is(:hover,:focus-visible){border-color:var(--sh-outline)!important;outline:1px solid var(--sh-outline)!important;outline-offset:0!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;text-decoration:none!important}
+
+/* Each report opens with its title, the space's name, on the stone of the bars (user, 11 Nov 2026: "add titles to top
+   story articles and color background to the titles"). Upright ink on stone, the text's size, the name the link to its
+   place on the map; a line of space above it parts one report from the last. */
+#gmFeed .ts .ts-name:not(#sh-x){display:block!important;margin:var(--sh-l-lh) 0 0!important;padding:calc(4px * var(--sh-k)) calc(8px * var(--sh-k))!important;
+  background:var(--sh-stone)!important;color:var(--sh-ink)!important;border:0!important;text-indent:0!important}
+#gmFeed .ts > .ts-story:first-of-type .ts-name:not(#sh-x){margin-top:var(--sh-s-lh)!important}
+#gmFeed .ts .ts-name .ts-space:not(#sh-x){display:inline!important;width:auto!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;
+  border:0!important;background:transparent!important;color:var(--sh-ink)!important;font:inherit!important;font-style:normal!important;text-align:left!important;text-decoration:none!important}
+#gmFeed .ts .ts-name .ts-space:not(#sh-x):hover{color:var(--sh-hover)!important}
+
+/* The alert marks on the map are an upright "!" in a ring, both the poster blue (user, 11 Nov 2026: "Fix: upright ! in a
+   ring", then "make them blue color"). The sheet takes the border off every button and sets its text italic, which had left
+   a bare slanted "!" by the pin; here the ring is back, 1.5px on paper, and the mark stands upright in its middle. */
+.gm-alert-mark:not(#sh-x):not(#sh-y){display:flex!important;align-items:center!important;justify-content:center!important;width:24px!important;height:24px!important;
+  min-height:24px!important;padding:0!important;border:1.5px solid var(--sh-hover)!important;border-radius:50%!important;background:var(--sh-paper)!important;
+  color:var(--sh-hover)!important;box-shadow:none!important;text-align:center!important}
+.gm-alert-mark:not(#sh-x):not(#sh-y) span{display:block!important;font-family:"Atlas Serif",serif!important;font-style:normal!important;font-weight:400!important;
+  font-size:16px!important;line-height:1!important;letter-spacing:0!important;color:var(--sh-hover)!important;margin:0!important;padding:0!important}
+.gm-alert-mark:not(#sh-x):not(#sh-y):is(:hover,:focus-visible){background:var(--sh-hover)!important;color:var(--sh-paper)!important;outline:0!important}
+.gm-alert-mark:not(#sh-x):not(#sh-y):is(:hover,:focus-visible) span{color:var(--sh-paper)!important}
+
+/* ---- the phone's filters and question box as on the desktop (user, 11 Nov 2026: "filters and chat need to match
+   desctop version") ---- The filters are the desktop's paper pills with a 1px ink outline, the words in their colours,
+   wrapping onto a second line rather than scrolling; the one on is an ink pill with paper text. The question box is the
+   desktop's: white, a thin grey outline, a soft shadow and round corners, with its buttons as small grey pills.
+   Supersedes the stone head bar of filter names and the stone foot bar of the question box. */
+@media (max-width:767px){
+  #gmChips:not(#sh-x){top:0!important;left:0!important;right:0!important;height:auto!important;min-height:0!important;margin:0!important;
+    padding:calc(8px + var(--safe-t,0px)) var(--sh-pad) 8px!important;display:flex!important;flex-wrap:wrap!important;gap:6px!important;overflow:visible!important;
+    background:var(--sh-paper)!important;border:0!important;box-shadow:none!important}
+  #gmChips .gm-filter-chip:not(#sh-x){flex:none!important;height:auto!important;min-height:0!important;margin:0!important;padding:.08em .55em .12em!important;
+    border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-paper)!important;box-shadow:none!important;outline:0!important;
+    font-size:calc(var(--sh-s) * .78)!important;line-height:1.25!important;white-space:nowrap!important;color:var(--sh-ink)!important}
+  #gmChips .gm-filter-chip.has-color:not(#sh-x){color:color-mix(in srgb,var(--layer-color) 62%,#000)!important}
+  #gmChips .gm-filter-chip.sh-grade-chip[data-grade="A"]:not(#sh-x){color:var(--tier-a,#007a80)!important}
+  #gmChips .gm-filter-chip.sh-grade-chip[data-grade="B"]:not(#sh-x){color:var(--tier-b,#b000b0)!important}
+  #gmChips .gm-filter-chip.sh-grade-chip[data-grade="U"]:not(#sh-x){color:var(--tier-u,#7a7000)!important}
+  #gmChips .gm-filter-chip:not(#sh-x)::after,#gmChips .gm-filter-chip:not(#sh-x)::before{content:none!important;display:none!important}
+  #gmChips .gm-filter-chip:not(#sh-x){font-style:normal!important}
+  #gmChips#gmChips .gm-filter-chip:not(#sh-x)[aria-pressed="true"]{background:var(--sh-ink)!important;border-color:var(--sh-ink)!important;color:var(--sh-paper)!important;font-style:normal!important}
+  :root.gm-map #layersControl:not(#sh-x){top:calc(var(--gmChips-h,40px) + 8px)!important}
+
+  #mobileStickyInputBar #mobileComposerCard:not(#sh-x){margin:var(--sh-pad) var(--sh-pad) 8px!important;padding:10px 12px 10px 16px!important;min-height:0!important;
+    background:var(--sh-paper)!important;border:1px solid var(--sh-box-line)!important;border-radius:22px!important;
+    box-shadow:0 1px 2px rgba(0,0,0,.04),0 4px 14px rgba(0,0,0,.06)!important}
+  #mobileStickyInputBar #mobileComposerCard:not(#sh-x):focus-within{border-color:var(--sh-box-line-on)!important;box-shadow:0 1px 2px rgba(0,0,0,.05),0 6px 18px rgba(0,0,0,.08)!important}
+  #mobileStickyInputBar #mobileComposerCard textarea:not(#sh-x){background:transparent!important;border:0!important;box-shadow:none!important;outline:0!important}
+  #mobileStickyInputBar #mobileComposerCard #mobileComposerActions button:not(#sh-x){border:0!important;border-radius:999px!important;background:var(--sh-pill-hover)!important;color:var(--sh-ink)!important;box-shadow:none!important}
+  #mobileStickyInputBar:not(#sh-x){background:var(--sh-paper)!important;border-top:0!important}
+}
+}
+
+/* A funder's record or a city's place sheet in the record sheet (assets/hq-detail.js, .is-hq-sheet) is not a space's record:
+   the space's name, actions and tabs give way to it. The same rule in atlas.css is unlayered, so the important display:flex
+   on .gm-tabs and .record-action-row in this layer won over it and the last space's buttons and tabs sat over the record. */
+@layer sheet{
+  #dossier-bottom-sheet.is-hq-sheet :is(.sheet-title-block,.gm-actions,.gm-tabs){display:none!important}
+}
+
+/* The phone chat's head (user, 12 Nov 2026: "fix title now it sits on the line"). The reset above (padding 0, height auto on every
+   button and tab) won over the head's own rules in atlas.css, which are unlayered: Chat and Details ran together as one word
+   ("ChatDetails"), dropped to the foot of the head and sat on its rule, below the menu and the cross. Here, in the layer, the
+   two tabs are separate words 20px apart, each a 44px target, centred on one line with the menu and the cross, with their
+   underline inside the tab and air between it and the rule. The filter chips stay under the chat: a tap on one explains the
+   filter in the chat (index.html, explainFilter). */
+@layer sheet{
+  :root.gm-chat #phoneChatHead{align-items:center!important;padding-top:10px!important;padding-bottom:6px!important;height:auto!important;min-height:60px!important}
+  :root.gm-chat #phoneChatHead .gm-head-tabs{display:flex!important;align-self:center!important;align-items:center!important;gap:20px!important;margin:0!important}
+  :root.gm-chat #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn:not(.hidden)){display:inline-flex!important;position:relative!important;align-items:center!important;height:44px!important;min-height:44px!important;padding:0!important;white-space:nowrap!important;font-style:normal!important}
+  :root.gm-chat #phoneChatHead :is(#gmChatTab,#phoneChatDetailsBtn)[aria-selected="true"]::after{left:0!important;right:0!important;bottom:6px!important;height:2px!important;border-radius:0!important}
+  :root.gm-chat #phoneChatHead :is(#gmChatMenuBtn,#phoneChatCloseBtn){align-self:center!important;width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+}
+
+/* The same two tabs on the record opened from the chat (user, 14 Nov 2026: "fix the toggle on top"). The strip over the
+   record (.gm-from-chat-bar, assets/phone-maps.js) had kept its atlas.css rules, unlayered, so the reset took its padding too:
+   Chat and Details ran together as one word and the underline, still set 12px in from each side of a tab that no longer had
+   12px of padding, sat under the gap between them. It is set as the chat's head is: 20px apart, upright, the underline
+   the width of the open word, and at the same 16px from the edge, so the words do not move when the tab is changed. The
+   strip's own rule goes, since the record's tabs (Overview, Funding, Record, Sources) now sit straight under it with theirs. */
+@media (max-width:767px){
+@layer sheet{
+  #dossier-bottom-sheet .gm-from-chat-bar:not([hidden]){display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:20px!important;padding:0 16px!important;border-bottom:0!important}
+  #dossier-bottom-sheet .gm-from-chat-bar [role="tab"]{display:inline-flex!important;position:relative!important;align-items:center!important;height:44px!important;min-height:44px!important;padding:0!important;white-space:nowrap!important;font-style:normal!important}
+  #dossier-bottom-sheet .gm-from-chat-bar [role="tab"][aria-selected="true"]::after{left:0!important;right:0!important;bottom:6px!important;height:2px!important;border-radius:0!important}
+}
+}
+
+/* The record's tabs show one part at a time again (14 Nov 2026). assets/phone-maps.js marks what is outside the open tab
+   (data-gm-off) and the sheet's shorter blocks that the full record repeats (data-gm-dup); the rule that hides them is in
+   atlas.css, unlayered, so this layer's important display rules won over it: every tab showed the whole record, Overview
+   first, and the Website pill stayed beside the website's own row. The same rule, here in the layer.
+   With the Images tab there are five words in the row (user, 14 Nov 2026: "add images tab"); they are set a size down so
+   they do not touch, and down again on the narrowest phones so Sources is not cut off at 320px. */
+@media (max-width:767px){
+@layer sheet{
+  #dossier-bottom-sheet#dossier-bottom-sheet#dossier-bottom-sheet :is([data-gm-off],[data-gm-dup]):not(#sh-x):not(#sh-y){display:none!important}
+  #dossier-bottom-sheet .gm-tabs:has(#gmTab-images:not([hidden])) [role="tab"]{font-size:18px!important}
+}
+}
+@media (max-width:359px){
+@layer sheet{
+  #dossier-bottom-sheet .gm-tabs:has(#gmTab-images:not([hidden])) [role="tab"]{font-size:16px!important}
+}
+}
+
+/* The phone chat's composer, set as the Claude app sets its own (user, 12 Nov 2026: "optimize chat like Claude"): one rounded
+   box, the question on top across its whole width, and under it a row with a round icon on the left (Voice, read answers
+   aloud, a speaker; filled when on) and a round send button on the right, an up arrow in the ink, quiet while the box is
+   empty. The words "Voice" and "Ask" stay in the markup for a screen reader; only the eye gets the icons. Phone only. */
+@media (max-width:767px){
+@layer sheet{
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c){display:grid!important;grid-template-columns:auto 1fr auto auto!important;grid-template-areas:"field field field field" "voice . kb send"!important;align-items:center!important;row-gap:8px!important;column-gap:8px!important;padding:12px 10px 10px 16px!important;border:1px solid var(--sh-box-line)!important;border-radius:24px!important;background:var(--sh-paper)!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c)>#noteInputBlock{grid-area:field!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c)>div.flex.justify-between,
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c)>div.flex.justify-between>div{display:contents!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workKbCloseBtn:not(#a):not(#b):not(#c){grid-area:kb!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #chatShareBtn:not(#a):not(#b):not(#c){display:none!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:not(#a):not(#b):not(#c) #workInput{min-height:24px!important;padding:2px 6px 0 0!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c),
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c){position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:36px!important;min-width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;margin:0!important;border:0!important;border-radius:50%!important;align-self:center!important;font-size:0!important;line-height:0!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c){grid-area:send!important;justify-self:end!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;opacity:1!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c)::after{content:none!important;display:none!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c) svg{display:block!important;width:18px!important;height:18px!important;color:var(--sh-paper)!important;stroke:var(--sh-paper)!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard:has(#workInput:placeholder-shown) #workSendBtn:not(#a):not(#b):not(#c){background:color-mix(in srgb,var(--sh-ink) 22%,var(--sh-paper))!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #workSendBtn:not(#a):not(#b):not(#c):focus-visible,
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c){grid-area:voice!important;justify-self:start!important;background:transparent!important;color:var(--sh-ink)!important;box-shadow:inset 0 0 0 1px var(--sh-box-line)!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn[aria-pressed="true"]:not(#a):not(#b):not(#c){background:var(--sh-ink)!important;color:var(--sh-paper)!important;box-shadow:none!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c) #curatorVoiceToggleLabel{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c) #curatorVoiceToggleIcon{display:block!important;width:18px!important;height:18px!important;background:currentColor!important;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9.5h3.5L12 5.5v13l-4.5-4H4z'/%3E%3Cpath d='M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11'/%3E%3C/svg%3E") center/contain no-repeat!important;
+    mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9.5h3.5L12 5.5v13l-4.5-4H4z'/%3E%3Cpath d='M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11'/%3E%3C/svg%3E") center/contain no-repeat!important}
+  :root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #curatorVoiceToggleBtn:not(#a):not(#b):not(#c) #curatorVoiceToggleIcon *{display:none!important}
+}
+}
+
+@layer sheet{
+/* ---- The reports' meta line in dark violet (user, 13 Nov 2026: "color in dark violet like from displaay fonts web", on
+   "7 weeks ago, Trafó House of Contemporary Arts"). #4b1fb3 is 10.6:1 on the white paper; #bba4ff in dark is 8.9:1 on
+   #151412. Hover still turns it --sh-hover. ---- */
+:root{--sh-violet:#4b1fb3}
+:root[data-theme="dark"]{--sh-violet:#bba4ff}
+:root.gmd #shReports .sh-report .sh-report-meta:not(#sh-x){color:var(--sh-violet)!important}
+:root.gmd #shReports .sh-report:hover .sh-report-meta:not(#sh-x){color:var(--sh-hover)!important}
+
+/* ---- Closing and opening the index column, as Claude's sidebar (user, 13 Nov 2026; assets/desktop-maps.js, setCol). A
+   cross at the column's top right in the head bar closes it; a sidebar mark at the head bar's left opens it. Closed, the
+   column is 0 wide, so the map, which starts at --sh-col, takes the width, and everything the column holds is hidden. ---- */
+.sh-col-toggle{display:none}
+@media (min-width:1080px){
+  :root.gmd .sh-col-toggle{position:fixed!important;top:0!important;width:var(--sh-head)!important;height:var(--sh-head)!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+    background:transparent!important;color:var(--sh-ink)!important;align-items:center!important;justify-content:center!important;cursor:pointer!important;z-index:48!important}
+  :root.gmd .sh-col-toggle svg{display:block!important;width:20px!important;height:20px!important}
+  :root.gmd .sh-col-toggle:hover{color:var(--sh-hover)!important}
+  :root.gmd .sh-col-toggle:focus-visible{outline:2px solid var(--sh-outline)!important;outline-offset:-4px!important}
+  :root.gmd:not(.sh-col-closed) #shColClose{display:flex!important;left:calc(var(--sh-col) - var(--sh-head))!important}
+  :root.gmd.sh-col-closed #shColOpen{display:flex!important;left:0!important}
+  :root.gmd:not(.sh-col-closed) #gmdTopBar>div{padding-right:var(--sh-head)!important;box-sizing:border-box!important}
+  :root.gmd.sh-col-closed #gmdTopBar>div{padding-left:var(--sh-head)!important;box-sizing:border-box!important}
+  /* With the chat wide or Layers open the column is already given over; the cross stays with its column. */
+  :root.gmd.chat-wide .sh-col-toggle{display:none!important}
+
+  :root.gmd.sh-col-closed{--sh-col:0px!important}
+  :root.gmd.sh-col-closed :is(#gmdSearch,#gmdChips,#layersControl,#mapColourKey,#shIndex,#shReports,#shReports:not([hidden])){display:none!important}
+}
+}
+
+@layer sheet{
+/* ==== PLACES | CHAT | MAP (user, 13 Nov 2026: "put map on the right and chat in the middle") ===========================
+   The chat and record column moves from the window's right edge to sit beside the index column, and the map takes what is
+   left at the right. --gmd-w is still the chat's width (assets/chat-resize.js; its handle is now on the column's right
+   edge); --sh-chat-w is that width capped to the room beside the index column, and --sh-map-l is where the map starts.
+   With the chat wide (the map would be under 240px) the chat takes the whole window, as it covered the map before.
+   Every rule carries :not(#sh-mid) so it outranks the rules it moves, which are written plainer. */
+@media (min-width:768px){
+  :root.gmd:not(#sh-mid){--sh-chat-w:min(var(--gmd-w),calc(100vw - var(--sh-col)));--sh-map-l:calc(var(--sh-col) + var(--sh-chat-w))}
+  :root.gmd.chat-wide:not(#sh-mid){--sh-chat-w:100vw;--sh-map-l:100vw}
+  :root.gmd:not(#sh-mid) #workViewContainer{left:var(--sh-col)!important;right:auto!important;width:var(--sh-chat-w)!important;max-width:none!important}
+  :root.gmd.chat-wide:not(#sh-mid) #workViewContainer{left:0!important;border-left:0!important}
+  :root.gmd:not(#sh-mid) #globeViewport{inset:0 0 0 var(--sh-map-l)!important}
+  /* The head bar: the panel's pages over the chat, where you are over the map. */
+  :root.gmd:not(#sh-mid) #workspaceContextTabBar{left:max(var(--sh-col),260px)!important;right:calc(100vw - var(--sh-map-l))!important;width:auto!important}
+  :root.gmd.chat-wide:not(#sh-mid) #workspaceContextTabBar{left:max(var(--sh-col),260px)!important;right:0!important}
+  :root.gmd:not(#sh-mid) #cityViewControlBanner{left:var(--sh-map-l)!important;right:0!important}
+  /* The map's own controls sit at its right edge, which is now the window's. */
+  :root.gmd:not(#sh-mid) #gmdMapCtl{right:var(--sh-pad)!important}
+  :root.gmd:not(#sh-mid) #gmLocateNote{right:72px!important}
+  /* The resize handle on the column's right edge, between the chat and the map. */
+  :root.gmd:not(#sh-mid) #chatResizeHandle{position:fixed!important;left:calc(var(--sh-map-l) - 8px)!important;right:auto!important;top:calc(var(--sh-head) + 1px)!important;bottom:calc(var(--sh-foot) + 1px)!important;z-index:49!important}
+  :root.gmd.chat-wide:not(#sh-mid) #chatResizeHandle{left:calc(100vw - 16px)!important}
+}
+@media (min-width:768px) and (max-width:1079px){
+  /* No index column: the chat starts at the window's left edge and needs no rule there. */
+  :root.gmd:not(#sh-mid) #workViewContainer{border-left:0!important}
+  :root.gmd:not(#sh-mid) #globeViewport{border-left:1px solid var(--sh-rule)!important}
+}
+}
+
+@layer sheet{
+/* ==== COLUMN HANDLE (user, 13 Nov 2026: "make all windows adjustable") ================================================
+   The line between the index column and the chat can be dragged as the one between the chat and the map can
+   (assets/chat-resize.js, COLUMN). Same look as #chatResizeHandle: a hairline on hover and a small grip at the middle.
+   Only where the column is: 1080px and wider, open, and the chat not over the whole window. */
+#shColResizeHandle{display:none}
+@media (min-width:1080px){
+  :root.gmd:not(.sh-col-closed):not(.chat-wide) #shColResizeHandle{display:block!important;position:fixed!important;left:calc(var(--sh-col) - 8px)!important;top:calc(var(--sh-head) + 1px)!important;bottom:calc(var(--sh-foot) + 1px)!important;width:16px!important;z-index:49!important;cursor:col-resize!important;touch-action:none!important;background:transparent!important}
+  :root.gmd #shColResizeHandle::before{content:""!important;position:absolute!important;left:7.5px!important;top:0!important;bottom:0!important;width:1px!important;background:var(--sh-ink)!important;opacity:0!important;transition:opacity .15s ease!important}
+  :root.gmd #shColResizeHandle::after{content:""!important;position:absolute!important;left:6px!important;top:50%!important;width:4px!important;height:44px!important;margin-top:-22px!important;border-radius:2px!important;background:color-mix(in srgb,var(--sh-ink) 45%,var(--sh-paper))!important;box-shadow:0 0 0 3px var(--sh-paper)!important;transition:background-color .15s ease,width .15s ease,left .15s ease!important}
+  :root.gmd #shColResizeHandle:is(:hover,:focus-visible)::before,:root.gmd.chat-resizing #shColResizeHandle::before{opacity:1!important}
+  :root.gmd #shColResizeHandle:is(:hover,:focus-visible)::after,:root.gmd.chat-resizing #shColResizeHandle::after{left:5px!important;width:6px!important;border-radius:3px!important;background:var(--sh-ink)!important}
+  :root.gmd #shColResizeHandle:focus-visible{outline:none!important}
+  :root.gmd #shColResizeHandle:focus-visible::after{box-shadow:0 0 0 3px var(--sh-paper),0 0 0 5px var(--sh-outline)!important}
+}
+@media (prefers-reduced-motion:reduce){#shColResizeHandle::before,#shColResizeHandle::after{transition:none!important}}
+
+/* ==== REPORT COLOURS (user, 13 Nov 2026: "when filter clicked, make violet color a color of filter or actually always color
+   code it") ===============================================================================================================
+   Each report's date and space are set in the colour of the filter on, or with none on, in the colour its space is coded
+   in (assets/layers.js, atlasSpaceCode): a filter chip's colour, darkened as the chip's own words are on paper, else the
+   grade's, as the Clean, Flagged and Unverified chips are. These replace the violet. */
+:root.gmd #shReports .sh-report .sh-report-meta.is-coded:not(#sh-x):not(#sh-y){color:color-mix(in srgb,var(--rep-c) 62%,#000)!important}
+:root[data-theme="dark"].gmd #shReports .sh-report .sh-report-meta.is-coded:not(#sh-x):not(#sh-y){color:var(--rep-c)!important}
+:root.gmd #shReports .sh-report .sh-report-meta[data-grade="A"]:not(#sh-x):not(#sh-y){color:var(--tier-a,#007a80)!important}
+:root.gmd #shReports .sh-report .sh-report-meta[data-grade="B"]:not(#sh-x):not(#sh-y){color:var(--tier-b,#b000b0)!important}
+:root.gmd #shReports .sh-report .sh-report-meta[data-grade="U"]:not(#sh-x):not(#sh-y){color:var(--tier-u,#7a7000)!important}
+:root.gmd #shReports .sh-report:hover .sh-report-meta:not(#sh-x):not(#sh-y){color:var(--sh-hover)!important}
+}
+
+/* ---- the phone chat's filters at the top, never under the chat (user, 13 Nov 2026: "Do not put filters below chat") ----
+   Release 629 let the filters show while chatting, but their fixed place was set for the map screen only (:root.gm-map), so
+   in the chat the row fell into the page's flow and landed under the chat sheet, below the composer. In the chat the row
+   sits where it sits on the map, across the top, and the chat sheet starts under it (its height is --gmChips-h, published by
+   assets/layers.js). */
+@layer sheet{
+@media (max-width:767px){
+  :root.gm-chat #gmChips:not(#sh-x):not(#sh-y){position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:auto!important;z-index:51!important}
+  :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){top:calc(var(--gmChips-h,46px) + 4px)!important}
+}
+}
+
+/* ==== ARTISTS' IMAGES, THE IMAGES LINK AND THE LOAD IMAGE (user, 13 Nov 2026) ====
+   Drawn here and only here (user, 13 Nov 2026: "delete the other design version so there is no confusion and all changes
+   done to new design"): atlas.css holds no rule for them. assets/critique-gallery.js (the hover card over a marked space,
+   the gallery, the record's Artists' images row), the Images link in the head bar and assets/load-image.js. The sheet's
+   terms: paper, 1px grey rules, the one serif in its two sizes, no corners; actions are words that open with an en dash and
+   turn blue under the pointer; a panel's head is the stone bar; the name of a space is the large line. */
+@layer sheet{
+  /* The Images link in the head bar: a word like Gossip mode and Dark beside it. */
+  :root.gmd #gmdTopBar #topImagesBtn{text-decoration:none!important;color:inherit!important}
+  :root.gmd #gmdTopBar #topImagesBtn:hover{color:var(--sh-hover)!important}
+
+  /* The hover card */
+  #critiquePop.critique-pop{position:absolute!important;z-index:60!important;box-sizing:border-box!important;width:min(calc(420px * var(--sh-k)),calc(100% - 16px))!important;
+    padding:var(--sh-pad)!important;background:var(--sh-paper)!important;border:1px solid var(--sh-rule)!important}
+  #critiquePop.critique-pop[hidden]{display:none!important}
+  #critiquePop p{margin:0!important}
+  #critiquePop .critique-pop-tie{margin-top:calc(var(--sh-s-lh) / 4)!important}
+  :is(#critiquePop .critique-pop-thumbs,.cg-row .cg-row-thumbs){display:flex!important;gap:calc(var(--sh-pad) / 2)!important;margin-top:var(--sh-s-lh)!important;overflow-x:auto!important}
+  :is(#critiquePop .critique-pop-thumbs,.cg-row .cg-row-thumbs) button{flex:0 0 auto!important;line-height:0!important;overflow:hidden!important;background:var(--sh-stone-2)!important}
+  #critiquePop .critique-pop-thumbs img{display:block!important;height:160px!important;width:auto!important;max-width:320px!important;object-fit:cover!important}
+  #critiquePop .critique-pop-thumbs.is-one button{flex:1 1 auto!important;background:none!important}
+  #critiquePop .critique-pop-thumbs.is-one img{width:100%!important;height:auto!important;max-width:none!important;max-height:min(60vh,420px)!important;object-fit:contain!important;object-position:left top!important}
+  .cg-row .cg-row-thumbs img{display:block!important;height:120px!important;width:auto!important;max-width:240px!important;object-fit:cover!important}
+  :is(#critiquePop .critique-pop-thumbs,.cg-row .cg-row-thumbs) button:hover img{opacity:.8!important}
+  #critiquePop .critique-pop-more{line-height:var(--sh-lead)!important;padding:0 calc(var(--sh-pad) / 2)!important;align-self:center!important}
+  #critiquePop .critique-pop-open{display:block!important;margin-top:var(--sh-s-lh)!important}
+  #critiquePop :is(.critique-pop-open,.critique-pop-more)::before{content:"– "}
+  #critiquePop :is(.critique-pop-open,.critique-pop-more):hover{color:var(--sh-hover)!important}
+  .cg-row{list-style:none!important}
+  .cg-row .cg-row-tie{margin:0!important}
+  /* Under the phone record's Images tab (assets/phone-maps.js; user, 14 Nov 2026: "add images tab") the pictures are not a strip
+     of thumbnails: one under another at the width of the column, whole, each with its title and artist under it. */
+  #gmFull [data-tab="images"] .cg-row-thumbs{flex-direction:column!important;gap:var(--sh-s-lh)!important;overflow:visible!important}
+  #gmFull [data-tab="images"] .cg-row-thumbs button{display:block!important;width:100%!important;height:auto!important;background:none!important;text-align:left!important;overflow:visible!important}
+  #gmFull [data-tab="images"] .cg-row-thumbs img{width:100%!important;height:auto!important;max-width:none!important;object-fit:contain!important}
+  #gmFull [data-tab="images"] .gm-img-cap{display:block!important;margin-top:calc(var(--sh-s-lh) / 4)!important;line-height:var(--sh-s-lh)!important;white-space:normal!important}
+
+  /* The gallery */
+  dialog#critiqueGallery{box-sizing:border-box!important;width:min(1280px,96vw)!important;height:min(92vh,1000px)!important;max-width:96vw!important;max-height:92vh!important;
+    padding:0!important;border:1px solid var(--sh-rule)!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important}
+  dialog#critiqueGallery[open]{display:flex!important;flex-direction:column!important}
+  dialog#critiqueGallery::backdrop{background:rgb(0 0 0 / .78)}
+  #critiqueGallery .cg-top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:var(--sh-pad)!important;min-height:var(--sh-head)!important;
+    padding:0 var(--sh-pad)!important;background:var(--sh-stone)!important;border-bottom:1px solid var(--sh-rule)!important}
+  #critiqueGallery .cg-title{margin:0!important}
+  #critiqueGallery .cg-title .space-name{font-size:var(--sh-s)!important;line-height:var(--sh-lead)!important}
+  #critiqueGallery .cg-count{margin-left:1em!important}
+  #critiqueGallery .cg-stage{flex:1!important;min-height:0!important;display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;
+    gap:var(--sh-pad)!important;padding:var(--sh-pad)!important}
+  #critiqueGallery .cg-figure{margin:0!important;height:100%!important;min-height:0!important;display:flex!important;flex-direction:column!important;gap:calc(var(--sh-s-lh) / 2)!important;touch-action:pan-y!important}
+  #critiqueGallery .cg-figure img{flex:1!important;min-height:0!important;width:100%!important;height:auto!important;max-width:100%!important;object-fit:contain!important}
+  #critiqueGallery .cg-cap p{margin:0!important}
+  #critiqueGallery .cg-project{font-style:italic!important}
+  #critiqueGallery .cg-btn{color:var(--sh-ink)!important}
+  #critiqueGallery .cg-btn[hidden]{display:none!important}
+  #critiqueGallery :is(.cg-prev,.cg-next)::before{content:"– "}
+  #critiqueGallery .cg-btn:hover{color:var(--sh-hover)!important}
+  @media (max-width:640px){
+    dialog#critiqueGallery{width:100vw!important;max-width:100vw!important;height:100dvh!important;max-height:100dvh!important;border:0!important}
+    #critiqueGallery .cg-stage{grid-template-columns:1fr 1fr!important;grid-template-rows:minmax(0,1fr) auto!important;padding:var(--sh-pad) calc(var(--sh-pad) * .6)!important}
+    #critiqueGallery .cg-figure{grid-column:1 / -1!important;grid-row:1!important}
+    #critiqueGallery .cg-prev{grid-row:2!important;grid-column:1!important}
+    #critiqueGallery .cg-next{grid-row:2!important;grid-column:2!important}
+  }
+
+  /* The load image: about 40% of the screen's width on a desktop, 70% on a phone, alone on the paper, its title in italic and
+     the artist after it. No stone bars (user, 13 Nov 2026: "I still see two yellow stripes on load"): the two lime bars this
+     block once drew at the head and foot were the stripes. */
+  #loadImage{position:fixed!important;inset:0!important;z-index:2147483000!important;display:flex!important;align-items:center!important;justify-content:center!important;
+    background:var(--sh-paper)!important;cursor:pointer!important;transition:opacity .5s cubic-bezier(.4,0,.2,1)!important}
+  #loadImage.is-leaving{opacity:0!important;pointer-events:none!important}
+  #loadImage figure{margin:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:calc(var(--sh-s-lh) / 2)!important;max-width:60vw!important}
+  /* Desktop: 60vw and up to 80vh, the caption still on screen (user, 14 Nov 2026: "make the load image bigger on desktop too"; it was 40vw and 72vh). */
+  #loadImage img{display:block!important;width:60vw!important;max-height:80vh!important;height:auto!important;object-fit:contain!important}
+  #loadImage figcaption{text-align:center!important}
+  #loadImage figcaption i{font-style:italic!important}
+  /* Phone: 92vw (about a 16px gutter at 390px) and up to 75vh, so tall pictures grow too and the caption still fits (user, 14 Nov 2026: "make the load image bigger on mobile"; it was 70vw and 65vh). */
+  @media (max-width:640px){#loadImage figure{max-width:92vw!important}#loadImage img{width:92vw!important;max-height:75vh!important}}
+}
+
+/* ---- The head bar's margin, and the column's cross in the column (user, 13 Nov 2026: "add a margin here and move cross to
+   the window below"). Gossip mode, Dark and Images start a padding in from the window's edge instead of touching it; the
+   cross that closes the index column leaves the head bar and stands at the right end of the "Find a space" line, inside the
+   column it closes, and that line is shortened to make room for it. The sidebar mark that opens the column again stays at
+   the head bar's left, where the closed column leaves nothing else. ---- */
+@layer sheet{
+  @media (min-width:1080px){
+    :root.gmd:not(.sh-col-closed) #gmdTopBar>div{padding-left:var(--sh-pad)!important;padding-right:0!important}
+    :root.gmd:not(.sh-col-closed) #shColClose{top:calc(var(--sh-head) + 1px + var(--sh-pad) + var(--sh-place-h))!important;left:calc(var(--sh-col) - var(--sh-pad) - 24px)!important;
+      width:24px!important;height:calc(var(--sh-lead) + 3px)!important;justify-content:flex-end!important}
+    :root.gmd:not(.sh-col-closed):not(.chat-wide) #gmdSearch{width:calc(var(--sh-col) - 2 * var(--sh-pad) - 32px)!important}
+    /* The line it stands at the end of is the index's own finder ("Find a city", "Find a space"): shortened too, so the
+       cross is beside the line, not on it, and does not read as a button that clears the field. */
+    :root.gmd:not(.sh-col-closed) #shIndex #shIndexFind{width:calc(100% - 36px)!important}
+  }
+}
+
+/* ---- The phone's ⋮ menu: rows that hold still (user, 14 Nov 2026: "fix menu on mobile, buttons are jumping"). The sheet's
+   rule for every button takes away padding and height, which left the menu's items 23px tall, touching one another and the
+   frame, with the check mark of Read answers aloud laid over the text. Each item is a fixed 44px row (the least a finger
+   needs), its words a padding in from the frame, the check mark in a slot of its own at the right; items are parted by the
+   sheet's grey rule, and nothing about an item changes size when it is pressed, checked or under the pointer. The ⋮ button
+   that opens it gets the same 44px square. ---- */
+@layer sheet{
+  #gmMenu{padding:0!important;min-width:calc(220px * var(--sh-k) / 1.4)!important}
+  #gmMenu button{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:var(--sh-pad)!important;box-sizing:border-box!important;
+    width:100%!important;min-height:44px!important;height:44px!important;padding:0 var(--sh-pad)!important;line-height:1!important;white-space:nowrap!important;
+    font-style:normal!important;transition:color .2s!important}
+  #gmMenu button+button{border-top:1px solid var(--sh-rule)!important}
+  #gmMenu button::after{content:""!important;flex:none!important;width:7px!important;height:13px!important;margin:-4px 2px 0 0!important;border:solid transparent!important;
+    border-width:0 1.5px 1.5px 0!important;transform:rotate(45deg)!important}
+  #gmMenu button[aria-checked="true"]::after{border-color:currentColor!important}
+  #gmMenuBtn{min-width:44px!important;min-height:44px!important;display:flex!important;align-items:center!important;justify-content:center!important}
+}
+
+/* ---- The head bar's words hold still (user, 14 Nov 2026: "fix top menu so the buttons do not jump"). A word that is on
+   is set in italic, and the italic is not the roman's width (Details 67.5 to 68.7px, Chat with the curator 189.4 to
+   185.9px), so its neighbours moved each time; Dark and Light, and Expand chat and Back to map, trade places with different
+   widths too. Each button now carries every form of its word, roman and italic, as two unseen lines of no height, so it is
+   always as wide as its widest form. The lines are empty to a screen reader. ---- */
+@media (min-width:768px){
+  :root.gmd :is(#topGossipBtn,#topThemeBtn,#shExpandChat,#shBackToMap,#workspaceTabDossier,#workspaceTabChat)::before,
+  :root.gmd :is(#topGossipBtn,#topThemeBtn,#shExpandChat,#shBackToMap,#workspaceTabDossier,#workspaceTabChat)::after{
+    display:block!important;position:static!important;height:0!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important;visibility:hidden!important;
+    white-space:pre!important;pointer-events:none!important;background:none!important;font:inherit!important;letter-spacing:inherit!important}
+  :root.gmd :is(#topGossipBtn,#topThemeBtn,#shExpandChat,#shBackToMap,#workspaceTabDossier,#workspaceTabChat)::before{font-style:normal!important}
+  :root.gmd :is(#topGossipBtn,#topThemeBtn,#shExpandChat,#shBackToMap,#workspaceTabDossier,#workspaceTabChat)::after{font-style:italic!important}
+  :root.gmd #topGossipBtn::before,:root.gmd #topGossipBtn::after{content:"Gossip mode";content:"Gossip mode" / ""}
+  :root.gmd #topThemeBtn::before,:root.gmd #topThemeBtn::after{content:"Dark\A Light";content:"Dark\A Light" / ""}
+  :root.gmd :is(#shExpandChat,#shBackToMap)::before,:root.gmd :is(#shExpandChat,#shBackToMap)::after{content:"Expand chat\A \2039  Back to map";content:"Expand chat\A \2039  Back to map" / ""}
+  :root.gmd #workspaceTabDossier::before,:root.gmd #workspaceTabDossier::after{content:"Details";content:"Details" / ""}
+  :root.gmd #workspaceTabChat::before,:root.gmd #workspaceTabChat::after{content:"Chat with the curator";content:"Chat with the curator" / ""}
+}
+
+/* The Layers button is off for now (user, 14 Nov 2026: "take layers button off for now"), on the phone and the desktop. Only
+   the button: the panel, its layers and the filter chips are untouched, and whatever else opens the panel still does. To
+   bring it back, delete this rule. */
+@layer sheet{
+  #layersControl #layersBtn:not(#sh-x):not(#sh-y){display:none!important}
+}
