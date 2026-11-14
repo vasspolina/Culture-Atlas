@@ -1447,8 +1447,9 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   #loadImage{position:fixed!important;inset:0!important;z-index:2147483000!important;display:flex!important;align-items:center!important;justify-content:center!important;
     background:var(--sh-paper)!important;cursor:pointer!important;transition:opacity .5s cubic-bezier(.4,0,.2,1)!important}
   #loadImage.is-leaving{opacity:0!important;pointer-events:none!important}
-  #loadImage figure{margin:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:calc(var(--sh-s-lh) / 2)!important;max-width:40vw!important}
-  #loadImage img{display:block!important;width:40vw!important;max-height:72vh!important;height:auto!important;object-fit:contain!important}
+  #loadImage figure{margin:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:calc(var(--sh-s-lh) / 2)!important;max-width:60vw!important}
+  /* Desktop: 60vw and up to 80vh, the caption still on screen (user, 14 Nov 2026: "make the load image bigger on desktop too"; it was 40vw and 72vh). */
+  #loadImage img{display:block!important;width:60vw!important;max-height:80vh!important;height:auto!important;object-fit:contain!important}
   #loadImage figcaption{text-align:center!important}
   #loadImage figcaption i{font-style:italic!important}
   /* Phone: 92vw (about a 16px gutter at 390px) and up to 75vh, so tall pictures grow too and the caption still fits (user, 14 Nov 2026: "make the load image bigger on mobile"; it was 70vw and 65vh). */
