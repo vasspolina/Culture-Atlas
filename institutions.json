@@ -208396,5 +208396,43 @@
     "research_retrieved": "2026-11-14",
     "grade": 2,
     "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+  },
+  {
+    "name": "KADIST",
+    "location": "Paris, France",
+    "tier": "A",
+    "size": "S",
+    "funding": "Privately funded by a French family, Mission Local reported on 3 September 2025; its Americas director said the closing of its San Francisco space that month had nothing to do with funding. Its own site names no funder: it lists co-founders Vincent Worms (president) and Sandra Terdjman (vice-president) and says it operates through the endowment fund AKAT \u2013 KADIST in France and two US 501(c)(3) entities, Artnow International Inc and KADIST Collection Manager Inc. Their Form 990-PF returns, as shown on ProPublica's Nonprofit Explorer: Artnow International, year to December 2024, revenue USD 1.42M, nearly all of it contributions, expenses USD 1.46M, Vincent Worms chairman; KADIST Collection Manager, total assets USD 41.6M at December 2024, after contributions of USD 44.7M in 2023. The pages read did not name the contributors.",
+    "watch": "A non-profit contemporary art organisation with a collection its site puts at over 2,600 works by 1,400 artists; it runs exhibitions, residencies and loans to museums. The collection was started in 2001 and the Paris space opened in 2006 (Wikipedia). A second space at 3295 20th Street in San Francisco's Mission District, opened in 2011, closed on 6 September 2025 after 14 years; the director said the work had shifted to international collaborations and that no one would be laid off (Mission Local).",
+    "sources": [
+      "https://kadist.org/about/",
+      "https://missionlocal.org/2025/09/kadist-mission-district-art-gallery-closing-after-14-years/",
+      "https://projects.propublica.org/nonprofits/organizations/263296075",
+      "https://projects.propublica.org/nonprofits/organizations/922098979",
+      "https://en.wikipedia.org/wiki/Kadist"
+    ],
+    "lat": 48.884524,
+    "lon": 2.341083,
+    "country": "France",
+    "city": "Paris",
+    "website": "https://kadist.org/",
+    "id": "kadist-paris",
+    "aliases": [
+      "Kadist",
+      "Kadist Art Foundation",
+      "KADIST Paris",
+      "AKAT \u2013 KADIST",
+      "Artnow International"
+    ],
+    "visit_url": "https://kadist.org/about/",
+    "year_founded": 2006,
+    "address": "19bis/21 rue des Trois Fr\u00e8res, 75018 Paris",
+    "flags": null,
+    "records_note": "Two US entities file Form 990-PF, readable on ProPublica's Nonprofit Explorer; the pages read did not show accounts for the French endowment fund.",
+    "opening_hours": "Thursday and Friday 11am to 7pm, Saturday 3pm to 7pm, or by appointment.",
+    "statutory_filings_url": "https://projects.propublica.org/nonprofits/organizations/263296075",
+    "research_retrieved": "2026-11-14",
+    "grade": 1,
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
   }
 ]
