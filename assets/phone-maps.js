@@ -644,7 +644,7 @@
       name.insertAdjacentElement('afterend', rating);
 
       // Tabs, at the top of the record.
-      const TABS = [['overview', 'Overview'], ['funding', 'Funding'], ['record', 'Record'], ['sources', 'Sources']];
+      const TABS = [['overview', 'Overview'], ['funding', 'Funding'], ['record', 'Record'], ['images', 'Images'], ['sources', 'Sources']];
       const tabs = document.createElement('div');
       tabs.className = 'gm-tabs';
       tabs.setAttribute('role', 'tablist');
@@ -701,6 +701,9 @@
         if (/^(overview|what it publishes|bottom line)\b/.test(t)) return 'overview';
         if (/^(funding|scale and money)\b/.test(t)) return 'funding';
         if (/^sources\b/.test(t)) return 'sources';
+        // The artists' images of a space (assets/critique-gallery.js) have a tab of their own (user, 14 Nov 2026: "add images
+        // tab"). Few spaces have any, and the tab is offered only for those.
+        if (/^artists.? images\b/.test(t)) return 'images';
         // A flag about money (fossil fuels, opioids, arms, tobacco and the rest) is about who funds the space; a protest,
         // a case or a personal account is part of its record.
         if (el.classList.contains('is-flag') && !/protest|boycott|case|account|gossip|talk|report/.test(t)) return 'funding';
@@ -727,6 +730,21 @@
           const t = ((sec.querySelector('.d-row-title') || {}).textContent || '').trim().toLowerCase();
           if (t && t === sec.dataset.tab) sec.classList.add('gm-same-as-tab');
           for (let p = sec.parentElement; p && p !== full; p = p.parentElement) conts.add(p);
+        });
+        // Under its own tab a picture is not a 120px thumbnail in a strip: each one is set at the width of the column, from
+        // the middle-sized file, with its title and artist under it. It is still the button that opens the gallery.
+        const sp = window.CRITIQUE_GALLERY && inst.id ? window.CRITIQUE_GALLERY.spaces[inst.id] : null;
+        if (sp) full.querySelectorAll('[data-tab="images"] [data-cg-open]').forEach((btn) => {
+          const im = sp.images[+btn.dataset.cgOpen], img = btn.querySelector('img');
+          if (!im || !img) return;
+          if (im.mid) { img.srcset = im.thumb + ' 480w, ' + im.mid + ' 1000w'; img.sizes = 'calc(100vw - 28px)'; }
+          img.width = im.w; img.height = im.h;
+          const cap = document.createElement('span');
+          cap.className = 'gm-img-cap';
+          const title = document.createElement('i');
+          title.textContent = im.project || '';
+          cap.append(title, im.artist ? ', ' + im.artist : '');
+          btn.appendChild(cap);
         });
         // Anything else in the record that is not a section (a card, a note) belongs to Record.
         [full, ...conts].forEach((c) => [...c.children].forEach((ch) => { if (!conts.has(ch) && !ch.dataset.tab) ch.dataset.tab = 'record'; }));
@@ -822,7 +840,7 @@
         const inFull = (t) => [...full.querySelectorAll('[data-tab="' + t + '"]')].some((el) => el.textContent.trim().length > 0 || el.querySelector('img, svg, figure, video'));
         // A tab with nothing in it is not offered; the open one falls back to Overview.
         const has = hasFull
-          ? { overview: true, funding: inFull('funding'), record: inFull('record'), sources: inFull('sources') }
+          ? { overview: true, funding: inFull('funding'), record: inFull('record'), images: inFull('images'), sources: inFull('sources') }
           : { overview: true, funding: filled($('dossier-sheet-funding')), record: filled($('dossier-sheet-record')), sources: filled($('dossier-sheet-sources')) };
         tabs.querySelectorAll('button').forEach((b) => { b.hidden = !has[b.dataset.tab]; });
         tabs.hidden = Object.values(has).filter(Boolean).length < 2;
