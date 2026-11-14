@@ -48,6 +48,10 @@ SPACES = {
                                 lambda r: r['project'] == 'Museum of Contemporary African Art'),
     'walker-art-center': ('Rietlanden Women’s Office, MsHeresies, in the Walker Reader',
                           lambda r: r['source_page'].startswith('https://www.walkerart.org/')),
+    # KADIST's 30 Artoons could not be fetched (kadist.org refuses automated downloads); the space joins the layer once the
+    # files are in the image directory. Until then it has no images and is left out of the layer's data.
+    'kadist-paris': ('Pablo Helguera, Artoons, cartoons on the art world, in the collection here',
+                     lambda r: r['project'] == 'Artoons at KADIST'),
     'museum-folkwang-essen': ('Rietlanden Women’s Office, Banners for Heresies, from their exhibition here',
                               lambda r: r['source_page'].startswith('https://www.museum-folkwang.de/')),
 }
@@ -94,10 +98,14 @@ def main(gallery_html, img_dir):
         for r in refs:
             n = r['number']
             if n not in done:
-                done[n] = build(r, img_dir)
+                try:
+                    done[n] = build(r, img_dir)
+                except StopIteration:      # no file for this reference: listed under missing below
+                    continue
             items.append(done[n])
-        spaces[sid] = {'name': names[sid], 'tie': tie, 'images': items}
-        print(f'{sid}: {len(items)}')
+        print(f'{sid}: {len(items)} of {len(refs)}')
+        if items:                          # a space with none of its images yet is not on the layer
+            spaces[sid] = {'name': names[sid], 'tie': tie, 'images': items}
     # Every other reference, for the images page.
     missing = []
     for r in recs:
