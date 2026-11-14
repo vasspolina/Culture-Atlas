@@ -8,7 +8,7 @@ The rating summarizes the disclosed funding and recorded funders. A record witho
                              (amounts or shares in the funding text), or links accounts or a public registry filing
   2  Funders listed; no funders flagged
                              the same, but names only
-  3  Funder identified; details limited
+  3  No funder flagged; a tie or complaint on record
                              a funder worth noting outside the flag categories (a Flagged record with no flag), or a
                              tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned
                              name, a protest, a sponsor dropped, censorship
@@ -42,7 +42,7 @@ OBJECTIONS = ['Campaigned name', 'Protest or boycott', 'Sponsor dropped under pr
 
 LABEL = {1: 'Funding amounts disclosed; no funders flagged',
          2: 'Funders listed; no funders flagged',
-         3: 'Funder identified; details limited',
+         3: 'No funder flagged; a tie or complaint on record',
          4: 'One flagged funder',
          5: 'Multiple flagged funders, or a flagged funder with a disputed record'}
 
@@ -90,8 +90,8 @@ PHRASE = {
     'Fossil fuels': 'fossil fuels', 'Tobacco': 'tobacco', 'Gambling': 'gambling', 'Arms and defence': 'arms',
     'Opioids': 'opioids', 'Sanctions': 'a sanctioned person or company', 'Forced or exploited labour': 'forced labour',
     'Mining disaster': 'a mining disaster', 'Prison or detention': 'prisons or detention',
-    'Gulf state body': 'a Gulf state body', 'Epstein-linked': 'a link to Jeffrey Epstein',
-    'Campaigned name': 'a campaign against a funder\'s name', 'Protest or boycott': 'protests or a boycott',
+    'Gulf state body': 'money from a Gulf state body', 'Epstein-linked': 'a tie to Jeffrey Epstein',
+    'Campaigned name': 'a campaign to remove a funder\'s name', 'Protest or boycott': 'a public protest',
     'Sponsor dropped under pressure': 'a sponsor dropped under pressure', 'State censorship or punishment': 'state censorship',
 }
 
@@ -112,12 +112,15 @@ def grade(rec):
         return None, None
     if heavy and (len(heavy) > 1 or objections):
         what = f"Funders tied to {phrase_list(heavy)}." if len(heavy) > 1 else f"A funder tied to {phrase_list(heavy)}."
-        why = f" Also on record: {phrase_list(objections)}." if objections else ''
+        why = f" The record also holds {phrase_list(objections)}." if objections else ''
         return 5, f'{what}{why}'
     if heavy:
         return 4, f'A funder tied to {phrase_list(heavy)}.'
     if ties or objections:
-        return 3, f"No flagged funder, but on record: {phrase_list(ties + objections)}."
+        # The label beside the grade already says no funder is flagged, so the sentence names only what is on record. It used to
+        # open "No flagged funder, but on record:" and list the flag names, which the chat read back word for word (user, 14 Nov
+        # 2026: "this text is a slop").
+        return 3, f"The record holds {phrase_list(ties + objections)}."
     if tier == 'B':
         return 3, 'A funder worth knowing about, outside the flagged categories.'
     shown = disclosure(rec)
