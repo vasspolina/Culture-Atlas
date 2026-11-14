@@ -1249,6 +1249,20 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gm-chat #phoneChatHead :is(#gmChatMenuBtn,#phoneChatCloseBtn){align-self:center!important;width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
 }
 
+/* The same two tabs on the record opened from the chat (user, 14 Nov 2026: "fix the toggle on top"). The strip over the
+   record (.gm-from-chat-bar, assets/phone-maps.js) had kept its atlas.css rules, unlayered, so the reset took its padding too:
+   Chat and Details ran together as one word and the underline, still set 12px in from each side of a tab that no longer had
+   12px of padding, sat under the gap between them. It is set as the chat's head is: 20px apart, upright, the underline
+   the width of the open word, and at the same 16px from the edge, so the words do not move when the tab is changed. The
+   strip's own rule goes, since the record's tabs (Overview, Funding, Record, Sources) now sit straight under it with theirs. */
+@media (max-width:767px){
+@layer sheet{
+  #dossier-bottom-sheet .gm-from-chat-bar:not([hidden]){display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:20px!important;padding:0 16px!important;border-bottom:0!important}
+  #dossier-bottom-sheet .gm-from-chat-bar [role="tab"]{display:inline-flex!important;position:relative!important;align-items:center!important;height:44px!important;min-height:44px!important;padding:0!important;white-space:nowrap!important;font-style:normal!important}
+  #dossier-bottom-sheet .gm-from-chat-bar [role="tab"][aria-selected="true"]::after{left:0!important;right:0!important;bottom:6px!important;height:2px!important;border-radius:0!important}
+}
+}
+
 /* The phone chat's composer, set as the Claude app sets its own (user, 12 Nov 2026: "optimize chat like Claude"): one rounded
    box, the question on top across its whole width, and under it a row with a round icon on the left (Voice, read answers
    aloud, a speaker; filled when on) and a round send button on the right, an up arrow in the ink, quiet while the box is
