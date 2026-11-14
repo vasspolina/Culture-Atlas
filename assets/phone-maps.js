@@ -430,11 +430,9 @@
           const head = panel && (panel.querySelector('.record-head') || panel.querySelector('h2'));
           end = bottomOf(head);
         } else {
-          // The description sits in the title block, above the actions, and the tabs (Overview, Funding, Record, Sources) under
-          // them: peek ends under the tabs, whole, so the row is never cut in half at the fold and can be tapped from peek
-          // (9 Nov 2026); without tabs, under the actions or the title block.
-          const tabs = sheet.querySelector('.gm-tabs');
-          end = (tabs && !tabs.hidden ? bottomOf(tabs) : 0) || bottomOf(actions) || bottomOf(titleBlock);
+          // The tabs (Overview, Funding, Record, Sources) are the first row, then the title block with the description, then
+          // the actions: peek ends under the actions, whole, or under the title block when there are none.
+          end = bottomOf(actions) || bottomOf(titleBlock);
         }
         // The iPhone's home strip covers the page's bottom edge (the page runs under it, viewport-fit=cover), so peek leaves
         // room for it, or the actions sat under it (user, 4 Nov 2026: text overlapped at the bottom when a space was opened).
@@ -645,8 +643,8 @@
       rating.className = 'gm-rating';
       name.insertAdjacentElement('afterend', rating);
 
-      // Tabs, under the actions.
-      const TABS = [['overview', 'Overview'], ['funding', 'Funding'], ['record', 'Record'], ['sources', 'Sources']];
+      // Tabs, at the top of the record.
+      const TABS = [['overview', 'Overview'], ['funding', 'Funding'], ['record', 'Record'], ['images', 'Images'], ['sources', 'Sources']];
       const tabs = document.createElement('div');
       tabs.className = 'gm-tabs';
       tabs.setAttribute('role', 'tablist');
@@ -659,11 +657,16 @@
         b.dataset.tab = key;
         b.setAttribute('aria-controls', 'dossier-sheet-verified-pane');
         b.textContent = label;
-        // A tab is read at full height, with the tabs at the top and its first lines under them.
+        // A tab is read at full height, with the tabs at the top and its first lines under them: the name, the description
+        // and the actions scroll away under the tabs, which stay.
         b.addEventListener('click', () => {
           setTab(key);
           if (window.atlasSetSheetDetent && sheet.dataset.detent !== 'full') window.atlasSetSheetDetent('full');
-          requestAnimationFrame(() => { sheet.scrollTop = Math.max(0, tabs.offsetTop - 24); });
+          requestAnimationFrame(() => {
+            const top = pane.getBoundingClientRect().top - sheet.getBoundingClientRect().top + sheet.scrollTop;
+            const bar = $('sheet-drag-handle');
+            sheet.scrollTop = Math.max(0, Math.round(top - (bar ? bar.offsetHeight : 0) - tabs.offsetHeight - 12));
+          });
         });
         tabs.appendChild(b);
       });
@@ -676,7 +679,9 @@
         const next = list[(i + (e.key === 'ArrowRight' ? 1 : -1) + list.length) % list.length];
         next.focus(); setTab(next.dataset.tab);
       });
-      (actions || titleBlock).insertAdjacentElement('afterend', tabs);
+      // The tabs are the record's first row, over its name (user, 14 Nov 2026: "put overview funding on top"): they are in
+      // sight and in reach before anything is scrolled, and stay there as the record scrolls under them (sticky, atlas.css).
+      titleBlock.insertAdjacentElement('beforebegin', tabs);
       pane.setAttribute('role', 'tabpanel');
 
       // Overview's rows of visiting facts, after the summary.
@@ -696,6 +701,9 @@
         if (/^(overview|what it publishes|bottom line)\b/.test(t)) return 'overview';
         if (/^(funding|scale and money)\b/.test(t)) return 'funding';
         if (/^sources\b/.test(t)) return 'sources';
+        // The artists' images of a space (assets/critique-gallery.js) have a tab of their own (user, 14 Nov 2026: "add images
+        // tab"). Few spaces have any, and the tab is offered only for those.
+        if (/^artists.? images\b/.test(t)) return 'images';
         // A flag about money (fossil fuels, opioids, arms, tobacco and the rest) is about who funds the space; a protest,
         // a case or a personal account is part of its record.
         if (el.classList.contains('is-flag') && !/protest|boycott|case|account|gossip|talk|report/.test(t)) return 'funding';
@@ -722,6 +730,21 @@
           const t = ((sec.querySelector('.d-row-title') || {}).textContent || '').trim().toLowerCase();
           if (t && t === sec.dataset.tab) sec.classList.add('gm-same-as-tab');
           for (let p = sec.parentElement; p && p !== full; p = p.parentElement) conts.add(p);
+        });
+        // Under its own tab a picture is not a 120px thumbnail in a strip: each one is set at the width of the column, from
+        // the middle-sized file, with its title and artist under it. It is still the button that opens the gallery.
+        const sp = window.CRITIQUE_GALLERY && inst.id ? window.CRITIQUE_GALLERY.spaces[inst.id] : null;
+        if (sp) full.querySelectorAll('[data-tab="images"] [data-cg-open]').forEach((btn) => {
+          const im = sp.images[+btn.dataset.cgOpen], img = btn.querySelector('img');
+          if (!im || !img) return;
+          if (im.mid) { img.srcset = im.thumb + ' 480w, ' + im.mid + ' 1000w'; img.sizes = 'calc(100vw - 28px)'; }
+          img.width = im.w; img.height = im.h;
+          const cap = document.createElement('span');
+          cap.className = 'gm-img-cap';
+          const title = document.createElement('i');
+          title.textContent = im.project || '';
+          cap.append(title, im.artist ? ', ' + im.artist : '');
+          btn.appendChild(cap);
         });
         // Anything else in the record that is not a section (a card, a note) belongs to Record.
         [full, ...conts].forEach((c) => [...c.children].forEach((ch) => { if (!conts.has(ch) && !ch.dataset.tab) ch.dataset.tab = 'record'; }));
@@ -817,7 +840,7 @@
         const inFull = (t) => [...full.querySelectorAll('[data-tab="' + t + '"]')].some((el) => el.textContent.trim().length > 0 || el.querySelector('img, svg, figure, video'));
         // A tab with nothing in it is not offered; the open one falls back to Overview.
         const has = hasFull
-          ? { overview: true, funding: inFull('funding'), record: inFull('record'), sources: inFull('sources') }
+          ? { overview: true, funding: inFull('funding'), record: inFull('record'), images: inFull('images'), sources: inFull('sources') }
           : { overview: true, funding: filled($('dossier-sheet-funding')), record: filled($('dossier-sheet-record')), sources: filled($('dossier-sheet-sources')) };
         tabs.querySelectorAll('button').forEach((b) => { b.hidden = !has[b.dataset.tab]; });
         tabs.hidden = Object.values(has).filter(Boolean).length < 2;
