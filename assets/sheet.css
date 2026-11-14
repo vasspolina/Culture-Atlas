@@ -1402,7 +1402,9 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   #critiquePop .critique-pop-tie{margin-top:calc(var(--sh-s-lh) / 4)!important}
   :is(#critiquePop .critique-pop-thumbs,.cg-row .cg-row-thumbs){display:flex!important;gap:calc(var(--sh-pad) / 2)!important;margin-top:var(--sh-s-lh)!important;overflow-x:auto!important}
   :is(#critiquePop .critique-pop-thumbs,.cg-row .cg-row-thumbs) button{flex:0 0 auto!important;line-height:0!important;overflow:hidden!important;background:var(--sh-stone-2)!important}
-  #critiquePop .critique-pop-thumbs img{display:block!important;height:96px!important;width:auto!important;max-width:200px!important;object-fit:cover!important}
+  #critiquePop .critique-pop-thumbs img{display:block!important;height:160px!important;width:auto!important;max-width:320px!important;object-fit:cover!important}
+  #critiquePop .critique-pop-thumbs.is-one button{flex:1 1 auto!important;background:none!important}
+  #critiquePop .critique-pop-thumbs.is-one img{width:100%!important;height:auto!important;max-width:none!important;max-height:min(60vh,420px)!important;object-fit:contain!important;object-position:left top!important}
   .cg-row .cg-row-thumbs img{display:block!important;height:120px!important;width:auto!important;max-width:240px!important;object-fit:cover!important}
   :is(#critiquePop .critique-pop-thumbs,.cg-row .cg-row-thumbs) button:hover img{opacity:.8!important}
   #critiquePop .critique-pop-more{line-height:var(--sh-lead)!important;padding:0 calc(var(--sh-pad) / 2)!important;align-self:center!important}

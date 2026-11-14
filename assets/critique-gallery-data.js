@@ -5,7 +5,7 @@ window.CRITIQUE_GALLERY = {
  "spaces": {
   "w139-amsterdam": {
    "name": "W139",
-   "tie": "People’s Forum, an exhibition at W139",
+   "tie": "Farida Sedoc, People’s Forum, an exhibition with Platform BK in residence",
    "images": [
     {
      "n": 1803,
@@ -131,7 +131,7 @@ window.CRITIQUE_GALLERY = {
   },
   "raven-row-london": {
    "name": "Raven Row",
-   "tie": "The Individual and the Organisation, an exhibition at Raven Row (2012)",
+   "tie": "Artist Placement Group, The Individual and the Organisation, exhibition, 2012",
    "images": [
     {
      "n": 1906,
@@ -257,7 +257,7 @@ window.CRITIQUE_GALLERY = {
   },
   "salt-galata-istanbul": {
    "name": "SALT Galata & SALT Beyoğlu",
-   "tie": "The Piracy Project, shown by SALT",
+   "tie": "Andrea Francke and Eva Weinmayr, The Piracy Project",
    "images": [
     {
      "n": 1809,
@@ -275,7 +275,7 @@ window.CRITIQUE_GALLERY = {
   },
   "moma-the-museum-of-modern-art": {
    "name": "MoMA (The Museum of Modern Art)",
-   "tie": "Disgorgement, in the collection of MoMA",
+   "tie": "Cameron Rowland, Disgorgement, 2016, in the collection",
    "images": [
     {
      "n": 1818,
@@ -293,7 +293,7 @@ window.CRITIQUE_GALLERY = {
   },
   "taipei-fine-arts-museum-taipei": {
    "name": "Taipei Fine Arts Museum",
-   "tie": "Trickle Down, in the 2012 Taipei Biennial at the Taipei Fine Arts Museum",
+   "tie": "Andreas Siekmann, Trickle Down, Taipei Biennial 2012",
    "images": [
     {
      "n": 1819,
@@ -311,7 +311,7 @@ window.CRITIQUE_GALLERY = {
   },
   "tate-modern": {
    "name": "Tate Modern",
-   "tie": "Museum of Contemporary African Art, shown at Tate Modern",
+   "tie": "Meschac Gaba, Museum of Contemporary African Art",
    "images": [
     {
      "n": 1815,
@@ -401,7 +401,7 @@ window.CRITIQUE_GALLERY = {
   },
   "rijksakademie-amsterdam": {
    "name": "Rijksakademie van beeldende kunsten",
-   "tie": "Museum of Contemporary African Art, begun after the artist studied at the Rijksakademie",
+   "tie": "Meschac Gaba, Museum of Contemporary African Art, begun after his residency",
    "images": [
     {
      "n": 1815,
@@ -491,7 +491,7 @@ window.CRITIQUE_GALLERY = {
   },
   "walker-art-center": {
    "name": "Walker Art Center",
-   "tie": "MsHeresies, published in the Walker Reader",
+   "tie": "Rietlanden Women’s Office, MsHeresies, in the Walker Reader",
    "images": [
     {
      "n": 1983,
@@ -533,7 +533,7 @@ window.CRITIQUE_GALLERY = {
   },
   "museum-folkwang-essen": {
    "name": "Museum Folkwang",
-   "tie": "Banners for Heresies, in Rietlanden Women’s Office’s exhibition at Museum Folkwang",
+   "tie": "Rietlanden Women’s Office, Banners for Heresies, from their exhibition here",
    "images": [
     {
      "n": 1989,

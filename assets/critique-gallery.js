@@ -93,9 +93,12 @@
   function popHtml(id, sp) {
     const shown = sp.images.slice(0, 4);
     const more = sp.images.length - shown.length;
+    // One image fills the card's width, so a single picture is not a 96px strip (user, 14 Nov 2026: "image is too small");
+    // several sit in a row at 160px. The single one offers the full file too, since the 480px thumb is soft at card width.
+    const one = sp.images.length === 1;
     return `<p class="critique-pop-name space-name">${e(sp.name)}</p>
       <p class="critique-pop-tie">${e(sp.tie)}</p>
-      <div class="critique-pop-thumbs">${shown.map((im, i) => `<button type="button" data-cg-open="${i}" aria-label="${e(im.project)}, image ${i + 1} of ${sp.images.length}"><img src="${e(im.thumb)}" alt="" loading="lazy" width="${Math.round(im.w * 96 / im.h)}" height="96"></button>`).join('')}${more > 0 ? `<button type="button" class="critique-pop-more" data-cg-open="${shown.length}">${more} more</button>` : ''}</div>
+      <div class="critique-pop-thumbs${one ? ' is-one' : ''}">${shown.map((im, i) => `<button type="button" data-cg-open="${i}" aria-label="${e(im.project)}, image ${i + 1} of ${sp.images.length}"><img src="${e(im.thumb)}"${one ? ` srcset="${e(im.thumb)} ${Math.min(480, Math.round(480 * im.w / Math.max(im.w, im.h)))}w, ${e(im.src)} ${im.w}w" sizes="588px"` : ''} alt="" loading="lazy" width="${one ? im.w : Math.round(im.w * 160 / im.h)}" height="${one ? im.h : 160}"></button>`).join('')}${more > 0 ? `<button type="button" class="critique-pop-more" data-cg-open="${shown.length}">${more} more</button>` : ''}</div>
       <button type="button" class="critique-pop-open" data-cg-open="0">Open gallery, ${sp.images.length} ${sp.images.length === 1 ? 'image' : 'images'}</button>`;
   }
   function showPop(id, clientX, clientY) {
@@ -172,9 +175,17 @@
     const img = dlg.querySelector('[data-cg-img]');
     img.src = im.src; img.width = im.w; img.height = im.h;
     img.alt = `${im.project}, ${im.type.toLowerCase()}, by ${im.artist}`;
+    // The caption is the hand-written one of assets/critique-captions.js, as on artists-images.html: the work, the people,
+    // the occasion, then the photographer when the credit names one. The raw credit is not printed: it restated the title
+    // and the artist the two lines above already give (user, 14 Nov 2026: "the description is a slop").
+    const c = (window.CRITIQUE_CAPTIONS || {})[im.artist + '|' + im.project] || {};
+    const kind = String(im.type || '').split(' / ').join(', ');
+    const occasion = c.occasion ? (c.occasion === kind ? c.occasion : `${c.occasion}. ${kind}`) : kind;
+    const photo = (/Photo(?:graph|graphy)?: (.+?[^\s.]{2})\.(?:\s|$)/.exec(im.credit || '') || [])[1];
     dlg.querySelector('.cg-cap').innerHTML = `<p class="cg-project">${e(im.project)}</p>
-      <p class="cg-meta">${e(im.artist)}. ${e(im.type)}.</p>
-      <p class="cg-credit">${e(im.credit)} <a href="${e(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
+      <p class="cg-meta">${e(c.who || im.artist)}</p>
+      <p class="cg-meta">${e(occasion)}.</p>
+      <p class="cg-credit">${photo ? `Photograph: ${e(photo)}. ` : ''}<a href="${e(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
     dlg.querySelectorAll('[data-cg-step]').forEach(b => { b.hidden = n < 2; });
     // The next image is fetched ahead, so stepping through does not wait on the network.
     if (n > 1) new Image().src = sp.images[(gIdx + 1) % n].src;

@@ -46,7 +46,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=662">
-  <link rel="stylesheet" href="assets/sheet.css?v=662">
+  <link rel="stylesheet" href="assets/sheet.css?v=664">
   <script src="assets/config.js?v=662"></script>
   <script src="assets/subtopic.js?v=662"></script>
   <script src="assets/names.js?v=662"></script>
@@ -10378,11 +10378,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v663';
+    const ATLAS_RELEASE = 'culture-atlas-v664';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=663').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=664').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -21524,8 +21524,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/note-files.js?v=662" defer></script>
 <script src="assets/funding-views.js?v=662"></script>
 <script src="assets/layers.js?v=662"></script>
-<script src="assets/critique-gallery-data.js?v=662"></script>
-<script src="assets/critique-gallery.js?v=662"></script>
+<script src="assets/critique-gallery-data.js?v=664"></script>
+<script src="assets/critique-captions.js?v=664"></script>
+<script src="assets/critique-gallery.js?v=664"></script>
 <script src="assets/hq-detail.js?v=662"></script>
 <script src="assets/bubbles.js?v=662" defer></script>
 <script src="assets/phone-maps.js?v=662"></script>

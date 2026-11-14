@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Artists’ images · Leaving it on the table</title>
   <meta name="description" content="Artists’ and designers’ work on cultural institutions, grouped by the space it names, each image open to zoom." />
-  <link rel="stylesheet" href="assets/sheet.css?v=656">
+  <link rel="stylesheet" href="assets/sheet.css?v=664">
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <style>
     /* Set on the sheet (assets/sheet.css), the atlas's current design: the one serif in its two sizes, black on white, the
@@ -136,7 +136,7 @@
   </div>
 </dialog>
 
-<script src="assets/critique-gallery-data.js?v=656"></script>
+<script src="assets/critique-gallery-data.js?v=664"></script>
 <script src="assets/critique-collection-data.js?v=656"></script>
 <script src="assets/critique-captions.js?v=660"></script>
 <script>
@@ -151,7 +151,7 @@
   const kind = t => String(t || '').split(' / ').join(', ');
   const caption = im => {
     const c = CAP[im.artist + '|' + im.project] || {};
-    const photo = (/Photo(?:graph|graphy)?: ([^.]+)\./.exec(im.credit || '') || [])[1];
+    const photo = (/Photo(?:graph|graphy)?: (.+?[^\s.]{2})\.(?:\s|$)/.exec(im.credit || '') || [])[1];
     return { title: im.project, who: c.who || im.artist, occasion: c.occasion || kind(im.type), photo: photo ? `Photograph: ${photo}` : '' };
   };
 
@@ -168,7 +168,8 @@
     if (g) { g.names.push(sp.name); g.ties.push(sp.tie); }
     else bySpace.push({ key, id, names: [sp.name], ties: [sp.tie], images: sp.images });
   });
-  bySpace.forEach(g => { g.title = g.names.join(' · '); g.sub = g.ties.join('. ') + '.'; g.toc = g.title; g.space = true; });
+  // A tie that another tie of the same group starts with (Tate's, inside the Rijksakademie's) says nothing the longer one does not.
+  bySpace.forEach(g => { g.title = g.names.join(' · '); g.sub = g.ties.filter(t => !g.ties.some(u => u !== t && u.startsWith(t))).join('. ') + '.'; g.toc = g.title; g.space = true; });
   bySpace.sort((a, b) => b.images.length - a.images.length || a.title.localeCompare(b.title));
 
   let groups = byWork;
@@ -243,7 +244,7 @@
     dlg.querySelector('[data-z-space]').textContent = g.title;
     dlg.querySelector('[data-z-count]').textContent = n > 1 ? `${I + 1} of ${n}` : '';
     const c = caption(im);
-    dlg.querySelector('[data-z-cap]').innerHTML = `<p class="t">${esc(c.title)}</p><p>${esc(c.who)}</p><p>${esc(c.occasion)}${c.occasion === kind(im.type) ? '' : `. ${esc(kind(im.type))}`}.</p><p>${esc(im.credit)} <a href="${esc(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
+    dlg.querySelector('[data-z-cap]').innerHTML = `<p class="t">${esc(c.title)}</p><p>${esc(c.who)}</p><p>${esc(c.occasion)}${c.occasion === kind(im.type) ? '' : `. ${esc(kind(im.type))}`}.</p><p>${c.photo ? `${esc(c.photo)}. ` : ''}<a href="${esc(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
     dlg.querySelectorAll('[data-z="prev"],[data-z="next"]').forEach(b => { b.hidden = n < 2; });
     img.alt = `${im.project}, by ${im.artist}`;
     img.onload = toFit;
