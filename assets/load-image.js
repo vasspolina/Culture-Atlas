@@ -9,12 +9,12 @@
 // stylesheets and scripts while the paper was already up, and the screen stayed blank (user, 14 Nov 2026: "the image is not
 // showing while its loading in cultural atlas, fix and just load web for 3 seconds").
 //
-// SHOW_MS (3 seconds) is counted from the moment the picture is on screen, not from the first paint, so the reader always
-// sees it for the full 3 seconds. If the picture fails, or has not arrived after WAIT_MS, the screen goes and the page shows.
+// SHOW_MS (4 seconds) is counted from the moment the picture is on screen, not from the first paint, so the reader always
+// sees it for the full 4 seconds. If the picture fails, or has not arrived after WAIT_MS, the screen goes and the page shows.
 (function () {
   const list = window.LOAD_IMAGES;
   if (!list || !list.length) return;
-  const SHOW_MS = 3000;   // the picture stays 3 seconds once visible (user, 14 Nov 2026: "just load web for 3 seconds"; it was 5)
+  const SHOW_MS = 4000;   // the picture stays 4 seconds once visible (user, 14 Nov 2026: "make show on image load 4 sec"; it was 3, before that 5)
   const WAIT_MS = 6000;   // never hold the page longer than this waiting for a picture that does not come
   const pick = window.LOAD_PICK || list[Math.floor(Math.random() * list.length)];
 

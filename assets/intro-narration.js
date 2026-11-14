@@ -44,14 +44,65 @@
     box.classList.add('is-done');
   }
 
-  function run(box) {
+  // The typing runs on from the last sentence into the suggested questions (user, 14 Nov 2026: "combine the intro and
+  // suggestions so it all looks like intro and types like intro"). The questions are the buttons index.html renders into
+  // the same greeting; they stay buttons. While the typing runs the greeting carries .intro-pending, which hides (but
+  // still lays out) every question not yet reached, so nothing moves. index.html renders the list again on a resize and
+  // swaps single questions after checking them: the observer marks the ones already typed before the next paint, and a
+  // question replaced while it is being typed is started again in its place.
+  function run(host, box) {
     if (reduced()) { finish(box); return; }
     var line = 0, ch = 0;
     var lines = box.querySelectorAll('.intro-line');
+    var asked = 0, cur = null, text = '', waited = 0;
+    var questions = function () { return host.querySelectorAll('.starter-prompt'); };
+    var mark = function () {
+      var list = questions();
+      for (var i = 0; i < asked && i < list.length; i++) list[i].classList.add('is-typed');
+    };
+    var watch = typeof MutationObserver === 'function' ? new MutationObserver(mark) : null;
+    function end() {
+      if (watch) watch.disconnect();
+      host.classList.remove('intro-pending');
+      box.classList.add('is-done');
+    }
+    host.classList.add('intro-pending');
+    if (watch) watch.observe(host, { childList: true, subtree: true });
+
+    function ask() {
+      if (!box.isConnected) { end(); return; }
+      if (cur && !cur.isConnected) cur = null;
+      if (!cur) {
+        var list = questions();
+        mark();
+        cur = list[asked];
+        if (!cur) {
+          // none left, or the list is not rendered yet: wait a little for it, then stop
+          if (list.length || waited > 3000) { end(); return; }
+          waited += 100; setTimeout(ask, 100); return;
+        }
+        var span = cur.querySelector('.sp-text') || cur;
+        text = span.textContent;
+        ch = 0;
+        cur.setAttribute('aria-label', text);   // the untyped letters are hidden, so the name is given whole
+        span.innerHTML = '<span class="intro-typed"></span><span class="intro-rest"></span>';
+        span.lastChild.textContent = text;
+        cur.classList.add('is-typed', 'is-typing');
+      }
+      ch++;
+      cur.querySelector('.intro-typed').textContent = text.slice(0, ch);
+      cur.querySelector('.intro-rest').textContent = text.slice(ch);
+      if (ch < text.length) { setTimeout(ask, CHAR_MS); return; }
+      (cur.querySelector('.sp-text') || cur).textContent = text;
+      cur.classList.remove('is-typing');
+      cur = null; asked++;
+      setTimeout(ask, PAUSE_MS);
+    }
+
     function tick() {
-      if (!box.isConnected) return;               // the greeting is gone: the visitor has asked something
+      if (!box.isConnected) { end(); return; }    // the greeting is gone: the visitor has asked something
       var p = lines[line];
-      if (!p) { box.classList.add('is-done'); return; }
+      if (!p) { ch = 0; ask(); return; }
       if (ch === 0) p.classList.add('is-typing');
       ch++;
       p.querySelector('.intro-typed').textContent = LINES[line].slice(0, ch);
@@ -76,7 +127,7 @@
       var title = host.querySelector('h1');
       if (title && title.nextSibling) host.insertBefore(box, title.nextSibling);
       else host.insertBefore(box, host.firstChild);
-      run(box);
+      run(host, box);
     });
   };
 })();
