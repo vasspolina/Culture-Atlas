@@ -4993,6 +4993,11 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 .intro-narration .intro-rest,.starter-prompt .intro-rest{visibility:hidden}
 /* the questions are more lines of the same text (user, 14 Nov 2026): the ones the typing has not reached keep their place, unseen */
 .intro-pending .starter-prompt:not(.is-typed){visibility:hidden!important}
+/* each question ends in an arrow (user, 15 Nov 2026: "add arrows to prompt"): it says the line is something to press. It is
+   drawn by CSS, so the button's name and the question sent stay the words alone; the no-break space keeps it on the last
+   word's row, and while the question is being typed it keeps its place unseen, so nothing moves when it shows. */
+.starter-prompt .sp-text::after{content:"\00a0\2192"}
+.starter-prompt.is-typing .sp-text::after{visibility:hidden}
 /* the caret: a hairline after the letters being typed, gone once the line is done. It is taken out of the flow (absolute, at
    its static place after the last letter) so it has no width and makes no break: as an inline-block it was a place to wrap
    in the middle of a word, so on a phone a half-typed word sat at the end of one row and jumped to the next as it was
@@ -5001,3 +5006,13 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 :is(.intro-narration .intro-line,.starter-prompt).is-typing .intro-typed::after{content:"";position:absolute;width:1px;height:1em;margin:.2em 0 0 1px;background:var(--ink);animation:intro-caret 1s steps(1) infinite;pointer-events:none}
 @keyframes intro-caret{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){:is(.intro-narration,.starter-prompt) .intro-typed::after{animation:none}}
+
+/* ---- THE RECORD'S ACTIONS IN ONE LINE (user, 15 Nov 2026: "put in one line"). Ask in chat, Building view, Money map and
+   Website were a column down the left of a wide record, one to a row. They are one row now, across the top of the head,
+   at every width, with the place and the note under them at full measure. They never wrap: a panel too narrow for all
+   of them scrolls the row sideways. ---- */
+:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-grid{display:block!important}
+:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side{flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none}
+:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side::-webkit-scrollbar{display:none}
+:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action{flex:0 0 auto!important;max-width:none!important;white-space:nowrap!important}
+:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main{margin-top:var(--H)!important}

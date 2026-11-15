@@ -49,8 +49,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=669">
-  <link rel="stylesheet" href="assets/sheet.css?v=675">
+  <link rel="stylesheet" href="assets/atlas.css?v=678">
+  <link rel="stylesheet" href="assets/sheet.css?v=678">
   <script src="assets/config.js?v=669"></script>
   <script src="assets/subtopic.js?v=669"></script>
   <script src="assets/names.js?v=669"></script>
@@ -10573,19 +10573,25 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const WT_H = Math.PI;              // full height, pole to pole
     const WT_CENTRE_SCALE = AITOFF ? 1 : 0.905;        // px per radian at the centre, per unit of scale
     const WT_EQ_X = AITOFF ? 1 : 0.8183;                // map x per radian of longitude along the equator, roughly
+    // The oval follows the pane (user, 15 Nov 2026: "make map responsive to screen if i squeeze window it can become a
+    // circle"). wtSX is how much of Aitoff's width is kept: 1 in a pane twice as wide as tall or wider (the 2:1 oval),
+    // 0.5 in a square or upright pane (a circle), and between the two the outline has the pane's own proportion, so the
+    // map fills the room it is given. It is only the east-west stretch that changes: at 0.5 the map is the azimuthal
+    // equidistant of the halved longitudes, the map Aitoff stretched to make his own. wtScale() sets it every frame.
+    let wtSX = 1;
     function wtRaw(lam, phi) {
       const cphi = Math.cos(phi);
       const alpha = Math.acos(Math.max(-1, Math.min(1, cphi * Math.cos(lam / 2))));
       const sinc = alpha < 1e-9 ? 1 : Math.sin(alpha) / alpha;
       const ax = 2 * cphi * Math.sin(lam / 2) / sinc, ay = Math.sin(phi) / sinc;
-      if (AITOFF) return [ax, ay];
-      return [0.5 * (lam * WT_COS1 + ax), 0.5 * (phi + ay)];
+      if (AITOFF) return [ax * wtSX, ay];
+      return [0.5 * (lam * WT_COS1 + ax) * wtSX, 0.5 * (phi + ay)];
     }
     // No closed form back: Newton's method on the two equations, with a numeric Jacobian. It starts from the
     // equirectangular guess and converges in a handful of steps everywhere on the map; off the map it fails the test.
     function wtInverse(X, Y) {
-      if (Math.abs(Y) > WT_H / 2 + 1e-6 || Math.abs(X) > WT_W / 2 + 1e-6) return null;
-      let lam = Math.max(-Math.PI, Math.min(Math.PI, X / WT_EQ_X)), phi = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, Y));
+      if (Math.abs(Y) > WT_H / 2 + 1e-6 || Math.abs(X) > WT_W / 2 * wtSX + 1e-6) return null;
+      let lam = Math.max(-Math.PI, Math.min(Math.PI, X / (WT_EQ_X * wtSX))), phi = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, Y));
       const h = 1e-6;
       for (let i = 0; i < 30; i++) {
         const f = wtRaw(lam, phi);
@@ -10627,24 +10633,30 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       wtOffsetY = (top + bottom) / 2 - (cRect.top + cRect.height / 2);
     }
     function wtScale(r) {
-      let fit = Math.min(width * 0.94 / WT_W, height * 0.9 / WT_H);
+      let roomW = width * 0.94, roomH = height * 0.9;
       // The whole oval stays in view, closed, at every width (user, 11 Nov 2026: "keep map closed to onion shape"): on a phone
       // the map no longer grows to 1.6 times the screen's width to fill the height, which cut off both ends; it fits the
       // width, and the free band's height when that is the tighter. Zooming in still opens it up.
-      if (wtPhoneHalfH > 0) fit = Math.min(width * 0.94 / WT_W, 2 * wtPhoneHalfH / WT_H);
+      if (wtPhoneHalfH > 0) roomH = 2 * wtPhoneHalfH;
+      // The outline takes the room's proportion between 2:1 and 1:1 (see wtSX), then fits it.
+      wtSX = Math.max(0.5, Math.min(1, roomW / roomH / (WT_W / WT_H)));
+      const fit = Math.min(roomW / (WT_W * wtSX), roomH / WT_H);
       return r * fit / Math.max(1, baseRadius);
     }
-    // The map's outline, unit coordinates: the seam meridian on both edges, pole to pole.
+    // The map's outline, unit coordinates: the seam meridian on both edges, pole to pole. Kept at full width (wtSX is
+    // set aside while it is worked out); wtOutlinePath applies the squeeze of the moment.
     const WT_OUTLINE = (() => {
-      const pts = [];
+      const pts = [], sx = wtSX;
+      wtSX = 1;
       for (let i = 0; i <= 90; i++) pts.push(wtRaw(Math.PI, -Math.PI / 2 + Math.PI * i / 90));
       for (let i = 0; i <= 90; i++) pts.push(wtRaw(-Math.PI, Math.PI / 2 - Math.PI * i / 90));
+      wtSX = sx;
       return pts;
     })();
     function wtOutlinePath(r, cx, cy) {
       const k = wtScale(r);
       ctx.beginPath();
-      WT_OUTLINE.forEach((q, i) => { const x = cx + q[0] * k, y = cy + wtOffsetY - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+      WT_OUTLINE.forEach((q, i) => { const x = cx + q[0] * wtSX * k, y = cy + wtOffsetY - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
       ctx.closePath();
     }
     // The view matrix, cached: project() runs for every coastline point of every frame.
@@ -10662,7 +10674,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const vy = m[1][0] * X + m[1][1] * Y + m[1][2] * Z;
       const vz = m[2][0] * X + m[2][1] * Y + m[2][2] * Z;
       const lam = Math.atan2(vx, vz), phi = Math.asin(Math.max(-1, Math.min(1, vy)));
-      const q = wtRaw(lam, phi), k = wtScale(r);
+      const k = wtScale(r), q = wtRaw(lam, phi);   // the scale first: it sets the squeeze wtRaw uses
       // Everything is on the map, so everything is "front" at full depth; lam is the oblique longitude,
       // which the coastline drawing uses to break a line where it crosses the seam.
       return { x: cx + q[0] * k, y: cy + wtOffsetY - q[1] * k, z: r, front: true, depth: 1, lam, phi };
@@ -21445,7 +21457,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const dragSens = WINKEL ? toDeg(1 / (wtScale(currentRadius) * WT_CENTRE_SCALE)) : (baseRadius / Math.max(baseRadius, currentRadius)) * 0.18;
         // A trackball: the globe turns the way the pointer goes, in any direction and over the poles,
         // with no latitude limit and no pull back to north-up.
-        const dXStep = dx * dragSens;
+        const dXStep = dx * dragSens / (WINKEL ? wtSX : 1);   // a squeezed map has fewer pixels to a degree, east to west
         const dYStep = dy * dragSens;
         dragView(dXStep, dYStep);
         velLon = velLon * 0.35 + dXStep * 0.65;
