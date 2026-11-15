@@ -10475,7 +10475,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v700';
+    const ATLAS_RELEASE = 'culture-atlas-v701';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11004,6 +11004,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // The selected space's label is set larger than the rest, with its whole name (user, 4 Nov 2026: "make selected bigger").
     const atlasSelFont = () => '400 20px ' + ATLAS_SERIF;
     const ATLAS_SEL_H = 32, ATLAS_SEL_PAD = 36;
+    // The open space's name on the globe and flat map is set as on the street map (assets/sheet.css, user, 15 Nov 2026: "do this
+    // but add grade underneath title"; again the same day, a screenshot of a space on the globe: "some spaces still have yellow
+    // badge"): no box, the name at 24px on a 28px line, the grade under it at 15px on an 18px line, a halo of the ground behind
+    // both, and the block standing clear above the dropped pin (34px tall) with 6px of air, as the street map's label does.
+    const atlasSelNameFont = () => '400 24px ' + ATLAS_SERIF;
+    const ATLAS_SEL_NAME_LH = 28, ATLAS_SEL_GRADE_LH = 18, ATLAS_SEL_LIFT = 40;
+    const atlasSelGrade = (inst) => { const G = window.atlasGrade; return inst && inst.grade && G && G[inst.grade] ? inst.grade : null; };
+    const atlasSelBlockH = (inst) => ATLAS_SEL_NAME_LH + (atlasSelGrade(inst) ? ATLAS_SEL_GRADE_LH : 0);
+    // The grade's type colour: the street map's darker tones on a light ground, the grade's own colour on a dark one.
+    const ATLAS_GRADE_INK_LIGHT = { 1: '#1f7f5c', 2: '#1b7f73', 3: '#8c720c', 4: '#975824', 5: '#8f2929' };
     const atlasLabelName = (name, sel) => sel ? (name.length > 44 ? name.substring(0, 42) + '…' : name) : (name.length > 24 ? name.substring(0, 22) + '…' : name);
     // The hover card's description is set in Serrif Light, as Displaay sets the info text on displaay.net/typeface/cassette.
     // 21px on a 24px line, Displaay's own size for it (user, 4 Nov 2026: "make the hover card description bigger"; it was 18px).
@@ -11482,13 +11492,30 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // sheet's paper (user, 10 Nov 2026: "just colored text ... and color spases as well"); the selected name is in ink
         // on a stone band with the grey rule round it. The strip is the size the old pill was (the name's width + 28, or
         // + ATLAS_SEL_PAD; 22 or ATLAS_SEL_H high), so every hit box holds.
-        const drawPillLabel = (text, cx0, cy0, active, tier) => {
+        const drawPillLabel = (text, cx0, cy0, active, tier, space) => {
+          if (space) {
+            // The open space: its name and grade as type, no box (see atlasSelNameFont). cy0 is the block's middle.
+            ctx.save();
+            const grade = atlasSelGrade(space), bh0 = atlasSelBlockH(space), top = Math.round(cy0 - bh0 / 2);
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+            const halo = (t, y) => { ctx.strokeStyle = G_GROUND; ctx.lineWidth = 5; ctx.strokeText(t, cx0, y); ctx.fillText(t, cx0, y); };
+            ctx.font = atlasSelNameFont(); ctx.fillStyle = G_TEXT;
+            halo(text, top + ATLAS_SEL_NAME_LH / 2 + 0.5);
+            if (grade) {
+              ctx.font = atlasMonoFont();
+              ctx.fillStyle = GLOBE_LIGHT ? (ATLAS_GRADE_INK_LIGHT[grade] || G_TEXT) : (window.atlasGrade[grade].col || G_TEXT);
+              halo('Grade ' + window.atlasGrade[grade].letter, top + ATLAS_SEL_NAME_LH + ATLAS_SEL_GRADE_LH / 2 + 0.5);
+            }
+            ctx.restore();
+            return;
+          }
           ctx.save();
           ctx.font = active ? atlasSelFont() : atlasMonoFont();
           const w = ctx.measureText(text).width + (active ? ATLAS_SEL_PAD : 28), h = active ? ATLAS_SEL_H : 22;
           const x0 = Math.round(cx0 - w / 2), y0 = Math.round(cy0 - h / 2);
-          ctx.fillStyle = active ? G_STONE : G_GROUND;
-          if (!tier && !active) {
+          // A selected city keeps the outlined pill of every city, on the ground: the lime stone band is gone with the space's box.
+          ctx.fillStyle = G_GROUND;
+          if (!tier) {
             // A city's name sits in a pill with a 1px ink outline, like the filter pills (user, 11 Nov 2026: "cities need
             // to have outline like fiters"). Same box as the strip, so the hit boxes hold.
             const rr = (h - 1) / 2;
@@ -11499,7 +11526,6 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             ctx.strokeStyle = G_TEXT; ctx.lineWidth = 1; ctx.stroke();
           } else {
             ctx.fillRect(x0, y0, w, h);
-            if (active) { ctx.strokeStyle = G_LINE; ctx.lineWidth = 1; ctx.strokeRect(x0 + 0.5, y0 + 0.5, w - 1, h - 1); }
           }
           // A space's name takes its grade's colour. A city has no grade: tier is null and its name is in ink (user, 10 Nov
           // 2026: "do not color on a city level, its confusing"; it used to take the colour most of its spaces have).
@@ -11530,11 +11556,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           const sp = (lastSelDotAt && lastSelDotAt.name === selectedInstitution.name) ? { x: lastSelDotAt.x, y: lastSelDotAt.y, front: sp0.front } : sp0;
           if (sp.front) {
             ctx.save();
-            ctx.font = atlasSelFont();
+            ctx.font = atlasSelNameFont();
             const sn = atlasLabelName(selectedInstitution.name, true);
-            const sw = ctx.measureText(sn).width + ATLAS_SEL_PAD;
+            const sw = ctx.measureText(sn).width + 12, sh = atlasSelBlockH(selectedInstitution);
             ctx.restore();
-            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - ATLAS_SEL_H - 6, w: sw, h: ATLAS_SEL_H });
+            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - ATLAS_SEL_LIFT - sh, w: sw, h: sh });
           }
         }
         try {
@@ -11892,10 +11918,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             ctx.textBaseline = 'bottom';
             if (isSel) lastSelDotAt = { name: d.inst.name, x: d.x, y: d.y };
             const nameTxt = atlasLabelName(d.inst.name, isSel);
-            ctx.font = isSel ? atlasSelFont() : atlasMonoFont();
+            ctx.font = isSel ? atlasSelNameFont() : atlasMonoFont();
             const tw = ctx.measureText(nameTxt).width;
-            const bw = tw + (isSel ? ATLAS_SEL_PAD : 28);
-            const bh = isSel ? ATLAS_SEL_H : 22;
+            const bw = tw + (isSel ? 12 : 28);
+            const bh = isSel ? atlasSelBlockH(d.inst) : 22;
             const bx = d.x - bw / 2;
             // A label drawn last frame keeps its place unless it truly overlaps; a new one needs air.
             const wasShownInst = lastShownInstLabels.has(d.inst.name);
@@ -11905,7 +11931,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             });
             // Above the dot; below it when the city's own badge sits there. A country with one city draws the badge on its spaces,
             // and the space's name was dropped as a collision, so a click on the country showed a badge and no space.
-            let by = isSel ? d.y - ATLAS_SEL_H - 6 : d.y - 18;
+            let by = isSel ? d.y - ATLAS_SEL_LIFT - bh : d.y - 18;
             if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, d.y + 8)) by = d.y + 8;
             // Another space's dot under the label hides it; the label then tries clear above its own dot, then below.
             const onDot = (y) => !isSel && instDotBoxes.some(box => box.inst !== d.inst && !(bx + bw < box.x || bx > box.x + box.w || y + bh < box.y || y > box.y + box.h));
@@ -11919,7 +11945,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               shownInstLabels.add(d.inst.name);
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
-              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst.tier);
+              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst.tier, isSel ? d.inst : null);
             }
             ctx.restore();
           }
