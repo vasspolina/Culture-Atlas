@@ -137,10 +137,10 @@
   </div>
 </dialog>
 
-<script src="assets/critique-gallery-data.js?v=692"></script>
-<script src="assets/critique-collection-data.js?v=692"></script>
-<script src="assets/critique-additions-data.js?v=692"></script>
-<script src="assets/critique-captions.js?v=692"></script>
+<script src="assets/critique-gallery-data.js?v=698"></script>
+<script src="assets/critique-collection-data.js?v=698"></script>
+<script src="assets/critique-additions-data.js?v=698"></script>
+<script src="assets/critique-captions.js?v=698"></script>
 <script>
 (function () {
   const D = window.CRITIQUE_GALLERY, C = window.CRITIQUE_COLLECTION;
@@ -185,7 +185,7 @@
     }).join('');
     document.getElementById('groups').innerHTML = groups.map((g, gi) => `<section class="ai-group" id="${g.id}" aria-labelledby="h-${gi}">
         <div class="label"><h2 id="h-${gi}">${g.year ? `${esc(g.year)} · ` : ''}${esc(g.title)}</h2><span>${plural(g.images.length)}</span></div>
-        <p class="ai-tie">${esc(g.sub)}${g.note ? `. ${esc(g.note)}` : ''}</p>
+        <p class="ai-tie">${esc(g.sub)}${g.note ? `${/[.?!]$/.test(g.sub) ? '' : '.'} ${esc(g.note)}` : ''}</p>
         <ul class="ai-grid">${g.images.map((im, i) => {
           const on = g.space ? [] : spaceNames(im.n);
           const c = caption(im);
