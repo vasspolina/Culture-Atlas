@@ -603,7 +603,10 @@
       const pad = parseFloat(getComputedStyle(root).getPropertyValue('--sh-pad')) || 22;
       const t = tag && tag.getClientRects().length ? tag.getBoundingClientRect() : null;
       const widest = Math.max(0, ...[...chips.querySelectorAll('button')].map((b) => b.getBoundingClientRect().width));
-      const room = (t ? t.left : v.right) - v.left - 2 * pad;
+      // The name stands centred at the map's top (sheet.css, end): the pills keep to its left as they keep to the tagline's.
+      const nb = $('gmdTitle') && $('gmdTitle').querySelector('button');
+      const n = nb && nb.getClientRects().length ? nb.getBoundingClientRect() : null;
+      const room = Math.min(t ? t.left : v.right, n && n.top < v.top + v.height / 2 ? n.left : v.right) - v.left - 2 * pad;
       const top = room >= widest;
       const set = (k, val) => { if (root.style.getPropertyValue(k) !== val) root.style.setProperty(k, val); };
       set('--sh-chips-l', `${Math.round(v.left + pad)}px`);
