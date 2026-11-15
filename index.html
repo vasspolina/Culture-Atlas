@@ -249,16 +249,16 @@ return maplibregl$1;
                    (COL in assets/layers.js); the funding views below take eight more, each 31 or more apart in CIELAB from every mark,
                    every pin tier colour and each other. Black text on every one is 7:1 or better (the checked row is the fill).
                    One box can turn on several drawn layers: data-layer names the box, data-layers the layers it holds.
-                   These seven are the filters (assets/layers.js, SPACE_TEST): one on at a time; Propaganda and Clean (the grade) also never together. Only the five marked data-chip
+                   These six are the filters (assets/layers.js, SPACE_TEST): one on at a time; Propaganda and Clean (the grade) also never together. Only the four marked data-chip
                    get a chip in the row over the map (user, 7 Nov 2026: "only keep these 4 on top"; 11 Nov 2026: Funding connections
-                   out, Artist-run in; 13 Nov 2026: Images in, the spaces with artists' images); the other two are in this menu only. -->
+                   out, Artist-run in; 13 Nov 2026: Images in; 15 Nov 2026: "delete images filter and unverified, put propaganda and epstein
+                   connections underneat artist run", so Images is out and Propaganda and Epstein follow Artist-run); the other two are in this menu only. -->
               <label style="--layer-color:#f9ab30"><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
-              <label style="--layer-color:#d39bff"><input type="checkbox" data-layer="epstein" data-layers="epstein people" data-chip> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
-              <label style="--layer-color:#ff5fa0"><input type="checkbox" data-layer="propaganda" data-chip> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
               <label style="--layer-color:#3fe05a"><input type="checkbox" data-layer="independent" data-chip> <span class="layer-name">Independent</span><span class="layer-desc">Spaces whose record describes them as an independent space or institution</span><span class="layers-count" data-count="independent"></span></label>
               <label style="--layer-color:#0af0b0"><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Spaces graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
               <label style="--layer-color:#b7d40c"><input type="checkbox" data-layer="artist" data-chip> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
-              <label style="--layer-color:#ffd600"><input type="checkbox" data-layer="images" data-chip> <span class="layer-name">Images</span><span class="layer-desc">Spaces named in artists&rsquo; and designers&rsquo; work on cultural institutions, with the images on their record</span><span class="layers-count" data-count="images"></span></label>
+              <label style="--layer-color:#ff5fa0"><input type="checkbox" data-layer="propaganda" data-chip> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
+              <label style="--layer-color:#d39bff"><input type="checkbox" data-layer="epstein" data-layers="epstein people" data-chip> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
             </div>
           </section>
           <section class="layers-section" data-no-chips>
@@ -360,7 +360,6 @@ return maplibregl$1;
         <ul class="mck-list">
           <li><button type="button" class="mck-row" data-grade="A" aria-pressed="false" title="Show only clean spaces; press again to show every space"><span class="mck-pill" data-tier="A">Clean</span></button></li>
           <li><button type="button" class="mck-row" data-grade="B" aria-pressed="false" title="Show only flagged spaces; press again to show every space"><span class="mck-pill" data-tier="B">Flagged</span></button></li>
-          <li><button type="button" class="mck-row" data-grade="U" aria-pressed="false" title="Show only unverified spaces; press again to show every space"><span class="mck-pill" data-tier="U">Unverified</span></button></li>
         </ul>
         <div class="grade-info mck-info" id="mapColourKeyInfo" role="region" aria-label="How spaces are graded" data-repeat-ok hidden>
           <p>The colour of a name on the map is the grade of its record. It says how well the record is sourced, not a verdict on the space.</p>
@@ -6665,6 +6664,7 @@ return maplibregl$1;
     let searchQuery = '';
     let selectedInstitution = null;
     let hoveredInstitution = null;
+    let hoverStick = null;
     let hoveredCity = null;
     let hoveredCountry = null;
 
@@ -10383,11 +10383,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v682';
+    const ATLAS_RELEASE = 'culture-atlas-v683';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=682').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=683').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11777,7 +11777,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           const isDeepZoom = currentRadius >= baseRadius * 2.8;
           const shouldDrawGlobeLabel = isSel || isFilteredContext || isDeepZoom;
 
-          if (shouldDrawGlobeLabel && !isHov) {
+          // The hovered space keeps its label. It used to be skipped while hovered (the hover card took its place, and the
+          // cards are gone since 11 Nov 2026), so its hit box went with it: a pointer on the name hovered the space, the name
+          // vanished, the pointer was over nothing, the name came back, and the map flickered and a click there missed.
+          if (shouldDrawGlobeLabel) {
             ctx.save();
             ctx.font = atlasMonoFont();
             ctx.textAlign = 'center';
@@ -11806,7 +11809,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             const collidesWithCity = clashes(drawnCityBoxes, by);
             const collidesWithDot = onDot(by);
 
-            if ((!collidesWithOtherLabel && !collidesWithCity && !collidesWithDot && bx >= 2 && bx + bw <= width - 2) || isSel) {
+            if ((!collidesWithOtherLabel && !collidesWithCity && !collidesWithDot && bx >= 2 && bx + bw <= width - 2) || isSel || isHov) {
               drawnInstLabelBoxes.push({ x: bx, y: by, w: bw, h: bh });
               shownInstLabels.add(d.inst.name);
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
@@ -20460,6 +20463,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const dist = Math.hypot(d.x - mx, d.y - my);
         if (dist < nearestDist) { nearestDist = dist; nearest = d; }
       }
+      // The space already hovered keeps the hover a few pixels past its reach, and against a neighbour only a little nearer,
+      // so a hand resting on the edge of a dot or between two dots does not flick the hover back and forth.
+      if (hoverStick) {
+        const cur = visibleDots.find(d => d.inst === hoverStick);
+        if (cur) {
+          const curDist = Math.hypot(cur.x - mx, cur.y - my);
+          if (curDist <= dotReach + 4 && curDist <= nearestDist + 3) return cur.inst;
+        }
+      }
       if (nearest && nearestDist <= dotReach) return nearest.inst;
 
       // 2. A label under the pointer (the label nearest the pointer if several overlap)
@@ -20740,6 +20752,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const cy = height / 2;
       const r = currentRadius;
 
+      hoverStick = hoveredInstitution;   // findInstitutionAt: the space hovered until now keeps the hover at its edge
       hoveredInstitution = null;
       hoveredCountry = null;
 
@@ -20875,7 +20888,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     canvas.addEventListener('pointermove', e => {
       window.__lastPointerType = e.pointerType;
       lastPointer = e.pointerType === 'mouse' ? { x: e.clientX, y: e.clientY } : null;
+      const prevHover = hoveredInstitution;
       updateHoverCursor(e.clientX, e.clientY);
+      // The hover was cleared without a repaint when the pointer left a space, so the space stayed lit until something else redrew.
+      if (prevHover !== hoveredInstitution && typeof scheduleRender === 'function') scheduleRender();
     });
     canvas.addEventListener('pointerleave', () => { lastPointer = null; if (window.atlasLayerMarks) window.atlasLayerMarks.hover(-1e4, -1e4); });
     canvas.addEventListener('pointerdown', e => { window.__lastPointerType = e.pointerType; zoomAnchor = null; }, true);
@@ -21567,7 +21583,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/hq-detail.js?v=669"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
 <script src="assets/phone-maps.js?v=682"></script>
-<script src="assets/desktop-maps.js?v=669"></script>
+<script src="assets/desktop-maps.js?v=682"></script>
 <script src="assets/chat-resize.js?v=669"></script>
 </body>
 </html>

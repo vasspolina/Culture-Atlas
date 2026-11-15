@@ -354,7 +354,8 @@
       body.appendChild(row);
       // Clean, Flagged and Unverified follow the other filters, as on the desktop (user, 11 Nov 2026: "filters and chat need
       // to match desktop version"). They drive the grade filter in assets/layers.js; one at a time, pressed again for all.
-      const GRADES = [['A', 'Clean'], ['B', 'Flagged'], ['U', 'Unverified']];
+      // Unverified is not a filter (user, 15 Nov 2026: "delete images filter and unverified").
+      const GRADES = [['A', 'Clean'], ['B', 'Flagged']];
       const gradeChips = () => {
         if (typeof window.atlasSetGradeFilter !== 'function' || !row.querySelector('button')) return;
         if (!row.querySelector('button[data-grade]')) GRADES.forEach(([g, name]) => {
