@@ -175,9 +175,10 @@
     if (Math.round(indexW()) !== want && !root.classList.contains('sh-col-closed')) colApply(want, false);
   });
 
-  // The head bar is one line: Gossip mode, Dark and Images at the left, then the panel's pages (user, 15 Nov 2026: "fix top
-  // menu", a screenshot of Images under Expand chat). The left group is as wide as its words when the column is closed, which
-  // CSS cannot tell the pages' bar, so its right edge is measured here and given to sheet.css as --sh-top-w.
+  // The head bar is one line: the panel's pages at the left, then Gossip mode, Dark and Images at the right (user, 15 Nov 2026:
+  // "put these buttons on the right on desktop"; before that they were at the left, "fix top menu"). The group is as wide as
+  // its words, which CSS cannot tell the pages' bar, so the room it takes from the window's right edge is measured here and
+  // given to sheet.css as --sh-top-r: the pages' bar stops short of it.
   var topSeen = false;
   function watchTop() {
     var top = document.getElementById('gmdTopBar');
@@ -185,7 +186,7 @@
     topSeen = true;
     var set = function () {
       var r = top.getBoundingClientRect();
-      if (r.width > 0) root.style.setProperty('--sh-top-w', Math.ceil(r.right) + 'px'); else root.style.removeProperty('--sh-top-w');
+      if (r.width > 0) root.style.setProperty('--sh-top-r', Math.ceil(document.documentElement.clientWidth - r.left) + 'px'); else root.style.removeProperty('--sh-top-r');
     };
     set();
     if (typeof ResizeObserver === 'function') new ResizeObserver(set).observe(top);
