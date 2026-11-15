@@ -49,7 +49,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=692">
+  <link rel="stylesheet" href="assets/atlas.css?v=693">
   <link rel="stylesheet" href="assets/sheet.css?v=691">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
@@ -10418,11 +10418,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v692';
+    const ATLAS_RELEASE = 'culture-atlas-v693';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=692').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=693').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10994,7 +10994,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     // ---- The dropped pin ----------------------------------------------------------------------------------------------
     // One pin, on the place whose sheet is open: the selected space, or else the city whose place sheet is open
-    // (window.atlasPlacePin, set by assets/place-sheet.js). A solid teardrop in the ink, no dot in it (user, 13 Nov 2026), with a
+    // (window.atlasPlacePin, set by assets/place-sheet.js). Since 15 Nov 2026 a red heart over a red dot (the heart exclamation mark); before that a solid teardrop in the ink with a
     // 1px ground edge, so it reads on the hairlines and the land in both themes. It falls 14px into place when the place
     // changes; with reduced motion it is simply there.
     let droppedPinKey = null, droppedPinT0 = 0;
@@ -11017,19 +11017,26 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const k = reduce ? 1 : Math.min(1, (now - droppedPinT0) / 220);
       const lift = (1 - k * k) * 14;
       if (k < 1) scheduleRender();
-      const x = p.x, y = p.y - lift, head = 8.5, stem = 22;
+      // The heart exclamation mark (user, 15 Nov 2026: "make pin in this style"): a glossy red heart over a red dot, and the
+      // dot is on the place. Drawn in the street pin's own 24 x 34 box (the same path as its SVG), the dot's centre at 12, 29.5.
+      const x = p.x - 12, y = p.y - lift - 29.5;
       c2.save();
+      c2.translate(x, y);
+      const shape = (g) => { c2.fillStyle = g; c2.strokeStyle = '#a3120b'; c2.lineWidth = 1; c2.fill(); c2.stroke(); };
+      const red = (gx, gy, gr) => { const g = c2.createRadialGradient(gx, gy, 0, gx, gy, gr); g.addColorStop(0, '#ff8a7c'); g.addColorStop(0.45, '#ee3a2d'); g.addColorStop(1, '#c41a10'); return g; };
       c2.beginPath();
-      // A circle of radius `head` whose centre is `stem` above the point, joined to the point by two tangents.
-      const a = Math.asin(head / stem);
-      c2.moveTo(x, y);
-      c2.arc(x, y - stem, head, Math.PI / 2 + a, Math.PI / 2 - a);
+      c2.moveTo(12, 21);
+      c2.bezierCurveTo(5, 15.5, 1.5, 11.5, 1.5, 7.5);
+      c2.bezierCurveTo(1.5, 4.2, 4, 2, 6.8, 2);
+      c2.bezierCurveTo(9, 2, 11, 3.2, 12, 5.2);
+      c2.bezierCurveTo(13, 3.2, 15, 2, 17.2, 2);
+      c2.bezierCurveTo(20, 2, 22.5, 4.2, 22.5, 7.5);
+      c2.bezierCurveTo(22.5, 11.5, 19, 15.5, 12, 21);
       c2.closePath();
-      c2.fillStyle = ink;
-      c2.strokeStyle = ground;
-      c2.lineWidth = 1;
-      c2.fill();
-      c2.stroke();
+      shape(red(8, 6, 17));
+      c2.beginPath();
+      c2.arc(12, 29.5, 4, 0, Math.PI * 2);
+      shape(red(10.6, 28, 6));
       c2.restore();
     }
     window.atlasDropPinRefresh = () => scheduleRender();
@@ -13054,8 +13061,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const el = document.createElement('div');
         el.className = 'atlas-drop-pin';
         el.setAttribute('aria-hidden', 'true');
-        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><path d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/></svg>';
-        streetDropPin = new maplibregl.Marker({ element: el, anchor: 'bottom' });
+        // The heart exclamation mark: a glossy red heart over a red dot (user, 15 Nov 2026). The dot's centre is 4.5px above the
+        // foot of the box, so the marker is set 4.5px down and the dot lands on the place, inside the space's ring.
+        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><defs><radialGradient id="atlasPinHeart" gradientUnits="userSpaceOnUse" cx="8" cy="6" r="17"><stop offset="0" stop-color="#ff8a7c"/><stop offset=".45" stop-color="#ee3a2d"/><stop offset="1" stop-color="#c41a10"/></radialGradient><radialGradient id="atlasPinDot" gradientUnits="userSpaceOnUse" cx="10.6" cy="28" r="6"><stop offset="0" stop-color="#ff8a7c"/><stop offset=".45" stop-color="#ee3a2d"/><stop offset="1" stop-color="#c41a10"/></radialGradient></defs><path fill="url(#atlasPinHeart)" d="M12 21C5 15.5 1.5 11.5 1.5 7.5C1.5 4.2 4 2 6.8 2C9 2 11 3.2 12 5.2C13 3.2 15 2 17.2 2C20 2 22.5 4.2 22.5 7.5C22.5 11.5 19 15.5 12 21z"/><circle fill="url(#atlasPinDot)" cx="12" cy="29.5" r="4"/></svg>';
+        streetDropPin = new maplibregl.Marker({ element: el, anchor: 'bottom', offset: [0, 4.5] });
       }
       streetDropPin.setLngLat([pin.lon, pin.lat]).addTo(cityVectorMap);
       const el = streetDropPin.getElement();
