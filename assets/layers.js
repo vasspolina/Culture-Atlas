@@ -223,14 +223,22 @@
     GRADE = g; syncKey(); refilter(); explain('grade', g); };
   keyRows().forEach(b => b.addEventListener('click', () => window.atlasSetGradeFilter(GRADE === b.dataset.grade ? null : b.dataset.grade)));
   syncKey();
+  // The funding grade, A to F, as a filter (user, 15 Nov 2026, of the list of the five grades: "make these into color coded
+  // clickable filters"). 1 to 5 as a record stores it (A, B, C, D, F); one on at a time, and it narrows with whatever other
+  // filter is on, as the key's Clean and Flagged do. The buttons are in index.html ("GRADE FILTERS"), which listens for
+  // atlas:letter-grade to show which one is on.
+  let LETTER = null;
+  window.atlasLetterGrade = () => LETTER;
+  window.atlasSetLetterGrade = function (n) { n = Number(n); n = (n >= 1 && n <= 5) ? n : null; if (n === LETTER) return;
+    LETTER = n; refilter(); document.dispatchEvent(new CustomEvent('atlas:letter-grade', { detail: { grade: n } })); };
   window.atlasLayerKeep = function () {
     const on = spaceLayersOn();
     let funded = null;
     if (FILTERS.size && keyIndex) { funded = new Set(); FILTERS.forEach(t => t.keys.forEach(k => (keyIndex.get(k) || []).forEach(id => funded.add(id)))); }
-    if (!on.length && !funded && !GRADE) return null;
+    if (!on.length && !funded && !GRADE && !LETTER) return null;
     // Funding and Epstein read the funding maps; until they are in, those two keep nothing, and the map fills in once they load.
     if (on.some(k => k === 'funding' || k === 'epstein') && !recById) loadMoney();
-    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id)) && (!GRADE || gradeOf(i) === GRADE);
+    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id)) && (!GRADE || gradeOf(i) === GRADE) && (!LETTER || Number(i.grade) === LETTER);
   };
   let pinIndex = null;
   function refilter() {

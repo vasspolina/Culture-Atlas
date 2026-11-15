@@ -276,6 +276,20 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
    pairs atlas.css keeps on .grade-word-1 to -5. The grade under the open space's name on the map takes the same colours. */
 .grade-word[class*="grade-word-"]{color:var(--grade-ink)!important}
 :root[data-theme="dark"] .grade-word[class*="grade-word-"]{color:var(--grade-col)!important}
+/* GRADE FILTERS (user, 15 Nov 2026: "make these into color coded clickable filters"). In a list of the five grades each
+   "Grade X" is a button: a pill of the grade's bright colour with black text on it (F on the lighter red, so all five clear
+   7:1), in both themes. The one that is on has a 2px ink edge and a tick after its letter, so it is not told by colour alone.
+   The colon the list puts after a grade word is dropped, since the pill ends the label. index.html, "GRADE FILTERS". */
+:root:root button.grade-filter.grade-word{display:inline-block!important;text-indent:0!important;margin:2px 8px 2px 0!important;padding:1px 10px!important;min-height:24px!important;border:2px solid transparent!important;border-radius:999px!important;color:#000!important;-webkit-text-fill-color:#000!important;font:inherit!important;font-size:var(--sh-s)!important;line-height:var(--sh-s-lh)!important;cursor:pointer!important;text-transform:none!important;letter-spacing:0!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="1"]{background:#34d399!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="2"]{background:#2dd4bf!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="3"]{background:#facc15!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="4"]{background:#fb923c!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="5"]{background:#f87171!important}
+:root:root button.grade-filter.grade-word[aria-pressed="true"]{border-color:var(--sh-ink)!important}
+:root:root button.grade-filter.grade-word::after{content:none!important}
+:root:root button.grade-filter.grade-word[aria-pressed="true"]::after{content:" \2713"!important}
+:root:root button.grade-filter.grade-word:focus-visible{outline:2px solid var(--sh-ink)!important;outline-offset:2px!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#1f7f5c!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#1b7f73!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#8c720c!important}
