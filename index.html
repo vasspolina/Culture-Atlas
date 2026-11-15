@@ -11023,16 +11023,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const x = p.x - 12, y = p.y - lift - 33;
       c2.save();
       c2.translate(x, y);
-      const g = c2.createRadialGradient(8.5, 8, 0, 8.5, 8, 24);
-      g.addColorStop(0, '#ff8a7c'); g.addColorStop(0.4, '#ee3a2d'); g.addColorStop(1, '#b8160d');
-      c2.fillStyle = g; c2.strokeStyle = '#a3120b'; c2.lineWidth = 1;
+      // Shaded as the emoji is (user, 15 Nov 2026: "make it closer to this look"): a red that is lighter at the top and deeper
+      // at the foot, a broad soft light over the upper head that fades out, and a darker red rim.
       const body = new Path2D('M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z');
-      c2.fill(body); c2.stroke(body);
-      // The gloss: a soft white light on the upper left of the head.
-      c2.beginPath();
-      c2.ellipse(8.3, 7.4, 3.6, 2.2, -0.6, 0, Math.PI * 2);
-      c2.fillStyle = 'rgba(255,255,255,.5)';
-      c2.fill();
+      const fillG = c2.createLinearGradient(0, 2, 0, 33);
+      fillG.addColorStop(0, '#f56a5c'); fillG.addColorStop(0.45, '#e63a2e'); fillG.addColorStop(1, '#c0241a');
+      c2.fillStyle = fillG; c2.fill(body);
+      const light = c2.createRadialGradient(10, 7, 0, 10, 7, 10);
+      light.addColorStop(0, 'rgba(255,255,255,.55)'); light.addColorStop(0.55, 'rgba(255,255,255,.18)'); light.addColorStop(1, 'rgba(255,255,255,0)');
+      c2.fillStyle = light; c2.fill(body);
+      c2.strokeStyle = '#a91e16'; c2.lineWidth = 1; c2.stroke(body);
       c2.restore();
     }
     window.atlasDropPinRefresh = () => scheduleRender();
@@ -13058,7 +13058,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         el.className = 'atlas-drop-pin';
         el.setAttribute('aria-hidden', 'true');
         // A glossy red map pin, its point on the place (user, 15 Nov 2026).
-        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><defs><radialGradient id="atlasPinRed" gradientUnits="userSpaceOnUse" cx="8.5" cy="8" r="24"><stop offset="0" stop-color="#ff8a7c"/><stop offset=".4" stop-color="#ee3a2d"/><stop offset="1" stop-color="#b8160d"/></radialGradient></defs><path fill="url(#atlasPinRed)" d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/><ellipse class="atlas-drop-pin-gloss" cx="8.3" cy="7.4" rx="3.6" ry="2.2" transform="rotate(-34.4 8.3 7.4)"/></svg>';
+        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><defs><linearGradient id="atlasPinRed" gradientUnits="userSpaceOnUse" x1="0" y1="2" x2="0" y2="33"><stop offset="0" stop-color="#f56a5c"/><stop offset=".45" stop-color="#e63a2e"/><stop offset="1" stop-color="#c0241a"/></linearGradient><radialGradient id="atlasPinLight" gradientUnits="userSpaceOnUse" cx="10" cy="7" r="10"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".55" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><path fill="url(#atlasPinRed)" d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/><path class="atlas-drop-pin-light" fill="url(#atlasPinLight)" d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/></svg>';
         streetDropPin = new maplibregl.Marker({ element: el, anchor: 'bottom' });
       }
       streetDropPin.setLngLat([pin.lon, pin.lat]).addTo(cityVectorMap);
