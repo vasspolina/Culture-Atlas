@@ -124,9 +124,56 @@ def generic_link(rec, key):
     return h == own or h == 'edi.admin.ch' or not urlparse(url).path.strip('/') and not urlparse(url).query
 
 
+# One spelling per country and per flag. The page, the chat and the grade match these labels exactly, so a second
+# spelling splits a country's count in two and hides a flag from its filter and from the grade (three records flagged
+# 'fossil fuels' were rated C, not D, until 15 Nov 2026). The country a record's location ends in follows the same
+# spelling; a postal address is left as its source writes it.
+COUNTRY_NAMES = {'United States': 'USA', 'United States of America': 'USA', 'US': 'USA',
+                 'United Kingdom': 'UK', 'Great Britain': 'UK',
+                 'United Arab Emirates': 'UAE', 'Czech Republic': 'Czechia'}
+FLAG_NAMES = {'fossil fuels': 'Fossil fuels', 'tobacco': 'Tobacco', 'gambling': 'Gambling', 'arms': 'Arms and defence',
+              'arms and defence': 'Arms and defence', 'opioids': 'Opioids', 'sanctions': 'Sanctions',
+              'protest': 'Protest or boycott', 'boycott': 'Protest or boycott', 'protest or boycott': 'Protest or boycott',
+              'censorship': 'State censorship or punishment',
+              'state censorship or punishment': 'State censorship or punishment',
+              'campaigned name': 'Campaigned name', 'epstein-linked': 'Epstein-linked', 'gulf state body': 'Gulf state body',
+              'sponsor dropped under pressure': 'Sponsor dropped under pressure',
+              'forced or exploited labour': 'Forced or exploited labour', 'mining disaster': 'Mining disaster',
+              'prison or detention': 'Prison or detention'}
+
+
+def one_spelling(rec):
+    """Put a record's country and flags in the one spelling the atlas uses. Returns how many values changed."""
+    n = 0
+    country = COUNTRY_NAMES.get(rec.get('country'))
+    if country:
+        rec['country'] = country
+        n += 1
+    loc = rec.get('location')
+    if isinstance(loc, str) and ', ' in loc:
+        head, tail = loc.rsplit(', ', 1)
+        if tail in COUNTRY_NAMES:
+            rec['location'] = head + ', ' + COUNTRY_NAMES[tail]
+            n += 1
+    if isinstance(rec.get('flags'), list):
+        flags = []
+        for f in rec['flags']:
+            g = FLAG_NAMES.get(f.strip().lower(), f) if isinstance(f, str) else f
+            if g not in flags:
+                flags.append(g)
+        if flags != rec['flags']:
+            rec['flags'] = flags
+            n += 1
+    return n
+
+
 def clean(records, report=None):
     report = {} if report is None else report
     bump = lambda k, n=1: report.__setitem__(k, report.get(k, 0) + n)
+    for r in records:
+        n = one_spelling(r)
+        if n:
+            bump('one_spelling', n)
     # one record per museum: a later record with the same name is dropped; one with the same id, or listed in
     # data/duplicates.json, is the same museum under another name and is folded into the record that stays: empty
     # fields filled, lists joined, its name kept as an alias, its id kept in former_ids so old links still resolve.
