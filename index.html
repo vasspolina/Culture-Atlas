@@ -49,8 +49,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=694">
-  <link rel="stylesheet" href="assets/sheet.css?v=693">
+  <link rel="stylesheet" href="assets/atlas.css?v=697">
+  <link rel="stylesheet" href="assets/sheet.css?v=697">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
@@ -6700,9 +6700,11 @@ return maplibregl$1;
 
     // The lines fade in as you zoom (user, 6 Nov 2026): none at zoom 12 and below, where the whole city is in view and the map is
     // plain ground under the museum labels, full 50% grey from zoom 15, the street level. Linear between, so nothing pops in.
-    const CITY_LINE_FADE = ['interpolate', ['linear'], ['zoom'], 12, 0, 15, 1];
+    // Since 15 Nov 2026 the whole ramp is 20 points stronger (user, of the whole-city view of Dar es Salaam: "its hard to see
+    // map here make it 20 more contrast"): 20% at zoom 12 and below, where there was nothing, and full grey from 14.4.
+    const CITY_LINE_FADE = ['interpolate', ['linear'], ['zoom'], 12, 0.2, 14.4, 1];
     // The same ramp for the screen-space street layer (xray-streets), which draws these lines in place of MapLibre's own.
-    const cityLineFadeAt = z => Math.max(0, Math.min(1, (z - 12) / 3));
+    const cityLineFadeAt = z => Math.max(0.2, Math.min(1, (z - 12) / 3 + 0.2));
     // Every line of the street map is one device pixel wide (user, 9 Nov 2026: "1 px thickness"). MapLibre's line-width is in CSS
     // pixels, so on a 2x screen a width of 1 was two device pixels; this is the width that draws as one. The screen-space layer
     // that normally draws these lines (screenLineLayer, XRAY_LINE_WIDTH) is in device pixels already.
@@ -6719,12 +6721,24 @@ return maplibregl$1;
     //   building outlines           from 16 (was 13): the record's own building is drawn by the Building view from 17.2
     //   landcover (grass, wood, sand) from 16 (was every zoom)
     //   service roads, tracks, paths  from 16 (was 12)
-    // Not drawn at all: landuse, aeroway, rail. The invisible building fill and extrusion below keep their own minzooms (13, 14):
-    // they are hit-testing for xrayFindBuilding, not drawing.
-    // City map style: a line drawing like the globe. White ground, one-device-pixel lines in 50% grey (#808080; user, 6 Nov 2026: the near-black lines made the map busy), no fills, no 3D. OpenFreeMap vector tiles.
+    //   building volumes            from 16, with their outlines: solid, at their mapped heights (building-3d-city-context)
+    // Not drawn at all: landuse, aeroway, rail. The invisible building fill and the extrusion below keep their own minzooms (13, 14):
+    // under 16 they are hit-testing for xrayFindBuilding, not drawing.
+    // City map style: a line drawing like the globe. White ground, one-device-pixel lines in 50% grey (#808080; user, 6 Nov 2026: the near-black lines made the map busy), no fills on the ground; buildings stand as plain volumes from zoom 16. OpenFreeMap vector tiles.
+    // A building's height and the height it starts at, in metres, as the tiles give them. One without a height stands 8 m, the
+    // figure xrayFindBuilding uses. cityBuildingSpan is the same for the hairlines, which are built outside the style.
+    const CITY_BUILDING_TOP = ['coalesce', ['get', 'render_height'], 8];
+    const CITY_BUILDING_BASE = ['coalesce', ['get', 'render_min_height'], 0];
+    function cityBuildingSpan(pr) {
+      const base = Number(pr && pr.render_min_height) || 0, h = pr && pr.render_height != null ? Number(pr.render_height) : 8;
+      return { base, top: Math.max(isFinite(h) ? h : 8, base) };
+    }
     const CITY_MAP_LINE_STYLE = {
       version: 8,
       name: 'Culture Atlas line drawing',
+      // The light the building walls are shaded by: from the upper left, so the walls facing the viewer are a pale grey and
+      // the roofs stay close to the ground's colour.
+      light: { anchor: 'viewport', color: '#ffffff', intensity: 0.2, position: [1.15, 210, 30] },
       sources: {
         openmaptiles: {
           type: 'vector',
@@ -6740,8 +6754,8 @@ return maplibregl$1;
       layers: [
         // Every line fades in with the zoom (CITY_LINE_FADE, above): none on the whole-city view, full grey at street level.
         // The street map is a line drawing: every edge (water, parks, landcover, buildings, roads, boundaries) is a line one device
-        // pixel wide (CITY_HAIRLINE) in the map's line colour, and nothing carries a fill. The building fill and the context extrusion below draw nothing;
-        // they stay only so the building under a record's point can be found.
+        // pixel wide (CITY_HAIRLINE) in the map's line colour, and nothing on the ground carries a fill. The building fill below draws nothing and
+        // stays only so the building under a record's point can be found; the extrusion after it is the buildings' volumes, from zoom 16.
         {
           id: 'background',
           type: 'background',
@@ -6791,13 +6805,17 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'building',
           minzoom: 14,
-          // Invisible: it is only here so xrayFindBuilding can fall back to it. Buildings are lines, never fills.
+          // Solid from zoom 16, where the building lines begin (user, 15 Nov 2026: "make buildings look more realistic"). Until
+          // then every building was a flat outline on the ground and only the open record's stood up, as a box of lines seen
+          // through. Now each stands at its mapped height as a volume in the ground's own colour, its walls shaded by the
+          // style's light, so a near building hides what is behind it; the hairlines (xray-streets) draw its edges and are
+          // tested against these walls. Below 16 it draws nothing and is hit-testing for xrayFindBuilding, as before.
           paint: {
             'fill-extrusion-color': '#ffffff',
-            'fill-extrusion-height': 0,
-            'fill-extrusion-base': 0,
-            'fill-extrusion-opacity': 0,
-            'fill-extrusion-vertical-gradient': false
+            'fill-extrusion-height': CITY_BUILDING_TOP,
+            'fill-extrusion-base': CITY_BUILDING_BASE,
+            'fill-extrusion-opacity': ['step', ['zoom'], 0, 16, 1],
+            'fill-extrusion-vertical-gradient': true
           }
         },
         {
@@ -7302,6 +7320,8 @@ return maplibregl$1;
       });
       // The building view is lines in the same colour as the rest of the map's lines.
       ['xray-wire', STREET_LINE_ID].forEach(id => { try { const l = cityScreenLayer(id); if (l) l.setColor(line); } catch (e) { /* that layer is not on the map */ } });
+      if (typeof streetSiteColours === 'function') streetSiteColours();
+      if (typeof streetDropPinPaint === 'function') streetDropPinPaint();
     }
     // Light and dark mode: one switch in the header, remembered, following the system until it is set.
     function syncThemeButtons() {
@@ -7768,7 +7788,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
     // The building under the record's point, from the tiles already on screen: the footprint layer first, the extrusion only as
     // a fallback, so a taller neighbour leaning over the point at this pitch is not taken for it. Tests replace this.
-    function xrayFindBuilding(lon, lat) {
+    // ownGround: the space has an outline of its own (atlasSiteOf), so a building that is only near the point is not taken for it.
+    function xrayFindBuilding(lon, lat, ownGround) {
       if (!cityVectorMap || typeof cityVectorMap.project !== 'function' || typeof cityVectorMap.queryRenderedFeatures !== 'function') return null;
       let f = null, near = null;
       try {
@@ -7776,10 +7797,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         for (const layer of ['building', 'building-3d-city-context']) {
           if (!cityVectorMap.getLayer || !cityVectorMap.getLayer(layer)) continue;
           const feats = cityVectorMap.queryRenderedFeatures([pt.x, pt.y], { layers: [layer] }) || [];
-          f = feats.find(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon'));
+          // The volumes are hit where they are drawn: a building standing in front of the point covers it on the screen
+          // without being under it. From that layer, only a building whose footprint holds the point is taken.
+          const holds = g => (g.type === 'Polygon' ? [g.coordinates] : g.coordinates).some(poly => xrayInRing(poly[0], lon, lat));
+          f = feats.find(x => x.geometry && (x.geometry.type === 'Polygon' || x.geometry.type === 'MultiPolygon') && (layer === 'building' || holds(x.geometry)));
           if (f) break;
         }
-        if (!f && cityVectorMap.getLayer && cityVectorMap.getLayer('building')) near = xrayNearestFootprint(pt);
+        if (!f && !ownGround && cityVectorMap.getLayer && cityVectorMap.getLayer('building')) near = xrayNearestFootprint(pt);
       } catch (e) { f = null; near = null; }
       if (near) f = near.feature;
       if (!f) return null;
@@ -7891,10 +7915,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // first point (float32 cannot hold a whole Mercator coordinate to the centimetre); the matrix carries the offset.
     const XRAY_LINE_WIDTH = 1;      // device pixels, not CSS pixels: a hairline on a 2x screen
     const XRAY_LINE_FEATHER = 1.0;  // device pixels: coverage falls from full to none over this distance, centred on the line's edge
+    const XRAY_DEPTH_BIAS = 0.00003; // of the depth range: how far a tested line is brought toward the eye, so it clears the wall or roof it lies on
     function screenLineLayer(id) {
       const VS = [
         'attribute vec3 a_pos; attribute vec3 a_other; attribute float a_side;',
-        'uniform highp mat4 u_matrix; uniform highp vec2 u_res; uniform mediump float u_half_px;',
+        'uniform highp mat4 u_matrix; uniform highp vec2 u_res; uniform mediump float u_half_px; uniform highp float u_bias;',
         'varying float v_side;',
         'void main() {',
         '  vec4 p = u_matrix * vec4(a_pos, 1.0);',
@@ -7912,7 +7937,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // The far end of a segment names the same edge with the opposite sign (and is marked 2): flip it back, so v_side runs across
         // the line the whole way along it and not from one edge to the other.
         '  v_side = abs(a_side) > 1.5 ? -sd : sd;',
-        '  gl_Position = vec4(p.xy / p.w + off / (u_res * 0.5), p.z / p.w, 1.0);',
+        // u_bias brings the line a little toward the eye, so an edge that lies on a wall or a roof is in front of it, not in it.
+        '  gl_Position = vec4(p.xy / p.w + off / (u_res * 0.5), p.z / p.w - u_bias, 1.0);',
         '}'
       ].join('\n');
       const FS = [
@@ -7931,6 +7957,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         id, type: 'custom', renderingMode: '3d',
         color: [22 / 255, 22 / 255, 22 / 255, 1], data: null, count: 0, origin: null, dirty: false,
         fade: null,   // optional zoom -> 0..1; the street layer fades in with the zoom, the building view does not
+        depth: false, // true: the lines are hidden where a building's volume stands in front of them (the street layer)
         onAdd(map, gl) {
           this.map = map;
           const shader = (type, src) => { const sh = gl.createShader(type); gl.shaderSource(sh, src); gl.compileShader(sh); return sh; };
@@ -7939,7 +7966,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           gl.attachShader(this.program, shader(gl.FRAGMENT_SHADER, FS));
           gl.linkProgram(this.program);
           this.a = { pos: gl.getAttribLocation(this.program, 'a_pos'), other: gl.getAttribLocation(this.program, 'a_other'), side: gl.getAttribLocation(this.program, 'a_side') };
-          this.u = { matrix: gl.getUniformLocation(this.program, 'u_matrix'), res: gl.getUniformLocation(this.program, 'u_res'), halfPx: gl.getUniformLocation(this.program, 'u_half_px'), feather: gl.getUniformLocation(this.program, 'u_feather'), color: gl.getUniformLocation(this.program, 'u_color') };
+          this.u = { matrix: gl.getUniformLocation(this.program, 'u_matrix'), res: gl.getUniformLocation(this.program, 'u_res'), halfPx: gl.getUniformLocation(this.program, 'u_half_px'), feather: gl.getUniformLocation(this.program, 'u_feather'), bias: gl.getUniformLocation(this.program, 'u_bias'), color: gl.getUniformLocation(this.program, 'u_color') };
           this.buffer = gl.createBuffer();
           this.dirty = true;
         },
@@ -8000,7 +8027,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           gl.enableVertexAttribArray(this.a.pos); gl.vertexAttribPointer(this.a.pos, 3, gl.FLOAT, false, stride, 0);
           gl.enableVertexAttribArray(this.a.other); gl.vertexAttribPointer(this.a.other, 3, gl.FLOAT, false, stride, 12);
           gl.enableVertexAttribArray(this.a.side); gl.vertexAttribPointer(this.a.side, 1, gl.FLOAT, false, stride, 24);
-          gl.disable(gl.DEPTH_TEST); gl.disable(gl.STENCIL_TEST); gl.disable(gl.CULL_FACE);
+          // The street layer is tested against the depth the building volumes wrote (they draw before it) and writes none itself.
+          gl.uniform1f(this.u.bias, this.depth ? XRAY_DEPTH_BIAS : 0);
+          if (this.depth) { gl.enable(gl.DEPTH_TEST); gl.depthFunc(gl.LEQUAL); gl.depthMask(false); } else gl.disable(gl.DEPTH_TEST);
+          gl.disable(gl.STENCIL_TEST); gl.disable(gl.CULL_FACE);
           gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
           gl.drawArrays(gl.TRIANGLES, 0, this.count);
           gl.disableVertexAttribArray(this.a.pos); gl.disableVertexAttribArray(this.a.other); gl.disableVertexAttribArray(this.a.side);
@@ -8080,12 +8110,23 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const tile = sc._tiles && sc._tiles[id];
         if (!tile || tile.state !== 'loaded' || typeof tile.querySourceFeatures !== 'function') continue;
         const c = tile.tileID.canonical, tb = streetTileBounds(c.z, c.x, c.y);
-        const addRing = ring0 => {
-          const ring = streetSimplify(ring0, c.z);
+        // span is a building's { base, top } in metres: its ring is then drawn at both heights, with a standing edge at every
+        // corner, which are the edges of the volume the style extrudes. A corner outside this tile is the tile's cut through
+        // the building or belongs to the next tile, which draws it.
+        const addRing = (ring0, span) => {
+          const ring = streetSimplify(ring0, c.z), lo = span ? span.base : 0;
           for (let i = 0; i + 1 < ring.length && n < STREET_SEGMENT_CAP; i++) {
             const a = ring[i], b = ring[i + 1];
             if (outside(a, b, tb) || outside(a, b, box)) continue;
-            out.push(a[0], a[1], 0, b[0], b[1], 0); n++;
+            out.push(a[0], a[1], lo, b[0], b[1], lo); n++;
+            if (span && span.top > lo) { out.push(a[0], a[1], span.top, b[0], b[1], span.top); n++; }
+          }
+          if (!span || !(span.top > lo)) return;
+          const last = ring.length - 1, closed = last > 0 && ring[0][0] === ring[last][0] && ring[0][1] === ring[last][1];
+          for (let i = 0; i < ring.length - (closed ? 1 : 0) && n < STREET_SEGMENT_CAP; i++) {
+            const v = ring[i];
+            if (outside(v, v, tb) || outside(v, v, box)) continue;
+            out.push(v[0], v[1], lo, v[0], v[1], span.top); n++;
           }
         };
         for (const def of STREET_FEATURES) {
@@ -8095,9 +8136,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           for (const f of feats) {
             const g = f.geometry; if (!g) continue;
             if (def.classes && def.classes.indexOf((f.properties || {}).class) < 0) continue;
-            if (g.type === 'LineString') addRing(g.coordinates);
-            else if (g.type === 'MultiLineString' || g.type === 'Polygon') g.coordinates.forEach(addRing);
-            else if (g.type === 'MultiPolygon') g.coordinates.forEach(p => p.forEach(addRing));
+            const span = def.layer === 'building' ? cityBuildingSpan(f.properties) : null;
+            if (g.type === 'LineString') addRing(g.coordinates, null);
+            else if (g.type === 'MultiLineString' || g.type === 'Polygon') g.coordinates.forEach(r => addRing(r, span));
+            else if (g.type === 'MultiPolygon') g.coordinates.forEach(p => p.forEach(r => addRing(r, span)));
           }
         }
       }
@@ -8115,6 +8157,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (!sc || typeof sc.getRenderableIds !== 'function') return; // the tile cache is out of reach: MapLibre's own lines stay
       const streets = screenLineLayer(STREET_LINE_ID);
       streets.fade = cityLineFadeAt;
+      streets.depth = true;
       map.addLayer(streets, map.getLayer('place_label') ? 'place_label' : undefined);
       applyCityMapGossip();
       map.on('moveend', streetLinesSchedule);
@@ -8164,7 +8207,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (xrayMapIsMock()) { XRAY.waiting = false; XRAY.building = null; xraySyncModeBar(true); renderBuildingInsidePanel(inst); return; }
       if (!xrayLayersReady()) { XRAY.waiting = true; xrayClearDrawing(); xraySyncModeBar(true); xrayWhenSettled(inst); renderBuildingInsidePanel(inst); return; }
       XRAY.waiting = false;
-      XRAY.building = xrayFindBuilding(inst.lon, inst.lat);
+      XRAY.building = xrayFindBuilding(inst.lon, inst.lat, !!atlasSiteOf(inst));
       xraySyncModeBar(true);
       xrayDraw(inst);
       renderBuildingInsidePanel(inst);
@@ -8182,7 +8225,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const segs = [];
       // The shell: its roof and its standing edges. Its footprint on the ground is the street map's own building line, drawn once.
       // A building mapped in parts is drawn part by part, each at its own height, so wings and towers keep their different heights.
-      if (parts) parts.forEach(q => xrayBoxSegments(q.geometry, q.base, q.height, segs, q.base > 0));
+      // Since the buildings stand as volumes (15 Nov 2026) the street layer draws every building's edges, this one's among
+      // them, hidden where a wall is in front; the shell is drawn here, seen through, only when that layer has nothing.
+      const street = cityScreenLayer(STREET_LINE_ID), solid = !!(street && street.count) && cityVectorMap.getZoom() >= 16;
+      if (solid) { /* drawn by xray-streets */ }
+      else if (parts) parts.forEach(q => xrayBoxSegments(q.geometry, q.base, q.height, segs, q.base > 0));
       else xrayBoxSegments(b.geometry, b.base, h, segs, b.base > 0);
       const inner = xrayShrink(b.geometry, 0.7), span = h - b.base;
       if (XRAY.mode === 'plan') {
@@ -8546,6 +8593,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         labelEl.appendChild(tierDot);
         labelEl.appendChild(nameSpan);
+        // The grade, under the name of the open space only (assets/sheet.css shows it there; user, 15 Nov 2026). The label's
+        // spoken name is the space's name, as before; the grade is read from the Details panel.
+        if (inst.grade && typeof GRADE !== 'undefined' && GRADE[inst.grade]) {
+          const gradeSpan = document.createElement('span');
+          gradeSpan.className = 'inst-pin-label-grade';
+          gradeSpan.setAttribute('data-grade', String(inst.grade));   // its colour, in assets/sheet.css
+          gradeSpan.textContent = 'Grade ' + gradeLetter(inst.grade);
+          gradeSpan.setAttribute('aria-hidden', 'true');
+          labelEl.appendChild(gradeSpan);
+        }
 
         const auraEl = document.createElement('div');
         auraEl.className = 'pin-pulse-aura';
@@ -10418,11 +10475,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v695';
+    const ATLAS_RELEASE = 'culture-atlas-v698';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=695').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=698').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11017,29 +11074,32 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const k = reduce ? 1 : Math.min(1, (now - droppedPinT0) / 220);
       const lift = (1 - k * k) * 14;
       if (k < 1) scheduleRender();
-      // A red push pin (user, 15 Nov 2026: after the heart emoji and a glossy map pin, "turn it into this pin", a photo of a
-      // drawing pin): a cap, a collar, a waisted body and a wide flange in a glossy red shaded as a cylinder, and a steel
-      // needle whose tip is on the place. Drawn upright with the tip at 0, 0 and tilted 35 degrees, so the head leans right;
-      // the street map's SVG (syncStreetDropPin) has the same parts.
+      // A ball-headed pin (user, 15 Nov 2026: "pin needs to be vertical", then a picture, "make pin like this"; before it a
+      // drawing pin that leaned 35 degrees): a glossy red ball on a steel shaft that stands upright, its foot on the place.
+      // Drawn with the foot at 0, 0; the street map's SVG (syncStreetDropPin) has the same parts and the same colours.
       c2.save();
       c2.translate(p.x, p.y - lift);
-      c2.rotate(35 * Math.PI / 180);
-      const stops = { red: [[0, '#b01d14'], [0.3, '#f56a5c'], [0.55, '#e63a2e'], [1, '#a91e16']], steel: [[0, '#59626e'], [0.45, '#eef3f8'], [1, '#7a8491']] };
-      [
-        ['M-0.8 -15L0.8 -15L0 0Z', 'steel', 0.8],
-        ['M-10 -16.5Q-10 -18.5 -7 -18.5L7 -18.5Q10 -18.5 10 -16.5Q10 -14.5 7 -14.5L-7 -14.5Q-10 -14.5 -10 -16.5Z', 'red', 10],
-        ['M-3.8 -18.5L-2.6 -26L2.6 -26L3.8 -18.5Z', 'red', 3.8],
-        ['M-4.4 -26.3Q-4.4 -27.6 -3 -27.6L3 -27.6Q4.4 -27.6 4.4 -26.3Q4.4 -25 3 -25L-3 -25Q-4.4 -25 -4.4 -26.3Z', 'red', 4.4],
-        ['M-5.5 -30.5Q-5.5 -33 -3 -33L3 -33Q5.5 -33 5.5 -30.5L5.5 -29.9Q5.5 -27.4 3 -27.4L-3 -27.4Q-5.5 -27.4 -5.5 -29.9Z', 'red', 5.5],
-        ['M-1.7 -19.2L-1.3 -25.4L-0.5 -25.4L-0.7 -19.2Z', 'light', 1.7]
-      ].forEach(([d, kind, w]) => {
-        const path = new Path2D(d);
-        if (kind === 'light') { c2.fillStyle = 'rgba(255,255,255,.45)'; c2.fill(path); return; }
-        const g = c2.createLinearGradient(-w, 0, w, 0);
-        stops[kind].forEach(([o, col]) => g.addColorStop(o, col));
-        c2.fillStyle = g; c2.fill(path);
-        c2.strokeStyle = kind === 'red' ? '#8f1810' : '#4a525c'; c2.lineWidth = 0.6; c2.stroke(path);
-      });
+      const shaft = new Path2D('M-2.3 -18L2.3 -18L1.7 -0.7Q0 0.7 -1.7 -0.7Z');
+      const steel = c2.createLinearGradient(-2.3, 0, 2.3, 0);
+      [[0, '#6d7580'], [0.4, '#f4f7fa'], [0.7, '#b9c0c8'], [1, '#5d6570']].forEach(([o, col]) => steel.addColorStop(o, col));
+      c2.fillStyle = steel; c2.fill(shaft);
+      c2.strokeStyle = '#4a525c'; c2.lineWidth = 0.6; c2.stroke(shaft);
+      // the ball's shadow on the top of the shaft
+      const shade = c2.createLinearGradient(0, -18, 0, -11);
+      shade.addColorStop(0, 'rgba(0,0,0,.45)'); shade.addColorStop(1, 'rgba(0,0,0,0)');
+      c2.fillStyle = shade; c2.fill(new Path2D('M-2.3 -18L2.3 -18L2.05 -11L-2.05 -11Z'));
+      // The ball takes the open space's filter colour (atlasPinColour); a pin on a city stays red.
+      const shades = atlasPinShades(t.key.charAt(0) === 'i' ? atlasPinColour(selectedInstitution) : ATLAS_PIN_RED);
+      const red = c2.createRadialGradient(-2.5, -27.5, 0, -2.5, -27.5, 12);
+      [[0, shades.spot], [0.4, shades.body], [0.8, shades.low], [1, shades.rim]].forEach(([o, col]) => red.addColorStop(o, col));
+      c2.beginPath(); c2.arc(0, -25, 9, 0, Math.PI * 2);
+      c2.fillStyle = red; c2.fill();
+      c2.strokeStyle = shades.edge; c2.lineWidth = 0.6; c2.stroke();
+      // the gloss: the light of a window on the top of the ball
+      const gloss = c2.createLinearGradient(0, -33.4, 0, -27.6);
+      gloss.addColorStop(0, 'rgba(255,255,255,.85)'); gloss.addColorStop(1, 'rgba(255,255,255,.05)');
+      c2.beginPath(); c2.ellipse(-0.8, -30.5, 5.6, 2.9, 0, 0, Math.PI * 2);
+      c2.fillStyle = gloss; c2.fill();
       c2.restore();
     }
     window.atlasDropPinRefresh = () => scheduleRender();
@@ -13051,10 +13111,98 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     window.toggleGlobeExpand = toggleGlobeExpand;
 
+    // THE SPACE'S OWN GROUND (user, 15 Nov 2026, of Nafasi Art Space, whose pin stood on open ground among buildings: "i do
+    // not see museum building here"). A space that is a compound and not one building has no building under its pin: the pin
+    // is the middle of its yard. assets/sites.json (tools/site_outlines.py) holds the outline OpenStreetMap gives for the
+    // space itself, for the records that have one with the pin inside it. While such a space is open, its ground is filled in
+    // the sheet's lime and edged in ink, under the buildings, so the buildings that stand on it read as the space's own.
+    // Where the outline is one building's footprint the building covers the fill and only the edge at its foot shows.
+    // The layers are named xray- so applyCityMapGossip leaves their colours alone; streetSiteColours sets them by theme.
+    let atlasSites = null, atlasSitesAsked = false;
+    function atlasSiteOf(inst) { return (inst && atlasSites && inst.id && atlasSites[inst.id]) || null; }
+    function atlasSitesLoad() {
+      if (atlasSitesAsked) return;
+      atlasSitesAsked = true;
+      fetch('assets/sites.json?v=696').then(r => (r.ok ? r.json() : {})).catch(() => ({})).then(d => {
+        atlasSites = d || {};
+        syncStreetSite();
+        // The building view may have taken the nearest building for a space that has ground of its own: look again.
+        if (typeof XRAY !== 'undefined' && XRAY.inst && isCityStreetViewActive && atlasSiteOf(XRAY.inst)) showBuildingXray(XRAY.inst);
+      });
+    }
+    function streetSiteColours() {
+      const map = cityVectorMap;
+      if (!map || typeof map.getLayer !== 'function' || typeof map.setPaintProperty !== 'function') return;
+      const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      try {
+        if (map.getLayer('xray-site-fill')) map.setPaintProperty('xray-site-fill', 'fill-color', dark ? '#3d4416' : '#e2f86c');
+        if (map.getLayer('xray-site-line')) map.setPaintProperty('xray-site-line', 'line-color', dark ? '#e6e1d7' : '#000000');
+      } catch (e) { /* the style is between two states */ }
+    }
+    function syncStreetSite() {
+      const map = cityVectorMap;
+      if (!map || typeof map.getSource !== 'function' || typeof map.addSource !== 'function') return;
+      atlasSitesLoad();
+      const rings = isCityStreetViewActive ? atlasSiteOf(selectedInstitution) : null;
+      const data = { type: 'FeatureCollection', features: rings ? [{ type: 'Feature', properties: {}, geometry: { type: 'MultiPolygon', coordinates: rings.map(r => [r]) } }] : [] };
+      try {
+        const src = map.getSource('xray-site');
+        if (src) { src.setData(data); return; }
+        if (!rings) return;
+        const under = map.getLayer('building') ? 'building' : undefined;
+        map.addSource('xray-site', { type: 'geojson', data });
+        map.addLayer({ id: 'xray-site-fill', type: 'fill', source: 'xray-site', paint: { 'fill-color': '#e2f86c', 'fill-antialias': false } }, under);
+        map.addLayer({ id: 'xray-site-line', type: 'line', source: 'xray-site', paint: { 'line-color': '#000000', 'line-width': 1 } }, under);
+        streetSiteColours();
+      } catch (e) {
+        // The style is still loading: once, when the map is next at rest.
+        if (typeof map.once === 'function' && !syncStreetSite.waiting) { syncStreetSite.waiting = true; map.once('idle', () => { syncStreetSite.waiting = false; syncStreetSite(); }); }
+      }
+    }
+
     // The street map's dropped pin, on the selected space, as the globe draws its own (drawDroppedPin). A DOM marker, so it
     // stays on the place through every zoom and tilt, above the space's badge, and takes no clicks.
     let streetDropPin = null;
+    // THE PIN'S COLOUR (user, 15 Nov 2026: "pin color needs to be same color as graade color or filter color"). The ball is
+    // the colour of the space's filter, the one its ring and its name on the map already have (tierInk: A, B or unrated, by
+    // theme), so pin, ring and name are one colour; it was red for every space. A pin on a city, which has no filter, stays
+    // red. The ball is shaded from that one colour: a lighter spot where the light falls, darker toward the rim.
+    const ATLAS_PIN_RED = '#e8291d';
+    function atlasPinColour(inst) {
+      if (!inst) return ATLAS_PIN_RED;
+      const light = document.documentElement.getAttribute('data-theme') !== 'dark';
+      return tierInk(inst.tier === 'A' || inst.tier === 'B' ? inst.tier : 'U', light);
+    }
+    function atlasPinShades(hex) {
+      const m = /^#?([0-9a-f]{6})$/i.exec(String(hex || '')) || [0, 'e8291d'], v = parseInt(m[1], 16);
+      const c = [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+      const mix = (to, k) => '#' + c.map(x => Math.round(x + (to - x) * k).toString(16).padStart(2, '0')).join('');
+      return { spot: mix(255, 0.45), body: mix(0, 0), low: mix(0, 0.25), rim: mix(0, 0.42), edge: mix(0, 0.45) };
+    }
+    function atlasPinSvg(hex) {
+      const k = atlasPinShades(hex);
+      return '<svg viewBox="0 0 36 36" width="36" height="36"><defs>'
+        + '<radialGradient id="atlasPinRed" gradientUnits="userSpaceOnUse" cx="-2.5" cy="-27.5" r="12"><stop offset="0" stop-color="' + k.spot + '"/><stop offset="0.4" stop-color="' + k.body + '"/><stop offset="0.8" stop-color="' + k.low + '"/><stop offset="1" stop-color="' + k.rim + '"/></radialGradient>'
+        + '<linearGradient id="atlasPinSteel" gradientUnits="userSpaceOnUse" x1="-2.3" x2="2.3" y1="0" y2="0"><stop offset="0" stop-color="#6d7580"/><stop offset="0.4" stop-color="#f4f7fa"/><stop offset="0.7" stop-color="#b9c0c8"/><stop offset="1" stop-color="#5d6570"/></linearGradient>'
+        + '<linearGradient id="atlasPinShade" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="-18" y2="-11"><stop offset="0" stop-color="#000" stop-opacity="0.45"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>'
+        + '<linearGradient id="atlasPinGloss" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="-33.4" y2="-27.6"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0.05"/></linearGradient>'
+        + '</defs><g transform="translate(18 35)">'
+        + '<path class="atlas-drop-pin-steel" fill="url(#atlasPinSteel)" d="M-2.3 -18L2.3 -18L1.7 -0.7Q0 0.7 -1.7 -0.7Z"/>'
+        + '<path fill="url(#atlasPinShade)" d="M-2.3 -18L2.3 -18L2.05 -11L-2.05 -11Z"/>'
+        + '<circle class="atlas-drop-pin-red" fill="url(#atlasPinRed)" stroke="' + k.edge + '" cx="0" cy="-25" r="9"/>'
+        + '<ellipse fill="url(#atlasPinGloss)" cx="-0.8" cy="-30.5" rx="5.6" ry="2.9"/>'
+        + '</g></svg>';
+    }
+    // Draws the street pin in the open space's colour; also called when the theme changes, since the colour does.
+    function streetDropPinPaint() {
+      if (!streetDropPin) return;
+      const hex = atlasPinColour(selectedInstitution), el = streetDropPin.getElement();
+      if (el.dataset.pinColour === hex) return;
+      el.dataset.pinColour = hex;
+      el.innerHTML = atlasPinSvg(hex);
+    }
     function syncStreetDropPin() {
+      syncStreetSite();
       const pin = selectedInstitution ? atlasPinOf(selectedInstitution) : null;
       if (!pin || !cityVectorMap || typeof maplibregl === 'undefined' || typeof cityVectorMap.getCanvas !== 'function') {
         if (streetDropPin) { streetDropPin.remove(); streetDropPin = null; }
@@ -13064,11 +13212,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const el = document.createElement('div');
         el.className = 'atlas-drop-pin';
         el.setAttribute('aria-hidden', 'true');
-        // A red push pin, the needle's tip on the place (user, 15 Nov 2026). The tip is at 5, 35 in the 36px box, so the
-        // box's top left is set 5px left of and 35px above the place.
-        el.innerHTML = '<svg viewBox="0 0 36 36" width="36" height="36"><defs><linearGradient id="atlasPinRed" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#b01d14"/><stop offset="0.3" stop-color="#f56a5c"/><stop offset="0.55" stop-color="#e63a2e"/><stop offset="1" stop-color="#a91e16"/></linearGradient><linearGradient id="atlasPinSteel" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#59626e"/><stop offset="0.45" stop-color="#eef3f8"/><stop offset="1" stop-color="#7a8491"/></linearGradient></defs><g transform="translate(5 35) rotate(35)"><path class="atlas-drop-pin-steel" fill="url(#atlasPinSteel)" d="M-0.8 -15L0.8 -15L0 0Z"/><path class="atlas-drop-pin-red" fill="url(#atlasPinRed)" d="M-10 -16.5Q-10 -18.5 -7 -18.5L7 -18.5Q10 -18.5 10 -16.5Q10 -14.5 7 -14.5L-7 -14.5Q-10 -14.5 -10 -16.5Z"/><path class="atlas-drop-pin-red" fill="url(#atlasPinRed)" d="M-3.8 -18.5L-2.6 -26L2.6 -26L3.8 -18.5Z"/><path class="atlas-drop-pin-red" fill="url(#atlasPinRed)" d="M-4.4 -26.3Q-4.4 -27.6 -3 -27.6L3 -27.6Q4.4 -27.6 4.4 -26.3Q4.4 -25 3 -25L-3 -25Q-4.4 -25 -4.4 -26.3Z"/><path class="atlas-drop-pin-red" fill="url(#atlasPinRed)" d="M-5.5 -30.5Q-5.5 -33 -3 -33L3 -33Q5.5 -33 5.5 -30.5L5.5 -29.9Q5.5 -27.4 3 -27.4L-3 -27.4Q-5.5 -27.4 -5.5 -29.9Z"/><path class="atlas-drop-pin-light" d="M-1.7 -19.2L-1.3 -25.4L-0.5 -25.4L-0.7 -19.2Z"/></g></svg>';
-        streetDropPin = new maplibregl.Marker({ element: el, anchor: 'top-left', offset: [-5, -35] });
+        // A ball-headed pin, the shaft's foot on the place (user, 15 Nov 2026: "pin needs to be vertical", then a picture of a
+        // glossy red ball on a steel shaft, "make pin like this"; before it a drawing pin that leaned 35 degrees). The foot is
+        // at 18, 35 in the 36px box, so the box's top left is set 18px left of and 35px above the place.
+        streetDropPin = new maplibregl.Marker({ element: el, anchor: 'top-left', offset: [-18, -35] });
       }
+      streetDropPinPaint();
       streetDropPin.setLngLat([pin.lon, pin.lat]).addTo(cityVectorMap);
       const el = streetDropPin.getElement();
       el.classList.remove('is-dropping'); void el.offsetWidth; el.classList.add('is-dropping');

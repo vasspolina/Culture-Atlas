@@ -271,6 +271,21 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 .grade-scale li,.grade-list li{display:block!important;margin:0!important;padding:0 0 0 var(--sh-indent)!important;text-indent:calc(-1 * var(--sh-indent))!important}
 .grade-scale .grade-word::after,.grade-list .grade-word::after{content:": "}
 .grade-word,.grade-mark{background:transparent!important;padding:0!important;border:0!important}
+/* A grade is set in its own colour wherever it is named (user, 15 Nov 2026: "color grades in color code"; the sheet had set
+   them in ink like the rest of the text): the darker cut of the colour on paper, the bright one on the dark ground, the
+   pairs atlas.css keeps on .grade-word-1 to -5. The grade under the open space's name on the map takes the same colours. */
+.grade-word[class*="grade-word-"]{color:var(--grade-ink)!important}
+:root[data-theme="dark"] .grade-word[class*="grade-word-"]{color:var(--grade-col)!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#1f7f5c!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#1b7f73!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#8c720c!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="4"]{color:#975824!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="5"]{color:#8f2929!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#34d399!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#2dd4bf!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#facc15!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="4"]{color:#fb923c!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="5"]{color:#ef4444!important}
 /* Visiting: the label in italic, the fact after it. */
 .visit-cols,.visit-rows{display:block!important;margin:0!important;padding:0!important}
 .visit-item{display:block!important;margin:0!important;padding:0 0 0 var(--sh-indent)!important;text-indent:calc(-1 * var(--sh-indent))!important;border:0!important}
@@ -282,7 +297,15 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 .inst-pin-label{height:var(--sh-map-lh)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important;padding:0 5px!important;border:0!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important}
 .inst-pin-label *{color:var(--sh-ink)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important}
 .custom-inst-pin:hover .inst-pin-label,.inst-pin-label:hover,.inst-pin-label:focus-visible{background:var(--sh-stone)!important;color:var(--sh-ink)!important}
-.custom-inst-pin.popup-active .inst-pin-label{background:var(--sh-stone)!important;border:1px solid var(--sh-rule)!important;color:var(--sh-ink)!important;height:calc(var(--sh-map-lh) + 2px)!important}
+/* The open space's name has no box (user, 15 Nov 2026, choosing it from six drawn options: "do this but add grade underneath
+   title"; before it a lime tag, which the same day got 4px more around the name). The name is 24px on a 28px line, centred
+   over the pin, with the space's grade under it at the map's 15px; a halo of the paper's colour keeps both readable over
+   the building lines. A space with no grade has the name alone. */
+.custom-inst-pin.popup-active .inst-pin-label{background:transparent!important;border:0!important;color:var(--sh-ink)!important;padding:0!important;height:auto!important;flex-direction:column!important;align-items:center!important;gap:0!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name{font-size:24px!important;line-height:28px!important}
+.inst-pin-label .inst-pin-label-grade{display:none!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{display:block!important}
+:root:root .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name,:root:root .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{text-shadow:0 0 2px var(--sh-paper),0 0 2px var(--sh-paper),0 0 3px var(--sh-paper),0 0 4px var(--sh-paper),0 0 6px var(--sh-paper),1px 1px 0 var(--sh-paper),-1px -1px 0 var(--sh-paper),1px -1px 0 var(--sh-paper),-1px 1px 0 var(--sh-paper)!important}
 .maplibregl-ctrl-attrib,.maplibregl-ctrl-attrib *{font-size:11px!important;line-height:15px!important;text-transform:none!important}
 .maplibregl-ctrl-group,.maplibregl-ctrl-attrib{background:var(--sh-paper)!important;border:0!important}
 
