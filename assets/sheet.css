@@ -1602,3 +1602,15 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     :root.gmd #gmdTopBar{width:max-content!important}
   }
 }
+
+/* ---- The filter pills stay off the chat under 1080px (15 Nov 2026). There is no index column there, so the pills kept
+   their first place, the window's top left, which is where the chat now begins: they were drawn over "Ask the curator"
+   and the lines under it. They take the place they have in a wider window, on the map, from the same placeChips()
+   (assets/desktop-maps.js): top left of the map, or bottom left when the room there is narrower than the widest pill. ---- */
+@layer sheet{
+  @media (min-width:768px) and (max-width:1079px){
+    :root.gmd #gmdChips{position:fixed!important;top:var(--sh-chips-t,calc(var(--sh-head) + 1px + var(--sh-pad) * .6))!important;bottom:var(--sh-chips-b,auto)!important;
+      left:var(--sh-chips-l,calc(var(--sh-map-l) + var(--sh-pad)))!important;right:auto!important;
+      width:auto!important;max-width:var(--sh-chips-mw,340px)!important;z-index:31!important}
+  }
+}
