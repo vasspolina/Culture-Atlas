@@ -7,3 +7,8 @@ window.ATLAS_REPORT_API_URL = 'https://culture-atlas-reports.fly.dev';
 // entering a key; the Anthropic key stays in the Worker as the secret ANTHROPIC_API_KEY. Empty means the chat answers from
 // the records, or from a visitor's own key if they add one in settings.
 window.ATLAS_AI_PROXY_URL = 'https://culture-atlas-submissions.vasilievapolli.workers.dev/chat';
+
+// Visit counting (assets/analytics.js): the count address of a GoatCounter site, e.g. 'https://culture-atlas.goatcounter.com/count'.
+// No cookies and no third-party script; it sends the page path, the referring site and the screen width, and counts a record
+// opened, a chat question asked (not its words) and Gossip mode switched on. Empty means nothing is counted or sent.
+window.ATLAS_ANALYTICS_URL = '';

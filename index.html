@@ -51,7 +51,8 @@
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=678">
   <link rel="stylesheet" href="assets/sheet.css?v=678">
-  <script src="assets/config.js?v=669"></script>
+  <script src="assets/config.js?v=679"></script>
+  <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
   <script src="assets/names.js?v=669"></script>
   <script src="assets/grounding.js?v=669"></script>
@@ -7324,6 +7325,7 @@ return maplibregl$1;
     function toggleGossipMode(forceState) {
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
+      if (isGossipModeActive && window.atlasCount) window.atlasCount('gossip/on');
       ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) b.setAttribute('aria-pressed', String(isGossipModeActive)); });
       if (typeof appendCuratorMessage === 'function') gossipGreeting(isGossipModeActive);
       applyCityMapGossip();
@@ -10381,11 +10383,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v678';
+    const ATLAS_RELEASE = 'culture-atlas-v679';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=678').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=679').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13807,6 +13809,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     function openDossier(inst, shouldShowDrawer = true) {
       if (!inst) return;
       const isNewRecord = dossierInst !== inst;
+      if (isNewRecord && inst.id && window.atlasCount) window.atlasCount('record/' + inst.id, inst.name);   // a count of the open, nothing else (assets/analytics.js)
       dossierInst = inst;
       // On the note screen, opening another record makes it the institution of the note.
       if (isChatInputMode) { const noteInstitution = document.getElementById('noteInstitution'); if (noteInstitution) { noteInstitution.value = inst.name || ''; syncNoteReady(); } }
@@ -16661,6 +16664,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
 
     async function handleCuratorQuery(query) {
+      if (window.atlasCount) window.atlasCount('chat/question');   // that a question was asked, never its words (assets/analytics.js)
       query = fixPlaceTypos(query);
       // Only a name the visitor types opens that record's Details tab; a prompt, chip, link or mark that sends the same words stays in the chat.
       const typedByVisitor = !!window.atlasTypedQuery; window.atlasTypedQuery = false;
