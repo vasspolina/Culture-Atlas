@@ -282,7 +282,9 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 .inst-pin-label{height:var(--sh-map-lh)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important;padding:0 5px!important;border:0!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important}
 .inst-pin-label *{color:var(--sh-ink)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important}
 .custom-inst-pin:hover .inst-pin-label,.inst-pin-label:hover,.inst-pin-label:focus-visible{background:var(--sh-stone)!important;color:var(--sh-ink)!important}
-.custom-inst-pin.popup-active .inst-pin-label{background:var(--sh-stone)!important;border:1px solid var(--sh-rule)!important;color:var(--sh-ink)!important;height:calc(var(--sh-map-lh) + 2px)!important}
+/* The open space's name has 4px more around it than the other names (user, 15 Nov 2026: "add 4 px more around title in card
+   name"): 4px above and below the line and 9px either side, inside the 1px edge. */
+.custom-inst-pin.popup-active .inst-pin-label{background:var(--sh-stone)!important;border:1px solid var(--sh-rule)!important;color:var(--sh-ink)!important;padding:4px 9px!important;height:calc(var(--sh-map-lh) + 10px)!important}
 .maplibregl-ctrl-attrib,.maplibregl-ctrl-attrib *{font-size:11px!important;line-height:15px!important;text-transform:none!important}
 .maplibregl-ctrl-group,.maplibregl-ctrl-attrib{background:var(--sh-paper)!important;border:0!important}
 
