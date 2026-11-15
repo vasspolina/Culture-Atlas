@@ -1705,3 +1705,23 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     padding-top:var(--safe-t,0px)!important;overflow-y:auto!important}
 }
 }
+
+/* ---- Gossip mode, Dark and Images at the right of the head bar (user, 15 Nov 2026: "put these buttons on the right on
+   desktop", a screenshot of the three). The group leaves the left end, where it stood over the index column, and stands at
+   the window's right end, as wide as its words, a padding in from the edge as it was from the left. The panel's pages
+   (Expand chat, Details, Chat, New Query) take the left end: over the chat where the index column is open, beside the
+   mark that opens the column where it is closed, at the window's edge under 1080px where there is no column. Their bar
+   stops short of the group, whose width from the right edge is measured as --sh-top-r (assets/chat-resize.js). ---- */
+@layer sheet{
+  @media (min-width:768px){
+    :root.gmd.gmd #gmdTopBar:not(#sh-x){left:auto!important;right:0!important;width:max-content!important;min-width:0!important}
+    :root.gmd.gmd #gmdTopBar>div:not(#sh-x){padding:0 calc(var(--sh-pad) - 8px) 0 0!important;box-sizing:border-box!important}
+    :root.gmd.gmd:not(#sh-mid):not(#sh-top) #workspaceContextTabBar{--sh-tabs-l:0px;left:var(--sh-tabs-l)!important;right:auto!important;width:max-content!important;
+      min-width:calc(var(--sh-map-l) - var(--sh-tabs-l))!important;max-width:calc(100vw - var(--sh-tabs-l) - var(--sh-top-r,320px))!important}
+    :root.gmd.gmd.chat-wide:not(#sh-mid):not(#sh-top) #workspaceContextTabBar{right:var(--sh-top-r,320px)!important;width:auto!important;min-width:0!important;max-width:none!important}
+  }
+  @media (min-width:1080px){
+    :root.gmd.gmd:not(.sh-col-closed):not(#sh-mid):not(#sh-top) #workspaceContextTabBar{--sh-tabs-l:var(--sh-col)}
+    :root.gmd.gmd.sh-col-closed:not(#sh-mid):not(#sh-top) #workspaceContextTabBar{--sh-tabs-l:var(--sh-head)}
+  }
+}
