@@ -50,7 +50,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=678">
-  <link rel="stylesheet" href="assets/sheet.css?v=678">
+  <link rel="stylesheet" href="assets/sheet.css?v=685">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
@@ -249,16 +249,16 @@ return maplibregl$1;
                    (COL in assets/layers.js); the funding views below take eight more, each 31 or more apart in CIELAB from every mark,
                    every pin tier colour and each other. Black text on every one is 7:1 or better (the checked row is the fill).
                    One box can turn on several drawn layers: data-layer names the box, data-layers the layers it holds.
-                   These seven are the filters (assets/layers.js, SPACE_TEST): one on at a time; Propaganda and Clean (the grade) also never together. Only the five marked data-chip
+                   These six are the filters (assets/layers.js, SPACE_TEST): one on at a time; Propaganda and Clean (the grade) also never together. Only the four marked data-chip
                    get a chip in the row over the map (user, 7 Nov 2026: "only keep these 4 on top"; 11 Nov 2026: Funding connections
-                   out, Artist-run in; 13 Nov 2026: Images in, the spaces with artists' images); the other two are in this menu only. -->
+                   out, Artist-run in; 13 Nov 2026: Images in; 15 Nov 2026: "delete images filter and unverified, put propaganda and epstein
+                   connections underneat artist run", so Images is out and Propaganda and Epstein follow Artist-run); the other two are in this menu only. -->
               <label style="--layer-color:#f9ab30"><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
-              <label style="--layer-color:#d39bff"><input type="checkbox" data-layer="epstein" data-layers="epstein people" data-chip> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
-              <label style="--layer-color:#ff5fa0"><input type="checkbox" data-layer="propaganda" data-chip> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
               <label style="--layer-color:#3fe05a"><input type="checkbox" data-layer="independent" data-chip> <span class="layer-name">Independent</span><span class="layer-desc">Spaces whose record describes them as an independent space or institution</span><span class="layers-count" data-count="independent"></span></label>
               <label style="--layer-color:#0af0b0"><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Spaces graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
               <label style="--layer-color:#b7d40c"><input type="checkbox" data-layer="artist" data-chip> <span class="layer-name">Artist-run</span><span class="layer-desc">Spaces whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
-              <label style="--layer-color:#ffd600"><input type="checkbox" data-layer="images" data-chip> <span class="layer-name">Images</span><span class="layer-desc">Spaces named in artists&rsquo; and designers&rsquo; work on cultural institutions, with the images on their record</span><span class="layers-count" data-count="images"></span></label>
+              <label style="--layer-color:#ff5fa0"><input type="checkbox" data-layer="propaganda" data-chip> <span class="layer-name">Propaganda</span><span class="layer-desc">Spaces a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
+              <label style="--layer-color:#d39bff"><input type="checkbox" data-layer="epstein" data-layers="epstein people" data-chip> <span class="layer-name">Epstein connections</span><span class="layer-desc">Spaces whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
             </div>
           </section>
           <section class="layers-section" data-no-chips>
@@ -360,7 +360,6 @@ return maplibregl$1;
         <ul class="mck-list">
           <li><button type="button" class="mck-row" data-grade="A" aria-pressed="false" title="Show only clean spaces; press again to show every space"><span class="mck-pill" data-tier="A">Clean</span></button></li>
           <li><button type="button" class="mck-row" data-grade="B" aria-pressed="false" title="Show only flagged spaces; press again to show every space"><span class="mck-pill" data-tier="B">Flagged</span></button></li>
-          <li><button type="button" class="mck-row" data-grade="U" aria-pressed="false" title="Show only unverified spaces; press again to show every space"><span class="mck-pill" data-tier="U">Unverified</span></button></li>
         </ul>
         <div class="grade-info mck-info" id="mapColourKeyInfo" role="region" aria-label="How spaces are graded" data-repeat-ok hidden>
           <p>The colour of a name on the map is the grade of its record. It says how well the record is sourced, not a verdict on the space.</p>
@@ -1138,7 +1137,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=680"></script>
+  <script src="assets/institutions.js?v=686"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6665,6 +6664,7 @@ return maplibregl$1;
     let searchQuery = '';
     let selectedInstitution = null;
     let hoveredInstitution = null;
+    let hoverStick = null;
     let hoveredCity = null;
     let hoveredCountry = null;
 
@@ -10383,11 +10383,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v680';
+    const ATLAS_RELEASE = 'culture-atlas-v686';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=680').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=686').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11777,7 +11777,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           const isDeepZoom = currentRadius >= baseRadius * 2.8;
           const shouldDrawGlobeLabel = isSel || isFilteredContext || isDeepZoom;
 
-          if (shouldDrawGlobeLabel && !isHov) {
+          // The hovered space keeps its label. It used to be skipped while hovered (the hover card took its place, and the
+          // cards are gone since 11 Nov 2026), so its hit box went with it: a pointer on the name hovered the space, the name
+          // vanished, the pointer was over nothing, the name came back, and the map flickered and a click there missed.
+          if (shouldDrawGlobeLabel) {
             ctx.save();
             ctx.font = atlasMonoFont();
             ctx.textAlign = 'center';
@@ -11806,7 +11809,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             const collidesWithCity = clashes(drawnCityBoxes, by);
             const collidesWithDot = onDot(by);
 
-            if ((!collidesWithOtherLabel && !collidesWithCity && !collidesWithDot && bx >= 2 && bx + bw <= width - 2) || isSel) {
+            if ((!collidesWithOtherLabel && !collidesWithCity && !collidesWithDot && bx >= 2 && bx + bw <= width - 2) || isSel || isHov) {
               drawnInstLabelBoxes.push({ x: bx, y: by, w: bw, h: bh });
               shownInstLabels.add(d.inst.name);
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
@@ -12651,8 +12654,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       });
       return t.innerHTML;
     }
-    function documentedRecordHtml(inst) {
+    // brief: the chat's answer to "what are people saying about X" (user, 15 Nov 2026: "way too much info prints if I click on
+    // this prompt"). The three newest items that are not stale, each its headline, who says it and when, with one
+    // source; the flags, other findings, older talk, related reporting and personal accounts stay on the record.
+    function documentedRecordHtml(inst, opts) {
       if (!inst) return '';
+      const brief = !!(opts && opts.brief) && gossipItems(inst, true).length > 0;
       const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'source'; } };
       const sourceDetails = (source) => {
         const url = typeof source === 'string' ? source : source && source.url;
@@ -12691,6 +12698,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const gossipCard = (g) => item(g.headline, { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span><br><span class="meta gossip-provenance">${escapeHtml(gossipProvenance(g))}</span>` },
         p('', g.said) + list(li('Response: ', g.response), li('Outcome: ', g.outcome), li('', { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Resolved.', stale: 'Old talk; nothing since.' }[g.status] || '')),
         g.urls);
+      // The headline is the sentence: an item's first sentence runs to 250 characters and more, and cut short it stops mid-claim.
+      const gossipBrief = (g) => item('', { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span>` }, p('', proseEnd(g.headline)), (g.urls || []).slice(0, 1));
+      if (brief) {
+        const fresh = gossipItems(inst, true), shown = fresh.slice(0, 3), left = fresh.length - shown.length;
+        return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
+        ${shown.map(g => gossipBrief(g).replace('<div class="record-card', '<div data-gossip="item" class="record-card')).join('')}
+      </div><p class="no-indent">${left > 0 ? `${left} more ${left === 1 ? 'story' : 'stories'} and the whole of each one` : `The whole of ${shown.length === 1 ? 'it' : 'each one'}`}: ${formatInstLink(inst)}.</p>`;
+      }
       if (gossipOn) gossipItems(inst, true).forEach(g => blocks.push(gossipCard(g).replace('<div class="record-card', '<div data-gossip="item" class="record-card')));
       if (inst.why_flagged || (inst.flags || []).length) {
         const more = (inst.flag_details || []).filter(d => d && d.text);
@@ -17202,7 +17217,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
-        const reported = chatReportingHtml(documentedRecordHtml(target));
+        const askedGossip = isGossipModeActive || GOSSIP_ASK.test(query);
+        const reported = chatReportingHtml(documentedRecordHtml(target, { brief: askedGossip && isGossipModeActive }));
         // Asked for gossip: the reported items alone, no title line, rating or source list around them.
         if (isGossipModeActive || GOSSIP_ASK.test(query)) {
           // A record with no reported items can still carry a watch flag or a flagged funder: that line is its gossip.
@@ -20447,6 +20463,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const dist = Math.hypot(d.x - mx, d.y - my);
         if (dist < nearestDist) { nearestDist = dist; nearest = d; }
       }
+      // The space already hovered keeps the hover a few pixels past its reach, and against a neighbour only a little nearer,
+      // so a hand resting on the edge of a dot or between two dots does not flick the hover back and forth.
+      if (hoverStick) {
+        const cur = visibleDots.find(d => d.inst === hoverStick);
+        if (cur) {
+          const curDist = Math.hypot(cur.x - mx, cur.y - my);
+          if (curDist <= dotReach + 4 && curDist <= nearestDist + 3) return cur.inst;
+        }
+      }
       if (nearest && nearestDist <= dotReach) return nearest.inst;
 
       // 2. A label under the pointer (the label nearest the pointer if several overlap)
@@ -20727,6 +20752,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const cy = height / 2;
       const r = currentRadius;
 
+      hoverStick = hoveredInstitution;   // findInstitutionAt: the space hovered until now keeps the hover at its edge
       hoveredInstitution = null;
       hoveredCountry = null;
 
@@ -20862,7 +20888,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     canvas.addEventListener('pointermove', e => {
       window.__lastPointerType = e.pointerType;
       lastPointer = e.pointerType === 'mouse' ? { x: e.clientX, y: e.clientY } : null;
+      const prevHover = hoveredInstitution;
       updateHoverCursor(e.clientX, e.clientY);
+      // The hover was cleared without a repaint when the pointer left a space, so the space stayed lit until something else redrew.
+      if (prevHover !== hoveredInstitution && typeof scheduleRender === 'function') scheduleRender();
     });
     canvas.addEventListener('pointerleave', () => { lastPointer = null; if (window.atlasLayerMarks) window.atlasLayerMarks.hover(-1e4, -1e4); });
     canvas.addEventListener('pointerdown', e => { window.__lastPointerType = e.pointerType; zoomAnchor = null; }, true);
@@ -21550,11 +21579,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/layers.js?v=669"></script>
 <script src="assets/critique-gallery-data.js?v=673"></script>
 <script src="assets/critique-captions.js?v=673"></script>
-<script src="assets/critique-gallery.js?v=673"></script>
+<script src="assets/critique-gallery.js?v=680"></script>
 <script src="assets/hq-detail.js?v=669"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=674"></script>
-<script src="assets/desktop-maps.js?v=669"></script>
-<script src="assets/chat-resize.js?v=669"></script>
+<script src="assets/phone-maps.js?v=682"></script>
+<script src="assets/desktop-maps.js?v=685"></script>
+<script src="assets/chat-resize.js?v=684"></script>
 </body>
 </html>

@@ -482,8 +482,10 @@
     }
     colClose.addEventListener('click', () => setCol(true, true));
     colOpen.addEventListener('click', () => setCol(false, true));
-    let colStart = false;
-    try { colStart = localStorage.getItem(COL_KEY) === '1'; } catch (_) {}
+    // The page loads with the column closed, the chat beside the map (user, 15 Nov 2026: "make it load like this", a screenshot
+    // of the chat and the map alone). A visitor who opened the column keeps it open: only their own '0' says so.
+    let colStart = true;
+    try { colStart = localStorage.getItem(COL_KEY) !== '0'; } catch (_) {}
     setCol(colStart, false);
 
     // ---- What the atlas is, at the map's top right (user, 10 Nov 2026: "use this typesetting but with times to put tagline
@@ -569,7 +571,8 @@
     // The grade filters join the filter pills at the top, after the others, and the colour key goes (user, 11 Nov 2026:
     // "add clean flagged verified filter to the top to other filters and delete color key"). They drive the same grade
     // filter the key's rows did (assets/layers.js atlasSetGradeFilter). Rebuilt if the row is ever redrawn.
-    const GRADES = [['A', 'Clean'], ['B', 'Flagged'], ['U', 'Unverified']];
+    // Unverified is not a filter (user, 15 Nov 2026: "delete images filter and unverified").
+    const GRADES = [['A', 'Clean'], ['B', 'Flagged']];
     function gradePills() {
       if (typeof window.atlasSetGradeFilter !== 'function' || !chips.querySelector('button')) return;
       if (!chips.querySelector('button[data-grade]')) {
@@ -592,13 +595,18 @@
       growInput();
       fitStrip();
       const root = document.documentElement, vp = $('globeViewport'), tag = $('shTagline');
-      if (!vp || !chips.isConnected || !window.matchMedia('(min-width:1080px)').matches) return;
+      // From 768px, not 1080px: under 1080px there is no index column, and the pills left at the window's top left stood
+      // over the chat's opening words (15 Nov 2026). They are placed on the map there too (sheet.css, end).
+      if (!vp || !chips.isConnected || !window.matchMedia('(min-width:768px)').matches) return;
       const v = vp.getBoundingClientRect();
       if (!v.width) return;
       const pad = parseFloat(getComputedStyle(root).getPropertyValue('--sh-pad')) || 22;
       const t = tag && tag.getClientRects().length ? tag.getBoundingClientRect() : null;
       const widest = Math.max(0, ...[...chips.querySelectorAll('button')].map((b) => b.getBoundingClientRect().width));
-      const room = (t ? t.left : v.right) - v.left - 2 * pad;
+      // The name stands centred at the map's top (sheet.css, end): the pills keep to its left as they keep to the tagline's.
+      const nb = $('gmdTitle') && $('gmdTitle').querySelector('button');
+      const n = nb && nb.getClientRects().length ? nb.getBoundingClientRect() : null;
+      const room = Math.min(t ? t.left : v.right, n && n.top < v.top + v.height / 2 ? n.left : v.right) - v.left - 2 * pad;
       const top = room >= widest;
       const set = (k, val) => { if (root.style.getPropertyValue(k) !== val) root.style.setProperty(k, val); };
       set('--sh-chips-l', `${Math.round(v.left + pad)}px`);

@@ -354,7 +354,8 @@
       body.appendChild(row);
       // Clean, Flagged and Unverified follow the other filters, as on the desktop (user, 11 Nov 2026: "filters and chat need
       // to match desktop version"). They drive the grade filter in assets/layers.js; one at a time, pressed again for all.
-      const GRADES = [['A', 'Clean'], ['B', 'Flagged'], ['U', 'Unverified']];
+      // Unverified is not a filter (user, 15 Nov 2026: "delete images filter and unverified").
+      const GRADES = [['A', 'Clean'], ['B', 'Flagged']];
       const gradeChips = () => {
         if (typeof window.atlasSetGradeFilter !== 'function' || !row.querySelector('button')) return;
         if (!row.querySelector('button[data-grade]')) GRADES.forEach(([g, name]) => {
@@ -1134,9 +1135,9 @@
         // The panel is called Latest (user, 12 Nov 2026, picked from a list of names; Recent news since 11 Nov 2026), and so is
         // the strip that opens it.
         const label = 'Latest';
-        const more = alerts.length > 1 ? ' · ' + (alerts.length - 1) + ' more alert' + (alerts.length > 2 ? 's' : '') : '';
+        const more = alerts.length > 1 ? ', ' + (alerts.length - 1) + ' more' : '';
         // No "Alert" word on the strip either (user, 5 Nov 2026): the meta line is the space, when, and how many more.
-        const meta = top.inst.name + ' · ' + ago(top.when) + more;
+        const meta = top.inst.name + ', ' + ago(top.when) + more;
         // No badge: the strip is its headline and meta line only (user, 5 Nov 2026: "delete icon"); its aria-label still says "Latest".
         strip.innerHTML = '<span class="gm-strip-head">' + esc(top.head) + '</span><span class="gm-strip-meta">' + esc(meta) + '</span>';
         strip.setAttribute('aria-label', label + (alerts.length ? ', an alert now' : '') + ': ' + top.head + '. ' + top.inst.name + ', ' + ago(top.when) + more + '. Open the latest reports');
@@ -1174,13 +1175,13 @@
       // there is to read: 6s, plus a quarter second a word past the first twelve, to 12s.
       let toastTimer = 0, toastClear = 0;
       const nb = (t) => esc(t).replace(/ (\S+)$/, '\u00a0$1');
-      const dot = '<span class="gm-toast-dot" aria-hidden="true">\u00a0\u00b7 </span>';
+      const dot = ', ';   // parts are set off by commas, not middle dots (user, 15 Nov 2026)
       const noteHtml = (n) => '<p class="gm-toast-kick"><span class="gm-toast-mark" data-tone="' + esc(n.tone || 'report') + '" aria-hidden="true"></span>'
         + '<span class="gm-toast-label">' + n.label.map(esc).join(dot) + '</span>'
         + (n.when ? '<span class="gm-toast-when">' + esc(n.when) + '</span>' : '') + '</p>'
         + '<p class="gm-toast-name">' + nb(n.name) + '</p>'
         + (n.head ? '<p class="gm-toast-head">' + nb(n.head) + '</p>' : '')
-        + (n.meta && n.meta.length ? '<p class="gm-toast-meta">' + n.meta.map((m, i, a) => '<span>' + esc(m) + (i < a.length - 1 ? '<span class="gm-toast-dot" aria-hidden="true">\u00a0\u00b7</span>' : '') + '</span>').join(' ') + '</p>' : '');
+        + (n.meta && n.meta.length ? '<p class="gm-toast-meta">' + n.meta.map((m, i, a) => '<span>' + esc(m) + (i < a.length - 1 ? ',' : '') + '</span>').join(' ') + '</p>' : '');
       const say = (t) => {
         clearTimeout(toastTimer); clearTimeout(toastClear);
         if (!t) { toast.classList.remove('is-on'); toastClear = setTimeout(() => { toast.innerHTML = ''; }, 250); return; }
@@ -1195,7 +1196,7 @@
       // One report or alert as a notice. The meta line names the status first, so talk is never read as a finding.
       const note = (x, alert) => ({
         tone: alert ? 'alert' : (x.status === 'talk' || x.status === 'user' ? 'talk' : 'report'),
-        label: [alert ? 'New alert' : 'New report', KIND[x.kind] || ''].filter(Boolean),
+        label: ['New report', KIND[x.kind] || ''].filter(Boolean),
         when: ago(x.when),
         name: x.inst.name,
         head: x.head,
@@ -1250,7 +1251,8 @@
         // Space line in the facts is gone and the name is not said twice.
         return '<article class="gm-story ts-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">'
           + '<p class="ts-name"><button type="button" class="gm-open ts-space" data-i="' + i + '">' + esc(x.inst.name) + '</button></p>'
-          + '<p class="ts-label">' + esc((alert ? 'Alert · ' : '') + (KIND[x.kind] || 'Report')) + '</p>'
+          // The label is the kind alone: no "Alert" word and no middle dot (user, 15 Nov 2026).
+          + '<p class="ts-label">' + esc(KIND[x.kind] || 'Report') + '</p>'
           + '<h3 class="ts-headline">' + esc(x.head) + '</h3>'
           + (said ? '<p class="ts-prose">' + esc(said) + '</p>' : '')
           + (hasReply ? '<p class="ts-label">Reply</p><p class="ts-prose">' + esc(x.reply) + '</p>' : '')
@@ -1380,7 +1382,7 @@
         // kicker, the headline, and status, source and place, each on its own line.
         if (notifyOn()) {
           const n = note(x, true);
-          try { new Notification(n.name, { body: n.label.join(' \u00b7 ') + ' \u00b7 ' + n.when + '\n' + n.head + '\n' + n.meta.join(' \u00b7 '), tag: x.key }); } catch (_) {}
+          try { new Notification(n.name, { body: n.label.join(', ') + ', ' + n.when + '\n' + n.head + '\n' + n.meta.join(', '), tag: x.key }); } catch (_) {}
         }
       }
 

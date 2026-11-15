@@ -1450,6 +1450,25 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   #critiquePop .critique-pop-open{display:block!important;margin-top:var(--sh-s-lh)!important}
   #critiquePop :is(.critique-pop-open,.critique-pop-more)::before{content:"– "}
   #critiquePop :is(.critique-pop-open,.critique-pop-more):hover{color:var(--sh-hover)!important}
+  /* The images in the chat window (user, 15 Nov 2026: "the images can show in chat window when user hovers map"): laid
+     over the whole right column while a marked space is pointed at, as a gallery site shows an exhibition's picture beside
+     its list. The space's name is the large line, the tie under it, then one picture at the column's width, whole, its
+     title and artist under it, a strip of the others (pointing at one makes it the large one) and Open gallery. */
+  #critiquePane.critique-pane{position:absolute!important;inset:0!important;z-index:40!important;box-sizing:border-box!important;overflow-y:auto!important;
+    padding:var(--sh-pad)!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important}
+  #critiquePane.critique-pane[hidden]{display:none!important}
+  #critiquePane p{margin:0!important}
+  #critiquePane .critique-pane-tie{margin-top:calc(var(--sh-s-lh) / 4)!important}
+  #critiquePane .critique-pane-big{display:block!important;width:100%!important;margin-top:var(--sh-s-lh)!important;line-height:0!important;text-align:left!important;background:none!important}
+  #critiquePane .critique-pane-big img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:62vh!important;object-fit:contain!important}
+  #critiquePane .critique-pane-project{margin-top:calc(var(--sh-s-lh) / 2)!important}
+  #critiquePane .critique-pane-strip{display:flex!important;flex-wrap:wrap!important;gap:calc(var(--sh-pad) / 2)!important;margin-top:var(--sh-s-lh)!important}
+  #critiquePane .critique-pane-strip button{flex:0 0 auto!important;line-height:0!important;overflow:hidden!important;background:var(--sh-stone-2)!important;outline-offset:2px!important}
+  #critiquePane .critique-pane-strip img{display:block!important;height:72px!important;width:auto!important;max-width:144px!important;object-fit:cover!important}
+  #critiquePane .critique-pane-strip button[aria-current="true"]{outline:1px solid var(--sh-ink)!important}
+  #critiquePane .critique-pane-open{display:block!important;margin-top:var(--sh-s-lh)!important}
+  #critiquePane .critique-pane-open::before{content:"– "}
+  #critiquePane .critique-pane-open:hover{color:var(--sh-hover)!important}
   .cg-row{list-style:none!important}
   .cg-row .cg-row-tie{margin:0!important}
   /* Under the phone record's Images tab (assets/phone-maps.js; user, 14 Nov 2026: "add images tab") the pictures are not a strip
@@ -1561,4 +1580,61 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
    bring it back, delete this rule. */
 @layer sheet{
   #layersControl #layersBtn:not(#sh-x):not(#sh-y){display:none!important}
+}
+
+/* ---- The head bar is one line (user, 15 Nov 2026: "fix top menu", a screenshot of Images set under Expand chat). With the
+   index column closed the left group (Gossip mode, Dark, Images) was held to 260px and the panel's pages began at 260px
+   whatever the group measured, inside a bar only as wide as the chat less those 260px, so the two ran into each other and
+   the pages were cut to "Ex... De... Ch...". Now the left group is as wide as its words when no column holds it wider, the
+   pages begin at its measured right edge (--sh-top-w, assets/chat-resize.js), and their bar is never narrower than its
+   own words: it ends with the chat where there is room, and runs on over the map's head where there is not. ---- */
+@layer sheet{
+  @media (min-width:768px){
+    :root.gmd.sh-col-closed #gmdTopBar{width:max-content!important}
+    :root.gmd:not(#sh-mid):not(#sh-top) #workspaceContextTabBar{left:var(--sh-top-w,max(var(--sh-col),260px))!important;right:auto!important;width:max-content!important;
+      min-width:calc(var(--sh-map-l) - var(--sh-top-w,max(var(--sh-col),260px)))!important;max-width:calc(100vw - var(--sh-top-w,max(var(--sh-col),260px)))!important;
+      flex-wrap:nowrap!important;column-gap:calc(var(--sh-pad) * .75)!important}
+    :root.gmd.chat-wide:not(#sh-mid):not(#sh-top) #workspaceContextTabBar{right:0!important;width:auto!important;min-width:0!important}
+    /* Whole words while the window has room for them; in a window too narrow for the line they give way evenly. */
+    :root.gmd:not(#sh-top) #workspaceContextTabBar button{flex:0 1 auto!important;min-width:0!important}
+  }
+  @media (min-width:768px) and (max-width:1079px){
+    :root.gmd #gmdTopBar{width:max-content!important}
+  }
+}
+
+/* ---- The filter pills stay off the chat under 1080px (15 Nov 2026). There is no index column there, so the pills kept
+   their first place, the window's top left, which is where the chat now begins: they were drawn over "Ask the curator"
+   and the lines under it. They take the place they have in a wider window, on the map, from the same placeChips()
+   (assets/desktop-maps.js): top left of the map, or bottom left when the room there is narrower than the widest pill. ---- */
+@layer sheet{
+  @media (min-width:768px) and (max-width:1079px){
+    :root.gmd #gmdChips{position:fixed!important;top:var(--sh-chips-t,calc(var(--sh-head) + 1px + var(--sh-pad) * .6))!important;bottom:var(--sh-chips-b,auto)!important;
+      left:var(--sh-chips-l,calc(var(--sh-map-l) + var(--sh-pad)))!important;right:auto!important;
+      width:auto!important;max-width:var(--sh-chips-mw,340px)!important;z-index:31!important}
+  }
+}
+
+/* ---- No foot bar; the name at the top; the page fades out at the bottom (user, 15 Nov 2026: "make the page fade at the
+   bottom and put title on top, delete yellow", a screenshot of the lime foot bar with the name in it). Supersedes the foot
+   bar of release 654 and its band: the lime strip goes, the sheet runs to the window's foot, and the columns that scroll
+   (the chat, the record, the detail) fade to paper over their last 72px instead of stopping on a bar. A spacer as tall as
+   the fade lets the last line scroll clear of it. The name stands at the top of the map, centred under the head bar, with
+   a paper halo so it reads over the map; with the chat wide there is no map and it is hidden, as in release 640. The filter
+   pills give it room: placeChips() (assets/desktop-maps.js) counts the name as it counts the tagline. ---- */
+@layer sheet{
+  @media (min-width:768px){
+    :root.gmd.gmd:not(#sh-mid){--sh-foot:0px;--sh-bar:0px}
+    :root.gmd.gmd body::after{content:none!important;display:none!important}
+    :root.gmd.gmd:not(#sh-mid) #mainAppContainer{bottom:0!important}
+    :root.gmd.gmd:not(#sh-mid):not(#sh-top) #gmdTitle{display:flex!important;align-items:center!important;justify-content:center!important;position:fixed!important;
+      top:calc(var(--sh-head) + 1px + var(--sh-pad) * .6)!important;bottom:auto!important;left:var(--sh-map-l)!important;right:0!important;width:auto!important;height:var(--sh-l-lh)!important;
+      margin:0!important;padding:0 var(--sh-pad)!important;border:0!important;background:transparent!important;text-align:center!important;white-space:nowrap!important;z-index:44!important;pointer-events:none!important}
+    :root.gmd.gmd:not(#sh-mid):not(#sh-top) #gmdTitle button{max-width:100%!important;overflow:hidden!important;text-overflow:ellipsis!important;
+      text-shadow:0 0 3px var(--sh-paper),0 0 6px var(--sh-paper),0 0 12px var(--sh-paper)!important;pointer-events:auto!important}
+    :root.gmd.gmd.chat-wide #gmdTitle{display:none!important}
+    :root.gmd.gmd :is(#curatorScrollArea,#desktopDossierBody,#detailBody){
+      -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 72px),transparent)!important;mask-image:linear-gradient(to bottom,#000 calc(100% - 72px),transparent)!important}
+    :root.gmd.gmd :is(#curatorScrollArea,#desktopDossierBody,#detailBody)::after{content:""!important;display:block!important;flex:none!important;height:72px!important}
+  }
 }
