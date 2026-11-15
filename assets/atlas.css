@@ -4984,7 +4984,8 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
    leaned, "pin needs to be vertical" and a picture of one, "make pin like this"): a glossy red ball with a window's light on
    its top, on a steel shaft that stands upright with its foot on the place. Gradients are in the SVG; the same colours in
    both themes. */
-.atlas-drop-pin .atlas-drop-pin-red{stroke:#8f1810;stroke-width:.6}
+/* The ball's colour and its edge are set in the SVG, from the open space's filter colour (atlasPinColour in index.html). */
+.atlas-drop-pin .atlas-drop-pin-red{stroke-width:.6}
 .atlas-drop-pin .atlas-drop-pin-steel{stroke:#4a525c;stroke-width:.6}
 .atlas-drop-pin.is-dropping svg{animation:atlas-pin-drop .22s cubic-bezier(.3,0,.6,1) both}
 @keyframes atlas-pin-drop{from{transform:translateY(-14px)}to{transform:none}}
