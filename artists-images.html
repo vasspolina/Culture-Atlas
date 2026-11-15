@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Artists’ images · Leaving it on the table</title>
-  <meta name="description" content="Artists’ and designers’ work on cultural institutions, grouped by the space it names, each image open to zoom." />
+  <meta name="description" content="Artists’ and designers’ work on cultural institutions, from the oldest to the newest, each image open to zoom." />
   <link rel="stylesheet" href="assets/sheet.css?v=670">
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <style>
@@ -63,7 +63,6 @@
       .layout button{color:var(--sh-ink)!important}
       .layout button::before{content:"– "}
       .layout button:hover{color:var(--sh-hover)!important}
-      .missing{margin:calc(var(--sh-s-lh) * 3) 0 0!important;max-width:40em!important}
       footer.foot{display:flex!important;align-items:center!important;justify-content:center!important;min-height:var(--sh-foot)!important;background:var(--sh-stone)!important;border-top:1px solid var(--sh-rule)!important}
       /* The name in the foot bar goes home, as the atlas's own does (user, 13 Nov 2026: "this need to return home on click"). */
       footer.foot a{font-size:var(--sh-l)!important;line-height:var(--sh-l-lh)!important;color:var(--sh-ink)!important;text-decoration:none!important}
@@ -98,7 +97,7 @@
 <a class="skip" href="#main">Skip to the images</a>
 <header class="top"><span class="top-title">Artists’ images</span>
   <div class="views" role="group" aria-label="Organise by">
-    <button type="button" class="act-v" data-view="work" aria-pressed="true">By work</button>
+    <button type="button" class="act-v" data-view="work" aria-pressed="true">By date</button>
     <button type="button" class="act-v" data-view="space" aria-pressed="false">By space</button>
   </div>
   <div class="layout" role="group" aria-label="Show images">
@@ -109,12 +108,11 @@
 <main id="main">
   <div class="intro">
     <h1>Artists’ images</h1>
-    <p>Artists’ and designers’ work on cultural institutions: posters, publications, maps, cartoons and exhibition views from the cultural space critique collection, references 1801 to 2000. By work, in the bar at the top, shows every image the atlas holds; By space shows the works that name a space on the map.</p>
+    <p>Artists’ and designers’ work on cultural institutions: posters, publications, maps, cartoons, performances and exhibition views, from the oldest to the newest. By space, in the bar at the top, shows the works that name a space on the map.</p>
     <p>Open an image to zoom: scroll or pinch, double-click or double-tap, or use + and −. Drag to move around it.</p>
   </div>
   <nav class="toc" aria-labelledby="tocLabel"><p class="label" id="tocLabel"></p><ul></ul></nav>
   <div id="groups"></div>
-  <p class="missing" data-missing></p>
 </main>
 <footer class="foot"><a href="./" title="Back to the atlas">Leaving it on the table</a></footer>
 
@@ -139,30 +137,30 @@
   </div>
 </dialog>
 
-<script src="assets/critique-gallery-data.js?v=670"></script>
-<script src="assets/critique-collection-data.js?v=656"></script>
-<script src="assets/critique-captions.js?v=670"></script>
+<script src="assets/critique-gallery-data.js?v=692"></script>
+<script src="assets/critique-collection-data.js?v=692"></script>
+<script src="assets/critique-additions-data.js?v=692"></script>
+<script src="assets/critique-captions.js?v=692"></script>
 <script>
 (function () {
   const D = window.CRITIQUE_GALLERY, C = window.CRITIQUE_COLLECTION;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const plural = n => `${n} ${n === 1 ? 'image' : 'images'}`;
   const spaceNames = n => (C.on_spaces[n] || []).map(id => D.spaces[id].name);
-  // A caption names the work, the people and the occasion (assets/critique-captions.js), then the photographer when the
-  // credit names one. Without an occasion it says what kind of work it is instead, so no line is left empty.
+  // A caption names the work, the people, what the picture is and where (assets/critique-captions.js, written by hand
+  // for each work and, where pictures differ, each image), then the photographer when the credit names one.
   const CAP = window.CRITIQUE_CAPTIONS || {};
-  const kind = t => String(t || '').split(' / ').join(', ');
-  const caption = im => {
-    const c = CAP[im.artist + '|' + im.project] || {};
-    const photo = (/Photo(?:graph|graphy)?: (.+?[^\s.]{2})\.(?:\s|$)/.exec(im.credit || '') || [])[1];
-    return { title: im.project, who: c.who || im.artist, occasion: c.occasion || kind(im.type), photo: photo ? `Photograph: ${photo}` : '' };
-  };
+  const caption = window.critiqueCaption;
 
-  // By work: one group per work, in the collection's order; the contents line lists the artists.
-  const byWork = C.works.map((w, i) => ({ id: 'w' + i, title: w.project, sub: w.artist, note: w.note, toc: w.artist, images: w.images }));
-  // An artist's works sit together, in the order the artists first appear in the collection.
-  const firstOf = {}; byWork.forEach((g, i) => { if (!(g.toc in firstOf)) firstOf[g.toc] = i; });
-  byWork.sort((a, b) => firstOf[a.toc] - firstOf[b.toc] || a.images[0].n - b.images[0].n);
+  // By date: one group per work, from the oldest to the newest (user, 15 Nov 2026: "rearrange it starting from the
+  // oldest criticism"). The dates are in assets/critique-captions.js; the works added on 15 Nov 2026
+  // (assets/critique-additions-data.js) carry their own. The contents line lists the decades.
+  const ADD = window.CRITIQUE_ADDITIONS || { works: [] };
+  const byWork = C.works.map(w => { const c = CAP[w.artist + '|' + w.project] || {};
+    return { title: c.title || w.project, sub: c.who || w.artist, year: c.year || '', from: c.from || 9999, images: w.images }; })
+    .concat(ADD.works.map(w => ({ title: w.project, sub: w.artist, year: w.year, from: w.from, note: w.note, images: w.images })));
+  byWork.sort((a, b) => a.from - b.from || a.title.localeCompare(b.title));
+  byWork.forEach((g, i) => { g.id = 'w' + i; g.toc = Math.floor(g.from / 10) * 10 + 's'; });
   // By space: one group per set of images, so two spaces carrying the same work (Tate Modern and the Rijksakademie) share one.
   const bySpace = [];
   Object.entries(D.spaces).forEach(([id, sp]) => {
@@ -179,20 +177,20 @@
   function render(view) {
     groups = view === 'space' ? bySpace : byWork;
     document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === view)));
-    document.getElementById('tocLabel').textContent = view === 'space' ? 'Spaces' : 'Artists';
+    document.getElementById('tocLabel').textContent = view === 'space' ? 'Spaces' : 'Decades';
     const seen = new Set();
     document.querySelector('nav.toc ul').innerHTML = groups.filter(g => !seen.has(g.toc) && seen.add(g.toc)).map(g => {
       const n = groups.filter(x => x.toc === g.toc).reduce((t, x) => t + x.images.length, 0);
       return `<li><a class="act" href="#${g.id}">${esc(g.toc)}, ${n}</a></li>`;
     }).join('');
     document.getElementById('groups').innerHTML = groups.map((g, gi) => `<section class="ai-group" id="${g.id}" aria-labelledby="h-${gi}">
-        <div class="label"><h2 id="h-${gi}">${esc(g.title)}</h2><span>${plural(g.images.length)}</span></div>
+        <div class="label"><h2 id="h-${gi}">${g.year ? `${esc(g.year)} · ` : ''}${esc(g.title)}</h2><span>${plural(g.images.length)}</span></div>
         <p class="ai-tie">${esc(g.sub)}${g.note ? `. ${esc(g.note)}` : ''}</p>
         <ul class="ai-grid">${g.images.map((im, i) => {
           const on = g.space ? [] : spaceNames(im.n);
           const c = caption(im);
-          return `<li><button type="button" data-g="${gi}" data-i="${i}" aria-label="Zoom: ${esc(im.project)}, image ${i + 1} of ${g.images.length}"><img src="${esc(im.mid || im.thumb)}" srcset="${esc(im.thumb)} 480w, ${esc(im.mid || im.thumb)} ${Math.min(1200, im.w)}w" sizes="(max-width:640px) 100vw, 50vw" alt="" loading="lazy" width="${im.w}" height="${im.h}"></button>
-          <p class="ai-cap"><span class="t">${esc(c.title)}</span><span>${esc(c.who)}</span><span>${esc(c.occasion)}</span>${c.photo ? `<span>${esc(c.photo)}</span>` : ''}${on.length ? `<span>On the atlas: ${esc(on.join(', '))}</span>` : ''}</p></li>`;
+          return `<li><button type="button" data-g="${gi}" data-i="${i}" aria-label="Zoom: ${esc(c.title)}, image ${i + 1} of ${g.images.length}"><img src="${esc(im.mid || im.thumb)}" srcset="${esc(im.thumb)} 480w, ${esc(im.mid || im.thumb)} ${Math.min(1200, im.w)}w" sizes="(max-width:640px) 100vw, 50vw" alt="" loading="lazy" width="${im.w}" height="${im.h}"></button>
+          <p class="ai-cap"><span class="t">${esc(c.title)}</span><span>${esc(c.who)}</span>${c.line ? `<span>${esc(c.line)}</span>` : ''}${c.photo ? `<span>${esc(c.photo)}</span>` : ''}${on.length ? `<span>On the atlas: ${esc(on.join(', '))}</span>` : ''}</p></li>`;
         }).join('')}</ul>
       </section>`).join('');
   }
@@ -210,8 +208,6 @@
     setLayout(b.dataset.layout);
     try { localStorage.setItem('artists-images-layout', b.dataset.layout); } catch (e) {}
   });
-  // Said plainly: the references whose image could not be fetched from their source when the page was built.
-  if (C.missing.length) document.querySelector('[data-missing]').textContent = `${plural(C.missing.length)} of the collection are not here yet: their source sites would not hand them over when the page was built (${[...new Set(C.missing.map(m => m.artist))].join(', ')}).`;
 
   // ---- The zoom viewer ----
   const dlg = document.querySelector('dialog.zv');
@@ -247,9 +243,9 @@
     dlg.querySelector('[data-z-space]').textContent = g.title;
     dlg.querySelector('[data-z-count]').textContent = n > 1 ? `${I + 1} of ${n}` : '';
     const c = caption(im);
-    dlg.querySelector('[data-z-cap]').innerHTML = `<p class="t">${esc(c.title)}</p><p>${esc(c.who)}</p><p>${esc(c.occasion)}${c.occasion === kind(im.type) ? '' : `. ${esc(kind(im.type))}`}.</p><p>${c.photo ? `${esc(c.photo)}. ` : ''}<a href="${esc(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
+    dlg.querySelector('[data-z-cap]').innerHTML = `<p class="t">${esc(c.title)}</p><p>${esc(c.who)}</p>${c.line ? `<p>${esc(c.line)}.</p>` : ''}<p>${c.photo ? `${esc(c.photo)}. ` : ''}${im.licence ? `${esc(im.licence)}. ` : ''}<a href="${esc(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
     dlg.querySelectorAll('[data-z="prev"],[data-z="next"]').forEach(b => { b.hidden = n < 2; });
-    img.alt = `${im.project}, by ${im.artist}`;
+    img.alt = `${c.title}, ${c.who}`;
     img.onload = toFit;
     img.src = im.src;
     if (img.complete && img.naturalWidth) toFit();
