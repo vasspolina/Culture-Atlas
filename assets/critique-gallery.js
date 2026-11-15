@@ -132,8 +132,8 @@
     column().appendChild(pane);
   }
   function capFor(im) {
-    const c = (window.CRITIQUE_CAPTIONS || {})[im.artist + '|' + im.project] || {};
-    return { project: im.project, who: c.who || im.artist };
+    const c = window.critiqueCaption(im);
+    return { project: c.title, who: c.who };
   }
   function pick(i) {
     const sp = SPACES[paneFor]; if (!sp || !sp.images[i]) return;
@@ -246,18 +246,16 @@
     dlg.querySelector('[data-cg-count]').textContent = n > 1 ? `${gIdx + 1} of ${n}` : '';
     const img = dlg.querySelector('[data-cg-img]');
     img.src = im.src; img.width = im.w; img.height = im.h;
-    img.alt = `${im.project}, ${im.type.toLowerCase()}, by ${im.artist}`;
     // The caption is the hand-written one of assets/critique-captions.js, as on artists-images.html: the work, the people,
-    // the occasion, then the photographer when the credit names one. The raw credit is not printed: it restated the title
-    // and the artist the two lines above already give (user, 14 Nov 2026: "the description is a slop").
-    const c = (window.CRITIQUE_CAPTIONS || {})[im.artist + '|' + im.project] || {};
-    const kind = String(im.type || '').split(' / ').join(', ');
-    const occasion = c.occasion ? (c.occasion === kind ? c.occasion : `${c.occasion}. ${kind}`) : kind;
-    const photo = (/Photo(?:graph|graphy)?: (.+?[^\s.]{2})\.(?:\s|$)/.exec(im.credit || '') || [])[1];
-    dlg.querySelector('.cg-cap').innerHTML = `<p class="cg-project">${e(im.project)}</p>
-      <p class="cg-meta">${e(c.who || im.artist)}</p>
-      <p class="cg-meta">${e(occasion)}.</p>
-      <p class="cg-credit">${photo ? `Photograph: ${e(photo)}. ` : ''}<a href="${e(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
+    // what the picture is and where, then the photographer when the credit names one. The raw credit is not printed: it
+    // restated the title and the artist the two lines above already give (user, 14 Nov 2026: "the description is a slop"),
+    // and neither is the collection's type label, which read the same way (user, 15 Nov 2026: "slop?").
+    const c = window.critiqueCaption(im);
+    img.alt = `${c.title}, ${c.who}`;
+    dlg.querySelector('.cg-cap').innerHTML = `<p class="cg-project">${e(c.title)}</p>
+      <p class="cg-meta">${e(c.who)}</p>
+      ${c.line ? `<p class="cg-meta">${e(c.line)}.</p>` : ''}
+      <p class="cg-credit">${c.photo ? `${e(c.photo)}. ` : ''}<a href="${e(im.source)}" target="_blank" rel="noopener noreferrer">Source</a></p>`;
     dlg.querySelectorAll('[data-cg-step]').forEach(b => { b.hidden = n < 2; });
     // The next image is fetched ahead, so stepping through does not wait on the network.
     if (n > 1) new Image().src = sp.images[(gIdx + 1) % n].src;
