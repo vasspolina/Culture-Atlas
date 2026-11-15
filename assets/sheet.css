@@ -1614,3 +1614,27 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
       width:auto!important;max-width:var(--sh-chips-mw,340px)!important;z-index:31!important}
   }
 }
+
+/* ---- No foot bar; the name at the top; the page fades out at the bottom (user, 15 Nov 2026: "make the page fade at the
+   bottom and put title on top, delete yellow", a screenshot of the lime foot bar with the name in it). Supersedes the foot
+   bar of release 654 and its band: the lime strip goes, the sheet runs to the window's foot, and the columns that scroll
+   (the chat, the record, the detail) fade to paper over their last 72px instead of stopping on a bar. A spacer as tall as
+   the fade lets the last line scroll clear of it. The name stands at the top of the map, centred under the head bar, with
+   a paper halo so it reads over the map; with the chat wide there is no map and it is hidden, as in release 640. The filter
+   pills give it room: placeChips() (assets/desktop-maps.js) counts the name as it counts the tagline. ---- */
+@layer sheet{
+  @media (min-width:768px){
+    :root.gmd.gmd:not(#sh-mid){--sh-foot:0px;--sh-bar:0px}
+    :root.gmd.gmd body::after{content:none!important;display:none!important}
+    :root.gmd.gmd:not(#sh-mid) #mainAppContainer{bottom:0!important}
+    :root.gmd.gmd:not(#sh-mid):not(#sh-top) #gmdTitle{display:flex!important;align-items:center!important;justify-content:center!important;position:fixed!important;
+      top:calc(var(--sh-head) + 1px + var(--sh-pad) * .6)!important;bottom:auto!important;left:var(--sh-map-l)!important;right:0!important;width:auto!important;height:var(--sh-l-lh)!important;
+      margin:0!important;padding:0 var(--sh-pad)!important;border:0!important;background:transparent!important;text-align:center!important;white-space:nowrap!important;z-index:44!important;pointer-events:none!important}
+    :root.gmd.gmd:not(#sh-mid):not(#sh-top) #gmdTitle button{max-width:100%!important;overflow:hidden!important;text-overflow:ellipsis!important;
+      text-shadow:0 0 3px var(--sh-paper),0 0 6px var(--sh-paper),0 0 12px var(--sh-paper)!important;pointer-events:auto!important}
+    :root.gmd.gmd.chat-wide #gmdTitle{display:none!important}
+    :root.gmd.gmd :is(#curatorScrollArea,#desktopDossierBody,#detailBody){
+      -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 72px),transparent)!important;mask-image:linear-gradient(to bottom,#000 calc(100% - 72px),transparent)!important}
+    :root.gmd.gmd :is(#curatorScrollArea,#desktopDossierBody,#detailBody)::after{content:""!important;display:block!important;flex:none!important;height:72px!important}
+  }
+}
