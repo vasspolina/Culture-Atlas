@@ -47,6 +47,15 @@
       .ai-group .label{display:flex!important;justify-content:space-between!important;gap:var(--sh-pad)!important;align-items:baseline!important}
       .ai-group h2{margin:0!important}
       .ai-group .ai-tie{margin:0 0 var(--sh-s-lh)!important;max-width:40em!important}
+      /* Learn more: the work's background story, closed until asked for (user, 15 Nov 2026). The summary is an action like
+         the others, a word opening with an en dash that turns blue under the pointer; open, it is in italic and says so. */
+      .ai-more{margin:calc(var(--sh-s-lh) * -1) 0 var(--sh-s-lh)!important;max-width:40em!important}
+      .ai-more summary{display:block!important;list-style:none!important;cursor:pointer!important;color:var(--sh-ink)!important;width:fit-content!important}
+      .ai-more summary::-webkit-details-marker{display:none}
+      .ai-more summary::before{content:"– "}
+      .ai-more summary:hover{color:var(--sh-hover)!important}
+      .ai-more[open] summary{font-style:italic!important}
+      .ai-more p{margin:calc(var(--sh-s-lh) / 2) 0 0!important;text-wrap:pretty!important}
       /* Two pictures to a row (user, 13 Nov 2026: "make two per row"). */
       .ai-grid{list-style:none!important;margin:0!important;padding:0!important;columns:2!important;column-gap:var(--sh-pad)!important}
       .ai-grid li{break-inside:avoid!important;margin:0 0 var(--sh-s-lh)!important}
@@ -139,8 +148,9 @@
 
 <script src="assets/critique-gallery-data.js?v=698"></script>
 <script src="assets/critique-collection-data.js?v=698"></script>
-<script src="assets/critique-additions-data.js?v=698"></script>
+<script src="assets/critique-additions-data.js?v=700"></script>
 <script src="assets/critique-captions.js?v=698"></script>
+<script src="assets/critique-stories.js?v=700"></script>
 <script>
 (function () {
   const D = window.CRITIQUE_GALLERY, C = window.CRITIQUE_COLLECTION;
@@ -155,10 +165,12 @@
   // By date: one group per work, from the oldest to the newest (user, 15 Nov 2026: "rearrange it starting from the
   // oldest criticism"). The dates are in assets/critique-captions.js; the works added on 15 Nov 2026
   // (assets/critique-additions-data.js) carry their own. The contents line lists the decades.
-  const ADD = window.CRITIQUE_ADDITIONS || { works: [] };
+  // Each work's background story, under Learn more (user, 15 Nov 2026: "add learn more dropdown explaining whats the
+  // background story"): assets/critique-stories.js for the collection, the additions' own story field for the rest.
+  const ADD = window.CRITIQUE_ADDITIONS || { works: [] }, STORY = window.CRITIQUE_STORIES || {};
   const byWork = C.works.map(w => { const c = CAP[w.artist + '|' + w.project] || {};
-    return { title: c.title || w.project, sub: c.who || w.artist, year: c.year || '', from: c.from || 9999, images: w.images }; })
-    .concat(ADD.works.map(w => ({ title: w.project, sub: w.artist, year: w.year, from: w.from, note: w.note, images: w.images })));
+    return { title: c.title || w.project, sub: c.who || w.artist, year: c.year || '', from: c.from || 9999, story: STORY[w.artist + '|' + w.project] || '', images: w.images }; })
+    .concat(ADD.works.map(w => ({ title: w.project, sub: w.artist, year: w.year, from: w.from, note: w.note, story: w.story || '', images: w.images })));
   byWork.sort((a, b) => a.from - b.from || a.title.localeCompare(b.title));
   byWork.forEach((g, i) => { g.id = 'w' + i; g.toc = Math.floor(g.from / 10) * 10 + 's'; });
   // By space: one group per set of images, so two spaces carrying the same work (Tate Modern and the Rijksakademie) share one.
@@ -186,6 +198,7 @@
     document.getElementById('groups').innerHTML = groups.map((g, gi) => `<section class="ai-group" id="${g.id}" aria-labelledby="h-${gi}">
         <div class="label"><h2 id="h-${gi}">${g.year ? `${esc(g.year)} · ` : ''}${esc(g.title)}</h2><span>${plural(g.images.length)}</span></div>
         <p class="ai-tie">${esc(g.sub)}${g.note ? `${/[.?!]$/.test(g.sub) ? '' : '.'} ${esc(g.note)}` : ''}</p>
+        ${g.story ? `<details class="ai-more"><summary>Learn more</summary><p>${esc(g.story)}</p></details>` : ''}
         <ul class="ai-grid">${g.images.map((im, i) => {
           const on = g.space ? [] : spaceNames(im.n);
           const c = caption(im);

@@ -59,7 +59,9 @@ def main(img_dir):
             credit = f'{credit}. Photograph: {r["photographer"]}' if credit else f'Photograph: {r["photographer"]}'
         key = (r['artist'], r['title'])
         work = works.setdefault(key, {'artist': r['artist'], 'project': r['title'], 'year': r['year'], 'from': r['sort_year'],
-                                      'note': r.get('note', ''), 'images': []})
+                                      'note': r.get('note', ''), 'story': '', 'images': []})
+        if r.get('story'):                          # the background story under Learn more, written once per work
+            work['story'] = r['story']
         work['images'].append({'n': n, 'src': f'assets/critique_additions/{n}.jpg', 'thumb': f'assets/critique_additions/{n}_t.jpg',
                                'mid': f'assets/critique_additions/{n}_m.jpg', 'w': w, 'h': h, 'artist': r['artist'], 'project': r['title'],
                                'year': r['year'], 'kind': r['kind'], 'credit': credit + '.' if credit else '', 'licence': r.get('licence', ''),
