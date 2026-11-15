@@ -7553,6 +7553,15 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       }
       tabChat?.setAttribute('aria-pressed', String(currentWorkspaceTab === 'chat'));
       tabDossier?.setAttribute('aria-pressed', String(currentWorkspaceTab === 'dossier'));
+      // The box to ask in and Share information stay at the foot of the column under Details too (user, 15 Nov 2026: "keep share
+      // information button at the bottom and a chat window"): the dock is one node, moved to whichever column is showing, so
+      // what is typed in it is kept. Asking or opening a note from there turns to the chat (handleWorkSend, enterChatInputMode).
+      const dock = document.getElementById('workBottomDock');
+      if (dock) {
+        const noteOpen = document.body.classList.contains('chat-input-mode-active');   // an open note stays with the chat
+        const home = window.innerWidth >= 768 && currentWorkspaceTab === 'dossier' && dossierCol && !noteOpen ? dossierCol : chatCol;
+        if (home && dock.parentElement !== home) home.appendChild(dock);
+      }
       if (window.atlasSyncInert) window.atlasSyncInert();
     }
     window.setWorkspaceTab = setWorkspaceTab;
@@ -10383,11 +10392,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v687';
+    const ATLAS_RELEASE = 'culture-atlas-v688';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=687').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=688').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -18135,6 +18144,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function enterChatInputMode(kindOrTopic = '') {
       // Share information, a record's link and the old information and gossip links all open the whistleblower note.
       const defaultTopic = ['information', 'gossip', 'whistleblower'].includes(kindOrTopic) ? '' : kindOrTopic;
+      if (window.innerWidth >= 768 && currentWorkspaceTab === 'dossier') setWorkspaceTab('chat');
       isChatInputMode = true;
       setChatShareOn(true);
       // The conversation so far steps aside while a note is written; it comes back with Back to chat (the Share information button, which reads that while the note is open).
@@ -18264,6 +18274,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
       // 1. Deactivate whole-chat full-width mode
       document.body.classList.remove('chat-input-mode-active');
+      if (window.innerWidth >= 768 && currentWorkspaceTab === 'dossier') setWorkspaceTab('dossier');   // the box comes back under Details
       if (typeof resizeCanvas === 'function') {
         setTimeout(resizeCanvas, 360);
       }
@@ -18499,6 +18510,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const text = (workInput?.value || '').trim();
       if (!text) return;
       workInput.value = '';
+      if (window.innerWidth >= 768 && currentWorkspaceTab === 'dossier') setWorkspaceTab('chat');
       if (window.innerWidth < 768 && currentMobileMode === 'map') {
         setMobileViewMode('split');
       }
