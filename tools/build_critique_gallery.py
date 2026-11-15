@@ -29,7 +29,12 @@ FULL, THUMB = 2400, 480
 MID = 1200
 # The images the atlas shows while it loads (assets/load-image.js picks one at random): strong, legible pieces at 1000px or
 # more, saved again at 1400px so the picture at 40% of a desktop screen stays sharp without the weight of the full file.
-SPLASH = [1810, 1811, 1818, 1822, 1838, 1874, 1906, 1989]
+# Mostly memes and caricatures (user, 15 Nov 2026: "use mostly memes and caricatures on load"): ten of the thirteen are
+# cartoons, caricatures or meme-like posters (Conde and Beveridge's cartoon, the ArtLeaks Gazette drawings, W.A.G.E.'s
+# MISSING poster); the other three are Trbuljak's Retrospective, the W.A.G.E. survey poster and the Artist Placement Group.
+# The ArtLeaks drawings under 1000px (1965, 1971, 1976, 1979) are left out by the 1000px rule above.
+# Rebuild just this set from the committed full-size files with: python3 -I tools/build_critique_gallery.py --splash
+SPLASH = [1810, 1826, 1840, 1854, 1861, 1868, 1905, 1916, 1925, 1946, 1811, 1874, 1906]
 SPLASH_SIZE = 1400
 
 # No low-resolution or blurry images (user, 15 Nov 2026: "do not add low res or blurry images", then "crop, blurry" of the
@@ -158,6 +163,18 @@ def main(gallery_html, img_dir):
         '// Written by tools/build_critique_gallery.py; do not edit by hand.\n'
         'window.CRITIQUE_COLLECTION = ' + json.dumps(coll, ensure_ascii=False, separators=(',', ':')) + ';\n')
     print(f'collection: {len(done)} images in {len(works)} works, {len(missing)} missing')
+    write_splash(done)
+    data = {'collection': 'Cultural space critique, references 1801–2000', 'retrieved': '2026-10-19', 'spaces': spaces}
+    (ROOT / 'assets' / 'critique-gallery-data.js').write_text(
+        '// Written by tools/build_critique_gallery.py; do not edit by hand.\n'
+        'window.CRITIQUE_GALLERY = ' + json.dumps(data, ensure_ascii=False, indent=1) + ';\n')
+    print(f'{sum(len(sp["images"]) for sp in spaces.values())} placements on {len(spaces)} spaces')
+
+
+def write_splash(done):
+    """The load images: SPLASH saved at SPLASH_SIZE from the full files, and assets/load-image-data.js."""
+    for f in OUT.glob('splash_*.jpg'):
+        f.unlink()
     splash = []
     for n in SPLASH:
         if n not in done:
@@ -169,12 +186,19 @@ def main(gallery_html, img_dir):
     (ROOT / 'assets' / 'load-image-data.js').write_text(
         '// Written by tools/build_critique_gallery.py; do not edit by hand.\n'
         'window.LOAD_IMAGES = ' + json.dumps(splash, ensure_ascii=False) + ';\n')
-    data = {'collection': 'Cultural space critique, references 1801–2000', 'retrieved': '2026-10-19', 'spaces': spaces}
-    (ROOT / 'assets' / 'critique-gallery-data.js').write_text(
-        '// Written by tools/build_critique_gallery.py; do not edit by hand.\n'
-        'window.CRITIQUE_GALLERY = ' + json.dumps(data, ensure_ascii=False, indent=1) + ';\n')
-    print(f'{sum(len(sp["images"]) for sp in spaces.values())} placements on {len(spaces)} spaces')
+    print(f'load images: {len(splash)} of {len(SPLASH)}')
+
+
+def splash_only():
+    """Rebuild the load images alone, from the committed collection data and full-size files (no gallery.html needed)."""
+    text = (ROOT / 'assets' / 'critique-collection-data.js').read_text()
+    coll = json.loads(text[text.index('{'):text.rindex('}') + 1])
+    done = {im['n']: im for w in coll['works'] for im in w['images']}
+    write_splash(done)
 
 
 if __name__ == '__main__':
-    main(*sys.argv[1:3])
+    if sys.argv[1:] == ['--splash']:
+        splash_only()
+    else:
+        main(*sys.argv[1:3])
