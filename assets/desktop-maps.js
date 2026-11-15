@@ -569,7 +569,8 @@
     // The grade filters join the filter pills at the top, after the others, and the colour key goes (user, 11 Nov 2026:
     // "add clean flagged verified filter to the top to other filters and delete color key"). They drive the same grade
     // filter the key's rows did (assets/layers.js atlasSetGradeFilter). Rebuilt if the row is ever redrawn.
-    const GRADES = [['A', 'Clean'], ['B', 'Flagged'], ['U', 'Unverified']];
+    // Unverified is not a filter (user, 15 Nov 2026: "delete images filter and unverified").
+    const GRADES = [['A', 'Clean'], ['B', 'Flagged']];
     function gradePills() {
       if (typeof window.atlasSetGradeFilter !== 'function' || !chips.querySelector('button')) return;
       if (!chips.querySelector('button[data-grade]')) {
