@@ -29,8 +29,27 @@ FULL, THUMB = 2400, 480
 MID = 1200
 # The images the atlas shows while it loads (assets/load-image.js picks one at random): strong, legible pieces at 1000px or
 # more, saved again at 1400px so the picture at 40% of a desktop screen stays sharp without the weight of the full file.
-SPLASH = [1810, 1811, 1815, 1818, 1822, 1838, 1874, 1906, 1989]
+SPLASH = [1810, 1811, 1818, 1822, 1838, 1874, 1906, 1989]
 SPLASH_SIZE = 1400
+
+# No low-resolution or blurry images (user, 15 Nov 2026: "do not add low res or blurry images", then "crop, blurry" of the
+# Gaba cover). A source under MIN_LONG pixels on its long side is left out by rule: the images page sets a picture about
+# 700px wide, twice that on a dense screen, and a smaller file is enlarged to fill it. LEFT_OUT are the ones the rule
+# cannot see, found by looking at every image at full size: a file its source had already enlarged, a strip cut out of
+# a larger picture, a photograph that is itself out of focus. They are left out of the map layer and the page alike.
+MIN_LONG = 900
+LEFT_OUT = {
+    1809: 'enlarged by its source, soft at full size',
+    1815: 'a cropped and enlarged preview of the book cover',
+    1831: 'enlarged by its source, soft at full size',
+    1843: 'a strip cut from a larger photograph',
+    1844: 'a blurred photograph',
+    1852: 'a strip cut from the map', 1866: 'a strip cut from the map', 1879: 'a strip cut from the map',
+    1891: 'a strip cut from the map',
+    1903: 'the key cut from the map, 838px',
+    1934: 'a film still enlarged by its source', 1948: 'a film still enlarged by its source',
+    1956: 'a detail cut from a slide',
+}
 
 # Atlas record id -> what ties the reference to the space (from the reference's own credit, note or source page), and which
 # references belong there. A reference can sit on more than one space.
@@ -57,10 +76,16 @@ SPACES = {
 }
 
 
+class LeftOut(Exception):
+    pass
+
+
 def build(r, img_dir):
     n = r['number']
     src = next(Path(img_dir).glob(f'{n}.*'))
     im = ImageOps.exif_transpose(Image.open(src)).convert('RGB')
+    if n in LEFT_OUT or max(im.size) < MIN_LONG:
+        raise LeftOut
     w, h = save(im, FULL, OUT / f'{n}.jpg')
     save(im, THUMB, OUT / f'{n}_t.jpg')
     save(im, MID, OUT / f'{n}_m.jpg')
@@ -100,7 +125,7 @@ def main(gallery_html, img_dir):
             if n not in done:
                 try:
                     done[n] = build(r, img_dir)
-                except StopIteration:      # no file for this reference: listed under missing below
+                except (StopIteration, LeftOut):   # no file (listed under missing below), or too small or soft to show
                     continue
             items.append(done[n])
         print(f'{sid}: {len(items)} of {len(refs)}')
@@ -113,6 +138,8 @@ def main(gallery_html, img_dir):
             continue
         try:
             done[r['number']] = build(r, img_dir)
+        except LeftOut:
+            continue
         except StopIteration:
             missing.append({'n': r['number'], 'artist': r['artist_or_project'], 'project': r['project'], 'source': r['source_page']})
     works = {}
