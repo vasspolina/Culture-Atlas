@@ -1664,3 +1664,21 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     #dossier-bottom-sheet .gm-tabs:has(#gmTab-images:not([hidden])) [role="tab"]:not(#sh-x){font-size:14px!important}
   }
 }
+
+/* ---- The phone's top menu (user, 15 Nov 2026: "fix the menu on mobile", a screenshot of "Gossip modeDarkChat" run
+   together beside the name on two lines). atlas.css gives each button 8px of padding inside a -8px margin, so its tap area
+   has room without moving the words; this layer's button reset took the padding to 0 and left the margin, so each button
+   reached 8px into its neighbour and the words stood about 5px apart, the last one 8px into the bar's right margin, each
+   a 21px-high target. The padding is back, so the words are 16px apart (the bar's gap) and the margins line the first and
+   last words up with the bar's 16px edges. Each button is a 44px target. The three words are set at the filter pills'
+   size (the sheet's text times .78), so at 390px the name and the menu share one line; the name may still go to two
+   balanced lines on the narrowest phones. ---- */
+@layer sheet{
+  @media (max-width:767px){
+    #mobileTopBar:not(#sh-x):not(#sh-y){gap:16px!important;align-items:center!important;flex-wrap:nowrap!important}
+    #mobileTopBar>div:last-child>button:not(.hidden):not([hidden]):not(#sh-x):not(#sh-y){display:inline-flex!important;align-items:center!important;flex:0 0 auto!important;
+      min-height:44px!important;padding:0 8px!important;margin:0 -8px!important;white-space:nowrap!important;font-size:calc(var(--sh-s) * .78)!important;line-height:1.2!important}
+    #mobileTopBar #mobileTopBrandBtn:not(#sh-x):not(#sh-y){flex:0 1 auto!important;min-width:0!important}
+    #mobileTopBar #mobileTopBrandBtn span:not(#sh-x):not(#sh-y){white-space:normal!important;text-wrap:balance!important}
+  }
+}
