@@ -1639,6 +1639,50 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   }
 }
 
+/* ---- The phone's type, 10% smaller, and its rag (user, 15 Nov 2026: "fix the type ragging on mobile, make type 10% smaller").
+   Type: under 768px the sheet's two sizes and their lines take 1.26 (the 1.4 of the desktop, times 0.9) in place of --sh-k, so
+   text is 18.9 on 23.94 (a line of 20.35) and a name 35.28 on 40.32. Only the type moves: --sh-k still sets the bars, padding,
+   indent and band, so the sheet keeps its geometry. The filter pills follow by themselves (a share of --sh-s); the record's tabs,
+   set in px, come down with it (18 to 16, 16 to 14 on the narrowest phones, the floor).
+   Rag: measured at 390px in the record of Tate Modern before this, the summary's lines ended 75, 64, 90 and 43px short of a
+   330px measure, a word of two syllables each time, because at 21px a line holds about 30 characters and no word could be
+   broken (hyphens:manual on every paragraph). On the phone prose now hyphenates, but only words of eight letters or more,
+   three letters either side of the break, so a short word is never split; names and titles still never break. And it
+   wraps line by line (text-wrap:wrap): Safari on a phone takes pretty as a licence to shorten every line of a paragraph,
+   the cause of the record's rag on 2 Nov 2026 (atlas.css), and the chat's paragraphs still asked for it. A last word alone
+   is still prevented by typeset.js, which binds the last two words. ---- */
+@layer sheet{
+  @media (max-width:767px){
+    :root{--sh-s:calc(15px * 1.26); --sh-s-lh:calc(19px * 1.26); --sh-l:calc(28px * 1.26); --sh-l-lh:calc(32px * 1.26)}
+    :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(p,li,dd,blockquote,figcaption,.institution-summary,.d-row-sub,.ts-prose,.intro-line){
+      hyphens:auto!important;-webkit-hyphens:auto!important;hyphenate-limit-chars:8 3 3!important;overflow-wrap:break-word!important;text-wrap:wrap!important}
+    :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,.curator-suggest-chip,.starter-prompt){
+      hyphens:none!important;-webkit-hyphens:none!important}
+    #dossier-bottom-sheet .gm-tabs:has(#gmTab-images:not([hidden])) [role="tab"]:not(#sh-x){font-size:16px!important}
+  }
+  @media (max-width:359px){
+    #dossier-bottom-sheet .gm-tabs:has(#gmTab-images:not([hidden])) [role="tab"]:not(#sh-x){font-size:14px!important}
+  }
+}
+
+/* ---- The phone's top menu (user, 15 Nov 2026: "fix the menu on mobile", a screenshot of "Gossip modeDarkChat" run
+   together beside the name on two lines). atlas.css gives each button 8px of padding inside a -8px margin, so its tap area
+   has room without moving the words; this layer's button reset took the padding to 0 and left the margin, so each button
+   reached 8px into its neighbour and the words stood about 5px apart, the last one 8px into the bar's right margin, each
+   a 21px-high target. The padding is back, so the words are 16px apart (the bar's gap) and the margins line the first and
+   last words up with the bar's 16px edges. Each button is a 44px target. The three words are set at the filter pills'
+   size (the sheet's text times .78), so at 390px the name and the menu share one line; the name may still go to two
+   balanced lines on the narrowest phones. ---- */
+@layer sheet{
+  @media (max-width:767px){
+    #mobileTopBar:not(#sh-x):not(#sh-y){gap:16px!important;align-items:center!important;flex-wrap:nowrap!important}
+    #mobileTopBar>div:last-child>button:not(.hidden):not([hidden]):not(#sh-x):not(#sh-y){display:inline-flex!important;align-items:center!important;flex:0 0 auto!important;
+      min-height:44px!important;padding:0 8px!important;margin:0 -8px!important;white-space:nowrap!important;font-size:calc(var(--sh-s) * .78)!important;line-height:1.2!important}
+    #mobileTopBar #mobileTopBrandBtn:not(#sh-x):not(#sh-y){flex:0 1 auto!important;min-width:0!important}
+    #mobileTopBar #mobileTopBrandBtn span:not(#sh-x):not(#sh-y){white-space:normal!important;text-wrap:balance!important}
+  }
+}
+
 /* ---- the record opened from the chat covers the whole screen (user, 15 Nov 2026: "make the chat details window cover
    whole screen, now it shows filters on top") ----
    Details in the chat opens the record as a page of its own (assets/phone-maps.js, gm-from-chat), but its full height was
