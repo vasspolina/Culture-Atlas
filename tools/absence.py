@@ -49,7 +49,7 @@ UNCONFIRMED = re.compile(r'\b(unconfirmed|unverified|not (?:established|confirme
 NOT_ABSENCE = re.compile(r'\b(guilty|liable|responsible|culpable|complicit|in breach|to have|to be|to contain)\b', re.I)
 # How the research went, not what it found: a blocked site, a paywall, a page nobody read. Never content.
 PROC = re.compile(r"paywall|certificate|bot check|cloudflare|automated (?:access|requests)|\bHTTP \d{3}|\b40[34]\b|reading tool|"
-                  r"block(?:ed|s)? (?:the |page |direct |checks?|fetch)|(?:site|pages?|reads?) (?:was |were )?blocked|"
+                  r"block(?:ed|s)? (?:the |page |direct |checks?|fetch|automated)|(?:sites?|pages?|reads?) (?:was |were |is |are )?blocked|"
                   r"(?:was|were|is|are) (?:not|never) (?:read|opened)|\bnot (?:read|opened)\b|unreadable|unchecked|could not be "
                   r"(?:read|opened|checked|reached|confirmed)|did not load|never opened|for this (?:report|review)|source I opened|"
                   r"searches? (?:found|returned|show)|search (?:results?|listings?|excerpt|extract)|a search[- ]result|"
