@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=673"></script>
+  <script src="assets/load-image-data.js?v=692"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -49,8 +49,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=693">
-  <link rel="stylesheet" href="assets/sheet.css?v=691">
+  <link rel="stylesheet" href="assets/atlas.css?v=694">
+  <link rel="stylesheet" href="assets/sheet.css?v=693">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
@@ -303,7 +303,7 @@ return maplibregl$1;
             <h2 class="layers-section-title">Studies</h2>
             <div class="layers-list layers-studies">
               <a href="studies.html"><span class="layer-name">Studies across the atlas</span><span class="layer-desc">Epstein, Democracy Now!, Bellingcat, WikiLeaks, shared funders, Brazil's tax incentives and more</span></a>
-              <a href="artists-images.html"><span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Every image of the Artists&rsquo; images layer on one page, grouped by space, each open to zoom</span></a>
+              <a href="artists-images.html"><span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Artists&rsquo; work on cultural institutions on one page, from the oldest to the newest, each open to zoom</span></a>
               <a href="moma-money-map.html"><span class="layer-name">MoMA Money Map</span><span class="layer-desc">Who funds and governs MoMA, drawn as one network</span></a>
             </div>
           </section>
@@ -10418,11 +10418,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v693';
+    const ATLAS_RELEASE = 'culture-atlas-v694';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=693').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=694').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -21639,9 +21639,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/note-files.js?v=669" defer></script>
 <script src="assets/funding-views.js?v=669"></script>
 <script src="assets/layers.js?v=669"></script>
-<script src="assets/critique-gallery-data.js?v=673"></script>
-<script src="assets/critique-captions.js?v=673"></script>
-<script src="assets/critique-gallery.js?v=680"></script>
+<script src="assets/critique-gallery-data.js?v=692"></script>
+<script src="assets/critique-captions.js?v=692"></script>
+<script src="assets/critique-gallery.js?v=692"></script>
 <script src="assets/hq-detail.js?v=669"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
 <script src="assets/phone-maps.js?v=690"></script>

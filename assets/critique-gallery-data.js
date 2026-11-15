@@ -275,25 +275,6 @@ window.CRITIQUE_GALLERY = {
     }
    ]
   },
-  "salt-galata-istanbul": {
-   "name": "SALT Galata & SALT Beyoğlu",
-   "tie": "Andrea Francke and Eva Weinmayr, The Piracy Project",
-   "images": [
-    {
-     "n": 1809,
-     "src": "assets/critique_gallery/1809.jpg",
-     "thumb": "assets/critique_gallery/1809_t.jpg",
-     "mid": "assets/critique_gallery/1809_m.jpg",
-     "w": 2400,
-     "h": 2006,
-     "artist": "Andrea Francke / Eva Weinmayr",
-     "project": "The Piracy Project",
-     "type": "Publication / reading room",
-     "credit": "Andrea Francke and Eva Weinmayr, The Piracy Project. Image via SALT.",
-     "source": "https://saltonline.org/en/the-piracy-project-eva-weinmayr-274"
-    }
-   ]
-  },
   "moma-the-museum-of-modern-art": {
    "name": "MoMA (The Museum of Modern Art)",
    "tie": "Cameron Rowland, Disgorgement, 2016, in the collection",
@@ -313,55 +294,10 @@ window.CRITIQUE_GALLERY = {
     }
    ]
   },
-  "taipei-fine-arts-museum-taipei": {
-   "name": "Taipei Fine Arts Museum",
-   "tie": "Andreas Siekmann, Trickle Down, Taipei Biennial 2012",
-   "images": [
-    {
-     "n": 1819,
-     "src": "assets/critique_gallery/1819.jpg",
-     "thumb": "assets/critique_gallery/1819_t.jpg",
-     "mid": "assets/critique_gallery/1819_m.jpg",
-     "w": 608,
-     "h": 400,
-     "artist": "Andreas Siekmann",
-     "project": "Trickle Down — Public Space in the Era of Its Privatization",
-     "type": "Diagrams / installation",
-     "credit": "Andreas Siekmann, Trickle Down: Public Space in the Era of Its Privatization. Image via the 2012 Taipei Biennial archive.",
-     "source": "https://www.taipeibiennial.org/2012/en/participants/andreas_siekmann.html"
-    }
-   ]
-  },
   "tate-modern": {
    "name": "Tate Modern",
    "tie": "Meschac Gaba, Museum of Contemporary African Art",
    "images": [
-    {
-     "n": 1815,
-     "src": "assets/critique_gallery/1815.jpg",
-     "thumb": "assets/critique_gallery/1815_t.jpg",
-     "mid": "assets/critique_gallery/1815_m.jpg",
-     "w": 1200,
-     "h": 630,
-     "artist": "Meschac Gaba",
-     "project": "Museum of Contemporary African Art",
-     "type": "Publication cover",
-     "credit": "Meschac Gaba, Museum of Contemporary African Art. Image via Tanya Bonakdar Gallery.",
-     "source": "https://www.tanyabonakdargallery.com/exhibitions/435-meschac-gaba-museum-of-contemporary-african-art-tate-modern-london/"
-    },
-    {
-     "n": 1831,
-     "src": "assets/critique_gallery/1831.jpg",
-     "thumb": "assets/critique_gallery/1831_t.jpg",
-     "mid": "assets/critique_gallery/1831_m.jpg",
-     "w": 1428,
-     "h": 952,
-     "artist": "Meschac Gaba",
-     "project": "Museum of Contemporary African Art",
-     "type": "Installation / counter-museum",
-     "credit": "Meschac Gaba, Museum of Contemporary African Art. Image via Tanya Bonakdar Gallery.",
-     "source": "https://www.tanyabonakdargallery.com/exhibitions/435-meschac-gaba-museum-of-contemporary-african-art-tate-modern-london/"
-    },
     {
      "n": 1845,
      "src": "assets/critique_gallery/1845.jpg",
@@ -433,32 +369,6 @@ window.CRITIQUE_GALLERY = {
    "name": "Rijksakademie van beeldende kunsten",
    "tie": "Meschac Gaba, Museum of Contemporary African Art, begun after his residency",
    "images": [
-    {
-     "n": 1815,
-     "src": "assets/critique_gallery/1815.jpg",
-     "thumb": "assets/critique_gallery/1815_t.jpg",
-     "mid": "assets/critique_gallery/1815_m.jpg",
-     "w": 1200,
-     "h": 630,
-     "artist": "Meschac Gaba",
-     "project": "Museum of Contemporary African Art",
-     "type": "Publication cover",
-     "credit": "Meschac Gaba, Museum of Contemporary African Art. Image via Tanya Bonakdar Gallery.",
-     "source": "https://www.tanyabonakdargallery.com/exhibitions/435-meschac-gaba-museum-of-contemporary-african-art-tate-modern-london/"
-    },
-    {
-     "n": 1831,
-     "src": "assets/critique_gallery/1831.jpg",
-     "thumb": "assets/critique_gallery/1831_t.jpg",
-     "mid": "assets/critique_gallery/1831_m.jpg",
-     "w": 1428,
-     "h": 952,
-     "artist": "Meschac Gaba",
-     "project": "Museum of Contemporary African Art",
-     "type": "Installation / counter-museum",
-     "credit": "Meschac Gaba, Museum of Contemporary African Art. Image via Tanya Bonakdar Gallery.",
-     "source": "https://www.tanyabonakdargallery.com/exhibitions/435-meschac-gaba-museum-of-contemporary-african-art-tate-modern-london/"
-    },
     {
      "n": 1845,
      "src": "assets/critique_gallery/1845.jpg",
