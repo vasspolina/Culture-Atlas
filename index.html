@@ -7371,6 +7371,32 @@ return maplibregl$1;
       allegation: ['Which spaces face allegations right now?'],
       report: ['What are the newest reports people are talking about?']
     };
+    // A question about a kind of story names no space ("Which directors left under a cloud?"), so it is answered from the
+    // items of that kind across all the records, newest first: the space, the headline, who says it and when, what it is
+    // (talk, denied, confirmed, settled) and the source. It used to go to the one-space answer, which printed "Nothing is
+    // reported for this space in the records" over 77 departure items (user, 15 Nov 2026: "slop").
+    const GOSSIP_KIND_ASK = [
+      ['departure', /\b(left|leaves?|leaving|quit|quits|quitting|resign\w*|step(?:s|ped|ping)? down|stood down|ousted|fired|sacked|forced out|pushed out|departures?)\b/i, 'departure', 'departures'],
+      ['dispute', /\b(fighting|unions?|unioni[sz]\w*|strikes?|striking|walkouts?|disputes?|layoffs?|redundanc\w*)\b/i, 'staff or union dispute', 'staff and union disputes'],
+      ['money', /\b(money|donors?)\b/i, 'money story', 'money stories'],
+      ['allegation', /\b(allegations?|accusations?|accused)\b/i, 'allegation', 'allegations'],
+      ['report', /\b(newest|latest|recent) reports?\b/i, 'report', 'reports']
+    ];
+    // The kind a question asks for, or null. A question about the space in view ("did its director resign?") is not one.
+    function gossipKindOf(query) {
+      const t = String(query || '');
+      if (/\b(this|its|it|here)\b/i.test(t)) return null;
+      const k = GOSSIP_KIND_ASK.find(([, re]) => re.test(t));
+      return k ? { kind: k[0], one: k[2], many: k[3] } : null;
+    }
+    // One item as a line of the chat: the space, the headline, who says it and when, its status, its first source.
+    function gossipItemLine(x) {
+      const u = (x.g.urls || []).map(v => typeof v === 'string' ? v : (v && v.url) || '').find(v => /^https?:\/\//.test(v));
+      const h = u ? hostOf(u) : '';
+      const src = h ? ` Source: <a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(h)}</a>.` : '';
+      const place = placeLabel(x.inst);
+      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(x.inst.name)}">${escapeHtml(x.inst.name)}</a>${place ? ' in ' + escapeHtml(place) : ''}. ${escapeHtml(proseEnd(x.g.headline))} ${escapeHtml(`${gossipAttribution(x.g)} ${gossipStatusLine(x)}`.trim())}${src}</p>`;
+    }
     function gossipChips(main, other, pool) {
       const chips = [];
       const add = (q, inst) => { if (q && !chips.includes(q) && (!inst || typeof resolvesTo !== 'function' || resolvesTo(q, inst))) chips.push(q); };
@@ -10392,11 +10418,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v691';
+    const ATLAS_RELEASE = 'culture-atlas-v692';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=691').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=692').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13992,8 +14018,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       st.offset += page.length;
       const left = st.items.length - st.offset;
       window.atlasListMore = left > 0 ? st : null;
-      const more = left > 0 ? `<p class="no-indent">${left} more. <a href="#" class="list-more">Show the next ${Math.min(12, left)}</a>, or ask for one grade to narrow it.</p>` : '';
-      return page.map(i => chatLineHtml(i, st.gossip, listSame(st))).join('') + more;
+      const more = left > 0 ? `<p class="no-indent">${left} more. <a href="#" class="list-more">Show the next ${Math.min(12, left)}</a>${st.line ? '' : ', or ask for one grade to narrow it'}.</p>` : '';
+      // st.line: a list of gossip items, not of spaces, draws each line itself.
+      return page.map(i => st.line ? st.line(i) : chatLineHtml(i, st.gossip, listSame(st))).join('') + more;
     }
     function showMoreList() {
       const st = window.atlasListMore;
@@ -16850,7 +16877,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
               if (aiRes.gossip || aiRes.none) {
                 // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
-                appendCuratorMessage(aiRes.none ? aiHtml : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
+                appendCuratorMessage(aiRes.none ? (target ? aiHtml : '<p>None are recorded.</p>') : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
                 return true;
               }
               let thinkingData = null;
@@ -17198,6 +17225,18 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         focus(target);
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${fact('', target.watch)}${fact('Funding: ', target.funding)}${target.year_founded ? `<p>Founded ${escapeHtml(String(target.year_founded))}.</p>` : ''}${sourcesHtml(target)}`);
         return;
+      }
+      // A kind of story across the records ("Which directors left under a cloud?"): the items themselves, newest first.
+      const kindQ = !explicit && (isGossipModeActive || GOSSIP_ASK.test(query) || Object.values(KIND_CHIP).some(a => a.includes(query.trim()))) ? gossipKindOf(query) : null;
+      if (kindQ) {
+        const items = gossipPool().filter(x => x.g.kind === kindQ.kind && inScope(x.inst, place));
+        if (items.length) {
+          const st = { items, gossip: true, offset: 0, line: gossipItemLine };
+          const title = `${plural(items.length, kindQ.one, kindQ.many)} in the gossip${pl ? ' at spaces in ' + escapeHtml(pl) : ''}, newest first${items.length > 12 ? '. The first 12' : ''}:`;
+          const lines = renderListPage(st);
+          answer(`<p>${title}</p>${lines}`, window.atlasListMore ? ['Show more', ...followFor(true)].slice(0, 3) : followFor(true), true);
+          return;
+        }
       }
       if (await askModel()) return;
       // No tourist advice (user, 13 Nov 2026): what to see, routes, when to go, getting there, where to eat or stay get one line, then the record's subjects.
