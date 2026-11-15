@@ -172,6 +172,18 @@
       lines.push('    [more on the page]');
       parts[at] = lines.join('\n');
     }
+    // Every section is down to one line and the record is still over (long source addresses): the longest line left in
+    // the middle sections is cut by the excess, never under 200 characters, so the head and the sources stay whole.
+    var over = length() - budget;
+    if (over > 0) {
+      var pk = -1, lk = -1, big = 0;
+      for (var m = 1; m < parts.length - 1; m++) parts[m].split('\n').forEach(function (ln, n) { if (n > 0 && ln.length > big && ln.indexOf('[more on the page]') < 0) { big = ln.length; pk = m; lk = n; } });
+      if (pk > 0 && big > 200) {
+        var ls2 = parts[pk].split('\n');
+        ls2[lk] = '    ' + cut(ls2[lk], Math.max(200, big - over - 4));
+        parts[pk] = ls2.join('\n');
+      }
+    }
     return parts.join('\n');
   }
 

@@ -1,0 +1,48 @@
+{
+ "_about": "Hand-checked fixes for this run. drop_sources: pages about another institution. swap_sources: a wrong address replaced by the right one. drop_flags and drop_fields: labels with nothing behind them. accept_wording: records whose corrected why_flagged and watch lines were read and accepted.",
+ "drop_sources": {
+  "tate-modern": [
+   "https://findthatcharity.uk/orgid/GB-CHC-312863"
+  ],
+  "national-portrait-gallery-london": [
+   "https://www.nationalgallery.org.uk/support-us/corporate-support"
+  ],
+  "national-theatre-london": [
+   "https://www.nationalgallery.org.uk/support-us/corporate-support"
+  ]
+ },
+ "swap_sources": {
+  "moma-the-museum-of-modern-art": {
+   "https://projects.propublica.org/nonprofits/organizations/131628410": "https://projects.propublica.org/nonprofits/organizations/131624100"
+  }
+ },
+ "drop_flags": {
+  "m-hong-kong": [
+   "Epstein-linked",
+   "Sanctions"
+  ],
+  "mass-moca": [
+   "Forced or exploited labour"
+  ],
+  "design-museum-london": [
+   "Epstein-linked"
+  ]
+ },
+ "drop_fields": {
+  "m-hong-kong": [
+   "epstein_records"
+  ]
+ },
+ "accept_wording": [
+  "national-portrait-gallery-london",
+  "american-museum-of-natural-history-new-york",
+  "smithsonian-air-and-space-washington",
+  "national-theatre-london",
+  "art-gallery-of-south-australia-adelaide",
+  "moma-the-museum-of-modern-art",
+  "national-museum-of-american-history-smithsonian",
+  "wiels-contemporary-art-centre",
+  "national-gallery-london",
+  "jewish-museum-and-tolerance-center-moscow"
+ ]
+}
