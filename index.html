@@ -10994,7 +10994,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     // ---- The dropped pin ----------------------------------------------------------------------------------------------
     // One pin, on the place whose sheet is open: the selected space, or else the city whose place sheet is open
-    // (window.atlasPlacePin, set by assets/place-sheet.js). Since 15 Nov 2026 a glossy red pin with a heart for a head; before that a solid teardrop in the ink with a
+    // (window.atlasPlacePin, set by assets/place-sheet.js). Since 15 Nov 2026 a glossy red map pin; before that a solid teardrop in the ink with a
     // 1px ground edge, so it reads on the hairlines and the land in both themes. It falls 14px into place when the place
     // changes; with reduced motion it is simply there.
     let droppedPinKey = null, droppedPinT0 = 0;
@@ -11017,27 +11017,20 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const k = reduce ? 1 : Math.min(1, (now - droppedPinT0) / 220);
       const lift = (1 - k * k) * 14;
       if (k < 1) scheduleRender();
-      // A glossy red pin with a heart for a head (user, 15 Nov 2026: "make pin in this style", of the heart exclamation mark,
-      // then "make it into pin ... keep the glossy look"): the heart's sides run down to one point, and the point is on the
-      // place. Drawn in the street pin's own 24 x 34 box (the same path as its SVG), the point at 12, 33.
+      // A glossy red map pin (user, 15 Nov 2026: "make pin in this style", of the red heart emoji, then "keep the glossy
+      // look" and "it doesnt need to be a heart"): a round head tapering to a point on the place, no dot in it. Drawn from the
+      // street pin's own SVG path in its 24 x 34 box, so the two maps show one shape; the point is at 12, 33.
       const x = p.x - 12, y = p.y - lift - 33;
       c2.save();
       c2.translate(x, y);
-      const g = c2.createRadialGradient(8, 7, 0, 8, 7, 24);
+      const g = c2.createRadialGradient(8.5, 8, 0, 8.5, 8, 24);
       g.addColorStop(0, '#ff8a7c'); g.addColorStop(0.4, '#ee3a2d'); g.addColorStop(1, '#b8160d');
+      c2.fillStyle = g; c2.strokeStyle = '#a3120b'; c2.lineWidth = 1;
+      const body = new Path2D('M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z');
+      c2.fill(body); c2.stroke(body);
+      // The gloss: a soft white light on the upper left of the head.
       c2.beginPath();
-      c2.moveTo(12, 33);
-      c2.bezierCurveTo(9, 25, 1.5, 17, 1.5, 8.5);
-      c2.bezierCurveTo(1.5, 4.6, 4.3, 2, 7.2, 2);
-      c2.bezierCurveTo(9.4, 2, 11.2, 3.3, 12, 5.4);
-      c2.bezierCurveTo(12.8, 3.3, 14.6, 2, 16.8, 2);
-      c2.bezierCurveTo(19.7, 2, 22.5, 4.6, 22.5, 8.5);
-      c2.bezierCurveTo(22.5, 17, 15, 25, 12, 33);
-      c2.closePath();
-      c2.fillStyle = g; c2.strokeStyle = '#a3120b'; c2.lineWidth = 1; c2.fill(); c2.stroke();
-      // The gloss: a soft white light on the left lobe.
-      c2.beginPath();
-      c2.ellipse(7, 6.6, 3.1, 1.9, -0.6, 0, Math.PI * 2);
+      c2.ellipse(8.3, 7.4, 3.6, 2.2, -0.6, 0, Math.PI * 2);
       c2.fillStyle = 'rgba(255,255,255,.5)';
       c2.fill();
       c2.restore();
@@ -13064,8 +13057,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const el = document.createElement('div');
         el.className = 'atlas-drop-pin';
         el.setAttribute('aria-hidden', 'true');
-        // A glossy red pin with a heart for a head, its point on the place (user, 15 Nov 2026).
-        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><defs><radialGradient id="atlasPinRed" gradientUnits="userSpaceOnUse" cx="8" cy="7" r="24"><stop offset="0" stop-color="#ff8a7c"/><stop offset=".4" stop-color="#ee3a2d"/><stop offset="1" stop-color="#b8160d"/></radialGradient></defs><path fill="url(#atlasPinRed)" d="M12 33C9 25 1.5 17 1.5 8.5C1.5 4.6 4.3 2 7.2 2C9.4 2 11.2 3.3 12 5.4C12.8 3.3 14.6 2 16.8 2C19.7 2 22.5 4.6 22.5 8.5C22.5 17 15 25 12 33z"/><ellipse class="atlas-drop-pin-gloss" cx="7" cy="6.6" rx="3.1" ry="1.9" transform="rotate(-34.4 7 6.6)"/></svg>';
+        // A glossy red map pin, its point on the place (user, 15 Nov 2026).
+        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><defs><radialGradient id="atlasPinRed" gradientUnits="userSpaceOnUse" cx="8.5" cy="8" r="24"><stop offset="0" stop-color="#ff8a7c"/><stop offset=".4" stop-color="#ee3a2d"/><stop offset="1" stop-color="#b8160d"/></radialGradient></defs><path fill="url(#atlasPinRed)" d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/><ellipse class="atlas-drop-pin-gloss" cx="8.3" cy="7.4" rx="3.6" ry="2.2" transform="rotate(-34.4 8.3 7.4)"/></svg>';
         streetDropPin = new maplibregl.Marker({ element: el, anchor: 'bottom' });
       }
       streetDropPin.setLngLat([pin.lon, pin.lat]).addTo(cityVectorMap);

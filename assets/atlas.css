@@ -4980,9 +4980,9 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
    themes; it falls into place, and with reduced motion it is simply there. It takes no clicks: the space's badge under it does. */
 .atlas-drop-pin{pointer-events:none;z-index:3;line-height:0}
 .atlas-drop-pin svg{display:block;overflow:visible}
-/* Since 15 Nov 2026 the pin is a glossy red one with a heart for a head (user: "make pin in this style", of the heart
-   exclamation mark, then "make it into pin ... keep the glossy look"). The fill is a gradient in the SVG and the gloss a soft
-   white light on the left lobe; the same reds in both themes, with a darker red edge. */
+/* Since 15 Nov 2026 the pin is a glossy red map pin (user: "make pin in this style" of the red heart emoji, "keep the glossy
+   look", "it doesnt need to be a heart"): a round head tapering to the point, no dot in it. The fill is a gradient in the
+   SVG and the gloss a soft white light on the head; the same reds in both themes, with a darker red edge. */
 .atlas-drop-pin path{stroke:#a3120b;stroke-width:1}
 .atlas-drop-pin .atlas-drop-pin-gloss{fill:#fff;fill-opacity:.5;stroke:none}
 .atlas-drop-pin.is-dropping svg{animation:atlas-pin-drop .22s cubic-bezier(.3,0,.6,1) both}
