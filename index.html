@@ -170,7 +170,7 @@ return maplibregl$1;
     <!-- Right: Action Switchers & Controls -->
     <div class="flex items-center space-x-1_5 shrink-0">
       <!-- New Chat / Reset Quick Actions -->
-      <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
+      <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false" aria-label="Gossip mode">Gossip mode off</button>
       <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" >Dark</button>
       <!-- Details: the record of the selected space, as the desktop's Details tab. Shown once a space is selected, so the sheet can be reopened after Close. -->
       <button id="mobileDetailsBtn" type="button" class="whitespace-nowrap hidden" onclick="if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails();" aria-label="Space details">Details</button>
@@ -191,7 +191,7 @@ return maplibregl$1;
 
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
-      <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Gossip mode</button>
+      <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false" aria-label="Gossip mode">Gossip mode off</button>
       <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" >Dark</button>
       <!-- The artists' images page (user, 13 Nov 2026: "add button to the pages with images on top"); on a phone it is in the menu (assets/phone-maps.js). -->
       <a id="topImagesBtn" href="artists-images.html" class="hidden md-inline-flex whitespace-nowrap">Images</a>
@@ -7326,7 +7326,7 @@ return maplibregl$1;
       isGossipModeActive = typeof forceState === 'boolean' ? forceState : !isGossipModeActive;
       document.body.classList.toggle('gossip-mode-active', isGossipModeActive);
       if (isGossipModeActive && window.atlasCount) window.atlasCount('gossip/on');
-      ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) b.setAttribute('aria-pressed', String(isGossipModeActive)); });
+      ['topGossipBtn', 'mobileGossipBtn'].forEach(id => { const b = document.getElementById(id); if (b) { b.setAttribute('aria-pressed', String(isGossipModeActive)); b.textContent = isGossipModeActive ? 'Gossip mode on' : 'Gossip mode off'; } });   // the words say the state (user, 15 Nov 2026: "make gossip mode on off"); the name read out stays Gossip mode, pressed or not
       if (typeof appendCuratorMessage === 'function') gossipGreeting(isGossipModeActive);
       applyCityMapGossip();
       if (typeof render === 'function') render();
@@ -10392,11 +10392,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v691';
+    const ATLAS_RELEASE = 'culture-atlas-v692';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=691').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=692').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -21594,7 +21594,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-gallery.js?v=680"></script>
 <script src="assets/hq-detail.js?v=669"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=690"></script>
+<script src="assets/phone-maps.js?v=692"></script>
 <script src="assets/desktop-maps.js?v=685"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 </body>

@@ -199,7 +199,7 @@
       // The menu holds the controls the top bar holds on the other screens, and calls the same buttons, so their
       // labels and pressed states are always the bar's own.
       const items = [
-        ['mobileGossipBtn'],
+        ['mobileGossipBtn', 'Gossip mode'],   // the bar's button says on or off in words; here the check mark does
         ['mobileThemeBtn'],
         ['mobileStickyShareBtn'],
         ['mobileStickyVoiceBtn', 'Read answers aloud'],
