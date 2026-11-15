@@ -9,6 +9,59 @@
   const root = document.documentElement;
   const $ = (id) => document.getElementById(id);
 
+  // ---- Where a sheet's heights are, and where a released sheet lands (15 Nov 2026) ----
+  // Shared by the record sheet and the reports sheet. Measured on a 390 x 664 phone, MoMA's record: peek was 354px and
+  // half 365px, so a flick up from peek, or a tap on the grabber, moved the sheet 11px and looked like nothing; and a pull
+  // down from full closed the record outright. So:
+  // a height closer than 96px to the one under it, or to full, is not a stop (half goes when peek is already about half);
+  // a flick lands on the next stop past where the finger is, in its direction, not one step from where the drag began;
+  // only a sheet that began at its lowest stop is closed by a flick, and from higher up a pull lands on peek, unless it
+  // is dragged slowly to under 60% of peek, which is putting it away by hand;
+  // the speed is taken over the last 100ms of the drag, and a finger that rested before lifting has none.
+  const STOP_GAP = 96;
+  function sheetStops(names, heightOf) {
+    const all = names.map((d) => ({ d, h: heightOf(d) }));
+    const top = all.pop();
+    const out = [all.shift()];
+    all.forEach((s) => { if (s.h - out[out.length - 1].h >= STOP_GAP && top.h - s.h >= STOP_GAP) out.push(s); });
+    out.push(top);
+    return out;
+  }
+  // The stop a tap on the grabber goes to: one up, and from the top back to the lowest.
+  function sheetStep(stops, detent) {
+    const i = stops.findIndex((s) => s.d === detent);
+    if (i < 0) return stops[stops.length - 1].d;   // at a height that is not a stop here (half, set from outside): up to full
+    return stops[(i + 1) % stops.length].d;
+  }
+  // Times are the events' own (when the finger moved), not when the handler ran: the page is heavy, and a touchend that
+  // waited on a busy frame read a quick flick as a finger that had stopped.
+  function dragSpeed() {
+    let pts = [];
+    return {
+      start(y, t) { pts = [{ y, t }]; },
+      move(y, t) { pts.push({ y, t }); while (pts.length > 2 && t - pts[0].t > 100) pts.shift(); },
+      // px per ms, positive downwards; none when the finger rested for 80ms before it lifted.
+      end(t) {
+        const a = pts[0], b = pts[pts.length - 1];
+        if (!a || a === b || t - b.t > 80) return 0;
+        return (b.y - a.y) / Math.max(1, b.t - a.t);
+      },
+    };
+  }
+  // Returns the name of the stop to land on, or null to close the sheet.
+  function sheetLanding(stops, h, vel, from) {
+    const low = stops[0];
+    const fromLow = from === low.d || !stops.some((s) => s.d === from);
+    if (Math.abs(vel) > 0.5) {
+      if (vel < 0) return (stops.find((s) => s.h > h + 8) || stops[stops.length - 1]).d;
+      const under = stops.filter((s) => s.h < h - 8).pop();
+      if (under) return under.d;
+      return fromLow ? null : low.d;
+    }
+    if (h < low.h * 0.6) return null;
+    return stops.reduce((best, s) => (Math.abs(s.h - h) < Math.abs(best.h - h) ? s : best), low).d;
+  }
+
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
     else fn();
@@ -455,24 +508,30 @@
           sizeBtn.setAttribute('aria-label', d === 'full' ? 'Shrink space details' : 'Expand space details');
         }
       }
-      window.atlasSetSheetDetent = (d) => { if (DETENTS.includes(d)) setDetent(d); };
+      // A record asked for at full (the Full record action, a link in the chat) stays at full: the sheet's own "a new
+      // record opens at peek" below runs a frame later and used to undo it, so Full record often opened at peek (15 Nov 2026).
+      // The ask holds until the sheet is closed and stays closed (opening a record can hide and show it in one go), or is
+      // moved by hand or by the map to another height.
+      let askedFull = false;
+      const openAt = () => (root.classList.contains('gm-from-chat') || askedFull ? 'full' : 'peek');
+      window.atlasSetSheetDetent = (d) => { if (!DETENTS.includes(d)) return; askedFull = d === 'full'; setDetent(d); };
 
       // The grabber, tapped or pressed with Enter, steps up a height, and from full goes back to peek.
-      sizeBtn?.addEventListener('click', () => setDetent(detent === 'peek' ? 'half' : detent === 'half' ? 'full' : 'peek'));
+      sizeBtn?.addEventListener('click', () => { askedFull = false; setDetent(sheetStep(sheetStops(DETENTS, heightOf), detent)); });
 
       // A new record opens at peek, scrolled to its name, so the space stays in sight on the map above it.
       // A funder's record opening in the sheet, or giving way to the space again, starts at peek too.
       let wasHidden = sheet.classList.contains('hidden'), wasHq = sheet.classList.contains('is-hq-sheet');
       new MutationObserver(() => {
         const hidden = sheet.classList.contains('hidden'), hq = sheet.classList.contains('is-hq-sheet');
-        if (hidden) { sheet.scrollTop = 0; sheet.style.removeProperty('--gm-h'); }
-        else if ((wasHidden || hq !== wasHq) && PHONE()) requestAnimationFrame(() => setDetent(root.classList.contains('gm-from-chat') ? 'full' : 'peek', false));
+        if (hidden) { sheet.scrollTop = 0; sheet.style.removeProperty('--gm-h'); setTimeout(() => { if (sheet.classList.contains('hidden')) askedFull = false; }, 0); }
+        else if ((wasHidden || hq !== wasHq) && PHONE()) requestAnimationFrame(() => setDetent(openAt(), false));
         wasHidden = hidden; wasHq = hq;
       }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
       const name = $('dossier-sheet-name');
       if (name) new MutationObserver(() => {
         sheet.scrollTop = 0;
-        if (PHONE() && !sheet.classList.contains('hidden')) requestAnimationFrame(() => setDetent(detent === 'full' ? 'full' : 'peek', false));
+        if (PHONE() && !sheet.classList.contains('hidden')) requestAnimationFrame(() => setDetent(detent === 'full' ? 'full' : openAt(), false));
       }).observe(name, { childList: true, characterData: true, subtree: true });
       window.addEventListener('resize', () => { if (PHONE() && !sheet.classList.contains('hidden')) setDetent(detent, false); });
       // While at peek, a record that fills in after it opened (a funder's record waits for assets/hq.json) is measured again.
@@ -481,7 +540,8 @@
       if (body) new MutationObserver(() => {
         if (!PHONE() || sheet.classList.contains('hidden') || detent !== 'peek') return;
         cancelAnimationFrame(remeasure);
-        remeasure = requestAnimationFrame(() => setDetent('peek', false));
+        // Checked again in the frame: the sheet may have been sent to full since this was queued, and peek then undid it.
+        remeasure = requestAnimationFrame(() => { if (detent === 'peek') setDetent('peek', false); });
       }).observe(body, { childList: true, subtree: true });
       if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (PHONE() && !sheet.classList.contains('hidden') && detent === 'peek') setDetent('peek', false); });
 
@@ -492,16 +552,17 @@
       // does not scroll, so a swipe that began on the actions, the tabs, the Overview rows or a city's list of spaces moved
       // nothing at all. A tap is still a tap: only a move past 6px becomes a drag, and a drag is never read as a click.
       // A sideways move is left to the rows that scroll sideways (the actions, the tabs).
-      let x0 = 0, y0 = null, h0 = 0, t0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
+      let x0 = 0, y0 = null, h0 = 0, dragging = false;
+      const speed = dragSpeed();
       sheet.addEventListener('touchstart', (e) => {
         // Opened from the chat, the record is a page of its own at full height: it only scrolls, it is never dragged.
         if (!PHONE() || e.touches.length !== 1 || root.classList.contains('gm-from-chat')) { y0 = null; return; }
         if (e.target.closest('input, textarea, select, [contenteditable="true"]')) { y0 = null; return; }
-        x0 = e.touches[0].clientX; y0 = lastY = e.touches[0].clientY; t0 = lastT = Date.now(); h0 = sheet.offsetHeight; vel = 0; dragging = false;
+        x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; h0 = sheet.offsetHeight; dragging = false; speed.start(y0, e.timeStamp);
       }, { passive: true });
       sheet.addEventListener('touchmove', (e) => {
         if (y0 === null) return;
-        const y = e.touches[0].clientY, d = y - y0, now = Date.now();
+        const y = e.touches[0].clientY, d = y - y0;
         if (!dragging) {
           if (Math.abs(d) < 6) { if (Math.abs(e.touches[0].clientX - x0) >= 6) y0 = null; return; }
           if (Math.abs(e.touches[0].clientX - x0) > Math.abs(d)) { y0 = null; return; }
@@ -512,28 +573,19 @@
           sheet.classList.add('gm-still');
         }
         if (e.cancelable) e.preventDefault();
-        vel = (y - lastY) / Math.max(1, now - lastT);
-        lastY = y; lastT = now;
+        speed.move(y, e.timeStamp);
         sheet.style.setProperty('--gm-h', Math.max(64, Math.min(room(), h0 - d)) + 'px');
       }, { passive: false });
-      const end = () => {
+      const end = (e) => {
         if (y0 === null) return;
         y0 = null;
         if (!dragging) return;
         dragging = false;
         sheet.classList.remove('gm-still');
-        const h = sheet.offsetHeight;
-        const hs = DETENTS.map(heightOf);
-        if (h < hs[0] * 0.6 || (vel > 0.9 && detent === 'peek')) { closeBtn?.click(); return; }
-        let i;
-        if (Math.abs(vel) > 0.6) {
-          // A flick goes one height in its direction.
-          const cur = DETENTS.indexOf(detent);
-          i = Math.max(0, Math.min(2, cur + (vel < 0 ? 1 : -1)));
-        } else {
-          i = hs.reduce((best, v, k) => (Math.abs(v - h) < Math.abs(hs[best] - h) ? k : best), 0);
-        }
-        setDetent(DETENTS[i]);
+        const to = sheetLanding(sheetStops(DETENTS, heightOf), sheet.offsetHeight, speed.end(e.timeStamp), detent);
+        askedFull = false;
+        if (to === null) { closeBtn?.click(); return; }
+        setDetent(to);
       };
       sheet.addEventListener('touchend', end, { passive: true });
       sheet.addEventListener('touchcancel', end, { passive: true });
@@ -1547,7 +1599,7 @@
       });
       feed.addEventListener('click', async (e) => {
         if (e.target.closest('.gm-feed-close')) { close(); return; }
-        if (e.target.closest('.ts-grab')) { setDetent(detent === 'peek' ? 'half' : detent === 'half' ? 'full' : 'peek'); return; }
+        if (e.target.closest('.ts-grab')) { setDetent(sheetStep(sheetStops(DETENTS, heightOf), detent)); return; }
         const bell = e.target.closest('.gm-bell');
         if (bell) {
           if (store.get('atlas-alerts') === 'on') { store.set('atlas-alerts', 'off'); }
@@ -1587,15 +1639,16 @@
       // Dragging the sheet (phone). Below full the whole sheet follows the finger; at full the reports scroll, and only a
       // pull down from their top, or a drag on the grabber, moves the sheet.
       // As on the record sheet, a drag may start on a headline, a space's name or Share as well (12 Nov 2026); a tap stays a tap.
-      let x0 = 0, y0 = null, h0 = 0, lastY = 0, lastT = 0, vel = 0, dragging = false;
+      let x0 = 0, y0 = null, h0 = 0, dragging = false;
+      const speed = dragSpeed();
       feed.addEventListener('touchstart', (e) => {
         if (!PHONE() || e.touches.length !== 1) { y0 = null; return; }
         if (e.target.closest('input, textarea, select, [contenteditable="true"]')) { y0 = null; return; }
-        x0 = e.touches[0].clientX; y0 = lastY = e.touches[0].clientY; lastT = Date.now(); h0 = feed.offsetHeight; vel = 0; dragging = false;
+        x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; h0 = feed.offsetHeight; dragging = false; speed.start(y0, e.timeStamp);
       }, { passive: true });
       feed.addEventListener('touchmove', (e) => {
         if (y0 === null) return;
-        const y = e.touches[0].clientY, d = y - y0, now = Date.now();
+        const y = e.touches[0].clientY, d = y - y0;
         if (!dragging) {
           if (Math.abs(d) < 6) { if (Math.abs(e.touches[0].clientX - x0) >= 6) y0 = null; return; }
           if (Math.abs(e.touches[0].clientX - x0) > Math.abs(d)) { y0 = null; return; }
@@ -1604,23 +1657,18 @@
           feed.classList.add('gm-still');
         }
         if (e.cancelable) e.preventDefault();
-        vel = (y - lastY) / Math.max(1, now - lastT);
-        lastY = y; lastT = now;
+        speed.move(y, e.timeStamp);
         feed.style.setProperty('--ts-h', Math.max(64, Math.min(room(), h0 - d)) + 'px');
       }, { passive: false });
-      const dragEnd = () => {
+      const dragEnd = (e) => {
         if (y0 === null) return;
         y0 = null;
         if (!dragging) return;
         dragging = false;
         feed.classList.remove('gm-still');
-        const h = feed.offsetHeight;
-        const hs = DETENTS.map(heightOf);
-        if (h < hs[0] * 0.6 || (vel > 0.9 && detent === 'peek')) { close(false); return; }
-        let i;
-        if (Math.abs(vel) > 0.6) i = Math.max(0, Math.min(2, DETENTS.indexOf(detent) + (vel < 0 ? 1 : -1)));
-        else i = hs.reduce((best, v, k) => (Math.abs(v - h) < Math.abs(hs[best] - h) ? k : best), 0);
-        setDetent(DETENTS[i]);
+        const to = sheetLanding(sheetStops(DETENTS, heightOf), feed.offsetHeight, speed.end(e.timeStamp), detent);
+        if (to === null) { close(false); return; }
+        setDetent(to);
       };
       feed.addEventListener('touchend', dragEnd, { passive: true });
       feed.addEventListener('touchcancel', dragEnd, { passive: true });
