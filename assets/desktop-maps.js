@@ -482,8 +482,10 @@
     }
     colClose.addEventListener('click', () => setCol(true, true));
     colOpen.addEventListener('click', () => setCol(false, true));
-    let colStart = false;
-    try { colStart = localStorage.getItem(COL_KEY) === '1'; } catch (_) {}
+    // The page loads with the column closed, the chat beside the map (user, 15 Nov 2026: "make it load like this", a screenshot
+    // of the chat and the map alone). A visitor who opened the column keeps it open: only their own '0' says so.
+    let colStart = true;
+    try { colStart = localStorage.getItem(COL_KEY) !== '0'; } catch (_) {}
     setCol(colStart, false);
 
     // ---- What the atlas is, at the map's top right (user, 10 Nov 2026: "use this typesetting but with times to put tagline

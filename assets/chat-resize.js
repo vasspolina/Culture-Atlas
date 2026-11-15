@@ -9,8 +9,10 @@
   // columns (user, 4 Nov 2026). The CSS value is a clamp(), which reads back unresolved, so the same sum is done here.
   // The page loads as index a quarter, chat about half, map the rest (user, 13 Nov 2026: "make it load like this", a screenshot
   // at 25 / 48.5 / 26.5 of the window), so the usual chat width is 48.5% of the window, at least 360px.
+  // Since 15 Nov 2026 the page loads as chat and map alone, the index column closed (assets/desktop-maps.js), and the same
+  // words came with a screenshot of the chat at 45.5% of the window, so that is the usual width now, at least 360px.
   var MIN = 360, KEY = 'atlasChatWidth', userSet = false;
-  function DEFW() { return window.innerWidth < 1024 ? 360 : Math.round(Math.max(360, window.innerWidth * 0.485)); }
+  function DEFW() { return Math.round(Math.max(360, window.innerWidth * 0.455)); }
   var mq = window.matchMedia('(min-width: 768px)');
   var root = document.documentElement, handle = null, raf = 0;
 
@@ -173,11 +175,30 @@
     if (Math.round(indexW()) !== want && !root.classList.contains('sh-col-closed')) colApply(want, false);
   });
 
+  // The head bar is one line: Gossip mode, Dark and Images at the left, then the panel's pages (user, 15 Nov 2026: "fix top
+  // menu", a screenshot of Images under Expand chat). The left group is as wide as its words when the column is closed, which
+  // CSS cannot tell the pages' bar, so its right edge is measured here and given to sheet.css as --sh-top-w.
+  var topSeen = false;
+  function watchTop() {
+    var top = document.getElementById('gmdTopBar');
+    if (!top || topSeen) return;
+    topSeen = true;
+    var set = function () {
+      var r = top.getBoundingClientRect();
+      if (r.width > 0) root.style.setProperty('--sh-top-w', Math.ceil(r.right) + 'px'); else root.style.removeProperty('--sh-top-w');
+    };
+    set();
+    if (typeof ResizeObserver === 'function') new ResizeObserver(set).observe(top);
+    window.addEventListener('resize', set);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
+  }
+
   function start() {
     if (!mq.matches) return;
     startCol();
     build();
     buildBack();
+    watchTop();
     var saved = 0;
     try { saved = parseFloat(localStorage.getItem(KEY)) || 0; } catch (e) {}
     userSet = !!saved;
