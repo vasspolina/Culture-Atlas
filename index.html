@@ -10383,11 +10383,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v681';
+    const ATLAS_RELEASE = 'culture-atlas-v682';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=681').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=682').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12651,8 +12651,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       });
       return t.innerHTML;
     }
-    function documentedRecordHtml(inst) {
+    // brief: the chat's answer to "what are people saying about X" (user, 15 Nov 2026: "way too much info prints if I click on
+    // this prompt"). The three newest items that are not stale, each its headline, who says it and when, with one
+    // source; the flags, other findings, older talk, related reporting and personal accounts stay on the record.
+    function documentedRecordHtml(inst, opts) {
       if (!inst) return '';
+      const brief = !!(opts && opts.brief) && gossipItems(inst, true).length > 0;
       const host = (u) => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return 'source'; } };
       const sourceDetails = (source) => {
         const url = typeof source === 'string' ? source : source && source.url;
@@ -12691,6 +12695,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const gossipCard = (g) => item(g.headline, { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span><br><span class="meta gossip-provenance">${escapeHtml(gossipProvenance(g))}</span>` },
         p('', g.said) + list(li('Response: ', g.response), li('Outcome: ', g.outcome), li('', { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Resolved.', stale: 'Old talk; nothing since.' }[g.status] || '')),
         g.urls);
+      // The headline is the sentence: an item's first sentence runs to 250 characters and more, and cut short it stops mid-claim.
+      const gossipBrief = (g) => item('', { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span>` }, p('', proseEnd(g.headline)), (g.urls || []).slice(0, 1));
+      if (brief) {
+        const fresh = gossipItems(inst, true), shown = fresh.slice(0, 3), left = fresh.length - shown.length;
+        return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
+        ${shown.map(g => gossipBrief(g).replace('<div class="record-card', '<div data-gossip="item" class="record-card')).join('')}
+      </div><p class="no-indent">${left > 0 ? `${left} more ${left === 1 ? 'story' : 'stories'} and the whole of each one` : `The whole of ${shown.length === 1 ? 'it' : 'each one'}`}: ${formatInstLink(inst)}.</p>`;
+      }
       if (gossipOn) gossipItems(inst, true).forEach(g => blocks.push(gossipCard(g).replace('<div class="record-card', '<div data-gossip="item" class="record-card')));
       if (inst.why_flagged || (inst.flags || []).length) {
         const more = (inst.flag_details || []).filter(d => d && d.text);
@@ -17202,7 +17214,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
-        const reported = chatReportingHtml(documentedRecordHtml(target));
+        const askedGossip = isGossipModeActive || GOSSIP_ASK.test(query);
+        const reported = chatReportingHtml(documentedRecordHtml(target, { brief: askedGossip && isGossipModeActive }));
         // Asked for gossip: the reported items alone, no title line, rating or source list around them.
         if (isGossipModeActive || GOSSIP_ASK.test(query)) {
           // A record with no reported items can still carry a watch flag or a flagged funder: that line is its gossip.
@@ -21553,7 +21566,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-gallery.js?v=680"></script>
 <script src="assets/hq-detail.js?v=669"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=681"></script>
+<script src="assets/phone-maps.js?v=682"></script>
 <script src="assets/desktop-maps.js?v=669"></script>
 <script src="assets/chat-resize.js?v=669"></script>
 </body>
