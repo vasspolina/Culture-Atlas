@@ -135,6 +135,12 @@ svg{stroke-width:1.2px!important}
   :root.gmd #gmdTopBar>div{display:flex!important;width:100%!important;height:100%!important;gap:0!important}
   :root.gmd #gmdTopBar :is(#topGossipBtn,#topThemeBtn,#topImagesBtn){display:block!important;flex:1 1 0!important;height:var(--sh-head)!important;line-height:var(--sh-head)!important;padding:0!important;text-align:center!important;background:transparent!important;color:inherit!important;border:0!important}
   :root.gmd body.gossip-mode-active #gmdTopBar #topGossipBtn{background:transparent!important;font-style:italic!important}
+  /* The three never run into each other (user, 15 Nov 2026: "the menu buttons still run into each other"). They were equal
+     thirds of the column, and a third of 260px is 87px, less than "Gossip mode" is wide, so the words spilled into
+     "Light". Each is now as wide as its words plus 8px of air a side, shares what is left over, and the strip grows
+     past the column sooner than squeeze them. */
+  :root.gmd #gmdTopBar{min-width:max-content!important}
+  :root.gmd #gmdTopBar :is(#topGossipBtn,#topThemeBtn,#topImagesBtn){flex:1 0 auto!important;padding:0 8px!important;white-space:nowrap!important}
 
   :root.gmd #workspaceContextTabBar{position:fixed!important;top:0!important;right:0!important;left:auto!important;width:max(var(--gmd-w),600px)!important;height:var(--sh-head)!important;min-height:0!important;margin:0!important;padding:0 var(--sh-pad)!important;justify-content:space-between!important;border:0!important;background:transparent!important;display:flex!important;gap:0!important;z-index:46!important}
   :root.gmd #workspaceContextTabBar>div{display:contents!important}
