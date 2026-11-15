@@ -4980,15 +4980,17 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
    themes; it falls into place, and with reduced motion it is simply there. It takes no clicks: the space's badge under it does. */
 .atlas-drop-pin{pointer-events:none;z-index:3;line-height:0}
 .atlas-drop-pin svg{display:block;overflow:visible}
-/* Since 15 Nov 2026 the pin is the heart exclamation mark (user: "make pin in this style"): a glossy red heart over a red
-   dot that sits on the place. Its fills are gradients in the SVG; the same reds in both themes, with a darker red edge. */
-.atlas-drop-pin path,.atlas-drop-pin circle{stroke:#a3120b;stroke-width:1}
+/* Since 15 Nov 2026 the pin is a glossy red one with a heart for a head (user: "make pin in this style", of the heart
+   exclamation mark, then "make it into pin ... keep the glossy look"). The fill is a gradient in the SVG and the gloss a soft
+   white light on the left lobe; the same reds in both themes, with a darker red edge. */
+.atlas-drop-pin path{stroke:#a3120b;stroke-width:1}
+.atlas-drop-pin .atlas-drop-pin-gloss{fill:#fff;fill-opacity:.5;stroke:none}
 .atlas-drop-pin.is-dropping svg{animation:atlas-pin-drop .22s cubic-bezier(.3,0,.6,1) both}
 @keyframes atlas-pin-drop{from{transform:translateY(-14px)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.atlas-drop-pin.is-dropping svg{animation:none}}
 /* The selected space's name stands above the dropped pin, not behind it (user, 15 Nov 2026: the teardrop covered the middle
    of "Thailand Biennale"). The pin is 34px tall from the place, which is the middle of the badge's 32px box, so the name's
-   foot is 40px above that middle. The heart's top is 27.5px above the place (the dot is on it), so 12px clear. Whatever side the collision pass gave it, the selected name
+   foot is 40px above that middle. The pin's top is 31px above the place, so 9px clear. Whatever side the collision pass gave it, the selected name
    goes on top, since the pin takes the place of the ring it would otherwise sit beside. */
 .custom-inst-pin.popup-active .inst-pin-label{bottom:calc(50% + 40px)!important;top:auto!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important}
 
