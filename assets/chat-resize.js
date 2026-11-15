@@ -183,12 +183,22 @@
     var top = document.getElementById('gmdTopBar');
     if (!top || topSeen) return;
     topSeen = true;
+    // The edge is the last word's own, not only the bar's (user, 15 Nov 2026, the same day: "why the hell this buttons still
+    // overlap??"). With the column closed the sidebar mark pushes the words 42px right, and a browser that does not widen
+    // the bar for that padding (Safari) reported the bar's edge 42px short of Images, so Expand chat began inside it.
+    var words = top.querySelectorAll('#topGossipBtn,#topThemeBtn,#topImagesBtn');
     var set = function () {
-      var r = top.getBoundingClientRect();
-      if (r.width > 0) root.style.setProperty('--sh-top-w', Math.ceil(r.right) + 'px'); else root.style.removeProperty('--sh-top-w');
+      var right = top.getBoundingClientRect().right;
+      for (var i = 0; i < words.length; i++) { var r = words[i].getBoundingClientRect(); if (r.width > 0) right = Math.max(right, r.right); }
+      // Written only when it changes: writing it is itself a change to the root's style, which the observer below hears.
+      var val = right > 0 ? Math.ceil(right) + 'px' : '';
+      if (root.style.getPropertyValue('--sh-top-w') === val) return;
+      if (val) root.style.setProperty('--sh-top-w', val); else root.style.removeProperty('--sh-top-w');
     };
     set();
-    if (typeof ResizeObserver === 'function') new ResizeObserver(set).observe(top);
+    if (typeof ResizeObserver === 'function') { var ro = new ResizeObserver(set); ro.observe(top); for (var i = 0; i < words.length; i++) ro.observe(words[i]); }
+    // The words move without changing size when the column is closed or opened, which no size observer sees.
+    if (typeof MutationObserver === 'function') new MutationObserver(function () { requestAnimationFrame(set); }).observe(root, { attributes: true, attributeFilter: ['class', 'style'] });
     window.addEventListener('resize', set);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(set);
   }
