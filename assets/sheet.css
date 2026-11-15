@@ -282,9 +282,15 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 .inst-pin-label{height:var(--sh-map-lh)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important;padding:0 5px!important;border:0!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important}
 .inst-pin-label *{color:var(--sh-ink)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important}
 .custom-inst-pin:hover .inst-pin-label,.inst-pin-label:hover,.inst-pin-label:focus-visible{background:var(--sh-stone)!important;color:var(--sh-ink)!important}
-/* The open space's name has 4px more around it than the other names (user, 15 Nov 2026: "add 4 px more around title in card
-   name"): 4px above and below the line and 9px either side, inside the 1px edge. */
-.custom-inst-pin.popup-active .inst-pin-label{background:var(--sh-stone)!important;border:1px solid var(--sh-rule)!important;color:var(--sh-ink)!important;padding:4px 9px!important;height:calc(var(--sh-map-lh) + 10px)!important}
+/* The open space's name has no box (user, 15 Nov 2026, choosing it from six drawn options: "do this but add grade underneath
+   title"; before it a lime tag, which the same day got 4px more around the name). The name is 24px on a 28px line, centred
+   over the pin, with the space's grade under it at the map's 15px; a halo of the paper's colour keeps both readable over
+   the building lines. A space with no grade has the name alone. */
+.custom-inst-pin.popup-active .inst-pin-label{background:transparent!important;border:0!important;color:var(--sh-ink)!important;padding:0!important;height:auto!important;flex-direction:column!important;align-items:center!important;gap:0!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name{font-size:24px!important;line-height:28px!important}
+.inst-pin-label .inst-pin-label-grade{display:none!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{display:block!important}
+:root:root .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name,:root:root .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{text-shadow:0 0 2px var(--sh-paper),0 0 2px var(--sh-paper),0 0 3px var(--sh-paper),0 0 4px var(--sh-paper),0 0 6px var(--sh-paper),1px 1px 0 var(--sh-paper),-1px -1px 0 var(--sh-paper),1px -1px 0 var(--sh-paper),-1px 1px 0 var(--sh-paper)!important}
 .maplibregl-ctrl-attrib,.maplibregl-ctrl-attrib *{font-size:11px!important;line-height:15px!important;text-transform:none!important}
 .maplibregl-ctrl-group,.maplibregl-ctrl-attrib{background:var(--sh-paper)!important;border:0!important}
 

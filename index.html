@@ -8585,6 +8585,15 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         labelEl.appendChild(tierDot);
         labelEl.appendChild(nameSpan);
+        // The grade, under the name of the open space only (assets/sheet.css shows it there; user, 15 Nov 2026). The label's
+        // spoken name is the space's name, as before; the grade is read from the Details panel.
+        if (inst.grade && typeof GRADE !== 'undefined' && GRADE[inst.grade]) {
+          const gradeSpan = document.createElement('span');
+          gradeSpan.className = 'inst-pin-label-grade';
+          gradeSpan.textContent = 'Grade ' + gradeLetter(inst.grade);
+          gradeSpan.setAttribute('aria-hidden', 'true');
+          labelEl.appendChild(gradeSpan);
+        }
 
         const auraEl = document.createElement('div');
         auraEl.className = 'pin-pulse-aura';
