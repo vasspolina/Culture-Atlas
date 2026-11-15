@@ -1719,6 +1719,14 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     :root.gmd.gmd:not(#sh-mid):not(#sh-top) #workspaceContextTabBar{--sh-tabs-l:0px;left:var(--sh-tabs-l)!important;right:auto!important;width:max-content!important;
       min-width:calc(var(--sh-map-l) - var(--sh-tabs-l))!important;max-width:calc(100vw - var(--sh-tabs-l) - var(--sh-top-r,320px))!important}
     :root.gmd.gmd.chat-wide:not(#sh-mid):not(#sh-top) #workspaceContextTabBar{right:var(--sh-top-r,320px)!important;width:auto!important;min-width:0!important;max-width:none!important}
+    /* Where you are (‹ World, ‹ Country, the city and its count) is centred over the map, whose right end the group now
+       holds: it stops short of the group too (user, 15 Nov 2026: "whats this?, fix", a screenshot of the city's name set
+       through Gossip mode, Dark and Images). While it shows, the pages' bar keeps to the chat's width and shortens its words,
+       so the two do not share the map's end of the bar either. Where the room is still too narrow the line keeps its two
+       ways back and shortens the city's name. */
+    :root.gmd.gmd:not(#sh-mid) #cityViewControlBanner{right:var(--sh-top-r,320px)!important;justify-content:safe center!important}
+    :root.gmd.gmd:not(#sh-mid) #cityViewControlBanner #cityViewTitleBadge{display:block!important;flex:0 1 auto!important;min-width:0!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+    :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top):has(#cityViewControlBanner:not(.hidden)) #workspaceContextTabBar{max-width:calc(var(--sh-map-l) - var(--sh-tabs-l))!important}
   }
   @media (min-width:1080px){
     :root.gmd.gmd:not(.sh-col-closed):not(#sh-mid):not(#sh-top) #workspaceContextTabBar{--sh-tabs-l:var(--sh-col)}
