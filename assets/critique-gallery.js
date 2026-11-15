@@ -7,6 +7,12 @@
 // the one hover card on the map, and it shows only while the layer is on; a click on the space still opens its sheet as
 // before. A thumbnail or Open gallery opens the gallery, which steps through the space's images (arrows, swipe, keys).
 // Touch screens have no hover: the record carries the same images in an Artists' images row (critiqueGalleryRowHtml).
+//
+// On a desktop the images show in the chat window, not over the map (user, 15 Nov 2026: "the images can show in chat
+// window when user hovers map"): pointing at a marked space lays its images over the right column, one large picture with
+// its title and artist under it and the rest as a strip, as a gallery site shows an exhibition's picture beside its list
+// when a name is pointed at. The column keeps the picture while the pointer travels from the map into it; leaving it, or
+// pointing at empty map, gives the conversation back. Where the column is not on screen the card over the map is kept.
 (function () {
   const DATA = window.CRITIQUE_GALLERY;
   if (!DATA) return;
@@ -22,7 +28,7 @@
     on = !!v;
     window.atlasCritiqueLayer = on;
     const b = box(); if (b) b.checked = on;
-    if (!on) hidePop(true);
+    if (!on) { hidePop(true); if (pane) hidePane(true); }
     if (typeof window.renderGlobe === 'function') window.renderGlobe();
     document.dispatchEvent(new CustomEvent('atlas:critique', { detail: on }));
   }
@@ -101,6 +107,72 @@
       <div class="critique-pop-thumbs${one ? ' is-one' : ''}">${shown.map((im, i) => `<button type="button" data-cg-open="${i}" aria-label="${e(im.project)}, image ${i + 1} of ${sp.images.length}"><img src="${e(im.thumb)}"${one ? ` srcset="${e(im.thumb)} ${Math.min(480, Math.round(480 * im.w / Math.max(im.w, im.h)))}w, ${e(im.src)} ${im.w}w" sizes="588px"` : ''} alt="" loading="lazy" width="${one ? im.w : Math.round(im.w * 160 / im.h)}" height="${one ? im.h : 160}"></button>`).join('')}${more > 0 ? `<button type="button" class="critique-pop-more" data-cg-open="${shown.length}">${more} more</button>` : ''}</div>
       <button type="button" class="critique-pop-open" data-cg-open="0">Open gallery, ${sp.images.length} ${sp.images.length === 1 ? 'image' : 'images'}</button>`;
   }
+  // ---- The images in the chat window ----
+  let pane = null, paneFor = null, paneTimer = null;
+  const column = () => document.getElementById('workspacePanelsWrapper');
+  const columnShown = () => { const c = column(); if (!c) return false; const r = c.getBoundingClientRect(); return r.width >= 280 && r.height >= 240; };
+  function buildPane() {
+    pane = document.createElement('div');
+    pane.id = 'critiquePane';
+    pane.className = 'critique-pane';
+    pane.hidden = true;
+    pane.setAttribute('role', 'region');
+    pane.setAttribute('aria-label', 'Artists’ images of the space under the pointer');
+    pane.addEventListener('pointerenter', () => clearTimeout(paneTimer));
+    pane.addEventListener('pointerleave', () => hidePane());
+    pane.addEventListener('click', ev => {
+      const t = ev.target.closest('[data-cg-open]');
+      if (t) openGallery(paneFor, +t.dataset.cgOpen || 0);
+    });
+    // Pointing at a picture in the strip makes it the large one, without opening the gallery.
+    pane.addEventListener('pointerover', ev => {
+      const t = ev.target.closest('[data-cg-pick]');
+      if (t) pick(+t.dataset.cgPick);
+    });
+    column().appendChild(pane);
+  }
+  function capFor(im) {
+    const c = (window.CRITIQUE_CAPTIONS || {})[im.artist + '|' + im.project] || {};
+    return { project: im.project, who: c.who || im.artist };
+  }
+  function pick(i) {
+    const sp = SPACES[paneFor]; if (!sp || !sp.images[i]) return;
+    const im = sp.images[i], c = capFor(im);
+    const big = pane.querySelector('[data-cg-big]');
+    big.dataset.cgOpen = i;
+    big.setAttribute('aria-label', `${im.project}, image ${i + 1} of ${sp.images.length}, open the gallery`);
+    const img = big.querySelector('img');
+    img.src = im.mid || im.src; img.width = im.w; img.height = im.h;
+    pane.querySelector('[data-cg-project]').textContent = c.project;
+    pane.querySelector('[data-cg-who]').textContent = c.who;
+    pane.querySelectorAll('[data-cg-pick]').forEach(b => b.setAttribute('aria-current', +b.dataset.cgPick === i ? 'true' : 'false'));
+  }
+  function paneHtml(sp) {
+    const n = sp.images.length;
+    return `<p class="critique-pane-name space-name">${e(sp.name)}</p>
+      <p class="critique-pane-tie">${e(sp.tie)}</p>
+      <button type="button" class="critique-pane-big" data-cg-big data-cg-open="0"><img alt="" decoding="async"></button>
+      <p class="critique-pane-project" data-cg-project></p>
+      <p class="critique-pane-who" data-cg-who></p>
+      ${n > 1 ? `<div class="critique-pane-strip">${sp.images.map((im, i) => `<button type="button" data-cg-pick="${i}" data-cg-open="${i}" aria-label="${e(im.project)}, image ${i + 1} of ${n}"><img src="${e(im.thumb)}" alt="" loading="lazy" width="${Math.round(im.w * 72 / im.h)}" height="72"></button>`).join('')}</div>` : ''}
+      <button type="button" class="critique-pane-open" data-cg-open="0">Open gallery, ${n} ${n === 1 ? 'image' : 'images'}</button>`;
+  }
+  function showPane(id) {
+    if (!pane) buildPane();
+    clearTimeout(paneTimer);
+    if (pop && !pop.hidden) hidePop(true);
+    if (paneFor !== id) { pane.innerHTML = paneHtml(SPACES[id]); paneFor = id; pick(0); pane.scrollTop = 0; }
+    pane.hidden = false;
+  }
+  // Longer grace than the card's: the column is further from the map than a card beside the pointer.
+  function hidePane(now) {
+    clearTimeout(paneTimer);
+    const go = () => { if (pane) pane.hidden = true; paneFor = null; };
+    if (now) go(); else paneTimer = setTimeout(go, 600);
+  }
+  const anyShown = () => (pop && !pop.hidden) || (pane && !pane.hidden);
+  function hideAll(now) { if (pop && !pop.hidden) hidePop(now); if (pane && !pane.hidden) hidePane(now); }
+
   function showPop(id, clientX, clientY) {
     if (!pop) buildPop();
     clearTimeout(hideTimer);
@@ -125,14 +197,14 @@
     if (!canvas) return;
     // Registered after the page's own pointer handlers, so the hovered space is already worked out when this runs.
     canvas.addEventListener('pointermove', ev => {
-      if (!on || !canHover() || ev.buttons) { if (pop && !pop.hidden && ev.buttons) hidePop(true); return; }
+      if (!on || !canHover() || ev.buttons) { if (ev.buttons && anyShown()) hideAll(true); return; }
       const inst = typeof window.getHoveredInstitution === 'function' ? window.getHoveredInstitution() : null;
       const sp = forInst(inst);
-      if (sp) showPop(inst.id, ev.clientX, ev.clientY);
-      else if (pop && !pop.hidden) hidePop();
+      if (sp) { if (columnShown()) showPane(inst.id); else showPop(inst.id, ev.clientX, ev.clientY); }
+      else if (anyShown()) hideAll();
     });
-    canvas.addEventListener('pointerleave', () => { if (pop && !pop.hidden) hidePop(); });
-    canvas.addEventListener('wheel', () => hidePop(true), { passive: true });
+    canvas.addEventListener('pointerleave', () => { if (anyShown()) hideAll(); });
+    canvas.addEventListener('wheel', () => hideAll(true), { passive: true });
   }
 
   // ---- The gallery ----
@@ -201,6 +273,7 @@
     lastFocus = document.activeElement;
     gId = id; gIdx = Math.max(0, Math.min(idx || 0, SPACES[id].images.length - 1));
     hidePop(true);
+    if (pane) hidePane(true);
     show();
     if (!dlg.open) dlg.showModal();
     dlg.querySelector('[data-cg-close]').focus();

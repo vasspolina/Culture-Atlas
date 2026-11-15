@@ -1450,6 +1450,25 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   #critiquePop .critique-pop-open{display:block!important;margin-top:var(--sh-s-lh)!important}
   #critiquePop :is(.critique-pop-open,.critique-pop-more)::before{content:"– "}
   #critiquePop :is(.critique-pop-open,.critique-pop-more):hover{color:var(--sh-hover)!important}
+  /* The images in the chat window (user, 15 Nov 2026: "the images can show in chat window when user hovers map"): laid
+     over the whole right column while a marked space is pointed at, as a gallery site shows an exhibition's picture beside
+     its list. The space's name is the large line, the tie under it, then one picture at the column's width, whole, its
+     title and artist under it, a strip of the others (pointing at one makes it the large one) and Open gallery. */
+  #critiquePane.critique-pane{position:absolute!important;inset:0!important;z-index:40!important;box-sizing:border-box!important;overflow-y:auto!important;
+    padding:var(--sh-pad)!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important}
+  #critiquePane.critique-pane[hidden]{display:none!important}
+  #critiquePane p{margin:0!important}
+  #critiquePane .critique-pane-tie{margin-top:calc(var(--sh-s-lh) / 4)!important}
+  #critiquePane .critique-pane-big{display:block!important;width:100%!important;margin-top:var(--sh-s-lh)!important;line-height:0!important;text-align:left!important;background:none!important}
+  #critiquePane .critique-pane-big img{display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:62vh!important;object-fit:contain!important}
+  #critiquePane .critique-pane-project{margin-top:calc(var(--sh-s-lh) / 2)!important}
+  #critiquePane .critique-pane-strip{display:flex!important;flex-wrap:wrap!important;gap:calc(var(--sh-pad) / 2)!important;margin-top:var(--sh-s-lh)!important}
+  #critiquePane .critique-pane-strip button{flex:0 0 auto!important;line-height:0!important;overflow:hidden!important;background:var(--sh-stone-2)!important;outline-offset:2px!important}
+  #critiquePane .critique-pane-strip img{display:block!important;height:72px!important;width:auto!important;max-width:144px!important;object-fit:cover!important}
+  #critiquePane .critique-pane-strip button[aria-current="true"]{outline:1px solid var(--sh-ink)!important}
+  #critiquePane .critique-pane-open{display:block!important;margin-top:var(--sh-s-lh)!important}
+  #critiquePane .critique-pane-open::before{content:"– "}
+  #critiquePane .critique-pane-open:hover{color:var(--sh-hover)!important}
   .cg-row{list-style:none!important}
   .cg-row .cg-row-tie{margin:0!important}
   /* Under the phone record's Images tab (assets/phone-maps.js; user, 14 Nov 2026: "add images tab") the pictures are not a strip
