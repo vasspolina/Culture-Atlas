@@ -1299,10 +1299,11 @@
         feed.innerHTML = '<div class="ts">'
           + '<div class="ts-pin"><button type="button" class="gm-feed-close ts-btn ts-x" aria-label="Close the reports"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>'
           + '<header class="gm-feed-head ts-bar"><button type="button" class="ts-grab" aria-label="' + grabLabel() + '"></button><h2 id="gmFeedTitle" class="ts-title">Latest</h2>'
+          // The "Alert me" button stays (user, 15 Nov 2026: taken out with the ring and the "Alerts now" title, then asked back the same day).
           + ('Notification' in window ? '<button type="button" class="gm-bell ts-btn" aria-pressed="' + bellOn + '">' + (bellOn ? 'Alerts on' : 'Alert me') + '</button>' : '')
           + '</header>'
           + (top ? card(top, true, topIsAlert) : '')
-          + sec(topIsAlert ? 'More stories' : 'Alerts now', '', alertList, true)
+          + sec('More stories', '', alertList, true)
           + sec('Near you', near.length + (near.length === 1 ? ' report' : ' reports'), near, false)
           // No count beside Latest (user, 7 Nov 2026: "delete 1 in the past 30 days").
           // Worldwide in every case now that the panel itself is called Latest (12 Nov 2026); it was Latest after alerts or Near you.
@@ -1312,7 +1313,6 @@
           + '<section class="ts-sec"><h2 class="ts-sec-title"><span>About</span></h2>'
           + (!list.length ? '<p class="ts-prose ts-note">No news yet.</p>' : '')
           + '<p class="ts-prose ts-note">' + about + '</p>'
-          + (alertList.length || topIsAlert ? '<p class="ts-prose ts-note">' + alertRule + '</p>' : '')
           + '</section></div>';
       }
       // The line that said when the reports were last checked and the newest date on record is gone (user, 7 Nov 2026:
@@ -1362,7 +1362,8 @@
         render();
         const alerts = list.filter(isAlert);
         paintStrip(list, alerts);
-        paintMarks(alerts);
+        // No ring on the map at a space with an open report (user, 15 Nov 2026); any ring already drawn is cleared.
+        paintMarks([]);
         // The reports are also listed in the desktop sheet's index column (assets/desktop-maps.js): it reads them from here.
         window.atlasReports = list.map((x) => ({ key: x.key, head: x.head, space: x.inst && x.inst.name, inst: x.inst, when: ago(x.when), alert: isAlert(x) }));
         document.dispatchEvent(new CustomEvent('atlas:reports'));
