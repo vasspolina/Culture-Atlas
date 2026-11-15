@@ -4980,17 +4980,18 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
    themes; it falls into place, and with reduced motion it is simply there. It takes no clicks: the space's badge under it does. */
 .atlas-drop-pin{pointer-events:none;z-index:3;line-height:0}
 .atlas-drop-pin svg{display:block;overflow:visible}
-/* Since 15 Nov 2026 the pin is a glossy red map pin (user: "make pin in this style" of the red heart emoji, "keep the glossy
-   look", "it doesnt need to be a heart"): a round head tapering to the point, no dot in it. Shaded as the emoji is ("make it closer to this
-   look"): lighter red at the top, deeper at the foot, and a broad soft light over the head that fades out; the same reds in both themes, with a darker red edge. */
-.atlas-drop-pin path{stroke:#a91e16;stroke-width:1}
-.atlas-drop-pin path.atlas-drop-pin-light{stroke:none}
+/* Since 15 Nov 2026 the pin is a red push pin (user: after the heart emoji and a glossy map pin, "turn it into this pin", a
+   photo of a drawing pin): cap, collar, waisted body and flange in a glossy red shaded as a cylinder, a steel needle whose tip
+   is on the place, tilted so the head leans right. Gradients are in the SVG; the same colours in both themes. */
+.atlas-drop-pin .atlas-drop-pin-red{stroke:#8f1810;stroke-width:.6}
+.atlas-drop-pin .atlas-drop-pin-steel{stroke:#4a525c;stroke-width:.6}
+.atlas-drop-pin .atlas-drop-pin-light{fill:#fff;fill-opacity:.45;stroke:none}
 .atlas-drop-pin.is-dropping svg{animation:atlas-pin-drop .22s cubic-bezier(.3,0,.6,1) both}
 @keyframes atlas-pin-drop{from{transform:translateY(-14px)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.atlas-drop-pin.is-dropping svg{animation:none}}
 /* The selected space's name stands above the dropped pin, not behind it (user, 15 Nov 2026: the teardrop covered the middle
    of "Thailand Biennale"). The pin is 34px tall from the place, which is the middle of the badge's 32px box, so the name's
-   foot is 40px above that middle. The pin's top is 31px above the place, so 9px clear. Whatever side the collision pass gave it, the selected name
+   foot is 40px above that middle. The push pin's head is 30px above the place and leans right, so 10px clear. Whatever side the collision pass gave it, the selected name
    goes on top, since the pin takes the place of the ring it would otherwise sit beside. */
 .custom-inst-pin.popup-active .inst-pin-label{bottom:calc(50% + 40px)!important;top:auto!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important}
 

@@ -10994,7 +10994,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     // ---- The dropped pin ----------------------------------------------------------------------------------------------
     // One pin, on the place whose sheet is open: the selected space, or else the city whose place sheet is open
-    // (window.atlasPlacePin, set by assets/place-sheet.js). Since 15 Nov 2026 a glossy red map pin; before that a solid teardrop in the ink with a
+    // (window.atlasPlacePin, set by assets/place-sheet.js). Since 15 Nov 2026 a red push pin, its needle on the place; before that a solid teardrop in the ink with a
     // 1px ground edge, so it reads on the hairlines and the land in both themes. It falls 14px into place when the place
     // changes; with reduced motion it is simply there.
     let droppedPinKey = null, droppedPinT0 = 0;
@@ -11017,22 +11017,29 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const k = reduce ? 1 : Math.min(1, (now - droppedPinT0) / 220);
       const lift = (1 - k * k) * 14;
       if (k < 1) scheduleRender();
-      // A glossy red map pin (user, 15 Nov 2026: "make pin in this style", of the red heart emoji, then "keep the glossy
-      // look" and "it doesnt need to be a heart"): a round head tapering to a point on the place, no dot in it. Drawn from the
-      // street pin's own SVG path in its 24 x 34 box, so the two maps show one shape; the point is at 12, 33.
-      const x = p.x - 12, y = p.y - lift - 33;
+      // A red push pin (user, 15 Nov 2026: after the heart emoji and a glossy map pin, "turn it into this pin", a photo of a
+      // drawing pin): a cap, a collar, a waisted body and a wide flange in a glossy red shaded as a cylinder, and a steel
+      // needle whose tip is on the place. Drawn upright with the tip at 0, 0 and tilted 35 degrees, so the head leans right;
+      // the street map's SVG (syncStreetDropPin) has the same parts.
       c2.save();
-      c2.translate(x, y);
-      // Shaded as the emoji is (user, 15 Nov 2026: "make it closer to this look"): a red that is lighter at the top and deeper
-      // at the foot, a broad soft light over the upper head that fades out, and a darker red rim.
-      const body = new Path2D('M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z');
-      const fillG = c2.createLinearGradient(0, 2, 0, 33);
-      fillG.addColorStop(0, '#f56a5c'); fillG.addColorStop(0.45, '#e63a2e'); fillG.addColorStop(1, '#c0241a');
-      c2.fillStyle = fillG; c2.fill(body);
-      const light = c2.createRadialGradient(10, 7, 0, 10, 7, 10);
-      light.addColorStop(0, 'rgba(255,255,255,.55)'); light.addColorStop(0.55, 'rgba(255,255,255,.18)'); light.addColorStop(1, 'rgba(255,255,255,0)');
-      c2.fillStyle = light; c2.fill(body);
-      c2.strokeStyle = '#a91e16'; c2.lineWidth = 1; c2.stroke(body);
+      c2.translate(p.x, p.y - lift);
+      c2.rotate(35 * Math.PI / 180);
+      const stops = { red: [[0, '#b01d14'], [0.3, '#f56a5c'], [0.55, '#e63a2e'], [1, '#a91e16']], steel: [[0, '#59626e'], [0.45, '#eef3f8'], [1, '#7a8491']] };
+      [
+        ['M-0.8 -15L0.8 -15L0 0Z', 'steel', 0.8],
+        ['M-10 -16.5Q-10 -18.5 -7 -18.5L7 -18.5Q10 -18.5 10 -16.5Q10 -14.5 7 -14.5L-7 -14.5Q-10 -14.5 -10 -16.5Z', 'red', 10],
+        ['M-3.8 -18.5L-2.6 -26L2.6 -26L3.8 -18.5Z', 'red', 3.8],
+        ['M-4.4 -26.3Q-4.4 -27.6 -3 -27.6L3 -27.6Q4.4 -27.6 4.4 -26.3Q4.4 -25 3 -25L-3 -25Q-4.4 -25 -4.4 -26.3Z', 'red', 4.4],
+        ['M-5.5 -30.5Q-5.5 -33 -3 -33L3 -33Q5.5 -33 5.5 -30.5L5.5 -29.9Q5.5 -27.4 3 -27.4L-3 -27.4Q-5.5 -27.4 -5.5 -29.9Z', 'red', 5.5],
+        ['M-1.7 -19.2L-1.3 -25.4L-0.5 -25.4L-0.7 -19.2Z', 'light', 1.7]
+      ].forEach(([d, kind, w]) => {
+        const path = new Path2D(d);
+        if (kind === 'light') { c2.fillStyle = 'rgba(255,255,255,.45)'; c2.fill(path); return; }
+        const g = c2.createLinearGradient(-w, 0, w, 0);
+        stops[kind].forEach(([o, col]) => g.addColorStop(o, col));
+        c2.fillStyle = g; c2.fill(path);
+        c2.strokeStyle = kind === 'red' ? '#8f1810' : '#4a525c'; c2.lineWidth = 0.6; c2.stroke(path);
+      });
       c2.restore();
     }
     window.atlasDropPinRefresh = () => scheduleRender();
@@ -13057,9 +13064,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const el = document.createElement('div');
         el.className = 'atlas-drop-pin';
         el.setAttribute('aria-hidden', 'true');
-        // A glossy red map pin, its point on the place (user, 15 Nov 2026).
-        el.innerHTML = '<svg viewBox="0 0 24 34" width="24" height="34"><defs><linearGradient id="atlasPinRed" gradientUnits="userSpaceOnUse" x1="0" y1="2" x2="0" y2="33"><stop offset="0" stop-color="#f56a5c"/><stop offset=".45" stop-color="#e63a2e"/><stop offset="1" stop-color="#c0241a"/></linearGradient><radialGradient id="atlasPinLight" gradientUnits="userSpaceOnUse" cx="10" cy="7" r="10"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".55" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><path fill="url(#atlasPinRed)" d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/><path class="atlas-drop-pin-light" fill="url(#atlasPinLight)" d="M12 33C12 33 2 20.5 2 12a10 10 0 0 1 20 0c0 8.5-10 21-10 21z"/></svg>';
-        streetDropPin = new maplibregl.Marker({ element: el, anchor: 'bottom' });
+        // A red push pin, the needle's tip on the place (user, 15 Nov 2026). The tip is at 5, 35 in the 36px box, so the
+        // box's top left is set 5px left of and 35px above the place.
+        el.innerHTML = '<svg viewBox="0 0 36 36" width="36" height="36"><defs><linearGradient id="atlasPinRed" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#b01d14"/><stop offset="0.3" stop-color="#f56a5c"/><stop offset="0.55" stop-color="#e63a2e"/><stop offset="1" stop-color="#a91e16"/></linearGradient><linearGradient id="atlasPinSteel" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#59626e"/><stop offset="0.45" stop-color="#eef3f8"/><stop offset="1" stop-color="#7a8491"/></linearGradient></defs><g transform="translate(5 35) rotate(35)"><path class="atlas-drop-pin-steel" fill="url(#atlasPinSteel)" d="M-0.8 -15L0.8 -15L0 0Z"/><path class="atlas-drop-pin-red" fill="url(#atlasPinRed)" d="M-10 -16.5Q-10 -18.5 -7 -18.5L7 -18.5Q10 -18.5 10 -16.5Q10 -14.5 7 -14.5L-7 -14.5Q-10 -14.5 -10 -16.5Z"/><path class="atlas-drop-pin-red" fill="url(#atlasPinRed)" d="M-3.8 -18.5L-2.6 -26L2.6 -26L3.8 -18.5Z"/><path class="atlas-drop-pin-red" fill="url(#atlasPinRed)" d="M-4.4 -26.3Q-4.4 -27.6 -3 -27.6L3 -27.6Q4.4 -27.6 4.4 -26.3Q4.4 -25 3 -25L-3 -25Q-4.4 -25 -4.4 -26.3Z"/><path class="atlas-drop-pin-red" fill="url(#atlasPinRed)" d="M-5.5 -30.5Q-5.5 -33 -3 -33L3 -33Q5.5 -33 5.5 -30.5L5.5 -29.9Q5.5 -27.4 3 -27.4L-3 -27.4Q-5.5 -27.4 -5.5 -29.9Z"/><path class="atlas-drop-pin-light" d="M-1.7 -19.2L-1.3 -25.4L-0.5 -25.4L-0.7 -19.2Z"/></g></svg>';
+        streetDropPin = new maplibregl.Marker({ element: el, anchor: 'top-left', offset: [-5, -35] });
       }
       streetDropPin.setLngLat([pin.lon, pin.lat]).addTo(cityVectorMap);
       const el = streetDropPin.getElement();
