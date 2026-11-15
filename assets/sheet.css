@@ -271,6 +271,21 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 .grade-scale li,.grade-list li{display:block!important;margin:0!important;padding:0 0 0 var(--sh-indent)!important;text-indent:calc(-1 * var(--sh-indent))!important}
 .grade-scale .grade-word::after,.grade-list .grade-word::after{content:": "}
 .grade-word,.grade-mark{background:transparent!important;padding:0!important;border:0!important}
+/* A grade is set in its own colour wherever it is named (user, 15 Nov 2026: "color grades in color code"; the sheet had set
+   them in ink like the rest of the text): the darker cut of the colour on paper, the bright one on the dark ground, the
+   pairs atlas.css keeps on .grade-word-1 to -5. The grade under the open space's name on the map takes the same colours. */
+.grade-word[class*="grade-word-"]{color:var(--grade-ink)!important}
+:root[data-theme="dark"] .grade-word[class*="grade-word-"]{color:var(--grade-col)!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#1f7f5c!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#1b7f73!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#8c720c!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="4"]{color:#975824!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="5"]{color:#8f2929!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#34d399!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#2dd4bf!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#facc15!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="4"]{color:#fb923c!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="5"]{color:#ef4444!important}
 /* Visiting: the label in italic, the fact after it. */
 .visit-cols,.visit-rows{display:block!important;margin:0!important;padding:0!important}
 .visit-item{display:block!important;margin:0!important;padding:0 0 0 var(--sh-indent)!important;text-indent:calc(-1 * var(--sh-indent))!important;border:0!important}
