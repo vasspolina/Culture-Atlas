@@ -482,8 +482,10 @@
     }
     colClose.addEventListener('click', () => setCol(true, true));
     colOpen.addEventListener('click', () => setCol(false, true));
-    let colStart = false;
-    try { colStart = localStorage.getItem(COL_KEY) === '1'; } catch (_) {}
+    // The page loads with the column closed, the chat beside the map (user, 15 Nov 2026: "make it load like this", a screenshot
+    // of the chat and the map alone). A visitor who opened the column keeps it open: only their own '0' says so.
+    let colStart = true;
+    try { colStart = localStorage.getItem(COL_KEY) !== '0'; } catch (_) {}
     setCol(colStart, false);
 
     // ---- What the atlas is, at the map's top right (user, 10 Nov 2026: "use this typesetting but with times to put tagline
@@ -593,7 +595,9 @@
       growInput();
       fitStrip();
       const root = document.documentElement, vp = $('globeViewport'), tag = $('shTagline');
-      if (!vp || !chips.isConnected || !window.matchMedia('(min-width:1080px)').matches) return;
+      // From 768px, not 1080px: under 1080px there is no index column, and the pills left at the window's top left stood
+      // over the chat's opening words (15 Nov 2026). They are placed on the map there too (sheet.css, end).
+      if (!vp || !chips.isConnected || !window.matchMedia('(min-width:768px)').matches) return;
       const v = vp.getBoundingClientRect();
       if (!v.width) return;
       const pad = parseFloat(getComputedStyle(root).getPropertyValue('--sh-pad')) || 22;

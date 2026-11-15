@@ -1581,3 +1581,36 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 @layer sheet{
   #layersControl #layersBtn:not(#sh-x):not(#sh-y){display:none!important}
 }
+
+/* ---- The head bar is one line (user, 15 Nov 2026: "fix top menu", a screenshot of Images set under Expand chat). With the
+   index column closed the left group (Gossip mode, Dark, Images) was held to 260px and the panel's pages began at 260px
+   whatever the group measured, inside a bar only as wide as the chat less those 260px, so the two ran into each other and
+   the pages were cut to "Ex... De... Ch...". Now the left group is as wide as its words when no column holds it wider, the
+   pages begin at its measured right edge (--sh-top-w, assets/chat-resize.js), and their bar is never narrower than its
+   own words: it ends with the chat where there is room, and runs on over the map's head where there is not. ---- */
+@layer sheet{
+  @media (min-width:768px){
+    :root.gmd.sh-col-closed #gmdTopBar{width:max-content!important}
+    :root.gmd:not(#sh-mid):not(#sh-top) #workspaceContextTabBar{left:var(--sh-top-w,max(var(--sh-col),260px))!important;right:auto!important;width:max-content!important;
+      min-width:calc(var(--sh-map-l) - var(--sh-top-w,max(var(--sh-col),260px)))!important;max-width:calc(100vw - var(--sh-top-w,max(var(--sh-col),260px)))!important;
+      flex-wrap:nowrap!important;column-gap:calc(var(--sh-pad) * .75)!important}
+    :root.gmd.chat-wide:not(#sh-mid):not(#sh-top) #workspaceContextTabBar{right:0!important;width:auto!important;min-width:0!important}
+    /* Whole words while the window has room for them; in a window too narrow for the line they give way evenly. */
+    :root.gmd:not(#sh-top) #workspaceContextTabBar button{flex:0 1 auto!important;min-width:0!important}
+  }
+  @media (min-width:768px) and (max-width:1079px){
+    :root.gmd #gmdTopBar{width:max-content!important}
+  }
+}
+
+/* ---- The filter pills stay off the chat under 1080px (15 Nov 2026). There is no index column there, so the pills kept
+   their first place, the window's top left, which is where the chat now begins: they were drawn over "Ask the curator"
+   and the lines under it. They take the place they have in a wider window, on the map, from the same placeChips()
+   (assets/desktop-maps.js): top left of the map, or bottom left when the room there is narrower than the widest pill. ---- */
+@layer sheet{
+  @media (min-width:768px) and (max-width:1079px){
+    :root.gmd #gmdChips{position:fixed!important;top:var(--sh-chips-t,calc(var(--sh-head) + 1px + var(--sh-pad) * .6))!important;bottom:var(--sh-chips-b,auto)!important;
+      left:var(--sh-chips-l,calc(var(--sh-map-l) + var(--sh-pad)))!important;right:auto!important;
+      width:auto!important;max-width:var(--sh-chips-mw,340px)!important;z-index:31!important}
+  }
+}
