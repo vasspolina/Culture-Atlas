@@ -1690,3 +1690,18 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     #mobileTopBar #mobileTopBrandBtn span:not(#sh-x):not(#sh-y){white-space:normal!important;text-wrap:balance!important}
   }
 }
+
+/* ---- the record opened from the chat covers the whole screen (user, 15 Nov 2026: "make the chat details window cover
+   whole screen, now it shows filters on top") ----
+   Details in the chat opens the record as a page of its own (assets/phone-maps.js, gm-from-chat), but its full height was
+   the map's, and the filter row, fixed across the top of the map, stayed over it. While it is open the record is fixed to
+   the whole screen, above every map control, and the filters and the map's own buttons are put away; its top row (Chat,
+   Details) clears the phone's status bar. Back to the chat, or closing the record, ends the mode and brings them back. */
+@layer sheet{
+@media (max-width:767px){
+  :root.gm-from-chat :is(#gmChips,#layersControl,#mapColourKey):not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet:not(.hidden):not(#sh-x):not(#sh-y){position:fixed!important;inset:0!important;top:0!important;bottom:0!important;
+    height:100%!important;max-height:none!important;z-index:96!important;border-radius:0!important;border-top:0!important;box-shadow:none!important;
+    padding-top:var(--safe-t,0px)!important;overflow-y:auto!important}
+}
+}
