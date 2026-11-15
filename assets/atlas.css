@@ -4984,6 +4984,11 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 .atlas-drop-pin.is-dropping svg{animation:atlas-pin-drop .22s cubic-bezier(.3,0,.6,1) both}
 @keyframes atlas-pin-drop{from{transform:translateY(-14px)}to{transform:none}}
 @media (prefers-reduced-motion:reduce){.atlas-drop-pin.is-dropping svg{animation:none}}
+/* The selected space's name stands above the dropped pin, not behind it (user, 15 Nov 2026: the teardrop covered the middle
+   of "Thailand Biennale"). The pin is 34px tall from the place, which is the middle of the badge's 32px box, so the name's
+   foot is 40px above that middle: 6px clear of the pin's head. Whatever side the collision pass gave it, the selected name
+   goes on top, since the pin takes the place of the ring it would otherwise sit beside. */
+.custom-inst-pin.popup-active .inst-pin-label{bottom:calc(50% + 40px)!important;top:auto!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important}
 
 /* ---- INTRO NARRATION (user, 13 Nov 2026): the empty chat types out what the atlas does, with the suggested questions
    under it. The script is assets/intro-narration.js. Untyped letters keep their place (visibility:hidden), so the block has
