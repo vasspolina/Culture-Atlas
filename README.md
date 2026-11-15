@@ -152,6 +152,12 @@ The Cloudflare Worker in `worker/` serves it at `POST /chat`. The Anthropic key 
 
 The page asks the Worker for Claude Sonnet 4.5 (`queryAI` in `index.html`; a visitor's own key uses the model chosen in settings). The Worker accepts only Claude Haiku 4.5 and Sonnet 4.5, caps a reply at 1,500 tokens and a conversation at 16 turns, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Raise or lower these at the top of `worker/index.js`. Every answer costs tokens on your Anthropic account.
 
+## Visit counting
+
+`assets/analytics.js` counts visits without cookies and without a third-party script, and is off until `window.ATLAS_ANALYTICS_URL` in `assets/config.js` holds the count address of a GoatCounter site (`https://<code>.goatcounter.com/count`; the account is free for non-commercial use). To turn it on: make the site at goatcounter.com, put its address in `config.js`, bump the `?v=` on the `config.js` tags.
+
+One small request per count carries the page path (never the query string or hash), the title, the referring site without its query, and the screen width. Three events are counted by name: `record/<id>` when a record opens, `chat/question` when a question is asked, `gossip/on` when Gossip mode is switched on. The words of a question, the text and files of a note, settings and API keys are never sent, and nothing is stored in the browser. Nothing is sent when the browser sets Do Not Track or Global Privacy Control, on localhost, or from a file. `window.atlasCount(name)` adds a count from anywhere. Tests: `node --test tests/analytics.test.mjs`.
+
 ## Studies
 
 `studies.html` gathers the studies that read across many records: the Epstein cross-reference, what Democracy Now!,
