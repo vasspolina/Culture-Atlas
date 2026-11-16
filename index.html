@@ -1154,6 +1154,7 @@ return maplibregl$1;
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
   <script src="assets/institutions.js?v=700"></script>
+  <script src="assets/money-ids.js?v=717"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -6679,6 +6680,9 @@ return maplibregl$1;
     let selectedCityFilter = 'all';
     let searchQuery = '';
     let selectedInstitution = null;
+    // A record offers its Money map only when the map has something to show: a funder whose head office is on record
+    // (assets/money-ids.js, written by tools/build_hq.py). User, 16 Nov 2026: "do not offer to find money map if there is none".
+    const hasMoneyMap = inst => !!(inst && inst.id && window.ATLAS_MONEY_IDS && window.ATLAS_MONEY_IDS.has(inst.id));
     let hoveredInstitution = null;
     let hoverStick = null;
     let hoveredCity = null;
@@ -13077,6 +13081,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (el) el.textContent = value || '';
       };
       const toggle = (id, on) => document.getElementById(id)?.classList.toggle('hidden', !on);
+      toggle('dossier-sheet-moneymap-btn', hasMoneyMap(inst));
 
       const sheetName = document.getElementById('dossier-sheet-name');
       if (sheetName) {
@@ -13479,6 +13484,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           directWebBtn.style.display = 'none';
         }
       }
+
+      const moneyMapBtn = document.getElementById('floatingCardMoneyMapBtn');
+      if (moneyMapBtn) moneyMapBtn.style.display = hasMoneyMap(inst) ? '' : 'none';
 
       const directAuditBtn = document.getElementById('floatingCardDirectAuditBtn');
       if (directAuditBtn) {
@@ -13993,7 +14001,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               <div class="head-side record-actions record-action-row">
                 <button type="button" onclick="window.askCuratorAboutInst(dossierInst || selectedInstitution);" class="record-action">Ask in chat</button>
                 ${(inst.lat && inst.lon && inst.address) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
-                ${inst.id ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
+                ${hasMoneyMap(inst) ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
                 ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
               </div>
               <div class="head-main">

@@ -194,3 +194,13 @@ for k in unused: del out[k]
 print(len(unused), 'offices no funding line names, left off')
 json.dump({'org': out, 'people': people}, open(os.path.join(here, '..', 'assets', 'hq.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
 print(len(out), 'organisations,', len(people), 'people')
+# The spaces with a money map: one or more funders whose head office is on record. A record's Money map button is offered
+# only for these (user, 16 Nov 2026: "do not offer to find money map if there is none"). A space whose funders have no
+# office drew its own pin and a funder's name beside it, nothing that shows where the money comes from.
+office = {k for k, o in out.items() for k in (k, *o.get('also', []))}
+ids = sorted({r['id'] for r in json.load(open(os.path.join(here, '..', 'assets', 'money-maps.json')))
+              for n in r['nodes'] if n[1] in ('gov', 'corp', 'found') and len(n) > 5 and n[5] in office})
+with open(os.path.join(here, '..', 'assets', 'money-ids.js'), 'w') as fh:
+    fh.write('// Written by tools/build_hq.py: the spaces whose funders have a head office on the money map.\n')
+    fh.write('window.ATLAS_MONEY_IDS = new Set(' + json.dumps(ids, ensure_ascii=False, separators=(',', ':')) + ');\n')
+print(len(ids), 'spaces with a money map')

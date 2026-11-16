@@ -25,6 +25,7 @@ const ASSETS_TO_CACHE = [
   './moma-money-map.html',
   './artists-images.html',
   './assets/hq.json',
+  './assets/money-ids.js',
   './assets/funder-logos.json',
   './assets/funder-logos.png',
   './assets/config.js',
