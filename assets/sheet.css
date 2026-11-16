@@ -1802,4 +1802,16 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   #gmChips:not(#sh-x):not(#sh-y){background:var(--sh-top)!important}
   #gmChips .gm-filter-chip:not([aria-pressed="true"]):not(#sh-x):not(#sh-y){background:var(--sh-chip)!important;color:var(--sh-ink)!important;border-color:var(--sh-code,var(--sh-ink))!important}
 }
+
+/* DARK MEANS DARK (user, 16 Nov 2026: "dark mode ... is not dark mode, make all text be light and background color
+   dark"). Above, dark mode swapped ink and paper, so every ink pill turned into a light pill with dark text: Share
+   information, Voice, Send, the record's actions, a pressed filter, the open Layers button. In dark mode now each of
+   them is a dark ground with light text and a light 1px edge; a pressed or "on" state is told by a solid edge in the
+   hover blue and blue words, not by a light fill. Measured: #e6e1d7 on #2b2b2b is 11.6:1; #59a0f1 on #2b2b2b is 5.4:1.
+   The :not(#dk) run only lifts these over the id-heavy phone rules above; it matches every element. */
+:root:root:root[data-theme="dark"] :is(#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn.is-on),:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action,#layersControl #layersBtn[aria-expanded="true"],#gmChips .gm-filter-chip[aria-pressed="true"],#mapColourKey .mck-row[aria-pressed="true"]):not(#dk1):not(#dk2):not(#dk3):not(#dk4){background:var(--sh-pill)!important;color:var(--sh-ink)!important;border:1px solid var(--sh-ink)!important}
+:root:root:root[data-theme="dark"] :is(#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn.is-on),:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action,#layersControl #layersBtn[aria-expanded="true"],#gmChips .gm-filter-chip[aria-pressed="true"],#mapColourKey .mck-row[aria-pressed="true"]):not(#dk1):not(#dk2):not(#dk3):not(#dk4) *{color:inherit!important}
+:root:root:root[data-theme="dark"] :is(#workBottomDock :is(#chatShareBtn,#curatorVoiceToggleBtn,#workSendBtn.is-on),:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#dossier-bottom-sheet,#globeViewport,body) .record-action-row .record-action):not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:focus-visible){background:var(--sh-pill-hover)!important;color:#fff!important}
+:root:root:root[data-theme="dark"] :is(#workBottomDock #curatorVoiceToggleBtn[aria-pressed="true"],#gmChips .gm-filter-chip[aria-pressed="true"],#mapColourKey .mck-row[aria-pressed="true"],#layersControl #layersBtn[aria-expanded="true"]):not(#dk1):not(#dk2):not(#dk3):not(#dk4){background:var(--sh-pill)!important;color:var(--sh-hover)!important;border-color:var(--sh-hover)!important}
+:root:root:root[data-theme="dark"] .gm-alert-mark:not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:focus-visible){background:var(--sh-pill)!important;color:var(--sh-hover)!important}
 }
