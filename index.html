@@ -10491,7 +10491,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v714';
+    const ATLAS_RELEASE = 'culture-atlas-v715';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11020,6 +11020,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // The selected space's label is set larger than the rest, with its whole name (user, 4 Nov 2026: "make selected bigger").
     const atlasSelFont = () => '400 20px ' + ATLAS_SERIF;
     const ATLAS_SEL_H = 32, ATLAS_SEL_PAD = 36;
+    // THE NAME CLEARS THE PIN (user, 16 Nov 2026, a screenshot of "Palais de Lomé" with the pin's ball over the name: "overlap").
+    // The dropped pin (drawDroppedPin) stands on the place with its ball 16 to 34px above it, which is where a name above its dot
+    // sat (a picked space's box from 38 to 6px up, a city's from 28 to 6). The name of the place the pin is on is set above the
+    // ball instead: its box ends ATLAS_PIN_CLEAR px above the place, 2px over the top of the ball.
+    const ATLAS_PIN_CLEAR = 36;
     // Every name on the map is given whole (user, 16 Nov 2026: the layer names "get cut short"); the label boxes clash-test
     // at their real width, so a long name that has no room is left out rather than cut.
     const atlasLabelName = (name) => name;
@@ -11554,7 +11559,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             const sn = atlasLabelName(selectedInstitution.name, true);
             const sw = ctx.measureText(sn).width + ATLAS_SEL_PAD;
             ctx.restore();
-            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - ATLAS_SEL_H - 6, w: sw, h: ATLAS_SEL_H });
+            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - ATLAS_SEL_H - ATLAS_PIN_CLEAR, w: sw, h: ATLAS_SEL_H });
           }
         }
         try {
@@ -11625,6 +11630,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
             const bx = pt.x - bw / 2;
             let by = pt.y - 28;
+            // The city whose place sheet is open has the pin on it (no space picked): its name goes above the pin's ball.
+            const pinOnCity = !selectedInstitution && window.atlasPlacePin && matchC(window.atlasPlacePin.name || '', city.name);
+            if (pinOnCity) by = pt.y - ATLAS_PIN_CLEAR - bh;
             // A city whose spaces fill a dot disk (Havana) puts its label above the disk, not on it.
             const ownDisk = isClustered ? null : lastCityDisks.get(city.name.toLowerCase().trim());
             if (ownDisk && ownDisk.y < by + bh + 2) by = ownDisk.y - bh - 2;
@@ -11928,7 +11936,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             });
             // Above the dot; below it when the city's own badge sits there. A country with one city draws the badge on its spaces,
             // and the space's name was dropped as a collision, so a click on the country showed a badge and no space.
-            let by = isSel ? d.y - ATLAS_SEL_H - 6 : d.y - 18;
+            let by = isSel ? d.y - ATLAS_SEL_H - ATLAS_PIN_CLEAR : d.y - 18;   // the picked space has the pin on it
             if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, d.y + 8)) by = d.y + 8;
             // Another space's dot under the label hides it; the label then tries clear above its own dot, then below.
             const onDot = (y) => !isSel && instDotBoxes.some(box => box.inst !== d.inst && !(bx + bw < box.x || bx > box.x + box.w || y + bh < box.y || y > box.y + box.h));
