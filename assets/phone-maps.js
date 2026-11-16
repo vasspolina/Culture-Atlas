@@ -198,10 +198,9 @@
 
       // The menu holds the controls the top bar holds on the other screens, and calls the same buttons, so their
       // labels and pressed states are always the bar's own.
+      // Gossip mode and Dark are on the buttons at the top of the screen, and Share information under the chat's box
+      // (user, 16 Nov 2026), so they are not repeated here.
       const items = [
-        ['mobileGossipBtn'],
-        ['mobileThemeBtn'],
-        ['mobileStickyShareBtn'],
         ['mobileStickyVoiceBtn', 'Read answers aloud'],
         ['reset-state-btn', 'New chat'],
         ['topImagesBtn', 'Artists’ images'],   // a link: its click opens artists-images.html
@@ -327,15 +326,72 @@
       chatHead.insertBefore(b, close || null);
     }
 
+    // ---- Buttons at the top of the screen: Back to chat, Dark, Gossip mode (user, 16 Nov 2026) ----------------------
+    // On the map and in the chat the phone's top bar is hidden, so Dark and Gossip mode had been two taps away in the ⋮
+    // menu. They sit in a row at the top instead, with Back to chat beside them wherever the chat is not what is on screen:
+    // on the map, and on the Share information form. The row calls the top bar's own buttons, so their labels and pressed
+    // states stay the bar's. The look, and where it shows, is in assets/atlas.css, "PHONE: TOP BUTTONS".
+    if (!$('gmTopBtns')) {
+      const bar = document.createElement('div');
+      bar.id = 'gmTopBtns';
+      bar.setAttribute('role', 'toolbar');
+      bar.setAttribute('aria-label', 'Chat, dark mode and gossip mode');
+      const mk = (id, label, onClick) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.id = id;
+        b.textContent = label;
+        b.addEventListener('click', onClick);
+        bar.appendChild(b);
+        return b;
+      };
+      mk('gmBackChatBtn', 'Back to chat', () => {
+        // On the note form it leaves the note; anywhere else it opens the conversation where it was left.
+        if (body.classList.contains('chat-input-mode-active') && typeof window.toggleChatShare === 'function') window.toggleChatShare();
+        else openChat();
+      });
+      const themeBtn = mk('gmThemeBtn', 'Dark', () => { if (typeof window.toggleTheme === 'function') window.toggleTheme(); });
+      const gossipBtn = mk('gmGossipBtn', 'Gossip mode', () => { if (typeof window.toggleGossipMode === 'function') window.toggleGossipMode(); });
+      body.appendChild(bar);
+      const srcTheme = $('mobileThemeBtn'), srcGossip = $('mobileGossipBtn');
+      const mirror = () => {
+        if (srcTheme) {
+          themeBtn.textContent = srcTheme.textContent.trim() || 'Dark';
+          const l = srcTheme.getAttribute('aria-label');
+          if (l) themeBtn.setAttribute('aria-label', l);
+        }
+        gossipBtn.setAttribute('aria-pressed', srcGossip ? srcGossip.getAttribute('aria-pressed') || 'false' : String(body.classList.contains('gossip-mode-active')));
+      };
+      [srcTheme, srcGossip].forEach((el) => el && new MutationObserver(mirror).observe(el, { attributes: true, childList: true, characterData: true, subtree: true }));
+      mirror();
+    }
+    // The filter row hangs under these buttons, and the chat sheet and the Layers button hang under the row by --gmChips-h
+    // (assets/sheet.css). Nothing set it, so they used its 46px fallback while the row, wrapped to two lines, was taller.
+    // It is the row's bottom edge, measured whenever the row changes size; a hidden row keeps the last value.
+    const publishChips = () => {
+      const row = $('gmChips');
+      if (!row || !row.offsetHeight) return;
+      root.style.setProperty('--gmChips-h', Math.round(row.getBoundingClientRect().bottom) + 'px');
+    };
+    const watchChips = () => {
+      const row = $('gmChips');
+      if (!row) return false;
+      if (window.ResizeObserver) new ResizeObserver(publishChips).observe(row);
+      new MutationObserver(publishChips).observe(root, { attributes: true, attributeFilter: ['class'] });
+      publishChips();
+      return true;
+    };
+    if (!watchChips()) ready(() => setTimeout(watchChips, 0));
+
     // ---- One of each in the chat (user, 6 Nov 2026: "make chat window not repeating buttons") ----
-    // Share information is in the chat's ⋮ menu, so on a phone the composer holds only the box and Send, as the Claude app's
-    // does. The keyboard's own close key does what the composer's chevron did, and the chevron sat over the words being typed,
-    // so it goes too. On the note screen itself both stay: there Share is the way back out of the form.
+    // The keyboard's own close key does what the composer's chevron did, and the chevron sat over the words being typed,
+    // so on a phone it goes. On the note screen itself it stays. Share information is no longer hidden here: it hangs under
+    // the chat's box (user, 16 Nov 2026; assets/sheet.css places it) and has left the ⋮ menu instead.
     const shareBtn = $('chatShareBtn');
     if (shareBtn) {
       const syncShare = () => {
         const off = PHONE() && !body.classList.contains('chat-input-mode-active');
-        [shareBtn, $('workKbCloseBtn')].forEach((el) => {
+        [$('workKbCloseBtn')].forEach((el) => {
           if (!el) return;
           if (off) el.style.setProperty('display', 'none', 'important');
           else el.style.removeProperty('display');
