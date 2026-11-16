@@ -8546,7 +8546,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
       const titleEl = document.getElementById('cityViewTitleText');
       if (titleEl) {
-        titleEl.innerHTML = `${escapeHtml(cityName)}<span class="sr-only">${escapeHtml(cityName.toUpperCase())}</span>, ${cityInsts.length} ${cityInsts.length === 1 ? 'space' : 'spaces'}`;
+        titleEl.innerHTML = cityTitleHtml(cityName, cityInsts);
       }
       const backCountryBtn = document.getElementById('backToCountryBtn');
       const backCountryText = document.getElementById('backToCountryText');
@@ -11270,7 +11270,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           const cityCountry = cityMeta ? cityMeta.country : lastSelectedCountry;
           if (badgeIcon) badgeIcon.textContent = '';
           if (cityTitleEl) {
-            cityTitleEl.innerHTML = `${escapeHtml(targetCity)}<span class="sr-only">${escapeHtml(targetCity.toUpperCase())}</span>, ${cityMatches.length} ${cityMatches.length === 1 ? 'space' : 'spaces'}`;
+            const html = cityTitleHtml(targetCity, cityMatches);
+            if (cityTitleEl.innerHTML !== html) cityTitleEl.innerHTML = html;
           }
           if (backCountryBtn && cityCountry) {
             backCountryBtn.classList.remove('hidden');
@@ -20440,6 +20441,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       research_krauss: { label: 'Late capitalist museum' },
       research_kwon: { label: 'Site-specific art' }
     };
+
+    // The street view's title counts what the filters over the map keep (user, 16 Nov 2026: "when on zoom no spaces shown
+    // clean", "flagged also"). Suva's two spaces and Portland's three are all Unverified, so Clean or Flagged rightly hides
+    // every pin, but the title went on saying "2 spaces" over an empty map. With a filter on it says how many of the
+    // city's spaces it keeps, and names the grade: "Suva, none of 2 spaces clean".
+    function cityTitleHtml(name, insts) {
+      const head = `${escapeHtml(name)}<span class="sr-only">${escapeHtml(String(name).toUpperCase())}</span>, `;
+      const total = insts.length, word = total === 1 ? 'space' : 'spaces';
+      const keep = typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
+      if (!keep) return `${head}${total} ${word}`;
+      const n = insts.filter(keep).length;
+      const grade = typeof window.atlasGradeFilter === 'function' ? window.atlasGradeFilter() : null;
+      const what = grade === 'A' ? 'clean' : grade === 'B' ? 'flagged' : 'shown';
+      const space = typeof window.atlasSpaceFilter === 'function' && window.atlasSpaceFilter();
+      // A grade and another filter together: the count is of spaces both keep.
+      const tail = grade && !space ? what : 'shown';
+      if (n === total) return `${head}${total} ${word}, all ${tail}`;
+      return `${head}${n === 0 ? 'none' : n} of ${total} ${word} ${tail}`;
+    }
 
     function applyFilters() {
       const isCommunityOnly = selectedTierFilter.size === 1 && selectedTierFilter.has('COMMUNITY');
