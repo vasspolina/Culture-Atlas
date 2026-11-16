@@ -415,6 +415,9 @@
     if (!L.ties) { drawReach(ctx, project, r, cx, cy); return; }
     if (!recById) { loadMoney(); return; }
     const focus = hov || sel, rec = focus && recById.get(focus.id);
+    // The money map is a map mode, not a web: with a space in focus its funders are set on the map as names, and no tie is
+    // drawn (user, 16 Nov 2026: "i dont think lines are needed").
+    if (L.money && rec && rec.nodes.some(n => FUNDER(n) && kindOn(n[1]))) return;
     ctx.save();
     ctx.lineCap = 'round';
     // The whole web, faint when a space is in focus.
@@ -887,7 +890,8 @@
 
     if (L.money) {
       if (!recById) { ctx.restore(); return; }
-      const byKey = new Map(), rings = [];
+      MONEY_MODE = null;
+      const rings = [];
       // A selected space with no dot of its own (folded into a cluster) still gets its funders.
       const selPin = sel && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(sel) : null;
       if (selPin && !dots.some(d => sameInst(d.inst, sel))) {
@@ -905,38 +909,27 @@
         // The ring is 64 px when the view is close; further out it shrinks, so funders never land on other cities.
         const zoomK = Math.max(0.4, Math.min(1, r / (baseRadius * 12)));
         const N = Math.min(nodes.length, 10), R = 64 * zoomK;
+        // Names only, as a map sets its place names: no pill behind them and no kind word (user, 16 Nov 2026: "just keep
+        // company titles not boxes behind them"). The kind is in the name's colour. sr is the air between the funder's spot
+        // and its name; there is no mark there any more.
+        ctx.font = MONEY_FONT;
         const items = nodes.slice(0, N).map(n => {
-          // Two pills, as on displaay.net/typefaces: the name filled in its kind's colour, the kind word in an outline beside it.
-          const reach = reachOf(n[5]), word = KIND_WORD[n[1]] || '', text = fitWords(n[0], 40);
-          const nw = ctx.measureText(text).width + 2 * PILL_PAD, ww = word ? ctx.measureText(word).width + 2 * PILL_PAD : 0;
-          return { n, reach, sr: sizeFor(reach.n > 1 ? reach.n : 1), text, word, nw, ww, w: nw + (word ? PILL_GAP + ww : 0) };
+          const reach = reachOf(n[5]), text = fitWords(n[0], 40), w = ctx.measureText(text).width + 4;
+          return { n, reach, sr: 1, text, w };
         });
+        ctx.font = font;
         placeRing(d, items, R, boxes, W, H, d.labelBox ? Math.PI / 2 : -Math.PI / 2);
         rings.push({ d, rec, items });
       });
-      // Then the ties, under the marks: a funder named on two spaces on screen is joined across them, in a dashed line that breaks around label blocks.
-      ctx.save(); ctx.lineWidth = 0.8; ctx.globalAlpha = 0.4; ctx.setLineDash([3, 5]);
-      rings.forEach(({ items }) => items.forEach(it => { if (it.n[5]) { if (!byKey.has(it.n[5])) byKey.set(it.n[5], []); byKey.get(it.n[5]).push([it.x, it.y, COL[it.n[1]]]); } }));
-      const onScreen = p => p[0] > -40 && p[0] < W + 40 && p[1] > -40 && p[1] < H + 40;
-      byKey.forEach(pts => { pts = pts.filter(onScreen); for (let i = 1; i < pts.length; i++) { ctx.strokeStyle = lineCol(pts[i][2]); strokeAround(ctx, pts[0][0], pts[0][1], pts[i][0], pts[i][1], boxes); } });
-      ctx.restore();
-      // The spokes and marks; each name's block (lbox) answers the pointer as the mark does.
-      rings.forEach(({ d, rec, items }) => {
-        items.forEach(it => {
-          const n = it.n, col = COL[n[1]], x = it.x, y = it.y;
-          ctx.globalAlpha = 1;
-          ctx.lineWidth = 0.8; ctx.strokeStyle = lineCol(col); ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(x, y); ctx.stroke();
-          // A dot in the kind's colour; the name block beside it says the kind in words.
-          shapePath(ctx, KIND_SHAPE[n[1]] || 'circle', x, y, it.sr); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 0.8; ctx.fill(); ctx.stroke(); ctx.lineWidth = 0.8;
-          const shared = it.reach.n > 1;
-          LM.push({ x, y, r: Math.max(10, it.sr + 4), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `${KIND_WORD[n[1]] || 'Funder'}, funder of ${rec.n}`, lbox: it.box,
-            sub2: shared ? `Also funds ${plural(it.reach.n - 1, 'other space')} in ${plural(it.reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
-            ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
-        });
-      });
-      // Funder names as pills at the spot the layout found for each: the name on the funder's colour, then the kind word.
-      ctx.globalAlpha = 1; ctx.textAlign = 'left';
-      rings.forEach(({ items }) => items.forEach(it => drawFunderPills(ctx, it, dark)));
+      // The funders are drawn last of all, over the city names (atlasLayersDrawLate), so the mode's wash covers the rest of
+      // the map. Each name answers the pointer as the mark used to.
+      rings.forEach(({ d, rec, items }) => items.forEach(it => {
+        const n = it.n, col = COL[n[1]], shared = it.reach.n > 1;
+        LM.push({ x: it.box.x + it.box.w / 2, y: it.box.y + it.box.h / 2, r: Math.max(10, it.box.h / 2), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `${KIND_WORD[n[1]] || 'Funder'}, funder of ${rec.n}`, lbox: it.box,
+          sub2: shared ? `Also funds ${plural(it.reach.n - 1, 'other space')} in ${plural(it.reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
+          ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
+      }));
+      MONEY_MODE = rings;
     }
     TIP_BOXES = boxes;
     ctx.restore();
@@ -944,6 +937,36 @@
   // The block naming the mark or line under the pointer is drawn last of all, over the city names (index.html calls this
   // after them; the street map calls it after the nodes), so nothing covers it.
   let TIP_BOXES = [];
+  // MONEY MODE (user, 16 Nov 2026: "make money map layer to look not papped on globe but like changing a map mode"). With
+  // the money map on and a space in focus, the map changes over instead of carrying a sticker: a wash of the map's own
+  // ground covers everything (land, other spaces, city names, other layers) except the space in focus and its name, and
+  // its funders are set on that quiet map as names, in the deeper step of their kind's colour with a halo of ground round
+  // the letters, the way a printed map lets a place name cross a coastline. index.html calls this after the city names.
+  let MONEY_MODE = null;
+  const MONEY_FONT = '400 16px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
+  window.atlasLayersDrawLate = function (ctx, ground) {
+    const rings = L.money && !streetUp() ? MONEY_MODE : null;
+    if (!rings || !rings.length) return;
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const W = ctx.canvas.clientWidth || ctx.canvas.width, H = ctx.canvas.clientHeight || ctx.canvas.height;
+    ctx.save();
+    // The wash, with a hole over the space in focus (its dot and its name block) so it stays in full ink.
+    ctx.beginPath(); ctx.rect(0, 0, W, H);
+    rings.forEach(({ d }) => {
+      ctx.moveTo(d.x + 9, d.y); ctx.arc(d.x, d.y, 9, 0, Math.PI * 2, true);
+      const b = d.labelBox; if (b) { ctx.moveTo(b.x - 3, b.y - 3); ctx.lineTo(b.x - 3, b.y + b.h + 3); ctx.lineTo(b.x + b.w + 3, b.y + b.h + 3); ctx.lineTo(b.x + b.w + 3, b.y - 3); ctx.closePath(); }
+    });
+    ctx.globalAlpha = 0.82; ctx.fillStyle = ground || (dark ? '#151412' : '#ffffff'); ctx.fill('evenodd');
+    ctx.globalAlpha = 1;
+    ctx.font = MONEY_FONT; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+    ctx.lineWidth = 4; ctx.strokeStyle = ground || (dark ? '#151412' : '#ffffff');
+    rings.forEach(({ items }) => items.forEach(it => {
+      const b = it.box, x = b.x + b.w / 2, y = b.y + b.h / 2 + 0.5;
+      ctx.strokeText(it.text, x, y);
+      ctx.fillStyle = lineCol(COL[it.n[1]]); ctx.fillText(it.text, x, y);
+    }));
+    ctx.restore();
+  };
   // No longer drawn (user, 11 Nov 2026: "delete hovers"): the map shows no card under the pointer, on the globe or the street
   // map. A click on a mark still does what it did (asks the chat, or opens the funder's record in the sheet).
   window.atlasLayersDrawTip = function () {};
@@ -952,7 +975,7 @@
   // its text, 10px of air either side of the words. The name pill is filled in the kind's colour with black text (the pale
   // fills measure 7:1 or better against black); the kind pill is an outline on the map's own ground, so it reads as a tag
   // to the name and not a second name. The box the layout placed (it.box) holds both, with a 4px gap between them.
-  const PILL_PAD = 10, PILL_GAP = 4;
+  const PILL_PAD = 10;
   // A name too long for its pill is cut at the last whole word that fits, never inside a word ("Federal Culture Incentive ..."
   // read as a different law); the hover block then gives the name in full.
   function fitWords(t, n) {
@@ -963,17 +986,6 @@
   function pill(ctx, x, y, w, h, fill, edge) {
     ctx.beginPath(); ctx.roundRect(x + 0.5, y + 0.5, w - 1, h - 1, (h - 1) / 2);
     ctx.fillStyle = fill; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = edge; ctx.stroke();
-  }
-  function drawFunderPills(ctx, it, dark) {
-    const b = it.box, mid = b.y + b.h / 2 + 0.5, ink = dark ? '#fff' : '#000', paper = dark ? '#000' : '#fff';
-    // A pill on the left of its mark puts the name next to the mark, so the kind word goes on the outside.
-    const left = it.x > b.x + b.w / 2 && it.word;
-    const nx = left ? b.x + it.ww + PILL_GAP : b.x, wx = left ? b.x : b.x + it.nw + PILL_GAP;
-    ctx.save();
-    pill(ctx, nx, b.y, it.nw, b.h, COL[it.n[1]], '#000');
-    ctx.fillStyle = '#000'; ctx.fillText(it.text, nx + PILL_PAD, mid);
-    if (it.word) { pill(ctx, wx, b.y, it.ww, b.h, paper, ink); ctx.fillStyle = ink; ctx.fillText(it.word, wx + PILL_PAD, mid); }
-    ctx.restore();
   }
   // A label, cut like the city labels (rounded, 22 high, 14 either side) but filled in the mark's colour.
   function drawTag(ctx, x, y, w, h, col) {
@@ -1301,6 +1313,7 @@
       window.atlasLayersDraw(ctx, project, r, W / 2, H / 2, list, sel, null, base);
       window.atlasLayersDrawNodes(ctx, dots, r, base, sel, null, false, project, W / 2, H / 2);
       window.atlasLayersDrawTip(ctx);
+      window.atlasLayersDrawLate(ctx, null);
     } finally { STREET = false; }
   }
   window.atlasStreetLayers = {
