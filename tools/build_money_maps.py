@@ -100,6 +100,9 @@ def clean(tok):
     # "Hyundai Motor since 2014": the date is not part of the name.
     tok=re.sub(r"\s+(?:since|from|until|in|between)\s+(?:19|20)\d\d\b.*$","",tok,flags=re.I)
     # "Municipal kunsthalle run by the City of Malmö": the funder is what follows "by".
+    # "The museum depends on the Banco de la República": the funder is what follows "depends on".
+    m1=re.search(r"\b(?:depends|relies|depending|relying)\s+(?:\w+\s+)?on\s+(?:the\s+)?(?=[A-Z])",tok)
+    if m1: tok=tok[m1.end():].strip(" .")
     m2=re.search(r"\b(?:funded|financed|supported|run|owned|operated|backed|seeded|subsidi[sz]ed|paid for|co-funded)\s+(?:\w+\s+)?by\s+",tok,re.I)
     if m2: tok=tok[m2.end():].strip(" .")
     # "the Glass-House Trust": the article would fail the capital-letter test below, so it goes; keys never held it.
@@ -121,6 +124,12 @@ GOVGEN={'the city':'City government','city':'City government','the state':'State
 GOVGEN.update({'canton':'Canton','the canton':'Canton','federal':'Federal government','the federal government':'Federal government','county':'County government','the county':'County government',
   'province':'Provincial government','the province':'Provincial government','provincial government':'Provincial government','municipality':'Municipal government','the municipality':'Municipal government',
   'commune':'Municipal government','the commune':'Municipal government','regional government':'Regional government','the regional government':'Regional government','crown':'Crown','the crown':'Crown','eu':'European Union','the eu':'European Union'})
+VISITOR_RE=re.compile(r"^\s*(?:\w+\s+){0,4}(?:tickets?|admission|entry|entrance)\s+(?:costs?|is|are|was|fees?|prices?)\b|^\s*(?:\w+\s+){0,2}(?:is|are)\s+free\b",re.I)
+# ...unless the phrase says who pays for it ("free general admission is paid for by the Rosenthal Family Foundation").
+PAYER_RE=re.compile(r"\b(?:paid for|funded|sponsored|supported|underwritten|made possible|covered)\s+by\b|\bthanks to\b|\bcourtesy of\b",re.I)
+# Days and months are never funders; a sentence the filter above misses must still not turn one into a sponsor.
+JUNK|={'monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondays','tuesdays','wednesdays','thursdays','fridays','saturdays','sundays','weekends',
+       'january','february','march','april','may','june','july','august','september','october','november','december'}
 def parse_funding(text):
     out=[];seen=set()
     if not text: return out
@@ -130,6 +139,10 @@ def parse_funding(text):
     for sent in re.split(r"(?<=[A-Za-z0-9\)])\.\s+(?=[A-Z$£€0-9])",text):
         s0=PREFIX.sub('',sent.strip())
         for raw in SPLIT.split(s0):
+            # A phrase about what a visitor pays or when entry is free ("Sundays are free", "Entry costs 20 dinars")
+            # names no funder: "Sundays" came out as a corporate sponsor of Museo del Oro. Only the phrase is skipped,
+            # since the same sentence often names the funder too ("admission is free thanks to Walmart").
+            if VISITOR_RE.search(raw) and not PAYER_RE.search(raw): continue
             m=MONEY.search(raw); tok=clean(raw)
             if tok.lower() in GOVGEN: tok=GOVGEN[tok.lower()]
             if not tok or len(tok)<3 or len(tok.split())>9: continue
