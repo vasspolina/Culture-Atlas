@@ -5030,3 +5030,13 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 
 /* MONEY MODE (assets/layers.js): while the money map shows one space's funders, the alert rings over the map step aside. */
 :root.atlas-money-mode .gm-alert-mark,:root.atlas-money-mode .gm-alert-mark.is-on{visibility:hidden!important;pointer-events:none!important;animation:none!important}
+
+/* MONEY MODE's way out (assets/layers.js, moneyExitBtn; user, 16 Nov 2026: "money map missing exit mode"): a pill at the
+   foot of the map, shown only while the mode is on. Ink on paper with an ink edge, so it reads in both themes. */
+#moneyExitBtn{display:none}
+:root.atlas-money-mode #moneyExitBtn{display:inline-flex;align-items:center;gap:.4em;position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:46;
+  min-height:44px;padding:0 20px;border:1px solid var(--ink,#000);border-radius:999px;background:var(--paper,#fff);color:var(--ink,#000);
+  font:400 16px/1.2 var(--sans,system-ui,sans-serif);letter-spacing:.01em;cursor:pointer;white-space:nowrap}
+:root.atlas-money-mode #moneyExitBtn:is(:hover,:focus-visible){background:var(--ink,#000);color:var(--paper,#fff)}
+:root.atlas-money-mode #moneyExitBtn:focus-visible{outline:2px solid var(--ink,#000);outline-offset:3px}
+@media (max-width:767px){ :root.atlas-money-mode #moneyExitBtn{bottom:calc(16px + env(safe-area-inset-bottom,0px))} }

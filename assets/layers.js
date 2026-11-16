@@ -979,6 +979,35 @@
   function setModeClass(on) {
     const el = document.documentElement;
     if (el.classList.contains('atlas-money-mode') !== on) el.classList.toggle('atlas-money-mode', on);
+    if (on) moneyExitBtn();
+  }
+  // THE WAY OUT (user, 16 Nov 2026: "money map missing exit mode"). The mode is entered from a record's Money map button,
+  // and the Layers menu that used to turn it off is gone, so nothing on screen left it. A pill at the map's foot, shown
+  // only while the mode is on (html.atlas-money-mode in assets/atlas.css), turns the money map and its ties off and gives
+  // back the full map. Escape does the same.
+  function exitMoney() {
+    ['money', 'ties'].forEach(k => {
+      const inp = boxes().find(i => keysOfBox(i).includes(k));
+      if (inp) setBox(inp, false); else L[k] = false;
+    });
+    MONEY_MODE = null; setModeClass(false);
+    refilter();
+  }
+  window.atlasExitMoney = exitMoney;
+  function moneyExitBtn() {
+    if (document.getElementById('moneyExitBtn')) return;
+    const host = document.getElementById('globeViewport'); if (!host) return;
+    const b = document.createElement('button');
+    b.type = 'button'; b.id = 'moneyExitBtn';
+    b.innerHTML = '<span aria-hidden="true">×</span> Exit money map';
+    b.title = 'Leave the money map and show every space again (Esc)';
+    b.addEventListener('click', exitMoney);
+    host.appendChild(b);
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape' || !document.documentElement.classList.contains('atlas-money-mode')) return;
+      const t = e.target; if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+      exitMoney();
+    });
   }
   // MONEY MODE (user, 16 Nov 2026: "make money map layer to look not papped on globe but like changing a map mode"; then,
   // of a wash at 0.82 that left every other label, dot and glow showing through: "its very messy"). With the money map on
