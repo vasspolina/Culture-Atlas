@@ -89,7 +89,11 @@ def parse(text, stem, ids):
         if t.startswith('ID:'):
             continue
         if t.startswith('Website:'):
-            d['website'] = t[len('Website:'):].strip()
+            # Only the address: the report's "(checked 2026-10-20; live)" is the researcher's note, which the page never shows.
+            # "none found (checked ...)" is no address, and is left out.
+            w = find_url(t[len('Website:'):])[0]
+            if w:
+                d['website'] = w
             continue
         m = SECTION.match(t)
         if m:
