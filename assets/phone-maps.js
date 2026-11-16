@@ -393,6 +393,8 @@
       const row = $('gmChips');
       if (!row || !row.offsetHeight) return;
       root.style.setProperty('--gmChips-h', Math.round(row.getBoundingClientRect().bottom) + 'px');
+      // The globe is fitted into the room under the row (index.html, measureWtPhoneRoom).
+      if (typeof window.atlasMeasurePhoneRoom === 'function') window.atlasMeasurePhoneRoom();
     };
     const watchChips = () => {
       const row = $('gmChips');
