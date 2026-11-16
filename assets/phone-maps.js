@@ -102,13 +102,7 @@
     // ---- Search box: a magnifier at the start, a menu at the end ------------------------------------------------
     let menuBtn = null, menu = null, anchorBtn = null;
     if (card && input) {
-      const lens = document.createElement('span');
-      lens.className = 'gm-lens';
-      lens.setAttribute('aria-hidden', 'true');
-      // One box for asking and finding (user, 4 Nov 2026: "no need for search, combine it with chat, search behaviour"): a
-      // speech mark, not a magnifier, since what is typed is mostly a question.
-      lens.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>';
-      card.insertBefore(lens, card.firstChild);
+      // No icon before the words (user, 16 Nov 2026: "delete chat icon next to text in chat"): the box was led by a speech mark.
       // The desktop's prompt, word for word (user, 16 Nov 2026: "chat window says ask the atlas but it should say same as on
       // desktop"); it was "Ask the atlas". The box's name also says it finds places.
       input.setAttribute('aria-label', 'Ask about a space, its funders or controversies, or type a space or a city to find it on the map');
