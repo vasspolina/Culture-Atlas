@@ -40,15 +40,17 @@
   const propGlow = () => (REDUCE() ? 1 : 0.975 + 0.175 * Math.sin(performance.now() / 3200 * Math.PI * 2));
   let propTimer = 0;
   // Every flagged layer glows (user, 6 Nov 2026): flagged spaces, right-wing funders, the Epstein files and propaganda.
-  const GLOWING = () => L.propaganda || L.flags || L.right || L.epstein;
+  // No dot glows any more (user, 16 Nov 2026: "make dots do not glow"): the halos are gone, so nothing asks for frames.
+  const GLOWING = () => false;
   function propPulse() {
-    if (REDUCE() || propTimer) return;
+    if (!GLOWING() || REDUCE() || propTimer) return;
     propTimer = setTimeout(() => { propTimer = 0; if (!GLOWING()) return; if (window.scheduleRender) window.scheduleRender(); svSchedule(); }, 80);
   }
   // The flagged layers' halo: a radial fade from the mark's colour to nothing, breathing with propGlow. The deeper step of the
   // colour on the light ground, where the pale one would vanish into white.
   // The funder marks (right-wing, Epstein) stack in big cities, so theirs is softer than a lone flagged space's.
   function flagHalo(ctx, x, y, col, R0, a0) {
+    if (!GLOWING()) return;
     const dark = document.documentElement.getAttribute('data-theme') === 'dark', halo = dark ? col : lineCol(col), glow = propGlow();
     const R = R0 * glow, g = ctx.createRadialGradient(x, y, 2, x, y, R);
     g.addColorStop(0, hexA(halo, a0 * glow));
@@ -579,7 +581,7 @@
       if (!(focus || close)) return;
       let y = pt.y - 10 - (names.length - 1) * 11;
       names.slice(0, 4).forEach(name => {
-        const text = name.length > 28 ? name.slice(0, 26) + '…' : name, tw = ctx.measureText(text).width, w = tw + 8, h = 22;
+        const text = name, tw = ctx.measureText(text).width, w = tw + 8, h = 22;
         const box = { x: pt.x + 10 + dx, y: y - h / 2, w, h };
         if (!collides(box, boxes)) { boxes.push(box); (mk.lboxes = mk.lboxes || []).push(box); haloName(ctx, text, box.x + 4, y + 0.5, col); }
         y += 22;
@@ -742,7 +744,7 @@
     pts.forEach(([e, x, y]) => {
       const on = (e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n)) || picked(e);
       if (!(on || veryClose)) return;
-      const text = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`, t = text.length > 40 ? text.slice(0, 38) + '…' : text;
+      const t = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`;
       const tw = ctx.measureText(t).width, w = tw + 8, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
       if (collides(box, boxes)) return;
       boxes.push(box); HQ_LABELS.push({ e, x: box.x, y: box.y, w, h });
@@ -768,11 +770,6 @@
       dots.forEach(d => {
         const i = d.inst; if (!i || !isOpenBooks(i)) return;
         LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: openCol, label: 'Open books', sub: i.name, ask: `What do the filings show for ${i.name}?` });
-        ctx.save();
-        ctx.shadowColor = openCol; ctx.shadowBlur = dark ? 16 : 10;
-        ctx.fillStyle = openCol;
-        shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fill(); ctx.fill();
-        ctx.restore();
         shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fillStyle = openCol; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
       });
     }
@@ -786,11 +783,6 @@
         const k = selfKinds(i);
         if (L.independent && k.independent) {
           LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: indepCol, label: 'Independent space', sub: i.name, ask: `How is ${i.name} independent?` });
-          ctx.save();
-          ctx.shadowColor = indepCol; ctx.shadowBlur = dark ? 16 : 10;
-          ctx.fillStyle = indepCol;
-          shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fill(); ctx.fill();
-          ctx.restore();
           shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fillStyle = indepCol; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
         }
         if (L.artist && k.artist) {
@@ -813,7 +805,8 @@
         ctx.strokeStyle = '#000'; ctx.stroke();
       });
       if (flagged) propPulse();
-      // Each city cluster: the number of flagged spaces in it, on an orange block after the city's label.
+      // Each city cluster: the number of flagged spaces in it, after the city's label, in the flag colour on a halo of ground
+      // with no block behind it (user, 16 Nov 2026: names "dont need background or frame").
       if (!STREET && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
         const byCity = flaggedByCity();
         ctx.textAlign = 'left';
@@ -822,8 +815,7 @@
           const n = byCity.get((b.name || '').toLowerCase().trim()); if (!n) return;
           const text = String(n), tw = ctx.measureText(text).width, w = tw + 12, h = b.h;
           const x = b.x + b.w + 2, y = b.y;
-          ctx.fillStyle = COL.flag; ctx.fillRect(x, y, w, h);
-          ctx.fillStyle = '#000'; ctx.fillText(text, x + 6, y + h / 2 + 0.5);
+          haloName(ctx, text, x + 6, y + h / 2 + 0.5, COL.flag);
           boxes.push({ x, y, w, h });
           LM.push({ box: { x, y, w, h }, x: x + w / 2, y: y + h / 2, r: 0, col: COL.flag, label: `${n} flagged in ${b.name}`, sub: 'Flagged spaces', ask: `Which spaces in ${b.name} are flagged, and why?` });
         });
@@ -850,7 +842,7 @@
           g.addColorStop(0, hexA(halo, (k === 'today' ? 0.55 : 0.38) * glow));
           g.addColorStop(0.5, hexA(halo, (k === 'today' ? 0.22 : 0.14) * glow));
           g.addColorStop(1, hexA(halo, 0));
-          ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+          if (GLOWING()) { ctx.beginPath(); ctx.arc(x, y, R, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill(); }
           if (k === 'today') { shapePath(ctx, 'circle', x, y, 6); ctx.fillStyle = COL.prop; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke(); }
           else { ctx.beginPath(); ctx.arc(x, y, 5.5, 0, Math.PI * 2); ctx.fillStyle = dark ? '#000' : '#fff'; ctx.fill(); ctx.lineWidth = 1.2; ctx.strokeStyle = lineCol(COL.prop); ctx.stroke(); ctx.lineWidth = 0.8; }
         });
@@ -1349,7 +1341,7 @@
 
   // What assets/funding-views.js draws with.
   window.atlasLayersAPI = {
-    L, COL, lineCol, hexA, kindOn, FUNDER, RIGHT, collides, repaint, loadMoney, loadHq,
+    L, COL, lineCol, hexA, haloName, kindOn, FUNDER, RIGHT, collides, repaint, loadMoney, loadHq,
     // The layer boxes and the keys each one holds, for the record's Money map toggle (assets/phone-maps.js).
     boxes: () => boxes(), keysOfBox: (inp) => keysOfBox(inp),
     data: () => ({ recById, keyIndex, keyKind, HQ, web }),

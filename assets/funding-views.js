@@ -348,7 +348,7 @@
       const col = A.lineCol(A.COL[s.kind]), R = 11 + 4 * Math.min(4, s.names.length);
       const g = ctx.createRadialGradient(dt.x, dt.y, 2, dt.x, dt.y, R);
       g.addColorStop(0, A.hexA(col, dark ? 0.75 : 0.6)); g.addColorStop(0.5, A.hexA(col, 0.25)); g.addColorStop(1, A.hexA(col, 0));
-      ctx.beginPath(); ctx.arc(dt.x, dt.y, R, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+      // No halo (user, 16 Nov 2026: "make dots do not glow"): the dot alone, in its colour with an ink edge.
       ctx.beginPath(); ctx.arc(dt.x, dt.y, 4.5, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = 0.8; ctx.strokeStyle = '#000'; ctx.stroke();
       A.pushMark({ x: dt.x, y: dt.y, r: 10, rec: i, col: A.COL[s.kind], label: i.name, sub: `Shares ${s.names.length === 1 ? 'a funder' : s.names.length + ' funders'} with ${rec.n}`, sub2: s.names.slice(0, 3).join(', '), ask: `What do ${i.name} and ${rec.n} have in common?` });
     });
@@ -362,10 +362,11 @@
       A.pushMark({ x, y, r: s + 4, col, key: f.keys[0], kind: f.kind, space: f.hub, name: f.name, label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${f.n} spaces`, sub2: `Head office: ${f.hub.c ? f.hub.c + ', ' : ''}${f.hub.co || ''}`, ask: `Which institutions does ${f.name} fund?` });
       // Names when the view is close, or for the funder in play.
       if (!(hot || r >= baseRadius * 2.2)) return;
-      const t = f.name.length > 30 ? f.name.slice(0, 28) + '…' : f.name, w = ctx.measureText(t).width + 12, box = { x: x + s + 4, y: y - 10, w, h: 20 };
+      // The whole name as plain type on a halo of ground, no block (user, 16 Nov 2026: names "dont need background or frame").
+      const t = f.name, w = ctx.measureText(t).width + 12, box = { x: x + s + 4, y: y - 10, w, h: 20 };
       if (A.collides(box, boxes)) return;
       boxes.push(box);
-      ctx.fillStyle = col; ctx.fillRect(box.x, box.y, w, 20); ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5);
+      A.haloName(ctx, t, box.x + 6, y + 0.5, f.kind && A.COL[f.kind] ? A.COL[f.kind] : col);
     });
     ctx.restore();
   }
