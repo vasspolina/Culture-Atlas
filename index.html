@@ -12916,11 +12916,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // by letter on the page: A, B, C, D, F (no E, as in school marks).
     // A record without an independently sourced funder roster has no grade. The colour is the block the grade takes on the map and the record.
     const GRADE = {
-      1: { letter: 'A', label: 'Funding amounts disclosed; no funders flagged', col: '#34d399' },
-      2: { letter: 'B', label: 'Funders listed; no funders flagged', col: '#2dd4bf' },
-      3: { letter: 'C', label: 'No funder flagged; a tie or complaint on record', col: '#facc15' },
+      1: { letter: 'A', label: 'Amounts published, no flagged funder', col: '#34d399' },
+      2: { letter: 'B', label: 'Funders named, no flagged funder', col: '#2dd4bf' },
+      3: { letter: 'C', label: 'No flagged funder, but a contested sponsor or a protest', col: '#facc15' },
       4: { letter: 'D', label: 'One flagged funder', col: '#fb923c' },
-      5: { letter: 'F', label: 'Multiple flagged funders, or a flagged funder with a disputed record', col: '#ef4444', mark: '#f87171' },  // the mark is a lighter red, so black on it clears 7:1
+      5: { letter: 'F', label: 'Two or more flagged funders, or one and a protest', col: '#ef4444', mark: '#f87171' },  // the mark is a lighter red, so black on it clears 7:1
     };
     window.atlasGrade = GRADE;
     // The letter a stored grade is named by, and the stored grade a letter (or an old number) names.
@@ -12932,7 +12932,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const GRADE_ROWS = ['A: the record shows how much money came in, and no funder is flagged.', 'B: funders are named without amounts, and none is flagged.', 'C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.', 'D: one funder is flagged, such as an oil, tobacco, gambling or arms company.', 'F: two or more funders are flagged, or one flagged funder and a complaint on record.'];
     // One label per record status, used everywhere a status is named: the grade where there is one, else the tier.
     function tierName(inst) {
-      if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}, ${GRADE[inst.grade].label.toLowerCase()}`;
+      if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}: ${GRADE[inst.grade].label.toLowerCase()}`;
       return inst.tier === 'A' ? 'Source cited' : inst.tier === 'B' ? 'Flagged' : 'Unverified';
     }
     // The rating is set as coloured type, not a block (user's instruction, 19 Oct 2026): the grade's colour made 40% darker, and darker
@@ -20368,11 +20368,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       accessibility: { label: 'Universal accessibility' },
       amenities: { label: 'Cafés & bookshops' },
       ethical: { label: 'Source cited' },
-      grade1: { label: 'Grade A, funding amounts disclosed; no funders flagged' },
-      grade2: { label: 'Grade B, funders listed; no funders flagged' },
-      grade3: { label: 'Grade C, no funder flagged; a tie or complaint on record' },
-      grade4: { label: 'Grade D, one flagged funder' },
-      grade5: { label: 'Grade F, multiple flagged funders, or a flagged funder with a disputed record' },
+      grade1: { label: 'Grade A: amounts published, no flagged funder' },
+      grade2: { label: 'Grade B: funders named, no flagged funder' },
+      grade3: { label: 'Grade C: no flagged funder, but a contested sponsor or a protest' },
+      grade4: { label: 'Grade D: one flagged funder' },
+      grade5: { label: 'Grade F: two or more flagged funders, or one and a protest' },
       artist_run: { label: 'Artist-run spaces' },
       fossil_free: { label: 'Fossil & defense-free' },
       finance_civic: { label: 'Public subsidized (≥50%)' },

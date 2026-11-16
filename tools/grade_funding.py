@@ -3,18 +3,18 @@
 
 The rating summarizes the disclosed funding and recorded funders. A record without an independently sourced funder roster is unrated.
 
-  1  Funding amounts disclosed; no funders flagged
+  1  Amounts published, no flagged funder
                              no flag-category funder and no documented objection, and the record shows figures
                              (amounts or shares in the funding text), or links accounts or a public registry filing
-  2  Funders listed; no funders flagged
+  2  Funders named, no flagged funder
                              the same, but names only
-  3  No funder flagged; a tie or complaint on record
+  3  No flagged funder, but a contested sponsor or a protest
                              a funder worth noting outside the flag categories (a Flagged record with no flag), or a
                              tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned
                              name, a protest, a sponsor dropped, censorship
   4  One flagged funder      one funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids,
                              sanctions, forced labour, prisons, a mining disaster
-  5  Multiple flagged funders, or a flagged funder with a disputed record
+  5  Two or more flagged funders, or one and a protest
                              more than one flagged funder category, or a flagged funder plus a documented objection
   -  unrated                 No independently sourced funder roster is recorded
 
@@ -40,11 +40,11 @@ HEAVY = ['Fossil fuels', 'Tobacco', 'Gambling', 'Arms and defence', 'Opioids', '
 TIES = ['Gulf state body', 'Epstein-linked']
 OBJECTIONS = ['Campaigned name', 'Protest or boycott', 'Sponsor dropped under pressure', 'State censorship or punishment']
 
-LABEL = {1: 'Funding amounts disclosed; no funders flagged',
-         2: 'Funders listed; no funders flagged',
-         3: 'No funder flagged; a tie or complaint on record',
+LABEL = {1: 'Amounts published, no flagged funder',
+         2: 'Funders named, no flagged funder',
+         3: 'No flagged funder, but a contested sponsor or a protest',
          4: 'One flagged funder',
-         5: 'Multiple flagged funders, or a flagged funder with a disputed record'}
+         5: 'Two or more flagged funders, or one and a protest'}
 
 # Figures in the funding text: an amount with a currency, a figure in millions or billions, or a share.
 FIGURE = re.compile(r"(?:[$£€¥]|\bUS\$|\bUSD|\bEUR|\bGBP|\bCHF|\bDKK|\bSEK|\bNOK|\bCAD|\bAUD|\bNZD|\bBRL|\bMXN|\bINR|\bJPY|\bKRW|\bPLN"
