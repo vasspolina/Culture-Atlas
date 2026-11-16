@@ -3,7 +3,7 @@
 // stays open ("just move this to the right and keep it open"). A search box floats at the top left: it finds spaces
 // and cities as you type and flies to them, and anything else goes to the curator as a question. The layers sit as
 // chips beside it and as a square Layers tile at the bottom left. Zoom, your location and the world view are buttons
-// at the bottom right. Gossip mode and Dark are pills at the top of the panel. Only windows 768px and wider are
+// at the bottom right. Gossip mode, New chat and Dark are in the head bar's Menu. Only windows 768px and wider are
 // touched; the phone keeps assets/phone-maps.js. The look is in assets/atlas.css, "DESKTOP: MAPS APP".
 (function () {
   'use strict';
@@ -45,10 +45,88 @@
       if (d === wasDesk) return;
       wasDesk = d;
       root.classList.toggle('gmd', d);
+      syncHeadMenu(d);
       // The globe sizes itself to its box, which has just changed: let it measure again.
       setTimeout(() => window.dispatchEvent(new Event('resize')), 0);
     }
     window.addEventListener('resize', syncDesk);
+
+    // ---- The head bar's menu (user, 16 Nov 2026: "Gossip mode new chat needs to go on to as menu, and dark") -----------
+    // Gossip mode, New chat and Dark leave the head bar for one Menu, as the phone's ⋮ menu holds them. The items call the
+    // bar's own buttons, which stay in the page unseen, so their labels and pressed states are always the bar's own: the
+    // gossip greeting, the theme and the new chat run exactly as before. Images stays a word in the bar. On a phone the
+    // three buttons are put back as they were and assets/phone-maps.js has its own menu.
+    const HIDE = ['topGossipBtn', 'topThemeBtn', 'workspaceNewChatBtn'];
+    const MENU_ITEMS = [['topGossipBtn'], ['workspaceNewChatBtn', 'New chat'], ['topThemeBtn']];
+    let headBtn = null, headMenu = null;
+    function buildHeadMenu() {
+      const host = topBar && topBar.querySelector(':scope > div:last-child');
+      if (!host || headBtn) return;
+      headBtn = document.createElement('button');
+      headBtn.type = 'button';
+      headBtn.id = 'gmdMenuBtn';
+      headBtn.textContent = 'Menu';
+      headBtn.setAttribute('aria-haspopup', 'true');
+      headBtn.setAttribute('aria-expanded', 'false');
+      headBtn.setAttribute('aria-controls', 'gmdMenu');
+      host.appendChild(headBtn);
+      headMenu = document.createElement('div');
+      headMenu.id = 'gmdMenu';
+      headMenu.setAttribute('role', 'menu');
+      headMenu.setAttribute('aria-label', 'Menu');
+      headMenu.hidden = true;
+      document.body.appendChild(headMenu);
+      headBtn.addEventListener('click', () => (headMenu.hidden ? openHeadMenu() : closeHeadMenu(true)));
+      headMenu.addEventListener('keydown', (e) => {
+        const list = [...headMenu.querySelectorAll('button')];
+        const i = list.indexOf(document.activeElement);
+        if (e.key === 'Escape') { e.preventDefault(); closeHeadMenu(true); }
+        else if (e.key === 'ArrowDown') { e.preventDefault(); list[(i + 1) % list.length].focus(); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); list[(i - 1 + list.length) % list.length].focus(); }
+        else if (e.key === 'Tab') closeHeadMenu(false);
+      });
+      document.addEventListener('pointerdown', (e) => {
+        if (!headMenu.hidden && !headMenu.contains(e.target) && !headBtn.contains(e.target)) closeHeadMenu(false);
+      });
+      window.addEventListener('resize', () => closeHeadMenu(false));
+    }
+    function openHeadMenu() {
+      headMenu.innerHTML = '';
+      MENU_ITEMS.forEach(([id, label]) => {
+        const src = $(id);
+        if (!src) return;
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.setAttribute('role', 'menuitem');
+        b.textContent = label || src.textContent.trim();
+        const pressed = src.getAttribute('aria-pressed');
+        if (id === 'topGossipBtn' && pressed !== null) { b.setAttribute('role', 'menuitemcheckbox'); b.setAttribute('aria-checked', pressed); }
+        b.addEventListener('click', () => { closeHeadMenu(true); src.click(); });
+        headMenu.appendChild(b);
+      });
+      // Under the word, its right edge on the word's right edge, kept inside the window.
+      const r = headBtn.getBoundingClientRect();
+      headMenu.hidden = false;
+      const w = headMenu.offsetWidth;
+      headMenu.style.top = Math.round(r.bottom) + 'px';
+      headMenu.style.left = Math.round(Math.max(8, Math.min(window.innerWidth - w - 8, r.right - w))) + 'px';
+      headBtn.setAttribute('aria-expanded', 'true');
+      const first = headMenu.querySelector('button');
+      if (first) first.focus();
+    }
+    function closeHeadMenu(refocus) {
+      if (!headMenu || headMenu.hidden) return;
+      headMenu.hidden = true;
+      headBtn.setAttribute('aria-expanded', 'false');
+      if (refocus) headBtn.focus();
+    }
+    function syncHeadMenu(desk) {
+      buildHeadMenu();
+      // Inline and important, so none of the stylesheets' many display rules for these buttons brings them back.
+      HIDE.forEach((id) => { const b = $(id); if (!b) return; if (desk) b.style.setProperty('display', 'none', 'important'); else b.style.removeProperty('display'); });
+      if (headBtn) headBtn.hidden = !desk;
+      if (!desk) closeHeadMenu(false);
+    }
 
     // ---- The side panel: always open on the right; the search box follows the record it shows ------------------------
     const detailsShown = () => !!dossierCol && dossierCol.style.display !== 'none' && !dossierCol.classList.contains('hidden');
