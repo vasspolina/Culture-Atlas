@@ -10495,7 +10495,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v727';
+    const ATLAS_RELEASE = 'culture-atlas-v728';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10667,6 +10667,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // The bars are laid out by later scripts: measure the free height once they are in, and on every resize.
     window.addEventListener('resize', () => { measureWtPhoneRoom(); if (window.__atlasGlobeLive) render(performance.now()); });
     window.addEventListener('load', () => { measureWtPhoneRoom(); setTimeout(measureWtPhoneRoom, 600); });
+    // The filter row changes height after load (it wraps, or Layers hides it): assets/phone-maps.js calls this when it does.
+    window.atlasMeasurePhoneRoom = () => { measureWtPhoneRoom(); if (window.__atlasGlobeLive) render(performance.now()); };
 
     function toRad(deg) { return deg * Math.PI / 180; }
     function toDeg(rad) { return rad * 180 / Math.PI; }
@@ -10742,9 +10744,18 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       wtPhoneHalfH = 0; wtOffsetY = 0;
       if (window.innerWidth >= 768) return;
       const cRect = canvas.getBoundingClientRect();
-      const topBar = document.getElementById('mobileTopBar'), dock = document.getElementById('mobileStickyInputBar');
-      const tb = topBar ? topBar.getBoundingClientRect() : null, db = dock ? dock.getBoundingClientRect() : null;
-      const top = Math.max(cRect.top, tb && tb.height ? tb.bottom : cRect.top) + 12;
+      const dock = document.getElementById('mobileStickyInputBar');
+      const db = dock ? dock.getBoundingClientRect() : null;
+      // The band starts under whatever hangs from the top: the old top bar, or on the map the row of top buttons and the
+      // filters under it (user, 16 Nov 2026: "drop the globe a bit down so filters do not cross it").
+      let top = cRect.top;
+      ['mobileTopBar', 'gmTopBtns', 'gmChips'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const b = el.getBoundingClientRect();
+        if (b.height && getComputedStyle(el).display !== 'none') top = Math.max(top, b.bottom);
+      });
+      top += 12;
       const bottom = Math.min(cRect.bottom, db && db.height ? db.top : cRect.bottom) - 12;
       if (bottom - top < 120) return;
       wtPhoneHalfH = (bottom - top) / 2;
@@ -21850,7 +21861,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-gallery.js?v=692"></script>
 <script src="assets/hq-detail.js?v=669"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=692"></script>
+<script src="assets/phone-maps.js?v=693"></script>
 <script src="assets/desktop-maps.js?v=724"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 </body>
