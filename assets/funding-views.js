@@ -348,7 +348,7 @@
       const col = A.lineCol(A.COL[s.kind]), R = 11 + 4 * Math.min(4, s.names.length);
       const g = ctx.createRadialGradient(dt.x, dt.y, 2, dt.x, dt.y, R);
       g.addColorStop(0, A.hexA(col, dark ? 0.75 : 0.6)); g.addColorStop(0.5, A.hexA(col, 0.25)); g.addColorStop(1, A.hexA(col, 0));
-      ctx.beginPath(); ctx.arc(dt.x, dt.y, R, 0, Math.PI * 2); ctx.fillStyle = g; ctx.fill();
+      // No halo (user, 16 Nov 2026: "make dots do not glow"): the dot alone, in its colour with an ink edge.
       ctx.beginPath(); ctx.arc(dt.x, dt.y, 4.5, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = 0.8; ctx.strokeStyle = '#000'; ctx.stroke();
       A.pushMark({ x: dt.x, y: dt.y, r: 10, rec: i, col: A.COL[s.kind], label: i.name, sub: `Shares ${s.names.length === 1 ? 'a funder' : s.names.length + ' funders'} with ${rec.n}`, sub2: s.names.slice(0, 3).join(', '), ask: `What do ${i.name} and ${rec.n} have in common?` });
     });
