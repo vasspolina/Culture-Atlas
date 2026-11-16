@@ -21,6 +21,22 @@
   <meta name="description" content="Leaving it on the table: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <script>
+    // A new colour for the head bar and the filter pills on every load (user, 16 Nov 2026: "make atlas top and filters
+    // change color on load pick light colors from displaay.net/typefaces", then "make same for dark mode with dark colors").
+    // The light set is the pale grounds of the type cards on displaay.net/typefaces; ink #000 reads on every one (10:1 or
+    // better). The dark set is that page's own dark grounds (#000455, #a2124c, #1e2ffe) and its mid colours taken half way
+    // to black; the dark ink #e6e1d7 reads on every one at 5.5:1 or better. Bar and pills never get the same colour.
+    // assets/sheet.css ("COLOUR ON LOAD") picks the light or the dark pair by the theme, so a theme switch keeps them.
+    (function(){
+      var L=["#fefb9f","#ddf94e","#bcfff3","#ffa0ff","#f8ff58","#e8d093","#beffbd","#a2e3ff","#f3f1e6","#cfcfb8"];
+      var D=["#000455","#a2124c","#1e2ffe","#103e80","#1e4948","#1e4c0e","#412880","#793708","#564a24","#00507c"];
+      function pick(a,not){var c;do{c=a[Math.floor(Math.random()*a.length)]}while(c===not);return c}
+      var s=document.documentElement.style,tl=pick(L),td=pick(D);
+      s.setProperty("--sh-top-l",tl);s.setProperty("--sh-chip-l",pick(L,tl));
+      s.setProperty("--sh-top-d",td);s.setProperty("--sh-chip-d",pick(D,td));
+    })();
+  </script>
+  <script>
     // The globe is held back (assets/atlas.css hides the canvas) until the page is in its final state, so its lines
     // are drawn once: not on a copy a newer release is about to replace, and not before the type they are labelled in.
     // The release that is live is asked for here, in parallel with everything below, and settled in the main script.
@@ -50,7 +66,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=697">
-  <link rel="stylesheet" href="assets/sheet.css?v=697">
+  <link rel="stylesheet" href="assets/sheet.css?v=703">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
