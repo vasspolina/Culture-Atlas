@@ -1973,3 +1973,19 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gm-map #mobileComposerCard #chat-input:not(#sh-x):not(#sh-y){font-size:15px!important;line-height:19px!important;height:50px!important}
 }
 }
+
+/* ---- The question box on a phone's full record page (user, 16 Nov 2026: "on full record the chat is glitching") ----
+   With the record page open, the box stayed in the page's flow: it sat partway up the screen with the record running on
+   beneath it, its card was the screen's full width from 14px in, so it ran off the right edge, and the send arrow lay over
+   the words. It is now fixed to the foot of the screen, the screen's width less 12px each side, with the record scrolling
+   clear of it. */
+@layer sheet{
+@media (max-width:767px){
+  body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(#sh-x):not(#sh-y){position:fixed!important;left:0!important;right:0!important;top:auto!important;bottom:0!important;z-index:60!important;
+    width:auto!important;margin:0!important;padding:8px 12px calc(8px + var(--safe-b,0px))!important;background:var(--sh-paper)!important;border:0!important;border-top:1px solid var(--sh-rule)!important;box-shadow:none!important}
+  body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar #mobileComposerCard:not(#sh-x):not(#sh-y){position:relative!important;box-sizing:border-box!important;width:100%!important;max-width:100%!important;margin:0!important}
+  body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar #mobileComposerCard #chat-input:not(#sh-x):not(#sh-y){flex:1 1 auto!important;min-width:0!important;width:auto!important;white-space:normal!important;overflow-wrap:break-word!important;overflow-y:hidden!important;height:44px!important;max-height:44px!important;min-height:44px!important;line-height:22px!important;padding:0 4px 0 0!important}
+  body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar #mobileComposerCard #mobileStickySendBtn:not(#sh-x):not(#sh-y){position:static!important;flex:none!important;inset:auto!important}
+  body:has(#detailDrawer:not(.hidden)) #detailBody:not(#sh-x):not(#sh-y){padding-bottom:calc(96px + var(--safe-b,0px))!important}
+}
+}
