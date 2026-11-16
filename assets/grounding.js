@@ -76,7 +76,7 @@
         (f.url ? '. Source: ' + f.url : ''));
     }
     if (i.funder_links && i.funder_links.length) fin.push('Funders also named at other spaces on the atlas: ' + i.funder_links.filter(function (x) { return x && x.funder; }).map(function (x) { return x.funder + ' (' + x.institutions + ' spaces)'; }).join(', '));
-    if (i.records_note) fin.push('What it publishes: ' + i.records_note);
+    // records_note ("What it publishes") is not given to the chat: deleted from the record as slop (user, 16 Nov 2026).
     if (i.statutory_filings_url) fin.push('Statutory filings: ' + i.statutory_filings_url);
     else if (i.audit_dossier_url) fin.push('Statutory filings: ' + i.audit_dossier_url);
     parts.push(section('FUNDING AND FINANCES', fin));

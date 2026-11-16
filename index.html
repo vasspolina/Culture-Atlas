@@ -71,7 +71,7 @@
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
   <script src="assets/names.js?v=669"></script>
-  <script src="assets/grounding.js?v=669"></script>
+  <script src="assets/grounding.js?v=670"></script>
   <script src="assets/repeats.js?v=669"></script>
   <script src="assets/intro-narration.js?v=669"></script>
   <script>
@@ -10495,7 +10495,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v733';
+    const ATLAS_RELEASE = 'culture-atlas-v734';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10755,8 +10755,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const b = el.getBoundingClientRect();
         if (b.height && getComputedStyle(el).display !== 'none') top = Math.max(top, b.bottom);
       });
-      // 24px, not 12: a city's label is centred on its dot, so on the rim it reaches about half a label above the outline.
-      top += 24;
+      // 12px clear of the filters above and of the things at the bottom below (user, 16 Nov 2026: "make globe size to adjust to
+      // screen with 12 px margin between the top and bottom elements").
+      top += 12;
       const bottom = Math.min(cRect.bottom, db && db.height ? db.top : cRect.bottom) - 12;
       if (bottom - top < 60) return;   // a short screen still fits the map into what room there is (user, 16 Nov 2026: "make it height responsive")
       wtPhoneHalfH = (bottom - top) / 2;
@@ -10769,9 +10770,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // width, and the free band's height when that is the tighter. Zooming in still opens it up.
       if (wtPhoneHalfH > 0) roomH = 2 * wtPhoneHalfH;
       // The outline takes the room's proportion between 2:1 and 1:1 (see wtSX), then fits it.
-      // On a phone it stays an oval, at least 1.5 times as wide as tall (user, 16 Nov 2026: "the globe can be oval"): the tall
-      // free band had made it a circle, whose top ran up under the filters.
-      wtSX = Math.max(wtPhoneHalfH > 0 ? 0.75 : 0.5, Math.min(1, roomW / roomH / (WT_W / WT_H)));
+      // On a phone the outline takes the free band's proportion, so the map fills it to 12px of the filters and of the box
+      // (user, 16 Nov 2026: "make globe size to adjust to screen"). A floor of 1.5:1 set earlier that day left it width-bound
+      // and small on a tall screen; the band is now measured from the filters, so filling it no longer runs under them.
+      wtSX = Math.max(0.5, Math.min(1, roomW / roomH / (WT_W / WT_H)));
       const fit = Math.min(roomW / (WT_W * wtSX), roomH / WT_H);
       return r * fit / Math.max(1, baseRadius);
     }
@@ -12521,10 +12523,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const card = (title, meta, body) => `<div class="record-card space-y-1_5"><div class="kicker no-indent">${e(title)}</div>${meta ? `<div class="kicker no-indent">${e(meta)}</div>` : ''}${body}</div>`;
       const studies = (inst.study_notes || []).map(s => card(s.title, [s.authors, s.year, s.journal].filter(Boolean).join(', '),
         `<p class="t-lead">${e(s.text)}</p>${s.doi ? `<p class="no-indent"><a href="https://doi.org/${e(s.doi)}" target="_blank" rel="noopener noreferrer" class="">doi.org</a></p>` : ''}`));
-      // Four lines from the Sponsor Atlas study, each a paraphrase with its source named in the text: what the space publishes about
-      // its own money, the figures in those accounts, the bodies it is affiliated with, and what writers in the field say about it.
+      // Three lines from the Sponsor Atlas study, each a paraphrase with its source named in the text (what the space publishes about
+      // its own money was a fourth, deleted 16 Nov 2026): the figures in its accounts, the bodies it is affiliated with, and what writers in the field say about it.
       const layer = (title, text) => text ? card(title, '', `<p class="t-lead">${e(text)}</p>`) : '';
-      const layers = [layer('What it publishes about its money', inst.records_note), layer('Its accounts', inst.finances_note), layer('Its affiliations', inst.affiliations_note), layer('What the field says', inst.critique_note)].filter(Boolean);
+      const layers = [layer('Its accounts', inst.finances_note), layer('Its affiliations', inst.affiliations_note), layer('What the field says', inst.critique_note)].filter(Boolean);
       const rows = layers.concat(studies);
       return rows.length ? `<div class="py-3" role="group" aria-label="About this space">${rows.join('')}</div>` : '';
     }
@@ -13855,12 +13857,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       rows.push(proseBureaucracyRow(inst));
       const note = (lead, t) => t ? proseLi(lead, escapeHtml(proseEnd(t))) : '';
       rows.push(fundingCritiqueRow(inst));
-      // What it publishes: the institution's own paper trail. The accounts note is left out when the Scale and money row already
+      // No "What it publishes" line (user, 16 Nov 2026: "Delete What it publishes. The team page lists staff only. It's a slop"):
+      // records_note said what a website lacks ("the team page lists staff only") rather than anything about the money. The
+      // row's other two lines stay under their own title. The accounts note is left out when the Scale and money row already
       // carries the filing's figures, so the same year's income is not said twice.
       const f = inst.finance || {};
       const moneyShown = typeof f.income === 'number' && f.income > 0 && f.currency;
-      // No "Publishes:" lead-in: the row's title already says it, and a lead-in that repeats the title is deleted (user, 3 Nov 2026).
-      rows.push(proseRow('What it publishes', '', [note('', inst.records_note), moneyShown ? '' : note('Accounts:', inst.finances_note), note('Affiliations:', affiliationsNotInOverview(inst, inst.affiliations_note))]));
+      rows.push(proseRow('Accounts and affiliations', '', [moneyShown ? '' : note('Accounts:', inst.finances_note), note('Affiliations:', affiliationsNotInOverview(inst, inst.affiliations_note))]));
       return proseRows(rows, 'Overview and funding');
     }
     // What is flagged, the art press, wider context, the bottom line and the sources: the report's points with the archive's cases beside them.
