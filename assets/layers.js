@@ -290,6 +290,45 @@
     }).catch(() => { hqLoading = false; });
   }
 
+  // COMPANY LOGOS (user, 16 Nov 2026: "add logos in color code next to companies title on money map"). One sheet of
+  // one-colour masks, built by tools/build_funder_logos.py from each company's logo on Wikidata (assets/funder-logos.png,
+  // and assets/funder-logos.json: office key -> [x, y, w, h] in the sheet). On the map a mask is filled with the colour
+  // its name is set in, so a logo is the company's colour code, not its own brand colours. A company with no logo on
+  // record, or before the sheet has loaded, is its name alone, as before.
+  let LOGOS = null, logosLoading = false;
+  const LOGO_H = 14, LOGO_GAP = 5, logoTint = new Map();
+  function loadLogos() {
+    if (LOGOS || logosLoading) return;
+    logosLoading = true;
+    fetch('assets/funder-logos.json').then(r => r.json()).then(idx => {
+      const img = new Image();
+      img.onload = () => { LOGOS = { idx, img }; repaint(); };
+      img.onerror = () => { logosLoading = false; };
+      img.src = 'assets/funder-logos.png?v=1';
+    }).catch(() => { logosLoading = false; });
+  }
+  // The logo of a funder node: only a company's, by its office key (a funder's spelling key leads to its office).
+  function logoOf(n) {
+    if (!LOGOS || n[1] !== 'corp' || !n[5] || !HQ) return null;
+    const o = HQ.byKey.get(n[5]), rc = o && (LOGOS.idx[o.key] || LOGOS.idx[n[5]]);
+    if (!rc) return null;
+    const k = LOGO_H / 48;
+    return { rc, w: rc[2] * k, h: rc[3] * k };
+  }
+  // The mask filled with one colour, made once per logo and colour.
+  function tintedLogo(rc, col) {
+    const id = rc.join(',') + col;
+    let c = logoTint.get(id);
+    if (!c) {
+      c = document.createElement('canvas'); c.width = rc[2]; c.height = rc[3];
+      const x = c.getContext('2d');
+      x.drawImage(LOGOS.img, rc[0], rc[1], rc[2], rc[3], 0, 0, rc[2], rc[3]);
+      x.globalCompositeOperation = 'source-in'; x.fillStyle = col; x.fillRect(0, 0, rc[2], rc[3]);
+      logoTint.set(id, c);
+    }
+    return c;
+  }
+
   function loadMoney(cb) {
     if (recById) return cb && cb();
     if (loading) return;
@@ -820,6 +859,7 @@
     if (L.money) {
       if (!recById) { ctx.restore(); return; }
       if (!HQ) loadHq();
+      if (!LOGOS) loadLogos();
       MONEY_MODE = null;
       const rec = moneyRec(sel);
       if (rec) {
@@ -892,9 +932,10 @@
       const shown = g.nodes.slice(0, MONEY_MAX), more = g.nodes.length - shown.length;
       const lines = [];
       if (!g.home && g.city) lines.push({ text: g.city, head: true });
-      shown.forEach(n => lines.push({ text: fitWords(n[0], 40), n }));
+      shown.forEach(n => lines.push({ text: fitWords(n[0], 40), n, logo: logoOf(n) }));
       if (more > 0) lines.push({ text: `and ${more} more`, head: true });
-      lines.forEach(l => { l.w = ctx.measureText(l.text).width; });
+      // A company's logo stands before its name, in the name's colour; the line is that much wider.
+      lines.forEach(l => { l.tw = ctx.measureText(l.text).width; l.w = l.tw + (l.logo ? l.logo.w + LOGO_GAP : 0); });
       const w = Math.max(...lines.map(l => l.w)), h = lines.length * MONEY_LINE;
       // A list sits beside its dot, or under or over it: the first side that is on the canvas and clear of the others.
       const sides = {
@@ -967,8 +1008,17 @@
     ctx.strokeText(m.name, m.d.x, m.ny); ctx.fillStyle = ink; ctx.fillText(m.name, m.d.x, m.ny);
     ctx.textAlign = 'left'; ctx.font = MONEY_FONT; ctx.lineWidth = 4;
     m.lists.forEach(({ lines }) => lines.forEach(l => {
-      ctx.strokeText(l.text, l.x, l.y + 0.5);
-      ctx.fillStyle = l.head ? ink : lineCol(COL[l.n[1]]); ctx.fillText(l.text, l.x, l.y + 0.5);
+      const col = l.head ? ink : lineCol(COL[l.n[1]]);
+      let tx = l.x;
+      if (l.logo && LOGOS) {
+        // The logo on a halo of its own shape (the mask in the ground's colour, a pixel out each way), then in colour.
+        const lx = l.x, ly = Math.round(l.y + 0.5 - l.logo.h / 2), halo2 = tintedLogo(l.logo.rc, halo);
+        for (const [ox, oy] of [[-1.5, 0], [1.5, 0], [0, -1.5], [0, 1.5]]) ctx.drawImage(halo2, lx + ox, ly + oy, l.logo.w, l.logo.h);
+        ctx.drawImage(tintedLogo(l.logo.rc, col), lx, ly, l.logo.w, l.logo.h);
+        tx = l.x + l.logo.w + LOGO_GAP;
+      }
+      ctx.strokeText(l.text, tx, l.y + 0.5);
+      ctx.fillStyle = col; ctx.fillText(l.text, tx, l.y + 0.5);
     }));
     ctx.restore();
   };

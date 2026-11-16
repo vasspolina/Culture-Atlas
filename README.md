@@ -181,6 +181,15 @@ python3 tools/build_money_maps.py
 
 The script reads each record's funding text, `funder_links`, flags and the Epstein and WikiLeaks fields into a list of circles, and links records that name the same funder. It fetches nothing and does not change any record. Funders are picked out of free text, so a name can be split or filed under the wrong group (government, corporate, foundation); the record itself stays the authority, and the page says so. Records that state no funder, flag or tie show an empty map with a note. Re-run the script after the data changes, as with `tools/embed_data.py`.
 
+**Company logos.** On the money map, a company's logo stands before its name, filled in the same colour as the name, so it reads as the company's colour code rather than its brand colours. The logos come from each company's Wikidata item (its small logo, else its logo) and the file on Wikimedia Commons, packed by:
+
+```bash
+python3 tools/build_funder_logos.py          # look up on Wikidata, download, pack
+python3 tools/build_funder_logos.py --pack   # pack again from the downloaded files
+```
+
+It writes `assets/funder-logos.png` (one sheet of one-colour masks, 48 px high) and `assets/funder-logos.json` (office key to its place in the sheet), and records every match, with the Wikidata item and the Commons file, in `data/funder_logos_sources.json`. A name can match the wrong item, so read that file after a run: `WRONG` in the script lists names that must take no logo, and `PICK` gives the right item for a name the search gets wrong. A company with no logo on record shows its name alone. The logos are trade marks of their owners and are shown only to identify the funder. Packing needs Playwright's Chromium.
+
 Controls: one finger or a mouse drag turns the map; two fingers or the scroll wheel fly forward and back; two-finger drag or Shift-drag slides; arrow keys turn it and W and S fly. Fit returns to the start. The page respects the device's reduced-motion setting.
 
 ## Editing the page
