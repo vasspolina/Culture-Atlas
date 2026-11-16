@@ -11931,6 +11931,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         // 8.4 City labels on top of the dots
         deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4]); ctx.restore(); });
+        // The money map's mode: a wash over the map and the funders' names, over everything else (assets/layers.js, MONEY MODE).
+        if (window.atlasLayersDrawLate) window.atlasLayersDrawLate(ctx, G_GROUND);
         // No hover cards on the map (user, 11 Nov 2026: "make it work similar to Google Maps ... the info shows in sheet not like
         // on hover, delete hovers"). The city slip, the space's card and the tip over a layer mark used to open under the
         // pointer; what they said is now in the sheet that a click or tap opens (a space's record, or a city's place sheet,
