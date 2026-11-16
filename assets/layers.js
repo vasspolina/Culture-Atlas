@@ -96,7 +96,6 @@
     ids.forEach(id => { const q = recById.get(id); if (q && q.co) cs.add(q.co); });
     o = { n: Math.max(1, ids.length), countries: Math.max(1, cs.size) }; reachCache.set(key, o); return o;
   }
-  const sizeFor = n => 5.5 + Math.min(4, Math.log2(Math.max(1, n)));
   const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
   // The funder under the pointer: where else it appears is drawn until the pointer has been off it a moment.
   // One picked from the list of widest-reaching funders can be pinned, and then stays until it is picked again or Esc is pressed.
@@ -410,6 +409,8 @@
   window.atlasLayersDraw = function (ctx, project, r, cx, cy, list, sel, hov, baseRadius) {
     if (streetUp()) return;   // the street map is in front: its own frame draws the layers
     LM = []; LINES = [];
+    // Money mode needs the map as it is now, land and country names only, before any space, label or layer is on it.
+    snapMap(ctx, L.money && !!moneyRec(sel));
     // The funding views (assets/funding-views.js): bundles, flows, territories, flagged money and funders above the globe.
     if (window.atlasFundingViews) window.atlasFundingViews.under(ctx, project, r, cx, cy, sel, hov, baseRadius);
     if (!L.ties) { drawReach(ctx, project, r, cx, cy); return; }
@@ -417,7 +418,7 @@
     const focus = hov || sel, rec = focus && recById.get(focus.id);
     // The money map is a map mode, not a web: with a space in focus its funders are set on the map as names, and no tie is
     // drawn (user, 16 Nov 2026: "i dont think lines are needed").
-    if (L.money && rec && rec.nodes.some(n => FUNDER(n) && kindOn(n[1]))) return;
+    if (L.money && moneyRec(sel)) return;
     ctx.save();
     ctx.lineCap = 'round';
     // The whole web, faint when a space is in focus.
@@ -702,78 +703,6 @@
     });
   }
 
-  // Stroke a line except where it passes through a label block (with a 3 px margin), so a tie never runs through text.
-  function strokeAround(ctx, x0, y0, x1, y1, bs) {
-    const dx = x1 - x0, dy = y1 - y0, iv = [];
-    bs.forEach(b => {
-      let t0 = 0, t1 = 1;
-      for (const [p, q, lo, hi] of [[x0, dx, b.x - 3, b.x + b.w + 3], [y0, dy, b.y - 3, b.y + b.h + 3]]) {
-        if (Math.abs(q) < 1e-9) { if (p < lo || p > hi) return; continue; }
-        let a = (lo - p) / q, c = (hi - p) / q; if (a > c) [a, c] = [c, a];
-        t0 = Math.max(t0, a); t1 = Math.min(t1, c); if (t0 >= t1) return;
-      }
-      iv.push([t0, t1]);
-    });
-    iv.sort((a, b) => a[0] - b[0]);
-    const seg = (a, c) => { ctx.moveTo(x0 + dx * a, y0 + dy * a); ctx.lineTo(x0 + dx * c, y0 + dy * c); };
-    let t = 0; ctx.beginPath();
-    iv.forEach(([a, c]) => { if (a > t) seg(t, a); t = Math.max(t, c); });
-    if (t < 1) seg(t, 1);
-    ctx.stroke();
-  }
-  // Does the straight spoke from (x0,y0) to (x1,y1) cross a block? The first 12 px, under the space's own mark, do not count.
-  function spokeHits(x0, y0, x1, y1, bs, pad) {
-    const len = Math.hypot(x1 - x0, y1 - y0), n = Math.ceil(len / 4);
-    for (let s = 1; s <= n; s++) {
-      const t = s / n; if (t * len < 12) continue;
-      const x = x0 + (x1 - x0) * t, y = y0 + (y1 - y0) * t;
-      if (bs.some(b => x > b.x - pad && x < b.x + b.w + pad && y > b.y - pad && y < b.y + b.h + pad)) return true;
-    }
-    return false;
-  }
-  // The funders of one space, around its dot. Each takes the angle farthest from the ones placed before it where its spoke and
-  // its name both fit clear of every label on the map (stepping out to a wider ring when the near one is crowded); the first goes
-  // opposite the space's own name block. A funder that fits nowhere keeps the best angle and its name, rather than losing the name.
-  // Sets x, y, box (the name's block) on each item, and adds the blocks to `boxes` so later drawing keeps clear of them.
-  function placeRing(d, items, R, boxes, W, H, pref) {
-    const STEP = Math.PI / 18, TAU = Math.PI * 2, H_ = 24, GAPS = [1, 1.4, 1.8, 2.3];
-    const reachBox = R * GAPS[GAPS.length - 1] + 260;
-    const near = boxes.filter(b => b.x < d.x + reachBox && b.x + b.w > d.x - reachBox && b.y < d.y + reachBox && b.y + b.h > d.y - reachBox);
-    const angles = []; for (let k = 0; k < 36; k++) angles.push(-Math.PI / 2 + k * STEP);
-    const sep = (a, b) => { const t = Math.abs(a - b) % TAU; return t > Math.PI ? TAU - t : t; };
-    const free = (b, bs) => b.x >= 2 && b.y >= 2 && b.x + b.w <= W - 2 && b.y + b.h <= H - 2 && !bs.some(o => !(b.x + b.w + 2 < o.x || b.x - 2 > o.x + o.w || b.y + b.h + 2 < o.y || b.y - 2 > o.y + o.h));
-    const overlap = (b, bs) => bs.reduce((t, o) => t + Math.max(0, Math.min(b.x + b.w, o.x + o.w) - Math.max(b.x, o.x)) * Math.max(0, Math.min(b.y + b.h, o.y + o.h) - Math.max(b.y, o.y)), 0);
-    const spots = (x, y, a, w, sr) => {
-      const right = Math.cos(a) >= -0.2, up = Math.sin(a) < 0, g = sr + 4;
-      const Rt = { x: x + g, y: y - H_ / 2, w, h: H_ }, Lt = { x: x - g - w, y: y - H_ / 2, w, h: H_ };
-      const Ab = { x: x - w / 2, y: y - g - H_, w, h: H_ }, Bl = { x: x - w / 2, y: y + g, w, h: H_ };
-      return right ? [Rt, up ? Ab : Bl, up ? Bl : Ab, Lt] : [Lt, up ? Ab : Bl, up ? Bl : Ab, Rt];
-    };
-    // The space's own name block hangs from its dot and reaches only a few px below it: only that part blocks a spoke (a level spoke would run along its lower edge, so those are out).
-    const lb = d.labelBox, spokeBlocks = near.map(b => lb && b.x === lb.x && b.y === lb.y ? { x: b.x, y: b.y, w: b.w, h: Math.max(0, d.y - b.y) } : b);
-    const placed = [];   // { a, x, y }
-    const blocks = near.slice();
-    items.forEach((it, i) => {
-      let best = null, fallback = null;
-      angles.forEach(a => {
-        const minSep = placed.length ? Math.min(...placed.map(p => sep(a, p.a))) : Math.PI - sep(a, pref);
-        for (let g = 0; g < GAPS.length; g++) {
-          const x = d.x + R * GAPS[g] * Math.cos(a), y = d.y + R * GAPS[g] * Math.sin(a);
-          if (placed.some(p => Math.hypot(p.x - x, p.y - y) < 26)) continue;
-          const mark = { x: x - it.sr - 2, y: y - it.sr - 2, w: it.sr * 2 + 4, h: it.sr * 2 + 4 };
-          const spot = !spokeHits(d.x, d.y, x, y, spokeBlocks, 3) && free(mark, blocks) && spots(x, y, a, it.w, it.sr).find(s => free(s, blocks));
-          if (spot) { if (!best || minSep > best.s + 1e-6) best = { a, x, y, spot, s: minSep }; break; }
-          const sp = spots(x, y, a, it.w, it.sr).map(q => ({ q, o: overlap(q, blocks) + overlap(mark, blocks) })).sort((u, v) => u.o - v.o)[0];
-          if (!fallback || sp.o < fallback.o - 1e-6 || (Math.abs(sp.o - fallback.o) < 1e-6 && minSep > fallback.s + 1e-6)) fallback = { a, x, y, spot: sp.q, s: minSep, o: sp.o };
-        }
-      });
-      const pick = best || fallback || { a: pref + i, x: d.x + R, y: d.y, spot: spots(d.x + R, d.y, 0, it.w, it.sr)[0] };
-      it.x = pick.x; it.y = pick.y; it.box = pick.spot;
-      placed.push({ a: pick.a, x: pick.x, y: pick.y });
-      blocks.push(pick.spot, { x: pick.x - it.sr - 2, y: pick.y - it.sr - 2, w: it.sr * 2 + 4, h: it.sr * 2 + 4 });
-      boxes.push(pick.spot);
-    });
-  }
   function drawNodes(ctx, dots, r, baseRadius, sel, hov, gossip, project, cx, cy) {
     if (!REACH && !L.flags && !L.money && !L.right && !L.epstein && !L.hq && !L.people && !L.propaganda && !L.ties && !L.independent && !L.artist && !L.openbooks && !fvOn()) return;
     if ((L.money || L.right || L.epstein || L.hq || L.people) && !recById) loadMoney();
@@ -890,46 +819,16 @@
 
     if (L.money) {
       if (!recById) { ctx.restore(); return; }
+      if (!HQ) loadHq();
       MONEY_MODE = null;
-      const rings = [];
-      // A selected space with no dot of its own (folded into a cluster) still gets its funders.
-      const selPin = sel && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(sel) : null;
-      if (selPin && !dots.some(d => sameInst(d.inst, sel))) {
-        const pt = project(selPin.lon, selPin.lat, r, cx, cy); if (pt.front) dots = dots.concat([{ inst: sel, x: pt.x, y: pt.y }]);
+      const rec = moneyRec(sel);
+      if (rec) {
+        // The selected space, even with no dot of its own (folded into a cluster).
+        let d = dots.find(q => sameInst(q.inst, sel));
+        const selPin = !d && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(sel) : null;
+        if (selPin) { const pt = project(selPin.lon, selPin.lat, r, cx, cy); if (pt.front) d = { inst: sel, x: pt.x, y: pt.y }; }
+        if (d) MONEY_MODE = layMoney(ctx, d, rec, project, r, cx, cy);
       }
-      const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
-      // First pass: where every funder of the focused space goes, and where its name goes. Each spoke and each name must stay
-      // clear of the labels already on the map and of the names placed before it, so nothing is drawn over text and no name is dropped.
-      dots.forEach(d => {
-        const inst = d.inst, rec = inst && recById.get(inst.id); if (!rec) return;
-        const focus = sameInst(sel, inst) || sameInst(hov, inst);
-        if (!focus) return;
-        const nodes = rec.nodes.filter(n => FUNDER(n) && kindOn(n[1]));
-        if (!nodes.length) return;
-        // The ring is 64 px when the view is close; further out it shrinks, so funders never land on other cities.
-        const zoomK = Math.max(0.4, Math.min(1, r / (baseRadius * 12)));
-        const N = Math.min(nodes.length, 10), R = 64 * zoomK;
-        // Names only, as a map sets its place names: no pill behind them and no kind word (user, 16 Nov 2026: "just keep
-        // company titles not boxes behind them"). The kind is in the name's colour. sr is the air between the funder's spot
-        // and its name; there is no mark there any more.
-        ctx.font = MONEY_FONT;
-        const items = nodes.slice(0, N).map(n => {
-          const reach = reachOf(n[5]), text = fitWords(n[0], 40), w = ctx.measureText(text).width + 4;
-          return { n, reach, sr: 1, text, w };
-        });
-        ctx.font = font;
-        placeRing(d, items, R, boxes, W, H, d.labelBox ? Math.PI / 2 : -Math.PI / 2);
-        rings.push({ d, rec, items });
-      });
-      // The funders are drawn last of all, over the city names (atlasLayersDrawLate), so the mode's wash covers the rest of
-      // the map. Each name answers the pointer as the mark used to.
-      rings.forEach(({ d, rec, items }) => items.forEach(it => {
-        const n = it.n, col = COL[n[1]], shared = it.reach.n > 1;
-        LM.push({ x: it.box.x + it.box.w / 2, y: it.box.y + it.box.h / 2, r: Math.max(10, it.box.h / 2), col, key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `${KIND_WORD[n[1]] || 'Funder'}, funder of ${rec.n}`, lbox: it.box,
-          sub2: shared ? `Also funds ${plural(it.reach.n - 1, 'other space')} in ${plural(it.reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
-          ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
-      }));
-      MONEY_MODE = rings;
     }
     TIP_BOXES = boxes;
     ctx.restore();
@@ -937,33 +836,139 @@
   // The block naming the mark or line under the pointer is drawn last of all, over the city names (index.html calls this
   // after them; the street map calls it after the nodes), so nothing covers it.
   let TIP_BOXES = [];
-  // MONEY MODE (user, 16 Nov 2026: "make money map layer to look not papped on globe but like changing a map mode"). With
-  // the money map on and a space in focus, the map changes over instead of carrying a sticker: a wash of the map's own
-  // ground covers everything (land, other spaces, city names, other layers) except the space in focus and its name, and
-  // its funders are set on that quiet map as names, in the deeper step of their kind's colour with a halo of ground round
-  // the letters, the way a printed map lets a place name cross a coastline. index.html calls this after the city names.
-  let MONEY_MODE = null;
+  // MONEY MODE (user, 16 Nov 2026: "make money map layer to look not papped on globe but like changing a map mode"; then,
+  // of a wash at 0.82 that left every other label, dot and glow showing through: "its very messy"). With the money map on
+  // and a space in focus, the map changes over. atlasLayersDraw keeps a copy of the canvas as it is before any space is
+  // drawn (the land, the lines and the country names); here, after everything else, that copy goes back over the whole
+  // canvas, so the other spaces, city names, glows and layers are gone rather than faded. On that clean map go the space in
+  // focus (its dot and its name in plain ink) and its funders' names, in the deeper step of their kind's colour, each with
+  // a halo of ground round the letters as a printed map sets a name over a coastline. No boxes and no lines. The alert
+  // rings, which are buttons over the canvas, step aside too (html.atlas-money-mode in assets/atlas.css).
+  // WHERE THE NAMES GO (user, 16 Nov 2026: "put each funder at its real head office on the map, so the money visibly
+  // comes from New York, Zurich, Riyadh"). A funder with a head office on record (assets/hq.json) is set at that office:
+  // a small dot, the city's name in ink and under it the funders based there, in their kind's colour. Offices that
+  // land within 24 px of each other share one list. A funder with no office on record is listed at the space itself,
+  // under its name, so nothing is dropped; the space's list is the only one with no city above it. The country names
+  // and city marks are not drawn in this mode (index.html asks atlasMoneyMode), so no name sits under another.
+  let MONEY_MODE = null, SNAP = null, SNAP_OK = false;
   const MONEY_FONT = '400 16px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
-  window.atlasLayersDrawLate = function (ctx, ground) {
-    const rings = L.money && !streetUp() ? MONEY_MODE : null;
-    if (!rings || !rings.length) return;
-    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const W = ctx.canvas.clientWidth || ctx.canvas.width, H = ctx.canvas.clientHeight || ctx.canvas.height;
-    ctx.save();
-    // The wash, with a hole over the space in focus (its dot and its name block) so it stays in full ink.
-    ctx.beginPath(); ctx.rect(0, 0, W, H);
-    rings.forEach(({ d }) => {
-      ctx.moveTo(d.x + 9, d.y); ctx.arc(d.x, d.y, 9, 0, Math.PI * 2, true);
-      const b = d.labelBox; if (b) { ctx.moveTo(b.x - 3, b.y - 3); ctx.lineTo(b.x - 3, b.y + b.h + 3); ctx.lineTo(b.x + b.w + 3, b.y + b.h + 3); ctx.lineTo(b.x + b.w + 3, b.y - 3); ctx.closePath(); }
+  const SPACE_FONT = '400 24px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
+  const MONEY_LINE = 20, MONEY_MAX = 8;
+  // The money record of a space, if it names a funder of a kind that is switched on.
+  function moneyRec(inst) {
+    const rec = inst && recById && recById.get(inst.id);
+    return rec && rec.nodes.some(n => FUNDER(n) && kindOn(n[1])) ? rec : null;
+  }
+  window.atlasMoneyMode = inst => L.money && !!moneyRec(inst);
+  function layMoney(ctx, d, rec, project, r, cx, cy) {
+    const W = ctx.canvas.clientWidth || 1e9, H = ctx.canvas.clientHeight || 1e9;
+    const nodes = rec.nodes.filter(n => FUNDER(n) && kindOn(n[1]));
+    const home = { x: d.x, y: d.y, home: true, nodes: [] }, groups = [];
+    nodes.forEach(n => {
+      const o = HQ && n[5] ? HQ.byKey.get(n[5]) : null;
+      if (!o) { home.nodes.push(n); return; }
+      const pt = project(o.lon, o.lat, r, cx, cy); if (!pt.front) return;
+      // An office in the space's own city is listed at the space: a second list on the same spot only ran into the first.
+      if (Math.hypot(pt.x - d.x, pt.y - d.y) < 24) { if (!home.nodes.some(m => m[5] === n[5])) home.nodes.push(n); return; }
+      let g = groups.find(q => Math.hypot(q.x - pt.x, q.y - pt.y) < 24);
+      if (!g) { g = { x: pt.x, y: pt.y, city: o.c || o.co || '', nodes: [] }; groups.push(g); }
+      if (!g.nodes.some(m => m[5] === n[5])) g.nodes.push(n);
     });
-    ctx.globalAlpha = 0.82; ctx.fillStyle = ground || (dark ? '#151412' : '#ffffff'); ctx.fill('evenodd');
-    ctx.globalAlpha = 1;
-    ctx.font = MONEY_FONT; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
-    ctx.lineWidth = 4; ctx.strokeStyle = ground || (dark ? '#151412' : '#ffffff');
-    rings.forEach(({ items }) => items.forEach(it => {
-      const b = it.box, x = b.x + b.w / 2, y = b.y + b.h / 2 + 0.5;
-      ctx.strokeText(it.text, x, y);
-      ctx.fillStyle = lineCol(COL[it.n[1]]); ctx.fillText(it.text, x, y);
+    // The space's own name, where its label block was, is the first thing the lists keep clear of.
+    const name = (d.inst && d.inst.name) || rec.n;
+    ctx.save();
+    ctx.font = SPACE_FONT;
+    // Over the head of the drop pin, which stands 34 px above the space's point (the name ran through it at the label's height).
+    const nw = ctx.measureText(name).width, ny = d.y - 54;
+    const placed = [{ x: d.x - nw / 2 - 4, y: ny - 15, w: nw + 8, h: 30 }, { x: d.x - 8, y: d.y - 8, w: 16, h: 16 }];
+    ctx.font = MONEY_FONT;
+    const hit = b => placed.some(o => !(b.x + b.w < o.x || b.x > o.x + o.w || b.y + b.h < o.y || b.y > o.y + o.h));
+    const inView = b => b.x >= 2 && b.y >= 2 && b.x + b.w <= W - 2 && b.y + b.h <= H - 2;
+    // Nearest the space first, so the lists that matter most get the first choice of side.
+    groups.sort((a, b) => Math.hypot(a.x - d.x, a.y - d.y) - Math.hypot(b.x - d.x, b.y - d.y));
+    const out = [];
+    [home].concat(groups).forEach(g => {
+      if (!g.nodes.length) return;
+      const shown = g.nodes.slice(0, MONEY_MAX), more = g.nodes.length - shown.length;
+      const lines = [];
+      if (!g.home && g.city) lines.push({ text: g.city, head: true });
+      shown.forEach(n => lines.push({ text: fitWords(n[0], 40), n }));
+      if (more > 0) lines.push({ text: `and ${more} more`, head: true });
+      lines.forEach(l => { l.w = ctx.measureText(l.text).width; });
+      const w = Math.max(...lines.map(l => l.w)), h = lines.length * MONEY_LINE;
+      // A list sits beside its dot, or under or over it: the first side that is on the canvas and clear of the others.
+      const sides = {
+        right: { x: g.x + 9, y: g.y - MONEY_LINE / 2, align: 'left' }, left: { x: g.x - 9 - w, y: g.y - MONEY_LINE / 2, align: 'right' },
+        below: { x: g.x - w / 2, y: g.y + 14, align: 'center' }, above: { x: g.x - w / 2, y: g.y - 10 - h, align: 'center' }
+      };
+      const order = g.home ? ['below', 'right', 'left'] : (g.x < d.x ? ['left', 'right', 'below', 'above'] : ['right', 'left', 'below', 'above']);
+      // Where every side is taken, the list slides up or down its dot's side, a line at a time, until it is clear.
+      for (let i = 1; i <= 12; i++) for (const k of ['right', 'left']) for (const sg of [1, -1]) {
+        const key = k + sg * i; sides[key] = { x: sides[k].x, y: sides[k].y + sg * i * MONEY_LINE, align: sides[k].align }; order.push(key);
+      }
+      const boxOf = k => ({ x: sides[k].x - 3, y: sides[k].y - 2, w: w + 6, h: h + 4 });
+      const side = order.find(k => inView(boxOf(k)) && !hit(boxOf(k))) || order.find(k => !hit(boxOf(k))) || order[0];
+      const s0 = sides[side];
+      lines.forEach((l, i) => {
+        l.x = s0.align === 'left' ? s0.x : s0.align === 'right' ? s0.x + w - l.w : s0.x + (w - l.w) / 2;
+        l.y = s0.y + i * MONEY_LINE + MONEY_LINE / 2;
+        l.box = { x: l.x - 2, y: l.y - MONEY_LINE / 2, w: l.w + 4, h: MONEY_LINE };
+        if (!l.n) return;
+        const n = l.n, reach = reachOf(n[5]), shared = reach.n > 1;
+        LM.push({ x: l.x + l.w / 2, y: l.y, r: MONEY_LINE / 2, col: COL[n[1]], key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `${KIND_WORD[n[1]] || 'Funder'}, funder of ${rec.n}`, lbox: l.box,
+          sub2: shared ? `Also funds ${plural(reach.n - 1, 'other space')} in ${plural(reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
+          ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
+      });
+      placed.push(boxOf(side), { x: g.x - 6, y: g.y - 6, w: 12, h: 12 });
+      out.push({ g, lines });
+    });
+    ctx.restore();
+    return { d, name, ny, lists: out };
+  }
+  function snapMap(ctx, want) {
+    SNAP_OK = false;
+    if (!want) return;
+    const c = ctx.canvas;
+    if (!SNAP) SNAP = document.createElement('canvas');
+    if (SNAP.width !== c.width || SNAP.height !== c.height) { SNAP.width = c.width; SNAP.height = c.height; }
+    const s = SNAP.getContext('2d');
+    s.setTransform(1, 0, 0, 1, 0, 0); s.clearRect(0, 0, SNAP.width, SNAP.height); s.drawImage(c, 0, 0);
+    SNAP_OK = true;
+  }
+  function setModeClass(on) {
+    const el = document.documentElement;
+    if (el.classList.contains('atlas-money-mode') !== on) el.classList.toggle('atlas-money-mode', on);
+  }
+  // MONEY MODE (user, 16 Nov 2026: "make money map layer to look not papped on globe but like changing a map mode"; then,
+  // of a wash at 0.82 that left every other label, dot and glow showing through: "its very messy"). With the money map on
+  // and a space selected, the map changes over. atlasLayersDraw keeps a copy of the canvas as it is before any space is
+  // drawn (the land, the lines and the country names); here, after everything else, that copy goes back over the whole
+  // canvas, so the other spaces, city names, glows and layers are gone rather than faded. On that clean map go the
+  // selected space (a dot and its name in plain ink) and the funders' names, each with a halo of ground round the
+  // letters as a printed map sets a name over a coastline. No boxes and no lines. The alert rings, which are buttons over
+  // the canvas, step aside too (html.atlas-money-mode in assets/atlas.css). Hovering a space does not start the mode.
+  window.atlasLayersDrawLate = function (ctx, ground) {
+    const m = L.money && (STREET || !streetUp()) ? MONEY_MODE : null;
+    if (!m) { if (!STREET) setModeClass(false); return; }
+    if (!STREET) setModeClass(true);
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const halo = ground || (dark ? '#151412' : '#ffffff'), ink = dark ? '#e6e1d7' : '#000';
+    ctx.save();
+    // The clean map back over everything. Without a copy (the street map's overlay), the overlay is simply cleared.
+    ctx.save(); ctx.setTransform(1, 0, 0, 1, 0, 0);
+    if (SNAP_OK) { ctx.globalCompositeOperation = 'copy'; ctx.drawImage(SNAP, 0, 0); }
+    else ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.restore();
+    ctx.lineJoin = 'round'; ctx.strokeStyle = halo; ctx.textBaseline = 'middle';
+    const dot = (x, y, rad) => { ctx.beginPath(); ctx.arc(x, y, rad, 0, Math.PI * 2); ctx.fillStyle = ink; ctx.fill(); ctx.lineWidth = 2; ctx.stroke(); };
+    m.lists.forEach(({ g }) => { if (!g.home) dot(g.x, g.y, 3); });
+    dot(m.d.x, m.d.y, 5);
+    ctx.textAlign = 'center'; ctx.font = SPACE_FONT; ctx.lineWidth = 5;
+    ctx.strokeText(m.name, m.d.x, m.ny); ctx.fillStyle = ink; ctx.fillText(m.name, m.d.x, m.ny);
+    ctx.textAlign = 'left'; ctx.font = MONEY_FONT; ctx.lineWidth = 4;
+    m.lists.forEach(({ lines }) => lines.forEach(l => {
+      ctx.strokeText(l.text, l.x, l.y + 0.5);
+      ctx.fillStyle = l.head ? ink : lineCol(COL[l.n[1]]); ctx.fillText(l.text, l.x, l.y + 0.5);
     }));
     ctx.restore();
   };
@@ -1231,11 +1236,27 @@
     // Close in on the space, so its funders sit around it in its own city rather than across the continent.
     // A space with no coordinates (stored as 0, 0) closes in on its city instead; flying to 0, 0 showed an empty ocean.
     const pin = inst && typeof window.atlasPinOf === 'function' ? window.atlasPinOf(inst) : null;
-    if (pin && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function') {
-      const z = window.getMaxRadius();
+    // The view takes in the space and the head offices of its funders, so the money is seen coming from where it does:
+    // as close as keeps the farthest office on the map, the whole world for a funder on another continent, and right
+    // in on the space when every funder is local or has no office on record. It waits for the two files it reads.
+    const fit = () => {
+      if (!(pin && typeof window.flyTo === 'function' && typeof window.getMaxRadius === 'function')) return;
+      const rec = recById && inst ? recById.get(inst.id) : null, rad = Math.PI / 180;
+      let far = 0;
+      if (rec && HQ) rec.nodes.forEach(n => {
+        const o = FUNDER(n) && n[5] ? HQ.byKey.get(n[5]) : null; if (!o) return;
+        const c = Math.sin(pin.lat * rad) * Math.sin(o.lat * rad) + Math.cos(pin.lat * rad) * Math.cos(o.lat * rad) * Math.cos((o.lon - pin.lon) * rad);
+        far = Math.max(far, Math.acos(Math.max(-1, Math.min(1, c))) / rad);
+      });
+      const base = window.getBaseRadius ? window.getBaseRadius() : 276, max = window.getMaxRadius();
+      // At the base zoom the map is 360 degrees wide; the farthest office is kept at about a third of the way to the edge.
+      const z = far < 0.2 ? max : Math.max(base, Math.min(max, base * 60 / far));
       if (typeof window.setTargetRadius === 'function') window.setTargetRadius(z);
       window.flyTo(pin.lon, pin.lat, z);
-    }
+    };
+    loadHq();
+    let tries = 0;
+    (function wait() { if ((recById && HQ) || ++tries > 150) { fit(); repaint(); } else setTimeout(wait, 40); })();
     repaint();
   };
 
