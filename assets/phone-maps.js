@@ -109,9 +109,10 @@
       // speech mark, not a magnifier, since what is typed is mostly a question.
       lens.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg>';
       card.insertBefore(lens, card.firstChild);
-      // One line, as a maps app's box: the long prompt wrapped to two lines in it. The full prompt is the box's name.
-      input.setAttribute('aria-label', 'Ask the atlas, or type a space or a city to find it on the map');
-      input.setAttribute('placeholder', 'Ask the atlas');
+      // The desktop's prompt, word for word (user, 16 Nov 2026: "chat window says ask the atlas but it should say same as on
+      // desktop"); it was "Ask the atlas". The box's name also says it finds places.
+      input.setAttribute('aria-label', 'Ask about a space, its funders or controversies, or type a space or a city to find it on the map');
+      input.setAttribute('placeholder', 'Ask about a space, its funders or controversies…');
 
       // Finding: a space's or a city's name on its own goes to the map (the record opens, or the map flies to the city)
       // instead of the chat. It is a find only when it has no question mark, is six words or fewer and names exactly one
@@ -284,13 +285,9 @@
     }
 
     // ---- The chat's header, as the record sheet's: a title, the same menu, and one cross ----------------------------
-    // The chat's box is one line too, as the map's: its long prompt wrapped to two lines in the pill (user, 7 Nov 2026,
-    // the phone's look after the foundry's site). The full prompt stays as the box's name. Only on a phone: the desktop's panel keeps it.
-    const work = $('workInput');
-    if (work && PHONE()) {
-      work.setAttribute('aria-label', work.getAttribute('placeholder') || 'Ask about a space, its funders or controversies');
-      work.setAttribute('placeholder', 'Ask about a space or a funder');
-    }
+    // The chat's box keeps the desktop's prompt (user, 16 Nov 2026: "it should say same as on desktop"). It had been cut to
+    // "Ask about a space or a funder" when the box was a one-line pill; it is now the full width over its buttons, so the
+    // whole prompt fits.
 
     const chatHead = $('phoneChatHead');
     if (chatHead) {
