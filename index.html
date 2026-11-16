@@ -10495,7 +10495,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v721';
+    const ATLAS_RELEASE = 'culture-atlas-v722';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -20203,22 +20203,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       return out;
     }
     // The chips under a city or country notice: questions the cloud holds about spaces there, then the pool.
-    // A filter switched on is explained in the chat (user, 12 Nov 2026: "clicking filters need to pull info into chat
-    // educating on what user can learn from this app"). The message says what the filter shows, in the words of its own
-    // line in the Layers menu (assets/layers.js, atlasLayerDesc), how many spaces it leaves on the map and which, the
-    // largest first, and what the filter is good for; two questions follow as chips. Nothing in it is new about any space:
-    // the count and the names are the map's, the rule is the menu's.
-    const FILTER_LEARN = {
-      funding: 'Who pays for a space, and which funders reach across several. Open a space to see its funders; the lines join spaces that share one.',
-      epstein: 'Which spaces have a funder or a person named in the files, and who that is. A name in the files is a documented tie, not a finding of wrongdoing.',
-      propaganda: 'Where a state has used a cultural space to promote its line, and what the record says it did there.',
-      independent: 'Which spaces describe themselves as independent, and what their records say about how they are paid for.',
-      openbooks: 'Where the money can be checked: the filings are linked from the record.',
-      artist: 'Which spaces artists run themselves, and what their records say about how they keep going.',
-      A: 'Each of these records cites a source for its funding. The grade says how well a record is sourced, not whether the space is good.',
-      B: 'Each of these records carries a recorded reason, such as a flagged funder or a funding protest. Open one to read the reason and its source.',
-      U: 'These records have no source checked yet. Read them as leads, not as findings.'
-    };
+    // A filter switched on posts to the chat how many spaces it leaves on the map and which, the largest first; questions
+    // follow as chips. The definition, the "What you can learn here" line and "Press the filter again" were cut as
+    // explanatory filler (user, 16 Nov 2026: "This text is a slop", "Do not add explanatory content").
     const FILTER_ASK = {
       funding: ['Which funders appear on the most spaces?'],
       epstein: ['Which spaces have Epstein connections, and through whom?'],
@@ -20242,7 +20229,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const kept = keep ? ALL_INSTITUTIONS.filter(i => { try { return keep(i); } catch (e) { return false; } }) : [];
       // Funding and Epstein read the funding maps, which load on first use; until then they keep nothing.
       if (!kept.length && (key === 'funding' || key === 'epstein') && tries < 10) { setTimeout(() => explainFilter(kind, key, tries + 1), 800); return; }
-      const info = kind === 'grade' ? { name: GRADE_NAME[key][0], desc: GRADE_NAME[key][1] } : (window.atlasLayerDesc ? window.atlasLayerDesc(key) : { name: key, desc: '' });
       const RANK = { XL: 0, L: 1, M: 2, S: 3, XS: 4 };
       const top = kept.map((inst, k) => ({ inst, k })).sort((a, b) => ((RANK[a.inst.size] ?? 5) - (RANK[b.inst.size] ?? 5)) || (a.k - b.k)).slice(0, 3).map(o => o.inst);
       const n = kept.length;
@@ -20255,12 +20241,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const shown = n
         ? `${n} ${n === 1 ? 'space is' : 'spaces are'} on the map now${withOther}${top.length ? (n > top.length ? `, among them ${names}` : `: ${names}`) : ''}.`
         : `No space on the atlas matches it${withOther} yet.`;
-      const desc = info.desc ? `${escapeHtml(info.name)}: ${escapeHtml(info.desc.charAt(0).toLowerCase() + info.desc.slice(1))}.` : escapeHtml(info.name) + '.';
-      const lc = t => t.charAt(0).toLowerCase() + t.slice(1);
-      const learn = FILTER_LEARN[key] ? `<p>What you can learn here: ${escapeHtml(lc(FILTER_LEARN[key]))}</p>` : '';
       const asks = (FILTER_ASK[key] || []).slice();
       if (top[0]) asks.push(`Who funds ${top[0].shortName || top[0].name}?`);
-      appendCuratorMessage(`<p class="no-indent">${desc} ${shown}</p>${learn}<p>Press the filter again to see every space.</p>`, asks);
+      appendCuratorMessage(`<p class="no-indent">${shown}</p>`, asks);
     }
     document.addEventListener('atlas:filter-explain', (e) => { const d = e.detail || {}; if (d.key) explainFilter(d.kind, d.key); });
 
