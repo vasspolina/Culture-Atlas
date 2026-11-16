@@ -32,7 +32,29 @@ SECTION = re.compile(r'^(%s)\s*:?\s*$' % '|'.join(SECTIONS))
 RED_FLAG = re.compile(r'^Red flags?:\s*(.+?)\s*$', re.I)
 NOT_RELATED = re.compile(r'^Not related:\s*(.+?)\s*$', re.I)
 PRESS_ITEM = re.compile(r'^(\d+)[.)]\s+(.+?)\s*$')
-URL = re.compile(r'https?://[^\s)>\]]+')
+URL = re.compile(r'https?://[^\s>\]]+')
+
+
+def find_url(text):
+    """The first address in a line, with the brackets that belong to it. Wikipedia titles carry them (Mostyn_(gallery),
+    Banff Centre Annual Report (2024-25).pdf), so an address runs to the next space and gives back only the closing
+    brackets it did not open and trailing punctuation: "https://x/A_(b) (advocacy source)" is the address
+    https://x/A_(b) and the note "advocacy source". Until 16 Nov 2026 the address stopped at the first ")", which cut 70."""
+    m = URL.search(text)
+    if not m:
+        return None, ''
+    u = m.group(0)
+    while u and (u[-1] in '.,;:' or (u[-1] == ')' and u.count(')') > u.count('('))):
+        u = u[:-1]
+    return u, text[m.start() + len(u):]
+
+
+def unwrap(note):
+    """A note in brackets loses one pair of them, not every bracket at either end."""
+    note = note.strip()
+    while note.startswith('(') and note.endswith(')'):
+        note = note[1:-1].strip()
+    return note
 HEDGES = re.compile(r'\b(may|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|believed to|likely|some say)\b')   # lower case: "May" is the month
 PROMO = re.compile(r'\b(vibrant|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|tapestry|testament to|nestled|boasts?|showcases?|fosters?|underscores?|delves?|ecosystem|plays a crucial role|it is worth noting|a diverse range of|among others|and more(?! than))\b')   # lower case: Foster is a name
 INTERNAL = re.compile(r"\b(the editor|the map|the map's|atlas record|the record says|the checker|slop check)\b", re.I)
@@ -41,6 +63,9 @@ DASH = re.compile(r'\s[–—]\s|[–—]')
 
 def bullet(t):
     return t[2:].strip() if t.startswith(('- ', '• ', '* ', '– ')) else t
+
+
+EMPTY_BULLET = {'-', '•', '*', '–', '—'}   # a bullet with nothing after it, which was kept as a point reading "-"
 
 
 def parse(text, stem, ids):
@@ -64,7 +89,11 @@ def parse(text, stem, ids):
         if t.startswith('ID:'):
             continue
         if t.startswith('Website:'):
-            d['website'] = t[len('Website:'):].strip()
+            # Only the address: the report's "(checked 2026-10-20; live)" is the researcher's note, which the page never shows.
+            # "none found (checked ...)" is no address, and is left out.
+            w = find_url(t[len('Website:'):])[0]
+            if w:
+                d['website'] = w
             continue
         m = SECTION.match(t)
         if m:
@@ -80,6 +109,8 @@ def parse(text, stem, ids):
         if m and section in ('FUNDING', 'RED', 'NOT_RELATED', None):
             section = 'NOT_RELATED'
             d['not_related'].append(m.group(1))
+            continue
+        if t in EMPTY_BULLET:
             continue
         item = bullet(t)
         if section == 'OVERVIEW':
@@ -108,8 +139,8 @@ def parse(text, stem, ids):
                 p['overall'] = (p['overall'] + ' ' + item).strip()
                 continue
             if t.startswith('URL:'):
-                u = URL.search(t)
-                p['items'][-1]['url'] = u.group(0).rstrip('.,') if u else ''
+                u, _ = find_url(t)
+                p['items'][-1]['url'] = u or ''
                 continue
             p['items'][-1]['points'].append(item)
         elif section == 'WIDER CONTEXT':
@@ -117,10 +148,10 @@ def parse(text, stem, ids):
         elif section == 'BOTTOM LINE':
             bottom.append(item)
         elif section == 'SOURCES':
-            u = URL.search(item)
+            u, rest = find_url(item)
             if u:
-                note = item[u.end():].strip().strip('()').strip()
-                d['sources'].append({'url': u.group(0).rstrip('.,'), **({'note': note} if note else {})})
+                note = unwrap(rest)
+                d['sources'].append({'url': u, **({'note': note} if note else {})})
     d['bottom_line'] = ' '.join(bottom)
     return rid, d
 
