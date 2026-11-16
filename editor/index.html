@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Data editor · Culture Atlas</title>
+<link rel="stylesheet" href="editor.css">
+</head>
+<body>
+<header class="top">
+  <h1>Data editor</h1>
+  <p class="mode" id="mode" role="status"></p>
+  <div class="top-actions">
+    <button type="button" id="rebuild" hidden>Rebuild page data</button>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="index" aria-label="Records">
+    <div class="index-tools">
+      <label for="q">Find a record</label>
+      <input id="q" type="search" placeholder="Name, city, country or id" autocomplete="off">
+      <fieldset class="filters">
+        <legend class="vh">Show</legend>
+        <label><input type="radio" name="show" value="all" checked> All</label>
+        <label><input type="radio" name="show" value="problems"> Wording to check</label>
+        <label><input type="radio" name="show" value="changed"> Changed</label>
+      </fieldset>
+      <p class="count" id="count" aria-live="polite"></p>
+    </div>
+    <ul id="list" class="list"></ul>
+  </nav>
+
+  <main id="main" class="main" tabindex="-1">
+    <p class="empty">Choose a record on the left.</p>
+  </main>
+</div>
+
+<dialog id="log">
+  <h2 id="log-title">Rebuild</h2>
+  <pre id="log-text"></pre>
+  <form method="dialog"><button>Close</button></form>
+</dialog>
+
+<script src="structure.js"></script>
+<script src="editor.js"></script>
+</body>
+</html>

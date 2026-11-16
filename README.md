@@ -242,6 +242,21 @@ The chat also answers "What do employees report?" with a summary of the 127 para
 Notes saved in this browser are read back inside the chat ("Notes saved in this
 browser" in the chat reply opens nothing).
 
+## Editing the records: the data editor
+
+`institutions.json` is one 15 MB file of nested JSON, and read raw a record is a wall of quotes and brackets in which a list of findings joined by bars, a staff account stored as label and text pairs or a dossier of paragraphs loses its shape. The data editor sets each record out as it reads:
+
+    python3 tools/editor.py        # then open http://127.0.0.1:8790/
+
+- **The list** on the left finds a record by name, city, country, id or other name, and narrows to the records with wording to check or the ones changed in this window.
+- **The record** is in groups (Identity, Place and visit, Funding, Records and accounts, Dossier, Reports and critique, Sources, then any other field), each field under a plain label with its stored key beside it. Prose is set in a reading face with a word count (out of 30 for the funding text and 25 for the description), lists are numbered rows that can be moved, added and removed, nested entries (case notes, Epstein files, propaganda, studies, staff accounts) are cards with their own fields, addresses have an Open link, and short fields suggest the values already used across the file (tier, size, flags, status, kind). `other_findings` is shown as one finding per line and stored joined by ` | ` as before. JSON shows the whole record as stored, for an edit the fields do not cover.
+- **Sentences.** A long note crammed into one block loses its structure, so prose of two sentences or more is shown one sentence per line (Enter splits a sentence at the cursor, Backspace at its start joins it to the one before), and a critique note, which runs several cited works together, is shown as one block per work: the citation (author, title, publication and year) on its own line and what it says under it. Both are views only: `editor/structure.js` joins the parts back to the stored text character for character, so a field that is only looked at saves unchanged (`tests/editor-structure.test.mjs` checks every text in the file and all 29 critique notes). A full stop after an initial (T. J. Demos), an abbreviation (e.g., St.) or U.S. does not end a sentence. A sentence holding a flagged word is marked. "One paragraph" under a field gives back the plain box, and the choice is remembered in that browser.
+- **Wording** is checked as it is typed with the rules of `tools/lint_text.py`: each point is shown under its field with what the rule asks (a dash, a hedge, filler, a verdict, an unnamed funder, too many words), and a dash can be replaced the way `lint_text.py --fix` does. The check advises and never stops a save.
+- **What a tool writes** is shown and not edited, with where to change it instead: the funding grade and its sentence (`tools/grade_funding.py`), the press reports (`data/gossip_items.json`), the case files, the shared funders and the critical frames (`tools/attach_critiques.py`). The record id is not changed either, since other files point to it.
+- **Save** (or Ctrl/Cmd+S) writes that record back to `institutions.json` as `tools/clean_data.py` writes it, through a temporary file, so the diff holds only the lines edited. It refuses a record with no name, numbers that are not coordinates or a changed id, and refuses to overwrite a record that changed on disk after the page loaded it, offering the version on disk instead. **Rebuild page data** then runs `tools/clean_data.py` and `tools/embed_data.py`; bump the `?v=` on the `assets/institutions.js` tag and the release as usual before deploying.
+
+The server listens on 127.0.0.1 only and refuses requests from other sites. `editor/` is not deployed. Opened without the server (from any static server, at `/editor/`), the page still reads and edits, and Save downloads a whole `institutions.json` to put in the repository root.
+
 ## Gossip mode
 
 Gossip mode shows what people are actually saying about a space on the internet: in the arts press, on Reddit, on accounts that collect staff complaints, in open letters, union statements and court filings, and in the comments under them. The rules for what counts, what never goes in, which sources are trusted and how an item is written are in `notes/gossip-criteria.md`; read them before adding anything.
@@ -273,6 +288,7 @@ Culture-Atlas/
 ├── server/            # Express API for whistleblower reviews
 ├── prisma/            # Prisma schema and SQLite database (database file is ignored)
 ├── admin/             # Reusable React AdminModerator component
+├── editor/            # The data editor for institutions.json (run tools/editor.py; not deployed)
 ├── sw.js               # Service worker (network-first for the page, same-origin cache only)
 ├── manifest.json       # PWA manifest
 ├── assets/ fonts/      # atlas.css, maplibre-gl.css, images and the typefaces the page loads
