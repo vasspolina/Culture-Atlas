@@ -452,12 +452,13 @@
     snapMap(ctx, L.money && !!moneyRec(sel));
     // The funding views (assets/funding-views.js): bundles, flows, territories, flagged money and funders above the globe.
     if (window.atlasFundingViews) window.atlasFundingViews.under(ctx, project, r, cx, cy, sel, hov, baseRadius);
+    // The money map is a map mode, not a web: its funders are set on the map as names, and no tie is drawn, with a space in
+    // focus or without one (user, 16 Nov 2026: "i dont think lines are needed"; then, of the whole web drawn over the globe
+    // once the space was let go: "this view still shows lines").
+    if (L.money) return;
     if (!L.ties) { drawReach(ctx, project, r, cx, cy); return; }
     if (!recById) { loadMoney(); return; }
     const focus = hov || sel, rec = focus && recById.get(focus.id);
-    // The money map is a map mode, not a web: with a space in focus its funders are set on the map as names, and no tie is
-    // drawn (user, 16 Nov 2026: "i dont think lines are needed").
-    if (L.money && moneyRec(sel)) return;
     ctx.save();
     ctx.lineCap = 'round';
     // The whole web, faint when a space is in focus.
@@ -990,7 +991,7 @@
       const inp = boxes().find(i => keysOfBox(i).includes(k));
       if (inp) setBox(inp, false); else L[k] = false;
     });
-    MONEY_MODE = null; setModeClass(false);
+    MONEY_MODE = null; setModeClass(false); document.documentElement.classList.remove('atlas-money-on');
     refilter();
   }
   window.atlasExitMoney = exitMoney;
@@ -1004,7 +1005,7 @@
     b.addEventListener('click', exitMoney);
     host.appendChild(b);
     document.addEventListener('keydown', e => {
-      if (e.key !== 'Escape' || !document.documentElement.classList.contains('atlas-money-mode')) return;
+      if (e.key !== 'Escape' || !L.money) return;
       const t = e.target; if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
       exitMoney();
     });
@@ -1018,6 +1019,8 @@
   // letters as a printed map sets a name over a coastline. No boxes and no lines. The alert rings, which are buttons over
   // the canvas, step aside too (html.atlas-money-mode in assets/atlas.css). Hovering a space does not start the mode.
   window.atlasLayersDrawLate = function (ctx, ground) {
+    // The exit shows whenever the money map is on, a space in focus or not (html.atlas-money-on in assets/atlas.css).
+    if (!STREET) { const el = document.documentElement; if (el.classList.contains('atlas-money-on') !== !!L.money) el.classList.toggle('atlas-money-on', !!L.money); if (L.money) moneyExitBtn(); }
     const m = L.money && (STREET || !streetUp()) ? MONEY_MODE : null;
     if (!m) { if (!STREET) setModeClass(false); return; }
     if (!STREET) setModeClass(true);
@@ -1306,7 +1309,8 @@
 
   // "Money map" on a record: turn the layers on and show that space's funders on the globe.
   window.atlasShowMoney = function (id) {
-    turnOn('money'); turnOn('ties'); loadMoney();
+    // Not the ties: the money map draws no lines (see atlasLayersDraw).
+    turnOn('money'); loadMoney();
     if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
     const inst = id && typeof window.resolveInstitutionByIdOrName === 'function' ? window.resolveInstitutionByIdOrName(id) : null;
     if (id && typeof window.selectInstitution === 'function') window.selectInstitution(id, false);
