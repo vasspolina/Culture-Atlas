@@ -1953,3 +1953,20 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root:is(.gm-map,.gm-chat):not(.gm-from-chat) #gmChips:not(#sh-x):not(#sh-y){top:calc(env(safe-area-inset-top,0px) + 48px)!important;padding-top:8px!important}
 }
 }
+
+/* ---- The phone map by the screen's height (user, 16 Nov 2026: "make it height responsive") ----
+   The globe is fitted into the room between the filters and the things at the bottom (measureWtPhoneRoom in index.html).
+   On a short screen (a phone browser with its bars showing, an older phone, landscape) that room had shrunk to nothing,
+   so the things at the bottom step aside by height: the Top story first, then the suggested questions. The box and Share
+   information always stay. On a narrow phone the box's prompt is set smaller so the whole of it fits on two lines. */
+@layer sheet{
+@media (max-width:767px) and (max-height:620px){
+  :root.gm-map #mobileStickyInputBar>#gmStoryStrip:not(#sh-x):not(#sh-y){display:none!important}
+}
+@media (max-width:767px) and (max-height:520px){
+  :root.gm-map #mobileStickyInputBar>#mobileSuggestChips:not(#sh-x):not(#sh-y){display:none!important}
+}
+@media (max-width:359px){
+  :root.gm-map #mobileComposerCard #chat-input:not(#sh-x):not(#sh-y){font-size:15px!important;line-height:19px!important;height:50px!important}
+}
+}

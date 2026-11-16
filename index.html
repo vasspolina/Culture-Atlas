@@ -66,7 +66,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=697">
-  <link rel="stylesheet" href="assets/sheet.css?v=728">
+  <link rel="stylesheet" href="assets/sheet.css?v=729">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
@@ -10495,7 +10495,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v730';
+    const ATLAS_RELEASE = 'culture-atlas-v731';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10755,9 +10755,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const b = el.getBoundingClientRect();
         if (b.height && getComputedStyle(el).display !== 'none') top = Math.max(top, b.bottom);
       });
-      top += 12;
+      // 24px, not 12: a city's label is centred on its dot, so on the rim it reaches about half a label above the outline.
+      top += 24;
       const bottom = Math.min(cRect.bottom, db && db.height ? db.top : cRect.bottom) - 12;
-      if (bottom - top < 120) return;
+      if (bottom - top < 60) return;   // a short screen still fits the map into what room there is (user, 16 Nov 2026: "make it height responsive")
       wtPhoneHalfH = (bottom - top) / 2;
       wtOffsetY = (top + bottom) / 2 - (cRect.top + cRect.height / 2);
     }
