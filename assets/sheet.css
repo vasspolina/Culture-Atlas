@@ -1806,6 +1806,13 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gmd #gmdChips .gmd-chip:not([aria-pressed="true"]):not(#sh-x){background:var(--sh-paper)!important;color:var(--sh-ink)!important;border-color:var(--sh-code,var(--sh-ink))!important}
   :root.gmd #gmdChips .gmd-chip:not([aria-pressed="true"]):not(#sh-x) *{color:inherit!important}
   :root.gmd #gmdChips .gmd-chip:not([aria-pressed="true"]):not(#sh-x):hover{background:color-mix(in srgb,var(--sh-code,var(--sh-ink)) 18%,var(--sh-paper))!important}
+  /* The head bar's words that are on or under the pointer are dark blue, not the hover blue (user, 16 Nov 2026: "make it
+     dark blue so the contrast is accessible", a screenshot of Chat with the curator in #59a0f1 on the pink bar, 1.5:1).
+     #0a1f8f reads 7.3:1 or better on every light bar colour and on the stone. The dark sheet's bars are dark, so no dark
+     blue can read there: its words take a pale blue, #bcd8ff, 5:1 or better on every dark bar colour, where #59a0f1 fell
+     to 2.7:1. */
+  :root.gmd :is(#gmdTopBar,#workspaceContextTabBar) button:not(#sh-x):is(:hover,:focus-visible,[aria-pressed="true"],[aria-selected="true"],[aria-current],.is-on){color:var(--sh-top-on,#0a1f8f)!important}
+  :root.gmd[data-theme="dark"]{--sh-top-on:#bcd8ff}
 }
 @media (max-width:767px){
   #gmChips:not(#sh-x):not(#sh-y){background:var(--sh-top)!important}
