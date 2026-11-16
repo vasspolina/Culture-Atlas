@@ -66,7 +66,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=697">
-  <link rel="stylesheet" href="assets/sheet.css?v=726">
+  <link rel="stylesheet" href="assets/sheet.css?v=728">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
@@ -10495,7 +10495,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v728';
+    const ATLAS_RELEASE = 'culture-atlas-v730';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -10768,7 +10768,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // width, and the free band's height when that is the tighter. Zooming in still opens it up.
       if (wtPhoneHalfH > 0) roomH = 2 * wtPhoneHalfH;
       // The outline takes the room's proportion between 2:1 and 1:1 (see wtSX), then fits it.
-      wtSX = Math.max(0.5, Math.min(1, roomW / roomH / (WT_W / WT_H)));
+      // On a phone it stays an oval, at least 1.5 times as wide as tall (user, 16 Nov 2026: "the globe can be oval"): the tall
+      // free band had made it a circle, whose top ran up under the filters.
+      wtSX = Math.max(wtPhoneHalfH > 0 ? 0.75 : 0.5, Math.min(1, roomW / roomH / (WT_W / WT_H)));
       const fit = Math.min(roomW / (WT_W * wtSX), roomH / WT_H);
       return r * fit / Math.max(1, baseRadius);
     }
@@ -21861,7 +21863,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-gallery.js?v=692"></script>
 <script src="assets/hq-detail.js?v=669"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=693"></script>
+<script src="assets/phone-maps.js?v=694"></script>
 <script src="assets/desktop-maps.js?v=724"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 </body>
