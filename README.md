@@ -306,11 +306,11 @@ Each record with an independently sourced funder roster carries a rating from A 
 
 | Rating | Summary | Rule |
 |---|---|---|
-| A | Funding amounts disclosed; no funders flagged | No flag-category funder and no documented objection, and the record shows figures (amounts or shares in the funding text) or links accounts or a public registry filing |
-| B | Funders listed; no funders flagged | The same, names only |
-| C | No funder flagged; a tie or complaint on record | A funder worth noting outside the flag categories, or a tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned name, a protest, a sponsor dropped, censorship |
+| A | Amounts published, no flagged funder | No flag-category funder and no documented objection, and the record shows figures (amounts or shares in the funding text) or links accounts or a public registry filing |
+| B | Funders named, no flagged funder | The same, names only |
+| C | No flagged funder, but a contested sponsor or a protest | A funder worth noting outside the flag categories, or a tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned name, a protest, a sponsor dropped, censorship |
 | D | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
-| F | Multiple flagged funders, or a flagged funder with a disputed record | More than one flagged funder category, or a flagged funder plus a documented objection |
+| F | Two or more flagged funders, or one and a protest | More than one flagged funder category, or a flagged funder plus a documented objection |
 
 Countries and flags have one spelling each (USA, UK, UAE, Czechia; the fifteen flag names in the table above): `COUNTRY_NAMES` and `FLAG_NAMES` in `tools/clean_data.py` rewrite any other spelling on every run, since the grade and the filters match the names exactly. Until 15 Nov 2026 five records flagged in lower case ('fossil fuels', 'gambling', 'arms') were rated C where the rule gives D.
 

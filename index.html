@@ -563,9 +563,9 @@ return maplibregl$1;
             <ul class="grade-list grade-scale">
               <li><span class="grade-word grade-word-1">Grade A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
               <li><span class="grade-word grade-word-2">Grade B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</span></li>
+              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
               <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
+              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
             </ul>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
@@ -920,9 +920,9 @@ return maplibregl$1;
             <ul class="grade-list grade-scale">
               <li><span class="grade-word grade-word-1">Grade A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
               <li><span class="grade-word grade-word-2">Grade B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.</span></li>
+              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
               <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a complaint on record.</span></li>
+              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
             </ul>
             </details>
 
@@ -12916,11 +12916,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // by letter on the page: A, B, C, D, F (no E, as in school marks).
     // A record without an independently sourced funder roster has no grade. The colour is the block the grade takes on the map and the record.
     const GRADE = {
-      1: { letter: 'A', label: 'Funding amounts disclosed; no funders flagged', col: '#34d399' },
-      2: { letter: 'B', label: 'Funders listed; no funders flagged', col: '#2dd4bf' },
-      3: { letter: 'C', label: 'No funder flagged; a tie or complaint on record', col: '#facc15' },
+      1: { letter: 'A', label: 'Amounts published, no flagged funder', col: '#34d399' },
+      2: { letter: 'B', label: 'Funders named, no flagged funder', col: '#2dd4bf' },
+      3: { letter: 'C', label: 'No flagged funder, but a contested sponsor or a protest', col: '#facc15' },
       4: { letter: 'D', label: 'One flagged funder', col: '#fb923c' },
-      5: { letter: 'F', label: 'Multiple flagged funders, or a flagged funder with a disputed record', col: '#ef4444', mark: '#f87171' },  // the mark is a lighter red, so black on it clears 7:1
+      5: { letter: 'F', label: 'Two or more flagged funders, or one and a protest', col: '#ef4444', mark: '#f87171' },  // the mark is a lighter red, so black on it clears 7:1
     };
     window.atlasGrade = GRADE;
     // The letter a stored grade is named by, and the stored grade a letter (or an old number) names.
@@ -12929,10 +12929,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeLetter = gradeLetter;
     window.atlasGradeFromLetter = gradeFromLetter;
     const GRADE_INTRO = 'Funding grades run from A to F.';
-    const GRADE_ROWS = ['A: the record shows how much money came in, and no funder is flagged.', 'B: funders are named without amounts, and none is flagged.', 'C: no funder is flagged, but a tie or complaint is on record, such as a protest or a sponsor who left.', 'D: one funder is flagged, such as an oil, tobacco, gambling or arms company.', 'F: two or more funders are flagged, or one flagged funder and a complaint on record.'];
+    const GRADE_ROWS = ['A: the record shows how much money came in, and no funder is flagged.', 'B: funders are named without amounts, and none is flagged.', 'C: no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.', 'D: one funder is flagged, such as an oil, tobacco, gambling or arms company.', 'F: two or more funders are flagged, or one flagged funder and a protest.'];
     // One label per record status, used everywhere a status is named: the grade where there is one, else the tier.
     function tierName(inst) {
-      if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}, ${GRADE[inst.grade].label.toLowerCase()}`;
+      if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}: ${GRADE[inst.grade].label.toLowerCase()}`;
       return inst.tier === 'A' ? 'Source cited' : inst.tier === 'B' ? 'Flagged' : 'Unverified';
     }
     // The rating is set as coloured type, not a block (user's instruction, 19 Oct 2026): the grade's colour made 40% darker, and darker
@@ -12970,7 +12970,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     function gradeInfoParts(inst) {
       const id = `grade-info-${++gradeInfoSeq}`;
       const n = inst.grade && GRADE[inst.grade] ? inst.grade : 0;
-      // The grade line above already says "Grade D, one flagged funder", so the panel leads with the evidence behind it (the funder and
+      // The grade line above already says "Grade D: one flagged funder", so the panel leads with the evidence behind it (the funder and
       // what it did, from why_flagged on a flagged record, else the deciding sentence) and keeps the A-F scale one tap further down.
       const evidence = (n >= 4 && inst.why_flagged) || inst.grade_basis || '';
       const head = n
@@ -20368,11 +20368,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       accessibility: { label: 'Universal accessibility' },
       amenities: { label: 'Cafés & bookshops' },
       ethical: { label: 'Source cited' },
-      grade1: { label: 'Grade A, funding amounts disclosed; no funders flagged' },
-      grade2: { label: 'Grade B, funders listed; no funders flagged' },
-      grade3: { label: 'Grade C, no funder flagged; a tie or complaint on record' },
-      grade4: { label: 'Grade D, one flagged funder' },
-      grade5: { label: 'Grade F, multiple flagged funders, or a flagged funder with a disputed record' },
+      grade1: { label: 'Grade A: amounts published, no flagged funder' },
+      grade2: { label: 'Grade B: funders named, no flagged funder' },
+      grade3: { label: 'Grade C: no flagged funder, but a contested sponsor or a protest' },
+      grade4: { label: 'Grade D: one flagged funder' },
+      grade5: { label: 'Grade F: two or more flagged funders, or one and a protest' },
       artist_run: { label: 'Artist-run spaces' },
       fossil_free: { label: 'Fossil & defense-free' },
       finance_civic: { label: 'Public subsidized (≥50%)' },
