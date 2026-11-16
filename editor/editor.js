@@ -409,18 +409,132 @@
       }
       return input;
     }
-    const ta = el('textarea', { class: 'prose', id, rows: 2, lang: 'en', spellcheck: 'true' });
-    ta.value = s;
+    return proseControl(s, key, id, commit);
+  }
+
+  // ---- Prose: as sentences, as cited works, or as one paragraph -----------------------------------------------------------
+  // A long note crams many sentences, or several cited works, into one block, and its structure is lost in a text box. The
+  // editor shows it one sentence per line, or one cited work per block, and joins it back exactly as stored
+  // (editor/structure.js), so looking changes nothing. "One paragraph" gives back the plain box; the choice is remembered.
+
+  const S = globalThis.AtlasStructure;
+  const pref = { get: () => { try { return localStorage.getItem('atlas-editor-prose') || 'structured'; } catch { return 'structured'; } },
+    set: v => { try { localStorage.setItem('atlas-editor-prose', v); } catch { /* per-browser convenience only */ } } };
+
+  function wordCount(text, key) {
+    const n = text.trim() ? text.trim().split(/\s+/).length : 0;
+    const lim = WORD_LIMIT[key];
+    return `${n} ${n === 1 ? 'word' : 'words'}` + (lim ? ` of ${lim}` : '');
+  }
+
+  function proseControl(s, key, id, commit) {
+    const box = el('div', { class: 'prose-box' });
     const words = el('div', { class: 'words' });
-    const count = () => {
-      const n = ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0;
-      const lim = WORD_LIMIT[key];
-      words.textContent = `${n} ${n === 1 ? 'word' : 'words'}` + (lim ? ` of ${lim}` : '');
+    let value = s;
+    const cites = key === 'critique_note' ? S.citations(s) : null;
+    const nSent = S.sentences(s).parts.length;
+    const canStructure = !!cites || nSent >= 2;
+    let mode = canStructure ? pref.get() : 'paragraph';
+    const update = v => { value = v; words.textContent = wordCount(v, key) + (mode === 'structured' && !cites ? ` · ${S.sentences(v).parts.length} sentences` : ''); commit(v); };
+    const draw = () => {
+      const focusId = document.activeElement?.id;
+      box.replaceChildren(mode === 'structured' ? (cites ? citationView(value, key, id, update) : sentenceView(value, key, id, update))
+        : paragraphView(value, id, update));
+      words.textContent = wordCount(value, key) + (mode === 'structured' && !cites ? ` · ${S.sentences(value).parts.length} sentences` : '');
+      if (focusId) document.getElementById(focusId)?.focus();
     };
-    ta.addEventListener('input', () => { count(); grow(ta); commit(ta.value); });
-    count();
+    draw();
+    const toggle = canStructure ? el('div', { class: 'prose-mode' },
+      el('button', { type: 'button', class: 'link small', onclick: e => {
+        mode = mode === 'structured' ? 'paragraph' : 'structured'; pref.set(mode); draw();
+        e.target.textContent = mode === 'structured' ? 'One paragraph' : (cites ? 'One block per cited work' : 'One sentence per line');
+      } }, mode === 'structured' ? 'One paragraph' : (cites ? 'One block per cited work' : 'One sentence per line'))) : null;
+    const hint = () => mode !== 'structured' ? '' : cites ? 'Author, title (publication, year), then what it says. Saved as one note.'
+      : 'Enter splits a sentence, Backspace at its start joins it to the one before. Saved as one paragraph.';
+    const hintEl = el('span', { class: 'hint' }, hint());
+    toggle?.addEventListener('click', () => { hintEl.textContent = hint(); });
+    return el('div', {}, box, el('div', { class: 'prose-foot' }, words, hintEl, toggle));
+  }
+
+  function paragraphView(value, id, update) {
+    const ta = el('textarea', { class: 'prose', id, rows: 2, lang: 'en', spellcheck: 'true' });
+    ta.value = value;
+    ta.addEventListener('input', () => { grow(ta); update(ta.value); });
     queueMicrotask(() => grow(ta));
-    return el('div', {}, ta, words);
+    return ta;
+  }
+
+  // One sentence per line. Enter splits a sentence at the cursor, Backspace at the start of one joins it to the one before.
+  function sentenceView(value, key, id, update) {
+    const { parts, gaps } = S.sentences(value);
+    const list = el('ol', { class: 'sentences' });
+    const commit = () => update(S.joinSentences(parts, gaps));
+    const draw = (focus, caret) => {
+      list.replaceChildren(...parts.map((p, i) => {
+        const ta = el('textarea', { class: 'prose sentence', id: i ? `${id}-s${i}` : id, rows: 1, lang: 'en', spellcheck: 'true',
+          'aria-label': `Sentence ${i + 1} of ${parts.length}` });
+        ta.value = p;
+        ta.addEventListener('input', () => { parts[i] = ta.value.replace(/\n/g, ' '); grow(ta); commit(); });
+        ta.addEventListener('keydown', e => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            // The spaces at the cursor become the gap between the two, so joining them again gives back the same text.
+            const at = ta.selectionStart;
+            const left = ta.value.slice(0, at), right = ta.value.slice(at);
+            const l = left.replace(/ +$/, ''), r = right.replace(/^ +/, '');
+            parts.splice(i, 1, l, r);
+            gaps.splice(i, 0, left.slice(l.length) + right.slice(0, right.length - r.length));
+            commit(); draw(i + 1, 0);
+          } else if (e.key === 'Backspace' && ta.selectionStart === 0 && ta.selectionEnd === 0 && i > 0) {
+            e.preventDefault();
+            const gap = gaps[i - 1] ?? ' ';
+            const caretAt = parts[i - 1].length + gap.length;
+            parts.splice(i - 1, 2, parts[i - 1] + gap + parts[i]);
+            gaps.splice(i - 1, 1);
+            commit(); draw(i - 1, caretAt);
+          }
+        });
+        queueMicrotask(() => grow(ta));
+        return el('li', {}, ta);
+      }));
+      if (focus != null) {
+        const t = list.children[focus]?.querySelector('textarea');
+        if (t) { t.focus(); t.setSelectionRange(caret, caret); }
+      }
+    };
+    draw();
+    list.title = 'Enter starts a new sentence at the cursor; Backspace at the start of a sentence joins it to the one before. Saved as one paragraph.';
+    return list;
+  }
+
+  // A critique note: one block per cited work, the citation on its own line and what it says under it.
+  function citationView(value, key, id, update) {
+    const entries = S.citations(value);
+    const wrap = el('div', { class: 'cites' });
+    const commit = () => update(S.joinCitations(entries));
+    const draw = () => {
+      wrap.replaceChildren(...entries.map((e, i) => {
+        const head = el('textarea', { class: 'cite-head', rows: 1, id: i ? `${id}-c${i}` : id, 'aria-label': `Cited work ${i + 1}: author, title (publication, year)` });
+        head.value = e.head;
+        head.addEventListener('keydown', ev => { if (ev.key === 'Enter') ev.preventDefault(); });
+        head.addEventListener('input', () => { e.head = head.value.replace(/\n/g, ' '); grow(head); commit(); });
+        queueMicrotask(() => grow(head));
+        const body = el('textarea', { class: 'prose', rows: 2, lang: 'en', spellcheck: 'true', 'aria-label': `What cited work ${i + 1} says` });
+        body.value = e.body;
+        body.addEventListener('input', () => { e.body = body.value.replace(/\n/g, ' '); grow(body); commit(); });
+        queueMicrotask(() => grow(body));
+        return el('div', { class: 'cite' }, el('div', { class: 'cite-n' }, String(i + 1)), el('div', {},
+          el('div', { class: 'cite-lab' }, 'Cited work'), head, el('div', { class: 'cite-lab' }, 'What it says'), body,
+          el('div', { class: 'card-acts' }, el('button', { type: 'button', class: 'small', onclick: () => {
+            if (!confirm(`Remove “${e.head}”?`)) return; entries.splice(i, 1); commit(); draw();
+          } }, 'Remove this work'))));
+      }), el('div', { class: 'add-row' }, el('button', { type: 'button', class: 'small', onclick: () => {
+        entries.push({ head: 'Author, Title (publication, year)', body: '', gap: ' ' }); draw();
+        wrap.querySelectorAll('.cite-head')[entries.length - 1]?.select();
+      } }, 'Add a cited work')));
+    };
+    draw();
+    return wrap;
   }
 
   // `field-sizing: content` does this where it is supported; elsewhere the box grows with its text.
@@ -581,6 +695,15 @@
         return el('li', {}, el('b', {}, e.word ? `“${e.word}”` : e.raw), el('span', {}, e.text),
           e.kind === 'dash' ? el('button', { type: 'button', class: 'small', onclick: () => fixDashes(field) }, 'Replace the dashes') : null);
       }));
+    }
+    document.querySelectorAll('.sentences textarea.flag, .cites textarea.flag').forEach(t => t.classList.remove('flag'));
+    for (const [field, ps] of Object.entries(byField)) {
+      const words = ps.map(p => explain(p).word.toLowerCase()).filter(Boolean);
+      const kinds = ps.map(p => explain(p).kind);
+      document.querySelectorAll(`[data-path="${CSS.escape(field)}"] .sentences textarea, [data-path="${CSS.escape(field)}"] .cites textarea`).forEach(t => {
+        const v = t.value.toLowerCase();
+        if (words.some(w => v.includes(w)) || (kinds.includes('dash') && /[—–]/.test(v)) || (kinds.includes('semicolon-chain') && /;[^;]*;/.test(v))) t.classList.add('flag');
+      });
     }
     const s = $('#summary');
     if (s) {
