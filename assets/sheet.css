@@ -293,10 +293,13 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 .visit-item dt::after{content:": "}
 .visit-item dd{display:inline!important;margin:0!important}
 
-/* ---- the street map: a name is black type on a strip of paper; its dot keeps the grade's colour ---- */
-.inst-pin-label{height:var(--sh-map-lh)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important;padding:0 5px!important;border:0!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important}
+/* ---- the street map: a name is plain type with no strip or block behind it (user, 16 Nov 2026: "its still shows the title
+   on background"; it was on a strip of paper, lime on hover). A halo of the paper's colour round the letters keeps it
+   readable over the building lines, as the open space's name below; hover takes the hover blue, as the index does. ---- */
+.inst-pin-label{height:var(--sh-map-lh)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important;padding:0 5px!important;border:0!important;background:transparent!important;color:var(--sh-ink)!important}
 .inst-pin-label *{color:var(--sh-ink)!important;font-size:var(--sh-map)!important;line-height:var(--sh-map-lh)!important}
-.custom-inst-pin:hover .inst-pin-label,.inst-pin-label:hover,.inst-pin-label:focus-visible{background:var(--sh-stone)!important;color:var(--sh-ink)!important}
+.custom-inst-pin:hover .inst-pin-label,.inst-pin-label:hover,.inst-pin-label:focus-visible{background:transparent!important}
+:root:root .inst-pin-label .inst-pin-label-name{text-shadow:0 0 2px var(--sh-paper),0 0 2px var(--sh-paper),0 0 3px var(--sh-paper),1px 1px 0 var(--sh-paper),-1px -1px 0 var(--sh-paper),1px -1px 0 var(--sh-paper),-1px 1px 0 var(--sh-paper)!important}
 /* The open space's name has no box (user, 15 Nov 2026, choosing it from six drawn options: "do this but add grade underneath
    title"; before it a lime tag, which the same day got 4px more around the name). The name is 24px on a 28px line, centred
    over the pin, with the space's grade under it at the map's 15px; a halo of the paper's colour keeps both readable over
@@ -581,6 +584,7 @@ main#main .study{border:0!important}
 .inst-pin-label[data-tier="B"],.inst-pin-label[data-tier="B"] *{color:var(--tier-b,#b000b0)!important}
 .inst-pin-label[data-tier="U"],.inst-pin-label[data-tier="U"] *,.inst-pin-label:not([data-tier="A"],[data-tier="B"]),.inst-pin-label:not([data-tier="A"],[data-tier="B"]) *{color:var(--tier-u,#7a7000)!important}
 .custom-inst-pin.popup-active .inst-pin-label,.custom-inst-pin.popup-active .inst-pin-label *{color:var(--sh-ink)!important}
+:root:root .custom-inst-pin:not(.popup-active):hover .inst-pin-label,:root:root .custom-inst-pin:not(.popup-active):hover .inst-pin-label *,:root:root .inst-pin-label:focus-visible,:root:root .inst-pin-label:focus-visible *{color:var(--sh-hover)!important}
 
 /* The head bar had "Exit" and "World" side by side, and both lead back out of a city (user, 10 Nov 2026: "two same
    buttons"). World stays, with the country after it; Exit is not shown on the desktop sheet. */
