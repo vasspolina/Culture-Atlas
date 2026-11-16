@@ -1786,9 +1786,8 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
    On a coloured pill the colour-coded words fell to 2 to 3.5:1 (measured on every pair), so the words are in ink there (5.5:1
    or better on every colour) and each filter's own colour moves to its outline, --sh-code: the darker cut on the light
    sheet, the bright one on the dark, as the words had.
-   The outline alone was too thin to read as a code (user, 16 Nov 2026: "where did color coding went"), so each pill also
-   leads with a solid dot in its filter's colour, ringed in ink so it shows on any of the load colours, the same dot as
-   the key and the map. */
+   The pills have no ground and no dot (user, 16 Nov 2026: "no dots no background just colored outlines"): ink words
+   inside an outline in the filter's own colour, so the colour is the code again. Only the head bar takes the load colour. */
 @layer sheet{
 :is(.gmd-chip,.gm-filter-chip).has-color{--sh-code:color-mix(in srgb,var(--layer-color) 62%,#000)}
 :root[data-theme="dark"] :is(.gmd-chip,.gm-filter-chip).has-color{--sh-code:var(--layer-color)}
@@ -1799,15 +1798,13 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 :root[data-theme="dark"]{--sh-top:var(--sh-top-d,var(--sh-stone));--sh-chip:var(--sh-chip-d,var(--sh-paper))}
 @media (min-width:768px){
   :root.gmd body::before{background:var(--sh-top)!important}
-  :root.gmd #gmdChips .gmd-chip:not([aria-pressed="true"]):not(#sh-x){background:var(--sh-chip)!important;color:var(--sh-ink)!important;border-color:var(--sh-code,var(--sh-ink))!important}
+  :root.gmd #gmdChips .gmd-chip:not([aria-pressed="true"]):not(#sh-x){background:transparent!important;color:var(--sh-ink)!important;border-color:var(--sh-code,var(--sh-ink))!important}
   :root.gmd #gmdChips .gmd-chip:not([aria-pressed="true"]):not(#sh-x) *{color:inherit!important}
-  :root.gmd #gmdChips .gmd-chip:not([aria-pressed="true"]):not(#sh-x):hover{background:color-mix(in srgb,var(--sh-chip) 82%,var(--sh-ink))!important}
-  :root.gmd #gmdChips :is(.gmd-chip.has-color,.gmd-chip[data-grade]):not(#sh-x):not(#sh-y)::before{content:""!important;display:inline-block!important;flex:none!important;width:.62em!important;height:.62em!important;margin-right:.4em!important;border-radius:50%!important;background:var(--sh-code)!important;box-shadow:0 0 0 1px var(--sh-ink)!important;vertical-align:.04em!important}
+  :root.gmd #gmdChips .gmd-chip:not([aria-pressed="true"]):not(#sh-x):hover{background:color-mix(in srgb,var(--sh-code,var(--sh-ink)) 18%,transparent)!important}
 }
 @media (max-width:767px){
   #gmChips:not(#sh-x):not(#sh-y){background:var(--sh-top)!important}
-  #gmChips .gm-filter-chip:not([aria-pressed="true"]):not(#sh-x):not(#sh-y){background:var(--sh-chip)!important;color:var(--sh-ink)!important;border-color:var(--sh-code,var(--sh-ink))!important}
-  #gmChips :is(.gm-filter-chip.has-color,.gm-filter-chip[data-grade]):not(#sh-x):not(#sh-y)::before{content:""!important;display:inline-block!important;flex:none!important;width:.62em!important;height:.62em!important;margin-right:.4em!important;border-radius:50%!important;background:var(--sh-code)!important;box-shadow:0 0 0 1px var(--sh-ink)!important;vertical-align:.04em!important}
+  #gmChips .gm-filter-chip:not([aria-pressed="true"]):not(#sh-x):not(#sh-y){background:transparent!important;color:var(--sh-ink)!important;border-color:var(--sh-code,var(--sh-ink))!important}
 }
 
 /* DARK MEANS DARK (user, 16 Nov 2026: "dark mode ... is not dark mode, make all text be light and background color
