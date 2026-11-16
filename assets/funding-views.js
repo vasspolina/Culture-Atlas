@@ -362,10 +362,11 @@
       A.pushMark({ x, y, r: s + 4, col, key: f.keys[0], kind: f.kind, space: f.hub, name: f.name, label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${f.n} spaces`, sub2: `Head office: ${f.hub.c ? f.hub.c + ', ' : ''}${f.hub.co || ''}`, ask: `Which institutions does ${f.name} fund?` });
       // Names when the view is close, or for the funder in play.
       if (!(hot || r >= baseRadius * 2.2)) return;
-      const t = f.name.length > 30 ? f.name.slice(0, 28) + '…' : f.name, w = ctx.measureText(t).width + 12, box = { x: x + s + 4, y: y - 10, w, h: 20 };
+      // The whole name as plain type on a halo of ground, no block (user, 16 Nov 2026: names "dont need background or frame").
+      const t = f.name, w = ctx.measureText(t).width + 12, box = { x: x + s + 4, y: y - 10, w, h: 20 };
       if (A.collides(box, boxes)) return;
       boxes.push(box);
-      ctx.fillStyle = col; ctx.fillRect(box.x, box.y, w, 20); ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5);
+      A.haloName(ctx, t, box.x + 6, y + 0.5, f.kind && A.COL[f.kind] ? A.COL[f.kind] : col);
     });
     ctx.restore();
   }

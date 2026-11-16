@@ -10491,7 +10491,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v712';
+    const ATLAS_RELEASE = 'culture-atlas-v713';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11020,7 +11020,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // The selected space's label is set larger than the rest, with its whole name (user, 4 Nov 2026: "make selected bigger").
     const atlasSelFont = () => '400 20px ' + ATLAS_SERIF;
     const ATLAS_SEL_H = 32, ATLAS_SEL_PAD = 36;
-    const atlasLabelName = (name, sel) => sel ? (name.length > 44 ? name.substring(0, 42) + '…' : name) : (name.length > 24 ? name.substring(0, 22) + '…' : name);
+    // Every name on the map is given whole (user, 16 Nov 2026: the layer names "get cut short"); the label boxes clash-test
+    // at their real width, so a long name that has no room is left out rather than cut.
+    const atlasLabelName = (name) => name;
     // The hover card's description is set in Serrif Light, as Displaay sets the info text on displaay.net/typeface/cassette.
     // 21px on a 24px line, Displaay's own size for it (user, 4 Nov 2026: "make the hover card description bigger"; it was 18px).
     // A card is read, so it takes the page's text size: 21px on a 24px line (user, 10 Nov 2026). The map's names stay at 15px.
@@ -11503,25 +11505,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           ctx.font = active ? atlasSelFont() : atlasMonoFont();
           const w = ctx.measureText(text).width + (active ? ATLAS_SEL_PAD : 28), h = active ? ATLAS_SEL_H : 22;
           const x0 = Math.round(cx0 - w / 2), y0 = Math.round(cy0 - h / 2);
-          ctx.fillStyle = active ? G_STONE : G_GROUND;
-          if (!tier && !active) {
-            // A city's name sits in a pill with a 1px ink outline, like the filter pills (user, 11 Nov 2026: "cities need
-            // to have outline like fiters"). Same box as the strip, so the hit boxes hold.
-            const rr = (h - 1) / 2;
-            ctx.beginPath();
-            if (ctx.roundRect) ctx.roundRect(x0 + 0.5, y0 + 0.5, w - 1, h - 1, rr);
-            else { ctx.moveTo(x0 + 0.5 + rr, y0 + 0.5); ctx.arcTo(x0 + w - 0.5, y0 + 0.5, x0 + w - 0.5, y0 + h - 0.5, rr); ctx.arcTo(x0 + w - 0.5, y0 + h - 0.5, x0 + 0.5, y0 + h - 0.5, rr); ctx.arcTo(x0 + 0.5, y0 + h - 0.5, x0 + 0.5, y0 + 0.5, rr); ctx.arcTo(x0 + 0.5, y0 + 0.5, x0 + w - 0.5, y0 + 0.5, rr); ctx.closePath(); }
-            ctx.fill();
-            ctx.strokeStyle = G_TEXT; ctx.lineWidth = 1; ctx.stroke();
-          } else {
-            ctx.fillRect(x0, y0, w, h);
-            if (active) { ctx.strokeStyle = G_LINE; ctx.lineWidth = 1; ctx.strokeRect(x0 + 0.5, y0 + 0.5, w - 1, h - 1); }
-          }
-          // A space's name takes its grade's colour. A city has no grade: tier is null and its name is in ink (user, 10 Nov
-          // 2026: "do not color on a city level, its confusing"; it used to take the colour most of its spaces have).
+          // NAMES (user, 16 Nov 2026: "fix all name design", "dont need background or frame around it"): every name on the
+          // map is plain type with no block, pill or rule round it. A halo of the map's ground round the letters keeps it
+          // readable over coastlines and borders, as the money map sets its names. The box above is still measured, so the
+          // hit boxes and the clash tests hold. A city and the picked space are in ink (the picked one larger); a space's
+          // name takes its grade's colour.
+          ctx.lineJoin = 'round'; ctx.lineWidth = 4; ctx.strokeStyle = G_GROUND;
           ctx.fillStyle = (active || !tier) ? G_TEXT : pillTextColor(tier);
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
+          ctx.strokeText(text, x0 + w / 2, y0 + h / 2 + 0.5);
           ctx.fillText(text, x0 + w / 2, y0 + h / 2 + 0.5);
           ctx.restore();
         };
@@ -21816,8 +21809,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/typeset.js?v=669"></script>
 <script src="assets/note-aids.js?v=669" defer></script>
 <script src="assets/note-files.js?v=669" defer></script>
-<script src="assets/funding-views.js?v=711"></script>
-<script src="assets/layers.js?v=711"></script>
+<script src="assets/funding-views.js?v=713"></script>
+<script src="assets/layers.js?v=713"></script>
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>

@@ -581,7 +581,7 @@
       if (!(focus || close)) return;
       let y = pt.y - 10 - (names.length - 1) * 11;
       names.slice(0, 4).forEach(name => {
-        const text = name.length > 28 ? name.slice(0, 26) + '…' : name, tw = ctx.measureText(text).width, w = tw + 8, h = 22;
+        const text = name, tw = ctx.measureText(text).width, w = tw + 8, h = 22;
         const box = { x: pt.x + 10 + dx, y: y - h / 2, w, h };
         if (!collides(box, boxes)) { boxes.push(box); (mk.lboxes = mk.lboxes || []).push(box); haloName(ctx, text, box.x + 4, y + 0.5, col); }
         y += 22;
@@ -744,7 +744,7 @@
     pts.forEach(([e, x, y]) => {
       const on = (e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n)) || picked(e);
       if (!(on || veryClose)) return;
-      const text = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`, t = text.length > 40 ? text.slice(0, 38) + '…' : text;
+      const t = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`;
       const tw = ctx.measureText(t).width, w = tw + 8, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
       if (collides(box, boxes)) return;
       boxes.push(box); HQ_LABELS.push({ e, x: box.x, y: box.y, w, h });
@@ -805,7 +805,8 @@
         ctx.strokeStyle = '#000'; ctx.stroke();
       });
       if (flagged) propPulse();
-      // Each city cluster: the number of flagged spaces in it, on an orange block after the city's label.
+      // Each city cluster: the number of flagged spaces in it, after the city's label, in the flag colour on a halo of ground
+      // with no block behind it (user, 16 Nov 2026: names "dont need background or frame").
       if (!STREET && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
         const byCity = flaggedByCity();
         ctx.textAlign = 'left';
@@ -814,8 +815,7 @@
           const n = byCity.get((b.name || '').toLowerCase().trim()); if (!n) return;
           const text = String(n), tw = ctx.measureText(text).width, w = tw + 12, h = b.h;
           const x = b.x + b.w + 2, y = b.y;
-          ctx.fillStyle = COL.flag; ctx.fillRect(x, y, w, h);
-          ctx.fillStyle = '#000'; ctx.fillText(text, x + 6, y + h / 2 + 0.5);
+          haloName(ctx, text, x + 6, y + h / 2 + 0.5, COL.flag);
           boxes.push({ x, y, w, h });
           LM.push({ box: { x, y, w, h }, x: x + w / 2, y: y + h / 2, r: 0, col: COL.flag, label: `${n} flagged in ${b.name}`, sub: 'Flagged spaces', ask: `Which spaces in ${b.name} are flagged, and why?` });
         });
@@ -1341,7 +1341,7 @@
 
   // What assets/funding-views.js draws with.
   window.atlasLayersAPI = {
-    L, COL, lineCol, hexA, kindOn, FUNDER, RIGHT, collides, repaint, loadMoney, loadHq,
+    L, COL, lineCol, hexA, haloName, kindOn, FUNDER, RIGHT, collides, repaint, loadMoney, loadHq,
     // The layer boxes and the keys each one holds, for the record's Money map toggle (assets/phone-maps.js).
     boxes: () => boxes(), keysOfBox: (inp) => keysOfBox(inp),
     data: () => ({ recById, keyIndex, keyKind, HQ, web }),
