@@ -365,6 +365,27 @@
       [srcTheme, srcGossip].forEach((el) => el && new MutationObserver(mirror).observe(el, { attributes: true, childList: true, characterData: true, subtree: true }));
       mirror();
     }
+    // ---- Share information under the map's box too (user, 16 Nov 2026: "where is share information button underneath
+    // the chat like on desktop?") ----
+    // The map's box is the chat's way in, so Share information hangs under it as it does under the chat's own box. The bar
+    // is a reversed column (the box at the bottom), so the button goes in first to land under the box. It opens the chat
+    // and the note form in it, where the note is written. The look is in assets/sheet.css, "THE PHONE'S TOP BUTTONS".
+    const stickyBar = $('mobileStickyInputBar');
+    if (stickyBar && !$('gmMapShareBtn')) {
+      const ms = document.createElement('button');
+      ms.type = 'button';
+      ms.id = 'gmMapShareBtn';
+      ms.textContent = 'Share information';
+      ms.title = 'Write a note about an institution';
+      ms.addEventListener('click', () => {
+        openChat();
+        setTimeout(() => {
+          if (!body.classList.contains('chat-input-mode-active') && typeof window.toggleChatShare === 'function') window.toggleChatShare();
+        }, 80);
+      });
+      stickyBar.insertBefore(ms, stickyBar.firstChild);
+    }
+
     // The filter row hangs under these buttons, and the chat sheet and the Layers button hang under the row by --gmChips-h
     // (assets/sheet.css). Nothing set it, so they used its 46px fallback while the row, wrapped to two lines, was taller.
     // It is the row's bottom edge, measured whenever the row changes size; a hidden row keeps the last value.
