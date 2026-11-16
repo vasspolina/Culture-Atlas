@@ -3,7 +3,7 @@
 // files and the offices of the people named), Propaganda, Independent and Artist-run.
 // Funder types: a filter on all the funder layers.
 // Hovering a funder around a space draws everywhere else it funds. Each layer shows something at every zoom. Ties: the web of funders shared between spaces, the selected space's own
-// ties on top. Flags: flagged spaces marked, and a flagged count on each city cluster. Money: a space's funders around
+// ties on top. Flags: flagged spaces marked. Money: a space's funders around
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
@@ -251,7 +251,6 @@
   window.atlasRefilter = refilter;
   // Label type is regular on the light theme and light on the dark one.
   const LW = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
-  let cityFlags = null;
   // Headquarters of the funders and offices of the people the funding map names (assets/hq.json, built by tools/build_hq.py).
   const KIND = { gov: COL.gov, corp: COL.corp, found: COL.found };
   let HQ = null, hqLoading = false;
@@ -259,7 +258,7 @@
   // the one picked in the detail panel (assets/hq-detail.js) and the one under the pointer or keyboard focus.
   let HQ_HITS = [], HQ_LABELS = [], HQ_SEL = null, HQ_HOV = null;
   // Every other mark the layers draw (the dots at the ends of tie lines, funder rings, right-wing and Epstein marks, flag,
-  // independent and artist-run marks, the flagged counts) can be found by the pointer too. LM holds the ones drawn last frame, LM_HOV the one under
+  // independent and artist-run marks,) can be found by the pointer too. LM holds the ones drawn last frame, LM_HOV the one under
   // the pointer. A mark that sits on a space's own dot (flag) is "pass": its hover goes to the space, and a click asks
   // the chat.
   let LM = [], LM_HOV = null;
@@ -362,18 +361,6 @@
       if (cb) cb();
       if (window.atlasLayerKeep()) refilter(); else repaint();
     }).catch(() => { loading = false; });
-  }
-
-  function flaggedByCity() {
-    if (cityFlags) return cityFlags;
-    cityFlags = new Map();
-    if (typeof ALL_INSTITUTIONS === 'undefined') return cityFlags;
-    ALL_INSTITUTIONS.forEach(i => {
-      if (!i.flags || !i.flags.length || !i.city) return;
-      const k = i.city.toLowerCase().trim();
-      cityFlags.set(k, (cityFlags.get(k) || 0) + 1);
-    });
-    return cityFlags;
   }
 
   function vec(lat, lon) { const p = lat * rad, l = lon * rad; return [Math.cos(p) * Math.sin(l), Math.sin(p), Math.cos(p) * Math.cos(l)]; }
@@ -730,8 +717,8 @@
       const k = Object.keys(counts).sort((a, b) => counts[b] - counts[a])[0], col = KIND[k] || COL.corp;
       ctx.globalAlpha = rec ? 0.55 : 1; ctx.lineWidth = 0.8; ctx.fillStyle = col; ctx.strokeStyle = '#000';
       ctx.beginPath(); ctx.arc(px, py, s, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-      ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.font = '400 11px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      if (!small) ctx.fillText(String(n), px, py + 0.5);
+      ctx.globalAlpha = 1;
+      // No number in the circle (user, 16 Nov 2026: "what is this mess of numbers, simplify"); a click still names the offices.
       const names = list.slice(0, 3).map(e => e.n).join(', ') + (n > 3 ? ` and ${n - 3} more` : '');
       LM.push({ x: px, y: py, r: s + 3, col, label: `${e0.c}, ${e0.co}`, sub: `${n} funder offices`, sub2: names, ask: `Which funders are headquartered in ${e0.c}?`,
         go() { if (typeof window.flyTo === 'function') window.flyTo(mlon, mlat, baseRadius * (CLUSTER_AT + 1.5)); } });
@@ -805,21 +792,8 @@
         ctx.strokeStyle = '#000'; ctx.stroke();
       });
       if (flagged) propPulse();
-      // Each city cluster: the number of flagged spaces in it, after the city's label, in the flag colour on a halo of ground
-      // with no block behind it (user, 16 Nov 2026: names "dont need background or frame").
-      if (!STREET && typeof cityBadgeHitboxes !== 'undefined' && Array.isArray(cityBadgeHitboxes)) {
-        const byCity = flaggedByCity();
-        ctx.textAlign = 'left';
-        cityBadgeHitboxes.forEach(b => {
-          if (!(b.count >= 2)) return;
-          const n = byCity.get((b.name || '').toLowerCase().trim()); if (!n) return;
-          const text = String(n), tw = ctx.measureText(text).width, w = tw + 12, h = b.h;
-          const x = b.x + b.w + 2, y = b.y;
-          haloName(ctx, text, x + 6, y + h / 2 + 0.5, COL.flag);
-          boxes.push({ x, y, w, h });
-          LM.push({ box: { x, y, w, h }, x: x + w / 2, y: y + h / 2, r: 0, col: COL.flag, label: `${n} flagged in ${b.name}`, sub: 'Flagged spaces', ask: `Which spaces in ${b.name} are flagged, and why?` });
-        });
-      }
+      // No flagged count beside the city's label (user, 16 Nov 2026: "what are these orange numbers, delete"): the city's
+      // label already gives its count, and the flagged spaces show as orange dots.
     }
 
     if (L.propaganda) {
