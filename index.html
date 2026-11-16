@@ -10491,7 +10491,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v713';
+    const ATLAS_RELEASE = 'culture-atlas-v714';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11510,11 +11510,22 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           // readable over coastlines and borders, as the money map sets its names. The box above is still measured, so the
           // hit boxes and the clash tests hold. A city and the picked space are in ink (the picked one larger); a space's
           // name takes its grade's colour.
+          const cityPill = !tier && !active;
+          if (cityPill) {
+            // Except a city: its name is back in a pill with a 1px ink outline on the map's ground (user, 16 Nov 2026, a
+            // screenshot of "Melbourne (11)": "bring back city like this"). Same box as before, so the hit boxes hold.
+            const rr = (h - 1) / 2;
+            ctx.beginPath();
+            if (ctx.roundRect) ctx.roundRect(x0 + 0.5, y0 + 0.5, w - 1, h - 1, rr);
+            else { ctx.moveTo(x0 + 0.5 + rr, y0 + 0.5); ctx.arcTo(x0 + w - 0.5, y0 + 0.5, x0 + w - 0.5, y0 + h - 0.5, rr); ctx.arcTo(x0 + w - 0.5, y0 + h - 0.5, x0 + 0.5, y0 + h - 0.5, rr); ctx.arcTo(x0 + 0.5, y0 + h - 0.5, x0 + 0.5, y0 + 0.5, rr); ctx.arcTo(x0 + 0.5, y0 + 0.5, x0 + w - 0.5, y0 + 0.5, rr); ctx.closePath(); }
+            ctx.fillStyle = G_GROUND; ctx.fill();
+            ctx.strokeStyle = G_TEXT; ctx.lineWidth = 1; ctx.stroke();
+          }
           ctx.lineJoin = 'round'; ctx.lineWidth = 4; ctx.strokeStyle = G_GROUND;
           ctx.fillStyle = (active || !tier) ? G_TEXT : pillTextColor(tier);
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.strokeText(text, x0 + w / 2, y0 + h / 2 + 0.5);
+          if (!cityPill) ctx.strokeText(text, x0 + w / 2, y0 + h / 2 + 0.5);
           ctx.fillText(text, x0 + w / 2, y0 + h / 2 + 0.5);
           ctx.restore();
         };
