@@ -1817,3 +1817,28 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 :root:root:root[data-theme="dark"] :is(#workBottomDock #curatorVoiceToggleBtn[aria-pressed="true"],#gmChips .gm-filter-chip[aria-pressed="true"],#mapColourKey .mck-row[aria-pressed="true"],#layersControl #layersBtn[aria-expanded="true"]):not(#dk1):not(#dk2):not(#dk3):not(#dk4){background:var(--sh-pill)!important;color:var(--sh-hover)!important;border-color:var(--sh-hover)!important}
 :root:root:root[data-theme="dark"] .gm-alert-mark:not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:focus-visible){background:var(--sh-pill)!important;color:var(--sh-hover)!important}
 }
+
+/* ---- The "N places here" picker over a crowded spot (assets/hq-detail.js, openChooser; user, 16 Nov 2026: "this looks
+   like a slop"). It had no rule of its own in the sheet, so the sheet's blanket rules took it over: the page's 21px text
+   on its 28px name size, no padding at the box's edge, the title's rule doubled by the first row's, and buttons that
+   kept a stray edge. It is set as the map's own names are, 15 on 19, a name over its kind and city, one 1px rule between
+   rows, 12px of air inside the box. The small lines stay in ink: the grey rule colour measures
+   under 4.5:1 as text. ---- */
+@layer sheet{
+  #hqChooser#hqChooser{width:260px!important;max-width:calc(100% - 16px)!important;max-height:min(60%,420px)!important;overflow:auto!important;
+    padding:0!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;border:1px solid var(--sh-rule)!important;border-radius:0!important;box-shadow:none!important;
+    font:400 var(--sh-map)/var(--sh-map-lh) var(--sh-serif)!important;letter-spacing:0!important}
+  #hqChooser#hqChooser .hq-chooser-title{margin:0!important;padding:10px 12px 9px!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;
+    font:400 var(--sh-map)/var(--sh-map-lh) var(--sh-serif)!important;color:var(--sh-ink)!important;text-transform:none!important}
+  #hqChooser#hqChooser ul{margin:0!important;padding:0!important;list-style:none!important}
+  #hqChooser#hqChooser li{margin:0!important;padding:0!important;border:0!important}
+  #hqChooser#hqChooser li+li{border-top:1px solid var(--sh-rule)!important}
+  #hqChooser#hqChooser li::before{content:none!important}
+  #hqChooser#hqChooser button{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:1px!important;width:100%!important;min-height:44px!important;
+    margin:0!important;padding:8px 12px!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--sh-ink)!important;text-align:left!important;
+    font:inherit!important;letter-spacing:0!important;box-shadow:none!important}
+  #hqChooser#hqChooser button .hq-l{font:400 var(--sh-map)/var(--sh-map-lh) var(--sh-serif)!important;color:inherit!important}
+  #hqChooser#hqChooser button .hq-s{font:400 13px/17px var(--sh-serif)!important;color:inherit!important}
+  #hqChooser#hqChooser button:hover,#hqChooser#hqChooser button:focus-visible{background:var(--sh-stone-2)!important;color:var(--sh-ink)!important}
+  #hqChooser#hqChooser button:focus-visible{outline:2px solid var(--sh-outline)!important;outline-offset:-2px!important}
+}
