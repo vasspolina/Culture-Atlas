@@ -726,9 +726,13 @@
     ctx.font = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
     // Names: on blocks for the focused space's own funders and people. With nothing in focus, only a very close view names them,
     // as plain text on a halo, so the map is not covered in blocks.
-    const veryClose = !rec && r >= baseRadius * 30;
+    // With the money map on, the offices are its companies and funders, so each dot carries its name at any zoom
+    // (user, 16 Nov 2026: "money map doesn't show ... companys names"), widest-reaching first, so where two names would
+    // collide the bigger funder keeps its name; the one left out still names itself under a click.
+    const veryClose = !rec && (L.money || r >= baseRadius * 30);
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    pts.forEach(([e, x, y]) => {
+    const order = L.money && recById ? pts.slice().sort((a, b) => (b[0].kind === 'org' ? orgReach(b[0]) : 0) - (a[0].kind === 'org' ? orgReach(a[0]) : 0)) : pts;
+    order.forEach(([e, x, y]) => {
       const on = (e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n)) || picked(e);
       if (!(on || veryClose)) return;
       const t = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`;
