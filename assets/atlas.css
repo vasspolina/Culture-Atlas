@@ -5027,3 +5027,6 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 :root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side::-webkit-scrollbar{display:none}
 :root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-side .record-action{flex:0 0 auto!important;max-width:none!important;white-space:nowrap!important}
 :root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .head-sheet .head-main{margin-top:var(--H)!important}
+
+/* MONEY MODE (assets/layers.js): while the money map shows one space's funders, the alert rings over the map step aside. */
+:root.atlas-money-mode .gm-alert-mark,:root.atlas-money-mode .gm-alert-mark.is-on{visibility:hidden!important;pointer-events:none!important;animation:none!important}
