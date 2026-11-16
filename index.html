@@ -66,7 +66,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=697">
-  <link rel="stylesheet" href="assets/sheet.css?v=703">
+  <link rel="stylesheet" href="assets/sheet.css?v=704">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
@@ -10491,7 +10491,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v704';
+    const ATLAS_RELEASE = 'culture-atlas-v706';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -17465,10 +17465,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing is reported for this space in the records.</p>'}${sourcesHtml(rest)}`);
         return;
       }
-      if (target && asks(/\b(who funds|funding|funded|funder|donor|money|pays?|finance|financed|backers?)\b/)) {
+      // "How does X fund <space>?" (the money map asks it of each funder name) is a funding question too; it fell through to
+      // the record lines that mention X, so "How does Sundays fund Museo del Oro?" was answered with the ticket price.
+      const askedFunder = target ? ((query.match(/\b(?:how|why|when|where|does|do|did)\s+(?:does|do|did\s+)?(.+?)\s+(?:fund|funds|back|sponsor|pay for|finance)\s/i) || [])[1] || '').trim().replace(/^(?:does|do|did)\s+/i, '').replace(/^the\s+/i, '').trim() : '';
+      if (target && (askedFunder || asks(/\b(who funds|funding|funded|funder|donor|money|pays?|finance|financed|backers?)\b/))) {
         focus(target);
         const shared = (target.funder_links || []).filter(f => f && f.funder);
-        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding detail is recorded for this space yet.</p>'}${fact('', target.watch)}${shared.length ? `<p>Named at other spaces on the map, this one included: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${sourcesHtml(target)}`);
+        // A funder the record does not name is said to be absent before the record's funding is given, so a false premise
+        // is corrected rather than answered.
+        const onRecord = askedFunder && (new RegExp('\\b' + askedFunder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(target.funding || '') || shared.some(f => f.funder.toLowerCase() === askedFunder.toLowerCase()));
+        const absent = askedFunder && !onRecord ? `<p>The record does not name ${escapeHtml(askedFunder)} as a funder of ${escapeHtml(target.name)}.</p>` : '';
+        answer(`${absent}<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding detail is recorded for this space yet.</p>'}${fact('', target.watch)}${shared.length ? `<p>Named at other spaces on the map, this one included: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${sourcesHtml(target)}`);
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
@@ -21810,7 +21817,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/note-aids.js?v=669" defer></script>
 <script src="assets/note-files.js?v=669" defer></script>
 <script src="assets/funding-views.js?v=669"></script>
-<script src="assets/layers.js?v=704"></script>
+<script src="assets/layers.js?v=706"></script>
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
