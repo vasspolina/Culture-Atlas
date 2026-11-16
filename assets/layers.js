@@ -539,6 +539,14 @@
     ctx.restore();
   }
 
+  // A funder's or company's name on the map: plain text in the deeper step of its kind's colour, with a halo of ground round
+  // the letters as a printed map sets a name over a coastline, as the money mode sets its names. No filled block behind it
+  // (user, 16 Nov 2026: "no need of background for companies title").
+  function haloName(ctx, text, x, y, col) {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.save(); ctx.lineJoin = 'round'; ctx.lineWidth = 4; ctx.strokeStyle = dark ? '#151412' : '#ffffff';
+    ctx.strokeText(text, x, y); ctx.fillStyle = lineCol(col); ctx.fillText(text, x, y); ctx.restore();
+  }
   // A box collides with any of the label boxes already on screen (city pills, museum pills, our own labels).
   function collides(box, boxes) {
     return boxes.some(o => !(box.x + box.w < o.x || box.x > o.x + o.w || box.y + box.h < o.y || box.y > o.y + o.h));
@@ -570,9 +578,9 @@
       if (!(focus || close)) return;
       let y = pt.y - 10 - (names.length - 1) * 11;
       names.slice(0, 4).forEach(name => {
-        const text = name.length > 28 ? name.slice(0, 26) + '…' : name, tw = ctx.measureText(text).width, w = tw + 28, h = 22;
+        const text = name.length > 28 ? name.slice(0, 26) + '…' : name, tw = ctx.measureText(text).width, w = tw + 8, h = 22;
         const box = { x: pt.x + 10 + dx, y: y - h / 2, w, h };
-        if (!collides(box, boxes)) { boxes.push(box); (mk.lboxes = mk.lboxes || []).push(box); drawTag(ctx, box.x, box.y, w, h, col); ctx.fillStyle = '#000'; ctx.fillText(text, box.x + 14, y + 0.5); }
+        if (!collides(box, boxes)) { boxes.push(box); (mk.lboxes = mk.lboxes || []).push(box); haloName(ctx, text, box.x + 4, y + 0.5, col); }
         y += 22;
       });
     });
@@ -734,10 +742,10 @@
       const on = (e.kind === 'org' ? linkedOrgs.has(e.key) : linkedPeople.has(e.n)) || picked(e);
       if (!(on || veryClose)) return;
       const text = e.kind === 'org' ? (on ? `${e.n}, ${e.c}` : e.n) : `${e.n}, ${e.w}`, t = text.length > 40 ? text.slice(0, 38) + '…' : text;
-      const tw = ctx.measureText(t).width, w = tw + 12, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
+      const tw = ctx.measureText(t).width, w = tw + 8, h = 20, box = { x: x + 10, y: y - h / 2, w, h };
       if (collides(box, boxes)) return;
       boxes.push(box); HQ_LABELS.push({ e, x: box.x, y: box.y, w, h });
-      if (on) { ctx.fillStyle = e.kind === 'org' ? KIND[e.k] : COL.person; ctx.fillRect(box.x, box.y, w, h); ctx.fillStyle = '#000'; ctx.fillText(t, box.x + 6, y + 0.5); }
+      if (on) haloName(ctx, t, box.x + 4, y + 0.5, e.kind === 'org' ? KIND[e.k] : COL.person);
       else { ctx.lineJoin = 'round'; ctx.lineWidth = 3; ctx.strokeStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#000' : '#fff'; ctx.strokeText(t, box.x + 6, y + 0.5); ctx.fillStyle = document.documentElement.getAttribute('data-theme') === 'dark' ? '#fff' : '#161616'; ctx.fillText(t, box.x + 6, y + 0.5); }
     });
   }
@@ -1041,10 +1049,6 @@
   function pill(ctx, x, y, w, h, fill, edge) {
     ctx.beginPath(); ctx.roundRect(x + 0.5, y + 0.5, w - 1, h - 1, (h - 1) / 2);
     ctx.fillStyle = fill; ctx.fill(); ctx.lineWidth = 1; ctx.strokeStyle = edge; ctx.stroke();
-  }
-  // A label, cut like the city labels (rounded, 22 high, 14 either side) but filled in the mark's colour.
-  function drawTag(ctx, x, y, w, h, col) {
-    ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, w, h, 0); ctx.fillStyle = col; ctx.fill(); ctx.restore();
   }
   // The mark under the pointer: its name on a block in its colour, and that a click asks the chat.
   function drawMarkTip(ctx, boxes) {
