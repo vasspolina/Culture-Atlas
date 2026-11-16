@@ -1137,7 +1137,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=679"></script>
+  <script src="assets/institutions.js?v=700"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10479,7 +10479,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=699').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=700').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12761,7 +12761,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     // brief: the chat's answer to "what are people saying about X" (user, 15 Nov 2026: "way too much info prints if I click on
     // this prompt"). The three newest items that are not stale, each its headline, who says it and when, with one
-    // source; the flags, other findings, older talk, related reporting and personal accounts stay on the record.
+    // source; the flags, other findings, older talk, related reporting and personal accounts stay on the record. It ends on one
+    // plain link to the record (user, 15 Nov 2026, "this is a slop" of "The whole of each one: <name> in <city> (record, site)").
     function documentedRecordHtml(inst, opts) {
       if (!inst) return '';
       const brief = !!(opts && opts.brief) && gossipItems(inst, true).length > 0;
@@ -12809,7 +12810,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const fresh = gossipItems(inst, true), shown = fresh.slice(0, 3), left = fresh.length - shown.length;
         return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
         ${shown.map(g => gossipBrief(g).replace('<div class="record-card', '<div data-gossip="item" class="record-card')).join('')}
-      </div><p class="no-indent">${left > 0 ? `${left} more ${left === 1 ? 'story' : 'stories'} and the whole of each one` : `The whole of ${shown.length === 1 ? 'it' : 'each one'}`}: ${formatInstLink(inst)}.</p>`;
+      </div><p class="no-indent"><a href="#" class="dossier-link" data-name="${escapeHtml(inst.name)}">Read the full record${left > 0 ? `, with ${left} more ${left === 1 ? 'story' : 'stories'}` : ''}</a></p>`;
       }
       if (gossipOn) gossipItems(inst, true).forEach(g => blocks.push(gossipCard(g).replace('<div class="record-card', '<div data-gossip="item" class="record-card')));
       if (inst.why_flagged || (inst.flags || []).length) {
