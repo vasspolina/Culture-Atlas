@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request.",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space.",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -4238,6 +4238,66 @@
     "gov": "United Kingdom",
     "text": "Bloomberg UK News hosted the Chief Whip at a reception and private viewing of the collection (2025, UK hospitality return).",
     "source": "https://assets.publishing.service.gov.uk/media/69283878345e31ab14ecf637/Leader_of_the_House_of_Commons_and_Whips_-_Ministers__Hospitality_-_October_2025.csv"
+   }
+  ]
+ },
+ "1e23b3f331": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2012-07",
+  "summary": "Gave an MP a London 2012 ticket with meals at its Technology Showcase at the Royal Opera House (2012).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP gave an MP a ticket and meals at its Technology Showcase at the Royal Opera House (2012, MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2012-09-03.xml"
+   }
+  ]
+ },
+ "6839f29e5c": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2018-06",
+  "summary": "Gave a transport minister and a guest hospitality at the Royal Opera House through its Big Screen programme (2018).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP gave a transport minister and a guest hospitality at the Royal Opera House through its Big Screen programme (2018, MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2018-09-10.xml"
+   }
+  ]
+ },
+ "8795c4e4b9": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2019-03",
+  "summary": "Gave the chair of the 1922 Committee and his wife a dinner at the British Museum (2019).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "JTI gave the chair of the 1922 Committee and his wife a dinner at the museum (2019, MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2019-09-02.xml"
+   }
+  ]
+ },
+ "e1377e8f45": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2019-07",
+  "summary": "Gave an MP two tickets to its 20th anniversary celebration at the Royal Academy (2019).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "JTI gave an MP two tickets to its 20th anniversary celebration at the Royal Academy (2019, MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2019-09-02.xml"
    }
   ]
  }
