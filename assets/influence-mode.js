@@ -133,9 +133,9 @@
   }
   // Every funder is a dot (user, 17 Nov 2026: "just do dots dont do different figure"); its size says how many spaces it
   // reaches. Company or family is said in its record and in the chat, not by the shape.
-  // Every dot is 4px across whatever the measure (user, 17 Nov 2026: "these dots are way too big, make all dots same size
-  // and like 4px"); the measure is said by the figure in the label, not by the size.
-  const DOT = 2;
+  // Every dot is 6px across whatever the measure (user, 17 Nov 2026: "these dots are way too big, make all dots same size
+  // and like 4px", then "make the dots a bit bigger"); the measure is said by the figure in the label, not by the size.
+  const DOT = 3;
   function mark(ctx, f, x, y) {
     ctx.beginPath();
     ctx.arc(x, y, DOT, 0, Math.PI * 2);
