@@ -92,7 +92,11 @@
       // The bar at the top comes and goes with this, so the map's height changes: let the globe redraw to fit.
       if (changed) requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
       root.classList.toggle('gm-sheet', onMap && !!sheet && !sheet.classList.contains('hidden'));
-      if (!onMap && !onChat) closeMenu();
+      // gm-record: the full record page is open. Its question box and top buttons are the map's (user, 16 Nov 2026: "make it
+      // same as on other modes"); assets/atlas.css and assets/sheet.css key the box off :is(.gm-map,.gm-record).
+      const onRecord = PHONE() && !!detailDrawer && !detailDrawer.classList.contains('hidden');
+      if (root.classList.contains('gm-record') !== onRecord) { root.classList.toggle('gm-record', onRecord); requestAnimationFrame(() => window.dispatchEvent(new Event('resize'))); }
+      if (!onMap && !onChat && !onRecord) closeMenu();
     }
     const watch = new MutationObserver(syncState);
     watch.observe(body, { attributes: true, attributeFilter: ['data-mobile-mode', 'class'] });
@@ -260,6 +264,8 @@
     }
     function openChat() {
       closeMenu(false);
+      // From the full record page (Back to chat, Share information): the record closes, as its cross does.
+      if (detailDrawer && !detailDrawer.classList.contains('hidden')) detailDrawer.classList.add('hidden');
       const hasTalk = !!document.querySelector('#curatorMessages > *:not(#curatorHeroGreeting):not(#curatorStarterPrompts)');
       if (!hasTalk && typeof window.resetToNewChat === 'function') window.resetToNewChat();
       chatDrawer && chatDrawer.classList.add('hidden');
