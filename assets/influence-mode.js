@@ -71,27 +71,8 @@
     const spaces = new Set(ties.map(t => t.space)).size;
     return { n, ended, protest, spaces };
   }
-  // The ledger's head in words (user, 17 Nov 2026, of "11 spaces: name 3, programme 5, building 1, money only 6": "this is
-  // a slop"). The counts are ties, not spaces, and a tie can carry two kinds, so a bare tally after "11 spaces" added up to
-  // nothing a reader could check. It now says at how many ties something came back, what and how often, and at how many the records name only the money.
-  // Ended ties and protests are left to the line at the foot of the ledger, which already says them.
-  const GOT = {
-    name: 'its name', seat: 'a board seat', programme: 'a programme', building: 'a building',
-    access: 'hospitality', silence: 'terms kept from the public', licence: 'a better image', tax: 'a tax break'
-  };
-  const times = n => n === 1 ? 'once' : n === 2 ? 'twice' : `${n} times`;
-  const all = n => n === 2 ? 'both' : `all ${n}`;
-  const list = a => a.length > 1 ? a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1] : a[0];
-  function tallyLine(f) {
-    const t = tally(f.ties), ties = f.ties.filter(x => x.kinds.length);
-    const bought = ties.filter(x => x.kinds.some(k => k !== 'money')).length, bare = ties.length - bought;
-    const kinds = ORDER.filter(k => k !== 'money' && t.n[k]).sort((a, b) => t.n[b] - t.n[a]);
-    const sum = kinds.reduce((s, k) => s + t.n[k], 0);
-    let out = `${plural(ties.length, 'deal')} with ${plural(t.spaces, 'museum')}.`;
-    if (bought) out += ` ${bought === ties.length ? (bought === 1 ? 'It' : `At ${all(bought)}`) : `At ${bought}`} ${bought === ties.length && bought === 1 ? 'got' : 'it got'} something back: ${list(kinds.map(k => `${GOT[k] || label(k).toLowerCase()} ${times(t.n[k])}`))}${sum > bought ? ' (one deal can bring two)' : ''}.`;
-    if (bare) out += ` ${bought ? `At the other ${bare === 1 ? 'one' : bare}` : (bare === 1 ? 'At the one' : `At ${all(bare)}`)}, only the money is known.`;
-    return out;
-  }
+  // The ledger has no line under its title (user, 17 Nov 2026, of "15 ties with 14 spaces. At 7 it got something back: ...":
+  // "do not add this explanation"). The rows below say what it got, kind by kind.
 
   // A tie's year, from a date like "2023-12" or "2019"; a date the record could not give is null.
   const yearOf = t => { const m = String(t.date || '').match(/\b(1[89]|20)\d\d\b/); return m ? +m[0] : null; };
@@ -511,7 +492,7 @@
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', `What ${f.name} got`);
-    let html = row(`What ${f.name} got`, tallyLine(f), '');
+    let html = row(`What ${f.name} got`, '', '');
     html += compareRow(f);
     html += senderRows(f);
     ORDER.forEach(k => {
