@@ -3128,5 +3128,184 @@
  "zhenghao": {
   "made_from": "Zheng Hao's money comes from hotels, among them the Onehome Art Hotel in the park the museum shares.",
   "facts": []
+ },
+ "ctbc": {
+  "made_from": "CTBC's money comes from banking and insurance, through CTBC Financial Holding and its subsidiary CTBC Bank.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In September 2018 the Taiwan High Court, at a retrial in the Red Fire case, found Jeffrey Koo Jr., chair of the Chinatrust charity foundation, guilty of violating the Financial Holding Company Act and cut his sentence from nine years and eight months to three years and six months; the case grew from CTBC Financial Holding's bid for a stake in Mega Financial Holding.",
+    "date": "2018-09",
+    "source": "https://news.pts.org.tw/article/406206"
+   },
+   {
+    "kind": "harm",
+    "text": "In April 2021 the High Court acquitted Jeffrey Koo Jr., former vice chair of Chinatrust Financial Holding, in the case over the 2006 sale of structured notes tied to Mega Financial Holding, after first and second rulings of nine years and of nine years and eight months; prosecutors could appeal.",
+    "date": "2021-04",
+    "source": "https://news.pts.org.tw/article/523753"
+   },
+   {
+    "kind": "harm",
+    "text": "In May 2025 the Taipei District Court sentenced Jeffrey Koo Jr., former vice chairman of CTBC Financial Holding, to seven years and eight months for his role in a building purchase scandal.",
+    "date": "2025-05",
+    "source": "https://focustaiwan.tw/society/202505130026"
+   },
+   {
+    "kind": "harm",
+    "text": "Prosecutors alleged that Jeffrey Koo Jr. and three former CTBC executives inflated the value of the Chengcing Lake Building by NT$100 million, causing losses to CTBC Bank; in May 2025 the court put them under daily monitoring as flight risks.",
+    "date": "2025-05",
+    "source": "https://www.taiwannews.com.tw/en/news/6121227"
+   },
+   {
+    "kind": "scale",
+    "text": "CTBC Financial Holding reported a consolidated after-tax net profit of NT$80.619 billion for 2025, a record, with earnings per share of NT$4.08.",
+    "date": "2026-01",
+    "source": "https://news.cnyes.com/news/id/6305633"
+   },
+   {
+    "kind": "harm",
+    "text": "By May 2026 the Red Fire case against Jeffrey Koo Jr., former vice chair of CTBC Financial Holding, had run for 20 years: he was acquitted at the second and at the third retrial, the Supreme Court overturned the third acquittal too, and the High Court opened a fourth retrial.",
+    "date": "2026-05",
+    "source": "https://udn.com/news/story/7321/9503094"
+   }
+  ]
+ },
+ "esun": {
+  "made_from": "E.SUN's money comes from banking, through E.SUN Financial Holding and E.SUN Commercial Bank.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "E.SUN Financial Holding reported a 2025 after-tax net profit of NT$34.29 billion, up 31.2% and a record, on net revenue of NT$91.77 billion.",
+    "date": "2026-02",
+    "source": "https://www.ctee.com.tw/news/20260224701453-430201"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "NT$200,000 to the National Taiwan Museum of Fine Arts for its volunteer team's children's education programme, February 2024",
+     "amount": 200000,
+     "currency": "TWD",
+     "source": "https://file.moc.gov.tw/Download.ashx?u=LzAwMS9VcGxvYWQvNDg5L3JlbGZpbGUvMTE0NDMvMjMxNzA2Lzg3YmQ5YzljLTcxMTMtNGI3ZC1hZDlkLTk1N2ZkYWY5OTc2OS5wZGY%3d&n=5ZyL56uL6Ie654Gj576O6KGT6aSo5o6l5Y%2bX5aSW55WM5o2Q6LSI5riF5YaKLnBkZg%3d%3d&icon=.pdf"
+    },
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "kingstownbank": {
+  "made_from": "King's Town Bank's money comes from commercial banking in southern Taiwan.",
+  "facts": [
+   {
+    "kind": "after",
+    "text": "SinoPac Financial Holdings began counting King's Town Bank's profit from October 2025, after taking it over; SinoPac reported a 2025 after-tax net profit of NT$26.502 billion.",
+    "date": "2026-01",
+    "source": "https://money.udn.com/money/story/5613/9253271"
+   },
+   {
+    "kind": "scale",
+    "text": "In its first quarter inside SinoPac Financial Holdings, King's Town Bank contributed NT$1.22 billion of investment income to the holding company, which reported 2025 net revenue of NT$74.39 billion.",
+    "date": "2026-03",
+    "source": "https://newtalk.tw/news/view/2026-03-10/1023605"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "NT$300,000 from its charity foundation to the Kaohsiung Museum of Fine Arts for outreach to visitors with intellectual and visual disabilities, 2025",
+     "amount": 300000,
+     "currency": "TWD",
+     "source": "https://www.kmfa.gov.tw/Uploads/files/114%E5%B9%B4%E9%AB%98%E7%BE%8E%E9%A4%A8%E8%B4%8A%E5%8A%A9.pdf"
+    },
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "taishin": {
+  "made_from": "Taishin's money comes from banking and insurance, through Taishin Financial Holding.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Taishin Shin Kong Financial Holding (stock code 2887, Taishin's holding company) reported a 2025 after-tax net profit of NT$37.4 billion, up 86% and a record.",
+    "date": "2026-03",
+    "source": "https://money.udn.com/money/story/5613/9414355"
+   }
+  ]
+ },
+ "chewsculture": {
+  "made_from": "The foundation's money is Chiu Tsai-hsing's own, made in electronics companies he founded in the 1970s and early 1980s, as the record gives it from Money Weekly (2012).",
+  "facts": []
+ },
+ "royalinn": {
+  "made_from": "Royal Inn (老爺會館) is one of the hotels of the Hotel Royal group (老爺酒店集團), so its money comes from running hotels in Taiwan.",
+  "facts": []
+ },
+ "epson": {
+  "made_from": "Epson's money comes from making printers, projectors and other imaging equipment, through Seiko Epson of Japan.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Seiko Epson reported revenue of ¥1,362,944 million and business profit of ¥89,589 million for the year ended 31 March 2025.",
+    "date": "2025-05",
+    "source": "https://www2.infomart.co.jp/web/jp/images/upload/3235/140120250501528752_20530974.pdf"
+   }
+  ]
+ },
+ "hsbc": {
+  "made_from": "HSBC’s money comes from banking: lending, deposits, payments, wealth management and markets.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "HSBC Holdings reported a 2025 profit before tax of $29.9 billion, down $2.4 billion from 2024, on revenue of $68.3 billion.",
+    "date": "2026-02",
+    "source": "https://www.investegate.co.uk/announcement/rns/hsbc-holdings--hsba/hsbc-holdings-2025-results/9445238"
+   },
+   {
+    "kind": "harm",
+    "text": "In December 2012 HSBC Holdings and HSBC Bank USA admitted anti-money-laundering and sanctions violations, forfeited $1.256 billion under a deferred prosecution agreement and agreed to $665 million in civil penalties; the US Attorney said its failures let at least $881 million in drug proceeds be laundered through the US financial system.",
+    "date": "2012-12",
+    "source": "https://www.justice.gov/archive/usao/nye/pr/2012/2012dec11.html"
+   },
+   {
+    "kind": "harm",
+    "text": "In October 2022 the UK Advertising Standards Authority upheld complaints against two HSBC UK climate posters and told the bank its environmental claims must not omit material information about its contribution to carbon dioxide and greenhouse gas emissions.",
+    "date": "2022-10",
+    "source": "https://www.asa.org.uk/rulings/hsbc-uk-bank-plc-g21-1127656-hsbc-uk-bank-plc.html"
+   },
+   {
+    "kind": "lobbying",
+    "text": "HSBC Holdings declared EU lobbying costs of €1,000,000 to €1,249,999 for the financial year February 2024 to January 2025, with 3 full-time-equivalent lobbyists and 78 high-level Commission meetings.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=001866415031-87"
+   },
+   {
+    "kind": "lobbying",
+    "text": "HSBC Technology and Services USA reported $1,080,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act; outside firms also lobbied for HSBC units.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=HSBC&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 1000000,
+    "eur_max": 1249999,
+    "period": "2025",
+    "financial_year": "Feb 2024 to Jan 2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=001866415031-87"
+   },
+   "us_lobbying": {
+    "usd": 1080000.0,
+    "year": 2025,
+    "quarters": 4,
+    "filer": "HSBC TECHNOLOGY AND SERVICES USA INC.",
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=HSBC&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 7,
+    "entries": 8
+   }
+  }
  }
 }
