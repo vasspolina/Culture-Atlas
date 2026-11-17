@@ -5040,3 +5040,12 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 :root.atlas-money-on #moneyExitBtn:is(:hover,:focus-visible){background:var(--ink,#000);color:var(--paper,#fff)}
 :root.atlas-money-on #moneyExitBtn:focus-visible{outline:2px solid var(--ink,#000);outline-offset:3px}
 @media (max-width:767px){ :root.atlas-money-on #moneyExitBtn{bottom:calc(16px + env(safe-area-inset-bottom,0px))} }
+
+/* Tab suggestions in the chat box (assets/tab-suggest.js, 17 Nov 2026). A copy of the box laid over it: the typed text is
+   invisible, the rest of the suggestion shows after the caret in the secondary ink (58% of ink clears 4.5:1 on paper in
+   both themes), and only those grey words take a tap. */
+.tab-suggest-mirror{position:absolute;z-index:2;pointer-events:none;overflow:hidden;white-space:pre-wrap;overflow-wrap:break-word;word-break:normal;border-style:solid;border-color:transparent;background:transparent;margin:0}
+.tab-suggest-mirror[hidden]{display:none}
+.tab-suggest-typed{color:transparent}
+.tab-suggest-ghost{color:color-mix(in srgb,var(--ink) 58%,var(--paper));pointer-events:auto;cursor:pointer}
+.tab-suggest-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
