@@ -1,5 +1,5 @@
 {
- "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Every fact was read on its source page; BP’s, Shell’s and Vale’s profit and Japan Tobacco’s revenue were re-checked on their pages on 17 Nov 2026, and BP’s and Japan Tobacco’s moved to pages that open. Second pass 17 Nov 2026: the EU Transparency Register for all 25 funders, each figure read on its LobbyFacts datacard and checked against the register’s own export of 16 November 2026; InfluenceMap grades re-read on each company page (UBS and J.P. Morgan pages showed no score, RBC, Bloomberg and Chanel have none); US federal lobbying for 2025 from the Senate Lobbying Disclosure Act reports on lda.gov, the filings OpenSecrets compiles, since OpenSecrets itself still refuses this reader: a company’s own in-house reports for the year, summed, or where it files none, the fees its outside firms reported. Checked against the atlas: each fact names the entity the atlas ties name, so Philip Morris International’s facts were removed (the atlas ties are Altria’s), Bloomberg L.P. and Bloomberg Philanthropies are named apart, and the Lauder family’s Estée Lauder Companies lobbying is not attributed to the family. Not registered in the EU: BMO, the Royal Bank of Canada itself, Koch, Purdue Pharma, Access Industries. No 2025 federal lobbying report: RBC, Access Industries. Figures (17 Nov 2026): each funder also carries `figures` for the map’s measures: culture (spaces, entries, and the largest cultural gift the atlas entries state, picked by hand, with that entry’s source; totals of a building’s cost, plans and debts are not gifts), US federal lobbying for 2025 (lda.gov), EU lobbying (the register’s band), and corporate PAC contributions to federal candidates in the 2023 to 2024 cycle from the Federal Election Commission’s bulk files (transaction type 24K, refunds netted, memo lines left out), the filings OpenSecrets compiles. Shell’s PAC reported no contributions to candidates in that file; BMW, Hyundai, Chanel, TotalEnergies, Eni, Equinor, Japan Tobacco, Vale, Purdue Pharma, Access Industries and the Lauder family have no corporate PAC in it. Personal giving (17 Nov 2026): what the people behind a family or individual funder gave in their own names in the 2023 to 2024 cycle, from the FEC’s individual contributions bulk file (indiv24, 58.2 million rows, streamed, only matching rows kept). A row counts only when the contributor’s name matches and the employer or occupation they reported names the funder’s company (Citadel for Ken Griffin, Bloomberg for Michael Bloomberg, Koch Industries for Charles Koch, Estée Lauder or the Lauders’ own firms for Leonard and Ronald Lauder, Access Industries for Len Blavatnik), so namesakes are left out: Charles J. Koch of Boston Beer, and Sacklers none of whom report Purdue. Conduit lines (24T at ActBlue and WinRed) repeat the money the recipient reports as earmarked (15E) and are left out, as are memo lines; refunds (20Y, 22Y) are taken off. Super PAC gifts are included. Executives of a company are not counted as the company, so the banks, oil companies and carmakers have no personal figure. Charles Koch’s giving runs mostly through groups that report no individual donors, such as Americans for Prosperity, which this file does not show.",
+ "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Every fact was read on its source page; BP’s, Shell’s and Vale’s profit and Japan Tobacco’s revenue were re-checked on their pages on 17 Nov 2026, and BP’s and Japan Tobacco’s moved to pages that open. Second pass 17 Nov 2026: the EU Transparency Register for all 25 funders, each figure read on its LobbyFacts datacard and checked against the register’s own export of 16 November 2026; InfluenceMap grades re-read on each company page (UBS and J.P. Morgan pages showed no score, RBC, Bloomberg and Chanel have none); US federal lobbying for 2025 from the Senate Lobbying Disclosure Act reports on lda.gov, the filings OpenSecrets compiles, since OpenSecrets itself still refuses this reader: a company’s own in-house reports for the year, summed, or where it files none, the fees its outside firms reported. Checked against the atlas: each fact names the entity the atlas ties name, so Philip Morris International’s facts were removed (the atlas ties are Altria’s), Bloomberg L.P. and Bloomberg Philanthropies are named apart, and the Lauder family’s Estée Lauder Companies lobbying is not attributed to the family. Not registered in the EU: BMO, the Royal Bank of Canada itself, Koch, Purdue Pharma, Access Industries. No 2025 federal lobbying report: RBC, Access Industries. Figures (17 Nov 2026): each funder also carries `figures` for the map’s measures: culture (spaces, entries, and the largest cultural gift the atlas entries state, picked by hand, with that entry’s source; totals of a building’s cost, plans and debts are not gifts), US federal lobbying for 2025 (lda.gov), EU lobbying (the register’s band), and corporate PAC contributions to federal candidates in the 2023 to 2024 cycle from the Federal Election Commission’s bulk files (transaction type 24K, refunds netted, memo lines left out), the filings OpenSecrets compiles. Shell’s PAC reported no contributions to candidates in that file; BMW, Hyundai, Chanel, TotalEnergies, Eni, Equinor, Japan Tobacco, Vale, Purdue Pharma, Access Industries and the Lauder family have no corporate PAC in it. Personal giving (17 Nov 2026): what the people behind a family or individual funder gave in their own names in the 2023 to 2024 cycle, from the FEC’s individual contributions bulk file (indiv24, 58.2 million rows, streamed, only matching rows kept). A row counts only when the contributor’s name matches and the employer or occupation they reported names the funder’s company (Citadel for Ken Griffin, Bloomberg for Michael Bloomberg, Koch Industries for Charles Koch, Estée Lauder for Leonard Lauder, Access Industries for Len Blavatnik), so namesakes are left out: Charles J. Koch of Boston Beer, and Sacklers none of whom report Purdue. Conduit lines (24T at ActBlue and WinRed) repeat the money the recipient reports as earmarked (15E) and are left out, as are memo lines; refunds (20Y, 22Y) are taken off. Super PAC gifts are included. Executives of a company are not counted as the company, so the banks, oil companies and carmakers have no personal figure. Charles Koch’s giving runs mostly through groups that report no individual donors, such as Americans for Prosperity, which this file does not show. Lauder family (17 Nov 2026, user: \"drop Ronald Lauder, keep only Leonard\"): the atlas tie is Leonard Lauder’s gift to the Whitney, so only Leonard Lauder’s giving is counted; Ronald Lauder’s facts are left out.",
  "bp": {
   "made_from": "BP’s money comes from producing, refining and trading oil and gas.",
   "facts": [
@@ -985,21 +985,9 @@
    },
    {
     "kind": "politics",
-    "text": "Ronald Lauder gave $5 million to MAGA Inc., the pro-Trump super PAC, according to a Brennan Center analysis.",
-    "date": "2025-08",
-    "source": "https://www.brennancenter.org/our-work/analysis-opinion/unprecedented-big-money-surge-super-pac-tied-trump"
-   },
-   {
-    "kind": "politics",
     "text": "Leonard Lauder gave $248,100 in personal contributions to federal candidates, parties and PACs in the 2023 to 2024 cycle; the largest went to Senate Impact Project ($23,100), New York State Democratic Committee ($10,000) and Arizona Democratic Party ($10,000), in contributions reported to the Federal Election Commission.",
     "date": "2024",
     "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Lauder%2C+Leonard&two_year_transaction_period=2024"
-   },
-   {
-    "kind": "politics",
-    "text": "Ronald Lauder gave $4,334,000 in personal contributions to federal candidates, parties and PACs in the 2023 to 2024 cycle; the largest went to National Horizon ($1,100,000), Congressional Leadership Fund ($1,000,000) and Keystone Renewal PAC ($850,000), in contributions reported to the Federal Election Commission.",
-    "date": "2024",
-    "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Lauder%2C+Ronald&two_year_transaction_period=2024"
    }
   ],
   "figures": {
@@ -1014,7 +1002,7 @@
     }
    },
    "personal": {
-    "usd": 4582100,
+    "usd": 248100,
     "cycle": "2023-24",
     "people": [
      {
@@ -1039,29 +1027,6 @@
        }
       ],
       "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Lauder%2C+Leonard&two_year_transaction_period=2024"
-     },
-     {
-      "name": "Ronald Lauder",
-      "usd": 4334000,
-      "rows": 20,
-      "top": [
-       {
-        "name": "National Horizon",
-        "id": "C00519363",
-        "usd": 1100000
-       },
-       {
-        "name": "Congressional Leadership Fund",
-        "id": "C00504530",
-        "usd": 1000000
-       },
-       {
-        "name": "Keystone Renewal PAC",
-        "id": "C00849489",
-        "usd": 850000
-       }
-      ],
-      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Lauder%2C+Ronald&two_year_transaction_period=2024"
      }
     ]
    }
