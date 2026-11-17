@@ -12377,7 +12377,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       }
       if (d.bottom_line) {
         out.push(`<div class="py-3 rule-b space-y-2" role="region" aria-label="Bottom line"><span class="kicker block">Bottom line</span><p class="t-lead">${e(d.bottom_line)}</p>
-          ${d.retrieved ? `<p class="no-indent account-note">Researched ${e(humanDate(d.retrieved))}.</p>` : ''}</div>`);
+          ${d.retrieved ? `<p class="no-indent account-note">Checked ${e(humanDate(d.retrieved))}.</p>` : ''}</div>`);
       }
       return out.join('');
     }
@@ -12477,8 +12477,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // A funder named at only this one space is no cross-reference, so those links are left out.
       const reg = inst.audit_dossier_url, fil = inst.statutory_filings_url;
       const regLinks = [];
-      if (reg) regLinks.push(`Registry: ${link(reg, registryName(reg))}`);
-      if (fil && fil !== reg) regLinks.push(`Filings: ${link(fil, registryName(fil))}`);
+      if (reg) regLinks.push(`Official register: ${link(reg, registryName(reg))}`);
+      if (fil && fil !== reg) regLinks.push(`Annual filings: ${link(fil, registryName(fil))}`);
       if (regLinks.length) rows.push(`<p class="t-lead no-indent source-note">${regLinks.join(' · ')}</p>`);
       if (!rows.length) return '';
       return `<div class="py-3 rule-b space-y-2" role="region" aria-label="Funding"><span class="kicker block">Funding</span>${rows.join('')}</div>`;
@@ -12497,8 +12497,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         return `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer" class="domain">${escapeHtml(h)}</a>`;
       });
       const v = inst.verification;
-      const state = v && v.status === 'verified' ? `Checked on ${escapeHtml(v.checked_on)}: a source outside the museum names the funders this record cites.`
-        : v && v.status === 'partial' ? `Partly checked on ${escapeHtml(v.checked_on)}: the sources name the museum but not every funder this record cites.`
+      const state = v && v.status === 'verified' ? `Checked on ${escapeHtml(v.checked_on)}: an outside source names the same funders.`
+        : v && v.status === 'partial' ? `Partly checked on ${escapeHtml(v.checked_on)}: the sources name the museum but not every funder listed here.`
         : '';
       // Founding-year and address source lines were dropped as slop (user, 3 Nov 2026).
       if (asRow) return [];
@@ -12514,7 +12514,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // Three lines from the Sponsor Atlas study, each a paraphrase with its source named in the text (what the space publishes about
       // its own money was a fourth, deleted 16 Nov 2026): the figures in its accounts, the bodies it is affiliated with, and what writers in the field say about it.
       const layer = (title, text) => text ? card(title, '', `<p class="t-lead">${e(text)}</p>`) : '';
-      const layers = [layer('Its accounts', inst.finances_note), layer('Its affiliations', inst.affiliations_note), layer('What the field says', inst.critique_note)].filter(Boolean);
+      const layers = [layer('Its accounts', inst.finances_note), layer('What it is linked to', inst.affiliations_note), layer('What critics say', inst.critique_note)].filter(Boolean);
       const rows = layers.concat(studies);
       return rows.length ? `<div class="py-3" role="group" aria-label="About this museum">${rows.join('')}</div>` : '';
     }
@@ -12555,11 +12555,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         theory ? '' : e(vc.artist_designer || vc.artist || ''),
         theory ? '' : [quotedText(vc.artwork_title || vc.artwork || ''), vc.year ? `(${vc.year})` : ''].filter(Boolean).map(e).join(' '),
         e(vc.medium_format || ''),
-        theory ? '' : `Target: ${e(vc.target || vc.institution_target || inst.name)}`,
+        theory ? '' : `Aimed at: ${e(vc.target || vc.institution_target || inst.name)}`,
         e(vc.credits || ''),
       ].filter(Boolean).join('<br>');
       const lis = theory && vc.quotes ? vc.quotes.map(critiqueQuoteLi) : [proseLi('', e(vc.summary || ''))];
-      if (vc.historical_impact) lis.push(proseLi(theory ? 'How to read this record with it:' : 'What followed:', e(vc.historical_impact)));
+      if (vc.historical_impact) lis.push(proseLi(theory ? 'What it says about this museum:' : 'What followed:', e(vc.historical_impact)));
       if (vc.citation) lis.push(proseLi('Source:', e(vc.citation)));
       const img = theory || !vc.image ? '' : `<img class="d-row-media" src="${e(vc.image)}" alt="${e(vc.artwork_title || 'Visual Critique')}">`;
       const next = vcs.length > 1 ? `<button type="button" onclick="window.cycleDossierVisualCritique();" class="record-action d-row-action">Next critique, ${(vcIdx + 1) % vcs.length + 1} of ${vcs.length}</button>` : '';
@@ -12878,8 +12878,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         blocks.push(item('', '', (lead ? `<p class="t-lead">${lead}</p>` : '') + list(...told.map(point)) + more.map(d => p('', d.text)).join(''),
           [...new Set((inst.sources || []).concat(more.map(d => d.url)))]));
       }
-      (inst.epstein_records || []).forEach(e => blocks.push(item(e.person || 'Epstein-related record', '',
-        p('', e.summary) + list(li('Tie: ', e.tie), li('Consequence: ', e.consequence)), e.sources)));
+      (inst.epstein_records || []).forEach(e => blocks.push(item(e.person || 'Epstein files', '',
+        p('', e.summary) + list(li('Link: ', e.tie), li('What happened: ', e.consequence)), e.sources)));
       const seenCables = new Set();
       (inst.wikileaks_records || []).forEach(w => {
         const key = (w.doc_id || '') + (w.what_shows || '');
@@ -12889,7 +12889,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       });
       ((inst.gossip_data || {}).real_cases || []).forEach(c => blocks.push(item(c.title || 'Case',
         caseMeta(c),
-        p('', (c.facts || []).join(' ')) + list(li('Claim: ', (c.claims || []).join(' ')), li('Response: ', c.response), li('Outcome: ', c.outcome), li('Caveats: ', (c.limits || []).join(' '))),
+        p('', (c.facts || []).join(' ')) + list(li('Claim: ', (c.claims || []).join(' ')), li('Response: ', c.response), li('Outcome: ', c.outcome), li('Note: ', (c.limits || []).join(' '))),
         (c.sources || []).map(x => x.url).filter(Boolean))));
       const of = typeof inst.other_findings === 'string' ? inst.other_findings.trim() : '';
       const lc = of.toLowerCase();
@@ -12945,7 +12945,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ${blocks.join('')}
         ${stale.length ? `<h3 class="kicker">Older talk</h3>${stale.join('')}` : ''}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
-        ${accounts.length ? `<h3 class="kicker">Personal accounts (${accounts.length})</h3><p class="no-indent account-note">User-generated: posts by staff and visitors on review sites and Reddit, quoted as posted. One person’s experience each, not checked as fact and not findings about the institution.</p>${accounts.join('')}` : ''}
+        ${accounts.length ? `<h3 class="kicker">Staff and visitor posts (${accounts.length})</h3><p class="no-indent account-note">From review sites and Reddit, quoted as written. Each is one person’s view and has not been checked.</p>${accounts.join('')}` : ''}
       </div>`;
     }
 
@@ -13067,7 +13067,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         proseRow(escapeHtml(place) || 'Record', rest ? escapeHtml(proseCap(rest)) : '', state),
         proseRow('Programme', '', programme).replace('<ul class="d-row-list">', '<ul class="d-row-list is-bulleted">'),
       ];
-      return proseRows(rows, 'The record at a glance');
+      return proseRows(rows, 'At a glance');
     }
 
     function updateDesktopDossier(inst) {
@@ -13444,7 +13444,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           vcMedium.style.display = vc.medium_format ? 'inline-block' : 'none';
         }
         if (vcCredits) {
-          vcCredits.textContent = vc.credits || `Artist: ${vc.artist_designer || vc.artist}, Target: ${vc.target || ''}`;
+          vcCredits.textContent = vc.credits || `Artist: ${vc.artist_designer || vc.artist}; aimed at: ${vc.target || ''}`;
         }
         if (vcImg) {
           if (vc.image) {
@@ -13456,7 +13456,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             vcImg.style.display = 'none';
           }
         }
-        if (vcTarget) vcTarget.textContent = `Target: ${vc.target || vc.institution_target || ''}`;
+        if (vcTarget) vcTarget.textContent = `Aimed at: ${vc.target || vc.institution_target || ''}`;
         if (vcSummary) vcSummary.textContent = (vc.kind === 'theory' && vc.quotes && vc.quotes.length) ? critiqueQuoteLine(vc.quotes[0]) : (vc.summary || '');
         if (vcCitation) vcCitation.textContent = vc.citation || '';
         if (vcSection) vcSection.classList.remove('hidden');
@@ -13797,7 +13797,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const sum = `${proseMoney(cur, total)}${year ? ' in ' + year : ''}`;
         lis.push(proseLi(kind === 'income' ? 'Income:' : 'Spending:', escapeHtml(proseEnd(parts.length ? `${sum}: ${parts.join(', ')}` : sum))));
       }
-      if (typeof f.net_assets === 'number' && f.net_assets > 0 && cur) lis.push(proseLi('Net assets:', escapeHtml(`${proseMoney(cur, f.net_assets)} at the end of the year.`)));
+      if (typeof f.net_assets === 'number' && f.net_assets > 0 && cur) lis.push(proseLi('Net worth:', escapeHtml(`${proseMoney(cur, f.net_assets)} at the end of the year.`)));
       if (sc.visitors) lis.push(proseLi('Visitors:', escapeHtml(`${proseCount(sc.visitors)}${sc.visitors_year ? ' in ' + sc.visitors_year : ''}.`)));
       if (sc.staff) lis.push(proseLi('Staff:', escapeHtml(`${proseCount(sc.staff)}${sc.staff_kind && sc.staff_kind !== 'staff' ? ' ' + sc.staff_kind : ''}${sc.staff_year ? ', ' + sc.staff_year : ''}.`)));
       if (sc.area_m2) lis.push(proseLi('Floor area:', escapeHtml(`${proseCount(sc.area_m2)} square metres${sc.area_kind ? ' of ' + sc.area_kind : ''}.`)));
@@ -13805,7 +13805,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (f.note && total && cur) lis.push(proseLi('Note:', escapeHtml(proseEnd(f.note))));
       const cite = proseCite([f.url].concat(sc.sources || []), 4);
       if (lis.length && cite) lis.push(`<li>${cite.trim()}</li>`);
-      return proseRow('Scale and money', '', lis);
+      return proseRow('Size and money', '', lis);
     }
     // Bureaucracy: the level (1 to 5) tools/grade_bureaucracy.py works out from the administration facts a source states (inst.bureaucracy),
     // then the facts themselves, then a reported finding on red tape (inst.red_tape) where a document says so. Nothing is estimated.
@@ -13818,17 +13818,17 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (!r || !r.note) return '';
       if (b) {
         const said = (lead, t) => t ? lis.push(proseLi(lead, escapeHtml(proseEnd(proseCap(t))))) : 0;
-        said('Legal form:', b.legal_form + (b.parent ? ', under ' + b.parent : ''));
+        said('Set up as:', b.legal_form + (b.parent ? ', under ' + b.parent : ''));
         said('Director named by:', b.director_appointed_by);
         said('Staff:', b.staff_status);
         said('Budget set by:', b.budget_set_by);
-        if ((b.controls || []).length) lis.push(proseLi('Bound by:', escapeHtml(proseEnd(proseCap(b.controls.join('; '))))));
+        if ((b.controls || []).length) lis.push(proseLi('Rules it must follow:', escapeHtml(proseEnd(proseCap(b.controls.join('; '))))));
       }
-      if (r) lis.push(proseLi('Reported red tape:', escapeHtml(proseEnd(r.note)) + ` ${proseLinks([r.url], 1)}`));
+      if (r) lis.push(proseLi('Red tape reported:', escapeHtml(proseEnd(r.note)) + ` ${proseLinks([r.url], 1)}`));
       const cite = proseLinks(((b && b.sources) || []).slice(0, 3), 3);
       if (lis.length && cite) lis.push(`<li>Sources: ${cite}.</li>`);
       const head = b && b.level ? `Level ${b.level} of 5, ${BUREAUCRACY[b.level]}. ${proseEnd(b.level_basis)}` : '';
-      return proseRow('Bureaucracy', escapeHtml(head), lis);
+      return proseRow('How it is run', escapeHtml(head), lis);
     }
     // Lobbying by the space itself (user, 17 Nov 2026: "find only info that tracks cultural spaces involved in lobbying ... add
     // it to each space's record on the map"). inst.lobbying comes from data/space_lobbying.json through
@@ -13847,7 +13847,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const spent = l.total_usd > 0
           ? `, reporting ${usd(l.total_usd)} in all${l.last_year && l.last_year_usd ? `; ${usd(l.last_year_usd)} in ${l.last_year}` : ''}`
           : ', each report under $5,000, the least a report has to state';
-        lis.push(proseLi('US federal:', escapeHtml(`Lobbied Congress and federal agencies ${span}${spent}.`)));
+        lis.push(proseLi('In the US:', escapeHtml(`Lobbied the US government ${span}${spent}.`)));
         // A report line that only repeats the start of another (the same filing, shortened) is said once.
         const on = (l.on || []).map(proseEnd).filter((t, i, all) => !all.some((u, j) => j !== i && u.length > t.length && u.toLowerCase().startsWith(t.slice(0, -1).toLowerCase())));
         if (on.length) lis.push(proseLi('Latest reports:', escapeHtml(on.join(' '))));
@@ -13855,7 +13855,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (l.in_house) who.unshift('its own staff');
         if (who.length) lis.push(proseLi('Lobbied by:', escapeHtml(proseEnd(who.join(', ')))));
       } else if (l.register === 'eu') {
-        lis.push(proseLi('EU register:', escapeHtml(`${l.filed_as} joined the EU Transparency Register in ${String(l.registered || '').slice(0, 4)}.`)));
+        lis.push(proseLi('In the EU:', escapeHtml(`${l.filed_as} signed up as an EU lobbyist in ${String(l.registered || '').slice(0, 4)}.`)));
         if (l.declared) lis.push(proseLi('', escapeHtml(proseEnd(l.declared))));
       }
       if (lis.length && l.source) lis.push(`<li>Source: ${proseLinks([l.source], 1)}.</li>`);
@@ -13877,7 +13877,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // carries the filing's figures, so the same year's income is not said twice.
       const f = inst.finance || {};
       const moneyShown = typeof f.income === 'number' && f.income > 0 && f.currency;
-      rows.push(proseRow('Accounts and affiliations', '', [moneyShown ? '' : note('Accounts:', inst.finances_note), note('Affiliations:', affiliationsNotInOverview(inst, inst.affiliations_note))]));
+      rows.push(proseRow('Accounts and links', '', [moneyShown ? '' : note('Accounts:', inst.finances_note), note('Linked to:', affiliationsNotInOverview(inst, inst.affiliations_note))]));
       return proseRows(rows, 'Overview and funding');
     }
     // What is flagged, the art press, wider context, the bottom line and the sources: the report's points with the archive's cases beside them.
@@ -13910,13 +13910,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (!own.length && ((inst.flags || []).length || why)) {
         rows.push(proseRow('Flagged', flagStatement(inst), [proseLi('', escapeHtml(said), true)], { tone: 'flag', gossip: true }));
       } else if (why || more.length) {
-        rows.push(proseRow('Also on record', '', [proseLi('', escapeHtml(said), true)], { tone: 'flag', gossip: true }));
+        rows.push(proseRow('Also reported', '', [proseLi('', escapeHtml(said), true)], { tone: 'flag', gossip: true }));
       }
-      if ((d.not_related || []).length) rows.push(proseRow('Not related', '', [proseLi('', escapeHtml(proseCap(proseSay(d.not_related))))]));
+      if ((d.not_related || []).length) rows.push(proseRow('Not connected', '', [proseLi('', escapeHtml(proseCap(proseSay(d.not_related))))]));
       // Reported items from the archive that the report does not already carry. They are said once to be reported, not verified.
       const items = [];
-      (inst.epstein_records || []).forEach(e => items.push(proseLi(`${e.person || 'Epstein-related record'}.`,
-        escapeHtml([proseEnd(e.summary), e.tie ? 'Tie: ' + proseEnd(e.tie) : '', e.consequence ? 'Consequence: ' + proseEnd(e.consequence) : ''].filter(Boolean).join(' ')) + proseCite(e.sources, 3), true)));
+      (inst.epstein_records || []).forEach(e => items.push(proseLi(`${e.person || 'Epstein files'}.`,
+        escapeHtml([proseEnd(e.summary), e.tie ? 'Link: ' + proseEnd(e.tie) : '', e.consequence ? 'What happened: ' + proseEnd(e.consequence) : ''].filter(Boolean).join(' ')) + proseCite(e.sources, 3), true)));
       const seenCables = new Set();
       (inst.wikileaks_records || []).forEach(w => {
         const key = (w.doc_id || '') + (w.what_shows || '');
@@ -13926,7 +13926,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       });
       ((inst.gossip_data || {}).real_cases || []).forEach(c => {
         const meta = caseMeta(c);
-        const told = [proseSay(c.facts), (c.claims || []).length ? 'The claim: ' + proseSay(c.claims) : '', c.response ? 'The response: ' + proseEnd(c.response) : '', c.outcome ? 'The outcome: ' + proseEnd(c.outcome) : '', (c.limits || []).length ? 'Caveat: ' + proseSay(c.limits) : ''].filter(Boolean).join(' ');
+        const told = [proseSay(c.facts), (c.claims || []).length ? 'The claim: ' + proseSay(c.claims) : '', c.response ? 'The response: ' + proseEnd(c.response) : '', c.outcome ? 'The outcome: ' + proseEnd(c.outcome) : '', (c.limits || []).length ? 'Note: ' + proseSay(c.limits) : ''].filter(Boolean).join(' ');
         items.push(proseLi(`${c.title || 'Case'}${meta ? ' (' + meta + ')' : ''}.`, escapeHtml(told) + proseCite((c.sources || []).map(x => x && x.url), 4), true));
       });
       const of = typeof inst.other_findings === 'string' ? inst.other_findings.trim() : '';
@@ -13946,7 +13946,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const c = inst.case_study;
         items.push(proseLi(`${c.title}${c.kick ? ' (' + c.kick + ')' : ''}.`, escapeHtml([proseSay(c.summary), proseSay(c.bullets), (c.timeline || []).map(t => `${t.date}: ${proseEnd(t.event)}`).join(' ')].filter(Boolean).join(' ')), true));
       }
-      if (items.some(Boolean)) rows.push(proseRow('Reported items', 'Each item names its sources.', items, { tone: 'flag', gossip: true, fold: 3 }));
+      if (items.some(Boolean)) rows.push(proseRow('Reported elsewhere', '', items, { tone: 'flag', gossip: true, fold: 3 }));
       // Propaganda: each documented use by a state or regime, with its period and sources.
       const propLis = (inst.propaganda || []).map(p => proseLi(`${p.kind === 'today' ? 'Now' : 'In the past'}, ${proseDates(p.period)}.`, escapeHtml(proseEnd(p.summary)) + proseCite(p.sources, 3)));
       rows.push(proseRow('Propaganda', '', propLis));
@@ -13961,30 +13961,30 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         return proseLi('', `${o}${it.title ? ', ' + escapeHtml(proseEnd(it.title)) + ' ' : escapeHtml(when) + ': '}${escapeHtml(said)}`);
       }).filter(Boolean);
       rows.push(proseRow('In the art press', '', pressLis, { fold: 2 }));
-      if (inst.critique_note) rows.push(proseRow('What the field says', '', [proseLi('', escapeHtml(proseEnd(inst.critique_note)))]));
+      if (inst.critique_note) rows.push(proseRow('What critics say', '', [proseLi('', escapeHtml(proseEnd(inst.critique_note)))]));
       const caseLis = (inst.case_notes || []).map(n => proseLi(`${n.title}${n.meta ? ', ' + proseDates(n.meta) : ''}:`, escapeHtml(proseEnd(n.text)) + proseCite(n.sources, 3), true));
-      rows.push(proseRow('Case notes', '', caseLis, { tone: 'flag', gossip: true, fold: 3 }));
-      rows.push(proseRow('Wider context', '', proseChunks(d.wider_context, 0).map(t => proseLi('', escapeHtml(t))), { fold: 2 }));
+      rows.push(proseRow('Cases', '', caseLis, { tone: 'flag', gossip: true, fold: 3 }));
+      rows.push(proseRow('Background', '', proseChunks(d.wider_context, 0).map(t => proseLi('', escapeHtml(t))), { fold: 2 }));
       rows.push(proseRow('Studies', '', (inst.study_notes || []).map(s => proseLi(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : '')))));
-      if (d.bottom_line && !bottomLineRestates(inst)) rows.push(proseRow('Bottom line', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
+      if (d.bottom_line && !bottomLineRestates(inst)) rows.push(proseRow('In short', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
       // Sources: every source the report and the record name, one bullet per site; the date it was researched is the subtitle, and the
       // registry and the filings sit in the box under the title.
       const urls = [].concat((d.sources || []).map(s => s && s.url), inst.sources || []);
       const reg = inst.audit_dossier_url, fil = inst.statutory_filings_url;
       const link = (u, label) => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
       const regLinks = [];
-      if (reg) regLinks.push(`Registry: ${link(reg, registryName(reg))}`);
-      if (fil && fil !== reg) regLinks.push(`Filings: ${link(fil, registryName(fil))}`);
+      if (reg) regLinks.push(`Official register: ${link(reg, registryName(reg))}`);
+      if (fil && fil !== reg) regLinks.push(`Annual filings: ${link(fil, registryName(fil))}`);
       // Where the founding year and the address came from leads the list; the registry and the filings close it.
       const basics = sourcesHtml(inst, true, true) || [];
-      rows.push(proseRow('Sources', d.retrieved ? `Researched ${escapeHtml(humanDate(d.retrieved))}` : '', basics.concat(proseLinkList(urls, 12).map(a => `<li>${a}</li>`), regLinks.length ? [`<li>${regLinks.join(' · ')}</li>`] : []), { fold: 6 }));
+      rows.push(proseRow('Sources', d.retrieved ? `Checked ${escapeHtml(humanDate(d.retrieved))}` : '', basics.concat(proseLinkList(urls, 12).map(a => `<li>${a}</li>`), regLinks.length ? [`<li>${regLinks.join(' · ')}</li>`] : []), { fold: 6 }));
       return proseRows(rows, 'Reporting and context');
     }
     // Accounts from review sites and Reddit, and what readers sent in: the same rows, the caution said once as the subtitle.
     function proseVoicesHtml(inst) {
       const rows = [];
       const accounts = (inst.gossip_data || {}).accounts || [];
-      if (accounts.length) rows.push(proseRow(`Personal accounts (${accounts.length})`, 'User-generated: posts by staff and visitors on review sites and Reddit, quoted as posted. One person’s experience each, not checked as fact and not findings about the institution.', accounts.map(a => {
+      if (accounts.length) rows.push(proseRow(`Staff and visitor posts (${accounts.length})`, 'From review sites and Reddit, quoted as written. Each is one person’s view and has not been checked.', accounts.map(a => {
         const v = accountView(a, inst);
         const urls = (a.sources || []).map(x => x && x.url);
         const pc = /^Praises (.+?); criticises (.+?)\.?$/.exec((a.fields || []).find(f => f[0] === 'Account in brief')?.[1] || '');
@@ -14069,11 +14069,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           ${vcs.length > 0 && vc ? critiqueRowHtml(inst, vc, vcs, vcIdx) : ''}
           ${window.critiqueGalleryRowHtml && window.critiqueGalleryRowHtml(inst) ? proseRows([proseRow('Artists’ images', '', [], { box: window.critiqueGalleryRowHtml(inst) })], 'Artists’ images') : ''}
 
-          ${isCommunity ? proseRows([proseRow('Community research submission', 'Status: community submission, not checked', [
+          ${isCommunity ? proseRows([proseRow('Sent in by a reader', 'Not checked yet', [
             proseLi('', 'This item comes from a community submission. It is kept apart from the records and has not been checked against any source.'),
             proseLi('Contributor:', escapeHtml(inst.contributor || 'not stated')),
             inst.sourceUrl ? `<li><a href="${escapeHtml(inst.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source link</a></li>` : '',
-          ])], 'Community research submission') : ''}
+          ])], 'Sent in by a reader') : ''}
 
           ${proseVoicesHtml(inst)}
           ${isCommunity ? '' : placeReviewsHtml(inst)}
