@@ -2107,9 +2107,41 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
      map, where the chip row is measured again (publishChips in assets/phone-maps.js keeps the last height while hidden). */
   :root.gm-chat:not(.gm-from-chat):not(.gm-feed-open) #workViewContainer:not(#sh-x):not(#sh-y){top:calc(var(--safe-t,48px) + 4px)!important}
   :root.gm-chat:not(.gm-from-chat):not(.gm-feed-open) #gmChips:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+  /* The other windows as the chat (user, 17 Nov 2026: "Make other windows look like this too"). The record sheet on the
+     map and the full record page are laid on the page as the chat is: 32px corners at the top, a hairline round them and
+     the soft shadow, and the cross a 44px round button with a hairline ring at the top right. Each opens up to the row of
+     top buttons and no further: the record page starts 4px under it, and the record sheet's full height stops there
+     (heightOf in assets/phone-maps.js), with the filters put away at full as they are in the chat. The record opened from
+     the chat (gm-from-chat) is the chat's Details tab, a page of its own over the whole screen, and is left as it is. */
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet:not(#sh-x):not(#sh-y),
+  :root.gm-record #detailDrawer:not(#sh-x):not(#sh-y){border:0!important;border-radius:32px 32px 0 0!important;
+    box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 45%,transparent),0 -8px 32px rgba(0,0,0,.14)!important}
+  :root[data-theme="dark"].gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet:not(#sh-x):not(#sh-y),
+  :root[data-theme="dark"].gm-record #detailDrawer:not(#sh-x):not(#sh-y){box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 60%,transparent),0 -8px 32px rgba(0,0,0,.5)!important}
+  :root.gm-record #detailDrawer:not(#sh-x):not(#sh-y){top:calc(env(safe-area-inset-top,0px) + 48px + 4px)!important;overflow:hidden!important;
+    animation:ca-sheet-up .42s cubic-bezier(.32,.72,0,1) backwards}
+  :root.gm-map:not(.gm-from-chat):has(#dossier-bottom-sheet[data-detent="full"]:not(.hidden)) :is(#gmChips,#layersControl,#mapColourKey):not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y),
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y){display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;border:1px solid color-mix(in srgb,var(--sh-rule) 55%,transparent)!important;
+    border-radius:50%!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;box-shadow:0 1px 8px rgba(0,0,0,.08)!important;
+    pointer-events:auto!important;transition:transform .15s ease,background-color .15s ease!important}
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y){top:12px!important;right:16px!important}
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y){top:16px!important;right:16px!important}
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y):hover,
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y):hover{background:color-mix(in srgb,var(--sh-ink) 8%,var(--sh-paper))!important}
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y):active,
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y):active{transform:scale(.92)!important}
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y):focus-visible,
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover,var(--sh-ink))!important;outline-offset:2px!important}
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .sheet-close svg:not(#sh-x):not(#sh-y),
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn svg:not(#sh-x):not(#sh-y){width:20px!important;height:20px!important;stroke-width:1.6!important}
+
 }
 @media (max-width:767px) and (prefers-reduced-motion:reduce){
   :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){animation:none!important}
+  :root.gm-record #detailDrawer:not(#sh-x):not(#sh-y){animation:none!important}
   :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before,
   :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{transition:none!important}
 }
