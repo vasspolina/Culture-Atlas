@@ -79,7 +79,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=698">
-  <link rel="stylesheet" href="assets/sheet.css?v=773">
+  <link rel="stylesheet" href="assets/sheet.css?v=776">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
@@ -336,7 +336,7 @@ return maplibregl$1;
             <div class="layers-list layers-studies">
               <a href="studies.html"><span class="layer-name">Studies across the atlas</span><span class="layer-desc">Epstein, Democracy Now!, Bellingcat, WikiLeaks, shared funders, Brazil’s tax incentives and more</span></a>
               <a href="artists-images.html"><span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Artists&rsquo; work on cultural institutions on one page, from the oldest to the newest, each open to zoom</span></a>
-              <a href="moma-money-map.html"><span class="layer-name">MoMA Money Map</span><span class="layer-desc">Who funds and governs MoMA, drawn as one network</span></a>
+              <a href="moma-money-map.html"><span class="layer-name">MoMA Influence Map</span><span class="layer-desc">Who funds and governs MoMA, drawn as one network</span></a>
             </div>
           </section>
           <section class="layers-section">
@@ -1171,7 +1171,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=766"></script>
+  <script src="assets/institutions.js?v=779"></script>
   <script src="assets/money-ids.js?v=767"></script>
   <script>
 
@@ -10513,7 +10513,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v774';
+    const ATLAS_RELEASE = 'culture-atlas-v778';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -21914,9 +21914,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
 <script src="assets/hq-detail.js?v=744"></script>
-<script src="assets/influence-mode.js?v=770"></script>
+<script src="assets/influence-mode.js?v=779"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=773"></script>
+<script src="assets/phone-maps.js?v=776"></script>
 <script src="assets/desktop-maps.js?v=743"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 </body>
