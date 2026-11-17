@@ -2174,6 +2174,20 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
   :root.gm-map #globeViewport #dossier-bottom-sheet .sheet-close svg:not(#sh-x):not(#sh-y),
   :root.gm-record #detailDrawer .detail-bar #closeDetailBtn svg:not(#sh-x):not(#sh-y){width:20px!important;height:20px!important;stroke-width:1.6!important}
 
+  /* The Share information form as the chat (user, 17 Nov 2026: "Make the share information form look like this too"). The
+     form opens in the chat's window and already had its corners and its place under the top buttons, but the chat's head
+     (the cross, Chat, the menu) was laid over the form's own row (Back, Share information, Close). The form now takes the
+     chat's head: its title centred where Chat stands (.gm-share-title, assets/phone-maps.js), and the round cross at the
+     left closes it back to the chat. Its own row is put away, the heading kept for screen readers, and the form starts
+     under the head. */
+  #phoneChatHead .gm-share-title{display:none}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #phoneChatHead .gm-head-tabs :is(#gmChatTab,#phoneChatDetailsBtn):not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #phoneChatHead .gm-head-tabs .gm-share-title:not(#sh-x):not(#sh-y){display:inline-flex!important;align-items:center!important;
+    height:44px!important;color:var(--sh-ink)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer :is(#noteFormBackBtn,#noteFormCloseBtn):not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #noteFormHead:not(#sh-x):not(#sh-y){position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;
+    padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #workBottomDock:not(#sh-x):not(#sh-y){padding-top:76px!important;scroll-padding-top:76px}
 }
 @media (max-width:767px) and (prefers-reduced-motion:reduce){
   :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){animation:none!important}
