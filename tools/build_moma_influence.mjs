@@ -47,22 +47,29 @@ if (left.length) throw new Error('Entries in no group: ' + left.map(n => n.id).j
 const NY = { c: 'New York', co: 'United States', lat: 40.7128, lon: -74.006 };
 const DC = { c: 'Washington', co: 'United States', lat: 38.9072, lon: -77.0369 };
 const FUNDERS = [
-  { name: 'BlackRock', kind: 'corp', hq: NY, from: ['BlackRock', 'Laurence D. Fink'] },
+  { name: 'BlackRock', kind: 'corp', hq: NY, from: ['BlackRock'] },
   { name: 'Pfizer', kind: 'corp', hq: NY, from: ['Pfizer Inc.', 'Albert Bourla · David Rockefeller Award 2021'] },
   { name: 'Johnson & Johnson', kind: 'corp', hq: { c: 'New Brunswick', co: 'United States', lat: 40.4862, lon: -74.4518 }, from: ['Johnson & Johnson'] },
   { name: 'Axsome Therapeutics', kind: 'corp', hq: NY, from: ['Axsome Therapeutics'] },
+  // Matching gifts only (user, 17 Nov 2026: "keep working on this"): each matched an employee's own gift to MoMA, so its
+  // record says so. One study entry names all five.
+  { name: 'Regeneron', kind: 'corp', kindLabel: 'Company, matching gifts only', hq: { c: 'Tarrytown', co: 'United States', lat: 41.0762, lon: -73.8587 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
+  { name: 'Merck', kind: 'corp', kindLabel: 'Company, matching gifts only', names: ['Merck & Co.', 'Merck & Co'], hq: { c: 'Rahway', co: 'United States', lat: 40.6082, lon: -74.2776 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
+  { name: 'Bristol Myers Squibb', kind: 'corp', kindLabel: 'Company, matching gifts only', names: ['Bristol-Myers Squibb'], hq: { c: 'Princeton', co: 'United States', lat: 40.3573, lon: -74.6672 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
+  { name: 'Eli Lilly', kind: 'corp', kindLabel: 'Company, matching gifts only', names: ['Eli Lilly and Company', 'Lilly'], hq: { c: 'Indianapolis', co: 'United States', lat: 39.7684, lon: -86.1581 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
+  { name: 'Vertex Pharmaceuticals', kind: 'corp', kindLabel: 'Company, matching gifts only', names: ['Vertex'], hq: { c: 'Boston', co: 'United States', lat: 42.3601, lon: -71.0589 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
   { name: 'Roche', kind: 'corp', names: ['F. Hoffmann-La Roche Ltd', 'Roche'], hq: { c: 'Basel', co: 'Switzerland', lat: 47.5596, lon: 7.5886 }, from: ['Roche Innovation Center NY', 'Roche (Hoffmann-La Roche)'] },
-  { name: 'Maja Oeri', kind: 'family', hq: { c: 'Basel', co: 'Switzerland', lat: 47.5596, lon: 7.5886 }, from: ['Maja Oeri'] },
-  { name: 'Ronald O. Perelman', kind: 'family', hq: NY, from: ['Ronald O. Perelman'] },
+  { name: 'Maja Oeri', kind: 'family', kindLabel: 'MoMA trustee', hq: { c: 'Basel', co: 'Switzerland', lat: 47.5596, lon: 7.5886 }, from: ['Maja Oeri'] },
+  { name: 'Ronald O. Perelman', kind: 'family', kindLabel: 'Former MoMA trustee', hq: NY, from: ['Ronald O. Perelman'] },
   { name: 'Sackler family', kind: 'family', keys: ['sacklerfamily'], from: ['Jillian Sackler'] },
-  { name: 'Ronald S. Lauder', kind: 'family', hq: NY, from: ['Ronald S. Lauder'] },
+  // Ronald Lauder is not drawn: the study took him out ("MoMA Money Map: Ronald Lauder removed", release 789).
   { name: 'Estée Lauder Companies', kind: 'corp', hq: NY, from: ['Estée Lauder Companies'] },
   { name: 'KKR and the Kravis family', kind: 'fund', keys: ['kkr'], from: ['Marie-Josée Kravis', 'Henry R. Kravis'] },
   { name: 'Steven Cohen (Point72)', kind: 'family', keys: ['right:cohen'], from: ['Steven A. Cohen'] },
-  { name: 'Steven Tananbaum', kind: 'family', hq: NY, from: ['Steven Tananbaum'] },
+  { name: 'Steven Tananbaum', kind: 'family', kindLabel: 'MoMA trustee', hq: NY, from: ['Steven Tananbaum'] },
   { name: 'Leon Black (Apollo)', kind: 'family', keys: ['leonblack'], from: ['Leon D. Black', 'Apollo Global Management'] },
   { name: 'Ken Griffin / Citadel', kind: 'family', keys: ['right:griffin'], from: ['Kenneth C. Griffin', 'Citadel'] },
-  { name: 'Helen Zell', kind: 'family', hq: { c: 'Chicago', co: 'United States', lat: 41.8781, lon: -87.6298 }, from: ['Helen Zell'] },
+  { name: 'Helen Zell', kind: 'family', kindLabel: 'MoMA trustee', hq: { c: 'Chicago', co: 'United States', lat: 41.8781, lon: -87.6298 }, from: ['Helen Zell'] },
   { name: 'Fox Corporation', kind: 'corp', hq: NY, from: ['Fox Corporation · 21st Century Fox', 'Murdoch family · News Corp'] },
   { name: 'The Wall Street Journal (Dow Jones)', kind: 'corp', hq: NY, from: ['The Wall Street Journal'] },
   { name: 'John Paulson (Paulson & Co.)', kind: 'family', keys: ['paulsonfamily'], from: ['Paulson & Co. (John Paulson)'] },
@@ -70,8 +77,25 @@ const FUNDERS = [
   { name: 'Blavatnik Family Foundation', kind: 'family', keys: ['blavatnikfamily'], from: ['Schwarzman · Langone · Blavatnik · Loeb · Tepper'] },
   { name: 'Glenn Dubin (Highbridge Capital)', kind: 'family', keys: ['glenndubin'], from: ['Glenn Dubin'] },
   { name: 'The Rockefeller University', kind: 'found', hq: NY, from: ['The Rockefeller University'] },
-  { name: 'Rockefeller Brothers Fund', kind: 'found', names: ['Rockefeller Brothers Fund'], hq: NY, from: ['Rockefeller Brothers Fund'] },
-  { name: 'David Rockefeller', kind: 'family', hq: NY, from: ['David Rockefeller'] },
+  { name: 'Rockefeller family and foundations', kind: 'family', keys: ['rockefellerbrothers'], from: ['Rockefeller Brothers Fund'] },
+  // David Rockefeller's gifts are the family funder's (the ledger's 'Rockefeller family and foundations'); the trustees
+  // Nelson, David Jr. and Sharon Percy Rockefeller keep their own dots below, as board members.
+  { name: 'David Rockefeller', kind: 'family', keys: ['rockefellerbrothers'], from: ['David Rockefeller'] },
+  // The other trustees and board members the study names (user, 17 Nov 2026: "add the other MoMA trustees as dots too"),
+  // at the city they live or work in, whether or not the study gives a gift: the board is where the money governs.
+  { name: 'Laurence D. Fink', kind: 'family', kindLabel: 'MoMA trustee', hq: NY, from: ['Laurence D. Fink'] },
+  { name: 'Sharon Percy Rockefeller', kind: 'family', kindLabel: 'MoMA trustee', hq: DC, from: ['Sharon Percy Rockefeller'] },
+  { name: 'Jon Stryker', kind: 'family', kindLabel: 'MoMA trustee', hq: NY, from: ['Jon Stryker', 'Stryker Corporation'] },
+  { name: 'Sid R. Bass', kind: 'family', kindLabel: 'MoMA trustee', hq: { c: 'Fort Worth', co: 'United States', lat: 32.7555, lon: -97.3308 }, from: ['Sid R. Bass'] },
+  { name: 'Maurice R. Greenberg', kind: 'family', kindLabel: 'MoMA trustee', hq: NY, from: ['Maurice R. Greenberg'] },
+  { name: 'Anne Dias Griffin', kind: 'family', kindLabel: 'MoMA trustee', hq: { c: 'Chicago', co: 'United States', lat: 41.8781, lon: -87.6298 }, from: ['Anne Dias Griffin'] },
+  { name: 'David Rockefeller, Jr.', kind: 'family', kindLabel: 'MoMA trustee', hq: NY, from: ['David Rockefeller, Jr.'] },
+  { name: 'Nelson A. Rockefeller', kind: 'family', kindLabel: 'Former MoMA trustee', hq: NY, from: ['Nelson A. Rockefeller'] },
+  { name: 'John Hay Whitney', kind: 'family', kindLabel: 'Former MoMA trustee', hq: NY, from: ['John Hay Whitney', 'Whitney Trust'] },
+  { name: 'William A. M. Burden', kind: 'family', kindLabel: 'Former MoMA trustee', hq: NY, from: ['William A. M. Burden'] },
+  { name: 'William S. Paley', kind: 'family', kindLabel: 'Former MoMA trustee', hq: NY, from: ['William S. Paley'] },
+  { name: 'Peter G. Peterson', kind: 'family', kindLabel: 'Former MoMA trustee', hq: NY, from: ['Peter G. Peterson'] },
+  { name: 'Julius Fleischmann', kind: 'family', kindLabel: 'MoMA International Program board', hq: { c: 'Cincinnati', co: 'United States', lat: 39.1031, lon: -84.512 }, from: ['Julius Fleischmann', 'Farfield Foundation'] },
   // Public money (user, 17 Nov 2026: "show government funders too"): the bodies the study says paid MoMA, gave it a tax or
   // bond advantage, or bought its work, each at its seat. A foreign government is set at its capital, since it is that
   // government's money, not its consulate's or mission's.

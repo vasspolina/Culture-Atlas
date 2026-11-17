@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=16', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=20', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -40,7 +40,7 @@
     }).catch(() => { loading = null; return null; });
     // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
     // beside the ledger; if it fails to load, MoMA's record simply goes without it.
-    fetch('assets/moma-influence.json?v=6', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
+    fetch('assets/moma-influence.json?v=8', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
     return loading;
   }
 
@@ -124,7 +124,7 @@
     if (window.scheduleRender) window.scheduleRender();
   }
   // MoMA's funders from the MoMA Influence Map study join as dots (user, 17 Nov 2026: "show moma funders as dots on
-  // the influence map"; "show government funders too"; "add the other public bodies too"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
+  // the influence map"; "show government funders too"; "add the other public bodies too"; "add the other MoMA trustees as dots too"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
   // MoMA among its museums; the rest are new dots at their offices, with MoMA as their one museum. Run once, after the
   // funding maps have joined, so a funder they name is never drawn twice.
   let studyMerged = false;
@@ -262,7 +262,9 @@
     // name, which is how the sourced figure is counted too; culture is never a missing filing, so never a hollow dot.
     culture: { label: 'Culture', what: 'how many museums it gives to',
       value: f => cultureSpaces(f) || null,
-      text: f => { const n = cultureSpaces(f); return n ? `${n} ${n === 1 ? 'museum' : 'museums'}` : ''; } },
+      // A funder known only from the MoMA study names MoMA instead of "1 museum" (user, 17 Nov 2026: "keep working on this"),
+      // so the CIA or a trustee does not read as a museum funder at large.
+      text: f => { const n = cultureSpaces(f); if (n === 1 && f.study) return 'MoMA'; return n ? `${n} ${n === 1 ? 'museum' : 'museums'}` : ''; } },
     us: { label: 'US lobbying', noun: 'US lobbying', what: 'what it spent lobbying the US government in 2025',
       value: f => (fig(f).us_lobbying || {}).usd || null,
       text: f => { const u = fig(f).us_lobbying; return u ? fmtMoney(u.usd, 'USD') : ''; } },

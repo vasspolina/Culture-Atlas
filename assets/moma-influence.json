@@ -153,7 +153,7 @@
      "name": "US State Department",
      "role": "Ambassadorships held by MoMA leaders",
      "money": "",
-     "note": "John Hay Whitney (UK, 1957–61), William A. M. Burden (Belgium, 1959–61), Ronald Lauder (Austria, 1986–87). Nelson Rockefeller was Assistant Secretary of State for Latin America, 1944–45. René d'Harnoncourt sat on the Department's Advisory Committee on Art.",
+     "note": "John Hay Whitney (UK, 1957–61), William A. M. Burden (Belgium, 1959–61). Nelson Rockefeller was Assistant Secretary of State for Latin America, 1944–45. René d'Harnoncourt sat on the Department's Advisory Committee on Art.",
      "sources": [
       "https://en.wikipedia.org/wiki/William_A._M._Burden",
       "https://en.wikipedia.org/wiki/John_Hay_Whitney"
@@ -291,7 +291,7 @@
      "name": "Trump administration & 2017 inaugural",
      "role": "Where MoMA's donors and the executive branch meet",
      "money": "$1M each from Henry Kravis, Steven Cohen and Len Blavatnik to the inaugural",
-     "note": "Larry Fink and Stephen Schwarzman sat on the 2017 Strategic and Policy Forum (Schwarzman chaired it). John Paulson was a campaign economic adviser. Ronald Lauder is a long-time friend and donor.",
+     "note": "Larry Fink and Stephen Schwarzman sat on the 2017 Strategic and Policy Forum (Schwarzman chaired it). John Paulson was a campaign economic adviser.",
      "sources": [
       "https://www.theartnewspaper.com/2017/04/19/art-collector-steven-cohen-gave-dollar1m-to-trump-inauguration",
       "https://www.cnbc.com/2017/04/19/trumps-inaugural-committee-raised-a-record-106-7-million--heres-who-donated.html",
@@ -306,18 +306,6 @@
      "sources": [
       "https://news.artnet.com/art-world/steve-cohen-republican-donor-1207619",
       "https://floridapolitics.com/archives/454940-ron-desantis-biggest-backer-ken-griffin-spends-big-on-politics/"
-     ]
-    },
-    {
-     "name": "Ronald S. Lauder",
-     "role": "Honorary Chairman; Chairman 1995–2005; $150,000+ donor FY2025",
-     "money": "FEC 2015–24: $14.7M+",
-     "note": "Reagan's Ambassador to Austria; 1989 Republican mayoral candidate ($13.6M self-funded); Trump friend and donor in 2016 and 2020; $1M to the Republican State Leadership Committee in 2022. Forbes puts his lifetime political spend above $70M. Mentioned more than 900 times in the January 2026 DOJ Epstein files, including a 2014 email sending Epstein the possession and loan agreement for a Kurt Schwitters work he co-owns with Leon Black; in 2017 their assistants arranged meetings and calls. ARTnews found no direct communication between the two men; Lauder has not commented.",
-     "sources": [
-      "https://www.artnews.com/art-news/news/ronald-lauder-jeffrey-epstein-files-1234772151/",
-      "https://www.cnbc.com/2022/10/20/midterms-news-ronald-lauder-gives-1-million-to-republican-state-leadership-committee.html",
-      "https://www.forbes.com/sites/alisondurkee/2026/08/06/billionaire-trump-pal-ron-lauder-spent-more-than-70-million-on-politics-now-hes-apparently-bowing-out/",
-      "https://www.csmonitor.com/1989/0810/alaud.html"
      ]
     },
     {
@@ -901,8 +889,7 @@
     "lon": -74.006
    },
    "from": [
-    "BlackRock",
-    "Laurence D. Fink"
+    "BlackRock"
    ]
   },
   {
@@ -946,6 +933,90 @@
    ]
   },
   {
+   "name": "Regeneron",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "hq": {
+    "c": "Tarrytown",
+    "co": "United States",
+    "lat": 41.0762,
+    "lon": -73.8587
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
+   "name": "Merck",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "names": [
+    "Merck & Co.",
+    "Merck & Co"
+   ],
+   "hq": {
+    "c": "Rahway",
+    "co": "United States",
+    "lat": 40.6082,
+    "lon": -74.2776
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
+   "name": "Bristol Myers Squibb",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "names": [
+    "Bristol-Myers Squibb"
+   ],
+   "hq": {
+    "c": "Princeton",
+    "co": "United States",
+    "lat": 40.3573,
+    "lon": -74.6672
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
+   "name": "Eli Lilly",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "names": [
+    "Eli Lilly and Company",
+    "Lilly"
+   ],
+   "hq": {
+    "c": "Indianapolis",
+    "co": "United States",
+    "lat": 39.7684,
+    "lon": -86.1581
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
+   "name": "Vertex Pharmaceuticals",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "names": [
+    "Vertex"
+   ],
+   "hq": {
+    "c": "Boston",
+    "co": "United States",
+    "lat": 42.3601,
+    "lon": -71.0589
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
    "name": "Roche",
    "kind": "corp",
    "names": [
@@ -966,6 +1037,7 @@
   {
    "name": "Maja Oeri",
    "kind": "family",
+   "kindLabel": "MoMA trustee",
    "hq": {
     "c": "Basel",
     "co": "Switzerland",
@@ -979,6 +1051,7 @@
   {
    "name": "Ronald O. Perelman",
    "kind": "family",
+   "kindLabel": "Former MoMA trustee",
    "hq": {
     "c": "New York",
     "co": "United States",
@@ -997,19 +1070,6 @@
    ],
    "from": [
     "Jillian Sackler"
-   ]
-  },
-  {
-   "name": "Ronald S. Lauder",
-   "kind": "family",
-   "hq": {
-    "c": "New York",
-    "co": "United States",
-    "lat": 40.7128,
-    "lon": -74.006
-   },
-   "from": [
-    "Ronald S. Lauder"
    ]
   },
   {
@@ -1049,6 +1109,7 @@
   {
    "name": "Steven Tananbaum",
    "kind": "family",
+   "kindLabel": "MoMA trustee",
    "hq": {
     "c": "New York",
     "co": "United States",
@@ -1084,6 +1145,7 @@
   {
    "name": "Helen Zell",
    "kind": "family",
+   "kindLabel": "MoMA trustee",
    "hq": {
     "c": "Chicago",
     "co": "United States",
@@ -1175,17 +1237,11 @@
    ]
   },
   {
-   "name": "Rockefeller Brothers Fund",
-   "kind": "found",
-   "names": [
-    "Rockefeller Brothers Fund"
+   "name": "Rockefeller family and foundations",
+   "kind": "family",
+   "keys": [
+    "rockefellerbrothers"
    ],
-   "hq": {
-    "c": "New York",
-    "co": "United States",
-    "lat": 40.7128,
-    "lon": -74.006
-   },
    "from": [
     "Rockefeller Brothers Fund"
    ]
@@ -1193,6 +1249,17 @@
   {
    "name": "David Rockefeller",
    "kind": "family",
+   "keys": [
+    "rockefellerbrothers"
+   ],
+   "from": [
+    "David Rockefeller"
+   ]
+  },
+  {
+   "name": "Laurence D. Fink",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
    "hq": {
     "c": "New York",
     "co": "United States",
@@ -1200,7 +1267,178 @@
     "lon": -74.006
    },
    "from": [
-    "David Rockefeller"
+    "Laurence D. Fink"
+   ]
+  },
+  {
+   "name": "Sharon Percy Rockefeller",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "Sharon Percy Rockefeller"
+   ]
+  },
+  {
+   "name": "Jon Stryker",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Jon Stryker",
+    "Stryker Corporation"
+   ]
+  },
+  {
+   "name": "Sid R. Bass",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "Fort Worth",
+    "co": "United States",
+    "lat": 32.7555,
+    "lon": -97.3308
+   },
+   "from": [
+    "Sid R. Bass"
+   ]
+  },
+  {
+   "name": "Maurice R. Greenberg",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Maurice R. Greenberg"
+   ]
+  },
+  {
+   "name": "Anne Dias Griffin",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "Chicago",
+    "co": "United States",
+    "lat": 41.8781,
+    "lon": -87.6298
+   },
+   "from": [
+    "Anne Dias Griffin"
+   ]
+  },
+  {
+   "name": "David Rockefeller, Jr.",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "David Rockefeller, Jr."
+   ]
+  },
+  {
+   "name": "Nelson A. Rockefeller",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Nelson A. Rockefeller"
+   ]
+  },
+  {
+   "name": "John Hay Whitney",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "John Hay Whitney",
+    "Whitney Trust"
+   ]
+  },
+  {
+   "name": "William A. M. Burden",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "William A. M. Burden"
+   ]
+  },
+  {
+   "name": "William S. Paley",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "William S. Paley"
+   ]
+  },
+  {
+   "name": "Peter G. Peterson",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Peter G. Peterson"
+   ]
+  },
+  {
+   "name": "Julius Fleischmann",
+   "kind": "family",
+   "kindLabel": "MoMA International Program board",
+   "hq": {
+    "c": "Cincinnati",
+    "co": "United States",
+    "lat": 39.1031,
+    "lon": -84.512
+   },
+   "from": [
+    "Julius Fleischmann",
+    "Farfield Foundation"
    ]
   },
   {
