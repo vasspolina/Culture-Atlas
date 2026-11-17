@@ -2318,7 +2318,7 @@
      "source": "https://www.csmvs.in/patronage.html"
     },
     "spaces": 5,
-    "entries": 8
+    "entries": 9
    }
   }
  },
@@ -3307,5 +3307,218 @@
     "entries": 8
    }
   }
+ },
+ "bajaj": {
+  "made_from": "The Bajaj family's money comes from the Bajaj group's companies, among them the motorcycle maker Bajaj Auto and the lender Bajaj Finance.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Bajaj Auto reported total operating income of Rs50,010 crore and profit after tax of Rs8,151 crore for FY2025.",
+    "date": "2025",
+    "source": "https://filingreader.com/news-wire/mumbai/2025-07-12/bajaj-auto-reports-rs50010-crore-revenue-rs8151-crore-profit"
+   },
+   {
+    "kind": "harm",
+    "text": "In November 2023 the Reserve Bank of India stopped Bajaj Finance lending through its eCOM and Insta EMI Card products, citing key fact statements not given to borrowers; it lifted the restrictions on 2 May 2024 after remedial action.",
+    "date": "2023-11",
+    "source": "https://www.business-standard.com/amp/finance/news/rbi-lifts-curb-on-bajaj-finance-s-lending-products-ecom-insta-emi-card-124050201373_1.html"
+   }
+  ]
+ },
+ "munjal": {
+  "made_from": "Sunil Kant Munjal's money comes from Hero Enterprise, which he chairs, his part of the Hero group, with firms in insurance broking and real estate.",
+  "facts": []
+ },
+ "poddar": {
+  "made_from": "Abhishek Poddar's money comes from his family's companies: he is managing director of Matheson Bosanquet, in tea production, trading and export, and a director of Sua Explosives & Accessories, which makes mining explosives.",
+  "facts": []
+ },
+ "jindal": {
+  "made_from": "Sangeeta Jindal's money comes through the JSW Foundation, of the JSW group, which is mostly steel; its power arm is about 5% of group revenue.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "JSW Steel reported a net profit of Rs 3,491 crore for FY25, down more than 61 per cent.",
+    "date": "2025-05",
+    "source": "https://ianslive.in/jsw-steels-annual-net-profit-falls-over-61-pc-to-rs-3491-crore-in-fy25--20250523174421"
+   },
+   {
+    "kind": "lobbying",
+    "text": "An outside firm, The Vogel Group, reported $187,000 in 2025 fees from JSW Steel USA for US federal lobbying, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=JSW+Steel&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 187000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=JSW+Steel&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "godrej": {
+  "made_from": "The Godrej money comes from the Godrej companies; since the family's 2024 split, Jamshyd Godrej's side holds the unlisted Godrej & Boyce and its affiliates and a Mumbai land bank, and Adi and Nadir Godrej keep the listed Godrej Industries firms.",
+  "facts": []
+ },
+ "hdfc": {
+  "made_from": "HDFC's money comes from banking: HDFC Limited, the mortgage lender named at the museum, merged into HDFC Bank in 2023.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "HDFC Bank reported a net profit of ₹67,347.4 crore for FY 2024-25, up from ₹60,812.3 crore.",
+    "date": "2025-04",
+    "source": "https://www.torusdigital.com/toruscope/quarterly-results/hdfc-bank-q4-results-fy-2025/"
+   },
+   {
+    "kind": "harm",
+    "text": "In September 2025 the Dubai Financial Services Authority banned HDFC Bank's Dubai branch from onboarding new clients, over its servicing of customers who had not been onboarded as clients of the branch.",
+    "date": "2025-09",
+    "source": "https://www.thenationalnews.com/business/banking/2025/09/27/indias-hdfc-bank-banned-from-accepting-new-clients-in-dubai"
+   }
+  ]
+ },
+ "infosys": {
+  "made_from": "Infosys's money comes from IT services and consulting.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Infosys delivered $19,277 million in FY25 revenues, growth of 4.2% in constant currency.",
+    "date": "2025-04",
+    "source": "https://www.aap.com.au/aapreleases/cision20250417ae66150/"
+   },
+   {
+    "kind": "harm",
+    "text": "In 2013 Infosys agreed to pay US$34 million to end a US investigation into its use of temporary visas to fly workers to client sites in the United States; it denied widespread wrongdoing.",
+    "date": "2013-10",
+    "source": "https://www.itnews.com.au/news/infosys-to-pay-34m-in-us-visa-case-362510"
+   },
+   {
+    "kind": "lobbying",
+    "text": "An outside firm, DGA Group Government Relations, reported $360,000 in 2025 fees from Infosys for US federal lobbying, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Infosys&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 360000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Infosys&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "wipro": {
+  "made_from": "Wipro's money comes from IT services; Azim Premji, its founder chairman, gives through the Azim Premji Foundation, and the Wipro Foundation is the company's own.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Wipro's IT Services revenues for FY25 amounted to USD 10.51 billion, a year-on-year degrowth of 2.3%.",
+    "date": "2025-04",
+    "source": "https://filingreader.com/news-wire/mumbai/2025-04-17/wipro-announces-q4-fy25-results-and-analyst-meeting-transcript"
+   }
+  ]
+ },
+ "mittal": {
+  "made_from": "Lakshmi Mittal's money comes from ArcelorMittal, the steel and mining company his family controls; his son Aditya Mittal is its chief executive.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "ArcelorMittal reported net income attributable to equity holders of US$3,152 million for 2025, on sales of US$61,352 million.",
+    "date": "2026-02",
+    "source": "https://mfn.se/all/a/arcelormittal/arcelormittal-reports-fourth-quarter-2025-and-full-year-2025-results-8000be70"
+   },
+   {
+    "kind": "harm",
+    "text": "A fire at the Kostenko coal mine in Kazakhstan, operated by ArcelorMittal Temirtau, killed 45 people on 28 October 2023.",
+    "date": "2023-10",
+    "source": "https://www.mining-technology.com/news/fire-arcelormittals-mine-45/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "ArcelorMittal declared EU lobbying costs of €1,250,000 to €1,499,999 for its closed financial year, February 2025 to January 2026.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/arcelormittal?rid=23527541824-60"
+   },
+   {
+    "kind": "lobbying",
+    "text": "ArcelorMittal North America Holdings reported $880,000 in its own 2025 US federal lobbying reports, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=ArcelorMittal+North+America+Holdings&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap scores ArcelorMittal D+ for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/ArcelorMittal-c6dfbde97d6da50fe5027ac1534b42f6"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 1250000,
+    "eur_max": 1499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/arcelormittal?rid=23527541824-60"
+   },
+   "us_lobbying": {
+    "usd": 880000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=ArcelorMittal+North+America+Holdings&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "mphasis": {
+  "made_from": "Mphasis's money comes from IT services, mostly for banks and financial firms.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Mphasis's net profit for the year ended March 2025 grew 9.5 per cent to Rs 1,702.1 crore, on revenue from operations of Rs 14,230 crore.",
+    "date": "2025-04",
+    "source": "https://www.business-standard.com/companies/news/mphasis-q4-results-net-profit-rises-13-6-to-446-5-cr-on-bfsi-led-growth-125042501124_1.html"
+   }
+  ]
+ },
+ "apeejay": {
+  "made_from": "The Paul family's money comes from the Apeejay Surrendra Group, a Kolkata conglomerate in hotels (The Park), tea, shipping and the Oxford Bookstore.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Apeejay Surrendra Park Hotels, which owns the Park hotel chain, declared FY25 revenue from operations of ₹631.45 crore and a consolidated net profit of ₹83.6 crore.",
+    "date": "2025-05",
+    "source": "https://hdfcsky.com/news/apeejay-surrendra-park-hotels-net-profit-in-fy25-up-by-21-5-percent"
+   }
+  ]
+ },
+ "biocon": {
+  "made_from": "Kiran Mazumdar-Shaw's money comes from Biocon, the Bengaluru biopharmaceutical company she founded.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Biocon's revenue from operations for FY25 grew 9 per cent to ₹11,537.8 crore, and net profit declined 0.9 per cent to ₹1,013.3 crore.",
+    "date": "2025-05",
+    "source": "https://www.business-standard.com/companies/quarterly-results/biocon-q4fy25-results-consolidated-net-profit-rises-153-to-344-crore-125050801577_1.html"
+   },
+   {
+    "kind": "harm",
+    "text": "In June 2022 the CBI arrested a joint drugs controller in an alleged Rs 9 lakh bribery case to favour Biocon Biologics' insulin aspart injection, and booked the company's associate vice president L Praveen Kumar; the company denied the allegations.",
+    "date": "2022-06",
+    "source": "https://www.tribuneindia.com/news/nation/cbi-arrests-joint-drugs-controller-in-bribery-case-to-clear-diabetes-injection-405749"
+   }
+  ]
  }
 }
