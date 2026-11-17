@@ -77,3 +77,12 @@ test('every funder figure is a number with a source', () => {
     if (f.political) assert.ok(f.political.usd > 0 && f.political.rep_usd >= 0 && f.political.dem_usd >= 0 && f.political.rep_usd + f.political.dem_usd <= f.political.usd * 1.05 && /fec\.gov/.test(f.political.source), `${k}: political giving`);
   }
 });
+
+// Checked against source pages: an entry says how far it is checked, and a checked one links the page that bears it out.
+test('every entry says how far it is checked, and a checked one names its page', () => {
+  for (const f of layer.funders) for (const t of f.ties) {
+    assert.ok(['source', 'source-partly', 'record'].includes(t.check), `${f.name} at ${t.space_name}: check ${t.check}`);
+    if (t.check !== 'record') assert.ok(/^https?:\/\//.test(t.checked_source || ''), `${f.name} at ${t.space_name}: the page that bears it out`);
+    if (t.check === 'source-partly') assert.ok(t.checked_missing && !/—/.test(t.checked_missing), `${f.name} at ${t.space_name}: what the page does not give`);
+  }
+});
