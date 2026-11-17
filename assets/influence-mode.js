@@ -153,10 +153,10 @@
     ctx.arc(x, y, s * 0.85, 0, Math.PI * 2);
     ctx.closePath();
   }
-  let HITS = [], hover = null;
+  let HITS = [], SPACE_HITS = [], hover = null, hoverSpace = null;
   const FONT = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
   window.atlasInfluenceDraw = function (ctx, project, r, cx, cy, ground, text) {
-    HITS = [];
+    HITS = []; SPACE_HITS = [];
     if (!on || !DATA) return;
     if (!fan) fanOut();
     const ink = text || (isDark() ? '#e6e1d7' : '#000000'), paper = ground || (isDark() ? '#151412' : '#ffffff');
@@ -203,19 +203,21 @@
       names.forEach((nm, id) => {
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
         const pt = project(i.lon, i.lat, r, cx, cy); if (!pt.front) return;
-        pts.push({ x: pt.x, y: pt.y, label: i.name || nm || '' });
+        pts.push({ id, x: pt.x, y: pt.y, label: i.name || nm || '' });
         placed.push({ x: pt.x - 6, y: pt.y - 6, w: 12, h: 12 });
       });
-      pts.forEach(({ x, y, label }) => {
+      pts.forEach(({ id, x, y, label }) => {
         if (!label) return;
         const w = ctx.measureText(label).width, gap = 9;
         const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 6], [-w / 2, -gap - 6], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15]];
         const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
         const clash = b => placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
         const spot = spots.find(sp => !clash(boxAt(sp))); if (!spot) return;
-        placed.push(boxAt(spot));
+        const box = boxAt(spot); placed.push(box);
+        // The name is a link, as it is in the chat: pointed at it turns the link colour, clicked it opens the space.
+        SPACE_HITS.push({ id, box });
         ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, x + spot[0], y + spot[1]);
-        ctx.fillStyle = ink; ctx.fillText(label, x + spot[0], y + spot[1]);
+        ctx.fillStyle = hoverSpace === id ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, x + spot[0], y + spot[1]);
       });
     }
     marks.slice().sort((a, b) => (picked === b.f) - (picked === a.f) || b.n - a.n).forEach(m => {
@@ -237,6 +239,8 @@
     });
     ctx.restore();
   };
+  // A picked funder's space named on the map, under the pointer.
+  const spaceAt = (mx, my) => { const h = SPACE_HITS.find(q => mx >= q.box.x && mx <= q.box.x + q.box.w && my >= q.box.y && my <= q.box.y + q.box.h); return h ? h.id : null; };
   const hitAt = (mx, my) => {
     let best = null, bd = Infinity;
     HITS.forEach(h => {
@@ -251,13 +255,17 @@
   window.atlasInfluencePointer = {
     hover(mx, my) {
       if (!on) return false;
-      const f = hitAt(mx, my);
-      if (f !== hover) { hover = f; if (window.scheduleRender) window.scheduleRender(); }
-      return !!f;
+      const sp = spaceAt(mx, my), f = sp ? null : hitAt(mx, my);
+      if (f !== hover || sp !== hoverSpace) { hover = f; hoverSpace = sp; if (window.scheduleRender) window.scheduleRender(); }
+      return !!(f || sp);
     },
     // A funder opens its ledger and its spaces come onto the map; picking it again puts it away.
     click(mx, my) {
       if (!on) return false;
+      // A space's name opens that space, as its name in the chat does (user, 17 Nov 2026: "make the museum names in chat
+      // clickable on the map too").
+      const sp = spaceAt(mx, my);
+      if (sp) { if (typeof window.selectInstitution === 'function') window.selectInstitution(sp, false); return true; }
       const f = hitAt(mx, my); if (!f) return false;
       if (picked === f) { pick(null); if (typeof window.atlasHqClose === 'function') window.atlasHqClose(); return true; }
       openFunder(f.key);
@@ -279,7 +287,7 @@
       if (window.atlasHq && window.atlasHq.ready) window.atlasHq.ready(() => {});   // the funding maps, so a funder's record can open
       greet();
     } else {
-      picked = null; pickedSpaces = null; hover = null;
+      picked = null; pickedSpaces = null; hover = null; hoverSpace = null;
       say('<p class="no-indent">Influence mode is off. The map shows the spaces again.</p>');
     }
     if (typeof window.atlasRefilter === 'function') window.atlasRefilter();
