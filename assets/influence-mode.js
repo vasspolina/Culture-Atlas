@@ -145,12 +145,46 @@
     ctx.arc(x, y, s * 0.85, 0, Math.PI * 2);
     ctx.closePath();
   }
+  // Companies carry their logo before their name, in the map's ink (user, 17 Nov 2026: "you can addd black and white logos to
+  // companies"). The masks are the money map's sheet (assets/funder-logos.png, keyed by funder key; tools/build_funder_logos.py),
+  // filled with ink, so a logo is black on the light map and light on the dark one, never its brand colours. A family has
+  // no logo, and a company with none on record is its name alone.
+  let LOGOS = null, logosLoading = false;
+  const LOGO_H = 15, LOGO_GAP = 5, logoTint = new Map();
+  function loadLogos() {
+    if (LOGOS || logosLoading) return;
+    logosLoading = true;
+    fetch('assets/funder-logos.json?v=2').then(r => r.json()).then(idx => {
+      const img = new Image();
+      img.onload = () => { LOGOS = { idx, img }; if (window.scheduleRender) window.scheduleRender(); };
+      img.onerror = () => { logosLoading = false; };
+      img.src = 'assets/funder-logos.png?v=2';
+    }).catch(() => { logosLoading = false; });
+  }
+  function logoOf(f) {
+    if (f.kind !== 'corp' || !LOGOS) return null;
+    const rc = LOGOS.idx[f.key]; if (!rc) return null;
+    return { rc, w: rc[2] * LOGO_H / rc[3], h: LOGO_H };
+  }
+  function tinted(rc, col) {
+    const id = rc.join(',') + col;
+    let c = logoTint.get(id);
+    if (!c) {
+      c = document.createElement('canvas'); c.width = rc[2]; c.height = rc[3];
+      const x = c.getContext('2d');
+      x.drawImage(LOGOS.img, rc[0], rc[1], rc[2], rc[3], 0, 0, rc[2], rc[3]);
+      x.globalCompositeOperation = 'source-in'; x.fillStyle = col; x.fillRect(0, 0, rc[2], rc[3]);
+      logoTint.set(id, c);
+    }
+    return c;
+  }
   let HITS = [], hover = null;
   const FONT = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
   window.atlasInfluenceDraw = function (ctx, project, r, cx, cy, ground, text) {
     HITS = [];
     if (!on || !DATA) return;
     if (!fan) fanOut();
+    loadLogos();
     const ink = text || (isDark() ? '#e6e1d7' : '#000000'), paper = ground || (isDark() ? '#151412' : '#ffffff');
     const insts = g('ALL_INSTITUTIONS') || [];
     ctx.save();
@@ -190,7 +224,8 @@
       // The name beside the mark in plain type on a halo of the map's ground, never cut short, moved round the mark
       // until it covers no other name or mark. Where every place is taken (Europe at world zoom) it waits, as a city's
       // name does, and shows once the map is zoomed in or the mark is pointed at; the picked funder's always shows.
-      const label = f.name, w = ctx.measureText(label).width, gap = s + 5;
+      const lg = logoOf(f), lw = lg ? lg.w + LOGO_GAP : 0;
+      const label = f.name, w = lw + ctx.measureText(label).width, gap = s + 5;
       const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
       const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
       const clash = b => placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
@@ -198,8 +233,14 @@
       if (!free && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
       const spot = free || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
       placed.push(b);
-      ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx, ly);
-      ctx.fillStyle = hov && !sel ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, lx, ly);
+      const col = hov && !sel ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink;
+      if (lg) {
+        // A halo of the map's ground behind the logo, as the name has, so a coastline never runs through it.
+        ctx.fillStyle = paper; ctx.fillRect(lx - 2, ly - lg.h / 2 - 2, lg.w + 4, lg.h + 4);
+        ctx.drawImage(tinted(lg.rc, col), lx, ly - lg.h / 2, lg.w, lg.h);
+      }
+      ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx + lw, ly);
+      ctx.fillStyle = col; ctx.fillText(label, lx + lw, ly);
       HITS.push({ f, x, y, s, label: b });
     });
     ctx.restore();

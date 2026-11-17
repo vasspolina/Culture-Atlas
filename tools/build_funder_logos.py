@@ -32,6 +32,14 @@ PICK = {
     'UniCredit Bank S.A. (Romania)': 'Q4682050',  # UniCredit Bank Romania, not the Hungarian bank
 }
 
+# Influence mode's companies with no office in assets/hq.json (their office is HQ_EXTRA in tools/build_influence.py), keyed
+# by the funder key assets/influence.json uses, so the funders map can set each one's logo beside its name (user, 17 Nov
+# 2026: "you can addd black and white logos to companies"). Philip Morris takes PMI's logo, the brand it is known by.
+INFLUENCE_EXTRA = {
+    'vale': 'Vale', 'jti': 'Japan Tobacco International', 'eni': 'Eni', 'equinor': 'Equinor',
+    'riotinto': 'Rio Tinto', 'philipmorris': 'Philip Morris International',
+}
+
 SUFFIX = re.compile(r'(,?\s+(AG|SA|S\.A\.|S\.A\.B\. de C\.V\.|Inc\.?|LLC|Ltd\.?|Limited|Corporation|Company|Co\.|plc|S\.p\.A\.|SE|'
                     r'AG & Co\. KGaA|AKTIENGESELLSCHAFT|Aktiengesellschaft|N\.V\.|Nyrt\.|a\.s\.|A/S|AD|K\.S\.C\.P\.|U\.A\.|eG|Zrt\.|Kft\.))+$')
 
@@ -128,6 +136,8 @@ def download(fname, dest):
 def main():
     os.makedirs(CACHE, exist_ok=True)
     orgs = json.load(open(os.path.join(ROOT, 'assets', 'hq.json'), encoding='utf-8'))['org']
+    for key, n in INFLUENCE_EXTRA.items():
+        orgs.setdefault(key, {'n': n, 'k': 'corp'})
     if '--pack' not in sys.argv:
         names = sorted({o['n'] for o in orgs.values() if o['k'] == 'corp'} - WRONG)
         matches = lookup_all(names)
