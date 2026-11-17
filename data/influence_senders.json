@@ -1,13 +1,13 @@
 {
- "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Read on the source page except BP's, Shell's and Vale's profit and Japan Tobacco's revenue, taken from search results whose page would not open; check those first.",
+ "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Every fact was read on its source page; BP’s, Shell’s and Vale’s profit and Japan Tobacco’s revenue were re-checked on their pages on 17 Nov 2026, and BP’s and Japan Tobacco’s moved to pages that open.",
  "bp": {
   "made_from": "BP’s money comes from producing, refining and trading oil and gas.",
   "facts": [
    {
     "kind": "scale",
-    "text": "BP reported underlying replacement cost profit of $8,915 million for 2024, down from $13,836 million in 2023.",
+    "text": "BP’s underlying replacement cost profit for 2024 was $8.9 billion, down from $13.8 billion in 2023.",
     "date": "2025-02",
-    "source": "https://www.rte.ie/news/business/2025/0211/1495960-bp-quarterly-results"
+    "source": "https://www.aa.com.tr/en/energy/general/bp-posts-355-drop-in-profit-amid-weaker-margins-market-volatility/47437"
    },
    {
     "kind": "lobbying",
@@ -40,7 +40,7 @@
   "facts": [
    {
     "kind": "scale",
-    "text": "Shell reported adjusted earnings of about $23.7 billion for 2024, down from $28.25 billion in 2023.",
+    "text": "Shell posted adjusted earnings of $23.72 billion for 2024, against $28.25 billion a year earlier.",
     "date": "2025-01",
     "source": "https://www.nbcwashington.com/news/business/money-report/oil-giant-shell-posts-larger-than-expected-drop-in-full-year-profit-on-lower-crude-prices/3829660/"
    },
@@ -282,9 +282,9 @@
   "facts": [
    {
     "kind": "scale",
-    "text": "Japan Tobacco reported revenue of ¥3,149,759 million for 2024, up 10.9%.",
+    "text": "Japan Tobacco reported revenue of ¥3,149.8 billion for 2024, up 10.9%.",
     "date": "2025-02",
-    "source": "https://www.jt.com/investors/results/forecast/pdf/2024/Full_Year/20250213_05.pdf"
+    "source": "https://www.tipranks.com/news/company-announcements/japan-tobacco-reports-revenue-growth-amid-profit-decline-2"
    },
    {
     "kind": "lobbying",
@@ -357,7 +357,7 @@
   "facts": [
    {
     "kind": "scale",
-    "text": "Vale reported net income attributable to shareholders of US$6,166 million for 2024, down 23% from US$7,983 million.",
+    "text": "Vale reported net profit of US$6.166 billion for 2024, down 23% from US$7.983 billion in 2023.",
     "date": "2025-02",
     "source": "https://www.folhape.com.br/economia/vale-registra-lucro-de-us-62-bi-em-2024-queda-de-23-ante-2023/392957/"
    },
