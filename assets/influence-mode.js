@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=15', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=16', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -40,7 +40,7 @@
     }).catch(() => { loading = null; return null; });
     // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
     // beside the ledger; if it fails to load, MoMA's record simply goes without it.
-    fetch('assets/moma-influence.json?v=1', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; }).catch(() => {});
+    fetch('assets/moma-influence.json?v=2', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
     return loading;
   }
 
@@ -120,6 +120,33 @@
     });
     DATA.funders.forEach(f => { delete f._ms; });
     fan = null;
+    mergeStudy();
+    if (window.scheduleRender) window.scheduleRender();
+  }
+  // MoMA's private funders from the MoMA Influence Map study join as dots (user, 17 Nov 2026: "show moma funders as dots on
+  // the influence map"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
+  // MoMA among its museums; the rest are new dots at their offices, with MoMA as their one museum. Run once, after the
+  // funding maps have joined, so a funder they name is never drawn twice.
+  let studyMerged = false;
+  function mergeStudy() {
+    if (studyMerged || !merged || !DATA || !STUDY || !STUDY.funders) return;
+    studyMerged = true;
+    const inst = (g('ALL_INSTITUTIONS') || []).find(i => i.id === STUDY.space);
+    const space = { id: STUDY.space, name: inst ? inst.name : 'MoMA' };
+    const norm = x => String(x || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    STUDY.funders.forEach(s => {
+      const names = new Set([s.name, ...(s.names || [])].map(norm));
+      let f = (s.keys || []).map(k => BY_FUNDER.get(k)).find(Boolean) || DATA.funders.find(q => names.has(norm(q.name)));
+      if (!f) {
+        if (!s.hq) return;
+        f = { key: 'moma-study:' + norm(s.name).replace(/ /g, '-'), name: s.name, kind: s.kind, hq: Object.assign({ n: s.name }, s.hq), ties: [], moneySpaces: [], moneyOnly: true, study: s.from };
+        DATA.funders.push(f); BY_FUNDER.set(f.key, f);
+      }
+      f.moneySpaces = f.moneySpaces || [];
+      if (!f.ties.some(t => t.space === space.id) && !f.moneySpaces.some(q => q.id === space.id)) f.moneySpaces.push(space);
+      delete f._ms;
+    });
+    fan = null;
     if (window.scheduleRender) window.scheduleRender();
   }
 
@@ -160,19 +187,47 @@
     const p = v(a.lon, a.lat), q = v(b.lon, b.lat);
     const w = Math.acos(Math.max(-1, Math.min(1, p[0] * q[0] + p[1] * q[1] + p[2] * q[2])));
     const n = Math.max(2, Math.ceil(w / (2 * rad)));
-    let down = false, lam = null;
-    ctx.beginPath();
+    const pts = [];
     for (let i = 0; i <= n; i++) {
       const t = i / n, s1 = w ? Math.sin((1 - t) * w) / Math.sin(w) : 1 - t, s2 = w ? Math.sin(t * w) / Math.sin(w) : t;
       const x = s1 * p[0] + s2 * q[0], y = s1 * p[1] + s2 * q[1], z = s1 * p[2] + s2 * q[2];
-      const pt = project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy);
-      if (!pt.front) { down = false; continue; }
-      // On the flat (Winkel) map every point is "front", so a path that runs off one edge comes back in at the other.
-      // Lift the pen there, as the coastlines do (index.html), or the two ends are joined by a straight line across the map.
-      const seam = pt.lam != null && lam != null && Math.abs(pt.lam - lam) > Math.PI;
-      lam = pt.lam != null ? pt.lam : null;
-      if (down && !seam) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+      pts.push(project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy));
     }
+    // On the flat (Winkel) map every point is "front", so a path that runs off one edge comes back in at the other: the
+    // pen lifts there, as the coastlines do (index.html), or the two ends are joined by a straight line across the map.
+    const flat = pts[0].lam != null;
+    const seamAt = i => flat && Math.abs(pts[i].lam - pts[i - 1].lam) > Math.PI;
+    ctx.beginPath();
+    // On the flat map a route that wanders far out of its way, as Munich to Tokyo does over the top of the map, where the
+    // pole is a line (user, 17 Nov 2026: "Shorten the Tokyo line so it doesn't run along the top edge"), is drawn as a
+    // gentle bow between its two ends instead, bent the way the true route goes. "Far out of its way" is a path more than a
+    // tenth longer than the straight line between its ends; the bow is at most 15% of that line. A route that crosses the
+    // edge is bowed only when every crossing comes back in nearer than its two ends are to each other, as one over the pole
+    // line does; a route that leaves at one side of the map and comes back at the other (Munich to Auckland) keeps its
+    // two pieces, since a straight bow would invent a way across the map that the route does not take.
+    if (flat) {
+      const A = pts[0], B = pts[pts.length - 1], chord = Math.hypot(B.x - A.x, B.y - A.y);
+      let len = 0, wide = false;
+      for (let i = 1; i < pts.length; i++) {
+        const d = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
+        if (seamAt(i)) { if (d >= chord) wide = true; } else len += d;
+      }
+      if (!wide && chord > 0 && len > 1.1 * chord) {
+        const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2, M = pts[Math.floor(pts.length / 2)];
+        const nx = -(B.y - A.y) / chord, ny = (B.x - A.x) / chord;   // the chord's normal
+        const side = Math.sign((M.x - mx) * nx + (M.y - my) * ny) || 1;
+        const k = 0.3 * chord * side;   // a quadratic's middle sits halfway to its control point: a bow of 15%
+        ctx.moveTo(A.x, A.y);
+        ctx.quadraticCurveTo(mx + nx * k, my + ny * k, B.x, B.y);
+        ctx.stroke();
+        return;
+      }
+    }
+    let down = false;
+    pts.forEach((pt, i) => {
+      if (!pt.front) { down = false; return; }
+      if (down && !seamAt(i)) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+    });
     ctx.stroke();
   }
   // Every funder is a dot (user, 17 Nov 2026: "just do dots dont do different figure"); its size says how many spaces it
@@ -384,11 +439,18 @@
         pts.push({ id, x: pt.x, y: pt.y, label: i.name || nm || '' });
         museumDots.push({ id, x: pt.x, y: pt.y });
       });
+      // The space in focus is named by the globe itself, above its dot (index.html): it is not named twice here, and that
+      // name's place is kept clear: it is set larger than these names and stands above the pin, so the box is wide and tall.
+      const selNow = g('selectedInstitution');
+      if (selNow && typeof selNow.lat === 'number') {
+        const sp = project(selNow.lon, selNow.lat, r, cx, cy);
+        if (sp.front) { const w = ctx.measureText(selNow.name || '').width * 1.6 + 24; names.push({ x: sp.x - w / 2, y: sp.y - 70, w, h: 64 }); }
+      }
       // A space's own dot is kept clear by every name, its own and the others'.
       const spaceDots = pts.map(q => ({ x: q.x - 5, y: q.y - 5, w: 10, h: 10 }));
       if (pickedMark) spaceDots.push({ x: pickedMark.x - DOT - 5, y: pickedMark.y - DOT - 5, w: 2 * DOT + 10, h: 2 * DOT + 10 });
       pts.forEach(({ id, x, y, label }) => {
-        if (!label) return;
+        if (!label || (selNow && selNow.id === id)) return;
         const w = ctx.measureText(label).width, gap = 9;
         const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 6], [-w / 2, -gap - 6], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
         const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
@@ -426,8 +488,12 @@
       const clash = b => off(b) || hits(b, placed) || hits(b, names);
       const free = spots.find(sp => !clash(boxAt(sp)));
       if (!free && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
-      // Never over another name: a focused or pointed-at funder with no free place takes the first place clear of names.
-      const spot = free || spots.find(sp => !off(boxAt(sp)) && !hits(boxAt(sp), names)) || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
+      // Never over another name: a focused or pointed-at funder with no free place takes the first place clear of names. A
+      // funder of the space in focus with none (MoMA's two dozen, all in New York) keeps its dot and line and waits for the
+      // map to be zoomed in, as any other name does; only the one pointed at insists.
+      const clear = free || spots.find(sp => !off(boxAt(sp)) && !hits(boxAt(sp), names));
+      if (!clear && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
+      const spot = clear || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
       names.push(b);
       ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx, ly);
       ctx.fillStyle = hov && !sel ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, lx, ly);
