@@ -1121,7 +1121,9 @@
 
   // ---- Offices as things you can pick: hit-testing, the connections in the data, and the selection ----
   const KIND_LABEL = { gov: 'Public funder', corp: 'Company', found: 'Foundation or individual donor', priv: 'Hedge fund or investor', person: 'Individual\u2019s office' };
-  const kindLabel = e => KIND_LABEL[e.kind === 'org' ? e.k : 'person'];
+  // A record can name its own kind: a public body the MoMA study ties to MoMA without paying it is not a "Public funder"
+  // (assets/influence-mode.js, user, 17 Nov 2026: "add the other public bodies too").
+  const kindLabel = e => e.kindLabel || KIND_LABEL[e.kind === 'org' ? e.k : 'person'];
   // An office is keyed by funder key, and the same body can sit under two keys ('artscouncilengland|UK' and '|United Kingdom').
   const keysOf = e => { const ks = [e.key, ...(e.also || [])]; HQ.orgs.forEach(o => { if (o !== e && o.n === e.n && o.co === e.co) ks.push(o.key); }); return ks; };
   const byName = (a, b) => a.n.localeCompare(b.n);
