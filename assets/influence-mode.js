@@ -168,7 +168,7 @@
       const pt = project(f.hq.lon, f.hq.lat, r, cx, cy); if (!pt.front) return;
       const o = fan.get(f) || { dx: 0, dy: 0 }, x = pt.x + o.dx, y = pt.y + o.dy;
       const n = new Set(f.ties.map(t => t.space)).size;
-      marks.push({ f, x, y, s: 5 + 2 * Math.sqrt(n), n });
+      marks.push({ f, x, y, s: Math.min(16, 5 + 2 * Math.sqrt(n)), n });   // capped, so Bloomberg's 80 spaces do not cover New York
     });
     const placed = marks.map(m => ({ x: m.x - m.s - 2, y: m.y - m.s - 2, w: 2 * m.s + 4, h: 2 * m.s + 4 }));
     marks.forEach(m => {
