@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page.",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]).",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -2910,5 +2910,24 @@
  "3b41f55e03": {
   "drop": true,
   "why": "The record says the donors are not confirmed on the current page."
+ },
+ "eb46ef7fb9": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "In leaked Sony emails (2014), Sony’s lobbying chief briefed LACMA trustee Michael Lynton, then head of Sony Pictures, before his lunch with County Supervisor Ridley-Thomas about LACMA’s request for county money and Sony’s past support for the supervisor’s political committee.",
+  "date": "2014",
+  "links": [
+   {
+    "measure": "us",
+    "text": "Sony’s lobbying chief prepared the LACMA trustee for his meeting with the county supervisor about LACMA’s request for county money.",
+    "source": "https://www.propublica.org/article/hacked-sony-emails-reveal-behind-the-scenes-political-dealings-in-la"
+   },
+   {
+    "measure": "politics",
+    "text": "The same briefing covered Sony’s past support for the supervisor’s political committee.",
+    "source": "https://www.propublica.org/article/hacked-sony-emails-reveal-behind-the-scenes-political-dealings-in-la"
+   }
+  ]
  }
 }
