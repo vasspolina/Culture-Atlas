@@ -40,7 +40,7 @@
     }).catch(() => { loading = null; return null; });
     // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
     // beside the ledger; if it fails to load, MoMA's record simply goes without it.
-    fetch('assets/moma-influence.json?v=6', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
+    fetch('assets/moma-influence.json?v=7', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
     return loading;
   }
 
@@ -124,7 +124,7 @@
     if (window.scheduleRender) window.scheduleRender();
   }
   // MoMA's funders from the MoMA Influence Map study join as dots (user, 17 Nov 2026: "show moma funders as dots on
-  // the influence map"; "show government funders too"; "add the other public bodies too"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
+  // the influence map"; "show government funders too"; "add the other public bodies too"; "add the other MoMA trustees as dots too"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
   // MoMA among its museums; the rest are new dots at their offices, with MoMA as their one museum. Run once, after the
   // funding maps have joined, so a funder they name is never drawn twice.
   let studyMerged = false;
