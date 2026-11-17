@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space. Batch 8 (17 Nov 2026): two new spaces, Opera Queensland and Queensland Museum, with Queensland ministerial diary entries (Rio Tinto 2013; Shell and its QGC business 2018, 2019) and Shell QGC's $10.25 million to the museum since 2015. Batch 9 (17 Nov 2026): four funders added to the pilot (BHP, Morgan Stanley, Santos, LVMH) with their ties, and their contacts with government at a space (BHP at Queensland Museum, 2014 and 2015; Morgan Stanley and the Prime Minister at the British Museum, 2017).",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space. Batch 8 (17 Nov 2026): two new spaces, Opera Queensland and Queensland Museum, with Queensland ministerial diary entries (Rio Tinto 2013; Shell and its QGC business 2018, 2019) and Shell QGC's $10.25 million to the museum since 2015. Batch 9 (17 Nov 2026): four funders added to the pilot (BHP, Morgan Stanley, Santos, LVMH) with their ties, and their contacts with government at a space (BHP at Queensland Museum, 2014 and 2015; Morgan Stanley and the Prime Minister at the British Museum, 2017). Batch 10 (17 Nov 2026): six new spaces (Glyndebourne, Brisbane Festival, State Library of Queensland, Cadogan Hall, Griffin Museum of Science and Industry, Meridian Hall) with their ties and contacts with government.",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -5834,5 +5834,149 @@
  "ec69d3b17c": {
   "drop": true,
   "why": "Woodside here is the town in California."
+ },
+ "5e1ab1515c": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2016-04",
+  "summary": "BP Russia invited the Culture Secretary to a BP-sponsored Mariinsky concert at the hall, with Russia’s ambassador present (2016).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP Russia invited the Culture Secretary to a BP-sponsored Mariinsky concert at the hall, with Russia’s ambassador present (2016, FOI releases).",
+    "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
+   }
+  ]
+ },
+ "29c3c394fc": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2011",
+  "summary": "Gave seven MPs tickets and hospitality at Glyndebourne between 2011 and 2014.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "JTI gave seven MPs tickets and hospitality at Glyndebourne, 2011 to 2014 (MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2013-09-09.xml"
+   }
+  ]
+ },
+ "5d41bb7a40": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2013-09",
+  "summary": "Its City of Lights show with the festival hosted the Arts Minister and the Tourism Minister (2013).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "Santos GLNG’s City of Lights with the festival hosted Queensland’s Arts Minister and Tourism Minister (2013, ministerial diaries).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/walker.pdf"
+   }
+  ]
+ },
+ "e2643dc68b": {
+  "kinds": [
+   "programme"
+  ],
+  "date": "2012",
+  "summary": "Santos GLNG paid for City of Lights, the laser show that opened the festival, in 2012 and 2013."
+ },
+ "f2c536b681": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2013-12",
+  "summary": "Arrow Energy, its joint venture with PetroChina, launched a partnership with the library, with the Arts Minister speaking (2013).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "Queensland’s Arts Minister spoke at the launch of the library’s partnership with Arrow Energy, Shell’s joint venture (2013, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/december/walker.pdf"
+   }
+  ]
+ },
+ "f20e2df383": {
+  "kinds": [
+   "name",
+   "money"
+  ],
+  "date": "2019-10",
+  "summary": "Gave $125 million, the largest gift in the museum’s history, and the museum took his name."
+ },
+ "c825e5bd37": {
+  "kinds": [
+   "name"
+  ],
+  "date": "2007-09",
+  "summary": "Bought the naming rights for C$10 million in 2007; the hall was the Sony Centre until 2019.",
+  "ended": true
+ },
+ "df77dd6706": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Sponsors three consecutive exhibitions."
+ },
+ "758ea0ca0a": {
+  "drop": true,
+  "why": "Context, not a tie."
+ },
+ "efdfb0cee9": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "696dd2654b": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "677c18e6b7": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "f34a37f281": {
+  "drop": true,
+  "why": "A blog’s claim, not checked."
+ },
+ "4e09f6c30e": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "06030eb7c5": {
+  "drop": true,
+  "why": "The museum lobbying for itself, not Griffin."
+ },
+ "3e770d1bb8": {
+  "drop": true,
+  "why": "Same tie as the City of Lights entry."
+ },
+ "e01800083c": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "438b6f5ac7": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "4a466cfad2": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "8063d95a20": {
+  "drop": true,
+  "why": "The venue lobbying for itself, not Sony."
+ },
+ "476892e812": {
+  "drop": true,
+  "why": "Same tie as the naming entry."
  }
 }

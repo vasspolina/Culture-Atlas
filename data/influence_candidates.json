@@ -855,6 +855,31 @@
   ]
  },
  {
+  "cid": "df77dd6706",
+  "funder": "bankofamerica",
+  "funder_name": "Bank of America",
+  "funder_kind": "corp",
+  "space": "griffin-museum-of-science-and-industry-chicago",
+  "space_name": "Griffin Museum of Science and Industry",
+  "city": "Chicago",
+  "field": "details.funding",
+  "text": "Bank of America sponsors three consecutive exhibitions, 007 Science, Marvel's Spider-Man: Beyond Amazing and Anne Frank The Exhibition, which opened on 1 May 2026 (museum press release).",
+  "kinds": [
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2026",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Griffin_Museum_of_Science_and_Industry",
+   "https://www.griffinmsi.org/about/reports-and-financials",
+   "https://media.impactmit.com/image/upload/v1782324965/msi/Griffin_MSI_2025_Audited_Financial_Statements_7f7651289c.pdf",
+   "https://projects.propublica.org/nonprofits/organizations/362167797",
+   "https://www.griffinmsi.org/press-releases/introducing-kenneth-c-griffin-museum-of-science-and-industry",
+   "https://www.griffinmsi.org/press-releases/powering-the-future-exhibition"
+  ]
+ },
+ {
   "cid": "30342a6ef3",
   "funder": "bankofamerica",
   "funder_name": "Bank of America",
@@ -9604,6 +9629,105 @@
   ]
  },
  {
+  "cid": "5e1ab1515c",
+  "funder": "bp",
+  "funder_name": "BP",
+  "funder_kind": "corp",
+  "space": "cadogan-hall-london",
+  "space_name": "Cadogan Hall",
+  "city": "London",
+  "field": "case_note",
+  "text": "Peter Charrow, vice-president of BP Russia, invited the Culture Secretary to a BP-sponsored performance of Romeo and Juliet conducted by Valery Gergiev at Cadogan Hall on 18 April 2016, with the Russian Ambassador also in attendance, according to freedom of information releases to the Art Not Oil Coalition.",
+  "kinds": [
+   "name",
+   "seat",
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2016-04-18",
+  "sources": [
+   "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
+  ]
+ },
+ {
+  "cid": "758ea0ca0a",
+  "funder": "bp",
+  "funder_name": "BP",
+  "funder_kind": "corp",
+  "space": "cadogan-hall-london",
+  "space_name": "Cadogan Hall",
+  "city": "London",
+  "field": "details.wider_context",
+  "text": "Culture Unstained describes Gergiev as a close friend and ally of Vladimir Putin and quotes him in a BP promotional video saying the sponsorship is bigger than sponsorship (Culture Unstained, Crude Connections).",
+  "kinds": [
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Cadogan_Hall",
+   "https://find-and-update.company-information.service.gov.uk/company/05036968",
+   "https://find-and-update.company-information.service.gov.uk/company/05036968/persons-with-significant-control",
+   "https://find-and-update.company-information.service.gov.uk/company/05036968/filing-history/MzU0MzEzMzE5NmFkaXF6a2N4/document?format=pdf&download=0",
+   "https://www.cadoganhall.com/about-us/",
+   "https://cadoganhall.com/whats-on/zios1920-mariinsky-orchestra-1/"
+  ]
+ },
+ {
+  "cid": "efdfb0cee9",
+  "funder": "bp",
+  "funder_name": "BP",
+  "funder_kind": "corp",
+  "space": "cadogan-hall-london",
+  "space_name": "Cadogan Hall",
+  "city": "London",
+  "field": "watch",
+  "text": "BP sponsored Mariinsky Orchestra concerts at the hall, including one on 18 April 2016 to which BP Russia invited the Culture Secretary.",
+  "kinds": [
+   "name",
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2016",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Cadogan_Hall",
+   "https://find-and-update.company-information.service.gov.uk/company/05036968",
+   "https://find-and-update.company-information.service.gov.uk/company/05036968/persons-with-significant-control",
+   "https://find-and-update.company-information.service.gov.uk/company/05036968/filing-history/MzU0MzEzMzE5NmFkaXF6a2N4/document?format=pdf&download=0",
+   "https://www.cadoganhall.com/about-us/",
+   "https://cadoganhall.com/whats-on/zios1920-mariinsky-orchestra-1/"
+  ]
+ },
+ {
+  "cid": "696dd2654b",
+  "funder": "bp",
+  "funder_name": "BP",
+  "funder_kind": "corp",
+  "space": "cadogan-hall-london",
+  "space_name": "Cadogan Hall",
+  "city": "London",
+  "field": "why_flagged",
+  "text": "BP Russia invited the Culture Secretary, John Whittingdale, to a BP-sponsored Mariinsky Orchestra performance of Romeo and Juliet at the hall on 18 April 2016, with the Russian Ambassador present (Art Not Oil, May 2016), and BP or not BP? protested at that concert (Slipped Disc, 19 April 2016).",
+  "kinds": [
+   "name",
+   "programme"
+  ],
+  "ended": false,
+  "protest": true,
+  "date": "2016",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Cadogan_Hall",
+   "https://find-and-update.company-information.service.gov.uk/company/05036968",
+   "https://find-and-update.company-information.service.gov.uk/company/05036968/persons-with-significant-control",
+   "https://find-and-update.company-information.service.gov.uk/company/05036968/filing-history/MzU0MzEzMzE5NmFkaXF6a2N4/document?format=pdf&download=0",
+   "https://www.cadoganhall.com/about-us/",
+   "https://cadoganhall.com/whats-on/zios1920-mariinsky-orchestra-1/"
+  ]
+ },
+ {
   "cid": "3957c623df",
   "funder": "bp",
   "funder_name": "BP",
@@ -13350,6 +13474,105 @@
   "date": "2019-03-19",
   "sources": [
    "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2019-09-02.xml"
+  ]
+ },
+ {
+  "cid": "29c3c394fc",
+  "funder": "jti",
+  "funder_name": "Japan Tobacco International",
+  "funder_kind": "corp",
+  "space": "glyndebourne-lewes",
+  "space_name": "Glyndebourne",
+  "city": "Lewes",
+  "field": "case_note",
+  "text": "The Register of Members' Financial Interests records Japan Tobacco International giving seven MPs tickets and hospitality at Glyndebourne: Brian Binley in May 2011 (£1,132.80); Christopher Chope, Jim Dowd, Gerald Kaufman and Robert Walter on 13 June 2013 (£1,278 to £1,534 each); and Nick Brown and a guest in July 2014, with Glyndebourne named as co-donor.",
+  "kinds": [
+   "name",
+   "access"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2011 to 2014",
+  "sources": [
+   "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2011-09-28.xml",
+   "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2013-09-09.xml",
+   "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2014-09-22.xml"
+  ]
+ },
+ {
+  "cid": "677c18e6b7",
+  "funder": "jti",
+  "funder_name": "Japan Tobacco International",
+  "funder_kind": "corp",
+  "space": "glyndebourne-lewes",
+  "space_name": "Glyndebourne",
+  "city": "Lewes",
+  "field": "details.wider_context",
+  "text": "Japan Tobacco International hosted MPs and peers at Glyndebourne: Brian Binley declared two tickets worth £1,132.80 in 2011, Gerald Kaufman two tickets and hospitality worth about £1,278 in 2013, and Lord Trimble and Baroness Wheatcroft were guests of JTI on 24 July 2014 (Registers of Interests via Tobacco Tactics).",
+  "kinds": [
+   "access"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2011",
+  "sources": [
+   "https://opencharities.uk/ew/243877/files/2025-12-31-accounts.md",
+   "https://opencharities.uk/ew/243877/files/2024-12-31-accounts.md",
+   "https://opencharities.uk/ew/243877/files/2023-12-31-accounts.md",
+   "https://www.glyndebourne.com/membership-and-support/our-partners/",
+   "https://en.wikipedia.org/wiki/Glyndebourne",
+   "https://tobaccotactics.org/wiki/tobacco-industry-hospitality-for-uk-politicians"
+  ]
+ },
+ {
+  "cid": "f34a37f281",
+  "funder": "jti",
+  "funder_name": "Japan Tobacco International",
+  "funder_kind": "corp",
+  "space": "glyndebourne-lewes",
+  "space_name": "Glyndebourne",
+  "city": "Lewes",
+  "field": "details.wider_context",
+  "text": "A blog post of 15 December 2011 said the 2009 Glyndebourne Festival annual report listed JTI among corporate supporters; that report was not available to check, and JTI is not named on Glyndebourne's current partners page (An Overgrown Path; Glyndebourne website).",
+  "kinds": [
+   "name",
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2011",
+  "sources": [
+   "https://opencharities.uk/ew/243877/files/2025-12-31-accounts.md",
+   "https://opencharities.uk/ew/243877/files/2024-12-31-accounts.md",
+   "https://opencharities.uk/ew/243877/files/2023-12-31-accounts.md",
+   "https://www.glyndebourne.com/membership-and-support/our-partners/",
+   "https://en.wikipedia.org/wiki/Glyndebourne",
+   "https://tobaccotactics.org/wiki/tobacco-industry-hospitality-for-uk-politicians"
+  ]
+ },
+ {
+  "cid": "4e09f6c30e",
+  "funder": "jti",
+  "funder_name": "Japan Tobacco International",
+  "funder_kind": "corp",
+  "space": "glyndebourne-lewes",
+  "space_name": "Glyndebourne",
+  "city": "Lewes",
+  "field": "watch",
+  "text": "MPs and peers declared Glyndebourne tickets and hospitality from Japan Tobacco International between 2011 and 2014 (Register of Members' Financial Interests via Tobacco Tactics).",
+  "kinds": [
+   "access"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2011",
+  "sources": [
+   "https://opencharities.uk/ew/243877/files/2025-12-31-accounts.md",
+   "https://opencharities.uk/ew/243877/files/2024-12-31-accounts.md",
+   "https://opencharities.uk/ew/243877/files/2023-12-31-accounts.md",
+   "https://www.glyndebourne.com/membership-and-support/our-partners/",
+   "https://en.wikipedia.org/wiki/Glyndebourne",
+   "https://tobaccotactics.org/wiki/tobacco-industry-hospitality-for-uk-politicians"
   ]
  },
  {
@@ -18564,6 +18787,56 @@
   ]
  },
  {
+  "cid": "f20e2df383",
+  "funder": "right:griffin",
+  "funder_name": "Ken Griffin / Citadel",
+  "funder_kind": "family",
+  "space": "griffin-museum-of-science-and-industry-chicago",
+  "space_name": "Griffin Museum of Science and Industry",
+  "city": "Chicago",
+  "field": "details.funding",
+  "text": "Griffin, founder and CEO of Citadel, gave $125 million, announced in October 2019 and the largest gift in the museum's history; the museum took his name on 19 May 2024 (museum press release, May 2024).",
+  "kinds": [
+   "name"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2019",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Griffin_Museum_of_Science_and_Industry",
+   "https://www.griffinmsi.org/about/reports-and-financials",
+   "https://media.impactmit.com/image/upload/v1782324965/msi/Griffin_MSI_2025_Audited_Financial_Statements_7f7651289c.pdf",
+   "https://projects.propublica.org/nonprofits/organizations/362167797",
+   "https://www.griffinmsi.org/press-releases/introducing-kenneth-c-griffin-museum-of-science-and-industry",
+   "https://www.griffinmsi.org/press-releases/powering-the-future-exhibition"
+  ]
+ },
+ {
+  "cid": "06030eb7c5",
+  "funder": "right:griffin",
+  "funder_name": "Ken Griffin / Citadel",
+  "funder_kind": "family",
+  "space": "griffin-museum-of-science-and-industry-chicago",
+  "space_name": "Griffin Museum of Science and Industry",
+  "city": "Chicago",
+  "field": "details.wider_context",
+  "text": "The City of Chicago lobbying register lists the Griffin Museum of Science and Industry as a client of lobbyist Emily D.",
+  "kinds": [
+   "licence"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Griffin_Museum_of_Science_and_Industry",
+   "https://www.griffinmsi.org/about/reports-and-financials",
+   "https://media.impactmit.com/image/upload/v1782324965/msi/Griffin_MSI_2025_Audited_Financial_Statements_7f7651289c.pdf",
+   "https://projects.propublica.org/nonprofits/organizations/362167797",
+   "https://www.griffinmsi.org/press-releases/introducing-kenneth-c-griffin-museum-of-science-and-industry",
+   "https://www.griffinmsi.org/press-releases/powering-the-future-exhibition"
+  ]
+ },
+ {
   "cid": "fb12d73100",
   "funder": "right:griffin",
   "funder_name": "Ken Griffin / Citadel",
@@ -21801,6 +22074,104 @@
   ]
  },
  {
+  "cid": "5d41bb7a40",
+  "funder": "santos",
+  "funder_name": "Santos",
+  "funder_kind": "corp",
+  "space": "brisbane-festival-brisbane",
+  "space_name": "Brisbane Festival",
+  "city": "Brisbane",
+  "field": "case_note",
+  "text": "Queensland ministerial diaries record the Arts Minister, Ian Walker, at the opening night function of the Santos GLNG City of Lights with Brisbane Festival on 7 September 2013, and the Tourism Minister, Jann Stuckey, at the Santos GLNG City of Lights show with Tourism and Events Queensland and Brisbane Festival on 25 September 2013.",
+  "kinds": [
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2013-09",
+  "sources": [
+   "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/walker.pdf",
+   "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/stuckey.pdf"
+  ]
+ },
+ {
+  "cid": "e2643dc68b",
+  "funder": "santos",
+  "funder_name": "Santos",
+  "funder_kind": "corp",
+  "space": "brisbane-festival-brisbane",
+  "space_name": "Brisbane Festival",
+  "city": "Brisbane",
+  "field": "details.funding",
+  "text": "Santos GLNG Project and Tourism and Events Queensland supported City of Lights, the laser show that opened the 2013 festival and drew more than 300,000 spectators in 2012 (Dance Informa, 17 April 2013); the 2012 Arts Minister's statement lists Santos GLNG City of Lights among the festival's events (Queensland Government, 8 September 2012).",
+  "kinds": [
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2013",
+  "sources": [
+   "https://www.brisbanefestival.com.au/partnerships",
+   "https://brisbanefestival.com.au/about",
+   "https://en.wikipedia.org/wiki/Brisbane_Festival",
+   "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/walker.pdf",
+   "https://statements.qld.gov.au/statements/70285",
+   "https://danceinforma.com.au/articles/brisbane-festival-announces-2013-dates/"
+  ]
+ },
+ {
+  "cid": "3e770d1bb8",
+  "funder": "santos",
+  "funder_name": "Santos",
+  "funder_kind": "corp",
+  "space": "brisbane-festival-brisbane",
+  "space_name": "Brisbane Festival",
+  "city": "Brisbane",
+  "field": "watch",
+  "text": "Santos GLNG backed the festival's City of Lights laser show in 2012 and 2013; the festival's partnerships page quotes casino operator The Star Entertainment Group.",
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2012",
+  "sources": [
+   "https://www.brisbanefestival.com.au/partnerships",
+   "https://brisbanefestival.com.au/about",
+   "https://en.wikipedia.org/wiki/Brisbane_Festival",
+   "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/walker.pdf",
+   "https://statements.qld.gov.au/statements/70285",
+   "https://danceinforma.com.au/articles/brisbane-festival-announces-2013-dates/"
+  ]
+ },
+ {
+  "cid": "e01800083c",
+  "funder": "santos",
+  "funder_name": "Santos",
+  "funder_kind": "corp",
+  "space": "brisbane-festival-brisbane",
+  "space_name": "Brisbane Festival",
+  "city": "Brisbane",
+  "field": "why_flagged",
+  "text": "The Queensland ministerial diary records the Arts Minister at the opening of Santos GLNG City of Lights in conjunction with Brisbane Festival on 7 September 2013, and the festival's partnerships page, retrieved 17 November 2026, carries a partner quote from The Star Entertainment Group, a casino operator (Wikipedia).",
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2013",
+  "sources": [
+   "https://www.brisbanefestival.com.au/partnerships",
+   "https://brisbanefestival.com.au/about",
+   "https://en.wikipedia.org/wiki/Brisbane_Festival",
+   "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/walker.pdf",
+   "https://statements.qld.gov.au/statements/70285",
+   "https://danceinforma.com.au/articles/brisbane-festival-announces-2013-dates/"
+  ]
+ },
+ {
   "cid": "f1a846035a",
   "funder": "schwarzman",
   "funder_name": "Stephen Schwarzman (Blackstone)",
@@ -22638,6 +23009,74 @@
   ]
  },
  {
+  "cid": "f2c536b681",
+  "funder": "shell",
+  "funder_name": "Shell",
+  "funder_kind": "corp",
+  "space": "state-library-of-queensland-brisbane",
+  "space_name": "State Library of Queensland",
+  "city": "Brisbane",
+  "field": "case_note",
+  "text": "The Queensland ministerial diary records the Arts Minister, Ian Walker, speaking at the launch of the State Library's partnership with Arrow Energy, Shell's joint venture with PetroChina, before its representatives and guests on 4 December 2013.",
+  "kinds": [
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2013-12-04",
+  "sources": [
+   "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/december/walker.pdf"
+  ]
+ },
+ {
+  "cid": "438b6f5ac7",
+  "funder": "shell",
+  "funder_name": "Shell",
+  "funder_kind": "corp",
+  "space": "state-library-of-queensland-brisbane",
+  "space_name": "State Library of Queensland",
+  "city": "Brisbane",
+  "field": "watch",
+  "text": "Arrow Energy, the Shell and PetroChina coal seam gas joint venture, funded State Library literacy programs in the Western Downs from December 2013.",
+  "kinds": [],
+  "ended": false,
+  "protest": false,
+  "date": "2013",
+  "sources": [
+   "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_finance.pdf",
+   "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_introduction.pdf",
+   "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_outcomes.pdf",
+   "https://content.slq.qld.gov.au/sites/default/files/Library%20Board%20of%20Queensland%20Annual%20Report%202024-25%2C%20Introduction.pdf",
+   "https://www.slq.qld.gov.au/about-us/corporate-information/annual-reports",
+   "https://en.wikipedia.org/wiki/State_Library_of_Queensland"
+  ]
+ },
+ {
+  "cid": "4a466cfad2",
+  "funder": "shell",
+  "funder_name": "Shell",
+  "funder_kind": "corp",
+  "space": "state-library-of-queensland-brisbane",
+  "space_name": "State Library of Queensland",
+  "city": "Brisbane",
+  "field": "why_flagged",
+  "text": "The Arts Minister spoke at the State Library/Arrow Energy partnership launch on 4 December 2013 (Queensland ministerial diary, December 2013); Arrow is owned 50:50 by Shell and PetroChina (ACCC, 13 April 2010).",
+  "kinds": [
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2013",
+  "sources": [
+   "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_finance.pdf",
+   "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_introduction.pdf",
+   "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_outcomes.pdf",
+   "https://content.slq.qld.gov.au/sites/default/files/Library%20Board%20of%20Queensland%20Annual%20Report%202024-25%2C%20Introduction.pdf",
+   "https://www.slq.qld.gov.au/about-us/corporate-information/annual-reports",
+   "https://en.wikipedia.org/wiki/State_Library_of_Queensland"
+  ]
+ },
+ {
   "cid": "19d6731cd1",
   "funder": "shell",
   "funder_name": "Shell",
@@ -23136,6 +23575,81 @@
    "https://observador.pt/2026/04/15/ccb-quer-novos-publicos-e-mais-receitas-proprias-com-plano-estrategico-ate-2030/",
    "https://www.sabado.pt/gps/detalhe/museu-de-arte-contemporanea-do-ccb-com-aumento-de-225-de-visitantes-em-2024",
    "https://observador.pt/especiais/a-exoneracao-surpresa-os-protestos-as-criticas-e-as-denuncias-de-bullying-e-assedio-moral-o-que-se-passa-nos-corredores-do-ccb/"
+  ]
+ },
+ {
+  "cid": "8063d95a20",
+  "funder": "sonypictures",
+  "funder_name": "Sony Pictures Entertainment",
+  "funder_kind": "corp",
+  "space": "meridian-hall-toronto",
+  "space_name": "Meridian Hall",
+  "city": "Toronto",
+  "field": "case_note",
+  "text": "The board of the hall, then the Sony Centre for the Performing Arts, registered to lobby the federal government in 2008 and 2009 to obtain funding from Transport and Infrastructure Canada for its redevelopment plan, and reported communications with officials on economic development.",
+  "kinds": [
+   "name",
+   "seat",
+   "licence"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2008-07 to 2009-08",
+  "sources": [
+   "https://open.canada.ca/data/en/dataset/a35a0c9e-5ba1-4e58-a6a6-fac1ddb2d6ad",
+   "https://lobbycanada.gc.ca/media/zwcjycef/registrations_enregistrements_ocl_cal.zip"
+  ]
+ },
+ {
+  "cid": "c825e5bd37",
+  "funder": "sonypictures",
+  "funder_name": "Sony Pictures Entertainment",
+  "funder_kind": "corp",
+  "space": "meridian-hall-toronto",
+  "space_name": "Meridian Hall",
+  "city": "Toronto",
+  "field": "details.funding",
+  "text": "Sony bought the naming rights for C$10 million in September 2007 for a ten-year partnership, and Hummingbird Communications Ltd. gave C$5 million in 1996 (Wikipedia).",
+  "kinds": [
+   "name",
+   "programme"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "2007",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Meridian_Hall_(Toronto)",
+   "https://www.toronto.ca/legdocs/mmis/2026/au/bgrd/backgroundfile-288634.pdf",
+   "https://www.toronto.ca/legdocs/mmis/2025/au/bgrd/backgroundfile-256280.pdf",
+   "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253331.pdf",
+   "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253262.pdf",
+   "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253263.pdf"
+  ]
+ },
+ {
+  "cid": "476892e812",
+  "funder": "sonypictures",
+  "funder_name": "Sony Pictures Entertainment",
+  "funder_kind": "corp",
+  "space": "meridian-hall-toronto",
+  "space_name": "Meridian Hall",
+  "city": "Toronto",
+  "field": "details.overview",
+  "text": "Named the Hummingbird Centre from February 1996 and the Sony Centre for the Performing Arts from 2007, it closed on 26 June 2008 for renovations and reopened on 1 October 2010; it took the name Meridian Hall on 15 September 2019 (Wikipedia).",
+  "kinds": [
+   "name",
+   "building"
+  ],
+  "ended": false,
+  "protest": false,
+  "date": "1996",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Meridian_Hall_(Toronto)",
+   "https://www.toronto.ca/legdocs/mmis/2026/au/bgrd/backgroundfile-288634.pdf",
+   "https://www.toronto.ca/legdocs/mmis/2025/au/bgrd/backgroundfile-256280.pdf",
+   "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253331.pdf",
+   "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253262.pdf",
+   "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253263.pdf"
   ]
  },
  {
