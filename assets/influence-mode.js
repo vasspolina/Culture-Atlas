@@ -40,7 +40,7 @@
     }).catch(() => { loading = null; return null; });
     // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
     // beside the ledger; if it fails to load, MoMA's record simply goes without it.
-    fetch('assets/moma-influence.json?v=4', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
+    fetch('assets/moma-influence.json?v=5', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
     return loading;
   }
 
@@ -139,7 +139,7 @@
       let f = (s.keys || []).map(k => BY_FUNDER.get(k)).find(Boolean) || DATA.funders.find(q => names.has(norm(q.name)));
       if (!f) {
         if (!s.hq) return;
-        f = { key: 'moma-study:' + norm(s.name).replace(/ /g, '-'), name: s.name, kind: s.kind, hq: Object.assign({ n: s.name }, s.hq), ties: [], moneySpaces: [], moneyOnly: true, study: s.from, notFunder: !!s.notFunder };
+        f = { key: 'moma-study:' + norm(s.name).replace(/ /g, '-'), name: s.name, kind: s.kind, hq: Object.assign({ n: s.name }, s.hq), ties: [], moneySpaces: [], moneyOnly: true, study: s.from, notFunder: !!s.notFunder, kindLabel: s.kindLabel || (s.notFunder ? 'Public body' : '') };
         DATA.funders.push(f); BY_FUNDER.set(f.key, f);
       }
       f.moneySpaces = f.moneySpaces || [];
@@ -610,7 +610,7 @@
       // A funder from the MoMA study has no record in the funding maps, whose lookup would answer with its key for a name.
       let e = (!f.study && hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : f.kind === 'fund' ? 'priv' : f.kind === 'gov' ? 'gov' : 'found', n: f.name, c: '', co: '', noOffice: true };
       // The mode places every pilot funder at an office (assets/influence.json, hq), so its record names that office too.
-      if (f.notFunder) e = Object.assign({}, e, { kindLabel: 'Public body' });
+      if (f.kindLabel) e = Object.assign({}, e, { kindLabel: f.kindLabel });
       if (e.noOffice && f.hq) e = Object.assign({}, e, { c: f.hq.c, co: f.hq.co, a: f.hq.a, lat: f.hq.lat, lon: f.hq.lon, noOffice: false });
       // Its own office layer stays off: the mode draws the funders itself (assets/hq-detail.js reads noLayer).
       if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(Object.assign({}, e, { noLayer: true }));
@@ -779,8 +779,9 @@
   // 2026: "show moma funders as dots on the influence map"; "show government funders too").
   function studyFunderPart(f) {
     if (!STUDY) return null;
-    const want = new Set(f.study || []);
-    const entries = STUDY.groups.flatMap(gr => gr.entries).filter(x => want.has(x.name));
+    // In the order the funder's list gives them, so its own entry leads.
+    const all = STUDY.groups.flatMap(gr => gr.entries);
+    const entries = (f.study || []).map(n => all.find(x => x.name === n)).filter(Boolean);
     if (!entries.length) return null;
     const lis = entries.map(x => {
       const src = (x.sources || [])[0];
