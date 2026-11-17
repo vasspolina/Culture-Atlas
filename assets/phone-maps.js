@@ -329,6 +329,32 @@
         scroller.addEventListener('scroll', mark, { passive: true });
         mark();
       }
+      // The Share information form as the chat (user, 17 Nov 2026: "Make the share information form look like this too"). The
+      // form opens in the chat's window, so it takes the chat's head instead of its own row (Back, the title, Close): the title
+      // centred where Chat stands, and the round cross at the left closing the form back to the chat, where in the chat it
+      // closes the chat to the map. The form's own row is put away in assets/sheet.css; its heading stays for screen readers,
+      // so the head's copy of it is hidden from them. The form scrolls in #workBottomDock, so the head's fade follows that too.
+      const shareTitle = document.createElement('span');
+      shareTitle.className = 'gm-share-title';
+      shareTitle.setAttribute('aria-hidden', 'true');
+      shareTitle.textContent = ($('noteFormTitle') && $('noteFormTitle').textContent.trim()) || 'Share information';
+      strip.appendChild(shareTitle);
+      const inShare = () => body.classList.contains('chat-input-mode-active');
+      const closeLabel = close ? close.getAttribute('aria-label') : '';
+      if (close) {
+        close.addEventListener('click', (e) => {
+          if (!PHONE() || !inShare() || typeof window.toggleChatShare !== 'function') return;
+          e.preventDefault(); e.stopImmediatePropagation();
+          window.toggleChatShare();
+        }, true);
+      }
+      const dock = $('workBottomDock');
+      const markDock = () => { if (inShare() && dock) chatHead.toggleAttribute('data-scrolled', dock.scrollTop > 2); };
+      if (dock) dock.addEventListener('scroll', markDock, { passive: true });
+      new MutationObserver(() => {
+        if (close) close.setAttribute('aria-label', inShare() ? 'Close the note and go back to the chat' : closeLabel);
+        if (inShare()) markDock(); else if (scroller) chatHead.toggleAttribute('data-scrolled', scroller.scrollTop > 2);
+      }).observe(body, { attributes: true, attributeFilter: ['class'] });
     }
 
     // ---- Buttons at the top of the screen: Back to chat, Dark, Gossip mode (user, 16 Nov 2026) ----------------------

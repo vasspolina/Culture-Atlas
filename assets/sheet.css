@@ -276,6 +276,19 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
    pairs atlas.css keeps on .grade-word-1 to -5. The grade under the open space's name on the map takes the same colours. */
 .grade-word[class*="grade-word-"]{color:var(--grade-ink)!important}
 :root[data-theme="dark"] .grade-word[class*="grade-word-"]{color:var(--grade-col)!important}
+/* The phone sheet's rating line names the grade by its letter (.gm-grade-word[data-grade], assets/phone-maps.js) and had come
+   out in ink (user, 17 Nov 2026: "color grades with grade color on mobile and desktop"). It takes the colours of .grade-word,
+   the record's and the chat's, so a grade is one colour wherever it is named. */
+.gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#1f7f5c!important}
+.gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#1b7f73!important}
+.gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#8c720c!important}
+.gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#975824!important}
+.gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#8f2929!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#34d399!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#2dd4bf!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#facc15!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#fb923c!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#ef4444!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#1f7f5c!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#1b7f73!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#8c720c!important}
@@ -2174,6 +2187,27 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
   :root.gm-map #globeViewport #dossier-bottom-sheet .sheet-close svg:not(#sh-x):not(#sh-y),
   :root.gm-record #detailDrawer .detail-bar #closeDetailBtn svg:not(#sh-x):not(#sh-y){width:20px!important;height:20px!important;stroke-width:1.6!important}
 
+  /* The Share information form as the chat (user, 17 Nov 2026: "Make the share information form look like this too"). The
+     form opens in the chat's window and already had its corners and its place under the top buttons, but the chat's head
+     (the cross, Chat, the menu) was laid over the form's own row (Back, Share information, Close). The form now takes the
+     chat's head: its title centred where Chat stands (.gm-share-title, assets/phone-maps.js), and the round cross at the
+     left closes it back to the chat. Its own row is put away, the heading kept for screen readers, and the form starts
+     under the head. */
+  #phoneChatHead .gm-share-title{display:none}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #phoneChatHead .gm-head-tabs :is(#gmChatTab,#phoneChatDetailsBtn):not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #phoneChatHead .gm-head-tabs .gm-share-title:not(#sh-x):not(#sh-y){display:inline-flex!important;align-items:center!important;
+    height:44px!important;color:var(--sh-ink)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer :is(#noteFormBackBtn,#noteFormCloseBtn):not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #noteFormHead:not(#sh-x):not(#sh-y){position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;
+    padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #workBottomDock:not(#sh-x):not(#sh-y){padding-top:76px!important;scroll-padding-top:76px}
+
+  /* One way back to the chat at a time (user, 17 Nov 2026: "do not double buttons on screen", "you have back to chat
+     twice"). On the form the round cross at the top left goes back to the chat, so Back to chat in the row of top buttons
+     and the Back to chat pill under the form (the Share information button, pressed) are put away. In Details from the
+     chat the Chat tab goes back, so the record's Ask in chat, which was pressed there as a second way back, is put away. */
+  :root.gm-chat body.chat-input-mode-active :is(#gmTopBtns #gmBackChatBtn,#workInputCard #chatShareBtn):not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+  :root.gm-from-chat #dossier-bottom-sheet #dossier-sheet-ask-btn:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
 }
 @media (max-width:767px) and (prefers-reduced-motion:reduce){
   :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){animation:none!important}
