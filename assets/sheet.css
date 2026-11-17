@@ -276,6 +276,19 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
    pairs atlas.css keeps on .grade-word-1 to -5. The grade under the open space's name on the map takes the same colours. */
 .grade-word[class*="grade-word-"]{color:var(--grade-ink)!important}
 :root[data-theme="dark"] .grade-word[class*="grade-word-"]{color:var(--grade-col)!important}
+/* The phone sheet's rating line names the grade by its letter (.gm-grade-word[data-grade], assets/phone-maps.js) and had come
+   out in ink (user, 17 Nov 2026: "color grades with grade color on mobile and desktop"). It takes the colours of .grade-word,
+   the record's and the chat's, so a grade is one colour wherever it is named. */
+.gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#1f7f5c!important}
+.gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#1b7f73!important}
+.gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#8c720c!important}
+.gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#975824!important}
+.gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#8f2929!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#34d399!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#2dd4bf!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#facc15!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#fb923c!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#ef4444!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#1f7f5c!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#1b7f73!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#8c720c!important}
