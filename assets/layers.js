@@ -303,11 +303,11 @@
   function loadLogos() {
     if (LOGOS || logosLoading) return;
     logosLoading = true;
-    fetch('assets/funder-logos.json').then(r => r.json()).then(idx => {
+    fetch('assets/funder-logos.json?v=2').then(r => r.json()).then(idx => {
       const img = new Image();
       img.onload = () => { LOGOS = { idx, img }; repaint(); };
       img.onerror = () => { logosLoading = false; };
-      img.src = 'assets/funder-logos.png?v=1';
+      img.src = 'assets/funder-logos.png?v=2';
     }).catch(() => { logosLoading = false; });
   }
   // The logo of a funder node: only a company's, by its office key (a funder's spelling key leads to its office).
