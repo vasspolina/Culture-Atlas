@@ -120,22 +120,26 @@
     const p = v(a.lon, a.lat), q = v(b.lon, b.lat);
     const w = Math.acos(Math.max(-1, Math.min(1, p[0] * q[0] + p[1] * q[1] + p[2] * q[2])));
     const n = Math.max(2, Math.ceil(w / (2 * rad)));
-    let down = false;
+    let down = false, lam = null;
     ctx.beginPath();
     for (let i = 0; i <= n; i++) {
       const t = i / n, s1 = w ? Math.sin((1 - t) * w) / Math.sin(w) : 1 - t, s2 = w ? Math.sin(t * w) / Math.sin(w) : t;
       const x = s1 * p[0] + s2 * q[0], y = s1 * p[1] + s2 * q[1], z = s1 * p[2] + s2 * q[2];
       const pt = project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy);
       if (!pt.front) { down = false; continue; }
-      if (down) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+      // On the flat (Winkel) map every point is "front", so a path that runs off one edge comes back in at the other.
+      // Lift the pen there, as the coastlines do (index.html), or the two ends are joined by a straight line across the map.
+      const seam = pt.lam != null && lam != null && Math.abs(pt.lam - lam) > Math.PI;
+      lam = pt.lam != null ? pt.lam : null;
+      if (down && !seam) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
     }
     ctx.stroke();
   }
   // Every funder is a dot (user, 17 Nov 2026: "just do dots dont do different figure"); its size says how many spaces it
   // reaches. Company or family is said in its record and in the chat, not by the shape.
-  // Every dot is 4px across whatever the measure (user, 17 Nov 2026: "these dots are way too big, make all dots same size
-  // and like 4px"); the measure is said by the figure in the label, not by the size.
-  const DOT = 2;
+  // Every dot is 6px across whatever the measure (user, 17 Nov 2026: "these dots are way too big, make all dots same size
+  // and like 4px", then "make the dots a bit bigger"); the measure is said by the figure in the label, not by the size.
+  const DOT = 3;
   function mark(ctx, f, x, y) {
     ctx.beginPath();
     ctx.arc(x, y, DOT, 0, Math.PI * 2);
@@ -490,10 +494,10 @@
   // sources say happened to the money after a space said no. Each fact carries its own source, read on its page.
   const FACT_ROWS = [
     ['harm', 'Where the money comes from', null],
-    ['scale', 'Its business', 'how big it is, for one year'],
-    ['lobbying', 'Lobbying', 'what it spends to sway governments'],
-    ['politics', 'Politics', 'political donations and campaigns']
+    ['scale', 'Its business', 'how big it is, for one year']
   ];
+  // Lobbying and politics facts are no longer drawn in the record (user, 17 Nov 2026: "only keep relevant info to cultural
+  // spaces"); they stay in the data.
   const factLine = x => `<li class="influence-entry"><p class="no-indent">${esc(x.text)}</p><p class="no-indent influence-meta">${[x.date ? esc(x.date) : '', x.source ? `<a href="${esc(x.source)}" target="_blank" rel="noopener noreferrer">${esc(host(x.source))}</a>` : ''].filter(Boolean).join(' · ')}</p></li>`;
   function senderRows(f) {
     const s = f.sender; if (!s) return '';
@@ -519,22 +523,13 @@
     return row('When a museum said no', 'saying no ends one deal, not the money', inner);
   }
 
-  // Cultural giving next to lobbying and political giving, one line each, each with its own source; a line with no filing
-  // says so, since no filing found is not the same as nothing spent.
+  // What it gives culture, with the largest gift the atlas entries state and that gift's source. The lobbying and political
+  // giving lines that stood beside it were taken out of the record (user, 17 Nov 2026: "delete these, only keep relevant
+  // info to cultural spaces"); the figures stay in data/influence_senders.json for the map's measures.
   function compareRow(f) {
-    const F = fig(f), li = (lead, body, src) => `<li class="influence-entry"><p class="no-indent"><span class="lead-in">${esc(lead)}.</span> ${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
-    const c = F.culture || {}, u = F.us_lobbying, e = F.eu_lobbying, p = F.political;
-    const rows = [
-      li('Culture', `${c.spaces || 0} ${c.spaces === 1 ? 'museum' : 'museums'}${c.largest_gift ? `; the largest gift found is ${c.largest_gift.text}` : ', with no amount given'}.`, c.largest_gift && c.largest_gift.source),
-      u ? li('US lobbying', u.outside_only ? `Lobbying firms it hired were paid ${fmtMoney(u.usd, 'USD')} in ${u.year}; it reports nothing itself.` : `${fmtMoney(u.usd, 'USD')} spent lobbying the US government in ${u.year}${u.quarters && u.quarters < 4 ? `, counting ${u.quarters} of its 4 quarterly reports` : ''}.`, u.source)
-        : li('US lobbying', 'No US lobbying report found for 2025.', ''),
-      e ? li('EU lobbying', `${e.eur_min ? `${fmtMoney(e.eur_min, 'EUR')} to ${fmtMoney(e.eur_max + 1, 'EUR')}` : `Under ${fmtMoney(e.eur_max + 1, 'EUR')}`} declared to the EU for ${e.period}.`, e.source)
-        : li('EU lobbying', 'Not on the EU lobbying register.', ''),
-      p ? li('Political giving', `Its company political fund gave ${fmtMoney(p.usd, 'USD')} to US candidates in 2023 and 2024${p.rep_usd != null ? `, ${Math.round(100 * p.rep_usd / p.usd)}% to Republicans and ${Math.round(100 * p.dem_usd / p.usd)}% to Democrats` : ''}.`, p.source)
-        : li('Political giving', 'No company political fund giving to US candidates found for 2023 and 2024.', ''),
-      ...((F.personal && F.personal.people) || []).map(x => li('Personal giving', `${x.name} gave ${fmtMoney(x.usd, 'USD')} of personal money to US candidates, parties and political groups in 2023 and 2024${x.top && x.top.length ? (x.top.length === 1 && Math.abs(x.top[0].usd - x.usd) < 1 ? `, all of it to ${x.top[0].name}` : `; the most went to ${x.top.map(t => `${t.name} (${fmtMoney(t.usd, 'USD')})`).join(', ')}`) : ''}.`, x.source)),
-    ];
-    return row('Culture next to lobbying and politics', 'what it gives culture, and what it spends on politics', `<ul class="d-row-list influence-list">${rows.join('')}</ul>`);
+    const c = fig(f).culture || {}, src = c.largest_gift && c.largest_gift.source;
+    const body = `${c.spaces || 0} ${c.spaces === 1 ? 'museum' : 'museums'}${c.largest_gift ? `; the largest gift found is ${c.largest_gift.text}` : ', with no amount given'}.`;
+    return row('Culture', 'what it gives culture', `<ul class="d-row-list influence-list"><li class="influence-entry"><p class="no-indent">${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li></ul>`);
   }
 
   // What the records say its lobbying or political money did at a space, measure by measure, each with its source.

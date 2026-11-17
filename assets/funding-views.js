@@ -168,7 +168,7 @@
       strokePath(ctx, path(project, a, b, r, cx, cy, 0.08), () => w, {
         agg: true, id: 'bundle:' + tr.a + tr.b, col: A.COL[tr.kind],
         label: `${say(tr.a)} – ${say(tr.b)}`, sub: `${tr.n} shared-funder ${tr.n === 1 ? 'link' : 'links'}: ${mix}`,
-        sub2: names.length ? 'Most: ' + names.join(', ') : '', ask: `Which funders link spaces in ${say(tr.a)} and ${say(tr.b)}?`
+        sub2: names.length ? 'Most: ' + names.join(', ') : '', ask: `Which funders link museums in ${say(tr.a)} and ${say(tr.b)}?`
       });
     });
     ctx.globalAlpha = 1;
@@ -185,8 +185,8 @@
       const pts = path(project, a, b, r, cx, cy, 0.14);
       strokePath(ctx, pts, s => Math.max(0.8, w * (1 - 0.8 * s)), {
         agg: true, id: 'flow:' + f.from + '>' + f.to, col: A.COL[f.kind],
-        label: `${say(f.from)} → ${say(f.to)}`, sub: `${f.n} ties from funders based in ${say(f.from)} to spaces in ${say(f.to)}`,
-        sub2: 'Most: ' + f.top.join(', '), ask: `Which funders based in ${say(f.from)} fund spaces in ${say(f.to)}?`
+        label: `${say(f.from)} → ${say(f.to)}`, sub: `${f.n} ties from funders based in ${say(f.from)} to museums in ${say(f.to)}`,
+        sub2: 'Most: ' + f.top.join(', '), ask: `Which funders based in ${say(f.from)} fund museums in ${say(f.to)}?`
       });
       const end = pts[pts.length - 1];
       if (end && end.front) { ctx.beginPath(); ctx.arc(end.x, end.y, 2.6, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill(); }
@@ -261,8 +261,8 @@
         ctx.globalAlpha = focusRec ? 0.95 : 0.55; ctx.strokeStyle = A.lineCol(col);
         strokePath(ctx, path(project, rec, o, r, cx, cy, 0.12), () => 0.9, {
           agg: true, id: 'flag:' + rec.id + n[5], col,
-          label: `${n[0]} → ${rec.n}`, sub: right ? 'Right-wing funder' : `${KIND_WORD[n[1]] || 'Funder'} of a flagged space`,
-          sub2: fl.length ? 'Flag on the space: ' + fl.slice(0, 3).join(', ') : '', ask: right ? `What is ${n[0]}'s politics, and how does it fund ${rec.n}?` : `What is the flag on ${rec.n} about?`
+          label: `${n[0]} → ${rec.n}`, sub: right ? 'Right-wing funder' : `${KIND_WORD[n[1]] || 'Funder'} of a flagged museum`,
+          sub2: fl.length ? 'Flag on the museum: ' + fl.slice(0, 3).join(', ') : '', ask: right ? `What is ${n[0]}'s politics, and how does it fund ${rec.n}?` : `What is the flag on ${rec.n} about?`
         });
       });
     });
@@ -359,7 +359,7 @@
     LIFTED.forEach(({ f, x, y, hot }) => {
       const s = 4 + Math.min(6, Math.sqrt(f.n)), col = A.COL[f.kind];
       ctx.beginPath(); ctx.arc(x, y, s, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = hot ? 1.6 : 0.8; ctx.strokeStyle = dark ? '#fff' : '#000'; ctx.stroke();
-      A.pushMark({ x, y, r: s + 4, col, key: f.keys[0], kind: f.kind, space: f.hub, name: f.name, label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${f.n} spaces`, sub2: `Head office: ${f.hub.c ? f.hub.c + ', ' : ''}${f.hub.co || ''}`, ask: `Which institutions does ${f.name} fund?` });
+      A.pushMark({ x, y, r: s + 4, col, key: f.keys[0], kind: f.kind, space: f.hub, name: f.name, label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${f.n} museums`, sub2: `Head office: ${f.hub.c ? f.hub.c + ', ' : ''}${f.hub.co || ''}`, ask: `Which institutions does ${f.name} fund?` });
       // Names when the view is close, or for the funder in play.
       if (!(hot || r >= baseRadius * 2.2)) return;
       // The whole name as plain type on a halo of ground, no block (user, 16 Nov 2026: names "dont need background or frame").
@@ -402,8 +402,8 @@
     set('choro', `${fmt([...t.country.values()].filter(s => s.known >= 3).length)} countries`);
     const d = api().data();
     let flagged = 0; d.recById.forEach(rec => { if ((rec.fl || []).length || rec.nodes.some(api().RIGHT)) flagged++; });
-    set('flagged', `${fmt(flagged)} spaces`);
+    set('flagged', `${fmt(flagged)} museums`);
     let yrs = 0; d.recById.forEach(rec => { if (yearsOf(rec).length) yrs++; });
-    set('years', `${fmt(yrs)} spaces name a year`);
+    set('years', `${fmt(yrs)} museums name a year`);
   };
 })();
