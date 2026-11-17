@@ -10498,7 +10498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v741';
+    const ATLAS_RELEASE = 'culture-atlas-v742';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -16721,13 +16721,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function typeReveal(root, opts = {}) {
       if (!root) return { finish() {} };
       const skip = 'button, .curator-followups, .curator-thought-content, [data-exclude-speech="true"], script, style, svg';
-      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-        acceptNode: (n) => (!n.nodeValue.trim() || (n.parentElement && n.parentElement.closest(skip))) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+      // A button inside the answer (a record named in a line, a funder in Influence mode) is not typed letter by letter but
+      // shown whole when the writing reaches it, so it never stands alone in an empty line before the words round it.
+      const inline = (el) => el.tagName === 'BUTTON' && !el.closest('.curator-followups, .curator-thought-content, [data-exclude-speech="true"]');
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT, {
+        acceptNode: (n) => {
+          if (n.nodeType === 1) return inline(n) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+          return (!n.nodeValue.trim() || (n.parentElement && n.parentElement.closest(skip))) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+        }
       });
       const items = [];
       let total = 0;
       while (walker.nextNode()) {
         const node = walker.currentNode;
+        if (node.nodeType === 1) { items.push({ el: node, parts: [1], shown: 0 }); total += 1; continue; }
         const parts = node.nodeValue.split(/(\s+)/).filter(Boolean);
         items.push({ node, full: node.nodeValue, parts, shown: 0 });
         total += parts.length;
@@ -16737,7 +16744,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // A balloon (gossip) is drawn to fit its text: the turn keeps its final height while it is written, so the balloon is drawn once.
       if (root.classList.contains('is-gossip')) root.style.minHeight = root.offsetHeight + 'px';
       root.dataset.typing = '1';
-      items.forEach(i => { i.node.nodeValue = ''; });
+      items.forEach(i => { if (i.el) i.el.style.visibility = 'hidden'; else i.node.nodeValue = ''; });
       if (follow) follow.style.visibility = 'hidden';
       // About 28 words a second at most, never longer than 5 seconds however long the answer is.
       const duration = Math.min(5000, Math.max(700, total * 36));
@@ -16747,14 +16754,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         let left = count;
         for (const it of items) {
           const n = Math.min(it.parts.length, left);
-          if (n !== it.shown) { it.node.nodeValue = it.parts.slice(0, n).join(''); it.shown = n; }
+          if (n !== it.shown) { if (it.el) it.el.style.visibility = n ? '' : 'hidden'; else it.node.nodeValue = it.parts.slice(0, n).join(''); it.shown = n; }
           left -= n; if (left <= 0) break;
         }
       };
       const finish = () => {
         if (done) return; done = true;
         clearInterval(timer);
-        items.forEach(i => { i.node.nodeValue = i.full; });
+        items.forEach(i => { if (i.el) i.el.style.visibility = ''; else i.node.nodeValue = i.full; });
         if (follow) follow.style.visibility = '';
         root.style.minHeight = '';
         delete root.dataset.typing;
@@ -21878,8 +21885,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
-<script src="assets/hq-detail.js?v=739"></script>
-<script src="assets/influence-mode.js?v=740"></script>
+<script src="assets/hq-detail.js?v=742"></script>
+<script src="assets/influence-mode.js?v=742"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
 <script src="assets/phone-maps.js?v=696"></script>
 <script src="assets/desktop-maps.js?v=740"></script>
