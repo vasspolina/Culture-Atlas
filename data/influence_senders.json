@@ -3520,5 +3520,362 @@
     "source": "https://www.tribuneindia.com/news/nation/cbi-arrests-joint-drugs-controller-in-bribery-case-to-clear-diabetes-injection-405749"
    }
   ]
+ },
+ "andywarhol": {
+  "made_from": "The Andy Warhol Foundation's money comes from Andy Warhol's estate: its endowment and the licensing and sale of his work.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Its Form 990-PF for the year to April 2025 shows revenue of $24,321,526, expenses of $27,558,476 and net assets of $387,156,946.",
+    "date": "2025",
+    "source": "https://projects.propublica.org/nonprofits/organizations/133410749"
+   },
+   {
+    "kind": "harm",
+    "text": "In May 2023 the US Supreme Court held that the foundation's commercial licensing of Warhol's Orange Prince to Condé Nast, based on Lynn Goldsmith's photograph, did not favour a fair use defence to copyright infringement, affirming the appeals court.",
+    "date": "2023-05",
+    "source": "https://www.supremecourt.gov/opinions/22pdf/21-869_87ad.pdf"
+   }
+  ]
+ },
+ "rockefellerbrothers": {
+  "made_from": "The Rockefeller money comes from John D. Rockefeller's Standard Oil fortune; the Rockefeller Brothers Fund was founded in 1940 by John D. Rockefeller Jr.'s five sons and endowed by him in 1951.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Rockefeller Brothers Fund's Form 990-PF for 2024 shows revenue of $76,104,004, expenses of $94,125,890 and net assets of $1,373,487,971.",
+    "date": "2024",
+    "source": "https://projects.propublica.org/nonprofits/organizations/131760106"
+   }
+  ]
+ },
+ "nasher": {
+  "made_from": "The Nasher money comes from Raymond Nasher, a Dallas real estate developer who built NorthPark Center in the early 1960s, and the Nasher Foundation.",
+  "facts": []
+ },
+ "schlumberger": {
+  "made_from": "The de Menil money comes from the Schlumberger family's oilfield services company, now SLB, founded by Conrad and Marcel Schlumberger; SLB also gives as a company.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "SLB reported full-year 2025 revenue of $35.71 billion, down 2% year on year.",
+    "date": "2025",
+    "source": "https://www.energy-pedia.com/news/general/slb-announces-q4-and-full-year-2025-results-202621"
+   },
+   {
+    "kind": "harm",
+    "text": "In March 2015 Schlumberger Oilfield Holdings agreed to plead guilty and pay more than $232.7 million for conspiring to violate US sanctions by facilitating illegal transactions and trade with Iran and Sudan.",
+    "date": "2015-03",
+    "source": "https://www.ogj.com/general-interest/companies/article/17244919/schlumberger-subsidiary-pleads-guilty-to-violating-us-sanctions"
+   }
+  ]
+ },
+ "wexner": {
+  "made_from": "Les Wexner's money comes from L Brands (The Limited), the retail group behind Victoria's Secret and Bath & Body Works, since split into two companies.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In August 2019 Wexner wrote to the Wexner Foundation community that his former friend and personal money manager Jeffrey Epstein had misappropriated 'vast sums of money from me and my family' more than ten years earlier.",
+    "date": "2019-08",
+    "source": "https://www.jta.org/2019/08/08/ny/leslie-wexner-accuses-jeffrey-epstein-of-misappropriating-vast-sums-of-money"
+   },
+   {
+    "kind": "harm",
+    "text": "In February 2026 Wexner testified about his relationship with Epstein in a closed-door deposition before the House Oversight Committee, at his home in Ohio.",
+    "date": "2026-02",
+    "source": "https://www.democracynow.org/2026/2/19/headlines/former_victoria_s_secret_ceo_les_wexner_testifies_about_his_links_to_epstein"
+   }
+  ]
+ },
+ "morganstanley": {
+  "made_from": "Morgan Stanley is a US investment bank and wealth manager.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Morgan Stanley reported net revenues of $70.6 billion for 2025, against $61.8 billion a year earlier.",
+    "date": "2025",
+    "source": "https://www.familywealthreport.com/article.php/Morgan-Stanley%27s-Group%2C-Wealth-Net-Revenues-Rise-In-Q4-2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Morgan Stanley & Co. LLC reported $4,450,000 in US federal lobbying for 2025 in its own Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Morgan+Stanley&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Morgan Stanley declared EU lobbying costs of €700,000 to €799,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/morgan-stanley?rid=29701922039-63"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 4450000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Morgan+Stanley&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 700000,
+    "eur_max": 799999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/morgan-stanley?rid=29701922039-63"
+   },
+   "culture": {
+    "spaces": 7,
+    "entries": 7
+   }
+  }
+ },
+ "mastercard": {
+  "made_from": "Mastercard runs a global card payments network and takes fees on the transactions.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In January 2019 the European Commission fined Mastercard €570,566,000 for limiting merchants' access to better conditions offered by banks elsewhere in the Single Market, in breach of EU antitrust rules.",
+    "date": "2019-01",
+    "source": "https://ec.europa.eu/commission/presscorner/api/documents?reference=IP/19/582&language=en"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Mastercard Worldwide reported $5,440,000 in US federal lobbying for 2025 in its own Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Mastercard&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Mastercard Europe declared EU lobbying costs of €800,000 to €899,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/mastercard-europe?rid=58204758673-16"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 5440000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Mastercard&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 800000,
+    "eur_max": 899999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/mastercard-europe?rid=58204758673-16"
+   },
+   "culture": {
+    "spaces": 7,
+    "entries": 7
+   }
+  }
+ },
+ "northerntrust": {
+  "made_from": "Northern Trust is a Chicago bank for wealth management and asset servicing.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Northern Trust Corporation reported $420,000 in US federal lobbying for 2025 in its own Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Northern+Trust&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 420000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Northern+Trust&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 5,
+    "entries": 5
+   }
+  }
+ },
+ "broad": {
+  "made_from": "Eli Broad's fortune came from insurance and home construction (KB Home and SunAmerica).",
+  "facts": []
+ },
+ "exxonmobil": {
+  "made_from": "ExxonMobil produces and refines oil and gas and makes chemicals; Mobil merged into it in 1999.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "ExxonMobil reported 2025 earnings of $28.8 billion and cash flow from operations of $52.0 billion.",
+    "date": "2025",
+    "source": "https://investor.exxonmobil.com/company-information/press-releases/detail/1200/exxonmobil-announces-2025-results"
+   },
+   {
+    "kind": "harm",
+    "text": "In May 2022 Massachusetts' Supreme Judicial Court rejected ExxonMobil's bid to dismiss the state's 2019 lawsuit accusing it of misleading the public about climate change, so the case can go forward.",
+    "date": "2022-05",
+    "source": "https://www.cbsnews.com/news/climate-change-massachusetts-exxon-lawsuit-proceed"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Exxon Mobil Corp reported $8,500,000 in US federal lobbying for 2025 in its own Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Exxon+Mobil&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "ExxonMobil Petroleum & Chemical declared EU lobbying costs of €4,000,000 to €4,499,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/exxonmobil-petroleum-chemical?rid=0745650927-75"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 8500000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Exxon+Mobil&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 4000000,
+    "eur_max": 4499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/exxonmobil-petroleum-chemical?rid=0745650927-75"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "moody": {
+  "made_from": "The Moody Foundation of Galveston was founded in 1942 by William Lewis Moody Jr. and Libbie Rice Shearn Moody; Wikipedia gives its main revenue as dividends on American National Insurance Company stock.",
+  "facts": []
+ },
+ "murdoch": {
+  "made_from": "The tie here is Freelands Foundation, set up by Elisabeth Murdoch, daughter of Rupert Murdoch, whose family controls News Corp and Fox Corporation.",
+  "facts": []
+ },
+ "wynn": {
+  "made_from": "Wynn Resorts runs casino resorts in Las Vegas, Macau and Boston; its founder Steve Wynn resigned as chief executive in 2018.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Wynn Resorts posted full-year 2025 revenue of $7.1 billion, flat on 2024.",
+    "date": "2025",
+    "source": "https://igamingbusiness.com/finance/wynn-q4-2025-earnings-results/"
+   },
+   {
+    "kind": "harm",
+    "text": "In April 2019 the Massachusetts Gaming Commission fined Wynn Resorts $35 million after executives failed to disclose years of sexual misconduct allegations against founder Steve Wynn, and fined CEO Matthew Maddox $500,000.",
+    "date": "2019-04",
+    "source": "https://www.nbcboston.com/news/local/massachusetts-gaming-commission-fines-wynn-resorts-35m/95985/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Outside firms reported $460,000 in 2025 fees for US federal lobbying for Wynn Resorts and Wynn Resorts Development (Brownstein Hyatt Farber Schreck $190,000, Dentons $150,000, Empire Consulting Group $120,000); the company filed no in-house report.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Wynn+Resorts&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 460000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Wynn+Resorts&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "goldmansachs": {
+  "made_from": "Goldman Sachs is a US investment bank, trader and asset manager.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Goldman Sachs reported 2025 net revenues of $58.28 billion and net earnings of $17.18 billion.",
+    "date": "2025",
+    "source": "https://www.goldmansachs.com/pressroom/press-releases/current/pdfs/2025-q4-results.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "In October 2020 Goldman Sachs agreed to pay more than $2.9 billion to resolve US and other investigations into its role in the 1MDB scandal; the DOJ said it had conspired to use more than $1.6 billion in bribes to officials.",
+    "date": "2020-10",
+    "source": "https://www.fool.com/investing/2020/10/23/goldman-sachs-settling-1mdb-scandal-for-29-billion"
+   },
+   {
+    "kind": "lobbying",
+    "text": "The Goldman Sachs Group reported $3,960,000 in US federal lobbying for 2025 in its own Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Goldman+Sachs&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "The Goldman Sachs Group declared EU lobbying costs of €1,500,000 to €1,749,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/goldman-sachs?rid=701266814986-18"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 3960000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Goldman+Sachs&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 1500000,
+    "eur_max": 1749999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/goldman-sachs?rid=701266814986-18"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "ericschmidt": {
+  "made_from": "Eric and Wendy Schmidt's money comes mostly from Google (Alphabet), which Eric Schmidt ran as chief executive and chairman.",
+  "facts": []
+ },
+ "nike": {
+  "made_from": "Nike designs and sells sports shoes, clothing and equipment, made by contract factories.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Nike reported revenues of $46.3 billion for the year to May 2025, down 10%.",
+    "date": "2025",
+    "source": "https://www.worldfootwear.com/news/nike-reports-fourth-quarter-and-full-year-results/10762.html"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Nike, Inc reported $2,560,000 in US federal lobbying for 2025 in its own Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Nike&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Nike, Inc. declared EU lobbying costs of €500,000 to €599,999 for June 2025 to May 2026 to the EU Transparency Register.",
+    "date": "2026",
+    "source": "https://www.lobbyfacts.eu/datacard/nike?rid=393423121496-65"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 2560000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Nike&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 500000,
+    "eur_max": 599999,
+    "period": "2025-06 to 2026-05",
+    "source": "https://www.lobbyfacts.eu/datacard/nike?rid=393423121496-65"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
  }
 }
