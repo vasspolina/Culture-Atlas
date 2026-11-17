@@ -1613,7 +1613,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gmd #topThemeBtn::before,:root.gmd #topThemeBtn::after{content:"Dark\A Light";content:"Dark\A Light" / ""}
   :root.gmd :is(#shExpandChat,#shBackToMap)::before,:root.gmd :is(#shExpandChat,#shBackToMap)::after{content:"Expand chat\A \2039  Back to map";content:"Expand chat\A \2039  Back to map" / ""}
   :root.gmd #workspaceTabDossier::before,:root.gmd #workspaceTabDossier::after{content:"Details";content:"Details" / ""}
-  :root.gmd #workspaceTabChat::before,:root.gmd #workspaceTabChat::after{content:"Chat with Leaving it on the table";content:"Chat with Leaving it on the table" / ""}
+  :root.gmd #workspaceTabChat::before,:root.gmd #workspaceTabChat::after{content:"Chat with " var(--chat-name,"Clio");content:"Chat with " var(--chat-name,"Clio") / ""}
 }
 
 /* The Layers button is off for now (user, 14 Nov 2026: "take layers button off for now"), on the phone and the desktop. Only
@@ -1645,7 +1645,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 }
 
 /* ---- The filter pills stay off the chat under 1080px (15 Nov 2026). There is no index column there, so the pills kept
-   their first place, the window's top left, which is where the chat now begins: they were drawn over "Ask Leaving it on the table"
+   their first place, the window's top left, which is where the chat now begins: they were drawn over "Ask Clio" (or Iris)
    and the lines under it. They take the place they have in a wider window, on the map, from the same placeChips()
    (assets/desktop-maps.js): top left of the map, or bottom left when the room there is narrower than the widest pill. ---- */
 @layer sheet{
