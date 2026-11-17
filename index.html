@@ -7401,17 +7401,17 @@ return maplibregl$1;
       return pick;
     }
     const GOSSIP_STATUS_LINE = {
-      talk: 'It is talk, not a finding.',
-      denied: 'The other side denies it.',
-      confirmed: 'This one is confirmed.',
+      talk: 'Nobody has confirmed it.',
+      denied: 'It has been denied.',
+      confirmed: 'It has been confirmed.',
       resolved: 'It has since been settled.'
     };
     const gossipStatusLine = (x) => GOSSIP_STATUS_LINE[x.g.status] || '';
     const KIND_CHIP = {
-      dispute: ['Which museums are fighting with their staff?', 'Where are the union disputes in the gossip?'],
-      departure: ['Which directors left under a cloud?', 'Who quit a museum job and why, in the gossip?'],
-      money: ['Where is the money gossip?', 'Which spaces had a donor scandal?'],
-      allegation: ['Which spaces face allegations right now?'],
+      dispute: ['Which museums are fighting with their staff?', 'Where are museum staff striking or unionising?'],
+      departure: ['Which directors left under a cloud?', 'Who quit a museum job, and why?'],
+      money: ['What are people saying about museum money?', 'Which museums had a donor scandal?'],
+      allegation: ['Which museums face allegations right now?'],
       report: ['What are the newest reports people are talking about?']
     };
     // A question about a kind of story names no space ("Which directors left under a cloud?"), so it is answered from the
@@ -7449,7 +7449,7 @@ return maplibregl$1;
       const k = pickOne(kinds) || main.g.kind;
       if (KIND_CHIP[k]) add(pickOne(KIND_CHIP[k]));
       const city = main.inst.city || (other && other.inst.city);
-      if (city) add(`What's the gossip at spaces in ${city}?`);
+      if (city) add(`What's the gossip at museums in ${city}?`);
       const out = chips.slice(0, 4);
       out.fromModel = true;   // kept as written: the gossip-mode chip filter would swap them for generic ones
       return out;
@@ -7468,9 +7468,9 @@ return maplibregl$1;
       'Want more, or another city?'
     ];
     const GOSSIP_OFF = [
-      'Gossip mode is off. Back to the record: funders, grades and sources.',
-      'Gossip mode is off. The talk stays here when you want it back.',
-      'Gossip mode is off. Ask me who funds a space and I will answer from the record.'
+      'Gossip mode is off. Back to who funds what.',
+      'Gossip mode is off. Switch it on again any time.',
+      'Gossip mode is off. Ask me who funds a museum.'
     ];
     let lastOpener = '';
     function gossipTemplate(main, other) {
@@ -7516,7 +7516,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (!on) { appendCuratorMessage(`<p class="no-indent">${escapeHtml(pickOne(GOSSIP_OFF))}</p>`, [], null, null, false); return; }
       const pool = gossipPool();
       const main = pickGossip(pool);
-      if (!main) { appendCuratorMessage('<p class="no-indent">Gossip mode is on. Ask about a space, or ask which spaces people are talking about.</p>', [], null, null, false); return; }
+      if (!main) { appendCuratorMessage('<p class="no-indent">Gossip mode is on. Ask about a museum, or which museums people are talking about.</p>', [], null, null, false); return; }
       const other = pickGossip(pool, main.inst);
       const chips = gossipChips(main, other, pool);
       const typing = document.getElementById('curatorTyping');
@@ -10498,7 +10498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v749';
+    const ATLAS_RELEASE = 'culture-atlas-v750';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -12865,7 +12865,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // not shown here: the chat does not volunteer gossip, and the desktop record has its own row for them in Gossip mode.
       const gossipOn = typeof isGossipModeActive !== 'undefined' && isGossipModeActive;
       const gossipCard = (g) => item(g.headline, { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span><br><span class="meta gossip-provenance">${escapeHtml(gossipProvenance(g))}</span>` },
-        p('', g.said) + list(li('Response: ', g.response), li('Outcome: ', g.outcome), li('', { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Resolved.', stale: 'Old talk; nothing since.' }[g.status] || '')),
+        p('', g.said) + list(li('Response: ', g.response), li('Outcome: ', g.outcome), li('', { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Settled.', stale: 'Old rumour, nothing since.' }[g.status] || '')),
         g.urls);
       // The headline is the sentence: an item's first sentence runs to 250 characters and more, and cut short it stops mid-claim.
       const gossipBrief = (g) => item('', { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span>` }, p('', proseEnd(g.headline)), (g.urls || []).slice(0, 1));
@@ -13876,7 +13876,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // Gossip mode: the gossip items (notes/gossip-criteria.md §7) as the first row of the record, newest first, stale ones last.
     function proseGossipHtml(inst) {
       if (!isGossipModeActive || !gossipItems(inst).length) return '';
-      const gLis = gossipItems(inst).map(g => proseLi(`${g.headline}.`, escapeHtml([proseEnd(g.said), gossipAttribution(g), g.response ? 'The response: ' + proseEnd(g.response) : '', g.outcome ? 'The outcome: ' + proseEnd(g.outcome) : '', g.status === 'stale' ? 'Old talk; nothing since.' : g.status === 'denied' ? 'Denied.' : g.status === 'confirmed' ? 'Later confirmed.' : ''].filter(Boolean).join(' ')) + proseCite(g.urls, 4), true));
+      const gLis = gossipItems(inst).map(g => proseLi(`${g.headline}.`, escapeHtml([proseEnd(g.said), gossipAttribution(g), g.response ? 'The response: ' + proseEnd(g.response) : '', g.outcome ? 'The outcome: ' + proseEnd(g.outcome) : '', g.status === 'stale' ? 'Old rumour, nothing since.' : g.status === 'denied' ? 'Denied.' : g.status === 'confirmed' ? 'Later confirmed.' : ''].filter(Boolean).join(' ')) + proseCite(g.urls, 4), true));
       return proseRows([proseRow('Gossip', '', gLis, { tone: 'flag', gossip: true })], 'Gossip', true);
     }
     function proseBodyHtml(inst) {
@@ -14140,7 +14140,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     // The gossip items: talk collected from the internet by the rules in notes/gossip-criteria.md, written onto the record by
     // tools/attach_gossip.py as gossip_data.gossip, newest first, stale ones last. Each names who says it, where, when and its sources.
-    const GOSSIP_WHO = { press: 'reported by', court_or_regulator: 'on record at', union: 'said by', open_letter: 'in an open letter at', campaign: 'said by a campaign at', social_named: 'posted by a named account on', social_anonymous: 'said by anonymous posters on', review_platform: 'said in reviews on', institution: 'said by the space on' };
+    const GOSSIP_WHO = { press: 'reported by', court_or_regulator: 'in a filing with', union: 'said by', open_letter: 'in an open letter at', campaign: 'said by a campaign at', social_named: 'posted under a real name on', social_anonymous: 'posted anonymously on', review_platform: 'said in reviews on', institution: 'said by the museum on' };
     function gossipItems(inst, fresh) {
       const all = ((inst && inst.gossip_data || {}).gossip || []).filter(g => g && g.headline);
       return fresh ? all.filter(g => g.status !== 'stale') : all;
@@ -14156,18 +14156,18 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // its status, and the day the editor last opened its addresses. Shown on the record's gossip cards; the chat's text is unchanged.
     const GOSSIP_SOURCE_TYPE = {
       press: 'Press', court_or_regulator: 'Court', union: 'Union', open_letter: 'Open letter', campaign: 'Campaign',
-      social_named: 'Social media', social_anonymous: 'Anonymous post, unverified', review_platform: 'Review site, unverified',
-      institution: 'The space itself'
+      social_named: 'Social media', social_anonymous: 'Anonymous post, not checked', review_platform: 'Review site, not checked',
+      institution: 'The museum itself'
     };
     function gossipProvenance(g) {
       // Plain words, and no link-check housekeeping (user, 13 Nov 2026: "use plain language and do not be overly descriptive").
       const type = GOSSIP_SOURCE_TYPE[g.who_says] || '';
-      const status = { talk: 'Rumour', denied: 'Denied', confirmed: 'Confirmed', resolved: 'Resolved', stale: 'Old rumour' }[g.status] || '';
+      const status = { talk: 'Rumour', denied: 'Denied', confirmed: 'Confirmed', resolved: 'Settled', stale: 'Old rumour' }[g.status] || '';
       return [type, status].filter(Boolean).join(' · ');
     }
     // One item as plain text for the chat's record answers: the headline, what is said, who says it, the response, its status.
     function gossipItemText(g) {
-      const status = { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Resolved.', stale: 'Old rumour.' }[g.status] || '';
+      const status = { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Settled.', stale: 'Old rumour.' }[g.status] || '';
       return [g.headline + '.', g.said, gossipAttribution(g), g.response ? 'Response: ' + g.response : '', g.outcome ? 'Outcome: ' + g.outcome : '', status].filter(Boolean).join(' ').replace(/\.\./g, '.');
     }
     // gossip: what is reported, from the item that names its own sources first. Otherwise: who funds it. Null when the record has nothing to say.
@@ -15886,7 +15886,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           if (!rawText.trim() && beforeAbsence.trim()) rawText = beforeAbsence.split(/\n\s*\n/)[0].trim();
           // The model does not say a thing twice: a sentence or list item it already gave is taken out (assets/repeats.js).
           if (window.AtlasRepeats) rawText = window.AtlasRepeats.dropRepeatedText(rawText);
-          if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing is reported for this space in the records.</p>', gossip: false, none: true };
+          if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing has been reported about this museum.</p>', gossip: false, none: true };
           return isGossipMode ? { html: renderCuratorMarkdown(rawText), gossip: true } : renderCuratorMarkdown(rawText);
         }
       } catch (err) {
@@ -17443,8 +17443,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           .sort((a, b) => (order[a.tier] ?? 2) - (order[b.tier] ?? 2) || a.name.localeCompare(b.name));
         if (isGossipModeActive) {
           const told = here.filter(i => recordFact(i, true));
-          listOf(told, told.length ? `${told.length} of ${here.length} spaces in ${escapeHtml(place)} have something reported${told.length > 12 ? '. The first 12' : ''}:` : '', true);
-          if (!told.length) answer(`<p>Nothing is reported about the ${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)} in the records.</p>`);
+          listOf(told, told.length ? `${told.length} of ${here.length} museums in ${escapeHtml(place)} have something reported${told.length > 12 ? '. The first 12' : ''}:` : '', true);
+          if (!told.length) answer(`<p>Nothing has been reported about the ${here.length} ${here.length === 1 ? 'museum' : 'museums'} in ${escapeHtml(place)}.</p>`);
           return;
         }
         listOf(here, `${here.length} ${here.length === 1 ? 'space' : 'spaces'} in ${escapeHtml(place)}${here.length > 12 ? '. The first 12' : ''}:`);
@@ -17470,7 +17470,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const items = gossipPool().filter(x => x.g.kind === kindQ.kind && inScope(x.inst, place));
         if (items.length) {
           const st = { items, gossip: true, offset: 0, line: gossipItemLine };
-          const title = `${plural(items.length, kindQ.one, kindQ.many)} in the gossip${pl ? ' at spaces in ' + escapeHtml(pl) : ''}, newest first${items.length > 12 ? '. The first 12' : ''}:`;
+          const title = `${plural(items.length, kindQ.one, kindQ.many)} people are talking about${pl ? ' in ' + escapeHtml(pl) : ''}, newest first${items.length > 12 ? '. The first 12' : ''}:`;
           const lines = renderListPage(st);
           answer(`<p>${title}</p>${lines}`, window.atlasListMore ? ['Show more', ...followFor(true)].slice(0, 3) : followFor(true), true);
           return;
@@ -17498,7 +17498,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
-        listOf([...ALL_INSTITUTIONS].sort((a, b) => gossipItems(b, true).length - gossipItems(a, true).length).filter(i => documentedRecordHtml(i) || watchIsGossip(i.watch)), 'Spaces people are talking about, those with gossip items first. Open one to see each item with who says it and its source. Nothing is verified unless marked confirmed or resolved:', true);
+        listOf([...ALL_INSTITUTIONS].sort((a, b) => gossipItems(b, true).length - gossipItems(a, true).length).filter(i => documentedRecordHtml(i) || watchIsGossip(i.watch)), 'Museums people are talking about, the most talked about first. None of it is checked unless it says confirmed or settled:', true);
         return;
       }
       if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
@@ -21888,7 +21888,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/hq-detail.js?v=743"></script>
 <script src="assets/influence-mode.js?v=749"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=696"></script>
+<script src="assets/phone-maps.js?v=697"></script>
 <script src="assets/desktop-maps.js?v=740"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 </body>

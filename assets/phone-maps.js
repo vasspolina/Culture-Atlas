@@ -1145,7 +1145,7 @@
       const gossipOn = () => !!window.isGossipModeActive;
       const store = { get(k) { try { return localStorage.getItem(k); } catch (_) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (_) {} } };
       // Plain words, not research terms (user, 13 Nov 2026: "doesn't need to act like research, use plain language").
-      const STATUS = { confirmed: 'Confirmed', resolved: 'Resolved', talk: 'Rumour', denied: 'Denied', stale: 'Old rumour', documented: 'Documented', user: 'Unverified' };
+      const STATUS = { confirmed: 'Confirmed', resolved: 'Settled', talk: 'Rumour', denied: 'Denied', stale: 'Old rumour', documented: 'Documented', user: 'Not checked' };
       const KIND = { dispute: 'Dispute', report: 'Report', departure: 'Departure', money: 'Money', allegation: 'Allegation', leak: 'Leak', rumour: 'Rumour', case: 'Case', account: 'Post' };
       // What the item rests on, said outright. The two user-generated kinds say so.
       const SOURCE = {
