@@ -133,9 +133,12 @@
   }
   // Every funder is a dot (user, 17 Nov 2026: "just do dots dont do different figure"); its size says how many spaces it
   // reaches. Company or family is said in its record and in the chat, not by the shape.
-  function mark(ctx, f, x, y, s) {
+  // Every dot is 4px across whatever the measure (user, 17 Nov 2026: "these dots are way too big, make all dots same size
+  // and like 4px"); the measure is said by the figure in the label, not by the size.
+  const DOT = 2;
+  function mark(ctx, f, x, y) {
     ctx.beginPath();
-    ctx.arc(x, y, s * 0.85, 0, Math.PI * 2);
+    ctx.arc(x, y, DOT, 0, Math.PI * 2);
     ctx.closePath();
   }
   // ---- The measures: cultural giving next to lobbying and political giving ----
@@ -190,7 +193,7 @@
     const ranked = DATA.funders.filter(f => M.value(f)).sort((a, b) => M.value(b) - M.value(a));
     const none = DATA.funders.filter(f => !M.value(f)).map(f => f.name);
     const top = ranked.slice(0, 6).map(f => `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(M.text(f))}</li>`).join('');
-    say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: each dot is sized by ${esc(M.what)}.</p><ul class="influence-funders">${top}</ul>${none.length ? `<p class="no-indent influence-meta">Nothing found for ${esc(none.join(', '))}, which does not mean they spent nothing.</p>` : ''}</div>`);
+    say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: each dot is labelled with ${esc(M.what)}.</p><ul class="influence-funders">${top}</ul>${none.length ? `<p class="no-indent influence-meta">Nothing found for ${esc(none.join(', '))}, which does not mean they spent nothing.</p>` : ''}</div>`);
   }
   // The buttons sit in the map's filter row (#gmdChips on a desktop, #gmChips on a phone) and take its place while the mode is
   // on: the space filters have nothing to filter when the map shows funders. assets/layers.js rebuilds that row, so the
@@ -201,7 +204,7 @@
       Object.entries(MEASURES).forEach(([k, M]) => {
         const b = document.createElement('button');
         b.type = 'button'; b.className = cls; b.dataset.influenceMeasure = k; b.textContent = M.label;
-        b.title = `Size each funder by ${M.what}`;
+        b.title = `Label each funder with ${M.what}`;
         b.addEventListener('click', () => setMeasure(k));
         host.appendChild(b);
       });
@@ -238,7 +241,7 @@
     }
     // Marks first, then names, the funders that reach most spaces first, so their names get the best place.
     const marks = [];
-    const M = MEASURES[MEASURE], maxV = Math.max(1, ...DATA.funders.map(f => M.value(f) || 0));
+    const M = MEASURES[MEASURE];
     DATA.funders.forEach(f => {
       if (!f.hq) return;
       const pt = project(f.hq.lon, f.hq.lat, r, cx, cy); if (!pt.front) return;
@@ -246,17 +249,17 @@
       const v = M.value(f);
       // Culture keeps its old scale, capped so Bloomberg's 80 spaces do not cover New York; a money measure is scaled to the
       // largest figure on the map, by area. No figure: a small hollow dot.
-      const s = !v ? 3.5 : MEASURE === 'culture' ? Math.min(16, 5 + 2 * Math.sqrt(v)) : 4 + 14 * Math.sqrt(v / maxV);
+      const s = DOT;
       marks.push({ f, x, y, s, n: v || 0, none: !v });
     });
     const placed = marks.map(m => ({ x: m.x - m.s - 2, y: m.y - m.s - 2, w: 2 * m.s + 4, h: 2 * m.s + 4 }));
     marks.forEach(m => {
       const sel = picked === m.f, hov = hover === m.f;
       mark(ctx, m.f, m.x, m.y, m.s);
-      ctx.fillStyle = sel || hov ? ink : paper; ctx.fill();
-      ctx.strokeStyle = ink; ctx.lineWidth = sel ? 2 : 1.5;
-      if (m.none && !sel && !hov) ctx.setLineDash([2, 2]);
-      ctx.stroke(); ctx.setLineDash([]);
+      // Solid ink; a funder with no figure for the measure is hollow, the picked one gets a ring.
+      ctx.fillStyle = m.none && !sel && !hov ? paper : ink; ctx.fill();
+      ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.stroke();
+      if (sel) { ctx.beginPath(); ctx.arc(m.x, m.y, DOT + 3, 0, Math.PI * 2); ctx.stroke(); }
     });
     ctx.font = FONT; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
     // The picked funder's spaces are named on the map (user, 17 Nov 2026: "show names of the museums when i click on dots
