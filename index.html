@@ -725,7 +725,7 @@ return maplibregl$1;
             <span id="workspaceTabDossierLabel">Details</span>
           </button>
           <button id="workspaceTabChat" type="button" onclick="window.setWorkspaceTab('chat');" class="py-1 px-3 t-strong flex items-center gap-1_5">
-            <span>Chat with the curator</span>
+            <span>Chat with Leaving it on the table</span>
           </button>
         </div>
         <div class="flex items-center gap-3">
@@ -809,7 +809,7 @@ return maplibregl$1;
             <button id="modeTabGeneralChat" onclick="window.exitChatInputMode()">General</button>
             <button id="modeTabWhistleblower" onclick="window.enterChatInputMode()">Whistleblower</button>
             <div id="modeSwitchOpSecIndicator"></div>
-            <button id="workModelBtn"><span id="workModelLabel">Curator, Live</span></button>
+            <button id="workModelBtn"><span id="workModelLabel">Answers from the records</span></button>
           </div>
           <div id="chatInputModeHeader"></div>
         </div>
@@ -1027,7 +1027,7 @@ return maplibregl$1;
     <!-- Nav Item: Curator AI -->
     <button class="flex flex-col items-center space-y-1 relative" id="tab-chat" type="button">
 
-      <span class="t-strong">Curator</span>
+      <span class="t-strong">Leaving it on the table</span>
     </button>
   </nav>
 
@@ -10484,7 +10484,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               <span>Map Board Interlocks</span>
             </button>
             <button type="button" onclick="closeStatutoryFilingsModal(); handleCuratorQuery('What do the financial filings of ${escapeHtml(filing.name)} reveal?');" class="py-1_5 px-3 t-strong">
-              <span>Ask Curator Financial Analysis</span>
+              <span>Ask Leaving it on the table about these filings</span>
             </button>
           </div>
         </div>
@@ -10498,7 +10498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v747';
+    const ATLAS_RELEASE = 'culture-atlas-v748';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
