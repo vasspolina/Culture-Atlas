@@ -1,3 +1,395 @@
 {
- "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json."
+ "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Read on the source page except BP's, Shell's and Vale's profit and Japan Tobacco's revenue, taken from search results whose page would not open; check those first.",
+ "bp": {
+  "made_from": "BP’s money comes from producing, refining and trading oil and gas.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "BP reported underlying replacement cost profit of $8,915 million for 2024, down from $13,836 million in 2023.",
+    "date": "2025-02",
+    "source": "https://www.rte.ie/news/business/2025/0211/1495960-bp-quarterly-results"
+   },
+   {
+    "kind": "lobbying",
+    "text": "BP declared EU lobbying costs of €2,000,000 to €2,249,999 for 2025, with 5.6 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://lobbyfacts.eu/representative/ed84c5ea6c6c404f8d62a254f183ed57/bp-p-l-c"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives BP a C- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/BP-94bc79de9cd9bff157e9d554618aaa09"
+   },
+   {
+    "kind": "harm",
+    "text": "In 2015 the US Justice Department announced a civil settlement with BP over the Deepwater Horizon spill worth $20.8 billion.",
+    "date": "2015-10",
+    "source": "https://doi.gov/node/18035"
+   },
+   {
+    "kind": "after",
+    "text": "In December 2023 the British Museum signed a partnership with BP worth £50 million over ten years, funding refurbishment of its buildings.",
+    "date": "2023-12",
+    "source": "https://www.ianvisits.co.uk/articles/british-museum-secures-50-million-sponsorship-deal-with-bp-68350/"
+   }
+  ]
+ },
+ "shell": {
+  "made_from": "Shell’s money comes from producing, processing and selling oil and gas, including liquefied natural gas.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Shell reported adjusted earnings of about $23.7 billion for 2024, down from $28.25 billion in 2023.",
+    "date": "2025-01",
+    "source": "https://www.nbcwashington.com/news/business/money-report/oil-giant-shell-posts-larger-than-expected-drop-in-full-year-profit-on-lower-crude-prices/3829660/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Shell declared EU lobbying costs of €4,500,000 to €4,999,999 for 2025, with 13 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://lobbyfacts.eu/representative/5c3fbbd9f4ec4a5684955ce51301502f/shell-companies"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Shell a C- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Royal-Dutch-Shell"
+   },
+   {
+    "kind": "harm",
+    "text": "Shell agreed a £55 million settlement with the Bodo community in Nigeria over two oil spills in 2008.",
+    "date": "2015",
+    "source": "https://www.amnesty.org/en/latest/campaigns/2026/07/shell-oil-spills-and-human-rights-in-nigeria/"
+   }
+  ]
+ },
+ "totalenergies": {
+  "made_from": "TotalEnergies’ money comes mainly from producing, refining and selling oil and gas, including liquefied natural gas.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "TotalEnergies reported adjusted net income of 18,264 million dollars for 2024, down from 23,176 million in 2023.",
+    "date": "2025-02",
+    "source": "https://www.businesswire.com/news/home/20250204066463/en/TotalEnergies-SE-Fourth-Quarter-and-Full-Year-2024-Results"
+   },
+   {
+    "kind": "lobbying",
+    "text": "TotalEnergies declared EU lobbying costs of €3,000,000 to €3,499,999 for 2024 and recorded 149 high-level Commission meetings.",
+    "date": "2024",
+    "source": "https://lobbyfacts.eu/representative/b2ca40cdd2424e3aafac7d5b6e003fe6/totalenergies-se"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives TotalEnergies a D+ grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Total-5a9f086d9a2ce300529ea4eb020d1aa3"
+   },
+   {
+    "kind": "harm",
+    "text": "On 23 October 2025 a Paris court ruled that TotalEnergies’ carbon neutrality advertising misled consumers.",
+    "date": "2025-10",
+    "source": "https://www.esgtoday.com/french-court-rules-totalenergies-misled-consumers-with-climate-claims/"
+   }
+  ]
+ },
+ "chevron": {
+  "made_from": "Chevron’s money comes from producing, refining and selling oil and gas.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Chevron reported net income attributable to the company of $17,661 million for 2024, down from $21,369 million in 2023.",
+    "date": "2025-01",
+    "source": "https://brazil.chevron.com/-/media/shared-media/documents/2024-chevron-annual-report-supplement.pdf"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Chevron USA and affiliated companies spent $14,226,941 lobbying California officials in 2024.",
+    "date": "2024",
+    "source": "https://www.sanjoseinside.com/news/lobbyists-spent-more-than-500m-in-sacramento-last-year/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Chevron a D- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Chevron-f4b47c4ea77f0f6249ba7f77d4f210ff"
+   }
+  ]
+ },
+ "eni": {
+  "made_from": "Eni’s money comes mainly from producing and selling oil and gas; the Italian state is a major shareholder.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Eni reported adjusted net profit of €5,264 million for 2024, down 37% from €8,322 million in 2023.",
+    "date": "2025-02",
+    "source": "https://eni.com/en-IT/media/press-release/2025/02/2024-fourth-quarter-results.html"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Eni declared EU lobbying costs of €1,250,000 to €1,499,999 for 2025, with 6.2 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://lobbyfacts.eu/representative/aef2426e1ac04cea8ef3287da0a42176/eni-s-p-a"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Eni a D+ grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/ENI-f50369f20d3a3fdc4c2ce661963277d0"
+   }
+  ]
+ },
+ "equinor": {
+  "made_from": "Equinor’s money comes mainly from oil and gas production, largely on the Norwegian shelf; the Norwegian state owns 67%.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Equinor reported adjusted operating income of USD 29.8 billion and net income of USD 8.83 billion for 2024.",
+    "date": "2025-02",
+    "source": "https://www.equinor.com/news/equinor-fourth-quarter-and-full-year-2024-results"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Equinor declared EU lobbying costs of €2,500,000 to €2,749,999 for 2025, with 6.8 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://lobbyfacts.eu/representative/e51de06c03384f3291e5afedb3c97216/equinor-asa"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Equinor a C- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Statoil-52dcf7a991209e6d453f4c7dec385d24"
+   }
+  ]
+ },
+ "sacklerfamily": {
+  "made_from": "The Sackler fortune came from Purdue Pharma, the maker of the opioid painkiller OxyContin.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "A 2019 audit in Purdue’s bankruptcy found the Sackler family withdrew nearly $11 billion from Purdue.",
+    "date": "2019-12",
+    "source": "https://www.npr.org/2019/12/17/788783876/sacklers-withdrew-nearly-11-billion-from-purdue-as-opioid-crisis-mounted"
+   },
+   {
+    "kind": "harm",
+    "text": "In 2020 Purdue agreed to plead guilty to three felonies and pay $8.3 billion; five Sacklers agreed to pay $225 million in a civil settlement.",
+    "date": "2020-10",
+    "source": "https://www.aljazeera.com/economy/2020/10/21/purdue-pharma-to-pay-8-3bn-to-settle-doj-opiod-crisis-probes"
+   },
+   {
+    "kind": "harm",
+    "text": "A federal bankruptcy judge approved the $7.4 billion Purdue and Sackler opioid settlement on 14 November 2025.",
+    "date": "2025-11",
+    "source": "https://www.axios.com/2025/11/14/oxycontin-purdue-pharma-settlement-bankruptcy"
+   },
+   {
+    "kind": "after",
+    "text": "In March 2019, after Tate and the Guggenheim said they would refuse its money, the UK Sackler Trust paused all new philanthropic giving.",
+    "date": "2019-03",
+    "source": "https://www.theartnewspaper.com/news/sackler-charity-in-uk-suspends-all-new-gifts"
+   }
+  ]
+ },
+ "right:koch": {
+  "made_from": "The Koch fortune comes from Koch Industries, a private conglomerate in oil refining, pipelines, chemicals, fertilisers, paper and other industries.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Forbes lists Koch Industries’ annual revenue at $125 billion on its 2026 list of private companies.",
+    "date": "2026",
+    "source": "https://www.forbes.com/companies/koch-industries/"
+   },
+   {
+    "kind": "politics",
+    "text": "AFP Action, the Koch network’s super PAC, spent roughly $138.5 million on independent expenditures in the 2024 cycle, according to OpenSecrets.",
+    "date": "2024",
+    "source": "https://www.factcheck.org/2026/08/americans-for-prosperity-8/"
+   },
+   {
+    "kind": "harm",
+    "text": "In 2000 Koch Industries agreed to pay a $30 million civil penalty over oil spills from its pipelines in several US states.",
+    "date": "2000-01",
+    "source": "https://www.justice.gov/archive/opa/pr/2000/January/019enrd.htm"
+   }
+  ]
+ },
+ "right:griffin": {
+  "made_from": "Ken Griffin’s money comes from Citadel, his hedge fund, and Citadel Securities, a market-making firm.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Citadel’s flagship Wellington fund finished 2024 up 15.1%; the firm had $66 billion in assets under management in December.",
+    "date": "2025-01",
+    "source": "https://nbcchicago.com/news/business/money-report/ken-griffins-flagship-hedge-fund-at-citadel-climbs-15-1-in-2024/3636500"
+   },
+   {
+    "kind": "politics",
+    "text": "Ken Griffin gave $100,000,000 in the 2024 election cycle, fifth among top contributors, according to OpenSecrets data cited by CBS News.",
+    "date": "2024-11",
+    "source": "https://www.cbsnews.com/news/trump-megadonors-2024-election"
+   }
+  ]
+ },
+ "blavatnikfamily": {
+  "made_from": "Len Blavatnik’s fortune began with Russian oil and aluminium assets after the Soviet collapse and is held through Access Industries, including Warner Music and LyondellBasell stakes.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Access Industries’ stake in the oil company TNK was sold to Rosneft in 2013, and Blavatnik made $7 billion.",
+    "date": "2013",
+    "source": "https://en.wikipedia.org/wiki/Len_Blavatnik"
+   },
+   {
+    "kind": "politics",
+    "text": "Blavatnik donated $1 million directly to Donald Trump’s inaugural committee in 2017.",
+    "date": "2017",
+    "source": "https://bellingcat.com/news/2019/10/21/u-s-politicians-cant-stop-taking-len-blavatniks-money"
+   },
+   {
+    "kind": "politics",
+    "text": "Access Industries made a £1.25 million donation to the UK Conservative Party, revealed in May 2024.",
+    "date": "2024-05",
+    "source": "https://leftfootforward.org/2024/10/robert-jenrick-accepted-25000-donation-from-sanctioned-oligarchs-firm"
+   }
+  ]
+ },
+ "bailliegifford": {
+  "made_from": "Baillie Gifford’s money comes from fees for managing investments in listed and private companies for clients.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Baillie Gifford had £224 billion in assets under management and 1,738 staff in 2024.",
+    "date": "2024-08",
+    "source": "https://scottishfinancialreview.com/2024/08/15/baillie-gifford-appoints-new-ceo-as-telfer-plans-exit"
+   },
+   {
+    "kind": "scale",
+    "text": "Baillie Gifford said in 2024 that 2% of its clients’ money was invested in companies with some business related to fossil fuels.",
+    "date": "2024-05",
+    "source": "https://en.wikipedia.org/wiki/Baillie_Gifford"
+   },
+   {
+    "kind": "after",
+    "text": "In June 2024 Baillie Gifford ended all its remaining literary festival sponsorships, approximately £1M per year in funding.",
+    "date": "2024-06",
+    "source": "https://en.wikipedia.org/wiki/Baillie_Gifford"
+   }
+  ]
+ },
+ "jti": {
+  "made_from": "JTI’s money comes from making and selling cigarettes and other tobacco products for its parent, Japan Tobacco.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Japan Tobacco reported revenue of ¥3,149,759 million for 2024, up 10.9%.",
+    "date": "2025-02",
+    "source": "https://www.jt.com/investors/results/forecast/pdf/2024/Full_Year/20250213_05.pdf"
+   },
+   {
+    "kind": "lobbying",
+    "text": "JT International Holding declared EU lobbying costs of €2,250,000 to €2,499,999 for 2025, with 6 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://lobbyfacts.eu/representative/776893b6c4724fdc88ca19746685a5be/jt-international-holding"
+   },
+   {
+    "kind": "harm",
+    "text": "Japan Tobacco recorded a ¥400 billion provision in 2024 for its Canadian unit’s share of a C$32.5 billion tobacco litigation settlement.",
+    "date": "2025-03",
+    "source": "https://www.tipranks.com/news/company-announcements/japan-tobaccos-canadian-subsidiary-settles-all-tobacco-claims"
+   }
+  ]
+ },
+ "philipmorris": {
+  "made_from": "Philip Morris International and Altria make their money from cigarettes such as Marlboro and from heated tobacco and nicotine products.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Philip Morris International reported net revenues of $37.9 billion for 2024, up 7.7%.",
+    "date": "2025-02",
+    "source": "https://www.businesswire.com/news/home/20250205873542/en/Philip-Morris-International-Reports-2024-Fourth-Quarter-Full-Year-Results"
+   },
+   {
+    "kind": "scale",
+    "text": "Altria reported net revenues of about $24.0 billion for 2024, down 1.9%.",
+    "date": "2025-01",
+    "source": "https://www.businesswire.com/news/home/20250129043383/en"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Philip Morris International declared EU lobbying costs of €2,750,000 to €2,999,999 for 2025, with 4.9 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://lobbyfacts.eu/representative/cb85447517124eecb8071373a7a195f3/philip-morris-international-inc"
+   },
+   {
+    "kind": "harm",
+    "text": "Philip Morris was among four tobacco companies in the 1998 Master Settlement Agreement, worth $206 billion to US states.",
+    "date": "1998-11",
+    "source": "https://money.cnn.com/1998/11/16/economy/tobacco_a/"
+   }
+  ]
+ },
+ "riotinto": {
+  "made_from": "Rio Tinto’s money comes from mining, mainly iron ore, plus aluminium, copper and other minerals.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Rio Tinto reported net earnings of US$11,552 million and underlying earnings of $10.87 billion for 2024.",
+    "date": "2025-02",
+    "source": "https://www.investegate.co.uk/announcement/rns/rio-tinto--rio/final-results/8744280"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Rio Tinto a C- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Rio-Tinto-Group/projectlink/Rio-Tinto-Group-In-Climate-Change"
+   },
+   {
+    "kind": "harm",
+    "text": "Rio Tinto blasted 46,000-year-old rock shelters at Juukan Gorge in May 2020; its chief executive resigned that September.",
+    "date": "2020-09",
+    "source": "https://www.npr.org/2020/09/11/911866159/a-mining-company-blew-up-a-46-000-year-old-aboriginal-site-its-ceo-is-resigning"
+   }
+  ]
+ },
+ "vale": {
+  "made_from": "Vale’s money comes from mining, mainly iron ore, and nickel and copper.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Vale reported net income attributable to shareholders of US$6,166 million for 2024, down 23% from US$7,983 million.",
+    "date": "2025-02",
+    "source": "https://www.folhape.com.br/economia/vale-registra-lucro-de-us-62-bi-em-2024-queda-de-23-ante-2023/392957/"
+   },
+   {
+    "kind": "harm",
+    "text": "In 2021 Vale signed a settlement of about $7 billion with Minas Gerais over the Brumadinho dam collapse, which killed more than 270 people.",
+    "date": "2021-02",
+    "source": "https://www.aljazeera.com/economy/2021/2/4/vale-reaches-7bn-settlement-over-deadly-dam-collapse-in-brazil"
+   },
+   {
+    "kind": "harm",
+    "text": "In October 2024 Vale, BHP and Samarco reached a 170 billion reais settlement with Brazilian authorities over the 2015 Fundão dam collapse.",
+    "date": "2024-10",
+    "source": "https://saladeimprensa.vale.com/w/vale-reaches-definitive-settlement-with-public-authorities-in-brazil-for-the-full-reparation-of-samarcos-fundao-dam-collapse"
+   }
+  ]
+ },
+ "lauder": {
+  "made_from": "The Lauder fortune comes from the Estée Lauder Companies, which sell cosmetics, skincare and fragrance.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Estée Lauder Companies reported net sales of $14,326 million for the fiscal year to June 2025, down from $15,608 million.",
+    "date": "2025-08",
+    "source": "https://www.sec.gov/Archives/edgar/data/1001250/000100125025000099/el-20250630.htm"
+   },
+   {
+    "kind": "politics",
+    "text": "Ronald Lauder gave $5 million to MAGA Inc., the pro-Trump super PAC, according to a Brennan Center analysis.",
+    "date": "2025-08",
+    "source": "https://www.brennancenter.org/our-work/analysis-opinion/unprecedented-big-money-surge-super-pac-tied-trump"
+   }
+  ]
+ }
 }
