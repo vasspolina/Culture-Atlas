@@ -66,6 +66,12 @@ FUNDERS = [
     ('viktorvekselberg', 'Viktor Vekselberg', 'family', r'Vekselberg'),
     # Added for one tie (user, 17 Nov 2026: "add the Sony LACMA link"): the leaked Sony emails put its lobbying at LACMA.
     ('sonypictures', 'Sony Pictures Entertainment', 'corp', r'\bSony\b'),
+    # Added with the lobbying links (user, 17 Nov 2026: "same for funders ... keep adding both to atlas"): companies whose
+    # contact with government is recorded at a space, which were not in the pilot.
+    ('bhp', 'BHP', 'corp', r'\bBHP\b'),
+    ('morganstanley', 'Morgan Stanley', 'corp', r'Morgan Stanley'),
+    ('santos', 'Santos', 'corp', r'\bSantos (?:GLNG|Ltd|Limited|Energy)\b'),
+    ('lvmhlouisvuitton', 'LVMH', 'corp', r'\bLVMH\b|Louis Vuitton|Mo[eë]t Hennessy'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
@@ -92,6 +98,8 @@ HQ_EXTRA = {
     'leonidmikhelsonvac': {'n': 'Novatek (Leonid Mikhelson)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
     'viktorvekselberg': {'n': 'Renova Group (Viktor Vekselberg)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
     'lauder': {'n': 'Lauder family', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
+    'bhp': {'n': 'BHP', 'c': 'Melbourne', 'co': 'Australia', 'lat': -37.8136, 'lon': 144.9631},
+    'santos': {'n': 'Santos', 'c': 'Adelaide', 'co': 'Australia', 'lat': -34.9285, 'lon': 138.6007},
 }
 
 # Kinds of influence, in the order the ledger lists them. Each is a pattern over one sentence that names the funder.
