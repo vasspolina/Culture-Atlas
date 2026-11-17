@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=7', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=8', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -166,7 +166,7 @@
       text: f => { const e = fig(f).eu_lobbying; return e ? (e.eur_min ? `${fmtMoney(e.eur_min, 'EUR')}–${fmtMoney(e.eur_max + 1, 'EUR')}` : `under ${fmtMoney(e.eur_max + 1, 'EUR')}`) : ''; } },
     politics: { label: 'Political giving', noun: 'political giving', what: 'what its company political fund gave US candidates in 2023 and 2024',
       value: f => (fig(f).political || {}).usd || null,
-      text: f => { const p = fig(f).political; return p ? `${fmtMoney(p.usd, 'USD')}, ${Math.round(100 * p.rep_usd / p.usd)}% Republican` : ''; } },
+      text: f => { const p = fig(f).political; return p ? `${fmtMoney(p.usd, 'USD')}${p.rep_usd != null ? `, ${Math.round(100 * p.rep_usd / p.usd)}% Republican` : ''}` : ''; } },
   };
   let MEASURE = 'culture';
   // A money measure shows only where a record ties it to a space (user, 17 Nov 2026: "the lobbying need to appear only if it
@@ -499,7 +499,7 @@
         : li('US lobbying', 'No US lobbying report found for 2025.', ''),
       e ? li('EU lobbying', `${e.eur_min ? `${fmtMoney(e.eur_min, 'EUR')} to ${fmtMoney(e.eur_max + 1, 'EUR')}` : `Under ${fmtMoney(e.eur_max + 1, 'EUR')}`} declared to the EU for ${e.period}.`, e.source)
         : li('EU lobbying', 'Not on the EU lobbying register.', ''),
-      p ? li('Political giving', `Its company political fund gave ${fmtMoney(p.usd, 'USD')} to US candidates in 2023 and 2024, ${Math.round(100 * p.rep_usd / p.usd)}% to Republicans and ${Math.round(100 * p.dem_usd / p.usd)}% to Democrats.`, p.source)
+      p ? li('Political giving', `Its company political fund gave ${fmtMoney(p.usd, 'USD')} to US candidates in 2023 and 2024${p.rep_usd != null ? `, ${Math.round(100 * p.rep_usd / p.usd)}% to Republicans and ${Math.round(100 * p.dem_usd / p.usd)}% to Democrats` : ''}.`, p.source)
         : li('Political giving', 'No company political fund giving to US candidates found for 2023 and 2024.', ''),
     ];
     return row('Culture next to lobbying and politics', 'what it gives culture, and what it spends on politics', `<ul class="d-row-list influence-list">${rows.join('')}</ul>`);

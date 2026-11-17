@@ -45,6 +45,8 @@ FUNDERS = [
     ('riotinto', 'Rio Tinto', 'corp', r'Rio Tinto'),
     ('vale', 'Vale', 'corp', r'\bVale\b(?! of)'),
     ('lauder', 'Lauder family', 'family', r'\bLauder\b'),
+    # Added for one tie (user, 17 Nov 2026: "add the Sony LACMA link"): the leaked Sony emails put its lobbying at LACMA.
+    ('sonypictures', 'Sony Pictures Entertainment', 'corp', r'\bSony\b'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
@@ -111,6 +113,10 @@ def segments(r):
         for t in (it.get('headline'), it.get('said'), it.get('outcome')):
             if t:
                 yield 'report', t, src or base, it.get('when')
+    # What a leaked document shows (WikiLeaks), one entry per document, with the document's own links.
+    for w in r.get('wikileaks_records', []) or []:
+        if isinstance(w, dict) and w.get('what_shows'):
+            yield 'wikileaks', w['what_shows'], w.get('sources') or base, w.get('date')
     for c in r.get('case_notes', []) or []:
         if c.get('text'):
             yield 'case_note', c['text'], c.get('sources') or base, c.get('meta')
