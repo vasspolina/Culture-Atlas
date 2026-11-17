@@ -5123,5 +5123,725 @@
     "entries": 2
    }
   }
+ },
+ "mellon": {
+  "made_from": "The Andrew W. Mellon Foundation's endowment comes from the fortune of the Pittsburgh banker and industrialist Andrew W. Mellon, through his children Paul Mellon and Ailsa Mellon Bruce; the Paul Mellon Centre, part of Yale, and the Richard King Mellon Foundation of Pittsburgh are other Mellon family money named in these entries.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Andrew W. Mellon Foundation reported total assets of $8,027,994,221 at the end of 2023 and paid $549,292,394 in contributions and grants that year (Form 990-PF).",
+    "date": "2023",
+    "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/131879954.json"
+   },
+   {
+    "kind": "scale",
+    "text": "The Richard King Mellon Foundation reported total assets of $2,601,768,833 at the end of 2023 and paid $112,236,615 in contributions and grants that year (Form 990-PF).",
+    "date": "2023",
+    "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/251127705.json"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "The Kitchen: $2,000,000 from the Mellon Foundation in 2023, the largest single gift in its history.",
+     "amount": 2000000,
+     "currency": "USD",
+     "source": "https://thekitchen.org/press/the-kitchen-receives-@M-from-the-mellon-foundation/"
+    },
+    "spaces": 55,
+    "entries": 60
+   }
+  }
+ },
+ "google": {
+  "made_from": "Google's money comes from Alphabet, its parent, mainly from search and other advertising, with cloud services and YouTube.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Alphabet's revenue was $402,836 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/googl/financials/"
+   },
+   {
+    "kind": "harm",
+    "text": "In September 2025 the European Commission fined Google €2.95 billion for abusing its dominance in online advertising technology.",
+    "date": "2025-09",
+    "source": "https://ec.europa.eu/commission/presscorner/detail/en/ip_25_1992"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Google Client Services LLC reported $13,100,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Google&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Google Ireland Limited and its affiliates declared EU lobbying costs of €5,500,000 to €5,999,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=03181945560-59"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 13100000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Google&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 5500000,
+    "eur_max": 5999999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=03181945560-59"
+   },
+   "culture": {
+    "spaces": 14,
+    "entries": 14
+   }
+  }
+ },
+ "pritzkerfamily": {
+  "made_from": "The Pritzker family's money comes from family companies, among them Hyatt Hotels, which the family founded; its Hyatt Foundation sponsors the Pritzker Architecture Prize.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Hyatt Hotels Corporation's revenue was $7,101 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/h/financials/"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "The Renaissance Society: the Pritzker Traubert Family Foundation pledged $500,000 to the Next Century Fund.",
+     "amount": 500000,
+     "currency": "USD",
+     "source": "https://renaissancesociety.org/news/16/the-ren-announces-largest-gifts-in-100-year-history"
+    },
+    "spaces": 9,
+    "entries": 9
+   }
+  }
+ },
+ "annenberg": {
+  "made_from": "The Annenberg money comes from Walter Annenberg's Triangle Publications, publisher of The Philadelphia Inquirer, TV Guide, the Daily Racing Form and Seventeen, which he sold to Rupert Murdoch in 1988.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Annenberg Foundation reported total assets of $1,462,008,226 at the end of 2023 and paid $200,588,922 in contributions and grants that year (Form 990-PF).",
+    "date": "2023",
+    "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/236257083.json"
+   }
+  ]
+ },
+ "citi": {
+  "made_from": "Citi's money comes from Citigroup's banking: consumer and corporate banking, markets and wealth management.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Citigroup's revenue was $75,716 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/c/financials/"
+   },
+   {
+    "kind": "harm",
+    "text": "In July 2024 the Federal Reserve Board fined Citigroup $60.6 million for violating its 2020 enforcement action, citing insufficient progress on data quality management; with the Comptroller of the Currency the penalties totalled about $135.6 million.",
+    "date": "2024-07",
+    "source": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20240710a.htm"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Citigroup Washington, Inc. reported $5,360,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Citigroup&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Citigroup Inc. declared EU lobbying costs of €800,000 to €899,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=00353757573-57"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 5360000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Citigroup&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 800000,
+    "eur_max": 899999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=00353757573-57"
+   },
+   "culture": {
+    "spaces": 9,
+    "entries": 9
+   }
+  }
+ },
+ "cocacola": {
+  "made_from": "The Coca-Cola Company's money comes from selling soft-drink concentrates and beverages, bottled by partner companies.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Coca-Cola Company's revenue was $47,941 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/ko/financials/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "The Coca-Cola Company reported $5,020,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Coca-Cola&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "The Coca-Cola Company declared EU lobbying costs of €700,000 to €799,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=00475641564-03"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 5020000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Coca-Cola&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 700000,
+    "eur_max": 799999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=00475641564-03"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "americanexpress": {
+  "made_from": "American Express's money comes from card fees, interest on card lending and the charges merchants pay on card spending.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "American Express's revenue was $66,973 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/axp/financials/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "American Express Company reported $1,680,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=American+Express&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "American Express Corporation declared EU lobbying costs of €400,000 to €499,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=671547715580-60"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 1680000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=American+Express&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 400000,
+    "eur_max": 499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=671547715580-60"
+   },
+   "culture": {
+    "spaces": 8,
+    "entries": 8
+   }
+  }
+ },
+ "boeing": {
+  "made_from": "Boeing's money comes from building commercial aircraft and from defence, space and security contracts.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Boeing's revenue was $89,463 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/ba/financials/"
+   },
+   {
+    "kind": "harm",
+    "text": "In January 2021 Boeing agreed to pay more than $2.5 billion to settle a US Justice Department fraud conspiracy charge over the 737 MAX, whose two crashes killed 346 people: a $243.6 million fine, $1.77 billion to airlines and a $500 million crash-victim fund.",
+    "date": "2021-01",
+    "source": "https://www.insurancejournal.com/news/national/2021/01/11/596977.htm"
+   },
+   {
+    "kind": "lobbying",
+    "text": "The Boeing Company reported $11,340,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Boeing&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Boeing Belgium SRL declared EU lobbying costs of €800,000 to €899,999 for 2024 to the EU Transparency Register.",
+    "date": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=62505293737-81"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 11340000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Boeing&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 800000,
+    "eur_max": 899999,
+    "period": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=62505293737-81"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "National Air and Space Museum: $30 million in 2014 for the Boeing Milestones of Flight Hall.",
+     "amount": 30000000,
+     "currency": "USD",
+     "source": "https://en.wikipedia.org/wiki/National_Air_and_Space_Museum"
+    },
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "adelson": {
+  "made_from": "The Adelson family's money comes from Las Vegas Sands, the casino company Sheldon Adelson founded, which owns Marina Bay Sands in Singapore and resorts in Macao.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Las Vegas Sands' revenue was $13,017 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/lvs/financials/"
+   },
+   {
+    "kind": "harm",
+    "text": "In January 2017 Las Vegas Sands agreed to pay a $6.96 million criminal penalty to end a US Justice Department probe into payments to a consultant in China, under the federal anti-bribery law.",
+    "date": "2017-01",
+    "source": "https://www.businessinsurance.com/las-vegas-sands-pays-7-million-dollars-to-end-criminal-bribery-case/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Outside firms reported $872,500 in 2025 fees from Las Vegas Sands Corporation for US federal lobbying, under the Lobbying Disclosure Act; it filed no in-house report.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Las+Vegas+Sands&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 872500.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Las+Vegas+Sands&filing_year=2025"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "Yad Vashem: Sheldon and Miriam Adelson gave $25 million in 2011.",
+     "amount": 25000000,
+     "currency": "USD",
+     "source": "https://www.thejc.com/opinion/all-yad-vashems-troubles-stem-from-the-need-for-it-to-fundraise-fck01n72"
+    },
+    "spaces": 3,
+    "entries": 3
+   }
+  }
+ },
+ "heinz": {
+  "made_from": "The Heinz Endowments' money comes from the Heinz family's fortune from the H. J. Heinz food company of Pittsburgh.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Heinz Endowments reported total assets of $2,130,567,687 at the end of 2023 and paid $48,689,957 in contributions and grants that year (Form 990-PF).",
+    "date": "2023",
+    "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/251721100.json"
+   }
+  ]
+ },
+ "gates": {
+  "made_from": "Bill Gates's money comes from Microsoft, which he co-founded; the Gates Foundation is endowed from his fortune, and Microsoft's own gifts are named apart in these entries.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Gates Foundation reported total assets of $76,951,451,400 at the end of 2023 and paid $7,200,556,970 in contributions and grants that year (Form 990-PF).",
+    "date": "2023",
+    "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/562618866.json"
+   },
+   {
+    "kind": "scale",
+    "text": "Microsoft's revenue was $281,724 million in its fiscal year to June 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/msft/financials/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Microsoft Corporation reported $9,360,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Microsoft&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Microsoft Corporation declared EU lobbying costs of €7,000,000 to €7,999,999 for its year from July 2025 to June 2026 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=0801162959-21"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 9360000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Microsoft&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 7000000,
+    "eur_max": 7999999,
+    "period": "2025-07 to 2026-06",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=0801162959-21"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "MIT Media Lab: an anonymous $2 million gift from Bill Gates in 2014.",
+     "amount": 2000000,
+     "currency": "USD",
+     "source": "https://news.mit.edu/2020/mit-releases-results-fact-finding-report-jeffrey-epstein-0110"
+    },
+    "spaces": 4,
+    "entries": 4
+   }
+  }
+ },
+ "bezos": {
+  "made_from": "Jeff Bezos's money comes from Amazon, which he founded: online retail, cloud computing and advertising.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Amazon's revenue was $716,924 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/amzn/financials/"
+   },
+   {
+    "kind": "harm",
+    "text": "In September 2025 Amazon agreed to pay $2.5 billion, including $1.5 billion in refunds, to settle US Federal Trade Commission claims that it enrolled customers in Prime through deceptive practices.",
+    "date": "2025-09",
+    "source": "https://www.cbsnews.com/news/amazon-prime-membership-ftc-2-5-billion-settlement-customer-refunds/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Amazon.com Services LLC reported $17,780,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Amazon&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Amazon Europe Core SARL declared EU lobbying costs of €9,000,000 to €9,999,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=366117914426-10"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 17780000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Amazon&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 9000000,
+    "eur_max": 9999999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=366117914426-10"
+   },
+   "culture": {
+    "spaces": 3,
+    "entries": 4
+   }
+  }
+ },
+ "caterpillar": {
+  "made_from": "Caterpillar's money comes from making construction and mining machinery, engines and turbines.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Caterpillar's revenue was $67,589 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/cat/financials/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Caterpillar Inc. reported $5,446,800 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Caterpillar&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Caterpillar Distribution Services Europe bv declared EU lobbying costs of €300,000 to €399,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=03717581957-02"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 5446800.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Caterpillar&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 300000,
+    "eur_max": 399999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=03717581957-02"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "Museo Ernest Hemingway: the Caterpillar Foundation announced $500,000 in 2016.",
+     "amount": 500000,
+     "currency": "USD",
+     "source": "https://havanatimes.org/features/caterpillar-donates-us-500000-to-preserve-hemingways-home-in-cuba/"
+    },
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "occidental": {
+  "made_from": "Occidental's money comes from oil and gas production, with chemicals through OxyChem.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Occidental Petroleum's revenue was $21,593 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/oxy/financials/"
+   },
+   {
+    "kind": "harm",
+    "text": "In 2013 Occidental reached a confidential settlement with Achuar Indigenous communities in Peru over 30 years of contamination of the Corrientes River basin.",
+    "date": "2013",
+    "source": "https://www.corpwatch.org/company/occidental-petroleum-corporation"
+   },
+   {
+    "kind": "harm",
+    "text": "Occidental paid $190 million in 2014 for the contamination of the Passaic River in New Jersey.",
+    "date": "2014",
+    "source": "https://www.corpwatch.org/company/occidental-petroleum-corporation"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Occidental Petroleum Corporation reported $11,330,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Occidental+Petroleum&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Occidental Petroleum Corporation declared EU lobbying costs of €100,000 to €199,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=598986244386-27"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 11330000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Occidental+Petroleum&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 100000,
+    "eur_max": 199999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=598986244386-27"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "netflix": {
+  "made_from": "Netflix's money comes from streaming subscriptions and advertising.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Netflix's revenue was $45,183 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/nflx/financials/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Netflix, Inc. reported $3,080,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Netflix&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Netflix International B.V. declared EU lobbying costs of €700,000 to €799,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=487726915971-30"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 3080000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Netflix&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 700000,
+    "eur_max": 799999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=487726915971-30"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "apple": {
+  "made_from": "Apple's money comes from selling the iPhone and other devices, and from services such as the App Store.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Apple's revenue was $416,161 million in its fiscal year to September 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/aapl/financials/"
+   },
+   {
+    "kind": "harm",
+    "text": "In March 2024 the European Commission fined Apple over €1.8 billion for abusing its dominant position in the distribution of music streaming apps through its App Store.",
+    "date": "2024-03",
+    "source": "https://ec.europa.eu/commission/presscorner/detail/en/ip_24_1161"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Apple Inc. reported $10,410,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Apple&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Apple Inc. declared EU lobbying costs of €8,000,000 to €8,999,999 for its year from October 2024 to September 2025 to the EU Transparency Register.",
+    "date": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=588327811384-96"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 10410000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Apple&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 8000000,
+    "eur_max": 8999999,
+    "period": "2024-10 to 2025-09",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=588327811384-96"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "levistrauss": {
+  "made_from": "Levi Strauss & Co.'s money comes from selling jeans and other clothing.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Levi Strauss & Co.'s revenue was $6,282 million in its fiscal year to November 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/levi/financials/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Outside firms reported $230,000 in 2025 fees from Levi Strauss & Company for US federal lobbying, under the Lobbying Disclosure Act; it filed no in-house report.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Levi+Strauss&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Levi Strauss & Co declared EU lobbying costs of €100,000 to €199,999 for its year from December 2024 to November 2025 to the EU Transparency Register.",
+    "date": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=496360494963-55"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 230000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Levi+Strauss&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 100000,
+    "eur_max": 199999,
+    "period": "2024-12 to 2025-11",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=496360494963-55"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "pfizer": {
+  "made_from": "Pfizer's money comes from prescription medicines and vaccines.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Pfizer's revenue was $62,579 million in 2025.",
+    "date": "2025",
+    "source": "https://stockanalysis.com/stocks/pfe/financials/"
+   },
+   {
+    "kind": "harm",
+    "text": "In September 2009 Pfizer agreed to pay $2.3 billion, then the largest health care fraud settlement, to resolve criminal and civil allegations that it illegally promoted four drugs, including the painkiller Bextra.",
+    "date": "2009-09",
+    "source": "https://abcnews.com/Business/pfizer-fined-23-billion-illegal-marketing-off-label/story?id=8477617"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Pfizer Inc. reported $12,630,000 of its own US federal lobbying spending for 2025 in its Lobbying Disclosure Act reports.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Pfizer&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Pfizer Inc. declared EU lobbying costs of €1,250,000 to €1,499,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=4263301811-33"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 12630000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Pfizer&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 1250000,
+    "eur_max": 1499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=4263301811-33"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
  }
 }

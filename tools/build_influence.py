@@ -293,7 +293,7 @@ FUNDERS = [
     # whose money is old industrial fortunes (Mellon banking and oil, Ford, Getty oil, Rockefeller oil), the companies, and
     # the billionaire families the records tie to spaces. Elected officials acting in office are left out: the question is
     # what private money buys. Keys reuse assets/hq.json's office keys where it has one.
-    ('mellon', 'Mellon Foundation', 'family', r'Mellon'),
+    ('mellon', 'Mellon (the Mellon Foundation and the Mellon family funds)', 'family', r'Mellon'),
     ('andywarhol', 'Andy Warhol Foundation', 'family', r'Warhol Foundation|Andy Warhol Foundation'),
     ('ford', 'Ford Foundation and Ford Motor', 'family', r'Ford Foundation|Ford Motor|Ford Fund'),
     ('getty', 'Getty (J. Paul Getty Trust and the Getty family)', 'family', r'\bGetty\b(?! Images)'),
