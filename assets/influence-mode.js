@@ -40,7 +40,7 @@
     }).catch(() => { loading = null; return null; });
     // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
     // beside the ledger; if it fails to load, MoMA's record simply goes without it.
-    fetch('assets/moma-influence.json?v=1', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; }).catch(() => {});
+    fetch('assets/moma-influence.json?v=2', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
     return loading;
   }
 
@@ -119,6 +119,33 @@
       DATA.funders.push(f); BY_FUNDER.set(f.key, f);
     });
     DATA.funders.forEach(f => { delete f._ms; });
+    fan = null;
+    mergeStudy();
+    if (window.scheduleRender) window.scheduleRender();
+  }
+  // MoMA's private funders from the MoMA Influence Map study join as dots (user, 17 Nov 2026: "show moma funders as dots on
+  // the influence map"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
+  // MoMA among its museums; the rest are new dots at their offices, with MoMA as their one museum. Run once, after the
+  // funding maps have joined, so a funder they name is never drawn twice.
+  let studyMerged = false;
+  function mergeStudy() {
+    if (studyMerged || !merged || !DATA || !STUDY || !STUDY.funders) return;
+    studyMerged = true;
+    const inst = (g('ALL_INSTITUTIONS') || []).find(i => i.id === STUDY.space);
+    const space = { id: STUDY.space, name: inst ? inst.name : 'MoMA' };
+    const norm = x => String(x || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    STUDY.funders.forEach(s => {
+      const names = new Set([s.name, ...(s.names || [])].map(norm));
+      let f = (s.keys || []).map(k => BY_FUNDER.get(k)).find(Boolean) || DATA.funders.find(q => names.has(norm(q.name)));
+      if (!f) {
+        if (!s.hq) return;
+        f = { key: 'moma-study:' + norm(s.name).replace(/ /g, '-'), name: s.name, kind: s.kind, hq: Object.assign({ n: s.name }, s.hq), ties: [], moneySpaces: [], moneyOnly: true, study: s.from };
+        DATA.funders.push(f); BY_FUNDER.set(f.key, f);
+      }
+      f.moneySpaces = f.moneySpaces || [];
+      if (!f.ties.some(t => t.space === space.id) && !f.moneySpaces.some(q => q.id === space.id)) f.moneySpaces.push(space);
+      delete f._ms;
+    });
     fan = null;
     if (window.scheduleRender) window.scheduleRender();
   }
@@ -412,11 +439,18 @@
         pts.push({ id, x: pt.x, y: pt.y, label: i.name || nm || '' });
         museumDots.push({ id, x: pt.x, y: pt.y });
       });
+      // The space in focus is named by the globe itself, above its dot (index.html): it is not named twice here, and that
+      // name's place is kept clear: it is set larger than these names and stands above the pin, so the box is wide and tall.
+      const selNow = g('selectedInstitution');
+      if (selNow && typeof selNow.lat === 'number') {
+        const sp = project(selNow.lon, selNow.lat, r, cx, cy);
+        if (sp.front) { const w = ctx.measureText(selNow.name || '').width * 1.6 + 24; names.push({ x: sp.x - w / 2, y: sp.y - 70, w, h: 64 }); }
+      }
       // A space's own dot is kept clear by every name, its own and the others'.
       const spaceDots = pts.map(q => ({ x: q.x - 5, y: q.y - 5, w: 10, h: 10 }));
       if (pickedMark) spaceDots.push({ x: pickedMark.x - DOT - 5, y: pickedMark.y - DOT - 5, w: 2 * DOT + 10, h: 2 * DOT + 10 });
       pts.forEach(({ id, x, y, label }) => {
-        if (!label) return;
+        if (!label || (selNow && selNow.id === id)) return;
         const w = ctx.measureText(label).width, gap = 9;
         const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 6], [-w / 2, -gap - 6], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
         const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
@@ -454,8 +488,12 @@
       const clash = b => off(b) || hits(b, placed) || hits(b, names);
       const free = spots.find(sp => !clash(boxAt(sp)));
       if (!free && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
-      // Never over another name: a focused or pointed-at funder with no free place takes the first place clear of names.
-      const spot = free || spots.find(sp => !off(boxAt(sp)) && !hits(boxAt(sp), names)) || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
+      // Never over another name: a focused or pointed-at funder with no free place takes the first place clear of names. A
+      // funder of the space in focus with none (MoMA's two dozen, all in New York) keeps its dot and line and waits for the
+      // map to be zoomed in, as any other name does; only the one pointed at insists.
+      const clear = free || spots.find(sp => !off(boxAt(sp)) && !hits(boxAt(sp), names));
+      if (!clear && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
+      const spot = clear || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
       names.push(b);
       ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx, ly);
       ctx.fillStyle = hov && !sel ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, lx, ly);
