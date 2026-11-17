@@ -120,14 +120,18 @@
     const p = v(a.lon, a.lat), q = v(b.lon, b.lat);
     const w = Math.acos(Math.max(-1, Math.min(1, p[0] * q[0] + p[1] * q[1] + p[2] * q[2])));
     const n = Math.max(2, Math.ceil(w / (2 * rad)));
-    let down = false;
+    let down = false, lam = null;
     ctx.beginPath();
     for (let i = 0; i <= n; i++) {
       const t = i / n, s1 = w ? Math.sin((1 - t) * w) / Math.sin(w) : 1 - t, s2 = w ? Math.sin(t * w) / Math.sin(w) : t;
       const x = s1 * p[0] + s2 * q[0], y = s1 * p[1] + s2 * q[1], z = s1 * p[2] + s2 * q[2];
       const pt = project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy);
       if (!pt.front) { down = false; continue; }
-      if (down) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+      // On the flat (Winkel) map every point is "front", so a path that runs off one edge comes back in at the other.
+      // Lift the pen there, as the coastlines do (index.html), or the two ends are joined by a straight line across the map.
+      const seam = pt.lam != null && lam != null && Math.abs(pt.lam - lam) > Math.PI;
+      lam = pt.lam != null ? pt.lam : null;
+      if (down && !seam) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
     }
     ctx.stroke();
   }
