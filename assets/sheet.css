@@ -1911,8 +1911,8 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 #gmTopBtns,#gmMapShareBtn{display:none}
 @layer sheet{
 @media (max-width:767px){
-  :root:is(.gm-map,.gm-chat):not(.gm-from-chat){--safe-t:calc(env(safe-area-inset-top,0px) + 48px)!important}
-  :root:is(.gm-map,.gm-chat):not(.gm-from-chat) #gmTopBtns:not(#sh-x):not(#sh-y){display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:52!important;
+  :root:is(.gm-map,.gm-chat):not(.gm-from-chat):not(.gm-feed-open){--safe-t:calc(env(safe-area-inset-top,0px) + 48px)!important}
+  :root:is(.gm-map,.gm-chat):not(.gm-from-chat):not(.gm-feed-open) #gmTopBtns:not(#sh-x):not(#sh-y){display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:52!important;
     align-items:center!important;gap:6px!important;height:calc(env(safe-area-inset-top,0px) + 48px)!important;margin:0!important;padding:env(safe-area-inset-top,0px) var(--sh-pad) 0!important;
     background:var(--sh-paper)!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;overflow-x:auto!important;scrollbar-width:none}
   #gmTopBtns::-webkit-scrollbar{display:none}
@@ -1996,5 +1996,18 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gm-record #mobileStickyInputBar:not(#sh-x):not(#sh-y){z-index:60!important;padding-top:8px!important;background:var(--sh-paper)!important;pointer-events:auto!important;bottom:0!important;padding-bottom:calc(12px + var(--safe-b,0px))!important}
   :root.gm-record #mobileStickyInputBar>:is(#mobileSuggestChips,#gmStoryStrip):not(#sh-x):not(#sh-y){display:none!important}
   :root.gm-record #detailBody:not(#sh-x):not(#sh-y){padding-bottom:calc(150px + var(--safe-b,0px))!important}
+}
+}
+
+/* ---- The Top story feed on a phone (user, 17 Nov 2026: "there is no way to close this window and also buttons stick on top") ----
+   The feed's cross sat in .ts-pin, which this sheet set absolute, so it scrolled away with the first report and a feed pulled
+   to full and read down had no way out. It is sticky again, as atlas.css meant (a holder of no height before the head), so the
+   cross stays at the top right however far the list is read. While the feed is open the row of top buttons is put away, as the
+   question box already is, and --safe-t is the phone's own again, so the feed starts at the top of the screen. */
+@layer sheet{
+@media (max-width:767px){
+  :root.gm-feed-open #gmFeed .ts-pin:not(#sh-x):not(#sh-y){position:sticky!important;top:0!important;left:auto!important;right:auto!important;height:0!important;display:flex!important;
+    justify-content:flex-end!important;z-index:5!important;overflow:visible!important;pointer-events:none!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close:not(#sh-x):not(#sh-y){pointer-events:auto!important;margin:-2px -8px 0 0!important;background:var(--sh-paper)!important}
 }
 }
