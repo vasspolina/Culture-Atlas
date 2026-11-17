@@ -179,9 +179,17 @@
     eu: { label: 'EU lobbying', what: 'the EU lobbying costs it declared to the EU Transparency Register for its last closed year, as a band',
       value: f => { const e = fig(f).eu_lobbying; return e ? (e.eur_min + e.eur_max) / 2 : null; },
       text: f => { const e = fig(f).eu_lobbying; return e ? (e.eur_min ? `${fmtMoney(e.eur_min, 'EUR')}–${fmtMoney(e.eur_max + 1, 'EUR')}` : `under ${fmtMoney(e.eur_max + 1, 'EUR')}`) : ''; } },
-    politics: { label: 'Political giving', what: 'what its corporate PAC gave federal candidates in the 2023 to 2024 cycle, from its reports to the Federal Election Commission',
-      value: f => (fig(f).political || {}).usd || null,
-      text: f => { const p = fig(f).political; return p ? `${fmtMoney(p.usd, 'USD')}, ${Math.round(100 * p.rep_usd / p.usd)}% Republican` : ''; } },
+    // Political giving adds two filings that are told apart in the label: what the company's PAC gave federal candidates, and
+    // what the people behind a family or individual funder gave in their own names (FEC individual contributions, 2023 to
+    // 2024, to candidates, parties and PACs, super PACs included). A company's executives are not counted as the company.
+    politics: { label: 'Political giving', what: 'federal political giving in the 2023 to 2024 cycle, from reports to the Federal Election Commission: its corporate PAC’s gifts to candidates, and what the people behind a family or individual funder gave in their own names',
+      value: f => (((fig(f).political || {}).usd || 0) + ((fig(f).personal || {}).usd || 0)) || null,
+      text: f => {
+        const p = fig(f).political, q = fig(f).personal, parts = [];
+        if (q) parts.push(`${fmtMoney(q.usd, 'USD')} personal`);
+        if (p) parts.push(`${fmtMoney(p.usd, 'USD')} PAC, ${Math.round(100 * p.rep_usd / p.usd)}% Republican`);
+        return parts.join('; ');
+      } },
   };
   let MEASURE = 'culture';
   function setMeasure(m) {
@@ -498,6 +506,7 @@
         : li('EU lobbying', 'Not found on the EU Transparency Register.', ''),
       p ? li('Political giving', `Its corporate PAC gave ${fmtMoney(p.usd, 'USD')} to federal candidates in 2023 to 2024, ${Math.round(100 * p.rep_usd / p.usd)}% to Republicans and ${Math.round(100 * p.dem_usd / p.usd)}% to Democrats.`, p.source)
         : li('Political giving', 'No corporate PAC contributions to federal candidates found for 2023 to 2024.', ''),
+      ...((F.personal && F.personal.people) || []).map(x => li('Personal giving', `${x.name} gave ${fmtMoney(x.usd, 'USD')} in their own name in 2023 to 2024${x.top && x.top.length ? `; the largest recipients were ${x.top.map(t => `${t.name} (${fmtMoney(t.usd, 'USD')})`).join(', ')}` : ''}.`, x.source)),
     ];
     return row('Culture next to lobbying and politics', 'what it gives culture beside what it spends on governments', `<ul class="d-row-list influence-list">${rows.join('')}</ul>`);
   }
