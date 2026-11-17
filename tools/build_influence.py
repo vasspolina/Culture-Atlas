@@ -173,6 +173,31 @@ FUNDERS = [
     ('borismints', 'Boris Mints', 'family', r'Boris Mints|\bMints\b'),
     ('pinchuk', 'Victor Pinchuk', 'family', r'Pinchuk|Interpipe|EastOne'),
     ('mykhaylova', 'Liubov Mykhaylova', 'family', r'Mykhaylova|Mykhailova'),
+    # Batch 7 (user, 17 Nov 2026: "add chinese sponsors"): private and listed money from mainland China, Hong Kong and
+    # Macau. Most of China's spaces in the atlas are party or state museums with no sender; what is left are collectors'
+    # and developers' museums, and companies abroad. State-owned enterprises (CNPC, Bank of China, OCT) are kept as listed
+    # or commercial companies, as Aramco and Gazprom are; ministries, city bureaus and the West Bund Group's park are not.
+    ('liuyiqian', 'Liu Yiqian and Wang Wei (Long Museum)', 'family', r'Liu Yiqian|Wang Wei\b|Sunline'),
+    ('buditek', 'Budi Tek (Yuz Foundation)', 'family', r'Budi Tek|\bYuz Foundation'),
+    ('pingan', 'Ping An', 'corp', r'Ping An'),
+    ('wanda', 'Dalian Wanda (Wang Jianlin)', 'corp', r'\bWanda\b|Wang Jianlin'),
+    ('bytedance', 'ByteDance (TikTok)', 'corp', r'ByteDance|TikTok|Douyin'),
+    ('cnpc', 'CNPC (PetroChina)', 'corp', r'PetroChina|\bCNPC\b'),
+    ('bankofchina', 'Bank of China', 'corp', r'Bank of China'),
+    ('octgroup', 'OCT Group', 'corp', r'\bOCT\b|Overseas Chinese Town'),
+    ('minsheng', 'Ningxia Minsheng Real Estate', 'corp', r'Minsheng'),
+    ('timeschina', 'Times China', 'corp', r'Times China|Times Property'),
+    ('qiaozhibing', 'Qiao Zhibing', 'family', r'Qiao Zhibing'),
+    ('midea', 'He family (Midea)', 'family', r'Midea|He Xiangjian|He Jianfeng'),
+    ('aranya', 'Aranya', 'corp', r'Aranya'),
+    ('yanshijie', 'Yan Shijie and Cao Mei', 'family', r'Yan Shijie|Cao Mei'),
+    ('zhenghao', 'Zheng Hao (Onehome)', 'family', r'Zheng Hao|Onehome'),
+    ('byd', 'BYD (Denza)', 'corp', r'Denza|\bBYD\b'),
+    ('langhamhotels', 'Great Eagle (Langham Hospitality)', 'corp', r'Langham|Great Eagle'),
+    ('swire', 'Swire', 'corp', r'Swire'),
+    ('jardine', 'Jardine Matheson', 'corp', r'Jardine'),
+    ('nanfung', 'Nan Fung Group (Chen family)', 'family', r'Nan Fung|Vanessa Cheung|Mill6|D\. ?H\. Chen'),
+    ('anta', 'Anta Sports', 'corp', r'\bAnta\b'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
