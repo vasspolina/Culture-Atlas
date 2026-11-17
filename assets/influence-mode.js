@@ -160,19 +160,47 @@
     const p = v(a.lon, a.lat), q = v(b.lon, b.lat);
     const w = Math.acos(Math.max(-1, Math.min(1, p[0] * q[0] + p[1] * q[1] + p[2] * q[2])));
     const n = Math.max(2, Math.ceil(w / (2 * rad)));
-    let down = false, lam = null;
-    ctx.beginPath();
+    const pts = [];
     for (let i = 0; i <= n; i++) {
       const t = i / n, s1 = w ? Math.sin((1 - t) * w) / Math.sin(w) : 1 - t, s2 = w ? Math.sin(t * w) / Math.sin(w) : t;
       const x = s1 * p[0] + s2 * q[0], y = s1 * p[1] + s2 * q[1], z = s1 * p[2] + s2 * q[2];
-      const pt = project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy);
-      if (!pt.front) { down = false; continue; }
-      // On the flat (Winkel) map every point is "front", so a path that runs off one edge comes back in at the other.
-      // Lift the pen there, as the coastlines do (index.html), or the two ends are joined by a straight line across the map.
-      const seam = pt.lam != null && lam != null && Math.abs(pt.lam - lam) > Math.PI;
-      lam = pt.lam != null ? pt.lam : null;
-      if (down && !seam) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+      pts.push(project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy));
     }
+    // On the flat (Winkel) map every point is "front", so a path that runs off one edge comes back in at the other: the
+    // pen lifts there, as the coastlines do (index.html), or the two ends are joined by a straight line across the map.
+    const flat = pts[0].lam != null;
+    const seamAt = i => flat && Math.abs(pts[i].lam - pts[i - 1].lam) > Math.PI;
+    ctx.beginPath();
+    // On the flat map a route that wanders far out of its way, as Munich to Tokyo does over the top of the map, where the
+    // pole is a line (user, 17 Nov 2026: "Shorten the Tokyo line so it doesn't run along the top edge"), is drawn as a
+    // gentle bow between its two ends instead, bent the way the true route goes. "Far out of its way" is a path more than a
+    // tenth longer than the straight line between its ends; the bow is at most 15% of that line. A route that crosses the
+    // edge is bowed only when every crossing comes back in nearer than its two ends are to each other, as one over the pole
+    // line does; a route that leaves at one side of the map and comes back at the other (Munich to Auckland) keeps its
+    // two pieces, since a straight bow would invent a way across the map that the route does not take.
+    if (flat) {
+      const A = pts[0], B = pts[pts.length - 1], chord = Math.hypot(B.x - A.x, B.y - A.y);
+      let len = 0, wide = false;
+      for (let i = 1; i < pts.length; i++) {
+        const d = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
+        if (seamAt(i)) { if (d >= chord) wide = true; } else len += d;
+      }
+      if (!wide && chord > 0 && len > 1.1 * chord) {
+        const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2, M = pts[Math.floor(pts.length / 2)];
+        const nx = -(B.y - A.y) / chord, ny = (B.x - A.x) / chord;   // the chord's normal
+        const side = Math.sign((M.x - mx) * nx + (M.y - my) * ny) || 1;
+        const k = 0.3 * chord * side;   // a quadratic's middle sits halfway to its control point: a bow of 15%
+        ctx.moveTo(A.x, A.y);
+        ctx.quadraticCurveTo(mx + nx * k, my + ny * k, B.x, B.y);
+        ctx.stroke();
+        return;
+      }
+    }
+    let down = false;
+    pts.forEach((pt, i) => {
+      if (!pt.front) { down = false; return; }
+      if (down && !seamAt(i)) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+    });
     ctx.stroke();
   }
   // Every funder is a dot (user, 17 Nov 2026: "just do dots dont do different figure"); its size says how many spaces it
