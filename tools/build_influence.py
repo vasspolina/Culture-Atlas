@@ -72,6 +72,7 @@ FUNDERS = [
     ('morganstanley', 'Morgan Stanley', 'corp', r'Morgan Stanley'),
     ('santos', 'Santos', 'corp', r'\bSantos (?:GLNG|Ltd|Limited|Energy)\b'),
     ('lvmhlouisvuitton', 'LVMH', 'corp', r'\bLVMH\b|Louis Vuitton|Mo[eë]t Hennessy'),
+    ('woodside', 'Woodside Energy', 'corp', r'\bWoodside\b(?! (?:Avenue|Road|Street|Park))'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
@@ -100,6 +101,7 @@ HQ_EXTRA = {
     'lauder': {'n': 'Lauder family', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
     'bhp': {'n': 'BHP', 'c': 'Melbourne', 'co': 'Australia', 'lat': -37.8136, 'lon': 144.9631},
     'santos': {'n': 'Santos', 'c': 'Adelaide', 'co': 'Australia', 'lat': -34.9285, 'lon': 138.6007},
+    'woodside': {'n': 'Woodside Energy', 'c': 'Perth', 'co': 'Australia', 'lat': -31.9523, 'lon': 115.8613},
 }
 
 # Kinds of influence, in the order the ledger lists them. Each is a pattern over one sentence that names the funder.
