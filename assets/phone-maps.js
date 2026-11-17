@@ -581,7 +581,7 @@
         if (d !== 'full') sheet.scrollTop = 0;
         if (sizeBtn) {
           sizeBtn.setAttribute('aria-expanded', String(d === 'full'));
-          sizeBtn.setAttribute('aria-label', d === 'full' ? 'Shrink space details' : 'Expand space details');
+          sizeBtn.setAttribute('aria-label', d === 'full' ? 'Shrink museum details' : 'Expand museum details');
         }
       }
       // A record asked for at full (the Full record action, a link in the chat) stays at full: the sheet's own "a new
@@ -777,7 +777,7 @@
       const tabs = document.createElement('div');
       tabs.className = 'gm-tabs';
       tabs.setAttribute('role', 'tablist');
-      tabs.setAttribute('aria-label', 'Space details');
+      tabs.setAttribute('aria-label', 'Museum details');
       TABS.forEach(([key, label]) => {
         const b = document.createElement('button');
         b.type = 'button';
