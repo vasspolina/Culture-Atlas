@@ -2029,11 +2029,12 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 .influence-chat li::before{content:"\2013\00a0"!important}
 /* A funder's museums sit under its name with no second dash and no second indent (user, 17 Nov 2026: "Don't do double dash
    with indent"): the nested items take the parent's text edge, the one the funder's name starts on, and the nested list
-   keeps no space under it; one gap separates one funder from the next. */
+   keeps no space under it; one gap separates one funder from the next, and half a line one museum from the next (user, 17 Nov 2026). */
 :is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li li{padding:0!important;text-indent:0!important}
 :is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li li::before{content:none!important}
 :is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li>ul{margin:0!important}
 :is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat>ul>li:has(>ul)+li{margin-top:var(--sh-s-lh)!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li li+li{margin-top:calc(var(--sh-s-lh) / 2)!important}
 }
 
 /* ==== THE CHAT WINDOW, SET AS AN iOS SHEET (user, 17 Nov 2026: "implement this top window treatment and window shape plus
