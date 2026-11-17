@@ -228,10 +228,12 @@
     const on = spaceLayersOn();
     let funded = null;
     if (FILTERS.size && keyIndex) { funded = new Set(); FILTERS.forEach(t => t.keys.forEach(k => (keyIndex.get(k) || []).forEach(id => funded.add(id)))); }
-    if (!on.length && !funded && !GRADE) return null;
+    // A mode over the whole page (Influence mode, assets/influence-mode.js) narrows the map as a filter does, under any filter on.
+    const mode = typeof window.atlasModeKeep === 'function' ? window.atlasModeKeep() : null;
+    if (!on.length && !funded && !GRADE && !mode) return null;
     // Funding and Epstein read the funding maps; until they are in, those two keep nothing, and the map fills in once they load.
     if (on.some(k => k === 'funding' || k === 'epstein') && !recById) loadMoney();
-    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id)) && (!GRADE || gradeOf(i) === GRADE);
+    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id)) && (!GRADE || gradeOf(i) === GRADE) && (!mode || mode(i));
   };
   let pinIndex = null;
   function refilter() {
@@ -1187,6 +1189,12 @@
       const base = window.getBaseRadius ? window.getBaseRadius() : 276, cur = window.getView ? window.getView().r : 0;
       window.flyTo(rec.lon, rec.lat, Math.max(cur, base * 8));
     }
+  };
+  // The record a funder key opens (Influence mode's ledger opens its funders this way): the office if one is mapped, else the
+  // same stand-in a click on a funding line makes. Null until the funding maps are in, or for a key the maps do not hold.
+  hq.funderRecord = key => {
+    const f = funderOf(key); if (!f) return null;
+    return f.office || { key: f.key, kind: 'org', k: f.kind, n: f.name, c: '', co: '', noOffice: true, spaces: reachOfKeys(f.keys).n };
   };
   window.atlasHq = hq;
 
