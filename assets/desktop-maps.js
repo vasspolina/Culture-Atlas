@@ -63,7 +63,7 @@
     box.id = 'gmdSearch';
     box.setAttribute('role', 'search');
     box.innerHTML =
-      '<input id="gmdInput" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gmdResults" placeholder="Search the atlas" aria-label="Search spaces and cities, or ask the curator">' +
+      '<input id="gmdInput" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gmdResults" placeholder="Search the atlas" aria-label="Search museums and cities, or ask Leaving it on the table">' +
       '<button type="button" id="gmdGo" class="gmd-ico-btn" aria-label="Search">' + svg(ICON.lens) + '</button>' +
       '<button type="button" id="gmdClear" class="gmd-ico-btn" aria-label="Clear the search" hidden>' + svg(ICON.close) + '</button>' +
       '<ul id="gmdResults" role="listbox" aria-label="Results" hidden></ul>';
@@ -99,7 +99,7 @@
       const out = [];
       ix.cities.forEach((x) => {
         const s = x.n === n ? 0 : x.n.startsWith(n) ? 1 : -1;
-        if (s >= 0) out.push({ kind: 'city', s, x: x.c, label: x.c.name, sub: [x.c.country, x.c.count ? x.c.count + (x.c.count === 1 ? ' space' : ' spaces') : ''].filter(Boolean).join(' · ') });
+        if (s >= 0) out.push({ kind: 'city', s, x: x.c, label: x.c.name, sub: [x.c.country, x.c.count ? x.c.count + (x.c.count === 1 ? ' museum' : ' museums') : ''].filter(Boolean).join(' · ') });
       });
       ix.insts.forEach((x) => {
         let s = -1;
@@ -117,7 +117,7 @@
     function render() {
       const q = input.value.trim();
       items = q ? find(q) : [];
-      if (q) items.push({ kind: 'ask', label: q, sub: 'Ask the curator' });
+      if (q) items.push({ kind: 'ask', label: q, sub: 'Ask Leaving it on the table' });
       active = q && items.length > 1 ? 0 : -1;
       results.innerHTML = '';
       items.forEach((it, k) => {
@@ -351,8 +351,8 @@
       if (inCity) {
         const all = near(city, picked).filter((i) => !keep || keep(i)).sort((a, b) => a.name.localeCompare(b.name));
         const list = all.filter((i) => hit(i.name));
-        idxFind.placeholder = 'Find a space';
-        idxTitle.textContent = city + ', ' + plural(all.length, 'space', 'spaces');
+        idxFind.placeholder = 'Find a museum';
+        idxTitle.textContent = city + ', ' + plural(all.length, 'museum', 'museums');
         if (!q) frag.appendChild(back());
         list.forEach((i) => frag.appendChild(idxRow(i.name, '', i.tier === 'A' || i.tier === 'B' ? i.tier : 'U', !!sel && sel.name === i.name, () => {
           const pick = g('selectInstitution'); if (typeof pick === 'function') pick(i, false);
@@ -417,7 +417,7 @@
       if (keep && !shown.length) {
         const li = document.createElement('li');
         li.className = 'sh-reports-empty sh-report-meta';
-        li.textContent = 'No reports about these spaces yet.';
+        li.textContent = 'No reports about these museums yet.';
         frag.appendChild(li);
       }
       shown.forEach((x) => {
@@ -512,12 +512,12 @@
       // underlined phrases with a small joining word and a small figure after them ("Jeudi 2 novembre au Sample 19h-23h");
       // a short paragraph whose first line steps in from the right, ending on an underlined italic credit; a small italic
       // "with"; then three large names, each with a tiny italic tag at its top left ("Live Aja"). The atlas's name is the
-      // first line and takes the map back to the world; the credit, the curator, opens the chat; each name is one of the
+      // first line and takes the map back to the world; the credit, "in the chat", opens the chat; each name is one of the
       // map's filters and turns it on or off. The counts are read from the data.
       tag.innerHTML =
         '<p class="pt-head"><button type="button" class="pt-name" title="Back to the world view"><span class="pt-u">Leaving it</span> <span class="pt-small">on</span> <span class="pt-u">the table</span></button> <span class="pt-time">' + fmt(insts.length) + ' spaces</span></p>' +
-        '<p class="pt-para"><span class="pt-l1">An atlas of who pays for culture:</span><span class="pt-l2">every space in ' + fmt(cities) + ' cities graded by its funders,</span>' +
-        '<span class="pt-l3">with questions answered by <button type="button" class="pt-credit">the curator.</button></span></p>' +
+        '<p class="pt-para"><span class="pt-l1">An atlas of who pays for culture:</span><span class="pt-l2">every museum in ' + fmt(cities) + ' cities graded by its funders,</span>' +
+        '<span class="pt-l3">with questions answered <button type="button" class="pt-credit">in the chat.</button></span></p>' +
         '<p class="pt-with">with</p>' +
         '<div class="pt-lineup">' +
         '<p class="pt-row"><button type="button" class="pt-big" data-layer="funding"><i class="pt-tag">filter</i>Funding</button></p>' +
@@ -583,7 +583,7 @@
           b.className = 'gmd-chip sh-grade-chip';
           b.dataset.grade = g;
           b.textContent = name;
-          b.title = `Show only ${name.toLowerCase()} spaces; press again to show every space`;
+          b.title = `Show only ${name.toLowerCase()} museums; press again to show every museum`;
           b.addEventListener('click', () => { window.atlasSetGradeFilter(window.atlasGradeFilter() === g ? null : g); gradePills(); });
           chips.appendChild(b);
         });

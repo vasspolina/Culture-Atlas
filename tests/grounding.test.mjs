@@ -44,7 +44,7 @@ test('a thin record writes what is there and nothing invented', () => {
 test('a place summary counts and tallies the place itself', () => {
   const berlin = all.filter(i => i.city === 'Berlin');
   const p = placeSummary('Berlin', berlin, GRADE);
-  assert.match(p, new RegExp('Spaces on the atlas: ' + berlin.length));
+  assert.match(p, new RegExp('Museums on the atlas: ' + berlin.length));
   assert.match(p, /Grades: /);
   assert.match(p, /Flagged, with the reason on record/);
   assert.equal(placeSummary('Nowhere', [], GRADE), '');

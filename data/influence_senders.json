@@ -1542,5 +1542,49 @@
     "source": "https://www.lobbyfacts.eu/datacard/x?rid=920300632423-41"
    }
   }
+ },
+ "sonypictures": {
+  "made_from": "Sony Pictures Entertainment’s money comes from making and selling films and television; it is owned by Sony Group of Japan.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Sony Pictures Entertainment reported $735,042 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Sony+Pictures+Entertainment&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "One outside firm, the Smith-Free Group, reported $320,000 in 2025 fees from Sony Pictures Entertainment for US federal lobbying, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Sony+Pictures+Entertainment&filing_year=2025"
+   },
+   {
+    "kind": "politics",
+    "text": "Sony Pictures Entertainment’s PAC gave $27,000 to federal candidates in the 2023 to 2024 cycle, 39% to Republicans and 61% to Democrats, in its reports to the Federal Election Commission.",
+    "date": "2024",
+    "source": "https://www.fec.gov/data/committee/C00282038/?cycle=2024"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   },
+   "us_lobbying": {
+    "usd": 735042.0,
+    "year": 2025,
+    "quarters": 4,
+    "filer": "SONY PICTURES ENTERTAINMENT INC.",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Sony+Pictures+Entertainment&filing_year=2025"
+   },
+   "political": {
+    "usd": 27000,
+    "rep_usd": 10500,
+    "dem_usd": 16500,
+    "cycle": "2023-24",
+    "committee": "SONY PICTURES ENTERTAINMENT, INC. PAC",
+    "source": "https://www.fec.gov/data/committee/C00282038/?cycle=2024"
+   }
+  }
  }
 }
