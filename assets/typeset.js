@@ -379,7 +379,7 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
 
-/* "Ask the curator" takes one of Displaay's colours, a different one at each load (user, 4 Nov 2026). atlas.css holds the
+/* "Ask Leaving it on the table" takes one of Displaay's colours, a different one at each load (user, 4 Nov 2026). atlas.css holds the
    colours for each theme; this only picks which. */
 (function () {
   try {
