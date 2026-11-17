@@ -11105,6 +11105,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // 1px ground edge, so it reads on the hairlines and the land in both themes. It falls 14px into place when the place
     // changes; with reduced motion it is simply there.
     let droppedPinKey = null, droppedPinT0 = 0;
+    const ATLAS_DROP_PATH = 'M0 0C-2.5 -7 -9 -12.5 -9 -21A9 9 0 1 1 9 -21C9 -12.5 2.5 -7 0 0Z';
     function droppedPinTarget() {
       if (selectedInstitution) {
         const pin = atlasPinOf(selectedInstitution);
@@ -11124,32 +11125,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const k = reduce ? 1 : Math.min(1, (now - droppedPinT0) / 220);
       const lift = (1 - k * k) * 14;
       if (k < 1) scheduleRender();
-      // A ball-headed pin (user, 15 Nov 2026: "pin needs to be vertical", then a picture, "make pin like this"; before it a
-      // drawing pin that leaned 35 degrees): a glossy red ball on a steel shaft that stands upright, its foot on the place.
-      // Drawn with the foot at 0, 0; the street map's SVG (syncStreetDropPin) has the same parts and the same colours.
+      // A black drop (user, 17 Nov 2026: "make pins black drops on atlas"; before it a glossy ball-headed push pin): a teardrop
+      // in #000, its point on the place, with a 1px white edge so it still reads on the black ground of the dark theme.
+      // Drawn with the point at 0, 0; the street map's SVG (atlasPinSvg) has the same path.
       c2.save();
       c2.translate(p.x, p.y - lift);
-      const shaft = new Path2D('M-2.3 -18L2.3 -18L1.7 -0.7Q0 0.7 -1.7 -0.7Z');
-      const steel = c2.createLinearGradient(-2.3, 0, 2.3, 0);
-      [[0, '#6d7580'], [0.4, '#f4f7fa'], [0.7, '#b9c0c8'], [1, '#5d6570']].forEach(([o, col]) => steel.addColorStop(o, col));
-      c2.fillStyle = steel; c2.fill(shaft);
-      c2.strokeStyle = '#4a525c'; c2.lineWidth = 0.6; c2.stroke(shaft);
-      // the ball's shadow on the top of the shaft
-      const shade = c2.createLinearGradient(0, -18, 0, -11);
-      shade.addColorStop(0, 'rgba(0,0,0,.45)'); shade.addColorStop(1, 'rgba(0,0,0,0)');
-      c2.fillStyle = shade; c2.fill(new Path2D('M-2.3 -18L2.3 -18L2.05 -11L-2.05 -11Z'));
-      // The ball takes the open space's filter colour (atlasPinColour); a pin on a city stays red.
-      const shades = atlasPinShades(t.key.charAt(0) === 'i' ? atlasPinColour(selectedInstitution) : ATLAS_PIN_RED);
-      const red = c2.createRadialGradient(-2.5, -27.5, 0, -2.5, -27.5, 12);
-      [[0, shades.spot], [0.4, shades.body], [0.8, shades.low], [1, shades.rim]].forEach(([o, col]) => red.addColorStop(o, col));
-      c2.beginPath(); c2.arc(0, -25, 9, 0, Math.PI * 2);
-      c2.fillStyle = red; c2.fill();
-      c2.strokeStyle = shades.edge; c2.lineWidth = 0.6; c2.stroke();
-      // the gloss: the light of a window on the top of the ball
-      const gloss = c2.createLinearGradient(0, -33.4, 0, -27.6);
-      gloss.addColorStop(0, 'rgba(255,255,255,.85)'); gloss.addColorStop(1, 'rgba(255,255,255,.05)');
-      c2.beginPath(); c2.ellipse(-0.8, -30.5, 5.6, 2.9, 0, 0, Math.PI * 2);
-      c2.fillStyle = gloss; c2.fill();
+      const drop = new Path2D(ATLAS_DROP_PATH);
+      c2.fillStyle = '#000'; c2.fill(drop);
+      c2.strokeStyle = '#fff'; c2.lineWidth = 1; c2.stroke(drop);
       c2.restore();
     }
     window.atlasDropPinRefresh = () => scheduleRender();
@@ -13245,18 +13228,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const mix = (to, k) => '#' + c.map(x => Math.round(x + (to - x) * k).toString(16).padStart(2, '0')).join('');
       return { spot: mix(255, 0.45), body: mix(0, 0), low: mix(0, 0.25), rim: mix(0, 0.42), edge: mix(0, 0.45) };
     }
+    // The black drop, as drawDroppedPin draws it on the globe; the point is at 18, 35 in the 36px box. The colour is no
+    // longer the space's (the argument is kept so streetDropPinPaint still notices a change).
     function atlasPinSvg(hex) {
-      const k = atlasPinShades(hex);
-      return '<svg viewBox="0 0 36 36" width="36" height="36"><defs>'
-        + '<radialGradient id="atlasPinRed" gradientUnits="userSpaceOnUse" cx="-2.5" cy="-27.5" r="12"><stop offset="0" stop-color="' + k.spot + '"/><stop offset="0.4" stop-color="' + k.body + '"/><stop offset="0.8" stop-color="' + k.low + '"/><stop offset="1" stop-color="' + k.rim + '"/></radialGradient>'
-        + '<linearGradient id="atlasPinSteel" gradientUnits="userSpaceOnUse" x1="-2.3" x2="2.3" y1="0" y2="0"><stop offset="0" stop-color="#6d7580"/><stop offset="0.4" stop-color="#f4f7fa"/><stop offset="0.7" stop-color="#b9c0c8"/><stop offset="1" stop-color="#5d6570"/></linearGradient>'
-        + '<linearGradient id="atlasPinShade" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="-18" y2="-11"><stop offset="0" stop-color="#000" stop-opacity="0.45"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>'
-        + '<linearGradient id="atlasPinGloss" gradientUnits="userSpaceOnUse" x1="0" x2="0" y1="-33.4" y2="-27.6"><stop offset="0" stop-color="#fff" stop-opacity="0.85"/><stop offset="1" stop-color="#fff" stop-opacity="0.05"/></linearGradient>'
-        + '</defs><g transform="translate(18 35)">'
-        + '<path class="atlas-drop-pin-steel" fill="url(#atlasPinSteel)" d="M-2.3 -18L2.3 -18L1.7 -0.7Q0 0.7 -1.7 -0.7Z"/>'
-        + '<path fill="url(#atlasPinShade)" d="M-2.3 -18L2.3 -18L2.05 -11L-2.05 -11Z"/>'
-        + '<circle class="atlas-drop-pin-red" fill="url(#atlasPinRed)" stroke="' + k.edge + '" cx="0" cy="-25" r="9"/>'
-        + '<ellipse fill="url(#atlasPinGloss)" cx="-0.8" cy="-30.5" rx="5.6" ry="2.9"/>'
+      return '<svg viewBox="0 0 36 36" width="36" height="36"><g transform="translate(18 35)">'
+        + '<path fill="#000" stroke="#fff" stroke-width="1" d="M0 0C-2.5 -7 -9 -12.5 -9 -21A9 9 0 1 1 9 -21C9 -12.5 2.5 -7 0 0Z"/>'
         + '</g></svg>';
     }
     // Draws the street pin in the open space's colour; also called when the theme changes, since the colour does.
@@ -21886,7 +21862,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
 <script src="assets/hq-detail.js?v=743"></script>
-<script src="assets/influence-mode.js?v=750"></script>
+<script src="assets/influence-mode.js?v=752"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
 <script src="assets/phone-maps.js?v=698"></script>
 <script src="assets/desktop-maps.js?v=741"></script>
