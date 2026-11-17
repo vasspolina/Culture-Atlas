@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=5', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=7', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -153,6 +153,71 @@
     ctx.arc(x, y, s * 0.85, 0, Math.PI * 2);
     ctx.closePath();
   }
+  // ---- The measures: cultural giving next to lobbying and political giving ----
+  // (user, 17 Nov 2026: "Set cultural giving next to their public lobbying, political donation and sponsorship filings
+  // (filters on influence map) ... This is the part that actually answers 'who is at fault?'"). One measure at a time
+  // sizes the dots and labels each with its figure. Every figure is in data/influence_senders.json under `figures`, with
+  // its own source: culture from the atlas entries, US lobbying from the Lobbying Disclosure Act reports (lda.gov), EU
+  // lobbying from the EU Transparency Register, political giving from corporate PAC reports to the Federal Election
+  // Commission. A funder with no figure for the measure is a small hollow dot, its name only on pointing: no filing found
+  // is not the same as nothing spent, so it is never drawn as zero.
+  const fmtMoney = (v, cur) => {
+    const sym = { USD: '$', EUR: '€', GBP: '£', CAD: 'C$', BRL: 'R$', QAR: 'QAR ', INR: 'Rs ' }[cur] || '$';
+    if (v >= 1e9) return `${sym}${(v / 1e9).toFixed(v >= 1e10 ? 0 : 1).replace(/\.0$/, '')}bn`;
+    if (v >= 1e6) return `${sym}${(v / 1e6).toFixed(v >= 1e7 ? 0 : 1).replace(/\.0$/, '')}M`;
+    if (v >= 1e3) return `${sym}${Math.round(v / 1e3)}k`;
+    return `${sym}${Math.round(v)}`;
+  };
+  const fig = f => (f.sender && f.sender.figures) || {};
+  const MEASURES = {
+    culture: { label: 'Culture', what: 'cultural spaces the records tie it to',
+      value: f => (fig(f).culture || {}).spaces || null,
+      text: f => { const c = fig(f).culture || {}; return c.spaces ? `${c.spaces} ${c.spaces === 1 ? 'space' : 'spaces'}` : ''; } },
+    us: { label: 'US lobbying', what: 'its own US federal lobbying spending for 2025, from its Lobbying Disclosure Act reports',
+      value: f => (fig(f).us_lobbying || {}).usd || null,
+      text: f => { const u = fig(f).us_lobbying; return u ? fmtMoney(u.usd, 'USD') : ''; } },
+    eu: { label: 'EU lobbying', what: 'the EU lobbying costs it declared to the EU Transparency Register for its last closed year, as a band',
+      value: f => { const e = fig(f).eu_lobbying; return e ? (e.eur_min + e.eur_max) / 2 : null; },
+      text: f => { const e = fig(f).eu_lobbying; return e ? (e.eur_min ? `${fmtMoney(e.eur_min, 'EUR')}–${fmtMoney(e.eur_max + 1, 'EUR')}` : `under ${fmtMoney(e.eur_max + 1, 'EUR')}`) : ''; } },
+    politics: { label: 'Political giving', what: 'what its corporate PAC gave federal candidates in the 2023 to 2024 cycle, from its reports to the Federal Election Commission',
+      value: f => (fig(f).political || {}).usd || null,
+      text: f => { const p = fig(f).political; return p ? `${fmtMoney(p.usd, 'USD')}, ${Math.round(100 * p.rep_usd / p.usd)}% Republican` : ''; } },
+  };
+  let MEASURE = 'culture';
+  function setMeasure(m) {
+    if (!MEASURES[m] || (m === MEASURE && m !== 'culture')) m = 'culture';
+    MEASURE = m;
+    paintMeasureButtons();
+    if (window.scheduleRender) window.scheduleRender();
+    if (on && DATA) sayMeasure();
+  }
+  function sayMeasure() {
+    const M = MEASURES[MEASURE];
+    const ranked = DATA.funders.filter(f => M.value(f)).sort((a, b) => M.value(b) - M.value(a));
+    const none = DATA.funders.filter(f => !M.value(f)).map(f => f.name);
+    const top = ranked.slice(0, 6).map(f => `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(M.text(f))}</li>`).join('');
+    say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: each dot is sized by ${esc(M.what)}.</p><ul class="influence-funders">${top}</ul>${none.length ? `<p class="no-indent influence-meta">No figure found for ${esc(none.join(', '))}; that is not the same as nothing spent.</p>` : ''}</div>`);
+  }
+  // The buttons sit in the map's filter row (#gmdChips on a desktop, #gmChips on a phone) and take its place while the mode is
+  // on: the space filters have nothing to filter when the map shows funders. assets/layers.js rebuilds that row, so the
+  // buttons are put back whenever they go.
+  function measureButtons() {
+    [['gmdChips', 'gmd-chip'], ['gmChips', 'gm-filter-chip']].forEach(([id, cls]) => {
+      const host = document.getElementById(id); if (!host || host.querySelector('[data-influence-measure]')) return;
+      Object.entries(MEASURES).forEach(([k, M]) => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = cls; b.dataset.influenceMeasure = k; b.textContent = M.label;
+        b.title = `Size each funder by ${M.what}`;
+        b.addEventListener('click', () => setMeasure(k));
+        host.appendChild(b);
+      });
+      paintMeasureButtons();
+    });
+  }
+  function paintMeasureButtons() { document.querySelectorAll('[data-influence-measure]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.influenceMeasure === MEASURE))); }
+  window.atlasInfluenceMeasure = () => MEASURE;
+  window.atlasSetInfluenceMeasure = setMeasure;
+
   let HITS = [], SPACE_HITS = [], hover = null, hoverSpace = null;
   const FONT = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
   window.atlasInfluenceDraw = function (ctx, project, r, cx, cy, ground, text) {
@@ -178,19 +243,25 @@
     }
     // Marks first, then names, the funders that reach most spaces first, so their names get the best place.
     const marks = [];
+    const M = MEASURES[MEASURE], maxV = Math.max(1, ...DATA.funders.map(f => M.value(f) || 0));
     DATA.funders.forEach(f => {
       if (!f.hq) return;
       const pt = project(f.hq.lon, f.hq.lat, r, cx, cy); if (!pt.front) return;
       const o = fan.get(f) || { dx: 0, dy: 0 }, x = pt.x + o.dx, y = pt.y + o.dy;
-      const n = new Set(f.ties.map(t => t.space)).size;
-      marks.push({ f, x, y, s: Math.min(16, 5 + 2 * Math.sqrt(n)), n });   // capped, so Bloomberg's 80 spaces do not cover New York
+      const v = M.value(f);
+      // Culture keeps its old scale, capped so Bloomberg's 80 spaces do not cover New York; a money measure is scaled to the
+      // largest figure on the map, by area. No figure: a small hollow dot.
+      const s = !v ? 3.5 : MEASURE === 'culture' ? Math.min(16, 5 + 2 * Math.sqrt(v)) : 4 + 14 * Math.sqrt(v / maxV);
+      marks.push({ f, x, y, s, n: v || 0, none: !v });
     });
     const placed = marks.map(m => ({ x: m.x - m.s - 2, y: m.y - m.s - 2, w: 2 * m.s + 4, h: 2 * m.s + 4 }));
     marks.forEach(m => {
       const sel = picked === m.f, hov = hover === m.f;
       mark(ctx, m.f, m.x, m.y, m.s);
       ctx.fillStyle = sel || hov ? ink : paper; ctx.fill();
-      ctx.strokeStyle = ink; ctx.lineWidth = sel ? 2 : 1.5; ctx.stroke();
+      ctx.strokeStyle = ink; ctx.lineWidth = sel ? 2 : 1.5;
+      if (m.none && !sel && !hov) ctx.setLineDash([2, 2]);
+      ctx.stroke(); ctx.setLineDash([]);
     });
     ctx.font = FONT; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
     // The picked funder's spaces are named on the map (user, 17 Nov 2026: "show names of the museums when i click on dots
@@ -225,7 +296,9 @@
       // The name beside the mark in plain type on a halo of the map's ground, never cut short, moved round the mark
       // until it covers no other name or mark. Where every place is taken (Europe at world zoom) it waits, as a city's
       // name does, and shows once the map is zoomed in or the mark is pointed at; the picked funder's always shows.
-      const label = f.name, w = ctx.measureText(label).width, gap = s + 5;
+      const figure = MEASURES[MEASURE].text(f);
+      if (m.none && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
+      const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = s + 5;
       const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
       const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
       const clash = b => placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
@@ -285,9 +358,10 @@
       await load();
       if (!on) return;   // switched off again while the data loaded
       if (window.atlasHq && window.atlasHq.ready) window.atlasHq.ready(() => {});   // the funding maps, so a funder's record can open
+      measureButtons();
       greet();
     } else {
-      picked = null; pickedSpaces = null; hover = null; hoverSpace = null;
+      picked = null; pickedSpaces = null; hover = null; hoverSpace = null; MEASURE = 'culture'; paintMeasureButtons();
       say('<p class="no-indent">Influence mode is off. The map shows the spaces again.</p>');
     }
     if (typeof window.atlasRefilter === 'function') window.atlasRefilter();
@@ -411,6 +485,23 @@
     return row('When a space said no', 'a refusal ends one tie, not the money', inner);
   }
 
+  // Cultural giving next to lobbying and political giving, one line each, each with its own source; a line with no filing
+  // says so, since no filing found is not the same as nothing spent.
+  function compareRow(f) {
+    const F = fig(f), li = (lead, body, src) => `<li class="influence-entry"><p class="no-indent"><span class="lead-in">${esc(lead)}.</span> ${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
+    const c = F.culture || {}, u = F.us_lobbying, e = F.eu_lobbying, p = F.political;
+    const rows = [
+      li('Culture', `${c.spaces || 0} ${c.spaces === 1 ? 'space' : 'spaces'} in the records${c.largest_gift ? `; the largest gift they state is ${c.largest_gift.text}` : ', with no amount stated'}.`, c.largest_gift && c.largest_gift.source),
+      u ? li('US lobbying', u.outside_only ? `Outside firms reported ${fmtMoney(u.usd, 'USD')} in fees for ${u.year}; it files no report of its own.` : `${fmtMoney(u.usd, 'USD')} of its own federal lobbying spending in ${u.year}${u.quarters && u.quarters < 4 ? `, in ${u.quarters} quarterly reports` : ''}.`, u.source)
+        : li('US lobbying', 'No Lobbying Disclosure Act report found for 2025.', ''),
+      e ? li('EU lobbying', `${e.eur_min ? `${fmtMoney(e.eur_min, 'EUR')} to ${fmtMoney(e.eur_max + 1, 'EUR')}` : `Under ${fmtMoney(e.eur_max + 1, 'EUR')}`} declared for ${e.period}.`, e.source)
+        : li('EU lobbying', 'Not found on the EU Transparency Register.', ''),
+      p ? li('Political giving', `Its corporate PAC gave ${fmtMoney(p.usd, 'USD')} to federal candidates in 2023 to 2024, ${Math.round(100 * p.rep_usd / p.usd)}% to Republicans and ${Math.round(100 * p.dem_usd / p.usd)}% to Democrats.`, p.source)
+        : li('Political giving', 'No corporate PAC contributions to federal candidates found for 2023 to 2024.', ''),
+    ];
+    return row('Culture next to lobbying and politics', 'what it gives culture beside what it spends on governments', `<ul class="d-row-list influence-list">${rows.join('')}</ul>`);
+  }
+
   function funderPart(f) {
     const t = tally(f.ties);
     const el = document.createElement('div');
@@ -418,6 +509,7 @@
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', `What ${f.name} got`);
     let html = row(`What ${f.name} got`, tallyLine(f), '');
+    html += compareRow(f);
     html += senderRows(f);
     ORDER.forEach(k => {
       const ties = f.ties.filter(x => (x.kinds.length ? x.kinds : []).includes(k));
@@ -495,10 +587,12 @@
     return true;
   }
 
+  // assets/layers.js repaints every chip in the row after a filter change, and would mark these as "All": they are painted after it.
+  document.addEventListener('atlas:filter', () => setTimeout(() => { measureButtons(); paintMeasureButtons(); }));
   function init() {
     watch();
     let n = 0;
-    const t = setInterval(() => { watch(); if (phoneButton() || ++n > 50) clearInterval(t); }, 200);
+    const t = setInterval(() => { watch(); measureButtons(); if ((phoneButton() && document.querySelector('[data-influence-measure]')) || ++n > 50) clearInterval(t); }, 200);
     // Load the entries early, so the first switch is instant and ?influence opens the page in the mode.
     load().then(() => { if (/[?&]influence\b/.test(location.search)) toggle(true); });
   }

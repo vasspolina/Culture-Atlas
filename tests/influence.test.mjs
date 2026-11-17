@@ -57,3 +57,18 @@ test('every sender fact has a known kind, a date and a source', () => {
     }
   }
 });
+
+// The map's measures (Influence mode's filters) read each funder's `figures`: cultural giving next to lobbying and political
+// giving. Every figure is a number with its own source, so a measure on the map can always be traced to a filing.
+test('every funder figure is a number with a source', () => {
+  const senders = read('data/influence_senders.json');
+  for (const [k, v] of Object.entries(senders)) {
+    if (k.startsWith('_') || !v.figures) continue;
+    const f = v.figures;
+    assert.ok(f.culture && Number.isInteger(f.culture.spaces), `${k}: culture spaces`);
+    if (f.culture.largest_gift) assert.ok(f.culture.largest_gift.amount > 0 && /^https?:\/\//.test(f.culture.largest_gift.source) && !/—/.test(f.culture.largest_gift.text), `${k}: largest gift`);
+    if (f.us_lobbying) assert.ok(f.us_lobbying.usd > 0 && /lda\.gov/.test(f.us_lobbying.source), `${k}: US lobbying`);
+    if (f.eu_lobbying) assert.ok(f.eu_lobbying.eur_max > f.eu_lobbying.eur_min && /lobbyfacts\.eu/.test(f.eu_lobbying.source), `${k}: EU lobbying`);
+    if (f.political) assert.ok(f.political.usd > 0 && f.political.rep_usd >= 0 && f.political.dem_usd >= 0 && f.political.rep_usd + f.political.dem_usd <= f.political.usd * 1.05 && /fec\.gov/.test(f.political.source), `${k}: political giving`);
+  }
+});
