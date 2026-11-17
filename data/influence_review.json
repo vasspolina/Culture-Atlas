@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]).",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request.",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -4038,6 +4038,206 @@
     "measure": "politics",
     "text": "The same briefing covered Sony’s past support for the supervisor’s political committee.",
     "source": "https://www.propublica.org/article/hacked-sony-emails-reveal-behind-the-scenes-political-dealings-in-la"
+   }
+  ]
+ },
+ "8580afb3e1": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2015-10",
+  "summary": "Paid for the Days of the Dead festival with the Mexican Embassy and asked for Mexican and UK government guests at its private evening, a month before Mexico opened bidding for deepwater drilling.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Mexico",
+    "text": "BP asked the museum to confirm Mexican government guests at the festival’s private evening as it prepared to bid for drilling licences in the Gulf of Mexico.",
+    "source": "https://unearthed.greenpeace.org/?p=4489"
+   }
+  ]
+ },
+ "80b9e2933f": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2017-05",
+  "summary": "The museum arranged a private breakfast for two BP employees with Russia’s ambassador on the morning of the Scythians press launch; what was discussed is not known.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Russia",
+    "text": "The museum set up a private meeting between two BP employees and Russia’s ambassador at the Scythians launch, as new US sanctions on Russia threatened BP’s stake in Rosneft.",
+    "source": "https://hyperallergic.com/421880/culture-unstained-documents-british-museum-bp-russia/"
+   }
+  ]
+ },
+ "afd451a168": {
+  "drop": true,
+  "why": "Context for the Scythians meeting, kept in that entry."
+ },
+ "0649884eb2": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2015",
+  "summary": "Its chief executive invited the Culture Secretary to the Cosmonauts opening dinner it gave with the museum in 2015, and he came.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP’s chief executive invited the Culture Secretary to the Cosmonauts opening dinner, and he attended.",
+    "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
+   }
+  ]
+ },
+ "540c312d91": {
+  "kinds": [
+   "programme"
+  ],
+  "date": "2015-06",
+  "summary": "The Culture Minister welcomed BP’s support for Cosmonauts at a meeting with its government affairs staff; the rest of the notes was withheld as policy.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "At a meeting with BP’s government affairs staff the Culture Minister welcomed its support for Cosmonauts; the rest was withheld as government policy.",
+    "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
+   }
+  ]
+ },
+ "e606459101": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2015-11-12",
+  "summary": "Held its Annual Business Reception at the museum in November 2015, invited the Culture Secretary, and a business minister called in.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP held its business reception at the museum and invited the Culture Secretary; a business minister called in.",
+    "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
+   }
+  ]
+ },
+ "0b967cec96": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2015-02",
+  "summary": "Asked the gallery for at least 50 VIPs at the BP Portrait Award, government representatives among them, and proposed inviting the Culture Minister.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP asked the gallery for government representatives among the Portrait Award’s VIPs and proposed inviting the Culture Minister.",
+    "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
+   }
+  ]
+ },
+ "5e1c9384ba": {
+  "kinds": [
+   "programme"
+  ],
+  "date": "1994-09",
+  "summary": "While paying for Origins of Impressionism, got the museum to call the Council Speaker and the Mayor’s office against an anti-smoking bill.",
+  "links": [
+   {
+    "measure": "us",
+    "text": "Philip Morris got the museum to call New York’s Council Speaker and the Mayor’s office against the Vallone anti-smoking bill (1994).",
+    "source": "https://www.industrydocuments.ucsf.edu/docs/iqa16c00"
+   }
+  ]
+ },
+ "628cba9d32": {
+  "kinds": [
+   "programme"
+  ],
+  "date": "1994-09",
+  "summary": "Told the academy, whose Next Wave Festival it sponsored, how it felt about the Vallone anti-smoking bill, and the academy called City Council members.",
+  "links": [
+   {
+    "measure": "us",
+    "text": "After Philip Morris told the academy how it felt about the Vallone anti-smoking bill, the academy called City Council members (1994).",
+    "source": "https://www.industrydocuments.ucsf.edu/docs/csj18d00"
+   }
+  ]
+ },
+ "b4a2d0a056": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2014-09",
+  "summary": "Gave a business department special adviser two tickets to a British Museum exhibition (2014).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP gave a business department special adviser two tickets to an exhibition (2014, UK hospitality return).",
+    "source": "https://assets.publishing.service.gov.uk/media/5a807bd7e5274a2e8ab5067c/bis-special-advisers-hospitality-july-september-2014.csv"
+   }
+  ]
+ },
+ "f9d3235533": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2015-06",
+  "summary": "Took the Cabinet Office’s chief executive to the Royal Opera House (2015).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP gave the Cabinet Office’s chief executive tickets to the Royal Opera House (2015, UK hospitality return).",
+    "source": "https://assets.publishing.service.gov.uk/media/5a81b26de5274a2e8ab555ff/Cabinet_Office_SCS3__hospitality_Q1_2015_to_16.csv"
+   }
+  ]
+ },
+ "bbed3de301": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2015-06",
+  "summary": "Hosted the culture department’s permanent secretary (2015) and the head of the Foreign Office (2018) at the Portrait Award.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP hosted the culture department’s permanent secretary (2015) and the head of the Foreign Office (2018) at the Portrait Award (UK hospitality returns).",
+    "source": "https://assets.publishing.service.gov.uk/media/5a75576a40f0b6397f35daad/Senior_Officials_Hospitality_Q1_2015.csv"
+   }
+  ]
+ },
+ "2f78ba4e74": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2024-04",
+  "summary": "Hosted the arts minister at a reception with the Serpentine (2024).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "Bloomberg Philanthropies and the Serpentine hosted the arts minister at a reception (2024, UK hospitality return).",
+    "source": "https://assets.publishing.service.gov.uk/media/674887695ba46550018cebad/DCMS_ministerial_hospitality__1_April_to_30_June_2024.csv"
+   }
+  ]
+ },
+ "34d8f29ddc": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2025-10",
+  "summary": "Bloomberg UK News hosted the Chief Whip at a reception and private viewing at Tate Britain (2025).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "Bloomberg UK News hosted the Chief Whip at a reception and private viewing of the collection (2025, UK hospitality return).",
+    "source": "https://assets.publishing.service.gov.uk/media/69283878345e31ab14ecf637/Leader_of_the_House_of_Commons_and_Whips_-_Ministers__Hospitality_-_October_2025.csv"
    }
   ]
  }

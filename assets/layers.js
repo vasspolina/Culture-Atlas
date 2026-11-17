@@ -938,7 +938,7 @@
         if (!l.n) return;
         const n = l.n, reach = reachOf(n[5]), shared = reach.n > 1;
         LM.push({ x: l.x + l.w / 2, y: l.y, r: MONEY_LINE / 2, col: COL[n[1]], key: n[5], kind: n[1], space: rec, name: n[0], ox: d.x, oy: d.y, label: n[0], sub: `${KIND_WORD[n[1]] || 'Funder'}, funder of ${rec.n}`, lbox: l.box,
-          sub2: shared ? `Also funds ${plural(reach.n - 1, 'other space')} in ${plural(reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other space here',
+          sub2: shared ? `Also funds ${plural(reach.n - 1, 'other museum')} in ${plural(reach.countries, 'country').replace('countrys', 'countries')}` : 'Funds no other museum here',
           ask: shared ? `Which institutions does ${n[0]} fund?` : `How does ${n[0]} fund ${rec.n}?` });
       });
       placed.push(boxOf(side), { x: g.x - 6, y: g.y - 6, w: 12, h: 12 });
@@ -1239,7 +1239,7 @@
         const same = LM_HOV && LM_HOV.line && LM_HOV.key === f.key;
         if (!same) {
           const n = reachOfKeys(f.keys), st = tag.a && tag.b ? `${tag.a.n} – ${tag.b.n}` : null;
-          LM_HOV = { line: true, key: f.key, x: mx, y: my, col: COL[f.kind], label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${plural(n.n, 'space')} in ${n.countries} ${n.countries === 1 ? 'country' : 'countries'}`, sub2: st, tip: REACH && REACH.pinned && REACH.key === f.key ? 'Pinned · click to open its record' : 'Click for details' };
+          LM_HOV = { line: true, key: f.key, x: mx, y: my, col: COL[f.kind], label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${plural(n.n, 'museum')} in ${n.countries} ${n.countries === 1 ? 'country' : 'countries'}`, sub2: st, tip: REACH && REACH.pinned && REACH.key === f.key ? 'Pinned · click to open its record' : 'Click for details' };
         } else { LM_HOV.x = mx; LM_HOV.y = my; }
         if (!(REACH && (REACH.pinned || REACH.tapped)) && (!REACH || REACH.key !== f.key)) { clearTimeout(reachTimer); reachTimer = 0; REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, line: true }; }
         else { clearTimeout(reachTimer); reachTimer = 0; }

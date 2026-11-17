@@ -15045,6 +15045,13 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "eu",
+      "filed_as": "Wellcome Trust",
+      "registered": "2014-04-28",
+      "declared": "The trust, not the museum, is registered: it lobbies on FP10, HERA, the Green Deal and the EU global and mental health strategies. Total budget EUR 1.8bn declared.",
+      "source": "https://www.lobbyfacts.eu/datacard/wellcome-trust?rid=912723313554-37"
     }
   },
   {
@@ -19946,6 +19953,24 @@
         "basis": "OpenStreetMap, address lookup: 1, Museum Road, Orrs Mill, Town of New Windsor, Orange County, New York, 12553, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2021,
+        2026
+      ],
+      "total_usd": 220000,
+      "last_year": 2025,
+      "last_year_usd": 40000,
+      "in_house": false,
+      "firms": [
+        "Davidoff Hutcher & Citron, LLP"
+      ],
+      "on": [
+        "Advocating for funding for arts institutions and museums."
+      ],
+      "source": "https://lda.gov/filings/public/filing/719d5216-d230-4826-8860-f625dc12d0b7/print/"
     }
   },
   {
@@ -31316,7 +31341,24 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "11 West 53rd Street, New York, NY 10019, USA"
+    "address": "11 West 53rd Street, New York, NY 10019, USA",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        1999,
+        2006
+      ],
+      "total_usd": 282500,
+      "last_year": 2006,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Dutko Worldwide, LLC",
+        "Columbus Public Affairs"
+      ],
+      "on": [],
+      "source": "https://lda.gov/filings/public/filing/47f94a94-9eba-45d5-a6ad-cd4c01d1c232/print/"
+    }
   },
   {
     "name": "MoMA PS1",
@@ -31873,6 +31915,15 @@
         "sources": [
           "https://wikileaks.org/clinton-emails/emailid/29728"
         ]
+      },
+      {
+        "title": "Philip Morris weekly update (Truth Tobacco Industry Documents)",
+        "meta": "1994-09-23",
+        "text": "A Philip Morris weekly update of 23 September 1994 says its cultural affairs director, Stephanie French, enlisted the Metropolitan Museum to call Council Speaker Peter Vallone and the Mayor's office against the Vallone anti-smoking bill, while Philip Morris was paying for the museum's Origins of Impressionism exhibition.",
+        "sources": [
+          "https://www.industrydocuments.ucsf.edu/docs/iqa16c00",
+          "https://www.industrydocuments.ucsf.edu/docs/zxgc0063"
+        ]
       }
     ],
     "grade": 5,
@@ -32040,7 +32091,28 @@
         "doi": "10.1080/09647775.2018.1468007",
         "text": "The Met had 6.7 million visitors in 2016, up from 4.89 million in 2009. It became New York's top tourist attraction in 1974 under Thomas Hoving, and the paper says its attendance has since closely reflected tourism to the city, which grew from 25.3 million visitors in 1990 to over 60 million in 2016."
       }
-    ]
+    ],
+    "lobbying": {
+      "register": "us",
+      "years": [
+        1999,
+        2026
+      ],
+      "total_usd": 1513500,
+      "last_year": 2025,
+      "last_year_usd": 60000,
+      "in_house": false,
+      "firms": [
+        "WOH Government Solutions LLC",
+        "Park&K Public Affairs LLC",
+        "Prime Strategies"
+      ],
+      "on": [
+        "NEA, NEH, and other cultural agencies",
+        "Cultural diplomacy through indemnity programs"
+      ],
+      "source": "https://lda.gov/filings/public/filing/5da1739a-0456-46ab-a63b-063a3d965372/print/"
+    }
   },
   {
     "name": "Whitney Museum of American Art",
@@ -32678,7 +32750,23 @@
         "doi": "10.24310/bolarte.2020.v41i.8097",
         "text": "At the 1993 Whitney Biennial, Pep\u00f3n Osorio recreated the interior of a New York home in Scene of the Crime (Whose Crime?). A 2020 study read its piled-up objects and kitsch as cultural resistance that questioned what the museum makes visible."
       }
-    ]
+    ],
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2008,
+        2020
+      ],
+      "total_usd": 571000,
+      "last_year": 2020,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Liz Robbins Associates"
+      ],
+      "on": [],
+      "source": "https://lda.gov/filings/public/filing/8004ac98-fe3a-4a94-af6c-aab8f40c4548/print/"
+    }
   },
   {
     "name": "Solomon R. Guggenheim Museum",
@@ -33161,7 +33249,23 @@
         "doi": "10.4324/9781315684871-48",
         "text": "Gulf Labor led a boycott of the Guggenheim's Abu Dhabi branch by more than 1,800 artists, writers, curators and gallery owners over the treatment of migrant construction workers bound to their employers under the kafala system. An offshoot of the campaign occupied the Guggenheim Museum in New York."
       }
-    ]
+    ],
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2000,
+        2003
+      ],
+      "total_usd": 53000,
+      "last_year": 2003,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Robinson Reidy & Co"
+      ],
+      "on": [],
+      "source": "https://lda.gov/filings/public/filing/196564fc-f1af-4252-bc60-50487123e211/print/"
+    }
   },
   {
     "name": "Centre Pompidou",
@@ -33835,7 +33939,17 @@
       ],
       "level": 2,
       "level_basis": ""
-    }
+    },
+    "case_notes": [
+      {
+        "title": "UK government hospitality return",
+        "meta": "2024-04-19",
+        "text": "A culture department hospitality return records Bloomberg Philanthropies and the Serpentine hosting the arts minister, Lord Parkinson, at a reception on 19 April 2024.",
+        "sources": [
+          "https://assets.publishing.service.gov.uk/media/674887695ba46550018cebad/DCMS_ministerial_hospitality__1_April_to_30_June_2024.csv"
+        ]
+      }
+    ]
   },
   {
     "name": "Fundaci\u00f3 Joan Mir\u00f3",
@@ -79031,6 +79145,24 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2002,
+        2011
+      ],
+      "total_usd": 10000,
+      "last_year": 2011,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Brownstein Hyatt Farber Schreck, LLP"
+      ],
+      "on": [
+        "Federal funding for art museum and its programs"
+      ],
+      "source": "https://lda.gov/filings/public/filing/0a040d89-0f42-438a-9560-d4ca4b39c870/print/"
     }
   },
   {
@@ -80132,7 +80264,25 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "1000 Oak Street, Oakland, CA 94607, USA"
+    "address": "1000 Oak Street, Oakland, CA 94607, USA",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2003,
+        2026
+      ],
+      "total_usd": 478125,
+      "last_year": 2025,
+      "last_year_usd": 37500,
+      "in_house": false,
+      "firms": [
+        "Townsend Public Affairs, Inc"
+      ],
+      "on": [
+        "Appropriations"
+      ],
+      "source": "https://lda.gov/filings/public/filing/e5c75575-b86f-464a-b420-56047d8001f5/print/"
+    }
   },
   {
     "name": "Palm Springs Art Museum",
@@ -80494,7 +80644,26 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "2301 North Central Avenue, Phoenix, AZ 85004, USA"
+    "address": "2301 North Central Avenue, Phoenix, AZ 85004, USA",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2006,
+        2007
+      ],
+      "total_usd": 20000,
+      "last_year": 2007,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Nexxus Consulting, LLC"
+      ],
+      "on": [
+        "Museum funding",
+        "Federal funding for the museum"
+      ],
+      "source": "https://lda.gov/filings/public/filing/1c0dd592-7f7d-4a51-9c23-86a368c4482a/print/"
+    }
   },
   {
     "name": "Phoenix Art Museum",
@@ -82418,6 +82587,23 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2002,
+        2018
+      ],
+      "total_usd": 320000,
+      "last_year": 2018,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Monument Advocacy",
+        "K&L Gates, LLP"
+      ],
+      "on": [],
+      "source": "https://lda.gov/filings/public/filing/ef49766d-e738-4adc-85b2-02049498563d/print/"
     }
   },
   {
@@ -94311,6 +94497,41 @@
           "https://wikileaks.org/saudi-cables/doc119920.html",
           "https://wikileaks.org/syria-files/docs/680325_hajj-exhibition-inaugurated-at-british-museum-.html"
         ]
+      },
+      {
+        "title": "Unearthed (Greenpeace UK), BP emails",
+        "meta": "2015-10-30",
+        "text": "Emails released under freedom of information show BP, which paid for the museum's Days of the Dead festival with the Mexican Embassy, asking for confirmation of Mexican government representation, and of UK government representation through DCMS, at the private evening of 30 October 2015, as it prepared to bid for drilling licences in the Gulf of Mexico. Bidding for Mexico's deepwater contracts began a month after the festival, and the embassy asked for the museum's guest list to be deleted after reading.",
+        "sources": [
+          "https://unearthed.greenpeace.org/?p=4489",
+          "https://www.artnotoil.org.uk/blog/bp\u2019s-corrupting-influence"
+        ]
+      },
+      {
+        "title": "Culture Unstained dossier, via Hyperallergic",
+        "meta": "2017-05",
+        "text": "Emails in a Culture Unstained dossier show the museum's public affairs manager arranging a private meeting between Russia's ambassador, Alexander Yakovenko, two BP employees, director Hartwig Fischer and chair Richard Lambert on the morning of the Scythians press launch in May 2017, which the embassy called \"very useful and positive\". The show coincided with new US Senate sanctions on Russia, where BP holds a large stake in Rosneft; the sources do not say what was discussed.",
+        "sources": [
+          "https://hyperallergic.com/421880/culture-unstained-documents-british-museum-bp-russia/",
+          "https://cultureunstained.org/british-museum-sponsorship-film/"
+        ]
+      },
+      {
+        "title": "Art Not Oil Coalition, FOI releases",
+        "meta": "2015-11-12",
+        "text": "BP invited the Culture Secretary to its Annual Business Reception at the British Museum on 12 November 2015, and Baroness Neville-Rolfe, a minister at the business department, called in, according to freedom of information releases to the Art Not Oil Coalition.",
+        "sources": [
+          "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+          "https://www.desmog.com/2016/05/03/bp-gained-privileged-access-policymakers-through-controversial-arts-sponsorships-documents-reveal"
+        ]
+      },
+      {
+        "title": "UK government hospitality return",
+        "meta": "2014-09-16",
+        "text": "A UK government hospitality return records BP giving Emily Walch, a special adviser at the business department, two tickets to a British Museum exhibition on 16 September 2014.",
+        "sources": [
+          "https://assets.publishing.service.gov.uk/media/5a807bd7e5274a2e8ab5067c/bis-special-advisers-hospitality-july-september-2014.csv"
+        ]
       }
     ],
     "field_sources": {
@@ -95723,7 +95944,17 @@
           "retrieved_on": "2026-11-02"
         }
       ]
-    }
+    },
+    "case_notes": [
+      {
+        "title": "UK government hospitality return",
+        "meta": "2015-06-10",
+        "text": "A Cabinet Office hospitality return records its chief executive, John Manzoni, at the Royal Opera House on 10 June 2015 on tickets from Dev Sanyal of BP.",
+        "sources": [
+          "https://assets.publishing.service.gov.uk/media/5a81b26de5274a2e8ab555ff/Cabinet_Office_SCS3__hospitality_Q1_2015_to_16.csv"
+        ]
+      }
+    ]
   },
   {
     "name": "Science Museum",
@@ -96125,7 +96356,18 @@
         "text": "The paper examines a controversy over a nuclear-energy gallery at the Science Museum in the early 1980s and the debate about patronage around it. It argues that the critical scrutiny the museum came under had contradictory effects, reinforcing its image as a bastion of official culture and knowledge while exposing the ideological nature of its authority."
       }
     ],
-    "critique_note": "Amber Hickey, Beyond Reflection: Art Pedagogy and the Ethics of Art Sponsorship (ArtLeaks Gazette, 2013): Hickey lists the Science Museum among the London institutions BP sponsored in 2013, and says the oil company buys image repair from them."
+    "critique_note": "Amber Hickey, Beyond Reflection: Art Pedagogy and the Ethics of Art Sponsorship (ArtLeaks Gazette, 2013): Hickey lists the Science Museum among the London institutions BP sponsored in 2013, and says the oil company buys image repair from them.",
+    "case_notes": [
+      {
+        "title": "Art Not Oil Coalition, FOI releases",
+        "meta": "2015",
+        "text": "Freedom of information releases to the Art Not Oil Coalition show BP's chief executive, Bob Dudley, inviting Culture Secretary John Whittingdale to the dinner the museum and BP gave for the opening of the Cosmonauts exhibition in 2015; he accepted and attended. A month after the May 2015 election BP's government affairs staff met Culture Minister Ed Vaizey, who welcomed BP's support for Cosmonauts, and the rest of the meeting notes was withheld as relating to the development of government policy.",
+        "sources": [
+          "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+          "https://ico.org.uk/action-weve-taken/decision-notices/2017/07/fs50636764"
+        ]
+      }
+    ]
   },
   {
     "name": "V&A",
@@ -98702,6 +98944,25 @@
           "retrieved_on": "2026-11-02"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2009,
+        2010
+      ],
+      "total_usd": 0,
+      "last_year": 2010,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Townsend Public Affairs, Inc"
+      ],
+      "on": [
+        "FY10 Appropriations",
+        "FY 10 Appropriations"
+      ],
+      "source": "https://lda.gov/filings/public/filing/606171f1-8586-47c9-a39c-d2edaf30eee1/print/"
     }
   },
   {
@@ -99061,7 +99322,25 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "2035 South 3rd Street, Louisville, KY 40208, USA"
+    "address": "2035 South 3rd Street, Louisville, KY 40208, USA",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2025,
+        2026
+      ],
+      "total_usd": 30000,
+      "last_year": 2025,
+      "last_year_usd": 30000,
+      "in_house": false,
+      "firms": [
+        "Akin Gump Strauss Hauer & Feld"
+      ],
+      "on": [
+        "Issues related to federal support for pedestrian safety."
+      ],
+      "source": "https://lda.gov/filings/public/filing/435a96b4-cf3c-490f-ab45-0b82df38d8eb/print/"
+    }
   },
   {
     "name": "P\u00e9rez Art Museum Miami",
@@ -99821,6 +100100,27 @@
           "retrieved_on": "2026-11-02"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        1999,
+        2026
+      ],
+      "total_usd": 3957000,
+      "last_year": 2025,
+      "last_year_usd": 120000,
+      "in_house": true,
+      "firms": [
+        "Davidoff Hutcher & Citron, LLP",
+        "Resolution Public Affairs, LLC",
+        "Podesta Group, Inc."
+      ],
+      "on": [
+        "STEM Education, generally Implementation of CHIPS and Science Act Grant cost shares generally and HR 6366, the Boosting Rural STEM Pipeline Act",
+        "STEM Education, generally Implementation of CHIPS and Science Act"
+      ],
+      "source": "https://lda.gov/filings/public/filing/c9cc37e9-7259-4d48-87f1-44d42693fe6b/print/"
     }
   },
   {
@@ -100178,7 +100478,26 @@
         "doi": "10.1080/09647775.2021.1891559",
         "text": "The paper takes two cases, the Brooklyn Museum's hiring of Kristen Windmuller-Luna as curator for African Arts and the protests against weapons manufacturer Warren Kanders during the 2019 Whitney Biennial, to show museums that host exhibitions on feminism, blackness and accessibility while failing to uphold social change inside their own walls. It finds that a myth of neutrality and a non-performative anti-racism create the barriers."
       }
-    ]
+    ],
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2006,
+        2008
+      ],
+      "total_usd": 190000,
+      "last_year": 2008,
+      "last_year_usd": 30000,
+      "in_house": false,
+      "firms": [
+        "Metcalf Federal Relations"
+      ],
+      "on": [
+        "Funding for select Brooklyn Museum initiatives.",
+        "Funding for specific Brooklyn Museum projects."
+      ],
+      "source": "https://lda.gov/filings/public/filing/ac6b900e-6326-45bc-8b46-28f58b2c94e0/print/"
+    }
   },
   {
     "name": "Yerba Buena Center for the Arts",
@@ -104106,7 +104425,27 @@
         "https://assets.publishing.service.gov.uk/media/6a5dee5760a6e36813cb440a/E03594091_National_Portrait_Gallery_ARA_2025-26_Accessible.pdf"
       ]
     },
-    "critique_note": "Amber Hickey, Beyond Reflection: Art Pedagogy and the Ethics of Art Sponsorship (ArtLeaks Gazette, 2013): Hickey lists the National Portrait Gallery among the London institutions BP sponsored in 2013, beside Tate, the British Museum and the Royal Opera House, and says the oil company buys image repair from them."
+    "critique_note": "Amber Hickey, Beyond Reflection: Art Pedagogy and the Ethics of Art Sponsorship (ArtLeaks Gazette, 2013): Hickey lists the National Portrait Gallery among the London institutions BP sponsored in 2013, beside Tate, the British Museum and the Royal Opera House, and says the oil company buys image repair from them.",
+    "case_notes": [
+      {
+        "title": "Art Not Oil Coalition, FOI releases",
+        "meta": "2015",
+        "text": "In February 2015 BP asked the gallery for at least 50 VIPs at the BP Portrait Award, with a breakdown that included government representatives, and in May a BP staff member proposed inviting Culture Minister Ed Vaizey to the award on 17 July, according to freedom of information releases to the Art Not Oil Coalition.",
+        "sources": [
+          "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+          "https://www.desmog.com/2016/05/03/bp-gained-privileged-access-policymakers-through-controversial-arts-sponsorships-documents-reveal"
+        ]
+      },
+      {
+        "title": "UK government hospitality returns",
+        "meta": "2015-06-16",
+        "text": "UK government hospitality returns record BP hosting Sue Owen, permanent secretary at the culture department, at the Portrait Award on 16 June 2015, and Sir Simon McDonald, head of the Foreign Office, at its Portrait Award reception on 11 June 2018.",
+        "sources": [
+          "https://assets.publishing.service.gov.uk/media/5a75576a40f0b6397f35daad/Senior_Officials_Hospitality_Q1_2015.csv",
+          "https://assets.publishing.service.gov.uk/media/5bb1e999ed915d25aec40cc3/FCO_Senior_Officials_Transparency_Return_Q1_Apr-Jun_2018_-_Hospitality.csv"
+        ]
+      }
+    ]
   },
   {
     "id": "national-theatre-london",
@@ -104549,6 +104888,24 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2004,
+        2006
+      ],
+      "total_usd": 100000,
+      "last_year": 2006,
+      "last_year_usd": 20000,
+      "in_house": false,
+      "firms": [
+        "ACG Advocacy"
+      ],
+      "on": [
+        "General Nuclear Issues"
+      ],
+      "source": "https://lda.gov/filings/public/filing/d4719394-40d9-41bb-a51a-0da43d0604d2/print/"
     }
   },
   {
@@ -122183,6 +122540,24 @@
         "basis": "OpenStreetMap, name lookup: Akron Art Museum, South High Street, Downtown Akron, Cascade Valley, Akron, Summit County, Ohio, 44311, United States",
         "retrieved": "2026-11-03"
       }
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2005,
+        2006
+      ],
+      "total_usd": 20000,
+      "last_year": 2006,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Arshinkoff & Associates"
+      ],
+      "on": [
+        "SEN. 732 and H.R. 3 Dept. of Transportation relating to transportation/thoroughfare enhancements. Future issues relating to arts education and cultural tourism and non-profit tax issues are possible, as are urban redevelopment issues/appropriations."
+      ],
+      "source": "https://lda.gov/filings/public/filing/d3d81010-4e06-4f36-8fbb-3fea01929409/print/"
     }
   },
   {
@@ -122641,6 +123016,26 @@
           "retrieved_on": "2026-11-13"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2009,
+        2011
+      ],
+      "total_usd": 0,
+      "last_year": 2011,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "William Joseph",
+        "William P. Blair III"
+      ],
+      "on": [
+        "Accessing Funds in Budget",
+        "Appropriation of funds 2011/2012 budget"
+      ],
+      "source": "https://lda.gov/filings/public/filing/371aea05-fb4e-402e-928f-aca2ffc76d93/print/"
     }
   },
   {
@@ -123324,7 +123719,26 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "1230 5th Avenue, New York, NY 10029, USA"
+    "address": "1230 5th Avenue, New York, NY 10029, USA",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2004,
+        2008
+      ],
+      "total_usd": 150000,
+      "last_year": 2008,
+      "last_year_usd": 10000,
+      "in_house": false,
+      "firms": [
+        "WOH Government Solutions LLC"
+      ],
+      "on": [
+        "Federal Funding/US House & Senate Appropriations for Museum programs, projects, facilities/exhibits.",
+        "Funding Assistance/House & Senate Appropriations for Museum programs, projects, exhibits."
+      ],
+      "source": "https://lda.gov/filings/public/filing/dc3bc12f-7c56-43a1-b1a1-8def6aaaebc1/print/"
+    }
   },
   {
     "name": "Morgan Library & Museum",
@@ -123549,7 +123963,25 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "2 Columbus Circle, New York, NY 10107, USA"
+    "address": "2 Columbus Circle, New York, NY 10107, USA",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2004,
+        2006
+      ],
+      "total_usd": 101000,
+      "last_year": 2006,
+      "last_year_usd": 41000,
+      "in_house": false,
+      "firms": [
+        "WOH Government Solutions LLC"
+      ],
+      "on": [
+        "Funding Assistance/US House & Senate Appropriations for Museum programs, projects & exhibits."
+      ],
+      "source": "https://lda.gov/filings/public/filing/ceaed371-0d44-4133-8816-58829e3d51a7/print/"
+    }
   },
   {
     "name": "Neue Galerie New York",
@@ -124575,7 +125007,25 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "258 Main Street, Ridgefield, CT 06877, USA"
+    "address": "258 Main Street, Ridgefield, CT 06877, USA",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2004,
+        2007
+      ],
+      "total_usd": 0,
+      "last_year": 2007,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Eris Group"
+      ],
+      "on": [
+        "H.R. 5672 \u2013 Science, State, Justice, Commerce and Related Agencies Appropriations Act of 2007 H.R. 5647 - Departments of Labor, Health and Human Services, and Education, and Related Agencies Appropriations Act, 2007"
+      ],
+      "source": "https://lda.gov/filings/public/filing/50eae534-11dd-45c1-a149-f6a42d00e70e/print/"
+    }
   },
   {
     "name": "The Phillips Collection",
@@ -124784,6 +125234,26 @@
       "sources": [
         "https://www.phillipscollection.org/sites/default/files/2025-12/fy25-annual-report.pdf"
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        1999,
+        2017
+      ],
+      "total_usd": 100000,
+      "last_year": 2017,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Chernikoff & Company",
+        "Podesta Group, Inc."
+      ],
+      "on": [
+        "Securing appropriations for the National Capital Arts and Cultural Affairs program",
+        "The National Capital Arts and Cultural Affairs program that is funded out of the Interior Appropriations bill"
+      ],
+      "source": "https://lda.gov/filings/public/filing/1f8219ad-0cd9-4f2b-a276-f7e853e16298/print/"
     }
   },
   {
@@ -142622,7 +143092,23 @@
       }
     },
     "address": "1 Museum Way, City of Corning, NY 14830, USA",
-    "opening_hours": "Daily 09:00\u201317:00"
+    "opening_hours": "Daily 09:00\u201317:00",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2011,
+        2015
+      ],
+      "total_usd": 243000,
+      "last_year": 2015,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Mcallister & Quinn, LLC"
+      ],
+      "on": [],
+      "source": "https://lda.gov/filings/public/filing/fefdb775-9030-4196-a170-6a41960a776a/print/"
+    }
   },
   {
     "id": "die-neue-sammlung-the-design-museum-munich",
@@ -149719,6 +150205,25 @@
           "retrieved_on": "2026-11-02"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        1999,
+        2020
+      ],
+      "total_usd": 952000,
+      "last_year": 2020,
+      "last_year_usd": 40000,
+      "in_house": false,
+      "firms": [
+        "Fern Lapidus"
+      ],
+      "on": [
+        "Monitored FY2021 appropriations for education and House and Senate actions toward reauthorizing the Higher Education Act.",
+        "Monitored FY2021 appropriations and efforts to include additional funding for higher education programs included in any COVID-19 relief package"
+      ],
+      "source": "https://lda.gov/filings/public/filing/d0446a1c-e624-4fe0-b85c-5d126bbbedd9/print/"
     }
   },
   {
@@ -150237,7 +150742,23 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "4000 J Maddy Parkway, Interlochen, MI 49643, USA"
+    "address": "4000 J Maddy Parkway, Interlochen, MI 49643, USA",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2007,
+        2007
+      ],
+      "total_usd": 0,
+      "last_year": 2007,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Hogan Lovells Cadwalader US LLP"
+      ],
+      "on": [],
+      "source": "https://lda.gov/filings/public/filing/ff80c120-07b3-4eed-ad29-9fcb76aabb61/print/"
+    }
   },
   {
     "id": "black-family-visual-arts-center-dartmouth-hanover",
@@ -150643,7 +151164,26 @@
         "retrieved": "2026-11-04"
       }
     },
-    "address": "30 Campus Road, Town of Red Hook, NY 12504, USA"
+    "address": "30 Campus Road, Town of Red Hook, NY 12504, USA",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2013,
+        2018
+      ],
+      "total_usd": 155000,
+      "last_year": 2018,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "The Majority Group, LLC"
+      ],
+      "on": [
+        "USDA Community Facilities Guaranteed Loan Program",
+        "Go to High School, Go to College Act; Every Student Succeeds Act implementation; Department of Education announcement for Pell experimental site for dual enrollment; appropriations and legislation impacting early college high school programs; Perkins Act reauthorization; Making College Accessible and Affordable Act; Jumpstart on College Act"
+      ],
+      "source": "https://lda.gov/filings/public/filing/7ffe7644-e49f-403e-ac2d-e72f3ce0bf51/print/"
+    }
   },
   {
     "id": "djerassi-resident-artists-program-woodside",
@@ -155865,7 +156405,17 @@
       "net_assets": 138635189,
       "source_kind": "Form 990",
       "url": "https://www.bam.org/globalassets/about/annual-reports/990s/fy23-bam-990fy23.pdf"
-    }
+    },
+    "case_notes": [
+      {
+        "title": "The New York Times, 26 September 1994 (Truth Tobacco Industry Documents)",
+        "meta": "1994-09-26",
+        "text": "The New York Times reported on 26 September 1994 that the academy, whose Next Wave Festival Philip Morris sponsored, made \"discreet telephone calls\" to City Council members about the Vallone anti-smoking bill after Philip Morris told it how it felt about the bill.",
+        "sources": [
+          "https://www.industrydocuments.ucsf.edu/docs/csj18d00"
+        ]
+      }
+    ]
   },
   {
     "name": "Berlinische Galerie",
@@ -159434,6 +159984,26 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2000,
+        2012
+      ],
+      "total_usd": 2174782,
+      "last_year": 2012,
+      "last_year_usd": 0,
+      "in_house": true,
+      "firms": [
+        "Eris Group",
+        "Pcc Consulting, Llc; Dba-powers & Company",
+        "Dewey & Leboeuf LLP"
+      ],
+      "on": [
+        "Federal appropriations"
+      ],
+      "source": "https://lda.gov/filings/public/filing/8bd90f73-9072-40e8-813c-e6a35755914e/print/"
     }
   },
   {
@@ -202310,7 +202880,17 @@
           "retrieved_on": "2026-11-14"
         }
       ]
-    }
+    },
+    "case_notes": [
+      {
+        "title": "UK government hospitality return",
+        "meta": "2025-10-08",
+        "text": "A government hospitality return records Bloomberg UK News hosting the Chief Whip, Jonathan Reynolds, at a drinks reception and private viewing of the collection at Tate Britain on 8 October 2025.",
+        "sources": [
+          "https://assets.publishing.service.gov.uk/media/69283878345e31ab14ecf637/Leader_of_the_House_of_Commons_and_Whips_-_Ministers__Hospitality_-_October_2025.csv"
+        ]
+      }
+    ]
   },
   {
     "name": "Museum Boijmans Van Beuningen",
@@ -204769,6 +205349,26 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2005,
+        2022
+      ],
+      "total_usd": 374000,
+      "last_year": 2022,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Borski Associates",
+        "Greenlee Partners, LLC",
+        "Buchanan Ingersoll & Rooney PC"
+      ],
+      "on": [
+        "Strategy development and implementation of federal government relations initiatives relating to federal funding for capital improvement and museum's strategic growth plan."
+      ],
+      "source": "https://lda.gov/filings/public/filing/2c656121-1815-42db-a5c7-b9266e842f64/print/"
     }
   },
   {
@@ -204958,6 +205558,24 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2004,
+        2012
+      ],
+      "total_usd": 910000,
+      "last_year": 2012,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Fabiani & Company"
+      ],
+      "on": [
+        "Appropriations support for museum activities FY09 House and Senate LHHS Appropriations - IMLS"
+      ],
+      "source": "https://lda.gov/filings/public/filing/5c4cb62e-0fe9-49bb-a4fd-e1dda7f3064f/print/"
     }
   },
   {
@@ -205127,6 +205745,25 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2002,
+        2007
+      ],
+      "total_usd": 100000,
+      "last_year": 2007,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Dykema Gossett PLLC"
+      ],
+      "on": [
+        "Promoted grant funding for arts program.",
+        "H.R. 3043/S. 1710 - Labor/HHS/Education Appropriations bill, lobbied in support of IMLS project."
+      ],
+      "source": "https://lda.gov/filings/public/filing/c2edb4ba-607c-4e6b-92f5-6d68a5797bc2/print/"
     }
   },
   {
@@ -205299,6 +205936,27 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2002,
+        2011
+      ],
+      "total_usd": 619002,
+      "last_year": 2011,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "William Joseph",
+        "William P. Blair III",
+        "Van Scoyoc Associates"
+      ],
+      "on": [
+        "Accessing Funds in budget",
+        "Approrpiration of funds 2011/12 budget"
+      ],
+      "source": "https://lda.gov/filings/public/filing/a7648f28-b2dc-4161-a722-f0bcf326150d/print/"
     }
   },
   {
@@ -211389,6 +212047,13 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "eu",
+      "filed_as": "Stiftung Bauhaus Dessau",
+      "registered": "2026-08-11",
+      "declared": "Lobbies on the next funding period of the New European Bauhaus; declares EUR 663,463 in EU grants (JTF, ERDF, ESF+) in a total budget of EUR 11.5M for 2025.",
+      "source": "https://www.lobbyfacts.eu/datacard/stiftung-bauhaus-dessau?rid=4859382105662-04"
     }
   },
   {
@@ -216815,7 +217480,26 @@
       "retrieved": "2026-11-14"
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2006,
+        2025
+      ],
+      "total_usd": 395000,
+      "last_year": 2025,
+      "last_year_usd": 20000,
+      "in_house": false,
+      "firms": [
+        "Buchanan Ingersoll & Rooney PC",
+        "Klett Rooney Lieber & Schorling"
+      ],
+      "on": [
+        "Develop and execute a comprehensive government relations strategy with respect to programmatic funding, relationship building throughout Congress and the Administration, and the monitoring of relevant legislation."
+      ],
+      "source": "https://lda.gov/filings/public/filing/ccdf2694-91ac-4990-b47b-25a824e5ed9c/print/"
+    }
   },
   {
     "name": "The Andy Warhol Museum",
@@ -217077,7 +217761,28 @@
       "retrieved": "2026-11-14"
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2009,
+        2014
+      ],
+      "total_usd": 440000,
+      "last_year": 2014,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Mercury Public Affairs, LLC",
+        "Metcalf Federal Relations",
+        "Husch Blackwell, LLP"
+      ],
+      "on": [
+        "Request loan of item from White House collection",
+        "Preservation of the charitable deduction."
+      ],
+      "source": "https://lda.gov/filings/public/filing/f3be189d-82d7-4c62-b5d1-307638d6e38a/print/"
+    }
   },
   {
     "name": "Newfields",
@@ -217228,6 +217933,24 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2010,
+        2013
+      ],
+      "total_usd": 90000,
+      "last_year": 2013,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Viohl & Associates, Inc."
+      ],
+      "on": [
+        "Funding for the Public Safety Project through the Urban Areas Security Initiative (UASI) Nonprofit Security Grant Program (NSGP)."
+      ],
+      "source": "https://lda.gov/filings/public/filing/f2b21839-dd2b-4781-a82d-8b422dbb3c83/print/"
     }
   },
   {
@@ -217361,6 +218084,22 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2021,
+        2026
+      ],
+      "total_usd": 10000,
+      "last_year": 2025,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Shumaker Advisors, LLC"
+      ],
+      "on": [],
+      "source": "https://lda.gov/filings/public/filing/846f5a94-8213-4179-a1f4-6bf97a90022c/print/"
     }
   },
   {
@@ -217573,7 +218312,23 @@
       "retrieved": "2026-11-14"
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2001,
+        2005
+      ],
+      "total_usd": 180000,
+      "last_year": 2005,
+      "last_year_usd": 40000,
+      "in_house": false,
+      "firms": [
+        "MARC Associates, Inc."
+      ],
+      "on": [],
+      "source": "https://lda.gov/filings/public/filing/febdb6b3-74a9-4300-8cab-686a3c23c8a0/print/"
+    }
   },
   {
     "name": "Norton Simon Museum",
@@ -218261,7 +219016,25 @@
       "retrieved": "2026-11-14"
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2009,
+        2010
+      ],
+      "total_usd": 240000,
+      "last_year": 2010,
+      "last_year_usd": 120000,
+      "in_house": false,
+      "firms": [
+        "Fabiani & Company"
+      ],
+      "on": [
+        "Seeking federal funds through the Annual Appropriations process for infrastructure improvements and program expansion Seeking federal funds through the Transportation Authorization bill for road improvements around the Institute"
+      ],
+      "source": "https://lda.gov/filings/public/filing/07d163ce-36eb-43cb-9a41-926a58104834/print/"
+    }
   },
   {
     "name": "Virginia Museum of Fine Arts",
@@ -218387,6 +219160,22 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2004,
+        2006
+      ],
+      "total_usd": 120000,
+      "last_year": 2006,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "Williams Mullen Strategies"
+      ],
+      "on": [],
+      "source": "https://lda.gov/filings/public/filing/a3a55054-f805-4353-bada-b62e3dfaaae9/print/"
     }
   },
   {
@@ -219644,7 +220433,27 @@
       "retrieved": "2026-11-14"
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        1999,
+        2026
+      ],
+      "total_usd": 2500000,
+      "last_year": 2025,
+      "last_year_usd": 120000,
+      "in_house": false,
+      "firms": [
+        "Beacon Consulting Group",
+        "Spinnaker Government Relations"
+      ],
+      "on": [
+        "Support for the continued expansion of the Arts in Juvenile Justice Demonstration Program at the Office of Juvenile Justice and Delinquency Prevention.",
+        "Support for nonpharmacological community-based arts interventions for mental health and wellbeing."
+      ],
+      "source": "https://lda.gov/filings/public/filing/f35d6b66-bbe2-4651-bc92-ba3e77a4e416/print/"
+    }
   },
   {
     "name": "The Metropolitan Opera",
@@ -219773,6 +220582,26 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2020,
+        2026
+      ],
+      "total_usd": 504375,
+      "last_year": 2025,
+      "last_year_usd": 234500,
+      "in_house": false,
+      "firms": [
+        "Park&K Public Affairs LLC",
+        "The Duberstein Group Inc."
+      ],
+      "on": [
+        "NEA, NEH, and other cultural agencies",
+        "Cultural diplomacy and support for the arts"
+      ],
+      "source": "https://lda.gov/filings/public/filing/367a1c8c-8ab3-49b3-ba4c-974da37030d5/print/"
     }
   },
   {
@@ -220103,6 +220932,26 @@
           "retrieved_on": "2026-11-14"
         }
       ]
+    },
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2002,
+        2025
+      ],
+      "total_usd": 2185000,
+      "last_year": 2025,
+      "last_year_usd": 10000,
+      "in_house": false,
+      "firms": [
+        "Metcalf Federal Relations",
+        "Squire Patton Boggs"
+      ],
+      "on": [
+        "Introduction of National Heritage Area designation legislation.",
+        "National Heritage Area designation legislation and increased funding for NAGPRA grants and ESA permitting issues."
+      ],
+      "source": "https://lda.gov/filings/public/filing/49427dbe-eed4-466c-b782-6e2a621c8b18/print/"
     }
   },
   {
@@ -220200,7 +221049,28 @@
       "retrieved": "2026-11-15"
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2000,
+        2008
+      ],
+      "total_usd": 580000,
+      "last_year": 2008,
+      "last_year_usd": 160000,
+      "in_house": false,
+      "firms": [
+        "ACG Advocacy",
+        "Cassidy & Associates, Inc.",
+        "The Ickes And Enright Group, Inc."
+      ],
+      "on": [
+        "Support for funding through the 2008 Underground Railroad Educational & Cultural Program.",
+        "FY 2009 House & Senate Interior and Related Agencies Appropriations Bill for funding assistance from the Department of Interior related to renovations of an historical facade and preservation of historical collections FY2009 House & Senate Labor, HHS and Education Appropriations Bills for funding assistance for educational programs for the Department of Education FY 2009 House & Senate Financial Services and General Government Appropriations Bill for funding assistance for digital archiving for the National Archives and Records Administration FY 2009 Senate Legislative Branch Appropriations Bill for program funding assistance"
+      ],
+      "source": "https://lda.gov/filings/public/filing/8feaec0b-b5d1-4172-b538-319d97f37206/print/"
+    }
   },
   {
     "name": "Museum of the City of New York",
@@ -220304,7 +221174,26 @@
       "retrieved": "2026-11-15"
     },
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "lobbying": {
+      "register": "us",
+      "years": [
+        2007,
+        2011
+      ],
+      "total_usd": 90000,
+      "last_year": 2011,
+      "last_year_usd": 0,
+      "in_house": false,
+      "firms": [
+        "WOH Government Solutions LLC"
+      ],
+      "on": [
+        "Federal Funding/US House of Representatives & Senate Appropriations for Museum programs, projects, facilities & exhibits.",
+        "Federal Funding / US House of Representatives & Senate Appropriations for Museum programs, projects, facilities & exhibits."
+      ],
+      "source": "https://lda.gov/filings/public/filing/042687b6-5462-4ab7-bc30-790261fc760d/print/"
+    }
   },
   {
     "name": "Museo del Oro",
@@ -228569,6 +229458,13 @@
           "retrieved_on": "2026-11-15"
         }
       ]
+    },
+    "lobbying": {
+      "register": "eu",
+      "filed_as": "Fondazione Arena di Verona",
+      "registered": "2026-03-06",
+      "declared": "Lobbies on protecting operatic singing, intangible heritage, theatres and venues, and music education; total budget EUR 59.2M declared for 2025.",
+      "source": "https://www.lobbyfacts.eu/datacard/fondazione-arena-di-verona?rid=8726903103126-72"
     }
   },
   {
