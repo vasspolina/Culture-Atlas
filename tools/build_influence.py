@@ -264,7 +264,7 @@ FUNDERS = [
     ('vinci', 'Vinci', 'corp', r'\bVinci\b(?! (?:Code))|\bVINCI\b'),
     ('bouygues', 'Bouygues', 'corp', r'Bouygues'),
     ('saintgobain', 'Saint-Gobain', 'corp', r'Saint-Gobain'),
-    ('lvmhlouisvuitton', 'LVMH (Arnault family)', 'corp', r'LVMH|Louis Vuitton|\bDior\b|\bBulgari\b|Bvlgari|Arnault'),
+    ('lvmhlouisvuitton', 'LVMH (Arnault family)', 'corp', r'LVMH|Louis Vuitton|Mo[eë]t Hennessy|\bDior\b|\bBulgari\b|Bvlgari|Arnault'),
     ('kering', 'Kering (Pinault family)', 'corp', r'Kering|\bGucci\b|Pinault|Artémis|Bottega Veneta|Saint Laurent(?= (?:Rive|Paris|sponsor))'),
     ('hermes', 'Hermès', 'corp', r'Hermès|Fondation d.entreprise Herm'),
     ('cartier', 'Cartier (Richemont)', 'corp', r'Cartier|Richemont'),
@@ -413,7 +413,7 @@ FUNDERS = [
     # New Zealand (user, 17 Nov 2026: "add new zealand sponsors too"): the trusts, firms and families on its galleries'
     # partner lists. The gaming-machine trusts (Pub Charity, Lion Foundation, NZCT) give pokie money and are kept as
     # gambling money; Lotto NZ, a Crown entity, is not. Methanex (Vancouver) is read here for its one tie, at Bocas Lit Fest.
-    ('chartwelltrust', 'Chartwell Trust (Gibson family)', 'family', r'Chartwell Trust|Chartwell Charitable'),
+    ('chartwelltrust', 'Chartwell Trust (Rob Gardiner)', 'family', r'Chartwell Trust|Chartwell Charitable'),
     ('mackelvie', 'Mackelvie Trust', 'family', r'Mackelvie'),
     ('anthonyharper', 'Anthony Harper (law firm)', 'corp', r'Anthony Harper'),
     ('jbwere', 'JBWere', 'corp', r'JBWere'),
@@ -434,7 +434,7 @@ FUNDERS = [
     ('tsbnz', 'TSB and the TSB Community Trust', 'corp', r'TSB Community|TSB Bank|\bTSB\b(?= (?:Trust|Foundation))'),
     ('simpsongrierson', 'Simpson Grierson (law firm)', 'corp', r'Simpson Grierson'),
     ('steeltube', 'Steel & Tube', 'corp', r'Steel & Tube'),
-    ('dulux', 'Dulux (Nippon Paint)', 'corp', r'Dulux'),
+    ('dulux', 'Dulux (DuluxGroup and AkzoNobel paint businesses)', 'corp', r'Dulux'),
     ('methanex', 'Methanex', 'corp', r'Methanex'),
     # Latin America and the Caribbean beyond batch 5 (user, 17 Nov 2026: "add latin american"): the banks, the media and
     # tobacco families, and the companies on the region's sponsor lists. State companies that act as a ministry's arm
@@ -471,6 +471,9 @@ FUNDERS = [
     ('bago', 'Laboratorios Bagó', 'corp', r'Bag[óo]\b'),
     ('grupohabita', 'Grupo Habita', 'corp', r'Grupo Habita'),
     ('aes', 'AES Corporation', 'corp', r'\bAES\b'),
+    # Added on main with the lobbying links (user, 17 Nov 2026: "same for funders ... keep adding both to atlas").
+    ('santos', 'Santos', 'corp', r'\bSantos (?:GLNG|Ltd|Limited|Energy)\b'),
+    ('woodside', 'Woodside Energy', 'corp', r'\bWoodside\b(?! (?:Avenue|Road|Street|Park))'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
@@ -497,6 +500,9 @@ HQ_EXTRA = {
     'leonidmikhelsonvac': {'n': 'Novatek (Leonid Mikhelson)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
     'viktorvekselberg': {'n': 'Renova Group (Viktor Vekselberg)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
     'lauder': {'n': 'Lauder family', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
+    'bhp': {'n': 'BHP', 'c': 'Melbourne', 'co': 'Australia', 'lat': -37.8136, 'lon': 144.9631},
+    'santos': {'n': 'Santos', 'c': 'Adelaide', 'co': 'Australia', 'lat': -34.9285, 'lon': 138.6007},
+    'woodside': {'n': 'Woodside Energy', 'c': 'Perth', 'co': 'Australia', 'lat': -31.9523, 'lon': 115.8613},
 }
 
 # Offices researched for batches 5 to 8 (17 Nov 2026), kept as data beside the review: data/influence_hq.json, the same

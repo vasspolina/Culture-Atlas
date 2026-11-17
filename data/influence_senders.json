@@ -48,8 +48,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 8,
-    "entries": 24,
+    "spaces": 9,
+    "entries": 25,
     "largest_gift": {
      "text": "£50 million over ten years for the British Museum masterplan (2023)",
      "amount": 50000000.0,
@@ -116,8 +116,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 12,
-    "entries": 19,
+    "spaces": 13,
+    "entries": 20,
     "largest_gift": {
      "text": "C$1 million to C$4.99 million to the Banff Centre, lifetime to 2023",
      "amount": 1000000.0,
@@ -242,8 +242,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 6,
-    "entries": 8,
+    "spaces": 7,
+    "entries": 9,
     "largest_gift": {
      "text": "$1 million for educational programming at the Oakland Museum of California (2006)",
      "amount": 1000000.0,
@@ -559,8 +559,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 11,
-    "entries": 12,
+    "spaces": 12,
+    "entries": 13,
     "largest_gift": {
      "text": "$20 million to Vizcaya Museum and Gardens (2025)",
      "amount": 20000000.0,
@@ -767,8 +767,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 9,
-    "entries": 10
+    "spaces": 10,
+    "entries": 11
    },
    "us_lobbying": {
     "usd": 590000.0,
@@ -815,8 +815,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 4,
-    "entries": 4,
+    "spaces": 6,
+    "entries": 8,
     "largest_gift": {
      "text": "$1 million to the National Museum of African American History and Culture’s capital campaign (2014)",
      "amount": 1000000.0,
@@ -883,8 +883,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 4,
-    "entries": 4,
+    "spaces": 5,
+    "entries": 5,
     "largest_gift": {
      "text": "$50,000 or more to the Montreal Museum of Fine Arts, 2024 to 2025",
      "amount": 50000.0,
@@ -1145,8 +1145,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 32,
-    "entries": 33,
+    "spaces": 34,
+    "entries": 35,
     "largest_gift": {
      "text": "Rs 10 crore or more to the Chhatrapati Shivaji Maharaj Vastu Sangrahalaya since 1995",
      "amount": 100000000.0,
@@ -1532,8 +1532,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 1,
-    "entries": 1
+    "spaces": 2,
+    "entries": 2
    },
    "us_lobbying": {
     "usd": 735042.0,
@@ -3616,8 +3616,8 @@
     "source": "https://www.lobbyfacts.eu/datacard/morgan-stanley?rid=29701922039-63"
    },
    "culture": {
-    "spaces": 7,
-    "entries": 7
+    "spaces": 8,
+    "entries": 10
    }
   }
  },
@@ -6439,7 +6439,7 @@
      "source": "https://theconversation.com/the-group-louis-vuitton-lvmh-a-gift-to-the-musee-dorsay-and-a-huge-tax-incentive-business-as-usual-265403"
     },
     "spaces": 18,
-    "entries": 21
+    "entries": 22
    }
   }
  },
@@ -7023,8 +7023,8 @@
      "currency": "AUD",
      "source": "https://camd.org.au/?p=9839"
     },
-    "spaces": 2,
-    "entries": 3
+    "spaces": 3,
+    "entries": 6
    }
   }
  },
@@ -7377,6 +7377,266 @@
     "text": "Canva said its annual recurring revenue reached $4 billion by the end of 2025.",
     "date": "2025",
     "source": "https://techcrunch.com/2026/02/18/canva-gets-to-4b-in-revenue-as-llm-referral-traffic-rises/"
+   }
+  ]
+ },
+ "anthonyharper": {
+  "made_from": "A New Zealand law firm; its money is its partners' fees from legal work.",
+  "facts": []
+ },
+ "chartwelltrust": {
+  "made_from": "A charitable trust set up in the early 1970s by Robert Gardiner, then a Hamilton businessman and accountant, to collect contemporary art for public galleries and support the visual arts.",
+  "facts": []
+ },
+ "craigsinvestmentpartners": {
+  "made_from": "A New Zealand wealth manager and sharebroker based in Tauranga, owned by its employees and directors until the US private equity firm TA Associates agreed in 2024 to take a stake.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Craigs had 650 employees and $32 billion in funds under advice and was 100% owned by employee and director shareholders when TA Associates agreed to invest, with those shareholders to keep 50 percent.",
+    "date": "2024-12",
+    "source": "https://www.ta.com/news/craigs-announces-strategic-partnership-with-ta-associates/"
+   }
+  ]
+ },
+ "dulux": {
+  "made_from": "Paint: in Australia and New Zealand Dulux belongs to DuluxGroup, owned by Japan's Nippon Paint Holdings; elsewhere the brand has been AkzoNobel's, and Nippon Paint agreed in 2026 to buy AkzoNobel's Dulux businesses in Southeast Asia.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Nippon Paint Holdings' consolidated revenue rose 8.3% to ¥1,774,231 million in 2025, with operating profit of ¥257,104 million; DuluxGroup's revenue was ¥405,173 million.",
+    "date": "2025",
+    "source": "https://www.pcimag.com/articles/114755-2026-global-top-10-no-4-nippon-paint-holdings-co"
+   },
+   {
+    "kind": "scale",
+    "text": "In October 2026 Nippon Paint agreed to buy AkzoNobel's decorative paints businesses in Southeast Asia, Dulux their core brand, including the Indonesian joint venture, for an enterprise value of about $1.35 billion.",
+    "date": "2026-10",
+    "source": "https://www.pcimag.com/articles/115350-akzonobel-to-sell-southeast-asia-decorative-paints-business-to-nippon-paint-for-135-billion"
+   }
+  ]
+ },
+ "foundationnorth": {
+  "made_from": "An endowment that began with the ASB Bank shares settled on it under the Trustee Banks Restructuring Act 1988 (it was the ASB Community Trust); its grants are paid from the returns on its investment fund.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "In the year to 31 March 2026 Foundation North committed $72,018 thousand in grants and other funding, and held total assets of $1,951,081 thousand.",
+    "date": "2026",
+    "source": "https://www.foundationnorth.org.nz/downloads/assets/2069/2026%20Annual%20Report.pdf"
+   }
+  ]
+ },
+ "gibbs": {
+  "made_from": "Alan Gibbs's fortune came from investment banking and deals such as the Freightways buyout, Telecom's privatisation and the founding of Sky TV, and later from Auckland's Viaduct Harbour land; Dame Jenny Gibbs is his former wife.",
+  "facts": [
+   {
+    "kind": "politics",
+    "text": "Alan Gibbs gave $100,000 to the ACT Party in April 2008.",
+    "date": "2008-04",
+    "source": "https://www.scoop.co.nz/stories/PA0804/S00584.htm"
+   },
+   {
+    "kind": "politics",
+    "text": "Alan Gibbs gave ACT another $100,000 the day before the 2008 election, disclosed under the Electoral Finance Act.",
+    "date": "2008-11",
+    "source": "https://www.rnz.co.nz/news/political/29514/$100,000-donation-to-act"
+   },
+   {
+    "kind": "politics",
+    "text": "The Electoral Commission referred ACT to the police for disclosing late a series of donations, adding up to more than $30,000, from Alan Gibbs and Dame Jenny Gibbs, its biggest backers, made before the 2014 election.",
+    "date": "2015-05",
+    "source": "https://nzherald.co.nz/nz/act-party-referred-to-police-over-election-donations/L72FXM5I2WI6ETQO3JLQ3SQSUA"
+   }
+  ]
+ },
+ "jbwere": {
+  "made_from": "JBWere (NZ) Limited, a New Zealand wealth manager, uses the JBWere brand under licence from National Australia Bank's JBWere and is not a member of the NAB group.",
+  "facts": []
+ },
+ "lionfoundation": {
+  "made_from": "A gaming trust: its money is what players lose on the pokie machines it runs in pubs and hotels, which such trusts are required to give out, 40 percent of revenue by its own account, to community groups.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "The Department of Internal Affairs laid five charges of breaching the Gambling Act against the Lion Foundation over how much it knew of a person's use of pokie grants to benefit Southland Rugby and an Invercargill restaurant.",
+    "date": "2010-11",
+    "source": "https://nzherald.co.nz/nz/charity-charged-in-pokie-rort/6Z27N4LTMV3DMTVTBHGQRY4SZM"
+   },
+   {
+    "kind": "harm",
+    "text": "Its former chief executive David Conroy was found guilty of false accounting over journal entries made in 2002 to 2004 in the Lion Foundation accounts, in a case brought by the Serious Fraud Office.",
+    "date": "2011-02",
+    "source": "https://www.sfo.govt.nz/media-cases/media-releases/sfo-charges-result-in-conviction-for-former-chief-executive"
+   },
+   {
+    "kind": "harm",
+    "text": "Conroy was sentenced to 12 months' home detention and 300 hours of community work.",
+    "date": "2011-04",
+    "source": "https://www.sfo.govt.nz/media-cases/media-releases/former-lion-foundation-ceo-sentenced-to-home-detention"
+   }
+  ]
+ },
+ "mackelvie": {
+  "made_from": "The bequest of James Tannock Mackelvie (1824 to 1885), a businessman who kept an interest in Auckland affairs after returning to Britain; the trust still buys works for the collection.",
+  "facts": []
+ },
+ "methanex": {
+  "made_from": "Methanex, a Canadian company, makes methanol from natural gas at plants in the United States, Trinidad, New Zealand and elsewhere.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Full year 2025 net income attributable to Methanex shareholders was $80 million, with Adjusted EBITDA of $808 million.",
+    "date": "2025",
+    "source": "https://www.sec.gov/Archives/edgar/data/886977/000162828026015319/q42025newsrelease.htm"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Bracewell LLP registered to lobby the US federal government for Methanex in the fourth quarter of 2025 and reported $40,000 in income from it.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=methanex&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 40000,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=methanex&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "nzct": {
+  "made_from": "A gaming trust: its money comes from pokie machines that hospitality operators run in their hotels and bars, and it says it returns all its net profit, at least 40 percent of gross profit, as grants.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "In its 2024/25 financial year NZCT generated $36.334 million for communities and distributed $38.244 million through 1,992 grants.",
+    "date": "2025",
+    "source": "https://www.nzct.org.nz/about-us"
+   }
+  ]
+ },
+ "pubcharity": {
+  "made_from": "A gaming trust: its money is the revenue from the pokie machines it runs in pubs and bars, given out as grants for charitable purposes.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "In the year to 30 September 2025 Pub Charity reported revenue from gaming machines of $107,904 thousand, paid $24,818 thousand in gaming machine duty and distributed $45,333 thousand in grants.",
+    "date": "2025",
+    "source": "https://www.pubcharitylimited.org.nz/assets/Documents/PCL-6178-Annual-Report-Summary-2025_P2_V2.pdf"
+   }
+  ]
+ },
+ "quartzreef": {
+  "made_from": "A Central Otago winery.",
+  "facts": []
+ },
+ "bnz": {
+  "made_from": "Bank of New Zealand, a retail and business bank owned by National Australia Bank.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "BNZ reported a statutory net profit of $1,499 million for the year to 30 September 2025.",
+    "date": "2025",
+    "source": "https://www.bnz.co.nz/about-us/news/bnz-2025-full-year-result"
+   },
+   {
+    "kind": "harm",
+    "text": "BNZ pleaded guilty to not properly disclosing overseas currency fees on its cards and was fined $550,000 in the Auckland District Court, agreeing to pay $5 million in compensation.",
+    "date": "2006-07",
+    "source": "https://www.comcom.govt.nz/news-and-media/news-and-events/archive/bnz-pleads-guilty-over-card-fees-5-million-in-compensation-550000-fine/"
+   },
+   {
+    "kind": "harm",
+    "text": "The Commerce Commission warned BNZ that it had likely breached responsible lending and disclosure duties under the credit contracts law; BNZ had refunded about $3.8 million in interest and fees.",
+    "date": "2020-12",
+    "source": "https://comcom.govt.nz/news-and-media/media-releases/2020/bnz-warned-over-responsible-lending-and-disclosure-failures"
+   }
+  ]
+ },
+ "fletcher": {
+  "made_from": "Fletcher Building, a New Zealand building materials and construction group, came out of the Fletcher Challenge conglomerate that the Dunedin listing names.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "For the year to 30 June 2025 Fletcher Building reported revenue of $7 billion and a net loss of $419 million.",
+    "date": "2025",
+    "source": "https://buildingtoday.co.nz/2025/08/19/fletcher-building-announces-fy25-results/"
+   },
+   {
+    "kind": "harm",
+    "text": "Fletcher Building set aside A$155 million (NZ$168 million) for a settlement over leaking pipes made by its Iplex subsidiary in Western Australian homes, without admitting liability.",
+    "date": "2024-08",
+    "source": "https://rnz.co.nz/news/business/526602/fletcher-building-reaches-multi-million-dollar-settlement-over-leaky-pipes"
+   }
+  ]
+ },
+ "simpsongrierson": {
+  "made_from": "A New Zealand law firm; its money is its partners' fees from legal work.",
+  "facts": []
+ },
+ "sparknz": {
+  "made_from": "Spark, formerly Telecom New Zealand, sells mobile, broadband and IT services; the Spark Foundation is its charity.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Spark reported net profit of $260 million on revenue of $3.771 billion for the 12 months to June 2025.",
+    "date": "2025",
+    "source": "https://www.rnz.co.nz/news/business/570492/spark-s-profit-tumbles-in-challenging-period"
+   },
+   {
+    "kind": "harm",
+    "text": "Spark New Zealand Trading was fined $675,000 for false or misleading representations to consumers.",
+    "date": "2019-04",
+    "source": "https://www.comcom.govt.nz/news-and-media/news-and-events/2019/spark-fined-675000-for-misleading-consumers/"
+   }
+  ]
+ },
+ "steeltube": {
+  "made_from": "Steel & Tube, listed on the NZX, makes and distributes steel products in New Zealand.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Steel & Tube reported a net loss of $24.4 million on revenue of $385.4 million for the 12 months to June 2025.",
+    "date": "2025",
+    "source": "https://www.rnz.co.nz/news/business/570976/steel-and-tube-reports-loss-after-drop-in-revenue"
+   }
+  ]
+ },
+ "stouttrust": {
+  "made_from": "A trust set up after the death in 1982 of the Wellington scientist Dr John Stout to promote New Zealand's cultural and environmental heritage, later enlarged from the estate of his sister Vida Stout; Perpetual Guardian manages it.",
+  "facts": []
+ },
+ "todd": {
+  "made_from": "The Todd family's Todd Corporation, whose Todd Energy produces natural gas, oil and LPG from onshore fields in Taranaki.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Todd Energy produces around one-third of New Zealand's natural gas from its onshore natural gas fields.",
+    "date": "2026",
+    "source": "https://toddcorporation.com/our-businesses-and-investments/todd-energy-nz/"
+   },
+   {
+    "kind": "politics",
+    "text": "The Todd Corporation gave $50,000 each to the National and Labour parties; the Greens turned down its smaller offer for ethical reasons.",
+    "date": "2011-10",
+    "source": "https://www.odt.co.nz/news/politics/greens-reject-todd-donation"
+   }
+  ]
+ },
+ "tsbnz": {
+  "made_from": "TSB Bank, wholly owned by the Toi Foundation (the TSB Community Trust until it was renamed), whose income from the bank's dividends, and from Fisher Funds, pays its grants in Taranaki.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "TSB delivered a net profit before tax of $57.6 million in the year to 31 March 2025 and paid $10 million in dividends to its shareholder Toi Foundation Holdings Limited.",
+    "date": "2025",
+    "source": "https://www.interest.co.nz/sites/default/files/2025-06/TSB%20Annual%20Report%20and%20Disclosure%20Statement%20%28for%20the%20year%20ended%2031%20March%202025%29.pdf"
    }
   ]
  }

@@ -329,6 +329,32 @@
         scroller.addEventListener('scroll', mark, { passive: true });
         mark();
       }
+      // The Share information form as the chat (user, 17 Nov 2026: "Make the share information form look like this too"). The
+      // form opens in the chat's window, so it takes the chat's head instead of its own row (Back, the title, Close): the title
+      // centred where Chat stands, and the round cross at the left closing the form back to the chat, where in the chat it
+      // closes the chat to the map. The form's own row is put away in assets/sheet.css; its heading stays for screen readers,
+      // so the head's copy of it is hidden from them. The form scrolls in #workBottomDock, so the head's fade follows that too.
+      const shareTitle = document.createElement('span');
+      shareTitle.className = 'gm-share-title';
+      shareTitle.setAttribute('aria-hidden', 'true');
+      shareTitle.textContent = ($('noteFormTitle') && $('noteFormTitle').textContent.trim()) || 'Share information';
+      strip.appendChild(shareTitle);
+      const inShare = () => body.classList.contains('chat-input-mode-active');
+      const closeLabel = close ? close.getAttribute('aria-label') : '';
+      if (close) {
+        close.addEventListener('click', (e) => {
+          if (!PHONE() || !inShare() || typeof window.toggleChatShare !== 'function') return;
+          e.preventDefault(); e.stopImmediatePropagation();
+          window.toggleChatShare();
+        }, true);
+      }
+      const dock = $('workBottomDock');
+      const markDock = () => { if (inShare() && dock) chatHead.toggleAttribute('data-scrolled', dock.scrollTop > 2); };
+      if (dock) dock.addEventListener('scroll', markDock, { passive: true });
+      new MutationObserver(() => {
+        if (close) close.setAttribute('aria-label', inShare() ? 'Close the note and go back to the chat' : closeLabel);
+        if (inShare()) markDock(); else if (scroller) chatHead.toggleAttribute('data-scrolled', scroller.scrollTop > 2);
+      }).observe(body, { attributes: true, attributeFilter: ['class'] });
     }
 
     // ---- Buttons at the top of the screen: Back to chat, Dark, Gossip mode (user, 16 Nov 2026) ----------------------
@@ -554,7 +580,14 @@
       })();
       function heightOf(d) {
         const h = room();
-        if (d === 'full') return h;
+        if (d === 'full') {
+          // Full opens up to the row of top buttons and no further, as the chat does (user, 17 Nov 2026: "Make other windows
+          // look like this too"): it stops 4px under the row's foot. Opened from the chat it is a page of its own, the whole map.
+          const row = $('gmTopBtns');
+          if (root.classList.contains('gm-from-chat') || !row || !row.offsetHeight || !sheet.parentElement) return h;
+          const over = Math.round(row.getBoundingClientRect().bottom + 4 - sheet.parentElement.getBoundingClientRect().top);
+          return over > 0 ? h - over : h;
+        }
         if (d === 'half') return Math.round(h * 0.55);
         // Peek holds the title and the description (user, 3 Nov 2026: "bottom drawer needs to fit title and description"):
         // for a space, its name, grade, place and actions down to the end of its summary; for a funder's record (assets/hq-detail.js),
@@ -688,7 +721,9 @@
         + '<button type="button" id="gmDetailsToggleBtn" role="tab" aria-selected="true">Details</button>';
       fromChatBar.hidden = true;
       if (chrome) chrome.appendChild(fromChatBar);
-      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn].filter(Boolean);
+      // The cross stays (17 Nov 2026): the record opened from the chat has the chat's head, the round cross at the left that
+      // closes it to the map, as the chat's own cross does (assets/sheet.css, "Details from the chat as the chat").
+      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn].filter(Boolean);
       let chatScrollTop = 0;
       function markFromChat() {
         if (!PHONE()) return;
@@ -1576,7 +1611,13 @@
           return v[side];
         };
       })();
-      const room = () => window.innerHeight - safe('top') - 8;
+      // Full stops 4px under the row of top buttons, as the chat does (user, 17 Nov 2026: "Make the reports feed look like this
+      // too"); with the row away it is the phone's own top, as before.
+      const room = () => {
+        const row = $('gmTopBtns');
+        if (row && row.offsetHeight) return Math.round(window.innerHeight - row.getBoundingClientRect().bottom - 4);
+        return window.innerHeight - safe('top') - 8;
+      };
       function grabLabel() {
         return detent === 'full' ? 'Shrink the reports to the top story' : detent === 'half' ? 'Expand the reports to full screen' : 'Expand the reports';
       }

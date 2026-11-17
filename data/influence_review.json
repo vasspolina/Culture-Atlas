@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space. Batch 8 (17 Nov 2026): two new spaces, Opera Queensland and Queensland Museum, with Queensland ministerial diary entries (Rio Tinto 2013; Shell and its QGC business 2018, 2019) and Shell QGC's $10.25 million to the museum since 2015.",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space. Batch 8 (17 Nov 2026): two new spaces, Opera Queensland and Queensland Museum, with Queensland ministerial diary entries (Rio Tinto 2013; Shell and its QGC business 2018, 2019) and Shell QGC's $10.25 million to the museum since 2015. Batch 9 (17 Nov 2026): four funders added to the pilot (BHP, Morgan Stanley, Santos, LVMH) with their ties, and their contacts with government at a space (BHP at Queensland Museum, 2014 and 2015; Morgan Stanley and the Prime Minister at the British Museum, 2017). Batch 10 (17 Nov 2026): six new spaces (Glyndebourne, Brisbane Festival, State Library of Queensland, Cadogan Hall, Griffin Museum of Science and Industry, Meridian Hall) with their ties and contacts with government. Batch 11 (17 Nov 2026): four more spaces (Joyce Theater, Alvin Ailey American Dance Theater, Perth Festival, WA Museum Boola Bardip) with their funder ties.",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -12713,35 +12713,28 @@
   "drop": "background on the bank's accounts for Epstein-linked trusts, not a tie to this space"
  },
  "b9b9a05656": {
-  "drop": "the same tie as another kept entry for this space (6d695ae969)"
+  "kinds": [
+   "money"
+  ],
+  "summary": "On the donor roster."
  },
  "974aa15bdd": {
   "kinds": [
    "money"
   ],
-  "summary": "Among its corporate donors, with JPMorgan Chase, AIG and law firms.",
-  "check": "record",
-  "checked_note": "The archived corporate roster (web.archive.org) reset the connection."
+  "summary": "A corporate donor."
  },
  "4d8052843c": {
   "kinds": [
-   "access"
+   "money"
   ],
-  "summary": "One of 13 Diamond corporate members.",
-  "check": "source",
-  "checked_source": "https://www.mori.art.museum/en/mamc/corporate/list/",
-  "checked_on": "2026-11-17",
-  "checked_quote": "List of Corporate Members (Total of 68 members as of October 2026, in order of admission year) Diamond JAPAN AIRLINES MORGAN STANLEY KAJIMA CORPORATION"
+  "summary": "A Diamond member."
  },
  "5c93abca52": {
   "kinds": [
    "access"
   ],
-  "summary": "A Corporate Associate.",
-  "check": "source",
-  "checked_source": "https://www.rbo.org.uk/join-and-support/corporate-opportunities",
-  "checked_on": "2026-11-17",
-  "checked_quote": "CORPORATE ASSOCIATES American Express ArenaPAL ... Mastercard Metier Morgan Stanley Northern Bloc"
+  "summary": "A Corporate Associate."
  },
  "9e41595e1a": {
   "kinds": [
@@ -12754,7 +12747,10 @@
   "checked_quote": "CORPORATE AND BRAND PARTNERS 886 by The Royal Mint American Express Aperol Spritz Bank of America Bloomberg Dentsu Gusbourne HSBC UK M&C Saatchi ME London Morgan Stanley"
  },
  "e7c48eff3e": {
-  "drop": "the same tie as another kept entry for this space (9e41595e1a)"
+  "kinds": [
+   "money"
+  ],
+  "summary": "A corporate partner."
  },
  "4d1a5e3080": {
   "kinds": [
@@ -12768,13 +12764,8 @@
   "kinds": [
    "money"
   ],
-  "summary": "Gave $20,000 to $49,999 in 2025-26.",
-  "date": "2026",
-  "check": "source",
-  "checked_source": "https://thebass.org/join/donors/",
-  "checked_on": "2026-11-17",
-  "checked_quote": "DONORS → 2025 - 2026 ... $20,000 - $49,999 ... Morgan Stanley",
-  "checked_note": "Tier read from the page order: the name sits in the list headed $20,000 - $49,999."
+  "summary": "On the 2025 to 2026 donor list at $20,000 to $49,999.",
+  "date": "2025"
  },
  "f35cdf3881": {
   "drop": "the same tie as another kept entry for this space (63a116f7e5)"
@@ -21141,34 +21132,34 @@
   "drop": "the same tie as another kept entry for this space"
  },
  "6fdb6f104c": {
-  "drop": "about the Fondation Louis Vuitton, another space"
+  "drop": true,
+  "why": "Not a tie with this space."
  },
  "5bb88cc303": {
-  "drop": "about the Fondation Louis Vuitton, another space"
+  "drop": true,
+  "why": "About the Paris foundation, not this space."
  },
  "234c939518": {
-  "drop": "background on LVMH's patronage tax relief, not a tie at this space"
+  "drop": true,
+  "why": "About the Paris foundation, not this space."
  },
  "2a8a44f4ce": {
-  "drop": "about the Pritzker ceremony and Epstein; the Dior tie is kept in another entry"
+  "drop": true,
+  "why": "Not a tie with this space."
  },
  "216335f5eb": {
   "kinds": [
-   "name",
    "building"
   ],
-  "summary": "LVMH companies paid for the building of the group's own foundation, which carries the Louis Vuitton name.",
-  "check": "source-partly",
-  "checked_source": "https://en.wikipedia.org/wiki/Louis_Vuitton_Foundation",
-  "checked_on": "2026-11-17",
-  "checked_quote": "a French art museum and cultural center sponsored by the group LVMH and its subsidiaries ... from 2007 to 2014, building construction constituted the main activity of the Foundation",
-  "checked_missing": "the foundation's own site refused the reader (403); Wikipedia only"
+  "summary": "LVMH companies paid for the building."
  },
  "645144b491": {
-  "drop": "the same tie as another kept entry for this space (LVMH's own foundation)"
+  "drop": true,
+  "why": "Same tie as the building entry."
  },
  "d849b79abf": {
-  "drop": "the same tie as another kept entry for this space (LVMH's own foundation)"
+  "drop": true,
+  "why": "Same tie as the building entry."
  },
  "f8c57c41ee": {
   "kinds": [
@@ -21176,16 +21167,7 @@
    "licence"
   ],
   "summary": "The Cour des comptes said in November 2018 that the donations could amount to sponsorship promoting LVMH.",
-  "date": "2018-11",
-  "check": "source-partly",
-  "checked_source": "https://en.wikipedia.org/wiki/Louis_Vuitton_Foundation",
-  "checked_on": "2026-11-17",
-  "checked_quote": "18 report of the Court of Audit indicated that from 2007 to 2014, building construction constituted the main activity of the Foundation, and that the LVMH group received €518 million of tax breaks during that time.",
-  "checked_missing": "the Cour des comptes' wording that the gifts could amount to sponsorship promoting LVMH; Wikipedia gives the €518 million of tax breaks instead",
-  "extra_sources": [
-   "https://en.wikipedia.org/wiki/Louis_Vuitton_Foundation"
-  ],
-  "checked_beyond_record": true
+  "date": "2018-11"
  },
  "79964da070": {
   "kinds": [
@@ -21208,11 +21190,7 @@
   "kinds": [
    "money"
   ],
-  "summary": "Éditions Louis Vuitton gives further support.",
-  "check": "source",
-  "checked_source": "https://www.rencontres-arles.com/fr/nos-partenaires",
-  "checked_on": "2026-11-17",
-  "checked_quote": "LE SOUTIEN DE FONDATION DANIEL ET NINA CARASSO, EURAZEO, ÉDITIONS LOUIS VUITTON"
+  "summary": "Éditions Louis Vuitton supports the festival."
  },
  "2626116edd": {
   "kinds": [
@@ -21227,14 +21205,9 @@
  },
  "9a981153a9": {
   "kinds": [
-   "building"
+   "programme"
   ],
-  "summary": "Louis Vuitton is among the sponsors of restorations.",
-  "check": "source-partly",
-  "checked_source": "https://www.louvre.fr/soutenir-le-louvre/le-louvre-remercie-ses-mecenes-et-partenaires",
-  "checked_on": "2026-11-17",
-  "checked_quote": "LES LABORATOIRES SEPTODONT ET MONSIEUR HENRI SCHILLER LOUIS VUITTON MALLETIER MASTERCARD",
-  "checked_missing": "the heading the name sits under; the page lists Louis Vuitton Malletier beside Mastercard and Stellantis Auto"
+  "summary": "Louis Vuitton is among the sponsors of the museum’s restorations."
  },
  "e4cf6e531d": {
   "drop": "the same tie as another kept entry for this space"
@@ -21268,11 +21241,7 @@
   "kinds": [
    "money"
   ],
-  "summary": "Dior is named among past patrons, without amounts.",
-  "check": "source",
-  "checked_source": "https://www.mucem.org/mecenes/",
-  "checked_on": "2026-11-17",
-  "checked_quote": "Ils ont été mécènes du Mucem AG2R La Mondiale, Ametis, Art Explora, Babyzen, Chanel, Club Immo, CMA CGM, Dev-id, Digital Realty, Dior"
+  "summary": "On the museum’s patrons page, with no amount."
  },
  "a225ba42f8": {
   "kinds": [
@@ -21285,21 +21254,19 @@
  },
  "b3af3a57a3": {
   "kinds": [
+   "programme",
    "tax"
   ],
-  "summary": "Paid for Caillebotte's La Partie de bateau (1877), priced at €43 million, in January 2023; The Conversation says a 90% tax deduction puts most of the cost on the taxpayer.",
-  "date": "2023-01",
-  "check": "source-partly",
-  "checked_source": "https://theconversation.com/the-group-louis-vuitton-lvmh-a-gift-to-the-musee-dorsay-and-a-huge-tax-incentive-business-as-usual-265403",
-  "checked_on": "2026-11-17",
-  "checked_quote": "The price for The Boating Party was €43 million ... a tax deduction of 90% of the cost of the painting",
-  "checked_missing": "the January 2023 date"
+  "summary": "Paid for the €43 million purchase of Caillebotte’s La Partie de bateau (2023).",
+  "date": "2023-01"
  },
  "7ec8ff834b": {
-  "drop": "the same tie as another kept entry for this space (the Caillebotte gift)"
+  "drop": true,
+  "why": "Same tie as the Caillebotte entry."
  },
  "098ab0b45d": {
-  "drop": "the same tie as another kept entry for this space (the Caillebotte gift)"
+  "drop": true,
+  "why": "Same tie as the Caillebotte entry."
  },
  "015573010b": {
   "kinds": [
@@ -21338,11 +21305,7 @@
   "kinds": [
    "name"
   ],
-  "summary": "The LVMH Great Room carries its name.",
-  "check": "source",
-  "checked_source": "https://courtauld.ac.uk/gallery/",
-  "checked_on": "2026-11-17",
-  "checked_quote": "The LVMH Great Room ©Hufton+Crow"
+  "summary": "The LVMH Great Room carries its name."
  },
  "f7422598b2": {
   "drop": "the record itself says the 2025 partnership is not confirmed"
@@ -22109,55 +22072,36 @@
  },
  "8610b02751": {
   "kinds": [
-   "name",
    "programme"
   ],
-  "summary": "Presenting partner of Tarnanthi, which it has backed since 2015; the gallery’s head of philanthropy called BHP “a resources industry rather than a fossil fuel industry”.",
-  "date": "2015",
-  "check": "source-partly",
-  "checked_source": "https://www.agsa.sa.gov.au/whats-on/tarnanthi/",
-  "checked_on": "2026-11-17",
-  "checked_quote": "Tarnanthi is presented by the Art Gallery of South Australia with Principal Partner the South Australian Government and Presenting Partner BHP.",
-  "checked_missing": "the start in 2015 and the InDaily remarks, which the gallery’s page does not give"
+  "summary": "Presenting partner of the Tarnanthi festival of Aboriginal and Torres Strait Islander art since 2015.",
+  "date": "2015"
  },
  "c2f525345f": {
-  "drop": "the same tie as another kept entry for this space (8610b02751)"
+  "drop": true,
+  "why": "Records note, no tie."
  },
  "a10e2bf3d4": {
-  "drop": "the same tie as another kept entry for this space (8610b02751); Samarco is sender background"
+  "drop": true,
+  "why": "Same tie as the Tarnanthi entry."
  },
  "2425c8057a": {
   "kinds": [
    "programme"
   ],
-  "summary": "A $1.4 million biodiversity partnership announced in May 2015, which the Premier called the museum’s largest corporate partnership to date.",
-  "date": "2015-05",
-  "check": "source",
-  "checked_source": "https://camd.org.au/?p=3463",
-  "checked_on": "2026-11-17",
-  "checked_quote": "a landmark $1.4 million partnership between Queensland Museum and BHP Billiton , announced today by Premier and Minister for the Arts Annastacia Palaszczuk. “This new biodiversity partnership, the largest corporate partnership to date for the Museum",
-  "checked_note": "BHP’s own release gives the term as five years."
+  "summary": "A $1.4 million biodiversity partnership, announced by the Premier in May 2015 as the museum’s largest corporate partnership.",
+  "date": "2015-05"
  },
  "28373af8f5": {
   "kinds": [
-   "programme",
-   "licence"
+   "programme"
   ],
-  "summary": "Project DIG, a $7.6 million five-year partnership from 2018 to 2023 to digitise and 3D-scan the collection, starting with megafauna fossils found at BHP Mitsui Coal’s South Walker Creek mine.",
-  "date": "2018",
-  "ended": true,
-  "check": "source",
-  "checked_source": "https://camd.org.au/?p=9839",
-  "checked_on": "2026-11-17",
-  "checked_quote": "BHP invests $7.6m for Qld Museum’s first Big Australians , Australian Financial Review, 11 August 2o18 For the past 10 years, scientists at BHP Mitsui Coal’s South Walker Creek Mine",
-  "checked_note": "The museum’s page (https://www.museum.qld.gov.au/collections-and-research/projects/project-dig) says: \"Project DIG was a ground-breaking five-year partnership from 2018 to 2023 between Queensland Museum and BHP\".",
-  "extra_sources": [
-   "https://camd.org.au/?p=9839"
-  ],
-  "checked_beyond_record": true
+  "summary": "$7.6 million for Project DIG, digitising the collection from megafauna fossils found at a BHP Mitsui coal mine (2018 to 2023).",
+  "date": "2018"
  },
  "709c0b1963": {
-  "drop": "the same tie as another kept entry for this space (28373af8f5); the protest it names is over Shell’s QGC"
+  "drop": true,
+  "why": "Names BHP only in a list of reasons."
  },
  "aa9c3024e7": {
   "drop": "not a tie: a report published on Canva, the design platform"
@@ -22974,5 +22918,819 @@
   "checked_source": "https://www.sydneyoperahouse.com/about-us/our-partners",
   "checked_on": "2026-11-17",
   "checked_quote": "Westpac 200 Women Exhibition on Western Broadwalk"
+ },
+ "5e5bcae927": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "After a court annulled the building permit, Parliament validated it by an amendment written for the museum (2011); no record found shows LVMH asking for it.",
+  "date": "2011-02"
+ },
+ "d722bc92f0": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2014-05",
+  "summary": "Its representatives dined with the Arts Minister at the museum’s invitation (2014).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "BHP representatives dined with Queensland’s Arts Minister at the museum’s invitation (2014, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2014/may/walker.pdf"
+   }
+  ]
+ },
+ "84e69f044a": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2015-05",
+  "summary": "Its coal president stood with the Premier as she announced the BHP biodiversity partnership (2015).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "BHP’s coal president joined the Premier and Arts Minister to announce its partnership with the museum (2015, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2015/may/annastacia-palaszczuk.pdf"
+   }
+  ]
+ },
+ "08d4610a98": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2017-03",
+  "summary": "Hosted the Prime Minister, Theresa May, at a reception at the museum (2017).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "Morgan Stanley hosted the Prime Minister at a reception at the museum (2017, Prime Minister’s hospitality return).",
+    "source": "https://assets.publishing.service.gov.uk/media/5a82cfd3ed915d74e6237c1e/Rt_Hon_Theresa_May_MP_hospitality__January_to_March_2017.csv"
+   }
+  ]
+ },
+ "3a214a09ed": {
+  "drop": true,
+  "why": "Kept in the amendment entry."
+ },
+ "cbc04b08bc": {
+  "kinds": [
+   "programme"
+  ],
+  "ended": true,
+  "protest": true,
+  "date": "2023",
+  "summary": "The festival ended Woodside’s sponsorship in 2023 after a five-year campaign."
+ },
+ "ec69d3b17c": {
+  "drop": true,
+  "why": "Woodside here is the town in California."
+ },
+ "5e1ab1515c": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2016-04",
+  "summary": "BP Russia invited the Culture Secretary to a BP-sponsored Mariinsky concert at the hall, with Russia’s ambassador present (2016).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP Russia invited the Culture Secretary to a BP-sponsored Mariinsky concert at the hall, with Russia’s ambassador present (2016, FOI releases).",
+    "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
+   }
+  ]
+ },
+ "29c3c394fc": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2011",
+  "summary": "Gave seven MPs tickets and hospitality at Glyndebourne between 2011 and 2014.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "JTI gave seven MPs tickets and hospitality at Glyndebourne, 2011 to 2014 (MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2013-09-09.xml"
+   }
+  ]
+ },
+ "5d41bb7a40": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2013-09",
+  "summary": "Its City of Lights show with the festival hosted the Arts Minister and the Tourism Minister (2013).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "Santos GLNG’s City of Lights with the festival hosted Queensland’s Arts Minister and Tourism Minister (2013, ministerial diaries).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/walker.pdf"
+   }
+  ]
+ },
+ "e2643dc68b": {
+  "kinds": [
+   "programme"
+  ],
+  "date": "2012",
+  "summary": "Santos GLNG paid for City of Lights, the laser show that opened the festival, in 2012 and 2013."
+ },
+ "f2c536b681": {
+  "kinds": [
+   "programme",
+   "access"
+  ],
+  "date": "2013-12",
+  "summary": "Arrow Energy, its joint venture with PetroChina, launched a partnership with the library, with the Arts Minister speaking (2013).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "Queensland’s Arts Minister spoke at the launch of the library’s partnership with Arrow Energy, Shell’s joint venture (2013, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/december/walker.pdf"
+   }
+  ]
+ },
+ "f20e2df383": {
+  "kinds": [
+   "name",
+   "money"
+  ],
+  "date": "2019-10",
+  "summary": "Gave $125 million, the largest gift in the museum’s history, and the museum took his name."
+ },
+ "c825e5bd37": {
+  "kinds": [
+   "name"
+  ],
+  "date": "2007-09",
+  "summary": "Bought the naming rights for C$10 million in 2007; the hall was the Sony Centre until 2019.",
+  "ended": true
+ },
+ "df77dd6706": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Sponsors three consecutive exhibitions."
+ },
+ "758ea0ca0a": {
+  "drop": true,
+  "why": "Context, not a tie."
+ },
+ "efdfb0cee9": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "696dd2654b": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "677c18e6b7": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "f34a37f281": {
+  "drop": true,
+  "why": "A blog’s claim, not checked."
+ },
+ "4e09f6c30e": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "06030eb7c5": {
+  "drop": true,
+  "why": "The museum lobbying for itself, not Griffin."
+ },
+ "3e770d1bb8": {
+  "drop": true,
+  "why": "Same tie as the City of Lights entry."
+ },
+ "e01800083c": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "438b6f5ac7": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "4a466cfad2": {
+  "drop": true,
+  "why": "Same tie as the case note."
+ },
+ "8063d95a20": {
+  "drop": true,
+  "why": "The venue lobbying for itself, not Sony."
+ },
+ "476892e812": {
+  "drop": true,
+  "why": "Same tie as the naming entry."
+ },
+ "5204d847df": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Sponsors the company’s 2026 and 2027 global tours.",
+  "date": "2026"
+ },
+ "1a413d43c4": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A partnership paid for research on the taxonomy of invertebrates; on the 2024-25 sponsor list.",
+  "date": "2025"
+ },
+ "186c9e2b21": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Sponsored the festival for 18 years, ending after the 2023 festival.",
+  "date": "2005",
+  "ended": true
+ },
+ "3786e414c9": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Principal patron in the 1980s, underwriting the company’s tours abroad.",
+  "date": "1980"
+ },
+ "558a732d21": {
+  "kinds": [
+   "building",
+   "money"
+  ],
+  "summary": "A $500,000 grant announced at the opening of the new headquarters (1990).",
+  "date": "1990-06"
+ },
+ "53ec6bdd95": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Supported the theatre from a fund for dance presenters it set up in 1985.",
+  "date": "1985"
+ },
+ "146633e472": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Altria is credited in the funding lines of a 2003 production.",
+  "date": "2003-02"
+ },
+ "9f81bf8486": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A founding partner of the Foundation for the WA Museum."
+ },
+ "8f68eb8ce6": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Has paid for the museum’s marine biodiversity research since 1998, extended for five years in August 2025.",
+  "date": "1998"
+ },
+ "41d9aa156e": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "The Woodside Energy: WA Down Under Gallery at the WA Maritime Museum, run by the same organisation, reopened in 2024.",
+  "date": "2024-12"
+ },
+ "1d08516f95": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "e469dbf491": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "927c72b70b": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "105548e832": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "80340c11e2": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "27824a479a": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "4eff17e54d": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "14efab38f0": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "40ae5a0945": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "3a2276e24c": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "95fd08fa83": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "f576469002": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "e31c80430b": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "8a50ea3909": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "1f4c12e09e": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "e121de400f": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "a17bb89d0e": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "d0392358f9": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "3b0da832af": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "95f0bba5b5": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "9fcd0b778b": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "04cbd6a53d": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "843eedf770": {
+  "kinds": [
+   "access"
+  ],
+  "summary": "A member of the Partners Circle in 2024 to 2025, whose benefits are memberships, branding, after-hours hosting and bespoke events.",
+  "check": "source",
+  "checked_source": "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Our Partners Circle connects the Gallery with the business community, offering year-round benefits such as memberships, branding exposure, after-hours hosting, and bespoke events. Current partners include BMW, Van Cleef & Arpels, HSBC, Anthony Harper"
+ },
+ "5cd155447c": {
+  "drop": "the same tie as another kept entry for this space (843eedf770)"
+ },
+ "70991c3f52": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Major Partner of the gallery.",
+  "check": "source",
+  "checked_source": "https://christchurchartgallery.org.nz/support/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Major Partners [img:Anthony Harper]",
+  "checked_note": "The supporters list on the page is a row of logos; the quote is the heading and the logo's alt text."
+ },
+ "ab722a57fe": {
+  "drop": "the same tie as another kept entry for this space (70991c3f52)"
+ },
+ "07c430e218": {
+  "drop": "namesake: ASB The Bicycle Workshop, a German supporter of a space in Zwenkau, not ASB Bank"
+ },
+ "9589db5315": {
+  "drop": "another body: ASB Community Trust is the former name of Foundation North (its dormant subsidiary still carries the name), not ASB Bank; the tie belongs under foundationnorth"
+ },
+ "7a0464d4d6": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Listed, without a date, among the gallery's founding partners.",
+  "check": "source",
+  "checked_source": "https://dunedin.art.museum/supporters",
+  "checked_on": "2026-11-17",
+  "checked_quote": "FOUNDING PARTNERS The New Zealand Lotteries Board ... Trust Bank Otago Community Trust Bank of New Zealand Skeggs Group"
+ },
+ "75260c3519": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A strategic partner, and also listed among the enduring supporters.",
+  "check": "source",
+  "checked_source": "http://artspace-aotearoa.nz/tautoko",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Strategic Partners + The Chartwell Trust Foundation North Goethe-Insitut New Zealand Enduring Supporters + Lynda Agnew Chartwell Trust",
+  "checked_note": "Read at https://artspace-aotearoa.nz/tautoko (the http address in the record did not resolve). Wesfarmers is no longer on the page."
+ },
+ "77c0e55678": {
+  "drop": "the same tie as another kept entry for this space (75260c3519)"
+ },
+ "0cd28dc1e1": {
+  "drop": "the same tie as another kept entry for this space (aa1f6c1ac6)"
+ },
+ "aa1f6c1ac6": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Its Chartwell Collection has been on long-term loan at the gallery since 1997 (2,134 works), and it has supported the North Terrace commissions since 2012 and Aotearoa Contemporary in 2024.",
+  "date": "1997",
+  "check": "source",
+  "checked_source": "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Gallery has been the long-term home of the Chartwell Collection since 1997, when the collection comprised 446 works. Today, it holds 2134 works ... Since 2012, the Chartwell Trust has also supported the Gallery’s North Terrace commissions.",
+  "checked_note": "The same review says Aotearoa Contemporary was proudly supported by the Chartwell Trust. Chartwell's own history page adds that it was one of the inaugural donors to the 2011 redevelopment."
+ },
+ "11bd976340": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A current Gallery Partner, and listed, without a date, among the gallery's founding partners.",
+  "check": "source",
+  "checked_source": "https://dunedin.art.museum/supporters",
+  "checked_on": "2026-11-17",
+  "checked_quote": "GALLERY PARTNERS Creative New Zealand [img:] Quartz Reef [img:] Craigs Investment Partners"
+ },
+ "805c54d635": {
+  "drop": "the founding partner listing is folded into the kept entry for this space (11bd976340)"
+ },
+ "079361aad1": {
+  "drop": "the same tie as another kept entry for this space (11bd976340)"
+ },
+ "089d5284aa": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "An Exhibition Partner, shown by logo, through its New Plymouth office.",
+  "check": "source",
+  "checked_source": "https://govettbrewster.com/supporters/partners",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Exhibition Partners",
+  "checked_note": "Under the heading the page shows a logo file logo-craigs.png linked to craigsip.com/contact/new-plymouth."
+ },
+ "dcbf86b78d": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Through its Whanganui office, sponsors the new biennial exhibition Ināianei | Current, opening in November 2026, and is listed among the gallery's partners.",
+  "date": "2026",
+  "check": "source",
+  "checked_source": "https://sarjeant.org.nz/meet-our-partners/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Sarjeant Gallery announces a new biennial exhibition series called Ināianei | Current launching in November 2026 and generously sponsored by Craigs Investment Partners Whanganui"
+ },
+ "af273132b9": {
+  "drop": "the partner listing is folded into the kept entry for this space (dcbf86b78d)"
+ },
+ "35e2f7ecee": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Dulux Australia, of DuluxGroup, which Nippon Paint owns, is a corporate partner.",
+  "check": "source",
+  "checked_source": "https://acca.melbourne/support/current-partners/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Partners [img:Andrew Curtis Photography] [img:ah ah ah art!] [img:Dulux]",
+  "checked_note": "The logo links to dulux.com.au. DuluxGroup is a Nippon Paint segment (PCI Magazine, Nippon Paint Holdings profile)."
+ },
+ "8f08164131": {
+  "drop": "the same tie as another kept entry for this space (35e2f7ecee)"
+ },
+ "aa8d44f011": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Dulux, in Indonesia an AkzoNobel joint venture that Nippon Paint agreed in October 2026 to buy, is a 2026 partner.",
+  "date": "2026",
+  "check": "source",
+  "checked_source": "https://jakartabiennale.id/partner/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "dulux-letscolour-bw.png",
+  "checked_note": "The partner page shows the Dulux Let's Colour logo (file uploaded September 2026). PCI Magazine (5 October 2026, https://www.pcimag.com/articles/115350-akzonobel-to-sell-southeast-asia-decorative-paints-business-to-nippon-paint-for-135-billion): Nippon Paint (H.K.) will acquire 100% of AkzoNobel's Decorative Paints joint venture in Indonesia, expected to close in late 2026."
+ },
+ "4900f166c1": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Dulux, in Pakistan the brand of Akzo Nobel Pakistan (sold by AkzoNobel to the Packages Group in September 2026), is listed among the corporate partners.",
+  "check": "source",
+  "checked_source": "https://www.lahorebiennale.org/sponsors/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Dulux-shape-logo-CM-1024x678.jpg",
+  "checked_note": "The logo file on the sponsors page dates from April 2020. Sale: PCI Magazine, 30 September 2026, https://www.pcimag.com/articles/115321-akzonobel-completes-sale-of-pakistan-business-to-packages-group. Not Nippon Paint's Dulux."
+ },
+ "542b235ce0": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Dulux New Zealand, owned by Nippon Paint through DuluxGroup, was named a current corporate partner on the museum's Partner with us page in January 2025.",
+  "date": "2025-01",
+  "check": "record",
+  "checked_note": "The archived page could not be reached (web.archive.org reset the connection) and dowse.org.nz refused the reader (403)."
+ },
+ "388d28bf39": {
+  "drop": "the same tie as another kept entry for this space (542b235ce0)"
+ },
+ "07ceca4158": {
+  "drop": "the same tie as another kept entry for this space (542b235ce0)"
+ },
+ "43d040ca97": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Fletcher Challenge, the group Fletcher Building came out of, is listed, without a date, among the gallery's founding partners.",
+  "check": "source",
+  "checked_source": "https://dunedin.art.museum/supporters",
+  "checked_on": "2026-11-17",
+  "checked_quote": "FOUNDING PARTNERS The New Zealand Lotteries Board Donaghys Ltd Dunedin Electricity Dunedin Public Art Gallery Society Fletcher Challenge"
+ },
+ "0cb802931f": {
+  "drop": "Fletcher Construction was the contractor paid to build Te Papa, not a funding tie"
+ },
+ "9210466df1": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A strategic partner; gave NZ$70,000 in each of FY2019 and FY2020, NZ$50,000 in FY2021, NZ$26,000 in FY2025 and NZ$25,000 in FY2026.",
+  "check": "source",
+  "checked_source": "https://charitydata.co.nz/charities/artspace-aotearoa-trust",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Foundation North Grants Limited FY 2020 $70,000 Foundation North Grants Limited FY 2019 $70,000 Foundation North Grants Limited FY 2021 $50,000 Foundation North Grants Limited FY 2025 $26,000 Foundation North Grants Limited FY 2026 $25,000"
+ },
+ "593c5efc4c": {
+  "drop": "the same tie as another kept entry for this space (9210466df1)"
+ },
+ "e63f07b0b7": {
+  "drop": "namesake: Community Foundation North East, an English funder, not Foundation North of Auckland"
+ },
+ "bf773917c9": {
+  "kinds": [
+   "access"
+  ],
+  "summary": "The trustees of Gibbs Farm, Alan Gibbs's sculpture park, give the gallery a day there each year for a fundraiser; 1,000 ticket holders came in November 2024.",
+  "date": "2024-11",
+  "check": "source",
+  "checked_source": "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Each year, the trustees donate a day to the Gallery for a public event. In November 2024, 1000 ticketholders explored the park’s sweeping landscapes and monumental artworks."
+ },
+ "b82ccdb3e5": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Foundation Partner of the gallery.",
+  "check": "source",
+  "checked_source": "https://christchurchartgallery.org.nz/support/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Supporters Foundation Partner [img:JBWere]",
+  "checked_note": "The partner is JBWere (NZ) Limited, which uses the JBWere brand under licence from NAB's JBWere and is not a member of the NAB group (jbwere.co.nz)."
+ },
+ "2f8b3c94a5": {
+  "drop": "the same tie as another kept entry for this space (b82ccdb3e5)"
+ },
+ "8a5baef2b5": {
+  "drop": "says the funder is not named at this space; not a tie"
+ },
+ "5717fa799e": {
+  "drop": "says the funder is not named at this space; not a tie"
+ },
+ "25fe8f809a": {
+  "drop": "says the funder is not named at this space; not a tie"
+ },
+ "7becf29e2c": {
+  "drop": "says the funder is not named at this space; not a tie"
+ },
+ "d10ca2acf3": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A grant partner of Te Taiao Nature, the nature zone that opened in 2019, and still shown under it on the current partners page.",
+  "date": "2019",
+  "check": "source",
+  "checked_source": "https://tepapa.govt.nz/about/press-and-media/press-releases/2019-media-releases/opening-date-announced-for-te-taiao",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Grant Partners: New Zealand Lotteries Commission and the Lottery Grants Board, Pub Charity, and The Lion Foundation.",
+  "checked_note": "The current partners page shows 'The lion foundation logo' under Te Taiao | Nature."
+ },
+ "299f0e0498": {
+  "drop": "the current listing is folded into the kept entry for this space (d10ca2acf3)"
+ },
+ "6bfeeadb6e": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A grant partner of Te Taiao Nature, the nature zone that opened in 2019, and still shown under it on the current partners page.",
+  "date": "2019",
+  "check": "source",
+  "checked_source": "https://tepapa.govt.nz/about/press-and-media/press-releases/2019-media-releases/opening-date-announced-for-te-taiao",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Grant Partners: New Zealand Lotteries Commission and the Lottery Grants Board, Pub Charity, and The Lion Foundation.",
+  "checked_note": "The current partners page shows 'Pub charity logo' under Te Taiao | Nature."
+ },
+ "eec75cf94a": {
+  "drop": "the current listing is folded into the kept entry for this space (6bfeeadb6e)"
+ },
+ "b56469d93f": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Gave a NZ$4,000 grant, undated.",
+  "check": "source",
+  "checked_source": "https://charitydata.co.nz/charities/artspace-aotearoa-trust",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Pub Charity Limited",
+  "checked_note": "Listed under Funding Sources on the page with the amount $4,000 and no year."
+ },
+ "80b94d2da4": {
+  "drop": "the same tie as another kept entry for this space (b56469d93f)"
+ },
+ "6640607bae": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "James Tannock Mackelvie's gifts helped open the gallery in 1888; the Mackelvie Trust Collection, from his bequest (he died in 1885), carries his name and is still held there on long-term loan.",
+  "date": "1885",
+  "check": "source-partly",
+  "checked_source": "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "caring for significant long-term loans such as the collections of the Chartwell, Mackelvie and Edmiston trusts",
+  "checked_missing": "the annual review does not give the 1888 gifts or the bequest; those, and his death in 1885, rest on Wikipedia (Auckland Art Gallery Toi o Tāmaki; James Tannock Mackelvie)"
+ },
+ "820db3326f": {
+  "drop": "the same tie as another kept entry for this space (6640607bae)"
+ },
+ "626270e14a": {
+  "drop": "the same tie as another kept entry for this space (6640607bae)"
+ },
+ "59ea8e0e4d": {
+  "drop": "the same tie as another kept entry for this space (6640607bae)"
+ },
+ "86d1225c86": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Methanex Trinidad Limited announced in March 2026 a partnership that lets the festival stage one-day community festivals across Trinidad and Tobago later in 2026.",
+  "date": "2026-03",
+  "check": "source",
+  "checked_source": "https://www.bocaslitfest.com/2026/03/25/all-together-now-at-2026-bocas-lit-fest/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Energy company Methanex Trinidad Limited was also represented, announcing a new partnership which will allow the Bocas Lit Fest to stage a series of one-day community festivals across T&T later in 2026."
+ },
+ "ca2627339a": {
+  "drop": "the same tie as another kept entry for this space (86d1225c86)"
+ },
+ "b8ef1f94db": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Listed among the supporters of the gallery's redevelopment.",
+  "check": "source",
+  "checked_source": "https://sarjeant.org.nz/meet-our-partners/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Supporters [img:] Whanganui District Council ... [img:] Lotto New Zealand [img:] New Zealand Community trust"
+ },
+ "28a4bd075c": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "One of three current Gallery Partners.",
+  "check": "source",
+  "checked_source": "https://dunedin.art.museum/supporters",
+  "checked_on": "2026-11-17",
+  "checked_quote": "GALLERY PARTNERS Creative New Zealand [img:] Quartz Reef [img:] Craigs Investment Partners"
+ },
+ "a7d2ac48f0": {
+  "drop": "the same tie as another kept entry for this space (28a4bd075c)"
+ },
+ "6f6160bc6c": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Sponsors the Cornelia Parker exhibition that marks the gallery's return to Civic Square in October 2026, and is named among the supporters in the 2025/26 annual report.",
+  "date": "2026",
+  "check": "source",
+  "checked_source": "https://www.simpsongrierson.com/insights-news/our-news/simpson-grierson-supports-city-gallery-wellington-s-return-to-civic-square",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Simpson Grierson is proud to announce its sponsorship of a major exhibition from City Gallery Wellington Te Whare Toi by acclaimed British artist Cornelia Parker, opening in October 2026",
+  "extra_sources": [
+   "https://www.simpsongrierson.com/insights-news/our-news/simpson-grierson-supports-city-gallery-wellington-s-return-to-civic-square"
+  ],
+  "checked_beyond_record": true,
+  "checked_note": "The 2025/26 annual report (Google Drive file in the record) lists Simpson Grierson among partners and supporters."
+ },
+ "7d9327c5e7": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Spark Foundation is named among the gallery's supporters in the 2025/26 annual report.",
+  "check": "source",
+  "checked_source": "https://drive.google.com/file/d/1f7i3EqgDpF8dq5itMCLpc0_U-CqKHm6S/view",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Singapore Airlines Canon National Library of New Zealand Te Puna Mātauranga o Aotearoa Spark Foundation",
+  "checked_note": "Read as the PDF the Drive link serves; the partners and supporters list is in two columns."
+ },
+ "0400b80ad3": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Named a donor on the museum's Partner with us page in January 2025.",
+  "date": "2025-01",
+  "check": "record",
+  "checked_note": "The archived page could not be reached (web.archive.org reset the connection) and dowse.org.nz refused the reader (403)."
+ },
+ "1b36877c86": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Named among the gallery's supporters in the 2025/26 annual report.",
+  "check": "source",
+  "checked_source": "https://drive.google.com/file/d/1f7i3EqgDpF8dq5itMCLpc0_U-CqKHm6S/view",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Simpson Grierson Stout Trust TG Macarthy Trust",
+  "checked_note": "Read as the PDF the Drive link serves."
+ },
+ "45ae55315c": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Gave NZ$600,000 to the campaign to restore the gallery, which took it close to its fundraising target.",
+  "check": "source",
+  "checked_source": "https://sarjeant.org.nz/stout-trust-grant-takes/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "close to the target figure following the announcement of a $600,000.00 grant from the Stout Trust, managed by Perpetual Guardian"
+ },
+ "5c0183a2a4": {
+  "drop": "the same tie as another kept entry for this space (45ae55315c)"
+ },
+ "b937d9c3d2": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Todd Energy gave $3 million in 2011 toward building the $10 million Len Lye Centre, the largest single corporate arts donation in New Zealand to that date; an artist's 2025 performance, which the gallery itself shows, criticised fossil fuel sponsorship of the centre's building.",
+  "date": "2011",
+  "protest": true,
+  "check": "source",
+  "checked_source": "https://m.scoop.co.nz/stories/AK1209/S00533/all-systems-go-for-len-lye-centre.htm",
+  "checked_on": "2026-11-17",
+  "checked_quote": "$3m – Todd Energy, 2011. ... Todd Energy’s total contribution of $3 million is for the capital construction of the Len Lye Centre and is the largest single corporate arts donation to date in New Zealand.",
+  "extra_sources": [
+   "https://m.scoop.co.nz/stories/AK1209/S00533/all-systems-go-for-len-lye-centre.htm"
+  ],
+  "checked_beyond_record": true,
+  "checked_note": "Protest: Fiona Clark's performance, shown at the gallery 8 August to 15 November 2026, is described by the gallery as a critique of 'the institution's willingness to accept financial sponsorship from fossil fuel corporations for its architectural development' (govettbrewster.com, cited by the record). The page does not name Todd Energy; Todd Energy is the only company in the build plan. Todd Energy's own 2011 release gives $2.5 million for construction plus $100,000 a year for five years for education."
+ },
+ "7578a87f1a": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "Founding Corporate Partner of the Len Lye Centre and a Perpetual Foundation Corporate Partner, with the Todd Energy Foyer and Todd Energy Learning Centre named for it, 2015 to 2025.",
+  "date": "2015",
+  "check": "source",
+  "checked_source": "https://govett-brewsterfoundation.com/partner-programme/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Todd Energy Founding corporate partner for the Len Lye Centre ... Contribution Todd Energy Foyer Todd Energy Learning Centre, 2015-2025 Perpetual Foundation Corporate Partner",
+  "checked_note": "The gallery's partners page still shows Todd Energy as Len Lye Centre Sole Founding Partner."
+ },
+ "fc91c32455": {
+  "drop": "the same tie as another kept entry for this space (7578a87f1a)"
+ },
+ "8cb05e56dd": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "The TSB Community Trust (now Toi Foundation), sole owner of TSB Bank, gave $1 million in 2009 toward the $10 million Len Lye Centre and in 2012 underwrote the rest of the building cost.",
+  "date": "2009",
+  "check": "source",
+  "checked_source": "https://m.scoop.co.nz/stories/AK1209/S00533/all-systems-go-for-len-lye-centre.htm",
+  "checked_on": "2026-11-17",
+  "checked_quote": "$1m – TSB Community Trust, committed in 2009. ... Underwrite of the remaining required amount – TSB Community Trust, 2012",
+  "extra_sources": [
+   "https://m.scoop.co.nz/stories/AK1209/S00533/all-systems-go-for-len-lye-centre.htm"
+  ],
+  "checked_beyond_record": true,
+  "checked_note": "The same release: the trust is 'the owner and sole shareholder of TSB Bank Limited'. Toi Foundation's history page says it was established in 1988 under the name TSB Community Trust."
  }
 }

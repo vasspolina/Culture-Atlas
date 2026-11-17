@@ -834,7 +834,12 @@
     if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'circle', 'Right-wing funder', rec => `Who funds ${rec.n}?`, true);
     if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'circle', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`, true);
 
-    if (L.hq || L.people) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
+    // The offices step aside under Influence mode (assets/influence-mode.js), which draws the private funders at their
+    // offices itself and places their names round each other. Left on, this layer drew a second set: coloured dots for every
+    // office, public bodies too, and names that knew nothing of the mode's, so the two printed over each other across
+    // Europe (user, 17 Nov 2026: "Banca Transilvania" over "Komerční banka", "Puig" under the exit button).
+    const influenceOn = !!(window.isInfluenceModeActive && window.isInfluenceModeActive());
+    if ((L.hq || L.people) && !influenceOn) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
     if (window.atlasFundingViews && recById) window.atlasFundingViews.over(ctx, dots, r, baseRadius, sel, hov, project, cx, cy, boxes);
 
     if (L.money) {
@@ -984,8 +989,8 @@
     const host = document.getElementById('globeViewport'); if (!host) return;
     const b = document.createElement('button');
     b.type = 'button'; b.id = 'moneyExitBtn';
-    b.innerHTML = '<span aria-hidden="true">×</span> Exit money map';
-    b.title = 'Leave the money map and show every museum again (Esc)';
+    b.innerHTML = '<span aria-hidden="true">×</span> Exit influence map';
+    b.title = 'Leave the influence map and show every museum again (Esc)';
     b.addEventListener('click', exitMoney);
     host.appendChild(b);
     document.addEventListener('keydown', e => {
@@ -1116,7 +1121,9 @@
 
   // ---- Offices as things you can pick: hit-testing, the connections in the data, and the selection ----
   const KIND_LABEL = { gov: 'Public funder', corp: 'Company', found: 'Foundation or individual donor', priv: 'Hedge fund or investor', person: 'Individual\u2019s office' };
-  const kindLabel = e => KIND_LABEL[e.kind === 'org' ? e.k : 'person'];
+  // A record can name its own kind: a public body the MoMA study ties to MoMA without paying it is not a "Public funder"
+  // (assets/influence-mode.js, user, 17 Nov 2026: "add the other public bodies too").
+  const kindLabel = e => e.kindLabel || KIND_LABEL[e.kind === 'org' ? e.k : 'person'];
   // An office is keyed by funder key, and the same body can sit under two keys ('artscouncilengland|UK' and '|United Kingdom').
   const keysOf = e => { const ks = [e.key, ...(e.also || [])]; HQ.orgs.forEach(o => { if (o !== e && o.n === e.n && o.co === e.co) ks.push(o.key); }); return ks; };
   const byName = (a, b) => a.n.localeCompare(b.n);

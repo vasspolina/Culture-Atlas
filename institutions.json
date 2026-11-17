@@ -31032,7 +31032,7 @@
       }
     ],
     "case_study": {
-      "title": "MoMA Money Map",
+      "title": "MoMA Influence Map",
       "kick": "Case study, New York. From the research brief of 28 September 2026.",
       "summary": [
         "Public money is a rounding error in MoMA's operating budget: reported government grants were $49,965 in FY2020, $20,000 in FY2021, a one-off $10M federal Shuttered Venue grant in FY2022, and nothing after.",
@@ -86862,7 +86862,18 @@
           "retrieved_on": "2026-11-02"
         }
       ]
-    }
+    },
+    "case_notes": [
+      {
+        "title": "Assembl\u00e9e nationale, amendment no. 1 to bill 3140",
+        "meta": "2011-02-11",
+        "text": "After a Paris court annulled the building permit in January 2011, an amendment tabled by Herv\u00e9 Gaymard to the digital book price bill retroactively validated it, explaining that it would let construction of the contemporary art museum built by a corporate foundation in the Jardin d'acclimatation, the Fondation Louis Vuitton, continue. No record found shows LVMH asking for the amendment.",
+        "sources": [
+          "https://www.assemblee-nationale.fr/13/pdf/amendements/3140/314000001.pdf",
+          "https://www.politis.fr/articles/2022/11/lvmh-paris-sous-emprise"
+        ]
+      }
+    ]
   },
   {
     "name": "Louvre",
@@ -94539,6 +94550,14 @@
         "text": "The Register of Members' Financial Interests records JTI UK giving Graham Brady, chair of the 1922 Committee, and his wife a dinner at the British Museum, value \u00a3600, on 19 March 2019.",
         "sources": [
           "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2019-09-02.xml"
+        ]
+      },
+      {
+        "title": "Prime Minister's hospitality return",
+        "meta": "2017-03-08",
+        "text": "The Prime Minister's hospitality return records Theresa May at a reception given by Morgan Stanley at the British Museum on 8 March 2017.",
+        "sources": [
+          "https://assets.publishing.service.gov.uk/media/5a82cfd3ed915d74e6237c1e/Rt_Hon_Theresa_May_MP_hospitality__January_to_March_2017.csv"
         ]
       }
     ],
@@ -234327,9 +234346,899 @@
         "sources": [
           "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2019/march/leeanne-enoch.pdf"
         ]
+      },
+      {
+        "title": "Queensland ministerial diary",
+        "meta": "2014-05-29",
+        "text": "The Queensland ministerial diary records the Arts Minister, Ian Walker, at a dinner with representatives of the Queensland Museum and BHP Billiton at the museum's invitation on 29 May 2014.",
+        "sources": [
+          "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2014/may/walker.pdf"
+        ]
+      },
+      {
+        "title": "Queensland ministerial diary",
+        "meta": "2015-05-12",
+        "text": "The Queensland ministerial diary records the Premier and Arts Minister, Annastacia Palaszczuk, announcing the Queensland Museum and BHP Biodiversity Partnership with the museum's director, its chair and Mike Henry, president of BHP Billiton Coal, on 12 May 2015.",
+        "sources": [
+          "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2015/may/annastacia-palaszczuk.pdf"
+        ]
       }
     ],
     "grade": 5,
     "grade_basis": "A funder tied to fossil fuels. The record also holds a public protest."
+  },
+  {
+    "name": "Glyndebourne",
+    "location": "Lewes, UK",
+    "tier": "A",
+    "size": "L",
+    "funding": "Charity. Of \u00a343.4M income in 2025, 48% was box office and \u00a310.3M fundraising and memberships; Arts Council England gave \u00a30.8M for the Autumn Season (2025 accounts).",
+    "watch": "MPs and peers declared Glyndebourne tickets and hospitality from Japan Tobacco International between 2011 and 2014 (Register of Members' Financial Interests via Tobacco Tactics).",
+    "flags": [],
+    "why_flagged": null,
+    "sources": [
+      "https://opencharities.uk/ew/243877/files/2025-12-31-accounts.md",
+      "https://opencharities.uk/ew/243877/files/2024-12-31-accounts.md",
+      "https://opencharities.uk/ew/243877/files/2023-12-31-accounts.md",
+      "https://www.glyndebourne.com/membership-and-support/our-partners/",
+      "https://en.wikipedia.org/wiki/Glyndebourne",
+      "https://tobaccotactics.org/wiki/tobacco-industry-hospitality-for-uk-politicians",
+      "https://tobaccotactics.org/wiki/gerald-kaufman",
+      "https://tobaccotactics.org/?p=1037",
+      "https://www.overgrownpath.com/2011/12/whose-bread-i-eat-his-song-i-sing.html",
+      "https://tobaccotactics.org/wiki/csr-arts-culture"
+    ],
+    "lat": 50.8778,
+    "lon": 0.0635,
+    "country": "UK",
+    "city": "Lewes",
+    "website": "https://www.glyndebourne.com/",
+    "id": "glyndebourne-lewes",
+    "visit_url": "https://www.glyndebourne.com/",
+    "details": {
+      "overview": [
+        "John Christie and his wife, the soprano Audrey Mildmay, opened an opera theatre at Glyndebourne, a country house near Lewes, and the first season began on 28 May 1934 with Le nozze di Figaro (Wikipedia).",
+        "The present theatre, designed by Michael and Patty Hopkins, seats about 1,200 and opened on 28 May 1994; it cost \u00a334 million, 90% of it from donations (Wikipedia).",
+        "It is run by Glyndebourne Productions Ltd, a company limited by guarantee and registered charity (number 243877) incorporated in 1939; Gus Christie, grandson of the founder, is Executive Chairman and Stephen Langridge Artistic Director (2025 accounts).",
+        "In 2025 it reached a live audience of over 130,000 across 107 mainstage opera and concert performances, filling 99% of seats (2025 accounts).",
+        "A wind turbine on the estate began operating in January 2012, and its electricity sales go through the trading subsidiary Glyndebourne Enterprises Ltd (Wikipedia; 2024 accounts)."
+      ],
+      "funding_verdict": "Glyndebourne: box office, members and donors, with a small Arts Council grant",
+      "funding": [
+        "Total income was \u00a343.4 million in 2025 (2024: \u00a341.9 million); 48% came from box office and \u00a310.3 million (24%) from fundraising and memberships (2025 accounts).",
+        "Box office income in 2025 was \u00a320.741 million, memberships \u00a32.679 million, donations \u00a33.478 million and legacies \u00a31.404 million in unrestricted funds (2025 accounts).",
+        "Government sources in 2025 were Theatre Tax Relief of \u00a33.7 million and an Arts Council England grant of \u00a3812,800 for the Autumn Season and Learning and Engagement programme (2025 accounts).",
+        "The accounts state that the Festival receives no public subsidy and relies on fundraising and box office (2024 accounts).",
+        "Arts Council England cut its grant by 52% for 2023-26, which led Glyndebourne to cancel its 2023 Tour after more than 50 years of touring and start an Autumn Season at Glyndebourne instead (2023 accounts).",
+        "Sponsorship of productions released to income was \u00a3960,000 in 2025 and \u00a3635,000 in 2024, alongside Glyndebourne Festival Society fees of \u00a32.131 million (2025 and 2024 accounts).",
+        "The corporate partners page names Bolney, Morgan Motor Company, English Woodlands, French Bedroom, Lanson Champagne and WILDSMITH (Glyndebourne website).",
+        "Reserves are invested mainly with Capital Group (\u00a346.0 million) and Rothschild (\u00a31.7 million) at 31 December 2024 (2024 accounts)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Japan Tobacco International hosted MPs and peers at Glyndebourne: Brian Binley declared two tickets worth \u00a31,132.80 in 2011, Gerald Kaufman two tickets and hospitality worth about \u00a31,278 in 2013, and Lord Trimble and Baroness Wheatcroft were guests of JTI on 24 July 2014 (Registers of Interests via Tobacco Tactics).",
+        "A blog post of 15 December 2011 said the 2009 Glyndebourne Festival annual report listed JTI among corporate supporters; that report was not available to check, and JTI is not named on Glyndebourne's current partners page (An Overgrown Path; Glyndebourne website)."
+      ],
+      "sources": [
+        "https://opencharities.uk/ew/243877/files/2025-12-31-accounts.md",
+        "https://opencharities.uk/ew/243877/files/2024-12-31-accounts.md",
+        "https://opencharities.uk/ew/243877/files/2023-12-31-accounts.md",
+        "https://www.glyndebourne.com/membership-and-support/our-partners/",
+        "https://en.wikipedia.org/wiki/Glyndebourne",
+        "https://tobaccotactics.org/wiki/tobacco-industry-hospitality-for-uk-politicians",
+        "https://tobaccotactics.org/wiki/gerald-kaufman",
+        "https://tobaccotactics.org/?p=1037",
+        "https://www.overgrownpath.com/2011/12/whose-bread-i-eat-his-song-i-sing.html",
+        "https://tobaccotactics.org/wiki/csr-arts-culture"
+      ],
+      "website": "https://www.glyndebourne.com/",
+      "retrieved": "2026-11-17"
+    },
+    "case_notes": [
+      {
+        "title": "Register of Members' Financial Interests",
+        "meta": "2011 to 2014",
+        "text": "The Register of Members' Financial Interests records Japan Tobacco International giving seven MPs tickets and hospitality at Glyndebourne: Brian Binley in May 2011 (\u00a31,132.80); Christopher Chope, Jim Dowd, Gerald Kaufman and Robert Walter on 13 June 2013 (\u00a31,278 to \u00a31,534 each); and Nick Brown and a guest in July 2014, with Glyndebourne named as co-donor.",
+        "sources": [
+          "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2011-09-28.xml",
+          "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2013-09-09.xml",
+          "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2014-09-22.xml"
+        ]
+      }
+    ],
+    "grade": 1,
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+  },
+  {
+    "name": "Brisbane Festival",
+    "location": "Brisbane, Australia",
+    "tier": "B",
+    "size": "M",
+    "funding": "Queensland Government and Brisbane City Council are foundation partners; the state gave $5.29M a year through Arts Queensland in 2012-13. Platinum partners include Australian Retirement Trust (festival website).",
+    "watch": "Santos GLNG backed the festival's City of Lights laser show in 2012 and 2013; the festival's partnerships page quotes casino operator The Star Entertainment Group.",
+    "flags": [
+      "Fossil fuels",
+      "Gambling"
+    ],
+    "why_flagged": "The Queensland ministerial diary records the Arts Minister at the opening of Santos GLNG City of Lights in conjunction with Brisbane Festival on 7 September 2013, and the festival's partnerships page, retrieved 17 November 2026, carries a partner quote from The Star Entertainment Group, a casino operator (Wikipedia).",
+    "sources": [
+      "https://www.brisbanefestival.com.au/partnerships",
+      "https://brisbanefestival.com.au/about",
+      "https://en.wikipedia.org/wiki/Brisbane_Festival",
+      "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/walker.pdf",
+      "https://statements.qld.gov.au/statements/70285",
+      "https://danceinforma.com.au/articles/brisbane-festival-announces-2013-dates/",
+      "https://statements.qld.gov.au/statements/98101",
+      "https://statements.qld.gov.au/statements/103472",
+      "https://en.wikipedia.org/wiki/Gladstone_LNG",
+      "https://en.wikipedia.org/wiki/Star_Entertainment_Group",
+      "https://www.indailyqld.com.au/news/archive/2024/07/01/a-star-is-born-queens-wharf-project-to-use-brisbane-festival-as-launch-pad-for-first-openings"
+    ],
+    "lat": -27.4595,
+    "lon": 153.0359,
+    "country": "Australia",
+    "city": "Brisbane",
+    "website": "https://www.brisbanefestival.com.au/",
+    "id": "brisbane-festival-brisbane",
+    "visit_url": "https://www.brisbanefestival.com.au/events",
+    "details": {
+      "overview": [
+        "Brisbane Festival began in 1996 as a joint initiative of the Queensland Government and Brisbane City Council, succeeding the Warana Festival first held in 1962; it became annual in 2009 when it merged with Riverfire (Wikipedia).",
+        "It runs for about three weeks each September, and artistic directors have included Tony Gould, Lyndon Terracini, Noel Staunton, David Berthold and Louise Bezzina (Wikipedia).",
+        "The 2025 festival was expected to draw about 1.8 million locals and visitors to 1,069 performances by more than 2,200 artists, nearly half of the 106 productions free (Queensland Government, 5 September 2025).",
+        "Its head office is at Level 2, 381 Brunswick Street, Fortitude Valley (festival website)."
+      ],
+      "funding_verdict": "Brisbane Festival: state and city government with corporate partners",
+      "funding": [
+        "The Queensland Government and Brisbane City Council are named as Foundation Partners on the festival's partnerships page (festival website).",
+        "The Queensland Government invested $5.29 million in Brisbane Festival through Arts Queensland in 2012, and Arts Queensland's annual investment was given as $5.29 million in 2013 (Queensland Government, 8 September 2012; Dance Informa, 17 April 2013).",
+        "The state provides annual operational funding, and gave a further $178,850 for a capacity building program in 2023 (Queensland Government, 30 June 2023).",
+        "Platinum Partners on the current partnerships page, using 2025 logos, are Australian Retirement Trust, Southbank and Verso Projects; Airbnb, CPL, QIC and The University of Queensland hold named partner roles, and ANZ and QPAC are Major Partners (festival website).",
+        "Riverfire, the festival's fireworks night, is presented by Australian Retirement Trust (Queensland Government, 5 September 2025).",
+        "The partnerships page carries a partner testimonial attributed to The Star Entertainment Group beside a picture of Queen's Wharf (festival website).",
+        "Santos GLNG Project and Tourism and Events Queensland supported City of Lights, the laser show that opened the 2013 festival and drew more than 300,000 spectators in 2012 (Dance Informa, 17 April 2013); the 2012 Arts Minister's statement lists Santos GLNG City of Lights among the festival's events (Queensland Government, 8 September 2012)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Fossil fuel sponsorship",
+          "points": [
+            "The Arts Minister, Ian Walker, attended the opening night function of Santos GLNG City of Lights in conjunction with Brisbane Festival on 7 September 2013 as a guest of the festival (Queensland Government ministerial diary, September 2013).",
+            "GLNG produces coal seam gas from the Surat and Bowen basins and liquefies it on Curtis Island near Gladstone; Santos is its operator with a 30% stake (Wikipedia)."
+          ]
+        },
+        {
+          "heading": "Gambling",
+          "points": [
+            "The Star Entertainment Group operates casinos including The Star Sydney and The Star Gold Coast, and in 2022 regulators found it unsuitable to hold its New South Wales and Queensland casino licences (Wikipedia).",
+            "The Star Brisbane timed its phased opening at Queen's Wharf for 29 August 2024 to coincide with Brisbane Festival (InDaily, Bonnie Liston, 1 July 2024)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "sources": [
+        "https://www.brisbanefestival.com.au/partnerships",
+        "https://brisbanefestival.com.au/about",
+        "https://en.wikipedia.org/wiki/Brisbane_Festival",
+        "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/walker.pdf",
+        "https://statements.qld.gov.au/statements/70285",
+        "https://danceinforma.com.au/articles/brisbane-festival-announces-2013-dates/",
+        "https://statements.qld.gov.au/statements/98101",
+        "https://statements.qld.gov.au/statements/103472",
+        "https://en.wikipedia.org/wiki/Gladstone_LNG",
+        "https://en.wikipedia.org/wiki/Star_Entertainment_Group",
+        "https://www.indailyqld.com.au/news/archive/2024/07/01/a-star-is-born-queens-wharf-project-to-use-brisbane-festival-as-launch-pad-for-first-openings"
+      ],
+      "website": "https://www.brisbanefestival.com.au/",
+      "retrieved": "2026-11-17"
+    },
+    "case_notes": [
+      {
+        "title": "Queensland ministerial diaries",
+        "meta": "2013-09",
+        "text": "Queensland ministerial diaries record the Arts Minister, Ian Walker, at the opening night function of the Santos GLNG City of Lights with Brisbane Festival on 7 September 2013, and the Tourism Minister, Jann Stuckey, at the Santos GLNG City of Lights show with Tourism and Events Queensland and Brisbane Festival on 25 September 2013.",
+        "sources": [
+          "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/walker.pdf",
+          "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/september/stuckey.pdf"
+        ]
+      }
+    ],
+    "grade": 5,
+    "grade_basis": "Funders tied to fossil fuels and gambling."
+  },
+  {
+    "name": "State Library of Queensland",
+    "location": "Brisbane, Australia",
+    "tier": "B",
+    "size": "L",
+    "funding": "Queensland Government statutory body. Of $101.8M income in 2025-26, $77.1M was an administered state grant; donations and sponsorships were $1.5M (2025-26 annual report).",
+    "watch": "Arrow Energy, the Shell and PetroChina coal seam gas joint venture, funded State Library literacy programs in the Western Downs from December 2013.",
+    "flags": [
+      "Fossil fuels"
+    ],
+    "why_flagged": "The Arts Minister spoke at the State Library/Arrow Energy partnership launch on 4 December 2013 (Queensland ministerial diary, December 2013); Arrow is owned 50:50 by Shell and PetroChina (ACCC, 13 April 2010).",
+    "sources": [
+      "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_finance.pdf",
+      "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_introduction.pdf",
+      "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_outcomes.pdf",
+      "https://content.slq.qld.gov.au/sites/default/files/Library%20Board%20of%20Queensland%20Annual%20Report%202024-25%2C%20Introduction.pdf",
+      "https://www.slq.qld.gov.au/about-us/corporate-information/annual-reports",
+      "https://en.wikipedia.org/wiki/State_Library_of_Queensland",
+      "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/december/walker.pdf",
+      "https://www.arrowenergy.com.au/media-release-archive/arrow-partners-with-state-library-of-queensland-to-support-multi-literacy/",
+      "https://www.arrowenergy.com.au/media-release-archive/arrow-helps-youngsters-turn-a-page-in-dalby/",
+      "https://www.accc.gov.au/public-registers/mergers-registers/public-informal-merger-reviews-register/shell-energy-holdings-australia-limited-and-petrochina-international-investment-company-limited-proposed-acquisition-of-arrow-energy-limited"
+    ],
+    "lat": -27.4712,
+    "lon": 153.0181,
+    "country": "Australia",
+    "city": "Brisbane",
+    "website": "https://www.slq.qld.gov.au/",
+    "id": "state-library-of-queensland-brisbane",
+    "visit_url": "https://www.slq.qld.gov.au/visit-us",
+    "details": {
+      "overview": [
+        "The library began in 1896 as the Brisbane Public Library, was renamed the Public Library of Queensland in 1898 and moved to its South Bank site in 1988; the John Oxley Library, a research centre for Queensland material, opened in 1934 (Wikipedia).",
+        "A 2004 to 2006 redevelopment by Donovan Hill and Peddle Thorp enlarged the building, which reopened in November 2006 (Wikipedia).",
+        "It is governed by the Library Board of Queensland, a Queensland Government statutory body under the Libraries Act 1988, and its controlled entity Queensland Library Foundation raises funds for it (Wikipedia; 2025-26 annual report).",
+        "It recorded 1.8 million onsite visits and 5.6 million online sessions in 2025-26, and administered $32.7 million in public library and First 5 Forever funding on behalf of the state (2025-26 annual report)."
+      ],
+      "funding_verdict": "State Library of Queensland: state-funded statutory body with philanthropic support",
+      "funding": [
+        "Total income was $101.823 million in 2025-26 ($101.620 million in 2024-25), of which grants and contributions were $93.724 million (2025-26 annual report).",
+        "Cash income comprised an administered grant of $77.083 million, other grants of $4.432 million, user charges of $6.046 million, donations and sponsorships of $1.499 million and interest of $1.250 million (2025-26 annual report).",
+        "A $9 million Queensland Government investment over 2023-26 funded the Digital Inclusion Program in regional and remote Queensland (2025-26 annual report).",
+        "Queensland Library Foundation established a corporate partnership with Personalised Plates Queensland as major sponsor of the 2025-26 summer exhibition Driven: every car has a story (2025-26 annual report).",
+        "Queensland Literary Awards supporters named for 2025-26 are The University of Queensland, University of Queensland Press, Copyright Agency's Cultural Fund, The Courier-Mail, Jenny Summerson, Susan Hocking and Ian Mackie and family, and the Talbot Foundation (2025-26 annual report).",
+        "Named donors include Gina and Tim Fairfax, the Ash Barty Foundation, Keith and Caroline Hamilton, The Siganto Foundation, Ken MacDonald and Terry White (2025-26 annual report).",
+        "Arrow Energy partnered with the State Library and Western Downs Libraries from December 2013 on the Creative Community Computing and Dads Read programs, as part of its Brighter Futures community investment (Arrow Energy, 5 December 2013)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Fossil fuel sponsorship",
+          "points": [
+            "The ministerial diary records the Arts Minister, Ian Walker, speaking at the State Library/Arrow Energy Partnership launch with representatives of Arrow Energy and the State Library on 4 December 2013 (Queensland Government ministerial diary, December 2013).",
+            "Arrow described the partnership as part of more than $4 million it invested in communities that year, and the first Western Downs Dads Read day was held in Dalby on 8 March 2014 (Arrow Energy, 5 December 2013 and 5 March 2014).",
+            "Shell and PetroChina acquired Arrow Energy, a coal seam gas and LNG company, through a 50:50 joint venture cleared by the ACCC on 13 April 2010 (ACCC)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Arrow Energy is not named among supporters in the 2024-25 or 2025-26 annual reports (State Library annual reports).",
+        "In 2025 the library rescinded a black&write! Writing Fellowship awarded to K. A. Ren Wyld after the Arts Minister instructed it to, and several Queensland Literary Awards judges resigned (Wikipedia)."
+      ],
+      "sources": [
+        "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_finance.pdf",
+        "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_introduction.pdf",
+        "https://content.slq.qld.gov.au/sites/default/files/library_board_of_queensland_annual_report_2025-26_outcomes.pdf",
+        "https://content.slq.qld.gov.au/sites/default/files/Library%20Board%20of%20Queensland%20Annual%20Report%202024-25%2C%20Introduction.pdf",
+        "https://www.slq.qld.gov.au/about-us/corporate-information/annual-reports",
+        "https://en.wikipedia.org/wiki/State_Library_of_Queensland",
+        "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/december/walker.pdf",
+        "https://www.arrowenergy.com.au/media-release-archive/arrow-partners-with-state-library-of-queensland-to-support-multi-literacy/",
+        "https://www.arrowenergy.com.au/media-release-archive/arrow-helps-youngsters-turn-a-page-in-dalby/",
+        "https://www.accc.gov.au/public-registers/mergers-registers/public-informal-merger-reviews-register/shell-energy-holdings-australia-limited-and-petrochina-international-investment-company-limited-proposed-acquisition-of-arrow-energy-limited"
+      ],
+      "website": "https://www.slq.qld.gov.au/",
+      "retrieved": "2026-11-17"
+    },
+    "case_notes": [
+      {
+        "title": "Queensland ministerial diary",
+        "meta": "2013-12-04",
+        "text": "The Queensland ministerial diary records the Arts Minister, Ian Walker, speaking at the launch of the State Library's partnership with Arrow Energy, Shell's joint venture with PetroChina, before its representatives and guests on 4 December 2013.",
+        "sources": [
+          "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/december/walker.pdf"
+        ]
+      }
+    ],
+    "grade": 4,
+    "grade_basis": "A funder tied to fossil fuels."
+  },
+  {
+    "name": "Cadogan Hall",
+    "location": "London, UK",
+    "tier": "B",
+    "size": "M",
+    "funding": "Private company owned by Cadogan Estates. Turnover was \u00a33.96M in 2025 and \u00a33.82M in 2024, when it also booked \u00a31M other operating income (2025 accounts).",
+    "watch": "BP sponsored Mariinsky Orchestra concerts at the hall, including one on 18 April 2016 to which BP Russia invited the Culture Secretary.",
+    "flags": [
+      "Fossil fuels",
+      "Protest or boycott"
+    ],
+    "why_flagged": "BP Russia invited the Culture Secretary, John Whittingdale, to a BP-sponsored Mariinsky Orchestra performance of Romeo and Juliet at the hall on 18 April 2016, with the Russian Ambassador present (Art Not Oil, May 2016), and BP or not BP? protested at that concert (Slipped Disc, 19 April 2016).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cadogan_Hall",
+      "https://find-and-update.company-information.service.gov.uk/company/05036968",
+      "https://find-and-update.company-information.service.gov.uk/company/05036968/persons-with-significant-control",
+      "https://find-and-update.company-information.service.gov.uk/company/05036968/filing-history/MzU0MzEzMzE5NmFkaXF6a2N4/document?format=pdf&download=0",
+      "https://www.cadoganhall.com/about-us/",
+      "https://cadoganhall.com/whats-on/zios1920-mariinsky-orchestra-1/",
+      "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+      "https://cultureunstained.org/crudeconnections-sponsorship/",
+      "https://slippedisc.com/?p=77956"
+    ],
+    "lat": 51.4936,
+    "lon": -0.1576,
+    "country": "UK",
+    "city": "London",
+    "website": "https://www.cadoganhall.com/",
+    "id": "cadogan-hall-london",
+    "visit_url": "https://cadoganhall.com/whats-on/",
+    "details": {
+      "overview": [
+        "Built as a Church of Christ, Scientist, completed in 1907 to designs by Robert Fellowes Chisholm; the building was Grade II listed in April 1969 (Wikipedia).",
+        "Cadogan Estates Ltd, the property company of Earl Cadogan, bought the building in 2000, and Paul Davis and Partners refurbished it as a concert hall in 2004 at a cost of \u00a37.5 million (Wikipedia).",
+        "The Royal Philharmonic Orchestra gave its first concert there in November 2004 and is resident at the hall, with Music Director Vasily Petrenko (Wikipedia; hall website).",
+        "The hall gives its capacity as 950 seats; Wikipedia gives 953 (hall website; Wikipedia).",
+        "The BBC staged a handful of Proms concerts there from 2005 to 2021 (Wikipedia)."
+      ],
+      "funding_verdict": "Cadogan Hall: ticket and hire income at a venue owned by the Cadogan estate",
+      "funding": [
+        "The hall is run by Cadogan Hall Limited, company 05036968, incorporated on 6 February 2004, whose principal activity is the management and operation of a concert hall venue (Companies House; 2025 accounts).",
+        "Turnover was \u00a33,964,237 in 2025 and \u00a33,819,078 in 2024; after cost of sales of \u00a31,855,033 and administrative expenses of \u00a32,114,147, it made a loss of \u00a34,935 in 2025, against a profit of \u00a3740,813 in 2024 (2025 accounts).",
+        "The 2024 figures include other operating income of \u00a31,000,000, with none in 2025; the accounts do not say where it came from (2025 accounts).",
+        "Its immediate parent is Cadogan Estates Limited and its operational holding company Cadogan Group Limited; ultimate ownership is vested in The Eighth Earl Cadogan's 6 December 1961 Settlement, and The Earl Cadogan is a director (2025 accounts).",
+        "The company employed an average of 16 people in 2025, with staff costs of \u00a3887,650 (2025 accounts).",
+        "The Zurich International Orchestra Series at the hall was sponsored by Zurich in the 2019-20 season (hall website)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Fossil fuel sponsorship of concerts at the hall",
+          "points": [
+            "A Freedom of Information response reported by Art Not Oil confirmed that BP invited the Culture Secretary to a BP-sponsored performance of Romeo and Juliet conducted by Valery Gergiev at Cadogan Hall on 18 April 2016; the Russian Ambassador was also in attendance and Peter Charrow, Vice-President of BP Russia, made the invitation (Art Not Oil, BP's cultural sponsorship: A corrupting influence, May 2016).",
+            "Culture Unstained reports that BP committed to a 7-year sponsorship of the Mariinsky's UK tours, with performances at venues such as Cadogan Hall (Culture Unstained, Crude Connections)."
+          ]
+        },
+        {
+          "heading": "Protest or boycott",
+          "points": [
+            "Three performers from BP or not BP? protested on 18 April 2016 at the BP-sponsored Mariinsky Orchestra concert of Prokofiev's Romeo and Juliet at Cadogan Hall, against the sponsorship and Russian government policy (Slipped Disc, 19 April 2016)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Culture Unstained describes Gergiev as a close friend and ally of Vladimir Putin and quotes him in a BP promotional video saying the sponsorship is bigger than sponsorship (Culture Unstained, Crude Connections)."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Cadogan_Hall",
+        "https://find-and-update.company-information.service.gov.uk/company/05036968",
+        "https://find-and-update.company-information.service.gov.uk/company/05036968/persons-with-significant-control",
+        "https://find-and-update.company-information.service.gov.uk/company/05036968/filing-history/MzU0MzEzMzE5NmFkaXF6a2N4/document?format=pdf&download=0",
+        "https://www.cadoganhall.com/about-us/",
+        "https://cadoganhall.com/whats-on/zios1920-mariinsky-orchestra-1/",
+        "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+        "https://cultureunstained.org/crudeconnections-sponsorship/",
+        "https://slippedisc.com/?p=77956"
+      ],
+      "website": "https://www.cadoganhall.com/",
+      "retrieved": "2026-11-17"
+    },
+    "case_notes": [
+      {
+        "title": "Art Not Oil Coalition, FOI releases",
+        "meta": "2016-04-18",
+        "text": "Peter Charrow, vice-president of BP Russia, invited the Culture Secretary to a BP-sponsored performance of Romeo and Juliet conducted by Valery Gergiev at Cadogan Hall on 18 April 2016, with the Russian Ambassador also in attendance, according to freedom of information releases to the Art Not Oil Coalition.",
+        "sources": [
+          "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
+        ]
+      }
+    ],
+    "grade": 5,
+    "grade_basis": "A funder tied to fossil fuels. The record also holds a public protest."
+  },
+  {
+    "name": "Griffin Museum of Science and Industry",
+    "location": "Chicago, USA",
+    "tier": "B",
+    "size": "L",
+    "funding": "Nonprofit on Chicago Park District land. Of $70.2M revenue in 2025, $18.1M was admissions, $19.7M private support and $4.5M government support (audited financial statements).",
+    "watch": "Nicor Gas, a natural gas distributor, is a contributing donor to the Powering the Future energy exhibit, which opened on 8 May 2026.",
+    "flags": [
+      "Fossil fuels"
+    ],
+    "why_flagged": "The museum names Nicor Gas, which distributes natural gas across northern Illinois (Wikipedia), as a contributing donor to its Powering the Future exhibit opening 8 May 2026 (museum press release, 2026).",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Griffin_Museum_of_Science_and_Industry",
+      "https://www.griffinmsi.org/about/reports-and-financials",
+      "https://media.impactmit.com/image/upload/v1782324965/msi/Griffin_MSI_2025_Audited_Financial_Statements_7f7651289c.pdf",
+      "https://projects.propublica.org/nonprofits/organizations/362167797",
+      "https://www.griffinmsi.org/press-releases/introducing-kenneth-c-griffin-museum-of-science-and-industry",
+      "https://www.griffinmsi.org/press-releases/powering-the-future-exhibition",
+      "https://www.griffinmsi.org/press-releases/griffin-msi-and-bank-of-america-expand-longstanding-partnership",
+      "https://en.wikipedia.org/wiki/Nicor",
+      "https://abc7chicago.com/post/museum-of-science-and-industry-to-be-renamed-after-kenneth-c-griffin-following-historic-multi-million-dollar-donation/14814363/",
+      "https://senatorrobertpeters.com/news/press-releases/318-peters-reacts-to-renaming-of-museum-of-science-and-industry",
+      "https://data.cityofchicago.org/resource/pahz-egmi.json?client_id=659478894"
+    ],
+    "lat": 41.7906,
+    "lon": -87.5828,
+    "country": "USA",
+    "city": "Chicago",
+    "website": "https://www.griffinmsi.org/",
+    "id": "griffin-museum-of-science-and-industry-chicago",
+    "visit_url": "https://www.griffinmsi.org/pricing",
+    "details": {
+      "overview": [
+        "Founded by Julius Rosenwald, president of Sears, Roebuck and Company, the museum occupies the Palace of Fine Arts built for the 1893 World's Columbian Exposition, designed by Charles B. Atwood (Wikipedia).",
+        "It opened in 1933 during the Century of Progress Exposition, in stages between 1933 and 1940, in Jackson Park at 5700 South DuSable Lake Shore Drive (Wikipedia).",
+        "Legal title to the land and original building is vested with the Chicago Park District, and the museum holds the right to use and occupy them in perpetuity while it uses them for its incorporated purposes (2025 audited financial statements).",
+        "The museum reports over 1.5 million guests a year; its exhibits include the U-505 submarine, the Coal Mine, open since 1933, and the Henry Crown Space Center (2025 audited financial statements).",
+        "Chevy Humphrey has been president and CEO since January 2021 (Wikipedia)."
+      ],
+      "funding_verdict": "Griffin Museum of Science and Industry: admissions, a $125M founder-naming gift and Park District support, with energy company exhibit donors",
+      "funding": [
+        "Total revenue and support was $70,248,070 in 2025: admissions $18,091,028, special exhibits $4,764,035, ancillary services $9,107,348, membership $4,063,896, government support $4,456,654, private support $19,654,060 and investment return designated for operations $6,300,010; net assets were $422,158,897 at year end (2025 audited financial statements).",
+        "Government support includes Chicago Park District funding based on the Park District's annual tax levy ordinance, and funding from federal and state agencies for research, programming and capital projects (2025 audited financial statements).",
+        "The 2024 Form 990 reports total revenue of $66,431,592, including contributions of $23,562,202, program service revenue of $21,993,865 and investment income of $6,957,912 (IRS Form 990 via ProPublica).",
+        "Kenneth C. Griffin, founder and CEO of Citadel, gave $125 million, announced in October 2019 and the largest gift in the museum's history; the museum took his name on 19 May 2024 (museum press release, May 2024).",
+        "Powering the Future is made possible by lead donor Exelon Foundation, contributing donors Nicor Gas and Invenergy, and donors including CDW, Ecolab, JL Family Foundation, Argonne National Laboratory, NOAA and Hubbell Utility Solutions (museum press release, 2026).",
+        "Bank of America sponsors three consecutive exhibitions, 007 Science, Marvel's Spider-Man: Beyond Amazing and Anne Frank The Exhibition, which opened on 1 May 2026 (museum press release).",
+        "Julius Rosenwald pledged $3 million toward converting the building and eventually gave more than $5 million (Wikipedia)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Fossil fuel donor to an energy exhibit",
+          "points": [
+            "Nicor Gas, owned by Southern Company, distributes natural gas to more than two million customers in northern Illinois (Wikipedia), and is a contributing donor to the permanent Powering the Future exhibit, which the museum presents in tandem with its Coal Mine exhibit (museum press release, 2026)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Illinois State Senator Robert Peters said on 14 May 2024 that the renaming \"is demeaning to the core identity of MSI\", and historian Shermann \"Dilla\" Thomas called it \"a sting and a blow to Chicago and Chicago history\" (Peters press release; ABC7, 14 May 2024).",
+        "The City of Chicago lobbying register lists the Griffin Museum of Science and Industry as a client of lobbyist Emily D. Ramsey in quarterly filings from July 2024 to September 2026, consulting on historic permit review issues with the Department of Planning and Development (City of Chicago lobbying data)."
+      ],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Griffin_Museum_of_Science_and_Industry",
+        "https://www.griffinmsi.org/about/reports-and-financials",
+        "https://media.impactmit.com/image/upload/v1782324965/msi/Griffin_MSI_2025_Audited_Financial_Statements_7f7651289c.pdf",
+        "https://projects.propublica.org/nonprofits/organizations/362167797",
+        "https://www.griffinmsi.org/press-releases/introducing-kenneth-c-griffin-museum-of-science-and-industry",
+        "https://www.griffinmsi.org/press-releases/powering-the-future-exhibition",
+        "https://www.griffinmsi.org/press-releases/griffin-msi-and-bank-of-america-expand-longstanding-partnership",
+        "https://en.wikipedia.org/wiki/Nicor",
+        "https://abc7chicago.com/post/museum-of-science-and-industry-to-be-renamed-after-kenneth-c-griffin-following-historic-multi-million-dollar-donation/14814363/",
+        "https://senatorrobertpeters.com/news/press-releases/318-peters-reacts-to-renaming-of-museum-of-science-and-industry",
+        "https://data.cityofchicago.org/resource/pahz-egmi.json?client_id=659478894"
+      ],
+      "website": "https://www.griffinmsi.org/",
+      "retrieved": "2026-11-17"
+    },
+    "grade": 4,
+    "grade_basis": "A funder tied to fossil fuels."
+  },
+  {
+    "name": "Meridian Hall",
+    "location": "Toronto, Canada",
+    "tier": "A",
+    "size": "L",
+    "funding": "City-owned, run by TO Live, a city board and charity. Of C$39.5M revenue in 2025, C$6.1M was City investment; Meridian Credit Union pays for naming rights (financial statements).",
+    "flags": [],
+    "why_flagged": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Meridian_Hall_(Toronto)",
+      "https://www.toronto.ca/legdocs/mmis/2026/au/bgrd/backgroundfile-288634.pdf",
+      "https://www.toronto.ca/legdocs/mmis/2025/au/bgrd/backgroundfile-256280.pdf",
+      "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253331.pdf",
+      "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253262.pdf",
+      "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253263.pdf",
+      "https://www.tolive.com/Meridian-Hall"
+    ],
+    "lat": 43.6467,
+    "lon": -79.3761,
+    "country": "Canada",
+    "city": "Toronto",
+    "website": "https://www.tolive.com/",
+    "id": "meridian-hall-toronto",
+    "visit_url": "https://www.tolive.com/Meridian-Hall-Events",
+    "details": {
+      "overview": [
+        "Opened on 1 October 1960 as the O'Keefe Centre for the Performing Arts, paid for by the O'Keefe Brewery, to designs by Earle C. Morgan and Peter Dickinson; it seats 3,191 at 1 Front Street East (Wikipedia).",
+        "It was the home of the Canadian Opera Company and the National Ballet of Canada until 2006 (Wikipedia).",
+        "Named the Hummingbird Centre from February 1996 and the Sony Centre for the Performing Arts from 2007, it closed on 26 June 2008 for renovations and reopened on 1 October 2010; it took the name Meridian Hall on 15 September 2019 (Wikipedia).",
+        "The L Tower, a condominium designed by Daniel Libeskind and approved in 2006, stands on the southwest corner of the property (Wikipedia).",
+        "TO Live is a city board under the City of Toronto Act, 2006, operating Meridian Hall, the St. Lawrence Centre for the Arts and Meridian Arts Centre on behalf of the City, which owns them (TO Live 2025 financial statements)."
+      ],
+      "funding_verdict": "Meridian Hall: rentals, tickets, City funding and a credit union naming deal",
+      "funding": [
+        "TO Live's revenue was C$39.54 million in 2025: rental C$15.59 million, ancillary C$8.45 million, performance C$4.15 million, City of Toronto investment C$6.148 million (C$5.599 million in 2024), and transfers including C$1.44 million from the State of Good Repair Program and C$300,000 from the Toronto Live Foundation (TO Live 2025 draft financial statements).",
+        "The City is responsible for TO Live's operating deficit and entitled to its surplus, and provides an operating line of credit of up to C$1.25 million (TO Live 2025 draft financial statements).",
+        "Proceeds from the name-in-title sponsor of C$1.945 million in 2025 (C$1.925 million in 2024) went to the Facility Fee Reserve Fund, alongside C$1.239 million from the ticket capital surcharge (TO Live 2025 draft financial statements).",
+        "The City of Toronto announced a C$30.75 million, fifteen-year naming partnership with Meridian Credit Union on 21 January 2019 (Wikipedia).",
+        "Sony bought the naming rights for C$10 million in September 2007 for a ten-year partnership, and Hummingbird Communications Ltd. gave C$5 million in 1996 (Wikipedia).",
+        "The Toronto Live Foundation received C$239,000 in donations in 2025 (C$2.47 million in 2024) and held fund balances of C$4.918 million at year end (TO Live 2025 draft financial statements).",
+        "TO Live prepares a semi-annual impact report for Meridian; the Q3 and Q4 2024 report says the partnership launched a new Indigenous arts festival (TO Live board report and Meridian sponsorship report, February 2025)."
+      ],
+      "red_flags": [],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "sources": [
+        "https://en.wikipedia.org/wiki/Meridian_Hall_(Toronto)",
+        "https://www.toronto.ca/legdocs/mmis/2026/au/bgrd/backgroundfile-288634.pdf",
+        "https://www.toronto.ca/legdocs/mmis/2025/au/bgrd/backgroundfile-256280.pdf",
+        "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253331.pdf",
+        "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253262.pdf",
+        "https://www.toronto.ca/legdocs/mmis/2025/ct/bgrd/backgroundfile-253263.pdf",
+        "https://www.tolive.com/Meridian-Hall"
+      ],
+      "website": "https://www.tolive.com/",
+      "retrieved": "2026-11-17"
+    },
+    "case_notes": [
+      {
+        "title": "Registry of Lobbyists (Canada)",
+        "meta": "2008-07 to 2009-08",
+        "text": "The board of the hall, then the Sony Centre for the Performing Arts, registered to lobby the federal government in 2008 and 2009 to obtain funding from Transport and Infrastructure Canada for its redevelopment plan, and reported communications with officials on economic development.",
+        "sources": [
+          "https://open.canada.ca/data/en/dataset/a35a0c9e-5ba1-4e58-a6a6-fac1ddb2d6ad",
+          "https://lobbycanada.gc.ca/media/zwcjycef/registrations_enregistrements_ocl_cal.zip"
+        ]
+      }
+    ],
+    "grade": 1,
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+  },
+  {
+    "name": "The Joyce Theater",
+    "location": "New York, USA",
+    "tier": "B",
+    "size": "M",
+    "funding": "Nonprofit foundation. Of $11.7M revenue in the year to August 2023, $5.5M was contributions and $5.4M program income (IRS Form 990); Philip Morris funded it from 1985.",
+    "watch": "A 1990 Philip Morris report lists the Joyce in a presenters fund the company set up in 1985 (Philip Morris and the Arts, 1990).",
+    "flags": [
+      "Tobacco"
+    ],
+    "why_flagged": "Philip Morris's 1990 arts report lists the Joyce Theater among presenters supported by a fund the company created in 1985 (Philip Morris and the Arts: A 30-Year Celebration, 1990), and a Philip Morris file copy of a New York Times article of 26 September 1994 on the city's smoking bill names the Joyce (Truth Tobacco Industry Documents).",
+    "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/133038262",
+      "https://en.wikipedia.org/wiki/Joyce_Theater",
+      "https://markmorrisdancegroup.org/wp-content/uploads/2023/03/JoyceProgram_v3_FINAL.pdf",
+      "https://csts.ua.edu/files/2019/05/1990-Philip-Morris-Philip-Morris-and-The-Arts-A-30-Year-Celebration-Complete.pdf",
+      "https://www.industrydocuments.ucsf.edu/docs/csj18d00",
+      "https://tobaccotactics.org/wiki/csr-arts-culture",
+      "https://csts.omeka.net/items/show/119",
+      "https://davidgordon.nyc/sites/default/files/program_pdf/DG%20Artistic_f095_Private%20Lives%20of%20Dancers%202002_i001_The%20Joyce%20Theater%202003-02-18to23%20program%20without%20ads_p.pdf"
+    ],
+    "lat": 40.7428,
+    "lon": -74.0007,
+    "country": "USA",
+    "city": "New York",
+    "website": "https://www.joyce.org/",
+    "id": "joyce-theater-new-york",
+    "visit_url": "https://www.joyce.org/performances",
+    "details": {
+      "overview": [
+        "The building opened as the Elgin Theater, a cinema, in 1941; it was gut-renovated in 1981-82 and reopened as the Joyce Theater with a gala on 2 June 1982 (Wikipedia).",
+        "Choreographer Eliot Feld and Cora Cahan, director of the Eliot Feld Ballet, conceived it as a theatre for smaller dance companies; it was named after the daughter of the philanthropist LuEsther Mertz (Wikipedia).",
+        "The theatre at 175 Eighth Avenue in Chelsea has 472 seats; in 2025 its auditorium was renamed for Anupam and Rajika Puri after a $15 million gift (Wikipedia).",
+        "The Joyce secured ownership of the building in 2015 and presents about 48 weeks of dance a year, with more than 340 performances for over 150,000 patrons (Joyce Theater Foundation, 2023 programme).",
+        "Linda Shelton, executive director since 1993, leads the Joyce Theater Foundation (Wikipedia)."
+      ],
+      "funding_verdict": "The Joyce Theater: foundations and ticket income, with Philip Morris support from 1985",
+      "funding": [
+        "The Joyce Theater Foundation reported total revenue of $11,655,562 for the year ending August 2023: contributions and grants $5,489,950, program service revenue $5,395,217 and investment income $642,788, against expenses of $13,367,597 and assets of $60,029,989 (IRS Form 990 via ProPublica Nonprofit Explorer).",
+        "Revenue was $13,871,756 in the year ending August 2022, of which contributions and grants were $8,860,528 (IRS Form 990 via ProPublica Nonprofit Explorer).",
+        "The 2023 programme names the LuEsther T. Mertz Charitable Trust for leadership support, the Howard Gilman Foundation and The Shubert Foundation for annual programming, the Mellon Foundation for residencies, the Doris Duke Foundation for endowment funding and The Fan Fox & Leslie R. Samuels Foundation (Mark Morris Dance Group programme at the Joyce, August 2023).",
+        "The same programme thanks members of Congress for the federal Shuttered Venue Operators Grant program, which it says helped the theatre reopen (Mark Morris Dance Group programme at the Joyce, August 2023).",
+        "LuEsther Mertz underwrote the full cost of buying the building in 1979, and the conversion drew a $400,000 federal Urban Development Action Grant, a $450,000 National Endowment for the Arts challenge grant and Rockefeller Foundation money (Wikipedia).",
+        "Philip Morris created a fund in 1985 to support organizations that present innovative dance, performance art and theatre, and its 1990 report lists the Joyce Theater among them (Philip Morris and the Arts: A 30-Year Celebration, 1990)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Tobacco sponsorship",
+          "points": [
+            "Philip Morris's 1990 report on its arts giving lists the Joyce Theater among presenting organizations supported by the fund it created in 1985 (Philip Morris and the Arts: A 30-Year Celebration, 1990).",
+            "A copy of Jonathan P. Hicks's New York Times article \"Tobacco Industry Fights New York Over Smoking Bill\", dated 26 September 1994 and filed in Philip Morris's records, names the Joyce Theater (Truth Tobacco Industry Documents, csj18d00)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Philip Morris executives telephoned arts institutions that had benefited from the company's giving and asked them to put in a good word with Peter F. Vallone, the City Council Speaker, on the 1994 smoking bill; the source does not name the institutions (Tobacco Tactics, citing The New York Times, 5 October 1994).",
+        "A 1994 cartoon by R. J. Matson in The New York Observer showed Philip Morris using arts organizations it funded to lobby against the city's clean indoor air bill (Center for the Study of Tobacco and Society archive).",
+        "A February 2003 Joyce programme for David Gordon/Pick Up Company credits support from Altria Group, Inc. in the funding lines for the production (Joyce programme, 2003)."
+      ],
+      "sources": [
+        "https://projects.propublica.org/nonprofits/organizations/133038262",
+        "https://en.wikipedia.org/wiki/Joyce_Theater",
+        "https://markmorrisdancegroup.org/wp-content/uploads/2023/03/JoyceProgram_v3_FINAL.pdf",
+        "https://csts.ua.edu/files/2019/05/1990-Philip-Morris-Philip-Morris-and-The-Arts-A-30-Year-Celebration-Complete.pdf",
+        "https://www.industrydocuments.ucsf.edu/docs/csj18d00",
+        "https://tobaccotactics.org/wiki/csr-arts-culture",
+        "https://csts.omeka.net/items/show/119",
+        "https://davidgordon.nyc/sites/default/files/program_pdf/DG%20Artistic_f095_Private%20Lives%20of%20Dancers%202002_i001_The%20Joyce%20Theater%202003-02-18to23%20program%20without%20ads_p.pdf"
+      ],
+      "website": "https://www.joyce.org/",
+      "retrieved": "2026-11-17"
+    },
+    "grade": 4,
+    "grade_basis": "A funder tied to tobacco."
+  },
+  {
+    "name": "Alvin Ailey American Dance Theater",
+    "location": "New York, USA",
+    "tier": "B",
+    "size": "L",
+    "funding": "Nonprofit foundation. Of $37.2M revenue in the year to June 2023, $19.1M was program income and $12.2M contributions (IRS Form 990); Bank of America sponsors its tours.",
+    "watch": "Philip Morris was its principal corporate patron in the 1980s; a 1988 Ailey statement to a Surgeon General's committee meeting defended tobacco sponsorship (CSTS archive).",
+    "flags": [
+      "Tobacco"
+    ],
+    "why_flagged": "Philip Morris called itself a principal patron underwriting Ailey tours (Philip Morris and the Arts, 1990), announced a $500,000 grant in June 1990 (New York Times, 14 June 1990), and an Ailey statement of 27 October 1988 lauded it as principal benefactor (CSTS archive).",
+    "sources": [
+      "https://projects.propublica.org/nonprofits/organizations/132584273",
+      "https://en.wikipedia.org/wiki/Alvin_Ailey_American_Dance_Theater",
+      "https://ailey.org/give/corporate-giving",
+      "https://about.bankofamerica.com/en/making-an-impact/art-partnerships",
+      "https://csts.ua.edu/files/2019/05/1990-Philip-Morris-Philip-Morris-and-The-Arts-A-30-Year-Celebration-Complete.pdf",
+      "https://www.sarahswensondance.com/uploads/3/0/2/4/30246467/1990.review_dance__new_ailey_center_celebrates_with_9_works_and_money_-_the_new_york_times.pdf",
+      "https://csts.omeka.net/items/show/176",
+      "https://www.industrydocuments.ucsf.edu/docs/csj18d00",
+      "https://tobaccotactics.org/wiki/csr-arts-culture",
+      "https://csts.omeka.net/items/show/119"
+    ],
+    "lat": 40.7669,
+    "lon": -73.987,
+    "country": "USA",
+    "city": "New York",
+    "website": "https://www.ailey.org/",
+    "id": "alvin-ailey-american-dance-theater-new-york",
+    "visit_url": "https://www.ailey.org/performances",
+    "details": {
+      "overview": [
+        "Alvin Ailey founded the company in 1958 as Alvin Ailey and Company; Wikipedia describes it as the largest modern dance company in the United States (Wikipedia).",
+        "Judith Jamison led it as artistic director from 1989 to 2011 and Robert Battle from 2011 to 2023; Alicia Graf Mack took over on 1 July 2025 (Wikipedia).",
+        "Since 2005 the organization has been based at the Joan Weill Center for Dance, 405 West 55th Street, named after Joan Weill, who chaired the Alvin Ailey Dance Foundation for fourteen years (Wikipedia).",
+        "Joan and Sandy Weill co-chaired the building campaign, part of a five-year, $66 million capital campaign launched in 2000, and gave $18 million in total (Wikipedia)."
+      ],
+      "funding_verdict": "Alvin Ailey American Dance Theater: ticket income and donors, with Philip Morris as 1980s patron",
+      "funding": [
+        "The Alvin Ailey Dance Foundation reported total revenue of $37,156,403 for the year ending June 2023: program service revenue $19,054,331, contributions and grants $12,208,696 and investment income $4,394,681, against expenses of $48,268,877 and assets of $257,305,406 (IRS Form 990 via ProPublica Nonprofit Explorer).",
+        "Revenue was $49,395,909 in the year ending June 2022, with contributions of $26,599,216, and $57,516,021 in the year ending June 2021, with contributions of $41,926,834 (IRS Form 990 via ProPublica Nonprofit Explorer).",
+        "Ailey's corporate funders as of 12 September 2025 were AARP, Akin Gump, American Express, Bank of America, Bloch, Bloomberg Philanthropies, BNY Mellon, Capital One, Deloitte, Diageo, Georgia-Pacific, Georgia Power, Goldman Sachs, The Home Depot Foundation, Prudential Foundation, TD Bank, Tito's Handmade Vodka, Warner Music Group/Blavatnik Fund and Wells Fargo (Ailey website).",
+        "Bank of America says it sponsors the company's 2026 and 2027 global tours (Bank of America website).",
+        "Sandy Weill gave a $16 million lead gift to the 2014 Campaign for Ailey's Future, and MacKenzie Scott gave $20 million in 2021 (Wikipedia).",
+        "Philip Morris wrote in 1990 that in the past decade it had been a principal patron of the Alvin Ailey American Dance Theater, underwriting tours of the United States, Latin America, Europe and Asia (Philip Morris and the Arts: A 30-Year Celebration, 1990).",
+        "At the opening of the new Ailey headquarters in June 1990, a $500,000 grant from Philip Morris was announced, with $25,000 more to help match a $300,000 Ford Foundation grant (The New York Times, Jennifer Dunning, 14 June 1990)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Tobacco sponsorship",
+          "points": [
+            "A three-page statement by the Alvin Ailey American Dance Theater for a meeting on tobacco sponsorship convened by the Surgeon General's Inter-Agency Committee on Smoking and Health, dated 27 October 1988, defends tobacco industry sponsorship of sports and the arts and lauds Philip Morris as the troupe's principal corporate benefactor (Center for the Study of Tobacco and Society archive).",
+            "A copy of Jonathan P. Hicks's New York Times article \"Tobacco Industry Fights New York Over Smoking Bill\", dated 26 September 1994 and filed in Philip Morris's records, names Alvin Ailey (Truth Tobacco Industry Documents, csj18d00)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Philip Morris executives telephoned arts institutions that had benefited from the company's giving and asked them to put in a good word with Peter F. Vallone, the City Council Speaker, on the 1994 smoking bill; the source does not name the institutions (Tobacco Tactics, citing The New York Times, 5 October 1994).",
+        "A 1994 cartoon by R. J. Matson in The New York Observer showed Philip Morris using arts organizations it funded to lobby against the city's clean indoor air bill (Center for the Study of Tobacco and Society archive)."
+      ],
+      "sources": [
+        "https://projects.propublica.org/nonprofits/organizations/132584273",
+        "https://en.wikipedia.org/wiki/Alvin_Ailey_American_Dance_Theater",
+        "https://ailey.org/give/corporate-giving",
+        "https://about.bankofamerica.com/en/making-an-impact/art-partnerships",
+        "https://csts.ua.edu/files/2019/05/1990-Philip-Morris-Philip-Morris-and-The-Arts-A-30-Year-Celebration-Complete.pdf",
+        "https://www.sarahswensondance.com/uploads/3/0/2/4/30246467/1990.review_dance__new_ailey_center_celebrates_with_9_works_and_money_-_the_new_york_times.pdf",
+        "https://csts.omeka.net/items/show/176",
+        "https://www.industrydocuments.ucsf.edu/docs/csj18d00",
+        "https://tobaccotactics.org/wiki/csr-arts-culture",
+        "https://csts.omeka.net/items/show/119"
+      ],
+      "website": "https://www.ailey.org/",
+      "retrieved": "2026-11-17"
+    },
+    "grade": 4,
+    "grade_basis": "A funder tied to tobacco."
+  },
+  {
+    "name": "Perth Festival",
+    "location": "Perth, Australia",
+    "tier": "B",
+    "size": "L",
+    "funding": "Not-for-profit company owned by UWA. Of $24.8M income in 2022-23, $7.7M was a Lotterywest grant and $1.6M corporate sponsorship (financial report); Chevron sponsored it until 2023.",
+    "watch": "Chevron's 18-year sponsorship ended after the 2023 festival; the festival said the end was not linked to community backlash (ArtsHub, 18 October 2022).",
+    "flags": [
+      "Fossil fuels"
+    ],
+    "why_flagged": "Chevron sponsored the festival for 18 years until the 2023 festival (ArtsHub, 18 October 2022), after the Greens urged it on 1 March 2022 to drop fossil fuel sponsors (Australian Greens) and a campaign by Fossil Free Arts (Art Not Oil, 7 October 2022).",
+    "sources": [
+      "https://www.perthfestival.com.au/media/spwpqr3f/financial-papersfy23-perth-international-arts-festival-limited-financial-report.pdf",
+      "https://www.perthfestival.com.au/support-us/our-partners/",
+      "https://www.perthfestival.com.au/information/about-us/",
+      "https://cms.perthfestival.com.au/media/fimjqfea/webperth-festival-2025-impact-report-perth-festival-culture-counts-160625.pdf",
+      "https://lotterywest.wa.gov.au/lotterywest/media-centre/perth-festival-set-to-delight-audiences-with-lotterywest-support",
+      "https://www.artshub.com.au/?p=2587270",
+      "https://artnotoil.org.uk/node/3857",
+      "https://cdn.greens.org.au/news/media-release/greens-call-perth-festival-drop-fossil-fuel-sponsorship",
+      "https://aapnews.aap.com.au/news/festival-season-begins-with-fossil-fuels-on-the-fringe"
+    ],
+    "lat": -31.9736,
+    "lon": 115.8236,
+    "country": "Australia",
+    "city": "Perth",
+    "website": "https://www.perthfestival.com.au/",
+    "id": "perth-festival-perth",
+    "visit_url": "https://www.perthfestival.com.au/program/",
+    "details": {
+      "overview": [
+        "Perth Festival describes itself as Australia's longest-running arts festival, founded by The University of Western Australia and held every summer for 70 years (Perth Festival website).",
+        "It is run by Perth International Arts Festival Limited, ABN 85 631 934 677, whose registered office is 3 Crawley Avenue, Crawley, and whose sole member is UWA (2022-23 financial report).",
+        "Ben Wyatt chairs the board; Marah Braye is chief executive and Anna Reece artistic director (Perth Festival website).",
+        "The 2025 festival drew 348,000 attendances, up from 215,000 in 2024, with more than 300 international and 620 Western Australian artists (2025 impact report)."
+      ],
+      "funding_verdict": "Perth Festival: Lotterywest and UWA grants, with Chevron as a sponsor until 2023",
+      "funding": [
+        "Total revenue and income was $24,794,146 in 2022-23 ($17,125,305 in 2021-22): performance income $7,413,782, operating grants $8,310,000, fundraising and sponsorship $7,410,317, contra sponsorship $1,104,731 and other income $555,316 (2022-23 financial report).",
+        "Operating grants in 2022-23 were $7,700,000 from Lotterywest and $610,000 from The University of Western Australia; other government grants were $4,104,436 (2022-23 financial report).",
+        "Corporate sponsorship was $1,581,600 in 2022-23 and $1,747,393 in 2021-22; donations were $1,724,281 in 2022-23 (2022-23 financial report).",
+        "Lotterywest gave $9.6 million for the 2026 festival and has given the festival more than $177 million since 1991 (Lotterywest, 23 October 2025).",
+        "The partner page lists UWA as founding partner, Lotterywest as principal partner, City of Perth as city events partner and Wesfarmers Arts as Boorloo Contemporary partner, with Audio Technik, PAV, Tourism Western Australia and Western Power as premier partners (Perth Festival website).",
+        "Major partners listed are the Town of Cambridge, Clayton Utz, JCDecaux, My Place, The West Australian, Perth Now and Statewide Staging Systems (Perth Festival website).",
+        "Chevron's partnership with Perth Festival ran for 18 years and ended after the 2023 festival (ArtsHub, Jo Pickup, 18 October 2022)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Fossil fuel sponsorship",
+          "points": [
+            "The Australian Greens, through Senator Dorinda Cox and Dr Brad Pettitt MLC, urged Perth Festival on 1 March 2022 to end sponsorship deals with Woodside and Chevron, noting criticism from artists including Tim Winton, Stella Donnelly and Nick Allbrook (Australian Greens, 1 March 2022).",
+            "Fossil Free Arts, which said it had campaigned for over three years against the festivals' ties to Woodside and Chevron, welcomed the festival's announcement of 7 October 2022 that it would part with Chevron after the 2023 festival (Art Not Oil, 7 October 2022).",
+            "Executive director Nathan Bennett said Chevron's decision did not come as a surprise and was not linked to community backlash against Chevron (ArtsHub, 18 October 2022)."
+          ]
+        }
+      ],
+      "not_related": [
+        "Woodside's sponsorship was of Fringe World and its organiser Artrage, a separate festival, which Woodside ended in 2023 (AAP, Liz Hobday)."
+      ],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [
+        "Fossil Free Arts welcomed the 2024 Fringe World and Perth Festival programs as Perth's first fossil free festival season, after a five-year campaign (AAP, Liz Hobday)."
+      ],
+      "sources": [
+        "https://www.perthfestival.com.au/media/spwpqr3f/financial-papersfy23-perth-international-arts-festival-limited-financial-report.pdf",
+        "https://www.perthfestival.com.au/support-us/our-partners/",
+        "https://www.perthfestival.com.au/information/about-us/",
+        "https://cms.perthfestival.com.au/media/fimjqfea/webperth-festival-2025-impact-report-perth-festival-culture-counts-160625.pdf",
+        "https://lotterywest.wa.gov.au/lotterywest/media-centre/perth-festival-set-to-delight-audiences-with-lotterywest-support",
+        "https://www.artshub.com.au/?p=2587270",
+        "https://artnotoil.org.uk/node/3857",
+        "https://cdn.greens.org.au/news/media-release/greens-call-perth-festival-drop-fossil-fuel-sponsorship",
+        "https://aapnews.aap.com.au/news/festival-season-begins-with-fossil-fuels-on-the-fringe"
+      ],
+      "website": "https://www.perthfestival.com.au/",
+      "retrieved": "2026-11-17"
+    },
+    "grade": 4,
+    "grade_basis": "A funder tied to fossil fuels."
+  },
+  {
+    "name": "WA Museum Boola Bardip",
+    "location": "Perth, Australia",
+    "tier": "B",
+    "size": "L",
+    "funding": "State statutory authority. Of $61.2M income in 2024-25, $49.0M came from the State Government; Woodside, Rio Tinto, BHP and Fortescue are partners (annual report).",
+    "watch": "Woodside has funded WA Museum marine research since 1998, renewed for five years in August 2025, followed by a protest at its Maritime Museum.",
+    "flags": [
+      "Fossil fuels",
+      "Gambling",
+      "Protest or boycott"
+    ],
+    "why_flagged": "The WA Museum extended Woodside's 28-year research partnership for five years on 6 August 2025 (WA Museum), people protested outside its Maritime Museum on 17 August 2025 (ArtsHub, 23 September 2025), and Crown was accommodation partner of its 2024-25 Terracotta Warriors exhibition (annual report).",
+    "sources": [
+      "https://visit.museum.wa.gov.au/sites/default/files/2025-09/WA-Museum-Annual-Report-2024-25.pdf",
+      "https://en.wikipedia.org/wiki/WA_Museum_Boola_Bardip",
+      "https://visit.museum.wa.gov.au/about/media/wa-museum-woodside-energy-and-foundation-wa-museum-extend-collaboration",
+      "https://visit.museum.wa.gov.au/about/media/western-australian-museum-statement-regarding-woodside-collaboration",
+      "https://glasswings.com.au/blog/2025-08/13-094023.html",
+      "https://www.artshub.com.au/?p=2821365",
+      "https://perthvoiceinteractive.com/2024/05/23/the-same-songsheet/",
+      "https://en.wikipedia.org/wiki/Crown_Perth",
+      "https://visit.museum.wa.gov.au/boolabardip"
+    ],
+    "lat": -31.9501,
+    "lon": 115.8622,
+    "country": "Australia",
+    "city": "Perth",
+    "website": "https://visit.museum.wa.gov.au/",
+    "id": "wa-museum-boola-bardip-perth",
+    "visit_url": "https://visit.museum.wa.gov.au/boolabardip",
+    "details": {
+      "overview": [
+        "The Western Australian Museum was established in 1891 in the Old Perth Gaol; its Perth site closed on 18 June 2016 for redevelopment and reopened as WA Museum Boola Bardip on 21 November 2020 (Wikipedia).",
+        "The building in the Perth Cultural Centre was designed by OMA and Hassell and incorporates five heritage buildings, including the Old Perth Gaol of 1855, Hackett Hall and the Jubilee Building; the state pledged A$428 million for it in 2012 (Wikipedia).",
+        "Boola Bardip is Noongar for \"many stories\"; the museum network also runs the WA Maritime and WA Shipwrecks museums in Fremantle and museums in Albany, Geraldton and Kalgoorlie-Boulder (Wikipedia).",
+        "The museum recorded 1,647,208 visitors to museum and non-museum sites in 2024-25 (2024-25 annual report).",
+        "In December 2020 the museum removed two labels, on the origin of COVID-19 and on how Taiwan was shown on a map, after complaints including from the Chinese consul general in Perth (Wikipedia)."
+      ],
+      "funding_verdict": "WA Museum Boola Bardip: state-funded, with oil, gas and mining partners",
+      "funding": [
+        "Income from the State Government was $48.979 million in 2024-25, including $44.897 million service appropriation and $2.949 million state grants; other income was $12.220 million, including $4.798 million user charges and fees and $3.714 million other revenue (2024-25 annual report).",
+        "The annual report names BHP Group Ltd among sponsors, benefactors and granting agencies, and says a partnership with BHP enabled work on the taxonomy of terrestrial and freshwater invertebrates (2024-25 annual report).",
+        "The Foundation for the WA Museum lists Minderoo Foundation, Rio Tinto, the Stan Perron Charitable Foundation, Tianqi Lithium, Wesfarmers and Woodside Energy as founding partners, and Gold Fields, Fortescue, Northern Star Resources, Herbert Smith Freehills and Tattarang among major partners (2024-25 annual report).",
+        "The Woodside Energy: WA Down Under Gallery at the WA Maritime Museum reopened in December 2024 after 12 months of refurbishment (2024-25 annual report).",
+        "Woodside has supported the museum's marine biodiversity research since 1998, and on 6 August 2025 the collaboration was extended for five years for research along the Gascoyne coast; no figure was published (WA Museum, 6 August 2025).",
+        "Corporate partners of the Terracotta Warriors: Legacy of the First Emperor exhibition included Cathay Pacific as airline partner, Crown as accommodation partner and Norton Gold Fields (2024-25 annual report).",
+        "Crown Perth is a resort and casino in Burswood owned by Crown Resorts (Wikipedia).",
+        "Fortescue entered a three-year research partnership on biodiversity in the Fortescue Marsh, and Gold Fields a three-year partnership as presenting partner of two regional museum projects (2024-25 annual report)."
+      ],
+      "red_flags": [
+        {
+          "heading": "Fossil fuel partnership",
+          "points": [
+            "The WA Greens and the Conservation Council of WA condemned the renewed Woodside partnership during a marine heatwave that killed coral along about 1,500 km of coast; Woodside sponsored free entry to the WA Maritime Museum on 17 August 2025 (The Guardian, 13 August 2025, via Glass Wings).",
+            "The museum stated on 17 August 2025 that Woodside neither directs nor participates in the research, which has found no less than 700 new species, and that the museum keeps the intellectual property (WA Museum, 17 August 2025)."
+          ]
+        },
+        {
+          "heading": "Protest or boycott",
+          "points": [
+            "A protest took place outside the WA Maritime Museum on its Woodside-sponsored family open day on 17 August 2025 (ArtsHub, Jo Pickup, 23 September 2025).",
+            "VOICES for Climate sang outside the Australian Energy Producers' annual conference event at WA Museum Boola Bardip on a Monday evening in May 2024 (Perth Voice, 23 May 2024)."
+          ]
+        }
+      ],
+      "not_related": [],
+      "press": {
+        "overall": "",
+        "items": []
+      },
+      "wider_context": [],
+      "sources": [
+        "https://visit.museum.wa.gov.au/sites/default/files/2025-09/WA-Museum-Annual-Report-2024-25.pdf",
+        "https://en.wikipedia.org/wiki/WA_Museum_Boola_Bardip",
+        "https://visit.museum.wa.gov.au/about/media/wa-museum-woodside-energy-and-foundation-wa-museum-extend-collaboration",
+        "https://visit.museum.wa.gov.au/about/media/western-australian-museum-statement-regarding-woodside-collaboration",
+        "https://glasswings.com.au/blog/2025-08/13-094023.html",
+        "https://www.artshub.com.au/?p=2821365",
+        "https://perthvoiceinteractive.com/2024/05/23/the-same-songsheet/",
+        "https://en.wikipedia.org/wiki/Crown_Perth",
+        "https://visit.museum.wa.gov.au/boolabardip"
+      ],
+      "website": "https://visit.museum.wa.gov.au/",
+      "retrieved": "2026-11-17"
+    },
+    "grade": 5,
+    "grade_basis": "Funders tied to fossil fuels and gambling. The record also holds a public protest."
   }
 ]

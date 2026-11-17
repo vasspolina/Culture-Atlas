@@ -62,6 +62,7 @@ def merge_key(label,cat,country,rid):
     return k
 # Funders the page can highlight as right-wing sponsors. The atlas records carry no political field, so this is a short
 # curated list: only funders that appear in the records AND have a published source for their partisan giving.
+# Ronald Lauder is left off (user, 17 Nov 2026: "remove Ronald Lauder from the money maps list too").
 RIGHT=[  # (id, label, regex on a sponsor name, regex on record text, basis, sources)
  ('koch','Koch',re.compile(r"\bkoch\b",re.I),re.compile(r"(?<!Robert )(?<!Robert-)\b(David |Charles )?Koch\b(?! Institut)"),
   "The Koch family funds a conservative and libertarian political network, including Americans for Prosperity.",
@@ -69,9 +70,6 @@ RIGHT=[  # (id, label, regex on a sponsor name, regex on record text, basis, sou
  ('griffin','Ken Griffin / Citadel',re.compile(r"\b(ken griffin|citadel)\b",re.I),re.compile(r"\bKen Griffin\b"),
   "Ken Griffin gave $75M to $100M+ to Republican groups in the 2022 cycle, according to InfluenceWatch.",
   ["https://www.influencewatch.org/person/ken-griffin/"]),
- ('lauder','Ronald Lauder',re.compile(r"^ronald (s\. )?lauder$",re.I),re.compile(r"\bRonald (S\. )?Lauder\b"),
-  "Ronald Lauder was Reagan's ambassador to Austria and gave $1M to the Republican State Leadership Committee in 2022.",
-  ["https://www.cnbc.com/2022/10/20/midterms-news-ronald-lauder-gives-1-million-to-republican-state-leadership-committee.html"]),
  ('cohen','Steven Cohen',re.compile(r"\bsteven (a\. )?cohen\b|\bsteven & alexandra cohen\b",re.I),re.compile(r"\bSteven (A\. )?Cohen\b|\bSteven & Alexandra Cohen\b"),
   "Steven Cohen was the top individual donor to the Senate Leadership Fund and the Congressional Leadership Fund in 2017, per Artnet; Fox Business reported he later cut back.",
   ["https://news.artnet.com/art-world/steve-cohen-republican-donor-1207619","https://foxbusiness.com/politics/steve-cohen-joins-other-billionaires-in-curbing-gop-donations"]),
