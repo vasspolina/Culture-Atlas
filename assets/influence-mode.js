@@ -10,7 +10,7 @@
 //   - the map shows the funders at their head offices instead of the spaces (user, 17 Nov 2026: "Influence mode needs to
 //     switch the map from culture spaces to cultural funders"); a picked funder shows its spaces, joined to its office
 //     (window.atlasModeKeep, read by assets/layers.js; atlasInfluenceDraw and atlasInfluencePointer, called by index.html)
-//   - the chat says what the mode is and lists the funders with what each got, each one a button
+//   - the chat says in two lines what the mode is
 //   - a space's record leads with "What funders got here"
 //   - a funder's record (assets/hq-detail.js) leads with its ledger: what it got, kind by kind, space by space
 //
@@ -92,13 +92,6 @@
       .sort((a, b) => yearOf(a) - yearOf(b));
     return { ended: ended.slice().sort((a, b) => (endYearOf(a) || 0) - (endYearOf(b) || 0)), first, kept };
   }
-  const shortAfter = f => {
-    const a = afterNo(f); if (!a.ended.length) return '';
-    const left = new Set(a.ended.map(t => t.space)).size, kept = new Set(a.kept.map(t => t.space)).size;
-    // A clause the records have nothing for is left out (user, 17 Nov 2026: "only add section if there is an info"): no
-    // "none dated … or later in the records", just the spaces that ended it.
-    return `${plural(left, 'space')} ended it${a.first && kept ? `, ${plural(kept, 'space')} still dated ${a.first} or later` : ''}`;
-  };
 
   // ---- The map: the funders, not the spaces ----
   // No space is drawn while the mode is on, except the spaces of the funder picked, which come back joined to its office.
@@ -185,7 +178,32 @@
       ctx.strokeStyle = ink; ctx.lineWidth = sel ? 2 : 1.5; ctx.stroke();
     });
     ctx.font = FONT; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
-    marks.slice().sort((a, b) => b.n - a.n).forEach(m => {
+    // The picked funder's spaces are named on the map (user, 17 Nov 2026: "show names of the museums when i click on dots
+    // in influence mode"). They are placed before the other funders' names, so those give way to them; a space whose
+    // every place is taken by another space's name waits for the map to be zoomed in, as a funder's name does.
+    if (picked) {
+      const byId = new Map(insts.map(i => [i.id, i]));
+      const names = new Map(picked.ties.map(t => [t.space, t.space_name]));
+      const pts = [];
+      names.forEach((nm, id) => {
+        const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
+        const pt = project(i.lon, i.lat, r, cx, cy); if (!pt.front) return;
+        pts.push({ x: pt.x, y: pt.y, label: i.name || nm || '' });
+        placed.push({ x: pt.x - 6, y: pt.y - 6, w: 12, h: 12 });
+      });
+      pts.forEach(({ x, y, label }) => {
+        if (!label) return;
+        const w = ctx.measureText(label).width, gap = 9;
+        const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 6], [-w / 2, -gap - 6], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15]];
+        const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
+        const clash = b => placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
+        const spot = spots.find(sp => !clash(boxAt(sp))); if (!spot) return;
+        placed.push(boxAt(spot));
+        ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, x + spot[0], y + spot[1]);
+        ctx.fillStyle = ink; ctx.fillText(label, x + spot[0], y + spot[1]);
+      });
+    }
+    marks.slice().sort((a, b) => (picked === b.f) - (picked === a.f) || b.n - a.n).forEach(m => {
       const { f, x, y, s } = m, sel = picked === f, hov = hover === f;
       // The name beside the mark in plain type on a halo of the map's ground, never cut short, moved round the mark
       // until it covers no other name or mark. Where every place is taken (Europe at world zoom) it waits, as a city's
@@ -262,16 +280,11 @@
   function greet() {
     if (!DATA) { say('<p class="no-indent">Influence mode is on, but its entries could not be loaded. Try again in a moment.</p>'); return; }
     const total = DATA.funders.reduce((s, f) => s + f.ties.length, 0);
-    const rows = DATA.funders.map(f => { const a = shortAfter(f); return `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(tallyLine(f))}${a ? `<br><span class="influence-meta">${esc(a)}</span>` : ''}</li>`; }).join('');
-    const kinds = ORDER.map(k => `<li><span class="lead-in">${esc(label(k))}</span> ${esc(MEANS[k])}</li>`).join('');
+    // Two short paragraphs (user, 17 Nov 2026: "influence mode intro in chat is a slop, shorten it ... no need to list all
+    // spaces"). The funders are on the map and each record says what it got, so the chat does not list them again.
     say(`<div class="influence-chat">
-<p class="no-indent">Influence mode is on. It turns the atlas round, from the spaces that take the money to the funders that give it, and asks what the money bought. The map now shows the funders at their head offices instead of the spaces, each a dot, larger the more spaces it reaches. Pick one to open what it got and bring its spaces onto the map, joined to its office.</p>
-<p>A space that turns the money down ends one tie, not the money. So each funder’s record also says what its money is made from, what else it pays for beside culture, and, where a space ended a tie, which ties the records still date after that. On the map a picked funder’s ended ties are dashed lines and its running ones solid.</p>
-<p>These are ${total} entries on ${DATA.funders.length} funders, read by hand in three batches: first oil and gas, tobacco, mining, the Sacklers and the family and finance money the records flag; then the carmakers and luxury houses BMW, Hyundai and Chanel; then Bloomberg and five banks (Bank of America, JPMorganChase, UBS, RBC and BMO). Public funders are left out on purpose: the question is what private money buys.</p>
-<ul class="influence-funders">${rows}</ul>
-<p>What each word counts:</p>
-<ul class="influence-kinds">${kinds}</ul>
-<p>Each entry is a sentence of a space’s record, checked against that record, not yet against the source page it cites.</p>
+<p class="no-indent">Influence mode is on. The map now shows who pays for culture, at their head offices: the bigger the dot, the more spaces it reaches. Pick one to see what its money bought and where.</p>
+<p>${total} entries on ${DATA.funders.length} private funders, read by hand from the spaces’ records.</p>
 </div>`);
   }
   // A funder named in the chat or in a ledger opens its record, which then leads with what it got.
