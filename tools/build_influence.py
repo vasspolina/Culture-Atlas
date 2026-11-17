@@ -115,13 +115,13 @@ FUNDERS = [
     ('jameel', 'Jameel family (Abdul Latif Jameel)', 'family', r'Jameel'),
     ('alserkal', 'Alserkal family', 'family', r'Alserkal'),
     ('aramco', 'Saudi Aramco', 'corp', r'Aramco'),
-    ('tata', 'Tata', 'corp', r'\bTata\b'),
+    ('tata', 'Tata', 'corp', r'\bTata\b|\bTCS\b'),
     ('reliance', 'Reliance (Ambani family)', 'family', r'Reliance (?:Industries|Foundation)|Ambani'),
-    ('nadar', 'Shiv and Kiran Nadar (HCL)', 'family', r'Nadar|\bHCL\b'),
+    ('nadar', 'Shiv and Kiran Nadar (HCL)', 'family', r"Kiran Nadar|Shiv Nadar|Roshni Nadar|\bHCL\b|\bNadar's"),
     ('adani', 'Adani Group', 'corp', r'Adani'),
-    ('ayalapresentsshows', 'Ayala Corporation', 'corp', r'Ayala (?:Corporation|Foundation|Land|Museum|family)|Zobel'),
+    ('ayalapresentsshows', 'Ayala Corporation', 'corp', r'Ayala (?:Corporation|Foundation|Land|Museum|family)|Zobel de Ayala'),
     ('thaibev', 'ThaiBev (Sirivadhanabhakdi family)', 'family', r'ThaiBev|Thai Beverage|Sirivadhanabhakdi'),
-    ('cpgroup', 'Charoen Pokphand Group', 'corp', r'Charoen Pokphand|\bCP Group|Chearavanont'),
+    ('cpgroup', 'Chearavanont family (CP Group)', 'family', r'Charoen Pokphand|\bCP Group|Chearavanont'),
     # Batch 6 (user, 17 Nov 2026: "also add south korea and japan sponsors", "add nrth korea sponsors", "add russian
     # sponsors", "add ukranian sponsors"). North Korea's spaces are paid by the party and the state, so its senders here are
     # the private money the records tie to its venues (a client of a state studio, the airline that flew an orchestra in).
@@ -210,6 +210,23 @@ FUNDERS = [
     ('epson', 'Epson', 'corp', r'Epson'),
     # HSBC (user, 17 Nov 2026: "add hsbc too"): founded in Hong Kong and Shanghai in 1865, head office in London since 1993.
     ('hsbc', 'HSBC', 'corp', r'HSBC|Hongkong and Shanghai Bank'),
+    # India beyond the first four (user, 17 Nov 2026: "add indian sponsors too"): the industrial families and companies the
+    # records name as donors, building donors and festival founders.
+    ('bajaj', 'Bajaj family (Jamnalal Bajaj Foundation)', 'family', r'Bajaj'),
+    ('munjal', 'Munjal family (Hero)', 'family', r'Munjal|Hero (?:Enterprise|MotoCorp|Insurance|Realty|Group)'),
+    ('poddar', 'Abhishek Poddar', 'family', r'Abhishek Poddar|\bPoddar\b'),
+    ('jindal', 'Jindal family (JSW)', 'family', r'Jindal|\bJSW\b'),
+    ('piramal', 'Piramal family', 'family', r'Piramal'),
+    ('godrej', 'Godrej', 'corp', r'Godrej'),
+    ('hdfc', 'HDFC Bank', 'corp', r'HDFC'),
+    ('infosys', 'Infosys (Murty and Nilekani families)', 'corp', r'Infosys|Murty|Nilekani'),
+    ('wipro', 'Azim Premji (Wipro)', 'family', r'Wipro|Premji'),
+    ('mittal', 'Lakshmi Mittal (ArcelorMittal)', 'family', r'Lakshmi (?:N\. )?Mittal|ArcelorMittal|\bMittal\b'),
+    ('bharti', 'Bharti family (Airtel)', 'family', r'Bharti|Airtel'),
+    ('biocon', 'Kiran Mazumdar-Shaw (Biocon)', 'family', r'Mazumdar|Biocon'),
+    ('mphasis', 'Mphasis', 'corp', r'Mphasis'),
+    ('apeejay', 'Apeejay (Paul family)', 'family', r'Apeejay'),
+    ('tvs', 'TVS', 'corp', r'\bTVS\b'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
