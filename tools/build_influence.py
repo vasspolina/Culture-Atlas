@@ -198,7 +198,7 @@ def build_layer(cands):
     for k, v in senders.items():
         if k.startswith('_') or k not in funders:
             continue
-        funders[k]['sender'] = {'made_from': v.get('made_from', ''), 'facts': v.get('facts', [])}
+        funders[k]['sender'] = {'made_from': v.get('made_from', ''), 'facts': v.get('facts', []), 'figures': v.get('figures', {})}
     data = {
         'about': 'What each pilot funder is stated to have got for its money, from the atlas records. Built by tools/build_influence.py from data/influence_review.json.',
         'kinds': [{'key': k, 'label': lab} for k, lab, _ in KINDS],
