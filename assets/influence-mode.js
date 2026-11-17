@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=13', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=14', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -161,10 +161,13 @@
     return `${sym}${Math.round(v)}`;
   };
   const fig = f => (f.sender && f.sender.figures) || {};
+  const cultureSpaces = f => (fig(f).culture || {}).spaces || new Set(f.ties.map(t => t.space)).size;
   const MEASURES = {
+    // A funder with no hand-sourced figures yet (the private fortunes added 17 Nov 2026) counts the spaces its kept entries
+    // name, which is how the sourced figure is counted too; culture is never a missing filing, so never a hollow dot.
     culture: { label: 'Culture', what: 'how many museums it gives to',
-      value: f => (fig(f).culture || {}).spaces || null,
-      text: f => { const c = fig(f).culture || {}; return c.spaces ? `${c.spaces} ${c.spaces === 1 ? 'museum' : 'museums'}` : ''; } },
+      value: f => cultureSpaces(f) || null,
+      text: f => { const n = cultureSpaces(f); return n ? `${n} ${n === 1 ? 'museum' : 'museums'}` : ''; } },
     us: { label: 'US lobbying', noun: 'US lobbying', what: 'what it spent lobbying the US government in 2025',
       value: f => (fig(f).us_lobbying || {}).usd || null,
       text: f => { const u = fig(f).us_lobbying; return u ? fmtMoney(u.usd, 'USD') : ''; } },
@@ -415,7 +418,7 @@
     // spaces"; then, of "351 entries on 25 private funders, read by hand from the spaces' records": "this is a slop, delete
     // all the jargon"). The funders are on the map and each record says what it got, so the chat does not list them again.
     say(`<div class="influence-chat">
-<p class="no-indent">Influence mode is on. The map now shows ${DATA.funders.length} companies and foundations that pay for culture, at their head offices. The bigger the dot, the more museums it pays. Pick one to see what its money bought.</p>
+<p class="no-indent">Influence mode is on. The map now shows ${DATA.funders.length} companies, foundations and private fortunes that pay for culture, at their head offices. The bigger the dot, the more museums it pays. Pick one to see what its money bought.</p>
 </div>`);
   }
   // A funder named in the chat or in a ledger opens its record, which then leads with what it got.
@@ -528,7 +531,8 @@
   // info to cultural spaces"); the figures stay in data/influence_senders.json for the map's measures.
   function compareRow(f) {
     const c = fig(f).culture || {}, src = c.largest_gift && c.largest_gift.source;
-    const body = `${c.spaces || 0} ${c.spaces === 1 ? 'museum' : 'museums'}${c.largest_gift ? `; the largest gift found is ${c.largest_gift.text}` : ', with no amount given'}.`;
+    const n = cultureSpaces(f);
+    const body = `${n} ${n === 1 ? 'museum' : 'museums'}${c.largest_gift ? `; the largest gift found is ${c.largest_gift.text}` : ', with no amount given'}.`;
     return row('Culture', 'what it gives culture', `<ul class="d-row-list influence-list"><li class="influence-entry"><p class="no-indent">${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li></ul>`);
   }
 
