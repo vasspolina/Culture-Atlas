@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space. Batch 8 (17 Nov 2026): two new spaces, Opera Queensland and Queensland Museum, with Queensland ministerial diary entries (Rio Tinto 2013; Shell and its QGC business 2018, 2019) and Shell QGC's $10.25 million to the museum since 2015. Batch 9 (17 Nov 2026): four funders added to the pilot (BHP, Morgan Stanley, Santos, LVMH) with their ties, and their contacts with government at a space (BHP at Queensland Museum, 2014 and 2015; Morgan Stanley and the Prime Minister at the British Museum, 2017). Batch 10 (17 Nov 2026): six new spaces (Glyndebourne, Brisbane Festival, State Library of Queensland, Cadogan Hall, Griffin Museum of Science and Industry, Meridian Hall) with their ties and contacts with government.",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space. Batch 8 (17 Nov 2026): two new spaces, Opera Queensland and Queensland Museum, with Queensland ministerial diary entries (Rio Tinto 2013; Shell and its QGC business 2018, 2019) and Shell QGC's $10.25 million to the museum since 2015. Batch 9 (17 Nov 2026): four funders added to the pilot (BHP, Morgan Stanley, Santos, LVMH) with their ties, and their contacts with government at a space (BHP at Queensland Museum, 2014 and 2015; Morgan Stanley and the Prime Minister at the British Museum, 2017). Batch 10 (17 Nov 2026): six new spaces (Glyndebourne, Brisbane Festival, State Library of Queensland, Cadogan Hall, Griffin Museum of Science and Industry, Meridian Hall) with their ties and contacts with government. Batch 11 (17 Nov 2026): four more spaces (Joyce Theater, Alvin Ailey American Dance Theater, Perth Festival, WA Museum Boola Bardip) with their funder ties.",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -5978,5 +5978,164 @@
  "476892e812": {
   "drop": true,
   "why": "Same tie as the naming entry."
+ },
+ "5204d847df": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Sponsors the company’s 2026 and 2027 global tours.",
+  "date": "2026"
+ },
+ "1a413d43c4": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A partnership paid for research on the taxonomy of invertebrates; on the 2024-25 sponsor list.",
+  "date": "2025"
+ },
+ "186c9e2b21": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Sponsored the festival for 18 years, ending after the 2023 festival.",
+  "date": "2005",
+  "ended": true
+ },
+ "3786e414c9": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Principal patron in the 1980s, underwriting the company’s tours abroad.",
+  "date": "1980"
+ },
+ "558a732d21": {
+  "kinds": [
+   "building",
+   "money"
+  ],
+  "summary": "A $500,000 grant announced at the opening of the new headquarters (1990).",
+  "date": "1990-06"
+ },
+ "53ec6bdd95": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Supported the theatre from a fund for dance presenters it set up in 1985.",
+  "date": "1985"
+ },
+ "146633e472": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Altria is credited in the funding lines of a 2003 production.",
+  "date": "2003-02"
+ },
+ "9f81bf8486": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A founding partner of the Foundation for the WA Museum."
+ },
+ "8f68eb8ce6": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Has paid for the museum’s marine biodiversity research since 1998, extended for five years in August 2025.",
+  "date": "1998"
+ },
+ "41d9aa156e": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "The Woodside Energy: WA Down Under Gallery at the WA Maritime Museum, run by the same organisation, reopened in 2024.",
+  "date": "2024-12"
+ },
+ "1d08516f95": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "e469dbf491": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "927c72b70b": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "105548e832": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "80340c11e2": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "27824a479a": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "4eff17e54d": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "14efab38f0": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "40ae5a0945": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "3a2276e24c": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "95fd08fa83": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "f576469002": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "e31c80430b": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "8a50ea3909": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "1f4c12e09e": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "e121de400f": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "a17bb89d0e": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "d0392358f9": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "3b0da832af": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "95f0bba5b5": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "9fcd0b778b": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
+ },
+ "04cbd6a53d": {
+  "drop": true,
+  "why": "Same tie as a kept entry, or context only."
  }
 }
