@@ -69,6 +69,11 @@ test('every funder figure is a number with a source', () => {
     if (f.culture.largest_gift) assert.ok(f.culture.largest_gift.amount > 0 && /^https?:\/\//.test(f.culture.largest_gift.source) && !/—/.test(f.culture.largest_gift.text), `${k}: largest gift`);
     if (f.us_lobbying) assert.ok(f.us_lobbying.usd > 0 && /lda\.gov/.test(f.us_lobbying.source), `${k}: US lobbying`);
     if (f.eu_lobbying) assert.ok(f.eu_lobbying.eur_max > f.eu_lobbying.eur_min && /lobbyfacts\.eu/.test(f.eu_lobbying.source), `${k}: EU lobbying`);
+    if (f.personal) {
+      assert.ok(f.personal.usd > 0 && Array.isArray(f.personal.people) && f.personal.people.length, `${k}: personal giving`);
+      f.personal.people.forEach((x) => assert.ok(x.name && x.usd > 0 && /fec\.gov/.test(x.source), `${k}: personal giving by ${x.name}`));
+      assert.ok(Math.abs(f.personal.people.reduce((t, x) => t + x.usd, 0) - f.personal.usd) < 1, `${k}: personal total is the sum of its people`);
+    }
     if (f.political) assert.ok(f.political.usd > 0 && f.political.rep_usd >= 0 && f.political.dem_usd >= 0 && f.political.rep_usd + f.political.dem_usd <= f.political.usd * 1.05 && /fec\.gov/.test(f.political.source), `${k}: political giving`);
   }
 });
