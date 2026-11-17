@@ -38,7 +38,7 @@ FUNDERS = [
     ('hyundaimotor', 'Hyundai Motor', 'corp', r'Hyundai'),
     ('chanel', 'Chanel', 'corp', r'\bChanel\b'),
     ('jti', 'Japan Tobacco International', 'corp', r'Japan Tobacco|\bJTI\b'),
-    ('philipmorris', 'Philip Morris', 'corp', r'Philip Morris|Altria'),
+    ('philipmorris', 'Altria (Philip Morris USA)', 'corp', r'Philip Morris|Altria'),
     ('rheinmetall', 'Rheinmetall', 'corp', r'Rheinmetall'),
     ('leonardo', 'Leonardo', 'corp', r'\bLeonardo S\.?p\.?A|Leonardo \(defen'),
     ('glencore', 'Glencore', 'corp', r'Glencore'),

@@ -1,5 +1,5 @@
 {
- "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Every fact was read on its source page; BP’s, Shell’s and Vale’s profit and Japan Tobacco’s revenue were re-checked on their pages on 17 Nov 2026, and BP’s and Japan Tobacco’s moved to pages that open.",
+ "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Every fact was read on its source page; BP’s, Shell’s and Vale’s profit and Japan Tobacco’s revenue were re-checked on their pages on 17 Nov 2026, and BP’s and Japan Tobacco’s moved to pages that open. Second pass 17 Nov 2026: the EU Transparency Register for all 25 funders, each figure read on its LobbyFacts datacard and checked against the register’s own export of 16 November 2026; InfluenceMap grades re-read on each company page (UBS and J.P. Morgan pages showed no score, RBC, Bloomberg and Chanel have none); US federal lobbying for 2025 from the Senate Lobbying Disclosure Act reports on lda.gov, the filings OpenSecrets compiles, since OpenSecrets itself still refuses this reader: a company’s own in-house reports for the year, summed, or where it files none, the fees its outside firms reported. Checked against the atlas: each fact names the entity the atlas ties name, so Philip Morris International’s facts were removed (the atlas ties are Altria’s), Bloomberg L.P. and Bloomberg Philanthropies are named apart, and the Lauder family’s Estée Lauder Companies lobbying is not attributed to the family. Not registered in the EU: BMO, the Royal Bank of Canada itself, Koch, Purdue Pharma, Access Industries. No 2025 federal lobbying report: RBC, Access Industries.",
  "bp": {
   "made_from": "BP’s money comes from producing, refining and trading oil and gas.",
   "facts": [
@@ -13,7 +13,7 @@
     "kind": "lobbying",
     "text": "BP declared EU lobbying costs of €2,000,000 to €2,249,999 for 2025, with 5.6 full-time-equivalent lobbyists.",
     "date": "2025",
-    "source": "https://lobbyfacts.eu/representative/ed84c5ea6c6c404f8d62a254f183ed57/bp-p-l-c"
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=3394026642-58"
    },
    {
     "kind": "lobbying",
@@ -32,6 +32,12 @@
     "text": "In December 2023 the British Museum signed a partnership with BP worth £50 million over ten years, funding refurbishment of its buildings.",
     "date": "2023-12",
     "source": "https://www.ianvisits.co.uk/articles/british-museum-secures-50-million-sponsorship-deal-with-bp-68350/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "BP America reported $4,560,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=BP+America&filing_year=2025"
    }
   ]
  },
@@ -48,7 +54,7 @@
     "kind": "lobbying",
     "text": "Shell declared EU lobbying costs of €4,500,000 to €4,999,999 for 2025, with 13 full-time-equivalent lobbyists.",
     "date": "2025",
-    "source": "https://lobbyfacts.eu/representative/5c3fbbd9f4ec4a5684955ce51301502f/shell-companies"
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=05032108616-26"
    },
    {
     "kind": "lobbying",
@@ -61,6 +67,12 @@
     "text": "Shell agreed a £55 million settlement with the Bodo community in Nigeria over two oil spills in 2008.",
     "date": "2015",
     "source": "https://www.amnesty.org/en/latest/campaigns/2026/07/shell-oil-spills-and-human-rights-in-nigeria/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Shell USA reported $6,030,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Shell+USA&filing_year=2025"
    }
   ]
  },
@@ -77,7 +89,7 @@
     "kind": "lobbying",
     "text": "TotalEnergies declared EU lobbying costs of €3,000,000 to €3,499,999 for 2024 and recorded 149 high-level Commission meetings.",
     "date": "2024",
-    "source": "https://lobbyfacts.eu/representative/b2ca40cdd2424e3aafac7d5b6e003fe6/totalenergies-se"
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=1849405799-88"
    },
    {
     "kind": "lobbying",
@@ -90,6 +102,12 @@
     "text": "On 23 October 2025 a Paris court ruled that TotalEnergies’ carbon neutrality advertising misled consumers.",
     "date": "2025-10",
     "source": "https://www.esgtoday.com/french-court-rules-totalenergies-misled-consumers-with-climate-claims/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "TotalEnergies’ Washington office reported $1,090,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=TotalEnergies&filing_year=2025"
    }
   ]
  },
@@ -113,6 +131,18 @@
     "text": "InfluenceMap gives Chevron a D- grade for its climate policy engagement.",
     "date": "2026",
     "source": "https://lobbymap.org/company/Chevron-f4b47c4ea77f0f6249ba7f77d4f210ff"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Chevron Belgium declared EU lobbying costs of €800,000 to €899,999 for 2025, with 1.75 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=09981988815-02"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Chevron U.S.A. reported $7,960,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Chevron&filing_year=2025"
    }
   ]
  },
@@ -129,13 +159,19 @@
     "kind": "lobbying",
     "text": "Eni declared EU lobbying costs of €1,250,000 to €1,499,999 for 2025, with 6.2 full-time-equivalent lobbyists.",
     "date": "2025",
-    "source": "https://lobbyfacts.eu/representative/aef2426e1ac04cea8ef3287da0a42176/eni-s-p-a"
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=99578067285-35"
    },
    {
     "kind": "lobbying",
     "text": "InfluenceMap gives Eni a D+ grade for its climate policy engagement.",
     "date": "2026",
     "source": "https://lobbymap.org/company/ENI-f50369f20d3a3fdc4c2ce661963277d0"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Eni’s US operating company reported $40,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Eni&filing_year=2025"
    }
   ]
  },
@@ -152,13 +188,19 @@
     "kind": "lobbying",
     "text": "Equinor declared EU lobbying costs of €2,500,000 to €2,749,999 for 2025, with 6.8 full-time-equivalent lobbyists.",
     "date": "2025",
-    "source": "https://lobbyfacts.eu/representative/e51de06c03384f3291e5afedb3c97216/equinor-asa"
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=4447605981-76"
    },
    {
     "kind": "lobbying",
     "text": "InfluenceMap gives Equinor a C- grade for its climate policy engagement.",
     "date": "2026",
     "source": "https://lobbymap.org/company/Statoil-52dcf7a991209e6d453f4c7dec385d24"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Equinor’s US operations reported $1,240,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Equinor&filing_year=2025"
    }
   ]
  },
@@ -188,6 +230,12 @@
     "text": "In March 2019, after Tate and the Guggenheim said they would refuse its money, the UK Sackler Trust paused all new philanthropic giving.",
     "date": "2019-03",
     "source": "https://www.theartnewspaper.com/news/sackler-charity-in-uk-suspends-all-new-gifts"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Purdue Pharma, the Sackler family’s company, reported $400,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Purdue+Pharma&filing_year=2025"
    }
   ]
  },
@@ -211,6 +259,12 @@
     "text": "In 2000 Koch Industries agreed to pay a $30 million civil penalty over oil spills from its pipelines in several US states.",
     "date": "2000-01",
     "source": "https://www.justice.gov/archive/opa/pr/2000/January/019enrd.htm"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Koch Government Affairs, the lobbying arm of Koch Industries, reported $9,320,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Koch&filing_year=2025"
    }
   ]
  },
@@ -228,6 +282,18 @@
     "text": "Ken Griffin gave $100,000,000 in the 2024 election cycle, fifth among top contributors, according to OpenSecrets data cited by CBS News.",
     "date": "2024-11",
     "source": "https://www.cbsnews.com/news/trump-megadonors-2024-election"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Citadel declared EU lobbying costs of €400,000 to €499,999 for 2025, with 2.25 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=836939615933-24"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Citadel reported $650,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Citadel&filing_year=2025"
    }
   ]
  },
@@ -274,6 +340,12 @@
     "text": "In June 2024 Baillie Gifford ended all its remaining literary festival sponsorships, approximately £1M per year in funding.",
     "date": "2024-06",
     "source": "https://en.wikipedia.org/wiki/Baillie_Gifford"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Baillie Gifford declared EU lobbying costs under €10,000 for May 2025 to April 2026, with 0.5 full-time-equivalent lobbyists.",
+    "date": "2026-04",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=2196343364-01"
    }
   ]
  },
@@ -290,25 +362,25 @@
     "kind": "lobbying",
     "text": "JT International Holding declared EU lobbying costs of €2,250,000 to €2,499,999 for 2025, with 6 full-time-equivalent lobbyists.",
     "date": "2025",
-    "source": "https://lobbyfacts.eu/representative/776893b6c4724fdc88ca19746685a5be/jt-international-holding"
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=71175716023-03"
    },
    {
     "kind": "harm",
     "text": "Japan Tobacco recorded a ¥400 billion provision in 2024 for its Canadian unit’s share of a C$32.5 billion tobacco litigation settlement.",
     "date": "2025-03",
     "source": "https://www.tipranks.com/news/company-announcements/japan-tobaccos-canadian-subsidiary-settles-all-tobacco-claims"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Japan Tobacco International U.S.A. reported $590,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Japan+Tobacco&filing_year=2025"
    }
   ]
  },
  "philipmorris": {
-  "made_from": "Philip Morris International and Altria make their money from cigarettes such as Marlboro and from heated tobacco and nicotine products.",
+  "made_from": "Altria makes its money from cigarettes such as Marlboro in the United States, and from cigars, smokeless tobacco and nicotine products.",
   "facts": [
-   {
-    "kind": "scale",
-    "text": "Philip Morris International reported net revenues of $37.9 billion for 2024, up 7.7%.",
-    "date": "2025-02",
-    "source": "https://www.businesswire.com/news/home/20250205873542/en/Philip-Morris-International-Reports-2024-Fourth-Quarter-Full-Year-Results"
-   },
    {
     "kind": "scale",
     "text": "Altria reported net revenues of about $24.0 billion for 2024, down 1.9%.",
@@ -316,16 +388,16 @@
     "source": "https://www.businesswire.com/news/home/20250129043383/en"
    },
    {
-    "kind": "lobbying",
-    "text": "Philip Morris International declared EU lobbying costs of €2,750,000 to €2,999,999 for 2025, with 4.9 full-time-equivalent lobbyists.",
-    "date": "2025",
-    "source": "https://lobbyfacts.eu/representative/cb85447517124eecb8071373a7a195f3/philip-morris-international-inc"
-   },
-   {
     "kind": "harm",
     "text": "Philip Morris was among four tobacco companies in the 1998 Master Settlement Agreement, worth $206 billion to US states.",
     "date": "1998-11",
     "source": "https://money.cnn.com/1998/11/16/economy/tobacco_a/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Altria reported $12,370,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Altria&filing_year=2025"
    }
   ]
  },
@@ -349,6 +421,18 @@
     "text": "Rio Tinto blasted 46,000-year-old rock shelters at Juukan Gorge in May 2020; its chief executive resigned that September.",
     "date": "2020-09",
     "source": "https://www.npr.org/2020/09/11/911866159/a-mining-company-blew-up-a-46-000-year-old-aboriginal-site-its-ceo-is-resigning"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Rio Tinto declared EU lobbying costs of €900,000 to €999,999 for 2025, with 2.35 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=991744840418-06"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Rio Tinto Services reported $1,140,000 of its own US federal lobbying spending for 2025, in three quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Rio+Tinto&filing_year=2025"
    }
   ]
  },
@@ -372,6 +456,18 @@
     "text": "In October 2024 Vale, BHP and Samarco reached a 170 billion reais settlement with Brazilian authorities over the 2015 Fundão dam collapse.",
     "date": "2024-10",
     "source": "https://saladeimprensa.vale.com/w/vale-reaches-definitive-settlement-with-public-authorities-in-brazil-for-the-full-reparation-of-samarcos-fundao-dam-collapse"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Vale declared EU lobbying costs of €100,000 to €199,999 for 2025, with 1.35 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=208546493673-73"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Two outside firms reported $100,000 in 2025 fees from Vale USA for US federal lobbying, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Vale+USA&filing_year=2025"
    }
   ]
  },
@@ -389,6 +485,177 @@
     "text": "Ronald Lauder gave $5 million to MAGA Inc., the pro-Trump super PAC, according to a Brennan Center analysis.",
     "date": "2025-08",
     "source": "https://www.brennancenter.org/our-work/analysis-opinion/unprecedented-big-money-surge-super-pac-tied-trump"
+   }
+  ]
+ },
+ "bloomberg": {
+  "made_from": "Bloomberg’s money comes from Bloomberg L.P., Michael Bloomberg’s financial data and media company; Bloomberg Philanthropies gives it away.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Bloomberg L.P. declared EU lobbying costs of €600,000 to €699,999 for 2025, with 3.7 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=214140728444-40"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Bloomberg L.P. reported $400,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Bloomberg&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "One outside firm reported $460,000 in 2025 fees from Bloomberg Philanthropies for US federal lobbying, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Bloomberg+Philanthropies&filing_year=2025"
+   }
+  ]
+ },
+ "bankofamerica": {
+  "made_from": "Bank of America’s money comes from consumer and commercial banking, lending, wealth management and investment banking.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Bank of America declared EU lobbying costs of €1,000,000 to €1,249,999 for 2025, with 3 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=53891615036-88"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Bank of America a C- grade for its climate finance policy engagement.",
+    "date": "2025",
+    "source": "https://lobbymap.org/company/Bank-Of-America-bf1bc73d9bf51fc904365193669853c9/projectlink/Bank-Of-America-in-Climate-Finance-4e2adc4ed1204f0468525047f412906e"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Bank of America reported $2,850,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Bank+of+America&filing_year=2025"
+   }
+  ]
+ },
+ "jpmorganchase": {
+  "made_from": "JPMorganChase’s money comes from consumer and commercial banking, investment banking and asset management.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "JPMorgan Chase declared EU lobbying costs of €1,000,000 to €1,249,999 for 2025, with 0.9 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=9171899949-17"
+   },
+   {
+    "kind": "lobbying",
+    "text": "JPMorgan Chase reported $4,380,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=JPMorgan+Chase&filing_year=2025"
+   }
+  ]
+ },
+ "ubs": {
+  "made_from": "UBS’s money comes from wealth management, investment banking and asset management.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "UBS Group declared EU lobbying costs of €1,000,000 to €1,249,999 for 2025, with 0.8 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=365453815252-29"
+   },
+   {
+    "kind": "lobbying",
+    "text": "UBS reported $520,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=UBS&filing_year=2025"
+   }
+  ]
+ },
+ "rbc": {
+  "made_from": "RBC’s money comes from banking, wealth management, insurance and capital markets.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "RBC’s UK asset manager, RBC Global Asset Management (UK), declared EU lobbying costs of €10,000 to €24,999 for November 2024 to October 2025; the bank itself is not on the register.",
+    "date": "2025-10",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=063678450752-51"
+   }
+  ]
+ },
+ "bmo": {
+  "made_from": "BMO’s money comes from banking, wealth management and capital markets in Canada and the United States.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives BMO a C grade for its climate finance policy engagement.",
+    "date": "2025",
+    "source": "https://lobbymap.org/company/Bank-of-Montreal-BMO-640564248adcdec64235182435eb1f28/projectlink/Bank-of-Montreal-BMO-in-Climate-Finance-0deb33acc814b1c8ad9ccefc1b6e04c9"
+   },
+   {
+    "kind": "lobbying",
+    "text": "BMO reported $1,200,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=BMO&filing_year=2025"
+   }
+  ]
+ },
+ "bmw": {
+  "made_from": "BMW’s money comes from making and financing cars and motorcycles.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "BMW declared EU lobbying costs of €2,000,000 to €2,249,999 for 2025, with 9.25 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=7193977808-18"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives BMW a C- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/BMW-Group"
+   },
+   {
+    "kind": "lobbying",
+    "text": "BMW of North America reported $1,270,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=BMW&filing_year=2025"
+   }
+  ]
+ },
+ "hyundaimotor": {
+  "made_from": "Hyundai Motor’s money comes from making and financing cars.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Hyundai Motor Company’s Brussels office declared EU lobbying costs of €600,000 to €699,999 for 2025, with 2.35 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=67224683333-27"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Hyundai Motor Group a C- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Hyundai-Motor/projectlink/Hyundai-Motor-In-Climate-Change"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Hyundai Motor Company reported $1,960,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Hyundai+Motor&filing_year=2025"
+   }
+  ]
+ },
+ "chanel": {
+  "made_from": "Chanel’s money comes from fashion, fragrance, beauty and watches and jewellery.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Chanel declared EU lobbying costs of €900,000 to €999,999 for 2024, its latest closed year on the register, with 1.75 full-time-equivalent lobbyists.",
+    "date": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=920300632423-41"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Chanel reported $190,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Chanel&filing_year=2025"
    }
   ]
  }
