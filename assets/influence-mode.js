@@ -21,7 +21,7 @@
 // dashed line and a running one solid, so a picked funder shows at a glance where it was refused and where it went on paying.
 // Switched off, all four go and the page is as it was. Its look is the "INFLUENCE MODE" block at the end of assets/sheet.css.
 (function () {
-  let DATA = null, loading = null, on = false;
+  let DATA = null, STUDY = null, loading = null, on = false;
   const BY_SPACE = new Map(), BY_FUNDER = new Map();
 
   function load() {
@@ -38,6 +38,9 @@
       });
       return d;
     }).catch(() => { loading = null; return null; });
+    // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
+    // beside the ledger; if it fails to load, MoMA's record simply goes without it.
+    fetch('assets/moma-influence.json?v=1', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; }).catch(() => {});
     return loading;
   }
 
@@ -571,9 +574,29 @@
   };
   const row = (title, sub, inner) => `<section class="d-row" role="group"><div class="d-row-head"><h3 class="d-row-title">${esc(title)}</h3>${sub ? `<p class="d-row-sub no-indent">${esc(sub)}</p>` : ''}</div>${inner}</section>`;
 
+  // What the MoMA Influence Map study says (user, 17 Nov 2026: "add moma money map to moma on our influence map ... just
+  // add info ... skip visualisation"): its entries group by group, each with its role, money, note and first source, as the
+  // study states them. A group shows three and folds the rest, as a record's long lists do.
+  const STUDY_KEEP = 3;
+  function studyRows(inst) {
+    if (!STUDY || !inst || inst.id !== STUDY.space) return '';
+    const line = x => {
+      const src = (x.sources || [])[0];
+      return `<li class="influence-entry"><p class="no-indent"><span class="influence-who">${esc(x.name)}.</span> ${x.role ? `<span class="lead-in">${esc(x.role)}.</span> ` : ''}${x.money ? esc(x.money) + '. ' : ''}${esc(x.note)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
+    };
+    const head = row('From the MoMA Influence Map', 'who funds and governs MoMA, from the study',
+      `${STUDY.museum && STUDY.museum.note ? `<p class="no-indent">${esc(STUDY.museum.role)} ${esc(STUDY.museum.note)}</p>` : ''}<p class="no-indent influence-more"><a href="${esc(STUDY.page)}">Open the study</a></p>`);
+    return head + STUDY.groups.map(g => {
+      const shown = g.entries.slice(0, STUDY_KEEP).map(line), rest = g.entries.slice(STUDY_KEEP).map(line);
+      const fold = rest.length ? `<li class="d-row-fold"><details><summary><span class="fold-closed">${rest.length} more</span><span class="fold-open">Fewer</span></summary><ul class="d-row-list influence-list">${rest.join('')}</ul></details></li>` : '';
+      return row(g.title, '', `<ul class="d-row-list influence-list">${shown.join('')}${fold}</ul>`);
+    }).join('');
+  }
+
   function spacePart(inst) {
-    const list = inst && BY_SPACE.get(inst.id);
-    if (!list || !list.length) return null;
+    const list = (inst && BY_SPACE.get(inst.id)) || [];
+    const study = studyRows(inst);
+    if (!list.length && !study) return null;
     const byF = new Map();
     list.forEach(({ funder, tie }) => { if (!byF.has(funder)) byF.set(funder, []); byF.get(funder).push(tie); });
     // What was bought first, newest first; a protest or resignation with nothing bought stated comes after.
@@ -583,7 +606,7 @@
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', 'What funders got here');
     el.innerHTML = row('What funders got here', '', '') +
-      [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul><p class="no-indent influence-more"><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">Everything ${esc(f.name)} got</a></p>`)).join('');
+      [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul><p class="no-indent influence-more"><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">Everything ${esc(f.name)} got</a></p>`)).join('') + study;
     return el;
   }
 
