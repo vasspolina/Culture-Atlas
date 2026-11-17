@@ -762,7 +762,7 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !isOpenBooks(i)) return;
-        LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: openCol, label: 'Open books', sub: i.name, ask: `What do the filings show for ${i.name}?` });
+        LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: openCol, label: 'Open about money', sub: i.name, ask: `What do the filings show for ${i.name}?` });
         shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fillStyle = openCol; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
       });
     }
