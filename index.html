@@ -201,7 +201,7 @@ return maplibregl$1;
       <!-- New Chat / Reset Quick Actions -->
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
       <!-- Influence mode (assets/influence-mode.js): the atlas from the funders' side, what the money bought. -->
-      <button id="mobileInfluenceBtn" type="button" onclick="window.toggleInfluenceMode && window.toggleInfluenceMode()" class="whitespace-nowrap" aria-pressed="false">Money map</button>
+      <button id="mobileInfluenceBtn" type="button" onclick="window.toggleInfluenceMode && window.toggleInfluenceMode()" class="whitespace-nowrap" aria-pressed="false">Influence map</button>
       <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" >Dark</button>
       <!-- Details: the record of the selected space, as the desktop's Details tab. Shown once a space is selected, so the sheet can be reopened after Close. -->
       <button id="mobileDetailsBtn" type="button" class="whitespace-nowrap hidden" onclick="if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails();" aria-label="Museum details">Details</button>
@@ -223,7 +223,7 @@ return maplibregl$1;
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Gossip mode</button>
-      <button id="topInfluenceBtn" type="button" onclick="window.toggleInfluenceMode && window.toggleInfluenceMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Money map</button>
+      <button id="topInfluenceBtn" type="button" onclick="window.toggleInfluenceMode && window.toggleInfluenceMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Influence map</button>
       <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" >Dark</button>
       <!-- The artists' images page (user, 13 Nov 2026: "add button to the pages with images on top"); on a phone it is in the menu (assets/phone-maps.js). -->
       <a id="topImagesBtn" href="artists-images.html" class="hidden md-inline-flex whitespace-nowrap">Images</a>
@@ -502,7 +502,7 @@ return maplibregl$1;
             </a>
             <button type="button" id="floatingCardMoneyMapBtn" class="record-action text-left"
                onclick="event.stopPropagation(); window.atlasShowMoney(typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id);">
-              <span>Money map</span>
+              <span>Influence map</span>
             </button>
           </div>
 
@@ -558,7 +558,7 @@ return maplibregl$1;
               </button>
               <button type="button" id="dossier-sheet-moneymap-btn" class="record-action text-left"
                  onclick="event.stopPropagation(); window.atlasShowMoney(typeof selectedInstitution !== 'undefined' && selectedInstitution && selectedInstitution.id);">
-                <span>Money map</span>
+                <span>Influence map</span>
               </button>
               <a id="dossier-sheet-link-web" class="record-action" href="#" target="_blank" rel="noopener noreferrer">
                 <span>Website</span>
@@ -10513,7 +10513,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v773';
+    const ATLAS_RELEASE = 'culture-atlas-v774';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11938,7 +11938,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           // 3. OR Deep zoom (r >= baseRadius * 2.8) with strict anti-collision check
           const isFilteredContext = selectedCountryFilter !== 'all' || selectedCityFilter !== 'all';
           const isDeepZoom = currentRadius >= baseRadius * 2.8;
-          const shouldDrawGlobeLabel = isSel || isFilteredContext || isDeepZoom;
+          // In Influence mode the funder's museums are named by assets/influence-mode.js, round the funders' names; a second
+          // set of names here was drawn under the funders' dots and over their names (user, 17 Nov 2026). Only the space in
+          // focus keeps its label.
+          const influenceOn = !!(window.isInfluenceModeActive && window.isInfluenceModeActive());
+          const shouldDrawGlobeLabel = isSel || (!influenceOn && (isFilteredContext || isDeepZoom));
 
           // The hovered space keeps its label. It used to be skipped while hovered (the hover card took its place, and the
           // cards are gone since 11 Nov 2026), so its hit box went with it: a pointer on the name hovered the space, the name
@@ -14052,7 +14056,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               <div class="head-side record-actions record-action-row">
                 <button type="button" onclick="window.askCuratorAboutInst(dossierInst || selectedInstitution);" class="record-action">Ask in chat</button>
                 ${(inst.lat && inst.lon && inst.address) ? `<button type="button" onclick="window.zoomToBuilding('${escapeHtml(inst.id || inst.name)}')" class="record-action">Building view</button>` : ''}
-                ${hasMoneyMap(inst) ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Money map</button>` : ''}
+                ${hasMoneyMap(inst) ? `<button type="button" onclick="window.atlasShowMoney('${escapeHtml(inst.id)}')" class="record-action">Influence map</button>` : ''}
                 ${webUrl ? `<a href="${escapeHtml(webUrl)}" target="_blank" rel="noopener noreferrer" class="record-action">Website</a>` : ''}
               </div>
               <div class="head-main">

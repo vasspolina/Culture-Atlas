@@ -344,37 +344,69 @@
       if (sel) { ctx.beginPath(); ctx.arc(m.x, m.y, DOT + 3, 0, Math.PI * 2); ctx.stroke(); }
     });
     ctx.font = FONT; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+    const hits = (b, list) => list.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
+    // A place that runs off the map's edge counts as taken, so a long label turns inward.
+    const off = b => b.x < 2 || b.y < 2 || b.x + b.w > W - 2 || b.y + b.h > H - 2;
+    // The names set so far, kept apart from the dots: a museum's name may lie over another funder's dot (the halo keeps
+    // it readable), never over another name (user, 17 Nov 2026: the picked funder's name, its museums' names and the
+    // names round them were drawn over each other in Europe).
+    const names = [];
+    // The picked funder's name always shows, beside its own dot: it may lie over other funders' dots (the halo keeps it
+    // readable), and it is placed before any other name, so nothing else can be under it.
+    const spotFor = (spots, boxAt) => spots.find(sp => !off(boxAt(sp))) || spots[0];
+    // The picked funder's name first: it is what was clicked, so it gets the best place and its museums' names go round it.
+    const pickedMark = picked && marks.find(m => m.f === picked);
+    let pickedDone = null;
+    if (pickedMark) {
+      const { f, x, y, s } = pickedMark;
+      const figure = shown(f) ? MEASURES[MEASURE].text(f) : '';
+      const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = s + 5;
+      const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
+      const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
+      const spot = spotFor(spots, boxAt), b = boxAt(spot);
+      names.push(b);
+      pickedDone = { label, lx: x + spot[0], ly: y + spot[1], b };
+    }
     // The picked funder's spaces are named on the map (user, 17 Nov 2026: "show names of the museums when i click on dots
     // in influence mode"). They are placed before the other funders' names, so those give way to them; a space whose
-    // every place is taken by another space's name waits for the map to be zoomed in, as a funder's name does.
+    // every place is taken by another name waits for the map to be zoomed in, as a funder's name does.
     if (picked) {
       const byId = new Map(insts.map(i => [i.id, i]));
-      const names = new Map([...mapSpaces(picked)].map(([id, x]) => [id, x.name]));
+      const spaceNames = new Map([...mapSpaces(picked)].map(([id, x]) => [id, x.name]));
       const pts = [];
-      names.forEach((nm, id) => {
+      spaceNames.forEach((nm, id) => {
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
         const pt = project(i.lon, i.lat, r, cx, cy); if (!pt.front) return;
         pts.push({ id, x: pt.x, y: pt.y, label: i.name || nm || '' });
-        placed.push({ x: pt.x - 6, y: pt.y - 6, w: 12, h: 12 });
       });
+      // A space's own dot is kept clear by every name, its own and the others'.
+      const spaceDots = pts.map(q => ({ x: q.x - 5, y: q.y - 5, w: 10, h: 10 }));
+      if (pickedMark) spaceDots.push({ x: pickedMark.x - DOT - 5, y: pickedMark.y - DOT - 5, w: 2 * DOT + 10, h: 2 * DOT + 10 });
       pts.forEach(({ id, x, y, label }) => {
         if (!label) return;
         const w = ctx.measureText(label).width, gap = 9;
-        const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 6], [-w / 2, -gap - 6], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15]];
+        const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 6], [-w / 2, -gap - 6], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
         const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
-        const clash = b => placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
-        const spot = spots.find(sp => !clash(boxAt(sp))); if (!spot) return;
-        const box = boxAt(spot); placed.push(box);
+        const spot = spots.find(sp => { const b = boxAt(sp); return !off(b) && !hits(b, names) && !hits(b, spaceDots); }); if (!spot) return;
+        const box = boxAt(spot); names.push(box);
         // The name is a link, as it is in the chat: pointed at it turns the link colour, clicked it opens the space.
         SPACE_HITS.push({ id, box });
         ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, x + spot[0], y + spot[1]);
         ctx.fillStyle = hoverSpace === id ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, x + spot[0], y + spot[1]);
       });
+      spaceDots.forEach(b => placed.push(b));
+    }
+    if (pickedDone) {
+      const { label, lx, ly, b } = pickedDone;
+      ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx, ly);
+      ctx.fillStyle = ink; ctx.fillText(label, lx, ly);
+      HITS.push({ f: picked, x: pickedMark.x, y: pickedMark.y, s: pickedMark.s, label: b });
     }
     const first = f => picked === f ? 2 : FOCUS && FOCUS.has(f) ? 1 : 0;
     let tried = 0;
     marks.slice().sort((a, b) => first(b.f) - first(a.f) || b.n - a.n).forEach(m => {
       const { f, x, y, s } = m, sel = picked === f || (FOCUS && FOCUS.has(f)), hov = hover === f;
+      if (pickedDone && f === picked) return;
       // The name beside the mark in plain type on a halo of the map's ground, never cut short, moved round the mark
       // until it covers no other name or mark. Where every place is taken (Europe at world zoom) it waits, as a city's
       // name does, and shows once the map is zoomed in or the mark is pointed at; the picked funder's always shows.
@@ -386,13 +418,12 @@
       const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = s + 5;
       const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
       const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
-      // A place that runs off the map's edge counts as taken, so a long label (a figure beside the name) turns inward.
-      const off = b => b.x < 2 || b.y < 2 || b.x + b.w > W - 2 || b.y + b.h > H - 2;
-      const clash = b => off(b) || placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
+      const clash = b => off(b) || hits(b, placed) || hits(b, names);
       const free = spots.find(sp => !clash(boxAt(sp)));
       if (!free && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
-      const spot = free || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
-      placed.push(b);
+      // Never over another name: a focused or pointed-at funder with no free place takes the first place clear of names.
+      const spot = free || spots.find(sp => !off(boxAt(sp)) && !hits(boxAt(sp), names)) || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
+      names.push(b);
       ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx, ly);
       ctx.fillStyle = hov && !sel ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, lx, ly);
       HITS.push({ f, x, y, s, label: b });
@@ -449,7 +480,7 @@
       greet();
     } else {
       picked = null; pickedSpaces = null; hover = null; hoverSpace = null; MEASURE = 'culture'; paintMeasureButtons();
-      say('<p class="no-indent">Money map is off. The map shows the museums again.</p>');
+      say('<p class="no-indent">Influence map is off. The map shows the museums again.</p>');
     }
     if (typeof window.atlasRefilter === 'function') window.atlasRefilter();
     decorate();
@@ -477,12 +508,12 @@
     if (typeof appendCuratorMessage === 'function') appendCuratorMessage(html, [], null, null, false);
   }
   function greet() {
-    if (!DATA) { say('<p class="no-indent">Money map is on, but it could not load. Try again in a moment.</p>'); return; }
+    if (!DATA) { say('<p class="no-indent">Influence map is on, but it could not load. Try again in a moment.</p>'); return; }
     // One short paragraph (user, 17 Nov 2026: "influence mode intro in chat is a slop, shorten it ... no need to list all
     // spaces"; then, of "351 entries on 25 private funders, read by hand from the spaces' records": "this is a slop, delete
     // all the jargon"). The funders are on the map and each record says what it got, so the chat does not list them again.
     say(`<div class="influence-chat">
-<p class="no-indent">Money map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays and, where the records say, what its money bought.</p>
+<p class="no-indent">Influence map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays and, where the records say, what its money bought.</p>
 </div>`);
   }
   // A funder named in the chat or in a ledger opens its record, which then leads with what it got.
@@ -686,12 +717,12 @@
     const gossip = document.getElementById('gmGossipBtn');
     if (!gossip || document.getElementById('gmInfluenceBtn')) return !!gossip;
     const b = document.createElement('button');
-    b.type = 'button'; b.id = 'gmInfluenceBtn'; b.textContent = 'Money map';
+    b.type = 'button'; b.id = 'gmInfluenceBtn'; b.textContent = 'Influence map';
     b.setAttribute('aria-pressed', String(on));
     b.addEventListener('click', () => toggle());
     gossip.after(b);
     const bar = gossip.parentElement;
-    if (bar && bar.getAttribute('aria-label')) bar.setAttribute('aria-label', 'Chat, dark mode, gossip mode and money map');
+    if (bar && bar.getAttribute('aria-label')) bar.setAttribute('aria-label', 'Chat, dark mode, gossip mode and influence map');
     return true;
   }
 
