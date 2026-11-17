@@ -191,7 +191,8 @@ def build_layer(cands):
             # Only what the review states: the keyword flags of a candidate are a reading aid, not a finding.
             'kinds': v.get('kinds', []), 'ended': bool(v.get('ended')), 'protest': bool(v.get('protest')),
             'summary': v['summary'], 'quote': c['text'], 'field': c['field'],
-            'date': v.get('date', c['date']), 'sources': c['sources'],
+            # A page found when checking the entry (not in the record's own list) is cited too: extra_sources in the review.
+            'date': v.get('date', c['date']), 'sources': c['sources'] + [u for u in v.get('extra_sources', []) if u not in c['sources']],
             'check': v.get('check', 'record'),
             # Checked against its source pages (17 Nov 2026): the page that bears it out, and for a partly checked entry
             # the detail that page does not give.

@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=11', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=12', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -120,22 +120,26 @@
     const p = v(a.lon, a.lat), q = v(b.lon, b.lat);
     const w = Math.acos(Math.max(-1, Math.min(1, p[0] * q[0] + p[1] * q[1] + p[2] * q[2])));
     const n = Math.max(2, Math.ceil(w / (2 * rad)));
-    let down = false;
+    let down = false, lam = null;
     ctx.beginPath();
     for (let i = 0; i <= n; i++) {
       const t = i / n, s1 = w ? Math.sin((1 - t) * w) / Math.sin(w) : 1 - t, s2 = w ? Math.sin(t * w) / Math.sin(w) : t;
       const x = s1 * p[0] + s2 * q[0], y = s1 * p[1] + s2 * q[1], z = s1 * p[2] + s2 * q[2];
       const pt = project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy);
       if (!pt.front) { down = false; continue; }
-      if (down) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+      // On the flat (Winkel) map every point is "front", so a path that runs off one edge comes back in at the other.
+      // Lift the pen there, as the coastlines do (index.html), or the two ends are joined by a straight line across the map.
+      const seam = pt.lam != null && lam != null && Math.abs(pt.lam - lam) > Math.PI;
+      lam = pt.lam != null ? pt.lam : null;
+      if (down && !seam) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
     }
     ctx.stroke();
   }
   // Every funder is a dot (user, 17 Nov 2026: "just do dots dont do different figure"); its size says how many spaces it
   // reaches. Company or family is said in its record and in the chat, not by the shape.
-  // Every dot is 4px across whatever the measure (user, 17 Nov 2026: "these dots are way too big, make all dots same size
-  // and like 4px"); the measure is said by the figure in the label, not by the size.
-  const DOT = 2;
+  // Every dot is 6px across whatever the measure (user, 17 Nov 2026: "these dots are way too big, make all dots same size
+  // and like 4px", then "make the dots a bit bigger"); the measure is said by the figure in the label, not by the size.
+  const DOT = 3;
   function mark(ctx, f, x, y) {
     ctx.beginPath();
     ctx.arc(x, y, DOT, 0, Math.PI * 2);
