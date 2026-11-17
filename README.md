@@ -384,3 +384,5 @@ Public money alone is never a flag, so a wholly public museum sits at A or B. Di
 
 - **Clean Status (Tier A)**: Institutions with no current fossil fuel, weapons/defense, opioid, tobacco, gambling, or sanctioned state sponsorship.
 - **Data Cutoff**: Verified against annual reports, partner listings, and public disclosures up to late September 2026.
+
+**Lobbying by the spaces themselves** (user, 17 Nov 2026: "find only info that tracks cultural spaces involved in lobbying"). `data/space_lobbying.json` lists lobbying filed by or for the atlas's spaces as the client, from public registers, built with `tools/space_lobbying/`. All 1,727 spaces were matched against the US Lobbying Disclosure Act database (lda.gov, every filing since 1999) and the EU Transparency Register export of 16 November 2026, and each match was checked by hand. 41 US spaces reported $21.0M in total, ten of them still active in 2025 or 2026; three EU registrations match (Stiftung Bauhaus Dessau, Fondazione Arena di Verona, and the Wellcome Trust for Wellcome Collection). State and city registers, the UK, Ireland, Scotland and Canada are not yet covered. The data is not yet shown on the map.
