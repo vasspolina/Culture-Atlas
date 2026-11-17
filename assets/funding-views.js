@@ -8,7 +8,7 @@
 // layers.js calls under() before the dots and over() after them; index.html asks countryFill() for each country's ground.
 (function () {
   const NEW = ['bundle', 'flows', 'hulls', 'choro', 'glyphs', 'halos', 'lifted', 'flagged'];
-  const KIND_WORD = { gov: 'Public funding', corp: 'Company', found: 'Foundation' };
+  const KIND_WORD = { gov: 'Public funding', corp: 'Company', found: 'Foundation', priv: 'Hedge fund or investor' };
   const ABROAD = '#2dd4bf';
   const rad = Math.PI / 180;
   const api = () => window.atlasLayersAPI;
@@ -58,7 +58,7 @@
     const country = new Map(), flows = new Map();
     d.recById.forEach(rec => {
       const co = norm(rec.co); if (!co || !V.recInWindow(rec)) return;
-      let s = country.get(co); if (!s) country.set(co, s = { known: 0, abroad: 0, kinds: { gov: 0, corp: 0, found: 0 }, spaces: 0 });
+      let s = country.get(co); if (!s) country.set(co, s = { known: 0, abroad: 0, kinds: { gov: 0, corp: 0, found: 0, priv: 0 }, spaces: 0 });
       s.spaces++;
       rec.nodes.forEach(n => {
         if (!A.FUNDER(n) || !A.kindOn(n[1])) return;
@@ -68,7 +68,7 @@
         if (fc === co) return;
         s.abroad++;
         const k = fc + '>' + co; let f = flows.get(k);
-        if (!f) flows.set(k, f = { from: fc, to: co, n: 0, kinds: { gov: 0, corp: 0, found: 0 }, names: new Map() });
+        if (!f) flows.set(k, f = { from: fc, to: co, n: 0, kinds: { gov: 0, corp: 0, found: 0, priv: 0 }, names: new Map() });
         f.n++; f.kinds[n[1]]++; f.names.set(n[0], (f.names.get(n[0]) || 0) + 1);
       });
     });
@@ -83,7 +83,7 @@
       if (!ca || !cb || !anchors.has(ca) || !anchors.has(cb)) return;
       if (ca === cb) { local.push([a, b, kind, key]); return; }
       const [p, q] = ca < cb ? [ca, cb] : [cb, ca], k = p + '|' + q;
-      let t = trunks.get(k); if (!t) trunks.set(k, t = { a: p, b: q, n: 0, kinds: { gov: 0, corp: 0, found: 0 }, keys: new Map() });
+      let t = trunks.get(k); if (!t) trunks.set(k, t = { a: p, b: q, n: 0, kinds: { gov: 0, corp: 0, found: 0, priv: 0 }, keys: new Map() });
       t.n++; t.kinds[kind]++; t.keys.set(key, (t.keys.get(key) || 0) + 1);
       [[a, ca], [b, cb]].forEach(([rec, c]) => { const fk = rec.id + '|' + kind; if (!feeders.has(fk)) feeders.set(fk, [rec, c, kind]); });
     });
@@ -92,7 +92,7 @@
     if (L && L.choro) A.repaint();
     return T;
   }
-  const kindSig = () => { const L = window.atlasLayers; return L ? ['gov', 'corp', 'found'].map(k => L.kinds[k] !== false ? 1 : 0).join('') : ''; };
+  const kindSig = () => { const L = window.atlasLayers; return L ? ['gov', 'corp', 'found', 'priv'].map(k => L.kinds[k] !== false ? 1 : 0).join('') : ''; };
   const yearSig = () => { const L = window.atlasLayers; return L && L.years ? L.years.join('-') : ''; };
 
   // ---- Drawing helpers ----
@@ -164,7 +164,7 @@
       const names = top.map(([k]) => { const f = A.funderName(k); return f || k; });
       const w = Math.min(10, 0.6 + 1.1 * Math.sqrt(tr.n));
       ctx.strokeStyle = A.lineCol(A.COL[tr.kind]);
-      const mix = ['gov', 'found', 'corp'].filter(k => tr.kinds[k]).map(k => `${tr.kinds[k]} ${KIND_WORD[k].toLowerCase()}`).join(', ');
+      const mix = ['gov', 'found', 'priv', 'corp'].filter(k => tr.kinds[k]).map(k => `${tr.kinds[k]} ${KIND_WORD[k].toLowerCase()}`).join(', ');
       strokePath(ctx, path(project, a, b, r, cx, cy, 0.08), () => w, {
         agg: true, id: 'bundle:' + tr.a + tr.b, col: A.COL[tr.kind],
         label: `${say(tr.a)} – ${say(tr.b)}`, sub: `${tr.n} shared-funder ${tr.n === 1 ? 'link' : 'links'}: ${mix}`,
@@ -309,12 +309,12 @@
 
   // A ring around each space, split by the share of its funders of each type.
   function drawGlyphs(ctx, dots, A, d, dark) {
-    const ORDER = ['gov', 'found', 'corp'];
+    const ORDER = ['gov', 'found', 'priv', 'corp'];
     dots.forEach(dt => {
       const i = dt.inst, rec = i && d.recById.get(i.id); if (!rec || !V.recInWindow(rec)) return;
-      const c = { gov: 0, found: 0, corp: 0 };
+      const c = { gov: 0, found: 0, priv: 0, corp: 0 };
       rec.nodes.forEach(n => { if (A.FUNDER(n) && A.kindOn(n[1])) c[n[1]]++; });
-      const tot = c.gov + c.found + c.corp; if (!tot) return;
+      const tot = c.gov + c.found + c.priv + c.corp; if (!tot) return;
       const R = 8.5; let a0 = -Math.PI / 2;
       ctx.lineWidth = 3.4; ctx.lineCap = 'butt';
       ctx.beginPath(); ctx.arc(dt.x, dt.y, R, 0, Math.PI * 2); ctx.strokeStyle = dark ? '#000' : '#fff'; ctx.lineWidth = 5; ctx.stroke(); ctx.lineWidth = 3.4;
@@ -383,7 +383,7 @@
     const s = t.country.get(name); if (!s) return null;
     const A = api();
     if (L.choroMode === 'kind') {
-      const tot = s.kinds.gov + s.kinds.corp + s.kinds.found; if (!tot) return null;
+      const tot = s.kinds.gov + s.kinds.corp + s.kinds.found + s.kinds.priv; if (!tot) return null;
       const k = Object.keys(s.kinds).sort((a, b) => s.kinds[b] - s.kinds[a])[0];
       return blend(ground, A.lineCol(A.COL[k]), 0.3 + 0.55 * s.kinds[k] / tot);
     }

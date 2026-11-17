@@ -432,7 +432,7 @@
     const f = BY_FUNDER.get(key); if (!f) return;
     const go = () => {
       const hq = window.atlasHq;
-      let e = (hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : 'found', n: f.name, c: '', co: '', noOffice: true };
+      let e = (hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : f.kind === 'fund' ? 'priv' : 'found', n: f.name, c: '', co: '', noOffice: true };
       // The mode places every pilot funder at an office (assets/influence.json, hq), so its record names that office too.
       if (e.noOffice && f.hq) e = Object.assign({}, e, { c: f.hq.c, co: f.hq.co, a: f.hq.a, lat: f.hq.lat, lon: f.hq.lon, noOffice: false });
       // Its own office layer stays off: the mode draws the funders itself (assets/hq-detail.js reads noLayer).
